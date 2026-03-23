@@ -796,6 +796,33 @@ function getDiscussEdits(limit = 10) {
     .all(Math.min(limit, 200));
 }
 
+/**
+ * Get per-module edit aggregation for a specific book, grouped by chapter.
+ * Single DB query returns edit counts for every module that has any edits.
+ *
+ * @param {string} book - Book slug
+ * @returns {Array} Array of { chapter, module_id, pending, approved, rejected, discuss, applied, segments_edited }
+ */
+function getBookEditsByModule(book) {
+  const conn = getDb();
+  return conn
+    .prepare(
+      `SELECT
+        chapter,
+        module_id,
+        COUNT(CASE WHEN status = 'pending' THEN 1 END) as pending,
+        COUNT(CASE WHEN status = 'approved' THEN 1 END) as approved,
+        COUNT(CASE WHEN status = 'rejected' THEN 1 END) as rejected,
+        COUNT(CASE WHEN status = 'discuss' THEN 1 END) as discuss,
+        COUNT(CASE WHEN status = 'approved' AND applied_at IS NOT NULL THEN 1 END) as applied,
+        COUNT(DISTINCT segment_id) as segments_edited
+      FROM segment_edits
+      WHERE book = ?
+      GROUP BY chapter, module_id`
+    )
+    .all(book);
+}
+
 /** @internal Test-only: inject an in-memory DB instance */
 function _setTestDb(testDb) {
   db = testDb;
@@ -835,6 +862,8 @@ module.exports = {
   getDiscussEdits,
   // Review queue
   getReviewQueue,
+  // Per-book aggregation
+  getBookEditsByModule,
   // Test helpers
   _setTestDb,
   _setTestBooksDir,

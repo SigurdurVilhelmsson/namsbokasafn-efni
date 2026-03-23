@@ -522,6 +522,27 @@ function listChapterModules(book, chapter) {
   });
 }
 
+/**
+ * Fast segment count — counts SEG markers in a file without parsing content.
+ * Much cheaper than loadModuleForEditing() for dashboard aggregation.
+ *
+ * @param {string} book - Book slug
+ * @param {string} chapter - Chapter number or 'appendices'
+ * @param {string} moduleId - Module ID (e.g., 'm68664')
+ * @returns {number} Number of segments in the EN source file
+ */
+function countModuleSegments(book, chapter, moduleId) {
+  const chDir = chapterDir(parseInt(chapter, 10) || chapter);
+  const enPath = path.join(BOOKS_DIR, book, '02-for-mt', chDir, `${moduleId}-segments.en.md`);
+
+  if (!fs.existsSync(enPath)) return 0;
+
+  const content = fs.readFileSync(enPath, 'utf-8');
+  const globalRegex = new RegExp(SEG_MARKER_REGEX.source, 'g');
+  const matches = content.match(globalRegex);
+  return matches ? matches.length : 0;
+}
+
 /** @internal Test-only: override BOOKS_DIR for isolated tests */
 function _setTestBooksDir(dir) {
   BOOKS_DIR = dir;
@@ -542,6 +563,7 @@ module.exports = {
   chapterDir,
   listChapters,
   listChapterModules,
+  countModuleSegments,
   SEG_MARKER_REGEX,
   PROJECT_ROOT,
   get BOOKS_DIR() {

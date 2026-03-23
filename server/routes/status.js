@@ -28,6 +28,7 @@ const {
 const { VALID_BOOKS } = require('../config');
 const { PIPELINE_STAGE_NAMES: PIPELINE_STAGES, PUBLICATION_TRACKS } = require('../constants');
 const pipelineStatusService = require('../services/pipelineStatusService');
+const segmentParser = require('../services/segmentParser');
 
 // Project root
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
@@ -878,6 +879,169 @@ router.get('/meeting-agenda', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req,
 // ============================================================================
 // BOOK STATUS
 // ============================================================================
+
+/**
+ * GET /api/status/:book/editorial-progress
+ * Editorial progress for a book — segment-level edit counts per chapter/module.
+ * Primary data source for the refocused status dashboard.
+ */
+router.get('/:book/editorial-progress', requireAuth, (req, res) => {
+  const { book } = req.params;
+
+  if (!VALID_BOOKS.includes(book)) {
+    return res.status(400).json({ error: `Invalid book: ${book}` });
+  }
+
+  try {
+    // 1. Get all chapters and their modules from the filesystem
+    const chapters = segmentParser.listChapters(book);
+
+    // 2. Get all edit stats in one DB query
+    const editsByModule = segmentEditorService.getBookEditsByModule(book);
+    const editLookup = {};
+    for (const row of editsByModule) {
+      editLookup[row.module_id] = row;
+    }
+
+    // 3. Get pending reviews
+    const pendingReviews = segmentEditorService.getPendingModuleReviews(book);
+    const reviewLookup = {};
+    for (const r of pendingReviews) {
+      reviewLookup[r.module_id] = r;
+    }
+
+    // 4. Get discuss edits for attention items
+    const discussEdits = segmentEditorService.getDiscussEdits(50);
+    const bookDiscussEdits = discussEdits.filter((e) => e.book === book);
+
+    // 5. Build per-chapter progress
+    let totalModules = 0;
+    let totalSegments = 0;
+    let totalSegmentsEdited = 0;
+    let totalSegmentsApproved = 0;
+    let totalModulesComplete = 0;
+    let totalModulesInProgress = 0;
+    let totalModulesNotStarted = 0;
+
+    const chapterProgress = chapters.map((chapterNum) => {
+      const modules = segmentParser.listChapterModules(book, chapterNum);
+      const chapterLabel = chapterNum === -1 ? 'appendices' : String(chapterNum);
+
+      let chSegments = 0;
+      let chEdited = 0;
+      let chApproved = 0;
+      let chModulesComplete = 0;
+      let chModulesInProgress = 0;
+      let chModulesNotStarted = 0;
+      const needsAttention = [];
+
+      const moduleDetails = modules.map((mod) => {
+        const segCount = segmentParser.countModuleSegments(book, chapterLabel, mod.moduleId);
+        const edits = editLookup[mod.moduleId];
+        const review = reviewLookup[mod.moduleId];
+
+        const edited = edits ? edits.segments_edited : 0;
+        const approved = edits ? edits.approved + edits.applied : 0;
+        const rejected = edits ? edits.rejected : 0;
+        const pending = edits ? edits.pending : 0;
+        const discuss = edits ? edits.discuss : 0;
+
+        chSegments += segCount;
+        chEdited += edited;
+        chApproved += approved;
+
+        // Module status: complete if all segments approved, in-progress if any edits, else not-started
+        let status = 'not-started';
+        if (approved >= segCount && segCount > 0) {
+          status = 'complete';
+          chModulesComplete++;
+        } else if (edited > 0 || review) {
+          status = 'in-progress';
+          chModulesInProgress++;
+        } else {
+          chModulesNotStarted++;
+        }
+
+        // Attention items
+        if (rejected > 0) {
+          needsAttention.push(`${mod.moduleId}: ${rejected} rejected`);
+        }
+        if (discuss > 0) {
+          needsAttention.push(`${mod.moduleId}: ${discuss} in discussion`);
+        }
+        if (review && review.status === 'pending') {
+          needsAttention.push(`${mod.moduleId}: awaiting review`);
+        }
+
+        return {
+          moduleId: mod.moduleId,
+          hasFaithful: mod.hasFaithful,
+          segmentCount: segCount,
+          segmentsEdited: edited,
+          segmentsApproved: approved,
+          pending,
+          rejected,
+          discuss,
+          status,
+          reviewStatus: review ? review.status : null,
+        };
+      });
+
+      totalModules += modules.length;
+      totalSegments += chSegments;
+      totalSegmentsEdited += chEdited;
+      totalSegmentsApproved += chApproved;
+      totalModulesComplete += chModulesComplete;
+      totalModulesInProgress += chModulesInProgress;
+      totalModulesNotStarted += chModulesNotStarted;
+
+      return {
+        chapter: chapterNum,
+        modules: modules.length,
+        segmentsTotal: chSegments,
+        segmentsEdited: chEdited,
+        segmentsApproved: chApproved,
+        modulesComplete: chModulesComplete,
+        modulesInProgress: chModulesInProgress,
+        modulesNotStarted: chModulesNotStarted,
+        needsAttention,
+        moduleDetails,
+      };
+    });
+
+    const percentComplete =
+      totalSegments > 0 ? Math.round((totalSegmentsApproved / totalSegments) * 1000) / 10 : 0;
+
+    res.json({
+      book,
+      summary: {
+        totalModules,
+        totalSegments,
+        segmentsEdited: totalSegmentsEdited,
+        segmentsApproved: totalSegmentsApproved,
+        modulesComplete: totalModulesComplete,
+        modulesInProgress: totalModulesInProgress,
+        modulesNotStarted: totalModulesNotStarted,
+        percentComplete,
+      },
+      chapters: chapterProgress,
+      attention: {
+        discussEdits: bookDiscussEdits.length,
+        pendingReviews: pendingReviews.length,
+        items: bookDiscussEdits.slice(0, 10).map((e) => ({
+          type: 'discuss',
+          moduleId: e.module_id,
+          chapter: e.chapter,
+          segmentId: e.segment_id,
+          note: e.editor_note,
+        })),
+      },
+    });
+  } catch (err) {
+    console.error('Error building editorial progress:', err);
+    res.status(500).json({ error: 'Failed to build editorial progress' });
+  }
+});
 
 /**
  * GET /api/status/:book

@@ -7,13 +7,9 @@
   <link rel="stylesheet" href="/css/common.css">
   <style>
     /* ==========================================================================
-       PROGRESS PAGE — page-specific styles
+       PROGRESS PAGE — Editorial Progress Dashboard
        Uses CSS variables from common.css (Basalt & Vellum design system)
        ========================================================================== */
-
-    /* =======================================================================
-       OVERVIEW TAB
-       ======================================================================= */
 
     /* Summary stats row */
     .summary-stats {
@@ -53,2588 +49,703 @@
       padding: var(--spacing-lg);
       margin-bottom: var(--spacing-xl);
     }
-    .attention-panel-header {
+    .attention-panel h3 {
       display: flex;
       align-items: center;
       gap: var(--spacing-sm);
-      margin-bottom: var(--spacing-md);
-      font-family: var(--font-heading);
-      font-size: var(--text-lg);
+      margin: 0 0 var(--spacing-md);
+      font-size: var(--text-base);
       color: var(--text-primary);
     }
-    .attention-badge-icon {
+    .attention-badge {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 24px;
-      height: 24px;
+      min-width: 22px;
+      height: 22px;
       background: var(--warning);
       color: #fff;
       border-radius: var(--radius-full);
       font-weight: 700;
-      font-size: var(--text-sm);
-    }
-    .attention-stats-row {
-      display: flex;
-      gap: var(--spacing-md);
-      margin-bottom: var(--spacing-md);
-    }
-    .attention-stat-box {
-      flex: 1;
-      text-align: center;
-      padding: var(--spacing-sm) var(--spacing-md);
-      background: var(--bg-elevated);
-      border-radius: var(--radius-md);
-    }
-    .attention-stat-count {
-      display: block;
-      font-size: var(--text-xl);
-      font-weight: 600;
-      color: var(--accent);
-    }
-    .attention-stat-count.blocked { color: var(--error); }
-    .attention-stat-count.warning { color: var(--warning); }
-    .attention-stat-label {
       font-size: var(--text-xs);
-      color: var(--text-muted);
+      padding: 0 6px;
     }
     .attention-list {
-      max-height: 200px;
-      overflow-y: auto;
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
-    .attention-item {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-sm);
-      padding: var(--spacing-sm);
-      border-radius: var(--radius-md);
-      margin-bottom: var(--spacing-xs);
-      font-size: var(--text-base);
-    }
-    .attention-item:hover {
-      background: var(--bg-hover);
-    }
-    .attention-item-icon { font-size: var(--text-md); flex-shrink: 0; }
-    .attention-item-text { flex: 1; color: var(--text-secondary); }
-
-    /* Two-column overview layout */
-    .overview-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--spacing-xl);
-      margin-bottom: var(--spacing-xl);
-    }
-    @media (max-width: 900px) {
-      .overview-grid { grid-template-columns: 1fr; }
-    }
-
-    /* Card component for overview panels */
-    .panel {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: var(--spacing-lg);
-    }
-    .panel-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: var(--spacing-md);
-    }
-    .panel-title {
-      font-family: var(--font-heading);
-      font-size: var(--text-lg);
-      color: var(--text-primary);
-    }
-
-    /* Milestone / progress bar */
-    .milestone-section { margin-bottom: var(--spacing-md); }
-    .milestone-label-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: var(--spacing-xs);
-    }
-    .milestone-name {
-      font-size: var(--text-base);
-      font-weight: 500;
-      color: var(--text-primary);
-    }
-    .milestone-fraction {
-      font-size: var(--text-base);
-      color: var(--accent);
-      font-weight: 600;
-    }
-    .progress-bar {
-      width: 100%;
-      height: 8px;
-      background: var(--bg-elevated);
-      border-radius: var(--radius-full);
-      overflow: hidden;
-    }
-    .progress-bar-fill {
-      height: 100%;
-      background: var(--accent);
-      border-radius: var(--radius-full);
-      transition: width 0.4s ease;
-    }
-
-    /* Velocity info */
-    .velocity-stat {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-sm);
-      padding: var(--spacing-sm) var(--spacing-md);
-      background: var(--bg-elevated);
-      border-radius: var(--radius-md);
-      font-size: var(--text-base);
-      color: var(--text-secondary);
-      margin-top: var(--spacing-md);
-    }
-
-    /* Activity feed */
-    .activity-feed {
-      max-height: 360px;
-      overflow-y: auto;
-    }
-    .activity-item {
-      display: flex;
-      gap: var(--spacing-sm);
-      padding: var(--spacing-sm) 0;
+    .attention-list li {
+      padding: var(--spacing-xs) 0;
       border-bottom: 1px solid var(--border);
-    }
-    .activity-item:last-child { border-bottom: none; }
-    .activity-icon { font-size: var(--text-md); flex-shrink: 0; }
-    .activity-content { flex: 1; min-width: 0; }
-    .activity-user {
-      font-weight: 500;
-      font-size: var(--text-base);
-      color: var(--text-primary);
-    }
-    .activity-desc {
       font-size: var(--text-sm);
-      color: var(--text-muted);
-      display: block;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      color: var(--text-secondary);
     }
-    .activity-time {
-      font-size: var(--text-xs);
-      color: var(--text-muted);
-    }
-    .activity-footer {
-      margin-top: var(--spacing-md);
-      text-align: center;
-    }
+    .attention-list li:last-child { border-bottom: none; }
 
-    /* Pipeline stage dots (8-stage) */
-    .stage-dots {
-      display: inline-flex;
-      gap: 4px;
-      align-items: center;
-    }
-    .stage-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: var(--radius-full);
-      flex-shrink: 0;
-    }
-    .stage-dot.complete {
-      background: var(--accent);
-    }
-    .stage-dot.in-progress {
-      background: transparent;
-      border: 2px solid var(--accent);
-    }
-    .stage-dot.not-started {
-      background: transparent;
-      border: 2px solid var(--text-muted);
-      opacity: 0.4;
-    }
-
-    /* Chapter list with pipeline dots */
+    /* Chapter progress list */
     .chapter-list {
       display: flex;
       flex-direction: column;
-      gap: var(--spacing-xs);
+      gap: var(--spacing-sm);
     }
-    .chapter-list-item {
-      display: flex;
+    .chapter-row {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-md) var(--spacing-lg);
+      display: grid;
+      grid-template-columns: 60px 1fr 120px 80px;
       align-items: center;
       gap: var(--spacing-md);
-      padding: var(--spacing-sm) var(--spacing-md);
-      background: var(--bg-elevated);
-      border-radius: var(--radius-md);
-      transition: background var(--transition-fast);
       cursor: pointer;
+      transition: border-color 0.15s;
     }
-    .chapter-list-item:hover {
-      background: var(--bg-hover);
+    .chapter-row:hover {
+      border-color: var(--accent);
     }
-    .chapter-list-num {
+    .chapter-row.active {
+      border-color: var(--accent);
+      border-width: 2px;
+    }
+    .chapter-num {
       font-family: var(--font-heading);
+      font-size: var(--text-lg);
       font-weight: 700;
-      font-size: var(--text-base);
       color: var(--text-primary);
-      min-width: 32px;
     }
-    .chapter-list-title {
-      flex: 1;
-      min-width: 0;
-      font-size: var(--text-sm);
-      color: var(--text-secondary);
-      white-space: nowrap;
+    .chapter-progress-bar {
+      height: 8px;
+      background: var(--bg-elevated);
+      border-radius: 4px;
       overflow: hidden;
-      text-overflow: ellipsis;
     }
-    .chapter-list-progress {
-      font-size: var(--text-xs);
+    .chapter-progress-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.3s;
+    }
+    .fill-approved { background: var(--success); }
+    .fill-edited { background: var(--info); }
+    .chapter-modules-label {
+      font-size: var(--text-sm);
       color: var(--text-muted);
-      min-width: 36px;
+      text-align: right;
+      white-space: nowrap;
+    }
+    .chapter-pct {
+      font-family: var(--font-heading);
+      font-size: var(--text-base);
+      font-weight: 700;
       text-align: right;
     }
 
-    /* Disputed terms */
-    .disputed-panel {
+    /* Chapter detail panel */
+    .chapter-detail {
       background: var(--bg-surface);
       border: 1px solid var(--border);
-      border-left: 3px solid var(--info);
       border-radius: var(--radius-lg);
       padding: var(--spacing-lg);
-      margin-bottom: var(--spacing-xl);
+      margin-top: var(--spacing-lg);
     }
-    .disputed-term-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: var(--spacing-sm) var(--spacing-md);
-      border-radius: var(--radius-md);
-      margin-bottom: var(--spacing-xs);
-      background: var(--bg-elevated);
-    }
-    .disputed-term-item:hover { background: var(--bg-hover); }
-    .term-content { flex: 1; min-width: 0; }
-    .term-pair {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-sm);
-      font-size: var(--text-base);
-      flex-wrap: wrap;
-    }
-    .term-english { color: var(--text-secondary); }
-    .term-arrow { color: var(--text-muted); }
-    .term-icelandic { color: var(--accent); font-weight: 500; }
-    .term-meta {
-      display: flex;
-      gap: var(--spacing-sm);
-      margin-top: var(--spacing-xs);
-      font-size: var(--text-xs);
-      color: var(--text-muted);
-      flex-wrap: wrap;
-    }
-    .term-status {
-      padding: 1px 6px;
-      border-radius: var(--radius-full);
-      font-weight: 500;
-    }
-    .term-status.status-disputed { background: var(--error-subtle); color: var(--error); }
-    .term-status.status-needs-review { background: var(--warning-subtle); color: var(--warning); }
-    .term-status.status-proposed { background: var(--accent-subtle); color: var(--accent); }
-    .term-proposer { font-style: italic; }
-    .disputed-terms-footer {
-      text-align: center;
-      margin-top: var(--spacing-sm);
-      padding-top: var(--spacing-sm);
-      border-top: 1px solid var(--border);
-    }
-
-    /* Analytics section within Overview */
-    .analytics-section {
-      margin-bottom: var(--spacing-xl);
-    }
-    .analytics-section .section-heading {
-      font-family: var(--font-heading);
-      font-size: var(--text-lg);
-      color: var(--text-primary);
-      margin-bottom: var(--spacing-md);
-      padding-bottom: var(--spacing-xs);
-      border-bottom: 1px solid var(--border);
-    }
-    .analytics-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--spacing-lg);
-    }
-    @media (max-width: 900px) {
-      .analytics-grid { grid-template-columns: 1fr; }
-    }
-    .analytics-card-full { grid-column: 1 / -1; }
-
-    /* Velocity metrics */
-    .velocity-metrics {
-      display: flex;
-      gap: var(--spacing-md);
-      margin-bottom: var(--spacing-md);
-    }
-    .velocity-item {
-      flex: 1;
-      text-align: center;
-      padding: var(--spacing-sm) var(--spacing-md);
-      background: var(--bg-elevated);
-      border-radius: var(--radius-md);
-    }
-    .velocity-value {
-      display: block;
-      font-size: var(--text-xl);
-      font-weight: 600;
-      color: var(--accent);
-    }
-    .velocity-label {
-      font-size: var(--text-xs);
-      color: var(--text-muted);
-    }
-
-    /* Velocity chart bars */
-    .velocity-bars {
-      display: flex;
-      align-items: flex-end;
-      gap: var(--spacing-sm);
-      height: 120px;
-      padding: var(--spacing-sm);
-      background: var(--bg-elevated);
-      border-radius: var(--radius-md);
-    }
-    .velocity-bar-wrapper {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: 100%;
-    }
-    .velocity-bar {
-      width: 100%;
-      background: var(--accent);
-      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      min-height: 5%;
-      transition: height 0.3s ease;
-    }
-    .velocity-bar-value {
-      font-size: var(--text-xs);
-      color: var(--bg-base);
-      font-weight: 600;
-      padding: 2px;
-    }
-    .velocity-bar-label {
-      font-size: var(--text-xs);
-      color: var(--text-muted);
-      margin-top: var(--spacing-xs);
-    }
-
-    /* Projection items */
-    .projection-item {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-sm);
-      padding: var(--spacing-sm) var(--spacing-md);
-      border-bottom: 1px solid var(--border);
-    }
-    .projection-item:last-of-type { border-bottom: none; }
-    .projection-icon { font-size: var(--text-lg); }
-    .projection-details { flex: 1; }
-    .projection-value {
-      display: block;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-    .projection-label {
-      font-size: var(--text-xs);
-      color: var(--text-muted);
-    }
-    .projection-confidence {
-      margin-top: var(--spacing-sm);
-      padding: var(--spacing-sm);
-      border-radius: var(--radius-md);
-      text-align: center;
-      font-size: var(--text-xs);
-      font-weight: 500;
-      border: 1px solid;
-    }
-
-    /* Burndown */
-    .burndown-stats {
-      display: flex;
-      gap: var(--spacing-md);
-      margin-bottom: var(--spacing-md);
-    }
-    .burndown-stat {
-      flex: 1;
-      text-align: center;
-      padding: var(--spacing-sm) var(--spacing-md);
-      background: var(--bg-elevated);
-      border-radius: var(--radius-md);
-    }
-    .burndown-stat.complete { border-left: 3px solid var(--success); }
-    .burndown-stat.in-progress { border-left: 3px solid var(--accent); }
-    .burndown-stat.remaining { border-left: 3px solid var(--text-muted); }
-    .burndown-value {
-      display: block;
-      font-size: var(--text-xl);
-      font-weight: 600;
-    }
-    .burndown-stat.complete .burndown-value { color: var(--success); }
-    .burndown-stat.in-progress .burndown-value { color: var(--accent); }
-    .burndown-label {
-      font-size: var(--text-xs);
-      color: var(--text-muted);
-    }
-    .burndown-bar-container {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-md);
-    }
-    .burndown-bar {
-      flex: 1;
-      height: 20px;
-      background: var(--bg-elevated);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      display: flex;
-    }
-    .burndown-bar-complete {
-      background: var(--success);
-      transition: width 0.5s ease;
-    }
-    .burndown-bar-progress {
-      background: var(--accent);
-      transition: width 0.5s ease;
-    }
-    .burndown-percent {
-      font-weight: 600;
-      color: var(--success);
-      min-width: 72px;
-    }
-
-    /* Stage progress bars */
-    .stage-progress-list {
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-md);
-    }
-    .stage-progress-item {
-      padding: var(--spacing-sm) var(--spacing-md);
-      background: var(--bg-elevated);
-      border-radius: var(--radius-md);
-    }
-    .stage-progress-header {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: var(--spacing-xs);
-    }
-    .stage-progress-name { font-weight: 500; color: var(--text-primary); font-size: var(--text-base); }
-    .stage-progress-count { color: var(--text-muted); font-size: var(--text-sm); }
-    .stage-progress-bar {
-      height: 6px;
-      background: var(--bg-hover);
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-      margin-bottom: var(--spacing-xs);
-    }
-    .stage-progress-fill {
-      height: 100%;
-      background: var(--accent);
-      transition: width 0.5s ease;
-    }
-    .stage-progress-details {
-      display: flex;
-      gap: var(--spacing-md);
-      font-size: var(--text-xs);
-    }
-    .stage-detail { display: flex; align-items: center; gap: 3px; }
-    .stage-detail.complete { color: var(--accent); }
-    .stage-detail.in-progress { color: var(--accent); }
-    .stage-detail.pending { color: var(--warning); }
-
-    /* Team metrics */
-    .team-list {
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-xs);
-    }
-    .team-member {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-sm);
-      padding: var(--spacing-sm);
-      border-radius: var(--radius-md);
-    }
-    .team-member:hover { background: var(--bg-hover); }
-    .team-member-info { flex: 1; min-width: 0; }
-    .team-member-name {
-      display: block;
-      font-weight: 500;
-      font-size: var(--text-base);
-      color: var(--text-primary);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .team-member-activity {
-      font-size: var(--text-xs);
-      color: var(--text-muted);
-    }
-    .team-member-stats {
-      display: flex;
-      gap: var(--spacing-xs);
-    }
-    .team-stat {
-      font-size: var(--text-xs);
-      padding: 1px 6px;
-      border-radius: var(--radius-full);
-      background: var(--bg-elevated);
-    }
-    .team-stat.approval { background: var(--success-subtle); color: var(--success); }
-    .team-stat.submission { background: var(--accent-subtle); color: var(--accent); }
-    .team-stat.draft { background: var(--bg-elevated); color: var(--text-secondary); }
-    .team-member-last-active {
-      font-size: var(--text-xs);
-      color: var(--text-muted);
-      white-space: nowrap;
-    }
-
-    /* Pilot milestone compact */
-    .pilot-header {
+    .chapter-detail-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: var(--spacing-md);
     }
-    .pilot-chapters { font-weight: 500; color: var(--text-primary); }
-    .pilot-status {
-      font-size: var(--text-xs);
-      padding: 2px 8px;
-      border-radius: var(--radius-full);
-      font-weight: 500;
-    }
-    .pilot-progress { margin-bottom: var(--spacing-md); }
-    .pilot-progress-bar {
-      height: 12px;
-      background: var(--bg-elevated);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      margin-bottom: var(--spacing-xs);
-    }
-    .pilot-progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--accent) 0%, var(--success) 100%);
-      transition: width 0.5s ease;
-    }
-    .pilot-progress-text {
-      font-size: var(--text-sm);
-      color: var(--text-muted);
-    }
-    .pilot-details {
-      display: flex;
-      gap: var(--spacing-md);
-    }
-    .pilot-detail {
-      flex: 1;
-      text-align: center;
-      padding: var(--spacing-sm);
-      background: var(--bg-elevated);
-      border-radius: var(--radius-md);
-    }
-    .pilot-detail-value {
-      display: block;
-      font-size: var(--text-xl);
-      font-weight: 600;
-      color: var(--accent);
-    }
-    .pilot-detail-label {
-      font-size: var(--text-xs);
-      color: var(--text-muted);
-    }
+    .chapter-detail-header h3 { margin: 0; }
 
-    /* Refresh bar */
-    .refresh-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: var(--spacing-sm) 0;
-      margin-bottom: var(--spacing-md);
-      font-size: var(--text-xs);
-      color: var(--text-muted);
-    }
-    .refresh-actions {
-      display: flex;
-      gap: var(--spacing-sm);
-      align-items: center;
-    }
-
-    /* =======================================================================
-       MATRIX TAB
-       ======================================================================= */
-
-    .matrix-controls {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: var(--spacing-md);
-      margin-bottom: var(--spacing-md);
-    }
-
-    /* Legend using dot indicators */
-    .matrix-legend {
-      display: flex;
-      gap: var(--spacing-md);
-      flex-wrap: wrap;
-      font-size: var(--text-sm);
-      color: var(--text-secondary);
-    }
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-xs);
-    }
-    .legend-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: var(--radius-full);
-    }
-    .legend-dot.complete { background: var(--accent); }
-    .legend-dot.in-progress {
-      background: transparent;
-      border: 2px solid var(--accent);
-    }
-    .legend-dot.pending {
-      background: var(--warning);
-    }
-    .legend-dot.not-started {
-      background: transparent;
-      border: 2px solid var(--text-muted);
-      opacity: 0.4;
-    }
-    .legend-dot.blocked {
-      background: var(--error);
-    }
-
-    /* Matrix table */
-    .matrix-table {
+    /* Module table */
+    .module-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: var(--text-base);
+      font-size: var(--text-sm);
     }
-    .matrix-table th,
-    .matrix-table td {
-      padding: var(--spacing-sm);
-      text-align: center;
-      border-bottom: 1px solid var(--border);
-    }
-    .matrix-table th {
-      font-size: var(--text-xs);
+    .module-table th {
+      text-align: left;
+      padding: var(--spacing-sm) var(--spacing-md);
+      border-bottom: 2px solid var(--border);
       color: var(--text-muted);
-      font-weight: 500;
+      font-size: var(--text-xs);
       text-transform: uppercase;
       letter-spacing: 0.05em;
-    }
-    .matrix-table td:first-child,
-    .matrix-table th:first-child {
-      text-align: left;
-    }
-
-    /* Matrix cell — contains dot indicators */
-    .matrix-cell { text-align: center; }
-    .matrix-cell .legend-dot { vertical-align: middle; }
-
-    /* Expandable chapter rows */
-    .chapter-row { cursor: pointer; transition: background var(--transition-fast); }
-    .chapter-row:hover { background: var(--bg-hover); }
-    .chapter-row.expanded { background: var(--bg-elevated); }
-    .chapter-cell {
-      display: flex;
-      align-items: flex-start;
-      gap: var(--spacing-sm);
-    }
-    .expand-icon {
-      font-size: var(--text-xs);
-      color: var(--text-muted);
-      flex-shrink: 0;
-      width: 1rem;
-      text-align: center;
-      line-height: 1.5;
-    }
-    .chapter-row:hover .expand-icon { color: var(--text-secondary); }
-    .chapter-title-text {
-      color: var(--text-muted);
-      font-weight: normal;
-    }
-
-    /* Section expansion rows */
-    .sections-row { background: var(--bg-elevated); }
-    .sections-container {
-      padding: var(--spacing-sm) var(--spacing-md) var(--spacing-md) 2.25rem;
-    }
-    .sections-loading {
-      color: var(--text-muted);
-      font-size: var(--text-base);
-      padding: var(--spacing-sm);
-    }
-    .sections-table {
-      width: 100%;
-      max-width: 600px;
-      font-size: var(--text-sm);
-      border-collapse: collapse;
-    }
-    .sections-table th,
-    .sections-table td {
-      padding: var(--spacing-xs) var(--spacing-sm);
-      text-align: center;
-      border-bottom: 1px solid var(--border);
-    }
-    .sections-table th {
-      background: var(--bg-hover);
-      font-weight: 500;
-      font-size: var(--text-xs);
-      color: var(--text-muted);
-    }
-    .section-id-col { text-align: left !important; width: 80px; }
-    .section-stage-col { width: 45px; }
-    .section-id {
-      text-align: left !important;
-      font-weight: 500;
-      color: var(--text-primary);
-    }
-    .section-cell { font-size: var(--text-base); }
-    .section-cell { text-align: center; }
-    .section-cell .legend-dot { vertical-align: middle; }
-    .sections-summary {
-      margin-top: var(--spacing-sm);
-      font-size: var(--text-sm);
-      color: var(--text-muted);
-    }
-    .sections-count { font-weight: 500; }
-    .sections-progress { color: var(--success); }
-
-    /* Sync changes table */
-    .sync-changes-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: var(--text-base);
-      margin-top: var(--spacing-sm);
-    }
-    .sync-changes-table th,
-    .sync-changes-table td {
-      padding: var(--spacing-xs) var(--spacing-sm);
-      border-bottom: 1px solid var(--border);
-      text-align: left;
-    }
-    .sync-changes-table th {
       font-weight: 600;
+    }
+    .module-table td {
+      padding: var(--spacing-sm) var(--spacing-md);
+      border-bottom: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+    .module-table tr:hover td {
       background: var(--bg-elevated);
     }
+    .module-table .num { text-align: right; font-variant-numeric: tabular-nums; }
 
-    /* =======================================================================
-       TIMELINE TAB
-       ======================================================================= */
+    /* Status badges */
+    .status-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .status-complete { background: var(--success); color: #fff; }
+    .status-in-progress { background: var(--info); color: #fff; }
+    .status-not-started { background: var(--bg-elevated); color: var(--text-muted); }
+    .status-review { background: var(--warning); color: #fff; }
 
-    .timeline-controls {
+    /* Module progress bar (inline) */
+    .module-progress {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: var(--spacing-md);
-      margin-bottom: var(--spacing-lg);
-    }
-    .filters {
-      display: flex;
       gap: var(--spacing-sm);
-      flex-wrap: wrap;
+    }
+    .module-bar {
+      flex: 1;
+      height: 6px;
+      background: var(--bg-elevated);
+      border-radius: 3px;
+      overflow: hidden;
+      min-width: 60px;
+    }
+    .module-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+    }
+    .module-bar-pct {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      min-width: 32px;
+      text-align: right;
     }
 
-    .timeline {
+    /* Pipeline metadata badges */
+    .pipeline-badges {
       display: flex;
-      flex-direction: column;
-      gap: 0;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+    .pipe-badge {
+      font-size: 10px;
+      padding: 1px 5px;
+      border-radius: 3px;
+      background: var(--bg-elevated);
+      color: var(--text-muted);
+    }
+    .pipe-badge.done {
+      background: color-mix(in srgb, var(--success) 20%, transparent);
+      color: var(--success);
+    }
+
+    /* Activity timeline */
+    .timeline-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
     .timeline-item {
       display: flex;
       gap: var(--spacing-md);
-      padding: var(--spacing-md) 0;
+      padding: var(--spacing-sm) 0;
       border-bottom: 1px solid var(--border);
-    }
-    .timeline-item:last-child { border-bottom: none; }
-    .timeline-icon {
-      font-size: var(--text-lg);
-      width: 2rem;
-      text-align: center;
-      flex-shrink: 0;
-    }
-    .timeline-content { flex: 1; min-width: 0; }
-    .timeline-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: var(--spacing-xs);
-    }
-    .timeline-user {
-      font-weight: 500;
-      color: var(--text-primary);
+      font-size: var(--text-sm);
     }
     .timeline-time {
-      font-size: var(--text-xs);
+      min-width: 100px;
       color: var(--text-muted);
-    }
-    .timeline-description {
-      color: var(--text-secondary);
-      font-size: var(--text-base);
-    }
-    .timeline-location {
       font-size: var(--text-xs);
-      color: var(--text-muted);
-      margin-top: var(--spacing-xs);
     }
-    .timeline-color-success .timeline-icon { color: var(--success); }
-    .timeline-color-warning .timeline-icon { color: var(--warning); }
-    .timeline-color-info .timeline-icon { color: var(--info); }
+    .timeline-msg { color: var(--text-secondary); }
 
-    .pagination {
-      margin-top: var(--spacing-md);
-      text-align: center;
+    /* Tabs */
+    .tabs { display: flex; gap: 0; margin-bottom: var(--spacing-xl); border-bottom: 2px solid var(--border); }
+    .tab-btn {
+      padding: var(--spacing-sm) var(--spacing-lg);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      transition: color 0.15s, border-color 0.15s;
     }
-    .empty-state {
+    .tab-btn:hover { color: var(--text-primary); }
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* Book selector row */
+    .controls-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--spacing-lg);
+    }
+    .controls-row select {
+      padding: var(--spacing-xs) var(--spacing-sm);
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-size: var(--text-sm);
+    }
+
+    /* Loading state */
+    .loading-spinner {
       text-align: center;
       padding: var(--spacing-2xl);
       color: var(--text-muted);
     }
 
-    /* =======================================================================
-       MODALS
-       ======================================================================= */
-
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.6);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-    .modal-content {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
-      width: 90%;
-      max-width: 420px;
-    }
-    .modal-large { max-width: 700px; max-height: 90vh; }
-    .modal-large .modal-body { max-height: 60vh; overflow-y: auto; }
-    .modal-header {
-      padding: var(--spacing-md) var(--spacing-lg);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .modal-header h3 {
-      font-family: var(--font-heading);
-      font-size: var(--text-md);
-      color: var(--text-primary);
-    }
-    .modal-body { padding: var(--spacing-lg); }
-    .modal-footer {
-      padding: var(--spacing-md) var(--spacing-lg);
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: flex-end;
-      gap: var(--spacing-sm);
-    }
-
-    /* Meeting agenda */
-    .agenda-header {
-      margin-bottom: var(--spacing-lg);
-      padding-bottom: var(--spacing-md);
-      border-bottom: 2px solid var(--border);
-    }
-    .agenda-header h2 {
-      font-family: var(--font-heading);
-      font-size: var(--text-xl);
-      margin-bottom: var(--spacing-xs);
-      color: var(--text-primary);
-    }
-    .agenda-summary { font-size: var(--text-base); color: var(--text-secondary); }
-    .priority-high { color: var(--error); font-weight: 500; }
-    .priority-medium { color: var(--warning); font-weight: 500; }
-    .agenda-section {
-      margin-bottom: var(--spacing-lg);
-      padding: var(--spacing-md);
-      border-radius: var(--radius-lg);
-      background: var(--bg-elevated);
-    }
-    .agenda-section.priority-high { border-left: 3px solid var(--error); }
-    .agenda-section.priority-medium { border-left: 3px solid var(--warning); }
-    .agenda-section.priority-info { border-left: 3px solid var(--info); }
-    .agenda-section h3 {
-      font-size: var(--text-md);
-      margin-bottom: var(--spacing-sm);
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-sm);
-      color: var(--text-primary);
-    }
-    .section-count { font-weight: normal; color: var(--text-muted); font-size: var(--text-sm); }
-    .agenda-items { list-style: none; padding: 0; margin: 0; }
-    .agenda-item {
-      padding: var(--spacing-sm) 0;
-      border-bottom: 1px solid var(--border);
-      font-size: var(--text-base);
-      color: var(--text-secondary);
-    }
-    .agenda-item:last-child { border-bottom: none; }
-    .item-term { font-weight: 500; color: var(--text-primary); }
-    .item-section {
-      font-family: var(--font-mono);
-      background: var(--bg-hover);
-      padding: 1px 6px;
-      border-radius: var(--radius-sm);
-      font-size: var(--text-sm);
-    }
-    .item-pending { color: var(--warning); font-size: var(--text-xs); }
-    .item-by { color: var(--text-muted); font-size: var(--text-xs); }
-    .item-context {
-      font-size: var(--text-xs);
-      color: var(--text-muted);
-      margin-top: var(--spacing-xs);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .item-user { font-weight: 500; color: var(--text-primary); }
-    .item-decision { font-style: italic; color: var(--text-secondary); }
-
-    /* Accordion */
-    .accordion .accordion-header {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: var(--text-sm);
-      color: var(--accent);
-      padding: var(--spacing-sm) 0;
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-xs);
-      font-family: var(--font-body);
-    }
-    .accordion .accordion-header:hover { text-decoration: underline; }
-    .accordion-header-left {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-xs);
-    }
-    .accordion-toggle {
-      font-size: var(--text-xs);
-      transition: transform var(--transition-fast);
-    }
-    .accordion.collapsed .accordion-body { display: none; }
-    .accordion.collapsed .accordion-toggle { transform: rotate(-90deg); }
-
-    /* Form fields used in modals */
-    .form-group { margin-bottom: var(--spacing-md); }
-    .form-label {
-      display: block;
-      font-size: var(--text-sm);
-      font-weight: 500;
-      margin-bottom: var(--spacing-xs);
-      color: var(--text-primary);
-    }
-    .form-select,
-    .form-input,
-    .form-textarea {
-      width: 100%;
-      padding: var(--spacing-sm);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      font-size: var(--text-base);
-      font-family: var(--font-body);
-      background: var(--bg-elevated);
-      color: var(--text-primary);
-    }
-    .form-select-sm {
-      padding: var(--spacing-xs) var(--spacing-sm);
-      font-size: var(--text-sm);
-      width: auto;
-    }
-
-    /* Loading spinner */
-    .spinner {
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      border: 2px solid var(--border);
-      border-top-color: var(--accent);
-      border-radius: var(--radius-full);
-      animation: spin 0.6s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .loading-state {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--spacing-sm);
-      padding: var(--spacing-xl);
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: var(--spacing-2xl);
       color: var(--text-muted);
       font-size: var(--text-sm);
-    }
-
-    /* Button refresh loading */
-    .btn-loading { opacity: 0.6; pointer-events: none; }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .summary-stats { grid-template-columns: repeat(2, 1fr); }
-      .attention-stats-row { flex-direction: column; }
-      .velocity-metrics { flex-direction: column; }
-      .burndown-stats { flex-direction: column; }
-      .pilot-details { flex-direction: column; }
-      .timeline-controls { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
-  <main class="page-content" id="main-content" data-page="progress" data-title="Framvinda">
+  <main class="page-content" data-page-title="Framvinda">
 
-    <!-- Tab navigation -->
+    <!-- Book selector -->
+    <div class="controls-row">
+      <select id="book-select" class="book-select" onchange="loadProgress()"></select>
+      <button class="btn btn-sm btn-secondary" onclick="loadProgress()" title="Endurhla&eth;a">&#8635;</button>
+    </div>
+
+    <!-- Tabs -->
     <div class="tabs" role="tablist">
-      <button class="tab active" role="tab" aria-selected="true" onclick="showTab('overview')">Yfirlit</button>
-      <button class="tab" role="tab" aria-selected="false" onclick="showTab('matrix')">Framvinduyfirlit</button>
-      <button class="tab" role="tab" aria-selected="false" onclick="showTab('timeline')">Tímalína</button>
+      <button class="tab-btn active" onclick="switchTab('overview')" role="tab">Yfirlit</button>
+      <button class="tab-btn" onclick="switchTab('detail')" role="tab">Kaflayfirlit</button>
+      <button class="tab-btn" onclick="switchTab('timeline')" role="tab">T&iacute;mal&iacute;na</button>
     </div>
 
-    <!-- ================================================================
-         OVERVIEW TAB
-         ================================================================ -->
+    <!-- Tab 1: Editorial Overview -->
     <div id="tab-overview" class="tab-content active">
+      <div class="loading-spinner" id="overview-loading">Hle&eth;ur...</div>
 
-      <!-- Summary stats -->
-      <div class="summary-stats" id="summary-stats">
-        <div class="stat-card">
-          <div class="stat-card-value" id="stat-total-progress">--</div>
-          <div class="stat-card-label">Heildarframvinda</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card-value" id="stat-sections-done">--</div>
-          <div class="stat-card-label">Einingar í vinnslu</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card-value" id="stat-velocity">--</div>
-          <div class="stat-card-label">Á viku</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-card-value" id="stat-published">--</div>
-          <div class="stat-card-label">Útgefnir</div>
-        </div>
-      </div>
-
-      <!-- Attention panel -->
-      <div class="attention-panel" id="attention-panel">
-        <div class="attention-panel-header">
-          <span class="attention-badge-icon">!</span>
-          Þarfnast athygli
-        </div>
-        <div class="attention-stats-row" id="attention-stats">
-          <div class="attention-stat-box">
-            <span class="attention-stat-count" id="pending-reviews-count">-</span>
-            <span class="attention-stat-label">Yfirferðir í bið</span>
+      <div id="overview-content" style="display:none">
+        <!-- Summary cards -->
+        <div class="summary-stats">
+          <div class="stat-card">
+            <div class="stat-card-value" id="stat-modules-complete">-</div>
+            <div class="stat-card-label">Einingar kl&aacute;rar</div>
           </div>
-          <div class="attention-stat-box">
-            <span class="attention-stat-count blocked" id="blocked-issues-count">-</span>
-            <span class="attention-stat-label">Lokuð vandamál</span>
+          <div class="stat-card">
+            <div class="stat-card-value" id="stat-segments-approved">-</div>
+            <div class="stat-card-label">Hlutir sam&thorn;ykktir</div>
           </div>
-          <div class="attention-stat-box">
-            <span class="attention-stat-count warning" id="unassigned-count">-</span>
-            <span class="attention-stat-label">Án úthlutunar</span>
+          <div class="stat-card">
+            <div class="stat-card-value" id="stat-segments-edited">-</div>
+            <div class="stat-card-label">Hlutir yfirfarnir</div>
           </div>
-        </div>
-        <div class="attention-list" id="attention-list">
-          <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
-        </div>
-      </div>
-
-      <!-- Two-column: Milestone + Activity -->
-      <div class="overview-grid">
-        <!-- Left: Milestone & Chapter pipeline dots -->
-        <div class="panel">
-          <div class="panel-header">
-            <span class="panel-title">Framvinda</span>
-          </div>
-          <div class="velocity-stat" id="velocity-stat">
-            <span>Hleður...</span>
-          </div>
-
-          <!-- Chapter list with 8-stage dots -->
-          <div style="margin-top: var(--spacing-lg);">
-            <div class="panel-header">
-              <span class="panel-title" style="font-size:var(--text-base)">Kaflayfirlit</span>
-              <a href="#" onclick="showTab('matrix'); return false;" class="btn btn-secondary btn-sm">Sjá allt</a>
-            </div>
-            <div class="matrix-legend" style="margin-bottom:var(--spacing-sm)">
-              <span class="legend-item"><span class="legend-dot complete"></span> Loki&#240;</span>
-              <span class="legend-item"><span class="legend-dot in-progress"></span> &#205; vinnslu</span>
-              <span class="legend-item"><span class="legend-dot not-started"></span> Ekki byrja&#240;</span>
-            </div>
-            <div id="chapter-pipeline-list">
-              <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
-            </div>
+          <div class="stat-card">
+            <div class="stat-card-value" id="stat-percent">-</div>
+            <div class="stat-card-label">Heildarframvinda</div>
           </div>
         </div>
 
-        <!-- Right: Activity feed -->
-        <div class="panel">
-          <div class="panel-header">
-            <span class="panel-title">Nýleg virkni</span>
-          </div>
-          <div class="activity-feed" id="activity-feed">
-            <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
-          </div>
-          <div class="activity-footer">
-            <a href="#" onclick="showTab('timeline'); return false;" class="btn btn-secondary btn-sm">
-              Sjá alla virkni
-            </a>
-          </div>
+        <!-- Attention panel -->
+        <div class="attention-panel" id="attention-panel" style="display:none">
+          <h3>
+            <span class="attention-badge" id="attention-count">0</span>
+            Athygli &thorn;arf
+          </h3>
+          <ul class="attention-list" id="attention-list"></ul>
         </div>
-      </div>
 
-      <!-- Disputed Terms -->
-      <div class="disputed-panel">
-        <div class="panel-header">
-          <span class="panel-title">Hugtök í umræðu</span>
-          <a href="/terminology" class="btn btn-secondary btn-sm">Orðasafn</a>
-        </div>
-        <div id="disputed-terms-content">
-          <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
-        </div>
-      </div>
-
-      <!-- Refresh bar -->
-      <div class="refresh-bar">
-        <span id="last-refreshed-text">Síðast uppfært: -</span>
-        <div class="refresh-actions">
-          <button class="btn btn-sm btn-primary" onclick="showMeetingAgenda()">Fundaráætlun</button>
-          <button class="btn btn-sm btn-secondary" onclick="refreshDashboard()" id="refresh-btn">Endurnýja</button>
-        </div>
-      </div>
-
-      <!-- Analytics section (merged from Analytics tab) -->
-      <div class="analytics-section" id="analytics-section">
-        <h3 class="section-heading">Greining og spá</h3>
-        <div class="analytics-grid">
-          <!-- Velocity -->
-          <div class="panel">
-            <div class="panel-title" style="margin-bottom:var(--spacing-md)">Hraði</div>
-            <div class="velocity-metrics" id="velocity-metrics">
-              <div class="velocity-item">
-                <span class="velocity-value" id="velocity-7d">-</span>
-                <span class="velocity-label">síðustu 7 daga</span>
-              </div>
-              <div class="velocity-item">
-                <span class="velocity-value" id="velocity-14d">-</span>
-                <span class="velocity-label">síðustu 14 daga</span>
-              </div>
-              <div class="velocity-item">
-                <span class="velocity-value" id="velocity-30d">-</span>
-                <span class="velocity-label">síðustu 30 daga</span>
-              </div>
-            </div>
-            <div id="velocity-chart">
-              <p class="text-muted text-center" style="padding:var(--spacing-md)">Hledur grafi...</p>
-            </div>
-          </div>
-
-          <!-- Projections -->
-          <div class="panel">
-            <div class="panel-title" style="margin-bottom:var(--spacing-md)">Spá</div>
-            <div id="projection-content">
-              <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
-            </div>
-          </div>
-
-          <!-- Burndown (full width) -->
-          <div class="panel analytics-card-full">
-            <div class="panel-title" style="margin-bottom:var(--spacing-md)">Verkefnastaða</div>
-            <div class="burndown-stats" id="burndown-stats">
-              <div class="burndown-stat">
-                <span class="burndown-value" id="burndown-total">-</span>
-                <span class="burndown-label">Heildar hlutar</span>
-              </div>
-              <div class="burndown-stat complete">
-                <span class="burndown-value" id="burndown-complete">-</span>
-                <span class="burndown-label">Klárir</span>
-              </div>
-              <div class="burndown-stat in-progress">
-                <span class="burndown-value" id="burndown-progress">-</span>
-                <span class="burndown-label">Í vinnslu</span>
-              </div>
-              <div class="burndown-stat remaining">
-                <span class="burndown-value" id="burndown-remaining">-</span>
-                <span class="burndown-label">Eftir</span>
-              </div>
-            </div>
-            <div class="burndown-bar-container">
-              <div class="burndown-bar">
-                <div class="burndown-bar-complete" id="burndown-bar-complete"></div>
-                <div class="burndown-bar-progress" id="burndown-bar-progress"></div>
-              </div>
-              <div class="burndown-percent" id="burndown-percent">0%</div>
-            </div>
-          </div>
-
-          <!-- Stage Progress (full width) -->
-          <div class="panel analytics-card-full">
-            <div class="panel-title" style="margin-bottom:var(--spacing-md)">Framvinda eftir stigum</div>
-            <div id="stage-metrics">
-              <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
-            </div>
-          </div>
-
-          <!-- Pilot Milestone -->
-          <div class="panel">
-            <div class="panel-title" style="margin-bottom:var(--spacing-md)">Tilraunakennsla</div>
-            <div id="pilot-content">
-              <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
-            </div>
-          </div>
-
-          <!-- Team Metrics -->
-          <div class="panel">
-            <div class="panel-title" style="margin-bottom:var(--spacing-md)">Virkni teymis</div>
-            <div id="team-metrics">
-              <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
-            </div>
-          </div>
-        </div>
+        <!-- Per-chapter progress -->
+        <h3 style="margin-bottom:var(--spacing-md); font-size:var(--text-base); color:var(--text-primary)">Kaflaframvinda</h3>
+        <div class="chapter-list" id="chapter-list"></div>
       </div>
     </div>
 
-    <!-- ================================================================
-         MATRIX TAB
-         ================================================================ -->
-    <div id="tab-matrix" class="tab-content">
-      <div class="panel" style="margin-bottom:var(--spacing-lg)">
-        <div class="matrix-controls">
-          <div style="display:flex;align-items:center;gap:var(--spacing-md)">
-            <span class="panel-title">Framvinda kafla</span>
-            <select class="form-select form-select-sm book-select" id="book-select" onchange="loadFullMatrix()">
-            </select>
+    <!-- Tab 2: Chapter Detail -->
+    <div id="tab-detail" class="tab-content">
+      <div class="empty-state" id="detail-empty">Veldu kafla &uacute;r yfirliti til a&eth; sj&aacute; sundurli&eth;un</div>
+      <div id="detail-content" style="display:none">
+        <div class="chapter-detail-header">
+          <h3 id="detail-title">Kafli</h3>
+          <a href="#" class="btn btn-sm btn-secondary" id="detail-editor-link">Opna ritstj&oacute;ra</a>
+        </div>
+
+        <!-- Module summary -->
+        <div class="summary-stats" style="margin-bottom:var(--spacing-lg)">
+          <div class="stat-card">
+            <div class="stat-card-value" id="detail-modules">-</div>
+            <div class="stat-card-label">Einingar</div>
           </div>
-          <div style="display:flex;align-items:center;gap:var(--spacing-md)">
-            <button class="btn btn-sm btn-secondary admin-only" onclick="startStatusSync()" title="Samstilla stöðu við skráarkerfi">
-              Samstilla stöðu
-            </button>
+          <div class="stat-card">
+            <div class="stat-card-value" id="detail-segments">-</div>
+            <div class="stat-card-label">Hlutir</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-value" id="detail-approved">-</div>
+            <div class="stat-card-label">Sam&thorn;ykktir</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-value" id="detail-pct">-</div>
+            <div class="stat-card-label">Framvinda</div>
           </div>
         </div>
-        <div class="matrix-legend">
-          <span class="legend-item"><span class="legend-dot complete"></span> Loki&#240;</span>
-          <span class="legend-item"><span class="legend-dot in-progress"></span> &#205; vinnslu</span>
-          <span class="legend-item"><span class="legend-dot pending"></span> &#205; bi&#240;</span>
-          <span class="legend-item"><span class="legend-dot not-started"></span> Ekki byrja&#240;</span>
-          <span class="legend-item"><span class="legend-dot blocked"></span> Lokað</span>
-        </div>
-      </div>
-      <div class="panel">
-        <div id="full-matrix">
-          <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
-        </div>
+
+        <!-- Pipeline stage badges -->
+        <div id="detail-pipeline" style="margin-bottom:var(--spacing-lg)"></div>
+
+        <!-- Module table -->
+        <table class="module-table">
+          <thead>
+            <tr>
+              <th>Eining</th>
+              <th>Framvinda</th>
+              <th class="num">Hlutir</th>
+              <th class="num">Yfirfarnir</th>
+              <th class="num">Sam&thorn;.</th>
+              <th>Sta&eth;a</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="detail-modules-body"></tbody>
+        </table>
       </div>
     </div>
 
-    <!-- ================================================================
-         TIMELINE TAB
-         ================================================================ -->
+    <!-- Tab 3: Activity Timeline -->
     <div id="tab-timeline" class="tab-content">
-      <div class="panel">
-        <div class="timeline-controls">
-          <span class="panel-title">Tímalína virkni</span>
-          <div class="filters">
-            <select class="form-select form-select-sm book-select" id="timeline-book-filter" data-allow-all="true" onchange="loadTimeline()">
-            </select>
-            <select class="form-select form-select-sm" id="timeline-type-filter" onchange="loadTimeline()">
-              <option value="">Allar aðgerðir</option>
-            </select>
-          </div>
-        </div>
-
-        <div id="timeline-content">
-          <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
-        </div>
-
-        <div id="timeline-pagination" class="pagination" style="display: none;">
-          <button class="btn btn-secondary btn-sm" id="load-more-btn" onclick="loadMoreTimeline()">
-            Hlaða fleiri...
-          </button>
-        </div>
+      <div class="loading-spinner" id="timeline-loading" style="display:none">Hle&eth;ur...</div>
+      <ul class="timeline-list" id="timeline-list"></ul>
+      <div style="text-align:center; margin-top:var(--spacing-lg)">
+        <button class="btn btn-sm btn-secondary" id="timeline-more" onclick="loadMoreTimeline()" style="display:none">Hla&eth;a fleiri</button>
       </div>
     </div>
 
   </main>
 
-  <!-- Meeting Agenda Modal -->
-  <div class="modal" role="dialog" aria-modal="true" id="meeting-agenda-modal">
-    <div class="modal-content modal-large">
-      <div class="modal-header">
-        <h3>Fundaráætlun</h3>
-        <button class="btn btn-sm btn-secondary" onclick="closeMeetingAgenda()" aria-label="Loka">&times;</button>
-      </div>
-      <div class="modal-body" id="meeting-agenda-content">
-        <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary btn-sm" onclick="copyAgendaToClipboard()">Afrita</button>
-        <button class="btn btn-secondary btn-sm" onclick="closeMeetingAgenda()">Loka</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Assignment Modal -->
-  <div class="modal" role="dialog" aria-modal="true" id="assignment-modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 id="assignment-modal-title">Úthluta verkefni</h3>
-        <button class="btn btn-sm btn-secondary" onclick="closeAssignmentModal()" aria-label="Loka">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label class="form-label">Kafli</label>
-          <input type="text" id="assign-chapter-display" class="form-input" disabled>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Stig</label>
-          <select class="form-select" id="assign-stage">
-            <option value="linguisticReview">Yfirferð (tungumál)</option>
-            <option value="tmCreated">TM uppfærsla</option>
-            <option value="injection">Inndráttur</option>
-            <option value="rendering">Myndbreyting</option>
-            <option value="publication">Útgáfa</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Úthluta til</label>
-          <select class="form-select" id="assign-to">
-            <option value="">Hleður notendum...</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Skiladagur (valfrjálst)</label>
-          <input type="date" id="assign-due-date" class="form-input">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Athugasemdir (valfrjálst)</label>
-          <textarea id="assign-notes" class="form-textarea" rows="2"></textarea>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" onclick="closeAssignmentModal()">Hætta við</button>
-        <button class="btn btn-primary" onclick="submitAssignment()">Úthluta</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Status Sync Modal -->
-  <div class="modal" role="dialog" aria-modal="true" id="sync-status-modal">
-    <div class="modal-content modal-large">
-      <div class="modal-header">
-        <h3>Samstilla stöðu við skráarkerfi</h3>
-        <button class="btn btn-sm btn-secondary" onclick="closeSyncModal()" aria-label="Loka">&times;</button>
-      </div>
-      <div class="modal-body" id="sync-modal-content">
-        <div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>
-      </div>
-      <div class="modal-footer" id="sync-modal-footer" style="display: none;">
-        <button class="btn btn-secondary" onclick="closeSyncModal()">Hætta við</button>
-        <button class="btn btn-primary" id="sync-confirm-btn" onclick="confirmStatusSync()">Staðfesta samstillingu</button>
-      </div>
-    </div>
-  </div>
-
+  <script src="/js/htmlUtils.js"></script>
   <script src="/js/layout.js"></script>
   <script src="/js/bookSelector.js"></script>
-  <script src="/js/theme.js"></script>
-  <script src="/js/htmlUtils.js"></script>
   <script>
-    // ============================================================================
-    // CONFIGURATION
-    // ============================================================================
+  (function() {
+    'use strict';
 
-    const API_BASE = '/api/status';
+    var progressData = null;
+    var selectedChapter = null;
+    var timelineOffset = 0;
 
-    /** Get the currently selected book from the book-select dropdown. */
-    function getSelectedBook() {
-      return document.getElementById('book-select')?.value || '';
-    }
+    // ========================================================================
+    // TAB SWITCHING
+    // ========================================================================
 
-    // 8-stage pipeline configuration
-    const PIPELINE_STAGES = [
-      { key: 'extraction',       label: 'Útt.',   fullLabel: 'Útdráttur' },
-      { key: 'mtReady',          label: 'VÞ-t.',  fullLabel: 'VÞ tilbúið' },
-      { key: 'mtOutput',         label: 'VÞ',     fullLabel: 'Vélþýðing' },
-      { key: 'linguisticReview', label: 'Yfirl.', fullLabel: 'Málfræðileg yfirferð' },
-      { key: 'tmCreated',        label: 'TM',     fullLabel: 'Þýðingaminni búið til' },
-      { key: 'injection',        label: 'Innd.',  fullLabel: 'Inndráttur' },
-      { key: 'rendering',        label: 'Mynb.',  fullLabel: 'Myndbreyting' },
-      { key: 'publication',      label: 'Útg.',   fullLabel: 'Útgáfa' }
-    ];
-
-    // Simplified 5-stage display for matrix (matching API response)
-    const DISPLAY_STAGES = ['extraction', 'mtOutput', 'linguisticReview', 'tmCreated', 'publication'];
-
-    const STAGE_LABELS = {
-      'extraction': 'Utt.',
-      'mtReady': 'VÞ-t.',
-      'mtOutput': 'VÞ',
-      'linguisticReview': 'Yfirl.',
-      'tmCreated': 'TM',
-      'injection': 'Innd.',
-      'rendering': 'Mynb.',
-      'publication': 'Útg.'
-    };
-
-    const STAGE_FULL_LABELS = {
-      'extraction': 'Útdráttur',
-      'mtReady': 'VÞ tilbúið',
-      'mtOutput': 'Vélþýðing',
-      'linguisticReview': 'Málfræðileg yfirferð',
-      'tmCreated': 'Þýðingaminni búið til',
-      'injection': 'Inndráttur',
-      'rendering': 'Myndbreyting',
-      'publication': 'Útgáfa'
-    };
-
-    const STATUS_LABELS = {
-      'complete': 'Lokið',
-      'in-progress': 'Í vinnslu',
-      'pending': 'Í bið',
-      'not-started': 'Ekki byrjað',
-      'blocked': 'Lokað'
-    };
-
-    // ============================================================================
-    // STATE
-    // ============================================================================
-
-    let currentTab = 'overview';
-    let timelineOffset = 0;
-    let timelineTotal = 0;
-    let dashboardData = null;
-    let analyticsData = null;
-    let selectedAssignment = null;
-    let expandedChapters = {};
-    let currentAgenda = null;
-
-    // ============================================================================
-    // TAB NAVIGATION
-    // ============================================================================
-
-    function showTab(tabId) {
-      currentTab = tabId;
-
-      // Update tab buttons
-      document.querySelectorAll('.tabs .tab').forEach(tab => {
-        const isActive = tab.getAttribute('onclick').includes("'" + tabId + "'");
-        tab.classList.toggle('active', isActive);
-        tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    window.switchTab = function(tab) {
+      document.querySelectorAll('.tab-btn').forEach(function(btn, i) {
+        btn.classList.toggle('active', ['overview','detail','timeline'][i] === tab);
       });
-
-      // Show/hide tab content
-      document.querySelectorAll('.tab-content').forEach(content => {
-        content.classList.remove('active');
+      document.querySelectorAll('.tab-content').forEach(function(el) {
+        el.classList.toggle('active', el.id === 'tab-' + tab);
       });
-      const activeContent = document.getElementById('tab-' + tabId);
-      if (activeContent) activeContent.classList.add('active');
-
-      // Lazy-load tab data
-      if (tabId === 'timeline') {
-        if (!document.getElementById('timeline-type-filter').options.length > 1) {
-          loadActivityTypes();
-        }
+      if (tab === 'timeline' && document.getElementById('timeline-list').children.length === 0) {
         loadTimeline();
       }
-      if (tabId === 'matrix') {
-        loadFullMatrix();
-      }
+    };
 
-      // Update URL hash
-      window.location.hash = tabId === 'overview' ? '' : tabId;
-    }
+    // ========================================================================
+    // LOAD EDITORIAL PROGRESS
+    // ========================================================================
 
-    // ============================================================================
-    // OVERVIEW — DASHBOARD DATA
-    // ============================================================================
+    window.loadProgress = async function() {
+      var book = document.getElementById('book-select').value;
+      if (!book) return;
 
-    async function loadDashboard() {
+      document.getElementById('overview-loading').style.display = '';
+      document.getElementById('overview-content').style.display = 'none';
+
       try {
-        const [dashResult, analyticsResult, bookStatus] = await Promise.all([
-          fetchJson(API_BASE + '/dashboard'),
-          fetchJson(API_BASE + '/analytics'),
-          fetchJson(API_BASE + '/' + getSelectedBook())
-        ]);
-        dashboardData = dashResult;
-        analyticsData = analyticsResult;
-        const chapters = bookStatus.chapters || [];
+        progressData = await fetchJson('/api/status/' + book + '/editorial-progress');
+        renderOverview(progressData);
+        document.getElementById('overview-loading').style.display = 'none';
+        document.getElementById('overview-content').style.display = '';
 
-        // Attention stats
-        document.getElementById('pending-reviews-count').textContent = dashboardData.needsAttention.pendingReviews;
-        document.getElementById('blocked-issues-count').textContent = dashboardData.needsAttention.blockedIssues;
-        document.getElementById('unassigned-count').textContent = dashboardData.needsAttention.unassignedWork;
-        renderAttentionItems(dashboardData.needsAttention.items);
-
-        // Velocity stat
-        if (dashboardData.metrics.velocity) {
-          document.getElementById('velocity-stat').innerHTML =
-            '<span>' + escapeHtml(dashboardData.metrics.velocity.description) + '</span>';
+        // If we had a chapter selected, refresh it
+        if (selectedChapter !== null) {
+          showChapterDetail(selectedChapter);
         }
-
-        // Activity feed
-        renderActivityFeed(dashboardData.teamActivity.slice(0, 8));
-
-        // Chapter list with pipeline dots
-        renderChapterPipelineList(dashboardData.chapterMatrix, chapters);
-
-        // Summary stats (from analytics + chapters)
-        updateSummaryStats(analyticsData, chapters);
-
-        // Update last refreshed
-        updateLastRefreshed();
-
-        // Analytics panels
-        renderVelocityMetrics();
-        renderProjections();
-        renderBurndown();
-        renderStageMetrics();
-        renderPilotMilestone();
-        renderTeamMetrics();
-        renderVelocityChart();
-
       } catch (err) {
-        console.error('Failed to load dashboard:', err);
-        // Replace spinners with error state so users aren't stuck
-        document.querySelectorAll('.loading-state').forEach(function(el) {
-          el.innerHTML = '<span style="color:var(--text-muted)">Gat ekki hlaðið gögnum</span>';
+        document.getElementById('overview-loading').textContent = 'Villa vi\u00f0 a\u00f0 hla\u00f0a g\u00f6gnum';
+      }
+    };
+
+    // ========================================================================
+    // RENDER OVERVIEW
+    // ========================================================================
+
+    function renderOverview(data) {
+      var s = data.summary;
+
+      // Summary cards
+      document.getElementById('stat-modules-complete').textContent =
+        s.modulesComplete + ' / ' + s.totalModules;
+      document.getElementById('stat-segments-approved').textContent =
+        formatNum(s.segmentsApproved);
+      document.getElementById('stat-segments-edited').textContent =
+        formatNum(s.segmentsEdited);
+      document.getElementById('stat-percent').textContent =
+        s.percentComplete + '%';
+
+      // Attention panel
+      var attentionItems = [];
+      if (data.attention.pendingReviews > 0) {
+        attentionItems.push(data.attention.pendingReviews + ' einingar b\u00ed\u00f0a yfirfer\u00f0ar');
+      }
+      if (data.attention.discussEdits > 0) {
+        attentionItems.push(data.attention.discussEdits + ' breytingar \u00ed umr\u00e6\u00f0u');
+      }
+      // Per-chapter attention
+      data.chapters.forEach(function(ch) {
+        ch.needsAttention.forEach(function(msg) {
+          attentionItems.push('K' + (ch.chapter === -1 ? 'Vi\u00f0auki' : ch.chapter) + ': ' + msg);
         });
-      }
-    }
+      });
 
-    function updateLastRefreshed() {
-      const now = new Date();
-      const timeStr = now.toLocaleTimeString('is-IS', { hour: '2-digit', minute: '2-digit' });
-      document.getElementById('last-refreshed-text').textContent = 'Síðast uppfært: ' + timeStr;
-    }
-
-    async function refreshDashboard() {
-      const btn = document.getElementById('refresh-btn');
-      btn.classList.add('btn-loading');
-      btn.textContent = 'Hleður...';
-      try {
-        await loadDashboard();
-      } finally {
-        btn.classList.remove('btn-loading');
-        btn.textContent = 'Endurnýja';
-      }
-    }
-
-    function updateSummaryStats(analytics, chapters) {
-      // Total progress percentage
-      const progressEl = document.getElementById('stat-total-progress');
-      if (analytics?.stageMetrics && analytics.stageMetrics.length > 0) {
-        const totalPercent = analytics.stageMetrics.reduce((sum, s) => sum + s.percentComplete, 0);
-        progressEl.textContent = Math.round(totalPercent / analytics.stageMetrics.length) + '%';
-      } else {
-        const totalStages = chapters.length * DISPLAY_STAGES.length;
-        const completedStages = chapters.reduce((sum, ch) => {
-          return sum + (ch.stages?.filter(s => s.status === 'complete').length || 0);
-        }, 0);
-        progressEl.textContent = totalStages > 0 ? Math.round((completedStages / totalStages) * 100) + '%' : '0%';
-      }
-
-      // Modules with edits (from segment edit stats)
-      const sectionsEl = document.getElementById('stat-sections-done');
-      if (dashboardData?.segmentEditStats?.modules_with_edits > 0) {
-        sectionsEl.textContent = dashboardData.segmentEditStats.modules_with_edits;
-      } else {
-        const pass1Done = chapters.filter(ch => {
-          if (Array.isArray(ch.stages)) {
-            return ch.stages.find(s => (s.stage || s.key) === 'linguisticReview')?.status === 'complete';
-          }
-          return false;
-        }).length;
-        sectionsEl.textContent = pass1Done;
-      }
-
-      // Velocity
-      const velocityEl = document.getElementById('stat-velocity');
-      if (analytics?.velocity?.weekly) {
-        velocityEl.textContent = analytics.velocity.weekly.toFixed(1);
-      } else if (analytics?.velocity?.last7days) {
-        velocityEl.textContent = analytics.velocity.last7days.total || '--';
-      } else {
-        velocityEl.textContent = '--';
-      }
-
-      // Published count
-      const publishedEl = document.getElementById('stat-published');
-      const pubDone = chapters.filter(ch => {
-        if (Array.isArray(ch.stages)) {
-          return ch.stages.find(s => (s.stage || s.key) === 'publication')?.status === 'complete';
-        }
-        return false;
-      }).length;
-      publishedEl.textContent = pubDone;
-    }
-
-    // ============================================================================
-    // ATTENTION ITEMS
-    // ============================================================================
-
-    function renderAttentionItems(items) {
-      const container = document.getElementById('attention-list');
-      const INITIAL_SHOW = 5;
-
-      if (!items || items.length === 0) {
-        container.innerHTML = '<p class="text-success text-center" style="padding:var(--spacing-sm)">Ekkert þarfnast athygli!</p>';
-        return;
-      }
-
-      const renderItem = (item) => {
-        let icon = '&#128204;';  // pin
-        let actionUrl = '#';
-
-        if (item.type === 'review') {
-          icon = '&#9998;';  // pencil
-          actionUrl = '/editor';
-        } else if (item.type === 'blocked') {
-          icon = '&#128683;'; // no entry
-          actionUrl = '/issues';
-        } else if (item.type === 'unassigned') {
-          icon = '&#128100;'; // person
-        }
-
-        return '<div class="attention-item">' +
-          '<span class="attention-item-icon">' + icon + '</span>' +
-          '<span class="attention-item-text">' + escapeHtml(item.message) + '</span>' +
-          (item.type === 'unassigned'
-            ? '<button class="btn btn-sm btn-primary" onclick="openAssignmentModal(\'' + item.book + '\', ' + item.chapter + ', \'' + item.stage + '\')">Úthluta</button>'
-            : '<a href="' + actionUrl + '" class="btn btn-sm btn-secondary">Skoða</a>') +
-          '</div>';
-      };
-
-      const visibleItems = items.slice(0, INITIAL_SHOW);
-      const hiddenItems = items.slice(INITIAL_SHOW);
-
-      let html = visibleItems.map(renderItem).join('');
-
-      if (hiddenItems.length > 0) {
-        html += '<div class="accordion collapsed" id="attention-more-accordion">' +
-          '<button class="accordion-header" onclick="toggleAccordion(\'attention-more-accordion\')">' +
-          '<div class="accordion-header-left">' +
-          '<span class="accordion-toggle">&#9660;</span>' +
-          '<span>Sýna ' + hiddenItems.length + ' fleiri atriði</span>' +
-          '</div></button>' +
-          '<div class="accordion-body">' + hiddenItems.map(renderItem).join('') + '</div></div>';
-      }
-
-      container.innerHTML = html;
-    }
-
-    function toggleAccordion(accordionId) {
-      const accordion = document.getElementById(accordionId);
-      if (accordion) accordion.classList.toggle('collapsed');
-    }
-
-    // ============================================================================
-    // ACTIVITY FEED
-    // ============================================================================
-
-    function renderActivityFeed(activities) {
-      const container = document.getElementById('activity-feed');
-      const INITIAL_SHOW = 5;
-
-      if (!activities || activities.length === 0) {
-        container.innerHTML = '<p class="text-muted text-center" style="padding:var(--spacing-md)">Engin virkni skráð enn.</p>';
-        return;
-      }
-
-      const renderActivity = (activity) =>
-        '<div class="activity-item">' +
-        '<span class="activity-icon">' + (activity.icon || '&#128204;') + '</span>' +
-        '<div class="activity-content">' +
-        '<span class="activity-user">' + escapeHtml(activity.username || activity.user || 'Kerfi') + '</span>' +
-        '<span class="activity-desc">' + escapeHtml(activity.description || activity.action || '') + '</span>' +
-        '<span class="activity-time">' + (activity.timeAgo || formatTimeAgo(activity.timestamp)) + '</span>' +
-        '</div></div>';
-
-      const visibleActivities = activities.slice(0, INITIAL_SHOW);
-      const hiddenActivities = activities.slice(INITIAL_SHOW);
-
-      let html = visibleActivities.map(renderActivity).join('');
-
-      if (hiddenActivities.length > 0) {
-        html += '<div class="accordion collapsed" id="activity-more-accordion">' +
-          '<button class="accordion-header" onclick="toggleAccordion(\'activity-more-accordion\')">' +
-          '<div class="accordion-header-left">' +
-          '<span class="accordion-toggle">&#9660;</span>' +
-          '<span>Sýna ' + hiddenActivities.length + ' fleiri</span>' +
-          '</div></button>' +
-          '<div class="accordion-body">' + hiddenActivities.map(renderActivity).join('') + '</div></div>';
-      }
-
-      container.innerHTML = html;
-    }
-
-    function formatTimeAgo(dateStr) {
-      if (!dateStr) return '';
-      const date = new Date(dateStr);
-      const now = new Date();
-      const seconds = Math.floor((now - date) / 1000);
-
-      if (seconds < 60) return 'Rétt í þessu';
-      if (seconds < 3600) return 'Fyrir ' + Math.floor(seconds / 60) + ' mín';
-      if (seconds < 86400) return 'Fyrir ' + Math.floor(seconds / 3600) + ' klst';
-      if (seconds < 604800) return 'Fyrir ' + Math.floor(seconds / 86400) + ' dögum';
-      return date.toLocaleDateString('is-IS');
-    }
-
-    // ============================================================================
-    // CHAPTER PIPELINE LIST (8-stage dots)
-    // ============================================================================
-
-    function renderChapterPipelineList(chapterMatrix, chapters) {
-      const container = document.getElementById('chapter-pipeline-list');
-
-      // Use whichever data source is available
-      let chapterData = [];
-      var selectedBook = getSelectedBook();
-      if (chapterMatrix && selectedBook && chapterMatrix[selectedBook]) {
-        chapterData = chapterMatrix[selectedBook].chapters || [];
-      } else if (chapters) {
-        chapterData = chapters;
-      }
-
-      if (chapterData.length === 0) {
-        container.innerHTML = '<p class="text-muted">Engin gögn</p>';
-        return;
-      }
-
-      const displayChapters = chapterData.slice(0, 10);
-
-      let html = '<div class="chapter-list">';
-      for (const ch of displayChapters) {
-        const chNum = ch.chapter;
-        const progress = ch.progress || 0;
-
-        // Build 8 stage dots
-        let dotsHtml = '<span class="stage-dots">';
-        for (const stage of PIPELINE_STAGES) {
-          let status = 'not-started';
-          // Try different data shapes
-          if (ch.stages) {
-            if (typeof ch.stages === 'object' && !Array.isArray(ch.stages)) {
-              // Object shape: { extraction: 'complete', ... }
-              const val = ch.stages[stage.key];
-              if (val === 'complete' || val === true) status = 'complete';
-              else if (val === 'in-progress') status = 'in-progress';
-            } else if (Array.isArray(ch.stages)) {
-              // Array shape: [{ stage: 'extraction', status: 'complete' }, ...]
-              const s = ch.stages.find(s => (s.stage || s.key) === stage.key);
-              if (s) status = s.status || 'not-started';
-            }
-          }
-          dotsHtml += '<span class="stage-dot ' + status + '" title="' + stage.fullLabel + ': ' + (STATUS_LABELS[status] || status) + '"></span>';
-        }
-        dotsHtml += '</span>';
-
-        html += '<div class="chapter-list-item" onclick="showTab(\'matrix\')">' +
-          '<span class="chapter-list-num">K' + chNum + '</span>' +
-          dotsHtml +
-          '<span class="chapter-list-title">' + escapeHtml(ch.title || '') + '</span>' +
-          '<span class="chapter-list-progress">' + progress + '%</span>' +
-          '</div>';
-      }
-      html += '</div>';
-
-      container.innerHTML = html;
-    }
-
-    // ============================================================================
-    // DISPUTED TERMS
-    // ============================================================================
-
-    async function loadDisputedTerms() {
-      const container = document.getElementById('disputed-terms-content');
-
-      try {
-        const data = await fetchJson('/api/terminology/review-queue?limit=5');
-
-        if (!data.terms || data.terms.length === 0) {
-          container.innerHTML = '<p class="text-success text-center" style="padding:var(--spacing-sm)">Engin hugtök í umræðu!</p>';
-          return;
-        }
-
-        container.innerHTML = data.terms.map(function(term) {
-          const statusClass = term.status === 'disputed' ? 'status-disputed' :
-                              term.status === 'needs_review' ? 'status-needs-review' : 'status-proposed';
-          const statusLabel = term.status === 'disputed' ? 'Til umræðu' :
-                              term.status === 'needs_review' ? 'Þarfnast yfirferðar' : 'Í bið';
-
-          return '<div class="disputed-term-item">' +
-            '<div class="term-content">' +
-            '<div class="term-pair">' +
-            '<span class="term-english">' + escapeHtml(term.english) + '</span>' +
-            '<span class="term-arrow">&rarr;</span>' +
-            '<span class="term-icelandic">' + escapeHtml(term.icelandic) + '</span>' +
-            '</div>' +
-            '<div class="term-meta">' +
-            '<span class="term-status ' + statusClass + '">' + statusLabel + '</span>' +
-            (term.proposed_by_name ? '<span class="term-proposer">lagt til af ' + escapeHtml(term.proposed_by_name) + '</span>' : '') +
-            (term.discussion_count > 0 ? '<span>' + term.discussion_count + ' athugasemdir</span>' : '') +
-            '</div></div>' +
-            '<a href="/terminology?id=' + term.id + '" class="btn btn-sm btn-secondary">Skoða</a>' +
-            '</div>';
+      var attPanel = document.getElementById('attention-panel');
+      if (attentionItems.length > 0) {
+        attPanel.style.display = '';
+        document.getElementById('attention-count').textContent = attentionItems.length;
+        var list = document.getElementById('attention-list');
+        list.innerHTML = attentionItems.slice(0, 15).map(function(item) {
+          return '<li>' + escapeHtml(item) + '</li>';
         }).join('');
-
-        if (data.terms.length >= 5) {
-          container.innerHTML += '<div class="disputed-terms-footer"><a href="/terminology?filter=review" class="btn btn-secondary btn-sm">Sjá öll hugtök í umræðu</a></div>';
-        }
-
-      } catch (err) {
-        console.error('Could not load disputed terms:', err);
-        container.innerHTML = '<p class="text-muted" style="padding:var(--spacing-sm)">Gat ekki hlaðið hugtökum</p>';
-      }
-    }
-
-    // ============================================================================
-    // ANALYTICS — Velocity, Projections, Burndown, Stage Metrics, Pilot, Team
-    // ============================================================================
-
-    function renderVelocityMetrics() {
-      if (!analyticsData?.velocity) return;
-
-      const v7 = analyticsData.velocity.last7days;
-      const v14 = analyticsData.velocity.last14days;
-      const v30 = analyticsData.velocity.last30days;
-
-      document.getElementById('velocity-7d').textContent = v7 ? v7.total + ' hlutar' : '-';
-      document.getElementById('velocity-14d').textContent = v14 ? v14.total + ' hlutar' : '-';
-      document.getElementById('velocity-30d').textContent = v30 ? v30.total + ' hlutar' : '-';
-    }
-
-    function renderVelocityChart() {
-      if (!analyticsData?.weeklyProgress) return;
-
-      const container = document.getElementById('velocity-chart');
-      const weeks = analyticsData.weeklyProgress;
-      const maxValue = Math.max(...weeks.map(w => w.completedSections), 1);
-
-      let html = '<div class="velocity-bars">';
-      for (const week of weeks) {
-        const height = (week.completedSections / maxValue) * 100;
-        html += '<div class="velocity-bar-wrapper">' +
-          '<div class="velocity-bar" style="height: ' + Math.max(height, 5) + '%">' +
-          '<span class="velocity-bar-value">' + week.completedSections + '</span>' +
-          '</div>' +
-          '<span class="velocity-bar-label">' + week.weekLabel.replace('Vika ', 'V') + '</span>' +
-          '</div>';
-      }
-      html += '</div>';
-      container.innerHTML = html;
-    }
-
-    function renderProjections() {
-      if (!analyticsData?.projections) return;
-
-      const container = document.getElementById('projection-content');
-      const proj = analyticsData.projections;
-
-      if (!proj.estimatedDaysToComplete) {
-        container.innerHTML = '<p class="text-muted text-center">' + escapeHtml(proj.message || 'Ófullnægjandi gögn') + '</p>';
-        return;
-      }
-
-      const confidenceColors = { high: 'var(--success)', medium: 'var(--warning)', low: 'var(--error)' };
-      const confidenceLabels = { high: 'Góð', medium: 'Miðlungs', low: 'Óviss' };
-
-      container.innerHTML =
-        '<div class="projection-item"><span class="projection-icon">&#128197;</span>' +
-        '<div class="projection-details"><span class="projection-value">' + escapeHtml(proj.projectedCompletionDateFormatted) + '</span>' +
-        '<span class="projection-label">Áætlaður lokadagur</span></div></div>' +
-        '<div class="projection-item"><span class="projection-icon">&#9201;</span>' +
-        '<div class="projection-details"><span class="projection-value">' + proj.estimatedWeeksToComplete + ' vikur</span>' +
-        '<span class="projection-label">Áætlaður tími</span></div></div>' +
-        '<div class="projection-item"><span class="projection-icon">&#128200;</span>' +
-        '<div class="projection-details"><span class="projection-value">' + proj.currentVelocity + ' á dag</span>' +
-        '<span class="projection-label">Núverandi hraði</span></div></div>' +
-        '<div class="projection-confidence" style="background:' + confidenceColors[proj.confidence] + '20;border-color:' + confidenceColors[proj.confidence] + '">' +
-        '<span style="color:' + confidenceColors[proj.confidence] + '">Áreiðanleiki spár: ' + confidenceLabels[proj.confidence] + '</span></div>';
-    }
-
-    function renderBurndown() {
-      if (!analyticsData?.burndown) return;
-
-      const b = analyticsData.burndown;
-      document.getElementById('burndown-total').textContent = b.totalSections;
-      document.getElementById('burndown-complete').textContent = b.completedSections;
-      document.getElementById('burndown-progress').textContent = b.inProgressSections;
-      document.getElementById('burndown-remaining').textContent = b.remainingSections;
-      document.getElementById('burndown-percent').textContent = b.percentComplete + '% klár';
-
-      const completePercent = (b.completedSections / b.totalSections) * 100;
-      const progressPercent = (b.inProgressSections / b.totalSections) * 100;
-
-      document.getElementById('burndown-bar-complete').style.width = completePercent + '%';
-      document.getElementById('burndown-bar-progress').style.width = progressPercent + '%';
-    }
-
-    function renderStageMetrics() {
-      if (!analyticsData?.stageMetrics) return;
-
-      const container = document.getElementById('stage-metrics');
-      const stageLabels = {
-        'extraction': 'Útdráttur',
-        'mtReady': 'VÞ tilbúið',
-        'mtOutput': 'Vélþýðing',
-        'linguisticReview': 'Yfirferð 1',
-        'tmCreated': 'Þýðingaminni',
-        'injection': 'Inndráttur',
-        'rendering': 'Myndbreyting',
-        'publication': 'Útgáfa'
-      };
-
-      let html = '<div class="stage-progress-list">';
-      const stages = Array.isArray(analyticsData.stageMetrics) ? analyticsData.stageMetrics : [];
-      for (const stage of stages) {
-        const label = stageLabels[stage.stage] || stage.stage;
-        html += '<div class="stage-progress-item">' +
-          '<div class="stage-progress-header">' +
-          '<span class="stage-progress-name">' + label + '</span>' +
-          '<span class="stage-progress-count">' + stage.complete + '/' + stage.total + '</span></div>' +
-          '<div class="stage-progress-bar"><div class="stage-progress-fill" style="width:' + stage.percentComplete + '%"></div></div>' +
-          '<div class="stage-progress-details">' +
-          '<span class="stage-detail complete">' + stage.complete + ' klár</span>' +
-          '<span class="stage-detail in-progress">' + stage.inProgress + ' í vinnslu</span>' +
-          '<span class="stage-detail pending">' + stage.pending + ' í bið</span>' +
-          '</div></div>';
-      }
-      html += '</div>';
-      container.innerHTML = html;
-    }
-
-    function renderPilotMilestone() {
-      if (!analyticsData?.pilotMilestone) return;
-
-      const container = document.getElementById('pilot-content');
-      const pilot = analyticsData.pilotMilestone;
-      const statusColor = pilot.onTrack ? 'var(--success)' : 'var(--warning)';
-      const statusText = pilot.onTrack ? 'Á réttri leið' : 'Þarf að flýta';
-
-      container.innerHTML =
-        '<div class="pilot-header">' +
-        '<span class="pilot-chapters">Kaflar ' + pilot.chapters.join(', ') + '</span>' +
-        '<span class="pilot-status" style="background:' + statusColor + '20;color:' + statusColor + '">' + statusText + '</span></div>' +
-        '<div class="pilot-progress"><div class="pilot-progress-bar">' +
-        '<div class="pilot-progress-fill" style="width:' + pilot.percentComplete + '%"></div></div>' +
-        '<span class="pilot-progress-text">' + pilot.completedSections + '/' + pilot.totalSections + ' hlutar (' + pilot.percentComplete + '%)</span></div>' +
-        '<div class="pilot-details">' +
-        '<div class="pilot-detail"><span class="pilot-detail-value">' + pilot.completedSections + '</span><span class="pilot-detail-label">Klárir hlutar</span></div>' +
-        '<div class="pilot-detail"><span class="pilot-detail-value">' + (pilot.totalSections - pilot.completedSections) + '</span><span class="pilot-detail-label">Eftir</span></div>' +
-        '<div class="pilot-detail"><span class="pilot-detail-value">' + pilot.chapters.length + '</span><span class="pilot-detail-label">Kaflar</span></div></div>';
-    }
-
-    function renderTeamMetrics() {
-      if (!analyticsData?.teamMetrics) return;
-
-      const container = document.getElementById('team-metrics');
-      const team = analyticsData.teamMetrics;
-
-      if (!team || team.length === 0) {
-        container.innerHTML = '<p class="text-muted text-center">Engin virknigögn síðustu 30 daga</p>';
-        return;
-      }
-
-      let html = '<div class="team-list">';
-      for (const member of team.slice(0, 10)) {
-        const lastActiveText = member.lastActive ? formatTimeAgo(member.lastActive) : '';
-        html += '<div class="team-member">' +
-          '<div class="team-member-info">' +
-          '<span class="team-member-name">' + escapeHtml(member.username) + '</span>' +
-          '<span class="team-member-activity">' + member.totalActions + ' aðgerðir</span></div>' +
-          '<div class="team-member-stats">' +
-          (member.approvals > 0 ? '<span class="team-stat approval">' + member.approvals + ' samþ.</span>' : '') +
-          (member.submissions > 0 ? '<span class="team-stat submission">' + member.submissions + ' send.</span>' : '') +
-          (member.drafts > 0 ? '<span class="team-stat draft">' + member.drafts + ' drög</span>' : '') +
-          '</div>' +
-          '<span class="team-member-last-active">' + lastActiveText + '</span></div>';
-      }
-      html += '</div>';
-      container.innerHTML = html;
-    }
-
-    // ============================================================================
-    // FULL MATRIX
-    // ============================================================================
-
-    async function loadFullMatrix() {
-      const book = document.getElementById('book-select').value;
-      const container = document.getElementById('full-matrix');
-      container.innerHTML = '<div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>';
-
-      try {
-        const data = await fetchJson(API_BASE + '/' + book);
-
-        let html = '<table class="matrix-table"><thead><tr>';
-        html += '<th>Kafli</th>';
-        for (const stage of DISPLAY_STAGES) {
-          html += '<th>' + (STAGE_LABELS[stage] || stage) + '</th>';
-        }
-        html += '<th>Framvinda</th><th>Úthlutun</th></tr></thead><tbody>';
-
-        for (const ch of data.chapters) {
-          const isExpanded = expandedChapters[book + '-' + ch.chapter];
-
-          // Chapter row
-          html += '<tr class="chapter-row' + (isExpanded ? ' expanded' : '') + '" onclick="toggleSections(\'' + book + '\', ' + ch.chapter + ', this)">';
-          html += '<td class="chapter-cell">';
-          html += '<span class="expand-icon">' + (isExpanded ? '&#9660;' : '&#9654;') + '</span>';
-          html += '<strong>K' + ch.chapter + '</strong>';
-          if (ch.title) html += '<br><small class="chapter-title-text">' + escapeHtml(ch.title) + '</small>';
-          html += '</td>';
-
-          for (const stage of DISPLAY_STAGES) {
-            const stageData = ch.stages.find(s => s.stage === stage);
-            const status = stageData ? stageData.status : 'not-started';
-            const symbol = getStatusSymbol(status);
-            const stageLabel = STAGE_FULL_LABELS[stage] || STAGE_LABELS[stage] || stage;
-            const statusLabel = STATUS_LABELS[status] || status;
-            html += '<td class="matrix-cell status-' + status + '" title="' + stageLabel + ': ' + statusLabel + '">' + symbol + '</td>';
-          }
-
-          html += '<td><div class="progress-bar" style="width:80px;display:inline-block;vertical-align:middle"><div class="progress-bar-fill" style="width:' + ch.progress + '%"></div></div> <small style="color:var(--text-muted)">' + ch.progress + '%</small></td>';
-          html += '<td onclick="event.stopPropagation();"><button class="btn btn-sm btn-secondary" onclick="openAssignmentModal(\'' + book + '\', ' + ch.chapter + ')">Úthluta</button></td>';
-          html += '</tr>';
-
-          // Section expansion row
-          html += '<tr class="sections-row" id="sections-' + book + '-' + ch.chapter + '" style="display:' + (isExpanded ? 'table-row' : 'none') + ';">';
-          html += '<td colspan="8" class="sections-container">';
-          html += '<div class="sections-loading" id="sections-loading-' + book + '-' + ch.chapter + '">Hleður hlutum...</div>';
-          html += '<div class="sections-content" id="sections-content-' + book + '-' + ch.chapter + '"></div>';
-          html += '</td></tr>';
-        }
-
-        html += '</tbody></table>';
-        container.innerHTML = html;
-
-        // Load sections for already expanded chapters
-        for (const key of Object.keys(expandedChapters)) {
-          if (expandedChapters[key]) {
-            const parts = key.split('-');
-            if (parts[0] === book) {
-              loadSections(book, parseInt(parts[1]));
-            }
-          }
-        }
-
-      } catch (err) {
-        container.innerHTML = '<p class="text-error" style="padding:var(--spacing-md)">Villa við að hlaða gögnum</p>';
-      }
-    }
-
-    async function toggleSections(book, chapter, rowEl) {
-      const key = book + '-' + chapter;
-      const sectionsRow = document.getElementById('sections-' + book + '-' + chapter);
-      const expandIcon = rowEl.querySelector('.expand-icon');
-
-      if (expandedChapters[key]) {
-        expandedChapters[key] = false;
-        sectionsRow.style.display = 'none';
-        rowEl.classList.remove('expanded');
-        expandIcon.innerHTML = '&#9654;';
       } else {
-        expandedChapters[key] = true;
-        sectionsRow.style.display = 'table-row';
-        rowEl.classList.add('expanded');
-        expandIcon.innerHTML = '&#9660;';
-        loadSections(book, chapter);
+        attPanel.style.display = 'none';
       }
+
+      // Chapter progress list
+      var listEl = document.getElementById('chapter-list');
+      listEl.innerHTML = data.chapters.map(function(ch) {
+        var label = ch.chapter === -1 ? 'Vi\u00f0.' : 'K' + ch.chapter;
+        var pctApproved = ch.segmentsTotal > 0
+          ? Math.round(ch.segmentsApproved / ch.segmentsTotal * 100) : 0;
+        var pctEdited = ch.segmentsTotal > 0
+          ? Math.round(ch.segmentsEdited / ch.segmentsTotal * 100) : 0;
+        var pctColor = pctApproved >= 100 ? 'var(--success)'
+          : pctApproved > 0 ? 'var(--accent)' : 'var(--text-muted)';
+
+        var moduleSummary = ch.modulesComplete + '/' + ch.modules + ' einingar';
+        if (ch.needsAttention.length > 0) {
+          moduleSummary += ' \u26a0';
+        }
+
+        return '<div class="chapter-row' + (selectedChapter === ch.chapter ? ' active' : '') +
+          '" onclick="showChapterDetail(' + ch.chapter + ')">' +
+          '<div class="chapter-num">' + label + '</div>' +
+          '<div>' +
+            '<div class="chapter-progress-bar">' +
+              '<div class="chapter-progress-fill fill-approved" style="width:' + pctApproved + '%"></div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="chapter-modules-label">' + moduleSummary + '</div>' +
+          '<div class="chapter-pct" style="color:' + pctColor + '">' + pctApproved + '%</div>' +
+        '</div>';
+      }).join('');
     }
 
-    async function loadSections(book, chapter) {
-      const loadingEl = document.getElementById('sections-loading-' + book + '-' + chapter);
-      const contentEl = document.getElementById('sections-content-' + book + '-' + chapter);
+    // ========================================================================
+    // CHAPTER DETAIL
+    // ========================================================================
 
-      loadingEl.style.display = 'block';
-      contentEl.innerHTML = '';
+    window.showChapterDetail = function(chapterNum) {
+      selectedChapter = chapterNum;
+      switchTab('detail');
 
+      if (!progressData) return;
+
+      var ch = progressData.chapters.find(function(c) { return c.chapter === chapterNum; });
+      if (!ch) return;
+
+      document.getElementById('detail-empty').style.display = 'none';
+      document.getElementById('detail-content').style.display = '';
+
+      var label = chapterNum === -1 ? 'Vi\u00f0auki' : 'Kafli ' + chapterNum;
+      document.getElementById('detail-title').textContent = label;
+      document.getElementById('detail-editor-link').href =
+        '/editor?book=' + progressData.book + '&chapter=' + (chapterNum === -1 ? 'appendices' : chapterNum);
+
+      var pct = ch.segmentsTotal > 0
+        ? Math.round(ch.segmentsApproved / ch.segmentsTotal * 100) : 0;
+      document.getElementById('detail-modules').textContent = ch.modules;
+      document.getElementById('detail-segments').textContent = formatNum(ch.segmentsTotal);
+      document.getElementById('detail-approved').textContent = formatNum(ch.segmentsApproved);
+      document.getElementById('detail-pct').textContent = pct + '%';
+
+      // Load pipeline stage badges
+      loadPipelineBadges(progressData.book, chapterNum);
+
+      // Module table
+      var tbody = document.getElementById('detail-modules-body');
+      tbody.innerHTML = (ch.moduleDetails || []).map(function(mod) {
+        var modPct = mod.segmentCount > 0
+          ? Math.round(mod.segmentsApproved / mod.segmentCount * 100) : 0;
+        var barColor = mod.status === 'complete' ? 'var(--success)'
+          : mod.status === 'in-progress' ? 'var(--info)' : 'var(--bg-elevated)';
+
+        var statusClass = mod.status === 'complete' ? 'status-complete'
+          : mod.status === 'in-progress' ? 'status-in-progress' : 'status-not-started';
+        var statusLabel = mod.status === 'complete' ? 'Kl\u00e1rt'
+          : mod.status === 'in-progress' ? '\u00cd vinnslu' : '\u00d3byrja\u00f0';
+        if (mod.reviewStatus === 'pending') {
+          statusClass = 'status-review';
+          statusLabel = 'B\u00ed\u00f0ur yfirfer\u00f0ar';
+        }
+
+        var editorUrl = '/editor?book=' + progressData.book +
+          '&chapter=' + (chapterNum === -1 ? 'appendices' : chapterNum) +
+          '&module=' + mod.moduleId;
+
+        return '<tr>' +
+          '<td><code>' + mod.moduleId + '</code>' +
+            (mod.hasFaithful ? ' <span style="color:var(--success)" title="Faithful file exists">\u2713</span>' : '') +
+          '</td>' +
+          '<td><div class="module-progress">' +
+            '<div class="module-bar"><div class="module-bar-fill" style="width:' + modPct + '%;background:' + barColor + '"></div></div>' +
+            '<span class="module-bar-pct">' + modPct + '%</span>' +
+          '</div></td>' +
+          '<td class="num">' + mod.segmentCount + '</td>' +
+          '<td class="num">' + mod.segmentsEdited + '</td>' +
+          '<td class="num">' + mod.segmentsApproved + '</td>' +
+          '<td><span class="status-badge ' + statusClass + '">' + statusLabel + '</span></td>' +
+          '<td><a href="' + editorUrl + '" class="btn btn-sm btn-secondary" style="padding:2px 8px;font-size:11px">Opna</a></td>' +
+        '</tr>';
+      }).join('');
+
+      // Re-render chapter list to update active state
+      renderOverview(progressData);
+    };
+
+    // ========================================================================
+    // PIPELINE BADGES (secondary metadata)
+    // ========================================================================
+
+    async function loadPipelineBadges(book, chapterNum) {
+      var container = document.getElementById('detail-pipeline');
       try {
-        const data = await fetchJson(API_BASE + '/' + book + '/' + chapter + '/sections');
+        var chKey = chapterNum === -1 ? 'appendices' : chapterNum;
+        var data = await fetchJson('/api/status/' + book + '/' + chKey);
+        var stages = (data.status && data.status.stages) || data.status || {};
+        var pub = stages.publication || {};
 
-        loadingEl.style.display = 'none';
+        var badges = [
+          { key: 'extraction', label: '\u00datdr\u00e1ttur' },
+          { key: 'mtOutput', label: 'MT' },
+          { key: 'linguisticReview', label: 'Yfirfer\u00f0' },
+          { key: 'injection', label: 'Inndr\u00e1ttur' },
+          { key: 'rendering', label: 'Birting' },
+        ];
 
-        if (data.sections.length === 0) {
-          contentEl.innerHTML = '<p class="text-muted">Engir hlutar fundnir</p>';
-          return;
-        }
-
-        let html = '<table class="sections-table"><thead><tr>';
-        html += '<th class="section-id-col">Hluti</th>';
-        for (const stage of data.stages) {
-          html += '<th class="section-stage-col">' + stage.shortLabel + '</th>';
-        }
-        html += '</tr></thead><tbody>';
-
-        for (const section of data.sections) {
-          html += '<tr><td class="section-id">' + escapeHtml(section.id) + '</td>';
-          for (const stage of data.stages) {
-            const status = section.stages[stage.id] || 'not-started';
-            const symbol = getSectionStatusSymbol(status);
-            const statusLabel = STATUS_LABELS[status] || status;
-            html += '<td class="section-cell status-' + status + '" title="' + statusLabel + '">' + symbol + '</td>';
-          }
-          html += '</tr>';
-        }
-
-        html += '</tbody></table>';
-
-        // Summary line
-        html += '<div class="sections-summary">';
-        html += '<span class="sections-count">' + data.sections.length + ' hlutar</span>';
-        const linguisticComplete = data.summary.byStage.linguisticReview.complete;
-        const linguisticTotal = data.sections.length;
-        const linguisticPercent = linguisticTotal > 0 ? Math.round((linguisticComplete / linguisticTotal) * 100) : 0;
-        html += ' &middot; <span class="sections-progress">' + linguisticComplete + '/' + linguisticTotal + ' yfirfarnir (' + linguisticPercent + '%)</span>';
-        html += '</div>';
-
-        contentEl.innerHTML = html;
-
-      } catch (err) {
-        loadingEl.style.display = 'none';
-        contentEl.innerHTML = '<p class="text-error">Villa við að hlaða hlutum</p>';
+        container.innerHTML = '<div class="pipeline-badges">' +
+          badges.map(function(b) {
+            var done = stages[b.key] && stages[b.key].complete;
+            return '<span class="pipe-badge' + (done ? ' done' : '') + '">' +
+              (done ? '\u2713 ' : '') + b.label + '</span>';
+          }).join('') +
+          (pub.mtPreview && pub.mtPreview.complete ? '<span class="pipe-badge done">\u2713 MT birt</span>' : '') +
+          (pub.faithful && pub.faithful.complete ? '<span class="pipe-badge done">\u2713 Birt</span>' : '') +
+        '</div>';
+      } catch (e) {
+        container.innerHTML = '';
       }
     }
 
-    function getStatusSymbol(status) {
-      return '<span class="legend-dot ' + (status || 'not-started') + '" style="display:inline-block;margin:auto"></span>';
-    }
-
-    function getSectionStatusSymbol(status) {
-      return '<span class="legend-dot ' + (status || 'not-started') + '" style="display:inline-block;margin:auto"></span>';
-    }
-
-    // ============================================================================
+    // ========================================================================
     // ACTIVITY TIMELINE
-    // ============================================================================
+    // ========================================================================
 
-    async function loadActivityTypes() {
+    async function loadTimeline() {
+      document.getElementById('timeline-loading').style.display = '';
       try {
-        const data = await fetchJson(API_BASE + '/activity/types');
+        var book = document.getElementById('book-select').value;
+        var url = '/api/status/activity/timeline?limit=30&offset=' + timelineOffset;
+        if (book) url += '&book=' + book;
+        var data = await fetchJson(url);
 
-        const select = document.getElementById('timeline-type-filter');
-        const firstOption = select.options[0];
-        select.innerHTML = '';
-        select.appendChild(firstOption);
+        renderTimeline(data.activities || []);
+        document.getElementById('timeline-more').style.display =
+          (data.activities || []).length >= 30 ? '' : 'none';
+      } catch (e) {
+        document.getElementById('timeline-list').innerHTML =
+          '<li class="empty-state">Engin virkni fundin</li>';
+      }
+      document.getElementById('timeline-loading').style.display = 'none';
+    }
 
-        data.types.forEach(function(type) {
-          const option = document.createElement('option');
-          option.value = type.value;
-          option.textContent = type.label;
-          select.appendChild(option);
-        });
-      } catch (err) {
-        console.error('Failed to load activity types:', err);
+    window.loadMoreTimeline = function() {
+      timelineOffset += 30;
+      loadTimeline();
+    };
+
+    function renderTimeline(activities) {
+      var list = document.getElementById('timeline-list');
+      if (timelineOffset === 0) list.innerHTML = '';
+
+      activities.forEach(function(a) {
+        var li = document.createElement('li');
+        li.className = 'timeline-item';
+
+        var time = new Date(a.created_at || a.timestamp);
+        var timeStr = time.toLocaleDateString('is-IS', { month: 'short', day: 'numeric' }) +
+          ' ' + time.toLocaleTimeString('is-IS', { hour: '2-digit', minute: '2-digit' });
+
+        li.innerHTML = '<span class="timeline-time">' + timeStr + '</span>' +
+          '<span class="timeline-msg">' + escapeHtml(a.description || a.message || a.type) + '</span>';
+        list.appendChild(li);
+      });
+
+      if (activities.length === 0 && timelineOffset === 0) {
+        list.innerHTML = '<li class="empty-state">Engin virkni fundin</li>';
       }
     }
 
-    async function loadTimeline(append) {
-      const contentEl = document.getElementById('timeline-content');
-      const paginationEl = document.getElementById('timeline-pagination');
+    // ========================================================================
+    // UTILITIES
+    // ========================================================================
 
-      if (!append) {
+    function formatNum(n) {
+      return n != null ? n.toLocaleString('is-IS') : '-';
+    }
+
+    // ========================================================================
+    // INIT
+    // ========================================================================
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Wait for book selector to populate
+      var sel = document.getElementById('book-select');
+      sel.addEventListener('change', function() {
+        selectedChapter = null;
         timelineOffset = 0;
-        contentEl.innerHTML = '<div class="loading-state"><span class="spinner"></span><span>Hleður...</span></div>';
-      }
-
-      const book = document.getElementById('timeline-book-filter').value;
-      const type = document.getElementById('timeline-type-filter').value;
-
-      try {
-        const params = new URLSearchParams({ limit: 20, offset: timelineOffset });
-        if (book) params.set('book', book);
-        if (type) params.set('type', type);
-
-        const data = await fetchJson(API_BASE + '/activity/timeline?' + params);
-
-        timelineTotal = data.total;
-
-        if (data.activities.length === 0 && !append) {
-          contentEl.innerHTML = '<div class="empty-state"><p>Engin virkni skráð</p><p class="text-muted">Þegar þýðendur vinna að köflum mun virkni þeirra birtast hér.</p></div>';
-          paginationEl.style.display = 'none';
-          return;
-        }
-
-        const html = data.activities.map(renderTimelineItem).join('');
-
-        if (append) {
-          contentEl.innerHTML += html;
-        } else {
-          contentEl.innerHTML = '<div class="timeline">' + html + '</div>';
-        }
-
-        paginationEl.style.display = data.hasMore ? 'block' : 'none';
-
-      } catch (err) {
-        console.error('Failed to load timeline:', err);
-        if (!append) {
-          contentEl.innerHTML = '<p class="text-error" style="padding:var(--spacing-md)">Villa við að hlaða tímalínu</p>';
-        }
-      }
-    }
-
-    function loadMoreTimeline() {
-      timelineOffset += 20;
-      loadTimeline(true);
-    }
-
-    function renderTimelineItem(activity) {
-      const colorClass = 'timeline-color-' + activity.color;
-
-      let location = '';
-      if (activity.book) {
-        location = activity.book;
-        if (activity.chapter) location += ' / K.' + activity.chapter;
-        if (activity.section) location += ' / ' + activity.section;
-      }
-
-      return '<div class="timeline-item ' + colorClass + '">' +
-        '<div class="timeline-icon">' + activity.icon + '</div>' +
-        '<div class="timeline-content">' +
-        '<div class="timeline-header">' +
-        '<span class="timeline-user">' + escapeHtml(activity.username) + '</span>' +
-        '<span class="timeline-time">' + activity.timeAgo + '</span></div>' +
-        '<div class="timeline-description">' + escapeHtml(activity.description) + '</div>' +
-        (location ? '<div class="timeline-location">' + escapeHtml(location) + '</div>' : '') +
-        '</div></div>';
-    }
-
-    // ============================================================================
-    // ASSIGNMENTS
-    // ============================================================================
-
-    var assignUsersLoaded = false;
-
-    function openAssignmentModal(book, chapter, stage) {
-      selectedAssignment = { book: book, chapter: chapter };
-      document.getElementById('assign-chapter-display').value = book + ' - Kafli ' + chapter;
-      if (stage) {
-        document.getElementById('assign-stage').value = stage;
-      }
-      document.getElementById('assignment-modal').style.display = 'flex';
-      loadAssignableUsers();
-    }
-
-    async function loadAssignableUsers() {
-      if (assignUsersLoaded) return;
-      var select = document.getElementById('assign-to');
-      try {
-        var data = await fetchJson('/api/workflow/assignable-users');
-        var users = data.users || [];
-        select.innerHTML = '<option value="">Veldu notanda...</option>';
-        users.forEach(function(u) {
-          var label = u.displayName || u.providerUsername || u.email || ('ID ' + u.id);
-          var opt = document.createElement('option');
-          opt.value = String(u.id);
-          opt.textContent = label;
-          select.appendChild(opt);
-        });
-        assignUsersLoaded = true;
-      } catch (err) {
-        select.innerHTML = '<option value="">Villa: ' + (err.message || 'Óþekkt villa') + '</option>';
-        console.error('Failed to load users for assignment:', err);
-      }
-    }
-
-    function closeAssignmentModal() {
-      document.getElementById('assignment-modal').style.display = 'none';
-      selectedAssignment = null;
-    }
-
-    async function submitAssignment() {
-      if (!selectedAssignment) return;
-
-      const stage = document.getElementById('assign-stage').value;
-      const assignedTo = document.getElementById('assign-to').value.trim();
-      const dueDate = document.getElementById('assign-due-date').value;
-      const notes = document.getElementById('assign-notes').value.trim();
-
-      if (!assignedTo) {
-        alert('Vinsamlegast veldu notanda');
-        return;
-      }
-
-      try {
-        const data = await fetchJson('/api/workflow/assignments', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            book: selectedAssignment.book,
-            chapter: selectedAssignment.chapter,
-            stage: stage,
-            assignedTo: assignedTo,
-            dueDate: dueDate || undefined,
-            notes: notes || undefined
-          })
-        });
-
-        if (data.success) {
-          alert('Verkefni úthlutað!');
-          closeAssignmentModal();
-          loadDashboard();
-        } else {
-          alert('Villa: ' + (data.error || 'Gat ekki úthlutað'));
-        }
-      } catch (err) {
-        alert('Villa: ' + err.message);
-      }
-    }
-
-    // ============================================================================
-    // MEETING AGENDA
-    // ============================================================================
-
-    async function showMeetingAgenda() {
-      const modal = document.getElementById('meeting-agenda-modal');
-      const content = document.getElementById('meeting-agenda-content');
-
-      content.innerHTML = '<p class="text-muted text-center">Hleður dagskrá...</p>';
-      modal.style.display = 'flex';
-
-      try {
-        currentAgenda = await fetchJson(API_BASE + '/meeting-agenda');
-
-        let html = '<div class="agenda">';
-
-        // Header
-        html += '<div class="agenda-header">';
-        html += '<h2>Vikulegur fundur - ' + escapeHtml(currentAgenda.meetingDate) + '</h2>';
-        html += '<p class="agenda-summary">';
-        if (currentAgenda.summary.highPriorityCount > 0) {
-          html += '<span class="priority-high">' + currentAgenda.summary.highPriorityCount + ' mikilvæg atriði</span> ';
-        }
-        if (currentAgenda.summary.mediumPriorityCount > 0) {
-          html += '<span class="priority-medium">' + currentAgenda.summary.mediumPriorityCount + ' í bið</span>';
-        }
-        html += '</p></div>';
-
-        // Sections
-        if (currentAgenda.sections.length === 0) {
-          html += '<p class="text-success text-center">Engin atriði á dagskrá &mdash; allt í lagi!</p>';
-        } else {
-          for (const section of currentAgenda.sections) {
-            html += '<div class="agenda-section priority-' + section.priority + '">';
-            html += '<h3>' + section.icon + ' ' + escapeHtml(section.title) + ' <span class="section-count">(' + section.count + ')</span></h3>';
-            html += '<ul class="agenda-items">';
-            for (const item of section.items) {
-              html += '<li class="agenda-item">';
-              if (item.english && item.icelandic) {
-                html += '<span class="item-term">' + escapeHtml(item.english) + ' &rarr; ' + escapeHtml(item.icelandic) + '</span>';
-              } else if (item.description) {
-                html += '<span class="item-desc">' + escapeHtml(item.description) + '</span>';
-              } else if (item.username) {
-                html += '<span class="item-user">' + escapeHtml(item.username) + '</span>: ' + item.totalActions + ' aðgerðir';
-              } else if (item.section) {
-                html += '<span class="item-section">' + item.book + ' K' + item.chapter + '/' + item.section + '</span>';
-                if (item.daysPending !== undefined) {
-                  html += ' <span class="item-pending">(' + item.daysPending + ' dagar)</span>';
-                }
-              } else if (item.rationale) {
-                html += '<span class="item-decision">' + escapeHtml(item.rationale.substring(0, 100)) + '</span>';
-              }
-              if (item.proposedBy) {
-                html += ' <span class="item-by">(' + escapeHtml(item.proposedBy) + ')</span>';
-              }
-              if (item.context) {
-                html += '<div class="item-context">' + escapeHtml(item.context.substring(0, 150)) + '</div>';
-              }
-              html += '</li>';
-            }
-            html += '</ul></div>';
-          }
-        }
-
-        html += '</div>';
-        content.innerHTML = html;
-
-      } catch (err) {
-        content.innerHTML = '<p class="text-error text-center"></p>';
-        content.querySelector('p').textContent = 'Villa við að hlaða dagskrá: ' + err.message;
-      }
-    }
-
-    function closeMeetingAgenda() {
-      document.getElementById('meeting-agenda-modal').style.display = 'none';
-    }
-
-    function copyAgendaToClipboard() {
-      if (!currentAgenda) return;
-
-      let text = 'FUNDARÁÆTLUN - ' + currentAgenda.meetingDate + '\n';
-      text += '='.repeat(50) + '\n\n';
-
-      for (const section of currentAgenda.sections) {
-        text += section.icon + ' ' + section.title.toUpperCase() + ' (' + section.count + ')\n';
-        text += '-'.repeat(40) + '\n';
-
-        for (const item of section.items) {
-          if (item.english && item.icelandic) {
-            text += '  \u2022 ' + item.english + ' \u2192 ' + item.icelandic + '\n';
-          } else if (item.description) {
-            text += '  \u2022 ' + item.description + '\n';
-          } else if (item.section) {
-            text += '  \u2022 ' + item.book + ' K' + item.chapter + '/' + item.section + '\n';
-          } else if (item.username) {
-            text += '  \u2022 ' + item.username + ': ' + item.totalActions + ' aðgerðir\n';
-          }
-        }
-        text += '\n';
-      }
-
-      navigator.clipboard.writeText(text).then(function() {
-        alert('Dagskrá afrituð!');
-      }).catch(function(err) {
-        console.error('Could not copy:', err);
-        alert('Gat ekki afritað');
+        loadProgress();
       });
-    }
 
-    // ============================================================================
-    // STATUS SYNC (admin)
-    // ============================================================================
-
-    async function startStatusSync() {
-      const modal = document.getElementById('sync-status-modal');
-      const content = document.getElementById('sync-modal-content');
-      const footer = document.getElementById('sync-modal-footer');
-      modal.style.display = 'flex';
-      footer.style.display = 'none';
-      content.innerHTML = '<p class="text-muted">Skoða skráarkerfi...</p>';
-
-      try {
-        const book = getSelectedBook();
-        const data = await fetchJson(API_BASE + '/' + book + '/scan');
-
-        if (!data.chapters || data.chapters.length === 0) {
-          content.innerHTML = '<p>Engir kaflar fundust.</p>';
-          return;
+      // Auto-load when bookSelector sets initial value
+      var checkInterval = setInterval(function() {
+        if (sel.value) {
+          clearInterval(checkInterval);
+          loadProgress();
         }
-
-        const changes = [];
-        for (const ch of data.chapters) {
-          for (const [stage, info] of Object.entries(ch.stages)) {
-            if (info.wouldUpdate) {
-              const action = info.action === 'demote'
-                ? '<span style="color:var(--error)">lækka</span>'
-                : '<span style="color:var(--success)">hækka</span>';
-              changes.push(
-                '<tr><td>Kafli ' + ch.chapter + '</td><td>' + stage + '</td>' +
-                '<td>' + info.currentStatus + '</td><td>' + action + '</td></tr>'
-              );
-            }
-          }
-        }
-
-        if (changes.length === 0) {
-          content.innerHTML = '<p>Engar breytingar þarf &mdash; staða samræmist skráarkerfi.</p>';
-          return;
-        }
-
-        content.innerHTML =
-          '<p><strong>' + changes.length + '</strong> breyting' + (changes.length > 1 ? 'ar' : '') + ' fundust:</p>' +
-          '<table class="sync-changes-table">' +
-          '<thead><tr><th>Kafli</th><th>Stig</th><th>Núverandi</th><th>Aðgerð</th></tr></thead>' +
-          '<tbody>' + changes.join('') + '</tbody></table>';
-        footer.style.display = 'flex';
-      } catch (err) {
-        content.innerHTML = '<p style="color:var(--error)"></p>';
-        content.querySelector('p').textContent = 'Villa: ' + err.message;
-      }
-    }
-
-    async function confirmStatusSync() {
-      const content = document.getElementById('sync-modal-content');
-      const btn = document.getElementById('sync-confirm-btn');
-      btn.disabled = true;
-      btn.textContent = 'Samstilli...';
-
-      try {
-        const book = getSelectedBook();
-        const data = await fetchJson(API_BASE + '/' + book + '/sync', { method: 'POST' });
-
-        content.innerHTML =
-          '<p style="color:var(--success)">Samstilling lokið.</p>' +
-          '<p>' + data.updated + ' kafla' + (data.updated !== 1 ? 'r' : '') + ' uppfærð' + (data.updated !== 1 ? 'ir' : '') + ', ' +
-          data.unchanged + ' óbreyttir.</p>' +
-          (data.changes?.length > 0
-            ? '<ul>' + data.changes.map(function(c) { return '<li>Kafli ' + c.chapter + ': ' + c.stage + ' &mdash; ' + c.action + '</li>'; }).join('') + '</ul>'
-            : '');
-
-        document.getElementById('sync-modal-footer').style.display = 'none';
-
-        setTimeout(function() {
-          loadFullMatrix();
-          loadDashboard();
-        }, 500);
-      } catch (err) {
-        content.innerHTML = '<p style="color:var(--error)"></p>';
-        content.querySelector('p').textContent = 'Villa: ' + err.message;
-      } finally {
-        btn.disabled = false;
-        btn.textContent = 'Staðfesta samstillingu';
-      }
-    }
-
-    function closeSyncModal() {
-      document.getElementById('sync-status-modal').style.display = 'none';
-    }
-
-    // ============================================================================
-    // INITIALIZATION
-    // ============================================================================
-
-    document.addEventListener('DOMContentLoaded', async function() {
-      // Ensure book dropdown is populated before loading dashboard data
-      // (bookSelector.js auto-inits on DOMContentLoaded but the fetch is async,
-      // so getSelectedBook() would return '' without this await)
-      if (window.bookSelector) {
-        await window.bookSelector.init();
-      }
-      loadDashboard();
-      loadDisputedTerms();
-
-      // Handle URL hash for tab routing
-      const hash = window.location.hash.replace('#', '');
-      if (hash === 'timeline') {
-        showTab('timeline');
-      } else if (hash === 'matrix') {
-        showTab('matrix');
-      }
-
-      // Show admin-only elements when user is admin
-      document.addEventListener('userLoaded', function() {
-        if (window.currentUser && (window.currentUser.role === 'admin' || window.currentUser.role === 'head-editor')) {
-          document.querySelectorAll('.admin-only').forEach(function(el) {
-            el.style.display = '';
-          });
-        }
-      });
+      }, 100);
+      // Safety: stop checking after 5s
+      setTimeout(function() { clearInterval(checkInterval); }, 5000);
     });
+
+  })();
   </script>
 </body>
 </html>
