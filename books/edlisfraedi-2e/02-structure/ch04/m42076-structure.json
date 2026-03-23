@@ -1,0 +1,643 @@
+{
+  "moduleId": "m42076",
+  "title": {
+    "segmentId": "m42076:title:auto-1",
+    "text": "Problem-Solving Strategies"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "994814cc-52e2-4398-9a96-eae02025519e"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "learning-objectives",
+      "title": {
+        "segmentId": "m42076:title:sect-00001-title",
+        "text": "Learning Objectives"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00001",
+          "segmentId": "m42076:para:para-00001"
+        },
+        {
+          "type": "list",
+          "id": "list-00001",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m42076:item:list-00001-item-1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "import-auto-id2346467",
+      "segmentId": "m42076:para:import-auto-id2346467"
+    },
+    {
+      "type": "section",
+      "id": "import-auto-id2655652",
+      "class": null,
+      "title": {
+        "segmentId": "m42076:title:import-auto-id2655652-title",
+        "text": "Problem-Solving Strategy for Newton’s Laws of Motion"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "eip-id1164943058959",
+          "segmentId": "m42076:para:eip-id1164943058959"
+        },
+        {
+          "type": "figure",
+          "id": "import-auto-id1669409",
+          "caption": {
+            "segmentId": "m42076:caption:import-auto-id1669409-caption"
+          },
+          "media": {
+            "id": "import-auto-id2112314",
+            "alt": "(a) A sketch is shown of a man hanging from a vine. (b) The forces acting on the person, shown by vector arrows, are tension T, pointing upward at the hand of the man, F sub T, from the same point but in a downward direction, and weight W, acting downward from his stomach. (c) In figure (c) we define only the man as the system of interest. Tension T is acting upward from his hand. The weight W acts in a downward direction. In a free-body diagram W is shown by an arrow acting downward and T is shown by an arrow acting vertically upward. (d) Tension T is shown by an arrow vertically upward and another vector, weight W, is shown by an arrow vertically downward, both having the same lengths. It is indicated that T is equal to minus W.",
+            "src": "../../media/Figure 04_06_01.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "eip-id1164942318757",
+          "segmentId": "m42076:para:eip-id1164942318757"
+        },
+        {
+          "type": "para",
+          "id": "eip-id1164949480434",
+          "segmentId": "m42076:para:eip-id1164949480434"
+        },
+        {
+          "type": "note",
+          "id": "fs-id1316241",
+          "title": {
+            "segmentId": "m42076:note-title:fs-id1316241-title",
+            "text": "Applying Newton’s Second Law"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "import-auto-id2325436",
+              "segmentId": "m42076:para:import-auto-id2325436"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id1606290",
+              "segmentId": "m42076:para:import-auto-id1606290"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id2638663",
+              "segmentId": "m42076:para:import-auto-id2638663"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id1438026",
+              "segmentId": "m42076:para:import-auto-id1438026"
+            },
+            {
+              "type": "para",
+              "id": "import-auto-id1561210",
+              "segmentId": "m42076:para:import-auto-id1561210"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "eip-id1164942802663",
+          "segmentId": "m42076:para:eip-id1164942802663"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id2154547",
+      "class": "ap-test-prep",
+      "title": {
+        "segmentId": "m42076:title:fs-id2154547-title",
+        "text": "Test Prep for AP Courses"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1642540",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1681906",
+                "segmentId": "m42076:problem:fs-id1681906"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1435421",
+                "segmentId": "m42076:solution:fs-id1435421"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1459777",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1687824",
+                "segmentId": "m42076:problem:fs-id1687824"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2158762",
+                "segmentId": "m42076:solution:fs-id2158762"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1795701",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1658020",
+                "segmentId": "m42076:problem:fs-id1658020"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id946017",
+                "segmentId": "m42076:solution:fs-id946017"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1452262",
+      "class": "section-summary",
+      "title": {
+        "segmentId": "m42076:title:fs-id1452262-title",
+        "text": "Section Summary"
+      },
+      "content": [
+        {
+          "type": "list",
+          "id": "fs-id2405830",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": "import-auto-id1655645",
+              "segmentId": "m42076:item:import-auto-id1655645",
+              "children": [
+                {
+                  "type": "list",
+                  "id": "fs-id2989991",
+                  "listType": "enumerated",
+                  "numberStyle": "arabic",
+                  "bulletStyle": null,
+                  "items": [
+                    {
+                      "id": "import-auto-id1435944",
+                      "segmentId": "m42076:item:import-auto-id1435944"
+                    },
+                    {
+                      "id": "import-auto-id1304011",
+                      "segmentId": "m42076:item:import-auto-id1304011"
+                    },
+                    {
+                      "id": "import-auto-id2638784",
+                      "segmentId": "m42076:item:import-auto-id2638784"
+                    },
+                    {
+                      "id": "import-auto-id2664631",
+                      "segmentId": "m42076:item:import-auto-id2664631"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id2328021",
+      "class": "problems-exercises",
+      "title": {
+        "segmentId": "m42076:title:fs-id2328021-title",
+        "text": "Problem Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1250439",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id2320259",
+                "segmentId": "m42076:problem:import-auto-id2320259"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id2660432",
+                "segmentId": "m42076:solution:import-auto-id2660432"
+              },
+              {
+                "type": "para",
+                "id": "import-auto-id1443940",
+                "segmentId": "m42076:solution:import-auto-id1443940"
+              },
+              {
+                "type": "para",
+                "id": "import-auto-id2687812",
+                "segmentId": "m42076:solution:import-auto-id2687812"
+              },
+              {
+                "type": "para",
+                "id": "import-auto-id1437388",
+                "segmentId": "m42076:solution:import-auto-id1437388"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id2651416",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id2403850",
+                "segmentId": "m42076:problem:import-auto-id2403850"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1630579",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id2127634",
+                "segmentId": "m42076:problem:import-auto-id2127634"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id2378459",
+                "segmentId": "m42076:solution:import-auto-id2378459"
+              },
+              {
+                "type": "para",
+                "id": "import-auto-id2033223",
+                "segmentId": "m42076:solution:import-auto-id2033223"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1682349",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id2337831",
+                "segmentId": "m42076:problem:import-auto-id2337831"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id666647",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id2310982",
+                "segmentId": "m42076:problem:import-auto-id2310982"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id953713",
+                "segmentId": "m42076:solution:import-auto-id953713"
+              },
+              {
+                "type": "para",
+                "id": "import-auto-id1550695",
+                "segmentId": "m42076:solution:import-auto-id1550695"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1662012",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id2096990",
+                "segmentId": "m42076:problem:import-auto-id2096990"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1673888",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id1458235",
+                "segmentId": "m42076:problem:import-auto-id1458235"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id1559426",
+                "segmentId": "m42076:solution:import-auto-id1559426"
+              },
+              {
+                "type": "para",
+                "id": "import-auto-id1309096",
+                "segmentId": "m42076:solution:import-auto-id1309096"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1333485",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id2189594",
+                "segmentId": "m42076:problem:import-auto-id2189594"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "figure",
+          "id": "import-auto-id2639094",
+          "caption": null,
+          "media": {
+            "id": "import-auto-id1746395",
+            "alt": "A right triangle is shown made up of three vectors. The first vector, F sub one, is along the triangle’s base toward the right; the second vector, F sub two, is along the perpendicular side pointing upward; and the third vector, F sub tot, is along the hypotenuse pointing up the incline. The magnitude of F sub tot is twenty newtons. In a free-body diagram, F sub one is shown by an arrow pointing right and F sub two is shown by an arrow acting vertically upward.",
+            "src": "../../media/Figure_04_06_04-4292.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id2159386",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id2840346",
+                "segmentId": "m42076:problem:import-auto-id2840346"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "eip-id2093803",
+                "segmentId": "m42076:solution:eip-id2093803"
+              }
+            ]
+          }
+        },
+        {
+          "type": "figure",
+          "id": "import-auto-id1789737",
+          "caption": {
+            "segmentId": "m42076:caption:import-auto-id1789737-caption"
+          },
+          "media": {
+            "id": "import-auto-id1273656",
+            "alt": "An overhead view of a child sitting on a snow saucer sled. Two forces, F sub one equal to ten newtons and F sub two equal to eight newtons, are acting toward the right. F sub one makes an angle of forty-five degrees from the x axis and F sub two makes an angle of thirty degrees from the x axis in a clockwise direction. A friction force f is equal to seven point five newtons, shown by a vector pointing in negative x direction. In the free-body diagram, F sub one and F sub two are shown by arrows toward the right, making a forty-five degree angle above the horizontal and a thirty-degree angle below the horizontal respectively. The friction force f is shown by an arrow along the negative x axis.",
+            "src": "../../media/Figure_04_06_05-5e7d.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1389092",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id1569746",
+                "segmentId": "m42076:problem:import-auto-id1569746"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "figure",
+          "id": "import-auto-id1436345",
+          "caption": null,
+          "media": {
+            "id": "import-auto-id2352417",
+            "alt": "An overhead view shows a car stuck in mud being pulled out by a rope tied to a tree trunk. Forces T are applied along the rope, with a perpendicular force F1 shown in the middle, creating angles theta.",
+            "src": "../../media/Figure_04_06_09-f3ba.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id2607890",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id1323508",
+                "segmentId": "m42076:problem:import-auto-id1323508"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id1272211",
+                "segmentId": "m42076:solution:import-auto-id1272211"
+              }
+            ]
+          }
+        },
+        {
+          "type": "figure",
+          "id": "import-auto-id1569692",
+          "caption": {
+            "segmentId": "m42076:caption:import-auto-id1569692-caption"
+          },
+          "media": {
+            "id": "import-auto-id2137082",
+            "alt": "Cross-section of jaw with sixteen teeth is shown. Braces are along the outside of the teeth. Three forces are acting on the protruding tooth. A force, T, is shown by an arrow making an angle of fifteen degrees below the positive x axis, and a second force, T, is shown by an arrow making an angle of fifteen degrees below the negative x axis.",
+            "src": "../../media/Figure_04_06_07.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id2686437",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id1687201",
+                "segmentId": "m42076:problem:import-auto-id1687201"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "figure",
+          "id": "import-auto-id1655793",
+          "caption": {
+            "segmentId": "m42076:caption:import-auto-id1655793-caption"
+          },
+          "media": {
+            "id": "import-auto-id2149349",
+            "alt": "Two caped superheroes hang on a rope suspended vertically from a bar.",
+            "src": "../../media/Figure_04_06_08.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1552077",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id1776191",
+                "segmentId": "m42076:problem:import-auto-id1776191"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id2654456",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id2335706",
+                "segmentId": "m42076:problem:import-auto-id2335706"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1677950",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "eip-id2692356",
+                "segmentId": "m42076:problem:eip-id2692356"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1325985",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id1742367",
+                "segmentId": "m42076:problem:import-auto-id1742367"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1285123",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id2297687",
+                "segmentId": "m42076:problem:import-auto-id2297687"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": null
+}

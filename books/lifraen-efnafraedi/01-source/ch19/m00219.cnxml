@@ -1,0 +1,83 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Nucleophilic Addition of Amines: Imine and Enamine Formation</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Nucleophilic Addition of Amines: Imine and Enamine Formation</md:title>
+    <md:content-id>m00219</md:content-id>
+    <md:uuid>979e442d-eb3c-463a-b3da-1f3889f0df47</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">Primary amines, RNH<sub>2</sub>, add to aldehydes and ketones to yield <term id="term-00001">imines</term>, <m:math><m:mrow><m:msub><m:mtext>R</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>C&#x2550;NR</m:mtext></m:mrow></m:math>. Secondary amines, R<sub>2</sub>NH, add similarly to yield <term id="term-00002">enamines</term>, <m:math><m:mrow><m:msub><m:mtext>R</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>N&#x2013;CR</m:mtext><m:mo>&#x2550;</m:mo><m:msub><m:mrow><m:mtext>CR</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:math> (<emphasis effect="italics">ene</emphasis> + <emphasis effect="italics">amine</emphasis> = unsaturated amine).</para>
+    <figure class="unnumbered scaled-down" id="fig-00001">
+    <media alt="Two reversible pathways from ketone or aldehyde. Conversion of aldehyde or ketone to imine and water using R N H 2 and enamine and water using R 2 N H.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_08_001.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00002">Imines are particularly common as intermediates in biological pathways, where they are often called <term id="term-00003">Schiff bases</term>. The amino acid alanine, for instance, is metabolized in the body by reaction with the aldehyde pyridoxal phosphate (PLP), a derivative of vitamin B<sub>6</sub>, to yield a Schiff base that is further degraded.</para>
+    <figure class="unnumbered" id="fig-00002">
+    <media alt="Reaction of pyridoxal phosphate and alanine in multiple steps to form the Schiff base, an imine, and water. Schiff base has a imine functional group.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_08_002.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00003">Imine formation and enamine formation seem different because one leads to a product with a <m:math><m:mrow><m:mtext>C&#x2550;N</m:mtext></m:mrow></m:math> bond and the other leads to a product with a <m:math><m:mrow><m:mtext>C&#x2550;C</m:mtext></m:mrow></m:math> bond. Actually, though, the reactions are quite similar. Both are typical examples of nucleophilic addition reactions in which water is eliminated from the initially formed tetrahedral intermediate and a new <m:math><m:mrow><m:mtext>C&#x2550;Nu</m:mtext></m:mrow></m:math> double bond is formed.</para>
+    <para id="para-00004">Imines are formed in a reversible, acid-catalyzed process (<link target-id="fig-00003"/>) that begins with nucleophilic addition of the primary amine to the carbonyl group, followed by transfer of a proton from nitrogen to oxygen to yield a neutral amino alcohol, or <term id="term-00004">carbinolamine</term>. Protonation of the carbinolamine oxygen by an acid catalyst then converts the –OH into a better leaving group (–OH<sub>2</sub><sup>+</sup>), and E1-like loss of water produces an iminium ion. Loss of a proton from nitrogen gives the final product and regenerates the acid catalyst.</para>
+    <figure class="mechanism-figure scaled-down" id="fig-00003">
+    <title>MECHANISM</title>
+    <media alt="Reaction mechanism for ketone or aldehyde to imine through five steps: nucleophilic attack of amine, proton transfer generating neutral carbinolamine, protonation of hydroxy, iminium ion formation, and deprotonation to imine.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_08_005.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">Mechanism of imine formation by reaction of an aldehyde or ketone with a primary amine.</emphasis> The key step is the initial nucleophilic addition to yield a carbinolamine intermediate, which then loses water to give the imine.</caption>
+    </figure>
+    <para id="para-00005">Imine formation with such reagents as hydroxylamine and 2,4-dinitrophenylhydrazine is sometimes useful because the products of these reactions—<emphasis effect="italics">oximes</emphasis> and <emphasis effect="italics">2,4-dinitrophenylhydrazones (2,4-DNPs),</emphasis> respectively—are often crystalline and easy to handle. Such crystalline derivatives are occasionally prepared as a means of purifying and characterizing liquid ketones or aldehydes.</para>
+    <figure class="unnumbered" id="fig-00004">
+    <media alt="First reaction shows the formation of cyclohexanone oxime between cyclohexanone and hydroxylamine. Second reaction shows the formation of acetone-2,4-dinitrophenylhydrazone from acetone and 2,4-dinitrophenylhydrazine. Water is the by-product in both reactions.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_08_004.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00006">Reaction of an aldehyde or ketone with a secondary amine, R<sub>2</sub>NH, rather than a primary amine yields an enamine. As shown in <link target-id="fig-00005"/>, the process is identical to imine formation up to the iminium ion stage, but at this point there is no proton on nitrogen that can be lost to form a neutral imine product. Instead, a proton is lost from the <emphasis effect="italics">neighboring</emphasis> carbon (the <emphasis effect="italics">α</emphasis> carbon), yielding an enamine.</para>
+    <figure class="mechanism-figure scaled-down" id="fig-00005">
+    <title>MECHANISM</title>
+    <media alt="Reaction mechanism shows enamine formation from ketone or aldehyde by reacting with secondary amine through four steps: nucleophilic addition causing carbinolamine formation, protonation, formation of iminium ion, deprotonation to enamine.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_08_003.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">Mechanism for enamine formation by reaction of an aldehyde or ketone with a secondary amine, R<sub>2</sub>NH.</emphasis> The iminium ion intermediate formed in step 3 has no hydrogen attached to N and so must lose H<sup>+</sup> from the carbon two atoms away.</caption>
+    </figure>
+    <para id="para-00007">Imine and enamine formation are slow at both high pH and low pH but reach a maximum rate at a weakly acidic pH around 4 to 5. For example, the profile of pH versus rate shown in <link target-id="fig-00006"/> for the reaction between acetone and hydroxylamine, NH<sub>2</sub>OH, indicates that the maximum reaction rate occurs at pH 4.5.</para>
+    <para id="para-00008">We can explain the observed pH dependence of imine formation by looking at the individual steps in the mechanism. As indicated in <link target-id="fig-00005"/>, an acid catalyst is required in step 3 to protonate the intermediate carbinolamine, thereby converting the –OH into a better leaving group. Thus, reaction will be slow if not enough acid is present (that is, at high pH). On the other hand, if too much acid is present (low pH), the basic amine nucleophile is completely protonated, so the initial nucleophilic addition step can’t occur.</para>
+    <figure class="scaled-down" id="fig-00006">
+    <media alt="A pH versus reaction rate graph. pH values range from 1 to 8. A sharp bell curve peaks at pH 4.5.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_08_006.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">Dependence on pH of the rate of reaction between acetone and hydroxylamine:</emphasis> <m:math><m:mrow><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>C&#x2550;O</m:mtext><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>OH</m:mtext><m:mo>→</m:mo><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>C&#x2550;NOH</m:mtext><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math>.</caption>
+    </figure>
+    <para id="para-00009">Evidently, a pH of 4.5 represents a compromise between the need for <emphasis effect="italics">some</emphasis> acid to catalyze the rate-limiting dehydration step but <emphasis effect="italics">not too much</emphasis> acid so as to avoid complete protonation of the amine. Each nucleophilic addition reaction has its own requirements, and conditions must be optimized to obtain maximum reaction rates.</para>
+    <example id="exam-00001">
+    <title>Predicting the Product of Reaction between a Ketone and an Amine</title>
+    <para id="para-00010">Show the products you would obtain by acid-catalyzed reaction of 3-pentanone with methylamine, CH<sub>3</sub>NH<sub>2</sub>, and with dimethylamine, (CH<sub>3</sub>)<sub>2</sub>NH.</para>
+    <para id="para-00011"><title><span class="red-text">Strategy</span></title> An aldehyde or ketone reacts with a primary amine, RNH<sub>2</sub>, to yield an imine, in which the carbonyl oxygen atom has been replaced by the =N–R group of the amine. Reaction of the same aldehyde or ketone with a secondary amine, R<sub>2</sub>NH, yields an enamine, in which the oxygen atom has been replaced by the –NR<sub>2</sub> group of the amine and the double bond has moved to a position between the former carbonyl carbon and the neighboring carbon.</para>
+    <para id="para-00012"><title><span class="cyan-text">Solution</span></title></para>
+    <figure class="unnumbered scaled-down" id="fig-00007">
+    <media alt="3-pentanone undergoes two reactions. It reacts with methylamine to form an imine and water. It reacts with ethyl amine to form an enamine and water.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_08_007.jpg"/>
+    </media>
+    </figure>
+    </example>
+    <section class="section-exercises" id="sect-00001">
+    <title>Problems</title>
+    <exercise id="exer-00001">
+    <problem id="prob-00001">
+    <para id="para-00013"><link class="os-embed" url="#exercise/19-08-OC-P10"/></para>
+    </problem>
+    </exercise>
+    <exercise id="exer-00002">
+    <problem id="prob-00002">
+    <para id="para-00014"><link class="os-embed" url="#exercise/19-08-OC-P11"/></para>
+    </problem>
+    </exercise>
+    <exercise id="exer-00003">
+    <problem id="prob-00003">
+    <para id="para-00015"><link class="os-embed" url="#exercise/19-08-OC-P12"/></para>
+    </problem>
+    </exercise>
+    </section>
+    </content>
+</document>

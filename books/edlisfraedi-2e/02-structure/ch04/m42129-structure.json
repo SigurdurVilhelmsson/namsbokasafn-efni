@@ -1,0 +1,103 @@
+{
+  "moduleId": "m42129",
+  "title": {
+    "segmentId": "m42129:title:auto-1",
+    "text": "Introduction to Dynamics: Newton’s Laws of Motion"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "02f52a02-2484-4ccb-bbd4-3c94edaa8e09"
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "import-auto-id2351295",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m42129:caption:import-auto-id2351295-caption"
+      },
+      "media": {
+        "id": "import-auto-id1662414",
+        "alt": "Two dolphins are shown in a pool at Lisbon Zoo. One is in the water, and the other is in the air diving back into water",
+        "src": "../../media/Figure_04_00_01-eeb3.jpg",
+        "mimeType": "image/png"
+      }
+    },
+    {
+      "type": "para",
+      "id": "import-auto-id1376471",
+      "segmentId": "m42129:para:import-auto-id1376471"
+    },
+    {
+      "type": "para",
+      "id": "import-auto-id2131141",
+      "segmentId": "m42129:para:import-auto-id2131141"
+    },
+    {
+      "type": "figure",
+      "id": "import-auto-id2054696",
+      "caption": {
+        "segmentId": "m42129:caption:import-auto-id2054696-caption"
+      },
+      "media": {
+        "id": "import-auto-id2638663",
+        "alt": "Cover page of the first edition of a book, Philosophiae Naturalis Principia Mathematica, written by Isaac Newton.",
+        "src": "../../media/Figure_04_00_02.jpg",
+        "mimeType": "image/jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "import-auto-id1323961",
+      "segmentId": "m42129:para:import-auto-id1323961"
+    },
+    {
+      "type": "para",
+      "id": "import-auto-id2731457",
+      "segmentId": "m42129:para:import-auto-id2731457"
+    },
+    {
+      "type": "para",
+      "id": "import-auto-id1672878",
+      "segmentId": "m42129:para:import-auto-id1672878"
+    },
+    {
+      "type": "note",
+      "id": "fs-id2314836",
+      "title": {
+        "segmentId": "m42129:note-title:fs-id2314836-title",
+        "text": "Making Connections: Past and Present Philosophy"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "import-auto-id1734758",
+          "segmentId": "m42129:para:import-auto-id1734758"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "embed",
+      "segmentId": "m42129:para:embed"
+    },
+    {
+      "type": "media",
+      "id": "concept-trailer-newtons-laws",
+      "class": null,
+      "alt": "OpenStax Concept Trailer for Newton's Laws",
+      "src": ""
+    }
+  ],
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "concept-trailer-newtons-laws",
+      "class": null,
+      "alt": "OpenStax Concept Trailer for Newton's Laws",
+      "src": "",
+      "mimeType": null
+    }
+  ],
+  "sectionOrder": null
+}

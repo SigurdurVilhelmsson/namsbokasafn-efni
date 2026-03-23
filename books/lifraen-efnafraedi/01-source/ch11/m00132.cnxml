@@ -1,0 +1,16 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Biological Elimination Reactions</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Biological Elimination Reactions</md:title>
+    <md:content-id>m00132</md:content-id>
+    <md:uuid>1be375c8-96d0-4b67-ba99-46e7f043e49c</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">All three elimination reactions—E2, E1, and E1cB—occur in biological pathways, but the E1cB mechanism is particularly common. The substrate is usually an alcohol rather than an alkyl halide, and the H atom removed is usually adjacent to a carbonyl group, just as in laboratory reactions. Thus, 3-hydroxy carbonyl compounds are frequently converted to unsaturated carbonyl compounds by elimination reactions. A typical example occurs during the biosynthesis of fats and oils when a 3-hydroxybutyryl thioester is dehydrated to the corresponding unsaturated (crotonyl) thioester. The base in this reaction is a histidine amino acid in the enzyme, and the loss of the –OH group is assisted by simultaneous protonation.</para>
+    <figure class="unnumbered scaled-down" id="fig-00001">
+    <media alt="The reaction mechanism of an alcohol with 3-hydroxybutyryl thioester, forms an intermediate compound, which further yields water and crotonyl thioester.">
+    <image mime-type="image/jpeg" src="../../media/OChem_11_11_001.jpg"/>
+    </media>
+    </figure>
+    </content>
+</document>

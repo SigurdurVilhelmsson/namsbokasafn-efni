@@ -1,0 +1,62 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Reactions of Ethers: Acidic Cleavage</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Reactions of Ethers: Acidic Cleavage</md:title>
+    <md:content-id>m00250</md:content-id>
+    <md:uuid>d16607da-fc77-484c-ad5a-c12855a33aca</md:uuid>
+  </metadata>
+  <content>
+<para id="para-00001">Ethers are unreactive to many reagents used in organic chemistry, a property that accounts for their wide use as reaction solvents. Halogens, dilute acids, bases, and nucleophiles have no effect on most ethers. In fact, ethers undergo only one truly general reaction—they are cleaved by strong acids. Aqueous HBr and HI both work well, but HCl does not cleave ethers.</para>
+<figure class="unnumbered scaled-down" id="fig-00001">
+<media alt="Ethyl phenyl ether reacts with hydrogen bromide and water under reflux, to yield phenol and bromoethane.">
+<image mime-type="image/jpeg" src="../../media/OChem_18_03_001.jpg"/>
+</media>
+</figure>
+<para id="para-00002">Acidic ether cleavages are typical nucleophilic substitution reactions and take place by either S<sub>N</sub>1 or S<sub>N</sub>2 mechanisms, depending on the structure of the substrate. Ethers with only primary and secondary alkyl groups react by an S<sub>N</sub>2 mechanism, in which I<sup>–</sup> or Br<sup>–</sup> reacts with the protonated ether at the less hindered site. This usually results in a selective cleavage into a single alcohol and a single alkyl halide. For example, ethyl isopropyl ether exclusively yields isopropyl alcohol and iodoethane on cleavage by HI because nucleophilic attack by iodide ion occurs at the less hindered primary site rather than at the more hindered secondary site.</para>
+<figure class="unnumbered" id="fig-00002">
+<media alt="Ethyl isopropyl ether reacts with hydrogen iodide, forming intermediate in which ethyl carbon is labeled less hindered, is attacked by iodide (S N 2) to produce isopropyl alcohol and iodoethane.">
+<image mime-type="image/jpeg" src="../../media/OChem_18_03_002.jpg"/>
+</media>
+</figure>
+<para id="para-00003">Ethers with a tertiary, benzylic, or allylic group cleave by either an S<sub>N</sub>1 or E1 mechanism because these substrates can produce stable intermediate carbocations. These reactions are often fast and take place at moderate temperatures. <emphasis effect="italics">tert</emphasis>-Butyl ethers, for example, react by an E1 mechanism on treatment with trifluoroacetic acid at 0 °C. We’ll see in <emphasis effect="bold">Section 26.7</emphasis> that this reaction is often used in the laboratory synthesis of peptides.</para>
+<figure class="unnumbered scaled-down" id="fig-00003">
+<media alt="Tert-butyl cyclohexyl ether reacts with trifluoroacetic acid at zero degrees Celcius forming cyclohexanol (90 percent yield) and 2-methylpropene.">
+<image mime-type="image/jpeg" src="../../media/OChem_18_03_003.jpg"/>
+</media>
+</figure>
+<example id="exam-00001">
+<title>Predicting the Product of an Ether Cleavage Reaction</title>
+<para id="para-00004">Predict the products of the following reaction:</para>
+<figure class="unnumbered scaled-down" id="fig-00004">
+<media alt="A tertiary butyl group is bonded to a propyl group via an ether linkage which reacts with hydrogen bromide to form unknown product(s), depicted by a question mark.">
+<image mime-type="image/jpeg" src="../../media/OChem_18_03_004.jpg"/>
+</media>
+</figure>
+<para id="para-00005"><title><span class="red-text">Strategy</span></title> Identify the substitution pattern of the two groups attached to oxygen—in this case a tertiary alkyl group and a primary alkyl group. Then recall the guidelines for ether cleavages. An ether with only primary and secondary alkyl groups usually undergoes cleavage by S<sub>N</sub>2 attack of a nucleophile on the less hindered alkyl group, but an ether with a tertiary alkyl group usually undergoes cleavage by an S<sub>N</sub>1 mechanism. In this case, an S<sub>N</sub>1 cleavage of the tertiary C–O bond will occur, giving 1-propanol and a tertiary alkyl bromide. In addition, a competitive E1 reaction leading to alkene might occur.</para>
+<para id="para-00006"><title><span class="cyan-text">Solution</span></title></para>
+<figure class="unnumbered scaled-down" id="fig-00005">
+<media alt="Tert-butyl propyl ether reacts with hydrogen bromide to produce 2-bromo-2-methylpropane and 1-propanol.">
+<image mime-type="image/jpeg" src="../../media/OChem_18_03_005.jpg"/>
+</media>
+</figure>
+</example>
+<section class="section-exercises" id="sect-00001">
+<title>Problems</title>
+<exercise id="exer-00001">
+<problem id="prob-00001">
+<para id="para-00007"><link class="os-embed" url="#exercise/18-03-OC-P07"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00002">
+<problem id="prob-00002">
+<para id="para-00008"><link class="os-embed" url="#exercise/18-03-OC-P08"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00003">
+<problem id="prob-00003">
+<para id="para-00009"><link class="os-embed" url="#exercise/18-03-OC-P09"/></para>
+</problem>
+</exercise>
+</section>
+</content>
+</document>

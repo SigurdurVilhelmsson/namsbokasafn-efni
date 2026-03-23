@@ -1,0 +1,109 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Polyamides and Polyesters: Step-Growth Polymers</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Polyamides and Polyesters: Step-Growth Polymers</md:title>
+    <md:content-id>m00247</md:content-id>
+    <md:uuid>863e9090-cc24-4439-9e14-f4d7d04e5a03</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">When an amine reacts with an acid chloride, an amide is formed. What would happen, though, if a <emphasis effect="italics">diamine</emphasis> and a <emphasis effect="italics">diacid chloride</emphasis> were allowed to react? Each partner would form two amide bonds, linking more and more molecules together until a giant polyamide resulted. In the same way, reaction of a diol with a diacid would lead to a polyester.</para>
+    <figure class="unnumbered" id="fig-00001">
+    <media alt="The first reaction shows a diamine reacting with a diacid chloride to form a polyamide (nylon). The second reaction shows a diol reacting with a diacid to form a polyester and water.">
+    <image mime-type="image/jpeg" src="../../media/OChem_21_09_001.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00002">There are two main classes of synthetic polymers: <emphasis effect="italics">chain-growth polymers</emphasis> and <emphasis effect="italics">step-growth polymers.</emphasis> The polyethylene and other alkene and diene polymers that we saw in <link document="m00098"/> and <link document="m00176"/> are called <term id="term-00001">chain-growth polymers</term> because they are produced in chain-reaction processes. An initiator adds to a <m:math><m:mrow><m:mtext>C&#x2550;C</m:mtext></m:mrow></m:math> bond to give a reactive intermediate, which adds to a second alkene molecule to produce a new intermediate, which adds to a third molecule, and so on. By contrast, polyamides and polyesters are <term id="term-00002">step-growth polymers</term> because each bond in the polymer is formed independently in a discrete step, often the nucleophilic acyl substitution reaction of a carboxylic acid derivative. Some commercially important step-growth polymers are shown in <link target-id="table-00001"/>.</para>
+    <table id="table-00001" summary="An illustration (table) shows the structures of monomers the polymers made and their uses. Adipic acid reacts with Hexamethylenediamine to yield Nylon 66 used in Fibers clothing tire cord. The structure of adipic acid shows a green hydroxyl group bonded to a carbonyl group that is bonded to 4 methylene groups and then a carbonyl group bonded to green hydroxyl group. Hexamethylenediamine shows a blue amino group bonded to a chain of 6 methylene groups and then a blue amino group. Dimethyl terephthalate reacts with Ethylene glycol to yield Dacron Mylar and Terylene used in Fibers clothing films tire cord. The structure of Dimethyl terephthalate shows a benzene bonded to a carbonyl group at C1 and C4. Each carbonyl group is bonded to a green methoxide group. Ethylene glycol shows a blue hydroxyl group bonded to a chain of two methylene groups and then a blue hydroxyl group. Caprolactam yields Nylon 6 and Perlon used in Fibers castings. Caprolactam shows a cycloheptane ring with a blue nitrogen monohydride; the ring is double bonded to a pink oxygen. Diphenyl carbonate reacts with Bisphenol A to yield Lexan and polycarbonate used in Equipment housing molded articles. Diphenyl carbonate shows a carbonyl group bonded to two green oxygen atoms on both sides. Each green oxygen is bonded to a benzene ring. Bisphenol A shows a carbon bonded to two methyl groups and two phenols in which the hydroxyl groups are blue. Toluene-2 6-diisocyanate reacts with Poly(2-butene-1 4-diol) to yield Polyurethane and Spandex used in Fibers coatings foams. Toluene-2 6-diisocyanate shows a carbonyl group double bonded to a nitrogen bonded to a benzene that is bonded to a methyl group and a nitrogen that is double bonded to a carbonyl group. Poly(2-butene-1 4-diol) shows a blue hydroxyl group bonded to a methylene group bonded to a methine group double bonded to a methine group bonded to a methylene group bonded to a blue hydroxyl group. The structure except the hydroxyl groups is shown inside parentheses with subscript n.">
+    <title>Some Common Step-Growth Polymers and Their Uses</title>
+    <tgroup cols="4">
+    <colspec colnum="1" colname="c1"/>
+    <colspec colnum="2" colname="c2"/>
+    <colspec colnum="3" colname="c3"/>
+    <colspec colnum="4" colname="c4"/>
+    <thead>
+    <row valign="top">
+    <entry valign="top" align="left">Monomers</entry>
+    <entry valign="top" align="left">Structure</entry>
+    <entry valign="top" align="left">Polymer</entry>
+    <entry valign="top" align="left">Uses</entry>
+    </row>
+    </thead>
+    <tbody>
+    <row valign="top">
+    <entry valign="top" align="left" namest="c1" nameend="c2"><media class="unnumbered" alt="The structure of adipic acid is a six carbon chain, C1 and C 6 of which are carboxylic acids The structure of hexamethylenediamine is a six carbon chain with amine groups on C1 and C 6."><image mime-type="image/jpeg" src="../../media/OChem_21_09_003_T-nylon66.jpg"/></media></entry>
+    <entry valign="top" align="left">Nylon 66</entry>
+    <entry valign="top" align="left">Fibers, clothing, tire cord</entry>
+    </row>
+    <row valign="top">
+    <entry valign="top" align="left" namest="c1" nameend="c2"><media class="unnumbered" alt="The structure of dimethyl terephthalate is a benzene ring with methyl ester groups para to one another. Ethylene glycol is a two-carbon chain with hydroxyl groups on each carbon."><image mime-type="image/jpeg" src="../../media/OChem_21_09_003_T-dacronmylar.jpg"/></media></entry>
+    <entry valign="top" align="left">Dacron, Mylar, Terylene</entry>
+    <entry valign="top" align="left">Fibers, clothing, films, tire cord</entry>
+    </row>
+    <row valign="top">
+    <entry valign="top" align="left" namest="c1" nameend="c2"><media class="unnumbered" alt="The caprolactam structure is a seven-membered cyclic cycloheptanone ring in which a nitrogen atom replaces the carbon adjacent to the carbonyl group."><image mime-type="image/jpeg" src="../../media/OChem_21_09_003_T-nylon6perlon.jpg"/></media></entry>
+    <entry valign="top" align="left">Nylon 6, Perlon</entry>
+    <entry valign="top" align="left">Fibers, castings</entry>
+    </row>
+    <row valign="top">
+    <entry valign="top" align="left" namest="c1" nameend="c2"><media class="unnumbered" alt="The structure of diphenyl carbonate comprises of a central carbonyl group attached to two oxygen atom. Each of the oxygen atoms is also attached to a benzene ring. The structure of bisphenol A comprises of a central carbon atom attached to two methyl groups and two benzene rings bearing hydroxyl groups in the 4 position."><image mime-type="image/jpeg" src="../../media/OChem_21_09_003_T-lexan.jpg"/></media></entry>
+    <entry valign="top" align="left">Lexan, polycarbonate</entry>
+    <entry valign="top" align="left">Equipment housing, molded articles</entry>
+    </row>
+    <row valign="top">
+    <entry valign="top" align="left" namest="c1" nameend="c2"><media class="unnumbered" alt="Toluene-2,6-diisocyanate comprises of a benzene ring with a methyl group and with isocyanate groups on either side of the methyl group. Poly(but-2-ene) is a four-carbon chain alkene enclosed in brackets with subscript n, with two hydroxyl groups on terminal carbons."><image mime-type="image/jpeg" src="../../media/OChem_21_09_003_T-polyurethane.jpg"/></media></entry>
+    <entry valign="top" align="left">Polyurethane, Spandex</entry>
+    <entry valign="top" align="left">Fibers, coatings, foams</entry>
+    </row>
+    </tbody>
+    </tgroup>
+    </table>
+    <section id="sect-00001">
+    <title>Polyamides (Nylons)</title>
+    <para id="para-00003">The best known step-growth polymers are the polyamides, or <emphasis effect="italics">nylons,</emphasis> first prepared in 1930 by Wallace Carothers at the DuPont Company by heating a diamine with a diacid. For instance, nylon 66 is prepared by reaction of adipic acid (hexanedioic acid) with hexamethylenediamine (1,6-hexanediamine) at 280 °C. The designation “66” indicates the number of carbon atoms in the diamine (the first 6) and the diacid (the second 6).</para>
+    <figure class="unnumbered scaled-down" id="fig-00002">
+    <media alt="The reaction shows the formation of Nylon 6 6 polymer from adipic acid and hexamethylenediamine by heating. The product has a twelve-carbon repeating chain enclosed in parentheses with subscript n.">
+    <image mime-type="image/jpeg" src="../../media/OChem_21_09_002.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00004">Nylons are used both in engineering applications and in making fibers. A combination of high impact strength and abrasion resistance makes nylon an excellent metal substitute for bearings and gears. As fiber, nylon is used in a variety of applications, from clothing to tire cord to ropes.</para>
+    </section>
+    <section id="sect-00002">
+    <title>Polyesters</title>
+    <para id="para-00005">The most generally useful polyester is made by reaction between dimethyl terephthalate (dimethyl 1,4-benzenedicarboxylate) and ethylene glycol (1,2-ethanediol). The product is used under the trade name Dacron to make clothing fiber or tire cord and under the name Mylar to make recording tape. The tensile strength of poly(ethylene terephthalate) film is nearly equal to that of steel.</para>
+    <figure class="unnumbered" id="fig-00003">
+    <media alt="The reaction shows dimethyl terephthalate and ethylene glycol heated at two-hundred degrees Celsius forming polyester Dacron or Mylar.">
+    <image mime-type="image/jpeg" src="../../media/OChem_21_09_004.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00006">Lexan, a polycarbonate prepared from diphenyl carbonate and bisphenol A, is another commercially valuable polyester. Lexan has an unusually high impact strength, making it valuable for use in bicycle helmets and laptop cases.</para>
+    <figure class="unnumbered scaled-down" id="fig-00004">
+    <media alt="The reaction shows diphenyl catbonate and Bisphenol A heated at three-hundred degrees Celsius forming polyester Lexan.">
+    <image mime-type="image/jpeg" src="../../media/OChem_21_09_005.jpg"/>
+    </media>
+    </figure>
+    </section>
+    <section id="sect-00003">
+    <title>Sutures and Biodegradable Polymers</title>
+    <para id="para-00007">Because plastics are too often thrown away rather than recycled, much work has been carried out on developing biodegradable polymers, which can be broken down rapidly in landfills by soil microorganisms. Among the most common biodegradable polymers are poly(glycolic acid) (PGA), poly(lactic acid) (PLA), and poly(hydroxybutyrate) (PHB). All are polyesters and are therefore susceptible to hydrolysis of their ester links. Copolymers of PGA with PLA have found a particularly wide range of uses. A 90/10 copolymer of poly(glycolic acid) with poly(lactic acid) is used to make absorbable sutures, for instance. The sutures are entirely hydrolyzed and absorbed by the body within 90 days after surgery.</para>
+    <figure class="unnumbered scaled-down" id="fig-00005">
+    <media alt="The first reaction shows the polymerization of glycolic acid to form poly(glycolic) acid. The second shows polymerization of lactic acid to form poly(lactic) acid, and the third the polymerization of 2-hydroxybutyric acid to form poly(hydroxybutyrate). All three polymerizations require heat.">
+    <image mime-type="image/jpeg" src="../../media/OChem_21_09_006.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00008">In Europe, interest has centered particularly on poly(hydroxybutyrate), which can be made into films for packaging as well as into molded items. The polymer degrades within four weeks in landfills, both by ester hydrolysis and by an E1cB elimination reaction of the oxygen atom <emphasis effect="italics">β</emphasis> to the carbonyl group. The use of poly(hydroxybutyrate) is limited at present by its cost—about four times that of polypropylene.</para>
+    </section>
+    <section class="section-exercises" id="sect-00004">
+    <title>Problems</title>
+    <exercise id="exer-00001">
+    <problem id="prob-00001">
+    <para id="para-00009"><link class="os-embed" url="#exercise/21-09-OC-P23"/></para>
+    </problem>
+    </exercise>
+    <exercise id="exer-00002">
+    <problem id="prob-00002">
+    <para id="para-00010"><link class="os-embed" url="#exercise/21-09-OC-P24"/></para>
+    </problem>
+    </exercise>
+    </section>
+    </content>
+</document>

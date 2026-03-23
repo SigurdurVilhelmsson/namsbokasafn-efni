@@ -1,0 +1,1010 @@
+{
+  "moduleId": "m00038",
+  "title": {
+    "segmentId": "m00038:title:auto-1",
+    "text": "Conformations of Other Alkanes"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "60cf85b6-afad-402f-91c0-1f5f217a5bde"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00038:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00038:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "caption": {
+        "segmentId": "m00038:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": "Staggered propane undergoes rotation of rear carbon 60 degrees to form eclipsed propane.",
+        "src": "../../media/OChem_03_07_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00038:para:para-00003"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": "Anti-conformation of butane is rotated by 60 degrees to produce eclipsed conformation of butane.",
+        "src": "../../media/OChem_03_07_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00038:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": "Eclipsed conformation of butane is rotated by 60 degrees to produce gauche conformation of butane.",
+        "src": "../../media/OChem_03_07_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00038:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": "Gauche conformation of butane is rotated by 60 degrees to produce eclipsed conformation of butane.",
+        "src": "../../media/OChem_03_07_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00038:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00005",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00038:caption:fig-00005-caption"
+      },
+      "media": {
+        "alt": "A graph of potential energy versus dihedral angle between methyl groups, in butane. The curve indicates a trough at an energy of 3.8 kilojoules per mole.",
+        "src": "../../media/OChem_03_07_005.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00007",
+      "segmentId": "m00038:para:para-00007"
+    },
+    {
+      "type": "table",
+      "id": "table-00001",
+      "summary": " ",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m00038:entry:auto-12",
+              "attributes": {
+                "valign": "bottom",
+                "align": "left",
+                "morerows": "1"
+              }
+            },
+            {
+              "segmentId": "m00038:entry:auto-13",
+              "attributes": {
+                "valign": "bottom",
+                "align": "left",
+                "morerows": "1"
+              }
+            },
+            {
+              "segmentId": "m00038:entry:auto-14",
+              "attributes": {
+                "valign": "bottom",
+                "align": "left",
+                "namest": "c3",
+                "nameend": "c4"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00038:entry:auto-15",
+              "attributes": {
+                "valign": "bottom",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00038:entry:auto-16",
+              "attributes": {
+                "valign": "bottom",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00038:entry:auto-17",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00038:entry:auto-18",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00038:entry:auto-19",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00038:entry:auto-20",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00038:entry:auto-21",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00038:entry:auto-22",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00038:entry:auto-23",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00038:entry:auto-24",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00038:entry:auto-25",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00038:entry:auto-26",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00038:entry:auto-27",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00038:entry:auto-28",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m00038:entry:auto-29",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00038:entry:auto-30",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00038:entry:auto-31",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m00038:entry:auto-32",
+              "attributes": {
+                "valign": "top",
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "para-00008",
+      "segmentId": "m00038:para:para-00008"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00006",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00038:caption:fig-00006-caption"
+      },
+      "media": {
+        "alt": "The ball and stick model and molecular structure of the decane are represented.",
+        "src": "../../media/OChem_03_07_006.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00009",
+      "segmentId": "m00038:para:para-00009"
+    },
+    {
+      "type": "example",
+      "id": "exam-00001",
+      "title": {
+        "segmentId": "m00038:example-title:exam-00001-title",
+        "text": "Strategy"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00010",
+          "segmentId": "m00038:para:para-00010"
+        },
+        {
+          "type": "para",
+          "id": "para-00011",
+          "segmentId": "m00038:para:para-00011"
+        },
+        {
+          "type": "para",
+          "id": "para-00012",
+          "segmentId": "m00038:para:para-00012",
+          "title": {
+            "segmentId": "m00038:para-title:para-00012-title",
+            "text": "Solution"
+          }
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-00007",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": "Two Newman projections are represented. The first and second structures are labeled, most stable (staggered) and Least stable (eclipsed), respectively.",
+        "src": "../../media/OChem_03_07_007.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00038:title:sect-00001-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00004",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "note-00001",
+      "class": "chemistry-matters",
+      "title": {
+        "segmentId": "m00038:title:note-00001-title",
+        "text": "Gasoline"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00017",
+          "segmentId": "m00038:para:para-00017"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00008",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m00038:caption:fig-00008-caption"
+          },
+          "media": {
+            "alt": "A photograph of Edwin Drake’s first oil well is presented.",
+            "src": "../../media/OChem_03_07_xxx.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00018",
+          "segmentId": "m00038:para:para-00018"
+        },
+        {
+          "type": "para",
+          "id": "para-00019",
+          "segmentId": "m00038:para:para-00019"
+        },
+        {
+          "type": "para",
+          "id": "para-00020",
+          "segmentId": "m00038:para:para-00020"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00009",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": "Two molecular structures of heptane and 2,2,4-trimethylpentane are represented. The first and second structures have octane numbers equal to 0 and 100, respectively.",
+            "src": "../../media/OChem_03_07_009.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "para-00021",
+          "segmentId": "m00038:para:para-00021"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": "key-terms",
+      "title": null,
+      "content": [
+        {
+          "type": "list",
+          "id": "list-00001",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-5"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-6"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-7"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-8"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-9"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-10"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-11"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-12"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-13"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-14"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-15"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-16"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-17"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-18"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-19"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-20"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-21"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-22"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-23"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-24"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-25"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-26"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-27"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-28"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-29"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-30"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-31"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-32"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-33"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-34"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-35"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-36"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-37"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-38"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-39"
+            },
+            {
+              "id": null,
+              "segmentId": "m00038:item:list-00001-item-40"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": "summary",
+      "title": {
+        "segmentId": "m00038:title:sect-00003-title",
+        "text": "Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00022",
+          "segmentId": "m00038:para:para-00022"
+        },
+        {
+          "type": "para",
+          "id": "para-00023",
+          "segmentId": "m00038:para:para-00023"
+        },
+        {
+          "type": "para",
+          "id": "para-00024",
+          "segmentId": "m00038:para:para-00024"
+        },
+        {
+          "type": "para",
+          "id": "para-00025",
+          "segmentId": "m00038:para:para-00025"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00004",
+      "class": "additional-problems",
+      "title": {
+        "segmentId": "m00038:title:sect-00004-title",
+        "text": "Additional Problems"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00029",
+          "segmentId": "m00038:para:para-00029"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00005",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00006",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00007",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00068",
+          "segmentId": "m00038:para:para-00068"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00008",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00009",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00010",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00011",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00012",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00035",
+          "segmentId": "m00038:para:para-00035"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00013",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00014",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00015",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00016",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00017",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00018",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00042",
+          "segmentId": "m00038:para:para-00042"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00019",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00020",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00021",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00022",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00023",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00024",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00025",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00026",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00027",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00052",
+          "segmentId": "m00038:para:para-00052"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00028",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00029",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00030",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00031",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00032",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00033",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "para",
+          "id": "para-00059",
+          "segmentId": "m00038:para:para-00059"
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00034",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00035",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00036",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00037",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00038",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00039",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00040",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00041",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": null,
+      "class": null,
+      "alt": "Two Newman projections are represented. The first and second structures are labeled, most stable (staggered) and Least stable (eclipsed), respectively.",
+      "src": "../../media/OChem_03_07_007.jpg",
+      "mimeType": "image/jpeg"
+    }
+  ],
+  "sectionOrder": null
+}

@@ -1,0 +1,895 @@
+{
+  "moduleId": "m66374",
+  "title": {
+    "segmentId": "m66374:title:auto-1",
+    "text": "Passive Transport"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "c72e42de-7fe3-4645-8e14-67e79dd6edbc",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to do the following:",
+      "items": [
+        "Explain why and how passive transport occurs",
+        "Understand the osmosis and diffusion processes",
+        "Define tonicity and its relevance to passive transport"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-id2054981",
+      "segmentId": "m66374:para:fs-id2054981"
+    },
+    {
+      "type": "para",
+      "id": "fs-id1464026",
+      "segmentId": "m66374:para:fs-id1464026"
+    },
+    {
+      "type": "section",
+      "id": "fs-id1309562",
+      "class": null,
+      "title": {
+        "segmentId": "m66374:title:fs-id1309562-title",
+        "text": "Selective Permeability"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id2138380",
+          "segmentId": "m66374:para:fs-id2138380"
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch05_02_01",
+          "caption": {
+            "segmentId": "m66374:caption:fig-ch05_02_01-caption"
+          },
+          "media": {
+            "id": "fs-id1712645",
+            "alt": "This illustration shows that the inside and outside of a plasma membrane are different, with the exterior covered in the spherical heads, and the interior filled with the strandlike tails.",
+            "src": "../../media/Figure_05_02_01-8fd6.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1248539",
+          "segmentId": "m66374:para:fs-id1248539"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1595889",
+          "segmentId": "m66374:para:fs-id1595889"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1569987",
+      "class": null,
+      "title": {
+        "segmentId": "m66374:title:fs-id1569987-title",
+        "text": "Diffusion"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-id1443544",
+          "class": null,
+          "title": {
+            "segmentId": "m66374:title:fs-id1443544-title",
+            "text": "Factors That Affect Diffusion"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1481453",
+              "segmentId": "m66374:para:fs-id1481453"
+            },
+            {
+              "type": "list",
+              "id": "fs-id1454570",
+              "listType": "bulleted",
+              "numberStyle": null,
+              "bulletStyle": null,
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m66374:item:fs-id1454570-item-1"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m66374:item:fs-id1454570-item-2"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m66374:item:fs-id1454570-item-3"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m66374:item:fs-id1454570-item-4"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m66374:item:fs-id1454570-item-5"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m66374:item:fs-id1454570-item-6"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m66374:item:fs-id1454570-item-7"
+                }
+              ]
+            },
+            {
+              "type": "para",
+              "id": "fs-id1768863",
+              "segmentId": "m66374:para:fs-id1768863"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-id2051346",
+          "segmentId": "m66374:para:fs-id2051346"
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch05_02_02",
+          "caption": {
+            "segmentId": "m66374:caption:fig-ch05_02_02-caption"
+          },
+          "media": {
+            "id": "fs-id873679",
+            "alt": "The left part of this illustration shows a substance on one side of a membrane only, in the extracellular fluid. The middle part shows that, after some time, some of the substance has diffused across the plasma membrane, from the extracellular fluid and into the cytoplasm. The right part shows that, after more time, an equal amount of the substance is on each side of the membrane.",
+            "src": "../../media/Figure_05_02_02-9936.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id846110",
+          "segmentId": "m66374:para:fs-id846110"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1708074",
+      "class": null,
+      "title": {
+        "segmentId": "m66374:title:fs-id1708074-title",
+        "text": "Facilitated transport"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-id1778201",
+          "class": null,
+          "title": {
+            "segmentId": "m66374:title:fs-id1778201-title",
+            "text": "Channels"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1805576",
+              "segmentId": "m66374:para:fs-id1805576"
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch05_02_03",
+              "caption": {
+                "segmentId": "m66374:caption:fig-ch05_02_03-caption"
+              },
+              "media": {
+                "id": "fs-id1788441",
+                "alt": "This illustration shows two channel proteins in the plasma membrane. One protein is labeled gate closed, and there is no space for particles to pass through.  The other is labeled gate open, and there is a space for substances to pass through.  Substances of the same type appear on both sides of the membrane near the open-gated protein.",
+                "src": "../../media/Figure_05_02_04-fcc1.jpg",
+                "mimeType": "image/jpg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-id2051156",
+              "segmentId": "m66374:para:fs-id2051156"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-id677498",
+          "class": null,
+          "title": {
+            "segmentId": "m66374:title:fs-id677498-title",
+            "text": "Carrier Proteins"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1507066",
+              "segmentId": "m66374:para:fs-id1507066"
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch05_02_04",
+              "caption": {
+                "segmentId": "m66374:caption:fig-ch05_02_04-caption"
+              },
+              "media": {
+                "id": "fs-id2019240",
+                "alt": "This illustration shows a carrier protein embedded in the membrane with an opening that initially faces the extracellular surface, labeled the hydrophilic pocket. After a substance binds the carrier, it changes shape so that the opening faces the cytoplasm. The change is labeled conformational change. After, the substance is released.",
+                "src": "../../media/Figure_05_02_05-71ff.jpg",
+                "mimeType": "image/jpg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-id1378540",
+              "segmentId": "m66374:para:fs-id1378540"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1704998",
+              "segmentId": "m66374:para:fs-id1704998"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-id1772383",
+          "segmentId": "m66374:para:fs-id1772383"
+        },
+        {
+          "type": "para",
+          "id": "eip-id1169464282436",
+          "segmentId": "m66374:para:eip-id1169464282436"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1439092",
+      "class": null,
+      "title": {
+        "segmentId": "m66374:title:fs-id1439092-title",
+        "text": "Osmosis"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-id1355559",
+          "class": null,
+          "title": {
+            "segmentId": "m66374:title:fs-id1355559-title",
+            "text": "Mechanism"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1443145",
+              "segmentId": "m66374:para:fs-id1443145"
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch05_02_05",
+              "caption": {
+                "segmentId": "m66374:caption:fig-ch05_02_05-caption"
+              },
+              "media": {
+                "id": "fs-id1378392",
+                "alt": "This illustration shows a container whose contents are separated by a semipermeable membrane. Initially, there is a high concentration of solute on the right side of the membrane and a low concentration of the left. Over time, water diffuses across the membrane toward the side of the container that initially had a higher concentration of solute (lower concentration of water). As a result of osmosis, the water level is higher on this side of the membrane, and the solute concentration is the same on both sides.",
+                "src": "../../media/Figure_05_02_06-d985.jpg",
+                "mimeType": "image/jpg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-id1690710",
+              "segmentId": "m66374:para:fs-id1690710"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1778807",
+              "segmentId": "m66374:para:fs-id1778807"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-id1538230",
+          "segmentId": "m66374:para:fs-id1538230"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1962154",
+      "class": null,
+      "title": {
+        "segmentId": "m66374:title:fs-id1962154-title",
+        "text": "Tonicity"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-id1437221",
+          "class": null,
+          "title": {
+            "segmentId": "m66374:title:fs-id1437221-title",
+            "text": "Hypotonic Solutions"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id2026434",
+              "segmentId": "m66374:para:fs-id2026434"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-id1341136",
+          "class": null,
+          "title": {
+            "segmentId": "m66374:title:fs-id1341136-title",
+            "text": "Hypertonic Solutions"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1694814",
+              "segmentId": "m66374:para:fs-id1694814"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-id2072799",
+          "class": null,
+          "title": {
+            "segmentId": "m66374:title:fs-id2072799-title",
+            "text": "Isotonic Solutions"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1804577",
+              "segmentId": "m66374:para:fs-id1804577"
+            },
+            {
+              "type": "note",
+              "id": "fs-id1640372",
+              "class": "visual-connection",
+              "title": null,
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-id1723475",
+                  "segmentId": "m66374:para:fs-id1723475"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-id1768681",
+                  "segmentId": "m66374:para:fs-id1768681"
+                }
+              ]
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch05_02_06",
+              "caption": {
+                "segmentId": "m66374:caption:fig-ch05_02_06-caption"
+              },
+              "media": {
+                "id": "fs-id1999972",
+                "alt": "The left part shows bloated red blood cells, lysed, bathed in a hypotonic solution. The middle part shows healthy red blood cells bathed in an isotonic solution, and the right part of this illustration shows shriveled red blood cells bathed in a hypertonic solution.",
+                "src": "../../media/Figure_05_02_07.png",
+                "mimeType": "image/png"
+              }
+            },
+            {
+              "type": "note",
+              "id": "fs-id1512071",
+              "class": "interactive",
+              "title": null,
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-id1808984",
+                  "segmentId": "m66374:para:fs-id1808984"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-id1385884",
+          "segmentId": "m66374:para:fs-id1385884"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1809183",
+      "class": null,
+      "title": {
+        "segmentId": "m66374:title:fs-id1809183-title",
+        "text": "Tonicity in Living Systems"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1479541",
+          "segmentId": "m66374:para:fs-id1479541"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1696398",
+          "segmentId": "m66374:para:fs-id1696398"
+        },
+        {
+          "type": "para",
+          "id": "fs-id2273391",
+          "segmentId": "m66374:para:fs-id2273391"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1778350",
+          "segmentId": "m66374:para:fs-id1778350"
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch05_02_07",
+          "caption": {
+            "segmentId": "m66374:caption:fig-ch05_02_07-caption"
+          },
+          "media": {
+            "id": "fs-id1462948",
+            "alt": "The left part of this image shows a plant cell bathed in a hypertonic solution so that the plasma membrane has pulled away completely from the cell wall, and the central vacuole has shrunk. Water moves out of the plant cell. The middle part shows a plant cell bathed in an isotonic solution; the plasma membrane has pulled away from the cell wall a bit, and the central vacuole size is unchanged. Water moves both in and out of the plant cell. The right part shows a plant cell in a hypotonic solution. The central vacuole is large, and the plasma membrane is pressed against the cell wall. Water is moving into the plant cell.",
+            "src": "../../media/Figure_05_02_08-2288.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch05_02_08",
+          "caption": {
+            "segmentId": "m66374:caption:fig-ch05_02_08-caption"
+          },
+          "media": {
+            "id": "fs-id2025294",
+            "alt": "The left photo shows a plant that has wilted, with dark green leaves that are shriveled, and appear dry.  The photo on the right shows a healthy plant, with broad light green leaves that appear soft and pliable.",
+            "src": "../../media/Figure_05_02_09.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1569035",
+          "segmentId": "m66374:para:fs-id1569035"
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch05_02_09",
+          "caption": {
+            "segmentId": "m66374:caption:fig-ch05_02_09-caption"
+          },
+          "media": {
+            "id": "fs-id1760402",
+            "alt": "A bright field light microscopy shows an oval-shaped cell. Contractile vacuoles are prominent structures embedded in the cell membrane that pump out water.",
+            "src": "../../media/Figure_05_02_10.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id2018567",
+          "segmentId": "m66374:para:fs-id2018567"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1964907",
+          "segmentId": "m66374:para:fs-id1964907"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1640143",
+      "class": "summary",
+      "title": {
+        "segmentId": "m66374:title:fs-id1640143-title",
+        "text": "Section Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1712432",
+          "segmentId": "m66374:para:fs-id1712432"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1602887",
+          "segmentId": "m66374:para:fs-id1602887"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id2248717",
+      "class": "visual-exercise",
+      "title": {
+        "segmentId": "m66374:title:fs-id2248717-title",
+        "text": "Visual Connection Questions"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id2039542",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2263338",
+                "segmentId": "m66374:problem:fs-id2263338"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1786911",
+                "segmentId": "m66374:solution:fs-id1786911"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1770889",
+      "class": "multiple-choice",
+      "title": {
+        "segmentId": "m66374:title:fs-id1770889-title",
+        "text": "Review Questions"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1422483",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1731572",
+                "segmentId": "m66374:problem:fs-id1731572"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2318249",
+                "segmentId": "m66374:solution:fs-id2318249"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1243838",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1768946",
+                "segmentId": "m66374:problem:fs-id1768946"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2025284",
+                "segmentId": "m66374:solution:fs-id2025284"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1986270",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1684704",
+                "segmentId": "m66374:problem:fs-id1684704"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1432538",
+                "segmentId": "m66374:solution:fs-id1432538"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm71000720",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm74380432",
+                "segmentId": "m66374:problem:fs-idm74380432"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm200102081",
+                "segmentId": "m66374:solution:fs-idm200102081"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1379953",
+      "class": "critical-thinking",
+      "title": {
+        "segmentId": "m66374:title:fs-id1379953-title",
+        "text": "Critical Thinking Questions"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id2026068",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1237000",
+                "segmentId": "m66374:problem:fs-id1237000"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1568744",
+                "segmentId": "m66374:solution:fs-id1568744"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id2010327",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1613033",
+                "segmentId": "m66374:problem:fs-id1613033"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1703202",
+                "segmentId": "m66374:solution:fs-id1703202"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1418868",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1465106",
+                "segmentId": "m66374:problem:fs-id1465106"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1777919",
+                "segmentId": "m66374:solution:fs-id1777919"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm71000718",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm74380430",
+                "segmentId": "m66374:problem:fs-idm74380430"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm200102079",
+                "segmentId": "m66374:solution:fs-idm200102079"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm71000719",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm74380431",
+                "segmentId": "m66374:problem:fs-idm74380431"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm200102080",
+                "segmentId": "m66374:solution:fs-idm200102080"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m66374:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m66374:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m66374:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m66374:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-id1552657",
+        "termSegmentId": "m66374:glossary-term:fs-id1552657-term",
+        "definitionSegmentId": "m66374:glossary-def:fs-id1552657-def"
+      },
+      {
+        "id": "fs-id1015417",
+        "termSegmentId": "m66374:glossary-term:fs-id1015417-term",
+        "definitionSegmentId": "m66374:glossary-def:fs-id1015417-def"
+      },
+      {
+        "id": "fs-id1485768",
+        "termSegmentId": "m66374:glossary-term:fs-id1485768-term",
+        "definitionSegmentId": "m66374:glossary-def:fs-id1485768-def"
+      },
+      {
+        "id": "fs-id988625",
+        "termSegmentId": "m66374:glossary-term:fs-id988625-term",
+        "definitionSegmentId": "m66374:glossary-def:fs-id988625-def"
+      },
+      {
+        "id": "fs-id1813014",
+        "termSegmentId": "m66374:glossary-term:fs-id1813014-term",
+        "definitionSegmentId": "m66374:glossary-def:fs-id1813014-def"
+      },
+      {
+        "id": "fs-id1423751",
+        "termSegmentId": "m66374:glossary-term:fs-id1423751-term",
+        "definitionSegmentId": "m66374:glossary-def:fs-id1423751-def"
+      },
+      {
+        "id": "fs-id1788427",
+        "termSegmentId": "m66374:glossary-term:fs-id1788427-term",
+        "definitionSegmentId": "m66374:glossary-def:fs-id1788427-def"
+      },
+      {
+        "id": "fs-id1395502",
+        "termSegmentId": "m66374:glossary-term:fs-id1395502-term",
+        "definitionSegmentId": "m66374:glossary-def:fs-id1395502-def"
+      },
+      {
+        "id": "fs-id1385396",
+        "termSegmentId": "m66374:glossary-term:fs-id1385396-term",
+        "definitionSegmentId": "m66374:glossary-def:fs-id1385396-def"
+      },
+      {
+        "id": "fs-id1596969",
+        "termSegmentId": "m66374:glossary-term:fs-id1596969-term",
+        "definitionSegmentId": "m66374:glossary-def:fs-id1596969-def"
+      },
+      {
+        "id": "fs-id1113956",
+        "termSegmentId": "m66374:glossary-term:fs-id1113956-term",
+        "definitionSegmentId": "m66374:glossary-def:fs-id1113956-def"
+      },
+      {
+        "id": "fs-id1270062",
+        "termSegmentId": "m66374:glossary-term:fs-id1270062-term",
+        "definitionSegmentId": "m66374:glossary-def:fs-id1270062-def"
+      },
+      {
+        "id": "fs-id1167166084059",
+        "termSegmentId": "m66374:glossary-term:fs-id1167166084059-term",
+        "definitionSegmentId": "m66374:glossary-def:fs-id1167166084059-def"
+      },
+      {
+        "id": "fs-id1447472",
+        "termSegmentId": "m66374:glossary-term:fs-id1447472-term",
+        "definitionSegmentId": "m66374:glossary-def:fs-id1447472-def"
+      },
+      {
+        "id": "fs-id1450569",
+        "termSegmentId": "m66374:glossary-term:fs-id1450569-term",
+        "definitionSegmentId": "m66374:glossary-def:fs-id1450569-def"
+      },
+      {
+        "id": "fs-id1368223",
+        "termSegmentId": "m66374:glossary-term:fs-id1368223-term",
+        "definitionSegmentId": "m66374:glossary-def:fs-id1368223-def"
+      },
+      {
+        "id": "fs-id1386234",
+        "termSegmentId": "m66374:glossary-term:fs-id1386234-term",
+        "definitionSegmentId": "m66374:glossary-def:fs-id1386234-def"
+      }
+    ]
+  },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-id1999972",
+      "class": null,
+      "alt": "The left part shows bloated red blood cells, lysed, bathed in a hypotonic solution. The middle part shows healthy red blood cells bathed in an isotonic solution, and the right part of this illustration shows shriveled red blood cells bathed in a hypertonic solution.",
+      "src": "../../media/Figure_05_02_07.png",
+      "mimeType": "image/png"
+    }
+  ],
+  "sectionOrder": null
+}

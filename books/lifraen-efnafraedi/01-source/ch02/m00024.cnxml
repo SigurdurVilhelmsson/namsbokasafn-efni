@@ -1,0 +1,39 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Acids and Bases: The Brønsted–Lowry Definition</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Acids and Bases: The Br&amp;#248;nsted&amp;#8211;Lowry Definition</md:title>
+    <md:content-id>m00024</md:content-id>
+    <md:uuid>89b02ede-15bf-4e3c-980b-d95fc70bf2cf</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">Perhaps the most important of all concepts related to electronegativity and polarity is that of <emphasis effect="italics">acidity</emphasis> and <emphasis effect="italics">basicity.</emphasis> We’ll soon see, in fact, that the acid–base behavior of organic molecules explains much of their chemistry. You may recall from a course in general chemistry that two definitions of acidity are frequently used: the <emphasis effect="italics">Brønsted–Lowry definition</emphasis> and the <emphasis effect="italics">Lewis definition.</emphasis> We’ll look at the Brønsted–Lowry definition in this and the following three sections and then discuss the Lewis definition in <emphasis effect="bold">Section 2.11</emphasis>.</para>
+<para id="para-00002">A <term id="term-00001">Brønsted–Lowry acid</term> is a substance that donates a hydrogen ion, H<sup>+</sup>, and a <term id="term-00002">Brønsted–Lowry base</term> is a substance that accepts a hydrogen ion. (The name <emphasis effect="italics">proton</emphasis> is often used as a synonym for H<sup>+</sup> because loss of the valence electron from a neutral hydrogen atom leaves only the hydrogen nucleus—a proton.) When gaseous hydrogen chloride dissolves in water, for example, a polar HCl molecule acts as an acid and donates a proton, while a water molecule acts as a base and accepts the proton, yielding chloride anion (Cl<sup>–</sup>) and hydronium cation (H<sub>3</sub>O<sup>+</sup>). This and other acid–base reactions are reversible, so we’ll write them with double, forward-and-backward arrows.</para>
+<figure class="unnumbered scaled-down" id="fig-00001">
+<media alt="Structures, ball-and-stick models, and electron density maps for hydrochloric acid, water (labeled base), chloride (labeled conjugate base), and hydronium (labeled conjugate acid).">
+<image mime-type="image/jpeg" src="../../media/OChem_02_07_001.jpg"/>
+</media>
+</figure>
+<para id="para-00003">Chloride ion, the product that results when the acid HCl loses a proton, is called the <term id="term-00003">conjugate base</term> of the acid, and hydronium ion, the product that results when the base H<sub>2</sub>O gains a proton, is called the <term id="term-00004">conjugate acid</term> of the base. Other common mineral acids such as H<sub>2</sub>SO<sub>4</sub> and HNO<sub>3</sub> behave similarly, as do organic acids such as acetic acid, CH<sub>3</sub>CO<sub>2</sub>H.</para>
+<para id="para-00004">In a general sense,</para>
+<figure class="unnumbered scaled-down" id="fig-00002">
+<media alt="Chemical structures for H A (acid) and B with a nonbonding pair (base), A minus with a nonbonding pair (conjugate base), and H B plus (conjugate acid).">
+<image mime-type="image/jpeg" src="../../media/OChem_02_07_002.jpg"/>
+</media>
+</figure>
+<para id="para-00005">For example:</para>
+<figure class="unnumbered scaled-down" id="fig-00003">
+<media alt="Reversible arrows show acetic acid and hydroxide (base) form acetate (conjugate base) and water (conjugate acid). Water (acid) and ammonia (base) form hydroxide (conjugate base) and ammonium (conjugate acid).">
+<image mime-type="image/jpeg" src="../../media/OChem_02_07_003.jpg"/>
+</media>
+</figure>
+<para id="para-00006">Notice that water can act either as an acid or as a base, depending on the circumstances. In its reaction with HCl, water is a base that accepts a proton to give the hydronium ion, H<sub>3</sub>O<sup>+</sup>. In its reaction with ammonia (NH<sub>3</sub>), however, water is an acid that donates a proton to give ammonium ion (NH<sub>4</sub><sup>+</sup>) and hydroxide ion, HO<sup>–</sup>.</para>
+<section class="section-exercises" id="sect-00001">
+  <title>Problems</title>
+<exercise id="exer-00001">
+  <problem id="prob-00001">
+    <para id="para-00007"><link class="os-embed" url="#exercise/02-07-OC-P11"/></para>
+  </problem>
+</exercise>
+</section>
+  </content>
+</document>

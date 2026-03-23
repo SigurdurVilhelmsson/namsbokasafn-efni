@@ -1,0 +1,53 @@
+{
+  "m42130:para:import-auto-id2654505": {
+    "terms": [
+      {
+        "id": "import-auto-id1777407"
+      }
+    ]
+  },
+  "m42130:para:import-auto-id1904217": {
+    "terms": [
+      {
+        "id": "term-00001"
+      }
+    ]
+  },
+  "m42130:para:import-auto-id2712510": {
+    "terms": [
+      {
+        "id": "import-auto-id2134480"
+      },
+      {
+        "id": "import-auto-id1408275"
+      },
+      {
+        "id": "import-auto-id1500464"
+      }
+    ]
+  },
+  "m42130:item:fs-id2410016-item-1": {
+    "terms": [
+      {
+        "id": "term-00002"
+      },
+      {
+        "id": "term-00003"
+      }
+    ]
+  },
+  "m42130:item:fs-id2410016-item-2": {
+    "terms": [
+      {
+        "id": "term-00004"
+      }
+    ]
+  },
+  "m42130:item:fs-id2410016-item-3": {
+    "terms": [
+      {
+        "id": "term-00005"
+      }
+    ]
+  }
+}

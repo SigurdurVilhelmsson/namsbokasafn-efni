@@ -1,0 +1,97 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Thiols and Sulfides</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Thiols and Sulfides</md:title>
+    <md:content-id>m00254</md:content-id>
+    <md:uuid>6eec8c4b-60d3-430b-8ba0-768e31edf58f</md:uuid>
+  </metadata>
+  <content>
+<section id="sect-00001">
+<title>Thiols</title>
+<para id="para-00001">Thiols, also called <emphasis effect="bold">mercaptans</emphasis>, are sulfur analogs of alcohols. They are named by the same system used for alcohols, with the suffix -<emphasis effect="italics">thiol</emphasis> used in place of -<emphasis effect="italics">ol.</emphasis> The –SH group itself is referred to as a <term id="term-00001">mercapto group</term>. Like alcohols, thiols are weakly acidic; the p<emphasis effect="italics">K</emphasis><sub>a</sub> of CH<sub>3</sub>SH, for instance, is 10.3. Unlike alcohols, however, thiols don’t typically form hydrogen bonds because the sulfur atom is not sufficiently electronegative.</para>
+<figure class="unnumbered scaled-down" id="fig-00001">
+<media alt="Chemical structures of ethanethiol (ethane with S H group), cyclohexanethiol (cyclohexane with S H group), and m-mercaptobenzoic acid (benzoic acid with S H group at meta position).">
+<image mime-type="image/jpeg" src="../../media/OChem_18_08_001.jpg"/>
+</media>
+</figure>
+<para id="para-00002">The most striking characteristic of thiols is their appalling odor. Skunk scent, for instance, is caused primarily by the simple thiols 3-methyl-1-butanethiol and 2-butene-1-thiol. Volatile thiols such as ethanethiol are also added to natural gas and liquefied propane to serve as an easily detectable warning in case of leaks.</para>
+<para id="para-00003">Thiols are usually prepared from alkyl halides by S<sub>N</sub>2 displacement with a sulfur nucleophile such as hydrosulfide anion, <sup>–</sup>SH.</para>
+<figure class="unnumbered" id="fig-00002">
+<media alt="1-Bromooctane reacts with hydrosulfide anion to form 1-octanethiol (83 percent) and bromide ion. Bromine in the reactant is replaced by the S H group in the product.">
+<image mime-type="image/jpeg" src="../../media/OChem_18_08_002.jpg"/>
+</media>
+</figure>
+<para id="para-00004">The reaction often works poorly unless an excess of the nucleophile is used because the product thiol can undergo a second S<sub>N</sub>2 reaction with alkyl halide to give a <term id="term-00002">sulfide</term> <emphasis effect="bold">(R–S–Rʹ)</emphasis> as by-product. To circumvent this problem, thiourea, <m:math><m:mrow><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>C</m:mtext><m:mo>═</m:mo><m:mtext>S</m:mtext></m:mrow></m:math>, is often used as the nucleophile in the preparation of a thiol from an alkyl halide. The reaction occurs by displacement of the halide ion to yield an intermediate alkyl isothiourea salt, which is hydrolyzed by subsequent reaction with aqueous base.</para>
+<figure class="unnumbered" id="fig-00003">
+<media alt="1-Bromooctane reacts with thiourea to form an intermediate, which in the presence of water and sodium hydroxide yields 1-octanethiol (83 percent) and urea.">
+<image mime-type="image/jpeg" src="../../media/OChem_18_08_003.jpg"/>
+</media>
+</figure>
+<para id="para-00005">Thiols can be oxidized by Br<sub>2</sub> or I<sub>2</sub> to yield <term id="term-00003">disulfides (R–S–S–R′)</term>. The reaction is easily reversed, and a disulfide can be reduced back to a thiol by treatment with zinc and acid.</para>
+<figure class="unnumbered scaled-down" id="fig-00004">
+<media alt="Two equivalents of thiol react with iodine to produce a disulfide and two equivalents of hydrogen iodide, with the reverse reaction catalyzed by zinc and hydrogen ions.">
+<image mime-type="image/jpeg" src="../../media/OChem_18_08_004.jpg"/>
+</media>
+</figure>
+<para id="para-00006">This thiol–disulfide interconversion is a key part of numerous biological processes. We’ll see in Chapter 26, for instance, that disulfide formation is involved in defining the structure and three-dimensional conformations of proteins, where disulfide “bridges” often form cross-links between cysteine amino-acid units in the protein chains. Disulfide formation is also involved in the process by which cells protect themselves from oxidative degradation. A cellular component called <emphasis effect="italics">glutathione</emphasis> removes potentially harmful oxidants and is itself oxidized to glutathione disulfide in the process. Reduction back to the thiol requires the coenzyme reduced flavin adenine dinucleotide, abbreviated FADH<sub>2</sub>.</para>
+<figure class="unnumbered" id="fig-00005">
+<media alt="Two molecules of glutathione react with hydrogen peroxide and flavin adenine dinucleotide to yield glutathione disulfide bonded through an S-S bond.">
+<image mime-type="image/jpeg" src="../../media/OChem_18_08_005.jpg"/>
+</media>
+</figure>
+</section>
+<section id="sect-00002">
+<title>Sulfides</title>
+<para id="para-00007">Sulfides are the sulfur analogs of ethers just as thiols are the sulfur analogs of alcohols. Sulfides are named by following the same rules used for ethers, with <emphasis effect="italics">sulfide</emphasis> used in place of <emphasis effect="italics">ether</emphasis> for simple compounds and <emphasis effect="italics">alkylthio</emphasis> used in place of <emphasis effect="italics">alkoxy</emphasis> for more complex substances.</para>
+<figure class="unnumbered scaled-down" id="fig-00006">
+<media alt="Structures of dimethyl sulfide (S with two methyl groups), methyl phenyl sulfide (S with methyl and phenyl group), and 3-(methylthio)cyclohexene (cyclohexene with S C H 3 at C 3).">
+<image mime-type="image/jpeg" src="../../media/OChem_18_08_006.jpg"/>
+</media>
+</figure>
+<para id="para-00008">Treatment of a thiol with a base, such as NaH, gives the corresponding <term id="term-00004">thiolate ion</term> (RS<sup>–</sup>), which undergoes reaction with a primary or secondary alkyl halide to give a sulfide. The reaction occurs by an S<sub>N</sub>2 mechanism, analogous to the Williamson synthesis of ethers (<link document="m00249"/>).</para>
+<figure class="unnumbered scaled-down" id="fig-00007">
+<media alt="Sodium benzenethiolate reacts with iodomethane to form methyl phenyl sulfide (96 percent yield) and sodium iodide via attack of S minus on methyl C. Iodide leaves.">
+<image mime-type="image/jpeg" src="../../media/OChem_18_08_007.jpg"/>
+</media>
+</figure>
+<para id="para-00009">Despite their close structural similarity, sulfides and ethers differ substantially in their chemistry. Because the valence electrons on sulfur are farther from the nucleus and are less tightly held than those on oxygen (3<emphasis effect="italics">p</emphasis> electrons versus 2<emphasis effect="italics">p</emphasis> electrons), sulfur compounds are more nucleophilic than their oxygen analogs. Unlike dialkyl ethers, dialkyl sulfides react rapidly with primary alkyl halides by an S<sub>N</sub>2 mechanism to give <term id="term-00005">sulfonium ions</term> (R<sub>3</sub>S<sup>+</sup>).</para>
+<figure class="unnumbered scaled-down" id="fig-00008">
+<media alt="Dimethyl sulfide reacts with iodomethane in the presence of tetrahydrofuran to form trimethylsulfonium iodide. Sulfur and iodide in the product carry positive and negative charges, respectively.">
+<image mime-type="image/jpeg" src="../../media/OChem_18_08_008.jpg"/>
+</media>
+</figure>
+<para id="para-00010">The most common example of this process in living organisms is the reaction of the amino acid methionine with adenosine triphosphate (ATP; <link document="m00084"/>) to give <emphasis effect="italics">S</emphasis>-adenosylmethionine. The reaction is somewhat unusual in that the biological leaving group in this S<sub>N</sub>2 process is the <emphasis effect="italics">triphosphate</emphasis> ion rather than the more frequently seen diphosphate ion (<link document="m00127"/>).</para>
+<figure class="unnumbered scaled-down" id="fig-00009">
+<media alt="Methionine and adenosine triphosphate (A T P) undergo an S N 2 process, forming triphosphate ion and S-adenosylmethionine.">
+<image mime-type="image/jpeg" src="../../media/OChem_18_08_009.jpg"/>
+</media>
+</figure>
+<para id="para-00011">Sulfonium ions are themselves useful alkylating agents because a nucleophile can attack one of the groups bonded to the positively charged sulfur, displacing a neutral sulfide as leaving group. We saw an example of this in <link document="m00127"/> (<link document="m00127" target-id="fig-00003"/>), in which <emphasis effect="italics">S</emphasis>-adenosylmethionine transferred a methyl group to norepinephrine to give adrenaline.</para>
+<para id="para-00012">Another difference between sulfides and ethers is that sulfides are easily oxidized. Treatment of a sulfide with hydrogen peroxide, H<sub>2</sub>O<sub>2</sub>, at room temperature yields the corresponding <term id="term-00006">sulfoxide (R<sub>2</sub>SO)</term>, and further oxidation of the sulfoxide with a peroxyacid yields a <term id="term-00007">sulfone (R<sub>2</sub>SO<sub>2</sub>)</term>.</para>
+<figure class="unnumbered scaled-down" id="fig-00010">
+<media alt="Methyl phenyl sulfide undergoes a reaction with hydrogen peroxide to form methyl phenyl sulfoxide. It further reacts with peracetic acid to form methyl phenyl sulfone.">
+<image mime-type="image/jpeg" src="../../media/OChem_18_08_010.jpg"/>
+</media>
+</figure>
+<para id="para-00013">Dimethyl sulfoxide (DMSO) is a particularly well-known sulfoxide that is often used as a polar aprotic solvent. It must be handled with care, however, because it has a remarkable ability to penetrate the skin, carrying along whatever is dissolved in it.</para>
+<figure class="unnumbered scaled-down" id="fig-00011">
+<media alt="The structure of dimethyl sulfoxide which is a polar aprotic solvent. It comprises a central sulfur atom with electron pairs, two methyl groups, and a double bond to oxygen.">
+<image mime-type="image/jpeg" src="../../media/OChem_18_08_011.jpg"/>
+</media>
+</figure>
+</section>
+<section class="section-exercises" id="sect-00003">
+<title>Problems</title>
+<exercise id="exer-00001">
+<problem id="prob-00001">
+<para id="para-00014"><link class="os-embed" url="#exercise/18-08-OC-P16"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00002">
+<problem id="prob-00002">
+<para id="para-00015"><link class="os-embed" url="#exercise/18-08-OC-P17"/></para>
+</problem>
+</exercise>
+</section>
+</content>
+</document>

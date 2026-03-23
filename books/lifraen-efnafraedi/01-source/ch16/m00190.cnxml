@@ -1,0 +1,111 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Other Aromatic Substitutions</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Other Aromatic Substitutions</md:title>
+    <md:content-id>m00190</md:content-id>
+    <md:uuid>279bf6af-5206-4255-a44b-464ab1e074a9</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">There are many other kinds of electrophilic aromatic substitutions besides bromination, and all occur by the same general mechanism. Let’s look at some of these other reactions briefly.</para>
+    <section id="sect-00001">
+    <title>Aromatic Halogenation</title>
+    <para id="para-00002">Chlorine and iodine can be introduced into aromatic rings by electrophilic substitution reactions just as bromine can, but fluorine is too reactive and only poor yields of monofluoroaromatic products are obtained by direct fluorination. Instead, other sources of “F<sup>+</sup>” are used, in which a fluorine atom is bonded to a positively charged nitrogen. One of the most common such reagents goes by the acronym F-TEDA-BF<sub>4</sub> in the presence of trifluoromethanesulfonic acid (TfOH). (You don’t need to know the full name of F-TEDA, which is sold under the name Selectfluor.)</para>
+    <figure class="unnumbered scaled-down" id="fig-00001">
+    <media alt="Toluene reacts with a fluorinating agent to form ortho-fluorotoluene and para-fluorotoluene in 3: 1 ratio and 82 percent combined yield.">
+    <image mime-type="image/jpeg" src="../../media/OSX_OrgChem_16_02_Toulene_img.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00003">More than 20% of all pharmaceutical agents sold contain fluorine, including 30% of the top 100 drugs sold. Sitagliptin (Januvia), used to treat type 2 diabetes, fluoxetine (Prozac), an antidepressant, and atorvastatin (Lipitor), a statin used to lower cholesterol, are examples.</para>
+    <figure class="unnumbered scaled-down" id="fig-00002">
+    <media alt="The structures of Sitagliptin (Januvia) and Fluoxetine (Prozac).">
+    <image mime-type="image/jpeg" src="../../media/OChem_16_02_002.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00004">Aromatic rings react with Cl<sub>2</sub> in the presence of FeCl<sub>3</sub> catalyst to yield chlorobenzenes, just as they react with Br<sub>2</sub> and FeBr<sub>3</sub>. This kind of reaction is used in the synthesis of numerous pharmaceutical agents, including the antiallergy medication loratadine, marketed as Claritin.</para>
+    <figure class="unnumbered scaled-down" id="fig-00003">
+    <media alt="Benzene reacts with molecular chlorine in the presence of iron trichloride catalyst to form chlorobenzene in 86 percent yield and hydrochloric acid as a byproduct. The structure of Loratadine is depicted.">
+    <image mime-type="image/jpeg" src="../../media/OChem_16_02_003.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00005">Iodine itself is unreactive toward aromatic rings, so an oxidizing agent such as hydrogen peroxide or a copper salt such as CuCl<sub>2</sub> must be added to the reaction. These substances accelerate the iodination reaction by oxidizing I<sub>2</sub> to a more powerful electrophilic species that reacts as if it were I<sup>+</sup>. The aromatic ring then reacts with I<sup>+</sup> in the typical way, yielding a substitution product.</para>
+    <figure class="unnumbered scaled-down" id="fig-00004">
+    <media alt="Iodine reacts with hydrogen peroxide or copper (2) chloride to generate I plus. Benzene reacts with I plus to form a carbocation, which on deprotonation by base forms iodobenzene in 65 percent yield.">
+    <image mime-type="image/jpeg" src="../../media/OChem_16_02_004.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00006">Electrophilic aromatic halogenations also occur in the biosynthesis of many naturally occurring molecules, particularly those produced by marine organisms. In humans, the best-known example occurs in the thyroid gland during the biosynthesis of thyroxine, a hormone involved in regulating growth and metabolism. The amino acid tyrosine is first iodinated by thyroid peroxidase, and two of the iodinated tyrosine molecules then couple. The electrophilic iodinating agent is an I<sup>+</sup> species, perhaps hypoiodous acid (HIO), that is formed from iodide ion by oxidation with H<sub>2</sub>O<sub>2</sub>.</para>
+    <figure class="unnumbered scaled-down" id="fig-00005">
+    <media alt="Tyrosine reacts with I plus in the presence of thyroid peroxidase to form 3,5-diiodotyrosine, which further forms thyroxine (a thyroid hormone).">
+    <image mime-type="image/jpeg" src="../../media/OChem_16_02_005.jpg"/>
+    </media>
+    </figure>
+    </section>
+    <section id="sect-00002">
+    <title>Aromatic Nitration</title>
+    <para id="para-00007">Aromatic rings are nitrated by reaction with a mixture of concentrated nitric and sulfuric acids. The electrophile is the nitronium ion, NO<sub>2</sub><sup>+</sup>, which is formed from HNO<sub>3</sub> by protonation and loss of water. The nitronium ion reacts with benzene to yield a carbocation intermediate, and loss of H<sup>+</sup> from this intermediate gives the neutral substitution product, nitrobenzene (<link target-id="fig-00006"/>).</para>
+    <figure class="scaled-down" id="fig-00006">
+    <media alt="Nitric and sulfuric acids react to form water and nitronium ion. The latter reacts with benzene to form nitrobenzene and water. Ball-and-stick model in electrostatic potential map of nitronium ion is depicted.">
+    <image mime-type="image/jpeg" src="../../media/OChem_16_02_006.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">The mechanism for electrophilic nitration of an aromatic ring</emphasis>. An electrostatic potential map of the reactive electrophile <m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mo>+</m:mo></m:msup></m:mrow></m:math> shows that the <emphasis effect="bold"><span class="cyan-text">nitrogen atom is most positive.</span></emphasis></caption>
+    </figure>
+    <para id="para-00008">Electrophilic nitration of an aromatic ring does not occur in nature but is particularly important in the laboratory because the nitro-substituted product can be reduced by reagents such as iron, tin, or SnCl<sub>2</sub> to yield the corresponding <emphasis effect="italics">arylamine,</emphasis> ArNH<sub>2</sub>. Attachment of an amino group (–NH<sub>2</sub>) to an aromatic ring by the two-step nitration/reduction sequence is a key part of the industrial synthesis of many dyes and pharmaceutical agents. We’ll discuss this reduction and other reactions of aromatic nitrogen compounds in Chapter 24.</para>
+    <figure class="unnumbered scaled-down" id="fig-00007">
+    <media alt="Nitrobenzene reacts with iron, and acid in first step and base in second step to form aniline in 95 percent yield.">
+    <image mime-type="image/jpeg" src="../../media/OChem_16_02_007.jpg"/>
+    </media>
+    </figure>
+    </section>
+    <section id="sect-00003">
+    <title>Aromatic Sulfonation</title>
+    <para id="para-00009">Aromatic rings can be sulfonated by reaction with so-called fuming sulfuric acid, a mixture of H<sub>2</sub>SO<sub>4</sub> and SO<sub>3</sub>. The reactive electrophile is either <m:math><m:mrow><m:msub><m:mrow><m:mtext>HSO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mo>+</m:mo></m:msup></m:mrow></m:math> or neutral SO<sub>3</sub>, depending on reaction conditions, and substitution occurs by the same two-step mechanism seen previously for bromination and nitration (<link target-id="fig-00008"/>). Note, however, that the sulfonation reaction is readily reversible. It can occur either forward or backward, depending on the reaction conditions. Sulfonation is favored in strong acid, but desulfonation is favored in hot, dilute aqueous acid.</para>
+    <figure class="scaled-down" id="fig-00008">
+    <media alt="A three-step reversible reaction shows benzene reacting with intermediate formed from sulfur trioxide and sulfuric acid to form benzenesulfonic acid. Ball-and-stick model in electrostatic potential map of intermediate is depicted.">
+    <image mime-type="image/jpeg" src="../../media/OChem_16_02_008.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">The mechanism for electrophilic sulfonation of an aromatic ring</emphasis>. An electrostatic potential map of the reactive electrophile <m:math><m:mrow><m:msub><m:mrow><m:mtext>HOSO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mo>+</m:mo></m:msup></m:mrow></m:math> shows that <emphasis effect="bold"><span class="cyan-text">sulfur and hydrogen are the most positive atoms</span></emphasis>.</caption>
+    </figure>
+    <para id="para-00010">Aromatic sulfonation does not occur naturally but is widely used in the preparation of dyes and pharmaceutical agents. For example, the sulfa drugs, such as sulfanilamide, were among the first clinically useful antibiotics. Although largely replaced today by more effective agents, sulfa drugs are still used in the treatment of meningitis and urinary tract infections. These drugs are prepared commercially by a process that involves aromatic sulfonation as its key step.</para>
+    <figure class="unnumbered scaled-down" id="fig-00009">
+    <media alt="Sulfanilamide has benzene ring. C 1 is bonded to sulfur, which is double bonded to two oxygens and single bonded to amino. C 4 is bonded to an amino group.">
+    <image mime-type="image/jpeg" src="../../media/OChem_16_02_009.jpg"/>
+    </media>
+    </figure>
+    </section>
+    <section id="sect-00004">
+    <title>Aromatic Hydroxylation</title>
+    <para id="para-00011">Direct hydroxylation of an aromatic ring to yield a hydroxybenzene (a <emphasis effect="italics">phenol</emphasis>) is difficult and rarely done in the laboratory but occurs much more frequently in biological pathways. An example is the hydroxylation of <emphasis effect="italics">p</emphasis>-hydroxyphenylacetate to give 3,4-dihydroxyphenylacetate. The reaction is catalyzed by <emphasis effect="italics">p</emphasis>-hydroxyphenylacetate-3-hydroxylase and requires molecular oxygen plus the coenzyme reduced flavin adenine dinucleotide, abbreviated FADH<sub>2</sub>.</para>
+    <figure class="unnumbered scaled-down" id="fig-00010">
+    <media alt="Para-hydroxyphenylacetate reacts with molecular oxygen in the presence of para-hydroxyphenylacetate-3-hydroxylase to yield 3,4-dihydroxyphenylacetate. In the product, an extra hydroxyl group gets added at C 3.">
+    <image mime-type="image/jpeg" src="../../media/OChem_16_02_010.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00012">By analogy with other electrophilic aromatic substitutions, you might expect that an electrophilic oxygen species acting as an “OH<sup>+</sup> equivalent” is needed for the hydroxylation reaction. That is just what happens, with the electrophilic oxygen arising by protonation of FAD hydroperoxide, RO–OH (<link target-id="fig-00011"/>); that is, <m:math><m:mrow><m:mtext>RO–OH</m:mtext><m:mo>+</m:mo><m:msup><m:mtext>H</m:mtext><m:mo>+</m:mo></m:msup><m:mo>→</m:mo><m:mspace width="0.2em"/><m:mtext>ROH</m:mtext><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mo>+</m:mo></m:msup></m:mrow></m:math>. The FAD hydroperoxide itself is formed by reaction of FADH<sub>2</sub> with O<sub>2</sub>.</para>
+    <figure class="mechanism-figure scaled-down" id="fig-00011">
+    <title>MECHANISM</title>
+    <media alt="A three-step reaction shows F A D H 2 reacting with molecular oxygen to generate an intermediate which reacts with para-hydroxyphenylacetate to form 3,4-dihydroxyphenylacetate.">
+    <image mime-type="image/jpeg" src="../../media/OChem_16_02_011.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">Mechanism for the electrophilic hydroxylation of <emphasis effect="italics">p</emphasis>-hydroxyphenylacetate, by reaction with FAD hydroperoxide</emphasis>. The hydroxylating species is an “OH<sup>+</sup> equivalent” that arises by protonation of FAD hydroperoxide, RO–OH + H<sup>+</sup> → ROH + OH<sup>+</sup>. The FAD hydroperoxide itself is formed by reaction of FADH<sub>2</sub> with O<sub>2</sub>.</caption>
+    </figure>
+    </section>
+    <section class="section-exercises" id="sect-00005">
+    <title>Problems</title>
+    <exercise id="exer-00001">
+    <problem id="prob-00001">
+    <para id="para-00013"><link class="os-embed" url="#exercise/16-02-OC-P02"/></para>
+    </problem>
+    </exercise>
+    <exercise id="exer-00002">
+    <problem id="prob-00002">
+    <para id="para-00014"><link class="os-embed" url="#exercise/16-02-OC-P03"/></para>
+    </problem>
+    </exercise>
+    <exercise id="exer-00003">
+    <problem id="prob-00003">
+    <para id="para-00015"><link class="os-embed" url="#exercise/16-02-OC-P04"/></para>
+    </problem>
+    </exercise>
+    </section>
+    </content>
+</document>

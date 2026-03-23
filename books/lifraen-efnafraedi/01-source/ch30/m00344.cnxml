@@ -1,0 +1,53 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Photochemical Electrocyclic Reactions</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Photochemical Electrocyclic Reactions</md:title>
+    <md:content-id>m00344</md:content-id>
+    <md:uuid>df47d10c-6de3-470e-b623-784d5aba6207</md:uuid>
+  </metadata>
+  <content>
+<para id="para-00001">We noted previously that photochemical electrocyclic reactions take a different stereochemical course than their thermal counterparts, and we can now explain this difference. Ultraviolet irradiation of a polyene causes an excitation of one electron from the ground-state HOMO to the ground-state LUMO, thus changing their symmetries. But because electronic excitation changes the symmetries of HOMO and LUMO, it also changes the reaction stereochemistry. (2<emphasis effect="italics">E</emphasis>,4<emphasis effect="italics">E</emphasis>)-2,4-Hexadiene, for instance, undergoes photochemical cyclization by a disrotatory path, whereas the thermal reaction is conrotatory. Similarly, (2<emphasis effect="italics">E</emphasis>,4<emphasis effect="italics">Z</emphasis>,6<emphasis effect="italics">E</emphasis>)-2,4,6-octatriene undergoes photochemical cyclization by a conrotatory path, whereas the thermal reaction is disrotatory (<link target-id="fig-00001"/>).</para>
+<figure id="fig-00001">
+<media alt="Conjugated dienes and trienes undergoing photochemical cyclization. (2E,4E)-2,4-hexadiene reacts with light through disrotation to form cis-3,4-dimethylcyclobutene. (2E,4Z,6E)-2,4,6-octatriene reacts with light through conrotation to form trans-5,6-dimethyl-1,3-cyclohexadiene.">
+<image mime-type="image/jpeg" src="../../media/OChem_30_04_001.jpg"/>
+</media>
+<caption><emphasis effect="bold">Photochemical cyclizations of conjugated dienes and trienes.</emphasis> The two processes occur with different stereochemistry because of their different orbital symmetries.</caption>
+</figure>
+<para id="para-00002">Thermal and photochemical electrocyclic reactions always take place with opposite stereochemistry because the symmetries of the frontier orbitals are always different. <link target-id="table-00001"/> gives some simple rules that make it possible to predict the stereochemistry of electrocyclic reactions.</para>
+<table summary="" id="table-00001">
+<title>Stereochemical Rules for Electrocyclic Reactions</title>
+<tgroup cols="3">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<thead>
+<row valign="top">
+<entry valign="top" align="left">Electron pairs (double bonds)</entry>
+<entry valign="top" align="left"><span class="magenta-text">Thermal reaction</span></entry>
+<entry valign="top" align="left"><span class="green-text">Photochemical reaction</span></entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry valign="top" align="left">Even number</entry>
+<entry valign="top" align="left">Conrotatory</entry>
+<entry valign="top" align="left">Disrotatory</entry>
+</row>
+<row valign="top">
+<entry valign="top" align="left">Odd number</entry>
+<entry valign="top" align="left">Disrotatory</entry>
+<entry valign="top" align="left">Conrotatory</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<section class="section-exercises" id="sect-00001">
+<title>Problems</title>
+<exercise id="exer-00001">
+<problem id="prob-00001">
+<para id="para-00003"><link class="os-embed" url="#exercise/30-04-OC-P04"/></para>
+</problem>
+</exercise>
+</section>
+</content>
+</document>

@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "moduleId": "m58801",
+  "extractedAt": "2026-03-23T17:26:27.207Z",
+  "sourceHash": "779c0273cacd02ba",
+  "segmentCount": 4,
+  "segmentIds": [
+    "m58801:title:auto-1",
+    "m58801:caption:OSC_Microbio_05_00_splash-caption",
+    "m58801:para:fs-id1172101760045",
+    "m58801:para:fs-id1172094899467"
+  ],
+  "equationCount": 0,
+  "equationIds": [],
+  "elementCounts": {
+    "para": 2,
+    "section": 0,
+    "figure": 1,
+    "table": 0,
+    "example": 0,
+    "exercise": 0,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "OSC_Microbio_05_00_splash"
+    ],
+    "table": [],
+    "example": [],
+    "exercise": [],
+    "note": [],
+    "equation": [],
+    "section": []
+  }
+}

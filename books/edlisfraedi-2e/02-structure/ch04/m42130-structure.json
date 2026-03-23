@@ -1,0 +1,221 @@
+{
+  "moduleId": "m42130",
+  "title": {
+    "segmentId": "m42130:title:auto-1",
+    "text": "Newton’s First Law of Motion: Inertia"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "e4084c4d-df8b-43d3-af14-c2ea68d59f92"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "learning-objectives",
+      "title": {
+        "segmentId": "m42130:title:sect-00001-title",
+        "text": "Learning Objectives"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00001",
+          "segmentId": "m42130:para:para-00001"
+        },
+        {
+          "type": "list",
+          "id": "list-00001",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m42130:item:list-00001-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m42130:item:list-00001-item-2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "import-auto-id2654505",
+      "segmentId": "m42130:para:import-auto-id2654505"
+    },
+    {
+      "type": "note",
+      "id": "fs-id2690663",
+      "title": {
+        "segmentId": "m42130:note-title:fs-id2690663-title",
+        "text": "Newton’s First Law of Motion"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1694182",
+          "segmentId": "m42130:para:fs-id1694182"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "import-auto-id1741367",
+      "segmentId": "m42130:para:import-auto-id1741367"
+    },
+    {
+      "type": "para",
+      "id": "import-auto-id1904217",
+      "segmentId": "m42130:para:import-auto-id1904217"
+    },
+    {
+      "type": "para",
+      "id": "import-auto-id1416969",
+      "segmentId": "m42130:para:import-auto-id1416969"
+    },
+    {
+      "type": "para",
+      "id": "import-auto-id1486790",
+      "segmentId": "m42130:para:import-auto-id1486790"
+    },
+    {
+      "type": "section",
+      "id": "fs-id1737594",
+      "class": null,
+      "title": {
+        "segmentId": "m42130:title:fs-id1737594-title",
+        "text": "Mass"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "import-auto-id2712510",
+          "segmentId": "m42130:para:import-auto-id2712510"
+        }
+      ]
+    },
+    {
+      "type": "exercise",
+      "id": "fs-id2448968",
+      "problem": {
+        "content": [
+          {
+            "type": "para",
+            "id": "import-auto-id1678252",
+            "segmentId": "m42130:problem:import-auto-id1678252"
+          }
+        ]
+      },
+      "solution": {
+        "content": [
+          {
+            "type": "para",
+            "id": "import-auto-id2438567",
+            "segmentId": "m42130:solution:import-auto-id2438567"
+          }
+        ]
+      }
+    },
+    {
+      "type": "section",
+      "id": "fs-id1651376",
+      "class": "section-summary",
+      "title": {
+        "segmentId": "m42130:title:fs-id1651376-title",
+        "text": "Section Summary"
+      },
+      "content": [
+        {
+          "type": "list",
+          "id": "fs-id2410016",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m42130:item:fs-id2410016-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m42130:item:fs-id2410016-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m42130:item:fs-id2410016-item-3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id2668844",
+      "class": "conceptual-questions",
+      "title": {
+        "segmentId": "m42130:title:fs-id2668844-title",
+        "text": "Conceptual Questions"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1263177",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id1518142",
+                "segmentId": "m42130:problem:import-auto-id1518142"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1561865",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id2314210",
+                "segmentId": "m42130:problem:import-auto-id2314210"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "import-auto-id1323961",
+        "termSegmentId": "m42130:glossary-term:import-auto-id1323961-term",
+        "definitionSegmentId": "m42130:glossary-def:import-auto-id1323961-def"
+      },
+      {
+        "id": "import-auto-id966062",
+        "termSegmentId": "m42130:glossary-term:import-auto-id966062-term",
+        "definitionSegmentId": "m42130:glossary-def:import-auto-id966062-def"
+      },
+      {
+        "id": "import-auto-id1571848",
+        "termSegmentId": "m42130:glossary-term:import-auto-id1571848-term",
+        "definitionSegmentId": "m42130:glossary-def:import-auto-id1571848-def"
+      },
+      {
+        "id": "import-auto-id2667112",
+        "termSegmentId": "m42130:glossary-term:import-auto-id2667112-term",
+        "definitionSegmentId": "m42130:glossary-def:import-auto-id2667112-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

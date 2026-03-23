@@ -1,0 +1,563 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Alkylation of Enolate Ions</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Alkylation of Enolate Ions</md:title>
+    <md:content-id>m00263</md:content-id>
+    <md:uuid>49c3bbaf-f2e8-4cc1-bd1e-582e0f446a96</md:uuid>
+  </metadata>
+  <content>
+<para id="para-00001">Perhaps the most useful reaction of enolate ions is their alkylation by treatment with an alkyl halide, thereby forming a new C−C bond and joining two smaller pieces into one larger molecule. Alkylation occurs when the nucleophilic enolate ion reacts with the electrophilic alkyl halide in an S<sub>N</sub>2 reaction and displaces the leaving group by backside attack.</para>
+<figure class="unnumbered scaled-down" id="fig-00001">
+<media alt="A carbonyl compound reacts with a base to form an enolate ion which undergoes an S N 2 reaction with R 3 C X to form a carbonyl compound with an R 3 C group attached.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_07_001.jpg"/>
+</media>
+</figure>
+<para id="para-00002">Alkylation reactions are subject to the same constraints that affect all S<sub>N</sub>2 reactions (<link document="m00124"/>). Thus, the leaving group X in the alkylating agent R−X can be chloride, bromide, or iodide. The alkyl group R should be primary or methyl, and preferably should be allylic or benzylic. Secondary halides react poorly, and tertiary halides don’t react at all because a competing E2 elimination of HX occurs instead. Vinylic and aryl halides are also unreactive because a backside approach is sterically prevented.</para>
+<figure class="unnumbered scaled-down" id="fig-00002">
+<media alt="Comparative rate of reaction of R-X molecules with an enolate. For X, fastest to slowest is tosylate, iodide, bromide, and chloride. For R, fastest to slowest is allylic and benzylic, then primary alkyl and then secondary alkyl.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_07_002.jpg"/>
+</media>
+</figure>
+<section id="sect-00001">
+<title>The Malonic Ester Synthesis</title>
+<para id="para-00003">One of the oldest and best known carbonyl alkylation reactions is the <term id="term-00001">malonic ester synthesis</term>, a method for preparing a carboxylic acid from an alkyl halide while lengthening the carbon chain by two atoms.</para>
+<figure class="unnumbered scaled-down" id="fig-00003">
+<media alt="An alkyl halide (R-X) undergoes malonic ester synthesis to form carboxylic acid. In the product, an R group is attached to a C H 2 group which in turn is attached to a C O O H group.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_07_003.jpg"/>
+</media>
+</figure>
+<para id="para-00004">Diethyl propanedioate, commonly called diethyl malonate, or <emphasis effect="italics">malonic ester,</emphasis> is relatively acidic (p<emphasis effect="italics">K</emphasis><sub>a</sub> = 13) because its <emphasis effect="italics">α</emphasis> hydrogens are flanked by two carbonyl groups. Thus, malonic ester is easily converted into its enolate ion by reaction with sodium ethoxide in ethanol. The enolate ion, in turn, is a good nucleophile that reacts rapidly with an alkyl halide to give an <emphasis effect="italics">α</emphasis>-substituted malonic ester. Note in the following examples that the abbreviation “Et” is used for an ethyl group, –CH<sub>2</sub>CH<sub>3</sub>.</para>
+<figure class="unnumbered scaled-down" id="fig-00004">
+<media alt="Diethyl propanedioate reacts with sodium ethoxide in ethanol to form an intermediate sodio malonic ester, which reacts with R X to form an alkylated malonic ester as the product.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_07_004.jpg"/>
+</media>
+</figure>
+<para id="para-00005">The product of a malonic ester alkylation has one acidic <emphasis effect="italics">α</emphasis> hydrogen remaining, so the alkylation process can be repeated to yield a dialkylated malonic ester.</para>
+<figure class="unnumbered scaled-down" id="fig-00005">
+<media alt="An alkylated malonic ester reacts with sodium ethoxide in ethanol to form an intermediate, which reacts with R dash X to form a dialkylated malonic ester as the product.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_07_005.jpg"/>
+</media>
+</figure>
+<para id="para-00006">On heating with aqueous hydrochloric acid, the alkylated (or dialkylated) malonic ester undergoes hydrolysis of its two ester groups followed by <term id="term-00002"><emphasis effect="italics">decarboxylation</emphasis></term> (loss of CO<sub>2</sub>) to yield a substituted monocarboxylic acid.</para>
+<figure class="unnumbered scaled-down" id="fig-00006">
+<media alt="When heated, an alkylated malonic ester is protonated to form a carboxylic acid, carbon dioxide, and 2 equivalents of ethanol.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_07_006.jpg"/>
+</media>
+</figure>
+<para id="para-00007">Decarboxylation is not a general reaction of carboxylic acids. Rather, it is unique to compounds that have a second carbonyl group two atoms away from the –CO<sub>2</sub>H. That is, only substituted malonic acids and <emphasis effect="italics">β</emphasis>-keto acids undergo loss of CO<sub>2</sub> on heating. The decarboxylation reaction occurs by a cyclic mechanism and involves initial formation of an enol, thereby accounting for the need to have a second carbonyl group appropriately positioned.</para>
+<figure class="unnumbered scaled-down" id="fig-00007">
+<media alt="A diacid undergoes decarboxylation to form an acid enol, which, in turn, forms a carboxylic acid as the product. A beta-keto acid undergoes decarboxylation to form an enol which tautomerizes to a ketone.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_07_007.jpg"/>
+</media>
+</figure>
+<para id="para-00008">As noted previously, the overall effect of malonic ester synthesis is to convert an alkyl halide into a carboxylic acid while lengthening the carbon chain by two atoms (RX&#8201;→&#8201;RCH<sub>2</sub>CO<sub>2</sub>H).</para>
+<figure class="unnumbered scaled-down" id="fig-00008">
+<media alt="1-Bromobutane and diethyl malonate react with sodium ethoxide to give hexanoic acid via an intermediate. The intermediate can also react with sodium ethoxide and then methyl iodide to yield 2-methyl hexanoic acid.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_07_008.jpg"/>
+</media>
+</figure>
+<para id="para-00009">A malonic ester synthesis can also be used to prepare <emphasis effect="italics">cyclo</emphasis>alkanecarboxylic acids. For example, when 1,4-dibromobutane is treated with diethyl malonate in the presence of two equivalents of sodium ethoxide base, the second alkylation step occurs intramolecularly to yield a cyclic product. Hydrolysis and decarboxylation then give cyclopentanecarboxylic acid. Three-, four-, five-, and six-membered rings can be prepared in this way, but yields decrease for larger ring sizes.</para>
+<figure class="unnumbered scaled-down" id="fig-00009">
+<media alt="1,4-Dibromobutane and diethyl malonate react with sodium ethoxide to form cyclopentane-carboxylic acid via three intermediates.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_07_009.jpg"/>
+</media>
+</figure>
+<example id="exam-00001">
+<title>Using Malonic Ester Synthesis to Prepare a Carboxylic Acid</title>
+<para id="para-00010">How would you prepare heptanoic acid using a malonic ester synthesis?</para>
+<para id="para-00011"><title><span class="red-text">Strategy</span></title> A malonic ester synthesis converts an alkyl halide into a carboxylic acid having two more carbons. Thus, a seven-carbon acid chain must be derived from the five-carbon alkyl halide 1-bromopentane.</para>
+<para id="para-00012"><title><span class="cyan-text">Solution</span></title></para>
+<figure class="unnumbered scaled-down" id="fig-00010">
+<media alt="1-Bromopentane and diethyl malonate react with sodium ethoxide in the first step and on heating with acid in the second step to yield 1-heptanoic acid.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_07_010.jpg"/>
+</media>
+</figure>
+</example>
+</section>
+<section class="section-exercises" id="sect-00002">
+<title>Problems</title>
+<exercise id="exer-00001">
+<problem id="prob-00001">
+<para id="para-00013"><link class="os-embed" url="#exercise/22-07-OC-P10"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00002">
+<problem id="prob-00002">
+<para id="para-00014"><link class="os-embed" url="#exercise/22-07-OC-P11"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00003">
+<problem id="prob-00003">
+<para id="para-00015"><link class="os-embed" url="#exercise/22-07-OC-P12"/></para>
+</problem>
+</exercise>
+</section>
+<section id="sect-00003">
+<title>The Acetoacetic Ester Synthesis</title>
+<para id="para-00016">Just as the malonic ester synthesis converts an alkyl halide into a carboxylic acid, the <term id="term-00003">acetoacetic ester synthesis</term> converts an alkyl halide into a methyl ketone having three more carbons.</para>
+<figure class="unnumbered scaled-down" id="fig-00011">
+<media alt="A reaction in which R-X undergoes acetoacetic ester synthesis to yield methyl ketone. In the product, an R group is attached to C H 2 which in turn is bonded to a carbonyl group attached to a methyl group.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_07_013.jpg"/>
+</media>
+</figure>
+<para id="para-00017">Ethyl 3-oxobutanoate, commonly called ethyl acetoacetate, or <emphasis effect="italics">acetoacetic ester,</emphasis> is much like malonic ester in that its <emphasis effect="italics">α</emphasis> hydrogens are flanked by two carbonyl groups. It is therefore readily converted into its enolate ion, which can be alkylated by reaction with an alkyl halide. A second alkylation can also be carried out if desired, since acetoacetic ester has two acidic <emphasis effect="italics">α</emphasis> hydrogens.</para>
+<figure class="unnumbered scaled-down" id="fig-00012">
+<media alt="Ethyl acetoacetate reacts with sodium ethoxide to yield a sodio acetoacetic ester which reacts with R X to generate a monoalkylated acetoacetic ester. The monoalkylated species can be further alkylated using the same approach, the product being a dialkylated acetoacetic ester.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_07_014.jpg"/>
+</media>
+</figure>
+<para id="para-00018">On heating with aqueous HCl, the alkylated (or dialkylated) acetoacetic ester is hydrolyzed to a <emphasis effect="italics">β</emphasis>-keto acid, which then undergoes decarboxylation to yield a ketone product. The decarboxylation occurs in the same way as in the malonic ester synthesis and involves a ketone enol as the initial product.</para>
+<figure class="unnumbered scaled-down" id="fig-00013">
+<media alt="On heating, an alkylated acetoacetic ester reacts with acid to yield a methyl ketone, C O 2 and ethanol.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_07_015.jpg"/>
+</media>
+</figure>
+<para id="para-00019">The three-step sequence of (<emphasis effect="bold">1</emphasis>) enolate ion formation, (<emphasis effect="bold">2</emphasis>) alkylation, and (<emphasis effect="bold">3</emphasis>) hydrolysis/decarboxylation is applicable to all <emphasis effect="italics">β</emphasis>-keto esters with acidic <emphasis effect="italics">α</emphasis> hydrogens, not just to acetoacetic ester itself. For example, cyclic <emphasis effect="italics">β</emphasis>-keto esters, such as ethyl 2-oxocyclohexanecarboxylate, can be alkylated and decarboxylated to give 2-substituted cyclohexanones.</para>
+<figure class="unnumbered scaled-down" id="fig-00014">
+<media alt="Ethyl 2-oxocyclohexanecarboxylate reacts with sodium ethoxide in first step and benzyl bromide in second step to yield an intermediate which, when heated in acid yields 2-benzylcyclohexanone.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_07_016.jpg"/>
+</media>
+</figure>
+<example id="exam-00002">
+<title>Using Acetoacetic Ester Synthesis to Prepare a Ketone</title>
+<para id="para-00020">How would you prepare 2-pentanone by an acetoacetic ester synthesis?</para>
+<para id="para-00021"><title><span class="red-text">Strategy</span></title> An acetoacetic ester synthesis yields a methyl ketone by adding three carbons to an alkyl halide.</para>
+<figure class="unnumbered scaled-down" id="fig-00015">
+<media alt="A structure in which R group is bonded to C H 2 that is bonded to carbonyl bonded to C H 3. The three carbon atoms are from acetoacetic ester.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_07_017.jpg"/>
+</media>
+</figure>
+<para id="para-00022">Thus, the acetoacetic ester synthesis of 2-pentanone must involve reaction of bromoethane.</para>
+<para id="para-00023"><title><span class="cyan-text">Solution</span></title></para>
+<figure class="unnumbered scaled-down" id="fig-00016">
+<media alt="Bromoethane and ethyl acetoacetate react with sodium ethoxide and, following heaing in acid, 2-pentanone is formed.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_07_018.jpg"/>
+</media>
+</figure>
+</example>
+</section>
+<section class="section-exercises" id="sect-00004">
+<title>Problems</title>
+<exercise id="exer-00004">
+<problem id="prob-00004">
+<para id="para-00024"><link class="os-embed" url="#exercise/22-07-OC-P13"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00005">
+<problem id="prob-00005">
+<para id="para-00025"><link class="os-embed" url="#exercise/22-07-OC-P14"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00006">
+<problem id="prob-00006">
+<para id="para-00026"><link class="os-embed" url="#exercise/22-07-OC-P15"/></para>
+</problem>
+</exercise>
+</section>
+<section id="sect-00005">
+<title>Direct Alkylation of Ketones, Esters, and Nitriles</title>
+<para id="para-00027">Both the malonic ester synthesis and the acetoacetic ester synthesis are easy to carry out because they involve relatively acidic dicarbonyl compounds. As a result, sodium ethoxide in ethanol can be used to prepare the necessary enolate ions. Alternatively, however, it’s also possible in many cases to directly alkylate the <emphasis effect="italics">α</emphasis> position of <emphasis effect="italics">mono</emphasis>carbonyl compounds. A strong, sterically hindered base such as LDA is needed so that complete conversion to the enolate ion takes place rather than a nucleophilic addition, and a nonprotic solvent must be used.</para>
+<para id="para-00028">Ketones, esters, and nitriles can all be alkylated using LDA or related dialkylamide bases in tetrahydrofuran (THF). Aldehydes, however, rarely give high yields of pure products because their enolate ions undergo carbonyl condensation reactions instead of alkylation. (We’ll study this condensation reaction in the next chapter.) Some specific examples of alkylation reactions are shown.</para>
+<figure class="unnumbered scaled-down" id="fig-00017">
+<media alt="Butyrolactone reacts with L D A in T H F to form an intermediate, which reacts with methyl iodide to form 2-methylbutyrolactone in 88 percent yield.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_07_021.jpg"/>
+</media>
+</figure>
+<figure class="unnumbered scaled-down" id="fig-00034">
+  <media alt="Ethyl 2-methylpropanoate reacts with L D A in T H F  to form an intermediate, which reacts with methyl iodide to form ethyl 2,2-dimethylpropanoatein 87 percent yield.">
+  <image mime-type="image/jpeg" src="../../media/OChem_22_07_022.jpg"/>
+  </media>
+  </figure>
+  <figure class="unnumbered scaled-down" id="fig-00035">
+    <media alt="2-Methylcyclohexanone reacts with L D A in T H F to form two intermediates, which react with methyl iodide to form 2,6-dimethylcyclohexanone (56 percent) and 2,2-dimethylcyclohexanone (6 percent), respectively.">
+    <image mime-type="image/jpeg" src="../../media/OChem_22_07_023.jpg"/>
+    </media>
+    </figure>
+    
+<para id="para-00029">Note in the ketone example that alkylation of 2-methylcyclohexanone leads to a mixture of products because both possible enolate ions are formed. In general, the major product in such cases occurs by alkylation at the less hindered, more accessible position. Thus, alkylation of 2-methylcyclohexanone occurs primarily at C6 (secondary) rather than C2 (tertiary).</para>
+<example id="exam-00003">
+<title>Using an Alkylation Reaction to Prepare a Substituted Ester</title>
+<para id="para-00030">How might you use an alkylation reaction to prepare ethyl 1-methylcyclohexanecarboxylate?</para>
+<figure class="unnumbered scaled-down" id="fig-00018">
+<media alt="The structure of ethyl 1-methylcyclohexanecarboxylate in which both C O 2 E t and C H 3 groups are bonded to C 1 of cyclohexane.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_07_025.jpg"/>
+</media>
+</figure>
+<para id="para-00031"><title><span class="red-text">Strategy</span></title> An alkylation reaction is used to introduce a methyl or primary alkyl group onto the <emphasis effect="italics">α</emphasis> position of a ketone, ester, or nitrile by S<sub>N</sub>2 reaction of an enolate ion with an alkyl halide. Thus, we need to look at the target molecule and identify any methyl or primary alkyl groups attached to an <emphasis effect="italics">α</emphasis> carbon. In the present instance, the target has an <emphasis effect="italics">α</emphasis> methyl group, which might be introduced by alkylation of an ester enolate ion with iodomethane.</para>
+<para id="para-00032"><title><span class="cyan-text">Solution</span></title></para>
+<figure class="unnumbered scaled-down" id="fig-00019">
+<media alt="Ethyl cyclohexanecarboxylate reacts with L D A in T H F in one step and methyl iodide in a second step to yield ethyl 1-methylcyclohexanecarboxylate.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_07_026.jpg"/>
+</media>
+</figure>
+</example>
+</section>
+<section class="section-exercises" id="sect-00006">
+<title>Problems</title>
+<exercise id="exer-00007">
+<problem id="prob-00007">
+<para id="para-00033"><link class="os-embed" url="#exercise/22-07-OC-P16"/></para>
+</problem>
+</exercise>
+</section>
+<section id="sect-00007">
+<title>Biological Alkylations</title>
+<para id="para-00034">Alkylations are rare but not unknown in biological chemistry. One example occurs during biosynthesis of the antibiotic indolmycin from indolylpyruvate when a base abstracts an acidic hydrogen from an <emphasis effect="italics">α</emphasis> position and the resultant enolate ion carries out an S<sub>N</sub>2 alkylation reaction on the methyl group of <emphasis effect="italics">S</emphasis>-adenosylmethionine (SAM; <link document="m00127"/>). Although it’s convenient to speak of “enolate ion” intermediates in biological pathways, it’s unlikely that they exist for long in an aqueous cellular environment. Rather, proton removal and alkylation probably occur at essentially the same time (<link target-id="fig-00020"/>).</para>
+<figure class="scaled-down" id="fig-00020">
+<media alt="Indolylpyruvate reacts with base in the presence of S-adenosylmethionine to form two intermediates, eventually yielding indolmycin, an antibiotic.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_07_028.jpg"/>
+</media>
+<caption><emphasis effect="bold">The biosynthesis of indolmycin from indolylpyruvate</emphasis> occurs through a pathway that includes an alkylation reaction of a short-lived enolate ion intermediate.</caption>
+</figure>
+</section>
+<section class="chemistry-matters" id="sect-00008">
+<title>Barbiturates</title>
+<para id="para-00035">The use of herbal remedies to treat illness and disease goes back thousands of years, but the medical use of chemicals prepared in the laboratory has a much shorter history. Barbiturates, a large class of drugs with a wide variety of uses, constitute one of the earliest successes of medicinal chemistry. The synthesis and medical use of barbiturates goes back to 1904 when Bayer, a German chemical company, first marketed a compound called barbital, trade named Veronal, as a treatment for insomnia. Since that time, more than 2500 different barbiturate analogs have been synthesized by drug companies, more than 50 have been used medicinally, and about a dozen are still in use as anesthetics, anticonvulsants, sedatives, and anxiolytics.</para>
+<figure class="scaled-down" id="fig-00021">
+<media alt="An image displays different colorful barbiturates as tablets, pills, and capsules.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_98_BarbColors.jpg"/>
+</media>
+<caption><emphasis effect="bold">Different barbiturates come in a multitude of colors, giving rise to similarly colorful street names when the drugs are abused.</emphasis> (credit: “Medications” by freestocks.org/Flickr, Public Domain)</caption>
+</figure>
+<para id="para-00036">The synthesis of barbiturates is relatively simple and relies on reactions that are now familiar: enolate alkylations and nucleophilic acyl substitutions. Starting with diethyl malonate, alkylation of the corresponding enolate ion with simple alkyl halides provides a wealth of different disubstituted malonic esters. Reaction with urea, <m:math><m:mrow><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>N</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>C</m:mtext><m:mo>═</m:mo><m:mtext>O</m:mtext></m:mrow></m:math>, then gives the product barbiturates by a twofold nucleophilic acyl substitution reaction of the ester groups with the –NH<sub>2</sub> groups of urea (<link target-id="fig-00022"/>). Amobarbital (Amytal), pentobarbital (Nembutal), and secobarbital (Seconal) are typical examples.</para>
+<figure class="scaled-down" id="fig-00022">
+<media alt="Diethyl malonate reacts with three different sets of reactants to form three intermediates that each further react with urea and sodium ethoxide to yield three products named amobarbital, pentobarbital, and secobarbital.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_07_031.jpg"/>
+</media>
+<caption><emphasis effect="bold">The synthesis of barbiturates relies on malonic ester alkylations and nucleophilic acyl substitution reactions.</emphasis> More than 2500 different barbiturates have been synthesized over the past 100 years.</caption>
+</figure>
+<figure class="unnumbered scaled-down" id="fig-00023">
+<media alt="Structure of Barbital (Veronal) is a six-membered ring comprising of carbonyl groups at positions1, 3, and 5, N H groups at positions 2 and 6, and a carbon at position 4 bearing two ethyl groups.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_07_029.jpg"/>
+</media>
+</figure>
+<para id="para-00037">In addition to their prescribed medical uses, many barbiturates have also found widespread illegal use as street drugs. Each barbiturate often comes as a tablet of regulated size, shape, and color. Although still used today, most barbiturates have been replaced by safer, more potent alternatives with markedly different structures.</para>
+</section>
+<section class="key-terms" id="sect-00009">
+<list id="list-00001">
+<item><link document="m00263" target-id="term-00003">acetoacetic ester synthesis</link></item>
+<item><link document="m00256" target-id="term-00001"><emphasis effect="italics">α</emphasis>-substitution reaction</link></item>
+<item><link document="m00263" target-id="term-00002">decarboxylation</link></item>
+<item><link document="m00257" target-id="term-00001">enol</link></item>
+<item><link document="m00257" target-id="term-00003">enolate ion</link></item>
+<item><link document="m00263" target-id="term-00001">malonic ester synthesis</link></item>
+<item><link document="m00257" target-id="term-00002">tautomer</link></item>
+</list>
+</section>
+<section class="summary" id="sect-00010">
+<title>Summary</title>
+<para id="para-00038">The <emphasis effect="italics">α</emphasis>-substitution reaction of a carbonyl compound through either an <emphasis effect="bold">enol</emphasis> or <emphasis effect="bold">enolate ion</emphasis> intermediate is one of the four fundamental reaction types in carbonyl-group chemistry.</para>
+<figure class="unnumbered scaled-down" id="fig-00024">
+<media alt="A flowchart shows two reactions of a carbonyl compound, one via an enolate intermediate and one via an enol, both forming an alpha-substituted carbonyl compound upon addition of an electrophile.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_EC_001.jpg"/>
+</media>
+</figure>
+<para id="para-00039">Carbonyl compounds are in an equilibrium with their enols, a process called keto–enol tautomerism. Although enol <emphasis effect="bold">tautomers</emphasis> are normally present to only a small extent at equilibrium and can’t usually be isolated in pure form, they nevertheless contain a highly nucleophilic double bond and react with electrophiles in an <emphasis effect="bold"><emphasis effect="italics">α</emphasis>-substitution reaction</emphasis>. An example is the <emphasis effect="italics">α</emphasis> halogenation of ketones on treatment with Cl<sub>2</sub>, Br<sub>2</sub>, or I<sub>2</sub> in acid solution. Alpha bromination of carboxylic acids can be similarly accomplished by the Hell–Volhard–Zelinskii (HVZ) reaction, in which an acid is treated with Br<sub>2</sub> and PBr<sub>3</sub>. The <emphasis effect="italics">α</emphasis>-halogenated products can then undergo base-induced E2 elimination to yield <emphasis effect="italics">α</emphasis>,<emphasis effect="italics">β</emphasis>-unsaturated carbonyl compounds.</para>
+<para id="para-00040">Alpha hydrogen atoms of carbonyl compounds are weakly acidic and can be removed by strong bases, such as lithium diisopropylamide (LDA), to yield nucleophilic enolate ions. The most useful reaction of enolate ions is their S<sub>N</sub>2 alkylation with alkyl halides. The <emphasis effect="bold">Malonic ester synthesis</emphasis> converts an alkyl halide into a carboxylic acid with the addition of two carbon atoms (RX&#8201;→&#8201;RCH<sub>2</sub>CO<sub>2</sub>H). Similarly, the <emphasis effect="bold">acetoacetic ester synthesis</emphasis> converts an alkyl halide into a methyl ketone with the addition of three carbon atoms (RX&#8201;→&#8201;RCH<sub>2</sub>COCH<sub>3</sub>). In addition, many carbonyl compounds, including ketones, esters, and nitriles, can be directly alkylated by treatment with LDA and an alkyl halide.</para>
+</section>
+<section class="summary-reactions" id="sect-00011">
+<title>Summary of Reactions</title>
+<list list-type="enumerated" id="list-00002">
+<item>Aldehyde/ketone halogenation (<link document="m00259"/>)<newline/>
+<figure class="unnumbered scaled-down" id="fig-00025">
+<media alt="A carbonyl group reacts with a haolgen in acetic acid to form an alpha halo carbonyl compound and H X as a byproduct.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_EC_002.jpg"/>
+</media>
+</figure></item>
+<item>Hell–Volhard–Zelinskii bromination of acids (<link document="m00260"/>)<newline/>
+<figure class="unnumbered scaled-down" id="fig-00026">
+<media alt="A carboxylic acid reacts with bromine and phosphorus bromide in one step and with water in a second step to form an alpha brominated carboxylic acid as the product.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_EC_003.jpg"/>
+</media>
+</figure></item>
+<item>Dehydrobromination of <emphasis effect="italics">α</emphasis>-bromo ketones (<link document="m00259"/>)<newline/>
+<figure class="unnumbered scaled-down" id="fig-00027">
+<media alt="On heating, an alpha brominated ketone reacts with pyridine to form an alpha beta unsaturated ketone as the product.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_EC_004.jpg"/>
+</media>
+</figure></item>
+<item>Haloform reaction (<link document="m00262"/>)<newline/>
+<figure class="unnumbered scaled-down" id="fig-00028">
+<media alt="A methyl ketone reacts with a halogen and base to form a trihalomethane and a carboxylate ion.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_EC_005.jpg"/>
+</media>
+</figure></item>
+<item>Alkylation of enolate ions (<link document="m00263"/>)
+<list mark-prefix="(" mark-suffix=")" list-type="enumerated" number-style="lower-alpha" id="list-00003">
+<item>Malonic ester synthesis<newline/>
+<figure class="unnumbered scaled-down" id="fig-00029">
+<media alt="Diethyl malonate reacts with sodium ethoxide in ethanol and R X, followed by treatment with acid and heat gives a carboxylic acid product bearing an R group on the alpha carbon.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_EC_006.jpg"/>
+</media>
+</figure></item>
+<item>Acetoacetic ester synthesis<newline/>
+<figure class="unnumbered scaled-down" id="fig-00030">
+<media alt="A ketone reacts with sodium ethoxide in ethanol and R X, followed by treatment with acid and heat gives an alpha alkylated ketone product.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_EC_007.jpg"/>
+</media>
+</figure></item>
+<item>Direct alkylation of ketones<newline/>
+<figure class="unnumbered scaled-down" id="fig-00031">
+<media alt="An alkyl ester reacts with L D A in T H F in the first step and alkyl halide in the second step to yield an alpha alkylated ketone.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_EC_008.jpg"/>
+</media>
+</figure></item>
+<item>Direct alkylation of esters<newline/>
+<figure class="unnumbered scaled-down" id="fig-00032">
+<media alt="An ester reacts with L D A in T H F in the first step and alkyl halide in the second step to yield an alpha alkylated ester.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_EC_009.jpg"/>
+</media>
+</figure></item>
+<item>Direct alkylation of nitriles<newline/>
+<figure class="unnumbered scaled-down" id="fig-00033">
+<media alt="A nitrile reacts with L D A in T H F in the first step and alkyl halide in the second step to yield an alpha alkylated nitrile.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_EC_010.jpg"/>
+</media>
+</figure></item>
+</list></item></list>
+</section>
+<section class="additional-problems" id="sect-00012">
+<title>Additional Problems</title>
+<para id="para-00041"><emphasis effect="bold"><span class="red-text">Visualizing Chemistry</span></emphasis></para>
+<exercise id="exer-00008">
+<problem id="prob-00008">
+<para id="para-00042"><link class="os-embed" url="#exercise/22-99-OC-VC01"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00009">
+<problem id="prob-00009">
+<para id="para-00043"><link class="os-embed" url="#exercise/22-99-OC-VC02"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00010">
+<problem id="prob-00010">
+<para id="para-00044"><link class="os-embed" url="#exercise/22-99-OC-VC03"/></para>
+</problem>
+</exercise>
+<para id="para-00045"><emphasis effect="bold"><span class="red-text">Mechanism Problems</span></emphasis></para>
+<exercise id="exer-00011">
+<problem id="prob-00011">
+<para id="para-00046"><link class="os-embed" url="#exercise/22-99-OC-MP01"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00012">
+<problem id="prob-00012">
+<para id="para-00047"><link class="os-embed" url="#exercise/22-99-OC-MP02"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00013">
+<problem id="prob-00013">
+<para id="para-00048"><link class="os-embed" url="#exercise/22-99-OC-MP03"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00014">
+<problem id="prob-00014">
+<para id="para-00049"><link class="os-embed" url="#exercise/22-99-OC-MP04"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00015">
+<problem id="prob-00015">
+<para id="para-00050"><link class="os-embed" url="#exercise/22-99-OC-MP05"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00016">
+<problem id="prob-00016">
+<para id="para-00051"><link class="os-embed" url="#exercise/22-99-OC-MP06"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00017">
+<problem id="prob-00017">
+<para id="para-00052"><link class="os-embed" url="#exercise/22-99-OC-MP07"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00018">
+<problem id="prob-00018">
+<para id="para-00053"><link class="os-embed" url="#exercise/22-99-OC-MP08"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00019">
+<problem id="prob-00019">
+<para id="para-00054"><link class="os-embed" url="#exercise/22-99-OC-MP09"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00020">
+<problem id="prob-00020">
+<para id="para-00055"><link class="os-embed" url="#exercise/22-99-OC-MP10"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00021">
+<problem id="prob-00021">
+<para id="para-00056"><link class="os-embed" url="#exercise/22-99-OC-MP11"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00022">
+<problem id="prob-00022">
+<para id="para-00057"><link class="os-embed" url="#exercise/22-99-OC-MP12"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00023">
+<problem id="prob-00023">
+<para id="para-00058"><link class="os-embed" url="#exercise/22-99-OC-MP13"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00024">
+<problem id="prob-00024">
+<para id="para-00059"><link class="os-embed" url="#exercise/22-99-OC-MP14"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00025">
+<problem id="prob-00025">
+<para id="para-00060"><link class="os-embed" url="#exercise/22-99-OC-MP15"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00026">
+<problem id="prob-00026">
+<para id="para-00061"><link class="os-embed" url="#exercise/22-99-OC-MP16"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00027">
+<problem id="prob-00027">
+<para id="para-00062"><link class="os-embed" url="#exercise/22-99-OC-MP17"/></para>
+</problem>
+</exercise>
+<para id="para-00063"><emphasis effect="bold"><span class="red-text">Acidity of Carbonyl Compounds</span></emphasis></para>
+<exercise id="exer-00028">
+<problem id="prob-00028">
+<para id="para-00064"><link class="os-embed" url="#exercise/22-99-OC-AP01"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00029">
+<problem id="prob-00029">
+<para id="para-00065"><link class="os-embed" url="#exercise/22-99-OC-AP02"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00030">
+<problem id="prob-00030">
+<para id="para-00066"><link class="os-embed" url="#exercise/22-99-OC-AP03"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00031">
+<problem id="prob-00031">
+<para id="para-00067"><link class="os-embed" url="#exercise/22-99-OC-AP04"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00032">
+<problem id="prob-00032">
+<para id="para-00068"><link class="os-embed" url="#exercise/22-99-OC-AP05"/></para>
+</problem>
+</exercise>
+<para id="para-00069"><emphasis effect="bold"><span class="red-text"><emphasis effect="italics">α</emphasis>-Substitution Reactions</span></emphasis></para>
+<exercise id="exer-00033">
+<problem id="prob-00033">
+<para id="para-00070"><link class="os-embed" url="#exercise/22-99-OC-AP06"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00034">
+<problem id="prob-00034">
+<para id="para-00071"><link class="os-embed" url="#exercise/22-99-OC-AP07"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00035">
+<problem id="prob-00035">
+<para id="para-00072"><link class="os-embed" url="#exercise/22-99-OC-AP08"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00036">
+<problem id="prob-00036">
+<para id="para-00073"><link class="os-embed" url="#exercise/22-99-OC-AP09"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00037">
+<problem id="prob-00037">
+<para id="para-00074"><link class="os-embed" url="#exercise/22-99-OC-AP10"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00038">
+<problem id="prob-00038">
+<para id="para-00075"><link class="os-embed" url="#exercise/22-99-OC-AP11"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00039">
+<problem id="prob-00039">
+<para id="para-00076"><link class="os-embed" url="#exercise/22-99-OC-AP12"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00040">
+<problem id="prob-00040">
+<para id="para-00077"><link class="os-embed" url="#exercise/22-99-OC-AP13"/></para>
+</problem>
+</exercise>
+<para id="para-00078"><emphasis effect="bold"><span class="red-text">General Problems</span></emphasis></para>
+<exercise id="exer-00041">
+<problem id="prob-00041">
+<para id="para-00079"><link class="os-embed" url="#exercise/22-99-OC-AP14"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00042">
+<problem id="prob-00042">
+<para id="para-00080"><link class="os-embed" url="#exercise/22-99-OC-AP15"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00043">
+<problem id="prob-00043">
+<para id="para-00081"><link class="os-embed" url="#exercise/22-99-OC-AP16"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00044">
+<problem id="prob-00044">
+<para id="para-00082"><link class="os-embed" url="#exercise/22-99-OC-AP17"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00045">
+<problem id="prob-00045">
+<para id="para-00083"><link class="os-embed" url="#exercise/22-99-OC-AP18"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00046">
+<problem id="prob-00046">
+<para id="para-00084"><link class="os-embed" url="#exercise/22-99-OC-AP20"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00048">
+<problem id="prob-00048">
+<para id="para-00086"><link class="os-embed" url="#exercise/22-99-OC-AP22"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00049">
+<problem id="prob-00049">
+<para id="para-00087"><link class="os-embed" url="#exercise/22-99-OC-AP23"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00050">
+<problem id="prob-00050">
+<para id="para-00088"><link class="os-embed" url="#exercise/22-99-OC-AP24"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00051">
+<problem id="prob-00051">
+<para id="para-00089"><link class="os-embed" url="#exercise/22-99-OC-AP25"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00052">
+<problem id="prob-00052">
+<para id="para-00090"><link class="os-embed" url="#exercise/22-99-OC-AP26"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00053">
+<problem id="prob-00053">
+<para id="para-00091"><link class="os-embed" url="#exercise/22-99-OC-AP27"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00054">
+<problem id="prob-00054">
+<para id="para-00092"><link class="os-embed" url="#exercise/22-99-OC-AP28"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00055">
+<problem id="prob-00055">
+<para id="para-00093"><link class="os-embed" url="#exercise/22-99-OC-AP29"/></para>
+</problem>
+</exercise>
+</section>
+</content>
+</document>

@@ -1,0 +1,1916 @@
+{
+  "book": "college-physics-2e",
+  "slug": "edlisfraedi-2e",
+  "title": "College Physics 2e",
+  "titleIs": "Eðlisfræði 2e",
+  "repo": "openstax/osbooks-college-physics-bundle",
+  "preface": "m42955",
+  "chapters": [
+    {
+      "chapter": 1,
+      "title": "Physical Quantities and Units",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42091",
+          "section": "intro",
+          "title": "Physical Quantities and Units",
+          "titleIs": null
+        },
+        {
+          "id": "m42092",
+          "section": "1.1",
+          "title": "Physics: An Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m42119",
+          "section": "1.2",
+          "title": "Introduction to Science and the Realm of Physics, Physical Quantities, and Units",
+          "titleIs": null
+        },
+        {
+          "id": "m42120",
+          "section": "1.3",
+          "title": "Accuracy, Precision, and Significant Figures",
+          "titleIs": null
+        },
+        {
+          "id": "m42121",
+          "section": "1.4",
+          "title": "Approximation",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 2,
+      "title": "Displacement",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42033",
+          "section": "intro",
+          "title": "Displacement",
+          "titleIs": null
+        },
+        {
+          "id": "m42096",
+          "section": "2.1",
+          "title": "Time, Velocity, and Speed",
+          "titleIs": null
+        },
+        {
+          "id": "m42099",
+          "section": "2.2",
+          "title": "Motion Equations for Constant Acceleration in One Dimension",
+          "titleIs": null
+        },
+        {
+          "id": "m42100",
+          "section": "2.3",
+          "title": "Acceleration",
+          "titleIs": null
+        },
+        {
+          "id": "m42102",
+          "section": "2.4",
+          "title": "Falling Objects",
+          "titleIs": null
+        },
+        {
+          "id": "m42103",
+          "section": "2.5",
+          "title": "Graphical Analysis of One-Dimensional Motion",
+          "titleIs": null
+        },
+        {
+          "id": "m42122",
+          "section": "2.6",
+          "title": "Introduction to One-Dimensional Kinematics",
+          "titleIs": null
+        },
+        {
+          "id": "m42124",
+          "section": "2.7",
+          "title": "Vectors, Scalars, and Coordinate Systems",
+          "titleIs": null
+        },
+        {
+          "id": "m42125",
+          "section": "2.8",
+          "title": "Problem-Solving Basics for One-Dimensional Kinematics",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 3,
+      "title": "Projectile Motion",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42042",
+          "section": "intro",
+          "title": "Projectile Motion",
+          "titleIs": null
+        },
+        {
+          "id": "m42045",
+          "section": "3.1",
+          "title": "Addition of Velocities",
+          "titleIs": null
+        },
+        {
+          "id": "m42104",
+          "section": "3.2",
+          "title": "Kinematics in Two Dimensions: An Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m42126",
+          "section": "3.3",
+          "title": "Introduction to Two-Dimensional Kinematics",
+          "titleIs": null
+        },
+        {
+          "id": "m42127",
+          "section": "3.4",
+          "title": "Vector Addition and Subtraction: Graphical Methods",
+          "titleIs": null
+        },
+        {
+          "id": "m42128",
+          "section": "3.5",
+          "title": "Vector Addition and Subtraction: Analytical Methods",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 4,
+      "title": "Development of Force Concept",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42069",
+          "section": "intro",
+          "title": "Development of Force Concept",
+          "titleIs": null
+        },
+        {
+          "id": "m42073",
+          "section": "4.1",
+          "title": "Newton’s Second Law of Motion: Concept of a System",
+          "titleIs": null
+        },
+        {
+          "id": "m42074",
+          "section": "4.2",
+          "title": "Newton’s Third Law of Motion: Symmetry in Forces",
+          "titleIs": null
+        },
+        {
+          "id": "m42075",
+          "section": "4.3",
+          "title": "Normal, Tension, and Other Examples of Forces",
+          "titleIs": null
+        },
+        {
+          "id": "m42076",
+          "section": "4.4",
+          "title": "Problem-Solving Strategies",
+          "titleIs": null
+        },
+        {
+          "id": "m42129",
+          "section": "4.5",
+          "title": "Introduction to Dynamics: Newton’s Laws of Motion",
+          "titleIs": null
+        },
+        {
+          "id": "m42130",
+          "section": "4.6",
+          "title": "Newton’s First Law of Motion: Inertia",
+          "titleIs": null
+        },
+        {
+          "id": "m42132",
+          "section": "4.7",
+          "title": "Further Applications of Newton’s Laws of Motion",
+          "titleIs": null
+        },
+        {
+          "id": "m42137",
+          "section": "4.8",
+          "title": "Extended Topic: The Four Basic Forces—An Introduction",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 5,
+      "title": "Drag Forces",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42080",
+          "section": "intro",
+          "title": "Drag Forces",
+          "titleIs": null
+        },
+        {
+          "id": "m42081",
+          "section": "5.1",
+          "title": "Elasticity: Stress and Strain",
+          "titleIs": null
+        },
+        {
+          "id": "m42138",
+          "section": "5.2",
+          "title": "Introduction: Further Applications of Newton’s Laws",
+          "titleIs": null
+        },
+        {
+          "id": "m42139",
+          "section": "5.3",
+          "title": "Friction",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 6,
+      "title": "Rotation Angle and Angular Velocity",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42083",
+          "section": "intro",
+          "title": "Rotation Angle and Angular Velocity",
+          "titleIs": null
+        },
+        {
+          "id": "m42084",
+          "section": "6.1",
+          "title": "Centripetal Acceleration",
+          "titleIs": null
+        },
+        {
+          "id": "m42086",
+          "section": "6.2",
+          "title": "Centripetal Force",
+          "titleIs": null
+        },
+        {
+          "id": "m42140",
+          "section": "6.3",
+          "title": "Introduction to Uniform Circular Motion and Gravitation",
+          "titleIs": null
+        },
+        {
+          "id": "m42142",
+          "section": "6.4",
+          "title": "Fictitious Forces and Non-inertial Frames: The Coriolis Force",
+          "titleIs": null
+        },
+        {
+          "id": "m42143",
+          "section": "6.5",
+          "title": "Newton’s Universal Law of Gravitation",
+          "titleIs": null
+        },
+        {
+          "id": "m42144",
+          "section": "6.6",
+          "title": "Satellites and Kepler’s Laws: An Argument for Simplicity",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 7,
+      "title": "Introduction to Work, Energy, and Energy Resources",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42145",
+          "section": "intro",
+          "title": "Introduction to Work, Energy, and Energy Resources",
+          "titleIs": null
+        },
+        {
+          "id": "m42146",
+          "section": "7.1",
+          "title": "Work: The Scientific Definition",
+          "titleIs": null
+        },
+        {
+          "id": "m42147",
+          "section": "7.2",
+          "title": "Kinetic Energy and the Work-Energy Theorem",
+          "titleIs": null
+        },
+        {
+          "id": "m42148",
+          "section": "7.3",
+          "title": "Gravitational Potential Energy",
+          "titleIs": null
+        },
+        {
+          "id": "m42149",
+          "section": "7.4",
+          "title": "Conservative Forces and Potential Energy",
+          "titleIs": null
+        },
+        {
+          "id": "m42150",
+          "section": "7.5",
+          "title": "Nonconservative Forces",
+          "titleIs": null
+        },
+        {
+          "id": "m42151",
+          "section": "7.6",
+          "title": "Conservation of Energy",
+          "titleIs": null
+        },
+        {
+          "id": "m42152",
+          "section": "7.7",
+          "title": "Power",
+          "titleIs": null
+        },
+        {
+          "id": "m42153",
+          "section": "7.8",
+          "title": "Work, Energy, and Power in Humans",
+          "titleIs": null
+        },
+        {
+          "id": "m42154",
+          "section": "7.9",
+          "title": "World Energy Use",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 8,
+      "title": "Introduction to Linear Momentum and Collisions",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42155",
+          "section": "intro",
+          "title": "Introduction to Linear Momentum and Collisions",
+          "titleIs": null
+        },
+        {
+          "id": "m42156",
+          "section": "8.1",
+          "title": "Linear Momentum and Force",
+          "titleIs": null
+        },
+        {
+          "id": "m42159",
+          "section": "8.2",
+          "title": "Impulse",
+          "titleIs": null
+        },
+        {
+          "id": "m42162",
+          "section": "8.3",
+          "title": "Conservation of Momentum",
+          "titleIs": null
+        },
+        {
+          "id": "m42163",
+          "section": "8.4",
+          "title": "Elastic Collisions in One Dimension",
+          "titleIs": null
+        },
+        {
+          "id": "m42164",
+          "section": "8.5",
+          "title": "Inelastic Collisions in One Dimension",
+          "titleIs": null
+        },
+        {
+          "id": "m42165",
+          "section": "8.6",
+          "title": "Collisions of Point Masses in Two Dimensions",
+          "titleIs": null
+        },
+        {
+          "id": "m42166",
+          "section": "8.7",
+          "title": "Introduction to Rocket Propulsion",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 9,
+      "title": "Introduction to Statics and Torque",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42167",
+          "section": "intro",
+          "title": "Introduction to Statics and Torque",
+          "titleIs": null
+        },
+        {
+          "id": "m42170",
+          "section": "9.1",
+          "title": "The First Condition for Equilibrium",
+          "titleIs": null
+        },
+        {
+          "id": "m42171",
+          "section": "9.2",
+          "title": "The Second Condition for Equilibrium",
+          "titleIs": null
+        },
+        {
+          "id": "m42172",
+          "section": "9.3",
+          "title": "Stability",
+          "titleIs": null
+        },
+        {
+          "id": "m42173",
+          "section": "9.4",
+          "title": "Applications of Statics, Including Problem-Solving Strategies",
+          "titleIs": null
+        },
+        {
+          "id": "m42174",
+          "section": "9.5",
+          "title": "Simple Machines",
+          "titleIs": null
+        },
+        {
+          "id": "m42175",
+          "section": "9.6",
+          "title": "Forces and Torques in Muscles and Joints",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 10,
+      "title": "Introduction to Rotational Motion and Angular Momentum",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42176",
+          "section": "intro",
+          "title": "Introduction to Rotational Motion and Angular Momentum",
+          "titleIs": null
+        },
+        {
+          "id": "m42177",
+          "section": "10.1",
+          "title": "Angular Acceleration",
+          "titleIs": null
+        },
+        {
+          "id": "m42178",
+          "section": "10.2",
+          "title": "Kinematics of Rotational Motion",
+          "titleIs": null
+        },
+        {
+          "id": "m42179",
+          "section": "10.3",
+          "title": "Dynamics of Rotational Motion: Rotational Inertia",
+          "titleIs": null
+        },
+        {
+          "id": "m42180",
+          "section": "10.4",
+          "title": "Rotational Kinetic Energy: Work and Energy Revisited",
+          "titleIs": null
+        },
+        {
+          "id": "m42182",
+          "section": "10.5",
+          "title": "Angular Momentum and Its Conservation",
+          "titleIs": null
+        },
+        {
+          "id": "m42183",
+          "section": "10.6",
+          "title": "Collisions of Extended Bodies in Two Dimensions",
+          "titleIs": null
+        },
+        {
+          "id": "m42184",
+          "section": "10.7",
+          "title": "Gyroscopic Effects: Vector Aspects of Angular Momentum",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 11,
+      "title": "Introduction to Fluid Statics",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42185",
+          "section": "intro",
+          "title": "Introduction to Fluid Statics",
+          "titleIs": null
+        },
+        {
+          "id": "m42186",
+          "section": "11.1",
+          "title": "What Is a Fluid?",
+          "titleIs": null
+        },
+        {
+          "id": "m42187",
+          "section": "11.2",
+          "title": "Density",
+          "titleIs": null
+        },
+        {
+          "id": "m42189",
+          "section": "11.3",
+          "title": "Pressure",
+          "titleIs": null
+        },
+        {
+          "id": "m42192",
+          "section": "11.4",
+          "title": "Variation of Pressure with Depth in a Fluid",
+          "titleIs": null
+        },
+        {
+          "id": "m42193",
+          "section": "11.5",
+          "title": "Pascal’s Principle",
+          "titleIs": null
+        },
+        {
+          "id": "m42195",
+          "section": "11.6",
+          "title": "Gauge Pressure, Absolute Pressure, and Pressure Measurement",
+          "titleIs": null
+        },
+        {
+          "id": "m42196",
+          "section": "11.7",
+          "title": "Archimedes’ Principle",
+          "titleIs": null
+        },
+        {
+          "id": "m42197",
+          "section": "11.8",
+          "title": "Cohesion and Adhesion in Liquids: Surface Tension and Capillary Action",
+          "titleIs": null
+        },
+        {
+          "id": "m42199",
+          "section": "11.9",
+          "title": "Pressures in the Body",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 12,
+      "title": "Introduction to Fluid Dynamics and Its Biological and Medical Applications",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42204",
+          "section": "intro",
+          "title": "Introduction to Fluid Dynamics and Its Biological and Medical Applications",
+          "titleIs": null
+        },
+        {
+          "id": "m42205",
+          "section": "12.1",
+          "title": "Flow Rate and Its Relation to Velocity",
+          "titleIs": null
+        },
+        {
+          "id": "m42206",
+          "section": "12.2",
+          "title": "Bernoulli’s Equation",
+          "titleIs": null
+        },
+        {
+          "id": "m42208",
+          "section": "12.3",
+          "title": "The Most General Applications of Bernoulli’s Equation",
+          "titleIs": null
+        },
+        {
+          "id": "m42209",
+          "section": "12.4",
+          "title": "Viscosity and Laminar Flow; Poiseuille’s Law",
+          "titleIs": null
+        },
+        {
+          "id": "m42210",
+          "section": "12.5",
+          "title": "The Onset of Turbulence",
+          "titleIs": null
+        },
+        {
+          "id": "m42211",
+          "section": "12.6",
+          "title": "Motion of an Object in a Viscous Fluid",
+          "titleIs": null
+        },
+        {
+          "id": "m42212",
+          "section": "12.7",
+          "title": "Molecular Transport Phenomena: Diffusion, Osmosis, and Related Processes",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 13,
+      "title": "Introduction to Temperature, Kinetic Theory, and the Gas Laws",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42213",
+          "section": "intro",
+          "title": "Introduction to Temperature, Kinetic Theory, and the Gas Laws",
+          "titleIs": null
+        },
+        {
+          "id": "m42214",
+          "section": "13.1",
+          "title": "Temperature",
+          "titleIs": null
+        },
+        {
+          "id": "m42215",
+          "section": "13.2",
+          "title": "Thermal Expansion of Solids and Liquids",
+          "titleIs": null
+        },
+        {
+          "id": "m42216",
+          "section": "13.3",
+          "title": "The Ideal Gas Law",
+          "titleIs": null
+        },
+        {
+          "id": "m42217",
+          "section": "13.4",
+          "title": "Kinetic Theory: Atomic and Molecular Explanation of Pressure and Temperature",
+          "titleIs": null
+        },
+        {
+          "id": "m42218",
+          "section": "13.5",
+          "title": "Phase Changes",
+          "titleIs": null
+        },
+        {
+          "id": "m42219",
+          "section": "13.6",
+          "title": "Humidity, Evaporation, and Boiling",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 14,
+      "title": "Introduction to Heat and Heat Transfer Methods",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42221",
+          "section": "intro",
+          "title": "Introduction to Heat and Heat Transfer Methods",
+          "titleIs": null
+        },
+        {
+          "id": "m42223",
+          "section": "14.1",
+          "title": "Heat",
+          "titleIs": null
+        },
+        {
+          "id": "m42224",
+          "section": "14.2",
+          "title": "Temperature Change and Heat Capacity",
+          "titleIs": null
+        },
+        {
+          "id": "m42225",
+          "section": "14.3",
+          "title": "Phase Change and Latent Heat",
+          "titleIs": null
+        },
+        {
+          "id": "m42226",
+          "section": "14.4",
+          "title": "Heat Transfer Methods",
+          "titleIs": null
+        },
+        {
+          "id": "m42228",
+          "section": "14.5",
+          "title": "Conduction",
+          "titleIs": null
+        },
+        {
+          "id": "m42229",
+          "section": "14.6",
+          "title": "Convection",
+          "titleIs": null
+        },
+        {
+          "id": "m42230",
+          "section": "14.7",
+          "title": "Radiation",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 15,
+      "title": "Introduction to Thermodynamics",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42231",
+          "section": "intro",
+          "title": "Introduction to Thermodynamics",
+          "titleIs": null
+        },
+        {
+          "id": "m42232",
+          "section": "15.1",
+          "title": "The First Law of Thermodynamics",
+          "titleIs": null
+        },
+        {
+          "id": "m42233",
+          "section": "15.2",
+          "title": "The First Law of Thermodynamics and Some Simple Processes",
+          "titleIs": null
+        },
+        {
+          "id": "m42234",
+          "section": "15.3",
+          "title": "Introduction to the Second Law of Thermodynamics: Heat Engines and Their Efficiency",
+          "titleIs": null
+        },
+        {
+          "id": "m42235",
+          "section": "15.4",
+          "title": "Carnot’s Perfect Heat Engine: The Second Law of Thermodynamics Restated",
+          "titleIs": null
+        },
+        {
+          "id": "m42236",
+          "section": "15.5",
+          "title": "Applications of Thermodynamics: Heat Pumps and Refrigerators",
+          "titleIs": null
+        },
+        {
+          "id": "m42237",
+          "section": "15.6",
+          "title": "Entropy and the Second Law of Thermodynamics: Disorder and the Unavailability of Energy",
+          "titleIs": null
+        },
+        {
+          "id": "m42238",
+          "section": "15.7",
+          "title": "Statistical Interpretation of Entropy and the Second Law of Thermodynamics: The Underlying Explanation",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 16,
+      "title": "Introduction to Oscillatory Motion and Waves",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42239",
+          "section": "intro",
+          "title": "Introduction to Oscillatory Motion and Waves",
+          "titleIs": null
+        },
+        {
+          "id": "m42240",
+          "section": "16.1",
+          "title": "Hooke’s Law: Stress and Strain Revisited",
+          "titleIs": null
+        },
+        {
+          "id": "m42241",
+          "section": "16.2",
+          "title": "Period and Frequency in Oscillations",
+          "titleIs": null
+        },
+        {
+          "id": "m42242",
+          "section": "16.3",
+          "title": "Simple Harmonic Motion: A Special Periodic Motion",
+          "titleIs": null
+        },
+        {
+          "id": "m42243",
+          "section": "16.4",
+          "title": "The Simple Pendulum",
+          "titleIs": null
+        },
+        {
+          "id": "m42244",
+          "section": "16.5",
+          "title": "Energy and the Simple Harmonic Oscillator",
+          "titleIs": null
+        },
+        {
+          "id": "m42245",
+          "section": "16.6",
+          "title": "Uniform Circular Motion and Simple Harmonic Motion",
+          "titleIs": null
+        },
+        {
+          "id": "m42246",
+          "section": "16.7",
+          "title": "Damped Harmonic Motion",
+          "titleIs": null
+        },
+        {
+          "id": "m42247",
+          "section": "16.8",
+          "title": "Forced Oscillations and Resonance",
+          "titleIs": null
+        },
+        {
+          "id": "m42248",
+          "section": "16.9",
+          "title": "Waves",
+          "titleIs": null
+        },
+        {
+          "id": "m42249",
+          "section": "16.10",
+          "title": "Superposition and Interference",
+          "titleIs": null
+        },
+        {
+          "id": "m42250",
+          "section": "16.11",
+          "title": "Energy in Waves: Intensity",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 17,
+      "title": "Introduction to the Physics of Hearing",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42254",
+          "section": "intro",
+          "title": "Introduction to the Physics of Hearing",
+          "titleIs": null
+        },
+        {
+          "id": "m42255",
+          "section": "17.1",
+          "title": "Sound",
+          "titleIs": null
+        },
+        {
+          "id": "m42256",
+          "section": "17.2",
+          "title": "Speed of Sound, Frequency, and Wavelength",
+          "titleIs": null
+        },
+        {
+          "id": "m42257",
+          "section": "17.3",
+          "title": "Sound Intensity and Sound Level",
+          "titleIs": null
+        },
+        {
+          "id": "m42296",
+          "section": "17.4",
+          "title": "Sound Interference and Resonance: Standing Waves in Air Columns",
+          "titleIs": null
+        },
+        {
+          "id": "m42297",
+          "section": "17.5",
+          "title": "Hearing",
+          "titleIs": null
+        },
+        {
+          "id": "m42298",
+          "section": "17.6",
+          "title": "Ultrasound",
+          "titleIs": null
+        },
+        {
+          "id": "m42712",
+          "section": "17.7",
+          "title": "Doppler Effect and Sonic Booms",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 18,
+      "title": "Introduction to Electric Charge and Electric Field",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42299",
+          "section": "intro",
+          "title": "Introduction to Electric Charge and Electric Field",
+          "titleIs": null
+        },
+        {
+          "id": "m42300",
+          "section": "18.1",
+          "title": "Static Electricity and Charge: Conservation of Charge",
+          "titleIs": null
+        },
+        {
+          "id": "m42306",
+          "section": "18.2",
+          "title": "Conductors and Insulators",
+          "titleIs": null
+        },
+        {
+          "id": "m42308",
+          "section": "18.3",
+          "title": "Coulomb’s Law",
+          "titleIs": null
+        },
+        {
+          "id": "m42310",
+          "section": "18.4",
+          "title": "Electric Field: Concept of a Field Revisited",
+          "titleIs": null
+        },
+        {
+          "id": "m42312",
+          "section": "18.5",
+          "title": "Electric Field Lines: Multiple Charges",
+          "titleIs": null
+        },
+        {
+          "id": "m42315",
+          "section": "18.6",
+          "title": "Electric Forces in Biology",
+          "titleIs": null
+        },
+        {
+          "id": "m42317",
+          "section": "18.7",
+          "title": "Conductors and Electric Fields in Static Equilibrium",
+          "titleIs": null
+        },
+        {
+          "id": "m42329",
+          "section": "18.8",
+          "title": "Applications of Electrostatics",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 19,
+      "title": "Introduction to Electric Potential and Electric Energy",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42320",
+          "section": "intro",
+          "title": "Introduction to Electric Potential and Electric Energy",
+          "titleIs": null
+        },
+        {
+          "id": "m42324",
+          "section": "19.1",
+          "title": "Electric Potential Energy: Potential Difference",
+          "titleIs": null
+        },
+        {
+          "id": "m42326",
+          "section": "19.2",
+          "title": "Electric Potential in a Uniform Electric Field",
+          "titleIs": null
+        },
+        {
+          "id": "m42328",
+          "section": "19.3",
+          "title": "Electrical Potential Due to a Point Charge",
+          "titleIs": null
+        },
+        {
+          "id": "m42331",
+          "section": "19.4",
+          "title": "Equipotential Lines",
+          "titleIs": null
+        },
+        {
+          "id": "m42333",
+          "section": "19.5",
+          "title": "Capacitors and Dielectrics",
+          "titleIs": null
+        },
+        {
+          "id": "m42336",
+          "section": "19.6",
+          "title": "Capacitors in Series and Parallel",
+          "titleIs": null
+        },
+        {
+          "id": "m42395",
+          "section": "19.7",
+          "title": "Energy Stored in Capacitors",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 20,
+      "title": "Introduction to Electric Current, Resistance, and Ohm's Law",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42339",
+          "section": "intro",
+          "title": "Introduction to Electric Current, Resistance, and Ohm's Law",
+          "titleIs": null
+        },
+        {
+          "id": "m42341",
+          "section": "20.1",
+          "title": "Current",
+          "titleIs": null
+        },
+        {
+          "id": "m42344",
+          "section": "20.2",
+          "title": "Ohm’s Law: Resistance and Simple Circuits",
+          "titleIs": null
+        },
+        {
+          "id": "m42346",
+          "section": "20.3",
+          "title": "Resistance and Resistivity",
+          "titleIs": null
+        },
+        {
+          "id": "m42348",
+          "section": "20.4",
+          "title": "Alternating Current versus Direct Current",
+          "titleIs": null
+        },
+        {
+          "id": "m42350",
+          "section": "20.5",
+          "title": "Electric Hazards and the Human Body",
+          "titleIs": null
+        },
+        {
+          "id": "m42352",
+          "section": "20.6",
+          "title": "Nerve Conduction–Electrocardiograms",
+          "titleIs": null
+        },
+        {
+          "id": "m42714",
+          "section": "20.7",
+          "title": "Electric Power and Energy",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 21,
+      "title": "Introduction to Circuits and DC Instruments",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42354",
+          "section": "intro",
+          "title": "Introduction to Circuits and DC Instruments",
+          "titleIs": null
+        },
+        {
+          "id": "m42356",
+          "section": "21.1",
+          "title": "Resistors in Series and Parallel",
+          "titleIs": null
+        },
+        {
+          "id": "m42357",
+          "section": "21.2",
+          "title": "Electromotive Force: Terminal Voltage",
+          "titleIs": null
+        },
+        {
+          "id": "m42359",
+          "section": "21.3",
+          "title": "Kirchhoff’s Rules",
+          "titleIs": null
+        },
+        {
+          "id": "m42360",
+          "section": "21.4",
+          "title": "DC Voltmeters and Ammeters",
+          "titleIs": null
+        },
+        {
+          "id": "m42362",
+          "section": "21.5",
+          "title": "Null Measurements",
+          "titleIs": null
+        },
+        {
+          "id": "m42363",
+          "section": "21.6",
+          "title": "DC Circuits Containing Resistors and Capacitors",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 22,
+      "title": "Introduction to Magnetism",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42365",
+          "section": "intro",
+          "title": "Introduction to Magnetism",
+          "titleIs": null
+        },
+        {
+          "id": "m42366",
+          "section": "22.1",
+          "title": "Magnets",
+          "titleIs": null
+        },
+        {
+          "id": "m42368",
+          "section": "22.2",
+          "title": "Ferromagnets and Electromagnets",
+          "titleIs": null
+        },
+        {
+          "id": "m42370",
+          "section": "22.3",
+          "title": "Magnetic Fields and Magnetic Field Lines",
+          "titleIs": null
+        },
+        {
+          "id": "m42372",
+          "section": "22.4",
+          "title": "Magnetic Field Strength: Force on a Moving Charge in a Magnetic Field",
+          "titleIs": null
+        },
+        {
+          "id": "m42375",
+          "section": "22.5",
+          "title": "Force on a Moving Charge in a Magnetic Field: Examples and Applications",
+          "titleIs": null
+        },
+        {
+          "id": "m42377",
+          "section": "22.6",
+          "title": "The Hall Effect",
+          "titleIs": null
+        },
+        {
+          "id": "m42380",
+          "section": "22.7",
+          "title": "Torque on a Current Loop: Motors and Meters",
+          "titleIs": null
+        },
+        {
+          "id": "m42382",
+          "section": "22.8",
+          "title": "Magnetic Fields Produced by Currents: Ampere’s Law",
+          "titleIs": null
+        },
+        {
+          "id": "m42386",
+          "section": "22.9",
+          "title": "Magnetic Force between Two Parallel Conductors",
+          "titleIs": null
+        },
+        {
+          "id": "m42388",
+          "section": "22.10",
+          "title": "More Applications of Magnetism",
+          "titleIs": null
+        },
+        {
+          "id": "m42398",
+          "section": "22.11",
+          "title": "Magnetic Force on a Current-Carrying Conductor",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 23,
+      "title": "Introduction to Electromagnetic Induction, AC Circuits and Electrical Technologies",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42389",
+          "section": "intro",
+          "title": "Introduction to Electromagnetic Induction, AC Circuits and Electrical Technologies",
+          "titleIs": null
+        },
+        {
+          "id": "m42390",
+          "section": "23.1",
+          "title": "Induced Emf and Magnetic Flux",
+          "titleIs": null
+        },
+        {
+          "id": "m42392",
+          "section": "23.2",
+          "title": "Faraday’s Law of Induction: Lenz’s Law",
+          "titleIs": null
+        },
+        {
+          "id": "m42400",
+          "section": "23.3",
+          "title": "Motional Emf",
+          "titleIs": null
+        },
+        {
+          "id": "m42404",
+          "section": "23.4",
+          "title": "Eddy Currents and Magnetic Damping",
+          "titleIs": null
+        },
+        {
+          "id": "m42408",
+          "section": "23.5",
+          "title": "Electric Generators",
+          "titleIs": null
+        },
+        {
+          "id": "m42411",
+          "section": "23.6",
+          "title": "Back Emf",
+          "titleIs": null
+        },
+        {
+          "id": "m42414",
+          "section": "23.7",
+          "title": "Transformers",
+          "titleIs": null
+        },
+        {
+          "id": "m42416",
+          "section": "23.8",
+          "title": "Electrical Safety: Systems and Devices",
+          "titleIs": null
+        },
+        {
+          "id": "m42420",
+          "section": "23.9",
+          "title": "Inductance",
+          "titleIs": null
+        },
+        {
+          "id": "m42425",
+          "section": "23.10",
+          "title": "RL Circuits",
+          "titleIs": null
+        },
+        {
+          "id": "m42427",
+          "section": "23.11",
+          "title": "Reactance, Inductive and Capacitive",
+          "titleIs": null
+        },
+        {
+          "id": "m42431",
+          "section": "23.12",
+          "title": "RLC Series AC Circuits",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 24,
+      "title": "Introduction to Electromagnetic Waves",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42434",
+          "section": "intro",
+          "title": "Introduction to Electromagnetic Waves",
+          "titleIs": null
+        },
+        {
+          "id": "m42437",
+          "section": "24.1",
+          "title": "Maxwell’s Equations: Electromagnetic Waves Predicted and Observed",
+          "titleIs": null
+        },
+        {
+          "id": "m42440",
+          "section": "24.2",
+          "title": "Production of Electromagnetic Waves",
+          "titleIs": null
+        },
+        {
+          "id": "m42444",
+          "section": "24.3",
+          "title": "The Electromagnetic Spectrum",
+          "titleIs": null
+        },
+        {
+          "id": "m42446",
+          "section": "24.4",
+          "title": "Energy in Electromagnetic Waves",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 25,
+      "title": "Introduction to Geometric Optics",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42449",
+          "section": "intro",
+          "title": "Introduction to Geometric Optics",
+          "titleIs": null
+        },
+        {
+          "id": "m42452",
+          "section": "25.1",
+          "title": "The Ray Aspect of Light",
+          "titleIs": null
+        },
+        {
+          "id": "m42456",
+          "section": "25.2",
+          "title": "The Law of Reflection",
+          "titleIs": null
+        },
+        {
+          "id": "m42459",
+          "section": "25.3",
+          "title": "The Law of Refraction",
+          "titleIs": null
+        },
+        {
+          "id": "m42462",
+          "section": "25.4",
+          "title": "Total Internal Reflection",
+          "titleIs": null
+        },
+        {
+          "id": "m42466",
+          "section": "25.5",
+          "title": "Dispersion: The Rainbow and Prisms",
+          "titleIs": null
+        },
+        {
+          "id": "m42470",
+          "section": "25.6",
+          "title": "Image Formation by Lenses",
+          "titleIs": null
+        },
+        {
+          "id": "m42474",
+          "section": "25.7",
+          "title": "Image Formation by Mirrors",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 26,
+      "title": "Aberrations",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42292",
+          "section": "intro",
+          "title": "Aberrations",
+          "titleIs": null
+        },
+        {
+          "id": "m42478",
+          "section": "26.1",
+          "title": "Introduction to Vision and Optical Instruments",
+          "titleIs": null
+        },
+        {
+          "id": "m42482",
+          "section": "26.2",
+          "title": "Physics of the Eye",
+          "titleIs": null
+        },
+        {
+          "id": "m42484",
+          "section": "26.3",
+          "title": "Vision Correction",
+          "titleIs": null
+        },
+        {
+          "id": "m42487",
+          "section": "26.4",
+          "title": "Color and Color Vision",
+          "titleIs": null
+        },
+        {
+          "id": "m42491",
+          "section": "26.5",
+          "title": "Microscopes",
+          "titleIs": null
+        },
+        {
+          "id": "m42493",
+          "section": "26.6",
+          "title": "Telescopes",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 27,
+      "title": "*Extended Topic* Microscopy Enhanced by the Wave Characteristics of Light",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42290",
+          "section": "intro",
+          "title": "*Extended Topic* Microscopy Enhanced by the Wave Characteristics of Light",
+          "titleIs": null
+        },
+        {
+          "id": "m42496",
+          "section": "27.1",
+          "title": "Introduction to Wave Optics",
+          "titleIs": null
+        },
+        {
+          "id": "m42501",
+          "section": "27.2",
+          "title": "The Wave Aspect of Light: Interference",
+          "titleIs": null
+        },
+        {
+          "id": "m42505",
+          "section": "27.3",
+          "title": "Huygens's Principle: Diffraction",
+          "titleIs": null
+        },
+        {
+          "id": "m42508",
+          "section": "27.4",
+          "title": "Young’s Double Slit Experiment",
+          "titleIs": null
+        },
+        {
+          "id": "m42512",
+          "section": "27.5",
+          "title": "Multiple Slit Diffraction",
+          "titleIs": null
+        },
+        {
+          "id": "m42515",
+          "section": "27.6",
+          "title": "Single Slit Diffraction",
+          "titleIs": null
+        },
+        {
+          "id": "m42517",
+          "section": "27.7",
+          "title": "Limits of Resolution: The Rayleigh Criterion",
+          "titleIs": null
+        },
+        {
+          "id": "m42519",
+          "section": "27.8",
+          "title": "Thin Film Interference",
+          "titleIs": null
+        },
+        {
+          "id": "m42522",
+          "section": "27.9",
+          "title": "Polarization",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 28,
+      "title": "Introduction to Special Relativity",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42525",
+          "section": "intro",
+          "title": "Introduction to Special Relativity",
+          "titleIs": null
+        },
+        {
+          "id": "m42528",
+          "section": "28.1",
+          "title": "Einstein’s Postulates",
+          "titleIs": null
+        },
+        {
+          "id": "m42531",
+          "section": "28.2",
+          "title": "Simultaneity And Time Dilation",
+          "titleIs": null
+        },
+        {
+          "id": "m42535",
+          "section": "28.3",
+          "title": "Length Contraction",
+          "titleIs": null
+        },
+        {
+          "id": "m42540",
+          "section": "28.4",
+          "title": "Relativistic Addition of Velocities",
+          "titleIs": null
+        },
+        {
+          "id": "m42542",
+          "section": "28.5",
+          "title": "Relativistic Momentum",
+          "titleIs": null
+        },
+        {
+          "id": "m42546",
+          "section": "28.6",
+          "title": "Relativistic Energy",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 29,
+      "title": "Introduction to Quantum Physics",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42550",
+          "section": "intro",
+          "title": "Introduction to Quantum Physics",
+          "titleIs": null
+        },
+        {
+          "id": "m42554",
+          "section": "29.1",
+          "title": "Quantization of Energy",
+          "titleIs": null
+        },
+        {
+          "id": "m42558",
+          "section": "29.2",
+          "title": "The Photoelectric Effect",
+          "titleIs": null
+        },
+        {
+          "id": "m42563",
+          "section": "29.3",
+          "title": "Photon Energies and the Electromagnetic Spectrum",
+          "titleIs": null
+        },
+        {
+          "id": "m42568",
+          "section": "29.4",
+          "title": "Photon Momentum",
+          "titleIs": null
+        },
+        {
+          "id": "m42573",
+          "section": "29.5",
+          "title": "The Particle-Wave Duality",
+          "titleIs": null
+        },
+        {
+          "id": "m42576",
+          "section": "29.6",
+          "title": "The Wave Nature of Matter",
+          "titleIs": null
+        },
+        {
+          "id": "m42579",
+          "section": "29.7",
+          "title": "Probability: The Heisenberg Uncertainty Principle",
+          "titleIs": null
+        },
+        {
+          "id": "m42581",
+          "section": "29.8",
+          "title": "The Particle-Wave Duality Reviewed",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 30,
+      "title": "Introduction to Atomic Physics",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42585",
+          "section": "intro",
+          "title": "Introduction to Atomic Physics",
+          "titleIs": null
+        },
+        {
+          "id": "m42589",
+          "section": "30.1",
+          "title": "Discovery of the Atom",
+          "titleIs": null
+        },
+        {
+          "id": "m42592",
+          "section": "30.2",
+          "title": "Discovery of the Parts of the Atom: Electrons and Nuclei",
+          "titleIs": null
+        },
+        {
+          "id": "m42596",
+          "section": "30.3",
+          "title": "Bohr’s Theory of the Hydrogen Atom",
+          "titleIs": null
+        },
+        {
+          "id": "m42599",
+          "section": "30.4",
+          "title": "X Rays: Atomic Origins and Applications",
+          "titleIs": null
+        },
+        {
+          "id": "m42602",
+          "section": "30.5",
+          "title": "Applications of Atomic Excitations and De-Excitations",
+          "titleIs": null
+        },
+        {
+          "id": "m42606",
+          "section": "30.6",
+          "title": "The Wave Nature of Matter Causes Quantization",
+          "titleIs": null
+        },
+        {
+          "id": "m42609",
+          "section": "30.7",
+          "title": "Patterns in Spectra Reveal More Quantization",
+          "titleIs": null
+        },
+        {
+          "id": "m42614",
+          "section": "30.8",
+          "title": "Quantum Numbers and Rules",
+          "titleIs": null
+        },
+        {
+          "id": "m42618",
+          "section": "30.9",
+          "title": "The Pauli Exclusion Principle",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 31,
+      "title": "Introduction to Radioactivity and Nuclear Physics",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42620",
+          "section": "intro",
+          "title": "Introduction to Radioactivity and Nuclear Physics",
+          "titleIs": null
+        },
+        {
+          "id": "m42623",
+          "section": "31.1",
+          "title": "Nuclear Radioactivity",
+          "titleIs": null
+        },
+        {
+          "id": "m42627",
+          "section": "31.2",
+          "title": "Radiation Detection and Detectors",
+          "titleIs": null
+        },
+        {
+          "id": "m42631",
+          "section": "31.3",
+          "title": "Substructure of the Nucleus",
+          "titleIs": null
+        },
+        {
+          "id": "m42633",
+          "section": "31.4",
+          "title": "Nuclear Decay and Conservation Laws",
+          "titleIs": null
+        },
+        {
+          "id": "m42636",
+          "section": "31.5",
+          "title": "Half-Life and Activity",
+          "titleIs": null
+        },
+        {
+          "id": "m42640",
+          "section": "31.6",
+          "title": "Binding Energy",
+          "titleIs": null
+        },
+        {
+          "id": "m42644",
+          "section": "31.7",
+          "title": "Tunneling",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 32,
+      "title": "Introduction to Applications of Nuclear Physics",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42646",
+          "section": "intro",
+          "title": "Introduction to Applications of Nuclear Physics",
+          "titleIs": null
+        },
+        {
+          "id": "m42649",
+          "section": "32.1",
+          "title": "Diagnostics and Medical Imaging",
+          "titleIs": null
+        },
+        {
+          "id": "m42652",
+          "section": "32.2",
+          "title": "Biological Effects of Ionizing Radiation",
+          "titleIs": null
+        },
+        {
+          "id": "m42654",
+          "section": "32.3",
+          "title": "Therapeutic Uses of Ionizing Radiation",
+          "titleIs": null
+        },
+        {
+          "id": "m42656",
+          "section": "32.4",
+          "title": "Food Irradiation",
+          "titleIs": null
+        },
+        {
+          "id": "m42659",
+          "section": "32.5",
+          "title": "Fusion",
+          "titleIs": null
+        },
+        {
+          "id": "m42662",
+          "section": "32.6",
+          "title": "Fission",
+          "titleIs": null
+        },
+        {
+          "id": "m42665",
+          "section": "32.7",
+          "title": "Nuclear Weapons",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 33,
+      "title": "Introduction to Particle Physics",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42667",
+          "section": "intro",
+          "title": "Introduction to Particle Physics",
+          "titleIs": null
+        },
+        {
+          "id": "m42669",
+          "section": "33.1",
+          "title": "The Yukawa Particle and the Heisenberg Uncertainty Principle Revisited",
+          "titleIs": null
+        },
+        {
+          "id": "m42671",
+          "section": "33.2",
+          "title": "The Four Basic Forces",
+          "titleIs": null
+        },
+        {
+          "id": "m42674",
+          "section": "33.3",
+          "title": "Particles, Patterns, and Conservation Laws",
+          "titleIs": null
+        },
+        {
+          "id": "m42678",
+          "section": "33.4",
+          "title": "Quarks: Is That All There Is?",
+          "titleIs": null
+        },
+        {
+          "id": "m42680",
+          "section": "33.5",
+          "title": "GUTs: The Unification of Forces",
+          "titleIs": null
+        },
+        {
+          "id": "m42718",
+          "section": "33.6",
+          "title": "Accelerators Create Matter from Energy",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 34,
+      "title": "Introduction to Frontiers of Physics",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m42683",
+          "section": "intro",
+          "title": "Introduction to Frontiers of Physics",
+          "titleIs": null
+        },
+        {
+          "id": "m42686",
+          "section": "34.1",
+          "title": "Cosmology and Particle Physics",
+          "titleIs": null
+        },
+        {
+          "id": "m42689",
+          "section": "34.2",
+          "title": "General Relativity and Quantum Gravity",
+          "titleIs": null
+        },
+        {
+          "id": "m42691",
+          "section": "34.3",
+          "title": "Superstrings",
+          "titleIs": null
+        },
+        {
+          "id": "m42692",
+          "section": "34.4",
+          "title": "Dark Matter and Closure",
+          "titleIs": null
+        },
+        {
+          "id": "m42694",
+          "section": "34.5",
+          "title": "Complexity and Chaos",
+          "titleIs": null
+        },
+        {
+          "id": "m42696",
+          "section": "34.6",
+          "title": "High-temperature Superconductors",
+          "titleIs": null
+        },
+        {
+          "id": "m42704",
+          "section": "34.7",
+          "title": "Some Questions We Know to Ask",
+          "titleIs": null
+        }
+      ]
+    }
+  ]
+}

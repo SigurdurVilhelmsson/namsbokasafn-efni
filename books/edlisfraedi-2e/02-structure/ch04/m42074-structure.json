@@ -1,0 +1,898 @@
+{
+  "moduleId": "m42074",
+  "title": {
+    "segmentId": "m42074:title:auto-1",
+    "text": "Newton’s Third Law of Motion: Symmetry in Forces"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "d5510a8b-a06e-4634-a63f-2ec97b293af6"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "learning-objectives",
+      "title": {
+        "segmentId": "m42074:title:sect-00001-title",
+        "text": "Learning Objectives"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00001",
+          "segmentId": "m42074:para:para-00001"
+        },
+        {
+          "type": "list",
+          "id": "list-00001",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m42074:item:list-00001-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m42074:item:list-00001-item-2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "import-auto-id2355102",
+      "segmentId": "m42074:para:import-auto-id2355102"
+    },
+    {
+      "type": "note",
+      "id": "fs-id2688761",
+      "title": {
+        "segmentId": "m42074:note-title:fs-id2688761-title",
+        "text": "Newton’s Third Law of Motion"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "import-auto-id2639627",
+          "segmentId": "m42074:para:import-auto-id2639627"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "import-auto-id1460190",
+      "segmentId": "m42074:para:import-auto-id1460190"
+    },
+    {
+      "type": "para",
+      "id": "import-auto-id2301470",
+      "segmentId": "m42074:para:import-auto-id2301470"
+    },
+    {
+      "type": "figure",
+      "id": "import-auto-id2338100",
+      "caption": {
+        "segmentId": "m42074:caption:import-auto-id2338100-caption"
+      },
+      "media": {
+        "id": "import-auto-id1570337",
+        "alt": "A swimmer is exerting a force with her feet on a wall inside a swimming pool represented by an arrow labeled as vector F sub Feet on wall, pointing toward the right, and the wall is also exerting an equal force on her feet, represented by an arrow labeled as vector F sub Wall on feet, having the same length but pointing toward the left. The direction of acceleration of the swimmer is toward the left, shown by an arrow toward the left.",
+        "src": "../../media/Figure_04_04_01.jpg",
+        "mimeType": "image/jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "import-auto-id1772663",
+      "segmentId": "m42074:para:import-auto-id1772663"
+    },
+    {
+      "type": "example",
+      "id": "fs-id2355307",
+      "title": {
+        "segmentId": "m42074:example-title:fs-id2355307-title",
+        "text": "Strategy"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "import-auto-id1645990",
+          "segmentId": "m42074:para:import-auto-id1645990"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id1769338",
+          "segmentId": "m42074:para:import-auto-id1769338"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id1333658",
+          "title": {
+            "segmentId": "m42074:para-title:import-auto-id1333658-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id1443880",
+          "segmentId": "m42074:para:import-auto-id1443880"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id1279135",
+          "segmentId": "m42074:para:import-auto-id1279135"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id1729170",
+          "segmentId": "m42074:para:import-auto-id1729170"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id1256133",
+          "segmentId": "m42074:para:import-auto-id1256133"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id2669812",
+          "segmentId": "m42074:para:import-auto-id2669812"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id2079051",
+          "segmentId": "m42074:para:import-auto-id2079051"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id2320233",
+          "segmentId": "m42074:para:import-auto-id2320233"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id1662475",
+          "segmentId": "m42074:para:import-auto-id1662475"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id2685057",
+          "title": {
+            "segmentId": "m42074:para-title:import-auto-id2685057-title",
+            "text": "Discussion"
+          }
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id2396019",
+          "segmentId": "m42074:para:import-auto-id2396019"
+        },
+        {
+          "type": "equation",
+          "id": "eip-id1456392"
+        },
+        {
+          "type": "equation",
+          "id": "eip-id1515829"
+        },
+        {
+          "type": "equation",
+          "id": "eip-id1213154"
+        },
+        {
+          "type": "equation",
+          "id": "eip-id1741589"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "import-auto-id2324690",
+      "caption": {
+        "segmentId": "m42074:caption:import-auto-id2324690-caption"
+      },
+      "media": {
+        "id": "import-auto-id2019832",
+        "alt": "A professor is pushing a cart of demonstration equipment. Two systems are labeled in the figure. System one includes both the professor and cart, and system two only has the cart. She is exerting some force F sub prof toward the right, shown by a vector arrow, and the cart is also pushing her with the same magnitude of force directed toward the left, shown by a vector F sub cart, having same length as F sub prof. The friction force small f is shown by a vector arrow pointing left acting between the wheels of the cart and the floor. The professor is pushing the floor with her feet with a force F sub foot toward the left, shown by a vector arrow. The floor is pushing her feet with a force that has the same magnitude, F sub floor, shown by a vector arrow pointing right that has the same length as the vector F sub foot. A free-body diagram is also shown. For system one, friction force acting toward the left is shown by a vector arrow having a small length, and the force F sub floor is acting toward the right, shown by a vector arrow larger than the length of vector f. In system two, friction force represented by a short vector small f acts toward the left and another vector F sub prof is represented by a vector arrow toward the right. F sub prof is longer than small f.",
+        "src": "../../media/Figure_04_04_02.jpg",
+        "mimeType": "image/jpg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "fs-id2092526",
+      "title": {
+        "segmentId": "m42074:example-title:fs-id2092526-title",
+        "text": "Strategy"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "import-auto-id1572504",
+          "segmentId": "m42074:para:import-auto-id1572504"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id1745150",
+          "segmentId": "m42074:para:import-auto-id1745150"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id2682081",
+          "title": {
+            "segmentId": "m42074:para-title:import-auto-id2682081-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id2693182",
+          "segmentId": "m42074:para:import-auto-id2693182"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id1549018",
+          "segmentId": "m42074:para:import-auto-id1549018"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id2147279",
+          "segmentId": "m42074:para:import-auto-id2147279"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id1278520",
+          "segmentId": "m42074:para:import-auto-id1278520"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id2401022",
+          "segmentId": "m42074:para:import-auto-id2401022"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id2355732",
+          "segmentId": "m42074:para:import-auto-id2355732"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id2730714",
+          "segmentId": "m42074:para:import-auto-id2730714"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id1607191",
+          "segmentId": "m42074:para:import-auto-id1607191"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id2674462",
+          "segmentId": "m42074:para:import-auto-id2674462"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id1608315",
+          "segmentId": "m42074:para:import-auto-id1608315"
+        },
+        {
+          "type": "para",
+          "id": "eip-795",
+          "segmentId": "m42074:para:eip-795"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id860562",
+          "segmentId": "m42074:para:import-auto-id860562"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id1518876",
+          "segmentId": "m42074:para:import-auto-id1518876"
+        },
+        {
+          "type": "para",
+          "id": "eip-id2074174",
+          "segmentId": "m42074:para:eip-id2074174"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id2655815",
+          "title": {
+            "segmentId": "m42074:para-title:import-auto-id2655815-title",
+            "text": "Discussion"
+          }
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id2666000",
+          "segmentId": "m42074:para:import-auto-id2666000"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id2335706",
+          "segmentId": "m42074:para:import-auto-id2335706"
+        },
+        {
+          "type": "equation",
+          "id": "eip-id1949236"
+        },
+        {
+          "type": "equation",
+          "id": "eip-id2390884"
+        },
+        {
+          "type": "equation",
+          "id": "eip-id1373488"
+        },
+        {
+          "type": "equation",
+          "id": "eip-id2367884"
+        },
+        {
+          "type": "equation",
+          "id": "eip-id3477001"
+        },
+        {
+          "type": "equation",
+          "id": "eip-id1454423"
+        },
+        {
+          "type": "equation",
+          "id": "eip-id1004496"
+        },
+        {
+          "type": "equation",
+          "id": "eip-id1197329"
+        }
+      ]
+    },
+    {
+      "type": "note",
+      "id": "eip-984",
+      "class": "interactive",
+      "title": {
+        "segmentId": "m42074:note-title:eip-984-title",
+        "text": "Gravity Force Lab"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "eip-id2455257",
+          "segmentId": "m42074:para:eip-id2455257"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1635494",
+      "class": "ap-test-prep",
+      "title": {
+        "segmentId": "m42074:title:fs-id1635494-title",
+        "text": "Test Prep for AP Courses"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1642858",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1835249",
+                "segmentId": "m42074:problem:fs-id1835249"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1640896",
+                "segmentId": "m42074:solution:fs-id1640896"
+              },
+              {
+                "type": "para",
+                "id": "fs-id1097242",
+                "segmentId": "m42074:solution:fs-id1097242"
+              },
+              {
+                "type": "para",
+                "id": "fs-id1593948",
+                "segmentId": "m42074:solution:fs-id1593948"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1681743",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1496936",
+                "segmentId": "m42074:problem:fs-id1496936"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1399283",
+                "segmentId": "m42074:solution:fs-id1399283"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1900456",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1457612",
+                "segmentId": "m42074:problem:fs-id1457612"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1682532",
+                "segmentId": "m42074:solution:fs-id1682532"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1683591",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1459519",
+                "segmentId": "m42074:problem:fs-id1459519"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1659424",
+                "segmentId": "m42074:solution:fs-id1659424"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1870798",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1418754",
+                "segmentId": "m42074:problem:fs-id1418754"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1456192",
+                "segmentId": "m42074:solution:fs-id1456192"
+              },
+              {
+                "type": "para",
+                "id": "fs-id1681985",
+                "segmentId": "m42074:solution:fs-id1681985"
+              }
+            ]
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fs-id1335530",
+          "caption": null,
+          "media": {
+            "id": "fs-id1843700",
+            "alt": "A free-body diagram illustrating four forces acting on a central point. Fw (13.0 N) points left, Fc (9.0 N) points right, Fb points upward, and Fg points downward.",
+            "src": "../../media/Figure_04_04_03.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id946101",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1347158",
+                "segmentId": "m42074:problem:fs-id1347158"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1276418",
+                "segmentId": "m42074:solution:fs-id1276418"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1651805",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1911733",
+                "segmentId": "m42074:problem:fs-id1911733"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1820006",
+                "segmentId": "m42074:solution:fs-id1820006"
+              },
+              {
+                "type": "para",
+                "id": "fs-id1356337",
+                "segmentId": "m42074:solution:fs-id1356337"
+              },
+              {
+                "type": "para",
+                "id": "fs-id1400037",
+                "segmentId": "m42074:solution:fs-id1400037"
+              },
+              {
+                "type": "para",
+                "id": "fs-id1677021",
+                "segmentId": "m42074:solution:fs-id1677021"
+              },
+              {
+                "type": "para",
+                "id": "fs-id1056493",
+                "segmentId": "m42074:solution:fs-id1056493"
+              },
+              {
+                "type": "para",
+                "id": "fs-id1819797",
+                "segmentId": "m42074:solution:fs-id1819797"
+              },
+              {
+                "type": "para",
+                "id": "fs-id1205404",
+                "segmentId": "m42074:solution:fs-id1205404"
+              },
+              {
+                "type": "para",
+                "id": "fs-id1265071",
+                "segmentId": "m42074:solution:fs-id1265071"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1437308",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1691134",
+                "segmentId": "m42074:problem:fs-id1691134"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1804042",
+                "segmentId": "m42074:solution:fs-id1804042"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1045665",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1621954",
+                "segmentId": "m42074:problem:fs-id1621954"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1499526",
+                "segmentId": "m42074:solution:fs-id1499526"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1461301",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1340680",
+                "segmentId": "m42074:problem:fs-id1340680"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1416057",
+                "segmentId": "m42074:solution:fs-id1416057"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1433607",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1362034",
+                "segmentId": "m42074:problem:fs-id1362034"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1261748",
+                "segmentId": "m42074:solution:fs-id1261748"
+              },
+              {
+                "type": "para",
+                "id": "fs-id895227",
+                "segmentId": "m42074:solution:fs-id895227"
+              },
+              {
+                "type": "para",
+                "id": "fs-id1699945",
+                "segmentId": "m42074:solution:fs-id1699945"
+              },
+              {
+                "type": "para",
+                "id": "fs-id1476784",
+                "segmentId": "m42074:solution:fs-id1476784"
+              },
+              {
+                "type": "para",
+                "id": "fs-id1660804",
+                "segmentId": "m42074:solution:fs-id1660804"
+              },
+              {
+                "type": "para",
+                "id": "fs-id1642517",
+                "segmentId": "m42074:solution:fs-id1642517"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1446741",
+      "class": "section-summary",
+      "title": {
+        "segmentId": "m42074:title:fs-id1446741-title",
+        "text": "Section Summary"
+      },
+      "content": [
+        {
+          "type": "list",
+          "id": "fs-id2332580",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m42074:item:fs-id2332580-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m42074:item:fs-id2332580-item-2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1460367",
+      "class": "conceptual-questions",
+      "title": {
+        "segmentId": "m42074:title:fs-id1460367-title",
+        "text": "Conceptual Questions"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1572333",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id2689558",
+                "segmentId": "m42074:problem:import-auto-id2689558"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1595226",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id2674155",
+                "segmentId": "m42074:problem:import-auto-id2674155"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id2846557",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id861584",
+                "segmentId": "m42074:problem:import-auto-id861584"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id2661705",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id2631801",
+                "segmentId": "m42074:problem:import-auto-id2631801"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id2423524",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id1919111",
+                "segmentId": "m42074:problem:import-auto-id1919111"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id2355576",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id2159238",
+                "segmentId": "m42074:problem:import-auto-id2159238"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1008305",
+      "class": "problems-exercises",
+      "title": {
+        "segmentId": "m42074:title:fs-id1008305-title",
+        "text": "Problem Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1740619",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id1281048",
+                "segmentId": "m42074:problem:import-auto-id1281048"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id1487580",
+                "segmentId": "m42074:solution:import-auto-id1487580"
+              },
+              {
+                "type": "para",
+                "id": "import-auto-id2297403",
+                "segmentId": "m42074:solution:import-auto-id2297403"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id2300721",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id1771007",
+                "segmentId": "m42074:problem:import-auto-id1771007"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "import-auto-id1046121",
+        "termSegmentId": "m42074:glossary-term:import-auto-id1046121-term",
+        "definitionSegmentId": "m42074:glossary-def:import-auto-id1046121-def"
+      },
+      {
+        "id": "import-auto-id1552615",
+        "termSegmentId": "m42074:glossary-term:import-auto-id1552615-term",
+        "definitionSegmentId": "m42074:glossary-def:import-auto-id1552615-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

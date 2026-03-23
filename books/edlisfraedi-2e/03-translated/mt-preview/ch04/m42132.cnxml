@@ -1,0 +1,793 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Frekari notkun á lögmálum Newtons um hreyfingu</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m42132</md:content-id>
+  <md:title>Frekari notkun á lögmálum Newtons um hreyfingu</md:title>
+  <md:abstract/>
+  <md:uuid>c372561e-08e8-41a1-ba72-9b4c00394c2d</md:uuid>
+</metadata>
+
+<content>
+<section id="sect-00001" class="learning-objectives">
+<title>Næmsmarkmið</title>
+<para id="para-00001">Í lok þessa kafla muntu geta:</para>
+<list id="list-00001" list-type="bulleted">
+<item>Beitt aðferðum til lausnar vandamála til að leysa fyrir stærðir í flóknari kraftakerfum.</item>
+<item>Samþætt hugtök úr hreyfifræði til að leysa verkefni með lögmálum Newtons um hreyfingu.</item>
+</list>
+</section>
+<para id="import-auto-id2673208">Það eru mörg áhugaverð not fyrir lögmál Newtons um hreyfingu og nokkur þeirra eru kynnt í þessum kafla. Þau þjóna einnig þeim tilgangi að sýna fram á nokkur frekari blæbrigði eðlisfræðinnar og hjálpa til við að byggja upp færni í lausn vandamála.</para>
+<example id="fs-id2383966">
+      <title>Drag Force on a Barge</title>
+      <para id="import-auto-id1517248"><title>Lausnarstefna</title>Gerum ráð fyrir að tveir dráttarbátar ýti á pramma með mismunandi hornum, eins og sýnt er á <link target-id="import-auto-id1221020"/>. Fyrri dráttarbáturinn beitir krafti sem er <m:math><m:mrow><m:mrow><m:mrow><m:mn>2.7</m:mn><m:mrow><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>5</m:mn></m:mrow></m:msup></m:mrow><m:mspace width="0.25em"/><m:mtext> N</m:mtext></m:mrow></m:mrow></m:mrow></m:math> í <emphasis effect="italics">x</emphasis>-stefnu og seinni dráttarbáturinn beitir krafti sem er <m:math><m:mrow><m:mrow><m:mrow><m:mn>3.6</m:mn><m:mrow><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>5</m:mn></m:mrow></m:msup></m:mrow><m:mspace width="0.25em"/><m:mtext> N</m:mtext></m:mrow></m:mrow></m:mrow></m:math> í <emphasis effect="italics">y</emphasis>-stefnu.</para><para id="import-auto-id1436125">Ef massi prammans er <m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:mn>5.0</m:mn><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>6</m:mn></m:mrow></m:msup></m:mrow><m:mspace width="0.25em"/><m:mtext> kg</m:mtext></m:mrow></m:mrow></m:mrow></m:math> og hröðun hans er <m:math><m:mrow><m:mrow><m:mrow><m:mn>7</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>5</m:mtext><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mrow><m:mo stretchy="false">−</m:mo><m:mn>2</m:mn></m:mrow></m:mrow></m:msup></m:mrow><m:mspace width="0.25em"/><m:msup><m:mtext> m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:mrow></m:mrow></m:math> í sýndri stefnu, hver er þá viðnámskraftur vatnsins á prammann sem vinnur gegn hreyfingunni? (Athugið: Viðnámskraftur er núningskraftur sem vökvar, svo sem loft eða vatn, beita. Viðnámskrafturinn vinnur gegn hreyfingu hlutarins.)</para><para id="import-auto-id3233982">
+        <title>Strategy</title>
+      </para>
+      <para id="import-auto-id1969804">Stefna og stærð hröðunar og beittu kraftanna eru gefnar í <link target-id="import-auto-id1221020"/><emphasis effect="bold">(a)</emphasis>. Við skilgreinum heildarkraft dráttarbátanna á prammann sem <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> þannig að:</para><para id="import-auto-id1909367"><equation id="eip-id1203757"><m:math>
+          
+            <m:mrow>
+
+                <m:mrow>
+                  <m:mrow>
+                    <m:msub>
+                      <m:mtext mathvariant="bold">F</m:mtext>
+
+                        <m:mrow>
+                            <m:mrow>
+                              <m:mtext>app</m:mtext>
+
+                            </m:mrow>
+                        </m:mrow>
+
+                    </m:msub><m:mtext>=</m:mtext>
+
+                      <m:mrow>
+                        <m:msub>
+                          <m:mtext mathvariant="bold">F</m:mtext>
+
+                            <m:mrow>
+                              <m:mi mathvariant="italic">x</m:mi>
+                            </m:mrow>
+
+                        </m:msub>
+                      </m:mrow>
+   <m:mo>+</m:mo>
+                      <m:mrow>
+                        <m:msub>
+                          <m:mtext mathvariant="bold"> F</m:mtext>
+
+                            <m:mrow>
+                              <m:mi mathvariant="italic">y</m:mi>
+                            </m:mrow>
+
+                        </m:msub>
+                      </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+            </m:mrow>
+            
+          
+        </m:math></equation></para><para id="import-auto-id2409507">Þar sem pramminn er flatbotna verður viðnám vatnsins <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>D</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> í gagnstæða stefnu við <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>, eins og sýnt er á kraftamyndinni í <link target-id="import-auto-id1221020"/>(b). Kerfið sem við skoðum hér er pramminn, þar sem kraftarnir á <emphasis effect="italics">hann</emphasis> eru gefnir ásamt hröðun hans. Lausnarstefna okkar er að finna stærð og stefnu heildarkraftsins <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> og nota síðan annað lögmál Newtons til að leysa fyrir viðnámskraftinn <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>D</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>.</para><para id="import-auto-id1844688"><title>Lausn</title></para>
+      <para id="import-auto-id2591404">Þar sem <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mi>x</m:mi></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> og <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mi>y</m:mi></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> eru hornréttir er auðvelt að finna stærð og stefnu <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>. Í fyrsta lagi er heildarstærðin gefin með reglu Pýþagórasar:</para><para id="import-auto-id1844907"><equation id="eip-id2112578"><m:math>
+          
+            <m:mrow>
+              <m:mrow>
+                <m:mtable columnalign="left">
+                  <m:mtr>
+<m:mtd>
+
+                              <m:msub>
+                                <m:mi>F</m:mi>
+                                        <m:mtext>app</m:mtext>
+                              </m:msub>
+
+</m:mtd><m:mtd>
+                              <m:mo stretchy="false">=</m:mo>
+
+</m:mtd><m:mtd>
+
+
+                            <m:mrow>
+<m:msqrt>
+                              <m:msubsup>
+                                <m:mtext>F</m:mtext>
+                                      <m:mi>x</m:mi>
+                                          <m:mn>2</m:mn>
+                              </m:msubsup>
+                              <m:mo stretchy="false">+</m:mo>
+                              <m:msubsup>
+                                <m:mtext>F</m:mtext>
+                                      <m:mi>y</m:mi>
+                                          <m:mn>2</m:mn>
+                              </m:msubsup>
+</m:msqrt></m:mrow>
+</m:mtd>
+                  </m:mtr>
+                  <m:mtr><m:mtd>
+
+                      <m:mrow>
+                        <m:msub>
+                          <m:mi>F</m:mi>
+                                  <m:mtext>app</m:mtext>
+                        </m:msub></m:mrow>
+</m:mtd><m:mtd>
+                        <m:mo stretchy="false">=</m:mo>
+</m:mtd><m:mtd>
+
+
+<m:msqrt>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mn>2.7</m:mn>
+                      <m:mrow>
+                        <m:mo stretchy="false">×</m:mo>
+                        <m:msup>
+                          <m:mtext>10</m:mtext>
+                              <m:mn>5</m:mn>
+                        </m:msup>
+                      </m:mrow><m:mspace width="0.25em"/>
+                      <m:mtext> N</m:mtext>
+                      <m:mrow>
+                        <m:msup>
+                          <m:mo stretchy="false">)</m:mo>
+
+                            <m:mrow>
+                              <m:mn>2</m:mn>
+                            </m:mrow>
+
+                        </m:msup>
+                        <m:mo stretchy="false">+</m:mo>
+                        <m:mo stretchy="false">(</m:mo>
+                      </m:mrow>
+                      <m:mn>3.6</m:mn>
+                      <m:mrow>
+                        <m:mo stretchy="false">×</m:mo>
+                        <m:msup>
+                          <m:mtext>10</m:mtext>
+                              <m:mn>5</m:mn>
+                        </m:msup>
+                      </m:mrow><m:mspace width="0.25em"/>
+                      <m:mtext> N</m:mtext>
+                      <m:msup>
+                        <m:mo stretchy="false">)</m:mo>
+
+                          <m:mrow>
+                            <m:mn>2</m:mn>
+                          </m:mrow>
+
+                      </m:msup>
+
+</m:msqrt>
+</m:mtd><m:mtd>
+                       <m:mo stretchy="false">=</m:mo>
+</m:mtd><m:mtd>
+
+
+                        <m:mrow><m:mn>4.5</m:mn>
+                        <m:mo stretchy="false">×</m:mo>
+                        <m:msup>
+                          <m:mtext>10</m:mtext>
+                              <m:mn>5</m:mn>
+                        </m:msup>
+                      </m:mrow><m:mspace width="0.25em"/>
+                      <m:mtext> N.</m:mtext>
+                    </m:mtd>
+                  </m:mtr>
+                </m:mtable>
+              </m:mrow>
+            </m:mrow>
+          
+        </m:math></equation></para><para id="import-auto-id1381606">Hornið er gefið með</para>
+      <para id="import-auto-id2591344"><equation id="eip-id3026466"><m:math>
+          
+            <m:mrow>
+              <m:mrow>
+                <m:mtable columnalign="left">
+                  <m:mtr>
+
+<m:mtd>
+                              <m:mi>θ</m:mi>
+</m:mtd>
+<m:mtd>
+                              <m:mo stretchy="false">=</m:mo>
+</m:mtd>
+<m:mtd>
+                              <m:msup>
+                                <m:mtext>tan</m:mtext>
+
+                                  <m:mrow>
+                                    <m:mrow>
+                                      <m:mo stretchy="false">−</m:mo>
+                                      <m:mn>1</m:mn>
+                                    </m:mrow>
+                                  </m:mrow>
+
+                              </m:msup>
+
+                            <m:mfenced open="(" close=")">
+                              <m:mfrac>
+                                <m:msub>
+                                  <m:mi>F</m:mi>
+
+                                    <m:mrow>
+                                      <m:mi>y</m:mi>
+                                    </m:mrow>
+
+                                </m:msub>
+                                <m:msub>
+                                  <m:mi>F</m:mi>
+
+                                    <m:mrow>
+                                      <m:mi>x</m:mi>
+                                    </m:mrow>
+
+                                </m:msub>
+                              </m:mfrac>
+                            </m:mfenced>
+                    </m:mtd>
+                  </m:mtr>
+                  <m:mtr>
+
+<m:mtd>
+
+                        <m:mi>θ</m:mi>
+</m:mtd>
+<m:mtd>
+                        <m:mo stretchy="false">=</m:mo>
+</m:mtd>
+<m:mtd>
+                        <m:msup>
+                          <m:mtext>tan</m:mtext>
+
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mn>1</m:mn>
+                              </m:mrow>
+                            </m:mrow>
+
+                        </m:msup>
+
+                      <m:mrow>
+                        <m:mfenced open="(" close=")">
+                          <m:mfrac>
+                            <m:mrow>
+
+                              <m:mn>3.6</m:mn>
+
+                              <m:mrow>
+
+                                <m:mo stretchy="false">×</m:mo>
+                                <m:msup>
+                                  <m:mtext>10</m:mtext>
+
+                                    <m:mrow>
+                                      <m:mn>5</m:mn>
+                                    </m:mrow>
+
+                                </m:msup>
+                              </m:mrow><m:mspace width="0.25em"/>
+                              <m:mtext> N</m:mtext>
+
+                            </m:mrow>
+                            <m:mrow>
+
+                              <m:mn>2.7</m:mn>
+
+                              <m:mrow>
+
+                                <m:mo stretchy="false">×</m:mo>
+                                <m:msup>
+                                  <m:mtext>10</m:mtext>
+
+                                    <m:mrow>
+                                      <m:mn>5</m:mn>
+                                    </m:mrow>
+
+                                </m:msup>
+                              </m:mrow><m:mspace width="0.25em"/>
+                              <m:mtext> N</m:mtext>
+
+                            </m:mrow>
+                          </m:mfrac>
+                        </m:mfenced>
+                        <m:mo stretchy="false">=</m:mo>
+                        <m:mtext>53º</m:mtext>
+                      </m:mrow>
+                      <m:mi>,</m:mi>
+                    </m:mtd>
+
+                  </m:mtr>
+                </m:mtable>
+                <m:mrow/>
+              </m:mrow>
+            </m:mrow>
+          
+        </m:math></equation></para><para id="import-auto-id3179555">sem við vitum, vegna fyrsta lögmáls Newtons, að er í sömu stefnu og hröðunin. <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>D</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> er í gagnstæðri stefnu við <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>, þar sem hann vinnur að því að hægja á hröðuninni. Þess vegna er heildarytri krafturinn í sömu stefnu og <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>, en stærð hans er örlítið minni en <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>. Vandamálið er nú einvítt. Frá <link target-id="import-auto-id1221020"/><emphasis effect="bold">(b)</emphasis> getum við séð að</para><para id="import-auto-id2438119"><equation id="eip-id1624544"><m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net</m:mtext></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub><m:mo stretchy="false">−</m:mo><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>D</m:mtext></m:mrow></m:msub></m:mrow></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math></equation></para><para id="import-auto-id3047530">En annað lögmál Newtons segir að</para>
+      <para id="import-auto-id2928688"><equation id="eip-id1230866"><m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net</m:mtext></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mstyle fontstyle="italic"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math></equation></para><para id="import-auto-id3189600">Þannig,</para>
+      <para id="import-auto-id1430307"><equation id="eip-id2268355"><m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub><m:mo stretchy="false">−</m:mo><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>D</m:mtext></m:mrow></m:msub></m:mrow><m:mo stretchy="false">=</m:mo><m:mstyle fontstyle="italic"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math></equation></para><para id="import-auto-id2588526">Þetta er hægt að leysa fyrir stærð viðnámskrafts vatnsins <m:math><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>D</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> með tilliti til þekktra stærða:</para><para id="import-auto-id2677835"><equation id="eip-id1464099"><m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>D</m:mtext></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub><m:mo stretchy="false">−</m:mo><m:mstyle fontstyle="italic"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math></equation></para><para id="import-auto-id3305491">Með því að setja inn þekkt gildi fæst</para>
+      <para id="import-auto-id1917379"><equation id="eip-id1715978"><m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mtext>F</m:mtext><m:mrow><m:mtext>D</m:mtext></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mo stretchy="false">(</m:mo></m:mrow><m:mn>4</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>5</m:mtext><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>5</m:mn></m:mrow></m:msup></m:mrow><m:mspace width="0.25em"/><m:mtext> N</m:mtext><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">−</m:mo><m:mo stretchy="false">(</m:mo></m:mrow><m:mn>5</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>0</m:mtext><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>6</m:mn></m:mrow></m:msup></m:mrow><m:mspace width="0.25em"/><m:mtext> kg</m:mtext><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mn>7</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>5</m:mtext><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mtext>–2</m:mtext></m:mrow></m:msup></m:mrow><m:mspace width="0.25em"/><m:msup><m:mtext> m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:mn>7</m:mn></m:mrow><m:mtext>.</m:mtext><m:mrow><m:mtext>5</m:mtext><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>4</m:mn></m:mrow></m:msup></m:mrow><m:mspace width="0.25em"/><m:mtext> N</m:mtext></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math></equation></para><para id="import-auto-id1596278">Stefna <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>D</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> hefur þegar verið ákvörðuð sem gagnstæð stefnu <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>, eða með horninu <m:math><m:mrow><m:mrow><m:mrow><m:mtext>53º</m:mtext></m:mrow></m:mrow></m:mrow></m:math> suður af vestri.</para><para id="import-auto-id1319463"><title>Umræða</title></para>
+      <para id="import-auto-id1871331">Tölurnar sem notaðar eru í þessu dæmi eru raunhæfar fyrir meðalstóran pramma. Það er vissulega erfitt að ná meiri hröðun með dráttarbátum og lítill hraði er æskilegur til að forðast að sigla prammanum á bryggjurnar. Viðnám er tiltölulega lítið fyrir vel hannaðan skrokk á lágum hraða, sem er í samræmi við svarið í þessu dæmi, þar sem <m:math><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>D</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> er minna en 1/600 af þyngd skipsins.</para></example>
+<figure id="import-auto-id1221020"><media id="import-auto-id2935102" alt="(a) A view from above two tugboats pushing on a barge. One tugboat is pushing with the force F sub x equal to two point seven multiplied by ten to the power five newtons, shown by a vector arrow acting toward the right in the x direction. Another tugboat is pushing with a force F sub y equal to three point six multiplied by ten to the power five newtons acting upward in the positive y direction. Acceleration of the barge, a, is shown by a vector arrow directed fifty-three point one degree angle above the x axis. In the free-body diagram, F sub y is acting on a point upward, F sub x is acting toward the right, and F sub D is acting approximately southwest. (b) A right triangle is made by the vectors F sub x and F sub y. The base vector is shown by the force vector F sub x. and the perpendicular vector is shown by the force vector F sub y. The resultant is the hypotenuse of this triangle, making a fifty-three point one degree angle from the base, shown by the vector force F sub net pointing up the inclination. A vector F sub D points down the incline. ">
+          <image mime-type="image/jpg" src="../../media/Figure_04_07_01-386e.jpg"/>
+        </media>
+
+      <caption>(a) Mynd af tveimur dráttarbátum að ýta á pramma, séð ofan frá. (b) Kraftamynd fyrir skipið inniheldur aðeins krafta sem verka í fleti vatnsins. Hún sleppir tveimur lóðréttum kröftum — þyngd prammans og uppdrifskrafti vatnsins sem styður við hann núllast út og eru ekki sýndir. Þar sem beittu kraftarnir eru hornréttir eru <emphasis effect="italics">x</emphasis>- og <emphasis effect="italics">y</emphasis>-ásarnir í sömu stefnu og <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mi>x</m:mi></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> og <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mi>y</m:mi></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>. Vandamálið verður fljótt að einvíðu vandamáli meðfram stefnu <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>, þar sem núningur er í gagnstæðri stefnu við <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>.</caption></figure>
+<para id="import-auto-id2660794">Í fyrra dæminu um línudansara tókum við eftir því að spennan í vírum sem héldu uppi massa var aðeins jöfn vegna þess að hornin á hvorri hlið voru jöfn. Lítum á eftirfarandi dæmi, þar sem hornin eru ekki jöfn; það krefst aðeins meiri hornafræði.</para>
+<example id="fs-id1348788">
+      <title>Different Tensions at Different Angles</title>
+      <para id="import-auto-id1941219"><title>Lausnarstefna</title>Lítum á umferðarljósið (massi 15,0 kg) sem hangir í tveimur vírum eins og sýnt er á <link target-id="import-auto-id3051538"/>. Finndu spennuna í hvorum vír og hunsaðu massa víranna.</para>
+
+
+        <para id="import-auto-id2391059">
+        <title>Strategy</title>
+      </para>
+      <para id="import-auto-id2659888">Kerfið sem vekur áhuga er umferðarljósið og kraftarit þess er sýnt á <link target-id="import-auto-id3051538"/>(c). Þrír kraftar koma við sögu og þeir eru ekki samsíða, þannig að þeir verða að vera varpaðir á hnitakerfi. Þægilegasta hnitakerfið hefur einn ás lóðréttan og einn láréttan og vigursvörpunin á það er sýnd í hluta (d) á myndinni. Það eru tvær óþekktar stærðir í þessu dæmi (<m:math>
+ 
+  <m:mrow>
+   <m:mrow>
+    <m:msub>
+     <m:mi>T</m:mi>
+     <m:mrow>
+      <m:mn>1</m:mn>
+     </m:mrow>
+    </m:msub>
+   </m:mrow>
+   <m:mrow/>
+  </m:mrow>
+</m:math> og <m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>2</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>), þannig að það þarf tvær jöfnur til að finna þær. Þessar tvær jöfnur fást með því að beita öðru lögmáli Newtons meðfram lóðrétta og lárétta ásnum, og hafa í huga að heildarytri krafturinn er núll meðfram hvorum ás þar sem hröðunin er núll.</para><para id="import-auto-id1986637"><title>Lausn</title></para>
+      <para id="import-auto-id3178519">Lítum fyrst á lárétta eða <emphasis effect="italics">x</emphasis>-ásinn:</para><para id="import-auto-id760998"><equation id="eip-id2514755"><m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net </m:mtext><m:mi>x</m:mi></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>2</m:mtext><m:mi>x</m:mi></m:mrow></m:msub><m:mo stretchy="false">−</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>1</m:mtext><m:mi>x</m:mi></m:mrow></m:msub></m:mrow></m:mrow><m:mo stretchy="false">=</m:mo><m:mn>0</m:mn></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math></equation></para><para id="import-auto-id1419025">Þannig, eins og þú gætir búist við,</para>
+      <para id="import-auto-id2679566"><equation id="eip-id2540452"><m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>1</m:mtext><m:mi>x</m:mi></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>2</m:mtext><m:mi>x</m:mi></m:mrow></m:msub></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math></equation></para><para id="import-auto-id1996672">Þetta gefur okkur eftirfarandi samband milli <m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> og <m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>2</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>:</para>
+      <para id="import-auto-id2604506"><equation id="eip-id2122298"><m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub><m:mspace width="0.25em"/><m:mtext>cos</m:mtext><m:mspace width="0.25em"/><m:mo stretchy="false">(</m:mo><m:mtext>30º</m:mtext><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mn>2</m:mn></m:mrow></m:msub></m:mrow><m:mspace width="0.25em"/><m:mtext>cos</m:mtext><m:mspace width="0.25em"/><m:mo stretchy="false">(</m:mo><m:mtext>45º</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math></equation></para><para id="import-auto-id3139151">Þannig,</para>
+      <para id="import-auto-id3176056"><equation id="eip-id2577136"><m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>2</m:mn></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mo stretchy="false">(</m:mo></m:mrow><m:mn>1</m:mn><m:mtext>.</m:mtext><m:mtext>225</m:mtext><m:mo stretchy="false">)</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math></equation></para><para id="import-auto-id1403550">Athugaðu að <m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> og <m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>2</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> eru ekki jöfn í þessu tilfelli, þar sem hornin á hvorri hlið eru ekki jöfn. Það er eðlilegt að <m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>2</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> reynist vera stærri en <m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>, þar sem hann er beittur meira lóðrétt en <m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>.</para>
+      <para id="import-auto-id1945495">Lítum nú á kraftþættina meðfram lóðrétta eða <emphasis effect="italics">y</emphasis>-ásnum:</para><para id="import-auto-id1427838"><equation id="eip-id2308230"><m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net </m:mtext><m:mspace width="0.25em"/><m:mi>y</m:mi></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>1</m:mtext><m:mi>y</m:mi></m:mrow></m:msub><m:mo stretchy="false">+</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>2</m:mtext><m:mi>y</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy="false">−</m:mo><m:mi>w</m:mi></m:mrow></m:mrow><m:mo stretchy="false">=</m:mo><m:mn>0</m:mn></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math></equation></para><para id="import-auto-id2442781">Þetta gefur í skyn</para>
+      <para id="import-auto-id3399848"><equation id="eip-id1339509"><m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>1</m:mtext><m:mi>y</m:mi></m:mrow></m:msub><m:mo stretchy="false">+</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>2</m:mtext><m:mi>y</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy="false">=</m:mo><m:mi>w</m:mi></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math></equation></para><para id="import-auto-id3175313">Með því að setja inn segðirnar fyrir lóðréttu þættina fæst</para>
+      <para id="import-auto-id1848974"><equation id="eip-id1925561"><m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub><m:mspace width="0.25em"/><m:mtext>sin</m:mtext><m:mspace width="0.25em"/><m:mo stretchy="false">(</m:mo><m:mtext>30º</m:mtext><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">+</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mn>2</m:mn></m:mrow></m:msub></m:mrow><m:mspace width="0.25em"/><m:mtext>sin</m:mtext><m:mspace width="0.25em"/><m:mo stretchy="false">(</m:mo><m:mtext>45º</m:mtext><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:mi>w</m:mi></m:mrow></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math></equation></para><para id="import-auto-id3077230">Það eru tvær óþekktar stærðir í þessari jöfnu, en með því að setja inn segðina fyrir <m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>2</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> í skilmálum <m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> er þetta einfaldað í eina jöfnu með einni óþekktri stærð:</para>
+      <para id="import-auto-id1947422"><equation id="eip-id2259246"><m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub><m:mo stretchy="false">(</m:mo><m:mn>0</m:mn><m:mtext>.</m:mtext><m:mtext>500</m:mtext><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">+</m:mo><m:mo stretchy="false">(</m:mo></m:mrow><m:mn>1</m:mn><m:mtext>.</m:mtext><m:mtext>225</m:mtext><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mn>0</m:mn><m:mtext>.</m:mtext><m:mtext>707</m:mtext><m:mrow><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:mi>w</m:mi></m:mrow><m:mo stretchy="false">=</m:mo><m:mstyle fontstyle="italic"><m:mrow><m:mtext>mg</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow></m:mrow><m:mo>,</m:mo></m:math></equation></para><para id="import-auto-id1413786">sem gefur</para>
+      <para id="import-auto-id1390130"><equation id="eip-id2556360"><m:math><m:mrow><m:mrow><m:mrow><m:mfenced open="(" close=")"><m:mrow><m:mn>1</m:mn><m:mtext>.</m:mtext><m:mtext>366</m:mtext></m:mrow></m:mfenced><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mo stretchy="false">(</m:mo></m:mrow><m:mtext>15</m:mtext><m:mtext>.</m:mtext><m:mtext>0 kg</m:mtext><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mn>9</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>80 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math></equation></para><para id="import-auto-id3397744">Með því að leysa þessa síðustu jöfnu fæst stærðin á <m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> til að vera</para>
+      <para id="import-auto-id1431108"><equation id="eip-id1747068"><m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mtext>108 N</m:mtext></m:mrow></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math></equation></para><para id="import-auto-id2661337">Að lokum er stærðin á <m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>2</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> ákvörðuð með því að nota sambandið á milli þeirra, <m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>2</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> = 1,225 <m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>, sem fannst hér að ofan. Þannig fáum við</para>
+      <para id="import-auto-id1614064"><equation id="eip-id1744019"><m:math>
+          
+            <m:mrow>
+
+                <m:mrow>
+                  <m:mrow>
+                    <m:msub>
+                      <m:mi>T</m:mi>
+
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+
+                    </m:msub>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mtext>132 N</m:mtext>
+                  </m:mrow>
+                </m:mrow>
+            </m:mrow>
+            
+          <m:mo>.</m:mo>
+        </m:math></equation></para><para id="import-auto-id1945834"><title>Umræða</title></para>
+      <para id="import-auto-id2670363">Báðar spennurnar yrðu stærri ef báðir vírarnir væru láréttari, og þær verða jafnar ef og aðeins ef hornin á hvorri hlið eru þau sömu (eins og þau voru í fyrra dæminu um línudansarann).</para>
+      </example>
+<figure id="import-auto-id3051538"><media id="import-auto-id2682615" alt="A sketch of a traffic light suspended from two wires supported by two poles is shown. (b) Some forces are shown in this system. Tension T sub one pulling the top of the left-hand pole is shown by the vector arrow along the left wire from the top of the pole, and an equal but opposite tension T sub one is shown by the arrow pointing up along the left-hand wire where it is attached to the light; the wire makes a thirty-degree angle with the horizontal. Tension T sub two is shown by a vector arrow pointing downward from the top of the right-hand pole along the right-hand wire, and an equal but opposite tension T sub two is shown by the arrow pointing up along the right-hand wire, which makes a forty-five degree angle with the horizontal. The traffic light is suspended at the lower end of the wires, and its weight W is shown by a vector arrow acting downward. (c) The traffic light is the system of interest. Tension T sub one starting from the traffic light is shown by an arrow along the wire making an angle of thirty degrees with the horizontal. Tension T sub two starting from the traffic light is shown by an arrow along the wire making an angle of forty-five degrees with the horizontal. The weight W is shown by a vector arrow pointing downward from the traffic light. A free-body diagram is shown with three forces acting on a point. Weight W acts downward; T sub one and T sub two act at an angle with the vertical. (d) Forces are shown with their components T sub one y and T sub two y pointing vertically upward. T sub one x points along the negative x direction, T sub two x points along the positive x direction, and weight W points vertically downward. (e) Vertical forces and horizontal forces are shown separately. Vertical forces T sub one y and T sub two y are shown by vector arrows acting along a vertical line pointing upward, and weight W is shown by a vector arrow acting downward. The net vertical force is zero, so T sub one y plus T sub two y is equal to W. On the other hand, T sub two x is shown by an arrow pointing toward the right, and T sub one x is shown by an arrow pointing toward the left. The net horizontal force is zero, so T sub one x is equal to T sub two x.">
+		<image mime-type="image/jpg" src="../../media/Figure_04_07_02.jpg" width="475"/>
+	</media>
+	<caption>Umferðarljós hangir í tveimur vírum. (b) Sumir af þeim kröftum sem koma við sögu. (c) Aðeins kraftar sem verka á kerfið eru sýndir hér. Kraftarit fyrir umferðarljósið er einnig sýnt. (d) Kröftunum varpað á lóðrétta (<emphasis effect="italics">y</emphasis>) og lárétta (<emphasis effect="italics">x</emphasis>) ása. Láréttu þættir spennanna verða að núllast út og summa lóðréttu þátta spennanna verður að vera jöfn þyngd umferðarljóssins. (e) Kraftaritið sýnir lóðréttu og láréttu kraftana sem verka á umferðarljósið.</caption></figure>
+<para id="import-auto-id1933271">Baðvogin er frábært dæmi um þverkraft sem verkar á hlut. Hún gefur megindlegan mælikvarða á það hversu mikið hún þarf að þrýsta upp á við til að styðja við þyngd hlutar. En getur þú spáð fyrir um hvað þú myndir sjá á skífunni á baðvog ef þú stæðir á henni í lyftuferð? Muntu sjá gildi sem er hærra en þyngd þín þegar lyftan fer af stað upp? Hvað með þegar lyftan hreyfist upp á við með jöfnum hraða: mun vogin samt sýna meira en þyngd þína í kyrrstöðu? Lítum á eftirfarandi dæmi.</para>
+<example id="fs-id2654282">
+      <title>What Does the Bathroom Scale Read in an Elevator?</title>
+      <para id="import-auto-id3127757"><title>Leið</title><link target-id="import-auto-id347645"/> sýnir 75,0 kg mann (þyngd um 165 pund) standandi á baðvog í lyftu. Reiknaðu mælingu vogarinnar: (a) ef lyftan hraðar sér upp á við með hröðun <m:math><m:mrow><m:mrow><m:mrow><m:mn>1</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>20 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:mrow></m:mrow></m:math>, og (b) ef lyftan hreyfist upp á við með jöfnum hraða 1 m/s.</para><para id="import-auto-id3175384">
+        <title>Strategy</title>
+      </para>
+      <para id="import-auto-id2401336">Ef vogin er nákvæm mun mæling hennar jafngilda <m:math><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>p</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>, stærð kraftsins sem maðurinn beitir niður á hana. <link target-id="import-auto-id347645"/>(a) sýnir hina fjölmörgu krafta sem verka á lyftuna, vogina og manninn. Það lætur þetta einvíða dæmi líta út fyrir að vera mun ógnvænlegra en ef maðurinn er valinn sem kerfið sem vekur áhuga og kraftarit er teiknað eins og í <link target-id="import-auto-id347645"/>(b). Greining á kraftaritinu með lögmálum Newtons getur gefið svör við bæði (a) og (b) hluta þessa dæmis, auk nokkurra annarra spurninga sem gætu vaknað. Einu kraftarnir sem verka á manninn eru þyngd hans <m:math><m:mrow><m:mrow><m:mtext mathvariant="bold">w</m:mtext></m:mrow></m:mrow></m:math> og uppkraftur vogarinnar <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>. Samkvæmt þriðja lögmáli Newtons eru <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>p</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> og <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> jafnstórir og í gagnstæðar áttir, þannig að við þurfum að finna <m:math><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> til að finna hvað vogin sýnir. Við getum gert þetta, eins og venjulega, með því að beita öðru lögmáli Newtons,</para><para id="import-auto-id3092572"><equation id="eip-id2548908"><m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net</m:mtext></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mstyle fontstyle="italic"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math></equation></para><para id="import-auto-id3122800">Af kraftamyndinni sjáum við að <m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net</m:mtext></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo stretchy="false">−</m:mo><m:mi>w</m:mi></m:mrow></m:mrow></m:mrow></m:mrow></m:math>, þannig að</para><para id="import-auto-id2682921"><equation id="eip-id2522872"><m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo stretchy="false">−</m:mo><m:mi>w</m:mi></m:mrow><m:mo stretchy="false">=</m:mo><m:mstyle fontstyle="italic"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math></equation></para><para id="import-auto-id3149528">Ef við leysum fyrir <m:math><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> fáum við jöfnu með aðeins einni óþekktri stærð:</para><para id="import-auto-id2448613"><equation id="eip-id1957748"><m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle><m:mo stretchy="false">+</m:mo><m:mi>w</m:mi></m:mrow></m:mrow></m:mrow></m:mrow><m:mo>,</m:mo></m:math></equation></para><para id="import-auto-id2640369">eða, þar sem <m:math><m:mrow><m:mi>w</m:mi><m:mo>=</m:mo><m:mi fontstyle="italic">mg</m:mi></m:mrow></m:math>, einfaldlega</para><para id="import-auto-id783604"><equation id="eip-id3507099"><m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle><m:mo stretchy="false">+</m:mo><m:mstyle fontstyle="italic"><m:mrow><m:mtext>mg</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math></equation></para><para id="import-auto-id3356994">Engar forsendur voru gefnar um hröðunina og því ætti þessi lausn að gilda fyrir ýmsar hræðslur auk þeirra sem eru í þessari æfingu.</para>
+
+        <para id="import-auto-id1446881"><title>Lausn fyrir (a)</title></para>
+      <para id="import-auto-id3062771">Í þessum hluta verkefnisins er <m:math><m:mrow><m:mrow><m:mrow><m:mi>a</m:mi><m:mo stretchy="false">=</m:mo><m:mn>1.20</m:mn><m:mspace width="0.25em"/><m:msup><m:mtext> m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:mrow></m:mrow></m:math>, þannig að</para><para id="import-auto-id1890218"><equation id="eip-id1966528"><m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mo stretchy="false">(</m:mo></m:mrow><m:mtext>75</m:mtext><m:mtext>.</m:mtext><m:mtext>0 kg</m:mtext><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mn>1</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>20 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">+</m:mo><m:mo stretchy="false">(</m:mo></m:mrow><m:mtext>75</m:mtext><m:mtext>.</m:mtext><m:mtext>0 kg</m:mtext><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mn>9</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>80 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mrow><m:mo>,</m:mo></m:math></equation></para><para id="import-auto-id2421681">sem gefur</para>
+      <para id="import-auto-id2660498"><equation id="eip-id1707818"><m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mn>8</m:mn></m:mrow><m:mtext>25 N</m:mtext></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math></equation></para><para id="import-auto-id3025738"><title>Umræða fyrir (a)</title></para>
+      <para id="import-auto-id2616829">Þetta eru um 185 pund. Hvað hefði vigtin sýnt ef hann hefði verið kyrrstæður? Þar sem hröðun hans væri núll, væri krafturinn frá vigtinni jafn þyngd hans:</para>
+      <para id="import-auto-id2616832"><equation id="eip-id2384618"><m:math>
+          
+            <m:mrow>
+              <m:mrow>
+                <m:mtable columnalign="left">
+                  <m:mtr>
+<m:mtd>
+
+                                <m:msub>
+                                  <m:mi>F</m:mi>
+
+                                    <m:mrow>
+                                      <m:mtext>net</m:mtext>
+                                    </m:mrow>
+
+                                </m:msub>
+</m:mtd>
+<m:mtd>
+                                <m:mo stretchy="false">=</m:mo>
+</m:mtd>
+<m:mtd>
+                                <m:mstyle fontstyle="italic">
+                                  <m:mrow>
+                                    <m:mtext>ma</m:mtext>
+                                  </m:mrow>
+                                </m:mstyle>
+
+
+                              <m:mo stretchy="false">=</m:mo>
+
+                              <m:mn>0</m:mn>
+
+
+                            <m:mo stretchy="false">=</m:mo>
+
+                            <m:mrow>
+                              <m:msub>
+                                <m:mi>F</m:mi>
+
+                                  <m:mrow>
+                                    <m:mtext>s</m:mtext>
+                                  </m:mrow>
+
+                              </m:msub>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mi>w</m:mi>
+                            </m:mrow>
+
+
+
+
+</m:mtd>
+                  </m:mtr>
+                  <m:mtr>
+<m:mtd>
+                          <m:msub>
+                            <m:mi>F</m:mi>
+
+                              <m:mrow>
+                                <m:mtext>s</m:mtext>
+                              </m:mrow>
+
+                          </m:msub>
+</m:mtd>
+<m:mtd>
+                          <m:mo stretchy="false">=</m:mo>
+</m:mtd>
+<m:mtd>
+                          <m:mi>w</m:mi>
+
+
+                        <m:mo stretchy="false">=</m:mo>
+
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>mg</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+
+</m:mtd>
+                  </m:mtr>
+                  <m:mtr>
+<m:mtd>
+
+                        <m:msub>
+                          <m:mi>F</m:mi>
+
+                            <m:mrow>
+                              <m:mtext>s</m:mtext>
+                            </m:mrow>
+
+                        </m:msub>
+</m:mtd>
+<m:mtd>
+                        <m:mo stretchy="false">=</m:mo>
+</m:mtd>
+<m:mtd>
+                        <m:mo stretchy="false">(</m:mo>
+
+                      <m:mtext>75.0 kg</m:mtext>
+                      <m:mo stretchy="false">)</m:mo>
+                      <m:mo stretchy="false">(</m:mo>
+                      <m:mn>9.</m:mn>
+                      <m:msup>
+                        <m:mtext>80 m/s</m:mtext>
+
+                          <m:mrow>
+                            <m:mn>2</m:mn>
+                          </m:mrow>
+
+                      </m:msup>
+                      <m:mo stretchy="false">)</m:mo>
+
+</m:mtd>
+                  </m:mtr>
+                  <m:mtr>
+<m:mtd>
+
+                        <m:msub>
+                          <m:mi>F</m:mi>
+
+                            <m:mrow>
+                              <m:mtext>s</m:mtext>
+                            </m:mrow>
+
+                        </m:msub>
+</m:mtd>
+<m:mtd>
+                        <m:mo stretchy="false">=</m:mo>
+</m:mtd>
+<m:mtd>
+                        <m:mtext>735 N.</m:mtext>
+
+</m:mtd>
+                  </m:mtr>
+                </m:mtable>
+              </m:mrow>
+            </m:mrow>
+          
+        </m:math></equation></para><para id="import-auto-id3051286">Þannig að mæling vigtarinnar í lyftunni er meiri en 735 N (165 punda) þyngd hans. Þetta þýðir að vigtin þrýstir upp á manninn með krafti sem er meiri en þyngd hans, eins og hún verður að gera til að hraða honum upp á við. Augljóslega, því meiri sem hröðun lyftunnar er, því meiri er mæling vigtarinnar, sem er í samræmi við það sem þú finnur í lyftum sem hraða sér hratt á móti lyftum sem hraða sér hægt.</para>
+
+        <para id="import-auto-id2452922"><title>Lausn fyrir (b)</title></para>
+      <para id="import-auto-id2659348">Hvað gerist nú þegar lyftan nær stöðugum hraða upp á við? Mun vigtin enn sýna meira en þyngd hans? Fyrir hvern stöðugan hraða — upp, niður eða kyrrstöðu — er hröðunin núll vegna þess að <m:math><m:mrow><m:mrow><m:mrow><m:mi>a</m:mi><m:mo stretchy="false">=</m:mo><m:mfrac><m:mrow><m:mn>Δ</m:mn><m:mi fontstyle="italic">v</m:mi></m:mrow><m:mrow><m:mn>Δ</m:mn><m:mi fontstyle="italic">t</m:mi></m:mrow></m:mfrac></m:mrow></m:mrow></m:mrow></m:math>, og <m:math><m:mrow><m:mrow><m:mrow><m:mn>Δ</m:mn><m:mi fontstyle="italic">v</m:mi><m:mo stretchy="false">=</m:mo><m:mn>0</m:mn></m:mrow></m:mrow></m:mrow></m:math>.</para><para id="import-auto-id2929366">Þannig,</para>
+      <para id="import-auto-id3091690"><equation id="eip-id2587837"><m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle><m:mo stretchy="false">+</m:mo><m:mstyle fontstyle="italic"><m:mrow><m:mtext>mg</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow><m:mo stretchy="false">=</m:mo><m:mrow><m:mn>0</m:mn><m:mo stretchy="false">+</m:mo><m:mstyle fontstyle="italic"><m:mrow><m:mtext>mg</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math></equation></para><para id="import-auto-id2678077">Nú</para>
+      <para id="import-auto-id1517361"><equation id="eip-id1546720"><m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mo stretchy="false">(</m:mo></m:mrow><m:mtext>75</m:mtext><m:mtext>.</m:mtext><m:mtext>0 kg</m:mtext><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mn>9</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>80 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mrow><m:mo>,</m:mo></m:math></equation></para><para id="import-auto-id3094890">sem gefur</para>
+      <para id="import-auto-id3026210"><equation id="eip-id1499798"><m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mn>7</m:mn></m:mrow><m:mtext>35 N</m:mtext></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math></equation></para><para id="import-auto-id2677782"><title>Umræða fyrir (b)</title></para>
+      <para id="import-auto-id3122425">Mæling vigtarinnar er 735 N, sem er jafnt þyngd mannsins. Þetta verður raunin hvenær sem lyftan hefur stöðugan hraða — hvort sem hún hreyfist upp, niður eða er kyrrstæð.</para></example>
+<figure id="import-auto-id347645"><media id="import-auto-id2678543" alt="A person is standing on a bathroom scale in an elevator. His weight w is shown by an arrow pointing downward. F sub s is the force of the scale on the person, shown by a vector starting from his feet pointing vertically upward. W sub s is the weight of the scale pointing vertically downward. W sub e is the weight of the elevator, shown by the broken arrow pointing vertically downward. F sub p is the force of the person on the scale, acting vertically downward. F sub t is the force of the scale on the floor of the elevator, pointing vertically downward, and N is the normal force of the floor on the scale, pointing upward. (b) The same person is shown on the scale in the elevator, but only a few forces are shown acting on the person, which is our system of interest. W is shown by an arrow acting downward, and F sub s is the force of the scale on the person, shown by a vector starting from his feet pointing vertically upward. The free-body diagram is also shown, with two forces acting on a point. F sub s acts vertically upward, and w acts vertically downward.">
+              <image mime-type="image/jpg" src="../../media/Figure 04_07_03a.jpg" width="550"/>
+            </media>
+
+          <caption>(a) Hinir ýmsu kraftar sem verka þegar maður stendur á baðherbergisvigt í lyftu. Örvarnar eru nokkurn veginn réttar fyrir þegar lyftan hefur hröðun upp á við — brotnar örvar tákna krafta sem eru of stórir til að vera teiknaðir í réttum skala. <m:math><m:mrow><m:mrow><m:mrow><m:mtext mathvariant="bold">T</m:mtext></m:mrow></m:mrow></m:mrow></m:math> er krafturinn upp á við á lyftuna, <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">w</m:mtext><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> er þyngd vigtarinnar, <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">w</m:mtext><m:mrow><m:mtext>e</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> er þyngd lyftunnar, <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> er kraftur vigtarinnar á manninn, <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>p</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> er kraftur mannsins á vigtina, <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>t</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> er kraftur vigtarinnar á gólf lyftunnar og <m:math><m:mrow><m:mrow><m:mrow><m:mtext mathvariant="bold">N</m:mtext></m:mrow></m:mrow></m:mrow></m:math> er kraftur gólfsins upp á við á vigtina. (b) Kraftamyndin sýnir aðeins ytri krafta sem verka á hið skilgreinda kerfi sem er til skoðunar — manninn.</caption></figure>
+<para id="import-auto-id3098799">Lausnin á fyrra dæminu á einnig við um lyftu sem hefur hröðun niður á við, eins og nefnt var. Þegar lyfta hefur hröðun niður á við er <m:math><m:mrow><m:mrow><m:mi>a</m:mi></m:mrow></m:mrow></m:math> neikvætt og mæling vigtarinnar er <emphasis effect="italics">minni</emphasis> en þyngd mannsins, þar til stöðugum hraða niður á við er náð, en þá verður mæling vigtarinnar aftur jöfn þyngd mannsins. Ef lyftan er í frjálsu falli og hefur hröðun niður á við sem er <m:math><m:mrow><m:mrow><m:mi>g</m:mi></m:mrow></m:mrow></m:math>, þá verður mæling vigtarinnar núll og maðurinn mun <emphasis effect="italics">virðast</emphasis> vera þyngdarlaus.</para>
+<section id="fs-id1517458">
+<title>Samþætting hugtaka: Hreyfilögmál Newtons og hreyfifræði</title>
+<para id="import-auto-id2677992">Eðlisfræði er áhugaverðust og áhrifamest þegar henni er beitt á almennar aðstæður sem fela í sér meira en þröngt sett af eðlisfræðilegum lögmálum. Hreyfilögmál Newtons er einnig hægt að samþætta við önnur hugtök sem áður hafa verið rædd í þessum texta til að leysa hreyfingarvandamál. Til dæmis valda kraftar hröðun, sem er efni hreyfifræðinnar, og því skipta fyrri kaflar máli. Þegar þú nálgast verkefni sem fela í sér ýmsar gerðir krafta, hröðun, hraða og/eða stöðu, skaltu nota eftirfarandi skref til að nálgast verkefnið:</para>
+<para id="import-auto-id3423090"><emphasis effect="italics">Aðferðafræði við lausn vandamála</emphasis></para>
+<para id="eip-935">Skref 1. <emphasis effect="italics">Greindu hvaða eðlisfræðilögmál eiga við</emphasis>. Með því að skrá upp gefnar stærðir og þær stærðir sem á að reikna út geturðu greint hvaða lögmál eiga við. <newline/>Skref 2. <emphasis effect="italics">Leystu verkefnið með því að nota aðferðir sem lýst er í textanum</emphasis>. Ef þær eru tiltækar fyrir tiltekið efni ættirðu að vísa til þeirra. Þú ættir einnig að vísa til þeirra kafla textans sem fjalla um tiltekið efni. Eftirfarandi útreiknað dæmi sýnir hvernig þessum aðferðum er beitt á samþætt hugtakaverkefni.</para>
+<example id="fs-id2653259">
+      <title>What Force Must a Soccer Player Exert to Reach Top Speed?</title>
+      <para id="import-auto-id3245365"><title>Aðferð</title>Knattspyrnumaður byrjar kyrrstæður og flýtir sér fram á við og nær 8,00 m/s hraða á 2,50 s. (a) Hver var meðalhröðun hans? (b) Hve miklum meðalkrafti beitti hann aftur á bak á jörðina til að ná þessari hröðun? Massi leikmannsins er 70,0 kg og loftmótstaða er hverfandi.</para>
+
+      <para id="import-auto-id2956703">Til að leysa <emphasis effect="italics">samþætt hugmyndadæmi</emphasis> verðum við fyrst að bera kennsl á hvaða eðlisfræðilögmál eiga við og finna kaflana þar sem þau er að finna. Hluti (a) í þessu dæmi fjallar um <emphasis effect="italics">hröðun</emphasis> eftir beinni línu. Þetta er efni úr <emphasis effect="italics">hreyfifræði</emphasis>. Hluti (b) fjallar um <emphasis effect="italics">kraft</emphasis>, sem er efni úr <emphasis effect="italics">kraftafræði</emphasis> og er að finna í þessum kafla.</para>
+      <para id="import-auto-id3020678">Eftirfarandi lausnir á hvorum hluta dæmisins sýna hvernig sértækar lausnaraðferðir eru notaðar. Þær fela í sér að bera kennsl á þekktar og óþekktar stærðir, athuga hvort svarið sé skynsamlegt og svo framvegis.</para>
+      
+
+        <para id="import-auto-id2661615"><title>Lausn fyrir (a)</title></para>
+      <para id="import-auto-id3151402">Okkur eru gefnir upphafshraði og lokahraði (núll og 8,00 m/s fram á við); þannig er hraðabreytingin <m:math><m:mrow><m:mrow><m:mn>Δ</m:mn><m:mi fontstyle="italic">v</m:mi><m:mo stretchy="false">=</m:mo><m:mn>8.00 m/s</m:mn></m:mrow></m:mrow></m:math>. Okkur er gefinn liðinn tími, og því <m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:mn>Δ</m:mn><m:mi fontstyle="italic">t</m:mi><m:mo stretchy="false">=</m:mo><m:mn>2.50 s</m:mn></m:mrow></m:mrow></m:mrow></m:mrow></m:math>. Óþekkta stærðin er hröðun, sem má finna út frá skilgreiningu hennar:</para><para id="import-auto-id3127826"><equation id="eip-id1739294"><m:math><m:mrow><m:mrow><m:mrow><m:mi>a</m:mi><m:mo stretchy="false">=</m:mo><m:mfrac><m:mrow><m:mn>Δ</m:mn><m:mi fontstyle="italic">v</m:mi></m:mrow><m:mrow><m:mn>Δ</m:mn><m:mi fontstyle="italic">t</m:mi></m:mrow></m:mfrac></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math></equation></para><para id="import-auto-id2980122">Með því að setja inn þekktu gildin fæst</para>
+      <para id="import-auto-id3008117"><equation id="eip-id2063281"><m:math><m:mrow><m:mrow><m:mtable columnalign="left"><m:mtr>
+<m:mtd><m:mi>a</m:mi></m:mtd>
+<m:mtd><m:mo stretchy="false">=</m:mo></m:mtd>
+<m:mtd>
+ <m:mfrac>
+  <m:mrow>
+   <m:mn>8.00 m/s</m:mn>
+  </m:mrow>
+  <m:mrow>
+   <m:mn>2</m:mn>
+   <m:mtext>.</m:mtext>
+   <m:mn>50 s</m:mn>
+  </m:mrow>
+ </m:mfrac></m:mtd></m:mtr>
+<m:mtr>
+<m:mtd/>
+<m:mtd><m:mo stretchy="false">=</m:mo></m:mtd>
+<m:mtd>
+ <m:mn>3</m:mn>
+ <m:mtext>.</m:mtext>
+ <m:msup>
+  <m:mtext>20 m/s</m:mtext>
+  <m:mrow>
+   <m:mn>2</m:mn>
+  </m:mrow>
+ </m:msup>
+ <m:mo>.</m:mo>
+</m:mtd>
+</m:mtr></m:mtable><m:mrow/></m:mrow></m:mrow></m:math></equation></para><para id="import-auto-id3358567"><title>Umræða fyrir (a)</title></para>
+      <para id="import-auto-id3077464">Þetta er hröðun sem íþróttamaður í góðu formi getur náð.</para>
+
+        <para id="import-auto-id2666506"><title>Lausn fyrir (b)</title></para>
+      <para id="import-auto-id2956626">Hér erum við beðin um að finna meðalkraftinn sem leikmaðurinn beitir aftur á bak til að ná þessari hröðun fram á við. Ef loftmótstaða er hverfandi, væri þessi kraftur jafn að stærð og heildarytri krafturinn á leikmanninn, þar sem þessi kraftur veldur hröðun hans. Þar sem við vitum nú hröðun leikmannsins og massi hans er gefinn, getum við notað annað lögmál Newtons til að finna kraftinn sem beitt er. Það er,</para>
+      <para id="import-auto-id2956628"><equation id="eip-id1756199"><m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net</m:mtext></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mstyle fontstyle="italic"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math></equation></para><para id="import-auto-id3149815">Með því að setja inn þekktu gildin <m:math><m:mrow><m:mrow><m:mi>m</m:mi></m:mrow></m:mrow></m:math> og <m:math><m:mrow><m:mrow><m:mi>a</m:mi></m:mrow></m:mrow></m:math> fæst</para>
+      <para id="import-auto-id2688937"><equation id="eip-id1351504"><m:math><m:mrow><m:mrow><m:mtable columnalign="left"><m:mtr>
+<m:mtd><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net</m:mtext></m:mrow></m:msub></m:mtd>
+<m:mtd><m:mo stretchy="false">=</m:mo></m:mtd>
+<m:mtd>
+<m:mo stretchy="false">(</m:mo><m:mtext>70.0 kg</m:mtext><m:mo stretchy="false">)</m:mo>
+
+<m:mo stretchy="false">(</m:mo><m:mn>3</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>20 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo></m:mtd>
+</m:mtr><m:mtr>
+<m:mtd/>
+<m:mtd><m:mo stretchy="false">=</m:mo></m:mtd>
+<m:mtd><m:mtext> 224 N</m:mtext><m:mo>.</m:mo></m:mtd>
+</m:mtr></m:mtable><m:mrow/></m:mrow></m:mrow></m:math></equation></para><para id="import-auto-id2674277"><title>Umræða fyrir (b)</title></para>
+      <para id="import-auto-id2970796">Þetta eru um 50 pund, sem er skynsamlegur meðalkraftur.</para>
+      <para id="import-auto-id2970798">Þetta útreiknaða dæmi sýnir hvernig beita má lausnaraðferðum á aðstæður sem fela í sér efni úr mismunandi köflum. Fyrsta skrefið er að bera kennsl á eðlisfræðilögmálin sem eiga við í dæminu. Annað skrefið er að leysa fyrir óþekktu stærðina með því að nota kunnuglegar lausnaraðferðir. Þessar aðferðir er að finna víðs vegar í textanum og mörg útreiknuð dæmi sýna hvernig á að nota þær fyrir einstök efni. Þú munt finna að þessar aðferðir fyrir samþætt hugmyndadæmi eru gagnlegar í hagnýtingu eðlisfræðinnar utan eðlisfræðinámskeiðs, svo sem í starfi þínu, í öðrum vísindagreinum og í daglegu lífi. Eftirfarandi dæmi munu byggja upp færni þína í víðtækri beitingu eðlisfræðilögmála.</para>
+      </example>
+</section>
+<section id="fs-id1925843" class="ap-test-prep">
+<title>Undirbúningur fyrir AP-námskeið</title>
+<exercise id="fs-id1471760" type="ap-test-prep">
+    <problem id="fs-id1910401">
+    <para id="fs-id882223">Körfuboltamaður stekkur um leið og hann skýtur boltanum. Lýstu kröftunum sem verka á boltann og á körfuboltamanninn. Hverjar eru afleiðingarnar?</para></problem>
+    <!--<solution id="fs-id2159182">
+    <para id="fs-id1056667">As the player jumps, he exerts a force on Earth. Earth exerts an equal force upward on the player. Since the player is holding the ball, this upward force is also exerted on the ball. As the player shoots the ball, the muscles and bones in his arms are causing a force that propels the ball upward. The ball exerts a force equal in magnitude but opposite in direction on the player, pushing him downward.</para>
+    <para id="fs-id2302819">As a result, the player accelerates upward, and the ball also accelerates upward. The ball accelerates faster than it would if the player were not also jumping. The player accelerates slower than he would if he were not shooting the ball while he jumps.</para>
+    </solution>-->
+    </exercise>
+<exercise id="fs-id1669265" type="ap-test-prep">
+    <problem id="fs-id1797000">
+    <para id="fs-id1592863">Tveir einstaklingar ýta á hnullung til að reyna að hreyfa hann. Massi hnullungsins er 825 kg. Annar einstaklingurinn ýtir í norður með krafti sem nemur 64 N. Hinn ýtir í vestur með krafti sem nemur 38 N. Spáðu fyrir um stærð hröðunar hnullungsins. Gerðu ráð fyrir að núningur sé hverfandi.</para></problem>
+    <solution id="fs-id1481814">
+    <para id="fs-id1689746">Kraftamynd myndi sýna 64 N kraft til norðurs og 38 N kraft til vesturs. Heildarkrafturinn er jafn summu þessara tveggja krafta. Hann má finna með Pýþagórasarreglunni:</para>
+    <para id="fs-id1607775"><m:math><m:mrow><m:mtable><m:mtr><m:mtd><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net</m:mtext></m:mrow></m:msub><m:mo>=</m:mo></m:mrow></m:mtd><m:mtd><m:mrow><m:msqrt><m:mrow><m:msub><m:mi>F</m:mi><m:mi>x</m:mi></m:msub><m:msup><m:mrow/><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msub><m:mi>F</m:mi><m:mi>y</m:mi></m:msub><m:msup><m:mrow/><m:mi>w</m:mi></m:msup></m:mrow></m:msqrt></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd><m:mrow/></m:mtd><m:mtd><m:mrow><m:mo>=</m:mo><m:msqrt><m:mrow><m:msup><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>38</m:mn><m:mtext> </m:mtext><m:mtext>N</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msup><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>64</m:mn><m:mtext>​</m:mtext><m:mtext> </m:mtext><m:mtext>N</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:msqrt></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd><m:mrow/></m:mtd><m:mtd><m:mrow><m:mo>=</m:mo><m:mn>74.4</m:mn><m:mtext> </m:mtext><m:mtext>N</m:mtext></m:mrow></m:mtd></m:mtr></m:mtable></m:mrow></m:math></para>
+    <para id="fs-id1472190">Þar sem <m:math><m:mrow><m:mi>a</m:mi><m:mo>=</m:mo><m:mfrac><m:mi>F</m:mi><m:mi>m</m:mi></m:mfrac></m:mrow></m:math>,</para>
+    <para id="fs-id1620032"><m:math><m:mrow><m:mtable><m:mtr><m:mtd><m:mi>a</m:mi></m:mtd><m:mtd><m:mrow><m:mo>=</m:mo><m:mfrac><m:mrow><m:mn>74.4</m:mn><m:mtext> </m:mtext><m:mtext>N</m:mtext></m:mrow><m:mrow><m:mn>825</m:mn><m:mtext> </m:mtext><m:mtext>kg</m:mtext></m:mrow></m:mfrac></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd><m:mrow/></m:mtd><m:mtd><m:mrow><m:mo>=</m:mo><m:mn>0.09</m:mn><m:mtext> </m:mtext><m:msup><m:mrow><m:mtext>m/s</m:mtext></m:mrow><m:mtext>2</m:mtext></m:msup></m:mrow></m:mtd></m:mtr></m:mtable></m:mrow></m:math></para>
+    <para id="fs-id2162649">Hnullungurinn mun fá hröðunina 0,09 m/s<sup>2</sup>.</para>
+    </solution>
+    </exercise>
+<exercise id="fs-id1046422" type="ap-test-prep">
+    <problem id="fs-id881529">
+    <para id="fs-id1450804">Myndin sýnir kraftana sem verka á kubb sem rennur á láréttu yfirborði: þyngdarkrafturinn 40 N, þverkrafturinn 40 N frá yfirborðinu og núningskraftur sem verkar til vinstri. Núningsstuðullinn milli kubbsins og yfirborðsins er 0,20. Hröðun kubbsins er næst því að vera</para><list id="fs-id1444278" list-type="enumerated" number-style="lower-alpha"><item>1.0 m/s<sup>2</sup> to the right</item>
+    <item>1.0 m/s<sup>2</sup> to the left</item>
+    <item>2.0 m/s<sup>2</sup> to the right</item>
+    <item>2.0 m/s<sup>2</sup> to the left</item>
+    </list></problem>
+    <!--<solution id="fs-id1497935">
+    <para id="fs-id1433602">(d)</para></solution>-->
+    </exercise>
+<figure id="fs-id1437542"><media id="fs-id935973" alt="The diagram has a black rectangle that is slightly longer than it is tall with three solid arrows pointing from the edge of the rectangle. An arrow pointing up is labeled 40 N. A same size arrow pointing down is labeled 40 N. The third arrow f about half the size of the other two is pointing toward the left."><image mime-type="image/jpg" src="../../media/Figure_04_07_09.jpg"/></media>
+    </figure>
+</section>
+<section id="fs-id1596051" class="section-summary">
+<title>Samantekt</title>
+<list id="fs-id2446096" list-type="bulleted">
+<item id="import-auto-id1586681">Lögmál Newtons um hreyfingu má beita í fjölmörgum aðstæðum til að leysa hreyfingardæmi.</item>
+<item id="import-auto-id1586684">Í sumum verkefnum koma fyrir margir kraftvigrar sem verka í mismunandi áttir á hlut. Gættu þess að teikna skýringarmyndir, þátta alla kraftvigra í lárétta og lóðrétta þætti og teikna kraftamynd. Greindu alltaf í hvaða átt hluturinn hraðar sér svo þú getir ákvarðað hvort <m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net</m:mtext></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mstyle fontstyle="italic"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow></m:math> eða <m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net</m:mtext></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mn>0</m:mn></m:mrow></m:mrow></m:mrow></m:math> .</item>
+<item id="import-auto-id3305501">Þverkrafturinn á hlut er ekki alltaf jafn stór og þyngd hlutarins. Ef hlutur er að hraða sér verður þverkrafturinn minni eða meiri en þyngd hlutarins. Einnig, ef hluturinn er á hallandi fleti, verður þverkrafturinn alltaf minni en full þyngd hlutarins.</item>
+<item id="import-auto-id2653368">Sum verkefni munu innihalda ýmsar eðlisfræðilegar stærðir, svo sem krafta, hröðun, hraða eða stöðu. Þú getur beitt hugtökum úr hreyfifræði og kraftafræði til að leysa þessi hreyfingarverkefni.</item>
+</list>
+</section>
+<section id="fs-id1549126" class="conceptual-questions">
+<title>Huglægar spurningar</title>
+<exercise id="fs-id3109644" type="conceptual-questions"><problem id="fs-id3109646">
+      <para id="import-auto-id3090869">Til að herma eftir sýndarþyngdarleysi á sporbaug um jörðu eru geimfarar þjálfaðir í flutningavél sem hraðar sér niður á við með hröðuninni <m:math><m:mrow><m:mrow><m:mi>g</m:mi></m:mrow></m:mrow></m:math>. Hvers vegna virðast þeir vera þyngdarlausir, mælt með því að standa á baðvog, í þessu hröðunarviðmiðunarkerfi? Er einhver munur á sýndarþyngdarleysi þeirra á sporbaug og í flugvélinni?</para>
+      </problem></exercise>
+<exercise id="fs-id1449853" type="conceptual-questions"><problem id="fs-id3256198">
+      <para id="import-auto-id2980170">Í teiknimynd sést hattur fjúka af höfði farþega í lyftu þegar lyftan stöðvast snögglega á leið upp. Getur þetta raunverulega gerst án þess að viðkomandi sé bundinn við gólf lyftunnar? Útskýrðu svarið.</para>
+      </problem></exercise>
+</section>
+<section id="fs-id2678901" class="problems-exercises">
+<title>Verkefni</title>
+<exercise id="fs-id2391286" type="problems-exercises"><problem id="fs-id2391288">
+        <para id="import-auto-id3177786">Fló stekkur með því að beita kraftinum <m:math><m:mrow><m:mrow><m:mrow><m:mn>1</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>20</m:mtext><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mrow><m:mo stretchy="false">−</m:mo><m:mn>5</m:mn></m:mrow></m:mrow></m:msup></m:mrow><m:mspace width="0.25em"/><m:mtext> N</m:mtext></m:mrow></m:mrow></m:mrow></m:math> beint niður á jörðina. Gola sem blæs á flóna samsíða jörðu beitir kraftinum <m:math><m:mrow><m:mrow><m:mrow><m:mn>0</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>500</m:mtext><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mrow><m:mo stretchy="false">−</m:mo><m:mn>6</m:mn></m:mrow></m:mrow></m:msup></m:mrow><m:mspace width="0.25em"/><m:mtext> N</m:mtext></m:mrow></m:mrow></m:mrow></m:math> á flóna. Finndu stefnu og stærð hröðunar flónnar ef massi hennar er <m:math><m:mrow><m:mrow><m:mrow><m:mn>6</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>00</m:mtext><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mrow><m:mo stretchy="false">−</m:mo><m:mn>7</m:mn></m:mrow></m:mrow></m:msup></m:mrow><m:mspace width="0.25em"/><m:mtext> kg</m:mtext></m:mrow></m:mrow></m:mrow></m:math>. Ekki vanrækja þyngdarkraftinn.</para></problem>
+<solution id="fs-id1487097">
+      <para id="import-auto-id1579182"><m:math>
+          
+            <m:mrow>
+
+                <m:mrow>
+                  <m:mrow>
+                    <m:mtext>10.2</m:mtext><m:mspace width="0.25em"/>
+                    <m:msup>
+                      <m:mtext> m/s</m:mtext>
+
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+
+                    </m:msup>
+                    <m:mtext>, 4.67º from vertical</m:mtext>
+                  </m:mrow>
+                </m:mrow>
+            </m:mrow>
+            
+          
+        </m:math></para></solution>
+      </exercise>
+<exercise id="fs-id1427030" type="problems-exercises"><problem id="fs-id2616590">
+        <para id="import-auto-id2449784">Tveir vöðvar aftan á fæti toga upp á hásinina, eins og sýnt er á <link target-id="import-auto-id2667995"/>. (Þessir vöðvar eru kallaðir miðlægur og hliðlægur haus tvíhöfða kálfavöðva.) Finndu stærð og stefnu heildarkraftsins á hásinina. Hvers konar hreyfingu gæti þessi kraftur valdið?</para>
+      </problem></exercise>
+<figure id="import-auto-id2667995"><media id="import-auto-id2667996" alt="An Achilles tendon is shown in the figure with two forces acting upward, one at an angle of plus twenty degrees, one at minus twenty degrees. F sub one, equal to two hundred newtons, is shown by a vector making an angle twenty degrees toward the right with the vertical, and F sub two, equal to two hundred newtons, is shown making an angle of twenty degrees left from the vertical.">
+          <image mime-type="image/jpg" src="../../media/Figure_04_07_04.jpg" width="150"/>
+        </media>
+
+      <caption>Hásin</caption></figure>
+<exercise id="fs-id2953749" type="problems-exercises"><problem id="fs-id2401285">
+        <para id="import-auto-id3093073">Verið er að draga 76,0 kg manneskju frá brennandi byggingu eins og sýnt er á <link target-id="import-auto-id2677556"/>. Reiknaðu spennuna í kaðlunum tveimur ef manneskjan er kyrr um stundarsakir. Láttu kraftalínurit fylgja með í lausninni.</para></problem>
+<solution id="fs-id2653393">
+
+
+      <media id="import-auto-id3076213" alt="An object of mass m is shown being pulled by two ropes. Tension T sub two acts toward the right at an angle of ten degrees above the horizontal. Another rope makes an angle fifteen degrees to the left of the vertical direction, and tension in the rope is T sub one, shown by a vector arrow. Weight w is acting vertically downward.">
+          <image mime-type="image/jpg" src="../../media/Figure_04_07_07.jpg" height="200"/>
+        </media>
+     <para id="import-auto-id2688927"><m:math>
+          
+            <m:mrow>
+
+                <m:mrow>
+                  <m:mrow>
+                    <m:mrow>
+                      <m:msub>
+                        <m:mi>T</m:mi>
+
+                          <m:mrow>
+                            <m:mn>1</m:mn>
+                          </m:mrow>
+
+                      </m:msub>
+                      <m:mo stretchy="false">=</m:mo>
+                      <m:mtext>736 N</m:mtext>
+                    </m:mrow>
+                  </m:mrow>
+                </m:mrow>
+
+            </m:mrow>
+            
+          
+        </m:math></para><para id="import-auto-id3176573"><m:math>
+          
+            <m:mrow>
+
+                <m:mrow>
+                  <m:mrow>
+                    <m:msub>
+                      <m:mi>T</m:mi>
+
+                        <m:mrow>
+                          <m:mn>2</m:mn>
+                        </m:mrow>
+
+                    </m:msub>
+                    <m:mo stretchy="false">=</m:mo>
+                    <m:mtext>194 N</m:mtext>
+                  </m:mrow>
+                </m:mrow>
+            </m:mrow>
+            
+          
+        </m:math></para>
+      </solution>
+      </exercise>
+<figure id="import-auto-id2677556"><media id="import-auto-id2677557" alt="A lady is being pulled away from a burning building using a rope. She is in the middle of the rope; her weight is shown by a vector acting vertically downward. Tension, T sub one, acts upward through the left side of the rope, making an angle of fifteen degrees with the vertical. Tension T sub two acts through the right side of the rope, making an angle of ten degrees above the positive x axis.">
+          <image mime-type="image/jpg" src="../../media/Figure 04_07_08a.jpg" height="275"/>
+        </media>
+
+      <caption>Krafturinn <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">T</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> sem þarf til að halda manneskjunni, sem verið er að bjarga úr eldinum, stöðugri er minni en þyngd hennar og minni en krafturinn <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">T</m:mtext><m:mrow><m:mn>1</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> í hinum kaðlinum, þar sem lóðréttari kaðallinn ber meiri hluta af þyngd hennar (lóðréttur kraftur).</caption></figure>
+<exercise id="fs-id1486506" type="problems-exercises"><problem id="fs-id3036356">
+        <para id="import-auto-id2669706">Samþætt hugtök: 35,0 kg höfrungur hægir á sér úr 12,0 í 7,50 m/s á 2,30 s til að slást í leik með öðrum höfrungi. Hver var meðalkrafturinn sem beitt var til að hægja á honum ef hann hreyfðist lárétt? (Þyngdarkrafturinn er jafnaður út af uppdrifskrafti vatnsins.)</para>
+      </problem></exercise>
+<exercise id="fs-id3078491" type="problems-exercises"><problem id="fs-id1614205">
+        <para id="import-auto-id3386347">Samþætt hugtök: Þegar 70,0 kg spretthlaupari hefur keppni beitir hann meðalkraftinum 650 N aftur á bak á jörðina í 0,800 s. (a) Hver er lokahraði hans? (b) Hversu langt fer hann?</para>
+      </problem>
+<solution id="fs-id1930138">
+      <para id="import-auto-id2640271">(a) <m:math><m:mrow><m:mrow><m:mrow><m:mn>7.43 m/s</m:mn></m:mrow></m:mrow></m:mrow></m:math></para><para id="import-auto-id2670599">(b) 2,97 m</para>
+      </solution>
+      </exercise>
+<exercise id="fs-id2441621" type="problems-exercises"><problem id="fs-id1446886">
+        <para id="import-auto-id3033810">Samþætt hugtök: Stór eldflaug hefur massa <m:math><m:mrow><m:mrow><m:mrow><m:mn>2</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>00</m:mtext><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>6</m:mn></m:mrow></m:msup></m:mrow><m:mspace width="0.25em"/><m:mtext> kg</m:mtext></m:mrow></m:mrow></m:mrow></m:math> við flugtak og hreyflar hennar framleiða þrýstikraft upp á <m:math><m:mrow><m:mrow><m:mrow><m:mn>3</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>50</m:mtext><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>7</m:mn></m:mrow></m:msup></m:mrow><m:mspace width="0.25em"/><m:mtext> N</m:mtext></m:mrow></m:mrow></m:mrow></m:math>. (a) Finndu upphafshröðun hennar ef hún tekur á loft lóðrétt. (b) Hversu langan tíma tekur það að ná hraðanum 120 km/klst beint upp, að því gefnu að massi og þrýstikraftur séu stöðugir? (c) Í raun minnkar massi eldflaugar verulega þegar eldsneyti hennar er notað. Lýstu eigindlega hvernig þetta hefur áhrif á hröðun og tíma fyrir þessa hreyfingu.</para></problem></exercise>
+<exercise id="fs-id3065143" type="problems-exercises"><problem id="fs-id3065145">
+        <para id="import-auto-id3135183">Samþætt hugtök: Körfuboltamaður stekkur beint upp eftir bolta. Til þess lækkar hann líkama sinn um 0,300 m og hraðar sér síðan yfir þessa vegalengd með því að rétta kröftuglega úr fótunum. Leikmaðurinn yfirgefur gólfið með lóðréttum hraða sem er nægur til að bera hann 0,900 m yfir gólfið. (a) Reiknaðu hraða leikmannsins þegar hann yfirgefur gólfið. (b) Reiknaðu hröðun hans á meðan hann réttir úr fótunum. Hann fer úr núlli í hraðann sem fannst í hluta (a) yfir vegalengdina 0,300 m. (c) Reiknaðu kraftinn sem hann beitir á gólfið til að gera þetta, að því gefnu að massi hans sé 110 kg.</para>
+</problem>
+<solution id="fs-id3109737">
+      <para id="import-auto-id3091714">(a) <m:math><m:mrow><m:mrow><m:mrow><m:mn>4.20 m/s</m:mn></m:mrow></m:mrow></m:mrow></m:math></para><para id="import-auto-id3253104">(b) <m:math><m:mrow><m:mrow><m:mrow><m:mtext>29.4 </m:mtext><m:mspace width="0.25em"/><m:msup><m:mtext> m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:mrow></m:mrow></m:math></para><para id="import-auto-id2447579">(c) <m:math><m:mrow><m:mrow><m:mrow><m:mn>4</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>31</m:mtext><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>3</m:mn></m:mrow></m:msup></m:mrow><m:mspace width="0.25em"/><m:mtext> N</m:mtext></m:mrow></m:mrow></m:mrow></m:math></para></solution>
+
+      </exercise>
+<exercise id="fs-id3178018" type="problems-exercises"><problem id="fs-id2991158">
+        <para id="import-auto-id3355406">Samþætt hugtök: 2,50 kg flugeldasprengju er skotið beint upp úr steypuhræru og hún nær 110 m hæð. (a) Reiknaðu hraða sprengjunnar þegar hún yfirgefur steypuhræruna, án tillits til loftmótstöðu (slæm forsenda, en við gerum hana fyrir þetta dæmi). (b) Steypuhræran sjálf er 0,450 m löng pípa. Reiknaðu meðalhröðun sprengjunnar í pípunni þegar hún fer úr núlli í hraðann sem fannst í (a). (c) Hver er meðalkrafturinn á sprengjuna í steypuhrærunni? Gefðu svarið upp í njútonum og sem hlutfall af þyngd sprengjunnar.</para>
+      </problem></exercise>
+<exercise id="fs-id2963222" type="problems-exercises"><problem id="fs-id3253390">
+        <para id="import-auto-id3073354">Samþætt hugtök: Endurtaktu <link target-id="fs-id3178018"/> fyrir sprengju sem skotið er undir horninu <m:math><m:mrow><m:mrow><m:mrow><m:mtext>10.0º</m:mtext></m:mrow></m:mrow></m:mrow></m:math> frá lóðréttu.</para></problem>
+<solution id="fs-id3062924">
+      <para id="import-auto-id2448942">(a) 47,1 m/s</para>
+      <para id="import-auto-id2448944">(b) <m:math><m:mrow><m:mrow><m:mrow><m:mn>2</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>47</m:mtext><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>3</m:mn></m:mrow></m:msup></m:mrow><m:mspace width="0.25em"/><m:msup><m:mtext> m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:mrow></m:mrow></m:math></para><para id="import-auto-id3178526">(c) <m:math><m:mrow><m:mrow><m:mn>6.18</m:mn><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mn>3</m:mn></m:msup></m:mrow><m:mspace width="0.25em"/><m:mtext> N</m:mtext></m:mrow></m:math> . Meðalkrafturinn er 252 sinnum þyngd sprengjunnar.</para></solution>
+      </exercise>
+<exercise id="fs-id3028228" type="problems-exercises"><problem id="fs-id3012359">
+        <para id="import-auto-id3035532">Samþætt hugtök: Lyfta full af farþegum hefur massa 1700 kg. (a) Lyftan hraðar sér upp úr kyrrstöðu með hraðanum <m:math><m:mrow><m:mrow><m:mrow><m:mn>1</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>20 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:mrow></m:mrow></m:math> í 1,50 s. Reiknaðu spennuna í burðarvír lyftunnar. (b) Lyftan heldur áfram upp á við með stöðugum hraða í 8,50 s. Hver er spennan í vírnum á þessum tíma? (c) Lyftan hægir á sér með hraðaminnkun <m:math><m:mrow><m:mrow><m:mrow><m:mn>0</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>600 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:mrow></m:mrow></m:math> í 3,00 s. Hver er spennan í vírnum við hraðaminnkunina? (d) Hversu hátt hefur lyftan færst frá upphaflegum stað og hver er lokahraði hennar?</para>
+      </problem></exercise>
+<exercise id="fs-id2670683" type="problems-exercises"><problem id="fs-id2670686">
+        <para id="import-auto-id2962435">Óraunhæfar niðurstöður (a) Hver er lokahraði bíls sem upphaflega ferðast á 50,0 km/klst og dregur úr hraða með hröðuninni <m:math><m:mrow><m:mrow><m:mrow><m:mn>0</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>400 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:mrow></m:mrow></m:math> í 50,0 s? (b) Hvað er óraunhæft við niðurstöðuna? (c) Hvaða forsenda er óraunhæf eða hvaða forsendur eru ósamrýmanlegar?</para>
+      </problem></exercise>
+<exercise id="fs-id1890360" type="problems-exercises"><problem id="fs-id1890362">
+        <para id="import-auto-id3010979">Óraunhæfar niðurstöður 75,0 kg maður stendur á baðvog í lyftu sem hraðar sér úr kyrrstöðu í 30,0 m/s á 2,00 s. (a) Reiknaðu mælingu vogarinnar í njútonum og berðu hana saman við þyngd hans. (Vogin beitir uppávið krafti á hann sem er jafn mælingunni.) (b) Hvað er óraunhæft við niðurstöðuna? (c) Hvaða forsenda er óraunhæf eða hvaða forsendur eru ósamrýmanlegar?</para>
+      </problem></exercise>
+</section>
+</content>
+</document>

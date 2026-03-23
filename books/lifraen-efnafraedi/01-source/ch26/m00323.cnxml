@@ -1,0 +1,48 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Peptide Sequencing: The Edman Degradation</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Peptide Sequencing: The Edman Degradation</md:title>
+    <md:content-id>m00323</md:content-id>
+    <md:uuid>c7e22aae-0bac-4730-9671-19b8aad1c917</md:uuid>
+  </metadata>
+  <content>
+<para id="para-00001">With the identities and relative amounts of amino acids known, a peptide can then be sequenced to find out in what order the amino acids are linked. Much peptide sequencing is now done by mass spectrometry, using either electrospray ionization (ESI) or matrix-assisted laser desorption ionization (MALDI) linked to a time-of-flight (TOF) mass analyzer, as described in <link document="m00138"/>. Also in common use is a chemical method of peptide sequencing called the <term id="term-00001">Edman degradation</term>.</para>
+<para id="para-00002">The general idea of peptide sequencing by Edman degradation is to cleave one amino acid at a time from an end of the peptide chain. That terminal amino acid is then separated and identified, and the cleavage reactions are repeated on the chain-shortened peptide until the entire peptide sequence is known. Automated protein sequencers are available that allow as many as 50 repetitive sequencing cycles to be carried out before a buildup of unwanted by-products interferes with the results. So efficient are these instruments that sequence information can be obtained from as little as 1 to 5 picomoles of sample—less than 0.1 <emphasis effect="italics">μ</emphasis>g.</para>
+<para id="para-00003">As shown in <link target-id="fig-00001"/>, Edman degradation involves treatment of a peptide with phenyl isothiocyanate (PITC), <m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>6</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:mtext>–N═C═S</m:mtext></m:mrow></m:math>, followed by reaction with trifluoroacetic acid. The first step attaches the PITC to the –NH<sub>2</sub> group of the N-terminal amino acid, and the second step splits the N-terminal residue from the peptide chain, yielding an anilinothiazolinone (ATZ) derivative plus the chain-shortened peptide. Further acid-catalyzed rearrangement of the ATZ derivative with aqueous acid converts it into a phenylthiohydantoin (PTH), which is identified by comparison of its elution time with the known elution times of PTH derivatives of the 20 common amino acids. The chain-shortened peptide is then automatically resubmitted for another round of Edman degradation.</para>
+<figure class="mechanism-figure scaled-down" id="fig-00001">
+<title>MECHANISM</title>
+<media alt="The figure shows the four-step mechanism of the peptide terminal amino group adding to phenyl isothiocyanate to form N-phenylthiohydantoin (P T H).">
+<image mime-type="image/jpeg" src="../../media/OChem_26_06_003.jpg"/></media>
+<caption><emphasis effect="bold">Mechanism of the Edman degradation for N-terminal analysis of peptides</emphasis>.</caption>
+</figure>
+<para id="para-00004">Complete sequencing of large proteins by Edman degradation is impractical because of the buildup of unwanted by-products. To get around this problem, a large peptide chain is first cleaved by partial hydrolysis into a number of smaller fragments, the sequence of each fragment is determined, and the individual fragments are fitted together by matching their overlapping ends. In this way, protein chains with more than 400 amino acids have been sequenced.</para>
+<para id="para-00005">Partial hydrolysis of a peptide can be carried out either chemically with aqueous acid or enzymatically. Acid hydrolysis is unselective and gives a more-or-less random mixture of small fragments, but enzymatic hydrolysis is quite specific. The enzyme trypsin, for instance, catalyzes hydrolysis of peptides only at the carboxyl side of the basic amino acids arginine and lysine; chymotrypsin cleaves only at the carboxyl side of the aryl-substituted amino acids phenylalanine, tyrosine, and tryptophan.</para>
+<figure class="unnumbered scaled-down" id="fig-00002">
+<media alt="The enzymatic cleavage chain of a peptide. Chymotrypsin cleaves the amide bonds of phenylalanine, tyrosine, and tryptophan. Trypsin cleaves the amide bonds of lysine and arginine.">
+<image mime-type="image/jpeg" src="../../media/OChem_26_06_001.jpg"/></media>
+</figure>
+<section class="section-exercises" id="sect-00001">
+<title>Problems</title>
+<exercise id="exer-00001">
+<problem id="prob-00001">
+<para id="para-00006"><link class="os-embed" url="#exercise/26-06-OC-P12"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00002">
+<problem id="prob-00002">
+<para id="para-00007"><link class="os-embed" url="#exercise/26-06-OC-P13"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00003">
+<problem id="prob-00003">
+<para id="para-00008"><link class="os-embed" url="#exercise/26-06-OC-P14"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00004">
+<problem id="prob-00004">
+<para id="para-00009"><link class="os-embed" url="#exercise/26-06-OC-P15"/></para>
+</problem>
+</exercise>
+</section>
+</content>
+</document>

@@ -1,0 +1,31 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Nucleophilic Addition of HCN: Cyanohydrin Formation</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Nucleophilic Addition of HCN: Cyanohydrin Formation</md:title>
+    <md:content-id>m00217</md:content-id>
+    <md:uuid>fe52115d-0f49-4e62-95ce-129c3cd99683</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">Aldehydes and unhindered ketones undergo a nucleophilic addition reaction with HCN to yield <term id="term-00001">cyanohydrins</term>, <m:math><m:mrow><m:mtext>RCH(OH)C≡N</m:mtext></m:mrow></m:math>. Studies carried out in the early 1900s by Arthur Lapworth showed that cyanohydrin formation is reversible and base-catalyzed. Reaction occurs slowly when pure HCN is used but rapidly when a small amount of base is added to generate the nucleophilic cyanide ion, CN<sup>–</sup>. Addition of CN<sup>–</sup> takes place by a typical nucleophilic addition pathway, yielding a tetrahedral intermediate that is protonated by HCN to give cyanohydrin product plus regenerated CN<sup>–</sup>.</para>
+    <figure class="unnumbered scaled-down" id="fig-00001">
+    <media alt="Benzaldehyde and cyanide form a tetrahedral intermediate, which in presence of hydrogen cyanide gives mandelonitrile (88 percent) where benzene is single-bonded to C single-bonded to hydrogen, nitrile, and hydroxyl groups.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_06_001.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00002">Cyanohydrin formation is somewhat unusual because it is one of the few examples of the addition of a protic acid (H–Y) to a carbonyl group. As noted in the previous section, protic acids such as H<sub>2</sub>O, HBr, HCl, and H<sub>2</sub>SO<sub>4</sub> don’t normally yield carbonyl addition products because the equilibrium constants are unfavorable. With HCN, however, equilibrium favors the cyanohydrin adduct.</para>
+    <para id="para-00003">Cyanohydrin formation is useful because of the further chemistry that can be carried out on the product. For example, a nitrile (<m:math><m:mrow><m:mtext>R&#x2013;C≡N</m:mtext></m:mrow></m:math>) can be reduced with LiAlH<sub>4</sub> to yield a primary amine (RCH<sub>2</sub>NH<sub>2</sub>) and can be hydrolyzed by hot aqueous acid to yield a carboxylic acid. Thus, cyanohydrin formation provides a method for transforming an aldehyde or ketone into a different functional group.</para>
+    <figure class="unnumbered scaled-down" id="fig-00002">
+    <media alt="Hydrogen cyanide converts benzaldehyde to mandelonitrile. Mandelonitrile is reduced to 2-amino-1-phenylethanol using lithium aluminum hydride in tetrahydrofuran, then hydronium. It’s hydrolyzed to mandelic acid (90 percent) in hydronium with heat.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_06_002.jpg"/>
+    </media>
+    </figure>
+    <section class="section-exercises" id="sect-00001">
+    <title>Problems</title>
+    <exercise id="exer-00001">
+    <problem id="prob-00001">
+    <para id="para-00004"><link class="os-embed" url="#exercise/19-06-OC-P09"/></para>
+    </problem>
+    </exercise>
+    </section>
+    </content>
+</document>

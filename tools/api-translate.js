@@ -225,8 +225,10 @@ export function validateMarkers(input, output) {
  */
 export function bookToDomain(bookSlug) {
   if (bookSlug.startsWith('efnafraedi')) return 'chemistry';
+  if (bookSlug.startsWith('lifraen')) return 'chemistry';
   if (bookSlug.startsWith('liffraedi')) return 'biology';
   if (bookSlug.startsWith('orverufraedi')) return 'microbiology';
+  if (bookSlug.startsWith('edlisfraedi')) return 'physics';
   return 'science';
 }
 
@@ -261,6 +263,7 @@ function parseCliArgs(argv) {
     { name: 'dryRun', flags: ['--dry-run', '-n'], type: 'boolean', default: false },
     { name: 'noGlossary', flags: ['--no-glossary'], type: 'boolean', default: false },
     { name: 'rateDelay', flags: ['--rate-delay'], type: 'number', default: 500 },
+    { name: 'maxChunk', flags: ['--max-chunk'], type: 'number', default: DEFAULT_MAX_CHUNK_CHARS },
     { name: 'updateStatus', flags: ['--update-status'], type: 'boolean', default: false },
   ]);
 }
@@ -427,12 +430,19 @@ async function translateChunk(client, chunkText, glossary, verbose, chunkLabel) 
  * Automatically splits large modules at SEG boundaries to avoid API truncation.
  * Filters glossary to terms in source text. Retries without glossary on truncation.
  */
-async function translateModule(client, inputPath, outputPath, glossary, verbose) {
+async function translateModule(
+  client,
+  inputPath,
+  outputPath,
+  glossary,
+  verbose,
+  maxChunk = DEFAULT_MAX_CHUNK_CHARS
+) {
   const input = fs.readFileSync(inputPath, 'utf8');
   const moduleId = path.basename(inputPath, '-segments.en.md');
 
   // Split if too large for a single API call
-  const chunks = splitAtSegBoundaries(input, DEFAULT_MAX_CHUNK_CHARS);
+  const chunks = splitAtSegBoundaries(input, maxChunk);
   const needsSplitting = chunks.length > 1;
 
   if (needsSplitting && verbose) {
@@ -657,7 +667,8 @@ async function main() {
         mod.path,
         mod.outputPath,
         glossary,
-        args.verbose
+        args.verbose,
+        args.maxChunk
       );
       console.log(`✅ (${chars.toLocaleString()} chars)`);
       results.translated++;

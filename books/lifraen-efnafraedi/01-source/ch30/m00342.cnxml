@@ -1,0 +1,49 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Electrocyclic Reactions</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Electrocyclic Reactions</md:title>
+    <md:content-id>m00342</md:content-id>
+    <md:uuid>e2804803-c10d-4b3a-bdb9-43c2ff211b68</md:uuid>
+  </metadata>
+  <content>
+<para id="para-00001">The best way to understand how orbital symmetry affects pericyclic reactions is to look at some examples. Let’s look first at a group of polyene rearrangements called <emphasis effect="italics">electrocyclic reactions</emphasis>. An <term id="term-00001">electrocyclic reaction</term> is a pericyclic process that involves the cyclization of a conjugated acyclic polyene. One <emphasis effect="italics">π</emphasis> bond is broken, the other <emphasis effect="italics">π</emphasis> bonds change position, a new <emphasis effect="italics">σ</emphasis> bond is formed, and a cyclic compound results. For example, a conjugated triene can be converted into a cyclohexadiene, and a conjugated diene can be converted into a cyclobutene.</para>
+<figure class="unnumbered scaled-down" id="fig-00001">
+<media alt="Two chemical reactions occuring in the presence of heat. A conjugated triene forms 1,3-cyclohexadiene. A conjugated diene forms cyclobutene.">
+<image mime-type="image/jpeg" src="../../media/OChem_30_02_001.jpg"/>
+</media>
+</figure>
+<para id="para-00002">Pericyclic reactions are reversible, and the position of the equilibrium depends on the specific case. In general, the triene <m:math><m:mo>⇄</m:mo></m:math> cyclohexadiene equilibrium favors the cyclic product, whereas the diene <m:math><m:mo>⇄</m:mo></m:math> cyclobutene equilibrium favors the less strained open-chain product.</para>
+<para id="para-00003">The most striking feature of electrocyclic reactions is their stereochemistry. For example, (2<emphasis effect="italics">E</emphasis>,4<emphasis effect="italics">Z</emphasis>,6<emphasis effect="italics">E</emphasis>)-2,4,6-octatriene yields only <emphasis effect="italics">cis</emphasis>-5,6-dimethyl-1,3-cyclohexadiene when heated, and (2<emphasis effect="italics">E</emphasis>,4<emphasis effect="italics">Z</emphasis>,6<emphasis effect="italics">Z</emphasis>)-2,4,6-octatriene yields only <emphasis effect="italics">trans</emphasis>-5,6-dimethyl-1,3-cyclohexadiene. Remarkably, however, the stereochemical results change completely when the reactions are carried out under what are called <emphasis effect="italics">photochemical</emphasis>, rather than <emphasis effect="italics">thermal</emphasis>, conditions. Irradiation of (2<emphasis effect="italics">E</emphasis>,4<emphasis effect="italics">Z</emphasis>,6<emphasis effect="italics">E</emphasis>)-2,4,6-octatriene with ultraviolet light (denoted hν) yields <emphasis effect="italics">trans</emphasis>-5,6-dimethyl-1,3-cyclohexadiene (<link target-id="fig-00002"/>).</para>
+<figure class="scaled-down" id="fig-00002">
+<media alt="(2E,4Z,6E)-2,4,6-octatriene reacts with heat to give cis-5,6-dimethyl-1,3-cyclohexadiene. (2E,4Z,6E)-2,4,6-octatriene reacts with light to give trans-5,6-dimethyl-1,3-cyclohexadiene. (2E,4Z,6Z)-2,4,6-octatriene reacts with heat to give trans-5,6-dimethyl-1,3-cyclohexadiene.">
+<image mime-type="image/jpeg" src="../../media/OChem_30_02_002.jpg"/>
+</media>
+<caption><emphasis effect="bold">Electrocyclic interconversions of 2,4,6-octatriene isomers and 5,6-dimethyl-1,3-cyclohexadiene isomers.</emphasis></caption>
+</figure>
+<para id="para-00004">A similar result is obtained for the thermal electrocyclic ring-opening of 3,4-dimethylcyclobutene. The trans isomer yields only (2<emphasis effect="italics">E</emphasis>,4<emphasis effect="italics">E</emphasis>)-2,4-hexadiene when heated, and the cis isomer yields only (2<emphasis effect="italics">E</emphasis>,4<emphasis effect="italics">Z</emphasis>)-2,4-hexadiene. On UV irradiation, however, the results are opposite. Cyclization of the 2<emphasis effect="italics">E</emphasis>,4<emphasis effect="italics">E</emphasis> isomer under photochemical conditions yields cis product (<link target-id="fig-00003"/>).</para>
+<figure class="scaled-down" id="fig-00003">
+<media alt="Cis-3,4-dimethyl-cyclobutene reacts with heat to form (2E,4Z)-2,4-hexadiene. Cis-3,4-dimethyl-cyclobutene reacts with light to form (2E,4E)-2,4-hexadiene. Trans-3,4-dimethylcyclobutene reacts with heat to form (2E,4E)-2,4-hexadiene.">
+<image mime-type="image/jpeg" src="../../media/OChem_30_02_003.jpg"/>
+</media>
+<caption><emphasis effect="bold">Electrocyclic interconversions of 2,4-hexadiene isomers and 3,4-dimethylcyclobutene isomers.</emphasis></caption>
+</figure>
+<para id="para-00005">To account for these results, we need to look at the two outermost lobes of the polyene MOs—the lobes that interact when cyclization occurs. There are two possibilities: lobes of like sign can be either on the same side of the molecule or on opposite sides.</para>
+<figure class="unnumbered scaled-down" id="fig-00004">
+<media alt="Two orbital pictures in which one figure has like lobes on the same side. The other figure has like lobes on the opposite side. The figures are separated by or.">
+<image mime-type="image/jpeg" src="../../media/OChem_30_02_004.jpg"/>
+</media>
+</figure>
+<para id="para-00006">For a bond to form, the outermost <emphasis effect="italics">π</emphasis> lobes must rotate so that favorable bonding interaction is achieved—a positive lobe with a positive lobe or a negative lobe with a negative lobe. If two lobes of like sign are on the same side of the molecule, the two orbitals must rotate in <emphasis effect="italics">opposite</emphasis> directions—one clockwise and one counterclockwise. This kind of motion is referred to as <term id="term-00002">disrotatory</term>.</para>
+<figure class="unnumbered scaled-down" id="fig-00005">
+<media alt="An orbital diagram with arrows to show disrotatory (clockwise and counterclockwise) movement of two p-orbitals with same-sign lobes pointed upward. This allows same-sign lobes to merge.">
+<image mime-type="image/jpeg" src="../../media/OChem_30_02_005.jpg"/>
+</media>
+</figure>
+<para id="para-00007">Conversely, if lobes of like sign are on opposite sides of the molecule, both orbitals must rotate in the <emphasis effect="italics">same</emphasis> direction, either both clockwise or both counterclockwise. This kind of motion is called <term id="term-00003">conrotatory</term>.</para>
+<figure class="unnumbered scaled-down" id="fig-00006">
+<media alt="An orbital diagram with arrows to show conrotatory (clockwise and clockwise) movement of two p-orbitals with opposite-sign lobes pointed upward. This allows same-sign lobes to merge.">
+<image mime-type="image/jpeg" src="../../media/OChem_30_02_006.jpg"/>
+</media>
+</figure>
+</content>
+</document>

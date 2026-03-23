@@ -1,0 +1,51 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Addition of Carbenes to Alkenes: Cyclopropane Synthesis</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Addition of Carbenes to Alkenes: Cyclopropane Synthesis</md:title>
+    <md:content-id>m00097</md:content-id>
+    <md:uuid>00fc0516-7c06-4e02-b554-67484d656479</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">Yet another kind of alkene addition is the reaction with a <emphasis effect="italics">carbene</emphasis> to yield a cyclopropane. A <term id="term-00001">carbene, R<sub>2</sub>C</term>:, is a neutral molecule containing a divalent carbon with only six electrons in its valence shell. It is therefore highly reactive and generated only as a reaction intermediate, rather than as an isolable molecule. Because they’re electron-deficient, carbenes behave as electrophiles and react with nucleophilic <m:math><m:mrow><m:mtext>C&#x2550;C</m:mtext></m:mrow></m:math> bonds. The reaction occurs in a single step without intermediates.</para>
+    <figure class="unnumbered scaled-down" id="fig-00001">
+    <media alt="A reaction shows an alkene reacting with a carbene to form a cyclopropane.">
+    <image mime-type="image/jpeg" src="../../media/OChem_08_09_001.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00002">One of the simplest methods for generating a substituted carbene is by treatment of chloroform, CHCl<sub>3</sub>, with a strong base such as KOH. As shown in <link target-id="fig-00002"/>, the loss of a proton from CHCl<sub>3</sub> gives trichloromethanide anion, <sup>−</sup>:CCl<sub>3</sub>, which spontaneously expels a Cl<sup>−</sup> ion to yield dichlorocarbene, :CCl<sub>2</sub>.</para>
+    <figure class="mechanism-figure scaled-down" id="fig-00002">
+    <title>MECHANISM</title>
+    <media alt="A 2-step mechanism shows chloroform reacting with hydroxide ion to form trichloromethanide anion, which spontaneously decomposes to dichlorocarbene and chloride ion.">
+    <image mime-type="image/jpeg" src="../../media/OChem_08_09_002.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">Mechanism of the formation of dichlorocarbene by reaction of chloroform with strong base.</emphasis> Deprotonation of CHCl<sub>3</sub> gives the trichloromethanide anion, <m:math><m:mrow><m:msup><m:mrow/><m:mo>−</m:mo></m:msup><m:msub><m:mrow><m:mtext>:CCl</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow></m:math>, which spontaneously expels a Cl<sup>–</sup> ion.</caption>
+    </figure>
+    <para id="para-00003">The carbon atom in dichlorocarbene is <emphasis effect="italics">sp</emphasis><sup>2</sup>-hybridized, with a vacant <emphasis effect="italics">p</emphasis> orbital extending above and below the plane of the three atoms and with an unshared pair of electrons occupying the third <emphasis effect="italics">sp</emphasis><sup>2</sup> lobe. Note that this electronic description of dichlorocarbene is similar to that of a carbocation (<link document="m00071"/>) with respect to both the <emphasis effect="italics">sp</emphasis><sup>2</sup> hybridization of carbon and the vacant <emphasis effect="italics">p</emphasis> orbital. Electrostatic potential maps further illustrate the similarity (<link target-id="fig-00003"/>).</para>
+    <figure id="fig-00003">
+    <media alt="The figure shows electrostatic potential maps and structures of dichlorocarbene and a carbocation (s p 2-hybridized). The vacant p orbital is labeled in each structure.">
+    <image mime-type="image/jpeg" src="../../media/OChem_08_09_003.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">The structure of dichlorocarbene.</emphasis> Electrostatic potential maps show how <span class="cyan-text"><emphasis effect="bold">the positive region</emphasis></span> coincides with the empty <emphasis effect="italics">p</emphasis> orbital in both dichlorocarbene and a carbocation (CH<sub>3</sub><sup>+</sup>). The <span class="magenta-text"><emphasis effect="bold">negative region</emphasis></span> in the dichlorocarbene map coincides with the lone-pair electrons.</caption>
+    </figure>
+    <para id="para-00004">If dichlorocarbene is generated in the presence of an alkene, addition to the double bond occurs and a dichlorocyclopropane is formed. As the reaction of dichlorocarbene with <emphasis effect="italics">cis</emphasis>-2-pentene demonstrates, the addition is <term id="term-00002">stereospecific</term>, meaning that only a single stereoisomer is formed as product. Starting from a cis alkene, for instance, only cis-disubstituted cyclopropane is produced; starting from a trans alkene, only trans-disubstituted cyclopropane is produced.</para>
+    <figure class="unnumbered scaled-down" id="fig-00004">
+    <media alt="In the first reaction, cis-2-pentene reacts with chloroform in the presence of KOH to form a cis-dichlorocyclopropane. In the second reaction, cyclohexene reacts with chloroform in the presence of KOH.">
+    <image mime-type="image/jpeg" src="../../media/OChem_08_09_004.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00005">The best method for preparing nonhalogenated cyclopropanes is by a process called the <term id="term-00003">Simmons–Smith reaction</term>. First investigated at the DuPont company, this reaction does not involve a free carbene. Rather, it utilizes a <emphasis effect="italics">carbenoid</emphasis>—a metal-complexed reagent with carbene-like reactivity. When diiodomethane is treated with a specially prepared zinc–copper mix, (iodomethyl)zinc iodide, ICH<sub>2</sub>ZnI, is formed. In the presence of an alkene, ICH<sub>2</sub>ZnI transfers a CH<sub>2</sub> group to the double bond to yield cyclopropane. For example, cyclohexene reacts cleanly and with good yield to give the corresponding cyclopropane. Although we won’t discuss the mechanistic details, carbene addition to an alkene is one of a general class of reactions called <emphasis effect="italics">cycloadditions,</emphasis> which we’ll study more carefully in Chapter 30.</para>
+    <figure class="unnumbered scaled-down" id="fig-00005">
+    <media alt="Diiodomethane reacts with zinc-copper to form (iodomethyl)zinc iodide. At bottom, cyclohexene reacts with diiodomethane to form bicylo[4.1.0]heptane with 92 percent yield and zinc iodide.">
+    <image mime-type="image/jpeg" src="../../media/OChem_08_09_005.jpg"/>
+    </media>
+    </figure>
+    <section class="section-exercises" id="sect-00001">
+    <title>Problems</title>
+    <exercise id="exer-00001">
+    <problem id="prob-00001">
+    <para id="para-00006"><link class="os-embed" url="#exercise/08-09-OC-P17"/></para>
+    </problem>
+    </exercise>
+    </section>
+    </content>
+</document>

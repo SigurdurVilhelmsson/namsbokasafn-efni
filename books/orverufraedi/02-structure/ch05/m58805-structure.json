@@ -1,0 +1,396 @@
+{
+  "moduleId": "m58805",
+  "title": {
+    "segmentId": "m58805:title:auto-1",
+    "text": "Algae"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "e82bed1d-0d07-46fb-a1b1-10f16f2c34ed"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "fs-id1172100762345",
+      "class": "learning-objectives",
+      "title": {
+        "segmentId": "m58805:title:fs-id1172100762345-title",
+        "text": "Learning Objectives"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id11713605736962",
+          "segmentId": "m58805:para:fs-id11713605736962"
+        },
+        {
+          "type": "list",
+          "id": "fs-id1172100538617",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m58805:item:fs-id1172100538617-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m58805:item:fs-id1172100538617-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m58805:item:fs-id1172100538617-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m58805:item:fs-id1172100538617-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m58805:item:fs-id1172100538617-item-5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-id1172100658850",
+      "segmentId": "m58805:para:fs-id1172100658850"
+    },
+    {
+      "type": "para",
+      "id": "fs-id1172100551148",
+      "segmentId": "m58805:para:fs-id1172100551148"
+    },
+    {
+      "type": "para",
+      "id": "fs-id1172100641519",
+      "segmentId": "m58805:para:fs-id1172100641519"
+    },
+    {
+      "type": "para",
+      "id": "fs-id1172098770268",
+      "segmentId": "m58805:para:fs-id1172098770268"
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172098459379",
+      "class": null,
+      "title": {
+        "segmentId": "m58805:title:fs-id1172098459379-title",
+        "text": "Algal Diversity"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1172100972052",
+          "segmentId": "m58805:para:fs-id1172100972052"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172100562328",
+          "segmentId": "m58805:para:fs-id1172100562328"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172096094120",
+          "segmentId": "m58805:para:fs-id1172096094120"
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_04_dino",
+          "caption": {
+            "segmentId": "m58805:caption:OSC_Microbio_05_04_dino-caption"
+          },
+          "media": {
+            "id": "fs-id1172100938736",
+            "alt": "A micrograph of a square-shaped organism with two long projections.",
+            "src": "../../media/OSC_Microbio_05_04_dino.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172100719509",
+          "segmentId": "m58805:para:fs-id1172100719509"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172100986894",
+          "segmentId": "m58805:para:fs-id1172100986894"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172100615250",
+          "segmentId": "m58805:para:fs-id1172100615250"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172100550862",
+          "segmentId": "m58805:para:fs-id1172100550862"
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_04_algae",
+          "caption": {
+            "segmentId": "m58805:caption:OSC_Microbio_05_04_algae-caption"
+          },
+          "media": {
+            "id": "fs-id1172098379551",
+            "alt": "a) A photograph of long green kelp in the ocean b) A photograph of a red leafy structure. C) A photograph of a green leafy structure. D) a photograph of lighted regions of a waterway. E) A micrograph of cells of various shapes that look like they are made out of glass. F) a micrograph of a sphere made of many greed dots. Smaller greens spheres can be seen inside the larger sphere. The smaller spheres are released when the larger one ruptures.",
+            "src": "../../media/OSC_Microbio_05_04_algae.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_04_green",
+          "caption": {
+            "segmentId": "m58805:caption:OSC_Microbio_05_04_green-caption"
+          },
+          "media": {
+            "id": "fs-id1172098795137",
+            "alt": "An oval cell with 2 flagella coming out of one end. A large circle in the cell is labeled nucleus. A group of smaller red circles are labeled stigma (eyespot). Green ovals in the cell are labeled chloroplast and white circles are labeled starch granules.",
+            "src": "../../media/OSC_Microbio_05_04_green.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-id1172100531366",
+          "class": "microbiology check-your-understanding",
+          "title": null,
+          "content": []
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172100553268",
+      "class": "summary",
+      "title": {
+        "segmentId": "m58805:title:fs-id1172100553268-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "list",
+          "id": "fs-id1172098517589",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": "bullet",
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m58805:item:fs-id1172098517589-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m58805:item:fs-id1172098517589-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m58805:item:fs-id1172098517589-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m58805:item:fs-id1172098517589-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m58805:item:fs-id1172098517589-item-5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172100931629",
+      "class": "multiple-choice",
+      "title": {
+        "segmentId": "m58805:title:fs-id1172100931629-title",
+        "text": "Multiple Choice"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1172100617698",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172098446880",
+                "segmentId": "m58805:problem:fs-id1172098446880"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172098612266",
+                "segmentId": "m58805:solution:fs-id1172098612266"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1172096177531",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172098766296",
+                "segmentId": "m58805:problem:fs-id1172098766296"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172100618300",
+                "segmentId": "m58805:solution:fs-id1172100618300"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1172098615682",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172098589032",
+                "segmentId": "m58805:problem:fs-id1172098589032"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172101036871",
+                "segmentId": "m58805:solution:fs-id1172101036871"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172098357957",
+      "class": "fill-in-the-blank",
+      "title": {
+        "segmentId": "m58805:title:fs-id1172098357957-title",
+        "text": "Fill in the Blank"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1172100657752",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172100976791",
+                "segmentId": "m58805:problem:fs-id1172100976791"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172098690619",
+                "segmentId": "m58805:solution:fs-id1172098690619"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1172096195012",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172100638174",
+                "segmentId": "m58805:problem:fs-id1172100638174"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172098310905",
+                "segmentId": "m58805:solution:fs-id1172098310905"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172098721375",
+      "class": "short-answer",
+      "title": {
+        "segmentId": "m58805:title:fs-id1172098721375-title",
+        "text": "Short Answer"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1172100558817",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172098316908",
+                "segmentId": "m58805:problem:fs-id1172098316908"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1172098523535",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172098258582",
+                "segmentId": "m58805:problem:fs-id1172098258582"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1172096159006",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172098700063",
+                "segmentId": "m58805:problem:fs-id1172098700063"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": null
+}

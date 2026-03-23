@@ -1,0 +1,39 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Reactivity of Enolate Ions</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Reactivity of Enolate Ions</md:title>
+    <md:content-id>m00262</md:content-id>
+    <md:uuid>239745e5-dcec-4be7-8594-ac1b63595bb3</md:uuid>
+  </metadata>
+  <content>
+<para id="para-00001">Enolate ions are more useful than enols for two reasons. First, pure enols can’t normally be isolated but are instead generated only as short-lived intermediates in low concentration. By contrast, stable solutions of pure enolate ions are easily prepared from most carbonyl compounds by reaction with a strong base. Second, enolate ions are more reactive than enols and undergo many reactions that enols don’t. Whereas enols are neutral, enolate ions are negatively charged, making them much better nucleophiles.</para>
+<para id="para-00002">Because they are resonance hybrids of two nonequivalent forms, enolate ions can be looked at either as vinylic alkoxides (<m:math><m:mrow><m:mtext>C═C−</m:mtext><m:msup><m:mtext>O</m:mtext><m:mo>−</m:mo></m:msup></m:mrow></m:math>) or as <emphasis effect="italics">α</emphasis>-keto carbanions (<m:math><m:mrow><m:msup><m:mrow/><m:mo>−</m:mo></m:msup><m:mtext>C−C═O</m:mtext></m:mrow></m:math>). Thus, enolate ions can react with electrophiles either on oxygen or on carbon. Reaction on oxygen yields an enol derivative, while reaction on carbon yields an <emphasis effect="italics">α</emphasis>-substituted carbonyl compound (<link target-id="fig-00001"/>). Both kinds of reactivity are known, but reaction on carbon is more common.</para>
+<figure class="scaled-down" id="fig-00001">
+<media alt="The electrostatic potential map with ball-and-stick model of acetone. Also shown is a vinylic alkoxide and its alpha-keto carbanion resonance form. The former reacts with an electrophile to form an enol and the latter an alpha substituted carbonyl compound.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_06_001.jpg"/>
+</media>
+<caption><emphasis effect="bold">The electrostatic potential map of acetone enolate ion shows how the negative charge is delocalized over both the oxygen and the <emphasis effect="italics">α</emphasis> carbon.</emphasis> As a result, two modes of reaction of an enolate ion with an electrophile E<sup>+</sup> are possible. Reaction on carbon to yield an <emphasis effect="italics">α</emphasis>-substituted carbonyl product is more common.</caption>
+</figure>
+<para id="para-00003">As an example of enolate ion reactivity, aldehydes and ketones undergo base-promoted <emphasis effect="italics">α</emphasis> halogenation. Even relatively weak bases such as hydroxide ion are effective for halogenation because it’s not necessary to convert the ketone completely into its enolate ion. As soon as a small amount of enolate is generated, halogen reacts with it immediately, removing it from the reaction and driving the equilibrium toward further enolate ion formation.</para>
+<figure class="unnumbered scaled-down" id="fig-00002">
+<media alt="A carbonyl compound undergoes a reversible reaction with sodium hydroxide in water to form an enolate intermediate that reacts with elemental bromine to form an alpha brominated carbonyl compound and a bromine ion.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_06_002.jpg"/>
+</media>
+</figure>
+<para id="para-00004">Base-promoted halogenation of aldehydes and ketones is seldom used in practice because it’s difficult to stop the reaction at the monosubstituted product. An <emphasis effect="italics">α</emphasis>-halogenated ketone is generally more acidic than the starting, unsubstituted ketone because of the electron-withdrawing inductive effect of the halogen atom. Thus, the monohalogenated products are themselves rapidly turned into enolate ions and further halogenated.</para>
+<para id="para-00005">If excess base and halogen are used, a methyl ketone is triply halogenated and then cleaved by base in the <emphasis effect="italics">haloform reaction.</emphasis> The products are a carboxylic acid plus a so-called haloform (chloroform, CHCl<sub>3</sub>; bromoform, CHBr<sub>3</sub>; or iodoform, CHI<sub>3</sub>). Note that the second step of the reaction is a nucleophilic acyl substitution of <sup>–</sup>CX<sub>3</sub> by <sup>–</sup>OH. That is, a halogen-stabilized carbanion acts as a leaving group.</para>
+<figure class="unnumbered" id="fig-00003">
+<media alt="A methyl ketone reacts with X 2 and N a O H to form three intermediate structures, ultimately yielding a carboxylate ion and C H X 3 as the products.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_06_003.jpg"/>
+</media>
+</figure>
+<section class="section-exercises" id="sect-00001">
+<title>Problems</title>
+<exercise id="exer-00001">
+<problem id="prob-00001">
+<para id="para-00006"><link class="os-embed" url="#exercise/22-06-OC-P09"/></para>
+</problem>
+</exercise>
+</section>
+</content>
+</document>

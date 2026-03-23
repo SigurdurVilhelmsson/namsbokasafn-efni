@@ -1,0 +1,245 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+<title>Sveppir</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m58804</md:content-id>
+  <md:title>Sveppir</md:title>
+  <md:abstract/>
+  <md:uuid>ba4b0859-a72a-49cb-9375-b2dc6907de93</md:uuid>
+</metadata>
+
+<content>
+<section id="fs-id1172098283229" class="learning-objectives">
+<title>NÁMSMARKMIÐ</title>
+<para id="fs-id11713605736962">Í lok þessa kafla muntu geta:</para>
+<list id="fs-id1172098318166" list-type="bulleted">
+<item>Útskýrt hvers vegna rannsóknir á sveppum eins og gersveppum og myglusveppum falla undir örverufræði</item>
+<item>Lýst einstökum eiginleikum sveppa</item>
+<item>Lýst dæmum um kynlausa og kynæxlun sveppa</item>
+<item>Borið saman helstu hópa sveppa í þessum kafla og gefið dæmi um hvern þeirra</item>
+<item>Þekkt dæmi um helstu orsakir sýkinga af völdum gersveppa og myglusveppa</item>
+<item>Þekkt dæmi um eiturmyndandi sveppi</item>
+<item>Flokkað sveppalífverur eftir helstu hópum</item>
+</list>
+</section>
+<para id="fs-id1172098296321"><term class="no-emphasis" id="term-00001">Sveppir (e. fungi)</term> eru fjölbreyttur hópur lífvera sem eru ófrumbjarga og yfirleitt rotlífi. Auk hinna vel þekktu stórsæju sveppa (eins og matsveppa og myglusveppa) eru margir einfruma gersveppir og gró stórsæju sveppanna smásæir. Af þessari ástæðu eru sveppir hluti af örverufræðinni.</para>
+<para id="fs-id1172096214466">Sveppir eru mikilvægir fyrir menn á margvíslegan hátt. Bæði smásæir og stórsæir sveppir hafa læknisfræðilegt gildi og sumar sýkjandi tegundir geta valdið <term id="term-00002">sveppasýkingum (e. mycoses)</term> (sjúkdómum af völdum sveppa). Sumir sýkjandi sveppir eru tækifærissinnar, sem þýðir að þeir valda aðallega sýkingum þegar ónæmisvarnir hýsilsins eru veiktar en valda venjulega ekki sjúkdómum hjá heilbrigðum einstaklingum. Sveppir eru mikilvægir á annan hátt. Þeir starfa sem niðurbrjótar í umhverfinu og eru nauðsynlegir fyrir framleiðslu ákveðinna matvæla eins og osta. Sveppir eru einnig mikilvæg uppspretta sýklalyfja, svo sem <term class="no-emphasis" id="term-00003">penisillíns (e. penicillin)</term> úr sveppnum <term class="no-emphasis" id="term-00004"><emphasis effect="italics">Penicillium</emphasis> (e. penicillium)</term>.</para>
+<section id="fs-id1172098408099">
+<title>Einkenni sveppa</title>
+<para id="fs-id1172100726720">Sveppir hafa vel skilgreind einkenni sem aðgreina þá frá öðrum lífverum. Flestir fjölfruma sveppalíkamar, almennt kallaðir <term class="no-emphasis" id="term-00005">myglusveppir (e. molds)</term>, eru gerðir úr þráðum sem kallast <term id="term-00006">sveppþræðir (e. hyphae)</term>. Sveppþræðir geta myndað flókið net sem kallast <term id="term-00007">sveppþroski (e. mycelium)</term> og mynda <term id="term-00008">þal (e. thallus)</term> (líkama) holdkenndra sveppa. Sveppþræðir sem hafa veggi milli frumna eru kallaðir <term id="term-00009">skiptir sveppþræðir (e. septate hyphae)</term>; sveppþræðir sem skortir veggi og frumuhimnur milli frumna eru kallaðir óskiptir eða <term id="term-00010">samfruma sveppþræðir (e. coenocytic hyphae)</term>). (<link target-id="OSC_Microbio_05_03_hyphae"/>).</para>
+<figure id="OSC_Microbio_05_03_hyphae">
+<media id="fs-id1172098282036" alt="Molds can have septate hyphae - long strands with cell walls separating the nuclei. Or they can have coenocytic (nonseptate) hyphae - long strands with no cell wall separating the nuclei. Or they can have pseudohyphae which look like chains of cells with small clusters at intervals">
+<image mime-type="image/jpeg" src="../../media/OSC_Microbio_05_03_hyphae.jpg"/>
+</media>
+<caption>Fjölfruma sveppir (myglusveppir) mynda sveppþræði, sem geta verið skiptir eða óskiptir. Einfruma sveppir (gersveppir) mynda gervisveppþræði úr einstökum gersveppafrumum.</caption>
+</figure>
+<para id="fs-id1172098709897">Öfugt við myglusveppi eru <term class="no-emphasis" id="term-00011">gersveppir (e. yeasts)</term> einfruma sveppir. <term id="term-00012">Knoppskotsgersveppir (e. budding yeasts)</term> fjölga sér kynlaust með því að mynda minni dótturfrumu með knoppskoti; frumurnar sem myndast geta stundum loðað saman og myndað stutta keðju eða <term id="term-00013">gervisveppþráð (e. pseudohypha)</term> (<link target-id="OSC_Microbio_05_03_hyphae"/>).</para>
+<para id="fs-id1172098389503">Sumir sveppir eru tvíbreytnir, sem þýðir að þeir hafa fleiri en eitt útlit á lífsferli sínum. Þessir <term id="term-00014">tvíbreytnu sveppir (e. dimorphic fungi)</term> geta birst sem gersveppir eða myglusveppir, sem getur verið mikilvægt fyrir sýkingarhæfni. Þeir geta breytt útliti sínu til að bregðast við umhverfisbreytingum eins og aðgengi að næringarefnum eða hitasveiflum, og vaxa til dæmis sem myglusveppur við 25 °C (77 °F) en sem gersveppafrumur við 37 °C (98,6 °F). Þessi hæfileiki hjálpar tvíbreytnum sveppum að lifa af í fjölbreyttu umhverfi. Tvö dæmi um tvíbreytna gersveppi eru sýklarnir <emphasis effect="italics">Histoplasma capsulatum</emphasis> og <emphasis effect="italics">Candida albicans</emphasis>. <emphasis effect="italics">H. capsulatum</emphasis> veldur lungnasjúkdómnum histoplasmósu og <emphasis effect="italics">C. albicans</emphasis> er tengdur við gersveppasýkingar í leggöngum, munnþrusku og húðkandídíasis (<link target-id="OSC_Microbio_05_03_struct"/>).</para>
+<figure id="OSC_Microbio_05_03_struct">
+<media id="fs-id1172098656509" alt="Drawing of bats in an attic. Fungal body is shown in the guano. A micrograph of the fungus shows hyphae (long strands) withc spheres labeled conidia. The life cycle shows a person inhaling spores which then travel to the lungs and divide into a yeast form. They then travel to the lymph and blood.">
+<image mime-type="image/jpeg" src="../../media/OSC_Microbio_05_03_struct.jpg"/>
+</media>
+<caption><emphasis effect="italics">Histoplasma capsulatum</emphasis> er tvíbreytinn sveppur sem vex í jarðvegi sem hefur komist í snertingu við fuglaskít eða leðurblökuskít (gúanó) (efst til vinstri). Hann getur breytt um form til að lifa af við mismunandi hitastig. Utandyra vex hann venjulega sem sveppþroski (eins og sést á smásjármyndinni, neðst til vinstri), en þegar gróin eru innönduð (hægra megin) bregst hann við háum innri líkamshita (37 °C [98,6 °F]) með því að breytast í gersvepp sem getur fjölgað sér í lungunum og valdið langvinnum lungnasjúkdómi, histoplasmósu. (Heimild: breyting á verki eftir Centers for Disease Control and Prevention)</caption>
+</figure>
+<para id="fs-id1172098378521">Það eru athyglisverðir og einstakir eiginleikar í frumuveggjum og frumuhimnum sveppa. Frumuveggir sveppa innihalda <term id="term-00015">kítín (e. chitin)</term>, öfugt við beðmi sem finnst í frumuveggjum plantna og margra frumvera. Auk þess, á meðan dýr hafa kólesteról í frumuhimnum sínum, hafa frumuhimnur sveppa aðra steróla sem kallast <term class="no-emphasis" id="term-00016">ergósteról (e. ergosterols)</term>. Ergósteról eru oft nýtt sem skotmörk fyrir sveppalyf.</para>
+<para id="fs-id1172100597033">Lífsferlar sveppa eru einstakir og flóknir. Sveppir æxlast kynjað, annaðhvort með víxlfrjóvgun eða sjálfsfrjóvgun. Einlitna sveppir mynda sveppþræði sem hafa kynfrumur á endunum. Tvær mismunandi mökunargerðir (táknuð sem „+ gerð“ og „– gerð“) koma við sögu. Umfrymi + og – gerðar kynfrumna renna saman (í ferli sem kallast <term id="term-00017">umfrymissamruni (e. dikaryotic)</term>), sem myndar frumu með tveimur aðskildum kjörnum (<term class="no-emphasis" id="term-00018">tvíkjarna (e. karyogamy)</term>frumu). Seinna renna kjarnarnir saman (í ferli sem kallast <term id="term-00019">kjarnasamruni (e. spores)</term>) til að mynda tvílitna okfrumu. Okfruman fer í gegnum meiósu til að mynda <term>gró</term> sem spíra til að hefja einlitna stigið, sem að lokum myndar fleiri einlitna sveppþelsvefi (<link target-id="OSC_Microbio_05_03_zygo"/>). Þessi kyngró eru þekkt sem okgró (í Zygomycota), askgró (í Ascomycota) eða kólfgró (í Basidiomycota), allt eftir flokkunarfræðilegum hópi (<link target-id="OSC_Microbio_05_03_spores"/>).</para>
+<para id="fs-id1172100565958">Sveppir geta einnig sýnt kynlausa æxlun með mítósu, mítósu með knappskoti, sundrun sveppþráða og myndun kynlausra gróa með mítósu. Þessi gró eru sérhæfðar frumur sem, allt eftir lífverunni, geta haft einstaka eiginleika til að lifa af, æxlast og dreifast. Sveppir sýna nokkrar gerðir kynlausra gróa og þær geta verið mikilvægar við flokkun.</para>
+<figure id="OSC_Microbio_05_03_zygo">
+<media id="fs-id1172100857209" alt="Zygomycete life cycle. The mycelia can undergo asexual reproduction by forming spores via mitosis. The spores then form mycelia by germination. The haploid spores can also undergo sexual reproduction. The first step is germination when mycelia form. If the two mating types (+ and -) are in close proximity, extensions called gametangia form between them. Next is plasmogamy. This is the fusion between the + and – mating types resulting in a zygosporangium with multiple haploid nucei. The zygosporangiom forms a thick, protective coat. Next the nuclei fuse to form a zygote with multiple diploid nuclei in karyogamy. This forms a diploid zygote. Next is mitosis and germination where the sporangium grows on a short stalk and the haploid spores are formed inside. The spores are released in germination and we are back to the spore stage of the life cycle.">
+<image mime-type="image/jpeg" src="../../media/OSC_Microbio_05_03_zygo.jpg"/>
+</media>
+<caption>Okseðjusveppir (Zygomycetes) hafa kynjaða og kynlausa lífsferla. Í kynjaða lífsferlinum tengjast + og – mökunargerðir til að mynda okgróhirslu.</caption>
+</figure>
+<figure id="OSC_Microbio_05_03_spores">
+<media id="fs-id1172100625442" alt="a) A micrograph of long strands labeled hyphae and a sphere (labeled sporangium) on the end of one of the long strands. B) A photograph of bread mold. The white fuzz has black dots labeled sporangia.">
+<image mime-type="image/jpeg" src="../../media/OSC_Microbio_05_03_spores.jpg"/>
+</media>
+<caption>Þessar myndir sýna kynlaust mynduð gró. (a) Þessi ljóssmásjármynd sýnir losun gróa úr gróhirslu á enda sveppþráðar sem kallast gróberi. Lífveran er <emphasis effect="italics">Mucor</emphasis> sp. sveppur, mygla sem oft finnst innandyra. (b) Gróhirslur vaxa á endum stilka, sem líta út eins og hvíta lóan sem sést á þessari brauðmyglu, <emphasis effect="italics">Rhizopus stolonifer</emphasis>. Endar brauðmyglunnar eru dökkar, gróberandi gróhirslur. (heimild a: breytt útgáfa af verki Centers for Disease Control and Prevention; heimild b hægri: breytt útgáfa af verki „Andrew“/Flickr)</caption>
+</figure>
+<note id="fs-id1172100931857" class="microbiology check-your-understanding">
+<list id="fs-id1167659331631" list-type="bulleted" bullet-style="bullet">
+<item>Is a dimorphic fungus a yeast or a mold? Explain.</item>
+</list>
+</note>
+</section>
+<section id="fs-id1172098572617">
+<title>Fjölbreytileiki sveppa</title>
+<para id="fs-id1172098401277"><term class="no-emphasis" id="term-00020">Sveppir (e. fungi)</term> eru mjög fjölbreyttir og samanstanda af sjö megihópum. Ekki allir sjö hóparnir innihalda sýkla. Sumir þessara hópa eru almennt tengdir plöntum og innihalda plöntusýkla. Til dæmis innihalda Urediniomycetes og Ustilagomycetes plöntu<term class="no-emphasis" id="term-00021">ryðsveppi (e. rusts)</term> og <term class="no-emphasis" id="term-00022">sótsveppi (e. smuts)</term>. Þeir mynda rauðleita eða dökka massa á plöntum sem ryð (rautt) eða sót (dökkt). Sumar tegundir hafa veruleg efnahagsleg áhrif vegna getu þeirra til að draga úr uppskeru. Glomeromycota inniheldur <term class="no-emphasis" id="term-00023">svepprótarsveppi (e. mycorrhizal fungi)</term>, mikilvæga samlífsfélaga með plönturótum sem geta stuðlað að vexti plantna með því að virka eins og útvíkkað rótarkerfi. Glomeromycota eru skyldusamlífsverur, sem þýðir að þær geta aðeins lifað af þegar þær eru tengdar plönturótum; sveppirnir fá kolvetni frá plöntunni og plantan nýtur góðs af aukinni getu til að taka upp næringarefni og steinefni úr jarðveginum. Chytridiomycetes (<term class="no-emphasis" id="term-00024">frymisveppir (e. chytrids)</term>) eru litlir sveppir, en eru afar mikilvægir vistfræðilega. Frymisveppir eru almennt vatnalífverur og hafa svipuhærðar, hreyfanlegar kynfrumur; ákveðnar tegundir eru taldar eiga þátt í fækkun froskdýra um allan heim. Vegna læknisfræðilegs mikilvægis þeirra munum við einbeita okkur að Zygomycota, Ascomycota, Basidiomycota og Microsporidia. <link target-id="OSC_Microbio_05_03_TaxaTable"/> tekur saman einkenni þessara læknisfræðilega mikilvægu sveppahópa.</para>
+<para id="fs-id1172101005731"><term class="no-emphasis" id="term-00025">Zygomycota</term> (okseðjusveppir) eru aðallega rotverur með samfruma sveppþræði og einlitna kjarna. Þeir nota gróhirslugró til kynlausrar æxlunar. Nafn hópsins kemur frá <term id="term-00026">okgróunum (e. zygospores)</term> sem þeir nota til kynæxlunar (<link target-id="OSC_Microbio_05_03_zygo"/>), sem hafa harða veggi myndaða úr samruna æxlunarfrumna frá tveimur einstaklingum. Okseðjusveppir eru mikilvægir í matvælafræði og sem uppskerusýklar. Eitt dæmi er <term class="no-emphasis" id="term-00027"><emphasis effect="italics">Rhizopus stolonifer</emphasis> (e. rhizopus stolonifer)</term> (<link target-id="OSC_Microbio_05_03_spores"/>), mikilvæg brauðmygla sem veldur einnig korndrepi í hrísgrjónaplöntum. <term class="no-emphasis" id="term-00028"><emphasis effect="italics">Mucor</emphasis> (e. mucor)</term> er ættkvísl sveppa sem getur hugsanlega valdið drepsýkingum í mönnum, þó að flestar tegundir þoli ekki hitastig sem finnst í spendýrum (<link target-id="OSC_Microbio_05_03_spores"/>).</para>
+<para id="fs-id1172100858264"><term class="no-emphasis" id="term-00029">Ascomycota</term> (asksveppir) innihalda sveppi sem eru notaðir sem matur (ætisveppir, murklur og jarðsveppir), aðra sem eru algengar orsakir matarskemmda (brauðmyglur og plöntusýklar) og enn aðra sem eru sýklar í mönnum. Asksveppir geta haft þverveggjaða sveppþræði og skálarlaga aldinhirslur sem kallast <term id="term-00030">askhirslur (e. ascocarps)</term>. Sumar ættkvíslir asksveppa nota kynjað mynduð <term id="term-00031">askgró (e. ascospores)</term> auk kynlausra gróa sem kallast <term id="term-00032">kólfgró (e. conidia)</term>, en kynstig hafa ekki verið uppgötvuð eða þeim lýst hjá öðrum. Sumir mynda <term id="term-00033">ask (e. ascus)</term> sem inniheldur askgró innan í askhirslu (<link target-id="OSC_Microbio_05_03_asclife"/>).</para>
+<para id="fs-id1172098381171">Dæmi um asksveppi eru nokkrar brauðmyglur og minniháttar sýklar, auk tegunda sem geta valdið alvarlegri sveppasýkingum. Tegundir af ættkvíslinni <emphasis effect="italics">Aspergillus</emphasis> eru mikilvægar orsakir ofnæmis og sýkinga og eru gagnlegar í rannsóknum og við framleiðslu ákveðinna gerjaðra áfengra drykkja eins og japanska <emphasis effect="italics">sake</emphasis>. Sveppurinn <term class="no-emphasis" id="term-00034"><emphasis effect="italics">Aspergillus flavus</emphasis> (e. aspergillus flavus)</term><emphasis effect="italics">,</emphasis> sem mengar hnetur og geymt korn, framleiðir <term id="term-00035">aflatoxín (e. aflatoxin)</term> sem er bæði eiturefni og öflugasta þekkta náttúrulega krabbameinsvaldurinn. <term class="no-emphasis" id="term-00036"><emphasis effect="italics">Neurospora crassa</emphasis> (e. neurospora crassa)</term> er sérstaklega gagnlegur í erfðafræðirannsóknum vegna þess að gróin sem myndast við meiósu-skiptingu geymast inni í askinum í röð sem endurspeglar frumuskiptingarnar sem mynduðu þau, sem gefur beina sýn á aðskilnað og flokkun gena (<link target-id="OSC_Microbio_05_03_sexspores"/>). <term class="no-emphasis" id="term-00037"><emphasis effect="italics">Penicillium</emphasis> (e. penicillium)</term> framleiðir sýklalyfið pensilín (<link target-id="OSC_Microbio_05_03_asclife"/>).</para>
+<para id="fs-id1172098381915">Margar tegundir asksveppa eru læknisfræðilega mikilvægar. Fjöldi tegunda í ættkvíslunum <term class="no-emphasis" id="term-00038"><emphasis effect="italics">Trichophyton</emphasis> (e. trichophyton)</term>, <term class="no-emphasis" id="term-00039"><emphasis effect="italics">Microsporum</emphasis> (e. microsporum)</term> og <term class="no-emphasis" id="term-00040"><emphasis effect="italics">Epidermophyton</emphasis> (e. epidermophyton)</term> eru <term class="no-emphasis" id="term-00041">húðsveppir (e. dermatophytes)</term>, sjúkdómsvaldandi sveppir sem geta valdið húðsýkingum eins og fótsvepp, náraskepnu og <term class="no-emphasis" id="term-00042">hringskyrfi (e. ringworm)</term>. <term class="no-emphasis" id="term-00043"><emphasis effect="italics">Blastomyces dermatitidis</emphasis> (e. blastomyces dermatitidis)</term> er tvíbreytilegur sveppur sem getur valdið <term class="no-emphasis" id="term-00044">blastomycosis</term>, öndunarfærasýkingu sem getur, ef hún er ómeðhöndluð, dreifst til annarra staða í líkamanum og stundum leitt til dauða. Annar mikilvægur öndunarfærasýkill er tvíbreytilegi sveppurinn <term class="no-emphasis" id="term-00045"><emphasis effect="italics">Histoplasma capsulatum</emphasis> (e. histoplasma capsulatum)</term> (<link target-id="OSC_Microbio_05_03_struct"/>)<emphasis effect="italics">,</emphasis> sem er tengdur fuglum og leðurblökum í Ohio- og Mississippi-árdölunum. <term class="no-emphasis" id="term-00046"><emphasis effect="italics">Coccidioides immitis</emphasis> (e. coccidioides immitis)</term> veldur alvarlega lungnasjúkdómnum <term class="no-emphasis" id="term-00047">dalasótt (e. valley fever)</term>. <term class="no-emphasis" id="term-00048"><emphasis effect="italics">Candida albicans</emphasis> (e. candida albicans)</term>, algengasta orsök gersýkinga í leggöngum og annarra gersýkinga, er einnig asksveppur; hann er hluti af eðlilegri örveruflóru húðar, þarma, kynfæra og eyrna (<link target-id="OSC_Microbio_05_03_asclife"/>). Asksveppir valda einnig plöntusjúkdómum, þar á meðal meldrjólasýkingum, álmveiki og duftkenndri myglu.</para>
+<para id="fs-id1172100654970"><term class="no-emphasis" id="term-00049"><emphasis effect="italics">Saccharomyces</emphasis> (e. saccharomyces)</term>-gersveppir, þar á meðal bökunargerið <emphasis effect="italics">S. cerevisiae</emphasis>, eru eineyru asksveppir með einlitna og tvílitna stig (<link target-id="OSC_Microbio_05_03_ascomyLC"/>). Þessi og aðrar <emphasis effect="italics">Saccharomyces</emphasis>-tegundir eru notaðar við bruggun bjórs.</para>
+<figure id="OSC_Microbio_05_03_asclife">
+<media id="fs-id1172100656800" alt="a) a micrograph of a large oval (10 µm) labeled ascus and smaller ovals (5 µm) labeled ascospores. B) a micrograph of a long stalk with strands of spheres emanating from a sphere on the tip. The spheres are about 2 µm in diameter. C) A long strand with clusters of spheres. A small dot in each sphere is labeled nucleus.">
+<image mime-type="image/jpeg" src="../../media/OSC_Microbio_05_03_asclife.jpg"/>
+</media>
+<caption>(a) Þessi ljóssmásjármynd sýnir askgró losna úr öskum í sveppnum <emphasis effect="italics">Talaromyces flavus</emphasis> var. <emphasis effect="italics">flavus</emphasis>. (b) Þessi rafeindasmásjármynd sýnir kornótt gró (conidia) á gróberi (conidiophore) <emphasis effect="italics">Aspergillus</emphasis>, tegundar eitraðs svepps sem finnst aðallega í jarðvegi og plöntum. (c) Þessi ljóssmásjármynd sýnir gersveppinn <emphasis effect="italics">Candida albicans,</emphasis> sem veldur candidasýkingu og þrusku. (Heimild a, b, c: breytt útgáfa af verki Centers for Disease Control and Prevention)</caption>
+</figure>
+<figure id="OSC_Microbio_05_03_sexspores">
+<media id="fs-id1172098407090" alt="A micrograph showing a thick tube with 8 ovals lined up within the tube.">
+<image mime-type="image/jpeg" src="../../media/OSC_Microbio_05_03_sexspores.jpg"/>
+</media>
+<caption>Þessi askgró, sem raðast upp í aski, eru mynduð með kynæxlun. (Heimild: Peter G. Werner)</caption>
+</figure>
+<figure id="OSC_Microbio_05_03_ascomyLC">
+<media id="fs-id1172100654155" alt="Ascomycete life cycle. Mycelia produce conidiophores which use mitosis to asexually produce spores. These spores then germinate into new mycelia. Sexual reproduction begins one hyphae produces an ascogonium and another produces an antheridium. In plasmogamy the ascogonium and antheridium fuse. Mitosis and cell division result in the formation of many dikaryotic hyphae, which form a fruiting body called the ascocarp. Asci form at the tips of these hyphae. In karyogamy the nuclein in the asci fuse to form a diploid zygote. Then meiosis produces four haploid nuclei in the ascus. Then mitosis and cell division results in eight haploid ascospores in the ascus. These ascospores then disperse and germinate into new mycelia.">
+<image mime-type="image/jpeg" src="../../media/OSC_Microbio_05_03_ascomyLC.jpg"/>
+</media>
+<caption>Lífsferill asksvepps einkennist af myndun aska á kynæxlunarstigi. Einlitna stigið er ríkjandi stig lífsferilsins. Hvort sem gró eru mynduð með kynæxlun eða kynlausri æxlun, geta þau spírað og myndað einlitna sveppþræði.</caption>
+</figure>
+<para id="fs-id1172101033436"><term class="no-emphasis" id="term-00050">Kylfusveppir (e. basidiomycota)</term> (Basidiomycota) eru sveppir sem hafa <term id="term-00051">kylfur (e. basidia)</term> (basidia) (kylfulaga frumur) sem framleiða <term id="term-00052">kylfugró (e. basidiospores)</term> (basidiospores) (gró sem myndast með knappskoti) innan aldinlegra sem kallast <term id="term-00053">kylfuþroskaldin (e. basidiocarps)</term> (basidiocarps) (<link target-id="OSC_Microbio_05_03_basidioLC"/>). Þeir eru mikilvægir sem niðurbrjótar og sem fæða. Þessi hópur inniheldur ryðsveppi, stinksveppi, gorkúlur og matsveppi. Nokkrar tegundir eru sérstaklega mikilvægar. <term class="no-emphasis" id="term-00054"><emphasis effect="italics">Cryptococcus neoformans</emphasis> (e. cryptococcus neoformans)</term>, sveppur sem algengt er að finna sem ger í umhverfinu, getur valdið alvarlegum lungnasýkingum þegar einstaklingar með veikt ónæmiskerfi anda honum að sér. Æti túnætisveppurinn, <emphasis effect="italics">Agricus campestris</emphasis>, er kylfusveppur, eins og eitraði sveppurinn <emphasis effect="italics">Amanita</emphasis> <emphasis effect="italics">phalloides</emphasis>, þekktur sem græni flugusveppur. Banvænu eiturefnin sem <emphasis effect="italics">A. phalloides</emphasis> framleiðir hafa verið notuð til að rannsaka umritun.</para>
+<figure id="OSC_Microbio_05_03_basidioLC">
+<media id="fs-id1172098310905" alt="Basidiomycete life cycle. Haploid basidiospres germinate to form mycelia. There are two mating types (+ and -_). In plasmogamy, fusion between + and – mating types results in formation of a dikaryotic mycelium. Under the right environmental conditions, a basidiocarp forms via mitosis. Gills of the basidiocarp contain cells called basidia. A photo of a mushroom labels the mushroom as basidiocap and basidia within the gills. Basidia form diploid nuclei via karyotamy; this produces a diploid zygote. Four haploid nuclei are formed in the basidium via meisos. Cell division produces four haploid basidiospores. These spres then disperse and germinate into new mycelia.">
+<image mime-type="image/jpeg" src="../../media/OSC_Microbio_05_03_basidioLC.jpg"/>
+</media>
+<caption>Lífsferill kylfusvepps skiptist á milli einlitna kynslóðar og langvarandi stigs þar sem tveir kjarnar (dikaryon) eru til staðar í sveppþráðunum.</caption>
+</figure>
+<para id="fs-id1172100653329">Að lokum eru <term id="term-00055">gródýr (e. microsporidia)</term> (Microsporidia) eineyru sveppir sem eru skyldubundnir innanfrumusníklar. Þá skortir hvatbera, peroxísóm og deilikorn, en gró þeirra losa einstakan <term id="term-00056">skautþráð (e. polar tubule)</term> sem rýfur frumuhimnu hýsilsins til að leyfa sveppnum að komast inn í frumuna. Fjöldi gródýra eru sýklar í mönnum og sýkingar með gródýrum eru kallaðar <term class="no-emphasis" id="term-00057">gródýrasýking (e. microsporidiosis)</term> (microsporidiosis). Ein sjúkdómsvaldandi tegund er <term class="no-emphasis" id="term-00058"><emphasis effect="italics">Enterocystozoan bieneusi</emphasis> (e. enterocystozoan bieneusi)</term>, sem getur valdið einkennum eins og niðurgangi, gallblöðrubólgu (cholecystitis) og í sjaldgæfum tilfellum öndunarfærasjúkdómum.</para>
+<figure id="OSC_Microbio_05_03_TaxaTable">
+<media id="fs-id1172100556178" alt="A table labeled select groups of fungi. Four groups are discussed. Ascomycota have the characteristics: septate hyphae, ascus with ascospores in ascocarp, and conidiospores. Examples include Cup fungi, edible mushrooms, morels, truffles, neurospora, and penicillim. Medically important species include Aspergillus, Trichophyton, Microsporum, Epidemophyton, Blastomyces demititidis, and Histoplasma capsulatum. An image of Aspergillus niger shows long strands with a dark sphere at the end of one strand. Basidiomycota have the characteristics: basidia, produce basidiospores in basidiocarp. Examples include club fungi, rusts, stinkhors, puffballs, mushrooms, Cryptococcus neoformans, Amanita phalloides. Medically important species include Cryptococcus neoformans. An image shows a mushroom labeled Amanita phalloides. Microsporidia have the characteristics: lack mitochondria, peroxisomes, and centrioles; spores produce a polar tube. Examples include Enterocystozoan bieneusi which is medically important. A micrograph shows oval cells labeled microsporidia (unidentified). Zygomycota have the characteristics: mainly saprophytes, coenocytic hyphae, haploid nuclei and zygospores. Examples include Rhizopus stolonifera and the medically important mucor spp. A micrograph shows a long strand with many small dots everywhere on the slide.">
+<image mime-type="image/jpeg" src="../../media/OSC_Microbio_05_03_TaxaTable.jpg"/>
+</media>
+<caption>(Heimild „Ascomycota“: breytt útgáfa af verki Dr. Lucille Georg, Centers for Disease Control and Prevention; heimild „Microsporidia“: breytt útgáfa af verki Centers for Disease Control and Prevention)</caption>
+</figure>
+<note id="fs-id1172100583468" class="microbiology check-your-understanding">
+<list id="fs-id1167661779129" list-type="bulleted" bullet-style="bullet">
+<item>Which group of fungi appears to be associated with the greatest number of human diseases?</item>
+</list>
+</note>
+<note id="fs-id1172100618884" class="microbiology micro-connection">
+<title>Heilkjarna sýklar í heilkjarna hýslum</title>
+<para id="fs-id1172100960259">Þegar við hugsum um sýklalyf koma sýklalyf eins og pensilín oft upp í hugann. Pensilín og skyld sýklalyf trufla myndun peptíðóglýkan frumuveggja, sem beinast á áhrifaríkan hátt að bakteríufrumum. Þessi sýklalyf eru gagnleg vegna þess að menn (eins og allir heilkjörnungar) hafa ekki peptíðóglýkan frumuveggi.</para>
+<para id="fs-id1172101008157">Það er erfiðara að þróa lyf sem eru virk gegn heilkjarna frumum en ekki skaðleg fyrir frumur manna. Þrátt fyrir gríðarlegan formfræðilegan mun eru frumur manna, sveppa og frumvera svipaðar hvað varðar ríbósóm, frumugrindur og frumuhimnur. Þar af leiðandi er meiri áskorun að þróa lyf sem beinast að frumdýrum og sveppum á sama hátt og sýklalyf beinast að dreifkjörnungum.</para>
+<para id="fs-id1172100673711">Sveppalyf hafa tiltölulega takmarkaða verkunarmáta. Þar sem sveppir hafa <term class="no-emphasis" id="term-00059">ergósteról (e. ergosterols)</term> (í stað kólesteróls) í frumuhimnum sínum geta mismunandi ensím sem taka þátt í sterólframleiðslu verið skotmark sumra lyfja. Azól- og morfolín-<term class="no-emphasis" id="term-00060">sveppalyf (e. fungicides)</term> trufla myndun himnusteróla. Þau eru mikið notuð í landbúnaði (fenprópímorf) og klínískt (t.d. míkónazól). Sum sveppalyf beinast að <term class="no-emphasis" id="term-00061">kítín (e. chitin)</term>frumuveggjum sveppa. Þrátt fyrir árangur þessara efnasambanda við að beinast að sveppum hafa <term class="no-emphasis" id="term-00062">sveppalyf (e. antifungal medications)</term> fyrir altækar sýkingar enn tilhneigingu til að hafa eitraðri aukaverkanir en sýklalyf fyrir bakteríur.</para>
+</note>
+<note id="fs-id1172098387316" class="microbiology clinical-focus">
+<title>3. hluti</title>
+<para id="fs-id1172100926042">Söru er létt að hringskyrfi er ekki raunverulegur ormur, en vill vita hvað það er í raun og veru. Læknirinn útskýrir að hringskyrfi sé sveppur. Hann segir henni að hún muni ekki sjá sveppi spretta upp úr húðinni, því þessi sveppur er meira eins og ósýnilegi hluti svepps sem felur sig í jarðveginum. Hann fullvissar hana um að þau muni ná sveppnum úr henni líka.</para>
+<para id="fs-id1172096159109">Læknirinn hreinsar og skafar síðan varlega af skemmdinni til að setja sýni á smásjárgler. Með því að skoða það í smásjá getur læknirinn staðfest að sveppasýking sé ábyrg fyrir skemmd Söru. Í <link target-id="OSC_Microbio_05_03_Trubrum"/> er hægt að sjá stór- og smágró í <term class="no-emphasis" id="term-00063"><emphasis effect="italics">Trichophyton rubrum</emphasis> (e. trichophyton rubrum)</term>. Frumuveggir eru einnig sýnilegir. Jafnvel þótt sýkillinn líktist þráðormi í smásjá myndi tilvist frumuveggja útiloka þann möguleika þar sem dýrafrumur skortir frumuveggi.</para>
+<para id="fs-id1172098517588">Læknirinn ávísar sveppalyfjakremi fyrir móður Söru til að bera á hringskyrfið. Móðir Söru spyr: „Hvað eigum við að gera ef það fer ekki?“</para>
+<list id="fs-id1172100943626" list-type="bulleted" bullet-style="bullet">
+<item>Can all forms of ringworm be treated with the same antifungal medication?</item>
+</list>
+<figure id="OSC_Microbio_05_03_Trubrum">
+<media id="fs-id1172100578410" alt="A micrograph of a long strands with cell walls. The long strand is labeled macroconidium. Smaller spheres outside the long strand are labeled microconidia.">
+<image mime-type="image/jpeg" src="../../media/OSC_Microbio_05_03_Trubrum.jpg"/>
+</media>
+<caption>Þessi smásjármynd sýnir sveppþræði (stórgró) og smágró af <emphasis effect="italics">Trichophyton rubrum</emphasis>, húðsveppi sem veldur sveppasýkingum í húð. (Heimild: breytt útgáfa af verki Centers for Disease Control and Prevention)</caption>
+</figure>
+<para id="fs-id1172098616077">[[i:Hoppaðu í <link document="m58806" target-id="fs-id1172101914727">next</link> næsta klíníska áherslubox. Farðu aftur í <link document="m58803" target-id="fs-id1172102074327">previous</link> fyrra klíníska áherslubox.]]</para>
+</note>
+</section>
+<section id="fs-id1172100516875" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<list id="fs-id1172100742226" list-type="bulleted" bullet-style="bullet">
+<item>Sveppir eru fjölbreyttar rotnærar heilkjarna lífverur með kítínfrumuveggi</item>
+<item>Sveppir geta verið einfruma eða fjölfruma; sumir (eins og ger) og sveppagró eru smásæ, en sumir eru stórir og áberandi</item>
+<item>Æxlunargerðir eru mikilvægar til að greina á milli sveppahópa</item>
+<item>Læknisfræðilega mikilvægar tegundir finnast í fjórum sveppahópum: Okfrumusveppum, Asksveppum, Kólfsveppum og Örgróungum</item>
+<item>Meðlimir Okfrumusveppa, Asksveppa og Kólfsveppa framleiða banvæn eiturefni</item>
+<item>Mikilvægur munur á sveppafrumum, svo sem ergósteról í sveppahimnum, getur verið skotmark fyrir sveppalyf, en líkindi milli frumna manna og sveppa gera það erfitt að finna skotmörk fyrir lyf og þessi lyf hafa oft eitraðar aukaverkanir</item>
+</list>
+</section>
+<section id="fs-id1172098674723" class="multiple-choice">
+<title>Krossaspurningar</title>
+<exercise id="fs-id1172100994182">
+<problem id="fs-id1172100507813">
+<para id="fs-id1172098708286">Hattsveppir eru tegund af hverju af eftirfarandi?</para>
+<list id="fs-id1172098316405" list-type="enumerated" number-style="upper-alpha">
+<item>conidia</item>
+<item>ascus</item>
+<item>polar tubule</item>
+<item>basidiocarp</item>
+</list>
+</problem>
+<solution id="fs-id1172098753197">
+<para id="fs-id1172098460956">D</para>
+</solution>
+</exercise>
+<exercise id="fs-id1172098389537">
+<problem id="fs-id1172098768425">
+<para id="fs-id1172100961807">Hvað af eftirfarandi er algengasta orsök gersýkinga í mönnum?</para>
+<list id="fs-id1172098670761" list-type="enumerated" number-style="upper-alpha">
+<item><emphasis effect="italics">Candida albicans</emphasis></item>
+<item><emphasis effect="italics">Blastomyces dermatitidis</emphasis></item>
+<item><emphasis effect="italics">Cryptococcus neoformans</emphasis></item>
+<item><emphasis effect="italics">Aspergillus fumigatus</emphasis></item>
+</list>
+</problem>
+<solution id="fs-id1172100726820">
+<para id="fs-id1172100781040">A</para>
+</solution>
+</exercise>
+<exercise id="fs-id1172100506672">
+<problem id="fs-id1172100639363">
+<para id="fs-id1172100667237">Hvað af eftirfarandi er asksveppur sem tengist leðurblökuskít og getur valdið öndunarfærasýkingu ef honum er andað að sér?</para>
+<list id="fs-id1172098261778" list-type="enumerated" number-style="upper-alpha">
+<item><emphasis effect="italics">Candida albicans</emphasis></item>
+<item><emphasis effect="italics">Histoplasma capsulatum</emphasis></item>
+<item><emphasis effect="italics">Rhizopus stolonifera</emphasis></item>
+<item><emphasis effect="italics">Trichophyton rubrum</emphasis></item>
+</list>
+</problem>
+<solution id="fs-id1172100951895">
+<para id="fs-id1172098778771">B</para>
+</solution>
+</exercise>
+</section>
+<section id="fs-id1172100558169" class="fill-in-the-blank">
+<title>Fylltu í eyðurnar</title>
+<exercise id="fs-id1172100896360">
+<problem id="fs-id1172096096008">
+<para id="fs-id1172098499351">Sveppþræðir án þilja eru einnig kallaðir _________.</para>
+</problem>
+<solution id="fs-id1172096153260">
+<para id="fs-id1172098318072">samfruma</para>
+</solution>
+</exercise>
+<exercise id="fs-id1172098676953">
+<problem id="fs-id1172100511454">
+<para id="fs-id1172100986107">Einfruma sveppir eru kallaðir _________.</para>
+</problem>
+<solution id="fs-id1172098426472">
+<para id="fs-id1172096289740">gersveppir</para>
+</solution>
+</exercise>
+<exercise id="fs-id1172100947327">
+<problem id="fs-id1172098452171">
+<para id="fs-id1172100511567">Sumir sveppir hafa reynst læknisfræðilega gagnlegir vegna þess að hægt er að nota þá til að framleiða _________.</para>
+</problem>
+<solution id="fs-id1172100991402">
+<para id="fs-id1172098596326">sýklalyf</para>
+</solution>
+</exercise>
+</section>
+<section id="fs-id1172100771092" class="short-answer">
+<title>Stutt svar</title>
+<exercise id="fs-id1172098581098">
+<problem id="fs-id1172098262305">
+<para id="fs-id1172098261159">Hvaða sveppaættkvíslir eru algengir húðsveppir (sveppir sem valda húðsýkingum)?</para>
+</problem>
+</exercise>
+<exercise id="fs-id1172098780413">
+<problem id="fs-id1172098462890">
+<para id="fs-id1172098403882">Hvað er tvíkjarnafruma?</para>
+</problem>
+</exercise>
+</section>
+<section id="fs-id1172098617759" class="critical-thinking">
+<title>Gagnrýnin hugsun</title>
+<exercise id="fs-id1172100985022">
+<problem id="fs-id1172100743656">
+<para id="fs-id1172100947619">Hvaða teikning sýnir sveppþræði með þverveggjum?</para>
+<media id="fs-id1172099576846" alt="a) a long strand with walls dividing it into rectanges. B) A long square with no walls between the nuclei.">
+<image mime-type="image/jpeg" src="../../media/OSC_Microbio_05_03_Hyphae_img.jpg"/>
+</media>
+</problem>
+</exercise>
+<exercise id="fs-id1172100855457">
+<problem id="fs-id1172100947595">
+<para id="fs-id1172098309429">Útskýrðu ávinninginn af rannsóknum á ferlum sem tengjast myndun kítíns í sveppum.</para>
+</problem>
+</exercise>
+</section>
+</content>
+</document>

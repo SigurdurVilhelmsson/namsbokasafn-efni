@@ -1,0 +1,402 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Some Other Important Carbohydrates</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Some Other Important Carbohydrates</md:title>
+    <md:content-id>m00308</md:content-id>
+    <md:uuid>c4ffb385-99ab-421c-a467-b1ef9484a49a</md:uuid>
+  </metadata>
+  <content>
+<para id="para-00001">In addition to the common carbohydrates mentioned in previous sections, there are a variety of important carbohydrate-derived materials. Their structural resemblance to sugars is clear, but they aren’t simple aldoses or ketoses.</para>
+<para id="para-00002">Deoxy sugars, as we saw in <link document="m00305"/>, have an oxygen atom “missing.” That is, an –OH group is replaced by an –H. The most common deoxy sugar is 2-deoxyribose, a monosaccharide found in DNA (deoxyribonucleic acid). Note that 2-deoxyribose exists in water solution as a complex equilibrium mixture of both furanose and pyranose forms.</para>
+<figure class="unnumbered scaled-down" id="fig-00001">
+<media alt="The Haworth projection of alpha-D-2-deoxyribopyranose having plus 35 percent beta anomer converts into its Fischer projection which then forms a Haworth projection of alpha-D-2-deoxyribofuranose having plus 12 percent beta anomer.">
+<image mime-type="image/jpeg" src="../../media/OChem_25_10_001.jpg"/>
+</media>
+</figure>
+<para id="para-00003">Amino sugars, such as <emphasis effect="smallcaps">D</emphasis>-glucosamine, have an –OH group replaced by an –NH<sub>2</sub>. The <emphasis effect="italics">N</emphasis>-acetyl amide derived from <emphasis effect="smallcaps">D</emphasis>-glucosamine is the monosaccharide unit from which chitin, the hard crust that protects insects and shellfish, is made. Still other amino sugars are found in antibiotics such as streptomycin and gentamicin.</para>
+<figure class="unnumbered scaled-down" id="fig-00002">
+<media alt="The Haworth projection of beta-D-glucosamine and gentamicin (an antibiotic). Purpurosamine, 2-deoxystreptamine and garosamine in the structure of gentamicin are labelled.">
+<image mime-type="image/jpeg" src="../../media/OChem_25_10_002.jpg"/>
+</media>
+</figure>
+<section class="chemistry-matters" id="sect-00001">
+<title>Sweetness</title>
+<para id="para-00004">Say the word <emphasis effect="italics">sugar</emphasis> and most people immediately think of sweet-tasting candies, desserts, and such. In fact, most simple carbohydrates do taste sweet but the degree of sweetness varies greatly from one sugar to another. With sucrose (table sugar) as a reference point, fructose is nearly twice as sweet, but lactose is only about one-sixth as sweet. Comparisons are difficult, though, because perceived sweetness varies depending on the concentration of the solution being tasted and on personal opinion. Nevertheless, the ordering in <link target-id="table-00001"/> is generally accepted.</para>
+<para id="para-00005">The desire of many people to cut their caloric intake has led to the development of synthetic sweeteners such as saccharin, aspartame, acesulfame, and sucralose. All are far sweeter than natural sugars, so the choice of one or another depends on personal taste, government regulations, and (for baked goods) heat stability. Saccharin, the oldest synthetic sweetener, has been used for more than a century, although it has a somewhat metallic aftertaste. Doubts about its safety and potential carcinogenicity were raised in the early 1970s, but it has now been cleared of suspicion for human consumption.</para>
+<figure class="scaled-down" id="fig-00003">
+<media alt="A sugarcane field with full bloom along with the clear sky.">
+<image mime-type="image/jpeg" src="../../media/OChem_25_98_SugarCane.jpg"/>
+</media>
+<caption><emphasis effect="bold">The real thing comes from sugarcane fields like this one.</emphasis> (credit: modification of work “Flowering sugarcane field” by “carrotmadman6”/Flickr, CC BY 2.0)</caption>
+</figure>
+<table summary="" id="table-00001">
+<title>Sweetness of Some Sugars and Sugar Substitutes</title>
+<tgroup cols="3">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<thead>
+<row valign="top">
+<entry valign="top" align="left">Name</entry>
+<entry valign="top" align="left">Type</entry>
+<entry valign="top" align="left">Sweetness</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry valign="top" align="left">Lactose</entry>
+<entry valign="top" align="left">Disaccharide</entry>
+<entry valign="top" align="left">    0.16</entry>
+</row>
+<row valign="top">
+<entry valign="top" align="left">Glucose</entry>
+<entry valign="top" align="left">Monosaccharide</entry>
+<entry valign="top" align="left">    0.75</entry>
+</row>
+<row valign="top">
+<entry valign="top" align="left"><emphasis effect="bold"><span class="magenta-text">Sucrose</span></emphasis></entry>
+<entry valign="top" align="left"><emphasis effect="bold"><span class="magenta-text">Disaccharide</span></emphasis></entry>
+<entry valign="top" align="left">    <emphasis effect="bold"><span class="magenta-text">1.00</span></emphasis></entry>
+</row>
+<row valign="top">
+<entry valign="top" align="left">Fructose</entry>
+<entry valign="top" align="left">Monosaccharide</entry>
+<entry valign="top" align="left">    1.75</entry>
+</row>
+<row valign="top">
+<entry valign="top" align="left">Cyclamate</entry>
+<entry valign="top" align="left">Synthetic</entry>
+<entry valign="top" align="left">   40</entry>
+</row>
+<row valign="top">
+<entry valign="top" align="left">Aspartame</entry>
+<entry valign="top" align="left">Semisynthetic</entry>
+<entry valign="top" align="left">  180</entry>
+</row>
+<row valign="top">
+<entry valign="top" align="left">Acesulfame-K</entry>
+<entry valign="top" align="left">Synthetic</entry>
+<entry valign="top" align="left">  200</entry>
+</row>
+<row valign="top">
+<entry valign="top" align="left">Saccharin</entry>
+<entry valign="top" align="left">Synthetic</entry>
+<entry valign="top" align="left">  350</entry>
+</row>
+<row valign="top">
+<entry valign="top" align="left">Sucralose</entry>
+<entry valign="top" align="left">Semisynthetic</entry>
+<entry valign="top" align="left">  600</entry>
+</row>
+<row valign="top">
+<entry valign="top" align="left">Alitame</entry>
+<entry valign="top" align="left">Semisynthetic</entry>
+<entry valign="top" align="left"> 2,000</entry>
+</row>
+<row valign="top">
+<entry valign="top" align="left">Neotame</entry>
+<entry valign="top" align="left">Semisynthetic</entry>
+<entry valign="top" align="left"> 6,000</entry>
+</row>
+<row valign="top">
+<entry valign="top" align="left">Advantame</entry>
+<entry valign="top" align="left">Semisynthetic</entry>
+<entry valign="top" align="left">20,000</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<para id="para-00006">Acesulfame potassium, one of the more recently approved sweeteners, is proving to be extremely popular in soft drinks because it has little aftertaste. Sucralose, another recent sweetener, is particularly useful in baked goods because of its stability at high temperatures. Alitame, marketed in some countries under the name Aclame, is not approved for sale in the United States. It is some 2000 times as sweet as sucrose and, like acesulfame-K, has no aftertaste. Of the eight synthetic sweeteners listed in <link target-id="table-00001"/>, only sucralose has clear structural resemblance to a carbohydrate, although it differs dramatically in containing three chlorine atoms. Aspartame, Alitame, and Advantame are dipeptides.</para>
+<figure class="unnumbered scaled-down" id="fig-00004">
+<media alt="The structures of three synthetic sweeteners – saccharin, aspartame, and acesulfame potassium, along with the structures of two semi-synthetic sweeteners – sucralose and alitame.">
+<image mime-type="image/jpeg" src="../../media/OChem_25_11_003.jpg"/>
+</media>
+</figure>
+</section>
+<section class="key-terms" id="sect-00002">
+<list id="list-00001">
+<item><link document="m00304" target-id="term-00006">aldaric acid</link></item>
+<item><link document="m00304" target-id="term-00003">alditol</link></item>
+<item><link document="m00304" target-id="term-00004">aldonic acid</link></item>
+<item><link document="m00299" target-id="term-00004">aldose</link></item>
+<item><link document="m00305" target-id="term-00002">amino sugar</link></item>
+<item><link document="m00303" target-id="term-00004"><emphasis effect="italics">α</emphasis> anomer</link>, <link document="m00303" target-id="term-00005"><emphasis effect="italics">β</emphasis> anomer</link></item>
+<item><link document="m00303" target-id="term-00003">anomeric center</link></item>
+<item><link document="m00303" target-id="term-00002">anomer</link></item>
+<item><link document="m00274" target-id="term-00001">carbohydrate</link></item>
+<item><link document="m00299" target-id="term-00003">complex carbohydrate</link></item>
+<item><link document="m00301" target-id="term-00001"><emphasis effect="smallcaps">D</emphasis> sugar</link></item>
+<item><link document="m00305" target-id="term-00001">deoxy sugar</link></item>
+<item><link document="m00306" target-id="term-00001">disaccharide</link></item>
+<item><link document="m00300" target-id="term-00001">Fischer projection</link></item>
+<item><link document="m00303" target-id="term-00006">furanose</link></item>
+<item><link document="m00304" target-id="term-00001">glycoside</link></item>
+<item><link document="m00299" target-id="term-00005">ketose</link></item>
+<item><link document="m00304" target-id="term-00008">Kiliani–Fischer synthesis</link></item>
+<item><link document="m00304" target-id="term-00002">Koenigs–Knorr reaction</link></item>
+<item><link document="m00301" target-id="term-00002"><emphasis effect="smallcaps">L</emphasis> sugar</link></item>
+<item><link document="m00299" target-id="term-00002">monosaccharide</link></item>
+<item><link document="m00303" target-id="term-00007">mutarotation</link></item>
+<item><link document="m00307" target-id="term-00001">polysaccharide</link></item>
+<item><link document="m00303" target-id="term-00001">pyranose</link></item>
+<item><link document="m00304" target-id="term-00005">reducing sugar</link></item>
+<item><link document="m00299" target-id="term-00001">simple sugar</link></item>
+<item><link document="m00304" target-id="term-00007">uronic acid</link></item>
+<item><link document="m00304" target-id="term-00009">Wohl degradation</link></item>
+</list>
+</section>
+<section class="summary" id="sect-00003">
+<title>Summary</title>
+<para id="para-00007">Now that we’ve now seen all the common functional groups and reaction types, our focus has changed to looking at the major classes of biological molecules. <emphasis effect="bold">Carbohydrates</emphasis> are polyhydroxy aldehydes and ketones. They are classified according to the number of carbon atoms and the kind of carbonyl group they contain. Glucose, for example, is an aldohexose, a six-carbon aldehydo sugar. <emphasis effect="bold">Monosaccharides</emphasis> are further classified as either <emphasis effect="bold"><emphasis effect="smallcaps">D</emphasis> sugars</emphasis> or <emphasis effect="bold"><emphasis effect="smallcaps">L</emphasis> sugars</emphasis>, depending on the stereochemistry of the chirality center farthest from the carbonyl group. Carbohydrate stereochemistry is frequently depicted using <emphasis effect="bold">Fischer projections</emphasis>, which represent a chirality center as the intersection of two crossed lines.</para>
+<para id="para-00008">Monosaccharides normally exist as cyclic hemiacetals rather than as open-chain aldehydes or ketones. The hemiacetal linkage results from reaction of the carbonyl group with an –OH group three or four carbon atoms away. A five-membered cyclic hemiacetal is called a <emphasis effect="bold">furanose</emphasis>, and a six-membered cyclic hemiacetal is called a <emphasis effect="bold">pyranose</emphasis>. Cyclization leads to the formation of a new chirality center called the <emphasis effect="bold">anomeric center</emphasis> and the production of two diastereomeric hemiacetals called <emphasis effect="bold">alpha (<emphasis effect="italics">α</emphasis>) and beta (<emphasis effect="italics">β</emphasis>) anomers</emphasis>.</para>
+<para id="para-00009">Much of the chemistry of monosaccharides is the familiar chemistry of alcohols and aldehydes/ketones. Thus, the hydroxyl groups of carbohydrates form esters and ethers. The carbonyl group of a monosaccharide can be reduced with NaBH<sub>4</sub> to form an <emphasis effect="bold">alditol</emphasis>, oxidized with aqueous Br<sub>2</sub> to form an <emphasis effect="bold">aldonic acid</emphasis>, oxidized with HNO<sub>3</sub> to form an <emphasis effect="bold">aldaric acid</emphasis>, oxidized enzymatically to form a <emphasis effect="bold">uronic acid</emphasis>, or treated with an alcohol in the presence of acid to form a <emphasis effect="bold">glycoside</emphasis>. Monosaccharides can also be chain-lengthened by the multistep <emphasis effect="bold">Kiliani–Fischer synthesis</emphasis> and can be chain-shortened by <emphasis effect="bold">Wohl degradation</emphasis>.</para>
+<para id="para-00010"><emphasis effect="bold">Disaccharides</emphasis> are complex carbohydrates in which simple sugars are linked by a glycoside bond between the <emphasis effect="bold">anomeric center</emphasis> of one unit and a hydroxyl of the second unit. The sugars can be the same, as in maltose and cellobiose, or different, as in lactose and sucrose. The glycosidic bond can be either <emphasis effect="italics">α</emphasis> (maltose) or <emphasis effect="italics">β</emphasis> (cellobiose, lactose) and can involve any hydroxyl of the second sugar. A 1→4 link is most common (cellobiose, maltose), but others such as 1→2 (sucrose) are also known. <emphasis effect="bold">Polysaccharides</emphasis>, such as cellulose, starch, and glycogen, are used in nature as structural materials, as a means of long-term energy storage, and as cell-surface markers.</para>
+</section>
+<section class="summary-reactions" id="sect-00004">
+<title>Summary of Reactions</title>
+<figure class="unnumbered scaled-down" id="fig-00005">
+<media alt="Nine reactions of aldoses. The products are ethers, esters, glycosides, alditols, aldonic acids, aldaric acids, uronic acids, and chain-lengthened, and chain-shortened structures formed by the involvement of specific reagents.">
+<image mime-type="image/jpeg" src="../../media/OChem_25_EC_001.jpg"/>
+</media>
+</figure>
+</section>
+<section class="additional-problems" id="sect-00005">
+<title>Additional Problems</title>
+<para id="para-00011"><emphasis effect="bold"><span class="red-text">Visualizing Chemistry</span></emphasis></para>
+<exercise id="exer-00001">
+<problem id="prob-00001">
+<para id="para-00012"><link class="os-embed" url="#exercise/25-99-OC-VC01"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00002">
+<problem id="prob-00002">
+<para id="para-00013"><link class="os-embed" url="#exercise/25-99-OC-VC02"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00003">
+<problem id="prob-00003">
+<para id="para-00014"><link class="os-embed" url="#exercise/25-99-OC-VC03"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00004">
+<problem id="prob-00004">
+<para id="para-00015"><link class="os-embed" url="#exercise/25-99-OC-VC04"/></para>
+</problem>
+</exercise>
+<para id="para-00016"><emphasis effect="bold"><span class="red-text">Mechanism Problems</span></emphasis></para>
+<exercise id="exer-00005">
+<problem id="prob-00005">
+<para id="para-00017"><link class="os-embed" url="#exercise/25-99-OC-MP01"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00006">
+<problem id="prob-00006">
+<para id="para-00018"><link class="os-embed" url="#exercise/25-99-OC-MP02"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00007">
+<problem id="prob-00007">
+<para id="para-00019"><link class="os-embed" url="#exercise/25-99-OC-MP03"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00008">
+<problem id="prob-00008">
+<para id="para-00020"><link class="os-embed" url="#exercise/25-99-OC-MP04"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00009">
+<problem id="prob-00009">
+<para id="para-00021"><link class="os-embed" url="#exercise/25-99-OC-MP05"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00010">
+<problem id="prob-00010">
+<para id="para-00022"><link class="os-embed" url="#exercise/25-99-OC-MP06"/></para>
+</problem>
+</exercise>
+<para id="para-00023"><emphasis effect="bold"><span class="red-text">Carbohydrate Structures</span></emphasis></para>
+<exercise id="exer-00011">
+<problem id="prob-00011">
+<para id="para-00024"><link class="os-embed" url="#exercise/25-99-OC-AP01"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00012">
+<problem id="prob-00012">
+<para id="para-00025"><link class="os-embed" url="#exercise/25-99-OC-AP02"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00013">
+<problem id="prob-00013">
+<para id="para-00026"><link class="os-embed" url="#exercise/25-99-OC-AP03"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00014">
+<problem id="prob-00014">
+<para id="para-00027"><link class="os-embed" url="#exercise/25-99-OC-AP04"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00015">
+<problem id="prob-00015">
+<para id="para-00028"><link class="os-embed" url="#exercise/25-99-OC-AP05"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00016">
+<problem id="prob-00016">
+<para id="para-00029"><link class="os-embed" url="#exercise/25-99-OC-AP06"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00017">
+<problem id="prob-00017">
+<para id="para-00030"><link class="os-embed" url="#exercise/25-99-OC-AP07"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00018">
+<problem id="prob-00018">
+<para id="para-00031"><link class="os-embed" url="#exercise/25-99-OC-AP08"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00019">
+<problem id="prob-00019">
+<para id="para-00032"><link class="os-embed" url="#exercise/25-99-OC-AP09"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00020">
+<problem id="prob-00020">
+<para id="para-00033"><link class="os-embed" url="#exercise/25-99-OC-AP10"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00021">
+<problem id="prob-00021">
+<para id="para-00034"><link class="os-embed" url="#exercise/25-99-OC-AP11"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00022">
+<problem id="prob-00022">
+<para id="para-00035"><link class="os-embed" url="#exercise/25-99-OC-AP12"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00023">
+<problem id="prob-00023">
+<para id="para-00036"><link class="os-embed" url="#exercise/25-99-OC-AP13"/></para>
+</problem>
+</exercise>
+<para id="para-00037"><emphasis effect="bold"><span class="red-text">Carbohydrate Reactions</span></emphasis></para>
+<exercise id="exer-00024">
+<problem id="prob-00024">
+<para id="para-00038"><link class="os-embed" url="#exercise/25-99-OC-AP14"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00025">
+<problem id="prob-00025">
+<para id="para-00039"><link class="os-embed" url="#exercise/25-99-OC-AP15"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00026">
+<problem id="prob-00026">
+<para id="para-00040"><link class="os-embed" url="#exercise/25-99-OC-AP16"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00027">
+<problem id="prob-00027">
+<para id="para-00041"><link class="os-embed" url="#exercise/25-99-OC-AP17"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00028">
+<problem id="prob-00028">
+<para id="para-00042"><link class="os-embed" url="#exercise/25-99-OC-AP18"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00029">
+<problem id="prob-00029">
+<para id="para-00043"><link class="os-embed" url="#exercise/25-99-OC-AP19"/></para>
+</problem>
+</exercise>
+<para id="para-00044"><emphasis effect="bold"><span class="red-text">General Problems</span></emphasis></para>
+<exercise id="exer-00030">
+<problem id="prob-00030">
+<para id="para-00045"><link class="os-embed" url="#exercise/25-99-OC-AP20"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00031">
+<problem id="prob-00031">
+<para id="para-00046"><link class="os-embed" url="#exercise/25-99-OC-AP21"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00032">
+<problem id="prob-00032">
+<para id="para-00047"><link class="os-embed" url="#exercise/25-99-OC-AP22"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00033">
+<problem id="prob-00033">
+<para id="para-00048"><link class="os-embed" url="#exercise/25-99-OC-AP23"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00034">
+<problem id="prob-00034">
+<para id="para-00049"><link class="os-embed" url="#exercise/25-99-OC-AP24"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00035">
+<problem id="prob-00035">
+<para id="para-00050"><link class="os-embed" url="#exercise/25-99-OC-AP25"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00036">
+<problem id="prob-00036">
+<para id="para-00051"><link class="os-embed" url="#exercise/25-99-OC-AP26"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00037">
+<problem id="prob-00037">
+<para id="para-00052"><link class="os-embed" url="#exercise/25-99-OC-AP27"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00038">
+<problem id="prob-00038">
+<para id="para-00053"><link class="os-embed" url="#exercise/25-99-OC-AP28"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00039">
+<problem id="prob-00039">
+<para id="para-00054"><link class="os-embed" url="#exercise/25-99-OC-AP29"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00040">
+<problem id="prob-00040">
+<para id="para-00055"><link class="os-embed" url="#exercise/25-99-OC-AP30"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00041">
+<problem id="prob-00041">
+<para id="para-00056"><link class="os-embed" url="#exercise/25-99-OC-AP31"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00042">
+<problem id="prob-00042">
+<para id="para-00057"><link class="os-embed" url="#exercise/25-99-OC-AP32"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00043">
+<problem id="prob-00043">
+<para id="para-00058"><link class="os-embed" url="#exercise/25-99-OC-AP33"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00044">
+<problem id="prob-00044">
+<para id="para-00059"><link class="os-embed" url="#exercise/25-99-OC-AP34"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00045">
+<problem id="prob-00045">
+<para id="para-00060"><link class="os-embed" url="#exercise/25-99-OC-AP35"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00046">
+<problem id="prob-00046">
+<para id="para-00061"><link class="os-embed" url="#exercise/25-99-OC-AP36"/></para>
+</problem>
+</exercise>
+</section>
+</content>
+</document>

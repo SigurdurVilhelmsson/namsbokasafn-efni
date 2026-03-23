@@ -1,0 +1,81 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Names and Properties of Ethers</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Names and Properties of Ethers</md:title>
+    <md:content-id>m00074</md:content-id>
+    <md:uuid>3fc7319a-a34f-4b03-bd73-4f058c24d706</md:uuid>
+  </metadata>
+  <content>
+<para id="para-00001">Simple ethers with no other functional groups are named by identifying the two organic substituents and adding the word <emphasis effect="italics">ether.</emphasis></para>
+<figure class="unnumbered scaled-down" id="fig-00001">
+<media alt="The structure of isopropyl methyl ether and ethyl phenyl ether. Their oxygen bonds with organic groups are highlighted.">
+<image mime-type="image/jpeg" src="../../media/OChem_18_01_001.jpg"/>
+</media>
+</figure>
+<para id="para-00002">If other functional groups are present, the ether part is considered an <emphasis effect="italics">alkoxy</emphasis> substituent. For example:</para>
+<figure class="unnumbered scaled-down" id="fig-00002">
+<media alt="The structures of p-dimethoxybenzene and 4-tert-butoxy-1-cyclohexene. The carbon atoms are numbered from the double bond position in 4-tert-butoxy-1-cyclohexene.">
+<image mime-type="image/jpeg" src="../../media/OChem_18_01_002.jpg"/>
+</media>
+</figure>
+<para id="para-00007">Like alcohols, ethers have nearly the same geometry as water. The R–O–R bonds have an approximately tetrahedral bond angle (112° in dimethyl ether), and the oxygen atom is <emphasis effect="italics">sp</emphasis><sup>3</sup>-hybridized.</para>
+<figure class="unnumbered scaled-down" id="fig-00003">
+<media alt="The orbital picture, space-filling model, and ball-and-stick model in the electrostatic potential map of dimethyl ether. The bond angle between methyl-oxygen-methyl is 112 degrees.">
+<image mime-type="image/jpeg" src="../../media/OChem_18_01_003.jpg"/>
+</media>
+</figure>
+<para id="para-00008">The electronegative oxygen atom gives ethers a slight dipole moment, and the boiling points of ethers are often slightly higher than the boiling points of comparable alkanes. <link target-id="table-00001"/> compares the boiling points of some common ethers and their corresponding hydrocarbons.</para>
+<table summary="" id="table-00001">
+<title>Comparison of Boiling Points of Ethers and Hydrocarbons</title>
+<tgroup cols="4">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<colspec colnum="4" colname="c4"/>
+<thead>
+<row valign="top">
+<entry valign="top" align="left">Ether</entry>
+<entry valign="top" align="left">Boiling point °C</entry>
+<entry valign="top" align="left">Hydrocarbon</entry>
+<entry valign="top" align="left">Boiling point °C</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry valign="top" align="left">CH<sub>3</sub>OCH<sub>3</sub></entry>
+<entry valign="top" align="center">–25&#8199;</entry>
+<entry valign="top" align="left">CH<sub>3</sub>CH<sub>2</sub>CH<sub>3</sub></entry>
+<entry valign="top" align="center">–45</entry>
+</row>
+<row valign="top">
+<entry valign="top" align="left">CH<sub>3</sub>CH<sub>2</sub>OCH<sub>2</sub>CH<sub>3</sub></entry>
+<entry valign="top" align="center">&#8199;34.6</entry>
+<entry valign="top" align="left">CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub></entry>
+<entry valign="top" align="center">&#8199;36</entry>
+</row>
+<row valign="top">
+<entry valign="top" align="left"><media class="unnumbered" alt="A five-membered ring, one atom of which is oxygen."><image mime-type="image/jpeg" src="../../media/OChem_18_01_004a.jpg"/></media></entry>
+<entry valign="top" align="center">65&#8199;</entry>
+<entry valign="top" align="left"><media class="unnumbered" alt="The structure of cyclopentane which is a five-membered carbon ring."><image mime-type="image/jpeg" src="../../media/OChem_18_01_004c.jpg"/></media></entry>
+<entry valign="top" align="center">&#8199;49</entry>
+</row>
+<row valign="top">
+<entry valign="top" align="left"><media class="unnumbered" alt="Structure of benzene with a methoxy (O C H 3) substituent."><image mime-type="image/jpeg" src="../../media/OChem_18_01_004b.jpg"/></media></entry>
+<entry valign="top" align="center">158&#8199;</entry>
+<entry valign="top" align="left"><media class="unnumbered" alt="The structure of benzene with an ethyl (C H 2 C H 3) substituent."><image mime-type="image/jpeg" src="../../media/OChem_18_01_004d.jpg"/></media></entry>
+<entry valign="top" align="center">136</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<para id="para-00009">Ethers are relatively stable and unreactive in many respects, but some ethers react slowly with the oxygen in air to give <emphasis effect="italics">peroxides,</emphasis> compounds that contain an O–O bond. The peroxides from low-molecular-weight ethers such as diisopropyl ether and tetrahydrofuran are explosive and extremely dangerous, even in small amounts. Ethers are very useful as solvents in the laboratory, but they must always be used cautiously and should not be stored for long periods of time.</para>
+<section class="section-exercises" id="sect-00001">
+<title>Problems</title>
+<exercise id="exer-00001">
+<problem id="prob-00001">
+<para id="para-00010"><link class="os-embed" url="#exercise/18-01-OC-P01"/></para>
+</problem>
+</exercise>
+</section>
+</content>
+</document>

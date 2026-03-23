@@ -1,0 +1,66 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Nucleophilic Addition of Phosphorus Ylides: The Wittig Reaction</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Nucleophilic Addition of Phosphorus Ylides: The Wittig Reaction</md:title>
+    <md:content-id>m00222</md:content-id>
+    <md:uuid>79c8fd06-c096-4535-82f9-90507bd164b8</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">Aldehydes and ketones are converted into alkenes by means of a nucleophilic addition called the <term id="term-00001">Wittig reaction</term>, after the German chemist Georg Wittig who won the 1979 Nobel Prize in Chemistry. The reaction has no direct biological counterpart but is important both because of its wide use in drug manufacture and because of its mechanistic similarity to reactions of the coenzyme thiamin diphosphate, which we’ll see in <emphasis effect="bold">Section 29.6</emphasis>.</para>
+    <para id="para-00002">In the Wittig reaction, a triphenylphosphorus <emphasis effect="italics">ylide,</emphasis> <m:math><m:mrow><m:msub><m:mtext>R</m:mtext><m:mn>2</m:mn></m:msub><m:mover><m:mtext>C</m:mtext><m:mo>−</m:mo></m:mover><m:mo>–</m:mo><m:mover><m:mtext>P</m:mtext><m:mo>+</m:mo></m:mover><m:msub><m:mrow><m:mtext>Ph</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow></m:math> also called a <term id="term-00003">phosphorane</term> and sometimes written in the resonance form <m:math><m:mrow><m:msub><m:mtext>R</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>C═</m:mtext><m:msub><m:mrow><m:mtext>P(Ph)</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow></m:math>, adds to an aldehyde or ketone to yield a four-membered cyclic intermediate called an <emphasis effect="italics">oxaphosphetane.</emphasis> The oxaphosphetane is not isolated, but instead spontaneously decomposes to give an alkene plus triphenylphosphine oxide, <m:math><m:mrow><m:mtext>O═</m:mtext><m:mo/><m:msub><m:mrow><m:mtext>PPh</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow></m:math>. In effect, the oxygen atom of the aldehyde or ketone and the R<sub>2</sub>C= bonded to phosphorus exchange places. (An <term id="term-00002">ylide</term>—pronounced <emphasis effect="bold">ill</emphasis>-id—is a neutral, dipolar compound with adjacent positive and negative charges.)</para>
+    <figure class="unnumbered scaled-down" id="fig-00001">
+    <media alt="An aldehyde or ketone reacts with ylide to form an oxaphosphetane. This further forms alkene plus triphenylphosphine oxide.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_11_001.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00003">The initial addition takes place by different pathways depending on the structure of the reactants and the exact experimental conditions. One pathway involves a one-step cycloaddition process analogous to the Diels–Alder cycloaddition reaction (<link document="m00174"/>). The other pathway involves a nucleophilic addition reaction to give a dipolar intermediate called a <emphasis effect="italics">betaine</emphasis> (<emphasis effect="bold">bay</emphasis>-ta-een), which undergoes ring closure.</para>
+    <figure class="unnumbered scaled-down" id="fig-00002">
+    <media alt="A cyclic reversible reaction where aldehyde or ketone reacts with ylide, to form betaine (intermediate), which further forms oxaphosphetane. This transforms back to the reactants, aldehyde or ketone and ylide.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_11_002.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00004">The phosphorus ylides necessary for Wittig reaction are easily prepared by S<sub>N</sub>2 reaction of primary (and some secondary) alkyl halides with triphenylphosphine, (Ph)<sub>3</sub>P, followed by treatment with base. Triphenylphosphine is a good nucleophile in S<sub>N</sub>2 reactions, and yields of the resultant alkyltriphenylphosphonium salts are high. Because of the positive charge on phosphorus, the hydrogen on the neighboring carbon is weakly acidic and can be removed by a strong base such as butyllithium (BuLi) to generate the neutral ylide. For example:</para>
+    <figure class="unnumbered scaled-down" id="fig-00003">
+    <media alt="Triphenylphosphine reacts with bromomethane via an S N 2 reaction to produce methyltriphenylphosphonium bromide, which then reacts with B u L i and T H F to form methylenetriphenylphosphorane.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_11_003.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00005">The Wittig reaction is extremely general, and a great many monosubstituted, disubstituted, and trisubstituted alkenes can be prepared from the appropriate combination of phosphorane and aldehyde or ketone. Tetrasubstituted alkenes, however, can’t be prepared this way because of steric hindrance.</para>
+    <para id="para-00006">The real value of the Wittig reaction is that it yields a pure alkene of predictable structure. The <m:math><m:mrow><m:mtext>C═C</m:mtext></m:mrow></m:math> bond in the product is always exactly where the <m:math><m:mrow><m:mtext>C═O</m:mtext></m:mrow></m:math> group was in the reactant, and no alkene isomers (except <emphasis effect="italics">E</emphasis>,<emphasis effect="italics">Z</emphasis> isomers) are formed. For example, Wittig reaction of cyclohexanone with methylenetriphenylphosphorane yields only the single alkene product methylenecyclohexane. By contrast, addition of methylmagnesium bromide to cyclohexanone, followed by dehydration with POCl<sub>3</sub>, yields a roughly 9 : 1 mixture of two alkenes.</para>
+    <figure class="unnumbered scaled-down" id="fig-00004">
+    <media alt="Cyclohexanone reacts with methylmagnesium bromide, then phosphoryl trichloride, forming1-methylcyclohexene and methylenecyclohexane in 9: 1 ratio. It also reacts with methylenenetriphenylphosphorane and tetrahydrofuran to form methylenecyclohexane and Ph 3 P O.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_11_004.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00007">Wittig reactions are used commercially in the synthesis of numerous pharmaceutical products. For example, the German chemical company BASF prepares vitamin A by using a Wittig reaction between a 15-carbon ylide and a 5-carbon aldehyde.</para>
+    <figure class="unnumbered scaled-down" id="fig-00005">
+    <media alt="A reaction where fifteen-carbon ylide, carbon-carbon aldehyde react in the presence of methanol, and sodium methoxide form vitamin A acetate.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_11_005.jpg"/>
+    </media>
+    </figure>
+    <example id="exam-00001">
+    <title>Synthesizing an Alkene Using a Wittig Reaction</title>
+    <para id="para-00008">What carbonyl compound and what phosphorus ylide might you use to prepare 3-ethyl-2-pentene?</para>
+    <para id="para-00009"><title><span class="red-text">Strategy</span></title> An aldehyde or ketone reacts with a phosphorus ylide to yield an alkene in which the oxygen atom of the carbonyl reactant is replaced by the ═CR<sub>2</sub> of the ylide. Preparation of the phosphorus ylide itself usually involves S<sub>N</sub>2 reaction of a primary alkyl halide with triphenylphosphine, so the ylide is typically primary, <m:math><m:mrow><m:mtext>RCH═</m:mtext><m:msub><m:mrow><m:mtext>P(Ph)</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow></m:math>. This means that the disubstituted alkene carbon in the product comes from the carbonyl reactant, while the monosubstituted alkene carbon comes from the ylide.</para>
+    <para id="para-00010"><title><span class="cyan-text">Solution</span></title></para>
+    <figure class="unnumbered scaled-down" id="fig-00006">
+    <media alt="3-pentanone reacts with a compound containing (P h) 3 P cation bonded to C H negative C H 3 and T H F, to form 3-ethyl-2-pentene.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_11_006.jpg"/>
+    </media>
+    </figure>
+    </example>
+    <section class="section-exercises" id="sect-00001">
+    <title>Problems</title>
+    <exercise id="exer-00001">
+    <problem id="prob-00001">
+    <para id="para-00011"><link class="os-embed" url="#exercise/19-11-OC-P16"/></para>
+    </problem>
+    </exercise>
+    <exercise id="exer-00002">
+    <problem id="prob-00002">
+    <para id="para-00012"><link class="os-embed" url="#exercise/19-11-OC-P17"/></para>
+    </problem>
+    </exercise>
+    </section>
+    </content>
+</document>

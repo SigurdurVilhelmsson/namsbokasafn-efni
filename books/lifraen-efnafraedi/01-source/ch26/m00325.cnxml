@@ -1,0 +1,27 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Automated Peptide Synthesis: The Merrifield Solid-Phase Method</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Automated Peptide Synthesis: The Merrifield Solid-Phase Method</md:title>
+    <md:content-id>m00325</md:content-id>
+    <md:uuid>5958ac9c-06be-4900-929d-27c170b61fe9</md:uuid>
+  </metadata>
+  <content>
+<para id="para-00001">As you might imagine, the synthesis of a large peptide chain by sequential addition of one amino acid at a time is a long and arduous process. An immense simplification is possible, however, using methods introduced by R. Bruce Merrifield, who received the 1984 Nobel Prize in Chemistry. In the Merrifield solid-phase method, peptide synthesis is carried out with the growing amino acid chain covalently bonded to small beads of a polymer resin, rather than in solution.</para>
+<para id="para-00002">In the original procedure, polystyrene resin was used, prepared so that one of every hundred or so benzene rings contained a chloromethyl (−CH<sub>2</sub>Cl) group. A Boc-protected C-terminal amino acid was then attached to the resin through an ester bond formed by S<sub>N</sub>2 reaction.</para>
+<figure class="unnumbered scaled-down" id="fig-00001">
+<media alt="Chloromethylated polystyrene resin reacts with a B o c-protected L- amino acid to produce a resin-bound protected amino acid.">
+<image mime-type="image/jpeg" src="../../media/OChem_26_08_001.jpg"/></media>
+</figure>
+<para id="para-00003">With the first amino acid bonded to the resin, a repeating series of four steps is then carried out to build a peptide.</para>
+<figure class="unnumbered scaled-down" id="fig-00002">
+<media alt="Peptide synthesis  via an amino acid-bound resin. B o c protected amino acids are sequentially coupled to the resin polymer, which is later cleaved from the resin by HF.">
+<image mime-type="image/jpeg" src="../../media/OChem_26_08_002.jpg"/></media>
+</figure>
+<para id="para-00004">The steps in the solid-phase procedure have been improved substantially over the years, but the fundamental idea remains the same. A common procedure is use of the Wang resin, developed by Su-Sun Wang, with the Fmoc protecting group. Less common is using the PAM (phenylacetamidomethyl) resin with Boc as the N-protecting group.</para>
+<figure class="unnumbered scaled-down" id="fig-00003">
+<media alt="The structure of a Wang and P A M resin linked F m o c protected amino acid.">
+<image mime-type="image/jpeg" src="../../media/OChem_26_08_003.jpg"/></media>
+</figure>
+<para id="para-00005">Robotic peptide synthesizers are now used to automatically repeat the coupling, washing, and deprotection steps with different amino acids. Each step occurs in high yield, and mechanical losses are minimized because the peptide intermediates are never removed from the insoluble polymer until the final step. Peptides with 20 amino acids can be routinely prepared in a few hours.</para>
+</content>
+</document>

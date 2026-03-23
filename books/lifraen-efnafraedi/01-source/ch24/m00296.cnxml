@@ -1,0 +1,152 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Reactions of Arylamines</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Reactions of Arylamines</md:title>
+    <md:content-id>m00296</md:content-id>
+    <md:uuid>db32b340-beed-476f-bb6e-7a4450a4694b</md:uuid>
+  </metadata>
+  <content>
+<section id="sect-00001">
+<title>Electrophilic Aromatic Substitutions</title>
+<para id="para-00001">An amino group is strongly activating and ortho- and para-directing in electrophilic aromatic substitution reactions (<link document="m00192"/>). This high reactivity of amino-substituted benzenes can be a drawback at times because it’s often difficult to prevent polysubstitution. Reaction of aniline with Br<sub>2</sub>, for instance, takes place rapidly and yields the 2,4,6-tribrominated product. The amino group is so strongly activating that it’s not possible to stop at the monobromo stage.</para>
+<figure class="unnumbered scaled-down" id="fig-00001">
+<media alt="Aniline reacts with three equivalents of bromine and water to form 2,4,6-tribromoaniline with 100 percent yield.">
+<image mime-type="image/jpeg" src="../../media/OChem_24_08_001.jpg"/>
+</media>
+</figure>
+<para id="para-00002">Another drawback to the use of amino-substituted benzenes in electrophilic aromatic substitution reactions is that Friedel–Crafts reactions are not successful (<link document="m00191"/>). The amino group forms an acid–base complex with the AlCl<sub>3</sub> catalyst, which prevents further reaction. Both drawbacks can be overcome, however, by carrying out electrophilic aromatic substitution reactions on the corresponding amide rather than on the free amine.</para>
+<para id="para-00003">As we saw in <link document="m00243"/>, treatment of an amine with acetic anhydride yields the corresponding acetyl amide, or acetamide. Although still activating and ortho-, para-directing, amido substituents (<m:math><m:mrow><m:mtext>R–N–C=O</m:mtext></m:mrow></m:math>) are less strongly activating and less basic than amino groups because their nitrogen lone-pair electrons are delocalized by the neighboring carbonyl group. As a result, bromination of an <emphasis effect="italics">N</emphasis>-arylamide occurs cleanly to give a monobromo product, and hydrolysis of the amide with aqueous base then gives the free amine. For example, <emphasis effect="italics">p</emphasis>-toluidine (4-methylaniline) can be acetylated, brominated, and hydrolyzed to yield 2-bromo-4-methylaniline. None of the 2,6-dibrominated product is obtained.</para>
+<figure class="unnumbered scaled-down" id="fig-00002">
+<media alt="p-Toluidine reacts with acetic anhydride and pyridine to form N-(p-tolyl)acetamide. This reacts with bromine to form N-(2-bromo-4-methylphenyl)acetamide. This reacts with sodium hydroxide and water to form 2-bromo-4-methylaniline (79 percent yield).">
+<image mime-type="image/jpeg" src="../../media/OChem_24_08_002.jpg"/>
+</media>
+</figure>
+<para id="para-00004">Friedel–Crafts alkylations and acylations of <emphasis effect="italics">N</emphasis>-arylamides also proceed normally. For example, benzoylation of acetanilide (<emphasis effect="italics">N</emphasis>-acetylaniline) under Friedel–Crafts conditions gives 4-aminobenzophenone in 80% yield after hydrolysis.</para>
+<figure class="unnumbered scaled-down" id="fig-00003">
+<media alt="Aniline reacts with acetic anhydride, pyridine to form N-phenylacetamide. This reacts with benzoyl chloride and aluminum chloride to form N-(4-benzoylphenyl)acetamide. This reacts with sodium hydroxide and water to form 4-aminobenzophenone.">
+<image mime-type="image/jpeg" src="../../media/OChem_24_08_003.jpg"/>
+</media>
+</figure>
+<para id="para-00005">Moderating the reactivity of an amino-substituted benzene by forming an amide is a useful trick that allows many kinds of electrophilic aromatic substitutions to be carried out that would otherwise be impossible. One example is the preparation of the sulfa drugs, such as sulfanilamide.</para>
+<para id="para-00006">Sulfa drugs were among the first pharmaceutical agents to be used clinically against bacterial infection. Although they have largely been replaced today by safer and more powerful antibiotics, sulfa drugs are credited with saving the lives of thousands of wounded during World War II and are still prescribed for urinary tract infections. They are prepared by chlorosulfonation of acetanilide, followed by reaction of <emphasis effect="italics">p</emphasis>-(<emphasis effect="italics">N</emphasis>-acetylamino)benzenesulfonyl chloride with ammonia or some other amine to give a sulfonamide. Hydrolysis of the amide then yields the sulfa drug. Note that hydrolysis of the amide can be carried out in the presence of the sulfonamide group because sulfonamides hydrolyze very slowly.</para>
+<figure class="unnumbered scaled-down" id="fig-00004">
+<media alt="Acetanilide reacts with sulfurochloridic acid to form 4-acetamidobenzene-1-sulfonyl chloride. This reacts with ammonia to form N-(4-sulfamoylphenyl)acetamide. This reacts with sodium hydroxide and water to form sulfanilamide.">
+<image mime-type="image/jpeg" src="../../media/OChem_24_08_004.jpg"/>
+</media>
+</figure>
+</section>
+<section class="section-exercises" id="sect-00002">
+<title>Problems</title>
+<exercise id="exer-00001">
+<problem id="prob-00001">
+<para id="para-00007"><link class="os-embed" url="#exercise/24-08-OC-P16"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00002">
+<problem id="prob-00002">
+<para id="para-00008"><link class="os-embed" url="#exercise/24-08-OC-P17"/></para>
+</problem>
+</exercise>
+</section>
+<section id="sect-00003">
+<title>Diazonium Salts: The Sandmeyer Reaction</title>
+<para id="para-00009">Primary arylamines react with nitrous acid, HNO<sub>2</sub>, to yield stable <emphasis effect="italics">arenediazonium salts</emphasis>, <m:math><m:mrow><m:mtext>Ar–</m:mtext><m:mover><m:mtext>N</m:mtext><m:mo>+</m:mo></m:mover><m:mtext>≡N</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>X</m:mtext><m:mo>−</m:mo></m:msup></m:mrow></m:math>, a process called a <emphasis effect="italics">diazotization</emphasis> reaction. Alkylamines also react with nitrous acid, but the corresponding alkanediazonium products are so reactive they can’t be isolated. Instead, they lose nitrogen instantly to yield carbocations. The analogous loss of N<sub>2</sub> from an arenediazonium ion to yield an aryl cation is disfavored by the instability of the cation.</para>
+<figure class="unnumbered scaled-down" id="fig-00005">
+<media alt="Aniline reacts with nitrous acid and sulfuric acid to form arenediazonium salt, hydrogen sulfate, and two equivalents of water.">
+<image mime-type="image/jpeg" src="../../media/OChem_24_08_006.jpg"/>
+</media>
+</figure>
+<para id="para-00010">Arenediazonium salts are useful because the diazonio group (<m:math><m:mrow><m:mtext>–N≡N</m:mtext></m:mrow></m:math>) can be replaced by a nucleophile in a substitution reaction.</para>
+<figure class="unnumbered scaled-down" id="fig-00006">
+<media alt="The arenediazonium salt reacts with H S O 4 minus and nucleophile to form a benzene substituted with a nucleophile and nitrogen as the product.">
+<image mime-type="image/jpeg" src="../../media/OChem_24_08_007.jpg"/>
+</media>
+</figure>
+<para id="para-00011">Many different nucleophiles—halide, hydride, cyanide, and hydroxide among others—react with arenediazonium salts, yielding many different kinds of substituted benzenes. The overall sequence of (<emphasis effect="bold"><span class="magenta-text">1</span></emphasis>) nitration, (<emphasis effect="bold"><span class="magenta-text">2</span></emphasis>) reduction, (<emphasis effect="bold"><span class="magenta-text">3</span></emphasis>) diazotization, and (<emphasis effect="bold"><span class="magenta-text">4</span></emphasis>) nucleophilic substitution is perhaps the single most versatile method of aromatic substitution.</para>
+<para id="para-00012">Aryl chlorides and bromides are prepared by reaction of an arenediazonium salt with the corresponding copper(I) halide, CuX, a process called the <term id="term-00001">Sandmeyer reaction</term>. Aryl iodides can be prepared by direct reaction with NaI without using a copper(I) salt. Yields generally fall between 60% and 80%.</para>
+<figure class="unnumbered scaled-down" id="fig-00007">
+<media alt="p-Methylaniline and aniline both undergo reactions with nitrous acid and sulfuric acid to form two different intermediates. The first intermediate forms p-bromotoluene and the second one forms iodobenzene.">
+<image mime-type="image/jpeg" src="../../media/OChem_24_08_008.jpg"/>
+</media>
+</figure>
+<para id="para-00013">Similar treatment of an arenediazonium salt with CuCN yields the nitrile ArCN, which can then be further converted into other functional groups such as carboxyl. For example, Sandmeyer reaction of <emphasis effect="italics">o</emphasis>-methylbenzenediazonium bisulfate with CuCN yields <emphasis effect="italics">o</emphasis>-methylbenzonitrile, which can be hydrolyzed to give <emphasis effect="italics">o</emphasis>-methylbenzoic acid. This product can’t be prepared from <emphasis effect="italics">o</emphasis>-xylene by the usual side-chain oxidation route because both methyl groups would be oxidized.</para>
+<figure class="unnumbered scaled-down" id="fig-00008">
+<media alt="o-Methylaniline reacts with nitrous acid and sulfuric acid to form o-methylbenzene-diazonium bisulfate. This reacts with potassium cyanide and copper cyanide to form o-methylbenzonitrile. This reacts with hydronium forming o-methylbenzoic acid.">
+<image mime-type="image/jpeg" src="../../media/OChem_24_08_009.jpg"/>
+</media>
+</figure>
+<para id="para-00014">The diazonio group can also be replaced by –OH to yield a phenol and by –H to yield an arene. A phenol is prepared by reaction of the arenediazonium salt with copper(I) oxide in an aqueous solution of copper(II) nitrate, a reaction that is especially useful because few other general methods exist for introducing an –OH group onto an aromatic ring.</para>
+<figure class="unnumbered scaled-down" id="fig-00009">
+<media alt="p-Methylaniline reacts with nitrous acid and sulfuric acid to form an intermediate. This reacts with copper oxide, copper nitrate, and water to form p-cresol with a 93 percent yield.">
+<image mime-type="image/jpeg" src="../../media/OChem_24_08_010.jpg"/>
+</media>
+</figure>
+<para id="para-00015">Reduction of a diazonium salt to give an arene occurs on treatment with hypophosphorous acid, H<sub>3</sub>PO<sub>2</sub>. This reaction is used primarily when there is a need for temporarily introducing an amino substituent onto a ring to take advantage of its directing effect. Suppose, for instance, that you needed to make 3,5-dibromotoluene. This product can’t be made by direct bromination of toluene because reaction would occur at positions 2 and 4. Starting with <emphasis effect="italics">p</emphasis>-methylaniline (<emphasis effect="italics">p</emphasis>-toluidine), however, dibromination occurs ortho to the strongly directing amino substituent, and diazotization followed by treatment with H<sub>3</sub>PO<sub>2</sub> to remove the amino group yields the desired product.</para>
+<figure class="unnumbered scaled-down" id="fig-00010">
+<media alt="p-Methylaniline reacts with two equivalents of bromine, then nitrous and sulfuric acids, then phosphinic acid to form 3,5-dibromotoluene. Toluene reacts with two equivalents of bromine and ferric bromide forming 2,4-dibromotoluene.">
+<image mime-type="image/jpeg" src="../../media/OChem_24_08_011.jpg"/>
+</media>
+</figure>
+<para id="para-00016">Mechanistically, these diazonio replacement reactions occur through radical rather than polar pathways. In the presence of a copper(I) compound, for instance, it’s thought that the arenediazonium ion is first converted to an aryl radical plus copper(II), followed by subsequent reaction to give product plus regenerated copper(I) catalyst.</para>
+<figure class="unnumbered scaled-down" id="fig-00011">
+<media alt="Diazonium compound reacts with copper halide to form an aryl radical. This reacts to form a product in which benzene is substituted with an X group.">
+<image mime-type="image/jpeg" src="../../media/OChem_24_08_012.jpg"/>
+</media>
+</figure>
+<example id="exam-00001">
+<title>Using Diazonium Replacement Reactions</title>
+<para id="para-00017">How would you prepare <emphasis effect="italics">m</emphasis>-hydroxyacetophenone from benzene, using a diazonium replacement reaction in your scheme?</para>
+<figure class="unnumbered scaled-down" id="fig-00012">
+<media alt="The structure of m-hydroxyacetophenone. It comprises a benzene ring with an acetyl group on C 1 and a hydroxyl group on C 3 position.">
+<image mime-type="image/jpeg" src="../../media/OChem_24_08_013.jpg"/>
+</media>
+</figure>
+<para id="para-00018"><title><span class="red-text">Strategy</span></title> As always, organic syntheses are planned by working retrosynthetically from the final product, one step at a time. First, identify the functional groups in the product and recall how those groups can be synthesized. <emphasis effect="italics">m</emphasis>-Hydroxyacetophenone has an –OH group and a –COCH<sub>3</sub> group in a meta relationship on a benzene ring. A hydroxyl group is generally introduced onto an aromatic ring by a four-step sequence of nitration, reduction, diazotization, and diazonio replacement. An acetyl group is introduced by a Friedel–Crafts acylation reaction.</para>
+<para id="para-00019">Next, ask yourself what an immediate precursor of the target might be. Since an acetyl group is a meta director while a hydroxyl group is an ortho and para director, acetophenone might be a precursor of <emphasis effect="italics">m</emphasis>-hydroxyacetophenone. Benzene, in turn, is a precursor of acetophenone.</para>
+<para id="para-00020"><title><span class="cyan-text">Solution</span></title></para>
+<figure class="unnumbered scaled-down" id="fig-00013">
+<media alt="Benzene reacts with acetyl chloride and aluminum chloride to form acetophenone. This reacts with four different sets of reagents in four different steps to form m-hydroxyacetophenone.">
+<image mime-type="image/jpeg" src="../../media/OChem_24_08_014.jpg"/>
+</media>
+</figure>
+</example>
+</section>
+<section class="section-exercises" id="sect-00004">
+<title>Problems</title>
+<exercise id="exer-00003">
+<problem id="prob-00003">
+<para id="para-00021"><link class="os-embed" url="#exercise/24-08-OC-P18"/></para>
+</problem>
+</exercise>
+</section>
+<section id="sect-00005">
+<title>Diazonium Coupling Reactions</title>
+<para id="para-00022">Arenediazonium salts undergo a coupling reaction with activated aromatic rings such as phenols and arylamines to yield brightly colored <term id="term-00002">azo compounds,</term> <m:math><m:mrow><m:mtext mathvariant="bold">Ar–N=N–A</m:mtext><m:msup><m:mrow><m:mtext mathvariant="bold">r</m:mtext></m:mrow><m:mo mathvariant="bold">′</m:mo></m:msup></m:mrow></m:math>.</para>
+<figure class="unnumbered scaled-down" id="fig-00014">
+<media alt="An arenediazonium salt reacts with benzene substituted with Y to form an azo compound. Y can be O H or N R 2 group.">
+<image mime-type="image/jpeg" src="../../media/OChem_24_08_015.jpg"/>
+</media>
+</figure>
+<para id="para-00023">Diazonium coupling reactions are typical electrophilic aromatic substitutions in which the positively charged diazonium ion is the electrophile that reacts with the electron-rich ring of a phenol or arylamine. Reaction usually occurs at the para position.</para>
+<figure class="unnumbered scaled-down" id="fig-00015">
+<media alt="Benzenediazonium sulfate reacts with phenol to form an intermediate that reacts to form p-hydroxyazobenzene, orange crystals at 152 degree Celsius. The figure shows the electrostatic potential map of benzenediazonium sulfate.">
+<image mime-type="image/jpeg" src="../../media/OChem_24_08_016.jpg"/>
+</media>
+</figure>
+<para id="para-00024">Azo-coupled products are widely used as dyes for textiles because their extended conjugated <emphasis effect="italics">π</emphasis> electron system causes them to absorb in the visible region of the electromagnetic spectrum (<link document="m00179"/>). <emphasis effect="italics">p</emphasis>-(Dimethylamino)-azobenzene, for instance, is a bright yellow compound that was at one time used as a coloring agent in margarine.</para>
+<figure class="unnumbered scaled-down" id="fig-00016">
+<media alt="Benzenediazonium sulfate reacts with N,N-dimethylaniline to form p-(dimethylamino)azobenzene, yellow crystals with a melting point of 127 degree Celsius.">
+<image mime-type="image/jpeg" src="../../media/OChem_24_08_017.jpg"/>
+</media>
+</figure>
+</section>
+<section class="section-exercises" id="sect-00006">
+<title>Problems</title>
+<exercise id="exer-00004">
+<problem id="prob-00004">
+<para id="para-00025"><link class="os-embed" url="#exercise/24-08-OC-P19"/></para>
+</problem>
+</exercise>
+</section>
+</content>
+</document>

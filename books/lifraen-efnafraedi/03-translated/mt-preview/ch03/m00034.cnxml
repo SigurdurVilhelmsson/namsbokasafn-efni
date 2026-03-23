@@ -1,0 +1,115 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+<title>Alkílhópar</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Alkílhópar</md:title>
+    <md:content-id>m00034</md:content-id>
+    <md:uuid>30d6fe6d-9c57-4028-827c-e2ba91c46bd2</md:uuid>
+  </metadata>
+
+<content>
+<para id="para-00001">Ef þú ímyndar þér að fjarlægja vetnisfrumeind af alkani er hluti byggingarinnar sem eftir stendur kallaður <term id="term-00001">alkílhópur (e. alkyl group)</term>. Alkílhópar eru ekki stöðug efnasambönd í sjálfu sér, heldur einfaldlega hlutar stærri efnasambanda og eru nefndir með því að skipta út -<emphasis effect="italics">an</emphasis> endingunni í móðuralkaninu fyrir -<emphasis effect="italics">ýl</emphasis> endingu. Til dæmis, ef vetni er fjarlægt af metani, CH<sub>4</sub>, myndast metýlhópur, –CH<sub>3</sub>, og ef vetni er fjarlægt af etani, CH<sub>3</sub>CH<sub>3</sub>, myndast etýlhópur, –CH<sub>2</sub>CH<sub>3</sub>. Á sama hátt, með því að fjarlægja vetnisfrumeind af endakolefni í hvaða ókvíslótta alkani sem er, fæst röð ókvíslóttra alkílhópa sem sýndir eru í <link target-id="table-00001"/>. Með því að sameina alkílhóp við einhvern af þeim virknihópum sem áður voru taldir upp er hægt að mynda og nefna þúsundir efnasambanda. Til dæmis:</para>
+<table id="table-00001" summary=" ">
+    <title>Some Straight-Chain Alkyl Groups</title>
+    <tgroup cols="4">
+    <colspec colnum="1" colname="c1"/>
+    <colspec colnum="2" colname="c2"/>
+    <colspec colnum="3" colname="c3"/>
+    <colspec colnum="4" colname="c4"/>
+    <thead>
+    <row valign="top">
+    <entry valign="top" align="left">Alkan</entry>
+    <entry valign="top" align="left">Nafn</entry>
+    <entry valign="top" align="left">Alkílhópur</entry>
+    <entry valign="top" align="left">Nafn (skammstöfun)</entry>
+    </row>
+    </thead>
+    <tbody>
+    <row valign="top">
+    <entry valign="top" align="left">CH<sub>4</sub></entry>
+    <entry valign="top" align="left">Metan</entry>
+    <entry valign="top" align="left">–CH<sub>3</sub></entry>
+    <entry valign="top" align="left">Metýl (Me)</entry>
+    </row>
+    <row valign="top">
+    <entry valign="top" align="left">CH<sub>3</sub>CH<sub>3</sub></entry>
+    <entry valign="top" align="left">Etan</entry>
+    <entry valign="top" align="left">–CH<sub>2</sub>CH<sub>3</sub></entry>
+    <entry valign="top" align="left">Etýl (Et)</entry>
+    </row>
+    <row valign="top">
+    <entry valign="top" align="left">CH<sub>3</sub>CH<sub>2</sub>CH<sub>3</sub></entry>
+    <entry valign="top" align="left">Própan</entry>
+    <entry valign="top" align="left">–CH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub></entry>
+    <entry valign="top" align="left">Própýl (Pr)</entry>
+    </row>
+    <row valign="top">
+    <entry valign="top" align="left">CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub></entry>
+    <entry valign="top" align="left">Bútan</entry>
+    <entry valign="top" align="left">–CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub></entry>
+    <entry valign="top" align="left">Bútýl (Bu)</entry>
+    </row>
+    <row valign="top">
+    <entry valign="top" align="left">CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub></entry>
+    <entry valign="top" align="left">Pentan</entry>
+    <entry valign="top" align="left">–CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub></entry>
+    <entry valign="top" align="left">Pentýl, eða amýl</entry>
+    </row>
+    </tbody>
+    </tgroup>
+    </table>
+<figure id="fig-00001" class="unnumbered scaled-down">
+<media alt="The molecular structures and ball and stick models of methane, a methyl group, methyl alcohol, and methylamine. Grey, black, blue, and red spheres represent hydrogen, carbon, nitrogen, and oxygen, respectively.">
+<image mime-type="image/jpeg" src="../../media/OChem_03_03_001.jpg"/>
+</media>
+</figure>
+<para id="para-00002">Rétt eins og ókvíslóttir alkílhópar eru myndaðir með því að fjarlægja vetni af endakolefni, eru kvíslóttir alkílhópar myndaðir með því að fjarlægja vetnisfrumeind af innra kolefni. Tveir 3-kolefna alkílhópar og fjórir 4-kolefna alkílhópar eru mögulegir (<link target-id="fig-00002"/>).</para>
+<figure id="fig-00002" class="scaled-down">
+<media alt="The molecular structures and ball and stick models of propane, propyl, isopropyl, butane, butyl, sec-butyl, isobutane, isobutyl, and tert-butyl. Black and grey spheres represent carbon and hydrogen, respectively.">
+<image mime-type="image/jpeg" src="../../media/OChem_03_03_002.jpg"/>
+</media>
+<caption><emphasis effect="bold">Alkílhópar myndaðir úr ókvíslóttum alkönum.</emphasis></caption>
+</figure>
+<para id="para-00003">Ein athugasemd í viðbót um nafngiftir alkílhópa: forskeytin <emphasis effect="italics">sek</emphasis>- (fyrir sekundert) og <emphasis effect="italics">tert</emphasis>- (fyrir tertíert) sem notuð eru fyrir C<sub>4</sub> alkílhópana í <link target-id="fig-00002"/> vísa til fjölda annarra kolefnisfrumeinda sem tengjast kvíslunarkolefnisfrumeindinni. Fjórir möguleikar eru fyrir hendi: prímer (1°), sekundert (2°), tertíert (3°) og kvarternert (4°).</para>
+<figure id="fig-00003" class="unnumbered scaled-down">
+<media alt="The general structure of primary, secondary, tertiary, and quaternary carbons which are bonded to one, two, three, and four other carbons, respectively.">
+<image mime-type="image/jpeg" src="../../media/OChem_03_03_003.jpg"/>
+</media>
+</figure>
+<para id="para-00004">Táknið <term id="term-00002">R</term> er notað hér og um alla lífræna efnafræði til að tákna almennan lífrænan hóp. R-hópurinn getur verið metýl, etýl, própýl eða einhver af fjölmörgum öðrum. Þú gætir hugsað þér <emphasis effect="bold">R</emphasis> sem tákn fyrir <emphasis effect="bold">R</emphasis>estinn af sameindinni, sem er ekki tilgreindur.</para>
+<para id="para-00005">Hugtökin <emphasis effect="italics">prímer, sekundert, tertíert,</emphasis> og <emphasis effect="italics">kvarternert</emphasis> eru reglulega notuð í lífrænni efnafræði og merking þeirra þarf að verða þér tamt. Til dæmis, ef við segðum: „Sítrónusýra er tertíert alkóhól,“ myndum við meina að hún hefði alkóhól virknihóp (–OH) sem er tengdur við kolefnisfrumeind sem er sjálf tengd við þrjár aðrar kolefnisfrumeindir.</para>
+<figure id="fig-00004" class="unnumbered scaled-down">
+<media alt="The molecular structures of the general class of tertiary alcohols and citric acid (specific tertiary alcohol) are shown.">
+<image mime-type="image/jpeg" src="../../media/OChem_03_03_004.jpg"/>
+</media>
+</figure>
+<para id="para-00006">Auk þess að tala um kolefnisfrumeindir sem prímerar, sekunderar eða tertíerar, tölum við um vetni á sama hátt. Prímerar vetnisfrumeindir eru tengdar við prímerar kolefnisfrumeindir (RCH<sub>3</sub>), sekunderar vetnisfrumeindir eru tengdar við sekunderar kolefnisfrumeindir (R<sub>2</sub>CH<sub>2</sub>) og tertíerar vetnisfrumeindir eru tengdar við tertíerar kolefnisfrumeindir (R<sub>3</sub>CH). Hins vegar er ekkert til sem heitir kvarternert vetni. (Hvers vegna ekki?)</para>
+<figure id="fig-00005" class="unnumbered scaled-down">
+<media alt="The conversion of condensed formula to line-bond structure. The primary, secondary, and tertiary hydrogens in a compound are represented in condensed formula.">
+<image mime-type="image/jpeg" src="../../media/OChem_03_03_005.jpg"/>
+</media>
+</figure>
+<section id="sect-00001" class="section-exercises">
+<title>Dæmi</title>
+<exercise id="exer-00001">
+    <problem id="prob-00001">
+    <para id="para-00007"><link class="os-embed" url="#exercise/03-03-OC-P07"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00002">
+    <problem id="prob-00002">
+    <para id="para-00008"><link class="os-embed" url="#exercise/03-03-OC-P08"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00003">
+    <problem id="prob-00003">
+    <para id="para-00009"><link class="os-embed" url="#exercise/03-03-OC-P09"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00004">
+    <problem id="prob-00004">
+    <para id="para-00010"><link class="os-embed" url="#exercise/03-03-OC-P10"/></para>
+    </problem>
+    </exercise>
+</section>
+</content>
+</document>

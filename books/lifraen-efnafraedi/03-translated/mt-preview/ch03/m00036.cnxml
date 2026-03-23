@@ -1,0 +1,28 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Eiginleikar alkana</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Eiginleikar alkana</md:title>
+    <md:content-id>m00036</md:content-id>
+    <md:uuid>2e8e1b35-d77f-44d1-8f21-18620c22399d</md:uuid>
+  </metadata>
+
+<content>
+<para id="para-00001">Alkanar eru stundum nefndir <emphasis effect="italics">paraffín</emphasis>, orð sem er dregið af latneska orðasambandinu <emphasis effect="italics">parum affinis</emphasis>, sem þýðir „lítil sækni“. Þetta hugtak lýsir hegðun þeirra vel, því alkanar sýna litla efnafræðilega sækni í önnur efni og eru efnafræðilega óvirkir gagnvart flestum hvarfefnum á rannsóknarstofu. Þeir eru einnig tiltölulega óvirkir líffræðilega og koma sjaldan við sögu í efnafræði lífvera. Alkanar hvarfast þó við súrefni, halógena og nokkur önnur efni við viðeigandi aðstæður.</para>
+<para id="para-00002">Efnahvarf við súrefni á sér stað við bruna í vél eða ofni þegar alkani er notaður sem eldsneyti. Koldíoxíð og vatn myndast sem myndefni og mikið magn af varma losnar. Til dæmis hvarfast metan (jarðgas) við súrefni samkvæmt jöfnunni</para>
+<equation id="eq-00001" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo>+</m:mo><m:mn>2</m:mn><m:mspace width="0.2em"/><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">⟶</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mn>2</m:mn><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo>+</m:mo><m:mn style="color: #E00087">890</m:mn><m:mspace width="0.2em"/><m:mtext style="color: #E00087">kJ/mol</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false" style="color: #E00087">(</m:mo><m:mn style="color: #E00087">213</m:mn><m:mspace width="0.2em"/><m:mtext style="color: #E00087">kcal/mol</m:mtext><m:mo stretchy="false" style="color: #E00087">)</m:mo></m:mrow></m:math></equation>
+<para id="para-00004">Efnahvarf alkana við Cl<sub>2</sub> á sér stað þegar efnablanda þeirra tveggja er geisluð með útfjólubláu ljósi (táknuð með <emphasis effect="italics">hν,</emphasis> þar sem <emphasis effect="italics">ν</emphasis> er gríski bókstafurinn <emphasis effect="italics">nü</emphasis>). Það fer eftir tímalengd og hlutfallslegu magni hvarfefnanna tveggja, en þá verður skiptihvarf vetnisfrumeinda alkansins fyrir klór í ákveðinni röð, sem leiðir til efnablöndu af klóruðum myndefnum. Metan hvarfast til dæmis við Cl<sub>2</sub> og gefur af sér efnablöndu af CH<sub>3</sub>Cl, CH<sub>2</sub>Cl<sub>2</sub>, CHCl<sub>3</sub> og CCl<sub>4</sub>. Við munum skoða þetta efnahvarf nánar í <emphasis effect="bold">kafla 6.6</emphasis>.</para>
+<figure id="fig-00001" class="unnumbered scaled-down">
+<media alt="Four chemical reactions are represented. Methane reacts with chlorine in the presence of ultraviolet light to form methyl chloride and hydrogen chloride. Carbon tetrachloride and hydrogen chloride are formed.">
+<image mime-type="image/jpeg" src="../../media/OChem_03_05_001.jpg"/>
+</media>
+</figure>
+<para id="para-00005">Suðumark og bræðslumark alkana hækka reglulega með auknum mólmassa (<link target-id="fig-00002"/>), sem stafar af veikum dreifingarkröftum milli sameinda (). Aðeins þegar nægileg orka er notuð til að yfirstíga þessa krafta bráðnar fasta efnið eða vökvinn sýður. Eins og búast má við aukast dreifingarkraftar með aukinni stærð sameinda, sem skýrir hærra bræðslu- og suðumark stærri alkana.</para>
+<figure id="fig-00002" class="scaled-down">
+<media alt="A double bar graph of temperature versus the number of carbon atoms that plots bars for melting and boiling points with an increasing trend.">
+<image mime-type="image/jpeg" src="../../media/OChem_03_05_002.jpg"/>
+</media>
+<caption><emphasis effect="bold">Graf sem sýnir bræðslumark og suðumark á móti fjölda kolefnisfrumeinda fyrir ókvíslótta C1–C14 alkana.</emphasis> Hækkunin er regluleg með aukinni stærð sameinda.</caption>
+</figure>
+<para id="para-00006">Önnur áhrif sem sjást hjá alkönum eru að aukin kvíslun lækkar suðumark alkans. Þannig hefur pentan engar kvíslar og sýður við 36,1 °C, ísópentan (2-metýlbútan) hefur eina kvísl og sýður við 27,85 °C og neópentan (2,2-dímetýlprópan) hefur tvær kvíslar og sýður við 9,5 °C. Á sama hátt sýður oktan við 125,7 °C, en ísóoktan (2,2,4-trímetýlpentan) sýður við 99,3 °C. Kvíslóttir alkanar hafa lægra suðumark vegna þess að þeir eru nær kúlulaga en ókvíslóttir alkanar, hafa minna yfirborðsflatarmál og þar af leiðandi minni dreifingarkrafta.</para>
+</content>
+</document>

@@ -1,0 +1,30 @@
+<document xmlns="http://cnx.rice.edu/cnxml" class="introduction">
+  <title>Why This Chapter?</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Why This Chapter?</md:title>
+    <md:content-id>m00275</md:content-id>
+    <md:uuid>88db5291-b89e-44ec-a72e-dff4d2468a10</md:uuid>
+  </metadata>
+  <content class="introduction">
+<figure class="splash" id="fig-00001">
+<media alt="A close-up photograph of the face and upper arm of a marble statue depicting a man with a beard.">
+<image mime-type="image/jpeg" src="../../media/OChem_26_00_Proteus.jpg"/>
+</media>
+<caption><emphasis effect="bold">The building blocks of life that we call proteins are aptly named after Proteus, the early Greek sea-god whose name means “first” or “primordial.”</emphasis> (credit: modification of work by Coyau/Wikimedia Commons, CC BY-SA 3.0)</caption>
+</figure>
+<para id="para-00001">Continuing our look at the main classes of biomolecules, we’ll focus in this chapter on amino acids, the fundamental building blocks from which up to 150,000 or so different proteins in our bodies are made. We’ll then see how amino acids are incorporated into proteins and examine the structures of those proteins. Any understanding of biological chemistry would be impossible without this knowledge.</para>
+<para id="para-00002"><emphasis effect="italics">Proteins</emphasis> occur in every living organism, are of many different types, and have many different biological functions. The keratin of skin and fingernails, the fibroin of silk and spider webs, and the estimated 50,000 or so enzymes that catalyze the biological reactions in our bodies are all proteins. Regardless of their function, all proteins have a fundamentally similar structure and are made up of many <emphasis effect="italics">amino acids</emphasis> linked together in a long chain.</para>
+<para id="para-00003">Amino acids, as their name implies, are difunctional. They contain both a basic amino group and an acidic carboxyl group.</para>
+<figure class="unnumbered scaled-down" id="fig-00002">
+<media alt="The structure and ball-and-stick model of L-alanine. It is a carbon linked to an amine, carboxylic acid, dashed hydrogen and wedged methyl group.">
+<image mime-type="image/jpeg" src="../../media/OChem_26_00_001.jpg"/>
+</media>
+</figure>
+<para id="para-00004">Their value as building blocks to make proteins stems from the fact that amino acids can join together into long chains by forming amide bonds between the –NH<sub>2</sub> of one amino acid and the –CO<sub>2</sub>H of another. For classification purposes, chains with fewer than 50 amino acids are often called <term id="term-00001">peptides</term>, while the term <term id="term-00002">protein</term> is generally used for larger chains.</para>
+<figure class="unnumbered scaled-down" id="fig-00003">
+<media alt="Many amino acids link to generate the structure of protein. Arrows are used to represent the amide bonds in the structure. Wavy bonds denote bond extension.">
+<image mime-type="image/jpeg" src="../../media/OChem_26_00_002.jpg"/>
+</media>
+</figure>
+</content>
+</document>

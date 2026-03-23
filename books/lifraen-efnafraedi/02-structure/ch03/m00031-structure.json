@@ -1,0 +1,42 @@
+{
+  "moduleId": "m00031",
+  "title": {
+    "segmentId": "m00031:title:auto-1",
+    "text": "Why This Chapter?"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "8e74cda1-69a7-4c43-b6b6-26442be846f0"
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m00031:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": "A photograph of a bristlecone pine tree. The needles of its branches contain a mixture of organic compounds.",
+        "src": "../../media/OChem_03_00_001.jpg",
+        "mimeType": "image/jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00031:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00031:para:para-00002"
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00031:para:para-00003"
+    }
+  ],
+  "sectionOrder": null
+}

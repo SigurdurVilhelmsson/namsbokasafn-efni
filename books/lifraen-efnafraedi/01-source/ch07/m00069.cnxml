@@ -1,0 +1,53 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Electrophilic Addition Reactions of Alkenes</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Electrophilic Addition Reactions of Alkenes</md:title>
+    <md:content-id>m00069</md:content-id>
+    <md:uuid>cc529241-f166-476b-8461-d69f7aaba534</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">Before beginning a detailed discussion of alkene reactions, let’s review briefly some conclusions from the previous chapter. We said in <link document="m00082"/> that alkenes behave as nucleophiles (Lewis bases) in polar reactions, donating a pair of electrons from their electron-rich <m:math><m:mrow><m:mtext>C&#x2550;C</m:mtext></m:mrow></m:math> bond to an electrophile (Lewis acid). For example, reaction of 2-methylpropene with HBr yields 2-bromo-2-methylpropane. A careful study of this and similar reactions by the British chemist Christopher Ingold and others in the 1930s led to the generally accepted mechanism shown in <link target-id="fig-00001"/> for an <term id="term-00001">electrophilic addition reaction</term>.</para>
+    <figure class="mechanism-figure scaled-down" id="fig-00001">
+    <title>MECHANISM</title>
+    <media alt="A 2-step reaction mechanism shows 2-methylpropene's double bond electrons abstracting a hydrogen from hydrogen bromide to form 2-bromo-2-methylpropane via a carbocation.">
+    <image mime-type="image/jpeg" src="../../media/OChem_07_07_001.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">Mechanism of the electrophilic addition of HBr to 2-methylpropene</emphasis>. The reaction occurs in two steps, protonation and bromide addition, and involves a carbocation intermediate.</caption>
+    </figure>
+    <para id="para-00002">The reaction begins with an attack on the hydrogen of the electrophile HBr by the electrons of the nucleophilic <emphasis effect="italics">π</emphasis> bond. Two electrons from the <emphasis effect="italics">π</emphasis> bond form a new <emphasis effect="italics">σ</emphasis> bond between the entering hydrogen and an alkene carbon, as shown by the curved arrow at the top of <link target-id="fig-00001"/>. The resulting carbocation intermediate is itself an electrophile, which can accept an electron pair from nucleophilic Br<sup>−</sup> ion to form a C−Br bond and yield a neutral addition product.</para>
+    <para id="para-00003">An energy diagram for the overall electrophilic addition reaction (<link target-id="fig-00002"/>) has two peaks (transition states) separated by a valley (carbocation intermediate). The energy level of the intermediate is higher than that of the starting alkene, but the reaction as a whole is exergonic (negative Δ<emphasis effect="italics">G</emphasis>°). The first step, protonation of the alkene to yield the intermediate cation, is relatively slow. But once the cation intermediate is formed, it rapidly reacts to yield the final alkyl bromide product. The relative rates of the two steps are indicated in <link target-id="fig-00002"/> by the fact that Δ<emphasis effect="italics">G</emphasis><sub>1</sub><sup>‡</sup> is larger than Δ<emphasis effect="italics">G</emphasis><sub>2</sub><sup>‡</sup>.</para>
+    <figure class="scaled-down" id="fig-00002">
+    <media alt="An energy diagram for two-step reaction of 2-methylpropene with H Br. First transition state has higher energy than second, and intermediate is a carbocation. Product more stable than reactant.">
+    <image mime-type="image/jpeg" src="../../media/OChem_07_07_002.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">Energy diagram for the two-step electrophilic addition of HBr to 2-methylpropene</emphasis>. The first step is slower than the second step.</caption>
+    </figure>
+    <para id="para-00004">Electrophilic addition to alkenes is successful not only with HBr but with HCl, HI, and H<sub>2</sub>O as well. Note that HI is usually generated in the reaction mixture by treating potassium iodide with phosphoric acid and that a strong acid catalyst is needed for the addition of water.</para>
+    <figure class="unnumbered scaled-down" id="fig-00003">
+    <media alt="Three reactions show the formation of 2-chloro-2-methylpropane, 2-iodopentane, 1-methylcyclohexanol from 2-methylpropene, 1-pentene, and 1-methylcyclohexene, respectively. The reagents used are different for different reactions.">
+    <image mime-type="image/jpeg" src="../../media/OChem_07_07_003.jpg"/>
+    </media>
+    </figure>
+    <note id="note-00001">
+    <title>Writing Organic Reactions</title>
+    <para id="para-00005">This is a good place to mention that the equations for organic reactions are sometimes written in different ways to emphasize different points. In describing a laboratory process, for instance, the reaction of 2-methylpropene with HCl might be written in the format A + B ⟶ C to emphasize that both reactants are equally important for the purposes of the discussion. The solvent and notes about other reaction conditions such as temperature are written either above or below the reaction arrow.</para>
+    <figure class="unnumbered scaled-down" id="fig-00004">
+    <media alt="A reaction shows 2-methylpropene plus H Cl forming  2-chloro-2-methylpropane. Ether (labeled solvent) appears above the reaction arrow and 25 degrees Celsius appears below the reaction arrow.">
+    <image mime-type="image/jpeg" src="../../media/OChem_07_07_004.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00006">Alternatively, we might write the same reaction in a format to emphasize that 2-methylpropene is the reactant whose chemistry is of greater interest. The second reactant, HCl, is placed above the reaction arrow together with notes about solvent and reaction conditions.</para>
+    <figure class="unnumbered scaled-down" id="fig-00005">
+    <media alt="A reaction shows 2-methylpropene forming  2-chloro-2-methylpropane. H Cl (labeled reactant) appears above the reaction arrow, and ether (labeled solvent) and 25 degrees Celsius appears below the reaction arrow.">
+    <image mime-type="image/jpeg" src="../../media/OChem_07_07_005.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00007">In describing a biological process, the reaction is almost always written to show only the structures of the primary reactant and product, while abbreviating the structures of various biological “reagents” and by-products with a curved arrow that intersects the straight reaction arrow. As discussed in <link document="m00087"/><!--Section 6.11-->, the reaction of glucose with ATP to give glucose 6-phosphate plus ADP would then be written as</para>
+    <figure class="unnumbered scaled-down" id="fig-00006">
+    <media alt="The reaction of glucose to form glucose-6-phosphate with conversion of A T P to A D P in the presence of hexokinase.">
+    <image mime-type="image/jpeg" src="../../media/OChem_07_07_006.jpg"/>
+    </media>
+    </figure>
+    </note>
+    </content>
+</document>

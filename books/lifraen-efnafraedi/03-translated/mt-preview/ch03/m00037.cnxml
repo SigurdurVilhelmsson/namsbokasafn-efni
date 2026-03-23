@@ -1,0 +1,40 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+<title>Stellingar etans</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Stellingar etans</md:title>
+    <md:content-id>m00037</md:content-id>
+    <md:uuid>df3b3900-2c0f-4025-b872-6472f2866fce</md:uuid>
+  </metadata>
+
+<content>
+<para id="para-00001">Hingað til höfum við litið á sameindir fyrst og fremst á tvívíðan hátt og lítið velt fyrir okkur þeim afleiðingum sem rúmskipan frumeinda í sameindum gæti haft. Nú er kominn tími til að bæta þriðju víddinni við rannsóknir okkar. <term id="term-00001">Rúmefnafræði (e. stereochemistry)</term> er sú grein efnafræðinnar sem fæst við þrívíða þætti sameinda. Við munum sjá við mörg tækifæri í komandi köflum að nákvæm þrívíddargerð sameindar er oft lykilatriði við að ákvarða eiginleika hennar og líffræðilega hegðun.</para>
+<para id="para-00002">Við vitum að <emphasis effect="italics">σ</emphasis>-efnatengi eru sívalningssamhverf. Með öðrum orðum, skurðflötur plans sem sker í gegnum svigrúm kolefnis-kolefnis eintengis lítur út eins og hringur. Vegna þessarar sívalningssamhverfu er snúningur mögulegur um kolefnis-kolefnis efnatengi í opnum keðjusameindum. Í etani, til dæmis, á sér stað frjáls snúningur um C–C efnatengið, sem breytir stöðugt rúmfræðilegum tengslum milli vetnisfrumeinda á einni kolefnisfrumeind og þeirra sem eru á hinni (<link target-id="fig-00001"/>).</para>
+<figure id="fig-00001">
+    <media alt="The molecular structure and a ball and stick model of ethane are represented before and after rotation. The rotation occurs around the carbon–carbon single bond.">
+    <image mime-type="image/jpeg" src="../../media/OChem_03_06_001.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">Snúningur á sér stað um kolefnis-kolefnis eintengið í etani vegna sívalningssamhverfu <emphasis effect="italics">σ</emphasis>-efnatengisins.</emphasis></caption>
+    </figure>
+<para id="para-00003">Þær mismunandi uppraðanir frumeinda sem verða til vegna snúnings um efnatengi eru kallaðar <term id="term-00002">stellingar (e. conformations)</term> og sameindir sem hafa mismunandi uppröðun eru kallaðar <term id="term-00003">stellingarhverfur (e. conformational isomers)</term>. Ólíkt byggingarhverfum er þó oft ekki hægt að einangra mismunandi stellingarhverfur vegna þess að þær umbreytast of hratt hvor í aðra.</para>
+<para id="para-00004">Stellingarhverfur eru sýndar á tvo vegu, eins og sýnt er á <link target-id="fig-00002"/>. <term id="term-00005">Sagarhestsframsetning (e. sawhorse representation)</term> sýnir kolefnis-kolefnis efnatengið frá skáhorni og gefur til kynna rúmskipan með því að sýna öll C–H efnatengi. <term id="term-00006">Newman-vörpun (e. newman projection)</term> sýnir kolefnis-kolefnis efnatengið beint framan frá og táknar kolefnisfrumeindirnar tvær með hring. Efnatengi sem eru fest við fremri kolefnisfrumeindina eru táknuð með línum að miðju hringsins og efnatengi sem eru fest við aftari kolefnisfrumeindina eru táknuð með línum að jaðri hringsins.</para>
+<figure id="fig-00002">
+    <media alt="A sawhorse representation and a Newman projection of ethane are depicted.">
+    <image mime-type="image/jpeg" src="../../media/OChem_03_06_002.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">Sagarhestsframsetning og Newman-vörpun af etani.</emphasis> Sagarhestsframsetningin sýnir sameindina frá skáhorni, en Newman-vörpunin sýnir sameindina beint framan frá. Athugið að sameindalíkanið af Newman-vörpuninni virðist í fyrstu hafa sex frumeindir tengdar einni kolefnisfrumeind. Í raun er fremri kolefnisfrumeindin, með þrjár tengdar <emphasis effect="bold">grænar frumeindir</emphasis>, beint fyrir framan aftari kolefnisfrumeindina, með þrjár tengdar <emphasis effect="bold">rauðar frumeindir</emphasis>.</caption>
+    </figure>
+<para id="para-00005">Þrátt fyrir það sem við sögðum rétt í þessu, sjáum við í raun ekki fullkomlega frjálsan snúning í etani. Tilraunir sýna að það er lítill (12 kJ/mól; 2,9 kkal/mól) orkuháður snúnings og að sumar stellingar eru stöðugri en aðrar. Lágorku-, stöðugasta stellingin er sú þar sem öll sex C–H efnatengin eru eins langt frá hvort öðru og mögulegt er — <emphasis effect="italics">glennt</emphasis> þegar horft er beint framan frá í Newman-vörpun. Háorku-, óstöðugasta stellingin er sú þar sem sex C–H efnatengin eru eins nálægt hvort öðru og mögulegt er — <emphasis effect="italics">skyggð</emphasis> í Newman-vörpun. Á hverju gefnu augnabliki hafa um 99% etansameinda u.þ.b. <term id="term-00007">glennta stellingu (e. staggered conformation)</term> og aðeins um 1% er nálægt <term id="term-00008">skyggðri stellingu (e. eclipsed conformation)</term>.</para>
+<figure id="fig-00003" class="unnumbered">
+<media alt="Staggered conformation of ethane undergoes rotation of rear carbon 60 degrees to form eclipsed conformation of ethane.">
+<image mime-type="image/jpeg" src="../../media/OChem_03_06_003.jpg"/>
+</media>
+</figure>
+<para id="para-00006">Aukaorkan upp á 12 kJ/mól sem er til staðar í skyggðri stellingu etans er kölluð <term id="term-00009">snúningstogstreita (e. torsional strain)</term>. Orsök hennar hefur verið umdeild, en aðalþátturinn er víxlverkun milli C–H bindandi svigrúma á einni kolefnisfrumeind og andbindandi svigrúma á aðliggjandi kolefnisfrumeind, sem stöðgar glenntu stellinguna miðað við þá skyggðu. Þar sem heildartogstreita upp á 12 kJ/mól stafar af þremur jöfnum vetnis-vetnis skyggingarvíxlverkunum, getum við úthlutað gildi sem nemur u.þ.b. 4,0 kJ/mól (1,0 kkal/mól) fyrir hverja staka víxlverkun. Orkuháðan snúning sem af þessu leiðir má sýna á grafi yfir stöðuorku á móti snúningsstigi, þar sem hornið milli C–H efnatengja á fremri og aftari kolefnisfrumeindum séð beint framan frá (<emphasis effect="italics">tvíhliðahorn</emphasis>) fer heilan hring frá 0 til 360°. Orkulágmörk eiga sér stað við glenntar stellingar og orkuhámörk eiga sér stað við skyggðar stellingar, eins og sýnt er á <link target-id="fig-00004"/>.</para>
+<figure id="fig-00004" class="scaled-down">
+<media alt="A graph of potential energy versus degrees of bond rotation in ethane. The peaks of the curve are labeled as eclipsed conformations and energy difference is 12 kilojoules per mole.">
+<image mime-type="image/jpeg" src="../../media/OChem_03_06_004.jpg"/>
+</media>
+<caption><emphasis effect="bold">Graf yfir stöðuorku á móti snúningi um efnatengi í etani.</emphasis> Glenntu stellingarnar eru 12 kJ/mól lægri í orku en skyggðu stellingarnar.</caption>
+</figure>
+</content>
+</document>

@@ -1,0 +1,49 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>The Claisen Condensation Reaction</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>The Claisen Condensation Reaction</md:title>
+    <md:content-id>m00282</md:content-id>
+    <md:uuid>65b56c6e-124f-4f53-8b63-40664ca578ca</md:uuid>
+  </metadata>
+  <content>
+<para id="para-00001">Esters, like aldehydes and ketones, are weakly acidic. When an ester with an <emphasis effect="italics">α</emphasis> hydrogen is treated with 1 equivalent of a base such as sodium ethoxide, a reversible carbonyl condensation reaction occurs to yield a <emphasis effect="italics">β</emphasis>-keto ester. For instance, ethyl acetate yields ethyl acetoacetate on base treatment. This reaction between two ester molecules is known as the <term id="term-00001">Claisen condensation reaction</term>. (We’ll use ethyl esters, abbreviated “Et,” for consistency, but other esters will also work.)</para>
+<figure class="unnumbered" id="fig-00001">
+<media alt="Two ethyl acetate molecules react with sodium ethoxide in ethanol followed by hydronium to produce ethyl acetoacetate, a beta-keto ester (seventy-five percent), and ethanol.">
+<image mime-type="image/jpeg" src="../../media/OChem_23_07_001.jpg"/>
+</media>
+</figure>
+<para id="para-00002">The mechanism of the Claisen condensation is similar to that of the aldol condensation and involves the nucleophilic addition of an ester enolate ion to the carbonyl group of a second ester molecule (<link target-id="fig-00002"/>). The only difference between the aldol condensation of an aldehyde or ketone and the Claisen condensation of an ester involves the fate of the initially formed tetrahedral intermediate. The tetrahedral intermediate in the aldol reaction is protonated to give an alcohol product—exactly the behavior previously seen for aldehydes and ketones (<link document="m00215"/>). The tetrahedral intermediate in the Claisen reaction, however, expels an alkoxide leaving group to yield an acyl substitution product—as previously seen for esters (<link document="m00244"/>).</para>
+<figure class="mechanism-figure scaled-down" id="fig-00002">
+<title>MECHANISM</title>
+<media alt="Reversible mechanism of Claisen condensation of ethyl acetate with arrows showing electron flow: alpha proton abstraction, nucleophilic addition of enolate, ethoxide expelled, deprotonation between carbonyls, reprotonation to form ethyl acetoacetate.">
+<image mime-type="image/jpeg" src="../../media/OSX_OrgChem_23_07_MechTwo.jpg"/>
+</media>
+<caption><emphasis effect="bold">Mechanism of the Claisen condensation reaction</emphasis>.</caption>
+</figure>
+<para id="para-00003">If the starting ester has more than one acidic <emphasis effect="italics">α</emphasis> hydrogen, the product <emphasis effect="italics">β</emphasis>-keto ester has a highly acidic, doubly activated hydrogen atom that can be abstracted by base. This deprotonation of the product requires the use of a full equivalent of base rather than a catalytic amount. Furthermore, the deprotonation serves to drive the equilibrium completely to the product side so that high yields are usually obtained in Claisen condensations.</para>
+<example id="exam-00001">
+<title>Predicting the Product of a Claisen Condensation Reaction</title>
+<para id="para-00004">What product would you obtain from Claisen condensation of ethyl propanoate?</para>
+<para id="para-00005"><title><span class="red-text">Strategy</span></title> The Claisen condensation of an ester results in loss of one molecule of alcohol and formation of a product in which an acyl group of one reactant bonds to the <emphasis effect="italics">α</emphasis> carbon of the second reactant. The product is a <emphasis effect="italics">β</emphasis>-keto ester.</para>
+<para id="para-00006"><title><span class="cyan-text">Solution</span></title></para>
+<figure class="unnumbered scaled-down" id="fig-00003">
+<media alt="The Claisen condensation of two equivalents of ethyl propanoate with sodium ethoxide followed by hydronium yields ethyl-2-methyl-3-oxopentanoate (a beta-keto ester), and ethanol.">
+<image mime-type="image/jpeg" src="../../media/OChem_23_07_003.jpg"/>
+</media>
+</figure>
+</example>
+<section class="section-exercises" id="sect-00001">
+<title>Problems</title>
+<exercise id="exer-00001">
+<problem id="prob-00001">
+<para id="para-00007"><link class="os-embed" url="#exercise/23-07-OC-P11"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00002">
+<problem id="prob-00002">
+<para id="para-00008"><link class="os-embed" url="#exercise/23-07-OC-P12"/></para>
+</problem>
+</exercise>
+</section>
+</content>
+</document>

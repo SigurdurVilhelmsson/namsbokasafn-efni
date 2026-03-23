@@ -1,0 +1,57 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Nucleophilic Addition of H<sub>2</sub>O: Hydration</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Nucleophilic Addition of H2O: Hydration</md:title>
+    <md:content-id>m00216</md:content-id>
+    <md:uuid>adf6353c-df5e-4786-9010-4a2139b166db</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">Aldehydes and ketones react with water to yield 1,1-diols, or <emphasis effect="italics">geminal (gem)</emphasis> diols. The hydration reaction is reversible, and a gem diol can eliminate water to regenerate an aldehyde or ketone.</para>
+    <figure class="unnumbered scaled-down" id="fig-00001">
+    <media alt="A reversible reaction in which acetone (99.9 percent) reacts with water to form acetone hydrate (0.1 percent) having a tetrahedral structure. The central carbon is bonded to two hydroxyl groups.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_05_001.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00002">The position of the equilibrium between a gem diol and an aldehyde or ketone depends on the structure of the carbonyl compound. Equilibrium generally favors the carbonyl compound for steric reasons, but the gem diol is favored for a few simple aldehydes. For example, an aqueous solution of formaldehyde consists of 99.9% gem diol and 0.1% aldehyde at equilibrium, whereas an aqueous solution of acetone consists of only about 0.1% gem diol and 99.9% ketone.</para>
+    <figure class="unnumbered scaled-down" id="fig-00002">
+    <media alt="A reversible reaction in which formaldehyde (0.1 percent) reacts with water forming formaldehyde hydrate (99.9 percent). It has a tetrahedral structure in which carbon is single-bonded to two hydroxyl groups.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_05_002.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00003">The hydrate is also favored for α-keto carboxylic acids, which have adjacent positively charged carbons that destabilize the keto form and favor the hydrate. Such compounds occur commonly in many biological pathways. Pyruvic acid, which is 60% hydrate at equilibrium, and α-ketoglutaric acid, which is 50% hydrate, are examples.</para>
+    <figure class="unnumbered scaled-down" id="fig-00003">
+    <media alt="Two reversible reactions. Pyruvic acid (40 percent) reacts with water to give pyruvic acid hydrate (60 percent). Alpha-ketoglutaric (50 percent) reacts with water to give alpha-ketoglutaric acid hydrate (50 percent).">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_05_Pyruvic.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00005">The nucleophilic addition of water to an aldehyde or ketone is slow under neutral conditions but is catalyzed by both base and acid. Under basic conditions (<link target-id="fig-00004"/>a), the nucleophile is negatively charged (OH<emphasis effect="bold"><sup>–</sup></emphasis>) and uses a pair of its electrons to form a bond to the electrophilic carbon atom of the <m:math><m:mrow><m:mtext>C&#x2550;O</m:mtext></m:mrow></m:math> group. At the same time, the <m:math><m:mrow><m:mtext>C&#x2550;O</m:mtext></m:mrow></m:math> carbon atom rehybridizes from <emphasis effect="italics">sp</emphasis><sup>2</sup> to <emphasis effect="italics">sp</emphasis><sup>3</sup> and two electrons from the <m:math><m:mrow><m:mtext>C&#x2550;O</m:mtext></m:mrow></m:math> <emphasis effect="italics">π</emphasis> bond are pushed onto the oxygen atom, giving an alkoxide ion. Protonation of the alkoxide ion by water then yields a neutral addition product plus regenerated OH<emphasis effect="bold"><sup>–</sup></emphasis>.</para>
+    <para id="para-00006">Under acidic conditions (<link target-id="fig-00004"/>b), the carbonyl oxygen atom is first protonated by H<sub>3</sub>O<sup>+</sup> to make the carbonyl group more strongly electrophilic. A neutral nucleophile, H<sub>2</sub>O, then uses a pair of electrons to bond to the carbon atom of the <m:math><m:mrow><m:mtext>C&#x2550;O</m:mtext></m:mrow></m:math> group, and two electrons from the <m:math><m:mrow><m:mtext>C&#x2550;O</m:mtext></m:mrow></m:math> <emphasis effect="italics">π</emphasis> bond move onto the oxygen atom. The positive charge on oxygen is thereby neutralized, while the nucleophile gains a positive charge. Finally, deprotonation by water gives the neutral addition product and regenerates the H<sub>3</sub>O<sup>+</sup> catalyst.</para>
+    <para id="para-00007">Note the key difference between the base-catalyzed and acid-catalyzed reactions. The base-catalyzed reaction takes place rapidly because water is converted into hydroxide ion, a much better <emphasis effect="italics">nucleophile.</emphasis> The acid-catalyzed reaction takes place rapidly because the carbonyl compound is converted by protonation into a much better <emphasis effect="italics">electrophile.</emphasis></para>
+    <figure class="mechanism-figure scaled-down" id="fig-00004">
+    <title>MECHANISM</title>
+    <media alt="Nucleophilic addition reactions under basic and acidic conditions involve two steps (attack, protonation) and three steps (protonation, attack, deprotonation), respectively. Hydrate (gem diol) is formed in both conditions.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_05_003.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">The mechanism for a nucleophilic addition reaction of aldehydes and ketones under both basic and acidic conditions.</emphasis> <emphasis effect="bold">(a)</emphasis> Under basic conditions, a negatively charged nucleophile adds to the carbonyl group to give an alkoxide ion intermediate, which is subsequently protonated. <emphasis effect="bold">(b)</emphasis> Under acidic conditions, protonation of the carbonyl group occurs first, followed by addition of a neutral nucleophile and subsequent deprotonation.</caption>
+    </figure>
+    <para id="para-00008">The hydration reaction just described is typical of what happens when an aldehyde or ketone is treated with a nucleophile of the type H–Y, where the Y atom is electronegative and can stabilize a negative charge (oxygen, halogen, or sulfur, for instance). In such reactions, the nucleophilic addition is reversible, with the equilibrium generally favoring the carbonyl reactant rather than the tetrahedral addition product. In other words, treatment of an aldehyde or ketone with CH<sub>3</sub>OH, H<sub>2</sub>O, HCl, HBr, or H<sub>2</sub>SO<sub>4</sub> does not normally lead to a stable alcohol addition product.</para>
+    <figure class="unnumbered scaled-down" id="fig-00005">
+    <media alt="Ketone and nucleophile H Y form tetrahedral product. Reaction is favored when Y is O C H 3, O H, B r, C l, or O S O 3 H.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_05_004.jpg"/>
+    </media>
+    </figure>
+    <section class="section-exercises" id="sect-00001">
+    <title>Problems</title>
+    <exercise id="exer-00001">
+    <problem id="prob-00001">
+    <para id="para-00009"><link class="os-embed" url="#exercise/19-05-OC-P07"/></para>
+    </problem>
+    </exercise>
+    <exercise id="exer-00002">
+    <problem id="prob-00002">
+    <para id="para-00010"><link class="os-embed" url="#exercise/19-05-OC-P08"/></para>
+    </problem>
+    </exercise>
+    </section>
+    </content>
+</document>

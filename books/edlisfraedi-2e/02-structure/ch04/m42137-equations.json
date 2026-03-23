@@ -1,0 +1,90 @@
+{
+  "math-1": {
+    "mathml": "<m:math display=\"block\">\n                \n                  <m:mrow>\n\n                      <m:mrow>\n                        <m:msup>\n                          <m:mtext>10</m:mtext>\n\n                            <m:mrow>\n                              <m:mrow>\n                                <m:mo stretchy=\"false\">−</m:mo>\n                                <m:mtext>38</m:mtext>\n                              </m:mrow>\n                            </m:mrow>\n\n                        </m:msup>\n                      </m:mrow>\n\n                    <m:mrow/>\n                  </m:mrow>\n                  \n                \n              </m:math>",
+    "latex": "{{{\\text{10}}^{{{− \\text{38}}}}}}"
+  },
+  "math-2": {
+    "mathml": "<m:math display=\"block\">\n                \n                  <m:mrow>\n\n                      <m:mrow>\n                        <m:mo stretchy=\"false\">∞</m:mo>\n                      </m:mrow>\n\n                    <m:mrow/>\n                  </m:mrow>\n                  \n                \n              </m:math>",
+    "latex": "{{∞}}"
+  },
+  "math-3": {
+    "mathml": "<m:math display=\"block\">\n                \n                  <m:mrow>\n\n                      <m:mrow>\n                        <m:msup>\n                          <m:mtext>10</m:mtext>\n\n                            <m:mrow>\n                              <m:mrow>\n                                <m:mo stretchy=\"false\">–</m:mo>\n                                <m:mn>2</m:mn>\n                              </m:mrow>\n                            </m:mrow>\n\n                        </m:msup>\n                      </m:mrow>\n\n                    <m:mrow/>\n                  </m:mrow>\n                  \n                \n              </m:math>",
+    "latex": "{{{\\text{10}}^{{{– 2}}}}}"
+  },
+  "math-4": {
+    "mathml": "<m:math display=\"block\">\n                \n                  <m:mrow>\n\n                      <m:mrow>\n                        <m:mo stretchy=\"false\">∞</m:mo>\n                      </m:mrow>\n\n                    <m:mrow/>\n                  </m:mrow>\n                  \n                \n              </m:math>",
+    "latex": "{{∞}}"
+  },
+  "math-5": {
+    "mathml": "<m:math display=\"block\">\n                  <m:mrow>\n                     <m:mrow>\n                        <m:msup>\n                          <m:mtext>10</m:mtext>\n                            <m:mrow>\n                              <m:mrow>\n                                <m:mo stretchy=\"false\">–</m:mo>\n                                <m:mtext>6</m:mtext>\n                              </m:mrow>\n                            </m:mrow>\n                        </m:msup>\n                      </m:mrow>\n                  </m:mrow>\n              </m:math>",
+    "latex": "{{{\\text{10}}^{{{– \\text{6}}}}}}"
+  },
+  "math-6": {
+    "mathml": "<m:math>\n<m:msup>\n<m:mn>10</m:mn>\n<m:mn>–18</m:mn>\n</m:msup>\n<m:mtext>m</m:mtext>\n</m:math>",
+    "latex": "{10}^{–18} \\text{m}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msup><m:mtext>W</m:mtext><m:mrow><m:mrow><m:mo stretchy=\"false\">+</m:mo><m:mrow/></m:mrow></m:mrow></m:msup></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{W}}^{{{+}}}}}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msup><m:mtext>W</m:mtext><m:mrow><m:mrow><m:mo stretchy=\"false\">–</m:mo><m:mrow/></m:mrow></m:mrow></m:msup></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{W}}^{{{–}}}}}"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msup><m:mtext>Z</m:mtext><m:mrow><m:mn>0</m:mn></m:mrow></m:msup></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{Z}}^{{0}}}}"
+  },
+  "math-10": {
+    "mathml": "<m:math display=\"block\">\n                \n                  <m:mrow>\n\n                      <m:mrow>\n                        <m:mn>1</m:mn>\n                      </m:mrow>\n\n                  </m:mrow>\n                \n              </m:math>",
+    "latex": "{{1}}"
+  },
+  "math-11": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mi>w</m:mi><m:mo stretchy=\"false\">=</m:mo><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>mg</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{w={\\text{mg}}}}}"
+  },
+  "math-12": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mtext>p1</m:mtext></m:mrow></m:msub></m:mrow></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{\\text{p1}}}}}"
+  },
+  "math-13": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mtext>B</m:mtext></m:mrow></m:msub></m:mrow></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{\\text{B}}}}}"
+  },
+  "math-14": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mtext>p2</m:mtext></m:mrow></m:msub></m:mrow></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{\\text{p2}}}}}"
+  },
+  "math-15": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F′</m:mtext><m:mrow><m:mtext>B</m:mtext></m:mrow></m:msub></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{{\\text{F′}}_{{\\text{B}}}}}}"
+  },
+  "math-16": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mtext>exch</m:mtext></m:mrow></m:msub></m:mrow></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{\\text{exch}}}}}"
+  },
+  "math-17": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F′</m:mtext><m:mrow><m:mtext>exch</m:mtext></m:mrow></m:msub></m:mrow></m:math>",
+    "latex": "{{\\text{F′}}_{{\\text{exch}}}}"
+  },
+  "math-18": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mn>1</m:mn><m:mo stretchy=\"false\">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mrow><m:mo stretchy=\"false\">−</m:mo><m:mtext>13</m:mtext></m:mrow></m:mrow></m:msup></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{1×{\\text{10}}^{{{−\\text{13}}}}}}}"
+  },
+  "math-19": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mn>1</m:mn><m:mo stretchy=\"false\">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mrow><m:mo stretchy=\"false\">−</m:mo><m:mtext>11</m:mtext></m:mrow></m:mrow></m:msup></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{1×{\\text{10}}^{{{−\\text{11}}}}}}}"
+  },
+  "math-20": {
+    "mathml": "<m:math>\n          \n            <m:mrow>\n\n                <m:mrow>\n                  <m:msup>\n                    <m:mtext>10</m:mtext>\n\n                      <m:mrow>\n                        <m:mn>2</m:mn>\n                      </m:mrow>\n\n                  </m:msup>\n                </m:mrow>\n            </m:mrow>\n                   \n        </m:math>",
+    "latex": "{{{\\text{10}}^{{2}}}}"
+  },
+  "math-21": {
+    "mathml": "<m:math><m:mrow><m:mi>V</m:mi><m:mo>=</m:mo><m:mi>K</m:mi><m:mi>F</m:mi></m:mrow></m:math>",
+    "latex": "{V=KF}"
+  },
+  "math-22": {
+    "mathml": "<m:math>\n   <m:mrow>\n    <m:mi>V</m:mi><m:mo>=</m:mo><m:msqrt>\n     <m:mrow>\n      <m:mn>2</m:mn><m:mo stretchy=\"false\">(</m:mo><m:mi>f</m:mi><m:mo>/</m:mo><m:mi>m</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mi>x</m:mi></m:mrow>\n    </m:msqrt>\n    <m:mo>=</m:mo><m:mtext>K</m:mtext><m:msqrt>\n     <m:mrow>\n      <m:mo stretchy=\"false\">(</m:mo><m:mi>F</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow>\n    </m:msqrt>\n    </m:mrow>\n  </m:math>",
+    "latex": "{V=\\sqrt{{2(f/m)x}} =\\text{K}\\sqrt{{(F)}}}"
+  }
+}

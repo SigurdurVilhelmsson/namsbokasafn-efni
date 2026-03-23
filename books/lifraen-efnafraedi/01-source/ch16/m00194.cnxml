@@ -1,0 +1,52 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Nucleophilic Aromatic Substitution</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Nucleophilic Aromatic Substitution</md:title>
+    <md:content-id>m00194</md:content-id>
+    <md:uuid>3bf44505-37ad-4684-8511-d170393837fd</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">Although aromatic substitution reactions usually occur by an <emphasis effect="italics">electrophilic</emphasis> mechanism, aryl halides that have electron-withdrawing substituents can also undergo a <emphasis effect="italics">nucleophilic</emphasis> substitution reaction. For example, 2,4,6-trinitrochlorobenzene reacts with aqueous NaOH at room temperature to give 2,4,6-trinitrophenol. Here, the nucleophile OH<sup>–</sup> substitutes for Cl<sup>–</sup>.</para>
+    <figure class="unnumbered" id="fig-00001">
+    <media alt="The ball-and-stick model in the electrostatic potential map of 2,4,6-trinitrochlorobenzene and its reaction with hydroxide ion to produce 2,4,6-trinitrophenol.">
+    <image mime-type="image/jpeg" src="../../media/OChem_16_06_001.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00002"><term id="term-00001">Nucleophilic aromatic substitution</term> is much less common than electrophilic substitution but nevertheless does have certain uses. One such use is the reaction of proteins with 2,4-dinitrofluorobenzene, known as <emphasis effect="italics">Sanger’s reagent,</emphasis> to attach a “label” to the terminal NH<sub>2</sub> group of the amino acid at one end of the protein chain.</para>
+    <figure class="unnumbered" id="fig-00002">
+    <media alt="A reaction shows 2,4-dinitrofluorobenzene reacting with a protein to yield a labeled protein.">
+    <image mime-type="image/jpeg" src="../../media/OChem_16_06_002.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00003">Although the reaction appears superficially similar to the S<sub>N</sub>1 and S<sub>N</sub>2 nucleophilic substitutions of alkyl halides discussed in the chapter on <link document="m00121">Reactions of Alkyl Halides: Nucleophilic Substitutions and Eliminations</link>, it must be different because aryl halides are inert to both S<sub>N</sub>1 and S<sub>N</sub>2 conditions. S<sub>N</sub>1 reactions don’t occur with aryl halides because dissociation of the halide is energetically unfavorable, due to the instability of the potential aryl cation product. S<sub>N</sub>2 reactions don’t occur with aryl halides because the halo-substituted carbon of the aromatic ring is sterically shielded from a backside approach. For a nucleophile to react with an aryl halide, it would have to approach directly through the aromatic ring and invert the stereochemistry of the aromatic ring carbon—a geometric impossibility.</para>
+    <figure class="unnumbered scaled-down" id="fig-00003">
+    <media alt="A non-feasible reaction shows chlorobenzene forming chloride ion and benzene with a positive charge. In another non-feasible reaction, nucleophile attacks C 1 of chlorobenzene.">
+    <image mime-type="image/jpeg" src="../../media/OChem_16_06_003.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00004">Instead, nucleophilic substitutions on an aromatic ring proceed by the mechanism shown in <link target-id="fig-00004"/>. The nucleophile first adds to the electron-deficient aryl halide, forming a resonance-stabilized, negatively charged intermediate called a <emphasis effect="italics">Meisenheimer complex</emphasis> after its discoverer. Halide ion is then eliminated.</para>
+    <figure class="mechanism-figure scaled-down" id="fig-00004">
+    <title>MECHANISM</title>
+    <media alt="A two-step mechanism of a hydroxide ion reacting with 2-nitrochlorobenzene to form 2-nitrophenol and chloride ion.">
+    <image mime-type="image/jpeg" src="../../media/OChem_16_06_004.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">Mechanism of nucleophilic aromatic substitution</emphasis>. The reaction occurs in two steps and involves a resonance-stabilized carbanion intermediate.</caption>
+    </figure>
+    <para id="para-00005">Nucleophilic aromatic substitution occurs only if the aromatic ring has an electron-withdrawing substituent in a position ortho or para to the leaving group to stabilize the anion intermediate through resonance (<link target-id="fig-00005"/>). A meta substituent offers no such resonance stabilization. Thus, <emphasis effect="italics">p</emphasis>-chloronitrobenzene and <emphasis effect="italics">o</emphasis>-chloronitrobenzene react with hydroxide ion at 130 °C to yield substitution products, but <emphasis effect="italics">m</emphasis>-chloronitrobenzene is inert to OH<sup>–</sup>.</para>
+    <figure id="fig-00005">
+    <media alt="The reaction mechanisms of ortho-, meta- and para-chloronitrobenzene with a hydroxide ion are each shown.">
+    <image mime-type="image/jpeg" src="../../media/OChem_16_06_005.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">Nucleophilic aromatic substitution on nitrochlorobenzenes</emphasis>. Only in the ortho and para intermediates is the negative charge stabilized by a resonance interaction with the nitro group, so only the ortho and para isomers undergo reaction.</caption>
+    </figure>
+    <para id="para-00006">Note the differences between electrophilic and nucleophilic aromatic substitutions. Electrophilic substitutions are favored by electron-donating substituents, which stabilize a carbocation intermediate, while nucleophilic substitutions are favored by electron-withdrawing substituents, which stabilize a carbanion intermediate. Thus, the electron-withdrawing groups that deactivate rings for electrophilic substitution (nitro, carbonyl, cyano, and so forth) activate them for nucleophilic substitution. What’s more, these functional groups are meta directors in electrophilic substitution but are ortho–para directors in nucleophilic substitution. And finally, electrophilic substitutions replace hydrogen on the ring, while nucleophilic substitutions replace a leaving group, usually halide ion.</para>
+    <section class="section-exercises" id="sect-00001">
+    <title>Problems</title>
+    <exercise id="exer-00001">
+    <problem id="prob-00001">
+    <para id="para-00007"><link class="os-embed" url="#exercise/16-06-OC-P16"/></para>
+    </problem>
+    </exercise>
+    </section>
+    </content>
+</document>

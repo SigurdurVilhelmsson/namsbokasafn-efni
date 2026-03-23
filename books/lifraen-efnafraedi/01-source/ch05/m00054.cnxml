@@ -1,0 +1,123 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Sequence Rules for Specifying Configuration</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Sequence Rules for Specifying Configuration</md:title>
+    <md:content-id>m00054</md:content-id>
+    <md:uuid>c713c5ab-6a99-453a-89d6-4713bb11dfdd</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">Structural drawings provide a visual representation of stereochemistry, but a written method for indicating the three-dimensional arrangement, or <term id="term-00001">configuration</term>, of substituents at a chirality center is also needed. The method used a set of <emphasis effect="bold">sequence rules</emphasis> to rank the four groups attached to the chirality center and then looks at the handedness with which those groups are attached. Called the <term id="term-00002">Cahn–Ingold–Prelog rules</term> after the chemists who proposed them, the sequence rules are as follows:</para>
+    <para id="para-00002"><emphasis effect="bold"><span class="red-text">RULE 1</span></emphasis><newline /><emphasis effect="bold">Look at the four atoms directly attached to the chirality center, and rank them according to atomic number.</emphasis> The atom with the highest atomic number has the highest ranking (first), and the atom with the lowest atomic number (usually hydrogen) has the lowest ranking (fourth). When different isotopes of the same element are compared, such as deuterium (<sup>2</sup>H) and protium (<sup>1</sup>H), the heavier isotope ranks higher than the lighter isotope. Thus, atoms commonly found in organic compounds have the following order.</para>
+    <figure class="unnumbered scaled-down" id="fig-00001">
+    <media alt="The atoms are arranged in descending order of their ranking and atomic number as follows: B r, C l, S, P, O, N, C, 2 H, and 1 H.">
+    <image mime-type="image/jpeg" src="../../media/OChem_05_05_001.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00004"><emphasis effect="bold"><span class="red-text">RULE 2</span></emphasis><newline /><emphasis effect="bold">If a decision can’t be reached by ranking the first atoms in the substituent, look at the second, third, or fourth atoms away from the chirality center until the first difference is found.</emphasis> A −CH<sub>2</sub>CH<sub>3</sub> substituent and a −CH<sub>3</sub> substituent are equivalent by rule 1 because both have carbon as the first atom. By rule 2, however, ethyl ranks higher than methyl because ethyl has a carbon as its highest second atom, while methyl has only hydrogen as its second atom. Look at the following pairs of examples to see how the rule works:</para>
+    <figure class="unnumbered scaled-down" id="fig-00002">
+    <media alt="Four pairs of structures are ranked. Within each pair, one structure is labeled as lower while the other as higher.">
+    <image mime-type="image/jpeg" src="../../media/OChem_05_05_002.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00006"><emphasis effect="bold"><span class="red-text">RULE 3</span></emphasis><newline /><emphasis effect="bold">Multiple-bonded atoms are equivalent to the same number of single-bonded atoms.</emphasis> For example, an aldehyde substituent (<m:math><m:mrow><m:mtext>&#x2013;CH&#x2550;O</m:mtext></m:mrow></m:math>), which has a carbon atom <emphasis effect="italics">doubly</emphasis> bonded to <emphasis effect="italics">one</emphasis> oxygen, is equivalent to a substituent having a carbon atom <emphasis effect="italics">singly</emphasis> bonded to <emphasis effect="italics">two</emphasis> oxygens:</para>
+    <figure class="unnumbered scaled-down" id="fig-00003">
+    <media alt="Two equivalent structures. The first structure has a carbonyl group. The second structure has a carbon bonded to hydrogen and two oxygens. One of the oxygens is bonded to carbon.">
+    <image mime-type="image/jpeg" src="../../media/OChem_05_05_003.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00008">As further examples, the following pairs are equivalent:</para>
+    <figure class="unnumbered scaled-down" id="fig-00004">
+    <media alt="Two pairs of equivalent structures. First pair shows alkene and a 4-carbon chain. Second pair shows alkyne and a 2-carbon chain, in which each carbon is bonded to two carbons">
+    <image mime-type="image/jpeg" src="../../media/OChem_05_05_004.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00009">Having ranked the four groups attached to a chiral carbon, we describe the stereochemical configuration around the carbon by orienting the molecule so that the group with the lowest ranking (4) points directly away from us. We then look at the three remaining substituents, which now appear to radiate toward us like the spokes on a steering wheel (<link target-id="fig-00005"/>). If a curved arrow drawn from the highest to second-highest to third-highest ranked substituent (1 → 2 → 3) is clockwise, we say that the chirality center has the <term id="term-00003"><emphasis effect="italics">R</emphasis> configuration</term> (Latin <emphasis effect="italics">rectus,</emphasis> meaning “right”). If an arrow from 1 → 2 → 3 is counterclockwise, the chirality center has the <term id="term-00004"><emphasis effect="italics">S</emphasis> configuration</term> (Latin <emphasis effect="italics">sinister</emphasis>, meaning “left”). To remember these assignments, think of a car’s steering wheel when making a <emphasis effect="italics">R</emphasis>ight (clockwise) turn.</para>
+    <figure class="scaled-down" id="fig-00005">
+    <media alt="Substituents in the compound form R configuration, depicted as a right turn of the steering wheel. Its mirror image forms S configuration, depicted as left turn of the steering wheel.">
+    <image mime-type="image/jpeg" src="../../media/OChem_05_05_005.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">Assigning <emphasis effect="italics">R</emphasis> and <emphasis effect="italics">S</emphasis> configurations to chirality centers.</emphasis> When the molecule is oriented so that the lowest-ranked group (<emphasis effect="bold">4</emphasis>) is toward the rear, the remaining three groups radiate toward the viewer like the spokes of a steering wheel. If the direction of travel <span class="magenta-text">1</span> → <span class="green-text">2</span> → <span class="cyan-text">3</span> is clockwise (right turn), the center has the <emphasis effect="italics">R</emphasis> configuration. If the direction of travel <span class="magenta-text">1</span> → <span class="green-text">2</span> → <span class="cyan-text">3</span> is counterclockwise (left turn), the center is <emphasis effect="italics">S</emphasis>.</caption>
+    </figure>
+    <para id="para-00010">Look at (−)-lactic acid in <link target-id="fig-00006"/> for an example of how to assign configuration. Sequence rule 1 says that −OH is ranked 1 and −H is ranked 4, but it doesn’t allow us to distinguish between −CH<sub>3</sub> and −CO<sub>2</sub>H because both groups have carbon as their first atom. Sequence rule 2, however, says that −CO<sub>2</sub>H ranks higher than −CH<sub>3</sub> because O (the highest second atom in −CO<sub>2</sub>H) outranks H (the highest second atom in −CH<sub>3</sub>). Now, turn the molecule so that the fourth-ranked group (−H) is oriented toward the rear, away from the observer. Since a curved arrow from 1 (−OH) to 2 (−CO<sub>2</sub>H) to 3 (−CH<sub>3</sub>) is clockwise (right turn of the steering wheel), (−)-lactic acid has the <emphasis effect="italics">R</emphasis> configuration. Applying the same procedure to (+)-lactic acid leads to the opposite assignment.</para>
+    <figure class="scaled-down" id="fig-00006">
+    <media alt="Structure and ball-and-stick model of (minus)-lactic acid with R configuration. Its mirror image shows ball-and-stick model of (plus)-lactic acid with S configuration. The figure also shows structure of (plus)-lactic acid.">
+    <image mime-type="image/jpeg" src="../../media/OChem_05_05_006.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">Assigning configuration to <emphasis effect="bold">(a)</emphasis> (<emphasis effect="italics">R</emphasis>)-(−)-lactic acid and <emphasis effect="bold">(b)</emphasis> (<emphasis effect="italics">S</emphasis>)-(+)-lactic acid.</emphasis></caption>
+    </figure>
+    <para id="para-00011">Further examples are provided by naturally occurring (−)-glyceraldehyde and (+)-alanine, which both have the <emphasis effect="italics">S</emphasis> configuration as shown in <link target-id="fig-00007"/>. Note that the sign of optical rotation, (+) or (−), is not related to the <emphasis effect="italics">R,S</emphasis> designation. (<emphasis effect="italics">S</emphasis>)-Glyceraldehyde happens to be levorotatory (−), and (<emphasis effect="italics">S</emphasis>)-alanine happens to be dextrorotatory (+). There is no simple correlation between <emphasis effect="italics">R,S</emphasis> configuration and direction or magnitude of optical rotation.</para>
+    <figure class="scaled-down" id="fig-00007">
+    <media alt="The structures and ball-and-stick models of (S)-Glyceraldehyde [(S)-(minus)-2,3-dihydroxypropanal] and (S)-alanine [(S)-(plus)-2-aminopropanoic acid with their [alpha] D values equals minus 8.7 and plus 8.5, respectively.">
+    <image mime-type="image/jpeg" src="../../media/OChem_05_05_007.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">Assigning configuration to <emphasis effect="bold">(a)</emphasis> (−)-glyceraldehyde. <emphasis effect="bold">(b)</emphasis> (+)-alanine. Both happen to have the <emphasis effect="italics">S</emphasis> configuration, although one is levorotatory and the other is dextrorotatory.</emphasis></caption>
+    </figure>
+    <para id="para-00012">One additional point needs to be mentioned—the matter of <term id="term-00005">absolute configuration</term>. How do we know that the assignments of <emphasis effect="italics">R</emphasis> and <emphasis effect="italics">S</emphasis> configuration are correct in an absolute sense<emphasis effect="italics">,</emphasis> rather than a relative, sense? Since there is no correlation between the <emphasis effect="italics">R,S</emphasis> configuration and the direction or magnitude of optical rotation, how do we know that the <emphasis effect="italics">R</emphasis> configuration belongs to the levorotatory enantiomer of lactic acid? This difficult question was finally solved in 1951, when an X-ray diffraction method was found for determining the absolute spatial arrangement of atoms in a molecule. Based on those results, we can say with certainty that the <emphasis effect="italics">R</emphasis>,<emphasis effect="italics">S</emphasis> conventions are correct.</para>
+    <example id="exam-00001">
+    <title>Assigning Configuration to Chirality Centers</title>
+    <para id="para-00013">Orient each of the following drawings so that the lowest-ranked group is toward the rear, and then assign <emphasis effect="italics">R</emphasis> or <emphasis effect="italics">S</emphasis> configuration to each:</para>
+    <figure class="unnumbered scaled-down" id="fig-00008">
+    <media alt="A carbon single bonded to 2 and 3, wedge to 1, and dash to 4. Another carbon single bonded to 1 and 3, wedge to 4, and dash to 2.">
+    <image mime-type="image/jpeg" src="../../media/OChem_05_05_008.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00014"><title><span class="red-text">Strategy</span></title> It takes practice to be able to visualize and orient a chirality center in three dimensions. You might start by indicating where the observer must be located—180° opposite the lowest-ranked group. Then imagine yourself in the position of the observer, and redraw what you would see.</para>
+    <para id="para-00015"><title><span class="cyan-text">Solution</span></title> In <emphasis effect="bold">(a)</emphasis>, you would be located in front of the page toward the top right of the molecule, and you would see group 2 to your left, group 3 to your right, and group 1 below you. This corresponds to an <emphasis effect="italics">R</emphasis> configuration.</para>
+    <figure class="unnumbered scaled-down" id="fig-00009">
+    <media alt="A carbon is single bonded to substituents 2 and 3, wedge bonded to 1, and dash bonded to 4. To the right, the substituents are arranged in R configuration.">
+    <image mime-type="image/jpeg" src="../../media/OChem_05_05_009.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00016">In <emphasis effect="bold">(b)</emphasis>, you would be located behind the page toward the top left of the molecule from your point of view, and you would see group 3 to your left, group 1 to your right, and group 2 below you. This also corresponds to an <emphasis effect="italics">R</emphasis> configuration.</para>
+    <figure class="unnumbered scaled-down" id="fig-00010">
+    <media alt="A carbon is single bonded to substituents 1 and 3, wedge bonded to 4, and dash bonded to 2. To the right, the substituents are arranged in R configuration.">
+    <image mime-type="image/jpeg" src="../../media/OChem_05_05_010.jpg"/>
+    </media>
+    </figure>
+    </example>
+    <example id="exam-00002">
+    <title>Drawing the Three-Dimensional Structure of a Specific Enantiomer</title>
+    <para id="para-00017">Draw a tetrahedral representation of (<emphasis effect="italics">R</emphasis>)-2-chlorobutane.</para>
+    <para id="para-00018"><title><span class="red-text">Strategy</span></title> Begin by ranking the four substituents bonded to the chirality center: (1) −Cl, (2) −CH<sub>2</sub>CH<sub>3</sub>, (3) −CH<sub>3</sub>, (4) −H. To draw a tetrahedral representation of the molecule, orient the lowest-ranked group (−H) away from you and imagine that the other three groups are coming out of the page toward you. Then, place the remaining three substituents such that the direction of travel 1 → 2 → 3 is clockwise (right turn), and tilt the molecule toward you to bring the rear hydrogen into view. Using molecular models is a real help in working problems of this sort.</para>
+    <para id="para-00019"><title><span class="cyan-text">Solution</span></title>
+    <figure class="unnumbered scaled-down" id="fig-00011">
+    <media alt="The structure of chlorobutane has a central carbon wedge bonded to chlorine (1), ethyl (2), and methyl (3) in clockwise manner. The structure is rotated to form (R)-2-chlorobutane.">
+    <image mime-type="image/jpeg" src="../../media/OChem_05_05_011.jpg"/>
+    </media>
+    </figure></para>
+    </example>
+    <section class="section-exercises" id="sect-00001">
+    <title>Problems</title>
+    <exercise id="exer-00001">
+    <problem id="prob-00001">
+    <para id="para-00020"><link class="os-embed" url="#exercise/05-05-OC-P07"/></para>
+    </problem>
+    </exercise>
+    <exercise id="exer-00002">
+    <problem id="prob-00002">
+    <para id="para-00021"><link class="os-embed" url="#exercise/05-05-OC-P08"/></para>
+    </problem>
+    </exercise>
+    <exercise id="exer-00003">
+    <problem id="prob-00003">
+    <para id="para-00022"><link class="os-embed" url="#exercise/05-05-OC-P09"/></para>
+    </problem>
+    </exercise>
+    <exercise id="exer-00004">
+    <problem id="prob-00004">
+    <para id="para-00023"><link class="os-embed" url="#exercise/05-05-OC-P10"/></para>
+    </problem>
+    </exercise>
+    <exercise id="exer-00005">
+    <problem id="prob-00005">
+    <para id="para-00024"><link class="os-embed" url="#exercise/05-05-OC-P11"/></para>
+    </problem>
+    </exercise>
+    <exercise id="exer-00006">
+    <problem id="prob-00006">
+    <para id="para-00025"><link class="os-embed" url="#exercise/05-05-OC-P12"/></para>
+    </problem>
+    </exercise>
+    </section>
+    </content>
+</document>

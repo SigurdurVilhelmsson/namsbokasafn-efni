@@ -1,0 +1,300 @@
+{
+  "moduleId": "m58806",
+  "title": {
+    "segmentId": "m58806:title:auto-1",
+    "text": "Lichens"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "3f0977e0-b5e5-4bf0-b566-91607c697684"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "fs-id1172101840760",
+      "class": "learning-objectives",
+      "title": {
+        "segmentId": "m58806:title:fs-id1172101840760-title",
+        "text": "Learning Objectives"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id11713605736962",
+          "segmentId": "m58806:para:fs-id11713605736962"
+        },
+        {
+          "type": "list",
+          "id": "fs-id1172101759907",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m58806:item:fs-id1172101759907-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m58806:item:fs-id1172101759907-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m58806:item:fs-id1172101759907-item-3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-id1172101983508",
+      "segmentId": "m58806:para:fs-id1172101983508"
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172097274185",
+      "class": null,
+      "title": {
+        "segmentId": "m58806:title:fs-id1172097274185-title",
+        "text": "Characteristics"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1172102066776",
+          "segmentId": "m58806:para:fs-id1172102066776"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172099375419",
+          "segmentId": "m58806:para:fs-id1172099375419"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172102033608",
+          "segmentId": "m58806:para:fs-id1172102033608"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172102148845",
+          "segmentId": "m58806:para:fs-id1172102148845"
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_05_lichenstr",
+          "caption": {
+            "segmentId": "m58806:caption:OSC_Microbio_05_05_lichenstr-caption"
+          },
+          "media": {
+            "id": "fs-id1172101811870",
+            "alt": "A drawing of a lichen which looks mostly like a web-work of strands. The top region is labeled cortex. The next region contains green circles and is labeled algal zone. The enxt region is labeled medulla. The next is lower cortex. The bottom region with forms triangular projections is labeled rhizine.",
+            "src": "../../media/OSC_Microbio_05_05_lichenstr.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172101898462",
+      "class": null,
+      "title": {
+        "segmentId": "m58806:title:fs-id1172101898462-title",
+        "text": "Lichen Diversity"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1172101791153",
+          "segmentId": "m58806:para:fs-id1172101791153"
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_05_lichens",
+          "caption": {
+            "segmentId": "m58806:caption:OSC_Microbio_05_05_lichens-caption"
+          },
+          "media": {
+            "id": "fs-id1172101847090",
+            "alt": "Photographs of lichen. A) is red-orange spots on a rock. B) is green leaf-like structures on a tree. C) is green hair-like structures on a tree.",
+            "src": "../../media/OSC_Microbio_05_05_lichens.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-id1172099603565",
+          "class": "microbiology check-your-understanding",
+          "title": null,
+          "content": []
+        },
+        {
+          "type": "note",
+          "id": "fs-id1172101914727",
+          "class": "microbiology clinical-focus",
+          "title": {
+            "segmentId": "m58806:note-title:fs-id1172101914727-title",
+            "text": "Resolution"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1172099747769",
+              "segmentId": "m58806:para:fs-id1172099747769"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1172099464122",
+              "segmentId": "m58806:para:fs-id1172099464122"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1172102098294",
+              "segmentId": "m58806:para:fs-id1172102098294"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172101900649",
+      "class": "summary",
+      "title": {
+        "segmentId": "m58806:title:fs-id1172101900649-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "list",
+          "id": "fs-id1172099754464",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": "bullet",
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m58806:item:fs-id1172099754464-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m58806:item:fs-id1172099754464-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m58806:item:fs-id1172099754464-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m58806:item:fs-id1172099754464-item-4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172102141743",
+      "class": "multiple-choice",
+      "title": {
+        "segmentId": "m58806:title:fs-id1172102141743-title",
+        "text": "Multiple Choice"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1172101888699",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172102140683",
+                "segmentId": "m58806:problem:fs-id1172102140683"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172097224996",
+                "segmentId": "m58806:solution:fs-id1172097224996"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1172099550350",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172102006981",
+                "segmentId": "m58806:problem:fs-id1172102006981"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172099657646",
+                "segmentId": "m58806:solution:fs-id1172099657646"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1172099523194",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172101789111",
+                "segmentId": "m58806:problem:fs-id1172101789111"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172099455121",
+                "segmentId": "m58806:solution:fs-id1172099455121"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172099597823",
+      "class": "short-answer",
+      "title": {
+        "segmentId": "m58806:title:fs-id1172099597823-title",
+        "text": "Short Answer"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1172101626222",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172102124782",
+                "segmentId": "m58806:problem:fs-id1172102124782"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": null
+}

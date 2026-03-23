@@ -1,0 +1,24 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Biological Additions of Radicals to Alkenes</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Biological Additions of Radicals to Alkenes</md:title>
+    <md:content-id>m00099</md:content-id>
+    <md:uuid>09b0b697-b323-4123-9553-460e72fcaad9</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">The same high reactivity of radicals that enables the alkene polymerization we saw in the previous section also makes it difficult to carry out controlled radical reactions on complex molecules. As a result, there are severe limitations on the usefulness of radical addition reactions in the laboratory. In contrast to an electrophilic addition, where reaction occurs once and the reactive cation intermediate is rapidly quenched by a nucleophile, the reactive intermediate in a radical reaction is not usually quenched. Instead, it reacts again and again in a largely uncontrollable way.</para>
+    <figure class="unnumbered scaled-down" id="fig-00001">
+    <media alt="Electrophilic addition reaction shows 2-carbon alkene reacting with E plus and then Nu minus. Radical addition reaction shows 2-carbon alkene reacting with radical (an unpaired electron).">
+    <image mime-type="image/jpeg" src="../../media/OChem_08_11_001.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00002">In biological reactions, the situation is different from that in the laboratory. Only one substrate molecule at a time is present in the active site of an enzyme, and that molecule is held in a precise position, with other necessary reacting groups nearby. As a result, biological radical reactions are more controlled and more common than laboratory or industrial radical reactions. A particularly impressive example occurs in the biosynthesis of prostaglandins from arachidonic acid, where a sequence of four radical additions take place. Its reaction mechanism was discussed briefly in <link document="m00079"/>.</para>
+    <para id="para-00003">As shown in <link target-id="fig-00002"/>, prostaglandin biosynthesis begins with abstraction of a hydrogen atom from C13 of arachidonic acid by an iron–oxy radical to give a carbon radical that reacts with O<sub>2</sub> at C11 through a resonance form. The oxygen radical that results adds to the C8–C9 double bond to give a carbon radical at C8, which adds to the C12–C13 double bond and gives a carbon radical at C13. A resonance form of this carbon radical adds at C15 to a second O<sub>2</sub> molecule, completing the prostaglandin skeleton. Reduction of the O−O bond then gives prostaglandin H<sub>2</sub>, called PGH<sub>2</sub>. The pathway looks complicated, but the entire process is catalyzed with exquisite control by a single enzyme.</para>
+    <figure class="scaled-down" id="fig-00002">
+    <media alt="A 6-step biosynthesis pathway shows the formation of prostaglandin H 2 from arachidonic acid.">
+    <image mime-type="image/jpeg" src="../../media/OChem_08_12_001.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">Pathway for the biosynthesis of prostaglandins from arachidonic acid.</emphasis> Steps <emphasis effect="bold"><span class="magenta-text">2</span></emphasis> and <emphasis effect="bold"><span class="magenta-text">5</span></emphasis> are radical addition reactions to O<sub>2</sub>; steps <emphasis effect="bold"><span class="magenta-text">3</span></emphasis> and <emphasis effect="bold"><span class="magenta-text">4</span></emphasis> are radical additions to carbon–carbon double bonds.</caption>
+    </figure>
+    </content>
+</document>

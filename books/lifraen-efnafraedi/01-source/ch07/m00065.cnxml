@@ -1,0 +1,115 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Naming Alkenes</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Naming Alkenes</md:title>
+    <md:content-id>m00065</md:content-id>
+    <md:uuid>66e5acb7-2fe7-46b7-aaad-280c344eab5e</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">Alkenes are named using a series of rules similar to those for alkanes (<link document="m00035"/>), with the suffix <emphasis effect="italics">-ene</emphasis> used instead of <emphasis effect="italics">-ane</emphasis> to identify the functional group. There are three steps to this process.</para>
+    <para id="para-00002"><emphasis effect="bold"><span class="red-text">STEP 1</span></emphasis> <newline /><emphasis effect="bold">Name the parent hydrocarbon.</emphasis> Find the longest carbon chain containing the double bond, and name the compound accordingly, using the suffix <emphasis effect="italics">-ene:</emphasis></para>
+    <figure class="unnumbered scaled-down" id="fig-00001">
+    <media alt="Two structures of 2-ethylpent-1-ene highlighted differently to justify that the molecule is named as a pentene, not a hexane, since the double bond is not contained in the six-carbon chain.">
+    <image mime-type="image/jpeg" src="../../media/OChem_07_03_001.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00003"><emphasis effect="bold"><span class="red-text">STEP 2</span></emphasis> <newline /><emphasis effect="bold">Number the carbon atoms in the chain.</emphasis> Begin at the end nearer the double bond or, if the double bond is equidistant from the two ends, begin at the end nearer the first branch point. This rule ensures that the double-bond carbons receive the lowest possible numbers.</para>
+    <figure class="unnumbered scaled-down" id="fig-00002">
+    <media alt="The first structure has a 6-carbon chain with a double bond between C2-C3. The second compound has a 6-carbon chain with methyl group at C2 and double bond between C3-C4.">
+    <image mime-type="image/jpeg" src="../../media/OChem_07_03_002.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00004"><emphasis effect="bold"><span class="red-text">STEP 3</span></emphasis> <newline /><emphasis effect="bold">Write the full name.</emphasis> Number the substituents according to their positions in the chain, and list them alphabetically. Indicate the position of the double bond by giving the number of the first alkene carbon and placing that number directly before the parent name. If more than one double bond is present, indicate the position of each and use one of the suffixes <emphasis effect="italics">-diene, -triene,</emphasis> and so on.</para>
+    <figure class="unnumbered scaled-down" id="fig-00003">
+    <media alt="The structures of 2-hexene, 2-methyl-3-hexene, 2-ethyl-1-pentene, and 2-methyl-1 3-butadiene. The carbon atoms are numbered in all structures.">
+    <image mime-type="image/jpeg" src="../../media/OChem_07_03_003.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00005">We should also note that IUPAC changed their naming recommendations in 1993 to place the locant indicating the position of the double bond immediately before the -<emphasis effect="italics">ene</emphasis> suffix rather than before the parent name: but-2-ene rather than 2-butene, for instance. This change has not been widely accepted by the chemical community in the United States, however, so we’ll stay with the older but more commonly used names. Be aware, though, that you may occasionally encounter the newer system.</para>
+    <figure class="unnumbered scaled-down" id="fig-00004">
+    <media alt="The condensed structures of two compounds. First compound: Newer naming system: 2,5-dimethylhept-3-ene and older naming system: 2,5-dimethyl-3-heptene. Second compound: Newer naming system: 3-propylhexa-1,4-diene and older naming system: 3 propyl-1,4-hexadiene.">
+    <image mime-type="image/jpeg" src="../../media/OChem_07_03_004.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00006">Cycloalkenes are named similarly, but because there is no chain end to begin from, we number the cycloalkene so that the double bond is between C1 and C2 and the first substituent has as low a number as possible. It’s not necessary to indicate the position of the double bond in the name because it’s always between C1 and C2. As with open-chain alkenes, the newer but not yet widely accepted naming rules place the locant immediately before the suffix in a cyclic alkene.</para>
+    <figure class="unnumbered scaled-down" id="fig-00005">
+    <media alt="The structures of 1-methylcyclohexene, 1,4-cyclohexadiene (new name: cyclohexa-1,4-diene) and 1,5-dimethylcyclopentene. The carbon atoms are numbered in all structures.">
+    <image mime-type="image/jpeg" src="../../media/OChem_07_03_005.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00007">For historical reasons, there are a few alkenes whose names are firmly entrenched in common usage but don’t conform to the rules. For example, the alkene derived from ethane should be called <emphasis effect="italics">ethene,</emphasis> but the name <emphasis effect="italics">ethylene</emphasis> has been used for so long that it is accepted by IUPAC. <link target-id="table-00001"/> lists several other common names that are often used and are recognized by IUPAC. Note also that a =CH<sub>2</sub> substituent is called a <term id="term-00001">methylene group</term>, a <m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>C&#x2550;CH–</m:mtext></m:mrow></m:math> substituent is called a <term id="term-00002">vinyl group</term>, and a <m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>C&#x2550;</m:mtext><m:msub><m:mrow><m:mtext>CHCH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>–</m:mtext></m:mrow></m:math> substituent is called an <term id="term-00003">allyl group</term>.</para>
+    <figure class="unnumbered scaled-down" id="fig-00006">
+    <media alt="The structures of methylene (double bond to C H 2), vinyl (C H C H 2), and allyl (C H 2 C H C H 2) groups.">
+    <image mime-type="image/jpeg" src="../../media/OChem_07_03_006.jpg"/>
+    </media>
+    </figure>
+    <table summary="" id="table-00001">
+    <title>Common Names of Some Alkenes</title>
+    <tgroup cols="3">
+    <colspec colnum="1" colname="c1"/>
+    <colspec colnum="2" colname="c2"/>
+    <colspec colnum="3" colname="c3"/>
+    <thead>
+    <row valign="top">
+    <entry valign="top" align="left">Compound</entry>
+    <entry valign="top" align="left">Systematic name</entry>
+    <entry valign="top" align="left">Common name</entry>
+    </row>
+    </thead>
+    <tbody>
+    <row valign="top">
+    <entry valign="top" align="left"><m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>C&#x2550;</m:mtext><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:math></entry>
+    <entry valign="top" align="left">Ethene</entry>
+    <entry valign="top" align="left">Ethylene</entry>
+    </row>
+    <row valign="top">
+    <entry valign="top" align="left"><m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>CH&#x2550;</m:mtext><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:math></entry>
+    <entry valign="top" align="left">Propene</entry>
+    <entry valign="top" align="left">Propylene</entry>
+    </row>
+    <row valign="top">
+    <entry valign="top" align="left">
+    <media alt="A condensed structural formula that has a 3-carbon chain with a double bond between C1-C2. C2 is bonded to a methyl group.">
+    <image mime-type="image/jpeg" src="../../media/OChem_07_03_007a.jpg"/>
+    </media>
+    </entry>
+    <entry valign="top" align="left">2-Methylpropene</entry>
+    <entry valign="top" align="left">Isobutylene</entry>
+    </row>
+    <row valign="top">
+    <entry valign="top" align="left">
+    <media alt="A condensed structural formula has a 4-carbon chain with double bonds between C1-C2 and C3-C4. C2 is also bonded to a methyl group.">
+    <image mime-type="image/jpeg" src="../../media/OChem_07_03_007b.jpg"/>
+    </media>
+    </entry>
+    <entry valign="top" align="left">2-Methyl-1,3-butadiene</entry>
+    <entry valign="top" align="left">Isoprene</entry>
+    </row>
+    </tbody>
+    </tgroup>
+    </table>
+    <section class="section-exercises" id="sect-00001">
+    <title>Problems</title>
+    <exercise id="exer-00001">
+    <problem id="prob-00001">
+    <para id="para-00008"><link class="os-embed" url="#exercise/07-03-OC-P04"/></para>
+    </problem>
+    </exercise>
+    <exercise id="exer-00002">
+    <problem id="prob-00002">
+    <para id="para-00009"><link class="os-embed" url="#exercise/07-03-OC-P05"/></para>
+    </problem>
+    </exercise>
+    <exercise id="exer-00003">
+    <problem id="prob-00003">
+    <para id="para-00010"><link class="os-embed" url="#exercise/07-03-OC-P06"/></para>
+    </problem>
+    </exercise>
+    <exercise id="exer-00004">
+    <problem id="prob-00004">
+    <para id="para-00011"><link class="os-embed" url="#exercise/07-03-OC-P07"/></para>
+    </problem>
+    </exercise>
+    </section>
+    </content>
+</document>

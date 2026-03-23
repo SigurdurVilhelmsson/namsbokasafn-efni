@@ -1,0 +1,6 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:msup><m:mtext>10</m:mtext><m:mrow><m:mrow><m:mo stretchy=\"false\">−</m:mo><m:mn>9</m:mn></m:mrow></m:mrow></m:msup><m:mspace width=\"0.25em\"/><m:mtext> m</m:mtext></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{{\\text{10}}^{{{−9}}}\\, \\text{m}}}}"
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "generated": "2026-03-23T18:55:58.675Z",
+  "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]])",
+  "summary": {
+    "totalChecked": 10,
+    "perfect": 2,
+    "withDiscrepancies": 8,
+    "skippedUntranslated": 0,
+    "totalDiscrepancies": 48
+  },
+  "modules": [
+    {
+      "moduleId": "m58781",
+      "chapter": "ch01",
+      "discrepancies": [
+        {
+          "tag": "footnote",
+          "diff": -2
+        },
+        {
+          "tag": "foreign",
+          "diff": -1
+        },
+        {
+          "tag": "link",
+          "diff": -1
+        },
+        {
+          "tag": "term",
+          "diff": 3
+        }
+      ]
+    },
+    {
+      "moduleId": "m58782",
+      "chapter": "ch01",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": 4
+        },
+        {
+          "tag": "link",
+          "diff": -1
+        },
+        {
+          "tag": "term",
+          "diff": 9
+        }
+      ]
+    },
+    {
+      "moduleId": "m58783",
+      "chapter": "ch01",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -2
+        },
+        {
+          "tag": "footnote",
+          "diff": -4
+        },
+        {
+          "tag": "link",
+          "diff": 2
+        },
+        {
+          "tag": "term",
+          "diff": 5
+        }
+      ]
+    },
+    {
+      "moduleId": "m58802",
+      "chapter": "ch05",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -3
+        },
+        {
+          "tag": "term",
+          "diff": 2
+        }
+      ]
+    },
+    {
+      "moduleId": "m58803",
+      "chapter": "ch05",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -2
+        }
+      ]
+    },
+    {
+      "moduleId": "m58804",
+      "chapter": "ch05",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": 3
+        },
+        {
+          "tag": "term",
+          "diff": 1
+        }
+      ]
+    },
+    {
+      "moduleId": "m58805",
+      "chapter": "ch05",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        },
+        {
+          "tag": "term",
+          "diff": 1
+        }
+      ]
+    },
+    {
+      "moduleId": "m58806",
+      "chapter": "ch05",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        }
+      ]
+    }
+  ]
+}

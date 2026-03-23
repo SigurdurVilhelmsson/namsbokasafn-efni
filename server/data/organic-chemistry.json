@@ -1,0 +1,2249 @@
+{
+  "book": "organic-chemistry",
+  "slug": "lifraen-efnafraedi",
+  "title": "Organic Chemistry",
+  "titleIs": "Lífræn efnafræði",
+  "repo": "openstax/osbooks-organic-chemistry",
+  "preface": "m00001",
+  "chapters": [
+    {
+      "chapter": 1,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00157",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00158",
+          "section": "1.1",
+          "title": "Atomic Structure: The Nucleus",
+          "titleIs": null
+        },
+        {
+          "id": "m00159",
+          "section": "1.2",
+          "title": "Atomic Structure: Orbitals",
+          "titleIs": null
+        },
+        {
+          "id": "m00160",
+          "section": "1.3",
+          "title": "Atomic Structure: Electron Configurations",
+          "titleIs": null
+        },
+        {
+          "id": "m00161",
+          "section": "1.4",
+          "title": "Development of Chemical Bonding Theory",
+          "titleIs": null
+        },
+        {
+          "id": "m00162",
+          "section": "1.5",
+          "title": "Describing Chemical Bonds: Valence Bond Theory",
+          "titleIs": null
+        },
+        {
+          "id": "m00163",
+          "section": "1.6",
+          "title": "",
+          "titleIs": null
+        },
+        {
+          "id": "m00164",
+          "section": "1.7",
+          "title": "Problems",
+          "titleIs": null
+        },
+        {
+          "id": "m00165",
+          "section": "1.8",
+          "title": "Drawing Electron-Dot and Line-Bond Structures",
+          "titleIs": null
+        },
+        {
+          "id": "m00166",
+          "section": "1.9",
+          "title": "Comparison of C−C and C−H Bonds in Methane, Ethane, Ethylene, and Acetylene",
+          "titleIs": null
+        },
+        {
+          "id": "m00167",
+          "section": "1.10",
+          "title": "Hybridization of Nitrogen, Oxygen, Phosphorus, and Sulfur",
+          "titleIs": null
+        },
+        {
+          "id": "m00168",
+          "section": "1.11",
+          "title": "Describing Chemical Bonds: Molecular Orbital Theory",
+          "titleIs": null
+        },
+        {
+          "id": "m00169",
+          "section": "1.12",
+          "title": "Drawing Chemical Structures",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 2,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00017",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00018",
+          "section": "2.1",
+          "title": "Polar Covalent Bonds and Electronegativity",
+          "titleIs": null
+        },
+        {
+          "id": "m00019",
+          "section": "2.2",
+          "title": "Polar Covalent Bonds and Dipole Moments",
+          "titleIs": null
+        },
+        {
+          "id": "m00020",
+          "section": "2.3",
+          "title": "Formal Charges",
+          "titleIs": null
+        },
+        {
+          "id": "m00021",
+          "section": "2.4",
+          "title": "Resonance",
+          "titleIs": null
+        },
+        {
+          "id": "m00022",
+          "section": "2.5",
+          "title": "Rules for Resonance Forms",
+          "titleIs": null
+        },
+        {
+          "id": "m00023",
+          "section": "2.6",
+          "title": "Drawing Resonance Forms",
+          "titleIs": null
+        },
+        {
+          "id": "m00024",
+          "section": "2.7",
+          "title": "Acids and Bases: The Brønsted–Lowry Definition",
+          "titleIs": null
+        },
+        {
+          "id": "m00025",
+          "section": "2.8",
+          "title": "Acid and Base Strength",
+          "titleIs": null
+        },
+        {
+          "id": "m00026",
+          "section": "2.9",
+          "title": "Problems",
+          "titleIs": null
+        },
+        {
+          "id": "m00027",
+          "section": "2.10",
+          "title": "Organic Acids and Organic Bases",
+          "titleIs": null
+        },
+        {
+          "id": "m00028",
+          "section": "2.11",
+          "title": "Acids and Bases: The Lewis Definition",
+          "titleIs": null
+        },
+        {
+          "id": "m00029",
+          "section": "2.12",
+          "title": "Noncovalent Interactions between Molecules",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 3,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00031",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00032",
+          "section": "3.1",
+          "title": "Functional Groups",
+          "titleIs": null
+        },
+        {
+          "id": "m00033",
+          "section": "3.2",
+          "title": "Alkanes and Alkane Isomers",
+          "titleIs": null
+        },
+        {
+          "id": "m00034",
+          "section": "3.3",
+          "title": "Alkyl Groups",
+          "titleIs": null
+        },
+        {
+          "id": "m00035",
+          "section": "3.4",
+          "title": "Naming Alkanes",
+          "titleIs": null
+        },
+        {
+          "id": "m00036",
+          "section": "3.5",
+          "title": "Properties of Alkanes",
+          "titleIs": null
+        },
+        {
+          "id": "m00037",
+          "section": "3.6",
+          "title": "Conformations of Ethane",
+          "titleIs": null
+        },
+        {
+          "id": "m00038",
+          "section": "3.7",
+          "title": "Conformations of Other Alkanes",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 4,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00039",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00040",
+          "section": "4.1",
+          "title": "Naming Cycloalkanes",
+          "titleIs": null
+        },
+        {
+          "id": "m00041",
+          "section": "4.2",
+          "title": "Cis–Trans Isomerism in Cycloalkanes",
+          "titleIs": null
+        },
+        {
+          "id": "m00042",
+          "section": "4.3",
+          "title": "Stability of Cycloalkanes: Ring Strain",
+          "titleIs": null
+        },
+        {
+          "id": "m00043",
+          "section": "4.4",
+          "title": "Conformations of Cycloalkanes",
+          "titleIs": null
+        },
+        {
+          "id": "m00044",
+          "section": "4.5",
+          "title": "Conformations of Cyclohexane",
+          "titleIs": null
+        },
+        {
+          "id": "m00045",
+          "section": "4.6",
+          "title": "Axial and Equatorial Bonds in Cyclohexane",
+          "titleIs": null
+        },
+        {
+          "id": "m00046",
+          "section": "4.7",
+          "title": "Conformations of Monosubstituted Cyclohexanes",
+          "titleIs": null
+        },
+        {
+          "id": "m00047",
+          "section": "4.8",
+          "title": "Conformations of Disubstituted Cyclohexanes",
+          "titleIs": null
+        },
+        {
+          "id": "m00048",
+          "section": "4.9",
+          "title": "Conformations of Polycyclic Molecules",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 5,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00049",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00050",
+          "section": "5.1",
+          "title": "Enantiomers and the Tetrahedral Carbon",
+          "titleIs": null
+        },
+        {
+          "id": "m00051",
+          "section": "5.2",
+          "title": "The Reason for Handedness in Molecules: Chirality",
+          "titleIs": null
+        },
+        {
+          "id": "m00052",
+          "section": "5.3",
+          "title": "Optical Activity",
+          "titleIs": null
+        },
+        {
+          "id": "m00053",
+          "section": "5.4",
+          "title": "Pasteur’s Discovery of Enantiomers",
+          "titleIs": null
+        },
+        {
+          "id": "m00054",
+          "section": "5.5",
+          "title": "Sequence Rules for Specifying Configuration",
+          "titleIs": null
+        },
+        {
+          "id": "m00055",
+          "section": "5.6",
+          "title": "Diastereomers",
+          "titleIs": null
+        },
+        {
+          "id": "m00056",
+          "section": "5.7",
+          "title": "Meso Compounds",
+          "titleIs": null
+        },
+        {
+          "id": "m00057",
+          "section": "5.8",
+          "title": "Racemic Mixtures and the Resolution of Enantiomers",
+          "titleIs": null
+        },
+        {
+          "id": "m00058",
+          "section": "5.9",
+          "title": "A Review of Isomerism",
+          "titleIs": null
+        },
+        {
+          "id": "m00059",
+          "section": "5.10",
+          "title": "Chirality at Nitrogen, Phosphorus, and Sulfur",
+          "titleIs": null
+        },
+        {
+          "id": "m00060",
+          "section": "5.11",
+          "title": "Prochirality",
+          "titleIs": null
+        },
+        {
+          "id": "m00061",
+          "section": "5.12",
+          "title": "Chirality in Nature and Chiral Environments",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 6,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00076",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00077",
+          "section": "6.1",
+          "title": "Kinds of Organic Reactions",
+          "titleIs": null
+        },
+        {
+          "id": "m00078",
+          "section": "6.2",
+          "title": "How Organic Reactions Occur: Mechanisms",
+          "titleIs": null
+        },
+        {
+          "id": "m00079",
+          "section": "6.3",
+          "title": "Radical Reactions",
+          "titleIs": null
+        },
+        {
+          "id": "m00080",
+          "section": "6.4",
+          "title": "Polar Reactions",
+          "titleIs": null
+        },
+        {
+          "id": "m00081",
+          "section": "6.5",
+          "title": "An Example of a Polar Reaction: Addition of HBr to Ethylene",
+          "titleIs": null
+        },
+        {
+          "id": "m00082",
+          "section": "6.6",
+          "title": "Using Curved Arrows in Polar Reaction Mechanisms",
+          "titleIs": null
+        },
+        {
+          "id": "m00083",
+          "section": "6.7",
+          "title": "Describing a Reaction: Equilibria, Rates, and Energy Changes",
+          "titleIs": null
+        },
+        {
+          "id": "m00084",
+          "section": "6.8",
+          "title": "Describing a Reaction: Bond Dissociation Energies",
+          "titleIs": null
+        },
+        {
+          "id": "m00085",
+          "section": "6.9",
+          "title": "Describing a Reaction: Energy Diagrams and Transition States",
+          "titleIs": null
+        },
+        {
+          "id": "m00086",
+          "section": "6.10",
+          "title": "Describing a Reaction: Intermediates",
+          "titleIs": null
+        },
+        {
+          "id": "m00087",
+          "section": "6.11",
+          "title": "A Comparison Between Biological Reactions and Laboratory Reactions",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 7,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00062",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00063",
+          "section": "7.1",
+          "title": "Industrial Preparation and Use of Alkenes",
+          "titleIs": null
+        },
+        {
+          "id": "m00064",
+          "section": "7.2",
+          "title": "Calculating the Degree of Unsaturation",
+          "titleIs": null
+        },
+        {
+          "id": "m00065",
+          "section": "7.3",
+          "title": "Naming Alkenes",
+          "titleIs": null
+        },
+        {
+          "id": "m00066",
+          "section": "7.4",
+          "title": "Cis–Trans Isomerism in Alkenes",
+          "titleIs": null
+        },
+        {
+          "id": "m00067",
+          "section": "7.5",
+          "title": "Problems",
+          "titleIs": null
+        },
+        {
+          "id": "m00068",
+          "section": "7.6",
+          "title": "Stability of Alkenes",
+          "titleIs": null
+        },
+        {
+          "id": "m00069",
+          "section": "7.7",
+          "title": "Electrophilic Addition Reactions of Alkenes",
+          "titleIs": null
+        },
+        {
+          "id": "m00070",
+          "section": "7.8",
+          "title": "Orientation of Electrophilic Additions: Markovnikov’s Rule",
+          "titleIs": null
+        },
+        {
+          "id": "m00071",
+          "section": "7.9",
+          "title": "Carbocation Structure and Stability",
+          "titleIs": null
+        },
+        {
+          "id": "m00072",
+          "section": "7.10",
+          "title": "The Hammond Postulate",
+          "titleIs": null
+        },
+        {
+          "id": "m00073",
+          "section": "7.11",
+          "title": "Evidence for the Mechanism of Electrophilic Additions: Carbocation Rearrangements",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 8,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00088",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00089",
+          "section": "8.1",
+          "title": "Preparing Alkenes: A Preview of Elimination Reactions",
+          "titleIs": null
+        },
+        {
+          "id": "m00090",
+          "section": "8.2",
+          "title": "Problems",
+          "titleIs": null
+        },
+        {
+          "id": "m00091",
+          "section": "8.3",
+          "title": "Halohydrins from Alkenes: Addition of HO-X",
+          "titleIs": null
+        },
+        {
+          "id": "m00092",
+          "section": "8.4",
+          "title": "MECHANISM",
+          "titleIs": null
+        },
+        {
+          "id": "m00093",
+          "section": "8.5",
+          "title": "Predicting the Products of a Hydration Reaction",
+          "titleIs": null
+        },
+        {
+          "id": "m00094",
+          "section": "8.6",
+          "title": "Reduction of Alkenes: Hydrogenation",
+          "titleIs": null
+        },
+        {
+          "id": "m00095",
+          "section": "8.7",
+          "title": "Oxidation of Alkenes: Epoxidation and Hydroxylation",
+          "titleIs": null
+        },
+        {
+          "id": "m00096",
+          "section": "8.8",
+          "title": "Oxidation of Alkenes: Cleavage to Carbonyl Compounds",
+          "titleIs": null
+        },
+        {
+          "id": "m00097",
+          "section": "8.9",
+          "title": "Addition of Carbenes to Alkenes: Cyclopropane Synthesis",
+          "titleIs": null
+        },
+        {
+          "id": "m00098",
+          "section": "8.10",
+          "title": "Radical Additions to Alkenes: Chain-Growth Polymers",
+          "titleIs": null
+        },
+        {
+          "id": "m00099",
+          "section": "8.11",
+          "title": "Biological Additions of Radicals to Alkenes",
+          "titleIs": null
+        },
+        {
+          "id": "m00100",
+          "section": "8.12",
+          "title": "",
+          "titleIs": null
+        },
+        {
+          "id": "m00101",
+          "section": "8.13",
+          "title": "Problems",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 9,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00102",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00103",
+          "section": "9.1",
+          "title": "Naming Alkynes",
+          "titleIs": null
+        },
+        {
+          "id": "m00104",
+          "section": "9.2",
+          "title": "Preparation of Alkynes: Elimination Reactions of Dihalides",
+          "titleIs": null
+        },
+        {
+          "id": "m00105",
+          "section": "9.3",
+          "title": "Problems",
+          "titleIs": null
+        },
+        {
+          "id": "m00106",
+          "section": "9.4",
+          "title": "Hydration of Alkynes",
+          "titleIs": null
+        },
+        {
+          "id": "m00107",
+          "section": "9.5",
+          "title": "Reduction of Alkynes",
+          "titleIs": null
+        },
+        {
+          "id": "m00108",
+          "section": "9.6",
+          "title": "Oxidative Cleavage of Alkynes",
+          "titleIs": null
+        },
+        {
+          "id": "m00109",
+          "section": "9.7",
+          "title": "Alkyne Acidity: Formation of Acetylide Anions",
+          "titleIs": null
+        },
+        {
+          "id": "m00110",
+          "section": "9.8",
+          "title": "Alkylation of Acetylide Anions",
+          "titleIs": null
+        },
+        {
+          "id": "m00111",
+          "section": "9.9",
+          "title": "An Introduction to Organic Synthesis",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 10,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00112",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00113",
+          "section": "10.1",
+          "title": "Names and Structures of Alkyl Halides",
+          "titleIs": null
+        },
+        {
+          "id": "m00114",
+          "section": "10.2",
+          "title": "Preparing Alkyl Halides from Alkanes: Radical Halogenation",
+          "titleIs": null
+        },
+        {
+          "id": "m00115",
+          "section": "10.3",
+          "title": "Preparing Alkyl Halides from Alkenes: Allylic Bromination",
+          "titleIs": null
+        },
+        {
+          "id": "m00116",
+          "section": "10.4",
+          "title": "Stability of the Allyl Radical: Resonance Revisited",
+          "titleIs": null
+        },
+        {
+          "id": "m00117",
+          "section": "10.5",
+          "title": "Preparing Alkyl Halides from Alcohols",
+          "titleIs": null
+        },
+        {
+          "id": "m00118",
+          "section": "10.6",
+          "title": "Reactions of Alkyl Halides: Grignard Reagents",
+          "titleIs": null
+        },
+        {
+          "id": "m00119",
+          "section": "10.7",
+          "title": "Organometallic Coupling Reactions",
+          "titleIs": null
+        },
+        {
+          "id": "m00120",
+          "section": "10.8",
+          "title": "Oxidation and Reduction in Organic Chemistry",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 11,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00121",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00122",
+          "section": "11.1",
+          "title": "The Discovery of Nucleophilic Substitution Reactions",
+          "titleIs": null
+        },
+        {
+          "id": "m00123",
+          "section": "11.2",
+          "title": "MECHANISM",
+          "titleIs": null
+        },
+        {
+          "id": "m00124",
+          "section": "11.3",
+          "title": "The Nucleophile",
+          "titleIs": null
+        },
+        {
+          "id": "m00125",
+          "section": "11.4",
+          "title": "MECHANISM",
+          "titleIs": null
+        },
+        {
+          "id": "m00126",
+          "section": "11.5",
+          "title": "The Substrate",
+          "titleIs": null
+        },
+        {
+          "id": "m00127",
+          "section": "11.6",
+          "title": "Biological Substitution Reactions",
+          "titleIs": null
+        },
+        {
+          "id": "m00128",
+          "section": "11.7",
+          "title": "Elimination Reactions: Zaitsev’s Rule",
+          "titleIs": null
+        },
+        {
+          "id": "m00129",
+          "section": "11.8",
+          "title": "The E2 Reaction and the Deuterium Isotope Effect",
+          "titleIs": null
+        },
+        {
+          "id": "m00130",
+          "section": "11.9",
+          "title": "The E2 Reaction and Cyclohexane Conformation",
+          "titleIs": null
+        },
+        {
+          "id": "m00131",
+          "section": "11.10",
+          "title": "The E1 and E1cB Reactions",
+          "titleIs": null
+        },
+        {
+          "id": "m00132",
+          "section": "11.11",
+          "title": "Biological Elimination Reactions",
+          "titleIs": null
+        },
+        {
+          "id": "m00133",
+          "section": "11.12",
+          "title": "Predicting the Product and Mechanism of Reactions",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 12,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00134",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00135",
+          "section": "12.1",
+          "title": "Mass Spectrometry of Small Molecules: Magnetic-Sector Instruments",
+          "titleIs": null
+        },
+        {
+          "id": "m00136",
+          "section": "12.2",
+          "title": "Interpreting Mass Spectra",
+          "titleIs": null
+        },
+        {
+          "id": "m00137",
+          "section": "12.3",
+          "title": "Mass Spectrometry of Some Common Functional Groups",
+          "titleIs": null
+        },
+        {
+          "id": "m00138",
+          "section": "12.4",
+          "title": "Mass Spectrometry in Biological Chemistry: Time-of-Flight (TOF) Instruments",
+          "titleIs": null
+        },
+        {
+          "id": "m00139",
+          "section": "12.5",
+          "title": "Spectroscopy and the Electromagnetic Spectrum",
+          "titleIs": null
+        },
+        {
+          "id": "m00140",
+          "section": "12.6",
+          "title": "Infrared Spectroscopy",
+          "titleIs": null
+        },
+        {
+          "id": "m00141",
+          "section": "12.7",
+          "title": "Interpreting Infrared Spectra",
+          "titleIs": null
+        },
+        {
+          "id": "m00142",
+          "section": "12.8",
+          "title": "Infrared Spectra of Some Common Functional Groups",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 13,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00143",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00144",
+          "section": "13.1",
+          "title": "Nuclear Magnetic Resonance Spectroscopy",
+          "titleIs": null
+        },
+        {
+          "id": "m00145",
+          "section": "13.2",
+          "title": "The Nature of NMR Absorptions",
+          "titleIs": null
+        },
+        {
+          "id": "m00146",
+          "section": "13.3",
+          "title": "Chemical Shifts",
+          "titleIs": null
+        },
+        {
+          "id": "m00147",
+          "section": "13.4",
+          "title": "Problems",
+          "titleIs": null
+        },
+        {
+          "id": "m00148",
+          "section": "13.5",
+          "title": "Problems",
+          "titleIs": null
+        },
+        {
+          "id": "m00149",
+          "section": "13.6",
+          "title": "Some Common Spin Multiplicities",
+          "titleIs": null
+        },
+        {
+          "id": "m00150",
+          "section": "13.7",
+          "title": "Problems",
+          "titleIs": null
+        },
+        {
+          "id": "m00151",
+          "section": "13.8",
+          "title": "More Complex Spin–Spin Splitting Patterns",
+          "titleIs": null
+        },
+        {
+          "id": "m00152",
+          "section": "13.9",
+          "title": "Problems",
+          "titleIs": null
+        },
+        {
+          "id": "m00153",
+          "section": "13.10",
+          "title": "",
+          "titleIs": null
+        },
+        {
+          "id": "m00154",
+          "section": "13.11",
+          "title": "Problems",
+          "titleIs": null
+        },
+        {
+          "id": "m00155",
+          "section": "13.12",
+          "title": "Problems",
+          "titleIs": null
+        },
+        {
+          "id": "m00156",
+          "section": "13.13",
+          "title": "Problems",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 14,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00170",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00171",
+          "section": "14.1",
+          "title": "Stability of Conjugated Dienes: Molecular Orbital Theory",
+          "titleIs": null
+        },
+        {
+          "id": "m00172",
+          "section": "14.2",
+          "title": "Electrophilic Additions to Conjugated Dienes: Allylic Carbocations",
+          "titleIs": null
+        },
+        {
+          "id": "m00173",
+          "section": "14.3",
+          "title": "Kinetic versus Thermodynamic Control of Reactions",
+          "titleIs": null
+        },
+        {
+          "id": "m00174",
+          "section": "14.4",
+          "title": "The Diels–Alder Cycloaddition Reaction",
+          "titleIs": null
+        },
+        {
+          "id": "m00175",
+          "section": "14.5",
+          "title": "Characteristics of the Diels–Alder Reaction",
+          "titleIs": null
+        },
+        {
+          "id": "m00176",
+          "section": "14.6",
+          "title": "Diene Polymers: Natural and Synthetic Rubbers",
+          "titleIs": null
+        },
+        {
+          "id": "m00177",
+          "section": "14.7",
+          "title": "Ultraviolet Spectroscopy",
+          "titleIs": null
+        },
+        {
+          "id": "m00178",
+          "section": "14.8",
+          "title": "Interpreting Ultraviolet Spectra: The Effect of Conjugation",
+          "titleIs": null
+        },
+        {
+          "id": "m00179",
+          "section": "14.9",
+          "title": "Conjugation, Color, and the Chemistry of Vision",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 15,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00180",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00181",
+          "section": "15.1",
+          "title": "Naming Aromatic Compounds",
+          "titleIs": null
+        },
+        {
+          "id": "m00182",
+          "section": "15.2",
+          "title": "Structure and Stability of Benzene",
+          "titleIs": null
+        },
+        {
+          "id": "m00183",
+          "section": "15.3",
+          "title": "Problems",
+          "titleIs": null
+        },
+        {
+          "id": "m00184",
+          "section": "15.4",
+          "title": "Aromatic Ions",
+          "titleIs": null
+        },
+        {
+          "id": "m00185",
+          "section": "15.5",
+          "title": "Aromatic Heterocycles: Pyridine and Pyrrole",
+          "titleIs": null
+        },
+        {
+          "id": "m00186",
+          "section": "15.6",
+          "title": "Polycyclic Aromatic Compounds",
+          "titleIs": null
+        },
+        {
+          "id": "m00187",
+          "section": "15.7",
+          "title": "Spectroscopy of Aromatic Compounds",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 16,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00188",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00189",
+          "section": "16.1",
+          "title": "Electrophilic Aromatic Substitution Reactions: Bromination",
+          "titleIs": null
+        },
+        {
+          "id": "m00190",
+          "section": "16.2",
+          "title": "Other Aromatic Substitutions",
+          "titleIs": null
+        },
+        {
+          "id": "m00191",
+          "section": "16.3",
+          "title": "Alkylation and Acylation of Aromatic Rings: The Friedel–Crafts Reaction",
+          "titleIs": null
+        },
+        {
+          "id": "m00192",
+          "section": "16.4",
+          "title": "Substituent Effects in Electrophilic Substitutions",
+          "titleIs": null
+        },
+        {
+          "id": "m00193",
+          "section": "16.5",
+          "title": "Trisubstituted Benzenes: Additivity of Effects",
+          "titleIs": null
+        },
+        {
+          "id": "m00194",
+          "section": "16.6",
+          "title": "Nucleophilic Aromatic Substitution",
+          "titleIs": null
+        },
+        {
+          "id": "m00195",
+          "section": "16.7",
+          "title": "Benzyne",
+          "titleIs": null
+        },
+        {
+          "id": "m00196",
+          "section": "16.8",
+          "title": "Oxidation of Aromatic Compounds",
+          "titleIs": null
+        },
+        {
+          "id": "m00197",
+          "section": "16.9",
+          "title": "Reduction of Aromatic Compounds",
+          "titleIs": null
+        },
+        {
+          "id": "m00198",
+          "section": "16.10",
+          "title": "Synthesis of Polysubstituted Benzenes",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 17,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00199",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00200",
+          "section": "17.1",
+          "title": "Naming Alcohols and Phenols",
+          "titleIs": null
+        },
+        {
+          "id": "m00201",
+          "section": "17.2",
+          "title": "Properties of Alcohols and Phenols",
+          "titleIs": null
+        },
+        {
+          "id": "m00202",
+          "section": "17.3",
+          "title": "Preparation of Alcohols: A Review",
+          "titleIs": null
+        },
+        {
+          "id": "m00203",
+          "section": "17.4",
+          "title": "Alcohols from Carbonyl Compounds: Reduction",
+          "titleIs": null
+        },
+        {
+          "id": "m00204",
+          "section": "17.5",
+          "title": "Alcohols from Carbonyl Compounds: Grignard Reaction",
+          "titleIs": null
+        },
+        {
+          "id": "m00205",
+          "section": "17.6",
+          "title": "Reactions of Alcohols",
+          "titleIs": null
+        },
+        {
+          "id": "m00206",
+          "section": "17.7",
+          "title": "Oxidation of Alcohols",
+          "titleIs": null
+        },
+        {
+          "id": "m00207",
+          "section": "17.8",
+          "title": "Protection of Alcohols",
+          "titleIs": null
+        },
+        {
+          "id": "m00208",
+          "section": "17.9",
+          "title": "Phenols and Their Uses",
+          "titleIs": null
+        },
+        {
+          "id": "m00209",
+          "section": "17.10",
+          "title": "Reactions of Phenols",
+          "titleIs": null
+        },
+        {
+          "id": "m00210",
+          "section": "17.11",
+          "title": "Spectroscopy of Alcohols and Phenols",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 18,
+      "title": "Names and Properties of Ethers",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00074",
+          "section": "intro",
+          "title": "Names and Properties of Ethers",
+          "titleIs": null
+        },
+        {
+          "id": "m00075",
+          "section": "18.1",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00249",
+          "section": "18.2",
+          "title": "Preparing Ethers",
+          "titleIs": null
+        },
+        {
+          "id": "m00250",
+          "section": "18.3",
+          "title": "Reactions of Ethers: Acidic Cleavage",
+          "titleIs": null
+        },
+        {
+          "id": "m00251",
+          "section": "18.4",
+          "title": "Cyclic Ethers: Epoxides",
+          "titleIs": null
+        },
+        {
+          "id": "m00252",
+          "section": "18.5",
+          "title": "Reactions of Epoxides: Ring-Opening",
+          "titleIs": null
+        },
+        {
+          "id": "m00253",
+          "section": "18.6",
+          "title": "Crown Ethers",
+          "titleIs": null
+        },
+        {
+          "id": "m00254",
+          "section": "18.7",
+          "title": "Thiols and Sulfides",
+          "titleIs": null
+        },
+        {
+          "id": "m00255",
+          "section": "18.8",
+          "title": "Spectroscopy of Ethers",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 19,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00211",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00212",
+          "section": "19.1",
+          "title": "Naming Aldehydes and Ketones",
+          "titleIs": null
+        },
+        {
+          "id": "m00213",
+          "section": "19.2",
+          "title": "Preparing Aldehydes and Ketones",
+          "titleIs": null
+        },
+        {
+          "id": "m00214",
+          "section": "19.3",
+          "title": "Oxidation of Aldehydes and Ketones",
+          "titleIs": null
+        },
+        {
+          "id": "m00215",
+          "section": "19.4",
+          "title": "Nucleophilic Addition Reactions of Aldehydes and Ketones",
+          "titleIs": null
+        },
+        {
+          "id": "m00216",
+          "section": "19.5",
+          "title": "MECHANISM",
+          "titleIs": null
+        },
+        {
+          "id": "m00217",
+          "section": "19.6",
+          "title": "Nucleophilic Addition of HCN: Cyanohydrin Formation",
+          "titleIs": null
+        },
+        {
+          "id": "m00218",
+          "section": "19.7",
+          "title": "Nucleophilic Addition of Hydride and Grignard Reagents: Alcohol Formation",
+          "titleIs": null
+        },
+        {
+          "id": "m00219",
+          "section": "19.8",
+          "title": "Nucleophilic Addition of Amines: Imine and Enamine Formation",
+          "titleIs": null
+        },
+        {
+          "id": "m00220",
+          "section": "19.9",
+          "title": "Nucleophilic Addition of Hydrazine: The Wolff–Kishner Reaction",
+          "titleIs": null
+        },
+        {
+          "id": "m00221",
+          "section": "19.10",
+          "title": "Nucleophilic Addition of Alcohols: Acetal Formation",
+          "titleIs": null
+        },
+        {
+          "id": "m00222",
+          "section": "19.11",
+          "title": "Nucleophilic Addition of Phosphorus Ylides: The Wittig Reaction",
+          "titleIs": null
+        },
+        {
+          "id": "m00223",
+          "section": "19.12",
+          "title": "Biological Reductions",
+          "titleIs": null
+        },
+        {
+          "id": "m00224",
+          "section": "19.13",
+          "title": "Conjugate Addition of Amines",
+          "titleIs": null
+        },
+        {
+          "id": "m00225",
+          "section": "19.14",
+          "title": "Spectroscopy of Aldehydes and Ketones",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 20,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00229",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00230",
+          "section": "20.1",
+          "title": "Naming Carboxylic Acids and Nitriles",
+          "titleIs": null
+        },
+        {
+          "id": "m00231",
+          "section": "20.2",
+          "title": "Structure and Properties of Carboxylic Acids",
+          "titleIs": null
+        },
+        {
+          "id": "m00232",
+          "section": "20.3",
+          "title": "Biological Acids and the Henderson–Hasselbalch Equation",
+          "titleIs": null
+        },
+        {
+          "id": "m00233",
+          "section": "20.4",
+          "title": "Substituent Effects on Acidity",
+          "titleIs": null
+        },
+        {
+          "id": "m00234",
+          "section": "20.5",
+          "title": "Preparing Carboxylic Acids",
+          "titleIs": null
+        },
+        {
+          "id": "m00235",
+          "section": "20.6",
+          "title": "Reactions of Carboxylic Acids: An Overview",
+          "titleIs": null
+        },
+        {
+          "id": "m00236",
+          "section": "20.7",
+          "title": "Chemistry of Nitriles",
+          "titleIs": null
+        },
+        {
+          "id": "m00237",
+          "section": "20.8",
+          "title": "Spectroscopy of Carboxylic Acids and Nitriles",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 21,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00238",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00239",
+          "section": "21.1",
+          "title": "Naming Carboxylic Acid Derivatives",
+          "titleIs": null
+        },
+        {
+          "id": "m00240",
+          "section": "21.2",
+          "title": "Nucleophilic Acyl Substitution Reactions",
+          "titleIs": null
+        },
+        {
+          "id": "m00241",
+          "section": "21.3",
+          "title": "Reactions of Carboxylic Acids",
+          "titleIs": null
+        },
+        {
+          "id": "m00242",
+          "section": "21.4",
+          "title": "Chemistry of Acid Halides",
+          "titleIs": null
+        },
+        {
+          "id": "m00243",
+          "section": "21.5",
+          "title": "Chemistry of Acid Anhydrides",
+          "titleIs": null
+        },
+        {
+          "id": "m00244",
+          "section": "21.6",
+          "title": "Chemistry of Esters",
+          "titleIs": null
+        },
+        {
+          "id": "m00245",
+          "section": "21.7",
+          "title": "Chemistry of Amides",
+          "titleIs": null
+        },
+        {
+          "id": "m00246",
+          "section": "21.8",
+          "title": "Chemistry of Thioesters and Acyl Phosphates: Biological Carboxylic Acid Derivatives",
+          "titleIs": null
+        },
+        {
+          "id": "m00247",
+          "section": "21.9",
+          "title": "Polyamides and Polyesters: Step-Growth Polymers",
+          "titleIs": null
+        },
+        {
+          "id": "m00248",
+          "section": "21.10",
+          "title": "Spectroscopy of Carboxylic Acid Derivatives",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 22,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00256",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00257",
+          "section": "22.1",
+          "title": "Keto–Enol Tautomerism",
+          "titleIs": null
+        },
+        {
+          "id": "m00258",
+          "section": "22.2",
+          "title": "MECHANISM",
+          "titleIs": null
+        },
+        {
+          "id": "m00259",
+          "section": "22.3",
+          "title": "Alpha Halogenation of Aldehydes and Ketones",
+          "titleIs": null
+        },
+        {
+          "id": "m00260",
+          "section": "22.4",
+          "title": "Alpha Bromination of Carboxylic Acids",
+          "titleIs": null
+        },
+        {
+          "id": "m00261",
+          "section": "22.5",
+          "title": "Acidity of Alpha Hydrogen Atoms: Enolate Ion Formation",
+          "titleIs": null
+        },
+        {
+          "id": "m00262",
+          "section": "22.6",
+          "title": "Reactivity of Enolate Ions",
+          "titleIs": null
+        },
+        {
+          "id": "m00263",
+          "section": "22.7",
+          "title": "Alkylation of Enolate Ions",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 23,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00272",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00276",
+          "section": "23.1",
+          "title": "Carbonyl Condensations: The Aldol Reaction",
+          "titleIs": null
+        },
+        {
+          "id": "m00277",
+          "section": "23.2",
+          "title": "Carbonyl Condensations versus Alpha Substitutions",
+          "titleIs": null
+        },
+        {
+          "id": "m00278",
+          "section": "23.3",
+          "title": "Dehydration of Aldol Products: Synthesis of Enones",
+          "titleIs": null
+        },
+        {
+          "id": "m00279",
+          "section": "23.4",
+          "title": "Using Aldol Reactions in Synthesis",
+          "titleIs": null
+        },
+        {
+          "id": "m00280",
+          "section": "23.5",
+          "title": "Mixed Aldol Reactions",
+          "titleIs": null
+        },
+        {
+          "id": "m00281",
+          "section": "23.6",
+          "title": "Intramolecular Aldol Reactions",
+          "titleIs": null
+        },
+        {
+          "id": "m00282",
+          "section": "23.7",
+          "title": "The Claisen Condensation Reaction",
+          "titleIs": null
+        },
+        {
+          "id": "m00283",
+          "section": "23.8",
+          "title": "Mixed Claisen Condensations",
+          "titleIs": null
+        },
+        {
+          "id": "m00284",
+          "section": "23.9",
+          "title": "Intramolecular Claisen Condensations: The Dieckmann Cyclization",
+          "titleIs": null
+        },
+        {
+          "id": "m00285",
+          "section": "23.10",
+          "title": "Conjugate Carbonyl Additions: The Michael Reaction",
+          "titleIs": null
+        },
+        {
+          "id": "m00286",
+          "section": "23.11",
+          "title": "Carbonyl Condensations with Enamines: The Stork Enamine Reaction",
+          "titleIs": null
+        },
+        {
+          "id": "m00287",
+          "section": "23.12",
+          "title": "The Robinson Annulation Reaction",
+          "titleIs": null
+        },
+        {
+          "id": "m00288",
+          "section": "23.13",
+          "title": "Some Biological Carbonyl Condensation Reactions",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 24,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00273",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00289",
+          "section": "24.1",
+          "title": "Naming Amines",
+          "titleIs": null
+        },
+        {
+          "id": "m00290",
+          "section": "24.2",
+          "title": "Structure and Properties of Amines",
+          "titleIs": null
+        },
+        {
+          "id": "m00291",
+          "section": "24.3",
+          "title": "Basicity of Amines",
+          "titleIs": null
+        },
+        {
+          "id": "m00292",
+          "section": "24.4",
+          "title": "Basicity of Arylamines",
+          "titleIs": null
+        },
+        {
+          "id": "m00293",
+          "section": "24.5",
+          "title": "Biological Amines and the Henderson–Hasselbalch Equation",
+          "titleIs": null
+        },
+        {
+          "id": "m00294",
+          "section": "24.6",
+          "title": "Synthesis of Amines",
+          "titleIs": null
+        },
+        {
+          "id": "m00295",
+          "section": "24.7",
+          "title": "Reactions of Amines",
+          "titleIs": null
+        },
+        {
+          "id": "m00296",
+          "section": "24.8",
+          "title": "Reactions of Arylamines",
+          "titleIs": null
+        },
+        {
+          "id": "m00297",
+          "section": "24.9",
+          "title": "Heterocyclic Amines",
+          "titleIs": null
+        },
+        {
+          "id": "m00298",
+          "section": "24.10",
+          "title": "Spectroscopy of Amines",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 25,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00274",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00299",
+          "section": "25.1",
+          "title": "Classification of Carbohydrates",
+          "titleIs": null
+        },
+        {
+          "id": "m00300",
+          "section": "25.2",
+          "title": "Representing Carbohydrate Stereochemistry: Fischer Projections",
+          "titleIs": null
+        },
+        {
+          "id": "m00301",
+          "section": "25.3",
+          "title": "Problems",
+          "titleIs": null
+        },
+        {
+          "id": "m00302",
+          "section": "25.4",
+          "title": "Configurations of the Aldoses",
+          "titleIs": null
+        },
+        {
+          "id": "m00303",
+          "section": "25.5",
+          "title": "Cyclic Structures of Monosaccharides: Anomers",
+          "titleIs": null
+        },
+        {
+          "id": "m00304",
+          "section": "25.6",
+          "title": "Reactions of Monosaccharides",
+          "titleIs": null
+        },
+        {
+          "id": "m00305",
+          "section": "25.7",
+          "title": "The Eight Essential Monosaccharides",
+          "titleIs": null
+        },
+        {
+          "id": "m00306",
+          "section": "25.8",
+          "title": "Disaccharides",
+          "titleIs": null
+        },
+        {
+          "id": "m00307",
+          "section": "25.9",
+          "title": "Polysaccharides and Their Synthesis",
+          "titleIs": null
+        },
+        {
+          "id": "m00308",
+          "section": "25.10",
+          "title": "Some Other Important Carbohydrates",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 26,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00275",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00318",
+          "section": "26.1",
+          "title": "Structures of Amino Acids",
+          "titleIs": null
+        },
+        {
+          "id": "m00319",
+          "section": "26.2",
+          "title": "Amino Acids and the Henderson–Hasselbalch Equation: Isoelectric Points",
+          "titleIs": null
+        },
+        {
+          "id": "m00320",
+          "section": "26.3",
+          "title": "Synthesis of Amino Acids",
+          "titleIs": null
+        },
+        {
+          "id": "m00321",
+          "section": "26.4",
+          "title": "Peptides and Proteins",
+          "titleIs": null
+        },
+        {
+          "id": "m00322",
+          "section": "26.5",
+          "title": "Amino Acid Analysis of Peptides",
+          "titleIs": null
+        },
+        {
+          "id": "m00323",
+          "section": "26.6",
+          "title": "Peptide Sequencing: The Edman Degradation",
+          "titleIs": null
+        },
+        {
+          "id": "m00324",
+          "section": "26.7",
+          "title": "Peptide Synthesis",
+          "titleIs": null
+        },
+        {
+          "id": "m00325",
+          "section": "26.8",
+          "title": "Automated Peptide Synthesis: The Merrifield Solid-Phase Method",
+          "titleIs": null
+        },
+        {
+          "id": "m00326",
+          "section": "26.9",
+          "title": "Protein Structure",
+          "titleIs": null
+        },
+        {
+          "id": "m00327",
+          "section": "26.10",
+          "title": "Enzymes and Coenzymes",
+          "titleIs": null
+        },
+        {
+          "id": "m00328",
+          "section": "26.11",
+          "title": "How Do Enzymes Work? Citrate Synthase",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 27,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00264",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00265",
+          "section": "27.1",
+          "title": "Waxes, Fats, and Oils",
+          "titleIs": null
+        },
+        {
+          "id": "m00266",
+          "section": "27.2",
+          "title": "Soap",
+          "titleIs": null
+        },
+        {
+          "id": "m00267",
+          "section": "27.3",
+          "title": "Phospholipids",
+          "titleIs": null
+        },
+        {
+          "id": "m00268",
+          "section": "27.4",
+          "title": "Prostaglandins and Other Eicosanoids",
+          "titleIs": null
+        },
+        {
+          "id": "m00269",
+          "section": "27.5",
+          "title": "Terpenoids",
+          "titleIs": null
+        },
+        {
+          "id": "m00270",
+          "section": "27.6",
+          "title": "Steroids",
+          "titleIs": null
+        },
+        {
+          "id": "m00271",
+          "section": "27.7",
+          "title": "Biosynthesis of Steroids",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 28,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00309",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00310",
+          "section": "28.1",
+          "title": "Nucleotides and Nucleic Acids",
+          "titleIs": null
+        },
+        {
+          "id": "m00311",
+          "section": "28.2",
+          "title": "Base Pairing in DNA",
+          "titleIs": null
+        },
+        {
+          "id": "m00312",
+          "section": "28.3",
+          "title": "Replication of DNA",
+          "titleIs": null
+        },
+        {
+          "id": "m00313",
+          "section": "28.4",
+          "title": "Transcription of DNA",
+          "titleIs": null
+        },
+        {
+          "id": "m00314",
+          "section": "28.5",
+          "title": "Translation of RNA: Protein Biosynthesis",
+          "titleIs": null
+        },
+        {
+          "id": "m00315",
+          "section": "28.6",
+          "title": "DNA Sequencing",
+          "titleIs": null
+        },
+        {
+          "id": "m00316",
+          "section": "28.7",
+          "title": "DNA Synthesis",
+          "titleIs": null
+        },
+        {
+          "id": "m00317",
+          "section": "28.8",
+          "title": "The Polymerase Chain Reaction",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 29,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00329",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00330",
+          "section": "29.1",
+          "title": "An Overview of Metabolism and Biochemical Energy",
+          "titleIs": null
+        },
+        {
+          "id": "m00331",
+          "section": "29.2",
+          "title": "Catabolism of Triacylglycerols: The Fate of Glycerol",
+          "titleIs": null
+        },
+        {
+          "id": "m00332",
+          "section": "29.3",
+          "title": "MECHANISM",
+          "titleIs": null
+        },
+        {
+          "id": "m00333",
+          "section": "29.4",
+          "title": "Biosynthesis of Fatty Acids",
+          "titleIs": null
+        },
+        {
+          "id": "m00334",
+          "section": "29.5",
+          "title": "Catabolism of Carbohydrates: Glycolysis",
+          "titleIs": null
+        },
+        {
+          "id": "m00335",
+          "section": "29.6",
+          "title": "Conversion of Pyruvate to Acetyl CoA",
+          "titleIs": null
+        },
+        {
+          "id": "m00336",
+          "section": "29.7",
+          "title": "The Citric Acid Cycle",
+          "titleIs": null
+        },
+        {
+          "id": "m00337",
+          "section": "29.8",
+          "title": "Carbohydrate Biosynthesis: Gluconeogenesis",
+          "titleIs": null
+        },
+        {
+          "id": "m00338",
+          "section": "29.9",
+          "title": "Catabolism of Proteins: Deamination",
+          "titleIs": null
+        },
+        {
+          "id": "m00339",
+          "section": "29.10",
+          "title": "Some Conclusions about Biological Chemistry",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 30,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00340",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00341",
+          "section": "30.1",
+          "title": "Molecular Orbitals of Conjugated Pi Systems",
+          "titleIs": null
+        },
+        {
+          "id": "m00342",
+          "section": "30.2",
+          "title": "Electrocyclic Reactions",
+          "titleIs": null
+        },
+        {
+          "id": "m00343",
+          "section": "30.3",
+          "title": "Stereochemistry of Thermal Electrocyclic Reactions",
+          "titleIs": null
+        },
+        {
+          "id": "m00344",
+          "section": "30.4",
+          "title": "Photochemical Electrocyclic Reactions",
+          "titleIs": null
+        },
+        {
+          "id": "m00345",
+          "section": "30.5",
+          "title": "Cycloaddition Reactions",
+          "titleIs": null
+        },
+        {
+          "id": "m00346",
+          "section": "30.6",
+          "title": "Stereochemistry of Cycloadditions",
+          "titleIs": null
+        },
+        {
+          "id": "m00347",
+          "section": "30.7",
+          "title": "Sigmatropic Rearrangements",
+          "titleIs": null
+        },
+        {
+          "id": "m00348",
+          "section": "30.8",
+          "title": "Some Examples of Sigmatropic Rearrangements",
+          "titleIs": null
+        },
+        {
+          "id": "m00349",
+          "section": "30.9",
+          "title": "A Summary of Rules for Pericyclic Reactions",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 31,
+      "title": "Why This Chapter?",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m00350",
+          "section": "intro",
+          "title": "Why This Chapter?",
+          "titleIs": null
+        },
+        {
+          "id": "m00351",
+          "section": "31.1",
+          "title": "Chain-Growth Polymers",
+          "titleIs": null
+        },
+        {
+          "id": "m00352",
+          "section": "31.2",
+          "title": "Stereochemistry of Polymerization: Ziegler–Natta Catalysts",
+          "titleIs": null
+        },
+        {
+          "id": "m00353",
+          "section": "31.3",
+          "title": "Copolymers",
+          "titleIs": null
+        },
+        {
+          "id": "m00354",
+          "section": "31.4",
+          "title": "Step-Growth Polymers",
+          "titleIs": null
+        },
+        {
+          "id": "m00355",
+          "section": "31.5",
+          "title": "Olefin Metathesis Polymerization",
+          "titleIs": null
+        },
+        {
+          "id": "m00356",
+          "section": "31.6",
+          "title": "Intramolecular Olefin Metathesis",
+          "titleIs": null
+        },
+        {
+          "id": "m00357",
+          "section": "31.7",
+          "title": "Polymer Structure and Physical Properties",
+          "titleIs": null
+        }
+      ]
+    }
+  ]
+}

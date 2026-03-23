@@ -1,0 +1,62 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Preparing Alkyl Halides from Alkanes: Radical Halogenation</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Preparing Alkyl Halides from Alkanes: Radical Halogenation</md:title>
+    <md:content-id>m00114</md:content-id>
+    <md:uuid>60759f94-493b-4a7e-a31c-1ea0805224ca</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">As we saw briefly in <link document="m00079"/>, simple alkyl halides can sometimes be prepared by the radical reaction of an alkane with Cl<sub>2</sub> or Br<sub>2</sub> in the presence of ultraviolet light. The detailed mechanism is shown in <link target-id="fig-00001"/> for chlorination.</para>
+    <figure class="scaled-down" id="fig-00001">
+    <media alt="The mechanism of radical chlorination of methane involving three steps: initiation, propagation (a repeating cycle), and termination. The overall reaction shows the formation of chloromethane and hydrogen chloride.">
+    <image mime-type="image/jpeg" src="../../media/OChem_10_02_001.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">Mechanism of the radical chlorination of methane.</emphasis> Three kinds of steps are required in radical substitution reactions: initiation, propagation, and termination. The propagation steps are a repeating cycle, with Cl<emphasis effect="bold">·</emphasis> a reactant in step 1 and a product in step 2, and with <emphasis effect="bold">·</emphasis>CH<sub>3</sub> a product in step 1 and a reactant in step 2. The symbol <emphasis effect="italics">hν</emphasis> shown in the initiation step is the standard way of indicating irradiation with light (<emphasis effect="italics">ν</emphasis> is the lowercase Greek letter nu).</caption>
+    </figure>
+    <para id="para-00002">Radical substitution reactions require three kinds of steps: <emphasis effect="italics">initiation, propagation</emphasis>, and <emphasis effect="italics">termination</emphasis>. Once an initiation step has started the process by producing radicals, the reaction continues in a self-sustaining cycle. The cycle requires two repeating propagation steps in which a radical, the halogen, and the alkane yield alkyl halide product plus more radical to carry on the chain. The chain is occasionally terminated by the combination of two radicals.</para>
+    <para id="para-00003">Unfortunately, alkane halogenation is a poor synthetic method for preparing alkyl halides because mixtures of products invariably result. For example, chlorination of methane does not stop cleanly at the monochlorinated stage but continues to give a mixture of dichloro, trichloro, and even tetrachloro products.</para>
+    <figure class="unnumbered scaled-down" id="fig-00002">
+    <media alt="The four steps of a chlorination reaction of methane in which each step replaces one more hydrogen with chlorine, finally forming C Cl 4.">
+    <image mime-type="image/jpeg" src="../../media/OChem_10_02_002.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00004">The situation is even worse for chlorination of alkanes that have more than one kind of hydrogen. Chlorination of butane, for instance, gives two monochlorinated products in a 30 : 70 ratio in addition to multiple chlorinated products such as dichlorobutane, trichlorobutane, and so on.</para>
+    <figure class="unnumbered scaled-down" id="fig-00003">
+    <media alt="The reaction of butane and chlorine in the presence of light. 1-chlorobutane and 2-chlorobutane are formed in a 30:70 ratio and other products are dichloro-, trichloro-, tetrachloro-, and so on.">
+    <image mime-type="image/jpeg" src="../../media/OChem_10_02_003.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00005">As another example, 2-methylpropane yields 2-chloro-2-methylpropane and 1-chloro-2-methylpropane in a 35 : 65 ratio, along with more highly chlorinated products.</para>
+    <figure class="unnumbered scaled-down" id="fig-00004">
+    <media alt="The reaction of 2-methylpropane and chlorine in the presence of light.  2-chloro-2-methylpropane and 1-chloro-2-methylpropane are formed in a 35:65 ratio and other products are dichloro-, trichloro-, tetrachloro-, and so on.">
+    <image mime-type="image/jpeg" src="../../media/OChem_10_02_004.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00006">From these and similar reactions, it’s possible to calculate a reactivity order toward chlorination for different kinds of hydrogen atoms in a molecule. Take the butane chlorination, for instance. Butane has six equivalent primary hydrogens (−CH<sub>3</sub>) and four equivalent secondary hydrogens (−CH<sub>2</sub>−). The fact that butane yields 30% of 1-chlorobutane product means that each one of the six primary hydrogens is responsible for 30% ÷ 6 = 5% of the product. Similarly, the fact that 70% of 2-chlorobutane is formed means that each of the four secondary hydrogens is responsible for 70% ÷ 4 = 17.5% of the product. Thus, a secondary hydrogen reacts 17.5% ÷ 5% = 3.5 times as often as a primary hydrogen.</para>
+    <para id="para-00007">A similar calculation for the chlorination of 2-methylpropane indicates that each of the nine primary hydrogens accounts for 65% ÷ 9 = 7.2% of the product, while the single tertiary hydrogen (R<sub>3</sub>CH) accounts for 35% of the product. Thus, a tertiary hydrogen is 35% ÷ 7.2% = 5 times as reactive as a primary hydrogen toward chlorination.</para>
+    <figure class="unnumbered scaled-down" id="fig-00005">
+    <media alt="The structures and reactivity order of carbons in alkyl chains, where secondary and tertiary carbons are 3.5 and 5 times as reactive as primary carbons, respectively.">
+    <image mime-type="image/jpeg" src="../../media/OChem_10_02_005.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00008">The observed reactivity order of alkane hydrogens toward radical chlorination can be explained by looking at the bond dissociation energies given previously in <link document="m00084"  target-id="table-00001"/>. The data show that a tertiary C−H bond (400 kJ/mol; 96 kcal/mol) is weaker than a secondary C−H bond (410 kJ/mol; 98 kcal/mol), which is in turn weaker than a primary C−H bond (421 kJ/mol; 101 kcal/mol). Since less energy is needed to break a tertiary C−H bond than to break a primary or secondary C−H bond, the resultant tertiary radical is more stable than a primary or secondary radical.</para>
+    <figure class="unnumbered scaled-down" id="fig-00006">
+    <media alt="The structures and stabilities of carbon radicals, where secondary radicals are more stable than primary, and tertiary radicals are the most stable.">
+    <image mime-type="image/jpeg" src="../../media/OChem_10_02_006.jpg"/>
+    </media>
+    </figure>
+    <section class="section-exercises" id="sect-00001">
+    <title>Problems</title>
+    <exercise id="exer-00001">
+    <problem id="prob-00001">
+    <para id="para-00009"><link class="os-embed" url="#exercise/10-02-OC-P03"/></para>
+    </problem>
+    </exercise>
+    <exercise id="exer-00002">
+    <problem id="prob-00002">
+    <para id="para-00010"><link class="os-embed" url="#exercise/10-02-OC-P04"/></para>
+    </problem>
+    </exercise>
+    </section>
+    </content>
+</document>

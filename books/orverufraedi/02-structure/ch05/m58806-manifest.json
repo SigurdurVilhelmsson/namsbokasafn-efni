@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "moduleId": "m58806",
+  "extractedAt": "2026-03-23T17:26:27.230Z",
+  "sourceHash": "0fa4b8c1d8b2cbd0",
+  "segmentCount": 34,
+  "segmentIds": [
+    "m58806:title:auto-1",
+    "m58806:para:fs-id1172101983508",
+    "m58806:title:fs-id1172101840760-title",
+    "m58806:para:fs-id11713605736962",
+    "m58806:item:fs-id1172101759907-item-1",
+    "m58806:item:fs-id1172101759907-item-2",
+    "m58806:item:fs-id1172101759907-item-3",
+    "m58806:title:fs-id1172097274185-title",
+    "m58806:para:fs-id1172102066776",
+    "m58806:para:fs-id1172099375419",
+    "m58806:para:fs-id1172102033608",
+    "m58806:para:fs-id1172102148845",
+    "m58806:caption:OSC_Microbio_05_05_lichenstr-caption",
+    "m58806:title:fs-id1172101898462-title",
+    "m58806:para:fs-id1172101791153",
+    "m58806:caption:OSC_Microbio_05_05_lichens-caption",
+    "m58806:note-title:fs-id1172101914727-title",
+    "m58806:para:fs-id1172099747769",
+    "m58806:para:fs-id1172099464122",
+    "m58806:para:fs-id1172102098294",
+    "m58806:title:fs-id1172101900649-title",
+    "m58806:item:fs-id1172099754464-item-1",
+    "m58806:item:fs-id1172099754464-item-2",
+    "m58806:item:fs-id1172099754464-item-3",
+    "m58806:item:fs-id1172099754464-item-4",
+    "m58806:title:fs-id1172102141743-title",
+    "m58806:problem:fs-id1172102140683",
+    "m58806:solution:fs-id1172097224996",
+    "m58806:problem:fs-id1172102006981",
+    "m58806:solution:fs-id1172099657646",
+    "m58806:problem:fs-id1172101789111",
+    "m58806:solution:fs-id1172099455121",
+    "m58806:title:fs-id1172099597823-title",
+    "m58806:problem:fs-id1172102124782"
+  ],
+  "equationCount": 0,
+  "equationIds": [],
+  "elementCounts": {
+    "para": 17,
+    "section": 6,
+    "figure": 2,
+    "table": 0,
+    "example": 0,
+    "exercise": 4,
+    "note": 2,
+    "equation": 0,
+    "list": 2,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "OSC_Microbio_05_05_lichenstr",
+      "OSC_Microbio_05_05_lichens"
+    ],
+    "table": [],
+    "example": [],
+    "exercise": [
+      "fs-id1172101888699",
+      "fs-id1172099550350",
+      "fs-id1172099523194",
+      "fs-id1172101626222"
+    ],
+    "note": [
+      "fs-id1172099603565",
+      "fs-id1172101914727"
+    ],
+    "equation": [],
+    "section": [
+      "fs-id1172101840760",
+      "fs-id1172097274185",
+      "fs-id1172101898462",
+      "fs-id1172101900649",
+      "fs-id1172102141743",
+      "fs-id1172099597823"
+    ]
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "generated": "2026-03-23T17:26:12.647Z",
+  "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]])",
+  "summary": {
+    "totalChecked": 11,
+    "perfect": 5,
+    "withDiscrepancies": 6,
+    "skippedUntranslated": 0,
+    "totalDiscrepancies": 326
+  },
+  "modules": [
+    {
+      "moduleId": "m66438",
+      "chapter": "ch03",
+      "discrepancies": [
+        {
+          "tag": "definition",
+          "diff": -5
+        },
+        {
+          "tag": "link",
+          "diff": -3
+        },
+        {
+          "tag": "meaning",
+          "diff": -5
+        },
+        {
+          "tag": "para",
+          "diff": -1
+        },
+        {
+          "tag": "term",
+          "diff": -10
+        }
+      ]
+    },
+    {
+      "moduleId": "m66440",
+      "chapter": "ch03",
+      "discrepancies": [
+        {
+          "tag": "definition",
+          "diff": -9
+        },
+        {
+          "tag": "emphasis",
+          "diff": -16
+        },
+        {
+          "tag": "link",
+          "diff": -9
+        },
+        {
+          "tag": "meaning",
+          "diff": -9
+        },
+        {
+          "tag": "para",
+          "diff": -4
+        },
+        {
+          "tag": "sub",
+          "diff": -11
+        },
+        {
+          "tag": "term",
+          "diff": -18
+        }
+      ]
+    },
+    {
+      "moduleId": "m66441",
+      "chapter": "ch03",
+      "discrepancies": [
+        {
+          "tag": "definition",
+          "diff": -9
+        },
+        {
+          "tag": "emphasis",
+          "diff": -14
+        },
+        {
+          "tag": "link",
+          "diff": -11
+        },
+        {
+          "tag": "meaning",
+          "diff": -9
+        },
+        {
+          "tag": "para",
+          "diff": -3
+        },
+        {
+          "tag": "term",
+          "diff": -19
+        }
+      ]
+    },
+    {
+      "moduleId": "m66442",
+      "chapter": "ch03",
+      "discrepancies": [
+        {
+          "tag": "definition",
+          "diff": -14
+        },
+        {
+          "tag": "emphasis",
+          "diff": -14
+        },
+        {
+          "tag": "link",
+          "diff": -12
+        },
+        {
+          "tag": "meaning",
+          "diff": -14
+        },
+        {
+          "tag": "para",
+          "diff": -11
+        },
+        {
+          "tag": "sub",
+          "diff": -1
+        },
+        {
+          "tag": "term",
+          "diff": -27
+        }
+      ]
+    },
+    {
+      "moduleId": "m66443",
+      "chapter": "ch03",
+      "discrepancies": [
+        {
+          "tag": "definition",
+          "diff": -13
+        },
+        {
+          "tag": "emphasis",
+          "diff": -1
+        },
+        {
+          "tag": "entry",
+          "diff": -1
+        },
+        {
+          "tag": "link",
+          "diff": -7
+        },
+        {
+          "tag": "meaning",
+          "diff": -13
+        },
+        {
+          "tag": "para",
+          "diff": -2
+        },
+        {
+          "tag": "term",
+          "diff": -26
+        }
+      ]
+    },
+    {
+      "moduleId": "m66375",
+      "chapter": "ch05",
+      "discrepancies": [
+        {
+          "tag": "sup",
+          "diff": 5
+        }
+      ]
+    }
+  ]
+}

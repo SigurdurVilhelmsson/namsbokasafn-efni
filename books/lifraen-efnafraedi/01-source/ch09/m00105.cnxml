@@ -1,0 +1,55 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Reactions of Alkynes: Addition of HX and X<sub>2</sub></title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Reactions of Alkynes: Addition of HX and X2</md:title>
+    <md:content-id>m00105</md:content-id>
+    <md:uuid>f15fb999-eb65-48b2-a782-742d33f80728</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">You might recall from <link document="m00166"/> that a carbon–carbon triple bond results from the interaction of two <emphasis effect="italics">sp</emphasis>-hybridized carbon atoms. The two <emphasis effect="italics">sp</emphasis> hybrid orbitals of carbon lie at an angle of 180° to each other along an axis perpendicular to the axes of the two unhybridized 2<emphasis effect="italics">p</emphasis><sub>y</sub> and 2<emphasis effect="italics">p</emphasis><sub>z</sub> orbitals. When two <emphasis effect="italics">sp</emphasis>-hybridized carbons approach each other, one <emphasis effect="italics">sp</emphasis>–<emphasis effect="italics">sp σ</emphasis> bond and two <emphasis effect="italics">p–p π</emphasis> bonds are formed. The two remaining <emphasis effect="italics">sp</emphasis> orbitals form bonds to other atoms at an angle of 180° from the carbon–carbon bond. Thus, acetylene is a linear molecule with <m:math><m:mrow><m:mtext>H&#x2013;C≡C</m:mtext></m:mrow></m:math> bond angles of 180° (<link target-id="fig-00001"/>). The length of the <m:math><m:mrow><m:mtext>C≡C</m:mtext></m:mrow></m:math> bond is 120 pm, and its strength is approximately 965 kJ/mol (231 kcal/mol), making it the shortest and strongest known carbon–carbon bond.</para>
+    <figure class="scaled-down" id="fig-00001">
+    <media alt="The electrostatic potential map and the ball and stick model of acetylene. Black and gray spheres represent carbon and hydrogen, respectively. The C-C bond is labeled as pi bond.">
+    <image mime-type="image/jpeg" src="../../media/OChem_09_03_001.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">The structure of acetylene, <m:math><m:mrow><m:mstyle mathvariant="bold"><m:mtext>H&#x2013;C≡C&#x2013;H</m:mtext></m:mstyle></m:mrow></m:math>. The <m:math><m:mrow><m:mstyle mathvariant="bold"><m:mtext>H&#x2013;C≡C</m:mtext></m:mstyle></m:mrow></m:math> bond angles are 180°, and the <m:math><m:mrow><m:mstyle mathvariant="bold"><m:mtext>C≡C</m:mtext></m:mstyle></m:mrow></m:math> bond length is 120 pm.</emphasis> The electrostatic potential map shows that the <emphasis effect="italics">π</emphasis> bonds create a <span class="magenta-text"><emphasis effect="bold">negative belt</emphasis></span> around the molecule.</caption>
+    </figure>
+    <para id="para-00002">As a general rule, electrophiles undergo addition reactions with alkynes much as they do with alkenes. Take the reaction of alkynes with HX, for instance. The reaction often can be stopped with the addition of 1 equivalent of HX, but reaction with an excess of HX leads to a dihalide product. For example, reaction of 1-hexyne with 2 equivalents of HBr yields 2,2-dibromohexane. As the following examples indicate, the regiochemistry of addition follows Markovnikov’s rule, with halogen adding to the more highly substituted side of the alkyne bond and hydrogen adding to the less highly substituted side. Trans stereochemistry of H and X normally, although not always, occurs in the product.</para>
+    <figure class="unnumbered scaled-down" id="fig-00002">
+    <media alt="1-hexyne reacts with hydrogen bromide in acetic acid to give 2-bromo-1-hexene. This further reacts with hydrogen bromide and acetic acid to give 2,2-dibromohexane.">
+    <image mime-type="image/jpeg" src="../../media/OChem_09_03_002.jpg"/>
+    </media>
+    </figure>
+    <figure class="unnumbered scaled-down" id="fig-00003">
+    <media alt="3-hexyne reacts with hydrogen chloride in acetic acid to form (Z)-3-chloro-3-hexene. This further reacts with hydrogen chloride in acetic acid to form 3,3-dichlorohexane.">
+    <image mime-type="image/jpeg" src="../../media/OChem_09_03_003.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00003">Bromine and chlorine also add to alkynes to give addition products, and trans stereochemistry again results.</para>
+    <figure class="unnumbered scaled-down" id="fig-00004">
+    <media alt="1-butyne reacts with bromine in chloromethane to give (E)-1,2-dibromo-1-butene. This further reacts with bromine in chloromethane to form 1,1,2,2-tetrabromobutane.">
+    <image mime-type="image/jpeg" src="../../media/OChem_09_03_004.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00004">The mechanism of alkyne addition is similar but not identical to that of alkene addition. When an electrophile such as HBr adds to an alkene, the reaction takes place in two steps and involves an alkyl carbocation intermediate (<link document="m00069"/> and <link document="m00070"/>). If HBr were to add by the same mechanism to an alkyne, an analogous vinylic carbocation would be formed as the intermediate.</para>
+    <figure class="unnumbered scaled-down" id="fig-00005">
+    <media alt="The figure shows two mechanisms. First reaction is an alkene reacting with hydrogen bromide to form alkyl bromide. The second is an alkyne reacting with hydrogen bromide to form vinylic bromide.">
+    <image mime-type="image/jpeg" src="../../media/OChem_09_03_005.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00005">A vinylic carbocation has an <emphasis effect="italics">sp</emphasis>-hybridized carbon and generally forms less readily than an alkyl carbocation (<link target-id="fig-00006"/>). As a rule, a secondary vinylic carbocation forms about as readily as a primary alkyl carbocation, but a primary vinylic carbocation is so difficult to form that there is no clear evidence it even exists. Thus, many alkyne additions occur through more complex mechanistic pathways.</para>
+    <figure id="fig-00006">
+    <media alt="The first structure is an electrostatic potential map of vinylic carbocation. The second and third structures are secondary vinylic carbocation and secondary alkyl carbocation, respectively. Vacant p orbitals are labeled.">
+    <image mime-type="image/jpeg" src="../../media/OChem_09_03_006.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">The structure of a secondary vinylic carbocation.</emphasis> The cationic carbon atom is <emphasis effect="italics">sp</emphasis>-hybridized and has a vacant <emphasis effect="italics">p</emphasis> orbital perpendicular to the plane of the <emphasis effect="italics">π</emphasis> bond orbitals. Only one R group is attached to the positively charged carbon rather than two, as in a secondary alkyl carbocation. The electrostatic potential map shows that the <span class="cyan-text"><emphasis effect="bold">most positive regions</emphasis></span> coincide with lobes of the vacant <emphasis effect="italics">p</emphasis> orbital and are perpendicular to the <span class="magenta-text"><emphasis effect="bold">most negative regions</emphasis></span> associated with the <emphasis effect="italics">π</emphasis> bond.</caption>
+    </figure>
+    <section class="section-exercises" id="sect-00001">
+    <title>Problems</title>
+    <exercise id="exer-00001">
+    <problem id="prob-00001">
+    <para id="para-00006"><link class="os-embed" url="#exercise/09-03-OC-P03"/></para>
+    </problem>
+    </exercise>
+    </section>
+    </content>
+</document>

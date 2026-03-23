@@ -1,0 +1,46 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Reactions of Phenols</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Reactions of Phenols</md:title>
+    <md:content-id>m00209</md:content-id>
+    <md:uuid>25ebe2f9-1d2f-4053-9186-15cec739c16b</md:uuid>
+  </metadata>
+  <content>
+    <section id="sect-00001">
+      <title>Electrophilic Aromatic Substitution Reactions</title>
+      <para id="para-00001">The hydroxyl group is a strongly activating, ortho- and para-directing substituent in electrophilic aromatic substitution reactions (<link document="m00192"/>). As a result, phenols are highly reactive substrates for electrophilic halogenation, nitration, sulfonation, and Friedel–Crafts reactions.</para>
+      <figure class="unnumbered scaled-down" id="fig-00001">
+      <media alt="Phenol reacts with an electrophile to form ortho-substituted phenol and para-substituted phenol.">
+      <image mime-type="image/jpeg" src="../../media/OChem_17_10_001.jpg"/>
+      </media>
+      </figure>
+      </section>
+      <section id="sect-00002">
+      <title>Oxidation of Phenols: Quinones</title>
+      <para id="para-00002">Phenols don’t undergo oxidation in the same way as alcohols because they don’t have a hydrogen atom on the hydroxyl-bearing carbon. Instead, oxidation of a phenol yields a 2,5-cyclohexadiene-1,4-dione, or <term id="term-00001">quinone</term>. Many different oxidizing agents will accomplish the transformation, with Na<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub> as a common choice for simple phenols and potassium nitrosodisulfonate [(KSO<sub>3</sub>)<sub>2</sub>NO], called Fremy’s salt, is often used.</para>
+      <figure class="unnumbered scaled-down" id="fig-00002">
+      <media alt="Phenol reacts with sodium dichromate to form benzoquinone with 79 percent yield. The electrostatic potential map of benzoquinone shows carbon, hydrogen and oxygen as black, gray and red spheres, respectively.">
+      <image mime-type="image/jpeg" src="../../media/OChem_17_10_002.jpg"/>
+      </media>
+      </figure>
+      <para id="para-00003">Quinones are a valuable class of compounds because of their oxidation–reduction, or <emphasis effect="italics">redox,</emphasis> properties. They can be easily reduced to <term id="term-00002">hydroquinones</term> (<emphasis effect="italics">p</emphasis>-dihydroxybenzenes) by reagents such as NaBH<sub>4</sub> and SnCl<sub>2</sub>, and hydroquinones can be easily reoxidized back to quinones by Na<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub>.</para>
+      <figure class="unnumbered scaled-down" id="fig-00003">
+      <media alt="A reversible reaction in which benzoquinone reacts with tin(2) chloride, water, and sodium dichromate to form hydroquinone.">
+      <image mime-type="image/jpeg" src="../../media/OChem_17_10_003.jpg"/>
+      </media>
+      </figure>
+      <para id="para-00004">The redox properties of quinones are crucial to the functioning of living cells, where compounds called <emphasis effect="italics">ubiquinones</emphasis> act as biochemical oxidizing agents to mediate the electron-transfer processes involved in energy production. Ubiquinones, also called <emphasis effect="italics">coenzymes Q,</emphasis> are components of the cells in all aerobic organisms, from the simplest bacterium to humans. They are so named because of their ubiquitous occurrence throughout nature.</para>
+      <figure class="unnumbered scaled-down" id="fig-00004">
+      <media alt="The structure of ubiquinones. One substituent has a repeating unit that occurs 1 to 10 times (n equals 1 to 10).">
+      <image mime-type="image/jpeg" src="../../media/OChem_17_10_004.jpg"/>
+      </media>
+      </figure>
+      <para id="para-00005">Ubiquinones function within the mitochondria of cells to mediate the respiration process in which electrons are transported from the biological reducing agent NADH to molecular oxygen. Through a complex series of steps, the ultimate result is a cycle whereby NADH is oxidized to NAD<sup>+</sup>, O<sub>2</sub> is reduced to water, and energy is produced. Ubiquinone acts only as an intermediary and is itself unchanged.</para>
+      <figure class="unnumbered scaled-down" id="fig-00005">
+      <media alt="Two steps in which ubiquinone functions as an intermediate to convert nicotinamide adenine dinucleotide hydrogen to nicotinamide adenine dinucleotide plus ion by oxidation.">
+      <image mime-type="image/jpeg" src="../../media/OChem_17_10_005.jpg"/>
+      </media>
+      </figure>
+      </section>
+    </content>
+</document>

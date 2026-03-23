@@ -1,0 +1,88 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Some Examples of Sigmatropic Rearrangements</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Some Examples of Sigmatropic Rearrangements</md:title>
+    <md:content-id>m00348</md:content-id>
+    <md:uuid>ce8c5b6d-32f4-4153-b6f9-fdec12d65639</md:uuid>
+  </metadata>
+  <content>
+<para id="para-00001">Because a [1,5] sigmatropic rearrangement involves three electron pairs (two <emphasis effect="italics">π</emphasis> bonds and one <emphasis effect="italics">σ</emphasis> bond), the orbital-symmetry rules in <link document="m00347" target-id="table-00001"/> predict a suprafacial reaction. In fact, the [1,5] suprafacial shift of a hydrogen atom across two double bonds of a <emphasis effect="italics">π</emphasis> system is a commonly observed sigmatropic rearrangements. For example, 5-methyl-1,3-cyclopentadiene rapidly rearranges at room temperature to yield a mixture of 1-methyl-, 2-methyl-, and 5-methyl-isomers.</para>
+<figure class="unnumbered scaled-down" id="fig-00001">
+<media alt="5-methyl-1,3-cyclopentadiene reacts through 1,5-shift to form 1-methyl-1,3-cyclopentadiene. This undergoes 1,5-shift to form 2-methyl-1,3-cyclopentadiene">
+<image mime-type="image/jpeg" src="../../media/OChem_30_08_001.jpg"/>
+</media>
+</figure>
+<para id="para-00002">As another example, heating 5,5,5-trideuterio-(3<emphasis effect="italics">Z</emphasis>)-1,3-pentadiene causes scrambling of deuterium between positions 1 and 5.</para>
+<figure class="unnumbered scaled-down" id="fig-00002">
+<media alt="5,5,5-trideuterio-(3Z)-1,3-pentadiene reacts with heat via [1,5] shift to give a pentadiene in which one D has migrated from C 5 to C 1.">
+<image mime-type="image/jpeg" src="../../media/OChem_30_08_002.jpg"/>
+</media>
+</figure>
+<para id="para-00003">Both these [1,5] hydrogen shifts occur by a symmetry-allowed suprafacial pathway, as illustrated in <link target-id="fig-00003"/>. In contrast with these thermal [1,<emphasis effect="italics">5</emphasis>] sigmatropic hydrogen shifts, however, thermal [1,<emphasis effect="italics">3</emphasis>] hydrogen shifts are unknown. If they were to occur, they would have to proceed by a strained antarafacial reaction pathway.</para>
+<figure class="scaled-down" id="fig-00003">
+<media alt="Orbital representation of suprafacial 1,5-hydrogen shift. P orbitals on C 1 and C 5 are in-phase with each other. Hydrogen bonded to same-phase lobes on both carbons in transition state.">
+<image mime-type="image/jpeg" src="../../media/OChem_30_08_003.jpg"/>
+</media>
+<caption><emphasis effect="bold">An orbital view of a suprafacial [1,5] hydrogen shift.</emphasis></caption>
+</figure>
+<para id="para-00004">Two other important sigmatropic reactions are the <emphasis effect="bold">Claisen rearrangement</emphasis> of either an allyl aryl ether (<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mstyle mathvariant="bold" mathsize="normal"><m:mn>2</m:mn></m:mstyle></m:msub><m:mtext>C</m:mtext><m:mtext>═</m:mtext><m:msub><m:mrow><m:mtext>CHCH</m:mtext></m:mrow><m:mstyle mathvariant="bold" mathsize="normal"><m:mn>2</m:mn></m:mstyle></m:msub><m:mtext>─</m:mtext><m:mtext>O</m:mtext><m:mtext>─</m:mtext><m:mtext>Ar</m:mtext></m:mrow></m:math>) or an allyl vinyl (<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mstyle mathvariant="bold" mathsize="normal"><m:mn>2</m:mn></m:mstyle></m:msub><m:mtext>C</m:mtext><m:mtext>═</m:mtext><m:msub><m:mrow><m:mtext>CHCH</m:mtext></m:mrow><m:mstyle mathvariant="bold" mathsize="normal"><m:mn>2</m:mn></m:mstyle></m:msub><m:mtext>─</m:mtext><m:mtext>O</m:mtext><m:mtext>─</m:mtext><m:mtext>CH</m:mtext><m:mtext>═</m:mtext><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mstyle mathvariant="bold" mathsize="normal"><m:mn>2</m:mn></m:mstyle></m:msub></m:mrow></m:math>) ether, and the <emphasis effect="bold">Cope rearrangement</emphasis> of a 1,5 hexadiene to an isomeric 1,5-diene. These two rearrangements, along with the Diels–Alder reaction, are among the most generally useful pericyclic reactions for organic synthesis. Thousands of examples of all three are known.</para>
+<figure class="unnumbered scaled-down" id="fig-00004">
+<media alt="An allylic aryl ether reacts to form o-allylphenol and an allylic vinylic ether reacts to form unsaturated ketone through Claisen rearrangement. 1,5-diene reacts to form isomeric 1,5-diene through Cope rearrangement.">
+<image mime-type="image/jpeg" src="../../media/OChem_30_08_004.jpg"/>
+</media>
+</figure>
+<para id="para-00005">Like the Diels–Alder reaction discussed in <link document="m00174"/> and <link document="m00175"/>, the Claisen rearrangement takes place in a single step through a pericyclic mechanism in which a reorganization of bonding electrons occurs in a six-membered, cyclic transition state. The 6-allyl-2,4-cyclohexadienone intermediate then isomerizes to <emphasis effect="italics">o</emphasis>-allylphenol (<link target-id="fig-00005"/>).</para>
+<figure class="scaled-down" id="fig-00005">
+<media alt="Allyl phenyl ether undergoes Claisen rearrangement that reacts via a transition state to form an intermediate, 6-allyl-2,4-cyclohexadienone. This further reacts to form o-allylphenol.">
+<image mime-type="image/jpeg" src="../../media/OChem_18_04_003.jpg"/>
+</media>
+<caption><emphasis effect="bold">Mechanism of Claisen rearrangement.</emphasis> C─O bond-breaking and C─C bond-making occur simultaneously.</caption>
+</figure>
+<para id="para-00006">Evidence for this mechanism comes from the observation that the rearrangement takes place with transposition of the allyl group. That is, allyl phenyl ether containing a <sup>14</sup>C label on the allyl <emphasis effect="italics">ether</emphasis> carbon atom yields <emphasis effect="italics">o</emphasis>-allylphenol in which the label is on the <emphasis effect="italics">terminal</emphasis> vinylic carbon (green in <link target-id="fig-00005"/>).</para>
+<section class="section-exercises" id="sect-00001">
+<title>Problems</title>
+<exercise id="exer-00001">
+<problem id="prob-00001">
+<para id="para-00007"><link class="os-embed" url="#exercise/30-08-OC-P08"/></para>
+</problem>
+</exercise>
+</section>
+<para id="para-00008">The Cope rearrangement that converts a 1,5-diene to an isomeric 1,5-diene is somewhat limited but a modification called the <emphasis effect="bold">Oxy Cope Rearrangement</emphasis> is wider in scope. As shown in the following example, a 1-5 diene with an –OH next to the double bond can be converted into an oxy-anion by reaction with a strong base such as potassium hydride (KH). A Cope rearrangement then occurs, and reaction with aqueous acid gives an enol that tautomerizes to an aldehyde.</para>
+<figure class="unnumbered scaled-down" id="fig-00006">
+<media alt="1,5-hexadien-3-ol reacts with K H to form deprotonated trans-1,5-hexadien-1-ol. This reacts with hydronium to form 5-hexenal.">
+<image mime-type="image/jpeg" src="../../media/OChem_30_08_HOKH.jpg"/>
+</media>
+</figure>
+<para id="para-00009">Although biological examples of pericyclic reactions are relatively rare, a much-studied example occurs in bacteria during biosynthesis of the essential amino acid phenylalanine. Phenylalanine arises from the precursor chorismate through a Claisen rearrangement to prephenate, followed by decarboxylation to phenylpyruvate and reductive amination (<link target-id="fig-00008"/>). You might note that the reductive amination of phenylpyruvate is the exact reverse of the transamination process shown in <link document="m00338" target-id="fig-00003"/>, by which amino acids are deaminated. In addition, the reductive amination of ketones is a standard method for preparing amines in the laboratory, as we saw in <link document="m00294"/>.</para>
+<figure class="scaled-down" id="fig-00007">
+<media alt="Two reactions with orbital diagrams. The first shows Cope rearrangement of a 1,5-hexadiene (suprafacial). The second shows the Claisen rearrangement of an allylic vinylic ether (suprafacial).">
+<image mime-type="image/jpeg" src="../../media/OChem_30_08_005.jpg"/>
+</media>
+<caption><emphasis effect="bold">Suprafacial [3,3] <emphasis effect="bold">(a)</emphasis> Cope and <emphasis effect="bold">(b)</emphasis> Claisen rearrangements.</emphasis></caption>
+</figure>
+<figure class="scaled-down" id="fig-00008">
+<media alt="Chorismate reacts to form prephenate. The release of carbon dioxide and water leads to phenylpyruvate. This reacts with glutamate and alpha ketoglutarate to form phenylalanine.">
+<image mime-type="image/jpeg" src="../../media/OChem_30_08_006.jpg"/>
+</media>
+<caption><emphasis effect="bold">Pathway for the bacterial biosynthesis of phenylalanine from chorismate, involving a Claisen rearrangement.</emphasis></caption>
+</figure>
+<section class="section-exercises" id="sect-00002">
+<title>Problems</title>
+<exercise id="exer-00002">
+<problem id="prob-00002">
+<para id="para-00010"><link class="os-embed" url="#exercise/30-08-OC-P09"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00003">
+<problem id="prob-00003">
+<para id="para-00011"><link class="os-embed" url="#exercise/30-08-OC-P10"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00004">
+<problem id="prob-00004">
+<para id="para-00012"><link class="os-embed" url="#exercise/30-08-OC-P11"/></para>
+</problem>
+</exercise>
+</section>
+</content>
+</document>

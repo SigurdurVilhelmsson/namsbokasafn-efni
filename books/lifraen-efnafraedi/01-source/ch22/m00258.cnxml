@@ -1,0 +1,24 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Reactivity of Enols: <emphasis effect="italics">α</emphasis>-Substitution Reactions</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Reactivity of Enols: α-Substitution Reactions</md:title>
+    <md:content-id>m00258</md:content-id>
+    <md:uuid>be3535ac-d0ac-4e4c-b84b-8fda0825b9d9</md:uuid>
+  </metadata>
+  <content>
+<para id="para-00001">What kind of chemistry do enols have? Because their double bonds are electron-rich, enols behave as nucleophiles and react with electrophiles in much the same way that alkenes do. But because of resonance-electron donation of a lone pair of electrons on the neighboring oxygen, enols are more electron-rich and correspondingly more reactive than alkenes. Notice in the following electrostatic potential map of ethenol (<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>C</m:mtext><m:mo>═</m:mo><m:mtext>CHOH</m:mtext></m:mrow></m:math>) how there is a substantial electron density (yellow-red) on the <emphasis effect="italics">α</emphasis> carbon.</para>
+<figure class="unnumbered scaled-down" id="fig-00001">
+<media alt="Two resonance forms of an enol tautomer as well as the electrostatic potential map with the ball-and-stick model of the second tautomer.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_02_001.jpg"/>
+</media>
+</figure>
+<para id="para-00002">When an <emphasis effect="italics">alkene</emphasis> reacts with an electrophile, E<sup>+</sup>, initial addition gives an intermediate cation and subsequent reaction with a nucleophile, such as a halide ion, yields an addition product (<link document="m00069"/>). When an <emphasis effect="italics">enol</emphasis> reacts with an electrophile, however, only the initial addition step is the same (<link target-id="fig-00002"/>). Instead of reacting with a nucleophile to give an addition product, the intermediate cation loses the –OH proton to give an <emphasis effect="italics">α</emphasis>-substituted carbonyl compound.</para>
+<figure class="mechanism-figure scaled-down" id="fig-00002">
+<title>MECHANISM</title>
+<media alt="Acid-catalyzed mechanism of for alpha substitution of a carbonyl in three steps: enol  forms, this attacks electrophile from alpha carbon, and carbonyl oxygen is deprotonated to neutral product.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_02_002.jpg"/>
+</media>
+<caption><emphasis effect="bold">General mechanism of a carbonyl <emphasis effect="italics">α</emphasis>-substitution reaction.</emphasis> In step 3, the initially formed cation loses H<sup>+</sup> to regenerate a carbonyl compound.</caption>
+</figure>
+</content>
+</document>

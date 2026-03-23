@@ -1,0 +1,33 @@
+{
+  "moduleId": "m66372",
+  "title": {
+    "segmentId": "m66372:title:auto-1",
+    "text": "Introduction"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "13e0e95a-8a94-49de-947d-beedb3062923"
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "fig-ch05_00_00",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m66372:caption:fig-ch05_00_00-caption"
+      },
+      "media": {
+        "id": "fs-id2026471",
+        "alt": "This photo shows the hustle and bustle of Grand Central Station.",
+        "src": "../../media/Figure_05_00_00.jpg",
+        "mimeType": "image/jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-id1760605",
+      "segmentId": "m66372:para:fs-id1760605"
+    }
+  ],
+  "sectionOrder": null
+}

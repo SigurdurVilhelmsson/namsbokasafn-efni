@@ -1,0 +1,25 @@
+<document xmlns="http://cnx.rice.edu/cnxml" class="introduction" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Why This Chapter?</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Why This Chapter?</md:title>
+    <md:content-id>m00075</md:content-id>
+    <md:uuid>cb30f7fd-598a-4162-9cb3-850b5b1ac350</md:uuid>
+  </metadata>
+  <content class="introduction">
+<figure class="splash" id="fig-00001">
+<media alt="A close-up of two striped skunks near a hollow log.">
+<image mime-type="image/jpeg" src="../../media/OChem_18_00_Skunk.jpg"/>
+</media>
+<caption><emphasis effect="bold">The appalling and unforgettable odor of skunks is due to a mixture of several simple thiols</emphasis>. (credit: modification of work “Striped Skunk” by Tom Friedel/Wikimedia Commons, CC BY 3.0)</caption>
+</figure>
+<para id="para-00001">This chapter finishes the coverage of functional groups with C–O and C–S single bonds that was begun in the chapter on <link document="m00199">Alcohols and Phenols</link>. We’ll focus primarily on ethers and take only a brief look at thiols and sulfides before going on to an extensive coverage of compounds with <m:math><m:mrow><m:mtext>C=O</m:mtext></m:mrow></m:math> double bonds in Chapters 19 through 23.</para>
+<para id="para-00002"><term id="term-00001">Ethers (R–O–R′)</term>, like the alcohols we saw in the preceding chapter, are organic derivatives of water, but they have two organic groups bonded to the same oxygen atom rather than one. The organic groups might be alkyl, aryl, or vinylic, and the oxygen atom might be in an open chain or a ring.</para>
+<para id="para-00003">Perhaps the most well-known ether is diethyl ether, which has a long history of medicinal use as an anesthetic and industrial use as a solvent. Other useful ethers include anisole, a pleasant-smelling aromatic ether used in perfumery, and tetrahydrofuran (THF), a cyclic ether often used as a solvent.</para>
+<figure class="unnumbered" id="fig-00002">
+<media alt="The ball-and-stick model and structures of diethyl ether, anisole (methyl phenyl ether), and tetrahydrofuran. The shared oxygen atom bonded to two organic groups is highlighted.">
+<image mime-type="image/jpeg" src="../../media/OChem_18_00_001.jpg"/>
+</media>
+</figure>
+<para id="para-00004"><term id="term-00002">Thiols</term> (R–S–H) and sulfides (R–S–R′) are sulfur analogs of alcohols and ethers, respectively. Both functional groups are found in various biomolecules, although not as commonly as their oxygen-containing relatives.</para>
+</content>
+</document>

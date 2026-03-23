@@ -1,0 +1,397 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Afbrigði annarra alkana</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Afbrigði annarra alkana</md:title>
+    <md:content-id>m00038</md:content-id>
+    <md:uuid>60cf85b6-afad-402f-91c0-1f5f217a5bde</md:uuid>
+  </metadata>
+
+<content>
+<para id="para-00001">Própan, næsti meðlimur í röð alkana, hefur einnig snúningshindrun sem leiðir til tálmaðs snúnings um kolefnis-kolefnistengin. Hindrunin er örlítið hærri í própani en í etani—alls 14 kJ/mól (3,4 kkal/mól) á móti 12 kJ/mól.</para>
+<para id="para-00002">Skyggða afbrigði própans hefur þrjár víxlverkanir—tvær vetnis-vetnis víxlverkanir af etangerð og eina viðbótar vetnis-metíl víxlverkun. Þar sem hver skyggð H ↔ H víxlverkun er sú sama og í etani og hefur því orku„kostnað“ upp á 4,0 kJ/mól, getum við úthlutað gildinu 14 – (2 × 4,0) = 6,0 kJ/mól (1,4 kkal/mól) á skyggðu H ↔ CH<sub>3</sub> víxlverkunina (<link target-id="fig-00001"/>).</para>
+<figure id="fig-00001">
+    <media alt="Staggered propane undergoes rotation of rear carbon 60 degrees to form eclipsed propane.">
+    <image mime-type="image/jpeg" src="../../media/OChem_03_07_001.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">Newman-vörpun própans sem sýnir stölluð og skyggð afbrigði.</emphasis> Stallaða afbrigðið hefur 14 kJ/mól lægri orku.</caption>
+    </figure>
+<para id="para-00003">Ástand afbrigða verður flóknara fyrir stærri alkana því ekki hafa öll stölluð afbrigði sömu orku og ekki hafa öll skyggð afbrigði sömu orku. Í bútani, til dæmis, er lægsta orkuskipanin, kölluð <term id="term-00001">andstætt afbrigði (e. anti conformation)</term>, sú þar sem metýlhóparnir tveir eru eins langt frá hvor öðrum og mögulegt er—180° frá hvor öðrum. Þegar snúningur á sér stað um C2–C3 tengið, næst skyggð afbrigði þar sem eru tvær CH<sub>3</sub> ↔ H víxlverkanir og ein H ↔ H víxlverkun. Með því að nota orkugildin sem áður voru fengin úr etani og própani, er þetta skyggða afbrigði meira spennt en andstæða afbrigðið um 2 × 6,0 kJ/mól + 4,0 kJ/mól (tvær CH<sub>3</sub> ↔ H víxlverkanir auk einnar H ↔ H víxlverkunar), samtals 16 kJ/mól (3,8 kkal/mól).</para>
+<figure id="fig-00002" class="unnumbered">
+<media alt="Anti-conformation of butane is rotated by 60 degrees to produce eclipsed conformation of butane.">
+<image mime-type="image/jpeg" src="../../media/OChem_03_07_002.jpg"/>
+</media>
+</figure>
+<para id="para-00004">Þegar snúningur tengisins heldur áfram, er orkulágmarki náð við stallað afbrigði þar sem metýlhóparnir eru 60° á milli. Það er kallað <term id="term-00002">gauche-afbrigði (e. gauche conformation)</term> og liggur 3,8 kJ/mól (0,9 kkal/mól) hærra í orku en andstæða afbrigðið þótt það hafi engar skyggðar víxlverkanir. Þessi orkumunur stafar af því að vetnisatóm metýlhópanna eru nálægt hvort öðru í gauche-afbrigðinu, sem leiðir til þess sem kallað er <emphasis effect="italics">rýmishindrunarálag.</emphasis> <term id="term-00003">Rýmishindrunarálag (e. steric strain)</term> er fráhrindandi víxlverkun sem á sér stað þegar atóm eru þvinguð nær saman en atómradíusar þeirra leyfa. Það er afleiðing þess að reyna að þvinga tvö atóm til að hernema sama rýmið.</para>
+<figure id="fig-00003" class="unnumbered">
+<media alt="Eclipsed conformation of butane is rotated by 60 degrees to produce gauche conformation of butane.">
+<image mime-type="image/jpeg" src="../../media/OChem_03_07_003.jpg"/>
+</media>
+</figure>
+<para id="para-00005">Þegar tvíhliða hornið milli metýlhópanna nálgast núll, er orkuhámarki náð við annað skyggt afbrigði. Vegna þess að metýlhóparnir eru þvingaðir enn nær saman en í gauche-afbrigðinu, er bæði snúningsálag og rýmishindrunarálag til staðar. Heildarálagsorka upp á 19 kJ/mól (4,5 kkal/mól) hefur verið áætluð fyrir þetta afbrigði, sem gerir það mögulegt að reikna gildið 11 kJ/mól (2,6 kkal/mól) fyrir CH<sub>3</sub> ↔ CH<sub>3</sub> skyggðu víxlverkunina: heildarálag 19 kJ/mól að frádregnu álagi tveggja H ↔ H skyggðra víxlverkana (2 × 4,0 kkal/mól) jafngildir 11 kJ/mól.</para>
+<figure id="fig-00004" class="unnumbered">
+<media alt="Gauche conformation of butane is rotated by 60 degrees to produce eclipsed conformation of butane.">
+<image mime-type="image/jpeg" src="../../media/OChem_03_07_004.jpg"/>
+</media>
+</figure>
+<para id="para-00006">Eftir 0° verður snúningurinn spegilmynd af því sem við höfum þegar séð: öðru gauche-afbrigði er náð, öðru skyggðu afbrigði, og að lokum afturhvarf til andstæða afbrigðisins. Graf yfir stöðuorku á móti snúningi um C2–C3 tengið er sýnt á <link target-id="fig-00005"/>.</para>
+<figure id="fig-00005" class="scaled-down">
+<media alt="A graph of potential energy versus dihedral angle between methyl groups, in butane. The curve indicates a trough at an energy of 3.8 kilojoules per mole.">
+<image mime-type="image/jpeg" src="../../media/OChem_03_07_005.jpg"/>
+</media>
+<caption><emphasis effect="bold">Graf yfir stöðuorku á móti snúningi fyrir C2−C3 tengið í bútani.</emphasis> Orkuhámarkið verður þegar metýlhóparnir tveir skyggja hvor á annan og orkulágmarkið verður þegar metýlhóparnir tveir eru 180° á milli (andstætt).</caption>
+</figure>
+<para id="para-00007">Hugmyndin um að úthluta ákveðnum orkugildum til sérstakra víxlverkana innan sameindar er mjög gagnleg og við munum snúa aftur að henni í næsta kafla. Samantekt á því sem við höfum séð hingað til er gefin í <link target-id="table-00001"/>.</para>
+<table id="table-00001" summary=" ">
+    <title>Energy Costs for Interactions in Alkane Conformers</title>
+    <tgroup cols="4">
+    <colspec colnum="1" colname="c1"/>
+    <colspec colnum="2" colname="c2"/>
+    <colspec colnum="3" colname="c3"/>
+    <colspec colnum="4" colname="c4"/>
+    <thead>
+    <row valign="top">
+    <entry valign="bottom" align="left" morerows="1">Víxlverkun</entry>
+    <entry valign="bottom" align="left" morerows="1">Orsök</entry>
+    <entry valign="bottom" align="left" namest="c3" nameend="c4">Orkukostnaður</entry>
+    </row>
+    <row valign="top">
+    <entry valign="bottom" align="left">(kJ/mól)</entry>
+    <entry valign="bottom" align="left">(kkal/mól)</entry>
+    </row>
+    </thead>
+    <tbody>
+    <row valign="top">
+    <entry valign="top" align="left">H ↔ H skyggt</entry>
+    <entry valign="top" align="left">Snúningsálag</entry>
+    <entry valign="top" align="left">4,0</entry>
+    <entry valign="top" align="left">1,0</entry>
+    </row>
+    <row valign="top">
+    <entry valign="top" align="left">H ↔ CH<sub>3</sub> skyggt</entry>
+    <entry valign="top" align="left">Aðallega snúningsálag</entry>
+    <entry valign="top" align="left">6,0</entry>
+    <entry valign="top" align="left">1,4</entry>
+    </row>
+    <row valign="top">
+    <entry valign="top" align="left">CH<sub>3</sub> ↔ CH<sub>3</sub> skyggt</entry>
+    <entry valign="top" align="left">Snúnings- og rýmishindrunarálag</entry>
+    <entry valign="top" align="left">11,0</entry>
+    <entry valign="top" align="left">2,6</entry>
+    </row>
+    <row valign="top">
+    <entry valign="top" align="left">CH<sub>3</sub>⟷CH<sub>3</sub> skekkt</entry>
+    <entry valign="top" align="left">Sterísk spenna</entry>
+    <entry valign="top" align="left">3,8</entry>
+    <entry valign="top" align="left">0,9</entry>
+    </row>
+    </tbody>
+    </tgroup>
+    </table>
+<para id="para-00008">Sömu lögmál og þróuð voru fyrir bútan eiga við um pentan, hexan og alla hærri alkana. Hagstæðasta afbrigðið fyrir hvaða alkana sem er hefur kolefnis-kolefnistengin í stölluðum skipunum, með stóra hliðarhópa raðaða andstætt hvor öðrum. Almenn uppbygging alkana er sýnd á <link target-id="fig-00006"/>.</para>
+<figure id="fig-00006" class="scaled-down">
+<media alt="The ball and stick model and molecular structure of the decane are represented.">
+<image mime-type="image/jpeg" src="../../media/OChem_03_07_006.jpg"/>
+</media>
+<caption><emphasis effect="bold">Stöðugasta formbreyting alkana er sú þar sem allir hliðarhópar eru skekktir og kolefnis-kolefnistengin eru í andstæðu</emphasis>, eins og sýnt er á þessu líkani af dekani.</caption>
+</figure>
+<para id="para-00009">Eitt atriði í viðbót: að segja að ein tiltekin formbreyting sé „stöðugri“ en önnur þýðir ekki að sameindin taki aðeins upp og haldi stöðugri formbreytingunni. Við stofuhita eiga sér stað snúningar um <emphasis effect="italics">σ</emphasis>-tengi svo hratt að allar formbreytingar eru í jafnvægi. Á hverju gefnu augnabliki mun þó stærra hlutfall sameinda finnast í stöðugri formbreytingu en í óstöðugri.</para>
+<example id="exam-00001">
+    <title>Newman Projections</title>
+    <para id="para-00010"><title>Lausnarleið</title>Horfðu meðfram C1–C2 tenginu í 1-klórprópani og teiknaðu Newman-vörpun af stöðugustu og óstöðugustu formbreytingunum.</para>
+    <para id="para-00011">Stöðugasta formbreyting á hliðarkeðjuðu alkani er yfirleitt skekkt formbreyting þar sem stórir hópar eru í andstæðu. Óstöðugasta formbreytingin er yfirleitt skyggð formbreyting þar sem stórir hópar eru eins nálægt hvor öðrum og mögulegt er.</para>
+    <para id="para-00012"><title>Lausn</title><media alt="Two Newman projections are represented. The first and second structures are labeled, most stable (staggered) and Least stable (eclipsed), respectively."><image mime-type="image/jpeg" src="../../media/OChem_03_07_007.jpg"/></media></para>
+    </example>
+<figure id="fig-00007" class="unnumbered scaled-down">
+<media alt="Two Newman projections are represented. The first and second structures are labeled, most stable (staggered) and Least stable (eclipsed), respectively.">
+<image mime-type="image/jpeg" src="../../media/OChem_03_07_007.jpg"/>
+</media>
+</figure>
+<section id="sect-00001" class="section-exercises">
+<title>Verkefni</title>
+<exercise id="exer-00001">
+    <problem id="prob-00001">
+    <para id="para-00013"><link class="os-embed" url="#exercise/03-07-OC-P15"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00002">
+    <problem id="prob-00002">
+    <para id="para-00014"><link class="os-embed" url="#exercise/03-07-OC-P16"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00003">
+    <problem id="prob-00003">
+    <para id="para-00015"><link class="os-embed" url="#exercise/03-07-OC-P17"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00004">
+    <problem id="prob-00004">
+    <para id="para-00016"><link class="os-embed" url="#exercise/03-07-OC-P18"/></para>
+    </problem>
+    </exercise>
+</section>
+<section id="note-00001" class="chemistry-matters">
+<title>Bensín</title>
+<para id="para-00017">Breski utanríkisráðherrann Ernest Bevin sagði eitt sinn að „Himnaríki byggist á réttlæti, en jarðríki byggist á alkönum.“ (Reyndar sagði hann „byggist á olíu“ en ekki „byggist á alkönum,“ en það er í raun það sama.) Langmikilvægustu uppsprettur alkana eru jarðgas- og jarðolíulindir heimsins. Talið er að þessar lindir, sem mynduðust fyrir óralöngu, séu aðallega komnar af niðurbroti örsmárra, einfruma sjávarlífvera sem kallast götungar. Jarðgas samanstendur aðallega af metani en inniheldur einnig etan, própan og bútan. Jarðolía er flókin blanda kolvetna sem þarf að aðskilja í hluta og hreinsa frekar áður en hægt er að nota hana.</para>
+<figure id="fig-00008" class="scaled-down">
+<media alt="A photograph of Edwin Drake’s first oil well is presented.">
+<image mime-type="image/jpeg" src="../../media/OChem_03_07_xxx.jpg"/>
+</media>
+<caption>Bensín er takmörkuð auðlind. Hún mun ekki endast að eilífu. (heimild: <link url="https://www.loc.gov/item/2010649522/">„Fyrsta olíulindin“</link> eftir Óþekktan/Library of Congress)</caption>
+</figure>
+<para id="para-00018">Olíuöldin hófst í ágúst 1859 þegar Edwin Drake boraði fyrstu olíulind heimsins nálægt Titusville í Pennsylvaníu. Jarðolían var eimuð í hluta eftir suðumarki, en það var steinolía með hátt suðumark, eða lampaolía, sem var aðallega sóst eftir, frekar en bensín. Læsi var að verða útbreitt á þeim tíma og fólk vildi betri lýsingu til lestrar en kerti buðu upp á. Bensín var of rokgjarnt til notkunar í lampa og var í upphafi talið úrgangsafurð. Heimurinn hefur þó breyst mikið síðan á þessum fyrstu dögum og nú er það bensín frekar en lampaolía sem er verðmæt.</para>
+<para id="para-00019">Olíuhreinsun hefst með hlutaeimingu hráolíu í þrjá meginhluta eftir suðumarki (s.m.): hrábensín (s.m. 30–200 °C), steinolía (s.m. 175–300 °C) og brennsluolía, eða dísilolía (s.m. 275–400 °C). Frekari eiming við lækkaðan þrýsting gefur síðan smurolíur og vax og skilur eftir sig tjöruleifar af asfalti. Eiming hráolíu er þó aðeins fyrsta skrefið í bensínframleiðslu. Það kemur í ljós að hrábensín er lélegt eldsneyti í bifreiðum vegna banka í vél, sem er stjórnlaus bruni sem getur átt sér stað í heitri vél og valdið alvarlegum skemmdum.</para>
+<para id="para-00020"><emphasis effect="italics">Oktantala</emphasis> eldsneytis er mælikvarðinn sem notaður er til að meta bankþol þess. Fyrir löngu varð ljóst að línuleg kolvetni eru mun líklegri til að valda banka í vél en mjög greinótt efnasambönd. Heptan, sem er sérstaklega slæmt eldsneyti, fær grunngildið 0 í oktantölu og 2,2,4-trímetýlpentan, almennt þekkt sem ísóoktan, hefur oktantöluna 100.</para>
+<figure id="fig-00009" class="unnumbered scaled-down">
+<media alt="Two molecular structures of heptane and 2,2,4-trimethylpentane are represented. The first and second structures have octane numbers equal to 0 and 100, respectively.">
+<image mime-type="image/jpeg" src="../../media/OChem_03_07_009.jpg"/>
+</media>
+</figure>
+<para id="para-00021">Vegna þess hve illa hrábensín brennur í vélum hafa olíuefnafræðingar þróað fjölmargar aðferðir til að framleiða hágæða eldsneyti. Ein þessara aðferða, <emphasis effect="italics">hvatahreinsun</emphasis>, felur í sér að taka steinolíuhlutann með háu suðumarki (C<sub>11</sub>–C<sub>14</sub>) og „brjóta“ hann niður í smærri, greinóttar sameindir sem henta til notkunar í bensín. Annað ferli, sem kallast <emphasis effect="italics">endurmótun</emphasis>, er notað til að breyta C<sub>6</sub>–C<sub>8</sub> alkönum í arómatísk efnasambönd eins og bensen og tólúen, sem hafa verulega hærri oktantölur en alkanar. Lokaafurðin sem fer á tankinn þinn hefur um það bil eftirfarandi samsetningu: 15% C<sub>4</sub>–C<sub>8</sub> línulegir alkanar, 25% til 40% C<sub>4</sub>–C<sub>10</sub> greinóttir alkanar, 10% hringalkanar, 10% línulegir og hringlaga alkenar og 25% arenar (arómatísk efnasambönd).</para>
+</section>
+<section id="sect-00002" class="key-terms">
+<list id="list-00001" list-type="bulleted">
+<item><link document="m00032" target-id="term-00006">alcohol</link></item>
+<item><link document="m00032" target-id="term-00013">aldehyde</link></item>
+<item><link document="m00033" target-id="term-00004">aliphatic</link></item>
+<item><link document="m00033" target-id="term-00001">alkane</link></item>
+<item>alken</item>
+<item><link document="m00034" target-id="term-00001">alkyl group</link></item>
+<item><link document="m00032" target-id="term-00005">alkyl halide</link></item>
+<item>alkýn</item>
+<item><link document="m00032" target-id="term-00018">amide</link></item>
+<item><link document="m00032" target-id="term-00008">amine</link></item>
+<item><link document="m00038" target-id="term-00001">anti conformation</link></item>
+<item>aren</item>
+<item><link document="m00033" target-id="term-00006">branched-chain alkane</link></item>
+<item><link document="m00032" target-id="term-00012">carbonyl group</link></item>
+<item><link document="m00032" target-id="term-00015">carboxylic acid</link></item>
+<item><link document="m00037" target-id="term-00002">conformation</link></item>
+<item><link document="m00037" target-id="term-00003">conformational isomer</link></item>
+<item><link document="m00037" target-id="term-00004">conformer</link></item>
+<item><link document="m00033" target-id="term-00008">constitutional isomer</link></item>
+<item><link document="m00037" target-id="term-00008">eclipsed conformation</link></item>
+<item><link document="m00032" target-id="term-00016">ester</link></item>
+<item><link document="m00032" target-id="term-00007">ether</link></item>
+<item><link document="m00032" target-id="term-00001">functional group</link></item>
+<item><link document="m00038" target-id="term-00002">gauche conformation</link></item>
+<item><link document="m00033" target-id="term-00002">hydrocarbon</link></item>
+<item><link document="m00033" target-id="term-00007">isomer</link></item>
+<item><link document="m00032" target-id="term-00014">ketone</link></item>
+<item><link document="m00037" target-id="term-00006">Newman projection</link></item>
+<item>nítríl</item>
+<item><link document="m00034" target-id="term-00002">R group</link></item>
+<item><link document="m00033" target-id="term-00003">saturated</link></item>
+<item><link document="m00037" target-id="term-00005">sawhorse representation</link></item>
+<item><link document="m00037" target-id="term-00007">staggered conformation</link></item>
+<item><link document="m00037" target-id="term-00001">stereochemistry</link></item>
+<item><link document="m00038" target-id="term-00003">steric strain</link></item>
+<item><link document="m00033" target-id="term-00005">straight-chain alkane</link></item>
+<item><link document="m00035" target-id="term-00001">substituent</link></item>
+<item><link document="m00032" target-id="term-00010">sulfide</link></item>
+<item><link document="m00032" target-id="term-00009">thiol</link></item>
+<item><link document="m00037" target-id="term-00009">torsional strain</link></item>
+</list>
+</section>
+<section id="sect-00003" class="summary">
+<title>Samantekt</title>
+<para id="para-00022">Alkanar eru tiltölulega óhvarfgjarnir og taka sjaldan þátt í efnahvörfum, en þeir eru engu að síður gagnlegur grundvöllur til að kynna nokkur mikilvæg almenn hugtök. Í þessum kafla höfum við notað alkana til að kynna grunnaðferðina við nafngiftir lífrænna efnasambanda og til að líta fyrst á suma þrívíddarþætti sameinda.</para>
+<para id="para-00023"><emphasis effect="bold">Hvarfgjarn hópur</emphasis> er hópur atóma innan stærri sameindar sem hefur einkennandi efnahvarfgirni. Þar sem hvarfgjarnir hópar hegða sér á nokkurn veginn sama hátt í öllum sameindum þar sem þeir koma fyrir, ráðast efnahvörf lífrænnar sameindar að mestu leyti af hvarfgjörnum hópum hennar.</para>
+<para id="para-00024"><emphasis effect="bold">Alkanar</emphasis> eru flokkur <emphasis effect="bold">mettaðra kolvetna</emphasis> með almennu formúluna C<emphasis effect="italics"><sub>n</sub></emphasis>H<sub>2<emphasis effect="italics">n</emphasis>+2</sub>. Þeir innihalda enga hvarfgjarna hópa, eru tiltölulega óvirkir og geta verið annaðhvort <emphasis effect="bold">ókeðjugreinaðir</emphasis> (<emphasis effect="italics">normal</emphasis>) eða <emphasis effect="bold">keðjugreinaðir</emphasis>. Alkanar eru nefndir samkvæmt röð IUPAC-nafngiftareglna. Efnasambönd sem hafa sömu efnaformúlu en mismunandi byggingu eru kölluð <emphasis effect="bold">ísómerur</emphasis>. Nánar tiltekið eru efnasambönd eins og bútan og ísóbútan, sem eru ólík hvað varðar tengingar milli atóma, kölluð <emphasis effect="bold">byggingarísómerur</emphasis>.</para>
+<para id="para-00025">Kolefnis-kolefnis eintengi í alkönum myndast við <emphasis effect="italics">σ</emphasis>-samgengni kolefnis <emphasis effect="italics">sp</emphasis><sup>3</sup> blendingssvigrúma. Snúningur er mögulegur um <emphasis effect="italics">σ</emphasis>-tengi vegna sívalningssamhverfu þeirra og því eru alkanar til í miklum fjölda <emphasis effect="bold">afstöðuforma</emphasis> sem breytast hratt hvert í annað. <emphasis effect="bold">Newman-vörpun</emphasis> gerir kleift að sjá fyrir sér rúmfræðilegar afleiðingar tengisnúninga með því að horfa beint eftir kolefnis-kolefnis tengiás. Ekki eru öll afstöðuform alkana jafn stöðug. <emphasis effect="bold">Gagstætt afstöðuform</emphasis> etans er 12 kJ/mól (2,9 kkal/mól) stöðugra en <emphasis effect="bold">skyggða afstöðuformið</emphasis> vegna <emphasis effect="bold">snúningstognunar</emphasis>. Almennt er sérhver alkani stöðugastur þegar öll tengi hans eru gagstæð.</para>
+</section>
+<section id="sect-00004" class="additional-problems">
+<title>Viðbótardæmi</title>
+<para id="para-00029"><emphasis effect="bold">Sjónræn efnafræði</emphasis></para>
+<exercise id="exer-00005">
+    <problem id="prob-00005">
+    <para id="para-00026"><link class="os-embed" url="#exercise/03-99-OC-VC01"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00006">
+    <problem id="prob-00006">
+    <para id="para-00027"><link class="os-embed" url="#exercise/03-99-OC-VC02"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00007">
+    <problem id="prob-00007">
+    <para id="para-00028"><link class="os-embed" url="#exercise/03-99-OC-VC03"/></para>
+    </problem>
+    </exercise>
+<para id="para-00068"><emphasis effect="bold">Verkandi hópar</emphasis></para>
+<exercise id="exer-00008">
+    <problem id="prob-00008">
+    <para id="para-00030"><link class="os-embed" url="#exercise/03-99-OC-AP01"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00009">
+    <problem id="prob-00009">
+    <para id="para-00031"><link class="os-embed" url="#exercise/03-99-OC-AP02"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00010">
+    <problem id="prob-00010">
+    <para id="para-00032"><link class="os-embed" url="#exercise/03-99-OC-AP03"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00011">
+    <problem id="prob-00011">
+    <para id="para-00033"><link class="os-embed" url="#exercise/03-99-OC-AP04"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00012">
+    <problem id="prob-00012">
+    <para id="para-00034"><link class="os-embed" url="#exercise/03-99-OC-AP05"/></para>
+    </problem>
+    </exercise>
+<para id="para-00035"><emphasis effect="bold">Ísómerur</emphasis></para>
+<exercise id="exer-00013">
+    <problem id="prob-00013">
+    <para id="para-00036"><link class="os-embed" url="#exercise/03-99-OC-AP06"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00014">
+    <problem id="prob-00014">
+    <para id="para-00037"><link class="os-embed" url="#exercise/03-99-OC-AP07"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00015">
+    <problem id="prob-00015">
+    <para id="para-00038"><link class="os-embed" url="#exercise/03-99-OC-AP08"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00016">
+    <problem id="prob-00016">
+    <para id="para-00039"><link class="os-embed" url="#exercise/03-99-OC-AP09"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00017">
+    <problem id="prob-00017">
+    <para id="para-00040"><link class="os-embed" url="#exercise/03-99-OC-AP10"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00018">
+    <problem id="prob-00018">
+    <para id="para-00041"><link class="os-embed" url="#exercise/03-99-OC-AP11"/></para>
+    </problem>
+    </exercise>
+<para id="para-00042"><emphasis effect="bold">Nafngiftir efnasambanda</emphasis></para>
+<exercise id="exer-00019">
+    <problem id="prob-00019">
+    <para id="para-00043"><link class="os-embed" url="#exercise/03-99-OC-AP12"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00020">
+    <problem id="prob-00020">
+    <para id="para-00044"><link class="os-embed" url="#exercise/03-99-OC-AP13"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00021">
+    <problem id="prob-00021">
+    <para id="para-00045"><link class="os-embed" url="#exercise/03-99-OC-AP14"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00022">
+    <problem id="prob-00022">
+    <para id="para-00046"><link class="os-embed" url="#exercise/03-99-OC-AP15"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00023">
+    <problem id="prob-00023">
+    <para id="para-00047"><link class="os-embed" url="#exercise/03-99-OC-AP16"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00024">
+    <problem id="prob-00024">
+    <para id="para-00048"><link class="os-embed" url="#exercise/03-99-OC-AP17"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00025">
+    <problem id="prob-00025">
+    <para id="para-00049"><link class="os-embed" url="#exercise/03-99-OC-AP18"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00026">
+    <problem id="prob-00026">
+    <para id="para-00050"><link class="os-embed" url="#exercise/03-99-OC-AP19"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00027">
+    <problem id="prob-00027">
+    <para id="para-00051"><link class="os-embed" url="#exercise/03-99-OC-AP20"/></para>
+    </problem>
+    </exercise>
+<para id="para-00052"><emphasis effect="bold">Sveigðir</emphasis></para>
+<exercise id="exer-00028">
+    <problem id="prob-00028">
+    <para id="para-00053"><link class="os-embed" url="#exercise/03-99-OC-AP21"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00029">
+    <problem id="prob-00029">
+    <para id="para-00054"><link class="os-embed" url="#exercise/03-99-OC-AP22"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00030">
+    <problem id="prob-00030">
+    <para id="para-00055"><link class="os-embed" url="#exercise/03-99-OC-AP23"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00031">
+    <problem id="prob-00031">
+    <para id="para-00056"><link class="os-embed" url="#exercise/03-99-OC-AP24"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00032">
+    <problem id="prob-00032">
+    <para id="para-00057"><link class="os-embed" url="#exercise/03-99-OC-AP25"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00033">
+    <problem id="prob-00033">
+    <para id="para-00058"><link class="os-embed" url="#exercise/03-99-OC-AP26"/></para>
+    </problem>
+    </exercise>
+<para id="para-00059"><emphasis effect="bold">Almenn dæmi</emphasis></para>
+<exercise id="exer-00034">
+    <problem id="prob-00034">
+    <para id="para-00060"><link class="os-embed" url="#exercise/03-99-OC-AP27"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00035">
+    <problem id="prob-00035">
+    <para id="para-00061"><link class="os-embed" url="#exercise/03-99-OC-AP28"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00036">
+    <problem id="prob-00036">
+    <para id="para-00062"><link class="os-embed" url="#exercise/03-99-OC-AP29"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00037">
+    <problem id="prob-00037">
+    <para id="para-00063"><link class="os-embed" url="#exercise/03-99-OC-AP30"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00038">
+    <problem id="prob-00038">
+    <para id="para-00064"><link class="os-embed" url="#exercise/03-99-OC-AP31"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00039">
+    <problem id="prob-00039">
+    <para id="para-00065"><link class="os-embed" url="#exercise/03-99-OC-AP32"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00040">
+    <problem id="prob-00040">
+    <para id="para-00066"><link class="os-embed" url="#exercise/03-99-OC-AP33"/></para>
+    </problem>
+    </exercise>
+<exercise id="exer-00041">
+    <problem id="prob-00041">
+    <para id="para-00067"><link class="os-embed" url="#exercise/03-99-OC-AP34"/></para>
+    </problem>
+    </exercise>
+</section>
+</content>
+</document>

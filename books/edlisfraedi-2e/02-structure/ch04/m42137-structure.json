@@ -1,0 +1,729 @@
+{
+  "moduleId": "m42137",
+  "title": {
+    "segmentId": "m42137:title:auto-1",
+    "text": "Extended Topic: The Four Basic Forces—An Introduction"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "c874ccd3-6c58-4104-918e-bded4f2c9ea4"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "learning-objectives",
+      "title": {
+        "segmentId": "m42137:title:sect-00001-title",
+        "text": "Learning Objectives"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00001",
+          "segmentId": "m42137:para:para-00001"
+        },
+        {
+          "type": "list",
+          "id": "list-00001",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m42137:item:list-00001-item-1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "import-auto-id1910048",
+      "segmentId": "m42137:para:import-auto-id1910048"
+    },
+    {
+      "type": "para",
+      "id": "import-auto-id1447177",
+      "segmentId": "m42137:para:import-auto-id1447177"
+    },
+    {
+      "type": "table",
+      "id": "import-auto-id1588108",
+      "summary": "A table listing the properties of four basic forces. The table has five columns indicating the type of force, its approximate relative strength, its range, whether it is attractive or repulsive, and the carrier particle(s).",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m42137:entry:auto-6",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m42137:entry:auto-7",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m42137:entry:auto-8",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m42137:entry:auto-9",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m42137:entry:auto-10",
+              "attributes": {}
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m42137:entry:auto-11",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m42137:entry:auto-12",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m42137:entry:auto-13",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m42137:entry:auto-14",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m42137:entry:auto-15",
+              "attributes": {}
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m42137:entry:auto-16",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m42137:entry:auto-17",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m42137:entry:auto-18",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m42137:entry:auto-19",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m42137:entry:auto-20",
+              "attributes": {}
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m42137:entry:auto-21",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m42137:entry:auto-22",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m42137:entry:auto-23",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m42137:entry:auto-24",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m42137:entry:auto-25",
+              "attributes": {}
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m42137:entry:auto-26",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m42137:entry:auto-27",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m42137:entry:auto-28",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m42137:entry:auto-29",
+              "attributes": {}
+            },
+            {
+              "segmentId": "m42137:entry:auto-30",
+              "attributes": {}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "note",
+      "id": "fs-id3025368",
+      "title": {
+        "segmentId": "m42137:note-title:fs-id3025368-title",
+        "text": "Concept Connections: The Four Basic Forces"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "import-auto-id3061928",
+          "segmentId": "m42137:para:import-auto-id3061928"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "import-auto-id2051381",
+      "segmentId": "m42137:para:import-auto-id2051381"
+    },
+    {
+      "type": "para",
+      "id": "import-auto-id1118563",
+      "segmentId": "m42137:para:import-auto-id1118563"
+    },
+    {
+      "type": "note",
+      "id": "fs-id2423408",
+      "title": {
+        "segmentId": "m42137:note-title:fs-id2423408-title",
+        "text": "Concept Connections: Unifying Forces"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "import-auto-id2654817",
+          "segmentId": "m42137:para:import-auto-id2654817"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "import-auto-id2932032",
+      "segmentId": "m42137:para:import-auto-id2932032"
+    },
+    {
+      "type": "para",
+      "id": "import-auto-id2392316",
+      "segmentId": "m42137:para:import-auto-id2392316"
+    },
+    {
+      "type": "section",
+      "id": "import-auto-id3077454",
+      "class": null,
+      "title": {
+        "segmentId": "m42137:title:import-auto-id3077454-title",
+        "text": "Action at a Distance: Concept of a Field"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "import-auto-id3402339",
+          "segmentId": "m42137:para:import-auto-id3402339"
+        },
+        {
+          "type": "figure",
+          "id": "import-auto-id1577565",
+          "caption": {
+            "segmentId": "m42137:caption:import-auto-id1577565-caption"
+          },
+          "media": {
+            "id": "import-auto-id1586476",
+            "alt": "The electric force field between a positively charged particle and a negatively charged particle. Electric field lines start from the positive charge and end at the negative charge, and each line is represented as a curved arrow.",
+            "src": "../../media/Figure_04_08_01.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-id2639325",
+          "title": {
+            "segmentId": "m42137:note-title:fs-id2639325-title",
+            "text": "Concept Connections: Force Fields"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "import-auto-id1406456",
+              "segmentId": "m42137:para:import-auto-id1406456"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id1947977",
+          "segmentId": "m42137:para:import-auto-id1947977"
+        },
+        {
+          "type": "figure",
+          "id": "import-auto-id2011579",
+          "caption": {
+            "segmentId": "m42137:caption:import-auto-id2011579-caption"
+          },
+          "media": {
+            "id": "import-auto-id1933994",
+            "alt": "(a) Two persons throwing a basketball to each other. The person on the left is throwing the ball with some force F sub p one, represented by a vector pointing right, in the direction of the motion of the ball. A reaction force F sub B is shown on the person by a vector pointing left. (b) The person catches the ball, exerting a force F sub p two on the ball toward the left, shown by a vector F sub p two toward the left. A reaction force F prime sub B acts on the person, shown by a vector pointing toward right. (c) The exchange of a meson is shown between a proton and a neutron. Both are moving in different directions, and the proton feels a force F sub exch toward the left and the neutron feels a force F prime sub exch toward the right. The meson is also moving toward the right between the proton and the neutron.",
+            "src": "../../media/Figure_04_08_02.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id2578623",
+          "segmentId": "m42137:para:import-auto-id2578623"
+        },
+        {
+          "type": "figure",
+          "id": "import-auto-id2658974",
+          "caption": {
+            "segmentId": "m42137:caption:import-auto-id2658974-caption"
+          },
+          "media": {
+            "id": "import-auto-id3357201",
+            "alt": "A close-up view of part of the world’s largest particle accelerator.",
+            "src": "../../media/Figure_04_08_03.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id2453527",
+          "segmentId": "m42137:para:import-auto-id2453527"
+        },
+        {
+          "type": "para",
+          "id": "para-98247",
+          "segmentId": "m42137:para:para-98247"
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id1920400",
+          "segmentId": "m42137:para:import-auto-id1920400"
+        },
+        {
+          "type": "figure",
+          "id": "import-auto-id3032532",
+          "caption": {
+            "segmentId": "m42137:caption:import-auto-id3032532-caption"
+          },
+          "media": {
+            "id": "import-auto-id2989844",
+            "alt": "NASA illustration of LISA, showing three spacecrafts positioned in orbits that form a triangular formation. The triangular formation is positioned to the left of the Sun, Earth, and Moon in the diagram. Figure not to scale.",
+            "src": "../../media/Figure_04_08_04.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "import-auto-id1846160",
+          "segmentId": "m42137:para:import-auto-id1846160"
+        },
+        {
+          "type": "figure",
+          "id": "figure-14181",
+          "caption": {
+            "segmentId": "m42137:caption:figure-14181-caption"
+          },
+          "media": {
+            "id": "media-98271",
+            "alt": "A roughly circular glowing object surrounds a smaller and much darker region. Toward the bottom of the image is a series of several dozen concentric brighter lines.",
+            "src": "../../media/OSX_CP2e_Figure_04_08_05.jpg",
+            "mimeType": "image/jpg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1546076",
+      "class": "ap-test-prep",
+      "title": {
+        "segmentId": "m42137:title:fs-id1546076-title",
+        "text": "Test Prep for AP Courses"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1342174",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1681985",
+                "segmentId": "m42137:problem:fs-id1681985"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1653114",
+                "segmentId": "m42137:solution:fs-id1653114"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1835056",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1368860",
+                "segmentId": "m42137:problem:fs-id1368860"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1327682",
+                "segmentId": "m42137:solution:fs-id1327682"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1447352",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1263485",
+                "segmentId": "m42137:problem:fs-id1263485"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1675802",
+                "segmentId": "m42137:solution:fs-id1675802"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1679830",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1395739",
+                "segmentId": "m42137:problem:fs-id1395739"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1798574",
+                "segmentId": "m42137:solution:fs-id1798574"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1656257",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1475089",
+                "segmentId": "m42137:problem:fs-id1475089"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1653022",
+                "segmentId": "m42137:solution:fs-id1653022"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1338709",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1168985",
+                "segmentId": "m42137:problem:fs-id1168985"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id895313",
+                "segmentId": "m42137:solution:fs-id895313"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1993313",
+      "class": "section-summary",
+      "title": {
+        "segmentId": "m42137:title:fs-id1993313-title",
+        "text": "Summary"
+      },
+      "content": [
+        {
+          "type": "list",
+          "id": "fs-id2604330",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": "import-auto-id2055006",
+              "segmentId": "m42137:item:import-auto-id2055006"
+            },
+            {
+              "id": "import-auto-id1355832",
+              "segmentId": "m42137:item:import-auto-id1355832"
+            },
+            {
+              "id": "import-auto-id1381444",
+              "segmentId": "m42137:item:import-auto-id1381444"
+            },
+            {
+              "id": "import-auto-id3191620",
+              "segmentId": "m42137:item:import-auto-id3191620"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id3199417",
+      "class": "conceptual-questions",
+      "title": {
+        "segmentId": "m42137:title:fs-id3199417-title",
+        "text": "Conceptual Questions"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1397916",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id1890093",
+                "segmentId": "m42137:problem:import-auto-id1890093"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1402987",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id3046536",
+                "segmentId": "m42137:problem:import-auto-id3046536"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1038237",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id1420870",
+                "segmentId": "m42137:problem:import-auto-id1420870"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id3082682",
+      "class": "problems-exercises",
+      "title": {
+        "segmentId": "m42137:title:fs-id3082682-title",
+        "text": "Problem Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id2680982",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id2963511",
+                "segmentId": "m42137:problem:import-auto-id2963511"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id3051579",
+                "segmentId": "m42137:solution:import-auto-id3051579"
+              },
+              {
+                "type": "para",
+                "id": "import-auto-id1935896",
+                "segmentId": "m42137:solution:import-auto-id1935896"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id2670330",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id3009242",
+                "segmentId": "m42137:problem:import-auto-id3009242"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id3092040",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id1355534",
+                "segmentId": "m42137:problem:import-auto-id1355534"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id2599756",
+                "segmentId": "m42137:solution:import-auto-id2599756"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "exer-16012",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "para-89057",
+                "segmentId": "m42137:problem:para-89057"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "para-00002",
+                "segmentId": "m42137:solution:para-00002"
+              },
+              {
+                "type": "para",
+                "id": "para-00003",
+                "segmentId": "m42137:solution:para-00003"
+              },
+              {
+                "type": "para",
+                "id": "para-00004",
+                "segmentId": "m42137:solution:para-00004"
+              }
+            ]
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fig-00001",
+          "caption": null,
+          "media": {
+            "alt": "The figure is a plot of x as a function of F. The curve starts at a high value of x just to the right of the x axis and decreases in both value and slope, tending asymptotically to the F axis. Under the graph it is noted that x is proportional to 1 over F.",
+            "src": "../../media/OSX_CP2e_Figure_04_08Sol_CTQ01c.jpg",
+            "mimeType": "image/jpg"
+          }
+        }
+      ]
+    }
+  ],
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "import-auto-id1916122",
+        "termSegmentId": "m42137:glossary-term:import-auto-id1916122-term",
+        "definitionSegmentId": "m42137:glossary-def:import-auto-id1916122-def"
+      },
+      {
+        "id": "import-auto-id1977355",
+        "termSegmentId": "m42137:glossary-term:import-auto-id1977355-term",
+        "definitionSegmentId": "m42137:glossary-def:import-auto-id1977355-def"
+      }
+    ]
+  },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": null,
+      "class": null,
+      "alt": "The figure is a plot of x as a function of F. The curve starts at a high value of x just to the right of the x axis and decreases in both value and slope, tending asymptotically to the F axis. Under the graph it is noted that x is proportional to 1 over F.",
+      "src": "../../media/OSX_CP2e_Figure_04_08Sol_CTQ01c.jpg",
+      "mimeType": "image/jpg"
+    }
+  ],
+  "sectionOrder": null
+}

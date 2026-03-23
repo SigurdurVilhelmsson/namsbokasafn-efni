@@ -235,6 +235,122 @@ const MICROBIOLOGY_CONFIG = {
 };
 
 // =====================================================================
+// ORGANIC CHEMISTRY (lifraen-efnafraedi)
+// =====================================================================
+
+const ORGANIC_CHEMISTRY_CONFIG = {
+  noteTypeLabels: {
+    ...SHARED_NOTE_LABELS,
+    // Organic Chemistry notes use <title> rather than class attributes;
+    // the fallback label generator handles these automatically.
+  },
+
+  titleTranslations: {
+    ...SHARED_TITLE_TRANSLATIONS,
+  },
+
+  endOfChapterSections: {
+    ...SHARED_END_OF_CHAPTER,
+    'section-exercises': {
+      titleIs: 'Æfingar',
+      titleEn: 'Exercises',
+      slug: 'exercises',
+      exerciseType: true,
+      compiled: true,
+    },
+    'additional-problems': {
+      titleIs: 'Viðbótardæmi',
+      titleEn: 'Additional Problems',
+      slug: 'additional-problems',
+      exerciseType: true,
+      compiled: true,
+    },
+    'chemistry-matters': {
+      titleIs: 'Efnafræði skiptir máli',
+      titleEn: 'Chemistry Matters',
+      slug: 'chemistry-matters',
+      compiled: true,
+    },
+  },
+
+  excludedSectionClasses: [
+    'summary',
+    'key-terms',
+    'section-exercises',
+    'additional-problems',
+    'chemistry-matters',
+  ],
+
+  // Organic Chemistry images use OChem_NN_ pattern
+  imagePrefix: (chapterStr) => `OChem_${chapterStr}_`,
+  appendixImagePrefix: 'OChem_00_',
+
+  specialModules: {},
+};
+
+// =====================================================================
+// COLLEGE PHYSICS 2e (edlisfraedi-2e)
+// =====================================================================
+
+const COLLEGE_PHYSICS_CONFIG = {
+  noteTypeLabels: {
+    ...SHARED_NOTE_LABELS,
+    interactive: 'Gagnvirkt',
+    // Physics notes for misconceptions, take-home experiments, etc. use
+    // <title> without class — handled by fallback label generator.
+  },
+
+  titleTranslations: {
+    ...SHARED_TITLE_TRANSLATIONS,
+  },
+
+  endOfChapterSections: {
+    ...SHARED_END_OF_CHAPTER,
+    'section-summary': {
+      titleIs: 'Samantekt',
+      titleEn: 'Section Summary',
+      slug: 'summary',
+      compiled: true,
+    },
+    'conceptual-questions': {
+      titleIs: 'Hugtakaspurningar',
+      titleEn: 'Conceptual Questions',
+      slug: 'conceptual-questions',
+      exerciseType: true,
+      compiled: true,
+    },
+    'problems-exercises': {
+      titleIs: 'Verkefni og dæmi',
+      titleEn: 'Problems & Exercises',
+      slug: 'problems-exercises',
+      exerciseType: true,
+      compiled: true,
+    },
+    'ap-test-prep': {
+      titleIs: 'AP prófundirbúningur',
+      titleEn: 'AP Test Prep',
+      slug: 'ap-test-prep',
+      exerciseType: true,
+      compiled: true,
+    },
+  },
+
+  excludedSectionClasses: [
+    'summary',
+    'section-summary',
+    'conceptual-questions',
+    'problems-exercises',
+    'ap-test-prep',
+  ],
+
+  // Physics images use Figure_NN_ pattern
+  imagePrefix: (chapterStr) => `Figure_${chapterStr}_`,
+  appendixImagePrefix: 'Figure_00_',
+
+  specialModules: {},
+};
+
+// =====================================================================
 // BOOK REGISTRY
 // =====================================================================
 
@@ -242,6 +358,8 @@ const BOOK_CONFIGS = {
   'efnafraedi-2e': CHEMISTRY_CONFIG,
   'liffraedi-2e': BIOLOGY_CONFIG,
   orverufraedi: MICROBIOLOGY_CONFIG,
+  'lifraen-efnafraedi': ORGANIC_CHEMISTRY_CONFIG,
+  'edlisfraedi-2e': COLLEGE_PHYSICS_CONFIG,
 };
 
 /**

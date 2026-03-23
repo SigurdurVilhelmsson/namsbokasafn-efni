@@ -1,0 +1,61 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Racemic Mixtures and the Resolution of Enantiomers</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Racemic Mixtures and the Resolution of Enantiomers</md:title>
+    <md:content-id>m00057</md:content-id>
+    <md:uuid>6a8189cf-0d2c-4c03-9a96-2de3945b712c</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">To end this discussion of stereoisomerism, let’s return for a last look at Pasteur’s pioneering work, described in <link document="m00053"/>. Pasteur took an optically inactive tartaric acid salt and found that he could crystallize from it two optically active forms having what we would now call 2<emphasis effect="italics">R</emphasis>,3<emphasis effect="italics">R</emphasis> and 2<emphasis effect="italics">S</emphasis>,3<emphasis effect="italics">S</emphasis> configurations. But what was the optically inactive form he started with? It couldn’t have been <emphasis effect="italics">meso</emphasis>-tartaric acid, because <emphasis effect="italics">meso</emphasis>-tartaric acid is a different chemical compound and can’t interconvert with the two chiral enantiomers without breaking and re-forming chemical bonds.</para>
+    <para id="para-00002">The answer is that Pasteur started with a 50&#8201;:&#8201;50 mixture of the two chiral tartaric acid enantiomers. Such a mixture is called a <term id="term-00001">racemate</term> (<emphasis effect="bold">rass</emphasis>-uh-mate), or <emphasis effect="bold">racemic mixture,</emphasis> and is denoted by either the symbol (±) or the prefix <emphasis effect="italics">d,l</emphasis> to indicate an equal mixture of dextrorotatory and levorotatory forms. Racemates show no optical rotation because the (+) rotation from one enantiomer exactly cancels the (−) rotation from the other. Through good luck, Pasteur was able to separate, or resolve, racemic tartaric acid into its (+) and (−) enantiomers. Unfortunately, the fractional crystallization technique he used doesn’t work for most racemates, so other methods are needed.</para>
+    <para id="para-00003">The most common method for resolving the racemate of a chiral carboxylic acid (RCO<sub>2</sub>H) is to carry out an acid-base reaction between the acid and an amine base (RNH<sub>2</sub>) to yield an ammonium salt:</para>
+    <figure class="unnumbered scaled-down" id="fig-00001">
+    <media alt="The figure shows a reaction in which carboxylic acid reacts with an amine base to form ammonium salt.">
+    <image mime-type="image/jpeg" src="../../media/OChem_05_08_001.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00004">To understand how this method of resolution works, let’s see what happens when a racemic mixture of chiral acids, such as (+)- and (−)-lactic acids, reacts with an achiral amine base, such as methylamine, CH<sub>3</sub>NH<sub>2</sub>. The situation is analogous to what happens when left and right hands (chiral) pick up a ball (achiral). Both left and right hands pick up the ball equally well, and the products—ball in right hand versus ball in left hand—are mirror images. In the same way, both (+)- and (−)-lactic acid react with methylamine equally well, and the product is a racemic mixture of the two enantiomers methylammonium (+)-lactate and methylammonium (−)-lactate (<link target-id="fig-00002"/>).</para>
+    <figure class="scaled-down" id="fig-00002">
+    <media alt="Racemic lactic acid (50 percent R, 50 percent S) reacts with methylamine to form R salt. Its mirror image shows S salt. Both R and S salts are labeled enantiomers.">
+    <image mime-type="image/jpeg" src="../../media/OChem_05_08_002.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">Reaction of racemic lactic acid with achiral methylamine gives a racemic mixture of ammonium salts.</emphasis></caption>
+    </figure>
+    <para id="para-00005">Now let’s see what happens when the racemic mixture of (+)- and (−)-lactic acids reacts with a single enantiomer of a chiral amine base, such as (<emphasis effect="italics">R</emphasis>)-1-phenylethylamine. The situation is analogous to what happens when left and right hands (chiral) put on a right-handed glove (<emphasis effect="italics">also chiral</emphasis>). Left and right hands don’t put on the right-handed glove in the same way, so the products—right hand in right glove versus left hand in right glove—are not mirror images; they’re similar but different.</para>
+    <para id="para-00006">In the same way, (+)- and (−)-lactic acids react with (<emphasis effect="italics">R</emphasis>)-1-phenylethylamine to give two different products (<link target-id="fig-00003"/>). (<emphasis effect="italics">R</emphasis>)-Lactic acid reacts with (<emphasis effect="italics">R</emphasis>)-1-phenylethylamine to give the <emphasis effect="italics">R,R</emphasis> salt, and (<emphasis effect="italics">S</emphasis>)-lactic acid reacts with the <emphasis effect="italics">R</emphasis> amine to give the <emphasis effect="italics">S,R</emphasis> salt. The two salts are diastereomers, not enantiomers. They have different chemical and physical properties, and it may therefore be possible to separate them by crystallization or some other means. Once separated, acidification of the two diastereomeric salts with a strong acid makes it possible to isolate the two pure enantiomers of lactic acid and to recover the chiral amine for reuse.</para>
+    <figure class="scaled-down" id="fig-00003">
+    <media alt="Racemic lactic acid reacts with R-1-phenylethylamine to form an R, R salt and an S, R salt. Both salts are labeled diastereomers.">
+    <image mime-type="image/jpeg" src="../../media/OChem_05_08_003.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">Reaction of racemic lactic acid with (<emphasis effect="italics">R</emphasis>)-1-phenylethylamine yields a mixture of diastereomeric ammonium salts, which have different properties and can be separated.</emphasis></caption>
+    </figure>
+    <example id="exam-00001">
+    <title>Predicting the Chirality of a Reaction Product</title>
+    <para id="para-00007">We’ll see in <emphasis effect="bold">Section 21.3</emphasis> that carboxylic acids (RCO<sub>2</sub>H) react with alcohols (R′OH) to form esters (RCO<sub>2</sub>R′). Suppose that (±)-lactic acid reacts with CH<sub>3</sub>OH to form the ester, methyl lactate. What stereochemistry would you expect the product(s) to have? What is the relationship of the products?</para>
+    <figure class="unnumbered scaled-down" id="fig-00004">
+    <media alt="In a reaction, lactic acid reacts with methanol in the presence of acid catalyst to form methyl lactate and water.">
+    <image mime-type="image/jpeg" src="../../media/OChem_05_08_004.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00008"><title><span class="cyan-text">Solution</span></title> Reaction of a racemic acid with an achiral alcohol such as methanol yields a racemic mixture of mirror-image (enantiomeric) products.</para>
+    <figure class="unnumbered scaled-down" id="fig-00005">
+    <media alt="(S)-lactic acid reacts with (R)-lactic acid in the presence of methanol, acid catalyst to form methyl (S)-lactate and methyl (R)-lactate.">
+    <image mime-type="image/jpeg" src="../../media/OChem_05_08_005.jpg"/>
+    </media>
+    </figure>
+    </example>
+    <section class="section-exercises" id="sect-00001">
+    <title>Problems</title>
+    <exercise id="exer-00001">
+    <problem id="prob-00001">
+    <para id="para-00009"><link class="os-embed" url="#exercise/05-08-OC-P19"/></para>
+    </problem>
+    </exercise>
+    <exercise id="exer-00002">
+    <problem id="prob-00002">
+    <para id="para-00010"><link class="os-embed" url="#exercise/05-08-OC-P20"/></para>
+    </problem>
+    </exercise>
+    </section>
+    </content>
+</document>

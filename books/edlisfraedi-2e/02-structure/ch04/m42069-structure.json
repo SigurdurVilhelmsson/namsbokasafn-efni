@@ -1,0 +1,377 @@
+{
+  "moduleId": "m42069",
+  "title": {
+    "segmentId": "m42069:title:auto-1",
+    "text": "Development of Force Concept"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "de43ae15-d1fa-4265-98f6-9820ff31a270"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": "learning-objectives",
+      "title": {
+        "segmentId": "m42069:title:sect-00001-title",
+        "text": "Learning Objectives"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00001",
+          "segmentId": "m42069:para:para-00001"
+        },
+        {
+          "type": "list",
+          "id": "list-00001",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m42069:item:list-00001-item-1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "import-auto-id2380148",
+      "segmentId": "m42069:para:import-auto-id2380148"
+    },
+    {
+      "type": "figure",
+      "id": "import-auto-id2379809",
+      "caption": {
+        "segmentId": "m42069:caption:import-auto-id2379809-caption"
+      },
+      "media": {
+        "id": "import-auto-id2659946",
+        "alt": "(a) Overhead view of two ice skaters pushing on a third. One skater pushes with a force F two, represented by an arrow pointing up, and a second skater pushes with a force F one, represented by an arrow pointing from left to right. Vector F one and vector F two are along the arms of the two skaters acting on the third skater. A vector diagram is shown in the form of a right triangle in which the base is vector F one pointing east and perpendicular is shown by vector F two pointing north. The resultant vector is shown by the hypotenuse pointing northeast. (b) Free-body diagram showing only the forces acting on the skater.",
+        "src": "../../media/Figure 04_01_01a-e066.jpg",
+        "mimeType": "image/jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "import-auto-id1374790",
+      "segmentId": "m42069:para:import-auto-id1374790"
+    },
+    {
+      "type": "para",
+      "id": "import-auto-id1905924",
+      "segmentId": "m42069:para:import-auto-id1905924"
+    },
+    {
+      "type": "figure",
+      "id": "import-auto-id2608835",
+      "caption": {
+        "segmentId": "m42069:caption:import-auto-id2608835-caption"
+      },
+      "media": {
+        "id": "import-auto-id2630816",
+        "alt": "(a) A spring of length x, fixed at one end, is shown in horizontal position. (b) The same spring is shown pulled by a person by a distance of delta x. The restoring force F restore is represented by an arrow pointing left toward the position where the spring is fixed. (c) A spring balance containing a spring stretched a distance delta x is shown. The restoring force is represented by an arrow F restore pointing toward the left in the direction opposite to the elongation of the spring.",
+        "src": "../../media/Figure_04_01_02.jpg",
+        "mimeType": "image/jpg"
+      }
+    },
+    {
+      "type": "note",
+      "id": "fs-id2631420",
+      "title": {
+        "segmentId": "m42069:note-title:fs-id2631420-title",
+        "text": "Take-Home Experiment: Force Standards"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "import-auto-id2686295",
+          "segmentId": "m42069:para:import-auto-id2686295"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1798867",
+      "class": "ap-test-prep",
+      "title": {
+        "segmentId": "m42069:title:fs-id1798867-title",
+        "text": "Test Prep for AP Courses"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1691415",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1694863",
+                "segmentId": "m42069:problem:fs-id1694863"
+              },
+              {
+                "type": "para",
+                "id": "fs-id1348523",
+                "segmentId": "m42069:problem:fs-id1348523"
+              },
+              {
+                "type": "para",
+                "id": "fs-id1621869",
+                "segmentId": "m42069:problem:fs-id1621869"
+              },
+              {
+                "type": "para",
+                "id": "fs-id1666680",
+                "segmentId": "m42069:problem:fs-id1666680"
+              },
+              {
+                "type": "para",
+                "id": "fs-id1102418",
+                "segmentId": "m42069:problem:fs-id1102418"
+              },
+              {
+                "type": "para",
+                "id": "fs-id1743405",
+                "segmentId": "m42069:problem:fs-id1743405"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "eip-idm684034032",
+                "segmentId": "m42069:solution:eip-idm684034032"
+              },
+              {
+                "type": "para",
+                "id": "fs-id1595741",
+                "segmentId": "m42069:solution:fs-id1595741"
+              },
+              {
+                "type": "para",
+                "id": "fs-id1651493",
+                "segmentId": "m42069:solution:fs-id1651493"
+              },
+              {
+                "type": "para",
+                "id": "fs-id1442464",
+                "segmentId": "m42069:solution:fs-id1442464"
+              },
+              {
+                "type": "para",
+                "id": "fs-id1399585",
+                "segmentId": "m42069:solution:fs-id1399585"
+              },
+              {
+                "type": "para",
+                "id": "fs-id1417938",
+                "segmentId": "m42069:solution:fs-id1417938"
+              }
+            ]
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fs-id1618777",
+          "caption": null,
+          "media": {
+            "id": "fs-id2246306",
+            "alt": "The diagram looks like a solid black oval race track with 16 equally-spaced short perpendicular hash marks crossing the track. The oval is longer than it is tall and the top and bottom parts of the track are horizontal and parallel to the bottom of the page. To complete the oval, the race track starts to curve in a half-circle starting from the second perpendicular hash mark to the right of the top center hash mark. The curve continues for four perpendicular hash marks and the horizontal bottom part of the track starts two perpendicular hash marks to the right of the center bottom hash mark. The half-circle is mirrored on the left side of the track. On the right side of the oval is an arrow curving around the track and pointing up with the text “Direction of Cars’ Motion.” There is one solid line above the track and one to the right outside of the track. Both lines are indicated by the lowercase letter d. One line starts at the first hash mark’s location on a horizontally straight bit of track in the upper right side and indicates that the size of the line goes for 4 additional hash marks. The second line starts at the end of the horizontal stretch on the upper left of the track and curves around for 4 additional hash marks.",
+            "src": "../../media/Figure_04_01_03.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fs-id1401005",
+          "caption": null,
+          "media": {
+            "id": "fs-id1775694",
+            "alt": "There are two dashed oval tracks representative of the larger oval track shown in figure 04_M1_track_img earlier. Both tracks have the same 16 equally spaced perpendicular hash marks shown in the earlier figure but there are dashes around the tracks instead of a solid line. Between each of the perpendicular dashes is one smaller dash at the perpendicular dash and three additional dashes. Centered above the figure on the left is the text Car X and over the figure on the left is Car Y. There are 6 black dots positioned on each of the Car X and Car Y tracks. The position of the six dots on the Car X track on the left are as follows: The first dot is on dashed line on the perpendicular hash mark at the very center left of the track.  Moving to the right past three perpendicular hash marks the second dot is on the top horizontal line on the second of four small dashes before the top center perpendicular hash mark. The third dot is one perpendicular hash mark to the right of the center perpendicular hash mark. The fourth dot is two perpendicular hash marks from the third dot and one perpendicular hash mark above the right center perpendicular hash mark. The fifth dot is on the bottom horizontal line of the track and about one and one-third perpendicular hash marks to the right of the center bottom perpendicular hash mark. The sixth dot is on the bottom horizontal line about one and two-third perpendicular hash marks to the left of the center bottom perpendicular dash.",
+            "src": "../../media/Figure_04_01_04.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fs-id1891397",
+          "caption": null,
+          "media": {
+            "id": "fs-id1132225",
+            "alt": "Two identical diagrams feature oval-shaped dashed paths with alternating plus and minus signs. Each path includes black dots with arrows indicating specific vector directions at points along the loop.",
+            "src": "../../media/Figure_04_01_05.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1266227",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1013993",
+                "segmentId": "m42069:problem:fs-id1013993"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1747826",
+                "segmentId": "m42069:solution:fs-id1747826"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1470278",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2159376",
+                "segmentId": "m42069:problem:fs-id2159376"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1020584",
+                "segmentId": "m42069:solution:fs-id1020584"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1418886",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1659034",
+                "segmentId": "m42069:problem:fs-id1659034"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1595043",
+                "segmentId": "m42069:solution:fs-id1595043"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1772190",
+      "class": "section-summary",
+      "title": {
+        "segmentId": "m42069:title:fs-id1772190-title",
+        "text": "Section Summary"
+      },
+      "content": [
+        {
+          "type": "list",
+          "id": "eip-id2655312",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m42069:item:eip-id2655312-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m42069:item:eip-id2655312-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m42069:item:eip-id2655312-item-3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1477045",
+      "class": "conceptual-questions",
+      "title": {
+        "segmentId": "m42069:title:fs-id1477045-title",
+        "text": "Conceptual Questions"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1445672",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id2697586",
+                "segmentId": "m42069:problem:import-auto-id2697586"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1654920",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "import-auto-id2319329",
+                "segmentId": "m42069:problem:import-auto-id2319329"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "import-auto-id2660636",
+        "termSegmentId": "m42069:glossary-term:import-auto-id2660636-term",
+        "definitionSegmentId": "m42069:glossary-def:import-auto-id2660636-def"
+      },
+      {
+        "id": "import-auto-id2142877",
+        "termSegmentId": "m42069:glossary-term:import-auto-id2142877-term",
+        "definitionSegmentId": "m42069:glossary-def:import-auto-id2142877-def"
+      },
+      {
+        "id": "import-auto-id2027750",
+        "termSegmentId": "m42069:glossary-term:import-auto-id2027750-term",
+        "definitionSegmentId": "m42069:glossary-def:import-auto-id2027750-def"
+      },
+      {
+        "id": "import-auto-id1415968",
+        "termSegmentId": "m42069:glossary-term:import-auto-id1415968-term",
+        "definitionSegmentId": "m42069:glossary-def:import-auto-id1415968-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}
