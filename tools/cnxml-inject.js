@@ -1060,26 +1060,32 @@ function reverseInlineMarkup(
   // ── Bracket markers: innermost-first resolution ───────────────────
   // Nested bracket markers like [[sup:[[i:x]]−1]] and [[i:[[sub:p]]]]
   // require processing from the inside out. Each iteration converts
-  // leaf-level markers (content with no [ or ] chars). After conversion,
-  // outer markers become leaf-level for the next iteration.
-  // Typically resolves in 1-2 iterations (max nesting depth + 1).
+  // leaf-level markers — those whose content has no [[ or ]] sequences.
+  // Single brackets are allowed (e.g., chemical notation [NO], [O₃]).
+  // After conversion, outer markers become leaf-level for the next iteration.
   let bracketChanged = true;
   while (bracketChanged) {
     const before = result;
 
-    // Leaf-level emphasis: [[i:text]] and [[b:text]] where text has no brackets
-    result = result.replace(/\[\[i:([^\[\]]+)\]\]/g, '<emphasis effect="italics">$1</emphasis>');
-    result = result.replace(/\[\[b:([^\[\]]+)\]\]/g, '<emphasis effect="bold">$1</emphasis>');
+    // Leaf-level emphasis: [[i:text]] and [[b:text]] where text has no [[ or ]]
+    result = result.replace(
+      /\[\[i:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g,
+      '<emphasis effect="italics">$1</emphasis>'
+    );
+    result = result.replace(
+      /\[\[b:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g,
+      '<emphasis effect="bold">$1</emphasis>'
+    );
 
-    // Leaf-level sub/sup: [[sub:content]] and [[sup:content]] where content has no brackets.
+    // Leaf-level sub/sup: [[sub:content]] and [[sup:content]] where content has no [[ or ]].
     // Inner legacy {{i}}/{{b}} handled for backward compat with older segments.
-    result = result.replace(/\[\[sub:([^\[\]]+)\]\]/g, (match, content) => {
+    result = result.replace(/\[\[sub:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g, (match, content) => {
       const inner = content
         .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '<emphasis effect="bold">$1</emphasis>')
         .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '<emphasis effect="italics">$1</emphasis>');
       return `<sub>${inner}</sub>`;
     });
-    result = result.replace(/\[\[sup:([^\[\]]+)\]\]/g, (match, content) => {
+    result = result.replace(/\[\[sup:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g, (match, content) => {
       const inner = content
         .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '<emphasis effect="bold">$1</emphasis>')
         .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '<emphasis effect="italics">$1</emphasis>');
