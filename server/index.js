@@ -23,6 +23,8 @@
 // Load environment variables first
 require('dotenv').config();
 
+const log = require('./lib/logger');
+
 // Validate configuration before proceeding
 const { validateSecrets, config, refreshValidBooks, VALID_BOOKS } = require('./config');
 validateSecrets();
@@ -31,12 +33,13 @@ validateSecrets();
 const { runAllMigrations } = require('./services/migrationRunner');
 const migrationResult = runAllMigrations();
 if (migrationResult.applied > 0) {
-  console.log(
-    `Migrations: ${migrationResult.applied} applied, ${migrationResult.skipped} already up-to-date`
+  log.info(
+    { applied: migrationResult.applied, skipped: migrationResult.skipped },
+    'Migrations applied'
   );
 }
 if (migrationResult.errors.length > 0) {
-  console.error('Migration errors:', migrationResult.errors);
+  log.error({ errors: migrationResult.errors }, 'Migration errors');
 }
 
 const express = require('express');
@@ -200,7 +203,7 @@ app.use(
       if (allowedOrigins.includes(origin) || /^https:\/\/[\w-]+\.namsbokasafn\.is$/.test(origin)) {
         callback(null, true);
       } else {
-        console.log(`[CORS] Blocked origin: ${origin}`);
+        log.warn({ origin }, 'CORS blocked origin');
         callback(null, false);
       }
     },
@@ -212,8 +215,7 @@ app.use(express.urlencoded({ extended: true, limit: '1mb' }));
 
 // Request logging
 app.use((req, res, next) => {
-  const timestamp = new Date().toISOString();
-  console.log(`[${timestamp}] ${req.method} ${req.path}`);
+  log.info({ method: req.method, path: req.path }, 'request');
   next();
 });
 
@@ -322,7 +324,7 @@ app.use('/api/*path', (req, res) => {
 
 // Error handler (next is required by Express error handler signature)
 app.use((err, req, res, _next) => {
-  console.error('Error:', err);
+  log.error({ err, method: req.method, path: req.path }, 'Unhandled request error');
 
   // Handle multer errors
   if (err.code === 'LIMIT_FILE_SIZE') {
@@ -355,8 +357,7 @@ const server = app.listen(PORT, HOST, () => {
   console.log(`Námsbókasafn Editorial Server v${serverVersion}`);
   console.log('═'.repeat(55));
   console.log('');
-  console.log(`  Server: http://${HOST}:${PORT}`);
-  console.log(`  API:    http://${HOST}:${PORT}/api`);
+  log.info({ host: HOST, port: PORT }, 'Server started');
   console.log('');
   console.log('Editorial Workflow:');
   console.log('  /editor           Segment editor (Pass 1)');
@@ -378,7 +379,7 @@ const server = app.listen(PORT, HOST, () => {
     const db = new Database(dbPath, { readonly: true });
     refreshValidBooks(db);
     db.close();
-    console.log(`Active books: ${VALID_BOOKS.join(', ')}`);
+    log.info({ books: VALID_BOOKS }, 'Active books loaded');
   } catch {
     // DB may not exist yet on first run — defaults are fine
   }
@@ -386,14 +387,14 @@ const server = app.listen(PORT, HOST, () => {
 
 // Graceful shutdown — let in-flight requests complete before exiting
 function gracefulShutdown(signal) {
-  console.log(`\n[${signal}] Shutting down gracefully...`);
+  log.info({ signal }, 'Shutting down gracefully');
   server.close(() => {
-    console.log('All connections closed. Exiting.');
+    log.info('All connections closed, exiting');
     process.exit(0);
   });
   // Force exit after 10 seconds if connections don't close
   setTimeout(() => {
-    console.error('Forced shutdown after timeout.');
+    log.error('Forced shutdown after timeout');
     process.exit(1);
   }, 10000).unref();
 }

@@ -26,6 +26,7 @@ const router = express.Router();
 const fs = require('fs');
 const path = require('path');
 
+const log = require('../lib/logger');
 const publicationService = require('../services/publicationService');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, ROLES } = require('../middleware/requireRole');
@@ -73,7 +74,7 @@ router.get('/:bookSlug/:chapterNum/status', requireAuth, validateChapterParams, 
     const status = publicationService.getPublicationStatus(bookSlug, chapter);
     res.json({ book: bookSlug, chapter, ...status });
   } catch (err) {
-    console.error('Error getting publication status:', err);
+    log.error({ err }, 'Error getting publication status');
     res.status(500).json({ error: 'Failed to get publication status', message: err.message });
   }
 });
@@ -96,7 +97,7 @@ router.get('/:bookSlug/:chapterNum/readiness', requireAuth, validateChapterParam
       localized: publicationService.checkLocalizedReadiness(bookSlug, chapter),
     });
   } catch (err) {
-    console.error('Error checking readiness:', err);
+    log.error({ err }, 'Error checking publication readiness');
     res.status(500).json({ error: 'Failed to check readiness', message: err.message });
   }
 });
@@ -114,7 +115,7 @@ router.get('/:bookSlug/:chapterNum/modules', requireAuth, validateChapterParams,
     const moduleStatus = publicationService.getModulePublicationStatus(bookSlug, chapter);
     res.json({ book: bookSlug, chapter, ...moduleStatus });
   } catch (err) {
-    console.error('Error getting module status:', err);
+    log.error({ err }, 'Error getting module publication status');
     res.status(500).json({ error: 'Failed to get module status', message: err.message });
   }
 });
@@ -151,7 +152,7 @@ router.post(
           metadata: { jobId: result.jobId, moduleCount: result.moduleCount },
         });
       } catch (logErr) {
-        console.error('Failed to log activity:', logErr);
+        log.error({ err: logErr }, 'Failed to log publication activity');
       }
 
       res.json({
@@ -160,7 +161,7 @@ router.post(
         ...result,
       });
     } catch (err) {
-      console.error('Error publishing MT preview:', err);
+      log.error({ err }, 'Error publishing MT preview');
       if (err.validation) {
         return res.status(400).json({
           error: 'Content validation failed',
@@ -209,7 +210,7 @@ router.post(
           metadata: { jobId: result.jobId, moduleCount: result.moduleCount },
         });
       } catch (logErr) {
-        console.error('Failed to log activity:', logErr);
+        log.error({ err: logErr }, 'Failed to log publication activity');
       }
 
       res.json({
@@ -218,7 +219,7 @@ router.post(
         ...result,
       });
     } catch (err) {
-      console.error('Error publishing faithful translation:', err);
+      log.error({ err }, 'Error publishing faithful translation');
       if (err.validation) {
         return res.status(400).json({
           error: 'Content validation failed',
@@ -269,7 +270,7 @@ router.post(
           metadata: { jobId: result.jobId, moduleCount: result.moduleCount },
         });
       } catch (logErr) {
-        console.error('Failed to log activity:', logErr);
+        log.error({ err: logErr }, 'Failed to log publication activity');
       }
 
       res.json({
@@ -278,7 +279,7 @@ router.post(
         ...result,
       });
     } catch (err) {
-      console.error('Error publishing localized content:', err);
+      log.error({ err }, 'Error publishing localized content');
       if (err.validation) {
         return res.status(400).json({
           error: 'Content validation failed',
@@ -352,7 +353,7 @@ router.get('/:bookSlug/overview', requireAuth, (req, res) => {
       },
     });
   } catch (err) {
-    console.error('Error getting book overview:', err);
+    log.error({ err }, 'Error getting book overview');
     res.status(500).json({ error: 'Failed to get book overview', message: err.message });
   }
 });

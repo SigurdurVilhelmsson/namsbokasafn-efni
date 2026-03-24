@@ -17,6 +17,7 @@
 const express = require('express');
 const router = express.Router();
 
+const log = require('../lib/logger');
 const segmentParser = require('../services/segmentParser');
 const localizationEditService = require('../services/localizationEditService');
 const activityLog = require('../services/activityLog');
@@ -67,7 +68,7 @@ router.get('/:book/chapters', requireAuth, requireRole(ROLES.EDITOR), (req, res)
     const chapters = enrichChapters(book, chapterNums);
     res.json({ book, chapters });
   } catch (err) {
-    console.error('Error listing chapters:', err.message);
+    log.error({ err }, 'Error listing chapters');
     res.status(500).json({ error: err.message });
   }
 });
@@ -91,7 +92,7 @@ router.get(
         modules,
       });
     } catch (err) {
-      console.error('Error listing modules for localization:', err.message);
+      log.error({ err }, 'Error listing modules for localization');
       res.status(500).json({ error: err.message });
     }
   }
@@ -121,7 +122,7 @@ router.get(
 
       res.json(data);
     } catch (err) {
-      console.error('Error loading module for localization:', err.message);
+      log.error({ err }, 'Error loading module for localization');
       const status = err.message.includes('not found') ? 404 : 500;
       res.status(status).json({ error: err.message });
     }
@@ -232,7 +233,7 @@ router.post(
             editorUsername: req.user.username,
           });
         } catch (logErr) {
-          console.error('Audit log failed (single save):', logErr.message);
+          log.error({ err: logErr }, 'Audit log failed (single save)');
         }
       }
 
@@ -253,10 +254,10 @@ router.post(
           description: `${req.user.username} breytti ${segmentId} í ${req.params.moduleId}`,
         });
       } catch (logErr) {
-        console.error('Activity log failed:', logErr.message);
+        log.error({ err: logErr }, 'Activity log failed');
       }
     } catch (err) {
-      console.error('Error saving localized segment:', err.message);
+      log.error({ err }, 'Error saving localized segment');
       res.status(500).json({ error: err.message });
     } finally {
       release();
@@ -376,7 +377,7 @@ router.post(
         try {
           localizationEditService.logLocalizationEdits(auditEdits);
         } catch (logErr) {
-          console.error('Audit log failed (bulk save):', logErr.message);
+          log.error({ err: logErr }, 'Audit log failed (bulk save)');
         }
       }
 
@@ -398,10 +399,10 @@ router.post(
           description: `${req.user.username} vistaði ${Object.keys(editLookup).length} hluta í ${req.params.moduleId}`,
         });
       } catch (logErr) {
-        console.error('Activity log failed:', logErr.message);
+        log.error({ err: logErr }, 'Activity log failed');
       }
     } catch (err) {
-      console.error('Error saving localized segments:', err.message);
+      log.error({ err }, 'Error saving localized segments');
       res.status(500).json({ error: err.message });
     } finally {
       release();
@@ -433,7 +434,7 @@ router.get(
       );
       res.json({ history });
     } catch (err) {
-      console.error('Error fetching module history:', err.message);
+      log.error({ err }, 'Error fetching module history');
       res.status(500).json({ error: err.message });
     }
   }
@@ -460,7 +461,7 @@ router.get(
       );
       res.json({ history });
     } catch (err) {
-      console.error('Error fetching segment history:', err.message);
+      log.error({ err }, 'Error fetching segment history');
       res.status(500).json({ error: err.message });
     }
   }
@@ -507,7 +508,7 @@ router.post(
 
       res.json({ success: true });
     } catch (err) {
-      console.error('Error adding log entry:', err.message);
+      log.error({ err }, 'Error adding log entry');
       res.status(500).json({ error: err.message });
     }
   }

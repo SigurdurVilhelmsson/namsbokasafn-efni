@@ -8,6 +8,7 @@
 const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
+const log = require('../lib/logger');
 const { advanceChapterStatus } = require('./pipelineService');
 
 let BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
@@ -570,8 +571,9 @@ function applyApprovedEdits(book, chapter, moduleId) {
     const currentSegIds = new Set(data.segments.map((s) => s.segmentId));
     for (const [segId, edit] of Object.entries(approvedLookup)) {
       if (!currentSegIds.has(segId)) {
-        console.error(
-          `Warning: Approved edit ${edit.id} references segment ${segId} which no longer exists in current extraction`
+        log.warn(
+          { editId: edit.id, segmentId: segId },
+          'Approved edit references segment that no longer exists in current extraction'
         );
       }
     }
@@ -601,9 +603,9 @@ function applyApprovedEdits(book, chapter, moduleId) {
     const sampleEdit = Object.values(approvedLookup)[0];
     const sampleText = sampleEdit?.edited_content || '';
     if (sampleText && !written.includes(sampleText.substring(0, Math.min(50, sampleText.length)))) {
-      console.error(
-        `Warning: Sample edit content not found in faithful file. ` +
-          `Segment ID format may not match. Edit segment_id: ${sampleEdit.segment_id}`
+      log.warn(
+        { segmentId: sampleEdit.segment_id },
+        'Sample edit content not found in faithful file — segment ID format may not match'
       );
     }
 
@@ -656,7 +658,7 @@ function applyApprovedEdits(book, chapter, moduleId) {
       }
     }
   } catch (err) {
-    console.error('Auto-advance linguisticReview failed:', err.message);
+    log.error({ err }, 'Auto-advance linguisticReview failed');
   }
 
   return result;

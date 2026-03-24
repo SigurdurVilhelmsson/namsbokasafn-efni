@@ -13,6 +13,7 @@ const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
 const crypto = require('crypto');
+const log = require('../lib/logger');
 
 const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
 const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
@@ -343,7 +344,7 @@ function deleteChapterFilesFromDisk(bookSlug, chapterNum) {
         fs.unlinkSync(path.join(chapterDir, file));
         deleted++;
       } catch (e) {
-        console.warn(`Could not delete ${file}:`, e.message);
+        log.warn({ file, err: e }, 'Could not delete file');
       }
     }
   }

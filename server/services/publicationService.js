@@ -16,6 +16,7 @@
 const path = require('path');
 const fs = require('fs');
 const { spawn } = require('child_process');
+const log = require('../lib/logger');
 const pipelineService = require('./pipelineService');
 const pipelineStatusService = require('./pipelineStatusService');
 const segmentParser = require('./segmentParser');
@@ -242,7 +243,7 @@ async function publishChapter(bookSlug, chapterNum, track, userId) {
         );
       } catch (err) {
         // Fall back to direct status.json write if DB transition fails
-        console.error(`Pipeline status transition failed for ${pubStage}:`, err.message);
+        log.error({ err, pubStage }, 'Pipeline status transition failed');
         updateChapterStatus(bookSlug, chapterNum, 'publication', {
           [trackKey]: {
             complete: true,

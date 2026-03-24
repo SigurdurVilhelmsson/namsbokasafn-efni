@@ -15,6 +15,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
+const log = require('../lib/logger');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, ROLES } = require('../middleware/requireRole');
 const terminology = require('../services/terminologyService');
@@ -97,7 +98,7 @@ router.get('/', requireAuth, (req, res) => {
 
     res.json(result);
   } catch (err) {
-    console.error('Search terms error:', err);
+    log.error({ err }, 'Search terms error');
     res.status(500).json({
       error: 'Failed to search terms',
       message: err.message,
@@ -124,7 +125,7 @@ router.get('/lookup', requireAuth, (req, res) => {
     const terms = terminology.lookupTerm(q, bookId ? parseInt(bookId, 10) : null);
     res.json({ terms });
   } catch (err) {
-    console.error('Lookup error:', err);
+    log.error({ err }, 'Terminology lookup error');
     res.status(500).json({
       error: 'Lookup failed',
       message: err.message,
@@ -141,7 +142,7 @@ router.get('/stats', requireAuth, (req, res) => {
     const stats = terminology.getStats(resolveBookId(req.query) || null);
     res.json(stats);
   } catch (err) {
-    console.error('Stats error:', err);
+    log.error({ err }, 'Terminology stats error');
     res.status(500).json({
       error: 'Failed to get statistics',
       message: err.message,
@@ -165,7 +166,7 @@ router.get('/review-queue', requireAuth, requireRole(ROLES.EDITOR), (req, res) =
 
     res.json({ terms });
   } catch (err) {
-    console.error('Review queue error:', err);
+    log.error({ err }, 'Review queue error');
     res.status(500).json({
       error: 'Failed to get review queue',
       message: err.message,
@@ -263,7 +264,7 @@ router.get('/export', requireAuth, (req, res) => {
       terms,
     });
   } catch (err) {
-    console.error('Export error:', err);
+    log.error({ err }, 'Glossary export error');
     res.status(500).json({ error: 'Failed to export glossary', message: err.message });
   }
 });
@@ -294,7 +295,7 @@ router.get('/:id', requireAuth, (req, res) => {
 
     res.json({ term });
   } catch (err) {
-    console.error('Get term error:', err);
+    log.error({ err }, 'Get term error');
     res.status(500).json({
       error: 'Failed to get term',
       message: err.message,
@@ -352,7 +353,7 @@ router.post('/', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
       term,
     });
   } catch (err) {
-    console.error('Create term error:', err);
+    log.error({ err }, 'Create term error');
     res.status(err.message.includes('already exists') ? 409 : 500).json({
       error: 'Failed to create term',
       message: err.message,
@@ -383,7 +384,7 @@ router.put('/:id', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
       term,
     });
   } catch (err) {
-    console.error('Update term error:', err);
+    log.error({ err }, 'Update term error');
     res.status(err.message.includes('not found') ? 404 : 500).json({
       error: 'Failed to update term',
       message: err.message,
@@ -412,7 +413,7 @@ router.delete('/:id', requireAuth, requireRole(ROLES.ADMIN), (req, res) => {
 
     res.json(result);
   } catch (err) {
-    console.error('Delete term error:', err);
+    log.error({ err }, 'Delete term error');
     res.status(500).json({
       error: 'Failed to delete term',
       message: err.message,
@@ -447,7 +448,7 @@ router.post('/:id/approve', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, r
       term,
     });
   } catch (err) {
-    console.error('Approve term error:', err);
+    log.error({ err }, 'Approve term error');
     res.status(err.message.includes('not found') ? 404 : 500).json({
       error: 'Failed to approve term',
       message: err.message,
@@ -496,7 +497,7 @@ router.post('/:id/dispute', requireAuth, requireRole(ROLES.EDITOR), (req, res) =
       term,
     });
   } catch (err) {
-    console.error('Dispute term error:', err);
+    log.error({ err }, 'Dispute term error');
     res.status(err.message.includes('not found') ? 404 : 500).json({
       error: 'Failed to dispute term',
       message: err.message,
@@ -537,7 +538,7 @@ router.post('/:id/discuss', requireAuth, requireRole(ROLES.EDITOR), (req, res) =
       discussion,
     });
   } catch (err) {
-    console.error('Add discussion error:', err);
+    log.error({ err }, 'Add discussion error');
     res.status(err.message.includes('not found') ? 404 : 500).json({
       error: 'Failed to add discussion',
       message: err.message,
@@ -595,7 +596,7 @@ router.post(
 
       res.json(result);
     } catch (err) {
-      console.error('CSV import error:', err);
+      log.error({ err }, 'CSV import error');
       res.status(500).json({
         error: 'Failed to import CSV',
         message: err.message,
@@ -667,7 +668,7 @@ router.post(
 
       res.json(result);
     } catch (err) {
-      console.error('Glossary import error:', err);
+      log.error({ err }, 'Glossary import error');
       res.status(500).json({ error: 'Failed to import glossary', message: err.message });
     }
   }
@@ -713,7 +714,7 @@ router.post(
 
       res.json(result);
     } catch (err) {
-      console.error('Excel import error:', err);
+      log.error({ err }, 'Excel import error');
       res.status(500).json({
         error: 'Failed to import Excel',
         message: err.message,
@@ -757,7 +758,7 @@ router.post('/import/key-terms', requireAuth, requireRole(ROLES.HEAD_EDITOR), (r
 
     res.json(result);
   } catch (err) {
-    console.error('Key-terms import error:', err);
+    log.error({ err }, 'Key-terms import error');
     res.status(500).json({
       error: 'Failed to import key terms',
       message: err.message,
@@ -815,7 +816,7 @@ router.post(
 
       res.json(result);
     } catch (err) {
-      console.error('Glossary import error:', err);
+      log.error({ err }, 'Glossary import error');
       res.status(500).json({
         error: 'Failed to import glossary',
         message: err.message,
@@ -954,7 +955,7 @@ router.post('/check-consistency', requireAuth, (req, res) => {
       },
     });
   } catch (err) {
-    console.error('Consistency check error:', err);
+    log.error({ err }, 'Consistency check error');
     res.status(500).json({
       error: 'Failed to check consistency',
       message: err.message,

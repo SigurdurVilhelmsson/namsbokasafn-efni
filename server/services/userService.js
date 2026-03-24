@@ -9,6 +9,7 @@
 const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
+const log = require('../lib/logger');
 const { ROLES, ROLE_HIERARCHY } = require('../constants');
 
 const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
@@ -388,9 +389,9 @@ function assignBookAccess(userId, bookSlug, roleForBook, assignedBy = null) {
       const notifications = require('./notifications');
       notifications
         .notifyBookAccessAssigned(userId, bookSlug, roleForBook, assignedBy || 'kerfi')
-        .catch((err) => console.error('Failed to send book access notification:', err.message));
+        .catch((err) => log.error({ err }, 'Failed to send book access notification'));
     } catch (notifyErr) {
-      console.error('Failed to notify book access:', notifyErr.message);
+      log.error({ err: notifyErr }, 'Failed to notify book access');
     }
 
     return findById(userId);

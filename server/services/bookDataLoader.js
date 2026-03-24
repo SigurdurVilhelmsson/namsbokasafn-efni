@@ -9,6 +9,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const log = require('../lib/logger');
 
 const dataDir = path.join(__dirname, '..', 'data');
 const cache = {};
@@ -20,7 +21,7 @@ for (const file of fs.readdirSync(dataDir).filter((f) => f.endsWith('.json'))) {
       cache[data.slug] = data;
     }
   } catch (err) {
-    console.warn(`bookDataLoader: Failed to parse ${file}:`, err.message);
+    log.warn({ file, err }, 'bookDataLoader: failed to parse data file');
   }
 }
 

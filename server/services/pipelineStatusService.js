@@ -8,6 +8,7 @@
 const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
+const log = require('../lib/logger');
 
 const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
 const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
@@ -192,7 +193,7 @@ function transitionStage(bookSlug, chapterNum, stage, status, user, note) {
       try {
         syncStatusJsonCache(bookSlug, chapterNum);
       } catch (err) {
-        console.error(`syncStatusJsonCache failed for ${bookSlug} ch${chapterNum}:`, err.message);
+        log.error({ err, bookSlug, chapterNum }, 'syncStatusJsonCache failed');
       }
     }
 
@@ -268,7 +269,7 @@ function revertStage(bookSlug, chapterNum, user, note) {
       try {
         syncStatusJsonCache(bookSlug, chapterNum);
       } catch (err) {
-        console.error(`syncStatusJsonCache failed for ${bookSlug} ch${chapterNum}:`, err.message);
+        log.error({ err, bookSlug, chapterNum }, 'syncStatusJsonCache failed after revert');
       }
     }
 
@@ -425,9 +426,9 @@ function syncStatusJsonCache(bookSlug, chapterNum) {
     }
     fs.writeFileSync(statusPath, JSON.stringify(output, null, 2) + '\n', 'utf8');
   } catch (err) {
-    console.error(
-      `syncStatusJsonCache error for ${bookSlug} ${chapterDir(chapterNum)}:`,
-      err.message
+    log.error(
+      { err, bookSlug, chapterDir: chapterDir(chapterNum) },
+      'syncStatusJsonCache error'
     );
   } finally {
   }

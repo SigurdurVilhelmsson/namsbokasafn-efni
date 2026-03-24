@@ -34,6 +34,7 @@
 const express = require('express');
 const router = express.Router();
 
+const log = require('../lib/logger');
 const segmentParser = require('../services/segmentParser');
 const segmentEditor = require('../services/segmentEditorService');
 const activityLog = require('../services/activityLog');
@@ -87,7 +88,7 @@ router.get('/reviews/:reviewId', requireAuth, requireRole(ROLES.EDITOR), (req, r
       );
     } catch (e) {
       // Module data is supplementary, don't fail the request
-      console.error('Could not load module data for review:', e.message);
+      log.error({ err: e }, 'Could not load module data for review');
     }
 
     res.json({
@@ -130,7 +131,7 @@ router.get('/:book/chapters', requireAuth, requireRole(ROLES.EDITOR), (req, res)
     const chapters = enrichChapters(book, chapterNums);
     res.json({ book, chapters });
   } catch (err) {
-    console.error('Error listing chapters:', err.message);
+    log.error({ err }, 'Error listing chapters');
     res.status(500).json({ error: err.message });
   }
 });
@@ -154,7 +155,7 @@ router.get(
         modules,
       });
     } catch (err) {
-      console.error('Error listing modules:', err.message);
+      log.error({ err }, 'Error listing modules');
       res.status(500).json({ error: err.message });
     }
   }
@@ -207,7 +208,7 @@ router.get(
         otherPendingSegments,
       });
     } catch (err) {
-      console.error('Error loading module:', err.message);
+      log.error({ err }, 'Error loading module');
       res.status(err.message.includes('not found') ? 404 : 500).json({ error: err.message });
     }
   }
@@ -266,7 +267,7 @@ router.post(
           description: `${req.user.username} vistaði breytingu á ${req.params.moduleId}:${segmentId}`,
         });
       } catch (logErr) {
-        console.error('Activity log failed:', logErr.message);
+        log.error({ err: logErr }, 'Activity log failed');
       }
 
       res.json({
@@ -275,7 +276,7 @@ router.post(
         updated: result.updated,
       });
     } catch (err) {
-      console.error('Error saving segment edit:', err.message);
+      log.error({ err }, 'Error saving segment edit');
       res.status(500).json({ error: err.message });
     }
   }
@@ -346,7 +347,7 @@ router.post(
           description: `${req.user.username} sendi ${req.params.moduleId} til yfirlestrar`,
         });
       } catch (logErr) {
-        console.error('Activity log failed:', logErr.message);
+        log.error({ err: logErr }, 'Activity log failed');
       }
     } catch (err) {
       const status = err.message.includes('already has') ? 409 : 500;
@@ -399,7 +400,7 @@ router.get('/review-queue', requireAuth, requireRole(ROLES.EDITOR), (req, res) =
 
     res.json({ reviews: items });
   } catch (err) {
-    console.error('Error getting review queue:', err);
+    log.error({ err }, 'Error getting review queue');
     res.status(500).json({ error: err.message });
   }
 });
@@ -554,7 +555,7 @@ router.post(
         } catch (applyErr) {
           // Auto-apply is best-effort; don't fail the review completion.
           // Head-editor can retry via POST /:book/:chapter/:moduleId/apply
-          console.error('Auto-apply after review failed:', applyErr.message);
+          log.error({ err: applyErr }, 'Auto-apply after review failed');
           applied = { error: applyErr.message, retryable: true };
         }
       }
@@ -571,7 +572,7 @@ router.post(
           description: `${req.user.username} lauk yfirferð á ${result.module_id || req.params.reviewId}`,
         });
       } catch (logErr) {
-        console.error('Activity log failed:', logErr.message);
+        log.error({ err: logErr }, 'Activity log failed');
       }
     } catch (err) {
       res.status(400).json({ error: err.message });
@@ -662,7 +663,7 @@ router.get(
         termMatches,
       });
     } catch (err) {
-      console.error('Error finding terms:', err.message);
+      log.error({ err }, 'Error finding terms');
       res.status(err.message.includes('not found') ? 404 : 500).json({ error: err.message });
     }
   }
@@ -747,7 +748,7 @@ router.post(
           description: `${req.user.username} yfirfærði ${result.appliedCount} breytingu/ar á ${req.params.moduleId}`,
         });
       } catch (logErr) {
-        console.error('Activity log failed:', logErr.message);
+        log.error({ err: logErr }, 'Activity log failed');
       }
 
       res.json({
@@ -755,7 +756,7 @@ router.post(
         ...result,
       });
     } catch (err) {
-      console.error('Error applying edits:', err.message);
+      log.error({ err }, 'Error applying edits');
       const status =
         err.message.includes('No approved') || err.message.includes('already been') ? 400 : 500;
       res.status(status).json({ error: err.message });
@@ -812,7 +813,7 @@ router.post(
           description: `${req.user.username} yfirfærði ${applyResult.appliedCount} breytingu/ar á ${req.params.moduleId} og ræsti leiðslu`,
         });
       } catch (logErr) {
-        console.error('Activity log failed:', logErr.message);
+        log.error({ err: logErr }, 'Activity log failed');
       }
 
       res.json({
@@ -822,7 +823,7 @@ router.post(
         message: 'Edits applied and pipeline started',
       });
     } catch (err) {
-      console.error('Error in apply-and-render:', err.message);
+      log.error({ err }, 'Error in apply-and-render');
       const status =
         err.message.includes('No approved') || err.message.includes('already been') ? 400 : 500;
       res.status(status).json({ error: err.message });
@@ -893,7 +894,7 @@ router.post(
         jobId,
       });
     } catch (err) {
-      console.error('Error in bulk apply:', err.message);
+      log.error({ err }, 'Error in bulk apply');
       res.status(500).json({ error: err.message });
     }
   }

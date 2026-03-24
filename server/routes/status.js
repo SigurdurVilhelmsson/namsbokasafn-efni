@@ -16,6 +16,7 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 const path = require('path');
+const log = require('../lib/logger');
 const activityLog = require('../services/activityLog');
 const segmentEditorService = require('../services/segmentEditorService');
 const { requireAuth } = require('../middleware/requireAuth');
@@ -201,7 +202,7 @@ router.get('/dashboard', requireAuth, async (req, res) => {
         color: getActivityColor(activity.type),
       }));
     } catch (err) {
-      console.error('Failed to get team activity:', err);
+      log.error({ err }, 'Failed to get team activity');
     }
 
     // Calculate velocity metrics
@@ -244,7 +245,7 @@ router.get('/dashboard', requireAuth, async (req, res) => {
         },
       ];
     } catch (err) {
-      console.error('Failed to calculate metrics:', err);
+      log.error({ err }, 'Failed to calculate metrics');
     }
 
     // Get pending module reviews from DB
@@ -263,7 +264,7 @@ router.get('/dashboard', requireAuth, async (req, res) => {
         });
       }
     } catch (err) {
-      console.error('Failed to get pending reviews:', err.message);
+      log.error({ err }, 'Failed to get pending reviews');
     }
 
     // Get edits marked for discussion (replaces blocked issues)
@@ -281,19 +282,19 @@ router.get('/dashboard', requireAuth, async (req, res) => {
         });
       }
     } catch (err) {
-      console.error('Failed to get discuss edits:', err.message);
+      log.error({ err }, 'Failed to get discuss edits');
     }
 
     // Add global segment edit statistics
     try {
       dashboard.segmentEditStats = segmentEditorService.getGlobalEditStats();
     } catch (err) {
-      console.error('Failed to get segment edit stats:', err.message);
+      log.error({ err }, 'Failed to get segment edit stats');
     }
 
     res.json(dashboard);
   } catch (err) {
-    console.error('Dashboard error:', err);
+    log.error({ err }, 'Dashboard error');
     res.status(500).json({
       error: 'Failed to get dashboard',
       message: err.message,
@@ -337,7 +338,7 @@ router.get('/activity/timeline', requireAuth, (req, res) => {
       hasMore: result.offset + result.activities.length < result.total,
     });
   } catch (err) {
-    console.error('Activity timeline error:', err);
+    log.error({ err }, 'Activity timeline error');
     res.status(500).json({
       error: 'Failed to get activity timeline',
       message: err.message,
@@ -575,7 +576,7 @@ router.get('/analytics', requireAuth, async (req, res) => {
         (a, b) => b.totalActions - a.totalActions
       );
     } catch (e) {
-      console.error('Could not calculate team metrics:', e.message);
+      log.error({ err: e }, 'Could not calculate team metrics');
     }
 
     // Per-stage metrics
@@ -708,7 +709,7 @@ router.get('/analytics', requireAuth, async (req, res) => {
 
     res.json(analytics);
   } catch (err) {
-    console.error('Analytics error:', err);
+    log.error({ err }, 'Analytics error');
     res.status(500).json({
       error: 'Failed to generate analytics',
       message: err.message,
@@ -753,7 +754,7 @@ router.get('/meeting-agenda', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req,
         });
       }
     } catch (err) {
-      console.error('Failed to get pending reviews for agenda:', err.message);
+      log.error({ err }, 'Failed to get pending reviews for agenda');
     }
 
     // Check for edits marked for discussion (from DB)
@@ -767,7 +768,7 @@ router.get('/meeting-agenda', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req,
         });
       }
     } catch (err) {
-      console.error('Failed to get discuss edits for agenda:', err.message);
+      log.error({ err }, 'Failed to get discuss edits for agenda');
     }
 
     if (highItems.length > 0) {
@@ -868,7 +869,7 @@ router.get('/meeting-agenda', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req,
       sections,
     });
   } catch (err) {
-    console.error('Meeting agenda error:', err);
+    log.error({ err }, 'Meeting agenda error');
     res.status(500).json({
       error: 'Failed to generate meeting agenda',
       message: err.message,
@@ -1038,7 +1039,7 @@ router.get('/:book/editorial-progress', requireAuth, (req, res) => {
       },
     });
   } catch (err) {
-    console.error('Error building editorial progress:', err);
+    log.error({ err }, 'Error building editorial progress');
     res.status(500).json({ error: 'Failed to build editorial progress' });
   }
 });
@@ -1426,7 +1427,7 @@ router.get('/:book/:chapter/sections', requireAuth, (req, res) => {
       })),
     });
   } catch (err) {
-    console.error('Error getting section status:', err);
+    log.error({ err }, 'Error getting section status');
     res.status(500).json({
       error: 'Failed to get section status',
       message: err.message,

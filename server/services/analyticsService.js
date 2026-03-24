@@ -15,6 +15,7 @@ const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
 const crypto = require('crypto');
+const log = require('../lib/logger');
 
 // Database path
 const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
@@ -317,7 +318,7 @@ function trackingMiddleware(options = {}) {
       }
     } catch (err) {
       // Don't let analytics errors break the request
-      console.error('[Analytics] Error logging event:', err.message);
+      log.error({ err }, 'Analytics error logging event');
     }
 
     next();

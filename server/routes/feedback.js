@@ -21,6 +21,7 @@
 const express = require('express');
 const router = express.Router();
 
+const log = require('../lib/logger');
 const feedbackService = require('../services/feedbackService');
 const notifications = require('../services/notifications');
 const { requireAuth, optionalAuth } = require('../middleware/requireAuth');
@@ -86,15 +87,15 @@ router.post('/', optionalAuth, async (req, res) => {
     // Send email notification to admins
     try {
       const typeLabel = feedbackService.FEEDBACK_TYPE_LABELS[type];
-      console.debug('[Feedback] New feedback submitted:', feedback.id, '-', typeLabel);
+      log.debug({ feedbackId: feedback.id, typeLabel }, 'New feedback submitted');
 
       // Send email + in-app notification
       const notifyResult = await notifications.notifyFeedbackReceived(feedback, typeLabel);
       if (notifyResult.emailSent) {
-        console.debug('[Feedback] Email notification sent to admin');
+        log.debug('Email notification sent to admin');
       }
     } catch (notifyErr) {
-      console.error('[Feedback] Notification error:', notifyErr);
+      log.error({ err: notifyErr }, 'Feedback notification error');
       // Don't fail the request if notification fails
     }
 
@@ -104,7 +105,7 @@ router.post('/', optionalAuth, async (req, res) => {
       message: 'Takk fyrir endurgjöfina! (Thank you for your feedback!)',
     });
   } catch (err) {
-    console.error('Error submitting feedback:', err);
+    log.error({ err }, 'Error submitting feedback');
     res.status(400).json({
       error: 'Submission failed',
       message: err.message,
@@ -135,7 +136,7 @@ router.get('/', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
 
     res.json(result);
   } catch (err) {
-    console.error('Error listing feedback:', err);
+    log.error({ err }, 'Error listing feedback');
     res.status(500).json({
       error: 'Failed to list feedback',
       message: err.message,
@@ -152,7 +153,7 @@ router.get('/stats', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => 
     const stats = feedbackService.getStats();
     res.json(stats);
   } catch (err) {
-    console.error('Error getting stats:', err);
+    log.error({ err }, 'Error getting feedback stats');
     res.status(500).json({
       error: 'Failed to get stats',
       message: err.message,
@@ -171,7 +172,7 @@ router.get('/open', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
     const items = feedbackService.getOpenFeedback(Math.min(parseInt(limit, 10) || 100, 200));
     res.json({ items, count: items.length });
   } catch (err) {
-    console.error('Error getting open feedback:', err);
+    log.error({ err }, 'Error getting open feedback');
     res.status(500).json({
       error: 'Failed to get open feedback',
       message: err.message,
@@ -198,7 +199,7 @@ router.get('/:id', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
 
     res.json(feedback);
   } catch (err) {
-    console.error('Error getting feedback:', err);
+    log.error({ err }, 'Error getting feedback');
     res.status(500).json({
       error: 'Failed to get feedback',
       message: err.message,
@@ -229,7 +230,7 @@ router.post('/:id/status', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, re
       feedback,
     });
   } catch (err) {
-    console.error('Error updating status:', err);
+    log.error({ err }, 'Error updating feedback status');
     res.status(400).json({
       error: 'Update failed',
       message: err.message,
@@ -258,7 +259,7 @@ router.post('/:id/resolve', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, r
       feedback,
     });
   } catch (err) {
-    console.error('Error resolving feedback:', err);
+    log.error({ err }, 'Error resolving feedback');
     res.status(400).json({
       error: 'Resolve failed',
       message: err.message,
@@ -289,7 +290,7 @@ router.post('/:id/priority', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, 
       feedback,
     });
   } catch (err) {
-    console.error('Error setting priority:', err);
+    log.error({ err }, 'Error setting feedback priority');
     res.status(400).json({
       error: 'Update failed',
       message: err.message,
@@ -313,7 +314,7 @@ router.post('/:id/assign', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, re
       feedback,
     });
   } catch (err) {
-    console.error('Error assigning feedback:', err);
+    log.error({ err }, 'Error assigning feedback');
     res.status(400).json({
       error: 'Assign failed',
       message: err.message,
@@ -350,7 +351,7 @@ router.post('/:id/respond', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, r
       response,
     });
   } catch (err) {
-    console.error('Error adding response:', err);
+    log.error({ err }, 'Error adding feedback response');
     res.status(400).json({
       error: 'Response failed',
       message: err.message,

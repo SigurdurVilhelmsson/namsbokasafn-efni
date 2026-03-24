@@ -16,6 +16,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
+const log = require('../lib/logger');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, ROLES } = require('../middleware/requireRole');
 const bookRegistration = require('../services/bookRegistration');
@@ -102,7 +103,7 @@ function loadSection(req, res, next) {
     req.sectionData = section;
     next();
   } catch (err) {
-    console.error('Load section error:', err);
+    log.error({ err }, 'Load section error');
     res.status(500).json({
       error: 'Failed to load section',
       message: err.message,
@@ -133,7 +134,7 @@ router.get('/:sectionId', requireAuth, requireRole(ROLES.EDITOR), (req, res) => 
 
     res.json(section);
   } catch (err) {
-    console.error('Get section error:', err);
+    log.error({ err }, 'Get section error');
     res.status(500).json({
       error: 'Failed to get section',
       message: err.message,
@@ -268,7 +269,7 @@ router.post(
         },
       });
     } catch (err) {
-      console.error('Upload error:', err);
+      log.error({ err }, 'Upload error');
       res.status(500).json({
         error: 'Failed to process upload',
         message: err.message,
@@ -354,7 +355,7 @@ router.post(
         },
       });
     } catch (err) {
-      console.error('Assign reviewer error:', err);
+      log.error({ err }, 'Assign reviewer error');
       res.status(500).json({
         error: 'Failed to assign reviewer',
         message: err.message,
@@ -436,7 +437,7 @@ router.post(
         },
       });
     } catch (err) {
-      console.error('Assign localizer error:', err);
+      log.error({ err }, 'Assign localizer error');
       res.status(500).json({
         error: 'Failed to assign localizer',
         message: err.message,
@@ -542,7 +543,7 @@ router.post(
         },
       });
     } catch (err) {
-      console.error('Update status error:', err);
+      log.error({ err }, 'Update section status error');
       res.status(500).json({
         error: 'Failed to update status',
         message: err.message,
@@ -607,7 +608,7 @@ router.post(
         },
       });
     } catch (err) {
-      console.error('Submit review error:', err);
+      log.error({ err }, 'Submit review error');
       res.status(500).json({
         error: 'Failed to submit review',
         message: err.message,
@@ -675,7 +676,7 @@ router.post(
         },
       });
     } catch (err) {
-      console.error('Approve review error:', err);
+      log.error({ err }, 'Approve review error');
       res.status(500).json({
         error: 'Failed to approve review',
         message: err.message,
@@ -757,7 +758,7 @@ router.post(
         },
       });
     } catch (err) {
-      console.error('Request changes error:', err);
+      log.error({ err }, 'Request changes error');
       res.status(500).json({
         error: 'Failed to request changes',
         message: err.message,

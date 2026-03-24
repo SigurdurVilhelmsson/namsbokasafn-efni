@@ -14,6 +14,7 @@
 const express = require('express');
 const router = express.Router();
 
+const log = require('../lib/logger');
 const path = require('path');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireAdmin, requireRole, ROLES } = require('../middleware/requireRole');
@@ -47,7 +48,7 @@ router.get('/catalogue', requireAuth, requireAdmin(), (req, res) => {
       subjectLabels: openstaxCatalogue.SUBJECT_LABELS,
     });
   } catch (err) {
-    console.error('List catalogue error:', err);
+    log.error({ err }, 'List catalogue error');
 
     // Handle missing tables gracefully
     if (err.message.includes('not found')) {
@@ -97,7 +98,7 @@ router.post('/catalogue/sync', requireAuth, requireAdmin(), (req, res) => {
       message: `Synced ${result.added} new books, updated ${result.updated} existing`,
     });
   } catch (err) {
-    console.error('Sync catalogue error:', err);
+    log.error({ err }, 'Sync catalogue error');
 
     if (err.message.includes('not found')) {
       return res.status(503).json({
@@ -152,7 +153,7 @@ router.post('/catalogue/add', requireAuth, requireAdmin(), (req, res) => {
       message: `Added ${title} to catalogue`,
     });
   } catch (err) {
-    console.error('Add to catalogue error:', err);
+    log.error({ err }, 'Add to catalogue error');
 
     if (err.message.includes('already exists')) {
       return res.status(409).json({
@@ -234,7 +235,7 @@ router.post('/books/register', requireAuth, requireAdmin(), async (req, res) => 
         userService.assignBookAccess(headEditorId, slug, 'head-editor', req.user.username);
         result.headEditorAssigned = true;
       } catch (assignErr) {
-        console.error('Failed to assign head editor:', assignErr);
+        log.error({ err: assignErr }, 'Failed to assign head editor');
         result.headEditorError = assignErr.message;
       }
     }
@@ -257,14 +258,14 @@ router.post('/books/register', requireAuth, requireAdmin(), async (req, res) => 
           result.fetchJobId = fetchResult.jobId;
         }
       } catch (fetchErr) {
-        console.error('Auto-fetch source failed to start:', fetchErr);
+        log.error({ err: fetchErr }, 'Auto-fetch source failed to start');
         result.fetchError = fetchErr.message;
       }
     }
 
     res.json(result);
   } catch (err) {
-    console.error('Register book error:', err);
+    log.error({ err }, 'Register book error');
 
     if (err.message.includes('already registered') || err.message.includes('already in use')) {
       return res.status(409).json({
@@ -355,7 +356,7 @@ router.post('/books/:slug/fetch-source', requireAuth, requireAdmin(), (req, res)
 
     res.json({ success: true, jobId: fetchResult.jobId });
   } catch (err) {
-    console.error('Fetch source error:', err);
+    log.error({ err }, 'Fetch source error');
     res.status(500).json({ error: 'Failed to start source fetch', message: err.message });
   }
 });
@@ -373,7 +374,7 @@ router.get('/books', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
       total: books.length,
     });
   } catch (err) {
-    console.error('List books error:', err);
+    log.error({ err }, 'List books error');
     res.status(500).json({
       error: 'Failed to list books',
       message: err.message,
@@ -398,7 +399,7 @@ router.get('/books/data-status', requireAuth, requireAdmin(), (req, res) => {
       missingFile: books.filter((b) => !b.hasDataFile).length,
     });
   } catch (err) {
-    console.error('List book data status error:', err);
+    log.error({ err }, 'List book data status error');
     res.status(500).json({
       error: 'Failed to list book data status',
       message: err.message,
@@ -425,7 +426,7 @@ router.get('/books/:slug', requireAuth, requireRole(ROLES.EDITOR), (req, res) =>
 
     res.json(book);
   } catch (err) {
-    console.error('Get book error:', err);
+    log.error({ err }, 'Get book error');
     res.status(500).json({
       error: 'Failed to get book',
       message: err.message,
@@ -475,7 +476,7 @@ router.get('/books/:slug/chapters/:chapter', requireAuth, requireRole(ROLES.EDIT
       },
     });
   } catch (err) {
-    console.error('Get chapter error:', err);
+    log.error({ err }, 'Get chapter error');
     res.status(500).json({
       error: 'Failed to get chapter',
       message: err.message,
@@ -519,7 +520,7 @@ router.post('/books/:slug/generate-data', requireAuth, requireAdmin(), async (re
       ...result,
     });
   } catch (err) {
-    console.error('Generate book data error:', err);
+    log.error({ err }, 'Generate book data error');
 
     if (err.message.includes('not available')) {
       return res.status(400).json({
@@ -575,7 +576,7 @@ router.get('/users', requireAuth, requireAdmin(), (req, res) => {
       offset: options.offset,
     });
   } catch (err) {
-    console.error('List users error:', err);
+    log.error({ err }, 'List users error');
     res.status(500).json({
       error: 'Failed to list users',
       message: err.message,
@@ -622,7 +623,7 @@ router.get('/users/:id', requireAuth, requireAdmin(), (req, res) => {
 
     res.json(formatUser(user));
   } catch (err) {
-    console.error('Get user error:', err);
+    log.error({ err }, 'Get user error');
     res.status(500).json({
       error: 'Failed to get user',
       message: err.message,
@@ -678,7 +679,7 @@ router.post('/users', requireAuth, requireAdmin(), (req, res) => {
       user: formatUser(user),
     });
   } catch (err) {
-    console.error('Add user error:', err);
+    log.error({ err }, 'Add user error');
     res.status(500).json({
       error: 'Failed to add user',
       message: err.message,
@@ -740,7 +741,7 @@ router.put('/users/:id', requireAuth, requireAdmin(), (req, res) => {
       user: formatUser(user),
     });
   } catch (err) {
-    console.error('Update user error:', err);
+    log.error({ err }, 'Update user error');
     res.status(500).json({
       error: 'Failed to update user',
       message: err.message,
@@ -790,7 +791,7 @@ router.delete('/users/:id', requireAuth, requireAdmin(), (req, res) => {
       });
     }
   } catch (err) {
-    console.error('Delete user error:', err);
+    log.error({ err }, 'Delete user error');
     res.status(500).json({
       error: 'Failed to delete user',
       message: err.message,
@@ -826,7 +827,7 @@ router.post('/users/:id/books', requireAuth, requireAdmin(), (req, res) => {
       user: formatUser(user),
     });
   } catch (err) {
-    console.error('Assign book access error:', err);
+    log.error({ err }, 'Assign book access error');
     res.status(500).json({
       error: 'Failed to assign book access',
       message: err.message,
@@ -851,7 +852,7 @@ router.delete('/users/:id/books/:bookSlug', requireAuth, requireAdmin(), (req, r
       user: formatUser(user),
     });
   } catch (err) {
-    console.error('Remove book access error:', err);
+    log.error({ err }, 'Remove book access error');
     res.status(500).json({
       error: 'Failed to remove book access',
       message: err.message,
@@ -878,7 +879,7 @@ router.get('/users/:id/chapters', requireAuth, requireAdmin(), (req, res) => {
 
     res.json({ assignments });
   } catch (err) {
-    console.error('Get chapter assignments error:', err);
+    log.error({ err }, 'Get chapter assignments error');
     res.status(500).json({ error: err.message });
   }
 });
@@ -908,7 +909,7 @@ router.post('/users/:id/chapters', requireAuth, requireAdmin(), (req, res) => {
       assignments,
     });
   } catch (err) {
-    console.error('Assign chapters error:', err);
+    log.error({ err }, 'Assign chapters error');
     res.status(500).json({ error: err.message });
   }
 });
@@ -931,7 +932,7 @@ router.delete('/users/:id/chapters/:book/:chapter', requireAuth, requireAdmin(),
       assignments,
     });
   } catch (err) {
-    console.error('Remove chapter assignment error:', err);
+    log.error({ err }, 'Remove chapter assignment error');
     res.status(500).json({ error: err.message });
   }
 });
@@ -1081,7 +1082,7 @@ router.post('/migrate', requireAuth, requireAdmin(), async (req, res) => {
           : `Applied ${applied} migration(s), skipped ${skipped} already applied`,
     });
   } catch (err) {
-    console.error('Migration error:', err);
+    log.error({ err }, 'Migration error');
     res.status(500).json({
       error: 'Migration failed',
       message: err.message,
@@ -1135,11 +1136,11 @@ router.get('/validate-pipeline', requireAuth, requireAdmin(), (req, res) => {
         res.json({ reports });
       })
       .catch((err) => {
-        console.error('Pipeline validation error:', err);
+        log.error({ err }, 'Pipeline validation error');
         res.status(500).json({ error: 'Validation failed', message: err.message });
       });
   } catch (err) {
-    console.error('Pipeline validation error:', err);
+    log.error({ err }, 'Pipeline validation error');
     res.status(500).json({ error: 'Validation failed', message: err.message });
   }
 });

@@ -12,6 +12,7 @@
 const express = require('express');
 const router = express.Router();
 
+const log = require('../lib/logger');
 const activityLog = require('../services/activityLog');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, ROLES } = require('../middleware/requireRole');
@@ -34,7 +35,7 @@ router.get('/', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
 
     res.json(result);
   } catch (err) {
-    console.error('Error getting activity:', err);
+    log.error({ err }, 'Error getting activity');
     res.status(500).json({
       error: 'Failed to get activity',
       message: err.message,
@@ -53,7 +54,7 @@ router.get('/recent', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) =>
     const activities = activityLog.getRecent(Math.min(parseInt(limit, 10) || 50, 200));
     res.json({ activities });
   } catch (err) {
-    console.error('Error getting recent activity:', err);
+    log.error({ err }, 'Error getting recent activity');
     res.status(500).json({
       error: 'Failed to get activity',
       message: err.message,
@@ -73,7 +74,7 @@ router.get('/user/:userId', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, r
     const activities = activityLog.getByUser(userId, Math.min(parseInt(limit, 10) || 50, 200));
     res.json({ userId, activities });
   } catch (err) {
-    console.error('Error getting user activity:', err);
+    log.error({ err }, 'Error getting user activity');
     res.status(500).json({
       error: 'Failed to get activity',
       message: err.message,
@@ -93,7 +94,7 @@ router.get('/book/:book', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res
     const activities = activityLog.getByBook(book, Math.min(parseInt(limit, 10) || 50, 200));
     res.json({ book, activities });
   } catch (err) {
-    console.error('Error getting book activity:', err);
+    log.error({ err }, 'Error getting book activity');
     res.status(500).json({
       error: 'Failed to get activity',
       message: err.message,
@@ -118,7 +119,7 @@ router.get('/section/:book/:chapter/:section', requireAuth, (req, res) => {
     );
     res.json({ book, chapter, section, activities });
   } catch (err) {
-    console.error('Error getting section activity:', err);
+    log.error({ err }, 'Error getting section activity');
     res.status(500).json({
       error: 'Failed to get activity',
       message: err.message,
@@ -137,7 +138,7 @@ router.get('/my', requireAuth, (req, res) => {
     const activities = activityLog.getByUser(req.user.id, Math.min(parseInt(limit, 10) || 50, 200));
     res.json({ activities });
   } catch (err) {
-    console.error('Error getting my activity:', err);
+    log.error({ err }, 'Error getting my activity');
     res.status(500).json({
       error: 'Failed to get activity',
       message: err.message,

@@ -10,6 +10,7 @@
 const express = require('express');
 const router = express.Router();
 
+const log = require('../lib/logger');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, ROLES } = require('../middleware/requireRole');
 const suggestions = require('../services/localizationSuggestions');
@@ -41,7 +42,7 @@ router.post('/scan/:sectionId', requireAuth, requireRole(ROLES.EDITOR), (req, re
 
     res.json(result);
   } catch (err) {
-    console.error('Scan section error:', err);
+    log.error({ err }, 'Scan section error');
     res.status(err.message.includes('not found') ? 404 : 500).json({
       error: 'Failed to scan section',
       message: err.message,
@@ -69,7 +70,7 @@ router.post('/scan-book/:bookSlug', requireAuth, requireRole(ROLES.HEAD_EDITOR),
 
     res.json(result);
   } catch (err) {
-    console.error('Scan book error:', err);
+    log.error({ err }, 'Scan book error');
     res.status(500).json({
       error: 'Failed to scan book',
       message: err.message,
@@ -121,7 +122,7 @@ router.get('/:sectionId', requireAuth, requireRole(ROLES.EDITOR), (req, res) => 
       stats,
     });
   } catch (err) {
-    console.error('Get suggestions error:', err);
+    log.error({ err }, 'Get suggestions error');
     res.status(500).json({
       error: 'Failed to get suggestions',
       message: err.message,
@@ -140,7 +141,7 @@ router.get('/:sectionId/stats', requireAuth, requireRole(ROLES.EDITOR), (req, re
     const stats = suggestions.getSuggestionStats(parseInt(sectionId, 10));
     res.json(stats);
   } catch (err) {
-    console.error('Get stats error:', err);
+    log.error({ err }, 'Get suggestion stats error');
     res.status(500).json({
       error: 'Failed to get statistics',
       message: err.message,
@@ -180,7 +181,7 @@ router.post('/:id/accept', requireAuth, requireRole(ROLES.EDITOR), (req, res) =>
       suggestion,
     });
   } catch (err) {
-    console.error('Accept suggestion error:', err);
+    log.error({ err }, 'Accept suggestion error');
     res.status(500).json({
       error: 'Failed to accept suggestion',
       message: err.message,
@@ -216,7 +217,7 @@ router.post('/:id/reject', requireAuth, requireRole(ROLES.EDITOR), (req, res) =>
       suggestion,
     });
   } catch (err) {
-    console.error('Reject suggestion error:', err);
+    log.error({ err }, 'Reject suggestion error');
     res.status(500).json({
       error: 'Failed to reject suggestion',
       message: err.message,
@@ -269,7 +270,7 @@ router.post('/:id/modify', requireAuth, requireRole(ROLES.EDITOR), (req, res) =>
       suggestion,
     });
   } catch (err) {
-    console.error('Modify suggestion error:', err);
+    log.error({ err }, 'Modify suggestion error');
     res.status(500).json({
       error: 'Failed to modify suggestion',
       message: err.message,
@@ -322,7 +323,7 @@ router.post('/:sectionId/bulk', requireAuth, requireRole(ROLES.EDITOR), (req, re
 
     res.json(result);
   } catch (err) {
-    console.error('Bulk update error:', err);
+    log.error({ err }, 'Bulk update suggestions error');
     res.status(500).json({
       error: 'Failed to bulk update suggestions',
       message: err.message,
@@ -377,7 +378,7 @@ router.post('/:sectionId/sync-log', requireAuth, requireRole(ROLES.EDITOR), (req
 
     res.json(result);
   } catch (err) {
-    console.error('Sync to log error:', err);
+    log.error({ err }, 'Sync suggestions to log error');
     res.status(500).json({
       error: 'Failed to sync to localization log',
       message: err.message,

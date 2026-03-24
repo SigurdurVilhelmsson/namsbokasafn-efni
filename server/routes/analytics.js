@@ -12,6 +12,7 @@
 const express = require('express');
 const router = express.Router();
 
+const log = require('../lib/logger');
 const analyticsService = require('../services/analyticsService');
 const { requireAuth, optionalAuth } = require('../middleware/requireAuth');
 const { requireRole, ROLES } = require('../middleware/requireRole');
@@ -31,7 +32,7 @@ router.get('/stats', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => 
     const stats = analyticsService.getStats(safePeriod);
     res.json(stats);
   } catch (err) {
-    console.error('Error getting analytics stats:', err);
+    log.error({ err }, 'Error getting analytics stats');
     res.status(500).json({
       error: 'Failed to get stats',
       message: err.message,
@@ -50,7 +51,7 @@ router.get('/recent', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) =>
     const events = analyticsService.getRecentEvents(Math.min(parseInt(limit, 10) || 100, 200));
     res.json({ events });
   } catch (err) {
-    console.error('Error getting recent events:', err);
+    log.error({ err }, 'Error getting recent events');
     res.status(500).json({
       error: 'Failed to get events',
       message: err.message,
@@ -97,7 +98,7 @@ router.post('/event', optionalAuth, (req, res) => {
 
     res.json({ success: true, eventId: event.id });
   } catch (err) {
-    console.error('Error logging event:', err);
+    log.error({ err }, 'Error logging event');
     res.status(500).json({
       error: 'Failed to log event',
       message: err.message,
@@ -125,7 +126,7 @@ router.get('/dashboard-data', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req,
       },
     });
   } catch (err) {
-    console.error('Error getting dashboard data:', err);
+    log.error({ err }, 'Error getting dashboard data');
     res.status(500).json({
       error: 'Failed to get dashboard data',
       message: err.message,

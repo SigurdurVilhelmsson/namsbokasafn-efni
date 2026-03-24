@@ -14,6 +14,7 @@ const path = require('path');
 const archiver = require('archiver');
 const multer = require('multer');
 
+const log = require('../lib/logger');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireEditor, requireAdmin, requireBookAccess } = require('../middleware/requireRole');
 const chapterFilesService = require('../services/chapterFilesService');
@@ -136,7 +137,7 @@ router.get('/', requireAuth, (req, res) => {
         }
       } catch (err) {
         // Skip files that can't be parsed or don't have expected structure
-        console.warn(`Skipping ${file}: ${err.message}`);
+        log.warn({ file, err: err.message }, 'Skipping book data file');
       }
     }
   }
@@ -213,7 +214,7 @@ router.get('/:bookId/chapters/:chapter/files', requireAuth, (req, res) => {
       recentHistory: history,
     });
   } catch (err) {
-    console.error('Error listing chapter files:', err);
+    log.error({ err }, 'Error listing chapter files');
     res.status(500).json({
       error: 'Failed to list chapter files',
       message: err.message,
@@ -240,7 +241,7 @@ router.post('/:bookId/chapters/:chapter/files/scan', requireAuth, requireEditor(
       ...result,
     });
   } catch (err) {
-    console.error('Error scanning chapter files:', err);
+    log.error({ err }, 'Error scanning chapter files');
     res.status(500).json({
       error: 'Failed to scan chapter files',
       message: err.message,
@@ -276,7 +277,7 @@ router.delete('/:bookId/chapters/:chapter/files', requireAuth, requireAdmin(), (
       filesDeletedFromDisk: diskDeleted,
     });
   } catch (err) {
-    console.error('Error clearing chapter files:', err);
+    log.error({ err }, 'Error clearing chapter files');
     res.status(500).json({
       error: 'Failed to clear chapter files',
       message: err.message,
@@ -299,7 +300,7 @@ router.get('/:bookId/files/summary', requireAuth, (req, res) => {
       chapters: summary,
     });
   } catch (err) {
-    console.error('Error getting book files summary:', err);
+    log.error({ err }, 'Error getting book files summary');
     res.status(500).json({
       error: 'Failed to get files summary',
       message: err.message,
@@ -431,7 +432,7 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
 
     await archive.finalize();
   } catch (err) {
-    console.error('Download error:', err);
+    log.error({ err }, 'Download error');
     if (!res.headersSent) {
       res.status(500).json({
         error: 'Download failed',
@@ -572,7 +573,7 @@ router.post(
 
         chapterFilesService.registerFiles(bookId, chapterNum, filesToRegister, userId);
       } catch (dbErr) {
-        console.error('Failed to register imported files:', dbErr);
+        log.error({ err: dbErr }, 'Failed to register imported files');
         // Don't fail the request - files are already stored
       }
     }
@@ -678,7 +679,7 @@ router.post(
 
         chapterFilesService.registerFiles(bookId, chapterNum, filesToRegister, userId);
       } catch (dbErr) {
-        console.error('Failed to register MT output files:', dbErr);
+        log.error({ err: dbErr }, 'Failed to register MT output files');
       }
 
       // Advance pipeline status — MT output is now available
