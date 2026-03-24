@@ -1,0 +1,86 @@
+name: Deploy to Production
+
+on:
+  # Manual trigger with environment confirmation
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type "deploy" to confirm'
+        required: true
+        type: string
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.event.inputs.confirm == 'deploy'
+    environment: production
+
+    steps:
+      - name: Validate trigger
+        run: |
+          echo "Deploying commit ${{ github.sha }} to production"
+          echo "Triggered by: ${{ github.actor }}"
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          script_stop: true
+          script: |
+            set -euo pipefail
+            APP_DIR="${{ secrets.DEPLOY_APP_DIR || '/opt/namsbokasafn-efni' }}"
+            cd "$APP_DIR"
+
+            echo "=== Step 1: Backup database ==="
+            DB_PATH="pipeline-output/sessions.db"
+            if [ -f "$DB_PATH" ]; then
+              BACKUP_DIR="pipeline-output/backups"
+              mkdir -p "$BACKUP_DIR"
+              TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+              cp "$DB_PATH" "$BACKUP_DIR/sessions-$TIMESTAMP.db"
+              echo "Backed up to $BACKUP_DIR/sessions-$TIMESTAMP.db"
+              # Keep last 30 backups
+              ls -1t "$BACKUP_DIR"/sessions-*.db 2>/dev/null | tail -n +31 | xargs -r rm
+            fi
+
+            echo "=== Step 2: Pull latest code ==="
+            git fetch origin main
+            git reset --hard origin/main
+
+            echo "=== Step 3: Install dependencies ==="
+            npm ci --omit=dev
+            cd server && npm ci --omit=dev && cd ..
+
+            echo "=== Step 4: Restart service ==="
+            sudo systemctl restart namsbokasafn-efni || true
+
+            echo "=== Step 5: Health check ==="
+            sleep 3
+            HEALTH=$(curl -sf http://localhost:3000/api/health || echo '{"status":"failed"}')
+            echo "Health: $HEALTH"
+
+            STATUS=$(echo "$HEALTH" | node -e "
+              let d='';process.stdin.on('data',c=>d+=c);
+              process.stdin.on('end',()=>{
+                try{console.log(JSON.parse(d).status)}
+                catch{console.log('parse-error')}
+              })
+            ")
+
+            if [ "$STATUS" != "ok" ] && [ "$STATUS" != "degraded" ]; then
+              echo "HEALTH CHECK FAILED — status: $STATUS"
+              exit 1
+            fi
+
+            echo "=== Deploy complete ==="
+
+      - name: Report status
+        if: always()
+        run: |
+          if [ "${{ job.status }}" = "success" ]; then
+            echo "✅ Deploy succeeded"
+          else
+            echo "❌ Deploy failed — check logs above"
+          fi

@@ -1,0 +1,74 @@
+name: Sync Content to Vefur
+
+on:
+  # Manual trigger — sync published content to namsbokasafn-vefur
+  workflow_dispatch:
+    inputs:
+      book:
+        description: 'Book slug (e.g., efnafraedi-2e) or "all"'
+        required: true
+        default: 'all'
+        type: string
+  # Can also be triggered by the deploy workflow
+  workflow_call:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout efni (content source)
+        uses: actions/checkout@v6
+        with:
+          path: efni
+
+      - name: Checkout vefur (web reader)
+        uses: actions/checkout@v6
+        with:
+          repository: SigurdurVilhelmsson/namsbokasafn-vefur
+          token: ${{ secrets.VEFUR_DEPLOY_TOKEN }}
+          path: vefur
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '20'
+
+      - name: Install vefur dependencies
+        run: cd vefur && npm ci
+
+      - name: Run content sync
+        run: |
+          cd vefur
+          BOOK="${{ github.event.inputs.book || 'all' }}"
+          if [ "$BOOK" = "all" ]; then
+            node scripts/sync-content.js --source ../efni
+          else
+            node scripts/sync-content.js --source ../efni --book "$BOOK"
+          fi
+
+      - name: Check for changes
+        id: check
+        run: |
+          cd vefur
+          if git diff --quiet && git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No content changes to sync"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Content changes detected:"
+            git diff --stat
+          fi
+
+      - name: Commit and push
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          cd vefur
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore: sync content from namsbokasafn-efni
+
+          Source commit: ${{ github.sha }}
+          Triggered by: ${{ github.actor }}"
+          git push
