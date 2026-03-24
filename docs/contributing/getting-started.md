@@ -53,15 +53,14 @@ CNXML → Extract → EN Segments → MT → Review → Inject → Render → HT
 ## Roles
 
 ### Translator
-- Responsible for initial translation using CAT tools
-- Manages translation memory
-- Incorporates editor feedback
-- Coordinates the overall process
+- Initial translation is done via the Málstaður API (`api-translate.js`)
+- Manual translation can be imported via `docx-import.js`
+- Manages translation memory (via Matecat Align)
 
 ### Pass 1 Editor (Linguistic Review)
-- Reviews for grammar, spelling, and terminology
+- Reviews machine translations for grammar, spelling, and terminology
+- Uses the web-based **segment editor** at `/editor`
 - Ensures natural Icelandic phrasing
-- Uses Track Changes in Word
 - Does NOT localize
 
 ### Pass 2 Editor (Localization)

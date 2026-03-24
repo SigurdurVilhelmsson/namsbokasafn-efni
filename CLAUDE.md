@@ -34,7 +34,7 @@ This project was built iteratively with AI assistance. Known areas of concern:
 - Pipeline tools evolved organically — may have inconsistent patterns
 - Error handling may be incomplete in some tools
 - Documentation may be ahead of or behind actual implementation in places
-- Test suite: ~978 Vitest unit tests + 96 Playwright E2E tests
+- Test suite: ~1032 Vitest unit tests + 96 Playwright E2E tests (vitest workspace: tools parallel, server sequential)
 
 ## Purpose
 
@@ -109,15 +109,15 @@ CNXML → Extract → EN Segments → MT → Initialize → Review → Inject �
 
 | Step | What | Tool/Service | Output |
 |------|------|--------------|--------|
-| 1a | CNXML → EN segments | `cnxml-extract.js` | `02-for-mt/`, `02-structure/` (bracket markers: `[[i:]]`, `[[link:]]`, `[[xref:]]`, `[[docref:]]`) |
-| 1b | Protect for MT | `protect-segments-for-mt.js` | MT-ready segments (legacy — not needed with API) |
-| 2a | Machine translation | `api-translate.js` or malstadur.is web UI | `02-mt-output/` |
-| 2b | Unprotect MT output | `unprotect-segments.js` | Ready for review/injection (legacy — not needed with API) |
+| 1 | CNXML → EN segments | `cnxml-extract.js` | `02-for-mt/`, `02-structure/` (bracket markers: `[[i:]]`, `[[link:]]`, `[[xref:]]`, `[[docref:]]`) |
+| 2 | Machine translation | `api-translate.js` (Málstaður API) | `02-mt-output/` |
 | 3a | Linguistic review | Segment editor (web) or manual editing | `03-faithful-translation/` ★ |
 | 3b | Apply approved edits | `applyApprovedEdits()` (per-module) | `03-faithful-translation/` |
 | 4 | TM creation | `prepare-for-align.js` + Matecat Align | `tm/` ★ |
 | 5a | Inject translations | `cnxml-inject.js` | `03-translated/` |
 | 5b | Render to HTML | `cnxml-render.js` | `05-publication/` |
+
+Legacy protect/unprotect steps (1b, 2b) are archived in `tools/archived/` — not needed with API translation.
 
 ★ = Human-verified asset
 
@@ -233,9 +233,30 @@ Extraction uses API-safe `[[type:content]]` bracket markers that achieve **100% 
 
 Injection handles both bracket and legacy formats (backward compat). Legacy patterns (`*text*`, `~text~`, `^text^`, `__term__`) are skipped for API-translated segments via `hasApiMarkers` guard.
 
+## Server Features (Post-Refocus)
+
+The server is an **editorial workflow platform**, not a pipeline orchestration tool. Pipeline operations (extract, translate, inject, render) are handled via CLI tools.
+
+**Core editorial features:**
+- Segment editor (Pass 1 linguistic review) with keyboard shortcuts, filtering, progress tracking
+- Localization editor (Pass 2) with category badges and guidelines panel
+- Terminology manager with cross-book support, definitions, CSV export
+- Editorial progress dashboard (per-chapter/module segment counts)
+- Live preview — in-process CNXML→HTML rendering via `renderService.js`
+- Content versioning — per-segment snapshots before each apply (rollback capability)
+- Structured logging via pino (`LOG_LEVEL` env var, JSON in production)
+- Production health check at `GET /api/health` (DB, migrations, books, auth)
+
+**Recent changes (2026-03-24):**
+- Removed 20 legacy files (workflow, matecat, sync, images, issues routes/services)
+- All DB services use singleton connection pattern
+- All 31 migrations use unified `up(db)` pattern
+- Frontend JS wrapped in IIFEs (encapsulated state)
+- Vitest workspace splits tools (parallel) from server (sequential) tests
+
 ## Current Priority
 
-**Fidelity optimization** — 119/148 modules PERFECT (80%), 49 total discrepancies across 29 modules. Error manifest auto-updated: `books/efnafraedi-2e/translation-errors.json`. Pipeline verified with ~978 Vitest + 96 Playwright tests.
+**Fidelity optimization** — 119/148 modules PERFECT (80%), 49 total discrepancies across 29 modules. Error manifest auto-updated: `books/efnafraedi-2e/translation-errors.json`. Pipeline verified with ~1032 Vitest + 96 Playwright tests.
 
 Remaining discrepancies are structural injection issues (nested para/list), annotation side-effects (sub/sup/term overcounting from EN marker conversion), and a handful of math/link losses. See `translation-errors.json` for per-module detail.
 

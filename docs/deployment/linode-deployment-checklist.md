@@ -90,19 +90,20 @@ certbot --nginx -d ritstjorn.namsbokasafn.is
 
 ---
 
-## 4. GitHub OAuth App
+## 4. Microsoft Entra ID (Azure AD) App Registration
 
-Create at: https://github.com/settings/developers
+Register at: https://entra.microsoft.com → App registrations → New registration
 
 | Field | Value |
 |-------|-------|
 | Application name | `Ritstjórn Námsbókasafns` |
-| Homepage URL | `https://ritstjorn.namsbokasafn.is` |
-| Authorization callback URL | `https://ritstjorn.namsbokasafn.is/api/auth/callback` |
+| Supported account types | Single tenant (your organization) |
+| Redirect URI (Web) | `https://ritstjorn.namsbokasafn.is/api/auth/callback` |
 
-- [ ] OAuth app created
-- [ ] Client ID copied
-- [ ] Client Secret copied
+After registration:
+- [ ] Copy **Application (client) ID** → `MS_CLIENT_ID`
+- [ ] Copy **Directory (tenant) ID** → `MS_TENANT_ID`
+- [ ] Create client secret under Certificates & secrets → `MS_CLIENT_SECRET`
 
 ---
 
@@ -147,24 +148,19 @@ Create `/home/namsbokasafn/namsbokasafn-efni/server/.env`:
 PORT=3000
 HOST=0.0.0.0
 NODE_ENV=production
+LOG_LEVEL=info
 
-# GitHub OAuth
-GITHUB_CLIENT_ID=<your-client-id>
-GITHUB_CLIENT_SECRET=<your-client-secret>
-GITHUB_CALLBACK_URL=https://ritstjorn.namsbokasafn.is/api/auth/callback
-GITHUB_ORG=namsbokasafn
+# Microsoft Entra ID (Azure AD)
+MS_CLIENT_ID=<application-client-id>
+MS_CLIENT_SECRET=<client-secret>
+MS_TENANT_ID=<directory-tenant-id>
 
 # JWT Configuration
 JWT_SECRET=<generate-with: openssl rand -hex 32>
 JWT_EXPIRY=24h
 
-# Admin Users (your GitHub username)
+# Admin Users (Microsoft Entra username or object ID)
 ADMIN_USERS=SigurdurVilhelmsson
-
-# GitHub Repository
-GITHUB_REPO_OWNER=SigurdurVilhelmsson
-GITHUB_REPO_NAME=namsbokasafn-efni
-GITHUB_BASE_BRANCH=main
 ```
 
 Generate JWT secret:
@@ -173,7 +169,7 @@ openssl rand -hex 32
 ```
 
 - [ ] .env file created
-- [ ] GitHub OAuth credentials added
+- [ ] Microsoft Entra ID credentials added
 - [ ] JWT_SECRET generated
 - [ ] ADMIN_USERS configured
 
