@@ -901,6 +901,83 @@ router.post(
 );
 
 // =====================================================================
+// CONTENT VERSIONING — history and rollback
+// =====================================================================
+
+const contentVersionService = require('../services/contentVersionService');
+
+/**
+ * GET /:book/:chapter/:moduleId/versions
+ * List all content versions for a module.
+ */
+router.get(
+  '/:book/:chapter/:moduleId/versions',
+  requireAuth,
+  requireRole(ROLES.EDITOR),
+  validateBookChapter,
+  (req, res) => {
+    try {
+      const versions = contentVersionService.getModuleVersions(
+        req.params.book,
+        req.params.moduleId
+      );
+      res.json({ versions });
+    } catch (err) {
+      log.error({ err }, 'Error loading versions');
+      res.status(500).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * GET /:book/:chapter/:moduleId/versions/:version
+ * Get content for a specific version (all segments).
+ */
+router.get(
+  '/:book/:chapter/:moduleId/versions/:version',
+  requireAuth,
+  requireRole(ROLES.EDITOR),
+  validateBookChapter,
+  (req, res) => {
+    try {
+      const segments = contentVersionService.getVersionContent(
+        req.params.book,
+        req.params.moduleId,
+        parseInt(req.params.version, 10)
+      );
+      res.json({ segments });
+    } catch (err) {
+      log.error({ err }, 'Error loading version content');
+      res.status(500).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * GET /:book/:chapter/:moduleId/segment-history/:segmentId
+ * Get version history for a specific segment.
+ */
+router.get(
+  '/:book/:chapter/:moduleId/segment-history/:segmentId',
+  requireAuth,
+  requireRole(ROLES.EDITOR),
+  validateBookChapter,
+  (req, res) => {
+    try {
+      const history = contentVersionService.getSegmentHistory(
+        req.params.book,
+        req.params.moduleId,
+        req.params.segmentId
+      );
+      res.json({ history });
+    } catch (err) {
+      log.error({ err }, 'Error loading segment history');
+      res.status(500).json({ error: err.message });
+    }
+  }
+);
+
+// =====================================================================
 // PREVIEW — render translated CNXML to HTML in-process
 // =====================================================================
 

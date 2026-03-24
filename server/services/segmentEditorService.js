@@ -10,6 +10,7 @@ const path = require('path');
 const fs = require('fs');
 const log = require('../lib/logger');
 const { advanceChapterStatus } = require('./pipelineService');
+const contentVersionService = require('./contentVersionService');
 
 let BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
@@ -586,6 +587,17 @@ function applyApprovedEdits(book, chapter, moduleId) {
         content: approved ? approved.edited_content : seg.is,
       };
     });
+
+    // 4b. Snapshot current content before overwriting (for rollback)
+    const currentSegments = data.segments.map((seg) => ({
+      segmentId: seg.segmentId,
+      content: seg.is || '',
+    }));
+    try {
+      contentVersionService.snapshotModule(book, chapter, moduleId, currentSegments);
+    } catch (snapErr) {
+      log.error({ err: snapErr }, 'Content snapshot failed (non-fatal, continuing apply)');
+    }
 
     // 5. Write to 03-faithful-translation/
     const savedPath = segmentParser.saveModuleSegments(book, chapter, moduleId, segments);

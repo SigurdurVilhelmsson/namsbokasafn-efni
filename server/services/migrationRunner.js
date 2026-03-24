@@ -56,6 +56,7 @@ function runAllMigrations() {
     require('../migrations/028-idordabanki-id'),
     require('../migrations/029-register-preview-books'),
     require('../migrations/030-remove-legacy-tables'),
+    require('../migrations/031-content-versions'),
   ];
 
   let applied = 0;
