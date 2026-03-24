@@ -900,4 +900,45 @@ router.post(
   }
 );
 
+// =====================================================================
+// PREVIEW — render translated CNXML to HTML in-process
+// =====================================================================
+
+const renderService = require('../services/renderService');
+
+/**
+ * GET /:book/:chapter/:moduleId/preview
+ * Render a module's translated CNXML to HTML for live preview.
+ * Returns the rendered HTML as text/html.
+ *
+ * Query params:
+ *   track (optional, default: 'mt-preview') — which translation track to render
+ */
+router.get(
+  '/:book/:chapter/:moduleId/preview',
+  requireAuth,
+  requireRole(ROLES.EDITOR),
+  validateBookChapter,
+  async (req, res) => {
+    const { book, moduleId } = req.params;
+    const track = req.query.track || 'mt-preview';
+
+    try {
+      const { html } = await renderService.renderModule(book, req.chapterNum, moduleId, track);
+
+      res.type('html').send(html);
+    } catch (err) {
+      log.error({ err, book, moduleId }, 'Preview render failed');
+
+      if (err.message?.includes('not found')) {
+        return res.status(404).json({
+          error: 'Translated CNXML not found',
+          message: 'Run inject before previewing this module',
+        });
+      }
+      res.status(500).json({ error: 'Preview render failed: ' + err.message });
+    }
+  }
+);
+
 module.exports = router;

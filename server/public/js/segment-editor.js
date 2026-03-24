@@ -275,6 +275,7 @@
 
       renderModule();
       showPipelinePanel();
+      showPreviewPanel();
       showApplyPanel();
       restoreDraft();
       startDraftTimer();
@@ -1317,6 +1318,56 @@
     document.getElementById('btn-render').disabled = disabled;
     document.getElementById('btn-pipeline').disabled = disabled;
   }
+
+  // ================================================================
+  // PREVIEW (render translated CNXML to HTML in-process)
+  // ================================================================
+
+  function showPreviewPanel() {
+    const panel = document.getElementById('preview-panel');
+    if (panel) panel.style.display = 'block';
+  }
+
+  document.getElementById('btn-preview').addEventListener('click', async function () {
+    const badge = document.getElementById('preview-badge');
+    const track = document.getElementById('preview-track').value;
+    const btn = this;
+
+    btn.disabled = true;
+    badge.style.display = '';
+    badge.textContent = 'Hle\u00f0ur...';
+    badge.className = 'pipeline-status-badge';
+
+    try {
+      const url = `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/preview?track=${track}`;
+      const res = await fetch(url, { credentials: 'include' });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.message || err.error || 'HTTP ' + res.status);
+      }
+
+      const html = await res.text();
+
+      // Open preview in a new window
+      const win = window.open('', 'preview-' + currentModuleId, 'width=900,height=700');
+      win.document.open();
+      win.document.write(html);
+      win.document.close();
+      win.document.title = 'Forskoðun: ' + currentModuleId;
+
+      badge.textContent = 'Opna\u00f0';
+      badge.className = 'pipeline-status-badge';
+      setTimeout(() => {
+        badge.style.display = 'none';
+      }, 2000);
+    } catch (err) {
+      badge.textContent = err.message;
+      badge.className = 'pipeline-status-badge';
+    }
+
+    btn.disabled = false;
+  });
 
   // ================================================================
   // APPLY CONTROLS (Write approved edits to files)

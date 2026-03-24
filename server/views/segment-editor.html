@@ -964,6 +964,14 @@
       flex-wrap: wrap;
     }
 
+    .preview-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-md) var(--spacing-lg);
+      margin-bottom: var(--spacing-md);
+    }
+
     .btn-apply {
       background: var(--success);
       color: white;
@@ -1143,6 +1151,22 @@
           <span class="pipeline-status-badge" id="pipeline-badge" style="display: none;"></span>
         </div>
         <div class="pipeline-output" id="pipeline-output"></div>
+      </div>
+
+      <!-- Preview Panel -->
+      <div class="preview-panel" id="preview-panel" style="display: none;">
+        <div style="display:flex; align-items:center; gap:var(--spacing-sm); margin-bottom:var(--spacing-sm);">
+          <h4 style="margin:0">Forskoðun</h4>
+          <button class="btn btn-secondary btn-sm" id="btn-preview" title="Birta þýðingu sem HTML">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            Forskoðun
+          </button>
+          <select id="preview-track" style="font-size:var(--text-xs); padding:2px 4px;">
+            <option value="mt-preview">MT</option>
+            <option value="faithful">Hrein þýðing</option>
+          </select>
+          <span class="pipeline-status-badge" id="preview-badge" style="display: none;"></span>
+        </div>
       </div>
 
       <!-- Apply Panel (HEAD_EDITOR only) -->
