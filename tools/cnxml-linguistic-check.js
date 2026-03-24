@@ -59,6 +59,12 @@ function preprocess(cnxml) {
  * Elements without ids use a positional key like "item#3" (tag + occurrence index).
  * This handles OpenStax content where items inside <note> or <exercise>
  * elements often lack id attributes.
+ *
+ * Limitation: positional keys are fragile if the source and translated
+ * files have different counts of id-less elements of the same type.
+ * In that case, keys misalign and detection may miss untranslated items.
+ * In practice this risk is low because OpenStax CNXML is structurally
+ * preserved during injection — untranslated elements are copied as-is.
  */
 function extractLeafElements(cnxml) {
   const elements = new Map();

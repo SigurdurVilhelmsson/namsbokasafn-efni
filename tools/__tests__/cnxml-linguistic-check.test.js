@@ -69,6 +69,17 @@ describe('findUntranslatedText', () => {
     expect(result.map((r) => r.id)).toContain('i2');
   });
 
+  it('flags id-less items via positional key when text is identical', () => {
+    const source = `<document xmlns="http://cnx.rice.edu/cnxml">
+      <list><item>What are the main types of organisms here?</item></list></document>`;
+    const translated = `<document xmlns="http://cnx.rice.edu/cnxml">
+      <list><item>What are the main types of organisms here?</item></list></document>`;
+    const result = findUntranslatedText(source, translated, { minLength: 5 });
+    expect(result).toHaveLength(1);
+    expect(result[0].id).toBe('item#0');
+    expect(result[0].tag).toBe('item');
+  });
+
   it('respects custom minLength option', () => {
     const source =
       '<document xmlns="http://cnx.rice.edu/cnxml"><para id="p1">Medium text</para></document>';
