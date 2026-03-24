@@ -251,12 +251,45 @@ app.post('/api/analytics/event', publicSubmitLimiter);
 app.use('/api/feedback', feedbackRoutes);
 app.use('/api/analytics', analyticsRoutes);
 
-// Health check
+// Health check — verifies DB, migrations, books, auth configuration
 app.get('/api/health', (req, res) => {
+  const checks = {};
+
+  // Check DB connection
+  try {
+    const Database = require('better-sqlite3');
+    const dbPath = path.join(__dirname, '..', 'pipeline-output', 'sessions.db');
+    const db = new Database(dbPath, { readonly: true });
+    const row = db.prepare('SELECT COUNT(*) as n FROM users').get();
+    checks.db = { ok: true, users: row.n };
+    db.close();
+  } catch (err) {
+    checks.db = { ok: false, error: err.message };
+  }
+
+  // Check migrations
+  try {
+    const migrationsDir = path.join(__dirname, 'migrations');
+    const fs = require('fs');
+    const onDisk = fs.readdirSync(migrationsDir).filter((f) => f.endsWith('.js')).length;
+    checks.migrations = { ok: true, total: onDisk };
+  } catch (err) {
+    checks.migrations = { ok: false, error: err.message };
+  }
+
+  // Check books loaded
+  checks.books = { ok: VALID_BOOKS.length > 0, count: VALID_BOOKS.length, list: VALID_BOOKS };
+
+  // Check auth configured
+  checks.auth = { ok: !!process.env.JWT_SECRET && process.env.JWT_SECRET.length >= 32 };
+
+  const allOk = Object.values(checks).every((c) => c.ok);
+
   res.json({
-    status: 'ok',
+    status: allOk ? 'ok' : 'degraded',
     timestamp: new Date().toISOString(),
     version: serverVersion,
+    checks,
   });
 });
 

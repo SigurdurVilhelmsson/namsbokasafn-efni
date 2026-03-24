@@ -77,10 +77,11 @@ const VALIDATORS = {
   'files-exist': {
     severity: SEVERITY.ERROR,
     description: 'Required IS segment files are present',
-    check: async ({ book, chapter: _chapter, track, chapterDir }) => {
+    check: async ({ book, chapter: _chapter, track, chapterDir, projectRoot }) => {
       const issues = [];
       const trackConfig = TRACKS[track];
-      const sourceDir = path.join(PROJECT_ROOT, 'books', book, trackConfig.sourceDir, chapterDir);
+      const root = projectRoot || PROJECT_ROOT;
+      const sourceDir = path.join(root, 'books', book, trackConfig.sourceDir, chapterDir);
 
       // Check if source directory exists
       if (!fs.existsSync(sourceDir)) {
@@ -111,10 +112,11 @@ const VALIDATORS = {
   frontmatter: {
     severity: SEVERITY.ERROR,
     description: 'Valid YAML frontmatter with required fields',
-    check: async ({ book, chapter: _chapter, track, chapterDir }) => {
+    check: async ({ book, chapter: _chapter, track, chapterDir, projectRoot }) => {
       const issues = [];
       const trackConfig = TRACKS[track];
-      const sourceDir = path.join(PROJECT_ROOT, 'books', book, trackConfig.sourceDir, chapterDir);
+      const root = projectRoot || PROJECT_ROOT;
+      const sourceDir = path.join(root, 'books', book, trackConfig.sourceDir, chapterDir);
 
       if (!fs.existsSync(sourceDir)) {
         return issues;
@@ -183,10 +185,11 @@ const VALIDATORS = {
   equations: {
     severity: SEVERITY.ERROR,
     description: 'No orphan equation placeholders',
-    check: async ({ book, chapter: _chapter, track, chapterDir }) => {
+    check: async ({ book, chapter: _chapter, track, chapterDir, projectRoot }) => {
       const issues = [];
       const trackConfig = TRACKS[track];
-      const sourceDir = path.join(PROJECT_ROOT, 'books', book, trackConfig.sourceDir, chapterDir);
+      const root = projectRoot || PROJECT_ROOT;
+      const sourceDir = path.join(root, 'books', book, trackConfig.sourceDir, chapterDir);
 
       if (!fs.existsSync(sourceDir)) {
         return issues;
@@ -219,9 +222,10 @@ const VALIDATORS = {
   'equation-notation': {
     severity: SEVERITY.WARNING,
     description: 'Equation numbers use Icelandic notation after localization',
-    check: async ({ book, chapter: _chapter, _track, chapterDir }) => {
+    check: async ({ book, chapter: _chapter, _track, chapterDir, projectRoot }) => {
       const issues = [];
-      const structureDir = path.join(PROJECT_ROOT, 'books', book, '02-structure', chapterDir);
+      const root = projectRoot || PROJECT_ROOT;
+      const structureDir = path.join(root, 'books', book, '02-structure', chapterDir);
 
       if (!fs.existsSync(structureDir)) return issues;
 
@@ -276,10 +280,11 @@ const VALIDATORS = {
   images: {
     severity: SEVERITY.WARNING,
     description: 'All referenced images exist',
-    check: async ({ book, chapter: _chapter, track, chapterDir }) => {
+    check: async ({ book, chapter: _chapter, track, chapterDir, projectRoot }) => {
       const issues = [];
       const trackConfig = TRACKS[track];
-      const sourceDir = path.join(PROJECT_ROOT, 'books', book, trackConfig.sourceDir, chapterDir);
+      const root = projectRoot || PROJECT_ROOT;
+      const sourceDir = path.join(root, 'books', book, trackConfig.sourceDir, chapterDir);
 
       if (!fs.existsSync(sourceDir)) {
         return issues;
@@ -324,10 +329,11 @@ const VALIDATORS = {
   directives: {
     severity: SEVERITY.WARNING,
     description: 'All directive blocks properly closed',
-    check: async ({ book, chapter: _chapter, track, chapterDir }) => {
+    check: async ({ book, chapter: _chapter, track, chapterDir, projectRoot }) => {
       const issues = [];
       const trackConfig = TRACKS[track];
-      const sourceDir = path.join(PROJECT_ROOT, 'books', book, trackConfig.sourceDir, chapterDir);
+      const root = projectRoot || PROJECT_ROOT;
+      const sourceDir = path.join(root, 'books', book, trackConfig.sourceDir, chapterDir);
 
       if (!fs.existsSync(sourceDir)) {
         return issues;
@@ -381,10 +387,11 @@ const VALIDATORS = {
   links: {
     severity: SEVERITY.WARNING,
     description: 'No broken internal links',
-    check: async ({ book, chapter: _chapter, track, chapterDir }) => {
+    check: async ({ book, chapter: _chapter, track, chapterDir, projectRoot }) => {
       const issues = [];
       const trackConfig = TRACKS[track];
-      const sourceDir = path.join(PROJECT_ROOT, 'books', book, trackConfig.sourceDir, chapterDir);
+      const root = projectRoot || PROJECT_ROOT;
+      const sourceDir = path.join(root, 'books', book, trackConfig.sourceDir, chapterDir);
 
       if (!fs.existsSync(sourceDir)) {
         return issues;
@@ -435,10 +442,11 @@ const VALIDATORS = {
   'mt-safe-syntax': {
     severity: SEVERITY.WARNING,
     description: 'No remaining MT-safe link syntax',
-    check: async ({ book, chapter: _chapter, track, chapterDir }) => {
+    check: async ({ book, chapter: _chapter, track, chapterDir, projectRoot }) => {
       const issues = [];
       const trackConfig = TRACKS[track];
-      const sourceDir = path.join(PROJECT_ROOT, 'books', book, trackConfig.sourceDir, chapterDir);
+      const root = projectRoot || PROJECT_ROOT;
+      const sourceDir = path.join(root, 'books', book, trackConfig.sourceDir, chapterDir);
 
       if (!fs.existsSync(sourceDir)) {
         return issues;
@@ -472,10 +480,11 @@ const VALIDATORS = {
   'status-match': {
     severity: SEVERITY.INFO,
     description: 'File state matches status.json',
-    check: async ({ book, chapter: _chapter, track, chapterDir, statusData }) => {
+    check: async ({ book, chapter: _chapter, track, chapterDir, statusData, projectRoot }) => {
       const issues = [];
       const trackConfig = TRACKS[track];
-      const sourceDir = path.join(PROJECT_ROOT, 'books', book, trackConfig.sourceDir, chapterDir);
+      const root = projectRoot || PROJECT_ROOT;
+      const sourceDir = path.join(root, 'books', book, trackConfig.sourceDir, chapterDir);
 
       // Check if status indicates this track should have content
       const status = statusData?.status || {};
@@ -513,10 +522,11 @@ const VALIDATORS = {
   'figure-numbers': {
     severity: SEVERITY.WARNING,
     description: 'Figure numbers are sequential within chapter (no gaps)',
-    check: async ({ book, chapter, track, chapterDir }) => {
+    check: async ({ book, chapter, track, chapterDir, projectRoot }) => {
       const issues = [];
       const trackConfig = TRACKS[track];
-      const sourceDir = path.join(PROJECT_ROOT, 'books', book, trackConfig.sourceDir, chapterDir);
+      const root = projectRoot || PROJECT_ROOT;
+      const sourceDir = path.join(root, 'books', book, trackConfig.sourceDir, chapterDir);
 
       if (!fs.existsSync(sourceDir)) {
         return issues;
@@ -603,10 +613,11 @@ const VALIDATORS = {
   'cross-references': {
     severity: SEVERITY.WARNING,
     description: 'Cross-references match existing figure/table captions',
-    check: async ({ book, chapter: _chapter, track, chapterDir }) => {
+    check: async ({ book, chapter: _chapter, track, chapterDir, projectRoot }) => {
       const issues = [];
       const trackConfig = TRACKS[track];
-      const sourceDir = path.join(PROJECT_ROOT, 'books', book, trackConfig.sourceDir, chapterDir);
+      const root = projectRoot || PROJECT_ROOT;
+      const sourceDir = path.join(root, 'books', book, trackConfig.sourceDir, chapterDir);
 
       if (!fs.existsSync(sourceDir)) {
         return issues;
@@ -687,18 +698,12 @@ const VALIDATORS = {
   'html-placeholder-leaks': {
     severity: SEVERITY.ERROR,
     description: 'No pipeline placeholders leaked into HTML output',
-    check: async ({ book, chapter, track }) => {
+    check: async ({ book, chapter, track, projectRoot }) => {
       const issues = [];
       const chapterStr = String(chapter).padStart(2, '0');
       const trackConfig = TRACKS[track];
-      const pubDir = path.join(
-        PROJECT_ROOT,
-        'books',
-        book,
-        trackConfig.pubDir,
-        'chapters',
-        chapterStr
-      );
+      const root = projectRoot || PROJECT_ROOT;
+      const pubDir = path.join(root, 'books', book, trackConfig.pubDir, 'chapters', chapterStr);
 
       if (!fs.existsSync(pubDir)) return issues;
 
@@ -743,18 +748,12 @@ const VALIDATORS = {
   'html-images-exist': {
     severity: SEVERITY.WARNING,
     description: 'All images referenced in HTML output exist',
-    check: async ({ book, chapter, track }) => {
+    check: async ({ book, chapter, track, projectRoot }) => {
       const issues = [];
       const chapterStr = String(chapter).padStart(2, '0');
       const trackConfig = TRACKS[track];
-      const pubDir = path.join(
-        PROJECT_ROOT,
-        'books',
-        book,
-        trackConfig.pubDir,
-        'chapters',
-        chapterStr
-      );
+      const root = projectRoot || PROJECT_ROOT;
+      const pubDir = path.join(root, 'books', book, trackConfig.pubDir, 'chapters', chapterStr);
 
       if (!fs.existsSync(pubDir)) return issues;
 
@@ -781,7 +780,7 @@ const VALIDATORS = {
             if (!fs.existsSync(imgPath)) {
               // Fallback: check source media directory
               const sourceMediaPath = path.join(
-                PROJECT_ROOT,
+                root,
                 'books',
                 book,
                 '01-source',
@@ -803,18 +802,12 @@ const VALIDATORS = {
   'html-non-empty': {
     severity: SEVERITY.ERROR,
     description: 'All rendered HTML files have substantial content',
-    check: async ({ book, chapter, track }) => {
+    check: async ({ book, chapter, track, projectRoot }) => {
       const issues = [];
       const chapterStr = String(chapter).padStart(2, '0');
       const trackConfig = TRACKS[track];
-      const pubDir = path.join(
-        PROJECT_ROOT,
-        'books',
-        book,
-        trackConfig.pubDir,
-        'chapters',
-        chapterStr
-      );
+      const root = projectRoot || PROJECT_ROOT;
+      const pubDir = path.join(root, 'books', book, trackConfig.pubDir, 'chapters', chapterStr);
 
       if (!fs.existsSync(pubDir)) return issues;
 
@@ -847,18 +840,12 @@ const VALIDATORS = {
   'html-equation-render': {
     severity: SEVERITY.WARNING,
     description: 'All equations rendered successfully (no MathJax errors)',
-    check: async ({ book, chapter, track }) => {
+    check: async ({ book, chapter, track, projectRoot }) => {
       const issues = [];
       const chapterStr = String(chapter).padStart(2, '0');
       const trackConfig = TRACKS[track];
-      const pubDir = path.join(
-        PROJECT_ROOT,
-        'books',
-        book,
-        trackConfig.pubDir,
-        'chapters',
-        chapterStr
-      );
+      const root = projectRoot || PROJECT_ROOT;
+      const pubDir = path.join(root, 'books', book, trackConfig.pubDir, 'chapters', chapterStr);
 
       if (!fs.existsSync(pubDir)) return issues;
 
@@ -897,11 +884,12 @@ const VALIDATORS = {
   'manifest-consistency': {
     severity: SEVERITY.WARNING,
     description: 'Extraction manifests match current source files',
-    check: async ({ book, chapter }) => {
+    check: async ({ book, chapter, projectRoot }) => {
       const issues = [];
       const chapterStr = String(chapter).padStart(2, '0');
-      const structDir = path.join(PROJECT_ROOT, 'books', book, '02-structure', `ch${chapterStr}`);
-      const sourceDir = path.join(PROJECT_ROOT, 'books', book, '01-source', `ch${chapterStr}`);
+      const root = projectRoot || PROJECT_ROOT;
+      const structDir = path.join(root, 'books', book, '02-structure', `ch${chapterStr}`);
+      const sourceDir = path.join(root, 'books', book, '01-source', `ch${chapterStr}`);
 
       if (!fs.existsSync(structDir)) return issues;
 
@@ -931,7 +919,7 @@ const VALIDATORS = {
 
         // Check segment count consistency with segment file
         const segPath = path.join(
-          PROJECT_ROOT,
+          root,
           'books',
           book,
           '02-for-mt',
@@ -1047,6 +1035,7 @@ Examples:
 
 async function validateChapter(options) {
   const { book, chapter, track, strict } = options;
+  const root = options.projectRoot || PROJECT_ROOT;
 
   // Validate track
   if (!TRACKS[track]) {
@@ -1055,7 +1044,7 @@ async function validateChapter(options) {
 
   // Build context
   const chapterDir = `ch${String(chapter).padStart(2, '0')}`;
-  const statusPath = path.join(PROJECT_ROOT, 'books', book, 'chapters', chapterDir, 'status.json');
+  const statusPath = path.join(root, 'books', book, 'chapters', chapterDir, 'status.json');
 
   let statusData = null;
   if (fs.existsSync(statusPath)) {
@@ -1072,6 +1061,7 @@ async function validateChapter(options) {
     track,
     chapterDir,
     statusData,
+    projectRoot: root,
   };
 
   const results = {
@@ -1227,4 +1217,13 @@ async function main() {
   }
 }
 
-main();
+// Run as CLI when executed directly
+const isMainModule =
+  process.argv[1] &&
+  (process.argv[1] === fileURLToPath(import.meta.url) ||
+    process.argv[1].endsWith('/validate-chapter.js'));
+if (isMainModule) {
+  main();
+}
+
+export { validateChapter, parseArgs, formatResults, VALIDATORS, SEVERITY, TRACKS };
