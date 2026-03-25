@@ -375,43 +375,49 @@ def mode_fetch(args):
         else:
             skipped += 1
 
-    # Deduplicate on IS term (case-insensitive).
-    # Placeholder IS terms like "[vantar]" (= "missing") are deduped on EN instead,
-    # since they represent distinct untranslated entries.
-    PLACEHOLDER_IS = {"[vantar]", "vantar", ""}
-    seen_is = {}
-    seen_en_placeholder = {}
+    # Deduplicate on EN term + pos (case-insensitive).
+    # Multiple English terms CAN share the same Icelandic translation — that's
+    # not a conflict. The headword's natural key is (english, pos).
+    # When duplicates occur, merge: keep the first, add the second's IS term
+    # as a synonym if different.
+    seen_en = {}
     unique_terms = []
-    conflicts = []
+    duplicates = []
     for term in terms:
-        is_key = (term["icelandic"] or "").lower().strip()
+        en_key = (term["english"] or "").lower().strip()
+        pos_key = (term["pos"] or "").lower().strip()
+        dedup_key = (en_key, pos_key)
 
-        if is_key in PLACEHOLDER_IS:
-            # Dedup placeholders by EN term
-            en_key = (term["english"] or "").lower()
-            if en_key in seen_en_placeholder:
-                conflicts.append({
-                    "icelandic": term["icelandic"],
-                    "english_new": term["english"],
-                    "english_existing": seen_en_placeholder[en_key]["english"],
-                    "id_new": term["idordabanki_id"],
-                    "id_existing": seen_en_placeholder[en_key]["idordabanki_id"],
-                })
-            else:
-                seen_en_placeholder[en_key] = term
-                # Clear the placeholder — store as NULL icelandic
-                term["icelandic"] = None
-                unique_terms.append(term)
-        elif is_key in seen_is:
-            conflicts.append({
-                "icelandic": term["icelandic"],
-                "english_new": term["english"],
-                "english_existing": seen_is[is_key]["english"],
+        if dedup_key in seen_en:
+            existing = seen_en[dedup_key]
+            # If the duplicate has a different IS translation, record as synonym
+            existing_is = (existing["icelandic"] or "").lower()
+            new_is = (term["icelandic"] or "").lower()
+            if new_is and new_is != existing_is and new_is not in [
+                s.lower() for s in existing.get("synonyms_is", [])
+            ]:
+                existing.setdefault("synonyms_is", []).append(term["icelandic"])
+
+            # Merge definitions if the existing one is missing
+            if not existing.get("definition_en") and term.get("definition_en"):
+                existing["definition_en"] = term["definition_en"]
+            if not existing.get("definition_is") and term.get("definition_is"):
+                existing["definition_is"] = term["definition_is"]
+
+            duplicates.append({
+                "english": term["english"],
+                "pos": term["pos"],
+                "icelandic_new": term["icelandic"],
+                "icelandic_existing": existing["icelandic"],
                 "id_new": term["idordabanki_id"],
-                "id_existing": seen_is[is_key]["idordabanki_id"],
+                "id_existing": existing["idordabanki_id"],
             })
         else:
-            seen_is[is_key] = term
+            # Normalize placeholder IS terms to NULL
+            is_val = (term["icelandic"] or "").strip()
+            if is_val.lower() in {"[vantar]", "vantar", ""}:
+                term["icelandic"] = None
+            seen_en[dedup_key] = term
             unique_terms.append(term)
 
     # Write raw_fetch.json
@@ -422,8 +428,8 @@ def mode_fetch(args):
             "total_api_entries": len(all_entries),
             "bilingual_pairs": len(terms),
             "skipped_no_pair": skipped,
-            "unique_terms": len(unique_terms),
-            "conflicts": len(conflicts),
+            "unique_headwords": len(unique_terms),
+            "en_duplicates_merged": len(duplicates),
         },
         "terms": unique_terms,
     }
@@ -431,21 +437,23 @@ def mode_fetch(args):
     raw_path = output_dir / "raw_fetch.json"
     with open(raw_path, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
-    print(f"\nWrote {raw_path} ({len(unique_terms)} unique terms)")
+    print(f"\nWrote {raw_path} ({len(unique_terms)} unique headwords)")
 
-    # Write conflicts report if any
-    if conflicts:
-        conflicts_path = output_dir / "conflicts.md"
-        with open(conflicts_path, "w", encoding="utf-8") as f:
-            f.write("# Duplicate IS Terms (Conflicts)\n\n")
-            f.write(f"Found {len(conflicts)} duplicate Icelandic terms across entries.\n")
-            f.write("The first occurrence was kept; these were skipped:\n\n")
-            f.write("| IS Term | EN (kept) | EN (skipped) | ID (kept) | ID (skipped) |\n")
-            f.write("|---------|-----------|-------------|-----------|-------------|\n")
-            for c in conflicts:
-                f.write(f"| {c['icelandic']} | {c['english_existing']} | {c['english_new']} "
-                        f"| {c['id_existing']} | {c['id_new']} |\n")
-        print(f"Wrote {conflicts_path} ({len(conflicts)} conflicts)")
+    # Write duplicates report if any
+    if duplicates:
+        dupes_path = output_dir / "duplicates.md"
+        with open(dupes_path, "w", encoding="utf-8") as f:
+            f.write("# Merged EN Duplicates\n\n")
+            f.write(f"Found {len(duplicates)} duplicate English headwords.\n")
+            f.write("These were merged into the first occurrence "
+                    "(IS translations added as synonyms if different).\n\n")
+            f.write("| EN Term | POS | IS (kept) | IS (merged) | ID (kept) | ID (merged) |\n")
+            f.write("|---------|-----|-----------|-------------|-----------|-------------|\n")
+            for d in duplicates:
+                f.write(f"| {d['english']} | {d['pos'] or ''} "
+                        f"| {d['icelandic_existing'] or ''} | {d['icelandic_new'] or ''} "
+                        f"| {d['id_existing']} | {d['id_new']} |\n")
+        print(f"Wrote {dupes_path} ({len(duplicates)} merged)")
 
     # Summary
     print(f"\n--- Fetch Summary ---")
@@ -453,8 +461,8 @@ def mode_fetch(args):
         print(f"  {code}: {stats['fetched']}/{stats['reported']} entries")
     print(f"  Bilingual pairs: {len(terms)}")
     print(f"  Skipped (no EN/IS pair): {skipped}")
-    print(f"  Unique terms (after dedup): {len(unique_terms)}")
-    print(f"  Conflicts: {len(conflicts)}")
+    print(f"  Unique headwords (after dedup): {len(unique_terms)}")
+    print(f"  EN duplicates merged: {len(duplicates)}")
 
 
 # ---------------------------------------------------------------------------
