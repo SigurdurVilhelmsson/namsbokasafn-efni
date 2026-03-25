@@ -1,10 +1,10 @@
 /**
- * Terminology Routes
+ * Terminology Routes — Multi-Subject Domain Model
  *
  * Handles terminology database operations:
- * - Search and lookup terms
- * - Create/update terms
- * - Approve/dispute terms
+ * - Search and lookup headwords with translations
+ * - Create/update headwords and translations
+ * - Approve/dispute translations
  * - Import from CSV/Excel
  * - Review board workflow
  */
@@ -20,35 +20,6 @@ const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, ROLES } = require('../middleware/requireRole');
 const terminology = require('../services/terminologyService');
 const activityLog = require('../services/activityLog');
-
-/**
- * Resolve a bookSlug query param to a numeric book ID.
- * Accepts either a numeric bookId or a string bookSlug.
- * Returns the numeric ID or undefined if not specified.
- */
-function resolveBookId(query) {
-  const { bookId, bookSlug } = query;
-  if (bookId) return parseInt(bookId, 10);
-  if (!bookSlug) return undefined;
-
-  // Look up slug in registered_books
-  const Database = require('better-sqlite3');
-  const dbPath = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
-  if (!require('fs').existsSync(dbPath)) return undefined;
-  const db = new Database(dbPath);
-  try {
-    const book = db.prepare('SELECT id FROM registered_books WHERE slug = ?').get(bookSlug);
-    db.close();
-    return book ? book.id : undefined;
-  } catch {
-    try {
-      db.close();
-    } catch {
-      /* ignore */
-    }
-    return undefined;
-  }
-}
 
 // Configure multer for file uploads
 const upload = multer({
@@ -71,26 +42,25 @@ const upload = multer({
 
 /**
  * GET /api/terminology
- * List and search terms
+ * Search headwords with optional filters
  *
  * Query params:
- *   q: Search query
- *   bookId: Filter by book ID
- *   bookSlug: Filter by book slug (alternative to bookId)
- *   includeGlobal: Include global terms alongside book terms (default: false)
- *   category: Filter by category
- *   status: Filter by status
+ *   q: Search query (matches English or Icelandic)
+ *   subject: Filter by subject domain (chemistry, biology, etc.)
+ *   bookSlug: Shorthand — resolves to the book's primary subject
+ *   status: Filter by translation status
  *   limit: Max results (default 50)
  *   offset: Pagination offset
  */
 router.get('/', requireAuth, (req, res) => {
-  const { q, category, status, includeGlobal, limit, offset } = req.query;
+  const { q, subject, bookSlug, status, limit, offset } = req.query;
 
   try {
+    // bookSlug is a convenience alias: resolve to subject
+    const effectiveSubject = subject || resolveBookSubject(bookSlug);
+
     const result = terminology.searchTerms(q, {
-      bookId: resolveBookId(req.query),
-      includeGlobal: includeGlobal === 'true',
-      category,
+      subject: effectiveSubject || undefined,
       status,
       limit: Math.min(Math.max(parseInt(limit, 10) || 50, 1), 200),
       offset: Math.max(parseInt(offset, 10) || 0, 0),
@@ -99,10 +69,7 @@ router.get('/', requireAuth, (req, res) => {
     res.json(result);
   } catch (err) {
     log.error({ err }, 'Search terms error');
-    res.status(500).json({
-      error: 'Failed to search terms',
-      message: err.message,
-    });
+    res.status(500).json({ error: 'Failed to search terms', message: err.message });
   }
 });
 
@@ -112,54 +79,51 @@ router.get('/', requireAuth, (req, res) => {
  *
  * Query params:
  *   q: Search query (required, min 2 chars)
- *   bookId: Optional book context
+ *   bookSlug: Book context for domain priority ranking
  */
 router.get('/lookup', requireAuth, (req, res) => {
-  const { q, bookId } = req.query;
+  const { q, bookSlug } = req.query;
 
   if (!q || q.length < 2) {
     return res.json({ terms: [] });
   }
 
   try {
-    const terms = terminology.lookupTerm(q, bookId ? parseInt(bookId, 10) : null);
+    const terms = terminology.lookupTerm(q, bookSlug || null);
     res.json({ terms });
   } catch (err) {
     log.error({ err }, 'Terminology lookup error');
-    res.status(500).json({
-      error: 'Lookup failed',
-      message: err.message,
-    });
+    res.status(500).json({ error: 'Lookup failed', message: err.message });
   }
 });
 
 /**
  * GET /api/terminology/stats
  * Get terminology statistics
+ *
+ * Query params:
+ *   subject: Filter stats by subject domain
  */
 router.get('/stats', requireAuth, (req, res) => {
   try {
-    const stats = terminology.getStats(resolveBookId(req.query) || null);
+    const stats = terminology.getStats(req.query.subject || null);
     res.json(stats);
   } catch (err) {
     log.error({ err }, 'Terminology stats error');
-    res.status(500).json({
-      error: 'Failed to get statistics',
-      message: err.message,
-    });
+    res.status(500).json({ error: 'Failed to get statistics', message: err.message });
   }
 });
 
 /**
  * GET /api/terminology/review-queue
- * Get terms requiring review (disputed/needs_review)
+ * Get headwords with translations needing review (disputed/needs_review)
  */
 router.get('/review-queue', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
-  const { bookId, limit, offset } = req.query;
+  const { subject, limit, offset } = req.query;
 
   try {
     const terms = terminology.getReviewQueue({
-      bookId: bookId ? parseInt(bookId, 10) : undefined,
+      subject: subject || undefined,
       limit: Math.min(Math.max(parseInt(limit, 10) || 50, 1), 200),
       offset: Math.max(parseInt(offset, 10) || 0, 0),
     });
@@ -167,20 +131,26 @@ router.get('/review-queue', requireAuth, requireRole(ROLES.EDITOR), (req, res) =
     res.json({ terms });
   } catch (err) {
     log.error({ err }, 'Review queue error');
-    res.status(500).json({
-      error: 'Failed to get review queue',
-      message: err.message,
-    });
+    res.status(500).json({ error: 'Failed to get review queue', message: err.message });
   }
 });
 
 /**
- * GET /api/terminology/categories
- * Get available categories
+ * GET /api/terminology/subjects
+ * Get available subjects and constants
  */
+router.get('/subjects', requireAuth, (req, res) => {
+  res.json({
+    subjects: terminology.SUBJECTS,
+    statuses: terminology.TERM_STATUSES,
+    sources: terminology.TERM_SOURCES,
+  });
+});
+
+// Keep old endpoint for backwards compatibility
 router.get('/categories', requireAuth, (req, res) => {
   res.json({
-    categories: terminology.TERM_CATEGORIES,
+    subjects: terminology.SUBJECTS,
     statuses: terminology.TERM_STATUSES,
     sources: terminology.TERM_SOURCES,
   });
@@ -192,27 +162,23 @@ router.get('/categories', requireAuth, (req, res) => {
 
 /**
  * GET /api/terminology/export
- * Export the glossary as JSON or CSV with optional filters
+ * Export the glossary as JSON or CSV
  *
  * Query params:
- *   bookId: Book ID (optional — omit for all terms)
- *   bookSlug: Book slug alternative to bookId
- *   includeGlobal: Include global terms (default: false)
- *   q: Search query (optional)
- *   category: Filter by category (optional)
- *   status: Filter by status (optional)
+ *   subject: Filter by subject domain
+ *   bookSlug: Shorthand for subject
+ *   status: Filter by status
+ *   q: Search query
  *   format: 'json' or 'csv' (default: json)
  */
 router.get('/export', requireAuth, (req, res) => {
-  const { format = 'json', q, category, status, includeGlobal } = req.query;
+  const { format = 'json', q, subject, bookSlug, status } = req.query;
 
-  const bookId = resolveBookId(req.query);
+  const effectiveSubject = subject || resolveBookSubject(bookSlug);
 
   try {
     const result = terminology.searchTerms(q || '', {
-      bookId,
-      includeGlobal: includeGlobal === 'true',
-      category,
+      subject: effectiveSubject || undefined,
       status,
       limit: 10000,
       offset: 0,
@@ -221,29 +187,25 @@ router.get('/export', requireAuth, (req, res) => {
     const terms = result.terms;
 
     if (format === 'csv') {
-      const header =
-        'english,icelandic,pos,definition_en,definition_is,status,source,alternatives,category,chapter,notes';
+      const header = 'english,pos,definition_en,icelandic,definition_is,status,source,subjects,notes';
       const lines = [header];
 
-      for (const term of terms) {
-        const alts = (term.alternatives || [])
-          .map((a) => (typeof a === 'string' ? a : a.term))
-          .join('; ');
-        lines.push(
-          [
-            csvEscapeField(term.english),
-            csvEscapeField(term.icelandic),
-            csvEscapeField(term.pos || ''),
-            csvEscapeField(term.definitionEn || ''),
-            csvEscapeField(term.definitionIs || ''),
-            term.status,
-            term.source,
-            csvEscapeField(alts),
-            term.category,
-            term.sourceChapter || '',
-            csvEscapeField(term.notes || ''),
-          ].join(',')
-        );
+      for (const hw of terms) {
+        for (const tr of hw.translations || []) {
+          lines.push(
+            [
+              csvEscapeField(hw.english),
+              csvEscapeField(hw.pos || ''),
+              csvEscapeField(hw.definitionEn || ''),
+              csvEscapeField(tr.icelandic),
+              csvEscapeField(tr.definitionIs || ''),
+              tr.status,
+              tr.source,
+              csvEscapeField((tr.subjects || []).join('; ')),
+              csvEscapeField(tr.notes || ''),
+            ].join(',')
+          );
+        }
       }
 
       const csv = lines.join('\n') + '\n';
@@ -252,14 +214,12 @@ router.get('/export', requireAuth, (req, res) => {
       return res.send(csv);
     }
 
-    // JSON format (default)
+    // JSON format
     res.json({
       generated: new Date().toISOString(),
       stats: {
-        total: terms.length,
-        approved: terms.filter((t) => t.status === 'approved').length,
-        proposed: terms.filter((t) => t.status === 'proposed').length,
-        needs_review: terms.filter((t) => t.status === 'needs_review').length,
+        headwords: terms.length,
+        translations: terms.reduce((n, hw) => n + (hw.translations || []).length, 0),
       },
       terms,
     });
@@ -277,85 +237,75 @@ function csvEscapeField(str) {
   return str;
 }
 
+// ============================================================================
+// HEADWORD CRUD
+// ============================================================================
+
 /**
  * GET /api/terminology/:id
- * Get a single term with discussions
+ * Get a single headword with all translations and discussions
  */
 router.get('/:id', requireAuth, (req, res) => {
   const { id } = req.params;
 
   try {
-    const term = terminology.getTerm(parseInt(id, 10));
+    const term = terminology.getHeadword(parseInt(id, 10));
 
     if (!term) {
-      return res.status(404).json({
-        error: 'Term not found',
-      });
+      return res.status(404).json({ error: 'Headword not found' });
     }
 
     res.json({ term });
   } catch (err) {
-    log.error({ err }, 'Get term error');
-    res.status(500).json({
-      error: 'Failed to get term',
-      message: err.message,
-    });
+    log.error({ err }, 'Get headword error');
+    res.status(500).json({ error: 'Failed to get headword', message: err.message });
   }
 });
 
-// ============================================================================
-// CREATE AND UPDATE
-// ============================================================================
-
 /**
  * POST /api/terminology
- * Create a new term (proposed status)
+ * Create a new headword with optional initial translation
  *
  * Body:
  *   english: English term (required)
- *   icelandic: Icelandic translation (required)
- *   alternatives: Array of alternative translations
- *   category: Term category
+ *   icelandic: Icelandic translation (optional — omit for placeholder)
+ *   pos: Part of speech
+ *   definitionEn: English definition
+ *   definitionIs: Icelandic definition
  *   notes: Additional notes
  *   source: Term source
- *   sourceChapter: Chapter number if from glossary
- *   bookId: Book ID (null for global term)
+ *   subjects: Array of subject tags for the translation
  */
 router.post('/', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
-  const { english, icelandic, alternatives, category, notes, source, sourceChapter, bookId } =
-    req.body;
+  const { english, icelandic, pos, definitionEn, definitionIs, notes, source, subjects } = req.body;
 
-  if (!english || !icelandic) {
+  if (!english) {
     return res.status(400).json({
       error: 'Missing required fields',
-      message: 'english and icelandic are required',
+      message: 'english is required',
     });
   }
 
   try {
     const term = terminology.createTerm(
-      { english, icelandic, alternatives, category, notes, source, sourceChapter, bookId },
+      { english, icelandic, pos, definitionEn, definitionIs, notes, source, subjects },
       req.user.id,
       req.user.name
     );
 
-    // Log activity
     activityLog.log({
       type: 'create_term',
       userId: req.user.id,
       username: req.user.username,
-      description: `Created term: ${english} → ${icelandic}`,
-      metadata: { entityId: term.id, category },
+      description: `Created headword: ${english}${icelandic ? ` → ${icelandic}` : ' (placeholder)'}`,
+      metadata: { entityId: term.id, subjects },
     });
 
-    res.status(201).json({
-      success: true,
-      term,
-    });
+    res.status(201).json({ success: true, term });
   } catch (err) {
-    log.error({ err }, 'Create term error');
+    log.error({ err }, 'Create headword error');
     res.status(err.message.includes('already exists') ? 409 : 500).json({
-      error: 'Failed to create term',
+      error: 'Failed to create headword',
       message: err.message,
     });
   }
@@ -363,30 +313,27 @@ router.post('/', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
 
 /**
  * PUT /api/terminology/:id
- * Update a term
+ * Update a headword's fields (english, pos, definitionEn)
  */
 router.put('/:id', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   const { id } = req.params;
 
   try {
-    const term = terminology.updateTerm(parseInt(id, 10), req.body);
+    const term = terminology.updateHeadword(parseInt(id, 10), req.body);
 
     activityLog.log({
-      type: 'update_term',
+      type: 'update_headword',
       userId: req.user.id,
       username: req.user.username,
-      description: `Updated term: ${term.english}`,
+      description: `Updated headword: ${term.english}`,
       metadata: { entityId: term.id, updates: Object.keys(req.body) },
     });
 
-    res.json({
-      success: true,
-      term,
-    });
+    res.json({ success: true, term });
   } catch (err) {
-    log.error({ err }, 'Update term error');
+    log.error({ err }, 'Update headword error');
     res.status(err.message.includes('not found') ? 404 : 500).json({
-      error: 'Failed to update term',
+      error: 'Failed to update headword',
       message: err.message,
     });
   }
@@ -394,120 +341,228 @@ router.put('/:id', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
 
 /**
  * DELETE /api/terminology/:id
- * Delete a term (ADMIN only)
+ * Delete a headword and all its translations (ADMIN only)
  */
 router.delete('/:id', requireAuth, requireRole(ROLES.ADMIN), (req, res) => {
   const { id } = req.params;
 
   try {
-    const result = terminology.deleteTerm(parseInt(id, 10));
+    const result = terminology.deleteHeadword(parseInt(id, 10));
 
     if (result.success) {
       activityLog.log({
-        type: 'delete_term',
+        type: 'delete_headword',
         userId: req.user.id,
         username: req.user.username,
-        description: `Deleted term ID ${id}`,
+        description: `Deleted headword ID ${id}`,
       });
     }
 
     res.json(result);
   } catch (err) {
-    log.error({ err }, 'Delete term error');
-    res.status(500).json({
-      error: 'Failed to delete term',
+    log.error({ err }, 'Delete headword error');
+    res.status(500).json({ error: 'Failed to delete headword', message: err.message });
+  }
+});
+
+// ============================================================================
+// TRANSLATION CRUD
+// ============================================================================
+
+/**
+ * POST /api/terminology/:headwordId/translations
+ * Add a translation to a headword
+ *
+ * Body:
+ *   icelandic: Icelandic translation (required)
+ *   definitionIs: Icelandic definition
+ *   inflections: Array of inflected forms
+ *   notes: Notes
+ *   source: Source
+ *   subjects: Array of subject tags
+ */
+router.post('/:headwordId/translations', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
+  const { headwordId } = req.params;
+  const { icelandic, definitionIs, inflections, notes, source, subjects } = req.body;
+
+  if (!icelandic) {
+    return res.status(400).json({
+      error: 'Missing required fields',
+      message: 'icelandic is required',
+    });
+  }
+
+  try {
+    const translation = terminology.addTranslation(
+      parseInt(headwordId, 10),
+      { icelandic, definitionIs, inflections, notes, source, subjects },
+      req.user.id,
+      req.user.name
+    );
+
+    activityLog.log({
+      type: 'add_translation',
+      userId: req.user.id,
+      username: req.user.username,
+      description: `Added translation: ${icelandic} (headword #${headwordId})`,
+      metadata: { headwordId: parseInt(headwordId, 10), translationId: translation.id, subjects },
+    });
+
+    res.status(201).json({ success: true, translation });
+  } catch (err) {
+    log.error({ err }, 'Add translation error');
+    res.status(err.message.includes('not found') ? 404 : 500).json({
+      error: 'Failed to add translation',
       message: err.message,
     });
   }
 });
 
-// ============================================================================
-// WORKFLOW (APPROVE/DISPUTE)
-// ============================================================================
-
 /**
- * POST /api/terminology/:id/approve
- * Approve a term (HEAD_EDITOR+)
+ * PUT /api/terminology/translations/:id
+ * Update a translation
  */
-router.post('/:id/approve', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
+router.put('/translations/:id', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   const { id } = req.params;
 
   try {
-    const term = terminology.approveTerm(parseInt(id, 10), req.user.id, req.user.name);
+    const translation = terminology.updateTranslation(parseInt(id, 10), req.body);
 
     activityLog.log({
-      type: 'approve_term',
+      type: 'update_translation',
       userId: req.user.id,
       username: req.user.username,
-      description: `Approved term: ${term.english} → ${term.icelandic}`,
-      metadata: { entityId: term.id },
+      description: `Updated translation #${id}`,
+      metadata: { translationId: parseInt(id, 10), updates: Object.keys(req.body) },
     });
 
-    res.json({
-      success: true,
-      term,
-    });
+    res.json({ success: true, translation });
   } catch (err) {
-    log.error({ err }, 'Approve term error');
+    log.error({ err }, 'Update translation error');
     res.status(err.message.includes('not found') ? 404 : 500).json({
-      error: 'Failed to approve term',
+      error: 'Failed to update translation',
       message: err.message,
     });
   }
 });
 
 /**
- * POST /api/terminology/:id/dispute
- * Dispute a term (escalate to review board)
+ * DELETE /api/terminology/translations/:id
+ * Delete a single translation (ADMIN only)
+ */
+router.delete('/translations/:id', requireAuth, requireRole(ROLES.ADMIN), (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const result = terminology.deleteTranslation(parseInt(id, 10));
+
+    if (result.success) {
+      activityLog.log({
+        type: 'delete_translation',
+        userId: req.user.id,
+        username: req.user.username,
+        description: `Deleted translation #${id}`,
+      });
+    }
+
+    res.json(result);
+  } catch (err) {
+    log.error({ err }, 'Delete translation error');
+    res.status(500).json({ error: 'Failed to delete translation', message: err.message });
+  }
+});
+
+// ============================================================================
+// WORKFLOW (APPROVE/DISPUTE on translations)
+// ============================================================================
+
+/**
+ * POST /api/terminology/translations/:id/approve
+ * Approve a translation (HEAD_EDITOR+)
+ */
+router.post(
+  '/translations/:id/approve',
+  requireAuth,
+  requireRole(ROLES.HEAD_EDITOR),
+  (req, res) => {
+    const { id } = req.params;
+
+    try {
+      const term = terminology.approveTranslation(parseInt(id, 10), req.user.id, req.user.name);
+
+      activityLog.log({
+        type: 'approve_translation',
+        userId: req.user.id,
+        username: req.user.username,
+        description: `Approved translation #${id} for "${term.english}"`,
+        metadata: { headwordId: term.id, translationId: parseInt(id, 10) },
+      });
+
+      res.json({ success: true, term });
+    } catch (err) {
+      log.error({ err }, 'Approve translation error');
+      res.status(err.message.includes('not found') ? 404 : 500).json({
+        error: 'Failed to approve translation',
+        message: err.message,
+      });
+    }
+  }
+);
+
+/**
+ * POST /api/terminology/translations/:id/dispute
+ * Dispute a translation (escalate to review board)
  *
  * Body:
  *   comment: Reason for dispute (required)
  *   proposedTranslation: Alternative suggestion (optional)
  */
-router.post('/:id/dispute', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
-  const { id } = req.params;
-  const { comment, proposedTranslation } = req.body;
+router.post(
+  '/translations/:id/dispute',
+  requireAuth,
+  requireRole(ROLES.EDITOR),
+  (req, res) => {
+    const { id } = req.params;
+    const { comment, proposedTranslation } = req.body;
 
-  if (!comment) {
-    return res.status(400).json({
-      error: 'Missing comment',
-      message: 'A comment explaining the dispute is required',
-    });
+    if (!comment) {
+      return res.status(400).json({
+        error: 'Missing comment',
+        message: 'A comment explaining the dispute is required',
+      });
+    }
+
+    try {
+      const term = terminology.disputeTranslation(
+        parseInt(id, 10),
+        comment,
+        req.user.id,
+        req.user.name,
+        proposedTranslation
+      );
+
+      activityLog.log({
+        type: 'dispute_translation',
+        userId: req.user.id,
+        username: req.user.username,
+        description: `Disputed translation #${id} — ${comment}`,
+        metadata: { headwordId: term.id, translationId: parseInt(id, 10) },
+      });
+
+      res.json({ success: true, term });
+    } catch (err) {
+      log.error({ err }, 'Dispute translation error');
+      res.status(err.message.includes('not found') ? 404 : 500).json({
+        error: 'Failed to dispute translation',
+        message: err.message,
+      });
+    }
   }
-
-  try {
-    const term = terminology.disputeTerm(
-      parseInt(id, 10),
-      comment,
-      req.user.id,
-      req.user.name,
-      proposedTranslation
-    );
-
-    activityLog.log({
-      type: 'dispute_term',
-      userId: req.user.id,
-      username: req.user.username,
-      description: `Disputed term: ${term.english} — ${comment}`,
-      metadata: { entityId: term.id },
-    });
-
-    res.json({
-      success: true,
-      term,
-    });
-  } catch (err) {
-    log.error({ err }, 'Dispute term error');
-    res.status(err.message.includes('not found') ? 404 : 500).json({
-      error: 'Failed to dispute term',
-      message: err.message,
-    });
-  }
-});
+);
 
 /**
  * POST /api/terminology/:id/discuss
- * Add a discussion comment
+ * Add a discussion comment to a headword
  *
  * Body:
  *   comment: Comment text (required)
@@ -533,10 +588,7 @@ router.post('/:id/discuss', requireAuth, requireRole(ROLES.EDITOR), (req, res) =
       proposedTranslation
     );
 
-    res.json({
-      success: true,
-      discussion,
-    });
+    res.json({ success: true, discussion });
   } catch (err) {
     log.error({ err }, 'Add discussion error');
     res.status(err.message.includes('not found') ? 404 : 500).json({
@@ -555,7 +607,7 @@ router.post('/:id/discuss', requireAuth, requireRole(ROLES.EDITOR), (req, res) =
  * Import terms from CSV file
  *
  * Query params:
- *   bookId: Optional book ID
+ *   subjects: Comma-separated subject tags (e.g., "chemistry,physics")
  *   overwrite: Whether to overwrite existing non-approved terms
  */
 router.post(
@@ -565,25 +617,21 @@ router.post(
   upload.single('file'),
   (req, res) => {
     if (!req.file) {
-      return res.status(400).json({
-        error: 'No file uploaded',
-      });
+      return res.status(400).json({ error: 'No file uploaded' });
     }
 
-    const { overwrite } = req.query;
-    const bookId = resolveBookId(req.query);
+    const { overwrite, subjects: subjectsParam } = req.query;
+    const subjects = subjectsParam ? subjectsParam.split(',').map(s => s.trim()) : [];
 
     try {
-      // Write buffer to temp file
       const tempPath = path.join('/tmp', `terminology-import-${Date.now()}.csv`);
       fs.writeFileSync(tempPath, req.file.buffer);
 
       const result = terminology.importFromCSV(tempPath, req.user.id, req.user.name, {
-        bookId: bookId || null,
+        subjects,
         overwrite: overwrite === 'true',
       });
 
-      // Clean up temp file
       fs.unlinkSync(tempPath);
 
       activityLog.log({
@@ -597,10 +645,7 @@ router.post(
       res.json(result);
     } catch (err) {
       log.error({ err }, 'CSV import error');
-      res.status(500).json({
-        error: 'Failed to import CSV',
-        message: err.message,
-      });
+      res.status(500).json({ error: 'Failed to import CSV', message: err.message });
     }
   }
 );
@@ -608,11 +653,9 @@ router.post(
 /**
  * POST /api/terminology/import/glossary
  * Import glossary terms with definition merging and placeholder support.
- * Enriches existing approved terms with definitions without changing their status.
- * Imports terms without icelandic as placeholders (status: proposed).
  *
  * Query params:
- *   bookSlug: Book slug (required)
+ *   bookSlug: Book slug (required — determines subject tags)
  */
 router.post(
   '/import/glossary',
@@ -624,37 +667,35 @@ router.post(
       return res.status(400).json({ error: 'No file uploaded' });
     }
 
-    const bookId = resolveBookId(req.query);
-    if (!bookId) {
+    const { bookSlug } = req.query;
+    if (!bookSlug) {
       return res.status(400).json({ error: 'bookSlug is required' });
     }
 
-    let csvParse;
+    const bookSubject = resolveBookSubject(bookSlug);
+    const subjects = bookSubject ? [bookSubject] : [];
+
+    let csvParseSync;
     try {
-      csvParse = require('csv-parse/sync').parse;
+      csvParseSync = require('csv-parse/sync').parse;
     } catch {
       return res.status(500).json({ error: 'csv-parse package not installed' });
     }
 
     try {
       const content = req.file.buffer.toString('utf8');
-      const records = csvParse(content, {
-        columns: true,
-        skip_empty_lines: true,
-        trim: true,
-      });
+      const records = csvParseSync(content, { columns: true, skip_empty_lines: true, trim: true });
 
       const terms = records.map((r) => ({
         english: r.english || r.English || r.en,
         icelandic: r.icelandic || r.Icelandic || r.is || '',
-        category: r.category || r.Category || 'other',
         notes: r.notes || r.Notes || null,
         definition_en: r.definition_en || r.Definition_EN || null,
         definition_is: r.definition_is || r.Definition_IS || null,
       }));
 
       const result = terminology.importGlossaryTerms(terms, req.user.id, req.user.name, {
-        bookId,
+        subjects,
         source: 'openstax-glossary',
       });
 
@@ -662,7 +703,7 @@ router.post(
         type: 'import_terminology_glossary',
         userId: req.user.id,
         username: req.user.username,
-        description: `Glossary import: ${result.added} added, ${result.enriched} enriched, ${result.updated} updated`,
+        description: `Glossary import: ${result.added} added, ${result.enriched} enriched`,
         metadata: result,
       });
 
@@ -676,7 +717,7 @@ router.post(
 
 /**
  * POST /api/terminology/import/excel
- * Import terms from Excel file (Chemistry Association format)
+ * Import terms from Excel file
  */
 router.post(
   '/import/excel',
@@ -685,23 +726,18 @@ router.post(
   upload.single('file'),
   async (req, res) => {
     if (!req.file) {
-      return res.status(400).json({
-        error: 'No file uploaded',
-      });
+      return res.status(400).json({ error: 'No file uploaded' });
     }
 
-    const { sheetName } = req.query;
-    const bookId = resolveBookId(req.query);
+    const { sheetName, subjects: subjectsParam } = req.query;
+    const subjects = subjectsParam ? subjectsParam.split(',').map(s => s.trim()) : [];
 
     try {
       const result = await terminology.importFromExcel(
         req.file.buffer,
         req.user.id,
         req.user.name,
-        {
-          bookId: bookId || null,
-          sheetName,
-        }
+        { subjects, sheetName }
       );
 
       activityLog.log({
@@ -715,10 +751,7 @@ router.post(
       res.json(result);
     } catch (err) {
       log.error({ err }, 'Excel import error');
-      res.status(500).json({
-        error: 'Failed to import Excel',
-        message: err.message,
-      });
+      res.status(500).json({ error: 'Failed to import Excel', message: err.message });
     }
   }
 );
@@ -729,15 +762,13 @@ router.post(
  *
  * Body:
  *   bookSlug: Book slug (required)
- *   chapterNum: Chapter number (optional, extracts all if not specified)
+ *   chapterNum: Chapter number (optional)
  */
 router.post('/import/key-terms', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
   const { bookSlug, chapterNum } = req.body;
 
   if (!bookSlug) {
-    return res.status(400).json({
-      error: 'Missing bookSlug',
-    });
+    return res.status(400).json({ error: 'Missing bookSlug' });
   }
 
   try {
@@ -759,10 +790,7 @@ router.post('/import/key-terms', requireAuth, requireRole(ROLES.HEAD_EDITOR), (r
     res.json(result);
   } catch (err) {
     log.error({ err }, 'Key-terms import error');
-    res.status(500).json({
-      error: 'Failed to import key terms',
-      message: err.message,
-    });
+    res.status(500).json({ error: 'Failed to import key terms', message: err.message });
   }
 });
 
@@ -778,20 +806,10 @@ router.post(
     const { bookSlug } = req.body;
 
     if (!bookSlug) {
-      return res.status(400).json({
-        error: 'Missing bookSlug',
-      });
+      return res.status(400).json({ error: 'Missing bookSlug' });
     }
 
-    const glossaryPath = path.join(
-      __dirname,
-      '..',
-      '..',
-      'books',
-      bookSlug,
-      'glossary',
-      'terminology-en-is.csv'
-    );
+    const glossaryPath = path.join(__dirname, '..', '..', 'books', bookSlug, 'glossary', 'terminology-en-is.csv');
 
     if (!fs.existsSync(glossaryPath)) {
       return res.status(404).json({
@@ -800,9 +818,12 @@ router.post(
       });
     }
 
+    const bookSubject = resolveBookSubject(bookSlug);
+    const subjects = bookSubject ? [bookSubject] : [];
+
     try {
       const result = terminology.importFromCSV(glossaryPath, req.user.id, req.user.name, {
-        bookId: null,
+        subjects,
         overwrite: false,
       });
 
@@ -817,10 +838,7 @@ router.post(
       res.json(result);
     } catch (err) {
       log.error({ err }, 'Glossary import error');
-      res.status(500).json({
-        error: 'Failed to import glossary',
-        message: err.message,
-      });
+      res.status(500).json({ error: 'Failed to import glossary', message: err.message });
     }
   }
 );
@@ -834,137 +852,78 @@ router.post(
  * Check text for terminology consistency issues
  *
  * Body:
- *   content: The translated text to check
- *   sourceContent: The source (English) text
- *   bookId: Optional book ID for book-specific terms
+ *   segments: Array of { segmentId, enContent, isContent }
+ *   bookSlug: Book slug for domain priority
  */
 router.post('/check-consistency', requireAuth, (req, res) => {
-  const { content, sourceContent, bookId } = req.body;
-
-  if (!content) {
-    return res.status(400).json({
-      error: 'Missing content',
-      message: 'Content is required for consistency check',
-    });
-  }
+  const { segments, bookSlug, content, sourceContent } = req.body;
 
   try {
-    // Get all approved terms for this book
-    const termsResult = terminology.searchTerms('', {
-      bookId: bookId ? parseInt(bookId, 10) : undefined,
-      status: 'approved',
-      limit: 1000,
-    });
-
-    const issues = [];
-    const termMap = new Map(); // english -> icelandic (approved)
-
-    // Build map of approved translations
-    for (const term of termsResult.terms) {
-      if (term.english && term.icelandic) {
-        const enLower = term.english.toLowerCase();
-        if (!termMap.has(enLower)) {
-          termMap.set(enLower, {
-            approved: term.icelandic,
-            category: term.category,
-            id: term.id,
-          });
-        }
-      }
+    // New API: array of segments
+    if (segments && Array.isArray(segments)) {
+      const result = terminology.findTermsInSegments(segments, bookSlug || null);
+      return res.json({ success: true, result });
     }
 
-    // Check source content for English terms and verify translations
-    if (sourceContent) {
-      for (const [enTerm, termInfo] of termMap) {
-        // Check if EN term exists in source
-        const enRegex = new RegExp(`\\b${escapeRegex(enTerm)}\\b`, 'gi');
-        const enMatches = sourceContent.match(enRegex);
-
-        if (enMatches && enMatches.length > 0) {
-          // Check if approved IS term exists in content
-          const isRegex = new RegExp(`\\b${escapeRegex(termInfo.approved)}\\b`, 'gi');
-          const isMatches = content.match(isRegex);
-
-          if (!isMatches || isMatches.length === 0) {
-            // The approved Icelandic term is missing
-            // Check for other translations of the same word
-            const alternatives = termsResult.terms
-              .filter(
-                (t) =>
-                  t.english &&
-                  t.english.toLowerCase() === enTerm &&
-                  t.icelandic !== termInfo.approved
-              )
-              .map((t) => t.icelandic);
-
-            // Check if any alternative is used
-            let alternativeUsed = null;
-            for (const alt of alternatives) {
-              const altRegex = new RegExp(`\\b${escapeRegex(alt)}\\b`, 'gi');
-              if (content.match(altRegex)) {
-                alternativeUsed = alt;
-                break;
-              }
-            }
-
-            if (alternativeUsed) {
-              issues.push({
-                type: 'inconsistent_translation',
-                severity: 'warning',
-                enTerm: enTerm,
-                expectedTerm: termInfo.approved,
-                foundTerm: alternativeUsed,
-                message: `"${enTerm}" ætti að vera "${termInfo.approved}" (ekki "${alternativeUsed}")`,
-                termId: termInfo.id,
-              });
-            } else {
-              issues.push({
-                type: 'missing_term',
-                severity: 'info',
-                enTerm: enTerm,
-                expectedTerm: termInfo.approved,
-                message: `Hugtakið "${enTerm}" → "${termInfo.approved}" fannst ekki í þýðingunni`,
-                termId: termInfo.id,
-              });
-            }
-          }
-        }
-      }
+    // Legacy single-content API
+    if (!content) {
+      return res.status(400).json({
+        error: 'Missing content',
+        message: 'Either segments array or content string is required',
+      });
     }
 
-    // Check for terms that appear inconsistently within the text itself
-    const wordFreq = new Map();
-    const words = content.match(/[\wáéíóúýþæöðÁÉÍÓÚÝÞÆÖÐ]+/g) || [];
+    const legacySegments = [
+      { segmentId: 'single', enContent: sourceContent || '', isContent: content },
+    ];
+    const result = terminology.findTermsInSegments(legacySegments, bookSlug || null);
 
-    for (const word of words) {
-      const lower = word.toLowerCase();
-      if (lower.length >= 4) {
-        // Skip short words
-        wordFreq.set(lower, (wordFreq.get(lower) || 0) + 1);
-      }
-    }
-
+    const segResult = result.single || { matches: [], issues: [] };
     res.json({
       success: true,
-      issues,
+      issues: segResult.issues,
       stats: {
-        termsChecked: termMap.size,
-        issuesFound: issues.length,
-        warnings: issues.filter((i) => i.severity === 'warning').length,
-        infos: issues.filter((i) => i.severity === 'info').length,
+        termsChecked: segResult.matches.length,
+        issuesFound: segResult.issues.length,
       },
     });
   } catch (err) {
     log.error({ err }, 'Consistency check error');
-    res.status(500).json({
-      error: 'Failed to check consistency',
-      message: err.message,
-    });
+    res.status(500).json({ error: 'Failed to check consistency', message: err.message });
   }
 });
 
-function escapeRegex(string) {
-  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+// ============================================================================
+// HELPERS
+// ============================================================================
+
+/**
+ * Resolve a book slug to its primary subject domain.
+ * Returns null if not found.
+ */
+function resolveBookSubject(bookSlug) {
+  if (!bookSlug) return null;
+
+  const Database = require('better-sqlite3');
+  const dbPath = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
+  if (!fs.existsSync(dbPath)) return null;
+
+  const db = new Database(dbPath);
+  try {
+    const row = db
+      .prepare(`
+        SELECT bsm.primary_subject
+        FROM book_subject_mapping bsm
+        JOIN registered_books rb ON rb.id = bsm.book_id
+        WHERE rb.slug = ?
+      `)
+      .get(bookSlug);
+    db.close();
+    return row ? row.primary_subject : null;
+  } catch {
+    try { db.close(); } catch { /* ignore */ }
+    return null;
+  }
 }
 
 module.exports = router;

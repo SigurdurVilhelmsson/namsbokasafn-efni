@@ -8,7 +8,7 @@
   <style>
     /* ==========================================================================
        TERMINOLOGY PAGE — Basalt & Vellum
-       Search, filter, and manage the EN/IS chemistry glossary.
+       Search, filter, and manage the EN/IS multi-subject glossary.
        ========================================================================== */
 
     /* ========================================
@@ -258,7 +258,7 @@
       font-size: var(--text-sm);
     }
 
-    .term-category {
+    .term-subject {
       font-size: var(--text-sm);
       color: var(--text-secondary);
     }
@@ -343,28 +343,103 @@
     }
 
     /* ========================================
-       GLOBAL TERMS CHECKBOX
+       SUBJECT BADGES
        ======================================== */
 
-    .filter-checkbox {
-      display: flex;
-      align-items: center;
-      gap: 0.375rem;
+    .subject-badge {
+      display: inline-block;
+      padding: 0.125rem 0.5rem;
+      border-radius: var(--radius-md);
+      font-size: var(--text-xs);
+      font-weight: 500;
+      background: var(--accent-subtle);
+      color: var(--accent);
+      white-space: nowrap;
     }
 
-    .filter-checkbox input[type="checkbox"] {
+    .subject-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+    }
+
+    /* ========================================
+       SUBJECT CHECKBOXES (create/edit form)
+       ======================================== */
+
+    .subject-checkboxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .subject-checkboxes label {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: var(--text-sm);
+      cursor: pointer;
+    }
+
+    .subject-checkboxes input[type="checkbox"] {
       width: 1rem;
       height: 1rem;
       accent-color: var(--accent);
       cursor: pointer;
     }
 
-    .filter-checkbox label {
-      font-size: var(--text-sm);
+    /* ========================================
+       TRANSLATION ROW IN DETAIL
+       ======================================== */
+
+    .translation-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-surface);
+    }
+
+    .translation-row:last-child {
+      border-bottom: none;
+    }
+
+    .translation-main {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .translation-icelandic {
+      font-weight: 600;
+      color: var(--accent);
+      font-size: var(--text-base);
+    }
+
+    .translation-meta {
+      display: flex;
+      gap: 0.5rem;
+      font-size: var(--text-xs);
       color: var(--text-muted);
-      white-space: nowrap;
-      font-weight: 500;
-      cursor: pointer;
+      flex-wrap: wrap;
+    }
+
+    .translation-actions {
+      display: flex;
+      gap: 0.375rem;
+      margin-left: auto;
+    }
+
+    .translation-actions .btn {
+      padding: 0.25rem 0.5rem;
+      font-size: var(--text-xs);
+    }
+
+    .translation-detail {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
     }
 
     /* ========================================
@@ -609,7 +684,7 @@
       }
 
       .term-card .term-status,
-      .term-card .term-category {
+      .term-card .term-subject {
         display: inline-block;
       }
 
@@ -653,9 +728,9 @@
           <select id="filter-book" class="book-select" data-allow-all="true" onchange="searchTerms(); loadStats(); updateFilterBadge();"></select>
         </div>
         <div class="filter-item">
-          <label for="filter-category">Flokkur:</label>
-          <select id="filter-category" onchange="searchTerms(); updateFilterBadge();">
-            <option value="">Allir flokkar</option>
+          <label for="filter-subject">Fag:</label>
+          <select id="filter-subject" onchange="searchTerms(); loadStats(); updateFilterBadge();">
+            <option value="">&#214;ll f&#246;g</option>
           </select>
         </div>
         <div class="filter-item">
@@ -666,7 +741,6 @@
             <option value="proposed">&#205; bi&#240;</option>
             <option value="disputed">Til umr&#230;&#240;u</option>
             <option value="needs_review">&#222;arf yfirfer&#240;</option>
-            <option value="placeholder">Vantar &#254;&#253;&#240;ingu</option>
           </select>
         </div>
         <div class="filter-item">
@@ -674,10 +748,6 @@
           <select id="filter-source" onchange="searchTerms(); updateFilterBadge();">
             <option value="">Allir upprunar</option>
           </select>
-        </div>
-        <div class="filter-checkbox">
-          <input type="checkbox" id="filter-global" onchange="searchTerms(); updateFilterBadge();">
-          <label for="filter-global">S&#253;na almenn hugta&#246;k</label>
         </div>
         <span class="filter-count" id="active-filters-badge" style="display: none;">
           <strong id="active-filter-num">0</strong> s&#237;ur virkar
@@ -688,8 +758,8 @@
     <!-- Statistics -->
     <div class="stats-row" id="stats-row">
       <div class="stat-box">
-        <div class="stat-number color-total" id="stat-total">-</div>
-        <div class="stat-label">Samtals</div>
+        <div class="stat-number color-total" id="stat-total" style="font-size: 1rem;">-</div>
+        <div class="stat-label">Or&#240;hausar / &#254;&#253;&#240;ingar</div>
       </div>
       <div class="stat-box">
         <div class="stat-number color-success" id="stat-approved">-</div>
@@ -735,7 +805,7 @@
       <div class="terms-list-header">
         <span>Enska</span>
         <span>&#205;slenska</span>
-        <span>Flokkur</span>
+        <span>Fag</span>
         <span>Sta&#240;a</span>
         <span class="col-source">Uppruni</span>
         <span class="col-actions">A&#240;ger&#240;</span>
@@ -769,10 +839,14 @@
           <label class="form-label">A&#240;rar &#254;&#253;&#240;ingar</label>
           <input type="text" id="term-alternatives" class="form-input" placeholder="A&#240;skili&#240; me&#240; kommu">
         </div>
+        <div class="form-group">
+          <label class="form-label">Fag (veldu eitt e&#240;a fleiri)</label>
+          <div id="term-subjects" class="subject-checkboxes"></div>
+        </div>
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label">Flokkur</label>
-            <select id="term-category" class="form-select"></select>
+            <label class="form-label">Or&#240;flokkur (POS)</label>
+            <input type="text" id="term-pos" class="form-input" placeholder="t.d. n, adj, v">
           </div>
           <div class="form-group">
             <label class="form-label">Uppruni</label>
@@ -813,26 +887,6 @@
             <span id="detail-english"></span>
           </div>
           <div class="detail-field">
-            <label>&#205;slenska:</label>
-            <span id="detail-icelandic"></span>
-          </div>
-          <div class="detail-field">
-            <label>A&#240;rar &#254;&#253;&#240;ingar:</label>
-            <span id="detail-alternatives"></span>
-          </div>
-          <div class="detail-field">
-            <label>Flokkur:</label>
-            <span id="detail-category"></span>
-          </div>
-          <div class="detail-field">
-            <label>Uppruni:</label>
-            <span id="detail-source"></span>
-          </div>
-          <div class="detail-field">
-            <label>Sta&#240;a:</label>
-            <span id="detail-status"></span>
-          </div>
-          <div class="detail-field">
             <label>Or&#240;flokkur:</label>
             <span id="detail-pos"></span>
           </div>
@@ -840,14 +894,12 @@
             <label>Skilgreining (EN):</label>
             <span id="detail-definition-en" style="font-style: italic; color: var(--text-secondary);"></span>
           </div>
-          <div class="detail-field detail-full" id="detail-def-is-row">
-            <label>Skilgreining (IS):</label>
-            <span id="detail-definition-is"></span>
-          </div>
-          <div class="detail-field detail-full">
-            <label>Athugasemdir:</label>
-            <span id="detail-notes"></span>
-          </div>
+        </div>
+
+        <!-- Translations Table -->
+        <div style="margin-top: var(--spacing-md);">
+          <label style="display:block; font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-muted); margin-bottom: var(--spacing-sm);">&#222;&#253;&#240;ingar:</label>
+          <div id="detail-translations" style="border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden;"></div>
         </div>
 
         <!-- Discussion Section -->
@@ -866,17 +918,13 @@
       </div>
       <div class="modal-footer">
         <button class="btn btn-secondary" onclick="closeModal('detail-modal')">Loka</button>
-        <button class="btn btn-warning" id="dispute-btn" onclick="disputeTerm()">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
-          Senda til umr&#230;&#240;u
-        </button>
-        <button class="btn btn-success" id="approve-btn" onclick="approveTerm()">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          Sam&#254;ykkja
+        <button class="btn btn-primary" onclick="showAddTranslationForm()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          B&#230;ta vi&#240; &#254;&#253;&#240;ingu
         </button>
         <button class="btn btn-primary" onclick="editTerm()">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-          Breyta
+          Breyta or&#240;hausu
         </button>
       </div>
     </div>
@@ -956,24 +1004,33 @@
 
     let currentUser = null;
     let currentTermId = null;
-    let categories = [];
+    let currentTermData = null;
+    let subjects = [];
     let sources = [];
     let currentPage = 0;
     const pageSize = 50;
 
+    const SUBJECT_NAMES = {
+      'chemistry': 'Efnafr\u00E6\u00F0i',
+      'biology': 'L\u00EDffr\u00E6\u00F0i',
+      'physics': 'E\u00F0lisfr\u00E6\u00F0i',
+      'microbiology': '\u00D6rverufr\u00E6\u00F0i',
+      'organic-chemistry': 'L\u00EDfr\u00E6n efnafr\u00E6\u00F0i',
+      'mathematics': 'St\u00E6r\u00F0fr\u00E6\u00F0i',
+      'general': 'Almennt'
+    };
+
     // ─── Filter badge ─────────────────────────────────────────────
 
     function updateFilterBadge() {
-      const category = document.getElementById('filter-category').value;
+      const subject = document.getElementById('filter-subject').value;
       const status = document.getElementById('filter-status').value;
       const source = document.getElementById('filter-source').value;
-      const includeGlobal = document.getElementById('filter-global').checked;
 
       let activeCount = 0;
-      if (category) activeCount++;
+      if (subject) activeCount++;
       if (status) activeCount++;
       if (source) activeCount++;
-      if (includeGlobal) activeCount++;
 
       const badge = document.getElementById('active-filters-badge');
       const num = document.getElementById('active-filter-num');
@@ -996,7 +1053,7 @@
         }
       } catch (e) { console.error('Auth check failed:', e); }
 
-      // Load categories and sources (non-critical — page still works without)
+      // Load subjects and sources (non-critical — page still works without)
       try { await loadMetadata(); } catch (e) { console.error('Load metadata failed:', e); }
       try { await loadStats(); } catch (e) { console.error('Load stats failed:', e); }
       try { await checkReviewQueue(); } catch (e) { console.error('Review queue check failed:', e); }
@@ -1009,21 +1066,25 @@
     }
 
     async function loadMetadata() {
-      const data = await fetchJson('/api/terminology/categories');
+      const data = await fetchJson('/api/terminology/subjects');
 
-      categories = data.categories;
-      sources = data.sources;
+      subjects = data.subjects || [];
+      sources = data.sources || [];
 
       // Populate filter dropdowns
-      const categorySelect = document.getElementById('filter-category');
+      const subjectSelect = document.getElementById('filter-subject');
       const sourceSelect = document.getElementById('filter-source');
-      const termCategorySelect = document.getElementById('term-category');
       const termSourceSelect = document.getElementById('term-source');
+      const termSubjectsDiv = document.getElementById('term-subjects');
 
-      categories.forEach(cat => {
-        categorySelect.innerHTML += '<option value="' + cat + '">' + formatCategory(cat) + '</option>';
-        termCategorySelect.innerHTML += '<option value="' + cat + '">' + formatCategory(cat) + '</option>';
+      subjects.forEach(s => {
+        subjectSelect.innerHTML += '<option value="' + s + '">' + formatSubject(s) + '</option>';
       });
+
+      // Subject checkboxes in create/edit form
+      termSubjectsDiv.innerHTML = subjects.map(s =>
+        '<label><input type="checkbox" name="term-subject" value="' + s + '"> ' + formatSubject(s) + '</label>'
+      ).join('');
 
       sources.forEach(src => {
         sourceSelect.innerHTML += '<option value="' + src + '">' + formatSource(src) + '</option>';
@@ -1032,12 +1093,17 @@
     }
 
     async function loadStats() {
+      const subject = document.getElementById('filter-subject')?.value || '';
       const bookSlug = document.getElementById('filter-book')?.value || '';
-      const statsUrl = bookSlug ? '/api/terminology/stats?bookSlug=' + encodeURIComponent(bookSlug) : '/api/terminology/stats';
+      const params = new URLSearchParams();
+      // Subject filter takes priority; fall back to book slug for server-side resolution
+      if (subject) params.set('subject', subject);
+      const statsUrl = '/api/terminology/stats' + (params.toString() ? '?' + params : '');
       const stats = await fetchJson(statsUrl);
 
       var byStatus = stats.byStatus || {};
-      document.getElementById('stat-total').textContent = stats.total || 0;
+      document.getElementById('stat-total').textContent =
+        (stats.headwords || 0) + ' or\u00F0h. / ' + (stats.total || 0) + ' \u00FE\u00FD\u00F0.';
       document.getElementById('stat-approved').textContent = byStatus.approved || 0;
       document.getElementById('stat-proposed').textContent = byStatus.proposed || 0;
       document.getElementById('stat-disputed').textContent = byStatus.disputed || 0;
@@ -1059,10 +1125,9 @@
 
     async function searchTerms() {
       const query = document.getElementById('search-input').value;
-      const category = document.getElementById('filter-category').value;
+      const subject = document.getElementById('filter-subject').value;
       const status = document.getElementById('filter-status').value;
       const bookSlug = document.getElementById('filter-book')?.value || '';
-      const includeGlobal = document.getElementById('filter-global').checked;
 
       const params = new URLSearchParams({
         limit: pageSize,
@@ -1070,10 +1135,9 @@
       });
 
       if (query) params.set('q', query);
-      if (category) params.set('category', category);
+      if (subject) params.set('subject', subject);
+      else if (bookSlug) params.set('bookSlug', bookSlug);
       if (status) params.set('status', status);
-      if (bookSlug) params.set('bookSlug', bookSlug);
-      if (includeGlobal) params.set('includeGlobal', 'true');
 
       const tbody = document.getElementById('terms-body');
       tbody.innerHTML = '<div class="terms-state">Hle\u00F0ur...</div>';
@@ -1089,17 +1153,22 @@
         }
 
         document.getElementById('results-title').textContent =
-          'Ni\u00F0urst\u00F6\u00F0ur (' + data.pagination.total + ' or\u00F0)';
+          'Ni\u00F0urst\u00F6\u00F0ur (' + data.pagination.total + ' or\u00F0hausar)';
 
         tbody.innerHTML = data.terms.map(term => {
-          const hasDef = term.definitionEn || term.definitionIs;
+          const hasDef = term.definitionEn;
+          const primaryTr = term.translations && term.translations[0];
+          const allSubjects = collectSubjects(term.translations || []);
+          const primaryStatus = primaryTr ? primaryTr.status : 'proposed';
+          const primarySource = primaryTr ? primaryTr.source : '';
+          const trCount = (term.translations || []).length;
           return `
           <div class="term-card" tabindex="0" role="button" onclick="showTermDetail(${term.id})" onkeydown="if(event.key==='Enter')showTermDetail(${term.id})">
-            <span class="term-en">${escapeHtml(term.english)}${hasDef ? ' <span class="def-toggle" onclick="event.stopPropagation(); toggleDefinition(' + term.id + ')" title="S\u00FDna skilgreiningu">&#9432;</span>' : ''}</span>
-            <span class="term-is">${term.icelandic ? escapeHtml(term.icelandic) : '<em class="placeholder-badge">Vantar \u00FE\u00FD\u00F0ingu</em>'}</span>
-            <span class="term-category">${formatCategory(term.category)}</span>
-            <span class="term-status"><span class="status-badge status-${term.status}">${formatStatus(term.status)}</span></span>
-            <span class="term-source">${formatSource(term.source)}</span>
+            <span class="term-en">${escapeHtml(term.english)}${term.pos ? ' <em style="color:var(--text-muted);font-size:var(--text-sm)">(' + escapeHtml(term.pos) + ')</em>' : ''}${hasDef ? ' <span class="def-toggle" onclick="event.stopPropagation(); toggleDefinition(' + term.id + ')" title="S\u00FDna skilgreiningu">&#9432;</span>' : ''}${trCount > 1 ? ' <span style="color:var(--text-muted);font-size:var(--text-xs)">[' + trCount + ' \u00FE\u00FD\u00F0.]</span>' : ''}</span>
+            <span class="term-is">${primaryTr && primaryTr.icelandic ? escapeHtml(primaryTr.icelandic) : '<em class="placeholder-badge">Vantar \u00FE\u00FD\u00F0ingu</em>'}</span>
+            <span class="term-subject"><span class="subject-badges">${allSubjects.map(s => '<span class="subject-badge">' + formatSubject(s) + '</span>').join('')}</span></span>
+            <span class="term-status"><span class="status-badge status-${primaryStatus}">${formatStatus(primaryStatus)}</span></span>
+            <span class="term-source">${formatSource(primarySource)}</span>
             <span class="term-actions">
               <button class="btn-icon" onclick="event.stopPropagation(); showTermDetail(${term.id})" title="Sko\u00F0a">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
@@ -1108,7 +1177,6 @@
           </div>` + (hasDef ? `
           <div class="term-definition-row" id="def-row-${term.id}">
             ${term.definitionEn ? '<div class="def-label">Skilgreining (EN)</div><div class="def-text">' + escapeHtml(term.definitionEn) + '</div>' : ''}
-            ${term.definitionIs ? '<div class="def-label">Skilgreining (IS)</div><div class="def-text">' + escapeHtml(term.definitionIs) + '</div>' : ''}
           </div>` : '');
         }).join('');
 
@@ -1118,6 +1186,13 @@
       } catch (err) {
         tbody.innerHTML = '<div class="terms-state error">Villa: ' + escapeHtml(err.message) + '</div>';
       }
+    }
+
+    /** Collect unique subjects from all translations */
+    function collectSubjects(translations) {
+      const set = new Set();
+      translations.forEach(t => (t.subjects || []).forEach(s => set.add(s)));
+      return [...set];
     }
 
     // ─── Definition Toggle ──────────────────────────────────────────
@@ -1194,34 +1269,48 @@
 
       const data = await fetchJson('/api/terminology/' + id);
       const term = data.term;
+      currentTermData = term;
 
-      document.getElementById('detail-title').textContent = term.english;
+      document.getElementById('detail-title').textContent = term.english + (term.pos ? ' (' + term.pos + ')' : '');
       document.getElementById('detail-english').textContent = term.english;
-      const detailIs = document.getElementById('detail-icelandic');
-      if (term.icelandic) {
-        detailIs.textContent = term.icelandic;
-        detailIs.className = '';
-      } else {
-        detailIs.textContent = 'Vantar \u00FE\u00FD\u00F0ingu';
-        detailIs.className = 'placeholder-badge';
-      }
-      document.getElementById('detail-alternatives').textContent =
-        term.alternatives?.map(a => typeof a === 'string' ? a : a.term).join(', ') || '-';
-      document.getElementById('detail-category').textContent = formatCategory(term.category);
-      document.getElementById('detail-source').textContent = formatSource(term.source);
       document.getElementById('detail-pos').textContent = term.pos || '-';
-      document.getElementById('detail-notes').textContent = term.notes || '-';
 
-      // Definitions
-      const defEnRow = document.getElementById('detail-def-en-row');
-      const defIsRow = document.getElementById('detail-def-is-row');
+      // Definition
       document.getElementById('detail-definition-en').textContent = term.definitionEn || '-';
-      document.getElementById('detail-definition-is').textContent = term.definitionIs || '-';
-      defEnRow.style.display = '';
-      defIsRow.style.display = '';
 
-      const statusEl = document.getElementById('detail-status');
-      statusEl.innerHTML = '<span class="status-badge status-' + term.status + '">' + formatStatus(term.status) + '</span>';
+      // Render translations table
+      const translationsEl = document.getElementById('detail-translations');
+      const translations = term.translations || [];
+
+      if (translations.length === 0) {
+        translationsEl.innerHTML = '<div style="padding: 0.75rem 1rem; color: var(--text-muted); font-style: italic;">Engar \u00FE\u00FD\u00F0ingar skr\u00E1\u00F0ar.</div>';
+      } else {
+        translationsEl.innerHTML = translations.map(tr => {
+          const subjectBadges = (tr.subjects || []).map(s => '<span class="subject-badge">' + formatSubject(s) + '</span>').join(' ');
+          const canApprove = currentUser && ['admin', 'head-editor'].includes(currentUser.role) && tr.status !== 'approved';
+          const canDispute = currentUser && tr.status !== 'disputed';
+
+          return `
+          <div class="translation-row">
+            <div class="translation-main">
+              <span class="translation-icelandic">${escapeHtml(tr.icelandic)}</span>
+              <span class="subject-badges">${subjectBadges}</span>
+              <span class="status-badge status-${tr.status}">${formatStatus(tr.status)}</span>
+              <div class="translation-actions">
+                ${canApprove ? '<button class="btn btn-sm btn-success" onclick="approveTranslation(' + tr.id + ')" title="Sam\u00FEykkja">&#10003;</button>' : ''}
+                ${canDispute ? '<button class="btn btn-sm btn-warning" onclick="disputeTranslation(' + tr.id + ')" title="Senda til umr\u00E6\u00F0u">&#9873;</button>' : ''}
+              </div>
+            </div>
+            <div class="translation-meta">
+              <span>Uppruni: ${formatSource(tr.source)}</span>
+              ${tr.approvedByName ? '<span>Sam\u00FEykkt af: ' + escapeHtml(tr.approvedByName) + '</span>' : ''}
+              ${tr.inflections && tr.inflections.length ? '<span>Beyging: ' + tr.inflections.map(i => escapeHtml(i)).join(', ') + '</span>' : ''}
+            </div>
+            ${tr.definitionIs ? '<div class="translation-detail">Skilgr. (IS): ' + escapeHtml(tr.definitionIs) + '</div>' : ''}
+            ${tr.notes ? '<div class="translation-detail">Ath.: ' + escapeHtml(tr.notes) + '</div>' : ''}
+          </div>`;
+        }).join('');
+      }
 
       // Render discussions
       const discussionsList = document.getElementById('discussions-list');
@@ -1240,22 +1329,6 @@
         discussionsList.innerHTML = '<p class="discussions-empty">Engar athugasemdir enn.</p>';
       }
 
-      // Show/hide action buttons based on user role and term status
-      const approveBtn = document.getElementById('approve-btn');
-      const disputeBtn = document.getElementById('dispute-btn');
-
-      approveBtn.style.display = 'none';
-      disputeBtn.style.display = 'none';
-
-      if (currentUser) {
-        if (['admin', 'head-editor'].includes(currentUser.role) && term.status !== 'approved') {
-          approveBtn.style.display = 'inline-flex';
-        }
-        if (term.status !== 'disputed') {
-          disputeBtn.style.display = 'inline-flex';
-        }
-      }
-
       document.getElementById('detail-modal').style.display = 'flex';
     }
 
@@ -1267,53 +1340,59 @@
       document.getElementById('term-english').value = '';
       document.getElementById('term-icelandic').value = '';
       document.getElementById('term-alternatives').value = '';
-      document.getElementById('term-category').value = 'other';
+      document.getElementById('term-pos').value = '';
       document.getElementById('term-source').value = 'manual';
       document.getElementById('term-definition-en').value = '';
       document.getElementById('term-definition-is').value = '';
       document.getElementById('term-notes').value = '';
       document.getElementById('term-english').disabled = false;
+      // Reset subject checkboxes
+      document.querySelectorAll('#term-subjects input[type="checkbox"]').forEach(cb => cb.checked = false);
       document.getElementById('term-modal').style.display = 'flex';
     }
 
     function editTerm() {
       closeModal('detail-modal');
-      // Load term data for editing
-      fetchJson('/api/terminology/' + currentTermId)
-        .then(data => {
-          const term = data.term;
-          document.getElementById('modal-title').textContent = 'Breyta or\u00F0i';
-          document.getElementById('term-english').value = term.english;
-          document.getElementById('term-english').disabled = true; // Can't change English term
-          document.getElementById('term-icelandic').value = term.icelandic;
-          document.getElementById('term-alternatives').value = term.alternatives?.join(', ') || '';
-          document.getElementById('term-category').value = term.category;
-          document.getElementById('term-source').value = term.source;
-          document.getElementById('term-definition-en').value = term.definitionEn || '';
-          document.getElementById('term-definition-is').value = term.definitionIs || '';
-          document.getElementById('term-notes').value = term.notes || '';
-          document.getElementById('term-modal').style.display = 'flex';
-        });
+      const term = currentTermData;
+      if (!term) return;
+
+      document.getElementById('modal-title').textContent = 'Breyta or\u00F0hausu';
+      document.getElementById('term-english').value = term.english;
+      document.getElementById('term-english').disabled = true; // Can't change English term
+      // Show primary translation info (first translation)
+      const primaryTr = term.translations && term.translations[0];
+      document.getElementById('term-icelandic').value = primaryTr?.icelandic || '';
+      document.getElementById('term-alternatives').value = '';
+      document.getElementById('term-pos').value = term.pos || '';
+      document.getElementById('term-source').value = primaryTr?.source || 'manual';
+      document.getElementById('term-definition-en').value = term.definitionEn || '';
+      document.getElementById('term-definition-is').value = primaryTr?.definitionIs || '';
+      document.getElementById('term-notes').value = primaryTr?.notes || '';
+      // Set subject checkboxes from primary translation
+      const trSubjects = primaryTr?.subjects || [];
+      document.querySelectorAll('#term-subjects input[type="checkbox"]').forEach(cb => {
+        cb.checked = trSubjects.includes(cb.value);
+      });
+      document.getElementById('term-modal').style.display = 'flex';
     }
 
     async function saveTerm() {
       const english = document.getElementById('term-english').value.trim();
       const icelandic = document.getElementById('term-icelandic').value.trim();
-      const alternatives = document.getElementById('term-alternatives').value
-        .split(',').map(s => s.trim()).filter(s => s);
-      const category = document.getElementById('term-category').value;
+      const pos = document.getElementById('term-pos').value.trim();
       const source = document.getElementById('term-source').value;
       const definitionEn = document.getElementById('term-definition-en').value.trim();
       const definitionIs = document.getElementById('term-definition-is').value.trim();
       const notes = document.getElementById('term-notes').value.trim();
+      const selectedSubjects = [...document.querySelectorAll('#term-subjects input[type="checkbox"]:checked')].map(cb => cb.value);
 
       if (!english) {
         alert('Enska er nau\u00F0synleg');
         return;
       }
 
-      const body = { english, icelandic, category, source, notes };
-      if (alternatives.length > 0) body.alternatives = alternatives;
+      const body = { english, icelandic, source, notes, subjects: selectedSubjects };
+      if (pos) body.pos = pos;
       if (definitionEn) body.definitionEn = definitionEn;
       if (definitionIs) body.definitionIs = definitionIs;
 
@@ -1342,14 +1421,14 @@
 
     // ─── Approve / Dispute ────────────────────────────────────────
 
-    async function approveTerm() {
-      if (!confirm('Ertu viss um a\u00F0 \u00FE\u00FA viljir sam\u00FEykkja \u00FEetta or\u00F0?')) return;
+    async function approveTranslation(translationId) {
+      if (!confirm('Ertu viss um a\u00F0 \u00FE\u00FA viljir sam\u00FEykkja \u00FEessa \u00FE\u00FD\u00F0ingu?')) return;
 
       try {
-        const data = await fetchJson('/api/terminology/' + currentTermId + '/approve', { method: 'POST' });
+        const data = await fetchJson('/api/terminology/translations/' + translationId + '/approve', { method: 'POST' });
 
         if (data.success) {
-          closeModal('detail-modal');
+          showTermDetail(currentTermId); // Refresh detail view
           searchTerms();
           loadStats();
         } else {
@@ -1360,12 +1439,12 @@
       }
     }
 
-    async function disputeTerm() {
-      const comment = prompt('Hvers vegna vilt \u00FE\u00FA senda \u00FEetta or\u00F0 til umr\u00E6\u00F0u?');
+    async function disputeTranslation(translationId) {
+      const comment = prompt('Hvers vegna vilt \u00FE\u00FA senda \u00FEessa \u00FE\u00FD\u00F0ingu til umr\u00E6\u00F0u?');
       if (!comment) return;
 
       try {
-        const data = await fetchJson('/api/terminology/' + currentTermId + '/dispute', {
+        const data = await fetchJson('/api/terminology/translations/' + translationId + '/dispute', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ comment })
@@ -1377,6 +1456,61 @@
           loadStats();
         } else {
           alert('Villa: ' + data.message);
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    /** Show form to add a new translation to the current headword */
+    function showAddTranslationForm() {
+      closeModal('detail-modal');
+      currentTermId = currentTermData?.id || currentTermId;
+      document.getElementById('modal-title').textContent = 'B\u00E6ta vi\u00F0 \u00FE\u00FD\u00F0ingu \u00E1 \u201C' + (currentTermData?.english || '') + '\u201D';
+      document.getElementById('term-english').value = currentTermData?.english || '';
+      document.getElementById('term-english').disabled = true;
+      document.getElementById('term-icelandic').value = '';
+      document.getElementById('term-alternatives').value = '';
+      document.getElementById('term-pos').value = currentTermData?.pos || '';
+      document.getElementById('term-source').value = 'manual';
+      document.getElementById('term-definition-en').value = currentTermData?.definitionEn || '';
+      document.getElementById('term-definition-is').value = '';
+      document.getElementById('term-notes').value = '';
+      document.querySelectorAll('#term-subjects input[type="checkbox"]').forEach(cb => cb.checked = false);
+      // Override save to add translation, not create headword
+      document.getElementById('save-term-btn').onclick = addTranslation;
+      document.getElementById('term-modal').style.display = 'flex';
+    }
+
+    async function addTranslation() {
+      const icelandic = document.getElementById('term-icelandic').value.trim();
+      const source = document.getElementById('term-source').value;
+      const definitionIs = document.getElementById('term-definition-is').value.trim();
+      const notes = document.getElementById('term-notes').value.trim();
+      const selectedSubjects = [...document.querySelectorAll('#term-subjects input[type="checkbox"]:checked')].map(cb => cb.value);
+
+      if (!icelandic) {
+        alert('\u00CDslenska er nau\u00F0synleg');
+        return;
+      }
+
+      try {
+        const data = await fetchJson('/api/terminology/' + currentTermId + '/translations', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ icelandic, source, definitionIs, notes, subjects: selectedSubjects })
+        });
+
+        if (data.success || data.translation) {
+          closeModal('term-modal');
+          document.getElementById('term-english').disabled = false;
+          // Restore normal save behavior
+          document.getElementById('save-term-btn').onclick = saveTerm;
+          showTermDetail(currentTermId);
+          searchTerms();
+          loadStats();
+        } else {
+          alert('Villa: ' + (data.message || 'Gat ekki vista\u00F0'));
         }
       } catch (err) {
         alert('Villa: ' + err.message);
@@ -1599,25 +1733,8 @@
 
     // ─── Formatting Utilities ─────────────────────────────────────
 
-    function formatCategory(cat) {
-      const names = {
-        'fundamental': 'Grunnhugt\u00F6k',
-        'bonding': 'Efnatengi',
-        'reactions': 'Efnahv\u00F6rf',
-        'solutions': 'Lausnir',
-        'acids-bases': 'S\u00FDrur og basar',
-        'periodic-table': 'Lotukerfi',
-        'structure': 'Bygging',
-        'states': 'Efnis\u00E1stand',
-        'properties': 'Eiginleikar',
-        'changes': 'Breytingar',
-        'measurements': 'M\u00E6lingar',
-        'concepts': 'Hugt\u00F6k',
-        'constants': 'Fastar',
-        'units': 'Einingar',
-        'other': 'Anna\u00F0'
-      };
-      return names[cat] || cat;
+    function formatSubject(s) {
+      return SUBJECT_NAMES[s] || s;
     }
 
     function formatSource(src) {
@@ -1660,17 +1777,15 @@
 
     async function exportGlossary(format) {
       const bookSlug = document.getElementById('filter-book')?.value || '';
-      const category = document.getElementById('filter-category').value;
+      const subject = document.getElementById('filter-subject').value;
       const status = document.getElementById('filter-status').value;
       const query = document.getElementById('search-input').value;
-      const includeGlobal = document.getElementById('filter-global').checked;
 
       const params = new URLSearchParams({ format: format });
-      if (bookSlug) params.set('bookSlug', bookSlug);
-      if (category) params.set('category', category);
+      if (subject) params.set('subject', subject);
+      else if (bookSlug) params.set('bookSlug', bookSlug);
       if (status) params.set('status', status);
       if (query) params.set('q', query);
-      if (includeGlobal) params.set('includeGlobal', 'true');
 
       const url = '/api/terminology/export?' + params.toString();
       try {

@@ -1,26 +1,22 @@
 /**
- * Terminology Service
+ * Terminology Service — Multi-Subject Domain Model
  *
- * Manages the terminology database for translation consistency.
- * Supports:
- * - CRUD operations on terms
- * - Full-text search
- * - CSV import (existing glossary)
- * - Excel import (Chemistry Association)
- * - Key Terms extraction from markdown
- * - Review board workflow (approve/dispute)
+ * Normalized headword → translations → subjects model.
+ * Each English headword can have multiple Icelandic translations,
+ * each tagged with subject domains (chemistry, biology, etc.).
+ * Inflection-aware matching for Icelandic terms.
  */
 
 const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
 
-// Optional dependencies - installed only when needed
+// Optional dependencies
 let csvParse = null;
 try {
   csvParse = require('csv-parse/sync').parse;
 } catch {
-  // csv-parse not installed - CSV import will be unavailable
+  // csv-parse not installed
 }
 
 const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
@@ -32,27 +28,8 @@ function _setTestDb(db) {
   _testDb = db;
 }
 
-// Valid term statuses
+// Valid translation statuses
 const TERM_STATUSES = ['approved', 'proposed', 'disputed', 'needs_review'];
-
-// Valid term categories
-const TERM_CATEGORIES = [
-  'fundamental',
-  'bonding',
-  'reactions',
-  'solutions',
-  'acids-bases',
-  'periodic-table',
-  'structure',
-  'states',
-  'properties',
-  'changes',
-  'measurements',
-  'concepts',
-  'constants',
-  'units',
-  'other',
-];
 
 // Valid term sources
 const TERM_SOURCES = [
@@ -68,9 +45,19 @@ const TERM_SOURCES = [
   'merge-glossary',
 ];
 
+// Known subject domains (from Íðorðabankinn collection codes)
+const SUBJECTS = [
+  'chemistry',
+  'biology',
+  'physics',
+  'microbiology',
+  'organic-chemistry',
+  'mathematics',
+  'general',
+];
+
 /**
- * Singleton database connection — reuses a single instance across all calls.
- * Prevents file handle leaks from creating new Database() instances per call.
+ * Singleton database connection
  */
 let _db;
 function getDb() {
@@ -86,588 +73,624 @@ function getDb() {
 }
 
 /**
- * Search terms with optional filters
- *
- * @param {string} query - Search query (matches English or Icelandic)
- * @param {object} options - Filter options
- * @param {number} options.bookId - Filter by book (null = global only)
- * @param {string} options.category - Filter by category
- * @param {string} options.status - Filter by status
- * @param {number} options.limit - Max results (default 50)
- * @param {number} options.offset - Pagination offset
- * @returns {object} Search results with pagination
+ * Upsert a headword. Handles NULL pos correctly (SQLite UNIQUE treats NULLs as distinct).
+ * Returns the headword row { id }.
+ */
+function upsertHeadword(db, english, pos, definitionEn) {
+  const existing = db
+    .prepare(
+      'SELECT id FROM terminology_headwords WHERE english = ? AND (pos = ? OR (pos IS NULL AND ? IS NULL))'
+    )
+    .get(english, pos || null, pos || null);
+
+  if (existing) {
+    if (definitionEn) {
+      db.prepare(
+        'UPDATE terminology_headwords SET definition_en = COALESCE(definition_en, ?) WHERE id = ?'
+      ).run(definitionEn, existing.id);
+    }
+    return existing;
+  }
+
+  const result = db
+    .prepare('INSERT INTO terminology_headwords (english, pos, definition_en) VALUES (?, ?, ?)')
+    .run(english, pos || null, definitionEn || null);
+  return { id: Number(result.lastInsertRowid) };
+}
+
+// ─────────────────────────────────────────
+// Headword CRUD
+// ─────────────────────────────────────────
+
+/**
+ * Search headwords with optional filters.
+ * Returns headwords with nested translations + subject tags.
  */
 function searchTerms(query = '', options = {}) {
   const db = getDb();
-  const { bookId, includeGlobal, category, status, limit = 50, offset = 0 } = options;
+  const { subject, status, limit = 50, offset = 0 } = options;
 
-  try {
-    let sql = `
-      SELECT
-        t.*,
-        rb.slug as book_slug,
-        rb.title_is as book_title
-      FROM terminology_terms t
-      LEFT JOIN registered_books rb ON t.book_id = rb.id
-      WHERE 1=1
-    `;
-    const params = [];
+  let sql = `
+    SELECT DISTINCT h.id
+    FROM terminology_headwords h
+  `;
+  const joins = [];
+  const wheres = [];
+  const params = [];
 
-    // Search query
-    if (query) {
-      sql += ` AND (t.english LIKE ? OR t.icelandic LIKE ? OR t.alternatives LIKE ?)`;
-      const searchPattern = `%${query}%`;
-      params.push(searchPattern, searchPattern, searchPattern);
-    }
+  // If filtering by subject or status, join translations
+  if (subject || status || query) {
+    joins.push('LEFT JOIN terminology_translations t ON t.headword_id = h.id');
+  }
+  if (subject) {
+    joins.push('LEFT JOIN terminology_translation_subjects ts ON ts.translation_id = t.id');
+  }
 
-    // Book filter (null = global terms, specific ID = book terms)
-    // includeGlobal controls whether global terms (book_id IS NULL) are shown
-    // alongside book-specific terms
-    if (bookId !== undefined) {
-      if (bookId === null) {
-        sql += ` AND t.book_id IS NULL`;
-      } else if (includeGlobal) {
-        sql += ` AND (t.book_id = ? OR t.book_id IS NULL)`;
-        params.push(bookId);
-      } else {
-        sql += ` AND t.book_id = ?`;
-        params.push(bookId);
+  sql += joins.join('\n');
+  sql += '\nWHERE 1=1';
+
+  if (query) {
+    sql += ` AND (h.english LIKE ? OR t.icelandic LIKE ?)`;
+    const pattern = `%${query}%`;
+    params.push(pattern, pattern);
+  }
+
+  if (subject) {
+    sql += ` AND ts.subject = ?`;
+    params.push(subject);
+  }
+
+  if (status) {
+    sql += ` AND t.status = ?`;
+    params.push(status);
+  }
+
+  // Count total
+  const countSql = `SELECT COUNT(*) as total FROM (${sql})`;
+  const totalResult = db.prepare(countSql).get(...params);
+  const total = totalResult?.total || 0;
+
+  // Get page of headword IDs
+  sql += ` ORDER BY h.english COLLATE NOCASE ASC LIMIT ? OFFSET ?`;
+  params.push(limit, offset);
+
+  const headwordIds = db.prepare(sql).all(...params).map(r => r.id);
+
+  const terms = headwordIds.map(id => loadHeadword(db, id));
+
+  return {
+    terms,
+    pagination: { total, limit, offset, hasMore: offset + terms.length < total },
+  };
+}
+
+/**
+ * Fast lookup for editor popup.
+ * Searches English headwords and Icelandic translations (including inflections).
+ */
+function lookupTerm(query, bookSlug = null) {
+  if (!query || query.length < 2) return [];
+
+  const db = getDb();
+
+  // Get book's primary subject for domain ranking
+  const bookSubject = bookSlug ? getBookSubjectBySlug(db, bookSlug) : null;
+
+  const sql = `
+    SELECT DISTINCT h.id,
+      CASE
+        WHEN LOWER(h.english) = LOWER(?) THEN 1
+        WHEN LOWER(h.english) LIKE LOWER(?) THEN 2
+        ELSE 3
+      END as relevance
+    FROM terminology_headwords h
+    LEFT JOIN terminology_translations t ON t.headword_id = h.id
+    WHERE (
+      h.english LIKE ? OR
+      t.icelandic LIKE ? OR
+      t.inflections LIKE ?
+    )
+    AND t.status IN ('approved', 'proposed')
+    ORDER BY relevance, h.english COLLATE NOCASE
+    LIMIT 10
+  `;
+
+  const exact = query;
+  const startsWith = `${query}%`;
+  const contains = `%${query}%`;
+
+  const rows = db.prepare(sql).all(exact, startsWith, contains, contains, contains);
+
+  return rows.map(r => {
+    const hw = loadHeadword(db, r.id);
+    // Mark primary translation based on book's domain
+    if (bookSubject && hw.translations) {
+      for (const tr of hw.translations) {
+        tr.isPrimary = tr.subjects.includes(bookSubject);
       }
-    } else if (includeGlobal) {
-      // No book selected but includeGlobal is explicitly true — show only global
-      sql += ` AND t.book_id IS NULL`;
     }
-
-    // Category filter
-    if (category) {
-      sql += ` AND t.category = ?`;
-      params.push(category);
-    }
-
-    // Status filter
-    if (status === 'placeholder') {
-      sql += ` AND t.icelandic IS NULL`;
-    } else if (status) {
-      sql += ` AND t.status = ?`;
-      params.push(status);
-    }
-
-    // Get total count
-    const countSql = sql.replace(/SELECT[\s\S]*?FROM/, 'SELECT COUNT(*) as total FROM');
-    const totalResult = db.prepare(countSql).get(...params);
-    const total = totalResult?.total || 0;
-
-    // Add ordering and pagination
-    sql += ` ORDER BY t.english COLLATE NOCASE ASC LIMIT ? OFFSET ?`;
-    params.push(limit, offset);
-
-    const terms = db.prepare(sql).all(...params);
-
-    return {
-      terms: terms.map(formatTerm),
-      pagination: {
-        total,
-        limit,
-        offset,
-        hasMore: offset + terms.length < total,
-      },
-    };
-  } catch (err) {
-    throw err;
-  }
+    return hw;
+  });
 }
 
 /**
- * Fast lookup for editor popup
- * Returns exact and partial matches sorted by relevance
- *
- * @param {string} query - Search term
- * @param {number} bookId - Optional book context
- * @returns {object[]} Matching terms
+ * Get a single headword by ID with all translations, subjects, and discussions.
  */
-function lookupTerm(query, bookId = null) {
-  if (!query || query.length < 2) {
-    return [];
-  }
-
+function getHeadword(id) {
   const db = getDb();
-
-  try {
-    const sql = `
-      SELECT
-        t.*,
-        CASE
-          WHEN LOWER(t.english) = LOWER(?) THEN 1
-          WHEN LOWER(t.english) LIKE LOWER(?) THEN 2
-          ELSE 3
-        END as relevance
-      FROM terminology_terms t
-      WHERE (
-        t.english LIKE ? OR
-        t.icelandic LIKE ? OR
-        t.alternatives LIKE ?
-      )
-      AND (t.book_id IS NULL OR t.book_id = ?)
-      AND t.status IN ('approved', 'proposed')
-      ORDER BY relevance, t.english COLLATE NOCASE
-      LIMIT 10
-    `;
-
-    const searchExact = query;
-    const searchStart = `${query}%`;
-    const searchContains = `%${query}%`;
-
-    const terms = db
-      .prepare(sql)
-      .all(searchExact, searchStart, searchContains, searchContains, searchContains, bookId);
-
-    return terms.map(formatTerm);
-  } catch (err) {
-    throw err;
-  }
+  return loadHeadword(db, id, { includeDiscussions: true });
 }
 
-/**
- * Get a single term by ID
- *
- * @param {number} id - Term ID
- * @returns {object|null} Term or null
- */
-function getTerm(id) {
-  const db = getDb();
-
-  try {
-    const term = db
-      .prepare(
-        `
-      SELECT
-        t.*,
-        rb.slug as book_slug,
-        rb.title_is as book_title
-      FROM terminology_terms t
-      LEFT JOIN registered_books rb ON t.book_id = rb.id
-      WHERE t.id = ?
-    `
-      )
-      .get(id);
-
-    // Get discussions
-    const discussions = db
-      .prepare(
-        `
-      SELECT * FROM terminology_discussions
-      WHERE term_id = ?
-      ORDER BY created_at DESC
-    `
-      )
-      .all(id);
-
-    if (!term) return null;
-
-    return {
-      ...formatTerm(term),
-      discussions,
-    };
-  } catch (err) {
-    throw err;
-  }
-}
+// Alias for backwards compatibility with routes
+const getTerm = getHeadword;
 
 /**
- * Create a new term (status: proposed)
- *
- * @param {object} data - Term data
- * @param {string} userId - User creating the term
- * @param {string} username - User's display name
- * @returns {object} Created term
+ * Create a new headword, optionally with an initial translation.
  */
 function createTerm(data, userId, username) {
-  const {
-    english,
-    icelandic,
-    alternatives,
-    category,
-    notes,
-    source,
-    sourceChapter,
-    bookId,
-    definitionEn,
-    definitionIs,
-    pos,
-  } = data;
+  const { english, icelandic, notes, source, pos, definitionEn, definitionIs, subjects } = data;
 
   if (!english) {
     throw new Error('English term is required');
   }
 
-  if (category && !TERM_CATEGORIES.includes(category)) {
-    throw new Error(`Invalid category: ${category}`);
-  }
-
-  if (source && !TERM_SOURCES.includes(source)) {
-    throw new Error(`Invalid source: ${source}`);
-  }
-
   const db = getDb();
 
-  try {
-    // Check for existing term
-    const existing = db
-      .prepare(
-        `
-      SELECT id FROM terminology_terms
-      WHERE english = ? AND (book_id = ? OR (book_id IS NULL AND ? IS NULL))
-    `
-      )
-      .get(english, bookId, bookId);
+  // Check for existing headword
+  const existing = db
+    .prepare('SELECT id FROM terminology_headwords WHERE english = ? AND (pos = ? OR (pos IS NULL AND ? IS NULL))')
+    .get(english, pos || null, pos || null);
 
-    if (existing) {
-      throw new Error(`Term "${english}" already exists`);
-    }
-
-    const result = db
-      .prepare(
-        `
-      INSERT INTO terminology_terms
-        (english, icelandic, alternatives, category, notes, source, source_chapter, book_id, status, definition_en, definition_is, pos, proposed_by, proposed_by_name)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'proposed', ?, ?, ?, ?, ?)
-    `
-      )
-      .run(
-        english,
-        icelandic,
-        alternatives ? JSON.stringify(alternatives) : null,
-        category || 'other',
-        notes,
-        source || 'manual',
-        sourceChapter,
-        bookId,
-        definitionEn || null,
-        definitionIs || null,
-        pos || null,
-        userId,
-        username
-      );
-
-    const term = getTerm(result.lastInsertRowid);
-
-    return term;
-  } catch (err) {
-    throw err;
+  if (existing) {
+    throw new Error(`Term "${english}" already exists`);
   }
+
+  const hwResult = db
+    .prepare('INSERT INTO terminology_headwords (english, pos, definition_en) VALUES (?, ?, ?)')
+    .run(english, pos || null, definitionEn || null);
+
+  const headwordId = hwResult.lastInsertRowid;
+
+  // Add initial translation if icelandic is provided
+  if (icelandic) {
+    addTranslation(
+      headwordId,
+      { icelandic, definitionIs, notes, source, subjects },
+      userId,
+      username
+    );
+  }
+
+  return getHeadword(headwordId);
 }
 
 /**
- * Update a term
- *
- * @param {number} id - Term ID
- * @param {object} updates - Fields to update
- * @returns {object} Updated term
+ * Add a translation to an existing headword.
  */
-function updateTerm(id, updates) {
+function addTranslation(headwordId, data, userId, username) {
+  const { icelandic, definitionIs, inflections, notes, source, subjects, idordabankiId } = data;
+
+  if (!icelandic) {
+    throw new Error('Icelandic translation is required');
+  }
+
   const db = getDb();
 
-  try {
-    const term = db.prepare('SELECT * FROM terminology_terms WHERE id = ?').get(id);
-    if (!term) {
-      throw new Error('Term not found');
+  // Verify headword exists
+  const hw = db.prepare('SELECT id FROM terminology_headwords WHERE id = ?').get(headwordId);
+  if (!hw) {
+    throw new Error('Headword not found');
+  }
+
+  const result = db
+    .prepare(`
+      INSERT INTO terminology_translations
+        (headword_id, icelandic, definition_is, inflections, notes, source, idordabanki_id,
+         status, proposed_by, proposed_by_name)
+      VALUES (?, ?, ?, ?, ?, ?, ?, 'proposed', ?, ?)
+    `)
+    .run(
+      headwordId,
+      icelandic,
+      definitionIs || null,
+      inflections ? JSON.stringify(inflections) : null,
+      notes || null,
+      source || 'manual',
+      idordabankiId || null,
+      userId,
+      username
+    );
+
+  const translationId = result.lastInsertRowid;
+
+  // Add subject tags
+  if (subjects && subjects.length > 0) {
+    const insertSubject = db.prepare(
+      'INSERT OR IGNORE INTO terminology_translation_subjects (translation_id, subject) VALUES (?, ?)'
+    );
+    for (const subj of subjects) {
+      insertSubject.run(translationId, subj);
     }
+  }
 
-    const allowedFields = [
-      'icelandic',
-      'alternatives',
-      'category',
-      'notes',
-      'source',
-      'source_chapter',
-      'definition_en',
-      'definition_is',
-      'pos',
-    ];
-    const setClauses = [];
-    const params = [];
+  return getTranslation(db, translationId);
+}
 
-    for (const [key, value] of Object.entries(updates)) {
-      const snakeKey = key.replace(/([A-Z])/g, '_$1').toLowerCase();
-      if (allowedFields.includes(snakeKey)) {
-        setClauses.push(`${snakeKey} = ?`);
-        if (snakeKey === 'alternatives' && Array.isArray(value)) {
-          params.push(JSON.stringify(value));
-        } else {
-          params.push(value);
-        }
+/**
+ * Update a headword's fields (english, pos, definition_en).
+ */
+function updateHeadword(id, updates) {
+  const db = getDb();
+
+  const hw = db.prepare('SELECT * FROM terminology_headwords WHERE id = ?').get(id);
+  if (!hw) {
+    throw new Error('Headword not found');
+  }
+
+  const allowedFields = ['english', 'pos', 'definition_en'];
+  const setClauses = [];
+  const params = [];
+
+  for (const [key, value] of Object.entries(updates)) {
+    const snakeKey = key.replace(/([A-Z])/g, '_$1').toLowerCase();
+    if (allowedFields.includes(snakeKey)) {
+      setClauses.push(`${snakeKey} = ?`);
+      params.push(value);
+    }
+  }
+
+  if (setClauses.length > 0) {
+    params.push(id);
+    db.prepare(`UPDATE terminology_headwords SET ${setClauses.join(', ')} WHERE id = ?`).run(
+      ...params
+    );
+  }
+
+  return getHeadword(id);
+}
+
+// Alias for backwards compatibility
+const updateTerm = updateHeadword;
+
+/**
+ * Update a translation's fields.
+ */
+function updateTranslation(id, updates) {
+  const db = getDb();
+
+  const tr = db.prepare('SELECT * FROM terminology_translations WHERE id = ?').get(id);
+  if (!tr) {
+    throw new Error('Translation not found');
+  }
+
+  const allowedFields = ['icelandic', 'definition_is', 'inflections', 'notes', 'source'];
+  const setClauses = [];
+  const params = [];
+
+  for (const [key, value] of Object.entries(updates)) {
+    const snakeKey = key.replace(/([A-Z])/g, '_$1').toLowerCase();
+    if (allowedFields.includes(snakeKey)) {
+      setClauses.push(`${snakeKey} = ?`);
+      if (snakeKey === 'inflections' && Array.isArray(value)) {
+        params.push(JSON.stringify(value));
+      } else {
+        params.push(value);
       }
     }
+  }
 
-    if (setClauses.length === 0) {
-      return getTerm(id);
+  // Handle subject updates separately
+  if (updates.subjects && Array.isArray(updates.subjects)) {
+    db.prepare('DELETE FROM terminology_translation_subjects WHERE translation_id = ?').run(id);
+    const insertSubject = db.prepare(
+      'INSERT INTO terminology_translation_subjects (translation_id, subject) VALUES (?, ?)'
+    );
+    for (const subj of updates.subjects) {
+      insertSubject.run(id, subj);
     }
+  }
 
+  if (setClauses.length > 0) {
     params.push(id);
-    db.prepare(`UPDATE terminology_terms SET ${setClauses.join(', ')} WHERE id = ?`).run(...params);
-
-    return getTerm(id);
-  } catch (err) {
-    throw err;
+    db.prepare(`UPDATE terminology_translations SET ${setClauses.join(', ')} WHERE id = ?`).run(
+      ...params
+    );
   }
+
+  return getTranslation(db, id);
 }
 
+// ─────────────────────────────────────────
+// Approval / Dispute workflow
+// ─────────────────────────────────────────
+
 /**
- * Approve a term (HEAD_EDITOR+)
- *
- * @param {number} id - Term ID
- * @param {string} userId - Approving user ID
- * @param {string} username - Approving user name
- * @returns {object} Updated term
+ * Approve a translation.
  */
-function approveTerm(id, userId, username) {
+function approveTranslation(translationId, userId, username) {
   const db = getDb();
 
-  try {
-    const term = db.prepare('SELECT * FROM terminology_terms WHERE id = ?').get(id);
-    if (!term) {
-      throw new Error('Term not found');
-    }
-
-    if (term.status === 'approved') {
-      return getTerm(id);
-    }
-
-    db.prepare(
-      `
-      UPDATE terminology_terms
-      SET status = 'approved', approved_by = ?, approved_by_name = ?, approved_at = CURRENT_TIMESTAMP
-      WHERE id = ?
-    `
-    ).run(userId, username, id);
-
-    return getTerm(id);
-  } catch (err) {
-    throw err;
+  const tr = db.prepare('SELECT * FROM terminology_translations WHERE id = ?').get(translationId);
+  if (!tr) {
+    throw new Error('Translation not found');
   }
+
+  if (tr.status === 'approved') {
+    return getHeadword(tr.headword_id);
+  }
+
+  db.prepare(`
+    UPDATE terminology_translations
+    SET status = 'approved', approved_by = ?, approved_by_name = ?, approved_at = CURRENT_TIMESTAMP
+    WHERE id = ?
+  `).run(userId, username, translationId);
+
+  return getHeadword(tr.headword_id);
 }
 
+// Alias: old API approved "terms" (headwords), new API approves translations
+const approveTerm = approveTranslation;
+
 /**
- * Dispute a term (escalate to review board)
- *
- * @param {number} id - Term ID
- * @param {string} comment - Reason for dispute
- * @param {string} userId - User ID
- * @param {string} username - User name
- * @param {string} proposedTranslation - Alternative translation suggestion
- * @returns {object} Updated term with discussion
+ * Dispute a translation — sets status to disputed, adds discussion on the headword.
  */
-function disputeTerm(id, comment, userId, username, proposedTranslation = null) {
+function disputeTranslation(translationId, comment, userId, username, proposedTranslation = null) {
   const db = getDb();
 
-  try {
-    const term = db.prepare('SELECT * FROM terminology_terms WHERE id = ?').get(id);
-    if (!term) {
-      throw new Error('Term not found');
-    }
+  const tr = db.prepare('SELECT * FROM terminology_translations WHERE id = ?').get(translationId);
+  if (!tr) {
+    throw new Error('Translation not found');
+  }
 
-    // Update status to disputed
-    db.prepare(`UPDATE terminology_terms SET status = 'disputed' WHERE id = ?`).run(id);
+  db.prepare(`UPDATE terminology_translations SET status = 'disputed' WHERE id = ?`).run(
+    translationId
+  );
 
-    // Add discussion entry
-    db.prepare(
-      `
-      INSERT INTO terminology_discussions (term_id, user_id, username, comment, proposed_translation)
+  // Add discussion on the headword
+  db.prepare(`
+    INSERT INTO terminology_discussions (headword_id, user_id, username, comment, proposed_translation)
+    VALUES (?, ?, ?, ?, ?)
+  `).run(tr.headword_id, userId, username, comment, proposedTranslation);
+
+  return getHeadword(tr.headword_id);
+}
+
+const disputeTerm = disputeTranslation;
+
+/**
+ * Add a discussion comment to a headword.
+ */
+function addDiscussion(headwordId, comment, userId, username, proposedTranslation = null) {
+  const db = getDb();
+
+  const hw = db.prepare('SELECT id FROM terminology_headwords WHERE id = ?').get(headwordId);
+  if (!hw) {
+    throw new Error('Headword not found');
+  }
+
+  const result = db
+    .prepare(`
+      INSERT INTO terminology_discussions (headword_id, user_id, username, comment, proposed_translation)
       VALUES (?, ?, ?, ?, ?)
-    `
-    ).run(id, userId, username, comment, proposedTranslation);
+    `)
+    .run(headwordId, userId, username, comment, proposedTranslation);
 
-    return getTerm(id);
-  } catch (err) {
-    throw err;
-  }
+  return db.prepare('SELECT * FROM terminology_discussions WHERE id = ?').get(result.lastInsertRowid);
 }
 
-/**
- * Add discussion comment to a term
- *
- * @param {number} termId - Term ID
- * @param {string} comment - Comment text
- * @param {string} userId - User ID
- * @param {string} username - User name
- * @param {string} proposedTranslation - Optional alternative suggestion
- * @returns {object} Created discussion entry
- */
-function addDiscussion(termId, comment, userId, username, proposedTranslation = null) {
-  const db = getDb();
-
-  try {
-    const term = db.prepare('SELECT id FROM terminology_terms WHERE id = ?').get(termId);
-    if (!term) {
-      throw new Error('Term not found');
-    }
-
-    const result = db
-      .prepare(
-        `
-      INSERT INTO terminology_discussions (term_id, user_id, username, comment, proposed_translation)
-      VALUES (?, ?, ?, ?, ?)
-    `
-      )
-      .run(termId, userId, username, comment, proposedTranslation);
-
-    const discussion = db
-      .prepare('SELECT * FROM terminology_discussions WHERE id = ?')
-      .get(result.lastInsertRowid);
-
-    return discussion;
-  } catch (err) {
-    throw err;
-  }
-}
+// ─────────────────────────────────────────
+// Review queue
+// ─────────────────────────────────────────
 
 /**
- * Get terms requiring review (disputed or needs_review)
- *
- * @param {object} options - Filter options
- * @returns {object[]} Terms needing review
+ * Get translations needing review (disputed or needs_review).
  */
 function getReviewQueue(options = {}) {
-  const { bookId, limit = 50, offset = 0 } = options;
+  const { subject, limit = 50, offset = 0 } = options;
   const db = getDb();
 
-  try {
-    let sql = `
-      SELECT
-        t.*,
-        rb.slug as book_slug,
-        rb.title_is as book_title,
-        (SELECT COUNT(*) FROM terminology_discussions WHERE term_id = t.id) as discussion_count
-      FROM terminology_terms t
-      LEFT JOIN registered_books rb ON t.book_id = rb.id
-      WHERE t.status IN ('disputed', 'needs_review')
-    `;
-    const params = [];
+  let sql = `
+    SELECT DISTINCT h.id
+    FROM terminology_headwords h
+    JOIN terminology_translations t ON t.headword_id = h.id
+  `;
+  const params = [];
 
-    if (bookId) {
-      sql += ` AND (t.book_id = ? OR t.book_id IS NULL)`;
-      params.push(bookId);
-    }
-
-    sql += ` ORDER BY t.updated_at DESC LIMIT ? OFFSET ?`;
-    params.push(limit, offset);
-
-    const terms = db.prepare(sql).all(...params);
-
-    return terms.map(formatTerm);
-  } catch (err) {
-    throw err;
+  if (subject) {
+    sql += ` JOIN terminology_translation_subjects ts ON ts.translation_id = t.id`;
   }
+
+  sql += ` WHERE t.status IN ('disputed', 'needs_review')`;
+
+  if (subject) {
+    sql += ` AND ts.subject = ?`;
+    params.push(subject);
+  }
+
+  sql += ` ORDER BY h.updated_at DESC LIMIT ? OFFSET ?`;
+  params.push(limit, offset);
+
+  const ids = db.prepare(sql).all(...params).map(r => r.id);
+  return ids.map(id => loadHeadword(db, id));
 }
 
+// ─────────────────────────────────────────
+// Delete
+// ─────────────────────────────────────────
+
 /**
- * Import terms from CSV file
- *
- * @param {string} filePath - Path to CSV file
- * @param {string} userId - Importing user ID
- * @param {string} username - Importing user name
- * @param {object} options - Import options
- * @returns {object} Import results
+ * Delete a headword and all its translations (CASCADE).
+ */
+function deleteHeadword(id) {
+  const db = getDb();
+  const result = db.prepare('DELETE FROM terminology_headwords WHERE id = ?').run(id);
+  return { success: result.changes > 0 };
+}
+
+const deleteTerm = deleteHeadword;
+
+/**
+ * Delete a single translation.
+ */
+function deleteTranslation(id) {
+  const db = getDb();
+  const result = db.prepare('DELETE FROM terminology_translations WHERE id = ?').run(id);
+  return { success: result.changes > 0 };
+}
+
+// ─────────────────────────────────────────
+// Stats
+// ─────────────────────────────────────────
+
+function getStats(subject = null) {
+  const db = getDb();
+
+  const headwordCount = db
+    .prepare('SELECT COUNT(*) as total FROM terminology_headwords')
+    .get().total;
+
+  let translationWhere = '';
+  const params = [];
+  if (subject) {
+    translationWhere = `
+      WHERE t.id IN (
+        SELECT translation_id FROM terminology_translation_subjects WHERE subject = ?
+      )
+    `;
+    params.push(subject);
+  }
+
+  const stats = db
+    .prepare(`
+      SELECT
+        COUNT(*) as total,
+        SUM(CASE WHEN t.status = 'approved' THEN 1 ELSE 0 END) as approved,
+        SUM(CASE WHEN t.status = 'proposed' THEN 1 ELSE 0 END) as proposed,
+        SUM(CASE WHEN t.status = 'disputed' THEN 1 ELSE 0 END) as disputed,
+        SUM(CASE WHEN t.status = 'needs_review' THEN 1 ELSE 0 END) as needs_review
+      FROM terminology_translations t
+      ${translationWhere}
+    `)
+    .get(...params);
+
+  const bySubject = db
+    .prepare(`
+      SELECT ts.subject, COUNT(DISTINCT ts.translation_id) as count
+      FROM terminology_translation_subjects ts
+      GROUP BY ts.subject
+      ORDER BY count DESC
+    `)
+    .all();
+
+  const bySource = db
+    .prepare(`
+      SELECT source, COUNT(*) as count
+      FROM terminology_translations
+      GROUP BY source
+      ORDER BY count DESC
+    `)
+    .all();
+
+  return {
+    headwords: headwordCount,
+    total: stats?.total || 0,
+    byStatus: {
+      approved: stats?.approved || 0,
+      proposed: stats?.proposed || 0,
+      disputed: stats?.disputed || 0,
+      needsReview: stats?.needs_review || 0,
+    },
+    bySubject: bySubject.reduce((acc, row) => {
+      acc[row.subject] = row.count;
+      return acc;
+    }, {}),
+    bySource: bySource.reduce((acc, row) => {
+      acc[row.source] = row.count;
+      return acc;
+    }, {}),
+  };
+}
+
+// ─────────────────────────────────────────
+// Import functions
+// ─────────────────────────────────────────
+
+/**
+ * Import terms from CSV. Creates headwords + translations.
  */
 function importFromCSV(filePath, userId, username, options = {}) {
   if (!csvParse) {
     throw new Error('CSV import requires csv-parse package. Run: npm install csv-parse');
   }
 
-  const { bookId = null, overwrite = false } = options;
+  const { subjects = [], overwrite = false } = options;
 
   if (!fs.existsSync(filePath)) {
     throw new Error(`File not found: ${filePath}`);
   }
 
   const content = fs.readFileSync(filePath, 'utf8');
-  const records = csvParse(content, {
-    columns: true,
-    skip_empty_lines: true,
-    trim: true,
-  });
+  const records = csvParse(content, { columns: true, skip_empty_lines: true, trim: true });
 
   const db = getDb();
   let added = 0;
   let updated = 0;
   let skipped = 0;
 
-  try {
-    const insertStmt = db.prepare(`
-      INSERT INTO terminology_terms
-        (english, icelandic, alternatives, category, notes, source, book_id, status, proposed_by, proposed_by_name)
-      VALUES (?, ?, ?, ?, ?, 'imported-csv', ?, ?, ?, ?)
-    `);
+  const checkTranslation = db.prepare(`
+    SELECT id, status FROM terminology_translations
+    WHERE headword_id = ? AND icelandic = ?
+  `);
 
-    const updateStmt = db.prepare(`
-      UPDATE terminology_terms
-      SET icelandic = ?, alternatives = ?, category = ?, notes = ?, source = 'imported-csv'
-      WHERE english = ? AND (book_id = ? OR (book_id IS NULL AND ? IS NULL))
-    `);
+  const insertTranslationStmt = db.prepare(`
+    INSERT INTO terminology_translations
+      (headword_id, icelandic, source, status, proposed_by, proposed_by_name)
+    VALUES (?, ?, 'imported-csv', 'proposed', ?, ?)
+  `);
 
-    const checkStmt = db.prepare(`
-      SELECT id, status FROM terminology_terms
-      WHERE english = ? AND (book_id = ? OR (book_id IS NULL AND ? IS NULL))
-    `);
+  const insertSubject = db.prepare(`
+    INSERT OR IGNORE INTO terminology_translation_subjects (translation_id, subject)
+    VALUES (?, ?)
+  `);
 
-    for (const record of records) {
-      const english = record.english || record.English || record.en;
-      const icelandic = record.icelandic || record.Icelandic || record.is;
-      const category = record.category || record.Category || 'other';
-      const notes = record.notes || record.Notes || null;
-      const status = record.status || record.Status || 'proposed';
+  for (const record of records) {
+    const english = record.english || record.English || record.en;
+    const icelandic = record.icelandic || record.Icelandic || record.is;
+    const pos = record.pos || record.POS || null;
+    const defEn = record.definition_en || record.definition || null;
 
-      if (!english || !icelandic) {
-        skipped++;
-        continue;
-      }
-
-      const existing = checkStmt.get(english, bookId, bookId);
-
-      if (existing) {
-        if (overwrite && existing.status !== 'approved') {
-          updateStmt.run(icelandic, null, category, notes, english, bookId, bookId);
-          updated++;
-        } else {
-          skipped++;
-        }
-      } else {
-        insertStmt.run(english, icelandic, null, category, notes, bookId, status, userId, username);
-        added++;
-      }
+    if (!english || !icelandic) {
+      skipped++;
+      continue;
     }
 
-    // Log import
-    db.prepare(
-      `
-      INSERT INTO terminology_imports (source_name, file_name, imported_by, imported_by_name, terms_added, terms_updated, terms_skipped)
-      VALUES ('csv', ?, ?, ?, ?, ?, ?)
-    `
-    ).run(path.basename(filePath), userId, username, added, updated, skipped);
+    const hw = upsertHeadword(db, english, pos, defEn);
+    const headwordId = hw.id;
 
-    return {
-      success: true,
-      added,
-      updated,
-      skipped,
-      total: records.length,
-    };
-  } catch (err) {
-    throw err;
+    const existing = checkTranslation.get(headwordId, icelandic);
+    if (existing) {
+      if (overwrite && existing.status !== 'approved') {
+        updated++;
+      } else {
+        skipped++;
+      }
+    } else {
+      const trResult = insertTranslationStmt.run(headwordId, icelandic, userId, username);
+      const translationId = trResult.lastInsertRowid;
+      for (const subj of subjects) {
+        insertSubject.run(translationId, subj);
+      }
+      added++;
+    }
   }
+
+  return { success: true, added, updated, skipped, total: records.length };
 }
 
 /**
- * Import terms from Excel file (Chemistry Association format)
- *
- * @param {Buffer|string} fileContent - Excel file content or path
- * @param {string} userId - Importing user ID
- * @param {string} username - Importing user name
- * @param {object} options - Import options
- * @returns {object} Import results
+ * Import terms from Excel file.
  */
 async function importFromExcel(fileContent, userId, username, options = {}) {
-  // Dynamic import for xlsx (optional dependency)
   let XLSX;
   try {
     XLSX = require('xlsx');
@@ -675,7 +698,7 @@ async function importFromExcel(fileContent, userId, username, options = {}) {
     throw new Error('xlsx package not installed. Run: npm install xlsx');
   }
 
-  const { bookId = null, sheetName = null } = options;
+  const { subjects = [], sheetName = null } = options;
 
   const workbook =
     typeof fileContent === 'string'
@@ -683,7 +706,6 @@ async function importFromExcel(fileContent, userId, username, options = {}) {
       : XLSX.read(fileContent, { type: 'buffer' });
 
   const sheet = sheetName ? workbook.Sheets[sheetName] : workbook.Sheets[workbook.SheetNames[0]];
-
   if (!sheet) {
     throw new Error('No sheet found in Excel file');
   }
@@ -691,215 +713,59 @@ async function importFromExcel(fileContent, userId, username, options = {}) {
   const data = XLSX.utils.sheet_to_json(sheet);
   const db = getDb();
   let added = 0;
-  const updated = 0;
   let skipped = 0;
 
-  try {
-    const insertStmt = db.prepare(`
-      INSERT INTO terminology_terms
-        (english, icelandic, alternatives, category, notes, source, book_id, status, proposed_by, proposed_by_name)
-      VALUES (?, ?, ?, ?, ?, 'chemistry-association', ?, 'proposed', ?, ?)
-    `);
+  const checkTranslation = db.prepare(`
+    SELECT id FROM terminology_translations WHERE headword_id = ? AND icelandic = ?
+  `);
 
-    const checkStmt = db.prepare(`
-      SELECT id FROM terminology_terms
-      WHERE english = ? AND (book_id = ? OR (book_id IS NULL AND ? IS NULL))
-    `);
+  const insertTranslationStmt = db.prepare(`
+    INSERT INTO terminology_translations
+      (headword_id, icelandic, notes, source, status, proposed_by, proposed_by_name)
+    VALUES (?, ?, ?, 'imported-excel', 'proposed', ?, ?)
+  `);
 
-    for (const row of data) {
-      // Try common column names for English/Icelandic
-      const english =
-        row.English ||
-        row.english ||
-        row.EN ||
-        row.en ||
-        row['English term'] ||
-        row['Enska'] ||
-        Object.values(row)[0];
-      const icelandic =
-        row.Icelandic ||
-        row.icelandic ||
-        row.IS ||
-        row.is ||
-        row['Icelandic term'] ||
-        row['Íslenska'] ||
-        Object.values(row)[1];
+  const insertSubject = db.prepare(`
+    INSERT OR IGNORE INTO terminology_translation_subjects (translation_id, subject)
+    VALUES (?, ?)
+  `);
 
-      if (!english || !icelandic) {
-        skipped++;
-        continue;
-      }
+  for (const row of data) {
+    const english =
+      row.English || row.english || row.EN || row.en ||
+      row['English term'] || row['Enska'] || Object.values(row)[0];
+    const icelandic =
+      row.Icelandic || row.icelandic || row.IS || row.is ||
+      row['Icelandic term'] || row['Íslenska'] || Object.values(row)[1];
 
-      const existing = checkStmt.get(english, bookId, bookId);
-
-      if (existing) {
-        skipped++;
-      } else {
-        const category = row.Category || row.category || row.Flokkur || 'other';
-        const notes = row.Notes || row.notes || row.Athugasemdir || null;
-        insertStmt.run(english, icelandic, null, category, notes, bookId, userId, username);
-        added++;
-      }
+    if (!english || !icelandic) {
+      skipped++;
+      continue;
     }
 
-    // Log import
-    db.prepare(
-      `
-      INSERT INTO terminology_imports (source_name, file_name, imported_by, imported_by_name, terms_added, terms_updated, terms_skipped)
-      VALUES ('excel', 'chemistry-association.xlsx', ?, ?, ?, ?, ?)
-    `
-    ).run(userId, username, added, updated, skipped);
+    const hw = upsertHeadword(db, english, null, null);
+    const existing = checkTranslation.get(hw.id, icelandic);
 
-    return {
-      success: true,
-      added,
-      updated,
-      skipped,
-      total: data.length,
-    };
-  } catch (err) {
-    throw err;
-  }
-}
-
-/**
- * Extract terms from key-terms markdown files
- *
- * @param {string} bookSlug - Book slug
- * @param {number} chapterNum - Chapter number (optional, extracts all if not specified)
- * @param {string} userId - Importing user ID
- * @param {string} username - Importing user name
- * @returns {object} Extraction results
- */
-function importFromKeyTerms(bookSlug, chapterNum, userId, username) {
-  const db = getDb();
-
-  try {
-    // Get book ID
-    const book = db.prepare('SELECT id FROM registered_books WHERE slug = ?').get(bookSlug);
-    if (!book) {
-      throw new Error(`Book not found: ${bookSlug}`);
-    }
-
-    // Find key-terms files
-    const pubDir = path.join(BOOKS_DIR, bookSlug, '05-publication');
-    let keyTermsFiles = [];
-
-    if (chapterNum) {
-      const chDir = `ch${String(chapterNum).padStart(2, '0')}`;
-      const pattern = path.join(pubDir, 'faithful', 'chapters', chDir, '*-key-terms.md');
-      keyTermsFiles = findFiles(pattern);
-      if (keyTermsFiles.length === 0) {
-        // Try mt-preview
-        const mtPattern = path.join(pubDir, 'mt-preview', 'chapters', chDir, '*-key-terms.md');
-        keyTermsFiles = findFiles(mtPattern);
-      }
+    if (existing) {
+      skipped++;
     } else {
-      // Find all key-terms files
-      keyTermsFiles = findFilesRecursive(pubDir, '-key-terms.md');
-    }
-
-    if (keyTermsFiles.length === 0) {
-      return { success: true, added: 0, skipped: 0, total: 0, message: 'No key-terms files found' };
-    }
-
-    let added = 0;
-    let skipped = 0;
-    let total = 0;
-
-    const insertStmt = db.prepare(`
-      INSERT INTO terminology_terms
-        (english, icelandic, category, notes, source, source_chapter, book_id, status, proposed_by, proposed_by_name)
-      VALUES (?, ?, 'chapter-glossary', ?, 'chapter-glossary', ?, ?, 'proposed', ?, ?)
-    `);
-
-    const checkStmt = db.prepare(`
-      SELECT id FROM terminology_terms WHERE english = ? AND book_id = ?
-    `);
-
-    // Regex to match definition blocks
-    const definitionRegex = /:::definition\{term="([^"]+)"\}\s*([\s\S]*?):::/g;
-
-    for (const file of keyTermsFiles) {
-      const content = fs.readFileSync(file, 'utf8');
-      const chapter = extractChapterNum(file);
-      let match;
-
-      while ((match = definitionRegex.exec(content)) !== null) {
-        total++;
-        const term = match[1].trim();
-        const definition = match[2].trim();
-
-        // Try to extract Icelandic translation from definition
-        // Assumes format: "Icelandic term - definition" or just definition
-        const parts = definition.split(/\s*[-–—]\s*/);
-        const icelandic = parts[0].trim();
-
-        if (!icelandic || icelandic.length > 100) {
-          skipped++;
-          continue;
-        }
-
-        const existing = checkStmt.get(term, book.id);
-        if (existing) {
-          skipped++;
-          continue;
-        }
-
-        insertStmt.run(
-          term,
-          icelandic,
-          definition.substring(0, 500),
-          chapter,
-          book.id,
-          userId,
-          username
-        );
-        added++;
+      const notes = row.Notes || row.notes || row.Athugasemdir || null;
+      const trResult = insertTranslationStmt.run(hw.id, icelandic, notes, userId, username);
+      for (const subj of subjects) {
+        insertSubject.run(trResult.lastInsertRowid, subj);
       }
+      added++;
     }
-
-    // Log import
-    if (added > 0) {
-      db.prepare(
-        `
-        INSERT INTO terminology_imports (source_name, file_name, imported_by, imported_by_name, terms_added, terms_skipped)
-        VALUES ('key-terms', ?, ?, ?, ?, ?)
-      `
-      ).run(`${bookSlug}/ch${chapterNum || 'all'}`, userId, username, added, skipped);
-    }
-
-    return {
-      success: true,
-      added,
-      skipped,
-      total,
-      filesProcessed: keyTermsFiles.length,
-    };
-  } catch (err) {
-    throw err;
   }
+
+  return { success: true, added, updated: 0, skipped, total: data.length };
 }
 
 /**
  * Import glossary terms with definition merging and placeholder support.
- *
- * Algorithm:
- * - Existing approved terms: enrich with definitions (COALESCE), never change icelandic/status
- * - Existing non-approved terms: update definitions and icelandic if provided
- * - New terms with icelandic: insert as 'needs_review'
- * - New terms without icelandic: insert as 'proposed' (placeholder)
- *
- * @param {Array<{english, icelandic, category, notes, definition_en, definition_is}>} terms
- * @param {string} userId - Importing user ID
- * @param {string} username - Importing user name
- * @param {object} options - Import options
- * @param {number} options.bookId - Book ID
- * @param {string} options.source - Source tag (default: 'openstax-glossary')
- * @returns {{ added: number, updated: number, enriched: number, skipped: number, errors: string[] }}
  */
 function importGlossaryTerms(terms, userId, username, options = {}) {
-  const { bookId = null, source = 'openstax-glossary' } = options;
+  const { subjects = [], source = 'openstax-glossary' } = options;
 
   if (source && !TERM_SOURCES.includes(source)) {
     throw new Error(`Invalid source: ${source}`);
@@ -912,238 +778,433 @@ function importGlossaryTerms(terms, userId, username, options = {}) {
   let skipped = 0;
   const errors = [];
 
-  try {
-    const checkStmt = db.prepare(`
-      SELECT id, status, icelandic, definition_en, definition_is
-      FROM terminology_terms
-      WHERE english = ? AND (book_id = ? OR (book_id IS NULL AND ? IS NULL))
-    `);
+  const importAll = db.transaction(() => {
+    for (const term of terms) {
+      const english = (term.english || '').trim();
+      if (!english) {
+        skipped++;
+        continue;
+      }
 
-    const enrichStmt = db.prepare(`
-      UPDATE terminology_terms
-      SET definition_en = COALESCE(definition_en, ?),
-          definition_is = COALESCE(definition_is, ?),
-          updated_at = CURRENT_TIMESTAMP
-      WHERE id = ?
-    `);
+      const icelandic = (term.icelandic || '').trim() || null;
+      const defEn = term.definition_en || null;
+      const defIs = term.definition_is || null;
 
-    const updateStmt = db.prepare(`
-      UPDATE terminology_terms
-      SET definition_en = COALESCE(definition_en, ?),
-          definition_is = COALESCE(definition_is, ?),
-          icelandic = CASE WHEN ? IS NOT NULL AND ? != '' THEN ? ELSE icelandic END,
-          updated_at = CURRENT_TIMESTAMP
-      WHERE id = ?
-    `);
+      try {
+        const hw = upsertHeadword(db, english, null, defEn);
 
-    const insertStmt = db.prepare(`
-      INSERT INTO terminology_terms
-        (english, icelandic, category, notes, source, book_id, status,
-         definition_en, definition_is, proposed_by, proposed_by_name)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `);
-
-    const importAll = db.transaction(() => {
-      for (const term of terms) {
-        const english = (term.english || '').trim();
-        if (!english) {
-          skipped++;
+        if (!icelandic) {
+          // Placeholder — headword only, no translation
+          added++;
           continue;
         }
 
-        const icelandic = (term.icelandic || '').trim() || null;
-        const category = term.category || 'other';
-        const notes = term.notes || null;
-        const defEn = term.definition_en || null;
-        const defIs = term.definition_is || null;
+        // Check if this translation already exists
+        const existingTr = db
+          .prepare('SELECT id, status FROM terminology_translations WHERE headword_id = ? AND icelandic = ?')
+          .get(hw.id, icelandic);
 
-        try {
-          const existing = checkStmt.get(english, bookId, bookId);
-
-          if (existing) {
-            if (existing.status === 'approved') {
-              // Enrich with definitions only — don't touch icelandic/status
-              enrichStmt.run(defEn, defIs, existing.id);
-              enriched++;
-            } else {
-              // Update definitions + icelandic if provided
-              updateStmt.run(defEn, defIs, icelandic, icelandic, icelandic, existing.id);
-              updated++;
+        if (existingTr) {
+          if (existingTr.status === 'approved') {
+            // Enrich with definition only
+            if (defIs) {
+              db.prepare(`
+                UPDATE terminology_translations
+                SET definition_is = COALESCE(definition_is, ?)
+                WHERE id = ?
+              `).run(defIs, existingTr.id);
             }
+            enriched++;
           } else {
-            // New term
-            const status = icelandic ? 'needs_review' : 'proposed';
-            insertStmt.run(
-              english,
-              icelandic,
-              category,
-              notes,
-              source,
-              bookId,
-              status,
-              defEn,
-              defIs,
-              userId,
-              username
-            );
-            added++;
+            // Update definition
+            if (defIs) {
+              db.prepare(`
+                UPDATE terminology_translations SET definition_is = COALESCE(definition_is, ?) WHERE id = ?
+              `).run(defIs, existingTr.id);
+            }
+            updated++;
           }
-        } catch (err) {
-          errors.push(`${english}: ${err.message}`);
+        } else {
+          // New translation
+          const status = 'needs_review';
+          const trResult = db
+            .prepare(`
+              INSERT INTO terminology_translations
+                (headword_id, icelandic, definition_is, source, status, proposed_by, proposed_by_name)
+              VALUES (?, ?, ?, ?, ?, ?, ?)
+            `)
+            .run(hw.id, icelandic, defIs, source, status, userId, username);
+
+          // Add subjects
+          const insertSubject = db.prepare(
+            'INSERT OR IGNORE INTO terminology_translation_subjects (translation_id, subject) VALUES (?, ?)'
+          );
+          for (const subj of subjects) {
+            insertSubject.run(trResult.lastInsertRowid, subj);
+          }
+          added++;
+        }
+      } catch (err) {
+        errors.push(`${english}: ${err.message}`);
+      }
+    }
+  });
+
+  importAll();
+
+  return { success: true, added, updated, enriched, skipped, errors, total: terms.length };
+}
+
+/**
+ * Import key terms from markdown files.
+ */
+function importFromKeyTerms(bookSlug, chapterNum, userId, username) {
+  const db = getDb();
+
+  const book = db.prepare('SELECT id FROM registered_books WHERE slug = ?').get(bookSlug);
+  if (!book) {
+    throw new Error(`Book not found: ${bookSlug}`);
+  }
+
+  // Determine subject from book mapping
+  const mapping = db
+    .prepare('SELECT primary_subject FROM book_subject_mapping WHERE book_id = ?')
+    .get(book.id);
+  const subjects = mapping ? [mapping.primary_subject] : [];
+
+  const pubDir = path.join(BOOKS_DIR, bookSlug, '05-publication');
+  let keyTermsFiles = [];
+
+  if (chapterNum) {
+    const chDir = `ch${String(chapterNum).padStart(2, '0')}`;
+    const pattern = path.join(pubDir, 'faithful', 'chapters', chDir, '*-key-terms.md');
+    keyTermsFiles = findFiles(pattern);
+    if (keyTermsFiles.length === 0) {
+      const mtPattern = path.join(pubDir, 'mt-preview', 'chapters', chDir, '*-key-terms.md');
+      keyTermsFiles = findFiles(mtPattern);
+    }
+  } else {
+    keyTermsFiles = findFilesRecursive(pubDir, '-key-terms.md');
+  }
+
+  if (keyTermsFiles.length === 0) {
+    return { success: true, added: 0, skipped: 0, total: 0, message: 'No key-terms files found' };
+  }
+
+  let added = 0;
+  let skipped = 0;
+  let total = 0;
+
+  const checkTranslation = db.prepare(`
+    SELECT id FROM terminology_translations WHERE headword_id = ? AND icelandic = ?
+  `);
+
+  const insertTranslationStmt = db.prepare(`
+    INSERT INTO terminology_translations
+      (headword_id, icelandic, notes, source, status, proposed_by, proposed_by_name)
+    VALUES (?, ?, ?, 'chapter-glossary', 'proposed', ?, ?)
+  `);
+
+  const insertSubjectStmt = db.prepare(`
+    INSERT OR IGNORE INTO terminology_translation_subjects (translation_id, subject)
+    VALUES (?, ?)
+  `);
+
+  const definitionRegex = /:::definition\{term="([^"]+)"\}\s*([\s\S]*?):::/g;
+
+  for (const file of keyTermsFiles) {
+    const content = fs.readFileSync(file, 'utf8');
+    let match;
+
+    while ((match = definitionRegex.exec(content)) !== null) {
+      total++;
+      const term = match[1].trim();
+      const definition = match[2].trim();
+
+      const parts = definition.split(/\s*[-–—]\s*/);
+      const icelandic = parts[0].trim();
+
+      if (!icelandic || icelandic.length > 100) {
+        skipped++;
+        continue;
+      }
+
+      const hw = upsertHeadword(db, term, null, null);
+      const existing = checkTranslation.get(hw.id, icelandic);
+      if (existing) {
+        skipped++;
+        continue;
+      }
+
+      const trResult = insertTranslationStmt.run(
+        hw.id, icelandic, definition.substring(0, 500), userId, username
+      );
+      for (const subj of subjects) {
+        insertSubjectStmt.run(trResult.lastInsertRowid, subj);
+      }
+      added++;
+    }
+  }
+
+  return { success: true, added, skipped, total, filesProcessed: keyTermsFiles.length };
+}
+
+// ─────────────────────────────────────────
+// Segment term matching
+// ─────────────────────────────────────────
+
+/**
+ * Find terminology matches in segments.
+ * Uses inflection-aware matching and domain priority ranking.
+ *
+ * @param {Array<{segmentId, enContent, isContent}>} segments
+ * @param {string|null} bookSlug - Book slug for domain priority
+ * @returns {object} Map of segmentId → { matches, issues }
+ */
+function findTermsInSegments(segments, bookSlug = null) {
+  const db = getDb();
+
+  // Get book's primary subject
+  const bookSubject = bookSlug ? getBookSubjectBySlug(db, bookSlug) : null;
+
+  // Load all headwords with approved/proposed translations
+  const headwords = db
+    .prepare(`
+      SELECT h.id as headword_id, h.english,
+             t.id as translation_id, t.icelandic, t.inflections, t.status,
+             GROUP_CONCAT(ts.subject) as subjects
+      FROM terminology_headwords h
+      JOIN terminology_translations t ON t.headword_id = h.id
+      LEFT JOIN terminology_translation_subjects ts ON ts.translation_id = t.id
+      WHERE t.status IN ('approved', 'proposed')
+      GROUP BY h.id, t.id
+      ORDER BY LENGTH(h.english) DESC
+    `)
+    .all();
+
+  // Group translations by headword
+  const termMap = new Map();
+  for (const row of headwords) {
+    if (!termMap.has(row.headword_id)) {
+      termMap.set(row.headword_id, {
+        headwordId: row.headword_id,
+        english: row.english,
+        regex: new RegExp(`\\b${escapeRegex(row.english)}\\b`, 'gi'),
+        translations: [],
+      });
+    }
+    const inflections = row.inflections ? JSON.parse(row.inflections) : [];
+    const subjects = row.subjects ? row.subjects.split(',') : [];
+
+    termMap.get(row.headword_id).translations.push({
+      id: row.translation_id,
+      icelandic: row.icelandic,
+      inflections,
+      status: row.status,
+      subjects,
+      isPrimary: bookSubject ? subjects.includes(bookSubject) : false,
+      // Build regex for icelandic + all inflections
+      isRegex: buildInflectionRegex(row.icelandic, inflections),
+    });
+  }
+
+  const terms = Array.from(termMap.values());
+  const result = {};
+
+  for (const seg of segments) {
+    const matches = [];
+    const issues = [];
+
+    if (!seg.enContent) {
+      result[seg.segmentId] = { matches, issues };
+      continue;
+    }
+
+    for (const term of terms) {
+      term.regex.lastIndex = 0;
+      const enMatch = term.regex.exec(seg.enContent);
+
+      if (enMatch) {
+        // Find best translation (primary domain first)
+        const sorted = [...term.translations].sort((a, b) => {
+          if (a.isPrimary && !b.isPrimary) return -1;
+          if (!a.isPrimary && b.isPrimary) return 1;
+          if (a.status === 'approved' && b.status !== 'approved') return -1;
+          if (a.status !== 'approved' && b.status === 'approved') return 1;
+          return 0;
+        });
+
+        const primary = sorted[0];
+        matches.push({
+          headwordId: term.headwordId,
+          english: term.english,
+          icelandic: primary.icelandic,
+          subjects: primary.subjects,
+          status: primary.status,
+          isPrimary: primary.isPrimary,
+          position: enMatch.index,
+          translations: sorted.map(t => ({
+            id: t.id,
+            icelandic: t.icelandic,
+            subjects: t.subjects,
+            status: t.status,
+            isPrimary: t.isPrimary,
+          })),
+        });
+
+        // Check if any approved translation appears in IS text
+        if (seg.isContent) {
+          const approvedTranslations = term.translations.filter(t => t.status === 'approved');
+          if (approvedTranslations.length > 0) {
+            const anyFound = approvedTranslations.some(t => {
+              t.isRegex.lastIndex = 0;
+              return t.isRegex.test(seg.isContent);
+            });
+
+            if (!anyFound) {
+              issues.push({
+                type: 'missing',
+                headwordId: term.headwordId,
+                english: term.english,
+                expected: approvedTranslations[0].icelandic,
+                message: `„${term.english}" → „${approvedTranslations[0].icelandic}" fannst ekki`,
+              });
+            }
+          }
         }
       }
-    });
+    }
 
-    importAll();
-
-    // Log import
-    db.prepare(
-      `
-      INSERT INTO terminology_imports
-        (source_name, file_name, imported_by, imported_by_name, terms_added, terms_updated, terms_skipped)
-      VALUES (?, ?, ?, ?, ?, ?, ?)
-    `
-    ).run(source, 'glossary-import', userId, username, added, updated + enriched, skipped);
-
-    return { success: true, added, updated, enriched, skipped, errors, total: terms.length };
-  } catch (err) {
-    throw err;
+    result[seg.segmentId] = { matches, issues };
   }
+
+  return result;
 }
+
+// ─────────────────────────────────────────
+// Helpers
+// ─────────────────────────────────────────
 
 /**
- * Get terminology statistics
- *
- * @param {number} bookId - Optional book filter
- * @returns {object} Statistics
+ * Load a full headword with translations, subjects, and optionally discussions.
  */
-function getStats(bookId = null) {
-  const db = getDb();
+function loadHeadword(db, id, options = {}) {
+  const hw = db
+    .prepare(`
+      SELECT h.* FROM terminology_headwords h WHERE h.id = ?
+    `)
+    .get(id);
 
-  try {
-    const whereClause = bookId ? 'WHERE book_id = ? OR book_id IS NULL' : '';
-    const params = bookId ? [bookId] : [];
+  if (!hw) return null;
 
-    const stats = db
-      .prepare(
-        `
-      SELECT
-        COUNT(*) as total,
-        SUM(CASE WHEN status = 'approved' THEN 1 ELSE 0 END) as approved,
-        SUM(CASE WHEN status = 'proposed' THEN 1 ELSE 0 END) as proposed,
-        SUM(CASE WHEN status = 'disputed' THEN 1 ELSE 0 END) as disputed,
-        SUM(CASE WHEN status = 'needs_review' THEN 1 ELSE 0 END) as needs_review
-      FROM terminology_terms
-      ${whereClause}
-    `
-      )
-      .get(...params);
+  // Load translations
+  const translations = db
+    .prepare(`
+      SELECT t.*
+      FROM terminology_translations t
+      WHERE t.headword_id = ?
+      ORDER BY t.status = 'approved' DESC, t.created_at ASC
+    `)
+    .all(id);
 
-    // Get by category
-    const byCategory = db
-      .prepare(
-        `
-      SELECT category, COUNT(*) as count
-      FROM terminology_terms
-      ${whereClause}
-      GROUP BY category
-      ORDER BY count DESC
-    `
-      )
-      .all(...params);
+  // Load subjects for each translation
+  const subjectStmt = db.prepare(
+    'SELECT subject FROM terminology_translation_subjects WHERE translation_id = ?'
+  );
 
-    // Get by source
-    const bySource = db
-      .prepare(
-        `
-      SELECT source, COUNT(*) as count
-      FROM terminology_terms
-      ${whereClause}
-      GROUP BY source
-      ORDER BY count DESC
-    `
-      )
-      .all(...params);
+  const formattedTranslations = translations.map(t => ({
+    id: t.id,
+    icelandic: t.icelandic,
+    definitionIs: t.definition_is || null,
+    inflections: t.inflections ? JSON.parse(t.inflections) : [],
+    source: t.source,
+    idordabankiId: t.idordabanki_id || null,
+    notes: t.notes,
+    status: t.status,
+    proposedBy: t.proposed_by,
+    proposedByName: t.proposed_by_name,
+    approvedBy: t.approved_by,
+    approvedByName: t.approved_by_name,
+    approvedAt: t.approved_at,
+    createdAt: t.created_at,
+    updatedAt: t.updated_at,
+    subjects: subjectStmt.all(t.id).map(s => s.subject),
+  }));
 
-    // Recent imports
-    const recentImports = db
-      .prepare(
-        `
-      SELECT * FROM terminology_imports
-      ORDER BY imported_at DESC
-      LIMIT 5
-    `
-      )
-      .all();
-
-    return {
-      total: stats?.total || 0,
-      byStatus: {
-        approved: stats?.approved || 0,
-        proposed: stats?.proposed || 0,
-        disputed: stats?.disputed || 0,
-        needsReview: stats?.needs_review || 0,
-      },
-      byCategory: byCategory.reduce((acc, row) => {
-        acc[row.category] = row.count;
-        return acc;
-      }, {}),
-      bySource: bySource.reduce((acc, row) => {
-        acc[row.source] = row.count;
-        return acc;
-      }, {}),
-      recentImports,
-    };
-  } catch (err) {
-    throw err;
-  }
-}
-
-/**
- * Delete a term (ADMIN only)
- *
- * @param {number} id - Term ID
- */
-function deleteTerm(id) {
-  const db = getDb();
-
-  try {
-    const result = db.prepare('DELETE FROM terminology_terms WHERE id = ?').run(id);
-
-    return { success: result.changes > 0 };
-  } catch (err) {
-    throw err;
-  }
-}
-
-// Helper functions
-
-function formatTerm(term) {
-  return {
-    id: term.id,
-    bookId: term.book_id,
-    bookSlug: term.book_slug,
-    bookTitle: term.book_title,
-    english: term.english,
-    icelandic: term.icelandic,
-    alternatives: term.alternatives ? JSON.parse(term.alternatives) : [],
-    category: term.category,
-    notes: term.notes,
-    source: term.source,
-    sourceChapter: term.source_chapter,
-    definitionEn: term.definition_en || null,
-    definitionIs: term.definition_is || null,
-    pos: term.pos || null,
-    status: term.status,
-    proposedBy: term.proposed_by,
-    proposedByName: term.proposed_by_name,
-    approvedBy: term.approved_by,
-    approvedByName: term.approved_by_name,
-    approvedAt: term.approved_at,
-    createdAt: term.created_at,
-    updatedAt: term.updated_at,
-    discussionCount: term.discussion_count,
+  const result = {
+    id: hw.id,
+    english: hw.english,
+    pos: hw.pos || null,
+    definitionEn: hw.definition_en || null,
+    translations: formattedTranslations,
+    createdAt: hw.created_at,
+    updatedAt: hw.updated_at,
   };
+
+  if (options.includeDiscussions) {
+    result.discussions = db
+      .prepare('SELECT * FROM terminology_discussions WHERE headword_id = ? ORDER BY created_at DESC')
+      .all(id);
+  }
+
+  return result;
+}
+
+/**
+ * Load a single translation with subjects.
+ */
+function getTranslation(db, id) {
+  const tr = db.prepare('SELECT * FROM terminology_translations WHERE id = ?').get(id);
+  if (!tr) return null;
+
+  const subjects = db
+    .prepare('SELECT subject FROM terminology_translation_subjects WHERE translation_id = ?')
+    .all(id)
+    .map(s => s.subject);
+
+  return {
+    id: tr.id,
+    headwordId: tr.headword_id,
+    icelandic: tr.icelandic,
+    definitionIs: tr.definition_is || null,
+    inflections: tr.inflections ? JSON.parse(tr.inflections) : [],
+    source: tr.source,
+    notes: tr.notes,
+    status: tr.status,
+    subjects,
+    proposedBy: tr.proposed_by,
+    proposedByName: tr.proposed_by_name,
+  };
+}
+
+/**
+ * Get a book's primary subject by slug.
+ */
+function getBookSubjectBySlug(db, bookSlug) {
+  const row = db
+    .prepare(`
+      SELECT bsm.primary_subject
+      FROM book_subject_mapping bsm
+      JOIN registered_books rb ON rb.id = bsm.book_id
+      WHERE rb.slug = ?
+    `)
+    .get(bookSlug);
+  return row ? row.primary_subject : null;
+}
+
+/**
+ * Build a regex that matches the base Icelandic form or any inflected form.
+ */
+function buildInflectionRegex(icelandic, inflections) {
+  const forms = [icelandic, ...inflections].filter(Boolean).map(escapeRegex);
+  if (forms.length === 0) return /(?!)/; // never matches
+  // Sort longest first to avoid partial matches
+  forms.sort((a, b) => b.length - a.length);
+  return new RegExp(`\\b(?:${forms.join('|')})\\b`, 'gi');
+}
+
+function escapeRegex(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
 function findFiles(pattern) {
@@ -1158,7 +1219,6 @@ function findFiles(pattern) {
 function findFilesRecursive(dir, suffix) {
   const results = [];
   if (!fs.existsSync(dir)) return results;
-
   const items = fs.readdirSync(dir, { withFileTypes: true });
   for (const item of items) {
     const fullPath = path.join(dir, item.name);
@@ -1171,153 +1231,46 @@ function findFilesRecursive(dir, suffix) {
   return results;
 }
 
-/**
- * Find terminology matches in a set of segments.
- *
- * Scans EN source text for known terms (approved/proposed) and checks
- * whether the approved IS translation appears in the IS text.
- *
- * @param {Array<{segmentId: string, enContent: string, isContent: string}>} segments
- * @param {number|null} bookId - Book ID for book-specific terms
- * @returns {object} Map of segmentId → { matches: [...], issues: [...] }
- */
-function findTermsInSegments(segments, bookId = null) {
-  const db = getDb();
-
-  try {
-    // Load all approved/proposed terms for this book (and global terms)
-    let sql = `
-      SELECT id, english, icelandic, alternatives, category, status
-      FROM terminology_terms
-      WHERE status IN ('approved', 'proposed')
-    `;
-    const params = [];
-
-    if (bookId) {
-      sql += ` AND (book_id = ? OR book_id IS NULL)`;
-      params.push(bookId);
-    }
-
-    sql += ` ORDER BY LENGTH(english) DESC`; // Longest first for greedy matching
-
-    const terms = db.prepare(sql).all(...params);
-
-    // Build regex patterns for each term (word-boundary match)
-    const termPatterns = terms.map((t) => ({
-      id: t.id,
-      english: t.english,
-      icelandic: t.icelandic,
-      alternatives: t.alternatives ? JSON.parse(t.alternatives) : [],
-      category: t.category,
-      status: t.status,
-      regex: new RegExp(`\\b${escapeRegex(t.english)}\\b`, 'gi'),
-    }));
-
-    const result = {};
-
-    for (const seg of segments) {
-      const matches = [];
-      const issues = [];
-
-      if (!seg.enContent) {
-        result[seg.segmentId] = { matches, issues };
-        continue;
-      }
-
-      for (const term of termPatterns) {
-        // Reset regex lastIndex
-        term.regex.lastIndex = 0;
-        const enMatch = term.regex.exec(seg.enContent);
-
-        if (enMatch) {
-          const matchInfo = {
-            termId: term.id,
-            english: term.english,
-            icelandic: term.icelandic,
-            category: term.category,
-            status: term.status,
-            position: enMatch.index,
-          };
-          matches.push(matchInfo);
-
-          // Check if approved IS term appears in the IS text
-          if (seg.isContent && term.status === 'approved') {
-            const isRegex = new RegExp(`\\b${escapeRegex(term.icelandic)}\\b`, 'gi');
-            const isFound = isRegex.test(seg.isContent);
-
-            if (!isFound) {
-              // Check if any alternative is used instead
-              // Alternatives can be either plain strings or objects with { term, note, source }
-              let alternativeUsed = null;
-              for (const alt of term.alternatives) {
-                const altTerm = typeof alt === 'string' ? alt : alt.term;
-                if (!altTerm) continue;
-                const altRegex = new RegExp(`\\b${escapeRegex(altTerm)}\\b`, 'gi');
-                if (altRegex.test(seg.isContent)) {
-                  alternativeUsed = altTerm;
-                  break;
-                }
-              }
-
-              if (alternativeUsed) {
-                // An accepted alternative was used — not a real inconsistency
-                // Only flag if the alternative is not from a trusted source
-                // For now, accept all listed alternatives as valid
-              } else {
-                issues.push({
-                  type: 'missing',
-                  termId: term.id,
-                  english: term.english,
-                  expected: term.icelandic,
-                  message: `„${term.english}" → „${term.icelandic}" fannst ekki`,
-                });
-              }
-            }
-          }
-        }
-      }
-
-      result[seg.segmentId] = { matches, issues };
-    }
-
-    return result;
-  } catch (err) {
-    try {
-    } catch {
-      /* ignore */
-    }
-    throw err;
-  }
-}
-
-function escapeRegex(string) {
-  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
-function extractChapterNum(filePath) {
-  const match = filePath.match(/ch(\d+)/i);
-  return match ? parseInt(match[1], 10) : null;
-}
-
 module.exports = {
+  // Headword CRUD
   searchTerms,
   lookupTerm,
+  getHeadword,
   getTerm,
   createTerm,
+  updateHeadword,
   updateTerm,
+  addTranslation,
+  updateTranslation,
+
+  // Approval workflow
+  approveTranslation,
   approveTerm,
+  disputeTranslation,
   disputeTerm,
   addDiscussion,
   getReviewQueue,
+
+  // Delete
+  deleteHeadword,
+  deleteTerm,
+  deleteTranslation,
+
+  // Import
   importFromCSV,
   importFromExcel,
   importFromKeyTerms,
   importGlossaryTerms,
+
+  // Query
   getStats,
-  deleteTerm,
   findTermsInSegments,
+
+  // Constants
   TERM_STATUSES,
-  TERM_CATEGORIES,
   TERM_SOURCES,
+  SUBJECTS,
+
+  // Test injection
   _setTestDb,
 };

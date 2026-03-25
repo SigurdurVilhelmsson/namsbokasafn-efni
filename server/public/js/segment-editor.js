@@ -1556,7 +1556,7 @@
         replaced = true;
         used.add(m.english.toLowerCase());
         const cls = m.status === 'approved' ? 'term-highlight' : 'term-highlight proposed';
-        return `<span class="${cls}" data-term-id="${m.termId}" onclick="showTermPopup(${m.termId}, this)">${match}</span>`;
+        return `<span class="${cls}" data-term-id="${m.headwordId}" onclick="showTermPopup(${m.headwordId}, this)">${match}</span>`;
       });
     }
     return html;
@@ -1570,15 +1570,21 @@
   // TERM POPUP
   // ================================================================
 
-  function showTermPopup(termId, element) {
-    closeTermPopup(); // remove any existing popup and outside-click listener
+  const SUBJECT_NAMES = {
+    chemistry: 'Efnafræði', biology: 'Líffræði', physics: 'Eðlisfræði',
+    microbiology: 'Örverufræði', 'organic-chemistry': 'Lífræn efnafræði',
+    mathematics: 'Stærðfræði', general: 'Almennt',
+  };
+
+  function showTermPopup(headwordId, element) {
+    closeTermPopup();
     const popup = document.getElementById('term-popup');
 
     // Find term info from termData
     let termInfo = null;
     if (termData) {
       for (const segId of Object.keys(termData)) {
-        const match = termData[segId].matches?.find((m) => m.termId === termId);
+        const match = termData[segId].matches?.find((m) => m.headwordId === headwordId);
         if (match) {
           termInfo = match;
           break;
@@ -1593,60 +1599,28 @@
 
     document.getElementById('term-popup-en').textContent = termInfo.english;
 
-    const statusBadge =
-      termInfo.status === 'approved'
-        ? '<span class="edit-status approved">Samþykkt</span>'
-        : '<span class="edit-status pending">Tillaga</span>';
-
-    // Build alternatives HTML if available
-    let altsHtml = '';
-    if (termInfo.alternatives && termInfo.alternatives.length > 0) {
-      const altItems = termInfo.alternatives
-        .map((a) => {
-          const altTerm = typeof a === 'string' ? a : a.term;
-          const altNote = typeof a === 'object' && a.note ? ` (${escapeHtml(a.note)})` : '';
-          return `<span style="color: var(--text-secondary);">${escapeHtml(altTerm)}${altNote}</span>`;
-        })
-        .join(', ');
-      altsHtml = `
-          <div class="term-popup-row" style="font-size: var(--text-xs);">
-            <span class="term-popup-label">Einnig:</span>
-            <span>${altItems}</span>
+    // Build translations HTML with subject badges
+    const translations = termInfo.translations || [];
+    let translationsHtml = translations.map(tr => {
+      const statusBadge = tr.status === 'approved'
+        ? '<span class="edit-status approved">✓</span>'
+        : '<span class="edit-status pending">…</span>';
+      const subjectBadges = (tr.subjects || [])
+        .map(s => `<span style="font-size: 0.7em; padding: 0.1em 0.4em; background: var(--bg-elevated); border-radius: 3px; color: var(--text-muted);">${SUBJECT_NAMES[s] || s}</span>`)
+        .join(' ');
+      const primaryMark = tr.isPrimary ? ' ★' : '';
+      return `
+          <div class="term-popup-row" style="padding: 0.2rem 0;">
+            <span class="term-popup-value" style="font-weight: ${tr.isPrimary ? '600' : '400'};">${escapeHtml(tr.icelandic)}${primaryMark}</span>
+            ${statusBadge} ${subjectBadges}
           </div>`;
-    }
-
-    // Build definition HTML if available
-    let defHtml = '';
-    if (termInfo.definitionIs) {
-      defHtml = `
-          <div class="term-popup-row" style="font-size: var(--text-xs); margin-top: 0.25rem;">
-            <span style="color: var(--text-muted); font-style: italic;">${escapeHtml(termInfo.definitionIs)}</span>
-          </div>`;
-    } else if (termInfo.definitionEn) {
-      defHtml = `
-          <div class="term-popup-row" style="font-size: var(--text-xs); margin-top: 0.25rem;">
-            <span style="color: var(--text-muted); font-style: italic;">${escapeHtml(termInfo.definitionEn)}</span>
-          </div>`;
-    }
+    }).join('');
 
     document.getElementById('term-popup-body').innerHTML = `
-        <div class="term-popup-row">
-          <span class="term-popup-label">Íslenska:</span>
-          <span class="term-popup-value">${escapeHtml(termInfo.icelandic)}</span>
-        </div>
-        ${altsHtml}
-        <div class="term-popup-row">
-          <span class="term-popup-label">Flokkur:</span>
-          <span>${termInfo.category || '—'}</span>
-        </div>
-        <div class="term-popup-row">
-          <span class="term-popup-label">Staða:</span>
-          ${statusBadge}
-        </div>
-        ${defHtml}
+        ${translationsHtml}
         <div style="margin-top: 0.5rem; padding-top: 0.4rem; border-top: 1px solid var(--border);">
           <a href="/terminology" target="_blank" style="font-size: var(--text-xs); color: var(--accent);">
-            ' + UI.termLookup.openGlossary + '
+            ${UI.termLookup.openGlossary}
           </a>
         </div>
       `;
@@ -1692,7 +1666,7 @@
 
     termLookupTimer = setTimeout(async () => {
       try {
-        const data = await fetchJson(`${API_BASE}/terminology/lookup?q=${encodeURIComponent(q)}`, {
+        const data = await fetchJson(`${API_BASE}/terminology/lookup?q=${encodeURIComponent(q)}&bookSlug=${encodeURIComponent(currentBook || '')}`, {
           credentials: 'include',
         });
 
@@ -1703,19 +1677,20 @@
             '</div>';
         } else {
           termLookupResults.innerHTML = data.terms
-            .map((t) => {
-              const alts = (t.alternatives || [])
-                .map((a) => (typeof a === 'string' ? a : a.term))
-                .filter(Boolean);
-              const altsText =
-                alts.length > 0
-                  ? `<span style="font-size: 0.75em; color: var(--text-muted);"> (einnig: ${alts.map((a) => escapeHtml(a)).join(', ')})</span>`
-                  : '';
+            .map((hw) => {
+              // Show primary translation first, then alternatives
+              const translations = hw.translations || [];
+              const primary = translations.find(t => t.isPrimary) || translations[0];
+              if (!primary) return '';
+              const others = translations.filter(t => t !== primary);
+              const othersText = others.length > 0
+                ? `<span style="font-size: 0.75em; color: var(--text-muted);"> (einnig: ${others.map(t => escapeHtml(t.icelandic)).join(', ')})</span>`
+                : '';
               return `
-              <div class="term-lookup-item" onclick="insertTermFromLookup('${escapeHtml(t.icelandic)}')">
-                <span class="term-lookup-en">${escapeHtml(t.english)}</span>
-                &#8594; <span class="term-lookup-is">${escapeHtml(t.icelandic)}</span>
-                ${t.status === 'approved' ? ' &#10003;' : ''}${altsText}
+              <div class="term-lookup-item" onclick="insertTermFromLookup('${escapeHtml(primary.icelandic)}')">
+                <span class="term-lookup-en">${escapeHtml(hw.english)}</span>
+                &#8594; <span class="term-lookup-is">${escapeHtml(primary.icelandic)}</span>
+                ${primary.status === 'approved' ? ' &#10003;' : ''}${othersText}
               </div>`;
             })
             .join('');

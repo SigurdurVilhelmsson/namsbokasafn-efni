@@ -57,6 +57,7 @@ function runAllMigrations() {
     require('../migrations/029-register-preview-books'),
     require('../migrations/030-remove-legacy-tables'),
     require('../migrations/031-content-versions'),
+    require('../migrations/032-terminology-redesign'),
   ];
 
   let applied = 0;

@@ -1,7 +1,8 @@
 /**
- * Terminology Service Tests
+ * Terminology Service Tests — Multi-Subject Domain Model
  *
- * Tests CRUD, search, review workflow, and segment matching.
+ * Tests headword + translation CRUD, search, review workflow,
+ * inflection matching, domain-priority ranking, and segment matching.
  * Uses in-memory better-sqlite3 DB with test injection.
  */
 
@@ -27,56 +28,67 @@ function createTestDb() {
       status TEXT DEFAULT 'active'
     );
 
-    CREATE TABLE terminology_terms (
+    CREATE TABLE terminology_headwords (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
-      book_id INTEGER,
       english TEXT NOT NULL,
-      icelandic TEXT,
-      alternatives TEXT,
-      category TEXT,
-      notes TEXT,
+      pos TEXT,
+      definition_en TEXT,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      UNIQUE(english, pos)
+    );
+
+    CREATE TABLE terminology_translations (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      headword_id INTEGER NOT NULL,
+      icelandic TEXT NOT NULL,
+      definition_is TEXT,
+      inflections TEXT,
       source TEXT,
-      source_chapter INTEGER,
+      idordabanki_id INTEGER,
+      notes TEXT,
       status TEXT DEFAULT 'proposed',
       proposed_by TEXT,
       proposed_by_name TEXT,
       approved_by TEXT,
       approved_by_name TEXT,
       approved_at DATETIME,
-      definition_en TEXT,
-      definition_is TEXT,
-      pos TEXT,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
       updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      UNIQUE(english, pos, book_id)
+      FOREIGN KEY (headword_id) REFERENCES terminology_headwords(id) ON DELETE CASCADE,
+      UNIQUE(headword_id, icelandic)
+    );
+
+    CREATE TABLE terminology_translation_subjects (
+      translation_id INTEGER NOT NULL,
+      subject TEXT NOT NULL,
+      PRIMARY KEY (translation_id, subject),
+      FOREIGN KEY (translation_id) REFERENCES terminology_translations(id) ON DELETE CASCADE
+    );
+
+    CREATE TABLE book_subject_mapping (
+      book_id INTEGER NOT NULL,
+      primary_subject TEXT NOT NULL,
+      PRIMARY KEY (book_id),
+      FOREIGN KEY (book_id) REFERENCES registered_books(id) ON DELETE CASCADE
     );
 
     CREATE TABLE terminology_discussions (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
-      term_id INTEGER NOT NULL,
+      headword_id INTEGER NOT NULL,
       user_id TEXT NOT NULL,
       username TEXT NOT NULL,
       comment TEXT NOT NULL,
       proposed_translation TEXT,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      FOREIGN KEY (term_id) REFERENCES terminology_terms(id) ON DELETE CASCADE
-    );
-
-    CREATE TABLE terminology_imports (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      source_name TEXT NOT NULL,
-      file_name TEXT,
-      imported_by TEXT NOT NULL,
-      imported_by_name TEXT,
-      imported_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      terms_added INTEGER DEFAULT 0,
-      terms_updated INTEGER DEFAULT 0,
-      terms_skipped INTEGER DEFAULT 0,
-      error_message TEXT
+      FOREIGN KEY (headword_id) REFERENCES terminology_headwords(id) ON DELETE CASCADE
     );
 
     INSERT INTO registered_books (slug, title_is) VALUES ('efnafraedi-2e', 'Efnafræði 2e');
     INSERT INTO registered_books (slug, title_is) VALUES ('liffraedi-2e', 'Líffræði 2e');
+
+    INSERT INTO book_subject_mapping (book_id, primary_subject) VALUES (1, 'chemistry');
+    INSERT INTO book_subject_mapping (book_id, primary_subject) VALUES (2, 'biology');
   `);
 
   return testDb;
@@ -94,45 +106,76 @@ afterAll(() => {
 
 beforeEach(() => {
   db.exec('DELETE FROM terminology_discussions');
-  db.exec('DELETE FROM terminology_imports');
-  db.exec('DELETE FROM terminology_terms');
+  db.exec('DELETE FROM terminology_translation_subjects');
+  db.exec('DELETE FROM terminology_translations');
+  db.exec('DELETE FROM terminology_headwords');
 });
 
-// --- Helper ---
-function insertTerm(overrides = {}) {
+// --- Helpers ---
+
+function insertHeadword(overrides = {}) {
+  const defaults = { english: 'molecule', pos: null, definition_en: null };
+  const h = { ...defaults, ...overrides };
+  const result = db
+    .prepare('INSERT INTO terminology_headwords (english, pos, definition_en) VALUES (?, ?, ?)')
+    .run(h.english, h.pos, h.definition_en);
+  return Number(result.lastInsertRowid);
+}
+
+function insertTranslation(headwordId, overrides = {}) {
   const defaults = {
-    english: 'molecule',
     icelandic: 'sameind',
-    category: 'fundamental',
     source: 'manual',
     status: 'proposed',
-    book_id: null,
     proposed_by: 'user1',
     proposed_by_name: 'Test User',
+    inflections: null,
+    notes: null,
+    definition_is: null,
   };
   const t = { ...defaults, ...overrides };
   const result = db
-    .prepare(
-      `
-    INSERT INTO terminology_terms (english, icelandic, category, source, status, book_id, proposed_by, proposed_by_name, alternatives, definition_en, definition_is, pos)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-  `
-    )
+    .prepare(`
+      INSERT INTO terminology_translations
+        (headword_id, icelandic, inflections, source, status, proposed_by, proposed_by_name, notes, definition_is)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `)
     .run(
-      t.english,
-      t.icelandic,
-      t.category,
-      t.source,
-      t.status,
-      t.book_id,
-      t.proposed_by,
-      t.proposed_by_name,
-      t.alternatives || null,
-      t.definition_en || null,
-      t.definition_is || null,
-      t.pos || null
+      headwordId, t.icelandic, t.inflections, t.source, t.status,
+      t.proposed_by, t.proposed_by_name, t.notes, t.definition_is
     );
-  return result.lastInsertRowid;
+  return Number(result.lastInsertRowid);
+}
+
+function addSubject(translationId, subject) {
+  db.prepare(
+    'INSERT INTO terminology_translation_subjects (translation_id, subject) VALUES (?, ?)'
+  ).run(translationId, subject);
+}
+
+/** Insert a headword with one translation + subjects — convenience for many tests */
+function insertFullTerm(overrides = {}) {
+  const hwId = insertHeadword({
+    english: overrides.english || 'molecule',
+    pos: overrides.pos || null,
+    definition_en: overrides.definition_en || null,
+  });
+  const trId = insertTranslation(hwId, {
+    icelandic: overrides.icelandic || 'sameind',
+    source: overrides.source || 'manual',
+    status: overrides.status || 'proposed',
+    inflections: overrides.inflections || null,
+    notes: overrides.notes || null,
+    definition_is: overrides.definition_is || null,
+    proposed_by: overrides.proposed_by || 'user1',
+    proposed_by_name: overrides.proposed_by_name || 'Test User',
+  });
+  if (overrides.subjects) {
+    for (const subj of overrides.subjects) {
+      addSubject(trId, subj);
+    }
+  }
+  return { hwId, trId };
 }
 
 // =====================
@@ -146,8 +189,8 @@ describe('searchTerms()', () => {
   });
 
   it('finds terms by English text match', () => {
-    insertTerm({ english: 'molecule', icelandic: 'sameind' });
-    insertTerm({ english: 'atom', icelandic: 'frumeind' });
+    insertFullTerm({ english: 'molecule', icelandic: 'sameind' });
+    insertFullTerm({ english: 'atom', icelandic: 'frumeind' });
 
     const result = terminologyService.searchTerms('molecule');
     expect(result.terms).toHaveLength(1);
@@ -155,25 +198,25 @@ describe('searchTerms()', () => {
   });
 
   it('finds terms by Icelandic text match', () => {
-    insertTerm({ english: 'molecule', icelandic: 'sameind' });
+    insertFullTerm({ english: 'molecule', icelandic: 'sameind' });
 
     const result = terminologyService.searchTerms('sameind');
     expect(result.terms).toHaveLength(1);
-    expect(result.terms[0].icelandic).toBe('sameind');
+    expect(result.terms[0].translations[0].icelandic).toBe('sameind');
   });
 
-  it('filters by category', () => {
-    insertTerm({ english: 'molecule', icelandic: 'sameind', category: 'fundamental' });
-    insertTerm({ english: 'bond', icelandic: 'tengi', category: 'bonding' });
+  it('filters by subject', () => {
+    insertFullTerm({ english: 'molecule', icelandic: 'sameind', subjects: ['chemistry'] });
+    insertFullTerm({ english: 'cell', icelandic: 'fruma', subjects: ['biology'] });
 
-    const result = terminologyService.searchTerms('', { category: 'bonding' });
+    const result = terminologyService.searchTerms('', { subject: 'chemistry' });
     expect(result.terms).toHaveLength(1);
-    expect(result.terms[0].english).toBe('bond');
+    expect(result.terms[0].english).toBe('molecule');
   });
 
   it('filters by status', () => {
-    insertTerm({ english: 'molecule', icelandic: 'sameind', status: 'approved' });
-    insertTerm({ english: 'atom', icelandic: 'frumeind', status: 'proposed' });
+    insertFullTerm({ english: 'molecule', icelandic: 'sameind', status: 'approved' });
+    insertFullTerm({ english: 'atom', icelandic: 'frumeind', status: 'proposed' });
 
     const result = terminologyService.searchTerms('', { status: 'approved' });
     expect(result.terms).toHaveLength(1);
@@ -181,9 +224,9 @@ describe('searchTerms()', () => {
   });
 
   it('supports pagination (limit/offset, hasMore)', () => {
-    insertTerm({ english: 'alpha', icelandic: 'alfa' });
-    insertTerm({ english: 'beta', icelandic: 'beta' });
-    insertTerm({ english: 'gamma', icelandic: 'gamma' });
+    insertFullTerm({ english: 'alpha', icelandic: 'alfa' });
+    insertFullTerm({ english: 'beta', icelandic: 'beta' });
+    insertFullTerm({ english: 'gamma', icelandic: 'gamma' });
 
     const page1 = terminologyService.searchTerms('', { limit: 2, offset: 0 });
     expect(page1.terms).toHaveLength(2);
@@ -201,14 +244,14 @@ describe('searchTerms()', () => {
 // =====================
 describe('lookupTerm()', () => {
   it('returns empty for short query (< 2 chars)', () => {
-    insertTerm({ english: 'molecule', icelandic: 'sameind' });
+    insertFullTerm({ english: 'molecule', icelandic: 'sameind' });
     const result = terminologyService.lookupTerm('m');
     expect(result).toEqual([]);
   });
 
   it('exact match ranked first (relevance=1)', () => {
-    insertTerm({ english: 'ion', icelandic: 'jón' });
-    insertTerm({ english: 'ionization', icelandic: 'jónun' });
+    insertFullTerm({ english: 'ion', icelandic: 'jón' });
+    insertFullTerm({ english: 'ionization', icelandic: 'jónun' });
 
     const result = terminologyService.lookupTerm('ion');
     expect(result.length).toBeGreaterThanOrEqual(1);
@@ -216,28 +259,38 @@ describe('lookupTerm()', () => {
   });
 
   it('finds partial match', () => {
-    insertTerm({ english: 'molecule', icelandic: 'sameind' });
+    insertFullTerm({ english: 'molecule', icelandic: 'sameind' });
 
     const result = terminologyService.lookupTerm('molec');
     expect(result).toHaveLength(1);
     expect(result[0].english).toBe('molecule');
   });
 
-  it('filters by book scope (returns global + book-specific)', () => {
-    insertTerm({ english: 'molecule', icelandic: 'sameind', book_id: null });
-    insertTerm({ english: 'cell', icelandic: 'fruma', book_id: 2 });
+  it('finds match by inflection', () => {
+    insertFullTerm({
+      english: 'reversible',
+      icelandic: 'afturkræfur',
+      inflections: JSON.stringify(['afturkræfan', 'afturkræfum', 'afturkræfs']),
+    });
 
-    // Lookup with book_id=1 should NOT return book_id=2 terms
-    const result = terminologyService.lookupTerm('cell', 1);
-    expect(result).toHaveLength(0);
+    const result = terminologyService.lookupTerm('afturkræfan');
+    expect(result).toHaveLength(1);
+    expect(result[0].english).toBe('reversible');
+  });
 
-    // Lookup with book_id=2 should return the cell term
-    const result2 = terminologyService.lookupTerm('cell', 2);
-    expect(result2).toHaveLength(1);
+  it('marks primary translation based on book subject', () => {
+    const hwId = insertHeadword({ english: 'cell' });
+    const trChem = insertTranslation(hwId, { icelandic: 'hólf', status: 'approved' });
+    const trBio = insertTranslation(hwId, { icelandic: 'fruma', status: 'approved' });
+    addSubject(trChem, 'chemistry');
+    addSubject(trBio, 'biology');
 
-    // Global terms always returned
-    const result3 = terminologyService.lookupTerm('molecule', 2);
-    expect(result3).toHaveLength(1);
+    const result = terminologyService.lookupTerm('cell', 'liffraedi-2e');
+    expect(result).toHaveLength(1);
+    const bioTr = result[0].translations.find(t => t.icelandic === 'fruma');
+    const chemTr = result[0].translations.find(t => t.icelandic === 'hólf');
+    expect(bioTr.isPrimary).toBe(true);
+    expect(chemTr.isPrimary).toBe(false);
   });
 });
 
@@ -245,16 +298,17 @@ describe('lookupTerm()', () => {
 // createTerm()
 // =====================
 describe('createTerm()', () => {
-  it('creates with proposed status', () => {
+  it('creates headword with proposed translation', () => {
     const term = terminologyService.createTerm(
-      { english: 'molecule', icelandic: 'sameind', category: 'fundamental' },
+      { english: 'molecule', icelandic: 'sameind', subjects: ['chemistry'] },
       'user1',
       'Test User'
     );
-    expect(term.status).toBe('proposed');
     expect(term.english).toBe('molecule');
-    expect(term.icelandic).toBe('sameind');
-    expect(term.proposedBy).toBe('user1');
+    expect(term.translations).toHaveLength(1);
+    expect(term.translations[0].icelandic).toBe('sameind');
+    expect(term.translations[0].status).toBe('proposed');
+    expect(term.translations[0].subjects).toContain('chemistry');
   });
 
   it('throws on missing English', () => {
@@ -263,13 +317,13 @@ describe('createTerm()', () => {
     }).toThrow('English term is required');
   });
 
-  it('allows creating term without Icelandic (placeholder)', () => {
+  it('allows creating headword without translation (placeholder)', () => {
     const term = terminologyService.createTerm({ english: 'molecule' }, 'user1', 'Test User');
     expect(term.english).toBe('molecule');
-    expect(term.icelandic).toBeNull();
+    expect(term.translations).toHaveLength(0);
   });
 
-  it('throws on duplicate English term (same book_id)', () => {
+  it('throws on duplicate English term (same pos)', () => {
     terminologyService.createTerm(
       { english: 'molecule', icelandic: 'sameind' },
       'user1',
@@ -283,153 +337,208 @@ describe('createTerm()', () => {
       );
     }).toThrow(/already exists/);
   });
+});
 
-  it('throws on invalid category', () => {
+// =====================
+// addTranslation()
+// =====================
+describe('addTranslation()', () => {
+  it('adds translation to existing headword', () => {
+    const hwId = insertHeadword({ english: 'cell' });
+
+    const tr = terminologyService.addTranslation(
+      hwId,
+      { icelandic: 'fruma', subjects: ['biology'], source: 'manual' },
+      'user1',
+      'Test User'
+    );
+
+    expect(tr.icelandic).toBe('fruma');
+    expect(tr.subjects).toContain('biology');
+  });
+
+  it('throws on missing icelandic', () => {
+    const hwId = insertHeadword({ english: 'cell' });
     expect(() => {
-      terminologyService.createTerm(
-        { english: 'molecule', icelandic: 'sameind', category: 'invalid-cat' },
-        'user1',
-        'Test User'
-      );
-    }).toThrow(/Invalid category/);
+      terminologyService.addTranslation(hwId, {}, 'user1', 'Test User');
+    }).toThrow('Icelandic translation is required');
+  });
+
+  it('throws on nonexistent headword', () => {
+    expect(() => {
+      terminologyService.addTranslation(99999, { icelandic: 'test' }, 'user1', 'Test');
+    }).toThrow('Headword not found');
   });
 });
 
 // =====================
-// updateTerm()
+// updateHeadword()
 // =====================
-describe('updateTerm()', () => {
-  it('updates allowed fields (icelandic, category, notes)', () => {
-    const id = insertTerm({ english: 'molecule', icelandic: 'sameind', category: 'fundamental' });
+describe('updateHeadword()', () => {
+  it('updates allowed fields (english, pos, definitionEn)', () => {
+    const hwId = insertHeadword({ english: 'molecule', definition_en: 'A group of atoms' });
 
-    const updated = terminologyService.updateTerm(id, {
-      icelandic: 'sameind (uppfært)',
-      category: 'structure',
-      notes: 'Updated note',
+    const updated = terminologyService.updateHeadword(hwId, {
+      definitionEn: 'Two or more atoms bonded together',
     });
 
-    expect(updated.icelandic).toBe('sameind (uppfært)');
-    expect(updated.category).toBe('structure');
-    expect(updated.notes).toBe('Updated note');
+    expect(updated.definitionEn).toBe('Two or more atoms bonded together');
   });
 
-  it('throws Term not found for nonexistent ID', () => {
+  it('throws Headword not found for nonexistent ID', () => {
     expect(() => {
-      terminologyService.updateTerm(99999, { icelandic: 'test' });
-    }).toThrow('Term not found');
+      terminologyService.updateHeadword(99999, { english: 'test' });
+    }).toThrow('Headword not found');
   });
 
   it('ignores fields not in allowedFields list', () => {
-    const id = insertTerm({ english: 'molecule', icelandic: 'sameind' });
+    const hwId = insertHeadword({ english: 'molecule' });
 
-    const updated = terminologyService.updateTerm(id, {
-      english: 'changed-english',
-      status: 'approved',
+    const updated = terminologyService.updateHeadword(hwId, {
       fakeField: 'ignore me',
+      status: 'approved',
     });
 
-    // english and status should not change
     expect(updated.english).toBe('molecule');
-    expect(updated.status).toBe('proposed');
   });
 });
 
 // =====================
-// approveTerm()
+// updateTranslation()
 // =====================
-describe('approveTerm()', () => {
-  it('sets approved status, approved_by, approved_by_name', () => {
-    const id = insertTerm({ english: 'molecule', icelandic: 'sameind', status: 'proposed' });
+describe('updateTranslation()', () => {
+  it('updates icelandic, notes, and subjects', () => {
+    const hwId = insertHeadword({ english: 'molecule' });
+    const trId = insertTranslation(hwId, { icelandic: 'sameind' });
 
-    const approved = terminologyService.approveTerm(id, 'admin1', 'Admin User');
-    expect(approved.status).toBe('approved');
-    expect(approved.approvedBy).toBe('admin1');
-    expect(approved.approvedByName).toBe('Admin User');
-    expect(approved.approvedAt).toBeTruthy();
+    const updated = terminologyService.updateTranslation(trId, {
+      icelandic: 'sameind (uppfært)',
+      notes: 'Updated note',
+      subjects: ['chemistry', 'physics'],
+    });
+
+    expect(updated.icelandic).toBe('sameind (uppfært)');
+    expect(updated.notes).toBe('Updated note');
+    expect(updated.subjects).toContain('chemistry');
+    expect(updated.subjects).toContain('physics');
   });
 
-  it('idempotent when already approved (returns same term)', () => {
-    const id = insertTerm({ english: 'molecule', icelandic: 'sameind', status: 'approved' });
-
-    const result = terminologyService.approveTerm(id, 'admin2', 'Another Admin');
-    expect(result.status).toBe('approved');
-    // Should not update approvedBy since it was already approved
-    expect(result.approvedBy).toBeNull(); // original had no approved_by set
-  });
-
-  it('throws Term not found for missing ID', () => {
+  it('throws Translation not found for nonexistent ID', () => {
     expect(() => {
-      terminologyService.approveTerm(99999, 'admin1', 'Admin User');
-    }).toThrow('Term not found');
+      terminologyService.updateTranslation(99999, { icelandic: 'test' });
+    }).toThrow('Translation not found');
   });
 });
 
 // =====================
-// disputeTerm() + addDiscussion()
+// approveTranslation()
 // =====================
-describe('disputeTerm() and addDiscussion()', () => {
-  it('sets status to disputed', () => {
-    const id = insertTerm({ english: 'molecule', icelandic: 'sameind', status: 'proposed' });
+describe('approveTranslation()', () => {
+  it('sets approved status on translation', () => {
+    const { hwId, trId } = insertFullTerm({ english: 'molecule', icelandic: 'sameind', status: 'proposed' });
 
-    const result = terminologyService.disputeTerm(id, 'I disagree', 'user2', 'User Two');
-    expect(result.status).toBe('disputed');
+    const result = terminologyService.approveTranslation(trId, 'admin1', 'Admin User');
+    expect(result.translations[0].status).toBe('approved');
+    expect(result.translations[0].approvedBy).toBe('admin1');
+    expect(result.translations[0].approvedByName).toBe('Admin User');
+    expect(result.translations[0].approvedAt).toBeTruthy();
   });
 
-  it('adds discussion comment', () => {
-    const id = insertTerm({ english: 'molecule', icelandic: 'sameind' });
+  it('idempotent when already approved', () => {
+    const { hwId, trId } = insertFullTerm({ english: 'molecule', icelandic: 'sameind', status: 'approved' });
 
-    const result = terminologyService.disputeTerm(id, 'Wrong translation', 'user2', 'User Two');
+    const result = terminologyService.approveTranslation(trId, 'admin2', 'Another Admin');
+    expect(result.translations[0].status).toBe('approved');
+    // Should not update approvedBy since already approved
+    expect(result.translations[0].approvedBy).toBeNull();
+  });
+
+  it('throws Translation not found for missing ID', () => {
+    expect(() => {
+      terminologyService.approveTranslation(99999, 'admin1', 'Admin User');
+    }).toThrow('Translation not found');
+  });
+});
+
+// =====================
+// disputeTranslation() + addDiscussion()
+// =====================
+describe('disputeTranslation() and addDiscussion()', () => {
+  it('sets status to disputed on translation', () => {
+    const { hwId, trId } = insertFullTerm({ english: 'molecule', icelandic: 'sameind', status: 'proposed' });
+
+    const result = terminologyService.disputeTranslation(trId, 'I disagree', 'user2', 'User Two');
+    expect(result.translations[0].status).toBe('disputed');
+  });
+
+  it('adds discussion comment on headword', () => {
+    const { hwId, trId } = insertFullTerm({ english: 'molecule', icelandic: 'sameind' });
+
+    const result = terminologyService.disputeTranslation(
+      trId, 'Wrong translation', 'user2', 'User Two'
+    );
     expect(result.discussions).toHaveLength(1);
     expect(result.discussions[0].comment).toBe('Wrong translation');
     expect(result.discussions[0].username).toBe('User Two');
   });
 
   it('adds discussion with proposed_translation', () => {
-    const id = insertTerm({ english: 'molecule', icelandic: 'sameind' });
+    const hwId = insertHeadword({ english: 'molecule' });
+    insertTranslation(hwId, { icelandic: 'sameind' });
 
     const discussion = terminologyService.addDiscussion(
-      id,
-      'Better translation',
-      'user3',
-      'User Three',
-      'sameindin'
+      hwId, 'Better translation', 'user3', 'User Three', 'sameindin'
     );
     expect(discussion.proposed_translation).toBe('sameindin');
     expect(discussion.comment).toBe('Better translation');
   });
 
-  it('discussion links to correct term_id', () => {
-    const id1 = insertTerm({ english: 'molecule', icelandic: 'sameind' });
-    const id2 = insertTerm({ english: 'atom', icelandic: 'frumeind' });
+  it('discussion links to correct headword', () => {
+    const hw1 = insertHeadword({ english: 'molecule' });
+    insertTranslation(hw1, { icelandic: 'sameind' });
+    const hw2 = insertHeadword({ english: 'atom' });
+    insertTranslation(hw2, { icelandic: 'frumeind' });
 
-    terminologyService.addDiscussion(id2, 'Comment on atom', 'user1', 'User One');
+    terminologyService.addDiscussion(hw2, 'Comment on atom', 'user1', 'User One');
 
-    const term1 = terminologyService.getTerm(id1);
-    const term2 = terminologyService.getTerm(id2);
+    const term1 = terminologyService.getHeadword(hw1);
+    const term2 = terminologyService.getHeadword(hw2);
     expect(term1.discussions).toHaveLength(0);
     expect(term2.discussions).toHaveLength(1);
-    expect(term2.discussions[0].term_id).toBe(Number(id2));
+    expect(term2.discussions[0].headword_id).toBe(Number(hw2));
   });
 });
 
 // =====================
-// deleteTerm()
+// deleteHeadword() / deleteTranslation()
 // =====================
-describe('deleteTerm()', () => {
-  it('deletes existing term, returns { success: true }', () => {
-    const id = insertTerm({ english: 'molecule', icelandic: 'sameind' });
+describe('deleteHeadword() and deleteTranslation()', () => {
+  it('deletes headword cascading to translations', () => {
+    const { hwId } = insertFullTerm({ english: 'molecule', icelandic: 'sameind' });
 
-    const result = terminologyService.deleteTerm(id);
+    const result = terminologyService.deleteHeadword(hwId);
     expect(result.success).toBe(true);
 
-    // Confirm it's gone
-    const term = terminologyService.getTerm(id);
+    const term = terminologyService.getHeadword(hwId);
     expect(term).toBeNull();
   });
 
   it('returns { success: false } for nonexistent ID', () => {
-    const result = terminologyService.deleteTerm(99999);
+    const result = terminologyService.deleteHeadword(99999);
     expect(result.success).toBe(false);
+  });
+
+  it('deletes single translation without affecting headword', () => {
+    const hwId = insertHeadword({ english: 'cell' });
+    const tr1 = insertTranslation(hwId, { icelandic: 'fruma' });
+    const tr2 = insertTranslation(hwId, { icelandic: 'hólf' });
+
+    terminologyService.deleteTranslation(tr1);
+
+    const hw = terminologyService.getHeadword(hwId);
+    expect(hw).not.toBeNull();
+    expect(hw.translations).toHaveLength(1);
+    expect(hw.translations[0].icelandic).toBe('hólf');
   });
 });
 
@@ -437,33 +546,36 @@ describe('deleteTerm()', () => {
 // getReviewQueue()
 // =====================
 describe('getReviewQueue()', () => {
-  it('returns only disputed and needs_review terms', () => {
-    insertTerm({ english: 'molecule', icelandic: 'sameind', status: 'approved' });
-    insertTerm({ english: 'atom', icelandic: 'frumeind', status: 'disputed' });
-    insertTerm({ english: 'ion', icelandic: 'jón', status: 'needs_review' });
-    insertTerm({ english: 'bond', icelandic: 'tengi', status: 'proposed' });
+  it('returns only headwords with disputed/needs_review translations', () => {
+    insertFullTerm({ english: 'molecule', icelandic: 'sameind', status: 'approved' });
+    insertFullTerm({ english: 'atom', icelandic: 'frumeind', status: 'disputed' });
+    insertFullTerm({ english: 'ion', icelandic: 'jón', status: 'needs_review' });
+    insertFullTerm({ english: 'bond', icelandic: 'tengi', status: 'proposed' });
 
     const queue = terminologyService.getReviewQueue();
     expect(queue).toHaveLength(2);
-    const terms = queue.map((t) => t.english).sort();
+    const terms = queue.map(t => t.english).sort();
     expect(terms).toEqual(['atom', 'ion']);
   });
 
-  it('filters by bookId', () => {
-    insertTerm({ english: 'molecule', icelandic: 'sameind', status: 'disputed', book_id: 1 });
-    insertTerm({ english: 'cell', icelandic: 'fruma', status: 'disputed', book_id: 2 });
+  it('filters by subject', () => {
+    insertFullTerm({
+      english: 'molecule', icelandic: 'sameind', status: 'disputed', subjects: ['chemistry'],
+    });
+    insertFullTerm({
+      english: 'cell', icelandic: 'fruma', status: 'disputed', subjects: ['biology'],
+    });
 
-    const queue = terminologyService.getReviewQueue({ bookId: 1 });
-    // Should return book_id=1 terms and global (null) terms
-    const englishTerms = queue.map((t) => t.english);
-    expect(englishTerms).toContain('molecule');
-    expect(englishTerms).not.toContain('cell');
+    const queue = terminologyService.getReviewQueue({ subject: 'chemistry' });
+    const terms = queue.map(t => t.english);
+    expect(terms).toContain('molecule');
+    expect(terms).not.toContain('cell');
   });
 
   it('supports pagination (limit/offset)', () => {
-    insertTerm({ english: 'alpha', icelandic: 'alfa', status: 'disputed' });
-    insertTerm({ english: 'beta', icelandic: 'beta', status: 'disputed' });
-    insertTerm({ english: 'gamma', icelandic: 'gamma', status: 'disputed' });
+    insertFullTerm({ english: 'alpha', icelandic: 'alfa', status: 'disputed' });
+    insertFullTerm({ english: 'beta', icelandic: 'beta', status: 'disputed' });
+    insertFullTerm({ english: 'gamma', icelandic: 'gamma', status: 'disputed' });
 
     const page1 = terminologyService.getReviewQueue({ limit: 2, offset: 0 });
     expect(page1).toHaveLength(2);
@@ -478,10 +590,10 @@ describe('getReviewQueue()', () => {
 // =====================
 describe('getStats()', () => {
   it('returns counts by status', () => {
-    insertTerm({ english: 'molecule', icelandic: 'sameind', status: 'approved' });
-    insertTerm({ english: 'atom', icelandic: 'frumeind', status: 'approved' });
-    insertTerm({ english: 'ion', icelandic: 'jón', status: 'proposed' });
-    insertTerm({ english: 'bond', icelandic: 'tengi', status: 'disputed' });
+    insertFullTerm({ english: 'molecule', icelandic: 'sameind', status: 'approved' });
+    insertFullTerm({ english: 'atom', icelandic: 'frumeind', status: 'approved' });
+    insertFullTerm({ english: 'ion', icelandic: 'jón', status: 'proposed' });
+    insertFullTerm({ english: 'bond', icelandic: 'tengi', status: 'disputed' });
 
     const stats = terminologyService.getStats();
     expect(stats.byStatus.approved).toBe(2);
@@ -491,71 +603,79 @@ describe('getStats()', () => {
     expect(stats.total).toBe(4);
   });
 
-  it('returns counts by category', () => {
-    insertTerm({ english: 'molecule', icelandic: 'sameind', category: 'fundamental' });
-    insertTerm({ english: 'atom', icelandic: 'frumeind', category: 'fundamental' });
-    insertTerm({ english: 'bond', icelandic: 'tengi', category: 'bonding' });
+  it('returns counts by subject', () => {
+    insertFullTerm({ english: 'molecule', icelandic: 'sameind', subjects: ['chemistry'] });
+    insertFullTerm({ english: 'atom', icelandic: 'frumeind', subjects: ['chemistry'] });
+    insertFullTerm({ english: 'cell', icelandic: 'fruma', subjects: ['biology'] });
 
     const stats = terminologyService.getStats();
-    expect(stats.byCategory.fundamental).toBe(2);
-    expect(stats.byCategory.bonding).toBe(1);
+    expect(stats.bySubject.chemistry).toBe(2);
+    expect(stats.bySubject.biology).toBe(1);
+  });
+
+  it('returns headword count', () => {
+    insertFullTerm({ english: 'molecule', icelandic: 'sameind' });
+    insertFullTerm({ english: 'atom', icelandic: 'frumeind' });
+
+    const stats = terminologyService.getStats();
+    expect(stats.headwords).toBe(2);
   });
 });
 
 // =====================
-// formatTerm() (tested indirectly)
+// Headword format (tested via getHeadword/createTerm)
 // =====================
-describe('formatTerm() (via getTerm/createTerm output)', () => {
-  it('maps DB columns to API camelCase names', () => {
-    const id = insertTerm({
-      english: 'molecule',
-      icelandic: 'sameind',
-      book_id: 1,
-    });
+describe('headword format (via getHeadword)', () => {
+  it('returns headword with nested translations array', () => {
+    const hwId = insertHeadword({ english: 'molecule', pos: 'noun', definition_en: 'A group of atoms' });
+    const trId = insertTranslation(hwId, { icelandic: 'sameind', definition_is: 'Hópur frumeinda' });
+    addSubject(trId, 'chemistry');
 
-    const term = terminologyService.getTerm(id);
-    // camelCase keys
-    expect(term).toHaveProperty('bookId');
-    expect(term).toHaveProperty('sourceChapter');
-    expect(term).toHaveProperty('proposedBy');
-    expect(term).toHaveProperty('createdAt');
-    // no snake_case keys in formatted output
-    expect(term).not.toHaveProperty('book_id');
-    expect(term).not.toHaveProperty('source_chapter');
+    const term = terminologyService.getHeadword(hwId);
+    expect(term.id).toBe(hwId);
+    expect(term.english).toBe('molecule');
+    expect(term.pos).toBe('noun');
+    expect(term.definitionEn).toBe('A group of atoms');
+    expect(term.translations).toHaveLength(1);
+    expect(term.translations[0].icelandic).toBe('sameind');
+    expect(term.translations[0].definitionIs).toBe('Hópur frumeinda');
+    expect(term.translations[0].subjects).toContain('chemistry');
   });
 
-  it('parses JSON alternatives array', () => {
-    const id = insertTerm({
-      english: 'molecule',
-      icelandic: 'sameind',
-      alternatives: JSON.stringify(['sameindafræði', 'efnasameind']),
+  it('parses JSON inflections array', () => {
+    const hwId = insertHeadword({ english: 'reversible' });
+    insertTranslation(hwId, {
+      icelandic: 'afturkræfur',
+      inflections: JSON.stringify(['afturkræfan', 'afturkræfum']),
     });
 
-    const term = terminologyService.getTerm(id);
-    expect(term.alternatives).toEqual(['sameindafræði', 'efnasameind']);
+    const term = terminologyService.getHeadword(hwId);
+    expect(term.translations[0].inflections).toEqual(['afturkræfan', 'afturkræfum']);
   });
 
-  it('handles null alternatives (returns [])', () => {
-    const id = insertTerm({
-      english: 'molecule',
-      icelandic: 'sameind',
-      alternatives: null,
-    });
+  it('handles null inflections (returns [])', () => {
+    const hwId = insertHeadword({ english: 'molecule' });
+    insertTranslation(hwId, { icelandic: 'sameind', inflections: null });
 
-    const term = terminologyService.getTerm(id);
-    expect(term.alternatives).toEqual([]);
+    const term = terminologyService.getHeadword(hwId);
+    expect(term.translations[0].inflections).toEqual([]);
   });
 
-  it('handles null definition_en, definition_is, pos (returns null)', () => {
-    const id = insertTerm({
-      english: 'molecule',
-      icelandic: 'sameind',
-    });
+  it('includes discussions when fetching via getHeadword', () => {
+    const hwId = insertHeadword({ english: 'molecule' });
+    insertTranslation(hwId, { icelandic: 'sameind' });
+    db.prepare(
+      "INSERT INTO terminology_discussions (headword_id, user_id, username, comment) VALUES (?, 'u1', 'User', 'Test comment')"
+    ).run(hwId);
 
-    const term = terminologyService.getTerm(id);
-    expect(term.definitionEn).toBeNull();
-    expect(term.definitionIs).toBeNull();
-    expect(term.pos).toBeNull();
+    const term = terminologyService.getHeadword(hwId);
+    expect(term.discussions).toHaveLength(1);
+    expect(term.discussions[0].comment).toBe('Test comment');
+  });
+
+  it('returns null for nonexistent headword', () => {
+    const term = terminologyService.getHeadword(99999);
+    expect(term).toBeNull();
   });
 });
 
@@ -564,7 +684,7 @@ describe('formatTerm() (via getTerm/createTerm output)', () => {
 // =====================
 describe('findTermsInSegments()', () => {
   it('finds approved term in EN source text', () => {
-    insertTerm({ english: 'molecule', icelandic: 'sameind', status: 'approved' });
+    insertFullTerm({ english: 'molecule', icelandic: 'sameind', status: 'approved' });
 
     const segments = [
       {
@@ -580,7 +700,7 @@ describe('findTermsInSegments()', () => {
   });
 
   it('reports missing issue when IS translation not found', () => {
-    insertTerm({ english: 'molecule', icelandic: 'sameind', status: 'approved' });
+    insertFullTerm({ english: 'molecule', icelandic: 'sameind', status: 'approved' });
 
     const segments = [
       { segmentId: 'seg1', enContent: 'A molecule is here', isContent: 'Frumeind er hér' },
@@ -592,26 +712,8 @@ describe('findTermsInSegments()', () => {
     expect(result.seg1.issues[0].expected).toBe('sameind');
   });
 
-  it('accepts alternative translations without flagging', () => {
-    insertTerm({
-      english: 'molecule',
-      icelandic: 'sameind',
-      status: 'approved',
-      alternatives: JSON.stringify(['sameindir']),
-    });
-
-    const segments = [
-      { segmentId: 'seg1', enContent: 'A molecule is here', isContent: 'Sameindir eru hér' },
-    ];
-
-    const result = terminologyService.findTermsInSegments(segments);
-    // Should have a match but NO issue because alternative was used
-    expect(result.seg1.matches).toHaveLength(1);
-    expect(result.seg1.issues).toHaveLength(0);
-  });
-
   it('no issues when approved term IS found in IS text', () => {
-    insertTerm({ english: 'atom', icelandic: 'frumeind', status: 'approved' });
+    insertFullTerm({ english: 'atom', icelandic: 'frumeind', status: 'approved' });
 
     const segments = [
       { segmentId: 'seg1', enContent: 'An atom is small', isContent: 'Frumeind er lítil' },
@@ -620,5 +722,100 @@ describe('findTermsInSegments()', () => {
     const result = terminologyService.findTermsInSegments(segments);
     expect(result.seg1.matches).toHaveLength(1);
     expect(result.seg1.issues).toHaveLength(0);
+  });
+
+  it('matches inflected forms in IS text (no missing issue)', () => {
+    insertFullTerm({
+      english: 'reversible',
+      icelandic: 'afturkræfur',
+      status: 'approved',
+      inflections: JSON.stringify(['afturkræfan', 'afturkræfa', 'afturkræfum']),
+    });
+
+    const segments = [
+      {
+        segmentId: 'seg1',
+        enContent: 'This is a reversible reaction',
+        isContent: 'Þetta er afturkræfa efnahvörf',
+      },
+    ];
+
+    const result = terminologyService.findTermsInSegments(segments);
+    expect(result.seg1.matches).toHaveLength(1);
+    // Inflected form "afturkræfa" should match — no missing issue
+    expect(result.seg1.issues).toHaveLength(0);
+  });
+
+  it('includes all translations in match info', () => {
+    const hwId = insertHeadword({ english: 'cell' });
+    const tr1 = insertTranslation(hwId, { icelandic: 'hólf', status: 'approved' });
+    const tr2 = insertTranslation(hwId, { icelandic: 'fruma', status: 'approved' });
+    addSubject(tr1, 'chemistry');
+    addSubject(tr2, 'biology');
+
+    const segments = [
+      { segmentId: 'seg1', enContent: 'A cell contains', isContent: 'Fruma inniheldur' },
+    ];
+
+    const result = terminologyService.findTermsInSegments(segments);
+    expect(result.seg1.matches).toHaveLength(1);
+    expect(result.seg1.matches[0].translations).toHaveLength(2);
+    // No missing issue because "fruma" (one of the approved translations) is present
+    expect(result.seg1.issues).toHaveLength(0);
+  });
+
+  it('ranks primary translation by book domain', () => {
+    const hwId = insertHeadword({ english: 'cell' });
+    const tr1 = insertTranslation(hwId, { icelandic: 'hólf', status: 'approved' });
+    const tr2 = insertTranslation(hwId, { icelandic: 'fruma', status: 'approved' });
+    addSubject(tr1, 'chemistry');
+    addSubject(tr2, 'biology');
+
+    const segments = [
+      { segmentId: 'seg1', enContent: 'A cell contains', isContent: 'Fruma inniheldur' },
+    ];
+
+    const result = terminologyService.findTermsInSegments(segments, 'liffraedi-2e');
+    expect(result.seg1.matches[0].icelandic).toBe('fruma');
+    expect(result.seg1.matches[0].isPrimary).toBe(true);
+  });
+});
+
+// =====================
+// importGlossaryTerms()
+// =====================
+describe('importGlossaryTerms()', () => {
+  it('creates headword + translation for new terms', () => {
+    const result = terminologyService.importGlossaryTerms(
+      [{ english: 'molecule', icelandic: 'sameind', definition_en: 'A group of atoms' }],
+      'user1', 'Test User',
+      { subjects: ['chemistry'] }
+    );
+
+    expect(result.added).toBe(1);
+    const terms = terminologyService.searchTerms('molecule');
+    expect(terms.terms).toHaveLength(1);
+    expect(terms.terms[0].translations[0].subjects).toContain('chemistry');
+  });
+
+  it('skips empty english terms', () => {
+    const result = terminologyService.importGlossaryTerms(
+      [{ english: '', icelandic: 'sameind' }],
+      'user1', 'Test User'
+    );
+    expect(result.skipped).toBe(1);
+  });
+
+  it('enriches existing approved translation with definition', () => {
+    insertFullTerm({ english: 'molecule', icelandic: 'sameind', status: 'approved' });
+
+    const result = terminologyService.importGlossaryTerms(
+      [{ english: 'molecule', icelandic: 'sameind', definition_is: 'Hópur frumeinda' }],
+      'user1', 'Test User'
+    );
+
+    expect(result.enriched).toBe(1);
+    const terms = terminologyService.searchTerms('molecule');
+    expect(terms.terms[0].translations[0].definitionIs).toBe('Hópur frumeinda');
   });
 });

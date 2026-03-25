@@ -653,10 +653,8 @@ router.get(
         isContent: seg.is || '',
       }));
 
-      // Get book ID from registered_books (if available)
-      const bookId = req.query.bookId ? parseInt(req.query.bookId, 10) : null;
-
-      const termMatches = terminology.findTermsInSegments(segments, bookId);
+      // Pass book slug for domain-priority ranking
+      const termMatches = terminology.findTermsInSegments(segments, req.params.book);
 
       res.json({
         moduleId: req.params.moduleId,
