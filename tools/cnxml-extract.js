@@ -1416,6 +1416,21 @@ function processNote(
     }
   }
 
+  // Process lists in note (e.g., check-your-understanding questions)
+  const lists = extractNestedElements(note.content, 'list');
+  for (const list of lists) {
+    const listStructure = processList(
+      list,
+      moduleId,
+      addSegment,
+      mathMap,
+      counters,
+      inlineMediaMap,
+      inlineTablesMap
+    );
+    noteStructure.content.push(listStructure);
+  }
+
   return noteStructure;
 }
 
