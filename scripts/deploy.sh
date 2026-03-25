@@ -44,7 +44,7 @@ fi
 
 # 5. Install any new dependencies
 echo "Installing dependencies..."
-npm install --omit=dev
+npm install --omit=dev --ignore-scripts
 
 # 6. Restart the service
 echo "Restarting ritstjorn..."
