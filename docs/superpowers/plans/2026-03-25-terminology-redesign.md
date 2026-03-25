@@ -18,19 +18,29 @@
 - `alternatives` JSON field is overloaded: synonyms, inflections, and domain variants mixed together
 - Chemistry-only import from Íðorðabankinn done on production (can be redone)
 - Term matching in segment editor: exact word-boundary match on `icelandic` field — misses inflected forms
+- 15 chemistry-specific `category` values (bonding, reactions, etc.) — manually assigned, not from API
 
 ### Problem
 1. Same English term imported separately per book → duplicates
 2. No way to show "this is the Chemistry translation, that's the Biology translation"
 3. Icelandic inflections (4 cases × 3 genders × 2 numbers) defeat exact matching
 4. `alternatives` conflates different translation options with inflected forms of the same translation
+5. `category` field is useless — Íðorðabankinn API doesn't provide it (always null), so all imports get "Annað"
+
+### Simplifications (user decisions)
+- **Clean start:** Drop all existing terms. No data migration needed — just create new tables.
+  The only existing data is one Chemistry import from Íðorðabankinn (will be re-imported) and
+  a few manual experiment artifacts.
+- **Drop `category` field:** The subject domain (Chemistry, Biology, Physics) replaces it as
+  the organizational axis. Fine-grained categorization can be added later if needed.
+- **Íðorðabankinn terms are auto-approved:** Status = 'approved' on import (Árnastofnun is authoritative).
 
 ### Target State
 - One headword entry per English term
 - Multiple translations per headword, each tagged with subject domains
 - Books map to primary subject → domain-relevant translations shown first
 - Inflected forms stored per translation for fuzzy matching
-- All existing data preserved through migration
+- Clean schema with no legacy baggage
 
 ---
 
@@ -159,12 +169,14 @@ INSERT INTO book_subject_mapping VALUES
 
 ## Implementation Tasks
 
-### Task 1: Schema migration
-- Create migration 032 with new tables
-- Migrate data from `terminology_terms` → headwords + translations + subjects
-- Migrate `terminology_discussions` → `terminology_discussions_v2`
-- Populate `book_subject_mapping`
-- Keep old table as `terminology_terms_legacy` for rollback safety
+### Task 1: Schema migration (clean start)
+- Create migration 032 that:
+  - Drops `terminology_terms`, `terminology_discussions`, `terminology_imports` tables
+  - Creates `terminology_headwords`, `terminology_translations`, `terminology_translation_subjects`
+  - Creates `book_subject_mapping` with initial data for all 5 books
+  - Creates `terminology_discussions` (fresh, referencing headword_id)
+  - Drops the `TERM_CATEGORIES` constant from terminologyService.js (no longer needed)
+- No data migration — clean start per user decision
 
 ### Task 2: Update terminologyService.js — core queries
 - Rewrite CRUD operations for new schema (headwords + translations)
