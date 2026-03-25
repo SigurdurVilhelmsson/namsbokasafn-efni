@@ -115,7 +115,6 @@ function searchTerms(query = '', options = {}) {
     FROM terminology_headwords h
   `;
   const joins = [];
-  const wheres = [];
   const params = [];
 
   // If filtering by subject or status, join translations
@@ -154,9 +153,12 @@ function searchTerms(query = '', options = {}) {
   sql += ` ORDER BY h.english COLLATE NOCASE ASC LIMIT ? OFFSET ?`;
   params.push(limit, offset);
 
-  const headwordIds = db.prepare(sql).all(...params).map(r => r.id);
+  const headwordIds = db
+    .prepare(sql)
+    .all(...params)
+    .map((r) => r.id);
 
-  const terms = headwordIds.map(id => loadHeadword(db, id));
+  const terms = headwordIds.map((id) => loadHeadword(db, id));
 
   return {
     terms,
@@ -201,7 +203,7 @@ function lookupTerm(query, bookSlug = null) {
 
   const rows = db.prepare(sql).all(exact, startsWith, contains, contains, contains);
 
-  return rows.map(r => {
+  return rows.map((r) => {
     const hw = loadHeadword(db, r.id);
     // Mark primary translation based on book's domain
     if (bookSubject && hw.translations) {
@@ -238,7 +240,9 @@ function createTerm(data, userId, username) {
 
   // Check for existing headword
   const existing = db
-    .prepare('SELECT id FROM terminology_headwords WHERE english = ? AND (pos = ? OR (pos IS NULL AND ? IS NULL))')
+    .prepare(
+      'SELECT id FROM terminology_headwords WHERE english = ? AND (pos = ? OR (pos IS NULL AND ? IS NULL))'
+    )
     .get(english, pos || null, pos || null);
 
   if (existing) {
@@ -283,12 +287,14 @@ function addTranslation(headwordId, data, userId, username) {
   }
 
   const result = db
-    .prepare(`
+    .prepare(
+      `
       INSERT INTO terminology_translations
         (headword_id, icelandic, definition_is, inflections, notes, source, idordabanki_id,
          status, proposed_by, proposed_by_name)
       VALUES (?, ?, ?, ?, ?, ?, ?, 'proposed', ?, ?)
-    `)
+    `
+    )
     .run(
       headwordId,
       icelandic,
@@ -419,11 +425,13 @@ function approveTranslation(translationId, userId, username) {
     return getHeadword(tr.headword_id);
   }
 
-  db.prepare(`
+  db.prepare(
+    `
     UPDATE terminology_translations
     SET status = 'approved', approved_by = ?, approved_by_name = ?, approved_at = CURRENT_TIMESTAMP
     WHERE id = ?
-  `).run(userId, username, translationId);
+  `
+  ).run(userId, username, translationId);
 
   return getHeadword(tr.headword_id);
 }
@@ -447,10 +455,12 @@ function disputeTranslation(translationId, comment, userId, username, proposedTr
   );
 
   // Add discussion on the headword
-  db.prepare(`
+  db.prepare(
+    `
     INSERT INTO terminology_discussions (headword_id, user_id, username, comment, proposed_translation)
     VALUES (?, ?, ?, ?, ?)
-  `).run(tr.headword_id, userId, username, comment, proposedTranslation);
+  `
+  ).run(tr.headword_id, userId, username, comment, proposedTranslation);
 
   return getHeadword(tr.headword_id);
 }
@@ -469,13 +479,17 @@ function addDiscussion(headwordId, comment, userId, username, proposedTranslatio
   }
 
   const result = db
-    .prepare(`
+    .prepare(
+      `
       INSERT INTO terminology_discussions (headword_id, user_id, username, comment, proposed_translation)
       VALUES (?, ?, ?, ?, ?)
-    `)
+    `
+    )
     .run(headwordId, userId, username, comment, proposedTranslation);
 
-  return db.prepare('SELECT * FROM terminology_discussions WHERE id = ?').get(result.lastInsertRowid);
+  return db
+    .prepare('SELECT * FROM terminology_discussions WHERE id = ?')
+    .get(result.lastInsertRowid);
 }
 
 // ─────────────────────────────────────────
@@ -510,8 +524,11 @@ function getReviewQueue(options = {}) {
   sql += ` ORDER BY h.updated_at DESC LIMIT ? OFFSET ?`;
   params.push(limit, offset);
 
-  const ids = db.prepare(sql).all(...params).map(r => r.id);
-  return ids.map(id => loadHeadword(db, id));
+  const ids = db
+    .prepare(sql)
+    .all(...params)
+    .map((r) => r.id);
+  return ids.map((id) => loadHeadword(db, id));
 }
 
 // ─────────────────────────────────────────
@@ -561,7 +578,8 @@ function getStats(subject = null) {
   }
 
   const stats = db
-    .prepare(`
+    .prepare(
+      `
       SELECT
         COUNT(*) as total,
         SUM(CASE WHEN t.status = 'approved' THEN 1 ELSE 0 END) as approved,
@@ -570,25 +588,30 @@ function getStats(subject = null) {
         SUM(CASE WHEN t.status = 'needs_review' THEN 1 ELSE 0 END) as needs_review
       FROM terminology_translations t
       ${translationWhere}
-    `)
+    `
+    )
     .get(...params);
 
   const bySubject = db
-    .prepare(`
+    .prepare(
+      `
       SELECT ts.subject, COUNT(DISTINCT ts.translation_id) as count
       FROM terminology_translation_subjects ts
       GROUP BY ts.subject
       ORDER BY count DESC
-    `)
+    `
+    )
     .all();
 
   const bySource = db
-    .prepare(`
+    .prepare(
+      `
       SELECT source, COUNT(*) as count
       FROM terminology_translations
       GROUP BY source
       ORDER BY count DESC
-    `)
+    `
+    )
     .all();
 
   return {
@@ -732,11 +755,21 @@ async function importFromExcel(fileContent, userId, username, options = {}) {
 
   for (const row of data) {
     const english =
-      row.English || row.english || row.EN || row.en ||
-      row['English term'] || row['Enska'] || Object.values(row)[0];
+      row.English ||
+      row.english ||
+      row.EN ||
+      row.en ||
+      row['English term'] ||
+      row['Enska'] ||
+      Object.values(row)[0];
     const icelandic =
-      row.Icelandic || row.icelandic || row.IS || row.is ||
-      row['Icelandic term'] || row['Íslenska'] || Object.values(row)[1];
+      row.Icelandic ||
+      row.icelandic ||
+      row.IS ||
+      row.is ||
+      row['Icelandic term'] ||
+      row['Íslenska'] ||
+      Object.values(row)[1];
 
     if (!english || !icelandic) {
       skipped++;
@@ -801,26 +834,32 @@ function importGlossaryTerms(terms, userId, username, options = {}) {
 
         // Check if this translation already exists
         const existingTr = db
-          .prepare('SELECT id, status FROM terminology_translations WHERE headword_id = ? AND icelandic = ?')
+          .prepare(
+            'SELECT id, status FROM terminology_translations WHERE headword_id = ? AND icelandic = ?'
+          )
           .get(hw.id, icelandic);
 
         if (existingTr) {
           if (existingTr.status === 'approved') {
             // Enrich with definition only
             if (defIs) {
-              db.prepare(`
+              db.prepare(
+                `
                 UPDATE terminology_translations
                 SET definition_is = COALESCE(definition_is, ?)
                 WHERE id = ?
-              `).run(defIs, existingTr.id);
+              `
+              ).run(defIs, existingTr.id);
             }
             enriched++;
           } else {
             // Update definition
             if (defIs) {
-              db.prepare(`
+              db.prepare(
+                `
                 UPDATE terminology_translations SET definition_is = COALESCE(definition_is, ?) WHERE id = ?
-              `).run(defIs, existingTr.id);
+              `
+              ).run(defIs, existingTr.id);
             }
             updated++;
           }
@@ -828,11 +867,13 @@ function importGlossaryTerms(terms, userId, username, options = {}) {
           // New translation
           const status = 'needs_review';
           const trResult = db
-            .prepare(`
+            .prepare(
+              `
               INSERT INTO terminology_translations
                 (headword_id, icelandic, definition_is, source, status, proposed_by, proposed_by_name)
               VALUES (?, ?, ?, ?, ?, ?, ?)
-            `)
+            `
+            )
             .run(hw.id, icelandic, defIs, source, status, userId, username);
 
           // Add subjects
@@ -937,7 +978,11 @@ function importFromKeyTerms(bookSlug, chapterNum, userId, username) {
       }
 
       const trResult = insertTranslationStmt.run(
-        hw.id, icelandic, definition.substring(0, 500), userId, username
+        hw.id,
+        icelandic,
+        definition.substring(0, 500),
+        userId,
+        username
       );
       for (const subj of subjects) {
         insertSubjectStmt.run(trResult.lastInsertRowid, subj);
@@ -969,7 +1014,8 @@ function findTermsInSegments(segments, bookSlug = null) {
 
   // Load all headwords with approved/proposed translations
   const headwords = db
-    .prepare(`
+    .prepare(
+      `
       SELECT h.id as headword_id, h.english,
              t.id as translation_id, t.icelandic, t.inflections, t.status,
              GROUP_CONCAT(ts.subject) as subjects
@@ -979,7 +1025,8 @@ function findTermsInSegments(segments, bookSlug = null) {
       WHERE t.status IN ('approved', 'proposed')
       GROUP BY h.id, t.id
       ORDER BY LENGTH(h.english) DESC
-    `)
+    `
+    )
     .all();
 
   // Group translations by headword
@@ -1020,11 +1067,26 @@ function findTermsInSegments(segments, bookSlug = null) {
       continue;
     }
 
+    // Track consumed character ranges so shorter terms that overlap with
+    // longer already-matched terms are skipped. Terms are sorted longest-first,
+    // so "melting point" claims its range before "melting" is checked.
+    const consumed = []; // [{start, end}]
+
     for (const term of terms) {
       term.regex.lastIndex = 0;
       const enMatch = term.regex.exec(seg.enContent);
 
       if (enMatch) {
+        const matchStart = enMatch.index;
+        const matchEnd = matchStart + enMatch[0].length;
+
+        // Skip if this match overlaps with an already-consumed range
+        const overlaps = consumed.some((r) => matchStart < r.end && matchEnd > r.start);
+        if (overlaps) continue;
+
+        // Claim this range
+        consumed.push({ start: matchStart, end: matchEnd });
+
         // Find best translation (primary domain first)
         const sorted = [...term.translations].sort((a, b) => {
           if (a.isPrimary && !b.isPrimary) return -1;
@@ -1043,7 +1105,7 @@ function findTermsInSegments(segments, bookSlug = null) {
           status: primary.status,
           isPrimary: primary.isPrimary,
           position: enMatch.index,
-          translations: sorted.map(t => ({
+          translations: sorted.map((t) => ({
             id: t.id,
             icelandic: t.icelandic,
             subjects: t.subjects,
@@ -1054,9 +1116,9 @@ function findTermsInSegments(segments, bookSlug = null) {
 
         // Check if any approved translation appears in IS text
         if (seg.isContent) {
-          const approvedTranslations = term.translations.filter(t => t.status === 'approved');
+          const approvedTranslations = term.translations.filter((t) => t.status === 'approved');
           if (approvedTranslations.length > 0) {
-            const anyFound = approvedTranslations.some(t => {
+            const anyFound = approvedTranslations.some((t) => {
               t.isRegex.lastIndex = 0;
               return t.isRegex.test(seg.isContent);
             });
@@ -1090,21 +1152,25 @@ function findTermsInSegments(segments, bookSlug = null) {
  */
 function loadHeadword(db, id, options = {}) {
   const hw = db
-    .prepare(`
+    .prepare(
+      `
       SELECT h.* FROM terminology_headwords h WHERE h.id = ?
-    `)
+    `
+    )
     .get(id);
 
   if (!hw) return null;
 
   // Load translations
   const translations = db
-    .prepare(`
+    .prepare(
+      `
       SELECT t.*
       FROM terminology_translations t
       WHERE t.headword_id = ?
       ORDER BY t.status = 'approved' DESC, t.created_at ASC
-    `)
+    `
+    )
     .all(id);
 
   // Load subjects for each translation
@@ -1112,7 +1178,7 @@ function loadHeadword(db, id, options = {}) {
     'SELECT subject FROM terminology_translation_subjects WHERE translation_id = ?'
   );
 
-  const formattedTranslations = translations.map(t => ({
+  const formattedTranslations = translations.map((t) => ({
     id: t.id,
     icelandic: t.icelandic,
     definitionIs: t.definition_is || null,
@@ -1128,7 +1194,7 @@ function loadHeadword(db, id, options = {}) {
     approvedAt: t.approved_at,
     createdAt: t.created_at,
     updatedAt: t.updated_at,
-    subjects: subjectStmt.all(t.id).map(s => s.subject),
+    subjects: subjectStmt.all(t.id).map((s) => s.subject),
   }));
 
   const result = {
@@ -1143,7 +1209,9 @@ function loadHeadword(db, id, options = {}) {
 
   if (options.includeDiscussions) {
     result.discussions = db
-      .prepare('SELECT * FROM terminology_discussions WHERE headword_id = ? ORDER BY created_at DESC')
+      .prepare(
+        'SELECT * FROM terminology_discussions WHERE headword_id = ? ORDER BY created_at DESC'
+      )
       .all(id);
   }
 
@@ -1160,7 +1228,7 @@ function getTranslation(db, id) {
   const subjects = db
     .prepare('SELECT subject FROM terminology_translation_subjects WHERE translation_id = ?')
     .all(id)
-    .map(s => s.subject);
+    .map((s) => s.subject);
 
   return {
     id: tr.id,
@@ -1182,12 +1250,14 @@ function getTranslation(db, id) {
  */
 function getBookSubjectBySlug(db, bookSlug) {
   const row = db
-    .prepare(`
+    .prepare(
+      `
       SELECT bsm.primary_subject
       FROM book_subject_mapping bsm
       JOIN registered_books rb ON rb.id = bsm.book_id
       WHERE rb.slug = ?
-    `)
+    `
+    )
     .get(bookSlug);
   return row ? row.primary_subject : null;
 }
