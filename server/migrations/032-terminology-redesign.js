@@ -11,27 +11,24 @@
  * Clean start: drops old terminology_terms, terminology_discussions,
  * terminology_imports tables. The only existing data is one Íðorðabankinn
  * chemistry import that will be re-imported into the new schema.
+ *
+ * IMPORTANT: Must be idempotent — the migration runner re-runs all migrations
+ * on every server restart (no applied-tracking). Uses IF NOT EXISTS / IF EXISTS
+ * / OR IGNORE throughout.
  */
 
 function up(db) {
-  // --- Drop old tables ---
-  // Order matters: drop child tables first (FK constraints)
+  // --- Drop old tables (safe on re-run: IF EXISTS) ---
   db.exec(`
-    DROP TABLE IF EXISTS terminology_discussions;
     DROP TABLE IF EXISTS terminology_imports;
     DROP TABLE IF EXISTS terminology_terms;
-  `);
-
-  // Drop old trigger if it exists
-  db.exec(`
     DROP TRIGGER IF EXISTS update_terminology_terms_timestamp;
   `);
 
-  // --- Create new tables ---
+  // --- Create new tables (safe on re-run: IF NOT EXISTS) ---
 
-  // Headword: one per English term
   db.exec(`
-    CREATE TABLE terminology_headwords (
+    CREATE TABLE IF NOT EXISTS terminology_headwords (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       english TEXT NOT NULL,
       pos TEXT,
@@ -41,13 +38,12 @@ function up(db) {
       UNIQUE(english, pos)
     );
 
-    CREATE INDEX idx_headwords_english
+    CREATE INDEX IF NOT EXISTS idx_headwords_english
       ON terminology_headwords(english);
   `);
 
-  // Translation: one per Icelandic rendering of a headword
   db.exec(`
-    CREATE TABLE terminology_translations (
+    CREATE TABLE IF NOT EXISTS terminology_translations (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       headword_id INTEGER NOT NULL,
       icelandic TEXT NOT NULL,
@@ -68,19 +64,18 @@ function up(db) {
       UNIQUE(headword_id, icelandic)
     );
 
-    CREATE INDEX idx_translations_headword
+    CREATE INDEX IF NOT EXISTS idx_translations_headword
       ON terminology_translations(headword_id);
-    CREATE INDEX idx_translations_status
+    CREATE INDEX IF NOT EXISTS idx_translations_status
       ON terminology_translations(status);
-    CREATE INDEX idx_translations_icelandic
+    CREATE INDEX IF NOT EXISTS idx_translations_icelandic
       ON terminology_translations(icelandic);
-    CREATE INDEX idx_translations_idordabanki
+    CREATE INDEX IF NOT EXISTS idx_translations_idordabanki
       ON terminology_translations(idordabanki_id);
   `);
 
-  // Subject tags for translations (many-to-many)
   db.exec(`
-    CREATE TABLE terminology_translation_subjects (
+    CREATE TABLE IF NOT EXISTS terminology_translation_subjects (
       translation_id INTEGER NOT NULL,
       subject TEXT NOT NULL,
       PRIMARY KEY (translation_id, subject),
@@ -88,9 +83,8 @@ function up(db) {
     );
   `);
 
-  // Map books to their primary subject domain
   db.exec(`
-    CREATE TABLE book_subject_mapping (
+    CREATE TABLE IF NOT EXISTS book_subject_mapping (
       book_id INTEGER NOT NULL,
       primary_subject TEXT NOT NULL,
       PRIMARY KEY (book_id),
@@ -98,9 +92,20 @@ function up(db) {
     );
   `);
 
-  // Discussions now reference headwords
+  // Drop the OLD terminology_discussions (references term_id) and recreate
+  // with the new schema (references headword_id). Only drop if it has the
+  // old schema (term_id column).
+  const columns = db.pragma('table_info(terminology_discussions)');
+  const hasTermId = columns.some((c) => c.name === 'term_id');
+  const hasHeadwordId = columns.some((c) => c.name === 'headword_id');
+
+  if (hasTermId && !hasHeadwordId) {
+    // Old schema — drop and recreate
+    db.exec('DROP TABLE terminology_discussions');
+  }
+
   db.exec(`
-    CREATE TABLE terminology_discussions (
+    CREATE TABLE IF NOT EXISTS terminology_discussions (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       headword_id INTEGER NOT NULL,
       user_id TEXT NOT NULL,
@@ -111,20 +116,20 @@ function up(db) {
       FOREIGN KEY (headword_id) REFERENCES terminology_headwords(id) ON DELETE CASCADE
     );
 
-    CREATE INDEX idx_discussions_headword
+    CREATE INDEX IF NOT EXISTS idx_discussions_headword
       ON terminology_discussions(headword_id);
   `);
 
-  // --- Update triggers ---
+  // --- Triggers (safe on re-run: IF NOT EXISTS) ---
   db.exec(`
-    CREATE TRIGGER update_headwords_timestamp
+    CREATE TRIGGER IF NOT EXISTS update_headwords_timestamp
       AFTER UPDATE ON terminology_headwords
       FOR EACH ROW
       BEGIN
         UPDATE terminology_headwords SET updated_at = CURRENT_TIMESTAMP WHERE id = OLD.id;
       END;
 
-    CREATE TRIGGER update_translations_timestamp
+    CREATE TRIGGER IF NOT EXISTS update_translations_timestamp
       AFTER UPDATE ON terminology_translations
       FOR EACH ROW
       BEGIN
@@ -132,19 +137,18 @@ function up(db) {
       END;
   `);
 
-  // --- Seed book_subject_mapping ---
-  // Only insert for books that exist in registered_books
+  // --- Seed book_subject_mapping (safe on re-run: INSERT OR IGNORE) ---
   const books = db.prepare('SELECT id, slug FROM registered_books').all();
   const subjectMap = {
     'efnafraedi-2e': 'chemistry',
     'liffraedi-2e': 'biology',
-    'orverufraedi': 'microbiology',
+    orverufraedi: 'microbiology',
     'lifraen-efnafraedi': 'organic-chemistry',
     'edlisfraedi-2e': 'physics',
   };
 
   const insertMapping = db.prepare(
-    'INSERT INTO book_subject_mapping (book_id, primary_subject) VALUES (?, ?)'
+    'INSERT OR IGNORE INTO book_subject_mapping (book_id, primary_subject) VALUES (?, ?)'
   );
 
   for (const book of books) {
