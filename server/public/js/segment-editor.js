@@ -2011,6 +2011,11 @@
   // ================================================================
   // EXPOSE TO WINDOW (for HTML onclick/inline handlers)
   // ================================================================
+  window.loadModule = loadModule;
+  window.openEditPanel = openEditPanel;
+  window.closeEditPanel = closeEditPanel;
+  window.saveEdit = saveEdit;
+  window.wrapSelection = wrapSelection;
   window.closeTermPopup = closeTermPopup;
   window.reviewEdit = reviewEdit;
   window.unapproveEdit = unapproveEdit;

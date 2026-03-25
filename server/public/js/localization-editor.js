@@ -2144,6 +2144,8 @@
   // ================================================================
   // EXPOSE TO WINDOW (for HTML onclick handlers)
   // ================================================================
+  window.edLoadModule = edLoadModule;
+  window.edClosePopover = edClosePopover;
   window.switchView = switchView;
   window.closeModal = closeModal;
   window.edToggleGuidelines = edToggleGuidelines;
