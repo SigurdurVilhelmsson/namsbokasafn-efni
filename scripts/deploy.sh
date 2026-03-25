@@ -42,9 +42,11 @@ if [ "$STASHED" -eq 1 ]; then
   fi
 fi
 
-# 5. Install any new dependencies
+# 5. Install any new dependencies (root + server)
 echo "Installing dependencies..."
 npm install --omit=dev --ignore-scripts
+echo "Installing server dependencies..."
+cd server && npm install --omit=dev --ignore-scripts && cd ..
 
 # 6. Restart the service
 echo "Restarting ritstjorn..."
