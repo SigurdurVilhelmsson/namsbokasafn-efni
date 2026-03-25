@@ -325,7 +325,25 @@
           "id": "fs-id1171359175069",
           "class": "microbiology check-your-understanding",
           "title": null,
-          "content": []
+          "content": [
+            {
+              "type": "list",
+              "id": "fs-id1171359181616",
+              "listType": "bulleted",
+              "numberStyle": null,
+              "bulletStyle": "bullet",
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m58783:item:fs-id1171359181616-item-1"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m58783:item:fs-id1171359181616-item-2"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -445,7 +463,25 @@
               "id": "fs-id1171360210324",
               "class": "microbiology check-your-understanding",
               "title": null,
-              "content": []
+              "content": [
+                {
+                  "type": "list",
+                  "id": "fs-id1171360586897",
+                  "listType": "bulleted",
+                  "numberStyle": null,
+                  "bulletStyle": "bullet",
+                  "items": [
+                    {
+                      "id": null,
+                      "segmentId": "m58783:item:fs-id1171360586897-item-1"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m58783:item:fs-id1171360586897-item-2"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -522,7 +558,25 @@
           "id": "fs-id1171360481357",
           "class": "microbiology check-your-understanding",
           "title": null,
-          "content": []
+          "content": [
+            {
+              "type": "list",
+              "id": "fs-id1171360211011",
+              "listType": "bulleted",
+              "numberStyle": null,
+              "bulletStyle": "bullet",
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m58783:item:fs-id1171360211011-item-1"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m58783:item:fs-id1171360211011-item-2"
+                }
+              ]
+            }
+          ]
         }
       ]
     },

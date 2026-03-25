@@ -2,399 +2,135 @@
 <title>Það sem forfeður okkar vissu</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m58781</md:content-id>
-  <md:title>What Our Ancestors Knew</md:title>
+  <md:title>Það sem forfeður okkar vissu</md:title>
   <md:abstract/>
   <md:uuid>e94a060c-89e3-4331-8859-cf21fbcd373f</md:uuid>
 </metadata>
 
 <content>
 <section id="fs-id1171360203262" class="learning-objectives">
-<title>Næmisviðmið</title>
+<title>Námstakmarkanir</title>
 <para id="fs-id11713605736962">Í lok þessa kafla muntu geta:</para>
 <list id="fs-id1171360573696" list-type="bulleted">
-<item>Lýst því hvernig forfeður
-okkar bættu mat með notkun ósýnilegra örvera</item>
-<item>Lýst því hvernig orsakir
-veikinda og sjúkdóma voru útskýrðar í fornöld, áður en smásjáin var
-fundin upp</item>
-<item>Lýst helstu sögulegum
-atburðum sem tengjast upphafi örverufræðinnar</item>
+<item>Lýst því hvernig forfeður okkar bættu matvæli með notkun ósýnilegra örvera</item>
+<item>Lýst því hvernig orsakir veikinda og sjúkdóma voru útskýrðar í fornöld, áður en smásjáin var fundin upp</item>
+<item>Lýst helstu sögulegum atburðum sem tengjast fæðingu örverufræðinnar</item>
 </list>
 </section>
 <note id="fs-id1171360313936" class="microbiology clinical-focus">
 <title>1. hluti</title>
-<para id="fs-id1171360608266">Cora, 41 árs lögfræðingur og
-tveggja barna móðir, hefur nýlega verið með slæman höfuðverk, háan hita
-og stífan háls. Eiginmaður hennar, sem fylgdi Coru til læknis, segir að
-Cora virðist einnig vera ringluð á köflum og óvenju syfjuð. Miðað við
-þessi einkenni grunar lækninn að Cora gæti verið með heilahimnubólgu,
-hugsanlega lífshættulega sýkingu í vefnum sem umlykur heila og mænu.</para>
-<para id="fs-id1171360138018">Heilahimnubólga getur átt sér
-ýmsar orsakir. Hún getur stafað af bakteríum, sveppum, veirum eða
-jafnvel viðbrögðum við lyfjum eða snertingu við þungmálma. Þótt fólk með
-veiruheilahimnubólgu jafni sig yfirleitt af sjálfsdáðum eru
-heilahimnubólga af völdum baktería og sveppa mjög alvarleg og krefjast
-meðferðar.</para>
-<para id="fs-id1171360212679">Læknir Coru fyrirskipar
-mænustungu til að taka þrjú sýni af heila- og mænuvökva (CSF) úr mænunni
-(<link target-id="OSC_Microbio_01_01_lumbar"/>). Sýnin verða send á rannsóknarstofur á þremur mismunandi
-deildum til prófunar: klínískri efnafræði, örverufræði og
-blóðmeinafræði. Sýnin verða fyrst skoðuð með berum augum til að ákvarða
-hvort heila- og mænuvökvinn sé óeðlilega litaður eða skýjaður; síðan
-verður heila- og mænuvökvinn skoðaður í smásjá til að sjá hvort hann
-innihaldi eðlilegan fjölda rauðra og hvítra blóðkorna og til að athuga
-hvort einhverjar óeðlilegar frumugerðir séu til staðar. Á
-örverufræðistofunni verður sýnið sett í skilvindu til að auka styrk
-frumna í botnfalli; þetta botnfall verður smurt á gler og litað með
-Gram-litun. Gram-litun er aðferð sem notuð er til að greina á milli
-tveggja mismunandi gerða baktería (gram-jákvæðra og gram-neikvæðra).</para>
-<para id="fs-id1171360140749">Um 80% sjúklinga með
-heilahimnubólgu af völdum baktería munu sýna bakteríur í heila- og
-mænuvökva sínum með Gram-litun.<footnote id="fs-id1171360316892">Rebecca Buxton. „Examination
-of Gram Stains of Spinal Fluid—Bacterial Meningitis.“ <emphasis effect="italics">American Society
-for Microbiology</emphasis>. 2007.
-http://www.microbelibrary.org/library/gram-stain/3065-examination-of-gram-stains-of-spinal-fluid-bacterial-meningitis</footnote>
-Gram-litun Coru sýndi engar bakteríur, en læknirinn ákveður að ávísa
-henni sýklalyfjum til öryggis. Hluti af heila- og mænuvökvasýninu verður
-ræktaður – settur í sérstakar skálar til að sjá hvort bakteríur eða
-sveppir vaxi. Það tekur flestar örverur nokkurn tíma að fjölga sér í
-nægilegu magni til að hægt sé að greina þær og rannsaka.</para>
+<para id="fs-id1171360608266">Cora, 41 árs lögfræðingur og tveggja barna móðir, hefur nýlega þjáðst af slæmum höfuðverkjum, háum hita og stífum hálsi. Eiginmaður hennar, sem fylgdi Coru til læknis, segir að Cora virðist einnig vera ringluð á köflum og óvenju syfjuð. Byggt á þessum einkennum grunar lækninn að Cora gæti verið með heilahimnubólgu, hugsanlega lífshættulega sýkingu í vefnum sem umlykur heilann og mænu.</para>
+<para id="fs-id1171360138018">Heilahimnubólga getur átt sér nokkrar hugsanlegar orsakir. Hún getur stafað af bakteríum, sveppum, veirum eða jafnvel viðbrögðum við lyfjum eða snertingu við þungmálma. Þótt fólk með veiruheilahimnubólgu jafni sig yfirleitt af sjálfsdáðum, eru heilahimnubólga af völdum baktería og sveppa mjög alvarlegar og krefjast meðferðar.</para>
+<para id="fs-id1171360212679">Læknir Coru fyrirskipar mænuástungu til að taka þrjú sýni af heila- og mænuvökva (CSF) úr mænunni (<link target-id="OSC_Microbio_01_01_lumbar"/>). Sýnin verða send á rannsóknarstofur á þremur mismunandi deildum til prófunar: klínískri lífefnafræði, örverufræði og blóðmeinafræði. Sýnin verða fyrst skoðuð með berum augum til að ákvarða hvort heila- og mænuvökvinn sé óeðlilega litaður eða skýjaður; síðan verður vökvinn skoðaður í smásjá til að sjá hvort hann innihaldi eðlilegan fjölda rauðra og hvítra blóðkorna og til að athuga hvort einhverjar óeðlilegar frumugerðir séu til staðar. Á örverufræðistofunni verður sýnið skilið í skilvindu til að þétta allar frumur í botnfalli; þetta botnfall verður strokið á smásjárgler og litað með Gram-litun. Gram-litun er aðferð sem notuð er til að greina á milli tveggja mismunandi gerða baktería (gram-jákvæðra og gram-neikvæðra).</para>
+<para id="fs-id1171360140749">Um 80% sjúklinga með bakteríuheilahimnubólgu munu sýna bakteríur í heila- og mænuvökva sínum með Gram-litun. <footnote id="fs-id1171360316892">Rebecca Buxton. „Examination of Gram Stains of Spinal Fluid—Bacterial Meningitis.“ <emphasis effect="italics">American Society for Microbiology</emphasis>. 2007. http://www.microbelibrary.org/library/gram-stain/3065-examination-of-gram-stains-of-spinal-fluid-bacterial-meningitis</footnote> Gram-litun Coru sýndi engar bakteríur, en læknirinn ákveður að ávísa henni sýklalyfjum til öryggis. Hluti af heila- og mænuvökvasýninu verður ræktaður – settur í sérstakar skálar til að sjá hvort bakteríur eða sveppir vaxi. Það tekur nokkurn tíma fyrir flestar örverur að fjölga sér í nægilegu magni til að hægt sé að greina þær og rannsaka.</para>
 <list id="fs-id1171360056051" list-type="bulleted" bullet-style="bullet">
-<item>What types of microorganisms would be killed by antibiotic treatment?</item>
+<item>Hvaða tegundir örvera myndu drepast við sýklalyfjameðferð?</item>
 </list>
 <figure id="OSC_Microbio_01_01_lumbar">
 <media id="fs-id1171360229958" alt="Figure a is a drawing of a person lying on their side with their back showing. An overlay drawing shows the location of the spine with an arrow pointing to between two vertebrae in the lower back. Figure b is a photograph of a covered test tube containing a clear liquid">
 <image mime-type="image/jpeg" src="../../media/OSC_Microbio_01_01_lumbar.jpg"/>
 </media>
-<caption>(a) Mænustunga
-er notuð til að taka sýni af heila- og mænuvökva (CSF) sjúklings til
-prófunar. Nál er stungið á milli tveggja hryggjarliða í mjóbaki, sem
-kallast lendarhryggur. (b) Heila- og mænuvökvi á að vera tær, eins og á
-þessu sýni. Óeðlilega skýjaður heila- og mænuvökvi getur bent til
-sýkingar en þarf að prófa frekar til að staðfesta tilvist örvera.
-(heimild a: breyting á verki eftir Centers for Disease Control and
-Prevention; heimild b: breyting á verki eftir James Heilman)</caption>
+<caption>(a) Mænuástunga er notuð til að taka sýni af heila- og mænuvökva (CSF) sjúklings til rannsóknar. Nál er stungið á milli tveggja hryggjarliða í mjóbaki, sem kallast lendarhryggur. (b) Heila- og mænuvökvi á að vera tær, eins og í þessu sýni. Óeðlilega skýjaður vökvi getur bent til sýkingar en þarf að rannsaka frekar til að staðfesta tilvist örvera. (mynd a: breytt útgáfa af verki Centers for Disease Control and Prevention; mynd b: breytt útgáfa af verki James Heilman)</caption>
 </figure>
-<para id="fs-id1171360529329"><emphasis effect="italics">Fara í <link target-id="fs-id1171360143675">næsta</link>
-klíníska áherslubox.</emphasis></para>
+<para id="fs-id1171360529329">[[i:Hoppaðu yfir í <link document="m58782" target-id="fs-id1171360143675">next</link> næsta klíníska áherslubox.]]</para>
 </note>
-<para id="fs-id1171360197623">Flestir í dag, jafnvel þeir sem
-vita mjög lítið um örverufræði, þekkja hugtakið örverur, eða „sýklar“,
-og hlutverk þeirra í heilsu manna. Skólabörn læra um bakteríur, veirur
-og aðrar örverur og mörg skoða jafnvel sýni í smásjá. En fyrir nokkur
-hundruð árum, áður en smásjáin var fundin upp, var ómögulegt að sanna
-tilvist margra tegunda örvera. Samkvæmt skilgreiningu eru
-<term id="term-00001">örverur</term> mjög litlar lífverur; margar tegundir örvera
-eru of litlar til að sjá án smásjár, þótt sum sníkjudýr og sveppir séu
-sýnileg með berum augum.</para>
-<para id="fs-id1171360112990">Menn hafa búið með – og notað –
-örverur mun lengur en þeir hafa getað séð þær. Sögulegar vísbendingar
-benda til þess að menn hafi haft einhverja hugmynd um örverulíf frá
-forsögulegum tíma og hafi notað þá þekkingu til að þróa matvæli auk þess
-að koma í veg fyrir og meðhöndla sjúkdóma. Í þessum kafla munum við
-kanna nokkur söguleg not örverufræðinnar auk þess að skoða upphaf
-örverufræðinnar sem vísindagreinar.</para>
+<para id="fs-id1171360197623">Flestir í dag, jafnvel þeir sem vita lítið um örverufræði, þekkja hugtakið örverur, eða „sýklar“, og hlutverk þeirra í heilsu manna. Skólabörn læra um bakteríur, veirur og aðrar örverur og mörg skoða jafnvel sýni í smásjá. En fyrir nokkur hundruð árum, áður en smásjáin var fundin upp, var ómögulegt að sanna tilvist margra tegunda örvera. Samkvæmt skilgreiningu eru <term id="term-00001">örverur (e. microorganism)</term> mjög litlar lífverur; margar tegundir örvera eru of litlar til að sjá án smásjár, þótt sum sníkjudýr og sveppir séu sýnileg með berum augum.</para>
+<para id="fs-id1171360112990">Menn hafa búið með – og nýtt sér – örverur mun lengur en þeir hafa getað séð þær. Sögulegar vísbendingar benda til þess að menn hafi haft einhverja hugmynd um örverulíf frá forsögulegum tíma og hafi notað þá þekkingu til að þróa matvæli auk þess að koma í veg fyrir og meðhöndla sjúkdóma. Í þessum kafla munum við kanna nokkur söguleg not örverufræðinnar auk þess að skoða upphaf örverufræðinnar sem vísindagreinar.</para>
 <section id="fs-id1171360245918">
 <title>Gerjuð matvæli og drykkir</title>
-<para id="fs-id1171360483785">Fólk um allan heim hefur notið
-gerjaðra matvæla og drykkja eins og bjórs, víns, brauðs, jógúrts, osta
-og súrsaðs grænmetis alla skráða sögu. Uppgötvanir frá nokkrum
-fornleifasvæðum benda til þess að jafnvel forsögulegt fólk hafi nýtt sér
-<term class="no-emphasis" id="term-00003">gerjun</term> til að varðveita og bæta bragð matar.
-Fornleifafræðingar sem rannsökuðu leirkrukkur frá nýsteinaldarþorpi í
-Kína komust að því að fólk var að búa til gerjaðan drykk úr hrísgrjónum,
-hunangi og ávöxtum strax árið 7000 f.Kr.<footnote id="fs-id1171360218992">P.E. McGovern o.fl.
-„Fermented Beverages of Pre- and Proto-Historic China“</footnote>.” <emphasis effect="italics">Proceedings
-of the National Academy of Sciences of the United States of America</emphasis> 1
-nr. 51 (2004):17593–17598. doi:10.1073/pnas.0407921102.]</para>
-<para id="fs-id1171360180307">Framleiðsla þessara matvæla og
-drykkja krefst örverugerjunar, ferlis sem notar bakteríur, myglu eða ger
-til að breyta sykrum (kolvetnum) í alkóhól, gös og lífrænar sýrur
-(<link target-id="OSC_Microbio_01_01_ferment"/>). Þótt líklegt sé að fólk hafi fyrst lært um gerjun fyrir
-slysni – kannski með því að drekka gamla mjólk sem hafði hlaupið eða
-gamlan þrúgusafa sem hafði gerjast – lærði það síðar að virkja afl
-gerjunar til að búa til vörur eins og brauð, ost og vín.</para>
+<para id="fs-id1171360483785">Fólk um allan heim hefur notið gerjaðra matvæla og drykkja eins og bjórs, víns, brauðs, jógúrts, osta og súrsaðs grænmetis alla skráða sögu. Uppgötvanir frá nokkrum fornleifasvæðum benda til þess að jafnvel forsögulegt fólk hafi nýtt sér <term class="no-emphasis" id="term-00003">gerjun (e. fermentation)</term> til að varðveita og bæta bragð matvæla. Fornleifafræðingar sem rannsökuðu leirker úr nýsteinaldarþorpi í Kína komust að því að fólk var að búa til gerjaðan drykk úr hrísgrjónum, hunangi og ávöxtum strax árið 7000 f.Kr. <footnote id="fs-id1171360218992">P.E. McGovern o.fl. „Fermented Beverages of Pre- and Proto-Historic China.“ <emphasis effect="italics">Proceedings of the National Academy of Sciences of the United States of America</emphasis> 1 nr. 51 (2004):17593–17598. doi:10.1073/pnas.0407921102.</footnote></para>
+<para id="fs-id1171360180307">Framleiðsla þessara matvæla og drykkja krefst örverugerjunar, ferlis sem notar bakteríur, myglu eða ger til að breyta sykrum (kolvetnum) í alkóhól, lofttegundir og lífrænar sýrur (<link target-id="OSC_Microbio_01_01_ferment"/>). Þótt líklegt sé að fólk hafi fyrst lært um gerjun fyrir slysni – kannski með því að drekka gamla mjólk sem hafði hlaupið eða gamlan þrúgusafa sem hafði gerjast – lærði það síðar að beisla kraft gerjunar til að búa til vörur eins og brauð, ost og vín.</para>
 <figure id="OSC_Microbio_01_01_ferment">
 <media id="fs-id1171359127422" alt="The figure on the left shows oval cells with smaller oval cells budding from the larger cells. An arrow points to a mason jar containing a creamy textured thick liquid. Another arrow points to a loaf of bread.">
 <image mime-type="image/jpeg" src="../../media/OSC_Microbio_01_01_ferment.jpg"/>
 </media>
-<caption>Smásjármynd af
-<emphasis effect="italics">Saccharomyces cerevisiae</emphasis>, gerinu sem fær brauð til að hefast (til
-vinstri). Ger er örvera. Frumurnar í því umbrjóta kolvetnin í hveitinu
-(í miðjunni) og framleiða koldíoxíð, sem fær brauðið til að hefast (til
-hægri). (mynd í miðju: breytt útgáfa af verki eftir Janus Sandsgaard;
-mynd til hægri: breytt útgáfa af verki eftir „ MDreibelbis“/Flickr)</caption>
+<caption>Sýn í smásjá á <emphasis effect="italics">Saccharomyces cerevisiae</emphasis>, gerið sem fær brauð til að hefast (til vinstri). Ger er örvera. Frumurnar vinna úr kolvetnunum í hveitinu (í miðju) og framleiða koltvísýring sem fær brauðið til að hefast (til hægri). (mynd í miðju: breytt útgáfa af verki eftir Janus Sandsgaard; mynd til hægri: breytt útgáfa af verki eftir „MDreibelbis“/Flickr)</caption>
 </figure>
 </section>
 <section id="fs-id1171360202567">
-<title>Ísmaðurinn og vísbendingar
-um fornar lækningar</title>
-<para id="fs-id1171360292428">Forsögulegt fólk hafði mjög
-takmarkaðan skilning á orsökum sjúkdóma og ýmsir menningarheimar þróuðu
-með sér mismunandi skoðanir og skýringar. Þótt margir hafi trúað því að
-veikindi væru refsing fyrir að reita guðina til reiði eða einfaldlega
-afleiðing örlaga, benda fornleifarannsóknir til þess að forsögulegt fólk
-hafi reynt að meðhöndla sjúkdóma og sýkingar. Eitt dæmi um þetta er
-<term class="no-emphasis" id="term-00004">ísmaðurinn Ötzi</term>, 5300 ára gömul múmía sem fannst frosin
-í ís Ötztal-Alpanna á landamærum Austurríkis og Ítalíu árið 1991. Vegna
-þess hve vel Ötzi varðveittist í ísnum komust rannsakendur að því að
-hann var sýktur af eggjum sníkjudýrsins <emphasis effect="italics">Trichuris trichiura</emphasis>, sem gæti
-hafa valdið honum kviðverkjum og blóðleysi. Rannsakendur fundu einnig
-vísbendingar um <emphasis effect="italics">Borrelia burgdorferi</emphasis>, bakteríu sem veldur
-Lyme-sjúkdómi.<footnote id="fs-id1171358996816">A. Keller o.fl. “New Insights into the
-Tyrolean Iceman's Origin and Phenotype as Inferred by Whole-Genome
-Sequencing.” <emphasis effect="italics">Nature Communications</emphasis>, 3 (2012): 698.
-doi:10.1038/ncomms1701.</footnote> Sumir rannsakendur telja að Ötzi kunni að hafa
-reynt að meðhöndla sýkingar sínar með viðarkenndum ávexti sveppsins
-<emphasis effect="italics">Fomitopsis betulinus</emphasis>, sem fannst bundinn við eigur hans. Þessi sveppur
-hefur bæði hægðalosandi og sýklalyfjavirkni. Ötzi var einnig þakinn
-húðflúrum sem voru gerð með því að skera skurði í húðina, fylla þá með
-jurtum og brenna síðan jurtirnar.<footnote id="fs-id1171360187181">Capasso, L. “5300
-Years Ago, the Ice Man Used Natural Laxatives and Antibiotics.” <emphasis effect="italics">Lancet
-(London, England)</emphasis> bindi 352,9143 (1998): 1864.
-doi:10.1016/S0140-6736(05)79939-6</footnote> Vangaveltur eru um að þetta kunni að
-hafa verið önnur tilraun til að meðhöndla heilsukvilla hans.</para>
+<title>Ísmaðurinn og vísbendingar um fyrstu lækningatilraunir</title>
+<para id="fs-id1171360292428">Forsögulegt fólk hafði mjög takmarkaðan skilning á orsökum sjúkdóma og ýmsir menningarheimar þróuðu með sér mismunandi skoðanir og skýringar. Þótt margir hafi trúað því að veikindi væru refsing fyrir að reita guðina til reiði eða einfaldlega afleiðing örlaga, benda fornleifarannsóknir til þess að forsögulegt fólk hafi reynt að meðhöndla sjúkdóma og sýkingar. Eitt dæmi um þetta er <term class="no-emphasis" id="term-00004">Ötzi ísmaðurinn (e. ötzi the iceman)</term>, 5300 ára gömul múmía sem fannst frosin í ís Ötztal-alpanna á landamærum Austurríkis og Ítalíu árið 1991. Vegna þess hve vel Ötzi varðveittist í ísnum komust rannsakendur að því að hann var sýktur af eggjum sviporma (<emphasis effect="italics">Trichuris trichiura</emphasis>), sem gæti hafa valdið honum kviðverkjum og blóðleysi. Rannsakendur fundu einnig vísbendingar um <emphasis effect="italics">Borrelia burgdorferi</emphasis>, bakteríu sem veldur Lyme-sjúkdómi. <footnote id="fs-id1171358996816">A. Keller o.fl. „New Insights into the Tyrolean Iceman's Origin and Phenotype as Inferred by Whole-Genome Sequencing.“ <emphasis effect="italics">Nature Communications</emphasis>, 3 (2012): 698. doi:10.1038/ncomms1701.</footnote> Sumir rannsakendur telja að Ötzi kunni að hafa reynt að meðhöndla sýkingar sínar með trénaðri ávexti agarkúfsins (<emphasis effect="italics">Fomitopsis betulinus</emphasis>), sem fannst bundinn við eigur hans. Þessi sveppur hefur bæði hægðalosandi og sýklalyfjavirkni. Ötzi var einnig þakinn húðflúrum sem voru gerð með því að skera skurði í húðina, fylla þá með jurtum og brenna síðan jurtirnar. <footnote id="fs-id1171360187181">Capasso, L. „5300 Years Ago, the Ice Man Used Natural Laxatives and Antibiotics.“ <emphasis effect="italics">Lancet (London, England)</emphasis> bindi 352,9143 (1998): 1864. doi:10.1016/S0140-6736(05)79939-6</footnote> Vangaveltur eru um að þetta kunni að hafa verið önnur tilraun til að meðhöndla heilsukvilla hans.</para>
 </section>
 <section id="fs-id1171359011758">
-<title>Fyrstu hugmyndir um
-sjúkdóma, smit og einangrun</title>
-<para id="fs-id1171360190302">Nokkrir fornar siðmenningar
-virðast hafa haft einhvern skilning á því að sjúkdómar gætu smitast með
-hlutum sem þær gátu ekki séð. Þetta er sérstaklega augljóst í sögulegum
-tilraunum til að hefta útbreiðslu sjúkdóma. Til dæmis er í Biblíunni
-vísað til þess að setja fólk með holdsveiki og aðra sjúkdóma í sóttkví,
-sem bendir til þess að fólk hafi skilið að sjúkdómar gætu verið
-smitandi. Það er kaldhæðnislegt að þótt holdsveiki sé smitandi er hún
-einnig sjúkdómur sem þróast hægt. Þetta þýðir að fólk var líklega sett í
-sóttkví eftir að það hafði þegar smitað aðra.</para>
-<para id="fs-id1171358971691">Hreint vatn og hreinlætisaðstaða
-eru meðal mikilvægustu þátta heilbrigðra samfélaga. Elstu dæmin um
-hreinlætiskerfi í þéttbýli eru frá borgum Indusdalsmenningarinnar,
-Mohenjo-daro og Harappa, sem staðsettar eru í núverandi Pakistan.
-Borgirnar voru byggðar árið 2500 f.Kr. (fyrir um 4.500 árum) og höfðu
-flókin kerfi af brunnum, böðum og frárennsliskerfum sem geymdu ferskvatn
-og fluttu úrgang burt. Um tvö þúsund árum síðar rakti fólk í forngrískri
-siðmenningu sjúkdóma til slæms lofts, <emphasis effect="italics">mal’aria</emphasis>, sem það kallaði „
-míasma-lykt“. Það þróaði hreinlætisvenjur sem byggðu á þessari hugmynd.
-Í Róm byggðu þeir vatnsveitur sem fluttu ferskvatn inn í borgina og
-risastórt holræsi, <emphasis effect="italics">Cloaca Maxima</emphasis>, sem flutti úrgang burt og út í
-Tíberfljót (<link target-id="OSC_Microbio_01_01_cloaca"/>). Sumir rannsakendur telja að þessir innviðir
-hafi hjálpað til við að vernda Rómverja fyrir faröldrum vatnsborinna
-sjúkdóma.</para>
+<title>Fyrstu hugmyndir um sjúkdóma, smit og einangrun</title>
+<para id="fs-id1171360190302">Nokkur fornsamfélög virðast hafa haft einhvern skilning á því að sjúkdómar gætu smitast með einhverju sem þau gátu ekki séð. Þetta er sérstaklega augljóst í sögulegum tilraunum til að hefta útbreiðslu sjúkdóma. Til dæmis er í Biblíunni vísað til þess að setja fólk með holdsveiki og aðra sjúkdóma í sóttkví, sem bendir til þess að fólk hafi skilið að sjúkdómar gætu verið smitandi. Það er kaldhæðnislegt að þótt holdsveiki sé smitandi er hún einnig sjúkdómur sem þróast hægt. Þetta þýðir að fólk var líklega sett í sóttkví eftir að það hafði þegar smitað aðra.</para>
+<para id="fs-id1171358971691">Hreint vatn og hreinlætisaðstaða eru meðal mikilvægustu þátta heilbrigðra samfélaga. Elstu dæmin um hreinlætiskerfi í þéttbýli eru frá borgum Indusdalsmenningarinnar, Mohenjo-daro og Harappa, sem staðsettar eru í núverandi Pakistan. Borgirnar voru byggðar árið 2500 f.Kr. (fyrir um 4.500 árum) og höfðu flókin kerfi af brunnum, böðum og frárennsliskerfum sem geymdu ferskvatn og fluttu úrgang burt. Um tvö þúsund árum síðar rakti fólk í forngríska menningarheiminum sjúkdóma til slæms lofts, <emphasis effect="italics">mal'aria</emphasis>, sem þeir kölluðu „mýgandi ódaun“. Þeir þróuðu hreinlætisvenjur sem byggðu á þessari hugmynd. Í Róm byggðu þeir vatnsveitubrýr sem fluttu ferskvatn inn í borgina og risastórt holræsi, <emphasis effect="italics">Cloaca Maxima</emphasis>, sem flutti úrgang burt og út í ána Tíber (<link target-id="OSC_Microbio_01_01_cloaca"/>). Sumir rannsakendur telja að þessir innviðir hafi hjálpað til við að vernda Rómverja fyrir faröldrum vatnsborinna sjúkdóma.</para>
 <figure id="OSC_Microbio_01_01_cloaca">
 <media id="fs-id1171360590813" alt="Figure a is a map of a city containing a stadium, forum, and other structures. Running through the center of the city is a red line. Figure b is a photograph of a corner of a room. There is a trough between the walls and the floor. This trough is covered with stone benches that have large holes (as for a toilet) in the bench. The holes span the top and front of the bench. There are six holes visible in the bench that runs along one side of the image and two more in the bench along the other side. The image does not show the entire room so there are likely more available spots in this room.">
 <image mime-type="image/jpeg" src="../../media/OSC_Microbio_01_01_cloaca.jpg"/>
 </media>
-<caption>(a) <emphasis effect="italics">Cloaca
-Maxima</emphasis>, eða „ Mesta holræsið“ (sýnt með rauðu), lá í gegnum hina fornu
-Róm. Það var verkfræðilegt undur sem flutti úrgang frá borginni og út í
-Tíberfljót. (b) Þessi fornu salerni tæmdust í <emphasis effect="italics">Cloaca Maxima</emphasis>.</caption>
+<caption>(a) <emphasis effect="italics">Cloaca Maxima</emphasis>, eða „Mesta holræsið“ (sýnt með rauðu), lá í gegnum hina fornu Róm. Það var verkfræðilegt undur sem flutti úrgang frá borginni og út í ána Tíber. (b) Þessar fornu salernisgryfjur tæmdust út í <emphasis effect="italics">Cloaca Maxima</emphasis>.</caption>
 </figure>
-<para id="fs-id1171360234644">Jafnvel fyrir uppfinningu
-smásjárinnar tóku sumir læknar, heimspekingar og vísindamenn miklum
-framförum í skilningi á ósýnilegum öflum – því sem við nú þekkjum sem
-örverur – sem geta valdið sýkingum, sjúkdómum og dauða.</para>
-<para id="fs-id1171360324786">Gríski læknirinn
-<term class="no-emphasis" id="term-00006">Hippókrates</term> (460–370 f.Kr.) er talinn „ faðir
-vestrænnar læknisfræði“ (<link target-id="OSC_Microbio_01_01_ancients"/>). Ólíkt mörgum forfeðrum sínum og
-samtímamönnum hafnaði hann þeirri hugmynd að sjúkdómar væru af völdum
-yfirnáttúrulegra afla. Þess í stað hélt hann því fram að sjúkdómar hefðu
-náttúrulegar orsakir innan sjúklinga eða umhverfis þeirra. Talið er að
-Hippókrates og erfingjar hans hafi skrifað <emphasis effect="italics">Hippocratic Corpus</emphasis>, safn
-texta sem eru meðal elstu læknisfræðibóka sem varðveist hafa.
-[neðanmálsgrein: G. Pappas o.fl. “Insights Into Infectious Disease in
-the Era of Hippocrates.” <emphasis effect="italics">International Journal of Infectious Diseases</emphasis>
-12 (2008) 4:347–350. doi:
-http://dx.doi.org/10.1016/j.ijid.2007.11.003.] Hippókrates er einnig
-oft eignaður höfundur Hippókratesareiðsins, sem nýir læknar sverja til
-að heita því að helga sig greiningu og meðferð sjúklinga án þess að
-valda skaða.</para>
-<para id="fs-id1171360545639">Þótt Hippókrates sé talinn faðir
-vestrænna lækninga er gríski heimspekingurinn og sagnfræðingurinn
-<term class="no-emphasis" id="term-00007">Þúkýdídes</term> (460–395 f.Kr.) talinn faðir vísindalegrar
-sagnfræði því hann mælti með gagnreyndri greiningu á orsök og afleiðingu
-(<link target-id="OSC_Microbio_01_01_ancients"/>). Meðal mikilvægustu framlaga hans eru athuganir hans á
-Aþenuplágunni sem drap þriðjung íbúa Aþenu á árunum 430 til 410 f.Kr.
-Þar sem hann lifði faraldurinn sjálfur af gerði Þúkýdídes þá mikilvægu
-athugun að þeir sem lifðu af smituðust ekki aftur af sjúkdómnum, jafnvel
-þegar þeir önnuðust fólk sem var virkt veikt. [neðanmálsgrein:
-Thucydides. <emphasis effect="italics">The History of the Peloponnesian War. The Second Book</emphasis>. 431
-BC. Þýtt af Richard Crawley.
-http://classics.mit.edu/Thucydides/pelopwar.2.second.html.] Þessi
-athugun sýnir snemmbúinn skilning á hugtakinu ónæmi.</para>
-<para id="fs-id1171360346267">Marcus Terentius
-<term class="no-emphasis" id="term-00008">Varro</term> (116–27 f.Kr.) var afkastamikill rómverskur
-rithöfundur sem var einn af þeim fyrstu til að setja fram þá hugmynd að
-hlutir sem við getum ekki séð (það sem við köllum nú örverur) geti
-valdið sjúkdómum (<link target-id="OSC_Microbio_01_01_ancients"/>). Í <emphasis effect="italics">Res Rusticae</emphasis> (<emphasis effect="italics">Um landbúnað</emphasis>), sem
-kom út árið 36 f.Kr., sagði hann að „einnig verði að gera
-varúðarráðstafanir í nálægum mýrum<newline/>. . . því þar vaxa ákveðnar
-örsmáar verur [<emphasis effect="italics">animalia minuta</emphasis>] sem ekki sjást með berum augum, sem
-svífa í loftinu og komast inn í líkamann í gegnum munn og nef og valda
-þar alvarlegum sjúkdómum.“<footnote id="fs-id1171360058084">Plinio Prioreschi. <emphasis effect="italics">A
-History of Medicine: Roman Medicine</emphasis>. Lewiston, NY: Edwin Mellen Press,
-1998: bls. 215.</footnote></para>
-<para id="para-00001">Öldum síðar byggðu íslamskir fræðimenn,
-aðallega í Persíu, á þekkingu Hippókratesar sem og kínverskra og
-indverskra lækninga. Fremstur þeirra á meðal var Abū Bakr al-Rāzī,
-yfirleitt nefndur <term class="no-emphasis" id="term-00005">al-Razi</term> eða með latnesku nafni sínu,
-Rhazes. Hann þróaði ýmsar tilraunaaðferðir til að prófa ýmsa þætti
-læknisfræðinnar. Til dæmis, til að velja staðsetningu fyrir sjúkrahús,
-hengdi al-Razi upp hrátt kjöt víðs vegar um borgina og staðsetti
-spítalann á þeim stað þar sem kjötið var lengst að rotna. Hann var
-einnig sá fyrsti til að greina á milli mislinga og bólusóttar og gerði
-tilraunir til að ákvarða hvaða meðferðir sem í boði voru væru
-áhrifaríkastar fyrir hvorn sjúkdóm. Þrátt fyrir að al-Razi hefði ekki
-tæknina til að skilja hlutverk örvera voru tilraunir hans til að bera
-kennsl á orsakir sjúkdóma, frekar en að einblína eingöngu á einkennin,
-mjög áhrifamiklar.</para>
-<para id="para-00002">Íslamskir læknar sköpuðu eitt
-mikilvægasta læknisfræðirit sögunnar, <emphasis effect="italics">Læknisfræðiregluna</emphasis> (arabíska:
-al-Qānūn fī al-Ṭibb). Alfræðiritið var tekið saman árið 1025 af lækninum
-og heimspekingnum <term class="no-emphasis" id="term-00013">Ibn Sina</term> (oft nefndur Avicenna) og
-innihélt ítarlegar lýsingar á líkamshlutum, nákvæma lýsingu á yfir 800
-lækningaefnum og meinafræði nokkurra sjúkdóma sem flokkaðir voru eftir
-líkamshluta eða heilsufarsatburði. Í verkinu lýsti Ibn Sina smitleiðum,
-gaf til kynna að lífverur gætu smitast af framandi efnum og að veikindi
-gætu borist með andardrætti. Honum er einnig eignað að hafa þróað þá
-venju að einangra veikt fólk og lagt þannig grunninn að sögulegum og
-nútímalegum sóttkvíaraðferðum. <emphasis effect="italics">Reglan</emphasis> var þýdd á mörg tungumál og var
-aðalheimildin við kennslu í læknisfræði um allan heim, í gegnum
-endurreisnartímann og víðar.</para>
+<para id="fs-id1171360234644">Jafnvel fyrir uppfinningu smásjárinnar tóku sumir læknar, heimspekingar og vísindamenn miklum framförum í skilningi á ósýnilegum öflum – því sem við nú þekkjum sem örverur – sem geta valdið sýkingum, sjúkdómum og dauða.</para>
+<para id="fs-id1171360324786">Gríski læknirinn <term class="no-emphasis" id="term-00006">Hippókrates (e. hippocrates)</term> (460–370 f.Kr.) er talinn „faðir vestrænnar læknisfræði“ (<link target-id="OSC_Microbio_01_01_ancients"/>). Ólíkt mörgum forfeðrum sínum og samtímamönnum hafnaði hann þeirri hugmynd að sjúkdómar stöfuðu af yfirnáttúrulegum öflum. Þess í stað hélt hann því fram að sjúkdómar hefðu náttúrulegar orsakir innan úr sjúklingum eða umhverfi þeirra. Talið er að Hippókrates og arftakar hans hafi skrifað <emphasis effect="italics">Hippocratic Corpus</emphasis>, safn texta sem eru meðal elstu læknisfræðirita sem varðveist hafa. <footnote id="fs-id1171359070263">G. Pappas o.fl. „Insights Into Infectious Disease in the Era of Hippocrates.“ <emphasis effect="italics">International Journal of Infectious Diseases</emphasis> 12 (2008) 4:347–350. doi: http://dx.doi.org/10.1016/j.ijid.2007.11.003.</footnote> Hippókrates er einnig oft eignaður höfundur Hippókratesareiðsins, sem nýir læknar sverja til að heita því að helga sig greiningu og meðferð sjúklinga án þess að valda skaða.</para>
+<para id="fs-id1171360545639">Þótt Hippókrates sé talinn faðir vestrænnar læknisfræði er gríski heimspekingurinn og sagnfræðingurinn <term class="no-emphasis" id="term-00007">Þúkýdídes (e. thucydides)</term> (460–395 f.Kr.) talinn faðir vísindalegrar sagnfræði þar sem hann mælti með gagnreyndri greiningu á orsök og afleiðingu (<link target-id="OSC_Microbio_01_01_ancients"/>). Meðal mikilvægustu framlaga hans eru athuganir hans á Aþenuplágunni sem varð þriðjungi íbúa Aþenu að bana á árunum 430 til 410 f.Kr. Þar sem Þúkýdídes lifði faraldurinn af gerði hann þá mikilvægu athugun að þeir sem lifðu af smituðust ekki aftur af sjúkdómnum, jafnvel þótt þeir önnuðust fólk sem var veikt. <footnote id="fs-id1171360119327">Þúkýdídes. <emphasis effect="italics">Saga Pelópsskagastríðsins. Önnur bók</emphasis>. 431 f.Kr. Þýtt af Richard Crawley. http://classics.mit.edu/Thucydides/pelopwar.2.second.html.</footnote> Þessi athugun sýnir snemmbúinn skilning á hugtakinu ónæmi.</para>
+<para id="fs-id1171360346267">Marcus Terentius <term class="no-emphasis" id="term-00008">Varro</term> (116–27 f.Kr.) var afkastamikill rómverskur rithöfundur sem var einn af þeim fyrstu til að setja fram þá hugmynd að hlutir sem við getum ekki séð (það sem við köllum nú örverur) geti valdið sjúkdómum (<link target-id="OSC_Microbio_01_01_ancients"/>). Í <emphasis effect="italics">Res Rusticae</emphasis> (<emphasis effect="italics">Um landbúnað</emphasis>), sem kom út árið 36 f.Kr., sagði hann að „einnig verði að gera varúðarráðstafanir í nálægum mýrum<newline/>. . . því þar vaxa ákveðnar örsmáar verur [<emphasis effect="italics">animalia minuta</emphasis>] sem ekki sjást með berum augum, sem svífa í loftinu og komast inn í líkamann gegnum munn og nef og valda þar alvarlegum sjúkdómum.“ <footnote id="fs-id1171360058084">Plinio Prioreschi. <emphasis effect="italics">A History of Medicine: Roman Medicine</emphasis>. Lewiston, NY: Edwin Mellen Press, 1998: bls. 215.</footnote></para>
+<para id="para-00001">Öldum síðar byggðu íslamskir fræðimenn, aðallega í Persíu, á þekkingu Hippókratesar auk kínverskra og indverskra lækninga. Fremstur þeirra var Abū Bakr al-Rāzī, yfirleitt nefndur <term class="no-emphasis" id="term-00005">al-Razi</term> eða með latnesku nafni sínu, Rhazes. Hann þróaði ýmsar tilraunaaðferðir til að prófa mismunandi þætti læknisfræðinnar. Til dæmis, til að velja staðsetningu fyrir sjúkrahús, hengdi al-Razi upp hrátt kjöt víðs vegar um borgina og staðsetti sjúkrahúsið á þeim stað þar sem kjötið var lengst að rotna. Hann var einnig sá fyrsti til að greina á milli mislinga og bólusóttar og gerði tilraunir til að ákvarða hvaða meðferðir sem í boði voru væru árangursríkastar fyrir hvorn sjúkdóm. Þótt al-Razi hafi ekki haft tæknina til að skilja hlutverk örvera, hafði viðleitni hans til að bera kennsl á orsakir sjúkdóma, frekar en að einblína eingöngu á einkennin, mikil áhrif.</para>
+<para id="para-00002">Íslamskir læknar sköpuðu eitt mikilvægasta læknisfræðirit sögunnar, <emphasis effect="italics">Canon of Medicine</emphasis> (arabíska: al-Qānūn fī al-Ṭibb). Alfræðiritið var tekið saman árið 1025 af lækninum og heimspekingnum <term class="no-emphasis" id="term-00013">Ibn Sina</term> (oft nefndur Avicenna) og innihélt ítarlegar lýsingar á líkamshlutum, nákvæma lýsingu á yfir 800 lækningaefnum og meinafræði nokkurra sjúkdóma, flokkað eftir líkamshluta eða heilsufarsatburði. Í verkinu lýsti Ibn Sina smitleiðum, gaf til kynna að lífverur gætu smitast af utanaðkomandi efnum og að sjúkdómar gætu borist með andardrætti. Honum er einnig eignaður heiðurinn af því að hafa þróað þá venju að einangra veikt fólk og lagði þar með grunninn að sögulegum og nútímalegum sóttkvíaraðferðum. <emphasis effect="italics">Canon</emphasis> var þýtt á mörg tungumál og var aðalheimildin við kennslu í læknisfræði um allan heim, allt fram á endurreisnartímann og lengur.</para>
 <figure id="OSC_Microbio_01_01_ancients">
 <media id="fs-id1171360389601" alt="Figure a is a drawing of a bust of Hippocrates. Figure b is a photo of a sculpture of Thucydides’s head. Figure c is a photo of a sculpture of Marcus Terentius Varro.">
 <image mime-type="image/jpeg" src="../../media/OSC_Microbio_01_01_ancients.jpg"/>
 </media>
-<caption>(a)
-Hippókrates, „faðir vestrænna lækninga“, taldi að sjúkdómar hefðu
-náttúrulegar, ekki yfirnáttúrulegar, orsakir. (b) Sagnfræðingurinn
-Þúkýdídes tók eftir því að þeir sem lifðu af Aþenupláguna voru síðan
-ónæmir fyrir sýkingunni. (c) Marcus Terentius Varro setti fram þá
-kenningu að sjúkdómar gætu orsakast af „ákveðnum örsmáum verum . . . sem
-ekki sjást með berum augum.“ (mynd c: breyting á verki eftir Alessandro
-Antonelli)</caption>
+<caption>(a) Hippókrates, „faðir vestrænnar læknisfræði“, taldi að sjúkdómar hefðu náttúrulegar, ekki yfirnáttúrulegar, orsakir. (b) Sagnfræðingurinn Þúkýdídes tók eftir því að þeir sem lifðu af Aþenupláguna voru síðan ónæmir fyrir sýkingunni. (c) Marcus Terentius Varro setti fram þá kenningu að sjúkdómar gætu orsakast af „ákveðnum örsmáum verum . . . sem ekki sjást með berum augum.“ (c: breytt útgáfa af verki eftir Alessandro Antonelli)</caption>
 </figure>
 <note id="fs-id1171359127426" class="microbiology check-your-understanding">
 <list id="fs-id1171359059174" list-type="bulleted" bullet-style="bullet">
-<item>Give two examples of foods that have historically been produced by humans with the aid of microbes.</item>
-<item>Explain how historical understandings of disease contributed to attempts to treat and contain disease.</item>
+<item>Nefndu tvö dæmi um matvæli sem menn hafa sögulega framleitt með hjálp örvera.</item>
+<item>Útskýrðu hvernig sögulegur skilningur á sjúkdómum stuðlaði að tilraunum til að meðhöndla og hefta sjúkdóma.</item>
 </list>
 </note>
 </section>
 <section id="fs-id1171360199260">
 <title>Fæðing örverufræðinnar</title>
-<para id="fs-id1171360183425">Þótt menn til forna hafi ef til
-vill grunað tilvist ósýnilegra „örsmárra vera“ var tilvist þeirra ekki
-endanlega staðfest fyrr en með uppfinningu smásjárinnar. Þótt óljóst sé
-hver nákvæmlega fann upp smásjána var hollenskur klæðakaupmaður að nafni
-Antonie van <term class="no-emphasis" id="term-00009">Leeuwenhoek</term> (1632–1723) sá fyrsti til að
-þróa linsu sem var nógu öflug til að sjá örverur. Árið 1675, með
-einfaldri en öflugri smásjá, gat Leeuwenhoek fylgst með einfruma
-lífverum, sem hann lýsti sem „dýrlingum“ eða „litlum kvikindum“,
-syndandi í regndropa. Af teikningum hans af þessum litlu lífverum vitum
-við nú að hann var að skoða bakteríur og frumverur. (Við munum kanna
-framlag Leeuwenhoeks til smásjárfræðinnar nánar í Hvernig við sjáum hinn
-ósýnilega heim.)</para>
-<para id="fs-id1171360229272">Næstum 200 árum eftir að van
-Leeuwenhoek sá örverur í fyrsta sinn leiddi „<term class="no-emphasis" id="term-00010">gullöld
-örverufræðinnar</term>“ af sér fjölda nýrra uppgötvana á árunum 1857
-til 1914. Tveir frægir örverufræðingar, Louis <term class="no-emphasis" id="term-00011">Pasteur</term>
-og Robert <term class="no-emphasis" id="term-00012">Koch</term>, voru sérstaklega virkir í að auka
-skilning okkar á hinum óséða heimi örvera (<link target-id="OSC_Microbio_01_01_PastKoch"/>). Pasteur,
-franskur efnafræðingur, sýndi fram á að einstakir örverustofnar hefðu
-einstaka eiginleika og sýndi fram á að gerjun stafar af örverum. Hann
-fann einnig upp gerilsneyðingu, ferli sem notað er til að drepa örverur
-sem valda skemmdum, og þróaði bóluefni til meðferðar á sjúkdómum, þar á
-meðal hundaæði, í dýrum og mönnum. Koch, þýskur læknir, var sá fyrsti
-til að sýna fram á tengslin milli einnar, einangraðrar örveru og þekkts
-sjúkdóms í mönnum. Hann uppgötvaði til dæmis bakteríurnar sem valda
-miltisbrandi (<emphasis effect="italics">Bacillus anthracis</emphasis>), kóleru (<emphasis effect="italics">Vibrio cholera</emphasis>) og
-berklum (<emphasis effect="italics">Mycobacterium tuberculosis</emphasis>).<footnote id="fs-id1171360586897">S.M. Blevins
-og M.S. Bronze. „Robert Koch and the ‘Golden Age’ of Bacteriology.“
-<emphasis effect="italics">International Journal of Infectious Diseases</emphasis>. 14 nr. 9 (2010):
-e744-e751. doi:10.1016/j.ijid.2009.12.003.</footnote> Við munum fjalla nánar um
-þessa frægu örverufræðinga og aðra í síðari köflum.</para>
+<para id="fs-id1171360183425">Þótt menn til forna hafi ef til vill grunað tilvist ósýnilegra „örsmárra vera“ var tilvist þeirra ekki endanlega staðfest fyrr en með uppfinningu smásjárinnar. Þótt óljóst sé hver nákvæmlega fann upp smásjána var hollenskur klæðakaupmaður að nafni Antonie van <term class="no-emphasis" id="term-00009">Leeuwenhoek</term> (1632–1723) sá fyrsti til að þróa linsu sem var nógu öflug til að sjá örverur. Árið 1675, með einfaldri en öflugri smásjá, gat Leeuwenhoek fylgst með einfruma lífverum, sem hann lýsti sem „dýrlingum“ eða „litlum kvikindum“ sem syntu í regndropa. Af teikningum hans af þessum litlu lífverum vitum við nú að hann var að skoða bakteríur og frumverur. (Við munum kanna framlag Leeuwenhoeks til smásjárfræða nánar í <link document="m58784">How We See the Invisible World</link>.)</para>
+<para id="fs-id1171360229272">Næstum 200 árum eftir að van Leeuwenhoek sá örverur í fyrsta sinn leiddi „<term class="no-emphasis" id="term-00010">gullöld örverufræðinnar (e. golden age of microbiology)</term>“ af sér fjölda nýrra uppgötvana á árunum 1857 til 1914. Tveir frægir örverufræðingar, Louis <term class="no-emphasis" id="term-00011">Pasteur</term> og Robert <term class="no-emphasis" id="term-00012">Koch</term>, voru sérstaklega virkir í að auka skilning okkar á hinum óséða heimi örveranna (<link target-id="OSC_Microbio_01_01_PastKoch"/>). Pasteur, franskur efnafræðingur, sýndi fram á að einstakir örverustofnar hefðu sérstaka eiginleika og sýndi að gerjun stafaði af örverum. Hann fann einnig upp gerilsneyðingu, aðferð sem notuð er til að drepa örverur sem valda skemmdum, og þróaði bóluefni til meðferðar á sjúkdómum, þar á meðal hundaæði, í dýrum og mönnum. Koch, þýskur læknir, var fyrstur til að sýna fram á tengslin milli einnar, einangraðrar örveru og þekkts sjúkdóms í mönnum. Hann uppgötvaði til dæmis bakteríurnar sem valda miltisbrandi (<emphasis effect="italics">Bacillus anthracis</emphasis>), kóleru (<emphasis effect="italics">Vibrio cholera</emphasis>) og berklum (<emphasis effect="italics">Mycobacterium tuberculosis</emphasis>). <footnote id="fs-id1171360586897">S.M. Blevins og M.S. Bronze. „Robert Koch and the ‘Golden Age’ of Bacteriology.“ <emphasis effect="italics">International Journal of Infectious Diseases</emphasis>. 14 nr. 9 (2010): e744-e751. doi:10.1016/j.ijid.2009.12.003.</footnote> Við munum fjalla nánar um þessa frægu örverufræðinga, og aðra, í síðari köflum.</para>
 <figure id="OSC_Microbio_01_01_PastKoch">
 <media id="fs-id1171359181940" alt="Figure a is a drawing of Louis Pasteur in his lab. Figure b is a photograph of Robert Koch.">
 <image mime-type="image/jpeg" src="../../media/OSC_Microbio_01_01_PastKoch.jpg"/>
 </media>
-<caption>(a) Louis
-Pasteur (1822–1895) er eignaður heiðurinn af fjölmörgum nýjungum sem
-fleyttu örverufræði og ónæmisfræði fram á við. (b) Robert Koch
-(1843–1910) greindi þær örverur sem valda miltisbrandi, kóleru og
-berklum.</caption>
+<caption>(a) Louis Pasteur (1822–1895) er eignaður heiðurinn af fjölmörgum nýjungum sem fleyttu örverufræði og ónæmisfræði fram á við. (b) Robert Koch (1843–1910) greindi þær tilteknu örverur sem valda miltisbrandi, kóleru og berklum.</caption>
 </figure>
-<para id="fs-id1171360119106">Þróun örverufræðinnar hefur gert
-líffræðinni, sem er víðtækara fag, kleift að vaxa og dafna á áður
-óþekktan hátt. Mikið af því sem við vitum um frumur manna kemur frá
-skilningi okkar á örverum og mörg þeirra tækja sem við notum í dag til
-að rannsaka frumur og erfðafræði þeirra eru sprottin af vinnu með
-örverur.</para>
+<para id="fs-id1171360119106">Eftir því sem örverufræðin hefur þróast hefur hún gert líffræðinni, sem víðara fagi, kleift að vaxa og dafna á áður óímyndaðan hátt. Mikið af því sem við vitum um frumur manna kemur frá skilningi okkar á örverum og mörg þeirra tækja sem við notum í dag til að rannsaka frumur og erfðafræði þeirra eru sprottin af vinnu með örverur.</para>
 <note id="fs-id1171359082752" class="microbiology check-your-understanding">
 <list id="fs-id1166167098275" list-type="bulleted" bullet-style="bullet">
-<item>How did the discovery of microbes change human understanding of disease?</item>
+<item>Hvernig breytti uppgötvun örvera skilningi manna á sjúkdómum?</item>
 </list>
 </note>
 <note id="fs-id1171359059127" class="microbiology micro-connection">
-<title>Verkfærakista
-örverufræðinnar</title>
-<para id="fs-id1171360222691">Þar sem stakar örverur eru
-yfirleitt of litlar til að sjást með berum augum er örverufræðin háð
-tækni sem getur aukið getu náttúrulegrar skynjunar okkar með
-gerviaðferðum. Fyrstu örverufræðingarnir, eins og Pasteur og Koch, höfðu
-færri tæki til umráða en finnast á nútíma rannsóknarstofum, sem gerir
-uppgötvanir þeirra og nýjungar enn áhrifameiri. Í síðari köflum þessa
-texta verður fjallað ítarlega um mörg not tækninnar, en hér er stutt
-yfirlit yfir nokkur af grundvallartækjum örverufræðirannsóknarstofunnar.</para>
+<title>Verkfærakista örverufræðinnar</title>
+<para id="fs-id1171360222691">Þar sem stakar örverur eru yfirleitt of litlar til að sjást með berum augum er örverufræðin háð tækni sem getur á tilbúinn hátt aukið getu náttúrulegrar skynjunar okkar. Fyrstu örverufræðingar eins og Pasteur og Koch höfðu færri verkfæri til umráða en finnast á nútíma rannsóknarstofum, sem gerir uppgötvanir þeirra og nýjungar enn áhrifameiri. Í síðari köflum þessa texta verður farið ítarlega yfir mörg not tækninnar, en í bili er hér stutt yfirlit yfir nokkur af grundvallarverkfærum örverufræðistofunnar.</para>
 <list id="fs-id1171360307763" list-type="bulleted" bullet-style="bullet">
-<item><emphasis effect="bold">Microscopes</emphasis> produce magnified images of microorganisms, human cells and tissues, and many other types of specimens too small to be observed with the naked eye.</item>
-<item><emphasis effect="bold">Stains and dyes</emphasis> are used to add color to microbes so they can be better observed under a microscope. Some dyes can be used on living microbes, whereas others require that the specimens be fixed with chemicals or heat before staining. Some stains only work on certain types of microbes because of differences in their cellular chemical composition.</item>
-<item><emphasis effect="bold">Growth media</emphasis> are used to grow microorganisms in a lab setting. Some media are liquids; others are more solid or gel-like. A growth medium provides nutrients, including water, various salts, a source of carbon (like glucose), and a source of nitrogen and amino acids (like yeast extract) so microorganisms can grow and reproduce. Ingredients in a growth medium can be modified to grow unique types of microorganisms.</item>
-<item><emphasis effect="bold">A Petri dish</emphasis> is a flat-lidded dish that is typically 10–11 centimeters (cm) in diameter and 1–1.5 cm high. Petri dishes made out of either plastic or glass are used to hold growth media (<link target-id="OSC_Microbio_01_01_Petri"/>).</item>
-<item><emphasis effect="bold">Test tubes</emphasis> are cylindrical plastic or glass tubes with rounded bottoms and open tops. They can be used to grow microbes in broth, or semisolid or solid growth media.</item>
-<item>A <emphasis effect="bold">Bunsen burner</emphasis> is a metal apparatus that creates a flame that can be used to sterilize pieces of equipment. A rubber tube carries gas (fuel) to the burner. In many labs, Bunsen burners are being phased out in favor of infrared <emphasis effect="bold">microincinerators</emphasis>, which serve a similar purpose without the safety risks of an open flame.</item>
-<item>An <emphasis effect="bold">inoculation loop</emphasis> is a handheld tool that ends in a small wire loop (<link target-id="OSC_Microbio_01_01_Petri"/>). The loop can be used to streak microorganisms on agar in a Petri dish or to transfer them from one test tube to another. Before each use, the inoculation loop must be sterilized so cultures do not become contaminated.</item>
+<item><emphasis effect="bold">Smásjár</emphasis> búa til stækkaðar myndir af örverum, frumum og vefjum úr mönnum og mörgum öðrum tegundum sýna sem eru of smá til að sjást með berum augum.</item>
+<item><emphasis effect="bold">Litunarefni og litir</emphasis> eru notuð til að lita örverur svo hægt sé að skoða þær betur í smásjá. Sum litunarefni er hægt að nota á lifandi örverur, en önnur krefjast þess að sýnin séu fest með efnum eða hita fyrir litun. Sum litunarefni virka aðeins á ákveðnar tegundir örvera vegna munar á efnafræðilegri samsetningu frumna þeirra.</item>
+<item><emphasis effect="bold">Æti</emphasis> eru notuð til að rækta örverur á rannsóknarstofu. Sum æti eru vökvar; önnur eru í föstu eða hálfföstu formi. Æti veitir næringarefni, þar á meðal vatn, ýmis sölt, kolefnisgjafa (eins og glúkósa) og köfnunarefnis- og amínósýrugjafa (eins og gerþykkni) svo örverur geti vaxið og fjölgað sér. Hægt er að breyta innihaldsefnum í æti til að rækta sérstakar tegundir örvera.</item>
+<item><emphasis effect="bold">Petrískál</emphasis> er flöt skál með loki sem er yfirleitt 10–11 sentímetrar (cm) í þvermál og 1–1,5 cm á hæð. Petrískálar úr plasti eða gleri eru notaðar til að geyma æti (<link target-id="OSC_Microbio_01_01_Petri"/>).</item>
+<item><emphasis effect="bold">Tilraunaglös</emphasis> eru sívalningslaga plast- eða glerrör með ávölum botni og opnum toppi. Hægt er að nota þau til að rækta örverur í seyði, eða hálfföstu eða föstu æti.</item>
+<item><emphasis effect="bold">Bunsenbrennari</emphasis> er málmtæki sem myndar loga sem hægt er að nota til að dauðhreinsa búnað. Gúmmíslanga flytur gas (eldsneyti) að brennaranum. Á mörgum rannsóknarstofum er verið að leggja Bunsenbrennara af í þágu innrauðra <emphasis effect="bold">örbrennsluofna</emphasis>, sem þjóna svipuðum tilgangi án þeirrar öryggisáhættu sem fylgir opnum loga.</item>
+<item><emphasis effect="bold">Sáningarlykkja</emphasis> er handverkfæri sem endar í lítilli vírlykkju (<link target-id="OSC_Microbio_01_01_Petri"/>). Hægt er að nota lykkjuna til að draga örverur á agar í Petrískál eða til að flytja þær úr einu tilraunaglasi í annað. Fyrir hverja notkun verður að dauðhreinsa sáningarlykkjuna svo ræktanir mengist ekki.</item>
 </list>
 <figure id="OSC_Microbio_01_01_Petri">
 <media id="fs-id1171360238069" alt="Figure a is a photograph of a round disk streaked with lines. The thickest lines go back and forth along an area spanning one fifth of the plate. The next fifth of the plate also has thick lines. The next fifth of the plate has thinner lines that are made of tiny dots. The final fifth of the pate only has large dots. Figure b shows a hand holding a metal rod that is the diameter of a pretzel stick; projecting from tis is a thick wire that is formed into a loop at the end.">
 <image mime-type="image/jpeg" src="../../media/OSC_Microbio_01_01_Petri.jpg"/>
 </media>
-<caption>(a) Þessi
-petrískál fyllt með agar hefur verið strikuð með <emphasis effect="italics">Legionella</emphasis>,
-bakteríunni sem veldur hermannaveiki. (b) Hægt er að nota sáningarlykkju
-eins og þessa til að strika bakteríur á agar í petrískál. (heimild a:
-breytt útgáfa af verki Centers for Disease Control and Prevention;
-heimild b: breytt útgáfa af verki Jeffrey M. Vinocur)</caption>
+<caption>(a) Á þessa Petrískál, fyllta með agar, hefur verið dregin <emphasis effect="italics">Legionella</emphasis>, bakterían sem veldur hermannaveiki. (b) Hægt er að nota sáningarlykkju eins og þessa til að draga bakteríur á agar í Petrískál. (mynd a: breytt útgáfa af verki Centers for Disease Control and Prevention; mynd b: breytt útgáfa af verki Jeffrey M. Vinocur)</caption>
 </figure>
 </note>
 </section>
 <section id="fs-id1171360250262" class="summary">
 <title>Lykilhugtök og samantekt</title>
 <list id="fs-id1171358978250" list-type="bulleted" bullet-style="bullet">
-<item><emphasis effect="bold">Örverur</emphasis> (eða
-<emphasis effect="bold">örlífverur</emphasis>) eru lifandi verur sem eru yfirleitt of litlar til að
-sjást án smásjár.</item>
-<item>Í gegnum söguna hafa menn
-notað örverur til að búa til gerjaðar matvörur eins og bjór, brauð, ost
-og vín.</item>
-<item>Löngu fyrir uppfinningu
-smásjárinnar settu sumir fram þá kenningu að sýkingar og sjúkdómar
-dreifðust með lifandi verum sem væru of litlar til að sjást. Þeir höfðu
-einnig rétt fyrir sér um ákveðnar grundvallarreglur varðandi útbreiðslu
-sjúkdóma og ónæmi.</item>
-<item>Antonie van Leeuwenhoek
-var fyrstur til að lýsa athugunum á bakteríum með smásjá árið 1675.</item>
-<item>Á gullöld örverufræðinnar
-(1857–1914) uppgötvuðu örverufræðingar, þar á meðal Louis Pasteur og
-Robert Koch, mörg ný tengsl milli örverufræði og læknisfræði.</item>
+<item><emphasis effect="bold">Örverur</emphasis> (eða <emphasis effect="bold">örlífverur</emphasis>) eru lifandi verur sem eru yfirleitt of litlar til að sjást án smásjár.</item>
+<item>Í gegnum söguna hafa menn notað örverur til að búa til gerjaðar matvörur eins og bjór, brauð, ost og vín.</item>
+<item>Löngu fyrir uppfinningu smásjárinnar settu sumir fram þá kenningu að sýkingar og sjúkdómar bærust með lifandi verum sem væru of litlar til að sjást. Þeir höfðu einnig rétt fyrir sér um ákveðnar grundvallarreglur varðandi útbreiðslu sjúkdóma og ónæmi.</item>
+<item>Antonie van Leeuwenhoek var fyrstur til að lýsa athugunum á bakteríum með smásjá árið 1675.</item>
+<item>Á gullöld örverufræðinnar (1857–1914) uppgötvuðu örverufræðingar, þar á meðal Louis Pasteur og Robert Koch, mörg ný tengsl milli örverufræði og læknisfræði.</item>
 </list>
 </section>
 <section id="fs-id1171360210324" class="multiple-choice">
 <title>Krossaspurningar</title>
 <exercise id="fs-id1171360295368">
 <problem id="fs-id1171360537569">
-<para id="fs-id1171359077257">Hver af eftirfarandi matvörum
-er EKKI gerð með gerjun?</para>
+<para id="fs-id1171359077257">Hver af eftirfarandi matvörum er EKKI gerð með gerjun?</para>
 <list id="fs-id1171358940469" list-type="enumerated" number-style="upper-alpha">
 <item>beer</item>
 <item>bread</item>
@@ -408,8 +144,7 @@ er EKKI gerð með gerjun?</para>
 </exercise>
 <exercise id="fs-id1171360229175">
 <problem id="fs-id1171360338504">
-<para id="fs-id1171359160446">Hver er talinn „faðir
-vestrænnar læknisfræði“?</para>
+<para id="fs-id1171359160446">Hver er talinn „faðir vestrænnar læknisfræði“?</para>
 <list id="fs-id1171360229374" list-type="enumerated" number-style="upper-alpha">
 <item>Marcus Terentius Varro</item>
 <item>Thucydides</item>
@@ -423,8 +158,7 @@ vestrænnar læknisfræði“?</para>
 </exercise>
 <exercise id="fs-id1171359008696">
 <problem id="fs-id1171358995066">
-<para id="fs-id1171360230361">Hver var fyrstur til að sjá
-„smádýr“ í smásjá?</para>
+<para id="fs-id1171360230361">Hver var fyrstur til að sjá „smádýr“ í smásjá?</para>
 <list id="fs-id1171360187994" list-type="enumerated" number-style="upper-alpha">
 <item>Antonie van Leeuwenhoek</item>
 <item>Ötzi the Iceman</item>
@@ -438,9 +172,7 @@ vestrænnar læknisfræði“?</para>
 </exercise>
 <exercise id="fs-id1171359210036">
 <problem id="fs-id1171359042572">
-<para id="fs-id1171360225534">Hver stakk upp á því að í
-mýrum gætu leynst örsmá, sjúkdómsvaldandi dýr sem væru of lítil til að
-sjást?</para>
+<para id="fs-id1171360225534">Hver stakk upp á því að í mýrum gætu leynst örsmá, sjúkdómsvaldandi dýr sem væru of lítil til að sjá?</para>
 <list id="fs-id1171359058481" list-type="enumerated" number-style="upper-alpha">
 <item>Thucydides</item>
 <item>Marcus Terentius Varro</item>
@@ -457,8 +189,7 @@ sjást?</para>
 <title>Fylltu í eyðurnar</title>
 <exercise id="fs-id1171360211126">
 <problem id="fs-id1171360217890">
-<para id="fs-id1171358973154">Þúkídídes er þekktur sem faðir
-<term><emphasis effect="italics"></term><term></emphasis></term>_____.</para>
+<para id="fs-id1171358973154">Þúkídídes er þekktur sem faðir _______________.</para>
 </problem>
 <solution id="fs-id1171360598825">
 <para id="fs-id1171359180948">vísindalegrar sagnfræði</para>
@@ -466,18 +197,15 @@ sjást?</para>
 </exercise>
 <exercise id="fs-id1171360385165">
 <problem id="fs-id1171360368782">
-<para id="fs-id1171358997456">Rannsakendur telja að
-Ísmaðurinn Ötzi gæti hafa verið sýktur af _____ sjúkdómi.</para>
+<para id="fs-id1171358997456">Rannsakendur telja að ísmaðurinn Ötzi kunni að hafa verið sýktur af _____.</para>
 </problem>
 <solution id="fs-id1172102128619">
-<para id="fs-id1172099415767">Lyme</para>
+<para id="fs-id1172099415767">Lyme-sjúkdómnum</para>
 </solution>
 </exercise>
 <exercise id="fs-id1171360219802">
 <problem id="fs-id1171360096264">
-<para id="fs-id1171360085566">Ferlið þar sem örverur breyta
-þrúgusafa í vín kallast
-<term><emphasis effect="italics"></term><term></emphasis></term>_____.</para>
+<para id="fs-id1171360085566">Ferlið þar sem örverur breyta vínberjasafa í vín kallast _______________.</para>
 </problem>
 <solution id="fs-id1171359011060">
 <para id="fs-id1171360191960">gerjun</para>
@@ -488,20 +216,17 @@ sjást?</para>
 <title>Stutt svar</title>
 <exercise id="fs-id1171360483684">
 <problem id="fs-id1171360291220">
-<para id="fs-id1171360255805">Hvað lærði Þúkídídes af því að
-fylgjast með plágunni í Aþenu?</para>
+<para id="fs-id1171360255805">Hvað lærði Þúkídídes af því að fylgjast með plágunni í Aþenu?</para>
 </problem>
 </exercise>
 <exercise id="fs-id1171359056517">
 <problem id="fs-id1171358978135">
-<para id="fs-id1171360598992">Hvers vegna var uppfinning
-smásjárinnar mikilvæg fyrir örverufræði?</para>
+<para id="fs-id1171360598992">Hvers vegna var uppfinning smásjárinnar mikilvæg fyrir örverufræði?</para>
 </problem>
 </exercise>
 <exercise id="fs-id1171359003691">
 <problem id="fs-id1171360270763">
-<para id="fs-id1171360213918">Á hvaða hátt notar fólk
-örverur?</para>
+<para id="fs-id1171360213918">Hvernig nýtir fólk sér örverur?</para>
 </problem>
 </exercise>
 </section>
@@ -509,15 +234,12 @@ smásjárinnar mikilvæg fyrir örverufræði?</para>
 <title>Gagnrýnin hugsun</title>
 <exercise id="fs-id1171360198320">
 <problem id="fs-id1171360205735">
-<para id="fs-id1171360219914">Útskýrðu hvernig uppgötvun
-gerjaðra matvæla kom forfeðrum okkar líklega til góða.</para>
+<para id="fs-id1171360219914">Útskýrðu hvernig uppgötvun gerjaðra matvæla kom forfeðrum okkar líklega að gagni.</para>
 </problem>
 </exercise>
 <exercise id="fs-id1171360270326">
 <problem id="fs-id1171360558398">
-<para id="fs-id1171358995422">Hvaða sönnunargögn myndir þú
-nota til að styðja þessa staðhæfingu: Fólk í fornöld taldi að sjúkdómar
-smituðust með hlutum sem það gat ekki séð.</para>
+<para id="fs-id1171358995422">Hvaða sönnunargögn myndir þú nota til að styðja þessa staðhæfingu: Fornmenn töldu að sjúkdómar smituðust með hlutum sem þeir gátu ekki séð.</para>
 </problem>
 </exercise>
 </section>

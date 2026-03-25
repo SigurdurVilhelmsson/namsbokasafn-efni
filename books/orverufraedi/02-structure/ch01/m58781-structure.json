@@ -79,6 +79,19 @@
           "type": "para",
           "id": "fs-id1171360529329",
           "segmentId": "m58781:para:fs-id1171360529329"
+        },
+        {
+          "type": "list",
+          "id": "fs-id1171360056051",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": "bullet",
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m58781:item:fs-id1171360056051-item-1"
+            }
+          ]
         }
       ]
     },
@@ -235,7 +248,25 @@
           "id": "fs-id1171359127426",
           "class": "microbiology check-your-understanding",
           "title": null,
-          "content": []
+          "content": [
+            {
+              "type": "list",
+              "id": "fs-id1171359059174",
+              "listType": "bulleted",
+              "numberStyle": null,
+              "bulletStyle": "bullet",
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m58781:item:fs-id1171359059174-item-1"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m58781:item:fs-id1171359059174-item-2"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -281,7 +312,21 @@
           "id": "fs-id1171359082752",
           "class": "microbiology check-your-understanding",
           "title": null,
-          "content": []
+          "content": [
+            {
+              "type": "list",
+              "id": "fs-id1166167098275",
+              "listType": "bulleted",
+              "numberStyle": null,
+              "bulletStyle": "bullet",
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m58781:item:fs-id1166167098275-item-1"
+                }
+              ]
+            }
+          ]
         },
         {
           "type": "note",
@@ -296,6 +341,43 @@
               "type": "para",
               "id": "fs-id1171360222691",
               "segmentId": "m58781:para:fs-id1171360222691"
+            },
+            {
+              "type": "list",
+              "id": "fs-id1171360307763",
+              "listType": "bulleted",
+              "numberStyle": null,
+              "bulletStyle": "bullet",
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m58781:item:fs-id1171360307763-item-1"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m58781:item:fs-id1171360307763-item-2"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m58781:item:fs-id1171360307763-item-3"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m58781:item:fs-id1171360307763-item-4"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m58781:item:fs-id1171360307763-item-5"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m58781:item:fs-id1171360307763-item-6"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m58781:item:fs-id1171360307763-item-7"
+                }
+              ]
             }
           ]
         },
