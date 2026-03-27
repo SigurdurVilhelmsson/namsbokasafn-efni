@@ -34,7 +34,7 @@ This project was built iteratively with AI assistance. Known areas of concern:
 - Pipeline tools evolved organically — may have inconsistent patterns
 - Error handling may be incomplete in some tools
 - Documentation may be ahead of or behind actual implementation in places
-- Test suite: ~1032 Vitest unit tests + 96 Playwright E2E tests (vitest workspace: tools parallel, server sequential)
+- Test suite: ~1067 Vitest unit tests + 96 Playwright E2E tests (vitest workspace: tools parallel, server sequential)
 
 ## Purpose
 
@@ -131,6 +131,7 @@ See [docs/workflow/simplified-workflow.md](docs/workflow/simplified-workflow.md)
 |---------|---------|
 | `npm test` | Run all Vitest unit tests |
 | `npm run validate` | Validate chapter status files |
+| `npm run server:dev` | Start editorial server (dev mode) |
 | `node tools/cnxml-extract.js <book> <chapter>` | Extract EN segments from CNXML |
 | `node tools/cnxml-inject.js <book> <chapter>` | Inject translations into CNXML |
 | `node tools/cnxml-render.js <book> <chapter>` | Render translated CNXML to HTML |
@@ -250,13 +251,13 @@ The server is an **editorial workflow platform**, not a pipeline orchestration t
 **Recent changes (2026-03-24):**
 - Removed 20 legacy files (workflow, matecat, sync, images, issues routes/services)
 - All DB services use singleton connection pattern
-- All 31 migrations use unified `up(db)` pattern
+- All 32 migrations use unified `up(db)` pattern
 - Frontend JS wrapped in IIFEs (encapsulated state)
 - Vitest workspace splits tools (parallel) from server (sequential) tests
 
 ## Current Priority
 
-**Fidelity optimization** — 119/148 modules PERFECT (80%), 49 total discrepancies across 29 modules. Error manifest auto-updated: `books/efnafraedi-2e/translation-errors.json`. Pipeline verified with ~1032 Vitest + 96 Playwright tests.
+**Fidelity optimization** — 119/148 modules PERFECT (80%), 49 total discrepancies across 29 modules. Error manifest auto-updated: `books/efnafraedi-2e/translation-errors.json`. Pipeline verified with ~1067 Vitest + 96 Playwright tests.
 
 Remaining discrepancies are structural injection issues (nested para/list), annotation side-effects (sub/sup/term overcounting from EN marker conversion), and a handful of math/link losses. See `translation-errors.json` for per-module detail.
 

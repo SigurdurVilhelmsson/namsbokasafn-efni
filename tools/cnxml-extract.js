@@ -1804,7 +1804,7 @@ async function main() {
     // When processing a chapter, getChapterModules gives the correct order
     let moduleOrderMap = null;
     if (args.chapter) {
-      const orderedModules = getChapterModules(args.chapter);
+      const orderedModules = getChapterModules(args.chapter, args.book);
       moduleOrderMap = new Map();
       orderedModules.forEach((mod, index) => {
         moduleOrderMap.set(mod.moduleId, index);
@@ -1836,6 +1836,28 @@ async function main() {
       console.log(`  → ${output.segmentsPath}`);
       console.log(`  → ${output.structurePath}`);
       console.log(`  → ${output.manifestPath}`);
+    }
+
+    // Extract chapter title from collection-order.json as a translatable segment
+    if (args.chapter && args.chapter !== 'appendices') {
+      const collectionPath = path.join(BOOKS_DIR, '01-source', 'collection-order.json');
+      if (fs.existsSync(collectionPath)) {
+        const collection = JSON.parse(fs.readFileSync(collectionPath, 'utf-8'));
+        const chapterData = collection.chapters.find((ch) => ch.chapter === args.chapter);
+        if (chapterData) {
+          const chapterDir = `ch${String(args.chapter).padStart(2, '0')}`;
+          const segPath = path.join(
+            BOOKS_DIR,
+            '02-for-mt',
+            chapterDir,
+            'chapter-metadata-segments.en.md'
+          );
+          const content = `<!-- SEG:chapter:title:${chapterDir} -->\n${chapterData.title}\n`;
+          fs.writeFileSync(segPath, content, 'utf-8');
+          console.log(`Chapter title: Extracted "${chapterData.title}"`);
+          console.log(`  → ${segPath}`);
+        }
+      }
     }
   } catch (error) {
     console.error('Error:', error.message);

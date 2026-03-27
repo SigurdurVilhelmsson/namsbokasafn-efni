@@ -169,5 +169,10 @@ export function buildModuleSections(book, chapter) {
     };
   }
 
+  // 4. Look up translated chapter title from chapter-metadata segments
+  const chapterTitleSegId = `chapter:title:${chapterDir}`;
+  const chapterTitleIs = segments.get(chapterTitleSegId) || null;
+  result._chapterTitle = chapterTitleIs;
+
   return result;
 }

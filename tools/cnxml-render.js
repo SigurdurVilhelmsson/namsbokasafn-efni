@@ -318,13 +318,18 @@ function renderCnxmlToHtml(cnxml, options = {}) {
   let chapterOutline = null;
   if (isIntro && moduleSections) {
     chapterOutline = Object.entries(moduleSections)
-      .filter(([, info]) => info.section !== '0') // Exclude intro itself
+      .filter(([key, info]) => info.section !== '0' && !key.startsWith('_')) // Exclude intro and metadata
       .sort((a, b) => Number(a[1].section) - Number(b[1].section))
       .map(([, info]) => ({
         section: `${chapter}.${info.section}`,
         title: info.titleIs || info.titleEn,
         slug: info.slug,
       }));
+
+    // Add translated chapter title to page data
+    if (moduleSections._chapterTitle) {
+      pageData.chapterTitle = moduleSections._chapterTitle;
+    }
   }
 
   // Build HTML document
@@ -1716,15 +1721,8 @@ function writeOutput(chapter, moduleId, track, html, moduleSections) {
 function copyChapterImages(chapter, track, _verbose) {
   const chapterStr = formatChapterOutput(chapter);
   const sourceMediaDir = path.join(BOOKS_DIR, '01-source', 'media');
-  const targetMediaDir = path.join(
-    BOOKS_DIR,
-    '05-publication',
-    track,
-    'chapters',
-    chapterStr,
-    'images',
-    'media'
-  );
+  const chapterDir = path.join(BOOKS_DIR, '05-publication', track, 'chapters', chapterStr);
+  const targetMediaDir = path.join(chapterDir, 'images', 'media');
 
   if (!fs.existsSync(sourceMediaDir)) {
     console.error(`Warning: Source media directory not found: ${sourceMediaDir}`);
@@ -1735,50 +1733,38 @@ function copyChapterImages(chapter, track, _verbose) {
     fs.mkdirSync(targetMediaDir, { recursive: true });
   }
 
-  // Build list of image prefixes to match for this chapter.
-  // Uses book config for prefix patterns (Chemistry: CNX_Chem_NN_,
-  // Microbiology: OSC_Microbio_NN_ + Figure_NN_, Biology: Figure_NN_)
-  const prefixes = [];
+  // Scan rendered HTML files to find all referenced image filenames.
+  // This is more robust than prefix matching — it copies exactly the
+  // files that the HTML actually references, regardless of naming convention.
+  const referencedFiles = new Set();
+  const imgSrcPattern = /src="\/content\/[^"]*\/images\/media\/([^"]+)"/g;
 
-  if (BOOK_CONFIG) {
-    if (chapter === 'appendices' && BOOK_CONFIG.appendixImagePrefix) {
-      prefixes.push(BOOK_CONFIG.appendixImagePrefix);
-    } else {
-      // Try single prefix
-      const singlePrefix = BOOK_CONFIG.imagePrefix?.(chapterStr);
-      if (singlePrefix) {
-        prefixes.push(singlePrefix);
-      }
-      // Try multiple prefixes (for books with varied naming)
-      const multiPrefixes = BOOK_CONFIG.imagePrefixes?.(chapterStr);
-      if (multiPrefixes) {
-        prefixes.push(...multiPrefixes);
-      }
+  const htmlFiles = fs.readdirSync(chapterDir).filter((f) => f.endsWith('.html'));
+  for (const htmlFile of htmlFiles) {
+    const content = fs.readFileSync(path.join(chapterDir, htmlFile), 'utf-8');
+    let match;
+    while ((match = imgSrcPattern.exec(content)) !== null) {
+      referencedFiles.add(decodeURIComponent(match[1]));
     }
   }
 
-  // Fallback: if no prefixes configured, try common OpenStax patterns
-  if (prefixes.length === 0) {
-    prefixes.push(
-      `CNX_Chem_${chapterStr}_`,
-      `Figure_${chapterStr}_`,
-      `OSC_Microbio_${chapterStr}_`
-    );
-  }
-
-  const sourceFiles = fs
-    .readdirSync(sourceMediaDir)
-    .filter((f) => prefixes.some((prefix) => f.startsWith(prefix)));
-
   let copied = 0;
-  for (const file of sourceFiles) {
+  let missing = 0;
+  for (const file of referencedFiles) {
     const src = path.join(sourceMediaDir, file);
     const dest = path.join(targetMediaDir, file);
-    fs.copyFileSync(src, dest);
-    copied++;
+    if (fs.existsSync(src)) {
+      fs.copyFileSync(src, dest);
+      copied++;
+    } else {
+      console.error(`Warning: Referenced image not found in source: ${file}`);
+      missing++;
+    }
   }
 
-  console.log(`Images: Copied ${copied} files to ${targetMediaDir}`);
+  console.log(
+    `Images: Copied ${copied} files to ${targetMediaDir}${missing ? ` (${missing} missing from source)` : ''}`
+  );
 }
 
 // =====================================================================

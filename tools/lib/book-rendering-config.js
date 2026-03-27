@@ -86,10 +86,6 @@ const CHEMISTRY_CONFIG = {
   // (they get their own standalone pages)
   excludedSectionClasses: ['summary', 'key-equations', 'exercises'],
 
-  // Image file prefix pattern: CNX_Chem_NN_ (where NN is zero-padded chapter)
-  imagePrefix: (chapterStr) => `CNX_Chem_${chapterStr}_`,
-  appendixImagePrefix: 'CNX_Chem_00_',
-
   specialModules: {
     m68859: 'periodic-table',
   },
@@ -137,10 +133,6 @@ const BIOLOGY_CONFIG = {
   },
 
   excludedSectionClasses: ['summary', 'multiple-choice', 'critical-thinking', 'visual-exercise'],
-
-  // Biology images use Figure_NN_SS_CC pattern
-  imagePrefix: (chapterStr) => `Figure_${chapterStr}_`,
-  appendixImagePrefix: 'Figure_00_',
 
   specialModules: {},
 };
@@ -221,16 +213,6 @@ const MICROBIOLOGY_CONFIG = {
     'matching',
   ],
 
-  // Microbiology images use OSC_Microbio_NN_SS_CC or Figure_NN_SS_CC pattern
-  imagePrefix: (_chapterStr) => {
-    // Microbiology uses multiple naming conventions — return null to trigger
-    // the multi-prefix fallback in copyChapterImages
-    return null;
-  },
-  // Fallback: match any file containing the chapter number pattern
-  imagePrefixes: (chapterStr) => [`OSC_Microbio_${chapterStr}_`, `Figure_${chapterStr}_`],
-  appendixImagePrefix: null,
-
   specialModules: {},
 };
 
@@ -280,10 +262,6 @@ const ORGANIC_CHEMISTRY_CONFIG = {
     'additional-problems',
     'chemistry-matters',
   ],
-
-  // Organic Chemistry images use OChem_NN_ pattern
-  imagePrefix: (chapterStr) => `OChem_${chapterStr}_`,
-  appendixImagePrefix: 'OChem_00_',
 
   specialModules: {},
 };
@@ -343,10 +321,6 @@ const COLLEGE_PHYSICS_CONFIG = {
     'ap-test-prep',
   ],
 
-  // Physics images use Figure_NN_ pattern
-  imagePrefix: (chapterStr) => `Figure_${chapterStr}_`,
-  appendixImagePrefix: 'Figure_00_',
-
   specialModules: {},
 };
 
@@ -380,9 +354,6 @@ function getBookRenderConfig(bookSlug) {
     titleTranslations: { ...SHARED_TITLE_TRANSLATIONS },
     endOfChapterSections: { ...SHARED_END_OF_CHAPTER },
     excludedSectionClasses: ['summary'],
-    imagePrefix: () => null,
-    imagePrefixes: () => [],
-    appendixImagePrefix: null,
     specialModules: {},
   };
 }
