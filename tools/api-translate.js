@@ -591,6 +591,17 @@ async function main() {
     const outputDir = path.join(mtOutputDir, chapterDir);
     let modules = discoverModules(inputDir);
 
+    // Include chapter-metadata segments (chapter title) if present
+    const chapterMetaFile = 'chapter-metadata-segments.en.md';
+    const chapterMetaPath = path.join(inputDir, chapterMetaFile);
+    if (fs.existsSync(chapterMetaPath)) {
+      modules.push({
+        moduleId: 'chapter-metadata',
+        filename: chapterMetaFile,
+        path: chapterMetaPath,
+      });
+    }
+
     // Filter to specific module if requested
     if (args.module) {
       modules = modules.filter((m) => m.moduleId === args.module);

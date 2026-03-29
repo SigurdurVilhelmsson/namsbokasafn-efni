@@ -83,7 +83,8 @@ function getNoteTypeLabel(noteClass) {
   }
   // Generate a readable fallback label for unknown note types
   // (e.g., 'clinical-focus' → 'Clinical Focus')
-  if (NOTE_TYPE_LABELS.default === null) {
+  // Skip fallback for 'default' — these are classless notes whose <title> already identifies them
+  if (NOTE_TYPE_LABELS.default === null && noteClass !== 'default') {
     return generateFallbackLabel(noteClass);
   }
   return null;
@@ -534,6 +535,8 @@ function renderContent(content, context, _verbose) {
   for (const m of medias) if (m.fullMatch) simpleContent = simpleContent.replace(m.fullMatch, '');
 
   const lists = extractNestedElements(simpleContent, 'list');
+  for (const lst of lists)
+    if (lst.fullMatch) simpleContent = simpleContent.replace(lst.fullMatch, '');
   const equations = extractElements(simpleContent, 'equation');
   const paras = extractElements(simpleContent, 'para');
 
@@ -743,6 +746,9 @@ function renderTopLevelContent(content, context) {
   }
 
   const lists = extractNestedElements(contentForSimpleElements, 'list');
+  for (const lst of lists)
+    if (lst.fullMatch)
+      contentForSimpleElements = contentForSimpleElements.replace(lst.fullMatch, '');
   const equations = extractElements(contentForSimpleElements, 'equation');
   const paras = extractElements(contentForSimpleElements, 'para');
 
@@ -1044,7 +1050,13 @@ function renderNote(note, context) {
   // Collect all elements with their positions
   const elementsWithPositions = [];
 
-  const paras = extractElements(contentWithoutTitle, 'para');
+  // Extract lists before paras so lists inside paras don't leak as raw CNXML
+  const lists = extractNestedElements(contentWithoutTitle, 'list');
+  let contentForParas = contentWithoutTitle;
+  for (const lst of lists)
+    if (lst.fullMatch) contentForParas = contentForParas.replace(lst.fullMatch, '');
+
+  const paras = extractElements(contentForParas, 'para');
   for (const para of paras) {
     const pos = para.id
       ? contentWithoutTitle.indexOf(`id="${para.id}"`)
@@ -1060,8 +1072,6 @@ function renderNote(note, context) {
     elementsWithPositions.push({ type: 'figure', item: figure, position: pos !== -1 ? pos : 0 });
   }
 
-  // Extract lists (e.g., bullet lists in check-your-understanding, toolbox notes)
-  const lists = extractNestedElements(contentWithoutTitle, 'list');
   for (const list of lists) {
     const pos = list.id
       ? contentWithoutTitle.indexOf(`id="${list.id}"`)
@@ -1164,7 +1174,13 @@ function renderExample(example, context) {
     }
   }
 
-  // Extract paragraphs from content WITHOUT notes (we'll strip titles from content when rendering)
+  // Extract lists before paras so lists inside paras don't leak as raw CNXML
+  const lists = extractNestedElements(contentForSimpleElements, 'list');
+  for (const lst of lists)
+    if (lst.fullMatch)
+      contentForSimpleElements = contentForSimpleElements.replace(lst.fullMatch, '');
+
+  // Extract paragraphs from content WITHOUT notes or lists
   const parasOutsideNotes = extractElements(contentForSimpleElements, 'para');
   for (const para of parasOutsideNotes) {
     const pos = para.id
@@ -1177,8 +1193,6 @@ function renderExample(example, context) {
     });
   }
 
-  // Extract lists from content WITHOUT notes
-  const lists = extractNestedElements(contentForSimpleElements, 'list');
   for (const list of lists) {
     const pos = list.fullMatch
       ? example.content.indexOf(list.fullMatch)
@@ -1313,9 +1327,15 @@ function renderExercise(exercise, context) {
 
   lines.push(`<div ${attrs.join(' ')}>`);
 
-  // Helper: render problem/solution section content with paras, media, and figures in order
+  // Helper: render problem/solution section content with paras, media, figures, and lists in order
   function renderSectionContent(sectionContent) {
-    const paras = extractElements(sectionContent, 'para');
+    // Extract lists before paras so lists inside paras don't leak as raw CNXML
+    const lists = extractNestedElements(sectionContent, 'list');
+    let contentForParas = sectionContent;
+    for (const lst of lists)
+      if (lst.fullMatch) contentForParas = contentForParas.replace(lst.fullMatch, '');
+
+    const paras = extractElements(contentForParas, 'para');
     // Strip figures before extracting standalone media
     const contentWithoutFigures = sectionContent.replace(/<figure[\s\S]*?<\/figure>/g, '');
     const medias = extractNestedElements(contentWithoutFigures, 'media');
@@ -1336,6 +1356,12 @@ function renderExercise(exercise, context) {
       const pos = sectionContent.indexOf(`id="${figure.id}"`);
       elementsWithPositions.push({ type: 'figure', item: figure, position: pos !== -1 ? pos : 0 });
     }
+    for (const list of lists) {
+      const pos = list.id
+        ? sectionContent.indexOf(`id="${list.id}"`)
+        : sectionContent.indexOf('<list');
+      elementsWithPositions.push({ type: 'list', item: list, position: pos !== -1 ? pos : 0 });
+    }
 
     elementsWithPositions.sort((a, b) => a.position - b.position);
 
@@ -1349,6 +1375,9 @@ function renderExercise(exercise, context) {
           break;
         case 'figure':
           lines.push(`    ${renderFigure(item, context)}`);
+          break;
+        case 'list':
+          lines.push(`    ${renderList(item, context)}`);
           break;
       }
     }
@@ -1487,20 +1516,40 @@ function renderList(list, context) {
   if (bulletStyle === 'bullet') styleAttr = ' style="list-style-type: disc"';
   else if (bulletStyle === 'open-circle') styleAttr = ' style="list-style-type: circle"';
 
-  lines.push(`<${tag}${id ? ` id="${escapeAttr(id)}"` : ''}${styleAttr}>`);
+  const classAttr = list.attributes.class ? ` class="${escapeAttr(list.attributes.class)}"` : '';
+  lines.push(`<${tag}${id ? ` id="${escapeAttr(id)}"` : ''}${classAttr}${styleAttr}>`);
 
-  const items = extractElements(list.content, 'item');
+  const items = extractNestedElements(list.content, 'item');
   for (const item of items) {
     const itemId = item.id ? ` id="${escapeAttr(item.id)}"` : '';
 
-    // Check for nested content
-    const nestedParas = extractElements(item.content, 'para');
-    if (nestedParas.length > 0) {
-      const content = nestedParas.map((p) => processInlineContent(p.content, context)).join('<br>');
-      lines.push(`  <li${itemId}>${content}</li>`);
+    // Check for nested lists inside items
+    const nestedLists = extractNestedElements(item.content, 'list');
+    if (nestedLists.length > 0) {
+      // Strip nested lists from item content before processing text
+      let textContent = item.content;
+      for (const nl of nestedLists)
+        if (nl.fullMatch) textContent = textContent.replace(nl.fullMatch, '');
+      const nestedParas = extractElements(textContent, 'para');
+      const text =
+        nestedParas.length > 0
+          ? nestedParas.map((p) => processInlineContent(p.content, context)).join('<br>')
+          : processInlineContent(textContent, context);
+      lines.push(`  <li${itemId}>${text}`);
+      for (const nl of nestedLists) lines.push(renderList(nl, context));
+      lines.push('  </li>');
     } else {
-      const content = processInlineContent(item.content, context);
-      lines.push(`  <li${itemId}>${content}</li>`);
+      // Simple items: check for nested paragraphs
+      const nestedParas = extractElements(item.content, 'para');
+      if (nestedParas.length > 0) {
+        const content = nestedParas
+          .map((p) => processInlineContent(p.content, context))
+          .join('<br>');
+        lines.push(`  <li${itemId}>${content}</li>`);
+      } else {
+        const content = processInlineContent(item.content, context);
+        lines.push(`  <li${itemId}>${content}</li>`);
+      }
     }
   }
 

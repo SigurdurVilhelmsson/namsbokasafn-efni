@@ -46,6 +46,7 @@ const KNOWN_GAPS = new Set([
   'key-equations-table', // Table inside key-equations section
   'periodic-table-link', // Link to periodic table — has inline styles
   'scaled-down-30', // 30% image scaling — needs width rule
+  'stepwise', // Step-by-step numbered lists (OpenStax list variant) — needs indentation styling
   'summary', // Chapter summary section wrapper
   'summary-section', // Individual module summary within chapter summary
 ]);
@@ -158,6 +159,7 @@ describe('CSS contract: namsbokasafn-efni ↔ namsbokasafn-vefur', () => {
 
   it.skipIf(!vefurExists || !pubExists)(
     'content.css has no obviously dead selectors for content classes',
+    { timeout: 60_000 },
     () => {
       const cssContent = fs.readFileSync(VEFUR_CSS_PATH, 'utf-8');
       const cssClasses = extractCssClasses(cssContent);

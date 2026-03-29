@@ -202,6 +202,7 @@ node scripts/sync-content.js --source ../namsbokasafn-efni
 | Document | Purpose |
 |----------|---------|
 | [docs/workflow/simplified-workflow.md](docs/workflow/simplified-workflow.md) | **Extract-Inject-Render workflow** |
+| [docs/workflow/config-and-rerun-guide.md](docs/workflow/config-and-rerun-guide.md) | **What to edit by hand & what to re-run** |
 | [docs/workflow/editor-improvements-jan2026.md](docs/workflow/editor-improvements-jan2026.md) | **Editor rebuild plan for CNXML→HTML pipeline** |
 | [docs/editorial/pass1-linguistic.md](docs/editorial/pass1-linguistic.md) | Pass 1 instructions |
 | [docs/editorial/pass2-localization.md](docs/editorial/pass2-localization.md) | Pass 2 instructions |
