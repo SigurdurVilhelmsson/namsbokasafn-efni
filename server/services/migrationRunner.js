@@ -58,6 +58,7 @@ function runAllMigrations() {
     require('../migrations/030-remove-legacy-tables'),
     require('../migrations/031-content-versions'),
     require('../migrations/032-terminology-redesign'),
+    require('../migrations/033-fix-organic-chemistry-slug'),
   ];
 
   let applied = 0;
