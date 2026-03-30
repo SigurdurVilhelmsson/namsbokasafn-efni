@@ -153,4 +153,13 @@ describe('validateModule', () => {
     expect(res.statusCode).toBe(400);
     expect(wasNextCalled()).toBe(false);
   });
+
+  it('accepts chapter-metadata', () => {
+    const { req, res, next, wasNextCalled } = createMockReqRes({
+      moduleId: 'chapter-metadata',
+    });
+    validateModule(req, res, next);
+    expect(wasNextCalled()).toBe(true);
+    expect(res.statusCode).not.toBe(400);
+  });
 });

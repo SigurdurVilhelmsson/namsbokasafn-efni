@@ -56,7 +56,7 @@
     <!-- Review section — reviewer+ roles only -->
     <div class="sidebar-section" id="sidebar-section-review" style="display:none">
       <div class="sidebar-section-label">Yfirferð</div>
-      <a href="/editor" class="nav-link" data-paths="/editor">
+      <a href="/editor?view=reviews" class="nav-link" data-paths="/editor?view=reviews">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2 2h11"></path></svg>
         <span>Yfirferðir</span>
       </a>
@@ -77,6 +77,10 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
         <span>Bókasafn</span>
       </a>
+      <a href="/assignments" class="nav-link" data-paths="/assignments">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect><line x1="9" y1="12" x2="15" y2="12"></line><line x1="9" y1="16" x2="15" y2="16"></line></svg>
+        <span>Úthlutanir</span>
+      </a>
     </div>
   </nav>
 
@@ -84,6 +88,10 @@
     <a href="/profile" class="nav-link" id="nav-profile" data-paths="/profile" style="display:none">
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
       <span>Prófíll</span>
+    </a>
+    <a href="/feedback" class="nav-link" data-paths="/feedback">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+      <span>Álit</span>
     </a>
     <div class="role-preview-wrapper" id="role-preview-wrapper" style="display:none">
       <label for="role-preview-select" class="role-preview-label">Skoða sem:</label>
@@ -229,17 +237,16 @@
    */
   function highlightActiveNav() {
     const path = window.location.pathname;
-    const navLinks = document.querySelectorAll('.sidebar .nav-link[data-paths]');
+    const fullPath = path + window.location.search;
 
-    navLinks.forEach(function (link) {
-      const paths = link.dataset.paths.split(',').map(function (p) {
-        return p.trim();
-      });
+    document.querySelectorAll('.sidebar .nav-link[data-paths]').forEach((link) => {
       link.classList.remove('active');
-
+      const paths = link.dataset.paths.split(',');
       for (let i = 0; i < paths.length; i++) {
         const p = paths[i];
-        if (path === p || (p !== '/' && path.startsWith(p))) {
+        // If data-path includes '?', match full path+query; otherwise match pathname only
+        const target = p.includes('?') ? fullPath : path;
+        if (target === p || (p !== '/' && !p.includes('?') && path.startsWith(p))) {
           link.classList.add('active');
           break;
         }

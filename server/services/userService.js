@@ -638,6 +638,71 @@ function getAllChapterAssignments(userId) {
   }
 }
 
+/**
+ * Get all chapter assignments for a book (chapter-centric view).
+ * Returns one row per assignment with user info.
+ */
+function getBookAssignments(bookSlug) {
+  if (!isUserTableReady()) return [];
+
+  const db = getDb();
+  try {
+    return db
+      .prepare(
+        `SELECT a.chapter, a.assigned_by, a.assigned_at,
+                u.id as user_id, u.display_name as user_name, u.role
+         FROM user_chapter_assignments a
+         JOIN users u ON a.user_id = u.id
+         WHERE a.book_slug = ?
+         ORDER BY a.chapter`
+      )
+      .all(bookSlug);
+  } catch (err) {
+    if (err.message && err.message.includes('no such table')) return [];
+    throw err;
+  }
+}
+
+/**
+ * Get active editors who can be assigned to chapters in a book.
+ * If user_book_access entries exist for this book, only those users.
+ * Otherwise all active users with role >= editor.
+ */
+function getEditorsForBook(bookSlug) {
+  if (!isUserTableReady()) return [];
+
+  const db = getDb();
+  try {
+    const bookAccessCount = db
+      .prepare('SELECT COUNT(*) as cnt FROM user_book_access WHERE book_slug = ?')
+      .get(bookSlug);
+
+    if (bookAccessCount && bookAccessCount.cnt > 0) {
+      return db
+        .prepare(
+          `SELECT u.id, u.display_name as name, u.role
+           FROM users u
+           JOIN user_book_access ba ON u.id = ba.user_id AND ba.book_slug = ?
+           WHERE u.is_active = 1 AND u.role IN ('editor', 'head-editor', 'admin')
+           ORDER BY u.display_name`
+        )
+        .all(bookSlug);
+    }
+
+    return db
+      .prepare(
+        `SELECT id, display_name as name, role
+         FROM users
+         WHERE is_active = 1 AND role IN ('editor', 'head-editor', 'admin')
+         ORDER BY display_name`
+      )
+      .all();
+  } catch (err) {
+    if (err.message && err.message.includes('no such table')) return [];
+    throw err;
+  }
+}
+
 module.exports = {
   // Query
   findByProviderId,
@@ -665,6 +730,8 @@ module.exports = {
   removeChapterAssignment,
   getChapterAssignments,
   getAllChapterAssignments,
+  getBookAssignments,
+  getEditorsForBook,
 
   // Auth integration
   upsertFromProvider,

@@ -2409,3 +2409,96 @@ a:focus-visible,
   outline: none;
   box-shadow: 0 0 0 3px rgba(196,150,58,0.2);
 }
+
+/* Review mode banner */
+.review-banner {
+  background: var(--bg-elevated, #272b33);
+  border-left: 3px solid var(--accent, #c87941);
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary, #b0a99f);
+  margin: 0.5rem 0;
+  border-radius: 4px;
+}
+
+/* Assignments page */
+.assignments-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.assignments-table th {
+  padding: 0.6rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary, #8a7e72);
+  text-align: left;
+  border-bottom: 2px solid var(--border, #d4cec4);
+}
+
+.assignments-table td {
+  padding: 0.6rem;
+  border-bottom: 1px solid var(--border-light, #e8e2d8);
+}
+
+.assignments-table .row-unassigned {
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
+.assign-select {
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--border, #d4cec4);
+  border-radius: 4px;
+  background: var(--bg-surface, #faf7f2);
+  font-size: 0.85rem;
+  min-width: 150px;
+}
+
+.row-unassigned .assign-select {
+  border-color: var(--accent, #c87941);
+  color: var(--accent, #c87941);
+}
+
+.stats-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-card {
+  flex: 1;
+  padding: 1rem;
+  background: var(--bg-surface, #f5f0e8);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent, #a85e2d);
+}
+
+.stat-number.stat-warn {
+  color: var(--error, #c45a3c);
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary, #8a7e72);
+}
+
+.link-accent {
+  color: var(--accent, #a85e2d);
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.link-accent:hover {
+  text-decoration: underline;
+}
