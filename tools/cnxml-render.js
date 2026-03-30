@@ -2823,6 +2823,20 @@ async function main() {
     const chapterDir = formatChapterDir(args.chapter);
     const chapterStr = formatChapterOutput(args.chapter);
 
+    // Clean stale HTML files before rendering (full chapter only, not single-module)
+    if (!args.module) {
+      const outputDir = path.join(BOOKS_DIR, '05-publication', args.track, 'chapters', chapterStr);
+      if (fs.existsSync(outputDir)) {
+        const existing = fs.readdirSync(outputDir).filter((f) => f.endsWith('.html'));
+        for (const f of existing) {
+          fs.unlinkSync(path.join(outputDir, f));
+        }
+        if (existing.length > 0) {
+          console.log(`Cleaned ${existing.length} existing HTML file(s) from ${chapterStr}/`);
+        }
+      }
+    }
+
     // Build module sections map from structure + segment files
     const moduleSections = buildModuleSections(BOOK_SLUG, args.chapter);
 
