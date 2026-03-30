@@ -31,11 +31,10 @@ module.exports = {
     if (!oldRow && newRow) return; // Already correct
 
     // Tables with column "book" (text slug)
+    // Note: edit_history and pending_reviews were dropped by migrations 021/030.
     const bookTables = [
       'segment_edits',
       'module_reviews',
-      'edit_history',
-      'pending_reviews',
       'feedback',
       'analytics_events',
       'chapter_assignments',
