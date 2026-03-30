@@ -772,3 +772,148 @@ describe('buildExampleDom nested list in para', () => {
     expect(result).not.toContain('Item B original text');
   });
 });
+
+describe('buildExampleDom figure inside para', () => {
+  // Regression test for lifraen-efnafraedi m00038 where a <para> contains a
+  // <figure> as its only content. The extraction creates [[MEDIA:1]] in the
+  // para segment AND a top-level figure structure entry. Without the fix,
+  // the injection produces a bare <media> inside the para (from [[MEDIA:1]]
+  // expansion) AND a standalone <figure> after </example> — 2 copies.
+
+  it('should keep figure inside example when para content is only [[MEDIA:N]]', () => {
+    const element = {
+      type: 'example',
+      id: 'exam-00001',
+      title: { segmentId: 'mod:example-title:exam-00001-title', text: 'Strategy' },
+      content: [
+        {
+          type: 'para',
+          id: 'para-00010',
+          segmentId: 'mod:para:para-00010',
+        },
+        {
+          type: 'para',
+          id: 'para-00012',
+          segmentId: 'mod:para:para-00012',
+          title: { segmentId: 'mod:para-title:para-00012-title', text: 'Solution' },
+        },
+      ],
+    };
+
+    const segments = new Map([
+      ['mod:example-title:exam-00001-title', 'Dæmi'],
+      ['mod:para:para-00010', 'Horfðu meðfram C1–C2 tenginu.'],
+      ['mod:para:para-00012', '[[MEDIA:1]]'],
+      ['mod:para-title:para-00012-title', 'Lausn'],
+    ]);
+
+    const getSeg = (id) => segments.get(id) ?? '';
+
+    const originalCnxml = `<document xmlns="http://cnx.rice.edu/cnxml">
+<title>Test</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml"><md:title>Test</md:title></metadata>
+<content>
+<example id="exam-00001">
+<title>Newman Projections</title>
+<para id="para-00010">Sight along the C1–C2 bond.</para>
+<para id="para-00012"><title><span class="cyan-text">Solution</span></title>
+<figure class="unnumbered scaled-down" id="fig-00007">
+<media alt="Two Newman projections.">
+<image mime-type="image/jpeg" src="../../media/OChem_03_07_007.jpg"/>
+</media>
+</figure></para>
+</example>
+</content>
+</document>`;
+
+    const ctx = {
+      figureCaptions: {},
+      figuresHandledInNotes: new Set(),
+      figuresHandledInContainers: new Set(),
+      inlineMedia: [
+        {
+          placeholder: '[[MEDIA:1]]',
+          alt: 'Two Newman projections.',
+          src: '../../media/OChem_03_07_007.jpg',
+          mimeType: 'image/jpeg',
+        },
+      ],
+      inlineTables: [],
+      imageMapping: new Map(),
+    };
+
+    const result = buildExampleDom(element, getSeg, {}, originalCnxml, ctx);
+
+    // The figure MUST remain inside the example
+    expect(result).toContain('<figure');
+    expect(result).toContain('fig-00007');
+    expect(result).toContain('OChem_03_07_007.jpg');
+
+    // There must be exactly ONE image reference, not duplicated
+    const imageCount = (result.match(/OChem_03_07_007\.jpg/g) || []).length;
+    expect(imageCount).toBe(1);
+
+    // The figure ID must be marked as handled so buildFigure skips it
+    expect(ctx.figuresHandledInContainers.has('fig-00007')).toBe(true);
+
+    // No bare <media> outside a <figure> (the expanded [[MEDIA:1]] must not appear)
+    const mediaOutsideFigure = result.replace(/<figure[\s\S]*?<\/figure>/g, '');
+    expect(mediaOutsideFigure).not.toContain('<media');
+  });
+
+  it('should NOT affect paras that have real text content alongside media', () => {
+    const element = {
+      type: 'example',
+      id: 'exam-text-media',
+      title: { segmentId: 'mod:example-title:exam-text-media-title', text: 'Example' },
+      content: [
+        {
+          type: 'para',
+          id: 'para-mixed',
+          segmentId: 'mod:para:para-mixed',
+        },
+      ],
+    };
+
+    const segments = new Map([
+      ['mod:example-title:exam-text-media-title', 'Dæmi'],
+      ['mod:para:para-mixed', 'Hér er mynd: [[MEDIA:1]] og meiri texti.'],
+    ]);
+
+    const getSeg = (id) => segments.get(id) ?? '';
+
+    const originalCnxml = `<document xmlns="http://cnx.rice.edu/cnxml">
+<title>Test</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml"><md:title>Test</md:title></metadata>
+<content>
+<example id="exam-text-media">
+<title>Example</title>
+<para id="para-mixed">Here is an image: <media alt="A diagram."><image mime-type="image/jpeg" src="../../media/diagram.jpg"/></media> and more text.</para>
+</example>
+</content>
+</document>`;
+
+    const ctx = {
+      figureCaptions: {},
+      figuresHandledInNotes: new Set(),
+      figuresHandledInContainers: new Set(),
+      inlineMedia: [
+        {
+          placeholder: '[[MEDIA:1]]',
+          alt: 'A diagram.',
+          src: '../../media/diagram.jpg',
+          mimeType: 'image/jpeg',
+        },
+      ],
+      inlineTables: [],
+      imageMapping: new Map(),
+    };
+
+    const result = buildExampleDom(element, getSeg, {}, originalCnxml, ctx);
+
+    // Normal para text injection should still work
+    expect(result).toContain('Hér er mynd');
+    // No figures were kept (there were none in the source)
+    expect(ctx.figuresHandledInContainers.size).toBe(0);
+  });
+});
