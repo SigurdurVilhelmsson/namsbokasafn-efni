@@ -34,7 +34,7 @@ This project was built iteratively with AI assistance. Known areas of concern:
 - Pipeline tools evolved organically — may have inconsistent patterns
 - Error handling may be incomplete in some tools
 - Documentation may be ahead of or behind actual implementation in places
-- Test suite: ~1067 Vitest unit tests + 96 Playwright E2E tests (vitest workspace: tools parallel, server sequential)
+- Test suite: ~1070 Vitest unit tests + 96 Playwright E2E tests (vitest workspace: tools parallel, server sequential)
 
 ## Purpose
 
@@ -137,6 +137,7 @@ See [docs/workflow/simplified-workflow.md](docs/workflow/simplified-workflow.md)
 | `node tools/cnxml-render.js <book> <chapter>` | Render translated CNXML to HTML |
 | `node tools/api-translate.js --book <book> --chapter <ch>` | Translate segments via Málstaður API |
 | `node tools/api-translate.js --book <book> --dry-run` | Show translation plan + cost estimate |
+| `node tools/translate-chapter-titles.js <slug>` | Translate chapter titles via Málstaður API |
 | `/pipeline-status` | Overview of all chapters |
 | `/chapter-status <book> <ch>` | Specific chapter progress |
 | `/review-chapter <book> <ch>` | Pass 1 linguistic review |
@@ -252,15 +253,17 @@ The server is an **editorial workflow platform**, not a pipeline orchestration t
 **Recent changes (2026-03-24):**
 - Removed 20 legacy files (workflow, matecat, sync, images, issues routes/services)
 - All DB services use singleton connection pattern
-- All 32 migrations use unified `up(db)` pattern
+- All 33 migrations use unified `up(db)` pattern
 - Frontend JS wrapped in IIFEs (encapsulated state)
 - Vitest workspace splits tools (parallel) from server (sequential) tests
 
 ## Current Priority
 
-**Fidelity optimization** — 119/148 modules PERFECT (80%), 49 total discrepancies across 29 modules. Error manifest auto-updated: `books/efnafraedi-2e/translation-errors.json`. Pipeline verified with ~1067 Vitest + 96 Playwright tests.
+**Fidelity optimization** — 119/148 modules PERFECT (80%) for efnafraedi-2e, 49 total discrepancies across 29 modules. Error manifest auto-updated: `books/efnafraedi-2e/translation-errors.json`. Pipeline verified with ~1070 Vitest + 96 Playwright tests.
 
 Remaining discrepancies are structural injection issues (nested para/list), annotation side-effects (sub/sup/term overcounting from EN marker conversion), and a handful of math/link losses. See `translation-errors.json` for per-module detail.
+
+Duplicate figure fix (2026-03-30): figures nested inside `<para>` inside `<example>`/`<exercise>` are now kept in-place instead of being stripped and duplicated. Follows same pattern as `buildNoteDom`. Affects organic chemistry (10 occurrences), edlisfraedi-2e exercises (38), liffraedi-2e notes (70).
 
 See [ROADMAP.md](ROADMAP.md) and [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for completed work and future ideas.
 
