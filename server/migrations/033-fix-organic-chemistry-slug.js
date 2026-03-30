@@ -51,7 +51,9 @@ module.exports = {
     ];
 
     // Tables with column "book_id" (integer FK)
-    const bookIdTables = ['book_chapters', 'book_sections', 'terminology_terms'];
+    // Note: terminology_terms was dropped by migration 032 and replaced with
+    // terminology_headwords/translations/subjects — none of which use book_id.
+    const bookIdTables = ['book_chapters', 'book_sections'];
 
     const fix = db.transaction(() => {
       if (oldRow && newRow) {
