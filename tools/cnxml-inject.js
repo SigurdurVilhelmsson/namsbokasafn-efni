@@ -2330,7 +2330,19 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
     }
   }
 
-  // Step 4: Remove tables unconditionally; remove figures UNLESS they were kept inside paras.
+  // Step 4a: Also keep figures that are direct children of the example element.
+  // These are figures between paras (e.g., problem figures in examples) that were
+  // not captured inside any <para> but still belong to the example.
+  for (const child of Array.from(exampleEl.childNodes)) {
+    if (child.nodeName === 'figure') {
+      const figId = child.getAttribute('id');
+      if (figId) {
+        keptFigureIds.add(figId);
+      }
+    }
+  }
+
+  // Step 4b: Remove tables unconditionally; remove figures UNLESS they were kept.
   // Equations are NOT removed — they pass through unchanged inside examples.
   removeElementsByTag(exampleEl, ['table']);
   const allFigures = Array.from(exampleEl.getElementsByTagName('figure'));
@@ -2553,7 +2565,22 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
   if (element.problem) processContent(element.problem.content);
   if (element.solution) processContent(element.solution.content);
 
-  // Strip tables unconditionally; remove figures UNLESS they were kept inside media-only paras.
+  // Also keep figures that are direct children of the exercise, problem, or solution elements.
+  const containers = [exerciseEl];
+  const problems = exerciseEl.getElementsByTagName('problem');
+  const solutions = exerciseEl.getElementsByTagName('solution');
+  for (let i = 0; i < problems.length; i++) containers.push(problems[i]);
+  for (let i = 0; i < solutions.length; i++) containers.push(solutions[i]);
+  for (const container of containers) {
+    for (const child of Array.from(container.childNodes)) {
+      if (child.nodeName === 'figure') {
+        const figId = child.getAttribute('id');
+        if (figId) keptFigureIds.add(figId);
+      }
+    }
+  }
+
+  // Strip tables unconditionally; remove figures UNLESS they were kept.
   removeElementsByTag(exerciseEl, ['table']);
   const allFigures = Array.from(exerciseEl.getElementsByTagName('figure'));
   for (const fig of allFigures) {

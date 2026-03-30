@@ -1226,9 +1226,30 @@ function renderExample(example, context) {
     });
   }
 
+  // Extract direct-child figures (figures between paras, not inside paras).
+  // These are e.g., problem figures in examples that sit between the question and strategy paras.
+  const directFigures = extractNestedElements(contentForSimpleElements, 'figure');
+  for (const fig of directFigures) {
+    // Skip figures already inside a para (those are rendered as part of the para)
+    const isInsidePara = parasOutsideNotes.some((p) => p.content.includes(`id="${fig.id}"`));
+    if (isInsidePara) continue;
+
+    const pos = fig.fullMatch
+      ? example.content.indexOf(fig.fullMatch)
+      : example.content.indexOf(`id="${fig.id}"`);
+    elementsWithPositions.push({
+      type: 'figure',
+      item: fig,
+      position: pos !== -1 ? pos : 0,
+    });
+    // NOTE: Don't add to renderedFigureIds here — renderFigure() handles that itself.
+    // Adding early would cause renderFigure to skip it with an empty return.
+  }
+
   // Strip figures from content before extracting standalone media —
-  // figures inside paras are rendered as part of the para, so their
-  // <media> children should not appear separately as standalone media.
+  // figures inside paras are rendered as part of the para, and direct-child
+  // figures are rendered via the figure case above. Their <media> children
+  // should not appear separately as standalone media.
   const contentForMedia = contentForSimpleElements.replace(/<figure[^>]*>[\s\S]*?<\/figure>/g, '');
 
   // Extract standalone media from content WITHOUT notes or figures
@@ -1297,6 +1318,9 @@ function renderExample(example, context) {
         break;
       case 'media':
         lines.push(`  ${renderMedia(item, context)}`);
+        break;
+      case 'figure':
+        lines.push(`  ${renderFigure(item, context)}`);
         break;
     }
   }
