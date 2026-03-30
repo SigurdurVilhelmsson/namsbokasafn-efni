@@ -193,7 +193,7 @@
     {
       "chapter": 5,
       "title": "Thermochemistry",
-      "titleIs": null,
+      "titleIs": "Varmefnafræði",
       "modules": [
         {
           "id": "m68723",
@@ -224,7 +224,7 @@
     {
       "chapter": 6,
       "title": "Electronic Structure and Periodic Properties of Elements",
-      "titleIs": null,
+      "titleIs": "Rafeindaskipan og lotubundnir eiginleikar frumefna",
       "modules": [
         {
           "id": "m68728",
@@ -267,7 +267,7 @@
     {
       "chapter": 7,
       "title": "Chemical Bonding and Molecular Geometry",
-      "titleIs": null,
+      "titleIs": "Efnatengi og sameindabygging",
       "modules": [
         {
           "id": "m68736",
@@ -316,7 +316,7 @@
     {
       "chapter": 8,
       "title": "Advanced Theories of Covalent Bonding",
-      "titleIs": null,
+      "titleIs": "Framhaldskenningar um samgild tengi",
       "modules": [
         {
           "id": "m68743",
@@ -353,7 +353,7 @@
     {
       "chapter": 9,
       "title": "Gases",
-      "titleIs": null,
+      "titleIs": "Gös",
       "modules": [
         {
           "id": "m68748",
@@ -402,7 +402,7 @@
     {
       "chapter": 10,
       "title": "Liquids and Solids",
-      "titleIs": null,
+      "titleIs": "Vökvar og föst efni",
       "modules": [
         {
           "id": "m68760",
@@ -451,7 +451,7 @@
     {
       "chapter": 11,
       "title": "Solutions and Colloids",
-      "titleIs": null,
+      "titleIs": "Lausnir og svif",
       "modules": [
         {
           "id": "m68776",
@@ -494,7 +494,7 @@
     {
       "chapter": 12,
       "title": "Kinetics",
-      "titleIs": null,
+      "titleIs": "Hraðafræði",
       "modules": [
         {
           "id": "m68785",
@@ -549,7 +549,7 @@
     {
       "chapter": 13,
       "title": "Fundamental Equilibrium Concepts",
-      "titleIs": null,
+      "titleIs": "Grundvallarhugtök jafnvægis",
       "modules": [
         {
           "id": "m68796",
@@ -586,7 +586,7 @@
     {
       "chapter": 14,
       "title": "Acid-Base Equilibria",
-      "titleIs": null,
+      "titleIs": "Sýru-basa jafnvægi",
       "modules": [
         {
           "id": "m68802",
@@ -641,7 +641,7 @@
     {
       "chapter": 15,
       "title": "Equilibria of Other Reaction Classes",
-      "titleIs": null,
+      "titleIs": "Jafnvægi annarra flokka efnahvarfa",
       "modules": [
         {
           "id": "m68810",
@@ -672,7 +672,7 @@
     {
       "chapter": 16,
       "title": "Thermodynamics",
-      "titleIs": null,
+      "titleIs": "Varmafræði",
       "modules": [
         {
           "id": "m68815",
@@ -709,7 +709,7 @@
     {
       "chapter": 17,
       "title": "Electrochemistry",
-      "titleIs": null,
+      "titleIs": "Rafefnafræði",
       "modules": [
         {
           "id": "m68820",
@@ -764,7 +764,7 @@
     {
       "chapter": 18,
       "title": "Representative Metals, Metalloids, and Nonmetals",
-      "titleIs": null,
+      "titleIs": "Hefðbundnir málmar, hálfmálmar og málmleysingjar",
       "modules": [
         {
           "id": "m68828",
@@ -849,7 +849,7 @@
     {
       "chapter": 19,
       "title": "Transition Metals and Coordination Chemistry",
-      "titleIs": null,
+      "titleIs": "Hliðarmálmar og hnitunarefnafræði",
       "modules": [
         {
           "id": "m68841",
@@ -880,7 +880,7 @@
     {
       "chapter": 20,
       "title": "Organic Chemistry",
-      "titleIs": null,
+      "titleIs": "Lífræn efnafræði",
       "modules": [
         {
           "id": "m68845",
@@ -917,7 +917,7 @@
     {
       "chapter": 21,
       "title": "Nuclear Chemistry",
-      "titleIs": null,
+      "titleIs": "Kjarnaefnafræði",
       "modules": [
         {
           "id": "m68850",

@@ -9,7 +9,7 @@
     {
       "chapter": 1,
       "title": "Physical Quantities and Units",
-      "titleIs": null,
+      "titleIs": "Inngangur: Eðli vísinda og eðlisfræði",
       "modules": [
         {
           "id": "m42091",
@@ -46,7 +46,7 @@
     {
       "chapter": 2,
       "title": "Displacement",
-      "titleIs": null,
+      "titleIs": "Hreyfifræði",
       "modules": [
         {
           "id": "m42033",
@@ -107,7 +107,7 @@
     {
       "chapter": 3,
       "title": "Projectile Motion",
-      "titleIs": null,
+      "titleIs": "Tvíð hreyfifræði",
       "modules": [
         {
           "id": "m42042",
@@ -150,7 +150,7 @@
     {
       "chapter": 4,
       "title": "Development of Force Concept",
-      "titleIs": null,
+      "titleIs": "Hreyfifræði: Kraftur og hreyfilögmál Newtons",
       "modules": [
         {
           "id": "m42069",
@@ -211,7 +211,7 @@
     {
       "chapter": 5,
       "title": "Drag Forces",
-      "titleIs": null,
+      "titleIs": "Frekari beiting lögmála Newtons: Núningskraftur, viðnám og fjaðurmagn",
       "modules": [
         {
           "id": "m42080",
@@ -242,7 +242,7 @@
     {
       "chapter": 6,
       "title": "Rotation Angle and Angular Velocity",
-      "titleIs": null,
+      "titleIs": "Jöfn hringhreyfing og þyngdarafl",
       "modules": [
         {
           "id": "m42083",
@@ -291,7 +291,7 @@
     {
       "chapter": 7,
       "title": "Introduction to Work, Energy, and Energy Resources",
-      "titleIs": null,
+      "titleIs": "Vinna, orka og orkuauðlindir",
       "modules": [
         {
           "id": "m42145",
@@ -358,7 +358,7 @@
     {
       "chapter": 8,
       "title": "Introduction to Linear Momentum and Collisions",
-      "titleIs": null,
+      "titleIs": "Skriðþungi og árekstrar",
       "modules": [
         {
           "id": "m42155",
@@ -413,7 +413,7 @@
     {
       "chapter": 9,
       "title": "Introduction to Statics and Torque",
-      "titleIs": null,
+      "titleIs": "Stöðujafnvægi og vægi",
       "modules": [
         {
           "id": "m42167",
@@ -462,7 +462,7 @@
     {
       "chapter": 10,
       "title": "Introduction to Rotational Motion and Angular Momentum",
-      "titleIs": null,
+      "titleIs": "Snúningshreyfing og hverfiþungi",
       "modules": [
         {
           "id": "m42176",
@@ -517,7 +517,7 @@
     {
       "chapter": 11,
       "title": "Introduction to Fluid Statics",
-      "titleIs": null,
+      "titleIs": "Stöðufræði vökva",
       "modules": [
         {
           "id": "m42185",
@@ -584,7 +584,7 @@
     {
       "chapter": 12,
       "title": "Introduction to Fluid Dynamics and Its Biological and Medical Applications",
-      "titleIs": null,
+      "titleIs": "Straumaflfræði og hagnýting hennar í líffræði og læknisfræði",
       "modules": [
         {
           "id": "m42204",
@@ -639,7 +639,7 @@
     {
       "chapter": 13,
       "title": "Introduction to Temperature, Kinetic Theory, and the Gas Laws",
-      "titleIs": null,
+      "titleIs": "Hiti, hreyfifræði og gaslögmálin",
       "modules": [
         {
           "id": "m42213",
@@ -688,7 +688,7 @@
     {
       "chapter": 14,
       "title": "Introduction to Heat and Heat Transfer Methods",
-      "titleIs": null,
+      "titleIs": "Varmi og varmaflutningsaðferðir",
       "modules": [
         {
           "id": "m42221",
@@ -743,7 +743,7 @@
     {
       "chapter": 15,
       "title": "Introduction to Thermodynamics",
-      "titleIs": null,
+      "titleIs": "Varmafræði",
       "modules": [
         {
           "id": "m42231",
@@ -798,7 +798,7 @@
     {
       "chapter": 16,
       "title": "Introduction to Oscillatory Motion and Waves",
-      "titleIs": null,
+      "titleIs": "Sveifluhreyfing og bylgjur",
       "modules": [
         {
           "id": "m42239",
@@ -877,7 +877,7 @@
     {
       "chapter": 17,
       "title": "Introduction to the Physics of Hearing",
-      "titleIs": null,
+      "titleIs": "Eðlisfræði heyrnar",
       "modules": [
         {
           "id": "m42254",
@@ -932,7 +932,7 @@
     {
       "chapter": 18,
       "title": "Introduction to Electric Charge and Electric Field",
-      "titleIs": null,
+      "titleIs": "Rafhleðsla og rafsvið",
       "modules": [
         {
           "id": "m42299",
@@ -993,7 +993,7 @@
     {
       "chapter": 19,
       "title": "Introduction to Electric Potential and Electric Energy",
-      "titleIs": null,
+      "titleIs": "Rafspenna og rafsvið",
       "modules": [
         {
           "id": "m42320",
@@ -1048,7 +1048,7 @@
     {
       "chapter": 20,
       "title": "Introduction to Electric Current, Resistance, and Ohm's Law",
-      "titleIs": null,
+      "titleIs": "Rafstraumur, viðnám og lögmál Ohms",
       "modules": [
         {
           "id": "m42339",
@@ -1103,7 +1103,7 @@
     {
       "chapter": 21,
       "title": "Introduction to Circuits and DC Instruments",
-      "titleIs": null,
+      "titleIs": "Jafnstraumsrásir og -mælitæki",
       "modules": [
         {
           "id": "m42354",
@@ -1152,7 +1152,7 @@
     {
       "chapter": 22,
       "title": "Introduction to Magnetism",
-      "titleIs": null,
+      "titleIs": "Segulmagn",
       "modules": [
         {
           "id": "m42365",
@@ -1231,7 +1231,7 @@
     {
       "chapter": 23,
       "title": "Introduction to Electromagnetic Induction, AC Circuits and Electrical Technologies",
-      "titleIs": null,
+      "titleIs": "Rafsegulmögnun, riðstraumsrásir og raftækni",
       "modules": [
         {
           "id": "m42389",
@@ -1316,7 +1316,7 @@
     {
       "chapter": 24,
       "title": "Introduction to Electromagnetic Waves",
-      "titleIs": null,
+      "titleIs": "Rafsegulbylgjur",
       "modules": [
         {
           "id": "m42434",
@@ -1353,7 +1353,7 @@
     {
       "chapter": 25,
       "title": "Introduction to Geometric Optics",
-      "titleIs": null,
+      "titleIs": "Ljósfræði rúmfræðinnar",
       "modules": [
         {
           "id": "m42449",
@@ -1408,7 +1408,7 @@
     {
       "chapter": 26,
       "title": "Aberrations",
-      "titleIs": null,
+      "titleIs": "Sjón og sjóntæki",
       "modules": [
         {
           "id": "m42292",
@@ -1457,7 +1457,7 @@
     {
       "chapter": 27,
       "title": "*Extended Topic* Microscopy Enhanced by the Wave Characteristics of Light",
-      "titleIs": null,
+      "titleIs": "Bylgjuljóseðlisfræði",
       "modules": [
         {
           "id": "m42290",
@@ -1524,7 +1524,7 @@
     {
       "chapter": 28,
       "title": "Introduction to Special Relativity",
-      "titleIs": null,
+      "titleIs": "Afstæðiskenningin sérstaka",
       "modules": [
         {
           "id": "m42525",
@@ -1573,7 +1573,7 @@
     {
       "chapter": 29,
       "title": "Introduction to Quantum Physics",
-      "titleIs": null,
+      "titleIs": "Skammtafræði",
       "modules": [
         {
           "id": "m42550",
@@ -1634,7 +1634,7 @@
     {
       "chapter": 30,
       "title": "Introduction to Atomic Physics",
-      "titleIs": null,
+      "titleIs": "Atómeðlisfræði",
       "modules": [
         {
           "id": "m42585",
@@ -1701,7 +1701,7 @@
     {
       "chapter": 31,
       "title": "Introduction to Radioactivity and Nuclear Physics",
-      "titleIs": null,
+      "titleIs": "Geislavirkni og kjarnaeðlisfræði",
       "modules": [
         {
           "id": "m42620",
@@ -1756,7 +1756,7 @@
     {
       "chapter": 32,
       "title": "Introduction to Applications of Nuclear Physics",
-      "titleIs": null,
+      "titleIs": "Læknisfræðileg notkun kjarnaeðlisfræði",
       "modules": [
         {
           "id": "m42646",
@@ -1811,7 +1811,7 @@
     {
       "chapter": 33,
       "title": "Introduction to Particle Physics",
-      "titleIs": null,
+      "titleIs": "Öreindafræði",
       "modules": [
         {
           "id": "m42667",
@@ -1860,7 +1860,7 @@
     {
       "chapter": 34,
       "title": "Introduction to Frontiers of Physics",
-      "titleIs": null,
+      "titleIs": "Nýjustu framfarir í eðlisfræði",
       "modules": [
         {
           "id": "m42683",

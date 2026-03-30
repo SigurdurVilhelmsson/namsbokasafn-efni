@@ -9,22 +9,57 @@
     {
       "chapter": 1,
       "title": "The Study of Life",
-      "titleIs": null,
+      "titleIs": "Efnafræði lífsins",
       "modules": [
-        { "id": "m66426", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66427", "section": "1.1", "title": "The Science of Biology", "titleIs": null },
-        { "id": "m66428", "section": "1.2", "title": "Themes and Concepts of Biology", "titleIs": null }
+        {
+          "id": "m66426",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66427",
+          "section": "1.1",
+          "title": "The Science of Biology",
+          "titleIs": null
+        },
+        {
+          "id": "m66428",
+          "section": "1.2",
+          "title": "Themes and Concepts of Biology",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 2,
       "title": "The Chemical Foundation of Life",
-      "titleIs": null,
+      "titleIs": "Efnagrundvöllur lífsins",
       "modules": [
-        { "id": "m66429", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66430", "section": "2.1", "title": "Atoms, Isotopes, Ions, and Molecules: The Building Blocks", "titleIs": null },
-        { "id": "m66434", "section": "2.2", "title": "Water", "titleIs": null },
-        { "id": "m66436", "section": "2.3", "title": "Carbon", "titleIs": null }
+        {
+          "id": "m66429",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66430",
+          "section": "2.1",
+          "title": "Atoms, Isotopes, Ions, and Molecules: The Building Blocks",
+          "titleIs": null
+        },
+        {
+          "id": "m66434",
+          "section": "2.2",
+          "title": "Water",
+          "titleIs": null
+        },
+        {
+          "id": "m66436",
+          "section": "2.3",
+          "title": "Carbon",
+          "titleIs": null
+        }
       ]
     },
     {
@@ -32,578 +67,1914 @@
       "title": "Biological Macromolecules",
       "titleIs": "Lífrænar stórsameindur",
       "modules": [
-        { "id": "m66437", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66438", "section": "3.1", "title": "Synthesis of Biological Macromolecules", "titleIs": null },
-        { "id": "m66440", "section": "3.2", "title": "Carbohydrates", "titleIs": null },
-        { "id": "m66441", "section": "3.3", "title": "Lipids", "titleIs": null },
-        { "id": "m66442", "section": "3.4", "title": "Proteins", "titleIs": null },
-        { "id": "m66443", "section": "3.5", "title": "Nucleic Acids", "titleIs": null }
+        {
+          "id": "m66437",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66438",
+          "section": "3.1",
+          "title": "Synthesis of Biological Macromolecules",
+          "titleIs": null
+        },
+        {
+          "id": "m66440",
+          "section": "3.2",
+          "title": "Carbohydrates",
+          "titleIs": null
+        },
+        {
+          "id": "m66441",
+          "section": "3.3",
+          "title": "Lipids",
+          "titleIs": null
+        },
+        {
+          "id": "m66442",
+          "section": "3.4",
+          "title": "Proteins",
+          "titleIs": null
+        },
+        {
+          "id": "m66443",
+          "section": "3.5",
+          "title": "Nucleic Acids",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 4,
       "title": "Cell Structure",
-      "titleIs": null,
+      "titleIs": "Fruman",
       "modules": [
-        { "id": "m66444", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66445", "section": "4.1", "title": "Studying Cells", "titleIs": null },
-        { "id": "m66446", "section": "4.2", "title": "Prokaryotic Cells", "titleIs": null },
-        { "id": "m66449", "section": "4.3", "title": "Eukaryotic Cells", "titleIs": null },
-        { "id": "m66452", "section": "4.4", "title": "The Endomembrane System and Proteins", "titleIs": null },
-        { "id": "m66454", "section": "4.5", "title": "The Cytoskeleton", "titleIs": null },
-        { "id": "m66455", "section": "4.6", "title": "Connections between Cells and Cellular Activities", "titleIs": null }
+        {
+          "id": "m66444",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66445",
+          "section": "4.1",
+          "title": "Studying Cells",
+          "titleIs": null
+        },
+        {
+          "id": "m66446",
+          "section": "4.2",
+          "title": "Prokaryotic Cells",
+          "titleIs": null
+        },
+        {
+          "id": "m66449",
+          "section": "4.3",
+          "title": "Eukaryotic Cells",
+          "titleIs": null
+        },
+        {
+          "id": "m66452",
+          "section": "4.4",
+          "title": "The Endomembrane System and Proteins",
+          "titleIs": null
+        },
+        {
+          "id": "m66454",
+          "section": "4.5",
+          "title": "The Cytoskeleton",
+          "titleIs": null
+        },
+        {
+          "id": "m66455",
+          "section": "4.6",
+          "title": "Connections between Cells and Cellular Activities",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 5,
       "title": "Structure and Function of Plasma Membranes",
-      "titleIs": null,
+      "titleIs": "Bygging og starfsemi frumuhimna",
       "modules": [
-        { "id": "m66372", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66373", "section": "5.1", "title": "Components and Structure", "titleIs": null },
-        { "id": "m66374", "section": "5.2", "title": "Passive Transport", "titleIs": null },
-        { "id": "m66375", "section": "5.3", "title": "Active Transport", "titleIs": null },
-        { "id": "m66376", "section": "5.4", "title": "Bulk Transport", "titleIs": null }
+        {
+          "id": "m66372",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66373",
+          "section": "5.1",
+          "title": "Components and Structure",
+          "titleIs": null
+        },
+        {
+          "id": "m66374",
+          "section": "5.2",
+          "title": "Passive Transport",
+          "titleIs": null
+        },
+        {
+          "id": "m66375",
+          "section": "5.3",
+          "title": "Active Transport",
+          "titleIs": null
+        },
+        {
+          "id": "m66376",
+          "section": "5.4",
+          "title": "Bulk Transport",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 6,
       "title": "Metabolism",
-      "titleIs": null,
+      "titleIs": "Efnaskipti",
       "modules": [
-        { "id": "m66456", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66457", "section": "6.1", "title": "Energy and Metabolism", "titleIs": null },
-        { "id": "m66459", "section": "6.2", "title": "Potential, Kinetic, Free, and Activation Energy", "titleIs": null },
-        { "id": "m66461", "section": "6.3", "title": "The Laws of Thermodynamics", "titleIs": null },
-        { "id": "m66462", "section": "6.4", "title": "ATP: Adenosine Triphosphate", "titleIs": null },
-        { "id": "m66463", "section": "6.5", "title": "Enzymes", "titleIs": null }
+        {
+          "id": "m66456",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66457",
+          "section": "6.1",
+          "title": "Energy and Metabolism",
+          "titleIs": null
+        },
+        {
+          "id": "m66459",
+          "section": "6.2",
+          "title": "Potential, Kinetic, Free, and Activation Energy",
+          "titleIs": null
+        },
+        {
+          "id": "m66461",
+          "section": "6.3",
+          "title": "The Laws of Thermodynamics",
+          "titleIs": null
+        },
+        {
+          "id": "m66462",
+          "section": "6.4",
+          "title": "ATP: Adenosine Triphosphate",
+          "titleIs": null
+        },
+        {
+          "id": "m66463",
+          "section": "6.5",
+          "title": "Enzymes",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 7,
       "title": "Cellular Respiration",
-      "titleIs": null,
+      "titleIs": "Frumuöndun",
       "modules": [
-        { "id": "m66464", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66465", "section": "7.1", "title": "Energy in Living Systems", "titleIs": null },
-        { "id": "m66466", "section": "7.2", "title": "Glycolysis", "titleIs": null },
-        { "id": "m66467", "section": "7.3", "title": "Oxidation of Pyruvate and the Citric Acid Cycle", "titleIs": null },
-        { "id": "m66468", "section": "7.4", "title": "Oxidative Phosphorylation", "titleIs": null },
-        { "id": "m66469", "section": "7.5", "title": "Metabolism without Oxygen", "titleIs": null },
-        { "id": "m66470", "section": "7.6", "title": "Connections of Carbohydrate, Protein, and Lipid Metabolic Pathways", "titleIs": null },
-        { "id": "m66471", "section": "7.7", "title": "Regulation of Cellular Respiration", "titleIs": null }
+        {
+          "id": "m66464",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66465",
+          "section": "7.1",
+          "title": "Energy in Living Systems",
+          "titleIs": null
+        },
+        {
+          "id": "m66466",
+          "section": "7.2",
+          "title": "Glycolysis",
+          "titleIs": null
+        },
+        {
+          "id": "m66467",
+          "section": "7.3",
+          "title": "Oxidation of Pyruvate and the Citric Acid Cycle",
+          "titleIs": null
+        },
+        {
+          "id": "m66468",
+          "section": "7.4",
+          "title": "Oxidative Phosphorylation",
+          "titleIs": null
+        },
+        {
+          "id": "m66469",
+          "section": "7.5",
+          "title": "Metabolism without Oxygen",
+          "titleIs": null
+        },
+        {
+          "id": "m66470",
+          "section": "7.6",
+          "title": "Connections of Carbohydrate, Protein, and Lipid Metabolic Pathways",
+          "titleIs": null
+        },
+        {
+          "id": "m66471",
+          "section": "7.7",
+          "title": "Regulation of Cellular Respiration",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 8,
       "title": "Photosynthesis",
-      "titleIs": null,
+      "titleIs": "Ljóstillífun",
       "modules": [
-        { "id": "m66472", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66473", "section": "8.1", "title": "Overview of Photosynthesis", "titleIs": null },
-        { "id": "m66474", "section": "8.2", "title": "The Light-Dependent Reactions of Photosynthesis", "titleIs": null },
-        { "id": "m66475", "section": "8.3", "title": "Using Light Energy to Make Organic Molecules", "titleIs": null }
+        {
+          "id": "m66472",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66473",
+          "section": "8.1",
+          "title": "Overview of Photosynthesis",
+          "titleIs": null
+        },
+        {
+          "id": "m66474",
+          "section": "8.2",
+          "title": "The Light-Dependent Reactions of Photosynthesis",
+          "titleIs": null
+        },
+        {
+          "id": "m66475",
+          "section": "8.3",
+          "title": "Using Light Energy to Make Organic Molecules",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 9,
       "title": "Cell Communication",
-      "titleIs": null,
+      "titleIs": "Frumusamskipti",
       "modules": [
-        { "id": "m66377", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66378", "section": "9.1", "title": "Signaling Molecules and Cellular Receptors", "titleIs": null },
-        { "id": "m66379", "section": "9.2", "title": "Propagation of the Signal", "titleIs": null },
-        { "id": "m66380", "section": "9.3", "title": "Response to the Signal", "titleIs": null },
-        { "id": "m66383", "section": "9.4", "title": "Signaling in Single-Celled Organisms", "titleIs": null }
+        {
+          "id": "m66377",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66378",
+          "section": "9.1",
+          "title": "Signaling Molecules and Cellular Receptors",
+          "titleIs": null
+        },
+        {
+          "id": "m66379",
+          "section": "9.2",
+          "title": "Propagation of the Signal",
+          "titleIs": null
+        },
+        {
+          "id": "m66380",
+          "section": "9.3",
+          "title": "Response to the Signal",
+          "titleIs": null
+        },
+        {
+          "id": "m66383",
+          "section": "9.4",
+          "title": "Signaling in Single-Celled Organisms",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 10,
       "title": "Cell Reproduction",
-      "titleIs": null,
+      "titleIs": "Æxlun frumna",
       "modules": [
-        { "id": "m66476", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66477", "section": "10.1", "title": "Cell Division", "titleIs": null },
-        { "id": "m66478", "section": "10.2", "title": "The Cell Cycle", "titleIs": null },
-        { "id": "m66479", "section": "10.3", "title": "Control of the Cell Cycle", "titleIs": null },
-        { "id": "m66480", "section": "10.4", "title": "Cancer and the Cell Cycle", "titleIs": null },
-        { "id": "m66481", "section": "10.5", "title": "Prokaryotic Cell Division", "titleIs": null }
+        {
+          "id": "m66476",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66477",
+          "section": "10.1",
+          "title": "Cell Division",
+          "titleIs": null
+        },
+        {
+          "id": "m66478",
+          "section": "10.2",
+          "title": "The Cell Cycle",
+          "titleIs": null
+        },
+        {
+          "id": "m66479",
+          "section": "10.3",
+          "title": "Control of the Cell Cycle",
+          "titleIs": null
+        },
+        {
+          "id": "m66480",
+          "section": "10.4",
+          "title": "Cancer and the Cell Cycle",
+          "titleIs": null
+        },
+        {
+          "id": "m66481",
+          "section": "10.5",
+          "title": "Prokaryotic Cell Division",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 11,
       "title": "Meiosis and Sexual Reproduction",
-      "titleIs": null,
+      "titleIs": "Erfðafræði",
       "modules": [
-        { "id": "m66482", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66483", "section": "11.1", "title": "The Process of Meiosis", "titleIs": null },
-        { "id": "m66484", "section": "11.2", "title": "Sexual Reproduction", "titleIs": null }
+        {
+          "id": "m66482",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66483",
+          "section": "11.1",
+          "title": "The Process of Meiosis",
+          "titleIs": null
+        },
+        {
+          "id": "m66484",
+          "section": "11.2",
+          "title": "Sexual Reproduction",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 12,
       "title": "Mendel's Experiments and Heredity",
-      "titleIs": null,
+      "titleIs": "Tilraunir Mendels og erfðir",
       "modules": [
-        { "id": "m66485", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66486", "section": "12.1", "title": "Mendel's Experiments and the Laws of Probability", "titleIs": null },
-        { "id": "m66487", "section": "12.2", "title": "Characteristics and Traits", "titleIs": null },
-        { "id": "m66488", "section": "12.3", "title": "Laws of Inheritance", "titleIs": null }
+        {
+          "id": "m66485",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66486",
+          "section": "12.1",
+          "title": "Mendel's Experiments and the Laws of Probability",
+          "titleIs": null
+        },
+        {
+          "id": "m66487",
+          "section": "12.2",
+          "title": "Characteristics and Traits",
+          "titleIs": null
+        },
+        {
+          "id": "m66488",
+          "section": "12.3",
+          "title": "Laws of Inheritance",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 13,
       "title": "Modern Understandings of Inheritance",
-      "titleIs": null,
+      "titleIs": "Nútímaskilningur á erfðum",
       "modules": [
-        { "id": "m66490", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66491", "section": "13.1", "title": "Chromosomal Theory and Genetic Linkage", "titleIs": null },
-        { "id": "m66494", "section": "13.2", "title": "Chromosomal Basis of Inherited Disorders", "titleIs": null }
+        {
+          "id": "m66490",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66491",
+          "section": "13.1",
+          "title": "Chromosomal Theory and Genetic Linkage",
+          "titleIs": null
+        },
+        {
+          "id": "m66494",
+          "section": "13.2",
+          "title": "Chromosomal Basis of Inherited Disorders",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 14,
       "title": "DNA Structure and Function",
-      "titleIs": null,
+      "titleIs": "Bygging og hlutverk DNA",
       "modules": [
-        { "id": "m66385", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66386", "section": "14.1", "title": "Historical Basis of Modern Understanding", "titleIs": null },
-        { "id": "m66387", "section": "14.2", "title": "DNA Structure and Sequencing", "titleIs": null },
-        { "id": "m66389", "section": "14.3", "title": "Basics of DNA Replication", "titleIs": null },
-        { "id": "m66390", "section": "14.4", "title": "DNA Replication in Prokaryotes", "titleIs": null },
-        { "id": "m66391", "section": "14.5", "title": "DNA Replication in Eukaryotes", "titleIs": null },
-        { "id": "m66392", "section": "14.6", "title": "DNA Repair", "titleIs": null }
+        {
+          "id": "m66385",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66386",
+          "section": "14.1",
+          "title": "Historical Basis of Modern Understanding",
+          "titleIs": null
+        },
+        {
+          "id": "m66387",
+          "section": "14.2",
+          "title": "DNA Structure and Sequencing",
+          "titleIs": null
+        },
+        {
+          "id": "m66389",
+          "section": "14.3",
+          "title": "Basics of DNA Replication",
+          "titleIs": null
+        },
+        {
+          "id": "m66390",
+          "section": "14.4",
+          "title": "DNA Replication in Prokaryotes",
+          "titleIs": null
+        },
+        {
+          "id": "m66391",
+          "section": "14.5",
+          "title": "DNA Replication in Eukaryotes",
+          "titleIs": null
+        },
+        {
+          "id": "m66392",
+          "section": "14.6",
+          "title": "DNA Repair",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 15,
       "title": "Genes and Proteins",
-      "titleIs": null,
+      "titleIs": "Gen og prótein",
       "modules": [
-        { "id": "m66495", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66497", "section": "15.1", "title": "The Genetic Code", "titleIs": null },
-        { "id": "m66498", "section": "15.2", "title": "Prokaryotic Transcription", "titleIs": null },
-        { "id": "m66499", "section": "15.3", "title": "Eukaryotic Transcription", "titleIs": null },
-        { "id": "m66500", "section": "15.4", "title": "RNA Processing in Eukaryotes", "titleIs": null },
-        { "id": "m66501", "section": "15.5", "title": "Ribosomes and Protein Synthesis", "titleIs": null }
+        {
+          "id": "m66495",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66497",
+          "section": "15.1",
+          "title": "The Genetic Code",
+          "titleIs": null
+        },
+        {
+          "id": "m66498",
+          "section": "15.2",
+          "title": "Prokaryotic Transcription",
+          "titleIs": null
+        },
+        {
+          "id": "m66499",
+          "section": "15.3",
+          "title": "Eukaryotic Transcription",
+          "titleIs": null
+        },
+        {
+          "id": "m66500",
+          "section": "15.4",
+          "title": "RNA Processing in Eukaryotes",
+          "titleIs": null
+        },
+        {
+          "id": "m66501",
+          "section": "15.5",
+          "title": "Ribosomes and Protein Synthesis",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 16,
       "title": "Gene Expression",
-      "titleIs": null,
+      "titleIs": "Tjáning gena",
       "modules": [
-        { "id": "m66502", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66503", "section": "16.1", "title": "Regulation of Gene Expression", "titleIs": null },
-        { "id": "m66504", "section": "16.2", "title": "Prokaryotic Gene Regulation", "titleIs": null },
-        { "id": "m66505", "section": "16.3", "title": "Eukaryotic Epigenetic Gene Regulation", "titleIs": null },
-        { "id": "m66506", "section": "16.4", "title": "Eukaryotic Transcription Gene Regulation", "titleIs": null },
-        { "id": "m66507", "section": "16.5", "title": "Eukaryotic Post-transcriptional Gene Regulation", "titleIs": null },
-        { "id": "m66508", "section": "16.6", "title": "Eukaryotic Translational and Post-translational Gene Regulation", "titleIs": null },
-        { "id": "m66509", "section": "16.7", "title": "Cancer and Gene Regulation", "titleIs": null }
+        {
+          "id": "m66502",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66503",
+          "section": "16.1",
+          "title": "Regulation of Gene Expression",
+          "titleIs": null
+        },
+        {
+          "id": "m66504",
+          "section": "16.2",
+          "title": "Prokaryotic Gene Regulation",
+          "titleIs": null
+        },
+        {
+          "id": "m66505",
+          "section": "16.3",
+          "title": "Eukaryotic Epigenetic Gene Regulation",
+          "titleIs": null
+        },
+        {
+          "id": "m66506",
+          "section": "16.4",
+          "title": "Eukaryotic Transcription Gene Regulation",
+          "titleIs": null
+        },
+        {
+          "id": "m66507",
+          "section": "16.5",
+          "title": "Eukaryotic Post-transcriptional Gene Regulation",
+          "titleIs": null
+        },
+        {
+          "id": "m66508",
+          "section": "16.6",
+          "title": "Eukaryotic Translational and Post-translational Gene Regulation",
+          "titleIs": null
+        },
+        {
+          "id": "m66509",
+          "section": "16.7",
+          "title": "Cancer and Gene Regulation",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 17,
       "title": "Biotechnology and Genomics",
-      "titleIs": null,
+      "titleIs": "Líftækni og erfðamengjafræði",
       "modules": [
-        { "id": "m66510", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66511", "section": "17.1", "title": "Biotechnology", "titleIs": null },
-        { "id": "m66512", "section": "17.2", "title": "Mapping Genomes", "titleIs": null },
-        { "id": "m66513", "section": "17.3", "title": "Whole-Genome Sequencing", "titleIs": null },
-        { "id": "m66514", "section": "17.4", "title": "Applying Genomics", "titleIs": null },
-        { "id": "m66515", "section": "17.5", "title": "Genomics and Proteomics", "titleIs": null }
+        {
+          "id": "m66510",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66511",
+          "section": "17.1",
+          "title": "Biotechnology",
+          "titleIs": null
+        },
+        {
+          "id": "m66512",
+          "section": "17.2",
+          "title": "Mapping Genomes",
+          "titleIs": null
+        },
+        {
+          "id": "m66513",
+          "section": "17.3",
+          "title": "Whole-Genome Sequencing",
+          "titleIs": null
+        },
+        {
+          "id": "m66514",
+          "section": "17.4",
+          "title": "Applying Genomics",
+          "titleIs": null
+        },
+        {
+          "id": "m66515",
+          "section": "17.5",
+          "title": "Genomics and Proteomics",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 18,
       "title": "Evolution and the Origin of Species",
-      "titleIs": null,
+      "titleIs": "Þróunarferlar",
       "modules": [
-        { "id": "m66516", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66518", "section": "18.1", "title": "Understanding Evolution", "titleIs": null },
-        { "id": "m66520", "section": "18.2", "title": "Formation of New Species", "titleIs": null },
-        { "id": "m66521", "section": "18.3", "title": "Reconnection and Speciation Rates", "titleIs": null }
+        {
+          "id": "m66516",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66518",
+          "section": "18.1",
+          "title": "Understanding Evolution",
+          "titleIs": null
+        },
+        {
+          "id": "m66520",
+          "section": "18.2",
+          "title": "Formation of New Species",
+          "titleIs": null
+        },
+        {
+          "id": "m66521",
+          "section": "18.3",
+          "title": "Reconnection and Speciation Rates",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 19,
       "title": "The Evolution of Populations",
-      "titleIs": null,
+      "titleIs": "Þróun stofna",
       "modules": [
-        { "id": "m66522", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66523", "section": "19.1", "title": "Population Evolution", "titleIs": null },
-        { "id": "m66524", "section": "19.2", "title": "Population Genetics", "titleIs": null },
-        { "id": "m66718", "section": "19.3", "title": "Adaptive Evolution", "titleIs": null }
+        {
+          "id": "m66522",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66523",
+          "section": "19.1",
+          "title": "Population Evolution",
+          "titleIs": null
+        },
+        {
+          "id": "m66524",
+          "section": "19.2",
+          "title": "Population Genetics",
+          "titleIs": null
+        },
+        {
+          "id": "m66718",
+          "section": "19.3",
+          "title": "Adaptive Evolution",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 20,
       "title": "Phylogenies and the History of Life",
-      "titleIs": null,
+      "titleIs": "Þróunartré og saga lífsins",
       "modules": [
-        { "id": "m66529", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66530", "section": "20.1", "title": "Organizing Life on Earth", "titleIs": null },
-        { "id": "m66531", "section": "20.2", "title": "Determining Evolutionary Relationships", "titleIs": null },
-        { "id": "m66532", "section": "20.3", "title": "Perspectives on the Phylogenetic Tree", "titleIs": null }
+        {
+          "id": "m66529",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66530",
+          "section": "20.1",
+          "title": "Organizing Life on Earth",
+          "titleIs": null
+        },
+        {
+          "id": "m66531",
+          "section": "20.2",
+          "title": "Determining Evolutionary Relationships",
+          "titleIs": null
+        },
+        {
+          "id": "m66532",
+          "section": "20.3",
+          "title": "Perspectives on the Phylogenetic Tree",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 21,
       "title": "Viruses",
-      "titleIs": null,
+      "titleIs": "Líffræðilegur fjölbreytileiki",
       "modules": [
-        { "id": "m66533", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66534", "section": "21.1", "title": "Viral Evolution, Morphology, and Classification", "titleIs": null },
-        { "id": "m66535", "section": "21.2", "title": "Virus Infections and Hosts", "titleIs": null },
-        { "id": "m66537", "section": "21.3", "title": "Prevention and Treatment of Viral Infections", "titleIs": null },
-        { "id": "m66540", "section": "21.4", "title": "Other Acellular Entities: Prions and Viroids", "titleIs": null }
+        {
+          "id": "m66533",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66534",
+          "section": "21.1",
+          "title": "Viral Evolution, Morphology, and Classification",
+          "titleIs": null
+        },
+        {
+          "id": "m66535",
+          "section": "21.2",
+          "title": "Virus Infections and Hosts",
+          "titleIs": null
+        },
+        {
+          "id": "m66537",
+          "section": "21.3",
+          "title": "Prevention and Treatment of Viral Infections",
+          "titleIs": null
+        },
+        {
+          "id": "m66540",
+          "section": "21.4",
+          "title": "Other Acellular Entities: Prions and Viroids",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 22,
       "title": "Prokaryotes: Bacteria and Archaea",
-      "titleIs": null,
+      "titleIs": "Dreifkjörnungar: Bakteríur og fornbakteríur",
       "modules": [
-        { "id": "m66541", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66542", "section": "22.1", "title": "Prokaryotic Diversity", "titleIs": null },
-        { "id": "m66545", "section": "22.2", "title": "Structure of Prokaryotes: Bacteria and Archaea", "titleIs": null },
-        { "id": "m66547", "section": "22.3", "title": "Prokaryotic Metabolism", "titleIs": null },
-        { "id": "m66548", "section": "22.4", "title": "Bacterial Diseases in Humans", "titleIs": null },
-        { "id": "m66549", "section": "22.5", "title": "Beneficial Prokaryotes", "titleIs": null }
+        {
+          "id": "m66541",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66542",
+          "section": "22.1",
+          "title": "Prokaryotic Diversity",
+          "titleIs": null
+        },
+        {
+          "id": "m66545",
+          "section": "22.2",
+          "title": "Structure of Prokaryotes: Bacteria and Archaea",
+          "titleIs": null
+        },
+        {
+          "id": "m66547",
+          "section": "22.3",
+          "title": "Prokaryotic Metabolism",
+          "titleIs": null
+        },
+        {
+          "id": "m66548",
+          "section": "22.4",
+          "title": "Bacterial Diseases in Humans",
+          "titleIs": null
+        },
+        {
+          "id": "m66549",
+          "section": "22.5",
+          "title": "Beneficial Prokaryotes",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 23,
       "title": "Protists",
-      "titleIs": null,
+      "titleIs": "Frumverur",
       "modules": [
-        { "id": "m66550", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66552", "section": "23.1", "title": "Eukaryotic Origins", "titleIs": null },
-        { "id": "m66554", "section": "23.2", "title": "Characteristics of Protists", "titleIs": null },
-        { "id": "m66555", "section": "23.3", "title": "Groups of Protists", "titleIs": null },
-        { "id": "m66556", "section": "23.4", "title": "Ecology of Protists", "titleIs": null }
+        {
+          "id": "m66550",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66552",
+          "section": "23.1",
+          "title": "Eukaryotic Origins",
+          "titleIs": null
+        },
+        {
+          "id": "m66554",
+          "section": "23.2",
+          "title": "Characteristics of Protists",
+          "titleIs": null
+        },
+        {
+          "id": "m66555",
+          "section": "23.3",
+          "title": "Groups of Protists",
+          "titleIs": null
+        },
+        {
+          "id": "m66556",
+          "section": "23.4",
+          "title": "Ecology of Protists",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 24,
       "title": "Fungi",
-      "titleIs": null,
+      "titleIs": "Sveppir",
       "modules": [
-        { "id": "m66557", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66558", "section": "24.1", "title": "Characteristics of Fungi", "titleIs": null },
-        { "id": "m66559", "section": "24.2", "title": "Classifications of Fungi", "titleIs": null },
-        { "id": "m66560", "section": "24.3", "title": "Ecology of Fungi", "titleIs": null },
-        { "id": "m66562", "section": "24.4", "title": "Fungal Parasites and Pathogens", "titleIs": null },
-        { "id": "m66563", "section": "24.5", "title": "Importance of Fungi in Human Life", "titleIs": null }
+        {
+          "id": "m66557",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66558",
+          "section": "24.1",
+          "title": "Characteristics of Fungi",
+          "titleIs": null
+        },
+        {
+          "id": "m66559",
+          "section": "24.2",
+          "title": "Classifications of Fungi",
+          "titleIs": null
+        },
+        {
+          "id": "m66560",
+          "section": "24.3",
+          "title": "Ecology of Fungi",
+          "titleIs": null
+        },
+        {
+          "id": "m66562",
+          "section": "24.4",
+          "title": "Fungal Parasites and Pathogens",
+          "titleIs": null
+        },
+        {
+          "id": "m66563",
+          "section": "24.5",
+          "title": "Importance of Fungi in Human Life",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 25,
       "title": "Seedless Plants",
-      "titleIs": null,
+      "titleIs": "Frælausar plöntur",
       "modules": [
-        { "id": "m66565", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66566", "section": "25.1", "title": "Early Plant Life", "titleIs": null },
-        { "id": "m66567", "section": "25.2", "title": "Green Algae: Precursors of Land Plants", "titleIs": null },
-        { "id": "m66568", "section": "25.3", "title": "Bryophytes", "titleIs": null },
-        { "id": "m66570", "section": "25.4", "title": "Seedless Vascular Plants", "titleIs": null }
+        {
+          "id": "m66565",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66566",
+          "section": "25.1",
+          "title": "Early Plant Life",
+          "titleIs": null
+        },
+        {
+          "id": "m66567",
+          "section": "25.2",
+          "title": "Green Algae: Precursors of Land Plants",
+          "titleIs": null
+        },
+        {
+          "id": "m66568",
+          "section": "25.3",
+          "title": "Bryophytes",
+          "titleIs": null
+        },
+        {
+          "id": "m66570",
+          "section": "25.4",
+          "title": "Seedless Vascular Plants",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 26,
       "title": "Seed Plants",
-      "titleIs": null,
+      "titleIs": "Fræplöntur",
       "modules": [
-        { "id": "m66571", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66572", "section": "26.1", "title": "Evolution of Seed Plants", "titleIs": null },
-        { "id": "m66573", "section": "26.2", "title": "Gymnosperms", "titleIs": null },
-        { "id": "m66574", "section": "26.3", "title": "Angiosperms", "titleIs": null },
-        { "id": "m66575", "section": "26.4", "title": "The Role of Seed Plants", "titleIs": null }
+        {
+          "id": "m66571",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66572",
+          "section": "26.1",
+          "title": "Evolution of Seed Plants",
+          "titleIs": null
+        },
+        {
+          "id": "m66573",
+          "section": "26.2",
+          "title": "Gymnosperms",
+          "titleIs": null
+        },
+        {
+          "id": "m66574",
+          "section": "26.3",
+          "title": "Angiosperms",
+          "titleIs": null
+        },
+        {
+          "id": "m66575",
+          "section": "26.4",
+          "title": "The Role of Seed Plants",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 27,
       "title": "Introduction to Animal Diversity",
-      "titleIs": null,
+      "titleIs": "Inngangur að fjölbreytileika dýra",
       "modules": [
-        { "id": "m66576", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66577", "section": "27.1", "title": "Features of the Animal Kingdom", "titleIs": null },
-        { "id": "m66578", "section": "27.2", "title": "Features Used to Classify Animals", "titleIs": null },
-        { "id": "m66722", "section": "27.3", "title": "Animal Phylogeny", "titleIs": null },
-        { "id": "m66586", "section": "27.4", "title": "The Evolutionary History of the Animal Kingdom", "titleIs": null }
+        {
+          "id": "m66576",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66577",
+          "section": "27.1",
+          "title": "Features of the Animal Kingdom",
+          "titleIs": null
+        },
+        {
+          "id": "m66578",
+          "section": "27.2",
+          "title": "Features Used to Classify Animals",
+          "titleIs": null
+        },
+        {
+          "id": "m66722",
+          "section": "27.3",
+          "title": "Animal Phylogeny",
+          "titleIs": null
+        },
+        {
+          "id": "m66586",
+          "section": "27.4",
+          "title": "The Evolutionary History of the Animal Kingdom",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 28,
       "title": "Invertebrates",
-      "titleIs": null,
+      "titleIs": "Hryggleysingjar",
       "modules": [
-        { "id": "m66393", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66394", "section": "28.1", "title": "Phylum Porifera", "titleIs": null },
-        { "id": "m66395", "section": "28.2", "title": "Phylum Cnidaria", "titleIs": null },
-        { "id": "m66396", "section": "28.3", "title": "Superphylum Lophotrochozoa: Flatworms, Rotifers, and Nemerteans", "titleIs": null },
-        { "id": "m66397", "section": "28.4", "title": "Superphylum Lophotrochozoa: Molluscs and Annelids", "titleIs": null },
-        { "id": "m66398", "section": "28.5", "title": "Superphylum Ecdysozoa: Nematodes and Tardigrades", "titleIs": null },
-        { "id": "m66399", "section": "28.6", "title": "Superphylum Ecdysozoa: Arthropods", "titleIs": null },
-        { "id": "m66400", "section": "28.7", "title": "Superphylum Deuterostomia", "titleIs": null }
+        {
+          "id": "m66393",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66394",
+          "section": "28.1",
+          "title": "Phylum Porifera",
+          "titleIs": null
+        },
+        {
+          "id": "m66395",
+          "section": "28.2",
+          "title": "Phylum Cnidaria",
+          "titleIs": null
+        },
+        {
+          "id": "m66396",
+          "section": "28.3",
+          "title": "Superphylum Lophotrochozoa: Flatworms, Rotifers, and Nemerteans",
+          "titleIs": null
+        },
+        {
+          "id": "m66397",
+          "section": "28.4",
+          "title": "Superphylum Lophotrochozoa: Molluscs and Annelids",
+          "titleIs": null
+        },
+        {
+          "id": "m66398",
+          "section": "28.5",
+          "title": "Superphylum Ecdysozoa: Nematodes and Tardigrades",
+          "titleIs": null
+        },
+        {
+          "id": "m66399",
+          "section": "28.6",
+          "title": "Superphylum Ecdysozoa: Arthropods",
+          "titleIs": null
+        },
+        {
+          "id": "m66400",
+          "section": "28.7",
+          "title": "Superphylum Deuterostomia",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 29,
       "title": "Vertebrates",
-      "titleIs": null,
+      "titleIs": "Hryggdýr",
       "modules": [
-        { "id": "m66587", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66588", "section": "29.1", "title": "Chordates", "titleIs": null },
-        { "id": "m66589", "section": "29.2", "title": "Fishes", "titleIs": null },
-        { "id": "m66590", "section": "29.3", "title": "Amphibians", "titleIs": null },
-        { "id": "m66591", "section": "29.4", "title": "Reptiles", "titleIs": null },
-        { "id": "m66592", "section": "29.5", "title": "Birds", "titleIs": null },
-        { "id": "m66593", "section": "29.6", "title": "Mammals", "titleIs": null },
-        { "id": "m66594", "section": "29.7", "title": "The Evolution of Primates", "titleIs": null }
+        {
+          "id": "m66587",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66588",
+          "section": "29.1",
+          "title": "Chordates",
+          "titleIs": null
+        },
+        {
+          "id": "m66589",
+          "section": "29.2",
+          "title": "Fishes",
+          "titleIs": null
+        },
+        {
+          "id": "m66590",
+          "section": "29.3",
+          "title": "Amphibians",
+          "titleIs": null
+        },
+        {
+          "id": "m66591",
+          "section": "29.4",
+          "title": "Reptiles",
+          "titleIs": null
+        },
+        {
+          "id": "m66592",
+          "section": "29.5",
+          "title": "Birds",
+          "titleIs": null
+        },
+        {
+          "id": "m66593",
+          "section": "29.6",
+          "title": "Mammals",
+          "titleIs": null
+        },
+        {
+          "id": "m66594",
+          "section": "29.7",
+          "title": "The Evolution of Primates",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 30,
       "title": "Plant Form and Physiology",
-      "titleIs": null,
+      "titleIs": "Gerð og starfsemi plantna",
       "modules": [
-        { "id": "m66595", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66596", "section": "30.1", "title": "The Plant Body", "titleIs": null },
-        { "id": "m66597", "section": "30.2", "title": "Stems", "titleIs": null },
-        { "id": "m66598", "section": "30.3", "title": "Roots", "titleIs": null },
-        { "id": "m66599", "section": "30.4", "title": "Leaves", "titleIs": null },
-        { "id": "m66600", "section": "30.5", "title": "Transport of Water and Solutes in Plants", "titleIs": null },
-        { "id": "m66601", "section": "30.6", "title": "Plant Sensory Systems and Responses", "titleIs": null }
+        {
+          "id": "m66595",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66596",
+          "section": "30.1",
+          "title": "The Plant Body",
+          "titleIs": null
+        },
+        {
+          "id": "m66597",
+          "section": "30.2",
+          "title": "Stems",
+          "titleIs": null
+        },
+        {
+          "id": "m66598",
+          "section": "30.3",
+          "title": "Roots",
+          "titleIs": null
+        },
+        {
+          "id": "m66599",
+          "section": "30.4",
+          "title": "Leaves",
+          "titleIs": null
+        },
+        {
+          "id": "m66600",
+          "section": "30.5",
+          "title": "Transport of Water and Solutes in Plants",
+          "titleIs": null
+        },
+        {
+          "id": "m66601",
+          "section": "30.6",
+          "title": "Plant Sensory Systems and Responses",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 31,
       "title": "Soil and Plant Nutrition",
-      "titleIs": null,
+      "titleIs": "Jarðvegur og næring plantna",
       "modules": [
-        { "id": "m66602", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66603", "section": "31.1", "title": "Nutritional Requirements of Plants", "titleIs": null },
-        { "id": "m66604", "section": "31.2", "title": "The Soil", "titleIs": null },
-        { "id": "m66605", "section": "31.3", "title": "Nutritional Adaptations of Plants", "titleIs": null }
+        {
+          "id": "m66602",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66603",
+          "section": "31.1",
+          "title": "Nutritional Requirements of Plants",
+          "titleIs": null
+        },
+        {
+          "id": "m66604",
+          "section": "31.2",
+          "title": "The Soil",
+          "titleIs": null
+        },
+        {
+          "id": "m66605",
+          "section": "31.3",
+          "title": "Nutritional Adaptations of Plants",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 32,
       "title": "Plant Reproduction",
-      "titleIs": null,
+      "titleIs": "Æxlun plantna",
       "modules": [
-        { "id": "m66606", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66607", "section": "32.1", "title": "Reproductive Development and Structure", "titleIs": null },
-        { "id": "m66608", "section": "32.2", "title": "Pollination and Fertilization", "titleIs": null },
-        { "id": "m66609", "section": "32.3", "title": "Asexual Reproduction", "titleIs": null }
+        {
+          "id": "m66606",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66607",
+          "section": "32.1",
+          "title": "Reproductive Development and Structure",
+          "titleIs": null
+        },
+        {
+          "id": "m66608",
+          "section": "32.2",
+          "title": "Pollination and Fertilization",
+          "titleIs": null
+        },
+        {
+          "id": "m66609",
+          "section": "32.3",
+          "title": "Asexual Reproduction",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 33,
       "title": "The Animal Body: Basic Form and Function",
-      "titleIs": null,
+      "titleIs": "Bygging og starfsemi dýra",
       "modules": [
-        { "id": "m66610", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66611", "section": "33.1", "title": "Animal Form and Function", "titleIs": null },
-        { "id": "m66612", "section": "33.2", "title": "Animal Primary Tissues", "titleIs": null },
-        { "id": "m66613", "section": "33.3", "title": "Homeostasis", "titleIs": null }
+        {
+          "id": "m66610",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66611",
+          "section": "33.1",
+          "title": "Animal Form and Function",
+          "titleIs": null
+        },
+        {
+          "id": "m66612",
+          "section": "33.2",
+          "title": "Animal Primary Tissues",
+          "titleIs": null
+        },
+        {
+          "id": "m66613",
+          "section": "33.3",
+          "title": "Homeostasis",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 34,
       "title": "Animal Nutrition and the Digestive System",
-      "titleIs": null,
+      "titleIs": "Næring dýra og meltingarkerfið",
       "modules": [
-        { "id": "m66614", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66615", "section": "34.1", "title": "Digestive Systems", "titleIs": null },
-        { "id": "m66616", "section": "34.2", "title": "Nutrition and Energy Production", "titleIs": null },
-        { "id": "m66617", "section": "34.3", "title": "Digestive System Processes", "titleIs": null },
-        { "id": "m66618", "section": "34.4", "title": "Digestive System Regulation", "titleIs": null }
+        {
+          "id": "m66614",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66615",
+          "section": "34.1",
+          "title": "Digestive Systems",
+          "titleIs": null
+        },
+        {
+          "id": "m66616",
+          "section": "34.2",
+          "title": "Nutrition and Energy Production",
+          "titleIs": null
+        },
+        {
+          "id": "m66617",
+          "section": "34.3",
+          "title": "Digestive System Processes",
+          "titleIs": null
+        },
+        {
+          "id": "m66618",
+          "section": "34.4",
+          "title": "Digestive System Regulation",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 35,
       "title": "The Nervous System",
-      "titleIs": null,
+      "titleIs": "Taugakerfið",
       "modules": [
-        { "id": "m66619", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66620", "section": "35.1", "title": "Neurons and Glial Cells", "titleIs": null },
-        { "id": "m66621", "section": "35.2", "title": "How Neurons Communicate", "titleIs": null },
-        { "id": "m66622", "section": "35.3", "title": "The Central Nervous System", "titleIs": null },
-        { "id": "m66623", "section": "35.4", "title": "The Peripheral Nervous System", "titleIs": null },
-        { "id": "m66624", "section": "35.5", "title": "Nervous System Disorders", "titleIs": null }
+        {
+          "id": "m66619",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66620",
+          "section": "35.1",
+          "title": "Neurons and Glial Cells",
+          "titleIs": null
+        },
+        {
+          "id": "m66621",
+          "section": "35.2",
+          "title": "How Neurons Communicate",
+          "titleIs": null
+        },
+        {
+          "id": "m66622",
+          "section": "35.3",
+          "title": "The Central Nervous System",
+          "titleIs": null
+        },
+        {
+          "id": "m66623",
+          "section": "35.4",
+          "title": "The Peripheral Nervous System",
+          "titleIs": null
+        },
+        {
+          "id": "m66624",
+          "section": "35.5",
+          "title": "Nervous System Disorders",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 36,
       "title": "Sensory Systems",
-      "titleIs": null,
+      "titleIs": "Skynkerfi",
       "modules": [
-        { "id": "m66401", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66402", "section": "36.1", "title": "Sensory Processes", "titleIs": null },
-        { "id": "m66404", "section": "36.2", "title": "Somatosensation", "titleIs": null },
-        { "id": "m66405", "section": "36.3", "title": "Taste and Smell", "titleIs": null },
-        { "id": "m66407", "section": "36.4", "title": "Hearing and Vestibular Sensation", "titleIs": null },
-        { "id": "m66408", "section": "36.5", "title": "Vision", "titleIs": null }
+        {
+          "id": "m66401",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66402",
+          "section": "36.1",
+          "title": "Sensory Processes",
+          "titleIs": null
+        },
+        {
+          "id": "m66404",
+          "section": "36.2",
+          "title": "Somatosensation",
+          "titleIs": null
+        },
+        {
+          "id": "m66405",
+          "section": "36.3",
+          "title": "Taste and Smell",
+          "titleIs": null
+        },
+        {
+          "id": "m66407",
+          "section": "36.4",
+          "title": "Hearing and Vestibular Sensation",
+          "titleIs": null
+        },
+        {
+          "id": "m66408",
+          "section": "36.5",
+          "title": "Vision",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 37,
       "title": "The Endocrine System",
-      "titleIs": null,
+      "titleIs": "Innkirtlakerfið",
       "modules": [
-        { "id": "m66625", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66626", "section": "37.1", "title": "Types of Hormones", "titleIs": null },
-        { "id": "m66628", "section": "37.2", "title": "How Hormones Work", "titleIs": null },
-        { "id": "m66629", "section": "37.3", "title": "Regulation of Body Processes", "titleIs": null },
-        { "id": "m66630", "section": "37.4", "title": "Regulation of Hormone Production", "titleIs": null },
-        { "id": "m66631", "section": "37.5", "title": "Endocrine Glands", "titleIs": null }
+        {
+          "id": "m66625",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66626",
+          "section": "37.1",
+          "title": "Types of Hormones",
+          "titleIs": null
+        },
+        {
+          "id": "m66628",
+          "section": "37.2",
+          "title": "How Hormones Work",
+          "titleIs": null
+        },
+        {
+          "id": "m66629",
+          "section": "37.3",
+          "title": "Regulation of Body Processes",
+          "titleIs": null
+        },
+        {
+          "id": "m66630",
+          "section": "37.4",
+          "title": "Regulation of Hormone Production",
+          "titleIs": null
+        },
+        {
+          "id": "m66631",
+          "section": "37.5",
+          "title": "Endocrine Glands",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 38,
       "title": "The Musculoskeletal System",
-      "titleIs": null,
+      "titleIs": "Stoðkerfið",
       "modules": [
-        { "id": "m66632", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66635", "section": "38.1", "title": "Types of Skeletal Systems", "titleIs": null },
-        { "id": "m66638", "section": "38.2", "title": "Bone", "titleIs": null },
-        { "id": "m66639", "section": "38.3", "title": "Joints and Skeletal Movement", "titleIs": null },
-        { "id": "m66643", "section": "38.4", "title": "Muscle Contraction and Locomotion", "titleIs": null }
+        {
+          "id": "m66632",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66635",
+          "section": "38.1",
+          "title": "Types of Skeletal Systems",
+          "titleIs": null
+        },
+        {
+          "id": "m66638",
+          "section": "38.2",
+          "title": "Bone",
+          "titleIs": null
+        },
+        {
+          "id": "m66639",
+          "section": "38.3",
+          "title": "Joints and Skeletal Movement",
+          "titleIs": null
+        },
+        {
+          "id": "m66643",
+          "section": "38.4",
+          "title": "Muscle Contraction and Locomotion",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 39,
       "title": "The Respiratory System",
-      "titleIs": null,
+      "titleIs": "Öndunarfærakerfið",
       "modules": [
-        { "id": "m66644", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66645", "section": "39.1", "title": "Systems of Gas Exchange", "titleIs": null },
-        { "id": "m66646", "section": "39.2", "title": "Gas Exchange across Respiratory Surfaces", "titleIs": null },
-        { "id": "m66647", "section": "39.3", "title": "Breathing", "titleIs": null },
-        { "id": "m66648", "section": "39.4", "title": "Transport of Gases in Human Bodily Fluids", "titleIs": null }
+        {
+          "id": "m66644",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66645",
+          "section": "39.1",
+          "title": "Systems of Gas Exchange",
+          "titleIs": null
+        },
+        {
+          "id": "m66646",
+          "section": "39.2",
+          "title": "Gas Exchange across Respiratory Surfaces",
+          "titleIs": null
+        },
+        {
+          "id": "m66647",
+          "section": "39.3",
+          "title": "Breathing",
+          "titleIs": null
+        },
+        {
+          "id": "m66648",
+          "section": "39.4",
+          "title": "Transport of Gases in Human Bodily Fluids",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 40,
       "title": "The Circulatory System",
-      "titleIs": null,
+      "titleIs": "Blóðrásarkerfið",
       "modules": [
-        { "id": "m66649", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66650", "section": "40.1", "title": "Overview of the Circulatory System", "titleIs": null },
-        { "id": "m66651", "section": "40.2", "title": "Components of the Blood", "titleIs": null },
-        { "id": "m66653", "section": "40.3", "title": "Mammalian Heart and Blood Vessels", "titleIs": null },
-        { "id": "m66654", "section": "40.4", "title": "Blood Flow and Blood Pressure Regulation", "titleIs": null }
+        {
+          "id": "m66649",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66650",
+          "section": "40.1",
+          "title": "Overview of the Circulatory System",
+          "titleIs": null
+        },
+        {
+          "id": "m66651",
+          "section": "40.2",
+          "title": "Components of the Blood",
+          "titleIs": null
+        },
+        {
+          "id": "m66653",
+          "section": "40.3",
+          "title": "Mammalian Heart and Blood Vessels",
+          "titleIs": null
+        },
+        {
+          "id": "m66654",
+          "section": "40.4",
+          "title": "Blood Flow and Blood Pressure Regulation",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 41,
       "title": "Osmotic Regulation and Excretion",
-      "titleIs": null,
+      "titleIs": "Osmósustjórnun og útskilnaður",
       "modules": [
-        { "id": "m66655", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66656", "section": "41.1", "title": "Osmoregulation and Osmotic Balance", "titleIs": null },
-        { "id": "m66658", "section": "41.2", "title": "The Kidneys and Osmoregulatory Organs", "titleIs": null },
-        { "id": "m66659", "section": "41.3", "title": "Excretion Systems", "titleIs": null },
-        { "id": "m66660", "section": "41.4", "title": "Nitrogenous Wastes", "titleIs": null },
-        { "id": "m66661", "section": "41.5", "title": "Hormonal Control of Osmoregulatory Functions", "titleIs": null }
+        {
+          "id": "m66655",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66656",
+          "section": "41.1",
+          "title": "Osmoregulation and Osmotic Balance",
+          "titleIs": null
+        },
+        {
+          "id": "m66658",
+          "section": "41.2",
+          "title": "The Kidneys and Osmoregulatory Organs",
+          "titleIs": null
+        },
+        {
+          "id": "m66659",
+          "section": "41.3",
+          "title": "Excretion Systems",
+          "titleIs": null
+        },
+        {
+          "id": "m66660",
+          "section": "41.4",
+          "title": "Nitrogenous Wastes",
+          "titleIs": null
+        },
+        {
+          "id": "m66661",
+          "section": "41.5",
+          "title": "Hormonal Control of Osmoregulatory Functions",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 42,
       "title": "The Immune System",
-      "titleIs": null,
+      "titleIs": "Ónæmiskerfið",
       "modules": [
-        { "id": "m66662", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66663", "section": "42.1", "title": "Innate Immune Response", "titleIs": null },
-        { "id": "m66664", "section": "42.2", "title": "Adaptive Immune Response", "titleIs": null },
-        { "id": "m66665", "section": "42.3", "title": "Antibodies", "titleIs": null },
-        { "id": "m66666", "section": "42.4", "title": "Disruptions in the Immune System", "titleIs": null }
+        {
+          "id": "m66662",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66663",
+          "section": "42.1",
+          "title": "Innate Immune Response",
+          "titleIs": null
+        },
+        {
+          "id": "m66664",
+          "section": "42.2",
+          "title": "Adaptive Immune Response",
+          "titleIs": null
+        },
+        {
+          "id": "m66665",
+          "section": "42.3",
+          "title": "Antibodies",
+          "titleIs": null
+        },
+        {
+          "id": "m66666",
+          "section": "42.4",
+          "title": "Disruptions in the Immune System",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 43,
       "title": "Animal Reproduction and Development",
-      "titleIs": null,
+      "titleIs": "Æxlun og þroskun dýra",
       "modules": [
-        { "id": "m66667", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66668", "section": "43.1", "title": "Reproduction Methods", "titleIs": null },
-        { "id": "m66671", "section": "43.2", "title": "Fertilization", "titleIs": null },
-        { "id": "m66673", "section": "43.3", "title": "Human Reproductive Anatomy and Gametogenesis", "titleIs": null },
-        { "id": "m66674", "section": "43.4", "title": "Hormonal Control of Human Reproduction", "titleIs": null },
-        { "id": "m66677", "section": "43.5", "title": "Human Pregnancy and Birth", "titleIs": null },
-        { "id": "m66678", "section": "43.6", "title": "Fertilization and Early Embryonic Development", "titleIs": null },
-        { "id": "m66679", "section": "43.7", "title": "Organogenesis and Vertebrate Formation", "titleIs": null }
+        {
+          "id": "m66667",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66668",
+          "section": "43.1",
+          "title": "Reproduction Methods",
+          "titleIs": null
+        },
+        {
+          "id": "m66671",
+          "section": "43.2",
+          "title": "Fertilization",
+          "titleIs": null
+        },
+        {
+          "id": "m66673",
+          "section": "43.3",
+          "title": "Human Reproductive Anatomy and Gametogenesis",
+          "titleIs": null
+        },
+        {
+          "id": "m66674",
+          "section": "43.4",
+          "title": "Hormonal Control of Human Reproduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66677",
+          "section": "43.5",
+          "title": "Human Pregnancy and Birth",
+          "titleIs": null
+        },
+        {
+          "id": "m66678",
+          "section": "43.6",
+          "title": "Fertilization and Early Embryonic Development",
+          "titleIs": null
+        },
+        {
+          "id": "m66679",
+          "section": "43.7",
+          "title": "Organogenesis and Vertebrate Formation",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 44,
       "title": "Ecology and the Biosphere",
-      "titleIs": null,
+      "titleIs": "Vistfræði",
       "modules": [
-        { "id": "m66409", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66410", "section": "44.1", "title": "The Scope of Ecology", "titleIs": null },
-        { "id": "m66411", "section": "44.2", "title": "Biogeography", "titleIs": null },
-        { "id": "m66420", "section": "44.3", "title": "Terrestrial Biomes", "titleIs": null },
-        { "id": "m66417", "section": "44.4", "title": "Aquatic Biomes", "titleIs": null },
-        { "id": "m66419", "section": "44.5", "title": "Climate and the Effects of Global Climate Change", "titleIs": null }
+        {
+          "id": "m66409",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66410",
+          "section": "44.1",
+          "title": "The Scope of Ecology",
+          "titleIs": null
+        },
+        {
+          "id": "m66411",
+          "section": "44.2",
+          "title": "Biogeography",
+          "titleIs": null
+        },
+        {
+          "id": "m66420",
+          "section": "44.3",
+          "title": "Terrestrial Biomes",
+          "titleIs": null
+        },
+        {
+          "id": "m66417",
+          "section": "44.4",
+          "title": "Aquatic Biomes",
+          "titleIs": null
+        },
+        {
+          "id": "m66419",
+          "section": "44.5",
+          "title": "Climate and the Effects of Global Climate Change",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 45,
       "title": "Population and Community Ecology",
-      "titleIs": null,
+      "titleIs": "Stofn- og samfélagsvistfræði",
       "modules": [
-        { "id": "m66682", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66686", "section": "45.1", "title": "Population Demography", "titleIs": null },
-        { "id": "m66688", "section": "45.2", "title": "Life Histories and Natural Selection", "titleIs": null },
-        { "id": "m66690", "section": "45.3", "title": "Environmental Limits to Population Growth", "titleIs": null },
-        { "id": "m66691", "section": "45.4", "title": "Population Dynamics and Regulation", "titleIs": null },
-        { "id": "m66696", "section": "45.5", "title": "Human Population Growth", "titleIs": null },
-        { "id": "m66698", "section": "45.6", "title": "Community Ecology", "titleIs": null },
-        { "id": "m66699", "section": "45.7", "title": "Behavioral Biology: Proximate and Ultimate Causes of Behavior", "titleIs": null }
+        {
+          "id": "m66682",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66686",
+          "section": "45.1",
+          "title": "Population Demography",
+          "titleIs": null
+        },
+        {
+          "id": "m66688",
+          "section": "45.2",
+          "title": "Life Histories and Natural Selection",
+          "titleIs": null
+        },
+        {
+          "id": "m66690",
+          "section": "45.3",
+          "title": "Environmental Limits to Population Growth",
+          "titleIs": null
+        },
+        {
+          "id": "m66691",
+          "section": "45.4",
+          "title": "Population Dynamics and Regulation",
+          "titleIs": null
+        },
+        {
+          "id": "m66696",
+          "section": "45.5",
+          "title": "Human Population Growth",
+          "titleIs": null
+        },
+        {
+          "id": "m66698",
+          "section": "45.6",
+          "title": "Community Ecology",
+          "titleIs": null
+        },
+        {
+          "id": "m66699",
+          "section": "45.7",
+          "title": "Behavioral Biology: Proximate and Ultimate Causes of Behavior",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 46,
       "title": "Ecosystems",
-      "titleIs": null,
+      "titleIs": "Vistkerfi",
       "modules": [
-        { "id": "m66700", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66701", "section": "46.1", "title": "Ecology of Ecosystems", "titleIs": null },
-        { "id": "m66702", "section": "46.2", "title": "Energy Flow through Ecosystems", "titleIs": null },
-        { "id": "m66705", "section": "46.3", "title": "Biogeochemical Cycles", "titleIs": null }
+        {
+          "id": "m66700",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66701",
+          "section": "46.1",
+          "title": "Ecology of Ecosystems",
+          "titleIs": null
+        },
+        {
+          "id": "m66702",
+          "section": "46.2",
+          "title": "Energy Flow through Ecosystems",
+          "titleIs": null
+        },
+        {
+          "id": "m66705",
+          "section": "46.3",
+          "title": "Biogeochemical Cycles",
+          "titleIs": null
+        }
       ]
     },
     {
       "chapter": 47,
       "title": "Conservation Biology and Biodiversity",
-      "titleIs": null,
+      "titleIs": "Verndunarlíffræði og líffræðilegur fjölbreytileiki",
       "modules": [
-        { "id": "m66706", "section": "intro", "title": "Introduction", "titleIs": null },
-        { "id": "m66707", "section": "47.1", "title": "The Biodiversity Crisis", "titleIs": null },
-        { "id": "m66708", "section": "47.2", "title": "The Importance of Biodiversity to Human Life", "titleIs": null },
-        { "id": "m66709", "section": "47.3", "title": "Threats to Biodiversity", "titleIs": null },
-        { "id": "m66710", "section": "47.4", "title": "Preserving Biodiversity", "titleIs": null }
+        {
+          "id": "m66706",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m66707",
+          "section": "47.1",
+          "title": "The Biodiversity Crisis",
+          "titleIs": null
+        },
+        {
+          "id": "m66708",
+          "section": "47.2",
+          "title": "The Importance of Biodiversity to Human Life",
+          "titleIs": null
+        },
+        {
+          "id": "m66709",
+          "section": "47.3",
+          "title": "Threats to Biodiversity",
+          "titleIs": null
+        },
+        {
+          "id": "m66710",
+          "section": "47.4",
+          "title": "Preserving Biodiversity",
+          "titleIs": null
+        }
       ]
     }
   ],
   "appendices": [
-    { "id": "m66719", "title": "The Periodic Table of Elements" },
-    { "id": "m66716", "title": "Geological Time" },
-    { "id": "m66717", "title": "Measurements and the Metric System" }
+    {
+      "id": "m66719",
+      "title": "The Periodic Table of Elements"
+    },
+    {
+      "id": "m66716",
+      "title": "Geological Time"
+    },
+    {
+      "id": "m66717",
+      "title": "Measurements and the Metric System"
+    }
   ],
   "units": [
-    { "unit": 1, "title": "The Chemistry of Life", "chapters": [1, 2, 3] },
-    { "unit": 2, "title": "The Cell", "chapters": [4, 5, 6, 7, 8, 9, 10] },
-    { "unit": 3, "title": "Genetics", "chapters": [11, 12, 13, 14, 15, 16, 17] },
-    { "unit": 4, "title": "Evolutionary Processes", "chapters": [18, 19, 20] },
-    { "unit": 5, "title": "Biological Diversity", "chapters": [21, 22, 23, 24, 25, 26, 27, 28, 29] },
-    { "unit": 6, "title": "Plant Structure and Function", "chapters": [30, 31, 32] },
-    { "unit": 7, "title": "Animal Structure and Function", "chapters": [33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43] },
-    { "unit": 8, "title": "Ecology", "chapters": [44, 45, 46, 47] }
+    {
+      "unit": 1,
+      "title": "The Chemistry of Life",
+      "chapters": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "unit": 2,
+      "title": "The Cell",
+      "chapters": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "unit": 3,
+      "title": "Genetics",
+      "chapters": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    {
+      "unit": 4,
+      "title": "Evolutionary Processes",
+      "chapters": [
+        18,
+        19,
+        20
+      ]
+    },
+    {
+      "unit": 5,
+      "title": "Biological Diversity",
+      "chapters": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ]
+    },
+    {
+      "unit": 6,
+      "title": "Plant Structure and Function",
+      "chapters": [
+        30,
+        31,
+        32
+      ]
+    },
+    {
+      "unit": 7,
+      "title": "Animal Structure and Function",
+      "chapters": [
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43
+      ]
+    },
+    {
+      "unit": 8,
+      "title": "Ecology",
+      "chapters": [
+        44,
+        45,
+        46,
+        47
+      ]
+    }
   ]
 }
