@@ -8,7 +8,7 @@
   "chapters": [
     {
       "chapter": 1,
-      "title": "Why This Chapter?",
+      "title": "Structure and Bonding",
       "titleIs": null,
       "modules": [
         {
@@ -93,7 +93,7 @@
     },
     {
       "chapter": 2,
-      "title": "Why This Chapter?",
+      "title": "Polar Covalent Bonds; Acids and Bases",
       "titleIs": null,
       "modules": [
         {
@@ -178,7 +178,7 @@
     },
     {
       "chapter": 3,
-      "title": "Why This Chapter?",
+      "title": "Organic Compounds: Alkanes and Their Stereochemistry",
       "titleIs": null,
       "modules": [
         {
@@ -233,7 +233,7 @@
     },
     {
       "chapter": 4,
-      "title": "Why This Chapter?",
+      "title": "Organic Compounds: Cycloalkanes and Their Stereochemistry",
       "titleIs": null,
       "modules": [
         {
@@ -300,7 +300,7 @@
     },
     {
       "chapter": 5,
-      "title": "Why This Chapter?",
+      "title": "Stereochemistry at Tetrahedral Centers",
       "titleIs": null,
       "modules": [
         {
@@ -385,7 +385,7 @@
     },
     {
       "chapter": 6,
-      "title": "Why This Chapter?",
+      "title": "An Overview of Organic Reactions",
       "titleIs": null,
       "modules": [
         {
@@ -464,7 +464,7 @@
     },
     {
       "chapter": 7,
-      "title": "Why This Chapter?",
+      "title": "Alkenes: Structure and Reactivity",
       "titleIs": null,
       "modules": [
         {
@@ -543,7 +543,7 @@
     },
     {
       "chapter": 8,
-      "title": "Why This Chapter?",
+      "title": "Alkenes: Reactions and Synthesis",
       "titleIs": null,
       "modules": [
         {
@@ -634,7 +634,7 @@
     },
     {
       "chapter": 9,
-      "title": "Why This Chapter?",
+      "title": "Alkynes: An Introduction to Organic Synthesis",
       "titleIs": null,
       "modules": [
         {
@@ -701,7 +701,7 @@
     },
     {
       "chapter": 10,
-      "title": "Why This Chapter?",
+      "title": "Organohalides",
       "titleIs": null,
       "modules": [
         {
@@ -762,7 +762,7 @@
     },
     {
       "chapter": 11,
-      "title": "Why This Chapter?",
+      "title": "Reactions of Alkyl Halides: Nucleophilic Substitutions and Eliminations",
       "titleIs": null,
       "modules": [
         {
@@ -847,7 +847,7 @@
     },
     {
       "chapter": 12,
-      "title": "Why This Chapter?",
+      "title": "Structure Determination: Mass Spectrometry and Infrared Spectroscopy",
       "titleIs": null,
       "modules": [
         {
@@ -908,7 +908,7 @@
     },
     {
       "chapter": 13,
-      "title": "Why This Chapter?",
+      "title": "Structure Determination: Nuclear Magnetic Resonance Spectroscopy",
       "titleIs": null,
       "modules": [
         {
@@ -999,7 +999,7 @@
     },
     {
       "chapter": 14,
-      "title": "Why This Chapter?",
+      "title": "Conjugated Compounds and Ultraviolet Spectroscopy",
       "titleIs": null,
       "modules": [
         {
@@ -1066,7 +1066,7 @@
     },
     {
       "chapter": 15,
-      "title": "Why This Chapter?",
+      "title": "Benzene and Aromaticity",
       "titleIs": null,
       "modules": [
         {
@@ -1121,7 +1121,7 @@
     },
     {
       "chapter": 16,
-      "title": "Why This Chapter?",
+      "title": "Chemistry of Benzene: Electrophilic Aromatic Substitution",
       "titleIs": null,
       "modules": [
         {
@@ -1194,7 +1194,7 @@
     },
     {
       "chapter": 17,
-      "title": "Why This Chapter?",
+      "title": "Alcohols and Phenols",
       "titleIs": null,
       "modules": [
         {
@@ -1273,7 +1273,7 @@
     },
     {
       "chapter": 18,
-      "title": "Names and Properties of Ethers",
+      "title": "Ethers and Epoxides; Thiols and Sulfides",
       "titleIs": null,
       "modules": [
         {
@@ -1334,7 +1334,7 @@
     },
     {
       "chapter": 19,
-      "title": "Why This Chapter?",
+      "title": "Aldehydes and Ketones: Nucleophilic Addition Reactions",
       "titleIs": null,
       "modules": [
         {
@@ -1431,7 +1431,7 @@
     },
     {
       "chapter": 20,
-      "title": "Why This Chapter?",
+      "title": "Carboxylic Acids and Nitriles",
       "titleIs": null,
       "modules": [
         {
@@ -1492,7 +1492,7 @@
     },
     {
       "chapter": 21,
-      "title": "Why This Chapter?",
+      "title": "Carboxylic Acid Derivatives: Nucleophilic Acyl Substitution Reactions",
       "titleIs": null,
       "modules": [
         {
@@ -1565,7 +1565,7 @@
     },
     {
       "chapter": 22,
-      "title": "Why This Chapter?",
+      "title": "Carbonyl Alpha-Substitution Reactions",
       "titleIs": null,
       "modules": [
         {
@@ -1620,7 +1620,7 @@
     },
     {
       "chapter": 23,
-      "title": "Why This Chapter?",
+      "title": "Carbonyl Condensation Reactions",
       "titleIs": null,
       "modules": [
         {
@@ -1711,7 +1711,7 @@
     },
     {
       "chapter": 24,
-      "title": "Why This Chapter?",
+      "title": "Amines and Heterocycles",
       "titleIs": null,
       "modules": [
         {
@@ -1784,7 +1784,7 @@
     },
     {
       "chapter": 25,
-      "title": "Why This Chapter?",
+      "title": "Biomolecules: Carbohydrates",
       "titleIs": null,
       "modules": [
         {
@@ -1857,7 +1857,7 @@
     },
     {
       "chapter": 26,
-      "title": "Why This Chapter?",
+      "title": "Biomolecules: Amino Acids, Peptides, and Proteins",
       "titleIs": null,
       "modules": [
         {
@@ -1936,7 +1936,7 @@
     },
     {
       "chapter": 27,
-      "title": "Why This Chapter?",
+      "title": "Biomolecules: Lipids",
       "titleIs": null,
       "modules": [
         {
@@ -1991,7 +1991,7 @@
     },
     {
       "chapter": 28,
-      "title": "Why This Chapter?",
+      "title": "Biomolecules: Nucleic Acids",
       "titleIs": null,
       "modules": [
         {
@@ -2052,7 +2052,7 @@
     },
     {
       "chapter": 29,
-      "title": "Why This Chapter?",
+      "title": "The Organic Chemistry of Metabolic Pathways",
       "titleIs": null,
       "modules": [
         {
@@ -2125,7 +2125,7 @@
     },
     {
       "chapter": 30,
-      "title": "Why This Chapter?",
+      "title": "Orbitals and Organic Chemistry: Pericyclic Reactions",
       "titleIs": null,
       "modules": [
         {
@@ -2192,7 +2192,7 @@
     },
     {
       "chapter": 31,
-      "title": "Why This Chapter?",
+      "title": "Synthetic Polymers",
       "titleIs": null,
       "modules": [
         {
