@@ -478,9 +478,16 @@ function renderContent(content, context, _verbose) {
 
   // Sections to exclude from main content (they have their own pages)
   // Loaded from book config — varies by book (e.g., Biology uses multiple-choice, critical-thinking)
-  const EXCLUDED_SECTION_CLASSES = BOOK_CONFIG
-    ? BOOK_CONFIG.excludedSectionClasses
+  let EXCLUDED_SECTION_CLASSES = BOOK_CONFIG
+    ? [...BOOK_CONFIG.excludedSectionClasses]
     : ['summary', 'key-equations', 'exercises'];
+
+  // If sectionExercises is 'both', keep section-exercises inline (don't exclude them)
+  if (BOOK_CONFIG && BOOK_CONFIG.sectionExercises === 'both') {
+    EXCLUDED_SECTION_CLASSES = EXCLUDED_SECTION_CLASSES.filter(
+      (cls) => cls !== 'section-exercises'
+    );
+  }
 
   // Extract sections
   const sections = extractNestedElements(content, 'section');
