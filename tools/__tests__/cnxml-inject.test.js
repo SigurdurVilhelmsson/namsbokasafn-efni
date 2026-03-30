@@ -6,6 +6,7 @@ import {
   restoreMathBySeparators,
   buildCnxml,
   buildExampleDom,
+  buildExerciseDom,
 } from '../cnxml-inject.js';
 
 // ─── parseSegments ────────────────────────────────────────────────
@@ -915,5 +916,83 @@ describe('buildExampleDom figure inside para', () => {
     expect(result).toContain('Hér er mynd');
     // No figures were kept (there were none in the source)
     expect(ctx.figuresHandledInContainers.size).toBe(0);
+  });
+});
+
+// ─── Figure inside exercise para (same pattern as buildExampleDom) ─
+describe('buildExerciseDom figure inside para', () => {
+  it('should keep figure inside exercise when para content is only [[MEDIA:N]]', () => {
+    const element = {
+      type: 'exercise',
+      id: 'exer-fig',
+      problem: {
+        content: [
+          {
+            type: 'para',
+            id: 'para-prob',
+            segmentId: 'mod:para:para-prob',
+          },
+        ],
+      },
+      solution: {
+        content: [
+          {
+            type: 'para',
+            id: 'para-sol',
+            segmentId: 'mod:para:para-sol',
+          },
+        ],
+      },
+    };
+
+    const segments = new Map([
+      ['mod:para:para-prob', 'Teiknaðu myndina.'],
+      ['mod:para:para-sol', '[[MEDIA:1]]'],
+    ]);
+
+    const getSeg = (id) => segments.get(id) ?? '';
+
+    const originalCnxml = `<document xmlns="http://cnx.rice.edu/cnxml">
+<title>Test</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml"><md:title>Test</md:title></metadata>
+<content>
+<exercise id="exer-fig">
+<problem id="prob-fig"><para id="para-prob">Draw the diagram.</para></problem>
+<solution id="sol-fig"><para id="para-sol">
+<figure class="unnumbered" id="fig-sol">
+<media alt="A solution diagram."><image mime-type="image/jpeg" src="../../media/solution.jpg"/></media>
+</figure></para></solution>
+</exercise>
+</content>
+</document>`;
+
+    const ctx = {
+      figureCaptions: {},
+      figuresHandledInNotes: new Set(),
+      figuresHandledInContainers: new Set(),
+      inlineMedia: [
+        {
+          placeholder: '[[MEDIA:1]]',
+          alt: 'A solution diagram.',
+          src: '../../media/solution.jpg',
+          mimeType: 'image/jpeg',
+        },
+      ],
+      inlineTables: [],
+      imageMapping: new Map(),
+    };
+
+    const result = buildExerciseDom(element, getSeg, {}, originalCnxml, ctx);
+
+    // Figure must be inside the exercise
+    expect(result).toContain('fig-sol');
+    expect(result).toContain('solution.jpg');
+
+    // Only one copy
+    const imageCount = (result.match(/solution\.jpg/g) || []).length;
+    expect(imageCount).toBe(1);
+
+    // Marked as handled
+    expect(ctx.figuresHandledInContainers.has('fig-sol')).toBe(true);
   });
 });

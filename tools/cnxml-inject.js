@@ -2472,7 +2472,7 @@ function buildExercise(element, getSeg, equations, originalCnxml) {
  * DOM-based shadow of buildExercise.
  * Same signature, same behavior, but uses DOM manipulation instead of regex.
  */
-function buildExerciseDom(element, getSeg, equations, originalCnxml) {
+function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
   if (!element.id) return null;
 
   const exercisePattern = new RegExp(
@@ -2488,6 +2488,7 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml) {
 
   // Process problem and solution content via DOM
   const replacedParaIds = new Set();
+  const keptFigureIds = new Set();
 
   function processContent(contentArray) {
     for (const child of contentArray || []) {
@@ -2497,6 +2498,20 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml) {
 
         const paraText = getSeg(child.segmentId);
         if (!paraText) continue;
+
+        // For media-only paras (figure is the only content), skip text injection.
+        // Keep the figure in the DOM so it isn't duplicated by buildFigure.
+        if (/^\s*\[\[MEDIA:\d+\]\]\s*$/.test(paraText)) {
+          const figures = paraEl.getElementsByTagName('figure');
+          if (figures.length > 0) {
+            for (let i = 0; i < figures.length; i++) {
+              const figId = figures[i].getAttribute('id');
+              if (figId) keptFigureIds.add(figId);
+            }
+            replacedParaIds.add(child.id);
+            continue;
+          }
+        }
 
         // Embedded list detection (same heuristic as buildExampleDom):
         // if para text has expanded math and a sibling list is inside, remove list
@@ -2534,8 +2549,22 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml) {
   if (element.problem) processContent(element.problem.content);
   if (element.solution) processContent(element.solution.content);
 
-  // Strip figures and tables (built by section-level builders)
-  removeElementsByTag(exerciseEl, ['figure', 'table']);
+  // Strip tables unconditionally; remove figures UNLESS they were kept inside media-only paras.
+  removeElementsByTag(exerciseEl, ['table']);
+  const allFigures = Array.from(exerciseEl.getElementsByTagName('figure'));
+  for (const fig of allFigures) {
+    const figId = fig.getAttribute('id');
+    if (!keptFigureIds.has(figId)) {
+      fig.parentNode.removeChild(fig);
+    }
+  }
+
+  // Mark kept figures so buildFigure skips the standalone copy
+  if (ctx && ctx.figuresHandledInContainers) {
+    for (const figId of keptFigureIds) {
+      ctx.figuresHandledInContainers.add(figId);
+    }
+  }
 
   let result = serializeCnxmlFragment(exerciseEl);
   result = deduplicateMedia(result);
