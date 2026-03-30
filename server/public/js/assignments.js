@@ -56,15 +56,15 @@
    */
   function renderStats(chapters) {
     const assigned = chapters.filter(function (ch) {
-      return ch.assignment && ch.assignment.userId;
+      return ch.assignment && ch.assignment.user_id;
     }).length;
     const unassigned = chapters.length - assigned;
 
     // Count distinct editors assigned to at least one chapter
     const editorIds = {};
     chapters.forEach(function (ch) {
-      if (ch.assignment && ch.assignment.userId) {
-        editorIds[ch.assignment.userId] = true;
+      if (ch.assignment && ch.assignment.user_id) {
+        editorIds[ch.assignment.user_id] = true;
       }
     });
     const editorCount = Object.keys(editorIds).length;
@@ -88,7 +88,7 @@
     const editors = currentEditors;
 
     const rows = chapters.map(function (ch) {
-      const isAssigned = ch.assignment && ch.assignment.userId;
+      const isAssigned = ch.assignment && ch.assignment.user_id;
       const rowClass = isAssigned ? '' : ' class="row-unassigned"';
 
       const title = ch.titleIs || ch.title || 'Kafli ' + ch.chapter;
@@ -96,14 +96,14 @@
       // Build editor dropdown
       let options = '<option value="">— Óúthlutað —</option>';
       editors.forEach(function (ed) {
-        const selected = isAssigned && ch.assignment.userId === ed.id ? ' selected' : '';
+        const selected = isAssigned && ch.assignment.user_id === ed.id ? ' selected' : '';
         options +=
           '<option value="' +
           escapeHtml(String(ed.id)) +
           '"' +
           selected +
           '>' +
-          escapeHtml(ed.displayName || ed.email || 'Notandi ' + ed.id) +
+          escapeHtml(ed.name || 'Notandi ' + ed.id) +
           '</option>';
       });
 
@@ -166,12 +166,15 @@
 
     let promise;
     if (userId) {
-      promise = fetchJson('/api/admin/assignments/' + encodeURIComponent(book), {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'same-origin',
-        body: JSON.stringify({ chapter: parseInt(chapter, 10), userId: parseInt(userId, 10) }),
-      });
+      promise = fetchJson(
+        '/api/admin/assignments/' + encodeURIComponent(book) + '/' + encodeURIComponent(chapter),
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'same-origin',
+          body: JSON.stringify({ userId: parseInt(userId, 10) }),
+        }
+      );
     } else {
       promise = fetchJson(
         '/api/admin/assignments/' + encodeURIComponent(book) + '/' + encodeURIComponent(chapter),
@@ -233,7 +236,7 @@
         });
 
         // Merge: attach assignment (or null) to each chapter
-        const chapters = (chapterList || []).map(function (ch) {
+        const chapters = ((chapterList && chapterList.chapters) || []).map(function (ch) {
           return Object.assign({}, ch, {
             assignment: assignmentMap[ch.chapter] || null,
           });
