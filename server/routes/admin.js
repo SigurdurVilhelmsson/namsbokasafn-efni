@@ -967,7 +967,16 @@ router.get('/assignments/:book', requireAuth, requireRole(ROLES.HEAD_EDITOR), (r
   try {
     const assignments = userService.getBookAssignments(book);
     const editors = userService.getEditorsForBook(book);
-    res.json({ book, assignments, editors });
+
+    let chapterProgress = {};
+    try {
+      const progress = segmentEditorService.getEditorialProgress(book);
+      chapterProgress = progress.chapters;
+    } catch {
+      // Progress data is optional
+    }
+
+    res.json({ book, assignments, editors, chapterProgress });
   } catch (err) {
     log.error({ err }, 'Get book assignments error');
     res.status(500).json({ error: err.message });

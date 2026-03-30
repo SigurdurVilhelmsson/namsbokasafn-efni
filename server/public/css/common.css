@@ -2502,3 +2502,31 @@ a:focus-visible,
 .link-accent:hover {
   text-decoration: underline;
 }
+
+/* Mini progress bar for assignments table */
+.col-progress {
+  min-width: 100px;
+}
+
+.progress-mini {
+  display: inline-block;
+  width: 60px;
+  height: 6px;
+  background: var(--border-light, #e8e2d8);
+  border-radius: 3px;
+  overflow: hidden;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+.progress-mini-fill {
+  height: 100%;
+  background: var(--accent, #c87941);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.progress-mini-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary, #8a7e72);
+}
