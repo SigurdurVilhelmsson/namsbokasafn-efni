@@ -940,7 +940,11 @@ function renderFigure(figure, context) {
   const className = figure.attributes.class || null;
 
   // Get figure number from chapter-wide map for data attribute
-  const figNum = id && context.chapterFigureNumbers ? context.chapterFigureNumbers.get(id) : null;
+  const compositeKey = context.moduleId ? `${context.moduleId}:${id}` : id;
+  const figNum =
+    id && context.chapterFigureNumbers
+      ? context.chapterFigureNumbers.get(compositeKey) || context.chapterFigureNumbers.get(id)
+      : null;
 
   // Build attributes array (like exercise pattern)
   const attrs = [];
@@ -978,8 +982,12 @@ function renderFigure(figure, context) {
   const captionMatch = figure.content.match(/<caption>([\s\S]*?)<\/caption>/);
   if (captionMatch) {
     const captionContent = processInlineContent(captionMatch[1], context);
-    // Add figure number if available
-    const figNum = id && context.chapterFigureNumbers ? context.chapterFigureNumbers.get(id) : null;
+    // Add figure number if available (composite key for cross-module uniqueness)
+    const capCompositeKey = context.moduleId ? `${context.moduleId}:${id}` : id;
+    const figNum =
+      id && context.chapterFigureNumbers
+        ? context.chapterFigureNumbers.get(capCompositeKey) || context.chapterFigureNumbers.get(id)
+        : null;
     if (figNum) {
       lines.push(
         `  <figcaption><span class="figure-label">Mynd ${figNum}</span> ${captionContent}</figcaption>`
@@ -1110,8 +1118,11 @@ function renderExample(example, context) {
   const id = example.id || null;
 
   // Use chapter-wide example number if available, otherwise fall back to per-module counter
+  const exCompositeKey = context.moduleId ? `${context.moduleId}:${id}` : id;
   const chapterExNum =
-    id && context.chapterExampleNumbers ? context.chapterExampleNumbers.get(id) : null;
+    id && context.chapterExampleNumbers
+      ? context.chapterExampleNumbers.get(exCompositeKey) || context.chapterExampleNumbers.get(id)
+      : null;
   context.exampleCounter = (context.exampleCounter || 0) + 1;
   const exampleNumber = chapterExNum || `${context.chapter}.${context.exampleCounter}`;
 
@@ -1338,9 +1349,16 @@ function renderExercise(exercise, context) {
 
   // Use pre-assigned number from chapter-wide map if available (like figures/tables)
   // This ensures sequential numbering across compiled exercises sections
+  const exerCompositeKey = context.moduleId ? `${context.moduleId}:${id}` : id;
   let exerciseNumber;
-  if (id && context.chapterExerciseNumbers && context.chapterExerciseNumbers.has(id)) {
-    exerciseNumber = context.chapterExerciseNumbers.get(id);
+  if (
+    id &&
+    context.chapterExerciseNumbers &&
+    (context.chapterExerciseNumbers.has(exerCompositeKey) || context.chapterExerciseNumbers.has(id))
+  ) {
+    exerciseNumber =
+      context.chapterExerciseNumbers.get(exerCompositeKey) ||
+      context.chapterExerciseNumbers.get(id);
   } else {
     // Fallback: increment counter for exercises without pre-assigned numbers
     context.exerciseCounter++;
@@ -1451,8 +1469,12 @@ function renderTable(table, context) {
   const id = table.id || null;
   const className = table.attributes.class || null;
 
-  // Get table number from chapter-wide map for data attribute
-  const tableNum = id && context.chapterTableNumbers ? context.chapterTableNumbers.get(id) : null;
+  // Get table number from chapter-wide map for data attribute (composite key for cross-module uniqueness)
+  const tblCompositeKey = context.moduleId ? `${context.moduleId}:${id}` : id;
+  const tableNum =
+    id && context.chapterTableNumbers
+      ? context.chapterTableNumbers.get(tblCompositeKey) || context.chapterTableNumbers.get(id)
+      : null;
 
   // Build attributes array (like exercise pattern)
   const attrs = [];
@@ -1649,9 +1671,10 @@ function renderEquation(eq, context) {
   const numberSpan = isUnnumbered ? '' : '<span class="equation-number"></span>';
 
   // Get equation number from chapter-wide map for numbered equations only
+  const eqCompositeKey = context.moduleId ? `${context.moduleId}:${id}` : id;
   const eqNum =
     !isUnnumbered && id && context.chapterEquationNumbers
-      ? context.chapterEquationNumbers.get(id)
+      ? context.chapterEquationNumbers.get(eqCompositeKey) || context.chapterEquationNumbers.get(id)
       : null;
 
   // Build attributes array
@@ -2905,25 +2928,30 @@ async function main() {
       const modPath = translatedCnxmlPath(args.track, chapterDir, modId);
       const modCnxml = fs.readFileSync(modPath, 'utf-8');
 
+      // Use composite keys (moduleId:elementId) because some books (e.g., lifraen-efnafraedi)
+      // reuse IDs like fig-00001, exam-00001 across modules within the same chapter.
       const figPattern = /<figure\s+id="([^"]+)"/g;
       let fm;
       while ((fm = figPattern.exec(modCnxml)) !== null) {
         chapterFigCounter++;
-        chapterFigureNumbers.set(fm[1], `${args.chapter}.${chapterFigCounter}`);
+        chapterFigureNumbers.set(`${modId}:${fm[1]}`, `${args.chapter}.${chapterFigCounter}`);
       }
 
       const tblPattern = /<table\s+[^>]*id="([^"]+)"/g;
       let tm;
       while ((tm = tblPattern.exec(modCnxml)) !== null) {
         chapterTableCounter++;
-        chapterTableNumbers.set(tm[1], `${args.chapter}.${chapterTableCounter}`);
+        chapterTableNumbers.set(`${modId}:${tm[1]}`, `${args.chapter}.${chapterTableCounter}`);
       }
 
       const examplePattern = /<example\s+id="([^"]+)"/g;
       let exm2;
       while ((exm2 = examplePattern.exec(modCnxml)) !== null) {
         chapterExampleCounter++;
-        chapterExampleNumbers.set(exm2[1], `${args.chapter}.${chapterExampleCounter}`);
+        chapterExampleNumbers.set(
+          `${modId}:${exm2[1]}`,
+          `${args.chapter}.${chapterExampleCounter}`
+        );
       }
 
       // Build numbered equation map (skip unnumbered)
@@ -2937,7 +2965,10 @@ async function main() {
         const idMatch = attrs.match(/id="([^"]+)"/);
         if (idMatch) {
           chapterEquationCounter++;
-          chapterEquationNumbers.set(idMatch[1], `${args.chapter}.${chapterEquationCounter}`);
+          chapterEquationNumbers.set(
+            `${modId}:${idMatch[1]}`,
+            `${args.chapter}.${chapterEquationCounter}`
+          );
         }
       }
 
@@ -2973,7 +3004,10 @@ async function main() {
       let exm;
       while ((exm = exerPattern.exec(modCnxml)) !== null) {
         chapterExerciseCounter++;
-        chapterExerciseNumbers.set(exm[1], `${args.chapter}.${chapterExerciseCounter}`);
+        chapterExerciseNumbers.set(
+          `${modId}:${exm[1]}`,
+          `${args.chapter}.${chapterExerciseCounter}`
+        );
       }
     }
 
