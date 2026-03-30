@@ -837,6 +837,103 @@ function getBookEditsByModule(book) {
     .all(book);
 }
 
+/**
+ * Get per-chapter and book-wide editorial progress using DISTINCT segment counts.
+ *
+ * Uses COUNT(DISTINCT segment_id) rather than edit record counts, so that
+ * multiple edits to the same segment are not over-counted.
+ *
+ * @param {string} book - Book slug
+ * @returns {{ chapters: Object, summary: Object }}
+ */
+function getEditorialProgress(book) {
+  const conn = getDb();
+
+  // 1. Get DISTINCT segment counts per chapter from DB
+  //    This is the key fix: counting distinct segment_ids, not edit records
+  const editRows = conn
+    .prepare(
+      `SELECT
+        chapter,
+        COUNT(DISTINCT segment_id) as edited_segments,
+        COUNT(DISTINCT CASE WHEN status = 'approved' THEN segment_id ELSE NULL END) as approved_segments
+      FROM segment_edits
+      WHERE book = ?
+      GROUP BY chapter`
+    )
+    .all(book);
+
+  const editMap = {};
+  for (const row of editRows) {
+    editMap[row.chapter] = row;
+  }
+
+  // 2. Get segment totals from filesystem + count module completion
+  const segmentParser = require('./segmentParser');
+  const chapterNums = segmentParser.listChapters(book);
+  const chapters = {};
+  let totalApproved = 0;
+  let totalEdited = 0;
+  let totalSegments = 0;
+  let modulesComplete = 0;
+  let totalModules = 0;
+
+  // For module completion, reuse existing per-module record counts
+  const moduleEdits = getBookEditsByModule(book);
+  const moduleEditMap = {};
+  for (const row of moduleEdits) {
+    moduleEditMap[row.module_id] = row;
+  }
+
+  for (const chNum of chapterNums) {
+    const chLabel = chNum === -1 ? 'appendices' : String(chNum);
+    const modules = segmentParser.listChapterModules(book, chNum);
+    let chSegments = 0;
+
+    for (const mod of modules) {
+      const segCount = segmentParser.countModuleSegments(book, chLabel, mod.moduleId);
+      chSegments += segCount;
+      totalModules++;
+
+      // Module is "complete" when approved records >= segment count
+      const modEdits = moduleEditMap[mod.moduleId];
+      if (modEdits && segCount > 0) {
+        const approvedRecords = (modEdits.approved || 0) + (modEdits.applied || 0);
+        if (approvedRecords >= segCount) {
+          modulesComplete++;
+        }
+      }
+    }
+
+    const edits = editMap[chLabel] || { approved_segments: 0, edited_segments: 0 };
+
+    chapters[chNum] = {
+      approvedSegments: edits.approved_segments,
+      editedSegments: edits.edited_segments,
+      totalSegments: chSegments,
+      percentComplete:
+        chSegments > 0 ? Math.round((edits.approved_segments / chSegments) * 1000) / 10 : 0,
+    };
+
+    totalApproved += edits.approved_segments;
+    totalEdited += edits.edited_segments;
+    totalSegments += chSegments;
+  }
+
+  return {
+    chapters,
+    summary: {
+      approvedSegments: totalApproved,
+      editedSegments: totalEdited,
+      totalSegments,
+      totalModules,
+      modulesComplete,
+      percentComplete:
+        totalSegments > 0 ? Math.round((totalApproved / totalSegments) * 1000) / 10 : 0,
+    },
+  };
+}
+
 /** @internal Test-only: inject an in-memory DB instance */
 function _setTestDb(testDb) {
   db = testDb;
@@ -878,6 +975,7 @@ module.exports = {
   getReviewQueue,
   // Per-book aggregation
   getBookEditsByModule,
+  getEditorialProgress,
   // Test helpers
   _setTestDb,
   _setTestBooksDir,
