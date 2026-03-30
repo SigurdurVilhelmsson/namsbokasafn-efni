@@ -9,7 +9,7 @@
     {
       "chapter": 1,
       "title": "Structure and Bonding",
-      "titleIs": null,
+      "titleIs": "Gerð og tengi",
       "modules": [
         {
           "id": "m00157",
@@ -94,7 +94,7 @@
     {
       "chapter": 2,
       "title": "Polar Covalent Bonds; Acids and Bases",
-      "titleIs": null,
+      "titleIs": "Skautuð samgild tengi; sýrur og basar",
       "modules": [
         {
           "id": "m00017",
@@ -179,7 +179,7 @@
     {
       "chapter": 3,
       "title": "Organic Compounds: Alkanes and Their Stereochemistry",
-      "titleIs": null,
+      "titleIs": "Lífræn efnasambönd: Alkanar og rúmefnafræði þeirra",
       "modules": [
         {
           "id": "m00031",
@@ -234,7 +234,7 @@
     {
       "chapter": 4,
       "title": "Organic Compounds: Cycloalkanes and Their Stereochemistry",
-      "titleIs": null,
+      "titleIs": "Lífræn efnasambönd: Hringalkanar og rúmefnafræði þeirra",
       "modules": [
         {
           "id": "m00039",
@@ -301,7 +301,7 @@
     {
       "chapter": 5,
       "title": "Stereochemistry at Tetrahedral Centers",
-      "titleIs": null,
+      "titleIs": "Rúmefnafræði við ferflötunga miðjur",
       "modules": [
         {
           "id": "m00049",
@@ -386,7 +386,7 @@
     {
       "chapter": 6,
       "title": "An Overview of Organic Reactions",
-      "titleIs": null,
+      "titleIs": "Yfirlit yfir lífræn efnahvörf",
       "modules": [
         {
           "id": "m00076",
@@ -465,7 +465,7 @@
     {
       "chapter": 7,
       "title": "Alkenes: Structure and Reactivity",
-      "titleIs": null,
+      "titleIs": "Alkenar: Bygging og hvarfgirni",
       "modules": [
         {
           "id": "m00062",
@@ -544,7 +544,7 @@
     {
       "chapter": 8,
       "title": "Alkenes: Reactions and Synthesis",
-      "titleIs": null,
+      "titleIs": "Alken: Hvörf og myndun",
       "modules": [
         {
           "id": "m00088",
@@ -635,7 +635,7 @@
     {
       "chapter": 9,
       "title": "Alkynes: An Introduction to Organic Synthesis",
-      "titleIs": null,
+      "titleIs": "Alkín: Inngangur að lífrænni nýmyndun",
       "modules": [
         {
           "id": "m00102",
@@ -702,7 +702,7 @@
     {
       "chapter": 10,
       "title": "Organohalides",
-      "titleIs": null,
+      "titleIs": "Lífræn halíð",
       "modules": [
         {
           "id": "m00112",
@@ -763,7 +763,7 @@
     {
       "chapter": 11,
       "title": "Reactions of Alkyl Halides: Nucleophilic Substitutions and Eliminations",
-      "titleIs": null,
+      "titleIs": "Hvörf alkýlhalíða: Kjarnsækin skipti og brottnám",
       "modules": [
         {
           "id": "m00121",
@@ -848,7 +848,7 @@
     {
       "chapter": 12,
       "title": "Structure Determination: Mass Spectrometry and Infrared Spectroscopy",
-      "titleIs": null,
+      "titleIs": "Greining byggingar: Massagreining og innrauð litrófsgreining",
       "modules": [
         {
           "id": "m00134",
@@ -909,7 +909,7 @@
     {
       "chapter": 13,
       "title": "Structure Determination: Nuclear Magnetic Resonance Spectroscopy",
-      "titleIs": null,
+      "titleIs": "Greining byggingar: Kjarnsegulómunarrófsgreining",
       "modules": [
         {
           "id": "m00143",
@@ -1000,7 +1000,7 @@
     {
       "chapter": 14,
       "title": "Conjugated Compounds and Ultraviolet Spectroscopy",
-      "titleIs": null,
+      "titleIs": "Samtengd efnasambönd og útfjólublá litrófsgreining",
       "modules": [
         {
           "id": "m00170",
@@ -1067,7 +1067,7 @@
     {
       "chapter": 15,
       "title": "Benzene and Aromaticity",
-      "titleIs": null,
+      "titleIs": "Bensen og arómatískir eiginleikar",
       "modules": [
         {
           "id": "m00180",
@@ -1122,7 +1122,7 @@
     {
       "chapter": 16,
       "title": "Chemistry of Benzene: Electrophilic Aromatic Substitution",
-      "titleIs": null,
+      "titleIs": "Efnafræði bensens: Rafsækin arómatísk skipti",
       "modules": [
         {
           "id": "m00188",
@@ -1195,7 +1195,7 @@
     {
       "chapter": 17,
       "title": "Alcohols and Phenols",
-      "titleIs": null,
+      "titleIs": "Alkóhól og fenól",
       "modules": [
         {
           "id": "m00199",
@@ -1274,7 +1274,7 @@
     {
       "chapter": 18,
       "title": "Ethers and Epoxides; Thiols and Sulfides",
-      "titleIs": null,
+      "titleIs": "Etrar og epoxíð; þíól og súlfíð",
       "modules": [
         {
           "id": "m00074",
@@ -1335,7 +1335,7 @@
     {
       "chapter": 19,
       "title": "Aldehydes and Ketones: Nucleophilic Addition Reactions",
-      "titleIs": null,
+      "titleIs": "Aldehýð og ketón: Kjarnsækin álagningarhvörf",
       "modules": [
         {
           "id": "m00211",
@@ -1432,7 +1432,7 @@
     {
       "chapter": 20,
       "title": "Carboxylic Acids and Nitriles",
-      "titleIs": null,
+      "titleIs": "Karbónsýrur og nítríl",
       "modules": [
         {
           "id": "m00229",
@@ -1493,7 +1493,7 @@
     {
       "chapter": 21,
       "title": "Carboxylic Acid Derivatives: Nucleophilic Acyl Substitution Reactions",
-      "titleIs": null,
+      "titleIs": "Afleiður karboxýlsýra: Kjarnsækin asýlskiptahvörf",
       "modules": [
         {
           "id": "m00238",
@@ -1566,7 +1566,7 @@
     {
       "chapter": 22,
       "title": "Carbonyl Alpha-Substitution Reactions",
-      "titleIs": null,
+      "titleIs": "Alfa-skiptihvörf karbónýlsambanda",
       "modules": [
         {
           "id": "m00256",
@@ -1621,7 +1621,7 @@
     {
       "chapter": 23,
       "title": "Carbonyl Condensation Reactions",
-      "titleIs": null,
+      "titleIs": "Karbónýlþéttihvörf",
       "modules": [
         {
           "id": "m00272",
@@ -1712,7 +1712,7 @@
     {
       "chapter": 24,
       "title": "Amines and Heterocycles",
-      "titleIs": null,
+      "titleIs": "Amín og heteróhringir",
       "modules": [
         {
           "id": "m00273",
@@ -1785,7 +1785,7 @@
     {
       "chapter": 25,
       "title": "Biomolecules: Carbohydrates",
-      "titleIs": null,
+      "titleIs": "Lífsameindir: Kolvetni",
       "modules": [
         {
           "id": "m00274",
@@ -1858,7 +1858,7 @@
     {
       "chapter": 26,
       "title": "Biomolecules: Amino Acids, Peptides, and Proteins",
-      "titleIs": null,
+      "titleIs": "Lífsameindir: Amínósýrur, peptíð og prótein",
       "modules": [
         {
           "id": "m00275",
@@ -1937,7 +1937,7 @@
     {
       "chapter": 27,
       "title": "Biomolecules: Lipids",
-      "titleIs": null,
+      "titleIs": "Lífsameindir: Fitusýrur",
       "modules": [
         {
           "id": "m00264",
@@ -1992,7 +1992,7 @@
     {
       "chapter": 28,
       "title": "Biomolecules: Nucleic Acids",
-      "titleIs": null,
+      "titleIs": "Lífsameindir: Kjarnsýrur",
       "modules": [
         {
           "id": "m00309",
@@ -2053,7 +2053,7 @@
     {
       "chapter": 29,
       "title": "The Organic Chemistry of Metabolic Pathways",
-      "titleIs": null,
+      "titleIs": "Lífræn efnafræði efnaskiptaferla",
       "modules": [
         {
           "id": "m00329",
@@ -2126,7 +2126,7 @@
     {
       "chapter": 30,
       "title": "Orbitals and Organic Chemistry: Pericyclic Reactions",
-      "titleIs": null,
+      "titleIs": "Svigrúm og lífræn efnafræði: Hringhverf efnahvörf",
       "modules": [
         {
           "id": "m00340",
@@ -2193,7 +2193,7 @@
     {
       "chapter": 31,
       "title": "Synthetic Polymers",
-      "titleIs": null,
+      "titleIs": "Gervifjölliður",
       "modules": [
         {
           "id": "m00350",
