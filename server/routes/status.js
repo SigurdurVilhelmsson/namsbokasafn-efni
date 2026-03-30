@@ -27,6 +27,7 @@ const {
   getUniqueSections,
 } = require('../services/splitFileUtils');
 const { VALID_BOOKS } = require('../config');
+const userService = require('../services/userService');
 const { PIPELINE_STAGE_NAMES: PIPELINE_STAGES, PUBLICATION_TRACKS } = require('../constants');
 const pipelineStatusService = require('../services/pipelineStatusService');
 const segmentParser = require('../services/segmentParser');
@@ -147,6 +148,17 @@ router.get('/dashboard', requireAuth, async (req, res) => {
         chapters: [],
       };
 
+      // Load chapter assignments for this book to check unassigned status
+      const assignmentMap = {};
+      try {
+        const assignments = userService.getBookAssignments(book);
+        for (const a of assignments) {
+          assignmentMap[a.chapter] = a;
+        }
+      } catch {
+        // Assignment data unavailable — treat all as unassigned
+      }
+
       for (const chapterDir of chapterDirs) {
         const chapterNum = parseInt(chapterDir.replace('ch', ''), 10);
 
@@ -154,7 +166,7 @@ router.get('/dashboard', requireAuth, async (req, res) => {
           chapter: chapterNum,
           stages: {},
           progress: 0,
-          assignment: null,
+          assignment: assignmentMap[chapterNum] || null,
         };
 
         try {
