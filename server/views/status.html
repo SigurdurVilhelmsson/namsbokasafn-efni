@@ -343,11 +343,11 @@
           </div>
           <div class="stat-card">
             <div class="stat-card-value" id="stat-segments-approved">-</div>
-            <div class="stat-card-label">Hlutir sam&thorn;ykktir</div>
+            <div class="stat-card-label">B&uacute;tar sam&thorn;ykktir</div>
           </div>
           <div class="stat-card">
             <div class="stat-card-value" id="stat-segments-edited">-</div>
-            <div class="stat-card-label">Hlutir yfirfarnir</div>
+            <div class="stat-card-label">B&uacute;tar &iacute; vinnslu</div>
           </div>
           <div class="stat-card">
             <div class="stat-card-value" id="stat-percent">-</div>
@@ -497,7 +497,7 @@
       document.getElementById('stat-segments-approved').textContent =
         formatNum(s.segmentsApproved);
       document.getElementById('stat-segments-edited').textContent =
-        formatNum(s.segmentsEdited);
+        formatNum(Math.max(0, s.segmentsEdited - s.segmentsApproved));
       document.getElementById('stat-percent').textContent =
         s.percentComplete + '%';
 

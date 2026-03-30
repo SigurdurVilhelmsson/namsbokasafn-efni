@@ -894,10 +894,10 @@ router.get('/:book/editorial-progress', requireAuth, (req, res) => {
   }
 
   try {
-    // 1. Get all chapters and their modules from the filesystem
-    const chapters = segmentParser.listChapters(book);
+    // 1. Get centralized progress (distinct segment counts, not edit records)
+    const progress = segmentEditorService.getEditorialProgress(book);
 
-    // 2. Get all edit stats in one DB query
+    // 2. Get per-module edit stats for attention items and module status
     const editsByModule = segmentEditorService.getBookEditsByModule(book);
     const editLookup = {};
     for (const row of editsByModule) {
@@ -915,22 +915,21 @@ router.get('/:book/editorial-progress', requireAuth, (req, res) => {
     const discussEdits = segmentEditorService.getDiscussEdits(50);
     const bookDiscussEdits = discussEdits.filter((e) => e.book === book);
 
-    // 5. Build per-chapter progress
-    let totalModules = 0;
-    let totalSegments = 0;
-    let totalSegmentsEdited = 0;
-    let totalSegmentsApproved = 0;
-    let totalModulesComplete = 0;
+    // 5. Build per-chapter attention items and module status (separate from progress numbers)
+    const chapterNums = segmentParser.listChapters(book);
     let totalModulesInProgress = 0;
     let totalModulesNotStarted = 0;
 
-    const chapterProgress = chapters.map((chapterNum) => {
+    const chapterProgress = chapterNums.map((chapterNum) => {
       const modules = segmentParser.listChapterModules(book, chapterNum);
       const chapterLabel = chapterNum === -1 ? 'appendices' : String(chapterNum);
+      const chProgress = progress.chapters[chapterNum] || {
+        approvedSegments: 0,
+        editedSegments: 0,
+        totalSegments: 0,
+        percentComplete: 0,
+      };
 
-      let chSegments = 0;
-      let chEdited = 0;
-      let chApproved = 0;
       let chModulesComplete = 0;
       let chModulesInProgress = 0;
       let chModulesNotStarted = 0;
@@ -946,10 +945,6 @@ router.get('/:book/editorial-progress', requireAuth, (req, res) => {
         const rejected = edits ? edits.rejected : 0;
         const pending = edits ? edits.pending : 0;
         const discuss = edits ? edits.discuss : 0;
-
-        chSegments += segCount;
-        chEdited += edited;
-        chApproved += approved;
 
         // Module status: complete if all segments approved, in-progress if any edits, else not-started
         let status = 'not-started';
@@ -988,20 +983,16 @@ router.get('/:book/editorial-progress', requireAuth, (req, res) => {
         };
       });
 
-      totalModules += modules.length;
-      totalSegments += chSegments;
-      totalSegmentsEdited += chEdited;
-      totalSegmentsApproved += chApproved;
-      totalModulesComplete += chModulesComplete;
       totalModulesInProgress += chModulesInProgress;
       totalModulesNotStarted += chModulesNotStarted;
 
       return {
         chapter: chapterNum,
         modules: modules.length,
-        segmentsTotal: chSegments,
-        segmentsEdited: chEdited,
-        segmentsApproved: chApproved,
+        segmentsTotal: chProgress.totalSegments,
+        segmentsEdited: chProgress.editedSegments,
+        segmentsApproved: chProgress.approvedSegments,
+        percentComplete: chProgress.percentComplete,
         modulesComplete: chModulesComplete,
         modulesInProgress: chModulesInProgress,
         modulesNotStarted: chModulesNotStarted,
@@ -1010,20 +1001,17 @@ router.get('/:book/editorial-progress', requireAuth, (req, res) => {
       };
     });
 
-    const percentComplete =
-      totalSegments > 0 ? Math.round((totalSegmentsApproved / totalSegments) * 1000) / 10 : 0;
-
     res.json({
       book,
       summary: {
-        totalModules,
-        totalSegments,
-        segmentsEdited: totalSegmentsEdited,
-        segmentsApproved: totalSegmentsApproved,
-        modulesComplete: totalModulesComplete,
+        totalModules: progress.summary.totalModules,
+        totalSegments: progress.summary.totalSegments,
+        segmentsEdited: progress.summary.editedSegments,
+        segmentsApproved: progress.summary.approvedSegments,
+        modulesComplete: progress.summary.modulesComplete,
         modulesInProgress: totalModulesInProgress,
         modulesNotStarted: totalModulesNotStarted,
-        percentComplete,
+        percentComplete: progress.summary.percentComplete,
       },
       chapters: chapterProgress,
       attention: {
