@@ -2198,7 +2198,7 @@ function buildExample(element, getSeg, equations, originalCnxml) {
  * Same signature, same behavior, but uses DOM manipulation instead of regex.
  * Comparison-tested against the regex version before deployment.
  */
-function buildExampleDom(element, getSeg, equations, originalCnxml) {
+function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
   if (!element.id) {
     return buildGenericElement('example', element, getSeg, equations, originalCnxml);
   }
@@ -2223,12 +2223,55 @@ function buildExampleDom(element, getSeg, equations, originalCnxml) {
   // skip list-item replacement to avoid destroying the para content
   // (paras are not block-level in the DOM util, so replaceListItems would remove them).
   const replacedParaIds = new Set();
+
+  // Detect paras whose only content is a [[MEDIA:N]] placeholder corresponding
+  // to a figure already in the DOM. For these paras, we keep the figure in place
+  // and skip text injection (to avoid duplicating the image).
+  const keptFigureIds = new Set();
+  const mediaOnlyParaIds = new Set();
+
+  for (const child of element.content || []) {
+    if (child.type !== 'para' || !child.id || !child.segmentId) continue;
+    const rawSeg = getSeg(child.segmentId) || '';
+    // Check if segment is ONLY a [[MEDIA:N]] placeholder (with optional whitespace)
+    if (!/^\s*\[\[MEDIA:\d+\]\]\s*$/.test(rawSeg)) continue;
+
+    // Check if the para's DOM node contains a <figure>
+    const paraEl = doc.getElementById(child.id);
+    if (!paraEl) continue;
+    const figures = paraEl.getElementsByTagName('figure');
+    if (figures.length === 0) continue;
+
+    // Mark this para as media-only and keep its figures
+    mediaOnlyParaIds.add(child.id);
+    for (let i = 0; i < figures.length; i++) {
+      const figId = figures[i].getAttribute('id');
+      if (figId) keptFigureIds.add(figId);
+    }
+  }
+
   let isFirstPara = true;
 
   for (const child of element.content || []) {
     if (child.type === 'para' && child.id) {
       const paraEl = doc.getElementById(child.id);
       if (!paraEl) {
+        isFirstPara = false;
+        continue;
+      }
+
+      // For media-only paras (figure is the only content), skip text injection
+      // but still inject the translated title. The figure stays in the DOM.
+      if (mediaOnlyParaIds.has(child.id)) {
+        let titleText = '';
+        if (isFirstPara && element.title?.segmentId) {
+          titleText = getSeg(element.title.segmentId) || '';
+        } else if (child.title?.segmentId) {
+          titleText = getSeg(child.title.segmentId) || child.title.text || '';
+        }
+        const titleCnxml = titleText ? `<title>${titleText}</title>` : '';
+        replaceParaContentDom(doc, paraEl, '', titleCnxml);
+        replacedParaIds.add(child.id);
         isFirstPara = false;
         continue;
       }
@@ -2283,9 +2326,23 @@ function buildExampleDom(element, getSeg, equations, originalCnxml) {
     }
   }
 
-  // Step 4: Remove figures and tables (handled by section-level builders).
+  // Step 4: Remove tables unconditionally; remove figures UNLESS they were kept inside paras.
   // Equations are NOT removed — they pass through unchanged inside examples.
-  removeElementsByTag(exampleEl, ['figure', 'table']);
+  removeElementsByTag(exampleEl, ['table']);
+  const allFigures = Array.from(exampleEl.getElementsByTagName('figure'));
+  for (const fig of allFigures) {
+    const figId = fig.getAttribute('id');
+    if (!keptFigureIds.has(figId)) {
+      fig.parentNode.removeChild(fig);
+    }
+  }
+
+  // Mark kept figures so buildFigure skips the standalone copy
+  if (ctx && ctx.figuresHandledInContainers) {
+    for (const figId of keptFigureIds) {
+      ctx.figuresHandledInContainers.add(figId);
+    }
+  }
 
   // Step 5: Serialize
   let result = serializeCnxmlFragment(exampleEl);
