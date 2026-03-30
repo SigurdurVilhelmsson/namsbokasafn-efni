@@ -1287,12 +1287,8 @@
         }
 
         booksEl.innerHTML = '<div class="book-grid">' + data.books.map(function(book) {
-          // Prefer filesystem-based statusProgress (reads status.json) over DB-based progress
-          var pct = book.statusProgress && book.statusProgress.pct > 0
-            ? book.statusProgress.pct
-            : (book.pipelineProgress && book.pipelineProgress.total > 0
-              ? Math.round((book.pipelineProgress.faithful / book.pipelineProgress.total) * 100)
-              : book.progress);
+          // Use editorial progress (approved segments / total segments) — same metric as progress page
+          var pct = book.editorialProgress ? book.editorialProgress.percent : 0;
           return '<div class="book-card" onclick="loadBookDetail(\'' + book.slug + '\')">' +
             '<div class="book-card-title">' + escapeHtml(book.titleIs) + '</div>' +
             '<div class="book-card-subtitle">' + escapeHtml(book.titleEn) + '</div>' +
