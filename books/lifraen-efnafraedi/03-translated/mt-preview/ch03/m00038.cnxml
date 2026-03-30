@@ -99,13 +99,12 @@
     <title>Newman Projections</title>
     <para id="para-00010"><title>Lausnarleið</title>Horfðu meðfram C1–C2 tenginu í 1-klórprópani og teiknaðu Newman-vörpun af stöðugustu og óstöðugustu formbreytingunum.</para>
     <para id="para-00011">Stöðugasta formbreyting á hliðarkeðjuðu alkani er yfirleitt skekkt formbreyting þar sem stórir hópar eru í andstæðu. Óstöðugasta formbreytingin er yfirleitt skyggð formbreyting þar sem stórir hópar eru eins nálægt hvor öðrum og mögulegt er.</para>
-    <para id="para-00012"><title>Lausn</title><media alt="Two Newman projections are represented. The first and second structures are labeled, most stable (staggered) and Least stable (eclipsed), respectively."><image mime-type="image/jpeg" src="../../media/OChem_03_07_007.jpg"/></media></para>
+    <para id="para-00012"><title>Lausn</title><figure class="unnumbered scaled-down" id="fig-00007">
+    <media alt="Two Newman projections are represented. The first and second structures are labeled, most stable (staggered) and Least stable (eclipsed), respectively.">
+    <image mime-type="image/jpeg" src="../../media/OChem_03_07_007.jpg"/>
+    </media>
+    </figure></para>
     </example>
-<figure id="fig-00007" class="unnumbered scaled-down">
-<media alt="Two Newman projections are represented. The first and second structures are labeled, most stable (staggered) and Least stable (eclipsed), respectively.">
-<image mime-type="image/jpeg" src="../../media/OChem_03_07_007.jpg"/>
-</media>
-</figure>
 <section id="sect-00001" class="section-exercises">
 <title>Verkefni</title>
 <exercise id="exer-00001">

@@ -106,16 +106,15 @@
     <para id="para-00030"><title>Aðferð</title>Hvert er IUPAC-nafn eftirfarandi alkana?</para>
     
     <para id="para-00031">Finndu lengstu samfelldu kolefniskeðjuna í sameindinni og notaðu hana sem stofnnafn. Þessi sameind hefur átta kolefnisatóm í keðju – oktan – með tveimur metýl-hliðarhópum. (Þú þarft að beygja fyrir horn til að sjá hana.) Númerað er frá þeim enda sem er nær fyrsta metýl-hliðarhópnum og það sýnir að metýlhóparnir eru á C2 og C6.</para>
-    <para id="para-00032"><title>Lausn</title><media alt="The molecular structure of 2,6-dimethyloctane featuring an eight-carbon chain and is numbered from right to left."><image mime-type="image/jpeg" src="../../media/OChem_03_04_016.jpg"/></media></para>
+    <para id="para-00032"><title>Lausn</title><figure class="unnumbered scaled-down" id="fig-00016">
+    <media alt="The molecular structure of 2,6-dimethyloctane featuring an eight-carbon chain and is numbered from right to left.">
+    <image mime-type="image/jpeg" src="../../media/OChem_03_04_016.jpg"/>
+    </media>
+    </figure></para>
     </example>
 <figure id="fig-00015" class="unnumbered scaled-down">
 <media alt="The molecular structure of 2,6-dimethyloctane featuring a an eight-carbon chain.">
 <image mime-type="image/jpeg" src="../../media/OChem_03_04_015.jpg"/>
-</media>
-</figure>
-<figure id="fig-00016" class="unnumbered scaled-down">
-<media alt="The molecular structure of 2,6-dimethyloctane featuring an eight-carbon chain and is numbered from right to left.">
-<image mime-type="image/jpeg" src="../../media/OChem_03_04_016.jpg"/>
 </media>
 </figure>
 <example id="exam-00002">
@@ -126,16 +125,15 @@
     <para id="para-00036">Næst skaltu finna hliðarhópana (3-ísóprópýl og 2-metýl) og setja þá á rétt kolefnisatóm.</para>
     
     <para id="para-00037">Bættu að lokum við vetnisatómum til að fullgera bygginguna.</para>
-    <para id="para-00038"><title>Lausn</title><media alt="The molecular structure of 3-isopropyl-2-methylhexane is represented. It presents a six-carbon chain."><image mime-type="image/jpeg" src="../../media/OChem_03_04_018.jpg"/></media></para>
+    <para id="para-00038"><title>Lausn</title><figure class="unnumbered scaled-down" id="fig-00018">
+    <media alt="The molecular structure of 3-isopropyl-2-methylhexane is represented. It presents a six-carbon chain.">
+    <image mime-type="image/jpeg" src="../../media/OChem_03_04_018.jpg"/>
+    </media>
+    </figure></para>
     </example>
 <figure id="fig-00017" class="unnumbered scaled-down">
 <media alt="The structure of a compound has 6-carbon chain and is numbered from left to right. An isopropyl group at C3 and a methyl group at C2 are shown.">
 <image mime-type="image/jpeg" src="../../media/OChem_03_04_017.jpg"/>
-</media>
-</figure>
-<figure id="fig-00018" class="unnumbered scaled-down">
-<media alt="The molecular structure of 3-isopropyl-2-methylhexane is represented. It presents a six-carbon chain.">
-<image mime-type="image/jpeg" src="../../media/OChem_03_04_018.jpg"/>
 </media>
 </figure>
 <section id="sect-00001" class="section-exercises">

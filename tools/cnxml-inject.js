@@ -2224,30 +2224,29 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
   // (paras are not block-level in the DOM util, so replaceListItems would remove them).
   const replacedParaIds = new Set();
 
-  // Detect paras whose only content is a [[MEDIA:N]] placeholder corresponding
-  // to a figure already in the DOM. For these paras, we keep the figure in place
-  // and skip text injection (to avoid duplicating the image).
+  // Detect paras that contain <figure> elements in the DOM. These figures were
+  // extracted as [[MEDIA:N]] placeholders during extraction AND as top-level
+  // structure entries. To avoid duplication, we keep the figure in the DOM and
+  // strip the expanded <media> from the segment text before injection.
   const keptFigureIds = new Set();
-  const mediaOnlyParaIds = new Set();
+  const parasWithFigures = new Map(); // paraId → Set of figure IDs
 
   for (const child of element.content || []) {
     if (child.type !== 'para' || !child.id || !child.segmentId) continue;
-    const rawSeg = getSeg(child.segmentId) || '';
-    // Check if segment is ONLY a [[MEDIA:N]] placeholder (with optional whitespace)
-    if (!/^\s*\[\[MEDIA:\d+\]\]\s*$/.test(rawSeg)) continue;
-
-    // Check if the para's DOM node contains a <figure>
     const paraEl = doc.getElementById(child.id);
     if (!paraEl) continue;
     const figures = paraEl.getElementsByTagName('figure');
     if (figures.length === 0) continue;
 
-    // Mark this para as media-only and keep its figures
-    mediaOnlyParaIds.add(child.id);
+    const figIds = new Set();
     for (let i = 0; i < figures.length; i++) {
       const figId = figures[i].getAttribute('id');
-      if (figId) keptFigureIds.add(figId);
+      if (figId) {
+        figIds.add(figId);
+        keptFigureIds.add(figId);
+      }
     }
+    if (figIds.size > 0) parasWithFigures.set(child.id, figIds);
   }
 
   let isFirstPara = true;
@@ -2260,9 +2259,14 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
         continue;
       }
 
-      // For media-only paras (figure is the only content), skip text injection
-      // but still inject the translated title. The figure stays in the DOM.
-      if (mediaOnlyParaIds.has(child.id)) {
+      // For paras that contain figures: strip expanded <media> from segment text
+      // so the figure (already in the DOM) isn't duplicated. If the para is
+      // media-only (no other text), skip text injection entirely.
+      if (parasWithFigures.has(child.id)) {
+        const paraText = child.segmentId ? getSeg(child.segmentId) : '';
+        // Strip expanded <media>...</media> from segment text
+        const textWithoutMedia = paraText.replace(/<media\s[^>]*>[\s\S]*?<\/media>/g, '').trim();
+
         let titleText = '';
         if (isFirstPara && element.title?.segmentId) {
           titleText = getSeg(element.title.segmentId) || '';
@@ -2270,7 +2274,7 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
           titleText = getSeg(child.title.segmentId) || child.title.text || '';
         }
         const titleCnxml = titleText ? `<title>${titleText}</title>` : '';
-        replaceParaContentDom(doc, paraEl, '', titleCnxml);
+        replaceParaContentDom(doc, paraEl, textWithoutMedia, titleCnxml);
         replacedParaIds.add(child.id);
         isFirstPara = false;
         continue;
@@ -2499,18 +2503,18 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
         const paraText = getSeg(child.segmentId);
         if (!paraText) continue;
 
-        // For media-only paras (figure is the only content), skip text injection.
-        // Keep the figure in the DOM so it isn't duplicated by buildFigure.
-        if (/^\s*\[\[MEDIA:\d+\]\]\s*$/.test(paraText)) {
-          const figures = paraEl.getElementsByTagName('figure');
-          if (figures.length > 0) {
-            for (let i = 0; i < figures.length; i++) {
-              const figId = figures[i].getAttribute('id');
-              if (figId) keptFigureIds.add(figId);
-            }
-            replacedParaIds.add(child.id);
-            continue;
+        // For paras that contain figures: strip expanded <media> from segment text
+        // so the figure (already in the DOM) isn't duplicated.
+        const figures = paraEl.getElementsByTagName('figure');
+        if (figures.length > 0) {
+          for (let i = 0; i < figures.length; i++) {
+            const figId = figures[i].getAttribute('id');
+            if (figId) keptFigureIds.add(figId);
           }
+          const textWithoutMedia = paraText.replace(/<media\s[^>]*>[\s\S]*?<\/media>/g, '').trim();
+          replaceParaContentDom(doc, paraEl, textWithoutMedia, '');
+          replacedParaIds.add(child.id);
+          continue;
         }
 
         // Embedded list detection (same heuristic as buildExampleDom):

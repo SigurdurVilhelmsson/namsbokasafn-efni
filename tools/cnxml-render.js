@@ -1191,6 +1191,15 @@ function renderExample(example, context) {
       item: para,
       position: pos !== -1 ? pos : 0,
     });
+
+    // Mark figures inside paras as rendered so section-level renderFigure skips them
+    if (context.renderedFigureIds) {
+      const figPattern = /<figure[^>]*\sid="([^"]+)"/g;
+      let figMatch;
+      while ((figMatch = figPattern.exec(para.content)) !== null) {
+        context.renderedFigureIds.add(figMatch[1]);
+      }
+    }
   }
 
   for (const list of lists) {
@@ -1217,8 +1226,13 @@ function renderExample(example, context) {
     });
   }
 
-  // Extract standalone media from content WITHOUT notes
-  const standaloneMedia = extractNestedElements(contentForSimpleElements, 'media');
+  // Strip figures from content before extracting standalone media —
+  // figures inside paras are rendered as part of the para, so their
+  // <media> children should not appear separately as standalone media.
+  const contentForMedia = contentForSimpleElements.replace(/<figure[^>]*>[\s\S]*?<\/figure>/g, '');
+
+  // Extract standalone media from content WITHOUT notes or figures
+  const standaloneMedia = extractNestedElements(contentForMedia, 'media');
   for (const media of standaloneMedia) {
     const pos = media.fullMatch
       ? example.content.indexOf(media.fullMatch)
