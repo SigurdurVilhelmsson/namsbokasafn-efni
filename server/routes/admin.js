@@ -25,6 +25,7 @@ const bookRegistration = require('../services/bookRegistration');
 const bookDataGenerator = require('../services/bookDataGenerator');
 const userService = require('../services/userService');
 const pipeline = require('../services/pipelineService');
+const segmentEditorService = require('../services/segmentEditorService');
 // https import removed — no longer needed (GitHub user lookup removed)
 
 // ============================================================================
@@ -369,6 +370,19 @@ router.post('/books/:slug/fetch-source', requireAuth, requireAdmin(), (req, res)
 router.get('/books', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   try {
     const books = bookRegistration.listRegisteredBooks();
+
+    for (const book of books) {
+      try {
+        const progress = segmentEditorService.getEditorialProgress(book.slug);
+        book.editorialProgress = {
+          percent: progress.summary.percentComplete,
+          approvedSegments: progress.summary.approvedSegments,
+          totalSegments: progress.summary.totalSegments,
+        };
+      } catch {
+        book.editorialProgress = { percent: 0, approvedSegments: 0, totalSegments: 0 };
+      }
+    }
 
     res.json({
       books,
@@ -953,7 +967,16 @@ router.get('/assignments/:book', requireAuth, requireRole(ROLES.HEAD_EDITOR), (r
   try {
     const assignments = userService.getBookAssignments(book);
     const editors = userService.getEditorsForBook(book);
-    res.json({ book, assignments, editors });
+
+    let chapterProgress = {};
+    try {
+      const progress = segmentEditorService.getEditorialProgress(book);
+      chapterProgress = progress.chapters;
+    } catch {
+      // Progress data is optional
+    }
+
+    res.json({ book, assignments, editors, chapterProgress });
   } catch (err) {
     log.error({ err }, 'Get book assignments error');
     res.status(500).json({ error: err.message });

@@ -139,7 +139,16 @@
         '<td>' +
         select +
         '</td>' +
-        '<td>—</td>' +
+        '<td class="col-progress">' +
+        '<div class="progress-mini">' +
+        '<div class="progress-mini-fill" style="width:' +
+        (ch.progress.percentComplete || 0) +
+        '%"></div>' +
+        '</div>' +
+        '<span class="progress-mini-label">' +
+        (ch.progress.percentComplete || 0) +
+        '%</span>' +
+        '</td>' +
         '<td>' +
         editorLink +
         '</td>' +
@@ -228,6 +237,7 @@
 
         const assignments = adminData.assignments || [];
         currentEditors = adminData.editors || [];
+        const chapterProgress = adminData.chapterProgress || {};
 
         // Index assignments by chapter number for fast lookup
         const assignmentMap = {};
@@ -235,10 +245,12 @@
           assignmentMap[a.chapter] = a;
         });
 
-        // Merge: attach assignment (or null) to each chapter
+        // Merge: attach assignment (or null) and progress to each chapter
         const chapters = ((chapterList && chapterList.chapters) || []).map(function (ch) {
+          const chProgress = chapterProgress[ch.chapter] || { percentComplete: 0 };
           return Object.assign({}, ch, {
             assignment: assignmentMap[ch.chapter] || null,
+            progress: chProgress,
           });
         });
 
