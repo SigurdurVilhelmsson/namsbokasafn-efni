@@ -81,7 +81,9 @@ router.param('bookId', (req, res, next, bookId) => {
  */
 router.get('/list', (req, res) => {
   res.json({
-    books: VALID_BOOKS.map((slug) => ({ slug, label: BOOK_LABELS[slug] || slug })),
+    books: VALID_BOOKS.map((slug) => ({ slug, label: BOOK_LABELS[slug] || slug })).sort((a, b) =>
+      a.label.localeCompare(b.label, 'is')
+    ),
   });
 });
 
