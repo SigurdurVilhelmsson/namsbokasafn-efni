@@ -3211,6 +3211,82 @@ async function main() {
         console.log('No glossary definitions found in this chapter');
       }
 
+      // Fallback: if no <glossary> definitions found, check for <section class="key-terms">
+      // (used by newer OpenStax books like Organic Chemistry)
+      if (chapterGlossary.length === 0) {
+        const lastModuleId = allModules[allModules.length - 1];
+        const lastModulePath = translatedCnxmlPath(args.track, chapterDir, lastModuleId);
+
+        if (fs.existsSync(lastModulePath)) {
+          const lastCnxml = fs.readFileSync(lastModulePath, 'utf-8');
+          const keyTermsMatch = lastCnxml.match(
+            /<section\s+[^>]*class="key-terms"[^>]*>([\s\S]*?)<\/section>/
+          );
+
+          if (keyTermsMatch) {
+            const items = extractNestedElements(keyTermsMatch[1], 'item');
+            const termLines = [];
+
+            for (const item of items) {
+              // item.content is like: <link document="m00032" target-id="term-00006">alcohol</link>
+              const linkMatch = item.content.match(
+                /<link\s+document="([^"]+)"(?:\s+target-id="([^"]+)")?[^>]*>([^<]+)<\/link>/
+              );
+              if (linkMatch) {
+                const termText = linkMatch[3].trim();
+                const moduleId = linkMatch[1];
+                const sectionInfo = moduleSections[moduleId];
+                const sectionSlug = sectionInfo
+                  ? getOutputFilename(moduleId, args.chapter, moduleSections).replace('.html', '')
+                  : moduleId;
+                termLines.push(
+                  `<li><a href="/content/${BOOK_SLUG}/chapters/${chapterStr}/${sectionSlug}.html">${escapeHtml(termText)}</a></li>`
+                );
+              } else {
+                const plainText = item.content.replace(/<[^>]+>/g, '').trim();
+                if (plainText) {
+                  termLines.push(`<li>${escapeHtml(plainText)}</li>`);
+                }
+              }
+            }
+
+            if (termLines.length > 0) {
+              const keyTermsContentHtml =
+                '<section class="key-terms-section">\n<h2>Lykilhugtök</h2>\n<ul class="key-terms-list">\n' +
+                termLines.join('\n') +
+                '\n</ul>\n</section>';
+
+              const fullKeyTermsHtml = buildHtmlDocument({
+                title: 'Lykilhugtök',
+                lang: args.lang,
+                content: keyTermsContentHtml,
+                pageData: {
+                  moduleId: `${chapterStr}-key-terms`,
+                  chapter: args.chapter,
+                  section: `${args.chapter}.0`,
+                  title: 'Lykilhugtök',
+                  equations: [],
+                  terms: {},
+                },
+                sectionNumber: `${args.chapter}.0`,
+                isIntro: true,
+              });
+
+              const keyTermsPath = writeCompiledGlossary(
+                args.chapter,
+                args.track,
+                fullKeyTermsHtml
+              );
+              writtenFiles.push(keyTermsPath);
+              console.log(
+                `Lykilhugtök: Rendered ${termLines.length} linked terms to HTML (section-based fallback)`
+              );
+              console.log(`  → ${keyTermsPath}`);
+            }
+          }
+        }
+      }
+
       // Extract and render compiled summary (matching chapters 1-5 format)
       if (args.verbose) {
         console.log('\nExtracting section summaries...');
