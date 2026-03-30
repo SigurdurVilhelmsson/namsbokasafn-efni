@@ -221,9 +221,10 @@
         return;
       }
 
+      const MODULE_LABELS = { 'chapter-metadata': 'Lýsigögn kafla' };
       container.innerHTML = data.modules
         .map((m) => {
-          const displayTitle = m.titleIs || m.title || m.moduleId;
+          const displayTitle = MODULE_LABELS[m.moduleId] || m.titleIs || m.title || m.moduleId;
           const sectionLabel = m.section
             ? `<span class="module-section">${escapeHtml(m.section)}</span> `
             : '';
@@ -1571,9 +1572,13 @@
   // ================================================================
 
   const SUBJECT_NAMES = {
-    chemistry: 'Efnafræði', biology: 'Líffræði', physics: 'Eðlisfræði',
-    microbiology: 'Örverufræði', 'organic-chemistry': 'Lífræn efnafræði',
-    mathematics: 'Stærðfræði', general: 'Almennt',
+    chemistry: 'Efnafræði',
+    biology: 'Líffræði',
+    physics: 'Eðlisfræði',
+    microbiology: 'Örverufræði',
+    'organic-chemistry': 'Lífræn efnafræði',
+    mathematics: 'Stærðfræði',
+    general: 'Almennt',
   };
 
   function showTermPopup(headwordId, element) {
@@ -1601,20 +1606,26 @@
 
     // Build translations HTML with subject badges
     const translations = termInfo.translations || [];
-    let translationsHtml = translations.map(tr => {
-      const statusBadge = tr.status === 'approved'
-        ? '<span class="edit-status approved">✓</span>'
-        : '<span class="edit-status pending">…</span>';
-      const subjectBadges = (tr.subjects || [])
-        .map(s => `<span style="font-size: 0.7em; padding: 0.1em 0.4em; background: var(--bg-elevated); border-radius: 3px; color: var(--text-muted);">${SUBJECT_NAMES[s] || s}</span>`)
-        .join(' ');
-      const primaryMark = tr.isPrimary ? ' ★' : '';
-      return `
+    const translationsHtml = translations
+      .map((tr) => {
+        const statusBadge =
+          tr.status === 'approved'
+            ? '<span class="edit-status approved">✓</span>'
+            : '<span class="edit-status pending">…</span>';
+        const subjectBadges = (tr.subjects || [])
+          .map(
+            (s) =>
+              `<span style="font-size: 0.7em; padding: 0.1em 0.4em; background: var(--bg-elevated); border-radius: 3px; color: var(--text-muted);">${SUBJECT_NAMES[s] || s}</span>`
+          )
+          .join(' ');
+        const primaryMark = tr.isPrimary ? ' ★' : '';
+        return `
           <div class="term-popup-row" style="padding: 0.2rem 0;">
             <span class="term-popup-value" style="font-weight: ${tr.isPrimary ? '600' : '400'};">${escapeHtml(tr.icelandic)}${primaryMark}</span>
             ${statusBadge} ${subjectBadges}
           </div>`;
-    }).join('');
+      })
+      .join('');
 
     document.getElementById('term-popup-body').innerHTML = `
         ${translationsHtml}
@@ -1666,9 +1677,12 @@
 
     termLookupTimer = setTimeout(async () => {
       try {
-        const data = await fetchJson(`${API_BASE}/terminology/lookup?q=${encodeURIComponent(q)}&bookSlug=${encodeURIComponent(currentBook || '')}`, {
-          credentials: 'include',
-        });
+        const data = await fetchJson(
+          `${API_BASE}/terminology/lookup?q=${encodeURIComponent(q)}&bookSlug=${encodeURIComponent(currentBook || '')}`,
+          {
+            credentials: 'include',
+          }
+        );
 
         if (!data.terms || data.terms.length === 0) {
           termLookupResults.innerHTML =
@@ -1680,12 +1694,13 @@
             .map((hw) => {
               // Show primary translation first, then alternatives
               const translations = hw.translations || [];
-              const primary = translations.find(t => t.isPrimary) || translations[0];
+              const primary = translations.find((t) => t.isPrimary) || translations[0];
               if (!primary) return '';
-              const others = translations.filter(t => t !== primary);
-              const othersText = others.length > 0
-                ? `<span style="font-size: 0.75em; color: var(--text-muted);"> (einnig: ${others.map(t => escapeHtml(t.icelandic)).join(', ')})</span>`
-                : '';
+              const others = translations.filter((t) => t !== primary);
+              const othersText =
+                others.length > 0
+                  ? `<span style="font-size: 0.75em; color: var(--text-muted);"> (einnig: ${others.map((t) => escapeHtml(t.icelandic)).join(', ')})</span>`
+                  : '';
               return `
               <div class="term-lookup-item" onclick="insertTermFromLookup('${escapeHtml(primary.icelandic)}')">
                 <span class="term-lookup-en">${escapeHtml(hw.english)}</span>
@@ -1947,6 +1962,25 @@
     const book = params.get('book');
     const chapter = params.get('chapter');
     const module = params.get('module');
+    const view = params.get('view');
+
+    // Apply review filter mode
+    if (view === 'reviews') {
+      const statusFilter = document.getElementById('filter-status');
+      if (statusFilter) {
+        statusFilter.value = 'pending';
+      }
+      // Show info banner
+      const selectorCard = document.querySelector('.selector-card');
+      if (selectorCard && !document.getElementById('review-mode-banner')) {
+        const banner = document.createElement('div');
+        banner.id = 'review-mode-banner';
+        banner.className = 'review-banner';
+        banner.textContent = 'Sýnir einingar sem bíða yfirferðar';
+        selectorCard.parentNode.insertBefore(banner, selectorCard.nextSibling);
+      }
+    }
+
     if (!book || !chapter) return;
 
     // Helper: poll until a condition is true (max 5s)
