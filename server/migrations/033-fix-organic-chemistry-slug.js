@@ -4,10 +4,13 @@
  * The book was registered via the admin UI with slug 'lifraen_efnafraedi'
  * (underscore), but the canonical slug used in the filesystem and hardcoded
  * defaults is 'lifraen-efnafraedi' (hyphen). This mismatch causes the book
- * to appear twice in dropdown menus — once from the hardcoded default and
- * once from the DB row.
+ * to appear twice in dropdown menus.
  *
- * Updates the slug across all tables that store it as a text reference.
+ * Handles three possible DB states (since migration 029 may have inserted
+ * a second row with the hyphenated slug):
+ *   1. Both slugs exist → merge FK refs onto the richer row, delete the other
+ *   2. Only underscore exists → simple rename
+ *   3. Only hyphen exists → no-op
  */
 
 module.exports = {
@@ -17,34 +20,68 @@ module.exports = {
     const oldSlug = 'lifraen_efnafraedi';
     const newSlug = 'lifraen-efnafraedi';
 
-    const row = db.prepare('SELECT id FROM registered_books WHERE slug = ?').get(oldSlug);
-    if (!row) return; // Nothing to fix
+    const oldRow = db
+      .prepare('SELECT id, catalogue_id FROM registered_books WHERE slug = ?')
+      .get(oldSlug);
+    const newRow = db
+      .prepare('SELECT id, catalogue_id FROM registered_books WHERE slug = ?')
+      .get(newSlug);
+
+    if (!oldRow && !newRow) return; // Neither exists
+    if (!oldRow && newRow) return; // Already correct
+
+    // Tables with column "book" (text slug)
+    const bookTables = [
+      'segment_edits',
+      'module_reviews',
+      'edit_history',
+      'pending_reviews',
+      'feedback',
+      'analytics_events',
+      'chapter_assignments',
+      'localization_edits',
+    ];
+
+    // Tables with column "book_slug" (text slug)
+    const bookSlugTables = [
+      'chapter_generated_files',
+      'chapter_generation_log',
+      'user_book_access',
+      'user_chapter_assignments',
+    ];
+
+    // Tables with column "book_id" (integer FK)
+    const bookIdTables = ['book_chapters', 'book_sections', 'terminology_terms'];
 
     const fix = db.transaction(() => {
-      // Canonical source
-      db.prepare('UPDATE registered_books SET slug = ? WHERE slug = ?').run(newSlug, oldSlug);
+      if (oldRow && newRow) {
+        // Both exist — keep the one with richer data (catalogue_id), delete the other
+        const keepRow = oldRow.catalogue_id ? oldRow : newRow;
+        const dropRow = oldRow.catalogue_id ? newRow : oldRow;
 
-      // Tables with column "book" (text slug)
-      for (const table of [
-        'segment_edits',
-        'module_reviews',
-        'edit_history',
-        'pending_reviews',
-        'feedback',
-        'analytics_events',
-        'chapter_assignments',
-        'localization_edits',
-      ]) {
-        db.prepare(`UPDATE ${table} SET book = ? WHERE book = ?`).run(newSlug, oldSlug);
+        // Move any FK references from the row we're dropping
+        for (const table of bookIdTables) {
+          db.prepare(`UPDATE ${table} SET book_id = ? WHERE book_id = ?`).run(
+            keepRow.id,
+            dropRow.id
+          );
+        }
+
+        // Delete the empty row
+        db.prepare('DELETE FROM registered_books WHERE id = ?').run(dropRow.id);
+
+        // Ensure the surviving row has the correct hyphenated slug
+        db.prepare('UPDATE registered_books SET slug = ? WHERE id = ?').run(newSlug, keepRow.id);
+      } else {
+        // Only oldRow exists — simple rename
+        db.prepare('UPDATE registered_books SET slug = ? WHERE slug = ?').run(newSlug, oldSlug);
       }
 
-      // Tables with column "book_slug" (text slug)
-      for (const table of [
-        'chapter_generated_files',
-        'chapter_generation_log',
-        'user_book_access',
-        'user_chapter_assignments',
-      ]) {
+      // Update text-slug references in all cases
+      for (const table of bookTables) {
+        db.prepare(`UPDATE ${table} SET book = ? WHERE book = ?`).run(newSlug, oldSlug);
+      }
+      for (const table of bookSlugTables) {
         db.prepare(`UPDATE ${table} SET book_slug = ? WHERE book_slug = ?`).run(newSlug, oldSlug);
       }
     });
