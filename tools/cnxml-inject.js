@@ -1501,13 +1501,15 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
   lines.push('');
   lines.push('<content>');
 
-  // Build context for tracking figures handled inside notes (to avoid duplicates)
+  // Build context for tracking figures handled inside notes/examples (to avoid duplicates)
   const figureCaptions = {};
   collectFigureCaptions(structure.content, figureCaptions);
   const figuresHandledInNotes = new Set();
+  const figuresHandledInContainers = new Set();
   const ctx = {
     figureCaptions,
     figuresHandledInNotes,
+    figuresHandledInContainers,
     inlineMedia: structure.inlineMedia || [],
     inlineTables: structure.inlineTables || [],
     imageMapping: options.imageMapping || new Map(),
@@ -1663,9 +1665,9 @@ function buildElement(element, getSeg, equations, originalCnxml, ctx) {
     case 'table':
       return buildTable(element, getSeg, originalCnxml);
     case 'example':
-      return buildExampleDom(element, getSeg, equations, originalCnxml);
+      return buildExampleDom(element, getSeg, equations, originalCnxml, ctx);
     case 'exercise':
-      return buildExerciseDom(element, getSeg, equations, originalCnxml);
+      return buildExerciseDom(element, getSeg, equations, originalCnxml, ctx);
     case 'note':
       return buildNoteDom(element, getSeg, equations, originalCnxml, ctx);
     case 'equation':
@@ -1751,6 +1753,11 @@ function buildSection(element, getSeg, equations, originalCnxml, ctx) {
 function buildFigure(element, getSeg, originalCnxml, ctx) {
   // Skip figures that were already translated in-place inside a note
   if (ctx && ctx.figuresHandledInNotes && ctx.figuresHandledInNotes.has(element.id)) {
+    return null;
+  }
+
+  // Skip figures kept inside examples/exercises (same pattern as notes)
+  if (ctx && ctx.figuresHandledInContainers && ctx.figuresHandledInContainers.has(element.id)) {
     return null;
   }
 
