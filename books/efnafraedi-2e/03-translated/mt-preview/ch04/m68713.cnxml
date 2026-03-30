@@ -21,7 +21,12 @@
 <example id="fs-idp48900096">
 <para id="fs-idp77269456"><title>Mól hvarfefnis sem þarf í efnahvarfi</title>Hversu mörg mól af I<sub>2</sub> þarf til að hvarfast við 0,429 mól af Al samkvæmt eftirfarandi jöfnu (sjá <link target-id="CNX_Chem_04_03_iodine"/>)?</para>
 <equation class="unnumbered" id="fs-idp147980704"><m:math><m:mrow><m:mn>2</m:mn><m:mtext>Al</m:mtext><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>AlI</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow></m:math></equation>
-
+<figure id="CNX_Chem_04_03_iodine" class="scaled-down">
+<media id="fs-idp52310320" alt="This figure shows three photos with an arrow leading from one to the next. The first photo shows a small pile of iodine and aluminum on a white surface. The second photo shows a small amount of purple smoke coming from the pile. The third photo shows a large amount of purple and gray smoke coming from the pile.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_04_03_iodine.jpg"/>
+</media>
+<caption>Aluminum and iodine react to produce aluminum iodide. The heat of the reaction vaporizes some of the solid iodine as a purple vapor. (credit: modification of work by Mark Ott)</caption>
+</figure>
 <para id="fs-idm34598272"><title>Lausn</title>Ef vísað er í stilltu efnajöfnuna er hlutfallaþátturinn sem tengir efnin tvö sem um ræðir <m:math><m:mrow><m:mfrac><m:mrow><m:mtext>3 mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub></m:mrow><m:mtext>2 mol Al</m:mtext></m:mfrac><m:mo>.</m:mo></m:mrow></m:math>. Mólmagn joðs er leitt út með því að margfalda uppgefið mólmagn áls með þessum þætti:</para>
 <media id="fs-idp136092800" alt="This figure shows two pink rectangles. The first is labeled, “Moles of A l.” This rectangle is followed by an arrow pointing right to a second rectangle labeled, “Moles of I subscript 2.”">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_04_03_moleratio1_img.jpg"/>
@@ -33,12 +38,6 @@
 <para id="fs-idp115249152">2,04 mól</para>
 </note>
 </example>
-<figure id="CNX_Chem_04_03_iodine" class="scaled-down">
-<media id="fs-idp52310320" alt="This figure shows three photos with an arrow leading from one to the next. The first photo shows a small pile of iodine and aluminum on a white surface. The second photo shows a small amount of purple smoke coming from the pile. The third photo shows a large amount of purple and gray smoke coming from the pile.">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_04_03_iodine.jpg"/>
-</media>
-<caption>Ál og joð hvarfast og mynda áljóðíð. Varminn frá efnahvarfinu gufar upp hluta af fasta joðinu sem fjólublá gufa. (Heimild: breyting á verki eftir Mark Ott)</caption>
-</figure>
 <example id="fs-idp9124448">
 <para id="fs-idp157170976"><title>Fjöldi myndefnissameinda sem myndast í efnahvarfi</title>Hversu margar koldíoxíðsameindir myndast þegar 0,75 mól af própani er brennt samkvæmt þessari jöfnu?</para>
 <equation class="unnumbered" id="fs-idp116053696"><m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>8</m:mn></m:msub><m:mo>+</m:mo><m:mn>5</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>3</m:mn><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mn>4</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math></equation>

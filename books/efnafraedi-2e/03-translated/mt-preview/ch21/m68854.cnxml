@@ -469,19 +469,18 @@
 <para id="fs-idp40647344">Með því að setja inn og leysa fáum við:</para>
 <equation id="fs-idm20370432" class="unnumbered"><m:math><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:mo>−</m:mo><m:mfrac><m:mn>1</m:mn><m:mi>λ</m:mi></m:mfrac><m:mspace width="0.2em"/><m:mtext>ln</m:mtext><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mrow><m:mtext>Rate</m:mtext></m:mrow><m:mi>t</m:mi></m:msub></m:mrow><m:mrow><m:msub><m:mrow><m:mtext>Rate</m:mtext></m:mrow><m:mn>0</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mfrac><m:mn>1</m:mn><m:mrow><m:mn>1.21</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>y</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mtext>ln</m:mtext><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>10.8</m:mn><m:mspace width="0.2em"/><m:mtext>dis/min/g C</m:mtext></m:mrow><m:mrow><m:mn>13.6</m:mn><m:mspace width="0.2em"/><m:mtext>dis/min/g C</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mtext>1910 y</m:mtext></m:mrow></m:math></equation>
 <para id="fs-idp18759328">Þess vegna eru Dauðahafshandritin um það bil 1900 ára gömul (<link target-id="CNX_Chem_21_03_DSScrolls"/>).</para>
-
+<figure id="CNX_Chem_21_03_DSScrolls" class="scaled-down">
+<media id="fs-idm64119536" alt="A photograph of six pages of ragged-edged paper covered in writing are shown.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_21_03_DSScrolls.jpg"/>
+</media>
+<caption>Carbon-14 dating has shown that these pages from the Dead Sea Scrolls were written or copied on paper made from plants that died between 100 BC and AD 50.</caption>
+</figure>
 <para id="fs-idp79158784"><title>Spyrðu sjálfan þig</title>Nákvæmari aldursgreiningar á valdatíðum forn-egypskra faraóa hafa nýlega verið gerðar með því að nota plöntur sem varðveittust í gröfum þeirra. Sýni af fræjum og plöntuefni úr gröf Tútankamons sýna C-14 hrörnunarhraða upp á 9,07 sundranir/mín/g af C. Hversu langt er síðan valdatíð Tútankamons lauk?</para>
 <note id="fs-idp861216">
 <title>Answer:</title>
 <para id="fs-idp7472544">fyrir um 3350 árum, eða um það bil 1340 f.Kr.</para>
 </note>
 </example>
-<figure id="CNX_Chem_21_03_DSScrolls" class="scaled-down">
-<media id="fs-idm64119536" alt="A photograph of six pages of ragged-edged paper covered in writing are shown.">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_21_03_DSScrolls.jpg"/>
-</media>
-<caption>Kolefnis-14 aldursgreining hefur sýnt að þessar síður úr Dauðahafshandritunum voru skrifaðar eða afritaðar á pappír sem gerður var úr plöntum sem dóu á milli 100 f.Kr. og 50 e.Kr.</caption>
-</figure>
 <para id="fs-idp143543968">Nokkrar marktækar, vel skrásettar breytingar hafa orðið á hlutfallinu <m:math><m:mrow>
 
 <m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext>

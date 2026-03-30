@@ -65,7 +65,12 @@
 <item>Fjarlægja flöskuna af hitanum um leið og síðasti vökvinn verður að gasi, en þá verður flaskan fyllt með eingöngu gassýni við umhverfisþrýsting</item>
 <item>Loka flöskunni og leyfa gassýninu að þéttast í vökva og síðan vigta flöskuna til að ákvarða massa sýnisins (sjá <link target-id="CNX_Chem_09_03_liquidgas"/>)</item>
 </list>
-
+<figure id="CNX_Chem_09_03_liquidgas">
+<media id="fs-idm73431936" alt="This figure shows four photos each connected by a right-facing arrow. The first photo shows a glass flask with aluminum foil covering the top sitting on a scale. The second photo shows a syringe being inserted into the flask through the aluminum foil covering. The third photo shows the glass flask being inserted into a beaker of water. The water appears to be heated at 100. The fourth photo shows the glass flask being weighed again.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_03_liquidgas.jpg"/>
+</media>
+<caption>When the volatile liquid in the flask is heated past its boiling point, it becomes gas and drives air out of the flask. At <m:math><m:mrow><m:msub><m:mi>t</m:mi><m:mrow><m:mi>l</m:mi><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mi>g</m:mi></m:mrow></m:msub><m:mo>,</m:mo></m:mrow></m:math> the flask is filled with volatile liquid gas at the same pressure as the atmosphere. If the flask is then cooled to room temperature, the gas condenses and the mass of the gas that filled the flask, and is now liquid, can be measured. (credit: modification of work by Mark Ott)</caption>
+</figure>
 <para id="fs-idm10831984">Með þessari aðferð er sýni af klóróformgasi sem vegur 0,494 g safnað í flösku með rúmmáli 129 cm<sup>3</sup> við 99,6 °C þegar loftþrýstingur er 742,1 mm Hg. Hver er áætlaður mólmassi klóróforms?</para>
 <para id="fs-idp60723232"><title>Lausn</title>Þar sem <m:math><m:mrow><m:mtext>ℳ</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mi>m</m:mi><m:mi>n</m:mi></m:mfrac></m:mrow></m:math> og <m:math><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mi>P</m:mi><m:mi>V</m:mi></m:mrow><m:mrow><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:mfrac><m:mo>,</m:mo></m:mrow></m:math> gefur innsetning og umröðun <m:math><m:mrow><m:mtext>ℳ</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mi>m</m:mi><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mrow><m:mi>P</m:mi><m:mi>V</m:mi></m:mrow></m:mfrac><m:mo>,</m:mo></m:mrow></m:math></para>
 <para id="fs-idp43964944">þá</para>
@@ -76,12 +81,6 @@
 <para id="fs-idm20201792">124 g/mól P<sub>4</sub></para>
 </note>
 </example>
-<figure id="CNX_Chem_09_03_liquidgas">
-<media id="fs-idm73431936" alt="This figure shows four photos each connected by a right-facing arrow. The first photo shows a glass flask with aluminum foil covering the top sitting on a scale. The second photo shows a syringe being inserted into the flask through the aluminum foil covering. The third photo shows the glass flask being inserted into a beaker of water. The water appears to be heated at 100. The fourth photo shows the glass flask being weighed again.">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_03_liquidgas.jpg"/>
-</media>
-<caption>Þegar rokgjarni vökvinn í flöskunni er hitaður yfir suðumark sitt breytist hann í gas og þrýstir lofti út úr flöskunni. Við <m:math><m:mrow><m:msub><m:mi>t</m:mi><m:mrow><m:mi>l</m:mi><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mi>g</m:mi></m:mrow></m:msub><m:mo>,</m:mo></m:mrow></m:math> er flaskan fyllt með rokgjörnu vökvagasi við sama þrýsting og andrúmsloftið. Ef flaskan er síðan kæld niður í stofuhita þéttist gasið og hægt er að mæla massa gassins sem fyllti flöskuna og er nú vökvi. (heimild: breytt útgáfa af verki eftir Mark Ott)</caption>
-</figure>
 </section>
 <section id="fs-idp148167024">
 <title>Þrýstingur gasblöndu: Lögmál Daltons</title>

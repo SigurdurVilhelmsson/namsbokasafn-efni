@@ -123,7 +123,12 @@
 <equation id="fs-idm190668720" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O(</m:mtext><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:mtext>Δ</m:mtext><m:msub><m:mi>H</m:mi><m:mrow><m:mtext>con</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mtext>−Δ</m:mtext><m:msub><m:mi>H</m:mi><m:mrow><m:mtext>vap</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mn>−44.01</m:mn><m:mspace width="0.2em"/><m:mtext>kJ/mol</m:mtext></m:mrow></m:math></equation>
 <example id="fs-idm57843872">
 <para id="fs-idm70086528"><title>Notkun gufunarvermis</title>Ein leið sem líkami okkar er kældur á er með gufun vatns í svita (<link target-id="CNX_Chem_10_03_Evap"/>). Í mjög heitu loftslagi getum við misst allt að 1,5 L af svita á dag. Þó að sviti sé ekki hreint vatn, getum við fengið nálgunargildi á því hversu mikill varmi er fjarlægður með gufun með því að gera ráð fyrir að svo sé. Hversu mikinn varma þarf til að gufa upp 1,5 L af vatni (1,5 kg) við <emphasis effect="italics">T</emphasis> = 37 °C (eðlilegur líkamshiti); Δ<emphasis effect="italics">H</emphasis><sub>vap</sub> = 43,46 kJ/mól við 37 °C.</para>
-
+<figure id="CNX_Chem_10_03_Evap" class="scaled-down">
+<media id="fs-idm183436304" alt="A person’s shoulder and neck are shown and their skin is covered in beads of liquid.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_03_Evap.jpg"/>
+</media>
+<caption>Evaporation of sweat helps cool the body. (credit: “Kullez”/Flickr)</caption>
+</figure>
 <para id="fs-idm146648608"><title>Lausn</title>Við byrjum með þekkt rúmmál svita (nálgað sem eingöngu vatn) og notum gefnar upplýsingar til að breyta í það magn af varma sem þarf:</para>
 <equation class="unnumbered" id="fs-idm38095424"><m:math><m:mrow><m:mn>1.5</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>L</m:mtext></m:menclose><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1000</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>g</m:mtext></m:menclose></m:mrow><m:mrow><m:mn>1</m:mn><m:menclose notation="horizontalstrike"><m:mtext>L</m:mtext></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mol</m:mtext></m:mrow></m:menclose></m:mrow><m:mrow><m:mn>18</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>g</m:mtext></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>43.46</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mol</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>3.6</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>3</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow></m:math></equation><para id="fs-idm104953776">Þannig eru 3600 kJ af varma fjarlægðir með gufun 1,5 L af vatni.</para>
 <para id="fs-idm119901584"><title>Kannaðu þekkingu þína</title>Hversu mikinn varma þarf til að gufa upp 100,0 g af fljótandi ammóníaki, NH<sub>3</sub>, við suðumark þess ef gufunarvermi þess er 4,8 kJ/mól?</para>
@@ -132,12 +137,6 @@
 <para id="fs-idm13083920">28 kJ</para>
 </note>
 </example>
-<figure id="CNX_Chem_10_03_Evap" class="scaled-down">
-<media id="fs-idm183436304" alt="A person’s shoulder and neck are shown and their skin is covered in beads of liquid.">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_10_03_Evap.jpg"/>
-</media>
-<caption>Uppgufun svita hjálpar til við að kæla líkamann. (heimild: „Kullez“/Flickr)</caption>
-</figure>
 </section>
 <section id="fs-idm167698656">
 <title>Bráðnun og storknun</title>

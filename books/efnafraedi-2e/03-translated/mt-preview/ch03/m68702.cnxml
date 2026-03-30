@@ -49,7 +49,12 @@
 <title>Afleiðsla reynsluformúla út frá massaprósentu</title>
 <para id="fs-idm130157248">Loks, að því er varðar afleiðslu reynsluformúla, skulum við skoða tilvik þar sem massaprósenta efnasambands er þekkt frekar en nákvæmur massi frumefnanna sem mynda efnasambandið. Í slíkum tilvikum er hægt að nota massaprósentuna til að reikna út massa frumefnanna í hvaða hentuga massa af efnasambandi sem er; þennan massa er síðan hægt að nota til að leiða út reynsluformúluna á hefðbundinn hátt.</para>
 <example id="fs-idp11336208"><para id="fs-idm16856224"><title>Ákvörðun reynsluformúlu út frá massaprósentu</title>Við gerjun á korni með gerlum til að framleiða etanól myndast gas með massaprósentuna 27,29% C og 72,71% O (<link target-id="CNX_Chem_03_03_BrewTank"/>). Hver er reynsluformúla þessa gass?</para>
-
+<figure id="CNX_Chem_03_03_BrewTank" class="scaled-down">
+<media id="fs-idm183208576" alt="A picture is shown of four copper-colored industrial containers with a large pipe connecting to the top of each one.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_03_BrewTank.jpg"/>
+</media>
+<caption>An oxide of carbon is removed from these fermentation tanks through the large copper pipes at the top. (credit: “Dual Freq”/Wikimedia Commons)</caption>
+</figure>
 <para id="fs-idp8854528"><title>Lausn</title>Þar sem prósentur miðast við 100 er hentugast að reikna út massa frumefnanna í 100 g sýni. Útreikningurinn er „hentugastur“ vegna þess að samkvæmt skilgreiningu á massaprósentu er massi tiltekins frumefnis í grömmum tölulega jafngildur massaprósentu frumefnisins. Þetta tölulega jafngildi stafar af skilgreiningu á einingunni „prósenta“, en nafn hennar er dregið af latneska orðasambandinu <emphasis effect="italics">per centum</emphasis> sem þýðir „af hundraði“. Með þessa skilgreiningu í huga má setja uppgefnar massaprósentur fram á hentugri hátt sem brot:</para>
 <equation id="fs-idm50369216" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mn>27.29</m:mn><m:mi>%</m:mi><m:mspace width="0.2em"/><m:mtext>C</m:mtext></m:mtd><m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>27.29</m:mn><m:mspace width="0.2em"/><m:mtext>g C</m:mtext></m:mrow><m:mrow><m:mn>100</m:mn><m:mspace width="0.2em"/><m:mtext>g compound</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/></m:mtd></m:mtr><m:mtr><m:mtd><m:mn>72.71</m:mn><m:mi>%</m:mi><m:mspace width="0.2em"/><m:mtext>O</m:mtext></m:mtd><m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>72.71</m:mn><m:mspace width="0.2em"/><m:mtext>g O</m:mtext></m:mrow><m:mrow><m:mn>100</m:mn><m:mspace width="0.2em"/><m:mtext>g compound</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/></m:mtd></m:mtr></m:mtable></m:math></equation>
 <para id="fs-idp6456464">Mólmagn kolefnis og súrefnis í 100 g sýni er reiknað með því að deila massa hvers frumefnis með mólmassa þess:</para><equation id="fs-idm107059040" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mn>27.29</m:mn><m:mspace width="0.2em"/><m:mtext>g C</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>mol C</m:mtext></m:mrow><m:mrow><m:mn>12.01</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mtd><m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mn>2.272</m:mn><m:mspace width="0.2em"/><m:mtext>mol C</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:mn>72.71</m:mn><m:mspace width="0.2em"/><m:mtext>g O</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>mol O</m:mtext></m:mrow><m:mrow><m:mn>16.00</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mtd><m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mn>4.544</m:mn><m:mspace width="0.2em"/><m:mtext>mol O</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
@@ -61,12 +66,6 @@
 <para id="fs-idm49848016">CH<sub>2</sub>O</para>
 </note>
 </example>
-<figure id="CNX_Chem_03_03_BrewTank" class="scaled-down">
-<media id="fs-idm183208576" alt="A picture is shown of four copper-colored industrial containers with a large pipe connecting to the top of each one.">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_03_BrewTank.jpg"/>
-</media>
-<caption>Kolefnisoxíð er fjarlægt úr þessum gerjunartönkum í gegnum stóru koparrörin efst. (Heimild: „Dual Freq“/Wikimedia Commons)</caption>
-</figure>
 </section>
 <para id="fs-idm181573632">Eins og áður hefur komið fram er algengasta aðferðin til að ákvarða efnaformúlu efnasambands að mæla fyrst massa frumefnanna sem það er myndað úr. Hafðu þó í huga að efnaformúlur tákna hlutfallslegan <emphasis effect="italics">fjölda</emphasis> frumeinda í efninu, ekki massa þeirra. Þess vegna verður að nota öll tilraunagögn sem fela í sér massa til að leiða út samsvarandi fjölda frumeinda í efnasambandinu. Þetta er gert með því að nota mólmassa til að breyta massa hvers frumefnis í fjölda móla. Þetta mólmagn er notað til að reikna út heiltöluhlutföll sem hægt er að nota til að leiða út reynsluformúlu efnisins. Lítum á sýni af efnasambandi sem mælist innihalda 1,71 g C og 0,287 g H. Samsvarandi fjöldi frumeinda (í mólum) er:</para>
 <equation id="fs-idm182904000" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mn>1.71</m:mn><m:mspace width="0.2em"/><m:mtext>g C</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol C</m:mtext></m:mrow><m:mrow><m:mn>12.01</m:mn><m:mspace width="0.2em"/><m:mtext>g C</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>0.142</m:mn><m:mspace width="0.2em"/><m:mtext>mol C</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:mn>0.287</m:mn><m:mspace width="0.2em"/><m:mtext>g H</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol H</m:mtext></m:mrow><m:mrow><m:mn>1.008</m:mn><m:mspace width="0.2em"/><m:mtext>g H</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>0.284</m:mn><m:mspace width="0.2em"/><m:mtext>mol H</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
@@ -92,7 +91,12 @@
 </figure>
 <example id="fs-idp70151968">
 <para id="fs-idm148697040"><title>Ákvörðun reynsluformúlu efnasambands út frá massa frumefna þess</title>Sýni af svarta steinefninu hematíti (<link target-id="CNX_Chem_03_03_hematite"/>), járnoxíði sem finnst í mörgum járngrýtum, inniheldur 34,97 g af járni og 15,03 g af súrefni. Hver er reynsluformúla hematíts?</para>
-
+<figure id="CNX_Chem_03_03_hematite" class="scaled-down">
+<media id="fs-idm156718064" alt="Two rounded, smooth black stones are shown.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_03_hematite.jpg"/>
+</media>
+<caption>Hematite is an iron oxide that is used in jewelry. (credit: Mauro Cateb)</caption>
+</figure>
 <para id="fs-idp9584080"><title>Lausn</title>Í þessu dæmi er massi hvers frumefnis gefinn í grömmum. Byrjaðu á því að finna mólfjölda hvers þeirra:</para>
 <equation id="fs-idp81202080" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mn>34.97</m:mn><m:mspace width="0.2em"/><m:mtext>g Fe</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>mol Fe</m:mtext></m:mrow><m:mrow><m:mn>55.85</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mn>0.6261</m:mn><m:mspace width="0.2em"/><m:mtext>mol Fe</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:mn>15.03</m:mn><m:mspace width="0.2em"/><m:mtext>g O</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>mol O</m:mtext></m:mrow><m:mrow><m:mn>16.00</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mn>0.9394</m:mn><m:mspace width="0.2em"/><m:mtext>mol O</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
 <para id="fs-idp19490304">Næst skaltu finna mólhlutfall járns á móti súrefni með því að deila með minni mólfjöldanum:</para>
@@ -104,12 +108,6 @@
 <para id="fs-idm112291760">N<sub>2</sub>O<sub>5</sub></para>
 </note>
 </example>
-<figure id="CNX_Chem_03_03_hematite" class="scaled-down">
-<media id="fs-idm156718064" alt="Two rounded, smooth black stones are shown.">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_03_hematite.jpg"/>
-</media>
-<caption>Hematít er járnoxíð sem er notað í skartgripi. (heimild: Mauro Cateb)</caption>
-</figure>
 <note id="fs-idm160004320" class="chemistry link-to-learning">
 <para id="fs-idp89502368">Fyrir fleiri útreiknuð dæmi sem sýna útreikning á reynsluformúlum, horfðu á stutta <link url="http://openstax.org/l/16empforms">myndbandið</link>.</para></note>
 </section>

@@ -157,7 +157,12 @@
 </example>
 <example id="fs-idm8741648">
 <para id="fs-idm24646960"><title>Útreikningur á fjölda frumeinda út frá massa frumefnis</title>Kopar er almennt notaður til að framleiða rafmagnsvír (<link target-id="CNX_Chem_03_02_copper"/>). Hversu margar koparfrumeindir eru í 5,00 g af koparvír?</para>
-
+<figure id="CNX_Chem_03_02_copper" class="scaled-down">
+<media id="fs-idm20298688" alt="A close-up photo of a spool of copper wire is shown.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_02_copper.jpg"/>
+</media>
+<caption>Copper wire is composed of many, many atoms of Cu. (credit: Emilian Robert Vicol)</caption>
+</figure>
 <para id="fs-idm40043360"><title>Lausn</title>Fjölda Cu-frumeinda í vírnum má auðveldlega reikna út frá massa hans með tveggja þrepa útreikningi: fyrst er mólmagn Cu reiknað og síðan er tala Avogadros (<emphasis effect="italics">N<sub>A</sub></emphasis>) notuð til að breyta þessu mólmagni í fjölda Cu-frumeinda:</para>
 <media id="fs-idm28023104" alt="A diagram of three boxes connected by a right-facing arrow in between each is shown. The box on the left contains the phrase, “Mass of C u atoms ( g ),” the middle box reads, “Moles of C u atoms ( mol ),” while the one on the right contains the phrase, “Number of C u atoms.” There is a phrase under the left arrow that says “Divide by molar mass (g / mol),” and under the right arrow it states, “Multiply by Avogadro’s number ( mol superscript negative one ).”">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_03_02_copperMoles_img-a962.jpg"/>
@@ -169,12 +174,6 @@
 <note id="fs-idm4952320"><title>Answer:</title>
 <para id="fs-idm3056704">4,586 <m:math><m:mo>×</m:mo></m:math> 10<sup>22</sup> Au-frumeindir</para></note>
 </example>
-<figure id="CNX_Chem_03_02_copper" class="scaled-down">
-<media id="fs-idm20298688" alt="A close-up photo of a spool of copper wire is shown.">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_02_copper.jpg"/>
-</media>
-<caption>Koparvír er samsettur úr gríðarlegum fjölda Cu-frumeinda. (Mynd: Emilian Robert Vicol)</caption>
-</figure>
 <example id="fs-idm1714048">
 <para id="fs-idp75300336"><title>Útreikningur á mólum út frá grömmum fyrir efnasamband</title>Líkamar okkar mynda prótein úr amínósýrum. Ein þessara amínósýra er glýsín, sem hefur sameindaformúluna C<sub>2</sub>H<sub>5</sub>O<sub>2</sub>N. Hversu mörg mól af glýsínsameindum eru í 28,35 g af glýsíni?</para>
 <para id="fs-idp1446192"><title>Lausn</title>Reiknaðu fjölda móla efnasambands út frá massa þess með sömu aðferð og notuð var fyrir frumefni í <link target-id="fs-idp76540048"/>:</para>

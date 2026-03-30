@@ -41,7 +41,12 @@
 <para id="fs-idm76041456"><title>Grafísk ákvörðun á stigi efnahvarfs og hraðafasta</title>Sýndu að gögnin í <link document="m68786" target-id="CNX_Chem_12_01_KDataH2O2"/> geta verið táknuð með fyrsta stigs hraðajöfnu með því að teikna graf af ln[H<sub>2</sub>O<sub>2</sub>] á móti tíma. Ákvarðaðu hraðafastann fyrir niðurbrot H<sub>2</sub>O<sub>2</sub> út frá þessum gögnum.</para>
 <para id="fs-idm136711920"><title>Lausn</title>Gögnin úr <link document="m68786" target-id="CNX_Chem_12_01_KDataH2O2"/> eru sett fram í töflu hér að neðan og graf af ln[H<sub>2</sub>O<sub>2</sub>] er sýnt á <link target-id="CNX_Chem_12_04_FrstOKin"/>.</para>
 
-
+<figure id="CNX_Chem_12_04_FrstOKin" class="scaled-down">
+<media id="fs-idm90898176" alt="A graph is shown with the label “Time ( h )” on the x-axis and “l n [ H subscript 2 O subscript 2 ]” on the y-axis. The x-axis shows markings at 6, 12, 18, and 24 hours. The vertical axis shows markings at negative 3, negative 2, negative 1, and 0. A decreasing linear trend line is drawn through five points represented at the coordinates (0, 0), (6, negative 0.693), (12, negative 1.386), (18, negative 2.079), and (24, negative 2.772).">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_12_04_FrstOKin.jpg"/>
+</media>
+<caption>A linear relationship between ln[H<sub>2</sub>O<sub>2</sub>] and time suggests the decomposition of hydrogen peroxide is a first-order reaction.</caption>
+</figure>
 <para id="fs-idm88773168">Grafið af ln[H<sub>2</sub>O<sub>2</sub>] á móti tíma er línulegt, sem gefur til kynna að hægt sé að lýsa efnahvarfinu með hraðajöfnu af fyrsta stigi.</para>
 <para id="fs-idm97546480">Samkvæmt línulegu formi heildaðs hraðalögmáls af fyrsta stigi er hraðafastinn gefinn með neikvæðri hallatölu þessa grafs.</para>
 <equation id="fs-idp49567824" class="unnumbered"><m:math><m:mrow><m:mtext>slope</m:mtext><m:mo>=</m:mo><m:mspace width="0.1em"/><m:mfrac><m:mrow><m:mtext>change in</m:mtext><m:mspace width="0.2em"/><m:mi>y</m:mi></m:mrow><m:mrow><m:mtext>change in</m:mtext><m:mspace width="0.2em"/><m:mi>x</m:mi></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mspace width="0.1em"/><m:mfrac><m:mrow><m:mtext>Δ</m:mtext><m:mi>y</m:mi></m:mrow><m:mrow><m:mtext>Δ</m:mtext><m:mi>x</m:mi></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mspace width="0.1em"/><m:mfrac><m:mrow><m:mtext>Δln</m:mtext><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mrow><m:mtext>Δ</m:mtext><m:mi>t</m:mi></m:mrow></m:mfrac></m:mrow></m:math></equation>
@@ -104,12 +109,6 @@
 </tbody>
 </tgroup>
 </table>
-<figure id="CNX_Chem_12_04_FrstOKin" class="scaled-down">
-<media id="fs-idm90898176" alt="A graph is shown with the label “Time ( h )” on the x-axis and “l n [ H subscript 2 O subscript 2 ]” on the y-axis. The x-axis shows markings at 6, 12, 18, and 24 hours. The vertical axis shows markings at negative 3, negative 2, negative 1, and 0. A decreasing linear trend line is drawn through five points represented at the coordinates (0, 0), (6, negative 0.693), (12, negative 1.386), (18, negative 2.079), and (24, negative 2.772).">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_12_04_FrstOKin.jpg"/>
-</media>
-<caption>Línulegt samband milli ln[H<sub>2</sub>O<sub>2</sub>] og tíma bendir til þess að niðurbrot vetnisperoxíðs sé efnahvarf af fyrsta stigi.</caption>
-</figure>
 <table id="fs-idm149704608" summary="This table has three columns and six rows. The first row is a header row, and it labels each column, “Trial,” “Time ( s ),” and, “[ A ].” Under the “Trial” column are the numbers: 1, 2, 3, 4, and 5. Under the “Time ( s )” column are the numbers: 4.0, 8.0, 12.0, 16.0, and 20.0. Under the “ [ A ]” column are the numbers: 0.220, 0.144, 0.110, 0.088, and 0.074." class="unnumbered">
 <label/>
 <tgroup cols="3">
@@ -175,7 +174,12 @@
 <para id="fs-idm190212352">Til að greina á milli fyrsta stigs efnahvarfs og annars stigs efnahvarfs skaltu undirbúa graf af ln[C<sub>4</sub>H<sub>6</sub>]<sub><emphasis effect="italics">t</emphasis></sub> á móti <emphasis effect="italics">t</emphasis> og bera það saman við graf af <m:math><m:mrow><m:mfrac><m:mtext>1</m:mtext><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>4</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>6</m:mn></m:msub></m:mrow><m:msub><m:mo>]</m:mo><m:mi>t</m:mi></m:msub></m:mrow></m:mrow></m:mfrac></m:mrow></m:math> á móti <emphasis effect="italics">t</emphasis>. Gildin sem þarf fyrir þessi gröf fylgja hér á eftir.</para>
 
 <para id="fs-idp69115360">Gröfin eru sýnd á <link target-id="CNX_Chem_12_04_2OrdKin"/>, sem sýnir greinilega að grafið af ln[C<sub>4</sub>H<sub>6</sub>]<sub><emphasis effect="italics">t</emphasis></sub> á móti <emphasis effect="italics">t</emphasis> er ekki línulegt, þess vegna er efnahvarfið ekki fyrsta stigs. Grafið af <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>4</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>6</m:mn></m:msub></m:mrow><m:msub><m:mo>]</m:mo><m:mi>t</m:mi></m:msub></m:mrow></m:mrow></m:mfrac></m:mrow></m:math> á móti <emphasis effect="italics">t</emphasis> er línulegt, sem gefur til kynna að efnahvarfið sé annars stigs.</para>
-
+<figure id="CNX_Chem_12_04_2OrdKin" class="scaled-down">
+<media id="fs-idp16234496" alt="Two graphs are shown, each with the label “Time ( s )” on the x-axis. The graph on the left is labeled, “l n [ C subscript 4 H subscript 6 ],” on the y-axis. The graph on the right is labeled “1 divided by [ C subscript 4 H subscript 6 ],” on the y-axis. The x-axes for both graphs show markings at 3000 and 6000. The y-axis for the graph on the left shows markings at negative 6, negative 5, and negative 4. A decreasing slightly concave up curve is drawn through five points at coordinates that are (0, negative 4.605), (1600, negative 5.289), (3200, negative 5.692), (4800, negative 5.978), and (6200, negative 6.175). The y-axis for the graph on the right shows markings at 100, 300, and 500. An approximately linear increasing curve is drawn through five points at coordinates that are (0, 100), (1600, 198), (3200, 296), and (4800, 395), and (6200, 481).">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_12_04_2OrdKin.jpg"/>
+</media>
+<caption>These two graphs show first- and second-order plots for the dimerization of C<sub>4</sub>H<sub>6</sub>. The linear trend in the second-order plot (right) indicates that the reaction follows second-order kinetics.</caption>
+</figure>
 <para id="fs-idm339836784">Samkvæmt heildaða hraðalögmálinu fyrir annars stigs efnahvörf er hraðafastinn jafn hallatölu grafsins <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mrow><m:mrow><m:mo>[</m:mo><m:mi>A</m:mi><m:msub><m:mo>]</m:mo><m:mi>t</m:mi></m:msub></m:mrow></m:mrow></m:mfrac></m:mrow></m:math> á móti <emphasis effect="italics">t</emphasis>. Með því að nota gögnin fyrir <emphasis effect="italics">t</emphasis> = 0 <emphasis effect="italics">s</emphasis> og <emphasis effect="italics">t</emphasis> = 6200 <emphasis effect="italics">s</emphasis> er hraðafastinn metinn á eftirfarandi hátt:</para>
 <equation id="fs-idm363866800" class="unnumbered"><m:math><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mtext>slope</m:mtext><m:mo>=</m:mo><m:mfrac><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>481</m:mn><m:mspace width="0.2em"/><m:msup><m:mi>M</m:mi><m:mn>−1</m:mn></m:msup><m:mo>−</m:mo><m:mn>100</m:mn><m:mspace width="0.2em"/><m:msup><m:mi>M</m:mi><m:mn>−1</m:mn></m:msup><m:mo stretchy="false">)</m:mo></m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>6200</m:mn><m:mspace width="0.2em"/><m:mtext>s</m:mtext><m:mo>−</m:mo><m:mn>0</m:mn><m:mspace width="0.2em"/><m:mtext>s</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow></m:mfrac><m:mo>=</m:mo><m:mn>0.0614</m:mn><m:mspace width="0.2em"/><m:msup><m:mtext>M</m:mtext><m:mn>−1</m:mn></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>s</m:mtext><m:mn>−1</m:mn></m:msup></m:mrow></m:math></equation>
 <para id="fs-idm56284464"><title>Kannaðu þekkingu þína</title>Passa eftirfarandi gögn við annars stigs hraðalögmál?</para>
@@ -265,12 +269,6 @@
 </tbody>
 </tgroup>
 </table>
-<figure id="CNX_Chem_12_04_2OrdKin" class="scaled-down">
-<media id="fs-idp16234496" alt="Two graphs are shown, each with the label “Time ( s )” on the x-axis. The graph on the left is labeled, “l n [ C subscript 4 H subscript 6 ],” on the y-axis. The graph on the right is labeled “1 divided by [ C subscript 4 H subscript 6 ],” on the y-axis. The x-axes for both graphs show markings at 3000 and 6000. The y-axis for the graph on the left shows markings at negative 6, negative 5, and negative 4. A decreasing slightly concave up curve is drawn through five points at coordinates that are (0, negative 4.605), (1600, negative 5.289), (3200, negative 5.692), (4800, negative 5.978), and (6200, negative 6.175). The y-axis for the graph on the right shows markings at 100, 300, and 500. An approximately linear increasing curve is drawn through five points at coordinates that are (0, 100), (1600, 198), (3200, 296), and (4800, 395), and (6200, 481).">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_12_04_2OrdKin.jpg"/>
-</media>
-<caption>Þessi tvö gröf sýna gröf fyrir fyrsta og annars stigs efnahvörf fyrir tvíliðun C<sub>4</sub>H<sub>6</sub>. Línulega stefnan í annars stigs grafinu (hægra megin) gefur til kynna að efnahvarfið fylgi annars stigs hraðafræði.</caption>
-</figure>
 <table id="fs-idm88760288" summary="This table contains two columns and seven rows. The first row is a header row, and it labels each column “Time ( s )” and “[ A ] ( M ).” Under the “Time ( s )” column are the numbers: 5, 10, 15, 20, 25, and 35. Under the “[ A ] ( M )” column are the numbers 0.952, 0.625, 0.465, 0.370, 0.308, and 0.230." class="unnumbered">
 <label/>
 <tgroup cols="3">
@@ -348,7 +346,12 @@
 <para id="fs-idm124479504">Þessi jafna lýsir væntanlegu öfugu sambandi milli helmingunartíma efnahvarfsins og hraðafasta þess, <emphasis effect="italics">k</emphasis>. Hraðari efnahvörf sýna stærri hraðafasta og samsvarandi styttri helmingunartíma. Hægari efnahvörf sýna minni hraðafasta og lengri helmingunartíma.</para>
 <example id="fs-idm35443680">
 <para id="fs-idm33355984"><title>Útreikningur á fyrsta stigs hraðafasta með helmingunartíma</title>Reiknaðu hraðafastann fyrir fyrsta stigs niðurbrot vetnisperoxíðs í vatni við 40 °C með því að nota gögnin sem gefin eru í <link target-id="CNX_Chem_12_04_HPerDcmp"/>.</para>
-
+<figure id="CNX_Chem_12_04_HPerDcmp" class="scaled-down">
+<media id="fs-idm83598000" alt="A diagram of 5 beakers is shown, each approximately half-filled with colored substances. Beneath each beaker are three rows of text. The first beaker contains a bright green substance and is labeled below as, “1.000 M, 0 s, and ( 0 h ).” The second beaker contains a slightly lighter green substance and is labeled below as, “0.500 M, 2.16 times 10 superscript 4 s, and ( 6 h ).” The third beaker contains an even lighter green substance and is labeled below as, “0.250 M, 4.32 times 10 superscript 4 s, and ( 12 h ).” The fourth beaker contains a green tinted substance and is labeled below as, “0.125 M, 6.48 times 10 superscript 4 s, and ( 18 h ).” The fifth beaker contains a colorless substance and is labeled below as, “0.0625 M, 8.64 times 10 superscript 4 s, and ( 24 h ).”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_12_04_HPerDcmp.jpg"/>
+</media>
+<caption>The decomposition of H<sub>2</sub>O<sub>2</sub> <m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>2H</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>2H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow></m:math> at 40 °C is illustrated. The intensity of the color symbolizes the concentration of H<sub>2</sub>O<sub>2</sub> at the indicated times; H<sub>2</sub>O<sub>2</sub> is actually colorless.</caption>
+</figure>
 <para id="fs-idp122074992"><title>Lausn</title>Með því að skoða gögnin um styrk/tíma í <link target-id="CNX_Chem_12_04_HPerDcmp"/> sést að helmingunartími fyrir niðurbrot H<sub>2</sub>O<sub>2</sub> er 2,16 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>4</sup> s:</para>
 <equation id="fs-idm2063184" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd columnalign="right"><m:msub><m:mi>t</m:mi><m:mrow><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mn>2</m:mn></m:mrow></m:msub></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mfrac><m:mrow><m:mn>0.693</m:mn></m:mrow><m:mi>k</m:mi></m:mfrac></m:mtd></m:mtr><m:mtr><m:mtd columnalign="right"><m:mi>k</m:mi></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mfrac><m:mrow><m:mn>0.693</m:mn></m:mrow><m:mrow><m:msub><m:mi>t</m:mi><m:mrow><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mn>2</m:mn></m:mrow></m:msub></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mspace width="0.1em"/><m:mfrac><m:mrow><m:mn>0.693</m:mn></m:mrow><m:mrow><m:mn>2.16</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>4</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>s</m:mtext></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mn>3.21</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>s</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mtd></m:mtr></m:mtable></m:math></equation>
 <para id="fs-idp33836864"><title>Athugaðu þekkingu þína</title>Fyrsta stigs geislavirkt niðurbrot joð-131 sýnir hraðafasta upp á 0,138 d<sup>−1</sup>. Hver er helmingunartími þessa niðurbrots?</para>
@@ -357,12 +360,6 @@
 <para id="fs-idm101854176">5,02 d.</para>
 </note>
 </example>
-<figure id="CNX_Chem_12_04_HPerDcmp" class="scaled-down">
-<media id="fs-idm83598000" alt="A diagram of 5 beakers is shown, each approximately half-filled with colored substances. Beneath each beaker are three rows of text. The first beaker contains a bright green substance and is labeled below as, “1.000 M, 0 s, and ( 0 h ).” The second beaker contains a slightly lighter green substance and is labeled below as, “0.500 M, 2.16 times 10 superscript 4 s, and ( 6 h ).” The third beaker contains an even lighter green substance and is labeled below as, “0.250 M, 4.32 times 10 superscript 4 s, and ( 12 h ).” The fourth beaker contains a green tinted substance and is labeled below as, “0.125 M, 6.48 times 10 superscript 4 s, and ( 18 h ).” The fifth beaker contains a colorless substance and is labeled below as, “0.0625 M, 8.64 times 10 superscript 4 s, and ( 24 h ).”">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_12_04_HPerDcmp.jpg"/>
-</media>
-<caption>Niðurbrot H<sub>2</sub>O<sub>2</sub> <m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>2H</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>2H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow></m:math> við 40 °C er sýnt. Litastyrkurinn táknar styrk H<sub>2</sub>O<sub>2</sub> á tilgreindum tímum; H<sub>2</sub>O<sub>2</sub> er í raun litlaust.</caption>
-</figure>
 </section>
 <section id="fs-idm87302368">
 <title>Annars stigs efnahvörf</title>
