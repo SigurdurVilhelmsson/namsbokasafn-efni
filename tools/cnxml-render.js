@@ -107,6 +107,31 @@ let BOOK_SLUG = 'efnafraedi-2e';
 // =====================================================================
 
 /**
+ * Look up cached exercise content for an os-embed reference.
+ * Returns { stimulus, questions, solutionsPublic } or null if not cached.
+ */
+function resolveOsEmbed(nickname) {
+  // BOOKS_DIR points to books/{bookSlug}
+  const cachePath = path.join(BOOKS_DIR, '01-source', 'exercises', `${nickname}.json`);
+  if (!fs.existsSync(cachePath)) return null;
+
+  try {
+    const exercise = JSON.parse(fs.readFileSync(cachePath, 'utf-8'));
+    return {
+      stimulus: exercise.stimulus_html || '',
+      questions: (exercise.questions || []).map((q) => ({
+        id: q.id,
+        stem: q.stem_html || '',
+        solutions: (q.collaborator_solutions || []).map((s) => s.content_html || ''),
+      })),
+      solutionsPublic: exercise.solutions_are_public || false,
+    };
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Format chapter for use in directory paths.
  * @param {number|string} chapter - Chapter number or "appendices"
  * @returns {string} Formatted chapter string (e.g., "ch01", "appendices")
@@ -1450,8 +1475,52 @@ function renderExercise(exercise, context) {
   const problemMatch = exercise.content.match(/<problem([^>]*)>([\s\S]*?)<\/problem>/);
   if (problemMatch) {
     const problemId = parseAttributes(problemMatch[1]).id;
+    const problemContent = problemMatch[2];
+
+    // Check for os-embed exercise reference
+    const osEmbedMatch = problemContent.match(/url="#exercise\/([^"]+)"/);
+    if (osEmbedMatch) {
+      const resolved = resolveOsEmbed(osEmbedMatch[1]);
+      if (resolved) {
+        lines.push(`  <div${problemId ? ` id="${escapeAttr(problemId)}"` : ''} class="problem">`);
+        if (resolved.stimulus) {
+          lines.push(`    <p>${resolved.stimulus}</p>`);
+        }
+        const partLabels = ['(a)', '(b)', '(c)', '(d)', '(e)', '(f)', '(g)', '(h)'];
+        for (let i = 0; i < resolved.questions.length; i++) {
+          const q = resolved.questions[i];
+          const label =
+            resolved.questions.length > 1
+              ? `<strong>${partLabels[i] || '(' + (i + 1) + ')'}</strong> `
+              : '';
+          lines.push(`    <div class="exercise-part">${label}${q.stem}</div>`);
+        }
+        lines.push('  </div>');
+
+        // Render solutions if public
+        if (resolved.solutionsPublic && resolved.questions.some((q) => q.solutions.length > 0)) {
+          lines.push('  <div class="solution">');
+          for (let i = 0; i < resolved.questions.length; i++) {
+            const q = resolved.questions[i];
+            if (q.solutions.length > 0) {
+              const label =
+                resolved.questions.length > 1
+                  ? `<strong>${partLabels[i] || '(' + (i + 1) + ')'}</strong> `
+                  : '';
+              lines.push(`    <p>${label}${q.solutions[0]}</p>`);
+            }
+          }
+          lines.push('  </div>');
+        }
+
+        lines.push('</div>');
+        return lines.join('\n');
+      }
+    }
+
+    // Normal rendering (no os-embed or not resolved)
     lines.push(`  <div${problemId ? ` id="${escapeAttr(problemId)}"` : ''} class="problem">`);
-    renderSectionContent(problemMatch[2]);
+    renderSectionContent(problemContent);
     lines.push('  </div>');
   }
 
