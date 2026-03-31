@@ -2,23 +2,21 @@
 
 Welcome to the Námsbókasafn translation team! This guide will help you get started.
 
+> **Visual guide available:** For a screenshot-rich walkthrough, see [Editor Guide with Screenshots](editor-guide/README.md).
+
 ## Account Setup
 
-### Step 1: GitHub Account
-You'll need a GitHub account to log in to the translation system.
-
-1. If you don't have one, create an account at [github.com](https://github.com)
-2. Share your GitHub username with the project admin
-3. Wait for confirmation that your account has been added to the team
+### Step 1: Microsoft Account
+You'll need a school Microsoft account to log in to the translation system. Your admin will add your email address to the system before your first login.
 
 ### Step 2: First Login
-1. Go to the editorial portal: `https://ritstjorn.namsbokasafn.is`
-2. Click **"Innskráning"** (Login)
-3. You'll be redirected to GitHub — authorize the application
+1. Go to the editorial portal (your admin will provide the URL)
+2. Click **"Skrá inn með Microsoft"** (Sign in with Microsoft)
+3. Sign in with your school Microsoft account
 4. After successful login, you'll see the main dashboard
 
 ### Step 3: Verify Your Profile
-1. Your name and avatar should appear in the top-right corner
+1. Your name should appear in the sidebar
 2. If anything looks wrong, contact the admin
 
 ## Understanding the Workflow
@@ -27,8 +25,8 @@ The translation pipeline has two review passes:
 
 | Pass | Name | Purpose | Editor URL |
 |------|------|---------|------------|
-| Pass 1 | Linguistic Review | Fix grammar, accuracy, terminology | `/segment-editor` |
-| Pass 2 | Localization | Adapt for Icelandic context (units, examples) | `/localization-editor` |
+| Pass 1 | Linguistic Review | Fix grammar, accuracy, terminology | `/editor` |
+| Pass 2 | Localization | Adapt for Icelandic context (units, examples) | `/localization` |
 
 Content flows through this pipeline:
 ```
@@ -40,7 +38,7 @@ Machine Translation → Pass 1 Review → Faithful Translation → Pass 2 → Lo
 The segment editor is where you'll spend most of your time. It shows individual text segments (paragraphs, headings, list items) side by side: English source on the left, Icelandic translation on the right.
 
 ### Opening the Segment Editor
-1. Navigate to `/segment-editor`
+1. Navigate to `/editor`
 2. Select a **book** (e.g., Efnafræði = Chemistry)
 3. Select a **chapter**
 4. You'll see a list of modules — click one to start editing
@@ -84,7 +82,7 @@ You can participate in discussions by adding comments on individual edits.
 After Pass 1 produces a faithful translation, Pass 2 adapts it for Icelandic students.
 
 ### Opening the Localization Editor
-1. Navigate to `/localization-editor`
+1. Navigate to `/localization`
 2. Select book and chapter
 3. Click a module to start
 
@@ -135,13 +133,11 @@ If you encounter a term not in the glossary:
 
 | Page | URL | Purpose |
 |------|-----|---------|
-| Segment Editor | `/segment-editor` | Pass 1 linguistic review |
-| Localization Editor | `/localization-editor` | Pass 2 cultural adaptation |
+| Segment Editor | `/editor` | Pass 1 linguistic review |
+| Localization Editor | `/localization` | Pass 2 cultural adaptation |
 | Terminology | `/terminology` | Term database and lookup |
-| Pipeline Status | `/status` | Overall translation progress |
-| Review Queue | `/review-queue` | Cross-chapter review overview (Head Editor) |
-| Reviews | `/reviews` | Detailed review dashboard |
-| Dashboard | `/dashboard` | Head Editor overview |
+| Progress | `/progress` | Overall translation progress |
+| Reviews | `/editor?view=reviews` | Pending review queue |
 | Feedback | `/feedback` | Reader feedback form (public) |
 
 ## When You're Stuck
@@ -182,11 +178,11 @@ If you encounter a term not in the glossary:
 ## Contact
 
 - **Admin/Head Editor**: Contact through the team channel
-- **Technical Support**: File an issue on GitHub
+- **Technical Support**: Contact the admin
 - **Published translations**: [namsbokasafn.is](https://namsbokasafn.is)
 
 ---
 
 **Welcome to the team!** Don't hesitate to ask questions — we're all learning together.
 
-*Last updated: February 2026*
+*Last updated: March 2026*
