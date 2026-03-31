@@ -1,0 +1,446 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-30T11:43:28.630Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdXdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--de0be72e646df03d6732ce063ecfec106b7c015a",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdXdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--de0be72e646df03d6732ce063ecfec106b7c015a/OChem_22_EC_201a.jpg"
+    },
+    {
+      "created_at": "2023-08-30T11:43:28.635Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--49e5d35c00db08f9289894b09726e5aea9b873e8",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--49e5d35c00db08f9289894b09726e5aea9b873e8/OChem_22_EC_201b.jpg"
+    },
+    {
+      "created_at": "2023-08-30T11:43:28.637Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8fd911155b584a0b3766a91563132f9b0a0d7236",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8fd911155b584a0b3766a91563132f9b0a0d7236/OChem_22_EC_201c.jpg"
+    },
+    {
+      "created_at": "2023-08-30T11:43:28.641Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdThYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--94d83a44d654b08df5a517fd225fc9c7aeab0585",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdThYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--94d83a44d654b08df5a517fd225fc9c7aeab0585/OChem_22_EC_201d.jpg"
+    },
+    {
+      "created_at": "2023-08-30T11:43:28.645Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdkFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a8ebbc78875cc0ee7dee787d7f7f379ac94cbfd0",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdkFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a8ebbc78875cc0ee7dee787d7f7f379ac94cbfd0/OChem_22_EC_201e.jpg"
+    },
+    {
+      "created_at": "2023-08-30T11:43:28.648Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdkVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6fb88e9b5571659f234995307fddd44bc056611c",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdkVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6fb88e9b5571659f234995307fddd44bc056611c/OChem_22_EC_201f.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:ae2e37ee-742e-4984-9a4c-ff4a8efba108",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:22-1-keto-enol-tautomerism"
+  ],
+  "uuid": "01dd66de-018d-42ca-af61-5594f52ab9c0",
+  "group_uuid": "18e77bea-7507-4fd3-a8c0-e6116e04b8ce",
+  "number": 38769,
+  "version": 4,
+  "uid": "38769@4",
+  "published_at": "2023-08-30T11:43:32.104Z",
+  "nickname": "22-01-OC-P01",
+  "solutions_are_public": true,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "Draw structures for the enol tautomers of the following compounds:",
+  "questions": [
+    {
+      "id": 360864,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "Cyclopentanone",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdXdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--de0be72e646df03d6732ce063ecfec106b7c015a/OChem_22_EC_201a.jpg\" alt=\"A structure of cyclopentene with a hydroxyl group and double bond at C 1.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 360865,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "Methyl thioacetate",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--49e5d35c00db08f9289894b09726e5aea9b873e8/OChem_22_EC_201b.jpg\" alt=\"An alkene in which C 1 is bonded to a hydroxyl group on top and methyl sulfide group on the right.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 360866,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "Ethyl acetate",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8fd911155b584a0b3766a91563132f9b0a0d7236/OChem_22_EC_201c.jpg\" alt=\"An alkene in which C 1 has two hydrogen atoms on it and C 2 is linked to a  hydroxyl group and to an oxygen which in turn is linked to an ethyl group.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 360867,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "Propanal",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdThYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--94d83a44d654b08df5a517fd225fc9c7aeab0585/OChem_22_EC_201d.jpg\" alt=\"An alkene in which C 1 has two hydrogen atoms on it and C 2 is linked to a  hydroxyl group and to a hydrogen atom\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 360868,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "Acetic acid",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdkFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a8ebbc78875cc0ee7dee787d7f7f379ac94cbfd0/OChem_22_EC_201e.jpg\" alt=\"An alkene in which C 1 has two hydrogen atoms on it and C 2 is linked to two  hydroxyl groups.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 360869,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "Phenylacetone",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdkVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6fb88e9b5571659f234995307fddd44bc056611c/OChem_22_EC_201f.jpg\" alt=\"Two alkene structures. C 2 is bonded to hydroxyl and methyl groups but in second structure, C 2 is bonded to hydroxyl and C H 2 P h.\">"
+        }
+      ],
+      "community_solutions": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    4,
+    3,
+    2,
+    1
+  ]
+}

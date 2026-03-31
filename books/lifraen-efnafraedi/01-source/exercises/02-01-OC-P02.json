@@ -1,0 +1,478 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-01T04:59:09.758Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1VQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c291daed645521d0c149a5fa02f5b2e73eff79ce",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1VQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c291daed645521d0c149a5fa02f5b2e73eff79ce/Figure%2002_DD_OChem-02-EC-201a_80485-appD-u013_A-CLDelta_img.jpg"
+    },
+    {
+      "created_at": "2023-08-01T04:59:09.761Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1lQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f98fc2104f4ce872f6ccdd495efcb03b5871c477",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1lQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f98fc2104f4ce872f6ccdd495efcb03b5871c477/Figure%2002_DD_OChem-02-EC-201b_80485-appD-u013_A-NH2Delta_img.jpg"
+    },
+    {
+      "created_at": "2023-08-01T04:59:09.763Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2NQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--afd1482daed44932b88fc72561a7ad50c5501383",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2NQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--afd1482daed44932b88fc72561a7ad50c5501383/Figure%2002_DD_OChem-02-EC-201c_80485-appD-u013_A-HDelta_img.jpg"
+    },
+    {
+      "created_at": "2023-08-01T04:59:09.766Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2dQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9be5f8c7efd599a8a3c11105bf6b313122adb11f",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2dQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9be5f8c7efd599a8a3c11105bf6b313122adb11f/Figure%2002_DD_OChem-02-EC-201d_80485-appD-u013_A-CarbSul_img.jpg"
+    },
+    {
+      "created_at": "2023-08-01T04:59:09.768Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2tQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--aba3aaf7fbf38e0d65c780cfe4af0436905ae9a3",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2tQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--aba3aaf7fbf38e0d65c780cfe4af0436905ae9a3/Figure%2002_DD_OChem-02-EC-201e_80485-appD-u013_A-MgBrDelta_img.jpg"
+    },
+    {
+      "created_at": "2023-08-01T04:59:09.770Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc29QIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3c0bc7f934d61fde1f65f6e0d4497b41674df9c6",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc29QIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3c0bc7f934d61fde1f65f6e0d4497b41674df9c6/Figure%2002_DD_OChem-02-EC-201f_80485-appD-u013_A-FDelta_img.jpg"
+    },
+    {
+      "created_at": "2023-08-01T04:59:09.772Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--aa8a32420d863709f7d8fa7f5c925bb533a2ee9e",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--aa8a32420d863709f7d8fa7f5c925bb533a2ee9e/OChem_02_EC_201a.jpg"
+    },
+    {
+      "created_at": "2023-08-01T04:59:09.775Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBallRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b25c5b41b1f5e596f316ed4cff5efca416a3fbf",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBallRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b25c5b41b1f5e596f316ed4cff5efca416a3fbf/OChem_02_EC_201b.jpg"
+    },
+    {
+      "created_at": "2023-08-01T04:59:09.777Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--faa0991c11ed69b3dac07e68a96fdc020a87504a",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--faa0991c11ed69b3dac07e68a96fdc020a87504a/OChem_02_EC_201c.jpg"
+    },
+    {
+      "created_at": "2023-08-01T04:59:09.779Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7aa4be433bfe9c8e45537292c0938fff5ed508d2",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7aa4be433bfe9c8e45537292c0938fff5ed508d2/OChem_02_EC_201d.jpg"
+    },
+    {
+      "created_at": "2023-08-01T04:59:09.781Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamtRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cdddaf7ba1185446089fdf04c2190bdd2595d8fe",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamtRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cdddaf7ba1185446089fdf04c2190bdd2595d8fe/OChem_02_EC_201e.jpg"
+    },
+    {
+      "created_at": "2023-08-01T04:59:09.790Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBam9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fea33f20bb494f5b603a7ea1b85f8a8146f01435",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBam9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fea33f20bb494f5b603a7ea1b85f8a8146f01435/OChem_02_EC_201f.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:2f4dab84-d1ad-4fd6-8446-f7a32e66c2cf",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:2-1-polar-covalent-bonds-and-electronegativity"
+  ],
+  "uuid": "55056359-e980-4520-b272-351da977ee99",
+  "group_uuid": "b9941330-aadb-4af9-b015-cc9ef4904ca4",
+  "number": 36116,
+  "version": 6,
+  "uid": "36116@6",
+  "published_at": "2023-08-01T04:59:13.495Z",
+  "nickname": "02-01-OC-P02",
+  "solutions_are_public": true,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "Use the <i>δ</i>+/<i>δ</i>– convention to indicate the direction of expected polarity for each of the bonds indicated.",
+  "questions": [
+    {
+      "id": 350706,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "H<sub>3</sub>C<span class=\"magenta-text\">–</span>Cl",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--aa8a32420d863709f7d8fa7f5c925bb533a2ee9e/OChem_02_EC_201a.jpg\" alt=\"The chemical structure of chloromethane with a delta plus charge on carbon and a delta minus charge on chlorine.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 350707,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": " H<sub>3</sub>C<span class=\"magenta-text\">–</span>NH<sub>2</sub>",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBallRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b25c5b41b1f5e596f316ed4cff5efca416a3fbf/OChem_02_EC_201b.jpg\" alt=\"The chemical structure of methylamine with a delta plus charge on carbon and a delta minus on nitrogen.\">\n"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 350708,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": " H<sub>2</sub>N<span class=\"magenta-text\">–</span>H",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--faa0991c11ed69b3dac07e68a96fdc020a87504a/OChem_02_EC_201c.jpg\" alt=\"The chemical structure of ammonia with a  delta minus charge on nitrogen and a delta plus charge on hydrogen.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 350709,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "H<sub>3</sub>C<span class=\"magenta-text\">–</span>SH",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7aa4be433bfe9c8e45537292c0938fff5ed508d2/OChem_02_EC_201d.jpg\" alt=\"The chemical structure of methanethiol.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 350710,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": " H<sub>3</sub>C<span class=\"magenta-text\">–</span>MgBr",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamtRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cdddaf7ba1185446089fdf04c2190bdd2595d8fe/OChem_02_EC_201e.jpg\" alt=\"The chemical structure of methyl magnesium bromide with a delta minus charge on carbon and a delta plus charge on magnesium.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 350711,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": " H<sub>3</sub>C<span class=\"magenta-text\">–</span>F",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBam9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fea33f20bb494f5b603a7ea1b85f8a8146f01435/OChem_02_EC_201f.jpg\" alt=\"The chemical structure of fluoromethane with a delta plus charge on carbon and a delta minus charge on fluorine.\">"
+        }
+      ],
+      "community_solutions": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    6,
+    5,
+    4,
+    3,
+    2,
+    1
+  ]
+}

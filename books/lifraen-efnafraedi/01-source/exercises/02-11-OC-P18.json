@@ -1,0 +1,374 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-09T14:45:33.909Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdU1QIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--af20ab8de23ad542c7bb500b5c6e4aa1e6d89726",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdU1QIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--af20ab8de23ad542c7bb500b5c6e4aa1e6d89726/Figure%2002_11_OChem-02-11-009_80485-02-u054_P-Imidaz_img.jpg"
+    },
+    {
+      "created_at": "2023-08-09T14:45:33.913Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVFQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--df1b90991c0eba083a633fd41ee6e02affbb9c97",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVFQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--df1b90991c0eba083a633fd41ee6e02affbb9c97/Figure%2002_DD_OChem-02-EC-210a_80485-appD-u021_A-Descriptor_img.jpg"
+    },
+    {
+      "created_at": "2023-08-09T14:45:33.915Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVVQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5c0d8b4db07f209dabbcc22a1f11f6094cb0e8bf",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVVQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5c0d8b4db07f209dabbcc22a1f11f6094cb0e8bf/Figure%2002_DD_OChem-02-EC-210b_80485-appD-u021_A-Descriptor_img.jpg"
+    },
+    {
+      "created_at": "2023-08-09T14:45:33.917Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ef63b1bfb32915e752c6022c3d28adb51c3ef45b",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ef63b1bfb32915e752c6022c3d28adb51c3ef45b/OChem_02_11_009.jpg"
+    },
+    {
+      "created_at": "2023-08-09T14:45:33.929Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--74b3f41f9190f3fcab1ad928b38c39531de6b17a",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--74b3f41f9190f3fcab1ad928b38c39531de6b17a/OChem_02_EC_210a.jpg"
+    },
+    {
+      "created_at": "2023-08-09T14:45:33.932Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFlRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7449055f03d99dac305089e5ba392383545530fe",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFlRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7449055f03d99dac305089e5ba392383545530fe/OChem_02_EC_210b.jpg"
+    },
+    {
+      "created_at": "2023-08-09T14:45:33.936Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1FhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fad186a4bdb7ea9b43d85b1797f5a8cf2714ab94",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1FhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fad186a4bdb7ea9b43d85b1797f5a8cf2714ab94/OChem_02_EC_210b.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:5cbe8a3e-140b-4c80-b50c-cd437228d7a4",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:2-11-acids-and-bases-the-lewis-definition"
+  ],
+  "uuid": "ceb3cb28-6a82-42f7-ab59-7cfa49c6f734",
+  "group_uuid": "6133f503-769d-4f32-be85-1c988133636c",
+  "number": 36130,
+  "version": 7,
+  "uid": "36130@7",
+  "published_at": "2023-08-09T14:45:40.281Z",
+  "nickname": "02-11-OC-P18",
+  "solutions_are_public": true,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "<p>Imidazole, which forms part of amino acid histidine, can act as both an acid and a base.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ef63b1bfb32915e752c6022c3d28adb51c3ef45b/OChem_02_11_009.jpg\" alt=\"Line-angle structure, ball-and-stick model, and electrostatic potential map of imidazole along with line-angle structure of histidine.\">",
+  "questions": [
+    {
+      "id": 351651,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "Look at the electrostatic potential map of imidazole, and identify the most acidic hydrogen atom and the most basic nitrogen atom.",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--74b3f41f9190f3fcab1ad928b38c39531de6b17a/OChem_02_EC_210a.jpg\" alt=\"The structure of imidazole shows N1 labeled more basic (red) and the hydrogen bonded to N3 labeled most acidic (blue).\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 351652,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "Draw structures for the resonance forms of the products that result when imidazole is protonated by an acid and deprotonated by a base.",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1FhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fad186a4bdb7ea9b43d85b1797f5a8cf2714ab94/OChem_02_EC_210b.jpg\" alt=\"Imidazole reversibly reacts with acid at N1 to form two resonance structures of protonated product. Imidazole reversibly reacts with base at the N3 hydrogen, forming two resonance structures of deprotonated product.\">"
+        }
+      ],
+      "community_solutions": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    7,
+    6,
+    5,
+    4,
+    3,
+    2,
+    1
+  ]
+}

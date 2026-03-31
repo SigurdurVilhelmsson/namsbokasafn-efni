@@ -1,0 +1,432 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-31T10:58:43.470Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9f05f4d4210b8de95b6e90bc6c4b3e2b6d237d7c",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9f05f4d4210b8de95b6e90bc6c4b3e2b6d237d7c/OChem_21_EC_040a.jpg"
+    },
+    {
+      "created_at": "2023-08-31T10:58:43.473Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3ed6bb89026aec9ff163801c8451677d2a4c0ecd",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3ed6bb89026aec9ff163801c8451677d2a4c0ecd/OChem_21_EC_040b.jpg"
+    },
+    {
+      "created_at": "2023-08-31T10:58:43.476Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamtYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--525b82b13bfa97676d06ae6aa220c4a01602b21f",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamtYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--525b82b13bfa97676d06ae6aa220c4a01602b21f/OChem_21_EC_040c.jpg"
+    },
+    {
+      "created_at": "2023-08-31T10:58:43.480Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBam9YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b1ecbf0d6b2accdaf6e24bbed38e8231450f2c21",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBam9YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b1ecbf0d6b2accdaf6e24bbed38e8231450f2c21/OChem_21_EC_040d.jpg"
+    },
+    {
+      "created_at": "2023-08-31T10:58:43.483Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBanNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--41dc93df48f7d66442829e6665519e134527bb5a",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBanNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--41dc93df48f7d66442829e6665519e134527bb5a/OChem_21_EC_040e.jpg"
+    },
+    {
+      "created_at": "2023-08-31T10:58:43.486Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBandYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3ade9adac6edffdc537b0fe1caf09d27fe72a93b",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBandYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3ade9adac6edffdc537b0fe1caf09d27fe72a93b/OChem_21_EC_040f.jpg"
+    },
+    {
+      "created_at": "2023-08-31T10:58:43.489Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--000bf63d73844df799e4440e88feb86d39b31655",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--000bf63d73844df799e4440e88feb86d39b31655/OChem_21_EC_040g.jpg"
+    },
+    {
+      "created_at": "2023-08-31T10:58:43.492Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--274d49851b068c6d75bc5454636034847f05a7bc",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--274d49851b068c6d75bc5454636034847f05a7bc/OChem_21_EC_040h.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:69f1aea6-4acd-40ca-9ceb-c26657b6be63",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:21-10-spectroscopy-of-carboxylic-acid-derivatives"
+  ],
+  "uuid": "3a71a817-de1a-4ff4-a4b0-18885a5e3ab7",
+  "group_uuid": "0e8b88f0-5e16-42a4-8a13-a6dbb18fb9cb",
+  "number": 38203,
+  "version": 4,
+  "uid": "38203@4",
+  "published_at": "2023-08-31T10:58:49.028Z",
+  "nickname": "21-99-OC-AP09",
+  "solutions_are_public": false,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "Predict the product(s) of the following reactions:",
+  "questions": [
+    {
+      "id": 361478,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9f05f4d4210b8de95b6e90bc6c4b3e2b6d237d7c/OChem_21_EC_040a.jpg\" alt=\"The reaction of ethyl cyclohexanecarboxylate with ethylmagnesium bromide followed by treatment with acid to give an unknown product, denoted by a question mark.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 361479,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3ed6bb89026aec9ff163801c8451677d2a4c0ecd/OChem_21_EC_040b.jpg\" alt=\"The reaction of methyl-4-methylpentanoate with D I B A H followe by treatment with acid to give an unknown product, denoted by a question mark.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 361480,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamtYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--525b82b13bfa97676d06ae6aa220c4a01602b21f/OChem_21_EC_040c.jpg\" alt=\"The reaction of cyclopentanecarbonyl chloride with methyl amine to give an unknown product, denoted by a question mark.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 361481,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBam9YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b1ecbf0d6b2accdaf6e24bbed38e8231450f2c21/OChem_21_EC_040d.jpg\" alt=\"The reaction of 2-methylcyclohexane carboxylic acid with methanol in the presence of sulfuric acid to give an unknown product, denoted by a question mark.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 361482,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBanNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--41dc93df48f7d66442829e6665519e134527bb5a/OChem_21_EC_040e.jpg\" alt=\"The reaction of methyl-3-methylpent-4-enoate with lithium aluminum hydride followed by treatment with acid to give a unknown product, denoted by a question mark.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 361483,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBandYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3ade9adac6edffdc537b0fe1caf09d27fe72a93b/OChem_21_EC_040f.jpg\" alt=\"The reaction of cyclohexanol with acetic anhydride in pyridine to form an unknown product, denoted by a question mark.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 361484,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--000bf63d73844df799e4440e88feb86d39b31655/OChem_21_EC_040g.jpg\" alt=\"The reaction of 2-methylbenzamide with lithium aluminum hydride and then water to give an unknown product, denoted by a question mark.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 361485,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--274d49851b068c6d75bc5454636034847f05a7bc/OChem_21_EC_040h.jpg\" alt=\"The reaction of 2-(2-bromophenyl)acetic acid with thionyl chloride to form an unknown product, denoted by a question mark.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    4,
+    3,
+    2,
+    1
+  ]
+}

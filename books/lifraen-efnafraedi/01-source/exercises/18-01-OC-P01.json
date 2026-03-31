@@ -1,0 +1,447 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-31T07:36:09.454Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5295cd067a2edcb45793ceaf2e91b096df664300",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5295cd067a2edcb45793ceaf2e91b096df664300/OChem_18_01_005a.jpg"
+    },
+    {
+      "created_at": "2023-08-31T07:36:09.456Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1ec34eb58a78c4393b184b55ca42a70516382e8c",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1ec34eb58a78c4393b184b55ca42a70516382e8c/OChem_18_01_005b.jpg"
+    },
+    {
+      "created_at": "2023-08-31T07:36:09.458Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--647a4d37c9a85813681620484bda702152f232bb",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--647a4d37c9a85813681620484bda702152f232bb/OChem_18_01_005c.jpg"
+    },
+    {
+      "created_at": "2023-08-31T07:36:09.461Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d873c0183c5c8a703a0fdc1c8505acbdc2ef3623",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d873c0183c5c8a703a0fdc1c8505acbdc2ef3623/OChem_18_01_005d.jpg"
+    },
+    {
+      "created_at": "2023-08-31T07:36:09.463Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDhYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b70c72686e0e63ac88fbca03bf1b004eb22a1278",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDhYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b70c72686e0e63ac88fbca03bf1b004eb22a1278/OChem_18_01_005e.jpg"
+    },
+    {
+      "created_at": "2023-08-31T07:36:09.465Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a856edb332c0f6bef6c0ab6c3a4d2be298c1dbc5",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a856edb332c0f6bef6c0ab6c3a4d2be298c1dbc5/OChem_18_01_005f.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:3fc7319a-a34f-4b03-bd73-4f058c24d706",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:18-1-names-and-properties-of-ethers"
+  ],
+  "uuid": "628f815d-cf80-4dba-b6ad-a8df8b2064f6",
+  "group_uuid": "9dd8b686-db0e-4168-9f56-c46addd331a3",
+  "number": 38697,
+  "version": 5,
+  "uid": "38697@5",
+  "published_at": "2023-08-31T07:36:13.335Z",
+  "nickname": "18-01-OC-P01",
+  "solutions_are_public": true,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "Name the following ethers:",
+  "questions": [
+    {
+      "id": 361108,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5295cd067a2edcb45793ceaf2e91b096df664300/OChem_18_01_005a.jpg\" alt=\"The structure of two isopropyl groups bonded to an oxygen atom in an ether linkage.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "Diisopropyl ether"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 361109,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1ec34eb58a78c4393b184b55ca42a70516382e8c/OChem_18_01_005b.jpg\" alt=\"The structure of cyclopentane with a propoxy (O C H 2 C H 2 C H 3) substituent.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "Cyclopentyl propyl ether"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 361110,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--647a4d37c9a85813681620484bda702152f232bb/OChem_18_01_005c.jpg\" alt=\"The structure of benzene with methoxy and bromine groups positioned para to one another.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<i>p</i>-Bromoanisole or 4-bromo-1-methoxybenzene"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 361111,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d873c0183c5c8a703a0fdc1c8505acbdc2ef3623/OChem_18_01_005d.jpg\" alt=\"The structure of cyclohexene with a methoxy substituent at one of the double-bonded carbons.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "1-Methoxycyclohexene"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 361112,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDhYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b70c72686e0e63ac88fbca03bf1b004eb22a1278/OChem_18_01_005e.jpg\" alt=\"An ethyl group connected to an isobutyl group through an oxygen atom, forming an ether linkage.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "Ethyl isobutyl ether"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 361113,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a856edb332c0f6bef6c0ab6c3a4d2be298c1dbc5/OChem_18_01_005f.jpg\" alt=\"An allyl group attached to a vinyl group through an oxygen atom, forming an ether linkage.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "Allyl vinyl ether"
+        }
+      ],
+      "community_solutions": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    5,
+    4,
+    3,
+    2,
+    1
+  ]
+}

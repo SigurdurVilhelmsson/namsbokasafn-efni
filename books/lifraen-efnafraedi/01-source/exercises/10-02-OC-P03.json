@@ -1,0 +1,349 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-24T05:08:16.690Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc01aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9bf07f6267385dc9c63e9577051edf0cb4d5fa00",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc01aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9bf07f6267385dc9c63e9577051edf0cb4d5fa00/OSX_OrgChem_10_DD_A-EC10-3a_img.jpg"
+    },
+    {
+      "created_at": "2023-08-24T05:08:16.692Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1FaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--af12c807dce1ba16a07cc4722f4cdd66fe69abd7",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1FaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--af12c807dce1ba16a07cc4722f4cdd66fe69abd7/OSX_OrgChem_10_DD_A-EC10-3b_img.jpg"
+    },
+    {
+      "created_at": "2023-08-24T05:08:16.695Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1VaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--55984476e2135c6c6d34481fc118b6581eeb48ba",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1VaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--55984476e2135c6c6d34481fc118b6581eeb48ba/OSX_OrgChem_10_DD_A-EC10-3c_img.jpg"
+    },
+    {
+      "created_at": "2023-08-24T05:08:16.697Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1laIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--db8a5257f7b32dcbd3fbf53f571fbb5cc640ecb9",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1laIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--db8a5257f7b32dcbd3fbf53f571fbb5cc640ecb9/OSX_OrgChem_10_DD_A-EC10-3d_img.jpg"
+    },
+    {
+      "created_at": "2023-08-24T05:08:16.699Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2NaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e20d9b9ecbbdcd6f5ab9b5d19c8bb13f8005caf3",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2NaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e20d9b9ecbbdcd6f5ab9b5d19c8bb13f8005caf3/OSX_OrgChem_10_DD_A-EC10-3e_img.jpg"
+    },
+    {
+      "created_at": "2023-08-24T05:08:16.701Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2daIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f3979a6d7ca71a4458d1b42273f4e2f825f5f14a",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2daIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f3979a6d7ca71a4458d1b42273f4e2f825f5f14a/OSX_OrgChem_10_DD_A-EC10-3a_img.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:60759f94-493b-4a7e-a31c-1ea0805224ca",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:10-2-preparing-alkyl-halides-from-alkanes-radical-halogenation"
+  ],
+  "uuid": "6efca79a-dcdd-408f-bd6c-f49c82d50c68",
+  "group_uuid": "6ee1b716-45ca-4754-869e-7ed80d4b9b61",
+  "number": 37249,
+  "version": 7,
+  "uid": "37249@7",
+  "published_at": "2023-08-24T05:08:19.779Z",
+  "nickname": "10-02-OC-P03",
+  "solutions_are_public": true,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": 359331,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "Draw and name all monochloro products you would expect to obtain from radical chlorination of 2-methylpentane. Which, if any, are chiral?",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "Chiral: 1-chloro-2-methylpentane, 3-chloro-2-methylpentane, 2-chloro-4-methylpentane Achiral: 2-chloro-2-methylpentane, 1-chloro-4-methylpentane\n<br><img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2daIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f3979a6d7ca71a4458d1b42273f4e2f825f5f14a/OSX_OrgChem_10_DD_A-EC10-3a_img.jpg\" alt=\"A condensed formula for 1-chloro-2-methylpentane.\">\n<br><img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1FaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--af12c807dce1ba16a07cc4722f4cdd66fe69abd7/OSX_OrgChem_10_DD_A-EC10-3b_img.jpg\" alt=\"A condensed formula for 2-chloro-2-methylpentane.\">\n<br><img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1VaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--55984476e2135c6c6d34481fc118b6581eeb48ba/OSX_OrgChem_10_DD_A-EC10-3c_img.jpg\" alt=\"A condensed formula for 3-chloro-2-methylpentane.\">\n<br><img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1laIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--db8a5257f7b32dcbd3fbf53f571fbb5cc640ecb9/OSX_OrgChem_10_DD_A-EC10-3d_img.jpg\" alt=\"A condensed formula for 2-chloro-4-methylpentane.\">\n<br><img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2NaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e20d9b9ecbbdcd6f5ab9b5d19c8bb13f8005caf3/OSX_OrgChem_10_DD_A-EC10-3e_img.jpg\" alt=\"A condensed formula for 1-chloro-4-methylpentane.\">"
+        }
+      ],
+      "community_solutions": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    7,
+    6,
+    5,
+    4,
+    3,
+    2,
+    1
+  ]
+}

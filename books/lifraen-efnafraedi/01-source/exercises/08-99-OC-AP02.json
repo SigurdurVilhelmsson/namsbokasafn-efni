@@ -1,0 +1,397 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-14T09:31:11.995Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjRTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e5f2664afc97a1fddd66a54f6151732d8267caf4",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjRTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e5f2664afc97a1fddd66a54f6151732d8267caf4/OChem_08_EC_033a.jpg"
+    },
+    {
+      "created_at": "2023-08-14T09:31:11.999Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjhTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--556bf657d3b392f0da4636255bae60057c9cd852",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjhTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--556bf657d3b392f0da4636255bae60057c9cd852/OChem_08_EC_033b.jpg"
+    },
+    {
+      "created_at": "2023-08-14T09:31:12.010Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0FTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--855e2f197b86bc8beedd433a19c56d30e3f7aaf7",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0FTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--855e2f197b86bc8beedd433a19c56d30e3f7aaf7/OChem_08_EC_033c.jpg"
+    },
+    {
+      "created_at": "2023-08-14T09:31:12.013Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0VTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5844e5150219bf85626e2bd9607cc9c1a77cef8b",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0VTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5844e5150219bf85626e2bd9607cc9c1a77cef8b/OChem_08_EC_033d.jpg"
+    },
+    {
+      "created_at": "2023-08-14T09:31:12.021Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0lTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--46e1f16061dc62f957944bf930e57932b12eaaf9",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0lTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--46e1f16061dc62f957944bf930e57932b12eaaf9/OChem_08_EC_033e.jpg"
+    },
+    {
+      "created_at": "2023-08-14T09:31:12.024Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb01TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bb7613d6801446fdc926584b22a69a32e768bdc5",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb01TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bb7613d6801446fdc926584b22a69a32e768bdc5/OChem_08_EC_033f.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:ea581398-870a-4198-a1bb-cdc838c6689e",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:8-13-reaction-stereochemistry-addition-of-h2o-to-a-chiral-alkene"
+  ],
+  "uuid": "1e18ec1c-4254-4477-ac77-2ce65b149c1d",
+  "group_uuid": "75f6d394-76cc-4c3f-9aa1-8a8689f89d4b",
+  "number": 37160,
+  "version": 3,
+  "uid": "37160@3",
+  "published_at": "2023-08-14T09:31:20.008Z",
+  "nickname": "08-99-OC-AP02",
+  "solutions_are_public": false,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "Suggest structures for alkenes that give the following reaction products. There may be more than one answer for some cases.",
+  "questions": [
+    {
+      "id": 353507,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjRTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e5f2664afc97a1fddd66a54f6151732d8267caf4/OChem_08_EC_033a.jpg\" alt=\"A reaction shows an unknown reactant  reacting with hydrogen on palladium catalyst to form a 6-carbon chain with a methyl group at C2.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 353508,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjhTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--556bf657d3b392f0da4636255bae60057c9cd852/OChem_08_EC_033b.jpg\" alt=\"A reaction shows an unknown reactant reacting with hydrogen on palladium to form cyclohexane ring, in which C1 is bonded to two methyl groups.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 353509,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0FTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--855e2f197b86bc8beedd433a19c56d30e3f7aaf7/OChem_08_EC_033c.jpg\" alt=\"A reaction shows an unknown reactant reacting with molecular bromine to form a product with 6-carbon chain. C2 and C3 each bond to bromine atom. C5 bonds to methyl group.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 353510,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0VTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5844e5150219bf85626e2bd9607cc9c1a77cef8b/OChem_08_EC_033d.jpg\" alt=\"A reaction shows an unknown reactant reacting with HCl to form a product with a 7-carbon chain. C2 is bonded to chlorine atom. C3 is bonded to a methyl group.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 353511,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0lTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--46e1f16061dc62f957944bf930e57932b12eaaf9/OChem_08_EC_033e.jpg\" alt=\"A reaction shows an unknown reactant reacting with mercury (II) acetate in water and sodium borohydride to form 5-carbon chain, in which C2 is bonded to a hydroxyl group.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 353512,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb01TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bb7613d6801446fdc926584b22a69a32e768bdc5/OChem_08_EC_033f.jpg\" alt=\"A reaction shows an unknown reactant reacting  with diiodomethane in presence of zinc-copper to form cyclohexane fused to cyclopropane.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    3,
+    2,
+    1
+  ]
+}
