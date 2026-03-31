@@ -107,6 +107,31 @@ let BOOK_SLUG = 'efnafraedi-2e';
 // =====================================================================
 
 /**
+ * Look up cached exercise content for an os-embed reference.
+ * Returns { stimulus, questions, solutionsPublic } or null if not cached.
+ */
+function resolveOsEmbed(nickname) {
+  // BOOKS_DIR points to books/{bookSlug}
+  const cachePath = path.join(BOOKS_DIR, '01-source', 'exercises', `${nickname}.json`);
+  if (!fs.existsSync(cachePath)) return null;
+
+  try {
+    const exercise = JSON.parse(fs.readFileSync(cachePath, 'utf-8'));
+    return {
+      stimulus: exercise.stimulus_html || '',
+      questions: (exercise.questions || []).map((q) => ({
+        id: q.id,
+        stem: q.stem_html || '',
+        solutions: (q.collaborator_solutions || []).map((s) => s.content_html || ''),
+      })),
+      solutionsPublic: exercise.solutions_are_public || false,
+    };
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Format chapter for use in directory paths.
  * @param {number|string} chapter - Chapter number or "appendices"
  * @returns {string} Formatted chapter string (e.g., "ch01", "appendices")
@@ -478,9 +503,16 @@ function renderContent(content, context, _verbose) {
 
   // Sections to exclude from main content (they have their own pages)
   // Loaded from book config — varies by book (e.g., Biology uses multiple-choice, critical-thinking)
-  const EXCLUDED_SECTION_CLASSES = BOOK_CONFIG
-    ? BOOK_CONFIG.excludedSectionClasses
+  let EXCLUDED_SECTION_CLASSES = BOOK_CONFIG
+    ? [...BOOK_CONFIG.excludedSectionClasses]
     : ['summary', 'key-equations', 'exercises'];
+
+  // If sectionExercises is 'both', keep section-exercises inline (don't exclude them)
+  if (BOOK_CONFIG && BOOK_CONFIG.sectionExercises === 'both') {
+    EXCLUDED_SECTION_CLASSES = EXCLUDED_SECTION_CLASSES.filter(
+      (cls) => cls !== 'section-exercises'
+    );
+  }
 
   // Extract sections
   const sections = extractNestedElements(content, 'section');
@@ -1443,8 +1475,52 @@ function renderExercise(exercise, context) {
   const problemMatch = exercise.content.match(/<problem([^>]*)>([\s\S]*?)<\/problem>/);
   if (problemMatch) {
     const problemId = parseAttributes(problemMatch[1]).id;
+    const problemContent = problemMatch[2];
+
+    // Check for os-embed exercise reference
+    const osEmbedMatch = problemContent.match(/url="#exercise\/([^"]+)"/);
+    if (osEmbedMatch) {
+      const resolved = resolveOsEmbed(osEmbedMatch[1]);
+      if (resolved) {
+        lines.push(`  <div${problemId ? ` id="${escapeAttr(problemId)}"` : ''} class="problem">`);
+        if (resolved.stimulus) {
+          lines.push(`    <p>${resolved.stimulus}</p>`);
+        }
+        const partLabels = ['(a)', '(b)', '(c)', '(d)', '(e)', '(f)', '(g)', '(h)'];
+        for (let i = 0; i < resolved.questions.length; i++) {
+          const q = resolved.questions[i];
+          const label =
+            resolved.questions.length > 1
+              ? `<strong>${partLabels[i] || '(' + (i + 1) + ')'}</strong> `
+              : '';
+          lines.push(`    <div class="exercise-part">${label}${q.stem}</div>`);
+        }
+        lines.push('  </div>');
+
+        // Render solutions if public
+        if (resolved.solutionsPublic && resolved.questions.some((q) => q.solutions.length > 0)) {
+          lines.push('  <div class="solution">');
+          for (let i = 0; i < resolved.questions.length; i++) {
+            const q = resolved.questions[i];
+            if (q.solutions.length > 0) {
+              const label =
+                resolved.questions.length > 1
+                  ? `<strong>${partLabels[i] || '(' + (i + 1) + ')'}</strong> `
+                  : '';
+              lines.push(`    <p>${label}${q.solutions[0]}</p>`);
+            }
+          }
+          lines.push('  </div>');
+        }
+
+        lines.push('</div>');
+        return lines.join('\n');
+      }
+    }
+
+    // Normal rendering (no os-embed or not resolved)
     lines.push(`  <div${problemId ? ` id="${escapeAttr(problemId)}"` : ''} class="problem">`);
-    renderSectionContent(problemMatch[2]);
+    renderSectionContent(problemContent);
     lines.push('  </div>');
   }
 
@@ -3202,6 +3278,82 @@ async function main() {
         console.log(`  → ${glossaryPath}`);
       } else if (args.verbose) {
         console.log('No glossary definitions found in this chapter');
+      }
+
+      // Fallback: if no <glossary> definitions found, check for <section class="key-terms">
+      // (used by newer OpenStax books like Organic Chemistry)
+      if (chapterGlossary.length === 0) {
+        const lastModuleId = allModules[allModules.length - 1];
+        const lastModulePath = translatedCnxmlPath(args.track, chapterDir, lastModuleId);
+
+        if (fs.existsSync(lastModulePath)) {
+          const lastCnxml = fs.readFileSync(lastModulePath, 'utf-8');
+          const keyTermsMatch = lastCnxml.match(
+            /<section\s+[^>]*class="key-terms"[^>]*>([\s\S]*?)<\/section>/
+          );
+
+          if (keyTermsMatch) {
+            const items = extractNestedElements(keyTermsMatch[1], 'item');
+            const termLines = [];
+
+            for (const item of items) {
+              // item.content is like: <link document="m00032" target-id="term-00006">alcohol</link>
+              const linkMatch = item.content.match(
+                /<link\s+document="([^"]+)"(?:\s+target-id="([^"]+)")?[^>]*>([^<]+)<\/link>/
+              );
+              if (linkMatch) {
+                const termText = linkMatch[3].trim();
+                const moduleId = linkMatch[1];
+                const sectionInfo = moduleSections[moduleId];
+                const sectionSlug = sectionInfo
+                  ? getOutputFilename(moduleId, args.chapter, moduleSections).replace('.html', '')
+                  : moduleId;
+                termLines.push(
+                  `<li><a href="/content/${BOOK_SLUG}/chapters/${chapterStr}/${sectionSlug}.html">${escapeHtml(termText)}</a></li>`
+                );
+              } else {
+                const plainText = item.content.replace(/<[^>]+>/g, '').trim();
+                if (plainText) {
+                  termLines.push(`<li>${escapeHtml(plainText)}</li>`);
+                }
+              }
+            }
+
+            if (termLines.length > 0) {
+              const keyTermsContentHtml =
+                '<section class="key-terms-section">\n<h2>Lykilhugtök</h2>\n<ul class="key-terms-list">\n' +
+                termLines.join('\n') +
+                '\n</ul>\n</section>';
+
+              const fullKeyTermsHtml = buildHtmlDocument({
+                title: 'Lykilhugtök',
+                lang: args.lang,
+                content: keyTermsContentHtml,
+                pageData: {
+                  moduleId: `${chapterStr}-key-terms`,
+                  chapter: args.chapter,
+                  section: `${args.chapter}.0`,
+                  title: 'Lykilhugtök',
+                  equations: [],
+                  terms: {},
+                },
+                sectionNumber: `${args.chapter}.0`,
+                isIntro: true,
+              });
+
+              const keyTermsPath = writeCompiledGlossary(
+                args.chapter,
+                args.track,
+                fullKeyTermsHtml
+              );
+              writtenFiles.push(keyTermsPath);
+              console.log(
+                `Lykilhugtök: Rendered ${termLines.length} linked terms to HTML (section-based fallback)`
+              );
+              console.log(`  → ${keyTermsPath}`);
+            }
+          }
+        }
       }
 
       // Extract and render compiled summary (matching chapters 1-5 format)

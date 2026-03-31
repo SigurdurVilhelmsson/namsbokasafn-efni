@@ -263,6 +263,10 @@ const ORGANIC_CHEMISTRY_CONFIG = {
     'chemistry-matters',
   ],
 
+  // 'both' = keep exercises inline in sections AND compile to EOC page
+  // 'compiled' (default) = strip from sections, compile only
+  sectionExercises: 'both',
+
   specialModules: {},
 };
 
