@@ -339,8 +339,10 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     _renderStats: context.renderStats || { equations: 0, success: 0, failures: [] },
   };
 
-  // Build chapter outline for intro pages
-  const isIntro = sectionInfo.section === '0' || doc.documentClass === 'introduction';
+  // Build chapter outline for intro pages (not end-of-chapter sections)
+  const isIntro =
+    (sectionInfo.section === '0' || doc.documentClass === 'introduction') &&
+    !options.isEndOfChapter;
   let chapterOutline = null;
   if (isIntro && moduleSections) {
     chapterOutline = Object.entries(moduleSections)
@@ -2058,10 +2060,12 @@ function renderEndOfChapterSection(section, context) {
   // Render using existing render function
   // Set excludeSections: false to prevent the section from being skipped
   // Override title with configured Icelandic title
+  // Set isEndOfChapter to suppress the chapter outline (which is for intro pages only)
   const { html } = renderCnxmlToHtml(cnxmlDoc, {
     ...context.options,
     excludeSections: false,
     titleOverride: section.titleIs,
+    isEndOfChapter: true,
   });
 
   return html;
@@ -2426,10 +2430,16 @@ function renderCompiledSummary(chapter, summariesByModule, context) {
       );
 
       // Replace the h2 title with section number + title
-      sectionHtml = sectionHtml.replace(
-        /<h2[^>]*>.*?<\/h2>/,
-        `<h2>${summary.sectionNumber} ${summary.sectionTitle}</h2>`
-      );
+      // If there's only one summary for the whole chapter (e.g., organic chemistry),
+      // it's a chapter-wide summary — use generic header instead of section-specific
+      if (summariesByModule.length === 1) {
+        sectionHtml = sectionHtml.replace(/<h2[^>]*>.*?<\/h2>/, '');
+      } else {
+        sectionHtml = sectionHtml.replace(
+          /<h2[^>]*>.*?<\/h2>/,
+          `<h2>${summary.sectionNumber} ${summary.sectionTitle}</h2>`
+        );
+      }
 
       lines.push('      ' + sectionHtml);
     }
