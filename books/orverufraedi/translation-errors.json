@@ -1,5 +1,5 @@
 {
-  "generated": "2026-03-24T16:47:31.097Z",
+  "generated": "2026-03-30T20:03:42.153Z",
   "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]])",
   "summary": {
     "totalChecked": 10,

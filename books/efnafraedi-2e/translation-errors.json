@@ -1,12 +1,12 @@
 {
-  "generated": "2026-03-24T16:24:38.131Z",
+  "generated": "2026-03-31T04:34:31.338Z",
   "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]])",
   "summary": {
     "totalChecked": 148,
-    "perfect": 119,
-    "withDiscrepancies": 29,
+    "perfect": 118,
+    "withDiscrepancies": 30,
     "skippedUntranslated": 0,
-    "totalDiscrepancies": 49
+    "totalDiscrepancies": 50
   },
   "modules": [
     {
@@ -31,6 +31,16 @@
     },
     {
       "moduleId": "m68710",
+      "chapter": "ch04",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68716",
       "chapter": "ch04",
       "discrepancies": [
         {
