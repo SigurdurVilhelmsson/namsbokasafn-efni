@@ -176,3 +176,18 @@ export function buildModuleSections(book, chapter) {
 
   return result;
 }
+
+/**
+ * Resolve a CNXML module id to its rendered HTML filename within a chapter.
+ *
+ * @param {string} modId - CNXML module id (e.g. "m68724")
+ * @param {number|string} chapter - Chapter number
+ * @param {Object} moduleSections - Result of buildModuleSections()
+ * @returns {string|null} Filename (e.g. "5-1-heat-and-temperature.html") or null
+ *   if the module is not registered for this chapter.
+ */
+export function resolveModuleHref(modId, chapter, moduleSections) {
+  const info = moduleSections?.[modId];
+  if (!info) return null;
+  return `${chapter}-${info.section}-${info.slug}.html`;
+}

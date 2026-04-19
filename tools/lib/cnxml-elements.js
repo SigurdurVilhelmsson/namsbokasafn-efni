@@ -11,6 +11,125 @@ import {
   localizeNumbersInMathML,
   localizeMathMLText,
 } from './mathml-to-latex.js';
+import { resolveModuleHref } from './module-sections.js';
+
+// =====================================================================
+// CROSS-MODULE LINK RESOLUTION
+// =====================================================================
+
+/**
+ * Find the rendered filename for a module id, trying both the chapter's
+ * primary moduleSections and (for aggregator pages like answer-key that
+ * intentionally clear moduleSections) crossModuleSections.
+ */
+function lookupModuleFilename(modId, context) {
+  if (!modId) return null;
+  return (
+    resolveModuleHref(modId, context.chapter, context.moduleSections) ||
+    resolveModuleHref(modId, context.chapter, context.crossModuleSections)
+  );
+}
+
+/**
+ * Resolve a CNXML <link> reference into an href and a numbered-label fallback.
+ *
+ * Inputs:
+ *   - documentId: the link's document= attribute (CNXML module id) or null
+ *   - targetId:   the link's target-id= attribute (element id) or null
+ *   - context:    render context (must include moduleId, chapter, moduleSections,
+ *                 chapterIdToModule, chapter-wide number maps)
+ *
+ * Returns: { href, ownerModule, sameModule }
+ *   - href:        the href to emit, or null if the link cannot be resolved at all
+ *   - ownerModule: the module id where targetId actually lives (or null)
+ *   - sameModule:  true if href is a same-page anchor
+ */
+export function resolveCrossModuleHref(documentId, targetId, context) {
+  const currentMod = context.moduleId;
+
+  // Resolve owner module
+  let ownerModule = null;
+  if (documentId) {
+    ownerModule = documentId;
+  } else if (targetId && context.chapterIdToModule) {
+    const owners = context.chapterIdToModule.get(targetId);
+    if (owners && owners.length > 0) {
+      // Prefer current module if it's an owner (multi-owner case in lifraen-efnafraedi).
+      ownerModule = owners.includes(currentMod) ? currentMod : owners[0];
+      if (owners.length > 1 && !owners.includes(currentMod) && context.verbose) {
+        console.warn(
+          `[link] target-id="${targetId}" exists in multiple modules ${owners.join(',')}; picking ${owners[0]} from ${currentMod}`
+        );
+      }
+    }
+  }
+
+  // Same module → same-page anchor
+  if (!ownerModule || ownerModule === currentMod) {
+    return {
+      href: targetId ? `#${targetId}` : null,
+      ownerModule: ownerModule || currentMod,
+      sameModule: true,
+    };
+  }
+
+  // Cross-module → resolve to other rendered file
+  const fname = lookupModuleFilename(ownerModule, context);
+  if (!fname) {
+    if (context.verbose) {
+      console.warn(
+        `[link] cannot resolve module "${ownerModule}" referenced from ${currentMod}; falling back to text only`
+      );
+    }
+    return { href: null, ownerModule, sameModule: false };
+  }
+
+  return {
+    href: targetId ? `${fname}#${targetId}` : fname,
+    ownerModule,
+    sameModule: false,
+  };
+}
+
+/**
+ * For label resolution (Mynd X.Y / Tafla X.Y / Dæmi X.Y / æfingu X.Y / section title),
+ * try chapter-wide composite-key maps first (using the resolved owner module), then
+ * fall back to module-local maps. Returns the label string or null.
+ */
+function resolveLinkLabel(targetId, ownerModule, context) {
+  if (!targetId) return null;
+  const compositeKey = ownerModule ? `${ownerModule}:${targetId}` : null;
+
+  // Figures
+  if (compositeKey && context.chapterFigureNumbers?.has(compositeKey))
+    return `Mynd ${context.chapterFigureNumbers.get(compositeKey)}`;
+  if (context.figureNumbers?.has(targetId)) return `Mynd ${context.figureNumbers.get(targetId)}`;
+
+  // Tables
+  if (compositeKey && context.chapterTableNumbers?.has(compositeKey))
+    return `Tafla ${context.chapterTableNumbers.get(compositeKey)}`;
+  if (context.tableNumbers?.has(targetId)) return `Tafla ${context.tableNumbers.get(targetId)}`;
+
+  // Examples
+  if (compositeKey && context.chapterExampleNumbers?.has(compositeKey))
+    return `Dæmi ${context.chapterExampleNumbers.get(compositeKey)}`;
+
+  // Exercises
+  if (compositeKey && context.chapterExerciseNumbers?.has(compositeKey))
+    return `æfingu ${context.chapterExerciseNumbers.get(compositeKey)}`;
+
+  // Equations (numbered only)
+  if (compositeKey && context.chapterEquationNumbers?.has(compositeKey))
+    return `jöfnu ${context.chapterEquationNumbers.get(compositeKey)}`;
+  if (context.equationNumbers?.has(targetId))
+    return `jöfnu ${context.equationNumbers.get(targetId)}`;
+
+  // Section / note titles
+  if (context.chapterSectionTitles?.has(targetId))
+    return context.chapterSectionTitles.get(targetId);
+
+  return null;
+}
 
 // =====================================================================
 // LATEX TEXT TRANSLATIONS
@@ -480,103 +599,78 @@ export function processInlineContent(content, context) {
   result = result.replace(/<link\s+url="([^"]*)"[^>]*>([\s\S]*?)<\/link>/g, (match, url, inner) => {
     return `<a href="${escapeAttr(url)}">${processInlineContent(inner, context)}</a>`;
   });
-  // Self-closing link with target-id (e.g., <link target-id="CNX_Chem_05_02_Fig"/>)
-  // This is common for figure references
-  result = result.replace(/<link\s+target-id="([^"]*)"[^>]*\/>/g, (match, targetId) => {
-    // Check if this is a figure reference (chapter-wide first, then module-local fallback)
-    if (context.chapterFigureNumbers && context.chapterFigureNumbers.has(targetId)) {
-      const figNum = context.chapterFigureNumbers.get(targetId);
-      return `<a href="#${escapeAttr(targetId)}">Mynd ${figNum}</a>`;
+  // NOTE: link-handler match arms below — order matters because regexes overlap.
+  // All SELF-CLOSING variants run BEFORE any closing-tag variant, because the closing-tag
+  // regex uses `[^>]*>([\s\S]*?)</link>` which would otherwise swallow a self-closing tag
+  // (`/>` satisfies `[^>]*>`) and span to the next subsequent `</link>`.
+  // 1. <link document="D" target-id="X"/>            (self-closing, both)
+  // 2. <link document="D"/>                          (self-closing, doc only)
+  // 3. <link target-id="X"/>                         (self-closing, target only)
+  // 4. <link document="D" target-id="X">text</link>  (closing tag, both)
+  // 5. <link target-id="X">text</link>               (closing tag, target only)
+
+  // 1. <link document="D" target-id="X"/>  (self-closing, both attributes)
+  result = result.replace(
+    /<link\s+document="([^"]*)"\s+target-id="([^"]*)"[^>]*\/>/g,
+    (match, doc, targetId) => {
+      const { href, ownerModule } = resolveCrossModuleHref(doc, targetId, context);
+      const label = resolveLinkLabel(targetId, ownerModule, context) || targetId;
+      if (href === null) return escapeHtml(label);
+      return `<a href="${escapeAttr(href)}">${escapeHtml(label)}</a>`;
     }
-    if (context.figureNumbers && context.figureNumbers.has(targetId)) {
-      const figNum = context.figureNumbers.get(targetId);
-      return `<a href="#${escapeAttr(targetId)}">Mynd ${figNum}</a>`;
-    }
-    // Check if this is a table reference (chapter-wide first, then module-local fallback)
-    if (context.chapterTableNumbers && context.chapterTableNumbers.has(targetId)) {
-      const tableNum = context.chapterTableNumbers.get(targetId);
-      return `<a href="#${escapeAttr(targetId)}">Tafla ${tableNum}</a>`;
-    }
-    if (context.tableNumbers && context.tableNumbers.has(targetId)) {
-      const tableNum = context.tableNumbers.get(targetId);
-      return `<a href="#${escapeAttr(targetId)}">Tafla ${tableNum}</a>`;
-    }
-    // Check if this is an example reference
-    if (context.chapterExampleNumbers && context.chapterExampleNumbers.has(targetId)) {
-      const exNum = context.chapterExampleNumbers.get(targetId);
-      return `<a href="#${escapeAttr(targetId)}">Dæmi ${exNum}</a>`;
-    }
-    // Check if this is an exercise reference
-    if (context.chapterExerciseNumbers && context.chapterExerciseNumbers.has(targetId)) {
-      const exNum = context.chapterExerciseNumbers.get(targetId);
-      return `<a href="#${escapeAttr(targetId)}">æfingu ${exNum}</a>`;
-    }
-    // Check if this is a section/example/note reference
-    if (context.chapterSectionTitles && context.chapterSectionTitles.has(targetId)) {
-      const title = context.chapterSectionTitles.get(targetId);
-      return `<a href="#${escapeAttr(targetId)}">${escapeHtml(title)}</a>`;
-    }
-    // Fallback for unresolved references
-    return `<a href="#${escapeAttr(targetId)}">${escapeHtml(targetId)}</a>`;
+  );
+
+  // 2. <link document="D"/>  (self-closing, document only — arm 1 above handles both-attr case first)
+  result = result.replace(/<link\s+document="([^"]*)"[^>]*\/>/g, (match, doc) => {
+    const { href } = resolveCrossModuleHref(doc, null, context);
+    const label =
+      context.moduleSections?.[doc]?.titleIs || context.crossModuleSections?.[doc]?.titleIs || doc;
+    if (href === null) return escapeHtml(label);
+    return `<a href="${escapeAttr(href)}">${escapeHtml(label)}</a>`;
   });
-  // Link with target-id and content
+
+  // 3. <link target-id="X"/>  (self-closing, target only — no document attribute)
+  result = result.replace(/<link\s+target-id="([^"]*)"[^>]*\/>/g, (match, targetId) => {
+    const { href, ownerModule } = resolveCrossModuleHref(null, targetId, context);
+    const label = resolveLinkLabel(targetId, ownerModule, context) || targetId;
+    if (href === null) return escapeHtml(label);
+    return `<a href="${escapeAttr(href)}">${escapeHtml(label)}</a>`;
+  });
+
+  // 4. <link document="D" target-id="X">text</link>  (closing tag, both attributes)
+  result = result.replace(
+    /<link\s+document="([^"]*)"\s+target-id="([^"]*)"[^>]*>([\s\S]*?)<\/link>/g,
+    (match, doc, targetId, inner) => {
+      const { href, ownerModule } = resolveCrossModuleHref(doc, targetId, context);
+      const text = inner.trim();
+      const label = text || resolveLinkLabel(targetId, ownerModule, context) || targetId;
+      if (href === null) {
+        return text ? processInlineContent(text, context) : escapeHtml(label);
+      }
+      return `<a href="${escapeAttr(href)}">${text ? processInlineContent(text, context) : escapeHtml(label)}</a>`;
+    }
+  );
+
+  // 5. <link target-id="X">text</link>  (target only, with content — no document attribute)
   result = result.replace(
     /<link\s+target-id="([^"]*)"[^>]*>([\s\S]*?)<\/link>/g,
     (match, targetId, inner) => {
       const text = inner.trim();
-      if (text) {
-        // If the link text is "Figure X.Y" (untranslated by MT), replace with "Mynd X.Y"
-        const figTextMatch = text.match(/^Figure\s+(\d+\.\d+)$/);
-        if (figTextMatch) {
-          return `<a href="#${escapeAttr(targetId)}">Mynd ${figTextMatch[1]}</a>`;
-        }
-        return `<a href="#${escapeAttr(targetId)}">${processInlineContent(text, context)}</a>`;
-      }
-      // Empty content - try to resolve reference (chapter-wide first, then module-local fallback)
-      if (context.chapterFigureNumbers && context.chapterFigureNumbers.has(targetId)) {
-        const figNum = context.chapterFigureNumbers.get(targetId);
-        return `<a href="#${escapeAttr(targetId)}">Mynd ${figNum}</a>`;
-      }
-      if (context.figureNumbers && context.figureNumbers.has(targetId)) {
-        const figNum = context.figureNumbers.get(targetId);
-        return `<a href="#${escapeAttr(targetId)}">Mynd ${figNum}</a>`;
-      }
-      if (context.chapterTableNumbers && context.chapterTableNumbers.has(targetId)) {
-        const tableNum = context.chapterTableNumbers.get(targetId);
-        return `<a href="#${escapeAttr(targetId)}">Tafla ${tableNum}</a>`;
-      }
-      if (context.tableNumbers && context.tableNumbers.has(targetId)) {
-        const tableNum = context.tableNumbers.get(targetId);
-        return `<a href="#${escapeAttr(targetId)}">Tafla ${tableNum}</a>`;
-      }
-      // Check if this is an example reference
-      if (context.chapterExampleNumbers && context.chapterExampleNumbers.has(targetId)) {
-        const exNum = context.chapterExampleNumbers.get(targetId);
-        return `<a href="#${escapeAttr(targetId)}">Dæmi ${exNum}</a>`;
-      }
-      // Check if this is an exercise reference
-      if (context.chapterExerciseNumbers && context.chapterExerciseNumbers.has(targetId)) {
-        const exNum = context.chapterExerciseNumbers.get(targetId);
-        return `<a href="#${escapeAttr(targetId)}">æfingu ${exNum}</a>`;
-      }
-      // Check if this is a section/example/note reference
-      if (context.chapterSectionTitles && context.chapterSectionTitles.has(targetId)) {
-        const title = context.chapterSectionTitles.get(targetId);
-        return `<a href="#${escapeAttr(targetId)}">${escapeHtml(title)}</a>`;
-      }
-      return `<a href="#${escapeAttr(targetId)}">${escapeHtml(targetId)}</a>`;
+      const { href, ownerModule } = resolveCrossModuleHref(null, targetId, context);
+      // Translate "Figure X.Y" left over from machine translation
+      const figTextMatch = text.match(/^Figure\s+(\d+\.\d+)$/);
+      const displayText = figTextMatch
+        ? `Mynd ${figTextMatch[1]}`
+        : text || resolveLinkLabel(targetId, ownerModule, context) || targetId;
+      const renderedText = figTextMatch
+        ? escapeHtml(displayText)
+        : text
+          ? processInlineContent(text, context)
+          : escapeHtml(displayText);
+      if (href === null) return renderedText;
+      return `<a href="${escapeAttr(href)}">${renderedText}</a>`;
     }
   );
-  result = result.replace(
-    /<link\s+document="([^"]*)"\s+target-id="([^"]*)"[^>]*>([\s\S]*?)<\/link>/g,
-    (match, doc, targetId, inner) => {
-      const text = inner.trim() || `${doc}#${targetId}`;
-      return `<a href="${escapeAttr(doc)}#${escapeAttr(targetId)}">${processInlineContent(text, context)}</a>`;
-    }
-  );
-  result = result.replace(/<link\s+document="([^"]*)"[^>]*\/>/g, (match, doc) => {
-    return `<a href="${escapeAttr(doc)}">${escapeHtml(doc)}</a>`;
-  });
 
   // Convert inline <media><image> elements (e.g., images inside table cells)
   result = result.replace(
