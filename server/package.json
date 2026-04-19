@@ -45,6 +45,6 @@
   "author": "Sigurður E. Vilhelmsson",
   "license": "SEE LICENSE FILE",
   "devDependencies": {
-    "@playwright/test": "^1.58.2"
+    "@playwright/test": "^1.59.1"
   }
 }
