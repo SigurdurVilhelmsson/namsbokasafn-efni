@@ -1,0 +1,313 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-18T15:43:13.795Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdklUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a77b95aa62eff894928f5f5f2e8cdb05259861bb",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdklUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a77b95aa62eff894928f5f5f2e8cdb05259861bb/OChem_11_EC_038.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:552295b5-5cb4-40b3-a66e-0111377f5cbe",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:11-12-a-summary-of-reactivity-sn1-sn2-e1-e1cb-and-e2"
+  ],
+  "uuid": "6d000544-14ae-47ae-8759-e390660ce341",
+  "group_uuid": "b298b87b-8af8-47e6-8598-2df95789430a",
+  "number": 37403,
+  "version": 4,
+  "uid": "37403@4",
+  "published_at": "2023-08-18T15:43:17.010Z",
+  "nickname": "11-99-OC-AP29",
+  "solutions_are_public": false,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": 355414,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<p>Predict the product(s) of the following reaction, indicating stereochemistry where necessary:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdklUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a77b95aa62eff894928f5f5f2e8cdb05259861bb/OChem_11_EC_038.jpg\" alt=\"A reaction of 1-bromo-1,4-dimethylcyclohexane (methy groups are cis to one another) in the presence of water and ethanol yields an unknown product, depicted by a question mark.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    4,
+    3,
+    2,
+    1
+  ]
+}

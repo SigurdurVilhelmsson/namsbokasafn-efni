@@ -1,0 +1,305 @@
+{
+  "images": [],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:ea581398-870a-4198-a1bb-cdc838c6689e",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:8-13-reaction-stereochemistry-addition-of-h2o-to-a-chiral-alkene"
+  ],
+  "uuid": "2513a37f-27fd-45dc-b3fd-9d6c8d68d62e",
+  "group_uuid": "59364d14-b2c9-4db7-a7d6-b7e6dc3d4ba7",
+  "number": 37182,
+  "version": 2,
+  "uid": "37182@2",
+  "published_at": "2023-03-04T12:24:30.680Z",
+  "nickname": "08-99-OC-AP24",
+  "solutions_are_public": false,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": 332818,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "Compound <b>A</b> has the formula C<sub>8</sub>H<sub>8</sub>. It reacts rapidly with KMnO<sub>4</sub> to give CO<sub>2</sub> and a carboxylic acid, <b>B</b> (C<sub>7</sub>H<sub>6</sub>O<sub>2</sub>), but reacts with only 1 molar equivalent of H<sub>2</sub> on catalytic hydrogenation over a palladium catalyst. On hydrogenation under conditions that reduce aromatic rings, 4 equivalents of H<sub>2</sub> are taken up and hydrocarbon <b>C</b> (C<sub>8</sub>H<sub>16</sub>) is produced. What are the structures of <b>A</b>, <b>B</b>, and <b>C</b>? Write the reactions.",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    2,
+    1
+  ]
+}

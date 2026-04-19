@@ -1,0 +1,347 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-21T11:25:48.177Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblFVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--196cbc069ac93b2f0e062717eac3265c77daf5c0",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblFVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--196cbc069ac93b2f0e062717eac3265c77daf5c0/OChem_13_EC_021.jpg"
+    },
+    {
+      "created_at": "2023-08-21T11:25:48.180Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--01805bc0e93d775b3b935f0792f3965d36ce686c",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--01805bc0e93d775b3b935f0792f3965d36ce686c/OChem_13_EC_022.jpg"
+    },
+    {
+      "created_at": "2023-08-21T11:25:48.182Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbllVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6603aa931605e89c7fb36f77a66b5249e3c3c815",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbllVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6603aa931605e89c7fb36f77a66b5249e3c3c815/OChem_13_EC_023.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:f083cf71-a9e9-4b96-ba27-23807b141e9a",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:13-13-uses-of-13c-nmr-spectroscopy"
+  ],
+  "uuid": "d35d614c-4096-4afc-b9c8-39c46304ee10",
+  "group_uuid": "9bc5935a-ec18-4037-bc13-fc4f695a6d15",
+  "number": 37524,
+  "version": 4,
+  "uid": "37524@4",
+  "published_at": "2023-08-21T11:25:51.183Z",
+  "nickname": "13-99-OC-GP07",
+  "solutions_are_public": false,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "Propose structures for the three compounds whose <sup>1</sup>H NMR spectra are shown.",
+  "questions": [
+    {
+      "id": 358413,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<p>C<sub>5</sub>H<sub>10</sub>O</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblFVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--196cbc069ac93b2f0e062717eac3265c77daf5c0/OChem_13_EC_021.jpg\" alt=\"The 1 H N M R spectrum shows peaks at 0 (T M S), 0.9 (triplet), 1.7 (sextet), and 2.4 (triplet).\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 358414,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<p>C<sub>7</sub>H<sub>7</sub>Br</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--01805bc0e93d775b3b935f0792f3965d36ce686c/OChem_13_EC_022.jpg\" alt=\"The 1 H N M R spectrum shows peaks at 0 (T M S), 2.3 (singlet), 7 (doublet), and 7.3 (doublet).\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 358415,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<p>C<sub>8</sub>H<sub>9</sub>Br</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbllVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6603aa931605e89c7fb36f77a66b5249e3c3c815/OChem_13_EC_023.jpg\" alt=\"The 1 H N M R spectrum shows peaks at 0 (T M S), 3.1 (triplet), 3.6 (triplet), and 7.2 (indistinct, messy multiplet).\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    4,
+    3,
+    2,
+    1
+  ]
+}

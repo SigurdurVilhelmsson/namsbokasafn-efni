@@ -1,0 +1,340 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-14T05:39:22.443Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d63853e67c225fad5dd694ce6b2d6e8e56362529",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d63853e67c225fad5dd694ce6b2d6e8e56362529/OChem_06_EC_018a.jpg"
+    },
+    {
+      "created_at": "2023-08-14T05:39:22.445Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcElUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--13a0ac40afd5bb690a1f0033e03b95366a83fee4",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcElUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--13a0ac40afd5bb690a1f0033e03b95366a83fee4/OChem_06_EC_018b.jpg"
+    },
+    {
+      "created_at": "2023-08-14T05:39:22.448Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcE1UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5d4d0e0099f10f02e9afdc164df0003316df88f9",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcE1UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5d4d0e0099f10f02e9afdc164df0003316df88f9/OChem_06_EC_018c.jpg"
+    },
+    {
+      "created_at": "2023-08-14T05:39:22.450Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--822dbd6d79e191ac64d89e107ea92bb1568262bf",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--822dbd6d79e191ac64d89e107ea92bb1568262bf/OChem_06_EC_018d.jpg"
+    },
+    {
+      "created_at": "2023-08-14T05:39:22.452Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9cdb8be5c5dded5642577dc20592bf133a23e62b",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9cdb8be5c5dded5642577dc20592bf133a23e62b/OChem_06_EC_018e.jpg"
+    },
+    {
+      "created_at": "2023-08-14T05:39:22.454Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFlUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--844755bf6ef1ab6a85f6a9c61368f4e035804d2a",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFlUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--844755bf6ef1ab6a85f6a9c61368f4e035804d2a/OChem_06_EC_018f.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:d9b4a416-25e2-48e5-a2d2-e0f8cfcfebb6",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:6-11-a-comparison-between-biological-reactions-and-laboratory-reactions"
+  ],
+  "uuid": "6dd9fe46-d2b3-41a4-b294-62c9a1b6a4fa",
+  "group_uuid": "df4c3647-ab32-4cce-ad12-f59d8ddf8c37",
+  "number": 37329,
+  "version": 6,
+  "uid": "37329@6",
+  "published_at": "2023-08-14T05:39:27.594Z",
+  "nickname": "06-99-OC-AP09",
+  "solutions_are_public": false,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": 353356,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<p>Despite the limitations of radical chlorination of alkanes, the reaction is still useful for synthesizing certain halogenated compounds. For which of the following compounds does radical chlorination give a single monochloro product?</p>\n<p><b>(a)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d63853e67c225fad5dd694ce6b2d6e8e56362529/OChem_06_EC_018a.jpg\" alt=\"The condensed structural formula reads, C H 3 C H 3.\">\n <b>(b)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcElUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--13a0ac40afd5bb690a1f0033e03b95366a83fee4/OChem_06_EC_018b.jpg\" alt=\"The condensed structural formula reads, C H 3 C H 2 C H 3.\">\n <b>(c)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcE1UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5d4d0e0099f10f02e9afdc164df0003316df88f9/OChem_06_EC_018c.jpg\" alt=\"A chemical structure of cyclohexane.\">\n <b>(d)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--822dbd6d79e191ac64d89e107ea92bb1568262bf/OChem_06_EC_018d.jpg\" alt=\"A chemical structure of 2,2-dimethylbutane.\">\n <b>(e)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9cdb8be5c5dded5642577dc20592bf133a23e62b/OChem_06_EC_018e.jpg\" alt=\"A condensed structure of 2-butyne.\">\n<br><b>(f)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFlUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--844755bf6ef1ab6a85f6a9c61368f4e035804d2a/OChem_06_EC_018f.jpg\" alt=\"A chemical structure of hexamethylbenzene.\"></p>",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    6,
+    5,
+    4,
+    3,
+    2,
+    1
+  ]
+}

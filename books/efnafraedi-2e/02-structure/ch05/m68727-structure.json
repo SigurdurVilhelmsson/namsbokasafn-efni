@@ -168,7 +168,11 @@
       "items": [
         {
           "id": null,
-          "segmentId": "m68727:item:fs-idm49861360-item-1"
+          "segmentId": "m68727:item:fs-idm49861360-item-1",
+          "wrapsPara": {
+            "openTag": "<para id=\"fs-idm11576944\">",
+            "id": "fs-idm11576944"
+          }
         },
         {
           "id": null,
@@ -181,34 +185,14 @@
       ]
     },
     {
-      "type": "para",
-      "id": "fs-idm11576944",
-      "segmentId": "m68727:para:fs-idm11576944"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp165042832",
-      "segmentId": "m68727:para:fs-idp165042832"
-    },
-    {
       "type": "equation",
       "id": "fs-idp13211824",
       "class": "unnumbered"
     },
     {
-      "type": "para",
-      "id": "fs-idm35882976",
-      "segmentId": "m68727:para:fs-idm35882976"
-    },
-    {
       "type": "equation",
       "id": "fs-idm23265328",
       "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm72030880",
-      "segmentId": "m68727:para:fs-idm72030880"
     },
     {
       "type": "equation",
@@ -439,7 +423,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68727:entry:auto-63",
+                  "segmentId": "m68727:entry:auto-59",
                   "attributes": {
                     "namest": "c1",
                     "nameend": "c3",
@@ -451,6 +435,34 @@
             {
               "cells": [
                 {
+                  "segmentId": "m68727:entry:auto-60",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68727:entry:auto-61",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68727:entry:auto-62",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68727:entry:auto-63",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
                   "segmentId": "m68727:entry:auto-64",
                   "attributes": {
                     "align": "left"
@@ -461,17 +473,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-66",
-                  "attributes": {
-                    "align": "left"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68727:entry:auto-66",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
                 {
                   "segmentId": "m68727:entry:auto-67",
                   "attributes": {
@@ -483,17 +495,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-69",
-                  "attributes": {
-                    "align": "left"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68727:entry:auto-69",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
                 {
                   "segmentId": "m68727:entry:auto-70",
                   "attributes": {
@@ -505,17 +517,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-72",
-                  "attributes": {
-                    "align": "left"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68727:entry:auto-72",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
                 {
                   "segmentId": "m68727:entry:auto-73",
                   "attributes": {
@@ -527,17 +539,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-75",
-                  "attributes": {
-                    "align": "left"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68727:entry:auto-75",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
                 {
                   "segmentId": "m68727:entry:auto-76",
                   "attributes": {
@@ -549,17 +561,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-78",
-                  "attributes": {
-                    "align": "left"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68727:entry:auto-78",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
                 {
                   "segmentId": "m68727:entry:auto-79",
                   "attributes": {
@@ -571,17 +583,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-81",
-                  "attributes": {
-                    "align": "left"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68727:entry:auto-81",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
                 {
                   "segmentId": "m68727:entry:auto-82",
                   "attributes": {
@@ -593,17 +605,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-84",
-                  "attributes": {
-                    "align": "left"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68727:entry:auto-84",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
                 {
                   "segmentId": "m68727:entry:auto-85",
                   "attributes": {
@@ -615,17 +627,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-87",
-                  "attributes": {
-                    "align": "left"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68727:entry:auto-87",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
                 {
                   "segmentId": "m68727:entry:auto-88",
                   "attributes": {
@@ -637,17 +649,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-90",
-                  "attributes": {
-                    "align": "left"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68727:entry:auto-90",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
                 {
                   "segmentId": "m68727:entry:auto-91",
                   "attributes": {
@@ -656,34 +668,6 @@
                 },
                 {
                   "segmentId": "m68727:entry:auto-92",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-93",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68727:entry:auto-94",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-95",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-96",
                   "attributes": {
                     "align": "left"
                   }
@@ -969,7 +953,7 @@
           "id": "fs-idp186597312",
           "title": {
             "segmentId": "m68727:example-title:fs-idp186597312-title",
-            "text": "Writing Reaction Equations for [[MATH:36]]"
+            "text": "Writing Reaction Equations for [[MATH:34]]"
           },
           "content": [
             {
@@ -1160,7 +1144,11 @@
           "items": [
             {
               "id": null,
-              "segmentId": "m68727:item:fs-idp167198464-item-1"
+              "segmentId": "m68727:item:fs-idp167198464-item-1",
+              "wrapsPara": {
+                "openTag": "<para id=\"fs-idp167199328\">",
+                "id": "fs-idp167199328"
+              }
             },
             {
               "id": null,
@@ -1169,19 +1157,9 @@
           ]
         },
         {
-          "type": "para",
-          "id": "fs-idp167199328",
-          "segmentId": "m68727:para:fs-idp167199328"
-        },
-        {
           "type": "equation",
           "id": "fs-idp167201504",
           "class": "unnumbered"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp160715680",
-          "segmentId": "m68727:para:fs-idp160715680"
         },
         {
           "type": "equation",
@@ -1189,24 +1167,9 @@
           "class": "unnumbered"
         },
         {
-          "type": "para",
-          "id": "fs-idp146331072",
-          "segmentId": "m68727:para:fs-idp146331072"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp146331744",
-          "segmentId": "m68727:para:fs-idp146331744"
-        },
-        {
           "type": "equation",
           "id": "fs-idp146333552",
           "class": "unnumbered"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp146344672",
-          "segmentId": "m68727:para:fs-idp146344672"
         },
         {
           "type": "equation",
@@ -1218,7 +1181,7 @@
           "id": "fs-idp185548816",
           "title": {
             "segmentId": "m68727:example-title:fs-idp185548816-title",
-            "text": "Stepwise Calculation of [[MATH:48]] Using Hess’s Law"
+            "text": "Stepwise Calculation of [[MATH:46]] Using Hess’s Law"
           },
           "content": [
             {
@@ -1631,7 +1594,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68727:entry:auto-224",
+                  "segmentId": "m68727:entry:auto-215",
                   "attributes": {}
                 }
               ]
@@ -1639,7 +1602,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68727:entry:auto-225",
+                  "segmentId": "m68727:entry:auto-216",
                   "attributes": {}
                 }
               ]

@@ -1,0 +1,388 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-19T20:49:08.600Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1lRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f3fbd1e998ee1aa15476d9db46d0a125e798e3ae",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1lRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f3fbd1e998ee1aa15476d9db46d0a125e798e3ae/OChem_03_03_006a.jpg"
+    },
+    {
+      "created_at": "2023-08-19T20:49:08.602Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2NRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--14ea0d72b37551d06653de7efd0a7ec5bbf3a2f9",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2NRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--14ea0d72b37551d06653de7efd0a7ec5bbf3a2f9/OChem_03_03_006b.jpg"
+    },
+    {
+      "created_at": "2023-08-19T20:49:08.604Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2dRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0ddaca02beadf65eaf3b0cd0ef872ed5f6bbcb9b",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2dRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0ddaca02beadf65eaf3b0cd0ef872ed5f6bbcb9b/OChem_03_03_006c.jpg"
+    },
+    {
+      "created_at": "2023-08-19T20:49:08.606Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2tRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b8dc4a2d931ec9d4de55f6028044536cc8b2641",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2tRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b8dc4a2d931ec9d4de55f6028044536cc8b2641/OChem_03_EC_206a.jpg"
+    },
+    {
+      "created_at": "2023-08-19T20:49:08.608Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc29RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e08465a153a91217f85ee0d14fae74c43a1f803b",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc29RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e08465a153a91217f85ee0d14fae74c43a1f803b/OChem_03_EC_206b.jpg"
+    },
+    {
+      "created_at": "2023-08-19T20:49:08.610Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3NRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--68ebe5b1cbe6b3739868fd59439d5930bf250952",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3NRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--68ebe5b1cbe6b3739868fd59439d5930bf250952/OChem_03_EC_206c.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:30d6fe6d-9c57-4028-827c-e2ba91c46bd2",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:3-3-alkyl-groups"
+  ],
+  "uuid": "2442cc3f-f584-41ed-b125-f8364fa5820b",
+  "group_uuid": "8c1ea3e0-6b97-43bd-acfd-0d06babe64e7",
+  "number": 36424,
+  "version": 6,
+  "uid": "36424@6",
+  "published_at": "2023-08-19T20:49:12.145Z",
+  "nickname": "03-03-OC-P08",
+  "solutions_are_public": true,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "Identify the carbon atoms in the following molecules as primary, secondary, tertiary, or quaternary:",
+  "questions": [
+    {
+      "id": 357608,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1lRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f3fbd1e998ee1aa15476d9db46d0a125e798e3ae/OChem_03_03_006a.jpg\" alt=\"The molecular structure of 2-methylpentane\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2tRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b8dc4a2d931ec9d4de55f6028044536cc8b2641/OChem_03_EC_206a.jpg\" alt=\"The molecular structure of 2-methylpentane featurings three primary carbons, two secondary carbons, and one tertiary carbon.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 357609,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2NRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--14ea0d72b37551d06653de7efd0a7ec5bbf3a2f9/OChem_03_03_006b.jpg\" alt=\"The molecular structure of  3-ethyl-2-methylpentane is represented\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc29RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e08465a153a91217f85ee0d14fae74c43a1f803b/OChem_03_EC_206b.jpg\" alt=\"The molecular structure of 3-ethyl-2-methylpentane is represented featuring four primary carbons, two secondary carbons, and two tertiary carbons.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 357610,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2dRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0ddaca02beadf65eaf3b0cd0ef872ed5f6bbcb9b/OChem_03_03_006c.jpg\" alt=\"The molecular structure of 2,2,4-trimethylpentane is represented\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3NRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--68ebe5b1cbe6b3739868fd59439d5930bf250952/OChem_03_EC_206c.jpg\" alt=\"The molecular structure of 2,2,4-trimethylpentane featuring five primary carbons, one secondary carbon, one tertiary carbon, and one quaternary carbon.\">"
+        }
+      ],
+      "community_solutions": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    6,
+    5,
+    4,
+    3,
+    2,
+    1
+  ]
+}

@@ -1,0 +1,426 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-14T13:45:47.396Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--880091bf3636383cd6cfd5f08610ace96bd4de62",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--880091bf3636383cd6cfd5f08610ace96bd4de62/OChem_09_01_004f.jpg"
+    },
+    {
+      "created_at": "2023-08-14T13:45:47.399Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWtTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--46d5ff48547e7939a8a05edf9f2da17ec13e5dfc",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWtTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--46d5ff48547e7939a8a05edf9f2da17ec13e5dfc/OChem_09_01_004e.jpg"
+    },
+    {
+      "created_at": "2023-08-14T13:45:47.401Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcW9TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a3d3f3f05d0df9332407ea45cc8f55ba69f0b05b",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcW9TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a3d3f3f05d0df9332407ea45cc8f55ba69f0b05b/OChem_09_01_004d.jpg"
+    },
+    {
+      "created_at": "2023-08-14T13:45:47.403Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1c7251c36332d16f75dc0c618e3ee6e703f3ae98",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1c7251c36332d16f75dc0c618e3ee6e703f3ae98/OChem_09_01_004c.jpg"
+    },
+    {
+      "created_at": "2023-08-14T13:45:47.405Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--857790e1c9949361cb5f10b1fc00520430281f90",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--857790e1c9949361cb5f10b1fc00520430281f90/OChem_09_01_004b.jpg"
+    },
+    {
+      "created_at": "2023-08-14T13:45:47.409Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTBTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d6e4936b3388574182024764620186259bc12ec7",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTBTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d6e4936b3388574182024764620186259bc12ec7/OChem_09_01_004a.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:373ea4de-63ba-4ccb-80a8-5d0cc5b54fee",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:9-1-naming-alkynes"
+  ],
+  "uuid": "0f88e3ba-c780-423c-98fe-464232033745",
+  "group_uuid": "e70671ba-b7ab-4558-89a0-6e820015aa44",
+  "number": 37190,
+  "version": 4,
+  "uid": "37190@4",
+  "published_at": "2023-08-14T13:45:54.788Z",
+  "nickname": "09-01-OC-P01",
+  "solutions_are_public": true,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "Name the following alkynes:",
+  "questions": [
+    {
+      "id": 353698,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTBTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d6e4936b3388574182024764620186259bc12ec7/OChem_09_01_004a.jpg\" alt=\"The structure of 2,5-dimethyl-3-hexyne.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "2,5-Dimethyl-3-hexyne"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 353699,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--857790e1c9949361cb5f10b1fc00520430281f90/OChem_09_01_004b.jpg\" alt=\"The structure of 3,3-dimethyl-1-butyne.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "3,3-Dimethyl-1-butyne"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 353700,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1c7251c36332d16f75dc0c618e3ee6e703f3ae98/OChem_09_01_004c.jpg\" alt=\"The structure of 3,3-dimethyl-4-octyne.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "3,3-Dimethyl-4-octyne"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 353701,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcW9TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a3d3f3f05d0df9332407ea45cc8f55ba69f0b05b/OChem_09_01_004d.jpg\" alt=\"The structure of 2,5,5-trimethyl-3-heptyne.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "2,5,5-Trimethyl-3-heptyne"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 353702,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--880091bf3636383cd6cfd5f08610ace96bd4de62/OChem_09_01_004f.jpg\" alt=\"The structure of 2,4-octadiene-6-yne.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "2,4-Octadiene-6-yne"
+        }
+      ],
+      "community_solutions": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    4,
+    3,
+    2,
+    1
+  ]
+}

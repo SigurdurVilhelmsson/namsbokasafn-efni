@@ -1,0 +1,102 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Naming Aldehydes and Ketones</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Naming Aldehydes and Ketones</md:title>
+    <md:content-id>m00212</md:content-id>
+    <md:uuid>ee7313bd-cbfe-474b-a8a9-f19a29e200e6</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">Aldehydes are named by replacing the terminal -<emphasis effect="italics">e</emphasis> of the corresponding alkane name with -<emphasis effect="italics">al.</emphasis> The parent chain must contain the –CHO group, and the –CHO carbon is numbered as carbon 1. Note in the following examples that the longest chain in 2-ethyl-4-methylpentanal is actually a hexane, but this chain does not include the –CHO group and thus is not the parent.</para>
+    <figure class="unnumbered scaled-down" id="fig-00001">
+    <media alt="The structures of ethanal (also called acetaldehyde), propanal (also called propionaldehyde) and 2-ethyl-4-methylpentanal. The carbon atoms are numbered in 2-ethyl-4-methylpentanal.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_01_001.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00002">For cyclic aldehydes in which the –CHO group is directly attached to a ring, the ring name followed by <emphasis effect="italics">carbaldehyde</emphasis> is used.</para>
+    <figure class="unnumbered scaled-down" id="fig-00002">
+    <media alt="The structures of cyclohexanecarbaldehyde and 2-naphthalenecarbaldehyde. The C H O groups are on C 1 and C 2 positions of cyclohexanecarbaldehyde and 2-naphthalenecarbaldehyde, respectively.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_01_002.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00003">A few simple and well-known aldehydes have common names that are recognized by IUPAC. Several that you might encounter are listed in <link target-id="table-00001"/>.</para>
+    <table summary="" id="table-00001">
+    <title>Common Names of Some Simple Aldehydes</title>
+    <tgroup cols="3">
+    <colspec colnum="1" colname="c1"/>
+    <colspec colnum="2" colname="c2"/>
+    <colspec colnum="3" colname="c3"/>
+    <thead>
+    <row valign="top">
+    <entry valign="top" align="left">Formula</entry>
+    <entry valign="top" align="left">Common name</entry>
+    <entry valign="top" align="left">Systematic name</entry>
+    </row>
+    </thead>
+    <tbody>
+    <row valign="top">
+    <entry valign="top" align="left">HCHO</entry>
+    <entry valign="top" align="left">Formaldehyde</entry>
+    <entry valign="top" align="left">Methanal</entry>
+    </row>
+    <row valign="top">
+    <entry valign="top" align="left">CH<sub>3</sub>CHO</entry>
+    <entry valign="top" align="left">Acetaldehyde</entry>
+    <entry valign="top" align="left">Ethanal</entry>
+    </row>
+    <row valign="top">
+    <entry valign="top" align="left"><m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>C&#x2550;CHCHO</m:mtext></m:mrow></m:math></entry>
+    <entry valign="top" align="left">Acrolein</entry>
+    <entry valign="top" align="left">Propenal</entry>
+    </row>
+    <row valign="top">
+    <entry valign="top" align="left"><m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>CH&#x2550;CHCHO</m:mtext></m:mrow></m:math></entry>
+    <entry valign="top" align="left">Crotonaldehyde</entry>
+    <entry valign="top" align="left">2-Butenal</entry>
+    </row>
+    <row valign="top">
+    <entry valign="top" align="left"><media class="unnumbered" alt="The structure of benzaldehyde in which a benzene ring with the first carbon is linked to an aldehyde (C H O)."><image mime-type="image/jpeg" src="../../media/OChem_19_01_003.jpg"/></media></entry>
+    <entry valign="top" align="left">Benzaldehyde</entry>
+    <entry valign="top" align="left">Benzenecarbaldehyde</entry>
+    </row>
+    </tbody>
+    </tgroup>
+    </table>
+    <para id="para-00004">Ketones are named by replacing the terminal -<emphasis effect="italics">e</emphasis> of the corresponding alkane name with -<emphasis effect="italics">one.</emphasis> The parent chain is the longest one that includes the ketone group, and the numbering begins at the end nearer the carbonyl carbon. As with alkenes (<link document="m00065"/>) and alcohols (<link document="m00200"/>), the locant is placed before the parent name using older rules but before the suffix with the newer IUPAC guidelines. For example:</para>
+    <figure class="unnumbered scaled-down" id="fig-00003">
+    <media alt="The structures of 3-hexanone (new name: hexan-3-one), 4-hexen-2-one (new name: hex-4-en-2-one), and 2,4-hexanedione (new name: hexane-2,4-dione). The carbon atoms in each structure are numbered.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_01_004.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00005">A few ketones are allowed by IUPAC to retain their common names.</para>
+    <figure class="unnumbered scaled-down" id="fig-00004">
+    <media alt="The structures of acetone (carbonyl with two methyls), acetophenone (carbonyl with methyl and phenyl), and benzophenone (carbonyl with two phenyls).">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_01_005.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00006">When it’s necessary to refer to the <m:math><m:mrow><m:mtext>R&#x2013;C&#x2550;O</m:mtext></m:mrow></m:math> group as a substituent, the name <term id="term-00001">acyl (a-sil) group</term> is used and the name ending -<emphasis effect="italics">yl</emphasis> is attached. Thus, –COCH<sub>3</sub> is an <emphasis effect="italics">acetyl</emphasis> group, –CHO is a <emphasis effect="italics">formyl</emphasis> group, –COAr is an <emphasis effect="italics">aroyl</emphasis> group, and –COC<sub>6</sub>H<sub>5</sub> is a <emphasis effect="italics">benzoyl</emphasis> group.</para>
+    <figure class="unnumbered scaled-down" id="fig-00005">
+    <media alt="The structures of acyl (C O R), acetyl (C O C H 3), formyl (C H O), and benzoyl (C O Ph) groups.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_01_006.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00007">If other functional groups are present and the double-bonded oxygen is considered a substituent on a parent chain, the prefix <emphasis effect="italics">oxo</emphasis>- is used. For example:</para>
+    <figure class="unnumbered scaled-down" id="fig-00006">
+    <media alt="The structure of 3-oxohexanal comprises a six-carbon chain. C 1 is a C H O group, and C 3 is double-bonded to O.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_01_007.jpg"/>
+    </media>
+    </figure>
+    <section class="section-exercises" id="sect-00001">
+    <title>Problems</title>
+    <exercise id="exer-00001">
+    <problem id="prob-00001">
+    <para id="para-00008"><link class="os-embed" url="#exercise/19-01-OC-P01"/></para>
+    </problem>
+    </exercise>
+    <exercise id="exer-00002">
+    <problem id="prob-00002">
+    <para id="para-00009"><link class="os-embed" url="#exercise/19-01-OC-P02"/></para>
+    </problem>
+    </exercise>
+    </section>
+    </content>
+</document>

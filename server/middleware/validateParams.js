@@ -36,11 +36,11 @@ function validateBookChapter(req, res, next) {
 
 /**
  * Validate :moduleId route parameter.
- * Expects format: m followed by exactly 5 digits (e.g., m68663).
+ * Expects format: m followed by exactly 5 digits (e.g., m68663) or 'chapter-metadata'.
  */
 function validateModule(req, res, next) {
   const { moduleId } = req.params;
-  if (!moduleId || !/^m\d{5}$/.test(moduleId)) {
+  if (!moduleId || !/^(m\d{5}|chapter-metadata)$/.test(moduleId)) {
     return res.status(400).json({ error: `Invalid module ID: ${moduleId}` });
   }
   next();

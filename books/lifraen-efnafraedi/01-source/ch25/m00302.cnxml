@@ -1,0 +1,73 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Configurations of the Aldoses</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Configurations of the Aldoses</md:title>
+    <md:content-id>m00302</md:content-id>
+    <md:uuid>be9d1de8-9066-4f22-9035-9a1b70628e19</md:uuid>
+  </metadata>
+  <content>
+<para id="para-00001">An aldotetrose is a four-carbon sugar with two chirality centers. Thus, there are 2<sup>2</sup> = 4 possible stereoisomeric aldotetroses, or two <emphasis effect="smallcaps">D</emphasis>,<emphasis effect="smallcaps">L</emphasis> pairs of enantiomers named erythrose and threose.</para>
+<para id="para-00002">Aldopentoses have three chirality centers and a total of 2<sup>3</sup> = 8 possible stereoisomers, or four <emphasis effect="smallcaps">D</emphasis>,<emphasis effect="smallcaps">L</emphasis> pairs of enantiomers. These four pairs are called ribose, arabinose, xylose, and lyxose. All except lyxose occur widely in nature. <emphasis effect="smallcaps">D</emphasis>-Ribose is an important constituent of RNA (ribonucleic acid), <emphasis effect="smallcaps">L</emphasis>-arabinose is found in many plants, and <emphasis effect="smallcaps">D</emphasis>-xylose is found in wood.</para>
+<para id="para-00003">Aldohexoses have four chirality centers and a total of 2<sup>4</sup> = 16 possible stereoisomers, or eight <emphasis effect="smallcaps">D</emphasis>,<emphasis effect="smallcaps">L</emphasis> pairs of enantiomers. The names of the eight are allose, altrose, glucose, mannose, gulose, idose, galactose, and talose. Only <emphasis effect="smallcaps">D</emphasis>-glucose, from starch and cellulose, and <emphasis effect="smallcaps">D</emphasis>-galactose, from gums and fruit pectins, are widely distributed in nature. <emphasis effect="smallcaps">D</emphasis>-mannose and <emphasis effect="smallcaps">D</emphasis>-talose also occur naturally but in lesser abundance.</para>
+<para id="para-00004">Fischer projections of the four-, five-, and six-carbon <emphasis effect="smallcaps">D</emphasis> aldoses are shown in <link target-id="fig-00001"/>. Starting with <emphasis effect="smallcaps">D</emphasis>-glyceraldehyde, we can imagine constructing the two <emphasis effect="smallcaps">D</emphasis> aldotetroses by inserting a new chirality center just below the aldehyde carbon. Each of the two <emphasis effect="smallcaps">D</emphasis> aldotetroses then leads to two <emphasis effect="smallcaps">D</emphasis> aldopentoses (four total), and each of the four <emphasis effect="smallcaps">D</emphasis> aldopentoses leads to two <emphasis effect="smallcaps">D</emphasis> aldohexoses (eight total). In addition, each of the <emphasis effect="smallcaps">D</emphasis> aldoses in <link target-id="fig-00001"/> has an <emphasis effect="smallcaps">L</emphasis> enantiomer, which is not shown.</para>
+<figure class="scaled-down" id="fig-00001">
+<media alt="Fisher projections of  aldoses, D-glyceraldehyde, D-erythrose, D-threose, D-ribose, D-arabinose, D-erythrose, D-xylose, D-lyxose, D-allose, D-altrose, D-glucose, D-mannose, D-gulose, D-idose, D-galactose, ang D-talose.">
+<image mime-type="image/jpeg" src="../../media/OChem_25_04_001.jpg"/>
+</media>
+<caption><emphasis effect="bold">Configurations of <emphasis effect="smallcaps">D</emphasis> aldoses.</emphasis> The structures are arranged from left to right so that the –OH groups on C2 alternate right/left (R/L) across each series. Similarly, the –OH groups at C3 alternate two right/two left (2R/2L), the –OH groups at C4 alternate 4R/4L, and the –OH groups at C5 are to the right in all eight (8R). Each <emphasis effect="smallcaps">D</emphasis> aldose has a corresponding <emphasis effect="smallcaps">L</emphasis> enantiomer that is not shown.</caption>
+</figure>
+<para id="para-00005">Louis Fieser of Harvard University long ago suggested a simple procedure for remembering the names and structures of the eight <emphasis effect="smallcaps">D</emphasis> aldohexoses:</para>
+<para id="para-00006"><emphasis effect="bold"><span class="red-text">STEP 1</span></emphasis><newline/>Set up eight Fischer projections with the –CHO group on top and the –CH<sub>2</sub>OH group at the bottom.</para>
+<para id="para-00007"><emphasis effect="bold"><span class="red-text">STEP 2</span></emphasis><newline/>At C5, place all eight –OH groups to the right (<emphasis effect="smallcaps">D</emphasis> series).</para>
+<para id="para-00008"><emphasis effect="bold"><span class="red-text">STEP 3</span></emphasis><newline/>At C4, alternate four –OH groups to the right and four to the left.</para>
+<para id="para-00009"><emphasis effect="bold"><span class="red-text">STEP 4</span></emphasis><newline/>At C3, alternate two –OH groups to the right, two to the left.</para>
+<para id="para-00010"><emphasis effect="bold"><span class="red-text">STEP 5</span></emphasis><newline/>At C2, alternate –OH groups right, left, right, left.</para>
+<para id="para-00011"><emphasis effect="bold"><span class="red-text">STEP 6</span></emphasis><newline/>Name the eight isomers using the mnemonic “<emphasis effect="bold">All alt</emphasis>ruists <emphasis effect="bold">gl</emphasis>adly <emphasis effect="bold">ma</emphasis>ke <emphasis effect="bold">gu</emphasis>m <emphasis effect="bold">i</emphasis>n <emphasis effect="bold">gal</emphasis>lon <emphasis effect="bold">ta</emphasis>nks.”</para>
+<para id="para-00012">The structures of the four <emphasis effect="smallcaps">D</emphasis> aldopentoses can be generated in a similar way and named by the mnemonic suggested by a Cornell University undergraduate: “<emphasis effect="bold">RIB</emphasis>s ARe eXtra Lean.”</para>
+<example id="exam-00001">
+<title>Drawing a Fischer Projection</title>
+<para id="para-00013">Draw a Fischer projection of <emphasis effect="smallcaps">L</emphasis>-fructose.</para>
+<para id="para-00014"><title><span class="red-text">Strategy</span></title> Because <emphasis effect="smallcaps">L</emphasis>-fructose is the enantiomer of <emphasis effect="smallcaps">D</emphasis>-fructose, simply look at the structure of <emphasis effect="smallcaps">D</emphasis>-fructose and reverse the configuration at each chirality center.</para>
+<para id="para-00015"><title><span class="cyan-text">Solution</span></title></para>
+<figure class="unnumbered scaled-down" id="fig-00002">
+<media alt="Fischer projections of enantiomeric  D-fructose and L-fructose, non-superimposable mirror image stereoisomers in which every O-H and H pair is switched">
+<image mime-type="image/jpeg" src="../../media/OChem_25_04_002.jpg"/>
+</media>
+</figure>
+</example>
+<example id="exam-00002">
+<title>Drawing a Fischer Projection of a Molecular Model</title>
+<para id="para-00016">Draw the following aldotetrose as a Fischer projection, and identify it as a <emphasis effect="smallcaps">D</emphasis> sugar or an <emphasis effect="smallcaps">L</emphasis> sugar:</para>
+<figure class="unnumbered scaled-down" id="fig-00003">
+<media alt="The ball-and-stick model of aldotetrose which is an aldose with four carbon atoms. The gray, black, and red spheres represent hydrogen, carbon, and oxygen atoms, respectively.">
+<image mime-type="image/jpeg" src="../../media/OChem_25_04_003.jpg"/>
+</media>
+</figure>
+<para id="para-00017"><title><span class="red-text">Strategy</span></title> The Fischer projection of a monosaccharide is drawn vertically, with the carbonyl group at or near the top and the –CH<sub>2</sub>OH group at the bottom. The interior –H and –OH are drawn to the sides, pointing out of the page toward the viewer.</para>
+<para id="para-00018"><title><span class="cyan-text">Solution</span></title></para>
+<figure class="unnumbered scaled-down" id="fig-00004">
+<media alt="The steps to draw the Fischer projection of D-erythrose form its ball-and-stick model. The model undergoes 90 degree-rotation so that the carbonyl group is at the top.">
+<image mime-type="image/jpeg" src="../../media/OChem_25_04_004.jpg"/>
+</media>
+</figure>
+</example>
+<section class="section-exercises" id="sect-00001">
+<title>Problems</title>
+<exercise id="exer-00001">
+<problem id="prob-00001">
+<para id="para-00019"><link class="os-embed" url="#exercise/25-04-OC-P08"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00002">
+<problem id="prob-00002">
+<para id="para-00020"><link class="os-embed" url="#exercise/25-04-OC-P09"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00003">
+<problem id="prob-00003">
+<para id="para-00021"><link class="os-embed" url="#exercise/25-04-OC-P10"/></para>
+</problem>
+</exercise>
+</section>
+</content>
+</document>

@@ -1,0 +1,56 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Keto–Enol Tautomerism</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Keto–Enol Tautomerism</md:title>
+    <md:content-id>m00257</md:content-id>
+    <md:uuid>ae2e37ee-742e-4984-9a4c-ff4a8efba108</md:uuid>
+  </metadata>
+  <content>
+<para id="para-00001">A carbonyl compound with a hydrogen atom on its <emphasis effect="italics">α</emphasis> carbon is in equilibrium with its corresponding <term id="term-00001">enol</term> isomer (<link document="m00106"/>). This spontaneous interconversion between two isomers, usually with the change in position of a hydrogen, is called <emphasis effect="italics">tautomerism,</emphasis> from the Greek <emphasis effect="italics">tauto,</emphasis> meaning “the same,” and <emphasis effect="italics">meros,</emphasis> meaning “part.” The individual keto and enol isomers are called <term id="term-00002">tautomers</term>.</para>
+<figure class="unnumbered scaled-down" id="fig-00001">
+<media alt="The electrostatic potential map with the ball-and-stick model of keto and enol tautomers of a carbonyl compound. Black, gray, and red spheres represent carbon, hydrogen, and oxygen, respectively.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_01_001.jpg"/>
+</media>
+</figure>
+<para id="para-00002">Note the difference between tautomers and resonance forms. Tautomers are constitutional isomers—different compounds with different structures—while resonance forms are different representations of a single compound. Tautomers have their <emphasis effect="italics">atoms</emphasis> arranged differently, while resonance forms differ only in the position of their <emphasis effect="italics">π</emphasis> and nonbonding <emphasis effect="italics">electrons.</emphasis></para>
+<para id="para-00003">Most monocarbonyl compounds exist almost entirely in their keto form at equilibrium, and it’s usually difficult to isolate the pure enol. Cyclohexanone, for example, contains only about 0.0001% of its enol tautomer at room temperature. The percentage of enol tautomer is even lower for carboxylic acids, esters, and amides. The enol can only predominate when stabilized by conjugation or intramolecular hydrogen bonding. Thus, 2,4-pentanedione is about 76% enol tautomer. Although enols are scarce at equilibrium, they are nevertheless responsible for much of the chemistry of carbonyl compounds because they are so reactive.</para>
+<figure class="unnumbered scaled-down" id="fig-00002">
+<media alt="Two keto enol tautomeric equations. Cyclohexanone and acetone both exist in the keto form with only 0.0000001% of the enol form being present.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_01_002.jpg"/>
+</media>
+</figure>
+<para id="para-00004">Keto–enol tautomerism of carbonyl compounds is catalyzed by both acids and bases. Acid catalysis occurs by protonation of the carbonyl oxygen atom to give an intermediate cation that loses H<sup>+</sup> from its <emphasis effect="italics">α</emphasis> carbon to yield a neutral enol (<link target-id="fig-00003"/>a). This proton loss from the cation intermediate is similar to what occurs during an E1 reaction when a carbocation loses H<sup>+</sup> to form an alkene (<link document="m00131"/>).</para>
+<para id="para-00005">Base-catalyzed enol formation occurs because the presence of a carbonyl group makes the hydrogens on the <emphasis effect="italics">α</emphasis> carbon weakly acidic. Thus, a carbonyl compound can act as an acid and donate one of its <emphasis effect="italics">α</emphasis> hydrogens to a sufficiently strong base. The resultant resonance-stabilized anion, an <term id="term-00003">enolate ion</term>, is then protonated to yield a neutral compound. If protonation of the enolate ion takes place on the <emphasis effect="italics">α</emphasis> carbon, the keto tautomer is regenerated and no net change occurs. If, however, protonation takes place on the oxygen atom, an enol tautomer is formed (<link target-id="fig-00003"/>b).</para>
+<figure class="mechanism-figure scaled-down" id="fig-00003">
+<title>MECHANISM</title>
+<media alt="Reaction mechanisms for keto enol tautomerism under acidic and basic conditions.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_01_003.jpg"/>
+</media>
+<caption><emphasis effect="bold">Mechanism of enol formation under both acid-catalyzed and base-catalyzed conditions.</emphasis> <emphasis effect="bold">(a)</emphasis> Acid catalysis involves (<emphasis effect="bold"><span class="magenta-text">1</span></emphasis>) initial protonation of the carbonyl oxygen followed by (<emphasis effect="bold"><span class="magenta-text">2</span></emphasis>) removal of H<sup>+</sup> from the <emphasis effect="italics">α</emphasis> position. <emphasis effect="bold">(b)</emphasis> Base catalysis involves (<emphasis effect="bold"><span class="magenta-text">1</span></emphasis>) initial deprotonation of the <emphasis effect="italics">α</emphasis> position to give an enolate ion, followed by (<emphasis effect="bold"><span class="magenta-text">2</span></emphasis>) reprotonation on oxygen.</caption>
+</figure>
+<para id="para-00006">Note that only the hydrogens on the <emphasis effect="italics">α</emphasis> position of carbonyl compounds are acidic. Hydrogens at <emphasis effect="italics">β, γ, δ,</emphasis> and so on, aren’t acidic and can’t be removed by base because the resulting anions can’t be resonance-stabilized by the carbonyl group.</para>
+<figure class="unnumbered scaled-down" id="fig-00004">
+<media alt="An alkane with alpha, beta, gamma, and delta carbon and double bond oxygen atom at C 1 gives two reversible forms of enolate ion in the presence of a base.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_01_004.jpg"/>
+</media>
+</figure>
+<section class="section-exercises" id="sect-00001">
+<title>Problems</title>
+<exercise id="exer-00001">
+<problem id="prob-00001">
+<para id="para-00007"><link class="os-embed" url="#exercise/22-01-OC-P01"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00002">
+<problem id="prob-00002">
+<para id="para-00008"><link class="os-embed" url="#exercise/22-01-OC-P02"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00003">
+<problem id="prob-00003">
+<para id="para-00009"><link class="os-embed" url="#exercise/22-01-OC-P03"/></para>
+</problem>
+</exercise>
+</section>
+</content>
+</document>

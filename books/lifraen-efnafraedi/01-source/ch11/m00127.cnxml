@@ -1,0 +1,39 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Biological Substitution Reactions</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Biological Substitution Reactions</md:title>
+    <md:content-id>m00127</md:content-id>
+    <md:uuid>01c6ae66-8bd0-4dcc-ba89-d12fd4a154f7</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">Both S<sub>N</sub>1 and S<sub>N</sub>2 reactions are common in biological chemistry, particularly in the pathways for biosynthesis of the many thousands of plant-derived substances called terpenoids, which we saw briefly in the <link document="m00101" target-id="sect-00002">Chapter 8 <emphasis effect="italics">Chemistry Matters</emphasis></link> and will discuss in <emphasis effect="bold">Section 27.5</emphasis>. Unlike what typically happens in the laboratory, however, the substrate in a biological substitution reaction is usually an organodiphosphate rather than an alkyl halide. Thus, the leaving group is the diphosphate ion, abbreviated PP<sub>i</sub>, rather than a halide ion. In fact, it’s useful to think of the diphosphate group as the “biological equivalent” of a halide. The dissociation of an organodiphosphate in a biological reaction is typically assisted by complexation to a divalent metal cation such as Mg<sup>2+</sup> to help neutralize charge and make the diphosphate a better leaving group.</para>
+    <figure class="unnumbered scaled-down" id="fig-00001">
+    <media alt="A reaction in parentheses shows alkyl chloride dissociating to R plus and Cl minus. Separately, an organodiphosphate dissociates to form R plus and diphosphate ion.">
+    <image mime-type="image/jpeg" src="../../media/OChem_11_06_001.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00002">As an example, two S<sub>N</sub>1 reactions occur during the biosynthesis of geraniol, a fragrant alcohol found in roses and used in perfumery. Geraniol biosynthesis begins with dissociation of dimethylallyl diphosphate to give an allylic carbocation, which reacts with isopentenyl diphosphate (<link target-id="fig-00002"/>). From the viewpoint of isopentenyl diphosphate, the reaction is an electrophilic alkene addition, but from the viewpoint of dimethylallyl diphosphate, the process is an S<sub>N</sub>1 reaction in which the carbocation intermediate reacts with a double bond as the nucleophile.</para>
+    <figure class="scaled-down" id="fig-00002">
+    <media alt="The figure shows the biosynthesis reaction of geraniol. Multiple steps involving two S N 1 reactions produces geraniol from dimethylallyl diphosphate, where the diphosphate ion acts as a leaving group.">
+    <image mime-type="image/jpeg" src="../../media/OChem_11_06_002.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">Biosynthesis of geraniol from dimethylallyl diphosphate.</emphasis> Two S<sub>N</sub>1 reactions occur, both with diphosphate ion as the leaving group.</caption>
+    </figure>
+    <para id="para-00003">Following this initial S<sub>N</sub>1 reaction, loss of the pro-<emphasis effect="italics">R</emphasis> hydrogen gives geranyl diphosphate, itself an allylic diphosphate that dissociates a second time. Reaction of the geranyl carbocation with water in a second S<sub>N</sub>1 reaction, followed by loss of a proton, then yields geraniol.</para>
+    <para id="para-00004">As another example, S<sub>N</sub>2 reactions are involved in almost all biological methylations, which transfer a –CH<sub>3</sub> group from an electrophilic donor to a nucleophile. The donor is <emphasis effect="italics">S</emphasis>-adenosylmethionine (abbreviated SAM), which contains a positively charged sulfur (a sulfonium ion, <link document="m00061"/>), and the leaving group is the neutral <emphasis effect="italics">S</emphasis>-adenosylhomocysteine molecule. In the biosynthesis of epinephrine (adrenaline) from norepinephrine, for instance, the nucleophilic nitrogen atom of norepinephrine attacks the electrophilic methyl carbon atom of <emphasis effect="italics">S</emphasis>-adenosylmethionine in an S<sub>N</sub>2 reaction, displacing <emphasis effect="italics">S</emphasis>-adenosylhomocysteine (<link target-id="fig-00003"/>). In effect, <emphasis effect="italics">S</emphasis>-adenosylmethionine is simply a biological equivalent of CH<sub>3</sub>Cl.</para>
+    <figure id="fig-00003">
+    <media alt="The reaction mechanism of Norepinephrine with S-Adenosylmethionine undergoing S N 2 pathway. S-Adenosylhomocysteine and Epinephrine (adrenaline) are the products formed.">
+    <image mime-type="image/jpeg" src="../../media/OChem_11_06_003.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">The biosynthesis of epinephrine from norepinephrine occurs by an S<sub>N</sub>2 reaction with <emphasis effect="italics">S</emphasis>-adenosylmethionine.</emphasis></caption>
+    </figure>
+    <section class="section-exercises" id="sect-00001">
+    <title>Problems</title>
+    <exercise id="exer-00001">
+    <problem id="prob-00001">
+    <para id="para-00005"><link class="os-embed" url="#exercise/11-06-OC-P14"/></para>
+    </problem>
+    </exercise>
+    </section>
+    </content>
+</document>

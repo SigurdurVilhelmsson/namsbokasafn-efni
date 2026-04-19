@@ -1,0 +1,7 @@
+{
+  "eq-00001": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo>+</m:mo><m:mn>2</m:mn><m:mspace width=\"0.2em\"/><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">⟶</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mn>2</m:mn><m:mspace width=\"0.2em\"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo>+</m:mo><m:mn style=\"color: #E00087\">890</m:mn><m:mspace width=\"0.2em\"/><m:mtext style=\"color: #E00087\">kJ/mol</m:mtext><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\" style=\"color: #E00087\">(</m:mo><m:mn style=\"color: #E00087\">213</m:mn><m:mspace width=\"0.2em\"/><m:mtext style=\"color: #E00087\">kcal/mol</m:mtext><m:mo stretchy=\"false\" style=\"color: #E00087\">)</m:mo></m:mrow></m:math>",
+    "latex": "{{{\\text{CH}}}_{4}+2\\, {\\text{O}}_{2}\\longrightarrow {{\\text{CO}}}_{2}+2\\, {\\text{H}}_{2}\\text{O}+890\\, \\text{kJ/mol}\\, (213\\, \\text{kcal/mol})}",
+    "isBlock": true
+  }
+}

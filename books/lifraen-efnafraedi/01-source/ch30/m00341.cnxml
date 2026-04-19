@@ -1,0 +1,35 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Molecular Orbitals of Conjugated Pi Systems</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Molecular Orbitals of Conjugated Pi Systems</md:title>
+    <md:content-id>m00341</md:content-id>
+    <md:uuid>f7c6bce2-b842-4bd4-9d98-49e5cae624ad</md:uuid>
+  </metadata>
+  <content>
+<para id="para-00001">A conjugated polyene, as we saw in <link document="m00171"/>, is one with alternating double and single bonds. According to molecular orbital (MO) theory, the <emphasis effect="italics">p</emphasis> orbitals on the <emphasis effect="italics">sp</emphasis><sup>2</sup>-hybridized carbons of a conjugated polyene interact to form a set of <emphasis effect="italics">π</emphasis> molecular orbitals whose energies depend on the number of nodes they have between nuclei. Molecular orbitals with fewer nodes are lower in energy than isolated <emphasis effect="italics">p</emphasis> atomic orbitals and are bonding MOs; molecular orbitals with more nodes are higher in energy than isolated <emphasis effect="italics">p</emphasis> orbitals and are antibonding MOs. Pi molecular orbitals of ethylene and 1,3-butadiene are shown in <link target-id="fig-00001"/>.</para>
+<figure class="scaled-down" id="fig-00001">
+<media alt="The pi molecular orbitals of ethylene (one bonding and one antibonding) and 1,3-butadiene (two bonding and two antibonding).">
+<image mime-type="image/jpeg" src="../../media/OChem_30_01_001.jpg"/>
+</media>
+<caption><emphasis effect="bold">Pi molecular orbitals of <emphasis effect="bold">(a)</emphasis> ethylene and <emphasis effect="bold">(b)</emphasis> 1,3-butadiene.</emphasis></caption>
+</figure>
+<para id="para-00002">A similar sort of molecular orbital description can be derived for any conjugated <emphasis effect="italics">π</emphasis> electron system. 1,3,5-Hexatriene, for example, has three double bonds and six <emphasis effect="italics">π</emphasis> MOs, as shown in <link target-id="fig-00002"/>. In the ground state, only the three bonding orbitals, <emphasis effect="italics">ψ</emphasis><sub>1</sub>, <emphasis effect="italics">ψ</emphasis><sub>2</sub>, and <emphasis effect="italics">ψ</emphasis><sub>3</sub>, are filled. On irradiation with ultraviolet light, however, an electron is promoted from the highest-energy filled orbital (<emphasis effect="italics">ψ</emphasis><sub>3</sub>) to the lowest-energy unfilled orbital (<emphasis effect="italics">ψ</emphasis><sub>4</sub>*) to give an excited state (<link document="m00177"/>), in which <emphasis effect="italics">ψ</emphasis><sub>3</sub> and <emphasis effect="italics">ψ</emphasis><sub>4</sub>* are each half-filled. (An asterisk denotes an antibonding orbital.)</para>
+<para id="para-00003">What do molecular orbitals and their nodes have to do with pericyclic reactions? The answer is, <emphasis effect="italics">everything</emphasis>. According to a series of rules formulated in the mid-1960s by R. B. Woodward and Roald Hoffmann at Harvard University, a pericyclic reaction can take place only if the symmetries of the reactant MOs are the same as the symmetries of the product MOs. In other words, the lobes of reactant MOs must be of the correct algebraic sign for bonding to occur in the transition state leading to product.</para>
+<para id="para-00004">If the symmetries of reactant and product orbitals match up, or <emphasis effect="italics">correlate</emphasis>, the reaction is said to be <term id="term-00001">symmetry-allowed</term>. If the symmetries of reactant and product orbitals don’t correlate, the reaction is <term id="term-00002">symmetry-disallowed</term>. Symmetry-allowed reactions often occur under relatively mild conditions, but symmetry-disallowed reactions can’t occur by concerted paths. They either take place by nonconcerted, higher-energy pathways, or they don’t take place at all.</para>
+<figure class="scaled-down" id="fig-00002">
+<media alt="The six pi molecular orbitals of 1,3,5-hexatriene. The three bonding  orbitals are filled in the ground state. In the excited state, one electron has moved from bonding to antibonding orbital.">
+<image mime-type="image/jpeg" src="../../media/OChem_30_01_002.jpg"/>
+</media>
+<caption><emphasis effect="bold">The six <emphasis effect="italics">π</emphasis> molecular orbitals of 1,3,5-hexatriene.</emphasis> In the ground state, the three bonding MOs, <emphasis effect="italics">ψ</emphasis><sub>1</sub>, <emphasis effect="italics">ψ</emphasis><sub>2</sub>, and <emphasis effect="italics">ψ</emphasis><sub>3</sub>, are filled. In the excited state, <emphasis effect="italics">ψ</emphasis><sub>3</sub> and <emphasis effect="italics">ψ</emphasis><sub>4</sub>* are both half-filled.</caption>
+</figure>
+<para id="para-00005">The Woodward–Hoffmann rules for pericyclic reactions require an analysis of all reactant and product molecular orbitals, but Kenichi Fukui at Kyoto Imperial University in Japan introduced a simplified version. Hoffman and Fukui shared a Nobel Prize for their work, and Woodward would have joined them (for his second Nobel Prize) had he not passed away before the award was made. According to Fukui’s simplified version, we need to consider only two molecular orbitals, called the <term id="term-00003">frontier orbitals</term>. These frontier orbitals are the <term id="term-00004">highest occupied molecular orbital (HOMO)</term> and the <term id="term-00005">lowest unoccupied molecular orbital (LUMO)</term>. In ground-state 1,3,5-hexatriene, for example, <emphasis effect="italics">ψ</emphasis><sub>3</sub> is the HOMO and <emphasis effect="italics">ψ</emphasis><sub>4</sub>* is the LUMO (<link target-id="fig-00002"/>). In excited-state 1,3,5-hexatriene, however, <emphasis effect="italics">ψ</emphasis><sub>4</sub>* is the HOMO and <emphasis effect="italics">ψ</emphasis><sub>5</sub>* is the LUMO.</para>
+<section class="section-exercises" id="sect-00001">
+<title>Problems</title>
+<exercise id="exer-00001">
+<problem id="prob-00001">
+<para id="para-00006"><link class="os-embed" url="#exercise/30-01-OC-P01"/></para>
+</problem>
+</exercise>
+</section>
+</content>
+</document>

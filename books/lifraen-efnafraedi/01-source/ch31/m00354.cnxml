@@ -1,0 +1,60 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Step-Growth Polymers</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Step-Growth Polymers</md:title>
+    <md:content-id>m00354</md:content-id>
+    <md:uuid>fb00cbe2-5524-4ddd-8e4f-348bf33de7d2</md:uuid>
+  </metadata>
+<content>
+<para id="para-00001">Step-growth polymers are produced by reactions in which each bond in the polymer is formed stepwise, independently of the other bonds. Like the polyamides (nylons) and polyesters that we saw in <link document="m00247"/>, most step-growth polymers are produced by reaction between two difunctional reactants. The polymer Nylon 66, for instance, is made by reaction between the six-carbon adipic acid and the six-carbon hexamethylenediamine (1,6-hexanediamine). Alternatively, a single reactant with two different functional groups can polymerize. Nylon 6 is made by polymerization of the six-carbon caprolactam. The reaction is initiated by adding a small amount of water, which hydrolyzes some caprolactam to 6-aminohexanoic acid. Nucleophilic addition of the amino group to caprolactam then propagates the polymerization.</para>
+<figure class="unnumbered" id="fig-00001">
+<media alt="Adipic acid reacts with hexamethylenediamine and heat to give Nylon 66. Caprolactam reacts with water and heat to give 6-aminohexanoic acid that reacts with heat to form Nylon 6.">
+<image mime-type="image/jpeg" src="../../media/OChem_31_04_001.jpg"/>
+</media>
+</figure>
+<section id="sect-00001">
+<title>Polycarbonates</title>
+<para id="para-00002"><term id="term-00001">Polycarbonates</term> are like polyesters, but their carbonyl group is linked to two  –OR groups, [<m:math><m:mrow><m:mtext>O</m:mtext><m:mtext>═</m:mtext><m:mtext>C</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:mtext>OR</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:math>]. Lexan, for instance, is a polycarbonate prepared from diphenyl carbonate and a diphenol called bisphenol A. Lexan has unusually high impact strength, making it valuable for use in machinery housings, telephones, bicycle safety helmets, and bulletproof glass.</para>
+<figure class="unnumbered scaled-down" id="fig-00002">
+<media alt="Diphenyl carbonate reacts with bisphenol A at 300 degree Celsius to give Lexan and two n moles of phenol. Lexan's structure is inside parentheses with n as the subscript.">
+<image mime-type="image/jpeg" src="../../media/OChem_31_04_002.jpg"/>
+</media>
+</figure>
+</section>
+<section id="sect-00002">
+<title>Polyurethanes</title>
+<para id="para-00003">A <term id="term-00002">urethane</term> is a carbonyl-containing functional group in which the carbonyl carbon is bonded to both an  –OR group and an  –NR<sub>2</sub> group. As such, a urethane is halfway between a carbonate and a urea.</para>
+<figure class="unnumbered scaled-down" id="fig-00003">
+<media alt="Structures of a carbonate (carbonyl with two O R groups), a urate (carbonyl with O R and N R 2), and a urea (carbonyl with two N R 2 groups).">
+<image mime-type="image/jpeg" src="../../media/OChem_31_04_003.jpg"/>
+</media>
+</figure>
+<para id="para-00004">A urethane is typically prepared by nucleophilic addition reaction of an alcohol with an isocyanate (<m:math><m:mrow><m:mtext>R</m:mtext><m:mtext>─</m:mtext><m:mtext>N</m:mtext><m:mtext>═</m:mtext><m:mtext>C</m:mtext><m:mtext>═</m:mtext><m:mtext>O</m:mtext></m:mrow></m:math>), so a <term id="term-00003">polyurethane</term> is prepared by reaction of a diol with a diisocyanate. The diol is usually a low-molecular-weight polymer (MW ≈ 1000 amu) with hydroxyl end-groups; the diisocyanate is often toluene-2,4-diisocyanate.</para>
+<figure class="unnumbered" id="fig-00004">
+<media alt="A polymer bonded with two alcohol groups on both sides reacts with toluene-2,4-diisocyanate to form polyurethane. Polyurethane's structure is inside parentheses with n as the subscript.">
+<image mime-type="image/jpeg" src="../../media/OChem_31_04_004.jpg"/>
+</media>
+</figure>
+<para id="para-00005">Several different kinds of polyurethanes can be produced, depending on the nature of the polymeric alcohol used. One major use of polyurethane is in the stretchable spandex fibers used for bathing suits and athletic gear. These polyurethanes have a fairly low degree of cross-linking so that the resultant polymer is soft and elastic. A second major use of polyurethanes is in the foams used for insulation. Foaming occurs when a small amount of water is added during polymerization, giving a carbamic acid intermediate that spontaneously loses bubbles of CO<sub>2</sub>.</para>
+<figure class="unnumbered" id="fig-00005">
+<media alt="A carbonyl compound reacts with water having two lone pairs on oxygen to form an intermediate that leads to carbamic acid. This leads to two products, amine and carbon dioxide.">
+<image mime-type="image/jpeg" src="../../media/OChem_31_04_005.jpg"/>
+</media>
+</figure>
+<para id="para-00006">Polyurethane foams are generally made using a <emphasis effect="italics">poly</emphasis>alcohol rather than a diol as the monomer so that the polymer has a high amount of three-dimensional cross-linking. The result is a rigid but very light foam suitable for use as thermal insulation in building construction and portable ice chests.</para>
+</section>
+<section class="section-exercises" id="sect-00003">
+<title>Problems</title>
+<exercise id="exer-00001">
+<problem id="prob-00001">
+<para id="para-00007"><link class="os-embed" url="#exercise/31-04-OC-P08"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00002">
+<problem id="prob-00002">
+<para id="para-00008"><link class="os-embed" url="#exercise/31-04-OC-P09"/></para>
+</problem>
+</exercise>
+</section>
+</content>
+</document>

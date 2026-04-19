@@ -1,0 +1,190 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Reactions of Monosaccharides</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Reactions of Monosaccharides</md:title>
+    <md:content-id>m00304</md:content-id>
+    <md:uuid>e8189646-87f1-4918-bba5-5c476dc82d05</md:uuid>
+  </metadata>
+  <content>
+<para id="para-00001">Because monosaccharides have only two kinds of functional groups, hydroxyls and carbonyls, most of the chemistry of monosaccharides is the familiar chemistry of these two groups. As we’ve seen, alcohols can be converted into esters and ethers and can be oxidized; carbonyl compounds can react with nucleophiles and can be reduced.</para>
+<section id="sect-00001">
+<title>Ester and Ether Formation</title>
+<para id="para-00002">Monosaccharides behave as simple alcohols in much of their chemistry. For example, carbohydrate –OH groups can be converted into esters and ethers, which are often easier to work with than the free sugars. Because of their many hydroxyl groups, monosaccharides are usually soluble in water but insoluble in organic solvents such as ether. They are also difficult to purify and have a tendency to form syrups rather than crystals when water is removed. Ester and ether derivatives, however, are soluble in organic solvents and are easily purified and crystallized.</para>
+<para id="para-00003">Esterification is normally carried out by treating a carbohydrate with an acid chloride or acid anhydride in the presence of a base (<link document="m00242"/> and <link document="m00243"/>). All the –OH groups react, including the anomeric one. For example, <emphasis effect="italics">β</emphasis>-<emphasis effect="smallcaps">D</emphasis>-glucopyranose is converted into its pentaacetate by treatment with acetic anhydride in pyridine solution.</para>
+<figure class="unnumbered scaled-down" id="fig-00001">
+<media alt="Beta-D-Glucopyranose reacts with acetic anhydride in pyridine at zero degree Celsius to form penta-O-acetyl-beta-D-glucopyranose (91 percent yield).">
+<image mime-type="image/jpeg" src="../../media/OChem_25_06_001.jpg"/>
+</media>
+</figure>
+<para id="para-00004">Carbohydrates are converted into ethers by treatment with an alkyl halide in the presence of base—the Williamson ether synthesis (<link document="m00249"/>). Standard Williamson conditions using a strong base tend to degrade sensitive sugar molecules, but silver oxide works well as a mild base and gives high yields of ethers. For example, <emphasis effect="italics">α</emphasis>-<emphasis effect="smallcaps">D</emphasis>-glucopyranose is converted into its pentamethyl ether in 85% yield on reaction with iodomethane and Ag<sub>2</sub>O.</para>
+<figure class="unnumbered scaled-down" id="fig-00002">
+<media alt="Alpha-D-Glucopyranose reacts with iodomethane in the presence of silver oxide to form alpha-D-glucopyranose pentamethyl ether (85 percent yield).">
+<image mime-type="image/jpeg" src="../../media/OChem_25_06_002.jpg"/>
+</media>
+</figure>
+</section>
+<section class="section-exercises" id="sect-00002">
+<title>Problems</title>
+<exercise id="exer-00001">
+<problem id="prob-00001">
+<para id="para-00005"><link class="os-embed" url="#exercise/25-06-OC-P16"/></para>
+</problem>
+</exercise>
+</section>
+<section id="sect-00003">
+<title>Glycoside Formation</title>
+<para id="para-00006">We saw in <link document="m00221"/> that treatment of a hemiacetal with an alcohol and an acid catalyst yields an acetal.</para>
+<figure class="unnumbered scaled-down" id="fig-00003">
+<media alt="The reversible reaction of a hemiacetal with alcohol in the presence of an acid catalyst yields an acetal in which anomeric O H has been replaced by O R group.">
+<image mime-type="image/jpeg" src="../../media/OChem_25_06_004.jpg"/>
+</media>
+</figure>
+<para id="para-00007">In the same way, treatment of a monosaccharide hemiacetal with an alcohol and an acid catalyst yields an acetal called a <term id="term-00001">glycoside</term>, in which the anomeric –OH has been replaced by an –OR group. For example, reaction of <emphasis effect="italics">β</emphasis>-<emphasis effect="smallcaps">D</emphasis>-glucopyranose with methanol gives a mixture of <emphasis effect="italics">α</emphasis> and <emphasis effect="italics">β</emphasis> methyl <emphasis effect="smallcaps">D</emphasis>-glucopyranosides. (Note that a <emphasis effect="italics">gly</emphasis>coside is the functional group name for any sugar, whereas a <emphasis effect="italics">glu</emphasis>coside is formed specifically from glucose.)</para>
+<figure class="unnumbered" id="fig-00004">
+<media alt="The reversible reaction of beta-D-glucopyranose with methanol in the presence of an acid gives a mixture of alpha and beta methyl D-glucopyranosides in sixty-six and thirty-three percent yield, respectively.">
+<image mime-type="image/jpeg" src="../../media/OChem_25_06_005.jpg"/>
+</media>
+</figure>
+<para id="para-00008">Glycosides are named by first citing the alkyl group and then replacing the -<emphasis effect="italics">ose</emphasis> ending of the sugar with -<emphasis effect="italics">oside.</emphasis> Like all acetals, glycosides are stable in neutral water. They aren’t in equilibrium with an open-chain form, and they don’t show mutarotation. They can, however, be hydrolyzed to give back the free monosaccharide plus alcohol on treatment with aqueous acid (<link document="m00221"/>).</para>
+<para id="para-00009">Glycosides are abundant in nature, and many biologically important molecules contain glycosidic linkages. For example, digitoxin, the active component of the digitalis preparations used for treatment of heart disease, is a glycoside consisting of a steroid alcohol linked to a trisaccharide. Note also that the three sugars are linked to one another by glycoside bonds.</para>
+<figure class="unnumbered scaled-down" id="fig-00005">
+<media alt="The structure of digitoxin, a glycoside. The trisaccharide and steroid in the structure are labeled.">
+<image mime-type="image/jpeg" src="../../media/OChem_25_06_006.jpg"/>
+</media>
+</figure>
+<para id="para-00010">The laboratory synthesis of glycosides can be difficult because of the numerous –OH groups on the sugar molecule. One method that is particularly suitable for preparing glucose <emphasis effect="italics">β</emphasis>-glycosides involves treatment of glucose pentaacetate with HBr, followed by addition of the appropriate alcohol in the presence of silver oxide. Called the <term id="term-00002">Koenigs–Knorr reaction</term>, the sequence involves formation of a pyranosyl bromide, followed by nucleophilic substitution. For example, methylarbutin, a glycoside found in pears, has been prepared by reaction of tetraacetyl-<emphasis effect="italics">α</emphasis>-<emphasis effect="smallcaps">D</emphasis>-glucopyranosyl bromide with <emphasis effect="italics">p</emphasis>-methoxyphenol.</para>
+<figure class="unnumbered" id="fig-00006">
+<media alt="Treatment of pentaacetyl-beta-D-glucopyranose with hydrogen bromide converts anomeric O H to bromine and forms tetraacetyl-alpha-D-pyranosyl bromide. It undergoes further reaction and forms methylarbutin.">
+<image mime-type="image/jpeg" src="../../media/OChem_25_06_007.jpg"/>
+</media>
+</figure>
+<para id="para-00011">Although the Koenigs–Knorr reaction appears to involve a simple backside S<sub>N</sub>2 displacement of bromide ion by alkoxide ion, the situation is actually more complex. Both <emphasis effect="italics">α</emphasis> and <emphasis effect="italics">β</emphasis> anomers of tetraacetyl-<emphasis effect="smallcaps">D</emphasis>-glucopyranosyl bromide give the same <emphasis effect="italics">β</emphasis>-glycoside product, implying that they react by a common pathway.</para>
+<para id="para-00012">This result can be understood by assuming that tetraacetyl-<emphasis effect="smallcaps">D</emphasis>-glucopyranosyl bromide (either <emphasis effect="italics">α</emphasis> or <emphasis effect="italics">β</emphasis> anomer) undergoes a spontaneous S<sub>N</sub>1-like loss of Br<sup>–</sup>, followed by internal reaction with the ester group at C2 to form an oxonium ion. Since the acetate at C2 is on the bottom of the glucose ring, the C–O bond also forms from the bottom. Backside S<sub>N</sub>2 displacement of the oxonium ion then occurs with the usual inversion of configuration, yielding a <emphasis effect="italics">β</emphasis>-glycoside and regenerating the acetate at C2 (<link target-id="fig-00007"/>).</para>
+<figure class="scaled-down" id="fig-00007">
+<media alt="Tetraacetyl-D-glucopyranosyl bromide undergoes the elimination of bromide and the anomeric cation is stabilized by neighboring C 2 acetyl. Alcohol displacement of the oxonium ion gives a beta-glycoside.">
+<image mime-type="image/jpeg" src="../../media/OChem_25_06_008.jpg"/>
+</media>
+<caption><emphasis effect="bold">Mechanism of the Koenigs–Knorr reaction, showing the neighboring-group effect of a nearby acetate.</emphasis></caption>
+</figure>
+<para id="para-00013">The participation shown by the nearby acetate group in the Koenigs–Knorr reaction is referred to as a <emphasis effect="italics">neighboring-group effect</emphasis> and is a common occurrence in organic chemistry. Neighboring-group effects are usually noticeable only because they affect the rate or stereochemistry of a reaction; the nearby group itself does not undergo any evident change during the reaction.</para>
+</section>
+<section id="sect-00004">
+<title>Biological Ester Formation: Phosphorylation</title>
+<para id="para-00014">In living organisms, carbohydrates occur not only in the free form but also linked through their anomeric center to other molecules such as lipids (glycolipids) or proteins (glycoproteins). Collectively called <emphasis effect="italics">glycoconjugates,</emphasis> these sugar-linked molecules are components of cell walls that are crucial to the mechanism by which different cell types recognize one another.</para>
+<para id="para-00015">Glycoconjugate formation occurs by reaction of the lipid or protein with a glycosyl nucleoside diphosphate. This diphosphate is itself formed by initial reaction of a monosaccharide with adenosine triphosphate (ATP) to give a glycosyl monophosphate, followed by reaction with uridine triphosphate (UTP), to give a glycosyl uridine diphosphate. (We’ll see the structures of nucleoside phosphates in <emphasis effect="bold">Section 28.1</emphasis>.) The purpose of the phosphorylation is to activate the anomeric –OH group of the sugar and make it a better leaving group in a nucleophilic substitution reaction by a protein or lipid (<link target-id="fig-00008"/>).</para>
+<figure class="scaled-down" id="fig-00008">
+<media alt="The conversion of D-glucose to a glycoprotein through three different steps is depicted. All the structures are in the pyranose form (Haworth projection).">
+<image mime-type="image/jpeg" src="../../media/OChem_25_06_009.jpg"/>
+</media>
+<caption><emphasis effect="bold">Glycoprotein formation occurs by initial phosphorylation of the starting carbohydrate with ATP to a glycosyl monophosphate, followed by reaction with UTP to form a glycosyl uridine 5′-diphosphate.</emphasis> Nucleophilic substitution by an –OH (or –NH<sub>2</sub>) group on a protein then gives the glycoprotein.</caption>
+</figure>
+</section>
+<section id="sect-00005">
+<title>Reduction of Monosaccharides</title>
+<para id="para-00016">Treatment of an aldose or ketose with NaBH<sub>4</sub> reduces it to a polyalcohol called an <term id="term-00003">alditol</term>. The reduction occurs by reaction of the open-chain form present in the aldehyde/ketone <m:math><m:mo>⇄</m:mo></m:math> hemiacetal equilibrium. Although only a small amount of the open-chain form is present at any given time, that small amount is reduced, more is produced by opening of the pyranose form, that additional amount is reduced, and so on, until the entire sample has undergone reaction.</para>
+<figure class="unnumbered scaled-down" id="fig-00009">
+<media alt="The chair structure of beta-D-glucopyranose is converted to open chain, shown as a Fischer projection. This undergoes reduction with sodium borohydride and water to form D-glucitol which is an alditol.">
+<image mime-type="image/jpeg" src="../../media/OChem_25_06_010.jpg"/>
+</media>
+</figure>
+<para id="para-00017"><emphasis effect="smallcaps">D</emphasis>-Glucitol, the alditol produced by reduction of <emphasis effect="smallcaps">D</emphasis>-glucose, is itself a naturally occurring substance found in many fruits and berries. It is used under the name <emphasis effect="smallcaps">D</emphasis>-sorbitol as a sweetener and sugar substitute in many foods.</para>
+</section>
+<section class="section-exercises" id="sect-00006">
+<title>Problems</title>
+<exercise id="exer-00002">
+<problem id="prob-00002">
+<para id="para-00018"><link class="os-embed" url="#exercise/25-06-OC-P17"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00003">
+<problem id="prob-00003">
+<para id="para-00019"><link class="os-embed" url="#exercise/25-06-OC-P18"/></para>
+</problem>
+</exercise>
+</section>
+<section id="sect-00007">
+<title>Oxidation of Monosaccharides</title>
+<para id="para-00020">Like other aldehydes, aldoses are easily oxidized to yield the corresponding carboxylic acids, called <term id="term-00004">aldonic acids</term>. A buffered solution of aqueous Br<sub>2</sub> is often used for this purpose.</para>
+<figure class="unnumbered scaled-down" id="fig-00010">
+<media alt="The Haworth projection of D-glucose is converted to its Fischer projection. It reacts with bromine, water at pH 6 to form D-gluconic acid.">
+<image mime-type="image/jpeg" src="../../media/OChem_25_06_011.jpg"/>
+</media>
+</figure>
+<para id="para-00021">Historically, the oxidation of an aldose with either Ag<sup>+</sup> in aqueous ammonia (called <emphasis effect="italics">Tollens’ reagent</emphasis>) or Cu<sup>2+</sup> with aqueous sodium citrate (<emphasis effect="italics">Benedict’s reagent</emphasis>) formed the basis of simple tests for what are called <term id="term-00005">reducing sugars</term>. (<emphasis effect="italics">Reducing</emphasis> because the aldose reduces the metal oxidizing agent.) Some simple diabetes self-test kits sold in drugstores still use Benedict’s reagent to detect glucose in urine, though more modern methods have largely replaced it.</para>
+<para id="para-00022">All aldoses are reducing sugars because they contain an aldehyde group, but some ketoses are reducing sugars as well. Fructose reduces Tollens’ reagent, for example, even though it contains no aldehyde group. Reduction occurs because fructose is readily isomerized to a mixture of aldoses (glucose and mannose) in basic solution by a series of keto–enol tautomeric shifts (<link target-id="fig-00011"/>). Glycosides, however, are nonreducing because the acetal group is not hydrolyzed to an aldehyde under basic conditions.</para>
+<figure class="scaled-down" id="fig-00011">
+<media alt="The Fischer projection of converting D-fructose to a mixture of D-glucose and D-mannose using aqueous sodium hydroxide. An enediol intermediate is formed shown in parenthesis.">
+<image mime-type="image/jpeg" src="../../media/OChem_25_06_012.jpg"/>
+</media>
+<caption><emphasis effect="bold">Fructose, a ketose, is a reducing sugar because it undergoes two base-catalyzed keto–enol tautomerizations that result in conversion to a mixture of aldoses.</emphasis></caption>
+</figure>
+<para id="para-00023">If warm, dilute HNO<sub>3</sub> (nitric acid) is used as the oxidizing agent, an aldose is oxidized to a dicarboxylic acid called an <term id="term-00006">aldaric acid</term>. Both the aldehyde carbonyl and the terminal –CH<sub>2</sub>OH group are oxidized in this reaction.</para>
+<figure class="unnumbered scaled-down" id="fig-00012">
+<media alt="The Haworth projection of D-glucose is converted to its Fischer projection. It reacts with H N O 3 and water to form D-glucaric acid.">
+<image mime-type="image/jpeg" src="../../media/OChem_25_06_013.jpg"/>
+</media>
+</figure>
+<para id="para-00024">Finally, if only the –CH<sub>2</sub>OH end of the aldose is oxidized without affecting the –CHO group, the product is a monocarboxylic acid called a <term id="term-00007">uronic acid</term>. The reaction can only be done enzymatically; no chemical reagent is known that can accomplish this selective oxidation in the laboratory.</para>
+<figure class="unnumbered scaled-down" id="fig-00013">
+<media alt="The Haworth projection of D-glucose is oxidized through an enzymatic reaction to yield D-glucuronic acid, a uronic acid ">
+<image mime-type="image/jpeg" src="../../media/OChem_25_06_014.jpg"/>
+</media>
+</figure>
+</section>
+<section class="section-exercises" id="sect-00008">
+<title>Problems</title>
+<exercise id="exer-00004">
+<problem id="prob-00004">
+<para id="para-00025"><link class="os-embed" url="#exercise/25-06-OC-P19"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00005">
+<problem id="prob-00005">
+<para id="para-00026"><link class="os-embed" url="#exercise/25-06-OC-P20"/></para>
+</problem>
+</exercise>
+</section>
+<section id="sect-00009">
+<title>Chain Lengthening: The Kiliani–Fischer Synthesis</title>
+<para id="para-00027">Much early activity in carbohydrate chemistry was devoted to unraveling the stereochemical relationships among monosaccharides. One of the most important methods used was the <term id="term-00008"><emphasis effect="italics">Kiliani–Fischer synthesis</emphasis></term>, which results in the lengthening of an aldose chain by one carbon atom. The C1 aldehyde group of the starting sugar becomes C2 of the chain-lengthened sugar, and a new C1 carbon is added. For example, an aldopentose is converted by Kiliani–Fischer synthesis into two aldohexoses.</para>
+<para id="para-00028">Discovery of the chain-lengthening sequence was initiated by the observation of Heinrich Kiliani in 1886 that aldoses react with HCN to form cyanohydrins (<link document="m00217"/>). Emil Fischer immediately realized the importance of Kiliani’s discovery and devised a method for converting the cyanohydrin nitrile group into an aldehyde.</para>
+<para id="para-00029">Fischer’s original method for conversion of the nitrile into an aldehyde involved hydrolysis to a carboxylic acid, ring closure to a cyclic ester (lactone), and subsequent reduction. A modern improvement involves reducing the nitrile over a palladium catalyst, yielding an imine intermediate that is hydrolyzed to an aldehyde. Note that the cyanohydrin is formed as a mixture of stereoisomers at the new chirality center, so two new aldoses, differing only in their stereochemistry at C2, result from Kiliani–Fischer synthesis. Chain extension of <emphasis effect="smallcaps">D</emphasis>-arabinose, for example, yields a mixture of <emphasis effect="smallcaps">D</emphasis>-glucose and <emphasis effect="smallcaps">D</emphasis>-mannose.</para>
+<figure class="unnumbered scaled-down" id="fig-00014">
+<media alt="Aldoses form cyanohydrins with hydrogen cyanide. Cyanohydrins are reduced with hydrogen and palladium catalyst to yield an imine intermediate that is hydrolyzed to form two chain lengthened aldoses.">
+<image mime-type="image/jpeg" src="../../media/OChem_25_06_015.jpg"/>
+</media>
+</figure>
+</section>
+<section class="section-exercises" id="sect-00010">
+<title>Problems</title>
+<exercise id="exer-00006">
+<problem id="prob-00006">
+<para id="para-00030"><link class="os-embed" url="#exercise/25-06-OC-P21"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00007">
+<problem id="prob-00007">
+<para id="para-00031"><link class="os-embed" url="#exercise/25-06-OC-P22"/></para>
+</problem>
+</exercise>
+</section>
+<section id="sect-00011">
+<title>Chain Shortening: The Wohl Degradation</title>
+<para id="para-00032">Just as the Kiliani–Fischer synthesis lengthens an aldose chain by one carbon, the <term id="term-00009"><emphasis effect="italics">Wohl degradation</emphasis></term> shortens an aldose chain by one carbon. Wohl degradation is almost the exact opposite of the Kiliani–Fischer sequence. That is, the aldose aldehyde carbonyl group is first converted into a nitrile, and the resulting cyanohydrin loses HCN under basic conditions—the reverse of a nucleophilic addition reaction.</para>
+<para id="para-00033">Conversion of the aldehyde into a nitrile is accomplished by treatment of an aldose with hydroxylamine to give an imine called an <emphasis effect="bold"><emphasis effect="italics">oxime</emphasis></emphasis> (<link document="m00219"/>), followed by dehydration of the oxime with acetic anhydride. The Wohl degradation does not give particularly high yields of chain-shortened aldoses, but the reaction is general for all aldopentoses and aldohexoses. For example, <emphasis effect="smallcaps">D</emphasis>-galactose is converted by Wohl degradation into <emphasis effect="smallcaps">D</emphasis>-lyxose.</para>
+<figure class="unnumbered" id="fig-00015">
+<media alt="Wohl degradation reaction. D-galactose reacts with hydroxylamine to form D-galactose oxime which reacts with acetic anhydride to give cyanohydrin. Cyanohydrin reacts with sodium methoxide to form D-lyxose (37 percent yield).">
+<image mime-type="image/jpeg" src="../../media/OChem_25_06_016.jpg"/>
+</media>
+</figure>
+</section>
+<section class="section-exercises" id="sect-00012">
+<title>Problems</title>
+<exercise id="exer-00008">
+<problem id="prob-00008">
+<para id="para-00034"><link class="os-embed" url="#exercise/25-06-OC-P23"/></para>
+</problem>
+</exercise>
+</section>
+</content>
+</document>

@@ -9,6 +9,7 @@
 const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
+const log = require('../lib/logger');
 const { ROLES, ROLE_HIERARCHY } = require('../constants');
 
 const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
@@ -20,24 +21,19 @@ function _setTestDb(db) {
 }
 
 /**
- * Get database connection
+ * Singleton database connection — reuses a single instance across all calls.
  */
+let _db;
 function getDb() {
   if (_testDb) return _testDb;
-  const dbDir = path.dirname(DB_PATH);
-  if (!fs.existsSync(dbDir)) {
-    fs.mkdirSync(dbDir, { recursive: true });
+  if (!_db) {
+    const dbDir = path.dirname(DB_PATH);
+    if (!fs.existsSync(dbDir)) {
+      fs.mkdirSync(dbDir, { recursive: true });
+    }
+    _db = new Database(DB_PATH);
   }
-  return new Database(DB_PATH);
-}
-
-/**
- * Close database connection (skips closing if using test DB)
- */
-function closeDb(db) {
-  if (db && db !== _testDb) {
-    db.close();
-  }
+  return _db;
 }
 
 /**
@@ -51,7 +47,6 @@ function isUserTableReady() {
       .get();
     return !!result;
   } finally {
-    closeDb(db);
   }
 }
 
@@ -71,7 +66,6 @@ function findByProviderId(providerId) {
 
     return user;
   } finally {
-    closeDb(db);
   }
 }
 
@@ -93,7 +87,6 @@ function findByUsername(username) {
 
     return user;
   } finally {
-    closeDb(db);
   }
 }
 
@@ -113,7 +106,6 @@ function findByEmail(email) {
 
     return user;
   } finally {
-    closeDb(db);
   }
 }
 
@@ -131,7 +123,6 @@ function updateProviderInfo(userId, providerId, email) {
       userId
     );
   } finally {
-    closeDb(db);
   }
 }
 
@@ -157,7 +148,6 @@ function findById(id) {
 
     return user;
   } finally {
-    closeDb(db);
   }
 }
 
@@ -230,7 +220,6 @@ function listUsers(options = {}) {
 
     return { users, total };
   } finally {
-    closeDb(db);
   }
 }
 
@@ -277,7 +266,6 @@ function createUser(userData, createdBy = null) {
 
     return findById(result.lastInsertRowid);
   } finally {
-    closeDb(db);
   }
 }
 
@@ -334,7 +322,6 @@ function updateUser(id, updates, _updatedBy = null) {
 
     return findById(id);
   } finally {
-    closeDb(db);
   }
 }
 
@@ -366,7 +353,6 @@ function deleteUser(id) {
     db.prepare('DELETE FROM users WHERE id = ?').run(id);
     return true;
   } finally {
-    closeDb(db);
   }
 }
 
@@ -403,14 +389,13 @@ function assignBookAccess(userId, bookSlug, roleForBook, assignedBy = null) {
       const notifications = require('./notifications');
       notifications
         .notifyBookAccessAssigned(userId, bookSlug, roleForBook, assignedBy || 'kerfi')
-        .catch((err) => console.error('Failed to send book access notification:', err.message));
+        .catch((err) => log.error({ err }, 'Failed to send book access notification'));
     } catch (notifyErr) {
-      console.error('Failed to notify book access:', notifyErr.message);
+      log.error({ err: notifyErr }, 'Failed to notify book access');
     }
 
     return findById(userId);
   } finally {
-    closeDb(db);
   }
 }
 
@@ -432,7 +417,6 @@ function removeBookAccess(userId, bookSlug) {
 
     return findById(userId);
   } finally {
-    closeDb(db);
   }
 }
 
@@ -450,7 +434,6 @@ function updateLastLogin(id) {
     `
     ).run(id);
   } finally {
-    closeDb(db);
   }
 }
 
@@ -506,7 +489,6 @@ function upsertFromProvider(providerUser, options = {}) {
 
     return findById(result.lastInsertRowid);
   } finally {
-    closeDb(db);
   }
 }
 
@@ -576,7 +558,6 @@ function hasChapterAccess(userId, bookSlug, chapter) {
     if (err.message && err.message.includes('no such table')) return true;
     throw err;
   } finally {
-    closeDb(db);
   }
 }
 
@@ -597,7 +578,6 @@ function assignChapter(userId, bookSlug, chapter, assignedBy = null) {
     `
     ).run(userId, bookSlug, parseInt(chapter, 10), assignedBy);
   } finally {
-    closeDb(db);
   }
 }
 
@@ -615,7 +595,6 @@ function removeChapterAssignment(userId, bookSlug, chapter) {
       'DELETE FROM user_chapter_assignments WHERE user_id = ? AND book_slug = ? AND chapter = ?'
     ).run(userId, bookSlug, parseInt(chapter, 10));
   } finally {
-    closeDb(db);
   }
 }
 
@@ -636,7 +615,6 @@ function getChapterAssignments(userId, bookSlug) {
     if (err.message && err.message.includes('no such table')) return [];
     throw err;
   } finally {
-    closeDb(db);
   }
 }
 
@@ -657,7 +635,71 @@ function getAllChapterAssignments(userId) {
     if (err.message && err.message.includes('no such table')) return [];
     throw err;
   } finally {
-    closeDb(db);
+  }
+}
+
+/**
+ * Get all chapter assignments for a book (chapter-centric view).
+ * Returns one row per assignment with user info.
+ */
+function getBookAssignments(bookSlug) {
+  if (!isUserTableReady()) return [];
+
+  const db = getDb();
+  try {
+    return db
+      .prepare(
+        `SELECT a.chapter, a.assigned_by, a.assigned_at,
+                u.id as user_id, u.display_name as user_name, u.role
+         FROM user_chapter_assignments a
+         JOIN users u ON a.user_id = u.id
+         WHERE a.book_slug = ?
+         ORDER BY a.chapter`
+      )
+      .all(bookSlug);
+  } catch (err) {
+    if (err.message && err.message.includes('no such table')) return [];
+    throw err;
+  }
+}
+
+/**
+ * Get active editors who can be assigned to chapters in a book.
+ * If user_book_access entries exist for this book, only those users.
+ * Otherwise all active users with role >= editor.
+ */
+function getEditorsForBook(bookSlug) {
+  if (!isUserTableReady()) return [];
+
+  const db = getDb();
+  try {
+    const bookAccessCount = db
+      .prepare('SELECT COUNT(*) as cnt FROM user_book_access WHERE book_slug = ?')
+      .get(bookSlug);
+
+    if (bookAccessCount && bookAccessCount.cnt > 0) {
+      return db
+        .prepare(
+          `SELECT u.id, u.display_name as name, u.role
+           FROM users u
+           JOIN user_book_access ba ON u.id = ba.user_id AND ba.book_slug = ?
+           WHERE u.is_active = 1 AND u.role IN ('editor', 'head-editor', 'admin')
+           ORDER BY u.display_name`
+        )
+        .all(bookSlug);
+    }
+
+    return db
+      .prepare(
+        `SELECT id, display_name as name, role
+         FROM users
+         WHERE is_active = 1 AND role IN ('editor', 'head-editor', 'admin')
+         ORDER BY display_name`
+      )
+      .all();
+  } catch (err) {
+    if (err.message && err.message.includes('no such table')) return [];
+    throw err;
   }
 }
 
@@ -688,6 +730,8 @@ module.exports = {
   removeChapterAssignment,
   getChapterAssignments,
   getAllChapterAssignments,
+  getBookAssignments,
+  getEditorsForBook,
 
   // Auth integration
   upsertFromProvider,

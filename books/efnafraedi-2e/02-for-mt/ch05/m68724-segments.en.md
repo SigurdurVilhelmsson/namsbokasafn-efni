@@ -17,7 +17,7 @@ Define and distinguish specific heat and heat capacity, and describe the physica
 Perform calculations involving heat, specific heat, and temperature change
 
 <!-- SEG:m68724:para:fs-idp32074336 -->
-Chemical changes and their accompanying changes in energy are important parts of our everyday world ([#CNX_Chem_05_01_Thermochem]). The macronutrients in food (proteins, fats, and carbohydrates) undergo metabolic reactions that provide the energy to keep our bodies functioning. We burn a variety of fuels (gasoline, natural gas, coal) to produce energy for transportation, heating, and the generation of electricity. Industrial chemical reactions use enormous amounts of energy to produce raw materials (such as iron and aluminum). Energy is then used to manufacture those raw materials into useful products, such as cars, skyscrapers, and bridges.
+Chemical changes and their accompanying changes in energy are important parts of our everyday world ([[xref:CNX_Chem_05_01_Thermochem]]). The macronutrients in food (proteins, fats, and carbohydrates) undergo metabolic reactions that provide the energy to keep our bodies functioning. We burn a variety of fuels (gasoline, natural gas, coal) to produce energy for transportation, heating, and the generation of electricity. Industrial chemical reactions use enormous amounts of energy to produce raw materials (such as iron and aluminum). Energy is then used to manufacture those raw materials into useful products, such as cars, skyscrapers, and bridges.
 
 <!-- SEG:m68724:caption:CNX_Chem_05_01_Thermochem-caption -->
 The energy involved in chemical changes is important to our daily lives: (a) A cheeseburger for lunch provides the energy you need to get through the rest of the day; (b) the combustion of gasoline provides the energy that moves your car (and you) between home, work, and school; and (c) coke, a processed form of coal, provides the energy needed to convert iron ore into iron, which is essential for making many of the products we use daily. (credit a: modification of work by “Pink Sherbet Photography”/Flickr; credit b: modification of work by Jeffery Turner)
@@ -32,10 +32,10 @@ This chapter will introduce the basic ideas of an important area of science conc
 Energy
 
 <!-- SEG:m68724:para:fs-idp38067952 -->
-{{term}}Energy{{/term}} can be defined as the capacity to supply heat or do work. One type of {{term}}work ({{i}}w{{/i}}){{/term}} is the process of causing matter to move against an opposing force. For example, we do work when we inflate a bicycle tire—we move matter (the air in the pump) against the opposing force of the air already in the tire.
+{{term}}Energy{{/term}} can be defined as the capacity to supply heat or do work. One type of {{term}}work ([[i:w]]){{/term}} is the process of causing matter to move against an opposing force. For example, we do work when we inflate a bicycle tire—we move matter (the air in the pump) against the opposing force of the air already in the tire.
 
 <!-- SEG:m68724:para:fs-idp11831328 -->
-Like matter, energy comes in different types. One scheme classifies energy into two types: {{term}}potential energy{{/term}}, the energy an object has because of its relative position, composition, or condition, and {{term}}kinetic energy{{/term}}, the energy that an object possesses because of its motion. Water at the top of a waterfall or dam has potential energy because of its position; when it flows downward through generators, it has kinetic energy that can be used to do work and produce electricity in a hydroelectric plant ([#CNX_Chem_05_01_Waterfall]). A battery has potential energy because the chemicals within it can produce electricity that can do work.
+Like matter, energy comes in different types. One scheme classifies energy into two types: {{term}}potential energy{{/term}}, the energy an object has because of its relative position, composition, or condition, and {{term}}kinetic energy{{/term}}, the energy that an object possesses because of its motion. Water at the top of a waterfall or dam has potential energy because of its position; when it flows downward through generators, it has kinetic energy that can be used to do work and produce electricity in a hydroelectric plant ([[xref:CNX_Chem_05_01_Waterfall]]). A battery has potential energy because the chemicals within it can produce electricity that can do work.
 
 <!-- SEG:m68724:caption:CNX_Chem_05_01_Waterfall-caption -->
 (a) Water at a higher elevation, for example, at the top of Victoria Falls, has a higher potential energy than water at a lower elevation. As the water falls, some of its potential energy is converted into kinetic energy. (b) If the water flows through generators at the bottom of a dam, such as the Hoover Dam shown here, its kinetic energy is converted into electrical energy. (credit a: modification of work by Steve Jurvetson; credit b: modification of work by “curimedia”/Wikimedia commons)
@@ -53,34 +53,34 @@ According to the law of conservation of matter (seen in an earlier chapter), the
 Thermal Energy, Temperature, and Heat
 
 <!-- SEG:m68724:para:fs-idp24322848 -->
-{{term}}Thermal energy{{/term}} is kinetic energy associated with the random motion of atoms and molecules. {{term}}Temperature{{/term}} is a quantitative measure of “hot” or “cold.” When the atoms and molecules in an object are moving or vibrating quickly, they have a higher average kinetic energy (KE), and we say that the object is “hot.” When the atoms and molecules are moving slowly, they have lower average KE, and we say that the object is “cold” ([#CNX_Chem_05_01_HotCold]). Assuming that no chemical reaction or phase change (such as melting or vaporizing) occurs, increasing the amount of thermal energy in a sample of matter will cause its temperature to increase. And, assuming that no chemical reaction or phase change (such as condensation or freezing) occurs, decreasing the amount of thermal energy in a sample of matter will cause its temperature to decrease.
+{{term}}Thermal energy{{/term}} is kinetic energy associated with the random motion of atoms and molecules. {{term}}Temperature{{/term}} is a quantitative measure of “hot” or “cold.” When the atoms and molecules in an object are moving or vibrating quickly, they have a higher average kinetic energy (KE), and we say that the object is “hot.” When the atoms and molecules are moving slowly, they have lower average KE, and we say that the object is “cold” ([[xref:CNX_Chem_05_01_HotCold]]). Assuming that no chemical reaction or phase change (such as melting or vaporizing) occurs, increasing the amount of thermal energy in a sample of matter will cause its temperature to increase. And, assuming that no chemical reaction or phase change (such as condensation or freezing) occurs, decreasing the amount of thermal energy in a sample of matter will cause its temperature to decrease.
 
 <!-- SEG:m68724:caption:CNX_Chem_05_01_HotCold-caption -->
 (a) The molecules in a sample of hot water move more rapidly than (b) those in a sample of cold water.
 
 <!-- SEG:m68724:para:fs-idp13698432 -->
-Click on this [interactive simulation](http://openstax.org/l/16PHETtempFX) to view the effects of temperature on molecular motion.
+Click on this [[link:interactive simulation|http://openstax.org/l/16PHETtempFX]] to view the effects of temperature on molecular motion.
 
 <!-- SEG:m68724:para:fs-idp30910672 -->
-Most substances expand as their temperature increases and contract as their temperature decreases. This property can be used to measure temperature changes, as shown in [#CNX_Chem_05_01_Thermom]. The operation of many thermometers depends on the expansion and contraction of substances in response to temperature changes.
+Most substances expand as their temperature increases and contract as their temperature decreases. This property can be used to measure temperature changes, as shown in [[xref:CNX_Chem_05_01_Thermom]]. The operation of many thermometers depends on the expansion and contraction of substances in response to temperature changes.
 
 <!-- SEG:m68724:caption:CNX_Chem_05_01_Thermom-caption -->
 (a) In an alcohol or mercury thermometer, the liquid (dyed red for visibility) expands when heated and contracts when cooled, much more so than the glass tube that contains the liquid. (b) In a bimetallic thermometer, two different metals (such as brass and steel) form a two-layered strip. When heated or cooled, one of the metals (brass) expands or contracts more than the other metal (steel), causing the strip to coil or uncoil. Both types of thermometers have a calibrated scale that indicates the temperature. (credit a: modification of work by “dwstucke”/Flickr)
 
 <!-- SEG:m68724:para:fs-idp46355168 -->
-The following [demonstration](http://openstax.org/l/16Bimetallic) allows one to view the effects of heating and cooling a coiled bimetallic strip.
+The following [[link:demonstration|http://openstax.org/l/16Bimetallic]] allows one to view the effects of heating and cooling a coiled bimetallic strip.
 
 <!-- SEG:m68724:para:fs-idp26888640 -->
-{{term}}Heat ({{i}}q{{/i}}){{/term}} is the transfer of thermal energy between two bodies at different temperatures. Heat flow (a redundant term, but one commonly used) increases the thermal energy of one body and decreases the thermal energy of the other. Suppose we initially have a high temperature (and high thermal energy) substance (H) and a low temperature (and low thermal energy) substance (L). The atoms and molecules in H have a higher average KE than those in L. If we place substance H in contact with substance L, the thermal energy will flow spontaneously from substance H to substance L. The temperature of substance H will decrease, as will the average KE of its molecules; the temperature of substance L will increase, along with the average KE of its molecules. Heat flow will continue until the two substances are at the same temperature ([#CNX_Chem_05_01_HeatTrans1]).
+{{term}}Heat ([[i:q]]){{/term}} is the transfer of thermal energy between two bodies at different temperatures. Heat flow (a redundant term, but one commonly used) increases the thermal energy of one body and decreases the thermal energy of the other. Suppose we initially have a high temperature (and high thermal energy) substance (H) and a low temperature (and low thermal energy) substance (L). The atoms and molecules in H have a higher average KE than those in L. If we place substance H in contact with substance L, the thermal energy will flow spontaneously from substance H to substance L. The temperature of substance H will decrease, as will the average KE of its molecules; the temperature of substance L will increase, along with the average KE of its molecules. Heat flow will continue until the two substances are at the same temperature ([[xref:CNX_Chem_05_01_HeatTrans1]]).
 
 <!-- SEG:m68724:caption:CNX_Chem_05_01_HeatTrans1-caption -->
 (a) Substances H and L are initially at different temperatures, and their atoms have different average kinetic energies. (b) When they contact each other, collisions between the molecules result in the transfer of kinetic (thermal) energy from the hotter to the cooler matter. (c) The two objects reach “thermal equilibrium” when both substances are at the same temperature and their molecules have the same average kinetic energy.
 
 <!-- SEG:m68724:para:fs-idm61530880 -->
-Click on the [PhET simulation](http://openstax.org/l/16PHETenergy) to explore energy forms and changes. Visit the Energy Systems tab to create combinations of energy sources, transformation methods, and outputs. Click on Energy Symbols to visualize the transfer of energy.
+Click on the [[link:PhET simulation|http://openstax.org/l/16PHETenergy]] to explore energy forms and changes. Visit the Energy Systems tab to create combinations of energy sources, transformation methods, and outputs. Click on Energy Symbols to visualize the transfer of energy.
 
 <!-- SEG:m68724:para:fs-idm61604880 -->
-Matter undergoing chemical reactions and physical changes can release or absorb heat. A change that releases heat is called an {{term}}exothermic process{{/term}}. For example, the combustion reaction that occurs when using an oxyacetylene torch is an exothermic process—this process also releases energy in the form of light as evidenced by the torch’s flame ([#CNX_Chem_05_01_OxyacTorch]). A reaction or change that absorbs heat is an {{term}}endothermic process{{/term}}. A cold pack used to treat muscle strains provides an example of an endothermic process. When the substances in the cold pack (water and a salt like ammonium nitrate) are brought together, the resulting process absorbs heat, leading to the sensation of cold.
+Matter undergoing chemical reactions and physical changes can release or absorb heat. A change that releases heat is called an {{term}}exothermic process{{/term}}. For example, the combustion reaction that occurs when using an oxyacetylene torch is an exothermic process—this process also releases energy in the form of light as evidenced by the torch’s flame ([[xref:CNX_Chem_05_01_OxyacTorch]]). A reaction or change that absorbs heat is an {{term}}endothermic process{{/term}}. A cold pack used to treat muscle strains provides an example of an endothermic process. When the substances in the cold pack (water and a salt like ammonium nitrate) are brought together, the resulting process absorbs heat, leading to the sensation of cold.
 
 <!-- SEG:m68724:caption:CNX_Chem_05_01_OxyacTorch-caption -->
 (a) An oxyacetylene torch produces heat by the combustion of acetylene in oxygen. The energy released by this exothermic reaction heats and then melts the metal being cut. The sparks are tiny bits of the molten metal flying away. (b) A cold pack uses an endothermic process to create the sensation of cold. (credit a: modification of work by “Skatebiker”/Wikimedia commons)
@@ -89,7 +89,7 @@ Matter undergoing chemical reactions and physical changes can release or absorb 
 Historically, energy was measured in units of {{term}}calories (cal){{/term}}. A calorie is the amount of energy required to raise one gram of water by 1 degree C (1 kelvin). However, this quantity depends on the atmospheric pressure and the starting temperature of the water. The ease of measurement of energy changes in calories has meant that the calorie is still frequently used. The Calorie (with a capital C), or large calorie, commonly used in quantifying food energy content, is a kilocalorie. The SI unit of heat, work, and energy is the joule. A {{term}}joule (J){{/term}} is defined as the amount of energy used when a force of 1 newton moves an object 1 meter. It is named in honor of the English physicist James Prescott Joule. One joule is equivalent to 1 kg m[[sup:2]]/s[[sup:2]], which is also called 1 newton–meter. A kilojoule (kJ) is 1000 joules. To standardize its definition, 1 calorie has been set to equal 4.184 joules.
 
 <!-- SEG:m68724:para:fs-idp36291104 -->
-We now introduce two concepts useful in describing heat flow and temperature change. The {{term}}heat capacity ({{i}}C{{/i}}){{/term}} of a body of matter is the quantity of heat ({{i}}q{{/i}}) it absorbs or releases when it experiences a temperature change (Δ{{i}}T{{/i}}) of 1 degree Celsius (or equivalently, 1 kelvin):
+We now introduce two concepts useful in describing heat flow and temperature change. The {{term}}heat capacity ([[i:C]]){{/term}} of a body of matter is the quantity of heat ([[i:q]]) it absorbs or releases when it experiences a temperature change (Δ[[i:T]]) of 1 degree Celsius (or equivalently, 1 kelvin):
 
 <!-- SEG:m68724:para:fs-idp13796736 -->
 Heat capacity is determined by both the type and amount of substance that absorbs or releases heat. It is therefore an extensive property—its value is proportional to the amount of the substance.
@@ -101,7 +101,7 @@ For example, consider the heat capacities of two cast iron frying pans. The heat
 The larger cast iron frying pan, while made of the same substance, requires 90,700 J of energy to raise its temperature by 50.0 °C. The larger pan has a (proportionally) larger heat capacity because the larger amount of material requires a (proportionally) larger amount of energy to yield the same temperature change:
 
 <!-- SEG:m68724:para:fs-idp11756944 -->
-The {{term}}specific heat capacity ({{i}}c{{/i}}){{/term}} of a substance, commonly called its “specific heat,” is the quantity of heat required to raise the temperature of 1 gram of a substance by 1 degree Celsius (or 1 kelvin):
+The {{term}}specific heat capacity ([[i:c]]){{/term}} of a substance, commonly called its “specific heat,” is the quantity of heat required to raise the temperature of 1 gram of a substance by 1 degree Celsius (or 1 kelvin):
 
 <!-- SEG:m68724:para:fs-idp37497744 -->
 Specific heat capacity depends only on the kind of substance absorbing or releasing heat. It is an intensive property—the type, but not the amount, of the substance is all that matters. For example, the small cast iron frying pan has a mass of 808 g. The specific heat of iron (the material used to make the pan) is therefore:
@@ -110,13 +110,13 @@ Specific heat capacity depends only on the kind of substance absorbing or releas
 The large frying pan has a mass of 4040 g. Using the data for this pan, we can also calculate the specific heat of iron:
 
 <!-- SEG:m68724:para:fs-idm37197024 -->
-Although the large pan is more massive than the small pan, since both are made of the same material, they both yield the same value for specific heat (for the material of construction, iron). Note that specific heat is measured in units of energy per temperature per mass and is an intensive property, being derived from a ratio of two extensive properties (heat and mass). The molar heat capacity, also an intensive property, is the heat capacity per mole of a particular substance and has units of J/mol °C ([#CNX_Chem_05_01_HeatCapacity]).
+Although the large pan is more massive than the small pan, since both are made of the same material, they both yield the same value for specific heat (for the material of construction, iron). Note that specific heat is measured in units of energy per temperature per mass and is an intensive property, being derived from a ratio of two extensive properties (heat and mass). The molar heat capacity, also an intensive property, is the heat capacity per mole of a particular substance and has units of J/mol °C ([[xref:CNX_Chem_05_01_HeatCapacity]]).
 
 <!-- SEG:m68724:caption:CNX_Chem_05_01_HeatCapacity-caption -->
 Because of its larger mass, a large frying pan has a larger heat capacity than a small frying pan. Because they are made of the same material, both frying pans have the same specific heat. (credit: Mark Blaser)
 
 <!-- SEG:m68724:para:fs-idm50153600 -->
-Water has a relatively high specific heat (about 4.2 J/g °C for the liquid and 2.09 J/g °C for the solid); most metals have much lower specific heats (usually less than 1 J/g °C). The specific heat of a substance varies somewhat with temperature. However, this variation is usually small enough that we will treat specific heat as constant over the range of temperatures that will be considered in this chapter. Specific heats of some common substances are listed in [#fs-idm68801008].
+Water has a relatively high specific heat (about 4.2 J/g °C for the liquid and 2.09 J/g °C for the solid); most metals have much lower specific heats (usually less than 1 J/g °C). The specific heat of a substance varies somewhat with temperature. However, this variation is usually small enough that we will treat specific heat as constant over the range of temperatures that will be considered in this chapter. Specific heats of some common substances are listed in [[xref:fs-idm68801008]].
 
 <!-- SEG:m68724:entry:auto-41 -->
 Specific Heats of Common Substances at 25 °C and 1 bar
@@ -125,7 +125,7 @@ Specific Heats of Common Substances at 25 °C and 1 bar
 Substance
 
 <!-- SEG:m68724:entry:auto-43 -->
-Symbol ({{i}}state{{/i}})
+Symbol ([[i:state]])
 
 <!-- SEG:m68724:entry:auto-44 -->
 Specific Heat (J/g °C)
@@ -134,7 +134,7 @@ Specific Heat (J/g °C)
 helium
 
 <!-- SEG:m68724:entry:auto-46 -->
-He({{i}}g{{/i}})
+He([[i:g]])
 
 <!-- SEG:m68724:entry:auto-47 -->
 5.193
@@ -143,7 +143,7 @@ He({{i}}g{{/i}})
 water
 
 <!-- SEG:m68724:entry:auto-49 -->
-H[[sub:2]]O({{i}}l{{/i}})
+H[[sub:2]]O([[i:l]])
 
 <!-- SEG:m68724:entry:auto-50 -->
 4.184
@@ -152,7 +152,7 @@ H[[sub:2]]O({{i}}l{{/i}})
 ethanol
 
 <!-- SEG:m68724:entry:auto-52 -->
-C[[sub:2]]H[[sub:6]]O({{i}}l{{/i}})
+C[[sub:2]]H[[sub:6]]O([[i:l]])
 
 <!-- SEG:m68724:entry:auto-53 -->
 2.376
@@ -161,7 +161,7 @@ C[[sub:2]]H[[sub:6]]O({{i}}l{{/i}})
 ice
 
 <!-- SEG:m68724:entry:auto-55 -->
-H[[sub:2]]O({{i}}s{{/i}})
+H[[sub:2]]O([[i:s]])
 
 <!-- SEG:m68724:entry:auto-56 -->
 2.093 (at −10 °C)
@@ -170,7 +170,7 @@ H[[sub:2]]O({{i}}s{{/i}})
 water vapor
 
 <!-- SEG:m68724:entry:auto-58 -->
-H[[sub:2]]O({{i}}g{{/i}})
+H[[sub:2]]O([[i:g]])
 
 <!-- SEG:m68724:entry:auto-59 -->
 1.864
@@ -179,7 +179,7 @@ H[[sub:2]]O({{i}}g{{/i}})
 nitrogen
 
 <!-- SEG:m68724:entry:auto-61 -->
-N[[sub:2]]({{i}}g{{/i}})
+N[[sub:2]]([[i:g]])
 
 <!-- SEG:m68724:entry:auto-62 -->
 1.040
@@ -194,7 +194,7 @@ air
 oxygen
 
 <!-- SEG:m68724:entry:auto-66 -->
-O[[sub:2]]({{i}}g{{/i}})
+O[[sub:2]]([[i:g]])
 
 <!-- SEG:m68724:entry:auto-67 -->
 0.918
@@ -203,7 +203,7 @@ O[[sub:2]]({{i}}g{{/i}})
 aluminum
 
 <!-- SEG:m68724:entry:auto-69 -->
-Al({{i}}s{{/i}})
+Al([[i:s]])
 
 <!-- SEG:m68724:entry:auto-70 -->
 0.897
@@ -212,7 +212,7 @@ Al({{i}}s{{/i}})
 carbon dioxide
 
 <!-- SEG:m68724:entry:auto-72 -->
-CO[[sub:2]]({{i}}g{{/i}})
+CO[[sub:2]]([[i:g]])
 
 <!-- SEG:m68724:entry:auto-73 -->
 0.853
@@ -221,7 +221,7 @@ CO[[sub:2]]({{i}}g{{/i}})
 argon
 
 <!-- SEG:m68724:entry:auto-75 -->
-Ar({{i}}g{{/i}})
+Ar([[i:g]])
 
 <!-- SEG:m68724:entry:auto-76 -->
 0.522
@@ -230,7 +230,7 @@ Ar({{i}}g{{/i}})
 iron
 
 <!-- SEG:m68724:entry:auto-78 -->
-Fe({{i}}s{{/i}})
+Fe([[i:s]])
 
 <!-- SEG:m68724:entry:auto-79 -->
 0.449
@@ -239,7 +239,7 @@ Fe({{i}}s{{/i}})
 copper
 
 <!-- SEG:m68724:entry:auto-81 -->
-Cu({{i}}s{{/i}})
+Cu([[i:s]])
 
 <!-- SEG:m68724:entry:auto-82 -->
 0.385
@@ -248,7 +248,7 @@ Cu({{i}}s{{/i}})
 lead
 
 <!-- SEG:m68724:entry:auto-84 -->
-Pb({{i}}s{{/i}})
+Pb([[i:s]])
 
 <!-- SEG:m68724:entry:auto-85 -->
 0.130
@@ -257,7 +257,7 @@ Pb({{i}}s{{/i}})
 gold
 
 <!-- SEG:m68724:entry:auto-87 -->
-Au({{i}}s{{/i}})
+Au([[i:s]])
 
 <!-- SEG:m68724:entry:auto-88 -->
 0.129
@@ -266,16 +266,16 @@ Au({{i}}s{{/i}})
 silicon
 
 <!-- SEG:m68724:entry:auto-90 -->
-Si({{i}}s{{/i}})
+Si([[i:s]])
 
 <!-- SEG:m68724:entry:auto-91 -->
 0.712
 
 <!-- SEG:m68724:para:fs-idp1279024 -->
-If we know the mass of a substance and its specific heat, we can determine the amount of heat, {{i}}q{{/i}}, entering or leaving the substance by measuring the temperature change before and after the heat is gained or lost:
+If we know the mass of a substance and its specific heat, we can determine the amount of heat, [[i:q]], entering or leaving the substance by measuring the temperature change before and after the heat is gained or lost:
 
 <!-- SEG:m68724:para:fs-idm37045440 -->
-In this equation, {{i}}c{{/i}} is the specific heat of the substance, {{i}}m{{/i}} is its mass, and Δ{{i}}T{{/i}} (which is read “delta T”) is the temperature change, {{i}}T{{/i}}[[sub:final]] − {{i}}T{{/i}}[[sub:initial]]. If a substance gains thermal energy, its temperature increases, its final temperature is higher than its initial temperature, {{i}}T{{/i}}[[sub:final]] − {{i}}T{{/i}}[[sub:initial]] has a positive value, and the value of {{i}}q{{/i}} is positive. If a substance loses thermal energy, its temperature decreases, the final temperature is lower than the initial temperature, {{i}}T{{/i}}[[sub:final]] − {{i}}T{{/i}}[[sub:initial]] has a negative value, and the value of {{i}}q{{/i}} is negative.
+In this equation, [[i:c]] is the specific heat of the substance, [[i:m]] is its mass, and Δ[[i:T]] (which is read “delta T”) is the temperature change, [[i:T]][[sub:final]] − [[i:T]][[sub:initial]]. If a substance gains thermal energy, its temperature increases, its final temperature is higher than its initial temperature, [[i:T]][[sub:final]] − [[i:T]][[sub:initial]] has a positive value, and the value of [[i:q]] is positive. If a substance loses thermal energy, its temperature decreases, the final temperature is lower than the initial temperature, [[i:T]][[sub:final]] − [[i:T]][[sub:initial]] has a negative value, and the value of [[i:q]] is negative.
 
 <!-- SEG:m68724:example-title:fs-idp1783792-title -->
 Measuring Heat
@@ -290,13 +290,13 @@ Solution
 To answer this question, consider these factors:
 
 <!-- SEG:m68724:para:fs-idm6508272 -->
-The specific heat of water is 4.184 J/g °C, so to heat 1 g of water by 1 °C requires 4.184 J. We note that since 4.184 J is required to heat 1 g of water by 1 °C, we will need {{i}}800 times as much{{/i}} to heat 8.0 × 10[[sup:2]] g of water by 1 °C. Finally, we observe that since 4.184 J are required to heat 1 g of water by 1 °C, we will need {{i}}64 times as much{{/i}} to heat it by 64 °C (that is, from 21 °C to 85 °C).
+The specific heat of water is 4.184 J/g °C, so to heat 1 g of water by 1 °C requires 4.184 J. We note that since 4.184 J is required to heat 1 g of water by 1 °C, we will need [[i:800 times as much]] to heat 8.0 × 10[[sup:2]] g of water by 1 °C. Finally, we observe that since 4.184 J are required to heat 1 g of water by 1 °C, we will need [[i:64 times as much]] to heat it by 64 °C (that is, from 21 °C to 85 °C).
 
 <!-- SEG:m68724:para:fs-idm16704560 -->
 This can be summarized using the equation:
 
 <!-- SEG:m68724:para:fs-idp22566736 -->
-Because the temperature increased, the water absorbed heat and {{i}}q{{/i}} is positive.
+Because the temperature increased, the water absorbed heat and [[i:q]] is positive.
 
 <!-- SEG:m68724:para-title:fs-idm1147904-title -->
 Check Your Learning
@@ -344,7 +344,7 @@ Substituting the known values:
 Solving:
 
 <!-- SEG:m68724:para:fs-idm17185344 -->
-Comparing this value with the values in [#fs-idm68801008], this value matches the specific heat of aluminum, which suggests that the unknown metal may be aluminum.
+Comparing this value with the values in [[xref:fs-idm68801008]], this value matches the specific heat of aluminum, which suggests that the unknown metal may be aluminum.
 
 <!-- SEG:m68724:para-title:fs-idm40972976-title -->
 Check Your Learning
@@ -353,13 +353,13 @@ Check Your Learning
 A piece of unknown metal weighs 217 g. When the metal piece absorbs 1.43 kJ of heat, its temperature increases from 24.5 °C to 39.1 °C. Determine the specific heat of this metal, and predict its identity.
 
 <!-- SEG:m68724:para:fs-idp81248192 -->
-{{i}}c{{/i}} = 0.451 J/g °C; the metal is likely to be iron
+[[i:c]] = 0.451 J/g °C; the metal is likely to be iron
 
 <!-- SEG:m68724:note-title:fs-idp282981088-title -->
 Answer:
 
 <!-- SEG:m68724:para:fs-idp81248192 -->
-{{i}}c{{/i}} = 0.451 J/g °C; the metal is likely to be iron
+[[i:c]] = 0.451 J/g °C; the metal is likely to be iron
 
 <!-- SEG:m68724:note-title:fs-idm28600720-title -->
 Solar Thermal Energy Power Plants
@@ -368,10 +368,10 @@ Solar Thermal Energy Power Plants
 The sunlight that reaches the earth contains thousands of times more energy than we presently capture. Solar thermal systems provide one possible solution to the problem of converting energy from the sun into energy we can use. Large-scale solar thermal plants have different design specifics, but all concentrate sunlight to heat some substance; the heat “stored” in that substance is then converted into electricity.
 
 <!-- SEG:m68724:para:fs-idm30166592 -->
-The Solana Generating Station in Arizona’s Sonora Desert produces 280 megawatts of electrical power. It uses parabolic mirrors that focus sunlight on pipes filled with a heat transfer fluid (HTF) ([#CNX_Chem_05_01_SolTherm1]). The HTF then does two things: It turns water into steam, which spins turbines, which in turn produces electricity, and it melts and heats a mixture of salts, which functions as a thermal energy storage system. After the sun goes down, the molten salt mixture can then release enough of its stored heat to produce steam to run the turbines for 6 hours. Molten salts are used because they possess a number of beneficial properties, including high heat capacities and thermal conductivities.
+The Solana Generating Station in Arizona’s Sonora Desert produces 280 megawatts of electrical power. It uses parabolic mirrors that focus sunlight on pipes filled with a heat transfer fluid (HTF) ([[xref:CNX_Chem_05_01_SolTherm1]]). The HTF then does two things: It turns water into steam, which spins turbines, which in turn produces electricity, and it melts and heats a mixture of salts, which functions as a thermal energy storage system. After the sun goes down, the molten salt mixture can then release enough of its stored heat to produce steam to run the turbines for 6 hours. Molten salts are used because they possess a number of beneficial properties, including high heat capacities and thermal conductivities.
 
 <!-- SEG:m68724:para:fs-idp4162272 -->
-The 377-megawatt Ivanpah Solar Generating System, located in the Mojave Desert in California, is the largest solar thermal power plant in the world ([#CNX_Chem_05_01_SolTherm2]). Its 170,000 mirrors focus huge amounts of sunlight on three water-filled towers, producing steam at over 538 °C that drives electricity-producing turbines. It produces enough energy to power 140,000 homes. Water is used as the working fluid because of its large heat capacity and heat of vaporization.
+The 377-megawatt Ivanpah Solar Generating System, located in the Mojave Desert in California, is the largest solar thermal power plant in the world ([[xref:CNX_Chem_05_01_SolTherm2]]). Its 170,000 mirrors focus huge amounts of sunlight on three water-filled towers, producing steam at over 538 °C that drives electricity-producing turbines. It produces enough energy to power 140,000 homes. Water is used as the working fluid because of its large heat capacity and heat of vaporization.
 
 <!-- SEG:m68724:caption:CNX_Chem_05_01_SolTherm1-caption -->
 This solar thermal plant uses parabolic trough mirrors to concentrate sunlight. (credit a: modification of work by Bureau of Land Management)
@@ -461,7 +461,7 @@ A piece of unknown substance weighs 44.7 g and requires 2110 J to increase its t
 (a) What is the specific heat of the substance?
 
 <!-- SEG:m68724:problem:fs-idp36059072 -->
-(b) If it is one of the substances found in [#fs-idm68801008], what is its likely identity?
+(b) If it is one of the substances found in [[xref:fs-idm68801008]], what is its likely identity?
 
 <!-- SEG:m68724:problem:fs-idp36065248 -->
 A piece of unknown solid substance weighs 437.2 g, and requires 8460 J to increase its temperature from 19.3 °C to 68.9 °C.
@@ -470,7 +470,7 @@ A piece of unknown solid substance weighs 437.2 g, and requires 8460 J to increa
 (a) What is the specific heat of the substance?
 
 <!-- SEG:m68724:problem:fs-idp36066288 -->
-(b) If it is one of the substances found in [#fs-idm68801008], what is its likely identity?
+(b) If it is one of the substances found in [[xref:fs-idm68801008]], what is its likely identity?
 
 <!-- SEG:m68724:solution:fs-idp36067056 -->
 (a) 0.390 J/g °C; (b) Copper is a likely candidate.
@@ -518,13 +518,13 @@ exothermic process
 chemical reaction or physical change that releases heat
 
 <!-- SEG:m68724:glossary-term:fs-idp25504496-term -->
-heat (q)
+heat ([[i:q]])
 
 <!-- SEG:m68724:glossary-def:fs-idp25504496-def -->
 transfer of thermal energy between two bodies
 
 <!-- SEG:m68724:glossary-term:fs-idp25506160-term -->
-heat capacity (C)
+heat capacity ([[i:C]])
 
 <!-- SEG:m68724:glossary-def:fs-idp25506160-def -->
 extensive property of a body of matter that represents the quantity of heat required to increase its temperature by 1 degree Celsius (or 1 kelvin)
@@ -539,7 +539,7 @@ SI unit of energy; amount of energy used when a force of 1 newton moves an objec
 kinetic energy
 
 <!-- SEG:m68724:glossary-def:fs-idp25509680-def -->
-energy associated with an object's motion, equal to one-half the product of the object's mass and the square of its velocity, [[MATH:6]] (where {{i}}m{{/i}} = mass and {{i}}v{{/i}} = velocity)
+energy associated with an object's motion, equal to one-half the product of the object's mass and the square of its velocity, [[MATH:6]] (where [[i:m]] = mass and [[i:v]] = velocity)
 
 <!-- SEG:m68724:glossary-term:fs-idp25515184-term -->
 potential energy
@@ -548,7 +548,7 @@ potential energy
 energy of a particle or system of particles derived from relative position, composition, or condition
 
 <!-- SEG:m68724:glossary-term:fs-idp31727024-term -->
-specific heat capacity (c)
+specific heat capacity ([[i:c]])
 
 <!-- SEG:m68724:glossary-def:fs-idp31727024-def -->
 intensive property of a substance that represents the quantity of heat required to raise the temperature of 1 gram of the substance by 1 degree Celsius (or 1 kelvin)
@@ -572,7 +572,7 @@ thermochemistry
 study of measuring the amount of heat absorbed or released during a chemical reaction or a physical change
 
 <!-- SEG:m68724:glossary-term:fs-idp31732848-term -->
-work (w)
+work ([[i:w]])
 
 <!-- SEG:m68724:glossary-def:fs-idp31732848-def -->
 energy transfer due to changes in external, macroscopic variables such as pressure and volume; or causing matter to move against an opposing force

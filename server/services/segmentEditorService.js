@@ -8,7 +8,9 @@
 const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
+const log = require('../lib/logger');
 const { advanceChapterStatus } = require('./pipelineService');
+const contentVersionService = require('./contentVersionService');
 
 let BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
@@ -570,8 +572,9 @@ function applyApprovedEdits(book, chapter, moduleId) {
     const currentSegIds = new Set(data.segments.map((s) => s.segmentId));
     for (const [segId, edit] of Object.entries(approvedLookup)) {
       if (!currentSegIds.has(segId)) {
-        console.error(
-          `Warning: Approved edit ${edit.id} references segment ${segId} which no longer exists in current extraction`
+        log.warn(
+          { editId: edit.id, segmentId: segId },
+          'Approved edit references segment that no longer exists in current extraction'
         );
       }
     }
@@ -584,6 +587,17 @@ function applyApprovedEdits(book, chapter, moduleId) {
         content: approved ? approved.edited_content : seg.is,
       };
     });
+
+    // 4b. Snapshot current content before overwriting (for rollback)
+    const currentSegments = data.segments.map((seg) => ({
+      segmentId: seg.segmentId,
+      content: seg.is || '',
+    }));
+    try {
+      contentVersionService.snapshotModule(book, chapter, moduleId, currentSegments);
+    } catch (snapErr) {
+      log.error({ err: snapErr }, 'Content snapshot failed (non-fatal, continuing apply)');
+    }
 
     // 5. Write to 03-faithful-translation/
     const savedPath = segmentParser.saveModuleSegments(book, chapter, moduleId, segments);
@@ -601,9 +615,9 @@ function applyApprovedEdits(book, chapter, moduleId) {
     const sampleEdit = Object.values(approvedLookup)[0];
     const sampleText = sampleEdit?.edited_content || '';
     if (sampleText && !written.includes(sampleText.substring(0, Math.min(50, sampleText.length)))) {
-      console.error(
-        `Warning: Sample edit content not found in faithful file. ` +
-          `Segment ID format may not match. Edit segment_id: ${sampleEdit.segment_id}`
+      log.warn(
+        { segmentId: sampleEdit.segment_id },
+        'Sample edit content not found in faithful file — segment ID format may not match'
       );
     }
 
@@ -656,7 +670,7 @@ function applyApprovedEdits(book, chapter, moduleId) {
       }
     }
   } catch (err) {
-    console.error('Auto-advance linguisticReview failed:', err.message);
+    log.error({ err }, 'Auto-advance linguisticReview failed');
   }
 
   return result;
@@ -796,6 +810,130 @@ function getDiscussEdits(limit = 10) {
     .all(Math.min(limit, 200));
 }
 
+/**
+ * Get per-module edit aggregation for a specific book, grouped by chapter.
+ * Single DB query returns edit counts for every module that has any edits.
+ *
+ * @param {string} book - Book slug
+ * @returns {Array} Array of { chapter, module_id, pending, approved, rejected, discuss, applied, segments_edited }
+ */
+function getBookEditsByModule(book) {
+  const conn = getDb();
+  return conn
+    .prepare(
+      `SELECT
+        chapter,
+        module_id,
+        COUNT(CASE WHEN status = 'pending' THEN 1 END) as pending,
+        COUNT(CASE WHEN status = 'approved' THEN 1 END) as approved,
+        COUNT(CASE WHEN status = 'rejected' THEN 1 END) as rejected,
+        COUNT(CASE WHEN status = 'discuss' THEN 1 END) as discuss,
+        COUNT(CASE WHEN status = 'approved' AND applied_at IS NOT NULL THEN 1 END) as applied,
+        COUNT(DISTINCT segment_id) as segments_edited
+      FROM segment_edits
+      WHERE book = ?
+      GROUP BY chapter, module_id`
+    )
+    .all(book);
+}
+
+/**
+ * Get per-chapter and book-wide editorial progress using DISTINCT segment counts.
+ *
+ * Uses COUNT(DISTINCT segment_id) rather than edit record counts, so that
+ * multiple edits to the same segment are not over-counted.
+ *
+ * @param {string} book - Book slug
+ * @returns {{ chapters: Object, summary: Object }}
+ */
+function getEditorialProgress(book) {
+  const conn = getDb();
+
+  // 1. Get DISTINCT segment counts per chapter from DB
+  //    This is the key fix: counting distinct segment_ids, not edit records
+  const editRows = conn
+    .prepare(
+      `SELECT
+        chapter,
+        COUNT(DISTINCT segment_id) as edited_segments,
+        COUNT(DISTINCT CASE WHEN status = 'approved' THEN segment_id ELSE NULL END) as approved_segments
+      FROM segment_edits
+      WHERE book = ?
+      GROUP BY chapter`
+    )
+    .all(book);
+
+  const editMap = {};
+  for (const row of editRows) {
+    editMap[row.chapter] = row;
+  }
+
+  // 2. Get segment totals from filesystem + count module completion
+  const segmentParser = require('./segmentParser');
+  const chapterNums = segmentParser.listChapters(book);
+  const chapters = {};
+  let totalApproved = 0;
+  let totalEdited = 0;
+  let totalSegments = 0;
+  let modulesComplete = 0;
+  let totalModules = 0;
+
+  // For module completion, reuse existing per-module record counts
+  const moduleEdits = getBookEditsByModule(book);
+  const moduleEditMap = {};
+  for (const row of moduleEdits) {
+    moduleEditMap[row.module_id] = row;
+  }
+
+  for (const chNum of chapterNums) {
+    const chLabel = chNum === -1 ? 'appendices' : String(chNum);
+    const modules = segmentParser.listChapterModules(book, chNum);
+    let chSegments = 0;
+
+    for (const mod of modules) {
+      const segCount = segmentParser.countModuleSegments(book, chLabel, mod.moduleId);
+      chSegments += segCount;
+      totalModules++;
+
+      // Module is "complete" when approved records >= segment count
+      const modEdits = moduleEditMap[mod.moduleId];
+      if (modEdits && segCount > 0) {
+        const approvedRecords = (modEdits.approved || 0) + (modEdits.applied || 0);
+        if (approvedRecords >= segCount) {
+          modulesComplete++;
+        }
+      }
+    }
+
+    const edits = editMap[chLabel] || { approved_segments: 0, edited_segments: 0 };
+
+    chapters[chNum] = {
+      approvedSegments: edits.approved_segments,
+      editedSegments: edits.edited_segments,
+      totalSegments: chSegments,
+      percentComplete:
+        chSegments > 0 ? Math.round((edits.approved_segments / chSegments) * 1000) / 10 : 0,
+    };
+
+    totalApproved += edits.approved_segments;
+    totalEdited += edits.edited_segments;
+    totalSegments += chSegments;
+  }
+
+  return {
+    chapters,
+    summary: {
+      approvedSegments: totalApproved,
+      editedSegments: totalEdited,
+      totalSegments,
+      totalModules,
+      modulesComplete,
+      percentComplete:
+        totalSegments > 0 ? Math.round((totalApproved / totalSegments) * 1000) / 10 : 0,
+    },
+  };
+}
+
 /** @internal Test-only: inject an in-memory DB instance */
 function _setTestDb(testDb) {
   db = testDb;
@@ -835,6 +973,9 @@ module.exports = {
   getDiscussEdits,
   // Review queue
   getReviewQueue,
+  // Per-book aggregation
+  getBookEditsByModule,
+  getEditorialProgress,
   // Test helpers
   _setTestDb,
   _setTestBooksDir,

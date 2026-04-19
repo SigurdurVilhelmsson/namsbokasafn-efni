@@ -1,0 +1,395 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-19T21:04:54.540Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdG9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a0aa9691acfe6c19cc43420c47ee513446bdb881",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdG9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a0aa9691acfe6c19cc43420c47ee513446bdb881/OChem_03_EC_211a.jpg"
+    },
+    {
+      "created_at": "2023-08-19T21:04:54.543Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--79f02d3bd8291cebbab0cfd86d4d96b00d9dc3b2",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--79f02d3bd8291cebbab0cfd86d4d96b00d9dc3b2/OChem_03_EC_211b.jpg"
+    },
+    {
+      "created_at": "2023-08-19T21:04:54.545Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ea7cb9ac15913f91f3997940c8379d2b5f3758c5",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ea7cb9ac15913f91f3997940c8379d2b5f3758c5/OChem_03_EC_211cd.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:60cf85b6-afad-402f-91c0-1f5f217a5bde",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:3-7-conformations-of-other-alkanes"
+  ],
+  "uuid": "87416471-7701-48ee-847d-08f3f4b0565f",
+  "group_uuid": "9f6a2039-260c-4809-9dc5-ef16d66efa9e",
+  "number": 36432,
+  "version": 8,
+  "uid": "36432@8",
+  "published_at": "2023-08-19T21:05:00.435Z",
+  "nickname": "03-07-OC-P16",
+  "solutions_are_public": true,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "Sight along the C2–C1 bond of 2-methylpropane (isobutane).",
+  "questions": [
+    {
+      "id": 357636,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "Draw a Newman projection of the most stable conformation.",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdG9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a0aa9691acfe6c19cc43420c47ee513446bdb881/OChem_03_EC_211a.jpg\" alt=\"A Newman projection of the most stable conformation is represented.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 357637,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "Draw a Newman projection of the least stable conformation.",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--79f02d3bd8291cebbab0cfd86d4d96b00d9dc3b2/OChem_03_EC_211b.jpg\" alt=\"A Newman projection of the least stable conformation is represented. It contains energy of 4 and 6 kilojoules per mol.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 357638,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "Make a graph of energy versus angle of rotation around the C2–C1 bond.",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ea7cb9ac15913f91f3997940c8379d2b5f3758c5/OChem_03_EC_211cd.jpg\" alt=\"A line graph of energy versus angle of rotation, around the C2 – C1 bond.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 357639,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "Assign relative values to the maxima and minima in your graph, given that an H ⟷ H eclipsing interaction costs 4.0 kJ/mol and an H ⟷ CH<sub>3</sub> eclipsing interaction costs 6.0 kJ/mol.",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ea7cb9ac15913f91f3997940c8379d2b5f3758c5/OChem_03_EC_211cd.jpg\" alt=\"A line graph of energy versus angle of rotation, around the C2 – C1 bond.\">"
+        }
+      ],
+      "community_solutions": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    8,
+    7,
+    6,
+    5,
+    4,
+    3,
+    2,
+    1
+  ]
+}

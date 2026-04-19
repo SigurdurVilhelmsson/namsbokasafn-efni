@@ -1,0 +1,46 @@
+{
+  "m42069:para:import-auto-id2380148": {
+    "terms": [
+      {
+        "id": "import-auto-id2134480"
+      },
+      {
+        "id": "import-auto-id2712510"
+      }
+    ]
+  },
+  "m42069:para:import-auto-id1374790": {
+    "terms": [
+      {
+        "id": "import-auto-id1590568"
+      },
+      {
+        "id": "import-auto-id1608860"
+      }
+    ]
+  },
+  "m42069:item:eip-id2655312-item-1": {
+    "terms": [
+      {
+        "id": "term-00001"
+      }
+    ]
+  },
+  "m42069:item:eip-id2655312-item-2": {
+    "terms": [
+      {
+        "id": "term-00002"
+      }
+    ]
+  },
+  "m42069:item:eip-id2655312-item-3": {
+    "terms": [
+      {
+        "id": "term-00003"
+      },
+      {
+        "id": "term-00004"
+      }
+    ]
+  }
+}

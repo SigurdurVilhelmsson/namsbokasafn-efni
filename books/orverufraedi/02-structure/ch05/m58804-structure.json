@@ -1,0 +1,646 @@
+{
+  "moduleId": "m58804",
+  "title": {
+    "segmentId": "m58804:title:auto-1",
+    "text": "Fungi"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "ba4b0859-a72a-49cb-9375-b2dc6907de93"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "fs-id1172098283229",
+      "class": "learning-objectives",
+      "title": {
+        "segmentId": "m58804:title:fs-id1172098283229-title",
+        "text": "Learning Objectives"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id11713605736962",
+          "segmentId": "m58804:para:fs-id11713605736962"
+        },
+        {
+          "type": "list",
+          "id": "fs-id1172098318166",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m58804:item:fs-id1172098318166-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m58804:item:fs-id1172098318166-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m58804:item:fs-id1172098318166-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m58804:item:fs-id1172098318166-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m58804:item:fs-id1172098318166-item-5"
+            },
+            {
+              "id": null,
+              "segmentId": "m58804:item:fs-id1172098318166-item-6"
+            },
+            {
+              "id": null,
+              "segmentId": "m58804:item:fs-id1172098318166-item-7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-id1172098296321",
+      "segmentId": "m58804:para:fs-id1172098296321"
+    },
+    {
+      "type": "para",
+      "id": "fs-id1172096214466",
+      "segmentId": "m58804:para:fs-id1172096214466"
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172098408099",
+      "class": null,
+      "title": {
+        "segmentId": "m58804:title:fs-id1172098408099-title",
+        "text": "Characteristics of Fungi"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1172100726720",
+          "segmentId": "m58804:para:fs-id1172100726720"
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_03_hyphae",
+          "caption": {
+            "segmentId": "m58804:caption:OSC_Microbio_05_03_hyphae-caption"
+          },
+          "media": {
+            "id": "fs-id1172098282036",
+            "alt": "Molds can have septate hyphae - long strands with cell walls separating the nuclei. Or they can have coenocytic (nonseptate) hyphae - long strands with no cell wall separating the nuclei. Or they can have pseudohyphae which look like chains of cells with small clusters at intervals",
+            "src": "../../media/OSC_Microbio_05_03_hyphae.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172098709897",
+          "segmentId": "m58804:para:fs-id1172098709897"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172098389503",
+          "segmentId": "m58804:para:fs-id1172098389503"
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_03_struct",
+          "caption": {
+            "segmentId": "m58804:caption:OSC_Microbio_05_03_struct-caption"
+          },
+          "media": {
+            "id": "fs-id1172098656509",
+            "alt": "Drawing of bats in an attic. Fungal body is shown in the guano. A micrograph of the fungus shows hyphae (long strands) withc spheres labeled conidia. The life cycle shows a person inhaling spores which then travel to the lungs and divide into a yeast form. They then travel to the lymph and blood.",
+            "src": "../../media/OSC_Microbio_05_03_struct.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172098378521",
+          "segmentId": "m58804:para:fs-id1172098378521"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172100597033",
+          "segmentId": "m58804:para:fs-id1172100597033"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172100565958",
+          "segmentId": "m58804:para:fs-id1172100565958"
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_03_zygo",
+          "caption": {
+            "segmentId": "m58804:caption:OSC_Microbio_05_03_zygo-caption"
+          },
+          "media": {
+            "id": "fs-id1172100857209",
+            "alt": "Zygomycete life cycle. The mycelia can undergo asexual reproduction by forming spores via mitosis. The spores then form mycelia by germination. The haploid spores can also undergo sexual reproduction. The first step is germination when mycelia form. If the two mating types (+ and -) are in close proximity, extensions called gametangia form between them. Next is plasmogamy. This is the fusion between the + and – mating types resulting in a zygosporangium with multiple haploid nucei. The zygosporangiom forms a thick, protective coat. Next the nuclei fuse to form a zygote with multiple diploid nuclei in karyogamy. This forms a diploid zygote. Next is mitosis and germination where the sporangium grows on a short stalk and the haploid spores are formed inside. The spores are released in germination and we are back to the spore stage of the life cycle.",
+            "src": "../../media/OSC_Microbio_05_03_zygo.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_03_spores",
+          "caption": {
+            "segmentId": "m58804:caption:OSC_Microbio_05_03_spores-caption"
+          },
+          "media": {
+            "id": "fs-id1172100625442",
+            "alt": "a) A micrograph of long strands labeled hyphae and a sphere (labeled sporangium) on the end of one of the long strands. B) A photograph of bread mold. The white fuzz has black dots labeled sporangia.",
+            "src": "../../media/OSC_Microbio_05_03_spores.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-id1172100931857",
+          "class": "microbiology check-your-understanding",
+          "title": null,
+          "content": []
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172098572617",
+      "class": null,
+      "title": {
+        "segmentId": "m58804:title:fs-id1172098572617-title",
+        "text": "Fungal Diversity"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1172098401277",
+          "segmentId": "m58804:para:fs-id1172098401277"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172101005731",
+          "segmentId": "m58804:para:fs-id1172101005731"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172100858264",
+          "segmentId": "m58804:para:fs-id1172100858264"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172098381171",
+          "segmentId": "m58804:para:fs-id1172098381171"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172098381915",
+          "segmentId": "m58804:para:fs-id1172098381915"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172100654970",
+          "segmentId": "m58804:para:fs-id1172100654970"
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_03_asclife",
+          "caption": {
+            "segmentId": "m58804:caption:OSC_Microbio_05_03_asclife-caption"
+          },
+          "media": {
+            "id": "fs-id1172100656800",
+            "alt": "a) a micrograph of a large oval (10 µm) labeled ascus and smaller ovals (5 µm) labeled ascospores. B) a micrograph of a long stalk with strands of spheres emanating from a sphere on the tip. The spheres are about 2 µm in diameter. C) A long strand with clusters of spheres. A small dot in each sphere is labeled nucleus.",
+            "src": "../../media/OSC_Microbio_05_03_asclife.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_03_sexspores",
+          "caption": {
+            "segmentId": "m58804:caption:OSC_Microbio_05_03_sexspores-caption"
+          },
+          "media": {
+            "id": "fs-id1172098407090",
+            "alt": "A micrograph showing a thick tube with 8 ovals lined up within the tube.",
+            "src": "../../media/OSC_Microbio_05_03_sexspores.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_03_ascomyLC",
+          "caption": {
+            "segmentId": "m58804:caption:OSC_Microbio_05_03_ascomyLC-caption"
+          },
+          "media": {
+            "id": "fs-id1172100654155",
+            "alt": "Ascomycete life cycle. Mycelia produce conidiophores which use mitosis to asexually produce spores. These spores then germinate into new mycelia. Sexual reproduction begins one hyphae produces an ascogonium and another produces an antheridium. In plasmogamy the ascogonium and antheridium fuse. Mitosis and cell division result in the formation of many dikaryotic hyphae, which form a fruiting body called the ascocarp. Asci form at the tips of these hyphae. In karyogamy the nuclein in the asci fuse to form a diploid zygote. Then meiosis produces four haploid nuclei in the ascus. Then mitosis and cell division results in eight haploid ascospores in the ascus. These ascospores then disperse and germinate into new mycelia.",
+            "src": "../../media/OSC_Microbio_05_03_ascomyLC.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172101033436",
+          "segmentId": "m58804:para:fs-id1172101033436"
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_03_basidioLC",
+          "caption": {
+            "segmentId": "m58804:caption:OSC_Microbio_05_03_basidioLC-caption"
+          },
+          "media": {
+            "id": "fs-id1172098310905",
+            "alt": "Basidiomycete life cycle. Haploid basidiospres germinate to form mycelia. There are two mating types (+ and -_). In plasmogamy, fusion between + and – mating types results in formation of a dikaryotic mycelium. Under the right environmental conditions, a basidiocarp forms via mitosis. Gills of the basidiocarp contain cells called basidia. A photo of a mushroom labels the mushroom as basidiocap and basidia within the gills. Basidia form diploid nuclei via karyotamy; this produces a diploid zygote. Four haploid nuclei are formed in the basidium via meisos. Cell division produces four haploid basidiospores. These spres then disperse and germinate into new mycelia.",
+            "src": "../../media/OSC_Microbio_05_03_basidioLC.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172100653329",
+          "segmentId": "m58804:para:fs-id1172100653329"
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_03_TaxaTable",
+          "caption": {
+            "segmentId": "m58804:caption:OSC_Microbio_05_03_TaxaTable-caption"
+          },
+          "media": {
+            "id": "fs-id1172100556178",
+            "alt": "A table labeled select groups of fungi. Four groups are discussed. Ascomycota have the characteristics: septate hyphae, ascus with ascospores in ascocarp, and conidiospores. Examples include Cup fungi, edible mushrooms, morels, truffles, neurospora, and penicillim. Medically important species include Aspergillus, Trichophyton, Microsporum, Epidemophyton, Blastomyces demititidis, and Histoplasma capsulatum. An image of Aspergillus niger shows long strands with a dark sphere at the end of one strand. Basidiomycota have the characteristics: basidia, produce basidiospores in basidiocarp. Examples include club fungi, rusts, stinkhors, puffballs, mushrooms, Cryptococcus neoformans, Amanita phalloides. Medically important species include Cryptococcus neoformans. An image shows a mushroom labeled Amanita phalloides. Microsporidia have the characteristics: lack mitochondria, peroxisomes, and centrioles; spores produce a polar tube. Examples include Enterocystozoan bieneusi which is medically important. A micrograph shows oval cells labeled microsporidia (unidentified). Zygomycota have the characteristics: mainly saprophytes, coenocytic hyphae, haploid nuclei and zygospores. Examples include Rhizopus stolonifera and the medically important mucor spp. A micrograph shows a long strand with many small dots everywhere on the slide.",
+            "src": "../../media/OSC_Microbio_05_03_TaxaTable.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-id1172100583468",
+          "class": "microbiology check-your-understanding",
+          "title": null,
+          "content": []
+        },
+        {
+          "type": "note",
+          "id": "fs-id1172100618884",
+          "class": "microbiology micro-connection",
+          "title": {
+            "segmentId": "m58804:note-title:fs-id1172100618884-title",
+            "text": "Eukaryotic Pathogens in Eukaryotic Hosts"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1172100960259",
+              "segmentId": "m58804:para:fs-id1172100960259"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1172101008157",
+              "segmentId": "m58804:para:fs-id1172101008157"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1172100673711",
+              "segmentId": "m58804:para:fs-id1172100673711"
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "id": "fs-id1172098387316",
+          "class": "microbiology clinical-focus",
+          "title": {
+            "segmentId": "m58804:note-title:fs-id1172098387316-title",
+            "text": "Part 3"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1172100926042",
+              "segmentId": "m58804:para:fs-id1172100926042"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1172096159109",
+              "segmentId": "m58804:para:fs-id1172096159109"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1172098517588",
+              "segmentId": "m58804:para:fs-id1172098517588"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1172098616077",
+              "segmentId": "m58804:para:fs-id1172098616077"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_03_Trubrum",
+          "caption": {
+            "segmentId": "m58804:caption:OSC_Microbio_05_03_Trubrum-caption"
+          },
+          "media": {
+            "id": "fs-id1172100578410",
+            "alt": "A micrograph of a long strands with cell walls. The long strand is labeled macroconidium. Smaller spheres outside the long strand are labeled microconidia.",
+            "src": "../../media/OSC_Microbio_05_03_Trubrum.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172100516875",
+      "class": "summary",
+      "title": {
+        "segmentId": "m58804:title:fs-id1172100516875-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "list",
+          "id": "fs-id1172100742226",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": "bullet",
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m58804:item:fs-id1172100742226-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m58804:item:fs-id1172100742226-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m58804:item:fs-id1172100742226-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m58804:item:fs-id1172100742226-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m58804:item:fs-id1172100742226-item-5"
+            },
+            {
+              "id": null,
+              "segmentId": "m58804:item:fs-id1172100742226-item-6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172098674723",
+      "class": "multiple-choice",
+      "title": {
+        "segmentId": "m58804:title:fs-id1172098674723-title",
+        "text": "Multiple Choice"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1172100994182",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172098708286",
+                "segmentId": "m58804:problem:fs-id1172098708286"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172098460956",
+                "segmentId": "m58804:solution:fs-id1172098460956"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1172098389537",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172100961807",
+                "segmentId": "m58804:problem:fs-id1172100961807"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172100781040",
+                "segmentId": "m58804:solution:fs-id1172100781040"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1172100506672",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172100667237",
+                "segmentId": "m58804:problem:fs-id1172100667237"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172098778771",
+                "segmentId": "m58804:solution:fs-id1172098778771"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172100558169",
+      "class": "fill-in-the-blank",
+      "title": {
+        "segmentId": "m58804:title:fs-id1172100558169-title",
+        "text": "Fill in the Blank"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1172100896360",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172098499351",
+                "segmentId": "m58804:problem:fs-id1172098499351"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172098318072",
+                "segmentId": "m58804:solution:fs-id1172098318072"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1172098676953",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172100986107",
+                "segmentId": "m58804:problem:fs-id1172100986107"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172096289740",
+                "segmentId": "m58804:solution:fs-id1172096289740"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1172100947327",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172100511567",
+                "segmentId": "m58804:problem:fs-id1172100511567"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172098596326",
+                "segmentId": "m58804:solution:fs-id1172098596326"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172100771092",
+      "class": "short-answer",
+      "title": {
+        "segmentId": "m58804:title:fs-id1172100771092-title",
+        "text": "Short Answer"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1172098581098",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172098261159",
+                "segmentId": "m58804:problem:fs-id1172098261159"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1172098780413",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172098403882",
+                "segmentId": "m58804:problem:fs-id1172098403882"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172098617759",
+      "class": "critical-thinking",
+      "title": {
+        "segmentId": "m58804:title:fs-id1172098617759-title",
+        "text": "Critical Thinking"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1172100985022",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172100947619",
+                "segmentId": "m58804:problem:fs-id1172100947619"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1172100855457",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172098309429",
+                "segmentId": "m58804:problem:fs-id1172098309429"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": null
+}

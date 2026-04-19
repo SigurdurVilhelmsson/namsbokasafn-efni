@@ -1,0 +1,73 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Nucleophilic Addition of Alcohols: Acetal Formation</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Nucleophilic Addition of Alcohols: Acetal Formation</md:title>
+    <md:content-id>m00221</md:content-id>
+    <md:uuid>5f62661c-475c-4de4-915d-94da328b9289</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">Aldehydes and ketones react reversibly with 2 equivalents of an alcohol in the presence of an acid catalyst to yield <term id="term-00001">acetals, R<sub>2</sub>C(OR′)<sub>2</sub></term>, which are often called <term id="term-00002">ketals</term> if derived from a ketone. Cyclohexanone, for instance, reacts with methanol in the presence of HCl to give the corresponding dimethyl acetal.</para>
+    <figure class="unnumbered scaled-down" id="fig-00001">
+    <media alt="Cyclohexanone reacts with two equivalents of methanol and hydrochloric acid catalyst to form cyclohexanone dimethyl acetal and water.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_10_001.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00002">Acetal formation is similar to the hydration reaction discussed in <link document="m00216"/>. Like water, alcohols are weak nucleophiles that add to aldehydes and ketones slowly under neutral conditions. Under acidic conditions, however, the reactivity of the carbonyl group is increased by protonation, so addition of an alcohol occurs rapidly.</para>
+    <figure class="unnumbered scaled-down" id="fig-00002">
+    <media alt="The structure shows a reversible reaction where a carbonyl group is protonated at oxygen by H A; resonance produces neutral O H group single bonded to carbocation.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_10_002.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00003">As shown in <link target-id="fig-00003"/>, nucleophilic addition of an alcohol to the carbonyl group initially yields a hydroxy ether called a <term id="term-00003">hemiacetal</term>, analogous to the gem diol formed by addition of water. Hemiacetals are formed reversibly, with equilibrium normally favoring the carbonyl compound. In the presence of acid, however, a further reaction occurs. Protonation of the –OH group, followed by an E1-like loss of water, leads to an oxonium ion, <m:math><m:mrow><m:msub><m:mtext>R</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>C&#x2550;</m:mtext><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mtext>R</m:mtext></m:mrow></m:math>, which undergoes a second nucleophilic addition of alcohol to yield the protonated acetal. Loss of a proton completes the reaction.</para>
+    <figure class="mechanism-figure scaled-down" id="fig-00003">
+    <title>MECHANISM</title>
+    <media alt="Ketone or aldehyde to acetal via seven steps: protonation of O, alcohol attacks carbonyl, R O H deprotonated to hemiacetal, protonation of hydroxy, loss of water, alcohol attacks oxonium, deprotonation.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_10_003.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">Mechanism of acid-catalyzed acetal formation by reaction of an aldehyde or ketone with an alcohol.</emphasis></caption>
+    </figure>
+    <para id="para-00004">Because all the steps in acetal formation are reversible, the reaction can be driven either forward (from carbonyl compound to acetal) or backward (from acetal to carbonyl compound), depending on the conditions. The forward reaction is favored by conditions that remove water from the medium and thus drive the equilibrium to the right. In practice, this is often done by distilling off water as it forms. The reverse reaction is favored by treating the acetal with a large excess of aqueous acid to drive the equilibrium to the left.</para>
+    <para id="para-00005">Acetals are useful because they can act as protecting groups for aldehydes and ketones in the same way that trimethylsilyl ethers act as protecting groups for alcohols (<link document="m00207"/>). As we saw previously, it sometimes happens that one functional group interferes with intended chemistry elsewhere in a complex molecule. For example, if we wanted to reduce only the ester group of ethyl 4-oxopentanoate, the ketone would interfere. Treatment of the starting keto ester with LiAlH<sub>4</sub> would reduce both the keto group and the ester group to give a diol product.</para>
+    <figure class="unnumbered scaled-down" id="fig-00004">
+    <media alt="Ethyl 4-oxopentanoate reacts with an unknown reagent represented as a question mark to produce 5-hydroxy-2-pentanone.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_10_004.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00006">By protecting the keto group as an acetal, however, the problem can be circumvented. Like other ethers, acetals are unreactive to bases, hydride reducing agents, Grignard reagents, and catalytic hydrogenation conditions, but they are cleaved by acid. Thus, we can accomplish the selective reduction of the ester group in ethyl 4-oxopentanoate by first converting the keto group to an acetal, then reducing the ester with LiAlH<sub>4</sub>, and then removing the acetal by treatment with aqueous acid. (In practice, it’s often convenient to use 1 equivalent of a diol such as ethylene glycol as the alcohol to form a <emphasis effect="italics">cyclic</emphasis> acetal. The mechanism of cyclic acetal formation using 1 equivalent of ethylene glycol is exactly the same as that using 2 equivalents of methanol or other monoalcohols.)</para>
+    <figure class="unnumbered scaled-down" id="fig-00005">
+    <media alt="Ethyl 4-oxopentanoate reacts with glycol and acid to form acetal and water. This reacts with lithium aluminum hydride to form another product. This reacts with hydronium ion to form 5-hydroxy-2-pentanone.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_10_005.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00007">Acetal and hemiacetal groups are particularly common in carbohydrate chemistry. Glucose, for instance, is a polyhydroxy aldehyde that undergoes an internal nucleophilic addition reaction and exists primarily as a cyclic hemiacetal.</para>
+    <figure class="unnumbered scaled-down" id="fig-00006">
+    <media alt="The figure shows two interconvertable forms of glucose. The glucose-open chain transforms into glucose-cyclic hemiacetal.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_10_006.jpg"/>
+    </media>
+    </figure>
+    <example id="exam-00001">
+    <title>Predicting the Product of Reaction between a Ketone and an Alcohol</title>
+    <para id="para-00008">Show the structure of the acetal you would obtain by acid-catalyzed reaction of 2-pentanone with 1,3-propanediol.</para>
+    <para id="para-00009"><title><span class="red-text">Strategy</span></title> Acid-catalyzed reaction of an aldehyde or ketone with 2 equivalents of a monoalcohol or 1 equivalent of a diol yields an acetal, in which the carbonyl oxygen atom is replaced by two –OR groups from the alcohol.</para>
+    <para id="para-00010"><title><span class="cyan-text">Solution</span></title></para>
+    <figure class="unnumbered scaled-down" id="fig-00007">
+    <media alt="2-pentanone reacts with propane-1,3-diol and proton catalyst to form acetal, which is a six-membered ring containing two oxygens, both bonded to the original carbonyl carbon.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_10_007.jpg"/>
+    </media>
+    </figure>
+    </example>
+    <section class="section-exercises" id="sect-00001">
+    <title>Problems</title>
+    <exercise id="exer-00001">
+    <problem id="prob-00001">
+    <para id="para-00011"><link class="os-embed" url="#exercise/19-10-OC-P14"/></para>
+    </problem>
+    </exercise>
+    <exercise id="exer-00002">
+    <problem id="prob-00002">
+    <para id="para-00012"><link class="os-embed" url="#exercise/19-10-OC-P15"/></para>
+    </problem>
+    </exercise>
+    </section>
+    </content>
+</document>

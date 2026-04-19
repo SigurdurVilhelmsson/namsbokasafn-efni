@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "moduleId": "m42130",
+  "extractedAt": "2026-03-23T18:00:50.238Z",
+  "sourceHash": "a6aceec6f1440d6b",
+  "segmentCount": 31,
+  "segmentIds": [
+    "m42130:title:auto-1",
+    "m42130:para:import-auto-id2654505",
+    "m42130:note-title:fs-id2690663-title",
+    "m42130:para:fs-id1694182",
+    "m42130:para:import-auto-id1741367",
+    "m42130:para:import-auto-id1904217",
+    "m42130:para:import-auto-id1416969",
+    "m42130:para:import-auto-id1486790",
+    "m42130:problem:import-auto-id1678252",
+    "m42130:solution:import-auto-id2438567",
+    "m42130:title:sect-00001-title",
+    "m42130:para:para-00001",
+    "m42130:item:list-00001-item-1",
+    "m42130:item:list-00001-item-2",
+    "m42130:title:fs-id1737594-title",
+    "m42130:para:import-auto-id2712510",
+    "m42130:title:fs-id1651376-title",
+    "m42130:item:fs-id2410016-item-1",
+    "m42130:item:fs-id2410016-item-2",
+    "m42130:item:fs-id2410016-item-3",
+    "m42130:title:fs-id2668844-title",
+    "m42130:problem:import-auto-id1518142",
+    "m42130:problem:import-auto-id2314210",
+    "m42130:glossary-term:import-auto-id1323961-term",
+    "m42130:glossary-def:import-auto-id1323961-def",
+    "m42130:glossary-term:import-auto-id966062-term",
+    "m42130:glossary-def:import-auto-id966062-def",
+    "m42130:glossary-term:import-auto-id1571848-term",
+    "m42130:glossary-def:import-auto-id1571848-def",
+    "m42130:glossary-term:import-auto-id2667112-term",
+    "m42130:glossary-def:import-auto-id2667112-def"
+  ],
+  "equationCount": 0,
+  "equationIds": [],
+  "elementCounts": {
+    "para": 12,
+    "section": 4,
+    "figure": 0,
+    "table": 0,
+    "example": 0,
+    "exercise": 3,
+    "note": 1,
+    "equation": 0,
+    "list": 2,
+    "media": 0,
+    "glossary": 4
+  },
+  "elementIds": {
+    "figure": [],
+    "table": [],
+    "example": [],
+    "exercise": [
+      "fs-id2448968",
+      "fs-id1263177",
+      "fs-id1561865"
+    ],
+    "note": [
+      "fs-id2690663"
+    ],
+    "equation": [],
+    "section": [
+      "sect-00001",
+      "fs-id1737594",
+      "fs-id1651376",
+      "fs-id2668844"
+    ]
+  }
+}

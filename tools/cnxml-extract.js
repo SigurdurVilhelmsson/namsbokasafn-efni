@@ -748,10 +748,21 @@ function processTopLevelContent(
   }
 
   const standaloneMedia = extractNestedElements(contentForSimpleElements, 'media');
-
-  const paras = extractElements(contentForSimpleElements, 'para');
-  const equations = extractElements(contentForSimpleElements, 'equation');
   const lists = extractNestedElements(contentForSimpleElements, 'list');
+
+  // Strip list content before para extraction — paras inside list items
+  // are already captured as item segments by processList(). Without this,
+  // they get extracted as BOTH item AND standalone para segments, causing
+  // duplication (m68727: +12 emphasis, +2 m:math, +2 sub).
+  let contentForParas = contentForSimpleElements;
+  for (const list of lists) {
+    if (list.fullMatch) {
+      contentForParas = contentForParas.replace(list.fullMatch, '');
+    }
+  }
+
+  const paras = extractElements(contentForParas, 'para');
+  const equations = extractElements(contentForSimpleElements, 'equation');
 
   // Add all elements with their positions
   // For elements without fullMatch, find by id attribute
@@ -1057,7 +1068,11 @@ function processTable(table, moduleId, addSegment, mathMap, counters) {
   const rows = extractNestedElements(table.content, 'row');
   for (const row of rows) {
     const rowStructure = { cells: [] };
-    const entries = extractElements(row.content, 'entry');
+    // Expand self-closing <entry.../> so extractElements matches all entries.
+    // Without this, [^>]* in the regex consumes the / from />, merging
+    // two entries into one match and misaligning cell indices.
+    const expandedRow = row.content.replace(/<entry([^>]*?)\/>/g, '<entry$1></entry>');
+    const entries = extractElements(expandedRow, 'entry');
     for (const entry of entries) {
       // Check for multi-para cells (entries containing multiple <para> elements)
       const cellParas = extractElements(entry.content, 'para');
@@ -1401,6 +1416,21 @@ function processNote(
     }
   }
 
+  // Process lists in note (e.g., check-your-understanding questions)
+  const lists = extractNestedElements(note.content, 'list');
+  for (const list of lists) {
+    const listStructure = processList(
+      list,
+      moduleId,
+      addSegment,
+      mathMap,
+      counters,
+      inlineMediaMap,
+      inlineTablesMap
+    );
+    noteStructure.content.push(listStructure);
+  }
+
   return noteStructure;
 }
 
@@ -1465,8 +1495,14 @@ function processList(
         children,
       });
     } else {
+      // Check if item content is a single <para> wrapper — if so, record it so
+      // the injector can preserve the <para> element around the translated text.
+      const paraWrapMatch = item.content.trim().match(/^(<para[^>]*>)([\s\S]*?)<\/para>\s*$/);
+      const innerContent = paraWrapMatch ? paraWrapMatch[2] : item.content;
+      const paraOpenTag = paraWrapMatch ? paraWrapMatch[1] : null;
+
       const text = extractInlineText(
-        item.content,
+        innerContent,
         mathMap,
         counters,
         inlineMediaMap,
@@ -1474,10 +1510,16 @@ function processList(
       );
       if (text) {
         const itemId = addSegment('item', text, item.id || `${list.id}-item-${i + 1}`);
-        listStructure.items.push({
+        const itemEntry = {
           id: item.id,
           segmentId: itemId,
-        });
+        };
+        if (paraOpenTag) {
+          // Extract the para's id attribute so the injector can reproduce the element
+          const paraIdMatch = paraOpenTag.match(/id="([^"]+)"/);
+          itemEntry.wrapsPara = { openTag: paraOpenTag, id: paraIdMatch ? paraIdMatch[1] : null };
+        }
+        listStructure.items.push(itemEntry);
       }
     }
   }
@@ -1762,7 +1804,7 @@ async function main() {
     // When processing a chapter, getChapterModules gives the correct order
     let moduleOrderMap = null;
     if (args.chapter) {
-      const orderedModules = getChapterModules(args.chapter);
+      const orderedModules = getChapterModules(args.chapter, args.book);
       moduleOrderMap = new Map();
       orderedModules.forEach((mod, index) => {
         moduleOrderMap.set(mod.moduleId, index);
@@ -1794,6 +1836,28 @@ async function main() {
       console.log(`  → ${output.segmentsPath}`);
       console.log(`  → ${output.structurePath}`);
       console.log(`  → ${output.manifestPath}`);
+    }
+
+    // Extract chapter title from collection-order.json as a translatable segment
+    if (args.chapter && args.chapter !== 'appendices') {
+      const collectionPath = path.join(BOOKS_DIR, '01-source', 'collection-order.json');
+      if (fs.existsSync(collectionPath)) {
+        const collection = JSON.parse(fs.readFileSync(collectionPath, 'utf-8'));
+        const chapterData = collection.chapters.find((ch) => ch.chapter === args.chapter);
+        if (chapterData) {
+          const chapterDir = `ch${String(args.chapter).padStart(2, '0')}`;
+          const segPath = path.join(
+            BOOKS_DIR,
+            '02-for-mt',
+            chapterDir,
+            'chapter-metadata-segments.en.md'
+          );
+          const content = `<!-- SEG:chapter:title:${chapterDir} -->\n${chapterData.title}\n`;
+          fs.writeFileSync(segPath, content, 'utf-8');
+          console.log(`Chapter title: Extracted "${chapterData.title}"`);
+          console.log(`  → ${segPath}`);
+        }
+      }
     }
   } catch (error) {
     console.error('Error:', error.message);

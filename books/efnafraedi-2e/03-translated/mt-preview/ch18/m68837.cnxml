@@ -301,31 +301,31 @@
 </row>
 <row valign="top">
 <entry align="left">halósýra</entry>
+<entry align="left"></entry>
 <entry align="left">HClO<sub>2</sub> (2,0)</entry>
-<entry align="left">HClO<sub>2</sub> (2.0)</entry>
 <entry align="left"></entry>
 <entry align="left"></entry>
 </row>
 <row valign="top">
 <entry align="left">halínsýra</entry>
+<entry align="left"></entry>
 <entry align="left">HClO<sub>3</sub></entry>
 <entry align="left">HBrO<sub>3</sub></entry>
 <entry align="left">HIO<sub>3</sub> (0,8)</entry>
-<entry align="left">HIO<sub>3</sub> (0.8)</entry>
 </row>
 <row valign="top">
 <entry align="left">perhalínsýra</entry>
+<entry align="left"></entry>
 <entry align="left">HClO<sub>4</sub></entry>
 <entry align="left">HBrO<sub>4</sub></entry>
 <entry align="left">HIO<sub>4</sub> (1,6)</entry>
-<entry align="left">HIO<sub>4</sub> (1.6)</entry>
 </row>
 <row valign="top">
 <entry align="left">paraperhalínsýra</entry>
-<entry>H<sub>5</sub>IO<sub>6</sub> (1,6)</entry>
 <entry></entry>
 <entry></entry>
-<entry align="left">H<sub>5</sub>IO<sub>6</sub> (1.6)</entry>
+<entry></entry>
+<entry align="left">H<sub>5</sub>IO<sub>6</sub> (1,6)</entry>
 </row>
 </tbody>
 </tgroup>

@@ -1,0 +1,387 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-31T10:30:36.073Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaEVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fb88c0114754afaecf8cbc28a07504bb862d165e",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaEVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fb88c0114754afaecf8cbc28a07504bb862d165e/OChem_21_09_007a.jpg"
+    },
+    {
+      "created_at": "2023-08-31T10:30:36.076Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaElYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e3b8b15bd1ba659e29ab1f12dade8cfbc59ddd5e",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaElYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e3b8b15bd1ba659e29ab1f12dade8cfbc59ddd5e/OChem_21_09_007b.jpg"
+    },
+    {
+      "created_at": "2023-08-31T10:30:36.078Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaE1YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c610b0e8cf1dbe65ecfa5394dc3d95cb0620b1ca",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaE1YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c610b0e8cf1dbe65ecfa5394dc3d95cb0620b1ca/OChem_21_09_007c.jpg"
+    },
+    {
+      "created_at": "2023-08-31T10:30:36.081Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8c875f3b5f214cbb0495d7acd5897edcd2de4c53",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8c875f3b5f214cbb0495d7acd5897edcd2de4c53/OChem_21_EC_206a.jpg"
+    },
+    {
+      "created_at": "2023-08-31T10:30:36.083Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3849bef828ab369653ce0a9ae841be98e8a37054",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3849bef828ab369653ce0a9ae841be98e8a37054/OChem_21_EC_206b.jpg"
+    },
+    {
+      "created_at": "2023-08-31T10:30:36.086Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFlYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b56959548666caacf47fd66e04d181f93596a534",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFlYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b56959548666caacf47fd66e04d181f93596a534/OChem_21_EC_206c.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:863e9090-cc24-4439-9e14-f4d7d04e5a03",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:21-9-polyamides-and-polyesters-step-growth-polymers"
+  ],
+  "uuid": "30acd240-b7f8-415b-b84c-7e325cd2ddc1",
+  "group_uuid": "541704ae-2659-4d90-b94d-136f6f5b42e7",
+  "number": 38173,
+  "version": 5,
+  "uid": "38173@5",
+  "published_at": "2023-08-31T10:30:38.865Z",
+  "nickname": "21-09-OC-P23",
+  "solutions_are_public": true,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "Draw structures of the step-growth polymers you would expect to obtain from the following reactions:",
+  "questions": [
+    {
+      "id": 361399,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaEVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fb88c0114754afaecf8cbc28a07504bb862d165e/OChem_21_09_007a.jpg\" alt=\"The reaction of 1,3-dibromopropane and propane-1,3-diol in the presence of base gives an unknown product depicted by a question mark.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8c875f3b5f214cbb0495d7acd5897edcd2de4c53/OChem_21_EC_206a.jpg\" alt=\"The structure shows a repeating unit of O C H 2 C H 2 C H 2 O C H 2 C H 2 C H 2 with subscript n.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 361400,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaElYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e3b8b15bd1ba659e29ab1f12dade8cfbc59ddd5e/OChem_21_09_007b.jpg\" alt=\"The reaction of ethylene glycol and hexamethylene dicarboxylic acid in the presence of a sulfuric acid catalyst forms an unknown product depicted by a question mark.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3849bef828ab369653ce0a9ae841be98e8a37054/OChem_21_EC_206b.jpg\" alt=\"The structure shows a repeating unit of O C H 2 C H 2 O C O (C H 2) 6 C O with subscript n.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 361401,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaE1YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c610b0e8cf1dbe65ecfa5394dc3d95cb0620b1ca/OChem_21_09_007c.jpg\" alt=\"The reaction of hexamethylene diamine and adipoyl dichloride gives unknown products depicted by a question mark.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFlYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b56959548666caacf47fd66e04d181f93596a534/OChem_21_EC_206c.jpg\" alt=\"The repeating unit of a polymer in brackets with N H bonded to six methylene bonded to N H bonded to a carbonyl group which itself is bonded to four methylene units and then another carbonyl group.\">"
+        }
+      ],
+      "community_solutions": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    5,
+    4,
+    3,
+    2,
+    1
+  ]
+}

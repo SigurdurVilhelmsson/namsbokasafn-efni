@@ -1,0 +1,385 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-19T13:23:03.197Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4cc379f3b1cc02beffb7dcf4d5d15a1132ce76fc",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4cc379f3b1cc02beffb7dcf4d5d15a1132ce76fc/Figure%2002_99_OChem-02-EC-020a_80485-02-u084_P-AcidBase_img.jpg"
+    },
+    {
+      "created_at": "2023-08-19T13:23:03.203Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2d32349298508083ec1810c74c63cf86a76dafd5",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2d32349298508083ec1810c74c63cf86a76dafd5/Figure%2002_99_OChem-02-EC-020b_80485-02-u084_P-COTree_img.jpg"
+    },
+    {
+      "created_at": "2023-08-19T13:23:03.205Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGtRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d74abf8649af85b72ad5f5dab4de7dd8e299ea3d",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGtRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d74abf8649af85b72ad5f5dab4de7dd8e299ea3d/Figure%2002_99_OChem-02-EC-020c_80485-02-u084_P-HOHex_img.jpg"
+    },
+    {
+      "created_at": "2023-08-19T13:23:03.207Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaG9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--59b40d998dd52ca08690ce524697c7c45eba26a3",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaG9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--59b40d998dd52ca08690ce524697c7c45eba26a3/Figure%2002_99_OChem-02-EC-020d_80485-02-u084_P-NoHex_img.jpg"
+    },
+    {
+      "created_at": "2023-08-19T13:23:03.209Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2dRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--72beb0126483280381b9b5e256406c156fa618a5",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2dRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--72beb0126483280381b9b5e256406c156fa618a5/OChem_02_EC_020a.jpg"
+    },
+    {
+      "created_at": "2023-08-19T13:23:03.211Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2tRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cc3956077a791b0ff290ddf12529b3acfe42ef4d",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2tRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cc3956077a791b0ff290ddf12529b3acfe42ef4d/OChem_02_EC_020b.jpg"
+    },
+    {
+      "created_at": "2023-08-19T13:23:03.213Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb29RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1939bc065b88f934872d7837336d2a1acc857098",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb29RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1939bc065b88f934872d7837336d2a1acc857098/OChem_02_EC_020c.jpg"
+    },
+    {
+      "created_at": "2023-08-19T13:23:03.215Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3NRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--84665ab984666151704845f9f0acf7f4f9200220",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3NRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--84665ab984666151704845f9f0acf7f4f9200220/OChem_02_EC_020d.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:0f2bb8ee-4eda-4995-878f-775a16b4bf97",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:2-12-noncovalent-interactions-between-molecules"
+  ],
+  "uuid": "7e7ac3d2-e3b6-48fc-bf2d-a15a4e0d293d",
+  "group_uuid": "9cf01364-7aee-476f-956a-b51e4c0b9116",
+  "number": 36167,
+  "version": 5,
+  "uid": "36167@5",
+  "published_at": "2023-08-19T13:23:06.746Z",
+  "nickname": "02-99-OC-AP55",
+  "solutions_are_public": false,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "Identify the acids and bases in the following reactions:",
+  "questions": [
+    {
+      "id": 357161,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2dRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--72beb0126483280381b9b5e256406c156fa618a5/OChem_02_EC_020a.jpg\" alt=\"In a reaction, methanol reacts with hydrogen ion to form the protonated (at oxygen) methanol product.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 357162,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2tRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cc3956077a791b0ff290ddf12529b3acfe42ef4d/OChem_02_EC_020b.jpg\" alt=\"In a reaction, acetone reacts with T i C l 4 to form a product (the oxygen is positively charged and is bonded to T i C l 4 negative).\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 357163,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb29RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1939bc065b88f934872d7837336d2a1acc857098/OChem_02_EC_020c.jpg\" alt=\"In a reaction, cyclohexanone reacts with N a H to form an enolate sodium salt product and a hydrogen molecule.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 357164,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3NRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--84665ab984666151704845f9f0acf7f4f9200220/OChem_02_EC_020d.jpg\" alt=\"In a reaction, morpholine reacts with B H 3 to form a product with a positive charge and single bonded B H 3 negative at the nitrogen of the ring.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    5,
+    4,
+    3,
+    2,
+    1
+  ]
+}

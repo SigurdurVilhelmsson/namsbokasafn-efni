@@ -1,0 +1,448 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-26T20:52:59.825Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9bf95c1ccda5d8ee151fe4e8bd20ad4cf8c4e00a",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9bf95c1ccda5d8ee151fe4e8bd20ad4cf8c4e00a/OChem_17_EC_201a.jpg"
+    },
+    {
+      "created_at": "2023-08-26T20:52:59.828Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDhWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e423d40cde92fe61ed3897b5cdd91a685e0d9937",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDhWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e423d40cde92fe61ed3897b5cdd91a685e0d9937/OChem_17_EC_201b.jpg"
+    },
+    {
+      "created_at": "2023-08-26T20:52:59.834Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--95912d6d7c9a07a7ff0ef0de4b35951d9a0830cb",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--95912d6d7c9a07a7ff0ef0de4b35951d9a0830cb/OChem_17_EC_201c.jpg"
+    },
+    {
+      "created_at": "2023-08-26T20:52:59.837Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--86d74779d60d1e58d980b725fd6d5af6e0e8e372",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--86d74779d60d1e58d980b725fd6d5af6e0e8e372/OChem_17_EC_201d.jpg"
+    },
+    {
+      "created_at": "2023-08-26T20:52:59.841Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUlWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b84bbc1bcd20966753573c190509ca622c19e74d",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUlWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b84bbc1bcd20966753573c190509ca622c19e74d/OChem_17_EC_201e.jpg"
+    },
+    {
+      "created_at": "2023-08-26T20:52:59.845Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcU1WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--87337834af5692d8383b0e857f48f2371b7262f3",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcU1WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--87337834af5692d8383b0e857f48f2371b7262f3/OChem_17_EC_201f.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:51c77356-79fc-4839-aebd-b3ab179a9dc8",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:17-1-naming-alcohols-and-phenols"
+  ],
+  "uuid": "cc9dc08b-9cf3-4e67-82e8-f882cae36f8e",
+  "group_uuid": "360176a6-253d-4d96-84fe-2d2dfb23fa17",
+  "number": 37867,
+  "version": 6,
+  "uid": "37867@6",
+  "published_at": "2023-08-26T20:53:03.961Z",
+  "nickname": "17-01-OC-P02",
+  "solutions_are_public": true,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "Draw structures corresponding to the following IUPAC names:",
+  "questions": [
+    {
+      "id": 360050,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "(<i>Z</i>)-2-Ethyl-2-buten-1-ol\n",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9bf95c1ccda5d8ee151fe4e8bd20ad4cf8c4e00a/OChem_17_EC_201a.jpg\" alt=\"Alt Text Placeholder\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 360051,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "3-Cyclohexen-1-ol",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDhWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e423d40cde92fe61ed3897b5cdd91a685e0d9937/OChem_17_EC_201b.jpg\" alt=\"Alt Text Placeholder\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 360052,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<i>trans</i>-3-Chlorocycloheptanol",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--95912d6d7c9a07a7ff0ef0de4b35951d9a0830cb/OChem_17_EC_201c.jpg\" alt=\"Alt Text Placeholder\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 360053,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "1,4-Pentanediol",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--86d74779d60d1e58d980b725fd6d5af6e0e8e372/OChem_17_EC_201d.jpg\" alt=\"Alt Text Placeholder\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 360054,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "2,6-Dimethylphenol",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUlWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b84bbc1bcd20966753573c190509ca622c19e74d/OChem_17_EC_201e.jpg\" alt=\"Alt Text Placeholder\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 360055,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<i>o</i>-(2-Hydroxyethyl)phenol",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcU1WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--87337834af5692d8383b0e857f48f2371b7262f3/OChem_17_EC_201f.jpg\" alt=\"Alt Text Placeholder\">"
+        }
+      ],
+      "community_solutions": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    6,
+    5,
+    4,
+    3,
+    2,
+    1
+  ]
+}

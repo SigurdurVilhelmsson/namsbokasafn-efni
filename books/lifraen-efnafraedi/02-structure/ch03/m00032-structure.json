@@ -1,0 +1,932 @@
+{
+  "moduleId": "m00032",
+  "title": {
+    "segmentId": "m00032:title:auto-1",
+    "text": "Functional Groups"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "23d8c448-dbf4-40db-8db7-19055bb6f66a"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00032:para:para-00001"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "caption": {
+        "segmentId": "m00032:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": "Ethylene and menthene undergo a chemical reaction with bromine, forming their respective products",
+        "src": "../../media/OChem_03_01_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00032:para:para-00002"
+    },
+    {
+      "type": "section",
+      "id": "sect-00001",
+      "class": null,
+      "title": {
+        "segmentId": "m00032:title:sect-00001-title",
+        "text": "Functional Groups with Carbon–Carbon Multiple Bonds"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m00032:para:para-00003"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00002",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": "The ball and stick models and general structure of alkene, alkyne and arene, respectively.",
+            "src": "../../media/OChem_03_01_002.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "table",
+          "id": "table-00001",
+          "summary": "An illustration shows a table with structures of functional groups and their details in the form of a table. The four columns comprise “name structure* name ending” and “example.” The first row shows an “alkene (double bond)” having a carbon double bonded to another carbon each carbon has open bonds; the double bond is shown in pink; name ending is “-ene”; example is ethene shown as methylene double bonded to another methylene group. The second group is an “alkyne (triple bond)” shown as a carbon triple bonded to another carbon and each carbon has an open bond; the name ending is “-yne” and example shown is ethyne having a methine group triple bonded to methine group; triple bond is shown in pink. The third group is an “arene (aromatic ring)” having a benzene whose each position shows an open bond; the name ending is shown as “none” and example is benzene a cyclohexane containing three double bonds; the entire structure is pink. The fourth structure is a halide shown as a carbon having an open bond an open wedge double bond an open dashed bond and a bond with “X” where “(X = F Cl Br I); name ending is “none” and example is chloromethane shown as methyl group bonded to chlorine. The fifth group is an alcohol shown as a carbon having an open single bond an open wedge double bond and an open dashed bond and a bond with the hydroxyl group; the name ending is “-ol” and example shown is methanol having methyl group bonded to a hydroxyl group written in pink color. The sixth group is an ether shown as a centrally located oxygen bonded to carbon atoms on both the sides each carbon further shows an open single bond an open wedge double bond and an open dashed bond; the name ends with “ether” and example shown is Dimethyl ether having a centrally located oxygen surrounded by two methyl groups. The seventh group is monophosphate shows a centrally located oxygen bonded to carbon on the left side which further shows three open bonds comprising of a single bond a wedge double bond and a dashed bond; the oxygen on the right side shows a bond to phosphorous having an upward double bond with oxygen a downward bond and a side bond with two oxygen anions; the name ends with “phosphate” having a methyl group bonded to phosphate anion shown as OPO3 to the power two minus; the phosphate group is colored pink. The eighth group diphosphate shows a carbon having three open bonds comprising of an open wedge double bond an open single bond and an open dashed bond; the carbon is bonded to two consecutive groups; the phosphate comprises of a centrally located phosphorous having an upward double bond with oxygen and two side bonds with oxygen and a downward bond with oxygen anion; the name ends with “diphosphate” and example is methyl diphosphate showing a methyl group bonded to a diphosphate group shown as OP2O6 to the power three minus. The ninth group is an amine shown as a carbon having an open single bond an open wedge double bond and an open dashed bond; the carbon is further bonded to a nitrogen having a pair of electrons and an open wedge double bond and an open dashed bond. The name ends with “-amine” and example is methylamine shown as methyl CH3 bonded to an amine NH2 group. The tenth group shown an imine (Schiff base) having a centrally located carbon having an upward double bond with nitrogen with a pair of electrons and an open bond; to the left as well as right side the carbon bonds with another carbon having an open single bond an open wedge double bond and an open dashed bond; the name ends with “none” and example is acetone imine having a centrally located carbon with an upward double bond to nitrogen monohydride in pink and either sides carbon bonds with methyl groups. The eleventh group is nitrile shown as a carbon with an open bond on the left side triple bonded to nitrogen; the name ends with “-nitrile” and example is ethanenitrile shown as methyl group bonded to carbon having a triple bond with nitrogen which are shown in pink. The twelfth group is a thiol having a carbon with an open single bond an open wedge double bond and an open dashed bond the fourth bond is with SH shown in pink; the name ends with “-thiol” and example is methanethiol shown as methyl group bonded to SH shown as pink. The thirteenth group is a sulfide having a centrally located pink sulfur bonded to carbon on both the sides wherein each carbon shows an open single bond a wedge double bond and an open dashed bond; the name ends with “sulfide” and example is Dimethyl sulfide shown as a centrally located pink carbon bonded to methyl groups on both the sides. The fourteenth group is a disulfide shown as two centrally located pink sulfur atoms bonded to each other; each sulfur is bonded to carbon having an open single bond a wedge double bond and an open dashed bond; the name ends with disulfide and example is dimethyl disulfide having two centrally located pink sulfurs bonded to methyl groups on both the sides. The fifteenth group is a sulfoxide shows as a centrally located pink sulfur cation having an upward bond with a pink oxygen anion and on either sides sulfur is shown bonded to carbon atoms that have an open single bond an open wedge double bond and an open dashed double bond; the name ends with sulfoxide and the example is dimethyl sulfoxide shown as a centrally located pink sulfur cation having an upward bond with pink oxygen anion and one either sides are shown methyl groups. The sixteenth group is an aldehyde having a centrally placed pink carbonyl group wherein the carbon shows an open bond on the left side and a bond with pink hydrogen on the right side; the name ends with “-al” and the example is ethanol comprising of a methyl group bonded to a pink carbonyl group whose carbon further shows a bond with hydrogen. The seventeenth group is a ketone having a centrally located pink carbonyl group on either sides the carbon is shown further bonded to carbon atom having an open single bond an open wedge double bond and an open dashed bond; the name ends with “-one” and example is propanone shown as a centrally located carbonyl group that is bonded to methyl groups on both the sides. The eighteenth group is a carboxylic acid having a centrally located pink carbonyl group bonded to a carbon on the left side having an open single bond an open wedge double bond and an open dashed bond; the carbon of carbonyl group on the right shows a bond with a pink hydroxyl group; the name ends with “-oic acid” and example is ethanoic acid shown as a methyl group bonded to a pink carbonyl group whose carbon is bonded to a hydroxyl group. The nineteenth group is an ester shown as a centrally located pink carbonyl group bonded to a carbon having an open single bond an open wedge bond and an open dashed bond on the left side; on its right side the carbon of carbonyl group is shown bonded to a pink oxygen that is bonded to a pink carbon having an open wedge double bond an open dashed bond and an open single bond; the name ends with “-oate” and example is methyl ethanoate shows a methyl bonded to a pink carbonyl group whose carbon bonds to a pink oxygen further bonded to a pink methyl group. The twentieth group is a thioester shown as a centrally located pink carbonyl group bonded to a carbon having an open single bond an open wedge bond and an open dashed bond on the left side; on its right side the carbon of carbonyl group is shown bonded to a pink sulfur that is bonded to a pink carbon having an open wedge double bond an open dashed bond and an open single bond; the name ends with “-thioate” and the example methyl ethanethioate is shown as a methyl bonded to a pink carbonyl group whose carbon bonds to a pink sulfur further bonded to a pink methyl group. The twenty-first group is an amide shows as a centrally located pink carbonyl group whose carbon is bonded to another carbon having an open single bond an open wedge double bond and an open dashed bond; the carbon on its right side is bonded to pink nitrogen with a pair of electrons showing two pink open bonds; the name ends with “-amid” and the example is ethanamide shown as a centrally located pink carbonyl group whose carbon is bonded to a methyl group at the left side and its right side is bonded to a pink amine on the right side. The twenty-second group acid chloride shows a centrally located pink carbonyl group whose carbon on the left side shows a bond to another carbon having an open single bond an open wedge double bond and an open dashed bond on the right side it is bonded to a pink chlorine; the name ends in “-oyl chloride” and the example is ethanoyl chloride shown as a methyl group bonded to a pink carbonyl group whose carbon is shown bonded to a pink chlorine. The twenty-third group is carboxylic acid anhydride shown as centrally located pink oxygen bonded to pink carbonyl groups on either sides; the carbon of each carbonyl group is further bonded to a carbon on each side wherein each carbon shows an open single bond an open wedge double bond and an open dashed bond.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m00032:entry:auto-7",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-8",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-9",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-10",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00032:entry:auto-11",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-12",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-13",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00032:entry:auto-14",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-15",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-16",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-17",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00032:entry:auto-18",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-19",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00032:entry:auto-20",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-21",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-22",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-23",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00032:entry:auto-24",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-25",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-26",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00032:entry:auto-27",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-28",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-29",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00032:entry:auto-30",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-31",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-32",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00032:entry:auto-33",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-34",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-35",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00032:entry:auto-36",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-37",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-38",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00032:entry:auto-39",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-40",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00032:entry:auto-41",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-42",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-43",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-44",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00032:entry:auto-45",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-46",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-47",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00032:entry:auto-48",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-49",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-50",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00032:entry:auto-51",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-52",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-53",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00032:entry:auto-54",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-55",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00032:entry:auto-56",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-57",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00032:entry:auto-58",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-59",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00032:entry:auto-60",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-61",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00032:entry:auto-62",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-63",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00032:entry:auto-64",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-65",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00032:entry:auto-66",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-67",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00032:entry:auto-68",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-69",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m00032:entry:auto-70",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m00032:entry:auto-71",
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "valign": "top",
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "para-00005",
+          "segmentId": "m00032:para:para-00005"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00002",
+      "class": null,
+      "title": {
+        "segmentId": "m00032:title:sect-00002-title",
+        "text": "Functional Groups with Carbon Singly Bonded to an Electronegative Atom"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00006",
+          "segmentId": "m00032:para:para-00006"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00035",
+          "class": "unnumbered",
+          "caption": null,
+          "media": {
+            "alt": "The ball and stick models and general structure of alkyl halide, alcohol, ether, phosphate, amine, thiol, sulfide, and disulfide.",
+            "src": "../../media/OChem_03_01_004.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00003",
+      "class": null,
+      "title": {
+        "segmentId": "m00032:title:sect-00003-title",
+        "text": "Functional Groups with a Carbon–Oxygen Double Bond (Carbonyl Groups)"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "para-00007",
+          "segmentId": "m00032:para:para-00007"
+        },
+        {
+          "type": "figure",
+          "id": "fig-00036",
+          "class": "unnumbered scaled-down",
+          "caption": null,
+          "media": {
+            "alt": "Eight general structures of acetone, aldehyde, ketone, carboxylic acid, ester, thioester, amide, and acid chloride. A ball and stick model of acetone is also shown.",
+            "src": "../../media/OChem_03_01_005.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "sect-00004",
+      "class": "section-exercises",
+      "title": {
+        "segmentId": "m00032:title:sect-00004-title",
+        "text": "Problems"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "exer-00001",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00002",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "exer-00003",
+          "problem": {
+            "content": []
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": null
+}

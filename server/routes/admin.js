@@ -14,15 +14,18 @@
 const express = require('express');
 const router = express.Router();
 
+const log = require('../lib/logger');
 const path = require('path');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireAdmin, requireRole, ROLES } = require('../middleware/requireRole');
-const { refreshValidBooks } = require('../config');
+const { refreshValidBooks, VALID_BOOKS } = require('../config');
+const activityLog = require('../services/activityLog');
 const openstaxCatalogue = require('../services/openstaxCatalogue');
 const bookRegistration = require('../services/bookRegistration');
 const bookDataGenerator = require('../services/bookDataGenerator');
 const userService = require('../services/userService');
 const pipeline = require('../services/pipelineService');
+const segmentEditorService = require('../services/segmentEditorService');
 // https import removed — no longer needed (GitHub user lookup removed)
 
 // ============================================================================
@@ -47,7 +50,7 @@ router.get('/catalogue', requireAuth, requireAdmin(), (req, res) => {
       subjectLabels: openstaxCatalogue.SUBJECT_LABELS,
     });
   } catch (err) {
-    console.error('List catalogue error:', err);
+    log.error({ err }, 'List catalogue error');
 
     // Handle missing tables gracefully
     if (err.message.includes('not found')) {
@@ -97,7 +100,7 @@ router.post('/catalogue/sync', requireAuth, requireAdmin(), (req, res) => {
       message: `Synced ${result.added} new books, updated ${result.updated} existing`,
     });
   } catch (err) {
-    console.error('Sync catalogue error:', err);
+    log.error({ err }, 'Sync catalogue error');
 
     if (err.message.includes('not found')) {
       return res.status(503).json({
@@ -152,7 +155,7 @@ router.post('/catalogue/add', requireAuth, requireAdmin(), (req, res) => {
       message: `Added ${title} to catalogue`,
     });
   } catch (err) {
-    console.error('Add to catalogue error:', err);
+    log.error({ err }, 'Add to catalogue error');
 
     if (err.message.includes('already exists')) {
       return res.status(409).json({
@@ -234,7 +237,7 @@ router.post('/books/register', requireAuth, requireAdmin(), async (req, res) => 
         userService.assignBookAccess(headEditorId, slug, 'head-editor', req.user.username);
         result.headEditorAssigned = true;
       } catch (assignErr) {
-        console.error('Failed to assign head editor:', assignErr);
+        log.error({ err: assignErr }, 'Failed to assign head editor');
         result.headEditorError = assignErr.message;
       }
     }
@@ -257,14 +260,14 @@ router.post('/books/register', requireAuth, requireAdmin(), async (req, res) => 
           result.fetchJobId = fetchResult.jobId;
         }
       } catch (fetchErr) {
-        console.error('Auto-fetch source failed to start:', fetchErr);
+        log.error({ err: fetchErr }, 'Auto-fetch source failed to start');
         result.fetchError = fetchErr.message;
       }
     }
 
     res.json(result);
   } catch (err) {
-    console.error('Register book error:', err);
+    log.error({ err }, 'Register book error');
 
     if (err.message.includes('already registered') || err.message.includes('already in use')) {
       return res.status(409).json({
@@ -355,7 +358,7 @@ router.post('/books/:slug/fetch-source', requireAuth, requireAdmin(), (req, res)
 
     res.json({ success: true, jobId: fetchResult.jobId });
   } catch (err) {
-    console.error('Fetch source error:', err);
+    log.error({ err }, 'Fetch source error');
     res.status(500).json({ error: 'Failed to start source fetch', message: err.message });
   }
 });
@@ -368,12 +371,25 @@ router.get('/books', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
   try {
     const books = bookRegistration.listRegisteredBooks();
 
+    for (const book of books) {
+      try {
+        const progress = segmentEditorService.getEditorialProgress(book.slug);
+        book.editorialProgress = {
+          percent: progress.summary.percentComplete,
+          approvedSegments: progress.summary.approvedSegments,
+          totalSegments: progress.summary.totalSegments,
+        };
+      } catch {
+        book.editorialProgress = { percent: 0, approvedSegments: 0, totalSegments: 0 };
+      }
+    }
+
     res.json({
       books,
       total: books.length,
     });
   } catch (err) {
-    console.error('List books error:', err);
+    log.error({ err }, 'List books error');
     res.status(500).json({
       error: 'Failed to list books',
       message: err.message,
@@ -398,7 +414,7 @@ router.get('/books/data-status', requireAuth, requireAdmin(), (req, res) => {
       missingFile: books.filter((b) => !b.hasDataFile).length,
     });
   } catch (err) {
-    console.error('List book data status error:', err);
+    log.error({ err }, 'List book data status error');
     res.status(500).json({
       error: 'Failed to list book data status',
       message: err.message,
@@ -425,7 +441,7 @@ router.get('/books/:slug', requireAuth, requireRole(ROLES.EDITOR), (req, res) =>
 
     res.json(book);
   } catch (err) {
-    console.error('Get book error:', err);
+    log.error({ err }, 'Get book error');
     res.status(500).json({
       error: 'Failed to get book',
       message: err.message,
@@ -475,7 +491,7 @@ router.get('/books/:slug/chapters/:chapter', requireAuth, requireRole(ROLES.EDIT
       },
     });
   } catch (err) {
-    console.error('Get chapter error:', err);
+    log.error({ err }, 'Get chapter error');
     res.status(500).json({
       error: 'Failed to get chapter',
       message: err.message,
@@ -519,7 +535,7 @@ router.post('/books/:slug/generate-data', requireAuth, requireAdmin(), async (re
       ...result,
     });
   } catch (err) {
-    console.error('Generate book data error:', err);
+    log.error({ err }, 'Generate book data error');
 
     if (err.message.includes('not available')) {
       return res.status(400).json({
@@ -575,7 +591,7 @@ router.get('/users', requireAuth, requireAdmin(), (req, res) => {
       offset: options.offset,
     });
   } catch (err) {
-    console.error('List users error:', err);
+    log.error({ err }, 'List users error');
     res.status(500).json({
       error: 'Failed to list users',
       message: err.message,
@@ -622,7 +638,7 @@ router.get('/users/:id', requireAuth, requireAdmin(), (req, res) => {
 
     res.json(formatUser(user));
   } catch (err) {
-    console.error('Get user error:', err);
+    log.error({ err }, 'Get user error');
     res.status(500).json({
       error: 'Failed to get user',
       message: err.message,
@@ -678,7 +694,7 @@ router.post('/users', requireAuth, requireAdmin(), (req, res) => {
       user: formatUser(user),
     });
   } catch (err) {
-    console.error('Add user error:', err);
+    log.error({ err }, 'Add user error');
     res.status(500).json({
       error: 'Failed to add user',
       message: err.message,
@@ -740,7 +756,7 @@ router.put('/users/:id', requireAuth, requireAdmin(), (req, res) => {
       user: formatUser(user),
     });
   } catch (err) {
-    console.error('Update user error:', err);
+    log.error({ err }, 'Update user error');
     res.status(500).json({
       error: 'Failed to update user',
       message: err.message,
@@ -790,7 +806,7 @@ router.delete('/users/:id', requireAuth, requireAdmin(), (req, res) => {
       });
     }
   } catch (err) {
-    console.error('Delete user error:', err);
+    log.error({ err }, 'Delete user error');
     res.status(500).json({
       error: 'Failed to delete user',
       message: err.message,
@@ -826,7 +842,7 @@ router.post('/users/:id/books', requireAuth, requireAdmin(), (req, res) => {
       user: formatUser(user),
     });
   } catch (err) {
-    console.error('Assign book access error:', err);
+    log.error({ err }, 'Assign book access error');
     res.status(500).json({
       error: 'Failed to assign book access',
       message: err.message,
@@ -851,7 +867,7 @@ router.delete('/users/:id/books/:bookSlug', requireAuth, requireAdmin(), (req, r
       user: formatUser(user),
     });
   } catch (err) {
-    console.error('Remove book access error:', err);
+    log.error({ err }, 'Remove book access error');
     res.status(500).json({
       error: 'Failed to remove book access',
       message: err.message,
@@ -878,7 +894,7 @@ router.get('/users/:id/chapters', requireAuth, requireAdmin(), (req, res) => {
 
     res.json({ assignments });
   } catch (err) {
-    console.error('Get chapter assignments error:', err);
+    log.error({ err }, 'Get chapter assignments error');
     res.status(500).json({ error: err.message });
   }
 });
@@ -908,7 +924,7 @@ router.post('/users/:id/chapters', requireAuth, requireAdmin(), (req, res) => {
       assignments,
     });
   } catch (err) {
-    console.error('Assign chapters error:', err);
+    log.error({ err }, 'Assign chapters error');
     res.status(500).json({ error: err.message });
   }
 });
@@ -931,10 +947,124 @@ router.delete('/users/:id/chapters/:book/:chapter', requireAuth, requireAdmin(),
       assignments,
     });
   } catch (err) {
-    console.error('Remove chapter assignment error:', err);
+    log.error({ err }, 'Remove chapter assignment error');
     res.status(500).json({ error: err.message });
   }
 });
+
+// ─── Chapter-centric assignment routes (/api/admin/assignments) ───
+
+/**
+ * GET /api/admin/assignments/:book
+ * Returns all chapters with their assignment status and available editors.
+ */
+router.get('/assignments/:book', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
+  const { book } = req.params;
+  if (!VALID_BOOKS.includes(book)) {
+    return res.status(400).json({ error: `Invalid book: ${book}` });
+  }
+
+  try {
+    const assignments = userService.getBookAssignments(book);
+    const editors = userService.getEditorsForBook(book);
+
+    let chapterProgress = {};
+    try {
+      const progress = segmentEditorService.getEditorialProgress(book);
+      chapterProgress = progress.chapters;
+    } catch {
+      // Progress data is optional
+    }
+
+    res.json({ book, assignments, editors, chapterProgress });
+  } catch (err) {
+    log.error({ err }, 'Get book assignments error');
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/admin/assignments/:book/:chapter
+ * Assign a user to a chapter.
+ */
+router.post(
+  '/assignments/:book/:chapter',
+  requireAuth,
+  requireRole(ROLES.HEAD_EDITOR),
+  (req, res) => {
+    const { book, chapter } = req.params;
+    const { userId } = req.body;
+
+    if (!VALID_BOOKS.includes(book)) {
+      return res.status(400).json({ error: `Invalid book: ${book}` });
+    }
+    const chapterNum = parseInt(chapter, 10);
+    if (isNaN(chapterNum) || chapterNum < 0 || chapterNum > 30) {
+      return res.status(400).json({ error: `Invalid chapter: ${chapter}` });
+    }
+    if (!userId || typeof userId !== 'number') {
+      return res.status(400).json({ error: 'userId (number) required' });
+    }
+
+    try {
+      userService.assignChapter(userId, book, chapterNum, req.user.username);
+      activityLog.log({
+        type: 'assign_chapter',
+        userId: req.user.id,
+        username: req.user.username,
+        book,
+        chapter: chapterNum,
+        description: `Assigned chapter ${chapterNum} to user ${userId}`,
+      });
+      res.json({ success: true });
+    } catch (err) {
+      log.error({ err }, 'Assign chapter error');
+      res.status(500).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * DELETE /api/admin/assignments/:book/:chapter
+ * Remove assignment from a chapter.
+ */
+router.delete(
+  '/assignments/:book/:chapter',
+  requireAuth,
+  requireRole(ROLES.HEAD_EDITOR),
+  (req, res) => {
+    const { book, chapter } = req.params;
+
+    if (!VALID_BOOKS.includes(book)) {
+      return res.status(400).json({ error: `Invalid book: ${book}` });
+    }
+    const chapterNum = parseInt(chapter, 10);
+    if (isNaN(chapterNum) || chapterNum < 0 || chapterNum > 30) {
+      return res.status(400).json({ error: `Invalid chapter: ${chapter}` });
+    }
+
+    try {
+      // Find current assignment to remove
+      const assignments = userService.getBookAssignments(book);
+      const current = assignments.find((a) => a.chapter === chapterNum);
+      if (current) {
+        userService.removeChapterAssignment(current.user_id, book, chapterNum);
+        activityLog.log({
+          type: 'unassign_chapter',
+          userId: req.user.id,
+          username: req.user.username,
+          book,
+          chapter: chapterNum,
+          description: `Unassigned chapter ${chapterNum}`,
+        });
+      }
+      res.json({ success: true });
+    } catch (err) {
+      log.error({ err }, 'Unassign chapter error');
+      res.status(500).json({ error: err.message });
+    }
+  }
+);
 
 /**
  * Helper: Format user for API response
@@ -1081,7 +1211,7 @@ router.post('/migrate', requireAuth, requireAdmin(), async (req, res) => {
           : `Applied ${applied} migration(s), skipped ${skipped} already applied`,
     });
   } catch (err) {
-    console.error('Migration error:', err);
+    log.error({ err }, 'Migration error');
     res.status(500).json({
       error: 'Migration failed',
       message: err.message,
@@ -1135,11 +1265,11 @@ router.get('/validate-pipeline', requireAuth, requireAdmin(), (req, res) => {
         res.json({ reports });
       })
       .catch((err) => {
-        console.error('Pipeline validation error:', err);
+        log.error({ err }, 'Pipeline validation error');
         res.status(500).json({ error: 'Validation failed', message: err.message });
       });
   } catch (err) {
-    console.error('Pipeline validation error:', err);
+    log.error({ err }, 'Pipeline validation error');
     res.status(500).json({ error: 'Validation failed', message: err.message });
   }
 });

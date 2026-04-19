@@ -9,7 +9,7 @@
     {
       "chapter": 1,
       "title": "An Invisible World",
-      "titleIs": null,
+      "titleIs": "Ósýnilegur heimur",
       "modules": [
         {
           "id": "m58780",
@@ -40,7 +40,7 @@
     {
       "chapter": 2,
       "title": "How We See the Invisible World",
-      "titleIs": null,
+      "titleIs": "Hvernig við sjáum hinn ósýnilega heim",
       "modules": [
         {
           "id": "m58784",
@@ -77,7 +77,7 @@
     {
       "chapter": 3,
       "title": "The Cell",
-      "titleIs": null,
+      "titleIs": "Klefi",
       "modules": [
         {
           "id": "m58789",
@@ -114,7 +114,7 @@
     {
       "chapter": 4,
       "title": "Prokaryotic Diversity",
-      "titleIs": null,
+      "titleIs": "Fjölbreytileiki dreifkjörnunga",
       "modules": [
         {
           "id": "m58794",
@@ -163,7 +163,7 @@
     {
       "chapter": 5,
       "title": "The Eukaryotes of Microbiology",
-      "titleIs": null,
+      "titleIs": "Heilkjörnungar í örverufræði",
       "modules": [
         {
           "id": "m58801",
@@ -206,7 +206,7 @@
     {
       "chapter": 6,
       "title": "Acellular Pathogens",
-      "titleIs": null,
+      "titleIs": "Frumulausir sýklar",
       "modules": [
         {
           "id": "m58807",
@@ -243,7 +243,7 @@
     {
       "chapter": 7,
       "title": "Microbial Biochemistry",
-      "titleIs": null,
+      "titleIs": "Lífefnafræði örvera",
       "modules": [
         {
           "id": "m58812",
@@ -286,7 +286,7 @@
     {
       "chapter": 8,
       "title": "Microbial Metabolism",
-      "titleIs": null,
+      "titleIs": "Efnaskipti örvera",
       "modules": [
         {
           "id": "m58818",
@@ -341,7 +341,7 @@
     {
       "chapter": 9,
       "title": "Microbial Growth",
-      "titleIs": null,
+      "titleIs": "Vöxtur örvera",
       "modules": [
         {
           "id": "m58827",
@@ -390,7 +390,7 @@
     {
       "chapter": 10,
       "title": "Biochemistry of the Genome",
-      "titleIs": null,
+      "titleIs": "Lífefnafræði erfðamengisins",
       "modules": [
         {
           "id": "m58834",
@@ -427,7 +427,7 @@
     {
       "chapter": 11,
       "title": "Mechanisms of Microbial Genetics",
-      "titleIs": null,
+      "titleIs": "Verkunarháttur erfðafræði örvera",
       "modules": [
         {
           "id": "m58839",
@@ -482,7 +482,7 @@
     {
       "chapter": 12,
       "title": "Modern Applications of Microbial Genetics",
-      "titleIs": null,
+      "titleIs": "Nútímahagnýting örveruerfðafræði",
       "modules": [
         {
           "id": "m58847",
@@ -519,7 +519,7 @@
     {
       "chapter": 13,
       "title": "Control of Microbial Growth",
-      "titleIs": null,
+      "titleIs": "Stjórnun á vexti örvera",
       "modules": [
         {
           "id": "m58852",
@@ -556,7 +556,7 @@
     {
       "chapter": 14,
       "title": "Antimicrobial Drugs",
-      "titleIs": null,
+      "titleIs": "Sýklalyf",
       "modules": [
         {
           "id": "m58857",
@@ -611,7 +611,7 @@
     {
       "chapter": 15,
       "title": "Microbial Mechanisms of Pathogenicity",
-      "titleIs": null,
+      "titleIs": "Sjúkdómsvaldandi verkanir örvera",
       "modules": [
         {
           "id": "m58865",
@@ -648,7 +648,7 @@
     {
       "chapter": 16,
       "title": "Disease and Epidemiology",
-      "titleIs": null,
+      "titleIs": "Sjúkdómar og faraldsfræði",
       "modules": [
         {
           "id": "m58870",
@@ -685,7 +685,7 @@
     {
       "chapter": 17,
       "title": "Innate Nonspecific Host Defenses",
-      "titleIs": null,
+      "titleIs": "Meðfæddar ósértækar varnir hýsils",
       "modules": [
         {
           "id": "m58876",
@@ -728,7 +728,7 @@
     {
       "chapter": 18,
       "title": "Adaptive Specific Host Defenses",
-      "titleIs": null,
+      "titleIs": "Áunnar sértækar hýsilsvarnir",
       "modules": [
         {
           "id": "m58883",
@@ -771,7 +771,7 @@
     {
       "chapter": 19,
       "title": "Diseases of the Immune System",
-      "titleIs": null,
+      "titleIs": "Sjúkdómar í ónæmiskerfinu",
       "modules": [
         {
           "id": "m58891",
@@ -814,7 +814,7 @@
     {
       "chapter": 20,
       "title": "Laboratory Analysis of the Immune Response",
-      "titleIs": null,
+      "titleIs": "Rannsóknarstofugreining á ónæmissvörun",
       "modules": [
         {
           "id": "m58899",
@@ -857,7 +857,7 @@
     {
       "chapter": 21,
       "title": "Skin and Eye Infections",
-      "titleIs": null,
+      "titleIs": "Húð- og augnsýkingar",
       "modules": [
         {
           "id": "m58905",
@@ -900,7 +900,7 @@
     {
       "chapter": 22,
       "title": "Respiratory System Infections",
-      "titleIs": null,
+      "titleIs": "Sýkingar í öndunarfærum",
       "modules": [
         {
           "id": "m58911",
@@ -937,7 +937,7 @@
     {
       "chapter": 23,
       "title": "Urogenital System Infections",
-      "titleIs": null,
+      "titleIs": "Sýkingar í þvag- og kynfærakerfi",
       "modules": [
         {
           "id": "m58916",
@@ -986,7 +986,7 @@
     {
       "chapter": 24,
       "title": "Digestive System Infections",
-      "titleIs": null,
+      "titleIs": "Sýkingar í meltingarfærum",
       "modules": [
         {
           "id": "m58923",
@@ -1035,7 +1035,7 @@
     {
       "chapter": 25,
       "title": "Circulatory and Lymphatic System Infections",
-      "titleIs": null,
+      "titleIs": "Sýkingar í blóðrásar- og sogæðakerfi",
       "modules": [
         {
           "id": "m58934",
@@ -1072,7 +1072,7 @@
     {
       "chapter": 26,
       "title": "Nervous System Infections",
-      "titleIs": null,
+      "titleIs": "Sýkingar í taugakerfi",
       "modules": [
         {
           "id": "m58939",

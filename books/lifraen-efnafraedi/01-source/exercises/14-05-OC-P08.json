@@ -1,0 +1,347 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-21T11:38:23.104Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1VVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a74df270e19909e88d334b83ca31894238f72c5d",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1VVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a74df270e19909e88d334b83ca31894238f72c5d/OChem_14_05_014a.jpg"
+    },
+    {
+      "created_at": "2023-08-21T11:38:23.107Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1lVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--42f419c4a955c5b4841af0bc9531d6c03019241d",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1lVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--42f419c4a955c5b4841af0bc9531d6c03019241d/OChem_14_05_014b.jpg"
+    },
+    {
+      "created_at": "2023-08-21T11:38:23.109Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2NVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6a36447e9f6d5f4b3eb63dc7a23cf42e2f47d1f7",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2NVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6a36447e9f6d5f4b3eb63dc7a23cf42e2f47d1f7/OChem_14_05_014c.jpg"
+    },
+    {
+      "created_at": "2023-08-21T11:38:23.111Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2dVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0334aa4064a1c77346401edf4cda9554fc537ab1",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2dVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0334aa4064a1c77346401edf4cda9554fc537ab1/OChem_14_05_014d.jpg"
+    },
+    {
+      "created_at": "2023-08-21T11:38:23.113Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2tVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c88dcf057165b81f646bd2840cedc3a8ad144c67",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2tVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c88dcf057165b81f646bd2840cedc3a8ad144c67/OChem_14_05_014e.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:08c974ac-28b0-45d3-9450-b0f9ef336773",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:14-5-characteristics-of-the-diels-alder-reaction"
+  ],
+  "uuid": "88eb89bf-dabd-440d-97ac-a2fe8a4a88f8",
+  "group_uuid": "cf428498-4dfc-40b3-a97c-dcfc25f7f210",
+  "number": 37644,
+  "version": 10,
+  "uid": "37644@10",
+  "published_at": "2023-08-21T11:38:25.813Z",
+  "nickname": "14-05-OC-P08",
+  "solutions_are_public": true,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": 358437,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<p>Which of the following alkenes would you expect to be good Diels–Alder dienophiles?</p>\n<p><b>(a)</b> <img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1VVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a74df270e19909e88d334b83ca31894238f72c5d/OChem_14_05_014a.jpg\" alt=\"The condensed structural formula reads, H 2 C double bonded to C H C (double bonded to O) C l.\">\n <b>(b)</b> <img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1lVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--42f419c4a955c5b4841af0bc9531d6c03019241d/OChem_14_05_014b.jpg\" alt=\"The condensed structural formula reads, H 2 C double bonded to C H C H 2 C H 2 C (double bonded to O) O C H 3.\">\n <b>(c)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2NVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6a36447e9f6d5f4b3eb63dc7a23cf42e2f47d1f7/OChem_14_05_014c.jpg\" alt=\"A cyclohexane ring has a double bond between C 1 and C 2.\">\n <b>(d)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2dVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0334aa4064a1c77346401edf4cda9554fc537ab1/OChem_14_05_014d.jpg\" alt=\"In a cyclohexane ring, C 1 is a carbonyl group. C 2 is double bonded to C 3.\">\n <b>(e)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2tVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c88dcf057165b81f646bd2840cedc3a8ad144c67/OChem_14_05_014e.jpg\" alt=\"In a cyclohexane ring, C 1 is a carbonyl group. C 3 is double bonded to C 4.\"></p>",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "Good dienophiles: <b>(a)</b>, <b>(d)</b>"
+        }
+      ],
+      "community_solutions": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    10,
+    9,
+    8,
+    7,
+    6,
+    5,
+    4,
+    3,
+    2,
+    1
+  ]
+}

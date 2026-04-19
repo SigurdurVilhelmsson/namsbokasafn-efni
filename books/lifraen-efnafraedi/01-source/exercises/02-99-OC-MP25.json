@@ -1,0 +1,386 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-09T21:53:08.734Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdkVQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fb585f309e07f932082051795dfce5da5903555e",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdkVQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fb585f309e07f932082051795dfce5da5903555e/Figure%2002_99_OChem-02-EC-006a_80485-02-u069_P-OHex_img.jpg"
+    },
+    {
+      "created_at": "2023-08-09T21:53:08.738Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdklQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--be76680e4f4dfb452d11e6178f35667c8354c1b7",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdklQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--be76680e4f4dfb452d11e6178f35667c8354c1b7/Figure%2002_99_OChem-02-EC-006b_80485-02-u069_P-ONHBondL_img.jpg"
+    },
+    {
+      "created_at": "2023-08-09T21:53:08.741Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdk1QIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--afa7dedac086152122f176d5f937f07969355f8c",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdk1QIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--afa7dedac086152122f176d5f937f07969355f8c/Figure%2002_99_OChem-02-EC-006c_80485-02-u069_P-NHex_img.jpg"
+    },
+    {
+      "created_at": "2023-08-09T21:53:08.744Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdlFQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--11eb3453d030fbc1eb894a6923fb2ca61c5ec5a2",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdlFQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--11eb3453d030fbc1eb894a6923fb2ca61c5ec5a2/Figure%2002_99_OChem-02-EC-006d_80485-02-u069_P-OHHex_img.jpg"
+    },
+    {
+      "created_at": "2023-08-09T21:53:08.749Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8ee7fe863735a1f93b1ab50fdd4f58a8a2f02154",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8ee7fe863735a1f93b1ab50fdd4f58a8a2f02154/OChem_02_EC_006a.jpg"
+    },
+    {
+      "created_at": "2023-08-09T21:53:08.752Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUlRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--83dd12cc50fe98116e5e5d84249164f05653150a",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUlRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--83dd12cc50fe98116e5e5d84249164f05653150a/OChem_02_EC_006b.jpg"
+    },
+    {
+      "created_at": "2023-08-09T21:53:08.755Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbU1RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--773a1b6e5fd7c13326a982f04ed3319f1d286374",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbU1RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--773a1b6e5fd7c13326a982f04ed3319f1d286374/OChem_02_EC_006c.jpg"
+    },
+    {
+      "created_at": "2023-08-09T21:53:08.758Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--224cf03924eb762914695058c28bb54d6b9c07dd",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--224cf03924eb762914695058c28bb54d6b9c07dd/OChem_02_EC_006d.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:0f2bb8ee-4eda-4995-878f-775a16b4bf97",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:2-12-noncovalent-interactions-between-molecules"
+  ],
+  "uuid": "24544553-f588-4012-a533-3d99e1a9c726",
+  "group_uuid": "e0a2f1e5-ed96-4d57-8a2e-0d9af1d7ec20",
+  "number": 36137,
+  "version": 6,
+  "uid": "36137@6",
+  "published_at": "2023-08-09T21:53:13.810Z",
+  "nickname": "02-99-OC-MP25",
+  "solutions_are_public": false,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "Use curved arrows to draw the protonated form of the following Lewis bases.",
+  "questions": [
+    {
+      "id": 351680,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8ee7fe863735a1f93b1ab50fdd4f58a8a2f02154/OChem_02_EC_006a.jpg\" alt=\"The bond-line structure of tetrahydrofuran has a 5-membered ring made of an oxygen atom and four carbon atoms.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 351681,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUlRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--83dd12cc50fe98116e5e5d84249164f05653150a/OChem_02_EC_006b.jpg\" alt=\"The bond-line structure of N-methylacetamide.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 351682,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbU1RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--773a1b6e5fd7c13326a982f04ed3319f1d286374/OChem_02_EC_006c.jpg\" alt=\"The bond-line structure of pyridine.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 351683,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--224cf03924eb762914695058c28bb54d6b9c07dd/OChem_02_EC_006d.jpg\" alt=\"The bond-line structure of benzaldehyde\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    6,
+    5,
+    4,
+    3,
+    2,
+    1
+  ]
+}

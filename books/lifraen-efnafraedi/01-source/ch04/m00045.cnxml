@@ -1,0 +1,80 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Axial and Equatorial Bonds in Cyclohexane</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Axial and Equatorial Bonds in Cyclohexane</md:title>
+    <md:content-id>m00045</md:content-id>
+    <md:uuid>eed1237a-308b-49f4-abd6-91e8414d43cc</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">The chair conformation of cyclohexane has many consequences. We’ll see in <emphasis effect="bold">Section 11.9</emphasis>, for instance, that the chemical behavior of many substituted cyclohexanes is influenced by their conformation. In addition, we’ll see in <emphasis effect="bold">Section 25.5</emphasis> that simple carbohydrates, such as glucose, adopt a conformation based on the cyclohexane chair and that their chemistry is directly affected as a result.</para>
+    <figure class="unnumbered" id="fig-00001">
+    <media alt="The ball and stick model and chair conformation of cyclohexane and glucose. In models, black, gray, and red spheres represent carbon, hydrogen, and oxygen atoms, respectively.">
+    <image mime-type="image/jpeg" src="../../media/OChem_04_06_001.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00002">Another trait of the chair conformation is that there are two kinds of positions for substituents on the cyclohexane ring: <emphasis effect="italics">axial</emphasis> positions and <emphasis effect="italics">equatorial</emphasis> positions (as shown in <link target-id="fig-00002"/>). The six <span class="magenta-text"><term id="term-00001">axial</term></span> positions are parallel to the ring <emphasis effect="bold"><span class="magenta-text">axis</span></emphasis>, while the six <span class="cyan-text"><term id="term-00002">equatorial</term></span> positions are in the rough plane of the ring, around the ring <emphasis effect="bold"><span class="cyan-text">equator</span></emphasis>.</para>
+    <figure class="scaled-down" id="fig-00002">
+    <media alt="The ball and stick model and chemical structure of chair cyclohexane. Axial hydrogens (red) are parallel to the ring axis and equatorial hydrogens (blue) are in the ring equator.">
+    <image mime-type="image/jpeg" src="../../media/OChem_04_06_002.jpg"/>
+    </media>
+    <caption><emphasis effect="bold"><span class="magenta-text">Axial</span> and <span class="cyan-text">equatorial</span> positions in chair cyclohexane.</emphasis> The six axial hydrogens are parallel to the ring axis, and the six equatorial hydrogens are in a band around the ring equator.</caption>
+    </figure>
+    <para id="para-00003">As shown in <link target-id="fig-00002"/>, each carbon atom in chair cyclohexane has one axial and one equatorial hydrogen. Furthermore, each side of the ring has three axial and three equatorial hydrogens in an alternating arrangement. For example, if the top side of the ring has axial hydrogens on carbons 1, 3, and 5, then it has equatorial hydrogens on carbons 2, 4, and 6. The reverse is true for the bottom side: carbons 1, 3, and 5 have equatorial hydrogens, but carbons 2, 4, and 6 have axial hydrogens (<link target-id="fig-00003"/>).</para>
+    <figure class="scaled-down" id="fig-00003">
+    <media alt="The space-filling model and ball and stick model of cyclohexane with alternate axial and equatorial positions, represented by red and blue spheres, respectively.">
+    <image mime-type="image/jpeg" src="../../media/OChem_04_06_003.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">Alternating <span class="magenta-text">axial</span> and <span class="cyan-text">equatorial</span> positions in chair cyclohexane, looking directly down the ring axis.</emphasis> Each carbon atom has one axial and one equatorial position, and each face has alternating axial and equatorial positions.</caption>
+    </figure>
+    <para id="para-00004">Note that we haven’t used the words <emphasis effect="italics">cis</emphasis> and <emphasis effect="italics">trans</emphasis> in this discussion of cyclohexane conformation. Two hydrogens on the same side of the ring are always cis, regardless of whether they’re axial or equatorial and regardless of whether they’re adjacent. Similarly, two hydrogens on opposite sides of the ring are always trans.</para>
+    <para id="para-00005">Axial and equatorial bonds can be drawn following the procedure shown in <link target-id="fig-00004"/>. If possible, look at a molecular model as you practice.</para>
+    <figure id="fig-00004">
+    <media alt="One cyclohexane with six axial bonds (red)  and three cyclohexanes, each with two equatorial bonds (blue) form a completed cyclohexane that has both six axial and six equatorial bonds.">
+    <image mime-type="image/jpeg" src="../../media/OChem_04_06_004.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">A procedure for drawing axial and equatorial bonds in chair cyclohexane.</emphasis></caption>
+    </figure>
+    <para id="para-00006">Because chair cyclohexane has two kinds of positions—axial and equatorial—we might expect to find two isomeric forms of a monosubstituted cyclohexane. In fact, we don’t. There is only one methylcyclohexane, one bromocyclohexane, one cyclohexanol (hydroxycyclohexane), and so on, because cyclohexane rings are conformationally mobile at room temperature. Different chair conformations readily interconvert, exchanging axial and equatorial positions. This interconversion, called a <term id="term-00003">ring-flip</term>, is shown in <link target-id="fig-00005"/>.</para>
+    <figure class="scaled-down" id="fig-00005">
+    <media alt="The chair conformation and ball and stick model of substituted cyclohexane undergo ring-flip to form new conformation and model. The first chair conformation indicates that carbon moving clockwise.">
+    <image mime-type="image/jpeg" src="../../media/OChem_04_06_005.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">A ring-flip in chair cyclohexane interconverts axial and equatorial positions.</emphasis> What is <emphasis effect="bold"><span class="magenta-text">axial</span></emphasis> in the starting structure becomes <emphasis effect="bold"><span class="cyan-text">equatorial</span></emphasis> in the ring-flipped structure, and what is <emphasis effect="bold"><span class="cyan-text">equatorial</span></emphasis> in the starting structure is <emphasis effect="bold"><span class="magenta-text">axial</span></emphasis> after ring-flip.</caption>
+    </figure>
+    <para id="para-00007">As shown in <link target-id="fig-00005"/>, a chair cyclohexane can be ring-flipped by keeping the middle four carbon atoms in place while folding the two end carbons in opposite directions. In so doing, an axial substituent in one chair form becomes an equatorial substituent in the ring-flipped chair form and vice versa. For example, axial bromocyclohexane becomes equatorial bromocyclohexane after a ring-flip. Since the energy barrier to chair–chair interconversion is only about 45 kJ/mol (10.8 kcal/mol), the process is rapid at room temperature and we see what appears to be a single structure rather than distinct axial and equatorial isomers.</para>
+    <figure class="unnumbered scaled-down" id="fig-00006">
+    <media alt="The chair conformation and ball and stick model of axial bromocyclohexane undergo ring-flip to form conformation and model of equatorial bromocyclohexane.">
+    <image mime-type="image/jpeg" src="../../media/OChem_04_06_006.jpg"/>
+    </media>
+    </figure>
+    <example id="exam-00001">
+    <title>Drawing the Chair Conformation of a Substituted Cyclohexane</title>
+    <para id="para-00008">Draw 1,1-dimethylcyclohexane in a chair conformation, indicating which methyl group in your drawing is axial and which is equatorial.</para>
+    <para id="para-00009"><title><span class="red-text">Strategy</span></title> Draw a chair cyclohexane ring using the procedure in <link target-id="fig-00004"/>, and then put two methyl groups on the same carbon. The methyl group in the rough plane of the ring is equatorial, and the one directly above or below the ring is axial.</para>
+    <para id="para-00010"><title><span class="cyan-text">Solution</span></title>
+    <figure class="unnumbered scaled-down" id="fig-00007">
+    <media alt="In the chair conformation of cyclohexane, C1 is bonded to an axial methyl group and an equatorial methyl group.">
+    <image mime-type="image/jpeg" src="../../media/OChem_04_06_007.jpg"/>
+    </media>
+    </figure></para>
+    </example>
+    <section class="section-exercises" id="sect-00001">
+    <title>Problems</title>
+    <exercise id="exer-00001">
+    <problem id="prob-00001">
+    <para id="para-00011"><link class="os-embed" url="#exercise/04-06-OC-P12"/></para>
+    </problem>
+    </exercise>
+    <exercise id="exer-00002">
+    <problem id="prob-00002">
+    <para id="para-00012"><link class="os-embed" url="#exercise/04-06-OC-P13"/></para>
+    </problem>
+    </exercise>
+    <exercise id="exer-00003">
+    <problem id="prob-00003">
+    <para id="para-00013"><link class="os-embed" url="#exercise/04-06-OC-P14"/></para>
+    </problem>
+    </exercise>
+    </section>
+    </content>
+</document>

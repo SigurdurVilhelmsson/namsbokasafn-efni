@@ -1,0 +1,621 @@
+{
+  "moduleId": "m66376",
+  "title": {
+    "segmentId": "m66376:title:auto-1",
+    "text": "Bulk Transport"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "82b417e1-6471-4c85-9d31-909eef7296b5",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to do the following:",
+      "items": [
+        "Describe endocytosis, including phagocytosis, pinocytosis, and receptor-mediated endocytosis",
+        "Understand the process of exocytosis"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-id1467282",
+      "segmentId": "m66376:para:fs-id1467282"
+    },
+    {
+      "type": "section",
+      "id": "fs-id1967798",
+      "class": null,
+      "title": {
+        "segmentId": "m66376:title:fs-id1967798-title",
+        "text": "Endocytosis"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-id1242559",
+          "class": null,
+          "title": {
+            "segmentId": "m66376:title:fs-id1242559-title",
+            "text": "Phagocytosis"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1694237",
+              "segmentId": "m66376:para:fs-id1694237"
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch05_04_01",
+              "caption": {
+                "segmentId": "m66376:caption:fig-ch05_04_01-caption"
+              },
+              "media": {
+                "id": "fs-id2273382",
+                "alt": "This illustration shows a plasma membrane forming a pocket around a particle in the extracellular fluid. The membrane subsequently engulfs the particle, which becomes trapped in a vacuole inside the cell.",
+                "src": "../../media/Figure_05_04_01.png",
+                "mimeType": "image/png"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-id1458045",
+              "segmentId": "m66376:para:fs-id1458045"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-id1434270",
+          "class": null,
+          "title": {
+            "segmentId": "m66376:title:fs-id1434270-title",
+            "text": "Pinocytosis"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id2337777",
+              "segmentId": "m66376:para:fs-id2337777"
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch05_04_02",
+              "caption": {
+                "segmentId": "m66376:caption:fig-ch05_04_02-caption"
+              },
+              "media": {
+                "id": "fs-id1998867",
+                "alt": "This illustration shows a plasma membrane forming a pocket around fluid in the extracellular fluid. The membrane subsequently engulfs the fluid, which becomes trapped in a vacuole.",
+                "src": "../../media/Figure_05_04_02.png",
+                "mimeType": "image/png"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-id1511146",
+              "segmentId": "m66376:para:fs-id1511146"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-id2059707",
+          "class": null,
+          "title": {
+            "segmentId": "m66376:title:fs-id2059707-title",
+            "text": "Receptor-mediated Endocytosis"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id2163521",
+              "segmentId": "m66376:para:fs-id2163521"
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch05_04_03",
+              "caption": {
+                "segmentId": "m66376:caption:fig-ch05_04_03-caption"
+              },
+              "media": {
+                "id": "fs-id1313108",
+                "alt": "This illustration shows a part of the plasma membrane that is clathrin-coated on the cytoplasmic side and has receptors on the extracellular side. The receptors bind a substance, then pinch off to form a vesicle.",
+                "src": "../../media/Figure_05_04_03.png",
+                "mimeType": "image/png"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-id1912639",
+              "segmentId": "m66376:para:fs-id1912639"
+            },
+            {
+              "type": "para",
+              "id": "fs-id2074680",
+              "segmentId": "m66376:para:fs-id2074680"
+            },
+            {
+              "type": "note",
+              "id": "fs-id2000637",
+              "class": "interactive",
+              "title": null,
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-id2292278",
+                  "segmentId": "m66376:para:fs-id2292278"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-id1416306",
+          "segmentId": "m66376:para:fs-id1416306"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1836379",
+      "class": null,
+      "title": {
+        "segmentId": "m66376:title:fs-id1836379-title",
+        "text": "Exocytosis"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id841051",
+          "segmentId": "m66376:para:fs-id841051"
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch05_04_04",
+          "caption": {
+            "segmentId": "m66376:caption:fig-ch05_04_04-caption"
+          },
+          "media": {
+            "id": "fs-id1690710",
+            "alt": "This illustration shows vesicles fusing with the plasma membrane and releasing their contents to the extracellular fluid.",
+            "src": "../../media/Figure_05_04_04.png",
+            "mimeType": "image/png"
+          }
+        },
+        {
+          "type": "table",
+          "id": "tab-ch05_04_01",
+          "class": "top-titled",
+          "summary": "This table provides a list of types of molecular transport in cells, whether the method is passive or active, and the types of materials transported for each.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m66376:entry:auto-25",
+                  "attributes": {
+                    "namest": "col1",
+                    "nameend": "col3"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66376:entry:auto-26",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66376:entry:auto-27",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66376:entry:auto-28",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66376:entry:auto-29",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66376:entry:auto-30",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66376:entry:auto-31",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66376:entry:auto-32",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66376:entry:auto-33",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66376:entry:auto-34",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66376:entry:auto-35",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66376:entry:auto-36",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66376:entry:auto-37",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66376:entry:auto-38",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66376:entry:auto-39",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66376:entry:auto-40",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66376:entry:auto-41",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66376:entry:auto-42",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66376:entry:auto-43",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66376:entry:auto-44",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66376:entry:auto-45",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66376:entry:auto-46",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66376:entry:auto-47",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66376:entry:auto-48",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66376:entry:auto-49",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66376:entry:auto-50",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66376:entry:auto-51",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66376:entry:auto-52",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1894819",
+      "class": "summary",
+      "title": {
+        "segmentId": "m66376:title:fs-id1894819-title",
+        "text": "Section Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1479267",
+          "segmentId": "m66376:para:fs-id1479267"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1302123",
+      "class": "multiple-choice",
+      "title": {
+        "segmentId": "m66376:title:fs-id1302123-title",
+        "text": "Review Questions"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1853625",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1255097",
+                "segmentId": "m66376:problem:fs-id1255097"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2197192",
+                "segmentId": "m66376:solution:fs-id2197192"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id2116533",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1981380",
+                "segmentId": "m66376:problem:fs-id1981380"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1439092",
+                "segmentId": "m66376:solution:fs-id1439092"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1702994",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2215844",
+                "segmentId": "m66376:problem:fs-id2215844"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2000022",
+                "segmentId": "m66376:solution:fs-id2000022"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm71000723",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm74380435",
+                "segmentId": "m66376:problem:fs-idm74380435"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm200102084",
+                "segmentId": "m66376:solution:fs-idm200102084"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm71000725",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm74380436",
+                "segmentId": "m66376:problem:fs-idm74380436"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm200102085",
+                "segmentId": "m66376:solution:fs-idm200102085"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm71000726",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm74380437",
+                "segmentId": "m66376:problem:fs-idm74380437"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm200102086",
+                "segmentId": "m66376:solution:fs-idm200102086"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1419827",
+      "class": "critical-thinking",
+      "title": {
+        "segmentId": "m66376:title:fs-id1419827-title",
+        "text": "Critical Thinking Questions"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1415018",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1787601",
+                "segmentId": "m66376:problem:fs-id1787601"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1768554",
+                "segmentId": "m66376:solution:fs-id1768554"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1982720",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1760853",
+                "segmentId": "m66376:problem:fs-id1760853"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1805576",
+                "segmentId": "m66376:solution:fs-id1805576"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m66376:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m66376:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m66376:abstract-item:abstract-item-2"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-id1769825",
+        "termSegmentId": "m66376:glossary-term:fs-id1769825-term",
+        "definitionSegmentId": "m66376:glossary-def:fs-id1769825-def"
+      },
+      {
+        "id": "fs-id1704998",
+        "termSegmentId": "m66376:glossary-term:fs-id1704998-term",
+        "definitionSegmentId": "m66376:glossary-def:fs-id1704998-def"
+      },
+      {
+        "id": "fs-id1412466",
+        "termSegmentId": "m66376:glossary-term:fs-id1412466-term",
+        "definitionSegmentId": "m66376:glossary-def:fs-id1412466-def"
+      },
+      {
+        "id": "fs-id1439064",
+        "termSegmentId": "m66376:glossary-term:fs-id1439064-term",
+        "definitionSegmentId": "m66376:glossary-def:fs-id1439064-def"
+      },
+      {
+        "id": "fs-id1760012",
+        "termSegmentId": "m66376:glossary-term:fs-id1760012-term",
+        "definitionSegmentId": "m66376:glossary-def:fs-id1760012-def"
+      },
+      {
+        "id": "fs-id1442893",
+        "termSegmentId": "m66376:glossary-term:fs-id1442893-term",
+        "definitionSegmentId": "m66376:glossary-def:fs-id1442893-def"
+      },
+      {
+        "id": "fs-id1631447",
+        "termSegmentId": "m66376:glossary-term:fs-id1631447-term",
+        "definitionSegmentId": "m66376:glossary-def:fs-id1631447-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

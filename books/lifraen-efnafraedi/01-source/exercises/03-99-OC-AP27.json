@@ -1,0 +1,398 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-09T01:21:25.968Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdllRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--302d0d3ba7e7ef8c141ab9151aebf9f98093cb86",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdllRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--302d0d3ba7e7ef8c141ab9151aebf9f98093cb86/OChem_03_EC_007a.jpg"
+    },
+    {
+      "created_at": "2023-08-09T01:21:25.972Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--61c45ad9850742f9f1d988abbd0a6f252100cbdb",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--61c45ad9850742f9f1d988abbd0a6f252100cbdb/OChem_03_EC_007b.jpg"
+    },
+    {
+      "created_at": "2023-08-09T01:21:25.976Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3abd662f0194da73201ee09e43f4c57bb2f7984d",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3abd662f0194da73201ee09e43f4c57bb2f7984d/OChem_03_EC_007c.jpg"
+    },
+    {
+      "created_at": "2023-08-09T01:21:25.980Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmtRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d7d9211512ad31018afc51d38031de863c0b9028",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmtRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d7d9211512ad31018afc51d38031de863c0b9028/OChem_03_EC_007d.jpg"
+    },
+    {
+      "created_at": "2023-08-09T01:21:25.984Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdm9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--826eecc96f6fb7f72d4ad4d68bbbaeaacdfae099",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdm9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--826eecc96f6fb7f72d4ad4d68bbbaeaacdfae099/OChem_03_EC_007e.jpg"
+    },
+    {
+      "created_at": "2023-08-09T01:21:25.987Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdnNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f8e0aa82c4a2e9c10e7346bf0459c6071c45e149",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdnNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f8e0aa82c4a2e9c10e7346bf0459c6071c45e149/OChem_03_EC_007f.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:60cf85b6-afad-402f-91c0-1f5f217a5bde",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:3-7-conformations-of-other-alkanes"
+  ],
+  "uuid": "86f03571-5cd4-430b-a025-a0d1d6c41f0d",
+  "group_uuid": "d40bb264-ef88-4d46-8de7-68cbdeef5d91",
+  "number": 36464,
+  "version": 4,
+  "uid": "36464@4",
+  "published_at": "2023-08-09T01:21:29.554Z",
+  "nickname": "03-99-OC-AP27",
+  "solutions_are_public": false,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "For each of the following compounds, draw an isomer that has the same functional groups.",
+  "questions": [
+    {
+      "id": 351559,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdllRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--302d0d3ba7e7ef8c141ab9151aebf9f98093cb86/OChem_03_EC_007a.jpg\" alt=\"A four membered ring with C H 3 on the C2 and Br group is represented.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 351560,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--61c45ad9850742f9f1d988abbd0a6f252100cbdb/OChem_03_EC_007b.jpg\" alt=\"A five membered ring with an O C H 3 group is represented.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 351561,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3abd662f0194da73201ee09e43f4c57bb2f7984d/OChem_03_EC_007c.jpg\" alt=\"A four membered carbon chain with a cyano group is represented.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 351562,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmtRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d7d9211512ad31018afc51d38031de863c0b9028/OChem_03_EC_007d.jpg\" alt=\"A six membered ring with an O H group is represented.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 351563,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdm9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--826eecc96f6fb7f72d4ad4d68bbbaeaacdfae099/OChem_03_EC_007e.jpg\" alt=\"A three membered ring with a C H O group is represented.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 351564,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdnNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f8e0aa82c4a2e9c10e7346bf0459c6071c45e149/OChem_03_EC_007f.jpg\" alt=\"A benzene ring with a C H 2 C O O H group is represented.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    4,
+    3,
+    2,
+    1
+  ]
+}

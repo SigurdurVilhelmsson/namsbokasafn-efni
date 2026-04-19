@@ -13,6 +13,7 @@
 const fs = require('fs');
 const path = require('path');
 const Database = require('better-sqlite3');
+const log = require('../lib/logger');
 const openstaxFetcher = require('./openstaxFetcher');
 const openstaxCatalogue = require('./openstaxCatalogue');
 
@@ -141,7 +142,7 @@ async function generateBookData(catalogueSlug, options = {}) {
     catalogueEntry = openstaxCatalogue.getCatalogueEntry(catalogueSlug);
   } catch (e) {
     // Database not available, continue without catalogue data
-    console.log('Note: Database not available, continuing without catalogue metadata');
+    log.info('Database not available, continuing without catalogue metadata');
   }
 
   // Check existing file
@@ -165,7 +166,7 @@ async function generateBookData(catalogueSlug, options = {}) {
   }
 
   // Fetch structure from OpenStax
-  console.log(`Fetching structure for ${catalogueSlug} from OpenStax...`);
+  log.info({ catalogueSlug }, 'Fetching structure from OpenStax');
   const openstaxData = await openstaxFetcher.fetchBookStructure(catalogueSlug);
 
   // Get registration data for Icelandic titles (may fail if DB not available)
@@ -174,7 +175,7 @@ async function generateBookData(catalogueSlug, options = {}) {
     registration = getRegistrationData(catalogueSlug);
   } catch (e) {
     // Database not available, continue without Icelandic titles
-    console.log('Note: Database not available, Icelandic titles will not be merged');
+    log.info('Database not available, Icelandic titles will not be merged');
   }
 
   // Build the output data structure

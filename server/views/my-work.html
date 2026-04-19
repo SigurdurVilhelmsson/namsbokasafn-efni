@@ -1877,7 +1877,10 @@
           window.location.href = '/issues?category=BLOCKED';
           break;
         case 'review':
-          window.location.href = '/editor';
+          window.location.href = '/editor?view=reviews';
+          break;
+        case 'unassigned':
+          window.location.href = '/assignments?book=' + encodeURIComponent(book);
           break;
         default:
           window.location.href = '/progress';
@@ -1885,7 +1888,7 @@
     }
 
     function assignChapter(book, chapter, stage) {
-      window.location.href = '/status/' + book;
+      window.location.href = '/assignments?book=' + encodeURIComponent(book);
     }
 
     // ========================================================================

@@ -15,6 +15,7 @@ const express = require('express');
 const router = express.Router();
 const { v4: uuidv4 } = require('uuid');
 
+const log = require('../lib/logger');
 const auth = require('../services/auth');
 const { optionalAuth } = require('../middleware/requireAuth');
 
@@ -150,7 +151,7 @@ router.get('/callback', async (req, res) => {
     // For browser requests, redirect
     res.redirect(302, redirectUrl);
   } catch (err) {
-    console.error('Authentication error:', err);
+    log.error({ err }, 'Authentication error');
     res.status(401).json({
       error: 'Authentication failed',
       message: err.message,

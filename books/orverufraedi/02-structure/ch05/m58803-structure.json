@@ -1,0 +1,503 @@
+{
+  "moduleId": "m58803",
+  "title": {
+    "segmentId": "m58803:title:auto-1",
+    "text": "Parasitic Helminths"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "8ec4f2c3-afa2-40f9-b3ad-a85afbaa19ea"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "fs-id1172101896895",
+      "class": "learning-objectives",
+      "title": {
+        "segmentId": "m58803:title:fs-id1172101896895-title",
+        "text": "Learning Objectives"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id11713605736962",
+          "segmentId": "m58803:para:fs-id11713605736962"
+        },
+        {
+          "type": "list",
+          "id": "fs-id1172099603040",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m58803:item:fs-id1172099603040-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m58803:item:fs-id1172099603040-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m58803:item:fs-id1172099603040-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m58803:item:fs-id1172099603040-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m58803:item:fs-id1172099603040-item-5"
+            },
+            {
+              "id": null,
+              "segmentId": "m58803:item:fs-id1172099603040-item-6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-id1172102147344",
+      "segmentId": "m58803:para:fs-id1172102147344"
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172101804604",
+      "class": null,
+      "title": {
+        "segmentId": "m58803:title:fs-id1172101804604-title",
+        "text": "Nematoda (Roundworms)"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1172097606961",
+          "segmentId": "m58803:para:fs-id1172097606961"
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_02_heterodera",
+          "caption": {
+            "segmentId": "m58803:caption:OSC_Microbio_05_02_heterodera-caption"
+          },
+          "media": {
+            "id": "fs-id1172101759998",
+            "alt": "A micrograph of a tapered oval cell of approximately 30 mm in length.",
+            "src": "../../media/OSC_Microbio_05_02_heterodera.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172099511968",
+          "segmentId": "m58803:para:fs-id1172099511968"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172102010809",
+          "segmentId": "m58803:para:fs-id1172102010809"
+        },
+        {
+          "type": "note",
+          "id": "fs-id1172102074327",
+          "class": "microbiology clinical-focus",
+          "title": {
+            "segmentId": "m58803:note-title:fs-id1172102074327-title",
+            "text": "Part 2"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1172097190004",
+              "segmentId": "m58803:para:fs-id1172097190004"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1172101984629",
+              "segmentId": "m58803:para:fs-id1172101984629"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1172101975536",
+              "segmentId": "m58803:para:fs-id1172101975536"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1172099834065",
+              "segmentId": "m58803:para:fs-id1172099834065"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1172101781861",
+              "segmentId": "m58803:para:fs-id1172101781861"
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "id": "fs-id1172101929649",
+          "class": "microbiology check-your-understanding",
+          "title": null,
+          "content": []
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172099577506",
+      "class": null,
+      "title": {
+        "segmentId": "m58803:title:fs-id1172099577506-title",
+        "text": "Platyhelminths (Flatworms)"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1172099564287",
+          "segmentId": "m58803:para:fs-id1172099564287"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172099513048",
+          "segmentId": "m58803:para:fs-id1172099513048"
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_02_platy",
+          "caption": {
+            "segmentId": "m58803:caption:OSC_Microbio_05_02_platy-caption"
+          },
+          "media": {
+            "id": "fs-id1172099507965",
+            "alt": "a) Class Turbellaria – a photograph of a flat oval-shaped worm labeled Pseudobiceros bedfordi. B) Class Monegena – a micrograph of a rectangular cell with a bulb at one end. Labeled Dactylogyrus sp. C) Class Trematoda – A photograph of a long oval organism labeled Fascioloides magna and two smaller oval organisms labeled Fasciola hepatica. D) Class Cestoda – A photograph of a very long tapeworm labeled Taenia saginata.",
+            "src": "../../media/OSC_Microbio_05_02_platy.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_02_mouth",
+          "caption": {
+            "segmentId": "m58803:caption:OSC_Microbio_05_02_mouth-caption"
+          },
+          "media": {
+            "id": "fs-id1172099543417",
+            "alt": "a) A micrograph of Opisthorchis viverini; an oval cell with a projection at one end. B) A micrograph of one end of Taenia solium showing a whorl of small projections above an area labeled scolex.",
+            "src": "../../media/OSC_Microbio_05_02_mouth.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172099536063",
+          "segmentId": "m58803:para:fs-id1172099536063"
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_02_schistolLC",
+          "caption": {
+            "segmentId": "m58803:caption:OSC_Microbio_05_02_schistolLC-caption"
+          },
+          "media": {
+            "id": "fs-id1172099877928",
+            "alt": "Schistoma mansoni, japonicum, and haematobium are found in feces; S. japonicum and S. haematobium are also found in urine. These can be diagnosed in the water and produce eggs which hatch releasing miracidia. The miracidia penetrate snail tissues and produce sporocysts in the snail (successive generations). The Cercariae released by snail into the water are free flowing and are the infective stage which can penetrate skin. S. mansoni travels to the large intestines, S. japonicum travels to the small intestines, and S. haemotobium travels to the rectum. The cercariae lose their tails during penetration and become schistosomalae. Theese enter circulation and migrate to portal blood in liver and mature into adults. The paired adulted worms migrate to the mesenteric venules of the bowels/rectum (laying egs that circulate to the liver and are shed in stools) – for S. mansoni and S. Japonicum. S. haematobium migrates to the venous plexus of the bladder.",
+            "src": "../../media/OSC_Microbio_05_02_schistolLC.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_02_tapewormLC",
+          "caption": {
+            "segmentId": "m58803:caption:OSC_Microbio_05_02_tapewormLC-caption"
+          },
+          "media": {
+            "id": "fs-id1172101804803",
+            "alt": "Eggs or gravid proplottidis from an infected individual are passed into the environment; this is the diagnostic stage. Cattle (T. saginata) and pigs (T. solium) become infected by ingesting vegetation contaminated by eggs or gravid proglottids. Oncospheres hatch, penetrating intestinal wall and circulate to musculature. The oncospheres develop into cysticerci in muscles and become infective. Humans are infected by ingesting raw or undercooked infected meat. The scolex attaches to intestine and adults are found in the small intestine.",
+            "src": "../../media/OSC_Microbio_05_02_tapewormLC-58e4.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-id1172101785902",
+          "class": "microbiology check-your-understanding",
+          "title": null,
+          "content": []
+        },
+        {
+          "type": "note",
+          "id": "fs-id1172099499320",
+          "class": "microbiology micro-connection",
+          "title": {
+            "segmentId": "m58803:note-title:fs-id1172099499320-title",
+            "text": "Food for Worms?"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1172099658944",
+              "segmentId": "m58803:para:fs-id1172099658944"
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "id": "fs-id1172099455860",
+          "class": "microbiology micro-connection",
+          "title": {
+            "segmentId": "m58803:note-title:fs-id1172099455860-title",
+            "text": "Eradicating the Guinea Worm"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1172102061762",
+              "segmentId": "m58803:para:fs-id1172102061762"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1172099762775",
+              "segmentId": "m58803:para:fs-id1172099762775"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_02_GWorm",
+          "caption": {
+            "segmentId": "m58803:caption:OSC_Microbio_05_02_GWorm-caption"
+          },
+          "media": {
+            "id": "fs-id1172102014999",
+            "alt": "A worm is being pulled out of a wound in the leg of an infected individual.",
+            "src": "../../media/OSC_Microbio_05_02_GWorm.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172102112077",
+      "class": "summary",
+      "title": {
+        "segmentId": "m58803:title:fs-id1172102112077-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "list",
+          "id": "fs-id1172102135711",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": "bullet",
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m58803:item:fs-id1172102135711-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m58803:item:fs-id1172102135711-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m58803:item:fs-id1172102135711-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m58803:item:fs-id1172102135711-item-4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172099837051",
+      "class": "multiple-choice",
+      "title": {
+        "segmentId": "m58803:title:fs-id1172099837051-title",
+        "text": "Multiple Choice"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1172102040701",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172099683690",
+                "segmentId": "m58803:problem:fs-id1172099683690"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172097273719",
+                "segmentId": "m58803:solution:fs-id1172097273719"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1172102097375",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172097149332",
+                "segmentId": "m58803:problem:fs-id1172097149332"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172102111551",
+                "segmentId": "m58803:solution:fs-id1172102111551"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1172101784957",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172099721213",
+                "segmentId": "m58803:problem:fs-id1172099721213"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172099508157",
+                "segmentId": "m58803:solution:fs-id1172099508157"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172102004948",
+      "class": "fill-in-the-blank",
+      "title": {
+        "segmentId": "m58803:title:fs-id1172102004948-title",
+        "text": "Fill in the Blank"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1172102126597",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172102127194",
+                "segmentId": "m58803:problem:fs-id1172102127194"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172097148552",
+                "segmentId": "m58803:solution:fs-id1172097148552"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1172099658302",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172097242657",
+                "segmentId": "m58803:problem:fs-id1172097242657"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172099667669",
+                "segmentId": "m58803:solution:fs-id1172099667669"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172099732342",
+      "class": "short-answer",
+      "title": {
+        "segmentId": "m58803:title:fs-id1172099732342-title",
+        "text": "Short Answer"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1172099507950",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172099396047",
+                "segmentId": "m58803:problem:fs-id1172099396047"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172099493016",
+      "class": "critical-thinking",
+      "title": {
+        "segmentId": "m58803:title:fs-id1172099493016-title",
+        "text": "Critical Thinking"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1172099454966",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172099750223",
+                "segmentId": "m58803:problem:fs-id1172099750223"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": null
+}

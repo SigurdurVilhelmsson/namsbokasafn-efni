@@ -1,0 +1,102 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Biosynthesis of Fatty Acids</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Biosynthesis of Fatty Acids</md:title>
+    <md:content-id>m00333</md:content-id>
+    <md:uuid>26127d11-6b44-49d8-a3fc-b74db3e17ef6</md:uuid>
+  </metadata>
+  <content>
+<para id="para-00001">One of the most striking features of the common fatty acids is that they have an even number of carbon atoms (<link document="m00265" target-id="table-00001"/>). This occurs because all fatty acids are derived biosynthetically from acetyl CoA by sequential addition of two-carbon units to a growing chain. The acetyl CoA, in turn, arises primarily from the metabolic breakdown of carbohydrates in the glycolysis pathway, which we’ll see in <link document="m00334"/>. Thus, dietary carbohydrates consumed in excess of immediate energy needs are turned into fats for storage.</para>
+<para id="para-00002">As a general rule in biological chemistry, the anabolic pathway by which a substance is made is not the reverse of the catabolic pathway by which the same substance is degraded. The two paths must differ in some respects for both to be energetically favorable. Thus, the <emphasis effect="italics">β</emphasis>-oxidation pathway for converting fatty acids into acetyl CoA and the biosynthesis of fatty acids from acetyl CoA are related but are not exact opposites. Differences include the identity of the acyl-group carrier, the stereochemistry of the <emphasis effect="italics">β</emphasis>-hydroxyacyl reaction intermediate, and the identity of the redox coenzyme. FAD is used to introduce a double bond in <emphasis effect="italics">β</emphasis>-oxidation, while NADPH is used to reduce the double bond in fatty-acid biosynthesis.</para>
+<para id="para-00003">In bacteria, each step in fatty-acid synthesis is catalyzed by a separate enzyme. In vertebrates, however, fatty-acid synthesis is catalyzed by an immense, multienzyme complex called a <emphasis effect="italics">synthase</emphasis> that contains two identical subunits of 2505 amino acids each and catalyzes all steps in the pathway. In fact, for an 18-carbon fatty acid, the synthase catalyzes 42 separate steps! An overview of fatty-acid biosynthesis is shown in <link target-id="fig-00001"/>.</para>
+<section id="sect-00006">
+<title/>
+<section id="sect-00001">
+<title>Steps <span class="magenta-text">1</span>–<span class="magenta-text">2</span> of <link target-id="fig-00001"/>: Acyl Transfers</title>
+<para id="para-00004">The starting material for fatty-acid biosynthesis is the thioester acetyl CoA, the final product of carbohydrate breakdown, as we’ll see in <link document="m00335"/>. The pathway begins with several <emphasis effect="italics">priming reactions,</emphasis> which transport acetyl CoA and convert it into more reactive species. The first priming reaction is a nucleophilic acyl substitution reaction that converts acetyl CoA into acetyl ACP (acyl carrier protein).</para>
+<para id="para-00005">Notice that the mechanism of the nucleophilic acyl substitution in <emphasis effect="bold"><span class="magenta-text">step 1</span></emphasis> can be given in an abbreviated form that saves space by not explicitly showing the tetrahedral reaction intermediate. Instead, electron movement is shown as a heart-shaped path around the carbonyl oxygen to imply the two steps of the full mechanism. Biochemists commonly use this kind of abbreviated format, and we’ll also use it on occasion through the rest of this chapter.</para>
+<figure class="mechanism-figure scaled-down" id="fig-00001">
+<title>MECHANISM</title>
+<media alt="Fatty acid biosynthesis of butyryl A C P from acetyl-coenzyme A involves a series of trans-esterifications, Claisain-like condensations, ketone reduction, dehydration, and double bond reduction.">
+<image mime-type="image/jpeg" src="../../media/OChem_29_04_001.jpg"/>
+</media>
+<caption><emphasis effect="bold">The pathway for fatty-acid biosynthesis from the two-carbon precursor, acetyl CoA.</emphasis> Individual steps are explained in the text.</caption>
+</figure>
+<figure class="unnumbered scaled-down" id="fig-00002">
+<media alt="Acetyl-coenzyme A reacts with base and H S A C P to form tetrahedral intermediate that further forms acetyl S A C P. The abbreviated mechanism is indicated in parentheses.">
+<image mime-type="image/jpeg" src="../../media/OChem_29_04_002.jpg"/>
+</media>
+</figure>
+<para id="para-00006">In bacteria, ACP is a small protein of 77 residues that transports an acyl group from one enzyme to another. In vertebrates, however, ACP appears to be a long arm on a multienzyme synthase complex, whose apparent function is to shepherd an acyl group from site to site within the complex. As in acetyl CoA, the acyl group in acetyl ACP is linked by a thioester bond to the sulfur atom of phosphopantetheine. The phosphopantetheine is in turn linked to ACP through the side-chain  –OH group of a serine residue in the enzyme.</para>
+<figure class="unnumbered scaled-down" id="fig-00003">
+<media alt="The structure of acetyl A C P comprises a C H 3 C O linked to phosphopantetheine and an O connected to methylene linked to serine and A C P.">
+<image mime-type="image/jpeg" src="../../media/OChem_29_04_003.jpg"/>
+</media>
+</figure>
+<para id="para-00007"><emphasis effect="bold"><span class="magenta-text">Step 2</span></emphasis>, another priming reaction, involves a further exchange of thioester linkages by another nucleophilic acyl substitution and results in covalent bonding of the acetyl group to a cysteine residue in the synthase complex that catalyzes the upcoming condensation step.</para>
+</section>
+<section id="sect-00002">
+<title>Steps <span class="magenta-text">3</span>–<span class="magenta-text">4</span> of <link target-id="fig-00001"/>: Carboxylation and Acyl Transfer</title>
+<para id="para-00008"><emphasis effect="bold"><span class="magenta-text">Step 3</span></emphasis> is a <emphasis effect="italics">loading</emphasis> reaction in which acetyl CoA is carboxylated by reaction with HCO<sub>3</sub><sup>–</sup> and ATP to yield malonyl CoA plus ADP. This step requires the coenzyme biotin, which is bonded to the lysine residue of acetyl CoA carboxylase and acts as a carrier of CO<sub>2</sub>. Biotin first reacts with bicarbonate ion to give <emphasis effect="italics">N</emphasis>-carboxybiotin, which then reacts with the enolate ion of acetyl CoA and transfers the CO<sub>2</sub> group. Thus, biotin acts as a carrier of CO<sub>2</sub>, binding it in one step and releasing it in another.</para>
+<para id="para-00009">The mechanism of the CO<sub>2</sub> transfer reaction with acetyl CoA to give malonyl CoA is thought to involve CO<sub>2</sub> as the reactive species. One proposal is that the loss of CO<sub>2</sub> is favored by hydrogen-bond formation between the <emphasis effect="italics">N</emphasis>-carboxybiotin carbonyl group and a nearby acidic site in the enzyme. Simultaneous deprotonation of acetyl CoA by a basic site in the enzyme gives a thioester enolate ion that can react with CO<sub>2</sub> as it forms (<link target-id="fig-00004"/>).</para>
+<figure class="mechanism-figure scaled-down" id="fig-00004">
+<title>MECHANISM</title>
+<media alt="The enzyme deprotonates acetyl-coenzyme A to form an enolate and N-carboxybiotin undergoes decarboxylation to carbon dioxide and biotin. The enolate reacts with carbon dioxide to form malonyl-coenzyme A.">
+<image mime-type="image/jpeg" src="../../media/OChem_29_04_004.jpg"/>
+</media>
+<caption><emphasis effect="bold">Mechanism of step <emphasis effect="bold"><span class="magenta-text">3</span></emphasis> in <link target-id="fig-00001"/>, the biotin-dependent carboxylation of acetyl CoA to yield malonyl CoA.</emphasis></caption>
+</figure>
+<para id="para-00010">Following the formation of malonyl CoA, another nucleophilic acyl substitution reaction occurs in <emphasis effect="bold"><span class="magenta-text">step 4</span></emphasis> to form the more reactive malonyl ACP, thereby binding the malonyl group to an ACP arm of the multienzyme synthase. At this point, both acetyl and malonyl groups are bound to the enzyme, and the stage is set for their condensation.</para>
+</section>
+<section id="sect-00003">
+<title>Step <span class="magenta-text">5</span> of <link target-id="fig-00001"/>: Condensation</title>
+<para id="para-00011">The key carbon–carbon bond-forming reaction that builds the fatty-acid chain occurs in <emphasis effect="bold"><span class="magenta-text">step 5</span></emphasis>. This step is simply a Claisen condensation between acetyl synthase as the electrophilic acceptor and malonyl ACP as the nucleophilic donor. The mechanism of the condensation is thought to involve decarboxylation of malonyl ACP to give an enolate ion, followed by immediate nucleophilic addition of the enolate ion to the carbonyl group of acetyl synthase. Breakdown of the tetrahedral intermediate then gives the four-carbon condensation product acetoacetyl ACP and frees the synthase binding site for attachment of the chain-elongated acyl group at the end of the sequence.</para>
+<figure class="unnumbered scaled-down" id="fig-00005">
+<media alt="Acetyl synthase reacts with malonyl A C P to form an tetrahedral intermediate and carbon dioxide. This leads to acetoacetyl A C P and synthase connected to a sulfur anion.">
+<image mime-type="image/jpeg" src="../../media/OChem_29_04_005.jpg"/>
+</media>
+</figure>
+</section>
+<section id="sect-00004">
+<title>Steps <span class="magenta-text">6</span>–<span class="magenta-text">8</span> of <link target-id="fig-00001"/>: Reduction and Dehydration</title>
+<para id="para-00012">The ketone carbonyl group in acetoacetyl ACP is next reduced to the alcohol <emphasis effect="italics">β</emphasis>-hydroxybutyryl ACP by <emphasis effect="italics">β</emphasis>-keto thioester reductase and NADPH, a reducing coenzyme closely related to NADH. <emphasis effect="italics">R</emphasis> stereochemistry results at the newly formed chirality center in the <emphasis effect="italics">β</emphasis>-hydroxy thioester product. (Note that the systematic name of a butyryl group is <emphasis effect="italics">butanoyl.</emphasis>)</para>
+<figure class="unnumbered scaled-down" id="fig-00006">
+<media alt="Acetoacetyl A C P reacts with nicotinamide adenine dinucleotide phosphate hydride to form beta-hydroxybutyrate A C P and nicotinamide adenine dinucleotide phosphate cation.">
+<image mime-type="image/jpeg" src="../../media/OChem_29_04_006.jpg"/>
+</media>
+</figure>
+<para id="para-00013">Subsequent dehydration of <emphasis effect="italics">β</emphasis>-hydroxybutyryl ACP by an E1cB reaction in <emphasis effect="bold"><span class="magenta-text">step 7</span></emphasis> yields <emphasis effect="italics">trans</emphasis>-crotonyl ACP, and the carbon–carbon double bond of crotonyl ACP is reduced by NADPH in <emphasis effect="bold"><span class="magenta-text">step 8</span></emphasis> to yield butyryl ACP. The double-bond reduction occurs by conjugate nucleophilic addition of a hydride ion from NADPH to the <emphasis effect="italics">β</emphasis> carbon of <emphasis effect="italics">trans</emphasis>-crotonyl ACP. In vertebrates, this reduction occurs by an overall <emphasis effect="italics">syn</emphasis> addition, but other organisms carry out similar chemistry with different stereochemistry.</para>
+<figure class="unnumbered scaled-down" id="fig-00007">
+<media alt="Crotonyl A C P reacts with nicotinamide adenine dinucleotide phosphate hydride to form an enolate that is protonated  to butyryl A C P.">
+<image mime-type="image/jpeg" src="../../media/OChem_29_04_007.jpg"/>
+</media>
+</figure>
+<para id="para-00014">The net effect of the eight steps in the fatty-acid biosynthesis pathway is to take two 2-carbon acetyl groups and combine them into a 4-carbon butyryl group. Further condensation of the butyryl group with another malonyl ACP yields a 6-carbon unit, and still further repetitions add two carbon atoms at a time until the 16-carbon palmitoyl ACP is produced.</para>
+<figure class="unnumbered" id="fig-00008">
+<media alt="A thiol butyryl ester undergoes condensation with HS-Synthase to form butyryl synthase. It forms a six-carbon chain linked to S A C P that further forms sixteen-carbon chain named palmitoyl A C P.">
+<image mime-type="image/jpeg" src="../../media/OChem_29_04_008.jpg"/>
+</media>
+</figure>
+<para id="para-00015">Further chain elongation of palmitic acid occurs by reactions similar to those just described, but CoA rather than ACP acts as the carrier group, and separate enzymes are needed for each step rather than a multienzyme synthase complex.</para>
+</section>
+</section>
+<section class="section-exercises" id="sect-00005">
+<title>Problems</title>
+<exercise id="exer-00001">
+<problem id="prob-00001">
+<para id="para-00016"><link class="os-embed" url="#exercise/29-04-OC-P04"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00002">
+<problem id="prob-00002">
+<para id="para-00017"><link class="os-embed" url="#exercise/29-04-OC-P05"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00003">
+<problem id="prob-00003">
+<para id="para-00018"><link class="os-embed" url="#exercise/29-04-OC-P06"/></para>
+</problem>
+</exercise>
+</section>
+</content>
+</document>

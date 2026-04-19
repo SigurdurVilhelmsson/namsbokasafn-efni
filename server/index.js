@@ -1,17 +1,18 @@
 #!/usr/bin/env node
 
 /**
- * Translation Pipeline API Server (Phase 2)
+ * Námsbókasafn Editorial Workflow Server
  *
  * Provides REST endpoints for:
- * - Processing CNXML files through the translation pipeline
- * - Fetching OpenStax modules
- * - Checking pipeline status
- * - GitHub OAuth authentication
- * - Multi-step workflow management
- * - Issue tracking and classification
- * - Image translation tracking
- * - PR-based content sync
+ * - Segment-level linguistic editing (Pass 1)
+ * - Localization editing (Pass 2)
+ * - Terminology management
+ * - Editorial progress tracking
+ * - User and book administration
+ * - Publication management
+ *
+ * Pipeline orchestration (extract, translate, inject, render) is handled
+ * via CLI tools. See tools/cnxml-extract.js, tools/api-translate.js, etc.
  *
  * Usage:
  *   npm start                    # Start on default port (3000)
@@ -22,6 +23,8 @@
 // Load environment variables first
 require('dotenv').config();
 
+const log = require('./lib/logger');
+
 // Validate configuration before proceeding
 const { validateSecrets, config, refreshValidBooks, VALID_BOOKS } = require('./config');
 validateSecrets();
@@ -30,12 +33,13 @@ validateSecrets();
 const { runAllMigrations } = require('./services/migrationRunner');
 const migrationResult = runAllMigrations();
 if (migrationResult.applied > 0) {
-  console.log(
-    `Migrations: ${migrationResult.applied} applied, ${migrationResult.skipped} already up-to-date`
+  log.info(
+    { applied: migrationResult.applied, skipped: migrationResult.skipped },
+    'Migrations applied'
   );
 }
 if (migrationResult.errors.length > 0) {
-  console.error('Migration errors:', migrationResult.errors);
+  log.error({ errors: migrationResult.errors }, 'Migration errors');
 }
 
 const express = require('express');
@@ -45,51 +49,39 @@ const path = require('path');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 
-// Import Phase 1 routes
-const modulesRoutes = require('./routes/modules');
-const statusRoutes = require('./routes/status');
-const matecatRoutes = require('./routes/matecat');
+// ─── Route imports ──────────────────────────────────────────────────────────
 
-// Import Phase 2 routes
+// Authentication & user management
 const authRoutes = require('./routes/auth');
-const workflowRoutes = require('./routes/workflow');
-const issuesRoutes = require('./routes/issues');
-const syncRoutes = require('./routes/sync');
-const imagesRoutes = require('./routes/images');
-const viewRoutes = require('./routes/views');
-const booksRoutes = require('./routes/books');
+const profileRoutes = require('./routes/profile');
 const { requireAuth } = require('./middleware/requireAuth');
 
-// Import Phase 3 routes
-const notificationsRoutes = require('./routes/notifications');
-const activityRoutes = require('./routes/activity');
-
-// Import Phase 4 routes (Translation Management)
-const adminRoutes = require('./routes/admin');
-const sectionsRoutes = require('./routes/sections');
-
-// Import Phase 5 routes (Terminology & Suggestions)
+// Editorial workflow
+const segmentEditorRoutes = require('./routes/segment-editor');
+const localizationEditorRoutes = require('./routes/localization-editor');
 const terminologyRoutes = require('./routes/terminology');
 const suggestionsRoutes = require('./routes/suggestions');
 
-// Import My Work routes (translator dashboard)
+// Administration & status
+const statusRoutes = require('./routes/status');
+const adminRoutes = require('./routes/admin');
+const booksRoutes = require('./routes/books');
+const sectionsRoutes = require('./routes/sections');
 const myWorkRoutes = require('./routes/my-work');
 
-// Import Phase 6 routes (Publication)
+// Pipeline (inject/render for apply-and-render flow)
+const pipelineRoutes = require('./routes/pipeline');
+const pipelineStatusRoutes = require('./routes/pipeline-status');
 const publicationRoutes = require('./routes/publication');
 
-// Import Phase 7 routes (Pilot Support)
+// Support
+const notificationsRoutes = require('./routes/notifications');
+const activityRoutes = require('./routes/activity');
 const feedbackRoutes = require('./routes/feedback');
 const analyticsRoutes = require('./routes/analytics');
 
-// Import Phase 8 routes (Segment Editor, Pipeline, Localization Editor)
-const segmentEditorRoutes = require('./routes/segment-editor');
-const pipelineRoutes = require('./routes/pipeline');
-const localizationEditorRoutes = require('./routes/localization-editor');
-const pipelineStatusRoutes = require('./routes/pipeline-status');
-
-// Import Profile routes
-const profileRoutes = require('./routes/profile');
+// HTML views
+const viewRoutes = require('./routes/views');
 
 // Load version from package.json
 const serverVersion = require('./package.json').version;
@@ -211,7 +203,7 @@ app.use(
       if (allowedOrigins.includes(origin) || /^https:\/\/[\w-]+\.namsbokasafn\.is$/.test(origin)) {
         callback(null, true);
       } else {
-        console.log(`[CORS] Blocked origin: ${origin}`);
+        log.warn({ origin }, 'CORS blocked origin');
         callback(null, false);
       }
     },
@@ -223,76 +215,90 @@ app.use(express.urlencoded({ extended: true, limit: '1mb' }));
 
 // Request logging
 app.use((req, res, next) => {
-  const timestamp = new Date().toISOString();
-  console.log(`[${timestamp}] ${req.method} ${req.path}`);
+  log.info({ method: req.method, path: req.path }, 'request');
   next();
 });
 
-// Phase 1 API Routes
-app.use('/api/modules', modulesRoutes);
-app.use('/api/status', statusRoutes);
-app.use('/api/matecat', matecatRoutes);
+// ─── API Routes ─────────────────────────────────────────────────────────────
 
-// Phase 2 API Routes
-// Apply stricter rate limiting only to login/callback (not session checks like /me)
+// Authentication
 app.use('/api/auth/login', authLimiter);
 app.use('/api/auth/callback', authLimiter);
 app.use('/api/auth', authRoutes);
-app.use('/api/books', booksRoutes);
-app.use('/api/workflow', workflowRoutes);
-app.use('/api/issues', issuesRoutes);
-app.use('/api/sync', syncRoutes);
-app.use('/api/images', imagesRoutes);
+app.use('/api/profile', profileRoutes);
 
-// Phase 3 API Routes
-app.use('/api/notifications', notificationsRoutes);
-app.use('/api/activity', activityRoutes);
-
-// Phase 4 API Routes (Translation Management)
-app.use('/api/admin', adminRoutes);
-app.use('/api/sections', sectionsRoutes);
-
-// Phase 5 API Routes (Terminology & Suggestions)
+// Editorial workflow
+app.use('/api/segment-editor', segmentEditorRoutes);
+app.use('/api/localization-editor', localizationEditorRoutes);
 app.use('/api/terminology', terminologyRoutes);
 app.use('/api/suggestions', suggestionsRoutes);
 
-// My Work API Routes (translator dashboard)
+// Administration & status
+app.use('/api/status', statusRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/books', booksRoutes);
+app.use('/api/sections', sectionsRoutes);
 app.use('/api/my-work', myWorkRoutes);
 
-// Phase 6 API Routes (Publication)
+// Pipeline (inject/render, job tracking, publication)
+app.use('/api/pipeline', pipelineRoutes);
+app.use('/api/pipeline-status', pipelineStatusRoutes);
 app.use('/api/publication', publicationRoutes);
 
-// Phase 7 API Routes (Pilot Support)
+// Support
+app.use('/api/notifications', notificationsRoutes);
+app.use('/api/activity', activityRoutes);
 app.post('/api/feedback', publicSubmitLimiter);
 app.post('/api/analytics/event', publicSubmitLimiter);
 app.use('/api/feedback', feedbackRoutes);
 app.use('/api/analytics', analyticsRoutes);
 
-// Phase 8 API Routes (Segment Editor, Pipeline, Localization Editor)
-app.use('/api/segment-editor', segmentEditorRoutes);
-app.use('/api/pipeline', pipelineRoutes);
-app.use('/api/localization-editor', localizationEditorRoutes);
-
-// Pipeline Status API Routes
-app.use('/api/pipeline-status', pipelineStatusRoutes);
-
-// Profile API Routes
-app.use('/api/profile', profileRoutes);
-
-// Health check
+// Health check — verifies DB, migrations, books, auth configuration
 app.get('/api/health', (req, res) => {
+  const checks = {};
+
+  // Check DB connection
+  try {
+    const Database = require('better-sqlite3');
+    const dbPath = path.join(__dirname, '..', 'pipeline-output', 'sessions.db');
+    const db = new Database(dbPath, { readonly: true });
+    const row = db.prepare('SELECT COUNT(*) as n FROM users').get();
+    checks.db = { ok: true, users: row.n };
+    db.close();
+  } catch (err) {
+    checks.db = { ok: false, error: err.message };
+  }
+
+  // Check migrations
+  try {
+    const migrationsDir = path.join(__dirname, 'migrations');
+    const fs = require('fs');
+    const onDisk = fs.readdirSync(migrationsDir).filter((f) => f.endsWith('.js')).length;
+    checks.migrations = { ok: true, total: onDisk };
+  } catch (err) {
+    checks.migrations = { ok: false, error: err.message };
+  }
+
+  // Check books loaded
+  checks.books = { ok: VALID_BOOKS.length > 0, count: VALID_BOOKS.length, list: VALID_BOOKS };
+
+  // Check auth configured
+  checks.auth = { ok: !!process.env.JWT_SECRET && process.env.JWT_SECRET.length >= 32 };
+
+  const allOk = Object.values(checks).every((c) => c.ok);
+
   res.json({
-    status: 'ok',
+    status: allOk ? 'ok' : 'degraded',
     timestamp: new Date().toISOString(),
     version: serverVersion,
-    phase: 13,
+    checks,
   });
 });
 
 // API documentation
 app.get('/api', (req, res) => {
   res.json({
-    name: 'Translation Pipeline API',
+    name: 'Námsbókasafn Editorial API',
     version: serverVersion,
     status: 'ok',
     health: '/api/health',
@@ -318,7 +324,7 @@ app.use('/api/*path', (req, res) => {
 
 // Error handler (next is required by Express error handler signature)
 app.use((err, req, res, _next) => {
-  console.error('Error:', err);
+  log.error({ err, method: req.method, path: req.path }, 'Unhandled request error');
 
   // Handle multer errors
   if (err.code === 'LIMIT_FILE_SIZE') {
@@ -348,25 +354,20 @@ app.use((err, req, res, _next) => {
 const server = app.listen(PORT, HOST, () => {
   console.log('');
   console.log('═'.repeat(55));
-  console.log(`Translation Pipeline API Server v${serverVersion}`);
+  console.log(`Námsbókasafn Editorial Server v${serverVersion}`);
   console.log('═'.repeat(55));
   console.log('');
-  console.log(`  Server: http://${HOST}:${PORT}`);
-  console.log(`  API:    http://${HOST}:${PORT}/api`);
-  console.log(`  Web UI: http://${HOST}:${PORT}/workflow`);
+  log.info({ host: HOST, port: PORT }, 'Server started');
   console.log('');
-  console.log('Key Endpoints:');
-  console.log('  GET  /api/status/:book      Get pipeline status');
-  console.log('  GET  /api/auth/login        GitHub OAuth login');
-  console.log('  POST /api/workflow/resume   Resume workflow session');
-  console.log('  POST /api/pipeline/run      Inject + render (HEAD_EDITOR)');
+  console.log('Editorial Workflow:');
+  console.log('  /editor           Segment editor (Pass 1)');
+  console.log('  /localization     Localization editor (Pass 2)');
+  console.log('  /terminology      Terminology manager');
+  console.log('  /progress         Editorial progress dashboard');
   console.log('');
-  console.log('Web Interface:');
-  console.log('  /workflow         Multi-step workflow wizard');
-  console.log('  /segment-editor   Segment-level linguistic editor');
-  console.log('  /localization-editor  Segment-level localization (Pass 2)');
-  console.log('  /pipeline         Pipeline flow dashboard');
-  console.log('  /editor           Segment editor + review queue');
+  console.log('Administration:');
+  console.log('  /admin            User & book management');
+  console.log('  /library          Book & chapter overview');
   console.log('');
   console.log('Press Ctrl+C to stop');
   console.log('');
@@ -378,7 +379,7 @@ const server = app.listen(PORT, HOST, () => {
     const db = new Database(dbPath, { readonly: true });
     refreshValidBooks(db);
     db.close();
-    console.log(`Active books: ${VALID_BOOKS.join(', ')}`);
+    log.info({ books: VALID_BOOKS }, 'Active books loaded');
   } catch {
     // DB may not exist yet on first run — defaults are fine
   }
@@ -386,14 +387,14 @@ const server = app.listen(PORT, HOST, () => {
 
 // Graceful shutdown — let in-flight requests complete before exiting
 function gracefulShutdown(signal) {
-  console.log(`\n[${signal}] Shutting down gracefully...`);
+  log.info({ signal }, 'Shutting down gracefully');
   server.close(() => {
-    console.log('All connections closed. Exiting.');
+    log.info('All connections closed, exiting');
     process.exit(0);
   });
   // Force exit after 10 seconds if connections don't close
   setTimeout(() => {
-    console.error('Forced shutdown after timeout.');
+    log.error('Forced shutdown after timeout');
     process.exit(1);
   }, 10000).unref();
 }

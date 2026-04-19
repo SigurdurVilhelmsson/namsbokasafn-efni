@@ -1,0 +1,396 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-24T11:13:09.842Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcU1aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--03292165888f2729a0a884a81c787160c90570a0",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcU1aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--03292165888f2729a0a884a81c787160c90570a0/OChem_26_EC_202a.jpg"
+    },
+    {
+      "created_at": "2023-08-24T11:13:09.846Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b5979ba53df01ed49c2f369ca237c0dec2036462",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b5979ba53df01ed49c2f369ca237c0dec2036462/OChem_26_EC_202b.jpg"
+    },
+    {
+      "created_at": "2023-08-24T11:13:09.848Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ba41ee67d8bcfb6a68026a4bef7e762be6a460e1",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ba41ee67d8bcfb6a68026a4bef7e762be6a460e1/OChem_26_EC_202c.jpg"
+    },
+    {
+      "created_at": "2023-08-24T11:13:09.850Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVlaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c8b2c5903c17d235f089475f9ef6ee41257c8706",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVlaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c8b2c5903c17d235f089475f9ef6ee41257c8706/OChem_26_EC_202d.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:27e03259-c891-4818-92cb-4969f67a8ef0",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:26-3-synthesis-of-amino-acids"
+  ],
+  "uuid": "a78f0f25-e732-461e-b810-485b93a3396d",
+  "group_uuid": "e41c1619-c18e-47c8-bf32-c33ed1acb7e7",
+  "number": 39217,
+  "version": 4,
+  "uid": "39217@4",
+  "published_at": "2023-08-24T11:13:14.764Z",
+  "nickname": "26-03-OC-P06",
+  "solutions_are_public": true,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "What alkyl halides would you use to prepare the following <i>α</i>-amino acids by the amidomalonate method?",
+  "questions": [
+    {
+      "id": 359580,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "Leucine",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcU1aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--03292165888f2729a0a884a81c787160c90570a0/OChem_26_EC_202a.jpg\" alt=\"The structure of a linear three-carbon alkyl bromide, with bromine attached at C 1 and a methyl group at C 3.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 359581,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "Histidine",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b5979ba53df01ed49c2f369ca237c0dec2036462/OChem_26_EC_202b.jpg\" alt=\"The structure of an imidazole, with an N-H group at C 1, nitrogen at C 3,  and a bromomethyl group at C 5.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 359582,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "Tryptophan",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ba41ee67d8bcfb6a68026a4bef7e762be6a460e1/OChem_26_EC_202c.jpg\" alt=\"The structure of an indole comprises a benzene ring fused to a cyclopentene, with an N-H group at C 1,  and a bromomethyl group at C 3.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 359583,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "Methionine",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVlaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c8b2c5903c17d235f089475f9ef6ee41257c8706/OChem_26_EC_202d.jpg\" alt=\"The structure of a methyl bromoethyl thioether, with a bromoethyl and methyl groups.\">"
+        }
+      ],
+      "community_solutions": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    4,
+    3,
+    2,
+    1
+  ]
+}

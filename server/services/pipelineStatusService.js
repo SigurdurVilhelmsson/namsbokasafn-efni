@@ -8,6 +8,7 @@
 const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
+const log = require('../lib/logger');
 
 const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
 const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
@@ -49,21 +50,18 @@ function _getTestDb() {
   return _testDb;
 }
 
+let _db;
 function getDb() {
   if (_testDb) return _testDb;
-  const dbDir = path.dirname(DB_PATH);
-  if (!fs.existsSync(dbDir)) {
-    fs.mkdirSync(dbDir, { recursive: true });
+  if (!_db) {
+    const dbDir = path.dirname(DB_PATH);
+    if (!fs.existsSync(dbDir)) {
+      fs.mkdirSync(dbDir, { recursive: true });
+    }
+    _db = new Database(DB_PATH);
+    _db.pragma('journal_mode = WAL');
   }
-  const db = new Database(DB_PATH);
-  db.pragma('journal_mode = WAL');
-  return db;
-}
-
-function closeDb(db) {
-  if (db && db !== _testDb) {
-    db.close();
-  }
+  return _db;
 }
 
 // --- Helpers ---
@@ -119,7 +117,6 @@ function getChapterStage(bookSlug, chapterNum) {
 
     return { currentStage, stages, publication };
   } finally {
-    closeDb(db);
   }
 }
 
@@ -196,13 +193,12 @@ function transitionStage(bookSlug, chapterNum, stage, status, user, note) {
       try {
         syncStatusJsonCache(bookSlug, chapterNum);
       } catch (err) {
-        console.error(`syncStatusJsonCache failed for ${bookSlug} ch${chapterNum}:`, err.message);
+        log.error({ err, bookSlug, chapterNum }, 'syncStatusJsonCache failed');
       }
     }
 
     return result;
   } finally {
-    closeDb(db);
   }
 }
 
@@ -273,13 +269,12 @@ function revertStage(bookSlug, chapterNum, user, note) {
       try {
         syncStatusJsonCache(bookSlug, chapterNum);
       } catch (err) {
-        console.error(`syncStatusJsonCache failed for ${bookSlug} ch${chapterNum}:`, err.message);
+        log.error({ err, bookSlug, chapterNum }, 'syncStatusJsonCache failed after revert');
       }
     }
 
     return result;
   } finally {
-    closeDb(db);
   }
 }
 
@@ -351,7 +346,6 @@ function getStageHistory(bookSlug, chapterNum) {
 
     return entries;
   } finally {
-    closeDb(db);
   }
 }
 
@@ -365,7 +359,6 @@ function getStageHistory(bookSlug, chapterNum) {
 function syncStatusJsonCache(bookSlug, chapterNum) {
   if (_testDb) return; // No filesystem in tests
 
-  const db = getDb();
   try {
     const chDir = chapterDir(chapterNum);
     const statusPath = path.join(BOOKS_DIR, bookSlug, 'chapters', chDir, 'status.json');
@@ -433,12 +426,11 @@ function syncStatusJsonCache(bookSlug, chapterNum) {
     }
     fs.writeFileSync(statusPath, JSON.stringify(output, null, 2) + '\n', 'utf8');
   } catch (err) {
-    console.error(
-      `syncStatusJsonCache error for ${bookSlug} ${chapterDir(chapterNum)}:`,
-      err.message
+    log.error(
+      { err, bookSlug, chapterDir: chapterDir(chapterNum) },
+      'syncStatusJsonCache error'
     );
   } finally {
-    closeDb(db);
   }
 }
 

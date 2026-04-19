@@ -1,0 +1,81 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Oxidation of Alkenes: Epoxidation and Hydroxylation</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Oxidation of Alkenes: Epoxidation and Hydroxylation</md:title>
+    <md:content-id>m00095</md:content-id>
+    <md:uuid>9492bfa1-6558-4c1a-a0e6-4425f9feb1cc</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">Like the word <emphasis effect="italics">reduction</emphasis> used in the previous section for the addition of hydrogen to a double bond, the word <emphasis effect="italics">oxidation</emphasis> has a slightly different meaning in organic chemistry than what you might have previously learned. In general chemistry, an oxidation is defined as the loss of one or more electrons by an atom. In organic chemistry, however, an <term id="term-00001">oxidation</term> is a reaction that results in a loss of electron density for carbon, caused either by bond formation between carbon and a more electronegative atom—usually oxygen, nitrogen, or a halogen—or by bond-breaking between carbon and a less electronegative atom—usually hydrogen. Note that an <emphasis effect="italics">oxidation</emphasis> often adds oxygen, while a <emphasis effect="italics">reduction</emphasis> often adds hydrogen.</para>
+    
+    <para id="para-00002"><m:math><m:mrow><m:mtable columnalign="left"><m:mtr columnalign="left"><m:mtd columnalign="left"><m:mrow><m:mspace width="3em"/><m:mstyle mathvariant="bold" mathsize="normal"><m:mtext style="color: #E00087">Oxidation</m:mtext></m:mstyle><m:mspace width="2em"/></m:mrow></m:mtd>
+      <m:mtd columnalign="left"><m:mrow><m:mtext>Decreases electron density on carbon by:</m:mtext></m:mrow></m:mtd></m:mtr>
+      <m:mtr columnalign="left">
+        <m:mtd columnalign="left"><m:mrow/></m:mtd>
+        <m:mtd columnalign="left"><m:mrow><m:mspace width="2em"/><m:mo>–</m:mo><m:mtext>forming one of these:</m:mtext><m:mspace width="0.2em"/><m:mtext>C−</m:mtext><m:mtext style="color: #E00087">O</m:mtext><m:mspace width="1.2em"/><m:mtext>C−</m:mtext><m:mtext style="color: #E00087">N</m:mtext><m:mspace width="1.2em"/><m:mtext>C−</m:mtext><m:mtext style="color: #E00087">X</m:mtext></m:mrow></m:mtd></m:mtr>
+        
+        <m:mtr columnalign="left"><m:mtd columnalign="left"><m:mrow/></m:mtd>
+        <m:mtd columnalign="left"><m:mrow><m:mspace width="2em"/><m:mo>–</m:mo><m:mtext>or breaking this:</m:mtext><m:mspace width="0.2em"/><m:mtext>C−</m:mtext><m:mtext style="color: #0078A3">H</m:mtext></m:mrow></m:mtd></m:mtr>
+      </m:mtable></m:mrow></m:math></para>
+    <para id="para-00003">In the laboratory, alkenes are oxidized to give <emphasis effect="italics">epoxides</emphasis> on treatment with a <emphasis effect="italics">peroxyacid</emphasis>, RCO<sub>3</sub>H, such as <emphasis effect="italics">meta</emphasis>-chloroperoxybenzoic acid. An <term id="term-00002">epoxide</term>, also called an <term id="term-00003">oxirane</term>, is a cyclic ether with an oxygen atom in a three-membered ring. For example:</para>
+    
+    
+
+
+
+    <figure class="unnumbered scaled-down" id="fig-00001">
+    <media alt="A reaction shows the epoxidation of cycloheptene with meta-chloroperoxybenzoic acid in dichloromethane to form epoxycycloheptane and meta-chlorobenzoic acid">
+    <image mime-type="image/jpeg" src="../../media/OChem_08_07_001.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00004">Peroxyacids transfer an oxygen atom to the alkene with syn stereochemistry—both C−O bonds form on the same face of the double bond—through a one-step mechanism without intermediates. The oxygen atom farthest from the carbonyl group is the one transferred.</para>
+    <figure class="unnumbered scaled-down" id="fig-00002">
+    <media alt="A reaction mechanism shows alkene reacting with peroxyacid to form epoxide and acid.">
+    <image mime-type="image/jpeg" src="../../media/OChem_08_07_002.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00005">Another method for the synthesis of epoxides involves the use of halohydrins, prepared by electrophilic addition of HO−X to alkenes (<link document="m00091"/>). When a halohydrin is treated with base, HX is eliminated and an epoxide is produced.</para>
+    <figure class="unnumbered scaled-down" id="fig-00003">
+    <media alt="Cyclohexene reacts with chlorine in the presence of water to form trans-2-chloro-cyclohexanol, which reacts with aqueous sodium hydroxide to form 1,2-epoxycyclohexane (73 percent yield), water, and sodium chloride.">
+    <image mime-type="image/jpeg" src="../../media/OChem_08_07_003.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00006">Epoxides undergo an acid-catalyzed ring-opening reaction with water (a hydrolysis) to give the corresponding 1,2-dialcohol, or <emphasis effect="italics">diol</emphasis>, also called a <term id="term-00004">glycol</term>. Thus, the net result of the two-step alkene epoxidation/hydrolysis is <term id="term-00005">hydroxylation</term>—the addition of an −OH group to each of the two double-bond carbons. In fact, approximately 204 million tons of ethylene glycol, HOCH<sub>2</sub>CH<sub>2</sub>OH, most of it used for automobile antifreeze, are produced worldwide each year by the epoxidation of ethylene and subsequent hydrolysis.</para>
+    <figure class="unnumbered scaled-down" id="fig-00004">
+    <media alt="An alkene undergoes epoxidation to form an epoxide, which reacts with hydronium ion to form a 1,2-diol product.">
+    <image mime-type="image/jpeg" src="../../media/OChem_08_07_004.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00007">Acid-catalyzed epoxide opening begins with protonation of the epoxide to increase its reactivity, followed by nucleophilic addition of water. This nucleophilic addition is analogous to the final step of alkene bromination, in which a cyclic bromonium ion is opened by a nucleophile (<link document="m00090"/>). That is, a <emphasis effect="italics">trans</emphasis>-1,2-diol results when an epoxycycloalkane is opened by aqueous acid, just as a <emphasis effect="italics">trans</emphasis>-1,2-dibromide results when a cycloalkene is brominated. We’ll look at epoxide chemistry in more detail in <emphasis effect="bold">Section 18.6</emphasis>.</para>
+    <figure class="unnumbered scaled-down" id="fig-00005">
+    <media alt="A reaction mechanism shows 1,2-epoxycyclohexane reacting with hydronium ion and water to form trans-1,2-cyclohexanediol (86 percent yield). At the bottom, cyclohexene reacts with bromine to form trans-1,2-dibromocyclohexane.">
+    <image mime-type="image/jpeg" src="../../media/OChem_08_07_005.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00008">Hydroxylation can also be carried out directly (without going through an intermediate epoxide) by treating an alkene with osmium tetroxide, OsO<sub>4</sub>. The reaction occurs with syn stereochemistry and does not involve a carbocation intermediate. Instead, it takes place through an intermediate cyclic <emphasis effect="italics">osmate</emphasis>, which is formed in a single step by addition of OsO<sub>4</sub> to the alkene. This cyclic osmate is then cleaved using aqueous sodium bisulfite, NaHSO<sub>3</sub>.</para>
+    <figure class="unnumbered scaled-down" id="fig-00006">
+    <media alt="1,2-Dimethylcyclopentene reacts with osmium tetroxide in pyridine to form a cyclic osmate intermediate, which reacts with N a H S O 3 in water to form cis-1,2-dimethyl-1,2-cyclopentanediol (87 percent yield).">
+    <image mime-type="image/jpeg" src="../../media/OChem_08_07_006.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00009">Because OsO<sub>4</sub> is both very expensive and <emphasis effect="italics">very</emphasis> toxic, the reaction is usually carried out using only a small, catalytic amount of OsO<sub>4</sub> in the presence of a stoichiometric amount of a safe and inexpensive co-oxidant such as <emphasis effect="italics">N</emphasis>-methylmorpholine <emphasis effect="italics">N</emphasis>-oxide, abbreviated NMO. The initially formed osmate intermediate reacts rapidly with NMO to yield the product diol plus <emphasis effect="italics">N</emphasis>-methylmorpholine and reoxidized OsO<sub>4</sub>, which reacts with more alkene in a catalytic cycle.</para>
+    <figure class="unnumbered scaled-down" id="fig-00007">
+    <media alt="1-Phenyl-cyclohexene reacts with catalytic osmium tetroxide in the presence of acetone and water, followed by  N-methylmorpholine N-oxide reduction to form cis-1-phenyl-1,2-cyclohexanediol (93 percent yield), osmium tetroxide, and N-methyl-morpholine.">
+    <image mime-type="image/jpeg" src="../../media/OChem_08_07_007.jpg"/>
+    </media>
+    </figure>
+    <section class="section-exercises" id="sect-00001">
+    <title>Problems</title>
+    <exercise id="exer-00001">
+    <problem id="prob-00001">
+    <para id="para-00010"><link class="os-embed" url="#exercise/08-07-OC-P13"/></para>
+    </problem>
+    </exercise>
+    <exercise id="exer-00002">
+    <problem id="prob-00002">
+    <para id="para-00011"><link class="os-embed" url="#exercise/08-07-OC-P14"/></para>
+    </problem>
+    </exercise>
+    </section>
+    </content>
+</document>

@@ -16,6 +16,7 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 const path = require('path');
+const log = require('../lib/logger');
 const activityLog = require('../services/activityLog');
 const segmentEditorService = require('../services/segmentEditorService');
 const { requireAuth } = require('../middleware/requireAuth');
@@ -26,8 +27,10 @@ const {
   getUniqueSections,
 } = require('../services/splitFileUtils');
 const { VALID_BOOKS } = require('../config');
+const userService = require('../services/userService');
 const { PIPELINE_STAGE_NAMES: PIPELINE_STAGES, PUBLICATION_TRACKS } = require('../constants');
 const pipelineStatusService = require('../services/pipelineStatusService');
+const segmentParser = require('../services/segmentParser');
 
 // Project root
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
@@ -145,6 +148,17 @@ router.get('/dashboard', requireAuth, async (req, res) => {
         chapters: [],
       };
 
+      // Load chapter assignments for this book to check unassigned status
+      const assignmentMap = {};
+      try {
+        const assignments = userService.getBookAssignments(book);
+        for (const a of assignments) {
+          assignmentMap[a.chapter] = a;
+        }
+      } catch {
+        // Assignment data unavailable — treat all as unassigned
+      }
+
       for (const chapterDir of chapterDirs) {
         const chapterNum = parseInt(chapterDir.replace('ch', ''), 10);
 
@@ -152,7 +166,7 @@ router.get('/dashboard', requireAuth, async (req, res) => {
           chapter: chapterNum,
           stages: {},
           progress: 0,
-          assignment: null,
+          assignment: assignmentMap[chapterNum] || null,
         };
 
         try {
@@ -200,7 +214,7 @@ router.get('/dashboard', requireAuth, async (req, res) => {
         color: getActivityColor(activity.type),
       }));
     } catch (err) {
-      console.error('Failed to get team activity:', err);
+      log.error({ err }, 'Failed to get team activity');
     }
 
     // Calculate velocity metrics
@@ -243,7 +257,7 @@ router.get('/dashboard', requireAuth, async (req, res) => {
         },
       ];
     } catch (err) {
-      console.error('Failed to calculate metrics:', err);
+      log.error({ err }, 'Failed to calculate metrics');
     }
 
     // Get pending module reviews from DB
@@ -262,7 +276,7 @@ router.get('/dashboard', requireAuth, async (req, res) => {
         });
       }
     } catch (err) {
-      console.error('Failed to get pending reviews:', err.message);
+      log.error({ err }, 'Failed to get pending reviews');
     }
 
     // Get edits marked for discussion (replaces blocked issues)
@@ -280,19 +294,19 @@ router.get('/dashboard', requireAuth, async (req, res) => {
         });
       }
     } catch (err) {
-      console.error('Failed to get discuss edits:', err.message);
+      log.error({ err }, 'Failed to get discuss edits');
     }
 
     // Add global segment edit statistics
     try {
       dashboard.segmentEditStats = segmentEditorService.getGlobalEditStats();
     } catch (err) {
-      console.error('Failed to get segment edit stats:', err.message);
+      log.error({ err }, 'Failed to get segment edit stats');
     }
 
     res.json(dashboard);
   } catch (err) {
-    console.error('Dashboard error:', err);
+    log.error({ err }, 'Dashboard error');
     res.status(500).json({
       error: 'Failed to get dashboard',
       message: err.message,
@@ -336,7 +350,7 @@ router.get('/activity/timeline', requireAuth, (req, res) => {
       hasMore: result.offset + result.activities.length < result.total,
     });
   } catch (err) {
-    console.error('Activity timeline error:', err);
+    log.error({ err }, 'Activity timeline error');
     res.status(500).json({
       error: 'Failed to get activity timeline',
       message: err.message,
@@ -574,7 +588,7 @@ router.get('/analytics', requireAuth, async (req, res) => {
         (a, b) => b.totalActions - a.totalActions
       );
     } catch (e) {
-      console.error('Could not calculate team metrics:', e.message);
+      log.error({ err: e }, 'Could not calculate team metrics');
     }
 
     // Per-stage metrics
@@ -707,7 +721,7 @@ router.get('/analytics', requireAuth, async (req, res) => {
 
     res.json(analytics);
   } catch (err) {
-    console.error('Analytics error:', err);
+    log.error({ err }, 'Analytics error');
     res.status(500).json({
       error: 'Failed to generate analytics',
       message: err.message,
@@ -752,7 +766,7 @@ router.get('/meeting-agenda', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req,
         });
       }
     } catch (err) {
-      console.error('Failed to get pending reviews for agenda:', err.message);
+      log.error({ err }, 'Failed to get pending reviews for agenda');
     }
 
     // Check for edits marked for discussion (from DB)
@@ -766,7 +780,7 @@ router.get('/meeting-agenda', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req,
         });
       }
     } catch (err) {
-      console.error('Failed to get discuss edits for agenda:', err.message);
+      log.error({ err }, 'Failed to get discuss edits for agenda');
     }
 
     if (highItems.length > 0) {
@@ -867,7 +881,7 @@ router.get('/meeting-agenda', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req,
       sections,
     });
   } catch (err) {
-    console.error('Meeting agenda error:', err);
+    log.error({ err }, 'Meeting agenda error');
     res.status(500).json({
       error: 'Failed to generate meeting agenda',
       message: err.message,
@@ -878,6 +892,157 @@ router.get('/meeting-agenda', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req,
 // ============================================================================
 // BOOK STATUS
 // ============================================================================
+
+/**
+ * GET /api/status/:book/editorial-progress
+ * Editorial progress for a book — segment-level edit counts per chapter/module.
+ * Primary data source for the refocused status dashboard.
+ */
+router.get('/:book/editorial-progress', requireAuth, (req, res) => {
+  const { book } = req.params;
+
+  if (!VALID_BOOKS.includes(book)) {
+    return res.status(400).json({ error: `Invalid book: ${book}` });
+  }
+
+  try {
+    // 1. Get centralized progress (distinct segment counts, not edit records)
+    const progress = segmentEditorService.getEditorialProgress(book);
+
+    // 2. Get per-module edit stats for attention items and module status
+    const editsByModule = segmentEditorService.getBookEditsByModule(book);
+    const editLookup = {};
+    for (const row of editsByModule) {
+      editLookup[row.module_id] = row;
+    }
+
+    // 3. Get pending reviews
+    const pendingReviews = segmentEditorService.getPendingModuleReviews(book);
+    const reviewLookup = {};
+    for (const r of pendingReviews) {
+      reviewLookup[r.module_id] = r;
+    }
+
+    // 4. Get discuss edits for attention items
+    const discussEdits = segmentEditorService.getDiscussEdits(50);
+    const bookDiscussEdits = discussEdits.filter((e) => e.book === book);
+
+    // 5. Build per-chapter attention items and module status (separate from progress numbers)
+    const chapterNums = segmentParser.listChapters(book);
+    let totalModulesInProgress = 0;
+    let totalModulesNotStarted = 0;
+
+    const chapterProgress = chapterNums.map((chapterNum) => {
+      const modules = segmentParser.listChapterModules(book, chapterNum);
+      const chapterLabel = chapterNum === -1 ? 'appendices' : String(chapterNum);
+      const chProgress = progress.chapters[chapterNum] || {
+        approvedSegments: 0,
+        editedSegments: 0,
+        totalSegments: 0,
+        percentComplete: 0,
+      };
+
+      let chModulesComplete = 0;
+      let chModulesInProgress = 0;
+      let chModulesNotStarted = 0;
+      const needsAttention = [];
+
+      const moduleDetails = modules.map((mod) => {
+        const segCount = segmentParser.countModuleSegments(book, chapterLabel, mod.moduleId);
+        const edits = editLookup[mod.moduleId];
+        const review = reviewLookup[mod.moduleId];
+
+        const edited = edits ? edits.segments_edited : 0;
+        const approved = edits ? edits.approved + edits.applied : 0;
+        const rejected = edits ? edits.rejected : 0;
+        const pending = edits ? edits.pending : 0;
+        const discuss = edits ? edits.discuss : 0;
+
+        // Module status: complete if all segments approved, in-progress if any edits, else not-started
+        let status = 'not-started';
+        if (approved >= segCount && segCount > 0) {
+          status = 'complete';
+          chModulesComplete++;
+        } else if (edited > 0 || review) {
+          status = 'in-progress';
+          chModulesInProgress++;
+        } else {
+          chModulesNotStarted++;
+        }
+
+        // Attention items
+        if (rejected > 0) {
+          needsAttention.push(`${mod.moduleId}: ${rejected} rejected`);
+        }
+        if (discuss > 0) {
+          needsAttention.push(`${mod.moduleId}: ${discuss} in discussion`);
+        }
+        if (review && review.status === 'pending') {
+          needsAttention.push(`${mod.moduleId}: awaiting review`);
+        }
+
+        return {
+          moduleId: mod.moduleId,
+          hasFaithful: mod.hasFaithful,
+          segmentCount: segCount,
+          segmentsEdited: edited,
+          segmentsApproved: approved,
+          pending,
+          rejected,
+          discuss,
+          status,
+          reviewStatus: review ? review.status : null,
+        };
+      });
+
+      totalModulesInProgress += chModulesInProgress;
+      totalModulesNotStarted += chModulesNotStarted;
+
+      return {
+        chapter: chapterNum,
+        modules: modules.length,
+        segmentsTotal: chProgress.totalSegments,
+        segmentsEdited: chProgress.editedSegments,
+        segmentsApproved: chProgress.approvedSegments,
+        percentComplete: chProgress.percentComplete,
+        modulesComplete: chModulesComplete,
+        modulesInProgress: chModulesInProgress,
+        modulesNotStarted: chModulesNotStarted,
+        needsAttention,
+        moduleDetails,
+      };
+    });
+
+    res.json({
+      book,
+      summary: {
+        totalModules: progress.summary.totalModules,
+        totalSegments: progress.summary.totalSegments,
+        segmentsEdited: progress.summary.editedSegments,
+        segmentsApproved: progress.summary.approvedSegments,
+        modulesComplete: progress.summary.modulesComplete,
+        modulesInProgress: totalModulesInProgress,
+        modulesNotStarted: totalModulesNotStarted,
+        percentComplete: progress.summary.percentComplete,
+      },
+      chapters: chapterProgress,
+      attention: {
+        discussEdits: bookDiscussEdits.length,
+        pendingReviews: pendingReviews.length,
+        items: bookDiscussEdits.slice(0, 10).map((e) => ({
+          type: 'discuss',
+          moduleId: e.module_id,
+          chapter: e.chapter,
+          segmentId: e.segment_id,
+          note: e.editor_note,
+        })),
+      },
+    });
+  } catch (err) {
+    log.error({ err }, 'Error building editorial progress');
+    res.status(500).json({ error: 'Failed to build editorial progress' });
+  }
+});
 
 /**
  * GET /api/status/:book
@@ -1262,7 +1427,7 @@ router.get('/:book/:chapter/sections', requireAuth, (req, res) => {
       })),
     });
   } catch (err) {
-    console.error('Error getting section status:', err);
+    log.error({ err }, 'Error getting section status');
     res.status(500).json({
       error: 'Failed to get section status',
       message: err.message,

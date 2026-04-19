@@ -7,33 +7,10 @@
  * - Analytics events for usage tracking
  */
 
-const Database = require('better-sqlite3');
-const path = require('path');
-const fs = require('fs');
+module.exports = {
+  name: '005-feedback',
 
-const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
-
-function migrate() {
-  // Ensure database directory exists
-  const dbDir = path.dirname(DB_PATH);
-  if (!fs.existsSync(dbDir)) {
-    fs.mkdirSync(dbDir, { recursive: true });
-  }
-
-  const db = new Database(DB_PATH);
-
-  try {
-    // Check if migration is already applied
-    const tables = db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='feedback'").get();
-
-    if (tables) {
-      console.log('Migration 005-feedback already applied');
-      db.close();
-      return { success: true, alreadyApplied: true };
-    }
-
-    console.log('Applying migration: Adding feedback and analytics tables...');
-
+  up(db) {
     // Create feedback table
     db.exec(`
       CREATE TABLE IF NOT EXISTS feedback (
@@ -65,7 +42,6 @@ function migrate() {
       CREATE INDEX IF NOT EXISTS idx_feedback_created_at
         ON feedback(created_at);
     `);
-    console.log('  Created feedback table');
 
     // Create feedback_responses table (for admin replies)
     db.exec(`
@@ -83,7 +59,6 @@ function migrate() {
       CREATE INDEX IF NOT EXISTS idx_feedback_responses_feedback
         ON feedback_responses(feedback_id);
     `);
-    console.log('  Created feedback_responses table');
 
     // Create analytics_events table (for usage tracking)
     db.exec(`
@@ -109,7 +84,6 @@ function migrate() {
       CREATE INDEX IF NOT EXISTS idx_analytics_events_session
         ON analytics_events(session_id);
     `);
-    console.log('  Created analytics_events table');
 
     // Create trigger to update feedback.updated_at
     db.exec(`
@@ -120,57 +94,5 @@ function migrate() {
           UPDATE feedback SET updated_at = CURRENT_TIMESTAMP WHERE id = OLD.id;
         END;
     `);
-    console.log('  Created update timestamp trigger');
-
-    console.log('Migration 005-feedback completed successfully');
-    db.close();
-
-    return { success: true };
-  } catch (err) {
-    console.error('Migration failed:', err.message);
-    db.close();
-    return { success: false, error: err.message };
-  }
-}
-
-function rollback() {
-  if (!fs.existsSync(DB_PATH)) {
-    console.log('Database does not exist, nothing to rollback');
-    return { success: true };
-  }
-
-  const db = new Database(DB_PATH);
-
-  try {
-    console.log('Rolling back migration: Removing feedback and analytics tables...');
-
-    db.exec(`
-      DROP TRIGGER IF EXISTS update_feedback_timestamp;
-      DROP TABLE IF EXISTS analytics_events;
-      DROP TABLE IF EXISTS feedback_responses;
-      DROP TABLE IF EXISTS feedback;
-    `);
-
-    console.log('Rollback completed successfully');
-    db.close();
-
-    return { success: true };
-  } catch (err) {
-    console.error('Rollback failed:', err.message);
-    db.close();
-    return { success: false, error: err.message };
-  }
-}
-
-// Run migration if executed directly
-if (require.main === module) {
-  const args = process.argv.slice(2);
-
-  if (args.includes('--rollback')) {
-    rollback();
-  } else {
-    migrate();
-  }
-}
-
-module.exports = { migrate, rollback };
+  },
+};

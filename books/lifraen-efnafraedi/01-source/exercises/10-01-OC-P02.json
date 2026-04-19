@@ -1,0 +1,459 @@
+{
+  "images": [
+    {
+      "created_at": "2025-04-28T16:09:59.595Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaE1UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--255fcb5639efa738ceead0d1205118db7e0f3100",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaE1UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--255fcb5639efa738ceead0d1205118db7e0f3100/OChem_10_EC_201a.jpg"
+    },
+    {
+      "created_at": "2025-04-28T16:09:59.601Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9443797bc5e92dce8cfe002c4f3265fec98dd2fc",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9443797bc5e92dce8cfe002c4f3265fec98dd2fc/OChem_10_EC_201b.jpg"
+    },
+    {
+      "created_at": "2025-04-28T16:09:59.604Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8b8b95553f68eb30d07b33701ef5ba610a8341c4",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8b8b95553f68eb30d07b33701ef5ba610a8341c4/OChem_10_EC_201c.jpg"
+    },
+    {
+      "created_at": "2025-04-28T16:09:59.607Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjhaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7c224d94b0b326d24d49f4cea753da6f34fde902",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjhaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7c224d94b0b326d24d49f4cea753da6f34fde902/OSX_OrgChem_10_DD_A-EC10-2a_img.jpg"
+    },
+    {
+      "created_at": "2025-04-28T16:09:59.613Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0FaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--34c20facc6b70a775829bbcf53e6544a7cf306b3",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0FaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--34c20facc6b70a775829bbcf53e6544a7cf306b3/OSX_OrgChem_10_DD_A-EC10-2b_img.jpg"
+    },
+    {
+      "created_at": "2025-04-28T16:09:59.616Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0VaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9897b03837fbe0e4adde87c3e1913909f1d847f6",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0VaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9897b03837fbe0e4adde87c3e1913909f1d847f6/OSX_OrgChem_10_DD_A-EC10-2c_img%20.jpg"
+    },
+    {
+      "created_at": "2025-04-28T16:09:59.620Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0laIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3714ca44bfaab1f389984635dc93079acad7bb7f",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0laIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3714ca44bfaab1f389984635dc93079acad7bb7f/OSX_OrgChem_10_DD_A-EC10-2e_img.jpg"
+    },
+    {
+      "created_at": "2025-04-28T16:09:59.752Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHNrIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f1b5782b29ac756de829ee567a02f22898feb86d",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHNrIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f1b5782b29ac756de829ee567a02f22898feb86d/OSX_OrgChem_10_DD_A-EC10-2e_img.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:5da8a7ae-ade6-4f73-bf5c-bae6ed870ed3",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:10-1-names-and-structures-of-alkyl-halides"
+  ],
+  "uuid": "734796f5-6554-4f25-b3e5-8035fa34e9b6",
+  "group_uuid": "89cf1107-4f1c-4516-beaf-593706e1848c",
+  "number": 37248,
+  "version": 7,
+  "uid": "37248@7",
+  "published_at": "2025-04-28T16:10:01.926Z",
+  "nickname": "10-01-OC-P02",
+  "solutions_are_public": true,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "Draw structures corresponding to the following IUPAC names:",
+  "questions": [
+    {
+      "id": 554986,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "2-Chloro-3,3-dimethylhexane",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjhaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7c224d94b0b326d24d49f4cea753da6f34fde902/OSX_OrgChem_10_DD_A-EC10-2a_img.jpg\" alt=\"A six-carbon chain with a chlorine on C 2 and two methyl groups on C 3.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 554987,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "3,3-Dichloro-2-methylhexane",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0FaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--34c20facc6b70a775829bbcf53e6544a7cf306b3/OSX_OrgChem_10_DD_A-EC10-2b_img.jpg\" alt=\"A six-carbon chain with a methyl group on C 2 and two chlorines on C 3.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 554988,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "3-Bromo-3-ethylpentane",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0VaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9897b03837fbe0e4adde87c3e1913909f1d847f6/OSX_OrgChem_10_DD_A-EC10-2c_img%20.jpg\" alt=\"A five-carbon chain with an ethyl group and a bromine on C 3.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 554989,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "1,1-Dibromo-4-isopropylcyclohexane",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaE1UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--255fcb5639efa738ceead0d1205118db7e0f3100/OChem_10_EC_201a.jpg\" alt=\"The structure of 1,1-dibromo-4-isopropylcyclohexane.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 554990,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "4-<i>sec</i>-Butyl-2-chlorononane",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHNrIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f1b5782b29ac756de829ee567a02f22898feb86d/OSX_OrgChem_10_DD_A-EC10-2e_img.jpg\" alt=\"A nine-carbon chain with a chlorine on C 2 and a four-carbon chain, connected at the second carbon, on C 4.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 554991,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "1,1-Dibromo-4-<i>tert</i>-butylcyclohexane",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8b8b95553f68eb30d07b33701ef5ba610a8341c4/OChem_10_EC_201c.jpg\" alt=\"The structure of 1,1-dibromo-4-tert-butylcyclohexane.\">"
+        }
+      ],
+      "community_solutions": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    7,
+    6,
+    5,
+    4,
+    3,
+    2,
+    1
+  ]
+}

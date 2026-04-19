@@ -1,0 +1,446 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-19T20:46:03.042Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmtRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2b25d3ff1e978d54d8074c37867acbbed1cdf0ba",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmtRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2b25d3ff1e978d54d8074c37867acbbed1cdf0ba/OChem_03_EC_201b.jpg"
+    },
+    {
+      "created_at": "2023-08-19T20:46:03.045Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcm9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--abb2b2acccfd754abe841442b21cb103a697a1e3",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcm9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--abb2b2acccfd754abe841442b21cb103a697a1e3/OChem_03_EC_201a.jpg"
+    },
+    {
+      "created_at": "2023-08-19T20:46:03.047Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcnNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1405cc0211a5ce0c605cc35a8ffd2d05c3657dbc",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcnNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1405cc0211a5ce0c605cc35a8ffd2d05c3657dbc/OChem_03_EC_201c.jpg"
+    },
+    {
+      "created_at": "2023-08-19T20:46:03.050Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcndRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--69a4aa6ec7bba3f6637dbbd08561f85c7d1ba75b",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcndRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--69a4aa6ec7bba3f6637dbbd08561f85c7d1ba75b/OChem_03_EC_201d.jpg"
+    },
+    {
+      "created_at": "2023-08-19T20:46:03.052Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjBRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ebeee4876938eef749267531fdfe2237c27e67e7",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjBRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ebeee4876938eef749267531fdfe2237c27e67e7/OChem_03_EC_201e.jpg"
+    },
+    {
+      "created_at": "2023-08-19T20:46:03.054Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c891c1fcb613250c31dbccb754cce2a62396eddf",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c891c1fcb613250c31dbccb754cce2a62396eddf/OChem_03_EC_201f.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:23d8c448-dbf4-40db-8db7-19055bb6f66a",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:3-1-functional-groups"
+  ],
+  "uuid": "55df8e3f-ba66-4cb2-9eed-84bac378c9f6",
+  "group_uuid": "aadafd7b-a633-44e8-b458-2f61b67a1ddd",
+  "number": 36418,
+  "version": 4,
+  "uid": "36418@4",
+  "published_at": "2023-08-19T20:46:07.331Z",
+  "nickname": "03-01-OC-P02",
+  "solutions_are_public": true,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "Propose structures for simple molecules that contain the following functional groups:",
+  "questions": [
+    {
+      "id": 357587,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "Alcohol",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcm9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--abb2b2acccfd754abe841442b21cb103a697a1e3/OChem_03_EC_201a.jpg\" alt=\"The chemical structure of methanol that has an alcohol functional group.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 357588,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "Aromatic ring",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmtRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2b25d3ff1e978d54d8074c37867acbbed1cdf0ba/OChem_03_EC_201b.jpg\" alt=\"The chemical structure of toluene that has an aromatic ring functional group.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 357589,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "Carboxylic acid",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcnNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1405cc0211a5ce0c605cc35a8ffd2d05c3657dbc/OChem_03_EC_201c.jpg\" alt=\"The chemical structure of acetic acid that has a carboxylic acid functional group.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 357590,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "Amine",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcndRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--69a4aa6ec7bba3f6637dbbd08561f85c7d1ba75b/OChem_03_EC_201d.jpg\" alt=\"The chemical structure of methylamine that has an amine functional group.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 357591,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "Both ketone and amine",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjBRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ebeee4876938eef749267531fdfe2237c27e67e7/OChem_03_EC_201e.jpg\" alt=\"The chemical structure of methyl acetamide that has a carbonyl and an amino functional group.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 357592,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "Two double bonds",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c891c1fcb613250c31dbccb754cce2a62396eddf/OChem_03_EC_201f.jpg\" alt=\"The chemical structure of 1,3-butadiene that has two double bonds functional group.\">"
+        }
+      ],
+      "community_solutions": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    4,
+    3,
+    2,
+    1
+  ]
+}

@@ -194,7 +194,11 @@
           els.loading.style.display = 'none';
           els.wrapper.style.display = '';
         } catch (err) {
-          els.loading.textContent = 'Villa við að hlaða prófíl.';
+          els.loading.innerHTML =
+            '<div style="text-align:center;padding:2rem;">' +
+            '<p style="margin-bottom:1rem;">Prófíll finnst ekki í gagnagrunni. Hafðu samband við kerfisstjóra.</p>' +
+            '<a href="/" class="btn btn-secondary">← Til baka</a>' +
+            '</div>';
           console.error('Failed to load profile:', err);
         }
       }

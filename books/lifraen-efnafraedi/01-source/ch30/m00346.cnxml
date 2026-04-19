@@ -1,0 +1,73 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Stereochemistry of Cycloadditions</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Stereochemistry of Cycloadditions</md:title>
+    <md:content-id>m00346</md:content-id>
+    <md:uuid>32de1e3c-f4ca-465c-88bc-02be6b22f113</md:uuid>
+  </metadata>
+  <content>
+<para id="para-00001">How can we predict whether a given cycloaddition reaction will occur with suprafacial or with antarafacial geometry? According to frontier orbital theory, a cycloaddition reaction takes place when a bonding interaction occurs between the HOMO of one reactant and the LUMO of the other. An intuitive explanation of this rule is to imagine that one reactant donates electrons to the other. As with electrocyclic reactions, it’s the electrons in the HOMO of the first reactant that are least tightly held and most likely to be donated. Of course when the second reactant accepts those electrons, they must go into a vacant, unoccupied orbital—the LUMO.</para>
+<para id="para-00002">For a [4 + 2] cycloaddition (Diels–Alder reaction), let’s arbitrarily select the diene LUMO and the alkene HOMO. The symmetries of the two ground-state orbitals are such that bonding of the terminal lobes can occur with suprafacial geometry (<link target-id="fig-00001"/>), so the Diels–Alder reaction takes place readily under thermal conditions. Note that, as with electrocyclic reactions, we need be concerned only with the terminal lobes. For purposes of prediction, interactions among the interior lobes need not be considered.</para>
+<figure class="scaled-down" id="fig-00001">
+<media alt="The orbital structures of diene LUMO with alkene HOMO through suprafacial addition form cyclohexene. Addition is suprafacial because lobe signs match.">
+<image mime-type="image/jpeg" src="../../media/OChem_30_06_001.jpg"/>
+</media>
+<caption><emphasis effect="bold">Interaction of diene LUMO and alkene HOMO in a suprafacial [4 + 2] cycloaddition reaction (Diels–Alder reaction).</emphasis></caption>
+</figure>
+<para id="para-00003">In contrast with the thermal [4 + 2] Diels–Alder reaction, the [2 + 2] cycloaddition of two alkenes to yield a cyclobutane can only occur photochemically. The explanation for this follows from orbital-symmetry arguments. Looking at the ground-state HOMO of one alkene and the LUMO of the second alkene, it’s apparent that a thermal [2 + 2] cycloaddition must take place by an antarafacial pathway (<link target-id="fig-00002"/>a). Geometric constraints make the antarafacial transition state difficult, however, and so concerted thermal [2 + 2] cycloadditions are not observed.</para>
+<para id="para-00004">In contrast with the thermal process, photochemical [2 + 2] cycloadditions <emphasis effect="italics">are</emphasis> observed. Irradiation of an alkene with UV light excites an electron from <emphasis effect="italics">ψ</emphasis><sub>1</sub>, the ground-state HOMO, to <emphasis effect="italics">ψ</emphasis><sub>2</sub>*, which becomes the excited-state HOMO. Interaction between the excited-state HOMO of one alkene and the LUMO of the second alkene allows a photochemical [2 + 2] cycloaddition reaction to occur by a suprafacial pathway (<link target-id="fig-00002"/>b).</para>
+<figure class="scaled-down" id="fig-00002">
+<media alt="Ground state LUMO and HOMO (thermal) react antarafacially but form no product due to strain. Excited state HOMO and ground state LUMO (photochemical) react suprafacially to form cyclobutane.">
+<image mime-type="image/jpeg" src="../../media/OChem_30_06_002.jpg"/>
+</media>
+<caption><emphasis effect="bold">(a) Interaction of a ground-state HOMO and a ground-state LUMO in a potential [2 + 2] cycloaddition does not occur thermally because the antarafacial geometry is too strained. (b) Interaction of an excited-state HOMO and a ground-state LUMO in a photochemical [2 + 2] cycloaddition reaction is less strained, however, and occurs with suprafacial geometry</emphasis>.</caption>
+</figure>
+<para id="para-00005">The photochemical [2 + 2] cycloaddition reaction occurs smoothly, particularly with <emphasis effect="italics">α</emphasis>,<emphasis effect="italics">β</emphasis>-unsaturated carbonyl compounds, and represents one of the best methods known for synthesizing cyclobutane rings. For example:</para>
+<figure class="unnumbered scaled-down" id="fig-00003">
+<media alt="2-cyclohexanone reacts with 2-methylpropene and light to form cyclohexanone fused with cyclobutane; there is a methyl group on a wedge bond at each ortho-fused carbon. 40% yield.">
+<image mime-type="image/jpeg" src="../../media/OChem_30_06_003.jpg"/>
+</media>
+</figure>
+<para id="para-00006">Thermal and photochemical cycloaddition reactions always take place with opposite stereochemistry. As with electrocyclic reactions, we can categorize cycloadditions according to the total number of electron pairs (double bonds) involved in the rearrangement. Thus, a thermal [4 + 2] Diels–Alder reaction between a diene and a dienophile involves an odd number (three) of electron pairs and takes place by a suprafacial pathway. A thermal [2 + 2] reaction between two alkenes involves an even number (two) of electron pairs and must take place by an antarafacial pathway. For photochemical cyclizations, these selectivities are reversed. These general rules are given in <link target-id="table-00001"/>.</para>
+<table summary="" id="table-00001">
+<title>Stereochemical Rules for Cycloaddition Reactions</title>
+<tgroup cols="3">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<thead>
+<row valign="top">
+<entry valign="top" align="left">Electron pairs (double bonds)</entry>
+<entry valign="top" align="left"><span class="magenta-text">Thermal reaction</span></entry>
+<entry valign="top" align="left"><span class="green-text">Photochemical reaction</span></entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry valign="top" align="left">Even number</entry>
+<entry valign="top" align="left">Antarafacial</entry>
+<entry valign="top" align="left">Suprafacial</entry>
+</row>
+<row valign="top">
+<entry valign="top" align="left">Odd number</entry>
+<entry valign="top" align="left">Suprafacial</entry>
+<entry valign="top" align="left">Antarafacial</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<section class="section-exercises" id="sect-00001">
+<title>Problems</title>
+<exercise id="exer-00001">
+<problem id="prob-00001">
+<para id="para-00007"><link class="os-embed" url="#exercise/30-06-OC-P05"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00002">
+<problem id="prob-00002">
+<para id="para-00008"><link class="os-embed" url="#exercise/30-06-OC-P06"/></para>
+</problem>
+</exercise>
+</section>
+</content>
+</document>

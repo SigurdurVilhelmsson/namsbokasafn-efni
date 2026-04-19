@@ -1,0 +1,47 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Catabolism of Triacylglycerols: The Fate of Glycerol</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Catabolism of Triacylglycerols: The Fate of Glycerol</md:title>
+    <md:content-id>m00331</md:content-id>
+    <md:uuid>b8899ff7-7b0a-412c-9b9a-eaf4221dafea</md:uuid>
+  </metadata>
+  <content>
+<para id="para-00001">The metabolic breakdown of triacylglycerols begins with their hydrolysis in the stomach and small intestine to yield glycerol plus fatty acids. The reaction is catalyzed by a lipase, whose mechanism is shown in <link target-id="fig-00001"/>. The active site of the enzyme contains a catalytic triad of aspartic acid, histidine, and serine residues, which act cooperatively to provide the necessary acid and base catalysis for the individual steps. Hydrolysis is accomplished by two sequential nucleophilic acyl substitution reactions, one that covalently binds an acyl group to the side chain  –OH of a serine residue on the enzyme and a second that frees the fatty acid from the enzyme.</para>
+<figure class="mechanism-figure scaled-down" id="fig-00001">
+<title>MECHANISM</title>
+<media alt="Mechanism of lipase hydrolysis involves the formation of enzyme- fatty acid tetrahedral intermediates, sequential hydrolysis, followed by the release of the acid and regeneration of the enzyme's active site.">
+<image mime-type="image/jpeg" src="../../media/OChem_29_02_001.jpg"/>
+</media>
+<caption><emphasis effect="bold">Mechanism for the action of lipase.</emphasis> The active site of the enzyme contains a catalytic triad of aspartic acid, histidine, and serine, which react cooperatively to carry out two nucleophilic acyl substitution reactions. Individual steps are explained in the text.</caption>
+</figure>
+<section id="sect-00003">
+<title/>
+<section id="sect-00001">
+<title>Steps <span class="magenta-text">1</span>–<span class="magenta-text">2</span> of <link target-id="fig-00001"/>: Acyl Enzyme Formation</title>
+<para id="para-00002">The first nucleophilic acyl substitution step—reaction of the triacylglycerol with the active-site serine to give an acyl enzyme—begins with deprotonation of the serine alcohol by histidine to form the more strongly nucleophilic alkoxide ion. This proton transfer is facilitated by a nearby side-chain carboxylate anion of aspartic acid, which makes the histidine more basic and stabilizes the resultant histidine cation by electrostatic interactions. The deprotonated serine adds to a carbonyl group of a triacylglycerol to give a tetrahedral intermediate, which expels a diacylglycerol as a leaving group and produces an acyl enzyme. This step is catalyzed by a proton transfer from histidine to make the leaving group a neutral alcohol.</para>
+<figure class="unnumbered scaled-down" id="fig-00002">
+<media alt="An enzyme reacts with triacyl glycerol to give a tetrahedral intermediate. This intermediate decomposes to form an acyl enzyme and diacyl glycerol.">
+<image mime-type="image/jpeg" src="../../media/OChem_29_02_002.jpg"/>
+</media>
+</figure>
+</section>
+<section id="sect-00002">
+<title>Steps <span class="magenta-text">3</span>–<span class="magenta-text">4</span> of <link target-id="fig-00001"/>: Hydrolysis</title>
+<para id="para-00003">The second nucleophilic acyl substitution step hydrolyzes the acyl enzyme and gives the free fatty acid by a mechanism analogous to that of the first two steps. Water is deprotonated by histidine to give hydroxide ion, which adds to the enzyme-bound acyl group. The tetrahedral intermediate then expels the neutral serine residue as the leaving group, freeing the fatty acid and returning the enzyme to its active form.</para>
+<figure class="unnumbered scaled-down" id="fig-00003">
+<media alt="An acyl-enzyme ester forms a tetrahedral intermediate. This intermediate decomposes and releases  the acid and regeneration of the enzyme's active site.">
+<image mime-type="image/jpeg" src="../../media/OChem_29_02_003.jpg"/>
+</media>
+</figure>
+<para id="para-00004">The fatty acids released on triacylglycerol hydrolysis are transported to mitochondria and degraded to acetyl CoA, while the glycerol is carried to the liver for further metabolism. In the liver, glycerol is first phosphorylated by reaction with ATP and then oxidized by NAD<sup>+</sup>. The resulting dihydroxyacetone phosphate (DHAP) enters the carbohydrate glycolysis pathway, which we’ll discuss in <link document="m00334"/>.</para>
+<figure class="unnumbered scaled-down" id="fig-00004">
+<media alt="Glycerol reacts with adenosine triphosphate to form sn-glycerol-3-phosphate and adenosine diphosphate.  sn-Glycerol phosphate is reduced by nicotinamide adenine dinucleotide cation to form dihydroxyacetone phosphate and nicotinamide adenine dinucleotide hydride.">
+<image mime-type="image/jpeg" src="../../media/OChem_29_02_004.jpg"/>
+</media>
+</figure>
+<para id="para-00005">You might note that C2 of glycerol is a prochiral center (<link document="m00060"/>) with two identical “arms.” As is typical for enzyme-catalyzed reactions, the phosphorylation of glycerol is selective. Only the pro-<emphasis effect="italics">R</emphasis> arm undergoes reaction, although this can’t be predicted in advance.</para>
+<para id="para-00006">Note also that the phosphorylation product is named <emphasis effect="italics">sn</emphasis>-glycerol 3-phosphate, where the <emphasis effect="italics">sn</emphasis>- prefix means “stereospecific numbering.” In this convention, the molecule is drawn as a Fischer projection with the  − OH group at C2 pointing to the left and the glycerol carbon atoms numbered from the top.</para>
+</section>
+</section>
+</content>
+</document>

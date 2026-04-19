@@ -1,0 +1,534 @@
+{
+  "chapters": [
+    {
+      "chapter": 1,
+      "title": "Structure and Bonding",
+      "modules": [
+        "m00157",
+        "m00158",
+        "m00159",
+        "m00160",
+        "m00161",
+        "m00162",
+        "m00163",
+        "m00164",
+        "m00165",
+        "m00166",
+        "m00167",
+        "m00168",
+        "m00169"
+      ]
+    },
+    {
+      "chapter": 2,
+      "title": "Polar Covalent Bonds; Acids and Bases",
+      "modules": [
+        "m00017",
+        "m00018",
+        "m00019",
+        "m00020",
+        "m00021",
+        "m00022",
+        "m00023",
+        "m00024",
+        "m00025",
+        "m00026",
+        "m00027",
+        "m00028",
+        "m00029"
+      ]
+    },
+    {
+      "chapter": 3,
+      "title": "Organic Compounds: Alkanes and Their Stereochemistry",
+      "modules": [
+        "m00031",
+        "m00032",
+        "m00033",
+        "m00034",
+        "m00035",
+        "m00036",
+        "m00037",
+        "m00038"
+      ]
+    },
+    {
+      "chapter": 4,
+      "title": "Organic Compounds: Cycloalkanes and Their Stereochemistry",
+      "modules": [
+        "m00039",
+        "m00040",
+        "m00041",
+        "m00042",
+        "m00043",
+        "m00044",
+        "m00045",
+        "m00046",
+        "m00047",
+        "m00048"
+      ]
+    },
+    {
+      "chapter": 5,
+      "title": "Stereochemistry at Tetrahedral Centers",
+      "modules": [
+        "m00049",
+        "m00050",
+        "m00051",
+        "m00052",
+        "m00053",
+        "m00054",
+        "m00055",
+        "m00056",
+        "m00057",
+        "m00058",
+        "m00059",
+        "m00060",
+        "m00061"
+      ]
+    },
+    {
+      "chapter": 6,
+      "title": "An Overview of Organic Reactions",
+      "modules": [
+        "m00076",
+        "m00077",
+        "m00078",
+        "m00080",
+        "m00081",
+        "m00082",
+        "m00079",
+        "m00083",
+        "m00084",
+        "m00085",
+        "m00086",
+        "m00087"
+      ]
+    },
+    {
+      "chapter": 7,
+      "title": "Alkenes: Structure and Reactivity",
+      "modules": [
+        "m00062",
+        "m00063",
+        "m00064",
+        "m00065",
+        "m00066",
+        "m00067",
+        "m00068",
+        "m00069",
+        "m00070",
+        "m00071",
+        "m00072",
+        "m00073"
+      ]
+    },
+    {
+      "chapter": 8,
+      "title": "Alkenes: Reactions and Synthesis",
+      "modules": [
+        "m00088",
+        "m00089",
+        "m00090",
+        "m00091",
+        "m00092",
+        "m00093",
+        "m00094",
+        "m00095",
+        "m00096",
+        "m00097",
+        "m00098",
+        "m00099",
+        "m00100",
+        "m00101"
+      ]
+    },
+    {
+      "chapter": 9,
+      "title": "Alkynes: An Introduction to Organic Synthesis",
+      "modules": [
+        "m00102",
+        "m00103",
+        "m00104",
+        "m00105",
+        "m00106",
+        "m00107",
+        "m00108",
+        "m00109",
+        "m00110",
+        "m00111"
+      ]
+    },
+    {
+      "chapter": 10,
+      "title": "Organohalides",
+      "modules": [
+        "m00112",
+        "m00113",
+        "m00114",
+        "m00115",
+        "m00116",
+        "m00117",
+        "m00118",
+        "m00119",
+        "m00120"
+      ]
+    },
+    {
+      "chapter": 11,
+      "title": "Reactions of Alkyl Halides: Nucleophilic Substitutions and Eliminations",
+      "modules": [
+        "m00121",
+        "m00122",
+        "m00123",
+        "m00124",
+        "m00125",
+        "m00126",
+        "m00127",
+        "m00128",
+        "m00129",
+        "m00130",
+        "m00131",
+        "m00132",
+        "m00133"
+      ]
+    },
+    {
+      "chapter": 12,
+      "title": "Structure Determination: Mass Spectrometry and Infrared Spectroscopy",
+      "modules": [
+        "m00134",
+        "m00135",
+        "m00136",
+        "m00137",
+        "m00138",
+        "m00139",
+        "m00140",
+        "m00141",
+        "m00142"
+      ]
+    },
+    {
+      "chapter": 13,
+      "title": "Structure Determination: Nuclear Magnetic Resonance Spectroscopy",
+      "modules": [
+        "m00143",
+        "m00144",
+        "m00145",
+        "m00146",
+        "m00147",
+        "m00148",
+        "m00149",
+        "m00150",
+        "m00151",
+        "m00152",
+        "m00153",
+        "m00154",
+        "m00155",
+        "m00156"
+      ]
+    },
+    {
+      "chapter": 14,
+      "title": "Conjugated Compounds and Ultraviolet Spectroscopy",
+      "modules": [
+        "m00170",
+        "m00171",
+        "m00172",
+        "m00173",
+        "m00174",
+        "m00175",
+        "m00176",
+        "m00177",
+        "m00178",
+        "m00179"
+      ]
+    },
+    {
+      "chapter": 15,
+      "title": "Benzene and Aromaticity",
+      "modules": [
+        "m00180",
+        "m00181",
+        "m00182",
+        "m00183",
+        "m00184",
+        "m00185",
+        "m00186",
+        "m00187"
+      ]
+    },
+    {
+      "chapter": 16,
+      "title": "Chemistry of Benzene: Electrophilic Aromatic Substitution",
+      "modules": [
+        "m00188",
+        "m00189",
+        "m00190",
+        "m00191",
+        "m00192",
+        "m00193",
+        "m00194",
+        "m00195",
+        "m00196",
+        "m00197",
+        "m00198"
+      ]
+    },
+    {
+      "chapter": 17,
+      "title": "Alcohols and Phenols",
+      "modules": [
+        "m00199",
+        "m00200",
+        "m00201",
+        "m00202",
+        "m00203",
+        "m00204",
+        "m00205",
+        "m00206",
+        "m00207",
+        "m00208",
+        "m00209",
+        "m00210"
+      ]
+    },
+    {
+      "chapter": 18,
+      "title": "Ethers and Epoxides; Thiols and Sulfides",
+      "modules": [
+        "m00075",
+        "m00074",
+        "m00249",
+        "m00250",
+        "m00251",
+        "m00252",
+        "m00253",
+        "m00254",
+        "m00255"
+      ]
+    },
+    {
+      "chapter": 19,
+      "title": "Aldehydes and Ketones: Nucleophilic Addition Reactions",
+      "modules": [
+        "m00211",
+        "m00212",
+        "m00213",
+        "m00214",
+        "m00215",
+        "m00216",
+        "m00217",
+        "m00218",
+        "m00219",
+        "m00220",
+        "m00221",
+        "m00222",
+        "m00223",
+        "m00224",
+        "m00225"
+      ]
+    },
+    {
+      "chapter": 20,
+      "title": "Carboxylic Acids and Nitriles",
+      "modules": [
+        "m00229",
+        "m00230",
+        "m00231",
+        "m00232",
+        "m00233",
+        "m00234",
+        "m00235",
+        "m00236",
+        "m00237"
+      ]
+    },
+    {
+      "chapter": 21,
+      "title": "Carboxylic Acid Derivatives: Nucleophilic Acyl Substitution Reactions",
+      "modules": [
+        "m00238",
+        "m00239",
+        "m00240",
+        "m00241",
+        "m00242",
+        "m00243",
+        "m00244",
+        "m00245",
+        "m00246",
+        "m00247",
+        "m00248"
+      ]
+    },
+    {
+      "chapter": 22,
+      "title": "Carbonyl Alpha-Substitution Reactions",
+      "modules": [
+        "m00256",
+        "m00257",
+        "m00258",
+        "m00259",
+        "m00260",
+        "m00261",
+        "m00262",
+        "m00263"
+      ]
+    },
+    {
+      "chapter": 23,
+      "title": "Carbonyl Condensation Reactions",
+      "modules": [
+        "m00272",
+        "m00276",
+        "m00277",
+        "m00278",
+        "m00279",
+        "m00280",
+        "m00281",
+        "m00282",
+        "m00283",
+        "m00284",
+        "m00285",
+        "m00286",
+        "m00287",
+        "m00288"
+      ]
+    },
+    {
+      "chapter": 24,
+      "title": "Amines and Heterocycles",
+      "modules": [
+        "m00273",
+        "m00289",
+        "m00290",
+        "m00291",
+        "m00292",
+        "m00293",
+        "m00294",
+        "m00295",
+        "m00296",
+        "m00297",
+        "m00298"
+      ]
+    },
+    {
+      "chapter": 25,
+      "title": "Biomolecules: Carbohydrates",
+      "modules": [
+        "m00274",
+        "m00299",
+        "m00300",
+        "m00301",
+        "m00302",
+        "m00303",
+        "m00304",
+        "m00305",
+        "m00306",
+        "m00307",
+        "m00308"
+      ]
+    },
+    {
+      "chapter": 26,
+      "title": "Biomolecules: Amino Acids, Peptides, and Proteins",
+      "modules": [
+        "m00275",
+        "m00318",
+        "m00319",
+        "m00320",
+        "m00321",
+        "m00322",
+        "m00323",
+        "m00324",
+        "m00325",
+        "m00326",
+        "m00327",
+        "m00328"
+      ]
+    },
+    {
+      "chapter": 27,
+      "title": "Biomolecules: Lipids",
+      "modules": [
+        "m00264",
+        "m00265",
+        "m00266",
+        "m00267",
+        "m00268",
+        "m00269",
+        "m00270",
+        "m00271"
+      ]
+    },
+    {
+      "chapter": 28,
+      "title": "Biomolecules: Nucleic Acids",
+      "modules": [
+        "m00309",
+        "m00310",
+        "m00311",
+        "m00312",
+        "m00313",
+        "m00314",
+        "m00315",
+        "m00316",
+        "m00317"
+      ]
+    },
+    {
+      "chapter": 29,
+      "title": "The Organic Chemistry of Metabolic Pathways",
+      "modules": [
+        "m00329",
+        "m00330",
+        "m00331",
+        "m00332",
+        "m00333",
+        "m00334",
+        "m00335",
+        "m00336",
+        "m00337",
+        "m00338",
+        "m00339"
+      ]
+    },
+    {
+      "chapter": 30,
+      "title": "Orbitals and Organic Chemistry: Pericyclic Reactions",
+      "modules": [
+        "m00340",
+        "m00341",
+        "m00342",
+        "m00343",
+        "m00344",
+        "m00345",
+        "m00346",
+        "m00347",
+        "m00348",
+        "m00349"
+      ]
+    },
+    {
+      "chapter": 31,
+      "title": "Synthetic Polymers",
+      "modules": [
+        "m00350",
+        "m00351",
+        "m00352",
+        "m00353",
+        "m00354",
+        "m00355",
+        "m00356",
+        "m00357"
+      ]
+    }
+  ],
+  "preface": "m00001",
+  "appendixModules": [
+    "m00016",
+    "m00030",
+    "m00226",
+    "m00228"
+  ]
+}

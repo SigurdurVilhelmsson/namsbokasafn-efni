@@ -1,0 +1,117 @@
+{
+  "generated": "2026-03-30T20:03:42.153Z",
+  "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]])",
+  "summary": {
+    "totalChecked": 10,
+    "perfect": 2,
+    "withDiscrepancies": 8,
+    "skippedUntranslated": 0,
+    "totalDiscrepancies": 34
+  },
+  "modules": [
+    {
+      "moduleId": "m58781",
+      "chapter": "ch01",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -3
+        },
+        {
+          "tag": "foreign",
+          "diff": -1
+        },
+        {
+          "tag": "term",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m58782",
+      "chapter": "ch01",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -3
+        },
+        {
+          "tag": "term",
+          "diff": 7
+        }
+      ]
+    },
+    {
+      "moduleId": "m58783",
+      "chapter": "ch01",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -5
+        }
+      ]
+    },
+    {
+      "moduleId": "m58802",
+      "chapter": "ch05",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -3
+        },
+        {
+          "tag": "term",
+          "diff": 2
+        }
+      ]
+    },
+    {
+      "moduleId": "m58803",
+      "chapter": "ch05",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -2
+        }
+      ]
+    },
+    {
+      "moduleId": "m58804",
+      "chapter": "ch05",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": 3
+        },
+        {
+          "tag": "term",
+          "diff": 1
+        }
+      ]
+    },
+    {
+      "moduleId": "m58805",
+      "chapter": "ch05",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        },
+        {
+          "tag": "term",
+          "diff": 1
+        }
+      ]
+    },
+    {
+      "moduleId": "m58806",
+      "chapter": "ch05",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        }
+      ]
+    }
+  ]
+}

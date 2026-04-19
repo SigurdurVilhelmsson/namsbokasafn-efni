@@ -1,0 +1,632 @@
+{
+  "moduleId": "m66373",
+  "title": {
+    "segmentId": "m66373:title:auto-1",
+    "text": "Components and Structure"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "b646317c-8aae-4962-b0a3-5519d34d35e5",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to do the following:",
+      "items": [
+        "Understand the cell membrane fluid mosaic model",
+        "Describe phospholipid, protein, and carbohydrate functions in membranes",
+        "Discuss membrane fluidity"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-id2013222",
+      "segmentId": "m66373:para:fs-id2013222"
+    },
+    {
+      "type": "para",
+      "id": "fs-id2012431",
+      "segmentId": "m66373:para:fs-id2012431"
+    },
+    {
+      "type": "section",
+      "id": "fs-id2078559",
+      "class": null,
+      "title": {
+        "segmentId": "m66373:title:fs-id2078559-title",
+        "text": "Fluid Mosaic Model"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-id1964600",
+          "class": null,
+          "title": {
+            "segmentId": "m66373:title:fs-id1964600-title",
+            "text": "Phospholipids"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1807984",
+              "segmentId": "m66373:para:fs-id1807984"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1696367",
+              "segmentId": "m66373:para:fs-id1696367"
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch05_01_02",
+              "caption": {
+                "segmentId": "m66373:caption:fig-ch05_01_02-caption"
+              },
+              "media": {
+                "id": "fs-id1634665",
+                "alt": "An illustration of a phospholipid shows a hydrophilic head group composed of phosphate connected to a three-carbon glycerol molecule, and two hydrophobic tails composed of long hydrocarbon chains.",
+                "src": "../../media/Figure_05_01_02.png",
+                "mimeType": "image/png"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-id1912365",
+              "segmentId": "m66373:para:fs-id1912365"
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch05_01_03",
+              "caption": {
+                "segmentId": "m66373:caption:fig-ch05_01_03-caption"
+              },
+              "media": {
+                "id": "fs-id1626927",
+                "alt": "The image on the left shows a spherical lipid bilayer, shown as a half sphere whose surface is covered in the spherical polar heads, and thin, strandlike tails extend inward.  In the core of the sphere is another half sphere, with the same anatomy but with the polar heads facing inward and the strandlike tails facing out toward the tails of the outer layer. The image on the right shows a smaller sphere that has a single lipid layer only, with the spherical heads facing outward. The image at the bottom shows a lipid bilayer sheet; whose polar heads form the upper and lower surfaces, with tails extending toward each other in the middle.",
+                "src": "../../media/Figure_05_01_03-f9be.jpg",
+                "mimeType": "image/jpg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-id1870614",
+          "class": null,
+          "title": {
+            "segmentId": "m66373:title:fs-id1870614-title",
+            "text": "Proteins"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1786880",
+              "segmentId": "m66373:para:fs-id1786880"
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch05_01_04",
+              "caption": {
+                "segmentId": "m66373:caption:fig-ch05_01_04-caption"
+              },
+              "media": {
+                "id": "fs-id1721077",
+                "alt": "The left part of this illustration shows an integral membrane protein with a single alpha-helix that spans the membrane. The middle part shows a protein with several alpha-helices spanning the membrane. The right part shows a protein with two beta-sheets spanning the membrane.",
+                "src": "../../media/Figure_05_01_04-8e5f.jpg",
+                "mimeType": "image/jpg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-id1780876",
+              "segmentId": "m66373:para:fs-id1780876"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-id1443175",
+          "class": null,
+          "title": {
+            "segmentId": "m66373:title:fs-id1443175-title",
+            "text": "Carbohydrates"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1702908",
+              "segmentId": "m66373:para:fs-id1702908"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1472126",
+              "segmentId": "m66373:para:fs-id1472126"
+            },
+            {
+              "type": "note",
+              "id": "fs-id1394568",
+              "class": "evolution ",
+              "title": {
+                "segmentId": "m66373:note-title:fs-id1394568-title",
+                "text": "How Viruses Infect Specific Organs"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-id1450192",
+                  "segmentId": "m66373:para:fs-id1450192"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-id1397237",
+                  "segmentId": "m66373:para:fs-id1397237"
+                }
+              ]
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch05_01_05",
+              "caption": {
+                "segmentId": "m66373:caption:fig-ch05_01_05-caption"
+              },
+              "media": {
+                "id": "fs-id1422428",
+                "alt": "This illustration shows the plasma membrane of a T cell. C D 4 receptors extend from the membrane into the extracellular space. The H I V virus recognizes part of the C D 4 receptor and attaches to it.",
+                "src": "../../media/Figure_05_01_05-f922.jpg",
+                "mimeType": "image/jpg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-id2188439",
+          "segmentId": "m66373:para:fs-id2188439"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1511371",
+          "segmentId": "m66373:para:fs-id1511371"
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch05_01_01",
+          "caption": {
+            "segmentId": "m66373:caption:fig-ch05_01_01-caption"
+          },
+          "media": {
+            "id": "fs-id1786872",
+            "alt": "This illustration shows a phospholipid bilayer with proteins and cholesterol embedded in it. Integral membrane proteins span the entire membrane. Protein channels are integral membrane proteins with a central pore through which molecules can pass. Peripheral proteins are associated with the phospholipid head groups on one side of the membrane only. A glycoprotein is shown with the protein portion of the molecule embedded in the membrane and the carbohydrate portion jutting out from the membrane. A glycolipid is also shown with the lipid portion embedded in the membrane and the carbohydrate portion jutting out of the membrane.",
+            "src": "../../media/Figure_05_01_01-52bf.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1444105",
+          "segmentId": "m66373:para:fs-id1444105"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1772017",
+      "class": null,
+      "title": {
+        "segmentId": "m66373:title:fs-id1772017-title",
+        "text": "Membrane Fluidity"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id2075565",
+          "segmentId": "m66373:para:fs-id2075565"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1699791",
+          "segmentId": "m66373:para:fs-id1699791"
+        },
+        {
+          "type": "para",
+          "id": "fs-id2270965",
+          "segmentId": "m66373:para:fs-id2270965"
+        },
+        {
+          "type": "note",
+          "id": "fs-id1853625",
+          "class": "interactive",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1982720",
+              "segmentId": "m66373:para:fs-id1982720"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-id1479211",
+          "segmentId": "m66373:para:fs-id1479211"
+        },
+        {
+          "type": "table",
+          "id": "tab-ch05_01_01",
+          "class": "top-titled",
+          "summary": "This table provides the constituents of the plasma membrane and their respective functions.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m66373:entry:auto-36",
+                  "attributes": {
+                    "namest": "col1",
+                    "nameend": "col2",
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66373:entry:auto-37",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66373:entry:auto-38",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66373:entry:auto-39",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66373:entry:auto-40",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66373:entry:auto-41",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66373:entry:auto-42",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66373:entry:auto-43",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66373:entry:auto-44",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66373:entry:auto-45",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66373:entry:auto-46",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m66373:entry:auto-47",
+                  "attributes": {}
+                },
+                {
+                  "segmentId": "m66373:entry:auto-48",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "id": "fs-id1568867",
+          "class": "career ",
+          "title": {
+            "segmentId": "m66373:note-title:fs-id1568867-title",
+            "text": "Immunologist"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id2165483",
+              "segmentId": "m66373:para:fs-id2165483"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1870873",
+              "segmentId": "m66373:para:fs-id1870873"
+            },
+            {
+              "type": "para",
+              "id": "eip-597",
+              "segmentId": "m66373:para:eip-597"
+            },
+            {
+              "type": "para",
+              "id": "fs-id2072586",
+              "segmentId": "m66373:para:fs-id2072586"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id2199901",
+      "class": "summary",
+      "title": {
+        "segmentId": "m66373:title:fs-id2199901-title",
+        "text": "Section Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1806528",
+          "segmentId": "m66373:para:fs-id1806528"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1511648",
+      "class": "multiple-choice",
+      "title": {
+        "segmentId": "m66373:title:fs-id1511648-title",
+        "text": "Review Questions"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1511651",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1384518",
+                "segmentId": "m66373:problem:fs-id1384518"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1631652",
+                "segmentId": "m66373:solution:fs-id1631652"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1268735",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1450228",
+                "segmentId": "m66373:problem:fs-id1450228"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1768681",
+                "segmentId": "m66373:solution:fs-id1768681"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id2163365",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1461234",
+                "segmentId": "m66373:problem:fs-id1461234"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1912495",
+                "segmentId": "m66373:solution:fs-id1912495"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm71000716",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm74380428",
+                "segmentId": "m66373:problem:fs-idm74380428"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm200102077",
+                "segmentId": "m66373:solution:fs-idm200102077"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1626493",
+      "class": "critical-thinking",
+      "title": {
+        "segmentId": "m66373:title:fs-id1626493-title",
+        "text": "Critical Thinking Questions"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1520191",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1809118",
+                "segmentId": "m66373:problem:fs-id1809118"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1967384",
+                "segmentId": "m66373:solution:fs-id1967384"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1769864",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2273314",
+                "segmentId": "m66373:problem:fs-id2273314"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id2177121",
+                "segmentId": "m66373:solution:fs-id2177121"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm71000717",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm74380429",
+                "segmentId": "m66373:problem:fs-idm74380429"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm200102078",
+                "segmentId": "m66373:solution:fs-idm200102078"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m66373:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m66373:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m66373:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m66373:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-id2017376",
+        "termSegmentId": "m66373:glossary-term:fs-id2017376-term",
+        "definitionSegmentId": "m66373:glossary-def:fs-id2017376-def"
+      },
+      {
+        "id": "fs-id1808839",
+        "termSegmentId": "m66373:glossary-term:fs-id1808839-term",
+        "definitionSegmentId": "m66373:glossary-def:fs-id1808839-def"
+      },
+      {
+        "id": "fs-id1797326",
+        "termSegmentId": "m66373:glossary-term:fs-id1797326-term",
+        "definitionSegmentId": "m66373:glossary-def:fs-id1797326-def"
+      },
+      {
+        "id": "fs-id1594552",
+        "termSegmentId": "m66373:glossary-term:fs-id1594552-term",
+        "definitionSegmentId": "m66373:glossary-def:fs-id1594552-def"
+      },
+      {
+        "id": "fs-id1986487",
+        "termSegmentId": "m66373:glossary-term:fs-id1986487-term",
+        "definitionSegmentId": "m66373:glossary-def:fs-id1986487-def"
+      },
+      {
+        "id": "fs-id2292206",
+        "termSegmentId": "m66373:glossary-term:fs-id2292206-term",
+        "definitionSegmentId": "m66373:glossary-def:fs-id2292206-def"
+      },
+      {
+        "id": "fs-id2012482",
+        "termSegmentId": "m66373:glossary-term:fs-id2012482-term",
+        "definitionSegmentId": "m66373:glossary-def:fs-id2012482-def"
+      },
+      {
+        "id": "fs-id1756431",
+        "termSegmentId": "m66373:glossary-term:fs-id1756431-term",
+        "definitionSegmentId": "m66373:glossary-def:fs-id1756431-def"
+      }
+    ]
+  },
+  "sectionOrder": null
+}

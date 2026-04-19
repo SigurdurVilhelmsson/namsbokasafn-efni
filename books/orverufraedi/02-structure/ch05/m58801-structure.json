@@ -1,0 +1,38 @@
+{
+  "moduleId": "m58801",
+  "title": {
+    "segmentId": "m58801:title:auto-1",
+    "text": "Introduction"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "07ea945a-fd77-4d8a-9ba2-82c76919b130"
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "OSC_Microbio_05_00_splash",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m58801:caption:OSC_Microbio_05_00_splash-caption"
+      },
+      "media": {
+        "id": "fs-id1172099396016",
+        "alt": "Micrograph of a long cell. Micrograph of blood cells. Some have a red ring labeled “ring form”, others have dark dots and a larger ring labeled “young trophozoite”, and others have many dark dots and an amorphous structure labeled “schizont”. A photograph of mosquito netting over a bed.",
+        "src": "../../media/OSC_Microbio_05_00_splash.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-id1172101760045",
+      "segmentId": "m58801:para:fs-id1172101760045"
+    },
+    {
+      "type": "para",
+      "id": "fs-id1172094899467",
+      "segmentId": "m58801:para:fs-id1172094899467"
+    }
+  ],
+  "sectionOrder": null
+}

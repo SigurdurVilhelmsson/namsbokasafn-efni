@@ -13,6 +13,7 @@
 const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
+const log = require('../lib/logger');
 const { SIMPLE_STAGES } = require('../constants');
 const openstaxCatalogue = require('./openstaxCatalogue');
 const openstaxFetcher = require('./openstaxFetcher');
@@ -78,7 +79,7 @@ async function registerBook(options) {
       );
     }
 
-    console.log(`Fetching book structure from OpenStax GitHub...`);
+    log.info('Fetching book structure from OpenStax GitHub');
     bookData = await openstaxFetcher.fetchBookStructure(catalogueSlug);
 
     // Optionally save fetched data to local file for future use
@@ -94,7 +95,7 @@ async function registerBook(options) {
         fetchedAt: bookData.fetchedAt,
       };
       fs.writeFileSync(dataFilePath, JSON.stringify(saveData, null, 2));
-      console.log(`Saved book data to ${dataFilePath}`);
+      log.info({ path: dataFilePath }, 'Saved book data');
     }
   } else {
     // Load from local file
@@ -102,11 +103,12 @@ async function registerBook(options) {
 
     // Check if local file is incomplete compared to catalogue
     if (bookData.chapters && bookData.chapters.length < catalogueEntry.chapter_count) {
-      console.warn(
-        `Warning: Local data file has ${bookData.chapters.length} chapters but catalogue shows ${catalogueEntry.chapter_count}`
+      log.warn(
+        { localChapters: bookData.chapters.length, catalogueChapters: catalogueEntry.chapter_count },
+        'Local data file has fewer chapters than catalogue'
       );
       if (fetchFromOpenstax !== false) {
-        console.log('Use fetchFromOpenstax: true to fetch complete data from OpenStax');
+        log.info('Use fetchFromOpenstax: true to fetch complete data from OpenStax');
       }
     }
   }
@@ -118,7 +120,7 @@ async function registerBook(options) {
     if (forceReregister) {
       const existing = db.prepare('SELECT id FROM registered_books WHERE slug = ?').get(slug);
       if (existing) {
-        console.log(`Deleting existing registration for '${slug}'...`);
+        log.info({ slug }, 'Deleting existing registration');
         db.prepare(
           'DELETE FROM localization_logs WHERE section_id IN (SELECT id FROM book_sections WHERE book_id = ?)'
         ).run(existing.id);
@@ -401,12 +403,9 @@ function getRegisteredBook(slug) {
             pipelineProgress = computeChapterPipelineProgressFromDb(dbStatus);
           }
         } catch (err) {
-          console.warn(
-            '[bookRegistration] DB read failed for',
-            book.slug,
-            'chapter',
-            c.chapter_num,
-            err.message
+          log.warn(
+            { slug: book.slug, chapter: c.chapter_num, err },
+            'DB read failed for chapter pipeline status'
           );
         }
 

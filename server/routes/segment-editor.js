@@ -34,6 +34,7 @@
 const express = require('express');
 const router = express.Router();
 
+const log = require('../lib/logger');
 const segmentParser = require('../services/segmentParser');
 const segmentEditor = require('../services/segmentEditorService');
 const activityLog = require('../services/activityLog');
@@ -87,7 +88,7 @@ router.get('/reviews/:reviewId', requireAuth, requireRole(ROLES.EDITOR), (req, r
       );
     } catch (e) {
       // Module data is supplementary, don't fail the request
-      console.error('Could not load module data for review:', e.message);
+      log.error({ err: e }, 'Could not load module data for review');
     }
 
     res.json({
@@ -130,7 +131,7 @@ router.get('/:book/chapters', requireAuth, requireRole(ROLES.EDITOR), (req, res)
     const chapters = enrichChapters(book, chapterNums);
     res.json({ book, chapters });
   } catch (err) {
-    console.error('Error listing chapters:', err.message);
+    log.error({ err }, 'Error listing chapters');
     res.status(500).json({ error: err.message });
   }
 });
@@ -154,7 +155,7 @@ router.get(
         modules,
       });
     } catch (err) {
-      console.error('Error listing modules:', err.message);
+      log.error({ err }, 'Error listing modules');
       res.status(500).json({ error: err.message });
     }
   }
@@ -207,7 +208,7 @@ router.get(
         otherPendingSegments,
       });
     } catch (err) {
-      console.error('Error loading module:', err.message);
+      log.error({ err }, 'Error loading module');
       res.status(err.message.includes('not found') ? 404 : 500).json({ error: err.message });
     }
   }
@@ -265,8 +266,8 @@ router.post(
           section: req.params.moduleId,
           description: `${req.user.username} vistaði breytingu á ${req.params.moduleId}:${segmentId}`,
         });
-      } catch {
-        /* fire-and-forget */
+      } catch (logErr) {
+        log.error({ err: logErr }, 'Activity log failed');
       }
 
       res.json({
@@ -275,7 +276,7 @@ router.post(
         updated: result.updated,
       });
     } catch (err) {
-      console.error('Error saving segment edit:', err.message);
+      log.error({ err }, 'Error saving segment edit');
       res.status(500).json({ error: err.message });
     }
   }
@@ -345,8 +346,8 @@ router.post(
           section: req.params.moduleId,
           description: `${req.user.username} sendi ${req.params.moduleId} til yfirlestrar`,
         });
-      } catch {
-        /* fire-and-forget */
+      } catch (logErr) {
+        log.error({ err: logErr }, 'Activity log failed');
       }
     } catch (err) {
       const status = err.message.includes('already has') ? 409 : 500;
@@ -399,7 +400,7 @@ router.get('/review-queue', requireAuth, requireRole(ROLES.EDITOR), (req, res) =
 
     res.json({ reviews: items });
   } catch (err) {
-    console.error('Error getting review queue:', err);
+    log.error({ err }, 'Error getting review queue');
     res.status(500).json({ error: err.message });
   }
 });
@@ -554,7 +555,7 @@ router.post(
         } catch (applyErr) {
           // Auto-apply is best-effort; don't fail the review completion.
           // Head-editor can retry via POST /:book/:chapter/:moduleId/apply
-          console.error('Auto-apply after review failed:', applyErr.message);
+          log.error({ err: applyErr }, 'Auto-apply after review failed');
           applied = { error: applyErr.message, retryable: true };
         }
       }
@@ -570,8 +571,8 @@ router.post(
           section: result.module_id || '',
           description: `${req.user.username} lauk yfirferð á ${result.module_id || req.params.reviewId}`,
         });
-      } catch {
-        /* fire-and-forget */
+      } catch (logErr) {
+        log.error({ err: logErr }, 'Activity log failed');
       }
     } catch (err) {
       res.status(400).json({ error: err.message });
@@ -652,17 +653,15 @@ router.get(
         isContent: seg.is || '',
       }));
 
-      // Get book ID from registered_books (if available)
-      const bookId = req.query.bookId ? parseInt(req.query.bookId, 10) : null;
-
-      const termMatches = terminology.findTermsInSegments(segments, bookId);
+      // Pass book slug for domain-priority ranking
+      const termMatches = terminology.findTermsInSegments(segments, req.params.book);
 
       res.json({
         moduleId: req.params.moduleId,
         termMatches,
       });
     } catch (err) {
-      console.error('Error finding terms:', err.message);
+      log.error({ err }, 'Error finding terms');
       res.status(err.message.includes('not found') ? 404 : 500).json({ error: err.message });
     }
   }
@@ -746,8 +745,8 @@ router.post(
           section: req.params.moduleId,
           description: `${req.user.username} yfirfærði ${result.appliedCount} breytingu/ar á ${req.params.moduleId}`,
         });
-      } catch {
-        /* fire-and-forget */
+      } catch (logErr) {
+        log.error({ err: logErr }, 'Activity log failed');
       }
 
       res.json({
@@ -755,7 +754,7 @@ router.post(
         ...result,
       });
     } catch (err) {
-      console.error('Error applying edits:', err.message);
+      log.error({ err }, 'Error applying edits');
       const status =
         err.message.includes('No approved') || err.message.includes('already been') ? 400 : 500;
       res.status(status).json({ error: err.message });
@@ -811,8 +810,8 @@ router.post(
           section: req.params.moduleId,
           description: `${req.user.username} yfirfærði ${applyResult.appliedCount} breytingu/ar á ${req.params.moduleId} og ræsti leiðslu`,
         });
-      } catch {
-        /* fire-and-forget */
+      } catch (logErr) {
+        log.error({ err: logErr }, 'Activity log failed');
       }
 
       res.json({
@@ -822,7 +821,7 @@ router.post(
         message: 'Edits applied and pipeline started',
       });
     } catch (err) {
-      console.error('Error in apply-and-render:', err.message);
+      log.error({ err }, 'Error in apply-and-render');
       const status =
         err.message.includes('No approved') || err.message.includes('already been') ? 400 : 500;
       res.status(status).json({ error: err.message });
@@ -893,8 +892,126 @@ router.post(
         jobId,
       });
     } catch (err) {
-      console.error('Error in bulk apply:', err.message);
+      log.error({ err }, 'Error in bulk apply');
       res.status(500).json({ error: err.message });
+    }
+  }
+);
+
+// =====================================================================
+// CONTENT VERSIONING — history and rollback
+// =====================================================================
+
+const contentVersionService = require('../services/contentVersionService');
+
+/**
+ * GET /:book/:chapter/:moduleId/versions
+ * List all content versions for a module.
+ */
+router.get(
+  '/:book/:chapter/:moduleId/versions',
+  requireAuth,
+  requireRole(ROLES.EDITOR),
+  validateBookChapter,
+  (req, res) => {
+    try {
+      const versions = contentVersionService.getModuleVersions(
+        req.params.book,
+        req.params.moduleId
+      );
+      res.json({ versions });
+    } catch (err) {
+      log.error({ err }, 'Error loading versions');
+      res.status(500).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * GET /:book/:chapter/:moduleId/versions/:version
+ * Get content for a specific version (all segments).
+ */
+router.get(
+  '/:book/:chapter/:moduleId/versions/:version',
+  requireAuth,
+  requireRole(ROLES.EDITOR),
+  validateBookChapter,
+  (req, res) => {
+    try {
+      const segments = contentVersionService.getVersionContent(
+        req.params.book,
+        req.params.moduleId,
+        parseInt(req.params.version, 10)
+      );
+      res.json({ segments });
+    } catch (err) {
+      log.error({ err }, 'Error loading version content');
+      res.status(500).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * GET /:book/:chapter/:moduleId/segment-history/:segmentId
+ * Get version history for a specific segment.
+ */
+router.get(
+  '/:book/:chapter/:moduleId/segment-history/:segmentId',
+  requireAuth,
+  requireRole(ROLES.EDITOR),
+  validateBookChapter,
+  (req, res) => {
+    try {
+      const history = contentVersionService.getSegmentHistory(
+        req.params.book,
+        req.params.moduleId,
+        req.params.segmentId
+      );
+      res.json({ history });
+    } catch (err) {
+      log.error({ err }, 'Error loading segment history');
+      res.status(500).json({ error: err.message });
+    }
+  }
+);
+
+// =====================================================================
+// PREVIEW — render translated CNXML to HTML in-process
+// =====================================================================
+
+const renderService = require('../services/renderService');
+
+/**
+ * GET /:book/:chapter/:moduleId/preview
+ * Render a module's translated CNXML to HTML for live preview.
+ * Returns the rendered HTML as text/html.
+ *
+ * Query params:
+ *   track (optional, default: 'mt-preview') — which translation track to render
+ */
+router.get(
+  '/:book/:chapter/:moduleId/preview',
+  requireAuth,
+  requireRole(ROLES.EDITOR),
+  validateBookChapter,
+  async (req, res) => {
+    const { book, moduleId } = req.params;
+    const track = req.query.track || 'mt-preview';
+
+    try {
+      const { html } = await renderService.renderModule(book, req.chapterNum, moduleId, track);
+
+      res.type('html').send(html);
+    } catch (err) {
+      log.error({ err, book, moduleId }, 'Preview render failed');
+
+      if (err.message?.includes('not found')) {
+        return res.status(404).json({
+          error: 'Translated CNXML not found',
+          message: 'Run inject before previewing this module',
+        });
+      }
+      res.status(500).json({ error: 'Preview render failed: ' + err.message });
     }
   }
 );

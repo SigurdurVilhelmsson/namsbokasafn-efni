@@ -1,0 +1,254 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Lausn vandamála</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m42076</md:content-id>
+  <md:title>Lausn vandamála</md:title>
+  <md:abstract/>
+  <md:uuid>994814cc-52e2-4398-9a96-eae02025519e</md:uuid>
+</metadata>
+
+<content>
+<section id="sect-00001" class="learning-objectives">
+<title>Nám markmið</title>
+<para id="para-00001">Í lok þessa kafla muntu geta:</para>
+<list id="list-00001" list-type="bulleted">
+<item>Skilið og beitt aðferð til lausnar vandamála til að leysa vandamál með hreyfilögmálum Newtons.</item>
+</list>
+</section>
+<para id="import-auto-id2346467">Það er augljóslega nauðsynlegt að ná árangri í lausn vandamála til að skilja og beita eðlisfræðilegum lögmálum, að ekki sé minnst á þá brýnni þörf að standast próf. Grunnþættir lausnar vandamála, sem kynntir voru fyrr í þessum texta, eru notaðir hér, en áhersla er lögð á sérstakar aðferðir sem eru gagnlegar við beitingu hreyfilögmála Newtons. Þessar aðferðir styrkja einnig hugtök sem eru gagnleg á mörgum öðrum sviðum eðlisfræðinnar. Margar aðferðir til lausnar vandamála eru skýrt teknar fram í útreiknuðum dæmum og því ættu eftirfarandi aðferðir að styrkja færni sem þú hefur þegar byrjað að þróa.</para>
+<section id="import-auto-id2655652">
+<title>Aðferð til lausnar vandamála fyrir hreyfilögmál Newtons</title>
+<para id="eip-id1164943058959">Skref 1. Eins og venjulega er fyrst nauðsynlegt að bera kennsl á viðeigandi eðlisfræðileg lögmál. <emphasis effect="italics">Þegar búið er að ákvarða að hreyfilögmál Newtons eigi við (ef vandamálið felur í sér krafta), er sérstaklega mikilvægt að teikna vandlega skissu af aðstæðunum</emphasis>. Slík skissa er sýnd á <link target-id="import-auto-id1669409"/>(a). Síðan, eins og á <link target-id="import-auto-id1669409"/>(b), skal nota örvar til að tákna alla krafta, merkja þá vandlega og láta lengd þeirra og stefnu samsvara kröftunum sem þeir tákna (þegar nægar upplýsingar eru fyrir hendi).</para>
+<figure id="import-auto-id1669409"><media id="import-auto-id2112314" alt="(a) A sketch is shown of a man hanging from a vine. (b) The forces acting on the person, shown by vector arrows, are tension T, pointing upward at the hand of the man, F sub T, from the same point but in a downward direction, and weight W, acting downward from his stomach. (c) In figure (c) we define only the man as the system of interest. Tension T is acting upward from his hand. The weight W acts in a downward direction. In a free-body diagram W is shown by an arrow acting downward and T is shown by an arrow acting vertically upward. (d) Tension T is shown by an arrow vertically upward and another vector, weight W, is shown by an arrow vertically downward, both having the same lengths. It is indicated that T is equal to minus W.">
+          <image mime-type="image/jpg" src="../../media/Figure 04_06_01.jpg" width="550"/>
+        </media>
+
+      <caption>(a) Skissa af Tarzan hangandi í lágviðargrein. (b) Örvar eru notaðar til að tákna alla krafta. <m:math><m:mrow><m:mrow><m:mtext mathvariant="bold">T</m:mtext></m:mrow></m:mrow></m:math> er spennan í lágviðargreininni fyrir ofan Tarzan, <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>T</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> er krafturinn sem hann beitir á lágviðargreinina og <m:math><m:mrow><m:mrow><m:mtext mathvariant="bold">w</m:mtext></m:mrow></m:mrow></m:math> er þyngd hans. Gert er ráð fyrir að allir aðrir kraftar, svo sem ýting frá andvara, séu hverfandi. (c) Gerum ráð fyrir að massi apamannsins sé gefinn og við beðin um að finna spennuna í lágviðargreininni. Við skilgreinum þá kerfið sem áhugavert er eins og sýnt er og teiknum kraftamynd. <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>T</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> er ekki lengur sýndur, því hann er ekki kraftur sem verkar á kerfið sem áhugavert er; heldur verkar <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>T</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> á umheiminn. (d) Með því að sýna aðeins örvarnar er höfuð-við-hala aðferðin við samlagningu notuð. Það er augljóst að <m:math><m:mrow><m:mrow><m:mrow><m:mtext mathvariant="bold">T</m:mtext><m:mo stretchy="false">=</m:mo><m:mo>-</m:mo><m:mi mathvariant="bold">w</m:mi></m:mrow></m:mrow></m:mrow></m:math>, ef Tarzan er kyrrstæður.</caption></figure>
+<para id="eip-id1164942318757">Skref 2. Greindu hvað þarf að ákvarða og hvað er vitað eða hægt að álykta út frá lýsingu vandamálsins. Það er að segja, gerðu lista yfir þekktar og óþekktar stærðir. <emphasis effect="italics">Ákvarðaðu síðan vandlega kerfið sem áhugavert er</emphasis>. Þessi ákvörðun er mikilvægt skref, þar sem annað lögmál Newtons tekur aðeins til ytri krafta. Þegar kerfið sem áhugavert er hefur verið skilgreint, verður mögulegt að ákvarða hvaða kraftar eru ytri og hvaða eru innri, sem er nauðsynlegt skref til að beita öðru lögmáli Newtons. (Sjá <link target-id="import-auto-id1669409"/>(c).) Þriðja lögmál Newtons má nota til að ákvarða hvort kraftar verki milli hluta kerfis (innri) eða milli kerfisins og einhvers utan þess (ytri). Eins og sýnt var fyrr í þessum kafla, fer kerfið sem áhugavert er eftir því hvaða spurningu við þurfum að svara. Þetta val verður auðveldara með æfingu og þróast að lokum í nær ómeðvitað ferli. Færni í að skilgreina kerfi á skýran hátt mun einnig koma að góðum notum í síðari köflum. <newline/><newline/>Mynd sem sýnir kerfið sem áhugavert er og alla ytri krafta er kölluð <term id="import-auto-id1606094">kraftamynd (e. free-body diagram)</term>. Aðeins kraftar eru sýndir á kraftamyndum, ekki hröðun eða hraði. Við höfum teiknað nokkrar slíkar í útreiknuðum dæmum. <link target-id="import-auto-id1669409"/>(c) sýnir kraftamynd fyrir kerfið sem áhugavert er. Taktu eftir að engir innri kraftar eru sýndir á kraftamynd.</para>
+<para id="eip-id1164949480434">Skref 3. Þegar kraftamynd hefur verið teiknuð, <emphasis effect="italics">er hægt að beita öðru lögmáli Newtons til að leysa vandamálið</emphasis>. Þetta er gert á <link target-id="import-auto-id1669409"/>(d) fyrir tilteknar aðstæður. Almennt séð, þegar ytri kraftar eru skýrt skilgreindir á kraftamyndum, ætti það að vera einfalt verkefni að setja þá upp í jöfnur og leysa fyrir óþekktu stærðina, eins og gert hefur verið í öllum fyrri dæmum. Ef vandamálið er einvítt — það er að segja, ef allir kraftar eru samsíða — þá leggjast þeir saman eins og stigstærðir. Ef vandamálið er tvívítt, þá verður að brjóta það niður í tvö einvíð vandamál. Þetta er gert með því að varpa kraftvigrunum á ásakerfi sem valið er til þæginda. Eins og sést í fyrri dæmum getur val á ásum einfaldað vandamálið. Til dæmis, þegar um skáflöt er að ræða, er ásakerfi með einn ás samsíða skáflatnum og einn hornrétt á hann hentugast. Það er nánast alltaf hentugt að gera einn ás samsíða hreyfingarstefnunni, ef hún er þekkt.</para>
+<note id="fs-id1316241"><label/>
+      <title>Beiting annars lögmáls Newtons</title>
+      <para id="import-auto-id2325436">Áður en þú skrifar jöfnur fyrir heildarkraft er mikilvægt að ákvarða hvort kerfið sé að hraða sér í ákveðna stefnu. Ef hröðunin er núll í ákveðna stefnu, þá er heildarkrafturinn núll í þá stefnu. Á sama hátt, ef hröðunin er ekki núll í ákveðna stefnu, þá er heildarkrafturinn lýst með jöfnunni: <m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mrow><m:mtext>net</m:mtext></m:mrow></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mstyle fontstyle="italic"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow></m:math>.</para><para id="import-auto-id1606290">Til dæmis, ef kerfið er að hraða sér í lárétta stefnu, en ekki í lóðrétta stefnu, þá færðu eftirfarandi niðurstöður:</para>
+      <para id="import-auto-id2638663"><equation id="eip-id1449134"><m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net </m:mtext><m:mspace width="0.25em"/><m:mi>x</m:mi></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mstyle fontstyle="italic"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow><m:mo>,</m:mo></m:math></equation><equation id="eip-id1449134"><m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net </m:mtext><m:mspace width="0.25em"/><m:mi>x</m:mi></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mstyle fontstyle="italic"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow><m:mo>,</m:mo></m:math></equation></para><para id="import-auto-id1438026"><equation id="eip-id1478667"><m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net </m:mtext><m:mspace width="0.25em"/><m:mi>y</m:mi></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mn>0</m:mn></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math></equation><equation id="eip-id1478667"><m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net </m:mtext><m:mspace width="0.25em"/><m:mi>y</m:mi></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mn>0</m:mn></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math></equation></para><para id="import-auto-id1561210">Þú þarft þessar upplýsingar til að ákvarða óþekkta krafta sem verka í kerfi.</para>
+      </note>
+<para id="eip-id1164942802663">Skref 4. Eins og alltaf, <emphasis effect="italics">athugaðu lausnina til að sjá hvort hún sé skynsamleg</emphasis>. Í sumum tilfellum er þetta augljóst. Til dæmis er skynsamlegt að komast að því að núningur veldur því að hlutur rennur hægar niður skáflöt en þegar enginn núningur er til staðar. Í reynd þróast innsæi smám saman með lausn vandamála og með reynslu verður það sífellt auðveldara að meta hvort svar sé skynsamlegt. Önnur leið til að yfirfara lausnina er að athuga einingarnar. Ef þú ert að leysa fyrir kraft og endar með einingar m/s, þá hefur þú gert mistök.</para>
+</section>
+<section id="fs-id2154547" class="ap-test-prep">
+<title>Prófundirbúningur fyrir AP-námskeið</title>
+<exercise id="fs-id1642540" type="ap-test-prep">
+        <problem id="fs-id1743101">      
+        <para id="fs-id1681906">Snjósleði með tveimur farþegum hefur heildarmassa 85,0 kg. Þriðji aðilinn ýtir með krafti sem nemur 42,5 N í hreyfistefnu á snjósleða sem hreyfist á hallandi yfirborði efst á hæð sem hallar 15° niður á við. Núningskrafturinn á snjósleðann er 31,0 N. Hvaða fullyrðing lýsir nákvæmri kraftamynd til að tákna aðstæðurnar?</para><list id="fs-id1650867" list-type="enumerated" number-style="lower-alpha"><item>An arrow of magnitude 10.5 N points down the slope of the hill.</item>
+        <item>An arrow of magnitude 833 N points straight down.</item>
+        <item>An arrow of magnitude 833 N points perpendicular to the slope of the hill.</item>
+        <item>An arrow of magnitude 73.5 N points down the slope of the hill.</item>
+        </list></problem>
+        <solution id="fs-id1348979">
+        <para id="fs-id1435421">(b)</para></solution>
+        </exercise>
+<exercise id="fs-id1459777" type="ap-test-prep">
+        <problem id="fs-id1597774">      
+        <para id="fs-id1687824">Massi sem nemur 2,0 kg hangir í reipi úr lofti lyftu. Hver er spennan í reipinu þegar lyftan (i) hraðar sér upp á við um 1,5 m/s<sup>2</sup>? (ii) hraðar sér niður á við um 1,5 m/s<sup>2</sup>?</para><list id="fs-id1639217" list-type="enumerated" number-style="lower-alpha"><item>(i) 22.6 N; (ii) 16.6 N</item>
+        <item>Because the mass is hanging from the elevator itself, the tension in the rope will not change in either case.</item>
+        <item>(i) 22.6 N; (ii) 19.6 N</item>
+        <item>(i) 16.6 N; (ii) 19.6 N</item>
+        </list></problem>
+        <!--<solution id="fs-id1412646">
+        <para id="fs-id2158762">(a)</para></solution>-->
+        </exercise>
+<exercise id="fs-id1795701" type="ap-test-prep">
+        <problem id="fs-id1479760">      
+        <para id="fs-id1658020">Hvaða fullyrðing er sönn um teikningu kraftamynda?</para><list id="fs-id1660968" list-type="enumerated" number-style="lower-alpha"><item>Drawing a free-body diagram should be the last step in solving a problem about forces.</item>
+        <item>Drawing a free-body diagram helps you compare forces quantitatively.</item>
+        <item>The forces in a free-body diagram should always balance.</item>
+        <item>Drawing a free-body diagram can help you determine the net force.</item>
+        </list></problem>
+        <solution id="fs-id1095594">
+        <para id="fs-id946017">(d)</para></solution>
+        </exercise>
+</section>
+<section id="fs-id1452262" class="section-summary">
+<title>Samantekt kafla</title>
+<list id="fs-id2405830" list-type="bulleted">
+<item id="import-auto-id1655645">Til að leysa verkefni sem varða hreyfilögmál Newtons skaltu fylgja aðferðinni sem lýst er:
+<list id="fs-id2989991" list-type="enumerated" number-style="arabic">
+<item id="import-auto-id1435944">Teiknaðu skissu af verkefninu.</item>
+<item id="import-auto-id1304011">Greindu þekktar og óþekktar stærðir og greindu kerfið sem um ræðir. Teiknaðu kraftamynd, sem er skissa sem sýnir alla krafta sem verka á hlut. Hluturinn er táknaður með punkti og kraftarnir eru táknaðir með vigrum sem teygja sig í mismunandi áttir frá punktinum. Ef vigrar verka í áttir sem eru hvorki láréttar né lóðréttar skaltu leysa vigrana upp í lárétta og lóðrétta þætti og teikna þá á kraftamyndina.</item>
+<item id="import-auto-id2638784">Skrifaðu annað lögmál Newtons í lárétta og lóðrétta stefnu og leggðu saman kraftana sem verka á hlutinn. Ef hluturinn hraðar sér ekki í ákveðna átt (til dæmis, <m:math><m:mrow><m:mrow><m:mi>x</m:mi></m:mrow></m:mrow></m:math>-stefnu) þá er <m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net</m:mtext><m:mspace width="0.25em"/><m:mi>x</m:mi></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mn>0</m:mn></m:mrow></m:mrow></m:mrow></m:math>. Ef hluturinn hraðar sér í þá átt, þá er <m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net </m:mtext><m:mspace width="0.25em"/><m:mi>x</m:mi></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mstyle fontstyle="italic"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow></m:math>.</item>
+<item id="import-auto-id2664631">Farðu yfir svarið þitt. Er svarið eðlilegt? Eru einingarnar réttar?</item>
+</list>
+</item>
+</list>
+</section>
+<section id="fs-id2328021" class="problems-exercises">
+<title>Reikningsdæmi</title>
+<exercise id="fs-id1250439" type="problems-exercises"><problem id="fs-id1778338">
+        <para id="import-auto-id2320259"><m:math><m:mrow><m:mrow><m:mrow><m:mn>5</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>00</m:mtext><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>5</m:mn></m:mrow></m:msup></m:mrow><m:mtext>-kg</m:mtext></m:mrow></m:mrow></m:mrow></m:math> eldflaug hraðar sér beint upp. Hreyflar hennar framleiða <m:math><m:mrow><m:mrow><m:mrow><m:mn>1</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>250</m:mtext><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>7</m:mn></m:mrow></m:msup><m:mspace width="0.25em"/></m:mrow><m:mtext> N</m:mtext></m:mrow></m:mrow></m:mrow></m:math> af knýtikrafti og loftmótstaðan er <m:math><m:mrow><m:mrow><m:mrow><m:mn>4</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>50</m:mtext><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>6</m:mn></m:mrow></m:msup></m:mrow><m:mspace width="0.25em"/><m:mtext> N</m:mtext></m:mrow></m:mrow></m:mrow></m:math>. Hver er hröðun eldflaugarinnar? Sýndu sérstaklega hvernig þú fylgir skrefunum í aðferðafræði við lausn verkefna fyrir hreyfilögmál Newtons.</para></problem>
+<solution id="fs-id1443649">
+
+
+      <media id="import-auto-id1289213" alt="An object of mass m is shown. Three forces acting on it are tension T, shown by an arrow acting vertically upward, and friction f and gravity m g, shown by two arrows acting vertically downward.">
+          <image mime-type="image/jpg" src="../../media/Figure_04_06_02.jpg" height="150"/>
+        </media>
+<para id="import-auto-id2660432">Með því að nota kraftamyndina:</para>
+      <para id="import-auto-id1443940"><m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net</m:mtext></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mrow><m:mi>T</m:mi><m:mo stretchy="false">−</m:mo><m:mi>f</m:mi><m:mo stretchy="false">−</m:mo><m:mi>m</m:mi><m:mi>g</m:mi></m:mrow></m:mrow><m:mo stretchy="false">=</m:mo><m:mstyle fontstyle="italic"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow></m:math>,</para><para id="import-auto-id2687812">þannig að</para>
+      <para id="import-auto-id1437388"><m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:mrow><m:mrow><m:mi>a</m:mi><m:mo stretchy="false">=</m:mo><m:mfrac><m:mrow><m:mi>T</m:mi><m:mrow><m:mi/><m:mo stretchy="false">−</m:mo><m:mi/></m:mrow><m:mi>f</m:mi><m:mrow><m:mi/><m:mo stretchy="false">−</m:mo><m:mi/></m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>mg</m:mtext></m:mrow></m:mstyle></m:mrow><m:mi>m</m:mi></m:mfrac></m:mrow><m:mo stretchy="false">=</m:mo><m:mfrac><m:mrow><m:mn>1</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>250</m:mtext><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>7</m:mn></m:mrow></m:msup><m:mspace width="0.25em"/></m:mrow><m:mrow><m:mtext> N</m:mtext><m:mo stretchy="false">−</m:mo><m:mn>4.50</m:mn></m:mrow><m:mrow><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mtext>6 </m:mtext></m:mrow></m:msup></m:mrow><m:mspace width="0.25em"/><m:mrow><m:mi>N</m:mi><m:mo stretchy="false">−</m:mo><m:mo stretchy="false">(</m:mo></m:mrow><m:mn>5.00</m:mn><m:mrow><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>5</m:mn></m:mrow></m:msup><m:mspace width="0.25em"/></m:mrow><m:mtext> kg</m:mtext><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mn>9.</m:mn><m:msup><m:mtext>80 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo></m:mrow><m:mrow><m:mn>5.00</m:mn><m:mrow><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>5</m:mn></m:mrow></m:msup></m:mrow><m:mspace width="0.25em"/><m:mtext> kg</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo stretchy="false">=</m:mo><m:mtext>6.20</m:mtext></m:mrow><m:mspace width="0.25em"/><m:msup><m:mtext> m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:mrow></m:mrow></m:math>.</para></solution>
+      </exercise>
+<exercise id="fs-id2651416" type="problems-exercises"><problem id="fs-id1224285">
+        <para id="import-auto-id2403850">Hjól meðalstórs bíls beita 2100 N krafti aftur á veginn til að hraða bílnum í framstefnu. Ef núningskrafturinn, að meðtalinni loftmótstöðu, er 250 N og hröðun bílsins er <m:math><m:mrow><m:mrow><m:mrow><m:mn>1</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>80 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:mrow></m:mrow></m:math>, hver er massi bílsins ásamt farþegum? Sýndu sérstaklega hvernig þú fylgir skrefunum í aðferðafræði við lausn verkefna fyrir hreyfilögmál Newtons. Fyrir þessar aðstæður skaltu teikna kraftamynd og skrifa heildarkraftsjöfnuna.</para></problem></exercise>
+<exercise id="fs-id1630579" type="problems-exercises"><problem id="fs-id1564510">
+        <para id="import-auto-id2127634">Reiknaðu kraftinn sem 70,0 kg hástökkvari verður að beita á jörðina til að framkalla hröðun upp á við sem er 4,00 sinnum þyngdarhröðunin. Sýndu sérstaklega hvernig þú fylgir skrefunum í aðferðafræði við lausn verkefna fyrir hreyfilögmál Newtons.</para>
+      </problem>
+<solution id="fs-id1392214">
+  <list id="fs-id1746594" list-type="enumerated" number-style="arabic" class="stepwise"><item>Use Newton’s laws of motion.
+
+
+      <media id="import-auto-id1382796" alt="Two forces are acting on an object of mass m: F, shown by an arrow pointing upward, and its weight w, shown by an arrow pointing downward. Acceleration a is represented by a vector arrow pointing upward. The figure depicts the forces acting on a high jumper.">
+          <image mime-type="image/jpg" src="../../media/Figure_04_06_03.jpg" height="150"/>
+        </media>
+    </item>
+      <item>Given : <m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:mi>a</m:mi><m:mo stretchy="false">=</m:mo><m:mn>4.00</m:mn></m:mrow><m:mrow><m:mi>g</m:mi><m:mo stretchy="false">=</m:mo><m:mo stretchy="false">(</m:mo></m:mrow><m:mn>4.00</m:mn><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mn>9.</m:mn><m:msup><m:mtext>80 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">=</m:mo><m:mtext>39.2</m:mtext></m:mrow><m:mspace width="0.25em"/><m:msup><m:mtext> m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup><m:mtext> ; </m:mtext><m:mspace width="0.25em"/></m:mrow></m:mrow></m:mrow></m:math><m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:mi>m</m:mi><m:mo stretchy="false">=</m:mo><m:mtext>70</m:mtext></m:mrow><m:mtext>.</m:mtext><m:mtext>0 kg</m:mtext></m:mrow></m:mrow></m:mrow></m:math>,
+      <para id="import-auto-id2378459">Finndu: <m:math><m:mrow><m:mrow><m:mrow><m:mi>F</m:mi></m:mrow></m:mrow></m:mrow></m:math>.</para></item>
+      <item><m:math><m:mrow/></m:math><m:math><m:mrow/></m:math><m:math><m:mrow><m:mrow><m:mrow><m:mo stretchy="false">∑</m:mo><m:mrow><m:mi>F</m:mi><m:mtext>=+</m:mtext><m:mrow><m:mrow><m:mi>F</m:mi><m:mo stretchy="false">−</m:mo><m:mi>w</m:mi></m:mrow><m:mo stretchy="false">=</m:mo><m:mstyle fontstyle="italic"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle></m:mrow><m:mtext> ,</m:mtext></m:mrow></m:mrow></m:mrow></m:mrow></m:math> so that <m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:mrow><m:mrow><m:mi>F</m:mi><m:mo stretchy="false">=</m:mo><m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle><m:mo stretchy="false">+</m:mo><m:mi>w</m:mi></m:mrow></m:mrow><m:mo stretchy="false">=</m:mo><m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle><m:mo stretchy="false">+</m:mo><m:mstyle fontstyle="italic"><m:mrow><m:mtext>mg</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow><m:mo stretchy="false">=</m:mo><m:mi>m</m:mi></m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mi>a</m:mi><m:mo stretchy="false">+</m:mo><m:mi>g</m:mi></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mrow></m:math>.
+      <para id="import-auto-id2033223"><m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:mi>F</m:mi><m:mo stretchy="false">=</m:mo><m:mo stretchy="false">(</m:mo></m:mrow><m:mtext>70.0 kg</m:mtext><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">[</m:mo><m:mo stretchy="false">(</m:mo><m:mtext>39</m:mtext><m:mtext>.</m:mtext><m:msup><m:mtext>2 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">+</m:mo><m:mo stretchy="false">(</m:mo></m:mrow><m:mn>9</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>80 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo></m:mrow></m:mrow></m:mrow></m:math><m:math><m:mrow><m:mrow><m:mrow><m:mrow/><m:mo stretchy="false">=</m:mo><m:mrow><m:mi/><m:mn>3.</m:mn><m:mrow><m:mtext>43</m:mtext><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>3</m:mn></m:mrow></m:msup></m:mrow><m:mtext> N</m:mtext></m:mrow></m:mrow></m:mrow></m:mrow></m:math>. Krafturinn sem hástökkvarinn beitir er í raun niður á jörðina, en <m:math><m:mrow><m:mrow><m:mrow><m:mi>F</m:mi></m:mrow></m:mrow></m:mrow></m:math> er upp frá jörðinni og fær hann til að stökkva.</para></item>
+      <item>This result is reasonable, since it is quite possible for a person to exert a force of the magnitude of <m:math><m:mrow><m:mrow><m:mrow><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>3</m:mn></m:mrow></m:msup><m:mspace width="0.25em"/><m:mtext> N</m:mtext></m:mrow></m:mrow></m:mrow></m:math>.
+        </item>
+  </list></solution>
+      </exercise>
+<exercise id="fs-id1682349" type="problems-exercises"><problem id="fs-id2671484">
+        <para id="import-auto-id2337831">Þegar 40,0 kg fimleikakona lendir eftir stórfenglega heljarstökk dregur hún úr hraða með því að ýta beint niður á dýnuna. Reiknaðu kraftinn sem hún verður að beita ef hraðaminnkun hennar er 7,00 sinnum þyngdarhröðunin. Sýndu sérstaklega hvernig þú fylgir skrefunum í aðferðafræði við lausn verkefna fyrir hreyfilögmál Newtons.</para>
+      </problem></exercise>
+<exercise id="fs-id666647" type="problems-exercises"><problem id="fs-id1730999">
+        <para id="import-auto-id2310982">Flutningalest samanstendur af tveimur <m:math>
+<m:mn>8.00</m:mn>
+<m:mo>× </m:mo>
+<m:msup>
+<m:mn>10</m:mn>
+<m:mn>4</m:mn>
+</m:msup>
+
+<m:mtext>-kg</m:mtext>
+</m:math> eimreiðum og 45 vögnum með meðalmassa <m:math>
+<m:mn>5.50</m:mn>
+<m:mo>× </m:mo>
+<m:msup>
+<m:mn>10</m:mn>
+<m:mn>4</m:mn>
+</m:msup><m:mspace width="0.25em"/>
+<m:mtext>kg</m:mtext>
+</m:math>. (a) Hvaða krafti verður hvor eimreið að beita aftur á teinana til að hraða lestinni um <m:math><m:mrow><m:mrow><m:mrow><m:mn>5.00</m:mn><m:mrow><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mtext>–2</m:mtext></m:mrow></m:msup></m:mrow><m:mspace width="0.25em"/><m:msup><m:mtext> m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:mrow></m:mrow></m:math> ef núningskrafturinn er <m:math><m:mrow><m:mrow><m:mrow><m:mn>7</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>50</m:mtext><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>5</m:mn></m:mrow></m:msup></m:mrow><m:mspace width="0.25em"/><m:mtext> N</m:mtext></m:mrow></m:mrow></m:mrow></m:math>, að því gefnu að eimreiðarnar beiti eins kröftum? Þetta er ekki stór núningskraftur fyrir svo massamikið kerfi. Veltinúningur fyrir lestir er lítill og þar af leiðandi eru lestir mjög orkunýtnir flutningsmáta. (b) Hver er krafturinn í tengingunni milli 37. og 38. vagnsins (þetta er krafturinn sem hvor beitir á hinn), að því gefnu að allir vagnar hafi sama massa og að núningur dreifist jafnt á alla vagna og eimreiðar?</para></problem>
+<solution id="fs-id2331892">
+      <para id="import-auto-id953713">(a) <m:math><m:mrow><m:mrow><m:mrow><m:mn>4</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>41</m:mtext><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>5</m:mn></m:mrow></m:msup></m:mrow><m:mspace width="0.25em"/><m:mtext> N</m:mtext></m:mrow></m:mrow></m:mrow></m:math></para><para id="import-auto-id1550695">(b) <m:math><m:mrow><m:mrow><m:mrow><m:mn>1</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>50</m:mtext><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>5</m:mn></m:mrow></m:msup></m:mrow><m:mspace width="0.25em"/><m:mtext> N</m:mtext></m:mrow></m:mrow></m:mrow></m:math></para></solution>
+      </exercise>
+<exercise id="fs-id1662012" type="problems-exercises"><problem id="fs-id1481440">
+        <para id="import-auto-id2096990">Farþegaflugvélum er stundum ýtt frá farþegasvæðinu með dráttarvél. (a) 1800 kg dráttarvél beitir <m:math><m:mrow><m:mrow><m:mrow><m:mn>1</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>75</m:mtext><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>4</m:mn></m:mrow></m:msup></m:mrow><m:mspace width="0.25em"/><m:mtext> N</m:mtext></m:mrow></m:mrow></m:mrow></m:math> krafti aftur á malbikið og kerfið verður fyrir kröftum sem standa gegn hreyfingu og nema samtals 2400 N. Ef hröðunin er <m:math><m:mrow><m:mrow><m:mrow><m:mn>0</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>150 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:mrow></m:mrow></m:math>, hver er massi flugvélarinnar? (b) Reiknaðu kraftinn sem dráttarvélin beitir á flugvélina, að því gefnu að 2200 N af núningnum verki á flugvélina. (c) Teiknaðu tvær skissur sem sýna kerfin sem um ræðir og notuð eru til að leysa hvorn hluta, þar með talið kraftamyndir fyrir hvort um sig.</para></problem></exercise>
+<exercise id="fs-id1673888" type="problems-exercises"><problem id="fs-id2097453">
+        <para id="import-auto-id1458235">1100 kg bíll dregur bát á kerru. (a) Hver er heildarkrafturinn sem vinnur gegn hreyfingu bílsins, bátsins og kerrunnar ef bíllinn beitir 1900 N krafti á veginn og framkallar hröðun upp á <m:math><m:mrow><m:mrow><m:mrow><m:mn>0</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>550 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:mrow></m:mrow></m:math>? Massi bátsins og kerrunnar er 700 kg. (b) Hver er krafturinn í dráttarbeislinu milli bílsins og kerrunnar ef 80% af viðnámskröftunum verka á bátinn og kerruna?</para>
+      </problem>
+<solution id="fs-id1556049">
+      <para id="import-auto-id1559426">(a) <m:math><m:mrow><m:mrow><m:mrow><m:mtext>910 N</m:mtext></m:mrow></m:mrow></m:mrow></m:math></para><para id="import-auto-id1309096">(b) <m:math><m:mrow><m:mrow><m:mrow><m:mn>1</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>11</m:mtext><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>3</m:mn></m:mrow></m:msup></m:mrow><m:mspace width="0.25em"/><m:mtext> N</m:mtext></m:mrow></m:mrow></m:mrow></m:math></para></solution>
+      </exercise>
+<exercise id="fs-id1333485" type="problems-exercises"><problem id="fs-id2616874">
+        <para id="import-auto-id2189594">(a) Finndu stærðir kraftanna <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mn>1</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> og <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> sem leggjast saman og mynda heildarkraftinn <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>tot</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> sem sýndur er á <link target-id="import-auto-id2639094"/>. Þetta má gera annaðhvort með myndrænni framsetningu eða með hornafræði. (b) Sýndu með myndrænni framsetningu að sami heildarkraftur fæst óháð því í hvaða röð <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mn>1</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> og <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math> er lagt saman. (c) Finndu stefnu og stærð annars vigurpars sem leggst saman og gefur <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mtext>tot</m:mtext>
+</m:msub></m:mrow></m:mrow></m:math>. Teiknaðu þá í réttum hlutföllum á sömu teikningu og notuð var í lið (b) eða á svipaða mynd.</para></problem></exercise>
+<figure id="import-auto-id2639094"><media id="import-auto-id1746395" alt="A right triangle is shown made up of three vectors. The first vector, F sub one, is along the triangle’s base toward the right; the second vector, F sub two, is along the perpendicular side pointing upward; and the third vector, F sub tot, is along the hypotenuse pointing up the incline. The magnitude of F sub tot is twenty newtons. In a free-body diagram, F sub one is shown by an arrow pointing right and F sub two is shown by an arrow acting vertically upward.">
+          <image mime-type="image/jpg" src="../../media/Figure_04_06_04-4292.jpg"/>
+        </media>
+      </figure>
+<exercise id="fs-id2159386" type="problems-exercises"><problem id="fs-id1772127">
+        <para id="import-auto-id2840346">Tvö börn draga þriðja barnið á snjóþotu með því að beita kröftunum <m:math>
+<m:msub>
+<m:mtext mathvariant="bold">F</m:mtext>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> og <m:math>
+<m:msub>
+<m:mtext mathvariant="bold">F</m:mtext>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math> eins og sýnt er að ofan á <link target-id="import-auto-id1789737"/>. Finndu hröðun kerfisins sem samanstendur af 49,00 kg snjóþotunni og barninu. Athugaðu að stefna núningskraftsins er ótilgreind; hún verður í gagnstæða átt við summu <m:math>
+<m:msub>
+<m:mtext mathvariant="bold">F</m:mtext>
+<m:mn>1</m:mn>
+</m:msub>
+</m:math> og <m:math>
+<m:msub>
+<m:mtext mathvariant="bold">F</m:mtext>
+<m:mn>2</m:mn>
+</m:msub>
+</m:math>.</para></problem>
+
+<solution id="eip-id2093801">
+<para id="eip-id2093803"><m:math>
+<m:mi>a</m:mi>
+<m:mo>=</m:mo>
+<m:mtext>0.139 m/s</m:mtext></m:math>, <m:math>
+<m:mi>θ</m:mi>
+<m:mo>=</m:mo>
+<m:mn>12.4º</m:mn>
+</m:math> norður af austri</para></solution></exercise>
+<figure id="import-auto-id1789737"><media id="import-auto-id1273656" alt="An overhead view of a child sitting on a snow saucer sled. Two forces, F sub one equal to ten newtons and F sub two equal to eight newtons, are acting toward the right. F sub one makes an angle of forty-five degrees from the x axis and F sub two makes an angle of thirty degrees from the x axis in a clockwise direction. A friction force f is equal to seven point five newtons, shown by a vector pointing in negative x direction. In the free-body diagram, F sub one and F sub two are shown by arrows toward the right, making a forty-five degree angle above the horizontal and a thirty-degree angle below the horizontal respectively. The friction force f is shown by an arrow along the negative x axis.">
+          <image mime-type="image/jpg" src="../../media/Figure_04_06_05-5e7d.jpg"/>
+        </media>
+
+      <caption>Mynd að ofan sem sýnir lárétta krafta sem verka á snjóþotu barns.</caption></figure>
+<exercise id="fs-id1389092" type="problems-exercises"><problem id="fs-id1642344">
+        <para id="import-auto-id1569746">Gerum ráð fyrir að bíllinn þinn hafi fest sig í drullu og þú viljir nota aðferðina sem sýnd er á <link target-id="import-auto-id1436345"/> til að losa hann. (a) Hvaða kraft þyrftir þú að beita hornrétt á miðju kaðalsins til að mynda 12.000 N kraft á bílinn ef hornið er 2,00°? Í þessum hluta skaltu sýna sérstaklega hvernig þú fylgir skrefunum í aðferðafræðinni til lausnar vandamála fyrir lögmál Newtons um hreyfingu. (b) Raunverulegir kaðlar teygjast undir slíkum kröftum. Hvaða kraftur yrði beitt á bílinn ef hornið eykst í 7,00° og þú beitir ennþá sama krafti og þú fannst í (a) hluta á miðju hans?</para></problem></exercise>
+<figure id="import-auto-id1436345"><media id="import-auto-id2352417" alt="An overhead view shows a car stuck in mud being pulled out by a rope tied to a tree trunk. Forces T are applied along the rope, with a perpendicular force F1 shown in the middle, creating angles theta.">
+          <image mime-type="image/jpg" src="../../media/Figure_04_06_09-f3ba.jpg"/>
+        </media>
+      </figure>
+<exercise id="fs-id2607890" type="problems-exercises"><problem id="fs-id2004302">
+        <para id="import-auto-id1323508">Hvaða krafti er beitt á tönnina á <link target-id="import-auto-id1569692"/> ef spennan í vírnum er 25,0 N? Athugaðu að krafturinn sem beitt er á tönnina er minni en spennan í vírnum, en þetta er nauðsynlegt vegna hagnýtra takmarkana á því hvernig hægt er að beita krafti í munni. Sýndu sérstaklega hvernig þú fylgir skrefunum í aðferðafræðinni til lausnar vandamála fyrir lögmál Newtons um hreyfingu.</para></problem>
+<solution id="fs-id2324943">
+  <list id="fs-id1394979" list-type="enumerated" number-style="arabic" class="stepwise"><item>Use Newton’s laws since we are looking for forces.</item>
+      <item>Draw a free-body diagram:
+
+
+    <media id="import-auto-id2335592" alt="A horizontal dotted line with two vectors extending downward from the mid-point of the dotted line, both at angles of fifteen degrees. A third vector points straight downward from the intersection of the first two angles, bisecting them; it is perpendicular to the dotted line.">
+          <image mime-type="image/jpg" src="../../media/Figure_04_06_06.jpg" width="200"/>
+        </media>
+      </item>
+      <item>The tension is given as <m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:mi>T</m:mi><m:mo stretchy="false">=</m:mo><m:mtext>25.0 N.</m:mtext></m:mrow></m:mrow></m:mrow></m:mrow></m:math> Find <m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub><m:mtext>.</m:mtext></m:mrow></m:mrow></m:mrow></m:math> Using Newton’s laws gives:
+
+<m:math><m:mrow><m:mrow><m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:msub><m:mtext>Σ F</m:mtext><m:mrow><m:mi>y</m:mi></m:mrow></m:msub></m:mrow></m:mstyle><m:mo stretchy="false">=</m:mo><m:mn>0,</m:mn></m:mrow></m:mrow></m:mrow></m:math> so that applied force is due to the <emphasis effect="italics">y</emphasis>-components of the two tensions:
+
+
+ <m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>app</m:mtext></m:mrow></m:mstyle></m:mrow></m:msub><m:mo stretchy="false">=</m:mo><m:mn>2</m:mn><m:mspace width="0.25em"/></m:mrow><m:mrow><m:mi> T </m:mi></m:mrow><m:mspace width="0.25em"/><m:mtext>sin</m:mtext><m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext> θ</m:mtext></m:mrow></m:mstyle><m:mo stretchy="false">=</m:mo><m:mn>2</m:mn></m:mrow><m:mo stretchy="false">(</m:mo><m:mtext>25.0 N</m:mtext><m:mo stretchy="false">)</m:mo><m:mtext>sin</m:mtext><m:mo>(</m:mo><m:mtext>15º</m:mtext><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow/><m:mo stretchy="false">=</m:mo><m:mtext>12.9 N</m:mtext></m:mrow></m:math>
+
+
+
+
+      <para id="import-auto-id1272211"><emphasis effect="italics">x</emphasis>-þættir spennunnar núllast út. <m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:mo stretchy="false">∑</m:mo><m:msub><m:mi>F</m:mi><m:mrow><m:mi>x</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy="false">=</m:mo><m:mn>0</m:mn></m:mrow></m:mrow></m:mrow></m:math>.</para>
+    </item>
+      <item>This seems reasonable, since the applied tensions should be greater than the force applied to the tooth.</item>
+  </list></solution>
+      </exercise>
+<figure id="import-auto-id1569692"><media id="import-auto-id2137082" alt="Cross-section of jaw with sixteen teeth is shown. Braces are along the outside of the teeth. Three forces are acting on the protruding tooth. A force, T, is shown by an arrow making an angle of fifteen degrees below the positive x axis, and a second force, T, is shown by an arrow making an angle of fifteen degrees below the negative x axis.">
+          <image mime-type="image/jpg" src="../../media/Figure_04_06_07.jpg" width="225"/>
+        </media>
+
+      <caption>Tannréttingar eru notaðar til að beita kröftum á tennur til að rétta þær af. Á þessari mynd sést spennan sem vírinn beitir á tönnina sem stendur út. Heildarkrafturinn sem vírinn beitir á tönnina, <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>, vísar beint aftur í munninn.</caption></figure>
+<exercise id="fs-id2686437" type="problems-exercises"><problem id="fs-id1295719">
+        <para id="import-auto-id1687201"><link target-id="import-auto-id1655793"/> sýnir Ofurhetju og Trausta aðstoðarmann hanga hreyfingarlausa í kaðli. Massi Ofurhetjunnar er 90,0 kg, en massi Trausta aðstoðarmannsins er 55,0 kg og massi kaðalsins er hverfandi. (a) Teiknaðu kraftamynd af aðstæðunum sem sýnir alla krafta sem verka á Ofurhetjuna, Trausta aðstoðarmanninn og kaðalinn. (b) Finndu spennuna í kaðlinum fyrir ofan Ofurhetjuna. (c) Finndu spennuna í kaðlinum milli Ofurhetjunnar og Trausta aðstoðarmannsins. Merktu á kraftamyndina þína hvaða kerfi er til skoðunar við lausn hvers hluta.</para>
+      </problem></exercise>
+<figure id="import-auto-id1655793"><media id="import-auto-id2149349" alt="Two caped superheroes hang on a rope suspended vertically from a bar.">
+          <image mime-type="image/jpg" src="../../media/Figure_04_06_08.jpg" height="300"/>
+        </media>
+
+<caption>Ofurhetja og Trausti aðstoðarmaður hanga hreyfingarlausir í kaðli á meðan þeir reyna að átta sig á því hvað eigi að gera næst. Verður spennan sú sama alls staðar í kaðlinum?</caption></figure>
+<exercise id="fs-id1552077" type="problems-exercises"><problem id="fs-id2639727">
+        <para id="import-auto-id1776191">Hjúkrunarfræðingur ýtir kerru með því að beita krafti á handfangið með horninu <m:math><m:mrow><m:mrow><m:mrow><m:mtext>35.0º</m:mtext></m:mrow></m:mrow></m:mrow></m:math> niður á við miðað við lárétt. Hlaðin kerran hefur massa 28,0 kg og núningskrafturinn er 60,0 N. (a) Teiknaðu kraftamynd fyrir kerfið sem er til skoðunar. (b) Hvaða kraft verður hjúkrunarfræðingurinn að beita til að hreyfa kerruna á jöfnum hraða?</para></problem></exercise>
+<exercise id="fs-id2654456" type="problems-exercises"><problem id="fs-id1238679">
+        <para id="import-auto-id2335706">Búðu til þitt eigið dæmi. Íhugaðu spennuna í lyftuvír á meðan lyftan fer af stað úr kyrrstöðu og hraðar farmi sínum upp í ákveðinn ferðahraða. Taktu lyftuna og farm hennar sem kerfið sem er til skoðunar og teiknaðu kraftamynd. Reiknaðu síðan spennuna í vírnum. Meðal þess sem þarf að hafa í huga er massi lyftunnar og farms hennar, lokahraði og tíminn sem það tekur að ná þeim hraða.</para>
+      </problem></exercise>
+<exercise id="fs-id1677950" type="problems-exercises"><problem id="fs-id2341166">
+
+<para id="eip-id2692356">Búðu til þitt eigið dæmi. Íhugaðu tvær manneskjur sem ýta snjósleða með fjórum börnum upp snævi þakta brekku. Búðu til dæmi þar sem þú reiknar hröðun sleðans og farms hans. Láttu fylgja með kraftamynd af viðeigandi kerfi sem er til skoðunar sem grundvöll fyrir greiningu þinni. Sýndu kraftavigra og þætti þeirra og útskýrðu valið á hnitakerfi. Meðal þess sem þarf að hafa í huga eru kraftarnir sem þeir sem ýta beita, halli brekkunnar og massi sleðans og barnanna.</para>
+      </problem></exercise>
+<exercise id="fs-id1325985" type="problems-exercises"><problem id="fs-id2731874">
+        <para id="import-auto-id1742367">Óraunhæfar niðurstöður (a) Endurtaktu <link target-id="fs-id1673888"/>, en gerðu ráð fyrir að hröðun upp á <m:math><m:mrow><m:mrow><m:mrow><m:mn>1</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>20 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:mrow></m:mrow></m:math> verði til. (b) Hvað er óraunhæft við niðurstöðuna? (c) Hver er forsendan sem er óraunhæf og hvers vegna er hún óraunhæf?</para></problem></exercise>
+<exercise id="fs-id1285123" type="problems-exercises"><problem id="fs-id1782779">
+        <para id="import-auto-id2297687">Óraunhæfar niðurstöður (a) Hver er upphafshröðun eldflaugar sem hefur massa <m:math><m:mrow><m:mrow><m:mrow><m:mn>1</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>50</m:mtext><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>6</m:mn></m:mrow></m:msup></m:mrow><m:mspace width="0.25em"/><m:mtext> kg</m:mtext></m:mrow></m:mrow></m:mrow></m:math> við flugtak og hreyflar hennar framleiða þrýstikraft upp á <m:math><m:mrow><m:mrow><m:mrow><m:mn>2</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>00</m:mtext><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>6</m:mn></m:mrow></m:msup></m:mrow><m:mspace width="0.25em"/><m:mtext> N</m:mtext></m:mrow></m:mrow></m:mrow></m:math>? Ekki vanrækja þyngdarkraftinn. (b) Hvað er óraunhæft við niðurstöðuna? (Þessi niðurstaða hefur óviljandi fengist í nokkrum raunverulegum eldflaugum.) (c) Hvaða forsenda er óraunhæf eða hvaða forsendur eru ósamrýmanlegar? (Þér gæti þótt gagnlegt að bera þetta dæmi saman við eldflaugadæmið fyrr í þessum kafla.)</para></problem></exercise>
+</section>
+</content>
+</document>

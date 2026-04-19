@@ -24,7 +24,7 @@ The repository implements a 5-step translation workflow for producing Icelandic 
 │                   Extract-Inject-Render Pipeline (Node.js)                   │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │  cnxml-extract.js    │  cnxml-inject.js       │  cnxml-render.js            │
-│  protect-segments.js │  unprotect-segments.js   │  prepare-for-align.js       │
+│  api-translate.js    │  repair-emphasis.js    │  prepare-for-align.js       │
 └─────────────────────────────────────────────────────────────────────────────┘
                 │                    │                       │
                 ▼                    ▼                       ▼
@@ -48,7 +48,7 @@ The repository implements a 5-step translation workflow for producing Icelandic 
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                           Server (Express.js)                                │
 ├─────────────────────────────────────────────────────────────────────────────┤
-│  REST API              │  GitHub OAuth          │  Publication API          │
+│  REST API              │  Microsoft Entra ID          │  Publication API          │
 │  Workflow UI           │  SQLite Database       │  Status Tracking          │
 └─────────────────────────────────────────────────────────────────────────────┘
                 │
@@ -73,12 +73,9 @@ The pipeline uses an Extract-Inject-Render architecture:
 | Tool | Purpose | Input | Output |
 |------|---------|-------|--------|
 | `cnxml-extract.js` | Extract translatable segments from CNXML | CNXML | Segments markdown + structure JSON + equations JSON |
-| `protect-segments-for-mt.js` | Protect markers & links, split for MT | Segment files | MT-ready segments + links JSON |
+| `api-translate.js` | Translate segments via Málstaður API | EN segments | IS segments in `02-mt-output/` |
 
-#### Post-MT Restoration
-| Tool | Purpose | Input | Output |
-|------|---------|-------|--------|
-| `unprotect-segments.js` | Restore markers & links in MT output | MT output | Clean segments |
+> **Note:** `protect-segments-for-mt.js` and `unprotect-segments.js` are archived in `tools/archived/` — superseded by `api-translate.js` which handles marker protection internally.
 
 #### TM Creation
 | Tool | Purpose | Input | Output |
@@ -117,7 +114,7 @@ tools/lib/
 Express.js server providing:
 
 - **REST API** for workflow automation
-- **GitHub OAuth** authentication
+- **Microsoft Entra ID** authentication
 - **Publication API** with role-based access
 - **SQLite database** for status tracking
 - **Web UI** for workflow management
@@ -182,12 +179,10 @@ CNXML Source (OpenStax)
         ▼ cnxml-extract.js
 EN Segments + Structure JSON + Equations JSON
         │
-        ├── protect-segments-for-mt.js → MT-ready segments + links JSON
+        ├── api-translate.js → Málstaður API translation
         │
-        ▼ malstadur.is (external)
+        ▼ Málstaður API (automated)
 IS Segments (MT output)
-        │
-        ├── unprotect-segments.js → Clean IS segments
         │
         ▼ Human review
 IS Segments (faithful)
@@ -235,7 +230,7 @@ status.json (per chapter)
 
 ### Server
 - **Express.js** - Web framework
-- **Passport.js** - GitHub OAuth
+- **jsonwebtoken** - Microsoft Entra ID
 - **better-sqlite3** - Database
 - **Helmet** - Security headers
 - **express-rate-limit** - Rate limiting
@@ -257,7 +252,7 @@ status.json (per chapter)
 | OpenStax GitHub | Source content | CNXML fetch via API |
 | malstadur.is | Machine translation | Manual upload/download |
 | Matecat Align | TM creation | Manual upload/download |
-| GitHub OAuth | Authentication | Server OAuth flow |
+| Microsoft Entra ID | Authentication | Server OAuth flow |
 
 ### Repositories
 | Repository | Purpose | Sync |
@@ -285,7 +280,7 @@ status.json (per chapter)
 | ADMIN | Full access |
 
 ### Security
-- GitHub OAuth for authentication
+- Microsoft Entra ID for authentication
 - JWT tokens for session management
 - Role-based access control on publication endpoints
 - Rate limiting on auth endpoints

@@ -8,13 +8,13 @@ By the end of this section, you will be able to:
 Describe the properties, preparation, and uses of sulfur
 
 <!-- SEG:m68838:para:fs-idm222212272 -->
-Sulfur exists in nature as elemental deposits as well as sulfides of iron, zinc, lead, and copper, and sulfates of sodium, calcium, barium, and magnesium. Hydrogen sulfide is often a component of natural gas and occurs in many volcanic gases, like those shown in [#CNX_Chem_18_10_Volcano]. Sulfur is a constituent of many proteins and is essential for life.
+Sulfur exists in nature as elemental deposits as well as sulfides of iron, zinc, lead, and copper, and sulfates of sodium, calcium, barium, and magnesium. Hydrogen sulfide is often a component of natural gas and occurs in many volcanic gases, like those shown in [[xref:CNX_Chem_18_10_Volcano]]. Sulfur is a constituent of many proteins and is essential for life.
 
 <!-- SEG:m68838:caption:CNX_Chem_18_10_Volcano-caption -->
 Volcanic gases contain hydrogen sulfide. (credit: Daniel Julie/Wikimedia Commons)
 
 <!-- SEG:m68838:para:fs-idm89076784 -->
-The {{term}}Frasch process{{/term}}, illustrated in [#CNX_Chem_18_10_FrachMine], is important in the mining of free sulfur from enormous underground deposits in Texas and Louisiana. Superheated water (170 °C and 10 atm pressure) is forced down the outermost of three concentric pipes to the underground deposit. The hot water melts the sulfur. The innermost pipe conducts compressed air into the liquid sulfur. The air forces the liquid sulfur, mixed with air, to flow up through the outlet pipe. Transferring the mixture to large settling vats allows the solid sulfur to separate upon cooling. This sulfur is 99.5% to 99.9% pure and requires no purification for most uses.
+The {{term}}Frasch process{{/term}}, illustrated in [[xref:CNX_Chem_18_10_FrachMine]], is important in the mining of free sulfur from enormous underground deposits in Texas and Louisiana. Superheated water (170 °C and 10 atm pressure) is forced down the outermost of three concentric pipes to the underground deposit. The hot water melts the sulfur. The innermost pipe conducts compressed air into the liquid sulfur. The air forces the liquid sulfur, mixed with air, to flow up through the outlet pipe. Transferring the mixture to large settling vats allows the solid sulfur to separate upon cooling. This sulfur is 99.5% to 99.9% pure and requires no purification for most uses.
 
 <!-- SEG:m68838:caption:CNX_Chem_18_10_FrachMine-caption -->
 The Frasch process is used to mine sulfur from underground deposits.
@@ -47,7 +47,7 @@ Explain why hydrogen sulfide is a gas at room temperature, whereas water, which 
 Give the hybridization and oxidation state for sulfur in SO[[sub:2]], in SO[[sub:3]], and in H[[sub:2]]SO[[sub:4]].
 
 <!-- SEG:m68838:solution:fs-idm189281632 -->
-SO[[sub:2]], {{i}}sp{{/i}}[[sup:2]] 4+; SO[[sub:3]], {{i}}sp{{/i}}[[sup:2]], 6+; H[[sub:2]]SO[[sub:4]], {{i}}sp{{/i}}[[sup:3]], 6+
+SO[[sub:2]], [[i:sp]][[sup:2]] 4+; SO[[sub:3]], [[i:sp]][[sup:2]], 6+; H[[sub:2]]SO[[sub:4]], [[i:sp]][[sup:3]], 6+
 
 <!-- SEG:m68838:problem:fs-idm104880432 -->
 Which is the stronger acid, NaHSO[[sub:3]] or NaHSO[[sub:4]]?

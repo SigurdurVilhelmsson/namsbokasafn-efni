@@ -1,0 +1,24 @@
+<document xmlns="http://cnx.rice.edu/cnxml" class="introduction">
+  <title>Why This Chapter?</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Why This Chapter?</md:title>
+    <md:content-id>m00256</md:content-id>
+    <md:uuid>35258b86-cd9c-4d2f-a7d8-624e6f4c17b7</md:uuid>
+  </metadata>
+  <content class="introduction">
+<figure class="splash" id="fig-00001">
+<media alt="A photo shows tear gas being deployed on the streets of a city and people from press taking pictures of the street.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_00_TearGas.jpg"/>
+</media>
+<caption><emphasis effect="bold">Tear gas is a controversial riot-control device used by some military and police forces.</emphasis> It is a simple chloroketone made by a carbonyl <emphasis effect="italics">α</emphasis>-substitution reaction. (credit: modification of work “Tear Gas in CWB Hennessy Road View” by The Stand News/Wikimedia Commons, Public Domain)</caption>
+</figure>
+<para id="para-00001">As with nucleophilic additions and nucleophilic acyl substitutions, many laboratory schemes, pharmaceutical syntheses, and biochemical pathways make frequent use of carbonyl <emphasis effect="italics">α</emphasis>-substitution reactions. Their great value comes from the fact that they constitute one of the few general methods for forming carbon–carbon bonds, thereby making it possible to build larger molecules from smaller precursors. In this chapter, we’ll see how and why these reactions occur.</para>
+<para id="para-00002">We said in the <link document="m00255" target-id="sect-00009"><emphasis effect="italics">Preview of Carbonyl Chemistry</emphasis></link> that much of the chemistry of carbonyl compounds can be explained by just four fundamental reaction types: nucleophilic additions, nucleophilic acyl substitutions, <emphasis effect="italics">α</emphasis> substitutions, and carbonyl condensations. Having studied the first two of these reactions in the past three chapters, let’s now look in more detail at the third major carbonyl-group process—the <term id="term-00001"><emphasis effect="italics">α</emphasis>-substitution reaction</term>.</para>
+<para id="para-00003">Alpha-substitution reactions occur at the position next to the carbonyl group—the <emphasis effect="italics">α position</emphasis>—and involve the substitution of an <emphasis effect="italics">α</emphasis> hydrogen atom by an electrophile, E, through either an enol or enolate ion intermediate. Let’s begin by learning more about these two species.</para>
+<figure class="unnumbered scaled-down" id="fig-00002">
+<media alt="A flowchart shows two reactions of a carbonyl compound, one via an enolate intermediate and one via an enol, both forming an alpha-substituted carbonyl compound upon addition of an electrophile.">
+<image mime-type="image/jpeg" src="../../media/OChem_22_00_001.jpg"/>
+</media>
+</figure>
+</content>
+</document>

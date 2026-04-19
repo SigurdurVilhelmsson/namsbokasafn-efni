@@ -59,6 +59,15 @@ GRAMMAR_MAP = {
     "ao": "adverb",
 }
 
+# Íðorðabankinn collection code → subject domain
+COLLECTION_SUBJECT_MAP = {
+    "EFNAFR": "chemistry",
+    "LIFORD": "biology",
+    "LIFORD2": "biology",
+    "EDLISFR": "physics",
+    "STAERDFRAEDI": "mathematics",
+}
+
 # ---------------------------------------------------------------------------
 # Shared utilities
 # ---------------------------------------------------------------------------
@@ -366,43 +375,49 @@ def mode_fetch(args):
         else:
             skipped += 1
 
-    # Deduplicate on IS term (case-insensitive).
-    # Placeholder IS terms like "[vantar]" (= "missing") are deduped on EN instead,
-    # since they represent distinct untranslated entries.
-    PLACEHOLDER_IS = {"[vantar]", "vantar", ""}
-    seen_is = {}
-    seen_en_placeholder = {}
+    # Deduplicate on EN term + pos (case-insensitive).
+    # Multiple English terms CAN share the same Icelandic translation — that's
+    # not a conflict. The headword's natural key is (english, pos).
+    # When duplicates occur, merge: keep the first, add the second's IS term
+    # as a synonym if different.
+    seen_en = {}
     unique_terms = []
-    conflicts = []
+    duplicates = []
     for term in terms:
-        is_key = (term["icelandic"] or "").lower().strip()
+        en_key = (term["english"] or "").lower().strip()
+        pos_key = (term["pos"] or "").lower().strip()
+        dedup_key = (en_key, pos_key)
 
-        if is_key in PLACEHOLDER_IS:
-            # Dedup placeholders by EN term
-            en_key = (term["english"] or "").lower()
-            if en_key in seen_en_placeholder:
-                conflicts.append({
-                    "icelandic": term["icelandic"],
-                    "english_new": term["english"],
-                    "english_existing": seen_en_placeholder[en_key]["english"],
-                    "id_new": term["idordabanki_id"],
-                    "id_existing": seen_en_placeholder[en_key]["idordabanki_id"],
-                })
-            else:
-                seen_en_placeholder[en_key] = term
-                # Clear the placeholder — store as NULL icelandic
-                term["icelandic"] = None
-                unique_terms.append(term)
-        elif is_key in seen_is:
-            conflicts.append({
-                "icelandic": term["icelandic"],
-                "english_new": term["english"],
-                "english_existing": seen_is[is_key]["english"],
+        if dedup_key in seen_en:
+            existing = seen_en[dedup_key]
+            # If the duplicate has a different IS translation, record as synonym
+            existing_is = (existing["icelandic"] or "").lower()
+            new_is = (term["icelandic"] or "").lower()
+            if new_is and new_is != existing_is and new_is not in [
+                s.lower() for s in existing.get("synonyms_is", [])
+            ]:
+                existing.setdefault("synonyms_is", []).append(term["icelandic"])
+
+            # Merge definitions if the existing one is missing
+            if not existing.get("definition_en") and term.get("definition_en"):
+                existing["definition_en"] = term["definition_en"]
+            if not existing.get("definition_is") and term.get("definition_is"):
+                existing["definition_is"] = term["definition_is"]
+
+            duplicates.append({
+                "english": term["english"],
+                "pos": term["pos"],
+                "icelandic_new": term["icelandic"],
+                "icelandic_existing": existing["icelandic"],
                 "id_new": term["idordabanki_id"],
-                "id_existing": seen_is[is_key]["idordabanki_id"],
+                "id_existing": existing["idordabanki_id"],
             })
         else:
-            seen_is[is_key] = term
+            # Normalize placeholder IS terms to NULL
+            is_val = (term["icelandic"] or "").strip()
+            if is_val.lower() in {"[vantar]", "vantar", ""}:
+                term["icelandic"] = None
+            seen_en[dedup_key] = term
             unique_terms.append(term)
 
     # Write raw_fetch.json
@@ -413,8 +428,8 @@ def mode_fetch(args):
             "total_api_entries": len(all_entries),
             "bilingual_pairs": len(terms),
             "skipped_no_pair": skipped,
-            "unique_terms": len(unique_terms),
-            "conflicts": len(conflicts),
+            "unique_headwords": len(unique_terms),
+            "en_duplicates_merged": len(duplicates),
         },
         "terms": unique_terms,
     }
@@ -422,21 +437,23 @@ def mode_fetch(args):
     raw_path = output_dir / "raw_fetch.json"
     with open(raw_path, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
-    print(f"\nWrote {raw_path} ({len(unique_terms)} unique terms)")
+    print(f"\nWrote {raw_path} ({len(unique_terms)} unique headwords)")
 
-    # Write conflicts report if any
-    if conflicts:
-        conflicts_path = output_dir / "conflicts.md"
-        with open(conflicts_path, "w", encoding="utf-8") as f:
-            f.write("# Duplicate IS Terms (Conflicts)\n\n")
-            f.write(f"Found {len(conflicts)} duplicate Icelandic terms across entries.\n")
-            f.write("The first occurrence was kept; these were skipped:\n\n")
-            f.write("| IS Term | EN (kept) | EN (skipped) | ID (kept) | ID (skipped) |\n")
-            f.write("|---------|-----------|-------------|-----------|-------------|\n")
-            for c in conflicts:
-                f.write(f"| {c['icelandic']} | {c['english_existing']} | {c['english_new']} "
-                        f"| {c['id_existing']} | {c['id_new']} |\n")
-        print(f"Wrote {conflicts_path} ({len(conflicts)} conflicts)")
+    # Write duplicates report if any
+    if duplicates:
+        dupes_path = output_dir / "duplicates.md"
+        with open(dupes_path, "w", encoding="utf-8") as f:
+            f.write("# Merged EN Duplicates\n\n")
+            f.write(f"Found {len(duplicates)} duplicate English headwords.\n")
+            f.write("These were merged into the first occurrence "
+                    "(IS translations added as synonyms if different).\n\n")
+            f.write("| EN Term | POS | IS (kept) | IS (merged) | ID (kept) | ID (merged) |\n")
+            f.write("|---------|-----|-----------|-------------|-----------|-------------|\n")
+            for d in duplicates:
+                f.write(f"| {d['english']} | {d['pos'] or ''} "
+                        f"| {d['icelandic_existing'] or ''} | {d['icelandic_new'] or ''} "
+                        f"| {d['id_existing']} | {d['id_new']} |\n")
+        print(f"Wrote {dupes_path} ({len(duplicates)} merged)")
 
     # Summary
     print(f"\n--- Fetch Summary ---")
@@ -444,8 +461,8 @@ def mode_fetch(args):
         print(f"  {code}: {stats['fetched']}/{stats['reported']} entries")
     print(f"  Bilingual pairs: {len(terms)}")
     print(f"  Skipped (no EN/IS pair): {skipped}")
-    print(f"  Unique terms (after dedup): {len(unique_terms)}")
-    print(f"  Conflicts: {len(conflicts)}")
+    print(f"  Unique headwords (after dedup): {len(unique_terms)}")
+    print(f"  EN duplicates merged: {len(duplicates)}")
 
 
 # ---------------------------------------------------------------------------
@@ -667,21 +684,11 @@ def mode_compare(args):
 
 
 def ensure_idordabanki_id_column(db):
-    """Add idordabanki_id column if it doesn't exist (migration 028 equivalent)."""
-    cursor = db.execute("PRAGMA table_info(terminology_terms)")
-    columns = [row[1] for row in cursor.fetchall()]
+    """No-op. The idordabanki_id column exists on terminology_translations in the new schema.
 
-    if "idordabanki_id" not in columns:
-        print("Adding idordabanki_id column to terminology_terms...")
-        db.execute("ALTER TABLE terminology_terms ADD COLUMN idordabanki_id INTEGER")
-        db.execute(
-            "CREATE INDEX IF NOT EXISTS idx_terminology_terms_idordabanki "
-            "ON terminology_terms(idordabanki_id)"
-        )
-        db.commit()
-        print("  Column added successfully.")
-        return True
-    return False
+    Kept as a stub for backward compatibility with any callers.
+    """
+    pass
 
 
 def merge_notes(existing_notes, new_notes):
@@ -698,27 +705,94 @@ def merge_notes(existing_notes, new_notes):
     return existing_notes + "\n\n" + new_notes
 
 
-def merge_alternatives(existing_json, new_synonyms):
-    """Merge new synonyms into existing alternatives JSON array."""
-    existing = []
-    if existing_json:
-        try:
-            existing = json.loads(existing_json)
-        except (json.JSONDecodeError, TypeError):
-            existing = []
+def upsert_headword(db, english, pos, definition_en):
+    """Upsert a headword row. Handles NULL pos correctly for UNIQUE(english, pos).
 
-    existing_terms = {a.get("term", "").lower() for a in existing}
-    new_alts = synonyms_to_alternatives(new_synonyms)
+    SQLite treats NULLs as distinct in UNIQUE constraints, so we use an explicit
+    check: WHERE english = ? AND (pos = ? OR (pos IS NULL AND ? IS NULL)).
 
-    for alt in new_alts:
-        if alt["term"].lower() not in existing_terms:
-            existing.append(alt)
+    Returns the headword row id.
+    """
+    row = db.execute(
+        "SELECT id, definition_en FROM terminology_headwords "
+        "WHERE english = ? AND (pos = ? OR (pos IS NULL AND ? IS NULL))",
+        (english, pos, pos)
+    ).fetchone()
 
-    return json.dumps(existing, ensure_ascii=False) if existing else None
+    if row:
+        # Fill in definition_en if it was NULL before
+        if definition_en and not row["definition_en"]:
+            db.execute(
+                "UPDATE terminology_headwords SET definition_en = ? WHERE id = ?",
+                (definition_en, row["id"])
+            )
+        return row["id"]
+
+    cursor = db.execute(
+        "INSERT INTO terminology_headwords (english, pos, definition_en) VALUES (?, ?, ?)",
+        (english, pos or None, definition_en or None)
+    )
+    return cursor.lastrowid
+
+
+def insert_translation(db, headword_id, icelandic, definition_is, source,
+                       idordabanki_id, notes, status, proposed_by,
+                       proposed_by_name, approved_by, approved_by_name,
+                       approved_at):
+    """Insert a translation row if it doesn't already exist.
+
+    Returns (translation_id, was_inserted). If the (headword_id, icelandic)
+    pair already exists, returns the existing id and False.
+    """
+    existing = db.execute(
+        "SELECT id FROM terminology_translations "
+        "WHERE headword_id = ? AND icelandic = ?",
+        (headword_id, icelandic)
+    ).fetchone()
+
+    if existing:
+        return existing["id"], False
+
+    cursor = db.execute(
+        "INSERT INTO terminology_translations "
+        "(headword_id, icelandic, definition_is, source, idordabanki_id, "
+        "notes, status, proposed_by, proposed_by_name, approved_by, "
+        "approved_by_name, approved_at) "
+        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        (
+            headword_id, icelandic, definition_is or None, source,
+            idordabanki_id, notes, status, proposed_by, proposed_by_name,
+            approved_by, approved_by_name, approved_at,
+        )
+    )
+    return cursor.lastrowid, True
+
+
+def insert_translation_subject(db, translation_id, subject):
+    """Insert a subject tag for a translation (idempotent — ignores duplicates)."""
+    db.execute(
+        "INSERT OR IGNORE INTO terminology_translation_subjects "
+        "(translation_id, subject) VALUES (?, ?)",
+        (translation_id, subject)
+    )
+
+
+def resolve_subject(fkdictionary):
+    """Map an Íðorðabankinn collection code to a subject domain.
+
+    Returns the subject string or None if the collection code is unknown.
+    """
+    if not fkdictionary:
+        return None
+    return COLLECTION_SUBJECT_MAP.get(fkdictionary.upper())
 
 
 def mode_import(args):
-    """Import terms from raw_fetch.json or enriched_glossary.json into the DB."""
+    """Import terms from raw_fetch.json or enriched_glossary.json into the DB.
+
+    Uses the normalized terminology schema:
+      terminology_headwords → terminology_translations → terminology_translation_subjects
+    """
     if not args.source:
         print("--source is required for import mode", file=sys.stderr)
         sys.exit(1)
@@ -745,11 +819,17 @@ def mode_import(args):
     db = sqlite3.connect(db_path)
     db.row_factory = sqlite3.Row
 
-    # Ensure idordabanki_id column exists
-    ensure_idordabanki_id_column(db)
-
     # Process terms
-    stats = {"inserted": 0, "updated": 0, "skipped": 0, "errors": 0}
+    stats = {
+        "headwords_created": 0,
+        "headwords_existing": 0,
+        "translations_inserted": 0,
+        "translations_existing": 0,
+        "synonym_translations_inserted": 0,
+        "subjects_tagged": 0,
+        "skipped": 0,
+        "errors": 0,
+    }
     log_entries = []
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
 
@@ -763,6 +843,7 @@ def mode_import(args):
         idob_id = term.get("idordabanki_id")
         synonyms_is = term.get("synonyms_is", [])
         notes = term.get("notes")
+        fkdictionary = term.get("fkdictionary")
 
         # Handle alternatives from enriched format
         if not synonyms_is and "alternatives" in term:
@@ -776,10 +857,10 @@ def mode_import(args):
             continue
 
         try:
-            # Step 1: Check by idordabanki_id first (exact dedup)
+            # Step 1: Check by idordabanki_id — skip if this exact entry was already imported
             if idob_id:
                 existing = db.execute(
-                    "SELECT * FROM terminology_terms WHERE idordabanki_id = ?",
+                    "SELECT id FROM terminology_translations WHERE idordabanki_id = ?",
                     (idob_id,)
                 ).fetchone()
                 if existing:
@@ -792,115 +873,89 @@ def mode_import(args):
                     })
                     continue
 
-            # Step 2: Check by English term (any book_id) to avoid duplicates.
-            # Prefer global match (book_id IS NULL), fall back to book-specific.
-            # Match on pos when both sides have values; if DB has pos=NULL,
-            # it's a candidate for COALESCE (we'll fill in the pos).
-            existing = db.execute(
-                "SELECT * FROM terminology_terms "
-                "WHERE LOWER(english) = LOWER(?) "
-                "AND (pos = ? OR pos IS NULL OR ? IS NULL) "
-                "ORDER BY CASE WHEN book_id IS NULL THEN 0 ELSE 1 END "
-                "LIMIT 1",
-                (en, pos, pos)
-            ).fetchone()
+            # Resolve subject from collection code
+            subject = resolve_subject(fkdictionary)
 
-            if existing:
-                # COALESCE: only fill NULL/empty fields
-                updates = {}
-                existing_dict = dict(existing)
+            if args.execute:
+                # Step 2: Upsert headword
+                headword_id = upsert_headword(db, en, pos, def_en)
 
-                if not existing_dict.get("icelandic") and is_:
-                    updates["icelandic"] = is_
-                if not existing_dict.get("definition_en") and def_en:
-                    updates["definition_en"] = def_en
-                if not existing_dict.get("definition_is") and def_is:
-                    updates["definition_is"] = def_is
-                if not existing_dict.get("pos") and pos:
-                    updates["pos"] = pos
-                if idob_id and not existing_dict.get("idordabanki_id"):
-                    updates["idordabanki_id"] = idob_id
+                # Track whether this was a new headword
+                was_new_headword = db.execute(
+                    "SELECT COUNT(*) as cnt FROM terminology_translations "
+                    "WHERE headword_id = ?", (headword_id,)
+                ).fetchone()["cnt"] == 0
 
-                # Merge notes (append, don't overwrite)
-                merged_notes = merge_notes(existing_dict.get("notes"), notes)
-                if merged_notes != existing_dict.get("notes"):
-                    updates["notes"] = merged_notes
-
-                # Merge alternatives
-                if synonyms_is:
-                    merged_alts = merge_alternatives(
-                        existing_dict.get("alternatives"), synonyms_is
+                # Step 3: Insert main translation (if we have an IS term)
+                if is_:
+                    trans_id, was_inserted = insert_translation(
+                        db, headword_id, is_, def_is, "idordabankinn",
+                        idob_id, notes, "approved",
+                        "idordabankinn-import", "Íðorðabankinn",
+                        "idordabankinn-import", "Íðorðabankinn", now,
                     )
-                    if merged_alts != existing_dict.get("alternatives"):
-                        updates["alternatives"] = merged_alts
 
-                if updates:
-                    if args.execute:
-                        set_clause = ", ".join(f"{k} = ?" for k in updates)
-                        values = list(updates.values()) + [existing_dict["id"]]
-                        db.execute(
-                            f"UPDATE terminology_terms SET {set_clause} WHERE id = ?",
-                            values
+                    if was_inserted:
+                        stats["translations_inserted"] += 1
+
+                        # Step 4: Tag with subject
+                        if subject:
+                            insert_translation_subject(db, trans_id, subject)
+                            stats["subjects_tagged"] += 1
+                    else:
+                        stats["translations_existing"] += 1
+
+                    # Step 5: Insert synonym translations (same headword, different icelandic)
+                    for syn in synonyms_is:
+                        syn = syn.strip()
+                        if not syn or syn.lower() == is_.lower():
+                            continue
+                        syn_trans_id, syn_inserted = insert_translation(
+                            db, headword_id, syn, None, "idordabankinn",
+                            None, "Íðorðabankinn synonym", "approved",
+                            "idordabankinn-import", "Íðorðabankinn",
+                            "idordabankinn-import", "Íðorðabankinn", now,
                         )
-                    stats["updated"] += 1
-                    log_entries.append({
-                        "action": "updated",
-                        "english": en,
-                        "icelandic": is_,
-                        "fields": list(updates.keys()),
-                        "existing_id": existing_dict["id"],
-                    })
+                        if syn_inserted:
+                            stats["synonym_translations_inserted"] += 1
+                            if subject:
+                                insert_translation_subject(db, syn_trans_id, subject)
+                                stats["subjects_tagged"] += 1
+
                 else:
+                    # No IS term — headword only (placeholder entry)
                     stats["skipped"] += 1
                     log_entries.append({
                         "action": "skipped",
-                        "reason": "no_new_data",
+                        "reason": "no_icelandic",
                         "english": en,
                     })
-            else:
-                # INSERT new term
-                alts_json = None
-                if synonyms_is:
-                    alts_json = json.dumps(
-                        synonyms_to_alternatives(synonyms_is), ensure_ascii=False
-                    )
+                    continue
 
-                if args.execute:
-                    db.execute(
-                        "INSERT INTO terminology_terms "
-                        "(book_id, english, icelandic, alternatives, category, notes, "
-                        "source, source_chapter, status, proposed_by, proposed_by_name, "
-                        "approved_by, approved_by_name, approved_at, definition_en, "
-                        "definition_is, pos, idordabanki_id) "
-                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                        (
-                            None,  # book_id (global)
-                            en,
-                            is_ or None,
-                            alts_json,
-                            None,  # category
-                            notes,
-                            "idordabankinn",
-                            None,  # source_chapter
-                            "approved",
-                            "idordabankinn-import",
-                            "Íðorðabankinn",
-                            "idordabankinn-import",
-                            "Íðorðabankinn",
-                            now,
-                            def_en,
-                            def_is,
-                            pos,
-                            idob_id,
-                        ),
-                    )
-                stats["inserted"] += 1
-                log_entries.append({
-                    "action": "inserted",
-                    "english": en,
-                    "icelandic": is_,
-                    "idordabanki_id": idob_id,
-                })
+                if was_new_headword:
+                    stats["headwords_created"] += 1
+                else:
+                    stats["headwords_existing"] += 1
+
+            else:
+                # Dry run — just count
+                if is_:
+                    stats["translations_inserted"] += 1
+                    for syn in synonyms_is:
+                        syn = syn.strip()
+                        if syn and syn.lower() != is_.lower():
+                            stats["synonym_translations_inserted"] += 1
+                else:
+                    stats["skipped"] += 1
+
+            log_entries.append({
+                "action": "imported",
+                "english": en,
+                "icelandic": is_,
+                "synonyms": len(synonyms_is),
+                "subject": subject,
+                "idordabanki_id": idob_id,
+            })
 
         except Exception as e:
             stats["errors"] += 1
@@ -910,30 +965,9 @@ def mode_import(args):
                 "error": str(e),
             })
 
-    # Commit or rollback
+    # Commit or report dry run
     if args.execute:
         db.commit()
-        # Log to terminology_imports table
-        try:
-            db.execute(
-                "INSERT INTO terminology_imports "
-                "(source_name, file_name, imported_by, imported_by_name, "
-                "terms_added, terms_updated, terms_skipped) "
-                "VALUES (?, ?, ?, ?, ?, ?, ?)",
-                (
-                    "idordabankinn",
-                    str(source_path),
-                    "idordabankinn-import",
-                    "Íðorðabankinn Import Script",
-                    stats["inserted"],
-                    stats["updated"],
-                    stats["skipped"],
-                ),
-            )
-            db.commit()
-        except Exception as e:
-            print(f"Warning: Could not log import to terminology_imports: {e}",
-                  file=sys.stderr)
 
         # Write import log
         log_path = Path(args.output) / "import_log.json" if args.output else source_path.parent / "import_log.json"
@@ -957,8 +991,12 @@ def mode_import(args):
     print(f"\n--- Import Summary ---")
     print(f"  Source: {source_path}")
     print(f"  Database: {db_path}")
-    print(f"  Inserted: {stats['inserted']}")
-    print(f"  Updated: {stats['updated']}")
+    print(f"  Headwords created: {stats['headwords_created']}")
+    print(f"  Headwords existing: {stats['headwords_existing']}")
+    print(f"  Translations inserted: {stats['translations_inserted']}")
+    print(f"  Translations existing: {stats['translations_existing']}")
+    print(f"  Synonym translations: {stats['synonym_translations_inserted']}")
+    print(f"  Subjects tagged: {stats['subjects_tagged']}")
     print(f"  Skipped: {stats['skipped']}")
     print(f"  Errors: {stats['errors']}")
     if not args.execute:

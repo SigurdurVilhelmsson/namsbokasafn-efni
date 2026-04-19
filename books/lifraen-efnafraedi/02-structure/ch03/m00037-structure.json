@@ -1,0 +1,92 @@
+{
+  "moduleId": "m00037",
+  "title": {
+    "segmentId": "m00037:title:auto-1",
+    "text": "Conformations of Ethane"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "df3b3900-2c0f-4025-b872-6472f2866fce"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00037:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00037:para:para-00002"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "caption": {
+        "segmentId": "m00037:caption:fig-00001-caption"
+      },
+      "media": {
+        "alt": "The molecular structure and a ball and stick model of ethane are represented before and after rotation. The rotation occurs around the carbon–carbon single bond.",
+        "src": "../../media/OChem_03_06_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00003",
+      "segmentId": "m00037:para:para-00003"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00037:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "caption": {
+        "segmentId": "m00037:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": "A sawhorse representation and a Newman projection of ethane are depicted.",
+        "src": "../../media/OChem_03_06_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00037:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00003",
+      "class": "unnumbered",
+      "caption": null,
+      "media": {
+        "alt": "Staggered conformation of ethane undergoes rotation of rear carbon 60 degrees to form eclipsed conformation of ethane.",
+        "src": "../../media/OChem_03_06_003.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00037:para:para-00006"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00004",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00037:caption:fig-00004-caption"
+      },
+      "media": {
+        "alt": "A graph of potential energy versus degrees of bond rotation in ethane. The peaks of the curve are labeled as eclipsed conformations and energy difference is 12 kilojoules per mole.",
+        "src": "../../media/OChem_03_06_004.jpg",
+        "mimeType": "image/jpeg"
+      }
+    }
+  ],
+  "sectionOrder": null
+}

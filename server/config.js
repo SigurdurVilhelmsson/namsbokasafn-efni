@@ -95,7 +95,13 @@ const config = {
  * IMPORTANT: All route files hold a reference to this same array object.
  * refreshValidBooks() mutates it in place so every importer sees the update.
  */
-const VALID_BOOKS = ['efnafraedi-2e', 'liffraedi-2e', 'orverufraedi'];
+const VALID_BOOKS = [
+  'efnafraedi-2e',
+  'liffraedi-2e',
+  'orverufraedi',
+  'lifraen-efnafraedi',
+  'edlisfraedi-2e',
+];
 
 /**
  * Human-readable book labels (slug → Icelandic title).
@@ -105,6 +111,8 @@ const BOOK_LABELS = {
   'efnafraedi-2e': 'Efnafræði 2e',
   'liffraedi-2e': 'Líffræði 2e',
   orverufraedi: 'Örverufræði',
+  'lifraen-efnafraedi': 'Lífræn efnafræði',
+  'edlisfraedi-2e': 'Eðlisfræði 2e',
 };
 
 /**
@@ -117,11 +125,19 @@ const BOOK_LABELS = {
  */
 function refreshValidBooks(db) {
   // Hardcoded defaults — always included even if DB is empty
-  const defaults = ['efnafraedi-2e', 'liffraedi-2e', 'orverufraedi'];
+  const defaults = [
+    'efnafraedi-2e',
+    'liffraedi-2e',
+    'orverufraedi',
+    'lifraen-efnafraedi',
+    'edlisfraedi-2e',
+  ];
   const defaultLabels = {
     'efnafraedi-2e': 'Efnafræði 2e',
     'liffraedi-2e': 'Líffræði 2e',
     orverufraedi: 'Örverufræði',
+    'lifraen-efnafraedi': 'Lífræn efnafræði',
+    'edlisfraedi-2e': 'Eðlisfræði 2e',
   };
 
   try {

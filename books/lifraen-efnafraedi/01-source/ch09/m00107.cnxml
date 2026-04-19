@@ -1,0 +1,51 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Reduction of Alkynes</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Reduction of Alkynes</md:title>
+    <md:content-id>m00107</md:content-id>
+    <md:uuid>7d623ee1-3ece-428f-8e7f-413036d2b3f5</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">Alkynes are reduced to alkanes by addition of H<sub>2</sub> over a metal catalyst. The reaction occurs in two steps through an alkene intermediate, and measurements show that the first step in the reaction is more exothermic than the second.</para>
+    <figure class="unnumbered scaled-down" id="fig-00001">
+    <media alt="Acetylene reacts with hydrogen and catalyst to form ethene. Ethene reacts with hydrogen and catalyst to form ethane. The standard enthalpy of hydrogen for both reactions is given.">
+    <image mime-type="image/jpeg" src="../../media/OChem_09_05_001.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00002">Complete reduction to the alkane occurs when palladium on carbon (Pd/C) is used as catalyst, but hydrogenation can be stopped at the alkene stage if the less active <emphasis effect="italics">Lindlar catalyst</emphasis> is used. The <term id="term-00001">Lindlar catalyst</term> is a finely divided palladium metal that has been precipitated onto a calcium carbonate support and then deactivated by treatment with lead acetate and quinoline, an aromatic amine. The hydrogenation occurs with syn stereochemistry (<link document="m00093"/>), giving a cis alkene product.</para>
+    <figure class="unnumbered scaled-down" id="fig-00002">
+    <media alt="The reaction shows 4-octyne reacting with hydrogen and Lindlar's catalyst to give cis-4-octene. This reacts with hydrogen, and palladium catalyst to form octane. Quinoline is also used in the process.">
+    <image mime-type="image/jpeg" src="../../media/OChem_09_05_002.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00003">The alkyne hydrogenation reaction has been explored extensively by the Hoffmann–LaRoche pharmaceutical company, where it is used in the commercial synthesis of vitamin A. The cis isomer of vitamin A produced initially on hydrogenation is converted to the trans isomer by heating.</para>
+    <figure class="unnumbered scaled-down" id="fig-00003">
+    <media alt="An alkyne reacts with hydrogen and Lindlar catalyst to give 7-cis-retinol (7-cis-vitamin A; vitamin A has a trans double bond at C7).">
+    <image mime-type="image/jpeg" src="../../media/OChem_09_05_003.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00004">An alternative method for the conversion of an alkyne to an alkene uses sodium or lithium metal as the reducing agent in liquid ammonia as solvent. This method is complementary to the Lindlar reduction because it produces trans rather than cis alkenes. For example, 5-decyne gives <emphasis effect="italics">trans</emphasis>-5-decene on treatment with lithium in liquid ammonia. The mechanism is explained below.</para>
+    <figure class="unnumbered scaled-down" id="fig-00004">
+    <media alt="The figure shows 5-decyne reacting with lithium and ammonia to form trans-5-decene (78%).">
+    <image mime-type="image/jpeg" src="../../media/OChem_09_05_004.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00005">Alkali metals dissolve in liquid ammonia at −33 °C to produce a deep blue solution containing the metal cation and ammonia-solvated electrons. When an alkyne is then added to the solution, reduction occurs by the mechanism shown in <link target-id="fig-00005"/>. An electron first adds to the triple bond to yield an intermediate anion radical—a species that is both an anion (has a negative charge) and a radical (has an odd number of electrons). This anion radical is a strong base, able to remove H<sup>+</sup> from ammonia to give a vinylic radical. Addition of a second electron to the vinylic radical gives a vinylic anion, which abstracts a second H<sup>+</sup> from ammonia to give trans alkene product.</para>
+    <figure class="mechanism-figure scaled-down" id="fig-00005">
+    <title>MECHANISM</title>
+    <media alt="The figure shows the mechanism of reduction of an alkyne in the presence of lithium and ammonium in four steps to give a trans alkene.">
+    <image mime-type="image/jpeg" src="../../media/OChem_09_05_005.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">Mechanism of the lithium/ammonia reduction of an alkyne to produce a trans alkene.</emphasis></caption>
+    </figure>
+    <para id="para-00006">Trans stereochemistry of the alkene product is established during the second reduction step (<emphasis effect="bold"><span class="magenta-text">3</span></emphasis>) when the less-hindered trans vinylic anion is formed from the vinylic radical. Vinylic radicals undergo rapid cis–trans equilibration, but vinylic anions equilibrate much less rapidly. Thus, the more stable trans vinylic anion is formed rather than the less stable cis anion and is then protonated without equilibration.</para>
+    <section class="section-exercises" id="sect-00001">
+    <title>Problems</title>
+    <exercise id="exer-00001">
+    <problem id="prob-00001">
+    <para id="para-00007"><link class="os-embed" url="#exercise/09-05-OC-P08"/></para>
+    </problem>
+    </exercise>
+    </section>
+    </content>
+</document>

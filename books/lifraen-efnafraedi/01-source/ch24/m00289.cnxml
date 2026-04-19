@@ -1,0 +1,76 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Naming Amines</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Naming Amines</md:title>
+    <md:content-id>m00289</md:content-id>
+    <md:uuid>791e44dd-7a70-4db5-b07d-84447678697d</md:uuid>
+  </metadata>
+  <content>
+<para id="para-00001">Amines can be either alkyl-substituted (<term id="term-00001">alkylamines</term>) or aryl-substituted (<term id="term-00002">arylamines</term>). Although much of the chemistry of the two classes is similar, there are also substantial differences. Amines are classified as <term id="term-00003">primary (RNH<sub>2</sub>)</term>, <term id="term-00004">secondary (R<sub>2</sub>NH)</term>, or <term id="term-00005">tertiary (R<sub>3</sub>N)</term>, depending on the number of organic substituents attached to nitrogen. Thus, methylamine (CH<sub>3</sub>NH<sub>2</sub>) is a primary amine, dimethylamine [(CH<sub>3</sub>)<sub>2</sub>NH] is a secondary amine, and trimethylamine [(CH<sub>3</sub>)<sub>3</sub>N] is a tertiary amine. Note that this usage of the terms <emphasis effect="italics">primary, secondary,</emphasis> and <emphasis effect="italics">tertiary</emphasis> differs from our previous usage. When we speak of a tertiary alcohol or alkyl halide, we refer to the degree of substitution at the alkyl carbon atom, but when we speak of a tertiary amine, we refer to the degree of substitution at the nitrogen atom.</para>
+<figure class="unnumbered scaled-down" id="fig-00001">
+<media alt="Three structures show tertiary-butyl alcohol (a tertiary alcohol), trimethylamine (a tertiary amine) and tertiary butyl amine (a primary amine).">
+<image mime-type="image/jpeg" src="../../media/OChem_24_01_001.jpg"/>
+</media>
+</figure>
+<para id="para-00002">Compounds containing a nitrogen atom with four attached groups also exist, but the nitrogen atom must carry a formal positive charge. Such compounds are called <term id="term-00006">quaternary ammonium salts</term>.</para>
+<figure class="unnumbered scaled-down" id="fig-00002">
+<media alt="The structure of a quaternary ammonium salt, which is a nitrogen positive linked to four R groups and an X negative ion.">
+<image mime-type="image/jpeg" src="../../media/OChem_24_01_002.jpg"/>
+</media>
+</figure>
+<para id="para-00003">Primary amines are named in the IUPAC system in several ways. For simple amines, the suffix -<emphasis effect="italics">amine</emphasis> is added to the name of the alkyl substituent. You might also recall from the chapter on <link document="m00180">Benzene and Aromaticity</link> that the aromatic phenylamine, H<sub>2</sub>N–C<sub>6</sub>H<sub>5</sub>, has the common name <emphasis effect="italics">aniline.</emphasis></para>
+<figure class="unnumbered scaled-down" id="fig-00003">
+<media alt="The structures of tertiary-butyl amine, cyclohexylamine, and aniline. Aniline is enclosed in square parentheses.">
+<image mime-type="image/jpeg" src="../../media/OChem_24_01_003.jpg"/>
+</media>
+</figure>
+<para id="para-00004">Alternatively, the suffix -<emphasis effect="italics">amine</emphasis> can be used in place of the final -<emphasis effect="italics">e</emphasis> in the name of the parent compound.</para>
+<figure class="unnumbered scaled-down" id="fig-00004">
+<media alt="The structures of 4,4-dimethylcyclohexanamine and 1,4-butanediamine. 4,4-dimethylcyclohexanamine has cyclohexane ring with two methyl groups on C4 and amine on C1. 1,4-butanediamine is four-carbon chain with amines on C1 and C4.">
+<image mime-type="image/jpeg" src="../../media/OChem_24_01_004.jpg"/>
+</media>
+</figure>
+<para id="para-00005">Amines with more than one functional group are named by considering the −NH<sub>2</sub> as an <emphasis effect="italics">amino</emphasis> substituent on the parent molecule.</para>
+<figure class="unnumbered scaled-down" id="fig-00005">
+<media alt="The structures of 2-aminobutanoic acid, 2,4-diaminobenzoic acid and 4-amino-2-butanone. The carbon atoms of 2-aminobutanoic acid and 4-amino-2-butanone are numbered explicitly.">
+<image mime-type="image/jpeg" src="../../media/OChem_24_01_005.jpg"/>
+</media>
+</figure>
+<para id="para-00006">Symmetrical secondary and tertiary amines are named by adding the prefix <emphasis effect="italics">di</emphasis>- or <emphasis effect="italics">tri</emphasis>- to the alkyl group.</para>
+<figure class="unnumbered scaled-down" id="fig-00006">
+<media alt="The structures of diphenylamine and triethylamine. Diphenylamine has two benzene rings linked to an N H group. Triethylamine has a nitrogen atom linked to three ethyl groups.">
+<image mime-type="image/jpeg" src="../../media/OChem_24_01_006.jpg"/>
+</media>
+</figure>
+<para id="para-00007">Unsymmetrically substituted secondary and tertiary amines are referred to as <emphasis effect="italics">N</emphasis>-substituted primary amines. The largest alkyl group takes the parent name, and the other alkyl groups are considered <emphasis effect="italics">N</emphasis>-substituents on the parent (<emphasis effect="italics">N</emphasis> because they’re attached to nitrogen).</para>
+<figure class="unnumbered scaled-down" id="fig-00007">
+<media alt="N,N-dimethylpropylamine has a nitrogen linked to two methyl and a propyl group. N-ethyl-N-methylcyclohexylamine has cyclohexane linked to a nitrogen. This is connected to methyl and ethyl group.">
+<image mime-type="image/jpeg" src="../../media/OChem_24_01_007.jpg"/>
+</media>
+</figure>
+<para id="para-00008"><term id="term-00007">Heterocyclic amines</term>—compounds in which the nitrogen atom occurs as part of a ring—are also common, and each different heterocyclic ring system has its own parent name. The heterocyclic nitrogen atom is always numbered as position 1.</para>
+<figure class="unnumbered scaled-down" id="fig-00008">
+<media alt="The structures of pyridine, pyrrole, quinoline, imidazole, indole, pyrimidine, pyrrolidine, and piperidine. The compounds are numbered from the nitrogen atom.">
+<image mime-type="image/jpeg" src="../../media/OChem_24_01_008.jpg"/>
+</media>
+</figure>
+<section class="section-exercises" id="sect-00001">
+<title>Problems</title>
+<exercise id="exer-00001">
+<problem id="prob-00001">
+<para id="para-00009"><link class="os-embed" url="#exercise/24-01-OC-P01"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00002">
+<problem id="prob-00002">
+<para id="para-00010"><link class="os-embed" url="#exercise/24-01-OC-P02"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00003">
+<problem id="prob-00003">
+<para id="para-00011"><link class="os-embed" url="#exercise/24-01-OC-P03"/></para>
+</problem>
+</exercise>
+</section>
+</content>
+</document>

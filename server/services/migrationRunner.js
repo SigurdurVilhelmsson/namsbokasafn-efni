@@ -53,6 +53,12 @@ function runAllMigrations() {
     require('../migrations/025-approve-efnafelag-terms'),
     require('../migrations/026-nullable-icelandic'),
     require('../migrations/027-recover-scrambled-terms'),
+    require('../migrations/028-idordabanki-id'),
+    require('../migrations/029-register-preview-books'),
+    require('../migrations/030-remove-legacy-tables'),
+    require('../migrations/031-content-versions'),
+    require('../migrations/032-terminology-redesign'),
+    require('../migrations/033-fix-organic-chemistry-slug'),
   ];
 
   let applied = 0;

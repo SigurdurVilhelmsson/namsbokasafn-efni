@@ -6,6 +6,7 @@
  */
 
 const https = require('https');
+const log = require('../lib/logger');
 
 // Known OpenStax book repositories — maps slug to GitHub repo and collection.xml filename.
 // Pattern: collections/{slug}.collection.xml in the repo's collections/ directory.
@@ -267,7 +268,7 @@ async function fetchModuleTitle(repo, moduleId) {
     const titleMatch = cnxml.match(/<title>([^<]+)<\/title>/);
     return titleMatch ? titleMatch[1].trim() : moduleId;
   } catch (error) {
-    console.warn(`Could not fetch title for module ${moduleId}: ${error.message}`);
+    log.warn({ moduleId, err: error }, 'Could not fetch module title');
     return moduleId;
   }
 }
@@ -297,14 +298,14 @@ async function fetchBookStructure(bookSlug) {
 
   const { repo, collection } = bookConfig;
 
-  console.log(`Fetching collection from ${repo}...`);
+  log.info({ repo }, 'Fetching collection from OpenStax');
   const collectionUrl = `https://raw.githubusercontent.com/${repo}/main/collections/${collection}`;
   const collectionXml = await fetchRaw(collectionUrl);
 
-  console.log('Parsing collection structure...');
+  log.info('Parsing collection structure');
   const { chapters, preface, appendixModules } = parseCollectionXml(collectionXml);
 
-  console.log(`Found ${chapters.length} chapters, fetching module titles...`);
+  log.info({ chapterCount: chapters.length }, 'Fetching module titles');
 
   // Fetch all module titles in parallel (with some rate limiting)
   const allModules = [];
@@ -354,7 +355,7 @@ async function fetchBookStructure(bookSlug) {
   // Handle appendices as additional chapters
   const appendices = [];
   if (appendixModules.length > 0) {
-    console.log(`Fetching ${appendixModules.length} appendix titles...`);
+    log.info({ count: appendixModules.length }, 'Fetching appendix titles');
 
     for (let i = 0; i < appendixModules.length; i += batchSize) {
       const batch = appendixModules.slice(i, i + batchSize);

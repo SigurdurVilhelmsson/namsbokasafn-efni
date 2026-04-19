@@ -1,0 +1,329 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-15T13:13:56.187Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1lSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--20f18a4b3daf590523f73a06d50c5311bbc5c9f2",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1lSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--20f18a4b3daf590523f73a06d50c5311bbc5c9f2/OChem_05_EC_001a.jpg"
+    },
+    {
+      "created_at": "2023-08-15T13:13:56.190Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2NSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8ffaaefa2123d12e6a102b12b823f5a5b5979ba7",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2NSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8ffaaefa2123d12e6a102b12b823f5a5b5979ba7/OChem_05_EC_001b.jpg"
+    },
+    {
+      "created_at": "2023-08-15T13:13:56.193Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2dSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4ccf1717dbcc8565a70519a0783ca37b993f12a1",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2dSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4ccf1717dbcc8565a70519a0783ca37b993f12a1/OChem_05_EC_001c.jpg"
+    },
+    {
+      "created_at": "2023-08-15T13:13:56.196Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa29SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--027a71e1faf1c89f2df1a550c2818ac00e4137e0",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa29SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--027a71e1faf1c89f2df1a550c2818ac00e4137e0/OChem_05_EC_001d.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:78cbdb19-8c72-46c8-9821-177d28ee4b73",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:5-12-chirality-in-nature-and-chiral-environments"
+  ],
+  "uuid": "fb68bdd7-afcb-4a27-aaec-4342b676b4c0",
+  "group_uuid": "871d8751-4b44-49aa-81bc-78f5a0d36015",
+  "number": 36522,
+  "version": 5,
+  "uid": "36522@5",
+  "published_at": "2023-08-15T13:14:00.097Z",
+  "nickname": "05-99-OC-VC01",
+  "solutions_are_public": false,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": 354135,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<p>Which of the following structures are identical? (Green = Cl.)</p>\n<p><b>(a)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1lSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--20f18a4b3daf590523f73a06d50c5311bbc5c9f2/OChem_05_EC_001a.jpg\" alt=\"The ball-and-stick model shows a 3-carbon chain. C1 is a carboxylic acid group on the right. A chlorine atom is bonded to C2  above and a methyl group below C2.\">\n<b>(b)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2NSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8ffaaefa2123d12e6a102b12b823f5a5b5979ba7/OChem_05_EC_001b.jpg\" alt=\"The ball-and-stick model shows a 3-carbon  chain. C1 is a carboxylic acid group  on the left. C2 is bonded to a chlorine atom at the top behind the C2 hydrogen.\">\n<b>(c)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2dSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4ccf1717dbcc8565a70519a0783ca37b993f12a1/OChem_05_EC_001c.jpg\" alt=\"The ball-and-stick model shows a 3-carbon  chain. C1 is a carboxylic acid group on the left. C2 is bonded to a chlorine atom on the right the methyl group above.\">\n<br><b>(d)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa29SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--027a71e1faf1c89f2df1a550c2818ac00e4137e0/OChem_05_EC_001d.jpg\" alt=\"The ball-and-stick model shows a 3-carbon  chain. C1 is a carboxylic acid group on the left. C2 is bonded to a chlorine atom in front of the C2 hydrogen\"></p>",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    5,
+    4,
+    3,
+    2,
+    1
+  ]
+}

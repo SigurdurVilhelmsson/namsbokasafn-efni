@@ -1,19 +1,19 @@
 /**
  * Pipeline Routes
  *
- * API endpoints to run cnxml-inject and cnxml-render from the web UI.
+ * API endpoints for inject, render, and job tracking.
+ * Used by the segment editor's "apply and render" flow.
  * HEAD_EDITOR role required for all pipeline operations.
  *
  * Endpoints:
- *   POST /api/pipeline/extract     Extract EN segments from CNXML source
- *   POST /api/pipeline/protect     Protect segments for MT service
- *   POST /api/pipeline/unprotect   Remove protection from MT output
  *   POST /api/pipeline/inject      Run inject for a chapter/module
  *   POST /api/pipeline/render      Run render for a chapter/module
  *   POST /api/pipeline/run         Run full pipeline (inject + render)
- *   POST /api/pipeline/prepare-tm  Prepare files for Matecat Align (TM creation)
  *   GET  /api/pipeline/jobs        List recent jobs
  *   GET  /api/pipeline/jobs/:jobId Get job status and output
+ *
+ * Pipeline orchestration (extract, protect, unprotect, prepare-tm) has been
+ * moved to CLI tools. See tools/cnxml-extract.js, tools/api-translate.js, etc.
  */
 
 const express = require('express');
@@ -58,133 +58,6 @@ function validateParams(req, res) {
 
   return { book, chapter: chapterNum, track: track || 'faithful', moduleId };
 }
-
-/**
- * POST /extract
- * Run cnxml-extract for a chapter or specific module.
- * Extracts EN segments and structure from CNXML source files.
- *
- * If downstream work exists (faithful translations, localized content, or
- * approved edits), returns 409 with an impact report. The client must
- * re-send with { confirmed: true } to proceed.
- */
-router.post('/extract', (req, res) => {
-  const params = validateParams(req, res);
-  if (!params) return;
-
-  const running = pipeline.hasRunningJob(params.chapter, 'extract');
-  if (running) {
-    return res.status(409).json({
-      error: 'An extract job is already running for this chapter',
-      jobId: running.id,
-    });
-  }
-
-  // Pre-check: warn about downstream work that would be invalidated
-  if (!req.body.confirmed) {
-    const impact = pipeline.checkExtractionImpact(params.book, params.chapter);
-
-    if (impact.hasDownstreamWork || impact.extractedModules > 0) {
-      const approvedEdits = pipeline.countApprovedEdits(params.book, impact.moduleIds);
-
-      // Only require confirmation if there's real work at risk
-      if (impact.hasDownstreamWork || approvedEdits > 0) {
-        return res.status(409).json({
-          requiresConfirmation: true,
-          impact: {
-            ...impact,
-            approvedEdits,
-          },
-        });
-      }
-    }
-  }
-
-  try {
-    const { jobId } = pipeline.runExtract({
-      book: params.book,
-      chapter: params.chapter,
-      moduleId: params.moduleId,
-      userId: req.user.id,
-    });
-
-    res.json({
-      success: true,
-      jobId,
-      message: `Extraction started for chapter ${params.chapter}${params.moduleId ? ` module ${params.moduleId}` : ''}`,
-    });
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-});
-
-/**
- * POST /protect
- * Run protect-segments-for-mt for a chapter.
- * Prepares EN segments for machine translation service.
- */
-router.post('/protect', (req, res) => {
-  const params = validateParams(req, res);
-  if (!params) return;
-
-  const running = pipeline.hasRunningJob(params.chapter, 'protect');
-  if (running) {
-    return res.status(409).json({
-      error: 'A protect job is already running for this chapter',
-      jobId: running.id,
-    });
-  }
-
-  try {
-    const { jobId } = pipeline.runProtect({
-      book: params.book,
-      chapter: params.chapter,
-      userId: req.user.id,
-    });
-
-    res.json({
-      success: true,
-      jobId,
-      message: `Protection started for chapter ${params.chapter}`,
-    });
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-});
-
-/**
- * POST /unprotect
- * Run unprotect-segments for a chapter.
- * Removes protection markers from MT output segments.
- */
-router.post('/unprotect', (req, res) => {
-  const params = validateParams(req, res);
-  if (!params) return;
-
-  const running = pipeline.hasRunningJob(params.chapter, 'unprotect');
-  if (running) {
-    return res.status(409).json({
-      error: 'An unprotect job is already running for this chapter',
-      jobId: running.id,
-    });
-  }
-
-  try {
-    const { jobId } = pipeline.runUnprotect({
-      book: params.book,
-      chapter: params.chapter,
-      userId: req.user.id,
-    });
-
-    res.json({
-      success: true,
-      jobId,
-      message: `Unprotection started for chapter ${params.chapter}`,
-    });
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-});
 
 /**
  * POST /inject
@@ -314,50 +187,6 @@ router.post('/run', (req, res) => {
     jobId,
     message: `Pipeline started for chapter ${params.chapter}${params.moduleId ? ` module ${params.moduleId}` : ''}`,
   });
-});
-
-/**
- * POST /prepare-tm
- * Prepare files for Matecat Align (TM creation).
- */
-router.post('/prepare-tm', (req, res) => {
-  const { book, chapter } = req.body;
-
-  if (!book || !VALID_BOOKS.includes(book)) {
-    return res
-      .status(400)
-      .json({ error: `Invalid book. Must be one of: ${VALID_BOOKS.join(', ')}` });
-  }
-
-  const chapterNum = parseInt(chapter, 10);
-  if (isNaN(chapterNum) || chapterNum < 1 || chapterNum > MAX_CHAPTERS) {
-    return res.status(400).json({ error: 'Invalid chapter number' });
-  }
-
-  const running = pipeline.hasRunningJob(chapterNum, 'prepare-tm');
-  if (running) {
-    return res.status(409).json({
-      error: 'A TM preparation job is already running for this chapter',
-      jobId: running.id,
-    });
-  }
-
-  try {
-    const { jobId } = pipeline.runPrepareTm({
-      book,
-      chapter: chapterNum,
-      userId: req.user.id,
-    });
-
-    res.json({
-      success: true,
-      jobId,
-      message: `TM preparation started for chapter ${chapterNum}`,
-    });
-  } catch (err) {
-    console.error('Error starting TM preparation:', err);
-    res.status(400).json({ error: err.message });
-  }
 });
 
 /**

@@ -1,0 +1,456 @@
+{
+  "images": [
+    {
+      "created_at": "2024-08-05T18:10:42.818Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcE1YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d2934ae8fa03f1f16fadcf03c63e8c4d6eb7462a",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcE1YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d2934ae8fa03f1f16fadcf03c63e8c4d6eb7462a/OChem_18_EC_033a.jpg"
+    },
+    {
+      "created_at": "2024-08-05T18:10:42.822Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--084a5a65c43995ffe69ffccba09a07c3dc154118",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--084a5a65c43995ffe69ffccba09a07c3dc154118/OChem_18_EC_033b.jpg"
+    },
+    {
+      "created_at": "2024-08-05T18:10:42.824Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6d1573c4a20572ef936ef06ad32687ad4d14e78b",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6d1573c4a20572ef936ef06ad32687ad4d14e78b/OChem_18_EC_033c.jpg"
+    },
+    {
+      "created_at": "2024-08-05T18:10:42.827Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFlYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--12b2f6009b61424b7ee2c072bbdc5149e696b99d",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFlYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--12b2f6009b61424b7ee2c072bbdc5149e696b99d/OChem_18_EC_033d.jpg"
+    },
+    {
+      "created_at": "2024-08-05T18:10:42.828Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--55d61a3263d1ccf72cb9fadcb1ded4814f2e1bc2",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--55d61a3263d1ccf72cb9fadcb1ded4814f2e1bc2/OChem_18_EC_033e.jpg"
+    },
+    {
+      "created_at": "2024-08-05T18:10:42.831Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--af9b8c75307a6a8b6402cd62a4b5debb3f16fd1b",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--af9b8c75307a6a8b6402cd62a4b5debb3f16fd1b/OChem_18_EC_033f.jpg"
+    },
+    {
+      "created_at": "2024-08-05T18:10:42.832Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGtYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--10581c8db4ca689bfcab4d52fca3ac2ab9838230",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGtYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--10581c8db4ca689bfcab4d52fca3ac2ab9838230/OChem_18_EC_033g.jpg"
+    },
+    {
+      "created_at": "2024-08-05T18:10:42.835Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcG9YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--579a475b33ba38dc2c938795784e25fefc6becab",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcG9YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--579a475b33ba38dc2c938795784e25fefc6becab/OChem_18_EC_033h.jpg"
+    },
+    {
+      "created_at": "2024-08-05T18:10:42.837Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6f76bed8d1745deb2c91b093b65f230bc3f0abe4",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6f76bed8d1745deb2c91b093b65f230bc3f0abe4/OChem_18_EC_033i.jpg"
+    },
+    {
+      "created_at": "2024-08-05T18:10:42.839Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEFhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--52934ef9087c9101f8de0a4ab9c1562c25845504",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEFhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--52934ef9087c9101f8de0a4ab9c1562c25845504/OSX_OrgChem_18_99_Ketonetal_img.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:c622a4cf-8921-47ff-979f-3c15ab771427",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:18-8-spectroscopy-of-ethers"
+  ],
+  "uuid": "f48390c0-6a72-4109-b9f2-e4ebb3417d36",
+  "group_uuid": "7dd22bf6-fd24-44bb-bb1e-10c593b8a117",
+  "number": 38735,
+  "version": 6,
+  "uid": "38735@6",
+  "published_at": "2024-08-05T18:10:49.217Z",
+  "nickname": "18-99-OC-AP02",
+  "solutions_are_public": false,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "<p>Give IUPAC names for the following structures:</p>",
+  "questions": [
+    {
+      "id": 464259,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcE1YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d2934ae8fa03f1f16fadcf03c63e8c4d6eb7462a/OChem_18_EC_033a.jpg\" alt=\"A sulfur atom connected to a cyclohexane group and an isopropyl group.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 464260,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--084a5a65c43995ffe69ffccba09a07c3dc154118/OChem_18_EC_033b.jpg\" alt=\"A benzene ring with O C H 3 substituents on two adjacent carbons.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 464261,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6d1573c4a20572ef936ef06ad32687ad4d14e78b/OChem_18_EC_033c.jpg\" alt=\"A five-membered ring in which two adjacent carbons are also connected by a shared oxygen atom.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 464262,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFlYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--12b2f6009b61424b7ee2c072bbdc5149e696b99d/OChem_18_EC_033d.jpg\" alt=\"A five-membered ring in which one member is an oxygen. The ring is numbered starting at oxygen (1); there is a C H 3 on C 2.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 464263,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--55d61a3263d1ccf72cb9fadcb1ded4814f2e1bc2/OChem_18_EC_033e.jpg\" alt=\"An oxygen atom connected to an isopropyl group and a cyclopropyl group.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 464264,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--af9b8c75307a6a8b6402cd62a4b5debb3f16fd1b/OChem_18_EC_033f.jpg\" alt=\"A benzene ring with an S H substituent and, on an adjacent carbon, a nitro group.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 464265,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGtYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--10581c8db4ca689bfcab4d52fca3ac2ab9838230/OChem_18_EC_033g.jpg\" alt=\"A sulfur with an isopropyl on the right, and a five-carbon chain on the left with methyl groups on (from left) third, fourth, and fifth carbons.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 464266,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcG9YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--579a475b33ba38dc2c938795784e25fefc6becab/OChem_18_EC_033h.jpg\" alt=\"A central carbon with two methyl and two methoxy substituents.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 464267,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6f76bed8d1745deb2c91b093b65f230bc3f0abe4/OChem_18_EC_033i.jpg\" alt=\"A cyclohexane in which one carbon is substituted with two S C H 3 groups.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    6,
+    5,
+    4,
+    3,
+    2,
+    1
+  ]
+}

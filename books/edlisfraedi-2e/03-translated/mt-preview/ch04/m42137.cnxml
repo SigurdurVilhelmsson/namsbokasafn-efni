@@ -1,0 +1,380 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Ítarefni: Inngangur að grunnkröftunum fjórum</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m42137</md:content-id>
+  <md:title>Ítarefni: Inngangur að grunnkröftunum fjórum</md:title>
+  <md:abstract/>
+  <md:uuid>c874ccd3-6c58-4104-918e-bded4f2c9ea4</md:uuid>
+</metadata>
+
+<content>
+<section id="sect-00001" class="learning-objectives">
+<title>NÁMSMARKMIÐ</title>
+<para id="para-00001">Í lok þessa kafla muntu geta:</para>
+<list id="list-00001" list-type="bulleted">
+<item>Skilið grunnkraftana fjóra sem liggja að baki ferlum í náttúrunni.</item>
+</list>
+</section>
+<para id="import-auto-id1910048">Ein af merkilegustu einföldunum í eðlisfræði er sú að aðeins fjórir aðskildir kraftar geta skýrt öll þekkt fyrirbæri. Reyndar stafa næstum allir kraftar sem við upplifum beint af aðeins einum grunnkrafti, sem kallast rafsegulkraftur. (Þyngdarkrafturinn er eini krafturinn sem við upplifum beint sem er ekki rafsegulkraftur.) Þetta er gríðarleg einföldun á óteljandi <emphasis effect="italics">svo virðist sem</emphasis> ólíkum kröftum sem við getum talið upp, en aðeins fáir þeirra voru ræddir í fyrri kafla. Eins og við munum sjá er talið að allir grunnkraftar verki með miðlun smásærra burðareinda og eiginleikar grunnkraftanna ráðast af gerð þeirra einda sem miðlað er. Fjarverkun, eins og þyngdarkraftur jarðar á tunglið, er útskýrð með tilvist <term id="import-auto-id2990636">kraftsviðs (e. force field)</term> frekar en með „líkamlegri snertingu“.</para>
+<para id="import-auto-id1447177"><emphasis effect="italics">Grunnkraftarnir fjórir</emphasis> eru þyngdarkraftur, rafsegulkraftur, veiki kjarnakrafturinn og sterki kjarnakrafturinn. Eiginleikar þeirra eru teknir saman í <link target-id="import-auto-id1588108"/>. Þar sem veiki og sterki kjarnakrafturinn verka á mjög stuttu færi, á stærð við kjarna eða minna, upplifum við þá ekki beint, þótt þeir séu nauðsynlegir fyrir sjálfa byggingu efnis. Þessir kraftar ákvarða hvaða kjarnar eru stöðugir og hverjir hrörna og þeir eru grundvöllur orkulosunar í ákveðnum kjarnahvörfum. Kjarnakraftar ákvarða ekki aðeins stöðugleika kjarna, heldur einnig hlutfallslegt magn frumefna í náttúrunni. Eiginleikar kjarna atóms ákvarða fjölda rafeinda sem það hefur og þar með, óbeint, efnafræði atómsins. Nánar verður fjallað um öll þessi efni í síðari köflum.</para>
+<table id="import-auto-id1588108" summary="A table listing the properties of four basic forces. The table has five columns indicating the type of force, its approximate relative strength, its range, whether it is attractive or repulsive, and the carrier particle(s)."><title>Properties of the Four Basic Forces<footnote id="eip-id1997179">The graviton is a proposed particle, though it has not yet been observed by scientists. See the discussion of gravitational waves later in this section. The particles <m:math><m:mrow><m:mrow><m:msup><m:mtext>W</m:mtext><m:mrow><m:mrow><m:mo stretchy="false">+</m:mo><m:mrow/></m:mrow></m:mrow></m:msup></m:mrow><m:mrow/></m:mrow></m:math>, <m:math><m:mrow><m:mrow><m:msup><m:mtext>W</m:mtext><m:mrow><m:mrow><m:mo stretchy="false">−</m:mo><m:mrow/></m:mrow></m:mrow></m:msup></m:mrow><m:mrow/></m:mrow></m:math>, and <m:math><m:mrow><m:mrow><m:msup><m:mtext>Z</m:mtext><m:mrow><m:mn>0</m:mn></m:mrow></m:msup></m:mrow><m:mrow/></m:mrow></m:math> are called vector bosons; these were predicted by theory and first observed in 1983. There are eight types of gluons proposed by scientists, and their existence is indicated by meson exchange in the nuclei of atoms.</footnote></title>
+<tgroup cols="5"><colspec colnum="1" colname="c1"/>
+        <colspec colnum="2" colname="c2"/>
+        <colspec colnum="3" colname="c3"/>
+        <colspec colnum="4" colname="c4"/>
+        <colspec colnum="5" colname="c5"/>
+        <thead>
+          <row>
+            <entry>Kraftur</entry>
+            <entry>Áætlaður hlutfallslegur styrkur</entry>
+            <entry>Drægni</entry>
+            <entry>Aðdráttur/fráhrinding</entry>
+            <entry>Burðareind</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>Þyngdarkraftur</entry>
+            <entry><m:math display="block">
+                
+                  <m:mrow>
+
+                      <m:mrow>
+                        <m:msup>
+                          <m:mtext>10</m:mtext>
+
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mo stretchy="false">−</m:mo>
+                                <m:mtext>38</m:mtext>
+                              </m:mrow>
+                            </m:mrow>
+
+                        </m:msup>
+                      </m:mrow>
+
+                    <m:mrow/>
+                  </m:mrow>
+                  
+                
+              </m:math></entry>
+            <entry><m:math display="block">
+                
+                  <m:mrow>
+
+                      <m:mrow>
+                        <m:mo stretchy="false">∞</m:mo>
+                      </m:mrow>
+
+                    <m:mrow/>
+                  </m:mrow>
+                  
+                
+              </m:math></entry>
+            <entry>aðeins aðdráttur</entry>
+            <entry>Þyngdareind</entry>
+          </row>
+          <row>
+            <entry>Rafsegulkraftur</entry>
+            <entry><m:math display="block">
+                
+                  <m:mrow>
+
+                      <m:mrow>
+                        <m:msup>
+                          <m:mtext>10</m:mtext>
+
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mo stretchy="false">–</m:mo>
+                                <m:mn>2</m:mn>
+                              </m:mrow>
+                            </m:mrow>
+
+                        </m:msup>
+                      </m:mrow>
+
+                    <m:mrow/>
+                  </m:mrow>
+                  
+                
+              </m:math></entry>
+            <entry><m:math display="block">
+                
+                  <m:mrow>
+
+                      <m:mrow>
+                        <m:mo stretchy="false">∞</m:mo>
+                      </m:mrow>
+
+                    <m:mrow/>
+                  </m:mrow>
+                  
+                
+              </m:math></entry>
+            <entry>aðdráttur og fráhrinding</entry>
+            <entry>Ljóseind</entry>
+          </row>
+          <row>
+            <entry>Veiki kjarnakrafturinn</entry>
+            <entry><m:math display="block">
+                  <m:mrow>
+                     <m:mrow>
+                        <m:msup>
+                          <m:mtext>10</m:mtext>
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mo stretchy="false">–</m:mo>
+                                <m:mtext>6</m:mtext>
+                              </m:mrow>
+                            </m:mrow>
+                        </m:msup>
+                      </m:mrow>
+                  </m:mrow>
+              </m:math></entry>
+            <entry>&lt; <m:math>
+<m:msup>
+<m:mn>10</m:mn>
+<m:mn>–18</m:mn>
+</m:msup>
+<m:mtext>m</m:mtext>
+</m:math></entry>
+            <entry>aðdráttur og fráhrinding</entry>
+            <entry><m:math><m:mrow><m:mrow><m:msup><m:mtext>W</m:mtext><m:mrow><m:mrow><m:mo stretchy="false">+</m:mo><m:mrow/></m:mrow></m:mrow></m:msup></m:mrow><m:mrow/></m:mrow></m:math>, <m:math><m:mrow><m:mrow><m:msup><m:mtext>W</m:mtext><m:mrow><m:mrow><m:mo stretchy="false">–</m:mo><m:mrow/></m:mrow></m:mrow></m:msup></m:mrow><m:mrow/></m:mrow></m:math>, <m:math><m:mrow><m:mrow><m:msup><m:mtext>Z</m:mtext><m:mrow><m:mn>0</m:mn></m:mrow></m:msup></m:mrow><m:mrow/></m:mrow></m:math></entry>
+          </row>
+          <row>
+            <entry>Sterki kjarnakrafturinn</entry>
+            <entry><m:math display="block">
+                
+                  <m:mrow>
+
+                      <m:mrow>
+                        <m:mn>1</m:mn>
+                      </m:mrow>
+
+                  </m:mrow>
+                
+              </m:math></entry>
+            <entry>∞</entry>
+            <entry>aðdráttur og fráhrinding</entry>
+            <entry>límeindir</entry>
+          </row>
+        </tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</tgroup>
+</table>
+<note id="fs-id3025368"><label/>
+    <title>Hugmyndatengingar: Grunnkraftarnir fjórir</title>
+    <para id="import-auto-id3061928">Fjallað verður nánar um grunnkraftana fjóra eftir því sem líður á lesefnið. Þyngdarkrafturinn er skilgreindur í <link document="m42083">Uniform Circular Motion and Gravitation</link>, rafsegulkraftur í <link document="m42300">Electric Charge and Electric Field</link>, segulkraftur í <link document="m42366">Magnetism</link> og kjarnakraftar í <link document="m42623">Radioactivity and Nuclear Physics</link>. Á stórsæjum skala eru rafsegulfræði og þyngdarafl grundvöllur allra krafta. Kjarnakraftarnir eru mikilvægir fyrir innri byggingu efnis en þeir eru ekki beint upplifaðir á stórsæjum skala.</para></note>
+<para id="import-auto-id2051381">Þyngdarkrafturinn er furðu veikur – það er aðeins vegna þess að þyngdarkrafturinn er alltaf aðdráttarkraftur sem við tökum eftir honum. Þyngd okkar er þyngdarkrafturinn sem <emphasis effect="italics">öll</emphasis> jörðin beitir á okkur. Á mjög stórum skala, eins og í stjarnfræðilegum kerfum, er þyngdarkrafturinn ríkjandi kraftur sem ákvarðar hreyfingar tungla, reikistjarna, stjarna og vetrarbrauta. Þyngdarkrafturinn hefur einnig áhrif á eðli rúms og tíma. Eins og við munum sjá síðar í námi okkar um almennu afstæðiskenninguna er rúmið bogið í nágrenni við mjög massamikla hnetti, eins og sólina, og tíminn hægir í raun á sér nálægt massamiklum hnöttum.</para>
+<para id="import-auto-id1118563">Rafsegulkraftar geta verið annaðhvort aðdráttar- eða fráhrindikraftar. Þeir eru langdrægir kraftar sem verka yfir gríðarlega miklar vegalengdir og þeir núllast næstum út fyrir stórsæja hluti. (Mundu að það er <emphasis effect="italics">heildar</emphasis> ytri krafturinn sem skiptir máli.) Ef þeir núlluðust ekki út myndu rafsegulkraftar algjörlega yfirgnæfa þyngdarkraftinn. Rafsegulkrafturinn er sambland af rafkröftum (eins og þeim sem valda stöðurafmagni) og segulkröftum (eins og þeim sem hafa áhrif á áttavitanál). Þessir tveir kraftar voru taldir vera mjög ólíkir þar til snemma á 19. öld, þegar vísindamenn fóru að uppgötva að þeir eru mismunandi birtingarmyndir sama kraftsins. Þessi uppgötvun er klassískt dæmi um <emphasis effect="italics">sameiningu krafta</emphasis>. Á svipaðan hátt stafa núningur, spenna og allir aðrir flokkar krafta sem við upplifum beint (að undanskildum þyngdarkrafti, auðvitað) af rafsegulvíxlverkunum atóma og sameinda. Það er samt sem áður hentugt að líta á þessa krafta sérstaklega í ákveðnum tilvikum vegna þess hvernig þeir birtast.</para>
+<note id="fs-id2423408"><label/>
+    <title>Hugmyndatengingar: Sameining krafta</title>
+    <para id="import-auto-id2654817">Tilraunir til að sameina grunnkraftana fjóra eru ræddar í tengslum við öreindir síðar í þessu lesefni. Með „sameiningu“ er átt við að finna tengsl milli kraftanna sem sýna að þeir eru mismunandi birtingarmyndir eins krafts. Jafnvel þótt slík sameining náist munu kraftarnir halda sínum sérstöku eiginleikum á stórsæjum skala og eru hugsanlega aðeins eins við afar sérstakar aðstæður eins og þær sem ríktu í árdaga alheimsins.</para></note>
+<para id="import-auto-id2932032">Eðlisfræðingar kanna nú hvort grunnkraftarnir fjórir séu á einhvern hátt skyldir. Tilraunir til að sameina alla krafta í einn falla undir flokkinn <emphasis effect="italics">samræmdar heildarkenningar</emphasis> (GUTs), en nokkur árangur hefur náðst í þeim efnum á undanförnum árum. Nú er vitað að við aðstæður þar sem þéttleiki og hiti eru gríðarlega mikil, eins og í árdaga alheimsins, er enginn greinanlegur munur á rafsegulkraftinum og veika kjarnakraftinum. Nú er hægt að líta á þá sem mismunandi birtingarmyndir eins krafts, sem kallast <emphasis effect="italics">rafveiki</emphasis> krafturinn. Þannig hefur listinn yfir fjóra krafta í raun styst niður í aðeins þrjá. Frekari framfarir í sameiningu allra krafta reynast erfiðar – sérstaklega að fella inn þyngdarkraftinn, sem hefur þá sérstöku eiginleika að hafa áhrif á rúm og tíma þar sem hinir kraftarnir verka.</para>
+<para id="import-auto-id2392316">Þótt sameining kraftanna hafi ekki áhrif á hvernig við fjöllum um krafta í þessum texta, er heillandi að slíkur undirliggjandi einfaldleiki skuli vera til staðar í ljósi augljósrar flækju alheimsins. Það er engin ástæða fyrir því að náttúran þurfi að vera einföld – hún er það einfaldlega.</para>
+<section id="import-auto-id3077454">
+<title>Verkun í fjarlægð: Hugmyndin um svið</title>
+<para id="import-auto-id3402339">Allir kraftar verka í fjarlægð. Þetta er augljóst þegar um þyngdarkraftinn er að ræða. Jörðin og tunglið, til dæmis, hafa víxlverkun án þess að komast í snertingu. Þetta á einnig við um alla aðra krafta. Núningur, til dæmis, er rafsegulkraftur milli atóma sem snertast ef til vill ekki í raun. Hvað er það sem ber krafta milli hluta? Ein leið til að svara þessari spurningu er að ímynda sér að <term id="import-auto-id3093199">kraftsvið (e. force field)</term> umlyki hlutinn sem skapar kraftinn. Annar hlutur (oft kallaður <emphasis effect="italics">prófunarhlutur</emphasis>) sem komið er fyrir á þessu sviði mun verða fyrir krafti sem er fall af staðsetningu og öðrum breytum. Sviðið sjálft er „hluturinn“ sem ber kraftinn frá einum hlut til annars. Sviðið er skilgreint þannig að það sé einkenni hlutarins sem skapar það; sviðið er óháð prófunarhlutnum sem komið er fyrir í því. Þyngdarsvið jarðar, til dæmis, er fall af massa jarðar og fjarlægð frá miðju hennar, óháð tilvist annarra massa. Hugmyndin um svið er gagnleg vegna þess að hægt er að skrifa jöfnur fyrir kraftsvið í kringum hluti (fyrir þyngdarafl gefur þetta <m:math><m:mrow><m:mrow><m:mrow><m:mi>w</m:mi><m:mo stretchy="false">=</m:mo><m:mstyle fontstyle="italic"><m:mrow><m:mtext>mg</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow></m:math> við yfirborð jarðar) og hægt er að reikna hreyfingar út frá þessum jöfnum. (Sjá <link target-id="import-auto-id1577565"/>.)</para>
+<figure id="import-auto-id1577565"><media id="import-auto-id1586476" alt="The electric force field between a positively charged particle and a negatively charged particle. Electric field lines start from the positive charge and end at the negative charge, and each line is represented as a curved arrow.">
+          <image mime-type="image/jpg" src="../../media/Figure_04_08_01.jpg" width="250"/>
+        </media>
+
+      <caption>Rafkraftsviðið milli jákvætt hlaðinnar agnar og neikvætt hlaðinnar agnar. Þegar jákvæð prófunarhleðsla er sett á sviðið mun hleðslan verða fyrir krafti í stefnu kraftsviðslínanna.</caption></figure>
+<note id="fs-id2639325"><label/>
+      <title>Hugmyndatengingar: Kraftsvið</title>
+      <para id="import-auto-id1406456">Hugmyndin um <emphasis effect="italics">kraftsvið</emphasis> er einnig notuð í tengslum við rafhleðslu og er kynnt í <link document="m42300">Rafhleðsla og rafsvið</link>. Hún er einnig gagnleg hugmynd fyrir alla grunnkraftana, eins og sést í <link document="m42669">Eðlisfræði agna</link>. Svið hjálpa okkur að sjá krafta fyrir okkur og hvernig þeir berast, auk þess að lýsa þeim með nákvæmni og tengja krafta við <term>miðlunaragnir</term> á undiratómsstigi.</para></note>
+<para id="import-auto-id1947977">Hugmyndin um svið hefur verið notuð með mjög góðum árangri; við getum reiknað hreyfingar og lýst náttúrunni með mikilli nákvæmni með sviðsjafna. En þrátt fyrir að hugmyndin um svið sé gagnleg, skilur hún eftir ósvaraðri spurningunni um hvað beri kraftinn. Á síðustu áratugum hefur verið lagt til, frá og með árið 1935 með verkum Hideki Yukawa (1907–1981) um sterka kjarnakraftinn, að allir kraftar berist með skiptum á öreindum. Við getum ímyndað okkur agnaskipti sem hliðstæðu við fyrirbæri á stórsæu stigi, eins og þegar tveir einstaklingar kasta körfubolta á milli sín og beita þannig fráhrindikrafti án þess að snertast. (Sjá <link target-id="import-auto-id2011579"/>.)</para>
+<figure id="import-auto-id2011579"><media id="import-auto-id1933994" alt="(a) Two persons throwing a basketball to each other. The person on the left is throwing the ball with some force F sub p one, represented by a vector pointing right, in the direction of the motion of the ball. A reaction force F sub B is shown on the person by a vector pointing left. (b) The person catches the ball, exerting a force F sub p two on the ball toward the left, shown by a vector F sub p two toward the left. A reaction force F prime sub B acts on the person, shown by a vector pointing toward right. (c) The exchange of a meson is shown between a proton and a neutron. Both are moving in different directions, and the proton feels a force F sub exch toward the left and the neutron feels a force F prime sub exch toward the right. The meson is also moving toward the right between the proton and the neutron.">
+          <image mime-type="image/jpg" src="../../media/Figure_04_08_02.jpg" height="450"/>
+        </media>
+
+      <caption>Skipti á massa sem leiða til fráhrindikrafta. (a) Sá sem kastar körfuboltanum beitir kraftinum <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>p1</m:mtext></m:mrow></m:msub></m:mrow></m:mrow></m:math> á hann í átt að hinum aðilanum og finnur fyrir andkraftinum <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>B</m:mtext></m:mrow></m:msub></m:mrow></m:mrow></m:math> frá hinum aðilanum. (b) Sá sem grípur körfuboltann beitir kraftinum <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>p2</m:mtext></m:mrow></m:msub></m:mrow></m:mrow></m:math> á hann til að stöðva boltann og finnur fyrir andkraftinum <m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F′</m:mtext><m:mrow><m:mtext>B</m:mtext></m:mrow></m:msub></m:mrow></m:mrow></m:mrow></m:math> frá fyrri aðilanum. (c) Hliðstæð skipti á miðeind milli róteindar og nifteindar bera sterku kjarnakraftana <m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant="bold">F</m:mtext><m:mrow><m:mtext>exch</m:mtext></m:mrow></m:msub></m:mrow></m:mrow></m:math> og <m:math><m:mrow><m:msub><m:mtext mathvariant="bold">F′</m:mtext><m:mrow><m:mtext>exch</m:mtext></m:mrow></m:msub></m:mrow></m:math> á milli þeirra. Einnig er hægt að beita aðdráttarkrafti með skiptum á massa – ef aðili 2 togaði körfuboltann frá fyrri aðilanum þegar hann reyndi að halda honum, þá væri krafturinn á milli þeirra aðdráttarkraftur.</caption></figure>
+<para id="import-auto-id2578623">Þessi hugmynd um agnaskipti dýpkar fremur en að stangast á við hugmyndir um svið. Það er heimspekilega meira fullnægjandi að hugsa sér að eitthvað efnislegt hreyfist í raun milli hluta sem verka í fjarlægð. <link target-id="import-auto-id1588108"/> telur upp skipti- eða <term id="import-auto-id1561662">miðlunaragnir (e. carrier particles)</term>, bæði þær sem hafa sést og þær sem lagðar hafa verið til, sem bera kraftana fjóra. En raunverulegur ávinningur tillögunnar um agnaskipti er sá að í leit að eindinni sem Yukawa lagði til fannst hún <emphasis effect="italics">og</emphasis> fjöldi annarra sem voru algjörlega óvæntar, sem örvaði enn frekari rannsóknir. Allar þessar rannsóknir leiddu að lokum til tillögunnar um kvarka sem undirliggjandi undirbyggingu efnis, sem er grundvallarkenning í samræmdum heildarkenningum (GUTs). Ef þessar kenningar reynast réttar munu þær ekki aðeins útskýra krafta, heldur einnig byggingu efnisins sjálfs. Samt sem áður er eðlisfræði tilraunavísindi, þannig að prófun þessara kenninga verður að eiga sér stað í raunveruleikanum. Þegar þetta er skrifað eru vísindamenn við CERN-rannsóknarstofnunina í Sviss að hefja prófanir á þessum kenningum með stærsta öreindahraðli heims: Stóra róteindahraðlinum (Large Hadron Collider). Þessi hraðall (27 km að ummáli) gerir tveimur háorku róteindageislum, sem ferðast í gagnstæðar áttir, kleift að rekast saman. Orka upp á 14 billjónir rafeindavolta verður tiltæk. Gert er ráð fyrir að einhverjar nýjar agnir, hugsanlega miðlunaragnir, finnist. (Sjá <link target-id="import-auto-id2658974"/>.) Ein af þeim miðlunarögnum sem vekur mikinn áhuga og vísindamenn vonast til að greina er Higgs-bóseindin. Athugun á eiginleikum hennar gæti sagt okkur hvers vegna mismunandi agnir hafa mismunandi massa.</para>
+<figure id="import-auto-id2658974"><media id="import-auto-id3357201" alt="A close-up view of part of the world’s largest particle accelerator.">
+          <image mime-type="image/jpg" src="../../media/Figure_04_08_03.jpg" width="400"/>
+        </media>
+
+      <caption>Stærsti eindahraðall heims spannar landamæri Sviss og Frakklands. Tveir geislar, sem ferðast í gagnstæðar áttir nálægt ljóshraða, rekast saman í rás svipaðri miðrásinni sem sýnd er hér. Ytri seglar stýra ferli geislans. Sérstakir nemar munu greina eindir sem verða til í þessum árekstrum. Spurningum jafn víðtækum og hver er uppruni massa og hvernig var efni á fyrstu sekúndum alheimsins okkar verður reynt að svara. Þessi hraðall hóf forprófanir árið 2008. (heimild: Frank Hommes)</caption></figure>
+<para id="import-auto-id2453527">Örsmáar eindir hafa einnig bylgjueðli, sem við munum kanna nánar í síðari kafla. Til að skilja kraftmiðlandi eindir betur frá öðru sjónarhorni skulum við skoða þyngdaraflið. Leitin að þyngdarbylgjum hefur staðið yfir í mörg ár. Fyrir meira en 100 árum spáði Einstein fyrir um tilvist þessara bylgja sem hluta af almennu afstæðiskenningu sinni. Þyngdarbylgjur verða til við árekstur massamikilla stjarna, í svartholum eða í sprengistjörnusprengingum – líkt og höggbylgjur. Þessar þyngdarbylgjur ferðast um geiminn frá slíkum stöðum, svipað og gárur breiðast út þegar steini er varpað í tjörn – nema hvað þessar bylgjur ferðast á ljóshraða. Nemabúnaður hefur verið byggður í Bandaríkjunum, sem samanstendur af tveimur stórum mannvirkjum með næstum 3000 km millibili – annað í Washington-fylki og hitt í Louisiana! Aðstaðan er kölluð Laser Interferometer Gravitational-Wave Observatory (LIGO). Hvert mannvirki er hannað til að nota leysigeisla til að kanna hvers kyns smávægilega tilfærslu á afstæðri stöðu tveggja massa vegna áhrifa þyngdarbylgja. Staðsetningarnar tvær gera kleift að aðgreina samtímamælingar á þessum litlu áhrifum frá öðrum náttúrufyrirbærum, svo sem jarðskjálftum. Fyrstu prófanir nemanna hófust árið 2002 og unnið er að því að auka næmni þeirra. Svipuð mannvirki hafa verið byggð á Ítalíu (VIRGO), í Þýskalandi (GEO600) og Japan (TAMA300) til að mynda alþjóðlegt net þyngdarbylgjunema.</para>
+<para id="para-98247">Í september 2015 stóð LIGO við loforð sitt og hjálpaði til við að sanna spár Einsteins. Kerfið greindi fyrstu þyngdarbylgjurnar sem komu frá samruna tveggja svarthola – annað 29 sinnum massameira en sólin okkar og hitt 36 sinnum massameira en sólin okkar – sem átti sér stað fyrir 1,3 milljörðum ára. Um þrefaldur massi sólarinnar breyttist í þyngdarbylgjur á sekúndubroti – með hámarksafköstum sem voru um 50 sinnum meiri en alls sýnilega alheimsins. Vegna 7 millisekúndna seinkunar á greiningu komust vísindamenn að því að samruninn átti sér stað á suðurhveli jarðar. Síðan þá hafa LIGO og VIRGO í sameiningu greint um tug svipaðra atburða, með betri og nákvæmari mælingum. Bylgjur frá samruna nifteindastjarna og svarthola af mismunandi stærð hafa dýpkað skilning okkar á þessum fyrirbærum og áhrifum þeirra á alheiminn.</para>
+<para id="import-auto-id1920400">Alþjóðlegt samstarf á þessu sviði er að færast út í geiminn með sameiginlegu verkefni ESB og Bandaríkjanna, LISA (Laser Interferometer Space Antenna). Jarðskjálftar og annar jarðneskur hávaði verða ekkert vandamál fyrir þessi vöktunargeimför. LISA mun bæta við LIGO með því að skoða mun massameiri svarthol með athugunum á þyngdarbylgjugjöfum sem gefa frá sér mun lengri bylgjulengdir. Þremur gervihnöttum verður komið fyrir í geimnum fyrir ofan jörðina í jafnhliða þríhyrningi (með 5.000.000 km hliðarlengdir) (<link target-id="import-auto-id3032532"/>). Kerfið mun mæla afstæða stöðu hvers gervihnattar til að greina þyngdarbylgjur sem fara hjá. Nákvæmni innan við 10% af stærð atóms verður nauðsynleg til að greina nokkrar bylgjur. Líklegt er að þetta verkefni verði sett af stað á fjórða áratug þessarar aldar.</para>
+<figure id="import-auto-id3032532"><media id="import-auto-id2989844" alt="NASA illustration of LISA, showing three spacecrafts positioned in orbits that form a triangular formation. The triangular formation is positioned to the left of the Sun, Earth, and Moon in the diagram. Figure not to scale.">
+          <image mime-type="image/jpg" src="../../media/Figure_04_08_04.jpg" width="350"/>
+        </media>
+
+      <caption>Framtíðartilraunir í geimnum til að mæla þyngdarbylgjur. Hér er sýnd teikning af braut LISA. Hver gervihnöttur LISA mun samanstanda af leysigjafa og massa. Leysarnir munu senda merki til að mæla fjarlægðina milli prófunarmassa hvers gervihnattar. Afstæð hreyfing þessara massa mun veita upplýsingar um þyngdarbylgjur sem fara hjá. (heimild: NASA)</caption></figure>
+<para id="import-auto-id1846160">Eins og sjá má hér að ofan eru sumar af byltingarkenndustu framförunum í eðlisfræði gerðar með tiltölulega löngu bili frá fræðilegri spá til tilraunagreiningar. Þetta mynstur heldur áfram vísindalegu ferli frá fyrstu tíð, þar sem fyrri hugsuðir og vísindamenn gerðu uppgötvanir sem leiddu aðeins til fleiri spurninga. Einstein var einstakur á margan hátt, en hann var ekki einstakur í þeim skilningi að síðari vísindamenn, sem byggðu á hans verkum og verkum hvers annars, myndu sanna kenningar hans. Sönnunargögn fyrir svartholum urðu sífellt áþreifanlegri eftir því sem vísindamenn þróuðu nýjar og betri leiðir til að leita að þeim. Sumir af þeim fremstu hafa verið Roger Penrose, sem þróaði ný stærðfræðilíkön tengd svartholum, auk Reinhards Genzel og Andreu Ghez, sem notu-u sjónaukaathuganir óháð hvort öðru til að bera kennsl á svæði í vetrarbrautinni okkar þar sem gríðarlegur óséður þyngdaraflsgjafi (4 milljón sinnum stærri en sólin okkar) togaði í stjörnur. Og skömmu síðar framleiddu samstarfsaðilar í Event Horizon Telescope verkefninu fyrstu raunverulegu myndina af svartholi.</para>
+<figure id="figure-14181"><media id="media-98271" alt="A roughly circular glowing object surrounds a smaller and much darker region. Toward the bottom of the image is a series of several dozen concentric brighter lines.">          <image mime-type="image/jpg" src="../../media/OSX_CP2e_Figure_04_08_05.jpg" width="250"/>
+        </media>
+      <caption>Þessi uppfærða mynd af risasvartholinu í miðju M87 vetrarbrautarinnar sýnir skautunina sem myndast af öflugu segulsviðinu sem umlykur fyrirbærið. Myndin var búin til af Event Horizon Telescope, sem sameinar gögn frá sjónaukum um allan heim. Verkefnið nær til yfir 200 vísindamanna og framleiddi fyrstu myndina af svartholi árið 2019. (heimild: EHT Collaboration/NASA APOD)</caption></figure>
+</section>
+<section id="fs-id1546076" class="ap-test-prep">
+<title>Undirbúningur fyrir AP-námskeið</title>
+<exercise id="fs-id1342174" type="ap-test-prep">
+    <problem id="fs-id895568">
+    <para id="fs-id1681985">Hvaða fyrirbæri lýsir rétt stefnu og stærð þverkrafta?</para><list id="fs-id1310333" list-type="enumerated" number-style="lower-alpha"><item>electromagnetic attraction</item>
+    <item>electromagnetic repulsion</item>
+    <item>gravitational attraction</item>
+    <item>gravitational repulsion</item>
+    </list></problem>
+    <solution id="fs-id2173841">
+    <para id="fs-id1653114">(b)</para></solution>
+    </exercise>
+<exercise id="fs-id1835056" type="ap-test-prep">
+    <problem id="fs-id1356337">
+    <para id="fs-id1368860">Útskýrðu hvaða af fjórum grunnkröftunum er ábyrgur fyrir því að bolti skoppar af jörðinni eftir að hann lendir á henni, og hvers vegna þessi kraftur hefur þessi áhrif.</para></problem>
+    <!--<solution id="fs-id1797582">
+    <para id="fs-id1327682">This outcome is due to electromagnetic repulsion between the electrons in atoms. The electrons in the ball repel those in the ground, and vice versa.</para>
+    </solution>-->
+    </exercise>
+<exercise id="fs-id1447352" type="ap-test-prep">
+    <problem id="fs-id1434025">
+    <para id="fs-id1263485">Hvaða grunnkraftur útskýrir best spennu í reipi sem er togað á milli tveggja manna? Er krafturinn sem verkar aðdráttarkraftur eða fráhrindikraftur í þessu tilviki?</para><list id="fs-id1262926" list-type="enumerated" number-style="lower-alpha"><item>gravity; attraction</item>
+    <item>electromagnetic; attraction</item>
+    <item>weak and strong nuclear; attraction</item>
+    <item>weak and strong nuclear; repulsion</item>
+    </list></problem>
+    <solution id="fs-id1347751">
+    <para id="fs-id1675802">(b)</para></solution>
+    </exercise>
+<exercise id="fs-id1679830" type="ap-test-prep">
+    <problem id="fs-id1205612">
+    <para id="fs-id1395739">Útskýrðu hvernig rafmagnsöfl milli atóma mynda þverkraftinn og hvers vegna hann hefur þá stefnu sem hann hefur.</para></problem>
+    <!--<solution id="fs-id1312453">
+    <para id="fs-id1798574">The outer layers of electrons in the atoms of both an object and the surface with which it is in contact mutually repel each other. Furthermore, while any individual pair of electrons might have a vector that is not perpendicular to the surface, the net sum of all the many, many interactions is perpendicular to the surface.</para>
+    </solution>-->
+    </exercise>
+<exercise id="fs-id1656257" type="ap-test-prep">
+    <problem id="fs-id1472000">
+    <para id="fs-id1475089">Þyngdarkrafturinn er veikastur grunnkraftanna fjögurra. Í hvaða tilfelli má hunsa rafsegulkraftinn, sterka kjarnakraftinn og veika kjarnakraftinn vegna þess að þyngdarkrafturinn er svo yfirgnæfandi?</para><list id="fs-id1445696" list-type="enumerated" number-style="lower-alpha"><item>a person jumping on a trampoline</item>
+    <item>a rocket blasting off from Earth</item>
+    <item>a log rolling down a hill</item>
+    <item>all of the above</item>
+    </list></problem>
+    <solution id="fs-id2166894">
+    <para id="fs-id1653022">(d)</para></solution>
+    </exercise>
+<exercise id="fs-id1338709" type="ap-test-prep">
+    <problem id="fs-id1374823">
+    <para id="fs-id1168985">Lýstu aðstæðum þar sem þyngdarkrafturinn er ríkjandi kraftur. Hvers vegna má hunsa hina þrjá grunnkraftana í aðstæðunum sem þú lýstir?</para></problem>
+    <!--<solution id="fs-id1623442">
+    <para id="fs-id895313">When a ball is thrown, gravity is the only one of the four fundamental forces necessary to describe the trajectory. The distances involved are far too large for either of the nuclear forces, and the net electric charge on the ball is zero or so close to it that electromagnetism has no effect.</para>
+    </solution>-->
+    </exercise>
+</section>
+<section id="fs-id1993313" class="section-summary">
+<title>Samantekt</title>
+<list id="fs-id2604330" list-type="bulleted">
+<item id="import-auto-id2055006">Ýmsar gerðir krafta sem eru flokkaðar til notkunar í mörgum tilgangi eru allar birtingarmyndir <emphasis effect="italics">grunnkraftanna fjögurra</emphasis> í náttúrunni.</item>
+<item id="import-auto-id1355832">Eiginleikar þessara krafta eru teknir saman í <link target-id="import-auto-id1588108"/>.</item>
+<item id="import-auto-id1381444">Allt sem við upplifum beint án viðkvæmra mælitækja stafar annaðhvort af rafsegulkröftum eða þyngdarkröftum. Kjarnakraftarnir eru ábyrgir fyrir undirsmásæju byggingu efnis en þeir skynjast ekki beint vegna stutts drægis þeirra. Verið er að reyna að sýna fram á að allir fjórir kraftarnir séu mismunandi birtingarmyndir eins sameinaðs krafts.</item>
+<item id="import-auto-id3191620">Kraftsvið umlykur hlut sem skapar kraft og er burðarefni þess krafts.</item>
+</list>
+</section>
+<section id="fs-id3199417" class="conceptual-questions">
+<title>Hugmyndafræðilegar spurningar</title>
+<exercise id="fs-id1397916" type="conceptual-questions"><problem id="fs-id2602098">
+<para id="import-auto-id1890093">Útskýrðu, með hliðsjón af eiginleikum grunnkraftanna fjögurra, hvers vegna fólk tekur eftir þyngdarkraftinum sem verkar á líkama þess ef hann er tiltölulega svo veikur kraftur.</para>
+      </problem></exercise>
+<exercise id="fs-id1402987" type="conceptual-questions"><problem id="fs-id3358931">
+        <para id="import-auto-id3046536">Hver er ríkjandi kraftur milli stjarnfræðilegra fyrirbæra? Hvers vegna eru hinir þrír grunnkraftarnir minna mikilvægir yfir þessar mjög miklu vegalengdir?</para>
+      </problem></exercise>
+<exercise id="fs-id1038237" type="conceptual-questions"><problem id="fs-id1038256">
+      <para id="import-auto-id1420870">Gefðu nákvæmt dæmi um hvernig skipti á ögn geta leitt til <emphasis effect="italics">aðdráttarkrafts</emphasis>. (Íhugaðu til dæmis eitt barn sem togar leikfang úr höndum annars.)</para>
+      </problem></exercise>
+</section>
+<section id="fs-id3082682" class="problems-exercises">
+<title>Reikningsdæmi</title>
+<exercise id="fs-id2680982" type="problems-exercises"><problem id="fs-id1413270">
+      <para id="import-auto-id2963511">(a) Hver er styrkur veika kjarnakraftsins miðað við sterka kjarnakraftinn? (b) Hver er styrkur veika kjarnakraftsins miðað við rafsegulkraftinn? Þar sem veiki kjarnakrafturinn verkar aðeins á mjög stuttum vegalengdum, svo sem inni í kjörnum, þar sem sterki krafturinn og rafsegulkrafturinn verka einnig, gæti það komið á óvart að við höfum nokkra þekkingu á honum yfirleitt. Við höfum slíka þekkingu vegna þess að veiki kjarnakrafturinn er ábyrgur fyrir betasundu, tegund kjarnasundrunar sem ekki er útskýrð með öðrum kröftum.</para>
+      </problem>
+<solution id="fs-id2688655">
+      <para id="import-auto-id3051579">(a) <m:math><m:mrow><m:mrow><m:mrow><m:mn>1</m:mn><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mrow><m:mo stretchy="false">−</m:mo><m:mtext>13</m:mtext></m:mrow></m:mrow></m:msup></m:mrow></m:mrow></m:mrow></m:math></para>
+      <para id="import-auto-id1935896">(b) <m:math><m:mrow><m:mrow><m:mrow><m:mn>1</m:mn><m:mo stretchy="false">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mrow><m:mo stretchy="false">−</m:mo><m:mtext>11</m:mtext></m:mrow></m:mrow></m:msup></m:mrow></m:mrow></m:mrow></m:math></para>
+      </solution>
+      </exercise>
+<exercise id="fs-id2670330" type="problems-exercises"><problem id="fs-id1935090">
+      <para id="import-auto-id3009242">(a) Hvert er hlutfall styrks þyngdarkraftsins og sterka kjarnakraftsins? (b) Hvert er hlutfall styrks þyngdarkraftsins og veika kjarnakraftsins? (c) Hvert er hlutfall styrks þyngdarkraftsins og rafsegulkraftsins? Hvað gefa svör þín í skyn um áhrif þyngdarkraftsins á atómkjarna?</para>
+      </problem></exercise>
+<exercise id="fs-id3092040" type="problems-exercises"><problem id="fs-id3092946">
+      <para id="import-auto-id1355534">Hvert er hlutfall styrks sterka kjarnakraftsins og rafsegulkraftsins? Byggt á þessu hlutfalli gætir þú búist við því að sterki krafturinn sé ríkjandi í kjarnanum, sem er satt fyrir litla kjarna. Stórir kjarnar hafa hins vegar stærðir sem eru meiri en drægi sterka kjarnakraftsins. Við þessar stærðir byrjar rafsegulkrafturinn að hafa áhrif á stöðugleika kjarnans. Þessar staðreyndir verða notaðar til að útskýra kjarnasamruna og kjarnaklofnun síðar í þessum texta.</para></problem>
+<solution id="fs-id2408217">
+      <para id="import-auto-id2599756"><m:math>
+          
+            <m:mrow>
+
+                <m:mrow>
+                  <m:msup>
+                    <m:mtext>10</m:mtext>
+
+                      <m:mrow>
+                        <m:mn>2</m:mn>
+                      </m:mrow>
+
+                  </m:msup>
+                </m:mrow>
+            </m:mrow>
+                   
+        </m:math></para>
+      </solution>
+      </exercise>
+<exercise id="exer-16012">
+<problem id="prob-14158">
+<para id="para-89057">Gagnrýnin hugsun Tveir kassar með jafnan massa byrja kyrrir og renna með mismunandi láréttum ásettum kröftum yfir núningslausa fleti og fara sömu vegalengd. Kassi A verður fyrir þrisvar sinnum stærri láréttum krafti en kassi B. (a) Hvor kassinn fer hraðar yfir á þessari vegalengd frá upphafspunkti? Útskýrðu rökstuðning þinn í stuttu máli. (b) Byggt á tilraunagögnum er lögð til jafna sem passar við gögnin fyrir lokahraðann, <emphasis effect="italics">V</emphasis>, sem gæti verið röng: <m:math><m:mrow><m:mi>V</m:mi><m:mo>=</m:mo><m:mi>K</m:mi><m:mi>F</m:mi></m:mrow></m:math>, þar sem <emphasis effect="italics">K</emphasis> er fasti með viðeigandi einingum og <emphasis effect="italics">F</emphasis> er lárétti ásetti krafturinn. Er þessi jafna í samræmi við svar þitt úr lið a? Útskýrðu hvers vegna eða hvers vegna ekki. Er þessi jafna rökrétt? Útskýrðu hvers vegna eða hvers vegna ekki. (c) Nú getur ásetti krafturinn haft hvaða gildi sem er og vegalengdin frá upphafspunkti er mæld þegar hraðinn nær ákveðnu gildi. Teiknaðu graf sem sýnir vegalengdina sem kassinn fer á ákveðnum hraða sem fall af ásettum krafti.</para></problem>
+
+<solution id="sol-00001">
+  <para id="para-00002">(a) Kassi A fer hraðar yfir á lokavegalengdinni þar sem meiri kraftur á jafnan massa veldur meiri hröðun. Einnig veldur meiri hröðun yfir sömu vegalengd meiri lokahraða.</para>
+  <para id="para-00003">(b) i. Já, hún er í samræmi vegna þess að meiri kraftur veldur meiri lokahraða. ii. Hún er ekki rökrétt vegna þess að <m:math>
+   <m:mrow>
+    <m:mi>V</m:mi><m:mo>=</m:mo><m:msqrt>
+     <m:mrow>
+      <m:mn>2</m:mn><m:mo stretchy="false">(</m:mo><m:mi>f</m:mi><m:mo>/</m:mo><m:mi>m</m:mi><m:mo stretchy="false">)</m:mo><m:mi>x</m:mi></m:mrow>
+    </m:msqrt>
+    <m:mo>=</m:mo><m:mtext>K</m:mtext><m:msqrt>
+     <m:mrow>
+      <m:mo stretchy="false">(</m:mo><m:mi>F</m:mi><m:mo stretchy="false">)</m:mo></m:mrow>
+    </m:msqrt>
+    </m:mrow>
+  </m:math>.</para>
+  <para id="para-00004">(c) <media alt="The figure is a plot of x as a function of F. The curve starts at a high value of x just to the right of the x axis and decreases in both value and slope, tending asymptotically to the F axis. Under the graph it is noted that x is proportional to 1 over F."><image mime-type="image/jpg" src="../../media/OSX_CP2e_Figure_04_08Sol_CTQ01c.jpg"/></media></para>
+  </solution>
+</exercise>
+<figure id="fig-00001">
+  <media alt="The figure is a plot of x as a function of F. The curve starts at a high value of x just to the right of the x axis and decreases in both value and slope, tending asymptotically to the F axis. Under the graph it is noted that x is proportional to 1 over F.">
+  <image mime-type="image/jpg" src="../../media/OSX_CP2e_Figure_04_08Sol_CTQ01c.jpg" width="200"/>
+  </media>
+  </figure>
+</section>
+</content>
+<glossary>
+<definition id="import-auto-id1916122">
+<term>miðlunarögn (e. carrier particle)</term>
+<meaning id="import-auto-id1916122-meaning">grundeindarögn í náttúrunni sem er umlukin einkennandi kraftsviði; ljóseindir eru miðlunaragnir rafsegulkraftsins</meaning>
+</definition>
+<definition id="import-auto-id1977355">
+<term>kraftsvið (e. force field)</term>
+<meaning id="import-auto-id1977355-meaning">svæði þar sem prófunarögn verður fyrir krafti</meaning>
+</definition>
+</glossary>
+</document>

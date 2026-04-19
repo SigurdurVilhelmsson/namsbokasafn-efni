@@ -15,6 +15,7 @@ const path = require('path');
 const fs = require('fs');
 const Database = require('better-sqlite3');
 
+const log = require('../lib/logger');
 const { requireAuth } = require('../middleware/requireAuth');
 const { BOOK_LABELS } = require('../config');
 const activityLog = require('../services/activityLog');
@@ -88,7 +89,7 @@ function getUserPendingSubmissions(username) {
     `);
     return stmt.all(username);
   } catch (err) {
-    console.error('Error getting user submissions:', err);
+    log.error({ err }, 'Error getting user submissions');
     return [];
   }
 }
@@ -116,7 +117,7 @@ function getUserRecentReviews(username, limit = 10) {
     `);
     return stmt.all(username, Math.min(limit, 200));
   } catch (err) {
-    console.error('Error getting user recent reviews:', err);
+    log.error({ err }, 'Error getting user recent reviews');
     return [];
   }
 }
@@ -194,7 +195,7 @@ router.get('/', requireAuth, async (req, res) => {
       },
     });
   } catch (err) {
-    console.error('My work error:', err);
+    log.error({ err }, 'My work error');
     res.status(500).json({
       error: 'Failed to load my work',
       message: err.message,
@@ -262,7 +263,7 @@ router.get('/today', requireAuth, (req, res) => {
         }));
       }
     } catch (err) {
-      console.error('Failed to load assignments:', err.message);
+      log.error({ err }, 'Failed to load assignments');
     }
 
     const allTasks = [...changesRequested, ...assignedTasks];
@@ -306,7 +307,7 @@ router.get('/today', requireAuth, (req, res) => {
       allTasks,
     });
   } catch (err) {
-    console.error('My work today error:', err);
+    log.error({ err }, 'My work today error');
     res.status(500).json({
       error: 'Failed to load today view',
       message: err.message,
@@ -335,7 +336,7 @@ router.get('/summary', requireAuth, (req, res) => {
       total: pendingSubmissions.length + proposedTerms.length,
     });
   } catch (err) {
-    console.error('My work summary error:', err);
+    log.error({ err }, 'My work summary error');
     res.status(500).json({
       error: 'Failed to load summary',
       message: err.message,

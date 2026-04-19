@@ -1,0 +1,321 @@
+{
+  "chapters": [
+    {
+      "chapter": 1,
+      "title": "An Invisible World",
+      "modules": [
+        "m58780",
+        "m58781",
+        "m58782",
+        "m58783"
+      ]
+    },
+    {
+      "chapter": 2,
+      "title": "How We See the Invisible World",
+      "modules": [
+        "m58784",
+        "m58785",
+        "m58786",
+        "m58787",
+        "m58788"
+      ]
+    },
+    {
+      "chapter": 3,
+      "title": "The Cell",
+      "modules": [
+        "m58789",
+        "m58790",
+        "m58791",
+        "m58792",
+        "m58793"
+      ]
+    },
+    {
+      "chapter": 4,
+      "title": "Prokaryotic Diversity",
+      "modules": [
+        "m58794",
+        "m58795",
+        "m58796",
+        "m58797",
+        "m58798",
+        "m58799",
+        "m58800"
+      ]
+    },
+    {
+      "chapter": 5,
+      "title": "The Eukaryotes of Microbiology",
+      "modules": [
+        "m58801",
+        "m58802",
+        "m58803",
+        "m58804",
+        "m58805",
+        "m58806"
+      ]
+    },
+    {
+      "chapter": 6,
+      "title": "Acellular Pathogens",
+      "modules": [
+        "m58807",
+        "m58808",
+        "m58809",
+        "m58810",
+        "m58811"
+      ]
+    },
+    {
+      "chapter": 7,
+      "title": "Microbial Biochemistry",
+      "modules": [
+        "m58812",
+        "m58813",
+        "m58814",
+        "m58815",
+        "m58816",
+        "m58817"
+      ]
+    },
+    {
+      "chapter": 8,
+      "title": "Microbial Metabolism",
+      "modules": [
+        "m58818",
+        "m58819",
+        "m58820",
+        "m58821",
+        "m58822",
+        "m58823",
+        "m58824",
+        "m58825"
+      ]
+    },
+    {
+      "chapter": 9,
+      "title": "Microbial Growth",
+      "modules": [
+        "m58827",
+        "m58828",
+        "m58829",
+        "m58830",
+        "m58831",
+        "m58832",
+        "m58833"
+      ]
+    },
+    {
+      "chapter": 10,
+      "title": "Biochemistry of the Genome",
+      "modules": [
+        "m58834",
+        "m58835",
+        "m58836",
+        "m58837",
+        "m58838"
+      ]
+    },
+    {
+      "chapter": 11,
+      "title": "Mechanisms of Microbial Genetics",
+      "modules": [
+        "m58839",
+        "m58840",
+        "m58841",
+        "m58842",
+        "m58843",
+        "m58844",
+        "m58845",
+        "m58846"
+      ]
+    },
+    {
+      "chapter": 12,
+      "title": "Modern Applications of Microbial Genetics",
+      "modules": [
+        "m58847",
+        "m58848",
+        "m58849",
+        "m58850",
+        "m58851"
+      ]
+    },
+    {
+      "chapter": 13,
+      "title": "Control of Microbial Growth",
+      "modules": [
+        "m58852",
+        "m58853",
+        "m58854",
+        "m58855",
+        "m58856"
+      ]
+    },
+    {
+      "chapter": 14,
+      "title": "Antimicrobial Drugs",
+      "modules": [
+        "m58857",
+        "m58858",
+        "m58859",
+        "m58860",
+        "m58861",
+        "m58862",
+        "m58864",
+        "m63248"
+      ]
+    },
+    {
+      "chapter": 15,
+      "title": "Microbial Mechanisms of Pathogenicity",
+      "modules": [
+        "m58865",
+        "m58866",
+        "m58867",
+        "m58868",
+        "m58869"
+      ]
+    },
+    {
+      "chapter": 16,
+      "title": "Disease and Epidemiology",
+      "modules": [
+        "m58870",
+        "m58871",
+        "m58872",
+        "m58873",
+        "m58874"
+      ]
+    },
+    {
+      "chapter": 17,
+      "title": "Innate Nonspecific Host Defenses",
+      "modules": [
+        "m58876",
+        "m58877",
+        "m58878",
+        "m58879",
+        "m58880",
+        "m58881"
+      ]
+    },
+    {
+      "chapter": 18,
+      "title": "Adaptive Specific Host Defenses",
+      "modules": [
+        "m58883",
+        "m58884",
+        "m58885",
+        "m58886",
+        "m58887",
+        "m58888"
+      ]
+    },
+    {
+      "chapter": 19,
+      "title": "Diseases of the Immune System",
+      "modules": [
+        "m58891",
+        "m58892",
+        "m58893",
+        "m58894",
+        "m58895",
+        "m58896"
+      ]
+    },
+    {
+      "chapter": 20,
+      "title": "Laboratory Analysis of the Immune Response",
+      "modules": [
+        "m58899",
+        "m58900",
+        "m58901",
+        "m58902",
+        "m58903",
+        "m58904"
+      ]
+    },
+    {
+      "chapter": 21,
+      "title": "Skin and Eye Infections",
+      "modules": [
+        "m58905",
+        "m58906",
+        "m58907",
+        "m58908",
+        "m58909",
+        "m58910"
+      ]
+    },
+    {
+      "chapter": 22,
+      "title": "Respiratory System Infections",
+      "modules": [
+        "m58911",
+        "m58912",
+        "m58913",
+        "m58914",
+        "m58915"
+      ]
+    },
+    {
+      "chapter": 23,
+      "title": "Urogenital System Infections",
+      "modules": [
+        "m58916",
+        "m58917",
+        "m58918",
+        "m58919",
+        "m58920",
+        "m58921",
+        "m58922"
+      ]
+    },
+    {
+      "chapter": 24,
+      "title": "Digestive System Infections",
+      "modules": [
+        "m58923",
+        "m58924",
+        "m58925",
+        "m58933",
+        "m58930",
+        "m58931",
+        "m58932"
+      ]
+    },
+    {
+      "chapter": 25,
+      "title": "Circulatory and Lymphatic System Infections",
+      "modules": [
+        "m58934",
+        "m58945",
+        "m58936",
+        "m58937",
+        "m58938"
+      ]
+    },
+    {
+      "chapter": 26,
+      "title": "Nervous System Infections",
+      "modules": [
+        "m58939",
+        "m58940",
+        "m58941",
+        "m58942",
+        "m58943"
+      ]
+    }
+  ],
+  "preface": "m63247",
+  "appendixModules": [
+    "m58946",
+    "m58947",
+    "m58948",
+    "m58949",
+    "m58950"
+  ]
+}

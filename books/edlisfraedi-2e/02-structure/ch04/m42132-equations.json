@@ -1,0 +1,733 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mn>2.7</m:mn><m:mrow><m:mo stretchy=\"false\">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>5</m:mn></m:mrow></m:msup></m:mrow><m:mspace width=\"0.25em\"/><m:mtext> N</m:mtext></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{2.7{×{\\text{10}}^{{5}}}\\, \\text{N}}}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mn>3.6</m:mn><m:mrow><m:mo stretchy=\"false\">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>5</m:mn></m:mrow></m:msup></m:mrow><m:mspace width=\"0.25em\"/><m:mtext> N</m:mtext></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{3.6{×{\\text{10}}^{{5}}}\\, \\text{N}}}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:mn>5.0</m:mn><m:mo stretchy=\"false\">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>6</m:mn></m:mrow></m:msup></m:mrow><m:mspace width=\"0.25em\"/><m:mtext> kg</m:mtext></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{{5.0×{\\text{10}}^{{6}}}\\, \\text{kg}}}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mn>7</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>5</m:mtext><m:mo stretchy=\"false\">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mrow><m:mo stretchy=\"false\">−</m:mo><m:mn>2</m:mn></m:mrow></m:mrow></m:msup></m:mrow><m:mspace width=\"0.25em\"/><m:msup><m:mtext> m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{7\\text{.}{\\text{5}×{\\text{10}}^{{{−2}}}}\\, {\\text{m/s}}^{{2}}}}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{\\text{app}}}}}"
+  },
+  "math-6": {
+    "mathml": "<m:math>\n          \n            <m:mrow>\n\n                <m:mrow>\n                  <m:mrow>\n                    <m:msub>\n                      <m:mtext mathvariant=\"bold\">F</m:mtext>\n\n                        <m:mrow>\n                            <m:mrow>\n                              <m:mtext>app</m:mtext>\n\n                            </m:mrow>\n                        </m:mrow>\n\n                    </m:msub><m:mtext>=</m:mtext>\n\n                      <m:mrow>\n                        <m:msub>\n                          <m:mtext mathvariant=\"bold\">F</m:mtext>\n\n                            <m:mrow>\n                              <m:mi mathvariant=\"italic\">x</m:mi>\n                            </m:mrow>\n\n                        </m:msub>\n                      </m:mrow>\n   <m:mo>+</m:mo>\n                      <m:mrow>\n                        <m:msub>\n                          <m:mtext mathvariant=\"bold\"> F</m:mtext>\n\n                            <m:mrow>\n                              <m:mi mathvariant=\"italic\">y</m:mi>\n                            </m:mrow>\n\n                        </m:msub>\n                      </m:mrow>\n                  </m:mrow>\n                </m:mrow>\n            </m:mrow>\n            \n          \n        </m:math>",
+    "latex": "{{{{\\text{F}}_{{{\\text{app}}}}\\text{=} {{\\text{F}}_{{x}}} + {{\\text{F}}_{{y}}}}}}",
+    "equationId": "eip-id1203757",
+    "equationClass": null
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mtext>D</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{\\text{D}}}}}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{\\text{app}}}}}"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{\\text{app}}}}}"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mtext>D</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{\\text{D}}}}}"
+  },
+  "math-11": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mi>x</m:mi></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{x}}}}"
+  },
+  "math-12": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mi>y</m:mi></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{y}}}}"
+  },
+  "math-13": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{\\text{app}}}}}"
+  },
+  "math-14": {
+    "mathml": "<m:math>\n          \n            <m:mrow>\n              <m:mrow>\n                <m:mtable columnalign=\"left\">\n                  <m:mtr>\n<m:mtd>\n\n                              <m:msub>\n                                <m:mi>F</m:mi>\n                                        <m:mtext>app</m:mtext>\n                              </m:msub>\n\n</m:mtd><m:mtd>\n                              <m:mo stretchy=\"false\">=</m:mo>\n\n</m:mtd><m:mtd>\n\n\n                            <m:mrow>\n<m:msqrt>\n                              <m:msubsup>\n                                <m:mtext>F</m:mtext>\n                                      <m:mi>x</m:mi>\n                                          <m:mn>2</m:mn>\n                              </m:msubsup>\n                              <m:mo stretchy=\"false\">+</m:mo>\n                              <m:msubsup>\n                                <m:mtext>F</m:mtext>\n                                      <m:mi>y</m:mi>\n                                          <m:mn>2</m:mn>\n                              </m:msubsup>\n</m:msqrt></m:mrow>\n</m:mtd>\n                  </m:mtr>\n                  <m:mtr><m:mtd>\n\n                      <m:mrow>\n                        <m:msub>\n                          <m:mi>F</m:mi>\n                                  <m:mtext>app</m:mtext>\n                        </m:msub></m:mrow>\n</m:mtd><m:mtd>\n                        <m:mo stretchy=\"false\">=</m:mo>\n</m:mtd><m:mtd>\n\n\n<m:msqrt>\n                      <m:mo stretchy=\"false\">(</m:mo>\n                      <m:mn>2.7</m:mn>\n                      <m:mrow>\n                        <m:mo stretchy=\"false\">×</m:mo>\n                        <m:msup>\n                          <m:mtext>10</m:mtext>\n                              <m:mn>5</m:mn>\n                        </m:msup>\n                      </m:mrow><m:mspace width=\"0.25em\"/>\n                      <m:mtext> N</m:mtext>\n                      <m:mrow>\n                        <m:msup>\n                          <m:mo stretchy=\"false\">)</m:mo>\n\n                            <m:mrow>\n                              <m:mn>2</m:mn>\n                            </m:mrow>\n\n                        </m:msup>\n                        <m:mo stretchy=\"false\">+</m:mo>\n                        <m:mo stretchy=\"false\">(</m:mo>\n                      </m:mrow>\n                      <m:mn>3.6</m:mn>\n                      <m:mrow>\n                        <m:mo stretchy=\"false\">×</m:mo>\n                        <m:msup>\n                          <m:mtext>10</m:mtext>\n                              <m:mn>5</m:mn>\n                        </m:msup>\n                      </m:mrow><m:mspace width=\"0.25em\"/>\n                      <m:mtext> N</m:mtext>\n                      <m:msup>\n                        <m:mo stretchy=\"false\">)</m:mo>\n\n                          <m:mrow>\n                            <m:mn>2</m:mn>\n                          </m:mrow>\n\n                      </m:msup>\n\n</m:msqrt>\n</m:mtd><m:mtd>\n                       <m:mo stretchy=\"false\">=</m:mo>\n</m:mtd><m:mtd>\n\n\n                        <m:mrow><m:mn>4.5</m:mn>\n                        <m:mo stretchy=\"false\">×</m:mo>\n                        <m:msup>\n                          <m:mtext>10</m:mtext>\n                              <m:mn>5</m:mn>\n                        </m:msup>\n                      </m:mrow><m:mspace width=\"0.25em\"/>\n                      <m:mtext> N.</m:mtext>\n                    </m:mtd>\n                  </m:mtr>\n                </m:mtable>\n              </m:mrow>\n            </m:mrow>\n          \n        </m:math>",
+    "latex": "{{\\begin{aligned} {F}_{\\text{app}} & = & {\\sqrt{{\\text{F}}_{x}^{2} + {\\text{F}}_{y}^{2}}} \\\\ {{F}_{\\text{app}}} & = & \\sqrt{( 2.7 {× {\\text{10}}^{5}}\\, \\text{N} {{)}^{{2}} + (} 3.6 {× {\\text{10}}^{5}}\\, \\text{N} {)}^{{2}}} & = & {4.5 × {\\text{10}}^{5}}\\, \\text{N.} \\end{aligned}}}",
+    "equationId": "eip-id2112578",
+    "equationClass": null
+  },
+  "math-15": {
+    "mathml": "<m:math>\n          \n            <m:mrow>\n              <m:mrow>\n                <m:mtable columnalign=\"left\">\n                  <m:mtr>\n\n<m:mtd>\n                              <m:mi>θ</m:mi>\n</m:mtd>\n<m:mtd>\n                              <m:mo stretchy=\"false\">=</m:mo>\n</m:mtd>\n<m:mtd>\n                              <m:msup>\n                                <m:mtext>tan</m:mtext>\n\n                                  <m:mrow>\n                                    <m:mrow>\n                                      <m:mo stretchy=\"false\">−</m:mo>\n                                      <m:mn>1</m:mn>\n                                    </m:mrow>\n                                  </m:mrow>\n\n                              </m:msup>\n\n                            <m:mfenced open=\"(\" close=\")\">\n                              <m:mfrac>\n                                <m:msub>\n                                  <m:mi>F</m:mi>\n\n                                    <m:mrow>\n                                      <m:mi>y</m:mi>\n                                    </m:mrow>\n\n                                </m:msub>\n                                <m:msub>\n                                  <m:mi>F</m:mi>\n\n                                    <m:mrow>\n                                      <m:mi>x</m:mi>\n                                    </m:mrow>\n\n                                </m:msub>\n                              </m:mfrac>\n                            </m:mfenced>\n                    </m:mtd>\n                  </m:mtr>\n                  <m:mtr>\n\n<m:mtd>\n\n                        <m:mi>θ</m:mi>\n</m:mtd>\n<m:mtd>\n                        <m:mo stretchy=\"false\">=</m:mo>\n</m:mtd>\n<m:mtd>\n                        <m:msup>\n                          <m:mtext>tan</m:mtext>\n\n                            <m:mrow>\n                              <m:mrow>\n                                <m:mo stretchy=\"false\">−</m:mo>\n                                <m:mn>1</m:mn>\n                              </m:mrow>\n                            </m:mrow>\n\n                        </m:msup>\n\n                      <m:mrow>\n                        <m:mfenced open=\"(\" close=\")\">\n                          <m:mfrac>\n                            <m:mrow>\n\n                              <m:mn>3.6</m:mn>\n\n                              <m:mrow>\n\n                                <m:mo stretchy=\"false\">×</m:mo>\n                                <m:msup>\n                                  <m:mtext>10</m:mtext>\n\n                                    <m:mrow>\n                                      <m:mn>5</m:mn>\n                                    </m:mrow>\n\n                                </m:msup>\n                              </m:mrow><m:mspace width=\"0.25em\"/>\n                              <m:mtext> N</m:mtext>\n\n                            </m:mrow>\n                            <m:mrow>\n\n                              <m:mn>2.7</m:mn>\n\n                              <m:mrow>\n\n                                <m:mo stretchy=\"false\">×</m:mo>\n                                <m:msup>\n                                  <m:mtext>10</m:mtext>\n\n                                    <m:mrow>\n                                      <m:mn>5</m:mn>\n                                    </m:mrow>\n\n                                </m:msup>\n                              </m:mrow><m:mspace width=\"0.25em\"/>\n                              <m:mtext> N</m:mtext>\n\n                            </m:mrow>\n                          </m:mfrac>\n                        </m:mfenced>\n                        <m:mo stretchy=\"false\">=</m:mo>\n                        <m:mtext>53º</m:mtext>\n                      </m:mrow>\n                      <m:mi>,</m:mi>\n                    </m:mtd>\n\n                  </m:mtr>\n                </m:mtable>\n                <m:mrow/>\n              </m:mrow>\n            </m:mrow>\n          \n        </m:math>",
+    "latex": "{{\\begin{aligned} θ & = & {\\text{tan}}^{{{− 1}}} \\frac{{F}_{{y}}}{{F}_{{x}}} \\\\ θ & = & {\\text{tan}}^{{{− 1}}} {\\frac{{3.6 {× {\\text{10}}^{{5}}}\\, \\text{N}}}{{2.7 {× {\\text{10}}^{{5}}}\\, \\text{N}}} = \\text{53º}} , \\end{aligned}}}",
+    "equationId": "eip-id3026466",
+    "equationClass": null
+  },
+  "math-16": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mtext>D</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{\\text{D}}}}}"
+  },
+  "math-17": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{\\text{app}}}}}"
+  },
+  "math-18": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{\\text{app}}}}}"
+  },
+  "math-19": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{\\text{app}}}}}"
+  },
+  "math-20": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">−</m:mo><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>D</m:mtext></m:mrow></m:msub></m:mrow></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{F}_{{\\text{net}}}={{F}_{{\\text{app}}}−{F}_{{\\text{D}}}}}}}.",
+    "equationId": "eip-id1624544",
+    "equationClass": null
+  },
+  "math-21": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{F}_{{\\text{net}}}={\\text{ma}}}}}.",
+    "equationId": "eip-id1230866",
+    "equationClass": null
+  },
+  "math-22": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">−</m:mo><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>D</m:mtext></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">=</m:mo><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{{F}_{{\\text{app}}}−{F}_{{\\text{D}}}}={\\text{ma}}}}}.",
+    "equationId": "eip-id2268355",
+    "equationClass": null
+  },
+  "math-23": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>D</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{F}_{{\\text{D}}}}}"
+  },
+  "math-24": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>D</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">−</m:mo><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{F}_{{\\text{D}}}={{F}_{{\\text{app}}}−{\\text{ma}}}}}}.",
+    "equationId": "eip-id1464099",
+    "equationClass": null
+  },
+  "math-25": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mtext>F</m:mtext><m:mrow><m:mtext>D</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mo stretchy=\"false\">(</m:mo></m:mrow><m:mn>4</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>5</m:mtext><m:mo stretchy=\"false\">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>5</m:mn></m:mrow></m:msup></m:mrow><m:mspace width=\"0.25em\"/><m:mtext> N</m:mtext><m:mrow><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">−</m:mo><m:mo stretchy=\"false\">(</m:mo></m:mrow><m:mn>5</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>0</m:mtext><m:mo stretchy=\"false\">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>6</m:mn></m:mrow></m:msup></m:mrow><m:mspace width=\"0.25em\"/><m:mtext> kg</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>7</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>5</m:mtext><m:mo stretchy=\"false\">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mtext>–2</m:mtext></m:mrow></m:msup></m:mrow><m:mspace width=\"0.25em\"/><m:msup><m:mtext> m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup><m:mrow><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">=</m:mo><m:mn>7</m:mn></m:mrow><m:mtext>.</m:mtext><m:mrow><m:mtext>5</m:mtext><m:mo stretchy=\"false\">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>4</m:mn></m:mrow></m:msup></m:mrow><m:mspace width=\"0.25em\"/><m:mtext> N</m:mtext></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{{\\text{F}}_{{\\text{D}}}=(}4\\text{.}{\\text{5}×{\\text{10}}^{{5}}}\\, \\text{N}{)−(}5\\text{.}{\\text{0}×{\\text{10}}^{{6}}}\\, \\text{kg})(7\\text{.}{\\text{5}×{\\text{10}}^{{\\text{–2}}}}\\, {\\text{m/s}}^{{2}}{)=7}\\text{.}{\\text{5}×{\\text{10}}^{{4}}}\\, \\text{N}}}}.",
+    "equationId": "eip-id1715978",
+    "equationClass": null
+  },
+  "math-26": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mtext>D</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{\\text{D}}}}}"
+  },
+  "math-27": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{\\text{app}}}}}"
+  },
+  "math-28": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mtext>53º</m:mtext></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{\\text{53º}}}}"
+  },
+  "math-29": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>D</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{F}_{{\\text{D}}}}}"
+  },
+  "math-30": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mi>x</m:mi></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{x}}}}"
+  },
+  "math-31": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mi>y</m:mi></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{y}}}}"
+  },
+  "math-32": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{\\text{app}}}}}"
+  },
+  "math-33": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{\\text{app}}}}}"
+  },
+  "math-34": {
+    "mathml": "<m:math>\n \n  <m:mrow>\n   <m:mrow>\n    <m:msub>\n     <m:mi>T</m:mi>\n     <m:mrow>\n      <m:mn>1</m:mn>\n     </m:mrow>\n    </m:msub>\n   </m:mrow>\n   <m:mrow/>\n  </m:mrow>\n</m:math>",
+    "latex": "{{{T}_{{1}}}}"
+  },
+  "math-35": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>2</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{T}_{{2}}}}"
+  },
+  "math-36": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net </m:mtext><m:mi>x</m:mi></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>2</m:mtext><m:mi>x</m:mi></m:mrow></m:msub><m:mo stretchy=\"false\">−</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>1</m:mtext><m:mi>x</m:mi></m:mrow></m:msub></m:mrow></m:mrow><m:mo stretchy=\"false\">=</m:mo><m:mn>0</m:mn></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{{F}_{{\\text{net}x}}={{T}_{{\\text{2}x}}−{T}_{{\\text{1}x}}}}=0}}}.",
+    "equationId": "eip-id2514755",
+    "equationClass": null
+  },
+  "math-37": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>1</m:mtext><m:mi>x</m:mi></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>2</m:mtext><m:mi>x</m:mi></m:mrow></m:msub></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{T}_{{\\text{1}x}}={T}_{{\\text{2}x}}}}}.",
+    "equationId": "eip-id2540452",
+    "equationClass": null
+  },
+  "math-38": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{T}_{{1}}}}"
+  },
+  "math-39": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>2</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{T}_{{2}}}}"
+  },
+  "math-40": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub><m:mspace width=\"0.25em\"/><m:mtext>cos</m:mtext><m:mspace width=\"0.25em\"/><m:mo stretchy=\"false\">(</m:mo><m:mtext>30º</m:mtext><m:mrow><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">=</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mn>2</m:mn></m:mrow></m:msub></m:mrow><m:mspace width=\"0.25em\"/><m:mtext>cos</m:mtext><m:mspace width=\"0.25em\"/><m:mo stretchy=\"false\">(</m:mo><m:mtext>45º</m:mtext><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{T}_{{1}}\\, \\text{cos}\\, (\\text{30º}{)={T}_{{2}}}\\, \\text{cos}\\, (\\text{45º})}}}.",
+    "equationId": "eip-id2122298",
+    "equationClass": null
+  },
+  "math-41": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>2</m:mn></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mo stretchy=\"false\">(</m:mo></m:mrow><m:mn>1</m:mn><m:mtext>.</m:mtext><m:mtext>225</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{{T}_{{2}}=(}1\\text{.}\\text{225}){T}_{{1}}}}}.",
+    "equationId": "eip-id2577136",
+    "equationClass": null
+  },
+  "math-42": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{T}_{{1}}}}"
+  },
+  "math-43": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>2</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{T}_{{2}}}}"
+  },
+  "math-44": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>2</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{T}_{{2}}}}"
+  },
+  "math-45": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{T}_{{1}}}}"
+  },
+  "math-46": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{T}_{{1}}}}"
+  },
+  "math-47": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net </m:mtext><m:mspace width=\"0.25em\"/><m:mi>y</m:mi></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>1</m:mtext><m:mi>y</m:mi></m:mrow></m:msub><m:mo stretchy=\"false\">+</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>2</m:mtext><m:mi>y</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">−</m:mo><m:mi>w</m:mi></m:mrow></m:mrow><m:mo stretchy=\"false\">=</m:mo><m:mn>0</m:mn></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{{F}_{{\\text{net}\\, y}}={{{T}_{{\\text{1}y}}+{T}_{{\\text{2}y}}}−w}}=0}}}.",
+    "equationId": "eip-id2308230",
+    "equationClass": null
+  },
+  "math-48": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>1</m:mtext><m:mi>y</m:mi></m:mrow></m:msub><m:mo stretchy=\"false\">+</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>2</m:mtext><m:mi>y</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">=</m:mo><m:mi>w</m:mi></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{{T}_{{\\text{1}y}}+{T}_{{\\text{2}y}}}=w}}}.",
+    "equationId": "eip-id1339509",
+    "equationClass": null
+  },
+  "math-49": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub><m:mspace width=\"0.25em\"/><m:mtext>sin</m:mtext><m:mspace width=\"0.25em\"/><m:mo stretchy=\"false\">(</m:mo><m:mtext>30º</m:mtext><m:mrow><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">+</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mn>2</m:mn></m:mrow></m:msub></m:mrow><m:mspace width=\"0.25em\"/><m:mtext>sin</m:mtext><m:mspace width=\"0.25em\"/><m:mo stretchy=\"false\">(</m:mo><m:mtext>45º</m:mtext><m:mrow><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">=</m:mo><m:mi>w</m:mi></m:mrow></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{T}_{{1}}\\, \\text{sin}\\, (\\text{30º}{)+{T}_{{2}}}\\, \\text{sin}\\, (\\text{45º}{)=w}}}}.",
+    "equationId": "eip-id1925561",
+    "equationClass": null
+  },
+  "math-50": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>2</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{T}_{{2}}}}"
+  },
+  "math-51": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{T}_{{1}}}}"
+  },
+  "math-52": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mn>0</m:mn><m:mtext>.</m:mtext><m:mtext>500</m:mtext><m:mrow><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">+</m:mo><m:mo stretchy=\"false\">(</m:mo></m:mrow><m:mn>1</m:mn><m:mtext>.</m:mtext><m:mtext>225</m:mtext><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>0</m:mn><m:mtext>.</m:mtext><m:mtext>707</m:mtext><m:mrow><m:mrow><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">=</m:mo><m:mi>w</m:mi></m:mrow><m:mo stretchy=\"false\">=</m:mo><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>mg</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow></m:mrow><m:mo>,</m:mo></m:math>",
+    "latex": "{{{{T}_{{1}}(0\\text{.}\\text{500}{)+(}1\\text{.}\\text{225}{T}_{{1}})(0\\text{.}\\text{707}{{)=w}={\\text{mg}}}}}},",
+    "equationId": "eip-id2259246",
+    "equationClass": null
+  },
+  "math-53": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mfenced open=\"(\" close=\")\"><m:mrow><m:mn>1</m:mn><m:mtext>.</m:mtext><m:mtext>366</m:mtext></m:mrow></m:mfenced><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mo stretchy=\"false\">(</m:mo></m:mrow><m:mtext>15</m:mtext><m:mtext>.</m:mtext><m:mtext>0 kg</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>9</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>80 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{1\\text{.}\\text{366}}{{T}_{{1}}=(}\\text{15}\\text{.}\\text{0 kg})(9\\text{.}{\\text{80 m/s}}^{{2}})}}}.",
+    "equationId": "eip-id2556360",
+    "equationClass": null
+  },
+  "math-54": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{T}_{{1}}}}"
+  },
+  "math-55": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mtext>108 N</m:mtext></m:mrow></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{{T}_{{1}}=\\text{108 N}}}}}.",
+    "equationId": "eip-id1747068",
+    "equationClass": null
+  },
+  "math-56": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>2</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{T}_{{2}}}}"
+  },
+  "math-57": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>2</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{T}_{{2}}}}"
+  },
+  "math-58": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{T}_{{1}}}}"
+  },
+  "math-59": {
+    "mathml": "<m:math>\n          \n            <m:mrow>\n\n                <m:mrow>\n                  <m:mrow>\n                    <m:msub>\n                      <m:mi>T</m:mi>\n\n                        <m:mrow>\n                          <m:mn>2</m:mn>\n                        </m:mrow>\n\n                    </m:msub>\n                    <m:mo stretchy=\"false\">=</m:mo>\n                    <m:mtext>132 N</m:mtext>\n                  </m:mrow>\n                </m:mrow>\n            </m:mrow>\n            \n          <m:mo>.</m:mo>\n        </m:math>",
+    "latex": "{{{{T}_{{2}} = \\text{132 N}}}} .",
+    "equationId": "eip-id1744019",
+    "equationClass": null
+  },
+  "math-60": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mn>1</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>20 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{1\\text{.}{\\text{20 m/s}}^{{2}}}}}"
+  },
+  "math-61": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>p</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{F}_{{\\text{p}}}}}"
+  },
+  "math-62": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mtext mathvariant=\"bold\">w</m:mtext></m:mrow></m:mrow></m:math>",
+    "latex": "{{\\text{w}}}"
+  },
+  "math-63": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{\\text{s}}}}}"
+  },
+  "math-64": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mtext>p</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{\\text{p}}}}}"
+  },
+  "math-65": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{\\text{s}}}}}"
+  },
+  "math-66": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{F}_{{\\text{s}}}}}"
+  },
+  "math-67": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{F}_{{\\text{net}}}={\\text{ma}}}}}.",
+    "equationId": "eip-id2548908",
+    "equationClass": null
+  },
+  "math-68": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">−</m:mo><m:mi>w</m:mi></m:mrow></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{{F}_{{\\text{net}}}={{F}_{{\\text{s}}}−w}}}}"
+  },
+  "math-69": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">−</m:mo><m:mi>w</m:mi></m:mrow><m:mo stretchy=\"false\">=</m:mo><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{{F}_{{\\text{s}}}−w}={\\text{ma}}}}}.",
+    "equationId": "eip-id2522872",
+    "equationClass": null
+  },
+  "math-70": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{F}_{{\\text{s}}}}}"
+  },
+  "math-71": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mrow><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle><m:mo stretchy=\"false\">+</m:mo><m:mi>w</m:mi></m:mrow></m:mrow></m:mrow></m:mrow><m:mo>,</m:mo></m:math>",
+    "latex": "{{{{F}_{{\\text{s}}}={{\\text{ma}}+w}}}},",
+    "equationId": "eip-id1957748",
+    "equationClass": null
+  },
+  "math-72": {
+    "mathml": "<m:math><m:mrow><m:mi>w</m:mi><m:mo>=</m:mo><m:mi fontstyle=\"italic\">mg</m:mi></m:mrow></m:math>",
+    "latex": "{w=mg}"
+  },
+  "math-73": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mrow><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle><m:mo stretchy=\"false\">+</m:mo><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>mg</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{F}_{{\\text{s}}}={{\\text{ma}}+{\\text{mg}}}}}}.",
+    "equationId": "eip-id3507099",
+    "equationClass": null
+  },
+  "math-74": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mi>a</m:mi><m:mo stretchy=\"false\">=</m:mo><m:mn>1.20</m:mn><m:mspace width=\"0.25em\"/><m:msup><m:mtext> m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{a=1.20\\, {\\text{m/s}}^{{2}}}}}"
+  },
+  "math-75": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mo stretchy=\"false\">(</m:mo></m:mrow><m:mtext>75</m:mtext><m:mtext>.</m:mtext><m:mtext>0 kg</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>1</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>20 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup><m:mrow><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">+</m:mo><m:mo stretchy=\"false\">(</m:mo></m:mrow><m:mtext>75</m:mtext><m:mtext>.</m:mtext><m:mtext>0 kg</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>9</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>80 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow></m:mrow><m:mo>,</m:mo></m:math>",
+    "latex": "{{{{{F}_{{\\text{s}}}=(}\\text{75}\\text{.}\\text{0 kg})(1\\text{.}{\\text{20 m/s}}^{{2}}{)+(}\\text{75}\\text{.}\\text{0 kg})(9\\text{.}{\\text{80 m/s}}^{{2}})}}},",
+    "equationId": "eip-id1966528",
+    "equationClass": null
+  },
+  "math-76": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mn>8</m:mn></m:mrow><m:mtext>25 N</m:mtext></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{{F}_{{\\text{s}}}=8}\\text{25 N}}}}.",
+    "equationId": "eip-id1707818",
+    "equationClass": null
+  },
+  "math-77": {
+    "mathml": "<m:math>\n          \n            <m:mrow>\n              <m:mrow>\n                <m:mtable columnalign=\"left\">\n                  <m:mtr>\n<m:mtd>\n\n                                <m:msub>\n                                  <m:mi>F</m:mi>\n\n                                    <m:mrow>\n                                      <m:mtext>net</m:mtext>\n                                    </m:mrow>\n\n                                </m:msub>\n</m:mtd>\n<m:mtd>\n                                <m:mo stretchy=\"false\">=</m:mo>\n</m:mtd>\n<m:mtd>\n                                <m:mstyle fontstyle=\"italic\">\n                                  <m:mrow>\n                                    <m:mtext>ma</m:mtext>\n                                  </m:mrow>\n                                </m:mstyle>\n\n\n                              <m:mo stretchy=\"false\">=</m:mo>\n\n                              <m:mn>0</m:mn>\n\n\n                            <m:mo stretchy=\"false\">=</m:mo>\n\n                            <m:mrow>\n                              <m:msub>\n                                <m:mi>F</m:mi>\n\n                                  <m:mrow>\n                                    <m:mtext>s</m:mtext>\n                                  </m:mrow>\n\n                              </m:msub>\n                              <m:mo stretchy=\"false\">−</m:mo>\n                              <m:mi>w</m:mi>\n                            </m:mrow>\n\n\n\n\n</m:mtd>\n                  </m:mtr>\n                  <m:mtr>\n<m:mtd>\n                          <m:msub>\n                            <m:mi>F</m:mi>\n\n                              <m:mrow>\n                                <m:mtext>s</m:mtext>\n                              </m:mrow>\n\n                          </m:msub>\n</m:mtd>\n<m:mtd>\n                          <m:mo stretchy=\"false\">=</m:mo>\n</m:mtd>\n<m:mtd>\n                          <m:mi>w</m:mi>\n\n\n                        <m:mo stretchy=\"false\">=</m:mo>\n\n                        <m:mstyle fontstyle=\"italic\">\n                          <m:mrow>\n                            <m:mtext>mg</m:mtext>\n                          </m:mrow>\n                        </m:mstyle>\n\n</m:mtd>\n                  </m:mtr>\n                  <m:mtr>\n<m:mtd>\n\n                        <m:msub>\n                          <m:mi>F</m:mi>\n\n                            <m:mrow>\n                              <m:mtext>s</m:mtext>\n                            </m:mrow>\n\n                        </m:msub>\n</m:mtd>\n<m:mtd>\n                        <m:mo stretchy=\"false\">=</m:mo>\n</m:mtd>\n<m:mtd>\n                        <m:mo stretchy=\"false\">(</m:mo>\n\n                      <m:mtext>75.0 kg</m:mtext>\n                      <m:mo stretchy=\"false\">)</m:mo>\n                      <m:mo stretchy=\"false\">(</m:mo>\n                      <m:mn>9.</m:mn>\n                      <m:msup>\n                        <m:mtext>80 m/s</m:mtext>\n\n                          <m:mrow>\n                            <m:mn>2</m:mn>\n                          </m:mrow>\n\n                      </m:msup>\n                      <m:mo stretchy=\"false\">)</m:mo>\n\n</m:mtd>\n                  </m:mtr>\n                  <m:mtr>\n<m:mtd>\n\n                        <m:msub>\n                          <m:mi>F</m:mi>\n\n                            <m:mrow>\n                              <m:mtext>s</m:mtext>\n                            </m:mrow>\n\n                        </m:msub>\n</m:mtd>\n<m:mtd>\n                        <m:mo stretchy=\"false\">=</m:mo>\n</m:mtd>\n<m:mtd>\n                        <m:mtext>735 N.</m:mtext>\n\n</m:mtd>\n                  </m:mtr>\n                </m:mtable>\n              </m:mrow>\n            </m:mrow>\n          \n        </m:math>",
+    "latex": "{{\\begin{aligned} {F}_{{\\text{net}}} & = & {\\text{ma}} = 0 = {{F}_{{\\text{s}}} − w} \\\\ {F}_{{\\text{s}}} & = & w = {\\text{mg}} \\\\ {F}_{{\\text{s}}} & = & ( \\text{75.0 kg} ) ( 9. {\\text{80 m/s}}^{{2}} ) \\\\ {F}_{{\\text{s}}} & = & \\text{735 N.} \\end{aligned}}}",
+    "equationId": "eip-id2384618",
+    "equationClass": null
+  },
+  "math-78": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mi>a</m:mi><m:mo stretchy=\"false\">=</m:mo><m:mfrac><m:mrow><m:mn>Δ</m:mn><m:mi fontstyle=\"italic\">v</m:mi></m:mrow><m:mrow><m:mn>Δ</m:mn><m:mi fontstyle=\"italic\">t</m:mi></m:mrow></m:mfrac></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{a=\\frac{{Δv}}{{Δt}}}}}"
+  },
+  "math-79": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mn>Δ</m:mn><m:mi fontstyle=\"italic\">v</m:mi><m:mo stretchy=\"false\">=</m:mo><m:mn>0</m:mn></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{Δv=0}}}"
+  },
+  "math-80": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mrow><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle><m:mo stretchy=\"false\">+</m:mo><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>mg</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow><m:mo stretchy=\"false\">=</m:mo><m:mrow><m:mn>0</m:mn><m:mo stretchy=\"false\">+</m:mo><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>mg</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{{F}_{{\\text{s}}}={{\\text{ma}}+{\\text{mg}}}}={0+{\\text{mg}}}}}}.",
+    "equationId": "eip-id2587837",
+    "equationClass": null
+  },
+  "math-81": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mo stretchy=\"false\">(</m:mo></m:mrow><m:mtext>75</m:mtext><m:mtext>.</m:mtext><m:mtext>0 kg</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>9</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>80 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow></m:mrow><m:mo>,</m:mo></m:math>",
+    "latex": "{{{{{F}_{{\\text{s}}}=(}\\text{75}\\text{.}\\text{0 kg})(9\\text{.}{\\text{80 m/s}}^{{2}})}}},",
+    "equationId": "eip-id1546720",
+    "equationClass": null
+  },
+  "math-82": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mn>7</m:mn></m:mrow><m:mtext>35 N</m:mtext></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{{F}_{{\\text{s}}}=7}\\text{35 N}}}}.",
+    "equationId": "eip-id1499798",
+    "equationClass": null
+  },
+  "math-83": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mtext mathvariant=\"bold\">T</m:mtext></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{\\text{T}}}}"
+  },
+  "math-84": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">w</m:mtext><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{w}}_{{\\text{s}}}}}"
+  },
+  "math-85": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">w</m:mtext><m:mrow><m:mtext>e</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{w}}_{{\\text{e}}}}}"
+  },
+  "math-86": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{\\text{s}}}}}"
+  },
+  "math-87": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mtext>p</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{\\text{p}}}}}"
+  },
+  "math-88": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">F</m:mtext><m:mrow><m:mtext>t</m:mtext></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{F}}_{{\\text{t}}}}}"
+  },
+  "math-89": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mtext mathvariant=\"bold\">N</m:mtext></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{\\text{N}}}}"
+  },
+  "math-90": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mi>a</m:mi></m:mrow></m:mrow></m:math>",
+    "latex": "{{a}}"
+  },
+  "math-91": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mi>g</m:mi></m:mrow></m:mrow></m:math>",
+    "latex": "{{g}}"
+  },
+  "math-92": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mn>Δ</m:mn><m:mi fontstyle=\"italic\">v</m:mi><m:mo stretchy=\"false\">=</m:mo><m:mn>8.00 m/s</m:mn></m:mrow></m:mrow></m:math>",
+    "latex": "{{Δv=8.00 m/s}}"
+  },
+  "math-93": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:mn>Δ</m:mn><m:mi fontstyle=\"italic\">t</m:mi><m:mo stretchy=\"false\">=</m:mo><m:mn>2.50 s</m:mn></m:mrow></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{{Δt=2.50 s}}}}"
+  },
+  "math-94": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mi>a</m:mi><m:mo stretchy=\"false\">=</m:mo><m:mfrac><m:mrow><m:mn>Δ</m:mn><m:mi fontstyle=\"italic\">v</m:mi></m:mrow><m:mrow><m:mn>Δ</m:mn><m:mi fontstyle=\"italic\">t</m:mi></m:mrow></m:mfrac></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{a=\\frac{{Δv}}{{Δt}}}}}.",
+    "equationId": "eip-id1739294",
+    "equationClass": null
+  },
+  "math-95": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mtable columnalign=\"left\"><m:mtr>\n<m:mtd><m:mi>a</m:mi></m:mtd>\n<m:mtd><m:mo stretchy=\"false\">=</m:mo></m:mtd>\n<m:mtd>\n <m:mfrac>\n  <m:mrow>\n   <m:mn>8.00 m/s</m:mn>\n  </m:mrow>\n  <m:mrow>\n   <m:mn>2</m:mn>\n   <m:mtext>.</m:mtext>\n   <m:mn>50 s</m:mn>\n  </m:mrow>\n </m:mfrac></m:mtd></m:mtr>\n<m:mtr>\n<m:mtd/>\n<m:mtd><m:mo stretchy=\"false\">=</m:mo></m:mtd>\n<m:mtd>\n <m:mn>3</m:mn>\n <m:mtext>.</m:mtext>\n <m:msup>\n  <m:mtext>20 m/s</m:mtext>\n  <m:mrow>\n   <m:mn>2</m:mn>\n  </m:mrow>\n </m:msup>\n <m:mo>.</m:mo>\n</m:mtd>\n</m:mtr></m:mtable><m:mrow/></m:mrow></m:mrow></m:math>",
+    "latex": "{{\\begin{aligned} a & = & \\frac{{8.00 m/s}}{{2 \\text{.} 50 s}} \\\\ = & 3 \\text{.} {\\text{20 m/s}}^{{2}} . \\end{aligned}}}",
+    "equationId": "eip-id2063281",
+    "equationClass": null
+  },
+  "math-96": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{F}_{{\\text{net}}}={\\text{ma}}}}}.",
+    "equationId": "eip-id1756199",
+    "equationClass": null
+  },
+  "math-97": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mi>m</m:mi></m:mrow></m:mrow></m:math>",
+    "latex": "{{m}}"
+  },
+  "math-98": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mi>a</m:mi></m:mrow></m:mrow></m:math>",
+    "latex": "{{a}}"
+  },
+  "math-99": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mtable columnalign=\"left\"><m:mtr>\n<m:mtd><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net</m:mtext></m:mrow></m:msub></m:mtd>\n<m:mtd><m:mo stretchy=\"false\">=</m:mo></m:mtd>\n<m:mtd>\n<m:mo stretchy=\"false\">(</m:mo><m:mtext>70.0 kg</m:mtext><m:mo stretchy=\"false\">)</m:mo>\n\n<m:mo stretchy=\"false\">(</m:mo><m:mn>3</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>20 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup><m:mo stretchy=\"false\">)</m:mo></m:mtd>\n</m:mtr><m:mtr>\n<m:mtd/>\n<m:mtd><m:mo stretchy=\"false\">=</m:mo></m:mtd>\n<m:mtd><m:mtext> 224 N</m:mtext><m:mo>.</m:mo></m:mtd>\n</m:mtr></m:mtable><m:mrow/></m:mrow></m:mrow></m:math>",
+    "latex": "{{\\begin{aligned} {F}_{{\\text{net}}} & = & (\\text{70.0 kg}) (3\\text{.}{\\text{20 m/s}}^{{2}}) \\\\ = & \\text{224 N}. \\end{aligned}}}",
+    "equationId": "eip-id1351504",
+    "equationClass": null
+  },
+  "math-100": {
+    "mathml": "<m:math><m:mrow><m:mtable><m:mtr><m:mtd><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net</m:mtext></m:mrow></m:msub><m:mo>=</m:mo></m:mrow></m:mtd><m:mtd><m:mrow><m:msqrt><m:mrow><m:msub><m:mi>F</m:mi><m:mi>x</m:mi></m:msub><m:msup><m:mrow/><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msub><m:mi>F</m:mi><m:mi>y</m:mi></m:msub><m:msup><m:mrow/><m:mi>w</m:mi></m:msup></m:mrow></m:msqrt></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd><m:mrow/></m:mtd><m:mtd><m:mrow><m:mo>=</m:mo><m:msqrt><m:mrow><m:msup><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>38</m:mn><m:mtext> </m:mtext><m:mtext>N</m:mtext><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:msup><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>64</m:mn><m:mtext>​</m:mtext><m:mtext> </m:mtext><m:mtext>N</m:mtext><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:msqrt></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd><m:mrow/></m:mtd><m:mtd><m:mrow><m:mo>=</m:mo><m:mn>74.4</m:mn><m:mtext> </m:mtext><m:mtext>N</m:mtext></m:mrow></m:mtd></m:mtr></m:mtable></m:mrow></m:math>",
+    "latex": "{\\begin{aligned} {{F}_{{\\text{net}}}=} & {\\sqrt{{{F}_{x}^{2}+{F}_{y}^{w}}}} \\\\ & {=\\sqrt{{{{(38\\text\\text{N})}}^{2}+{{(64\\text{​}\\text\\text{N})}}^{2}}}} \\\\ & {=74.4\\text\\text{N}} \\end{aligned}}"
+  },
+  "math-101": {
+    "mathml": "<m:math><m:mrow><m:mi>a</m:mi><m:mo>=</m:mo><m:mfrac><m:mi>F</m:mi><m:mi>m</m:mi></m:mfrac></m:mrow></m:math>",
+    "latex": "{a=\\frac{F}{m}}"
+  },
+  "math-102": {
+    "mathml": "<m:math><m:mrow><m:mtable><m:mtr><m:mtd><m:mi>a</m:mi></m:mtd><m:mtd><m:mrow><m:mo>=</m:mo><m:mfrac><m:mrow><m:mn>74.4</m:mn><m:mtext> </m:mtext><m:mtext>N</m:mtext></m:mrow><m:mrow><m:mn>825</m:mn><m:mtext> </m:mtext><m:mtext>kg</m:mtext></m:mrow></m:mfrac></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd><m:mrow/></m:mtd><m:mtd><m:mrow><m:mo>=</m:mo><m:mn>0.09</m:mn><m:mtext> </m:mtext><m:msup><m:mrow><m:mtext>m/s</m:mtext></m:mrow><m:mtext>2</m:mtext></m:msup></m:mrow></m:mtd></m:mtr></m:mtable></m:mrow></m:math>",
+    "latex": "{\\begin{aligned} a & {=\\frac{{74.4\\text\\text{N}}}{{825\\text\\text{kg}}}} \\\\ & {=0.09\\text{{\\text{m/s}}}^{\\text{2}}} \\end{aligned}}"
+  },
+  "math-103": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{{F}_{{\\text{net}}}={\\text{ma}}}}}"
+  },
+  "math-104": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mn>0</m:mn></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{{F}_{{\\text{net}}}=0}}}"
+  },
+  "math-105": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mi>g</m:mi></m:mrow></m:mrow></m:math>",
+    "latex": "{{g}}"
+  },
+  "math-106": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mn>1</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>20</m:mtext><m:mo stretchy=\"false\">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mrow><m:mo stretchy=\"false\">−</m:mo><m:mn>5</m:mn></m:mrow></m:mrow></m:msup></m:mrow><m:mspace width=\"0.25em\"/><m:mtext> N</m:mtext></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{1\\text{.}{\\text{20}×{\\text{10}}^{{{−5}}}}\\, \\text{N}}}}"
+  },
+  "math-107": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mn>0</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>500</m:mtext><m:mo stretchy=\"false\">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mrow><m:mo stretchy=\"false\">−</m:mo><m:mn>6</m:mn></m:mrow></m:mrow></m:msup></m:mrow><m:mspace width=\"0.25em\"/><m:mtext> N</m:mtext></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{0\\text{.}{\\text{500}×{\\text{10}}^{{{−6}}}}\\, \\text{N}}}}"
+  },
+  "math-108": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mn>6</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>00</m:mtext><m:mo stretchy=\"false\">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mrow><m:mo stretchy=\"false\">−</m:mo><m:mn>7</m:mn></m:mrow></m:mrow></m:msup></m:mrow><m:mspace width=\"0.25em\"/><m:mtext> kg</m:mtext></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{6\\text{.}{\\text{00}×{\\text{10}}^{{{−7}}}}\\, \\text{kg}}}}"
+  },
+  "math-109": {
+    "mathml": "<m:math>\n          \n            <m:mrow>\n\n                <m:mrow>\n                  <m:mrow>\n                    <m:mtext>10.2</m:mtext><m:mspace width=\"0.25em\"/>\n                    <m:msup>\n                      <m:mtext> m/s</m:mtext>\n\n                        <m:mrow>\n                          <m:mn>2</m:mn>\n                        </m:mrow>\n\n                    </m:msup>\n                    <m:mtext>, 4.67º from vertical</m:mtext>\n                  </m:mrow>\n                </m:mrow>\n            </m:mrow>\n            \n          \n        </m:math>",
+    "latex": "{{{\\text{10.2}\\, {\\text{m/s}}^{{2}} \\text{, 4.67º from vertical}}}}"
+  },
+  "math-110": {
+    "mathml": "<m:math>\n          \n            <m:mrow>\n\n                <m:mrow>\n                  <m:mrow>\n                    <m:mrow>\n                      <m:msub>\n                        <m:mi>T</m:mi>\n\n                          <m:mrow>\n                            <m:mn>1</m:mn>\n                          </m:mrow>\n\n                      </m:msub>\n                      <m:mo stretchy=\"false\">=</m:mo>\n                      <m:mtext>736 N</m:mtext>\n                    </m:mrow>\n                  </m:mrow>\n                </m:mrow>\n\n            </m:mrow>\n            \n          \n        </m:math>",
+    "latex": "{{{{{T}_{{1}} = \\text{736 N}}}}}"
+  },
+  "math-111": {
+    "mathml": "<m:math>\n          \n            <m:mrow>\n\n                <m:mrow>\n                  <m:mrow>\n                    <m:msub>\n                      <m:mi>T</m:mi>\n\n                        <m:mrow>\n                          <m:mn>2</m:mn>\n                        </m:mrow>\n\n                    </m:msub>\n                    <m:mo stretchy=\"false\">=</m:mo>\n                    <m:mtext>194 N</m:mtext>\n                  </m:mrow>\n                </m:mrow>\n            </m:mrow>\n            \n          \n        </m:math>",
+    "latex": "{{{{T}_{{2}} = \\text{194 N}}}}"
+  },
+  "math-112": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">T</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{T}}_{{2}}}}"
+  },
+  "math-113": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:msub><m:mtext mathvariant=\"bold\">T</m:mtext><m:mrow><m:mn>1</m:mn></m:mrow></m:msub></m:mrow><m:mrow/></m:mrow></m:math>",
+    "latex": "{{{\\text{T}}_{{1}}}}"
+  },
+  "math-114": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mn>7.43 m/s</m:mn></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{7.43 m/s}}}"
+  },
+  "math-115": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mn>2</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>00</m:mtext><m:mo stretchy=\"false\">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>6</m:mn></m:mrow></m:msup></m:mrow><m:mspace width=\"0.25em\"/><m:mtext> kg</m:mtext></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{2\\text{.}{\\text{00}×{\\text{10}}^{{6}}}\\, \\text{kg}}}}"
+  },
+  "math-116": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mn>3</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>50</m:mtext><m:mo stretchy=\"false\">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>7</m:mn></m:mrow></m:msup></m:mrow><m:mspace width=\"0.25em\"/><m:mtext> N</m:mtext></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{3\\text{.}{\\text{50}×{\\text{10}}^{{7}}}\\, \\text{N}}}}"
+  },
+  "math-117": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mn>4.20 m/s</m:mn></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{4.20 m/s}}}"
+  },
+  "math-118": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mtext>29.4 </m:mtext><m:mspace width=\"0.25em\"/><m:msup><m:mtext> m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{\\text{29.4}\\, {\\text{m/s}}^{{2}}}}}"
+  },
+  "math-119": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mn>4</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>31</m:mtext><m:mo stretchy=\"false\">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>3</m:mn></m:mrow></m:msup></m:mrow><m:mspace width=\"0.25em\"/><m:mtext> N</m:mtext></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{4\\text{.}{\\text{31}×{\\text{10}}^{{3}}}\\, \\text{N}}}}"
+  },
+  "math-120": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mtext>10.0º</m:mtext></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{\\text{10.0º}}}}"
+  },
+  "math-121": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mn>2</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>47</m:mtext><m:mo stretchy=\"false\">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>3</m:mn></m:mrow></m:msup></m:mrow><m:mspace width=\"0.25em\"/><m:msup><m:mtext> m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{2\\text{.}{\\text{47}×{\\text{10}}^{{3}}}\\, {\\text{m/s}}^{{2}}}}}"
+  },
+  "math-122": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mn>6.18</m:mn><m:mo stretchy=\"false\">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mn>3</m:mn></m:msup></m:mrow><m:mspace width=\"0.25em\"/><m:mtext> N</m:mtext></m:mrow></m:math>",
+    "latex": "{{6.18×{\\text{10}}^{3}}\\, \\text{N}}"
+  },
+  "math-123": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mn>1</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>20 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{1\\text{.}{\\text{20 m/s}}^{{2}}}}}"
+  },
+  "math-124": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mn>0</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>600 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{0\\text{.}{\\text{600 m/s}}^{{2}}}}}"
+  },
+  "math-125": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mn>0</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>400 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:mrow></m:mrow></m:math>",
+    "latex": "{{{0\\text{.}{\\text{400 m/s}}^{{2}}}}}"
+  },
+  "eip-id1203757": {
+    "mathml": "<m:math>\n          \n            <m:mrow>\n\n                <m:mrow>\n                  <m:mrow>\n                    <m:msub>\n                      <m:mtext mathvariant=\"bold\">F</m:mtext>\n\n                        <m:mrow>\n                            <m:mrow>\n                              <m:mtext>app</m:mtext>\n\n                            </m:mrow>\n                        </m:mrow>\n\n                    </m:msub><m:mtext>=</m:mtext>\n\n                      <m:mrow>\n                        <m:msub>\n                          <m:mtext mathvariant=\"bold\">F</m:mtext>\n\n                            <m:mrow>\n                              <m:mi mathvariant=\"italic\">x</m:mi>\n                            </m:mrow>\n\n                        </m:msub>\n                      </m:mrow>\n   <m:mo>+</m:mo>\n                      <m:mrow>\n                        <m:msub>\n                          <m:mtext mathvariant=\"bold\"> F</m:mtext>\n\n                            <m:mrow>\n                              <m:mi mathvariant=\"italic\">y</m:mi>\n                            </m:mrow>\n\n                        </m:msub>\n                      </m:mrow>\n                  </m:mrow>\n                </m:mrow>\n            </m:mrow>\n            \n          \n        </m:math>",
+    "latex": "{{{{\\text{F}}_{{{\\text{app}}}}\\text{=} {{\\text{F}}_{{x}}} + {{\\text{F}}_{{y}}}}}}",
+    "isBlock": true
+  },
+  "eip-id2112578": {
+    "mathml": "<m:math>\n          \n            <m:mrow>\n              <m:mrow>\n                <m:mtable columnalign=\"left\">\n                  <m:mtr>\n<m:mtd>\n\n                              <m:msub>\n                                <m:mi>F</m:mi>\n                                        <m:mtext>app</m:mtext>\n                              </m:msub>\n\n</m:mtd><m:mtd>\n                              <m:mo stretchy=\"false\">=</m:mo>\n\n</m:mtd><m:mtd>\n\n\n                            <m:mrow>\n<m:msqrt>\n                              <m:msubsup>\n                                <m:mtext>F</m:mtext>\n                                      <m:mi>x</m:mi>\n                                          <m:mn>2</m:mn>\n                              </m:msubsup>\n                              <m:mo stretchy=\"false\">+</m:mo>\n                              <m:msubsup>\n                                <m:mtext>F</m:mtext>\n                                      <m:mi>y</m:mi>\n                                          <m:mn>2</m:mn>\n                              </m:msubsup>\n</m:msqrt></m:mrow>\n</m:mtd>\n                  </m:mtr>\n                  <m:mtr><m:mtd>\n\n                      <m:mrow>\n                        <m:msub>\n                          <m:mi>F</m:mi>\n                                  <m:mtext>app</m:mtext>\n                        </m:msub></m:mrow>\n</m:mtd><m:mtd>\n                        <m:mo stretchy=\"false\">=</m:mo>\n</m:mtd><m:mtd>\n\n\n<m:msqrt>\n                      <m:mo stretchy=\"false\">(</m:mo>\n                      <m:mn>2.7</m:mn>\n                      <m:mrow>\n                        <m:mo stretchy=\"false\">×</m:mo>\n                        <m:msup>\n                          <m:mtext>10</m:mtext>\n                              <m:mn>5</m:mn>\n                        </m:msup>\n                      </m:mrow><m:mspace width=\"0.25em\"/>\n                      <m:mtext> N</m:mtext>\n                      <m:mrow>\n                        <m:msup>\n                          <m:mo stretchy=\"false\">)</m:mo>\n\n                            <m:mrow>\n                              <m:mn>2</m:mn>\n                            </m:mrow>\n\n                        </m:msup>\n                        <m:mo stretchy=\"false\">+</m:mo>\n                        <m:mo stretchy=\"false\">(</m:mo>\n                      </m:mrow>\n                      <m:mn>3.6</m:mn>\n                      <m:mrow>\n                        <m:mo stretchy=\"false\">×</m:mo>\n                        <m:msup>\n                          <m:mtext>10</m:mtext>\n                              <m:mn>5</m:mn>\n                        </m:msup>\n                      </m:mrow><m:mspace width=\"0.25em\"/>\n                      <m:mtext> N</m:mtext>\n                      <m:msup>\n                        <m:mo stretchy=\"false\">)</m:mo>\n\n                          <m:mrow>\n                            <m:mn>2</m:mn>\n                          </m:mrow>\n\n                      </m:msup>\n\n</m:msqrt>\n</m:mtd><m:mtd>\n                       <m:mo stretchy=\"false\">=</m:mo>\n</m:mtd><m:mtd>\n\n\n                        <m:mrow><m:mn>4.5</m:mn>\n                        <m:mo stretchy=\"false\">×</m:mo>\n                        <m:msup>\n                          <m:mtext>10</m:mtext>\n                              <m:mn>5</m:mn>\n                        </m:msup>\n                      </m:mrow><m:mspace width=\"0.25em\"/>\n                      <m:mtext> N.</m:mtext>\n                    </m:mtd>\n                  </m:mtr>\n                </m:mtable>\n              </m:mrow>\n            </m:mrow>\n          \n        </m:math>",
+    "latex": "{{\\begin{aligned} {F}_{\\text{app}} & = & {\\sqrt{{\\text{F}}_{x}^{2} + {\\text{F}}_{y}^{2}}} \\\\ {{F}_{\\text{app}}} & = & \\sqrt{( 2.7 {× {\\text{10}}^{5}}\\, \\text{N} {{)}^{{2}} + (} 3.6 {× {\\text{10}}^{5}}\\, \\text{N} {)}^{{2}}} & = & {4.5 × {\\text{10}}^{5}}\\, \\text{N.} \\end{aligned}}}",
+    "isBlock": true
+  },
+  "eip-id3026466": {
+    "mathml": "<m:math>\n          \n            <m:mrow>\n              <m:mrow>\n                <m:mtable columnalign=\"left\">\n                  <m:mtr>\n\n<m:mtd>\n                              <m:mi>θ</m:mi>\n</m:mtd>\n<m:mtd>\n                              <m:mo stretchy=\"false\">=</m:mo>\n</m:mtd>\n<m:mtd>\n                              <m:msup>\n                                <m:mtext>tan</m:mtext>\n\n                                  <m:mrow>\n                                    <m:mrow>\n                                      <m:mo stretchy=\"false\">−</m:mo>\n                                      <m:mn>1</m:mn>\n                                    </m:mrow>\n                                  </m:mrow>\n\n                              </m:msup>\n\n                            <m:mfenced open=\"(\" close=\")\">\n                              <m:mfrac>\n                                <m:msub>\n                                  <m:mi>F</m:mi>\n\n                                    <m:mrow>\n                                      <m:mi>y</m:mi>\n                                    </m:mrow>\n\n                                </m:msub>\n                                <m:msub>\n                                  <m:mi>F</m:mi>\n\n                                    <m:mrow>\n                                      <m:mi>x</m:mi>\n                                    </m:mrow>\n\n                                </m:msub>\n                              </m:mfrac>\n                            </m:mfenced>\n                    </m:mtd>\n                  </m:mtr>\n                  <m:mtr>\n\n<m:mtd>\n\n                        <m:mi>θ</m:mi>\n</m:mtd>\n<m:mtd>\n                        <m:mo stretchy=\"false\">=</m:mo>\n</m:mtd>\n<m:mtd>\n                        <m:msup>\n                          <m:mtext>tan</m:mtext>\n\n                            <m:mrow>\n                              <m:mrow>\n                                <m:mo stretchy=\"false\">−</m:mo>\n                                <m:mn>1</m:mn>\n                              </m:mrow>\n                            </m:mrow>\n\n                        </m:msup>\n\n                      <m:mrow>\n                        <m:mfenced open=\"(\" close=\")\">\n                          <m:mfrac>\n                            <m:mrow>\n\n                              <m:mn>3.6</m:mn>\n\n                              <m:mrow>\n\n                                <m:mo stretchy=\"false\">×</m:mo>\n                                <m:msup>\n                                  <m:mtext>10</m:mtext>\n\n                                    <m:mrow>\n                                      <m:mn>5</m:mn>\n                                    </m:mrow>\n\n                                </m:msup>\n                              </m:mrow><m:mspace width=\"0.25em\"/>\n                              <m:mtext> N</m:mtext>\n\n                            </m:mrow>\n                            <m:mrow>\n\n                              <m:mn>2.7</m:mn>\n\n                              <m:mrow>\n\n                                <m:mo stretchy=\"false\">×</m:mo>\n                                <m:msup>\n                                  <m:mtext>10</m:mtext>\n\n                                    <m:mrow>\n                                      <m:mn>5</m:mn>\n                                    </m:mrow>\n\n                                </m:msup>\n                              </m:mrow><m:mspace width=\"0.25em\"/>\n                              <m:mtext> N</m:mtext>\n\n                            </m:mrow>\n                          </m:mfrac>\n                        </m:mfenced>\n                        <m:mo stretchy=\"false\">=</m:mo>\n                        <m:mtext>53º</m:mtext>\n                      </m:mrow>\n                      <m:mi>,</m:mi>\n                    </m:mtd>\n\n                  </m:mtr>\n                </m:mtable>\n                <m:mrow/>\n              </m:mrow>\n            </m:mrow>\n          \n        </m:math>",
+    "latex": "{{\\begin{aligned} θ & = & {\\text{tan}}^{{{− 1}}} \\frac{{F}_{{y}}}{{F}_{{x}}} \\\\ θ & = & {\\text{tan}}^{{{− 1}}} {\\frac{{3.6 {× {\\text{10}}^{{5}}}\\, \\text{N}}}{{2.7 {× {\\text{10}}^{{5}}}\\, \\text{N}}} = \\text{53º}} , \\end{aligned}}}",
+    "isBlock": true
+  },
+  "eip-id1624544": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">−</m:mo><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>D</m:mtext></m:mrow></m:msub></m:mrow></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{F}_{{\\text{net}}}={{F}_{{\\text{app}}}−{F}_{{\\text{D}}}}}}}.",
+    "isBlock": true
+  },
+  "eip-id1230866": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{F}_{{\\text{net}}}={\\text{ma}}}}}.",
+    "isBlock": true
+  },
+  "eip-id2268355": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">−</m:mo><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>D</m:mtext></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">=</m:mo><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{{F}_{{\\text{app}}}−{F}_{{\\text{D}}}}={\\text{ma}}}}}.",
+    "isBlock": true
+  },
+  "eip-id1464099": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>D</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>app</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">−</m:mo><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{F}_{{\\text{D}}}={{F}_{{\\text{app}}}−{\\text{ma}}}}}}.",
+    "isBlock": true
+  },
+  "eip-id1715978": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mtext>F</m:mtext><m:mrow><m:mtext>D</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mo stretchy=\"false\">(</m:mo></m:mrow><m:mn>4</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>5</m:mtext><m:mo stretchy=\"false\">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>5</m:mn></m:mrow></m:msup></m:mrow><m:mspace width=\"0.25em\"/><m:mtext> N</m:mtext><m:mrow><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">−</m:mo><m:mo stretchy=\"false\">(</m:mo></m:mrow><m:mn>5</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>0</m:mtext><m:mo stretchy=\"false\">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>6</m:mn></m:mrow></m:msup></m:mrow><m:mspace width=\"0.25em\"/><m:mtext> kg</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>7</m:mn><m:mtext>.</m:mtext><m:mrow><m:mtext>5</m:mtext><m:mo stretchy=\"false\">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mtext>–2</m:mtext></m:mrow></m:msup></m:mrow><m:mspace width=\"0.25em\"/><m:msup><m:mtext> m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup><m:mrow><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">=</m:mo><m:mn>7</m:mn></m:mrow><m:mtext>.</m:mtext><m:mrow><m:mtext>5</m:mtext><m:mo stretchy=\"false\">×</m:mo><m:msup><m:mtext>10</m:mtext><m:mrow><m:mn>4</m:mn></m:mrow></m:msup></m:mrow><m:mspace width=\"0.25em\"/><m:mtext> N</m:mtext></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{{\\text{F}}_{{\\text{D}}}=(}4\\text{.}{\\text{5}×{\\text{10}}^{{5}}}\\, \\text{N}{)−(}5\\text{.}{\\text{0}×{\\text{10}}^{{6}}}\\, \\text{kg})(7\\text{.}{\\text{5}×{\\text{10}}^{{\\text{–2}}}}\\, {\\text{m/s}}^{{2}}{)=7}\\text{.}{\\text{5}×{\\text{10}}^{{4}}}\\, \\text{N}}}}.",
+    "isBlock": true
+  },
+  "eip-id2514755": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net </m:mtext><m:mi>x</m:mi></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>2</m:mtext><m:mi>x</m:mi></m:mrow></m:msub><m:mo stretchy=\"false\">−</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>1</m:mtext><m:mi>x</m:mi></m:mrow></m:msub></m:mrow></m:mrow><m:mo stretchy=\"false\">=</m:mo><m:mn>0</m:mn></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{{F}_{{\\text{net}x}}={{T}_{{\\text{2}x}}−{T}_{{\\text{1}x}}}}=0}}}.",
+    "isBlock": true
+  },
+  "eip-id2540452": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>1</m:mtext><m:mi>x</m:mi></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>2</m:mtext><m:mi>x</m:mi></m:mrow></m:msub></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{T}_{{\\text{1}x}}={T}_{{\\text{2}x}}}}}.",
+    "isBlock": true
+  },
+  "eip-id2122298": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub><m:mspace width=\"0.25em\"/><m:mtext>cos</m:mtext><m:mspace width=\"0.25em\"/><m:mo stretchy=\"false\">(</m:mo><m:mtext>30º</m:mtext><m:mrow><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">=</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mn>2</m:mn></m:mrow></m:msub></m:mrow><m:mspace width=\"0.25em\"/><m:mtext>cos</m:mtext><m:mspace width=\"0.25em\"/><m:mo stretchy=\"false\">(</m:mo><m:mtext>45º</m:mtext><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{T}_{{1}}\\, \\text{cos}\\, (\\text{30º}{)={T}_{{2}}}\\, \\text{cos}\\, (\\text{45º})}}}.",
+    "isBlock": true
+  },
+  "eip-id2577136": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>2</m:mn></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mo stretchy=\"false\">(</m:mo></m:mrow><m:mn>1</m:mn><m:mtext>.</m:mtext><m:mtext>225</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{{T}_{{2}}=(}1\\text{.}\\text{225}){T}_{{1}}}}}.",
+    "isBlock": true
+  },
+  "eip-id2308230": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net </m:mtext><m:mspace width=\"0.25em\"/><m:mi>y</m:mi></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>1</m:mtext><m:mi>y</m:mi></m:mrow></m:msub><m:mo stretchy=\"false\">+</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>2</m:mtext><m:mi>y</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">−</m:mo><m:mi>w</m:mi></m:mrow></m:mrow><m:mo stretchy=\"false\">=</m:mo><m:mn>0</m:mn></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{{F}_{{\\text{net}\\, y}}={{{T}_{{\\text{1}y}}+{T}_{{\\text{2}y}}}−w}}=0}}}.",
+    "isBlock": true
+  },
+  "eip-id1339509": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>1</m:mtext><m:mi>y</m:mi></m:mrow></m:msub><m:mo stretchy=\"false\">+</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>2</m:mtext><m:mi>y</m:mi></m:mrow></m:msub></m:mrow><m:mo stretchy=\"false\">=</m:mo><m:mi>w</m:mi></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{{T}_{{\\text{1}y}}+{T}_{{\\text{2}y}}}=w}}}.",
+    "isBlock": true
+  },
+  "eip-id1925561": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub><m:mspace width=\"0.25em\"/><m:mtext>sin</m:mtext><m:mspace width=\"0.25em\"/><m:mo stretchy=\"false\">(</m:mo><m:mtext>30º</m:mtext><m:mrow><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">+</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mn>2</m:mn></m:mrow></m:msub></m:mrow><m:mspace width=\"0.25em\"/><m:mtext>sin</m:mtext><m:mspace width=\"0.25em\"/><m:mo stretchy=\"false\">(</m:mo><m:mtext>45º</m:mtext><m:mrow><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">=</m:mo><m:mi>w</m:mi></m:mrow></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{T}_{{1}}\\, \\text{sin}\\, (\\text{30º}{)+{T}_{{2}}}\\, \\text{sin}\\, (\\text{45º}{)=w}}}}.",
+    "isBlock": true
+  },
+  "eip-id2259246": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mn>0</m:mn><m:mtext>.</m:mtext><m:mtext>500</m:mtext><m:mrow><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">+</m:mo><m:mo stretchy=\"false\">(</m:mo></m:mrow><m:mn>1</m:mn><m:mtext>.</m:mtext><m:mtext>225</m:mtext><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>0</m:mn><m:mtext>.</m:mtext><m:mtext>707</m:mtext><m:mrow><m:mrow><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">=</m:mo><m:mi>w</m:mi></m:mrow><m:mo stretchy=\"false\">=</m:mo><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>mg</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow></m:mrow><m:mo>,</m:mo></m:math>",
+    "latex": "{{{{T}_{{1}}(0\\text{.}\\text{500}{)+(}1\\text{.}\\text{225}{T}_{{1}})(0\\text{.}\\text{707}{{)=w}={\\text{mg}}}}}},",
+    "isBlock": true
+  },
+  "eip-id2556360": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mfenced open=\"(\" close=\")\"><m:mrow><m:mn>1</m:mn><m:mtext>.</m:mtext><m:mtext>366</m:mtext></m:mrow></m:mfenced><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mo stretchy=\"false\">(</m:mo></m:mrow><m:mtext>15</m:mtext><m:mtext>.</m:mtext><m:mtext>0 kg</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>9</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>80 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{1\\text{.}\\text{366}}{{T}_{{1}}=(}\\text{15}\\text{.}\\text{0 kg})(9\\text{.}{\\text{80 m/s}}^{{2}})}}}.",
+    "isBlock": true
+  },
+  "eip-id1747068": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mn>1</m:mn></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mtext>108 N</m:mtext></m:mrow></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{{T}_{{1}}=\\text{108 N}}}}}.",
+    "isBlock": true
+  },
+  "eip-id1744019": {
+    "mathml": "<m:math>\n          \n            <m:mrow>\n\n                <m:mrow>\n                  <m:mrow>\n                    <m:msub>\n                      <m:mi>T</m:mi>\n\n                        <m:mrow>\n                          <m:mn>2</m:mn>\n                        </m:mrow>\n\n                    </m:msub>\n                    <m:mo stretchy=\"false\">=</m:mo>\n                    <m:mtext>132 N</m:mtext>\n                  </m:mrow>\n                </m:mrow>\n            </m:mrow>\n            \n          <m:mo>.</m:mo>\n        </m:math>",
+    "latex": "{{{{T}_{{2}} = \\text{132 N}}}} .",
+    "isBlock": true
+  },
+  "eip-id2548908": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{F}_{{\\text{net}}}={\\text{ma}}}}}.",
+    "isBlock": true
+  },
+  "eip-id2522872": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">−</m:mo><m:mi>w</m:mi></m:mrow><m:mo stretchy=\"false\">=</m:mo><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{{F}_{{\\text{s}}}−w}={\\text{ma}}}}}.",
+    "isBlock": true
+  },
+  "eip-id1957748": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mrow><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle><m:mo stretchy=\"false\">+</m:mo><m:mi>w</m:mi></m:mrow></m:mrow></m:mrow></m:mrow><m:mo>,</m:mo></m:math>",
+    "latex": "{{{{F}_{{\\text{s}}}={{\\text{ma}}+w}}}},",
+    "isBlock": true
+  },
+  "eip-id3507099": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mrow><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle><m:mo stretchy=\"false\">+</m:mo><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>mg</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{F}_{{\\text{s}}}={{\\text{ma}}+{\\text{mg}}}}}}.",
+    "isBlock": true
+  },
+  "eip-id1966528": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mo stretchy=\"false\">(</m:mo></m:mrow><m:mtext>75</m:mtext><m:mtext>.</m:mtext><m:mtext>0 kg</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>1</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>20 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup><m:mrow><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">+</m:mo><m:mo stretchy=\"false\">(</m:mo></m:mrow><m:mtext>75</m:mtext><m:mtext>.</m:mtext><m:mtext>0 kg</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>9</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>80 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow></m:mrow><m:mo>,</m:mo></m:math>",
+    "latex": "{{{{{F}_{{\\text{s}}}=(}\\text{75}\\text{.}\\text{0 kg})(1\\text{.}{\\text{20 m/s}}^{{2}}{)+(}\\text{75}\\text{.}\\text{0 kg})(9\\text{.}{\\text{80 m/s}}^{{2}})}}},",
+    "isBlock": true
+  },
+  "eip-id1707818": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mn>8</m:mn></m:mrow><m:mtext>25 N</m:mtext></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{{F}_{{\\text{s}}}=8}\\text{25 N}}}}.",
+    "isBlock": true
+  },
+  "eip-id2384618": {
+    "mathml": "<m:math>\n          \n            <m:mrow>\n              <m:mrow>\n                <m:mtable columnalign=\"left\">\n                  <m:mtr>\n<m:mtd>\n\n                                <m:msub>\n                                  <m:mi>F</m:mi>\n\n                                    <m:mrow>\n                                      <m:mtext>net</m:mtext>\n                                    </m:mrow>\n\n                                </m:msub>\n</m:mtd>\n<m:mtd>\n                                <m:mo stretchy=\"false\">=</m:mo>\n</m:mtd>\n<m:mtd>\n                                <m:mstyle fontstyle=\"italic\">\n                                  <m:mrow>\n                                    <m:mtext>ma</m:mtext>\n                                  </m:mrow>\n                                </m:mstyle>\n\n\n                              <m:mo stretchy=\"false\">=</m:mo>\n\n                              <m:mn>0</m:mn>\n\n\n                            <m:mo stretchy=\"false\">=</m:mo>\n\n                            <m:mrow>\n                              <m:msub>\n                                <m:mi>F</m:mi>\n\n                                  <m:mrow>\n                                    <m:mtext>s</m:mtext>\n                                  </m:mrow>\n\n                              </m:msub>\n                              <m:mo stretchy=\"false\">−</m:mo>\n                              <m:mi>w</m:mi>\n                            </m:mrow>\n\n\n\n\n</m:mtd>\n                  </m:mtr>\n                  <m:mtr>\n<m:mtd>\n                          <m:msub>\n                            <m:mi>F</m:mi>\n\n                              <m:mrow>\n                                <m:mtext>s</m:mtext>\n                              </m:mrow>\n\n                          </m:msub>\n</m:mtd>\n<m:mtd>\n                          <m:mo stretchy=\"false\">=</m:mo>\n</m:mtd>\n<m:mtd>\n                          <m:mi>w</m:mi>\n\n\n                        <m:mo stretchy=\"false\">=</m:mo>\n\n                        <m:mstyle fontstyle=\"italic\">\n                          <m:mrow>\n                            <m:mtext>mg</m:mtext>\n                          </m:mrow>\n                        </m:mstyle>\n\n</m:mtd>\n                  </m:mtr>\n                  <m:mtr>\n<m:mtd>\n\n                        <m:msub>\n                          <m:mi>F</m:mi>\n\n                            <m:mrow>\n                              <m:mtext>s</m:mtext>\n                            </m:mrow>\n\n                        </m:msub>\n</m:mtd>\n<m:mtd>\n                        <m:mo stretchy=\"false\">=</m:mo>\n</m:mtd>\n<m:mtd>\n                        <m:mo stretchy=\"false\">(</m:mo>\n\n                      <m:mtext>75.0 kg</m:mtext>\n                      <m:mo stretchy=\"false\">)</m:mo>\n                      <m:mo stretchy=\"false\">(</m:mo>\n                      <m:mn>9.</m:mn>\n                      <m:msup>\n                        <m:mtext>80 m/s</m:mtext>\n\n                          <m:mrow>\n                            <m:mn>2</m:mn>\n                          </m:mrow>\n\n                      </m:msup>\n                      <m:mo stretchy=\"false\">)</m:mo>\n\n</m:mtd>\n                  </m:mtr>\n                  <m:mtr>\n<m:mtd>\n\n                        <m:msub>\n                          <m:mi>F</m:mi>\n\n                            <m:mrow>\n                              <m:mtext>s</m:mtext>\n                            </m:mrow>\n\n                        </m:msub>\n</m:mtd>\n<m:mtd>\n                        <m:mo stretchy=\"false\">=</m:mo>\n</m:mtd>\n<m:mtd>\n                        <m:mtext>735 N.</m:mtext>\n\n</m:mtd>\n                  </m:mtr>\n                </m:mtable>\n              </m:mrow>\n            </m:mrow>\n          \n        </m:math>",
+    "latex": "{{\\begin{aligned} {F}_{{\\text{net}}} & = & {\\text{ma}} = 0 = {{F}_{{\\text{s}}} − w} \\\\ {F}_{{\\text{s}}} & = & w = {\\text{mg}} \\\\ {F}_{{\\text{s}}} & = & ( \\text{75.0 kg} ) ( 9. {\\text{80 m/s}}^{{2}} ) \\\\ {F}_{{\\text{s}}} & = & \\text{735 N.} \\end{aligned}}}",
+    "isBlock": true
+  },
+  "eip-id2587837": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mrow><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle><m:mo stretchy=\"false\">+</m:mo><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>mg</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow><m:mo stretchy=\"false\">=</m:mo><m:mrow><m:mn>0</m:mn><m:mo stretchy=\"false\">+</m:mo><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>mg</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{{F}_{{\\text{s}}}={{\\text{ma}}+{\\text{mg}}}}={0+{\\text{mg}}}}}}.",
+    "isBlock": true
+  },
+  "eip-id1546720": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mo stretchy=\"false\">(</m:mo></m:mrow><m:mtext>75</m:mtext><m:mtext>.</m:mtext><m:mtext>0 kg</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>9</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>80 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow></m:mrow><m:mo>,</m:mo></m:math>",
+    "latex": "{{{{{F}_{{\\text{s}}}=(}\\text{75}\\text{.}\\text{0 kg})(9\\text{.}{\\text{80 m/s}}^{{2}})}}},",
+    "isBlock": true
+  },
+  "eip-id1499798": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mn>7</m:mn></m:mrow><m:mtext>35 N</m:mtext></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{{F}_{{\\text{s}}}=7}\\text{35 N}}}}.",
+    "isBlock": true
+  },
+  "eip-id1739294": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:mi>a</m:mi><m:mo stretchy=\"false\">=</m:mo><m:mfrac><m:mrow><m:mn>Δ</m:mn><m:mi fontstyle=\"italic\">v</m:mi></m:mrow><m:mrow><m:mn>Δ</m:mn><m:mi fontstyle=\"italic\">t</m:mi></m:mrow></m:mfrac></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{a=\\frac{{Δv}}{{Δt}}}}}.",
+    "isBlock": true
+  },
+  "eip-id2063281": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mtable columnalign=\"left\"><m:mtr>\n<m:mtd><m:mi>a</m:mi></m:mtd>\n<m:mtd><m:mo stretchy=\"false\">=</m:mo></m:mtd>\n<m:mtd>\n <m:mfrac>\n  <m:mrow>\n   <m:mn>8.00 m/s</m:mn>\n  </m:mrow>\n  <m:mrow>\n   <m:mn>2</m:mn>\n   <m:mtext>.</m:mtext>\n   <m:mn>50 s</m:mn>\n  </m:mrow>\n </m:mfrac></m:mtd></m:mtr>\n<m:mtr>\n<m:mtd/>\n<m:mtd><m:mo stretchy=\"false\">=</m:mo></m:mtd>\n<m:mtd>\n <m:mn>3</m:mn>\n <m:mtext>.</m:mtext>\n <m:msup>\n  <m:mtext>20 m/s</m:mtext>\n  <m:mrow>\n   <m:mn>2</m:mn>\n  </m:mrow>\n </m:msup>\n <m:mo>.</m:mo>\n</m:mtd>\n</m:mtr></m:mtable><m:mrow/></m:mrow></m:mrow></m:math>",
+    "latex": "{{\\begin{aligned} a & = & \\frac{{8.00 m/s}}{{2 \\text{.} 50 s}} \\\\ = & 3 \\text{.} {\\text{20 m/s}}^{{2}} . \\end{aligned}}}",
+    "isBlock": true
+  },
+  "eip-id1756199": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mrow><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">=</m:mo><m:mstyle fontstyle=\"italic\"><m:mrow><m:mtext>ma</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow><m:mo>.</m:mo></m:math>",
+    "latex": "{{{{F}_{{\\text{net}}}={\\text{ma}}}}}.",
+    "isBlock": true
+  },
+  "eip-id1351504": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mtable columnalign=\"left\"><m:mtr>\n<m:mtd><m:msub><m:mi>F</m:mi><m:mrow><m:mtext>net</m:mtext></m:mrow></m:msub></m:mtd>\n<m:mtd><m:mo stretchy=\"false\">=</m:mo></m:mtd>\n<m:mtd>\n<m:mo stretchy=\"false\">(</m:mo><m:mtext>70.0 kg</m:mtext><m:mo stretchy=\"false\">)</m:mo>\n\n<m:mo stretchy=\"false\">(</m:mo><m:mn>3</m:mn><m:mtext>.</m:mtext><m:msup><m:mtext>20 m/s</m:mtext><m:mrow><m:mn>2</m:mn></m:mrow></m:msup><m:mo stretchy=\"false\">)</m:mo></m:mtd>\n</m:mtr><m:mtr>\n<m:mtd/>\n<m:mtd><m:mo stretchy=\"false\">=</m:mo></m:mtd>\n<m:mtd><m:mtext> 224 N</m:mtext><m:mo>.</m:mo></m:mtd>\n</m:mtr></m:mtable><m:mrow/></m:mrow></m:mrow></m:math>",
+    "latex": "{{\\begin{aligned} {F}_{{\\text{net}}} & = & (\\text{70.0 kg}) (3\\text{.}{\\text{20 m/s}}^{{2}}) \\\\ = & \\text{224 N}. \\end{aligned}}}",
+    "isBlock": true
+  }
+}

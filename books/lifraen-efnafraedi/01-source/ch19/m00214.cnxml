@@ -1,0 +1,34 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Oxidation of Aldehydes and Ketones</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Oxidation of Aldehydes and Ketones</md:title>
+    <md:content-id>m00214</md:content-id>
+    <md:uuid>54656997-8a85-4e87-8187-fc15c3b7ac95</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">Aldehydes are easily oxidized to yield carboxylic acids, but ketones are generally inert toward oxidation. The difference is a consequence of structure: aldehydes have a –C<emphasis effect="bold"><span class="magenta-text">H</span></emphasis>O proton that can be abstracted during oxidation, but ketones do not.</para>
+    <figure class="unnumbered scaled-down" id="fig-00001">
+    <media alt="An aldehyde reacts with nascent oxygen to form a carboxylic acid, while a ketone reacts with nascent oxygen giving no reaction since hydrogen is not attached to the carbonyl group.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_03_001.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00002">Many oxidizing agents, including alkaline KMnO<sub>4</sub> and hot HNO<sub>3</sub>, convert aldehydes into carboxylic acids. The oxidation occurs rapidly at room temperature and generally works well.</para>
+    <figure class="unnumbered scaled-down" id="fig-00002">
+    <media alt="Hexanal reacts with chromium trioxide, hydronium ion, and acetone at zero degree Celsius to produce hexanoic acid (85 percent). Hydrogen in aldehyde group gets replaced by hydroxyl in the product.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_03_002.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00003">Aldehyde oxidations occur through intermediate 1,1-diols, or <emphasis effect="italics">hydrates,</emphasis> which are formed by a reversible nucleophilic addition of water to the carbonyl group. Even though it’s formed to only a small extent at equilibrium, the hydrate reacts like any typical primary or secondary alcohol and is oxidized to a carbonyl compound (<link document="m00206"/>).</para>
+    <figure class="unnumbered scaled-down" id="fig-00003">
+    <media alt="Aldehyde undergoes a reversible reaction with water to form a hydrate intermediate, which then reacts with chromium trioxide and hydronium ion to produce a carboxylic acid.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_03_003.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00004">Ketones are inert to most oxidizing agents but undergo a slow cleavage reaction of the C–C bond next to the carbonyl group when treated with hot alkaline KMnO<sub>4</sub>. The reaction is not often used, however, and is mentioned here only for completeness.</para>
+    <figure class="unnumbered scaled-down" id="fig-00004">
+    <media alt="Cyclohexanone reacts first with potassium permanganate, water, sodium hydroxide, then with hydronium to form hexanedioic acid (79 percent), a six-carbon chain with carboxylic acid groups at the terminal positions.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_03_004.jpg"/>
+    </media>
+    </figure>
+    </content>
+</document>

@@ -1,0 +1,72 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Naming Cycloalkanes</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Naming Cycloalkanes</md:title>
+    <md:content-id>m00040</md:content-id>
+    <md:uuid>ed58bc92-5413-4bc4-bd30-d1a7865026cb</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">Saturated cyclic hydrocarbons are called <term id="term-00001">cycloalkanes</term>, or <term id="term-00002">alicyclic</term> compounds (<emphasis effect="bold">ali</emphasis>phatic <emphasis effect="bold">cyclic</emphasis>). Because cycloalkanes consist of rings of −CH<sub>2</sub>−units, they have the general formula (CH<sub>2</sub>)<emphasis effect="italics"><sub>n</sub></emphasis>, or C<emphasis effect="italics"><sub>n</sub></emphasis>H<sub>2<emphasis effect="italics">n</emphasis></sub>, and can be represented by polygons in skeletal drawings.</para>
+    <figure class="unnumbered scaled-down" id="fig-00001">
+    <media alt="The ball and stick models and bond-line structures of cyclopropane, cyclobutane, cyclopentane, and cyclohexane, positioned from left to right.">
+    <image mime-type="image/jpeg" src="../../media/OChem_04_01_001.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00002">Substituted cycloalkanes are named by rules similar to those we saw in (<link document="m00035"/>) for open-chain alkanes. For most compounds, there are only two steps.</para>
+    <para id="para-00003"><emphasis effect="bold"><span class="red-text">STEP 1</span></emphasis> <newline /><emphasis effect="bold">Find the parent.</emphasis>
+    <newline />Count the number of carbon atoms in the ring and the number in the largest substituent. If the number of carbon atoms in the ring is equal to or greater than the number in the substituent, the compound is named as an alkyl-substituted cycloalkane. If the number of carbon atoms in the largest substituent is greater than the number in the ring, the compound is named as a cycloalkyl-substituted alkane. For example:</para>
+    <figure class="unnumbered scaled-down" id="fig-00002">
+    <media alt="The chemical structures of methylcyclopentane and 1-cyclopropylbutane. In 1-cyclopropylbutane, 3 carbons form a ring and 4 carbons form a straight chain.">
+    <image mime-type="image/jpeg" src="../../media/OChem_04_01_002.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00005"><emphasis effect="bold"><span class="red-text">STEP 2</span></emphasis> <newline /><emphasis effect="bold">Number the substituents, and write the name.</emphasis>
+    <newline />For an alkyl- or halo-substituted cycloalkane, choose a point of attachment as carbon 1 and number the substituents on the ring so that the <emphasis effect="italics">second</emphasis> substituent has as low a number as possible. If ambiguity still exists, number so that the third or fourth substituent has as low a number as possible, until a point of difference is found.</para>
+    <figure class="unnumbered scaled-down" id="fig-00003">
+    <media alt="The correct and incorrect numbering of substituted cyclohexane. The name with correct numbering is 1,3-dimethylcyclohexane and with incorrect numbering is 1,5-dimethylcyclohexane because 1,3 is a lower locant than 1,5. 3 and 5 are labeled lower and higher, respectively.">
+    <image mime-type="image/jpeg" src="../../media/OChem_04_01_003.jpg"/>
+    </media>
+    </figure>
+    <figure class="unnumbered scaled-down" id="fig-00004">
+    <media alt="One correct and two incorrect numberings of a substituted cycloheptane. The name with the correct numbering is 2-ethyl-1,4-dimethylcycloheptane. The names with incorrect numberings are 1-ethyl-2,6-dimethylcycloheptane and 3-ethyl-1,4-dimethylcycloheptane.">
+    <image mime-type="image/jpeg" src="../../media/OChem_04_01_004.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00007"><emphasis effect="bold">(a)</emphasis> When two or more different alkyl groups are present that could potentially take the same numbers, number them by alphabetical priority, ignoring numerical prefixes such as di- and tri-.</para>
+    <figure class="unnumbered scaled-down" id="fig-00005">
+    <media alt="The correct and incorrect numbering of a substituted cyclopentane. The name with correct numbering is 1-ethyl-2-methylcyclopentane and the name with incorrect numbering is 2-ethyl-1-methylcyclopentane.">
+    <image mime-type="image/jpeg" src="../../media/OChem_04_01_005.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00008"><emphasis effect="bold">(b)</emphasis> If halogens are present, treat them just like alkyl groups.</para>
+    <figure class="unnumbered scaled-down" id="fig-00006">
+    <media alt="The correct and incorrect numbering of a substituted cyclobutane. The name with correct numbering is 1-bromo-2-methylcyclobutane and the name with incorrect numbering is 2-bromo-1-methylcyclobutane.">
+    <image mime-type="image/jpeg" src="../../media/OChem_04_01_006.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00009">Some additional examples follow:</para>
+    <figure class="unnumbered scaled-down" id="fig-00007">
+    <media alt="The chemical structures of 1-bromo-3-ethyl-5-methyl-cyclohexane, (1-methylpropyl)cyclobutane or sec-butylcyclobutane, and 1-chloro-3-ethyl-2-methyl-cyclopentane, positioned from left to right.">
+    <image mime-type="image/jpeg" src="../../media/OChem_04_01_007.jpg"/>
+    </media>
+    </figure>
+    <section class="section-exercises" id="sect-00001">
+    <title>Problems</title>
+    <exercise id="exer-00001">
+    <problem id="prob-00001">
+    <para id="para-00010"><link class="os-embed" url="#exercise/04-01-OC-P01"/></para>
+    </problem>
+    </exercise>
+    <exercise id="exer-00002">
+    <problem id="prob-00002">
+    <para id="para-00011"><link class="os-embed" url="#exercise/04-01-OC-P02"/></para>
+    </problem>
+    </exercise>
+    <exercise id="exer-00003">
+    <problem id="prob-00003">
+    <para id="para-00012"><link class="os-embed" url="#exercise/04-01-OC-P03"/></para>
+    </problem>
+    </exercise>
+    </section>
+    </content>
+</document>

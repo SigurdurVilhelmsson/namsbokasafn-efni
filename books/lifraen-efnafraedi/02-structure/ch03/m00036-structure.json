@@ -1,0 +1,68 @@
+{
+  "moduleId": "m00036",
+  "title": {
+    "segmentId": "m00036:title:auto-1",
+    "text": "Properties of Alkanes"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "2e8e1b35-d77f-44d1-8f21-18620c22399d"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "para-00001",
+      "segmentId": "m00036:para:para-00001"
+    },
+    {
+      "type": "para",
+      "id": "para-00002",
+      "segmentId": "m00036:para:para-00002"
+    },
+    {
+      "type": "equation",
+      "id": "eq-00001",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "para-00004",
+      "segmentId": "m00036:para:para-00004"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00001",
+      "class": "unnumbered scaled-down",
+      "caption": null,
+      "media": {
+        "alt": "Four chemical reactions are represented. Methane reacts with chlorine in the presence of ultraviolet light to form methyl chloride and hydrogen chloride. Carbon tetrachloride and hydrogen chloride are formed.",
+        "src": "../../media/OChem_03_05_001.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00005",
+      "segmentId": "m00036:para:para-00005"
+    },
+    {
+      "type": "figure",
+      "id": "fig-00002",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m00036:caption:fig-00002-caption"
+      },
+      "media": {
+        "alt": "A double bar graph of temperature versus the number of carbon atoms that plots bars for melting and boiling points with an increasing trend.",
+        "src": "../../media/OChem_03_05_002.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "para-00006",
+      "segmentId": "m00036:para:para-00006"
+    }
+  ],
+  "sectionOrder": null
+}

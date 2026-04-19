@@ -47,7 +47,7 @@ Upptalningar á E°-gildum fyrir önnur hálfker, mæld á svipaðan hátt, eru 
 Kerfi sem gerir kleift að mæla staðalraftroðsspennu fyrir hálfhvarfið [[MATH:1]] með tilraunum
 
 <!-- SEG:m68823:para:fs-idm218785168 -->
-[[xref:fs-idm42585168]] sýnir lista yfir staðalraftroðsspennu fyrir úrval hálfhvarfa í tölulegri röð og ítarlegri stafrófsröðuð skrá er í viðauka L.
+[[xref:fs-idm42585168]] sýnir lista yfir staðalraftroðsspennu fyrir úrval hálfhvarfa í tölulegri röð og ítarlegri stafrófsröðuð skrá er í [[docref:viðauka L|m68870]].
 
 <!-- SEG:m68823:entry:auto-18 -->
 Valin staðalafoxunarspenna við 25 °C

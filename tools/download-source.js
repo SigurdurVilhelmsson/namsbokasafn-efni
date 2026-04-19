@@ -410,6 +410,15 @@ async function main() {
       'utf8'
     );
 
+    // Step 6: Save collection order for pipeline tools (cnxml-extract, cnxml-render)
+    // This replaces hardcoded module maps in chapter-modules.js
+    fs.writeFileSync(
+      path.join(sourceDir, 'collection-order.json'),
+      JSON.stringify(structure, null, 2),
+      'utf8'
+    );
+    log(`Saved module ordering to books/${book}/01-source/collection-order.json`);
+
     log(
       `Done. ${result.moduleCount} modules + ${result.mediaCount} media files → books/${book}/01-source/`
     );

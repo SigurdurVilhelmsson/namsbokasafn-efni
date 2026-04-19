@@ -13,6 +13,7 @@
 const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
+const log = require('../lib/logger');
 const { escapeHtml } = require('./htmlUtils');
 
 // Database path
@@ -163,7 +164,7 @@ function getPreferences(userId) {
     try {
       return { ...DEFAULT_PREFERENCES, ...JSON.parse(row.preferences) };
     } catch (e) {
-      console.error('Error parsing preferences:', e);
+      log.error({ err: e }, 'Error parsing notification preferences');
     }
   }
   return { ...DEFAULT_PREFERENCES };
@@ -212,8 +213,7 @@ function isEmailConfigured() {
  */
 async function sendEmail(to, subject, htmlBody, textBody) {
   if (!isEmailConfigured()) {
-    console.log('[Notification] Email not configured, skipping email to:', to);
-    console.log('[Notification] Subject:', subject);
+    log.info({ to, subject }, 'Email not configured, skipping');
     return false;
   }
 
@@ -239,10 +239,10 @@ async function sendEmail(to, subject, htmlBody, textBody) {
       html: htmlBody,
     });
 
-    console.log('[Notification] Email sent to:', to);
+    log.info({ to }, 'Email sent');
     return true;
   } catch (err) {
-    console.error('[Notification] Email failed:', err.message);
+    log.error({ err, to }, 'Email send failed');
     return false;
   }
 }
@@ -498,7 +498,7 @@ async function notifyFeedbackReceived(feedback, typeLabel) {
   const adminEmail = process.env.ADMIN_EMAIL;
 
   if (!adminEmail) {
-    console.log('[Notification] ADMIN_EMAIL not configured, skipping feedback notification');
+    log.info('ADMIN_EMAIL not configured, skipping feedback notification');
     return { emailSent: false };
   }
 
@@ -738,7 +738,7 @@ async function notifyBookAccessAssigned(userId, bookSlug, role, assignedByUserna
         result.emailSent = true;
       }
     } catch (emailErr) {
-      console.error('Failed to send book access email:', emailErr.message);
+      log.error({ err: emailErr }, 'Failed to send book access email');
     }
   }
 

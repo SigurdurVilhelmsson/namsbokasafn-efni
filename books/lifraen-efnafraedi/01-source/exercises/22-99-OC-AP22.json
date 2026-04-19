@@ -1,0 +1,397 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-30T16:57:14.859Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0FZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--790b5d6be8ea2dcaca21e7a8ba7d555b23230d00",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0FZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--790b5d6be8ea2dcaca21e7a8ba7d555b23230d00/OChem_22_EC_043a.jpg"
+    },
+    {
+      "created_at": "2023-08-30T16:57:14.862Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0VZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f198cc1af86e75758a5c91c3e81b28d9647f5115",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0VZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f198cc1af86e75758a5c91c3e81b28d9647f5115/OChem_22_EC_043b.jpg"
+    },
+    {
+      "created_at": "2023-08-30T16:57:14.864Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0lZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4ab247b1d69409d8ab7bfe20bca9a8b793e1e212",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0lZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4ab247b1d69409d8ab7bfe20bca9a8b793e1e212/OChem_22_EC_043c.jpg"
+    },
+    {
+      "created_at": "2023-08-30T16:57:14.866Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa01ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4da3e9f8bbc5d6e42689e3935e5e71388fb02e52",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa01ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4da3e9f8bbc5d6e42689e3935e5e71388fb02e52/OChem_22_EC_043d.jpg"
+    },
+    {
+      "created_at": "2023-08-30T16:57:14.869Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1FZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--44428a6db606c3305abf5c100806499274e41c27",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1FZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--44428a6db606c3305abf5c100806499274e41c27/OChem_22_EC_043e.jpg"
+    },
+    {
+      "created_at": "2023-08-30T16:57:14.872Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1VZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7c2b88d2b469f45d5c44b1f2f3744c74952a937b",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1VZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7c2b88d2b469f45d5c44b1f2f3744c74952a937b/OChem_22_EC_043f.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:49c3bbaf-f2e8-4cc1-bd1e-582e0f446a96",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:22-7-alkylation-of-enolate-ions"
+  ],
+  "uuid": "7d1af656-512e-4da3-9d1a-fb1be1d30efa",
+  "group_uuid": "787085a5-f60a-4432-9a64-c91ff1778601",
+  "number": 38825,
+  "version": 3,
+  "uid": "38825@3",
+  "published_at": "2023-08-30T16:57:19.227Z",
+  "nickname": "22-99-OC-AP22",
+  "solutions_are_public": false,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "How would you synthesize the following compounds from cyclohexanone? More than one step may be required.",
+  "questions": [
+    {
+      "id": 361016,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0FZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--790b5d6be8ea2dcaca21e7a8ba7d555b23230d00/OChem_22_EC_043a.jpg\" alt=\"The structure of methylenecyclohexane where a C H 2 group is double-bonded to one carbon of a cyclohexane ring\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 361017,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0VZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f198cc1af86e75758a5c91c3e81b28d9647f5115/OChem_22_EC_043b.jpg\" alt=\"The structure of (bromomethyl) cyclohexane where a C H 2 B r group is bonded to a carbon of a cyclohexane ring.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 361018,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0lZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4ab247b1d69409d8ab7bfe20bca9a8b793e1e212/OChem_22_EC_043c.jpg\" alt=\"The structure of 2-benzylcyclohexanone where a carbonyl group is at C1 of a cyclohexane ring, and a benzyl group is attached to C 2 of the ring.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 361019,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa01ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4da3e9f8bbc5d6e42689e3935e5e71388fb02e52/OChem_22_EC_043d.jpg\" alt=\"The structure of 3-cyclohexylpropanoic acid where a cyclohexane ring is bonded to the C 3 of a propanoic acid chain..\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 361020,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1FZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--44428a6db606c3305abf5c100806499274e41c27/OChem_22_EC_043e.jpg\" alt=\"The structure of 1-cyclohexenecarboxylic acid in which a carboxylic acid group is attached to one of the double-bonded carbons in a cyclohexene ring.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 361021,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1VZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7c2b88d2b469f45d5c44b1f2f3744c74952a937b/OChem_22_EC_043f.jpg\" alt=\"The structure 2-cyclohexen-1-one in which a carbonyl group is located at C 1 of a cyclohexene ring, the double bond being between C 2 and C 3.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    3,
+    2,
+    1
+  ]
+}

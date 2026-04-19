@@ -8,33 +8,10 @@
  * This allows managing user roles in-app instead of via GitHub teams.
  */
 
-const Database = require('better-sqlite3');
-const path = require('path');
-const fs = require('fs');
+module.exports = {
+  name: '006-user-management',
 
-const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
-
-function migrate() {
-  // Ensure database directory exists
-  const dbDir = path.dirname(DB_PATH);
-  if (!fs.existsSync(dbDir)) {
-    fs.mkdirSync(dbDir, { recursive: true });
-  }
-
-  const db = new Database(DB_PATH);
-
-  try {
-    // Check if migration is already applied
-    const tables = db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='users'").get();
-
-    if (tables) {
-      console.log('Migration 006-user-management already applied');
-      db.close();
-      return { success: true, alreadyApplied: true };
-    }
-
-    console.log('Applying migration: Adding user management tables...');
-
+  up(db) {
     // Create users table
     db.exec(`
       CREATE TABLE IF NOT EXISTS users (
@@ -61,7 +38,6 @@ function migrate() {
       CREATE INDEX IF NOT EXISTS idx_users_is_active
         ON users(is_active);
     `);
-    console.log('  Created users table');
 
     // Create user_book_access table for book-level permissions
     db.exec(`
@@ -81,7 +57,6 @@ function migrate() {
       CREATE INDEX IF NOT EXISTS idx_user_book_access_book
         ON user_book_access(book_slug);
     `);
-    console.log('  Created user_book_access table');
 
     // Create trigger to update users.updated_at
     db.exec(`
@@ -92,56 +67,5 @@ function migrate() {
           UPDATE users SET updated_at = CURRENT_TIMESTAMP WHERE id = OLD.id;
         END;
     `);
-    console.log('  Created update timestamp trigger');
-
-    console.log('Migration 006-user-management completed successfully');
-    db.close();
-
-    return { success: true };
-  } catch (err) {
-    console.error('Migration failed:', err.message);
-    db.close();
-    return { success: false, error: err.message };
-  }
-}
-
-function rollback() {
-  if (!fs.existsSync(DB_PATH)) {
-    console.log('Database does not exist, nothing to rollback');
-    return { success: true };
-  }
-
-  const db = new Database(DB_PATH);
-
-  try {
-    console.log('Rolling back migration: Removing user management tables...');
-
-    db.exec(`
-      DROP TRIGGER IF EXISTS update_users_timestamp;
-      DROP TABLE IF EXISTS user_book_access;
-      DROP TABLE IF EXISTS users;
-    `);
-
-    console.log('Rollback completed successfully');
-    db.close();
-
-    return { success: true };
-  } catch (err) {
-    console.error('Rollback failed:', err.message);
-    db.close();
-    return { success: false, error: err.message };
-  }
-}
-
-// Run migration if executed directly
-if (require.main === module) {
-  const args = process.argv.slice(2);
-
-  if (args.includes('--rollback')) {
-    rollback();
-  } else {
-    migrate();
-  }
-}
-
-module.exports = { migrate, rollback };
+  },
+};

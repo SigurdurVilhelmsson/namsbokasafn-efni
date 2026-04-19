@@ -1,0 +1,446 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-23T11:04:04.581Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--86f59b1ad2bf350b308a4f6805a727d113238339",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--86f59b1ad2bf350b308a4f6805a727d113238339/OChem_20_EC_201a.jpg"
+    },
+    {
+      "created_at": "2023-08-23T11:04:04.584Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGtXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--74abcf1746e57ff5c246130eb0c2629cbe58bd49",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGtXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--74abcf1746e57ff5c246130eb0c2629cbe58bd49/OChem_20_EC_201b.jpg"
+    },
+    {
+      "created_at": "2023-08-23T11:04:04.587Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcG9XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3bb2b1fe1604373c5951e45107981efd3a44168a",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcG9XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3bb2b1fe1604373c5951e45107981efd3a44168a/OChem_20_EC_201c.jpg"
+    },
+    {
+      "created_at": "2023-08-23T11:04:04.589Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9dadb6363ed8449a73d4c70e9e6189b3e1e98a3f",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9dadb6363ed8449a73d4c70e9e6189b3e1e98a3f/OChem_20_EC_201d.jpg"
+    },
+    {
+      "created_at": "2023-08-23T11:04:04.597Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2b0c613d0ce2316958faa1f105adc2912d442db2",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2b0c613d0ce2316958faa1f105adc2912d442db2/OChem_20_EC_201e.jpg"
+    },
+    {
+      "created_at": "2023-08-23T11:04:04.599Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDBXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bb73b01578e727876d41c5a273e62fb5ddddf20f",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDBXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bb73b01578e727876d41c5a273e62fb5ddddf20f/OChem_20_EC_201f.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:49dda117-bb5c-4a5e-b16f-b40873eb88dc",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:20-1-naming-carboxylic-acids-and-nitriles"
+  ],
+  "uuid": "36009b95-8ce6-4ef5-b8a6-603e8f55382f",
+  "group_uuid": "27b3878e-72be-4f33-b34c-f635a202eafb",
+  "number": 38082,
+  "version": 4,
+  "uid": "38082@4",
+  "published_at": "2023-08-23T11:04:08.275Z",
+  "nickname": "20-01-OC-P02",
+  "solutions_are_public": true,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "Draw structures corresponding to the following IUPAC names:",
+  "questions": [
+    {
+      "id": 359092,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "2,3-Dimethylhexanoic acid",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--86f59b1ad2bf350b308a4f6805a727d113238339/OChem_20_EC_201a.jpg\" alt=\"The structure of 2,3-dimethylhexanoic acid. Methyl groups are attached to C 2 and C 3. C 1 is part of the C O O H group.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 359093,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "4-Methylpentanoic acid",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGtXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--74abcf1746e57ff5c246130eb0c2629cbe58bd49/OChem_20_EC_201b.jpg\" alt=\"The structure of 4-methylpentanoic acid, a five-carbon chain with a methyl group attached to C 4. C 1 is part of the C O O H group.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 359094,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<i>trans</i>-1,2-Cyclobutanedicarboxylic acid",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcG9XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3bb2b1fe1604373c5951e45107981efd3a44168a/OChem_20_EC_201c.jpg\" alt=\"The structure of trans-1,2-cyclobutanedicarboxylic acid. C O O H groups are attached to C 1 and C 2 of a cyclobutane ring, trans to one another.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 359095,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<i>o</i>-Hydroxybenzoic acid",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9dadb6363ed8449a73d4c70e9e6189b3e1e98a3f/OChem_20_EC_201d.jpg\" alt=\"The structure of o-hydroxybenzoic acid. A C O O H group is present on C 1 of benzene ring. The ortho position is connected to the O H group.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 359096,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "(9<i>Z</i>,12<i>Z</i>)-9,12-Octadecadienoic acid",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2b0c613d0ce2316958faa1f105adc2912d442db2/OChem_20_EC_201e.jpg\" alt=\"Structure of (9 Z, 12 Z)-9, 12-octadecadienoic acid. C 9 and C 12 are double-bonded with attached groups in Z configuration. C 1 is part of C O O H.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 359097,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "2-Pentenenitrile",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDBXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bb73b01578e727876d41c5a273e62fb5ddddf20f/OChem_20_EC_201f.jpg\" alt=\"The structure of 2-pentenenitrile. A double bond is placed between C 2 and C 3. C 1 is part of the C N group.\">"
+        }
+      ],
+      "community_solutions": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    4,
+    3,
+    2,
+    1
+  ]
+}

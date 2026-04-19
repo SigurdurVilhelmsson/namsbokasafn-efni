@@ -1,0 +1,399 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-22T07:18:20.642Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d5c5b2453d21bfaf9ffa89dcb4094e35d43434d3",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d5c5b2453d21bfaf9ffa89dcb4094e35d43434d3/OChem_15_EC_006a.jpg"
+    },
+    {
+      "created_at": "2023-08-22T07:18:20.645Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaThWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--952f3f24609e34c47a99ab6b0c4aff38f5aa6d1d",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaThWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--952f3f24609e34c47a99ab6b0c4aff38f5aa6d1d/OChem_15_EC_006b.jpg"
+    },
+    {
+      "created_at": "2023-08-22T07:18:20.648Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3da5a770165efeda4d807398a0f81a16744bb0ef",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3da5a770165efeda4d807398a0f81a16744bb0ef/OChem_15_EC_006c.jpg"
+    },
+    {
+      "created_at": "2023-08-22T07:18:20.650Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ff8857f9ad6a4ff736c53749c77faf1b7b0dfaf1",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ff8857f9ad6a4ff736c53749c77faf1b7b0dfaf1/OChem_15_EC_006d.jpg"
+    },
+    {
+      "created_at": "2023-08-22T07:18:20.654Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaklWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--83d1182bd145da7ec210ebb96499433b25fac475",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaklWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--83d1182bd145da7ec210ebb96499433b25fac475/OChem_15_EC_006e.jpg"
+    },
+    {
+      "created_at": "2023-08-22T07:18:20.656Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBak1WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--74d1e31e12f50db58deb0e2119b0f9b78c565d48",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBak1WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--74d1e31e12f50db58deb0e2119b0f9b78c565d48/OChem_15_EC_006f.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:897309a6-6e3c-489d-a3a8-e87dc6dfde58",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:15-7-spectroscopy-of-aromatic-compounds"
+  ],
+  "uuid": "9773a30f-3eb7-439f-8192-24a7e71c0e98",
+  "group_uuid": "662383fa-a380-4b23-8eaf-37088362937d",
+  "number": 37749,
+  "version": 5,
+  "uid": "37749@5",
+  "published_at": "2023-08-22T07:18:24.642Z",
+  "nickname": "15-99-OC-AP01",
+  "solutions_are_public": false,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "Give IUPAC names for the following compounds:",
+  "questions": [
+    {
+      "id": 358661,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d5c5b2453d21bfaf9ffa89dcb4094e35d43434d3/OChem_15_EC_006a.jpg\" alt=\"In a benzene ring, C 1 is bonded to a 5-carbon chain, in which C 1 and C 4 are each bonded to a methyl group.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 358662,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaThWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--952f3f24609e34c47a99ab6b0c4aff38f5aa6d1d/OChem_15_EC_006b.jpg\" alt=\"In a benzene ring, C 1 and C 3 are bonded to a carboxylic acid group and a bromine atom, respectively.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 358663,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3da5a770165efeda4d807398a0f81a16744bb0ef/OChem_15_EC_006c.jpg\" alt=\"In a benzene ring, C 1 is bonded to a bromine atom and C3 and C5 to methyl groups.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 358664,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ff8857f9ad6a4ff736c53749c77faf1b7b0dfaf1/OChem_15_EC_006d.jpg\" alt=\"In a benzene ring, C 1 is bonded to a bromine atom and C 2 is bonded to a 3-carbon chain.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 358665,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaklWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--83d1182bd145da7ec210ebb96499433b25fac475/OChem_15_EC_006e.jpg\" alt=\"In a benzene ring, C 1 is bonded to a fluorine atom and C2 and C4 are each bonded to a nitro group.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 358666,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBak1WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--74d1e31e12f50db58deb0e2119b0f9b78c565d48/OChem_15_EC_006f.jpg\" alt=\"In a benzene ring, C 1 and C 4 are bonded to an amine group and a chlorine atom, respectively.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    5,
+    4,
+    3,
+    2,
+    1
+  ]
+}

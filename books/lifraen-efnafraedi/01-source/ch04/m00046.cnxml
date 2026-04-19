@@ -1,0 +1,131 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Conformations of Monosubstituted Cyclohexanes</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Conformations of Monosubstituted Cyclohexanes</md:title>
+    <md:content-id>m00046</md:content-id>
+    <md:uuid>beac5455-f4ba-4a95-a3bc-9a1628f0d66b</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">Even though cyclohexane rings flip rapidly between chair conformations at room temperature, the two conformations of a monosubstituted cyclohexane aren’t equally stable. In methylcyclohexane, for instance, the equatorial conformation is more stable than the axial conformation by 7.6 kJ/mol (1.8 kcal/mol). The same is true of other monosubstituted cyclohexanes: a substituent is almost always more stable in an equatorial position than in an axial position.</para>
+    <para id="para-00002">You might recall from your general chemistry course that it’s possible to calculate the percentages of two isomers at equilibrium using the equation Δ<emphasis effect="italics">E</emphasis> = –<emphasis effect="italics">RT</emphasis> ln <emphasis effect="italics">K,</emphasis> where Δ<emphasis effect="italics">E</emphasis> is the energy difference between isomers, <emphasis effect="italics">R</emphasis> is the gas constant [8.315 J/(K·mol)], <emphasis effect="italics">T</emphasis> is the Kelvin temperature, and <emphasis effect="italics">K</emphasis> is the equilibrium constant between isomers. For example, an energy difference of 7.6 kJ/mol means that about 95% of methylcyclohexane molecules have an equatorial methyl group at any given instant while only 5% have an axial methyl group. <link target-id="fig-00001"/> plots the relationship between energy and isomer percentages.</para>
+    <figure class="scaled-down" id="fig-00001">
+    <media alt="A graph of percent against energy difference in kilojoules per mole plots an increasing curve for more stable isomer and decreasing curve for less stable isomer.">
+    <image mime-type="image/jpeg" src="../../media/OChem_04_07_001.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">A plot of the percentages of two isomers at equilibrium versus the energy difference between them.</emphasis> The curves are calculated using the equation Δ<emphasis effect="italics">E</emphasis> = −<emphasis effect="italics">RT</emphasis> ln <emphasis effect="italics">K</emphasis>.</caption>
+    </figure>
+    <para id="para-00003">The energy difference between axial and equatorial conformations is due to steric strain caused by <term id="term-00001">1,3-diaxial interactions</term>. The axial methyl group on C1 is too close to the axial hydrogens three carbons away on C3 and C5, resulting in 7.6 kJ/mol of steric strain (<link target-id="fig-00002"/>).</para>
+    <figure id="fig-00002">
+    <media alt="The chair conformation, ball and stick, and space-filling models of axial methylcyclohexane with steric interference undergoes ring-flip to form equatorial conformation, ball and stick model, and space-filling model.">
+    <image mime-type="image/jpeg" src="../../media/OChem_04_07_002.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">Interconversion of axial and equatorial methylcyclohexane, represented in several formats.</emphasis> The equatorial conformation is more stable than the axial conformation by 7.6 kJ/mol.</caption>
+    </figure>
+    <para id="para-00004">The 1,3-diaxial steric strain in substituted methylcyclohexane is already familiar—we saw it previously as the steric strain between methyl groups in gauche in <link document="m00038"/>. Gauche butane is less stable than anti butane by 3.8 kJ/mol (0.9 kcal/mol) because of steric interference between hydrogen atoms on the two methyl groups. Comparing a four-carbon fragment of axial methylcyclohexane with gauche butane shows that the steric interaction is the same in both (<link target-id="fig-00003"/>). Because axial methylcyclohexane has two such interactions, it has 2 × 3.8 = 7.6 kJ/mol of steric strain. Equatorial methylcyclohexane has no such interactions and is therefore more stable.</para>
+    <figure id="fig-00003">
+    <media alt="The structures and ball and stick models of gauche butane (3.8 kilojoules per mole strain) and axial methylcyclohexane (7.6 kilojoules per mole strain).">
+    <image mime-type="image/jpeg" src="../../media/OChem_04_07_003.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">The origin of 1,3-diaxial interactions in methylcyclohexane.</emphasis> The steric strain between <emphasis effect="bold"><span class="magenta-text">an axial methyl group</span></emphasis> and <emphasis effect="bold"><span class="magenta-text">an axial hydrogen atom</span></emphasis> three carbons away is identical to the steric strain in gauche butane. (To display clearly the diaxial interactions in methylcyclohexane, two of the equatorial hydrogens are not shown.)</caption>
+    </figure>
+    <para id="para-00005">The exact amount of 1,3-diaxial steric strain in a given substituted cyclohexane depends on the nature and size of the substituent, as indicated in <link target-id="table-00001"/>. Not surprisingly, the amount of steric strain increases through the series H<sub>3</sub>C− &lt; CH<sub>3</sub>CH<sub>2</sub>− &lt; (CH<sub>3</sub>)<sub>2</sub>CH–&lt;&lt; (CH<sub>3</sub>)<sub>3</sub>C−, paralleling the increasing size of the alkyl groups. Note that the values given in <link target-id="table-00001"/> refer to 1,3-diaxial interactions of the substituent with a single hydrogen atom. These values must be doubled to arrive at the amount of strain in a monosubstituted cyclohexane.</para>
+    <table id="table-00001" summary=" ">
+    <title>Steric Strain in Monosubstituted Cyclohexanes</title>
+    <tgroup cols="4">
+    <colspec colnum="1" colname="c1"/>
+    <colspec colnum="2" colname="c2"/>
+    <colspec colnum="3" colname="c3"/>
+    <colspec colnum="4" colname="c4"/>
+    <thead>
+    <row valign="top">
+    <entry valign="top" align="left" rowsep="0"></entry>
+    <entry valign="top" align="left" namest="c2" nameend="c3">1,3-Diaxial strain</entry>
+    <entry valign="top" align="left" morerows="1">
+    <figure class="unnumbered scaled-down" id="fig-00004">
+    <media alt="In the chain conformation of cyclohexane, C1 is bonded to axial Y. C3 is bonded to axial hydrogen. Both H and Y have a double-headed arrow in-between.">
+    <image mime-type="image/jpeg" src="../../media/OChem_04_07_004.jpg"/>
+    </media>
+    </figure>
+    </entry>
+    </row>
+    <row valign="top">
+    <entry valign="top" align="left"><span class="magenta-text">Y</span></entry>
+    <entry valign="top" align="left">(kJ/mol)</entry>
+    <entry valign="top" align="left">(kcal/mol)</entry>
+    </row>
+    </thead>
+    <tbody>
+      <row valign="top">
+      <entry valign="top" align="left">F</entry>
+      <entry valign="top" align="left">&#8199;0.5</entry>
+      <entry valign="top" align="left">0.12</entry>
+      <entry valign="top" align="left" morerows="9"> </entry>
+      </row>
+      <row valign="top">
+      <entry valign="top" align="left">Cl, Br</entry>
+      <entry valign="top" align="left">&#8199;1.0</entry>
+      <entry valign="top" align="left">0.25</entry>
+      </row>
+      <row valign="top">
+      <entry valign="top" align="left">OH</entry>
+      <entry valign="top" align="left">&#8199;2.1</entry>
+      <entry valign="top" align="left">0.5</entry>
+      </row>
+      <row valign="top">
+      <entry valign="top" align="left">CH<sub>3</sub></entry>
+      <entry valign="top" align="left">&#8199;3.8</entry>
+      <entry valign="top" align="left">0.9</entry>
+      </row>
+      <row valign="top">
+      <entry valign="top" align="left">CH<sub>2</sub>CH<sub>3</sub></entry>
+      <entry valign="top" align="left">&#8199;4.0</entry>
+      <entry valign="top" align="left">0.95</entry>
+      </row>
+      <row valign="top">
+      <entry valign="top" align="left">CH(CH<sub>3</sub>)<sub>2</sub></entry>
+      <entry valign="top" align="left">&#8199;4.6</entry>
+      <entry valign="top" align="left">1.1</entry>
+      </row>
+      <row valign="top">
+      <entry valign="top" align="left">C(CH<sub>3</sub>)<sub>3</sub></entry>
+      <entry valign="top" align="left">11.4</entry>
+      <entry valign="top" align="left">2.7</entry>
+      </row>
+      <row valign="top">
+      <entry valign="top" align="left">C<sub>6</sub>H<sub>5</sub></entry>
+      <entry valign="top" align="left">6.3</entry>
+      <entry valign="top" align="left">1.5</entry>
+      </row>
+      <row valign="top">
+      <entry valign="top" align="left">CO<sub>2</sub>H</entry>
+      <entry valign="top" align="left">2.9</entry>
+      <entry valign="top" align="left">0.7</entry>
+      </row>
+      <row valign="top">
+      <entry valign="top" align="left">CN</entry>
+      <entry valign="top" align="left">&#8199;0.4</entry>
+      <entry valign="top" align="left">0.1</entry>
+      </row>
+      </tbody>
+    </tgroup>
+    </table>
+    <section class="section-exercises" id="sect-00001">
+    <title>Problems</title>
+    <exercise id="exer-00001">
+    <problem id="prob-00001">
+    <para id="para-00006"><link class="os-embed" url="#exercise/04-07-OC-P15"/></para>
+    </problem>
+    </exercise>
+    <exercise id="exer-00002">
+    <problem id="prob-00002">
+    <para id="para-00007"><link class="os-embed" url="#exercise/04-07-OC-P16"/></para>
+    </problem>
+    </exercise>
+    <exercise id="exer-00003">
+    <problem id="prob-00003">
+    <para id="para-00008"><link class="os-embed" url="#exercise/04-07-OC-P17"/></para>
+    </problem>
+    </exercise>
+    </section>
+    </content>
+</document>

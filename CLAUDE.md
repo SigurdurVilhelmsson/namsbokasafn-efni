@@ -34,7 +34,7 @@ This project was built iteratively with AI assistance. Known areas of concern:
 - Pipeline tools evolved organically — may have inconsistent patterns
 - Error handling may be incomplete in some tools
 - Documentation may be ahead of or behind actual implementation in places
-- Test suite: 724 Vitest unit tests + 96 Playwright E2E tests
+- Test suite: ~1070 Vitest unit tests + 96 Playwright E2E tests (vitest workspace: tools parallel, server sequential)
 
 ## Purpose
 
@@ -50,14 +50,14 @@ Translation workflow for Icelandic OpenStax textbooks. Produces three assets:
 - **Server:** Linode Ubuntu, nginx, Node.js
 - **Sister repo:** namsbokasafn-vefur (web publishing service)
 - **Domain:** namsbokasafn.is (migrated from efnafraedi.app)
-- **Authentication:** GitHub OAuth for the workflow server
+- **Authentication:** Microsoft Entra ID (Azure AD) OAuth for the workflow server
 - **Scale:** Small educational project — 1-2 developers, ~5 editors
 
 ## Tech Stack
 
-- **Runtime:** Node.js 24 LTS
+- **Runtime:** Node.js >=20 (CI runs on 20; 24 LTS compatible)
 - **Pipeline tools:** Custom CLI scripts in `tools/`
-- **Server:** Express 5 workflow interface in `server/`, better-sqlite3 12, Helmet, JWT auth
+- **Server:** Express 5 editorial workflow server in `server/`, better-sqlite3 12, Helmet, JWT auth
 - **Content format:** CNXML → Markdown (intermediate) → HTML
 - **Testing:** Vitest (unit), Playwright (E2E)
 - **Dependencies:** See package.json
@@ -109,15 +109,15 @@ CNXML → Extract → EN Segments → MT → Initialize → Review → Inject �
 
 | Step | What | Tool/Service | Output |
 |------|------|--------------|--------|
-| 1a | CNXML → EN segments | `cnxml-extract.js` | `02-for-mt/`, `02-structure/` (bracket markers: `[[i:]]`, `[[link:]]`, `[[xref:]]`, `[[docref:]]`) |
-| 1b | Protect for MT | `protect-segments-for-mt.js` | MT-ready segments (legacy — not needed with API) |
-| 2a | Machine translation | `api-translate.js` or malstadur.is web UI | `02-mt-output/` |
-| 2b | Unprotect MT output | `unprotect-segments.js` | Ready for review/injection (legacy — not needed with API) |
+| 1 | CNXML → EN segments | `cnxml-extract.js` | `02-for-mt/`, `02-structure/` (bracket markers: `[[i:]]`, `[[link:]]`, `[[xref:]]`, `[[docref:]]`) |
+| 2 | Machine translation | `api-translate.js` (Málstaður API) | `02-mt-output/` |
 | 3a | Linguistic review | Segment editor (web) or manual editing | `03-faithful-translation/` ★ |
 | 3b | Apply approved edits | `applyApprovedEdits()` (per-module) | `03-faithful-translation/` |
 | 4 | TM creation | `prepare-for-align.js` + Matecat Align | `tm/` ★ |
 | 5a | Inject translations | `cnxml-inject.js` | `03-translated/` |
 | 5b | Render to HTML | `cnxml-render.js` | `05-publication/` |
+
+Legacy protect/unprotect steps (1b, 2b) are archived in `tools/archived/` — not needed with API translation.
 
 ★ = Human-verified asset
 
@@ -131,11 +131,13 @@ See [docs/workflow/simplified-workflow.md](docs/workflow/simplified-workflow.md)
 |---------|---------|
 | `npm test` | Run all Vitest unit tests |
 | `npm run validate` | Validate chapter status files |
+| `npm run server:dev` | Start editorial server (dev mode) |
 | `node tools/cnxml-extract.js <book> <chapter>` | Extract EN segments from CNXML |
 | `node tools/cnxml-inject.js <book> <chapter>` | Inject translations into CNXML |
 | `node tools/cnxml-render.js <book> <chapter>` | Render translated CNXML to HTML |
 | `node tools/api-translate.js --book <book> --chapter <ch>` | Translate segments via Málstaður API |
 | `node tools/api-translate.js --book <book> --dry-run` | Show translation plan + cost estimate |
+| `node tools/translate-chapter-titles.js <slug>` | Translate chapter titles via Málstaður API |
 | `/pipeline-status` | Overview of all chapters |
 | `/chapter-status <book> <ch>` | Specific chapter progress |
 | `/review-chapter <book> <ch>` | Pass 1 linguistic review |
@@ -201,6 +203,7 @@ node scripts/sync-content.js --source ../namsbokasafn-efni
 | Document | Purpose |
 |----------|---------|
 | [docs/workflow/simplified-workflow.md](docs/workflow/simplified-workflow.md) | **Extract-Inject-Render workflow** |
+| [docs/workflow/config-and-rerun-guide.md](docs/workflow/config-and-rerun-guide.md) | **What to edit by hand & what to re-run** |
 | [docs/workflow/editor-improvements-jan2026.md](docs/workflow/editor-improvements-jan2026.md) | **Editor rebuild plan for CNXML→HTML pipeline** |
 | [docs/editorial/pass1-linguistic.md](docs/editorial/pass1-linguistic.md) | Pass 1 instructions |
 | [docs/editorial/pass2-localization.md](docs/editorial/pass2-localization.md) | Pass 2 instructions |
@@ -233,11 +236,34 @@ Extraction uses API-safe `[[type:content]]` bracket markers that achieve **100% 
 
 Injection handles both bracket and legacy formats (backward compat). Legacy patterns (`*text*`, `~text~`, `^text^`, `__term__`) are skipped for API-translated segments via `hasApiMarkers` guard.
 
+## Server Features (Post-Refocus)
+
+The server is an **editorial workflow platform**, not a pipeline orchestration tool. Pipeline operations (extract, translate, inject, render) are handled via CLI tools.
+
+**Core editorial features:**
+- Segment editor (Pass 1 linguistic review) with keyboard shortcuts, filtering, progress tracking
+- Localization editor (Pass 2) with category badges and guidelines panel
+- Terminology manager with cross-book support, definitions, CSV export
+- Editorial progress dashboard (per-chapter/module segment counts)
+- Live preview — in-process CNXML→HTML rendering via `renderService.js`
+- Content versioning — per-segment snapshots before each apply (rollback capability)
+- Structured logging via pino (`LOG_LEVEL` env var, JSON in production)
+- Production health check at `GET /api/health` (DB, migrations, books, auth)
+
+**Recent changes (2026-03-24):**
+- Removed 20 legacy files (workflow, matecat, sync, images, issues routes/services)
+- All DB services use singleton connection pattern
+- All 33 migrations use unified `up(db)` pattern
+- Frontend JS wrapped in IIFEs (encapsulated state)
+- Vitest workspace splits tools (parallel) from server (sequential) tests
+
 ## Current Priority
 
-**Fidelity optimization** — 110/148 modules PERFECT (74%), 141 total discrepancies across 38 modules. Error manifest auto-updated: `books/efnafraedi-2e/translation-errors.json`. Pipeline verified with 724 Vitest + 96 Playwright tests.
+**Fidelity optimization** — 119/148 modules PERFECT (80%) for efnafraedi-2e, 49 total discrepancies across 29 modules. Error manifest auto-updated: `books/efnafraedi-2e/translation-errors.json`. Pipeline verified with ~1070 Vitest + 96 Playwright tests.
 
 Remaining discrepancies are structural injection issues (nested para/list), annotation side-effects (sub/sup/term overcounting from EN marker conversion), and a handful of math/link losses. See `translation-errors.json` for per-module detail.
+
+Duplicate figure fix (2026-03-30): figures nested inside `<para>` inside `<example>`/`<exercise>` are now kept in-place instead of being stripped and duplicated. Follows same pattern as `buildNoteDom`. Affects organic chemistry (10 occurrences), edlisfraedi-2e exercises (38), liffraedi-2e notes (70).
 
 See [ROADMAP.md](ROADMAP.md) and [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for completed work and future ideas.
 

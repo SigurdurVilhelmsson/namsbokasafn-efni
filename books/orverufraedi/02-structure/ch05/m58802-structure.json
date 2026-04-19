@@ -1,0 +1,799 @@
+{
+  "moduleId": "m58802",
+  "title": {
+    "segmentId": "m58802:title:auto-1",
+    "text": "Unicellular Eukaryotic Parasites"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "ceaa00a4-5a97-4043-b46c-5fbceb23f946"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "fs-id1172102074474",
+      "class": "learning-objectives",
+      "title": {
+        "segmentId": "m58802:title:fs-id1172102074474-title",
+        "text": "Learning Objectives"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id11713605736962",
+          "segmentId": "m58802:para:fs-id11713605736962"
+        },
+        {
+          "type": "list",
+          "id": "fs-id1172101784436",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m58802:item:fs-id1172101784436-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m58802:item:fs-id1172101784436-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m58802:item:fs-id1172101784436-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m58802:item:fs-id1172101784436-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m58802:item:fs-id1172101784436-item-5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "note",
+      "id": "fs-id1172101975536",
+      "class": "microbiology clinical-focus",
+      "title": {
+        "segmentId": "m58802:note-title:fs-id1172101975536-title",
+        "text": "Part 1"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1172099515608",
+          "segmentId": "m58802:para:fs-id1172099515608"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172099500770",
+          "segmentId": "m58802:para:fs-id1172099500770"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172102053638",
+          "segmentId": "m58802:para:fs-id1172102053638"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "OSC_Microbio_05_01_ringworm",
+      "caption": {
+        "segmentId": "m58802:caption:OSC_Microbio_05_01_ringworm-caption"
+      },
+      "media": {
+        "id": "fs-id1172099478027",
+        "alt": "Two photos of a rash on skin, the first of a large raised grayish ring, and the second of a raised red ring.",
+        "src": "../../media/OSC_Microbio_05_01_ringworm.png",
+        "mimeType": "image/png"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-id1172099877853",
+      "segmentId": "m58802:para:fs-id1172099877853"
+    },
+    {
+      "type": "figure",
+      "id": "OSC_Microbio_05_01_giardia",
+      "caption": {
+        "segmentId": "m58802:caption:OSC_Microbio_05_01_giardia-caption"
+      },
+      "media": {
+        "id": "fs-id1172102112332",
+        "alt": "a) A micrograph of kite-shaped cells. B) a single triangular cell with multiple flagella.",
+        "src": "../../media/OSC_Microbio_05_01_giardia.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172101803506",
+      "class": null,
+      "title": {
+        "segmentId": "m58802:title:fs-id1172101803506-title",
+        "text": "Characteristics of Protists"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1172102150516",
+          "segmentId": "m58802:para:fs-id1172102150516"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172099718040",
+          "segmentId": "m58802:para:fs-id1172099718040"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172101802095",
+          "segmentId": "m58802:para:fs-id1172101802095"
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_01_Trophozoit",
+          "caption": {
+            "segmentId": "m58802:caption:OSC_Microbio_05_01_Trophozoit-caption"
+          },
+          "media": {
+            "id": "fs-id1172099536063",
+            "alt": "Eimera life cycle. Envronment sporogony is the process of sporulation occruing outside the host; this requires several days and oxygen. A non-infectous unsporulated oocyst becomes an infectious sporulated oocyst. These enter the gut when swallowed and begin the proess of asexual schizogony. Oocsts realease sporocyts which release sporozoites. Sporozoites invate gut cells and form trophozoites. Trophozoites undergo schizogony (asexual reproduction) to form schizont which releases merozoites. Merozoites can reinfect and become trphozoites again or continue with sezual gametogon where the maerozoites form male and female gamets. The gamees undergo syngamy (sexual reproduction) to form a developing oocyst which mautres into an unsporulated non-infectious oocyst. This brings us back to the beginning of the environment sporogony stage of the cycle.",
+            "src": "../../media/OSC_Microbio_05_01_Trophozoit.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172102002036",
+          "segmentId": "m58802:para:fs-id1172102002036"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172101669261",
+          "segmentId": "m58802:para:fs-id1172101669261"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172101754933",
+          "segmentId": "m58802:para:fs-id1172101754933"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172099482905",
+          "segmentId": "m58802:para:fs-id1172099482905"
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172101797316",
+          "segmentId": "m58802:para:fs-id1172101797316"
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_01_locom",
+          "caption": {
+            "segmentId": "m58802:caption:OSC_Microbio_05_01_locom-caption"
+          },
+          "media": {
+            "id": "fs-id1172101883383",
+            "alt": "a) Paramecium cell with short strands on the outside labeled cilia. An indent in the outer layer is labeled cytostome. A sphere inside the cell at the base of the cytostome is labeled cytoproct. A star shaped structure inside the cell is labeled contractile vacuole. B) Amoeba cell with projections on the outside labeled pseudopods. The outer layer of the cell is labeled ectoplasm and the inner layer is labeled endoplasm. A sphere inside the cell is labeled contractile vacuole. C) Euglena with a single long flagellum on the outside. The outer layer of the cell is labeled etoplasm, the inner layer is labeled endoplasm. A star shaped structure is labeled contractile vacuole.",
+            "src": "../../media/OSC_Microbio_05_01_locom.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-id1172099724606",
+          "class": "microbiology check-your-understanding",
+          "title": null,
+          "content": []
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172101911146",
+      "class": null,
+      "title": {
+        "segmentId": "m58802:title:fs-id1172101911146-title",
+        "text": "Taxonomy of Protists"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-id1172101906894",
+          "class": null,
+          "title": {
+            "segmentId": "m58802:title:fs-id1172101906894-title",
+            "text": "Amoebozoa"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1172102082555",
+              "segmentId": "m58802:para:fs-id1172102082555"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1172101803193",
+              "segmentId": "m58802:para:fs-id1172101803193"
+            },
+            {
+              "type": "figure",
+              "id": "OSC_Microbio_05_01_slime",
+              "caption": {
+                "segmentId": "m58802:caption:OSC_Microbio_05_01_slime-caption"
+              },
+              "media": {
+                "id": "fs-id1172099512959",
+                "alt": "a) A micrograph wshwoing a circular dome with long branches emanating outward. B) A photograph showing a yellow structure that looks like foam on a branch. ",
+                "src": "../../media/OSC_Microbio_05_01_slime.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "figure",
+              "id": "OSC_Microbio_05_01_CellularLC",
+              "caption": {
+                "segmentId": "m58802:caption:OSC_Microbio_05_01_CellularLC-caption"
+              },
+              "media": {
+                "id": "fs-id1172099470988",
+                "alt": "A mature fruiting body produces a tall stalk with a sphere that generates spores via meiosis. The mature fruiting body releases spores. The haploid spores germinate and give rise to amoeba which divide to form more individual cells. Two amoeba fuse to form a zygote. The zygoe can grow and undergo meiosis and multiple rounds of mitosis. The new haploid amoeba are releases. Fertilization produces amoebas that aggregate into a structure called a slug. The slug migrates at a rate of 2 mm per hour. The migration stops the aggregate forms a fruiting body at the end of a stalk. This brings us back to the fruiting body in the life cycle.",
+                "src": "../../media/OSC_Microbio_05_01_CellularLC.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "figure",
+              "id": "OSC_Microbio_05_01_PlasmodiLC",
+              "caption": {
+                "segmentId": "m58802:caption:OSC_Microbio_05_01_PlasmodiLC-caption"
+              },
+              "media": {
+                "id": "fs-id1172099408793",
+                "alt": "A mature plasmodium (multinucleated free-flowing mass of protoplasm) can produce sclerotium (small cells) in a dry habitat. The mature plasmodium also produces diploid sporangia which produces haploid spores via meiosis. The mature sporangium releases mature spores which germinate. Germination gives rise to cells that can convert between ameboid and flagellated forms. Plasmogomy is the fusion of cytoplasm of two cells. Karyogamy is the fusion of nuclei and leads to the production of a diploid zygote. The zygote divides to form a multi-nucleated feeding plasmodium. This takes us back to the beginning of plasmodium stage of the life cycle.",
+                "src": "../../media/OSC_Microbio_05_01_PlasmodiLC.jpg",
+                "mimeType": "image/jpeg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-id1172101801712",
+          "class": null,
+          "title": {
+            "segmentId": "m58802:title:fs-id1172101801712-title",
+            "text": "Chromalveolata"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1172099902528",
+              "segmentId": "m58802:para:fs-id1172099902528"
+            },
+            {
+              "type": "figure",
+              "id": "OSC_Microbio_05_01_apical",
+              "caption": {
+                "segmentId": "m58802:caption:OSC_Microbio_05_01_apical-caption"
+              },
+              "media": {
+                "id": "fs-id1172102149626",
+                "alt": "a) A diagram of an apicomlexan protist. The cell is a long oval with an apical complex at the apical end. B) A micrograph of the protist showing a long oval.",
+                "src": "../../media/OSC_Microbio_05_01_apical.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-id1172102110397",
+              "segmentId": "m58802:para:fs-id1172102110397"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1172099721213",
+              "segmentId": "m58802:para:fs-id1172099721213"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1172101775199",
+              "segmentId": "m58802:para:fs-id1172101775199"
+            },
+            {
+              "type": "figure",
+              "id": "OSC_Microbio_05_01_balan",
+              "caption": {
+                "segmentId": "m58802:caption:OSC_Microbio_05_01_balan-caption"
+              },
+              "media": {
+                "id": "fs-id1172099756364",
+                "alt": "A micrograph of an oval cell with many short projections.",
+                "src": "../../media/OSC_Microbio_05_01_balan.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "figure",
+              "id": "OSC_Microbio_05_01_param",
+              "caption": {
+                "segmentId": "m58802:caption:OSC_Microbio_05_01_param-caption"
+              },
+              "media": {
+                "id": "fs-id1172099746472",
+                "alt": "Paramecium cell with short strands on the outside labeled cilia. An indent in the outer layer is labeled cytostome. The outside edge of the cytostome is an indent in the cell labeled oral groove. A sphere inside the cell at the base of the cytostome is labeled food vacuole, another nearby sphere is labeled cytoproct. A smaller opening in the cell is labeled anal pore. A star shaped structure inside the cell is labeled contractile vacuole. A large oval is labeled macronucluus and a smaller oval is labeled micronucleus.",
+                "src": "../../media/OSC_Microbio_05_01_param.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "figure",
+              "id": "OSC_Microbio_05_01_stentor",
+              "caption": {
+                "segmentId": "m58802:caption:OSC_Microbio_05_01_stentor-caption"
+              },
+              "media": {
+                "id": "fs-id1172099835732",
+                "alt": "A micrograph of long trumpet shaped cells. The wide part of the cell has an oval structure labeled cytostome and small projections labeled cilia.",
+                "src": "../../media/OSC_Microbio_05_01_stentor.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-id1172099836701",
+              "segmentId": "m58802:para:fs-id1172099836701"
+            },
+            {
+              "type": "figure",
+              "id": "OSC_Microbio_05_01_watermold",
+              "caption": {
+                "segmentId": "m58802:caption:OSC_Microbio_05_01_watermold-caption"
+              },
+              "media": {
+                "id": "fs-id1172101900747",
+                "alt": "A photograph of an insect covered in white fuzz labeled water mold.",
+                "src": "../../media/OSC_Microbio_05_01_watermold.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "note",
+              "id": "fs-id1172099736477",
+              "class": "microbiology link-to-learning",
+              "title": null,
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-id1172101946542",
+                  "segmentId": "m58802:para:fs-id1172101946542"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-id1172099498601",
+                  "segmentId": "m58802:para:fs-id1172099498601"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-id1172099567448",
+          "class": null,
+          "title": {
+            "segmentId": "m58802:title:fs-id1172099567448-title",
+            "text": "Excavata"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1172101847862",
+              "segmentId": "m58802:para:fs-id1172101847862"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1172099922504",
+              "segmentId": "m58802:para:fs-id1172099922504"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1172101791180",
+              "segmentId": "m58802:para:fs-id1172101791180"
+            },
+            {
+              "type": "figure",
+              "id": "OSC_Microbio_05_01_Euglenozoa",
+              "caption": {
+                "segmentId": "m58802:caption:OSC_Microbio_05_01_Euglenozoa-caption"
+              },
+              "media": {
+                "id": "fs-id1172099455662",
+                "alt": "An oval cell with a long flagellum at one end near the photoreceptor (paraflagellar body). A large oval inside the cell is labeled nucleus and contains a smaller oval labeled nucleolus. Green structures are labeled chloroplasts. A red circle is labeled stigma (eyespot).Another sphere is labeled contractile vacuole and a large sphere is labeled pellicle bands. Gray stuructures are labeled polysaccharides stored by photosynthesis.",
+                "src": "../../media/OSC_Microbio_05_01_Euglenozoa.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "figure",
+              "id": "OSC_Microbio_05_01_tryplife",
+              "caption": {
+                "segmentId": "m58802:caption:OSC_Microbio_05_01_tryplife-caption"
+              },
+              "media": {
+                "id": "fs-id1172099611036",
+                "alt": "The life cycle of Trypanosoma brucei takes place in both tsetse fly and humans. When the tsetse fly takes a blood meal it inject T. brucei into the bloodstream of a human. There the T. brucei multiplies by binary fission in blood, lymph, and spinal fluid. When another tsetse fly takes a blood meal it ingests T. brucei which multiplies by binary fission in the midgut of the fly. The T. brucei then transforms into an infectious stage which enters the salivary glands and multiplies. This can then be spread to another human.",
+                "src": "../../media/OSC_Microbio_05_01_tryplife.jpg",
+                "mimeType": "image/jpeg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-id1172101999615",
+              "segmentId": "m58802:para:fs-id1172101999615"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1172099488995",
+              "segmentId": "m58802:para:fs-id1172099488995"
+            },
+            {
+              "type": "note",
+              "id": "fs-id1172102121338",
+              "class": "microbiology eye-on-ethics",
+              "title": {
+                "segmentId": "m58802:note-title:fs-id1172102121338-title",
+                "text": "Neglected Parasites"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-id1172097144570",
+                  "segmentId": "m58802:para:fs-id1172097144570"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-id1172102135224",
+                  "segmentId": "m58802:para:fs-id1172102135224"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-id1172102120468",
+                  "segmentId": "m58802:para:fs-id1172102120468"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-id1172102070987",
+                  "segmentId": "m58802:para:fs-id1172102070987"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-id1172099883921",
+          "segmentId": "m58802:para:fs-id1172099883921"
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_01_taxon",
+          "caption": {
+            "segmentId": "m58802:caption:OSC_Microbio_05_01_taxon-caption"
+          },
+          "media": {
+            "id": "fs-id1172102062880",
+            "alt": "A branching tree diagram with common eukaryotic ancestor at the base. This leads to 5 branches. The top branch branches are classified as Excavata which is divided into 3 groups: diplomonads, parabasalids, and euglenozoans. The next branch splits into 2 branches: alveolates, and stramenopiles. The alveolates are divided into dinoflagellates, apicomplexans and ciliates. The stramenopiles are divided into diatoms, golden algae, brown algae and oomyces. All the alveotate and stramenopile groups are labeled Chromalveolata. The next branch divides into cercozoans, forams and radiolarians. These are all labeled rhizaria. The next branch divides into the red algae, chlorophytes (green algae), charophytes (green algae) and land plant. Thesea re all labeldd archaeplastidia. The next branch splits into 2. The top branch divides into slime molds, gymnamoebas and entamoebas. These are all labeled amoebozoa. The bottom branch divides into nucleariids, fungi, choanoflagellates, and animals. These are all labeled opisthokonta.",
+            "src": "../../media/OSC_Microbio_05_01_taxon.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_01_groups1",
+          "caption": null,
+          "media": {
+            "id": "fs-id1172101731446",
+            "alt": "Table titled: the eukaryote supergroups and some example species. There are 5 columns in the table: supergroup, subgroup, distinguishing features, examples and clinical notes. Supergroup Exacavata is divided into 3 subgroups: fornicate, parabasalids, euglenozoans. Fornicata have the following distinguishing features: form cysts, pair of equal nuclei, no mitochondria, often parasitic, four free flagella. An example is giardia lamblia which causes giardiasis. Parabasalids have the following distinguishing features: no mitochondria, four free flagella, one attached flagellum, no cysts, parasitic or symbiotic, basal bodies, kinetoplastids. An example is Trichomonas which causes trichomoniasis. Euglenozoans have the following distinguishing features: photosynthetic or heterotrophic, flagella. Examples include: Euglena which does not cause disease, Trypanosoma which causes African sleeping sickness and Chagas disease, Leishmanial which causes leishmaniasis. The supergroup Chromalveolata is divided into 4 subgroups: dinoflagellates, apicomplexans, ciliates, and oomyctes/peronosporomycetes. Dinoflagellates have the following distinguishing features: cellulose theca and two dissimilar flagella. Examples include Gonyaulax which causes red tides, Alexandrium which causes paralytic shellfish poisoning, and Pfiesteria which causes harmful algal blooms. Apicomplexans have the following distinguishing features: intracellular parasite and apical organelles. Examples include Plasmodium which causes malaria, Cryptosporidium which causes cryptosporidiosis, Theileria (Babesia) which causes babeiosis, and Toxoplasma which causes Tosoplasmosis. Ciliates have the characteristic of cilia. Examples include Balantidium which causes Balantidiasis. Paramecium and Stentor which do not cause diseas. Oomycetes / peronosporomycetes have the following distinguishing features: water molds, generally diploid, cellulose cell wall. An example is Phytophthora which causes diseases in crops.",
+            "src": "../../media/OSC_Microbio_05_01_groups1.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_01_groups2",
+          "caption": null,
+          "media": {
+            "id": "fs-id1172101853421",
+            "alt": "Table titled: the eukaryote supergroups and some example species. There are 5 columns in the table: supergroup, subgroup, distinguishing features, examples and clinical notes. The supergroup Rhizaria is divided into 3 subroups: Foraminifera, Radiolaria, and Cerozoa. Foraminifer have the following distinguishing features: amoeboid, thereadlike pseudopodia, calclium carbonate shells. An example is Astrolonche which does not cause disease. Radiolaria have the following distinguishing features: amoeboid, threadlike pseudopodia, silica shells. An example is Actinomma which does not cause disease. Cerozoa have the following distinguishing features: amoeboid, threadlike pseudopodia, complex shells, parasitic forms. Examples include Spongospora subterranean which causes powdery scab (potato disease) and Plasmodiophora brassicae which causes cabbage clubroot. Supergroup Archaeplastida is divided into 2 groups: red algae and Chlorophytes. Red algae have the following distinguishing features: chlorophyll a, phycoerythrin, phycocyanin, flodean starch, agar in cell walls. Examples include Gelidium and Gracilaria which are sources of agar. Chlorophytes have the following distinguishing features: chlorphyll a, chlorophyll b, cellulose cell walls, starch storage. Examples include Acetabularia and Ulva which do not cause disease. Supergroup Amoebozoa is divided into 2 subgroups: slime molds and entamoebas. Slime molds have plasmodial and cellular forms. An example is Dictyostelium which does not cause disease. Entamoebas have the following distinguishing features: trophozoites and form cysts. Examples include Entamoeba which causes Amoebiasis, Naegleria which causes Primary amoebic meningoencephalitis, and Acanthamoeba which causes Keratitis, and granulomatous ameoebic encephalitis. Supergroup Opisthokonta is divided into subroups fungin and animals. Fungi have the following distinguishing features: chitin cell walls, unicellular or multicellular, often hyphae. Examples include Zygomyctes which cause zygomycosis, Asomycetes which cause Candidiasis, Basidiomycetes which cause Cryptococcosis, and Microsporidia which causes microsporidiosis. Animals have the following distinguishing features: multicellular heterotrophs with no cell walls. Examples include Nematoda which cause Trichonosis, hookworm and pinworm infections, Termatoda which causes Schistosomiais, and Cestoda which causes tapeworm infection.",
+            "src": "../../media/OSC_Microbio_05_01_groups2.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-id1172101754429",
+          "class": "microbiology check-your-understanding",
+          "title": null,
+          "content": []
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172099456222",
+      "class": "summary",
+      "title": {
+        "segmentId": "m58802:title:fs-id1172099456222-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "list",
+          "id": "fs-id1172099410086",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": "bullet",
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m58802:item:fs-id1172099410086-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m58802:item:fs-id1172099410086-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m58802:item:fs-id1172099410086-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m58802:item:fs-id1172099410086-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m58802:item:fs-id1172099410086-item-5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172099683808",
+      "class": "multiple-choice",
+      "title": {
+        "segmentId": "m58802:title:fs-id1172099683808-title",
+        "text": "Multiple Choice"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1172099484030",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172101672071",
+                "segmentId": "m58802:problem:fs-id1172101672071"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172099723002",
+                "segmentId": "m58802:solution:fs-id1172099723002"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1172099454564",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172099767258",
+                "segmentId": "m58802:problem:fs-id1172099767258"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172099650385",
+                "segmentId": "m58802:solution:fs-id1172099650385"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172097200304",
+      "class": "fill-in-the-blank",
+      "title": {
+        "segmentId": "m58802:title:fs-id1172097200304-title",
+        "text": "Fill in the Blank"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1172099619157",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172101840097",
+                "segmentId": "m58802:problem:fs-id1172101840097"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172102021170",
+                "segmentId": "m58802:solution:fs-id1172102021170"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1172097144486",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172101895478",
+                "segmentId": "m58802:problem:fs-id1172101895478"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172099762752",
+                "segmentId": "m58802:solution:fs-id1172099762752"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172101731480",
+      "class": "short-answer",
+      "title": {
+        "segmentId": "m58802:title:fs-id1172101731480-title",
+        "text": "Short Answer"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1172099702501",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172101758823",
+                "segmentId": "m58802:problem:fs-id1172101758823"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1172102142793",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172099568099",
+                "segmentId": "m58802:problem:fs-id1172099568099"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1172099715204",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172101689357",
+                "segmentId": "m58802:problem:fs-id1172101689357"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1172102063857",
+      "class": "critical-thinking",
+      "title": {
+        "segmentId": "m58802:title:fs-id1172102063857-title",
+        "text": "Critical Thinking"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1172099476885",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172101775767",
+                "segmentId": "m58802:problem:fs-id1172101775767"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "figure",
+          "id": "OSC_Microbio_05_01_artconn_img",
+          "caption": {
+            "segmentId": "m58802:caption:OSC_Microbio_05_01_artconn_img-caption"
+          },
+          "media": {
+            "id": "fs-id1172101906034",
+            "alt": "A micrograph of an oval cell with a large sphere in the center and many short hair-like projections on the outside.",
+            "src": "../../media/OSC_Microbio_05_01_artconn_img.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1172097200892",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172102085448",
+                "segmentId": "m58802:problem:fs-id1172102085448"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1172102104325",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1172102140288",
+                "segmentId": "m58802:problem:fs-id1172102140288"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "sectionOrder": null
+}

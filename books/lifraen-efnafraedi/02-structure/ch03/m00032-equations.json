@@ -1,0 +1,54 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>H</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mrow><m:mtext>C</m:mtext><m:mtext style=\"color: #E00087\">═</m:mtext></m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{{{\\text{H}}}_{2}{\\text{C}\\text{═}}{{\\text{CH}}}_{2}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>–</m:mtext><m:mtext>C</m:mtext><m:mtext style=\"color: #E00087\">≡</m:mtext><m:mtext>C</m:mtext><m:mtext>–</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{–}\\text{C}\\text{≡}\\text{C}\\text{–}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mtext>HC</m:mtext><m:mtext style=\"color: #E00087\">≡</m:mtext><m:mtext>CH</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{HC}\\text{≡}\\text{CH}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mtext>–</m:mtext><m:mtext>C</m:mtext><m:mtext style=\"color: #E00087\">≡</m:mtext><m:mtext style=\"color: #E00087\">N</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{–}\\text{C}\\text{≡}\\text{N}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>C</m:mtext><m:mtext style=\"color: #E00087\">≡</m:mtext><m:mtext style=\"color: #E00087\">N</m:mtext></m:mrow></m:math>",
+    "latex": "{{{\\text{CH}}}_{3}\\text{C}\\text{≡}\\text{N}}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:mtext>C=O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C=O}}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:mtext>C=O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C=O}}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:mtext>C=O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C=O}}"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mrow><m:mtext>C=O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C=O}}"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mrow><m:mtext>C=O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C=O}}"
+  },
+  "math-11": {
+    "mathml": "<m:math><m:mrow><m:mtext>C=O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C=O}}"
+  },
+  "math-12": {
+    "mathml": "<m:math><m:mrow><m:mtext>C=O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C=O}}"
+  },
+  "math-13": {
+    "mathml": "<m:math><m:mrow><m:mtext>C=O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{C=O}}"
+  }
+}

@@ -17,6 +17,7 @@ const { spawn } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 const crypto = require('crypto');
+const log = require('../lib/logger');
 const pipelineStatus = require('./pipelineStatusService');
 
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
@@ -581,7 +582,7 @@ function computeSourceHash(book, chapter) {
       .digest('hex')
       .substring(0, 16);
   } catch (err) {
-    console.error('computeSourceHash failed:', err.message);
+    log.error({ err }, 'computeSourceHash failed');
     return null;
   }
 }
@@ -692,7 +693,7 @@ function advanceChapterStatus(book, chapter, stage, extra = {}) {
 
     pipelineStatus.transitionStage(book, chapterNum, stage, 'complete', null, notes);
   } catch (err) {
-    console.error(`Auto-advance status failed for ch${chapter} ${stage}:`, err.message);
+    log.error({ err, chapter, stage }, 'Auto-advance status failed');
   }
 }
 
@@ -709,7 +710,7 @@ function resetChapterStage(book, chapter, stage) {
     const chapterNum = chapter === 'appendices' ? -1 : Number(chapter);
     pipelineStatus.transitionStage(book, chapterNum, stage, 'not_started');
   } catch (err) {
-    console.error(`Reset stage failed for ch${chapter} ${stage}:`, err.message);
+    log.error({ err, chapter, stage }, 'Reset stage failed');
   }
 }
 
@@ -785,7 +786,7 @@ function updateSourceTracking(slug) {
 
     db.close();
   } catch (err) {
-    console.error(`updateSourceTracking failed for ${slug}:`, err.message);
+    log.error({ err, slug }, 'updateSourceTracking failed');
   }
 }
 

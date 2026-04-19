@@ -1,0 +1,382 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-09T22:16:01.243Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTBRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b2d4ae8dff64bb7be0101a1c3eb51376a95e12b1",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTBRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b2d4ae8dff64bb7be0101a1c3eb51376a95e12b1/Figure%2002_99_OChem-02-EC-030a_80485-02-u067_P-4Hex_img.jpg"
+    },
+    {
+      "created_at": "2023-08-09T22:16:01.247Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--52dca12c3e785cb462c9a277efbe119ef1b36315",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--52dca12c3e785cb462c9a277efbe119ef1b36315/Figure%2002_99_OChem-02-EC-030b_80485-02-u067_P-NHMinus_img.jpg"
+    },
+    {
+      "created_at": "2023-08-09T22:16:01.250Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaThRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ae70723529717bfd0b18df06e043365791c98179",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaThRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ae70723529717bfd0b18df06e043365791c98179/Figure%2002_99_OChem-02-EC-030c_80485-02-u067_P-CHMinus_img.jpg"
+    },
+    {
+      "created_at": "2023-08-09T22:16:01.253Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8c431c0ae41e22afdc7bd0c97e601e1f9329219a",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8c431c0ae41e22afdc7bd0c97e601e1f9329219a/OChem_02_EC_030a.jpg"
+    },
+    {
+      "created_at": "2023-08-09T22:16:01.255Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDhRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8d73e3011ebe597444e6e489a2034892634d4cf3",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDhRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8d73e3011ebe597444e6e489a2034892634d4cf3/OChem_02_EC_030b.jpg"
+    },
+    {
+      "created_at": "2023-08-09T22:16:01.257Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3c157a5d81967b23e9057a8b12278a9d865441aa",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3c157a5d81967b23e9057a8b12278a9d865441aa/OChem_02_EC_030c.jpg"
+    },
+    {
+      "created_at": "2023-08-09T22:16:01.260Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTBRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--43b8beffb31585026fea1dc229a87e58564d7db9",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTBRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--43b8beffb31585026fea1dc229a87e58564d7db9/OChem_02_EC_030a.jpg"
+    },
+    {
+      "created_at": "2023-08-09T22:16:01.262Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9445a53799c87455dcb65b9060a6911a742e35a2",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9445a53799c87455dcb65b9060a6911a742e35a2/OChem_02_EC_030b.jpg"
+    },
+    {
+      "created_at": "2023-08-09T22:16:01.264Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcThRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b5386e04ab01a0ab686a2613ace6dfd1ff46e8c9",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcThRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b5386e04ab01a0ab686a2613ace6dfd1ff46e8c9/OChem_02_EC_030c.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:0f2bb8ee-4eda-4995-878f-775a16b4bf97",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:2-12-noncovalent-interactions-between-molecules"
+  ],
+  "uuid": "709f5057-25e0-42e0-bed6-a81022d7b876",
+  "group_uuid": "d6b65458-84f6-46bf-aa70-1bf7b35c94b7",
+  "number": 36176,
+  "version": 9,
+  "uid": "36176@9",
+  "published_at": "2023-08-09T22:16:06.597Z",
+  "nickname": "02-99-OC-AP64",
+  "solutions_are_public": false,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "Use the p<i>K</i><sub>a</sub> table in Appendix B to determine in which direction the equilibrium is favored.",
+  "questions": [
+    {
+      "id": 351753,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTBRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--43b8beffb31585026fea1dc229a87e58564d7db9/OChem_02_EC_030a.jpg\" alt=\"In a reversible reaction, phenol reacts with benzene bonded to carboxylate ion to form phenoxide ion and benzoic acid.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 351754,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9445a53799c87455dcb65b9060a6911a742e35a2/OChem_02_EC_030b.jpg\" alt=\"In a reversible reaction, propanol reacts with a negatively charged amine to form a 3-carbon chain bonded to an oxygen ion and ammonia.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 351755,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcThRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b5386e04ab01a0ab686a2613ace6dfd1ff46e8c9/OChem_02_EC_030c.jpg\" alt=\"In a reversible reaction, a methyl ion reacts with nitromethane to form methane and a methylene group with a negative charge bonded to a nitro group.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    9,
+    8,
+    7,
+    6,
+    5,
+    4,
+    3,
+    2,
+    1
+  ]
+}

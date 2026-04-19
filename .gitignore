@@ -44,6 +44,9 @@ npm-debug.log*
 dist/
 build/
 
+# Licensed data files (BÍN, etc.) — download separately per license terms
+tools/data/
+
 # Pipeline runtime output (sessions database, processed files)
 pipeline-output/
 

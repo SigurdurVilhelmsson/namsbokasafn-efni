@@ -42,6 +42,14 @@ import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, MODULE_OPTION } from './lib/par
 import { compareTagCounts } from './cnxml-fidelity-check.js';
 import { extractGlossary } from './lib/cnxml-parser.js';
 import { updateTranslationErrors } from './lib/update-translation-errors.js';
+import {
+  parseCnxmlFragment,
+  serializeCnxmlFragment,
+  replaceParaContent as replaceParaContentDom,
+  replaceListItems as replaceListItemsDom,
+  removeElementsByTag,
+  insertCnxmlBefore,
+} from './lib/cnxml-dom.js';
 
 // =====================================================================
 // CONFIGURATION
@@ -988,9 +996,8 @@ function reverseInlineMarkup(
   // Detect if this segment was API-translated by looking for new-format markers.
   // API segments use {{i}}, {{b}}, {{term}}, {{fn}}, [[sub:]], [[sup:]] — so legacy
   // patterns (*text*, ~text~, ^text^) would be false positives from translated content.
-  const hasApiMarkers = /\{\{[ib]\}\}|\{\{term\}\}|\{\{fn\}\}|\[\[sub:|\[\[sup:|\[\[i:|\[\[b:/.test(
-    text
-  );
+  const hasApiMarkers =
+    /\{\{[ib]\}\}|\{\{[ib]:|\{\{term\}\}|\{\{fn\}\}|\[\[sub:|\[\[sup:|\[\[i:|\[\[b:/.test(text);
 
   // Remove backslash escapes from MT (e.g., \[\[MATH:1\]\] → [[MATH:1]])
   result = result.replace(/\\\[/g, '[');
@@ -1050,34 +1057,47 @@ function reverseInlineMarkup(
     return match; // Keep placeholder if not found
   });
 
-  // Restore API-safe [[sub:content]] and [[sup:content]] placeholders to CNXML.
-  // These bracket placeholders survive the Málstaður API (like [[MATH:N]]).
-  // Handle nested emphasis markers {{i}}text{{/i}} inside the content.
-  result = result.replace(/\[\[sub:([^\]]+)\]\]/g, (match, content) => {
-    const inner = content
-      .replace(/\[\[b:([^\]]+)\]\]/g, '<emphasis effect="bold">$1</emphasis>')
-      .replace(/\[\[i:([^\]]+)\]\]/g, '<emphasis effect="italics">$1</emphasis>')
-      .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '<emphasis effect="bold">$1</emphasis>')
-      .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '<emphasis effect="italics">$1</emphasis>');
-    return `<sub>${inner}</sub>`;
-  });
-  result = result.replace(/\[\[sup:([^\]]+)\]\]/g, (match, content) => {
-    const inner = content
-      .replace(/\[\[b:([^\]]+)\]\]/g, '<emphasis effect="bold">$1</emphasis>')
-      .replace(/\[\[i:([^\]]+)\]\]/g, '<emphasis effect="italics">$1</emphasis>')
-      .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '<emphasis effect="bold">$1</emphasis>')
-      .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '<emphasis effect="italics">$1</emphasis>');
-    return `<sup>${inner}</sup>`;
-  });
+  // ── Bracket markers: innermost-first resolution ───────────────────
+  // Nested bracket markers like [[sup:[[i:x]]−1]] and [[i:[[sub:p]]]]
+  // require processing from the inside out. Each iteration converts
+  // leaf-level markers — those whose content has no [[ or ]] sequences.
+  // Single brackets are allowed (e.g., chemical notation [NO], [O₃]).
+  // After conversion, outer markers become leaf-level for the next iteration.
+  let bracketChanged = true;
+  while (bracketChanged) {
+    const before = result;
 
-  // Restore API-safe [[i:text]] and [[b:text]] bracket emphasis markers to CNXML.
-  // These match the proven [[sup:]]/[[sub:]] pattern. Must come BEFORE {{i}}/{{b}}
-  // because [[i:]] content might contain nested {{i}} from older extraction formats.
-  result = result.replace(/\[\[i:([^\]]+)\]\]/g, '<emphasis effect="italics">$1</emphasis>');
-  result = result.replace(/\[\[b:([^\]]+)\]\]/g, '<emphasis effect="bold">$1</emphasis>');
+    // Leaf-level emphasis: [[i:text]] and [[b:text]] where text has no [[ or ]]
+    result = result.replace(
+      /\[\[i:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g,
+      '<emphasis effect="italics">$1</emphasis>'
+    );
+    result = result.replace(
+      /\[\[b:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g,
+      '<emphasis effect="bold">$1</emphasis>'
+    );
+
+    // Leaf-level sub/sup: [[sub:content]] and [[sup:content]] where content has no [[ or ]].
+    // Inner legacy {{i}}/{{b}} handled for backward compat with older segments.
+    result = result.replace(/\[\[sub:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g, (match, content) => {
+      const inner = content
+        .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '<emphasis effect="bold">$1</emphasis>')
+        .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '<emphasis effect="italics">$1</emphasis>');
+      return `<sub>${inner}</sub>`;
+    });
+    result = result.replace(/\[\[sup:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g, (match, content) => {
+      const inner = content
+        .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '<emphasis effect="bold">$1</emphasis>')
+        .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '<emphasis effect="italics">$1</emphasis>');
+      return `<sup>${inner}</sup>`;
+    });
+
+    bracketChanged = result !== before;
+  }
 
   // Restore API-safe {{i}}text{{/i}} and {{b}}text{{/b}} emphasis markers to CNXML.
   // Legacy paired marker format — kept for backward compatibility.
+  // (Runs after bracket loop since bracket content may contain legacy markers)
   result = result.replace(
     /\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g,
     '<emphasis effect="bold">$1</emphasis>'
@@ -1086,6 +1106,11 @@ function reverseInlineMarkup(
     /\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g,
     '<emphasis effect="italics">$1</emphasis>'
   );
+
+  // Handle hybrid {{i:text}} format — API occasionally converts [[brackets]]
+  // to {{braces}}. Same self-contained pattern, different delimiters.
+  result = result.replace(/\{\{i:([^}]+)\}\}/g, '<emphasis effect="italics">$1</emphasis>');
+  result = result.replace(/\{\{b:([^}]+)\}\}/g, '<emphasis effect="bold">$1</emphasis>');
 
   // IMPORTANT: Extract MathML blocks before applying term wrapping to prevent
   // term markers from being applied inside MathML (which causes malformed XML)
@@ -1476,13 +1501,15 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
   lines.push('');
   lines.push('<content>');
 
-  // Build context for tracking figures handled inside notes (to avoid duplicates)
+  // Build context for tracking figures handled inside notes/examples (to avoid duplicates)
   const figureCaptions = {};
   collectFigureCaptions(structure.content, figureCaptions);
   const figuresHandledInNotes = new Set();
+  const figuresHandledInContainers = new Set();
   const ctx = {
     figureCaptions,
     figuresHandledInNotes,
+    figuresHandledInContainers,
     inlineMedia: structure.inlineMedia || [],
     inlineTables: structure.inlineTables || [],
     imageMapping: options.imageMapping || new Map(),
@@ -1638,11 +1665,11 @@ function buildElement(element, getSeg, equations, originalCnxml, ctx) {
     case 'table':
       return buildTable(element, getSeg, originalCnxml);
     case 'example':
-      return buildExample(element, getSeg, equations, originalCnxml);
+      return buildExampleDom(element, getSeg, equations, originalCnxml, ctx);
     case 'exercise':
-      return buildExercise(element, getSeg, equations, originalCnxml);
+      return buildExerciseDom(element, getSeg, equations, originalCnxml, ctx);
     case 'note':
-      return buildNote(element, getSeg, equations, originalCnxml, ctx);
+      return buildNoteDom(element, getSeg, equations, originalCnxml, ctx);
     case 'equation':
       return buildEquation(element, equations, originalCnxml);
     case 'list':
@@ -1726,6 +1753,11 @@ function buildSection(element, getSeg, equations, originalCnxml, ctx) {
 function buildFigure(element, getSeg, originalCnxml, ctx) {
   // Skip figures that were already translated in-place inside a note
   if (ctx && ctx.figuresHandledInNotes && ctx.figuresHandledInNotes.has(element.id)) {
+    return null;
+  }
+
+  // Skip figures kept inside examples/exercises (same pattern as notes)
+  if (ctx && ctx.figuresHandledInContainers && ctx.figuresHandledInContainers.has(element.id)) {
     return null;
   }
 
@@ -1826,6 +1858,13 @@ function buildTable(element, getSeg, originalCnxml) {
     const match = tablePattern.exec(originalCnxml);
     if (match) {
       let tableCnxml = match[0];
+
+      // Expand self-closing <entry.../> to <entry...></entry> so the
+      // replacement regex can match all entries and cellIdx stays aligned.
+      // Without this, <entry align="left"/> gets mismatched by the regex
+      // (the / becomes part of attributes), consuming the NEXT entry's
+      // </entry> and causing cell misalignment + content duplication.
+      tableCnxml = tableCnxml.replace(/<entry([^>]*?)\/>/g, '<entry$1></entry>');
 
       // Replace entry content with translations
       // This is simplified - a full implementation would need to match entries by position
@@ -1930,6 +1969,16 @@ function replaceListItems(cnxml, listElement, getSeg) {
         const translatedText = getSeg(item.segmentId);
         if (translatedText) {
           const itemIdAttr = item.id ? ` id="${item.id}"` : '';
+          // If the original item wraps content in a <para>, preserve that wrapper.
+          // (paras inside list items are extracted as item segments, not standalone
+          // para segments, but the <para> element must remain in the CNXML.)
+          const paraWrapMatch = originalItem.match(
+            /^<item[^>]*>\s*(<para[^>]*>)[\s\S]*?<\/para>\s*<\/item>$/
+          );
+          if (paraWrapMatch) {
+            const paraOpenTag = paraWrapMatch[1];
+            return `<item${itemIdAttr}>${paraOpenTag}${translatedText}</para></item>`;
+          }
           return `<item${itemIdAttr}>${translatedText}</item>`;
         }
       }
@@ -2145,6 +2194,198 @@ function buildExample(element, getSeg, equations, originalCnxml) {
 }
 
 /**
+ * DOM-based shadow of buildExample.
+ * Same signature, same behavior, but uses DOM manipulation instead of regex.
+ * Comparison-tested against the regex version before deployment.
+ */
+function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
+  if (!element.id) {
+    return buildGenericElement('example', element, getSeg, equations, originalCnxml);
+  }
+
+  // Step 1: Extract example from original CNXML (same regex as buildExample)
+  const examplePattern = new RegExp(
+    `<example\\s+id="${element.id}"[^>]*>[\\s\\S]*?<\\/example>`,
+    'g'
+  );
+  const match = examplePattern.exec(originalCnxml);
+  if (!match) {
+    return buildGenericElement('example', element, getSeg, equations, originalCnxml);
+  }
+
+  // Step 2: Parse into DOM
+  const { doc } = parseCnxmlFragment(match[0]);
+  const exampleEl = doc.getElementById(element.id);
+  if (!exampleEl) return match[0]; // fallback
+
+  // Step 3: Replace para content and list items via DOM.
+  // Track replaced para IDs: if a list contains an already-replaced para,
+  // skip list-item replacement to avoid destroying the para content
+  // (paras are not block-level in the DOM util, so replaceListItems would remove them).
+  const replacedParaIds = new Set();
+
+  // Detect paras that contain <figure> elements in the DOM. These figures were
+  // extracted as [[MEDIA:N]] placeholders during extraction AND as top-level
+  // structure entries. To avoid duplication, we keep the figure in the DOM and
+  // strip the expanded <media> from the segment text before injection.
+  const keptFigureIds = new Set();
+  const parasWithFigures = new Map(); // paraId → Set of figure IDs
+
+  for (const child of element.content || []) {
+    if (child.type !== 'para' || !child.id || !child.segmentId) continue;
+    const paraEl = doc.getElementById(child.id);
+    if (!paraEl) continue;
+    const figures = paraEl.getElementsByTagName('figure');
+    if (figures.length === 0) continue;
+
+    const figIds = new Set();
+    for (let i = 0; i < figures.length; i++) {
+      const figId = figures[i].getAttribute('id');
+      if (figId) {
+        figIds.add(figId);
+        keptFigureIds.add(figId);
+      }
+    }
+    if (figIds.size > 0) parasWithFigures.set(child.id, figIds);
+  }
+
+  let isFirstPara = true;
+
+  for (const child of element.content || []) {
+    if (child.type === 'para' && child.id) {
+      const paraEl = doc.getElementById(child.id);
+      if (!paraEl) {
+        isFirstPara = false;
+        continue;
+      }
+
+      // For paras that contain figures: strip expanded <media> from segment text
+      // so the figure (already in the DOM) isn't duplicated. If the para is
+      // media-only (no other text), skip text injection entirely.
+      if (parasWithFigures.has(child.id)) {
+        const paraText = child.segmentId ? getSeg(child.segmentId) : '';
+        // Strip expanded <media>...</media> from segment text
+        const textWithoutMedia = paraText.replace(/<media\s[^>]*>[\s\S]*?<\/media>/g, '').trim();
+
+        let titleText = '';
+        if (isFirstPara && element.title?.segmentId) {
+          titleText = getSeg(element.title.segmentId) || '';
+        } else if (child.title?.segmentId) {
+          titleText = getSeg(child.title.segmentId) || child.title.text || '';
+        }
+        const titleCnxml = titleText ? `<title>${titleText}</title>` : '';
+        replaceParaContentDom(doc, paraEl, textWithoutMedia, titleCnxml);
+        replacedParaIds.add(child.id);
+        isFirstPara = false;
+        continue;
+      }
+
+      const paraText = child.segmentId ? getSeg(child.segmentId) : '';
+
+      // Check if this para contains a sibling list whose content is already
+      // included in the para's segment (the extraction flattens nested lists
+      // into the para text). Detected by: para text contains expanded math
+      // AND a sibling list is a DOM child of this para.
+      const paraHasExpandedContent = paraText && /<m:math/.test(paraText);
+      let skipParaText = false;
+      if (paraHasExpandedContent) {
+        for (const sibling of element.content || []) {
+          if (sibling !== child && sibling.type === 'list' && sibling.id) {
+            const siblingEl = doc.getElementById(sibling.id);
+            if (siblingEl && isDescendantOf(siblingEl, paraEl)) {
+              // The extraction flattened the nested list into the para segment.
+              // Preserve the list for the list handler — only inject the title.
+              skipParaText = true;
+              break;
+            }
+          }
+        }
+      }
+
+      let titleText = '';
+      if (isFirstPara && element.title?.segmentId) {
+        titleText = getSeg(element.title.segmentId) || '';
+      } else if (child.title?.segmentId) {
+        titleText = getSeg(child.title.segmentId) || child.title.text || '';
+      }
+
+      const titleCnxml = titleText ? `<title>${titleText}</title>` : '';
+      replaceParaContentDom(doc, paraEl, skipParaText ? '' : paraText, titleCnxml);
+      replacedParaIds.add(child.id);
+      isFirstPara = false;
+    }
+
+    if (child.type === 'list' && child.id) {
+      const listEl = doc.getElementById(child.id);
+      if (listEl && child.items) {
+        // Guard: skip if list contains paras we already replaced
+        const listHasReplacedParas = [...replacedParaIds].some((paraId) => {
+          const paraEl = doc.getElementById(paraId);
+          return paraEl && isDescendantOf(paraEl, listEl);
+        });
+        if (!listHasReplacedParas) {
+          replaceListItemsDom(doc, listEl, child.items, getSeg);
+        }
+      }
+    }
+  }
+
+  // Step 4a: Also keep figures that are direct children of the example element.
+  // These are figures between paras (e.g., problem figures in examples) that were
+  // not captured inside any <para> but still belong to the example.
+  for (const child of Array.from(exampleEl.childNodes)) {
+    if (child.nodeName === 'figure') {
+      const figId = child.getAttribute('id');
+      if (figId) {
+        keptFigureIds.add(figId);
+      }
+    }
+  }
+
+  // Step 4b: Remove tables unconditionally; remove figures UNLESS they were kept.
+  // Equations are NOT removed — they pass through unchanged inside examples.
+  removeElementsByTag(exampleEl, ['table']);
+  const allFigures = Array.from(exampleEl.getElementsByTagName('figure'));
+  for (const fig of allFigures) {
+    const figId = fig.getAttribute('id');
+    if (!keptFigureIds.has(figId)) {
+      fig.parentNode.removeChild(fig);
+    }
+  }
+
+  // Mark kept figures so buildFigure skips the standalone copy
+  if (ctx && ctx.figuresHandledInContainers) {
+    for (const figId of keptFigureIds) {
+      ctx.figuresHandledInContainers.add(figId);
+    }
+  }
+
+  // Step 5: Serialize
+  let result = serializeCnxmlFragment(exampleEl);
+
+  // Step 6: Deduplicate media and equations.
+  // The DOM preserves block children (equations) inside list items, but the
+  // translated text also includes them via expanded [[MATH:N]] markers,
+  // producing duplicates. Same pattern as deduplicateMedia.
+  result = deduplicateMedia(result);
+  result = deduplicateElementsById(result, 'equation');
+
+  return result;
+}
+
+/**
+ * Check if a node is a descendant of a given ancestor element.
+ */
+function isDescendantOf(node, ancestor) {
+  let current = node.parentNode;
+  while (current) {
+    if (current === ancestor) return true;
+    current = current.parentNode;
+  }
+  return false;
+}
+
+/**
  * Build an exercise element.
  */
 function buildExercise(element, getSeg, equations, originalCnxml) {
@@ -2241,6 +2482,126 @@ function buildExercise(element, getSeg, equations, originalCnxml) {
   }
 
   return null;
+}
+
+/**
+ * DOM-based shadow of buildExercise.
+ * Same signature, same behavior, but uses DOM manipulation instead of regex.
+ */
+function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
+  if (!element.id) return null;
+
+  const exercisePattern = new RegExp(
+    `<exercise\\s+id="${element.id}"[^>]*>[\\s\\S]*?<\\/exercise>`,
+    'g'
+  );
+  const match = exercisePattern.exec(originalCnxml);
+  if (!match) return null;
+
+  const { doc } = parseCnxmlFragment(match[0]);
+  const exerciseEl = doc.getElementById(element.id);
+  if (!exerciseEl) return match[0];
+
+  // Process problem and solution content via DOM
+  const replacedParaIds = new Set();
+  const keptFigureIds = new Set();
+
+  function processContent(contentArray) {
+    for (const child of contentArray || []) {
+      if (child.type === 'para' && child.id && child.segmentId) {
+        const paraEl = doc.getElementById(child.id);
+        if (!paraEl) continue;
+
+        const paraText = getSeg(child.segmentId);
+        if (!paraText) continue;
+
+        // For paras that contain figures: strip expanded <media> from segment text
+        // so the figure (already in the DOM) isn't duplicated.
+        const figures = paraEl.getElementsByTagName('figure');
+        if (figures.length > 0) {
+          for (let i = 0; i < figures.length; i++) {
+            const figId = figures[i].getAttribute('id');
+            if (figId) keptFigureIds.add(figId);
+          }
+          const textWithoutMedia = paraText.replace(/<media\s[^>]*>[\s\S]*?<\/media>/g, '').trim();
+          replaceParaContentDom(doc, paraEl, textWithoutMedia, '');
+          replacedParaIds.add(child.id);
+          continue;
+        }
+
+        // Embedded list detection (same heuristic as buildExampleDom):
+        // if para text has expanded math and a sibling list is inside, remove list
+        const paraHasExpandedContent = /<m:math/.test(paraText);
+        if (paraHasExpandedContent) {
+          for (const sibling of contentArray) {
+            if (sibling !== child && sibling.type === 'list' && sibling.id) {
+              const siblingEl = doc.getElementById(sibling.id);
+              if (siblingEl && isDescendantOf(siblingEl, paraEl)) {
+                siblingEl.parentNode.removeChild(siblingEl);
+              }
+            }
+          }
+        }
+
+        replaceParaContentDom(doc, paraEl, paraText, '');
+        replacedParaIds.add(child.id);
+      }
+
+      if (child.type === 'list' && child.id) {
+        const listEl = doc.getElementById(child.id);
+        if (listEl && child.items) {
+          const listHasReplacedParas = [...replacedParaIds].some((paraId) => {
+            const pEl = doc.getElementById(paraId);
+            return pEl && isDescendantOf(pEl, listEl);
+          });
+          if (!listHasReplacedParas) {
+            replaceListItemsDom(doc, listEl, child.items, getSeg);
+          }
+        }
+      }
+    }
+  }
+
+  if (element.problem) processContent(element.problem.content);
+  if (element.solution) processContent(element.solution.content);
+
+  // Also keep figures that are direct children of the exercise, problem, or solution elements.
+  const containers = [exerciseEl];
+  const problems = exerciseEl.getElementsByTagName('problem');
+  const solutions = exerciseEl.getElementsByTagName('solution');
+  for (let i = 0; i < problems.length; i++) containers.push(problems[i]);
+  for (let i = 0; i < solutions.length; i++) containers.push(solutions[i]);
+  for (const container of containers) {
+    for (const child of Array.from(container.childNodes)) {
+      if (child.nodeName === 'figure') {
+        const figId = child.getAttribute('id');
+        if (figId) keptFigureIds.add(figId);
+      }
+    }
+  }
+
+  // Strip tables unconditionally; remove figures UNLESS they were kept.
+  removeElementsByTag(exerciseEl, ['table']);
+  const allFigures = Array.from(exerciseEl.getElementsByTagName('figure'));
+  for (const fig of allFigures) {
+    const figId = fig.getAttribute('id');
+    if (!keptFigureIds.has(figId)) {
+      fig.parentNode.removeChild(fig);
+    }
+  }
+
+  // Mark kept figures so buildFigure skips the standalone copy
+  if (ctx && ctx.figuresHandledInContainers) {
+    for (const figId of keptFigureIds) {
+      ctx.figuresHandledInContainers.add(figId);
+    }
+  }
+
+  let result = serializeCnxmlFragment(exerciseEl);
+  result = deduplicateMedia(result);
+  result = deduplicateElementsById(result, 'equation');
+
+  return result;
 }
 
 /**
@@ -2357,6 +2718,138 @@ function buildNote(element, getSeg, equations, originalCnxml, ctx) {
 }
 
 /**
+ * DOM-based shadow of buildNote.
+ * Same signature, same behavior, but uses DOM manipulation instead of regex.
+ * Keeps the regex nesting check (note inside example/exercise) since it
+ * operates on the full originalCnxml, not the note fragment.
+ */
+function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
+  if (!element.id) {
+    return buildGenericElement('note', element, getSeg, equations, originalCnxml);
+  }
+
+  // Nesting check: skip notes inside examples/exercises (same regex as old version)
+  const noteMatch = originalCnxml.match(new RegExp(`<note\\s+id="${element.id}"`));
+  if (noteMatch) {
+    const notePos = noteMatch.index;
+
+    const examplePattern = /<example[^>]*>[\s\S]*?<\/example>/g;
+    let exMatch;
+    while ((exMatch = examplePattern.exec(originalCnxml)) !== null) {
+      if (notePos > exMatch.index && notePos < exMatch.index + exMatch[0].length) {
+        return null;
+      }
+    }
+
+    const exercisePattern = /<exercise[^>]*>[\s\S]*?<\/exercise>/g;
+    let exerMatch;
+    while ((exerMatch = exercisePattern.exec(originalCnxml)) !== null) {
+      if (notePos > exerMatch.index && notePos < exerMatch.index + exerMatch[0].length) {
+        return null;
+      }
+    }
+  }
+
+  // Extract note from original CNXML
+  const notePattern = new RegExp(`<note\\s+id="${element.id}"[^>]*>[\\s\\S]*?<\\/note>`, 'g');
+  const match = notePattern.exec(originalCnxml);
+  if (!match) {
+    return buildGenericElement('note', element, getSeg, equations, originalCnxml);
+  }
+
+  // Parse into DOM
+  const { doc } = parseCnxmlFragment(match[0]);
+  const noteEl = doc.getElementById(element.id);
+  if (!noteEl) return match[0];
+
+  // Replace title
+  if (element.title && element.title.segmentId) {
+    const titleText = getSeg(element.title.segmentId);
+    if (titleText) {
+      const titleEls = noteEl.getElementsByTagName('title');
+      if (titleEls.length > 0) {
+        const titleEl = titleEls[0];
+        // Clear existing content and insert translated text as CNXML
+        // (title text from getSeg may contain inline markup like <sub>, <sup>)
+        while (titleEl.firstChild) titleEl.removeChild(titleEl.firstChild);
+        insertCnxmlBefore(doc, titleEl, titleText, null);
+      }
+    }
+  }
+
+  // Replace paragraphs and lists via DOM
+  const replacedParaIds = new Set();
+  for (const child of element.content || []) {
+    if (child.type === 'para' && child.id && child.segmentId) {
+      const paraEl = doc.getElementById(child.id);
+      if (!paraEl) continue;
+
+      const paraText = getSeg(child.segmentId);
+      if (!paraText) continue;
+
+      // Same embedded-list detection as buildExampleDom
+      const paraHasExpandedContent = /<m:math/.test(paraText);
+      if (paraHasExpandedContent) {
+        for (const sibling of element.content || []) {
+          if (sibling !== child && sibling.type === 'list' && sibling.id) {
+            const siblingEl = doc.getElementById(sibling.id);
+            if (siblingEl && isDescendantOf(siblingEl, paraEl)) {
+              siblingEl.parentNode.removeChild(siblingEl);
+            }
+          }
+        }
+      }
+
+      replaceParaContentDom(doc, paraEl, paraText, '');
+      replacedParaIds.add(child.id);
+    }
+
+    if (child.type === 'list' && child.id) {
+      const listEl = doc.getElementById(child.id);
+      if (listEl && child.items) {
+        const listHasReplacedParas = [...replacedParaIds].some((paraId) => {
+          const pEl = doc.getElementById(paraId);
+          return pEl && isDescendantOf(pEl, listEl);
+        });
+        if (!listHasReplacedParas) {
+          replaceListItemsDom(doc, listEl, child.items, getSeg);
+        }
+      }
+    }
+  }
+
+  // Replace figure captions inside the note (figures are kept, not stripped).
+  if (ctx && ctx.figureCaptions) {
+    const figures = noteEl.getElementsByTagName('figure');
+    for (let i = 0; i < figures.length; i++) {
+      const figEl = figures[i];
+      const figId = figEl.getAttribute('id');
+      if (!figId) continue;
+
+      const captionSegId = ctx.figureCaptions[figId];
+      if (captionSegId) {
+        const captionText = getSeg(captionSegId);
+        if (captionText) {
+          // Find and replace caption content
+          const captions = figEl.getElementsByTagName('caption');
+          if (captions.length > 0) {
+            const captionEl = captions[0];
+            while (captionEl.firstChild) captionEl.removeChild(captionEl.firstChild);
+            insertCnxmlBefore(doc, captionEl, captionText, null);
+          }
+        }
+        ctx.figuresHandledInNotes.add(figId);
+      }
+    }
+  }
+
+  // Strip tables, examples, exercises (figures and equations are kept)
+  removeElementsByTag(noteEl, ['table', 'example', 'exercise']);
+
+  return serializeCnxmlFragment(noteEl);
+}
+
+/**
  * Build an equation element.
  */
 function buildEquation(element, equations, originalCnxml) {
@@ -2408,7 +2901,12 @@ function buildList(element, getSeg) {
       }
       lines.push('</item>');
     } else if (itemText) {
-      lines.push(`<item${itemIdAttr}>${itemText}</item>`);
+      if (item.wrapsPara) {
+        // Original item content was wrapped in a <para> — preserve that element
+        lines.push(`<item${itemIdAttr}>${item.wrapsPara.openTag}${itemText}</para></item>`);
+      } else {
+        lines.push(`<item${itemIdAttr}>${itemText}</item>`);
+      }
     }
   }
 
@@ -2544,6 +3042,27 @@ function deduplicateMedia(cnxml) {
       return match;
     }
   );
+}
+
+/**
+ * Remove duplicate elements of a given tag name, keeping the first occurrence.
+ * Used to deduplicate equations that appear both as preserved block children
+ * in the DOM and as expanded [[MATH:N]] markers in the translated text.
+ * @param {string} cnxml - CNXML content
+ * @param {string} tagName - Tag name to deduplicate (e.g., 'equation')
+ * @returns {string} CNXML with duplicates removed
+ */
+function deduplicateElementsById(cnxml, tagName) {
+  const seenIds = new Set();
+  const pattern = new RegExp(
+    `<${tagName}\\s+[^>]*\\bid="([^"]+)"[^>]*>[\\s\\S]*?<\\/${tagName}>`,
+    'g'
+  );
+  return cnxml.replace(pattern, (match, id) => {
+    if (seenIds.has(id)) return '';
+    seenIds.add(id);
+    return match;
+  });
 }
 
 // =====================================================================
@@ -2853,4 +3372,11 @@ export {
   parseSegments,
   reverseInlineMarkup,
   buildCnxml,
+  // Exported for comparison testing (DOM vs regex refactor)
+  buildExample,
+  buildExampleDom,
+  buildExercise,
+  buildExerciseDom,
+  buildNote,
+  buildNoteDom,
 };

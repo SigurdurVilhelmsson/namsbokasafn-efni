@@ -102,6 +102,42 @@
       width: 18px;
       height: 18px;
     }
+
+    .help-links {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #353a44;
+    }
+
+    .help-links h3 {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #6b665f;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.75rem;
+    }
+
+    .help-links-list {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .help-links-list a {
+      color: #a09b93;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 400;
+      transition: color 0.2s ease;
+    }
+
+    .help-links-list a:hover {
+      color: #c87941;
+    }
   </style>
 </head>
 <body>
@@ -113,6 +149,15 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
       Til baka á forsíðu
     </a>
+    <div class="help-links">
+      <h3>Flýtileiðir</h3>
+      <ul class="help-links-list">
+        <li><a href="/">Heim</a></li>
+        <li><a href="/editor">Ritstjóri</a></li>
+        <li><a href="/terminology">Orðasafn</a></li>
+        <li><a href="/progress">Framvinda</a></li>
+      </ul>
+    </div>
   </div>
 </body>
 </html>

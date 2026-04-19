@@ -1,0 +1,63 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <title>Nucleophilic Addition Reactions of Aldehydes and Ketones</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Nucleophilic Addition Reactions of Aldehydes and Ketones</md:title>
+    <md:content-id>m00215</md:content-id>
+    <md:uuid>e8c9bc5c-cce7-46f0-9c4a-72d43847f08e</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">As we saw in the <link document="m00255" target-id="sect-00009"><emphasis effect="italics">Preview of Carbonyl Chemistry,</emphasis></link> the most general reaction of aldehydes and ketones is the <term id="term-00001">nucleophilic addition reaction</term>. As shown in <link target-id="fig-00001"/>, a nucleophile, <emphasis effect="bold">:</emphasis>Nu<sup>–</sup>, approaches the carbonyl group from an angle of about 105° opposite the carbonyl oxygen and forms a bond to the electrophilic C–O carbon atom. At the same time, rehybridization of the carbonyl carbon from <emphasis effect="italics">sp</emphasis><sup>2</sup> to <emphasis effect="italics">sp</emphasis><sup>3</sup> occurs, an electron pair from the <m:math><m:mrow><m:mtext>C&#x2550;O</m:mtext></m:mrow></m:math> bond moves toward the electronegative oxygen atom, and a tetrahedral alkoxide ion intermediate is produced. Protonation of the alkoxide by addition of acid then gives an alcohol.</para>
+    <figure class="mechanism-figure scaled-down" id="fig-00001">
+    <title>MECHANISM</title>
+    <media alt="Three-step reaction in which a nucleophile attacks the carbonyl carbon of aldehyde or ketone and forms an alkoxide ion. It further reacts with hydronium ions to form alcohol and water.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_04_001.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">A nucleophilic addition reaction to an aldehyde or ketone.</emphasis> The nucleophile approaches the carbonyl group from an angle of approximately 75° to the plane of the <emphasis effect="italics">sp</emphasis><sup>2</sup> orbitals, the carbonyl carbon rehybridizes from <emphasis effect="italics">sp</emphasis><sup>2</sup> to <emphasis effect="italics">sp</emphasis><sup>3</sup>, and an alkoxide ion is formed. Protonation by addition of acid then gives an alcohol.</caption>
+    </figure>
+    <para id="para-00002">The nucleophile can be either negatively charged (<emphasis effect="bold">:</emphasis>Nu<sup>–</sup>) or neutral (<emphasis effect="bold">:</emphasis>Nu). If it’s neutral, however, it usually carries a hydrogen atom that can subsequently be eliminated, <emphasis effect="bold">:</emphasis>Nu–H. For example:</para>
+    <figure class="unnumbered scaled-down" id="fig-00002">
+    <media alt="The structure and names of some negatively charged and neutral nucleophiles. Negatively charged nucleophiles include hydroxide, hydride, carbanion, alkoxide, and cyanide ions. Neutral nucleophiles include water, alcohol, ammonia, and amine.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_04_002.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00003">Nucleophilic additions to aldehydes and ketones have two general variations, as shown in <link target-id="fig-00003"/>. In one variation, the tetrahedral intermediate is protonated by water or acid to give an alcohol as the final product. In the second variation, the carbonyl oxygen atom is protonated and then eliminated as HO<sup>–</sup> or H<sub>2</sub>O to give a product with a <m:math><m:mrow><m:mtext>C&#x2550;Nu</m:mtext></m:mrow></m:math> double bond.</para>
+    <figure class="scaled-down" id="fig-00003">
+    <media alt="Nucleophilic addition to aldehydes or ketones. With negative nucleophile, attack forms alkoxide, then alcohol after protonation. With neutral nucleophile with two hydrogens, water leaves after attack, double bond to nucleophile.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_04_003.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">Two general reaction pathways following addition of a nucleophile to an aldehyde or ketone.</emphasis> The top pathway leads to an alcohol product; the bottom pathway leads to a product with a <m:math><m:mrow><m:mtext>C&#x2550;Nu</m:mtext></m:mrow></m:math> double bond.</caption>
+    </figure>
+    <para id="para-00004">Aldehydes are generally more reactive than ketones in nucleophilic addition reactions for both steric and electronic reasons. Sterically, the presence of only one large substituent bonded to the <m:math><m:mrow><m:mtext>C&#x2550;O</m:mtext></m:mrow></m:math> carbon in an aldehyde versus two large substituents in a ketone means that a nucleophile is able to approach an aldehyde more readily. Thus, the transition state leading to the tetrahedral intermediate is less crowded and lower in energy for an aldehyde than for a ketone (<link target-id="fig-00004"/>).</para>
+    <figure class="scaled-down" id="fig-00004">
+    <media alt="Ball-and-stick models of ethanal and acetone. It shows the nucleophilic attack on carbonyl and bond shifts in linear arrangements. Black, gray, and red spheres represent carbon, hydrogen, and oxygen, respectively.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_04_004.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">Steric hindrance in nucleophilic addition reactions.</emphasis> <emphasis effect="bold">(a)</emphasis> Nucleophilic addition to an aldehyde is sterically less hindered because only one relatively large substituent is attached to the carbonyl-group carbon. <emphasis effect="bold">(b)</emphasis> A ketone, however, has two large substituents and is more hindered. The approach of the nucleophile is along the <m:math><m:mrow><m:mtext>C&#x2550;O</m:mtext></m:mrow></m:math> bond at an angle of about 75° to the plane of the carbon <emphasis effect="italics">sp</emphasis><sup>2</sup> orbitals.</caption>
+    </figure>
+    <para id="para-00005">Electronically, aldehydes are more reactive than ketones because of the greater polarization of aldehyde carbonyl groups. To see this polarity difference, recall the stability order of carbocations (<link document="m00071"/>). A primary carbocation is higher in energy and thus more reactive than a secondary carbocation since it has only one alkyl group inductively stabilizing the positive charge rather than two. In the same way, an aldehyde has only one alkyl group inductively stabilizing the partial positive charge on the carbonyl carbon rather than two, and is a bit more electrophilic, and, therefore, more reactive than a ketone.</para>
+    <figure class="unnumbered scaled-down" id="fig-00005">
+    <media alt="The structures of primary carbocation, secondary carbocation, aldehyde, and ketone. Primary carbocation is less stable but more reactive than secondary carbocation whereas aldehyde is more reactive than ketone.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_04_005.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00006">One further comparison: aromatic aldehydes, such as benzaldehyde, are less reactive in nucleophilic addition reactions than aliphatic aldehydes because the electron-donating resonance effect of the aromatic ring makes the carbonyl group less electrophilic. Comparing electrostatic potential maps of formaldehyde and benzaldehyde, for example, shows that the carbonyl carbon atom is less positive (less blue) in the aromatic aldehyde.</para>
+    <figure class="unnumbered scaled-down" id="fig-00006">
+    <media alt="The four resonance structures of benzaldehyde. The ball-and-stick model in electrostatic potential maps of formaldehyde and benzaldehyde in which an arrow points towards the carbonyl carbon in both structures.">
+    <image mime-type="image/jpeg" src="../../media/OChem_19_04_006.jpg"/>
+    </media>
+    </figure>
+    <section class="section-exercises" id="sect-00001">
+    <title>Problems</title>
+    <exercise id="exer-00001">
+    <problem id="prob-00001">
+    <para id="para-00007"><link class="os-embed" url="#exercise/19-04-OC-P05"/></para>
+    </problem>
+    </exercise>
+    <exercise id="exer-00002">
+    <problem id="prob-00002">
+    <para id="para-00008"><link class="os-embed" url="#exercise/19-04-OC-P06"/></para>
+    </problem>
+    </exercise>
+    </section>
+    </content>
+</document>

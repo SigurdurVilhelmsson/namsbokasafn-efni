@@ -1,0 +1,601 @@
+{
+  "moduleId": "m66375",
+  "title": {
+    "segmentId": "m66375:title:auto-1",
+    "text": "Active Transport"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "6e5bb14c-2d99-4427-87c6-0f8d34e55cbd",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to do the following:",
+      "items": [
+        "Understand how electrochemical gradients affect ions",
+        "Distinguish between primary active transport and secondary active transport"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-id2074680",
+      "segmentId": "m66375:para:fs-id2074680"
+    },
+    {
+      "type": "section",
+      "id": "fs-id1318973",
+      "class": null,
+      "title": {
+        "segmentId": "m66375:title:fs-id1318973-title",
+        "text": "Electrochemical Gradient"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-id1772052",
+          "class": null,
+          "title": {
+            "segmentId": "m66375:title:fs-id1772052-title",
+            "text": "Moving Against a Gradient"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1594022",
+              "segmentId": "m66375:para:fs-id1594022"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1368350",
+              "segmentId": "m66375:para:fs-id1368350"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-id1569987",
+          "class": null,
+          "title": {
+            "segmentId": "m66375:title:fs-id1569987-title",
+            "text": "Carrier Proteins for Active Transport"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1778201",
+              "segmentId": "m66375:para:fs-id1778201"
+            },
+            {
+              "type": "figure",
+              "id": "fig-ch05_03_02",
+              "caption": {
+                "segmentId": "m66375:caption:fig-ch05_03_02-caption"
+              },
+              "media": {
+                "id": "fs-id1651019",
+                "alt": "This illustration shows a plasma membrane with three transport proteins embedded in it. The left image shows a uniporter that transports a substance in one direction. The middle image shows a symporter that transports two different substances in the same direction. The right image shows an antiporter that transports two different substances in opposite directions.",
+                "src": "../../media/Figure_05_03_02-3f77.jpg",
+                "mimeType": "image/jpg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-id2004550",
+          "segmentId": "m66375:para:fs-id2004550"
+        },
+        {
+          "type": "note",
+          "id": "fs-id2054981",
+          "class": "visual-connection",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id2054441",
+              "segmentId": "m66375:para:fs-id2054441"
+            },
+            {
+              "type": "para",
+              "id": "fs-id2287381",
+              "segmentId": "m66375:para:fs-id2287381"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch05_03_01",
+          "caption": {
+            "segmentId": "m66375:caption:fig-ch05_03_01-caption"
+          },
+          "media": {
+            "id": "fs-id2187880",
+            "alt": "This illustration shows a membrane bilayer with a potassium channel embedded in it. The cytoplasm has a high concentration of potassium associated with a negatively charged molecule. The extracellular fluid has a high concentration of sodium associated with chlorine ions.",
+            "src": "../../media/Figure_05_03_01-d7da.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "fs-idm491659440",
+          "caption": {
+            "segmentId": "m66375:caption:fs-idm491659440-caption"
+          },
+          "media": {
+            "id": "fs-idm702493232",
+            "alt": "This illustration shows a membrane bilayer with a potassium channel called a proton pump embedded in it. Hydrogen ions flow out of the cell through a proton pump, then back into the cell as part of the sucrose-proton cotransporter. Sucrose flows with the protons from the lower concentration outside the cell to the higher concentration inside the cell, which is against the concentration gradient.",
+            "src": "../../media/gradient.png",
+            "mimeType": "image/png"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1627730",
+      "class": null,
+      "title": {
+        "segmentId": "m66375:title:fs-id1627730-title",
+        "text": "Primary Active Transport"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1443145",
+          "segmentId": "m66375:para:fs-id1443145"
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch05_03_03",
+          "caption": {
+            "segmentId": "m66375:caption:fig-ch05_03_03-caption"
+          },
+          "media": {
+            "id": "fs-id2013541",
+            "alt": "This illustration shows the sodium-potassium pump. Initially, the pumps opening faces the cytoplasm, where three sodium ions bind to it. The antiporter hydrolyzes an A T P to A D P and, as a result, undergoes a conformational change. The sodium ions are released into the extracellular space. Two potassium ions from the extracellular space now bind the antiporter, which changes conformation again, releasing the potassium ions into the cytoplasm.",
+            "src": "../../media/Figure_05_03_03-62aa.jpg",
+            "mimeType": "image/jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-id1772028",
+          "segmentId": "m66375:para:fs-id1772028"
+        },
+        {
+          "type": "list",
+          "id": "fs-id1358447",
+          "listType": "enumerated",
+          "numberStyle": null,
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m66375:item:fs-id1358447-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m66375:item:fs-id1358447-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m66375:item:fs-id1358447-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m66375:item:fs-id1358447-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m66375:item:fs-id1358447-item-5"
+            },
+            {
+              "id": null,
+              "segmentId": "m66375:item:fs-id1358447-item-6"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-id2019240",
+          "segmentId": "m66375:para:fs-id2019240"
+        },
+        {
+          "type": "note",
+          "id": "fs-id2258677",
+          "class": "interactive",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1876210",
+              "segmentId": "m66375:para:fs-id1876210"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1454570",
+      "class": null,
+      "title": {
+        "segmentId": "m66375:title:fs-id1454570-title",
+        "text": "Secondary Active Transport (Co-transport)"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1472126",
+          "segmentId": "m66375:para:fs-id1472126"
+        },
+        {
+          "type": "note",
+          "id": "fs-id846110",
+          "class": "visual-connection",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-id1443315",
+              "segmentId": "m66375:para:fs-id1443315"
+            },
+            {
+              "type": "para",
+              "id": "fs-id1975059",
+              "segmentId": "m66375:para:fs-id1975059"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "fig-ch05_03_04",
+          "caption": {
+            "segmentId": "m66375:caption:fig-ch05_03_04-caption"
+          },
+          "media": {
+            "id": "fs-id2078828",
+            "alt": "This illustration shows a membrane bilayer with two integral membrane proteins embedded in it. The first, a sodium-potassium pump, uses energy from A T P hydrolysis to pump three sodium ions out of the cell for every two potassium ions it pumps into the cell. The result is a high concentration of sodium outside the cell and a high concentration of potassium inside the cell. There is also a low concentration of glucose outside the cell, and a high concentration inside. A sodium-amino acid co-transporter simultaneously transports sodium and the glucose into the cell. Text within the image reads as follows: Primary Active Transport: the sodium potassium pump moves sodium ions using the energy of ATP hydrolysis to establish a concentration gradient of sodium ions. Secondary active transport: Sodium ions moving with the concentration gradient established by the sodium potassium pump drives the transport of glucose against its concentration gradient.",
+            "src": "../../media/Figure_05_03_04-851f.png",
+            "mimeType": "image/jpg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id677498",
+      "class": "summary",
+      "title": {
+        "segmentId": "m66375:title:fs-id677498-title",
+        "text": "Section Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-id1396184",
+          "segmentId": "m66375:para:fs-id1396184"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id2937997",
+      "class": "visual-exercise",
+      "title": {
+        "segmentId": "m66375:title:fs-id2937997-title",
+        "text": "Visual Connection Questions"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1380373",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1512070",
+                "segmentId": "m66375:problem:fs-id1512070"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1645235",
+                "segmentId": "m66375:solution:fs-id1645235"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id2927207",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1473099",
+                "segmentId": "m66375:problem:fs-id1473099"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1260740",
+                "segmentId": "m66375:solution:fs-id1260740"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1786661",
+      "class": "multiple-choice",
+      "title": {
+        "segmentId": "m66375:title:fs-id1786661-title",
+        "text": "Review Questions"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id2000653",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1443544",
+                "segmentId": "m66375:problem:fs-id1443544"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1438253",
+                "segmentId": "m66375:solution:fs-id1438253"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1421748",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1988922",
+                "segmentId": "m66375:problem:fs-id1988922"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1967746",
+                "segmentId": "m66375:solution:fs-id1967746"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id2188234",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1760590",
+                "segmentId": "m66375:problem:fs-id1760590"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1244071",
+                "segmentId": "m66375:solution:fs-id1244071"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-id1882972",
+      "class": "critical-thinking",
+      "title": {
+        "segmentId": "m66375:title:fs-id1882972-title",
+        "text": "Critical Thinking Questions"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-id1768681",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1770787",
+                "segmentId": "m66375:problem:fs-id1770787"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1313083",
+                "segmentId": "m66375:solution:fs-id1313083"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-id1309877",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1568867",
+                "segmentId": "m66375:problem:fs-id1568867"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-id1778355",
+                "segmentId": "m66375:solution:fs-id1778355"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm71000721",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm74380433",
+                "segmentId": "m66375:problem:fs-idm74380433"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm200102082",
+                "segmentId": "m66375:solution:fs-idm200102082"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm71000722",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm74380434",
+                "segmentId": "m66375:problem:fs-idm74380434"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm200102083",
+                "segmentId": "m66375:solution:fs-idm200102083"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m66375:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m66375:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m66375:abstract-item:abstract-item-2"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-id1705359",
+        "termSegmentId": "m66375:glossary-term:fs-id1705359-term",
+        "definitionSegmentId": "m66375:glossary-def:fs-id1705359-def"
+      },
+      {
+        "id": "fs-id1712432",
+        "termSegmentId": "m66375:glossary-term:fs-id1712432-term",
+        "definitionSegmentId": "m66375:glossary-def:fs-id1712432-def"
+      },
+      {
+        "id": "fs-id1286063",
+        "termSegmentId": "m66375:glossary-term:fs-id1286063-term",
+        "definitionSegmentId": "m66375:glossary-def:fs-id1286063-def"
+      },
+      {
+        "id": "fs-id2017376",
+        "termSegmentId": "m66375:glossary-term:fs-id2017376-term",
+        "definitionSegmentId": "m66375:glossary-def:fs-id2017376-def"
+      },
+      {
+        "id": "fs-id1770889",
+        "termSegmentId": "m66375:glossary-term:fs-id1770889-term",
+        "definitionSegmentId": "m66375:glossary-def:fs-id1770889-def"
+      },
+      {
+        "id": "fs-id1626422",
+        "termSegmentId": "m66375:glossary-term:fs-id1626422-term",
+        "definitionSegmentId": "m66375:glossary-def:fs-id1626422-def"
+      },
+      {
+        "id": "fs-id1812289",
+        "termSegmentId": "m66375:glossary-term:fs-id1812289-term",
+        "definitionSegmentId": "m66375:glossary-def:fs-id1812289-def"
+      },
+      {
+        "id": "fs-id2138528",
+        "termSegmentId": "m66375:glossary-term:fs-id2138528-term",
+        "definitionSegmentId": "m66375:glossary-def:fs-id2138528-def"
+      },
+      {
+        "id": "fs-id1760402",
+        "termSegmentId": "m66375:glossary-term:fs-id1760402-term",
+        "definitionSegmentId": "m66375:glossary-def:fs-id1760402-def"
+      },
+      {
+        "id": "fs-id1809183",
+        "termSegmentId": "m66375:glossary-term:fs-id1809183-term",
+        "definitionSegmentId": "m66375:glossary-def:fs-id1809183-def"
+      }
+    ]
+  },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-id2187880",
+      "class": null,
+      "alt": "This illustration shows a membrane bilayer with a potassium channel embedded in it. The cytoplasm has a high concentration of potassium associated with a negatively charged molecule. The extracellular fluid has a high concentration of sodium associated with chlorine ions.",
+      "src": "../../media/Figure_05_03_01-d7da.jpg",
+      "mimeType": "image/jpg"
+    },
+    {
+      "placeholder": "[[MEDIA:2]]",
+      "id": "fs-id2078828",
+      "class": null,
+      "alt": "This illustration shows a membrane bilayer with two integral membrane proteins embedded in it. The first, a sodium-potassium pump, uses energy from A T P hydrolysis to pump three sodium ions out of the cell for every two potassium ions it pumps into the cell. The result is a high concentration of sodium outside the cell and a high concentration of potassium inside the cell. There is also a low concentration of glucose outside the cell, and a high concentration inside. A sodium-amino acid co-transporter simultaneously transports sodium and the glucose into the cell. Text within the image reads as follows: Primary Active Transport: the sodium potassium pump moves sodium ions using the energy of ATP hydrolysis to establish a concentration gradient of sodium ions. Secondary active transport: Sodium ions moving with the concentration gradient established by the sodium potassium pump drives the transport of glucose against its concentration gradient.",
+      "src": "../../media/Figure_05_03_04-851f.png",
+      "mimeType": "image/jpg"
+    }
+  ],
+  "sectionOrder": null
+}

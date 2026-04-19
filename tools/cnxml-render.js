@@ -83,7 +83,8 @@ function getNoteTypeLabel(noteClass) {
   }
   // Generate a readable fallback label for unknown note types
   // (e.g., 'clinical-focus' → 'Clinical Focus')
-  if (NOTE_TYPE_LABELS.default === null) {
+  // Skip fallback for 'default' — these are classless notes whose <title> already identifies them
+  if (NOTE_TYPE_LABELS.default === null && noteClass !== 'default') {
     return generateFallbackLabel(noteClass);
   }
   return null;
@@ -104,6 +105,31 @@ let BOOK_SLUG = 'efnafraedi-2e';
 // =====================================================================
 // HELPER FUNCTIONS
 // =====================================================================
+
+/**
+ * Look up cached exercise content for an os-embed reference.
+ * Returns { stimulus, questions, solutionsPublic } or null if not cached.
+ */
+function resolveOsEmbed(nickname) {
+  // BOOKS_DIR points to books/{bookSlug}
+  const cachePath = path.join(BOOKS_DIR, '01-source', 'exercises', `${nickname}.json`);
+  if (!fs.existsSync(cachePath)) return null;
+
+  try {
+    const exercise = JSON.parse(fs.readFileSync(cachePath, 'utf-8'));
+    return {
+      stimulus: exercise.stimulus_html || '',
+      questions: (exercise.questions || []).map((q) => ({
+        id: q.id,
+        stem: q.stem_html || '',
+        solutions: (q.collaborator_solutions || []).map((s) => s.content_html || ''),
+      })),
+      solutionsPublic: exercise.solutions_are_public || false,
+    };
+  } catch {
+    return null;
+  }
+}
 
 /**
  * Format chapter for use in directory paths.
@@ -283,6 +309,10 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     chapterExampleNumbers: options.chapterExampleNumbers || new Map(), // chapter-wide
     chapterExerciseNumbers: options.chapterExerciseNumbers || new Map(), // chapter-wide
     chapterSectionTitles: options.chapterSectionTitles || new Map(), // section ID -> title
+    chapterIdToModule: options.chapterIdToModule || new Map(), // elementId -> moduleId[]
+    moduleSections: options.moduleSections || {}, // for cross-module href resolution
+    crossModuleSections: options.crossModuleSections || null, // fallback used by answer-key etc.
+    verbose, // propagate verbose flag for link warnings
     equationTextDictionary: options.equationTextDictionary || null, // equation text translations
     excludeSections: options.excludeSections !== false, // Allow disabling section exclusion
     includeSolutions: options.includeSolutions || false, // Only show solutions on answer key pages
@@ -313,18 +343,25 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     _renderStats: context.renderStats || { equations: 0, success: 0, failures: [] },
   };
 
-  // Build chapter outline for intro pages
-  const isIntro = sectionInfo.section === '0' || doc.documentClass === 'introduction';
+  // Build chapter outline for intro pages (not end-of-chapter sections)
+  const isIntro =
+    (sectionInfo.section === '0' || doc.documentClass === 'introduction') &&
+    !options.isEndOfChapter;
   let chapterOutline = null;
   if (isIntro && moduleSections) {
     chapterOutline = Object.entries(moduleSections)
-      .filter(([, info]) => info.section !== '0') // Exclude intro itself
+      .filter(([key, info]) => info.section !== '0' && !key.startsWith('_')) // Exclude intro and metadata
       .sort((a, b) => Number(a[1].section) - Number(b[1].section))
       .map(([, info]) => ({
         section: `${chapter}.${info.section}`,
         title: info.titleIs || info.titleEn,
         slug: info.slug,
       }));
+
+    // Add translated chapter title to page data
+    if (moduleSections._chapterTitle) {
+      pageData.chapterTitle = moduleSections._chapterTitle;
+    }
   }
 
   // Build HTML document
@@ -472,9 +509,16 @@ function renderContent(content, context, _verbose) {
 
   // Sections to exclude from main content (they have their own pages)
   // Loaded from book config — varies by book (e.g., Biology uses multiple-choice, critical-thinking)
-  const EXCLUDED_SECTION_CLASSES = BOOK_CONFIG
-    ? BOOK_CONFIG.excludedSectionClasses
+  let EXCLUDED_SECTION_CLASSES = BOOK_CONFIG
+    ? [...BOOK_CONFIG.excludedSectionClasses]
     : ['summary', 'key-equations', 'exercises'];
+
+  // If sectionExercises is 'both', keep section-exercises inline (don't exclude them)
+  if (BOOK_CONFIG && BOOK_CONFIG.sectionExercises === 'both') {
+    EXCLUDED_SECTION_CLASSES = EXCLUDED_SECTION_CLASSES.filter(
+      (cls) => cls !== 'section-exercises'
+    );
+  }
 
   // Extract sections
   const sections = extractNestedElements(content, 'section');
@@ -529,6 +573,8 @@ function renderContent(content, context, _verbose) {
   for (const m of medias) if (m.fullMatch) simpleContent = simpleContent.replace(m.fullMatch, '');
 
   const lists = extractNestedElements(simpleContent, 'list');
+  for (const lst of lists)
+    if (lst.fullMatch) simpleContent = simpleContent.replace(lst.fullMatch, '');
   const equations = extractElements(simpleContent, 'equation');
   const paras = extractElements(simpleContent, 'para');
 
@@ -738,6 +784,9 @@ function renderTopLevelContent(content, context) {
   }
 
   const lists = extractNestedElements(contentForSimpleElements, 'list');
+  for (const lst of lists)
+    if (lst.fullMatch)
+      contentForSimpleElements = contentForSimpleElements.replace(lst.fullMatch, '');
   const equations = extractElements(contentForSimpleElements, 'equation');
   const paras = extractElements(contentForSimpleElements, 'para');
 
@@ -929,7 +978,11 @@ function renderFigure(figure, context) {
   const className = figure.attributes.class || null;
 
   // Get figure number from chapter-wide map for data attribute
-  const figNum = id && context.chapterFigureNumbers ? context.chapterFigureNumbers.get(id) : null;
+  const compositeKey = context.moduleId ? `${context.moduleId}:${id}` : id;
+  const figNum =
+    id && context.chapterFigureNumbers
+      ? context.chapterFigureNumbers.get(compositeKey) || context.chapterFigureNumbers.get(id)
+      : null;
 
   // Build attributes array (like exercise pattern)
   const attrs = [];
@@ -967,8 +1020,12 @@ function renderFigure(figure, context) {
   const captionMatch = figure.content.match(/<caption>([\s\S]*?)<\/caption>/);
   if (captionMatch) {
     const captionContent = processInlineContent(captionMatch[1], context);
-    // Add figure number if available
-    const figNum = id && context.chapterFigureNumbers ? context.chapterFigureNumbers.get(id) : null;
+    // Add figure number if available (composite key for cross-module uniqueness)
+    const capCompositeKey = context.moduleId ? `${context.moduleId}:${id}` : id;
+    const figNum =
+      id && context.chapterFigureNumbers
+        ? context.chapterFigureNumbers.get(capCompositeKey) || context.chapterFigureNumbers.get(id)
+        : null;
     if (figNum) {
       lines.push(
         `  <figcaption><span class="figure-label">Mynd ${figNum}</span> ${captionContent}</figcaption>`
@@ -1039,7 +1096,13 @@ function renderNote(note, context) {
   // Collect all elements with their positions
   const elementsWithPositions = [];
 
-  const paras = extractElements(contentWithoutTitle, 'para');
+  // Extract lists before paras so lists inside paras don't leak as raw CNXML
+  const lists = extractNestedElements(contentWithoutTitle, 'list');
+  let contentForParas = contentWithoutTitle;
+  for (const lst of lists)
+    if (lst.fullMatch) contentForParas = contentForParas.replace(lst.fullMatch, '');
+
+  const paras = extractElements(contentForParas, 'para');
   for (const para of paras) {
     const pos = para.id
       ? contentWithoutTitle.indexOf(`id="${para.id}"`)
@@ -1055,8 +1118,6 @@ function renderNote(note, context) {
     elementsWithPositions.push({ type: 'figure', item: figure, position: pos !== -1 ? pos : 0 });
   }
 
-  // Extract lists (e.g., bullet lists in check-your-understanding, toolbox notes)
-  const lists = extractNestedElements(contentWithoutTitle, 'list');
   for (const list of lists) {
     const pos = list.id
       ? contentWithoutTitle.indexOf(`id="${list.id}"`)
@@ -1095,8 +1156,11 @@ function renderExample(example, context) {
   const id = example.id || null;
 
   // Use chapter-wide example number if available, otherwise fall back to per-module counter
+  const exCompositeKey = context.moduleId ? `${context.moduleId}:${id}` : id;
   const chapterExNum =
-    id && context.chapterExampleNumbers ? context.chapterExampleNumbers.get(id) : null;
+    id && context.chapterExampleNumbers
+      ? context.chapterExampleNumbers.get(exCompositeKey) || context.chapterExampleNumbers.get(id)
+      : null;
   context.exampleCounter = (context.exampleCounter || 0) + 1;
   const exampleNumber = chapterExNum || `${context.chapter}.${context.exampleCounter}`;
 
@@ -1159,7 +1223,13 @@ function renderExample(example, context) {
     }
   }
 
-  // Extract paragraphs from content WITHOUT notes (we'll strip titles from content when rendering)
+  // Extract lists before paras so lists inside paras don't leak as raw CNXML
+  const lists = extractNestedElements(contentForSimpleElements, 'list');
+  for (const lst of lists)
+    if (lst.fullMatch)
+      contentForSimpleElements = contentForSimpleElements.replace(lst.fullMatch, '');
+
+  // Extract paragraphs from content WITHOUT notes or lists
   const parasOutsideNotes = extractElements(contentForSimpleElements, 'para');
   for (const para of parasOutsideNotes) {
     const pos = para.id
@@ -1170,10 +1240,17 @@ function renderExample(example, context) {
       item: para,
       position: pos !== -1 ? pos : 0,
     });
+
+    // Mark figures inside paras as rendered so section-level renderFigure skips them
+    if (context.renderedFigureIds) {
+      const figPattern = /<figure[^>]*\sid="([^"]+)"/g;
+      let figMatch;
+      while ((figMatch = figPattern.exec(para.content)) !== null) {
+        context.renderedFigureIds.add(figMatch[1]);
+      }
+    }
   }
 
-  // Extract lists from content WITHOUT notes
-  const lists = extractNestedElements(contentForSimpleElements, 'list');
   for (const list of lists) {
     const pos = list.fullMatch
       ? example.content.indexOf(list.fullMatch)
@@ -1198,8 +1275,34 @@ function renderExample(example, context) {
     });
   }
 
-  // Extract standalone media from content WITHOUT notes
-  const standaloneMedia = extractNestedElements(contentForSimpleElements, 'media');
+  // Extract direct-child figures (figures between paras, not inside paras).
+  // These are e.g., problem figures in examples that sit between the question and strategy paras.
+  const directFigures = extractNestedElements(contentForSimpleElements, 'figure');
+  for (const fig of directFigures) {
+    // Skip figures already inside a para (those are rendered as part of the para)
+    const isInsidePara = parasOutsideNotes.some((p) => p.content.includes(`id="${fig.id}"`));
+    if (isInsidePara) continue;
+
+    const pos = fig.fullMatch
+      ? example.content.indexOf(fig.fullMatch)
+      : example.content.indexOf(`id="${fig.id}"`);
+    elementsWithPositions.push({
+      type: 'figure',
+      item: fig,
+      position: pos !== -1 ? pos : 0,
+    });
+    // NOTE: Don't add to renderedFigureIds here — renderFigure() handles that itself.
+    // Adding early would cause renderFigure to skip it with an empty return.
+  }
+
+  // Strip figures from content before extracting standalone media —
+  // figures inside paras are rendered as part of the para, and direct-child
+  // figures are rendered via the figure case above. Their <media> children
+  // should not appear separately as standalone media.
+  const contentForMedia = contentForSimpleElements.replace(/<figure[^>]*>[\s\S]*?<\/figure>/g, '');
+
+  // Extract standalone media from content WITHOUT notes or figures
+  const standaloneMedia = extractNestedElements(contentForMedia, 'media');
   for (const media of standaloneMedia) {
     const pos = media.fullMatch
       ? example.content.indexOf(media.fullMatch)
@@ -1265,6 +1368,9 @@ function renderExample(example, context) {
       case 'media':
         lines.push(`  ${renderMedia(item, context)}`);
         break;
+      case 'figure':
+        lines.push(`  ${renderFigure(item, context)}`);
+        break;
     }
   }
 
@@ -1281,9 +1387,16 @@ function renderExercise(exercise, context) {
 
   // Use pre-assigned number from chapter-wide map if available (like figures/tables)
   // This ensures sequential numbering across compiled exercises sections
+  const exerCompositeKey = context.moduleId ? `${context.moduleId}:${id}` : id;
   let exerciseNumber;
-  if (id && context.chapterExerciseNumbers && context.chapterExerciseNumbers.has(id)) {
-    exerciseNumber = context.chapterExerciseNumbers.get(id);
+  if (
+    id &&
+    context.chapterExerciseNumbers &&
+    (context.chapterExerciseNumbers.has(exerCompositeKey) || context.chapterExerciseNumbers.has(id))
+  ) {
+    exerciseNumber =
+      context.chapterExerciseNumbers.get(exerCompositeKey) ||
+      context.chapterExerciseNumbers.get(id);
   } else {
     // Fallback: increment counter for exercises without pre-assigned numbers
     context.exerciseCounter++;
@@ -1308,9 +1421,15 @@ function renderExercise(exercise, context) {
 
   lines.push(`<div ${attrs.join(' ')}>`);
 
-  // Helper: render problem/solution section content with paras, media, and figures in order
+  // Helper: render problem/solution section content with paras, media, figures, and lists in order
   function renderSectionContent(sectionContent) {
-    const paras = extractElements(sectionContent, 'para');
+    // Extract lists before paras so lists inside paras don't leak as raw CNXML
+    const lists = extractNestedElements(sectionContent, 'list');
+    let contentForParas = sectionContent;
+    for (const lst of lists)
+      if (lst.fullMatch) contentForParas = contentForParas.replace(lst.fullMatch, '');
+
+    const paras = extractElements(contentForParas, 'para');
     // Strip figures before extracting standalone media
     const contentWithoutFigures = sectionContent.replace(/<figure[\s\S]*?<\/figure>/g, '');
     const medias = extractNestedElements(contentWithoutFigures, 'media');
@@ -1331,6 +1450,12 @@ function renderExercise(exercise, context) {
       const pos = sectionContent.indexOf(`id="${figure.id}"`);
       elementsWithPositions.push({ type: 'figure', item: figure, position: pos !== -1 ? pos : 0 });
     }
+    for (const list of lists) {
+      const pos = list.id
+        ? sectionContent.indexOf(`id="${list.id}"`)
+        : sectionContent.indexOf('<list');
+      elementsWithPositions.push({ type: 'list', item: list, position: pos !== -1 ? pos : 0 });
+    }
 
     elementsWithPositions.sort((a, b) => a.position - b.position);
 
@@ -1345,6 +1470,9 @@ function renderExercise(exercise, context) {
         case 'figure':
           lines.push(`    ${renderFigure(item, context)}`);
           break;
+        case 'list':
+          lines.push(`    ${renderList(item, context)}`);
+          break;
       }
     }
   }
@@ -1353,8 +1481,52 @@ function renderExercise(exercise, context) {
   const problemMatch = exercise.content.match(/<problem([^>]*)>([\s\S]*?)<\/problem>/);
   if (problemMatch) {
     const problemId = parseAttributes(problemMatch[1]).id;
+    const problemContent = problemMatch[2];
+
+    // Check for os-embed exercise reference
+    const osEmbedMatch = problemContent.match(/url="#exercise\/([^"]+)"/);
+    if (osEmbedMatch) {
+      const resolved = resolveOsEmbed(osEmbedMatch[1]);
+      if (resolved) {
+        lines.push(`  <div${problemId ? ` id="${escapeAttr(problemId)}"` : ''} class="problem">`);
+        if (resolved.stimulus) {
+          lines.push(`    <p>${resolved.stimulus}</p>`);
+        }
+        const partLabels = ['(a)', '(b)', '(c)', '(d)', '(e)', '(f)', '(g)', '(h)'];
+        for (let i = 0; i < resolved.questions.length; i++) {
+          const q = resolved.questions[i];
+          const label =
+            resolved.questions.length > 1
+              ? `<strong>${partLabels[i] || '(' + (i + 1) + ')'}</strong> `
+              : '';
+          lines.push(`    <div class="exercise-part">${label}${q.stem}</div>`);
+        }
+        lines.push('  </div>');
+
+        // Render solutions if public
+        if (resolved.solutionsPublic && resolved.questions.some((q) => q.solutions.length > 0)) {
+          lines.push('  <div class="solution">');
+          for (let i = 0; i < resolved.questions.length; i++) {
+            const q = resolved.questions[i];
+            if (q.solutions.length > 0) {
+              const label =
+                resolved.questions.length > 1
+                  ? `<strong>${partLabels[i] || '(' + (i + 1) + ')'}</strong> `
+                  : '';
+              lines.push(`    <p>${label}${q.solutions[0]}</p>`);
+            }
+          }
+          lines.push('  </div>');
+        }
+
+        lines.push('</div>');
+        return lines.join('\n');
+      }
+    }
+
+    // Normal rendering (no os-embed or not resolved)
     lines.push(`  <div${problemId ? ` id="${escapeAttr(problemId)}"` : ''} class="problem">`);
-    renderSectionContent(problemMatch[2]);
+    renderSectionContent(problemContent);
     lines.push('  </div>');
   }
 
@@ -1379,8 +1551,12 @@ function renderTable(table, context) {
   const id = table.id || null;
   const className = table.attributes.class || null;
 
-  // Get table number from chapter-wide map for data attribute
-  const tableNum = id && context.chapterTableNumbers ? context.chapterTableNumbers.get(id) : null;
+  // Get table number from chapter-wide map for data attribute (composite key for cross-module uniqueness)
+  const tblCompositeKey = context.moduleId ? `${context.moduleId}:${id}` : id;
+  const tableNum =
+    id && context.chapterTableNumbers
+      ? context.chapterTableNumbers.get(tblCompositeKey) || context.chapterTableNumbers.get(id)
+      : null;
 
   // Build attributes array (like exercise pattern)
   const attrs = [];
@@ -1482,20 +1658,62 @@ function renderList(list, context) {
   if (bulletStyle === 'bullet') styleAttr = ' style="list-style-type: disc"';
   else if (bulletStyle === 'open-circle') styleAttr = ' style="list-style-type: circle"';
 
-  lines.push(`<${tag}${id ? ` id="${escapeAttr(id)}"` : ''}${styleAttr}>`);
+  const classAttr = list.attributes.class ? ` class="${escapeAttr(list.attributes.class)}"` : '';
+  lines.push(`<${tag}${id ? ` id="${escapeAttr(id)}"` : ''}${classAttr}${styleAttr}>`);
 
-  const items = extractElements(list.content, 'item');
+  const items = extractNestedElements(list.content, 'item');
   for (const item of items) {
     const itemId = item.id ? ` id="${escapeAttr(item.id)}"` : '';
 
-    // Check for nested content
-    const nestedParas = extractElements(item.content, 'para');
-    if (nestedParas.length > 0) {
-      const content = nestedParas.map((p) => processInlineContent(p.content, context)).join('<br>');
-      lines.push(`  <li${itemId}>${content}</li>`);
+    // Check for nested lists inside items
+    const nestedLists = extractNestedElements(item.content, 'list');
+    if (nestedLists.length > 0) {
+      // Strip nested lists from item content before processing text
+      let textContent = item.content;
+      for (const nl of nestedLists)
+        if (nl.fullMatch) textContent = textContent.replace(nl.fullMatch, '');
+      const nestedParas = extractElements(textContent, 'para');
+      const text =
+        nestedParas.length > 0
+          ? nestedParas.map((p) => processInlineContent(p.content, context)).join('<br>')
+          : processInlineContent(textContent, context);
+      lines.push(`  <li${itemId}>${text}`);
+      for (const nl of nestedLists) lines.push(renderList(nl, context));
+      lines.push('  </li>');
     } else {
-      const content = processInlineContent(item.content, context);
-      lines.push(`  <li${itemId}>${content}</li>`);
+      // Simple items: check for nested paragraphs
+      const nestedParas = extractElements(item.content, 'para');
+      if (nestedParas.length > 0) {
+        const content = nestedParas
+          .map((p) => processInlineContent(p.content, context))
+          .join('<br>');
+        lines.push(`  <li${itemId}>${content}</li>`);
+      } else {
+        // Check for nested block-level <equation> elements. Source pattern, e.g.
+        // ch21-2 historical-milestones bullets: each <item> contains text +
+        // <newline/> + <equation>. Previously the top-level extraction pass
+        // pulled these equations out of the list and rendered them as siblings
+        // AFTER </ul>. Keep them inline here so they stay inside their <li>.
+        const nestedEquations = extractElements(item.content, 'equation');
+        if (nestedEquations.length > 0) {
+          let working = item.content;
+          const placeholders = [];
+          nestedEquations.forEach((eq, i) => {
+            if (!eq.fullMatch) return;
+            const ph = `\u0000EQ_PLACEHOLDER_${i}\u0000`;
+            working = working.replace(eq.fullMatch, ph);
+            placeholders.push({ ph, html: renderEquation(eq, context) });
+          });
+          let rendered = processInlineContent(working, context);
+          for (const { ph, html } of placeholders) {
+            rendered = rendered.replace(ph, html);
+          }
+          lines.push(`  <li${itemId}>${rendered}</li>`);
+        } else {
+          const content = processInlineContent(item.content, context);
+          lines.push(`  <li${itemId}>${content}</li>`);
+        }
+      }
     }
   }
 
@@ -1557,9 +1775,10 @@ function renderEquation(eq, context) {
   const numberSpan = isUnnumbered ? '' : '<span class="equation-number"></span>';
 
   // Get equation number from chapter-wide map for numbered equations only
+  const eqCompositeKey = context.moduleId ? `${context.moduleId}:${id}` : id;
   const eqNum =
     !isUnnumbered && id && context.chapterEquationNumbers
-      ? context.chapterEquationNumbers.get(id)
+      ? context.chapterEquationNumbers.get(eqCompositeKey) || context.chapterEquationNumbers.get(id)
       : null;
 
   // Build attributes array
@@ -1716,15 +1935,8 @@ function writeOutput(chapter, moduleId, track, html, moduleSections) {
 function copyChapterImages(chapter, track, _verbose) {
   const chapterStr = formatChapterOutput(chapter);
   const sourceMediaDir = path.join(BOOKS_DIR, '01-source', 'media');
-  const targetMediaDir = path.join(
-    BOOKS_DIR,
-    '05-publication',
-    track,
-    'chapters',
-    chapterStr,
-    'images',
-    'media'
-  );
+  const chapterDir = path.join(BOOKS_DIR, '05-publication', track, 'chapters', chapterStr);
+  const targetMediaDir = path.join(chapterDir, 'images', 'media');
 
   if (!fs.existsSync(sourceMediaDir)) {
     console.error(`Warning: Source media directory not found: ${sourceMediaDir}`);
@@ -1735,50 +1947,38 @@ function copyChapterImages(chapter, track, _verbose) {
     fs.mkdirSync(targetMediaDir, { recursive: true });
   }
 
-  // Build list of image prefixes to match for this chapter.
-  // Uses book config for prefix patterns (Chemistry: CNX_Chem_NN_,
-  // Microbiology: OSC_Microbio_NN_ + Figure_NN_, Biology: Figure_NN_)
-  const prefixes = [];
+  // Scan rendered HTML files to find all referenced image filenames.
+  // This is more robust than prefix matching — it copies exactly the
+  // files that the HTML actually references, regardless of naming convention.
+  const referencedFiles = new Set();
+  const imgSrcPattern = /src="\/content\/[^"]*\/images\/media\/([^"]+)"/g;
 
-  if (BOOK_CONFIG) {
-    if (chapter === 'appendices' && BOOK_CONFIG.appendixImagePrefix) {
-      prefixes.push(BOOK_CONFIG.appendixImagePrefix);
-    } else {
-      // Try single prefix
-      const singlePrefix = BOOK_CONFIG.imagePrefix?.(chapterStr);
-      if (singlePrefix) {
-        prefixes.push(singlePrefix);
-      }
-      // Try multiple prefixes (for books with varied naming)
-      const multiPrefixes = BOOK_CONFIG.imagePrefixes?.(chapterStr);
-      if (multiPrefixes) {
-        prefixes.push(...multiPrefixes);
-      }
+  const htmlFiles = fs.readdirSync(chapterDir).filter((f) => f.endsWith('.html'));
+  for (const htmlFile of htmlFiles) {
+    const content = fs.readFileSync(path.join(chapterDir, htmlFile), 'utf-8');
+    let match;
+    while ((match = imgSrcPattern.exec(content)) !== null) {
+      referencedFiles.add(decodeURIComponent(match[1]));
     }
   }
 
-  // Fallback: if no prefixes configured, try common OpenStax patterns
-  if (prefixes.length === 0) {
-    prefixes.push(
-      `CNX_Chem_${chapterStr}_`,
-      `Figure_${chapterStr}_`,
-      `OSC_Microbio_${chapterStr}_`
-    );
-  }
-
-  const sourceFiles = fs
-    .readdirSync(sourceMediaDir)
-    .filter((f) => prefixes.some((prefix) => f.startsWith(prefix)));
-
   let copied = 0;
-  for (const file of sourceFiles) {
+  let missing = 0;
+  for (const file of referencedFiles) {
     const src = path.join(sourceMediaDir, file);
     const dest = path.join(targetMediaDir, file);
-    fs.copyFileSync(src, dest);
-    copied++;
+    if (fs.existsSync(src)) {
+      fs.copyFileSync(src, dest);
+      copied++;
+    } else {
+      console.error(`Warning: Referenced image not found in source: ${file}`);
+      missing++;
+    }
   }
 
-  console.log(`Images: Copied ${copied} files to ${targetMediaDir}`);
+  console.log(
+    `Images: Copied ${copied} files to ${targetMediaDir}${missing ? ` (${missing} missing from source)` : ''}`
+  );
 }
 
 // =====================================================================
@@ -1886,10 +2086,12 @@ function renderEndOfChapterSection(section, context) {
   // Render using existing render function
   // Set excludeSections: false to prevent the section from being skipped
   // Override title with configured Icelandic title
+  // Set isEndOfChapter to suppress the chapter outline (which is for intro pages only)
   const { html } = renderCnxmlToHtml(cnxmlDoc, {
     ...context.options,
     excludeSections: false,
     titleOverride: section.titleIs,
+    isEndOfChapter: true,
   });
 
   return html;
@@ -2254,10 +2456,16 @@ function renderCompiledSummary(chapter, summariesByModule, context) {
       );
 
       // Replace the h2 title with section number + title
-      sectionHtml = sectionHtml.replace(
-        /<h2[^>]*>.*?<\/h2>/,
-        `<h2>${summary.sectionNumber} ${summary.sectionTitle}</h2>`
-      );
+      // If there's only one summary for the whole chapter (e.g., organic chemistry),
+      // it's a chapter-wide summary — use generic header instead of section-specific
+      if (summariesByModule.length === 1) {
+        sectionHtml = sectionHtml.replace(/<h2[^>]*>.*?<\/h2>/, '');
+      } else {
+        sectionHtml = sectionHtml.replace(
+          /<h2[^>]*>.*?<\/h2>/,
+          `<h2>${summary.sectionNumber} ${summary.sectionTitle}</h2>`
+        );
+      }
 
       lines.push('      ' + sectionHtml);
     }
@@ -2788,6 +2996,20 @@ async function main() {
     const chapterDir = formatChapterDir(args.chapter);
     const chapterStr = formatChapterOutput(args.chapter);
 
+    // Clean stale HTML files before rendering (full chapter only, not single-module)
+    if (!args.module) {
+      const outputDir = path.join(BOOKS_DIR, '05-publication', args.track, 'chapters', chapterStr);
+      if (fs.existsSync(outputDir)) {
+        const existing = fs.readdirSync(outputDir).filter((f) => f.endsWith('.html'));
+        for (const f of existing) {
+          fs.unlinkSync(path.join(outputDir, f));
+        }
+        if (existing.length > 0) {
+          console.log(`Cleaned ${existing.length} existing HTML file(s) from ${chapterStr}/`);
+        }
+      }
+    }
+
     // Build module sections map from structure + segment files
     const moduleSections = buildModuleSections(BOOK_SLUG, args.chapter);
 
@@ -2802,6 +3024,20 @@ async function main() {
     const chapterExampleNumbers = new Map();
     const chapterExerciseNumbers = new Map();
     const chapterSectionTitles = new Map(); // section ID -> title text
+    // Map<elementId, moduleId[]> — registry of every id-bearing element across the chapter.
+    // Used by cnxml-elements.js to rewrite cross-module fragment-only links (e.g. <link target-id="X"/>
+    // where X lives in a different module than the one currently rendering). Stores arrays because
+    // some books (e.g. lifraen-efnafraedi) reuse element ids across modules within one chapter.
+    const chapterIdToModule = new Map();
+    const addId = (id, modId) => {
+      if (!id) return;
+      const owners = chapterIdToModule.get(id);
+      if (owners) {
+        if (!owners.includes(modId)) owners.push(modId);
+      } else {
+        chapterIdToModule.set(id, [modId]);
+      }
+    };
     // Sort modules by section number so numbering follows chapter order, not filename order
     const allModules = findChapterModules(args.chapter, args.track).sort((a, b) => {
       const secA = moduleSections[a] ? moduleSections[a].section : 999;
@@ -2818,25 +3054,33 @@ async function main() {
       const modPath = translatedCnxmlPath(args.track, chapterDir, modId);
       const modCnxml = fs.readFileSync(modPath, 'utf-8');
 
+      // Use composite keys (moduleId:elementId) because some books (e.g., lifraen-efnafraedi)
+      // reuse IDs like fig-00001, exam-00001 across modules within the same chapter.
       const figPattern = /<figure\s+id="([^"]+)"/g;
       let fm;
       while ((fm = figPattern.exec(modCnxml)) !== null) {
         chapterFigCounter++;
-        chapterFigureNumbers.set(fm[1], `${args.chapter}.${chapterFigCounter}`);
+        chapterFigureNumbers.set(`${modId}:${fm[1]}`, `${args.chapter}.${chapterFigCounter}`);
+        addId(fm[1], modId);
       }
 
       const tblPattern = /<table\s+[^>]*id="([^"]+)"/g;
       let tm;
       while ((tm = tblPattern.exec(modCnxml)) !== null) {
         chapterTableCounter++;
-        chapterTableNumbers.set(tm[1], `${args.chapter}.${chapterTableCounter}`);
+        chapterTableNumbers.set(`${modId}:${tm[1]}`, `${args.chapter}.${chapterTableCounter}`);
+        addId(tm[1], modId);
       }
 
       const examplePattern = /<example\s+id="([^"]+)"/g;
       let exm2;
       while ((exm2 = examplePattern.exec(modCnxml)) !== null) {
         chapterExampleCounter++;
-        chapterExampleNumbers.set(exm2[1], `${args.chapter}.${chapterExampleCounter}`);
+        chapterExampleNumbers.set(
+          `${modId}:${exm2[1]}`,
+          `${args.chapter}.${chapterExampleCounter}`
+        );
+        addId(exm2[1], modId);
       }
 
       // Build numbered equation map (skip unnumbered)
@@ -2844,13 +3088,18 @@ async function main() {
       let eqm;
       while ((eqm = eqPattern.exec(modCnxml)) !== null) {
         const attrs = eqm[1];
-        // Skip if unnumbered
-        if (attrs.includes('class="unnumbered"')) continue;
-        // Extract id
         const idMatch = attrs.match(/id="([^"]+)"/);
+        // Register every equation id (numbered or not) so cross-page links to unnumbered
+        // equations also resolve.
+        if (idMatch) addId(idMatch[1], modId);
+        // Skip numbering for unnumbered
+        if (attrs.includes('class="unnumbered"')) continue;
         if (idMatch) {
           chapterEquationCounter++;
-          chapterEquationNumbers.set(idMatch[1], `${args.chapter}.${chapterEquationCounter}`);
+          chapterEquationNumbers.set(
+            `${modId}:${idMatch[1]}`,
+            `${args.chapter}.${chapterEquationCounter}`
+          );
         }
       }
 
@@ -2861,6 +3110,7 @@ async function main() {
         // Strip any inline markup from the title text
         const titleText = sm[2].replace(/<[^>]+>/g, '').trim();
         chapterSectionTitles.set(sm[1], titleText);
+        addId(sm[1], modId);
       }
 
       // Also capture example/note IDs with titles
@@ -2872,6 +3122,7 @@ async function main() {
       while ((em = exPattern.exec(modCnxml)) !== null) {
         const titleText = em[2].replace(/<[^>]+>/g, '').trim();
         chapterSectionTitles.set(em[1], titleText);
+        // (id already registered by the example loop above)
       }
 
       const notePattern = /<note\s+[^>]*id="([^"]+)"[^>]*>\s*<title>([\s\S]*?)<\/title>/g;
@@ -2879,6 +3130,7 @@ async function main() {
       while ((nm = notePattern.exec(modCnxml)) !== null) {
         const titleText = nm[2].replace(/<[^>]+>/g, '').trim();
         chapterSectionTitles.set(nm[1], titleText);
+        addId(nm[1], modId);
       }
 
       // Build chapter-wide exercise number map
@@ -2886,7 +3138,18 @@ async function main() {
       let exm;
       while ((exm = exerPattern.exec(modCnxml)) !== null) {
         chapterExerciseCounter++;
-        chapterExerciseNumbers.set(exm[1], `${args.chapter}.${chapterExerciseCounter}`);
+        chapterExerciseNumbers.set(
+          `${modId}:${exm[1]}`,
+          `${args.chapter}.${chapterExerciseCounter}`
+        );
+        addId(exm[1], modId);
+      }
+
+      // Also register para ids (used as anchor targets in some cross-references).
+      const paraPattern = /<para\s+[^>]*id="([^"]+)"/g;
+      let pm;
+      while ((pm = paraPattern.exec(modCnxml)) !== null) {
+        addId(pm[1], modId);
       }
     }
 
@@ -2919,6 +3182,7 @@ async function main() {
           chapterExampleNumbers,
           chapterExerciseNumbers,
           chapterSectionTitles,
+          chapterIdToModule,
           equationTextDictionary,
         });
         let html = renderResult.html;
@@ -3010,6 +3274,7 @@ async function main() {
               chapterExampleNumbers,
               chapterExerciseNumbers,
               chapterSectionTitles,
+              chapterIdToModule,
               equationTextDictionary,
             },
           });
@@ -3083,6 +3348,82 @@ async function main() {
         console.log('No glossary definitions found in this chapter');
       }
 
+      // Fallback: if no <glossary> definitions found, check for <section class="key-terms">
+      // (used by newer OpenStax books like Organic Chemistry)
+      if (chapterGlossary.length === 0) {
+        const lastModuleId = allModules[allModules.length - 1];
+        const lastModulePath = translatedCnxmlPath(args.track, chapterDir, lastModuleId);
+
+        if (fs.existsSync(lastModulePath)) {
+          const lastCnxml = fs.readFileSync(lastModulePath, 'utf-8');
+          const keyTermsMatch = lastCnxml.match(
+            /<section\s+[^>]*class="key-terms"[^>]*>([\s\S]*?)<\/section>/
+          );
+
+          if (keyTermsMatch) {
+            const items = extractNestedElements(keyTermsMatch[1], 'item');
+            const termLines = [];
+
+            for (const item of items) {
+              // item.content is like: <link document="m00032" target-id="term-00006">alcohol</link>
+              const linkMatch = item.content.match(
+                /<link\s+document="([^"]+)"(?:\s+target-id="([^"]+)")?[^>]*>([^<]+)<\/link>/
+              );
+              if (linkMatch) {
+                const termText = linkMatch[3].trim();
+                const moduleId = linkMatch[1];
+                const sectionInfo = moduleSections[moduleId];
+                const sectionSlug = sectionInfo
+                  ? getOutputFilename(moduleId, args.chapter, moduleSections).replace('.html', '')
+                  : moduleId;
+                termLines.push(
+                  `<li><a href="/content/${BOOK_SLUG}/chapters/${chapterStr}/${sectionSlug}.html">${escapeHtml(termText)}</a></li>`
+                );
+              } else {
+                const plainText = item.content.replace(/<[^>]+>/g, '').trim();
+                if (plainText) {
+                  termLines.push(`<li>${escapeHtml(plainText)}</li>`);
+                }
+              }
+            }
+
+            if (termLines.length > 0) {
+              const keyTermsContentHtml =
+                '<section class="key-terms-section">\n<h2>Lykilhugtök</h2>\n<ul class="key-terms-list">\n' +
+                termLines.join('\n') +
+                '\n</ul>\n</section>';
+
+              const fullKeyTermsHtml = buildHtmlDocument({
+                title: 'Lykilhugtök',
+                lang: args.lang,
+                content: keyTermsContentHtml,
+                pageData: {
+                  moduleId: `${chapterStr}-key-terms`,
+                  chapter: args.chapter,
+                  section: `${args.chapter}.0`,
+                  title: 'Lykilhugtök',
+                  equations: [],
+                  terms: {},
+                },
+                sectionNumber: `${args.chapter}.0`,
+                isIntro: true,
+              });
+
+              const keyTermsPath = writeCompiledGlossary(
+                args.chapter,
+                args.track,
+                fullKeyTermsHtml
+              );
+              writtenFiles.push(keyTermsPath);
+              console.log(
+                `Lykilhugtök: Rendered ${termLines.length} linked terms to HTML (section-based fallback)`
+              );
+              console.log(`  → ${keyTermsPath}`);
+            }
+          }
+        }
+      }
+
       // Extract and render compiled summary (matching chapters 1-5 format)
       if (args.verbose) {
         console.log('\nExtracting section summaries...');
@@ -3115,6 +3456,7 @@ async function main() {
             chapterExampleNumbers,
             chapterExerciseNumbers,
             chapterSectionTitles,
+            chapterIdToModule,
             equationTextDictionary,
           },
         });
@@ -3157,11 +3499,13 @@ async function main() {
             chapter: args.chapter,
             moduleId: `${chapterStr}-answer-key`,
             moduleSections: {}, // Empty: prevent chapter outline insertion in answer key
+            crossModuleSections: moduleSections, // For cross-page link resolution
             chapterFigureNumbers,
             chapterTableNumbers,
             chapterExampleNumbers,
             chapterExerciseNumbers,
             chapterSectionTitles,
+            chapterIdToModule,
             equationTextDictionary,
           },
         });
@@ -3213,6 +3557,7 @@ async function main() {
           chapterExampleNumbers,
           chapterExerciseNumbers,
           chapterSectionTitles,
+          chapterIdToModule,
           equationTextDictionary,
         };
 

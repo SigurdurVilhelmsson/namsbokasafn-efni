@@ -2,7 +2,7 @@
 <title>Kerfisbundin nálgun</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m58782</md:content-id>
-  <md:title>A Systematic Approach</md:title>
+  <md:title>Kerfisbundin nálgun</md:title>
   <md:abstract/>
   <md:uuid>d32c4114-9822-4ca0-8aee-033d39da217c</md:uuid>
 </metadata>
@@ -12,320 +12,116 @@
 <title>Námstakmarkanir</title>
 <para id="fs-id11713605736962">Í lok þessa kafla muntu geta:</para>
 <list id="fs-id1171360169554" list-type="bulleted">
-<item>Lýst því hvernig örverur
-eru flokkaðar og aðgreindar sem einstakar tegundir</item>
-<item>Borið saman söguleg og
-núverandi flokkunarkerfi sem notuð eru til að flokka örverur</item>
+<item>Lýst því hvernig örverur eru flokkaðar og aðgreindar sem einstakar tegundir</item>
+<item>Borið saman söguleg og núverandi flokkunarkerfi sem notuð eru til að flokka örverur</item>
 </list>
 </section>
-<para id="fs-id1171359092729">Þegar örverur urðu sýnilegar
-mönnum með hjálp smásjáa fóru vísindamenn að gera sér grein fyrir
-gríðarlegum fjölbreytileika þeirra. Örverur eru mismunandi á allan hátt,
-þar á meðal hvað varðar stærð, útlit og æxlunarhraða. Til að rannsaka
-þennan ótrúlega fjölbreytta nýja hóp lífvera þurftu vísindamenn aðferð
-til að flokka þær kerfisbundið.</para>
+<para id="fs-id1171359092729">Þegar örverur urðu sýnilegar mönnum með hjálp smásjáa fóru vísindamenn að gera sér grein fyrir gríðarlegum fjölbreytileika þeirra. Örverur eru mismunandi á allan hátt, þar á meðal hvað varðar stærð, útlit og æxlunarhraða. Til að rannsaka þetta ótrúlega fjölbreytta úrval nýrra lífvera þurftu vísindamenn aðferð til að flokka þær kerfisbundið.</para>
 <section id="fs-id1171359070856">
 <title>Vísindi flokkunarfræðinnar</title>
 <section id="fs-id1171358953517">
-<title>Þróunartré lífsins
-(þróunarsaga)</title>
-<para id="fs-id1171360368874">Með tækniframförum gerðu aðrir
-vísindamenn smám saman endurbætur á kerfi Linnéusar og bjuggu að lokum
-til ný kerfi til að flokka lífverur. Á 19. öld var vaxandi áhugi á að
-þróa flokkunarkerfi sem tækju tillit til þróunartengsla, eða
-<term id="term-00004">þróunarsögu</term>, allra mismunandi tegunda lífvera á
-jörðinni. Ein leið til að sýna þessi tengsl er með skýringarmynd sem
-kallast þróunartré (eða lífsins tré). Í þessum skýringarmyndum er hópum
-lífvera raðað eftir því hversu nátengdar þær eru taldar vera. Í fyrstu
-þróunartrjánum var skyldleiki lífvera ályktaður út frá sýnilegum
-líkindum þeirra, svo sem hvort þær hefðu hár eða ekki eða fjölda útlima.
-Nú er greiningin flóknari. Í dag fela þróunarsögulegar greiningar í sér
-erfðafræðilegan, lífefnafræðilegan og fósturfræðilegan samanburð, eins
-og fjallað verður um síðar í þessum kafla.</para>
-<para id="fs-id1171360604206">Lífsins tré Linnéusar innihélt
-aðeins tvær megingreinar fyrir allt líf: dýraríkið og plönturíkið. Árið
-1866 lagði Ernst <term class="no-emphasis" id="term-00005">Haeckel</term>, þýskur líffræðingur,
-heimspekingur og læknir, til annað ríki, Protista (frumverur), fyrir
-einfruma lífverur (<link target-id="OSC_Microbio_01_02_Haeckel"/>). Hann lagði síðar til fjórða ríkið,
-Monera (dreifkjörnungar), fyrir einfruma lífverur þar sem frumurnar
-skortir kjarna, eins og bakteríur.</para>
+<title>Þróunartré lífsins (þróunarsaga)</title>
+<para id="fs-id1171360368874">Með framförum í tækni gerðu aðrir vísindamenn smám saman endurbætur á kerfi Linnaeus og bjuggu að lokum til ný kerfi til að flokka lífverur. Á 19. öld var vaxandi áhugi á að þróa flokkunarkerfi sem tók mið af þróunartengslum, eða <term id="term-00004">þróunarsögu (e. phylogenies)</term>, allra mismunandi tegunda lífvera á jörðinni. Ein leið til að sýna þessi tengsl er með skýringarmynd sem kallast þróunartré (eða lífsins tré). Í þessum skýringarmyndum er lífverum raðað eftir því hversu nátengdar þær eru taldar vera. Í fyrstu þróunartrjánum var skyldleiki lífvera ályktaður út frá sýnilegum líkindum, svo sem tilvist eða fjarveru hárs eða fjölda útlima. Nú er greiningin flóknari. Í dag fela þróunargreiningar í sér samanburð á erfðafræðilegum, lífefnafræðilegum og fósturfræðilegum þáttum, eins og fjallað verður um síðar í þessum kafla.</para>
+<para id="fs-id1171360604206">Lífsins tré Linnaeus innihélt aðeins tvær megingreinar fyrir allt líf: dýraríkið og plönturíkið. Árið 1866 lagði Ernst <term class="no-emphasis" id="term-00005">Haeckel</term>, þýskur líffræðingur, heimspekingur og læknir, til annað ríki, Protista (frumverur), fyrir einfruma lífverur (<link target-id="OSC_Microbio_01_02_Haeckel"/>). Síðar lagði hann til fjórða ríkið, Monera (dreifkjörnungar), fyrir einfruma lífverur sem hafa ekki frumukjarna, eins og bakteríur.</para>
 <figure id="OSC_Microbio_01_02_Haeckel">
 <media id="fs-id1171360136883" alt="A drawing of a tree. The base of the tree reads: Radix Monera. This branches into three branches labeled Plantae, Protista, and Animalia. Each of these branches branch further; each new branch Is labeled in small text and clusters of branches are identified. For example, clusters of branches in the protista include: Diatomase, flagellate, protoplasta, and spongae.">
 <image mime-type="image/jpeg" src="../../media/OSC_Microbio_01_02_Haeckel.jpg"/>
 </media>
-<caption>Mynd Ernst
-Haeckels af lífsins tré, úr bók hans <emphasis effect="italics">General Morphology of Organisms</emphasis>
-frá 1866, innihélt þrjú ríki: Plantae (plöntur), Protista (frumverur) og
-Animalia (dýr). Hann bætti síðar við fjórða ríkinu, Monera
-(dreifkjörnungar), fyrir einfruma lífverur sem skortir kjarna.</caption>
+<caption>Mynd Ernst Haeckel af lífsins tré, úr bók hans <emphasis effect="italics">General Morphology of Organisms</emphasis> frá 1866, innihélt þrjú ríki: Plantae (plöntur), Protista (frumverur) og Animalia (dýr). Hann bætti síðar við fjórða ríkinu, Monera (dreifkjörnungar), fyrir einfruma lífverur án kjarna.</caption>
 </figure>
-<para id="fs-id1171359044741">Næstum 100 árum síðar, árið 1969,
-lagði bandaríski vistfræðingurinn Robert <term class="no-emphasis" id="term-00006">Whittaker</term>
-(1920–1980) til að bæta við öðru ríki – Fungi (sveppir) – í lífsins tré
-sitt. Tré Whittakers innihélt einnig flokkunarstig fyrir ofan ríki –
-yfirríki – til að greina á milli lífvera sem hafa himnubundna kjarna í
-frumum sínum (<term id="term-00007">heilkjörnungar</term>) og þeirra sem hafa það
-ekki (<term id="term-00008">dreifkjörnungar</term>). Yfirríkið Prokaryota innihélt
-aðeins ríkið Monera. Yfirríkið Eukaryota innihélt hin fjögur ríkin:
-Fungi, Protista, Plantae og Animalia. Fimm ríkja tré Whittakers var
-talið staðlað þróunartré í mörg ár.</para>
-<para id="fs-id1171360121355"><link target-id="OSC_Microbio_01_02_TreesTIME"/> sýnir hvernig lífsins
-tré hefur breyst með tímanum. Athugið að veirur finnast ekki í neinu
-þessara trjáa. Það er vegna þess að þær eru ekki gerðar úr frumum og því
-er erfitt að ákvarða hvar þær myndu passa inn í lífsins tré.</para>
+<para id="fs-id1171359044741">Næstum 100 árum síðar, árið 1969, lagði bandaríski vistfræðingurinn Robert <term class="no-emphasis" id="term-00006">Whittaker</term> (1920–1980) til að bæta við öðru ríki – Fungi (sveppir) – í sitt lífsins tré. Tré Whittakers innihélt einnig flokkunarstig fyrir ofan ríki – yfirríki – til að greina á milli lífvera sem hafa himnubundna kjarna í frumum sínum (<term id="term-00007">heilkjörnungar (e. eukaryote)</term>) og þeirra sem hafa það ekki (<term id="term-00008">dreifkjörnungar (e. prokaryote)</term>). Yfirríkið Prokaryota innihélt aðeins ríkið Monera. Yfirríkið Eukaryota innihélt hin fjögur ríkin: Fungi, Protista, Plantae og Animalia. Fimm ríkja tré Whittakers var talið staðlað þróunartré í mörg ár.</para>
+<para id="fs-id1171360121355"><link target-id="OSC_Microbio_01_02_TreesTIME"/> sýnir hvernig lífsins tré hefur breyst með tímanum. Athugið að veirur finnast ekki í neinu þessara trjáa. Það er vegna þess að þær eru ekki gerðar úr frumum og því er erfitt að ákvarða hvar þær myndu passa inn í lífsins tré.</para>
 <figure id="OSC_Microbio_01_02_TreesTIME">
 <media id="fs-id1171360190302" alt="This timeline begins with Carolus Linnaeus who developed a new way to categorize plants and animals in 1758. The image above Linnaeus shows a forked line with one branch labeled plants and the other labeled animals. In 1866, Ernst Haeckel wrote General Morphology of Organisms, proposing four kingdoms. The image above Haeckel shows a central line with Monera branching off the bottom, protists branching off next, then plants and finally animals. In 1969 Robert Whittaker proposed adding a fifth kingdom – fungi – to the tree of life. The image above Whittaker is the same as the one above Haeckel but includes an additional branch labeled fungi between plants and animals.">
 <image mime-type="image/jpeg" src="../../media/OSC_Microbio_01_02_TreesTIME.jpg"/>
 </media>
-<caption>Þessi
-tímalína sýnir hvernig lögun lífsins tré hefur breyst í gegnum aldirnar.
-Enn þann dag í dag er flokkunarfræði lífvera stöðugt endurmetin og
-betrumbætt með tækniframförum.</caption>
+<caption>Þessi tímalína sýnir hvernig lögun lífsins tré hefur breyst í gegnum aldirnar. Enn þann dag í dag er flokkunarfræði lífvera stöðugt endurmetin og betrumbætt með framförum í tækni.</caption>
 </figure>
 <note id="fs-id1171360064729" class="microbiology check-your-understanding">
 <list id="fs-id1171360602556" list-type="bulleted" bullet-style="bullet">
-<item>Briefly summarize how our evolving understanding of microorganisms has contributed to changes in the way that organisms are classified.</item>
+<item>Lýstu í stuttu máli hvernig vaxandi skilningur okkar á örverum hefur stuðlað að breytingum á því hvernig lífverur eru flokkaðar.</item>
 </list>
 </note>
 <note id="fs-id1171360143675" class="microbiology clinical-focus">
 <title>2. hluti</title>
-<para id="fs-id1171360140171">Sýklalyf eru sérstaklega hönnuð
-til að drepa eða hindra vöxt baktería. En eftir nokkra daga á
-sýklalyfjum sýnir Cora engin merki um bata. Einnig komu heila- og
-mænuvökvaræktanir hennar neikvæðar úr rannsóknarstofunni. Þar sem
-bakteríur eða sveppir einangruðust ekki úr heila- og mænuvökvasýni Coru
-útilokar læknir hennar bakteríu- og sveppaheilahimnubólgu.
-Veiruheilahimnubólga er enn möguleiki.</para>
-<para id="fs-id1171360446018">Hins vegar tilkynnir Cora nú um
-nokkur ný og áhyggjuefni. Hún er farin að eiga erfitt með gang.
-Vöðvastífleiki hennar hefur breiðst út frá hálsinum til annarra hluta
-líkamans og útlimir hennar kippast stundum ósjálfrátt til. Að auki
-versna vitræn einkenni Coru. Á þessum tímapunkti verður læknir Coru mjög
-áhyggjufullur og pantar fleiri prófanir á heila- og mænuvökvasýnunum.</para>
+<para id="fs-id1171360140171">Sýklalyf eru sérstaklega hönnuð til að drepa eða hindra vöxt baktería. En eftir nokkra daga á sýklalyfjum sýnir Cora engin merki um bata. Einnig komu niðurstöður úr heila- og mænuvökvaræktunum hennar neikvæðar frá rannsóknarstofunni. Þar sem engar bakteríur eða sveppir voru einangraðir úr heila- og mænuvökvasýni Coru útilokar læknirinn hennar bakteríu- og sveppaheilahimnubólgu. Veiruheilahimnubólga er enn möguleiki.</para>
+<para id="fs-id1171360446018">Hins vegar tilkynnir Cora nú um nokkur ný og áhyggjuefni. Hún er farin að eiga erfitt með gang. Vöðvastífleikinn hefur breiðst út frá hálsinum til annarra hluta líkamans og útlimir hennar kippast stundum ósjálfrátt til. Að auki versna vitræn einkenni Coru. Á þessum tímapunkti verður læknir Coru mjög áhyggjufullur og pantar fleiri prófanir á heila- og mænuvökvasýnunum.</para>
 <list id="fs-id1171360504430" list-type="bulleted" bullet-style="bullet">
-<item>What types of microorganisms could be causing Cora’s symptoms?</item>
+<item>Hvers konar örverur gætu valdið einkennum Coru?</item>
 </list>
-<para id="fs-id1171360197320"><emphasis effect="italics">Farðu í <link target-id="fs-id1171360265556">næsta</link>
-klíníska áherslubox. Farðu aftur í <link target-id="fs-id1171360313936">fyrra</link> klíníska
-áherslubox.</emphasis></para>
+<para id="fs-id1171360197320">[[i:Hoppaðu í <link document="m58783" target-id="fs-id1171360265556">next</link> næsta klíníska áherslubox. Farðu aftur í <link document="m58781" target-id="fs-id1171360313936">previous</link> fyrri klíníska áherslubox.]]</para>
 </note>
 </section>
 <section id="fs-id1171360061757">
-<title>Hlutverk erfðafræðinnar í
-nútíma flokkunarfræði</title>
-<para id="fs-id1171360437698">Tré Haeckels og Whittakers settu
-fram tilgátur um þróunarsögu mismunandi lífvera byggðar á auðsæjum
-einkennum
-
-. En með tilkomu sameindaerfðafræðinnar seint á 20. öld komu í ljós
-aðrar leiðir til að skipuleggja þróunartré. Erfðafræðilegar aðferðir
-gera kleift að bera saman allar lifandi lífverur á staðlaðan hátt án
-þess að reiða sig á sjáanlega eiginleika sem geta oft verið huglægir.
-Nútímaflokkunarfræði byggir mikið á samanburði á kjarnsýrum
-(deoxýríbósakjarnsýru [DNA] eða ríbósakjarnsýru [RNA]) eða prótínum
-frá mismunandi lífverum. Því líkari sem kjarnsýrurnar og prótínin eru
-milli tveggja lífvera, því nánar skyldar eru þær taldar vera.</para>
-<para id="fs-id1171360545720">Á áttunda áratugnum uppgötvaði
-bandaríski örverufræðingurinn Carl <term class="no-emphasis" id="term-00009">Woese</term> það sem
-virtist vera „lifandi skrá“ yfir þróun lífvera. Hann og samstarfsmaður
-hans George <term class="no-emphasis" id="term-00010">Fox</term> bjuggu til erfðafræðilegt lífsins tré
-byggt á líkindum og mismun sem þeir sáu í genaröðum sem kóða fyrir litlu
-undireiningu ríbósóm RNA (rRNA) mismunandi lífvera. Í því ferli
-uppgötvuðu þeir að ákveðin tegund <term class="no-emphasis" id="term-00011">baktería</term>, sem kallast
-fornbakteríur (nú þekktar einfaldlega sem
-<term class="no-emphasis" id="term-00012">fornbakteríur</term>), voru verulega frábrugðnar öðrum
-bakteríum og heilkjörnungum hvað varðar genaraðir litlu undireiningar
-rRNA þeirra. Til að koma til móts við þennan mun bjuggu þeir til tré með
-þremur lénum fyrir ofan ríki: Fornbakteríur, bakteríur og heilkjörnungar
-(<link target-id="OSC_Microbio_01_02_Woese"/>). Greining á genaröðum litlu undireiningar rRNA bendir til
-þess að fornbakteríur, bakteríur og heilkjörnungar hafi öll þróast frá
-sameiginlegri forfrumu. Tréð er skekkt til að sýna nánara þróunarlegt
-samband milli fornbaktería og heilkjörnunga en þau hafa við bakteríur.</para>
+<title>Hlutverk erfðafræðinnar í nútíma flokkunarfræði</title>
+<para id="fs-id1171360437698">Tré Haeckels og Whittakers settu fram tilgátur um þróunarsögu mismunandi lífvera byggðar á auðsjáanlegum einkennum. En tilkoma sameindaerfðafræðinnar seint á 20. öld leiddi í ljós aðrar leiðir til að skipuleggja þróunartré. Erfðafræðilegar aðferðir gera kleift að bera saman allar lífverur á staðlaðan hátt án þess að reiða sig á sýnileg einkenni sem geta oft verið huglæg. Nútíma flokkunarfræði byggir að miklu leyti á samanburði á kjarnsýrum (deoxýríbósakjarnsýru [DNA] eða ríbósakjarnsýru [RNA]) eða próteinum frá mismunandi lífverum. Því líkari sem kjarnsýrurnar og próteinin eru milli tveggja lífvera, því nátengdari eru þær taldar vera.</para>
+<para id="fs-id1171360545720">Á áttunda áratugnum uppgötvaði bandaríski örverufræðingurinn Carl <term class="no-emphasis" id="term-00009">Woese</term> það sem virtist vera „<term class="no-emphasis" id="term-00010">lifandi skrá (e. fox)</term>“ yfir þróun lífvera. Hann og samstarfsmaður hans George <term class="no-emphasis" id="term-00011">Fox (e. bacteria)</term> bjuggu til erfðafræðilegt <term class="no-emphasis" id="term-00012">lífsins tré (e. archaea)</term> byggt á líkindum og mismun sem þeir sáu í genaröðum sem kóða fyrir litla undireiningu ríbósóm-RNA (rRNA) mismunandi lífvera. Í því ferli uppgötvuðu þeir að ákveðin tegund <term>baktería</term>, sem kallast fornbakteríur (nú þekktar einfaldlega sem <term>fornbakteríur</term>), voru verulega frábrugðnar öðrum bakteríum og heilkjörnungum hvað varðar genaraðir þeirra fyrir litla undireiningu rRNA. Til að koma til móts við þennan mun bjuggu þeir til tré með þremur lénum fyrir ofan ríki: Fornbakteríur, bakteríur og heilkjörnungar (<link target-id="OSC_Microbio_01_02_Woese"/>). Greining á genaröðum lítilla undireininga rRNA bendir til þess að fornbakteríur, bakteríur og heilkjörnungar hafi öll þróast frá sameiginlegri forfrumu. Tréð er skekkt til að sýna nánara þróunarsamband milli fornbaktería og heilkjörnunga en þau hafa við bakteríur.</para>
 <figure id="OSC_Microbio_01_02_Woese">
 <media id="fs-id1171360389436" alt="The phylogenetic Tree of Life. A drawing of branching lines. The central line at the bottom branches into two main branches. On the left branch is the bacterial group. The branch to the right subdivides to the Archaea and Eukarya groups. Additional branches on the Eukarya group from bottom to top are: Diplomonads, Microsporidia, Trichomonads, Flagellates, Entamoebae, Smile molds, Ciliates, Plants, Fungi and Animals (which has a star labeled “you are here). Brances along the Archaea group from bottom to top are: Pyrodicticu, Thermoproteus, T. celer, Methanococcus, Methanobacterium, Methanosarcina, and Halophiles. Branches in the Bacterial group from bottom to top are: Aquifex, Thermotoga, Green filamentous bacteria, Bacteroides Cytophaga, Gram positives, Planctomyces, Cyanobacteria, Proteobacteria, and Spirocheres.">
 <image mime-type="image/jpeg" src="../../media/OSC_Microbio_01_02_Woese.jpg"/>
 </media>
-<caption>Þróunartré Woese
-og Fox inniheldur þrjú lén: Bakteríur, fornbakteríur og heilkjörnunga.
-Lénin fornbakteríur og bakteríur innihalda allar dreifkjörnungalífverur
-og heilkjörnungar innihalda allar heilkjörnungalífverur. (heimild:
-breyting á verki eftir Eric Gaba)</caption>
+<caption>Þróunartré Woese og Fox inniheldur þrjú lén: Bakteríur, fornbakteríur og heilkjörnunga. Lénin fornbakteríur og bakteríur innihalda allar dreifkjörnungalífverur og heilkjörnungar innihalda allar heilkjörnungalífverur. (heimild: breyting á verki eftir Eric Gaba)</caption>
 </figure>
-<para id="fs-id1171360219115">Vísindamenn halda áfram að nota
-greiningu á RNA, DNA og prótínum til að ákvarða hvernig lífverur eru
-skyldar. Ein áhugaverð og flókin uppgötvun er láréttur genaflutningur –
-þegar gen einnar tegundar er tekið upp í erfðamengi annarrar lífveru.
-Láréttur genaflutningur er sérstaklega algengur í örverum og getur gert
-það erfitt að ákvarða hvernig lífverur eru þróunarlega skyldar. Þar af
-leiðandi hugsa sumir vísindamenn nú í skilmálum „lífsvefja“ frekar en
-„lífstrjáa“.</para>
+<para id="fs-id1171360219115">Vísindamenn halda áfram að nota greiningu á RNA, DNA og próteinum til að ákvarða hvernig lífverur eru skyldar. Ein áhugaverð og flókin uppgötvun er láréttur genaflutningur – þegar gen einnar tegundar er tekið upp í erfðamengi annarrar lífveru. Láréttur genaflutningur er sérstaklega algengur í örverum og getur gert það erfitt að ákvarða hvernig lífverur eru þróunarlega skyldar. Þar af leiðandi hugsa sumir vísindamenn nú í skilmálum „<term>lífsins vefja</term>“ frekar en „<term>lífsins trjáa</term>“.</para>
 <note id="fs-id1171360236294" class="microbiology check-your-understanding">
 <list id="fs-id1171359011758">
-<item>In modern taxonomy, how do scientists determine how closely two organisms are related?</item>
-<item>Explain why the branches on the “tree of life” all originate from a single “trunk.”</item>
+<item>Hvernig ákvarða vísindamenn í nútíma flokkunarfræði hversu nátengdar tvær lífverur eru?</item>
+<item>Útskýrðu hvers vegna greinar „<term>lífsins trés</term>“ eiga allar uppruna sinn í einum „stofni“.</item>
 </list>
 </note>
 </section>
 <section id="fs-id1171360058084">
 <title>Nafngiftir örvera</title>
-<para id="fs-id1171358972969">Við þróun flokkunarfræði sinnar
-notaði Linné kerfi <term id="term-00013">tvínafnakerfis</term>, tveggja orða
-nafnakerfi til að auðkenna lífverur eftir ættkvísl og tegundarheiti. Til
-dæmis eru nútímamenn í ættkvíslinni <emphasis effect="italics">Homo</emphasis> og hafa tegundarheitið
-<emphasis effect="italics">sapiens</emphasis>, þannig að vísindalegt nafn þeirra í tvínafnakerfinu er <emphasis effect="italics">Homo
-sapiens</emphasis>. Í tvínafnakerfinu er ættkvíslarhluti nafnsins alltaf skrifaður
-með stórum staf; á eftir því kemur tegundarheitið, sem er ekki skrifað
-með stórum staf. Bæði nöfnin eru skáletruð. Þegar vísað er til
-manntegundarinnar væri tvínafnakerfið <emphasis effect="italics">Homo sapiens</emphasis>.</para>
-<para id="fs-id1171358982476">Flokkunarfræðileg nöfn á 18. til
-20. öld voru venjulega dregin af latínu, þar sem það var algengt
-tungumál sem vísindamenn notuðu þegar flokkunarkerfi voru fyrst búin
-til. Í dag er hægt að gefa nýuppgötvuðum lífverum nöfn sem eru dregin af
-latínu, grísku eða ensku. Stundum endurspegla þessi nöfn einhvern
-sérstakan eiginleika lífverunnar; í öðrum tilvikum eru örverur nefndar
-eftir vísindamönnunum sem uppgötvuðu þær. Fornbakterían <emphasis effect="italics">Haloquadratum
-walsbyi</emphasis> er dæmi um báðar þessar nafngiftir. Ættkvíslin,
-<emphasis effect="italics">Haloquadratum</emphasis>, lýsir saltvatnsbúsvæði örverunnar (<emphasis effect="italics">halo</emphasis> er dregið af
-gríska orðinu fyrir „salt“) sem og fyrirkomulagi ferkantaðra frumna
-hennar, sem eru raðaðar í ferkantaða klasa af fjórum frumum (<emphasis effect="italics">quadratum</emphasis>
-er latína fyrir „ferhyrndur“). Tegundin, <emphasis effect="italics">walsbyi</emphasis>, er nefnd eftir
-Anthony Edward Walsby, örverufræðingnum sem uppgötvaði <emphasis effect="italics">Haloquadratum
-walsbyi</emphasis> árið 1980. Þó að það gæti virst auðveldara að gefa lífveru
-algengt lýsandi nafn – eins og rauðhöfða spæta – getum við ímyndað okkur
-hvernig það gæti orðið vandamál. Hvað gerist þegar önnur tegund spætu
-með rauðan haus er uppgötvuð? Kerfisbundna nafngiftin sem vísindamenn
-nota útilokar þetta hugsanlega vandamál með því að úthluta hverri
-lífveru einu, einstöku tveggja orða nafni sem er viðurkennt af
-vísindamönnum um allan heim.</para>
-<para id="fs-id1171360589985">Í þessum texta munum við
-venjulega stytta ættkvísl og tegund lífveru eftir fyrstu umfjöllun.
-Styttingin er einfaldlega fyrsti stafur ættkvíslarinnar, á eftir punkti
-og fullu nafni tegundarinnar. Til dæmis er bakterían <emphasis effect="italics">Escherichia coli</emphasis>
-stytt í <emphasis effect="italics">E. coli</emphasis> í styttri mynd. Þú munt rekast á sömu venju í öðrum
-vísindatextum líka.</para>
+<para id="fs-id1171358972969">Við þróun flokkunarfræði sinnar notaði Linnaeus kerfi <term id="term-00013">tvínefnis (e. binomial nomenclature)</term>, tveggja orða nafnakerfi til að auðkenna lífverur eftir ættkvísl og tegundarheiti. Til dæmis eru nútímamenn í ættkvíslinni <emphasis effect="italics">Homo</emphasis> og hafa tegundarheitið <emphasis effect="italics">sapiens</emphasis>, þannig að vísindalegt nafn þeirra í tvínefni er <emphasis effect="italics">Homo sapiens</emphasis>. Í tvínefni er ættkvíslarhluti nafnsins alltaf skrifaður með stórum staf; á eftir því kemur tegundarheitið, sem er ekki skrifað með stórum staf. Bæði nöfnin eru skáletruð. Þegar vísað er til manntegundarinnar væri tvínefnið <emphasis effect="italics">Homo sapiens</emphasis>.</para>
+<para id="fs-id1171358982476">Flokkunarfræðileg nöfn frá 18. til 20. aldar voru yfirleitt dregin af latínu, þar sem það var algengt tungumál sem vísindamenn notuðu þegar flokkunarkerfi voru fyrst búin til. Í dag er hægt að gefa nýuppgötvuðum lífverum nöfn sem eru dregin af latínu, grísku eða ensku. Stundum endurspegla þessi nöfn einhvern sérstakan eiginleika lífverunnar; í öðrum tilvikum eru örverur nefndar eftir vísindamönnunum sem uppgötvuðu þær. Fornbakterían <emphasis effect="italics">Haloquadratum walsbyi</emphasis> er dæmi um báðar þessar nafngiftir. Ættkvíslin, <emphasis effect="italics">Haloquadratum</emphasis>, lýsir saltvatnsbúsvæði örverunnar (<emphasis effect="italics">halo</emphasis> er dregið af gríska orðinu fyrir „salt“) auk fyrirkomulags ferkantaðra frumna hennar, sem eru raðaðar í ferkantaða klasa af fjórum frumum (<emphasis effect="italics">quadratum</emphasis> er latína fyrir „fjórfalt“). Tegundin, <emphasis effect="italics">walsbyi</emphasis>, er nefnd eftir Anthony Edward Walsby, örverufræðingnum sem uppgötvaði <emphasis effect="italics">Haloquadratum walsbyi</emphasis> árið 1980. Þótt það gæti virst auðveldara að gefa lífveru algengt lýsandi nafn – eins og rauðhöfða spæta – getum við ímyndað okkur hvernig það gæti orðið vandamál. Hvað gerist þegar önnur tegund spætu með rauðan höfuðlit er uppgötvuð? Kerfisbundin nafngift sem vísindamenn nota útilokar þetta hugsanlega vandamál með því að úthluta hverri lífveru einu, einstöku tveggja orða nafni sem er viðurkennt af vísindamönnum um allan heim.</para>
+<para id="fs-id1171360589985">Í þessum texta munum við yfirleitt stytta ættkvísl og tegund lífveru eftir að hún er fyrst nefnd. Styttingin er einfaldlega fyrsti stafur ættkvíslarinnar, á eftir punkti og fullu nafni tegundarinnar. Til dæmis er bakterían <emphasis effect="italics">Escherichia coli</emphasis> stytt í <emphasis effect="italics">E. coli</emphasis> í styttri mynd. Þú munt rekast á sömu venju í öðrum vísindatextum.</para>
 </section>
 <section id="fs-id1171360404117">
-<title>Handbækur Bergey's</title>
-<para id="fs-id1171360346467">Hvort sem er í tré eða vef getur
-verið erfitt að auðkenna og flokka örverur. Án auðsjáanlegra stórsærra
-eiginleika eins og fjaðra, fóta eða felds verða vísindamenn að fanga,
-rækta og finna leiðir til að rannsaka lífefnafræðilega eiginleika þeirra
-til að aðgreina og flokka örverur. Þrátt fyrir þessar hindranir bjó
-hópur örverufræðinga til og uppfærði sett af handbókum til að auðkenna
-og flokka örverur. Fyrst gefin út árið 1923 og síðan uppfærð mörgum
-sinnum, eru <term class="no-emphasis" id="term-00014"><emphasis effect="italics">Bergey’s Manual</emphasis></term> <emphasis effect="italics">of Determinative
-Bacteriology</emphasis> og <emphasis effect="italics">Bergey’s Manual of Systematic Bacteriology</emphasis> staðlaðar
-heimildir til að auðkenna og flokka mismunandi dreifkjörnunga. (Viðauki
-D í þessari kennslubók er að hluta til byggður á handbókum Bergey's;
-hann sýnir hvernig lífverurnar sem koma fram í þessari kennslubók eru
-flokkaðar.) Vegna þess að svo margar bakteríur líta eins út verður að
-nota aðferðir sem byggja á ósýnilegum eiginleikum til að auðkenna þær.
-Til dæmis er hægt að nota lífefnafræðilegar prófanir til að auðkenna
-efni sem eru einstök fyrir ákveðnar tegundir. Sömuleiðis er hægt að nota
-sermisfræðilegar prófanir til að bera kennsl á sértæk mótefni sem
-hvarfast við prótein sem finnast í ákveðnum tegundum. Að lokum er hægt
-að nota raðgreiningu á DNA og rRNA bæði til að bera kennsl á tiltekna
-bakteríutegund og til að flokka nýfundnar tegundir.</para>
+<title>Handbækur Bergey</title>
+<para id="fs-id1171360346467">Hvort sem er í tré eða vef getur verið erfitt að auðkenna og flokka örverur. Án auðsjáanlegra stórsærra eiginleika eins og fjaðra, fóta eða felds verða vísindamenn að fanga, rækta og finna leiðir til að rannsaka lífefnafræðilega eiginleika þeirra til að aðgreina og flokka örverur. Þrátt fyrir þessar hindranir bjó hópur örverufræðinga til og uppfærði safn handbóka til að auðkenna og flokka örverur. Fyrst gefin út árið 1923 og síðan uppfærð mörgum sinnum, eru <term class="no-emphasis" id="term-00014"><emphasis effect="italics">Bergey’s Manual</emphasis> (e. bergey’s manual)</term> <emphasis effect="italics">of Determinative Bacteriology</emphasis> og <emphasis effect="italics">Bergey’s Manual of Systematic Bacteriology</emphasis> staðlaðar heimildir til að auðkenna og flokka mismunandi dreifkjörnunga. (<link document="m58949">Appendix D</link> þessarar kennslubókar er að hluta til byggður á handbókum Bergey; hann sýnir hvernig lífverurnar sem koma fram í þessari kennslubók eru flokkaðar.) Vegna þess að svo margar bakteríur líta eins út verður að nota aðferðir sem byggjast á ósýnilegum eiginleikum til að auðkenna þær. Til dæmis er hægt að nota lífefnafræðilegar prófanir til að auðkenna efni sem eru einstök fyrir ákveðnar tegundir. Sömuleiðis er hægt að nota sermisfræðilegar prófanir til að auðkenna sérstök mótefni sem munu bregðast við próteinum sem finnast í ákveðnum tegundum. Að lokum er hægt að nota DNA- og rRNA-raðgreiningu bæði til að auðkenna tiltekna bakteríutegund og til að flokka nýuppgötvaðar tegundir.</para>
 <note id="fs-id1171359199455" class="microbiology check-your-understanding">
 <list id="fs-id1171360357431" list-type="bulleted" bullet-style="bullet">
-<item>What is binomial nomenclature and why is it a useful tool for naming organisms?</item>
-<item>Explain why a resource like one of Bergey’s manuals would be helpful in identifying a microorganism in a sample.</item>
+<item>Hvað er tvínefni og hvers vegna er það gagnlegt tæki til að nefna lífverur?</item>
+<item>Útskýrðu hvers vegna heimild eins og ein af handbókum Bergey væri gagnleg við að auðkenna örveru í sýni.</item>
 </list>
 </note>
 <note id="fs-id1171359020558" class="microbiology micro-connection">
-<title>Sama nafn, annar
-stofn</title>
-<para id="fs-id1171360611198">Innan einnar tegundar örvera geta
-verið nokkrar undirtegundir sem kallast stofnar. Þótt mismunandi stofnar
-geti verið nánast eins erfðafræðilega geta þeir haft mjög ólíka
-eiginleika. Bakterían <emphasis effect="italics">Escherichia coli</emphasis> er alræmd fyrir að valda
-matareitrun og niðurgangi ferðamanna. Hins vegar eru í raun margir
-mismunandi stofnar af <emphasis effect="italics">E. coli</emphasis> og þeir eru misjafnlega færir um að
-valda sjúkdómum.</para>
-<para id="fs-id1171360613244">Einn sjúkdómsvaldandi <emphasis effect="italics">E.
-coli</emphasis>-stofn sem þú gætir hafa heyrt um er <emphasis effect="italics">E. coli</emphasis> O157:H7. Hjá mönnum
-getur sýking af völdum <emphasis effect="italics">E. coli</emphasis> O157:H7 valdið kviðverkjum og
-niðurgangi. Sýkingin á sér venjulega uppruna í menguðu vatni eða mat,
-einkum hráu grænmeti og vanelduðu kjöti. Á tíunda áratugnum komu upp
-nokkrir stórir faraldrar af <emphasis effect="italics">E. coli</emphasis> O157:H7 sem taldir voru eiga
-uppruna sinn í vanelduðum hamborgurum.</para>
-<para id="fs-id1171360266354">Þótt <emphasis effect="italics">E. coli</emphasis> O157:H7 og nokkrir
-aðrir stofnar hafi gefið <emphasis effect="italics">E. coli</emphasis> slæmt orðspor valda flestir <emphasis effect="italics">E.
-coli</emphasis>-stofnar ekki sjúkdómum. Reyndar geta sumir þeirra verið gagnlegir.
-Mismunandi stofnar af <emphasis effect="italics">E. coli</emphasis> sem finnast náttúrulega í þörmum okkar
-hjálpa okkur að melta matinn, sjá okkur fyrir nokkrum nauðsynlegum efnum
-og berjast gegn sjúkdómsvaldandi örverum.</para>
+<title>Sama nafn, annar stofn</title>
+<para id="fs-id1171360611198">Innan einnar tegundar örvera geta verið nokkrar undirtegundir sem kallast stofnar. Þótt mismunandi stofnar geti verið nánast eins erfðafræðilega, geta þeir haft mjög mismunandi eiginleika. Bakterían <emphasis effect="italics">Escherichia coli</emphasis> er alræmd fyrir að valda matareitrun og niðurgangi ferðamanna. Hins vegar eru í raun margir mismunandi stofnar af <emphasis effect="italics">E. coli</emphasis> og þeir eru misjafnlega færir um að valda sjúkdómum.</para>
+<para id="fs-id1171360613244">Einn sjúkdómsvaldandi <emphasis effect="italics">E. coli</emphasis> stofn sem þú gætir hafa heyrt um er <emphasis effect="italics">E. coli</emphasis> O157:H7. Hjá mönnum getur sýking af völdum <emphasis effect="italics">E. coli</emphasis> O157:H7 valdið kviðverkjum og niðurgangi. Sýkingin á venjulega uppruna sinn í menguðu vatni eða mat, sérstaklega hráu grænmeti og vanelduðu kjöti. Á tíunda áratugnum komu upp nokkrir stórir faraldrar af <emphasis effect="italics">E. coli</emphasis> O157:H7 sem taldir voru eiga uppruna sinn í vanelduðum hamborgurum.</para>
+<para id="fs-id1171360266354">Þótt <emphasis effect="italics">E. coli</emphasis> O157:H7 og nokkrir aðrir stofnar hafi gefið <emphasis effect="italics">E. coli</emphasis> slæmt orðspor, valda flestir <emphasis effect="italics">E. coli</emphasis> stofnar ekki sjúkdómum. Reyndar geta sumir þeirra verið gagnlegir. Mismunandi stofnar af <emphasis effect="italics">E. coli</emphasis> sem finnast náttúrulega í þörmum okkar hjálpa okkur að melta matinn, sjá okkur fyrir nauðsynlegum efnum og berjast gegn sjúkdómsvaldandi örverum.</para>
 </note>
 <note id="fs-id1171360278154" class="microbiology link-to-learning">
 
-<para id="fs-id1171360338844">Lærðu meira um þróunartré með því
-að skoða gagnvirka lífsins tré frá Wellcome Trust.
-<link url="https://www.openstax.org/l/22wellcome">Vefsíðan</link> inniheldur upplýsingar, myndir og
-hreyfimyndir um margar mismunandi lífverur. Veldu tvær lífverur til að
-sjá hvernig þær eru skyldar frá þróunarfræðilegu sjónarmiði.</para>
+<para id="fs-id1171360338844">Lærðu meira um þróunartré með því að skoða gagnvirkt lífsins tré frá Wellcome Trust. <link url="https://www.openstax.org/l/22wellcome">Vefsíðan</link> inniheldur upplýsingar, myndir og hreyfimyndir um margar mismunandi lífverur. Veldu tvær lífverur til að sjá hvernig þær eru skyldar frá þróunarfræðilegu sjónarmiði.</para>
 </note>
 </section>
-<para id="fs-id1171359041036"><term id="term-00001">Flokkunarfræði</term>
-er flokkun, lýsing, greining og nafngift lifandi lífvera. Flokkun er sú
-iðja að skipuleggja lífverur í mismunandi hópa á grundvelli
-sameiginlegra eiginleika þeirra. Frægasti flokkunarfræðingur fyrri tíma
-var sænskur grasafræðingur, dýrafræðingur og læknir að nafni Carolus
-<term class="no-emphasis" id="term-00002">Linnaeus</term> (1701–1778). Árið 1735 gaf Linnaeus út
-<emphasis effect="italics">Systema Naturae</emphasis>, 11 blaðsíðna bækling þar sem hann lagði til
-<term class="no-emphasis" id="term-00003">flokkunarkerfi Linnés</term>, kerfi til að flokka og nefna
-lífverur með stöðluðu sniði svo vísindamenn gætu rætt um lífverur með
-samræmdum hugtökum. Hann hélt áfram að endurskoða og bæta við bókina,
-sem óx í mörg bindi (<link target-id="OSC_Microbio_01_02_Linnaeus"/>).</para>
+<para id="fs-id1171359041036"><term id="term-00001">Flokkunarfræði (e. taxonomy)</term> er flokkun, lýsing, greining og nafngift lifandi lífvera. Flokkun er sú aðferð að raða lífverum í mismunandi hópa byggt á sameiginlegum einkennum þeirra. Frægasti flokkunarfræðingur fyrri tíma var sænskur grasafræðingur, dýrafræðingur og læknir að nafni Carolus <term class="no-emphasis" id="term-00002">Linnaeus</term> (1701–1778). Árið 1735 gaf Linnaeus út <emphasis effect="italics">Systema Naturae</emphasis>, 11 blaðsíðna bækling þar sem hann lagði til <term class="no-emphasis" id="term-00003">flokkunarkerfi Linnaeusar (e. linnaean taxonomy)</term>, kerfi til að flokka og nefna lífverur með stöðluðu sniði svo vísindamenn gætu rætt um lífverur með samræmdri hugtakanotkun. Hann hélt áfram að endurskoða og bæta við bókina, sem óx og varð að mörgum bindum (<link target-id="OSC_Microbio_01_02_Linnaeus"/>).</para>
 <figure id="OSC_Microbio_01_02_Linnaeus">
 <media id="fs-id1171359021000" alt="A painting of Carolus Linnaeus holding a flower.">
 <image mime-type="image/jpeg" src="../../media/OSC_Microbio_01_02_Linnaeus.jpg"/>
 </media>
-<caption>Sænski
-grasafræðingurinn, dýrafræðingurinn og læknirinn Carolus Linnaeus þróaði
-nýtt kerfi til að flokka plöntur og dýr. Á þessari portrettmynd frá 1853
-eftir Hendrik Hollander heldur Linnaeus á tvíblómi, sem nefnt var
-<emphasis effect="italics">Linnaea borealis</emphasis> honum til heiðurs.</caption>
+<caption>Sænski grasafræðingurinn, dýrafræðingurinn og læknirinn Carolus Linnaeus þróaði nýtt kerfi til að flokka plöntur og dýr. Á þessari portrettmynd frá 1853 eftir Hendrik Hollander heldur Linnaeus á tvíblómi, nefnt <emphasis effect="italics">Linnaea borealis</emphasis> honum til heiðurs.</caption>
 </figure>
-<para id="fs-id1171360122119">Í flokkunarfræði sinni skipti
-Linnaeus náttúrunni í þrjú ríki: dýraríki, plönturíki og steinaríki
-(steinaríkið var síðar fellt niður). Innan dýra- og plönturíkisins
-flokkaði hann lífverur með stigveldi sífellt sértækari þrepa og
-undirþrepa á grundvelli líkinda þeirra. Nöfn þrepanna í upprunalegu
-flokkunarfræði Linnés voru ríki, fylking, ættbálkur, ætt, ættkvísl
-(fleirtala: ættkvíslir) og tegund. Tegund var og er enn sértækasta og
-grundvallaratriði flokkunarfræðinnar.</para>
+<para id="fs-id1171360122119">Í flokkunarfræði sinni skipti Linnaeus náttúrunni í þrjú ríki: dýraríki, plönturíki og steinaríki (steinaríkið var síðar fellt niður). Innan dýra- og plönturíkisins flokkaði hann lífverur með stigveldi sífellt sértækari þrepa og undirþrepa byggt á líkindum þeirra. Nöfn þrepanna í upprunalegri flokkunarfræði Linnaeusar voru ríki, fylking, ættbálkur, ætt, ættkvísl (ft. ættkvíslir) og tegund. Tegund var, og er enn, sértækasta og grunneining flokkunarfræðinnar.</para>
 </section>
 <section id="fs-id1171360215893" class="summary">
 <list id="fs-id1171360065495" list-type="bulleted" bullet-style="bullet">
-<item>Carolus Linnaeus þróaði
-flokkunarkerfi til að flokka lífverur í skylda hópa.</item>
-<item><emphasis effect="bold">Tvínefnakerfi</emphasis> gefur
-lífverum latnesk vísindaheiti með ættkvíslar- og tegundarheiti.</item>
-<item><emphasis effect="bold">Þróunartré</emphasis> er leið til
-að sýna hvernig talið er að mismunandi lífverur séu skyldar hver annarri
-frá þróunarfræðilegu sjónarmiði.</item>
-<item>Fyrsta þróunartréð
-innihélt ríki fyrir plöntur og dýr; Ernst Haeckel lagði til að bæta við
-ríki fyrir frumverur.</item>
-<item>Tré Roberts Whittaker
-innihélt fimm ríki: Animalia, Plantae, Protista, Fungi og Monera.</item>
-<item>Carl Woese notaði
-ríbósóm-RNA úr lítilli undireiningu til að búa til þróunartré sem
-flokkar lífverur í þrjú lén á grundvelli erfðafræðilegra líkinda þeirra.</item>
-<item>Handbækur Bergey um
-greiningar- og kerfisbundna bakteríufræði eru staðlaðar heimildir til að
-greina og flokka bakteríur.</item>
-<item>Hægt er að greina
-bakteríur með lífefnafræðilegum prófunum, DNA/RNA-greiningu og
-sermisfræðilegum prófunaraðferðum..</item>
+<item>Carolus Linnaeus þróaði flokkunarkerfi til að raða lífverum í skylda hópa.</item>
+<item><emphasis effect="bold">Tvínefnakerfi</emphasis> gefur lífverum latnesk vísindaheiti með tilnefningu ættkvíslar og tegundar.</item>
+<item><emphasis effect="bold">Þróunartré</emphasis> er leið til að sýna hvernig talið er að mismunandi lífverur séu skyldar hver annarri frá þróunarfræðilegu sjónarmiði.</item>
+<item>Fyrsta þróunartréð innihélt ríki fyrir plöntur og dýr; Ernst Haeckel lagði til að bæta við ríki fyrir frumverur.</item>
+<item>Tré Roberts Whittaker innihélt fimm ríki: Animalia, Plantae, Protista, Fungi og Monera.</item>
+<item>Carl Woese notaði ríbósóm RNA úr lítilli undireiningu til að búa til þróunartré sem flokkar lífverur í þrjú lén byggt á erfðafræðilegum líkindum þeirra.</item>
+<item>Handbækur Bergey um greiningar- og kerfisbundna bakteríufræði eru staðlaðar heimildir til að greina og flokka bakteríur, í sömu röð.</item>
+<item>Bakteríur má greina með lífefnafræðilegum prófum, DNA/RNA greiningu og sermisfræðilegum prófunaraðferðum.</item>
 </list>
 </section>
 <section id="fs-id1171360247027" class="multiple-choice">
 <title>Krossaspurningar</title>
 <exercise id="fs-id1171360344461">
 <problem id="fs-id1171360199260">
-<para id="fs-id1171359079175">Hvað af eftirfarandi var EKKI
-ríki í flokkunarfræði Linnés?</para>
+<para id="fs-id1171359079175">Hvað af eftirfarandi var EKKI ríki í flokkunarfræði Linnaeusar?</para>
 <list id="fs-id1171359176665" list-type="enumerated" number-style="upper-alpha">
 <item>animal</item>
 <item>mineral</item>
@@ -339,8 +135,7 @@ ríki í flokkunarfræði Linnés?</para>
 </exercise>
 <exercise id="fs-id1171360530144">
 <problem id="fs-id1171360351463">
-<para id="fs-id1171360369648">Hvað af eftirfarandi er rétt
-notkun á tvínafnakerfinu?</para>
+<para id="fs-id1171360369648">Hvað af eftirfarandi er rétt notkun á tvínefnakerfi?</para>
 <list id="fs-id1171360481550" list-type="enumerated" number-style="upper-alpha">
 <item>Homo Sapiens</item>
 <item><emphasis effect="italics">homo sapiens</emphasis></item>
@@ -354,8 +149,7 @@ notkun á tvínafnakerfinu?</para>
 </exercise>
 <exercise id="fs-id1171360274356">
 <problem id="fs-id1171360250237">
-<para id="fs-id1171360207131">Hvaða vísindamaður lagði til
-að bæta við ríki fyrir frumverur?</para>
+<para id="fs-id1171360207131">Hvaða vísindamaður lagði til að bæta við ríki fyrir frumverur?</para>
 <list id="fs-id1171359042239" list-type="enumerated" number-style="upper-alpha">
 <item>Carolus Linnaeus</item>
 <item>Carl Woese</item>
@@ -369,8 +163,7 @@ að bæta við ríki fyrir frumverur?</para>
 </exercise>
 <exercise id="fs-id1171360367608">
 <problem id="fs-id1171360346519">
-<para id="fs-id1171360497365">Hvað af eftirfarandi er ekki
-lén í þróunartré Woese og Fox?</para>
+<para id="fs-id1171360497365">Hvað af eftirfarandi er EKKI lén í þróunartré Woese og Fox?</para>
 <list id="fs-id1171360135856" list-type="enumerated" number-style="upper-alpha">
 <item>Plantae</item>
 <item>Bacteria</item>
@@ -384,8 +177,7 @@ lén í þróunartré Woese og Fox?</para>
 </exercise>
 <exercise id="fs-id1171360353040">
 <problem id="fs-id1171360566924">
-<para id="fs-id1171360215231">Hvað af eftirfarandi er
-staðlað heimildarrit til að greina bakteríur?</para>
+<para id="fs-id1171360215231">Hvað af eftirfarandi er staðlað rit til að greina bakteríur?</para>
 <list id="fs-id1171359072418" list-type="enumerated" number-style="upper-alpha">
 <item><emphasis effect="italics">Systema Naturae</emphasis></item>
 <item>Bergey’s <emphasis effect="italics">Manual of Determinative Bacteriology</emphasis></item>
@@ -402,9 +194,7 @@ staðlað heimildarrit til að greina bakteríur?</para>
 <title>Fylltu í eyðurnar</title>
 <exercise id="fs-id1171360225534">
 <problem id="fs-id1171360121703">
-<para id="fs-id1171360186862">Í tvínafnakerfinu inniheldur
-fræðiheiti lífveru <term><emphasis effect="italics"></term><term></emphasis> hennar og
-</term><term><emphasis effect="italics"></term></emphasis>__.</para>
+<para id="fs-id1171360186862">Í tvínefnakerfi inniheldur vísindaheiti lífveru ______<term> hennar og  (e.  and )</term>________.</para>
 </problem>
 <solution id="fs-id1172100922195">
 <para id="fs-id1172100527126">ættkvísl, tegund</para>
@@ -412,19 +202,15 @@ fræðiheiti lífveru <term><emphasis effect="italics"></term><term></emphasis> 
 </exercise>
 <exercise id="fs-id1171360233291">
 <problem id="fs-id1171360205735">
-<para id="fs-id1171359127221">Haeckel lagði til að bæta
-ríkjunum <term><emphasis effect="italics"></term><term></emphasis> og </term><term><emphasis effect="italics"></term></emphasis> við
-þróunartré sitt.</para>
+<para id="fs-id1171359127221">Haeckel lagði til að bæta ríkjunum ______<term> og  (e.  and )</term>______ við þróunartré sitt.</para>
 </problem>
 <solution id="fs-id1171358997601">
-<para id="fs-id1171359109936">Frumveruríki og
-dreifkjörnungaríki</para>
+<para id="fs-id1171359109936">Protista og Monera</para>
 </solution>
 </exercise>
 <exercise id="fs-id1171359056517">
 <problem id="fs-id1171359178156">
-<para id="fs-id1171360280926"><term><emphasis effect="italics"></term><term></emphasis></term> eru lífverur án himnubundinna
-kjarna.</para>
+<para id="fs-id1171360280926">__________ eru lífverur án himnubundinna kjarna.</para>
 </problem>
 <solution id="fs-id1172100754713">
 <para id="fs-id1172100618834">Dreifkjörnungar</para>
@@ -432,9 +218,7 @@ kjarna.</para>
 </exercise>
 <exercise id="fs-id1171360209140">
 <problem id="fs-id1171360207719">
-<para id="fs-id1171360275092"><term><emphasis effect="italics"></term></emphasis> eru
-örverur sem eru ekki teknar með í þróunartré vegna þess að þær eru
-frumulausar.</para>
+<para id="fs-id1171360275092">______ eru örverur sem eru ekki með í þróunartrjám vegna þess að þær eru frumulausar.</para>
 </problem>
 <solution id="fs-id1171360201179">
 <para id="fs-id1171360420373">Veirur</para>
@@ -450,20 +234,17 @@ frumulausar.</para>
 </exercise>
 <exercise id="fs-id1171360563959">
 <problem id="fs-id1171360307848">
-<para id="fs-id1171360191594">Hvaða af fimm ríkjum í
-þróunartré Whittakers eru dreifkjörnungar og hvaða eru heilkjörnungar?</para>
+<para id="fs-id1171360191594">Hver af fimm ríkjum í þróunartré Whittakers eru dreifkjörnungar og hver eru heilkjörnungar?</para>
 </problem>
 </exercise>
 <exercise id="fs-id1171359085770">
 <problem id="fs-id1171359021200">
-<para id="fs-id1171360445878">Hvaða sameind notuðu Woese og
-Fox til að smíða þróunartré sitt?</para>
+<para id="fs-id1171360445878">Hvaða sameind notuðu Woese og Fox til að smíða þróunartré sitt?</para>
 </problem>
 </exercise>
 <exercise id="fs-id1171360187080">
 <problem id="fs-id1171360291220">
-<para id="fs-id1171360143106">Nefndu nokkrar aðferðir sem
-hægt er að nota til að greina og aðgreina bakteríutegundir.</para>
+<para id="fs-id1171360143106">Nefndu nokkrar aðferðir sem hægt er að nota til að greina og aðgreina bakteríutegundir.</para>
 </problem>
 </exercise>
 </section>
@@ -471,14 +252,12 @@ hægt er að nota til að greina og aðgreina bakteríutegundir.</para>
 <title>Gagnrýnin hugsun</title>
 <exercise id="fs-id1171360345718">
 <problem id="fs-id1171360139166">
-<para id="fs-id1171360251805">Hvers vegna er gagnlegra að
-nota tvínafnakerfi en almenn heiti?</para>
+<para id="fs-id1171360251805">Hvers vegna er gagnlegra að nota tvínefnakerfi en almenn heiti?</para>
 </problem>
 </exercise>
 <exercise id="fs-id1171360295712">
 <problem id="fs-id1171360209839">
-<para id="fs-id1171360170363">Merktu lénin þrjú sem finnast
-á nútíma þróunartrjám.</para>
+<para id="fs-id1171360170363">Merktu lénin þrjú sem finnast á nútíma þróunartrjám.</para>
 <media id="fs-id1171359124754" alt="The phylogenetic Tree of Life. A drawing of branching lines. The central line at the bottom branches into two main branches. On the left branch is a purple branch that contains the following sub-branches: Green filamentous bacteria, Gram positives, Cyanobacteria, Proteobacteria, and Spirocheres. The branch to the right subdivides into a red and a brown branch. The brown branch contains the following sub-branches: Smile molds, Plants, Fungi and Animals. The red branch contains the following sub-branches: Thermoproteus, Methanococcus, Methanobacterium, and Halophiles.">
 <image mime-type="image/jpeg" src="../../media/OSC_Microbio_01_02_TreeArtCon_img.jpg"/>
 </media>

@@ -1,0 +1,395 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-22T12:02:48.236Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdEFQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d0122708bcfdc60af5d645c360669baf80e76223",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdEFQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d0122708bcfdc60af5d645c360669baf80e76223/OChem_02_03_007a.jpg"
+    },
+    {
+      "created_at": "2023-08-22T12:02:48.238Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdEVQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--51f5f556954dd3740f2bb2cfb4da5e09b6c0de09",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdEVQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--51f5f556954dd3740f2bb2cfb4da5e09b6c0de09/OChem_02_03_007b.jpg"
+    },
+    {
+      "created_at": "2023-08-22T12:02:48.240Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdElQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--64b5e0ce7967636399299d3be5696ed49a7b770b",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdElQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--64b5e0ce7967636399299d3be5696ed49a7b770b/OChem_02_03_007c.jpg"
+    },
+    {
+      "created_at": "2023-08-22T12:02:48.242Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdm9ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e525170f31aad0d1949d6fea8057cded9a1b7fae",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdm9ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e525170f31aad0d1949d6fea8057cded9a1b7fae/OChem_02_03_007a.jpg"
+    },
+    {
+      "created_at": "2023-08-22T12:02:48.244Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdnNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f7d07db477703f1911dcbb8414672695fda44939",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdnNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f7d07db477703f1911dcbb8414672695fda44939/OChem_02_03_007b.jpg"
+    },
+    {
+      "created_at": "2023-08-22T12:02:48.246Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdndZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0773a3ac1effdc30f90f93a2662a905dc0a8ec90",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdndZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0773a3ac1effdc30f90f93a2662a905dc0a8ec90/OChem_02_03_007c.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:e91e0f57-815b-44ee-9a92-86adb940e1d5",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:2-3-formal-charges"
+  ],
+  "uuid": "b4ae43ef-8234-408f-89af-590bd84b5224",
+  "group_uuid": "471f98c9-e581-4612-bfe1-0e3532e8d443",
+  "number": 36119,
+  "version": 13,
+  "uid": "36119@13",
+  "published_at": "2023-08-22T12:02:52.099Z",
+  "nickname": "02-03-OC-P07",
+  "solutions_are_public": true,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "Calculate formal charges for the nonhydrogen atoms in the following molecules:",
+  "questions": [
+    {
+      "id": 358910,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdm9ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e525170f31aad0d1949d6fea8057cded9a1b7fae/OChem_02_03_007a.jpg\" alt=\"Text reading diazomethane and a condensed structure of C H 2 double bonded to N double bonded to another N. There are two nonbonding pairs on the final N.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "For carbon: FC = 4 − 8/2 − 0 = 0 For the middle nitrogen: FC = 5 − 8/2 − 0 = +1 For the end nitrogen: FC = 5 − 4/2 − 4 = −1"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 358911,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdnNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f7d07db477703f1911dcbb8414672695fda44939/OChem_02_03_007b.jpg\" alt=\"Text reading acetonitrile oxide and a condensed structure of C H 3 C N O, with a triple bond between C and N and three nonbonding pairs on O.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "For nitrogen: FC = 5 − 8/2 − 0 = +1 For oxygen: FC = 6 − 2/2 − 6 = −1"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 358912,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdndZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0773a3ac1effdc30f90f93a2662a905dc0a8ec90/OChem_02_03_007c.jpg\" alt=\"Text reading methyl isocyanide and a condensed structure of C H 3 N C, with a triple bond between N and C and a nonbonding pair on the triple-bonded carbon.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "For nitrogen: FC = 5 − 8/2 − 0 = +1 For the triply bonded carbon: FC = 4 −\t6/2 − 2 = −1"
+        }
+      ],
+      "community_solutions": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    13,
+    12,
+    11,
+    10,
+    9,
+    8,
+    7,
+    6,
+    5,
+    4,
+    3,
+    2,
+    1
+  ]
+}

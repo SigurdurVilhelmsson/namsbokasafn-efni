@@ -13,6 +13,7 @@
 const express = require('express');
 const router = express.Router();
 
+const log = require('../lib/logger');
 const notifications = require('../services/notifications');
 const { requireAuth } = require('../middleware/requireAuth');
 
@@ -36,7 +37,7 @@ router.get('/', requireAuth, (req, res) => {
       unreadCount: notifications.getUnreadCount(req.user.id),
     });
   } catch (err) {
-    console.error('Error getting notifications:', err);
+    log.error({ err }, 'Error getting notifications');
     res.status(500).json({
       error: 'Failed to get notifications',
       message: err.message,
@@ -53,7 +54,7 @@ router.get('/count', requireAuth, (req, res) => {
     const count = notifications.getUnreadCount(req.user.id);
     res.json({ count });
   } catch (err) {
-    console.error('Error getting notification count:', err);
+    log.error({ err }, 'Error getting notification count');
     res.status(500).json({
       error: 'Failed to get notification count',
       message: err.message,
@@ -72,7 +73,7 @@ router.post('/:id/read', requireAuth, (req, res) => {
     notifications.markAsRead(parseInt(id, 10), req.user.id);
     res.json({ success: true });
   } catch (err) {
-    console.error('Error marking notification as read:', err);
+    log.error({ err }, 'Error marking notification as read');
     res.status(500).json({
       error: 'Failed to mark notification as read',
       message: err.message,
@@ -89,7 +90,7 @@ router.post('/read-all', requireAuth, (req, res) => {
     notifications.markAllAsRead(req.user.id);
     res.json({ success: true });
   } catch (err) {
-    console.error('Error marking notifications as read:', err);
+    log.error({ err }, 'Error marking all notifications as read');
     res.status(500).json({
       error: 'Failed to mark notifications as read',
       message: err.message,
@@ -110,7 +111,7 @@ router.get('/preferences', requireAuth, (req, res) => {
       defaults: notifications.DEFAULT_PREFERENCES,
     });
   } catch (err) {
-    console.error('Error getting notification preferences:', err);
+    log.error({ err }, 'Error getting notification preferences');
     res.status(500).json({
       error: 'Failed to get preferences',
       message: err.message,
@@ -151,7 +152,7 @@ router.put('/preferences', requireAuth, (req, res) => {
       preferences: updated,
     });
   } catch (err) {
-    console.error('Error updating notification preferences:', err);
+    log.error({ err }, 'Error updating notification preferences');
     res.status(500).json({
       error: 'Failed to update preferences',
       message: err.message,

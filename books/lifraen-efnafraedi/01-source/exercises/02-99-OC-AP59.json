@@ -1,0 +1,398 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-09T22:11:05.210Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--af45e7ef11bae8179e254fad6bc0628ee719bcca",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--af45e7ef11bae8179e254fad6bc0628ee719bcca/Figure%2002_99_OChem-02-EC-025a_80485-02-u089_P-Ketone_img.jpg"
+    },
+    {
+      "created_at": "2023-08-09T22:11:05.213Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a9dbe60117766d30ed3d2615cd7bc2c70079cb4c",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a9dbe60117766d30ed3d2615cd7bc2c70079cb4c/Figure%2002_99_OChem-02-EC-025b_80485-02-u089_P-Alcohol_img.jpg"
+    },
+    {
+      "created_at": "2023-08-09T22:11:05.221Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVlRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dd79d99429164ab6814d2bca57f7387fde90b622",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVlRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dd79d99429164ab6814d2bca57f7387fde90b622/Figure%2002_99_OChem-02-EC-025c_80485-02-u089_P-Amide_img.jpg"
+    },
+    {
+      "created_at": "2023-08-09T22:11:05.226Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5752e0dbec52fd2c2474355b9857548e1e00c17a",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5752e0dbec52fd2c2474355b9857548e1e00c17a/Figure%2002_99_OChem-02-EC-025d_80485-02-u089_P-Nitrile_img.jpg"
+    },
+    {
+      "created_at": "2023-08-09T22:11:05.231Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--39ec7f82d46d3436d8bddf5588f790f091d74a75",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--39ec7f82d46d3436d8bddf5588f790f091d74a75/OChem_02_EC_025a.jpg"
+    },
+    {
+      "created_at": "2023-08-09T22:11:05.235Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFlRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2e81e1523d1cf0b19a4eb13b270705edbafe25d2",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFlRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2e81e1523d1cf0b19a4eb13b270705edbafe25d2/OChem_02_EC_025b.jpg"
+    },
+    {
+      "created_at": "2023-08-09T22:11:05.238Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3c0eae3db4e2e1333cbf458396c53b85928d58c2",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3c0eae3db4e2e1333cbf458396c53b85928d58c2/OChem_02_EC_025c.jpg"
+    },
+    {
+      "created_at": "2023-08-09T22:11:05.240Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f9a94c9b6bf32f528e9ef4462b89e55619116d48",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f9a94c9b6bf32f528e9ef4462b89e55619116d48/OChem_02_EC_025d.jpg"
+    },
+    {
+      "created_at": "2023-08-09T22:11:05.245Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fe44c14201966f583775d27e87d90fab165dd57a",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fe44c14201966f583775d27e87d90fab165dd57a/OChem_02_01_002.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:0f2bb8ee-4eda-4995-878f-775a16b4bf97",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:2-12-noncovalent-interactions-between-molecules"
+  ],
+  "uuid": "71dfa32e-f25c-4eca-963c-9863845678d1",
+  "group_uuid": "0d43f8d7-edc9-4547-bd26-0dd6c0823ca4",
+  "number": 36171,
+  "version": 13,
+  "uid": "36171@13",
+  "published_at": "2023-08-09T22:11:09.123Z",
+  "nickname": "02-99-OC-AP59",
+  "solutions_are_public": false,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "We’ll see in the next chapter that organic molecules can be classified according to the functional groups they contain, where a functional group is a collection of atoms with a characteristic chemical reactivity. Use the electronegativity values given in Figure 2.3 to predict the direction of polarization of the following functional groups.\n",
+  "questions": [
+    {
+      "id": 351742,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--39ec7f82d46d3436d8bddf5588f790f091d74a75/OChem_02_EC_025a.jpg\" alt=\"Ketone has a central carbonyl group with two open single bonds.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 351743,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFlRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2e81e1523d1cf0b19a4eb13b270705edbafe25d2/OChem_02_EC_025b.jpg\" alt=\"Alcohol has a carbon atom with three open single bonds bonded to a hydroxyl group.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 351744,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3c0eae3db4e2e1333cbf458396c53b85928d58c2/OChem_02_EC_025c.jpg\" alt=\"Amide has a carbonyl group bonded to an open single bond and a primary amine group.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    },
+    {
+      "id": 351745,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f9a94c9b6bf32f528e9ef4462b89e55619116d48/OChem_02_EC_025d.jpg\" alt=\"Nitrile has a carbon atom with an open single bond, and a triple bond to a nitrogen atom.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    13,
+    12,
+    11,
+    10,
+    9,
+    8,
+    7,
+    6,
+    5,
+    4,
+    3,
+    2,
+    1
+  ]
+}

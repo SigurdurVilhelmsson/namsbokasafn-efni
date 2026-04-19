@@ -1,12 +1,12 @@
 {
-  "generated": "2026-03-22T20:35:10.637Z",
+  "generated": "2026-03-31T04:34:31.338Z",
   "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]])",
   "summary": {
     "totalChecked": 148,
-    "perfect": 115,
-    "withDiscrepancies": 33,
+    "perfect": 118,
+    "withDiscrepancies": 30,
     "skippedUntranslated": 0,
-    "totalDiscrepancies": 82
+    "totalDiscrepancies": 50
   },
   "modules": [
     {
@@ -54,16 +54,12 @@
       "chapter": "ch05",
       "discrepancies": [
         {
-          "tag": "emphasis",
-          "diff": 12
-        },
-        {
           "tag": "m:math",
-          "diff": 2
+          "diff": 3
         },
         {
-          "tag": "sub",
-          "diff": 2
+          "tag": "para",
+          "diff": -7
         }
       ]
     },
@@ -94,20 +90,6 @@
         {
           "tag": "term",
           "diff": 1
-        }
-      ]
-    },
-    {
-      "moduleId": "m68739",
-      "chapter": "ch07",
-      "discrepancies": [
-        {
-          "tag": "item",
-          "diff": -5
-        },
-        {
-          "tag": "list",
-          "diff": -1
         }
       ]
     },
@@ -156,16 +138,6 @@
       ]
     },
     {
-      "moduleId": "m68778",
-      "chapter": "ch11",
-      "discrepancies": [
-        {
-          "tag": "emphasis",
-          "diff": -6
-        }
-      ]
-    },
-    {
       "moduleId": "m68781",
       "chapter": "ch11",
       "discrepancies": [
@@ -200,10 +172,6 @@
       "chapter": "ch12",
       "discrepancies": [
         {
-          "tag": "emphasis",
-          "diff": -4
-        },
-        {
           "tag": "term",
           "diff": -1
         }
@@ -230,16 +198,6 @@
       ]
     },
     {
-      "moduleId": "m68799",
-      "chapter": "ch13",
-      "discrepancies": [
-        {
-          "tag": "emphasis",
-          "diff": -6
-        }
-      ]
-    },
-    {
       "moduleId": "m68805",
       "chapter": "ch14",
       "discrepancies": [
@@ -255,7 +213,7 @@
       "discrepancies": [
         {
           "tag": "emphasis",
-          "diff": 1
+          "diff": -1
         }
       ]
     },
@@ -290,16 +248,6 @@
         {
           "tag": "title",
           "diff": -1
-        }
-      ]
-    },
-    {
-      "moduleId": "m68837",
-      "chapter": "ch18",
-      "discrepancies": [
-        {
-          "tag": "sub",
-          "diff": 5
         }
       ]
     },
@@ -347,6 +295,16 @@
       "discrepancies": [
         {
           "tag": "emphasis",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68854",
+      "chapter": "ch21",
+      "discrepancies": [
+        {
+          "tag": "link",
           "diff": -1
         }
       ]

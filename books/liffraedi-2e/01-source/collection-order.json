@@ -1,0 +1,547 @@
+{
+  "chapters": [
+    {
+      "chapter": 1,
+      "title": "The Chemistry of Life",
+      "modules": [
+        "m66426",
+        "m66427",
+        "m66428"
+      ]
+    },
+    {
+      "chapter": 2,
+      "title": "The Chemical Foundation of Life",
+      "modules": [
+        "m66429",
+        "m66430",
+        "m66434",
+        "m66436"
+      ]
+    },
+    {
+      "chapter": 3,
+      "title": "Biological Macromolecules",
+      "modules": [
+        "m66437",
+        "m66438",
+        "m66440",
+        "m66441",
+        "m66442",
+        "m66443"
+      ]
+    },
+    {
+      "chapter": 4,
+      "title": "The Cell",
+      "modules": [
+        "m66444",
+        "m66445",
+        "m66446",
+        "m66449",
+        "m66452",
+        "m66454",
+        "m66455"
+      ]
+    },
+    {
+      "chapter": 5,
+      "title": "Structure and Function of Plasma Membranes",
+      "modules": [
+        "m66372",
+        "m66373",
+        "m66374",
+        "m66375",
+        "m66376"
+      ]
+    },
+    {
+      "chapter": 6,
+      "title": "Metabolism",
+      "modules": [
+        "m66456",
+        "m66457",
+        "m66459",
+        "m66461",
+        "m66462",
+        "m66463"
+      ]
+    },
+    {
+      "chapter": 7,
+      "title": "Cellular Respiration",
+      "modules": [
+        "m66464",
+        "m66465",
+        "m66466",
+        "m66467",
+        "m66468",
+        "m66469",
+        "m66470",
+        "m66471"
+      ]
+    },
+    {
+      "chapter": 8,
+      "title": "Photosynthesis",
+      "modules": [
+        "m66472",
+        "m66473",
+        "m66474",
+        "m66475"
+      ]
+    },
+    {
+      "chapter": 9,
+      "title": "Cell Communication",
+      "modules": [
+        "m66377",
+        "m66378",
+        "m66379",
+        "m66380",
+        "m66383"
+      ]
+    },
+    {
+      "chapter": 10,
+      "title": "Cell Reproduction",
+      "modules": [
+        "m66476",
+        "m66477",
+        "m66478",
+        "m66479",
+        "m66480",
+        "m66481"
+      ]
+    },
+    {
+      "chapter": 11,
+      "title": "Genetics",
+      "modules": [
+        "m66482",
+        "m66483",
+        "m66484"
+      ]
+    },
+    {
+      "chapter": 12,
+      "title": "Mendel's Experiments and Heredity",
+      "modules": [
+        "m66485",
+        "m66486",
+        "m66487",
+        "m66488"
+      ]
+    },
+    {
+      "chapter": 13,
+      "title": "Modern Understandings of Inheritance",
+      "modules": [
+        "m66490",
+        "m66491",
+        "m66494"
+      ]
+    },
+    {
+      "chapter": 14,
+      "title": "DNA Structure and Function",
+      "modules": [
+        "m66385",
+        "m66386",
+        "m66387",
+        "m66389",
+        "m66390",
+        "m66391",
+        "m66392"
+      ]
+    },
+    {
+      "chapter": 15,
+      "title": "Genes and Proteins",
+      "modules": [
+        "m66495",
+        "m66497",
+        "m66498",
+        "m66499",
+        "m66500",
+        "m66501"
+      ]
+    },
+    {
+      "chapter": 16,
+      "title": "Gene Expression",
+      "modules": [
+        "m66502",
+        "m66503",
+        "m66504",
+        "m66505",
+        "m66506",
+        "m66507",
+        "m66508",
+        "m66509"
+      ]
+    },
+    {
+      "chapter": 17,
+      "title": "Biotechnology and Genomics",
+      "modules": [
+        "m66510",
+        "m66511",
+        "m66512",
+        "m66513",
+        "m66514",
+        "m66515"
+      ]
+    },
+    {
+      "chapter": 18,
+      "title": "Evolutionary Processes",
+      "modules": [
+        "m66516",
+        "m66518",
+        "m66520",
+        "m66521"
+      ]
+    },
+    {
+      "chapter": 19,
+      "title": "The Evolution of Populations",
+      "modules": [
+        "m66522",
+        "m66523",
+        "m66524",
+        "m66718"
+      ]
+    },
+    {
+      "chapter": 20,
+      "title": "Phylogenies and the History of Life",
+      "modules": [
+        "m66529",
+        "m66530",
+        "m66531",
+        "m66532"
+      ]
+    },
+    {
+      "chapter": 21,
+      "title": "Biological Diversity",
+      "modules": [
+        "m66533",
+        "m66534",
+        "m66535",
+        "m66537",
+        "m66540"
+      ]
+    },
+    {
+      "chapter": 22,
+      "title": "Prokaryotes: Bacteria and Archaea",
+      "modules": [
+        "m66541",
+        "m66542",
+        "m66545",
+        "m66547",
+        "m66548",
+        "m66549"
+      ]
+    },
+    {
+      "chapter": 23,
+      "title": "Protists",
+      "modules": [
+        "m66550",
+        "m66552",
+        "m66554",
+        "m66555",
+        "m66556"
+      ]
+    },
+    {
+      "chapter": 24,
+      "title": "Fungi",
+      "modules": [
+        "m66557",
+        "m66558",
+        "m66559",
+        "m66560",
+        "m66562",
+        "m66563"
+      ]
+    },
+    {
+      "chapter": 25,
+      "title": "Seedless Plants",
+      "modules": [
+        "m66565",
+        "m66566",
+        "m66567",
+        "m66568",
+        "m66570"
+      ]
+    },
+    {
+      "chapter": 26,
+      "title": "Seed Plants",
+      "modules": [
+        "m66571",
+        "m66572",
+        "m66573",
+        "m66574",
+        "m66575"
+      ]
+    },
+    {
+      "chapter": 27,
+      "title": "Introduction to Animal Diversity",
+      "modules": [
+        "m66576",
+        "m66577",
+        "m66578",
+        "m66722",
+        "m66586"
+      ]
+    },
+    {
+      "chapter": 28,
+      "title": "Invertebrates",
+      "modules": [
+        "m66393",
+        "m66394",
+        "m66395",
+        "m66396",
+        "m66397",
+        "m66398",
+        "m66399",
+        "m66400"
+      ]
+    },
+    {
+      "chapter": 29,
+      "title": "Vertebrates",
+      "modules": [
+        "m66587",
+        "m66588",
+        "m66589",
+        "m66590",
+        "m66591",
+        "m66592",
+        "m66593",
+        "m66594"
+      ]
+    },
+    {
+      "chapter": 30,
+      "title": "Plant Structure and Function",
+      "modules": [
+        "m66595",
+        "m66596",
+        "m66597",
+        "m66598",
+        "m66599",
+        "m66600",
+        "m66601"
+      ]
+    },
+    {
+      "chapter": 31,
+      "title": "Soil and Plant Nutrition",
+      "modules": [
+        "m66602",
+        "m66603",
+        "m66604",
+        "m66605"
+      ]
+    },
+    {
+      "chapter": 32,
+      "title": "Plant Reproduction",
+      "modules": [
+        "m66606",
+        "m66607",
+        "m66608",
+        "m66609"
+      ]
+    },
+    {
+      "chapter": 33,
+      "title": "Animal Structure and Function",
+      "modules": [
+        "m66610",
+        "m66611",
+        "m66612",
+        "m66613"
+      ]
+    },
+    {
+      "chapter": 34,
+      "title": "Animal Nutrition and the Digestive System",
+      "modules": [
+        "m66614",
+        "m66615",
+        "m66616",
+        "m66617",
+        "m66618"
+      ]
+    },
+    {
+      "chapter": 35,
+      "title": "The Nervous System",
+      "modules": [
+        "m66619",
+        "m66620",
+        "m66621",
+        "m66622",
+        "m66623",
+        "m66624"
+      ]
+    },
+    {
+      "chapter": 36,
+      "title": "Sensory Systems",
+      "modules": [
+        "m66401",
+        "m66402",
+        "m66404",
+        "m66405",
+        "m66407",
+        "m66408"
+      ]
+    },
+    {
+      "chapter": 37,
+      "title": "The Endocrine System",
+      "modules": [
+        "m66625",
+        "m66626",
+        "m66628",
+        "m66629",
+        "m66630",
+        "m66631"
+      ]
+    },
+    {
+      "chapter": 38,
+      "title": "The Musculoskeletal System",
+      "modules": [
+        "m66632",
+        "m66635",
+        "m66638",
+        "m66639",
+        "m66643"
+      ]
+    },
+    {
+      "chapter": 39,
+      "title": "The Respiratory System",
+      "modules": [
+        "m66644",
+        "m66645",
+        "m66646",
+        "m66647",
+        "m66648"
+      ]
+    },
+    {
+      "chapter": 40,
+      "title": "The Circulatory System",
+      "modules": [
+        "m66649",
+        "m66650",
+        "m66651",
+        "m66653",
+        "m66654"
+      ]
+    },
+    {
+      "chapter": 41,
+      "title": "Osmotic Regulation and Excretion",
+      "modules": [
+        "m66655",
+        "m66656",
+        "m66658",
+        "m66659",
+        "m66660",
+        "m66661"
+      ]
+    },
+    {
+      "chapter": 42,
+      "title": "The Immune System",
+      "modules": [
+        "m66662",
+        "m66663",
+        "m66664",
+        "m66665",
+        "m66666"
+      ]
+    },
+    {
+      "chapter": 43,
+      "title": "Animal Reproduction and Development",
+      "modules": [
+        "m66667",
+        "m66668",
+        "m66671",
+        "m66673",
+        "m66674",
+        "m66677",
+        "m66678",
+        "m66679"
+      ]
+    },
+    {
+      "chapter": 44,
+      "title": "Ecology",
+      "modules": [
+        "m66409",
+        "m66410",
+        "m66411",
+        "m66420",
+        "m66417",
+        "m66419"
+      ]
+    },
+    {
+      "chapter": 45,
+      "title": "Population and Community Ecology",
+      "modules": [
+        "m66682",
+        "m66686",
+        "m66688",
+        "m66690",
+        "m66691",
+        "m66696",
+        "m66698",
+        "m66699"
+      ]
+    },
+    {
+      "chapter": 46,
+      "title": "Ecosystems",
+      "modules": [
+        "m66700",
+        "m66701",
+        "m66702",
+        "m66705"
+      ]
+    },
+    {
+      "chapter": 47,
+      "title": "Conservation Biology and Biodiversity",
+      "modules": [
+        "m66706",
+        "m66707",
+        "m66708",
+        "m66709",
+        "m66710"
+      ]
+    }
+  ],
+  "preface": "m66425",
+  "appendixModules": [
+    "m66719",
+    "m66716",
+    "m66717"
+  ]
+}

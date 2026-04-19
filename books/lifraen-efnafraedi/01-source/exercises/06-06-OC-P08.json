@@ -1,0 +1,387 @@
+{
+  "images": [
+    {
+      "created_at": "2023-08-21T00:50:30.402Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbU1UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3044051822eaa1d5e30d3fe9a69f9de42b44edf2",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbU1UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3044051822eaa1d5e30d3fe9a69f9de42b44edf2/OChem_06_06_010a.jpg"
+    },
+    {
+      "created_at": "2023-08-21T00:50:30.405Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fa76f58c8927a1ba33bff1f9e8aee9bd07c12a08",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fa76f58c8927a1ba33bff1f9e8aee9bd07c12a08/OChem_06_06_010b.jpg"
+    },
+    {
+      "created_at": "2023-08-21T00:50:30.407Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--37f8c25f0ef8e40e6710df6b14656de88948b6be",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--37f8c25f0ef8e40e6710df6b14656de88948b6be/OChem_06_06_010c.jpg"
+    },
+    {
+      "created_at": "2023-08-21T00:50:30.410Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVlUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8efd7d0c5e4a818eb68eea31dab55c4e4b425c2c",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVlUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8efd7d0c5e4a818eb68eea31dab55c4e4b425c2c/OChem_06_EC_204a.jpg"
+    },
+    {
+      "created_at": "2023-08-21T00:50:30.412Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7067a565a15ec429bcea780aaa8f1510207660c9",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7067a565a15ec429bcea780aaa8f1510207660c9/OChem_06_EC_204b.jpg"
+    },
+    {
+      "created_at": "2023-08-21T00:50:30.414Z",
+      "signed_id": "eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWdUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--817c977cd5156f88718bac02fe83b85c8c8cb4dc",
+      "url": "https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWdUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--817c977cd5156f88718bac02fe83b85c8c8cb4dc/OChem_06_EC_204c.jpg"
+    }
+  ],
+  "tags": [
+    "type:practice",
+    "book:stax-orgchem",
+    "context-cnxmod:7f183fc7-39d0-49dd-a344-d6863b28b849",
+    "book-slug:organic-chemistry",
+    "module-slug:organic-chemistry:6-5-using-curved-arrows-in-polar-reaction-mechanisms"
+  ],
+  "uuid": "e85433ac-fd96-4bb0-ac17-b1ab7466f1c8",
+  "group_uuid": "5ce6dc06-fb78-4baa-9820-f1520aeeb891",
+  "number": 37299,
+  "version": 5,
+  "uid": "37299@5",
+  "published_at": "2023-08-21T00:50:34.016Z",
+  "nickname": "06-06-OC-P08",
+  "solutions_are_public": true,
+  "authors": [
+    {
+      "user_id": 1,
+      "name": "OpenStax Exercises"
+    }
+  ],
+  "copyright_holders": [
+    {
+      "user_id": 2,
+      "name": "Rice University"
+    }
+  ],
+  "derived_from": [],
+  "is_vocab": false,
+  "stimulus_html": "Add curved arrows to the following polar reactions to indicate the flow of electrons in each:",
+  "questions": [
+    {
+      "id": 358055,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbU1UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3044051822eaa1d5e30d3fe9a69f9de42b44edf2/OChem_06_06_010a.jpg\" alt=\"Chlorine molecule reacts with ammonia to form nitrogen with a positive charge bonded to three hydrogen atoms and a chlorine atom. The side product is chloride ion.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVlUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8efd7d0c5e4a818eb68eea31dab55c4e4b425c2c/OChem_06_EC_204a.jpg\" alt=\"A reversible reaction shows chlorine molecule reacting with ammonia to form C l N H 3 plus and a chloride ion. Arrows depict electron flow from ammonia.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 358056,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fa76f58c8927a1ba33bff1f9e8aee9bd07c12a08/OChem_06_06_010b.jpg\" alt=\"A methoxide ion reacts with methyl bromide to form dimethyl ether and a bromide ion.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7067a565a15ec429bcea780aaa8f1510207660c9/OChem_06_EC_204b.jpg\" alt=\"A methoxide ion reacts with methyl bromide to form dimethyl ether and a bromide ion. Two arrows depict the movement of electrons, originating from the methoxide oxygen.\">"
+        }
+      ],
+      "community_solutions": []
+    },
+    {
+      "id": 358057,
+      "is_answer_order_important": false,
+      "stimulus_html": "",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--37f8c25f0ef8e40e6710df6b14656de88948b6be/OChem_06_06_010c.jpg\" alt=\"A carbon bonded to an oxygen ion, methyl, chlorine, and methoxy group forms a carbonyl group bonded to methyl and methoxy group. The side product is chloride ion.\">",
+      "answers": [],
+      "hints": [],
+      "formats": [
+        "free-response"
+      ],
+      "combo_choices": [],
+      "collaborator_solutions": [
+        {
+          "images": [],
+          "solution_type": "detailed",
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWdUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--817c977cd5156f88718bac02fe83b85c8c8cb4dc/OChem_06_EC_204c.jpg\" alt=\"A carbon bonded to an oxygen ion, methyl group, chlorine atom, and methoxy group forms two products. Two arrows depict the movement of electrons, originating at the oxygen anion.\">"
+        }
+      ],
+      "community_solutions": []
+    }
+  ],
+  "delegations": [
+    {
+      "delegator_id": 1,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 1,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": true,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 64,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 86,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 16,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 17,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 18,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 19,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": false,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 91,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 6,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 120,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 126,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 136,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": false,
+      "can_read": true,
+      "can_update": false
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 132,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 99,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    },
+    {
+      "delegator_id": 2,
+      "delegate_id": 50,
+      "delegate_type": "User",
+      "can_assign_authorship": false,
+      "can_assign_copyright": true,
+      "can_read": true,
+      "can_update": true
+    }
+  ],
+  "versions": [
+    5,
+    4,
+    3,
+    2,
+    1
+  ]
+}

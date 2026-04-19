@@ -1,0 +1,48 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Benzyne</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Benzyne</md:title>
+    <md:content-id>m00195</md:content-id>
+    <md:uuid>47a50b36-c66b-4de2-a1a4-2a449cec05a9</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">Halobenzenes without electron-withdrawing substituents don’t react with nucleophiles under most conditions. At high temperature and pressure, however, even chlorobenzene can be forced to react. Chemists at the Dow Chemical Company discovered in 1928 that phenol could be prepared on an industrial scale by treatment of chlorobenzene with dilute aqueous NaOH at 340 °C under 170 atm pressure.</para>
+    <figure class="unnumbered scaled-down" id="fig-00001">
+    <media alt="At high temperature and pressure, chlorobenzene reacts in water with sodium hydroxide, to form phenol.">
+    <image mime-type="image/jpeg" src="../../media/OChem_16_07_001.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00002">A similar substitution reaction occurs with other strong bases. Treatment of bromobenzene with potassium amide (KNH<sub>2</sub>) in liquid NH<sub>3</sub> solvent, for instance, gives aniline. Curiously, though, when using bromobenzene labeled with radioactive <sup>14</sup>C at the C1 position, the substitution product has equal amounts of the label at both C1 and C2, implying the presence of a symmetrical reaction intermediate in which C1 and C2 are equivalent.</para>
+    <figure class="unnumbered scaled-down" id="fig-00002">
+    <media alt="Bromobenzene reacts with potassium amide in the presence of ammonia to form two aniline compounds. C 1 of both reactants and products are labeled with an asterisk.">
+    <image mime-type="image/jpeg" src="../../media/OChem_16_07_002.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00003">Further mechanistic evidence comes from trapping experiments. When bromobenzene is treated with KNH<sub>2</sub> in the presence of a conjugated diene, such as furan, a Diels–Alder reaction (<link document="m00174"/>) occurs, implying that the symmetrical intermediate is a <term id="term-00001">benzyne</term>, formed by elimination of HBr from bromobenzene. Benzyne is too reactive to be isolated as a pure compound but, in the presence of water, addition occurs to give phenol. In the presence of a diene, Diels–Alder cycloaddition takes place.</para>
+    <figure class="unnumbered scaled-down" id="fig-00003">
+    <media alt="On reaction with hydroxide ion, hydrigen chloride is eliminated from chlorobenzene to generate benzyne which on reaction with water to form phenol..">
+    <image mime-type="image/jpeg" src="../../media/OChem_16_07_003.jpg"/>
+    </media>
+    </figure>
+    <figure class="unnumbered scaled-down" id="fig-00005">
+      <media alt="Bromobenzene reacts with N H 2 minus ion to form benzyne, which reacts with ammonia to form a 50 50 mix of two aniline carbocations">
+    <image mime-type="image/jpeg" src="../../media/OChem_16_07_004.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00004">The electronic structure of benzyne, shown in <link target-id="fig-00004"/>, is that of a highly distorted alkyne. Although a typical alkyne triple bond uses <emphasis effect="italics">sp</emphasis>-hybridized carbon atoms, the benzyne triple bond uses <emphasis effect="italics">sp</emphasis><sup>2</sup>-hybridized carbons. Furthermore, a typical alkyne triple bond has two mutually perpendicular <emphasis effect="italics">π</emphasis> bonds formed by <emphasis effect="italics">p</emphasis>–<emphasis effect="italics">p</emphasis> overlap, but the benzyne triple bond has one <emphasis effect="italics">π</emphasis> bond formed by <emphasis effect="italics">p</emphasis>–<emphasis effect="italics">p</emphasis> overlap and one <emphasis effect="italics">π</emphasis> bond formed by <emphasis effect="italics">sp</emphasis><sup>2</sup>–<emphasis effect="italics">sp</emphasis><sup>2</sup> overlap. The latter <emphasis effect="italics">π</emphasis> bond is in the plane of the ring and is very weak.</para>
+    <figure class="scaled-down" id="fig-00004">
+    <media alt="The figure shows the orbital representation and ball-and-stick model in the electrostatic potential map of benzyne. Black and gray spheres represent carbon and hydrogen, respectively.">
+    <image mime-type="image/jpeg" src="../../media/OChem_16_07_005.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">An orbital picture and electrostatic potential map of benzyne</emphasis>. The benzyne carbons are <emphasis effect="italics">sp</emphasis><sup>2</sup>-hybridized, and the “third” bond results from weak overlap of two adjacent <emphasis effect="italics">sp</emphasis><sup>2</sup> orbitals.</caption>
+    </figure>
+    <section class="section-exercises" id="sect-00001">
+    <title>Problems</title>
+    <exercise id="exer-00001">
+    <problem id="prob-00001">
+    <para id="para-00005"><link class="os-embed" url="#exercise/16-07-OC-P17"/></para>
+    </problem>
+    </exercise>
+    </section>
+    </content>
+</document>

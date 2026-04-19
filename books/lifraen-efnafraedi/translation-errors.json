@@ -1,0 +1,105 @@
+{
+  "generated": "2026-03-30T19:34:33.909Z",
+  "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]])",
+  "summary": {
+    "totalChecked": 8,
+    "perfect": 2,
+    "withDiscrepancies": 6,
+    "skippedUntranslated": 0,
+    "totalDiscrepancies": 41
+  },
+  "modules": [
+    {
+      "moduleId": "m00032",
+      "chapter": "ch03",
+      "discrepancies": [
+        {
+          "tag": "image",
+          "diff": -1
+        },
+        {
+          "tag": "media",
+          "diff": -1
+        },
+        {
+          "tag": "para",
+          "diff": -1
+        },
+        {
+          "tag": "span",
+          "diff": -10
+        }
+      ]
+    },
+    {
+      "moduleId": "m00033",
+      "chapter": "ch03",
+      "discrepancies": [
+        {
+          "tag": "link",
+          "diff": -2
+        },
+        {
+          "tag": "span",
+          "diff": -2
+        }
+      ]
+    },
+    {
+      "moduleId": "m00035",
+      "chapter": "ch03",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        },
+        {
+          "tag": "link",
+          "diff": -1
+        },
+        {
+          "tag": "span",
+          "diff": -9
+        }
+      ]
+    },
+    {
+      "moduleId": "m00036",
+      "chapter": "ch03",
+      "discrepancies": [
+        {
+          "tag": "link",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m00037",
+      "chapter": "ch03",
+      "discrepancies": [
+        {
+          "tag": "link",
+          "diff": -1
+        },
+        {
+          "tag": "span",
+          "diff": -2
+        },
+        {
+          "tag": "term",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m00038",
+      "chapter": "ch03",
+      "discrepancies": [
+        {
+          "tag": "span",
+          "diff": -8
+        }
+      ]
+    }
+  ]
+}

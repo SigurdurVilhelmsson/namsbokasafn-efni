@@ -1,0 +1,46 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Conformations of Cyclohexane</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Conformations of Cyclohexane</md:title>
+    <md:content-id>m00044</md:content-id>
+    <md:uuid>35cbd0ad-a95c-4113-b996-7223cfa8d1f2</md:uuid>
+  </metadata>
+  <content>
+    <para id="para-00001">Substituted cyclohexanes are the most common cycloalkanes and occur widely in nature. A large number of compounds, including steroids and many pharmaceutical agents, have cyclohexane rings. The flavoring agent menthol, for instance, has three substituents on a six-membered ring.</para>
+    <figure class="unnumbered scaled-down" id="fig-00001">
+    <media alt="The wedge-dash structure and ball and stick model of menthol. In the model, black, gray, and red spheres represent carbon, hydrogen, and oxygen atoms, respectively.">
+    <image mime-type="image/jpeg" src="../../media/OChem_04_05_001.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00002">Cyclohexane adopts a strain-free, three-dimensional shape that is called a <term id="term-00001">chair conformation</term> because of its similarity to a lounge chair, with a back, seat, and footrest (<link target-id="fig-00002"/>). Chair cyclohexane has neither angle strain nor torsional strain—all C−C−C bond angles are near the 109° tetrahedral value, and all neighboring C−H bonds are staggered.</para>
+    <figure id="fig-00002">
+    <media alt="The ball and stick model, chair conformation, and Newman projection of cyclohexane. The carbon atoms are numbered in chair conformation and Newman projection.">
+    <image mime-type="image/jpeg" src="../../media/OChem_04_05_002.jpg"/>
+    </media>
+    <caption><emphasis effect="bold">The strain-free chair conformation of cyclohexane.</emphasis> All C−C−C bond angles are 111.5°, close to the ideal 109° tetrahedral angle, and all neighboring C−H bonds are staggered.</caption>
+    </figure>
+    <para id="para-00003">The easiest way to visualize chair cyclohexane is to build a molecular model if you have access to a model kit, or alternatively to explore with one of the many computer-based modeling programs you may have access to.</para>
+    <para id="para-00004">The chair conformation of cyclohexane can be drawn in three steps.</para>
+    <figure class="unnumbered scaled-down" id="fig-00003">
+    <media alt="Three steps to draw chair conformation of cyclohexane. Dots depict the locations where two adjacent carbon atoms are fused together.">
+    <image mime-type="image/jpeg" src="../../media/OChem_04_05_003.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00005"><emphasis effect="bold"><span class="red-text">STEP 1</span></emphasis> 
+    <newline />Draw two parallel lines, slanted downward and slightly offset from each other. This means that four of the cyclohexane carbons lie in a plane.</para>
+    <para id="para-00006"><emphasis effect="bold"><span class="red-text">STEP 2</span></emphasis> <newline />Place the topmost carbon atom above and to the right of the plane of the other four, and connect the bonds.</para>
+    <para id="para-00007"><emphasis effect="bold"><span class="red-text">STEP 3</span></emphasis> <newline />Place the bottommost carbon atom below and to the left of the plane of the middle four, and connect the bonds. Note that the bonds to the bottommost carbon atom are parallel to the bonds to the topmost carbon.</para>
+    <para id="para-00008">When viewing cyclohexane, it’s helpful to remember that the lower bond is in front and the upper bond is in back. If this convention isn’t defined, it can appear that the reverse is true. For clarity, all cyclohexane rings drawn in this book will have the front (lower) bond heavily shaded to indicate nearness to the viewer.</para>
+    <figure class="unnumbered scaled-down" id="fig-00004">
+    <media alt="The chair conformation of cyclohexane. The back and front bonds are labeled.">
+    <image mime-type="image/jpeg" src="../../media/OChem_04_05_004.jpg"/>
+    </media>
+    </figure>
+    <para id="para-00009">In addition to the chair conformation of cyclohexane, there is an alternative conformation of cyclohexane that bears a slight resemblance to a twisted boat. Called the <term id="term-00002">twist-boat conformation</term>, it is nearly free of angle strain. It does, however, have both steric strain and torsional strain and is about 23 kJ/mol (5.5 kcal/mol) higher in energy than the chair conformation. As a result, molecules adopt the twist-boat geometry only rarely.</para>
+    <figure class="unnumbered scaled-down" id="fig-00005">
+    <media alt="The structure and ball and stick model of twist-boat cyclohexane with 23 kilojoules per mole strain. The twist-boat cyclohexane has both steric and torsional strains.">
+    <image mime-type="image/jpeg" src="../../media/OChem_04_05_005.jpg"/>
+    </media>
+    </figure>
+    </content>
+</document>

@@ -1,0 +1,48 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <title>Nucleotides and Nucleic Acids</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml">
+    <md:title>Nucleotides and Nucleic Acids</md:title>
+    <md:content-id>m00310</md:content-id>
+    <md:uuid>0f8f621f-231d-4ace-a805-29b1001abc24</md:uuid>
+  </metadata>
+  <content>
+<para id="para-00001">Just as proteins are biopolymers made of amino acids, the nucleic acids are biopolymers made of <term id="term-00001">nucleotides</term>, joined together to form a long chain. Each nucleotide is composed of a <term id="term-00002">nucleoside</term> bonded to a phosphate group, and each nucleoside is composed of an aldopentose sugar linked through its anomeric carbon to the nitrogen atom of a heterocyclic purine or pyrimidine base.</para>
+<figure class="unnumbered scaled-down" id="fig-00001">
+<media alt="D N A with nuclease and water is cleaved to nucleotides. Nucleotidase liberates phosphate from nucleotides. Resulting nucleoside liberates phosphate upon interaction with nucleosidase forming free base and pentose sugars.">
+<image mime-type="image/jpeg" src="../../media/OChem_28_01_001.jpg"/>
+</media>
+</figure>
+<para id="para-00002">The sugar component in RNA is ribose, and the sugar in DNA is 2′-deoxyribose. (In naming and numbering nucleotides, numbers with a prime superscript refer to positions on the sugar and numbers without a prime superscript refer to positions on the heterocyclic base. Thus, the prefix 2′-deoxy indicates that oxygen is missing from C2′ of ribose.) DNA contains four different amine bases: two substituted purines (<emphasis effect="bold">A</emphasis>, adenine, and <emphasis effect="bold">G</emphasis>, guanine) and two substituted pyrimidines (<emphasis effect="bold">C</emphasis>, cytosine, and <emphasis effect="bold">T</emphasis>, thymine). Adenine, guanine, and cytosine also occur in RNA, but thymine is replaced in RNA by a closely related pyrimidine base called <emphasis effect="bold">U</emphasis>, uracil.</para>
+<figure class="unnumbered scaled-down" id="fig-00002">
+<media alt="The structure of ribose, 2-deoxyribose, purine, and pyrimidine. Adenine, Guanine, Cytosine and Thymine are present in D N A, whereas R N A contains Uracil instead of Thymine.">
+<image mime-type="image/jpeg" src="../../media/OChem_28_01_002.jpg"/>
+</media>
+</figure>
+<para id="para-00003">The structures of the four deoxyribonucleotides and the four ribonucleotides are shown in <link target-id="fig-00003"/>. Although similar chemically, DNA and RNA differ dramatically in size. Molecules of DNA are enormous, containing as many as 245 million nucleotides and having molecular weights as high as 75 billion. Molecules of RNA, by contrast, are much smaller, containing as few as 21 nucleotides and having molecular weights as low as 7000.</para>
+<figure class="scaled-down" id="fig-00003">
+<media alt="Four forms of deoxyribonucleotides are 2'-deoxyadenosine 5'-phosphate, 2'-deoxyguanosine 5'-phosphate, 2'-deoxycytidine 5'-phosphate, thymidine 5'-phosphate. Four forms of ribonucleotides are adenosine 5'-phosphate, guanosine 5'-phosphate, cytidine 5'-phosphate, uridine 5'-phosphate.">
+<image mime-type="image/jpeg" src="../../media/OChem_28_01_003.jpg"/>
+</media>
+<caption><emphasis effect="bold">Structures of the four deoxyribonucleotides and the four ribonucleotides.</emphasis></caption>
+</figure>
+<para id="para-00004">Nucleotides are linked together in DNA and RNA by <emphasis effect="italics">phosphodiester</emphasis> bonds [RO–(PO<sub>2</sub><sup>–</sup>)–OR′] between phosphate, the 5′-hydroxyl group on one nucleoside, and the 3′-hydroxyl group on another nucleoside. One end of the nucleic acid polymer has a free hydroxyl at C3′ (the <term id="term-00003">3′ end</term>), and the other end has a phosphate at C5′ (the <term id="term-00004">5′ end</term>). The sequence of nucleotides in a chain is described by starting at the 5′ end and identifying the bases in order of occurrence, using the abbreviations G, C, A, T (or U in RNA). Thus, a typical DNA sequence might be written as TAGGCT.</para>
+<figure class="unnumbered scaled-down" id="fig-00004">
+<media alt="Two figures show the structure of D N A. Nucleotides join together in deoxyribonucleic and ribonucleic acid via phosphate between the 5-prime on one nucleotide and the 3-prime on another.">
+<image mime-type="image/jpeg" src="../../media/OChem_28_01_004.jpg"/>
+</media>
+</figure>
+<section class="section-exercises" id="sect-00001">
+<title>Problems</title>
+<exercise id="exer-00001">
+<problem id="prob-00001">
+<para id="para-00005"><link class="os-embed" url="#exercise/28-01-OC-P01"/></para>
+</problem>
+</exercise>
+<exercise id="exer-00002">
+<problem id="prob-00002">
+<para id="para-00006"><link class="os-embed" url="#exercise/28-01-OC-P02"/></para>
+</problem>
+</exercise>
+</section>
+</content>
+</document>
