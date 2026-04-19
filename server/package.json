@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "archiver": "^7.0.1",
-    "better-sqlite3": "^12.6.2",
+    "better-sqlite3": "^12.8.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "csv-parse": "^6.1.0",
