@@ -1343,7 +1343,7 @@
     <problem id="fs-id2244827"><para id="fs-id2244828">Bíll rennur niður brekku með 20° halla. Massi bílsins er 965 kg. Þegar kapall er notaður til að draga bílinn upp brekkuna er beitt krafti sem nemur 4215 N. Hver er hröðun bílsins ef núningur er hunsaður?</para></problem>
     <!--<solution id="fs-id1691599">
     <para id="fs-id2195185">A free-body diagram can be used to represent the situation.</para>
-    <figure id="fs-id2195188"><media id="fs-id2195189" alt=""><image mime-type="image/jpg" src="Figure_04_05_15.jpg"/></media>
+    <figure id="fs-id2195188"><media id="fs-id2195189" alt="Frílíkansmynd: svartur punktur í miðju. Þrír fastir vigrar stefna frá punktinum: N (lengstur) skáhallt upp til vinstri; Fa um 2/3 af N, skáhallt upp til hægri; w aðeins styttri, niður. Tveir punktalínuvigrar: blár wl skáhallt niður til hægri (andstæða átt við N), og stuttur rauður (w) lárétt frá enda wl að oddi w."><image mime-type="image/jpg" src="Figure_04_05_15.jpg"/></media>
     </figure>
     <para id="fs-id1842615">The diagram has a black dot in the center and three solid arrows pointing away from the dot. Black arrow N is the longest and points on the diagonal between up and left. Another red arrow Fa is about 2/3 the size of arrow N and points at a diagonal between up and right. Another red arrow w slightly shorter than Fa points down. A dotted blue arrow wl points in the opposite direction to arrow N (at a diagonal between right and down). A short dotted red arrow (w) points from the end of arrow wl on a horizontal line to the tip of arrow w.</para>
     <para id="fs-id1625398">The magnitude of the weight parallel to the slope is <m:math><m:mrow><m:msub><m:mi>w</m:mi><m:mo>&#8741;</m:mo></m:msub><m:mo>=</m:mo><m:mi>w</m:mi><m:mi>sin</m:mi><m:mtext>&#8201;</m:mtext><m:mo stretchy="false">(</m:mo><m:mn>20&#176;</m:mn><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mi>m</m:mi><m:mi>g</m:mi><m:mtext>&#8201;</m:mtext><m:mi>sin</m:mi><m:mtext>&#8201;</m:mtext><m:mo stretchy="false">(</m:mo><m:mn>20&#176;</m:mn><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para><para id="fs-id1653963"><m:math><m:mrow><m:mtable><m:mtr><m:mtd><m:mrow><m:mi>m</m:mi><m:mi>g</m:mi><m:mtext>&#8201;</m:mtext><m:mi>sin</m:mi><m:mo stretchy="false">(</m:mo><m:mn>20&#176;</m:mn><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mn>965</m:mn><m:mtext>&#8201;</m:mtext><m:mtext>kg</m:mtext><m:mo>&#8901;</m:mo><m:mtext>9</m:mtext><m:mtext>.8</m:mtext><m:mfrac><m:mtext>m</m:mtext><m:mrow><m:msup><m:mtext>s</m:mtext><m:mtext>2</m:mtext></m:msup></m:mrow></m:mfrac><m:mo>&#8901;</m:mo><m:mn>0.342</m:mn></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd><m:mrow><m:mtext>&#8201;</m:mtext><m:mtext>&#8201;</m:mtext><m:mtext>&#8201;</m:mtext><m:mtext>&#8201;</m:mtext><m:mo>=</m:mo><m:mn>3234.48</m:mn><m:mtext>&#8201;</m:mtext><m:mtext>N</m:mtext></m:mrow></m:mtd></m:mtr></m:mtable></m:mrow></m:math></para><para id="fs-id1749933">Thus, the net external force is <m:math><m:mrow><m:mn>4215</m:mn><m:mtext>&#8201;</m:mtext><m:mtext>N-3235</m:mtext><m:mtext>&#8201;</m:mtext><m:mtext>N=980</m:mtext><m:mtext>&#8201;</m:mtext><m:mtext>N</m:mtext></m:mrow></m:math>.</para>
@@ -1352,8 +1352,6 @@
     <para id="fs-id1590938">The car will accelerate up the hill at 1.02 m/s<sup>2</sup>.</para>
     </solution>-->
     </exercise>
-<figure id="fs-id2195188">
-    </figure>
 </section>
 <section id="fs-id2352878" class="section-summary">
 <title>Samantekt kafla</title>
