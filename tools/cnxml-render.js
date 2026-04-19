@@ -309,6 +309,10 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     chapterExampleNumbers: options.chapterExampleNumbers || new Map(), // chapter-wide
     chapterExerciseNumbers: options.chapterExerciseNumbers || new Map(), // chapter-wide
     chapterSectionTitles: options.chapterSectionTitles || new Map(), // section ID -> title
+    chapterIdToModule: options.chapterIdToModule || new Map(), // elementId -> moduleId[]
+    moduleSections: options.moduleSections || {}, // for cross-module href resolution
+    crossModuleSections: options.crossModuleSections || null, // fallback used by answer-key etc.
+    verbose, // propagate verbose flag for link warnings
     equationTextDictionary: options.equationTextDictionary || null, // equation text translations
     excludeSections: options.excludeSections !== false, // Allow disabling section exclusion
     includeSolutions: options.includeSolutions || false, // Only show solutions on answer key pages
@@ -1685,8 +1689,30 @@ function renderList(list, context) {
           .join('<br>');
         lines.push(`  <li${itemId}>${content}</li>`);
       } else {
-        const content = processInlineContent(item.content, context);
-        lines.push(`  <li${itemId}>${content}</li>`);
+        // Check for nested block-level <equation> elements. Source pattern, e.g.
+        // ch21-2 historical-milestones bullets: each <item> contains text +
+        // <newline/> + <equation>. Previously the top-level extraction pass
+        // pulled these equations out of the list and rendered them as siblings
+        // AFTER </ul>. Keep them inline here so they stay inside their <li>.
+        const nestedEquations = extractElements(item.content, 'equation');
+        if (nestedEquations.length > 0) {
+          let working = item.content;
+          const placeholders = [];
+          nestedEquations.forEach((eq, i) => {
+            if (!eq.fullMatch) return;
+            const ph = `\u0000EQ_PLACEHOLDER_${i}\u0000`;
+            working = working.replace(eq.fullMatch, ph);
+            placeholders.push({ ph, html: renderEquation(eq, context) });
+          });
+          let rendered = processInlineContent(working, context);
+          for (const { ph, html } of placeholders) {
+            rendered = rendered.replace(ph, html);
+          }
+          lines.push(`  <li${itemId}>${rendered}</li>`);
+        } else {
+          const content = processInlineContent(item.content, context);
+          lines.push(`  <li${itemId}>${content}</li>`);
+        }
       }
     }
   }
@@ -2998,6 +3024,20 @@ async function main() {
     const chapterExampleNumbers = new Map();
     const chapterExerciseNumbers = new Map();
     const chapterSectionTitles = new Map(); // section ID -> title text
+    // Map<elementId, moduleId[]> — registry of every id-bearing element across the chapter.
+    // Used by cnxml-elements.js to rewrite cross-module fragment-only links (e.g. <link target-id="X"/>
+    // where X lives in a different module than the one currently rendering). Stores arrays because
+    // some books (e.g. lifraen-efnafraedi) reuse element ids across modules within one chapter.
+    const chapterIdToModule = new Map();
+    const addId = (id, modId) => {
+      if (!id) return;
+      const owners = chapterIdToModule.get(id);
+      if (owners) {
+        if (!owners.includes(modId)) owners.push(modId);
+      } else {
+        chapterIdToModule.set(id, [modId]);
+      }
+    };
     // Sort modules by section number so numbering follows chapter order, not filename order
     const allModules = findChapterModules(args.chapter, args.track).sort((a, b) => {
       const secA = moduleSections[a] ? moduleSections[a].section : 999;
@@ -3021,6 +3061,7 @@ async function main() {
       while ((fm = figPattern.exec(modCnxml)) !== null) {
         chapterFigCounter++;
         chapterFigureNumbers.set(`${modId}:${fm[1]}`, `${args.chapter}.${chapterFigCounter}`);
+        addId(fm[1], modId);
       }
 
       const tblPattern = /<table\s+[^>]*id="([^"]+)"/g;
@@ -3028,6 +3069,7 @@ async function main() {
       while ((tm = tblPattern.exec(modCnxml)) !== null) {
         chapterTableCounter++;
         chapterTableNumbers.set(`${modId}:${tm[1]}`, `${args.chapter}.${chapterTableCounter}`);
+        addId(tm[1], modId);
       }
 
       const examplePattern = /<example\s+id="([^"]+)"/g;
@@ -3038,6 +3080,7 @@ async function main() {
           `${modId}:${exm2[1]}`,
           `${args.chapter}.${chapterExampleCounter}`
         );
+        addId(exm2[1], modId);
       }
 
       // Build numbered equation map (skip unnumbered)
@@ -3045,10 +3088,12 @@ async function main() {
       let eqm;
       while ((eqm = eqPattern.exec(modCnxml)) !== null) {
         const attrs = eqm[1];
-        // Skip if unnumbered
-        if (attrs.includes('class="unnumbered"')) continue;
-        // Extract id
         const idMatch = attrs.match(/id="([^"]+)"/);
+        // Register every equation id (numbered or not) so cross-page links to unnumbered
+        // equations also resolve.
+        if (idMatch) addId(idMatch[1], modId);
+        // Skip numbering for unnumbered
+        if (attrs.includes('class="unnumbered"')) continue;
         if (idMatch) {
           chapterEquationCounter++;
           chapterEquationNumbers.set(
@@ -3065,6 +3110,7 @@ async function main() {
         // Strip any inline markup from the title text
         const titleText = sm[2].replace(/<[^>]+>/g, '').trim();
         chapterSectionTitles.set(sm[1], titleText);
+        addId(sm[1], modId);
       }
 
       // Also capture example/note IDs with titles
@@ -3076,6 +3122,7 @@ async function main() {
       while ((em = exPattern.exec(modCnxml)) !== null) {
         const titleText = em[2].replace(/<[^>]+>/g, '').trim();
         chapterSectionTitles.set(em[1], titleText);
+        // (id already registered by the example loop above)
       }
 
       const notePattern = /<note\s+[^>]*id="([^"]+)"[^>]*>\s*<title>([\s\S]*?)<\/title>/g;
@@ -3083,6 +3130,7 @@ async function main() {
       while ((nm = notePattern.exec(modCnxml)) !== null) {
         const titleText = nm[2].replace(/<[^>]+>/g, '').trim();
         chapterSectionTitles.set(nm[1], titleText);
+        addId(nm[1], modId);
       }
 
       // Build chapter-wide exercise number map
@@ -3094,6 +3142,14 @@ async function main() {
           `${modId}:${exm[1]}`,
           `${args.chapter}.${chapterExerciseCounter}`
         );
+        addId(exm[1], modId);
+      }
+
+      // Also register para ids (used as anchor targets in some cross-references).
+      const paraPattern = /<para\s+[^>]*id="([^"]+)"/g;
+      let pm;
+      while ((pm = paraPattern.exec(modCnxml)) !== null) {
+        addId(pm[1], modId);
       }
     }
 
@@ -3126,6 +3182,7 @@ async function main() {
           chapterExampleNumbers,
           chapterExerciseNumbers,
           chapterSectionTitles,
+          chapterIdToModule,
           equationTextDictionary,
         });
         let html = renderResult.html;
@@ -3217,6 +3274,7 @@ async function main() {
               chapterExampleNumbers,
               chapterExerciseNumbers,
               chapterSectionTitles,
+              chapterIdToModule,
               equationTextDictionary,
             },
           });
@@ -3398,6 +3456,7 @@ async function main() {
             chapterExampleNumbers,
             chapterExerciseNumbers,
             chapterSectionTitles,
+            chapterIdToModule,
             equationTextDictionary,
           },
         });
@@ -3440,11 +3499,13 @@ async function main() {
             chapter: args.chapter,
             moduleId: `${chapterStr}-answer-key`,
             moduleSections: {}, // Empty: prevent chapter outline insertion in answer key
+            crossModuleSections: moduleSections, // For cross-page link resolution
             chapterFigureNumbers,
             chapterTableNumbers,
             chapterExampleNumbers,
             chapterExerciseNumbers,
             chapterSectionTitles,
+            chapterIdToModule,
             equationTextDictionary,
           },
         });
@@ -3496,6 +3557,7 @@ async function main() {
           chapterExampleNumbers,
           chapterExerciseNumbers,
           chapterSectionTitles,
+          chapterIdToModule,
           equationTextDictionary,
         };
 
