@@ -2622,6 +2622,7 @@ function renderSingleTypeExercises(
     const { html } = renderCnxmlToHtml(
       `<?xml version="1.0"?><document xmlns="http://cnx.rice.edu/cnxml"><content>${exercises.exercisesContent}</content></document>`,
       {
+        ...context,
         verbose: false,
         lang: 'is',
         chapter,
@@ -2629,7 +2630,6 @@ function renderSingleTypeExercises(
         chapterExerciseNumbers,
         excludeSections: false,
         includeSolutions: false,
-        ...context,
       }
     );
 
@@ -2724,6 +2724,7 @@ function renderCompiledExercises(chapter, exercisesByType, chapterExerciseNumber
       const { html } = renderCnxmlToHtml(
         `<?xml version="1.0"?><document xmlns="http://cnx.rice.edu/cnxml"><content>${exercises.exercisesContent}</content></document>`,
         {
+          ...context,
           verbose: false,
           lang: 'is',
           chapter,
@@ -2731,7 +2732,6 @@ function renderCompiledExercises(chapter, exercisesByType, chapterExerciseNumber
           chapterExerciseNumbers,
           excludeSections: false,
           includeSolutions: false,
-          ...context,
         }
       );
 
