@@ -156,6 +156,27 @@ function formatChapterOutput(chapter) {
 }
 
 /**
+ * Normalize an <image src=...> value to a vefur-absolute URL.
+ *
+ * Handles three input shapes:
+ *   "../../media/foo.jpg"   — canonical CNXML form
+ *   "foo.jpg" or "sub/x.jpg" — bare filename (occurs in some sources where
+ *                              the path prefix was dropped, e.g. inside
+ *                              commented-out solution blocks)
+ *   "/…" or "http(s)://…"   — already absolute, returned unchanged
+ */
+function normalizeImageSrc(src, bookSlug, chapterStr) {
+  if (!src) return src;
+  if (/^(https?:)?\//.test(src)) return src;
+  const basename = src.startsWith('../../media/')
+    ? src.replace('../../media/', '')
+    : src.includes('/')
+      ? src.split('/').pop()
+      : src;
+  return `/content/${bookSlug}/chapters/${chapterStr}/images/media/${basename}`;
+}
+
+/**
  * Build path to a translated CNXML file.
  * @param {string} track - Publication track (mt-preview, faithful, localized)
  * @param {string} chapterDir - Formatted chapter directory (e.g., "ch01", "appendices")
@@ -1004,10 +1025,7 @@ function renderFigure(figure, context) {
       const src = imageAttrs.src || '';
       // Use absolute path for vefur content serving
       const chapterStr = formatChapterOutput(context.chapter);
-      const normalizedSrc = src.replace(
-        /^\.\.\/\.\.\/media\//,
-        `/content/${BOOK_SLUG}/chapters/${chapterStr}/images/media/`
-      );
+      const normalizedSrc = normalizeImageSrc(src, BOOK_SLUG, chapterStr);
       const alt = mediaAttrs.alt || '';
 
       lines.push(
@@ -1055,10 +1073,7 @@ function renderMedia(media, context) {
     const imageAttrs = parseAttributes(imageMatch[1]);
     const src = imageAttrs.src || '';
     const chapterStr = formatChapterOutput(context.chapter);
-    normalizedSrc = src.replace(
-      /^\.\.\/\.\.\/media\//,
-      `/content/${BOOK_SLUG}/chapters/${chapterStr}/images/media/`
-    );
+    normalizedSrc = normalizeImageSrc(src, BOOK_SLUG, chapterStr);
   }
 
   const classValue = className ? `media-inline ${className}` : 'media-inline';
@@ -2180,6 +2195,7 @@ function renderKeyEquations(chapter, equations, equationTextDictionary) {
   const lines = [];
   const context = {
     chapter,
+    bookSlug: BOOK_SLUG,
     figures: {},
     tables: {},
     examples: {},
@@ -3193,7 +3209,17 @@ async function main() {
         if (BOOK_CONFIG?.specialModules?.[moduleId] === 'periodic-table') {
           const mainContentMatch = html.match(/(<main>)([\s\S]*?)(<\/main>)/);
           if (mainContentMatch) {
+            // Preserve any element ids from the original rendered content so
+            // cross-references from chapter text (e.g. <a href="#fs-idm…">viðauka A</a>)
+            // still resolve to a real anchor on this page.
+            const preservedIds = Array.from(
+              new Set(Array.from(mainContentMatch[2].matchAll(/\sid="([^"]+)"/g)).map((m) => m[1]))
+            ).filter((id) => id !== 'title' && id !== 'page-data');
+            const anchors = preservedIds
+              .map((id) => `<span id="${id}" class="preserved-anchor"></span>`)
+              .join('');
             const newMainContent = `<main>
+${anchors}
 <div style="text-align: center; padding: 2rem;">
   <h2>Gagnavirkt lotukerfi frumefna</h2>
   <p style="font-size: 1.1rem; margin: 1.5rem 0;">
@@ -3550,6 +3576,7 @@ async function main() {
           verbose: args.verbose,
           lang: args.lang,
           chapter: args.chapter,
+          bookSlug: BOOK_SLUG,
           moduleSections,
           chapterFigureNumbers,
           chapterTableNumbers,

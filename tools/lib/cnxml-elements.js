@@ -84,11 +84,45 @@ export function resolveCrossModuleHref(documentId, targetId, context) {
     return { href: null, ownerModule, sameModule: false };
   }
 
+  const href = buildCrossModuleHref(fname, targetId, context);
   return {
-    href: targetId ? `${fname}#${targetId}` : fname,
+    href,
     ownerModule,
     sameModule: false,
   };
+}
+
+/**
+ * Build the final href for a cross-module link.
+ *
+ * Prefers an absolute reader URL so the link survives both the SvelteKit
+ * prerenderer (which 404s relative `.html` paths) and the actual reader
+ * routing (which has no `.html` in URLs). Falls back to the raw filename
+ * if `bookSlug` isn't plumbed through (older callers).
+ *
+ * URL scheme:
+ *   chapter section "5-2-foo.html" → /{slug}/kafli/05/5-2-foo#anchor
+ *   appendix       "appendices-1-foo.html" → kept relative for now
+ *                                            (handled by the reader's
+ *                                            crossReferences action;
+ *                                            absolute appendix URLs need
+ *                                            letter-mapping which lives in
+ *                                            toc.json, not the renderer).
+ */
+function buildCrossModuleHref(fname, targetId, context) {
+  if (!context.bookSlug || fname.startsWith('appendices-')) {
+    return targetId ? `${fname}#${targetId}` : fname;
+  }
+  const basename = fname.replace(/\.html$/, '');
+  // Filename is "{chapter}-{section}-{slug}" or "{chapter}-{eoc-tag}"
+  // (e.g. "5-summary"). Pull the leading chapter number.
+  const chapterMatch = basename.match(/^(\d+)-/);
+  if (!chapterMatch) {
+    return targetId ? `${fname}#${targetId}` : fname;
+  }
+  const chapterPad = chapterMatch[1].padStart(2, '0');
+  const url = `/${context.bookSlug}/kafli/${chapterPad}/${basename}`;
+  return targetId ? `${url}#${targetId}` : url;
 }
 
 /**
@@ -682,14 +716,24 @@ export function processInlineContent(content, context) {
       const alt = altMatch ? altMatch[1] : '';
       const mediaClass = classMatch ? classMatch[1] : '';
 
-      // Build absolute image path using context
+      // Build absolute image path using context. Handle three input shapes:
+      //   "../../media/foo.jpg"  — canonical CNXML form
+      //   "foo.jpg"              — bare filename (occurs in some sources where
+      //                            the path prefix was dropped, e.g. inside
+      //                            commented-out solution blocks)
+      //   anything starting with "/" or "http(s)://" — leave alone
       let normalizedSrc = src;
-      if (src.startsWith('../../media/') && context.bookSlug && context.chapter != null) {
+      if (context.bookSlug && context.chapter != null && src && !/^(https?:)?\//.test(src)) {
         const chapterStr =
           context.chapter === 'appendices'
             ? 'appendices'
             : String(context.chapter).padStart(2, '0');
-        normalizedSrc = `/content/${context.bookSlug}/chapters/${chapterStr}/images/media/${src.replace('../../media/', '')}`;
+        const basename = src.startsWith('../../media/')
+          ? src.replace('../../media/', '')
+          : src.includes('/')
+            ? src.split('/').pop()
+            : src;
+        normalizedSrc = `/content/${context.bookSlug}/chapters/${chapterStr}/images/media/${basename}`;
       }
 
       const imgTag = `<img src="${escapeAttr(normalizedSrc)}" alt="${escapeAttr(alt)}" loading="lazy"/>`;
