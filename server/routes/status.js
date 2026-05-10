@@ -265,23 +265,25 @@ router.get('/dashboard', requireAuth, async (req, res) => {
       log.error({ err }, 'Failed to calculate metrics');
     }
 
-    // Get pending module reviews from DB
+    // Pending edits — counts segment_edits.status='pending' directly so an
+    // editor's saved edit is visible without a module_reviews wrapper
+    // (audit F2). Items list shows the oldest 5 pending edits.
     try {
-      const pendingReviews = segmentEditorService.getPendingModuleReviews();
-      dashboard.needsAttention.pendingReviews = pendingReviews.length;
+      dashboard.needsAttention.pendingReviews = dashboardReadModel.getAdminHeadlineCount();
 
-      for (const review of pendingReviews.slice(0, 5)) {
+      const pendingEdits = dashboardReadModel.getGlobalPendingEdits({ limit: 5 });
+      for (const edit of pendingEdits) {
         dashboard.needsAttention.items.push({
           type: 'review',
-          book: review.book,
-          chapter: review.chapter,
-          section: review.module_id,
-          submittedBy: review.submitted_by_username,
-          message: `Yfirferð í bið: ${review.module_id}`,
+          book: edit.book,
+          chapter: edit.chapter,
+          section: edit.module_id,
+          submittedBy: edit.editor_username,
+          message: `Bíður yfirferðar: ${edit.module_id} / ${edit.segment_id}`,
         });
       }
     } catch (err) {
-      log.error({ err }, 'Failed to get pending reviews');
+      log.error({ err }, 'Failed to get pending edits');
     }
 
     // Get edits marked for discussion (replaces blocked issues)
