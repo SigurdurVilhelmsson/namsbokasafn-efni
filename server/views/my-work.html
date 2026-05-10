@@ -1094,8 +1094,8 @@
               <tr>
                 <th>Ritstj&oacute;ri</th>
                 <th>Virk</th>
-                <th>T&iacute;mafrestur</th>
-                <th>&Aacute;lag</th>
+                <th>B&iacute;&#240;ur</th>
+                <th>Elsta &iacute; bi&#240;</th>
               </tr>
             </thead>
             <tbody id="workload-body">
@@ -1171,15 +1171,16 @@
     let currentView = 'focus';
     let adminRefreshInterval = null;
 
-    // Stage label translations (from dashboard)
+    // Stage label translations. Vocabulary tuned for chemistry teachers
+    // (audit Phase 1.7): use everyday verbs, drop translator jargon.
     const STAGE_LABELS = {
       'extraction': 'Útdráttur',
-      'mtReady': 'VÞ tilbúið',
+      'mtReady': 'Tilbúið fyrir vélþýðingu',
       'mtOutput': 'Vélþýðing',
       'linguisticReview': 'Yfirferð',
-      'tmCreated': 'Þýðingaminni',
-      'injection': 'Inndráttur',
-      'rendering': 'Myndbreyting',
+      'tmCreated': 'Vistað í gagnagrunn',
+      'injection': 'Innsetning',
+      'rendering': 'Birting',
       'publication': 'Útgáfa'
     };
 
@@ -1283,11 +1284,26 @@
         // Render up next
         renderUpNext(todayData.upNext);
 
-        // Update quick stats
+        // Update quick stats. Role-aware (audit F1): admins/head-editors see
+        // global queue counts; editors see personal stats.
         if (todayData.quickStats) {
-          document.getElementById('stat-completed').textContent = todayData.quickStats.completedThisWeek;
-          document.getElementById('stat-pending').textContent = todayData.quickStats.pendingReview;
-          document.getElementById('stat-terms').textContent = todayData.quickStats.proposedTerms;
+          var isReviewer = todayData.adminStats &&
+            (todayData.user.role === 'admin' || todayData.user.role === 'head-editor');
+
+          if (isReviewer) {
+            document.getElementById('stat-completed').textContent = todayData.adminStats.globalPendingCount;
+            document.querySelector('#quick-stats .quick-stat-item:nth-child(1) .quick-stat-label').textContent = 'Bíða þíns úrskurðar';
+
+            document.getElementById('stat-pending').textContent = todayData.adminStats.readyToApplyCount;
+            document.querySelector('#quick-stats .quick-stat-item:nth-child(2) .quick-stat-label').textContent = 'Tilbúið að beita';
+
+            document.getElementById('stat-terms').textContent = todayData.quickStats.completedThisWeek;
+            document.querySelector('#quick-stats .quick-stat-item:nth-child(3) .quick-stat-label').textContent = 'Þú kláraðir í vikunni';
+          } else {
+            document.getElementById('stat-completed').textContent = todayData.quickStats.completedThisWeek;
+            document.getElementById('stat-pending').textContent = todayData.quickStats.pendingReview;
+            document.getElementById('stat-terms').textContent = todayData.quickStats.proposedTerms;
+          }
         }
 
       } catch (err) {
@@ -1736,31 +1752,34 @@
       if (!workload || workload.length === 0) {
         tbody.innerHTML =
           '<tr><td colspan="4">' +
-            '<div class="empty-state"><p>Engar úthlutanir</p></div>' +
+            '<div class="empty-state"><p>Engin virkni síðustu 7 daga</p></div>' +
           '</td></tr>';
         return;
       }
 
-      tbody.innerHTML = workload.map(function(user) {
-        var initials = escapeHtml(user.username).substring(0, 2).toUpperCase();
-        var utilization = user.utilizationPercent || 0;
-        var barClass = utilization < 50 ? 'low' : utilization < 80 ? 'medium' : 'high';
+      // Audit F3: shape comes from dashboardReadModel.getEditorWorkload().
+      // Fields: editor, active, pending, approved, rejected, oldestPendingHours.
+      tbody.innerHTML = workload.map(function(row) {
+        var name = row.editor || '(óþekkt)';
+        var initials = escapeHtml(name).substring(0, 2).toUpperCase();
+        var oldestHours = row.oldestPendingHours;
+        var oldestLabel = oldestHours == null
+          ? '–'
+          : oldestHours >= 24
+            ? Math.floor(oldestHours / 24) + ' d'
+            : oldestHours + ' klst';
+        var oldestClass = oldestHours != null && oldestHours >= 48 ? 'style="color:var(--error)"' : '';
 
         return '<tr>' +
           '<td>' +
             '<div class="workload-user">' +
               '<div class="workload-avatar">' + initials + '</div>' +
-              '<span>' + escapeHtml(user.username) + '</span>' +
+              '<span>' + escapeHtml(name) + '</span>' +
             '</div>' +
           '</td>' +
-          '<td>' + user.pending + '</td>' +
-          '<td>' + (user.overdue > 0 ? '<span style="color:var(--error)">' + user.overdue + '</span>' : '0') + '</td>' +
-          '<td style="width:150px">' +
-            '<div class="workload-bar">' +
-              '<div class="workload-bar-fill ' + barClass + '" style="width:' + Math.min(utilization, 100) + '%"></div>' +
-            '</div>' +
-            '<div style="font-size:var(--text-xs);color:var(--text-muted);margin-top:2px">' + utilization + '%</div>' +
-          '</td>' +
+          '<td>' + row.active + '</td>' +
+          '<td>' + row.pending + '</td>' +
+          '<td ' + oldestClass + '>' + oldestLabel + '</td>' +
         '</tr>';
       }).join('');
     }
@@ -1774,20 +1793,26 @@
       var INITIAL_SHOW = 4;
 
       if (!items || items.length === 0) {
-        listEl.innerHTML = '<div class="empty-state"><p>Ekkert tilbúið</p></div>';
+        listEl.innerHTML = '<div class="empty-state"><p>Ekkert tilbúið að beita</p></div>';
         return;
       }
 
+      // Audit F3: shape comes from dashboardReadModel.getReadyToApply().
+      // Fields: book, chapter, moduleId, approvedCount, pendingCount.
       var renderReadyItem = function(item) {
-        return '<div class="ready-item" onclick="assignChapter(\'' + item.book + '\', ' + item.chapter + ', \'' + item.nextStage + '\')">' +
+        var bookLabel = item.book;
+        var url = '/editor?book=' + encodeURIComponent(item.book) +
+                  '&chapter=' + item.chapter +
+                  '&module=' + encodeURIComponent(item.moduleId);
+        return '<a href="' + url + '" class="ready-item" style="text-decoration:none;color:inherit">' +
           '<div class="ready-item-header">' +
-            '<span class="ready-item-title">Kafli ' + item.chapter + '</span>' +
-            '<span class="stage-label ' + item.nextStage + '">' + (STAGE_LABELS[item.nextStage] || item.nextStage) + '</span>' +
+            '<span class="ready-item-title">Kafli ' + item.chapter + ' / ' + escapeHtml(item.moduleId) + '</span>' +
+            '<span class="badge">' + item.approvedCount + ' samþykkt</span>' +
           '</div>' +
           '<div class="ready-item-meta">' +
-            (item.title || item.book) + ' - ' + item.progress + '% lokið' +
+            escapeHtml(bookLabel) +
           '</div>' +
-        '</div>';
+        '</a>';
       };
 
       var visibleItems = items.slice(0, INITIAL_SHOW);

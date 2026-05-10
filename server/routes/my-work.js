@@ -19,6 +19,7 @@ const log = require('../lib/logger');
 const { requireAuth } = require('../middleware/requireAuth');
 const { BOOK_LABELS } = require('../config');
 const activityLog = require('../services/activityLog');
+const dashboardReadModel = require('../services/dashboardReadModel');
 
 // Database path (same as other services)
 const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
@@ -288,11 +289,27 @@ router.get('/today', requireAuth, (req, res) => {
       (r) => r.status === 'approved' && new Date(r.reviewed_at) >= weekAgo
     ).length;
 
+    // Role-aware admin counter (audit F1, F2). Single source of truth via
+    // dashboardReadModel — counts pending segment_edits directly, no
+    // module_reviews wrapper required.
+    let adminStats = null;
+    if (req.user.role === 'admin' || req.user.role === 'head-editor') {
+      try {
+        adminStats = {
+          globalPendingCount: dashboardReadModel.getAdminHeadlineCount(),
+          readyToApplyCount: dashboardReadModel.getReadyToApply().length,
+        };
+      } catch (err) {
+        log.error({ err }, 'Failed to compute adminStats');
+      }
+    }
+
     res.json({
       user: {
         id: req.user.id,
         username: req.user.username,
         name: req.user.name || req.user.username,
+        role: req.user.role,
       },
       currentTask,
       upNext,
@@ -304,6 +321,7 @@ router.get('/today', requireAuth, (req, res) => {
         completedThisWeek,
         proposedTerms: proposedTerms.length,
       },
+      adminStats,
       allTasks,
     });
   } catch (err) {
