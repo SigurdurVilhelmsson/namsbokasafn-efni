@@ -19,6 +19,7 @@ const path = require('path');
 const log = require('../lib/logger');
 const activityLog = require('../services/activityLog');
 const segmentEditorService = require('../services/segmentEditorService');
+const dashboardReadModel = require('../services/dashboardReadModel');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireAdmin, requireRole, ROLES } = require('../middleware/requireRole');
 const {
@@ -106,7 +107,8 @@ const STATUS_SYMBOLS = {
 /**
  * GET /api/status/dashboard
  * Get unified dashboard data for admin overview
- * Returns: needsAttention, teamActivity (24h), chapterMatrix, metrics, workload, overdueItems
+ * Returns: needsAttention, teamActivity (24h), chapterMatrix, metrics,
+ *          workload, readyForAssignment, globalPendingCount
  */
 router.get('/dashboard', requireAuth, async (req, res) => {
   try {
@@ -125,6 +127,9 @@ router.get('/dashboard', requireAuth, async (req, res) => {
         projection: null,
         milestones: [],
       },
+      workload: [],
+      readyForAssignment: [],
+      globalPendingCount: 0,
     };
 
     // Get all books
@@ -302,6 +307,17 @@ router.get('/dashboard', requireAuth, async (req, res) => {
       dashboard.segmentEditStats = segmentEditorService.getGlobalEditStats();
     } catch (err) {
       log.error({ err }, 'Failed to get segment edit stats');
+    }
+
+    // Populate fields previously advertised but never returned (audit F3).
+    // The headline counter (audit F2) reads segment_edits directly so a
+    // saved edit is visible to admins without a module_reviews wrapper.
+    try {
+      dashboard.globalPendingCount = dashboardReadModel.getAdminHeadlineCount();
+      dashboard.workload = dashboardReadModel.getEditorWorkload({ days: 7 });
+      dashboard.readyForAssignment = dashboardReadModel.getReadyToApply();
+    } catch (err) {
+      log.error({ err }, 'Failed to populate read-model fields');
     }
 
     res.json(dashboard);
