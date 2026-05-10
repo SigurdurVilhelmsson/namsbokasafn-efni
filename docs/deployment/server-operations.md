@@ -2,6 +2,48 @@
 
 Daily operations for the `ritstjorn.namsbokasafn.is` server.
 
+## Round-trip data flow
+
+The repo is written from two sides — local dev and the production server — with GitHub as broker. Anyone debugging a deploy or wondering "why is there a dirty working tree on prod?" should read this section first.
+
+```mermaid
+flowchart LR
+    subgraph DEV["Local dev"]
+        D1[Code: server, tools]
+        D2[Source content]
+        D3[Glossaries, BÍN]
+        D4[Book intake]
+    end
+
+    subgraph GH["GitHub origin/main"]
+        G[(main branch)]
+    end
+
+    subgraph PROD["Production (ritstjorn)"]
+        P1[Editors edit via web UI]
+        P2["applyApprovedEdits() writes .is.md"]
+        P3["scripts/git-backup.sh<br/>cron 0 */2 * * *"]
+    end
+
+    D1 -->|git push| G
+    D2 -->|git push| G
+    D3 -->|git push| G
+    D4 -->|git push| G
+
+    G -->|"scripts/deploy.sh:<br/>git stash → pull --rebase → stash pop<br/>→ npm install → systemctl restart"| PROD
+
+    P1 --> P2 --> P3
+    P3 -->|"git push origin main<br/>(ONLY: 03-faithful-translation/, 03-translated/,<br/>04-localized-content/, 04-localization/,<br/>05-publication/, chapters/)"| G
+```
+
+Outbound from prod: `scripts/git-backup.sh` (cron every 2 h) plus `server/services/gitService.js` for per-step admin UI commits. Inbound to prod: `scripts/deploy.sh` with a `git stash` step that protects in-flight editor work from being clobbered by a pull.
+
+Three rules that follow from this:
+
+1. **Never run `git clean` or unrestricted `git checkout -- <path>` on production.** Anything inside the cron's six staging globs may be unpushed editor work that the next 2-hour tick would have pushed.
+2. **Lockfile fixes belong on the dev side.** The cron does not touch `package*.json`, so any drift on `main` was pushed from dev — fix it there and let the next deploy pull it in.
+3. **Book intake / large content imports must happen on dev**, then flow through GitHub to prod. Doing intake directly on prod leaves files outside the cron's globs — they sit untracked and risk being lost in a future cleanup.
+
 ## Starting and Stopping
 
 ```bash
@@ -39,7 +81,7 @@ sudo journalctl -u ritstjorn -p err
 ### Location
 
 ```
-/home/namsbokasafn/namsbokasafn-efni/pipeline-output/sessions.db
+/home/siggi/repos/namsbokasafn-efni/pipeline-output/sessions.db
 ```
 
 SQLite database containing: users, workflow sessions, segment edits, module reviews, terminology, feedback, notifications.
@@ -142,7 +184,9 @@ If login fails with "redirect_uri mismatch":
 
 ### nginx 502 Bad Gateway
 
-The Node.js service isn't running:
+A transient 502/503 lasting up to ~10 s during `sudo systemctl restart ritstjorn` is normal and not a deploy failure. The service takes 5–8 s to bind port 3000 because of better-sqlite3 startup and migration checks. `scripts/deploy.sh` polls the health endpoint for up to 30 s and only warns if it doesn't come up.
+
+If the 502 persists past that, the Node.js service genuinely isn't running:
 
 ```bash
 # Check if service is running
@@ -174,7 +218,7 @@ See [linode-deployment-checklist.md](linode-deployment-checklist.md), sections 1
 
 Quick version:
 ```bash
-cd ~/namsbokasafn-efni && git pull origin main
+cd ~/repos/namsbokasafn-efni && git pull origin main
 cd server && npm install
 sudo systemctl restart ritstjorn
 # Run migrations if needed (via admin endpoint)
