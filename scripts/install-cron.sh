@@ -6,7 +6,7 @@
 # To install, copy the output into: crontab -e
 #
 
-DEPLOY_PATH="/opt/namsbokasafn-efni"
+DEPLOY_PATH="${DEPLOY_PATH:-/home/siggi/repos/namsbokasafn-efni}"
 
 cat <<EOF
 # === namsbokasafn backup jobs ===

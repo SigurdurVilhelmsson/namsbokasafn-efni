@@ -141,7 +141,7 @@ curl -X POST https://ritstjorn.namsbokasafn.is/api/admin/migrate \
 
 ## 6. Environment Configuration
 
-Create `/home/namsbokasafn/namsbokasafn-efni/server/.env`:
+Create `/home/siggi/repos/namsbokasafn-efni/server/.env`:
 
 ```bash
 # Server Configuration
@@ -186,8 +186,8 @@ After=network.target
 
 [Service]
 Type=simple
-User=namsbokasafn
-WorkingDirectory=/home/namsbokasafn/namsbokasafn-efni/server
+User=siggi
+WorkingDirectory=/home/siggi/repos/namsbokasafn-efni/server
 ExecStart=/usr/bin/node index.js
 Restart=on-failure
 RestartSec=10
@@ -240,7 +240,7 @@ Options:
 Recommended minimum:
 ```bash
 # Add to crontab (as namsbokasafn user)
-0 2 * * * tar -czf ~/backups/pipeline-output-$(date +\%Y\%m\%d).tar.gz ~/namsbokasafn-efni/pipeline-output/
+0 2 * * * tar -czf ~/backups/pipeline-output-$(date +\%Y\%m\%d).tar.gz ~/repos/namsbokasafn-efni/pipeline-output/
 ```
 
 - [ ] Backup strategy chosen
@@ -256,7 +256,7 @@ To deploy updates:
 # SSH to server
 ssh namsbokasafn@<linode-ip>
 
-cd ~/namsbokasafn-efni
+cd ~/repos/namsbokasafn-efni
 git pull origin main
 cd server
 npm install  # if dependencies changed
@@ -296,11 +296,11 @@ When upgrading the server with new code (e.g., new features, DB schema changes):
 ssh namsbokasafn@<linode-ip>
 
 # Backup the database first
-cp ~/namsbokasafn-efni/pipeline-output/sessions.db \
-   ~/namsbokasafn-efni/pipeline-output/sessions.db.$(date +%Y%m%d)
+cp ~/repos/namsbokasafn-efni/pipeline-output/sessions.db \
+   ~/repos/namsbokasafn-efni/pipeline-output/sessions.db.$(date +%Y%m%d)
 
 # Pull latest code
-cd ~/namsbokasafn-efni
+cd ~/repos/namsbokasafn-efni
 git pull origin main
 
 # Install any new dependencies
@@ -337,7 +337,7 @@ The migration system handles both old-format (001-007: `migrate()/rollback()`) a
 
 ```bash
 # Check that tables exist
-sqlite3 ~/namsbokasafn-efni/pipeline-output/sessions.db ".tables"
+sqlite3 ~/repos/namsbokasafn-efni/pipeline-output/sessions.db ".tables"
 # Should list: segment_edits, module_reviews, segment_discussions (among others)
 ```
 

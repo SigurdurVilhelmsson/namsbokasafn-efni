@@ -52,11 +52,15 @@ cd server && npm install --omit=dev --ignore-scripts && cd ..
 echo "Restarting ritstjorn..."
 sudo systemctl restart ritstjorn
 
-# 7. Quick health check
-sleep 2
-if curl -sf http://localhost:3000/api/health > /dev/null 2>&1; then
-  echo "=== Deploy complete. Server healthy. ==="
-else
-  echo "=== Deploy complete. WARNING: Health check failed — check logs ==="
-  echo "  journalctl -u ritstjorn -n 20 --no-pager"
-fi
+# 7. Wait for the service to become healthy (up to 30 s)
+echo "Waiting for ritstjorn to become healthy..."
+for i in $(seq 1 30); do
+  if curl -sf http://localhost:3000/api/health > /dev/null 2>&1; then
+    echo "=== Deploy complete. Server healthy after ${i}s. ==="
+    exit 0
+  fi
+  sleep 1
+done
+echo "=== Deploy complete. WARNING: Server did not become healthy in 30s ==="
+echo "  Check logs: journalctl -u ritstjorn -n 50 --no-pager"
+exit 1

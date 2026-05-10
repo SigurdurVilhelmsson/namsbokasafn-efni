@@ -4,7 +4,9 @@
 #
 # Commits and pushes changes in content directories under books/ to GitHub.
 # Designed to run as a cron job every 2 hours:
-#   0 */2 * * * /opt/namsbokasafn-efni/scripts/git-backup.sh
+#   0 */2 * * * /home/siggi/repos/namsbokasafn-efni/scripts/git-backup.sh
+# (Run scripts/install-cron.sh to print the recommended crontab; override
+#  the path with DEPLOY_PATH=... env var if your deploy lives elsewhere.)
 #
 # What gets backed up:
 #   books/*/03-faithful-translation/  — reviewed translations
