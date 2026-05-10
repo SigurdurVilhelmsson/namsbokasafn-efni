@@ -76,7 +76,7 @@
     }
   },
   "dependencies": {
-    "@mathjax/src": "^4.1.0",
+    "@mathjax/src": "^4.1.2",
     "@xmldom/xmldom": "^0.8.11",
     "mammoth": "^1.12.0"
   }
