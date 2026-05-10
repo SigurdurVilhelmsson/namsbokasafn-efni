@@ -11,6 +11,36 @@ set -euo pipefail
 
 echo "=== Deploy: namsbokasafn-efni ==="
 
+# 0. Pin Node runtime to the system version BEFORE any npm runs.
+#
+# Why: /usr/bin/npm is a shell script whose shebang is `#!/usr/bin/env node`.
+# It picks up whichever `node` is first in PATH. If the interactive shell
+# has nvm with a newer Node active (e.g. Node 24), `/usr/bin/npm` runs
+# under that Node, and prebuild-install fetches a better-sqlite3 binary
+# built for the wrong NODE_MODULE_VERSION. systemd then runs the service
+# under `/usr/bin/node` (Node 20) and the binary fails to load with
+# "Module did not self-register".
+#
+# The fix is to prepend /usr/bin to PATH so `node` resolves to the same
+# binary systemd uses, regardless of nvm state in the calling shell.
+export PATH="/usr/bin:$PATH"
+
+# Sanity check: the active Node major must match .nvmrc. If a future
+# upgrade lands a newer Node system-wide, .nvmrc must be updated in the
+# same commit so this check catches accidental version skew.
+if [ -f .nvmrc ]; then
+  EXPECTED_MAJOR=$(tr -d 'v \n' < .nvmrc | cut -d. -f1)
+  ACTUAL_MAJOR=$(node --version | tr -d 'v' | cut -d. -f1)
+  if [ "$EXPECTED_MAJOR" != "$ACTUAL_MAJOR" ]; then
+    echo "ERROR: Node version mismatch."
+    echo "  .nvmrc expects:  v${EXPECTED_MAJOR}.x"
+    echo "  /usr/bin/node:   v${ACTUAL_MAJOR}.x"
+    echo "  Either install matching Node system-wide, or update .nvmrc"
+    echo "  and the systemd ExecStart together."
+    exit 1
+  fi
+fi
+
 # 1. Back up the database before anything else
 if [ -f scripts/backup-db.sh ]; then
   echo "Backing up database..."
@@ -43,11 +73,10 @@ if [ "$STASHED" -eq 1 ]; then
 fi
 
 # 5. Install any new dependencies (root + server)
-# Use /usr/bin/npm explicitly so the install uses the same Node binary that
-# systemd runs the service under (/usr/bin/node). If the interactive shell
-# has a different Node (e.g. Node 24 via nvm), `npm` on PATH would fetch a
-# native binary built for the wrong NODE_MODULE_VERSION, causing
-# better-sqlite3 to fail to load on service start.
+# Use /usr/bin/npm explicitly so the install uses the system npm. The PATH
+# pin in step 0 above ensures npm itself runs under /usr/bin/node, which
+# is also what systemd uses for the service. Both pins together close the
+# binary-ABI drift that broke prod on 2026-05-10.
 SYSTEM_NPM=/usr/bin/npm
 if [ ! -x "$SYSTEM_NPM" ]; then
   echo "ERROR: $SYSTEM_NPM not found. Aborting deploy."
