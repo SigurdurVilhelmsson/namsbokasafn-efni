@@ -43,10 +43,31 @@ if [ "$STASHED" -eq 1 ]; then
 fi
 
 # 5. Install any new dependencies (root + server)
-echo "Installing dependencies..."
-npm ci --omit=dev --ignore-scripts
+# Use /usr/bin/npm explicitly so the install uses the same Node binary that
+# systemd runs the service under (/usr/bin/node). If the interactive shell
+# has a different Node (e.g. Node 24 via nvm), `npm` on PATH would fetch a
+# native binary built for the wrong NODE_MODULE_VERSION, causing
+# better-sqlite3 to fail to load on service start.
+SYSTEM_NPM=/usr/bin/npm
+if [ ! -x "$SYSTEM_NPM" ]; then
+  echo "ERROR: $SYSTEM_NPM not found. Aborting deploy."
+  echo "  The deploy needs to use the same Node as the systemd unit"
+  echo "  (which uses /usr/bin/node). Install Node 20 system-wide, or"
+  echo "  update both this path and the systemd unit to match."
+  exit 1
+fi
+
+echo "Installing dependencies (root)..."
+# --ignore-scripts skips the husky 'prepare' hook (husky is a dev-dep that
+# isn't present in production installs). Root has no native modules, so
+# skipping scripts is safe.
+$SYSTEM_NPM ci --omit=dev --ignore-scripts
+
 echo "Installing server dependencies..."
-cd server && npm ci --omit=dev --ignore-scripts && cd ..
+# No --ignore-scripts here: better-sqlite3's postinstall (prebuild-install)
+# fetches the native .node binary for the running Node. Skipping it leaves
+# node_modules without the SQLite binding and the server crashes on start.
+( cd server && $SYSTEM_NPM ci --omit=dev )
 
 # 6. Restart the service
 echo "Restarting ritstjorn..."
