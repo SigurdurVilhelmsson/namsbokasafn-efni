@@ -55,7 +55,7 @@ Translation workflow for Icelandic OpenStax textbooks. Produces three assets:
 
 ## Tech Stack
 
-- **Runtime:** Node.js 20.x — pinned by `.nvmrc`. Production runs Node 20.20.2 / npm 10. Generating `package-lock.json` under Node 22+ / npm 11 produces a lockfile that prod's `npm ci` rejects (npm 11 omits optional `@emnapi/*` peer-dep entries that npm 10 requires). Use `nvm use` (reads `.nvmrc`) before running `npm install` if you might commit the lockfile.
+- **Runtime:** Node.js 22.x LTS — pinned by `.nvmrc`. Production runs Node 22.x / npm 10.x. Node 20 reached EOL in April 2026; the project moved to Node 22 (Active LTS until Oct 2027) on 2026-05-10. Node 22 ships npm 10, so the lockfile-incompatibility class of bug (npm 11 dropping optional `@emnapi/*` peer-dep entries) is avoided as long as dev and prod both stay on Node 22. Generating `package-lock.json` under Node 24+ / npm 11 still breaks prod's `npm ci`. Use `nvm use` (reads `.nvmrc`) before running `npm install` if you might commit the lockfile.
 - **Pipeline tools:** Custom CLI scripts in `tools/`
 - **Server:** Express 5 editorial workflow server in `server/`, better-sqlite3 12, Helmet, JWT auth
 - **Content format:** CNXML → Markdown (intermediate) → HTML
