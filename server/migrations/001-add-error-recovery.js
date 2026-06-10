@@ -13,6 +13,15 @@ module.exports = {
   name: '001-add-error-recovery',
 
   up(db) {
+    // The legacy sessions table doesn't exist on fresh databases (its creator,
+    // sessionCore.js, was removed) — nothing to migrate.
+    const hasSessions = db
+      .prepare(`SELECT name FROM sqlite_master WHERE type='table' AND name='sessions'`)
+      .get();
+    if (!hasSessions) {
+      return;
+    }
+
     // Check if migration is already applied by looking for error_log column
     const tableInfo = db.prepare('PRAGMA table_info(sessions)').all();
     const columnNames = tableInfo.map((col) => col.name);

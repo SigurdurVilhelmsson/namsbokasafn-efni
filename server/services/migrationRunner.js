@@ -20,9 +20,12 @@ const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db
  * @returns {{ applied: number, skipped: number, errors: string[] }}
  */
 function runAllMigrations() {
+  // On a fresh checkout the DB doesn't exist yet. Create it (and its
+  // directory) so the full schema is built by the migrations below —
+  // services connect lazily via getDb() and assume the tables exist.
   if (!fs.existsSync(DB_PATH)) {
-    // DB created by sessionCore.js on first request — nothing to migrate yet
-    return { applied: 0, skipped: 0, errors: [] };
+    fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
+    new Database(DB_PATH).close();
   }
 
   const migrations = [
