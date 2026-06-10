@@ -5,6 +5,14 @@
  * Also deletes the liffraedi book and its cascading references.
  */
 
+/**
+ * Fresh databases lack the legacy tables this data migration touches
+ * (edit_history, pending_reviews, sessions_backup) — skip those.
+ */
+function tableExists(db, name) {
+  return !!db.prepare(`SELECT name FROM sqlite_master WHERE type='table' AND name = ?`).get(name);
+}
+
 module.exports = {
   name: '015-rename-book-slugs',
 
@@ -34,6 +42,7 @@ module.exports = {
         'localization_edits',
         'sessions_backup',
       ]) {
+        if (!tableExists(db, table)) continue;
         db.prepare(`UPDATE ${table} SET book = 'efnafraedi-2e' WHERE book = 'efnafraedi'`).run();
       }
 
@@ -74,6 +83,7 @@ module.exports = {
           'localization_edits',
           'sessions_backup',
         ]) {
+          if (!tableExists(db, table)) continue;
           db.prepare(`DELETE FROM ${table} WHERE book = 'liffraedi'`).run();
         }
 
