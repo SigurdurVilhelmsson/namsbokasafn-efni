@@ -30,18 +30,18 @@ All content is released under CC BY 4.0. The tooling is MIT-licensed. If you're 
 
 ## Tech Stack
 
-- **Runtime:** Node.js >= 20 (`.nvmrc` specifies 20)
+- **Runtime:** Node.js 22.x LTS (`.nvmrc` specifies 22; lockfiles must be generated under Node 22 / npm 10)
 - **Pipeline tools:** Custom CLI scripts in `tools/` (ES modules)
 - **Server:** Express 5.1 (CommonJS), better-sqlite3 12.6, Helmet 8, express-rate-limit 8
 - **Auth:** Microsoft Entra ID (Azure AD), JWT sessions
 - **Content format:** CNXML (OpenStax source) → extracted segments → translated → injected → rendered to HTML
 - **Math:** MathJax 4 (@mathjax/src 4.1) with New Computer Modern font
-- **Testing:** Vitest 4 (424 unit tests), Playwright (96 E2E tests), ESLint 10, Prettier, Husky
+- **Testing:** Vitest 4 (1,106 unit tests), Playwright (137 E2E tests), ESLint 10, Prettier, Husky
 - **CI:** GitHub Actions (lint, test, validate, security, docs-check)
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/) >= 20.0.0 (see `.nvmrc`)
+- [Node.js](https://nodejs.org/) 22.x (see `.nvmrc`)
 - npm
 
 For the workflow server in production:
@@ -65,6 +65,13 @@ The workflow server has its own `package.json`:
 ```bash
 npm run server:install
 ```
+
+> **Note:** the server's `xlsx` dependency installs from the official SheetJS
+> CDN (`cdn.sheetjs.com`), not the npm registry — npm stopped receiving
+> SheetJS releases at 0.18.5, which has unfixed security advisories. Any
+> machine running `npm ci`/`npm install` for the server (including the
+> production host) must be able to reach `cdn.sheetjs.com`. Dependabot does
+> not auto-update URL dependencies; xlsx version bumps are manual.
 
 ### 3. Environment variables (server)
 
@@ -225,10 +232,10 @@ namsbokasafn-efni/
 ### Run tests
 
 ```bash
-npm test                  # Vitest unit tests (424 tests)
+npm test                  # Vitest unit tests (1,106 tests)
 npm run test:watch        # Watch mode
 npm run test:coverage     # With coverage report
-cd server && npm run test:e2e   # Playwright E2E tests (96 tests)
+cd server && npm run test:e2e   # Playwright E2E tests (137 tests)
 ```
 
 ### Code quality
@@ -311,7 +318,11 @@ License: CC BY 4.0
 
 ## Status
 
-Actively maintained. Pipeline phases 8-13 complete (February 2026). Microsoft Entra ID authentication migration complete (March 2026). Multi-book support operational with per-book rendering configuration. The Extract-Inject-Render pipeline is verified with 424 unit tests and 96 E2E tests. New chapters are processed as editorial review progresses.
+Actively maintained. Pipeline phases 8-13 complete (February 2026). Microsoft Entra ID authentication migration complete (March 2026). Multi-book support operational with per-book rendering configuration.
+
+As of June 2026 all five CI checks (lint, test, e2e, audit, docs-check) are green: the Playwright E2E suite was repaired after a fresh-database migration bug kept it red since February, and the `xlsx`/`qs` security advisories were resolved. The Extract-Inject-Render pipeline is verified with 1,106 unit tests and 137 E2E tests. New chapters are processed as editorial review progresses.
+
+Current development plan: a security/quality review (June 2026) produced an approved remediation roadmap — see [docs/plans/2026-06-10-remediation-roadmap.md](docs/plans/2026-06-10-remediation-roadmap.md) (Units 0–5: security hotfixes, content reversibility, localization review tier, assignment enforcement, editor UX, housekeeping).
 
 ## Related Projects
 

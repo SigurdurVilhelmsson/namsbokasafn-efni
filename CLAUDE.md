@@ -34,7 +34,7 @@ This project was built iteratively with AI assistance. Known areas of concern:
 - Pipeline tools evolved organically — may have inconsistent patterns
 - Error handling may be incomplete in some tools
 - Documentation may be ahead of or behind actual implementation in places
-- Test suite: ~1070 Vitest unit tests + 96 Playwright E2E tests (vitest workspace: tools parallel, server sequential)
+- Test suite: ~1106 Vitest unit tests + 137 Playwright E2E tests, all green as of 2026-06-10 (vitest workspace: tools parallel, server sequential)
 
 ## Purpose
 
@@ -60,7 +60,8 @@ Translation workflow for Icelandic OpenStax textbooks. Produces three assets:
 - **Server:** Express 5 editorial workflow server in `server/`, better-sqlite3 12, Helmet, JWT auth
 - **Content format:** CNXML → Markdown (intermediate) → HTML
 - **Testing:** Vitest (unit), Playwright (E2E)
-- **Dependencies:** See package.json
+- **Dependencies:** See package.json. Note: the server's `xlsx` installs from the official SheetJS CDN tarball (`cdn.sheetjs.com`), not npm — npm's last SheetJS release (0.18.5) has unfixed advisories. `npm ci` therefore needs cdn.sheetjs.com reachable, and xlsx version bumps are manual (Dependabot can't follow URL dependencies).
+- **Fresh-clone bootstrap:** the server builds its full SQLite schema from scratch on first start — `migrationRunner` creates `pipeline-output/sessions.db` and runs all migrations when the file is missing (fixed 2026-06-10; previously a fresh checkout silently skipped all migrations and write endpoints 500'd)
 
 ## Directory Structure
 
@@ -250,6 +251,14 @@ The server is an **editorial workflow platform**, not a pipeline orchestration t
 - Structured logging via pino (`LOG_LEVEL` env var, JSON in production)
 - Production health check at `GET /api/health` (DB, migrations, books, auth)
 
+**Recent changes (2026-06-10):** CI fully green for the first time (lint, test, e2e, audit, docs-check):
+- `@xmldom/xmldom` 0.9 `errorHandler`→`onError` migration in `tools/lib/cnxml-dom.js` (the old option threw at runtime and broke injection)
+- Fresh-database migration fix (see bootstrap note above) — repaired the e2e suite, red since 2026-02-28
+- Terminology e2e specs aligned with the migration-032 redesign (headwords + nested `translations[]`, translation-scoped approve/dispute)
+- Two production bugs fixed: `/library` threw an uncaught error on every load (dead `/api/images` call fired by bookSelector auto-change), and the duplicate book-registration 409 guard missed when `openstax_catalogue` was empty (`isBookRegistered()` added)
+- `xlsx` → SheetJS 0.20.3 CDN tarball + `qs` bump; `npm audit` clean
+- Known follow-up: `getRegisteredBook`/`listRegisteredBooks` INNER JOIN `openstax_catalogue`, hiding registered books without catalogue entries (consider LEFT JOIN)
+
 **Recent changes (2026-03-24):**
 - Removed 20 legacy files (workflow, matecat, sync, images, issues routes/services)
 - All DB services use singleton connection pattern
@@ -259,7 +268,11 @@ The server is an **editorial workflow platform**, not a pipeline orchestration t
 
 ## Current Priority
 
-**Fidelity optimization** — 119/148 modules PERFECT (80%) for efnafraedi-2e, 49 total discrepancies across 29 modules. Error manifest auto-updated: `books/efnafraedi-2e/translation-errors.json`. Pipeline verified with ~1070 Vitest + 96 Playwright tests.
+Two active tracks:
+
+1. **Remediation roadmap (approved 2026-06-10)** — work through Units 0–5 in [docs/plans/2026-06-10-remediation-roadmap.md](docs/plans/2026-06-10-remediation-roadmap.md) (security hotfixes → content reversibility → localization review tier → assignment enforcement → editor UX → housekeeping). Source audit: [docs/audit/2026-06-10-security-quality-review.md](docs/audit/2026-06-10-security-quality-review.md); QA gates: [docs/plans/2026-06-10-qa-checklist.md](docs/plans/2026-06-10-qa-checklist.md). Tick checkboxes and append to the progress log as items land.
+
+2. **Fidelity optimization** — 119/148 modules PERFECT (80%) for efnafraedi-2e, 49 total discrepancies across 29 modules. Error manifest auto-updated: `books/efnafraedi-2e/translation-errors.json`. Pipeline verified with ~1106 Vitest + 137 Playwright tests (all green).
 
 Remaining discrepancies are structural injection issues (nested para/list), annotation side-effects (sub/sup/term overcounting from EN marker conversion), and a handful of math/link losses. See `translation-errors.json` for per-module detail.
 
