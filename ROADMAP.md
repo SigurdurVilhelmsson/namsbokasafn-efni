@@ -9,8 +9,8 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 | **Scale** | 4-5 books in 2 years, designed for 10+ |
 | **Team** | Small editorial team + occasional contributors |
 | **Deployment** | Local-first, server for shared access |
-| **Current Phase** | Phases 8-13 complete; pre-editorial-test polish done |
-| **Latest Milestone** | UI polish complete (2026-02-17): TM prep button, review queue UI, nav updates, docs refresh |
+| **Current Phase** | Phases 8-13 complete; CI/stability restored (June 2026); remediation roadmap Units 0–5 next |
+| **Latest Milestone** | CI fully green (2026-06-10): pipeline xmldom fix, e2e suite repaired after 3.5 months red, security audit clean |
 
 **Phase progression:** 1 → 2 → 2.5 → 5 → 6 → 7 → 8 ✅ → 9 ✅ → 10 ✅ → 11 ✅ → 12 ✅ → 13 ✅
 **Note:** Phase 3 (Enhanced Dashboard) and Phase 4 (not defined) are deferred. Built features as needed, not by strict sequence.
@@ -24,12 +24,12 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │  Web Interface (server/)                                        │
-│  - Express 5 server with SQLite session management              │
-│  - Workflow wizard with step-by-step guidance                   │
-│  - Issue dashboard with auto-fix + classification               │
-│  - Image tracking with OneDrive integration                     │
-│  - GitHub OAuth authentication                                  │
-│  - Segment editor + localization editor (Phase 8, complete)      │
+│  - Express 5 editorial workflow server, better-sqlite3          │
+│  - Microsoft Entra ID (Azure AD) authentication, JWT sessions   │
+│  - Segment editor (Pass 1) + localization editor (Pass 2)       │
+│  - Terminology manager (headwords + translations redesign)      │
+│  - Editorial progress dashboard, live CNXML→HTML preview        │
+│  - Content versioning (per-segment snapshots before apply)      │
 ├─────────────────────────────────────────────────────────────────┤
 │  CLI Tools (tools/)                                             │
 │  - Extract-Inject-Render pipeline (cnxml-extract/inject/render) │
@@ -421,9 +421,33 @@ CNXML → cnxml-extract → EN segments (markdown) → MT → IS segments → re
 
 ## Next Steps
 
-### Current Priority: Operational Use
+### Current Priority: Remediation Roadmap (June 2026)
 
-Phases 9-13 are complete. The pipeline is fully verified with 49 automated tests. Next priorities are editorial workflow items from the "Ideas Beyond the Roadmap" section in [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md).
+A security/quality review on 2026-06-10 produced an approved, session-sized development plan: [docs/plans/2026-06-10-remediation-roadmap.md](docs/plans/2026-06-10-remediation-roadmap.md). Work through its units in order:
+
+| Unit | Theme |
+|------|-------|
+| 0 | Security hotfixes (path traversal, book-scope authz, render restore, XSS escaping) |
+| 1 | Content reversibility after apply (`feat/content-restore`) |
+| 2 | Pass 2 localization review tier (`feat/localization-review-tier`) |
+| 3 | Chapter assignment enforcement (`feat/assignment-enforcement`) |
+| 4 | Editor UX de-jargon (parallel) |
+| 5 | Defense-in-depth + housekeeping (parallel) |
+
+Each unit has QA gates in [docs/plans/2026-06-10-qa-checklist.md](docs/plans/2026-06-10-qa-checklist.md). The e2e suite (repaired 2026-06-10, green) is a usable regression gate for all of them.
+
+### Stability work landed 2026-06-10
+
+- CI fully green for the first time: lint, test, e2e, audit, docs-check
+- `@xmldom/xmldom` 0.9 API migration un-broke the injection pipeline
+- Fresh-database migration bootstrap fixed (e2e red since 2026-02-28; root cause: migration runner skipped everything when the DB file didn't exist)
+- Terminology e2e specs aligned with the headword/translation redesign
+- Production bugs fixed: uncaught error on every `/library` load; duplicate book-registration guard
+- `xlsx` advisories resolved via official SheetJS 0.20.3 CDN tarball; `qs` bumped; `npm audit` clean
+
+### Operational Use (ongoing)
+
+The pipeline is verified with 1,106 unit tests and 137 E2E tests. Editorial workflow items continue from the "Ideas Beyond the Roadmap" section in [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md).
 
 ### Ongoing
 1. [ ] Complete Pass 1 reviews for chapters 1-4 (using segment editor)

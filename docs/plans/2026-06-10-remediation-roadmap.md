@@ -111,3 +111,4 @@ Rationale: ship the integrity/security hotfixes first (two of them also harden t
 | Date | Session | Unit/item | Notes |
 |------|---------|-----------|-------|
 | 2026-06-10 | review | audit + roadmap | Findings documented; roadmap approved by lead. No code changed yet. |
+| 2026-06-10 | ci-restore | pre-unit infrastructure | PRs #91–#93 merged: xmldom 0.9 fix (injection pipeline un-broken), fresh-DB migration bootstrap (e2e suite green after 3.5 months red; terminology specs aligned with redesign; 2 production bugs fixed along the way), xlsx→SheetJS 0.20.3 + qs bump (audit check green). All five CI checks green — the e2e suite is now a usable QA gate for Units 0–5. No unit items started yet. |
