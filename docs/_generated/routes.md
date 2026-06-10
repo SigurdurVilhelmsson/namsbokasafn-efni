@@ -23,20 +23,29 @@
 | POST | `/catalogue/sync` |
 | POST | `/catalogue/add` |
 | POST | `/books/register` |
+| POST | `/books/:slug/fetch-source` |
 | GET | `/books` |
+| GET | `/books/data-status` |
 | GET | `/books/:slug` |
 | GET | `/books/:slug/chapters/:chapter` |
 | POST | `/books/:slug/generate-data` |
-| GET | `/books/data-status` |
 | GET | `/users` |
+| GET | `/users/roles` |
 | GET | `/users/:id` |
 | POST | `/users` |
 | PUT | `/users/:id` |
 | DELETE | `/users/:id` |
 | POST | `/users/:id/books` |
 | DELETE | `/users/:id/books/:bookSlug` |
-| GET | `/users/roles` |
+| GET | `/users/:id/chapters` |
+| POST | `/users/:id/chapters` |
+| DELETE | `/users/:id/chapters/:book/:chapter` |
+| GET | `/assignments/:book` |
+| POST | `/assignments/:book/:chapter` |
+| DELETE | `/assignments/:book/:chapter` |
+| GET | `/migrate` |
 | POST | `/migrate` |
+| GET | `/validate-pipeline` |
 
 ## /analytics
 
@@ -46,23 +55,6 @@
 | GET | `/recent` |
 | POST | `/event` |
 | GET | `/dashboard-data` |
-
-## /assignments
-
-| Method | Path |
-|--------|------|
-| GET | `/capacity` |
-| GET | `/capacity/:username` |
-| PUT | `/capacity/:username` |
-| GET | `/check-capacity` |
-| GET | `/` |
-| GET | `/overview` |
-| GET | `/:id` |
-| POST | `/bulk/assign` |
-| PUT | `/bulk/update` |
-| POST | `/` |
-| PUT | `/:id` |
-| DELETE | `/:id` |
 
 ## /auth
 
@@ -79,64 +71,18 @@
 
 | Method | Path |
 |--------|------|
+| GET | `/list` |
 | GET | `/` |
 | GET | `/:bookId` |
 | GET | `/:bookId/chapters/:chapter` |
 | GET | `/:bookId/chapters/:chapter/files` |
 | POST | `/:bookId/chapters/:chapter/files/scan` |
-| POST | `/:bookId/chapters/:chapter/generate` |
 | DELETE | `/:bookId/chapters/:chapter/files` |
 | GET | `/:bookId/files/summary` |
-| GET | `/:slug/download` |
+| GET | `/:bookId/download` |
+| GET | `/:bookId/chapters/:chapter/faithful-count` |
 | POST | `/:bookId/chapters/:chapter/import` |
-
-## /deadlines
-
-| Method | Path |
-|--------|------|
-| GET | `/` |
-| GET | `/calendar` |
-| GET | `/stats` |
-| GET | `/alerts` |
-
-## /decisions
-
-| Method | Path |
-|--------|------|
-| GET | `/types` |
-| GET | `/stats` |
-| GET | `/related` |
-| GET | `/highlights` |
-| GET | `/recent` |
-| GET | `/` |
-| GET | `/:id` |
-| GET | `/by-issue/:issueId` |
-| POST | `/` |
-
-## /editor
-
-| Method | Path |
-|--------|------|
-| GET | `/:book/:chapter` |
-| GET | `/:book/:chapter/:section` |
-| POST | `/:book/:chapter/:section/save` |
-| POST | `/:book/:chapter/:section/submit` |
-| GET | `/:book/:chapter/:section/history` |
-| GET | `/history/:historyId` |
-| POST | `/:book/:chapter/:section/restore/:historyId` |
-| GET | `/section/:sectionId` |
-| POST | `/section/:sectionId/save` |
-| POST | `/section/:sectionId/submit-review` |
-| POST | `/section/:sectionId/submit-localization` |
-| GET | `/:book/:chapter/:section/notes` |
-| POST | `/:book/:chapter/:section/notes` |
-| DELETE | `/:book/:chapter/:section/notes` |
-| GET | `/notes/all` |
-| POST | `/:book/:chapter/:section/notes/pin` |
-| POST | `/:book/:chapter/:section/presence` |
-| DELETE | `/:book/:chapter/:section/presence` |
-| GET | `/:book/:chapter/:section/presence` |
-| DELETE | `/presence/me` |
+| POST | `/:bookId/chapters/:chapter/import-mt` |
 
 ## /feedback
 
@@ -154,77 +100,18 @@
 | POST | `/:id/assign` |
 | POST | `/:id/respond` |
 
-## /images
+## /localization-editor
 
 | Method | Path |
 |--------|------|
-| GET | `/:book` |
+| GET | `/:book/chapters` |
 | GET | `/:book/:chapter` |
-| GET | `/:book/:chapter/:id` |
-| POST | `/:book/:chapter/:id/status` |
-| POST | `/:book/:chapter/:id/upload` |
-| GET | `/:book/:chapter/:id/download` |
-| POST | `/:book/:chapter/init` |
-| POST | `/:book/:chapter/:id/approve` |
-
-## /issues
-
-| Method | Path |
-|--------|------|
-| GET | `/` |
-| GET | `/stats` |
-| GET | `/session/:sessionId` |
-| POST | `/session/:sessionId/:issueId/resolve` |
-| GET | `/:id` |
-| POST | `/:id/resolve` |
-| POST | `/batch-resolve` |
-| POST | `/auto-fix` |
-| POST | `/report` |
-
-## /localization
-
-| Method | Path |
-|--------|------|
-| GET | `/:sectionId` |
-| POST | `/:sectionId/log/add` |
-| PUT | `/:sectionId/log/:entryId` |
-| DELETE | `/:sectionId/log/:entryId` |
-| POST | `/:sectionId/log/save` |
-| POST | `/:sectionId/submit` |
-| POST | `/:sectionId/approve` |
-| POST | `/:sectionId/request-changes` |
-| GET | `/stats` |
-
-## /matecat
-
-| Method | Path |
-|--------|------|
-| GET | `/` |
-| GET | `/config` |
-| POST | `/projects` |
-| GET | `/projects/:id/status` |
-| GET | `/jobs/:id/stats` |
-| GET | `/jobs/:id/urls` |
-| GET | `/jobs/:id/download` |
-| GET | `/projects` |
-| POST | `/projects/:id/poll` |
-
-## /meetings
-
-| Method | Path |
-|--------|------|
-| GET | `/agenda` |
-| GET | `/agenda/preview` |
-
-## /modules
-
-| Method | Path |
-|--------|------|
-| GET | `/` |
-| GET | `/books` |
-| GET | `/book/:bookId` |
-| GET | `/chapter/:chapter` |
-| GET | `/:moduleId` |
+| GET | `/:book/:chapter/:moduleId` |
+| POST | `/:book/:chapter/:moduleId/save` |
+| POST | `/:book/:chapter/:moduleId/save-all` |
+| GET | `/:book/:chapter/:moduleId/history` |
+| GET | `/:book/:chapter/:moduleId/:segmentId/history` |
+| POST | `/:book/:chapter/:moduleId/log` |
 
 ## /my-work
 
@@ -245,15 +132,32 @@
 | GET | `/preferences` |
 | PUT | `/preferences` |
 
-## /process
+## /pipeline-status
 
 | Method | Path |
 |--------|------|
-| POST | `/cnxml` |
-| POST | `/chapter/:chapter` |
-| POST | `/module/:moduleId` |
-| GET | `/jobs/:jobId` |
+| GET | `/:bookSlug/:chapterNum` |
+| POST | `/:bookSlug/:chapterNum/advance` |
+| POST | `/:bookSlug/:chapterNum/revert` |
+| POST | `/:bookSlug/:chapterNum/lock` |
+| DELETE | `/:bookSlug/:chapterNum/lock` |
+
+## /pipeline
+
+| Method | Path |
+|--------|------|
+| POST | `/inject` |
+| POST | `/render` |
+| POST | `/run` |
 | GET | `/jobs` |
+| GET | `/jobs/:jobId` |
+
+## /profile
+
+| Method | Path |
+|--------|------|
+| GET | `/` |
+| PUT | `/` |
 
 ## /publication
 
@@ -261,35 +165,11 @@
 |--------|------|
 | GET | `/:bookSlug/:chapterNum/status` |
 | GET | `/:bookSlug/:chapterNum/readiness` |
-| GET | `/:bookSlug/:chapterNum/sections` |
-| GET | `/:bookSlug/:chapterNum/:type/preview` |
-| GET | `/:bookSlug/:chapterNum/:type/:section/preview` |
+| GET | `/:bookSlug/:chapterNum/modules` |
 | POST | `/:bookSlug/:chapterNum/mt-preview` |
 | POST | `/:bookSlug/:chapterNum/faithful` |
 | POST | `/:bookSlug/:chapterNum/localized` |
-| POST | `/:bookSlug/:chapterNum/faithful/:section` |
-| POST | `/:bookSlug/:chapterNum/localized/:section` |
 | GET | `/:bookSlug/overview` |
-
-## /reports
-
-| Method | Path |
-|--------|------|
-| GET | `/` |
-| GET | `/weekly` |
-| GET | `/comparison` |
-
-## /reviews
-
-| Method | Path |
-|--------|------|
-| GET | `/` |
-| GET | `/count` |
-| GET | `/sla` |
-| GET | `/:id` |
-| POST | `/:id/approve` |
-| POST | `/bulk/approve` |
-| POST | `/:id/changes` |
 
 ## /sections
 
@@ -304,6 +184,38 @@
 | POST | `/:sectionId/approve-review` |
 | POST | `/:sectionId/request-changes` |
 
+## /segment-editor
+
+| Method | Path |
+|--------|------|
+| GET | `/terminology/lookup` |
+| GET | `/reviews/:reviewId` |
+| GET | `/edit/:editId/comments` |
+| GET | `/:book/chapters` |
+| GET | `/:book/:chapter` |
+| GET | `/:book/:chapter/:moduleId` |
+| POST | `/:book/:chapter/:moduleId/edit` |
+| DELETE | `/edit/:editId` |
+| POST | `/:book/:chapter/:moduleId/submit` |
+| GET | `/reviews` |
+| GET | `/review-queue` |
+| POST | `/edit/:editId/approve` |
+| POST | `/edit/:editId/reject` |
+| POST | `/edit/:editId/discuss` |
+| POST | `/edit/:editId/unapprove` |
+| POST | `/reviews/:reviewId/complete` |
+| POST | `/edit/:editId/comment` |
+| GET | `/:book/:chapter/:moduleId/terms` |
+| GET | `/:book/:chapter/:moduleId/stats` |
+| GET | `/:book/:chapter/:moduleId/apply-status` |
+| POST | `/:book/:chapter/:moduleId/apply` |
+| POST | `/:book/:chapter/:moduleId/apply-and-render` |
+| POST | `/:book/:chapter/apply-all` |
+| GET | `/:book/:chapter/:moduleId/versions` |
+| GET | `/:book/:chapter/:moduleId/versions/:version` |
+| GET | `/:book/:chapter/:moduleId/segment-history/:segmentId` |
+| GET | `/:book/:chapter/:moduleId/preview` |
+
 ## /status
 
 | Method | Path |
@@ -311,6 +223,9 @@
 | GET | `/dashboard` |
 | GET | `/activity/timeline` |
 | GET | `/activity/types` |
+| GET | `/analytics` |
+| GET | `/meeting-agenda` |
+| GET | `/:book/editorial-progress` |
 | GET | `/:book` |
 | GET | `/:book/summary` |
 | GET | `/:book/:chapter` |
@@ -318,8 +233,6 @@
 | GET | `/:book/scan` |
 | POST | `/:book/sync` |
 | POST | `/:book/:chapter/sync` |
-| GET | `/analytics` |
-| GET | `/meeting-agenda` |
 
 ## /suggestions
 
@@ -327,24 +240,14 @@
 |--------|------|
 | POST | `/scan/:sectionId` |
 | POST | `/scan-book/:bookSlug` |
+| GET | `/patterns` |
 | GET | `/:sectionId` |
 | GET | `/:sectionId/stats` |
-| GET | `/patterns` |
 | POST | `/:id/accept` |
 | POST | `/:id/reject` |
 | POST | `/:id/modify` |
 | POST | `/:sectionId/bulk` |
 | POST | `/:sectionId/sync-log` |
-
-## /sync
-
-| Method | Path |
-|--------|------|
-| GET | `/config` |
-| POST | `/prepare` |
-| POST | `/create-pr` |
-| GET | `/status/:prNumber` |
-| GET | `/prs` |
 
 ## /terminology
 
@@ -354,15 +257,21 @@
 | GET | `/lookup` |
 | GET | `/stats` |
 | GET | `/review-queue` |
+| GET | `/subjects` |
 | GET | `/categories` |
+| GET | `/export` |
 | GET | `/:id` |
 | POST | `/` |
 | PUT | `/:id` |
 | DELETE | `/:id` |
-| POST | `/:id/approve` |
-| POST | `/:id/dispute` |
+| POST | `/:headwordId/translations` |
+| PUT | `/translations/:id` |
+| DELETE | `/translations/:id` |
+| POST | `/translations/:id/approve` |
+| POST | `/translations/:id/dispute` |
 | POST | `/:id/discuss` |
 | POST | `/import/csv` |
+| POST | `/import/glossary` |
 | POST | `/import/excel` |
 | POST | `/import/key-terms` |
 | POST | `/import/existing-glossary` |
@@ -374,63 +283,34 @@
 |--------|------|
 | GET | `/` |
 | GET | `/login` |
-| GET | `/workflow` |
-| GET | `/issues` |
-| GET | `/images` |
 | GET | `/editor` |
-| GET | `/reviews` |
-| GET | `/status` |
-| GET | `/dashboard` |
-| GET | `/pipeline` |
-| GET | `/books` |
+| GET | `/progress` |
 | GET | `/terminology` |
-| GET | `/decisions` |
-| GET | `/my-work` |
-| GET | `/assignments` |
-| GET | `/chapter` |
-| GET | `/meetings` |
-| GET | `/deadlines` |
-| GET | `/reports` |
-| GET | `/analytics` |
-| GET | `/localization-review` |
-| GET | `/feedback` |
+| GET | `/reviews` |
+| GET | `/localization` |
+| GET | `/library` |
 | GET | `/admin` |
+| GET | `/assignments` |
+| GET | `/profile` |
+| GET | `/feedback` |
+| GET | `/my-work` |
+| GET | `/segment-editor` |
+| GET | `/status` |
+| GET | `/review-queue` |
+| GET | `/localization-editor` |
+| GET | `/localization-review` |
+| GET | `/books` |
+| GET | `/books/:bookId` |
+| GET | `/chapter` |
+| GET | `/images` |
 | GET | `/admin/users` |
 | GET | `/admin/books` |
 | GET | `/admin/feedback` |
+| GET | `/analytics` |
+| GET | `/workflow` |
+| GET | `/dashboard` |
+| GET | `/pipeline` |
+| GET | `/pipeline/:bookSlug/:chapterNum` |
+| GET | `/issues` |
 | GET | `/for-teachers` |
-
-## /workflow
-
-| Method | Path |
-|--------|------|
-| POST | `/start` |
-| GET | `/sessions` |
-| GET | `/sessions/all` |
-| GET | `/check/:book/:chapter` |
-| POST | `/resume` |
-| GET | `/:sessionId` |
-| POST | `/:sessionId/upload/:step` |
-| GET | `/:sessionId/download/:artifact` |
-| GET | `/:sessionId/download-all` |
-| GET | `/:sessionId/supplementary-files` |
-| GET | `/:sessionId/supplementary-file/:filename` |
-| POST | `/:sessionId/advance` |
-| POST | `/:sessionId/cancel` |
-| DELETE | `/:sessionId` |
-| GET | `/:sessionId/errors` |
-| POST | `/:sessionId/retry` |
-| POST | `/:sessionId/rollback` |
-| POST | `/:sessionId/reset` |
-| GET | `/:sessionId/recovery` |
-| POST | `/assignments` |
-| POST | `/assignments/kickoff` |
-| GET | `/assignments/workload` |
-| GET | `/assignments` |
-| GET | `/assignments/mine` |
-| POST | `/assignments/:id/complete` |
-| GET | `/assignments/matrix` |
-| POST | `/assignments/:id/cancel` |
-| GET | `/:sessionId/git-preview` |
-| POST | `/:sessionId/git-commit` |
 

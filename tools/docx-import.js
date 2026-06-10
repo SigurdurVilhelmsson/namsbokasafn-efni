@@ -181,8 +181,9 @@ function loadEnSegments(booksDir, chapter) {
     throw new Error(`Segment directory not found: ${segDir}`);
   }
 
-  const files = fs.readdirSync(segDir)
-    .filter(f => f.endsWith('-segments.en.md'))
+  const files = fs
+    .readdirSync(segDir)
+    .filter((f) => f.endsWith('-segments.en.md'))
     .sort();
 
   const allSegments = [];
@@ -202,10 +203,13 @@ function loadEnSegments(booksDir, chapter) {
  * @returns {Map<string, {section: string, title: string}>} moduleId → metadata
  */
 function loadModuleMetadata(bookSlug, chapter) {
-  const bookJsonPath = path.join('server/data',
-    bookSlug === 'liffraedi-2e' ? 'biology-2e.json' :
-    bookSlug === 'efnafraedi-2e' ? 'chemistry-2e.json' :
-    `${bookSlug}.json`
+  const bookJsonPath = path.join(
+    'server/data',
+    bookSlug === 'liffraedi-2e'
+      ? 'biology-2e.json'
+      : bookSlug === 'efnafraedi-2e'
+        ? 'chemistry-2e.json'
+        : `${bookSlug}.json`
   );
 
   if (!fs.existsSync(bookJsonPath)) {
@@ -213,7 +217,7 @@ function loadModuleMetadata(bookSlug, chapter) {
   }
 
   const bookData = JSON.parse(fs.readFileSync(bookJsonPath, 'utf-8'));
-  const chapterData = bookData.chapters.find(c => c.chapter === chapter);
+  const chapterData = bookData.chapters.find((c) => c.chapter === chapter);
 
   if (!chapterData) {
     throw new Error(`Chapter ${chapter} not found in ${bookJsonPath}`);
@@ -231,32 +235,7 @@ function loadModuleMetadata(bookSlug, chapter) {
 // =====================================================================
 
 // Segment types that are NOT expected in a human translation docx
-const SKIP_SEGMENT_TYPES = new Set([
-  'problem',
-  'solution',
-  'glossary-term',
-  'glossary-def',
-]);
-
-/**
- * Determine if a segment type indicates a section that the translator
- * likely didn't include (e.g., exercises, glossary, section summaries).
- */
-function isSkippableSegment(seg, enSegments, idx) {
-  if (SKIP_SEGMENT_TYPES.has(seg.type)) return true;
-
-  // Skip "Section Summary", "Review Questions", "Critical Thinking Questions" titles
-  // and their content
-  if (seg.type === 'title') {
-    const text = seg.text.toLowerCase();
-    if (text === 'section summary' || text === 'review questions' ||
-        text === 'critical thinking questions' || text === 'free response') {
-      return true;
-    }
-  }
-
-  return false;
-}
+const SKIP_SEGMENT_TYPES = new Set(['problem', 'solution', 'glossary-term', 'glossary-def']);
 
 /**
  * Check if a segment is a title for a skippable section.
@@ -265,8 +244,12 @@ function isSkippableSegment(seg, enSegments, idx) {
 function isSkippableSectionTitle(seg) {
   if (seg.type !== 'title') return false;
   const text = seg.text.toLowerCase();
-  return text === 'section summary' || text === 'review questions' ||
-         text === 'critical thinking questions' || text === 'free response';
+  return (
+    text === 'section summary' ||
+    text === 'review questions' ||
+    text === 'critical thinking questions' ||
+    text === 'free response'
+  );
 }
 
 /**
@@ -337,8 +320,9 @@ function alignBlocks(docxBlocks, enSegments, moduleMetadata, chapter, verbose = 
   const tocSectionsSeen = new Set(); // Track sections seen in TOC mode
 
   // Find intro module (first module, section = "intro")
-  const introModuleId = [...moduleMetadata.entries()]
-    .find(([, meta]) => meta.section === 'intro')?.[0];
+  const introModuleId = [...moduleMetadata.entries()].find(
+    ([, meta]) => meta.section === 'intro'
+  )?.[0];
 
   /**
    * Advance to the next matchable segment in the current module.
@@ -429,7 +413,10 @@ function alignBlocks(docxBlocks, enSegments, moduleMetadata, chapter, verbose = 
         if (moduleId) {
           // Don't reset if we're already in this module (e.g. "3.5 DNA og RNA" subsection)
           if (moduleId === currentModuleId) {
-            if (verbose) console.log(`  SKIP same-module subsection heading: "${block.text.substring(0, 50)}"`);
+            if (verbose)
+              console.log(
+                `  SKIP same-module subsection heading: "${block.text.substring(0, 50)}"`
+              );
             // Try to match as a subsection title
             const seg = advanceToNextMatchable();
             if (seg && seg.type === 'title') {
@@ -441,7 +428,10 @@ function alignBlocks(docxBlocks, enSegments, moduleMetadata, chapter, verbose = 
               });
               matchedSegments.add(seg.segmentId);
               currentModuleSegIdx++;
-              if (verbose) console.log(`  MATCH [medium] ${seg.segmentId} ← subsection "${block.text.substring(0, 50)}"`);
+              if (verbose)
+                console.log(
+                  `  MATCH [medium] ${seg.segmentId} ← subsection "${block.text.substring(0, 50)}"`
+                );
             }
             continue;
           }
@@ -460,7 +450,8 @@ function alignBlocks(docxBlocks, enSegments, moduleMetadata, chapter, verbose = 
             });
             matchedSegments.add(seg.segmentId);
             currentModuleSegIdx++;
-            if (verbose) console.log(`  MATCH [high] ${seg.segmentId} ← "${block.text.substring(0, 50)}"`);
+            if (verbose)
+              console.log(`  MATCH [high] ${seg.segmentId} ← "${block.text.substring(0, 50)}"`);
           }
           continue;
         }
@@ -518,7 +509,11 @@ function alignBlocks(docxBlocks, enSegments, moduleMetadata, chapter, verbose = 
         // The next matchable segment isn't a caption — it might be that the
         // docx caption doesn't align. Try to find the caption segment nearby.
         let found = false;
-        for (let look = currentModuleSegIdx; look < Math.min(currentModuleSegIdx + 5, currentModuleSegments.length); look++) {
+        for (
+          let look = currentModuleSegIdx;
+          look < Math.min(currentModuleSegIdx + 5, currentModuleSegments.length);
+          look++
+        ) {
           const candidate = currentModuleSegments[look];
           if (candidate.type === 'caption' && !matchedSegments.has(candidate.segmentId)) {
             const captionText = block.text.replace(/^Myndi?\s+\d+\.\d+\s*/i, '');
@@ -531,7 +526,10 @@ function alignBlocks(docxBlocks, enSegments, moduleMetadata, chapter, verbose = 
             matchedSegments.add(candidate.segmentId);
             // Don't advance currentModuleSegIdx — let sequential matching continue
             found = true;
-            if (verbose) console.log(`  MATCH [medium] ${candidate.segmentId} ← "Mynd ${figNum}..." (lookahead)`);
+            if (verbose)
+              console.log(
+                `  MATCH [medium] ${candidate.segmentId} ← "Mynd ${figNum}..." (lookahead)`
+              );
             break;
           }
         }
@@ -575,7 +573,10 @@ function alignBlocks(docxBlocks, enSegments, moduleMetadata, chapter, verbose = 
         currentModuleSegIdx++;
         if (verbose) console.log(`  MATCH [medium] ${seg.segmentId} ← table marker`);
       } else {
-        if (verbose) console.log(`  SKIP table-marker (no matching segment): "${block.text.substring(0, 60)}"`);
+        if (verbose)
+          console.log(
+            `  SKIP table-marker (no matching segment): "${block.text.substring(0, 60)}"`
+          );
       }
       continue;
     }
@@ -601,14 +602,23 @@ function alignBlocks(docxBlocks, enSegments, moduleMetadata, chapter, verbose = 
         });
         matchedSegments.add(seg.segmentId);
         currentModuleSegIdx++;
-        if (verbose) console.log(`  MATCH [medium] ${seg.segmentId} ← note-heading "${block.text.substring(0, 40)}"`);
+        if (verbose)
+          console.log(
+            `  MATCH [medium] ${seg.segmentId} ← note-heading "${block.text.substring(0, 40)}"`
+          );
       } else {
         // This might be a sub-heading that maps to a title further ahead
         let found = false;
-        for (let look = currentModuleSegIdx; look < Math.min(currentModuleSegIdx + 3, currentModuleSegments.length); look++) {
+        for (
+          let look = currentModuleSegIdx;
+          look < Math.min(currentModuleSegIdx + 3, currentModuleSegments.length);
+          look++
+        ) {
           const candidate = currentModuleSegments[look];
-          if ((candidate.type === 'title' || candidate.type === 'note-title') &&
-              !matchedSegments.has(candidate.segmentId)) {
+          if (
+            (candidate.type === 'title' || candidate.type === 'note-title') &&
+            !matchedSegments.has(candidate.segmentId)
+          ) {
             alignments.push({
               segmentId: candidate.segmentId,
               docxText: block.text,
@@ -617,7 +627,10 @@ function alignBlocks(docxBlocks, enSegments, moduleMetadata, chapter, verbose = 
             });
             matchedSegments.add(candidate.segmentId);
             found = true;
-            if (verbose) console.log(`  MATCH [low] ${candidate.segmentId} ← note-heading "${block.text.substring(0, 40)}" (lookahead)`);
+            if (verbose)
+              console.log(
+                `  MATCH [low] ${candidate.segmentId} ← note-heading "${block.text.substring(0, 40)}" (lookahead)`
+              );
             break;
           }
         }
@@ -641,7 +654,11 @@ function alignBlocks(docxBlocks, enSegments, moduleMetadata, chapter, verbose = 
     if (seg.type === 'title' && !isDocxHeadingLike) {
       // This looks like a paragraph consuming a title — try to find a para after the title
       let found = false;
-      for (let look = currentModuleSegIdx + 1; look < Math.min(currentModuleSegIdx + 3, currentModuleSegments.length); look++) {
+      for (
+        let look = currentModuleSegIdx + 1;
+        look < Math.min(currentModuleSegIdx + 3, currentModuleSegments.length);
+        look++
+      ) {
         const candidate = currentModuleSegments[look];
         if (SKIP_SEGMENT_TYPES.has(candidate.type)) continue;
         if (candidate.type === 'para' || candidate.type === 'entry') {
@@ -656,7 +673,10 @@ function alignBlocks(docxBlocks, enSegments, moduleMetadata, chapter, verbose = 
           // Advance past the skipped title AND the matched para
           currentModuleSegIdx = look + 1;
           found = true;
-          if (verbose) console.log(`  MATCH [low] ${candidate.segmentId} (${candidate.type}) ← "${block.text.substring(0, 50)}" (skipped title ${seg.segmentId})`);
+          if (verbose)
+            console.log(
+              `  MATCH [low] ${candidate.segmentId} (${candidate.type}) ← "${block.text.substring(0, 50)}" (skipped title ${seg.segmentId})`
+            );
           break;
         }
         break; // Stop if we hit another non-para type
@@ -671,11 +691,20 @@ function alignBlocks(docxBlocks, enSegments, moduleMetadata, chapter, verbose = 
         });
         matchedSegments.add(seg.segmentId);
         currentModuleSegIdx++;
-        if (verbose) console.log(`  MATCH [low] ${seg.segmentId} (${seg.type}) ← "${block.text.substring(0, 50)}" (forced)`);
+        if (verbose)
+          console.log(
+            `  MATCH [low] ${seg.segmentId} (${seg.type}) ← "${block.text.substring(0, 50)}" (forced)`
+          );
       }
-    } else if (seg.type === 'para' || seg.type === 'abstract-item' || seg.type === 'abstract' ||
-        seg.type === 'title' || seg.type === 'entry' || seg.type === 'note-title' ||
-        seg.type === 'caption') {
+    } else if (
+      seg.type === 'para' ||
+      seg.type === 'abstract-item' ||
+      seg.type === 'abstract' ||
+      seg.type === 'title' ||
+      seg.type === 'entry' ||
+      seg.type === 'note-title' ||
+      seg.type === 'caption'
+    ) {
       alignments.push({
         segmentId: seg.segmentId,
         docxText: block.text,
@@ -684,10 +713,14 @@ function alignBlocks(docxBlocks, enSegments, moduleMetadata, chapter, verbose = 
       });
       matchedSegments.add(seg.segmentId);
       currentModuleSegIdx++;
-      if (verbose) console.log(`  MATCH [medium] ${seg.segmentId} (${seg.type}) ← "${block.text.substring(0, 50)}"`);
+      if (verbose)
+        console.log(
+          `  MATCH [medium] ${seg.segmentId} (${seg.type}) ← "${block.text.substring(0, 50)}"`
+        );
     } else {
       unmatchedDocx.push(block);
-      if (verbose) console.log(`  UNMATCHED (type mismatch ${seg.type}): "${block.text.substring(0, 60)}"`);
+      if (verbose)
+        console.log(`  UNMATCHED (type mismatch ${seg.type}): "${block.text.substring(0, 60)}"`);
     }
   }
 
@@ -721,9 +754,9 @@ function alignBlocks(docxBlocks, enSegments, moduleMetadata, chapter, verbose = 
     skipped: skippedCount,
     unmatchedSegments: Math.max(0, unmatchedSegCount),
     unmatchedDocx: unmatchedDocx.length,
-    highConfidence: alignments.filter(a => a.confidence === 'high').length,
-    mediumConfidence: alignments.filter(a => a.confidence === 'medium').length,
-    lowConfidence: alignments.filter(a => a.confidence === 'low').length,
+    highConfidence: alignments.filter((a) => a.confidence === 'high').length,
+    mediumConfidence: alignments.filter((a) => a.confidence === 'medium').length,
+    lowConfidence: alignments.filter((a) => a.confidence === 'low').length,
     unmatchedDocxBlocks: unmatchedDocx,
   };
 
@@ -731,7 +764,7 @@ function alignBlocks(docxBlocks, enSegments, moduleMetadata, chapter, verbose = 
   stats.perModule = {};
   for (const [moduleId, meta] of moduleMetadata) {
     const modSegs = segmentsByModule.get(moduleId) || [];
-    const modMatched = alignments.filter(a => a.segmentId.startsWith(moduleId + ':'));
+    const modMatched = alignments.filter((a) => a.segmentId.startsWith(moduleId + ':'));
     stats.perModule[moduleId] = {
       section: meta.section,
       title: meta.title,
@@ -812,7 +845,7 @@ function writeReport(stats, booksDir, chapter) {
   // Clean up stats for JSON output (remove docx block objects)
   const reportStats = {
     ...stats,
-    unmatchedDocxBlocks: stats.unmatchedDocxBlocks.map(b => ({
+    unmatchedDocxBlocks: stats.unmatchedDocxBlocks.map((b) => ({
       index: b.index,
       type: b.type,
       text: b.text.substring(0, 100),
@@ -845,7 +878,7 @@ async function extractImages(docxPath, booksDir, chapter, enSegments, dryRun, ve
 
   // Find all image files in word/media/
   const mediaFiles = Object.keys(zip.files)
-    .filter(f => f.startsWith('word/media/'))
+    .filter((f) => f.startsWith('word/media/'))
     .sort(); // Sort to get document order
 
   if (mediaFiles.length === 0) {
@@ -855,8 +888,8 @@ async function extractImages(docxPath, booksDir, chapter, enSegments, dryRun, ve
 
   // Extract figure IDs from segments (captions have IDs like "fig-ch03_01_01-caption")
   const figureIds = enSegments
-    .filter(s => s.type === 'caption')
-    .map(s => {
+    .filter((s) => s.type === 'caption')
+    .map((s) => {
       const match = s.segmentId.match(/:([^:]+)-caption$/);
       return match ? match[1] : null;
     })
@@ -864,7 +897,6 @@ async function extractImages(docxPath, booksDir, chapter, enSegments, dryRun, ve
 
   console.log(`  Found ${mediaFiles.length} images in docx, ${figureIds.length} CNXML figures`);
 
-  const chPad = String(chapter).padStart(2, '0');
   const mediaDir = path.join(booksDir, 'media');
   const mapping = [];
 
@@ -913,7 +945,7 @@ async function extractImages(docxPath, booksDir, chapter, enSegments, dryRun, ve
   }
 
   // Check for EMF files that need conversion
-  const emfFiles = mapping.filter(m => m.extension === '.emf');
+  const emfFiles = mapping.filter((m) => m.extension === '.emf');
   if (emfFiles.length > 0) {
     console.log(`\n  WARNING: ${emfFiles.length} EMF file(s) need manual conversion to PNG:`);
     for (const emf of emfFiles) {
@@ -977,24 +1009,35 @@ async function main() {
   // Stage 3: Alignment
   console.log('\nStage 3: Aligning...');
   const { alignments, stats } = alignBlocks(
-    docxBlocks, enSegments, moduleMetadata, args.chapter, args.verbose
+    docxBlocks,
+    enSegments,
+    moduleMetadata,
+    args.chapter,
+    args.verbose
   );
 
   // Print summary
   console.log(`\n  === Alignment Summary ===`);
   console.log(`  Total EN segments:    ${stats.totalEnSegments}`);
-  console.log(`  Matched:              ${stats.matched} (${(100 * stats.matched / stats.totalEnSegments).toFixed(0)}%)`);
+  console.log(
+    `  Matched:              ${stats.matched} (${((100 * stats.matched) / stats.totalEnSegments).toFixed(0)}%)`
+  );
   console.log(`  Skipped (exercises):  ${stats.skipped}`);
   console.log(`  Unmatched segments:   ${stats.unmatchedSegments}`);
   console.log(`  Unmatched docx:       ${stats.unmatchedDocx}`);
-  console.log(`  Confidence: high=${stats.highConfidence} medium=${stats.mediumConfidence} low=${stats.lowConfidence}`);
+  console.log(
+    `  Confidence: high=${stats.highConfidence} medium=${stats.mediumConfidence} low=${stats.lowConfidence}`
+  );
 
   console.log(`\n  Per-module:`);
   for (const [moduleId, modStats] of Object.entries(stats.perModule)) {
-    const pct = modStats.totalSegments > 0
-      ? (100 * modStats.matched / modStats.totalSegments).toFixed(0)
-      : 0;
-    console.log(`    ${moduleId} (${modStats.section}): ${modStats.matched}/${modStats.totalSegments} (${pct}%)`);
+    const pct =
+      modStats.totalSegments > 0
+        ? ((100 * modStats.matched) / modStats.totalSegments).toFixed(0)
+        : 0;
+    console.log(
+      `    ${moduleId} (${modStats.section}): ${modStats.matched}/${modStats.totalSegments} (${pct}%)`
+    );
   }
 
   // Write output
@@ -1022,7 +1065,7 @@ async function main() {
   }
 }
 
-main().catch(err => {
+main().catch((err) => {
   console.error('Error:', err.message);
   process.exit(1);
 });
