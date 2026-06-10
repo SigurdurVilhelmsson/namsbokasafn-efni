@@ -104,7 +104,10 @@ async function registerBook(options) {
     // Check if local file is incomplete compared to catalogue
     if (bookData.chapters && bookData.chapters.length < catalogueEntry.chapter_count) {
       log.warn(
-        { localChapters: bookData.chapters.length, catalogueChapters: catalogueEntry.chapter_count },
+        {
+          localChapters: bookData.chapters.length,
+          catalogueChapters: catalogueEntry.chapter_count,
+        },
         'Local data file has fewer chapters than catalogue'
       );
       if (fetchFromOpenstax !== false) {
@@ -311,6 +314,25 @@ function createBookDirectories(slug) {
       ].join('\n'),
       'utf8'
     );
+  }
+}
+
+/**
+ * Lightweight existence check by slug.
+ *
+ * Unlike getRegisteredBook this does not join openstax_catalogue, so it
+ * works even when the catalogue is empty (fresh database) — required for
+ * the register route's duplicate-registration guard.
+ *
+ * @param {string} slug - Icelandic slug
+ * @returns {boolean} true if a book with this slug is registered
+ */
+function isBookRegistered(slug) {
+  const db = getDb();
+  try {
+    return !!db.prepare(`SELECT 1 FROM registered_books WHERE slug = ?`).get(slug);
+  } finally {
+    db.close();
   }
 }
 
@@ -1249,6 +1271,7 @@ function scanStatusDryRun(bookSlug, chapterNum = null) {
 
 module.exports = {
   registerBook,
+  isBookRegistered,
   getRegisteredBook,
   listRegisteredBooks,
   getChapterSections,

@@ -69,16 +69,17 @@ test.describe('Phase 2 UX fixes', () => {
 
   test('book register returns 409 on duplicate', async ({ page }) => {
     await loginAs(page, 'admin');
-    // Try to register a book that already exists
+    // edlisfraedi-2e is registered by migration 029 on every database
+    // (fresh or production), so the duplicate guard fires deterministically
+    // before any catalogue lookup.
     const res = await page.request.post('/api/admin/books/register', {
       data: {
-        catalogueSlug: 'chemistry-2e',
-        slug: 'efnafraedi-2e',
-        titleIs: 'Efnafræði 2e',
+        catalogueSlug: 'college-physics-2e',
+        slug: 'edlisfraedi-2e',
+        titleIs: 'Eðlisfræði 2e',
       },
     });
-    // Should get 409 (our route guard) or 500 with "already registered" (service guard)
-    expect([409, 500]).toContain(res.status());
+    expect(res.status()).toBe(409);
     const body = await res.json();
     expect(body.error || body.message).toMatch(/þegar skráð|already registered/i);
   });

@@ -21,6 +21,15 @@ function uid() {
   return `e2e-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
 }
 
+/**
+ * The terminology redesign (migration 032) split terms into headwords with
+ * nested translations. Convenience accessor for the first translation of a
+ * term response: { icelandic, status, notes, ... }.
+ */
+function firstTranslation(term) {
+  return term && term.translations && term.translations[0];
+}
+
 // ─── Block 1: CRUD lifecycle ────────────────────────────────────
 
 test.describe('Terminology CRUD lifecycle', () => {
@@ -56,7 +65,7 @@ test.describe('Terminology CRUD lifecycle', () => {
     const body = await res.json();
     expect(body.success).toBe(true);
     expect(body.term).toBeDefined();
-    expect(body.term.status).toBe('proposed');
+    expect(firstTranslation(body.term).status).toBe('proposed');
     cleanupIds.push(body.term.id);
 
     // Verify via GET
@@ -64,7 +73,7 @@ test.describe('Terminology CRUD lifecycle', () => {
     expect(getRes.ok()).toBe(true);
     const getBody = await getRes.json();
     expect(getBody.term.english).toBe(en);
-    expect(getBody.term.icelandic).toBe(is);
+    expect(firstTranslation(getBody.term).icelandic).toBe(is);
   });
 
   test('search finds created term', async ({ page }) => {
@@ -91,13 +100,14 @@ test.describe('Terminology CRUD lifecycle', () => {
     const { term } = await res.json();
     cleanupIds.push(term.id);
 
+    // Translations are updated via the translation-scoped endpoint
     const newIs = `frumefni-${uid()}`;
-    const updateRes = await page.request.put(`${API}/${term.id}`, {
+    const updateRes = await page.request.put(`${API}/translations/${firstTranslation(term).id}`, {
       data: { icelandic: newIs },
     });
     expect(updateRes.ok()).toBe(true);
     const updateBody = await updateRes.json();
-    expect(updateBody.term.icelandic).toBe(newIs);
+    expect(updateBody.translation.icelandic).toBe(newIs);
   });
 
   test('delete term (admin)', async ({ page }) => {
@@ -133,9 +143,11 @@ test.describe('Terminology CRUD lifecycle', () => {
     const data = {
       english: en,
       icelandic: 'valfrjálst',
-      alternatives: ['annar valkostur', 'þriðji'],
+      pos: 'noun',
+      definitionEn: 'An optional-fields test term',
+      definitionIs: 'Prófunarhugtak með valfrjálsum reitum',
       notes: 'Test notes for round-trip',
-      category: 'fundamental',
+      subjects: ['chemistry'],
     };
 
     const createRes = await page.request.post(API, { data });
@@ -145,15 +157,14 @@ test.describe('Terminology CRUD lifecycle', () => {
 
     const getRes = await page.request.get(`${API}/${term.id}`);
     const getBody = await getRes.json();
-    expect(getBody.term.notes).toBe(data.notes);
-    expect(getBody.term.category).toBe(data.category);
-    // Alternatives may be stored as JSON string or array — verify content exists
-    const alts = getBody.term.alternatives;
-    if (typeof alts === 'string') {
-      expect(alts).toContain('annar valkostur');
-    } else if (Array.isArray(alts)) {
-      expect(alts).toContain('annar valkostur');
-    }
+    // Headword-level fields
+    expect(getBody.term.pos).toBe(data.pos);
+    expect(getBody.term.definitionEn).toBe(data.definitionEn);
+    // Translation-level fields
+    const tr = firstTranslation(getBody.term);
+    expect(tr.notes).toBe(data.notes);
+    expect(tr.definitionIs).toBe(data.definitionIs);
+    expect(tr.subjects).toContain('chemistry');
   });
 });
 
@@ -175,13 +186,19 @@ test.describe('Terminology validation', () => {
     expect(body.error).toBeDefined();
   });
 
-  test('missing icelandic returns 400', async ({ page }) => {
+  test('missing icelandic creates placeholder headword', async ({ page }) => {
+    // icelandic is optional since migration 026 — a headword without a
+    // translation is a deliberate "placeholder" state.
+    const en = `placeholder-${uid()}`;
     const res = await page.request.post(API, {
-      data: { english: 'acid' },
+      data: { english: en },
     });
-    expect(res.status()).toBe(400);
+    expect(res.status()).toBe(201);
     const body = await res.json();
-    expect(body.error).toBeDefined();
+    expect(body.term.english).toBe(en);
+    expect(body.term.translations).toEqual([]);
+    // Clean up inline (this block has no cleanup list)
+    await page.request.delete(`${API}/${body.term.id}`);
   });
 
   test('lookup 1-char returns empty or 400', async ({ page }) => {
@@ -207,9 +224,14 @@ test.describe('Terminology validation', () => {
     }
   });
 
-  test('export without bookSlug returns 400', async ({ page }) => {
+  test('export without bookSlug returns all terms', async ({ page }) => {
+    // The redesigned export no longer requires bookSlug — it exports
+    // the full terminology set when no book filter is given.
     const res = await page.request.get(`${API}/export`);
-    expect(res.status()).toBe(400);
+    expect(res.status()).toBe(200);
+    const body = await res.json();
+    expect(body).toHaveProperty('stats');
+    expect(Array.isArray(body.terms)).toBe(true);
   });
 });
 
@@ -243,18 +265,19 @@ test.describe('Terminology dispute and approve workflow', () => {
     });
     const { term } = await createRes.json();
     cleanupIds.push(term.id);
-    expect(term.status).toBe('proposed');
+    const translation = firstTranslation(term);
+    expect(translation.status).toBe('proposed');
 
-    // Dispute
-    const disputeRes = await page.request.post(`${API}/${term.id}/dispute`, {
+    // Dispute (translation-scoped since the redesign)
+    const disputeRes = await page.request.post(`${API}/translations/${translation.id}/dispute`, {
       data: { comment: 'I think this should be different', proposedTranslation: 'önnur þýðing' },
     });
     expect(disputeRes.ok()).toBe(true);
     const disputeBody = await disputeRes.json();
     expect(disputeBody.success).toBe(true);
-    expect(disputeBody.term.status).toBe('disputed');
+    expect(firstTranslation(disputeBody.term).status).toBe('disputed');
 
-    // Discuss
+    // Discuss (still headword-scoped)
     const discussRes = await page.request.post(`${API}/${term.id}/discuss`, {
       data: { comment: 'Good point, let me think about it' },
     });
@@ -262,11 +285,11 @@ test.describe('Terminology dispute and approve workflow', () => {
     const discussBody = await discussRes.json();
     expect(discussBody.success).toBe(true);
 
-    // Approve
-    const approveRes = await page.request.post(`${API}/${term.id}/approve`);
+    // Approve (translation-scoped)
+    const approveRes = await page.request.post(`${API}/translations/${translation.id}/approve`);
     expect(approveRes.ok()).toBe(true);
     const approveBody = await approveRes.json();
-    expect(approveBody.term.status).toBe('approved');
+    expect(firstTranslation(approveBody.term).status).toBe('approved');
   });
 
   test('dispute without comment returns 400', async ({ page }) => {
@@ -276,9 +299,12 @@ test.describe('Terminology dispute and approve workflow', () => {
     const { term } = await createRes.json();
     cleanupIds.push(term.id);
 
-    const res = await page.request.post(`${API}/${term.id}/dispute`, {
-      data: {},
-    });
+    const res = await page.request.post(
+      `${API}/translations/${firstTranslation(term).id}/dispute`,
+      {
+        data: {},
+      }
+    );
     expect(res.status()).toBe(400);
   });
 
@@ -296,12 +322,12 @@ test.describe('Terminology dispute and approve workflow', () => {
   });
 
   test('approve non-existent returns 404', async ({ page }) => {
-    const res = await page.request.post(`${API}/999999/approve`);
+    const res = await page.request.post(`${API}/translations/999999/approve`);
     expect(res.status()).toBe(404);
   });
 
   test('dispute non-existent returns 404', async ({ page }) => {
-    const res = await page.request.post(`${API}/999999/dispute`, {
+    const res = await page.request.post(`${API}/translations/999999/dispute`, {
       data: { comment: 'does not exist' },
     });
     expect(res.status()).toBe(404);
@@ -338,7 +364,7 @@ test.describe('Terminology RBAC', () => {
     await page.goto('/editor');
     await page.waitForLoadState('domcontentloaded');
 
-    const res = await page.request.post(`${API}/999999/dispute`, {
+    const res = await page.request.post(`${API}/translations/999999/dispute`, {
       data: { comment: 'should fail' },
     });
     expect(res.status()).toBe(403);
@@ -349,7 +375,7 @@ test.describe('Terminology RBAC', () => {
     await page.goto('/editor');
     await page.waitForLoadState('domcontentloaded');
 
-    const res = await page.request.post(`${API}/999999/approve`);
+    const res = await page.request.post(`${API}/translations/999999/approve`);
     expect(res.status()).toBe(403);
   });
 
@@ -547,7 +573,7 @@ test.describe('Terminology read-only endpoints', () => {
     const res = await page.request.get(`${API}/categories`);
     expect(res.ok()).toBe(true);
     const body = await res.json();
-    expect(Array.isArray(body.categories)).toBe(true);
+    expect(Array.isArray(body.subjects)).toBe(true);
     expect(Array.isArray(body.statuses)).toBe(true);
     expect(Array.isArray(body.sources)).toBe(true);
   });
@@ -567,8 +593,11 @@ test.describe('Terminology read-only endpoints', () => {
     const contentType = res.headers()['content-type'];
     expect(contentType).toContain('text/csv');
     const text = await res.text();
-    // Should at least have the header row
-    expect(text).toContain('english,icelandic');
+    // Header row: extended column set since the redesign, but english
+    // leads and icelandic is present
+    const header = text.split('\n')[0];
+    expect(header.startsWith('english,')).toBe(true);
+    expect(header).toContain('icelandic');
   });
 
   test('review queue returns array', async ({ page }) => {
@@ -646,8 +675,10 @@ test.describe('Term usage integration', () => {
     const { term } = await createRes.json();
     cleanupIds.push(term.id);
 
-    // Approve
-    const approveRes = await page.request.post(`${API}/${term.id}/approve`);
+    // Approve (translation-scoped)
+    const approveRes = await page.request.post(
+      `${API}/translations/${firstTranslation(term).id}/approve`
+    );
     expect(approveRes.ok()).toBe(true);
 
     // Lookup
@@ -658,8 +689,8 @@ test.describe('Term usage integration', () => {
     const { terms } = await lookupRes.json();
     const found = terms.find((t) => t.id === term.id);
     expect(found).toBeDefined();
-    expect(found.icelandic).toBe(`sýra-${tag}`);
-    expect(found.status).toBe('approved');
+    expect(firstTranslation(found).icelandic).toBe(`sýra-${tag}`);
+    expect(firstTranslation(found).status).toBe('approved');
   });
 
   test('search by status filters correctly', async ({ page }) => {
@@ -678,7 +709,7 @@ test.describe('Term usage integration', () => {
     });
     const approved = (await approvedRes.json()).term;
     cleanupIds.push(approved.id);
-    await page.request.post(`${API}/${approved.id}/approve`);
+    await page.request.post(`${API}/translations/${firstTranslation(approved).id}/approve`);
 
     // Search with status=approved — should include approved, not proposed
     const searchRes = await page.request.get(`${API}?status=approved&q=${tag}`);
@@ -698,7 +729,7 @@ test.describe('Term usage integration', () => {
     });
     const { term } = await createRes.json();
     cleanupIds.push(term.id);
-    await page.request.post(`${API}/${term.id}/approve`);
+    await page.request.post(`${API}/translations/${firstTranslation(term).id}/approve`);
 
     // Check consistency: EN source contains the term, IS content does NOT
     const checkRes = await page.request.post(`${API}/check-consistency`, {
@@ -711,10 +742,10 @@ test.describe('Term usage integration', () => {
     const body = await checkRes.json();
     expect(body.stats.termsChecked).toBeGreaterThan(0);
     const relevant = body.issues.find(
-      (i) => i.enTerm && i.enTerm.toLowerCase() === `catalyst-${tag}`
+      (i) => i.english && i.english.toLowerCase() === `catalyst-${tag}`
     );
     expect(relevant).toBeDefined();
-    expect(relevant.type).toBe('missing_term');
+    expect(relevant.type).toBe('missing');
   });
 
   test('consistency check passes when translation present', async ({ page }) => {
@@ -726,20 +757,20 @@ test.describe('Term usage integration', () => {
     });
     const { term } = await createRes.json();
     cleanupIds.push(term.id);
-    await page.request.post(`${API}/${term.id}/approve`);
+    await page.request.post(`${API}/translations/${firstTranslation(term).id}/approve`);
 
     // Check consistency: both EN and IS content contain the term/translation
     const checkRes = await page.request.post(`${API}/check-consistency`, {
       data: {
         sourceContent: `The enzyme-${tag} catalyzes the reaction.`,
-        content: `Ensím-${tag} hvatar efnahvarfið.`,
+        content: `Þetta ensím-${tag} hvatar efnahvarfið.`,
       },
     });
     expect(checkRes.ok()).toBe(true);
     const body = await checkRes.json();
     expect(body.stats.termsChecked).toBeGreaterThan(0);
     const relevant = body.issues.find(
-      (i) => i.enTerm && i.enTerm.toLowerCase() === `enzyme-${tag}`
+      (i) => i.english && i.english.toLowerCase() === `enzyme-${tag}`
     );
     expect(relevant).toBeUndefined();
   });
@@ -763,7 +794,7 @@ test.describe('Term usage integration', () => {
     });
     const approved = (await approvedRes.json()).term;
     cleanupIds.push(approved.id);
-    await page.request.post(`${API}/${approved.id}/approve`);
+    await page.request.post(`${API}/translations/${firstTranslation(approved).id}/approve`);
 
     // Verify stats increased
     const newRes = await page.request.get(`${API}/stats`);

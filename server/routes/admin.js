@@ -197,9 +197,11 @@ router.post('/books/register', requireAuth, requireAdmin(), async (req, res) => 
     });
   }
 
-  // Idempotency guard: prevent duplicate registration from repeated clicks
+  // Idempotency guard: prevent duplicate registration from repeated clicks.
+  // Uses the catalogue-independent check — getRegisteredBook's catalogue
+  // join would miss registered books whose catalogue entry is absent.
   if (!forceReregister) {
-    const existing = bookRegistration.getRegisteredBook(slug);
+    const existing = bookRegistration.isBookRegistered(slug);
     if (existing) {
       return res.status(409).json({
         error: 'Bók þegar skráð',
