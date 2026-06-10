@@ -65,23 +65,29 @@ function serializeCnxmlFragment(element) {
 function insertCnxmlBefore(doc, parent, cnxmlString, refNode) {
   if (!cnxmlString) return true;
 
-  // Try to parse the CNXML fragment
+  // Try to parse the CNXML fragment.
+  // @xmldom/xmldom 0.9+ replaced the `errorHandler` object with a single
+  // `onError(level, message)` callback (level: 'warning' | 'error' | 'fatalError').
   let hadError = false;
   const parser = new DOMParser({
-    errorHandler: {
-      warning: () => {},
-      error: () => {
+    onError: (level) => {
+      if (level === 'error' || level === 'fatalError') {
         hadError = true;
-      },
-      fatalError: () => {
-        hadError = true;
-      },
+      }
     },
   });
 
   const wrapped = `<root xmlns="${CNXML_NS}" xmlns:m="${MATHML_NS}">${cnxmlString}</root>`;
-  const fragDoc = parser.parseFromString(wrapped, 'text/xml');
-  const fragRoot = fragDoc.documentElement;
+
+  // xmldom 0.9 throws a ParseError on fatal errors in addition to invoking
+  // onError, so guard the parse to preserve the text-node fallback.
+  let fragRoot = null;
+  try {
+    const fragDoc = parser.parseFromString(wrapped, 'text/xml');
+    fragRoot = fragDoc.documentElement;
+  } catch {
+    hadError = true;
+  }
 
   // If parsing failed or produced an empty root, fall back to a text node
   if (hadError || !fragRoot || fragRoot.childNodes.length === 0) {
