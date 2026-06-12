@@ -36,7 +36,7 @@ flowchart LR
     P3 -->|"git push origin main<br/>(ONLY: 03-faithful-translation/, 03-translated/,<br/>04-localized-content/, 04-localization/,<br/>05-publication/, chapters/)"| G
 ```
 
-Outbound from prod: `scripts/git-backup.sh` (cron every 2 h) plus `server/services/gitService.js` for per-step admin UI commits. Inbound to prod: `scripts/deploy.sh` with a `git stash` step that protects in-flight editor work from being clobbered by a pull.
+Outbound from prod: `scripts/git-backup.sh` (cron every 2 h) commits `books/` content to `main`. Inbound to prod: `scripts/deploy.sh` with a `git stash` step that protects in-flight editor work from being clobbered by a pull.
 
 Three rules that follow from this:
 

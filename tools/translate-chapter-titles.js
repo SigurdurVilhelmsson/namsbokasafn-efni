@@ -107,7 +107,14 @@ const inlineTerms = [{ english: 'stereochemistry', icelandic: 'rúmefnafræði',
 if (fs.existsSync(glossaryPath)) {
   try {
     const bookTerms = JSON.parse(fs.readFileSync(glossaryPath, 'utf8'));
-    const allTerms = [...(Array.isArray(bookTerms) ? bookTerms : []), ...inlineTerms];
+    // glossary-unified.json is an object `{ ..., terms: [...] }`, not a bare
+    // array. Reading it as an array silently dropped every approved term (F8).
+    const fileTerms = Array.isArray(bookTerms)
+      ? bookTerms
+      : Array.isArray(bookTerms.terms)
+        ? bookTerms.terms
+        : [];
+    const allTerms = [...fileTerms, ...inlineTerms];
     glossaries = [formatGlossary(allTerms, { domain: 'chemistry', approvedOnly: false })];
     console.log(`\nGlossary: ${allTerms.length} terms (${glossaryPath})`);
   } catch {

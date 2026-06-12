@@ -426,11 +426,32 @@ function syncStatusJsonCache(bookSlug, chapterNum) {
     }
     fs.writeFileSync(statusPath, JSON.stringify(output, null, 2) + '\n', 'utf8');
   } catch (err) {
-    log.error(
-      { err, bookSlug, chapterDir: chapterDir(chapterNum) },
-      'syncStatusJsonCache error'
-    );
+    log.error({ err, bookSlug, chapterDir: chapterDir(chapterNum) }, 'syncStatusJsonCache error');
   } finally {
+  }
+}
+
+/**
+ * Read the active (non-expired) lock for a chapter, if any.
+ *
+ * Read-only peek that reuses the service's singleton DB handle rather than
+ * opening a fresh connection per request (the route previously did the latter).
+ *
+ * @param {string} chapterId - lock id, e.g. "efnafraedi-2e-01"
+ * @returns {{ lockedBy: string, expiresAt: string } | null}
+ */
+function getActiveLock(chapterId) {
+  try {
+    const db = getDb();
+    const row = db
+      .prepare(
+        "SELECT locked_by, expires_at FROM chapter_locks WHERE chapter_id = ? AND expires_at > datetime('now')"
+      )
+      .get(chapterId);
+    return row ? { lockedBy: row.locked_by, expiresAt: row.expires_at } : null;
+  } catch {
+    // Lock table may not exist yet
+    return null;
   }
 }
 
@@ -439,6 +460,7 @@ module.exports = {
   transitionStage,
   revertStage,
   getStageHistory,
+  getActiveLock,
   syncStatusJsonCache,
   _setTestDb,
   _getTestDb,

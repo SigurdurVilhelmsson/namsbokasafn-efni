@@ -191,5 +191,19 @@
       </ul>
     </div>
   </div>
+  <script>
+    // Forward an intended-destination ?redirect= (set when the page-auth gate
+    // bounced an un-logged-in user here) on through the OAuth login link, so the
+    // user lands back where they were headed. Only same-origin paths are kept.
+    (function () {
+      var dest = new URLSearchParams(window.location.search).get('redirect');
+      if (dest && dest.charAt(0) === '/' && dest.charAt(1) !== '/') {
+        var btn = document.querySelector('a.github-btn');
+        if (btn) {
+          btn.href = '/api/auth/login?redirect=' + encodeURIComponent(dest);
+        }
+      }
+    })();
+  </script>
 </body>
 </html>

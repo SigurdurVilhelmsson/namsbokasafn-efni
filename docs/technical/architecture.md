@@ -343,6 +343,20 @@ is safe — it is regenerated deterministically.
 - JWT tokens for session management
 - Role-based access control on publication endpoints
 - Rate limiting on auth endpoints
+- Page-level auth gate on view routes (`routes/views.js`): app pages redirect
+  anonymous browsers to `/login` (defense-in-depth on top of the role-gated
+  `/api/*` routes); `/admin` and `/assignments` additionally require the
+  matching role. `/login` and `/feedback` (public form) stay open.
+
+#### CSRF posture (deliberate)
+This app uses **no CSRF tokens by design**; the control is a `SameSite=strict`,
+`HttpOnly` session cookie (`auth_token`). Strict same-site means the browser
+never attaches the cookie to cross-site requests, so a forged request from
+another origin is unauthenticated and rejected. Helmet + a same-origin CORS
+allowlist (`namsbokasafn.is` subdomains) back this up. Front-end API calls go
+through `fetchJson`, which defaults `credentials: 'same-origin'`. **If the
+cookie's `SameSite` is ever loosened to `lax`/`none`, CSRF tokens become
+required** — revisit this decision before doing so. (Audit ref: F11.)
 
 ## Configuration
 
