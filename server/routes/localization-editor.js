@@ -20,11 +20,26 @@ const router = express.Router();
 const log = require('../lib/logger');
 const segmentParser = require('../services/segmentParser');
 const localizationEditService = require('../services/localizationEditService');
+const localizationReview = require('../services/localizationReviewService');
 const activityLog = require('../services/activityLog');
 const { requireAuth } = require('../middleware/requireAuth');
-const { requireRole, requireBookAccess, ROLES } = require('../middleware/requireRole');
+const {
+  requireRole,
+  requireBookAccess,
+  requireHeadEditor,
+  requireHeadEditorFor,
+  ROLES,
+} = require('../middleware/requireRole');
 const { validateBookChapter, validateModule } = require('../middleware/validateParams');
 const { PASS2_CATEGORIES: VALID_CATEGORIES } = require('../constants');
+
+// Resolve the owning book for a localization edit id (for book-scoped authz on
+// the :editId-keyed approve/reject endpoints).
+function bookFromLocEditId(req) {
+  const edit = localizationReview.getEditById(parseInt(req.params.editId, 10));
+  if (!edit) throw new Error('Edit not found');
+  return edit.book;
+}
 
 // Per-module write lock to prevent read-modify-write race conditions.
 // Key: "book/chapter/moduleId", Value: Promise chain
@@ -49,6 +64,147 @@ function acquireModuleLock(key) {
 
 const { VALID_BOOKS } = require('../config');
 const { enrichChapters, enrichModules } = require('../services/bookDataLoader');
+
+// =====================================================================
+// REVIEW TIER (Pass 2 checks & balances)
+// Registered before the parameterized /:book routes so literal-prefixed
+// paths ("settings", "review-queue", "loc-edit") are not shadowed.
+// =====================================================================
+
+/**
+ * GET /settings/:book
+ * Whether the localization review tier is enforced for this book. Any editor
+ * may read it (the editor UI needs it to choose submit-vs-save).
+ */
+router.get('/settings/:book', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
+  const { book } = req.params;
+  if (!VALID_BOOKS.includes(book)) {
+    return res.status(400).json({ error: `Ógild bók: ${book}` });
+  }
+  try {
+    res.json({ book, enforceLocalizationReview: localizationReview.isReviewEnabled(book) });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /settings/:book  { enforceLocalizationReview: boolean }
+ * Toggle the review tier for a book (admin only).
+ */
+router.post('/settings/:book', requireAuth, requireRole(ROLES.ADMIN), (req, res) => {
+  const { book } = req.params;
+  if (!VALID_BOOKS.includes(book)) {
+    return res.status(400).json({ error: `Ógild bók: ${book}` });
+  }
+  if (typeof req.body?.enforceLocalizationReview !== 'boolean') {
+    return res.status(400).json({ error: 'enforceLocalizationReview (boolean) is required' });
+  }
+  try {
+    const enabled = localizationReview.setReviewEnabled(book, req.body.enforceLocalizationReview);
+    try {
+      activityLog.log({
+        type: 'localization_review_toggled',
+        userId: String(req.user.id),
+        username: req.user.username,
+        book,
+        description: `${req.user.username} ${enabled ? 'kveikti á' : 'slökkti á'} yfirlestri staðfærslu fyrir ${book}`,
+      });
+    } catch {
+      /* fire-and-forget */
+    }
+    res.json({ book, enforceLocalizationReview: enabled });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /review-queue/:book?
+ * Pending localization edits grouped by module (head-editor review queue).
+ */
+router.get('/review-queue/:book', requireAuth, requireHeadEditor(), (req, res) => {
+  try {
+    res.json({ queue: localizationReview.getReviewQueue(req.params.book) });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /loc-edit/:editId/approve
+ * Approve a pending localization edit and apply it to 04-localized-content/.
+ * Book-scoped head-editor (admin bypasses).
+ */
+router.post(
+  '/loc-edit/:editId/approve',
+  requireAuth,
+  requireHeadEditorFor(bookFromLocEditId),
+  (req, res) => {
+    try {
+      const { edit, savedPath } = localizationReview.approveAndApply(
+        parseInt(req.params.editId, 10),
+        req.user.id,
+        req.user.username,
+        req.body?.note
+      );
+      res.json({ success: true, edit, savedPath });
+      try {
+        activityLog.log({
+          type: 'localization_edit_approved',
+          userId: String(req.user.id),
+          username: req.user.username,
+          book: edit.book,
+          chapter: String(edit.chapter),
+          section: edit.module_id,
+          description: `${req.user.username} samþykkti staðfærslu á ${edit.module_id}:${edit.segment_id}`,
+        });
+      } catch {
+        /* fire-and-forget */
+      }
+    } catch (err) {
+      const status = err.message.includes('not found') ? 404 : 400;
+      res.status(status).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * POST /loc-edit/:editId/reject
+ * Reject a pending localization edit. Book-scoped head-editor.
+ */
+router.post(
+  '/loc-edit/:editId/reject',
+  requireAuth,
+  requireHeadEditorFor(bookFromLocEditId),
+  (req, res) => {
+    try {
+      const edit = localizationReview.rejectEdit(
+        parseInt(req.params.editId, 10),
+        req.user.id,
+        req.user.username,
+        req.body?.note
+      );
+      res.json({ success: true, edit });
+      try {
+        activityLog.log({
+          type: 'localization_edit_rejected',
+          userId: String(req.user.id),
+          username: req.user.username,
+          book: edit.book,
+          chapter: String(edit.chapter),
+          section: edit.module_id,
+          description: `${req.user.username} hafnaði staðfærslu á ${edit.module_id}:${edit.segment_id}`,
+        });
+      } catch {
+        /* fire-and-forget */
+      }
+    } catch (err) {
+      const status = err.message.includes('not found') ? 404 : 400;
+      res.status(status).json({ error: err.message });
+    }
+  }
+);
 
 // =====================================================================
 // MODULE LISTING
@@ -204,6 +360,37 @@ router.post(
           : targetSeg.faithful
         : '';
 
+      // Review tier: when enforced for this book, hold the edit as pending for
+      // head-editor approval instead of writing 04-localized-content/ directly.
+      if (localizationReview.isReviewEnabled(req.params.book)) {
+        const submitted = localizationReview.submitEdit({
+          book: req.params.book,
+          chapter: req.chapterNum,
+          moduleId: req.params.moduleId,
+          segmentId,
+          originalContent: previousContent,
+          editedContent: content,
+          category: category || null,
+          editorId: req.user.id,
+          editorUsername: req.user.username,
+        });
+        res.json({ success: true, pending: true, segmentId, editId: submitted.id });
+        try {
+          activityLog.log({
+            type: 'localization_edit_submitted',
+            userId: String(req.user.id),
+            username: req.user.username,
+            book: req.params.book,
+            chapter: String(req.chapterNum),
+            section: req.params.moduleId,
+            description: `${req.user.username} sendi staðfærslu á ${segmentId} til yfirlestrar`,
+          });
+        } catch {
+          /* fire-and-forget */
+        }
+        return;
+      }
+
       const savedPath = segmentParser.saveLocalizedSegments(
         req.params.book,
         req.chapterNum,
@@ -358,6 +545,44 @@ router.post(
         }
       }
 
+      // Review tier: when enforced, submit each changed segment for approval
+      // instead of writing 04-localized-content/ directly.
+      if (localizationReview.isReviewEnabled(req.params.book)) {
+        for (const e of auditEdits) {
+          localizationReview.submitEdit({
+            book: e.book,
+            chapter: e.chapter,
+            moduleId: e.moduleId,
+            segmentId: e.segmentId,
+            originalContent: e.previousContent,
+            editedContent: e.newContent,
+            category: e.category,
+            editorId: e.editorId,
+            editorUsername: e.editorUsername,
+          });
+        }
+        res.json({
+          success: true,
+          pending: true,
+          submittedSegments: auditEdits.length,
+          totalSegments: allSegments.length,
+        });
+        try {
+          activityLog.log({
+            type: 'localization_edits_submitted',
+            userId: String(req.user.id),
+            username: req.user.username,
+            book: req.params.book,
+            chapter: String(req.chapterNum),
+            section: req.params.moduleId,
+            description: `${req.user.username} sendi ${auditEdits.length} hluta í ${req.params.moduleId} til yfirlestrar`,
+          });
+        } catch {
+          /* fire-and-forget */
+        }
+        return;
+      }
+
       const savedPath = segmentParser.saveLocalizedSegments(
         req.params.book,
         req.chapterNum,
@@ -406,6 +631,34 @@ router.post(
       res.status(500).json({ error: err.message });
     } finally {
       release();
+    }
+  }
+);
+
+// =====================================================================
+// PENDING REVIEW EDITS (status badges + head-editor review panel)
+// =====================================================================
+
+/**
+ * GET /:book/:chapter/:moduleId/pending-edits
+ * All review-tier edits for a module (any status). Used by the editor to show
+ * per-segment review status and by head-editors to drive the approve/reject UI.
+ */
+router.get(
+  '/:book/:chapter/:moduleId/pending-edits',
+  requireAuth,
+  requireRole(ROLES.EDITOR),
+  validateBookChapter,
+  validateModule,
+  (req, res) => {
+    try {
+      res.json({
+        enforceLocalizationReview: localizationReview.isReviewEnabled(req.params.book),
+        edits: localizationReview.getModuleEdits(req.params.book, req.params.moduleId),
+      });
+    } catch (err) {
+      log.error({ err }, 'Error loading pending localization edits');
+      res.status(500).json({ error: err.message });
     }
   }
 );

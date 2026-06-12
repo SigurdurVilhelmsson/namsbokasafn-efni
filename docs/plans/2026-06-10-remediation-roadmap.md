@@ -7,15 +7,14 @@
 
 > **How to use this across sessions:** each unit below is sized to one working session. Before starting a unit, read its "Pre" note. After finishing, tick the boxes, run the matching section of the QA checklist if marked **QA**, append a line to the Progress Log at the bottom, and commit. Branch names are fixed so a future session can `git checkout` and continue.
 
-> **▶ Recommended next step (as of 2026-06-12): Unit 2 — `feat/localization-review-tier`** (or Unit 3 — `feat/assignment-enforcement`; both are now unblocked).
-> Unit 0 (security hotfixes, merged in #102) and Unit 1 (`content-restore`,
-> code-complete) are done — work is now reversible after apply, in-app. Manual
-> QA checklists §0 and §1 still need a pass on a running server. Unit 2 brings
-> Pass 2 (localization) up to Pass 1's review/four-eyes parity (the
-> student-facing asset currently has no second reviewer); Unit 3 turns chapter
-> assignment into a real boundary and depends on Unit 0.3 (now landed). A small
-> standalone quick-win also exists (see Unit 4): a "rebuild" affordance when a
-> faithful file is deleted but its edits are marked applied.
+> **▶ Recommended next step (as of 2026-06-12): Unit 3 — `feat/assignment-enforcement`** (or Unit 4 — editor UX, parallel).
+> Units 0 (#102) and 1 (#103) are merged; Unit 2 (`localization-review-tier`)
+> is code-complete. Manual QA checklists §0–§2 still need a pass on a running
+> server. Unit 3 turns chapter assignment into a real access boundary
+> (default-deny behind a per-book `enforce_assignments` toggle) and builds on
+> Unit 0.3's book-scope authz. A small standalone quick-win also exists (see
+> Unit 4): a "rebuild" affordance when a faithful file is deleted but its edits
+> are marked applied.
 
 ---
 
@@ -68,11 +67,11 @@ Rationale: ship the integrity/security hotfixes first (two of them also harden t
 **Pre:** mirror the Pass 1 state machine (`segment_edits` → `module_reviews`); reuse the four-eyes guard.
 **QA:** QA checklist §2.
 
-- [ ] **2.1** Schema/migration: localization edit/review tables (or extend existing) with submit → approve/reject states.
-- [ ] **2.2** Snapshot-before-save for localized content (parity with F10 mitigation).
-- [ ] **2.3** Four-eyes guard on localization approval (reuse `approveEdit` self-check pattern).
-- [ ] **2.4** UI: submit/approve/reject in the localization editor; surface in the review queue.
-- [ ] **2.5** Decision to record: does the lead want Pass 2 review *mandatory* or *opt-in per book*? Default proposal: opt-in toggle, off initially.
+- [x] **2.1** Migration 034 (`localization-review`): `localization_pending_edits` (submit → approve/reject states, reviewer + applied_at) and `book_settings` (per-book `enforce_localization_review`). New `localizationReviewService`.
+- [x] **2.2** Snapshot-before-save: approval applies via `segmentParser.saveLocalizedSegments`, which writes a `.bak` of the prior localized file before overwriting (parity with the F10 snapshot-before-apply mitigation); pre-image also stored in each pending edit's `original_content`. *(In-app localized restore parity with Unit 1 left as a future enhancement — `content_versions` is faithful-only.)*
+- [x] **2.3** Four-eyes: per lead decision (2026-06-12), localization mirrors Pass 1's post-#101 policy — the approve route is head-editor-only (plain editors can't approve at all), head-editors/admins may self-approve. Approve is book-scoped (`requireHeadEditorFor` resolving the book from `:editId`).
+- [x] **2.4** UI: when a book enforces review, the localization editor shows a "changes go to review" banner and submits edits as pending (save/save-all return `{ pending }`); head-editors get an in-editor approve/reject panel of the module's pending edits. `getReviewQueue` + `GET /review-queue/:book` expose the cross-module queue. *(Full merge into the unified Pass 1 review dashboard left as follow-up; the queue endpoint + in-editor panel cover the workflow.)*
+- [x] **2.5** Decision: **opt-in per book, OFF initially** (the roadmap's default). `enforce_localization_review` defaults 0; admin-only `POST /settings/:book` toggles it. With it OFF, localization saves directly (legacy behaviour preserved).
 
 ---
 
@@ -123,6 +122,7 @@ Rationale: ship the integrity/security hotfixes first (two of them also harden t
 |------|---------|-----------|-------|
 | 2026-06-10 | review | audit + roadmap | Findings documented; roadmap approved by lead. No code changed yet. |
 | 2026-06-10 | ci-restore | pre-unit infrastructure | PRs #91–#93 merged: xmldom 0.9 fix (injection pipeline un-broken), fresh-DB migration bootstrap (e2e suite green after 3.5 months red; terminology specs aligned with redesign; 2 production bugs fixed along the way), xlsx→SheetJS 0.20.3 + qs bump (audit check green). All five CI checks green — the e2e suite is now a usable QA gate for Units 0–5. No unit items started yet. |
+| 2026-06-12 | unit-2 | Unit 2 (`feat/localization-review-tier`) | Built on merged Unit 1. **2.1** migration 034 (`localization_pending_edits` + `book_settings`) + new `localizationReviewService` (toggle, submit-with-upsert, approve-applies-to-file, reject, review queue). **2.2** snapshot-before-save via the existing `saveLocalizedSegments` `.bak` + per-edit `original_content`. **2.3** four-eyes per lead decision = mirror Pass 1 (head-editor-only approve, self-approval permitted); approve/reject book-scoped via `requireHeadEditorFor`. **2.4** localization-editor route now branches on the per-book toggle (save → pending when enforced, legacy direct-save when off); new endpoints `pending-edits`, `review-queue/:book`, `loc-edit/:id/approve|reject`, `settings/:book` (admin); editor UI gains a review banner + head-editor approve/reject panel. **2.5** opt-in per book, OFF by default. +7 service tests; updated startup migration-count test (33→34); full suite 1139 green; lint/prettier clean; routes inventory regenerated. Manual QA §2 still to be walked on a server. Stacked on `claude/peaceful-meitner-g5nbdi`. |
 | 2026-06-12 | unit-1 | Unit 1 (`feat/content-restore`) | Built on the merged Unit 0 (book-scope authz). **1.1** `contentVersionService.restoreVersion` — snapshots current content as a fresh version first (restore is itself reversible), then rebuilds the faithful file from the chosen snapshot *aligned to the current extraction* (restores matching ids, keeps current-only ids, skips orphan snapshot ids), and emits the previously-dead `version_restored` activity. **1.2** `POST …/restore/:version`, book-scoped head-editor, `{confirm:true}` guard. **1.3** "Saga útgáfa" modal in the editor's head-editor apply panel (no version-history UI existed before). **1.4** decided **against** git-per-apply (redundant with the 2h git-backup cron; avoids reviving dead `gitService`). **1.5** +4 unit tests (round-trip, restore-then-restore, extraction-changed, unknown-version). Full suite 1132 green; lint/prettier clean. Manual QA §1 still to be walked on a server. Developed on `claude/peaceful-meitner-g5nbdi` (session-pinned branch) rather than the roadmap's suggested `feat/content-restore`. |
 | 2026-06-12 | unit-0 | Unit 0 (hotfix) | All four fixes landed on `claude/peaceful-meitner-g5nbdi`. **0.1**: `validateModule` + `VALID_TRACKS` guard on the preview route (path traversal via `track`/`moduleId` now 400s). **0.2**: render failure now restores each file's newest `.backup.*` (rename = restore + consume) and only unlinks brand-new partials; error message reports restored/removed counts instead of the old false "previous versions are intact". **0.3**: book-scoped authz — new `requireHeadEditorFor(resolveBook)` middleware resolves the owning book from `:editId`/`:reviewId` for approve/reject/discuss/unapprove/complete; `requireHeadEditor()` (now param-configurable) on apply/apply-and-render/apply-all and the three `publication.js` `:bookSlug` endpoints; admin still bypasses. **0.4**: `formatSubject`/`formatSource`/`formatStatus` wrapped in `escapeHtml`; new `escapeJsonForScript` (`<`→`<`) applied at all four page-data `<script>` sites. +15 unit tests (12 middleware, 3 escape); full suite 1128 green, lint clean. Manual QA checklist §0 still to be walked on a running server. |
 | 2026-06-12 | editorial-flow | pre-unit (reactive) | Triggered by a real "Vista + Birta" failure on m68700. PRs #95–#99 merged: content-publish flow auto-trigger + `translation-errors.json` backup (#95); segment-parser dropped-segment bug + phase-aware apply errors (#96); flaky e2e dropdown test (#97); MT marker normalization/detection (#98); **edit-again** — revise published segments (#99, the *forward-editing* complement to Unit 1). Surfaced two follow-ups (see Unit 1 pre-note and Unit 4): missing-file rebuild affordance; and the apply model is now documented (faithful is the re-apply baseline). Not formal-unit work, but clears editorial-UX debt ahead of Units 3–4. |
