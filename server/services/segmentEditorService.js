@@ -683,10 +683,10 @@ function applyApprovedEdits(book, chapter, moduleId) {
  * @param {string} moduleId - Module ID
  * @returns {object} { unappliedCount, appliedCount, totalApproved }
  */
-function getApplyStatus(book, moduleId) {
+function getApplyStatus(book, moduleId, chapter) {
   const conn = getDb();
 
-  return conn
+  const counts = conn
     .prepare(
       `SELECT
          COUNT(CASE WHEN applied_at IS NULL THEN 1 END) as unapplied_count,
@@ -696,6 +696,28 @@ function getApplyStatus(book, moduleId) {
        WHERE book = ? AND module_id = ? AND status = 'approved'`
     )
     .get(book, moduleId);
+
+  // When the chapter is known, report whether the faithful file actually exists.
+  // If every approved edit is marked applied but the file is gone (e.g. it was
+  // deleted out of band), the module can be *rebuilt*: applyApprovedEdits
+  // self-heals by resetting applied_at and re-applying. `canRebuild` lets the
+  // UI re-enable the apply button for that recovery instead of greying it out.
+  let faithfulExists = null;
+  let canRebuild = false;
+  if (chapter !== undefined && chapter !== null) {
+    const chDir = segmentParser.chapterDir(chapter);
+    const faithfulPath = path.join(
+      BOOKS_DIR,
+      book,
+      '03-faithful-translation',
+      chDir,
+      `${moduleId}-segments.is.md`
+    );
+    faithfulExists = fs.existsSync(faithfulPath);
+    canRebuild = !faithfulExists && counts.unapplied_count === 0 && counts.applied_count > 0;
+  }
+
+  return { ...counts, faithful_exists: faithfulExists, can_rebuild: canRebuild };
 }
 
 // =====================================================================

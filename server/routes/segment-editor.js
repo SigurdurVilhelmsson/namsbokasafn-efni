@@ -750,7 +750,11 @@ router.get(
   validateModule,
   (req, res) => {
     try {
-      const status = segmentEditor.getApplyStatus(req.params.book, req.params.moduleId);
+      const status = segmentEditor.getApplyStatus(
+        req.params.book,
+        req.params.moduleId,
+        req.chapterNum
+      );
       res.json(status);
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -886,7 +890,7 @@ router.post(
 
       for (const mod of modules) {
         // Check if this module has unapplied approved edits
-        const status = segmentEditor.getApplyStatus(req.params.book, mod.moduleId);
+        const status = segmentEditor.getApplyStatus(req.params.book, mod.moduleId, req.chapterNum);
         if (status.unapplied_count > 0) {
           try {
             const result = segmentEditor.applyApprovedEdits(

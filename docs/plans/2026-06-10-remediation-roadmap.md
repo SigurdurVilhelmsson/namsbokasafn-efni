@@ -7,14 +7,14 @@
 
 > **How to use this across sessions:** each unit below is sized to one working session. Before starting a unit, read its "Pre" note. After finishing, tick the boxes, run the matching section of the QA checklist if marked **QA**, append a line to the Progress Log at the bottom, and commit. Branch names are fixed so a future session can `git checkout` and continue.
 
-> **▶ Recommended next step (as of 2026-06-12): Unit 4 — `feat/editor-ux-dejargon`** (parallel) **or Unit 5 — `chore/defense-and-housekeeping`**.
-> Units 0 (#102), 1 (#103), 2 (#104) are merged; Unit 3 (`assignment-enforcement`)
-> is code-complete. Manual QA checklists §0–§3 still need a pass on a running
-> server. The remaining units are parallel/independent: Unit 4 de-jargons the
-> editor surfaces (chapter/section/title instead of `mNNNNN`/stage/track) and
-> adds optimistic-concurrency parity, and includes the standalone quick-win — a
-> "rebuild" affordance when a faithful file is deleted but its edits are marked
-> applied. Unit 5 is defense-in-depth + latent-bug cleanup, cherry-pickable.
+> **▶ Recommended next step (as of 2026-06-12): Unit 5 — `chore/defense-and-housekeeping`**, then circle back to the deferred Unit 4 items (4.3 optimistic-concurrency, 4.4 label sweep).
+> Units 0 (#102), 1 (#103), 2 (#104), 3 (#105) are merged; Unit 4
+> (`editor-ux-dejargon`) is code-complete bar the two deferred items. Manual QA
+> checklists §0–§4 still need a pass on a running server. Unit 5 is
+> defense-in-depth + latent-bug cleanup (auth on view routes F12, CSRF decision
+> F11, migration startup hardening F21, singleton DB handle F23, dead
+> `gitService` F22, and the batch of tool-layer lows) — each item is independent
+> and cherry-pickable per session.
 
 ---
 
@@ -94,11 +94,11 @@ Rationale: ship the integrity/security hotfixes first (two of them also harden t
 **Goal:** editor-facing surfaces speak chapter/section/title; pipeline nouns move behind an admin view.
 **QA:** QA checklist §4.
 
-- [ ] **4.1** Replace `module=mNNNNN` and stage/track jargon in editor URLs and the editor header with human chapter/section/title.
-- [ ] **4.2** Gate the 8-stage pipeline view + tracks to admin/lead role.
-- [ ] **4.3** Add an optimistic-concurrency token to the segment editor save (parity with localization 409, F13).
-- [ ] **4.4** Quick pass over labels for translator-jargon vs chemistry-teacher vocabulary (cross-ref the May-2026 workflow audit).
-- [ ] **4.5** (Quick-win, can do standalone) "Rebuild" affordance when a faithful file is missing but its edits are marked applied. Today `getApplyStatus` only counts `applied_at IS NULL` edits, so the apply button stays greyed and recovery needs a manual `applied_at=NULL` reset (surfaced 2026-06-12 during the m68700 recovery). Surface a rebuild action — or have `getApplyStatus` report file-existence and re-enable apply — that calls the existing `applyApprovedEdits` self-heal (it resets `applied_at` and re-applies when the file is gone).
+- [x] **4.1** Editor header de-jargoned: the segment-editor `module-title` and topbar now lead with the human section title (the raw `mNNNNN` is a muted tag shown only to head-editors/admins); `module-meta` already shows "Kafli N". *(URL `?module=mNNNNN` left as-is — it's an internal anchor, not a label; full URL rewrite is a larger follow-up.)*
+- [x] **4.2** Verified the 8-stage pipeline panel and tracks are already gated to head-editor/admin (`showPipelinePanel`); the pipeline status routes are `requireRole(HEAD_EDITOR)`. The preview track selector stays for editors (legitimate self-preview).
+- [ ] **4.3** *(Deferred — follow-up.)* Optimistic-concurrency token for the segment editor save. Unlike localization (which writes the file directly, hence its mtime/409), Pass 1 edits are per-editor DB rows, so "last-write-wins" doesn't apply the same way; a meaningful cross-editor conflict UX is a larger design than this low-rated (F13) item warrants. The clean parity would be to return the faithful-file mtime from `loadModuleForEditing` and 409 on a stale baseline at save — captured here for a later pass.
+- [ ] **4.4** *(Deferred — follow-up.)* Broad label sweep for CAT-jargon vs chemistry-teacher vocabulary; the high-traffic header jargon is handled by 4.1.
+- [x] **4.5** "Rebuild" affordance: `getApplyStatus(book, moduleId, chapter)` now reports `faithful_exists` and `can_rebuild` (all approved edits applied but the file is gone). The apply panel re-enables the apply button with a "skrá vantar — hægt að endurbyggja" status in that case; clicking apply triggers the existing `applyApprovedEdits` self-heal. +4 unit tests.
 
 ---
 
@@ -122,6 +122,7 @@ Rationale: ship the integrity/security hotfixes first (two of them also harden t
 |------|---------|-----------|-------|
 | 2026-06-10 | review | audit + roadmap | Findings documented; roadmap approved by lead. No code changed yet. |
 | 2026-06-10 | ci-restore | pre-unit infrastructure | PRs #91–#93 merged: xmldom 0.9 fix (injection pipeline un-broken), fresh-DB migration bootstrap (e2e suite green after 3.5 months red; terminology specs aligned with redesign; 2 production bugs fixed along the way), xlsx→SheetJS 0.20.3 + qs bump (audit check green). All five CI checks green — the e2e suite is now a usable QA gate for Units 0–5. No unit items started yet. |
+| 2026-06-12 | unit-4 | Unit 4 (`feat/editor-ux-dejargon`) | Built on merged Unit 3. **4.5** (primary) `getApplyStatus` now takes `chapter` and reports `faithful_exists`/`can_rebuild`; the apply panel re-enables apply with a "rebuild" status when the faithful file is gone but edits are marked applied (clicking apply hits the existing self-heal) — closes the m68700-recovery gap. +4 tests. **4.1** editor header/topbar lead with the human title; `mNNNNN` is a muted head-editor/admin-only tag. **4.2** verified pipeline panel + tracks already head-editor-gated. **4.3** (optimistic-concurrency) and **4.4** (broad label sweep) deferred as documented follow-ups — 4.3 because Pass 1's per-editor DB-row model differs from localization's direct file writes, making the F13 "last-write-wins" framing not directly applicable. Full suite 1150 green; lint/prettier clean. Manual QA §4 (4a/4c/4e applicable; 4d deferred with 4.3) still to be walked on a server. Stacked on `claude/peaceful-meitner-g5nbdi`. |
 | 2026-06-12 | unit-3 | Unit 3 (`feat/assignment-enforcement`) | Built on merged Unit 2. **3.1/3.2** `userService.hasChapterAccess` rewritten: per-book `enforce_assignments` toggle flips it from legacy fail-open to default-deny, with fail-closed (`ASSIGNMENT_TABLE_UNAVAILABLE` → 503 in `requireBookAccess`) when the table is missing under enforcement. New `isAssignmentEnforced`/`setAssignmentEnforced`. **3.3/3.4** migration 035 adds `enforce_assignments` to `book_settings` (reuses the Unit 2 table); `GET /assignments/:book` now returns `enforceAssignments`; admin-only `POST /assignments/:book/enforcement`; the existing assignments dashboard gains a toggle. **3.5** +7 tests; startup migration count 34→35; full suite 1146 green; lint/prettier clean; routes regenerated. Admin/head-editor bypass unchanged (short-circuited earlier in `requireBookAccess`). Manual QA §3 still to be walked on a server. Stacked on `claude/peaceful-meitner-g5nbdi`. |
 | 2026-06-12 | unit-2 | Unit 2 (`feat/localization-review-tier`) | Built on merged Unit 1. **2.1** migration 034 (`localization_pending_edits` + `book_settings`) + new `localizationReviewService` (toggle, submit-with-upsert, approve-applies-to-file, reject, review queue). **2.2** snapshot-before-save via the existing `saveLocalizedSegments` `.bak` + per-edit `original_content`. **2.3** four-eyes per lead decision = mirror Pass 1 (head-editor-only approve, self-approval permitted); approve/reject book-scoped via `requireHeadEditorFor`. **2.4** localization-editor route now branches on the per-book toggle (save → pending when enforced, legacy direct-save when off); new endpoints `pending-edits`, `review-queue/:book`, `loc-edit/:id/approve|reject`, `settings/:book` (admin); editor UI gains a review banner + head-editor approve/reject panel. **2.5** opt-in per book, OFF by default. +7 service tests; updated startup migration-count test (33→34); full suite 1139 green; lint/prettier clean; routes inventory regenerated. Manual QA §2 still to be walked on a server. Stacked on `claude/peaceful-meitner-g5nbdi`. |
 | 2026-06-12 | unit-1 | Unit 1 (`feat/content-restore`) | Built on the merged Unit 0 (book-scope authz). **1.1** `contentVersionService.restoreVersion` — snapshots current content as a fresh version first (restore is itself reversible), then rebuilds the faithful file from the chosen snapshot *aligned to the current extraction* (restores matching ids, keeps current-only ids, skips orphan snapshot ids), and emits the previously-dead `version_restored` activity. **1.2** `POST …/restore/:version`, book-scoped head-editor, `{confirm:true}` guard. **1.3** "Saga útgáfa" modal in the editor's head-editor apply panel (no version-history UI existed before). **1.4** decided **against** git-per-apply (redundant with the 2h git-backup cron; avoids reviving dead `gitService`). **1.5** +4 unit tests (round-trip, restore-then-restore, extraction-changed, unknown-version). Full suite 1132 green; lint/prettier clean. Manual QA §1 still to be walked on a server. Developed on `claude/peaceful-meitner-g5nbdi` (session-pinned branch) rather than the roadmap's suggested `feat/content-restore`. |
