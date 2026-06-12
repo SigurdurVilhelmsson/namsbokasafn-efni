@@ -7,6 +7,17 @@
 
 > **How to use this across sessions:** each unit below is sized to one working session. Before starting a unit, read its "Pre" note. After finishing, tick the boxes, run the matching section of the QA checklist if marked **QA**, append a line to the Progress Log at the bottom, and commit. Branch names are fixed so a future session can `git checkout` and continue.
 
+> **▶ Recommended next step (as of 2026-06-12): Unit 0 — security hotfixes.**
+> CI infrastructure and a batch of reactive editorial-flow fixes (PRs #91–#99) are
+> done and merged; no *formal* unit has been started yet. Unit 0 is the gate: it's
+> the highest-severity work, and two of its four fixes (book-scope authz, render
+> restore-on-failure) also harden the workflow — and **Unit 1 (`content-restore`)
+> depends on Unit 0's book-scope authz.** Unit 1 is now extra-motivated: the
+> 2026-06-12 session shipped *forward* editing (edit-again, #99), so Unit 1's
+> *backward* rollback is the natural next capability once Unit 0 lands. A small
+> standalone quick-win also exists outside the units (see Unit 4): a "rebuild"
+> affordance when a faithful file is deleted but its edits are marked applied.
+
 ---
 
 ## Sequencing overview
@@ -40,8 +51,8 @@ Rationale: ship the integrity/security hotfixes first (two of them also harden t
 
 ## Unit 1 — `feat/content-restore`
 
-**Goal:** answer "is work reversible after apply?" with **yes, in-app.** The snapshot data already exists (`content_versions`); this unit wires the path back.
-**Pre:** branch from `main` *after* Unit 0 merges (needs the book-scope authz). Review `services/contentVersionService.js` and `applyApprovedEdits`.
+**Goal:** answer "is work reversible after apply?" with **yes, in-app.** The snapshot data already exists (`content_versions`); this unit wires the path back. This is the *backward* (rollback to a prior snapshot) complement to the *forward* edit-again shipped 2026-06-12 (#99) — they are independent and both wanted.
+**Pre:** branch from `main` *after* Unit 0 merges (needs the book-scope authz). Review `services/contentVersionService.js` and `applyApprovedEdits`. Note the apply model (documented in CLAUDE.md 2026-06-12): `loadModuleForEditing` reads the faithful file as the re-apply baseline, and snapshots are taken before each apply — so restore = write a chosen snapshot back as the faithful file, then it becomes the baseline for the next apply.
 **QA:** QA checklist §1.
 
 - [ ] **1.1** Add `restoreVersion(book, chapter, moduleId, version, restoredBy)` to `contentVersionService` — writes the snapshot back via `segmentParser.saveModuleSegments`, takes a fresh snapshot first (so restore is itself reversible), emits the existing `version_restored` activity type.
@@ -89,6 +100,7 @@ Rationale: ship the integrity/security hotfixes first (two of them also harden t
 - [ ] **4.2** Gate the 8-stage pipeline view + tracks to admin/lead role.
 - [ ] **4.3** Add an optimistic-concurrency token to the segment editor save (parity with localization 409, F13).
 - [ ] **4.4** Quick pass over labels for translator-jargon vs chemistry-teacher vocabulary (cross-ref the May-2026 workflow audit).
+- [ ] **4.5** (Quick-win, can do standalone) "Rebuild" affordance when a faithful file is missing but its edits are marked applied. Today `getApplyStatus` only counts `applied_at IS NULL` edits, so the apply button stays greyed and recovery needs a manual `applied_at=NULL` reset (surfaced 2026-06-12 during the m68700 recovery). Surface a rebuild action — or have `getApplyStatus` report file-existence and re-enable apply — that calls the existing `applyApprovedEdits` self-heal (it resets `applied_at` and re-applies when the file is gone).
 
 ---
 
@@ -112,3 +124,4 @@ Rationale: ship the integrity/security hotfixes first (two of them also harden t
 |------|---------|-----------|-------|
 | 2026-06-10 | review | audit + roadmap | Findings documented; roadmap approved by lead. No code changed yet. |
 | 2026-06-10 | ci-restore | pre-unit infrastructure | PRs #91–#93 merged: xmldom 0.9 fix (injection pipeline un-broken), fresh-DB migration bootstrap (e2e suite green after 3.5 months red; terminology specs aligned with redesign; 2 production bugs fixed along the way), xlsx→SheetJS 0.20.3 + qs bump (audit check green). All five CI checks green — the e2e suite is now a usable QA gate for Units 0–5. No unit items started yet. |
+| 2026-06-12 | editorial-flow | pre-unit (reactive) | Triggered by a real "Vista + Birta" failure on m68700. PRs #95–#99 merged: content-publish flow auto-trigger + `translation-errors.json` backup (#95); segment-parser dropped-segment bug + phase-aware apply errors (#96); flaky e2e dropdown test (#97); MT marker normalization/detection (#98); **edit-again** — revise published segments (#99, the *forward-editing* complement to Unit 1). Surfaced two follow-ups (see Unit 1 pre-note and Unit 4): missing-file rebuild affordance; and the apply model is now documented (faithful is the re-apply baseline). Not formal-unit work, but clears editorial-UX debt ahead of Units 3–4. |
