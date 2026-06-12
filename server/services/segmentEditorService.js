@@ -175,10 +175,10 @@ function approveEdit(editId, reviewerId, reviewerUsername, reviewerNote) {
   const conn = getDb();
   const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
   if (!edit) throw new Error('Edit not found');
-  // eslint-disable-next-line eqeqeq
-  if (edit.editor_id == reviewerId) {
-    throw new Error('Cannot approve your own edit');
-  }
+  // Self-approval is permitted for head-editors and admins (the only roles the
+  // approve route allows): on a small team the same person often both revises a
+  // published segment (edit-again) and approves it. The editor→head-editor
+  // separation still holds for the normal flow, where editors can't approve at all.
   if (edit.status !== 'pending') throw new Error('Edit is not pending');
 
   conn

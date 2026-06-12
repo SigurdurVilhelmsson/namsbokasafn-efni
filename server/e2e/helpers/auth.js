@@ -11,8 +11,9 @@ const JWT_SECRET = 'test-secret-for-e2e-not-production';
 const JWT_ISSUER = 'namsbokasafn-pipeline';
 
 /**
- * Default user IDs per role — distinct IDs are essential because
- * approveEdit() blocks self-approval (editor_id == reviewerId).
+ * Default user IDs per role — distinct IDs model realistic editor vs reviewer
+ * actors. (Self-approval is now permitted for the head-editor/admin tier, so
+ * distinct IDs are no longer required for approval to succeed.)
  */
 const DEFAULT_USER_IDS = {
   admin: 99999,

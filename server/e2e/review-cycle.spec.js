@@ -11,8 +11,8 @@ const { loginAs } = require('./helpers/auth');
  *   edits are auto-applied → content is updated
  *
  * Uses admin role for both actors (with different user IDs) to bypass
- * book-access checks. The distinct IDs ensure approveEdit() doesn't
- * block on self-approval.
+ * book-access checks and model an editor vs a reviewer. (Self-approval is now
+ * permitted for the head-editor/admin tier, so same-id would also approve.)
  *
  * Uses unique IDs per test run to avoid collisions with stale DB state.
  */

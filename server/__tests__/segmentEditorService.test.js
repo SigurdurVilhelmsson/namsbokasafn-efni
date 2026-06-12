@@ -233,7 +233,7 @@ describe('segmentEditorService — DB lifecycle', () => {
     expect(approved.reviewed_at).toBeTruthy();
   });
 
-  it('approveEdit rejects self-approval (editor_id === reviewer_id)', () => {
+  it('approveEdit permits self-approval (head-editor/admin tier)', () => {
     const { id } = service.saveSegmentEdit({
       book: 'efnafraedi-2e',
       chapter: 1,
@@ -245,9 +245,10 @@ describe('segmentEditorService — DB lifecycle', () => {
       editorUsername: 'editor1',
     });
 
-    expect(() => service.approveEdit(id, 'user-1', 'editor1')).toThrow(
-      'Cannot approve your own edit'
-    );
+    // Same user approves their own edit — allowed for the approve tier so that
+    // edit-again is usable on a small team.
+    const result = service.approveEdit(id, 'user-1', 'editor1');
+    expect(result.status).toBe('approved');
   });
 
   it('rejectEdit changes status to rejected', () => {

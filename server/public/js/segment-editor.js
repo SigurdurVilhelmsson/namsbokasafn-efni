@@ -561,9 +561,10 @@
             ${latestEdit.category ? `<span class="category-badge ${latestEdit.category}">${categoryLabel(latestEdit.category)}</span>` : ''}
           </div>
           ${
-            isHeadEditor &&
-            latestEdit.status === 'pending' &&
-            latestEdit.editor_username !== userName
+            // Head-editors/admins may review any pending edit, including their
+            // own (e.g. after "Breyta aftur") — self-approval is permitted for
+            // this tier; editors can't reach these actions at all.
+            isHeadEditor && latestEdit.status === 'pending'
               ? `
             <div class="review-actions" style="margin-top: 0.25rem;">
               <button class="btn btn-sm btn-approve" onclick="reviewEdit(${latestEdit.id}, 'approve')" title="Samþykkja">&#10003;</button>
