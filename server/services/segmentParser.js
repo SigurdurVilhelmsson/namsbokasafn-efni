@@ -101,47 +101,45 @@ function normalizeTermMarkers(enContent, isContent) {
  */
 function parseSegments(content) {
   const segments = [];
-  const lines = content.split('\n');
-  let currentSegment = null;
-  let contentLines = [];
 
-  for (const line of lines) {
-    const match = line.match(SEG_MARKER_REGEX);
-    if (match) {
-      // Save previous segment
-      if (currentSegment) {
-        currentSegment.content = normalizeWraps(contentLines.join('\n').trim());
-        segments.push(currentSegment);
-      }
+  // Marker-based parse (not line-based): the content of a segment is everything
+  // between its marker and the next marker, regardless of newlines. This matches
+  // the injection tool's parser and tolerates malformed MT output where a
+  // segment's text and the following marker share a line, e.g.
+  //   <!-- SEG:…:note-title:… -->
+  //   Some title<!-- SEG:…:para:… -->
+  // A line-based parser dropped the pre-marker text ("Some title") and emitted an
+  // empty segment, which made injection skip the whole module.
+  const markerRegex = new RegExp(SEG_MARKER_REGEX.source, 'g');
+  let current = null;
+  let contentStart = 0;
 
-      // Extract from whichever capture group matched (HTML comment or mustache)
-      const moduleId = match[1] || match[4];
-      const segmentType = match[2] || match[5];
-      const elementId = match[3] || match[6];
-
-      currentSegment = {
-        segmentId: `${moduleId}:${segmentType}:${elementId}`,
-        moduleId,
-        segmentType,
-        elementId,
-        content: '',
-      };
-      contentLines = [];
-
-      // Capture any text after the marker on the same line
-      const remainder = line.substring(match.index + match[0].length);
-      if (remainder.trim()) {
-        contentLines.push(remainder.trim());
-      }
-    } else if (currentSegment) {
-      contentLines.push(line);
+  for (const match of content.matchAll(markerRegex)) {
+    // Close out the previous segment: its content runs up to this marker.
+    if (current) {
+      current.content = normalizeWraps(content.slice(contentStart, match.index).trim());
+      segments.push(current);
     }
+
+    // Extract from whichever capture group matched (HTML comment or mustache)
+    const moduleId = match[1] || match[4];
+    const segmentType = match[2] || match[5];
+    const elementId = match[3] || match[6];
+
+    current = {
+      segmentId: `${moduleId}:${segmentType}:${elementId}`,
+      moduleId,
+      segmentType,
+      elementId,
+      content: '',
+    };
+    contentStart = match.index + match[0].length;
   }
 
   // Don't forget the last segment
-  if (currentSegment) {
-    currentSegment.content = normalizeWraps(contentLines.join('\n').trim());
-    segments.push(currentSegment);
+  if (current) {
+    current.content = normalizeWraps(content.slice(contentStart).trim());
+    segments.push(current);
   }
 
   return segments;

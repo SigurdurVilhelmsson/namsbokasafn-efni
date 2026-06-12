@@ -32,6 +32,22 @@ This is a title.`;
     expect(segments[1].content).toBe('This is a title.');
   });
 
+  it('captures text before a marker that shares its line (malformed MT output)', () => {
+    // Regression: MT output sometimes jams a segment's text and the next
+    // marker onto one line. A line-based parser dropped the pre-marker text and
+    // emitted an empty segment, which made injection skip the whole module.
+    const content = `<!-- SEG:m68700:note-title:fs-idp25788096-title -->
+Counting Neurotransmitter Molecules<!-- SEG:m68700:para:fs-idm4217280 -->
+The brain is the control center.`;
+
+    const segments = parseSegments(content);
+    expect(segments).toHaveLength(2);
+    expect(segments[0].segmentId).toBe('m68700:note-title:fs-idp25788096-title');
+    expect(segments[0].content).toBe('Counting Neurotransmitter Molecules');
+    expect(segments[1].segmentId).toBe('m68700:para:fs-idm4217280');
+    expect(segments[1].content).toBe('The brain is the control center.');
+  });
+
   it('parses mustache markers', () => {
     const content = `{{SEG:m68663:para:fs-id001}}
 First paragraph.
