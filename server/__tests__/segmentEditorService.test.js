@@ -634,6 +634,31 @@ describe('applyApprovedEdits — integration', () => {
     expect(olderEdit.applied_at).toBeTruthy();
   });
 
+  it('edit-again: revising a published segment supersedes it and preserves other applied edits', () => {
+    // First round: edit two segments, approve, apply (both become "published").
+    saveAndApprove('m00001:para:fs-id001', 'Fyrsta útgáfa, grein eitt.');
+    saveAndApprove('m00001:para:fs-id002', 'Fyrsta útgáfa, grein tvö.');
+    const first = service.applyApprovedEdits('testbook', 1, 'm00001');
+    expect(first.appliedCount).toBe(2);
+
+    // Edit-again: a brand-new edit on the already-applied seg1 only.
+    const reviseId = saveAndApprove('m00001:para:fs-id001', 'Endurskoðuð grein eitt.');
+    const second = service.applyApprovedEdits('testbook', 1, 'm00001');
+    expect(second.appliedCount).toBe(1);
+
+    const segments = segmentParser.parseSegments(readFileSync(second.savedPath, 'utf-8'));
+    const seg1 = segments.find((s) => s.segmentId === 'm00001:para:fs-id001');
+    const seg2 = segments.find((s) => s.segmentId === 'm00001:para:fs-id002');
+
+    // seg1 now carries the revision...
+    expect(seg1.content).toBe('Endurskoðuð grein eitt.');
+    // ...and seg2's first-round edit is PRESERVED, not reverted to MT text — the
+    // second apply reads the faithful file as its baseline. This is what makes
+    // incremental edit-again safe.
+    expect(seg2.content).toBe('Fyrsta útgáfa, grein tvö.');
+    expect(service.getEditById(reviseId).applied_at).toBeTruthy();
+  });
+
   it('apply throws when no approved edits exist', () => {
     // Only a pending edit, no approved ones
     service.saveSegmentEdit({
