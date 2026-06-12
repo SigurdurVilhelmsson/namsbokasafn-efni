@@ -246,7 +246,8 @@ router.post(
   requireBookAccess(),
   validateModule,
   (req, res) => {
-    const { segmentId, originalContent, editedContent, category, editorNote } = req.body;
+    const { segmentId, originalContent, editedContent, category, editorNote, baseEditId } =
+      req.body;
 
     if (!segmentId) {
       return res.status(400).json({ error: 'segmentId is required' });
@@ -275,6 +276,7 @@ router.post(
         editorNote,
         editorId: String(req.user.id),
         editorUsername: req.user.username,
+        baseEditId: typeof baseEditId === 'number' ? baseEditId : undefined,
       });
 
       try {
@@ -297,6 +299,9 @@ router.post(
         updated: result.updated,
       });
     } catch (err) {
+      if (err.code === 'SEGMENT_CONFLICT') {
+        return res.status(409).json({ error: 'conflict', message: err.message });
+      }
       log.error({ err }, 'Error saving segment edit');
       res.status(500).json({ error: err.message });
     }
@@ -750,7 +755,11 @@ router.get(
   validateModule,
   (req, res) => {
     try {
-      const status = segmentEditor.getApplyStatus(req.params.book, req.params.moduleId);
+      const status = segmentEditor.getApplyStatus(
+        req.params.book,
+        req.params.moduleId,
+        req.chapterNum
+      );
       res.json(status);
     } catch (err) {
       res.status(500).json({ error: err.message });
@@ -886,7 +895,7 @@ router.post(
 
       for (const mod of modules) {
         // Check if this module has unapplied approved edits
-        const status = segmentEditor.getApplyStatus(req.params.book, mod.moduleId);
+        const status = segmentEditor.getApplyStatus(req.params.book, mod.moduleId, req.chapterNum);
         if (status.unapplied_count > 0) {
           try {
             const result = segmentEditor.applyApprovedEdits(

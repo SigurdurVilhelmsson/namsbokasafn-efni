@@ -321,8 +321,18 @@
   // RENDER MODULE
   // ================================================================
   function renderModule() {
-    document.getElementById('module-title').textContent =
-      `${moduleData.moduleId} — ${moduleData.title}`;
+    // Editor-facing header speaks the human title; the pipeline module id is a
+    // muted tag shown only to head-editors/admins (de-jargon, audit 4.3).
+    const isHeadEditorView = ['head-editor', 'admin'].includes(getEffectiveRole());
+    const titleEl = document.getElementById('module-title');
+    titleEl.textContent = moduleData.title || moduleData.moduleId;
+    if (isHeadEditorView && moduleData.title) {
+      const idTag = document.createElement('span');
+      idTag.textContent = moduleData.moduleId;
+      idTag.style.cssText =
+        'margin-left:0.5rem;font-size:var(--text-xs);color:var(--text-muted);font-weight:400;';
+      titleEl.appendChild(idTag);
+    }
     const sourceLabels = UI.sourceLabels;
     const sourceLabel = sourceLabels[moduleData.isSource] || moduleData.isSource || 'engin';
     const metaEl = document.getElementById('module-meta');
@@ -342,10 +352,12 @@
         : metaText;
     metaEl.title = UI.tooltips.sourceTypes;
 
-    // Update topbar breadcrumb
+    // Update topbar breadcrumb — human title, not the pipeline module id
     const topbarTitle = document.getElementById('topbar-title');
     if (topbarTitle) {
-      topbarTitle.textContent = UI.segmentEditor.titleModule(moduleData.moduleId);
+      topbarTitle.textContent =
+        moduleData.title ||
+        (moduleData.chapter === -1 ? 'Viðaukar' : 'Kafli ' + moduleData.chapter);
     }
 
     renderStats();
@@ -879,6 +891,9 @@
         editedContent,
         category: category || undefined,
         editorNote: editorNote || undefined,
+        // Optimistic-concurrency token: highest edit id seen on this segment at
+        // load. The server 409s if another editor moved past it (F13 parity).
+        baseEditId: latestEditIdForSegment(segmentId),
       }),
     };
 
@@ -912,10 +927,29 @@
         savingInd.textContent = UI.save.changed;
         savingInd.className = 'seg-save-ind dirty';
       }
-      if (!saveRetry.isRetryable(err)) {
+      if (err.status === 409) {
+        // Another editor changed this segment — surface the conflict and reload
+        // so the editor sees the latest state (parity with the localization editor).
+        alert(err.message || 'Einingin hefur verið breytt af öðrum notanda. Endurhleð...');
+        await loadModule(currentModuleId, { force: true });
+      } else if (!saveRetry.isRetryable(err)) {
         alert(UI.common.errorSaving + err.message);
       }
     }
+  }
+
+  /**
+   * Highest edit id seen on a segment at load time — the optimistic-concurrency
+   * token sent with a save. moduleData.edits is keyed by segmentId; 0 means the
+   * client saw no edits on the segment.
+   */
+  function latestEditIdForSegment(segmentId) {
+    const list = (moduleData && moduleData.edits && moduleData.edits[segmentId]) || [];
+    let max = 0;
+    for (const e of list) {
+      if (e && typeof e.id === 'number' && e.id > max) max = e.id;
+    }
+    return max;
   }
 
   async function reviewEdit(editId, action) {
@@ -1415,10 +1449,16 @@
         { credentials: 'include' }
       );
 
-      const { unapplied_count, total_approved } = data;
+      const { unapplied_count, total_approved, can_rebuild } = data;
 
       if (unapplied_count > 0) {
         statusEl.textContent = UI.apply.unapplied(unapplied_count);
+        btnApply.disabled = false;
+        btnApplyRender.disabled = false;
+      } else if (can_rebuild) {
+        // Edits are marked applied but the faithful file is gone — offer a
+        // rebuild (the apply endpoint self-heals by re-applying).
+        statusEl.textContent = 'Skrá vantar — hægt að endurbyggja úr samþykktum breytingum';
         btnApply.disabled = false;
         btnApplyRender.disabled = false;
       } else if (total_approved > 0) {

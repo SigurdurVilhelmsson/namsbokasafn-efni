@@ -48,9 +48,32 @@ function saveSegmentEdit(params) {
     editorNote,
     editorId,
     editorUsername,
+    baseEditId,
   } = params;
 
   const conn = getDb();
+
+  // Optimistic concurrency (F13, parity with the localization editor's 409):
+  // baseEditId is the highest edit id the client saw on this segment at load.
+  // If a *different* editor has since added an edit beyond it, reject so the
+  // editor reloads instead of silently racing on a stale view of the segment.
+  if (baseEditId !== undefined && baseEditId !== null) {
+    const conflict = conn
+      .prepare(
+        `SELECT editor_username FROM segment_edits
+         WHERE book = ? AND module_id = ? AND segment_id = ?
+           AND editor_id != ? AND id > ?
+         ORDER BY id DESC LIMIT 1`
+      )
+      .get(book, moduleId, segmentId, editorId, baseEditId);
+    if (conflict) {
+      const err = new Error(
+        `Annar ritstjóri (${conflict.editor_username}) hefur breytt þessum bút. Endurhlaðið til að sjá nýjustu útgáfu.`
+      );
+      err.code = 'SEGMENT_CONFLICT';
+      throw err;
+    }
+  }
 
   // Check for existing pending edit by this editor on this segment
   const existing = conn
@@ -683,10 +706,10 @@ function applyApprovedEdits(book, chapter, moduleId) {
  * @param {string} moduleId - Module ID
  * @returns {object} { unappliedCount, appliedCount, totalApproved }
  */
-function getApplyStatus(book, moduleId) {
+function getApplyStatus(book, moduleId, chapter) {
   const conn = getDb();
 
-  return conn
+  const counts = conn
     .prepare(
       `SELECT
          COUNT(CASE WHEN applied_at IS NULL THEN 1 END) as unapplied_count,
@@ -696,6 +719,28 @@ function getApplyStatus(book, moduleId) {
        WHERE book = ? AND module_id = ? AND status = 'approved'`
     )
     .get(book, moduleId);
+
+  // When the chapter is known, report whether the faithful file actually exists.
+  // If every approved edit is marked applied but the file is gone (e.g. it was
+  // deleted out of band), the module can be *rebuilt*: applyApprovedEdits
+  // self-heals by resetting applied_at and re-applying. `canRebuild` lets the
+  // UI re-enable the apply button for that recovery instead of greying it out.
+  let faithfulExists = null;
+  let canRebuild = false;
+  if (chapter !== undefined && chapter !== null) {
+    const chDir = segmentParser.chapterDir(chapter);
+    const faithfulPath = path.join(
+      BOOKS_DIR,
+      book,
+      '03-faithful-translation',
+      chDir,
+      `${moduleId}-segments.is.md`
+    );
+    faithfulExists = fs.existsSync(faithfulPath);
+    canRebuild = !faithfulExists && counts.unapplied_count === 0 && counts.applied_count > 0;
+  }
+
+  return { ...counts, faithful_exists: faithfulExists, can_rebuild: canRebuild };
 }
 
 // =====================================================================

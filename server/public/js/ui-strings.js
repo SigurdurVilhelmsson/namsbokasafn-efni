@@ -74,7 +74,7 @@ const UI = {
     noPendingSuggestions: 'Engar tillögur í bið',
     noAcceptedSuggestions: 'Engar samþykktar tillögur til að samstilla',
     modificationRequired: 'Breyting er nauðsynleg',
-    missingModuleId: 'Villa: vantar moduleID',
+    missingModuleId: 'Villa: vantar einingu',
     scanned: function (count) {
       return 'Skannað! ' + count + ' tillögur fundust.';
     },
@@ -118,7 +118,7 @@ const UI = {
     connectionLost: 'Tenging rofnaði',
     connectionLostDetail: '\nGat ekki náð sambandi við þjón.',
     starting: function (action) {
-      return 'Starting ' + action + '...\n';
+      return 'Ræsi ' + action + '...\n';
     },
   },
 
@@ -137,23 +137,23 @@ const UI = {
     saved: function (count) {
       return 'Vistað (' + count + ' breytingar)';
     },
-    saveAndRender: 'Vista + Render...',
+    saveAndRender: 'Vista + Birta...',
     saveAndRenderProgress: function (count) {
-      return 'Vistað (' + count + '), render í gangi...';
+      return 'Vistað (' + count + '), birting í gangi...';
     },
-    saveAndRenderDone: 'Vistað + Render lokið!',
-    saveNoRender: 'Vistað, en render startaði ekki',
-    renderFailed: 'Render mistókst',
+    saveAndRenderDone: 'Vistað + Birt!',
+    saveNoRender: 'Vistað, en birting hófst ekki',
+    renderFailed: 'Birting mistókst',
     // Phase-aware failure label so an injection failure isn't mislabelled as a
-    // render failure (the two phases fail for very different reasons).
+    // rendering failure (the two phases fail for very different reasons).
     phaseFailed: function (phase) {
-      const label = phase === 'inject' ? 'Innspýting' : 'Render';
+      const label = phase === 'inject' ? 'Innsetning' : 'Birting';
       return label + ' mistókst';
     },
     renderPhase: function (phase) {
-      return 'Render (' + phase + ')...';
+      return 'Birting (' + phase + ')...';
     },
-    renderRunning: 'Render í gangi...',
+    renderRunning: 'Birting í gangi...',
   },
 
   // ── Edit-again (revise a published segment) ─────────────────
@@ -166,9 +166,6 @@ const UI = {
   // ── Segment editor specific ─────────────────────────────────
   segmentEditor: {
     title: 'Ritstjóri',
-    titleModule: function (moduleId) {
-      return 'Ritstjóri — ' + moduleId;
-    },
     noEnglish: 'Engin enska',
     sentForReview: 'Sent til yfirlestrar!',
     viewReview: 'Skoða yfirlestur →',
