@@ -239,6 +239,14 @@
         currentEditors = adminData.editors || [];
         const chapterProgress = adminData.chapterProgress || {};
 
+        // Reflect the per-book enforcement toggle
+        const enforceWrap = document.getElementById('enforce-toggle-wrap');
+        const enforceToggle = document.getElementById('enforce-assignments-toggle');
+        if (enforceWrap && enforceToggle) {
+          enforceToggle.checked = !!adminData.enforceAssignments;
+          enforceWrap.style.display = 'inline-flex';
+        }
+
         // Index assignments by chapter number for fast lookup
         const assignmentMap = {};
         assignments.forEach(function (a) {
@@ -285,6 +293,27 @@
         loadAssignments(bookSelect.value);
       }
     });
+
+    // Per-book enforcement toggle (admin only — backend returns 403 otherwise)
+    const enforceToggle = document.getElementById('enforce-assignments-toggle');
+    if (enforceToggle) {
+      enforceToggle.addEventListener('change', function () {
+        const enabled = enforceToggle.checked;
+        fetchJson('/api/admin/assignments/' + encodeURIComponent(currentBook) + '/enforcement', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'same-origin',
+          body: JSON.stringify({ enabled: enabled }),
+        })
+          .then(function () {
+            showToast(enabled ? 'Kaflaúthlutun þvinguð' : 'Þvingun afturkölluð');
+          })
+          .catch(function (err) {
+            showToast(err.message || 'Villa — aðeins stjórnandi getur breytt þessu', 'error');
+            enforceToggle.checked = !enabled; // revert on failure
+          });
+      });
+    }
   });
 
   // ================================================================

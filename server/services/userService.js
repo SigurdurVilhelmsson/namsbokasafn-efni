@@ -529,36 +529,104 @@ function getHeadEditorBooks(user) {
 // ================================================================
 
 /**
- * Check if user has access to a specific chapter.
- * Backward compat: if user has NO assignments for the book, they can access all chapters.
+ * Whether chapter-assignment enforcement is ON for a book (book_settings).
+ * Default false, so books that never opt in keep the legacy fail-open behaviour.
  */
-function hasChapterAccess(userId, bookSlug, chapter) {
-  if (!isUserTableReady()) return true;
-
+function isAssignmentEnforced(bookSlug) {
   const db = getDb();
   try {
-    const count = db
+    const row = db
+      .prepare('SELECT enforce_assignments FROM book_settings WHERE book = ?')
+      .get(bookSlug);
+    return !!(row && row.enforce_assignments);
+  } catch (err) {
+    // Settings table/column not migrated yet → treat as not enforced.
+    if (
+      err.message &&
+      (err.message.includes('no such table') || err.message.includes('no such column'))
+    ) {
+      return false;
+    }
+    throw err;
+  }
+}
+
+/** Enable/disable assignment enforcement for a book (admin). Returns new state. */
+function setAssignmentEnforced(bookSlug, enabled) {
+  const db = getDb();
+  db.prepare(
+    `INSERT INTO book_settings (book, enforce_assignments, updated_at)
+     VALUES (?, ?, CURRENT_TIMESTAMP)
+     ON CONFLICT(book) DO UPDATE SET
+       enforce_assignments = excluded.enforce_assignments,
+       updated_at = CURRENT_TIMESTAMP`
+  ).run(bookSlug, enabled ? 1 : 0);
+  return isAssignmentEnforced(bookSlug);
+}
+
+/**
+ * Build a fail-closed error for when enforcement is on but assignments can't be
+ * evaluated (missing user/assignment table). The middleware maps this to 503.
+ */
+function assignmentUnavailableError(detail) {
+  const err = new Error(
+    `Assignment enforcement is enabled but assignments are unavailable (${detail})`
+  );
+  err.code = 'ASSIGNMENT_TABLE_UNAVAILABLE';
+  return err;
+}
+
+/**
+ * Check if a user may access a specific chapter.
+ *
+ * When the book's `enforce_assignments` toggle is OFF (default), behaviour is
+ * the legacy fail-open one: a user with NO assignments for the book can access
+ * every chapter. When it is ON, access is default-deny — the user must be
+ * explicitly assigned the chapter — and a missing assignment/user table is
+ * fail-closed (throws `ASSIGNMENT_TABLE_UNAVAILABLE`) rather than allowed.
+ *
+ * Note: admins and book head-editors never reach here — `requireBookAccess`
+ * short-circuits them before the chapter check.
+ */
+function hasChapterAccess(userId, bookSlug, chapter) {
+  const enforce = isAssignmentEnforced(bookSlug);
+
+  if (!isUserTableReady()) {
+    if (enforce) throw assignmentUnavailableError('user table not ready');
+    return true;
+  }
+
+  const db = getDb();
+  let count;
+  let assignment;
+  try {
+    count = db
       .prepare(
         'SELECT COUNT(*) as cnt FROM user_chapter_assignments WHERE user_id = ? AND book_slug = ?'
       )
       .get(userId, bookSlug);
-
-    // No assignments for this book = full access (backward compat)
-    if (!count || count.cnt === 0) return true;
-
-    const assignment = db
+    assignment = db
       .prepare(
         'SELECT id FROM user_chapter_assignments WHERE user_id = ? AND book_slug = ? AND chapter = ?'
       )
       .get(userId, bookSlug, parseInt(chapter, 10));
-
-    return !!assignment;
   } catch (err) {
-    // Table might not exist yet — allow access
-    if (err.message && err.message.includes('no such table')) return true;
+    if (err.message && err.message.includes('no such table')) {
+      if (enforce) throw assignmentUnavailableError('assignment table missing');
+      return true; // legacy fail-open
+    }
     throw err;
-  } finally {
   }
+
+  if (enforce) {
+    // Default-deny: must be explicitly assigned this chapter (zero assignments
+    // for the book therefore means no access).
+    return !!assignment;
+  }
+
+  // Legacy fail-open: no assignments for this book = full access.
+  if (!count || count.cnt === 0) return true;
+  return !!assignment;
 }
 
 /**
@@ -726,6 +794,8 @@ module.exports = {
 
   // Chapter assignments
   hasChapterAccess,
+  isAssignmentEnforced,
+  setAssignmentEnforced,
   assignChapter,
   removeChapterAssignment,
   getChapterAssignments,

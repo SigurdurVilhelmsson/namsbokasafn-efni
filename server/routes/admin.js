@@ -978,9 +978,45 @@ router.get('/assignments/:book', requireAuth, requireRole(ROLES.HEAD_EDITOR), (r
       // Progress data is optional
     }
 
-    res.json({ book, assignments, editors, chapterProgress });
+    res.json({
+      book,
+      assignments,
+      editors,
+      chapterProgress,
+      enforceAssignments: userService.isAssignmentEnforced(book),
+    });
   } catch (err) {
     log.error({ err }, 'Get book assignments error');
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /api/admin/assignments/:book/enforcement
+ * Toggle chapter-assignment enforcement for a book (admin only).
+ * Body: { enabled: boolean }
+ */
+router.post('/assignments/:book/enforcement', requireAuth, requireRole(ROLES.ADMIN), (req, res) => {
+  const { book } = req.params;
+  if (!VALID_BOOKS.includes(book)) {
+    return res.status(400).json({ error: `Invalid book: ${book}` });
+  }
+  if (typeof req.body?.enabled !== 'boolean') {
+    return res.status(400).json({ error: 'enabled (boolean) required' });
+  }
+
+  try {
+    const enforceAssignments = userService.setAssignmentEnforced(book, req.body.enabled);
+    activityLog.log({
+      type: 'assignment_enforcement_toggled',
+      userId: req.user.id,
+      username: req.user.username,
+      book,
+      description: `${req.user.username} ${enforceAssignments ? 'kveikti á' : 'slökkti á'} kaflaúthlutun fyrir ${book}`,
+    });
+    res.json({ book, enforceAssignments });
+  } catch (err) {
+    log.error({ err }, 'Toggle assignment enforcement error');
     res.status(500).json({ error: err.message });
   }
 });

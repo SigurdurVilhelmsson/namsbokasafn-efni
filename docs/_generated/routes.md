@@ -41,6 +41,7 @@
 | POST | `/users/:id/chapters` |
 | DELETE | `/users/:id/chapters/:book/:chapter` |
 | GET | `/assignments/:book` |
+| POST | `/assignments/:book/enforcement` |
 | POST | `/assignments/:book/:chapter` |
 | DELETE | `/assignments/:book/:chapter` |
 | GET | `/migrate` |
