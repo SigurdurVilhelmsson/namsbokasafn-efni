@@ -3,6 +3,7 @@
 **Date:** 2026-06-12
 **Status:** Proposed (drafted 2026-06-12 from a head-translator's analysis of the server code) — pending lead sign-off. Becomes the active development plan after the June-10 remediation roadmap's outstanding manual QA is walked.
 **Predecessor:** [`docs/plans/2026-06-10-remediation-roadmap.md`](./2026-06-10-remediation-roadmap.md) (Units 0–5 all code-complete and merged, #102–#108; manual QA §0–§5 outstanding)
+**Amended 2026-06-12 (same day, per lead question):** reframed for the project's actual **MTPE workflow** (machine translation + human review, not human-first translation). Unit 2 is *review-deduplication* and fuzzy TM matching is dropped permanently (not deferred); glossary-feedback mining added to Unit 3; untranslated-EN-residue detection added to Unit 4. Unit 0 sequencing updated: the lead will run a combined major manual QA of this repo + namsbokasafn-vefur in the coming days — see the Unit 0 note for why this does not technically block Units 1–6.
 
 > **How to use this across sessions:** same conventions as the remediation roadmap — each unit is sized to roughly one working session, branch names are fixed, tick checkboxes as items land, and append to the Progress Log at the bottom.
 
@@ -33,7 +34,15 @@ The previous roadmap answered *"can we trust the platform?"* — yes. This one a
 5. **Team management is retrospective, not operational.** Workload panel and 7-day velocity exist (`dashboardReadModel.getEditorWorkload`), but: no aging/SLA alerts on pending edits; editors are never notified when their edits are approved/rejected; head-editors are never pinged when the queue grows; reader feedback (`feedbackService`) lands in an admin table with no routing to the module or editor it concerns.
 6. **Asset durability gap:** the terminology database lives only in the gitignored production `sessions.db`. The 2h git-backup cron covers `books/` content; the glossary JSON in git is an export from **2026-03-09** — three months stale. Unapplied segment edits and discussions share the exposure.
 
-**Deliberately out of scope:** more platform hardening (diminishing returns after remediation Units 0–5); Pass 2 localization buildout (structurally fine, and starved for input until Pass 1 produces faithful content); real-time collaboration or dashboard rewrites (wrong scale for this team).
+**MTPE framing (amendment, 2026-06-12):** this project is a *machine-translation post-editing* workflow — every segment arrives with an MT draft primed by the glossary — not a human-first translation workflow where TM pre-fill saves typing. Three consequences are baked into the units below:
+
+- **Fuzzy TM matching is dropped permanently, not deferred.** A fuzzy match is a stale, slightly-wrong sentence from elsewhere; the MT draft is a fresh translation of the *actual* sentence. Patching a fuzzy match is more work and more error-prone than post-editing the MT.
+- **Exact-match leverage is about deduplicating *review* effort** — the only human cost, and the project bottleneck — not saving translation effort. A human-approved exact match therefore *outranks* the MT draft and can eventually be applied upstream of the editor, not just suggested inside it.
+- **The asset that feeds future translation quality is the glossary, not the TMX** — it's what's passed to Málstaður on every request. The highest-leverage feedback loop is mining approved Pass 1 edits for terminology decisions, with five books of MT still ahead. (The TMX remains justified independently: it is deliverable #2 of the project in its own right.)
+
+This framing also *strengthens* Units 3–4: terminology inconsistency is the signature MT failure mode (the same term rendered three ways, each locally fluent), and "fluent-but-wrong" is the signature MTPE *reviewer* failure mode (smooth MT output charms reviewers past accuracy errors, omissions, and number slips) — mechanical checks are the defense.
+
+**Deliberately out of scope:** more platform hardening (diminishing returns after remediation Units 0–5); Pass 2 localization buildout (structurally fine, and starved for input until Pass 1 produces faithful content); real-time collaboration or dashboard rewrites (wrong scale for this team); fuzzy TM matching (see MTPE framing above).
 
 ---
 
@@ -57,6 +66,8 @@ Rationale: Unit 1 is cheap and unblocks a headline deliverable with data that al
 
 **Goal:** close out the June-10 roadmap. No new code.
 **Pre:** needs a running server (staging or prod off-hours). Checklist: [`docs/plans/2026-06-10-qa-checklist.md`](./2026-06-10-qa-checklist.md).
+
+> **Sequencing update (2026-06-12):** the lead will run this as part of a **combined major manual QA of namsbokasafn-efni + namsbokasafn-vefur** in the coming days, rather than as a standalone checklist walk. **Nothing in the QA technically blocks Units 1–6** — the QA validates already-merged code; the units add new code on top. Two practical rules so the QA tests a stable baseline: (a) don't deploy server-touching units (2–5: migration 036, save/submit-path changes, notification wiring) to the QA server mid-pass; (b) Unit 1 is CLI-side (a new tool + docs, no server deploy needed for v1) and may proceed in parallel. If the QA *finds* bugs in the apply/save paths (§1/§4), fix those before Unit 2/3 land, since they build on the same code.
 
 - [ ] **0.1** Walk QA §0 (hotfix: path traversal, authz boundaries, render rollback, XSS escaping).
 - [ ] **0.2** Walk QA §1 (restore round-trip) and §2 (localization review tier).
@@ -83,14 +94,15 @@ Rationale: Unit 1 is cheap and unblocks a headline deliverable with data that al
 
 ## Unit 2 — `feat/concordance`
 
-**Goal:** "how did we translate this before?" answered inside the editor; identical segments never reviewed twice.
-**Pre:** index source = applied faithful segment pairs (same pairing as Unit 1 — read via `segmentParser`, not the TMX file). SQLite FTS5 ships in better-sqlite3's bundled SQLite; index size at full scale (~6 books × ~150 modules × ~50 segments) is trivial. Exact-match first; fuzzy similarity is explicitly deferred.
+**Goal:** "how did we translate this before?" answered inside the editor; identical segments never **reviewed** twice. (MTPE framing: the win is deduplicated *review* effort, not pre-filled typing — every segment already has an MT draft. Concordance's role is consistency *reference* for the reviewer; exact-match leverage's role is skipping redundant review.)
+**Pre:** index source = applied faithful segment pairs (same pairing as Unit 1 — read via `segmentParser`, not the TMX file). SQLite FTS5 ships in better-sqlite3's bundled SQLite; index size at full scale (~6 books × ~150 modules × ~50 segments) is trivial. Exact-match only; **fuzzy matching is permanently out of scope** — fresh MT of the actual sentence beats a patched stale match.
 **QA:** QA gate — index rebuild idempotence; concordance returns ch03 m68699 content; repetition suggestion appears on a module sharing an EN segment with m68699.
 
 - [ ] **2.1** Migration 036: `tm_segments` (book, chapter, module, segment_id, en_text, is_text, en_norm for matching, applied_at) + FTS5 virtual table over en/is text. Populate on apply (same hook as 1.2) + a backfill CLI.
 - [ ] **2.2** Concordance endpoint `GET /api/segment-editor/concordance?q=…&book=…` (authenticated, book-scoped) — searches EN and IS sides, returns matched pairs with module/chapter provenance, highlighted match.
 - [ ] **2.3** Editor UI: concordance panel (search box + results with "opna einingu" links). Icelandic-first labels.
-- [ ] **2.4** Repetition leverage: on module load, for each unreviewed segment whose normalized EN text has an applied translation elsewhere, surface a "þegar þýtt í {module}" suggestion with one-click insert into the edit box (still goes through the normal save/QA path — no silent auto-apply; Human-Review-Required policy holds).
+- [ ] **2.4** Review deduplication (v1, in-editor): on module load, for each unreviewed segment whose normalized EN text has an applied **human-approved** translation elsewhere, surface a "þegar samþykkt í {module}" suggestion that **outranks the MT draft** (the approved translation is human-verified; the MT draft is not), with one-click insert into the edit box — still through the normal save/QA path, no silent auto-apply; Human-Review-Required policy holds.
+- [ ] **2.4b** Review deduplication (v2, upstream — after v1 has built confidence): apply exact matches at module-baseline initialization, so such segments enter review pre-filled with the approved translation and visibly flagged "confirm-only" — the reviewer confirms rather than re-reviews. Cross-book matches included (boilerplate like "Check Your Learning" recurs across all six books).
 - [ ] **2.5** Repetition report at chapter level (head-editor view): top repeated EN strings and whether their IS translations agree — cheap consistency audit.
 - [ ] **2.6** Tests: normalization (whitespace/markers), FTS query escaping, suggestion excludes the segment's own module, book scoping.
 
@@ -98,7 +110,7 @@ Rationale: Unit 1 is cheap and unblocks a headline deliverable with data that al
 
 ## Unit 3 — `feat/live-terminology-qa` (parallel with Unit 2)
 
-**Goal:** the glossary acts during editing, not after. Warnings, not blocks — terminology stays advisory in *force* but becomes impossible to miss.
+**Goal:** the glossary acts during editing, not after. Warnings, not blocks — terminology stays advisory in *force* but becomes impossible to miss. (MTPE framing: terminology inconsistency is the signature MT failure mode, and the glossary is the asset that primes Málstaður — so this unit both catches MT's most common error class *and* owns the feedback loop that improves MT for the five books still queued.)
 **Pre:** the pieces exist and just aren't wired: `terminologyService.findTermsInSegments` (`server/services/terminologyService.js:1009-1143`, inflection-aware) and the never-called `POST /api/terminology/check-consistency` (`server/routes/terminology.js:858`). Mind save-path latency — the check must be fast or async-but-blocking-the-toast, not blocking typing.
 **QA:** save a segment violating an approved term → warning names the term and expected IS form; submit-for-review on a module with violations → report listed.
 
@@ -106,13 +118,14 @@ Rationale: Unit 1 is cheap and unblocks a headline deliverable with data that al
 - [ ] **3.2** Submit-gate report: `submitModuleForReview` attaches a per-module terminology report (term → expected IS → segments violating); head-editor sees it in the review panel. No hard block — head-editor judgement decides.
 - [ ] **3.3** Link the "terminology" edit category to glossary entries: when an editor fixes a term, offer "tengja við íðorð" so disputes/decisions accumulate on the headword (uses existing discussion threads, `terminologyService.addDiscussion`).
 - [ ] **3.4** Glossary export freshness: regenerating `glossary-unified.json` (MT input) on terminology approve — closes the loop so newly approved terms reach `api-translate.js` without a manual export. *(Overlaps Unit 6.1 — implement once, here.)*
-- [ ] **3.5** Tests: inflection match in save-path check, report aggregation, no warning for proposed-only terms, latency budget (<150ms per segment at 1,117 terms — the per-module term set is already precomputed for highlighting; reuse it).
+- [ ] **3.5** Term-decision mining (the MTPE-native analog of TM leverage): periodically diff applied edits against their MT baseline (`02-mt-output` vs `03-faithful-translation`, or `segment_edits.original_content` vs `content`) to surface **recurring corrections** — when reviewers repeatedly change the same MT rendering of a phrase, that's an undocumented term decision. Present candidates (EN context → MT form → corrected form, occurrence count) in the terminology manager for one-click promotion to a proposed term. Promoted terms flow to MT via 3.4. Human approval required throughout — this proposes, never decides.
+- [ ] **3.6** Tests: inflection match in save-path check, report aggregation, no warning for proposed-only terms, mining surfaces a repeated correction and ignores one-offs, latency budget (<150ms per segment at 1,117 terms — the per-module term set is already precomputed for highlighting; reuse it).
 
 ---
 
 ## Unit 4 — `feat/spellcheck-qa`
 
-**Goal:** catch the error classes a glossary can't — spelling, grammar, and number slips.
+**Goal:** catch the error classes a glossary can't — spelling, grammar, number slips, and untranslated MT residue. (MTPE framing: "fluent-but-wrong" is the signature reviewer failure mode — smooth MT output charms reviewers past accuracy errors under time pressure. Mechanical checks the reviewer can't charm past are the defense, which makes this unit *more* central in an MTPE workflow than it would be for human-first translation.)
 **Pre — lead decision required (engine):**
   - **(a) GreynirCorrect** — best Icelandic grammar coverage; Python, so it runs as a small sidecar service (new deployment surface on the Linode box);
   - **(b) hunspell-is via nodehun/nspell** — spelling only, in-process Node, no new runtime;
@@ -120,11 +133,12 @@ Rationale: Unit 1 is cheap and unblocks a headline deliverable with data that al
   Recommendation: start with **(b)** in-process spelling (cheap, private), design the checker interface so (a) can slot in later.
 **QA:** misspelled Icelandic word underlined/listed; chemistry terms and glossary entries whitelisted (no false positives on "mól", element names); number-mismatch warning fires.
 
-- [ ] **4.1** Checker service interface (`server/services/qaCheckService.js`): takes EN/IS pair, returns typed findings (`spelling`, `grammar`, `number-mismatch`); engines pluggable.
+- [ ] **4.1** Checker service interface (`server/services/qaCheckService.js`): takes EN/IS pair, returns typed findings (`spelling`, `grammar`, `number-mismatch`, `en-residue`); engines pluggable.
 - [ ] **4.2** Spelling engine per the decision above; custom dictionary seeded from the book glossary + approved terminology (terms are never "misspelled").
 - [ ] **4.3** Number-consistency check: digits/numeric tokens in EN present in IS (tolerant of decimal-comma conversion `3.5`→`3,5`, thousands separators, and `[[MATH:N]]` placeholders).
-- [ ] **4.4** Editor surfacing: findings inline under the IS edit box on save (same visual language as terminology warnings); per-module QA summary in the review panel next to the Unit 3 terminology report.
-- [ ] **4.5** Tests: decimal-comma tolerance, placeholder exclusion, dictionary whitelist, engine-absent graceful degradation (QA disabled ≠ save broken).
+- [ ] **4.4** Untranslated-EN residue detector: flag IS segments containing suspiciously English content outside markers/math (EN-stopword density or character-profile heuristic on the prose) — the MT failure mode where a sentence comes back partly or wholly untranslated. Cheap, MTPE-specific, and exactly what a fluency-lulled reviewer skims past. Also runnable in batch over `02-mt-output` to triage *which modules need review attention first*.
+- [ ] **4.5** Editor surfacing: findings inline under the IS edit box on save (same visual language as terminology warnings); per-module QA summary in the review panel next to the Unit 3 terminology report.
+- [ ] **4.6** Tests: decimal-comma tolerance, placeholder exclusion, dictionary whitelist, EN-residue true/false positives (loanwords, chemical names, and `[[xref:]]` content must not trigger), engine-absent graceful degradation (QA disabled ≠ save broken).
 
 ---
 
@@ -159,10 +173,13 @@ Rationale: Unit 1 is cheap and unblocks a headline deliverable with data that al
 | 1.4 | Retire Matecat Align path entirely? | Yes — in-house TMX makes it redundant; archive, don't delete. |
 | 1.1 | TMX granularity | Paragraph-level segments as-is for v1; sentence-splitting only if a CAT-tool consumer needs it. |
 | 4 (pre) | Spell-check engine | hunspell-is in-process first; GreynirCorrect sidecar as a later upgrade. |
-| 2.4 | Repetition auto-fill vs suggest | Suggest-with-one-click only — preserves the human-review guarantee. |
+| 2.4/2.4b | Repetition application | v1 in-editor suggest-with-one-click (approved match outranks MT draft); v2 upstream pre-fill flagged confirm-only, once v1 has built confidence. Human-review guarantee holds in both. |
+| 2 (pre) | Fuzzy TM matching | **Dropped permanently** (decided in the 2026-06-12 MTPE amendment) — fresh MT of the actual sentence beats a patched stale match. |
+| 0 | QA sequencing | Combined major manual QA (efni + vefur) in the coming days; Units 1–6 not technically blocked, but server-touching units (2–5) hold deployment until the QA pass is done. |
 
 ## Progress log
 
 | Date | Session | Unit/item | Notes |
 |------|---------|-----------|-------|
+| 2026-06-12 | analysis | MTPE amendment | Per lead question ("does a traditional TM workflow apply when the text is MT-then-reviewed?"): reframed Unit 2 as review-deduplication (approved match outranks MT draft; v2 upstream pre-fill added as 2.4b); fuzzy matching dropped permanently; term-decision mining added (3.5) — the MTPE-native feedback loop, since the glossary (not TMX) primes Málstaður; EN-residue detector added (4.4). Unit 0 note: lead runs a combined efni+vefur manual QA in the coming days; no technical blockers for Units 1–6, but server-touching units hold deployment mid-QA. |
 | 2026-06-12 | analysis | roadmap drafted | Head-translator code analysis (segment editor, terminology/TM, dashboards/notifications/feedback) + production-state audit (1 faithful module, empty `tm/`, 250 MT pages). Roadmap drafted; pending lead sign-off. No code changed. |

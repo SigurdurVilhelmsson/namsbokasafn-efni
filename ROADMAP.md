@@ -431,9 +431,9 @@ The successor plan, drafted 2026-06-12 from a head-translator's analysis of the 
 |------|-------|
 | 0 | Walk remediation manual QA §0–§5 (carried over, closes the June-10 roadmap) |
 | 1 | In-house TMX generation from paired segment files (`feat/tm-generation`) — retires the manual Matecat Align step |
-| 2 | Concordance search + repetition leverage in the segment editor (`feat/concordance`) |
-| 3 | Live terminology QA in the save/submit path (`feat/live-terminology-qa`) |
-| 4 | Icelandic spell-check + number-consistency QA (`feat/spellcheck-qa`) — engine decision pending |
+| 2 | Concordance search + exact-match review deduplication in the segment editor (`feat/concordance`; fuzzy matching permanently out — MTPE) |
+| 3 | Live terminology QA + term-decision mining from approved edits (`feat/live-terminology-qa`) |
+| 4 | Icelandic spell-check, number-consistency + untranslated-EN-residue QA (`feat/spellcheck-qa`) — engine decision pending |
 | 5 | Team operations: SLA aging, editor notifications, feedback routing (`feat/team-operations`) |
 | 6 | Asset durability: terminology export to git, `sessions.db` backup (`chore/asset-durability`) |
 
