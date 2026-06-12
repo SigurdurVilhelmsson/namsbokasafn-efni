@@ -102,6 +102,22 @@ function translateTitle(title) {
 let BOOKS_DIR = 'books/efnafraedi-2e';
 let BOOK_SLUG = 'efnafraedi-2e';
 
+/**
+ * Join a content-derived name onto a base directory, returning null if the
+ * result would escape the base (e.g. a `..`-bearing exercise nickname or a
+ * URL-decoded image filename). Defense-in-depth for F17 — these names come
+ * from CNXML/rendered HTML, not a fully trusted source.
+ */
+function safeJoin(baseDir, name) {
+  if (typeof name !== 'string' || name.length === 0) return null;
+  const resolvedBase = path.resolve(baseDir);
+  const candidate = path.resolve(resolvedBase, name);
+  if (candidate !== resolvedBase && !candidate.startsWith(resolvedBase + path.sep)) {
+    return null;
+  }
+  return candidate;
+}
+
 // =====================================================================
 // HELPER FUNCTIONS
 // =====================================================================
@@ -112,8 +128,9 @@ let BOOK_SLUG = 'efnafraedi-2e';
  */
 function resolveOsEmbed(nickname) {
   // BOOKS_DIR points to books/{bookSlug}
-  const cachePath = path.join(BOOKS_DIR, '01-source', 'exercises', `${nickname}.json`);
-  if (!fs.existsSync(cachePath)) return null;
+  const exercisesDir = path.join(BOOKS_DIR, '01-source', 'exercises');
+  const cachePath = safeJoin(exercisesDir, `${nickname}.json`);
+  if (!cachePath || !fs.existsSync(cachePath)) return null;
 
   try {
     const exercise = JSON.parse(fs.readFileSync(cachePath, 'utf-8'));
@@ -1992,8 +2009,12 @@ function copyChapterImages(chapter, track, _verbose) {
   let copied = 0;
   let missing = 0;
   for (const file of referencedFiles) {
-    const src = path.join(sourceMediaDir, file);
-    const dest = path.join(targetMediaDir, file);
+    const src = safeJoin(sourceMediaDir, file);
+    const dest = safeJoin(targetMediaDir, file);
+    if (!src || !dest) {
+      console.error(`Warning: Skipping unsafe image filename: ${file}`);
+      continue;
+    }
     if (fs.existsSync(src)) {
       fs.copyFileSync(src, dest);
       copied++;

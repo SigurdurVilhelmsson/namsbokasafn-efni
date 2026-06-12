@@ -146,4 +146,26 @@ describe('processInlineContent — link handling', () => {
     // Should contain the target-id as plain text (fallback label)
     expect(out).toContain('x');
   });
+
+  describe('URL-scheme sanitization (F19)', () => {
+    it('neutralizes a javascript: url to #', () => {
+      const cnxml = '<link url="javascript:alert(1)">smella</link>';
+      const out = processInlineContent(cnxml, makeContext());
+      expect(out).toContain('href="#"');
+      expect(out).not.toContain('javascript:');
+    });
+
+    it('neutralizes a javascript: url split by a tab', () => {
+      const cnxml = '<link url="java\tscript:alert(1)">smella</link>';
+      const out = processInlineContent(cnxml, makeContext());
+      expect(out).not.toMatch(/href="java/);
+      expect(out).toContain('href="#"');
+    });
+
+    it('keeps a normal https url', () => {
+      const cnxml = '<link url="https://openstax.org">smella</link>';
+      const out = processInlineContent(cnxml, makeContext());
+      expect(out).toContain('href="https://openstax.org"');
+    });
+  });
 });

@@ -180,8 +180,27 @@ Examples:
 // HTTP Utilities
 // ============================================================================
 
+// Only follow redirects that stay on the OpenStax/CNX hosts, and cap the chain
+// length so a redirect loop or an off-host hop can't run away (F16).
+const ALLOWED_FETCH_HOSTS = /(^|\.)(openstax\.org|cnx\.org)$/;
+const MAX_REDIRECTS = 5;
+
+function isAllowedFetchUrl(url) {
+  try {
+    const u = new URL(url);
+    return u.protocol === 'https:' && ALLOWED_FETCH_HOSTS.test(u.hostname);
+  } catch {
+    return false;
+  }
+}
+
 function fetchUrl(url, options = {}) {
   return new Promise((resolve, reject) => {
+    if (!isAllowedFetchUrl(url)) {
+      reject(new Error(`Refusing to fetch disallowed URL: ${url}`));
+      return;
+    }
+    const redirectCount = options.redirectCount || 0;
     const urlObj = new URL(url);
     const requestOptions = {
       hostname: urlObj.hostname,
@@ -197,7 +216,15 @@ function fetchUrl(url, options = {}) {
 
     https.get(requestOptions, (res) => {
       if (res.statusCode === 301 || res.statusCode === 302) {
-        fetchUrl(res.headers.location, options).then(resolve).catch(reject);
+        if (redirectCount >= MAX_REDIRECTS) {
+          reject(new Error(`Too many redirects (>${MAX_REDIRECTS}) fetching ${url}`));
+          return;
+        }
+        // Resolve relative redirect targets against the current URL.
+        const next = new URL(res.headers.location, url).toString();
+        fetchUrl(next, { ...options, redirectCount: redirectCount + 1 })
+          .then(resolve)
+          .catch(reject);
         return;
       }
 
