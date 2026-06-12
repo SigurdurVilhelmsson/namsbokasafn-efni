@@ -320,9 +320,9 @@ License: CC BY 4.0
 
 Actively maintained. Pipeline phases 8-13 complete (February 2026). Microsoft Entra ID authentication migration complete (March 2026). Multi-book support operational with per-book rendering configuration.
 
-As of June 2026 all five CI checks (lint, test, e2e, audit, docs-check) are green: the Playwright E2E suite was repaired after a fresh-database migration bug kept it red since February, and the `xlsx`/`qs` security advisories were resolved. The Extract-Inject-Render pipeline is verified with 1,106 unit tests and 137 E2E tests. New chapters are processed as editorial review progresses.
+As of June 2026 all five CI checks (lint, test, e2e, audit, docs-check) are green: the Playwright E2E suite was repaired after a fresh-database migration bug kept it red since February, and the `xlsx`/`qs` security advisories were resolved. The Extract-Inject-Render pipeline is verified with ~1,154 unit tests and 137 E2E tests. New chapters are processed as editorial review progresses.
 
-Current development plan: a security/quality review (June 2026) produced an approved remediation roadmap — see [docs/plans/2026-06-10-remediation-roadmap.md](docs/plans/2026-06-10-remediation-roadmap.md) (Units 0–5: security hotfixes, content reversibility, localization review tier, assignment enforcement, editor UX, housekeeping).
+Current development plan: a security/quality review (June 2026) produced an approved remediation roadmap — see [docs/plans/2026-06-10-remediation-roadmap.md](docs/plans/2026-06-10-remediation-roadmap.md) (Units 0–5: security hotfixes, content reversibility, localization review tier, assignment enforcement, editor UX, housekeeping). **Units 0–4 are merged** (security hotfixes incl. book-scoped head-editor authz, in-app content restore, the per-book localization review tier, default-deny chapter-assignment enforcement, and editor-UX fixes incl. the rebuild affordance and optimistic-concurrency token); **Unit 5 (defense & housekeeping)** is the remaining unit, with the manual QA checklists still to be walked on a running server.
 
 ## Related Projects
 
