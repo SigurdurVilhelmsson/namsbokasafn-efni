@@ -38,10 +38,13 @@ test.describe('Segment editor', () => {
       const chapterSelect = page.locator('#chapter-select');
       await expect(chapterSelect).toBeVisible({ timeout: 5000 });
 
-      // Should have at least one chapter option
-      const options = chapterSelect.locator('option');
-      const count = await options.count();
-      expect(count).toBeGreaterThan(1); // > 1 because first is placeholder
+      // Chapters load via an async fetch after the book is selected, so poll
+      // until options appear instead of counting once — a one-shot count
+      // raced the fetch and flaked on slow CI runners (> 1 because the first
+      // option is the placeholder).
+      await expect
+        .poll(() => chapterSelect.locator('option').count(), { timeout: 10000 })
+        .toBeGreaterThan(1);
     }
   });
 
