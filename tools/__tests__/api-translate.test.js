@@ -6,6 +6,8 @@ import {
   loadEnvFile,
   discoverModules,
   validateMarkers,
+  countInlineMarkers,
+  normalizeSegMarkers,
   bookToDomain,
   loadGlossary,
   splitAtSegBoundaries,
@@ -133,6 +135,45 @@ describe('validateMarkers', () => {
     const input = '<!-- SEG:a:b:1 --> text\n\n<!-- SEG:a:b:2 --> more';
     const output = '<!-- SEG:a:b:1 --> texti';
     expect(validateMarkers(input, output)).toBe(false);
+  });
+});
+
+// ─── inline-marker detection & normalization ────────────────────────
+
+describe('countInlineMarkers', () => {
+  it('returns 0 when every marker starts its own line', () => {
+    const text = '<!-- SEG:m1:title:t -->\nTitle\n\n<!-- SEG:m1:para:p -->\nBody';
+    expect(countInlineMarkers(text)).toBe(0);
+  });
+
+  it('counts a marker the API glued onto the previous segment text', () => {
+    const text = '<!-- SEG:m1:note-title:t -->\nCounting Molecules<!-- SEG:m1:para:p -->\nBody';
+    expect(countInlineMarkers(text)).toBe(1);
+  });
+
+  it('ignores a marker at the very start of the file', () => {
+    expect(countInlineMarkers('<!-- SEG:m1:title:t -->\nTitle')).toBe(0);
+  });
+});
+
+describe('normalizeSegMarkers', () => {
+  it('is a no-op for well-formed output', () => {
+    const text = '<!-- SEG:m1:title:t -->\nTitle\n\n<!-- SEG:m1:para:p -->\nBody';
+    const { text: out, fixed } = normalizeSegMarkers(text);
+    expect(fixed).toBe(0);
+    expect(out).toBe(text);
+  });
+
+  it('moves a glued marker onto its own line without losing content or markers', () => {
+    const text = '<!-- SEG:m1:note-title:t -->\nCounting Molecules<!-- SEG:m1:para:p -->\nBody';
+    const { text: out, fixed } = normalizeSegMarkers(text);
+    expect(fixed).toBe(1);
+    // marker count preserved
+    expect(validateMarkers(text, out)).toBe(true);
+    // no inline markers remain
+    expect(countInlineMarkers(out)).toBe(0);
+    // pre-marker content is preserved as the note-title's content
+    expect(out).toContain('Counting Molecules\n\n<!-- SEG:m1:para:p -->');
   });
 });
 
