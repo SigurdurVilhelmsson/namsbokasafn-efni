@@ -29,7 +29,7 @@ const path = require('path');
 const log = require('../lib/logger');
 const publicationService = require('../services/publicationService');
 const { requireAuth } = require('../middleware/requireAuth');
-const { requireRole, ROLES } = require('../middleware/requireRole');
+const { requireHeadEditor } = require('../middleware/requireRole');
 const activityLog = require('../services/activityLog');
 const { VALID_BOOKS } = require('../config');
 
@@ -131,7 +131,7 @@ router.get('/:bookSlug/:chapterNum/modules', requireAuth, validateChapterParams,
 router.post(
   '/:bookSlug/:chapterNum/mt-preview',
   requireAuth,
-  requireRole(ROLES.HEAD_EDITOR),
+  requireHeadEditor('bookSlug'),
   validateChapterParams,
   async (req, res) => {
     const { bookSlug } = req.params;
@@ -190,7 +190,7 @@ router.post(
 router.post(
   '/:bookSlug/:chapterNum/faithful',
   requireAuth,
-  requireRole(ROLES.HEAD_EDITOR),
+  requireHeadEditor('bookSlug'),
   validateChapterParams,
   async (req, res) => {
     const { bookSlug } = req.params;
@@ -250,7 +250,7 @@ router.post(
 router.post(
   '/:bookSlug/:chapterNum/localized',
   requireAuth,
-  requireRole(ROLES.HEAD_EDITOR),
+  requireHeadEditor('bookSlug'),
   validateChapterParams,
   async (req, res) => {
     const { bookSlug } = req.params;
