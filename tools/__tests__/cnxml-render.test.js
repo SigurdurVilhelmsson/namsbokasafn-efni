@@ -8,6 +8,7 @@ import {
   calculateColspan,
   renderPara,
   renderCnxmlToHtml,
+  escapeJsonForScript,
   _loadBookConfigForTest,
 } from '../cnxml-render.js';
 import {
@@ -341,5 +342,28 @@ describe('getExerciseSectionClasses', () => {
     expect(classes).toContain('true-false');
     expect(classes).toContain('matching');
     expect(classes).toHaveLength(6);
+  });
+});
+
+// ─── escapeJsonForScript (page-data </script> breakout guard) ──────
+
+describe('escapeJsonForScript', () => {
+  it('escapes < so a </script> in content cannot close the page-data block', () => {
+    const json = JSON.stringify({ title: '</script><img src=x onerror=alert(1)>' });
+    const out = escapeJsonForScript(json);
+    expect(out).not.toContain('</script>');
+    expect(out).not.toContain('<');
+    expect(out).toContain('\\u003c/script>');
+  });
+
+  it('keeps the JSON parseable after escaping (\\u003c is valid JSON)', () => {
+    const original = { title: 'a < b </script>', chapter: 5 };
+    const parsed = JSON.parse(escapeJsonForScript(JSON.stringify(original)));
+    expect(parsed).toEqual(original);
+  });
+
+  it('leaves content without < untouched', () => {
+    const json = JSON.stringify({ title: 'Svör við æfingum' });
+    expect(escapeJsonForScript(json)).toBe(json);
   });
 });
