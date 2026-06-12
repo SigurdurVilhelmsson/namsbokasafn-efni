@@ -1,6 +1,14 @@
 name: Sync Content to Vefur
 
 on:
+  # Automatic trigger — whenever published HTML lands on main (e.g. the
+  # production auto-backup cron pushes a "Vista + Birta" render), sync it to
+  # the reader. This closes the manual gap: "Birta" → (≤2h backup cron) →
+  # push to main → this workflow → live on namsbokasafn.is.
+  push:
+    branches: [main]
+    paths:
+      - 'books/*/05-publication/**'
   # Manual trigger — sync published content to namsbokasafn-vefur
   workflow_dispatch:
     inputs:

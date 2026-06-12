@@ -194,7 +194,16 @@ All AI suggestions require human approval before:
 
 **Cross-repo CSS contract:** Rendered HTML from `cnxml-render.js` produces semantic HTML that relies on `/styles/content.css` served by namsbokasafn-vefur (located at `static/styles/content.css`). Changes to CNXML class names or structure must be coordinated with that stylesheet.
 
-**Sync command** (run in namsbokasafn-vefur):
+**Content → reader flow:** editor edits/approvals live only in the production
+server's `sessions.db` (gitignored). "Vista + Birta" renders HTML to
+`05-publication/` on the server's disk; `scripts/git-backup.sh` (cron, every
+2h) pushes `books/` content to `main`; a push touching
+`books/*/05-publication/**` auto-triggers the "Sync Content to Vefur" Action
+(`.github/workflows/sync-content.yml`), which publishes to namsbokasafn-vefur.
+Full picture: [docs/technical/architecture.md](docs/technical/architecture.md)
+§ Cross-Repository Content Flow.
+
+**Manual sync** (run in namsbokasafn-vefur, e.g. to publish before the 2h cron):
 ```bash
 node scripts/sync-content.js --source ../namsbokasafn-efni
 ```
