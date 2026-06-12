@@ -9,8 +9,8 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 | **Scale** | 4-5 books in 2 years, designed for 10+ |
 | **Team** | Small editorial team + occasional contributors |
 | **Deployment** | Local-first, server for shared access |
-| **Current Phase** | Phases 8-13 complete; CI/stability restored (June 2026); remediation roadmap Units 0–5 next |
-| **Latest Milestone** | CI fully green (2026-06-10): pipeline xmldom fix, e2e suite repaired after 3.5 months red, security audit clean |
+| **Current Phase** | Phases 8-13 complete; remediation roadmap Units 0–5 code-complete (June 2026); manual QA + editorial-throughput roadmap next |
+| **Latest Milestone** | Remediation roadmap code-complete (2026-06-12, PRs #102–#108): security hotfixes, content restore, localization review tier, assignment enforcement, editor UX, defense-in-depth |
 
 **Phase progression:** 1 → 2 → 2.5 → 5 → 6 → 7 → 8 ✅ → 9 ✅ → 10 ✅ → 11 ✅ → 12 ✅ → 13 ✅
 **Note:** Phase 3 (Enhanced Dashboard) and Phase 4 (not defined) are deferred. Built features as needed, not by strict sequence.
@@ -421,20 +421,34 @@ CNXML → cnxml-extract → EN segments (markdown) → MT → IS segments → re
 
 ## Next Steps
 
-### Current Priority: Remediation Roadmap (June 2026)
+### Current Priority: Editorial Throughput & Quality Roadmap (June 2026)
 
-A security/quality review on 2026-06-10 produced an approved, session-sized development plan: [docs/plans/2026-06-10-remediation-roadmap.md](docs/plans/2026-06-10-remediation-roadmap.md). Work through its units in order:
+The remediation roadmap is **code-complete** (all units 0–5 merged, PRs #102–#108); only the manual QA checklists §0–§5 remain to be walked on a running server ([docs/plans/2026-06-10-qa-checklist.md](docs/plans/2026-06-10-qa-checklist.md)).
+
+The successor plan, drafted 2026-06-12 from a head-translator's analysis of the server code: [docs/plans/2026-06-12-editorial-throughput-roadmap.md](docs/plans/2026-06-12-editorial-throughput-roadmap.md). Rationale: the platform is now safe/governed/reversible, but production state (250 MT-preview pages vs 1 faithful module; `tm/` empty in every book) says the bottleneck is Pass 1 editorial throughput. Units:
 
 | Unit | Theme |
 |------|-------|
-| 0 | Security hotfixes (path traversal, book-scope authz, render restore, XSS escaping) |
-| 1 | Content reversibility after apply (`feat/content-restore`) |
-| 2 | Pass 2 localization review tier (`feat/localization-review-tier`) |
-| 3 | Chapter assignment enforcement (`feat/assignment-enforcement`) |
-| 4 | Editor UX de-jargon (parallel) |
-| 5 | Defense-in-depth + housekeeping (parallel) |
+| 0 | Walk remediation manual QA §0–§5 (carried over, closes the June-10 roadmap) |
+| 1 | In-house TMX generation from paired segment files (`feat/tm-generation`) — retires the manual Matecat Align step |
+| 2 | Concordance search + repetition leverage in the segment editor (`feat/concordance`) |
+| 3 | Live terminology QA in the save/submit path (`feat/live-terminology-qa`) |
+| 4 | Icelandic spell-check + number-consistency QA (`feat/spellcheck-qa`) — engine decision pending |
+| 5 | Team operations: SLA aging, editor notifications, feedback routing (`feat/team-operations`) |
+| 6 | Asset durability: terminology export to git, `sessions.db` backup (`chore/asset-durability`) |
 
-Each unit has QA gates in [docs/plans/2026-06-10-qa-checklist.md](docs/plans/2026-06-10-qa-checklist.md). The e2e suite (repaired 2026-06-10, green) is a usable regression gate for all of them.
+### Completed: Remediation Roadmap (June 2026)
+
+A security/quality review on 2026-06-10 produced an approved, session-sized development plan: [docs/plans/2026-06-10-remediation-roadmap.md](docs/plans/2026-06-10-remediation-roadmap.md). All units landed 2026-06-12:
+
+| Unit | Theme | PR |
+|------|-------|-----|
+| 0 | Security hotfixes (path traversal, book-scope authz, render restore, XSS escaping) | #102 |
+| 1 | Content reversibility after apply (`feat/content-restore`) | #103 |
+| 2 | Pass 2 localization review tier (`feat/localization-review-tier`) | #104 |
+| 3 | Chapter assignment enforcement (`feat/assignment-enforcement`) | #105 |
+| 4 | Editor UX de-jargon + concurrency parity | #106 |
+| 5 | Defense-in-depth + housekeeping (page auth, CSRF posture, tool-layer F7–F23) | #108 |
 
 ### Stability work landed 2026-06-10
 
