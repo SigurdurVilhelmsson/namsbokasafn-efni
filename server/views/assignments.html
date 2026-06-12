@@ -1,61 +1,70 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="is">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Úthlutanir - Námsbókasafn</title>
-  <link rel="stylesheet" href="/css/common.css">
-</head>
-<body>
-  <main class="page-content" data-title="Úthlutanir">
-
-    <!-- Book selector -->
-    <div class="controls-row">
-      <select id="book-select" class="book-select"></select>
-    </div>
-
-    <!-- Stats row -->
-    <div class="stats-row">
-      <div class="stat-card">
-        <span class="stat-number" id="stat-assigned">—</span>
-        <span class="stat-label">Úthlutað</span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Úthlutanir - Námsbókasafn</title>
+    <link rel="stylesheet" href="/css/common.css" />
+  </head>
+  <body>
+    <main class="page-content" data-title="Úthlutanir">
+      <!-- Book selector -->
+      <div class="controls-row">
+        <select id="book-select" class="book-select"></select>
+        <label
+          class="enforce-toggle"
+          id="enforce-toggle-wrap"
+          style="display: none; margin-left: auto; align-items: center; gap: 0.5rem"
+        >
+          <input type="checkbox" id="enforce-assignments-toggle" />
+          <span
+            title="Þegar kveikt er á þessu fá ritstjórar aðeins aðgang að köflum sem þeim hafa verið úthlutaðir (aðeins stjórnandi getur breytt)."
+            >Þvinga kaflaúthlutun</span
+          >
+        </label>
       </div>
-      <div class="stat-card">
-        <span class="stat-number stat-warn" id="stat-unassigned">—</span>
-        <span class="stat-label">Óúthlutað</span>
+
+      <!-- Stats row -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <span class="stat-number" id="stat-assigned">—</span>
+          <span class="stat-label">Úthlutað</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number stat-warn" id="stat-unassigned">—</span>
+          <span class="stat-label">Óúthlutað</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" id="stat-editors">—</span>
+          <span class="stat-label">Ritstjórar</span>
+        </div>
       </div>
-      <div class="stat-card">
-        <span class="stat-number" id="stat-editors">—</span>
-        <span class="stat-label">Ritstjórar</span>
+
+      <!-- Loading indicator -->
+      <div class="loading-spinner" id="assignments-loading">Hleður...</div>
+
+      <!-- Assignments table -->
+      <div id="assignments-content" style="display: none">
+        <table class="assignments-table">
+          <thead>
+            <tr>
+              <th>KAFLI</th>
+              <th>TITILL</th>
+              <th>RITSTJÓRI</th>
+              <th>FRAMVINDA</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="assignments-tbody"></tbody>
+        </table>
       </div>
-    </div>
+    </main>
 
-    <!-- Loading indicator -->
-    <div class="loading-spinner" id="assignments-loading">Hleður...</div>
-
-    <!-- Assignments table -->
-    <div id="assignments-content" style="display:none">
-      <table class="assignments-table">
-        <thead>
-          <tr>
-            <th>KAFLI</th>
-            <th>TITILL</th>
-            <th>RITSTJÓRI</th>
-            <th>FRAMVINDA</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody id="assignments-tbody"></tbody>
-      </table>
-    </div>
-
-  </main>
-
-  <script src="/js/htmlUtils.js"></script>
-  <script src="/js/ui-strings.js"></script>
-  <script src="/js/theme.js"></script>
-  <script src="/js/layout.js"></script>
-  <script src="/js/bookSelector.js"></script>
-  <script src="/js/assignments.js"></script>
-</body>
+    <script src="/js/htmlUtils.js"></script>
+    <script src="/js/ui-strings.js"></script>
+    <script src="/js/theme.js"></script>
+    <script src="/js/layout.js"></script>
+    <script src="/js/bookSelector.js"></script>
+    <script src="/js/assignments.js"></script>
+  </body>
 </html>

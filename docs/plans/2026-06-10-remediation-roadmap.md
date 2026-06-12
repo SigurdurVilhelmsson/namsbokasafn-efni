@@ -7,14 +7,14 @@
 
 > **How to use this across sessions:** each unit below is sized to one working session. Before starting a unit, read its "Pre" note. After finishing, tick the boxes, run the matching section of the QA checklist if marked **QA**, append a line to the Progress Log at the bottom, and commit. Branch names are fixed so a future session can `git checkout` and continue.
 
-> **▶ Recommended next step (as of 2026-06-12): Unit 3 — `feat/assignment-enforcement`** (or Unit 4 — editor UX, parallel).
-> Units 0 (#102) and 1 (#103) are merged; Unit 2 (`localization-review-tier`)
-> is code-complete. Manual QA checklists §0–§2 still need a pass on a running
-> server. Unit 3 turns chapter assignment into a real access boundary
-> (default-deny behind a per-book `enforce_assignments` toggle) and builds on
-> Unit 0.3's book-scope authz. A small standalone quick-win also exists (see
-> Unit 4): a "rebuild" affordance when a faithful file is deleted but its edits
-> are marked applied.
+> **▶ Recommended next step (as of 2026-06-12): Unit 4 — `feat/editor-ux-dejargon`** (parallel) **or Unit 5 — `chore/defense-and-housekeeping`**.
+> Units 0 (#102), 1 (#103), 2 (#104) are merged; Unit 3 (`assignment-enforcement`)
+> is code-complete. Manual QA checklists §0–§3 still need a pass on a running
+> server. The remaining units are parallel/independent: Unit 4 de-jargons the
+> editor surfaces (chapter/section/title instead of `mNNNNN`/stage/track) and
+> adds optimistic-concurrency parity, and includes the standalone quick-win — a
+> "rebuild" affordance when a faithful file is deleted but its edits are marked
+> applied. Unit 5 is defense-in-depth + latent-bug cleanup, cherry-pickable.
 
 ---
 
@@ -81,11 +81,11 @@ Rationale: ship the integrity/security hotfixes first (two of them also harden t
 **Pre:** depends on Unit 0.3 (book-scope) landing. Read `userService.hasChapterAccess` (F14) and `requireBookAccess`.
 **QA:** QA checklist §3.
 
-- [ ] **3.1** Flip `hasChapterAccess` from fail-open to default-deny, gated by a per-book `enforce_assignments` toggle (so existing books keep working until the lead opts in).
-- [ ] **3.2** Fail-closed on missing assignment table (log + 503, not allow).
-- [ ] **3.3** Lead dashboard: per-book assignment grid with progress + SLA (extend existing `/api/admin/assignments/:book`).
-- [ ] **3.4** Migration + admin toggle UI for `enforce_assignments`.
-- [ ] **3.5** Tests: assigned editor can edit assigned chapter only; unassigned blocked when enforcement on; admin/head-editor unaffected.
+- [x] **3.1** `hasChapterAccess` now branches on `isAssignmentEnforced(book)`: OFF → legacy fail-open (no assignments = full access); ON → default-deny (must be explicitly assigned the chapter, so zero assignments = no access). Toggle stored in `book_settings.enforce_assignments` (default 0).
+- [x] **3.2** Fail-closed: under enforcement, a missing user/assignment table throws `ASSIGNMENT_TABLE_UNAVAILABLE`, which `requireBookAccess` maps to **503** (not allow). With enforcement OFF the same condition stays legacy fail-open.
+- [x] **3.3** Extended `GET /api/admin/assignments/:book` to include `enforceAssignments`; the existing per-book assignments dashboard (grid + progress in `assignments.js`/`assignments.html`) now also shows/sets the toggle. *(Per-chapter SLA aging left as a follow-up — progress % is already surfaced.)*
+- [x] **3.4** Migration 035 adds `enforce_assignments` to `book_settings`; admin-only `POST /api/admin/assignments/:book/enforcement` + a toggle in the assignments dashboard (reverts on 403 for non-admins).
+- [x] **3.5** Tests (`assignmentEnforcement.test.js`, 7): toggle round-trip; OFF → unassigned full access / assigned limited; ON → assigned-only, zero-assignment denied, only-toggled-book affected, fail-closed on missing table. Admin/head-editor bypass is unchanged (handled earlier in `requireBookAccess`).
 
 ---
 
@@ -122,6 +122,7 @@ Rationale: ship the integrity/security hotfixes first (two of them also harden t
 |------|---------|-----------|-------|
 | 2026-06-10 | review | audit + roadmap | Findings documented; roadmap approved by lead. No code changed yet. |
 | 2026-06-10 | ci-restore | pre-unit infrastructure | PRs #91–#93 merged: xmldom 0.9 fix (injection pipeline un-broken), fresh-DB migration bootstrap (e2e suite green after 3.5 months red; terminology specs aligned with redesign; 2 production bugs fixed along the way), xlsx→SheetJS 0.20.3 + qs bump (audit check green). All five CI checks green — the e2e suite is now a usable QA gate for Units 0–5. No unit items started yet. |
+| 2026-06-12 | unit-3 | Unit 3 (`feat/assignment-enforcement`) | Built on merged Unit 2. **3.1/3.2** `userService.hasChapterAccess` rewritten: per-book `enforce_assignments` toggle flips it from legacy fail-open to default-deny, with fail-closed (`ASSIGNMENT_TABLE_UNAVAILABLE` → 503 in `requireBookAccess`) when the table is missing under enforcement. New `isAssignmentEnforced`/`setAssignmentEnforced`. **3.3/3.4** migration 035 adds `enforce_assignments` to `book_settings` (reuses the Unit 2 table); `GET /assignments/:book` now returns `enforceAssignments`; admin-only `POST /assignments/:book/enforcement`; the existing assignments dashboard gains a toggle. **3.5** +7 tests; startup migration count 34→35; full suite 1146 green; lint/prettier clean; routes regenerated. Admin/head-editor bypass unchanged (short-circuited earlier in `requireBookAccess`). Manual QA §3 still to be walked on a server. Stacked on `claude/peaceful-meitner-g5nbdi`. |
 | 2026-06-12 | unit-2 | Unit 2 (`feat/localization-review-tier`) | Built on merged Unit 1. **2.1** migration 034 (`localization_pending_edits` + `book_settings`) + new `localizationReviewService` (toggle, submit-with-upsert, approve-applies-to-file, reject, review queue). **2.2** snapshot-before-save via the existing `saveLocalizedSegments` `.bak` + per-edit `original_content`. **2.3** four-eyes per lead decision = mirror Pass 1 (head-editor-only approve, self-approval permitted); approve/reject book-scoped via `requireHeadEditorFor`. **2.4** localization-editor route now branches on the per-book toggle (save → pending when enforced, legacy direct-save when off); new endpoints `pending-edits`, `review-queue/:book`, `loc-edit/:id/approve|reject`, `settings/:book` (admin); editor UI gains a review banner + head-editor approve/reject panel. **2.5** opt-in per book, OFF by default. +7 service tests; updated startup migration-count test (33→34); full suite 1139 green; lint/prettier clean; routes inventory regenerated. Manual QA §2 still to be walked on a server. Stacked on `claude/peaceful-meitner-g5nbdi`. |
 | 2026-06-12 | unit-1 | Unit 1 (`feat/content-restore`) | Built on the merged Unit 0 (book-scope authz). **1.1** `contentVersionService.restoreVersion` — snapshots current content as a fresh version first (restore is itself reversible), then rebuilds the faithful file from the chosen snapshot *aligned to the current extraction* (restores matching ids, keeps current-only ids, skips orphan snapshot ids), and emits the previously-dead `version_restored` activity. **1.2** `POST …/restore/:version`, book-scoped head-editor, `{confirm:true}` guard. **1.3** "Saga útgáfa" modal in the editor's head-editor apply panel (no version-history UI existed before). **1.4** decided **against** git-per-apply (redundant with the 2h git-backup cron; avoids reviving dead `gitService`). **1.5** +4 unit tests (round-trip, restore-then-restore, extraction-changed, unknown-version). Full suite 1132 green; lint/prettier clean. Manual QA §1 still to be walked on a server. Developed on `claude/peaceful-meitner-g5nbdi` (session-pinned branch) rather than the roadmap's suggested `feat/content-restore`. |
 | 2026-06-12 | unit-0 | Unit 0 (hotfix) | All four fixes landed on `claude/peaceful-meitner-g5nbdi`. **0.1**: `validateModule` + `VALID_TRACKS` guard on the preview route (path traversal via `track`/`moduleId` now 400s). **0.2**: render failure now restores each file's newest `.backup.*` (rename = restore + consume) and only unlinks brand-new partials; error message reports restored/removed counts instead of the old false "previous versions are intact". **0.3**: book-scoped authz — new `requireHeadEditorFor(resolveBook)` middleware resolves the owning book from `:editId`/`:reviewId` for approve/reject/discuss/unapprove/complete; `requireHeadEditor()` (now param-configurable) on apply/apply-and-render/apply-all and the three `publication.js` `:bookSlug` endpoints; admin still bypasses. **0.4**: `formatSubject`/`formatSource`/`formatStatus` wrapped in `escapeHtml`; new `escapeJsonForScript` (`<`→`<`) applied at all four page-data `<script>` sites. +15 unit tests (12 middleware, 3 escape); full suite 1128 green, lint clean. Manual QA checklist §0 still to be walked on a running server. |

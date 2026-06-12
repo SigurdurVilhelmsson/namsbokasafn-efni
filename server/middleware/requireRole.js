@@ -205,7 +205,20 @@ function requireBookAccess() {
       // Look up the DB user ID from the provider ID in the JWT
       const dbUser = userService.findByProviderId(req.user.id);
       if (dbUser) {
-        const allowed = userService.hasChapterAccess(dbUser.id, book, chapter);
+        let allowed;
+        try {
+          allowed = userService.hasChapterAccess(dbUser.id, book, chapter);
+        } catch (err) {
+          // Enforcement is on but assignments can't be evaluated → fail closed.
+          if (err.code === 'ASSIGNMENT_TABLE_UNAVAILABLE') {
+            return res.status(503).json({
+              error: 'Assignment enforcement unavailable',
+              message:
+                'Chapter assignments cannot be verified right now. Access is blocked until this is resolved.',
+            });
+          }
+          throw err;
+        }
         if (!allowed) {
           return res.status(403).json({
             error: 'Chapter access denied',
