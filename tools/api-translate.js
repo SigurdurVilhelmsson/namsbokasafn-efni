@@ -218,6 +218,45 @@ export function validateMarkers(input, output) {
   return inputCount === outputCount;
 }
 
+/**
+ * Count SEG markers that are not at the start of a line ("inline" markers).
+ *
+ * The Málstaður API occasionally eats the newline before a marker, gluing a
+ * segment's translated text to the following marker, e.g.
+ *   Some title<!-- SEG:…:para:… -->
+ * The marker count is unchanged, so validateMarkers() passes — but downstream
+ * line-based consumers then drop the preceding segment. This counts how many
+ * markers are mis-positioned so the condition can be detected, not just fixed.
+ *
+ * @param {string} text
+ * @returns {number} number of markers preceded by non-newline content
+ */
+export function countInlineMarkers(text) {
+  const matches = text.match(/[^\n][ \t]*<!--\s*SEG:/g) || [];
+  return matches.length;
+}
+
+/**
+ * Put every SEG marker back on its own line.
+ *
+ * Inserts a blank line before any marker that the API glued onto the end of the
+ * preceding segment's text. Well-formed markers (already at line start, or at
+ * the very start of the file) are left untouched, so this is a no-op for clean
+ * output and a precise repair for mangled output.
+ *
+ * @param {string} text
+ * @returns {{ text: string, fixed: number }}
+ */
+export function normalizeSegMarkers(text) {
+  const fixed = countInlineMarkers(text);
+  if (fixed === 0) return { text, fixed: 0 };
+  const normalized = text.replace(
+    /([^\n])[ \t]*(<!--\s*SEG:[^\n]*?-->)/g,
+    (_, before, marker) => `${before}\n\n${marker}`
+  );
+  return { text: normalized, fixed };
+}
+
 // ─── Book → Domain Mapping ──────────────────────────────────────────
 
 /**
@@ -465,7 +504,19 @@ async function translateModule(
   }
 
   // Reassemble chunks
-  const output = translatedChunks.join('');
+  let output = translatedChunks.join('');
+
+  // Repair markers the API glued onto the end of the preceding segment's text.
+  // Their count is correct so validateMarkers() wouldn't catch them, but a
+  // line-based consumer would silently drop the preceding segment. Surface the
+  // condition (it indicates MT mangling) and fix it at the source.
+  const { text: normalizedOutput, fixed: markersNormalized } = normalizeSegMarkers(output);
+  output = normalizedOutput;
+  if (markersNormalized > 0) {
+    console.error(
+      `  Note: normalized ${markersNormalized} inline SEG marker(s) the MT API ran onto the previous line`
+    );
+  }
 
   // Final validation: total segment count must match
   if (!validateMarkers(input, output)) {
@@ -492,7 +543,7 @@ async function translateModule(
     fs.copyFileSync(linksSource, linksDest);
   }
 
-  return { chars: input.length, usage: totalUsage };
+  return { chars: input.length, usage: totalUsage, markersNormalized };
 }
 
 // ─── Pipeline Status ────────────────────────────────────────────────
@@ -662,7 +713,13 @@ async function main() {
   console.log('');
 
   // Translate
-  const results = { translated: 0, skipped: toSkip.length, failed: 0, errors: [] };
+  const results = {
+    translated: 0,
+    skipped: toSkip.length,
+    failed: 0,
+    markersNormalized: 0,
+    errors: [],
+  };
 
   for (const mod of workList) {
     if (mod.skip) {
@@ -673,7 +730,7 @@ async function main() {
     process.stdout.write(`  ${mod.chapterDir}/${mod.moduleId}... `);
 
     try {
-      const { chars } = await translateModule(
+      const { chars, markersNormalized } = await translateModule(
         client,
         mod.path,
         mod.outputPath,
@@ -681,8 +738,10 @@ async function main() {
         args.verbose,
         args.maxChunk
       );
-      console.log(`✅ (${chars.toLocaleString()} chars)`);
+      const fixedNote = markersNormalized > 0 ? `, ${markersNormalized} marker(s) un-glued` : '';
+      console.log(`✅ (${chars.toLocaleString()} chars${fixedNote})`);
       results.translated++;
+      results.markersNormalized += markersNormalized;
     } catch (err) {
       console.log(`❌ ${err.message}`);
       results.failed++;
@@ -697,6 +756,11 @@ async function main() {
   console.log(`  Translated: ${results.translated}`);
   console.log(`  Skipped:    ${results.skipped}`);
   console.log(`  Failed:     ${results.failed}`);
+  if (results.markersNormalized > 0) {
+    console.log(
+      `  Markers un-glued: ${results.markersNormalized} (MT API ran them onto prev line)`
+    );
+  }
   console.log(`  API usage:  ${usage.totalChars.toLocaleString()} chars`);
   console.log(`  Est. cost:  ~${usage.estimatedISK.toFixed(0)} ISK`);
   console.log(`  Time:       ${(usage.elapsedMs / 1000).toFixed(1)}s`);
