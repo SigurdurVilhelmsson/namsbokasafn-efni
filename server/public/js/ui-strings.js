@@ -144,6 +144,12 @@ const UI = {
     saveAndRenderDone: 'Vistað + Render lokið!',
     saveNoRender: 'Vistað, en render startaði ekki',
     renderFailed: 'Render mistókst',
+    // Phase-aware failure label so an injection failure isn't mislabelled as a
+    // render failure (the two phases fail for very different reasons).
+    phaseFailed: function (phase) {
+      const label = phase === 'inject' ? 'Innspýting' : 'Render';
+      return label + ' mistókst';
+    },
     renderPhase: function (phase) {
       return 'Render (' + phase + ')...';
     },

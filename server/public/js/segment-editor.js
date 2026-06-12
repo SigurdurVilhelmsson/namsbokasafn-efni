@@ -1510,8 +1510,21 @@
           loadApplyStatus();
         } else if (job.status === 'failed') {
           clearInterval(timer);
-          badge.textContent = UI.apply.renderFailed;
+          // Name the phase that actually failed (inject vs render) and surface
+          // the real error — the generic "render failed" badge sent past
+          // debugging down the wrong path.
+          badge.textContent = UI.apply.phaseFailed(job.phase);
           badge.className = 'pipeline-status-badge failed';
+          const detail = [job.error]
+            .concat((job.output || []).slice(-6))
+            .filter(Boolean)
+            .join('\n');
+          if (detail) {
+            badge.title = detail;
+            console.error(
+              '[apply-and-render] ' + (job.phase || 'pipeline') + ' failed:\n' + detail
+            );
+          }
           document.getElementById('btn-apply').disabled = false;
           document.getElementById('btn-apply-render').disabled = false;
         } else {
