@@ -34,7 +34,7 @@ This project was built iteratively with AI assistance. Known areas of concern:
 - Pipeline tools evolved organically — may have inconsistent patterns
 - Error handling may be incomplete in some tools
 - Documentation may be ahead of or behind actual implementation in places
-- Test suite: ~1113 Vitest unit tests + 137 Playwright E2E tests, all green as of 2026-06-12 (vitest workspace: tools parallel, server sequential)
+- Test suite: ~1154 Vitest unit tests + 137 Playwright E2E tests, all green as of 2026-06-12 (vitest workspace: tools parallel, server sequential). Remediation Units 0–4 added focused suites: `requireRole`, `contentVersionService`, `localizationReviewService`, `assignmentEnforcement`, `applyStatusRebuild`, `segmentEditConflict`.
 
 ## Purpose
 
@@ -260,13 +260,21 @@ The server is an **editorial workflow platform**, not a pipeline orchestration t
 - Structured logging via pino (`LOG_LEVEL` env var, JSON in production)
 - Production health check at `GET /api/health` (DB, migrations, books, auth)
 
+**Recent changes (2026-06-12, remediation Units 0–4 — PRs #102–#106, all merged):** worked through the first five units of the June-2026 remediation roadmap. Each shipped with tests; full suite ~1154 Vitest green. Manual QA checklists §0–§4 still need a pass on a running server.
+- **Unit 0 — security hotfixes (#102):** preview path-traversal guard (`validateModule` + `VALID_TRACKS` on the live-preview route); render restore-on-failure (`cnxml-render.js` now restores each file's newest `.backup.*` instead of unlinking good prior versions); **book-scoped head-editor authz** — new `requireHeadEditor(bookParam)` / `requireHeadEditorFor(resolveBook)` middleware on approve/reject/discuss/unapprove/complete/apply/publish (a head-editor of one book can no longer act on another); terminology + page-data output escaping (`escapeHtml`, `escapeJsonForScript`).
+- **Unit 1 — content restore (#103):** `contentVersionService.restoreVersion` writes a chosen `content_versions` snapshot back as the faithful file (snapshots current content first, so restore is itself reversible), aligned to the current extraction; `POST …/restore/:version` (book-scoped, confirm-flagged) + a "Saga útgáfa" modal in the editor. Emits the previously-dead `version_restored` activity. **Decision:** no git-per-apply (redundant with the 2h git-backup cron).
+- **Unit 2 — localization review tier (#104):** migration 034 (`localization_pending_edits` + `book_settings`) + `localizationReviewService`. With per-book `enforce_localization_review` ON, Pass 2 edits go to a head-editor approve/reject queue before reaching `04-localized-content/`; OFF (default) keeps legacy direct-save. Four-eyes mirrors Pass 1 (head-editor-only approve, self-approval permitted).
+- **Unit 3 — assignment enforcement (#105):** migration 035 (`enforce_assignments` on `book_settings`). `userService.hasChapterAccess` flips from fail-open to **default-deny** when enforced (missing table → fail-closed 503); admin toggle on the assignments dashboard. Admin/head-editor bypass unchanged.
+- **Unit 4 — editor UX (#106):** **rebuild affordance** (`getApplyStatus` reports `faithful_exists`/`can_rebuild`; the apply button re-enables to rebuild a module whose faithful file went missing — closes the m68700 recovery gap); header de-jargon (human title leads, `mNNNNN` muted + head-editor-only); **optimistic-concurrency token** for segment saves (`baseEditId` → 409 on a concurrent cross-editor change, parity with localization); editor-facing label sweep (residual English "Render"/"Starting" → Icelandic).
+- **Next:** Unit 5 (`chore/defense-and-housekeeping`, cherry-pickable: F11/F12/F21/F22/F23 + tool-layer lows F7–F20) and the manual QA passes. Shared infra added by these units: `requireHeadEditor`/`requireHeadEditorFor` middleware, the `book_settings` per-book toggle table (migrations 034–035), and `escapeJsonForScript`.
+
 **Recent changes (2026-06-12):** editorial-flow fixes surfaced by a real "Vista + Birta" failure on m68700, plus the content-publish flow:
 - **Segment-parser bug (#96):** `segmentParser.parseSegments` was line-based and dropped any segment whose text shared a line with the next `<!-- SEG: -->` marker (the MT API sometimes eats the newline before a marker). It's now marker-based like the injection parser. This was the root cause of an "incomplete injection → render not found" failure that the UI mislabelled as a render error. Apply failure labels are now phase-aware (inject vs render) and surface the real error.
 - **MT producer hardening (#98):** `api-translate.js` now `normalizeSegMarkers()` un-glues markers the API ran onto the previous line before writing `02-mt-output`, and reports a per-module/summary count (`countInlineMarkers`) so the mangling is visible at the MT stage instead of three stages downstream. 62 module-files had the latent pattern; consumers tolerate it now, producer emits clean.
 - **Edit-again (#99):** a published (approved + applied) segment can now be revised in the editor via a "Breyta aftur" button. A new edit supersedes the old on the next "Vista + Birta"; the older version stays in history. Leans on existing supersede logic — **no reversal code**. This is the *forward-editing* complement to roadmap Unit 1 (`content-restore`, *backward* rollback); they're independent.
 - **Apply model (important for future work):** `loadModuleForEditing` reads `03-faithful-translation` as the baseline once it exists (else `02-mt-output`). So `applyApprovedEdits` rebuilds the faithful file from the *current published content* + newly-approved-unapplied edits — incremental re-applies preserve every other segment's edits. Edits are also one-way at apply for *unapprove* (`unapproveEdit` throws once `applied_at` is set); edit-again is the way to change published content.
 - **Content publish flow (#95):** `scripts/git-backup.sh` now also stages `books/*/translation-errors.json` (it was perpetually dirty on prod after inject), and a push to `main` touching `books/*/05-publication/**` auto-triggers the "Sync Content to Vefur" Action — so "Vista + Birta" reaches namsbokasafn.is via the 2h backup cron with no manual step. Full flow: [docs/technical/architecture.md](docs/technical/architecture.md) § Cross-Repository Content Flow.
-- **Known editorial-UX follow-ups:** (a) no in-UI affordance to rebuild when a faithful file is deleted but edits are marked applied (currently needs a `applied_at=NULL` reset — the apply button stays greyed because `getApplyStatus` only counts unapplied edits); (b) Unit 1 `content-restore` (backward rollback) still unbuilt.
+- **Known editorial-UX follow-ups (both since resolved — see Units 0–4 block above):** (a) the rebuild-when-faithful-file-deleted affordance landed as Unit 4.5 (`getApplyStatus` now reports `can_rebuild`); (b) `content-restore` (backward rollback) landed as Unit 1.
 
 **Recent changes (2026-06-10):** CI fully green for the first time (lint, test, e2e, audit, docs-check):
 - `@xmldom/xmldom` 0.9 `errorHandler`→`onError` migration in `tools/lib/cnxml-dom.js` (the old option threw at runtime and broke injection)
@@ -279,7 +287,7 @@ The server is an **editorial workflow platform**, not a pipeline orchestration t
 **Recent changes (2026-03-24):**
 - Removed 20 legacy files (workflow, matecat, sync, images, issues routes/services)
 - All DB services use singleton connection pattern
-- All 33 migrations use unified `up(db)` pattern
+- Migrations use the unified `up(db)` pattern (35 as of 2026-06-12; 034–035 added the `book_settings` per-book toggle table)
 - Frontend JS wrapped in IIFEs (encapsulated state)
 - Vitest workspace splits tools (parallel) from server (sequential) tests
 
@@ -287,7 +295,7 @@ The server is an **editorial workflow platform**, not a pipeline orchestration t
 
 Two active tracks:
 
-1. **Remediation roadmap (approved 2026-06-10)** — work through Units 0–5 in [docs/plans/2026-06-10-remediation-roadmap.md](docs/plans/2026-06-10-remediation-roadmap.md) (security hotfixes → content reversibility → localization review tier → assignment enforcement → editor UX → housekeeping). Source audit: [docs/audit/2026-06-10-security-quality-review.md](docs/audit/2026-06-10-security-quality-review.md); QA gates: [docs/plans/2026-06-10-qa-checklist.md](docs/plans/2026-06-10-qa-checklist.md). Tick checkboxes and append to the progress log as items land.
+1. **Remediation roadmap (approved 2026-06-10)** — [docs/plans/2026-06-10-remediation-roadmap.md](docs/plans/2026-06-10-remediation-roadmap.md). **Units 0–4 are merged** (#102–#106, see Recent-changes block above); **Unit 5 (`chore/defense-and-housekeeping`) is the only remaining unit** — cherry-pickable defense/cleanup items (F11/F12/F21/F22/F23 + tool-layer lows F7–F20). The **manual QA checklists §0–§4 still need a pass on a running server** (authz boundaries, on-disk render rollback, restore round-trip, enforcement 403/503, stored-XSS rendering). Source audit: [docs/audit/2026-06-10-security-quality-review.md](docs/audit/2026-06-10-security-quality-review.md); QA gates: [docs/plans/2026-06-10-qa-checklist.md](docs/plans/2026-06-10-qa-checklist.md). Tick checkboxes and append to the progress log as items land.
 
 2. **Fidelity optimization** — 119/148 modules PERFECT (80%) for efnafraedi-2e, 49 total discrepancies across 29 modules. Error manifest auto-updated: `books/efnafraedi-2e/translation-errors.json`. Pipeline verified with ~1113 Vitest + 137 Playwright tests (all green).
 
