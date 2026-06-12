@@ -73,14 +73,27 @@ function runAllMigrations() {
 
   for (const migration of migrations) {
     if (typeof migration.migrate === 'function') {
-      // Legacy pattern (001-007): self-contained with own DB connection
-      const result = migration.migrate();
-      if (result && result.alreadyApplied) {
-        skipped++;
-      } else if (result && result.success) {
-        applied++;
-      } else if (result && !result.success && !result.skipped) {
-        errors.push(`${migration.name || 'unknown'}: ${result.error}`);
+      // Legacy pattern (001-007): self-contained with own DB connection.
+      // Wrap in try/catch so a throwing legacy migration is collected as an
+      // error instead of crashing server boot (parity with the modern path).
+      try {
+        const result = migration.migrate();
+        if (result && result.alreadyApplied) {
+          skipped++;
+        } else if (result && result.success) {
+          applied++;
+        } else if (result && !result.success && !result.skipped) {
+          errors.push(`${migration.name || 'unknown'}: ${result.error}`);
+        }
+      } catch (err) {
+        if (
+          err.message &&
+          (err.message.includes('duplicate column') || err.message.includes('already exists'))
+        ) {
+          skipped++;
+        } else {
+          errors.push(`${migration.name || 'unknown'}: ${err.message}`);
+        }
       }
     } else if (typeof migration.up === 'function') {
       // Modern pattern (008+): expects a DB instance

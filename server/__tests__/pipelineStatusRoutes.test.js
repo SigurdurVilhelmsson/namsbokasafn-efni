@@ -114,4 +114,25 @@ describe('pipeline status + locking integration', () => {
     expect(history[0].type).toBe('status');
     expect(history[0].stage).toBe('extraction');
   });
+
+  describe('getActiveLock (F23 singleton read)', () => {
+    it('returns null when no lock is held', () => {
+      expect(pipelineStatus.getActiveLock('efnafraedi-2e-01')).toBeNull();
+    });
+
+    it('returns the active lock holder and expiry', () => {
+      chapterLock.acquireLock('efnafraedi-2e-01', 'anna');
+      const lock = pipelineStatus.getActiveLock('efnafraedi-2e-01');
+      expect(lock).not.toBeNull();
+      expect(lock.lockedBy).toBe('anna');
+      expect(lock.expiresAt).toBeTruthy();
+    });
+
+    it('ignores expired locks', () => {
+      db.prepare(
+        "INSERT INTO chapter_locks (chapter_id, locked_by, expires_at) VALUES (?, ?, datetime('now', '-1 hour'))"
+      ).run('efnafraedi-2e-02', 'jon');
+      expect(pipelineStatus.getActiveLock('efnafraedi-2e-02')).toBeNull();
+    });
+  });
 });

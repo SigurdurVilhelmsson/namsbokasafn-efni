@@ -721,6 +721,11 @@ async function main() {
     errors: [],
   };
 
+  // Track per-chapter outcome so --update-status only advances chapters whose
+  // modules all succeeded (a chapter with any failed module is NOT complete).
+  const succeededChapters = new Set();
+  const failedChapters = new Set();
+
   for (const mod of workList) {
     if (mod.skip) {
       if (args.verbose) console.log(`  ⏭  ${mod.chapterDir}/${mod.moduleId} (exists)`);
@@ -742,10 +747,12 @@ async function main() {
       console.log(`✅ (${chars.toLocaleString()} chars${fixedNote})`);
       results.translated++;
       results.markersNormalized += markersNormalized;
+      succeededChapters.add(mod.chapterDir);
     } catch (err) {
       console.log(`❌ ${err.message}`);
       results.failed++;
       results.errors.push({ module: mod.moduleId, chapter: mod.chapterDir, error: err.message });
+      failedChapters.add(mod.chapterDir);
     }
   }
 
@@ -772,13 +779,21 @@ async function main() {
     }
   }
 
-  // Update pipeline status if requested
+  // Update pipeline status if requested. Only mark a chapter's mtOutput
+  // complete when every translated module in it succeeded — a chapter with any
+  // failure stays incomplete instead of silently transitioning (F7).
   if (args.updateStatus && results.translated > 0) {
-    console.log('\nUpdating pipeline status...');
-    const translatedChapters = [
-      ...new Set(workList.filter((m) => !m.skip).map((m) => m.chapterDir)),
-    ];
-    await updatePipelineStatus(args.book, translatedChapters);
+    const completeChapters = [...succeededChapters].filter((ch) => !failedChapters.has(ch));
+    if (completeChapters.length > 0) {
+      console.log('\nUpdating pipeline status...');
+      await updatePipelineStatus(args.book, completeChapters);
+    }
+    const heldBack = [...succeededChapters].filter((ch) => failedChapters.has(ch));
+    if (heldBack.length > 0) {
+      console.log(
+        `  Held back (had failures): ${heldBack.join(', ')} — fix and re-run to mark complete`
+      );
+    }
   }
 
   if (results.failed > 0) process.exit(1);

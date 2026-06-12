@@ -32,7 +32,11 @@ function escapeHtml(text) {
  */
 // eslint-disable-next-line no-unused-vars
 async function fetchJson(url, options) {
-  const res = await fetch(url, options);
+  // Standardize the credentials mode so cookies ride along on same-origin API
+  // calls without each caller re-specifying it. Cross-site requests can't read
+  // the response anyway (CORS), and the auth cookie is SameSite=strict, so
+  // 'same-origin' is the right default; explicit callers still win.
+  const res = await fetch(url, { credentials: 'same-origin', ...options });
   if (!res.ok) {
     let msg = 'Villa: HTTP ' + res.status;
     try {

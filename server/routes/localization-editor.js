@@ -55,10 +55,16 @@ function acquireModuleLock(key) {
     release = resolve;
   });
   const prev = moduleLocks.get(key) || Promise.resolve();
-  moduleLocks.set(
-    key,
-    prev.then(() => gate)
-  );
+  const mine = prev.then(() => gate);
+  moduleLocks.set(key, mine);
+  // Prune the entry once this link settles, so the Map doesn't grow unbounded
+  // with one key per module ever edited. Only delete if nothing newer queued
+  // behind us (otherwise we'd drop a live tail and break serialization).
+  mine.finally(() => {
+    if (moduleLocks.get(key) === mine) {
+      moduleLocks.delete(key);
+    }
+  });
   return prev.then(() => release);
 }
 
@@ -730,6 +736,7 @@ router.post(
   requireRole(ROLES.EDITOR),
   validateBookChapter,
   validateModule,
+  requireBookAccess(),
   (req, res) => {
     const { original, changedTo, reason, type } = req.body;
 

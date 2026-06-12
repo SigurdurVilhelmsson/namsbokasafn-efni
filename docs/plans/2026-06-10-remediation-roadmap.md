@@ -7,14 +7,11 @@
 
 > **How to use this across sessions:** each unit below is sized to one working session. Before starting a unit, read its "Pre" note. After finishing, tick the boxes, run the matching section of the QA checklist if marked **QA**, append a line to the Progress Log at the bottom, and commit. Branch names are fixed so a future session can `git checkout` and continue.
 
-> **▶ Recommended next step (as of 2026-06-12): Unit 5 — `chore/defense-and-housekeeping`**, then circle back to the deferred Unit 4 items (4.3 optimistic-concurrency, 4.4 label sweep).
-> Units 0 (#102), 1 (#103), 2 (#104), 3 (#105) are merged; Unit 4
-> (`editor-ux-dejargon`) is code-complete bar the two deferred items. Manual QA
-> checklists §0–§4 still need a pass on a running server. Unit 5 is
-> defense-in-depth + latent-bug cleanup (auth on view routes F12, CSRF decision
-> F11, migration startup hardening F21, singleton DB handle F23, dead
-> `gitService` F22, and the batch of tool-layer lows) — each item is independent
-> and cherry-pickable per session.
+> **▶ Recommended next step (as of 2026-06-12): finish the deferred Unit 5.7 tool-layer lows** (F9, F15–F20, `repairSegTags` F23) and walk the manual QA checklists §0–§5 on a running server.
+> Units 0 (#102), 1 (#103), 2 (#104), 3 (#105), 4 (#106) are merged. **Unit 5
+> (`chore/defense-and-housekeeping`) is now largely complete**: 5.1–5.6 landed
+> plus 5.7's F7/F8; only the remaining tool-layer lows in 5.7 are deferred. Manual QA
+> checklists §0–§5 still need a pass on a running server.
 
 ---
 
@@ -106,13 +103,13 @@ Rationale: ship the integrity/security hotfixes first (two of them also harden t
 
 **Goal:** defense-in-depth and latent-bug cleanup. Each item is independent; cherry-pick per session.
 
-- [ ] **5.1** Auth middleware on view routes (F12) — server-side gate before serving `/admin` etc.
-- [ ] **5.2** CSRF decision (F11): document SameSite=strict as the deliberate control *or* add tokens; standardize `fetch` credentials mode.
-- [ ] **5.3** Migration startup hardening (F21) — wrap legacy `migrate()` in try/catch like the modern path.
-- [ ] **5.4** Singleton DB handle in `pipeline-status.js` GET (F23).
-- [ ] **5.5** Prune `moduleLocks` Map; add `requireBookAccess` to `/log` (F23).
-- [ ] **5.6** Delete or fix dead `gitService` (F22) — coordinate with Unit 1.4 decision.
-- [ ] **5.7** Remaining tool-layer lows: F7, F8, F9, F15, F16, F17, F18, F19, F20, and the `repairSegTags` fuzzy-match (F23). Batch as small independent commits.
+- [x] **5.1** Auth middleware on view routes (F12) — `requirePageAuth([minRole])` in `routes/views.js`: anonymous/invalid sessions redirect to `/login` (destination preserved via `?redirect=`, forwarded through the OAuth link by a small script in `login.html`); `/admin` requires ADMIN and `/assignments` requires HEAD_EDITOR (matching their APIs); `/login` and the public `/feedback` form stay open. +6 unit tests (`viewsPageAuth.test.js`).
+- [x] **5.2** CSRF decision (F11): **documented SameSite=strict as the deliberate control** (architecture.md § CSRF posture — no tokens by design; revisit if the cookie is ever loosened to lax/none). Fixed the logout `clearCookie` `sameSite` `lax`→`strict` inconsistency; `fetchJson` now defaults `credentials: 'same-origin'` (explicit callers still win) so new code is consistent without a churny mass-rewrite.
+- [x] **5.3** Migration startup hardening (F21) — legacy `migrate()` calls now run inside try/catch (duplicate-column/already-exists → skipped, else collected as an error) like the modern `up(db)` path, so a throwing legacy migration no longer crashes boot.
+- [x] **5.4** Singleton DB handle in `pipeline-status.js` GET (F23) — new `pipelineStatusService.getActiveLock(chapterId)` reads the lock via the service singleton; the route no longer opens a fresh `better-sqlite3` connection per request. +3 unit tests.
+- [x] **5.5** Prune `moduleLocks` Map (the per-module promise chain now deletes its key once it settles with nothing queued behind it); added `requireBookAccess()` to the localization `/log` endpoint (F23).
+- [x] **5.6** Deleted dead `gitService` (F22) — not imported anywhere; its `NEVER_COMMIT` filter was both over- and under-matching. Aligns with the Unit 1.4 decision (no git-per-apply; the 2h `git-backup.sh` cron is the content git trail). Updated the stale `server-operations.md` reference.
+- [~] **5.7** Tool-layer lows — **F7 done** (`api-translate.js --update-status` now only advances a chapter's `mtOutput` when every translated module in it succeeded; chapters with any failure are held back and reported) and **F8 done** (`translate-chapter-titles.js` reads `glossary-unified.json`'s `.terms[]` instead of treating the object as a bare array — approved terms were being silently dropped). **Deferred:** F9 (auto-insert-placeholders backup), F15–F20, and the `repairSegTags` fuzzy-match (F23) — independent, cherry-pickable in a follow-up.
 
 ---
 
@@ -120,6 +117,7 @@ Rationale: ship the integrity/security hotfixes first (two of them also harden t
 
 | Date | Session | Unit/item | Notes |
 |------|---------|-----------|-------|
+| 2026-06-12 | unit-5 | Unit 5 (`chore/defense-and-housekeeping`) | **5.1** page-auth gate on view routes (`requirePageAuth([minRole])`): anon→`/login` with destination preserved (forwarded through the OAuth link by a login.html script); `/admin`=ADMIN, `/assignments`=HEAD_EDITOR; `/login` + public `/feedback` stay open; +6 tests. **5.2** CSRF: documented SameSite=strict as the deliberate control (architecture.md), fixed logout `clearCookie` lax→strict, `fetchJson` defaults `credentials:'same-origin'`. **5.3** legacy `migrate()` wrapped in try/catch (boot no longer crashes on a throwing legacy migration). **5.4** `pipelineStatusService.getActiveLock()` reuses the singleton; pipeline-status GET stops opening a per-request DB handle; +3 tests. **5.5** `moduleLocks` Map self-prunes; `requireBookAccess()` added to localization `/log`. **5.6** deleted dead `gitService` (F22) + stale doc ref. **5.7 partial**: F7 (`--update-status` only completes chapters with zero module failures) + F8 (`translate-chapter-titles` reads `.terms[]`); F9/F15–F20/repairSegTags deferred. Server 443 + tools 720 tests green; lint/prettier clean. Manual QA §5 still to be walked on a server. Developed on `claude/wonderful-lamport-jvsep8`. |
 | 2026-06-10 | review | audit + roadmap | Findings documented; roadmap approved by lead. No code changed yet. |
 | 2026-06-10 | ci-restore | pre-unit infrastructure | PRs #91–#93 merged: xmldom 0.9 fix (injection pipeline un-broken), fresh-DB migration bootstrap (e2e suite green after 3.5 months red; terminology specs aligned with redesign; 2 production bugs fixed along the way), xlsx→SheetJS 0.20.3 + qs bump (audit check green). All five CI checks green — the e2e suite is now a usable QA gate for Units 0–5. No unit items started yet. |
 | 2026-06-12 | unit-4 | Unit 4 (`feat/editor-ux-dejargon`) | Built on merged Unit 3. **4.5** (primary) `getApplyStatus` now takes `chapter` and reports `faithful_exists`/`can_rebuild`; the apply panel re-enables apply with a "rebuild" status when the faithful file is gone but edits are marked applied (clicking apply hits the existing self-heal) — closes the m68700-recovery gap. +4 tests. **4.1** editor header/topbar lead with the human title; `mNNNNN` is a muted head-editor/admin-only tag. **4.2** verified pipeline panel + tracks already head-editor-gated. **4.3 since landed** (same branch/PR #106): per-segment `baseEditId` optimistic-concurrency token → 409 on a concurrent cross-editor change, with the editor reloading on conflict; +4 tests. **4.4 since landed**: editor-facing label sweep — residual English "Render"/"Starting" → Icelandic "Birting"/"Ræsi", "moduleID"→"einingu", dead `titleModule` removed; the rest of the editorial vocabulary was already chemistry-teacher Icelandic. **Unit 4 now complete (all of 4.1–4.5).** Full suite 1154 green; lint/prettier clean. Manual QA §4 (4a/4c/4d/4e) still to be walked on a server. Stacked on `claude/peaceful-meitner-g5nbdi`. |

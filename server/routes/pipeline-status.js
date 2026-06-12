@@ -70,25 +70,9 @@ router.get('/:bookSlug/:chapterNum', (req, res) => {
     const status = pipelineStatus.getChapterStage(req.bookSlug, req.chapterNum);
     const history = pipelineStatus.getStageHistory(req.bookSlug, req.chapterNum);
 
-    // Check lock status by querying DB directly (read-only, no acquire/release)
-    const Database = require('better-sqlite3');
-    const path = require('path');
-    const dbPath = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
-    let lock = null;
-    try {
-      const db = new Database(dbPath, { readonly: true });
-      const row = db
-        .prepare(
-          "SELECT locked_by, expires_at FROM chapter_locks WHERE chapter_id = ? AND expires_at > datetime('now')"
-        )
-        .get(req.lockId);
-      db.close();
-      if (row) {
-        lock = { lockedBy: row.locked_by, expiresAt: row.expires_at };
-      }
-    } catch {
-      // Lock table may not exist yet
-    }
+    // Read lock status via the service's singleton handle (read-only peek,
+    // no acquire/release) rather than opening a fresh DB connection per request.
+    const lock = pipelineStatus.getActiveLock(req.lockId);
 
     res.json({ ...status, history: history.slice(0, 20), lock });
   } catch (err) {
