@@ -104,11 +104,17 @@
 
 | Method | Path |
 |--------|------|
+| GET | `/settings/:book` |
+| POST | `/settings/:book` |
+| GET | `/review-queue/:book` |
+| POST | `/loc-edit/:editId/approve` |
+| POST | `/loc-edit/:editId/reject` |
 | GET | `/:book/chapters` |
 | GET | `/:book/:chapter` |
 | GET | `/:book/:chapter/:moduleId` |
 | POST | `/:book/:chapter/:moduleId/save` |
 | POST | `/:book/:chapter/:moduleId/save-all` |
+| GET | `/:book/:chapter/:moduleId/pending-edits` |
 | GET | `/:book/:chapter/:moduleId/history` |
 | GET | `/:book/:chapter/:moduleId/:segmentId/history` |
 | POST | `/:book/:chapter/:moduleId/log` |

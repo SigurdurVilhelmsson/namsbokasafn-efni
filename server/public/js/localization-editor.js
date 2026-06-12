@@ -42,8 +42,7 @@
   let edCurrentChapter = 0;
   let edCurrentModuleId = '';
   let edModuleData = null;
-  // eslint-disable-next-line no-unused-vars -- set by onUserReady(), reserved for future role checks
-  let _edUserRole = 'viewer';
+  let _edUserRole = 'viewer'; // set by onUserReady(); drives the review-tier panel
   let edLastModified = null; // file mtime for conflict detection
 
   // Track unsaved changes: { segmentId: { content, category } }
@@ -530,6 +529,119 @@
     edRenderStats();
     edRenderSegments();
     edUpdateProgress();
+    edLoadReviewState();
+  }
+
+  // ================================================================
+  // REVIEW TIER (Pass 2): banner + head-editor approve/reject panel
+  // ================================================================
+
+  function edIsHeadEditor() {
+    return _edUserRole === 'head-editor' || _edUserRole === 'admin';
+  }
+
+  /**
+   * Load the localization review state for the current module: toggle the
+   * "changes go to review" banner, and (for head-editors) render the pending
+   * edits with approve/reject controls.
+   */
+  async function edLoadReviewState() {
+    var banner = document.getElementById('loc-review-banner');
+    var panel = document.getElementById('loc-pending-panel');
+    if (!banner || !panel || !edCurrentModuleId) return;
+
+    try {
+      var data = await fetchJson(
+        ED_API_BASE +
+          '/' +
+          edCurrentBook +
+          '/' +
+          edCurrentChapter +
+          '/' +
+          edCurrentModuleId +
+          '/pending-edits',
+        { credentials: 'include' }
+      );
+
+      var enforced = !!data.enforceLocalizationReview;
+      banner.style.display = enforced ? 'block' : 'none';
+
+      var pending = (data.edits || []).filter(function (e) {
+        return e.status === 'pending';
+      });
+
+      // Head-editors get the approve/reject panel when there is work to review
+      if (enforced && edIsHeadEditor() && pending.length > 0) {
+        panel.style.display = 'block';
+        edRenderPendingList(pending);
+      } else {
+        panel.style.display = 'none';
+      }
+    } catch {
+      // Non-fatal — the editor still works without the review panel
+      banner.style.display = 'none';
+      panel.style.display = 'none';
+    }
+  }
+
+  function edRenderPendingList(pending) {
+    var list = document.getElementById('loc-pending-list');
+    list.innerHTML = pending
+      .map(function (e) {
+        return (
+          '<div class="loc-pending-row">' +
+          '<div class="loc-pending-text">' +
+          '<div class="seg-id">' +
+          escapeHtml(e.segment_id) +
+          ' · ' +
+          escapeHtml(e.editor_username) +
+          '</div>' +
+          '<div><span class="seg-from">' +
+          escapeHtml(e.original_content || '') +
+          '</span></div>' +
+          '<div>' +
+          escapeHtml(e.edited_content || '') +
+          '</div>' +
+          '</div>' +
+          '<div class="loc-pending-actions">' +
+          '<button class="btn btn-secondary btn-sm loc-approve" data-id="' +
+          e.id +
+          '">Samþykkja</button>' +
+          '<button class="btn btn-secondary btn-sm loc-reject" data-id="' +
+          e.id +
+          '">Hafna</button>' +
+          '</div>' +
+          '</div>'
+        );
+      })
+      .join('');
+
+    list.querySelectorAll('.loc-approve').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        edReviewPending(btn.getAttribute('data-id'), 'approve');
+      });
+    });
+    list.querySelectorAll('.loc-reject').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        edReviewPending(btn.getAttribute('data-id'), 'reject');
+      });
+    });
+  }
+
+  async function edReviewPending(editId, action) {
+    if (action === 'reject' && !window.confirm('Hafna þessari staðfærslu?')) return;
+    try {
+      await fetchJson(ED_API_BASE + '/loc-edit/' + editId + '/' + action, {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({}),
+      });
+      // Approve writes to 04-localized-content/, so reload the module to reflect it
+      await edLoadModule(edCurrentModuleId);
+    } catch (err) {
+      alert(UI.common.errorPrefix + err.message);
+    }
   }
 
   function edRenderStats() {
@@ -1048,7 +1160,11 @@
         return s.hasLocalized;
       }).length;
 
-      globalInd.textContent = UI.localization.savedBulk(result.savedSegments);
+      if (result.pending) {
+        globalInd.textContent = 'Sent í yfirlestur (' + result.submittedSegments + ')';
+      } else {
+        globalInd.textContent = UI.localization.savedBulk(result.savedSegments);
+      }
       globalInd.className = 'save-indicator saved';
       setTimeout(function () {
         globalInd.textContent = '';
@@ -1059,6 +1175,7 @@
       edRenderStats();
       edUpdateProgress();
       edUpdateSaveStatusBar();
+      edLoadReviewState();
 
       // Reset autosave timer to avoid redundant save right after manual save
       if (edAutoSaveTimer) clearInterval(edAutoSaveTimer);

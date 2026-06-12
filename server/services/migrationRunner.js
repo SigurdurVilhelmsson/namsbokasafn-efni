@@ -62,6 +62,7 @@ function runAllMigrations() {
     require('../migrations/031-content-versions'),
     require('../migrations/032-terminology-redesign'),
     require('../migrations/033-fix-organic-chemistry-slug'),
+    require('../migrations/034-localization-review'),
   ];
 
   let applied = 0;
