@@ -538,6 +538,11 @@
     // - Own pending edit -> can re-edit
     // - Rejected edit -> can try again
     // - Discuss edit -> can re-edit based on feedback
+    // - Published (approved + applied) -> can revise: a new edit supersedes the
+    //   old one on the next "Vista + Birta". Open to any editor, since published
+    //   content is settled like baseline. loadModuleForEditing reads the
+    //   faithful file as the baseline, so other segments' edits are preserved.
+    const isPublished = !!(latestEdit && latestEdit.status === 'approved' && latestEdit.applied_at);
     const canEdit =
       !latestEdit ||
       latestEdit.status === 'rejected' ||
@@ -545,7 +550,8 @@
       (latestEdit.status === 'pending' && latestEdit.editor_username === userName) ||
       (latestEdit.status === 'approved' &&
         !latestEdit.applied_at &&
-        latestEdit.editor_username === userName);
+        latestEdit.editor_username === userName) ||
+      isPublished;
 
     let actionsHtml = '';
     if (latestEdit) {
@@ -579,8 +585,8 @@
           ${
             canEdit
               ? `
-            <button class="btn btn-sm btn-secondary btn-edit" onclick="openEditPanel('${seg.segmentId}')" style="margin-top: 0.25rem;">
-              Breyta
+            <button class="btn btn-sm btn-secondary btn-edit" onclick="openEditPanel('${seg.segmentId}')" style="margin-top: 0.25rem;"${isPublished ? ` title="${UI.editAgain.tooltip}"` : ''}>
+              ${isPublished ? UI.editAgain.button : 'Breyta'}
             </button>
           `
               : ''

@@ -156,6 +156,13 @@ const UI = {
     renderRunning: 'Render í gangi...',
   },
 
+  // ── Edit-again (revise a published segment) ─────────────────
+  editAgain: {
+    button: 'Breyta aftur',
+    tooltip:
+      'Þessi þýðing er þegar birt. Breyting býr til nýja útgáfu sem þarf samþykki og „Vista + Birta“ til að birtast — eldri útgáfan helst í sögunni.',
+  },
+
   // ── Segment editor specific ─────────────────────────────────
   segmentEditor: {
     title: 'Ritstjóri',
