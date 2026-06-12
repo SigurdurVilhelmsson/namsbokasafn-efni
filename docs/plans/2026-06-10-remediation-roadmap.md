@@ -7,16 +7,16 @@
 
 > **How to use this across sessions:** each unit below is sized to one working session. Before starting a unit, read its "Pre" note. After finishing, tick the boxes, run the matching section of the QA checklist if marked **QA**, append a line to the Progress Log at the bottom, and commit. Branch names are fixed so a future session can `git checkout` and continue.
 
-> **▶ Recommended next step (as of 2026-06-12): Unit 0 — security hotfixes.**
-> CI infrastructure and a batch of reactive editorial-flow fixes (PRs #91–#99) are
-> done and merged; no *formal* unit has been started yet. Unit 0 is the gate: it's
-> the highest-severity work, and two of its four fixes (book-scope authz, render
-> restore-on-failure) also harden the workflow — and **Unit 1 (`content-restore`)
-> depends on Unit 0's book-scope authz.** Unit 1 is now extra-motivated: the
-> 2026-06-12 session shipped *forward* editing (edit-again, #99), so Unit 1's
-> *backward* rollback is the natural next capability once Unit 0 lands. A small
-> standalone quick-win also exists outside the units (see Unit 4): a "rebuild"
-> affordance when a faithful file is deleted but its edits are marked applied.
+> **▶ Recommended next step (as of 2026-06-12): Unit 1 — `feat/content-restore`.**
+> Unit 0 (security hotfixes) is now **code-complete** on
+> `claude/peaceful-meitner-g5nbdi` (draft PR) — all four fixes landed with +15
+> unit tests, full suite green; manual QA checklist §0 still to be walked on a
+> running server before merge to `main`. With Unit 0's book-scope authz in place,
+> Unit 1 is unblocked and extra-motivated: the 2026-06-12 session shipped
+> *forward* editing (edit-again, #99), so Unit 1's *backward* rollback is the
+> natural next capability. A small standalone quick-win also exists outside the
+> units (see Unit 4): a "rebuild" affordance when a faithful file is deleted but
+> its edits are marked applied.
 
 ---
 
@@ -41,11 +41,11 @@ Rationale: ship the integrity/security hotfixes first (two of them also harden t
 **Pre:** no schema changes; keep each fix in its own commit so they can be reverted independently.
 **QA:** run QA checklist §0 before merge.
 
-- [ ] **0.1 — Preview path traversal (F1).** Add `validateModule` middleware to the `/:book/:chapter/:moduleId/preview` route; validate `track` against `VALID_TRACKS` (400 on miss). `server/routes/segment-editor.js:992`.
-- [ ] **0.2 — Render restore-on-failure (F3).** In the failure cleanup loop, restore each file's `.backup.*` instead of `unlink`; only delete files that had no prior version. Fix the misleading error message. `tools/cnxml-render.js:3685`.
-- [ ] **0.3 — Book-scope head-editor endpoints (F2).** Replace bare `requireRole(HEAD_EDITOR)` with a per-book ownership check (admin bypasses) on approve/reject/discuss/unapprove/complete/apply/apply-and-render/apply-all in `segment-editor.js` and the three `publication.js` endpoints.
-- [ ] **0.4 — Terminology + page-data escaping (F4, F5).** Wrap `formatSubject`/`formatSource`/`formatStatus` output through `escapeHtml` in `terminology.html`; add `</script>`-safe escaping to the page-data JSON in `cnxml-render.js`.
-- [ ] Update Progress Log; open/refresh draft PR.
+- [x] **0.1 — Preview path traversal (F1).** Add `validateModule` middleware to the `/:book/:chapter/:moduleId/preview` route; validate `track` against `VALID_TRACKS` (400 on miss). `server/routes/segment-editor.js:992`.
+- [x] **0.2 — Render restore-on-failure (F3).** In the failure cleanup loop, restore each file's `.backup.*` instead of `unlink`; only delete files that had no prior version. Fix the misleading error message. `tools/cnxml-render.js:3685`.
+- [x] **0.3 — Book-scope head-editor endpoints (F2).** Replace bare `requireRole(HEAD_EDITOR)` with a per-book ownership check (admin bypasses) on approve/reject/discuss/unapprove/complete/apply/apply-and-render/apply-all in `segment-editor.js` and the three `publication.js` endpoints.
+- [x] **0.4 — Terminology + page-data escaping (F4, F5).** Wrap `formatSubject`/`formatSource`/`formatStatus` output through `escapeHtml` in `terminology.html`; add `</script>`-safe escaping to the page-data JSON in `cnxml-render.js`.
+- [x] Update Progress Log; open/refresh draft PR.
 
 ---
 
@@ -124,4 +124,5 @@ Rationale: ship the integrity/security hotfixes first (two of them also harden t
 |------|---------|-----------|-------|
 | 2026-06-10 | review | audit + roadmap | Findings documented; roadmap approved by lead. No code changed yet. |
 | 2026-06-10 | ci-restore | pre-unit infrastructure | PRs #91–#93 merged: xmldom 0.9 fix (injection pipeline un-broken), fresh-DB migration bootstrap (e2e suite green after 3.5 months red; terminology specs aligned with redesign; 2 production bugs fixed along the way), xlsx→SheetJS 0.20.3 + qs bump (audit check green). All five CI checks green — the e2e suite is now a usable QA gate for Units 0–5. No unit items started yet. |
+| 2026-06-12 | unit-0 | Unit 0 (hotfix) | All four fixes landed on `claude/peaceful-meitner-g5nbdi`. **0.1**: `validateModule` + `VALID_TRACKS` guard on the preview route (path traversal via `track`/`moduleId` now 400s). **0.2**: render failure now restores each file's newest `.backup.*` (rename = restore + consume) and only unlinks brand-new partials; error message reports restored/removed counts instead of the old false "previous versions are intact". **0.3**: book-scoped authz — new `requireHeadEditorFor(resolveBook)` middleware resolves the owning book from `:editId`/`:reviewId` for approve/reject/discuss/unapprove/complete; `requireHeadEditor()` (now param-configurable) on apply/apply-and-render/apply-all and the three `publication.js` `:bookSlug` endpoints; admin still bypasses. **0.4**: `formatSubject`/`formatSource`/`formatStatus` wrapped in `escapeHtml`; new `escapeJsonForScript` (`<`→`<`) applied at all four page-data `<script>` sites. +15 unit tests (12 middleware, 3 escape); full suite 1128 green, lint clean. Manual QA checklist §0 still to be walked on a running server. |
 | 2026-06-12 | editorial-flow | pre-unit (reactive) | Triggered by a real "Vista + Birta" failure on m68700. PRs #95–#99 merged: content-publish flow auto-trigger + `translation-errors.json` backup (#95); segment-parser dropped-segment bug + phase-aware apply errors (#96); flaky e2e dropdown test (#97); MT marker normalization/detection (#98); **edit-again** — revise published segments (#99, the *forward-editing* complement to Unit 1). Surfaced two follow-ups (see Unit 1 pre-note and Unit 4): missing-file rebuild affordance; and the apply model is now documented (faithful is the re-apply baseline). Not formal-unit work, but clears editorial-UX debt ahead of Units 3–4. |

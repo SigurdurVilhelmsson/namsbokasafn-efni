@@ -402,6 +402,18 @@ function renderCnxmlToHtml(cnxml, options = {}) {
 }
 
 /**
+ * Escape a JSON string for safe embedding inside a <script> block.
+ *
+ * The page-data JSON carries translated titles/terms; a value containing
+ * "</script>" (or any "<") would otherwise close the
+ * <script type="application/json"> element early and inject markup into the
+ * published page. Escaping "<" as "<" keeps the JSON valid and inert.
+ */
+function escapeJsonForScript(jsonStr) {
+  return jsonStr.replace(/</g, '\\u003c');
+}
+
+/**
  * Build complete HTML document.
  */
 function buildHtmlDocument(options) {
@@ -508,7 +520,7 @@ function buildHtmlDocument(options) {
     Object.entries(pageData).filter(([key]) => !key.startsWith('_'))
   );
   lines.push(`  <script type="application/json" id="page-data">`);
-  lines.push(JSON.stringify(publicPageData, null, 2));
+  lines.push(escapeJsonForScript(JSON.stringify(publicPageData, null, 2)));
   lines.push('  </script>');
 
   lines.push('</body>');
@@ -2675,15 +2687,17 @@ function renderSingleTypeExercises(
   lines.push('  </article>');
   lines.push('');
   lines.push('  <script type="application/json" id="page-data">');
-  lines.push(`{
+  lines.push(
+    escapeJsonForScript(`{
   "moduleId": "${chapter}-${slug}",
   "chapter": ${chapter},
   "section": "${chapter}.0",
   "title": "${typeTitle}",
   "equations": [],
   "terms": {}
-}
-  </script>`);
+}`)
+  );
+  lines.push('  </script>');
   lines.push('</body>');
   lines.push('</html>');
 
@@ -2784,15 +2798,17 @@ function renderCompiledExercises(chapter, exercisesByType, chapterExerciseNumber
   lines.push('  </article>');
   lines.push('');
   lines.push(`  <script type="application/json" id="page-data">`);
-  lines.push(`{
+  lines.push(
+    escapeJsonForScript(`{
   "moduleId": "${chapter}-exercises",
   "chapter": ${chapter},
   "section": "${chapter}.0",
   "title": "Æfingar í lok kafla",
   "equations": [],
   "terms": {}
-}
-  </script>`);
+}`)
+  );
+  lines.push('  </script>');
   lines.push('</body>');
   lines.push('</html>');
 
@@ -2945,17 +2961,18 @@ function renderAnswerKey(chapter, answersByModule, context) {
 `;
   }
 
-  html += `    </main>
-  </article>
-  <script type="application/json" id="page-data">
-{
+  const answerKeyPageData = escapeJsonForScript(`{
   "moduleId": "${chapterStr}-answer-key",
   "chapter": ${chapter},
   "section": "${chapter}.0",
   "title": "Svör við æfingum",
   "equations": [],
   "terms": {}
-}
+}`);
+  html += `    </main>
+  </article>
+  <script type="application/json" id="page-data">
+${answerKeyPageData}
   </script>
 </body>
 </html>
@@ -3683,16 +3700,39 @@ ${anchors}
         console.log('No numbered equations found in this chapter');
       }
     } catch (renderErr) {
-      // Clean up partial files from this render pass
+      // Roll back this render pass. safeWrite() backed up any file that already
+      // existed before it was overwritten (`<file>.backup.<timestamp>`), so for
+      // each written file we restore the newest such backup. Files that had no
+      // prior version (no backup) are deleted, since they are brand-new partials.
+      let restored = 0;
+      let deleted = 0;
       for (const f of writtenFiles) {
         try {
-          if (fs.existsSync(f)) fs.unlinkSync(f);
+          const dir = path.dirname(f);
+          const prefix = `${path.basename(f)}.backup.`;
+          const backups = fs.existsSync(dir)
+            ? fs
+                .readdirSync(dir)
+                .filter((name) => name.startsWith(prefix))
+                .sort() // ISO-ish timestamp suffix sorts chronologically
+            : [];
+
+          if (backups.length > 0) {
+            // Restore the most recent backup (this pass's pre-overwrite copy)
+            const newest = path.join(dir, backups[backups.length - 1]);
+            fs.renameSync(newest, f); // restore + consume the backup atomically
+            restored++;
+          } else if (fs.existsSync(f)) {
+            fs.unlinkSync(f);
+            deleted++;
+          }
         } catch {
-          /* best-effort cleanup */
+          /* best-effort rollback */
         }
       }
       throw new Error(
-        `Render failed: ${renderErr.message} — ${writtenFiles.length} partial file(s) cleaned up. Previous versions are intact (backups created by safeWrite).`
+        `Render failed: ${renderErr.message} — rolled back ${writtenFiles.length} file(s) from this pass ` +
+          `(${restored} restored to previous version, ${deleted} newly-created file(s) removed).`
       );
     }
 
@@ -3730,5 +3770,6 @@ export {
   calculateColspan,
   renderPara,
   renderCnxmlToHtml,
+  escapeJsonForScript,
   _loadBookConfigForTest,
 };

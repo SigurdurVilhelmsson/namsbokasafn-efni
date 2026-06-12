@@ -42,10 +42,31 @@ const activityLog = require('../services/activityLog');
 // ─── Book data lookup (slug → chapter/module metadata) ───────────────
 const { enrichChapters, enrichModules } = require('../services/bookDataLoader');
 const { requireAuth } = require('../middleware/requireAuth');
-const { requireRole, requireBookAccess, ROLES } = require('../middleware/requireRole');
+const {
+  requireRole,
+  requireBookAccess,
+  requireHeadEditor,
+  requireHeadEditorFor,
+  ROLES,
+} = require('../middleware/requireRole');
 const { validateBookChapter, validateModule } = require('../middleware/validateParams');
 const { VALID_BOOKS } = require('../config');
-const { PASS1_CATEGORIES: VALID_CATEGORIES } = require('../constants');
+const { PASS1_CATEGORIES: VALID_CATEGORIES, VALID_TRACKS } = require('../constants');
+
+// ─── Book-ownership resolvers for ID-keyed head-editor endpoints ──────
+// These endpoints are keyed by :editId / :reviewId, not :book, so the owning
+// book has to be looked up before the per-book head-editor check can run.
+function bookFromEditId(req) {
+  const edit = segmentEditor.getEditById(parseInt(req.params.editId, 10));
+  if (!edit) throw new Error('Edit not found');
+  return edit.book;
+}
+
+function bookFromReviewId(req) {
+  // getModuleReviewWithEdits throws 'Review not found' when the id is unknown
+  const { review } = segmentEditor.getModuleReviewWithEdits(parseInt(req.params.reviewId, 10));
+  return review.book;
+}
 
 // =====================================================================
 // NON-PARAMETERIZED ROUTES (must come before /:book/:chapter)
@@ -409,120 +430,140 @@ router.get('/review-queue', requireAuth, requireRole(ROLES.EDITOR), (req, res) =
  * POST /edit/:editId/approve
  * Approve a segment edit.
  */
-router.post('/edit/:editId/approve', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
-  try {
-    const edit = segmentEditor.approveEdit(
-      parseInt(req.params.editId, 10),
-      req.user.id,
-      req.user.username,
-      req.body?.note
-    );
+router.post(
+  '/edit/:editId/approve',
+  requireAuth,
+  requireHeadEditorFor(bookFromEditId),
+  (req, res) => {
     try {
-      activityLog.log({
-        type: 'segment_edit_approved',
-        userId: String(req.user.id),
-        username: req.user.username,
-        book: edit.book,
-        chapter: edit.chapter,
-        section: edit.module_id,
-        description: `${req.user.username} samþykkti breytingu á ${edit.module_id}:${edit.segment_id}`,
-      });
-    } catch {
-      /* fire-and-forget */
+      const edit = segmentEditor.approveEdit(
+        parseInt(req.params.editId, 10),
+        req.user.id,
+        req.user.username,
+        req.body?.note
+      );
+      try {
+        activityLog.log({
+          type: 'segment_edit_approved',
+          userId: String(req.user.id),
+          username: req.user.username,
+          book: edit.book,
+          chapter: edit.chapter,
+          section: edit.module_id,
+          description: `${req.user.username} samþykkti breytingu á ${edit.module_id}:${edit.segment_id}`,
+        });
+      } catch {
+        /* fire-and-forget */
+      }
+      res.json({ success: true, edit });
+    } catch (err) {
+      res.status(400).json({ error: err.message });
     }
-    res.json({ success: true, edit });
-  } catch (err) {
-    res.status(400).json({ error: err.message });
   }
-});
+);
 
 /**
  * POST /edit/:editId/reject
  * Reject a segment edit.
  */
-router.post('/edit/:editId/reject', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
-  try {
-    const edit = segmentEditor.rejectEdit(
-      parseInt(req.params.editId, 10),
-      req.user.id,
-      req.user.username,
-      req.body?.note
-    );
+router.post(
+  '/edit/:editId/reject',
+  requireAuth,
+  requireHeadEditorFor(bookFromEditId),
+  (req, res) => {
     try {
-      activityLog.log({
-        type: 'segment_edit_rejected',
-        userId: String(req.user.id),
-        username: req.user.username,
-        book: edit.book,
-        chapter: edit.chapter,
-        section: edit.module_id,
-        description: `${req.user.username} hafnaði breytingu á ${edit.module_id}:${edit.segment_id}`,
-      });
-    } catch {
-      /* fire-and-forget */
+      const edit = segmentEditor.rejectEdit(
+        parseInt(req.params.editId, 10),
+        req.user.id,
+        req.user.username,
+        req.body?.note
+      );
+      try {
+        activityLog.log({
+          type: 'segment_edit_rejected',
+          userId: String(req.user.id),
+          username: req.user.username,
+          book: edit.book,
+          chapter: edit.chapter,
+          section: edit.module_id,
+          description: `${req.user.username} hafnaði breytingu á ${edit.module_id}:${edit.segment_id}`,
+        });
+      } catch {
+        /* fire-and-forget */
+      }
+      res.json({ success: true, edit });
+    } catch (err) {
+      res.status(400).json({ error: err.message });
     }
-    res.json({ success: true, edit });
-  } catch (err) {
-    res.status(400).json({ error: err.message });
   }
-});
+);
 
 /**
  * POST /edit/:editId/discuss
  * Mark a segment edit for discussion.
  */
-router.post('/edit/:editId/discuss', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
-  try {
-    const edit = segmentEditor.markForDiscussion(
-      parseInt(req.params.editId, 10),
-      req.user.id,
-      req.user.username,
-      req.body?.note
-    );
+router.post(
+  '/edit/:editId/discuss',
+  requireAuth,
+  requireHeadEditorFor(bookFromEditId),
+  (req, res) => {
     try {
-      activityLog.log({
-        type: 'segment_edit_discuss',
-        userId: String(req.user.id),
-        username: req.user.username,
-        book: edit.book,
-        chapter: edit.chapter,
-        section: edit.module_id,
-        description: `${req.user.username} merkti ${edit.module_id}:${edit.segment_id} til umræðu`,
-      });
-    } catch {
-      /* fire-and-forget */
+      const edit = segmentEditor.markForDiscussion(
+        parseInt(req.params.editId, 10),
+        req.user.id,
+        req.user.username,
+        req.body?.note
+      );
+      try {
+        activityLog.log({
+          type: 'segment_edit_discuss',
+          userId: String(req.user.id),
+          username: req.user.username,
+          book: edit.book,
+          chapter: edit.chapter,
+          section: edit.module_id,
+          description: `${req.user.username} merkti ${edit.module_id}:${edit.segment_id} til umræðu`,
+        });
+      } catch {
+        /* fire-and-forget */
+      }
+      res.json({ success: true, edit });
+    } catch (err) {
+      res.status(400).json({ error: err.message });
     }
-    res.json({ success: true, edit });
-  } catch (err) {
-    res.status(400).json({ error: err.message });
   }
-});
+);
 
 /**
  * POST /edit/:editId/unapprove
  * Revert an approved edit back to pending (only if not yet applied to files).
  */
-router.post('/edit/:editId/unapprove', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
-  try {
-    const edit = segmentEditor.unapproveEdit(parseInt(req.params.editId, 10));
-    res.json({ success: true, edit });
+router.post(
+  '/edit/:editId/unapprove',
+  requireAuth,
+  requireHeadEditorFor(bookFromEditId),
+  (req, res) => {
     try {
-      activityLog.log({
-        type: 'segment_edit_unapproved',
-        userId: String(req.user.id),
-        username: req.user.username,
-        book: edit.book || '',
-        chapter: String(edit.chapter || ''),
-        section: edit.module_id || '',
-        description: `${req.user.username} afturkallaði samþykki á ${edit.segment_id}`,
-      });
-    } catch {
-      /* fire-and-forget */
+      const edit = segmentEditor.unapproveEdit(parseInt(req.params.editId, 10));
+      res.json({ success: true, edit });
+      try {
+        activityLog.log({
+          type: 'segment_edit_unapproved',
+          userId: String(req.user.id),
+          username: req.user.username,
+          book: edit.book || '',
+          chapter: String(edit.chapter || ''),
+          section: edit.module_id || '',
+          description: `${req.user.username} afturkallaði samþykki á ${edit.segment_id}`,
+        });
+      } catch {
+        /* fire-and-forget */
+      }
+    } catch (err) {
+      res.status(400).json({ error: err.message });
     }
-  } catch (err) {
-    res.status(400).json({ error: err.message });
   }
-});
+);
 
 /**
  * POST /reviews/:reviewId/complete
@@ -532,7 +573,7 @@ router.post('/edit/:editId/unapprove', requireAuth, requireRole(ROLES.HEAD_EDITO
 router.post(
   '/reviews/:reviewId/complete',
   requireAuth,
-  requireRole(ROLES.HEAD_EDITOR),
+  requireHeadEditorFor(bookFromReviewId),
   (req, res) => {
     try {
       const result = segmentEditor.completeModuleReview(
@@ -724,7 +765,7 @@ router.get(
 router.post(
   '/:book/:chapter/:moduleId/apply',
   requireAuth,
-  requireRole(ROLES.HEAD_EDITOR),
+  requireHeadEditor(),
   validateBookChapter,
   validateModule,
   (req, res) => {
@@ -770,7 +811,7 @@ router.post(
 router.post(
   '/:book/:chapter/:moduleId/apply-and-render',
   requireAuth,
-  requireRole(ROLES.HEAD_EDITOR),
+  requireHeadEditor(),
   validateBookChapter,
   validateModule,
   (req, res) => {
@@ -836,7 +877,7 @@ router.post(
 router.post(
   '/:book/:chapter/apply-all',
   requireAuth,
-  requireRole(ROLES.HEAD_EDITOR),
+  requireHeadEditor(),
   validateBookChapter,
   (req, res) => {
     try {
@@ -994,9 +1035,18 @@ router.get(
   requireAuth,
   requireRole(ROLES.EDITOR),
   validateBookChapter,
+  validateModule,
   async (req, res) => {
     const { book, moduleId } = req.params;
     const track = req.query.track || 'mt-preview';
+
+    // Guard against path traversal via the track query param — it flows into
+    // path.join(... '03-translated', track, ...) inside renderService.
+    if (!VALID_TRACKS.includes(track)) {
+      return res.status(400).json({
+        error: `Invalid track. Must be one of: ${VALID_TRACKS.join(', ')}`,
+      });
+    }
 
     try {
       const { html } = await renderService.renderModule(book, req.chapterNum, moduleId, track);

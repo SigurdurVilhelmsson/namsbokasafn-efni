@@ -1733,8 +1733,12 @@
 
     // ─── Formatting Utilities ─────────────────────────────────────
 
+    // These three return strings that are interpolated into innerHTML. The
+    // mapped display names are constant and safe, but the `|| value` fallback is
+    // an import-controlled DB string (source/subject/status), so escape the
+    // result to keep stored XSS out of the terminology list and detail modal.
     function formatSubject(s) {
-      return SUBJECT_NAMES[s] || s;
+      return escapeHtml(SUBJECT_NAMES[s] || s);
     }
 
     function formatSource(src) {
@@ -1750,7 +1754,7 @@
         'imported-excel': 'Excel innflutningur',
         'merge-glossary': 'Sameina\u00F0 or\u00F0asafn'
       };
-      return names[src] || src;
+      return escapeHtml(names[src] || src);
     }
 
     function formatStatus(status) {
@@ -1760,7 +1764,7 @@
         'disputed': 'Til umr\u00E6\u00F0u',
         'needs_review': '\u00DEarf yfirfer\u00F0'
       };
-      return names[status] || status;
+      return escapeHtml(names[status] || status);
     }
 
     function formatDate(dateStr) {
