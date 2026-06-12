@@ -217,6 +217,65 @@ status.json (per chapter)
         └── publication: not-started    (Step 5c)
 ```
 
+### Cross-Repository Content Flow (GitHub ↔ server ↔ reader)
+
+This is the part that surprises people: **editorial work does not travel
+through GitHub as "edits."** Approvals and segment edits live only in the
+production server's SQLite database. GitHub carries *files*, not editor
+actions. There are three independent lanes:
+
+```
+                  (1) code + committed content
+   GitHub (efni) ───────── Deploy workflow / `git pull` ─────────► Production server
+        ▲                  (git reset --hard origin/main)          ┌────────────────────────┐
+        │                                                          │ pipeline-output/       │
+        │   (2) content files, auto-backup cron every 2h           │   sessions.db  ← edits,│
+        └────────── scripts/git-backup.sh (push to main) ──────────│   approvals (gitignored)│
+                    books/*/{03-faithful,03-translated,             │ books/*/...  ← files   │
+                    04-*,05-publication,chapters,                   │   written by Apply/    │
+                    translation-errors.json}                       │   Vista+Birta          │
+                                                                   └────────────────────────┘
+
+   GitHub (efni) ──(3) "Sync Content to Vefur" Action──► GitHub (vefur) ──build/deploy──► namsbokasafn.is
+                     (scripts/sync-content.js, runs IN the vefur repo,
+                      reads efni FROM GitHub — not from the server)
+```
+
+**Lane 1 — GitHub → server (code & committed content).** The Deploy
+workflow (`.github/workflows/deploy.yml`, manual `workflow_dispatch`) SSHes
+in, backs up the DB, `git reset --hard origin/main`, `npm ci`, restarts the
+service. A manual `git pull` on the box does the same for content.
+
+**Lane 2 — server → GitHub (editorial output).** The DB is gitignored, so
+the durable artifact is the *files* that "Vista í skrár" / "Vista + Birta"
+write under `books/`. A cron job (`scripts/git-backup.sh`, every 2h) commits
+those paths and pushes to `main` as `auto-backup: …` commits.
+*Consequence:* editing must happen on the production interface — an approval
+made against a laptop's local server sits in that laptop's DB and never
+reaches production or GitHub.
+
+**Lane 3 — GitHub → reader.** "Vista + Birta" runs apply → inject → render
+and writes HTML to `05-publication/` **on the server's disk only**. To reach
+the reader, the "Sync Content to Vefur" Action
+(`.github/workflows/sync-content.yml`) copies content from the efni repo *on
+GitHub* into namsbokasafn-vefur, which then builds and deploys. This Action
+runs automatically on any push to `main` that touches
+`books/*/05-publication/**` (so the backup cron's push triggers it), and can
+also be run manually.
+
+**End-to-end latency of a publish:** `Vista + Birta` (instant on server) →
+auto-backup cron pushes to `main` (**up to 2h**) → sync Action fires on that
+push → vefur builds → live. The 2h gap is the backup cadence; run
+`scripts/git-backup.sh` by hand on the server, or dispatch the sync Action
+after a manual push, to publish immediately.
+
+**Why a `git pull` on the server can report a dirty tree:** inject
+regenerates `books/*/translation-errors.json` on every render. It is now in
+the backup script's staging list (above), so it rides along with the
+auto-backup commit instead of blocking the next pull. If you still see it
+dirty from before this fix, `git checkout -- books/*/translation-errors.json`
+is safe — it is regenerated deterministically.
+
 ## Technology Stack
 
 ### Runtime
