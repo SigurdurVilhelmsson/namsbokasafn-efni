@@ -288,8 +288,20 @@ function processChapter(chapter, dryRun) {
         newContent += `<!-- SEG:${segId} -->\n${text}\n\n`;
       }
 
+      // Back up the human-reviewed original before overwriting (the directory's
+      // "backup before editing" convention). The reconstruction only re-emits
+      // captured segments, so a backup is the recovery path if anything is lost.
+      const now = new Date();
+      const stamp =
+        now.toISOString().slice(0, 10) +
+        '-' +
+        String(now.getHours()).padStart(2, '0') +
+        String(now.getMinutes()).padStart(2, '0');
+      const backupPath = `${isPath}.${stamp}.bak`;
+      fs.writeFileSync(backupPath, isContent, 'utf-8');
+
       fs.writeFileSync(isPath, newContent, 'utf-8');
-      console.log(`✓ Updated: ${isPath}\n`);
+      console.log(`✓ Updated: ${isPath} (backup: ${path.basename(backupPath)})\n`);
     }
 
     stats.modulesProcessed++;

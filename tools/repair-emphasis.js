@@ -327,6 +327,17 @@ function main() {
           } = repairEmphasis(cnxml, losses, maxRepairs);
 
           if (repairedCount > 0) {
+            // Back up the pre-repair CNXML before overwriting (parity with the
+            // repo's "backup before editing" convention; F9, lower-stakes here
+            // since 03-translated is regenerable from inject).
+            const now = new Date();
+            const stamp =
+              now.toISOString().slice(0, 10) +
+              '-' +
+              String(now.getHours()).padStart(2, '0') +
+              String(now.getMinutes()).padStart(2, '0');
+            fs.writeFileSync(`${transPath}.${stamp}.bak`, cnxml, 'utf8');
+
             fs.writeFileSync(transPath, repaired, 'utf8');
             modulesRepaired++;
             console.log(

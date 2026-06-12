@@ -146,9 +146,16 @@ export function repairSegTags(input, output) {
         // Extract digits from both and require ≥80% overlap
         const corruptedDigits = corruptedMod.replace(/\D/g, '');
         const originalDigits = originalMod.replace(/\D/g, '');
+        // Require a substring relationship AND ≥80% digit-length overlap, so a
+        // coincidental single-digit match (e.g. "6" inside "68667") doesn't
+        // mis-repair a tag to an unrelated module (F23).
+        const shorter = Math.min(corruptedDigits.length, originalDigits.length);
+        const longer = Math.max(corruptedDigits.length, originalDigits.length);
         if (
           originalDigits.length > 0 &&
-          (corruptedDigits.includes(originalDigits) || originalDigits.includes(corruptedDigits))
+          (corruptedDigits.includes(originalDigits) || originalDigits.includes(corruptedDigits)) &&
+          longer > 0 &&
+          shorter / longer >= 0.8
         ) {
           return `<!-- SEG:${match} -->`;
         }

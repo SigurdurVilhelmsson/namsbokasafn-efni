@@ -500,6 +500,27 @@ export function renderEmphasis(content, attrs, context) {
   }
 }
 
+// Allowed URL schemes for external links. Anything else (javascript:, data:,
+// vbscript:, file:, …) is neutralized to '#' so a dangerous scheme that
+// survived machine translation can't land in an href (F19).
+const SAFE_URL_SCHEMES = ['http', 'https', 'mailto', 'tel', 'ftp'];
+
+function sanitizeUrl(url) {
+  if (typeof url !== 'string') return '#';
+  const trimmed = url.trim();
+  // Strip whitespace/control chars before sniffing the scheme — browsers ignore
+  // them, so a scheme split by a tab/newline can't smuggle past the check.
+  const probe = Array.from(trimmed)
+    .filter((c) => c.charCodeAt(0) > 0x20)
+    .join('')
+    .toLowerCase();
+  const m = probe.match(/^([a-z][a-z0-9+.-]*):/);
+  if (m && !SAFE_URL_SCHEMES.includes(m[1])) {
+    return '#';
+  }
+  return trimmed;
+}
+
 /**
  * Render a link element.
  */
@@ -510,7 +531,7 @@ export function renderLink(content, attrs, context) {
 
   let href;
   if (url) {
-    href = url;
+    href = sanitizeUrl(url);
   } else if (targetId) {
     href = document ? `${document}#${targetId}` : `#${targetId}`;
   } else {
@@ -629,9 +650,10 @@ export function processInlineContent(content, context) {
     return `<dfn class="term">${processInlineContent(inner, context)}</dfn>`;
   });
 
-  // Convert links
+  // Convert links (sanitize the scheme so a javascript:/data: URL that survived
+  // MT can't land in an href — F19)
   result = result.replace(/<link\s+url="([^"]*)"[^>]*>([\s\S]*?)<\/link>/g, (match, url, inner) => {
-    return `<a href="${escapeAttr(url)}">${processInlineContent(inner, context)}</a>`;
+    return `<a href="${escapeAttr(sanitizeUrl(url))}">${processInlineContent(inner, context)}</a>`;
   });
   // NOTE: link-handler match arms below — order matters because regexes overlap.
   // All SELF-CLOSING variants run BEFORE any closing-tag variant, because the closing-tag

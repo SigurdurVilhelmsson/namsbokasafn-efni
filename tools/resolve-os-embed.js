@@ -177,6 +177,13 @@ async function main() {
   let imagesDownloaded = 0;
 
   for (const nickname of refs) {
+    // Nicknames come from CNXML `url="#exercise/…"` content; reject any that
+    // aren't a plain slug before using them in a file path (F17).
+    if (!/^[A-Za-z0-9._-]+$/.test(nickname)) {
+      console.warn(`  [skip]   unsafe exercise nickname: ${nickname}`);
+      failed++;
+      continue;
+    }
     const cachePath = path.join(cacheDir, `${nickname}.json`);
 
     // Skip if already cached

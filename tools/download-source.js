@@ -25,6 +25,25 @@ const __dirname = path.dirname(__filename);
 const PROJECT_ROOT = path.join(__dirname, '..');
 const BOOKS_DIR = path.join(PROJECT_ROOT, 'books');
 
+/**
+ * Run curl, passing any auth token via a stdin config file rather than argv so
+ * the `Authorization: Bearer …` header never appears in `ps`/`/proc` on a
+ * shared host (F18). curl reads options from stdin with `--config -`.
+ *
+ * @param {string[]} args - non-secret curl args (flags + URL)
+ * @param {string|undefined} token - GitHub bot token, or falsy for anonymous
+ * @param {object} execOpts - execFileSync options
+ */
+function runCurl(args, token, execOpts = {}) {
+  if (!token) {
+    return execFileSync('curl', args, execOpts);
+  }
+  return execFileSync('curl', ['--config', '-', ...args], {
+    ...execOpts,
+    input: `header = "Authorization: Bearer ${token}"\n`,
+  });
+}
+
 // ---------------------------------------------------------------------------
 // CLI argument parsing
 // ---------------------------------------------------------------------------
@@ -250,14 +269,11 @@ function getCommitSha(repo, branch) {
     'Accept: application/vnd.github.v3+json',
     '-H',
     'User-Agent: namsbokasafn-pipeline',
+    url,
   ];
-  if (token) {
-    args.push('-H', `Authorization: Bearer ${token}`);
-  }
-  args.push(url);
 
   try {
-    const result = execFileSync('curl', args, { encoding: 'utf8', timeout: 30000 });
+    const result = runCurl(args, token, { encoding: 'utf8', timeout: 30000 });
     const data = JSON.parse(result);
     return data.object.sha;
   } catch (err) {
@@ -297,13 +313,10 @@ function downloadAndExtract(repo, branch, tmpDir) {
     'Accept: application/vnd.github.v3+json',
     '-H',
     'User-Agent: namsbokasafn-pipeline',
+    url,
   ];
-  if (token) {
-    curlArgs.push('-H', `Authorization: Bearer ${token}`);
-  }
-  curlArgs.push(url);
 
-  execFileSync('curl', curlArgs, {
+  runCurl(curlArgs, token, {
     timeout: 600000, // 10 minutes for large repos
     stdio: ['pipe', 'pipe', 'pipe'],
   });

@@ -20,6 +20,7 @@ const { requireEditor, requireAdmin, requireBookAccess } = require('../middlewar
 const chapterFilesService = require('../services/chapterFilesService');
 const { advanceChapterStatus } = require('../services/pipelineService');
 const { VALID_BOOKS, BOOK_LABELS } = require('../config');
+const { MAX_CHAPTERS } = require('../constants');
 
 // Configure multer for file uploads
 const uploadDir = path.join(__dirname, '..', '..', 'pipeline-output', 'uploads');
@@ -344,6 +345,19 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
       error: 'Invalid type',
       message: `Type must be one of: ${Object.keys(typeConfig).join(', ')}`,
     });
+  }
+
+  // Validate path components before they reach path.join (F15). `bookId` and a
+  // traversing `chapter` (padStart is a no-op for long strings) would otherwise
+  // escape the book directory.
+  if (!VALID_BOOKS.includes(bookId)) {
+    return res.status(400).json({ error: 'Invalid book', message: `Unknown book: ${bookId}` });
+  }
+  if (chapter !== undefined) {
+    const n = Number(chapter);
+    if (!/^\d+$/.test(String(chapter)) || !Number.isInteger(n) || n < 1 || n > MAX_CHAPTERS) {
+      return res.status(400).json({ error: 'Invalid chapter', message: 'Chapter must be 1–99' });
+    }
   }
 
   const bookDir = path.join(booksDir, bookId);

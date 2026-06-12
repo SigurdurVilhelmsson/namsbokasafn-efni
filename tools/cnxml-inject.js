@@ -97,6 +97,7 @@ function parseCliArgs(args) {
     { name: 'sourceDir', flags: ['--source-dir'], type: 'string', default: null },
     { name: 'track', flags: ['--track'], type: 'string', default: null },
     { name: 'allowIncomplete', flags: ['--allow-incomplete'], type: 'boolean', default: false },
+    { name: 'allowEnFallback', flags: ['--allow-en-fallback'], type: 'boolean', default: false },
     { name: 'noAnnotateEn', flags: ['--no-annotate-en'], type: 'boolean', default: false },
   ]);
   // Invert --no-annotate-en to annotateEn
@@ -127,6 +128,9 @@ Options:
                        (auto-detected from --source-dir if not specified)
   --verbose            Show detailed progress
   --allow-incomplete   Write output even if segments are missing (for diagnostics)
+  --allow-en-fallback  Fall back to untranslated EN segments when a translation
+                       is missing (off by default — otherwise it errors, so
+                       untranslated content can't be published silently)
   --no-annotate-en     Disable English term annotations (e. term) in output
   -h, --help           Show this help
 
@@ -3099,7 +3103,7 @@ function findChapterModules(chapter, moduleId = null) {
  * @param {string} lang - Language code (e.g., 'is')
  * @param {string} sourceDir - Directory containing segments, relative to BOOKS_DIR (e.g., '02-for-mt', '03-faithful-translation')
  */
-function loadModuleInputs(chapter, moduleId, lang, sourceDir) {
+function loadModuleInputs(chapter, moduleId, lang, sourceDir, allowEnFallback = false) {
   const chapterDir = formatChapter(chapter);
 
   // Load structure
@@ -3115,6 +3119,14 @@ function loadModuleInputs(chapter, moduleId, lang, sourceDir) {
   );
   let segments;
   if (!fs.existsSync(segmentsPath)) {
+    // The translation is missing. Falling back to English would publish
+    // untranslated content, so refuse unless explicitly opted in (F20).
+    if (!allowEnFallback) {
+      throw new Error(
+        `Translation not found for ${moduleId} in ${sourceDir} (${segmentsPath}). ` +
+          'Refusing to publish untranslated content. Pass --allow-en-fallback to inject English instead.'
+      );
+    }
     // Fall back to English segments in 02-for-mt if translation not available
     const enPath = path.join(BOOKS_DIR, '02-for-mt', chapterDir, `${moduleId}-segments.en.md`);
     if (!fs.existsSync(enPath)) {
@@ -3221,7 +3233,7 @@ async function main() {
       }
 
       const { structure, segments, equations, originalCnxml, enSegments, inlineAttrs } =
-        loadModuleInputs(args.chapter, moduleId, args.lang, sourceDir);
+        loadModuleInputs(args.chapter, moduleId, args.lang, sourceDir, args.allowEnFallback);
 
       // Detect API vs web UI segments: API-translated segments contain
       // {{i}}, {{b}}, {{term}}, or {{fn}} markers that survive the API.

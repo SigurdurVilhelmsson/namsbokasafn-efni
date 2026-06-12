@@ -312,6 +312,22 @@ describe('repairSegTags', () => {
     const output = '<!-- SEG:m99999:para:1 --> Hæ';
     expect(repairSegTags(input, output)).toBe(output);
   });
+
+  it('repairs a suffix match when digit overlap is ≥80%', () => {
+    // original module digits "686671" (6), corrupted drops one → "68667" (5):
+    // 5/6 ≈ 0.83, and "686671" contains "68667" → repair via suffix.
+    const input = '<!-- SEG:m686671:para:fs-idX --> Hello';
+    const output = '<!-- SEG:m68667:para:fs-idX --> Hæ';
+    expect(repairSegTags(input, output)).toBe('<!-- SEG:m686671:para:fs-idX --> Hæ');
+  });
+
+  it('does NOT repair a suffix match when digit overlap is <80% (F23)', () => {
+    // corrupted module "m6" shares only a single digit with "m68667" (1/5=0.2);
+    // the suffix matches but the modules are unrelated — leave it untouched.
+    const input = '<!-- SEG:m68667:para:fs-idX --> Hello';
+    const output = '<!-- SEG:m6:para:fs-idX --> Hæ';
+    expect(repairSegTags(input, output)).toBe(output);
+  });
 });
 
 // ─── Glossary Filtering ─────────────────────────────────────────────

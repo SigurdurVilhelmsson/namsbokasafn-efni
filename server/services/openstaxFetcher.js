@@ -170,11 +170,29 @@ const BOOK_REPOS = {
   },
 };
 
+// Only follow redirects that stay on GitHub's content hosts, and cap the chain
+// length so a redirect loop / off-host hop can't run away (F16).
+const ALLOWED_GH_HOSTS = /(^|\.)(github\.com|githubusercontent\.com)$/;
+const MAX_REDIRECTS = 5;
+
+function isAllowedGhUrl(url) {
+  try {
+    const u = new URL(url);
+    return u.protocol === 'https:' && ALLOWED_GH_HOSTS.test(u.hostname);
+  } catch {
+    return false;
+  }
+}
+
 /**
  * Fetch raw content from GitHub
  */
-function fetchRaw(url) {
+function fetchRaw(url, redirectCount = 0) {
   return new Promise((resolve, reject) => {
+    if (!isAllowedGhUrl(url)) {
+      reject(new Error(`Refusing to fetch disallowed URL: ${url}`));
+      return;
+    }
     const options = {
       headers: {
         'User-Agent': 'namsbokasafn-pipeline',
@@ -184,7 +202,14 @@ function fetchRaw(url) {
     https
       .get(url, options, (res) => {
         if (res.statusCode === 301 || res.statusCode === 302) {
-          return fetchRaw(res.headers.location).then(resolve).catch(reject);
+          if (redirectCount >= MAX_REDIRECTS) {
+            reject(new Error(`Too many redirects (>${MAX_REDIRECTS}) fetching ${url}`));
+            return;
+          }
+          const next = new URL(res.headers.location, url).toString();
+          return fetchRaw(next, redirectCount + 1)
+            .then(resolve)
+            .catch(reject);
         }
 
         if (res.statusCode !== 200) {
