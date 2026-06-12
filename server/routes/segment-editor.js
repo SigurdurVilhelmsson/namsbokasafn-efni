@@ -993,6 +993,47 @@ router.get(
 );
 
 /**
+ * POST /:book/:chapter/:moduleId/restore/:version
+ * Restore a module's faithful translation to a previous snapshot version.
+ * Book-scoped head-editor only (admin bypasses). Requires { confirm: true }
+ * in the body so an accidental request can't overwrite published content.
+ */
+router.post(
+  '/:book/:chapter/:moduleId/restore/:version',
+  requireAuth,
+  requireHeadEditor(),
+  validateBookChapter,
+  validateModule,
+  (req, res) => {
+    const version = parseInt(req.params.version, 10);
+    if (!Number.isInteger(version) || version < 1) {
+      return res.status(400).json({ error: `Invalid version: ${req.params.version}` });
+    }
+    if (req.body?.confirm !== true) {
+      return res.status(400).json({
+        error: 'Confirmation required',
+        message: 'Pass { "confirm": true } to restore this module to a previous version',
+      });
+    }
+
+    try {
+      const result = contentVersionService.restoreVersion(
+        req.params.book,
+        req.chapterNum,
+        req.params.moduleId,
+        version,
+        { userId: req.user.id, username: req.user.username }
+      );
+      res.json({ success: true, ...result });
+    } catch (err) {
+      log.error({ err }, 'Error restoring version');
+      const status = err.message.includes('not found') ? 404 : 500;
+      res.status(status).json({ error: err.message });
+    }
+  }
+);
+
+/**
  * GET /:book/:chapter/:moduleId/segment-history/:segmentId
  * Get version history for a specific segment.
  */

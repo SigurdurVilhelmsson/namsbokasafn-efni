@@ -1553,6 +1553,122 @@
   document.getElementById('btn-apply-render').addEventListener('click', applyAndRender);
 
   // ================================================================
+  // VERSION HISTORY (revert a module to a previous snapshot)
+  // ================================================================
+
+  /** Format a SQLite UTC datetime ("YYYY-MM-DD HH:MM:SS") for display. */
+  function vhFormatDate(raw) {
+    if (!raw) return '';
+    const d = new Date(raw.replace(' ', 'T') + 'Z');
+    return isNaN(d.getTime()) ? raw : d.toLocaleString('is-IS');
+  }
+
+  function closeVersionHistory() {
+    document.getElementById('vh-overlay').classList.remove('active');
+  }
+
+  async function openVersionHistory() {
+    const overlay = document.getElementById('vh-overlay');
+    const list = document.getElementById('vh-list');
+    list.innerHTML = '<div class="vh-empty">Hleður…</div>';
+    overlay.classList.add('active');
+
+    try {
+      const data = await fetchJson(
+        `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/versions`,
+        { credentials: 'include' }
+      );
+      const versions = data.versions || [];
+      if (versions.length === 0) {
+        list.innerHTML =
+          '<div class="vh-empty">Engar eldri útgáfur. Útgáfur verða til þegar samþykktar breytingar eru vistaðar í skrár.</div>';
+        return;
+      }
+
+      const newest = versions[0].version;
+      list.innerHTML = versions
+        .map((v) => {
+          const who = v.applied_by ? escapeHtml(v.applied_by) : '—';
+          const when = escapeHtml(vhFormatDate(v.applied_at));
+          const latest = v.version === newest ? ' · nýjasta' : '';
+          return (
+            '<div class="vh-row">' +
+            '<div class="vh-meta">' +
+            '<div><span class="vh-ver">Útgáfa ' +
+            v.version +
+            '</span> <span class="vh-sub">(' +
+            v.segments +
+            ' einingar' +
+            latest +
+            ')</span></div>' +
+            '<div class="vh-sub">' +
+            who +
+            ' · ' +
+            when +
+            '</div>' +
+            '</div>' +
+            '<button class="btn btn-secondary btn-sm vh-restore" data-version="' +
+            v.version +
+            '">Færa í þessa útgáfu</button>' +
+            '</div>'
+          );
+        })
+        .join('');
+
+      list.querySelectorAll('.vh-restore').forEach((btn) => {
+        btn.addEventListener('click', () =>
+          restoreToVersion(parseInt(btn.getAttribute('data-version'), 10))
+        );
+      });
+    } catch (err) {
+      list.innerHTML =
+        '<div class="vh-empty">Villa við að sækja sögu: ' + escapeHtml(err.message) + '</div>';
+    }
+  }
+
+  async function restoreToVersion(version) {
+    const ok = window.confirm(
+      'Færa þessa einingu aftur í útgáfu ' +
+        version +
+        '?\n\nNúverandi efni er fyrst vistað sem ný útgáfa, svo þetta er afturkræft.'
+    );
+    if (!ok) return;
+
+    try {
+      const result = await fetchJson(
+        `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/restore/${version}`,
+        {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ confirm: true }),
+        }
+      );
+      closeVersionHistory();
+      if (saveRetry && saveRetry.showToast) {
+        saveRetry.showToast(
+          'Fært í útgáfu ' +
+            version +
+            ' (núverandi efni vistað sem útgáfa ' +
+            result.snapshotVersion +
+            ')',
+          'success'
+        );
+      }
+      await loadModule(currentModuleId, { force: true });
+      loadApplyStatus();
+    } catch (err) {
+      alert(UI.common.errorPrefix + err.message);
+    }
+  }
+
+  document.getElementById('btn-history').addEventListener('click', openVersionHistory);
+  document.getElementById('vh-close').addEventListener('click', closeVersionHistory);
+  document.getElementById('vh-overlay').addEventListener('click', (e) => {
+    if (e.target.id === 'vh-overlay') closeVersionHistory();
+  });
+
+  // ================================================================
   // TERM HIGHLIGHTING
   // ================================================================
 

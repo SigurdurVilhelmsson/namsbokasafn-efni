@@ -1081,6 +1081,51 @@
     .segment-row.filter-hidden {
       display: none;
     }
+
+    /* --- Version history modal --- */
+    .vh-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+    }
+    .vh-overlay.active { display: flex; }
+    .vh-modal {
+      background: var(--bg-card, #fff);
+      color: var(--text, #111);
+      border-radius: var(--radius-md, 8px);
+      box-shadow: var(--shadow-modal);
+      width: min(560px, 92vw);
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .vh-modal header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--spacing-md, 12px);
+      border-bottom: 1px solid var(--border, #ddd);
+    }
+    .vh-modal header h3 { margin: 0; font-size: var(--text-md, 1rem); }
+    .vh-list { overflow-y: auto; padding: var(--spacing-sm, 8px); }
+    .vh-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--spacing-sm, 8px);
+      padding: var(--spacing-sm, 8px) var(--spacing-md, 12px);
+      border-bottom: 1px solid var(--border, #eee);
+    }
+    .vh-row:last-child { border-bottom: none; }
+    .vh-meta { font-size: var(--text-sm, 0.85rem); }
+    .vh-meta .vh-ver { font-weight: 700; }
+    .vh-meta .vh-sub { color: var(--text-muted, #666); font-size: var(--text-xs, 0.75rem); }
+    .vh-empty { padding: var(--spacing-md, 12px); color: var(--text-muted, #666); }
   </style>
 </head>
 <body>
@@ -1180,6 +1225,9 @@
           <button class="btn btn-apply" id="btn-apply-render" disabled title="Vista í skrár og birta á vef" style="background: var(--accent);">
             Vista + Birta
           </button>
+          <button class="btn btn-secondary btn-sm" id="btn-history" title="Skoða eldri útgáfur og færa einingu aftur í fyrri útgáfu">
+            Saga útgáfa
+          </button>
           <span class="pipeline-status-badge" id="apply-badge" style="display: none;"></span>
         </div>
       </div>
@@ -1273,6 +1321,17 @@
     </div>
 
   </main>
+
+  <!-- Version history modal (HEAD_EDITOR only) -->
+  <div class="vh-overlay" id="vh-overlay">
+    <div class="vh-modal" role="dialog" aria-modal="true" aria-labelledby="vh-title">
+      <header>
+        <h3 id="vh-title">Saga útgáfa</h3>
+        <button class="btn btn-secondary btn-sm" id="vh-close" title="Loka">Loka</button>
+      </header>
+      <div class="vh-list" id="vh-list"></div>
+    </div>
+  </div>
 
   <script src="/js/layout.js"></script>
   <script src="/js/bookSelector.js"></script>

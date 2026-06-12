@@ -213,6 +213,7 @@
 | POST | `/:book/:chapter/apply-all` |
 | GET | `/:book/:chapter/:moduleId/versions` |
 | GET | `/:book/:chapter/:moduleId/versions/:version` |
+| POST | `/:book/:chapter/:moduleId/restore/:version` |
 | GET | `/:book/:chapter/:moduleId/segment-history/:segmentId` |
 | GET | `/:book/:chapter/:moduleId/preview` |
 
