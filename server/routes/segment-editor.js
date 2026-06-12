@@ -246,7 +246,8 @@ router.post(
   requireBookAccess(),
   validateModule,
   (req, res) => {
-    const { segmentId, originalContent, editedContent, category, editorNote } = req.body;
+    const { segmentId, originalContent, editedContent, category, editorNote, baseEditId } =
+      req.body;
 
     if (!segmentId) {
       return res.status(400).json({ error: 'segmentId is required' });
@@ -275,6 +276,7 @@ router.post(
         editorNote,
         editorId: String(req.user.id),
         editorUsername: req.user.username,
+        baseEditId: typeof baseEditId === 'number' ? baseEditId : undefined,
       });
 
       try {
@@ -297,6 +299,9 @@ router.post(
         updated: result.updated,
       });
     } catch (err) {
+      if (err.code === 'SEGMENT_CONFLICT') {
+        return res.status(409).json({ error: 'conflict', message: err.message });
+      }
       log.error({ err }, 'Error saving segment edit');
       res.status(500).json({ error: err.message });
     }

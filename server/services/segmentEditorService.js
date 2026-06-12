@@ -48,9 +48,32 @@ function saveSegmentEdit(params) {
     editorNote,
     editorId,
     editorUsername,
+    baseEditId,
   } = params;
 
   const conn = getDb();
+
+  // Optimistic concurrency (F13, parity with the localization editor's 409):
+  // baseEditId is the highest edit id the client saw on this segment at load.
+  // If a *different* editor has since added an edit beyond it, reject so the
+  // editor reloads instead of silently racing on a stale view of the segment.
+  if (baseEditId !== undefined && baseEditId !== null) {
+    const conflict = conn
+      .prepare(
+        `SELECT editor_username FROM segment_edits
+         WHERE book = ? AND module_id = ? AND segment_id = ?
+           AND editor_id != ? AND id > ?
+         ORDER BY id DESC LIMIT 1`
+      )
+      .get(book, moduleId, segmentId, editorId, baseEditId);
+    if (conflict) {
+      const err = new Error(
+        `Annar ritstjóri (${conflict.editor_username}) hefur breytt þessum bút. Endurhlaðið til að sjá nýjustu útgáfu.`
+      );
+      err.code = 'SEGMENT_CONFLICT';
+      throw err;
+    }
+  }
 
   // Check for existing pending edit by this editor on this segment
   const existing = conn

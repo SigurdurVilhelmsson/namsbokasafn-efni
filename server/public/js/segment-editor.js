@@ -891,6 +891,9 @@
         editedContent,
         category: category || undefined,
         editorNote: editorNote || undefined,
+        // Optimistic-concurrency token: highest edit id seen on this segment at
+        // load. The server 409s if another editor moved past it (F13 parity).
+        baseEditId: latestEditIdForSegment(segmentId),
       }),
     };
 
@@ -924,10 +927,29 @@
         savingInd.textContent = UI.save.changed;
         savingInd.className = 'seg-save-ind dirty';
       }
-      if (!saveRetry.isRetryable(err)) {
+      if (err.status === 409) {
+        // Another editor changed this segment — surface the conflict and reload
+        // so the editor sees the latest state (parity with the localization editor).
+        alert(err.message || 'Einingin hefur verið breytt af öðrum notanda. Endurhleð...');
+        await loadModule(currentModuleId, { force: true });
+      } else if (!saveRetry.isRetryable(err)) {
         alert(UI.common.errorSaving + err.message);
       }
     }
+  }
+
+  /**
+   * Highest edit id seen on a segment at load time — the optimistic-concurrency
+   * token sent with a save. moduleData.edits is keyed by segmentId; 0 means the
+   * client saw no edits on the segment.
+   */
+  function latestEditIdForSegment(segmentId) {
+    const list = (moduleData && moduleData.edits && moduleData.edits[segmentId]) || [];
+    let max = 0;
+    for (const e of list) {
+      if (e && typeof e.id === 'number' && e.id > max) max = e.id;
+    }
+    return max;
   }
 
   async function reviewEdit(editId, action) {
