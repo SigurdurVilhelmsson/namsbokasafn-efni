@@ -772,6 +772,63 @@
       white-space: pre-wrap;
     }
 
+    /* --- Concordance search panel --- */
+    .concordance-panel {
+      margin: 0.75rem 0;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--border, #ddd);
+      border-radius: var(--radius-md);
+      background: var(--bg-elevated, #fafafa);
+    }
+    .concordance-search {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .concordance-search input {
+      flex: 1;
+      padding: 0.4rem 0.6rem;
+      font-size: var(--text-sm);
+      border: 1px solid var(--border, #ccc);
+      border-radius: var(--radius-md);
+    }
+    .concordance-results {
+      margin-top: 0.5rem;
+      max-height: 320px;
+      overflow-y: auto;
+    }
+    .concordance-results:empty {
+      display: none;
+    }
+    .concordance-hit {
+      padding: 0.45rem 0.5rem;
+      border-top: 1px solid var(--border, #eee);
+      font-size: var(--text-sm);
+    }
+    .concordance-hit:first-child {
+      border-top: none;
+    }
+    .concordance-en {
+      color: var(--text-secondary, #555);
+    }
+    .concordance-is {
+      margin-top: 0.15rem;
+    }
+    .concordance-prov {
+      display: inline-block;
+      margin-top: 0.2rem;
+      font-size: var(--text-xs);
+      color: var(--text-muted, #888);
+      text-decoration: none;
+    }
+    .concordance-prov:hover {
+      text-decoration: underline;
+    }
+    .concordance-hit mark {
+      background: var(--warning-subtle, #fff3cd);
+      padding: 0 1px;
+    }
+
     /* --- Term popup --- */
     .term-popup {
       display: none;
@@ -1193,6 +1250,20 @@
             Senda til yfirlestrar
           </button>
         </div>
+      </div>
+
+      <!-- Concordance search (how did we translate this before?) -->
+      <div class="concordance-panel" id="concordance-panel">
+        <div class="concordance-search">
+          <input
+            type="text"
+            id="concordance-q"
+            placeholder="Samhengisleit — leitaðu í fyrri samþykktum þýðingum…"
+            autocomplete="off"
+          />
+          <button class="btn btn-secondary btn-sm" id="btn-concordance">Leita</button>
+        </div>
+        <div class="concordance-results" id="concordance-results"></div>
       </div>
 
       <!-- Pipeline Panel (HEAD_EDITOR only) -->

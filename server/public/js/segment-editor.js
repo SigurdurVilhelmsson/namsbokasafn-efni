@@ -357,6 +357,61 @@
   }
 
   // ================================================================
+  // CONCORDANCE SEARCH ("how did we translate this before?")
+  // ================================================================
+  function highlightQuery(text, q) {
+    const escaped = escapeHtml(text);
+    if (!q) return escaped;
+    // Highlight the (escaped) query as a literal, case-insensitively.
+    const needle = escapeHtml(q).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    try {
+      return escaped.replace(new RegExp(needle, 'gi'), (m) => `<mark>${m}</mark>`);
+    } catch {
+      return escaped;
+    }
+  }
+
+  async function searchConcordance() {
+    const input = document.getElementById('concordance-q');
+    const resultsEl = document.getElementById('concordance-results');
+    if (!input || !resultsEl) return;
+    const q = input.value.trim();
+    if (q.length < 2) {
+      resultsEl.innerHTML = '<div class="text-muted">Sláðu inn a.m.k. 2 stafi.</div>';
+      return;
+    }
+    if (!currentBook) return;
+    resultsEl.innerHTML = '<div class="text-muted">Leita…</div>';
+    try {
+      const data = await fetchJson(
+        `${API_BASE}/concordance?q=${encodeURIComponent(q)}&book=${encodeURIComponent(currentBook)}`,
+        { credentials: 'include' }
+      );
+      const results = data.results || [];
+      if (!results.length) {
+        resultsEl.innerHTML = '<div class="text-muted">Engar fyrri þýðingar fundust.</div>';
+        return;
+      }
+      resultsEl.innerHTML = results
+        .map((r) => {
+          const prov = `${escapeHtml(r.module_id)} · kafli ${escapeHtml(String(r.chapter))}`;
+          const href =
+            `/segment-editor?book=${encodeURIComponent(r.book)}` +
+            `&chapter=${encodeURIComponent(r.chapter)}&module=${encodeURIComponent(r.module_id)}`;
+          return `
+          <div class="concordance-hit">
+            <div class="concordance-en">${highlightQuery(r.en_text, q)}</div>
+            <div class="concordance-is">${highlightQuery(r.is_text, q)}</div>
+            <a class="concordance-prov" href="${href}" target="_blank" rel="noopener">${prov} &#8599;</a>
+          </div>`;
+        })
+        .join('');
+    } catch (err) {
+      resultsEl.innerHTML = `<div class="text-muted">Leit mistókst: ${escapeHtml(err.message || '')}</div>`;
+    }
+  }
+
+  // ================================================================
   // RENDER MODULE
   // ================================================================
   function renderModule() {
@@ -1117,6 +1172,10 @@
     lastServerSaveTime = null;
     recentlySaved.clear();
     clearInterval(pipelinePollingTimer);
+    const concResults = document.getElementById('concordance-results');
+    if (concResults) concResults.innerHTML = '';
+    const concInput = document.getElementById('concordance-q');
+    if (concInput) concInput.value = '';
 
     // Reset topbar title
     const topbarTitle = document.getElementById('topbar-title');
@@ -1133,6 +1192,23 @@
       if (container) container.innerHTML = '';
     }
   });
+
+  // ================================================================
+  // CONCORDANCE SEARCH WIRING
+  // ================================================================
+  const concordanceBtn = document.getElementById('btn-concordance');
+  if (concordanceBtn) {
+    concordanceBtn.addEventListener('click', searchConcordance);
+  }
+  const concordanceInput = document.getElementById('concordance-q');
+  if (concordanceInput) {
+    concordanceInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        searchConcordance();
+      }
+    });
+  }
 
   // ================================================================
   // FILTERS
