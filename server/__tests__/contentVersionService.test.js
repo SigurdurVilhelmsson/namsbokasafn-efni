@@ -229,3 +229,51 @@ describe('contentVersionService.restoreVersion', () => {
     );
   });
 });
+
+describe('contentVersionService.snapshotModule connection threading', () => {
+  let db;
+
+  beforeEach(() => {
+    db = createTestDb();
+    contentVersionService._setTestDb(db);
+  });
+
+  afterEach(() => {
+    db.close();
+    contentVersionService._setTestDb(null);
+  });
+
+  // Regression: applyApprovedEdits runs inside an IMMEDIATE write transaction.
+  // The snapshot previously wrote on contentVersionService's *own* connection,
+  // which deadlocked on SQLITE_BUSY and was silently swallowed — leaving an
+  // empty version history despite a successful apply. The snapshot must accept
+  // and write on the caller's connection.
+  it('records the snapshot when called on a caller connection inside an open IMMEDIATE transaction', () => {
+    const segs = [
+      { segmentId: SEG('1'), content: 'vélþýðing 1' },
+      { segmentId: SEG('2'), content: 'vélþýðing 2' },
+    ];
+
+    const apply = db.transaction(() => {
+      const res = contentVersionService.snapshotModule(BOOK, CHAPTER, MODULE, segs, null, db);
+      expect(res.version).toBe(1);
+      expect(res.segmentsSnapshotted).toBe(2);
+    });
+    // .immediate() takes the write lock up-front, mirroring the apply path.
+    apply.immediate();
+
+    const versions = contentVersionService.getModuleVersions(BOOK, MODULE);
+    expect(versions).toHaveLength(1);
+    expect(versions[0].segments).toBe(2);
+
+    const content = contentVersionService.getVersionContent(BOOK, MODULE, 1);
+    expect(content.map((c) => c.content)).toEqual(['vélþýðing 1', 'vélþýðing 2']);
+  });
+
+  it('still defaults to its own connection when no db is passed', () => {
+    contentVersionService.snapshotModule(BOOK, CHAPTER, MODULE, [
+      { segmentId: SEG('1'), content: 'sjálfgefið' },
+    ]);
+    expect(contentVersionService.getModuleVersions(BOOK, MODULE)).toHaveLength(1);
+  });
+});

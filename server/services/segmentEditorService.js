@@ -611,13 +611,17 @@ function applyApprovedEdits(book, chapter, moduleId) {
       };
     });
 
-    // 4b. Snapshot current content before overwriting (for rollback)
+    // 4b. Snapshot current content before overwriting (for rollback).
+    // Must write on the apply's own connection: this runs inside an IMMEDIATE
+    // write transaction, so a second connection's INSERT would hit SQLITE_BUSY
+    // and the snapshot would be silently dropped (leaving an empty version
+    // history despite a successful apply).
     const currentSegments = data.segments.map((seg) => ({
       segmentId: seg.segmentId,
       content: seg.is || '',
     }));
     try {
-      contentVersionService.snapshotModule(book, chapter, moduleId, currentSegments);
+      contentVersionService.snapshotModule(book, chapter, moduleId, currentSegments, null, conn);
     } catch (snapErr) {
       log.error({ err: snapErr }, 'Content snapshot failed (non-fatal, continuing apply)');
     }
