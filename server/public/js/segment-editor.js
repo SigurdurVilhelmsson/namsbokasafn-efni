@@ -977,6 +977,12 @@
           .join(', ');
         saveRetry.showToast(`Hugtakaviðvörun: ${names} fannst ekki í þýðingunni`, 'warn');
       }
+      // Mechanical QA findings (number slips, untranslated-EN residue) — advisory.
+      if (saveResult && Array.isArray(saveResult.qaFindings) && saveResult.qaFindings.length) {
+        for (const f of saveResult.qaFindings) {
+          saveRetry.showToast(f.message, 'warn');
+        }
+      }
 
       dirtyEdits.delete(segmentId);
       lastServerSaveTime = Date.now();

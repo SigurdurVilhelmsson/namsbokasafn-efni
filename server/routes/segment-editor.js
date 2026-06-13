@@ -337,9 +337,10 @@ router.post(
         log.error({ err: logErr }, 'Activity log failed');
       }
 
-      // Live terminology QA (non-blocking): warn if the edit violates an
-      // approved term. The editor sees it but is never hard-blocked.
+      // Live QA (non-blocking): terminology violations + mechanical checks
+      // (number slips, untranslated-EN residue). Advisory — never hard-blocks.
       let termWarnings = [];
+      let qaFindings = [];
       if (!result.reverted && typeof editedContent === 'string' && editedContent) {
         try {
           termWarnings = segmentEditor.getSegmentTerminologyWarnings(
@@ -352,6 +353,17 @@ router.post(
         } catch (qaErr) {
           log.error({ err: qaErr }, 'Terminology save-check failed (non-fatal)');
         }
+        try {
+          qaFindings = segmentEditor.getSegmentQaFindings(
+            req.params.book,
+            req.chapterNum,
+            req.params.moduleId,
+            segmentId,
+            editedContent
+          );
+        } catch (qaErr) {
+          log.error({ err: qaErr }, 'QA save-check failed (non-fatal)');
+        }
       }
 
       res.json({
@@ -359,6 +371,7 @@ router.post(
         editId: result.id,
         updated: result.updated,
         termWarnings,
+        qaFindings,
       });
     } catch (err) {
       if (err.code === 'SEGMENT_CONFLICT') {
