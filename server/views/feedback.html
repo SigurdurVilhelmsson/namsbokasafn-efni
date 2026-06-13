@@ -363,6 +363,20 @@
     const successMessage = document.getElementById('success-message');
     const feedbackCard = document.getElementById('feedback-card');
 
+    // Prefill page context from the URL (e.g. the reader's "report a problem"
+    // link can pass ?book=&chapter=&module= so feedback routes to the right
+    // module). `module` maps to the "section" field.
+    (function prefillFromUrl() {
+      const p = new URLSearchParams(window.location.search);
+      const set = (id, val) => {
+        const el = document.getElementById(id);
+        if (el && val) el.value = val;
+      };
+      set('book', p.get('book'));
+      set('chapter', p.get('chapter'));
+      set('section', p.get('section') || p.get('module'));
+    })();
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 

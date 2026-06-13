@@ -1185,7 +1185,13 @@
         document.getElementById('fb-detail-status').value = fb.status;
         document.getElementById('fb-detail-priority').value = fb.priority;
         var loc = [fb.book,fb.chapter,fb.section].filter(Boolean).join(' / ');
-        document.getElementById('fb-detail-location').textContent = loc || '(Ekki tilgreint)';
+        var locEl = document.getElementById('fb-detail-location');
+        if (fb.book && fb.chapter && fb.section) {
+          var fbHref = '/segment-editor?book=' + encodeURIComponent(fb.book) + '&chapter=' + encodeURIComponent(fb.chapter) + '&module=' + encodeURIComponent(fb.section);
+          locEl.innerHTML = escapeHtml(loc) + ' <a href="' + fbHref + '" target="_blank" rel="noopener">opna í ritstjóra ↗</a>';
+        } else {
+          locEl.textContent = loc || '(Ekki tilgreint)';
+        }
         document.getElementById('fb-detail-created').textContent = new Date(fb.createdAt).toLocaleString('is-IS');
         if (fb.userName || fb.userEmail) {
           document.getElementById('fb-detail-contact-row').style.display = 'flex';

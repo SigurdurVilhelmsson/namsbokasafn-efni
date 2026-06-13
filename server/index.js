@@ -383,6 +383,13 @@ const server = app.listen(PORT, HOST, () => {
   } catch {
     // DB may not exist yet on first run — defaults are fine
   }
+
+  // Start the daily reviewer-queue digest scheduler (no-op under test).
+  try {
+    require('./services/teamDigestService').startScheduler();
+  } catch (err) {
+    log.error({ err }, 'Failed to start review-digest scheduler');
+  }
 });
 
 // Graceful shutdown — let in-flight requests complete before exiting
