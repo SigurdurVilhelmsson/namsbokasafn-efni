@@ -700,6 +700,43 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* Mined term-decision candidates (Unit 3.5) */
+    .mined-section {
+      margin: 1rem 0;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border, #ddd);
+      border-radius: var(--radius-md);
+      background: var(--bg-elevated, #fafafa);
+    }
+    .mined-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+    .mined-hint { color: var(--text-muted, #999); cursor: help; }
+    .mined-card {
+      padding: 0.5rem 0.6rem;
+      border-top: 1px solid var(--border, #eee);
+    }
+    .mined-card:first-child { border-top: none; }
+    .mined-forms { font-size: var(--text-sm); }
+    .mined-mt { color: var(--text-muted, #888); text-decoration: line-through; }
+    .mined-corr { font-weight: 600; }
+    .mined-count {
+      margin-left: 0.5rem;
+      font-size: var(--text-xs);
+      color: var(--text-muted, #888);
+    }
+    .mined-context {
+      font-size: var(--text-xs);
+      color: var(--text-secondary, #666);
+      margin: 0.2rem 0;
+    }
+    .mined-actions { margin-top: 0.35rem; display: flex; gap: 0.4rem; }
   </style>
 </head>
 <body>
@@ -725,7 +762,7 @@
       <div class="filter-bar">
         <div class="filter-item">
           <label for="filter-book">B&#243;k:</label>
-          <select id="filter-book" class="book-select" data-allow-all="true" onchange="searchTerms(); loadStats(); updateFilterBadge();"></select>
+          <select id="filter-book" class="book-select" data-allow-all="true" onchange="searchTerms(); loadStats(); updateFilterBadge(); maybeReloadMined();"></select>
         </div>
         <div class="filter-item">
           <label for="filter-subject">Fag:</label>
@@ -753,6 +790,21 @@
           <strong id="active-filter-num">0</strong> s&#237;ur virkar
         </span>
       </div>
+    </div>
+
+    <!-- Mined term-decision candidates (head-editor only) -->
+    <div class="mined-section" id="mined-section" style="display: none;">
+      <div class="mined-header">
+        <h3 style="margin:0;font-size:var(--text-md)">
+          Tillögur úr leiðréttingum
+          <span class="mined-hint" title="Endurteknar leiðréttingar þýðenda á vélþýðingu — mögulegar íðorðaákvarðanir">&#9432;</span>
+        </h3>
+        <div>
+          <button class="btn btn-secondary btn-sm" onclick="mineCandidates()" id="btn-mine">Náma úr samþykktum breytingum</button>
+          <button class="btn btn-secondary btn-sm" onclick="loadMinedCandidates()">Endurhlaða</button>
+        </div>
+      </div>
+      <div id="mined-results"></div>
     </div>
 
     <!-- Statistics -->
@@ -1059,10 +1111,140 @@
       try { await checkReviewQueue(); } catch (e) { console.error('Review queue check failed:', e); }
       try { await searchTerms(); } catch (e) { console.error('Search failed:', e); }
 
+      // Mined term-decision candidates are a head-editor tool.
+      if (currentUser && ['admin', 'head-editor'].includes(currentUser.role)) {
+        document.getElementById('mined-section').style.display = 'block';
+        try { await loadMinedCandidates(); } catch (e) { console.error('Load mined candidates failed:', e); }
+      }
+
       // Setup event listeners
       document.getElementById('search-input').addEventListener('keyup', (e) => {
         if (e.key === 'Enter') searchTerms();
       });
+    }
+
+    // ── Mined term-decision candidates (Unit 3.5) ──────────────────
+    async function loadMinedCandidates() {
+      const container = document.getElementById('mined-results');
+      const book = document.getElementById('filter-book')?.value || '';
+      if (!book) {
+        container.innerHTML = '<div class="terms-state">Veldu bók til að sjá tillögur.</div>';
+        return;
+      }
+      container.innerHTML = '<div class="terms-state">Hleð…</div>';
+      try {
+        const data = await fetchJson(
+          '/api/terminology/mined-candidates?book=' + encodeURIComponent(book)
+        );
+        const candidates = data.candidates || [];
+        if (!candidates.length) {
+          container.innerHTML =
+            '<div class="terms-state">Engar tillögur. Smelltu á „Náma“ til að leita í samþykktum breytingum.</div>';
+          return;
+        }
+        container.innerHTML = candidates
+          .map((c) => {
+            const ctx = c.en_context
+              ? '<div class="mined-context">EN: ' + escapeHtml(c.en_context) + '</div>'
+              : '';
+            return (
+              '<div class="mined-card">' +
+              '<div class="mined-forms">' +
+              '<span class="mined-mt">' +
+              escapeHtml(c.mt_form) +
+              '</span> &#8594; <span class="mined-corr">' +
+              escapeHtml(c.corrected_form) +
+              '</span>' +
+              '<span class="mined-count" title="Fjöldi tilvika">&times;' +
+              c.occurrences +
+              '</span>' +
+              '</div>' +
+              ctx +
+              '<div class="mined-actions">' +
+              '<button class="btn btn-primary btn-sm" onclick="promoteMined(' +
+              c.id +
+              ", '" +
+              escapeAttr(c.corrected_form) +
+              '\')">Gera að íðorði</button>' +
+              '<button class="btn btn-secondary btn-sm" onclick="dismissMined(' +
+              c.id +
+              ')">Hafna</button>' +
+              '</div>' +
+              '</div>'
+            );
+          })
+          .join('');
+      } catch (err) {
+        container.innerHTML = '<div class="terms-state error">Villa: ' + escapeHtml(err.message) + '</div>';
+      }
+    }
+
+    // Reload the mined queue only when it's visible (head-editor); no-op otherwise.
+    function maybeReloadMined() {
+      const section = document.getElementById('mined-section');
+      if (section && section.style.display !== 'none') loadMinedCandidates();
+    }
+
+    // Escape a string for safe use inside a single-quoted HTML attribute.
+    function escapeAttr(s) {
+      return String(s).replace(/&/g, '&amp;').replace(/'/g, '&#39;').replace(/"/g, '&quot;');
+    }
+
+    async function mineCandidates() {
+      const book = document.getElementById('filter-book')?.value || '';
+      if (!book) {
+        alert('Veldu bók fyrst.');
+        return;
+      }
+      const btn = document.getElementById('btn-mine');
+      if (btn) btn.disabled = true;
+      try {
+        const res = await fetch('/api/terminology/mine', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({ book }),
+        });
+        if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error || 'Náma mistókst');
+        await loadMinedCandidates();
+      } catch (err) {
+        alert('Náma mistókst: ' + err.message);
+      } finally {
+        if (btn) btn.disabled = false;
+      }
+    }
+
+    async function dismissMined(id) {
+      try {
+        const res = await fetch('/api/terminology/mined-candidates/' + id + '/dismiss', {
+          method: 'POST',
+          credentials: 'include',
+        });
+        if (!res.ok) throw new Error('Mistókst');
+        await loadMinedCandidates();
+      } catch (err) {
+        alert('Mistókst: ' + err.message);
+      }
+    }
+
+    async function promoteMined(id, correctedForm) {
+      const english = prompt(
+        'Enskt íðorð fyrir „' + correctedForm + '“?\n(Tillagan verður búin til sem „í bið“ og þarf samþykki.)'
+      );
+      if (!english || !english.trim()) return;
+      try {
+        const res = await fetch('/api/terminology/mined-candidates/' + id + '/promote', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({ english: english.trim() }),
+        });
+        if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error || 'Mistókst');
+        await loadMinedCandidates();
+        await searchTerms();
+      } catch (err) {
+        alert('Mistókst: ' + err.message);
+      }
     }
 
     async function loadMetadata() {
