@@ -14,6 +14,7 @@ const contentVersionService = require('./contentVersionService');
 const tmService = require('./tmService');
 const concordanceService = require('./concordanceService');
 const terminologyService = require('./terminologyService');
+const qaCheckService = require('./qaCheckService');
 
 let BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
@@ -188,6 +189,24 @@ function getSegmentTerminologyWarnings(book, chapter, moduleId, segmentId, edite
   }
   if (!enContent) return [];
   return terminologyService.checkSegmentConsistency(enContent, editedContent, book, segmentId);
+}
+
+/**
+ * Mechanical QA findings for a single edited segment (Unit 4): number slips and
+ * untranslated-EN residue (spelling engine pluggable, off by default).
+ * Non-blocking — advisory only.
+ *
+ * @returns {Array} qa findings for that segment (may be empty)
+ */
+function getSegmentQaFindings(book, chapter, moduleId, segmentId, editedContent) {
+  let enContent = '';
+  try {
+    const data = segmentParser.loadModuleForEditing(book, chapter, moduleId);
+    enContent = data.segments.find((s) => s.segmentId === segmentId)?.en || '';
+  } catch {
+    return [];
+  }
+  return qaCheckService.runChecks(enContent, editedContent);
 }
 
 /**
@@ -1089,6 +1108,8 @@ module.exports = {
   // Terminology QA (Unit 3)
   getSegmentTerminologyWarnings,
   getModuleTerminologyReport,
+  // Mechanical QA (Unit 4)
+  getSegmentQaFindings,
   // Statistics
   getModuleStats,
   getGlobalEditStats,
