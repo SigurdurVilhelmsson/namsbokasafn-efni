@@ -196,10 +196,12 @@
 | Method | Path |
 |--------|------|
 | GET | `/terminology/lookup` |
+| GET | `/concordance` |
 | GET | `/reviews/:reviewId` |
 | GET | `/edit/:editId/comments` |
 | GET | `/:book/chapters` |
 | GET | `/:book/:chapter` |
+| GET | `/:book/:chapter/repetition-report` |
 | GET | `/:book/:chapter/:moduleId` |
 | POST | `/:book/:chapter/:moduleId/edit` |
 | DELETE | `/edit/:editId` |
@@ -213,6 +215,8 @@
 | POST | `/reviews/:reviewId/complete` |
 | POST | `/edit/:editId/comment` |
 | GET | `/:book/:chapter/:moduleId/terms` |
+| GET | `/:book/:chapter/:moduleId/repetitions` |
+| GET | `/:book/:chapter/:moduleId/terminology-report` |
 | GET | `/:book/:chapter/:moduleId/stats` |
 | GET | `/:book/:chapter/:moduleId/apply-status` |
 | POST | `/:book/:chapter/:moduleId/apply` |
