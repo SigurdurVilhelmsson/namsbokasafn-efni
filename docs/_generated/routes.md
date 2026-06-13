@@ -289,6 +289,10 @@
 | POST | `/import/key-terms` |
 | POST | `/import/existing-glossary` |
 | POST | `/check-consistency` |
+| POST | `/mine` |
+| GET | `/mined-candidates` |
+| POST | `/mined-candidates/:id/dismiss` |
+| POST | `/mined-candidates/:id/promote` |
 
 ## /views
 

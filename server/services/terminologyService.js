@@ -43,6 +43,7 @@ const TERM_SOURCES = [
   'imported-csv',
   'imported-excel',
   'merge-glossary',
+  'mined-postedit',
 ];
 
 // Known subject domains (from Íðorðabankinn collection codes)
@@ -1144,6 +1145,26 @@ function findTermsInSegments(segments, bookSlug = null) {
 }
 
 /**
+ * Propose a glossary term from a mined post-edit candidate (Unit 3.5).
+ * Upserts the (human-supplied) English headword and adds the corrected
+ * Icelandic as a *proposed* translation — so it still goes through normal
+ * approval. Idempotent: an existing identical translation is returned as-is.
+ *
+ * @returns {{ headwordId, translationId, existed: boolean }}
+ */
+function proposeMinedTerm(english, icelandic, pos, userId, username) {
+  if (!english || !icelandic) throw new Error('english and icelandic are required');
+  const db = getDb();
+  const hw = upsertHeadword(db, english, pos || null, null);
+  const existing = db
+    .prepare('SELECT id FROM terminology_translations WHERE headword_id = ? AND icelandic = ?')
+    .get(hw.id, icelandic);
+  if (existing) return { headwordId: hw.id, translationId: existing.id, existed: true };
+  const tr = addTranslation(hw.id, { icelandic, source: 'mined-postedit' }, userId, username);
+  return { headwordId: hw.id, translationId: tr.id, existed: false };
+}
+
+/**
  * Export a book's glossary from the DB in the `glossary-unified.json` shape
  * consumed by `tools/api-translate.js` (Unit 6.1 — keeps the MT glossary fresh
  * instead of the months-stale committed export).
@@ -1449,6 +1470,7 @@ module.exports = {
   checkSegmentConsistency,
   buildModuleTerminologyReport,
   exportBookGlossary,
+  proposeMinedTerm,
 
   // Constants
   TERM_STATUSES,
