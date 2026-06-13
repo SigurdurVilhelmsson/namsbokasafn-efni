@@ -28,6 +28,7 @@
 | `download-source` | Downloads a tarball of the repository, extracts module CNXML files organized |
 | `generate-glossary` | translated CNXML files. Produces a book-wide glossary sorted by |
 | `generate-index` | translated CNXML files and organizing them alphabetically with |
+| `generate-tm` | The EN source segments (02-for-mt/) and the human-reviewed IS segments |
 | `merge-glossary` | Three-source glossary merge tool. Combines: |
 | `migrate-pipeline-status` | and populates the chapter_pipeline_status table in the database. |
 | `repair-emphasis` | Compares EN and IS segment files to find segments where the MT API dropped |
@@ -48,6 +49,6 @@ These tools are deprecated and replaced by Matecat Align in the simplified workf
 
 ---
 
-*27 tools total (27 active, 0 deprecated)*
+*28 tools total (28 active, 0 deprecated)*
 
 See [cli-reference.md](../technical/cli-reference.md) for detailed usage instructions.

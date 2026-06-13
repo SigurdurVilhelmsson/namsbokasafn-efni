@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+  <header creationtool="generate-tm.js" creationtoolversion="1.0" segtype="paragraph" o-tmf="namsbokasafn" adminlang="en" srclang="en" datatype="plaintext" creationdate="20260613T001935Z"/>
+  <body>
+    <tu>
+      <prop type="book">efnafraedi-2e</prop>
+      <prop type="chapter">3</prop>
+      <prop type="module">m68699</prop>
+      <prop type="segment-id">m68699:title:auto-1</prop>
+      <tuv xml:lang="en"><seg>Introduction</seg></tuv>
+      <tuv xml:lang="is"><seg>Inngangur</seg></tuv>
+    </tu>
+    <tu>
+      <prop type="book">efnafraedi-2e</prop>
+      <prop type="chapter">3</prop>
+      <prop type="module">m68699</prop>
+      <prop type="segment-id">m68699:caption:CNX_Chem_03_00_Pool-caption</prop>
+      <tuv xml:lang="en"><seg>The water in a swimming pool is a complex mixture of substances whose relative amounts must be carefully maintained to ensure the health and comfort of people using the pool. (credit: modification of work by Vic Brincat)</seg></tuv>
+      <tuv xml:lang="is"><seg>Vatnið í sundlaug er flókin efnablanda þar sem gæta þarf vel að hlutfallslegu magni efna til að tryggja heilsu og þægindi þeirra sem nota laugina. (Heimild: breyting á vinnu eftir Vic Brincat)</seg></tuv>
+    </tu>
+    <tu>
+      <prop type="book">efnafraedi-2e</prop>
+      <prop type="chapter">3</prop>
+      <prop type="module">m68699</prop>
+      <prop type="segment-id">m68699:para:fs-idp44036064</prop>
+      <tuv xml:lang="en"><seg>Swimming pools have long been a popular means of recreation, exercise, and physical therapy. Since it is impractical to refill large pools with fresh water on a frequent basis, pool water is regularly treated with chemicals to prevent the growth of harmful bacteria and algae. Proper pool maintenance requires regular additions of various chemical compounds in carefully measured amounts. For example, the relative amount of calcium ion, Ca2+, in the water should be maintained within certain limits to prevent eye irritation and avoid damage to the pool bed and plumbing. To maintain proper calcium levels, calcium cations are added to the water in the form of an ionic compound that also contains anions; thus, it is necessary to know both the relative amount of Ca2+ in the compound and the volume of water in the pool in order to achieve the proper calcium level. Quantitative aspects of the composition of substances (such as the calcium-containing compound) and mixtures (such as the pool water) are the subject of this chapter.</seg></tuv>
+      <tuv xml:lang="is"><seg>Sundlaugar hafa lengi verið vinsæl leið til afþreyingar, líkamsræktar og sjúkraþjálfunar. Þar sem óraunhæft er að endurnýja vatnið oft í stórum laugum er sundlaugarvatn reglulega meðhöndlað með efnum til að koma í veg fyrir vöxt skaðlegra baktería og þörunga. Gott viðhald laugar krefst þess að reglulega sé bætt út í hana efnasamböndum í ákveðnu magni. Til dæmis þarf að halda hlutfallslegu magni kalsíumjóna, Ca2+, í vatninu innan ákveðinna marka til að koma í veg fyrir augnertingu og skemmdir á laugarbotni og vatnslögnum. Til að viðhalda réttu kalsíummagni er kalsíumkatjónum bætt í vatnið í formi jónaefnis sem inniheldur einnig anjónir. Því er nauðsynlegt að þekkja bæði hlutfallslegt magn Ca2+ í efnasambandinu og rúmmál vatnsins í lauginni til að ná réttu kalsíummagni. Magnbundnir þættir í samsetningu efna (eins og kalsíuminnihaldand efnasambandsins) og efnablöndu (eins og sundlaugarvatnsins) eru viðfangsefni þessa kafla.</seg></tuv>
+    </tu>
+  </body>
+</tmx>
