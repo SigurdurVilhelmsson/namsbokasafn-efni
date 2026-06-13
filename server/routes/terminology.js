@@ -558,6 +558,51 @@ router.post('/translations/:id/dispute', requireAuth, requireRole(ROLES.EDITOR),
 });
 
 /**
+ * POST /api/terminology/:headwordId/discuss
+ * Attach a discussion comment to a headword — used by "tengja við íðorð" in the
+ * segment editor (Unit 3.3) so a terminology decision made while editing
+ * accumulates on the glossary entry.
+ *
+ * Body:
+ *   comment: The note (required)
+ *   proposedTranslation: Optional suggested IS form (e.g. the editor's correction)
+ */
+router.post('/:headwordId/discuss', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
+  const headwordId = parseInt(req.params.headwordId, 10);
+  const { comment, proposedTranslation } = req.body;
+
+  if (!comment || !comment.trim()) {
+    return res.status(400).json({ error: 'Missing comment' });
+  }
+
+  try {
+    const discussion = terminology.addDiscussion(
+      headwordId,
+      comment.trim(),
+      req.user.id,
+      req.user.name || req.user.username,
+      proposedTranslation || null
+    );
+
+    activityLog.log({
+      type: 'terminology_discussion',
+      userId: req.user.id,
+      username: req.user.username,
+      description: `Tengdi ritstjórnarnótu við íðorð #${headwordId}`,
+      metadata: { headwordId },
+    });
+
+    res.json({ success: true, discussion });
+  } catch (err) {
+    log.error({ err }, 'Add discussion error');
+    res.status(err.message.includes('not found') ? 404 : 500).json({
+      error: 'Failed to add discussion',
+      message: err.message,
+    });
+  }
+});
+
+/**
  * POST /api/terminology/:id/discuss
  * Add a discussion comment to a headword
  *

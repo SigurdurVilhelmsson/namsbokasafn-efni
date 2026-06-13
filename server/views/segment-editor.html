@@ -871,6 +871,23 @@
     .rs-agree { color: var(--success, #2e8b57); }
     .rs-disagree { color: var(--warning, #b45309); }
 
+    /* --- Term-link modal --- */
+    .tl-context {
+      font-size: var(--text-sm);
+      color: var(--text-secondary, #555);
+      background: var(--bg-elevated, #fafafa);
+      padding: 0.4rem 0.55rem;
+      border-radius: var(--radius-md);
+    }
+    .tl-item {
+      padding: 0.45rem 0.5rem;
+      border-top: 1px solid var(--border, #eee);
+      cursor: pointer;
+      font-size: var(--text-sm);
+    }
+    .tl-item:first-child { border-top: none; }
+    .tl-item:hover { background: var(--accent-subtle, #f3e8df); }
+
     /* --- Term popup --- */
     .term-popup {
       display: none;
@@ -1490,6 +1507,25 @@
         <button class="btn btn-secondary btn-sm" id="vh-close" title="Loka">Loka</button>
       </header>
       <div class="vh-list" id="vh-list"></div>
+    </div>
+  </div>
+
+  <!-- Term-link modal ("tengja við íðorð") -->
+  <div class="vh-overlay" id="tl-overlay">
+    <div class="vh-modal" role="dialog" aria-modal="true" aria-labelledby="tl-title">
+      <header>
+        <h3 id="tl-title">Tengja við íðorð</h3>
+        <button class="btn btn-secondary btn-sm" id="tl-close" title="Loka">Loka</button>
+      </header>
+      <div class="tl-context" id="tl-context"></div>
+      <input
+        type="text"
+        id="tl-search"
+        placeholder="Leitaðu að ensku íðorði…"
+        autocomplete="off"
+        style="width:100%; padding:0.45rem 0.6rem; margin:0.5rem 0; border:1px solid var(--border,#ccc); border-radius:var(--radius-md);"
+      />
+      <div class="vh-list" id="tl-results"></div>
     </div>
   </div>
 

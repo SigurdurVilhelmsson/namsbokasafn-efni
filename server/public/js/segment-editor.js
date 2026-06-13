@@ -875,6 +875,7 @@
                 </select>
                 <input type="text" id="note-${cssId(seg.segmentId)}" placeholder="Athugasemd (valkvætt)" value="${escapeHtml(latestEdit?.editor_note || '')}">
                 <button class="btn btn-sm btn-primary" onclick="saveEdit('${seg.segmentId}')">Vista</button>
+                <button class="btn btn-sm btn-secondary" onclick="openTermLink('${seg.segmentId}')" title="Tengja hugtakaákvörðun við íðorð í orðasafni">Tengja íðorð</button>
                 <button class="btn btn-sm btn-secondary" onclick="closeEditPanel('${seg.segmentId}')">Hætta við</button>
               </div>
             </div>
@@ -2473,7 +2474,148 @@
   window.closeTermPopup = closeTermPopup;
   window.reviewEdit = reviewEdit;
   window.unapproveEdit = unapproveEdit;
+  // ================================================================
+  // TERM LINKING ("tengja við íðorð" — Unit 3.3)
+  // Attach a terminology decision made while editing to a glossary headword,
+  // so disputes/decisions accumulate on the entry (terminologyService discussion).
+  // ================================================================
+  let termLinkContext = null; // { segmentId, en, is }
+  let termLinkTimer = null;
+
+  function openTermLink(segmentId) {
+    const seg = moduleData?.segments?.find((s) => s.segmentId === segmentId);
+    if (!seg) return;
+    const ta = document.getElementById('textarea-' + cssId(segmentId));
+    const isText = (ta && ta.value) || seg.is || '';
+    termLinkContext = { segmentId, en: seg.en || '', is: isText };
+
+    const ctx = document.getElementById('tl-context');
+    if (ctx) {
+      ctx.innerHTML =
+        '<div>EN: ' +
+        escapeHtml(termLinkContext.en) +
+        '</div><div>IS: ' +
+        escapeHtml(termLinkContext.is) +
+        '</div>';
+    }
+    const results = document.getElementById('tl-results');
+    if (results) results.innerHTML = '';
+    const input = document.getElementById('tl-search');
+    if (input) {
+      // Seed the search with the first EN word as a convenience.
+      input.value = (termLinkContext.en.match(/[A-Za-z]+/) || [''])[0];
+      runTermLinkSearch();
+    }
+    document.getElementById('tl-overlay').classList.add('active');
+    if (input) input.focus();
+  }
+
+  function closeTermLink() {
+    document.getElementById('tl-overlay').classList.remove('active');
+    termLinkContext = null;
+  }
+
+  async function runTermLinkSearch() {
+    const input = document.getElementById('tl-search');
+    const results = document.getElementById('tl-results');
+    if (!input || !results) return;
+    const q = input.value.trim();
+    if (q.length < 2) {
+      results.innerHTML =
+        '<div class="tl-item" style="color:var(--text-muted)">Sláðu inn a.m.k. 2 stafi.</div>';
+      return;
+    }
+    try {
+      const data = await fetchJson(
+        `${API_BASE}/terminology/lookup?q=${encodeURIComponent(q)}&bookSlug=${encodeURIComponent(currentBook || '')}`,
+        { credentials: 'include' }
+      );
+      const terms = data.terms || [];
+      if (!terms.length) {
+        results.innerHTML =
+          '<div class="tl-item" style="color:var(--text-muted)">Ekkert íðorð fannst.</div>';
+        return;
+      }
+      results.innerHTML = terms
+        .map((hw) => {
+          const translations = hw.translations || [];
+          const primary = translations.find((t) => t.isPrimary) || translations[0];
+          const isText = primary ? escapeHtml(primary.icelandic) : '—';
+          return (
+            '<div class="tl-item" data-hwid="' +
+            hw.id +
+            '" data-hwen="' +
+            escapeHtml(hw.english) +
+            '">' +
+            escapeHtml(hw.english) +
+            ' &#8594; ' +
+            isText +
+            (primary && primary.status === 'approved' ? ' &#10003;' : '') +
+            '</div>'
+          );
+        })
+        .join('');
+    } catch (err) {
+      results.innerHTML =
+        '<div class="tl-item" style="color:var(--text-muted)">Leit mistókst: ' +
+        escapeHtml(err.message || '') +
+        '</div>';
+    }
+  }
+
+  async function linkToHeadword(headwordId, english) {
+    if (!termLinkContext) return;
+    const { segmentId, en, is } = termLinkContext;
+    const comment =
+      'Úr ritstjórn (' + currentModuleId + ':' + segmentId + '): „' + en + '“ → „' + is + '“';
+    try {
+      const res = await fetch('/api/terminology/' + headwordId + '/discuss', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ comment, proposedTranslation: is }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.message || data.error || 'villa');
+      }
+      closeTermLink();
+      if (saveRetry && saveRetry.showToast) {
+        saveRetry.showToast('Tengt við íðorð: ' + english, 'success');
+      }
+    } catch (err) {
+      if (saveRetry && saveRetry.showToast) {
+        saveRetry.showToast('Tenging mistókst: ' + err.message, 'error');
+      }
+    }
+  }
+
+  // Wire the term-link modal (search, result clicks, close).
+  const tlSearch = document.getElementById('tl-search');
+  if (tlSearch) {
+    tlSearch.addEventListener('input', () => {
+      clearTimeout(termLinkTimer);
+      termLinkTimer = setTimeout(runTermLinkSearch, 300);
+    });
+  }
+  const tlResults = document.getElementById('tl-results');
+  if (tlResults) {
+    tlResults.addEventListener('click', (e) => {
+      const item = e.target.closest('.tl-item[data-hwid]');
+      if (item) linkToHeadword(parseInt(item.dataset.hwid, 10), item.dataset.hwen || '');
+    });
+  }
+  const tlClose = document.getElementById('tl-close');
+  if (tlClose) tlClose.addEventListener('click', closeTermLink);
+  const tlOverlay = document.getElementById('tl-overlay');
+  if (tlOverlay) {
+    tlOverlay.addEventListener('click', (e) => {
+      if (e.target === tlOverlay) closeTermLink();
+    });
+  }
+
   window.showTermPopup = showTermPopup;
   window.insertTermFromLookup = insertTermFromLookup;
   window.insertRepetition = insertRepetition;
+  window.openTermLink = openTermLink;
 })(); // end IIFE

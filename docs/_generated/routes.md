@@ -282,6 +282,7 @@
 | DELETE | `/translations/:id` |
 | POST | `/translations/:id/approve` |
 | POST | `/translations/:id/dispute` |
+| POST | `/:headwordId/discuss` |
 | POST | `/:id/discuss` |
 | POST | `/import/csv` |
 | POST | `/import/glossary` |
