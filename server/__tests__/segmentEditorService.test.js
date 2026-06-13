@@ -95,6 +95,21 @@ function createTestDb() {
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
       FOREIGN KEY (segment_edit_id) REFERENCES segment_edits(id)
     );
+
+    -- Migration 031: content_versions — apply's snapshot now writes here on the
+    -- apply's own connection (inside the IMMEDIATE txn), so the test DB needs it.
+    CREATE TABLE content_versions (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      book TEXT NOT NULL,
+      chapter INTEGER NOT NULL,
+      module_id TEXT NOT NULL,
+      segment_id TEXT NOT NULL,
+      content TEXT NOT NULL,
+      version INTEGER NOT NULL DEFAULT 1,
+      applied_by TEXT,
+      applied_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      UNIQUE(book, module_id, segment_id, version)
+    );
   `);
 
   return db;

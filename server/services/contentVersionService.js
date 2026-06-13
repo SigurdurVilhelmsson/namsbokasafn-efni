@@ -39,11 +39,13 @@ function getDb() {
  * @param {string} moduleId - Module ID
  * @param {Array<{segmentId: string, content: string}>} segments - Current segment content
  * @param {string} [appliedBy] - User who triggered the apply
+ * @param {import('better-sqlite3').Database} [db] - Existing connection to write
+ *   on. Pass the caller's connection when the snapshot must run inside an
+ *   already-open (IMMEDIATE) write transaction — otherwise a second connection
+ *   would deadlock on SQLITE_BUSY and the snapshot would be silently lost.
  * @returns {{ version: number, segmentsSnapshotted: number }}
  */
-function snapshotModule(book, chapter, moduleId, segments, appliedBy) {
-  const db = getDb();
-
+function snapshotModule(book, chapter, moduleId, segments, appliedBy, db = getDb()) {
   // Determine next version number for this module
   const latest = db
     .prepare(
