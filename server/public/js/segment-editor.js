@@ -16,6 +16,7 @@
   let _loadingModuleId = null; // re-entrancy guard for loadModule()
   let moduleData = null;
   let termData = null; // Per-segment term matches and issues
+  let repetitionData = {}; // segmentId → { suggestion: {is_text, book, chapter, module_id} }
   let userRole = 'viewer';
   let userName = null;
   let termLookupTimer = null;
@@ -285,8 +286,9 @@
       document.getElementById('save-status-bar').style.display = 'flex';
       updateSaveStatusBar();
 
-      // Load term data in background (non-blocking)
+      // Load term data + repetition suggestions in background (non-blocking)
       loadTermData(moduleId);
+      loadRepetitions(moduleId);
     } catch (err) {
       // Restore module list on error so users can retry
       document.getElementById('module-selector').style.display = 'block';
@@ -314,6 +316,43 @@
     } catch {
       // Term loading is non-critical, fail silently
       termData = null;
+    }
+  }
+
+  // Fetch exact-match review-deduplication suggestions: segments whose EN was
+  // already approved elsewhere get a "þegar samþykkt" hint with one-click insert.
+  async function loadRepetitions(moduleId) {
+    const requestedModule = currentModuleId;
+    try {
+      const res = await fetch(
+        `${API_BASE}/${currentBook}/${currentChapter}/${moduleId}/repetitions`,
+        { credentials: 'include' }
+      );
+      if (!res.ok || currentModuleId !== requestedModule) return;
+      const data = await res.json();
+      if (currentModuleId !== requestedModule) return;
+      repetitionData = {};
+      for (const rep of data.repetitions || []) {
+        repetitionData[rep.segmentId] = rep;
+      }
+      renderSegments();
+    } catch {
+      // Non-critical
+      repetitionData = {};
+    }
+  }
+
+  // Insert a repetition suggestion into a segment's edit box (still saved
+  // through the normal QA path — no silent auto-apply).
+  function insertRepetition(segmentId) {
+    const rep = repetitionData?.[segmentId];
+    if (!rep?.suggestion) return;
+    openEditPanel(segmentId);
+    const ta = document.getElementById('textarea-' + cssId(segmentId));
+    if (ta) {
+      ta.value = rep.suggestion.is_text;
+      ta.dispatchEvent(new Event('input', { bubbles: true }));
+      ta.focus();
     }
   }
 
@@ -543,6 +582,24 @@
         .join('');
     }
 
+    // Build exact-match repetition hint (an approved translation of the same
+    // EN sentence elsewhere — outranks the MT draft).
+    let repetitionHint = '';
+    const rep = repetitionData?.[seg.segmentId];
+    if (rep?.suggestion) {
+      const s = rep.suggestion;
+      const where =
+        s.chapter === 'appendices'
+          ? escapeHtml(s.module_id)
+          : `${escapeHtml(s.module_id)} (kafli ${escapeHtml(String(s.chapter))})`;
+      repetitionHint = `
+          <div class="repetition-hint" title="Sama setning var þegar samþykkt annars staðar">
+            <div class="repetition-hint-label">&#10003; Þegar samþykkt í ${where}</div>
+            <div class="repetition-hint-text">${escapeHtml(s.is_text)}</div>
+            <button type="button" class="btn btn-sm btn-secondary" onclick="insertRepetition('${seg.segmentId}')">Nota þessa þýðingu</button>
+          </div>`;
+    }
+
     const isHeadEditor = ['head-editor', 'admin'].includes(getEffectiveRole());
 
     // Determine whether editing is allowed:
@@ -635,6 +692,7 @@
             <div class="segment-content" id="is-${cssId(seg.segmentId)}">${isHtml || '<em class="text-muted">Engin þýðing</em>'}</div>
             ${originalHint}
             ${termIssuesHtml}
+            ${repetitionHint}
             <div class="edit-panel" id="edit-${cssId(seg.segmentId)}">
               <div class="preview-panel" id="preview-${cssId(seg.segmentId)}"></div>
               <div class="format-toolbar">
@@ -1040,6 +1098,7 @@
     document.getElementById('save-status-bar').style.display = 'none';
     moduleData = null;
     termData = null;
+    repetitionData = {};
     lastServerSaveTime = null;
     recentlySaved.clear();
     clearInterval(pipelinePollingTimer);
@@ -2206,4 +2265,5 @@
   window.unapproveEdit = unapproveEdit;
   window.showTermPopup = showTermPopup;
   window.insertTermFromLookup = insertTermFromLookup;
+  window.insertRepetition = insertRepetition;
 })(); // end IIFE

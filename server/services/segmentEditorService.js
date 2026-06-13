@@ -12,6 +12,7 @@ const log = require('../lib/logger');
 const { advanceChapterStatus } = require('./pipelineService');
 const contentVersionService = require('./contentVersionService');
 const tmService = require('./tmService');
+const concordanceService = require('./concordanceService');
 
 let BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
@@ -707,6 +708,14 @@ function applyApprovedEdits(book, chapter, moduleId) {
     tmService.scheduleTmRegen(book);
   } catch (err) {
     log.error({ err }, 'Scheduling TM regeneration failed');
+  }
+
+  // Keep the concordance index current with the freshly-applied module
+  // (cheap, synchronous; best-effort — never break the apply path).
+  try {
+    concordanceService.indexModule(book, chapter, moduleId);
+  } catch (err) {
+    log.error({ err }, 'Concordance indexing failed');
   }
 
   return result;

@@ -37,6 +37,7 @@ const router = express.Router();
 const log = require('../lib/logger');
 const segmentParser = require('../services/segmentParser');
 const segmentEditor = require('../services/segmentEditorService');
+const concordance = require('../services/concordanceService');
 const activityLog = require('../services/activityLog');
 
 // ─── Book data lookup (slug → chapter/module metadata) ───────────────
@@ -87,6 +88,27 @@ router.get('/terminology/lookup', requireAuth, requireRole(ROLES.EDITOR), (req, 
     const terms = terminology.lookupTerm(q, bookId ? parseInt(bookId, 10) : null);
     res.json({ terms });
   } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /concordance?q=…&book=…
+ * Concordance search across applied EN↔IS faithful segments (book-scoped).
+ */
+router.get('/concordance', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
+  const { q, book } = req.query;
+  if (!book || !VALID_BOOKS.includes(book)) {
+    return res.status(400).json({ error: 'Unknown or missing book' });
+  }
+  if (!q || q.trim().length < 2) {
+    return res.json({ results: [] });
+  }
+  try {
+    const results = concordance.search(q, { book });
+    res.json({ results });
+  } catch (err) {
+    log.error({ err }, 'Concordance search failed');
     res.status(500).json({ error: err.message });
   }
 });
@@ -177,6 +199,28 @@ router.get(
       });
     } catch (err) {
       log.error({ err }, 'Error listing modules');
+      res.status(500).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * GET /:book/:chapter/repetition-report
+ * Chapter-level repetition audit (head-editor): EN strings that recur and
+ * whether their IS translations agree — a cheap consistency check.
+ * Registered before /:book/:chapter/:moduleId so the literal path wins.
+ */
+router.get(
+  '/:book/:chapter/repetition-report',
+  requireAuth,
+  requireHeadEditor('book'),
+  validateBookChapter,
+  (req, res) => {
+    try {
+      const report = concordance.repetitionReport(req.params.book, req.chapterNum);
+      res.json({ book: req.params.book, chapter: req.chapterNum, report });
+    } catch (err) {
+      log.error({ err }, 'Error building repetition report');
       res.status(500).json({ error: err.message });
     }
   }
@@ -708,6 +752,34 @@ router.get(
       });
     } catch (err) {
       log.error({ err }, 'Error finding terms');
+      res.status(err.message.includes('not found') ? 404 : 500).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * GET /:book/:chapter/:moduleId/repetitions
+ * Exact-match review-deduplication suggestions: for each EN segment with a
+ * human-approved translation of the same sentence in another module, return
+ * that translation (outranks the MT draft). Editor confirms rather than
+ * re-reviews. Cross-book matches included (boilerplate recurs across books).
+ */
+router.get(
+  '/:book/:chapter/:moduleId/repetitions',
+  requireAuth,
+  requireRole(ROLES.EDITOR),
+  validateBookChapter,
+  validateModule,
+  (req, res) => {
+    try {
+      const repetitions = concordance.findRepetitions(
+        req.params.book,
+        req.chapterNum,
+        req.params.moduleId
+      );
+      res.json({ moduleId: req.params.moduleId, repetitions });
+    } catch (err) {
+      log.error({ err }, 'Error finding repetitions');
       res.status(err.message.includes('not found') ? 404 : 500).json({ error: err.message });
     }
   }

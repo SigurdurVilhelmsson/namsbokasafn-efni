@@ -751,6 +751,27 @@
 
     .term-issue-icon { flex-shrink: 0; }
 
+    /* --- Repetition (exact-match) hint --- */
+    .repetition-hint {
+      margin-top: 0.35rem;
+      padding: 0.4rem 0.55rem;
+      border-radius: var(--radius-md);
+      background: var(--success-subtle, #e8f5ee);
+      border-left: 3px solid var(--success, #2e8b57);
+      font-size: var(--text-xs);
+      line-height: 1.35;
+    }
+    .repetition-hint-label {
+      font-weight: 600;
+      color: var(--success, #2e8b57);
+      margin-bottom: 0.2rem;
+    }
+    .repetition-hint-text {
+      color: var(--text-secondary, #444);
+      margin-bottom: 0.35rem;
+      white-space: pre-wrap;
+    }
+
     /* --- Term popup --- */
     .term-popup {
       display: none;

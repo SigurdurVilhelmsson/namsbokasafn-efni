@@ -64,6 +64,7 @@ function runAllMigrations() {
     require('../migrations/033-fix-organic-chemistry-slug'),
     require('../migrations/034-localization-review'),
     require('../migrations/035-enforce-assignments'),
+    require('../migrations/036-tm-segments'),
   ];
 
   let applied = 0;
