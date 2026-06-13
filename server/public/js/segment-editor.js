@@ -963,11 +963,20 @@
     }
 
     try {
-      await saveRetry.attempt(
+      const saveResult = await saveRetry.attempt(
         `seg:${currentBook}/${currentChapter}/${currentModuleId}:${segmentId}`,
         saveUrl,
         saveOptions
       );
+
+      // Live terminology QA (non-blocking): warn if the edit contradicts an
+      // approved term. Advisory only — the save already succeeded.
+      if (saveResult && Array.isArray(saveResult.termWarnings) && saveResult.termWarnings.length) {
+        const names = saveResult.termWarnings
+          .map((w) => `„${w.english}“ → „${w.expected}“`)
+          .join(', ');
+        saveRetry.showToast(`Hugtakaviðvörun: ${names} fannst ekki í þýðingunni`, 'warn');
+      }
 
       dirtyEdits.delete(segmentId);
       lastServerSaveTime = Date.now();

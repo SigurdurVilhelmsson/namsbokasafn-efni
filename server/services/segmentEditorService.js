@@ -13,6 +13,7 @@ const { advanceChapterStatus } = require('./pipelineService');
 const contentVersionService = require('./contentVersionService');
 const tmService = require('./tmService');
 const concordanceService = require('./concordanceService');
+const terminologyService = require('./terminologyService');
 
 let BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
@@ -148,6 +149,57 @@ function getModuleEdits(book, moduleId, statusFilter) {
   query += ` ORDER BY created_at DESC`;
 
   return conn.prepare(query).all(...params);
+}
+
+/**
+ * Build the module's "to-be-published" segments: faithful/MT baseline with the
+ * latest non-rejected edit per segment overlaid (what apply would write).
+ *
+ * @returns {Array<{segmentId, enContent, isContent}>}
+ */
+function buildEffectiveSegments(book, chapter, moduleId) {
+  const data = segmentParser.loadModuleForEditing(book, chapter, moduleId);
+  const latestBySeg = {};
+  for (const e of getModuleEdits(book, moduleId)) {
+    if (e.status === 'rejected') continue;
+    const cur = latestBySeg[e.segment_id];
+    if (!cur || e.id > cur.id) latestBySeg[e.segment_id] = e;
+  }
+  return data.segments.map((s) => ({
+    segmentId: s.segmentId,
+    enContent: s.en,
+    isContent: latestBySeg[s.segmentId]?.edited_content ?? s.is,
+  }));
+}
+
+/**
+ * Live terminology warnings for a single edited segment (Unit 3.1, save path).
+ * Non-blocking: the EN comes from the extraction, the IS is the editor's draft.
+ *
+ * @returns {Array} terminology issues for that segment (may be empty)
+ */
+function getSegmentTerminologyWarnings(book, chapter, moduleId, segmentId, editedContent) {
+  let enContent = '';
+  try {
+    const data = segmentParser.loadModuleForEditing(book, chapter, moduleId);
+    enContent = data.segments.find((s) => s.segmentId === segmentId)?.en || '';
+  } catch {
+    return [];
+  }
+  if (!enContent) return [];
+  return terminologyService.checkSegmentConsistency(enContent, editedContent, book, segmentId);
+}
+
+/**
+ * Per-module terminology report (Unit 3.2, submit gate): which approved terms
+ * are still violated in the module's to-be-published content.
+ *
+ * @returns {{ violations: Array, checkedSegments: number }}
+ */
+function getModuleTerminologyReport(book, chapter, moduleId) {
+  const segments = buildEffectiveSegments(book, chapter, moduleId);
+  const violations = terminologyService.buildModuleTerminologyReport(segments, book);
+  return { violations, checkedSegments: segments.length };
 }
 
 /**
@@ -1034,6 +1086,9 @@ module.exports = {
   // Discussions
   addDiscussionComment,
   getDiscussion,
+  // Terminology QA (Unit 3)
+  getSegmentTerminologyWarnings,
+  getModuleTerminologyReport,
   // Statistics
   getModuleStats,
   getGlobalEditStats,

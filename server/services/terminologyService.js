@@ -1143,6 +1143,51 @@ function findTermsInSegments(segments, bookSlug = null) {
   return result;
 }
 
+/**
+ * Terminology consistency for a single segment (save-path QA, Unit 3.1).
+ * Returns the "missing approved translation" issues for one EN/IS pair.
+ *
+ * @param {string} enContent
+ * @param {string} isContent
+ * @param {string|null} bookSlug
+ * @param {string} [segmentId]
+ * @returns {Array<{type, headwordId, english, expected, message}>}
+ */
+function checkSegmentConsistency(enContent, isContent, bookSlug = null, segmentId = 'seg') {
+  const res = findTermsInSegments([{ segmentId, enContent, isContent }], bookSlug);
+  return res[segmentId]?.issues || [];
+}
+
+/**
+ * Aggregate terminology violations across a module's segments (submit-gate
+ * report, Unit 3.2). Groups by headword so a head-editor sees term → expected
+ * IS → which segments still violate it.
+ *
+ * @param {Array<{segmentId, enContent, isContent}>} segments
+ * @param {string|null} bookSlug
+ * @returns {Array<{headwordId, english, expected, count, segments: string[]}>}
+ */
+function buildModuleTerminologyReport(segments, bookSlug = null) {
+  const res = findTermsInSegments(segments, bookSlug);
+  const byTerm = new Map();
+  for (const [segId, { issues }] of Object.entries(res)) {
+    for (const issue of issues) {
+      if (!byTerm.has(issue.headwordId)) {
+        byTerm.set(issue.headwordId, {
+          headwordId: issue.headwordId,
+          english: issue.english,
+          expected: issue.expected,
+          segments: [],
+        });
+      }
+      byTerm.get(issue.headwordId).segments.push(segId);
+    }
+  }
+  return Array.from(byTerm.values())
+    .map((t) => ({ ...t, count: t.segments.length }))
+    .sort((a, b) => b.count - a.count);
+}
+
 // ─────────────────────────────────────────
 // Helpers
 // ─────────────────────────────────────────
@@ -1335,6 +1380,8 @@ module.exports = {
   // Query
   getStats,
   findTermsInSegments,
+  checkSegmentConsistency,
+  buildModuleTerminologyReport,
 
   // Constants
   TERM_STATUSES,

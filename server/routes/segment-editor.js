@@ -337,10 +337,28 @@ router.post(
         log.error({ err: logErr }, 'Activity log failed');
       }
 
+      // Live terminology QA (non-blocking): warn if the edit violates an
+      // approved term. The editor sees it but is never hard-blocked.
+      let termWarnings = [];
+      if (!result.reverted && typeof editedContent === 'string' && editedContent) {
+        try {
+          termWarnings = segmentEditor.getSegmentTerminologyWarnings(
+            req.params.book,
+            req.chapterNum,
+            req.params.moduleId,
+            segmentId,
+            editedContent
+          );
+        } catch (qaErr) {
+          log.error({ err: qaErr }, 'Terminology save-check failed (non-fatal)');
+        }
+      }
+
       res.json({
         success: true,
         editId: result.id,
         updated: result.updated,
+        termWarnings,
       });
     } catch (err) {
       if (err.code === 'SEGMENT_CONFLICT') {
@@ -780,6 +798,32 @@ router.get(
       res.json({ moduleId: req.params.moduleId, repetitions });
     } catch (err) {
       log.error({ err }, 'Error finding repetitions');
+      res.status(err.message.includes('not found') ? 404 : 500).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * GET /:book/:chapter/:moduleId/terminology-report
+ * Submit-gate terminology report (Unit 3.2): approved terms still violated in
+ * the module's to-be-published content, grouped by term. Advisory — no block.
+ */
+router.get(
+  '/:book/:chapter/:moduleId/terminology-report',
+  requireAuth,
+  requireRole(ROLES.EDITOR),
+  validateBookChapter,
+  validateModule,
+  (req, res) => {
+    try {
+      const report = segmentEditor.getModuleTerminologyReport(
+        req.params.book,
+        req.chapterNum,
+        req.params.moduleId
+      );
+      res.json({ moduleId: req.params.moduleId, ...report });
+    } catch (err) {
+      log.error({ err }, 'Error building terminology report');
       res.status(err.message.includes('not found') ? 404 : 500).json({ error: err.message });
     }
   }
