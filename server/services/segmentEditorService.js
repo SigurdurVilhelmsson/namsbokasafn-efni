@@ -11,6 +11,7 @@ const fs = require('fs');
 const log = require('../lib/logger');
 const { advanceChapterStatus } = require('./pipelineService');
 const contentVersionService = require('./contentVersionService');
+const tmService = require('./tmService');
 
 let BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
@@ -698,6 +699,14 @@ function applyApprovedEdits(book, chapter, moduleId) {
     }
   } catch (err) {
     log.error({ err }, 'Auto-advance linguisticReview failed');
+  }
+
+  // Keep the book's TMX current (debounced, fire-and-forget — see tmService).
+  // The faithful files this apply just wrote are the TM source.
+  try {
+    tmService.scheduleTmRegen(book);
+  } catch (err) {
+    log.error({ err }, 'Scheduling TM regeneration failed');
   }
 
   return result;

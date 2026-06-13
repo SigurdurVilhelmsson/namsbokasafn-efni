@@ -1295,6 +1295,21 @@ router.get('/:book/:chapter/sections', requireAuth, (req, res) => {
       publication: path.join(bookPath, '05-publication', 'faithful', 'chapters', chapterStr),
     };
 
+    // Does a book-level TMX exist? tools/generate-tm.js emits a single
+    // `tm/<book>-<date>.tmx` covering every faithful module, so the per-section
+    // `tm/chNN/<section>.tmx` files below never appear under the current model.
+    // Treat the book TMX as covering this chapter's reviewed sections.
+    let hasBookTmx = false;
+    try {
+      const tmDir = path.join(bookPath, 'tm');
+      if (fs.existsSync(tmDir)) {
+        const re = new RegExp(`^${book.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}-.*\\.tmx$`);
+        hasBookTmx = fs.readdirSync(tmDir).some((f) => re.test(f));
+      }
+    } catch {
+      hasBookTmx = false;
+    }
+
     // Collect all unique section IDs from all directories
     const sectionSet = new Set();
 
@@ -1360,10 +1375,15 @@ router.get('/:book/:chapter/sections', requireAuth, (req, res) => {
         stages.linguisticReview = 'not-started';
       }
 
-      // Check TM (simplified - just check if any TMX exists for the chapter)
+      // Check TM. The book-level TMX (generate-tm.js) covers reviewed sections;
+      // the legacy per-section paths are kept for backward compatibility.
       const tmxFile = path.join(stagePaths.tmCreated, `${sectionId}.tmx`);
       const tmxAlternate = path.join(bookPath, 'tm', `${chapterDir}-${sectionId}.tmx`);
-      if (fs.existsSync(tmxFile) || fs.existsSync(tmxAlternate)) {
+      if (
+        (hasBookTmx && stages.linguisticReview === 'complete') ||
+        fs.existsSync(tmxFile) ||
+        fs.existsSync(tmxAlternate)
+      ) {
         stages.tmCreated = 'complete';
       } else if (stages.linguisticReview === 'complete') {
         stages.tmCreated = 'pending';

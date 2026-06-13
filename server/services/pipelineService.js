@@ -795,55 +795,32 @@ const cleanupInterval = setInterval(() => cleanupJobs(), 1800000);
 cleanupInterval.unref();
 
 /**
- * Run prepare-for-align.js for all modules in a chapter.
- * Requires linguisticReview to be complete (faithful files exist).
+ * Generate the book's TMX translation memory via tools/generate-tm.js.
+ * Pairs EN source (02-for-mt/) with reviewed IS (03-faithful-translation/)
+ * segments — no Matecat Align step. Optionally scoped to one chapter.
+ * Requires at least one faithful translation to exist.
  *
  * @param {Object} params
  * @param {string} params.book - Book slug
- * @param {number} params.chapter - Chapter number
+ * @param {number} [params.chapter] - Chapter number (omit for whole book)
  * @param {string} [params.userId] - User who triggered the run
  * @returns {Object} { jobId, promise }
  */
-function runPrepareTm({ book, chapter, userId }) {
-  const chapterStr = String(chapter).padStart(2, '0');
-  const enDir = path.join(BOOKS_DIR, book, '02-for-mt', `ch${chapterStr}`);
-  const isDir = path.join(BOOKS_DIR, book, '03-faithful-translation', `ch${chapterStr}`);
-  const outputDir = path.join(BOOKS_DIR, book, 'for-align', `ch${chapterStr}`);
-
-  if (!fs.existsSync(enDir)) {
-    throw new Error(`EN segments directory not found: 02-for-mt/ch${chapterStr}`);
-  }
-  if (!fs.existsSync(isDir)) {
-    throw new Error(
-      `Faithful translation directory not found: 03-faithful-translation/ch${chapterStr}`
-    );
+function runGenerateTm({ book, chapter, userId }) {
+  const faithfulRoot = path.join(BOOKS_DIR, book, '03-faithful-translation');
+  if (!fs.existsSync(faithfulRoot)) {
+    throw new Error(`No faithful translations found for ${book} (03-faithful-translation missing)`);
   }
 
-  // Find EN segment files (module-style: m68724-segments.en.md)
-  const enFiles = fs.readdirSync(enDir).filter((f) => f.endsWith('-segments.en.md'));
-  if (enFiles.length === 0) {
-    throw new Error(`No EN segment files found in 02-for-mt/ch${chapterStr}`);
-  }
-
-  // Find matching IS files
-  const isFileSet = new Set(fs.readdirSync(isDir).filter((f) => f.endsWith('-segments.is.md')));
-
-  // Build pairs: EN file + matching IS file
-  const pairs = [];
-  for (const enFile of enFiles) {
-    const moduleId = enFile.replace('-segments.en.md', '');
-    const isFile = `${moduleId}-segments.is.md`;
-    if (isFileSet.has(isFile)) {
-      pairs.push({
-        moduleId,
-        en: path.join(enDir, enFile),
-        is: path.join(isDir, isFile),
-      });
+  let chapterStr = null;
+  if (chapter !== undefined && chapter !== null) {
+    chapterStr = String(chapter).padStart(2, '0');
+    const chDir = path.join(faithfulRoot, `ch${chapterStr}`);
+    if (!fs.existsSync(chDir)) {
+      throw new Error(
+        `Faithful translation directory not found: 03-faithful-translation/ch${chapterStr}`
+      );
     }
-  }
-
-  if (pairs.length === 0) {
-    throw new Error(`No modules have both EN and IS files for chapter ${chapter}`);
   }
 
   // Guard: reject if too many concurrent jobs
@@ -853,73 +830,51 @@ function runPrepareTm({ book, chapter, userId }) {
     );
   }
 
+  const scope = chapterStr ? `chapter ${chapter}` : 'whole book';
   const jobId = generateJobId();
   const job = {
     id: jobId,
-    type: 'prepare-tm',
-    chapter,
+    type: 'generate-tm',
+    chapter: chapter ?? 'all',
     moduleId: 'all',
     track: 'faithful',
     userId,
     status: 'running',
     startedAt: new Date().toISOString(),
     completedAt: null,
-    output: [`Preparing ${pairs.length} modules for Matecat Align...`],
+    output: [`Generating TMX for ${book} (${scope})...`],
     error: null,
   };
   jobs.set(jobId, job);
 
+  const args = [path.join(TOOLS_DIR, 'generate-tm.js'), '--book', book];
+  if (chapterStr) args.push('--chapter', String(chapter));
+
   const promise = (async () => {
     try {
-      if (!fs.existsSync(outputDir)) {
-        fs.mkdirSync(outputDir, { recursive: true });
-      }
-
-      for (const pair of pairs) {
-        job.output.push(`Processing ${pair.moduleId}...`);
-
-        await new Promise((resolve, reject) => {
-          const child = spawn(
-            'node',
-            [
-              path.join(TOOLS_DIR, 'prepare-for-align.js'),
-              '--en',
-              pair.en,
-              '--is',
-              pair.is,
-              '--output-dir',
-              outputDir,
-              '--verbose',
-            ],
-            {
-              cwd: PROJECT_ROOT,
-              env: { ...process.env, NODE_NO_WARNINGS: '1' },
-            }
-          );
-
-          child.stdout.on('data', (data) => {
-            job.output.push(...data.toString().trim().split('\n'));
-          });
-          child.stderr.on('data', (data) => {
-            job.output.push(...data.toString().trim().split('\n'));
-          });
-
-          child.on('error', (err) => reject(err));
-          child.on('close', (code) => {
-            if (code === 0) {
-              resolve();
-            } else {
-              reject(
-                new Error(`prepare-for-align failed for ${pair.moduleId} (exit code ${code})`)
-              );
-            }
-          });
+      await new Promise((resolve, reject) => {
+        const child = spawn('node', args, {
+          cwd: PROJECT_ROOT,
+          env: { ...process.env, NODE_NO_WARNINGS: '1' },
         });
-      }
+
+        child.stdout.on('data', (data) => {
+          job.output.push(...data.toString().trim().split('\n'));
+        });
+        child.stderr.on('data', (data) => {
+          job.output.push(...data.toString().trim().split('\n'));
+        });
+
+        child.on('error', (err) => reject(err));
+        child.on('close', (code) => {
+          if (code === 0) resolve();
+          else reject(new Error(`generate-tm failed (exit code ${code})`));
+        });
+      });
 
       job.status = 'completed';
       job.completedAt = new Date().toISOString();
-      job.output.push(`Done. ${pairs.length} module pairs ready in for-align/ch${chapterStr}/`);
+      job.output.push(`Done. TMX written to tm/.`);
     } catch (err) {
       job.status = 'failed';
       job.error = err.message;
@@ -937,7 +892,7 @@ module.exports = {
   runInject,
   runRender,
   runPipeline,
-  runPrepareTm,
+  runGenerateTm,
   runFetchSource,
   getJob,
   listJobs,

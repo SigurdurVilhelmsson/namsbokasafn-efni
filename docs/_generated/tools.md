@@ -9,7 +9,6 @@
 | `cnxml-extract` | Extract EN segments and structure from CNXML source | 1a |
 | `cnxml-inject` | Inject translated segments back into CNXML | 5a |
 | `cnxml-render` | Render translated CNXML to semantic HTML | 5b |
-| `prepare-for-align` | Prepare markdown files for Matecat Align | 4 |
 
 ## Utility Tools
 
@@ -49,6 +48,6 @@ These tools are deprecated and replaced by Matecat Align in the simplified workf
 
 ---
 
-*28 tools total (28 active, 0 deprecated)*
+*27 tools total (27 active, 0 deprecated)*
 
 See [cli-reference.md](../technical/cli-reference.md) for detailed usage instructions.

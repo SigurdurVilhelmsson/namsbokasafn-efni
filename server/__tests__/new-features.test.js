@@ -7,27 +7,27 @@ import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
 
-// ----- pipelineService: runPrepareTm -----
+// ----- pipelineService: runGenerateTm -----
 
-describe('runPrepareTm', () => {
-  const { runPrepareTm } = require('../services/pipelineService');
+describe('runGenerateTm', () => {
+  const { runGenerateTm } = require('../services/pipelineService');
 
-  it('throws on missing EN segments directory', () => {
-    expect(() => runPrepareTm({ book: 'nonexistent-book', chapter: 99 })).toThrow(
-      'EN segments directory not found'
+  it('throws when the book has no faithful translations', () => {
+    expect(() => runGenerateTm({ book: 'nonexistent-book', chapter: 99 })).toThrow(
+      'No faithful translations found'
     );
   });
 
-  it('throws on missing faithful translation directory', () => {
+  it('throws on missing faithful translation directory for a chapter', () => {
     // ch05 has 02-for-mt but no 03-faithful-translation/ch05
-    expect(() => runPrepareTm({ book: 'efnafraedi-2e', chapter: 5 })).toThrow(
+    expect(() => runGenerateTm({ book: 'efnafraedi-2e', chapter: 5 })).toThrow(
       'Faithful translation directory not found'
     );
   });
 
   it('is a function that accepts book/chapter/userId params', () => {
-    expect(typeof runPrepareTm).toBe('function');
-    expect(runPrepareTm.length).toBe(1); // single destructured param
+    expect(typeof runGenerateTm).toBe('function');
+    expect(runGenerateTm.length).toBe(1); // single destructured param
   });
 });
 
