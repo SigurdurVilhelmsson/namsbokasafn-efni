@@ -1144,6 +1144,72 @@ function findTermsInSegments(segments, bookSlug = null) {
 }
 
 /**
+ * Export a book's glossary from the DB in the `glossary-unified.json` shape
+ * consumed by `tools/api-translate.js` (Unit 6.1 — keeps the MT glossary fresh
+ * instead of the months-stale committed export).
+ *
+ * Scoped to the book's primary subject (so chemistry books get chemistry
+ * terms); if the book has no subject mapping, all terms are included. One row
+ * per translation; sibling translations become `alternatives`.
+ *
+ * @param {string} bookSlug
+ * @returns {{ generated, book, stats, terms: Array }}
+ */
+function exportBookGlossary(bookSlug) {
+  const db = getDb();
+  const bookSubject = getBookSubjectBySlug(db, bookSlug);
+
+  const rows = db
+    .prepare(
+      `SELECT h.id AS headword_id, h.english, h.pos, h.definition_en,
+              t.icelandic, t.definition_is, t.status, t.source, t.notes,
+              GROUP_CONCAT(ts.subject) AS subjects
+       FROM terminology_headwords h
+       JOIN terminology_translations t ON t.headword_id = h.id
+       LEFT JOIN terminology_translation_subjects ts ON ts.translation_id = t.id
+       GROUP BY t.id
+       ORDER BY h.english COLLATE NOCASE ASC`
+    )
+    .all();
+
+  // Group translations per headword for alternatives + subject scoping.
+  const byHeadword = new Map();
+  for (const r of rows) {
+    const subjects = r.subjects ? r.subjects.split(',') : [];
+    if (!byHeadword.has(r.headword_id)) byHeadword.set(r.headword_id, []);
+    byHeadword.get(r.headword_id).push({ ...r, subjects });
+  }
+
+  const terms = [];
+  const stats = { total: 0, approved: 0, proposed: 0, needs_review: 0, disputed: 0 };
+  for (const translations of byHeadword.values()) {
+    for (const t of translations) {
+      // Subject scoping: include when the translation carries the book's
+      // subject, or when the book has no subject mapping.
+      if (bookSubject && !t.subjects.includes(bookSubject)) continue;
+      terms.push({
+        english: t.english,
+        icelandic: t.icelandic,
+        pos: t.pos,
+        definitionEn: t.definition_en,
+        definitionIs: t.definition_is,
+        status: t.status,
+        source: t.source,
+        subjects: t.subjects,
+        alternatives: translations
+          .filter((o) => o.icelandic !== t.icelandic)
+          .map((o) => o.icelandic),
+        notes: t.notes,
+      });
+      stats.total++;
+      if (stats[t.status] !== undefined) stats[t.status]++;
+    }
+  }
+
+  return { generated: new Date().toISOString(), book: bookSlug, stats, terms };
+}
+
+/**
  * Terminology consistency for a single segment (save-path QA, Unit 3.1).
  * Returns the "missing approved translation" issues for one EN/IS pair.
  *
@@ -1382,6 +1448,7 @@ module.exports = {
   findTermsInSegments,
   checkSegmentConsistency,
   buildModuleTerminologyReport,
+  exportBookGlossary,
 
   // Constants
   TERM_STATUSES,
