@@ -279,6 +279,7 @@
       showPipelinePanel();
       showPreviewPanel();
       showApplyPanel();
+      showReviewSummary();
       restoreDraft();
       startDraftTimer();
 
@@ -408,6 +409,110 @@
         .join('');
     } catch (err) {
       resultsEl.innerHTML = `<div class="text-muted">Leit mistókst: ${escapeHtml(err.message || '')}</div>`;
+    }
+  }
+
+  // ================================================================
+  // REVIEW SUMMARY (head-editor): terminology violations + proofreading
+  // ================================================================
+  function showReviewSummary() {
+    const isHeadEditor = ['head-editor', 'admin'].includes(getEffectiveRole());
+    const panel = document.getElementById('review-summary-panel');
+    if (!panel) return;
+    panel.style.display = isHeadEditor ? 'block' : 'none';
+    const spellEl = document.getElementById('review-summary-spell');
+    if (spellEl) spellEl.innerHTML = '';
+    if (isHeadEditor) loadTerminologyReport();
+  }
+
+  async function loadTerminologyReport() {
+    const el = document.getElementById('review-summary-terms');
+    if (!el || !currentModuleId) return;
+    try {
+      const data = await fetchJson(
+        `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/terminology-report`,
+        { credentials: 'include' }
+      );
+      const violations = data.violations || [];
+      if (!violations.length) {
+        el.innerHTML = '<div class="text-muted">Engin hugtakafrávik.</div>';
+        return;
+      }
+      el.innerHTML =
+        '<div class="rs-label">Hugtakafrávik</div>' +
+        violations
+          .map(
+            (v) =>
+              `<div class="rs-term">„${escapeHtml(v.english)}“ &#8594; „${escapeHtml(v.expected)}“ <span class="rs-count">(${v.count})</span></div>`
+          )
+          .join('');
+    } catch {
+      el.innerHTML = '';
+    }
+  }
+
+  async function runSpellcheck() {
+    const el = document.getElementById('review-summary-spell');
+    if (!el || !currentModuleId) return;
+    el.innerHTML = '<div class="text-muted">Yfirles…</div>';
+    try {
+      const data = await fetchJson(
+        `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/spellcheck`,
+        { credentials: 'include' }
+      );
+      if (!data.enabled) {
+        el.innerHTML =
+          '<div class="text-muted">Yfirlestur er ekki virkur (GREYNIR_URL vantar á þjóni).</div>';
+        return;
+      }
+      const segs = data.segments || [];
+      if (!segs.length) {
+        el.innerHTML =
+          '<div class="rs-label">Yfirlestur</div><div class="text-muted">Engar ábendingar.</div>';
+        return;
+      }
+      el.innerHTML =
+        '<div class="rs-label">Yfirlestur</div>' +
+        segs
+          .map((s) => {
+            const shortId = escapeHtml(s.segmentId.split(':').slice(1).join(':'));
+            const msgs = s.findings.map((f) => escapeHtml(f.message)).join('; ');
+            return `<div class="rs-seg"><code>${shortId}</code>: ${msgs}</div>`;
+          })
+          .join('');
+    } catch (err) {
+      el.innerHTML = `<div class="text-muted">Yfirlestur mistókst: ${escapeHtml(err.message || '')}</div>`;
+    }
+  }
+
+  async function runRepetitionReport() {
+    const el = document.getElementById('review-summary-repetition');
+    if (!el) return;
+    el.innerHTML = '<div class="text-muted">Sæki endurtekningar…</div>';
+    try {
+      const data = await fetchJson(
+        `${API_BASE}/${currentBook}/${currentChapter}/repetition-report`,
+        { credentials: 'include' }
+      );
+      const report = data.report || [];
+      if (!report.length) {
+        el.innerHTML =
+          '<div class="rs-label">Endurtekningar</div><div class="text-muted">Engar endurteknar setningar.</div>';
+        return;
+      }
+      el.innerHTML =
+        '<div class="rs-label">Endurtekningar í kafla</div>' +
+        report
+          .map((r) => {
+            const mark = r.agree ? '&#10003;' : '&#9888;';
+            const cls = r.agree ? 'rs-agree' : 'rs-disagree';
+            const snippet = r.en_text.length > 90 ? r.en_text.slice(0, 90) + '…' : r.en_text;
+            const extra = r.agree ? '' : ', ' + r.distinctTranslations + ' þýðingar';
+            return `<div class="rs-seg"><span class="${cls}">${mark}</span> ${escapeHtml(snippet)} <span class="rs-count">(&times;${r.count}${extra})</span></div>`;
+          })
+          .join('');
+    } catch (err) {
+      el.innerHTML = `<div class="text-muted">Mistókst: ${escapeHtml(err.message || '')}</div>`;
     }
   }
 
@@ -1176,6 +1281,12 @@
     if (concResults) concResults.innerHTML = '';
     const concInput = document.getElementById('concordance-q');
     if (concInput) concInput.value = '';
+    const rsTerms = document.getElementById('review-summary-terms');
+    if (rsTerms) rsTerms.innerHTML = '';
+    const rsSpell = document.getElementById('review-summary-spell');
+    if (rsSpell) rsSpell.innerHTML = '';
+    const rsRep = document.getElementById('review-summary-repetition');
+    if (rsRep) rsRep.innerHTML = '';
 
     // Reset topbar title
     const topbarTitle = document.getElementById('topbar-title');
@@ -1208,6 +1319,14 @@
         searchConcordance();
       }
     });
+  }
+  const spellcheckBtn = document.getElementById('btn-spellcheck');
+  if (spellcheckBtn) {
+    spellcheckBtn.addEventListener('click', runSpellcheck);
+  }
+  const repetitionBtn = document.getElementById('btn-repetition-report');
+  if (repetitionBtn) {
+    repetitionBtn.addEventListener('click', runRepetitionReport);
   }
 
   // ================================================================
