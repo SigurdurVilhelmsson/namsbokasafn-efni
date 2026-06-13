@@ -39,6 +39,23 @@ const segmentParser = require('../services/segmentParser');
 const segmentEditor = require('../services/segmentEditorService');
 const concordance = require('../services/concordanceService');
 const activityLog = require('../services/activityLog');
+const notifications = require('../services/notifications');
+
+// Notify an edit's author of a head-editor decision (fire-and-forget — a
+// notification failure must never fail the decision).
+function notifyDecision(edit, decision, req) {
+  Promise.resolve()
+    .then(() =>
+      notifications.notifyEditDecision(
+        edit,
+        decision,
+        req.user.id,
+        req.user.username,
+        req.body?.note
+      )
+    )
+    .catch((err) => log.error({ err }, 'Edit-decision notification failed'));
+}
 
 // ─── Book data lookup (slug → chapter/module metadata) ───────────────
 const { enrichChapters, enrichModules } = require('../services/bookDataLoader');
@@ -535,6 +552,7 @@ router.post(
       } catch {
         /* fire-and-forget */
       }
+      notifyDecision(edit, 'approved', req);
       res.json({ success: true, edit });
     } catch (err) {
       res.status(400).json({ error: err.message });
@@ -571,6 +589,7 @@ router.post(
       } catch {
         /* fire-and-forget */
       }
+      notifyDecision(edit, 'rejected', req);
       res.json({ success: true, edit });
     } catch (err) {
       res.status(400).json({ error: err.message });
@@ -607,6 +626,7 @@ router.post(
       } catch {
         /* fire-and-forget */
       }
+      notifyDecision(edit, 'discuss', req);
       res.json({ success: true, edit });
     } catch (err) {
       res.status(400).json({ error: err.message });
