@@ -485,6 +485,37 @@
     }
   }
 
+  async function runRepetitionReport() {
+    const el = document.getElementById('review-summary-repetition');
+    if (!el) return;
+    el.innerHTML = '<div class="text-muted">Sæki endurtekningar…</div>';
+    try {
+      const data = await fetchJson(
+        `${API_BASE}/${currentBook}/${currentChapter}/repetition-report`,
+        { credentials: 'include' }
+      );
+      const report = data.report || [];
+      if (!report.length) {
+        el.innerHTML =
+          '<div class="rs-label">Endurtekningar</div><div class="text-muted">Engar endurteknar setningar.</div>';
+        return;
+      }
+      el.innerHTML =
+        '<div class="rs-label">Endurtekningar í kafla</div>' +
+        report
+          .map((r) => {
+            const mark = r.agree ? '&#10003;' : '&#9888;';
+            const cls = r.agree ? 'rs-agree' : 'rs-disagree';
+            const snippet = r.en_text.length > 90 ? r.en_text.slice(0, 90) + '…' : r.en_text;
+            const extra = r.agree ? '' : ', ' + r.distinctTranslations + ' þýðingar';
+            return `<div class="rs-seg"><span class="${cls}">${mark}</span> ${escapeHtml(snippet)} <span class="rs-count">(&times;${r.count}${extra})</span></div>`;
+          })
+          .join('');
+    } catch (err) {
+      el.innerHTML = `<div class="text-muted">Mistókst: ${escapeHtml(err.message || '')}</div>`;
+    }
+  }
+
   // ================================================================
   // RENDER MODULE
   // ================================================================
@@ -1254,6 +1285,8 @@
     if (rsTerms) rsTerms.innerHTML = '';
     const rsSpell = document.getElementById('review-summary-spell');
     if (rsSpell) rsSpell.innerHTML = '';
+    const rsRep = document.getElementById('review-summary-repetition');
+    if (rsRep) rsRep.innerHTML = '';
 
     // Reset topbar title
     const topbarTitle = document.getElementById('topbar-title');
@@ -1290,6 +1323,10 @@
   const spellcheckBtn = document.getElementById('btn-spellcheck');
   if (spellcheckBtn) {
     spellcheckBtn.addEventListener('click', runSpellcheck);
+  }
+  const repetitionBtn = document.getElementById('btn-repetition-report');
+  if (repetitionBtn) {
+    repetitionBtn.addEventListener('click', runRepetitionReport);
   }
 
   // ================================================================

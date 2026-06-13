@@ -868,6 +868,8 @@
       font-size: var(--text-xs);
       color: var(--text-muted, #888);
     }
+    .rs-agree { color: var(--success, #2e8b57); }
+    .rs-disagree { color: var(--warning, #b45309); }
 
     /* --- Term popup --- */
     .term-popup {
@@ -1310,16 +1312,26 @@
       <div class="review-summary-panel" id="review-summary-panel" style="display: none;">
         <div class="review-summary-head">
           <h4>Yfirlit ritstjóra</h4>
-          <button
-            class="btn btn-secondary btn-sm"
-            id="btn-spellcheck"
-            title="Málfræði- og stafsetningaryfirlestur (Greynir)"
-          >
-            Yfirlestur
-          </button>
+          <div style="display:flex; gap:0.4rem;">
+            <button
+              class="btn btn-secondary btn-sm"
+              id="btn-repetition-report"
+              title="Endurteknar enskar setningar í kaflanum og hvort þýðingar þeirra samræmast"
+            >
+              Endurtekningar í kafla
+            </button>
+            <button
+              class="btn btn-secondary btn-sm"
+              id="btn-spellcheck"
+              title="Málfræði- og stafsetningaryfirlestur (Greynir)"
+            >
+              Yfirlestur
+            </button>
+          </div>
         </div>
         <div id="review-summary-terms"></div>
         <div id="review-summary-spell"></div>
+        <div id="review-summary-repetition"></div>
       </div>
 
       <!-- Pipeline Panel (HEAD_EDITOR only) -->
