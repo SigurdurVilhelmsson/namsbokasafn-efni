@@ -196,10 +196,12 @@
 | Method | Path |
 |--------|------|
 | GET | `/terminology/lookup` |
+| GET | `/concordance` |
 | GET | `/reviews/:reviewId` |
 | GET | `/edit/:editId/comments` |
 | GET | `/:book/chapters` |
 | GET | `/:book/:chapter` |
+| GET | `/:book/:chapter/repetition-report` |
 | GET | `/:book/:chapter/:moduleId` |
 | POST | `/:book/:chapter/:moduleId/edit` |
 | DELETE | `/edit/:editId` |
@@ -213,6 +215,9 @@
 | POST | `/reviews/:reviewId/complete` |
 | POST | `/edit/:editId/comment` |
 | GET | `/:book/:chapter/:moduleId/terms` |
+| GET | `/:book/:chapter/:moduleId/repetitions` |
+| GET | `/:book/:chapter/:moduleId/terminology-report` |
+| GET | `/:book/:chapter/:moduleId/spellcheck` |
 | GET | `/:book/:chapter/:moduleId/stats` |
 | GET | `/:book/:chapter/:moduleId/apply-status` |
 | POST | `/:book/:chapter/:moduleId/apply` |
@@ -284,6 +289,10 @@
 | POST | `/import/key-terms` |
 | POST | `/import/existing-glossary` |
 | POST | `/check-consistency` |
+| POST | `/mine` |
+| GET | `/mined-candidates` |
+| POST | `/mined-candidates/:id/dismiss` |
+| POST | `/mined-candidates/:id/promote` |
 
 ## /views
 

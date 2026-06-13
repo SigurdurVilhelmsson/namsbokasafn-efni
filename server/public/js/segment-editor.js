@@ -16,6 +16,7 @@
   let _loadingModuleId = null; // re-entrancy guard for loadModule()
   let moduleData = null;
   let termData = null; // Per-segment term matches and issues
+  let repetitionData = {}; // segmentId → { suggestion: {is_text, book, chapter, module_id} }
   let userRole = 'viewer';
   let userName = null;
   let termLookupTimer = null;
@@ -278,6 +279,7 @@
       showPipelinePanel();
       showPreviewPanel();
       showApplyPanel();
+      showReviewSummary();
       restoreDraft();
       startDraftTimer();
 
@@ -285,8 +287,9 @@
       document.getElementById('save-status-bar').style.display = 'flex';
       updateSaveStatusBar();
 
-      // Load term data in background (non-blocking)
+      // Load term data + repetition suggestions in background (non-blocking)
       loadTermData(moduleId);
+      loadRepetitions(moduleId);
     } catch (err) {
       // Restore module list on error so users can retry
       document.getElementById('module-selector').style.display = 'block';
@@ -314,6 +317,202 @@
     } catch {
       // Term loading is non-critical, fail silently
       termData = null;
+    }
+  }
+
+  // Fetch exact-match review-deduplication suggestions: segments whose EN was
+  // already approved elsewhere get a "þegar samþykkt" hint with one-click insert.
+  async function loadRepetitions(moduleId) {
+    const requestedModule = currentModuleId;
+    try {
+      const res = await fetch(
+        `${API_BASE}/${currentBook}/${currentChapter}/${moduleId}/repetitions`,
+        { credentials: 'include' }
+      );
+      if (!res.ok || currentModuleId !== requestedModule) return;
+      const data = await res.json();
+      if (currentModuleId !== requestedModule) return;
+      repetitionData = {};
+      for (const rep of data.repetitions || []) {
+        repetitionData[rep.segmentId] = rep;
+      }
+      renderSegments();
+    } catch {
+      // Non-critical
+      repetitionData = {};
+    }
+  }
+
+  // Insert a repetition suggestion into a segment's edit box (still saved
+  // through the normal QA path — no silent auto-apply).
+  function insertRepetition(segmentId) {
+    const rep = repetitionData?.[segmentId];
+    if (!rep?.suggestion) return;
+    openEditPanel(segmentId);
+    const ta = document.getElementById('textarea-' + cssId(segmentId));
+    if (ta) {
+      ta.value = rep.suggestion.is_text;
+      ta.dispatchEvent(new Event('input', { bubbles: true }));
+      ta.focus();
+    }
+  }
+
+  // ================================================================
+  // CONCORDANCE SEARCH ("how did we translate this before?")
+  // ================================================================
+  function highlightQuery(text, q) {
+    const escaped = escapeHtml(text);
+    if (!q) return escaped;
+    // Highlight the (escaped) query as a literal, case-insensitively.
+    const needle = escapeHtml(q).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    try {
+      return escaped.replace(new RegExp(needle, 'gi'), (m) => `<mark>${m}</mark>`);
+    } catch {
+      return escaped;
+    }
+  }
+
+  async function searchConcordance() {
+    const input = document.getElementById('concordance-q');
+    const resultsEl = document.getElementById('concordance-results');
+    if (!input || !resultsEl) return;
+    const q = input.value.trim();
+    if (q.length < 2) {
+      resultsEl.innerHTML = '<div class="text-muted">Sláðu inn a.m.k. 2 stafi.</div>';
+      return;
+    }
+    if (!currentBook) return;
+    resultsEl.innerHTML = '<div class="text-muted">Leita…</div>';
+    try {
+      const data = await fetchJson(
+        `${API_BASE}/concordance?q=${encodeURIComponent(q)}&book=${encodeURIComponent(currentBook)}`,
+        { credentials: 'include' }
+      );
+      const results = data.results || [];
+      if (!results.length) {
+        resultsEl.innerHTML = '<div class="text-muted">Engar fyrri þýðingar fundust.</div>';
+        return;
+      }
+      resultsEl.innerHTML = results
+        .map((r) => {
+          const prov = `${escapeHtml(r.module_id)} · kafli ${escapeHtml(String(r.chapter))}`;
+          const href =
+            `/segment-editor?book=${encodeURIComponent(r.book)}` +
+            `&chapter=${encodeURIComponent(r.chapter)}&module=${encodeURIComponent(r.module_id)}`;
+          return `
+          <div class="concordance-hit">
+            <div class="concordance-en">${highlightQuery(r.en_text, q)}</div>
+            <div class="concordance-is">${highlightQuery(r.is_text, q)}</div>
+            <a class="concordance-prov" href="${href}" target="_blank" rel="noopener">${prov} &#8599;</a>
+          </div>`;
+        })
+        .join('');
+    } catch (err) {
+      resultsEl.innerHTML = `<div class="text-muted">Leit mistókst: ${escapeHtml(err.message || '')}</div>`;
+    }
+  }
+
+  // ================================================================
+  // REVIEW SUMMARY (head-editor): terminology violations + proofreading
+  // ================================================================
+  function showReviewSummary() {
+    const isHeadEditor = ['head-editor', 'admin'].includes(getEffectiveRole());
+    const panel = document.getElementById('review-summary-panel');
+    if (!panel) return;
+    panel.style.display = isHeadEditor ? 'block' : 'none';
+    const spellEl = document.getElementById('review-summary-spell');
+    if (spellEl) spellEl.innerHTML = '';
+    if (isHeadEditor) loadTerminologyReport();
+  }
+
+  async function loadTerminologyReport() {
+    const el = document.getElementById('review-summary-terms');
+    if (!el || !currentModuleId) return;
+    try {
+      const data = await fetchJson(
+        `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/terminology-report`,
+        { credentials: 'include' }
+      );
+      const violations = data.violations || [];
+      if (!violations.length) {
+        el.innerHTML = '<div class="text-muted">Engin hugtakafrávik.</div>';
+        return;
+      }
+      el.innerHTML =
+        '<div class="rs-label">Hugtakafrávik</div>' +
+        violations
+          .map(
+            (v) =>
+              `<div class="rs-term">„${escapeHtml(v.english)}“ &#8594; „${escapeHtml(v.expected)}“ <span class="rs-count">(${v.count})</span></div>`
+          )
+          .join('');
+    } catch {
+      el.innerHTML = '';
+    }
+  }
+
+  async function runSpellcheck() {
+    const el = document.getElementById('review-summary-spell');
+    if (!el || !currentModuleId) return;
+    el.innerHTML = '<div class="text-muted">Yfirles…</div>';
+    try {
+      const data = await fetchJson(
+        `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/spellcheck`,
+        { credentials: 'include' }
+      );
+      if (!data.enabled) {
+        el.innerHTML =
+          '<div class="text-muted">Yfirlestur er ekki virkur (GREYNIR_URL vantar á þjóni).</div>';
+        return;
+      }
+      const segs = data.segments || [];
+      if (!segs.length) {
+        el.innerHTML =
+          '<div class="rs-label">Yfirlestur</div><div class="text-muted">Engar ábendingar.</div>';
+        return;
+      }
+      el.innerHTML =
+        '<div class="rs-label">Yfirlestur</div>' +
+        segs
+          .map((s) => {
+            const shortId = escapeHtml(s.segmentId.split(':').slice(1).join(':'));
+            const msgs = s.findings.map((f) => escapeHtml(f.message)).join('; ');
+            return `<div class="rs-seg"><code>${shortId}</code>: ${msgs}</div>`;
+          })
+          .join('');
+    } catch (err) {
+      el.innerHTML = `<div class="text-muted">Yfirlestur mistókst: ${escapeHtml(err.message || '')}</div>`;
+    }
+  }
+
+  async function runRepetitionReport() {
+    const el = document.getElementById('review-summary-repetition');
+    if (!el) return;
+    el.innerHTML = '<div class="text-muted">Sæki endurtekningar…</div>';
+    try {
+      const data = await fetchJson(
+        `${API_BASE}/${currentBook}/${currentChapter}/repetition-report`,
+        { credentials: 'include' }
+      );
+      const report = data.report || [];
+      if (!report.length) {
+        el.innerHTML =
+          '<div class="rs-label">Endurtekningar</div><div class="text-muted">Engar endurteknar setningar.</div>';
+        return;
+      }
+      el.innerHTML =
+        '<div class="rs-label">Endurtekningar í kafla</div>' +
+        report
+          .map((r) => {
+            const mark = r.agree ? '&#10003;' : '&#9888;';
+            const cls = r.agree ? 'rs-agree' : 'rs-disagree';
+            const snippet = r.en_text.length > 90 ? r.en_text.slice(0, 90) + '…' : r.en_text;
+            const extra = r.agree ? '' : ', ' + r.distinctTranslations + ' þýðingar';
+            return `<div class="rs-seg"><span class="${cls}">${mark}</span> ${escapeHtml(snippet)} <span class="rs-count">(&times;${r.count}${extra})</span></div>`;
+          })
+          .join('');
+    } catch (err) {
+      el.innerHTML = `<div class="text-muted">Mistókst: ${escapeHtml(err.message || '')}</div>`;
     }
   }
 
@@ -543,6 +742,24 @@
         .join('');
     }
 
+    // Build exact-match repetition hint (an approved translation of the same
+    // EN sentence elsewhere — outranks the MT draft).
+    let repetitionHint = '';
+    const rep = repetitionData?.[seg.segmentId];
+    if (rep?.suggestion) {
+      const s = rep.suggestion;
+      const where =
+        s.chapter === 'appendices'
+          ? escapeHtml(s.module_id)
+          : `${escapeHtml(s.module_id)} (kafli ${escapeHtml(String(s.chapter))})`;
+      repetitionHint = `
+          <div class="repetition-hint" title="Sama setning var þegar samþykkt annars staðar">
+            <div class="repetition-hint-label">&#10003; Þegar samþykkt í ${where}</div>
+            <div class="repetition-hint-text">${escapeHtml(s.is_text)}</div>
+            <button type="button" class="btn btn-sm btn-secondary" onclick="insertRepetition('${seg.segmentId}')">Nota þessa þýðingu</button>
+          </div>`;
+    }
+
     const isHeadEditor = ['head-editor', 'admin'].includes(getEffectiveRole());
 
     // Determine whether editing is allowed:
@@ -635,6 +852,7 @@
             <div class="segment-content" id="is-${cssId(seg.segmentId)}">${isHtml || '<em class="text-muted">Engin þýðing</em>'}</div>
             ${originalHint}
             ${termIssuesHtml}
+            ${repetitionHint}
             <div class="edit-panel" id="edit-${cssId(seg.segmentId)}">
               <div class="preview-panel" id="preview-${cssId(seg.segmentId)}"></div>
               <div class="format-toolbar">
@@ -905,11 +1123,26 @@
     }
 
     try {
-      await saveRetry.attempt(
+      const saveResult = await saveRetry.attempt(
         `seg:${currentBook}/${currentChapter}/${currentModuleId}:${segmentId}`,
         saveUrl,
         saveOptions
       );
+
+      // Live terminology QA (non-blocking): warn if the edit contradicts an
+      // approved term. Advisory only — the save already succeeded.
+      if (saveResult && Array.isArray(saveResult.termWarnings) && saveResult.termWarnings.length) {
+        const names = saveResult.termWarnings
+          .map((w) => `„${w.english}“ → „${w.expected}“`)
+          .join(', ');
+        saveRetry.showToast(`Hugtakaviðvörun: ${names} fannst ekki í þýðingunni`, 'warn');
+      }
+      // Mechanical QA findings (number slips, untranslated-EN residue) — advisory.
+      if (saveResult && Array.isArray(saveResult.qaFindings) && saveResult.qaFindings.length) {
+        for (const f of saveResult.qaFindings) {
+          saveRetry.showToast(f.message, 'warn');
+        }
+      }
 
       dirtyEdits.delete(segmentId);
       lastServerSaveTime = Date.now();
@@ -1040,9 +1273,20 @@
     document.getElementById('save-status-bar').style.display = 'none';
     moduleData = null;
     termData = null;
+    repetitionData = {};
     lastServerSaveTime = null;
     recentlySaved.clear();
     clearInterval(pipelinePollingTimer);
+    const concResults = document.getElementById('concordance-results');
+    if (concResults) concResults.innerHTML = '';
+    const concInput = document.getElementById('concordance-q');
+    if (concInput) concInput.value = '';
+    const rsTerms = document.getElementById('review-summary-terms');
+    if (rsTerms) rsTerms.innerHTML = '';
+    const rsSpell = document.getElementById('review-summary-spell');
+    if (rsSpell) rsSpell.innerHTML = '';
+    const rsRep = document.getElementById('review-summary-repetition');
+    if (rsRep) rsRep.innerHTML = '';
 
     // Reset topbar title
     const topbarTitle = document.getElementById('topbar-title');
@@ -1059,6 +1303,31 @@
       if (container) container.innerHTML = '';
     }
   });
+
+  // ================================================================
+  // CONCORDANCE SEARCH WIRING
+  // ================================================================
+  const concordanceBtn = document.getElementById('btn-concordance');
+  if (concordanceBtn) {
+    concordanceBtn.addEventListener('click', searchConcordance);
+  }
+  const concordanceInput = document.getElementById('concordance-q');
+  if (concordanceInput) {
+    concordanceInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        searchConcordance();
+      }
+    });
+  }
+  const spellcheckBtn = document.getElementById('btn-spellcheck');
+  if (spellcheckBtn) {
+    spellcheckBtn.addEventListener('click', runSpellcheck);
+  }
+  const repetitionBtn = document.getElementById('btn-repetition-report');
+  if (repetitionBtn) {
+    repetitionBtn.addEventListener('click', runRepetitionReport);
+  }
 
   // ================================================================
   // FILTERS
@@ -2206,4 +2475,5 @@
   window.unapproveEdit = unapproveEdit;
   window.showTermPopup = showTermPopup;
   window.insertTermFromLookup = insertTermFromLookup;
+  window.insertRepetition = insertRepetition;
 })(); // end IIFE

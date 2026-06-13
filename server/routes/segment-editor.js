@@ -37,7 +37,25 @@ const router = express.Router();
 const log = require('../lib/logger');
 const segmentParser = require('../services/segmentParser');
 const segmentEditor = require('../services/segmentEditorService');
+const concordance = require('../services/concordanceService');
 const activityLog = require('../services/activityLog');
+const notifications = require('../services/notifications');
+
+// Notify an edit's author of a head-editor decision (fire-and-forget — a
+// notification failure must never fail the decision).
+function notifyDecision(edit, decision, req) {
+  Promise.resolve()
+    .then(() =>
+      notifications.notifyEditDecision(
+        edit,
+        decision,
+        req.user.id,
+        req.user.username,
+        req.body?.note
+      )
+    )
+    .catch((err) => log.error({ err }, 'Edit-decision notification failed'));
+}
 
 // ─── Book data lookup (slug → chapter/module metadata) ───────────────
 const { enrichChapters, enrichModules } = require('../services/bookDataLoader');
@@ -87,6 +105,27 @@ router.get('/terminology/lookup', requireAuth, requireRole(ROLES.EDITOR), (req, 
     const terms = terminology.lookupTerm(q, bookId ? parseInt(bookId, 10) : null);
     res.json({ terms });
   } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /concordance?q=…&book=…
+ * Concordance search across applied EN↔IS faithful segments (book-scoped).
+ */
+router.get('/concordance', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
+  const { q, book } = req.query;
+  if (!book || !VALID_BOOKS.includes(book)) {
+    return res.status(400).json({ error: 'Unknown or missing book' });
+  }
+  if (!q || q.trim().length < 2) {
+    return res.json({ results: [] });
+  }
+  try {
+    const results = concordance.search(q, { book });
+    res.json({ results });
+  } catch (err) {
+    log.error({ err }, 'Concordance search failed');
     res.status(500).json({ error: err.message });
   }
 });
@@ -177,6 +216,28 @@ router.get(
       });
     } catch (err) {
       log.error({ err }, 'Error listing modules');
+      res.status(500).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * GET /:book/:chapter/repetition-report
+ * Chapter-level repetition audit (head-editor): EN strings that recur and
+ * whether their IS translations agree — a cheap consistency check.
+ * Registered before /:book/:chapter/:moduleId so the literal path wins.
+ */
+router.get(
+  '/:book/:chapter/repetition-report',
+  requireAuth,
+  requireHeadEditor('book'),
+  validateBookChapter,
+  (req, res) => {
+    try {
+      const report = concordance.repetitionReport(req.params.book, req.chapterNum);
+      res.json({ book: req.params.book, chapter: req.chapterNum, report });
+    } catch (err) {
+      log.error({ err }, 'Error building repetition report');
       res.status(500).json({ error: err.message });
     }
   }
@@ -293,10 +354,41 @@ router.post(
         log.error({ err: logErr }, 'Activity log failed');
       }
 
+      // Live QA (non-blocking): terminology violations + mechanical checks
+      // (number slips, untranslated-EN residue). Advisory — never hard-blocks.
+      let termWarnings = [];
+      let qaFindings = [];
+      if (!result.reverted && typeof editedContent === 'string' && editedContent) {
+        try {
+          termWarnings = segmentEditor.getSegmentTerminologyWarnings(
+            req.params.book,
+            req.chapterNum,
+            req.params.moduleId,
+            segmentId,
+            editedContent
+          );
+        } catch (qaErr) {
+          log.error({ err: qaErr }, 'Terminology save-check failed (non-fatal)');
+        }
+        try {
+          qaFindings = segmentEditor.getSegmentQaFindings(
+            req.params.book,
+            req.chapterNum,
+            req.params.moduleId,
+            segmentId,
+            editedContent
+          );
+        } catch (qaErr) {
+          log.error({ err: qaErr }, 'QA save-check failed (non-fatal)');
+        }
+      }
+
       res.json({
         success: true,
         editId: result.id,
         updated: result.updated,
+        termWarnings,
+        qaFindings,
       });
     } catch (err) {
       if (err.code === 'SEGMENT_CONFLICT') {
@@ -460,6 +552,7 @@ router.post(
       } catch {
         /* fire-and-forget */
       }
+      notifyDecision(edit, 'approved', req);
       res.json({ success: true, edit });
     } catch (err) {
       res.status(400).json({ error: err.message });
@@ -496,6 +589,7 @@ router.post(
       } catch {
         /* fire-and-forget */
       }
+      notifyDecision(edit, 'rejected', req);
       res.json({ success: true, edit });
     } catch (err) {
       res.status(400).json({ error: err.message });
@@ -532,6 +626,7 @@ router.post(
       } catch {
         /* fire-and-forget */
       }
+      notifyDecision(edit, 'discuss', req);
       res.json({ success: true, edit });
     } catch (err) {
       res.status(400).json({ error: err.message });
@@ -708,6 +803,86 @@ router.get(
       });
     } catch (err) {
       log.error({ err }, 'Error finding terms');
+      res.status(err.message.includes('not found') ? 404 : 500).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * GET /:book/:chapter/:moduleId/repetitions
+ * Exact-match review-deduplication suggestions: for each EN segment with a
+ * human-approved translation of the same sentence in another module, return
+ * that translation (outranks the MT draft). Editor confirms rather than
+ * re-reviews. Cross-book matches included (boilerplate recurs across books).
+ */
+router.get(
+  '/:book/:chapter/:moduleId/repetitions',
+  requireAuth,
+  requireRole(ROLES.EDITOR),
+  validateBookChapter,
+  validateModule,
+  (req, res) => {
+    try {
+      const repetitions = concordance.findRepetitions(
+        req.params.book,
+        req.chapterNum,
+        req.params.moduleId
+      );
+      res.json({ moduleId: req.params.moduleId, repetitions });
+    } catch (err) {
+      log.error({ err }, 'Error finding repetitions');
+      res.status(err.message.includes('not found') ? 404 : 500).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * GET /:book/:chapter/:moduleId/terminology-report
+ * Submit-gate terminology report (Unit 3.2): approved terms still violated in
+ * the module's to-be-published content, grouped by term. Advisory — no block.
+ */
+router.get(
+  '/:book/:chapter/:moduleId/terminology-report',
+  requireAuth,
+  requireRole(ROLES.EDITOR),
+  validateBookChapter,
+  validateModule,
+  (req, res) => {
+    try {
+      const report = segmentEditor.getModuleTerminologyReport(
+        req.params.book,
+        req.chapterNum,
+        req.params.moduleId
+      );
+      res.json({ moduleId: req.params.moduleId, ...report });
+    } catch (err) {
+      log.error({ err }, 'Error building terminology report');
+      res.status(err.message.includes('not found') ? 404 : 500).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * GET /:book/:chapter/:moduleId/spellcheck
+ * On-demand Icelandic proofreading (Greynir sidecar, Unit 4.2). Off the save
+ * path; returns { enabled:false } when GREYNIR_URL isn't configured.
+ */
+router.get(
+  '/:book/:chapter/:moduleId/spellcheck',
+  requireAuth,
+  requireRole(ROLES.EDITOR),
+  validateBookChapter,
+  validateModule,
+  async (req, res) => {
+    try {
+      const result = await segmentEditor.getModuleSpellFindings(
+        req.params.book,
+        req.chapterNum,
+        req.params.moduleId
+      );
+      res.json({ moduleId: req.params.moduleId, ...result });
+    } catch (err) {
+      log.error({ err }, 'Error running spellcheck');
       res.status(err.message.includes('not found') ? 404 : 500).json({ error: err.message });
     }
   }

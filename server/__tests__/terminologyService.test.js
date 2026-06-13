@@ -901,3 +901,106 @@ describe('importGlossaryTerms()', () => {
     expect(terms.terms[0].translations[0].definitionIs).toBe('Hópur frumeinda');
   });
 });
+
+// =====================
+// Live terminology QA (Unit 3)
+// =====================
+describe('checkSegmentConsistency()', () => {
+  it('flags a segment whose IS omits an approved term translation', () => {
+    insertFullTerm({ english: 'molecule', icelandic: 'sameind', status: 'approved' });
+    const issues = terminologyService.checkSegmentConsistency(
+      'A molecule is small.',
+      'Eitthvað er lítið.',
+      'efnafraedi-2e'
+    );
+    expect(issues).toHaveLength(1);
+    expect(issues[0].english).toBe('molecule');
+    expect(issues[0].expected).toBe('sameind');
+  });
+
+  it('passes when the approved translation is present', () => {
+    insertFullTerm({ english: 'molecule', icelandic: 'sameind', status: 'approved' });
+    const issues = terminologyService.checkSegmentConsistency(
+      'A molecule is small.',
+      'Sameind er lítil.',
+      'efnafraedi-2e'
+    );
+    expect(issues).toHaveLength(0);
+  });
+
+  it('does not flag proposed-only terms (no approved translation)', () => {
+    insertFullTerm({ english: 'molecule', icelandic: 'sameind', status: 'proposed' });
+    const issues = terminologyService.checkSegmentConsistency(
+      'A molecule is small.',
+      'Eitthvað er lítið.',
+      'efnafraedi-2e'
+    );
+    expect(issues).toHaveLength(0);
+  });
+});
+
+describe('buildModuleTerminologyReport()', () => {
+  it('aggregates violations across segments by term', () => {
+    insertFullTerm({ english: 'molecule', icelandic: 'sameind', status: 'approved' });
+    insertFullTerm({ english: 'atom', icelandic: 'frumeind', status: 'approved' });
+    const report = terminologyService.buildModuleTerminologyReport(
+      [
+        {
+          segmentId: 's1',
+          enContent: 'A molecule and an atom.',
+          isContent: 'Eitthvað og frumeind.',
+        },
+        { segmentId: 's2', enContent: 'Another molecule.', isContent: 'Annað eitthvað.' },
+      ],
+      'efnafraedi-2e'
+    );
+    const mol = report.find((r) => r.english === 'molecule');
+    expect(mol.count).toBe(2);
+    expect(mol.segments.sort()).toEqual(['s1', 's2']);
+    // "atom" is correctly translated in s1 → not reported
+    expect(report.find((r) => r.english === 'atom')).toBeUndefined();
+  });
+});
+
+// =====================
+// exportBookGlossary() — Unit 6.1
+// =====================
+describe('exportBookGlossary()', () => {
+  it('exports the glossary-unified shape scoped to the book subject', () => {
+    insertFullTerm({
+      english: 'molecule',
+      icelandic: 'sameind',
+      status: 'approved',
+      subjects: ['chemistry'],
+    });
+    insertFullTerm({
+      english: 'cell',
+      icelandic: 'fruma',
+      status: 'approved',
+      subjects: ['biology'],
+    });
+
+    const data = terminologyService.exportBookGlossary('efnafraedi-2e'); // chemistry
+    expect(data.book).toBe('efnafraedi-2e');
+    expect(typeof data.generated).toBe('string');
+    // Only the chemistry term is in scope.
+    expect(data.terms).toHaveLength(1);
+    expect(data.terms[0].english).toBe('molecule');
+    expect(data.stats.total).toBe(1);
+    expect(data.stats.approved).toBe(1);
+  });
+
+  it('lists sibling translations as alternatives', () => {
+    const hwId = insertHeadword({ english: 'bond' });
+    const t1 = insertTranslation(hwId, { icelandic: 'tengi', status: 'approved' });
+    const t2 = insertTranslation(hwId, { icelandic: 'efnatengi', status: 'proposed' });
+    addSubject(t1, 'chemistry');
+    addSubject(t2, 'chemistry');
+
+    const data = terminologyService.exportBookGlossary('efnafraedi-2e');
+    const primary = data.terms.find((t) => t.icelandic === 'tengi');
+    expect(primary.alternatives).toContain('efnatengi');
+    expect(data.stats.total).toBe(2);
+    expect(data.stats.proposed).toBe(1);
+  });
+});

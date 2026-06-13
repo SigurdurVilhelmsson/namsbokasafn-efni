@@ -35,10 +35,10 @@ The previous workflow had 12+ steps with multiple format conversions (DOCX → p
 └─────────────────────────────────────────────────────────────┘
                               ↓
 ┌─────────────────────────────────────────────────────────────┐
-│  Step 4: TM Creation via Matecat Align                      │
-│  Tool: prepare-for-align.js (prep), then Matecat Align      │
-│  User: Upload reviewed EN + IS markdown to Matecat Align    │
-│  Output: TMX file ← HUMAN-VERIFIED TM                       │
+│  Step 4: TM Creation (in-house, no Matecat)                 │
+│  Tool: generate-tm.js — pairs EN + faithful IS by SEG id    │
+│  Auto: regenerated on apply (tmService); or run manually    │
+│  Output: tm/<book>-<date>.tmx ← HUMAN-VERIFIED TM           │
 └─────────────────────────────────────────────────────────────┘
                               ↓
 ┌─────────────────────────────────────────────────────────────┐
@@ -58,7 +58,7 @@ The previous workflow had 12+ steps with multiple format conversions (DOCX → p
 
 - TM created from human-verified translation, not MT
 - No need to update TM after review
-- One Matecat Align upload instead of two
+- TMX generated in-house from the already-aligned EN/IS segment pairs (no Matecat upload, no manual alignment step)
 - Editor reviews markdown (simpler than Matecat UI)
 
 ## What This Eliminates
@@ -70,6 +70,12 @@ The previous workflow had 12+ steps with multiple format conversions (DOCX → p
 | Segmentation mismatch | We don't segment - Matecat does |
 | Track Changes workflow | Review directly in markdown |
 | Multiple Matecat uploads | One upload to Align tool |
+
+> **Update (2026-06-13):** Matecat Align is now retired entirely. TM creation
+> is done in-house by `generate-tm.js`, which pairs the already-aligned EN
+> (`02-for-mt/`) and faithful IS (`03-faithful-translation/`) segments by their
+> `<!-- SEG: -->` id — no upload, no external alignment. `prepare-for-align.js`
+> moved to `tools/archived/`.
 
 ---
 

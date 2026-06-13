@@ -19,6 +19,7 @@ const log = require('../lib/logger');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, ROLES } = require('../middleware/requireRole');
 const terminology = require('../services/terminologyService');
+const termMining = require('../services/termMiningService');
 const activityLog = require('../services/activityLog');
 
 // Configure multer for file uploads
@@ -187,7 +188,8 @@ router.get('/export', requireAuth, (req, res) => {
     const terms = result.terms;
 
     if (format === 'csv') {
-      const header = 'english,pos,definition_en,icelandic,definition_is,status,source,subjects,notes';
+      const header =
+        'english,pos,definition_en,icelandic,definition_is,status,source,subjects,notes';
       const lines = [header];
 
       for (const hw of terms) {
@@ -517,48 +519,43 @@ router.post(
  *   comment: Reason for dispute (required)
  *   proposedTranslation: Alternative suggestion (optional)
  */
-router.post(
-  '/translations/:id/dispute',
-  requireAuth,
-  requireRole(ROLES.EDITOR),
-  (req, res) => {
-    const { id } = req.params;
-    const { comment, proposedTranslation } = req.body;
+router.post('/translations/:id/dispute', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
+  const { id } = req.params;
+  const { comment, proposedTranslation } = req.body;
 
-    if (!comment) {
-      return res.status(400).json({
-        error: 'Missing comment',
-        message: 'A comment explaining the dispute is required',
-      });
-    }
-
-    try {
-      const term = terminology.disputeTranslation(
-        parseInt(id, 10),
-        comment,
-        req.user.id,
-        req.user.name,
-        proposedTranslation
-      );
-
-      activityLog.log({
-        type: 'dispute_translation',
-        userId: req.user.id,
-        username: req.user.username,
-        description: `Disputed translation #${id} — ${comment}`,
-        metadata: { headwordId: term.id, translationId: parseInt(id, 10) },
-      });
-
-      res.json({ success: true, term });
-    } catch (err) {
-      log.error({ err }, 'Dispute translation error');
-      res.status(err.message.includes('not found') ? 404 : 500).json({
-        error: 'Failed to dispute translation',
-        message: err.message,
-      });
-    }
+  if (!comment) {
+    return res.status(400).json({
+      error: 'Missing comment',
+      message: 'A comment explaining the dispute is required',
+    });
   }
-);
+
+  try {
+    const term = terminology.disputeTranslation(
+      parseInt(id, 10),
+      comment,
+      req.user.id,
+      req.user.name,
+      proposedTranslation
+    );
+
+    activityLog.log({
+      type: 'dispute_translation',
+      userId: req.user.id,
+      username: req.user.username,
+      description: `Disputed translation #${id} — ${comment}`,
+      metadata: { headwordId: term.id, translationId: parseInt(id, 10) },
+    });
+
+    res.json({ success: true, term });
+  } catch (err) {
+    log.error({ err }, 'Dispute translation error');
+    res.status(err.message.includes('not found') ? 404 : 500).json({
+      error: 'Failed to dispute translation',
+      message: err.message,
+    });
+  }
+});
 
 /**
  * POST /api/terminology/:id/discuss
@@ -621,7 +618,7 @@ router.post(
     }
 
     const { overwrite, subjects: subjectsParam } = req.query;
-    const subjects = subjectsParam ? subjectsParam.split(',').map(s => s.trim()) : [];
+    const subjects = subjectsParam ? subjectsParam.split(',').map((s) => s.trim()) : [];
 
     try {
       const tempPath = path.join('/tmp', `terminology-import-${Date.now()}.csv`);
@@ -730,7 +727,7 @@ router.post(
     }
 
     const { sheetName, subjects: subjectsParam } = req.query;
-    const subjects = subjectsParam ? subjectsParam.split(',').map(s => s.trim()) : [];
+    const subjects = subjectsParam ? subjectsParam.split(',').map((s) => s.trim()) : [];
 
     try {
       const result = await terminology.importFromExcel(
@@ -809,7 +806,15 @@ router.post(
       return res.status(400).json({ error: 'Missing bookSlug' });
     }
 
-    const glossaryPath = path.join(__dirname, '..', '..', 'books', bookSlug, 'glossary', 'terminology-en-is.csv');
+    const glossaryPath = path.join(
+      __dirname,
+      '..',
+      '..',
+      'books',
+      bookSlug,
+      'glossary',
+      'terminology-en-is.csv'
+    );
 
     if (!fs.existsSync(glossaryPath)) {
       return res.status(404).json({
@@ -911,19 +916,98 @@ function resolveBookSubject(bookSlug) {
   const db = new Database(dbPath);
   try {
     const row = db
-      .prepare(`
+      .prepare(
+        `
         SELECT bsm.primary_subject
         FROM book_subject_mapping bsm
         JOIN registered_books rb ON rb.id = bsm.book_id
         WHERE rb.slug = ?
-      `)
+      `
+      )
       .get(bookSlug);
     db.close();
     return row ? row.primary_subject : null;
   } catch {
-    try { db.close(); } catch { /* ignore */ }
+    try {
+      db.close();
+    } catch {
+      /* ignore */
+    }
     return null;
   }
 }
+
+// ─── Term-decision mining (Unit 3.5, head-editor) ─────────────────────
+
+/**
+ * POST /mine  { book }
+ * Mine the book's approved edits for recurring post-edit corrections.
+ */
+router.post('/mine', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
+  const book = req.body?.book;
+  if (!book) return res.status(400).json({ error: 'book is required' });
+  try {
+    const result = termMining.mineBook(book);
+    res.json({ book, ...result });
+  } catch (err) {
+    log.error({ err }, 'Term mining failed');
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /mined-candidates?book=&status=open
+ * List mined term-decision candidates for review.
+ */
+router.get('/mined-candidates', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
+  const { book, status } = req.query;
+  if (!book) return res.status(400).json({ error: 'book is required' });
+  try {
+    const candidates = termMining.listCandidates(book, status ? { status } : {});
+    res.json({ book, candidates });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /mined-candidates/:id/dismiss
+ */
+router.post(
+  '/mined-candidates/:id/dismiss',
+  requireAuth,
+  requireRole(ROLES.HEAD_EDITOR),
+  (req, res) => {
+    try {
+      termMining.dismissCandidate(parseInt(req.params.id, 10));
+      res.json({ success: true });
+    } catch (err) {
+      res.status(400).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * POST /mined-candidates/:id/promote  { english, pos }
+ * Promote to a *proposed* glossary term (head-editor supplies the EN headword).
+ */
+router.post(
+  '/mined-candidates/:id/promote',
+  requireAuth,
+  requireRole(ROLES.HEAD_EDITOR),
+  (req, res) => {
+    try {
+      const result = termMining.promoteCandidate(
+        parseInt(req.params.id, 10),
+        { english: req.body?.english, pos: req.body?.pos },
+        String(req.user.id),
+        req.user.username
+      );
+      res.json({ success: true, ...result });
+    } catch (err) {
+      res.status(400).json({ error: err.message });
+    }
+  }
+);
 
 module.exports = router;

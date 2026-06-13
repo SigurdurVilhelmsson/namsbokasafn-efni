@@ -413,6 +413,33 @@ Pre-commit hooks run:
 2. Prettier formatting
 3. Test suite
 
+## Data Durability & Recovery
+
+Editorial assets live in two places with different durability guarantees. Know
+which is which before relying on a recovery.
+
+| Asset | Lives in | Backed up by | Max data-loss window |
+|-------|----------|--------------|----------------------|
+| Faithful/localized content (`books/*/03-`, `04-`, `05-`) | git | `scripts/git-backup.sh` (cron, every 2h) | ~2h |
+| Translation memory (`books/*/tm/*.tmx`) | git | regenerated on apply (`tmService`), pushed by git-backup | ~2h |
+| Glossary export (`books/*/glossary/glossary-unified.json`) | git | `server/scripts/export-terminology.js` (cron) + git-backup | nightly + ~2h |
+| Terminology DB, segment edits, discussions, reviews, users, notifications | `pipeline-output/sessions.db` (gitignored) | `scripts/backup-db.sh` (cron) | backup interval (e.g. 6h) |
+| Concordance index (`tm_segments`) | `sessions.db` | rebuildable from faithful files via `server/scripts/backfill-concordance.js` | n/a (derived) |
+
+**`sessions.db` backup (6.2):** `scripts/backup-db.sh` checkpoints the WAL,
+writes a timestamped copy to `pipeline-output/backups/`, and prunes to the most
+recent 30. Restore = stop the server, copy the chosen backup over
+`pipeline-output/sessions.db` (remove any stale `-wal`/`-shm` sidecars), restart.
+Schedule it from cron (e.g. `0 */6 * * *`); confirm Linode disk snapshots as a
+second line of defense.
+
+**Glossary freshness (6.1):** the committed `glossary-unified.json` is the MT
+glossary `api-translate.js` sends to Málstaður. It is regenerated from the
+terminology DB by `server/scripts/export-terminology.js`; run it from cron so
+newly approved terms reach MT without a manual export. Derived assets
+(`tm_segments`, the TMX) can always be rebuilt from the faithful files in git,
+so only the **DB-only** rows above are truly irreplaceable.
+
 ## Related Documentation
 
 - [Simplified Workflow](../workflow/simplified-workflow.md) - 5-step process guide

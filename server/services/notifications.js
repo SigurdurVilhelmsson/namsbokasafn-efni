@@ -24,6 +24,10 @@ const NOTIFICATION_TYPES = {
   REVIEW_SUBMITTED: 'review_submitted',
   REVIEW_APPROVED: 'review_approved',
   CHANGES_REQUESTED: 'changes_requested',
+  // Segment-edit decisions (notify the edit's author)
+  EDIT_APPROVED: 'edit_approved',
+  EDIT_REJECTED: 'edit_rejected',
+  EDIT_DISCUSS: 'edit_discuss',
   // Hand-off notifications
   ASSIGNMENT_CREATED: 'assignment_created',
   ASSIGNMENT_HANDOFF: 'assignment_handoff',
@@ -48,7 +52,14 @@ const NOTIFICATION_CATEGORIES = {
   reviews: {
     label: 'Yfirferðir',
     description: 'Tilkynningar um yfirferðir (sendar, samþykktar, breytingar óskast)',
-    types: ['review_submitted', 'review_approved', 'changes_requested'],
+    types: [
+      'review_submitted',
+      'review_approved',
+      'changes_requested',
+      'edit_approved',
+      'edit_rejected',
+      'edit_discuss',
+    ],
   },
   assignments: {
     label: 'Úthlutanir',
@@ -745,9 +756,61 @@ async function notifyBookAccessAssigned(userId, bookSlug, role, assignedByUserna
   return result;
 }
 
+/**
+ * Build the in-app notification for a segment-edit decision, or null when the
+ * reviewer is the edit's own author (self-decision — no point notifying).
+ *
+ * @param {object} edit - segment_edits row (editor_id, book, chapter, module_id, segment_id)
+ * @param {'approved'|'rejected'|'discuss'} decision
+ * @param {string|number} reviewerId
+ * @param {string} reviewerUsername
+ * @param {string} [note]
+ * @returns {object|null} createNotification options, or null to skip
+ */
+function buildEditDecisionNotification(edit, decision, reviewerId, reviewerUsername, note) {
+  if (!edit || edit.editor_id == null) return null;
+  // Self-decision (head-editor revising + approving their own edit) — skip.
+  // eslint-disable-next-line eqeqeq
+  if (String(edit.editor_id) == String(reviewerId)) return null;
+
+  const labels = {
+    approved: { type: 'edit_approved', title: 'Breyting samþykkt', verb: 'samþykkti' },
+    rejected: { type: 'edit_rejected', title: 'Breyting hafnað', verb: 'hafnaði' },
+    discuss: { type: 'edit_discuss', title: 'Breyting til umræðu', verb: 'setti í umræðu' },
+  };
+  const l = labels[decision];
+  if (!l) return null;
+
+  const where = `${edit.module_id}:${edit.segment_id}`;
+  let message = `${reviewerUsername} ${l.verb} breytingu þína á ${where}.`;
+  if (note) message += ` Athugasemd: ${note}`;
+
+  return {
+    userId: String(edit.editor_id),
+    type: l.type,
+    title: l.title,
+    message,
+    link: `/segment-editor?book=${edit.book}&chapter=${edit.chapter}&module=${edit.module_id}`,
+    metadata: { editId: edit.id, decision, segmentId: edit.segment_id },
+  };
+}
+
+/**
+ * Notify an edit's author of a head-editor decision (in-app; email per the
+ * author's preferences if an address is available). Fire-and-forget friendly —
+ * resolves to { skipped } when there's nothing to send.
+ */
+async function notifyEditDecision(edit, decision, reviewerId, reviewerUsername, note) {
+  const options = buildEditDecisionNotification(edit, decision, reviewerId, reviewerUsername, note);
+  if (!options) return { skipped: true };
+  return createNotification(options);
+}
+
 module.exports = {
   NOTIFICATION_TYPES,
   NOTIFICATION_CATEGORIES,
+  buildEditDecisionNotification,
+  notifyEditDecision,
   DEFAULT_PREFERENCES,
   STAGE_LABELS,
   isEmailConfigured,

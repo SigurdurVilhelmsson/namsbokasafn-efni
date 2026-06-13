@@ -43,6 +43,7 @@ const TERM_SOURCES = [
   'imported-csv',
   'imported-excel',
   'merge-glossary',
+  'mined-postedit',
 ];
 
 // Known subject domains (from Íðorðabankinn collection codes)
@@ -1143,6 +1144,137 @@ function findTermsInSegments(segments, bookSlug = null) {
   return result;
 }
 
+/**
+ * Propose a glossary term from a mined post-edit candidate (Unit 3.5).
+ * Upserts the (human-supplied) English headword and adds the corrected
+ * Icelandic as a *proposed* translation — so it still goes through normal
+ * approval. Idempotent: an existing identical translation is returned as-is.
+ *
+ * @returns {{ headwordId, translationId, existed: boolean }}
+ */
+function proposeMinedTerm(english, icelandic, pos, userId, username) {
+  if (!english || !icelandic) throw new Error('english and icelandic are required');
+  const db = getDb();
+  const hw = upsertHeadword(db, english, pos || null, null);
+  const existing = db
+    .prepare('SELECT id FROM terminology_translations WHERE headword_id = ? AND icelandic = ?')
+    .get(hw.id, icelandic);
+  if (existing) return { headwordId: hw.id, translationId: existing.id, existed: true };
+  const tr = addTranslation(hw.id, { icelandic, source: 'mined-postedit' }, userId, username);
+  return { headwordId: hw.id, translationId: tr.id, existed: false };
+}
+
+/**
+ * Export a book's glossary from the DB in the `glossary-unified.json` shape
+ * consumed by `tools/api-translate.js` (Unit 6.1 — keeps the MT glossary fresh
+ * instead of the months-stale committed export).
+ *
+ * Scoped to the book's primary subject (so chemistry books get chemistry
+ * terms); if the book has no subject mapping, all terms are included. One row
+ * per translation; sibling translations become `alternatives`.
+ *
+ * @param {string} bookSlug
+ * @returns {{ generated, book, stats, terms: Array }}
+ */
+function exportBookGlossary(bookSlug) {
+  const db = getDb();
+  const bookSubject = getBookSubjectBySlug(db, bookSlug);
+
+  const rows = db
+    .prepare(
+      `SELECT h.id AS headword_id, h.english, h.pos, h.definition_en,
+              t.icelandic, t.definition_is, t.status, t.source, t.notes,
+              GROUP_CONCAT(ts.subject) AS subjects
+       FROM terminology_headwords h
+       JOIN terminology_translations t ON t.headword_id = h.id
+       LEFT JOIN terminology_translation_subjects ts ON ts.translation_id = t.id
+       GROUP BY t.id
+       ORDER BY h.english COLLATE NOCASE ASC`
+    )
+    .all();
+
+  // Group translations per headword for alternatives + subject scoping.
+  const byHeadword = new Map();
+  for (const r of rows) {
+    const subjects = r.subjects ? r.subjects.split(',') : [];
+    if (!byHeadword.has(r.headword_id)) byHeadword.set(r.headword_id, []);
+    byHeadword.get(r.headword_id).push({ ...r, subjects });
+  }
+
+  const terms = [];
+  const stats = { total: 0, approved: 0, proposed: 0, needs_review: 0, disputed: 0 };
+  for (const translations of byHeadword.values()) {
+    for (const t of translations) {
+      // Subject scoping: include when the translation carries the book's
+      // subject, or when the book has no subject mapping.
+      if (bookSubject && !t.subjects.includes(bookSubject)) continue;
+      terms.push({
+        english: t.english,
+        icelandic: t.icelandic,
+        pos: t.pos,
+        definitionEn: t.definition_en,
+        definitionIs: t.definition_is,
+        status: t.status,
+        source: t.source,
+        subjects: t.subjects,
+        alternatives: translations
+          .filter((o) => o.icelandic !== t.icelandic)
+          .map((o) => o.icelandic),
+        notes: t.notes,
+      });
+      stats.total++;
+      if (stats[t.status] !== undefined) stats[t.status]++;
+    }
+  }
+
+  return { generated: new Date().toISOString(), book: bookSlug, stats, terms };
+}
+
+/**
+ * Terminology consistency for a single segment (save-path QA, Unit 3.1).
+ * Returns the "missing approved translation" issues for one EN/IS pair.
+ *
+ * @param {string} enContent
+ * @param {string} isContent
+ * @param {string|null} bookSlug
+ * @param {string} [segmentId]
+ * @returns {Array<{type, headwordId, english, expected, message}>}
+ */
+function checkSegmentConsistency(enContent, isContent, bookSlug = null, segmentId = 'seg') {
+  const res = findTermsInSegments([{ segmentId, enContent, isContent }], bookSlug);
+  return res[segmentId]?.issues || [];
+}
+
+/**
+ * Aggregate terminology violations across a module's segments (submit-gate
+ * report, Unit 3.2). Groups by headword so a head-editor sees term → expected
+ * IS → which segments still violate it.
+ *
+ * @param {Array<{segmentId, enContent, isContent}>} segments
+ * @param {string|null} bookSlug
+ * @returns {Array<{headwordId, english, expected, count, segments: string[]}>}
+ */
+function buildModuleTerminologyReport(segments, bookSlug = null) {
+  const res = findTermsInSegments(segments, bookSlug);
+  const byTerm = new Map();
+  for (const [segId, { issues }] of Object.entries(res)) {
+    for (const issue of issues) {
+      if (!byTerm.has(issue.headwordId)) {
+        byTerm.set(issue.headwordId, {
+          headwordId: issue.headwordId,
+          english: issue.english,
+          expected: issue.expected,
+          segments: [],
+        });
+      }
+      byTerm.get(issue.headwordId).segments.push(segId);
+    }
+  }
+  return Array.from(byTerm.values())
+    .map((t) => ({ ...t, count: t.segments.length }))
+    .sort((a, b) => b.count - a.count);
+}
+
 // ─────────────────────────────────────────
 // Helpers
 // ─────────────────────────────────────────
@@ -1335,6 +1467,10 @@ module.exports = {
   // Query
   getStats,
   findTermsInSegments,
+  checkSegmentConsistency,
+  buildModuleTerminologyReport,
+  exportBookGlossary,
+  proposeMinedTerm,
 
   // Constants
   TERM_STATUSES,
