@@ -175,6 +175,34 @@ function runChecks(enContent, isContent, { spellEngine } = {}) {
   return findings;
 }
 
+/**
+ * Async variant: the engine-free checks plus an **async** spelling/grammar
+ * engine (e.g. the Greynir sidecar) whose findings are awaited. A throwing or
+ * slow engine degrades to the engine-free findings (engine handles its own
+ * timeout); QA never breaks a caller.
+ *
+ * @param {string} enContent
+ * @param {string} isContent
+ * @param {{ spellEngine?: (isText:string)=>Promise<Array>|Array }} [opts]
+ * @returns {Promise<Array>} typed findings
+ */
+async function runChecksAsync(enContent, isContent, { spellEngine } = {}) {
+  const findings = [];
+  findings.push(...checkNumbers(enContent, isContent));
+  findings.push(...checkEnResidue(isContent));
+  if (typeof spellEngine === 'function' && isContent) {
+    try {
+      const spell = await spellEngine(stripMath(stripMarkers(isContent)));
+      for (const f of spell || []) {
+        findings.push(f.type ? f : { type: 'spelling', ...f });
+      }
+    } catch {
+      // A misbehaving engine must never break QA.
+    }
+  }
+  return findings;
+}
+
 module.exports = {
   stripMarkers,
   stripMath,
@@ -183,4 +211,5 @@ module.exports = {
   checkNumbers,
   checkEnResidue,
   runChecks,
+  runChecksAsync,
 };

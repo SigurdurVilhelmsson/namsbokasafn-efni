@@ -217,6 +217,7 @@
 | GET | `/:book/:chapter/:moduleId/terms` |
 | GET | `/:book/:chapter/:moduleId/repetitions` |
 | GET | `/:book/:chapter/:moduleId/terminology-report` |
+| GET | `/:book/:chapter/:moduleId/spellcheck` |
 | GET | `/:book/:chapter/:moduleId/stats` |
 | GET | `/:book/:chapter/:moduleId/apply-status` |
 | POST | `/:book/:chapter/:moduleId/apply` |

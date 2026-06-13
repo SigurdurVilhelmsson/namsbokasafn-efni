@@ -1,0 +1,4 @@
+# GreynirCorrect proofreading sidecar (Unit 4.2)
+reynir-correct>=3.0
+flask>=3.0
+gunicorn>=21.0

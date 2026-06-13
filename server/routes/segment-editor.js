@@ -862,6 +862,32 @@ router.get(
   }
 );
 
+/**
+ * GET /:book/:chapter/:moduleId/spellcheck
+ * On-demand Icelandic proofreading (Greynir sidecar, Unit 4.2). Off the save
+ * path; returns { enabled:false } when GREYNIR_URL isn't configured.
+ */
+router.get(
+  '/:book/:chapter/:moduleId/spellcheck',
+  requireAuth,
+  requireRole(ROLES.EDITOR),
+  validateBookChapter,
+  validateModule,
+  async (req, res) => {
+    try {
+      const result = await segmentEditor.getModuleSpellFindings(
+        req.params.book,
+        req.chapterNum,
+        req.params.moduleId
+      );
+      res.json({ moduleId: req.params.moduleId, ...result });
+    } catch (err) {
+      log.error({ err }, 'Error running spellcheck');
+      res.status(err.message.includes('not found') ? 404 : 500).json({ error: err.message });
+    }
+  }
+);
+
 // =====================================================================
 // STATISTICS
 // =====================================================================
