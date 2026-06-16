@@ -1,9 +1,9 @@
 {
-  "generated": "2026-06-12T23:45:56.440Z",
+  "generated": "2026-06-16T14:48:50.167Z",
   "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]])",
   "summary": {
-    "totalChecked": 2,
-    "perfect": 1,
+    "totalChecked": 3,
+    "perfect": 2,
     "withDiscrepancies": 1,
     "skippedUntranslated": 0,
     "totalDiscrepancies": 1
