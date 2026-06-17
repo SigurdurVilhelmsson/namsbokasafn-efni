@@ -35,6 +35,7 @@ import {
 } from './lib/cnxml-parser.js';
 import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, MODULE_OPTION } from './lib/parseArgs.js';
 import {
+  buildCrossModuleHref,
   escapeAttr,
   escapeHtml,
   processInlineContent,
@@ -419,11 +420,21 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     chapterOutline = Object.entries(moduleSections)
       .filter(([key, info]) => info.section !== '0' && !key.startsWith('_')) // Exclude intro and metadata
       .sort((a, b) => Number(a[1].section) - Number(b[1].section))
-      .map(([, info]) => ({
-        section: `${chapter}.${info.section}`,
-        title: info.titleIs || info.titleEn,
-        slug: info.slug,
-      }));
+      .map(([, info]) => {
+        const section = `${chapter}.${info.section}`;
+        // Absolute reader URL (e.g. /efnafraedi-2e/kafli/01/1-1-foo), built
+        // through the same helper as cross-module xrefs. Relative hrefs broke
+        // here because the intro page is served at a trailing-slash URL
+        // (trailingSlash='always' in vefur), making sections resolve as
+        // subpages of the intro instead of siblings.
+        const basename = `${section.replace('.', '-')}-${info.slug}`;
+        return {
+          section,
+          title: info.titleIs || info.titleEn,
+          slug: info.slug,
+          href: buildCrossModuleHref(`${basename}.html`, null, context),
+        };
+      });
 
     // Add translated chapter title to page data
     if (moduleSections._chapterTitle) {
@@ -529,7 +540,7 @@ function buildHtmlDocument(options) {
       lines.push('        <ul>');
       for (const item of chapterOutline) {
         lines.push(
-          `          <li><a href="${item.section.replace('.', '-')}-${item.slug}">${item.section} ${escapeHtml(item.title)}</a></li>`
+          `          <li><a href="${item.href}">${item.section} ${escapeHtml(item.title)}</a></li>`
         );
       }
       lines.push('        </ul>');
@@ -542,7 +553,7 @@ function buildHtmlDocument(options) {
       lines.push('        <ul>');
       for (const item of chapterOutline) {
         lines.push(
-          `          <li><a href="${item.section.replace('.', '-')}-${item.slug}">${item.section} ${escapeHtml(item.title)}</a></li>`
+          `          <li><a href="${item.href}">${item.section} ${escapeHtml(item.title)}</a></li>`
         );
       }
       lines.push('        </ul>');

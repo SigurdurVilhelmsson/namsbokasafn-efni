@@ -148,7 +148,7 @@ export function resolveCrossModuleHref(documentId, targetId, context) {
  *                                            letter-mapping which lives in
  *                                            toc.json, not the renderer).
  */
-function buildCrossModuleHref(fname, targetId, context) {
+export function buildCrossModuleHref(fname, targetId, context) {
   if (!context.bookSlug || fname.startsWith('appendices-')) {
     return targetId ? `${fname}#${targetId}` : fname;
   }
