@@ -1,0 +1,136 @@
+{
+  "terms": [
+    {
+      "term": "annað lögmál Newtons um hreyfingu",
+      "definition": "heildarytri krafturinn Fnet á hlut með massa m er í réttu hlutfalli við og í sömu átt og hröðun hlutarins, a, og í öfugu hlutfalli við massann; skilgreint stærðfræðilega sem a=Fnetm",
+      "chapter": 4,
+      "english": "newton’s second law of motion"
+    },
+    {
+      "term": "frjálst fall",
+      "definition": "aðstæður þar sem eini krafturinn sem verkar á hlut er krafturinn vegna þyngdarafls",
+      "chapter": 4,
+      "english": "free-fall"
+    },
+    {
+      "term": "fyrsta lögmál Newtons um hreyfingu",
+      "definition": "hlutur í kyrrstöðu helst í kyrrstöðu, eða, ef hann er á hreyfingu, helst hann á hreyfingu með stöðugum hraða nema ytri heildarkraftur verki á hann; einnig þekkt sem tregðulögmálið",
+      "chapter": 4,
+      "english": "newton’s first law of motion"
+    },
+    {
+      "term": "heildarytri kraftur",
+      "definition": "vigursumma allra ytri krafta sem verka á hlut eða kerfi; veldur því að massi fær hröðun",
+      "chapter": 4,
+      "english": "net external force"
+    },
+    {
+      "term": "hröðun",
+      "definition": "hraði sem hraði hlutar breytist á ákveðnu tímabili",
+      "chapter": 4,
+      "english": "acceleration"
+    },
+    {
+      "term": "kerfi",
+      "definition": "skilgreint af mörkum hlutar eða safns hluta sem verið er að fylgjast með; allir kraftar sem eiga uppruna sinn utan kerfisins eru taldir ytri kraftar",
+      "chapter": 4,
+      "english": "system"
+    },
+    {
+      "term": "kraftafræði",
+      "definition": "fræðin um hvernig kraftar hafa áhrif á hreyfingu hluta og kerfa",
+      "chapter": 4,
+      "english": "dynamics"
+    },
+    {
+      "term": "kraftamynd",
+      "definition": "skissa sem sýnir alla ytri krafta sem verka á hlut eða kerfi; kerfið er táknað með punkti og kraftarnir eru táknaðir með vigrum sem teygja sig út frá punktinum",
+      "chapter": 4,
+      "english": "free-body diagram"
+    },
+    {
+      "term": "kraftsvið",
+      "definition": "svæði þar sem prófunarögn verður fyrir krafti",
+      "chapter": 4,
+      "english": "force field"
+    },
+    {
+      "term": "kraftur",
+      "definition": "tog eða þrýstingur á hlut með ákveðinni stærð og stefnu; má tákna með vigrum; má gefa upp sem margfeldi af staðalkrafti",
+      "chapter": 4,
+      "english": "force"
+    },
+    {
+      "term": "massi",
+      "definition": "magn efnis í efni; mælt í kílógrömmum",
+      "chapter": 4,
+      "english": "mass"
+    },
+    {
+      "term": "miðlunarögn",
+      "definition": "grundeindarögn í náttúrunni sem er umlukin einkennandi kraftsviði; ljóseindir eru miðlunaragnir rafsegulkraftsins",
+      "chapter": 4,
+      "english": "carrier particle"
+    },
+    {
+      "term": "núningur",
+      "definition": "kraftur milli hluta sem snertast og hreyfast hvor fram hjá öðrum; dæmi eru hrjúfir fletir og loftmótstaða",
+      "chapter": 4,
+      "english": "friction"
+    },
+    {
+      "term": "spenna",
+      "definition": "togkrafturinn sem verkar eftir miðli, sérstaklega eftir strekktum, sveigjanlegum tengi, eins og reipi eða kapli; þegar reipi ber þyngd hlutar er krafturinn frá reipinu á hlutinn kallaður spennukraftur",
+      "chapter": 4,
+      "english": "tension"
+    },
+    {
+      "term": "tregða",
+      "definition": "tilhneiging hlutar til að haldast í kyrrstöðu eða haldast á hreyfingu",
+      "chapter": 4,
+      "english": "inertia"
+    },
+    {
+      "term": "tregðulögmálið",
+      "definition": "sjá fyrsta lögmál Newtons um hreyfingu",
+      "chapter": 4,
+      "english": "law of inertia"
+    },
+    {
+      "term": "tregðuviðmiðunarkerfi",
+      "definition": "hnitakerfi sem er ekki á hröðun; allir kraftar sem verka í tregðuviðmiðunarkerfi eru raunverulegir kraftar, öfugt við sýndarkrafta sem sjást vegna viðmiðunarkerfis á hröðun",
+      "chapter": 4,
+      "english": "inertial frame of reference"
+    },
+    {
+      "term": "ytri kraftur",
+      "definition": "kraftur sem verkar á hlut eða kerfi og á uppruna sinn utan hlutarins eða kerfisins",
+      "chapter": 4,
+      "english": "external force"
+    },
+    {
+      "term": "Þriðja lögmál Newtons um hreyfingu",
+      "definition": "alltaf þegar einn hlutur beitir krafti á annan hlut, verður fyrri hluturinn fyrir krafti sem er jafnstór og í gagnstæða átt við kraftinn sem fyrri hluturinn beitir",
+      "chapter": 4,
+      "english": "newton’s third law of motion"
+    },
+    {
+      "term": "þrýstikraftur",
+      "definition": "viðbragðskraftur sem ýtir hlut áfram sem svar við krafti aftur á bak; eldflaugum, flugvélum og bílum er ýtt áfram með viðbragðsþrýstikrafti",
+      "chapter": 4,
+      "english": "thrust"
+    },
+    {
+      "term": "þverkraftur",
+      "definition": "krafturinn sem yfirborð beitir á hlut til að bera þyngd hlutarins; verkar hornrétt á yfirborðið sem hluturinn hvílir á",
+      "chapter": 4,
+      "english": "normal force"
+    },
+    {
+      "term": "þyngd",
+      "definition": "krafturinn w vegna þyngdarafls sem verkar á hlut með massa m; skilgreint stærðfræðilega sem: w=mg, þar sem g er stærð og stefna hröðunar vegna þyngdarafls",
+      "chapter": 4,
+      "english": "weight"
+    }
+  ]
+}

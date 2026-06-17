@@ -54,6 +54,13 @@ import {
   getExerciseSectionClasses,
 } from './lib/book-rendering-config.js';
 
+// Matches editor/pipeline artifact files that must never live in or sync from
+// the publication dir: safeWrite backups, manual `.pre-fix-*`, `.bak`, and any
+// leftover atomic-write temp files. Used by the pre-render output sweep (#9).
+function isPublicationArtifact(name) {
+  return /\.backup\.|\.pre-fix-|\.bak$|\.tmp\.[0-9a-f]+$/.test(name);
+}
+
 // =====================================================================
 // NOTE TYPE LABELS (loaded from book config)
 // =====================================================================
@@ -3050,16 +3057,24 @@ async function main() {
     const chapterDir = formatChapterDir(args.chapter);
     const chapterStr = formatChapterOutput(args.chapter);
 
-    // Clean stale HTML files before rendering (full chapter only, not single-module)
+    // Clean stale HTML files before rendering (full chapter only, not single-module).
+    // Also sweep editor/pipeline artifacts (safeWrite `.backup.*`, stray `.pre-fix-*`,
+    // `.bak`, leftover `.tmp.*`) so they never accumulate in — or get synced from —
+    // the publication directory (handoff #9).
     if (!args.module) {
       const outputDir = path.join(BOOKS_DIR, '05-publication', args.track, 'chapters', chapterStr);
       if (fs.existsSync(outputDir)) {
-        const existing = fs.readdirSync(outputDir).filter((f) => f.endsWith('.html'));
-        for (const f of existing) {
+        const all = fs.readdirSync(outputDir);
+        const html = all.filter((f) => f.endsWith('.html'));
+        const artifacts = all.filter((f) => isPublicationArtifact(f));
+        for (const f of [...html, ...artifacts]) {
           fs.unlinkSync(path.join(outputDir, f));
         }
-        if (existing.length > 0) {
-          console.log(`Cleaned ${existing.length} existing HTML file(s) from ${chapterStr}/`);
+        if (html.length > 0) {
+          console.log(`Cleaned ${html.length} existing HTML file(s) from ${chapterStr}/`);
+        }
+        if (artifacts.length > 0) {
+          console.log(`Cleaned ${artifacts.length} stale artifact file(s) from ${chapterStr}/`);
         }
       }
     }
@@ -3755,6 +3770,23 @@ ${anchors}
         `Render failed: ${renderErr.message} — rolled back ${writtenFiles.length} file(s) from this pass ` +
           `(${restored} restored to previous version, ${deleted} newly-created file(s) removed).`
       );
+    }
+
+    // Render succeeded: the per-file `.backup.<timestamp>` copies safeWrite() made
+    // (only present on single-module renders, where the pre-render sweep is skipped)
+    // are now dead weight — the rollback path above is the only consumer. Prune them
+    // so they don't accumulate in / get synced from the publication dir (handoff #9).
+    for (const f of writtenFiles) {
+      try {
+        const dir = path.dirname(f);
+        const prefix = `${path.basename(f)}.backup.`;
+        if (!fs.existsSync(dir)) continue;
+        for (const name of fs.readdirSync(dir)) {
+          if (name.startsWith(prefix)) fs.unlinkSync(path.join(dir, name));
+        }
+      } catch {
+        /* best-effort cleanup */
+      }
     }
 
     // Copy referenced images from source media to publication directory
