@@ -26,15 +26,16 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 │  Web Interface (server/)                                        │
 │  - Express 5 editorial workflow server, better-sqlite3          │
 │  - Microsoft Entra ID (Azure AD) authentication, JWT sessions   │
-│  - Segment editor (Pass 1) + localization editor (Pass 2)       │
-│  - Terminology manager (headwords + translations redesign)      │
+│  - Segment editor (Pass 1) + Pass 2 localization review tier    │
+│  - Terminology manager + concordance search + term mining       │
 │  - Editorial progress dashboard, live CNXML→HTML preview        │
-│  - Content versioning (per-segment snapshots before apply)      │
+│  - Content versioning (per-segment snapshots, in-app restore)   │
+│  - GreynirCorrect proofreading sidecar (Icelandic QA)           │
 ├─────────────────────────────────────────────────────────────────┤
 │  CLI Tools (tools/)                                             │
 │  - Extract-Inject-Render pipeline (cnxml-extract/inject/render) │
-│  - Segment protection for MT (protect/unprotect-segments)       │
-│  - TM creation (prepare-for-align.js)                           │
+│  - Machine translation via Málstaður API (api-translate.js)     │
+│  - TM creation (generate-tm.js — in-house TMX, retires Matecat) │
 ├─────────────────────────────────────────────────────────────────┤
 │  Data Layer                                                     │
 │  - SQLite for workflow sessions (server/services/session.js)    │
@@ -49,8 +50,8 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 
 | Constraint | Implication |
 |------------|-------------|
-| Erlendur MT is manual | Files split at 12k visible chars, download/upload cycle |
-| Matecat has free API | Can automate XLIFF operations |
+| MT via Málstaður API | Automated; bracket `[[type:]]` markers survive at 100% |
+| Matecat Align **retired** | TMX now generated in-house via `generate-tm.js` |
 | Content repo is read-only | All writes via GitHub PRs |
 | Small team | Simple over complex |
 
