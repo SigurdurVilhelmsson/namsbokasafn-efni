@@ -209,6 +209,28 @@ Full picture: [docs/technical/architecture.md](docs/technical/architecture.md)
 node scripts/sync-content.js --source ../namsbokasafn-efni
 ```
 
+### Cross-repo sessions (sister repo: ../namsbokasafn-vefur)
+
+A single fix often spans both repos (content/render here + routing/slug/deploy there).
+The harness only auto-loads **this** repo's CLAUDE.md, memory, skills, and permissions —
+never the sister's. So when work crosses over:
+
+1. **Before editing any file under `../namsbokasafn-vefur/`**, first read its `CLAUDE.md`
+   and its memory index
+   (`~/.claude/projects/-home-siggi-dev-repos-namsbokasafn-vefur/memory/MEMORY.md`).
+2. **Record learnings in the repo they belong to.** A fact about vefur (routing, slugs,
+   rendering, deploy) goes in vefur's memory and, if it's a durable rule, vefur's
+   CLAUDE.md — not here. Update both only when the fact is genuinely cross-repo.
+3. **Recommend relaunching in the sister repo** (then pause for the user's choice) when
+   the work's center of gravity is there — ANY of: more than ~2 files to change in the
+   sister repo; the task needs the sister's skills/permissions/auto-recalled memory;
+   it's an iterative edit→test/build loop there; or you're about to *design/architect*
+   there rather than apply a known edit. Phrase it: *"This is now mostly vefur work —
+   consider relaunching Claude in namsbokasafn-vefur for full context. Continue here, or
+   relaunch?"* Do **not** nag for a one- or two-file cross-repo touch.
+
+These are heuristics you apply with judgment, not hard gates.
+
 ## Documentation
 
 | Document | Purpose |
