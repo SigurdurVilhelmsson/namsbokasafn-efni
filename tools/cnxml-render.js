@@ -202,13 +202,33 @@ function normalizeImageSrc(src, bookSlug, chapterStr) {
 
 /**
  * Build path to a translated CNXML file.
+ *
+ * Faithful is an overlay over the complete mt-preview baseline. When a faithful
+ * module hasn't been reviewed yet, fall back to its mt-preview CNXML so chapter
+ * rollups (Samantekt/Lykilhugtök/Lykilformúlur/Æfingar/Svarlykill) cover the
+ * whole chapter instead of just the reviewed sections (#1). Per-module section
+ * pages iterate the faithful module list directly, so they always hit a real
+ * faithful file and never trigger this fallback — only rollup/chapter-wide reads
+ * (driven by the union `allModules`) reach unreviewed modules.
+ *
  * @param {string} track - Publication track (mt-preview, faithful, localized)
  * @param {string} chapterDir - Formatted chapter directory (e.g., "ch01", "appendices")
  * @param {string} moduleId - Module ID (e.g., "m68724")
  * @returns {string} Path to translated CNXML file
  */
 function translatedCnxmlPath(track, chapterDir, moduleId) {
-  return path.join(BOOKS_DIR, '03-translated', track, chapterDir, `${moduleId}.cnxml`);
+  const primary = path.join(BOOKS_DIR, '03-translated', track, chapterDir, `${moduleId}.cnxml`);
+  if (track === 'faithful' && !fs.existsSync(primary)) {
+    const fallback = path.join(
+      BOOKS_DIR,
+      '03-translated',
+      'mt-preview',
+      chapterDir,
+      `${moduleId}.cnxml`
+    );
+    if (fs.existsSync(fallback)) return fallback;
+  }
+  return primary;
 }
 
 /**
@@ -3174,8 +3194,22 @@ async function main() {
         chapterIdToModule.set(id, [modId]);
       }
     };
+    // Chapter-wide module set for numbering maps and rollups. For the faithful
+    // track this is the UNION of reviewed modules and the complete mt-preview
+    // baseline, so rollups and cross-chapter numbering cover every section, not
+    // just the reviewed ones (#1). translatedCnxmlPath supplies the mt-preview
+    // CNXML for the unreviewed members. Per-module section pages still iterate
+    // the faithful-only `modules` list, so the overlay model is preserved.
+    const allModuleSet = new Set(findChapterModules(args.chapter, args.track));
+    if (args.track === 'faithful') {
+      try {
+        for (const m of findChapterModules(args.chapter, 'mt-preview')) allModuleSet.add(m);
+      } catch {
+        /* no mt-preview baseline for this chapter — faithful stands alone */
+      }
+    }
     // Sort modules by section number so numbering follows chapter order, not filename order
-    const allModules = findChapterModules(args.chapter, args.track).sort((a, b) => {
+    const allModules = [...allModuleSet].sort((a, b) => {
       const secA = moduleSections[a] ? moduleSections[a].section : 999;
       const secB = moduleSections[b] ? moduleSections[b].section : 999;
       return secA - secB;
@@ -3873,6 +3907,23 @@ ${anchors}
 
     // Copy referenced images from source media to publication directory
     copyChapterImages(args.chapter, args.track, args.verbose);
+
+    // Signal that faithful rollups are assembled from the full chapter (reviewed
+    // overlay + mt-preview fallback), so vefur serves the faithful compilations
+    // even on partially-reviewed chapters (#1, pairs with vefur PR #144). The
+    // mt-preview warning banner stays until the whole chapter is reviewed.
+    if (args.track === 'faithful' && !args.module) {
+      const marker = path.join(BOOKS_DIR, '05-publication', 'faithful', 'rollups-complete');
+      try {
+        fs.mkdirSync(path.dirname(marker), { recursive: true });
+        fs.writeFileSync(
+          marker,
+          `Faithful rollups assembled with mt-preview fallback for unreviewed modules.\nLast updated: ${new Date().toISOString()}\n`
+        );
+      } catch (err) {
+        console.error(`Warning: could not write rollups-complete marker: ${err.message}`);
+      }
+    }
   } catch (error) {
     console.error('Error:', error.message);
     if (args.verbose) {
