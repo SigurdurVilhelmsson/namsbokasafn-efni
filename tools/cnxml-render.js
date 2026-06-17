@@ -355,6 +355,8 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     chapterExerciseNumbers: options.chapterExerciseNumbers || new Map(), // chapter-wide
     chapterSectionTitles: options.chapterSectionTitles || new Map(), // section ID -> title
     chapterIdToModule: options.chapterIdToModule || new Map(), // elementId -> moduleId[]
+    relocatedIds: options.relocatedIds || new Map(), // elementId -> compiled-page basename (#3)
+    currentPageBasename: options.currentPageBasename || null, // set when rendering a compiled page (#3)
     moduleSections: options.moduleSections || {}, // for cross-module href resolution
     crossModuleSections: options.crossModuleSections || null, // fallback used by answer-key etc.
     verbose, // propagate verbose flag for link warnings
@@ -2635,6 +2637,65 @@ function exerciseTypesHaveSeparateSlugs(exercisesByType) {
 }
 
 /**
+ * Build a map of element ids that get relocated off their source module's
+ * section page into a compiled end-of-chapter exercises page. The exercise
+ * sections (and every id inside them — exercise/problem/solution/para ids) are
+ * stripped from the module's section page and rendered onto `N-exercises`
+ * (or `N-<type-slug>` for books with separate exercise files). Without this,
+ * cross-references to that content resolve to the now-stripped section page and
+ * 404 as dead anchors (handoff #3).
+ *
+ * Mirrors extractSectionExercises' classification (same class set, first-match
+ * per module, section!=='0' guard) and writeCompiledExercises' slug choice so
+ * the basenames match the files actually written.
+ *
+ * @returns {Map<string,string>} elementId → compiled page basename (e.g. "5-exercises")
+ */
+function buildRelocatedExerciseIds(chapter, modules, moduleSections, track) {
+  const relocated = new Map();
+  const chapterDir = formatChapterDir(chapter);
+
+  const exerciseClasses = BOOK_CONFIG ? getExerciseSectionClasses(BOOK_SLUG) : [];
+  if (exerciseClasses.length === 0) exerciseClasses.push('exercises');
+
+  // Separate-slug books write one file per type; combined books share a single
+  // "exercises" file. Match exerciseTypesHaveSeparateSlugs / writeCompiledExercises.
+  const slugSet = new Set();
+  for (const cls of exerciseClasses) {
+    const cfg = BOOK_CONFIG?.endOfChapterSections?.[cls];
+    if (cfg?.slug) slugSet.add(cfg.slug);
+  }
+  const separateSlugs = slugSet.size > 1;
+
+  for (const moduleId of modules) {
+    const modulePath = translatedCnxmlPath(track, chapterDir, moduleId);
+    if (!fs.existsSync(modulePath)) continue;
+    const sectionInfo = moduleSections[moduleId];
+    if (!sectionInfo || sectionInfo.section === '0') continue;
+
+    const cnxml = fs.readFileSync(modulePath, 'utf-8');
+    for (const exerciseClass of exerciseClasses) {
+      const pattern = new RegExp(
+        `<section\\s+[^>]*class="${exerciseClass}"[^>]*>[\\s\\S]*?<\\/section>`,
+        'g'
+      );
+      const match = pattern.exec(cnxml); // first match only — mirrors extractSectionExercises
+      if (!match) continue;
+
+      const cfg = BOOK_CONFIG?.endOfChapterSections?.[exerciseClass];
+      const slug = separateSlugs ? cfg?.slug || exerciseClass : 'exercises';
+      const basename = `${chapter}-${slug}`;
+
+      for (const m of match[0].matchAll(/\sid="([^"]+)"/g)) {
+        relocated.set(m[1], basename);
+      }
+    }
+  }
+
+  return relocated;
+}
+
+/**
  * Render a single exercise type as a standalone page.
  * Used when exercise types have separate slugs (e.g., microbiology).
  *
@@ -2683,6 +2744,8 @@ function renderSingleTypeExercises(
         lang: 'is',
         chapter,
         moduleId: exercises.moduleId,
+        // Renders onto this type's standalone N-<slug> page (#3).
+        currentPageBasename: `${chapter}-${slug}`,
         chapterExerciseNumbers,
         excludeSections: false,
         includeSolutions: false,
@@ -2787,6 +2850,10 @@ function renderCompiledExercises(chapter, exercisesByType, chapterExerciseNumber
           lang: 'is',
           chapter,
           moduleId: exercises.moduleId,
+          // This content renders onto the combined N-exercises page, not the
+          // source module's section page — so body refs (figures, sections)
+          // resolve cross-page while sibling exercise refs stay same-page (#3).
+          currentPageBasename: `${chapter}-exercises`,
           chapterExerciseNumbers,
           excludeSections: false,
           includeSolutions: false,
@@ -3228,6 +3295,19 @@ async function main() {
       );
     }
 
+    // Ids relocated into compiled end-of-chapter pages (exercises). Chapter-wide:
+    // a reference in one module may point at an exercise compiled from another,
+    // so this must be built across all modules before any page renders (#3).
+    const relocatedIds = buildRelocatedExerciseIds(
+      args.chapter,
+      allModules,
+      moduleSections,
+      args.track
+    );
+    if (args.verbose && relocatedIds.size > 0) {
+      console.error(`Relocated exercise ids: ${relocatedIds.size}`);
+    }
+
     const writtenFiles = []; // Track files written in this render pass for cleanup on failure
 
     try {
@@ -3252,6 +3332,7 @@ async function main() {
           chapterExerciseNumbers,
           chapterSectionTitles,
           chapterIdToModule,
+          relocatedIds,
           equationTextDictionary,
         });
         let html = renderResult.html;
@@ -3638,6 +3719,7 @@ ${anchors}
           chapterExerciseNumbers,
           chapterSectionTitles,
           chapterIdToModule,
+          relocatedIds,
           equationTextDictionary,
         };
 

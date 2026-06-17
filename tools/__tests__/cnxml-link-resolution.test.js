@@ -86,6 +86,51 @@ describe('resolveCrossModuleHref', () => {
     const result = resolveCrossModuleHref('m68724', 'x', ctx);
     expect(result.href).toBe('5-2-varmamaelingar.html#x');
   });
+
+  describe('relocated end-of-chapter ids (#3)', () => {
+    it('reference from a module page to a relocated exercise id links to the compiled page', () => {
+      // Exercise content is stripped from its source section page and rendered
+      // onto N-exercises, so a section-page reference must point there.
+      const ctx = makeContext({
+        relocatedIds: new Map([['fs-relocated-1', '5-exercises']]),
+      });
+      const result = resolveCrossModuleHref(null, 'fs-relocated-1', ctx);
+      expect(result.href).toBe('5-exercises.html#fs-relocated-1');
+      expect(result.sameModule).toBe(false);
+    });
+
+    it('reference to a relocated id while rendering the compiled page itself stays same-page', () => {
+      const ctx = makeContext({
+        currentPageBasename: '5-exercises',
+        relocatedIds: new Map([['fs-relocated-1', '5-exercises']]),
+      });
+      const result = resolveCrossModuleHref(null, 'fs-relocated-1', ctx);
+      expect(result.href).toBe('#fs-relocated-1');
+      expect(result.sameModule).toBe(true);
+    });
+
+    it('on a compiled page, a body figure owned by the source module resolves cross-page', () => {
+      // currentPageBasename is the compiled page; moduleId stays the source
+      // module (for numbering), so a same-module body ref must NOT collapse to a
+      // same-page anchor — the figure lives on the section page, not here.
+      const ctx = makeContext({
+        moduleId: 'm68724',
+        currentPageBasename: '5-exercises',
+      });
+      const result = resolveCrossModuleHref(null, 'CNX_Chem_05_02_Calorim', ctx);
+      expect(result.href).toBe('5-2-varmamaelingar.html#CNX_Chem_05_02_Calorim');
+      expect(result.sameModule).toBe(false);
+    });
+
+    it('relocatedIds present but target not relocated keeps normal same-module behavior', () => {
+      const ctx = makeContext({
+        relocatedIds: new Map([['some-other-id', '5-exercises']]),
+      });
+      const result = resolveCrossModuleHref(null, 'fs-idp12345', ctx);
+      expect(result.href).toBe('#fs-idp12345');
+      expect(result.sameModule).toBe(true);
+    });
+  });
 });
 
 describe('processInlineContent — link handling', () => {
