@@ -61,13 +61,22 @@ export function transliterateIcelandic(text) {
  * @returns {string}
  */
 export function slugify(title) {
-  return transliterateIcelandic(title)
+  const base = transliterateIcelandic(title)
     .toLowerCase()
     .replace(/[^a-z0-9\s-]/g, '')
     .replace(/\s+/g, '-')
     .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '')
-    .substring(0, 50);
+    .replace(/^-|-$/g, '');
+  if (base.length <= 50) return base;
+  const cut = base.substring(0, 50);
+  // If the next char is the word separator, the 50-char cut already lands on a
+  // word boundary — keep it (avoids needlessly shortening slugs whose last word
+  // happens to end exactly at 50). Otherwise the last word is split mid-way, so
+  // drop back to the previous boundary so slugs never end mid-word like
+  // "...samhverfa-i-kr" (handoff #4). Keep ≥20 chars before a hard fallback.
+  if (base[50] === '-') return cut;
+  const lastDash = cut.lastIndexOf('-');
+  return (lastDash >= 20 ? cut.substring(0, lastDash) : cut).replace(/-$/, '');
 }
 
 /**

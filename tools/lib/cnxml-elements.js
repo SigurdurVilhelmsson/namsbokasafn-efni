@@ -64,8 +64,36 @@ export function resolveCrossModuleHref(documentId, targetId, context) {
     }
   }
 
-  // Same module → same-page anchor
-  if (!ownerModule || ownerModule === currentMod) {
+  // The PAGE basename currently being rendered. Compiled end-of-chapter pages
+  // (exercises/summary/key-equations) keep their source module as `moduleId`
+  // (for numbering composite keys) but set `currentPageBasename` to the page
+  // they actually write to. Module pages derive it from the module's section file.
+  const currentPage =
+    context.currentPageBasename ||
+    (currentMod
+      ? lookupModuleFilename(currentMod, context)?.replace(/\.html$/, '') || currentMod
+      : null);
+
+  // Relocated ids win: exercises (and other compiled sections) are moved off
+  // their source module's section page into a compiled page, so their ids and
+  // descendant ids live there — never on the owner module's section file.
+  if (targetId && context.relocatedIds && context.relocatedIds.has(targetId)) {
+    const targetPage = context.relocatedIds.get(targetId);
+    if (targetPage === currentPage) {
+      return { href: `#${targetId}`, ownerModule: ownerModule || currentMod, sameModule: true };
+    }
+    return {
+      href: buildCrossModuleHref(`${targetPage}.html`, targetId, context),
+      ownerModule,
+      sameModule: false,
+    };
+  }
+
+  // No owner, or same module → same-page anchor. Exception: when rendering a
+  // compiled page (currentPageBasename set), body content owned by a module
+  // lives on that module's section page, not here, so fall through to cross-page
+  // resolution below even though ownerModule === currentMod.
+  if (!ownerModule || (ownerModule === currentMod && !context.currentPageBasename)) {
     return {
       href: targetId ? `#${targetId}` : null,
       ownerModule: ownerModule || currentMod,
@@ -73,7 +101,7 @@ export function resolveCrossModuleHref(documentId, targetId, context) {
     };
   }
 
-  // Cross-module → resolve to other rendered file
+  // Cross-page → resolve to the owner module's rendered section file
   const fname = lookupModuleFilename(ownerModule, context);
   if (!fname) {
     if (context.verbose) {
@@ -82,6 +110,17 @@ export function resolveCrossModuleHref(documentId, targetId, context) {
       );
     }
     return { href: null, ownerModule, sameModule: false };
+  }
+
+  // The owner's section page may be the page we're already on (e.g. a compiled
+  // page whose source module is also the current module but the target is body
+  // content) — only same-page when the basenames truly match.
+  if (fname.replace(/\.html$/, '') === currentPage) {
+    return {
+      href: targetId ? `#${targetId}` : null,
+      ownerModule: ownerModule || currentMod,
+      sameModule: true,
+    };
   }
 
   const href = buildCrossModuleHref(fname, targetId, context);

@@ -54,6 +54,13 @@ import {
   getExerciseSectionClasses,
 } from './lib/book-rendering-config.js';
 
+// Matches editor/pipeline artifact files that must never live in or sync from
+// the publication dir: safeWrite backups, manual `.pre-fix-*`, `.bak`, and any
+// leftover atomic-write temp files. Used by the pre-render output sweep (#9).
+function isPublicationArtifact(name) {
+  return /\.backup\.|\.pre-fix-|\.bak$|\.tmp\.[0-9a-f]+$/.test(name);
+}
+
 // =====================================================================
 // NOTE TYPE LABELS (loaded from book config)
 // =====================================================================
@@ -195,13 +202,33 @@ function normalizeImageSrc(src, bookSlug, chapterStr) {
 
 /**
  * Build path to a translated CNXML file.
+ *
+ * Faithful is an overlay over the complete mt-preview baseline. When a faithful
+ * module hasn't been reviewed yet, fall back to its mt-preview CNXML so chapter
+ * rollups (Samantekt/Lykilhugtök/Lykilformúlur/Æfingar/Svarlykill) cover the
+ * whole chapter instead of just the reviewed sections (#1). Per-module section
+ * pages iterate the faithful module list directly, so they always hit a real
+ * faithful file and never trigger this fallback — only rollup/chapter-wide reads
+ * (driven by the union `allModules`) reach unreviewed modules.
+ *
  * @param {string} track - Publication track (mt-preview, faithful, localized)
  * @param {string} chapterDir - Formatted chapter directory (e.g., "ch01", "appendices")
  * @param {string} moduleId - Module ID (e.g., "m68724")
  * @returns {string} Path to translated CNXML file
  */
 function translatedCnxmlPath(track, chapterDir, moduleId) {
-  return path.join(BOOKS_DIR, '03-translated', track, chapterDir, `${moduleId}.cnxml`);
+  const primary = path.join(BOOKS_DIR, '03-translated', track, chapterDir, `${moduleId}.cnxml`);
+  if (track === 'faithful' && !fs.existsSync(primary)) {
+    const fallback = path.join(
+      BOOKS_DIR,
+      '03-translated',
+      'mt-preview',
+      chapterDir,
+      `${moduleId}.cnxml`
+    );
+    if (fs.existsSync(fallback)) return fallback;
+  }
+  return primary;
 }
 
 /**
@@ -348,6 +375,8 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     chapterExerciseNumbers: options.chapterExerciseNumbers || new Map(), // chapter-wide
     chapterSectionTitles: options.chapterSectionTitles || new Map(), // section ID -> title
     chapterIdToModule: options.chapterIdToModule || new Map(), // elementId -> moduleId[]
+    relocatedIds: options.relocatedIds || new Map(), // elementId -> compiled-page basename (#3)
+    currentPageBasename: options.currentPageBasename || null, // set when rendering a compiled page (#3)
     moduleSections: options.moduleSections || {}, // for cross-module href resolution
     crossModuleSections: options.crossModuleSections || null, // fallback used by answer-key etc.
     verbose, // propagate verbose flag for link warnings
@@ -1978,12 +2007,21 @@ function writeOutput(chapter, moduleId, track, html, moduleSections) {
  */
 function copyChapterImages(chapter, track, _verbose) {
   const chapterStr = formatChapterOutput(chapter);
-  const sourceMediaDir = path.join(BOOKS_DIR, '01-source', 'media');
+  // Search the canonical OpenStax media dir first, then the book-level media
+  // dir that holds Icelandic-localized figure variants (e.g. *_is.jpg). The
+  // latter is where injection's image-localization map points figures, so its
+  // files must be published too (handoff #5).
+  const sourceMediaDirs = [
+    path.join(BOOKS_DIR, '01-source', 'media'),
+    path.join(BOOKS_DIR, 'media'),
+  ].filter((d) => fs.existsSync(d));
   const chapterDir = path.join(BOOKS_DIR, '05-publication', track, 'chapters', chapterStr);
   const targetMediaDir = path.join(chapterDir, 'images', 'media');
 
-  if (!fs.existsSync(sourceMediaDir)) {
-    console.error(`Warning: Source media directory not found: ${sourceMediaDir}`);
+  if (sourceMediaDirs.length === 0) {
+    console.error(
+      `Warning: No source media directory found (${path.join(BOOKS_DIR, '01-source', 'media')} or ${path.join(BOOKS_DIR, 'media')})`
+    );
     return;
   }
 
@@ -2009,13 +2047,21 @@ function copyChapterImages(chapter, track, _verbose) {
   let copied = 0;
   let missing = 0;
   for (const file of referencedFiles) {
-    const src = safeJoin(sourceMediaDir, file);
     const dest = safeJoin(targetMediaDir, file);
-    if (!src || !dest) {
+    if (!dest) {
       console.error(`Warning: Skipping unsafe image filename: ${file}`);
       continue;
     }
-    if (fs.existsSync(src)) {
+    // First source dir that has the file wins (01-source/media, then media/).
+    let src = null;
+    for (const dir of sourceMediaDirs) {
+      const candidate = safeJoin(dir, file);
+      if (candidate && fs.existsSync(candidate)) {
+        src = candidate;
+        break;
+      }
+    }
+    if (src) {
       fs.copyFileSync(src, dest);
       copied++;
     } else {
@@ -2628,6 +2674,65 @@ function exerciseTypesHaveSeparateSlugs(exercisesByType) {
 }
 
 /**
+ * Build a map of element ids that get relocated off their source module's
+ * section page into a compiled end-of-chapter exercises page. The exercise
+ * sections (and every id inside them — exercise/problem/solution/para ids) are
+ * stripped from the module's section page and rendered onto `N-exercises`
+ * (or `N-<type-slug>` for books with separate exercise files). Without this,
+ * cross-references to that content resolve to the now-stripped section page and
+ * 404 as dead anchors (handoff #3).
+ *
+ * Mirrors extractSectionExercises' classification (same class set, first-match
+ * per module, section!=='0' guard) and writeCompiledExercises' slug choice so
+ * the basenames match the files actually written.
+ *
+ * @returns {Map<string,string>} elementId → compiled page basename (e.g. "5-exercises")
+ */
+function buildRelocatedExerciseIds(chapter, modules, moduleSections, track) {
+  const relocated = new Map();
+  const chapterDir = formatChapterDir(chapter);
+
+  const exerciseClasses = BOOK_CONFIG ? getExerciseSectionClasses(BOOK_SLUG) : [];
+  if (exerciseClasses.length === 0) exerciseClasses.push('exercises');
+
+  // Separate-slug books write one file per type; combined books share a single
+  // "exercises" file. Match exerciseTypesHaveSeparateSlugs / writeCompiledExercises.
+  const slugSet = new Set();
+  for (const cls of exerciseClasses) {
+    const cfg = BOOK_CONFIG?.endOfChapterSections?.[cls];
+    if (cfg?.slug) slugSet.add(cfg.slug);
+  }
+  const separateSlugs = slugSet.size > 1;
+
+  for (const moduleId of modules) {
+    const modulePath = translatedCnxmlPath(track, chapterDir, moduleId);
+    if (!fs.existsSync(modulePath)) continue;
+    const sectionInfo = moduleSections[moduleId];
+    if (!sectionInfo || sectionInfo.section === '0') continue;
+
+    const cnxml = fs.readFileSync(modulePath, 'utf-8');
+    for (const exerciseClass of exerciseClasses) {
+      const pattern = new RegExp(
+        `<section\\s+[^>]*class="${exerciseClass}"[^>]*>[\\s\\S]*?<\\/section>`,
+        'g'
+      );
+      const match = pattern.exec(cnxml); // first match only — mirrors extractSectionExercises
+      if (!match) continue;
+
+      const cfg = BOOK_CONFIG?.endOfChapterSections?.[exerciseClass];
+      const slug = separateSlugs ? cfg?.slug || exerciseClass : 'exercises';
+      const basename = `${chapter}-${slug}`;
+
+      for (const m of match[0].matchAll(/\sid="([^"]+)"/g)) {
+        relocated.set(m[1], basename);
+      }
+    }
+  }
+
+  return relocated;
+}
+
+/**
  * Render a single exercise type as a standalone page.
  * Used when exercise types have separate slugs (e.g., microbiology).
  *
@@ -2676,6 +2781,8 @@ function renderSingleTypeExercises(
         lang: 'is',
         chapter,
         moduleId: exercises.moduleId,
+        // Renders onto this type's standalone N-<slug> page (#3).
+        currentPageBasename: `${chapter}-${slug}`,
         chapterExerciseNumbers,
         excludeSections: false,
         includeSolutions: false,
@@ -2780,6 +2887,10 @@ function renderCompiledExercises(chapter, exercisesByType, chapterExerciseNumber
           lang: 'is',
           chapter,
           moduleId: exercises.moduleId,
+          // This content renders onto the combined N-exercises page, not the
+          // source module's section page — so body refs (figures, sections)
+          // resolve cross-page while sibling exercise refs stay same-page (#3).
+          currentPageBasename: `${chapter}-exercises`,
           chapterExerciseNumbers,
           excludeSections: false,
           includeSolutions: false,
@@ -3050,16 +3161,24 @@ async function main() {
     const chapterDir = formatChapterDir(args.chapter);
     const chapterStr = formatChapterOutput(args.chapter);
 
-    // Clean stale HTML files before rendering (full chapter only, not single-module)
+    // Clean stale HTML files before rendering (full chapter only, not single-module).
+    // Also sweep editor/pipeline artifacts (safeWrite `.backup.*`, stray `.pre-fix-*`,
+    // `.bak`, leftover `.tmp.*`) so they never accumulate in — or get synced from —
+    // the publication directory (handoff #9).
     if (!args.module) {
       const outputDir = path.join(BOOKS_DIR, '05-publication', args.track, 'chapters', chapterStr);
       if (fs.existsSync(outputDir)) {
-        const existing = fs.readdirSync(outputDir).filter((f) => f.endsWith('.html'));
-        for (const f of existing) {
+        const all = fs.readdirSync(outputDir);
+        const html = all.filter((f) => f.endsWith('.html'));
+        const artifacts = all.filter((f) => isPublicationArtifact(f));
+        for (const f of [...html, ...artifacts]) {
           fs.unlinkSync(path.join(outputDir, f));
         }
-        if (existing.length > 0) {
-          console.log(`Cleaned ${existing.length} existing HTML file(s) from ${chapterStr}/`);
+        if (html.length > 0) {
+          console.log(`Cleaned ${html.length} existing HTML file(s) from ${chapterStr}/`);
+        }
+        if (artifacts.length > 0) {
+          console.log(`Cleaned ${artifacts.length} stale artifact file(s) from ${chapterStr}/`);
         }
       }
     }
@@ -3092,8 +3211,22 @@ async function main() {
         chapterIdToModule.set(id, [modId]);
       }
     };
+    // Chapter-wide module set for numbering maps and rollups. For the faithful
+    // track this is the UNION of reviewed modules and the complete mt-preview
+    // baseline, so rollups and cross-chapter numbering cover every section, not
+    // just the reviewed ones (#1). translatedCnxmlPath supplies the mt-preview
+    // CNXML for the unreviewed members. Per-module section pages still iterate
+    // the faithful-only `modules` list, so the overlay model is preserved.
+    const allModuleSet = new Set(findChapterModules(args.chapter, args.track));
+    if (args.track === 'faithful') {
+      try {
+        for (const m of findChapterModules(args.chapter, 'mt-preview')) allModuleSet.add(m);
+      } catch {
+        /* no mt-preview baseline for this chapter — faithful stands alone */
+      }
+    }
     // Sort modules by section number so numbering follows chapter order, not filename order
-    const allModules = findChapterModules(args.chapter, args.track).sort((a, b) => {
+    const allModules = [...allModuleSet].sort((a, b) => {
       const secA = moduleSections[a] ? moduleSections[a].section : 999;
       const secB = moduleSections[b] ? moduleSections[b].section : 999;
       return secA - secB;
@@ -3213,6 +3346,19 @@ async function main() {
       );
     }
 
+    // Ids relocated into compiled end-of-chapter pages (exercises). Chapter-wide:
+    // a reference in one module may point at an exercise compiled from another,
+    // so this must be built across all modules before any page renders (#3).
+    const relocatedIds = buildRelocatedExerciseIds(
+      args.chapter,
+      allModules,
+      moduleSections,
+      args.track
+    );
+    if (args.verbose && relocatedIds.size > 0) {
+      console.error(`Relocated exercise ids: ${relocatedIds.size}`);
+    }
+
     const writtenFiles = []; // Track files written in this render pass for cleanup on failure
 
     try {
@@ -3237,6 +3383,7 @@ async function main() {
           chapterExerciseNumbers,
           chapterSectionTitles,
           chapterIdToModule,
+          relocatedIds,
           equationTextDictionary,
         });
         let html = renderResult.html;
@@ -3623,6 +3770,7 @@ ${anchors}
           chapterExerciseNumbers,
           chapterSectionTitles,
           chapterIdToModule,
+          relocatedIds,
           equationTextDictionary,
         };
 
@@ -3757,8 +3905,42 @@ ${anchors}
       );
     }
 
+    // Render succeeded: the per-file `.backup.<timestamp>` copies safeWrite() made
+    // (only present on single-module renders, where the pre-render sweep is skipped)
+    // are now dead weight — the rollback path above is the only consumer. Prune them
+    // so they don't accumulate in / get synced from the publication dir (handoff #9).
+    for (const f of writtenFiles) {
+      try {
+        const dir = path.dirname(f);
+        const prefix = `${path.basename(f)}.backup.`;
+        if (!fs.existsSync(dir)) continue;
+        for (const name of fs.readdirSync(dir)) {
+          if (name.startsWith(prefix)) fs.unlinkSync(path.join(dir, name));
+        }
+      } catch {
+        /* best-effort cleanup */
+      }
+    }
+
     // Copy referenced images from source media to publication directory
     copyChapterImages(args.chapter, args.track, args.verbose);
+
+    // Signal that faithful rollups are assembled from the full chapter (reviewed
+    // overlay + mt-preview fallback), so vefur serves the faithful compilations
+    // even on partially-reviewed chapters (#1, pairs with vefur PR #144). The
+    // mt-preview warning banner stays until the whole chapter is reviewed.
+    if (args.track === 'faithful' && !args.module) {
+      const marker = path.join(BOOKS_DIR, '05-publication', 'faithful', 'rollups-complete');
+      try {
+        fs.mkdirSync(path.dirname(marker), { recursive: true });
+        fs.writeFileSync(
+          marker,
+          `Faithful rollups assembled with mt-preview fallback for unreviewed modules.\nLast updated: ${new Date().toISOString()}\n`
+        );
+      } catch (err) {
+        console.error(`Warning: could not write rollups-complete marker: ${err.message}`);
+      }
+    }
   } catch (error) {
     console.error('Error:', error.message);
     if (args.verbose) {
