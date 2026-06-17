@@ -2007,12 +2007,21 @@ function writeOutput(chapter, moduleId, track, html, moduleSections) {
  */
 function copyChapterImages(chapter, track, _verbose) {
   const chapterStr = formatChapterOutput(chapter);
-  const sourceMediaDir = path.join(BOOKS_DIR, '01-source', 'media');
+  // Search the canonical OpenStax media dir first, then the book-level media
+  // dir that holds Icelandic-localized figure variants (e.g. *_is.jpg). The
+  // latter is where injection's image-localization map points figures, so its
+  // files must be published too (handoff #5).
+  const sourceMediaDirs = [
+    path.join(BOOKS_DIR, '01-source', 'media'),
+    path.join(BOOKS_DIR, 'media'),
+  ].filter((d) => fs.existsSync(d));
   const chapterDir = path.join(BOOKS_DIR, '05-publication', track, 'chapters', chapterStr);
   const targetMediaDir = path.join(chapterDir, 'images', 'media');
 
-  if (!fs.existsSync(sourceMediaDir)) {
-    console.error(`Warning: Source media directory not found: ${sourceMediaDir}`);
+  if (sourceMediaDirs.length === 0) {
+    console.error(
+      `Warning: No source media directory found (${path.join(BOOKS_DIR, '01-source', 'media')} or ${path.join(BOOKS_DIR, 'media')})`
+    );
     return;
   }
 
@@ -2038,13 +2047,21 @@ function copyChapterImages(chapter, track, _verbose) {
   let copied = 0;
   let missing = 0;
   for (const file of referencedFiles) {
-    const src = safeJoin(sourceMediaDir, file);
     const dest = safeJoin(targetMediaDir, file);
-    if (!src || !dest) {
+    if (!dest) {
       console.error(`Warning: Skipping unsafe image filename: ${file}`);
       continue;
     }
-    if (fs.existsSync(src)) {
+    // First source dir that has the file wins (01-source/media, then media/).
+    let src = null;
+    for (const dir of sourceMediaDirs) {
+      const candidate = safeJoin(dir, file);
+      if (candidate && fs.existsSync(candidate)) {
+        src = candidate;
+        break;
+      }
+    }
+    if (src) {
       fs.copyFileSync(src, dest);
       copied++;
     } else {
