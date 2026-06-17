@@ -1,5 +1,9 @@
 import { describe, it, expect } from 'vitest';
-import { resolveCrossModuleHref, processInlineContent } from '../lib/cnxml-elements.js';
+import {
+  resolveCrossModuleHref,
+  processInlineContent,
+  buildCrossModuleHref,
+} from '../lib/cnxml-elements.js';
 
 const moduleSections = {
   m68720: { section: '1', slug: 'varmi', titleIs: 'Varmi' },
@@ -31,6 +35,28 @@ function makeContext(overrides = {}) {
     ...overrides,
   };
 }
+
+describe('buildCrossModuleHref (chapter-outline + xref links)', () => {
+  it('builds an absolute reader URL with zero-padded chapter', () => {
+    // The intro chapter-outline links rely on this: a relative href would
+    // resolve as a subpage of the trailing-slash intro URL in vefur.
+    const href = buildCrossModuleHref('1-1-efnafraedi-i-samhengi.html', null, {
+      bookSlug: 'efnafraedi-2e',
+    });
+    expect(href).toBe('/efnafraedi-2e/kafli/01/1-1-efnafraedi-i-samhengi');
+  });
+
+  it('preserves a target anchor when present', () => {
+    const href = buildCrossModuleHref('5-2-varmamaelingar.html', 'fs-id1', {
+      bookSlug: 'efnafraedi-2e',
+    });
+    expect(href).toBe('/efnafraedi-2e/kafli/05/5-2-varmamaelingar#fs-id1');
+  });
+
+  it('falls back to the bare filename when bookSlug is absent', () => {
+    expect(buildCrossModuleHref('1-1-foo.html', null, {})).toBe('1-1-foo.html');
+  });
+});
 
 describe('resolveCrossModuleHref', () => {
   it('same-module link with target-id returns same-page anchor', () => {
