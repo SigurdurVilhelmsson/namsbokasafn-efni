@@ -1,12 +1,12 @@
 {
-  "generated": "2026-06-16T14:48:50.167Z",
+  "generated": "2026-06-19T15:28:16.750Z",
   "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]])",
   "summary": {
-    "totalChecked": 3,
-    "perfect": 2,
-    "withDiscrepancies": 1,
+    "totalChecked": 148,
+    "perfect": 118,
+    "withDiscrepancies": 30,
     "skippedUntranslated": 0,
-    "totalDiscrepancies": 1
+    "totalDiscrepancies": 50
   },
   "modules": [
     {
@@ -16,6 +16,320 @@
         {
           "tag": "emphasis",
           "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68709",
+      "chapter": "ch04",
+      "discrepancies": [
+        {
+          "tag": "term",
+          "diff": 1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68710",
+      "chapter": "ch04",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68716",
+      "chapter": "ch04",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68727",
+      "chapter": "ch05",
+      "discrepancies": [
+        {
+          "tag": "m:math",
+          "diff": 3
+        },
+        {
+          "tag": "para",
+          "diff": -7
+        }
+      ]
+    },
+    {
+      "moduleId": "m68733",
+      "chapter": "ch06",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -4
+        }
+      ]
+    },
+    {
+      "moduleId": "m68734",
+      "chapter": "ch06",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68735",
+      "chapter": "ch06",
+      "discrepancies": [
+        {
+          "tag": "term",
+          "diff": 1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68741",
+      "chapter": "ch07",
+      "discrepancies": [
+        {
+          "tag": "sub",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68752",
+      "chapter": "ch09",
+      "discrepancies": [
+        {
+          "tag": "sub",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68764",
+      "chapter": "ch10",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        },
+        {
+          "tag": "term",
+          "diff": 1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68768",
+      "chapter": "ch10",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68781",
+      "chapter": "ch11",
+      "discrepancies": [
+        {
+          "tag": "sub",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68783",
+      "chapter": "ch11",
+      "discrepancies": [
+        {
+          "tag": "sub",
+          "diff": -2
+        }
+      ]
+    },
+    {
+      "moduleId": "m68786",
+      "chapter": "ch12",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68789",
+      "chapter": "ch12",
+      "discrepancies": [
+        {
+          "tag": "term",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68791",
+      "chapter": "ch12",
+      "discrepancies": [
+        {
+          "tag": "sub",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68793",
+      "chapter": "ch12",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68805",
+      "chapter": "ch14",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": 1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68811",
+      "chapter": "ch15",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68818",
+      "chapter": "ch16",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        },
+        {
+          "tag": "para",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68822",
+      "chapter": "ch17",
+      "discrepancies": [
+        {
+          "tag": "sub",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68826",
+      "chapter": "ch17",
+      "discrepancies": [
+        {
+          "tag": "title",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68844",
+      "chapter": "ch19",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        },
+        {
+          "tag": "sub",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68846",
+      "chapter": "ch20",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -2
+        },
+        {
+          "tag": "sup",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68847",
+      "chapter": "ch20",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68848",
+      "chapter": "ch20",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68854",
+      "chapter": "ch21",
+      "discrepancies": [
+        {
+          "tag": "link",
+          "diff": -1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68860",
+      "chapter": "appendices",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": 2
+        },
+        {
+          "tag": "title",
+          "diff": 1
+        }
+      ]
+    },
+    {
+      "moduleId": "m68863",
+      "chapter": "appendices",
+      "discrepancies": [
+        {
+          "tag": "emphasis",
+          "diff": 1
         }
       ]
     }

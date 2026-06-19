@@ -87,3 +87,18 @@ books/testbook/
 *:Zone.Identifier
 Chemistry2e-WEB.pdf
 Screenshot*.png
+
+# Local-only source media (large; kept off git for these books)
+books/edlisfraedi-2e/01-source/media/
+books/liffraedi-2e/01-source/media/
+
+# Tooling state (Superpowers / Claude Code workflows)
+.superpowers/
+.claude/workflows/
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Ad-hoc pre-fix content backups (real history lives in git)
+*.pre-equation-fix-*
