@@ -408,6 +408,10 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     title,
     equations: context.equations,
     terms: context.terms,
+    // Learning objectives as structured data (same source as the rendered
+    // .learning-objectives block). Lets vefur drive objective tracking without
+    // scraping HTML; empty array when the module declares no abstract.
+    objectives: (doc.metadata.abstract && doc.metadata.abstract.items) || [],
     _renderStats: context.renderStats || { equations: 0, success: 0, failures: [] },
   };
 
