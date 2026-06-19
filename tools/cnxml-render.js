@@ -1153,14 +1153,15 @@ function renderMedia(media, context) {
  * Render a note.
  * Renders paragraphs and figures in document order to preserve content flow.
  */
-function renderNote(note, context) {
+function renderNote(note, context, extraClass = '') {
   const lines = [];
   const id = note.id || null;
   const noteClass = note.attributes.class || 'default';
+  const classAttr = `note note-${escapeAttr(noteClass)}${
+    extraClass ? ` ${escapeAttr(extraClass)}` : ''
+  }`;
 
-  lines.push(
-    `<aside${id ? ` id="${escapeAttr(id)}"` : ''} class="note note-${escapeAttr(noteClass)}">`
-  );
+  lines.push(`<aside${id ? ` id="${escapeAttr(id)}"` : ''} class="${classAttr}">`);
 
   // Note type label (e.g., "Chemistry in Everyday Life", "Link to Learning")
   const typeLabel = getNoteTypeLabel(noteClass);
@@ -1446,9 +1447,16 @@ function renderExample(example, context) {
       case 'equation':
         lines.push(`  ${renderEquation(item, context)}`);
         break;
-      case 'note':
-        lines.push(`  ${renderNote(item, context)}`);
+      case 'note': {
+        // A classless note inside a worked example is the "Check Your Learning"
+        // answer (OpenStax structure: classed notes like link-to-learning carry
+        // an explicit class). Mark it so the reader can hide it behind a
+        // "Sýna svar" reveal toggle.
+        const answerClass =
+          item.attributes && !item.attributes.class ? 'check-knowledge-answer' : '';
+        lines.push(`  ${renderNote(item, context, answerClass)}`);
         break;
+      }
       case 'media':
         lines.push(`  ${renderMedia(item, context)}`);
         break;

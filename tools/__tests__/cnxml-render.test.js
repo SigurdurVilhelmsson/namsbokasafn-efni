@@ -367,3 +367,32 @@ describe('escapeJsonForScript', () => {
     expect(escapeJsonForScript(json)).toBe(json);
   });
 });
+
+// ─── Check Your Learning answer marking ───────────────────────────
+
+describe('check-knowledge answer note marking', () => {
+  const cnxml = `<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Mælingar</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml"><md:content-id>m00010</md:content-id><md:title>Mælingar</md:title><md:uuid>00000000-0000-0000-0000-000000000010</md:uuid></metadata>
+<content>
+<example id="ex-1"><title>Dæmi</title>
+<para id="p-sol">Reiknuð lausn.</para>
+<para id="p-cyl"><title>Check Your Learning</title>Hvert er rúmmálið?</para>
+<note id="n-ans"><title>Answer:</title><para id="p-ans">8,844 L</para></note>
+<note id="n-l2l" class="link-to-learning"><title>Tengill</title><para id="p-l2l">Lærðu meira.</para></note>
+</example>
+</content>
+</document>`;
+
+  it('adds check-knowledge-answer class to the classless answer note inside an example', () => {
+    const { html } = renderCnxmlToHtml(cnxml, { moduleId: 'm00010', chapter: 1, lang: 'is' });
+    expect(html).toContain('class="note note-default check-knowledge-answer"');
+  });
+
+  it('does not mark a classed note (e.g. link-to-learning) as an answer', () => {
+    const { html } = renderCnxmlToHtml(cnxml, { moduleId: 'm00010', chapter: 1, lang: 'is' });
+    expect((html.match(/check-knowledge-answer/g) || []).length).toBe(1);
+    expect(html).not.toContain('check-knowledge-answer link-to-learning');
+    expect(html).not.toContain('link-to-learning check-knowledge-answer');
+  });
+});
