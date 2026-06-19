@@ -1,0 +1,13 @@
+english,icelandic,alternatives,category,notes,definition_en,definition_is
+Avogadro's number,tala Avogadros,,constants,,,
+bond,efnatengi,,bonding,Chemical bond,,
+chemical change,efnabreyting,,changes,,change producing a different kind of matter from the original kind of matter,breyting sem framleiðir annars konar efni en upprunalega efnið
+chemical equation,efnajafna,,concepts,,symbolic representation of a chemical reaction,Táknræn framsetning á efnahvarfi
+chemical property,efnafræðilegur eiginleiki,"[{""term"":""efnaeiginleiki"",""note"":""OpenStax MT translation"",""source"":""openstax-mt""}]",properties,,behavior that is related to the change of one kind of matter into another kind of matter,hegðun sem tengist breytingu á einni tegund efnis í aðra
+molecular mass,sameindamassi,,concepts,,,
+physical change,eðlisbreyting,,changes,,change in the state or properties of matter that does not involve a change in its chemical composition,breyting á ástandi eða eiginleikum efnis sem felur ekki í sér breytingu á efnasamsetningu þess
+physical property,eðliseiginleiki,,properties,,characteristic of matter that is not associated with any change in its chemical composition,einkenni efnis sem er ekki tengt neinni breytingu á efnasamsetningu þess
+plasma,plasma,,states,State of matter,gaseous state of matter containing a large number of electrically charged atoms and/or molecules,
+pure substance,hreint efni,,fundamental,,homogeneous substance that has a constant composition,einsleitt efni sem hefur fasta samsetningu
+reaction,efnahvarf,,reactions,Chemical reaction,,
+solute,leysið efni,"[{""term"":""uppleyst efni"",""note"":""OpenStax MT translation"",""source"":""openstax-mt""}]",solutions,The dissolved substance,solution component present in a concentration less than that of the solvent,efnisþáttur lausnar sem er í lægri styrk en leysirinn
