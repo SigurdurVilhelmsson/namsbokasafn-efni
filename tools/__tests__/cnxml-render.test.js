@@ -240,6 +240,33 @@ describe('renderCnxmlToHtml', () => {
     expect(result.html).toContain('Fyrsta efni');
   });
 
+  it('emits structured learning objectives into page data', () => {
+    const cnxml = readFileSync(join(FIXTURES, 'minimal-translated.cnxml'), 'utf8');
+    const result = renderCnxmlToHtml(cnxml, {
+      moduleId: 'm00001',
+      chapter: 1,
+    });
+    // Same source as the rendered .learning-objectives block, but exposed
+    // structurally so vefur can drive objective tracking without scraping HTML.
+    expect(result.pageData.objectives).toEqual(['Fyrsta efni', 'Annað efni']);
+    expect(result.html).toContain('"objectives"');
+  });
+
+  it('emits an empty objectives array when the module has no abstract', () => {
+    const cnxml = `<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Engin markmið</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml"><md:content-id>m00002</md:content-id><md:title>Engin markmið</md:title><md:uuid>00000000-0000-0000-0000-000000000002</md:uuid></metadata>
+<content>
+<para id="p-1">Engin námsmarkmið hér.</para>
+</content>
+</document>`;
+    const result = renderCnxmlToHtml(cnxml, {
+      moduleId: 'm00002',
+      chapter: 1,
+    });
+    expect(result.pageData.objectives).toEqual([]);
+  });
+
   it('includes document class as CSS class on article', () => {
     const cnxml = readFileSync(join(FIXTURES, 'minimal-translated.cnxml'), 'utf8');
     const result = renderCnxmlToHtml(cnxml, {
