@@ -32,6 +32,8 @@ const STRUCTURAL_CLASSES = new Set([
   'unstyled', // Intentionally unstyled (e.g., lists)
   'top-titled', // Layout modifier — may be styled via parent context
   'note-default', // Default note type — inherits from .note
+  'check-knowledge-answer', // JS-hook marker for the reader's "Sýna svar" reveal toggle (vefur practiceReveal); hiding is vefur-injected, no content.css rule
+  'preserved-anchor', // Empty invisible <span> used purely as a deep-link/cross-reference id target; no visual styling needed
 ]);
 
 // Known gaps: classes emitted by cnxml-render.js but not yet in content.css.
