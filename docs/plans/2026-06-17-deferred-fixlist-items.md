@@ -167,19 +167,28 @@ override — design TBD.
 
 ---
 
-## D. (#4) Cross-repo: update vefur `toc.json` for renamed slugs — **REQUIRED**
+## D. (#4) Cross-repo: renamed slugs — **resolves on next content sync, no code**
 
-PR #133 corrected 3 mid-word-cut slugs. efni's `toc.json` is only a track manifest;
-the **section→route map is vefur's `static/content/<book>/toc.json`**. Until it's
-updated, these 3 routes 404:
+> **Verified 2026-06-22 — no manual edit needed.** vefur's
+> `static/content/<book>/toc.json` is **gitignored and generated** by
+> `scripts/generate-toc.js`, which `sync-content.js` runs on every sync
+> (lines 238/379). It derives section slugs from efni's *published filenames*.
+> Those filenames are **already corrected and committed** in efni (PR #133); no
+> stale old-slug files linger. So the live 404s persist **only because corrected
+> content hasn't been re-synced** — the next `node scripts/sync-content.js
+> --source ../namsbokasafn-efni` (the lead's normal deploy step) regenerates
+> toc.json and fixes all three automatically. **Do NOT hand-edit toc.json**
+> (forbidden by CLAUDE.md; it'd be overwritten). Item D = a deploy checklist
+> line, not a fix.
 
-| Book / ch | Old slug | New slug |
+PR #133 corrected 3 mid-word-cut slugs. The 3 routes 404 on the live site until
+the corrected content is re-synced:
+
+| Book / ch | Old slug (stale on live) | New slug (in efni now) |
 |-----------|----------|----------|
 | edlisfraedi-2e ch4 | `…-samhverfa-i-kr` | `…-samhverfa-i` |
 | efnafraedi-2e ch9 | `…-blanda-og-efn` | `…-blanda-og` |
 | efnafraedi-2e ch19 | `…-hlidarmalma-og-` | `…-hlidarmalma-og` |
-
-(Full slugs in the handoff doc.) Do this in lockstep with merging #133.
 
 ---
 
