@@ -1,12 +1,52 @@
 # A1 — Appendix cross-reference resolution (cross-repo design spec)
 
-**Status:** Draft for review. Implementation deferred to a coordinated
-efni + namsbokasafn-vefur session.
+**Status:** Scope decided 2026-06-22 — **minimal fix only** (see Scope decision
+below). Implementation deferred to an efni-rooted session.
 **Date:** 2026-06-22
 **Relates to:** [`docs/plans/2026-06-17-deferred-fixlist-items.md`](2026-06-17-deferred-fixlist-items.md) item A1.
 **Companion (done):** A2 footnote-relocation fix — landed this session in
 `renderCompiledExercises` (`tools/cnxml-render.js`), tests in
 `tools/__tests__/cnxml-render.test.js`.
+
+## Scope decision (2026-06-22)
+
+**Chosen: minimal fix only. The general prose-appendix mechanism is deferred
+(no current use).**
+
+Decided by the lead in a namsbokasafn-vefur session after the two vefur-side
+claims below were verified against the code:
+
+- Interactive appendix → 307-redirect to `componentPath`, `#fragment` dropped
+  (`vefur src/routes/[bookSlug]/vidauki/[appendixLetter]/+page.ts:43-44`). ✓
+- That route's `entries()` **only prerenders non-interactive appendices**
+  (`+page.ts:20`, `.filter(a => !a.isInteractive)`), so the periodic-table
+  appendix has no content page to deep-link into at all. ✓
+- Checked fact #1 in this doc still holds: **zero working appendix cross-page
+  links exist in the published corpus today**, so the general id-map +
+  `buildCrossModuleHref` branch + fragment-scroll contract would be
+  infrastructure for a case that does not currently occur → YAGNI.
+
+**What "minimal fix" means:**
+
+- **Build only enough to resolve the single anchor `fs-idm379479808`.** A small
+  last-resort lookup (appendix-id → `{ letter, isInteractive }`, appendices
+  only) consulted in `resolveCrossModuleHref` after the chapter-local miss; on a
+  hit emit the **absolute landing URL `/{bookSlug}/vidauki/{letter}` with the
+  `#fragment` dropped** (because the target appendix is interactive). No
+  persisted book-wide index, no general prose-appendix anchor scrolling.
+- Then re-render efnafraedi-2e, assert the diff is **href-only**, `sync-content`
+  to vefur.
+- **vefur needs no code change.** The `/{bookSlug}/vidauki/{letter}` route and
+  the interactive 307-redirect already produce the correct final behavior. The
+  only vefur-side step is post-sync verification: confirm the chapter-2
+  "viðauka A" link navigates to the periodic-table component instead of
+  dead-anchoring.
+
+The general mechanism (resolving *non-interactive* prose-appendix anchors to
+`/{bookSlug}/vidauki/{letter}#<id>` with browser-native fragment scroll, plus
+the shared `appendices-(\d+)-` → letter contract) is preserved below as the
+documented design to revive **if and when a prose appendix actually gains a
+cross-page reference.** Until then it stays unbuilt.
 
 ## Problem
 
@@ -67,9 +107,10 @@ invocations — the chapter-2 render and the appendix render never share memory.
    below matters only for *prose* (non-interactive) appendices in this or other
    books.
 
-This makes A1 **inherently cross-repo**: efni must emit a resolvable appendix
-URL, and vefur must (a) route that URL and (b) decide fragment behavior,
-especially for interactive appendices.
+**Net (per the Scope decision above):** vefur's `/{bookSlug}/vidauki/{letter}`
+route and its interactive-appendix 307-redirect already produce the correct
+final behavior, so the fix is **efni-only** — emit the landing URL with the
+fragment dropped. vefur needs no code change.
 
 ## Non-goals (YAGNI)
 
@@ -80,9 +121,9 @@ especially for interactive appendices.
   one small map (appendix-id → letter/basename), not a full book index.
 - No change to chapter-internal or relocated-exercise resolution (working).
 
-## Approach
+## Approach (minimal fix — efni only)
 
-### efni half — emit a resolvable cross-page appendix href
+### efni — emit a resolvable cross-page appendix href
 
 1. **Build an appendix-id map once per book render**, before chapters render.
    Scan each appendix module's translated CNXML
@@ -96,58 +137,68 @@ especially for interactive appendices.
    chapter-local `chapterIdToModule` lookup misses and before the dead
    same-page fallback. On a hit, emit a cross-page href via a new
    appendix-aware branch of `buildCrossModuleHref`.
-3. **URL shape — decide with vefur (see contract below).** Default
-   recommendation: emit the **absolute reader URL**
+3. **URL shape (decided).** Emit the **absolute reader URL**
    `/{bookSlug}/vidauki/{letter}` (mirroring the section-link clean-break of
-   PR #135/#146), with the `#fragment` appended **only for non-interactive
-   appendices**; for interactive appendices, emit the bare landing URL (no
-   fragment), since vefur will redirect and drop it anyway.
+   PR #135/#146). `fs-idm379479808`'s appendix is interactive, so emit the bare
+   landing URL with **no `#fragment`** (vefur 307-redirects and drops it). A
+   fragment would be appended only for a *non-interactive* prose appendix — see
+   Deferred general mechanism.
 
-### vefur half — route + fragment contract
-
-1. **Confirm `/{bookSlug}/vidauki/{letter}` accepts and scrolls to a
-   `#fragment`** for non-interactive appendices (content pages). If the
-   rendered appendix HTML preserves the source ids as anchors (it does for the
-   periodic table; verify for prose appendices), browser-native fragment scroll
-   should work — confirm under `trailingSlash` settings.
-2. **Interactive-appendix policy:** the redirect to `componentPath` drops the
-   fragment. Either (a) accept landing-page navigation for interactive
-   appendices (recommended — the periodic table has no meaningful per-id
-   anchor), or (b) teach the component to read and honor a fragment. (a) is the
-   low-effort, correct choice for `fs-idm379479808`.
-3. **Letter-mapping contract.** The resolver bakes a *final* href into static
+4. **Letter-mapping contract.** The resolver bakes a *final* href into static
    HTML; vefur never post-processes rendered content. So efni must produce the
-   navigable URL at render time, which means efni must derive the appendix
-   letter itself (`appendices-(\d+)-` → letter — the same regex vefur's
+   navigable URL at render time, which means efni derives the appendix letter
+   itself (`appendices-(\d+)-` → letter — the same regex vefur's
    `generate-toc.js` uses). This duplicates the mapping in two repos. Accept the
-   duplication (it is one trivial, stable regex) but record it as a shared
-   contract in this doc and in vefur's so the two cannot silently drift. The
-   alternative — efni emits a basename-relative href and vefur rewrites it
-   client-side — reintroduces exactly the relative-link fragility that
-   PR #135/#146 removed for sections, so it is rejected.
+   duplication (one trivial, stable regex) but record it as a shared contract
+   here and in vefur's docs so the two cannot silently drift. The alternative —
+   efni emits a basename-relative href and vefur rewrites it client-side —
+   reintroduces exactly the relative-link fragility that PR #135/#146 removed
+   for sections, so it is rejected.
 
-## Acceptance criteria
+### vefur — no code change required
+
+The `/{bookSlug}/vidauki/{letter}` route and the interactive 307-redirect
+already produce the correct behavior for the minimal fix. The only vefur-side
+step is **post-sync verification**: confirm the chapter-2 "viðauka A" link
+navigates to the periodic-table component instead of dead-anchoring.
+
+## Acceptance criteria (minimal fix)
 
 - `fs-idm379479808` on chapter 2 resolves to the Appendix-A periodic-table
   landing (no dead `#` anchor); dead-anchor audit total → **0**.
-- The general mechanism resolves a *non-interactive* appendix anchor to
-  `/{bookSlug}/vidauki/{letter}#<id>` and scrolls correctly (add a prose-
-  appendix test case if one exists; otherwise document as unverified).
 - No regression to chapter-internal or relocated-exercise link resolution
   (existing render tests stay green).
+- Re-render efnafraedi-2e; assert the diff is **href-only**; `sync-content` to
+  vefur, then run the post-sync verification above.
 
 ## Risk
 
-Medium. Touches the core link resolver (`resolveCrossModuleHref` /
-`buildCrossModuleHref`) and adds a pre-pass + possibly one build artifact.
-Re-render all books afterward and assert the diff is href-only. Cross-repo
-coordination required — per the repo relaunch heuristic, the vefur half should
-be done in a session rooted in namsbokasafn-vefur.
+Low–medium, and **efni-only**. Touches the core link resolver
+(`resolveCrossModuleHref` / `buildCrossModuleHref`) and adds a small
+appendix-id lookup. Re-render efnafraedi-2e afterward and assert the diff is
+href-only. No vefur code change, so no cross-repo build coordination — only the
+post-sync link check.
 
 ## Sequencing note
 
-Recommend doing the **vefur half first** (prove `/vidauki/{letter}#frag`
-routing + settle the interactive-appendix policy), then the efni emit half,
-because the URL contract decides what efni emits. Until then, the single dead
-anchor is cosmetic (the link text "viðauka A" still reads correctly; it just
-doesn't navigate).
+Single efni-rooted session: build the appendix-id lookup → extend
+`resolveCrossModuleHref` → re-render → sync → verify the link in vefur. There is
+no vefur-first step (the route and redirect already exist). Until shipped, the
+lone dead anchor is cosmetic — the link text "viðauka A" reads correctly; it
+just doesn't navigate.
+
+## Deferred general mechanism (non-interactive prose appendices)
+
+Not built — revive only if a *prose* (non-interactive) appendix ever gains a
+cross-page reference (none exists today). The minimal fix above already builds
+the appendix-id lookup and the resolver branch; extending it to prose appendices
+means appending the `#<id>` fragment instead of dropping it, and confirming the
+reader scrolls to it:
+
+- **Fragment scroll:** `/{bookSlug}/vidauki/{letter}#<id>` relies on the
+  rendered prose-appendix HTML preserving source ids as anchors and on
+  browser-native scroll under vefur's `trailingSlash` setting — verify when a
+  real case appears.
+- **Interactive appendices stay landing-only:** the `componentPath` redirect
+  drops fragments by design; teaching a component to honor a fragment is out of
+  scope unless a specific interactive appendix needs it.
