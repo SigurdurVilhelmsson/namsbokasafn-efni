@@ -8,6 +8,7 @@ import {
   calculateColspan,
   renderPara,
   renderCnxmlToHtml,
+  renderCompiledExercises,
   escapeJsonForScript,
   _loadBookConfigForTest,
 } from '../cnxml-render.js';
@@ -283,6 +284,92 @@ describe('renderCnxmlToHtml', () => {
       chapter: 1,
     });
     expect(result.html).toContain('data-module-id="m00001"');
+  });
+});
+
+// ─── Footnotes on compiled end-of-chapter pages (deferred fix A2) ──────
+
+describe('footnotes on the compiled exercises page', () => {
+  // renderCompiledExercises is chemistry's combined N-exercises page builder.
+  // Bug: it slices only the first <section> from each per-section render and
+  // discards the separate <section class="footnotes"> that renderCnxmlToHtml
+  // appends, so a footnote MARKER (fnref) survives but its BODY (<li id="…">)
+  // is dropped — a dead anchor (efnafraedi-2e 7-exercises / 12-exercises).
+  const exercisesByType = {
+    exercises: [
+      {
+        moduleId: 'm68741',
+        sectionNumber: '7.1',
+        sectionTitle: 'Æfingar',
+        exercisesContent:
+          '<section class="exercises" id="sec-ex"><title>Æfingar</title>' +
+          '<exercise id="ex-1"><problem id="prob-1">' +
+          '<para id="pa-1">Reiknaðu massann.<footnote id="fs-idp7089072">Miðað við staðalaðstæður.</footnote></para>' +
+          '</problem></exercise></section>',
+      },
+    ],
+  };
+
+  function render() {
+    return renderCompiledExercises(7, exercisesByType, new Map(), {
+      lang: 'is',
+      chapter: 7,
+      bookSlug: 'efnafraedi-2e',
+      moduleSections: {},
+      moduleId: '7-exercises',
+    });
+  }
+
+  it('renders the footnote marker for an exercise footnote', () => {
+    expect(render()).toContain('id="fnref-1"');
+  });
+
+  it('renders the footnote body so the marker anchor resolves', () => {
+    const html = render();
+    expect(html).toContain('class="footnotes"');
+    expect(html).toContain('id="fs-idp7089072"');
+  });
+
+  // Two footnote-bearing exercise sections on ONE compiled page. A full-corpus
+  // scan (2026-06-22) found this never occurs in current content — every
+  // chapter has at most one such section — so this locks behavior against a
+  // future content addition. Forward links stay correct because each <li> uses
+  // its CNXML source id; KNOWN LIMITATION: per-section renders restart footnote
+  // numbering, so the display number / fnref-N backref can repeat across
+  // sections. If this test ever needs the markers distinguished, renumber
+  // fnref-N/fn-N page-globally while collecting (see deferred-fixlist A2 note).
+  it('keeps both footnote bodies when two exercise sections each carry one', () => {
+    const two = {
+      exercises: [
+        {
+          moduleId: 'm-a',
+          sectionNumber: '7.1',
+          sectionTitle: 'A',
+          exercisesContent:
+            '<section class="exercises" id="sa"><title>A</title><exercise id="ea">' +
+            '<problem id="pa"><para id="qa">Spurning A.<footnote id="fs-idAAA">Skýring A.</footnote></para>' +
+            '</problem></exercise></section>',
+        },
+        {
+          moduleId: 'm-b',
+          sectionNumber: '7.2',
+          sectionTitle: 'B',
+          exercisesContent:
+            '<section class="exercises" id="sb"><title>B</title><exercise id="eb">' +
+            '<problem id="pb"><para id="qb">Spurning B.<footnote id="fs-idBBB">Skýring B.</footnote></para>' +
+            '</problem></exercise></section>',
+        },
+      ],
+    };
+    const html = renderCompiledExercises(7, two, new Map(), {
+      lang: 'is',
+      chapter: 7,
+      bookSlug: 'efnafraedi-2e',
+      moduleSections: {},
+      moduleId: '7-exercises',
+    });
+    expect(html).toContain('id="fs-idAAA"');
+    expect(html).toContain('id="fs-idBBB"');
   });
 });
 

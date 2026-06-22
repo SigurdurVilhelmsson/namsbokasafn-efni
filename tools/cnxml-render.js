@@ -2891,6 +2891,13 @@ function renderCompiledExercises(chapter, exercisesByType, chapterExerciseNumber
   );
   const hasMultipleTypes = exerciseTypes.length > 1;
 
+  // Footnote bodies live in a separate <section class="footnotes"> that
+  // renderCnxmlToHtml appends AFTER the exercise <section>. The single-section
+  // slice below keeps the marker but drops that body, so collect the bodies
+  // here and re-emit them once before </article> (otherwise the in-text
+  // footnote refs become dead anchors — efnafraedi-2e 7/12-exercises).
+  const footnoteItems = [];
+
   for (const [exerciseClass, exercisesForType] of exerciseTypes) {
     // Add type heading for multi-type books
     if (hasMultipleTypes) {
@@ -2919,6 +2926,18 @@ function renderCompiledExercises(chapter, exercisesByType, chapterExerciseNumber
           includeSolutions: false,
         }
       );
+
+      // Salvage any footnote bodies before slicing out the exercise section
+      // (they render in a trailing <section class="footnotes"> that the slice
+      // would otherwise discard).
+      const footnotesMatch = html.match(/<section class="footnotes">[\s\S]*?<\/section>/);
+      if (footnotesMatch) {
+        const itemPattern = /<li id="[^"]*"[\s\S]*?<\/li>/g;
+        let liMatch;
+        while ((liMatch = itemPattern.exec(footnotesMatch[0])) !== null) {
+          footnoteItems.push(liMatch[0]);
+        }
+      }
 
       // Extract just the section content (remove wrapper HTML)
       const sectionMatch = html.match(/<section[\s\S]*?<\/section>/);
@@ -2950,6 +2969,16 @@ function renderCompiledExercises(chapter, exercisesByType, chapterExerciseNumber
   }
 
   lines.push('    </main>');
+
+  if (footnoteItems.length > 0) {
+    lines.push('<section class="footnotes">');
+    lines.push('  <h2>Neðanmálsgreinar</h2>');
+    lines.push('  <ol class="footnotes-list">');
+    for (const item of footnoteItems) lines.push(`    ${item}`);
+    lines.push('  </ol>');
+    lines.push('</section>');
+  }
+
   lines.push('  </article>');
   lines.push('');
   lines.push(`  <script type="application/json" id="page-data">`);
@@ -3996,6 +4025,7 @@ export {
   calculateColspan,
   renderPara,
   renderCnxmlToHtml,
+  renderCompiledExercises,
   escapeJsonForScript,
   _loadBookConfigForTest,
 };

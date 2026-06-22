@@ -15,13 +15,33 @@ cross-repo coordination.
 
 PR #133 fixed the exercise-relocation cases (page-based resolution +
 `relocatedIds` in `tools/lib/cnxml-elements.js` / `tools/cnxml-render.js`). Three
-dead same-page anchors remain across all published HTML (113,553 refs total):
+dead same-page anchors remained across all published HTML (113,553 refs total):
 
-| Target id | Referenced on | Real location | Kind |
-|-----------|---------------|---------------|------|
-| `fs-idm379479808` | efnafraedi-2e `2-3-bygging-atoms…` | Appendix A (`m68859`) | cross-chapter → appendix |
-| `fs-idp7089072` | efnafraedi-2e `7-exercises` | `<footnote>` in `m68741` | footnote |
-| `fs-idm12821888` | efnafraedi-2e `12-exercises` | `<footnote>` in `m68794` | footnote |
+| Target id | Referenced on | Real location | Kind | Status |
+|-----------|---------------|---------------|------|--------|
+| `fs-idm379479808` | efnafraedi-2e `2-3-bygging-atoms…` | Appendix A (`m68859`) | cross-chapter → appendix | **A1 — specced**, deferred cross-repo: [`2026-06-22-a1-appendix-crossref-design.md`](2026-06-22-a1-appendix-crossref-design.md) |
+| `fs-idp7089072` | efnafraedi-2e `7-exercises` | `<footnote>` in `m68741` | footnote | ✅ **FIXED 2026-06-22** (A2) |
+| `fs-idm12821888` | efnafraedi-2e `12-exercises` | `<footnote>` in `m68794` | footnote | ✅ **FIXED 2026-06-22** (A2) |
+
+**A2 (footnotes) — DONE 2026-06-22.** Root cause was *not* the dropped-source-id
+the section below describes; it was `renderCompiledExercises`
+(`tools/cnxml-render.js`) slicing only the first `<section>` from each per-section
+render and discarding the trailing `<section class="footnotes">`. Fix: salvage the
+footnote bodies and re-emit them once before `</article>`. Tests in
+`tools/__tests__/cnxml-render.test.js` ("footnotes on the compiled exercises
+page"); ch7 + ch12 re-rendered; dead-anchor audit total 3 → **1** (only A1 left).
+
+**Known limitation (currently inert).** Per-section renders restart footnote
+numbering at 1, so if a *single* compiled exercises page ever gathered ≥2
+footnote-bearing exercise sections, the display number / `fnref-N` backref would
+repeat across them (forward links stay correct — each `<li>` uses its CNXML
+source id). A full-corpus scan on 2026-06-22 (all books, both tracks) found this
+never occurs: only efnafraedi-2e ch7 and ch12 have footnote-bearing exercise
+sections, one each. A lock test (`keeps both footnote bodies when two exercise
+sections each carry one`) guards the body-collection behavior. **If future
+content adds a second footnote-bearing exercise section to one chapter,**
+renumber `fnref-N`/`fn-N` page-globally while collecting (rewrite the marker in
+the sliced section HTML and the `<li>` together).
 
 ### A1. Cross-chapter → appendix reference (book-wide id map)
 **Root cause.** `chapterIdToModule` (built in `cnxml-render.js` main) is *chapter-
