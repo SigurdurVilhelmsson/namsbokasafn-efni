@@ -6,27 +6,27 @@
     {
       "id": "3.1",
       "titleEn": "Synthesis of Biological Macromolecules",
-      "titleIs": null
+      "titleIs": "Myndun Lífrænna Stórsameinda"
     },
     {
       "id": "3.2",
       "titleEn": "Carbohydrates",
-      "titleIs": null
+      "titleIs": "Kolvetni"
     },
     {
       "id": "3.3",
       "titleEn": "Lipids",
-      "titleIs": null
+      "titleIs": "Lípíð"
     },
     {
       "id": "3.4",
       "titleEn": "Proteins",
-      "titleIs": null
+      "titleIs": "Prótein"
     },
     {
       "id": "3.5",
       "titleEn": "Nucleic Acids",
-      "titleIs": null
+      "titleIs": "Kjarnsýrur"
     }
   ],
   "status": {
@@ -72,7 +72,7 @@
   "images": {
     "total": 34,
     "translated": 34,
-    "status": "imported",
+    "status": "in-progress",
     "notes": "34 images extracted from docx (2 EMF files need conversion to PNG)"
   },
   "notes": "Human translation imported from Word document. Body content well-covered; exercises and glossary need MT."
