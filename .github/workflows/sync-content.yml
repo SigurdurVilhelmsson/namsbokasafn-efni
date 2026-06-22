@@ -26,12 +26,12 @@ jobs:
 
     steps:
       - name: Checkout efni (content source)
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           path: efni
 
       - name: Checkout vefur (web reader)
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           repository: SigurdurVilhelmsson/namsbokasafn-vefur
           token: ${{ secrets.VEFUR_DEPLOY_TOKEN }}
