@@ -9,6 +9,7 @@ import {
   renderPara,
   renderCnxmlToHtml,
   renderCompiledExercises,
+  buildAppendixIdMap,
   escapeJsonForScript,
   _loadBookConfigForTest,
 } from '../cnxml-render.js';
@@ -370,6 +371,23 @@ describe('footnotes on the compiled exercises page', () => {
     });
     expect(html).toContain('id="fs-idAAA"');
     expect(html).toContain('id="fs-idBBB"');
+  });
+});
+
+// ─── Appendix id map (A1) ───────────────────────────────────────
+
+describe('buildAppendixIdMap', () => {
+  // Integration test against the real efnafraedi-2e appendix CNXML/structure.
+  it('maps an appendix element id to its letter (periodic table = A)', () => {
+    const map = buildAppendixIdMap('efnafraedi-2e', 'mt-preview');
+    const entry = map.get('fs-idm379479808');
+    expect(entry).toBeTruthy();
+    expect(entry.letter).toBe('A');
+  });
+
+  it('returns an empty map for a book with no appendices', () => {
+    const map = buildAppendixIdMap('does-not-exist', 'mt-preview');
+    expect(map.size).toBe(0);
   });
 });
 

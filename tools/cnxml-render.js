@@ -251,6 +251,61 @@ function loadEquationTextDictionary(book) {
   }
 }
 
+/**
+ * Build a lookup of element ids that live in the book's appendices, each mapped
+ * to its appendix letter + output basename. resolveCrossModuleHref consults it
+ * to resolve a chapter→appendix cross-reference — which the chapter-scoped
+ * `chapterIdToModule` can't see, because appendices render in a separate pass —
+ * to the appendix landing URL (A1). Cheap: a handful of appendix modules,
+ * scanned once per render. The letter formula (1→A) matches vefur's
+ * `generate-toc.js`; keep the two in sync (shared contract).
+ * @param {string} book - Book slug
+ * @param {string} track - Publication track
+ * @returns {Map<string,{letter:string,basename:string}>}
+ */
+function buildAppendixIdMap(book, track) {
+  const map = new Map();
+  let appendixSections;
+  try {
+    appendixSections = buildModuleSections(book, 'appendices');
+  } catch {
+    return map; // book has no appendices
+  }
+  for (const [moduleId, info] of Object.entries(appendixSections)) {
+    if (moduleId.startsWith('_') || !info || info.section == null) continue;
+    const n = parseInt(info.section, 10);
+    if (!Number.isFinite(n) || n < 1 || n > 26) continue;
+    const letter = String.fromCharCode(64 + n); // 1→A — matches vefur generate-toc.js
+    const basename = `appendices-${info.section}-${info.slug}`;
+    let cnxmlPath = path.join(
+      'books',
+      book,
+      '03-translated',
+      track,
+      'appendices',
+      `${moduleId}.cnxml`
+    );
+    if (!fs.existsSync(cnxmlPath) && track === 'faithful') {
+      cnxmlPath = path.join(
+        'books',
+        book,
+        '03-translated',
+        'mt-preview',
+        'appendices',
+        `${moduleId}.cnxml`
+      );
+    }
+    if (!fs.existsSync(cnxmlPath)) continue;
+    const cnxml = fs.readFileSync(cnxmlPath, 'utf-8');
+    const idPattern = /\sid="([^"]+)"/g;
+    let m;
+    while ((m = idPattern.exec(cnxml)) !== null) {
+      if (!map.has(m[1])) map.set(m[1], { letter, basename });
+    }
+  }
+  return map;
+}
+
 // Module sections are built dynamically from structure + segment files
 // via buildModuleSections() — see tools/lib/module-sections.js
 
@@ -376,6 +431,7 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     chapterExerciseNumbers: options.chapterExerciseNumbers || new Map(), // chapter-wide
     chapterSectionTitles: options.chapterSectionTitles || new Map(), // section ID -> title
     chapterIdToModule: options.chapterIdToModule || new Map(), // elementId -> moduleId[]
+    appendixIdMap: options.appendixIdMap || new Map(), // appendix elementId -> { letter, basename } (A1)
     relocatedIds: options.relocatedIds || new Map(), // elementId -> compiled-page basename (#3)
     currentPageBasename: options.currentPageBasename || null, // set when rendering a compiled page (#3)
     moduleSections: options.moduleSections || {}, // for cross-module href resolution
@@ -3238,6 +3294,12 @@ async function main() {
     // Build module sections map from structure + segment files
     const moduleSections = buildModuleSections(BOOK_SLUG, args.chapter);
 
+    // Appendix id → { letter, basename } lookup, so a chapter→appendix cross-ref
+    // resolves to the appendix landing URL (A1). Skipped while rendering the
+    // appendices themselves (within-appendix links stay same-page).
+    const appendixIdMap =
+      args.chapter === 'appendices' ? new Map() : buildAppendixIdMap(BOOK_SLUG, args.track);
+
     // Load equation text translation dictionary
     const equationTextDictionary = loadEquationTextDictionary(BOOK_SLUG);
 
@@ -3435,6 +3497,7 @@ async function main() {
           chapterExerciseNumbers,
           chapterSectionTitles,
           chapterIdToModule,
+          appendixIdMap,
           relocatedIds,
           equationTextDictionary,
         });
@@ -4026,6 +4089,7 @@ export {
   renderPara,
   renderCnxmlToHtml,
   renderCompiledExercises,
+  buildAppendixIdMap,
   escapeJsonForScript,
   _loadBookConfigForTest,
 };

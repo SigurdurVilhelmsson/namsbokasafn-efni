@@ -157,6 +157,42 @@ describe('resolveCrossModuleHref', () => {
       expect(result.sameModule).toBe(true);
     });
   });
+
+  describe('appendix cross-references (A1)', () => {
+    // A chapter-scoped render can't see ids that live in the separately-rendered
+    // appendices. appendixIdMap (built once per render) lets a chapter link
+    // resolve cross-page to the appendix landing instead of a dead #anchor.
+    const appendixIdMap = new Map([
+      ['fs-idm379479808', { letter: 'A', basename: 'appendices-1-lotukerfid' }],
+    ]);
+
+    it('resolves an appendix id to the absolute /vidauki/{letter} landing URL', () => {
+      const ctx = makeContext({ bookSlug: 'efnafraedi-2e', appendixIdMap });
+      const result = resolveCrossModuleHref(null, 'fs-idm379479808', ctx);
+      // Landing URL, fragment dropped (Appendix A is the interactive periodic
+      // table — vefur 307-redirects and drops #fragment).
+      expect(result.href).toBe('/efnafraedi-2e/vidauki/A');
+      expect(result.sameModule).toBe(false);
+    });
+
+    it('leaves a non-appendix unknown id as the existing dead same-page anchor', () => {
+      const ctx = makeContext({ bookSlug: 'efnafraedi-2e', appendixIdMap });
+      const result = resolveCrossModuleHref(null, 'nonexistent-id', ctx);
+      expect(result.href).toBe('#nonexistent-id');
+      expect(result.sameModule).toBe(true);
+    });
+
+    it('does not override a chapter-local owner that also has the same id', () => {
+      // If the id resolves within the chapter, chapter-local resolution wins.
+      const ctx = makeContext({
+        bookSlug: 'efnafraedi-2e',
+        appendixIdMap: new Map([['fs-idm68801008', { letter: 'A', basename: 'appendices-1-x' }]]),
+      });
+      const result = resolveCrossModuleHref(null, 'fs-idm68801008', ctx);
+      // bookSlug is set, so chapter-local resolution emits the absolute URL.
+      expect(result.href).toBe('/efnafraedi-2e/kafli/05/5-2-varmamaelingar#fs-idm68801008');
+    });
+  });
 });
 
 describe('processInlineContent — link handling', () => {

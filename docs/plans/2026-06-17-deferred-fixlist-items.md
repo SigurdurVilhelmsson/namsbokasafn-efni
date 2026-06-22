@@ -19,7 +19,7 @@ dead same-page anchors remained across all published HTML (113,553 refs total):
 
 | Target id | Referenced on | Real location | Kind | Status |
 |-----------|---------------|---------------|------|--------|
-| `fs-idm379479808` | efnafraedi-2e `2-3-bygging-atoms…` | Appendix A (`m68859`) | cross-chapter → appendix | **A1 — specced**, deferred cross-repo: [`2026-06-22-a1-appendix-crossref-design.md`](2026-06-22-a1-appendix-crossref-design.md) |
+| `fs-idm379479808` | efnafraedi-2e `2-3-bygging-atoms…` | Appendix A (`m68859`) | cross-chapter → appendix | ✅ **FIXED 2026-06-22** (A1) — spec: [`2026-06-22-a1-appendix-crossref-design.md`](2026-06-22-a1-appendix-crossref-design.md) |
 | `fs-idp7089072` | efnafraedi-2e `7-exercises` | `<footnote>` in `m68741` | footnote | ✅ **FIXED 2026-06-22** (A2) |
 | `fs-idm12821888` | efnafraedi-2e `12-exercises` | `<footnote>` in `m68794` | footnote | ✅ **FIXED 2026-06-22** (A2) |
 
@@ -44,6 +44,17 @@ renumber `fnref-N`/`fn-N` page-globally while collecting (rewrite the marker in
 the sliced section HTML and the `<li>` together).
 
 ### A1. Cross-chapter → appendix reference (book-wide id map)
+> **✅ DONE 2026-06-22 — minimal fix shipped.** The "book-wide id map" framing
+> below is superseded (over-built for the single anchor). Implemented as a small
+> per-render appendix-id → `{ letter, basename }` lookup (`buildAppendixIdMap`)
+> consulted as a last resort in `resolveCrossModuleHref`; `fs-idm379479808` now
+> resolves to `/efnafraedi-2e/vidauki/A` (fragment dropped — Appendix A is the
+> interactive periodic table). No persisted index / no `build-id-index.js`. ch2
+> re-rendered, diff href-only, dead-anchor audit **1 → 0**. Tests in
+> `cnxml-render.test.js` (`buildAppendixIdMap`) + `cnxml-link-resolution.test.js`
+> (`appendix cross-references (A1)`). Spec:
+> [`2026-06-22-a1-appendix-crossref-design.md`](2026-06-22-a1-appendix-crossref-design.md).
+
 **Root cause.** `chapterIdToModule` (built in `cnxml-render.js` main) is *chapter-
 scoped* — it only registers ids from the chapter currently rendering. Appendices
 render in a separate pass, so a chapter-2 link to an Appendix-A id can't resolve

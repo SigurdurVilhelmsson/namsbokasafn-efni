@@ -1,7 +1,10 @@
 # A1 — Appendix cross-reference resolution (cross-repo design spec)
 
-**Status:** Scope decided 2026-06-22 — **minimal fix only** (see Scope decision
-below). Implementation deferred to an efni-rooted session.
+**Status:** ✅ **IMPLEMENTED 2026-06-22** — minimal fix shipped (see Scope
+decision below). `buildAppendixIdMap` + `resolveCrossModuleHref` appendix branch
+in `tools/cnxml-render.js` / `tools/lib/cnxml-elements.js`; `fs-idm379479808` →
+`/efnafraedi-2e/vidauki/A`; dead-anchor audit 1 → 0. The "Deferred general
+mechanism" (prose-appendix fragment scrolling) remains unbuilt.
 **Date:** 2026-06-22
 **Relates to:** [`docs/plans/2026-06-17-deferred-fixlist-items.md`](2026-06-17-deferred-fixlist-items.md) item A1.
 **Companion (done):** A2 footnote-relocation fix — landed this session in

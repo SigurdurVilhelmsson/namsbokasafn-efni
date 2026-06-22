@@ -89,6 +89,24 @@ export function resolveCrossModuleHref(documentId, targetId, context) {
     };
   }
 
+  // Appendix cross-reference (A1): the target lives in a separately-rendered
+  // appendix, so it's absent from the chapter-scoped chapterIdToModule and has
+  // no owner. Resolve to the appendix landing URL /{bookSlug}/vidauki/{letter}.
+  // The fragment is dropped — the only current case is the interactive periodic
+  // table (vefur 307-redirects to a component and drops #fragment); per-id
+  // fragment scrolling for prose appendices is the deferred general mechanism
+  // (see docs/plans/2026-06-22-a1-appendix-crossref-design.md).
+  if (!ownerModule && targetId && context.bookSlug && context.appendixIdMap) {
+    const appx = context.appendixIdMap.get(targetId);
+    if (appx) {
+      return {
+        href: `/${context.bookSlug}/vidauki/${appx.letter}`,
+        ownerModule: null,
+        sameModule: false,
+      };
+    }
+  }
+
   // No owner, or same module → same-page anchor. Exception: when rendering a
   // compiled page (currentPageBasename set), body content owned by a module
   // lives on that module's section page, not here, so fall through to cross-page
