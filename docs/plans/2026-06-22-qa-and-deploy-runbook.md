@@ -6,7 +6,23 @@ remediation QA (`docs/plans/2026-06-10-qa-checklist.md` §0–§5) into **`[auto
 (machine-verified — already run this session) vs **`[your eyes]`** (human
 judgment / production), then gives the deploy + live-verification steps.
 
-## Automated gate — run 2026-06-22, all green
+## ⚠️ GitHub Actions blocked until ~2026-07-01 (billing)
+
+Monthly Actions credits are exhausted (renew ~July 1). **All workflows fail in
+~3s with no logs** — annotation: *"job was not started because recent account
+payments have failed."* This is **billing, not code**, and it affects everything:
+
+- **CI checks** (lint, test, e2e, audit, validate) show all-red on every PR.
+  The repo is free-tier (no branch protection), so PRs stay `MERGEABLE` — merge
+  on the basis of a **local gate run** (`npm test`, `server` e2e, `npm run
+  validate`), not the red checkmarks. Watch for a real failure hiding among the
+  billing-reds.
+- **Deploy/sync Actions** (e.g. "Sync Content to Vefur") are blocked too — so
+  auto-sync will not fire regardless of token config. The **manual
+  `node scripts/sync-content.js` path below is the only deploy route** until
+  credits renew.
+
+## Automated gate — run 2026-06-22, all green (locally)
 
 | Gate | Result |
 |------|--------|
@@ -59,7 +75,9 @@ judgment / production), then gives the deploy + live-verification steps.
 ## Deploy + live verification (production — `[your eyes]`)
 
 This single sync ships everything merged-but-undeployed and resolves the slug
-404s at once. Run in **namsbokasafn-vefur** on the box (or locally then deploy):
+404s at once. Run in **namsbokasafn-vefur** on the box (or locally then deploy).
+**Until ~2026-07-01 this manual sync is the only route — the auto-sync Action is
+billing-blocked (see the callout up top).**
 
 1. **Sync content** (pulls efni `05-publication`, regenerates `toc.json`):
    ```
