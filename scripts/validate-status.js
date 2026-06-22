@@ -8,8 +8,11 @@
  * Otherwise validates all books.
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const booksDir = path.join(__dirname, '..', 'books');
 const schemaPath = path.join(__dirname, '..', 'schemas', 'chapter-status.schema.json');
