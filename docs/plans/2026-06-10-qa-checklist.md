@@ -43,8 +43,8 @@ Gate results: **Vitest 1299** (54 files) · **Playwright E2E 138** · **`/api/he
 | 0.1a | As `editorA`, open a module preview normally | Renders HTML as before | ◐ module-load happy path covered (`segment-editor.spec`); live preview endpoint not separately asserted |
 | 0.1b | `GET /api/segment-editor/<book>/1/m68664/preview?track=../../../../etc/passwd` | 400 (track rejected), no file read | ⏳ `VALID_TRACKS` constants unit-tested; live 400 not asserted — curl-checkable |
 | 0.1c | Preview with `moduleId` = `../../something` | 400 (validateModule rejects) | ⏳ guard exists; live 400 not asserted — curl-checkable |
-| 0.2a | Trigger a render that fails mid-pass (e.g. temporarily break one module's CNXML) on a chapter that already has published pages | On failure, previously-published pages **still present** on disk; error message accurate | ⏳ **no automated coverage** — scriptable CLI check (mutates `05-publication`); recommend a focused unit test for the `.backup.*` restore path |
-| 0.2b | Confirm `.backup.*` files were restored, not left orphaned | Live files match pre-run content | ⏳ same as 0.2a — no automated coverage |
+| 0.2a | Trigger a render that fails mid-pass (e.g. temporarily break one module's CNXML) on a chapter that already has published pages | On failure, previously-published pages **still present** on disk; error message accurate | ✅ auto 2026-06-22 — rollback logic extracted to `rollbackWrittenFiles` + unit-tested (`cnxml-render.test`: restores newest backup, picks newest-of-many). A full mid-pass render is still a good on-box smoke. |
+| 0.2b | Confirm `.backup.*` files were restored, not left orphaned | Live files match pre-run content | ✅ auto 2026-06-22 — `rollbackWrittenFiles` test: backup is renamed onto the file (consumed, not orphaned); brand-new partials deleted |
 | 0.3a | As `headY` (owns Book Y), call approve/apply on a Book X edit | 403 | ✅ auto 2026-06-22 — `requireRole.test`: "rejects a head-editor of a different book with 403" |
 | 0.3b | As `headX`, approve/apply a Book X edit | Succeeds | ✅ auto — `requireRole.test`: "passes a head-editor who owns the book" |
 | 0.3c | As `admin`, approve a Book X edit | Succeeds (admin bypass) | ✅ auto — `requireRole.test`: "lets admin through for any book" |
@@ -74,7 +74,7 @@ Gate results: **Vitest 1299** (54 files) · **Playwright E2E 138** · **`/api/he
 | # | Check | Expected | Result |
 |---|-------|----------|--------|
 | 2a | `editorA` edits a localized segment, submits for review | Enters pending state, not yet live | ✅ auto — `localizationReviewService.test` |
-| 2b | `editorA` tries to approve their own localization edit | "Cannot approve your own edit" | ◐ note: self-approval is now *permitted* for head-editor/admin; an `editor` cannot approve at all (`rbac.spec` 403). The original self-approve block is superseded — confirm the intended behaviour |
+| 2b | `headX` approves their *own* localization edit (self-approval); `editorA` tries to approve any | Self-approval **allowed** (four-eyes is policy, not enforced); approval is HEAD_EDITOR-only so `editorA` → 403 | ✅ auto — `localizationReviewService.test` (self-approval permitted, mirrors Pass 1) + `rbac.spec` (editor approve → 403). Updated 2026-06-22: original "cannot approve your own edit" expectation was superseded by the shipped self-approval model |
 | 2c | `headX` approves; content goes live to `04-localized-content/` | Applied | ✅ auto — `localizationReviewService.test` |
 | 2d | Snapshot taken before localized overwrite | Restore data exists | ✅ auto — `localizationReviewService.test` |
 | 2e | With per-book toggle OFF, localization saves directly (legacy behaviour) | Backward-compatible | ✅ auto — `localizationReviewService.test` |

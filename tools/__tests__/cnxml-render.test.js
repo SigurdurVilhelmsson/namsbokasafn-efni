@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeAll } from 'vitest';
-import { readFileSync } from 'fs';
+import { readFileSync, mkdtempSync, writeFileSync, existsSync, rmSync, readdirSync } from 'fs';
 import { join } from 'path';
+import { tmpdir } from 'os';
 import {
   getNoteTypeLabel,
   translateTitle,
@@ -10,6 +11,7 @@ import {
   renderCnxmlToHtml,
   renderCompiledExercises,
   buildAppendixIdMap,
+  rollbackWrittenFiles,
   escapeJsonForScript,
   _loadBookConfigForTest,
 } from '../cnxml-render.js';
@@ -371,6 +373,70 @@ describe('footnotes on the compiled exercises page', () => {
     });
     expect(html).toContain('id="fs-idAAA"');
     expect(html).toContain('id="fs-idBBB"');
+  });
+});
+
+// ─── Render rollback-on-failure (QA §0.2) ───────────────────────
+
+describe('rollbackWrittenFiles', () => {
+  // The render pass's failure path: each file safeWrite() touched is rolled
+  // back — restore its newest .backup.<ts> (the pre-overwrite copy), or delete
+  // it if it was brand-new this pass. Guards against a mid-pass crash leaving
+  // partial pages while destroying the previously-published ones.
+  function tmp() {
+    return mkdtempSync(join(tmpdir(), 'rollback-'));
+  }
+
+  it('restores a file from its newest backup (previously-published page survives)', () => {
+    const dir = tmp();
+    try {
+      const page = join(dir, 'page.html');
+      writeFileSync(page, 'PARTIAL — half-written this pass');
+      writeFileSync(
+        join(dir, 'page.html.backup.2026-01-01T00-00-00-000Z'),
+        'GOOD — prior published'
+      );
+
+      const res = rollbackWrittenFiles([page]);
+
+      expect(res).toEqual({ restored: 1, deleted: 0 });
+      expect(readFileSync(page, 'utf8')).toBe('GOOD — prior published');
+      // backup consumed (renamed onto the file), not left orphaned
+      expect(readdirSync(dir).filter((n) => n.includes('.backup.'))).toEqual([]);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it('restores the NEWEST backup when several exist', () => {
+    const dir = tmp();
+    try {
+      const page = join(dir, 'page.html');
+      writeFileSync(page, 'PARTIAL');
+      writeFileSync(join(dir, 'page.html.backup.2026-01-01T00-00-00-000Z'), 'OLD');
+      writeFileSync(join(dir, 'page.html.backup.2026-06-01T00-00-00-000Z'), 'NEWEST');
+
+      rollbackWrittenFiles([page]);
+
+      expect(readFileSync(page, 'utf8')).toBe('NEWEST');
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it('deletes a brand-new partial that has no backup', () => {
+    const dir = tmp();
+    try {
+      const page = join(dir, 'new.html');
+      writeFileSync(page, 'PARTIAL — brand new this pass, no prior version');
+
+      const res = rollbackWrittenFiles([page]);
+
+      expect(res).toEqual({ restored: 0, deleted: 1 });
+      expect(existsSync(page)).toBe(false);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
   });
 });
 

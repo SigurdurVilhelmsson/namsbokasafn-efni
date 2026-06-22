@@ -306,6 +306,45 @@ function buildAppendixIdMap(book, track) {
   return map;
 }
 
+/**
+ * Roll back the files written during a render pass after a mid-pass failure.
+ * For each file, restore its newest `.backup.<ts>` (the pre-overwrite copy
+ * safeWrite made), or delete it if it was brand-new this pass (no backup).
+ * Best-effort per file — a render must never destroy previously-published
+ * pages on a partial failure (QA §0.2 / remediation Unit 0).
+ * @param {string[]} writtenFiles - Absolute paths written this pass
+ * @returns {{restored:number, deleted:number}}
+ */
+function rollbackWrittenFiles(writtenFiles) {
+  let restored = 0;
+  let deleted = 0;
+  for (const f of writtenFiles) {
+    try {
+      const dir = path.dirname(f);
+      const prefix = `${path.basename(f)}.backup.`;
+      const backups = fs.existsSync(dir)
+        ? fs
+            .readdirSync(dir)
+            .filter((name) => name.startsWith(prefix))
+            .sort() // ISO-ish timestamp suffix sorts chronologically
+        : [];
+
+      if (backups.length > 0) {
+        // Restore the most recent backup (this pass's pre-overwrite copy)
+        const newest = path.join(dir, backups[backups.length - 1]);
+        fs.renameSync(newest, f); // restore + consume the backup atomically
+        restored++;
+      } else if (fs.existsSync(f)) {
+        fs.unlinkSync(f);
+        deleted++;
+      }
+    } catch {
+      /* best-effort rollback */
+    }
+  }
+  return { restored, deleted };
+}
+
 // Module sections are built dynamically from structure + segment files
 // via buildModuleSections() — see tools/lib/module-sections.js
 
@@ -3985,35 +4024,9 @@ ${anchors}
       }
     } catch (renderErr) {
       // Roll back this render pass. safeWrite() backed up any file that already
-      // existed before it was overwritten (`<file>.backup.<timestamp>`), so for
-      // each written file we restore the newest such backup. Files that had no
-      // prior version (no backup) are deleted, since they are brand-new partials.
-      let restored = 0;
-      let deleted = 0;
-      for (const f of writtenFiles) {
-        try {
-          const dir = path.dirname(f);
-          const prefix = `${path.basename(f)}.backup.`;
-          const backups = fs.existsSync(dir)
-            ? fs
-                .readdirSync(dir)
-                .filter((name) => name.startsWith(prefix))
-                .sort() // ISO-ish timestamp suffix sorts chronologically
-            : [];
-
-          if (backups.length > 0) {
-            // Restore the most recent backup (this pass's pre-overwrite copy)
-            const newest = path.join(dir, backups[backups.length - 1]);
-            fs.renameSync(newest, f); // restore + consume the backup atomically
-            restored++;
-          } else if (fs.existsSync(f)) {
-            fs.unlinkSync(f);
-            deleted++;
-          }
-        } catch {
-          /* best-effort rollback */
-        }
-      }
+      // existed before it was overwritten (`<file>.backup.<timestamp>`); restore
+      // the newest such backup per file, or delete brand-new partials (QA §0.2).
+      const { restored, deleted } = rollbackWrittenFiles(writtenFiles);
       throw new Error(
         `Render failed: ${renderErr.message} — rolled back ${writtenFiles.length} file(s) from this pass ` +
           `(${restored} restored to previous version, ${deleted} newly-created file(s) removed).`
@@ -4090,6 +4103,7 @@ export {
   renderCnxmlToHtml,
   renderCompiledExercises,
   buildAppendixIdMap,
+  rollbackWrittenFiles,
   escapeJsonForScript,
   _loadBookConfigForTest,
 };
