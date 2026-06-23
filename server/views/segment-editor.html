@@ -450,6 +450,42 @@
       box-shadow: 0 0 0 3px rgba(200,121,65,0.15);
     }
 
+    /* B-4 marker overlay: backdrop renders highlighted markers behind a
+       transparent-text textarea so the native caret/selection still work. */
+    .editor-overlay-wrap { position: relative; }
+    .editor-overlay-wrap textarea {
+      position: relative;
+      background: transparent;
+      color: transparent;
+      caret-color: #1a1a1a;
+      -webkit-text-fill-color: transparent;
+    }
+    .editor-overlay-wrap textarea::selection { background: rgba(120,160,210,0.35); }
+    .marker-backdrop {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      margin: 0;
+      overflow: hidden;
+      pointer-events: none;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      color: #1a1a1a;
+      z-index: 0;
+    }
+    /* backdrop + textarea MUST share box metrics so glyphs align exactly */
+    .marker-backdrop, .editor-overlay-wrap textarea {
+      font: inherit;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+      padding: inherit;
+      border: 1px solid transparent;
+      box-sizing: border-box;
+    }
+    .marker-hl { border-radius: 2px; }
+    .marker-hl-atom { background: #fde2c8; box-shadow: 0 0 0 1px #e8a86a inset; }
+    .marker-hl-delim { background: #d7e7f5; color: #2d5b86; font-weight: 600; }
+
     .edit-controls {
       display: flex;
       gap: var(--spacing-sm);
@@ -1500,6 +1536,7 @@
   <script src="/js/saveRetry.js"></script>
   <script src="/js/tabGuard.js"></script>
   <script src="/js/ui-strings.js"></script>
+  <script src="/js/marker-highlight.js"></script>
   <script src="/js/segment-editor.js"></script>
 </body>
 </html>

@@ -711,7 +711,7 @@
     const displayIs = hasActiveEdit ? latestEdit.edited_content : seg.is;
     const editableText = hasActiveEdit ? latestEdit.edited_content : seg.is;
 
-    let enHtml = highlightMath(escapeHtml(seg.en));
+    let enHtml = renderMarkdownPreview(seg.en);
     const isHtml = renderMarkdownPreview(displayIs);
 
     // Show word-level inline diff when an active edit changes the text
@@ -863,7 +863,10 @@
                 <button type="button" onclick="wrapSelection('textarea-${cssId(seg.segmentId)}','~','~')" title="Niðurskrift">x<sub>2</sub></button>
                 <button type="button" onclick="wrapSelection('textarea-${cssId(seg.segmentId)}','^','^')" title="Uppskrift">x<sup>2</sup></button>
               </div>
-              <textarea id="textarea-${cssId(seg.segmentId)}">${escapeHtml(editableText)}</textarea>
+              <div class="editor-overlay-wrap">
+                <div class="marker-backdrop" id="backdrop-${cssId(seg.segmentId)}" aria-hidden="true"></div>
+                <textarea id="textarea-${cssId(seg.segmentId)}">${escapeHtml(editableText)}</textarea>
+              </div>
               <div class="edit-controls">
                 <select id="cat-${cssId(seg.segmentId)}" title="Veldu flokk breytingar">
                   <option value="">Flokkur...</option>
@@ -875,6 +878,7 @@
                 </select>
                 <input type="text" id="note-${cssId(seg.segmentId)}" placeholder="Athugasemd (valkvætt)" value="${escapeHtml(latestEdit?.editor_note || '')}">
                 <button class="btn btn-sm btn-primary" onclick="saveEdit('${seg.segmentId}')">Vista</button>
+                <button class="btn btn-sm btn-secondary btn-revert" onclick="revertEdit('${seg.segmentId}')" title="${UI.segmentEditor.revertTooltip}">&#8617; ${UI.segmentEditor.revertButton}</button>
                 <button class="btn btn-sm btn-secondary" onclick="closeEditPanel('${seg.segmentId}')">Hætta við</button>
               </div>
             </div>
@@ -926,13 +930,26 @@
             }
             updateSaveStatusBar();
           });
+
+          // B-4: keep the marker backdrop in sync with edits + scrolling
+          textarea.addEventListener('input', function onBackdrop() {
+            refreshBackdrop(segmentId);
+          });
+          textarea.addEventListener('scroll', function onScroll() {
+            const bd = document.getElementById('backdrop-' + cssId(segmentId));
+            if (bd) {
+              bd.scrollTop = textarea.scrollTop;
+              bd.scrollLeft = textarea.scrollLeft;
+            }
+          });
         }
 
-        // Always render initial preview when opening
+        // Always render initial preview + backdrop when opening
         const previewEl = document.getElementById('preview-' + cssId(segmentId));
         if (previewEl) {
           previewEl.innerHTML = renderMarkdownPreview(textarea.value);
         }
+        refreshBackdrop(segmentId);
       }
     }
   }
@@ -954,6 +971,35 @@
       }
     }
     dirtyEdits.delete(segmentId);
+    updateSaveStatusBar();
+  }
+
+  /**
+   * Revert a segment's edit textarea to the last-saved (pending/approved) edit
+   * or the original MT text, without closing the edit panel. (B-4)
+   */
+  function revertEdit(segmentId) {
+    const textarea = document.getElementById('textarea-' + cssId(segmentId));
+    if (!textarea || !moduleData) return;
+    const seg = moduleData.segments.find((s) => s.segmentId === segmentId);
+    if (!seg) return;
+    const latestEdit = moduleData.edits[segmentId]?.[0];
+    const hasActiveEdit =
+      latestEdit && (latestEdit.status === 'pending' || latestEdit.status === 'approved');
+    textarea.value = hasActiveEdit ? latestEdit.edited_content : seg.is;
+    dirtyEdits.delete(segmentId);
+    const ind = document.getElementById('seg-ind-' + cssId(segmentId));
+    if (ind) {
+      ind.textContent = UI.segmentEditor.reverted;
+      ind.className = 'seg-save-ind saved';
+      setTimeout(() => {
+        ind.textContent = '';
+        ind.className = 'seg-save-ind';
+      }, 2000);
+    }
+    const previewEl = document.getElementById('preview-' + cssId(segmentId));
+    if (previewEl) previewEl.innerHTML = renderMarkdownPreview(textarea.value);
+    refreshBackdrop(segmentId);
     updateSaveStatusBar();
   }
 
@@ -1083,7 +1129,11 @@
     // Validate before saving
     const validation = validateSegmentEdit(seg.en, seg.is, editedContent);
     if (validation.blocked) {
-      alert(UI.confirm.validationBlocked + validation.blocked.join('\n'));
+      alert(
+        UI.confirm.validationBlocked +
+          validation.blocked.join('\n') +
+          UI.confirm.validationRevertHint
+      );
       return;
     }
     if (validation.warnings) {
@@ -1370,6 +1420,48 @@
     // 2. [[BR]] line breaks
     html = html.replace(/\[\[BR\]\]/g, '<span class="preview-br">[BR]</span><br>');
 
+    // ── Bracket family (B-4): MUST precede single-bracket + markdown rules ──
+    // [[TABLE:id]] → table chip
+    html = html.replace(
+      /\[\[TABLE:([^\]]+)\]\]/g,
+      '<span class="xref-chip" title="Tafla: $1">&#128203;</span>'
+    );
+    // reference markers WITH display text (text|target) — keep text
+    html = html.replace(
+      /\[\[link:([^|\]]+)\|([^\]]+)\]\]/g,
+      '<span class="link-chip" title="Hlekkur: $2">$1 &#128279;</span>'
+    );
+    html = html.replace(
+      /\[\[xref:([^|\]]+)\|([^\]]+)\]\]/g,
+      '<span class="xref-chip" title="Tilvísun: $2">$1</span>'
+    );
+    html = html.replace(
+      /\[\[docref:([^|\]]+)\|([^\]]+)\]\]/g,
+      '<span class="xref-chip" title="Skjal: $2">$1</span>'
+    );
+    // reference markers, no display text → chip icon
+    html = html.replace(
+      /\[\[xref:([^\]]+)\]\]/g,
+      '<span class="xref-chip" title="Tilvísun: $1">&#128247;</span>'
+    );
+    html = html.replace(
+      /\[\[docref:([^\]]+)\]\]/g,
+      '<span class="xref-chip" title="Skjaltilvísun: $1">&#128196;</span>'
+    );
+    // paired-content emphasis/sub/sup
+    html = html.replace(/\[\[i:(.+?)\]\]/g, '<em>$1</em>');
+    html = html.replace(/\[\[b:(.+?)\]\]/g, '<strong>$1</strong>');
+    html = html.replace(/\[\[sub:(.+?)\]\]/g, '<sub>$1</sub>');
+    html = html.replace(/\[\[sup:(.+?)\]\]/g, '<sup>$1</sup>');
+    // ── Brace family (term/footnote + legacy emphasis from old files) ──
+    html = html.replace(/\{\{term\}\}(.+?)\{\{\/term\}\}/g, '<span class="preview-term">$1</span>');
+    html = html.replace(
+      /\{\{fn\}\}(.+?)\{\{\/fn\}\}/g,
+      '<span class="xref-chip" title="Neðanmálsgrein">&#8224;$1</span>'
+    );
+    html = html.replace(/\{\{i\}\}(.+?)\{\{\/i\}\}/g, '<em>$1</em>');
+    html = html.replace(/\{\{b\}\}(.+?)\{\{\/b\}\}/g, '<strong>$1</strong>');
+
     // 3. [#CNX_...] cross-references (before general bracket matching)
     html = html.replace(
       /\[#([A-Za-z0-9_.-]+)\]/g,
@@ -1420,6 +1512,19 @@
     );
 
     return html;
+  }
+
+  /**
+   * Regenerate the marker backdrop for a segment's edit textarea and keep it
+   * scroll-synced. Render-only; never mutates textarea.value. (B-4)
+   */
+  function refreshBackdrop(segmentId) {
+    const ta = document.getElementById('textarea-' + cssId(segmentId));
+    const bd = document.getElementById('backdrop-' + cssId(segmentId));
+    if (!ta || !bd || typeof highlightMarkersInPlace !== 'function') return;
+    bd.innerHTML = highlightMarkersInPlace(ta.value);
+    bd.scrollTop = ta.scrollTop;
+    bd.scrollLeft = ta.scrollLeft;
   }
 
   function cssId(segmentId) {
@@ -2183,6 +2288,7 @@
       ta.value = text.slice(0, start) + insertion + text.slice(end);
       ta.selectionStart = ta.selectionEnd = start + insertion.length;
       ta.dispatchEvent(new Event('input', { bubbles: true }));
+      if (ta._segmentId) refreshBackdrop(ta._segmentId);
       termLookupInput.value = '';
       termLookupResults.classList.remove('active');
       termLookupInput.placeholder = UI.termLookup.inserted;
@@ -2243,6 +2349,7 @@
 
     // Trigger input event for live preview and dirty tracking
     ta.dispatchEvent(new Event('input', { bubbles: true }));
+    refreshBackdrop(ta._segmentId);
   }
 
   // ================================================================
@@ -2267,31 +2374,10 @@
         focused._segmentId
       ) {
         const segId = focused._segmentId;
-        if (dirtyEdits.has(segId) && moduleData) {
-          const seg = moduleData.segments.find((s) => s.segmentId === segId);
-          if (seg) {
-            const latestEdit = moduleData.edits[segId]?.[0];
-            const hasActiveEdit =
-              latestEdit && (latestEdit.status === 'pending' || latestEdit.status === 'approved');
-            focused.value = hasActiveEdit ? latestEdit.edited_content : seg.is;
-            dirtyEdits.delete(segId);
-            // Update per-segment indicator
-            const ind = document.getElementById('seg-ind-' + cssId(segId));
-            if (ind) {
-              ind.textContent = UI.segmentEditor.reverted;
-              ind.className = 'seg-save-ind saved';
-              setTimeout(() => {
-                ind.textContent = '';
-                ind.className = 'seg-save-ind';
-              }, 2000);
-            }
-            // Update preview
-            const previewEl = document.getElementById('preview-' + cssId(segId));
-            if (previewEl) previewEl.innerHTML = renderMarkdownPreview(focused.value);
-            updateSaveStatusBar();
-            e.preventDefault();
-            return;
-          }
+        if (dirtyEdits.has(segId)) {
+          revertEdit(segId);
+          e.preventDefault();
+          return;
         }
       }
 
@@ -2465,9 +2551,11 @@
   // ================================================================
   // EXPOSE TO WINDOW (for HTML onclick/inline handlers)
   // ================================================================
+  window.renderMarkdownPreview = renderMarkdownPreview;
   window.loadModule = loadModule;
   window.openEditPanel = openEditPanel;
   window.closeEditPanel = closeEditPanel;
+  window.revertEdit = revertEdit;
   window.saveEdit = saveEdit;
   window.wrapSelection = wrapSelection;
   window.closeTermPopup = closeTermPopup;

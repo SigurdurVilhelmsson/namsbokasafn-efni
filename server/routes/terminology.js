@@ -239,6 +239,82 @@ function csvEscapeField(str) {
   return str;
 }
 
+// ─── Term-decision mining (Unit 3.5, head-editor) ─────────────────────
+// NOTE: these MUST be registered before the parametric `/:id` routes below,
+// otherwise `/:id` captures `mined-candidates` as a headword id (→ 404) and
+// the mining queue is unreachable. (Item L regression, 2026-06-23.)
+
+/**
+ * POST /mine  { book }
+ * Mine the book's approved edits for recurring post-edit corrections.
+ */
+router.post('/mine', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
+  const book = req.body?.book;
+  if (!book) return res.status(400).json({ error: 'book is required' });
+  try {
+    const result = termMining.mineBook(book);
+    res.json({ book, ...result });
+  } catch (err) {
+    log.error({ err }, 'Term mining failed');
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /mined-candidates?book=&status=open
+ * List mined term-decision candidates for review.
+ */
+router.get('/mined-candidates', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
+  const { book, status } = req.query;
+  if (!book) return res.status(400).json({ error: 'book is required' });
+  try {
+    const candidates = termMining.listCandidates(book, status ? { status } : {});
+    res.json({ book, candidates });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * POST /mined-candidates/:id/dismiss
+ */
+router.post(
+  '/mined-candidates/:id/dismiss',
+  requireAuth,
+  requireRole(ROLES.HEAD_EDITOR),
+  (req, res) => {
+    try {
+      termMining.dismissCandidate(parseInt(req.params.id, 10));
+      res.json({ success: true });
+    } catch (err) {
+      res.status(400).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * POST /mined-candidates/:id/promote  { english, pos }
+ * Promote to a *proposed* glossary term (head-editor supplies the EN headword).
+ */
+router.post(
+  '/mined-candidates/:id/promote',
+  requireAuth,
+  requireRole(ROLES.HEAD_EDITOR),
+  (req, res) => {
+    try {
+      const result = termMining.promoteCandidate(
+        parseInt(req.params.id, 10),
+        { english: req.body?.english, pos: req.body?.pos },
+        String(req.user.id),
+        req.user.username
+      );
+      res.json({ success: true, ...result });
+    } catch (err) {
+      res.status(400).json({ error: err.message });
+    }
+  }
+);
+
 // ============================================================================
 // HEADWORD CRUD
 // ============================================================================
@@ -936,78 +1012,5 @@ function resolveBookSubject(bookSlug) {
     return null;
   }
 }
-
-// ─── Term-decision mining (Unit 3.5, head-editor) ─────────────────────
-
-/**
- * POST /mine  { book }
- * Mine the book's approved edits for recurring post-edit corrections.
- */
-router.post('/mine', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
-  const book = req.body?.book;
-  if (!book) return res.status(400).json({ error: 'book is required' });
-  try {
-    const result = termMining.mineBook(book);
-    res.json({ book, ...result });
-  } catch (err) {
-    log.error({ err }, 'Term mining failed');
-    res.status(500).json({ error: err.message });
-  }
-});
-
-/**
- * GET /mined-candidates?book=&status=open
- * List mined term-decision candidates for review.
- */
-router.get('/mined-candidates', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
-  const { book, status } = req.query;
-  if (!book) return res.status(400).json({ error: 'book is required' });
-  try {
-    const candidates = termMining.listCandidates(book, status ? { status } : {});
-    res.json({ book, candidates });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-/**
- * POST /mined-candidates/:id/dismiss
- */
-router.post(
-  '/mined-candidates/:id/dismiss',
-  requireAuth,
-  requireRole(ROLES.HEAD_EDITOR),
-  (req, res) => {
-    try {
-      termMining.dismissCandidate(parseInt(req.params.id, 10));
-      res.json({ success: true });
-    } catch (err) {
-      res.status(400).json({ error: err.message });
-    }
-  }
-);
-
-/**
- * POST /mined-candidates/:id/promote  { english, pos }
- * Promote to a *proposed* glossary term (head-editor supplies the EN headword).
- */
-router.post(
-  '/mined-candidates/:id/promote',
-  requireAuth,
-  requireRole(ROLES.HEAD_EDITOR),
-  (req, res) => {
-    try {
-      const result = termMining.promoteCandidate(
-        parseInt(req.params.id, 10),
-        { english: req.body?.english, pos: req.body?.pos },
-        String(req.user.id),
-        req.user.username
-      );
-      res.json({ success: true, ...result });
-    } catch (err) {
-      res.status(400).json({ error: err.message });
-    }
-  }
-);
 
 module.exports = router;

@@ -63,6 +63,7 @@ const UI = {
       'Endurhlaða til að sjá nýjustu útgáfu?\n\n' +
       '(Óvistaðar breytingar þínar verða geymdar sem drög.)',
     validationBlocked: 'Ekki hægt að vista:\n\n',
+    validationRevertHint: '\n\nÝttu á „Endurstilla" til að ná aftur upprunalega textanum.',
     validationWarnings: 'Athugið:\n\n',
     validationContinue: '\n\nViltu halda áfram?',
     bulkValidationBlocked: 'Ekki hægt að vista — vandamál í eftirfarandi bútum:\n\n',
@@ -180,6 +181,8 @@ const UI = {
     filterStatusRejected: 'Hafnað',
     filterStatusDiscuss: 'Í umræðu',
     reverted: 'Afturkallað',
+    revertButton: 'Endurstilla',
+    revertTooltip: 'Endurstilla bútinn í síðast vistaða útgáfu (eða vélþýðingu)',
   },
 
   // ── Localization editor specific ────────────────────────────
