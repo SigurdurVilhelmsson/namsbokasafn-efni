@@ -265,6 +265,15 @@ condition makes it bounce, and surface a nav link once it works.
 > Per the cross-repo protocol, record/fix them in a namsbokasafn-vefur session
 > (read its CLAUDE.md + memory first); this list is the interim tracker.
 
+## K. (UX gap) No logout in the editorial-server UI — **efni**
+
+Live QA (2026-06-23): the editorial server has **no logout affordance** in the
+UI, though the endpoint exists (`POST /api/auth/logout`, clears `auth_token` —
+`server/routes/auth.js:191`). Add a logout control (e.g. in the topbar/profile
+menu in `server/public/js/layout.js`) that POSTs it and redirects to `/login`.
+Small **efni** frontend change (editorial server lives in this repo). Minor
+security/usability gap (no way to drop a session on a shared machine).
+
 ---
 
 ## Quick reference — what PR #133 changed
