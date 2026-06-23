@@ -878,6 +878,7 @@
                 </select>
                 <input type="text" id="note-${cssId(seg.segmentId)}" placeholder="Athugasemd (valkvætt)" value="${escapeHtml(latestEdit?.editor_note || '')}">
                 <button class="btn btn-sm btn-primary" onclick="saveEdit('${seg.segmentId}')">Vista</button>
+                <button class="btn btn-sm btn-secondary btn-revert" onclick="revertEdit('${seg.segmentId}')" title="${UI.segmentEditor.revertTooltip}">&#8617; ${UI.segmentEditor.revertButton}</button>
                 <button class="btn btn-sm btn-secondary" onclick="closeEditPanel('${seg.segmentId}')">Hætta við</button>
               </div>
             </div>
@@ -970,6 +971,35 @@
       }
     }
     dirtyEdits.delete(segmentId);
+    updateSaveStatusBar();
+  }
+
+  /**
+   * Revert a segment's edit textarea to the last-saved (pending/approved) edit
+   * or the original MT text, without closing the edit panel. (B-4)
+   */
+  function revertEdit(segmentId) {
+    const textarea = document.getElementById('textarea-' + cssId(segmentId));
+    if (!textarea || !moduleData) return;
+    const seg = moduleData.segments.find((s) => s.segmentId === segmentId);
+    if (!seg) return;
+    const latestEdit = moduleData.edits[segmentId]?.[0];
+    const hasActiveEdit =
+      latestEdit && (latestEdit.status === 'pending' || latestEdit.status === 'approved');
+    textarea.value = hasActiveEdit ? latestEdit.edited_content : seg.is;
+    dirtyEdits.delete(segmentId);
+    const ind = document.getElementById('seg-ind-' + cssId(segmentId));
+    if (ind) {
+      ind.textContent = UI.segmentEditor.reverted;
+      ind.className = 'seg-save-ind saved';
+      setTimeout(() => {
+        ind.textContent = '';
+        ind.className = 'seg-save-ind';
+      }, 2000);
+    }
+    const previewEl = document.getElementById('preview-' + cssId(segmentId));
+    if (previewEl) previewEl.innerHTML = renderMarkdownPreview(textarea.value);
+    refreshBackdrop(segmentId);
     updateSaveStatusBar();
   }
 
@@ -2340,31 +2370,10 @@
         focused._segmentId
       ) {
         const segId = focused._segmentId;
-        if (dirtyEdits.has(segId) && moduleData) {
-          const seg = moduleData.segments.find((s) => s.segmentId === segId);
-          if (seg) {
-            const latestEdit = moduleData.edits[segId]?.[0];
-            const hasActiveEdit =
-              latestEdit && (latestEdit.status === 'pending' || latestEdit.status === 'approved');
-            focused.value = hasActiveEdit ? latestEdit.edited_content : seg.is;
-            dirtyEdits.delete(segId);
-            // Update per-segment indicator
-            const ind = document.getElementById('seg-ind-' + cssId(segId));
-            if (ind) {
-              ind.textContent = UI.segmentEditor.reverted;
-              ind.className = 'seg-save-ind saved';
-              setTimeout(() => {
-                ind.textContent = '';
-                ind.className = 'seg-save-ind';
-              }, 2000);
-            }
-            // Update preview
-            const previewEl = document.getElementById('preview-' + cssId(segId));
-            if (previewEl) previewEl.innerHTML = renderMarkdownPreview(focused.value);
-            updateSaveStatusBar();
-            e.preventDefault();
-            return;
-          }
+        if (dirtyEdits.has(segId)) {
+          revertEdit(segId);
+          e.preventDefault();
+          return;
         }
       }
 
@@ -2542,6 +2551,7 @@
   window.loadModule = loadModule;
   window.openEditPanel = openEditPanel;
   window.closeEditPanel = closeEditPanel;
+  window.revertEdit = revertEdit;
   window.saveEdit = saveEdit;
   window.wrapSelection = wrapSelection;
   window.closeTermPopup = closeTermPopup;

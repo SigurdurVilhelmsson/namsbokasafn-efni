@@ -180,6 +180,8 @@ const UI = {
     filterStatusRejected: 'Hafnað',
     filterStatusDiscuss: 'Í umræðu',
     reverted: 'Afturkallað',
+    revertButton: 'Endurstilla',
+    revertTooltip: 'Endurstilla bútinn í síðast vistaða útgáfu (eða vélþýðingu)',
   },
 
   // ── Localization editor specific ────────────────────────────

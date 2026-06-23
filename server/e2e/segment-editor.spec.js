@@ -126,6 +126,24 @@ test.describe('B-4 marker overlay', () => {
   });
 });
 
+test.describe('B-4 Endurstilla revert button', () => {
+  test.beforeEach(async ({ page }) => {
+    await loginAs(page, 'admin');
+  });
+
+  test('Endurstilla reverts dirty content and keeps the panel open', async ({ page }) => {
+    await openFirstEditor(page);
+    const panel = page.locator('.edit-panel.active').first();
+    const ta = panel.locator('textarea');
+    const original = await ta.inputValue();
+    await ta.fill(original + ' BREYTING-XYZ');
+    await ta.dispatchEvent('input');
+    await panel.locator('.btn-revert').click();
+    await expect(ta).toHaveValue(original);
+    await expect(panel).toBeVisible(); // panel stays open
+  });
+});
+
 test.describe('B-4 renderMarkdownPreview bracket/brace family', () => {
   test.beforeEach(async ({ page }) => {
     await loginAs(page, 'admin');
