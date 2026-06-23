@@ -863,7 +863,10 @@
                 <button type="button" onclick="wrapSelection('textarea-${cssId(seg.segmentId)}','~','~')" title="Niðurskrift">x<sub>2</sub></button>
                 <button type="button" onclick="wrapSelection('textarea-${cssId(seg.segmentId)}','^','^')" title="Uppskrift">x<sup>2</sup></button>
               </div>
-              <textarea id="textarea-${cssId(seg.segmentId)}">${escapeHtml(editableText)}</textarea>
+              <div class="editor-overlay-wrap">
+                <div class="marker-backdrop" id="backdrop-${cssId(seg.segmentId)}" aria-hidden="true"></div>
+                <textarea id="textarea-${cssId(seg.segmentId)}">${escapeHtml(editableText)}</textarea>
+              </div>
               <div class="edit-controls">
                 <select id="cat-${cssId(seg.segmentId)}" title="Veldu flokk breytingar">
                   <option value="">Flokkur...</option>
@@ -926,13 +929,26 @@
             }
             updateSaveStatusBar();
           });
+
+          // B-4: keep the marker backdrop in sync with edits + scrolling
+          textarea.addEventListener('input', function onBackdrop() {
+            refreshBackdrop(segmentId);
+          });
+          textarea.addEventListener('scroll', function onScroll() {
+            const bd = document.getElementById('backdrop-' + cssId(segmentId));
+            if (bd) {
+              bd.scrollTop = textarea.scrollTop;
+              bd.scrollLeft = textarea.scrollLeft;
+            }
+          });
         }
 
-        // Always render initial preview when opening
+        // Always render initial preview + backdrop when opening
         const previewEl = document.getElementById('preview-' + cssId(segmentId));
         if (previewEl) {
           previewEl.innerHTML = renderMarkdownPreview(textarea.value);
         }
+        refreshBackdrop(segmentId);
       }
     }
   }
@@ -1420,6 +1436,19 @@
     );
 
     return html;
+  }
+
+  /**
+   * Regenerate the marker backdrop for a segment's edit textarea and keep it
+   * scroll-synced. Render-only; never mutates textarea.value. (B-4)
+   */
+  function refreshBackdrop(segmentId) {
+    const ta = document.getElementById('textarea-' + cssId(segmentId));
+    const bd = document.getElementById('backdrop-' + cssId(segmentId));
+    if (!ta || !bd || typeof highlightMarkersInPlace !== 'function') return;
+    bd.innerHTML = highlightMarkersInPlace(ta.value);
+    bd.scrollTop = ta.scrollTop;
+    bd.scrollLeft = ta.scrollLeft;
   }
 
   function cssId(segmentId) {
@@ -2183,6 +2212,7 @@
       ta.value = text.slice(0, start) + insertion + text.slice(end);
       ta.selectionStart = ta.selectionEnd = start + insertion.length;
       ta.dispatchEvent(new Event('input', { bubbles: true }));
+      if (ta._segmentId) refreshBackdrop(ta._segmentId);
       termLookupInput.value = '';
       termLookupResults.classList.remove('active');
       termLookupInput.placeholder = UI.termLookup.inserted;
@@ -2243,6 +2273,7 @@
 
     // Trigger input event for live preview and dirty tracking
     ta.dispatchEvent(new Event('input', { bubbles: true }));
+    refreshBackdrop(ta._segmentId);
   }
 
   // ================================================================
