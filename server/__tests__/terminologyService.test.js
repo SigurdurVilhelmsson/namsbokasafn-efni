@@ -1109,3 +1109,51 @@ describe('exportBookGlossary()', () => {
     expect(data.stats.proposed).toBe(1);
   });
 });
+
+// =====================
+// findTermsInSegments() — Unicode word boundary (Icelandic special letters)
+// =====================
+describe('findTermsInSegments() — Unicode word boundary', () => {
+  const seg = (enContent, isContent) => [{ segmentId: 's', enContent, isContent }];
+
+  it('no missing-term issue when an Icelandic-initial term is present, capitalized', () => {
+    // "þungi" starts with þ → ASCII \b fails; the term IS present (sentence start)
+    insertFullTerm({ english: 'mass', icelandic: 'þungi', status: 'approved' });
+    const result = terminologyService.findTermsInSegments(
+      seg('The mass of the object', 'Þungi hlutarins er mikill')
+    );
+    expect(result.s.matches).toHaveLength(1);
+    expect(result.s.issues).toHaveLength(0);
+  });
+
+  it('no missing-term issue when an Icelandic-initial term is present, lowercase', () => {
+    insertFullTerm({ english: 'mass', icelandic: 'þungi', status: 'approved' });
+    const result = terminologyService.findTermsInSegments(
+      seg('a small mass here', 'það er lítill þungi hér')
+    );
+    expect(result.s.issues).toHaveLength(0);
+  });
+
+  it('handles other Icelandic-initial forms (öl, ólífa)', () => {
+    insertFullTerm({ english: 'ale', icelandic: 'öl', status: 'approved' });
+    const result = terminologyService.findTermsInSegments(seg('good ale', 'Öl er gott'));
+    expect(result.s.issues).toHaveLength(0);
+  });
+
+  it('still flags a genuinely absent term (no substring false-positive)', () => {
+    // term "mól" present only inside "mólekúl" → should still be reported missing
+    insertFullTerm({ english: 'mole', icelandic: 'mól', status: 'approved' });
+    const result = terminologyService.findTermsInSegments(
+      seg('one mole', 'ein mólekúl hér') // no standalone "mól"
+    );
+    expect(result.s.matches).toHaveLength(1);
+    expect(result.s.issues).toHaveLength(1);
+    expect(result.s.issues[0].type).toBe('missing');
+  });
+
+  it('ASCII term still matches case-insensitively (regression guard)', () => {
+    insertFullTerm({ english: 'acid', icelandic: 'sýra', status: 'approved' });
+    const result = terminologyService.findTermsInSegments(seg('an acid', 'Sýra og basi'));
+    expect(result.s.issues).toHaveLength(0);
+  });
+});
