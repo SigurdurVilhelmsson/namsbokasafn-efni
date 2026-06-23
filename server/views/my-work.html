@@ -1295,7 +1295,8 @@
             document.querySelector('#quick-stats .quick-stat-item:nth-child(1) .quick-stat-label').textContent = 'Bíða þíns úrskurðar';
 
             document.getElementById('stat-pending').textContent = todayData.adminStats.readyToApplyCount;
-            document.querySelector('#quick-stats .quick-stat-item:nth-child(2) .quick-stat-label').textContent = 'Tilbúið að beita';
+            document.querySelector('#quick-stats .quick-stat-item:nth-child(2) .quick-stat-label').textContent = 'Samþykkt, bíður birtingar';
+            document.querySelector('#quick-stats .quick-stat-item:nth-child(2)').title = 'Samþykktar breytingar sem á eftir að beita og birta (Vista + Birta)';
 
             document.getElementById('stat-terms').textContent = todayData.quickStats.completedThisWeek;
             document.querySelector('#quick-stats .quick-stat-item:nth-child(3) .quick-stat-label').textContent = 'Þú kláraðir í vikunni';
@@ -1830,7 +1831,7 @@
       var INITIAL_SHOW = 4;
 
       if (!items || items.length === 0) {
-        listEl.innerHTML = '<div class="empty-state"><p>Ekkert tilbúið að beita</p></div>';
+        listEl.innerHTML = '<div class="empty-state"><p>Ekkert bíður birtingar</p></div>';
         return;
       }
 

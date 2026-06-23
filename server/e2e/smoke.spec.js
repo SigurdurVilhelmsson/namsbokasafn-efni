@@ -213,3 +213,18 @@ test.describe('Legacy redirects', () => {
     expect(page.url()).toContain('/library');
   });
 });
+
+// ─── B-3 ready-to-publish label ───────────────────────────────
+
+test.describe('B-3 ready-to-publish label', () => {
+  test('quick-stat label is clarified with a tooltip', async ({ page }) => {
+    await loginAs(page, 'head-editor');
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+    const statItem = page.locator('#quick-stats .quick-stat-item:nth-child(2)');
+    await expect(statItem.locator('.quick-stat-label')).toHaveText('Samþykkt, bíður birtingar', {
+      timeout: 5000,
+    });
+    await expect(statItem).toHaveAttribute('title', /beita og birta/);
+  });
+});
