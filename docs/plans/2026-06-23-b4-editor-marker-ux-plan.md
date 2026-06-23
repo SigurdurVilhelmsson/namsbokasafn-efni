@@ -4,7 +4,7 @@
 
 **Goal:** Make inline markers visually unmistakable and consistently rendered in the segment editor, and give editors a one-click recovery from a corrupted-marker save block — without rewriting the textarea-based editing engine.
 
-**Architecture:** A new pure function `highlightMarkersInPlace(text)` produces character-preserving highlight HTML, rendered into a backdrop `<div>` behind a transparent-text `<textarea>` (markers stay editable but obvious; the textarea remains the single source of truth, so selection/keyboard/save logic is untouched). The read-mode EN pane is switched to the same `renderMarkdownPreview` used by the IS pane. The existing-but-invisible Escape-revert is extracted into `revertEdit()` and surfaced as an "Endurstilla" button; the save-block alert gains a hint pointing to it.
+**Architecture:** A new pure function `highlightMarkersInPlace(text)` produces character-preserving highlight HTML, rendered into a backdrop `<div>` behind a transparent-text `<textarea>` (markers stay editable but obvious; the textarea remains the single source of truth, so selection/keyboard/save logic is untouched). `renderMarkdownPreview` is extended to render the full current marker universe — the bracket family (`[[i:]]`, `[[sub:]]`, `[[xref:]]`, …) and term/footnote braces, which it does not handle today — and the read-mode EN pane is then switched to it so both panes render identically. The existing-but-invisible Escape-revert is extracted into `revertEdit()` and surfaced as an "Endurstilla" button; the save-block alert gains a hint pointing to it. **Marker set and ordering rule:** see the design doc's "Marker universe" section — both `highlightMarkersInPlace` and the `renderMarkdownPreview` extension process `[[…]]`/`{{…}}` markers before the single-bracket and markdown rules.
 
 **Tech Stack:** Vanilla browser JS (IIFE + a new dual-mode UMD-ish module), Vitest (unit), Playwright (E2E). No new runtime dependencies.
 
@@ -25,10 +25,10 @@
 
 | File | Responsibility | Action |
 |------|----------------|--------|
-| `server/public/js/marker-highlight.js` | Pure `highlightMarkersInPlace(text)` — char-preserving marker highlight HTML. Dual-mode (window + module.exports). Self-contained escape. | **Create** |
-| `server/__tests__/markerHighlight.test.js` | Vitest unit tests for the pure function. | **Create** |
+| `server/public/js/marker-highlight.js` | Pure `highlightMarkersInPlace(text)` — char-preserving marker highlight HTML for the full marker universe. Dual-mode (window + module.exports). Self-contained escape. | **Create** |
+| `server/__tests__/markerHighlight.test.js` | Vitest unit tests for the pure function (preservation invariant + detection across all markers). | **Create** |
 | `server/views/segment-editor.html` | Add `<script src="/js/marker-highlight.js">`; add overlay + marker CSS to inline `<style>`. | Modify |
-| `server/public/js/segment-editor.js` | EN render switch; backdrop wiring (`refreshBackdrop`); `revertEdit` extraction + button; save-block hint. | Modify |
+| `server/public/js/segment-editor.js` | Extend `renderMarkdownPreview` (bracket/brace family); EN render switch; backdrop wiring (`refreshBackdrop`); `revertEdit` extraction + button; save-block hint; expose `renderMarkdownPreview`/`revertEdit` on `window`. | Modify |
 | `server/public/js/ui-strings.js` | New `validationRevertHint` + Endurstilla button label/tooltip strings. | Modify |
 | `server/e2e/segment-editor.spec.js` | E2E for EN render, backdrop, revert button, block message. | Modify |
 
@@ -68,14 +68,21 @@ const stripTags = (html) => html.replace(/<[^>]*>/g, '');
 describe('highlightMarkersInPlace — character preservation invariant', () => {
   const cases = [
     'plain text with no markers',
-    'Sýran er **feit** og __hugtak__.',
-    'Vatn H~2~O og Ca^2+^ og ++undirstrik++.',
-    'Stærðfræði [[MATH:1]] og mynd [[MEDIA:2]].',
+    // bracket family (the current pipeline's primary markers)
+    'Vatn H[[sub:2]]O og Ca[[sup:2+]] jónir.',
+    'Þetta er [[i:skáletrað]] og [[b:feitletrað]].',
+    'Sjá [[xref:fs-idm222237232]] og [[xref:Mynd 5.2|CNX_Chem_05_02]].',
+    'Smelltu [[link:hér|https://example.com]] og [[docref:m68674#fs-id123]].',
+    'Tafla [[TABLE:tbl-1]] og stærðfræði [[MATH:1]] og mynd [[MEDIA:2]].',
     'Lína[[BR]]næsta og [[SPACE]] bil og [[SPACE:3]].',
-    'Sjá [tengill](#anchor) og [skjal](m123#frag).',
-    'Tilvísun [#CNX_Chem_05_02] og [m68674#fs-id1].',
-    '{=áhersla=} og [footnote: neðanmáls].',
-    'Special <chars> & "quotes" \'apos\'.',
+    // brace family (term/footnote + legacy emphasis)
+    'Hugtakið {{term}}atóm{{/term}} og {{fn}}skýring{{/fn}}.',
+    'Legacy {{i}}skáletrað{{/i}} og {{b}}feitt{{/b}}.',
+    // markdown family (kept for old-content tolerance)
+    'Sýran er **feit** og __hugtak__ og ++undirstrik++.',
+    'Vatn H~2~O og Ca^2+^ og {=áhersla=}.',
+    'Sjá [tengill](#anchor) og [skjal](m123#frag) og [#CNX_Chem_05_02].',
+    'Special <chars> & "quotes" \'apos\' með [[i:a<b & c]].',
   ];
   for (const input of cases) {
     it(`preserves all characters for: ${input.slice(0, 30)}`, () => {
@@ -94,15 +101,31 @@ describe('highlightMarkersInPlace — marker detection', () => {
     expect(highlightMarkersInPlace('x [[MATH:1]] y')).toContain('class="marker-hl');
   });
 
+  it('highlights the bracket family ([[sub:]], [[i:]], [[xref:]])', () => {
+    expect(highlightMarkersInPlace('H[[sub:2]]O')).toContain('marker-hl');
+    expect(highlightMarkersInPlace('[[i:orð]]')).toContain('marker-hl');
+    expect(highlightMarkersInPlace('[[xref:fs-id1]]')).toContain('marker-hl');
+  });
+
+  it('highlights brace markers ({{term}}, {{fn}})', () => {
+    expect(highlightMarkersInPlace('{{term}}atóm{{/term}}')).toContain('marker-hl');
+    expect(highlightMarkersInPlace('{{fn}}nóta{{/fn}}')).toContain('marker-hl');
+  });
+
   it('adds no highlight span to plain text', () => {
     expect(highlightMarkersInPlace('engin merki hér')).not.toContain('marker-hl');
   });
 
-  it('highlights bold delimiters but keeps inner text outside the delim spans', () => {
-    const out = highlightMarkersInPlace('**feit**');
-    // inner word survives verbatim, delimiters are wrapped
-    expect(out).toContain('feit');
+  it('keeps inner text of a paired marker verbatim outside the delim spans', () => {
+    const out = highlightMarkersInPlace('[[sub:2]]');
+    expect(out).toContain('2');
     expect(out).toContain('marker-hl');
+  });
+
+  it('does not mangle a no-text [[xref:id]] (ordering: brackets before single-bracket rules)', () => {
+    // [[xref:fs-id1]] must be treated as one marker, not split by a [..#..] rule
+    const out = highlightMarkersInPlace('[[xref:fs-idm222]]');
+    expect(stripTags(out)).toBe(escapeHtml('[[xref:fs-idm222]]'));
   });
 });
 ```
@@ -142,6 +165,8 @@ Create `server/public/js/marker-highlight.js`:
 
   // Each replacement re-inserts the captured original text verbatim and only
   // adds <span> tags, so the character-preservation invariant always holds.
+  // ORDERING: [[…]] and {{…}} markers are consumed FIRST, so the later
+  // single-bracket and markdown rules cannot mis-match them.
   function highlightMarkersInPlace(text) {
     if (!text) return '';
     let html = escapeHtml(text);
@@ -149,21 +174,40 @@ Create `server/public/js/marker-highlight.js`:
     const atom = (s) => `<span class="marker-hl marker-hl-atom">${s}</span>`;
     const delim = (s) => `<span class="marker-hl marker-hl-delim">${s}</span>`;
 
-    // Atoms (whole marker highlighted) — order: longest / most-specific first.
+    // 1. Bracket atoms (whole marker highlighted).
     html = html.replace(/\[\[MATH:\d+\]\]/g, (m) => atom(m));
     html = html.replace(/\[\[MEDIA:\d+\]\]/g, (m) => atom(m));
+    html = html.replace(/\[\[TABLE:[^\]]+\]\]/g, (m) => atom(m));
     html = html.replace(/\[\[SPACE(?::\d+)?\]\]/g, (m) => atom(m));
     html = html.replace(/\[\[BR\]\]/g, (m) => atom(m));
-    // [text](url) links — highlight the brackets/url scaffold, keep text.
+
+    // 2. Bracket reference markers WITH display text (text|target) — keep text.
+    //    Run before the no-text forms so the pipe variant wins.
+    html = html.replace(/\[\[link:([^|\]]+)\|([^\]]+)\]\]/g, (_m, t, u) => `${delim('[[link:')}${t}${delim('|' + u + ']]')}`);
+    html = html.replace(/\[\[xref:([^|\]]+)\|([^\]]+)\]\]/g, (_m, t, id) => `${delim('[[xref:')}${t}${delim('|' + id + ']]')}`);
+    html = html.replace(/\[\[docref:([^|\]]+)\|([^\]]+)\]\]/g, (_m, t, d) => `${delim('[[docref:')}${t}${delim('|' + d + ']]')}`);
+    // 2b. Bracket reference markers, no text → atom.
+    html = html.replace(/\[\[xref:[^\]]+\]\]/g, (m) => atom(m));
+    html = html.replace(/\[\[docref:[^\]]+\]\]/g, (m) => atom(m));
+
+    // 3. Bracket paired-content markers → highlight delimiters, inner plain.
+    html = html.replace(/\[\[i:(.+?)\]\]/g, (_m, t) => `${delim('[[i:')}${t}${delim(']]')}`);
+    html = html.replace(/\[\[b:(.+?)\]\]/g, (_m, t) => `${delim('[[b:')}${t}${delim(']]')}`);
+    html = html.replace(/\[\[sub:(.+?)\]\]/g, (_m, t) => `${delim('[[sub:')}${t}${delim(']]')}`);
+    html = html.replace(/\[\[sup:(.+?)\]\]/g, (_m, t) => `${delim('[[sup:')}${t}${delim(']]')}`);
+
+    // 4. Brace markers (term/footnote + legacy emphasis from old files).
+    html = html.replace(/\{\{term\}\}(.+?)\{\{\/term\}\}/g, (_m, t) => `${delim('{{term}}')}${t}${delim('{{/term}}')}`);
+    html = html.replace(/\{\{fn\}\}(.+?)\{\{\/fn\}\}/g, (_m, t) => `${delim('{{fn}}')}${t}${delim('{{/fn}}')}`);
+    html = html.replace(/\{\{i\}\}(.+?)\{\{\/i\}\}/g, (_m, t) => `${delim('{{i}}')}${t}${delim('{{/i}}')}`);
+    html = html.replace(/\{\{b\}\}(.+?)\{\{\/b\}\}/g, (_m, t) => `${delim('{{b}}')}${t}${delim('{{/b}}')}`);
+
+    // 5. Legacy single-bracket links + markdown family (old-content tolerance).
     html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_m, t, u) => `${delim('[')}${t}${delim('](' + u + ')')}`);
-    // [#xref] and [doc#target] (after links so (...) form is consumed first).
     html = html.replace(/\[#[A-Za-z0-9_.-]+\]/g, (m) => atom(m));
     html = html.replace(/\[[A-Za-z0-9_.-]+#[A-Za-z0-9_.-]+\]/g, (m) => atom(m));
     html = html.replace(/\[(?:footnote|neðanmálsgrein): [^\]]+\]/g, (m) => atom(m));
-    // {=emphasis=}
     html = html.replace(/\{=(.+?)=\}/g, (_m, t) => `${delim('{=')}${t}${delim('=}')}`);
-
-    // Paired delimiters — highlight delimiters, leave inner text plain.
     html = html.replace(/\*\*(.+?)\*\*/g, (_m, t) => `${delim('**')}${t}${delim('**')}`);
     html = html.replace(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g, (_m, t) => `${delim('*')}${t}${delim('*')}`);
     html = html.replace(/__(.+?)__/g, (_m, t) => `${delim('__')}${t}${delim('__')}`);
@@ -392,24 +436,112 @@ git commit -m "feat(editor): marker highlight overlay behind edit textarea (B-4 
 
 ---
 
-## Task 3: EN pane rendered consistently with IS pane
+## Task 3: Render the bracket/brace family, then make the EN pane consistent
+
+**Why:** `renderMarkdownPreview` only handles the markdown family + `[[MATH]]`/`[[MEDIA]]`/`[[BR]]`/`[[SPACE]]`. The current pipeline's most common markers — the bracket family (`[[sub:]]` #1, `[[i:]]`, `[[xref:]]`, …) and the term/footnote braces — render **raw** in BOTH panes today. This task teaches the renderer those markers (additive, ordering-safe), then switches the EN pane to use it so both panes render identically.
 
 **Files:**
-- Modify: `server/public/js/segment-editor.js` (`renderSegmentRow` `:714`, `:724–728`)
+- Modify: `server/public/js/segment-editor.js` (`renderMarkdownPreview` ~`:1351–1422`; `renderSegmentRow` `:714`; `window` exposes `:2472+`)
 - Test: `server/e2e/segment-editor.spec.js`
 
 **Interfaces:**
-- Consumes: `renderMarkdownPreview` (existing), `highlightTermsInHtml` (existing).
-- Produces: EN pane HTML that renders markers identically to IS.
+- Consumes: `escapeHtml`, existing `renderMarkdownPreview` handlers, `highlightTermsInHtml`.
+- Produces: `renderMarkdownPreview` that renders the full Marker universe (exposed as `window.renderMarkdownPreview` for tests); EN pane HTML identical in treatment to IS.
 
-- [ ] **Step 1: Write the failing E2E test**
+- [ ] **Step 1: Expose `renderMarkdownPreview` for testing**
 
-Add to the `B-4 marker overlay` describe block (or a new `B-4 pane consistency` block) in `server/e2e/segment-editor.spec.js`:
+Near the other `window.*` assignments (`:2472+`) in `server/public/js/segment-editor.js`, add:
 
 ```js
-  test('EN pane renders inline markers like the IS pane', async ({ page }) => {
+  window.renderMarkdownPreview = renderMarkdownPreview;
+```
+
+- [ ] **Step 2: Write the failing E2E (page.evaluate) tests**
+
+Add a new describe block to `server/e2e/segment-editor.spec.js`:
+
+```js
+test.describe('B-4 renderMarkdownPreview bracket/brace family', () => {
+  test.beforeEach(async ({ page }) => {
+    await loginAs(page, 'admin');
     await page.goto('/editor');
-    await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('domcontentloaded');
+  });
+
+  const render = (page, s) => page.evaluate((x) => window.renderMarkdownPreview(x), s);
+
+  test('renders [[sub:]] and [[sup:]] as sub/sup', async ({ page }) => {
+    expect(await render(page, 'H[[sub:2]]O')).toContain('<sub>2</sub>');
+    expect(await render(page, 'Ca[[sup:2+]]')).toContain('<sup>2+</sup>');
+  });
+
+  test('renders [[i:]] and [[b:]] as em/strong', async ({ page }) => {
+    expect(await render(page, '[[i:orð]]')).toContain('<em>orð</em>');
+    expect(await render(page, '[[b:orð]]')).toContain('<strong>orð</strong>');
+  });
+
+  test('renders [[xref:text|id]] keeping the display text', async ({ page }) => {
+    const out = await render(page, '[[xref:Mynd 5.2|CNX_Chem_05_02]]');
+    expect(out).toContain('Mynd 5.2');
+    expect(out).not.toContain('[[xref:'); // not raw
+  });
+
+  test('renders {{term}} and {{fn}} without leaving raw braces', async ({ page }) => {
+    expect(await render(page, '{{term}}atóm{{/term}}')).not.toContain('{{term}}');
+    expect(await render(page, '{{fn}}nóta{{/fn}}')).not.toContain('{{fn}}');
+  });
+
+  test('does not leave a no-text [[xref:id]] raw (ordering safe)', async ({ page }) => {
+    const out = await render(page, 'Sjá [[xref:fs-idm222]] hér');
+    expect(out).not.toContain('[[xref:fs-idm222]]');
+  });
+});
+```
+
+- [ ] **Step 3: Run them to verify they fail**
+
+Run: `cd server/e2e && (lsof -ti:3456 | xargs -r kill); CI=1 npx playwright test segment-editor.spec.js -g "bracket/brace family" --reporter=line`
+Expected: FAIL — the renderer leaves `[[sub:]]`, `[[i:]]`, `[[xref:]]`, `{{term}}` raw.
+
+- [ ] **Step 4: Add the bracket/brace handlers to `renderMarkdownPreview`**
+
+In `server/public/js/segment-editor.js`, in `renderMarkdownPreview`, insert this block **immediately after the `[[BR]]` handler (`:1371`) and before the `[#…]` cross-reference handler (`:1373`)** — so `[[…]]`/`{{…}}` are consumed before the single-bracket and markdown rules:
+
+```js
+    // ── Bracket family (B-4): MUST precede single-bracket + markdown rules ──
+    // [[TABLE:id]] → table chip
+    html = html.replace(/\[\[TABLE:([^\]]+)\]\]/g, '<span class="xref-chip" title="Tafla: $1">&#128203;</span>');
+    // reference markers WITH display text (text|target) — keep text
+    html = html.replace(/\[\[link:([^|\]]+)\|([^\]]+)\]\]/g, '<span class="link-chip" title="Hlekkur: $2">$1 &#128279;</span>');
+    html = html.replace(/\[\[xref:([^|\]]+)\|([^\]]+)\]\]/g, '<span class="xref-chip" title="Tilvísun: $2">$1</span>');
+    html = html.replace(/\[\[docref:([^|\]]+)\|([^\]]+)\]\]/g, '<span class="xref-chip" title="Skjal: $2">$1</span>');
+    // reference markers, no display text → chip icon
+    html = html.replace(/\[\[xref:([^\]]+)\]\]/g, '<span class="xref-chip" title="Tilvísun: $1">&#128247;</span>');
+    html = html.replace(/\[\[docref:([^\]]+)\]\]/g, '<span class="xref-chip" title="Skjaltilvísun: $1">&#128196;</span>');
+    // paired-content emphasis/sub/sup
+    html = html.replace(/\[\[i:(.+?)\]\]/g, '<em>$1</em>');
+    html = html.replace(/\[\[b:(.+?)\]\]/g, '<strong>$1</strong>');
+    html = html.replace(/\[\[sub:(.+?)\]\]/g, '<sub>$1</sub>');
+    html = html.replace(/\[\[sup:(.+?)\]\]/g, '<sup>$1</sup>');
+    // ── Brace family (term/footnote + legacy emphasis from old files) ──
+    html = html.replace(/\{\{term\}\}(.+?)\{\{\/term\}\}/g, '<span class="preview-term">$1</span>');
+    html = html.replace(/\{\{fn\}\}(.+?)\{\{\/fn\}\}/g, '<span class="xref-chip" title="Neðanmálsgrein">&#8224;$1</span>');
+    html = html.replace(/\{\{i\}\}(.+?)\{\{\/i\}\}/g, '<em>$1</em>');
+    html = html.replace(/\{\{b\}\}(.+?)\{\{\/b\}\}/g, '<strong>$1</strong>');
+```
+
+- [ ] **Step 5: Run the renderer tests to verify they pass**
+
+Run: `cd server/e2e && (lsof -ti:3456 | xargs -r kill); CI=1 npx playwright test segment-editor.spec.js -g "bracket/brace family" --reporter=line`
+Expected: PASS.
+
+- [ ] **Step 6: Write the failing EN-pane consistency test**
+
+Add to the same describe block. This needs a loaded module — reuse the `openFirstEditor` helper added in Task 2 (it loads efnafraedi-2e ch01 module 1):
+
+```js
+  test('EN pane renders the bracket family (not raw) like the IS pane', async ({ page }) => {
+    // load a module without opening the edit panel
     await page.locator('#book-select').selectOption('efnafraedi-2e');
     const chapterSelect = page.locator('#chapter-select');
     await expect(chapterSelect).toBeVisible({ timeout: 5000 });
@@ -418,22 +550,22 @@ Add to the `B-4 marker overlay` describe block (or a new `B-4 pane consistency` 
     await chapterSelect.selectOption(firstCh);
     await page.locator('.module-card').first().click();
     await expect(page.locator('.segment-row').first()).toBeVisible({ timeout: 10000 });
-    // The EN column must NOT contain raw bold/term markers as literal text.
-    const enText = await page.locator('.col-en').allInnerTexts();
-    const joined = enText.join('\n');
-    expect(joined).not.toMatch(/\*\*[^*]+\*\*/); // no raw **bold**
-    expect(joined).not.toMatch(/\[\[MEDIA:\d+\]\]/); // MEDIA rendered, not literal
+    const joined = (await page.locator('.col-en').allInnerTexts()).join('\n');
+    // ch01 EN content contains [[i:]] and [[MATH:]]; after rendering, the raw
+    // bracket prefixes must not appear as literal text in the EN column.
+    expect(joined).not.toContain('[[i:');
+    expect(joined).not.toContain('[[sub:');
   });
 ```
 
-- [ ] **Step 2: Run it to verify it fails**
+(ch01 efnafraedi-2e EN is confirmed to contain `[[i:]]` and `[[MATH:]]` markers, so this assertion is not vacuous.)
 
-Run: `cd server/e2e && (lsof -ti:3456 | xargs -r kill); CI=1 npx playwright test segment-editor.spec.js -g "EN pane renders" --reporter=line`
-Expected: FAIL — EN currently shows raw markers (e.g. `[[MEDIA:…]]` literal, raw `**`).
+- [ ] **Step 7: Run it to verify it fails**
 
-(If ch01's first modules contain no `**`/`[[MEDIA]]` markers at all, the assertion passes vacuously; in that case point the test at a module known to contain a media/bold marker, or assert positively that `.col-en .math-placeholder, .col-en strong, .col-en .link-chip` exists. Verify against real content with: `grep -rl "MEDIA:\|\*\*" books/efnafraedi-2e/02-for-mt/ch01/ | head`.)
+Run: `cd server/e2e && (lsof -ti:3456 | xargs -r kill); CI=1 npx playwright test segment-editor.spec.js -g "EN pane renders the bracket" --reporter=line`
+Expected: FAIL — EN pane currently uses `highlightMath(escapeHtml(seg.en))`, so `[[i:` shows raw.
 
-- [ ] **Step 3: Switch EN rendering**
+- [ ] **Step 8: Switch EN rendering**
 
 In `server/public/js/segment-editor.js`, change line `:714`:
 
@@ -447,21 +579,21 @@ to:
     let enHtml = renderMarkdownPreview(seg.en);
 ```
 
-The term-highlight block at `:724–728` stays as-is (it now runs on rendered HTML). `highlightTermsInHtml` matches English term text on word boundaries; the renderer injects only Icelandic `title="…"` text, so collisions are highly unlikely — but see Step 4's guard test.
+The term-highlight block at `:724–728` stays as-is (now runs on rendered HTML). `highlightTermsInHtml` matches escaped English term text on word boundaries; the renderer injects only Icelandic `title="…"` strings, so collisions are very unlikely.
 
-- [ ] **Step 4: Run both the new test and a term-highlight guard**
+- [ ] **Step 9: Run the EN test + full spec (no regression)**
 
-Run: `cd server/e2e && (lsof -ti:3456 | xargs -r kill); CI=1 npx playwright test segment-editor.spec.js -g "EN pane renders" --reporter=line`
+Run: `cd server/e2e && (lsof -ti:3456 | xargs -r kill); CI=1 npx playwright test segment-editor.spec.js -g "EN pane renders the bracket" --reporter=line`
 Expected: PASS.
 
-Then confirm term highlighting still appears (no regression): the existing terminology/term-popup E2E coverage exercises `.term-highlight`. Run the full segment-editor spec:
-`CI=1 npx playwright test segment-editor.spec.js --reporter=line` → all PASS.
+Then the whole editor + terminology specs (term highlighting exercises `.term-highlight`):
+`CI=1 npx playwright test segment-editor.spec.js terminology.spec.js --reporter=line` → all PASS.
 
-- [ ] **Step 5: Commit**
+- [ ] **Step 10: Commit**
 
 ```bash
 git add server/public/js/segment-editor.js server/e2e/segment-editor.spec.js
-git commit -m "feat(editor): render EN pane markers consistently with IS (B-4 task 3)"
+git commit -m "feat(editor): render bracket/brace marker family; EN pane consistent (B-4 task 3)"
 ```
 
 ---
@@ -681,7 +813,9 @@ git commit -m "feat(editor): point blocked-save message at Endurstilla (B-4 task
 
 ## Self-review notes (coverage vs. spec)
 
-- Spec Component 1 (EN render) → Task 3. Component 2 (overlay + `highlightMarkersInPlace`) → Tasks 1–2. Component 3 (revert button + extracted logic) → Task 4. Component 4 (block message) → Task 5. ✅
+- Spec Component 1 (renderer extension + EN render) → Task 3. Component 2 (overlay + `highlightMarkersInPlace`) → Tasks 1–2. Component 3 (revert button + extracted logic) → Task 4. Component 4 (block message) → Task 5. ✅
+- Spec "Marker universe" full set → covered by `highlightMarkersInPlace` (Task 1, with preservation + detection tests across the set) and the `renderMarkdownPreview` extension (Task 3, with per-marker page.evaluate tests). Ordering rule (`[[…]]`/`{{…}}` before single-bracket/markdown) tested in both. ✅
 - Spec invariant `stripTags(out) === escapeHtml(in)` → Task 1 Step 1 tests. ✅
 - Spec "editing logic untouched" → no task modifies selection/keyboard/save-of-`.value`; overlay is render-only and only *adds* `refreshBackdrop` calls after existing `.value` mutations. ✅
+- Spec "no re-translation / client-render only" → no task runs a pipeline tool; all changes are client JS/CSS. ✅
 - Spec out-of-scope (contenteditable, undo stack, server, Pass-2 editor) → no task touches them. ✅

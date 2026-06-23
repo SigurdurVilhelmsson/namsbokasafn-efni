@@ -37,13 +37,64 @@ In the side-by-side segment editor:
   `renderMarkdownPreview` as IS. Edit mode is the *reveal*: opening the editor
   swaps rendered IS for raw-but-highlighted markers in the overlay — markers
   appear exactly when they are editable.
+- **No re-translation; client-render only.** A pipeline investigation
+  (2026-06-23, see Marker universe below) confirmed the current pipeline emits
+  a clean bracket-based marker set with no active redundant conversion; the
+  legacy markdown markers are stale residue in old files. Re-extraction would
+  regenerate only the EN side, not the IS pane editors work in, so it has no
+  editor benefit and costs Miðeind/Claude budget. **This work changes only
+  client-side rendering — zero pipeline runs.**
+
+## Marker universe (corrected 2026-06-23)
+
+The editor must render + highlight the **current** marker set the pipeline
+produces, and keep tolerating the legacy markdown family already in old files.
+`renderMarkdownPreview` today already handles the legacy markdown family
+(`*` `**` `__` `~` `^` `++`, plus `[[MATH:N]]` `[[MEDIA:N]]` `[[BR]]`
+`[[SPACE]]` `[text](url)` `[#x]` `[d#t]` `{=…=}` `[footnote:…]`) — but it has
+**no** handler for the bracket family or the term/footnote braces, which are
+the *most common* markers in content (`[[sub:]]` is #1, ~7,500 corpus-wide).
+
+**Must ADD (render + highlight):**
+
+| Marker | Source (CNXML) | Render to | Highlight (overlay) |
+|--------|----------------|-----------|---------------------|
+| `[[i:text]]` | `<emphasis italics>` | `<em>` | delimiters `[[i:` `]]` |
+| `[[b:text]]` | `<emphasis bold>` | `<strong>` | delimiters |
+| `[[sub:x]]` | `<sub>` | `<sub>` | delimiters |
+| `[[sup:x]]` | `<sup>` | `<sup>` | delimiters |
+| `[[xref:id]]`, `[[xref:text\|id]]` | `<link target-id>` | xref chip | atom / delimiters |
+| `[[link:text\|url]]` | `<link url>` | link chip | delimiters |
+| `[[docref:…]]`, `[[docref:text\|…]]` | `<link document>` | xref chip | atom / delimiters |
+| `[[TABLE:id]]` | embedded `<table>` | table chip | atom |
+| `{{term}}…{{/term}}` | `<term>` | term span | delimiters |
+| `{{fn}}…{{/fn}}` | `<footnote>` | footnote chip | delimiters |
+| `{{i}}…{{/i}}`, `{{b}}…{{/b}}` | legacy emphasis (old files) | `<em>`/`<strong>` | delimiters |
+
+**Already handled — keep as-is (tolerance for old + live content):**
+`[[MATH:N]]`, `[[MEDIA:N]]`, `[[BR]]`, `[[SPACE]]`/`[[SPACE:N]]`, `**`, `*`,
+`__`, `~`, `^`, `++`, `{=…=}`, `[text](url)`, `[#x]`, `[d#t]`, `[footnote:…]`.
+(`~`/`^`/`++` are LIVE — emitted by `api-translate.js` `normalizeUnicode()` and
+extraction's underline; the rest are stale but harmless to keep handling.)
+
+**Ordering rule:** bracket (`[[…]]`) and brace (`{{…}}`) handlers run **before**
+the existing single-bracket handlers (`[text](url)`, `[#x]`, `[d#t]`) and the
+markdown handlers, so `[[…]]`/`{{…}}` markers are consumed into spans first and
+cannot be mis-matched by the single-bracket regexes. Tested explicitly.
 
 ## Components
 
-### 1 — Consistent pane rendering (read mode)
+### 1 — Render the bracket/brace family, then consistent panes (read mode)
 
-Render the EN pane through `renderMarkdownPreview(seg.en)` instead of
+Two steps: (a) **extend `renderMarkdownPreview`** to handle the bracket + brace
+family (the "Must ADD" rows above), respecting the ordering rule; then (b)
+render the EN pane through `renderMarkdownPreview(seg.en)` instead of
 `highlightMath(escapeHtml(seg.en))`, so EN and IS render markers identically.
+
+Step (a) is additive — it inserts new handlers ahead of the existing ones and
+touches no existing rule, so the IS pane only *gains* rendering for markers it
+previously showed raw (e.g. `[[sub:2]]` → `<sub>2</sub>`). It is genuinely
+non-destructive to IS text that lacks those markers.
 
 - **Term highlighting** (`highlightTermsInHtml`, applied to `enHtml` at `:727`)
   now runs on the rendered HTML. `highlightTermsInHtml` matches escaped English
@@ -71,13 +122,21 @@ Standard "highlighted textarea" technique:
 - New **pure function** `highlightMarkersInPlace(text)`:
   - Input: raw segment text. Output: HTML where **every original character is
     preserved** (so the backdrop overlaps the textarea 1:1) and each marker is
-    wrapped in a highlight span:
-    - atoms: `[[MATH:N]]`, `[[MEDIA:N]]`, `[[BR]]`, `[[SPACE]]`/`[[SPACE:N]]`,
-      `[#xref]`, `[doc#target]`, `[text](url)`, `[footnote: …]`
-    - paired delimiters: `**`, `__`, `~`, `^`, `++`, `{= =}` (highlight the
-      delimiters; inner text stays normal)
+    wrapped in a highlight span. It must cover the **full Marker universe**
+    above:
+    - atoms (whole marker highlighted): `[[MATH:N]]`, `[[MEDIA:N]]`,
+      `[[TABLE:id]]`, `[[BR]]`, `[[SPACE]]`/`[[SPACE:N]]`, `[[xref:id]]`,
+      `[[docref:…]]` (no-text forms), `[#xref]`, `[doc#target]`, `[footnote: …]`
+    - delimiters highlighted, inner text left plain: `[[i:…]]`, `[[b:…]]`,
+      `[[sub:…]]`, `[[sup:…]]`, `[[link:text|url]]`, `[[xref:text|id]]`,
+      `[[docref:text|…]]`, `{{term}}…{{/term}}`, `{{fn}}…{{/fn}}`,
+      `{{i}}…{{/i}}`, `{{b}}…{{/b}}`, `[text](url)`, `**`, `*`, `__`, `~`, `^`,
+      `++`, `{= =}`
+  - Same **ordering rule** as the renderer: `[[…]]`/`{{…}}` before the
+    single-bracket and markdown handlers.
   - **Invariant:** `stripTags(highlightMarkersInPlace(t)) === escapeHtml(t)`
-    (overlay must not add or drop characters). This is the core unit test.
+    (overlay must not add or drop characters). This is the core unit test, run
+    across a table covering every marker in the universe.
 - **Editing logic is untouched** — selection, `wrapSelection`,
   `insertTermFromLookup`, all keyboard shortcuts, dirty tracking, save, and
   Escape-revert keep operating on `textarea.value` exactly as today. The
