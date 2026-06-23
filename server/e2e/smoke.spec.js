@@ -95,6 +95,29 @@ test.describe('Authenticated pages (admin)', () => {
     expect(errors).toEqual([]);
   });
 
+  test('library has no retired images feature (item M)', async ({ page }) => {
+    // The /api/images endpoints were removed in the 2026-03-24 refocus; the
+    // dead "Myndir" tab fired GET /api/images/<book> → 404 + toast. The whole
+    // feature was removed — assert it's gone and never requests /api/images.
+    const imageRequests = [];
+    page.on('request', (req) => {
+      if (req.url().includes('/api/images')) imageRequests.push(req.url());
+    });
+
+    await page.goto('/library');
+    await expect(page.locator('.app-layout')).toBeVisible();
+
+    // No images tab / view remain
+    await expect(page.locator('.library-tab[data-view="images"]')).toHaveCount(0);
+    await expect(page.locator('#view-images')).toHaveCount(0);
+
+    // Exercise the still-present tabs; none should hit /api/images
+    await page.locator('.library-tab[data-view="chapter"]').click();
+    await page.locator('.library-tab[data-view="books"]').click();
+    await page.waitForTimeout(300);
+    expect(imageRequests).toEqual([]);
+  });
+
   test('reviews redirects to editor', async ({ page }) => {
     await page.goto('/reviews');
     await expect(page).toHaveURL(/\/editor/);
