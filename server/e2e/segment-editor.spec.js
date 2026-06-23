@@ -125,3 +125,61 @@ test.describe('B-4 marker overlay', () => {
     await expect(backdrop.locator('.marker-hl-atom')).toHaveText('[[MATH:1]]');
   });
 });
+
+test.describe('B-4 renderMarkdownPreview bracket/brace family', () => {
+  test.beforeEach(async ({ page }) => {
+    await loginAs(page, 'admin');
+    await page.goto('/editor');
+    await page.waitForLoadState('domcontentloaded');
+  });
+
+  const render = (page, s) => page.evaluate((x) => window.renderMarkdownPreview(x), s);
+
+  test('renders [[sub:]] and [[sup:]] as sub/sup', async ({ page }) => {
+    expect(await render(page, 'H[[sub:2]]O')).toContain('<sub>2</sub>');
+    expect(await render(page, 'Ca[[sup:2+]]')).toContain('<sup>2+</sup>');
+  });
+
+  test('renders [[i:]] and [[b:]] as em/strong', async ({ page }) => {
+    expect(await render(page, '[[i:orð]]')).toContain('<em>orð</em>');
+    expect(await render(page, '[[b:orð]]')).toContain('<strong>orð</strong>');
+  });
+
+  test('renders [[xref:text|id]] keeping the display text', async ({ page }) => {
+    const out = await render(page, '[[xref:Mynd 5.2|CNX_Chem_05_02]]');
+    expect(out).toContain('Mynd 5.2');
+    expect(out).not.toContain('[[xref:'); // not raw
+  });
+
+  test('renders {{term}} and {{fn}} without leaving raw braces', async ({ page }) => {
+    expect(await render(page, '{{term}}atóm{{/term}}')).not.toContain('{{term}}');
+    expect(await render(page, '{{fn}}nóta{{/fn}}')).not.toContain('{{fn}}');
+  });
+
+  test('does not leave a no-text [[xref:id]] raw (ordering safe)', async ({ page }) => {
+    const out = await render(page, 'Sjá [[xref:fs-idm222]] hér');
+    expect(out).not.toContain('[[xref:fs-idm222]]');
+  });
+
+  test('EN pane renders the bracket family (not raw) like the IS pane', async ({ page }) => {
+    // load a module without opening the edit panel
+    await page.locator('#book-select').selectOption('efnafraedi-2e');
+    const chapterSelect = page.locator('#chapter-select');
+    await expect(chapterSelect).toBeVisible({ timeout: 5000 });
+    await expect
+      .poll(() => chapterSelect.locator('option').count(), { timeout: 10000 })
+      .toBeGreaterThan(1);
+    const firstCh = await chapterSelect
+      .locator('option:not([value=""])')
+      .first()
+      .getAttribute('value');
+    await chapterSelect.selectOption(firstCh);
+    await page.locator('.module-card').first().click();
+    await expect(page.locator('.segment-row').first()).toBeVisible({ timeout: 10000 });
+    const joined = (await page.locator('.col-en').allInnerTexts()).join('\n');
+    // ch01 EN content contains [[i:]] and [[MATH:]]; after rendering, the raw
+    // bracket prefixes must not appear as literal text in the EN column.
+    expect(joined).not.toContain('[[i:');
+    expect(joined).not.toContain('[[sub:');
+  });
+});

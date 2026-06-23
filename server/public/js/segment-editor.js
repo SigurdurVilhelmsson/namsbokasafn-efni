@@ -711,7 +711,7 @@
     const displayIs = hasActiveEdit ? latestEdit.edited_content : seg.is;
     const editableText = hasActiveEdit ? latestEdit.edited_content : seg.is;
 
-    let enHtml = highlightMath(escapeHtml(seg.en));
+    let enHtml = renderMarkdownPreview(seg.en);
     const isHtml = renderMarkdownPreview(displayIs);
 
     // Show word-level inline diff when an active edit changes the text
@@ -1385,6 +1385,48 @@
 
     // 2. [[BR]] line breaks
     html = html.replace(/\[\[BR\]\]/g, '<span class="preview-br">[BR]</span><br>');
+
+    // ── Bracket family (B-4): MUST precede single-bracket + markdown rules ──
+    // [[TABLE:id]] → table chip
+    html = html.replace(
+      /\[\[TABLE:([^\]]+)\]\]/g,
+      '<span class="xref-chip" title="Tafla: $1">&#128203;</span>'
+    );
+    // reference markers WITH display text (text|target) — keep text
+    html = html.replace(
+      /\[\[link:([^|\]]+)\|([^\]]+)\]\]/g,
+      '<span class="link-chip" title="Hlekkur: $2">$1 &#128279;</span>'
+    );
+    html = html.replace(
+      /\[\[xref:([^|\]]+)\|([^\]]+)\]\]/g,
+      '<span class="xref-chip" title="Tilvísun: $2">$1</span>'
+    );
+    html = html.replace(
+      /\[\[docref:([^|\]]+)\|([^\]]+)\]\]/g,
+      '<span class="xref-chip" title="Skjal: $2">$1</span>'
+    );
+    // reference markers, no display text → chip icon
+    html = html.replace(
+      /\[\[xref:([^\]]+)\]\]/g,
+      '<span class="xref-chip" title="Tilvísun: $1">&#128247;</span>'
+    );
+    html = html.replace(
+      /\[\[docref:([^\]]+)\]\]/g,
+      '<span class="xref-chip" title="Skjaltilvísun: $1">&#128196;</span>'
+    );
+    // paired-content emphasis/sub/sup
+    html = html.replace(/\[\[i:(.+?)\]\]/g, '<em>$1</em>');
+    html = html.replace(/\[\[b:(.+?)\]\]/g, '<strong>$1</strong>');
+    html = html.replace(/\[\[sub:(.+?)\]\]/g, '<sub>$1</sub>');
+    html = html.replace(/\[\[sup:(.+?)\]\]/g, '<sup>$1</sup>');
+    // ── Brace family (term/footnote + legacy emphasis from old files) ──
+    html = html.replace(/\{\{term\}\}(.+?)\{\{\/term\}\}/g, '<span class="preview-term">$1</span>');
+    html = html.replace(
+      /\{\{fn\}\}(.+?)\{\{\/fn\}\}/g,
+      '<span class="xref-chip" title="Neðanmálsgrein">&#8224;$1</span>'
+    );
+    html = html.replace(/\{\{i\}\}(.+?)\{\{\/i\}\}/g, '<em>$1</em>');
+    html = html.replace(/\{\{b\}\}(.+?)\{\{\/b\}\}/g, '<strong>$1</strong>');
 
     // 3. [#CNX_...] cross-references (before general bracket matching)
     html = html.replace(
@@ -2496,6 +2538,7 @@
   // ================================================================
   // EXPOSE TO WINDOW (for HTML onclick/inline handlers)
   // ================================================================
+  window.renderMarkdownPreview = renderMarkdownPreview;
   window.loadModule = loadModule;
   window.openEditPanel = openEditPanel;
   window.closeEditPanel = closeEditPanel;
