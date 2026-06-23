@@ -690,6 +690,32 @@ pre {
   height: 18px;
 }
 
+.topbar-logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin-left: var(--spacing-sm);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.topbar-logout:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+
+.topbar-logout svg {
+  width: 18px;
+  height: 18px;
+}
+
 .notification-badge {
   position: absolute;
   top: -4px;

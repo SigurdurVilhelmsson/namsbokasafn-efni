@@ -164,6 +164,31 @@ test.describe('Layout shell', () => {
   });
 });
 
+// ─── Logout (item K) ─────────────────────────────────────────
+
+test.describe('Logout (item K)', () => {
+  test('logout button logs the user out and returns to /login', async ({ page }) => {
+    await loginAs(page, 'admin');
+    await page.goto('/');
+    await expect(page.locator('.app-layout')).toBeVisible();
+
+    const logoutBtn = page.locator('#logout-btn');
+    await expect(logoutBtn).toBeVisible({ timeout: 5000 });
+
+    await logoutBtn.click();
+    await expect(page).toHaveURL(/\/login/, { timeout: 5000 });
+
+    // Cookie cleared → a gated page bounces back to login
+    await page.goto('/editor');
+    await expect(page).toHaveURL(/\/login/, { timeout: 5000 });
+  });
+
+  test('logged-out topbar shows no logout button', async ({ page }) => {
+    await page.goto('/login');
+    await expect(page.locator('#logout-btn')).toHaveCount(0);
+  });
+});
+
 // ─── Legacy redirects ─────────────────────────────────────────
 
 test.describe('Legacy redirects', () => {
