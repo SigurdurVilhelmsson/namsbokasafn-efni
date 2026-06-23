@@ -213,6 +213,21 @@ until terms exist. `stjornufraedi` has no translated content at all.
 
 ---
 
+## G. (A1 follow-up) Interactive appendix — one-click — vefur
+
+Live QA (2026-06-23) confirmed A1 works: "viðauka A" → `/efnafraedi-2e/vidauki/A`.
+But `/vidauki/A` is a **landing page** that links to the interactive periodic
+table at `/efnafraedi-2e/lotukerfi/` — so the table is **two clicks** deep. Make
+it one: either (a) redirect `/vidauki/A` → `/lotukerfi/` for the interactive
+appendix (matches the A1 spec's original model), or (b) render the component at
+`/vidauki/A`. (a) is smaller. **efni needs no change** — it emits the correct
+semantic `/vidauki/{letter}`; this is purely vefur appendix-route behavior and
+fixes the hop for every Appendix-A reference. Spec:
+[`2026-06-22-a1-appendix-crossref-design.md`](2026-06-22-a1-appendix-crossref-design.md)
+§ "Deployed behavior + UX follow-up". Low priority / low effort.
+
+---
+
 ## Quick reference — what PR #133 changed
 - `tools/cnxml-render.js` — artifact sweep/prune (#9); `relocatedIds` +
   `currentPageBasename` plumbing and compiled-page basenames (#3); faithful

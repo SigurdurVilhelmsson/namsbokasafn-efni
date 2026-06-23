@@ -205,3 +205,21 @@ reader scrolls to it:
 - **Interactive appendices stay landing-only:** the `componentPath` redirect
   drops fragments by design; teaching a component to honor a fragment is out of
   scope unless a specific interactive appendix needs it.
+
+## Deployed behavior + UX follow-up (verified live 2026-06-23)
+
+Live check on namsbokasafn.is confirmed A1 works: §2-3 "viðauka A" →
+`/efnafraedi-2e/vidauki/A` (no dead anchor) ✓. **Correction to fact #2's
+mechanism:** `/vidauki/A` is *not* a 307-redirect to the component as speculated
+— it's a real **landing page** that links to the interactive periodic table at
+`/efnafraedi-2e/lotukerfi/`. So reaching the table is **two clicks** (reference →
+landing → component). The fix's decision to drop the `#fragment` is still correct
+(the landing has no per-id anchor), and the acceptance criterion is met.
+
+**Follow-up (vefur, small UX):** make Appendix A one click — either (a) redirect
+`/vidauki/A` → `/lotukerfi/` for the interactive appendix (matches this spec's
+original model), or (b) render the component at `/vidauki/A` (drop the separate
+landing). (a) is smaller. **efni needs no change** — it correctly emits the
+semantic `/vidauki/{letter}`; this is purely vefur's appendix-route behavior, and
+fixes the hop for *every* "Appendix A" reference. Do it in a vefur-rooted session
+(read vefur CLAUDE.md/memory first). Tracked in the deferred fixlist.
