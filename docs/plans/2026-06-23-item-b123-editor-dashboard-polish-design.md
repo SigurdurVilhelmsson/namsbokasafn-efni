@@ -10,17 +10,24 @@ Three independent UI fixes grouped into one branch. All user-facing copy is Icel
 
 ## B-1 — Editor header/breadcrumb shows the Icelandic title
 
-**Problem.** The editor header (`segment-editor.js:527`) and topbar breadcrumb (`:558`) show `moduleData.title`, which is `structure.title.text` — the **English** title from extraction. The single-module API (`loadModuleForEditing`, `segmentParser.js:272`) returns only `title`, no `titleIs` — even though the module *list* already gets `titleIs` via `bookDataLoader.enrichModules`.
+**Problem.** The editor header (`segment-editor.js:527`) and topbar breadcrumb (`:558`) show `moduleData.title`, which is `structure.title.text` — the **English** title from extraction. The single-module API (`loadModuleForEditing`, `segmentParser.js:272`) returns only `title`, no `titleIs`.
+
+**Source correction (investigated 2026-06-23).** The section `titleIs` is **not** in the static book-data file (`server/data/chemistry-2e.json` has section `titleIs: null` for all 135 modules) nor the DB `book_sections` (`title_is` all null) — only *chapter* titles are translated there. So `bookDataLoader.enrichModules` would set `titleIs: null` and the fix would be inert. The real translated section title lives in the module's own **`title`-type segment**: e.g. `m68664`'s first segment `SEG:m68664:title:auto-1` has IS text "Efnafræði í samhengi" (a pipeline/MT translation — honors [[feedback-translations-api-only]]). `loadModuleForEditing` already parses and returns these as `segments[]` (each with `segmentType` and `is`). So the Icelandic title is *already in the editor's payload* — just not surfaced as the header.
 
 **Fix (scope: editor only).**
-- **Backend** — `server/routes/segment-editor.js`, the `GET /:book/:chapter/:moduleId` handler (~:286): enrich the response with `titleIs` using the existing loader, without clobbering `data.title`:
+- **Backend** — `server/services/segmentParser.js`, `loadModuleForEditing` return object (~:61–67): add `titleIs` derived from the title segment:
   ```js
-  const meta = [{ moduleId: req.params.moduleId }];
-  enrichModules(req.params.book, meta); // sets meta[0].titleIs (+ title/section)
-  res.json({ ...data, titleIs: meta[0].titleIs, edits: editsBySegment, stats, otherPendingSegments });
+  const titleSeg = paired.find((s) => s.segmentType === 'title');
+  return {
+    ...,
+    title: structure ? structure.title?.text : moduleId,
+    titleIs: titleSeg ? titleSeg.is : null,
+    segments: paired,
+    ...
+  };
   ```
-  (`enrichModules` is already imported at `:61`.)
-- **Frontend** — `segment-editor.js`: header (`:527`) and breadcrumb (`:558`) use `moduleData.titleIs || moduleData.title || moduleData.moduleId`. The module-list already does this (`:228`); the header now matches.
+  Modules without a `title` segment (some intros) → `titleIs: null` → frontend falls back to English. No route change needed (the GET handler already spreads `...data`).
+- **Frontend** — `segment-editor.js`: header (`:527`) and breadcrumb (`:558`) use `moduleData.titleIs || moduleData.title || moduleData.moduleId`.
 
 **Out of scope:** the my-work task card (shows `module_id` for changes-requested tasks) — deliberately left as-is per the scope decision.
 
