@@ -201,3 +201,62 @@ test.describe('B-4 renderMarkdownPreview bracket/brace family', () => {
     expect(joined).not.toContain('[[sub:');
   });
 });
+
+test.describe('B-4 save-block revert hint', () => {
+  test.beforeEach(async ({ page }) => {
+    await loginAs(page, 'admin');
+  });
+
+  test('corrupting a structural marker shows a block message with a revert hint', async ({
+    page,
+  }) => {
+    // Load m68667 from efnafraedi-2e ch01 — corpus-confirmed to have [[MATH:N]] segments.
+    await page.goto('/editor');
+    await page.waitForLoadState('networkidle');
+    await page.locator('#book-select').selectOption('efnafraedi-2e');
+    const chapterSelect = page.locator('#chapter-select');
+    await expect(chapterSelect).toBeVisible({ timeout: 5000 });
+    await expect
+      .poll(() => chapterSelect.locator('option').count(), { timeout: 10000 })
+      .toBeGreaterThan(1);
+    // ch01 is the first option
+    const firstCh = await chapterSelect
+      .locator('option:not([value=""])')
+      .first()
+      .getAttribute('value');
+    await chapterSelect.selectOption(firstCh);
+    // Open m68667 specifically (has [[MATH:N]] markers)
+    await page.locator('.module-card[title^="m68667"]').click();
+    await expect(page.locator('.segment-row').first()).toBeVisible({ timeout: 10000 });
+
+    // Find a segment row whose EN cell renders a math placeholder — guaranteed in m68667
+    const mathRow = page
+      .locator('.segment-row')
+      .filter({ has: page.locator('.col-en .math-placeholder') })
+      .first();
+    await expect(mathRow).toBeVisible({ timeout: 5000 });
+
+    // Open its edit panel
+    await mathRow.locator('.btn-edit').click();
+    const panel = mathRow.locator('.edit-panel.active');
+    await expect(panel.locator('textarea')).toBeVisible({ timeout: 5000 });
+
+    // Replace IS content with text that omits the [[MATH:N]] marker
+    const ta = panel.locator('textarea');
+    await ta.fill('texti án stærðfræðimerkis');
+    await ta.dispatchEvent('input');
+
+    // Capture the dialog BEFORE clicking Vista
+    let dialogMessage = '';
+    page.once('dialog', async (d) => {
+      dialogMessage = d.message();
+      await d.accept();
+    });
+    await panel.locator('.btn-primary').click();
+
+    // The block MUST have fired (m68667 has [[MATH:N]] markers that are required)
+    expect(dialogMessage).not.toBe('');
+    expect(dialogMessage).toContain('Ekki hægt að vista');
+    expect(dialogMessage).toContain('Endurstilla');
+  });
+});

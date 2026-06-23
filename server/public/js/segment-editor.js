@@ -1129,7 +1129,11 @@
     // Validate before saving
     const validation = validateSegmentEdit(seg.en, seg.is, editedContent);
     if (validation.blocked) {
-      alert(UI.confirm.validationBlocked + validation.blocked.join('\n'));
+      alert(
+        UI.confirm.validationBlocked +
+          validation.blocked.join('\n') +
+          UI.confirm.validationRevertHint
+      );
       return;
     }
     if (validation.warnings) {
