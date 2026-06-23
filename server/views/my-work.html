@@ -1279,7 +1279,7 @@
         }
 
         // Render current task
-        renderCurrentTask(todayData.currentTask);
+        renderCurrentTask(todayData.currentTask, todayData);
 
         // Render up next
         renderUpNext(todayData.upNext);
@@ -1316,15 +1316,52 @@
     // CURRENT TASK RENDERING
     // ========================================================================
 
-    function renderCurrentTask(task) {
+    // B-2: decide the empty-"Today" message. Pure — unit-tested via page.evaluate.
+    function buildEmptyTaskMessage(isReviewer, pendingCount, readyCount) {
+      if (isReviewer && pendingCount > 0) {
+        return {
+          heading: 'Engin ritstjórnarverkefni í dag',
+          body: pendingCount + (pendingCount === 1 ? ' breyting bíður' : ' breytingar bíða') + ' úrskurðar þíns.',
+          actionLabel: 'Skoða úrlausnir',
+          actionHref: '/editor?view=reviews',
+        };
+      }
+      if (isReviewer && readyCount > 0) {
+        return {
+          heading: 'Engin ritstjórnarverkefni í dag',
+          body: readyCount + (readyCount === 1 ? ' samþykkt breyting bíður' : ' samþykktar breytingar bíða') + ' birtingar.',
+          actionLabel: 'Skoða úrlausnir',
+          actionHref: '/editor?view=reviews',
+        };
+      }
+      return {
+        heading: 'Ekkert verkefni í dag!',
+        body: 'Þú hefur lokið öllum verkefnum. Slakaðu á eða biddu eftir nýjum úthlutunum.',
+      };
+    }
+    window.buildEmptyTaskMessage = buildEmptyTaskMessage;
+
+    function renderCurrentTask(task, todayData) {
       var container = document.getElementById('current-task-card');
 
       if (!task) {
+        var stats = (todayData && todayData.adminStats) || null;
+        var role = todayData && todayData.user && todayData.user.role;
+        var isReviewer = !!stats && (role === 'admin' || role === 'head-editor');
+        var msg = buildEmptyTaskMessage(
+          isReviewer,
+          stats ? (stats.globalPendingCount || 0) : 0,
+          stats ? (stats.readyToApplyCount || 0) : 0
+        );
+        var action = msg.actionHref
+          ? '<a href="' + msg.actionHref + '" class="btn btn-primary btn-sm">' + escapeHtml(msg.actionLabel) + '</a>'
+          : '';
         container.innerHTML =
           '<div class="empty-task">' +
-            '<div class="empty-icon">\uD83C\uDF89</div>' +
-            '<h3>Ekkert verkefni í dag!</h3>' +
-            '<p>Þú hefur lokið öllum verkefnum. Slakaðu á eða biddu eftir nýjum úthlutanum.</p>' +
+            (msg.actionHref ? '' : '<div class="empty-icon">🎉</div>') +
+            '<h3>' + escapeHtml(msg.heading) + '</h3>' +
+            '<p>' + escapeHtml(msg.body) + '</p>' +
+            action +
           '</div>';
         return;
       }
