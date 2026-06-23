@@ -265,6 +265,27 @@ condition makes it bounce, and surface a nav link once it works.
 > Per the cross-repo protocol, record/fix them in a namsbokasafn-vefur session
 > (read its CLAUDE.md + memory first); this list is the interim tracker.
 
+## L. ⚠️ (regression, efni) Term-mining queue dead — route shadowing
+
+Live QA console (2026-06-23): `/terminology` → `GET /api/terminology/mined-candidates`
+**404**. Root cause: **route ordering**. `router.get('/:id')`
+(`server/routes/terminology.js:250`) is registered *before*
+`router.get('/mined-candidates')` (line 962), so `/:id` captures
+`mined-candidates` (id lookup → not found → 404) and the real route is
+unreachable. **The entire Unit-3.5 term-mining candidate queue (PR #121–123) is
+non-functional in prod.** Fix: move `/mined-candidates*` routes (GET +
+POST dismiss/promote) **above** the parametric `/:id` (and check the POST `/:id`
+side too). Add a test asserting the route resolves. efni.
+
+## M. (regression, efni) Library page calls removed `/api/images` → 404
+
+Live QA console: `/library` book-change → `GET /api/images/efnafraedi-2e` **404**
++ "Myndayfirlit ekki tiltækt" toast. The `/api/images` route was removed in the
+2026-03-24 refocus; the 2026-06-10 fix dropped the bookSelector auto-change call
+but a **residual** call remains in `loadBookImages` (library view, ~line 2844).
+Fix: remove the dead call / image-overview UI, or restore the endpoint if the
+feature is wanted. efni.
+
 ## K. (UX gap) No logout in the editorial-server UI — **efni**
 
 Live QA (2026-06-23): the editorial server has **no logout affordance** in the
