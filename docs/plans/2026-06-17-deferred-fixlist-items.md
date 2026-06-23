@@ -228,6 +228,19 @@ fixes the hop for every Appendix-A reference. Spec:
 
 ---
 
+## H. (anchor occlusion) Sticky banner hides in-page anchor targets — vefur
+
+Live QA (2026-06-23): jumping to an in-page `#anchor` (footnote back-ref,
+cross-reference, section jump) scrolls the target to viewport-top, where it's
+**obscured by the sticky/semi-transparent top banner** (search/settings). Affects
+**all** anchor navigation, not just footnotes. One-line CSS fix in vefur's shared
+stylesheet: `scroll-padding-top: <banner-height>` on the scroll root (`html`/main
+scroll container), or `scroll-margin-top` on anchor targets (`[id]` / content
+headings + `.footnote-item` + `.preserved-anchor`). **efni needs no change** —
+anchors are correct; this is reader-layout CSS. Low effort, site-wide benefit.
+
+---
+
 ## Quick reference — what PR #133 changed
 - `tools/cnxml-render.js` — artifact sweep/prune (#9); `relocatedIds` +
   `currentPageBasename` plumbing and compiled-page basenames (#3); faithful
