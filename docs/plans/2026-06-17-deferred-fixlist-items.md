@@ -286,6 +286,19 @@ but a **residual** call remains in `loadBookImages` (library view, ~line 2844).
 Fix: remove the dead call / image-overview UI, or restore the endpoint if the
 feature is wanted. efni.
 
+## B2. (editor UX, efni) "Editor UX confusing" — needs a focused review
+
+Live QA (2026-06-23): walking the editor as `editor` (via the admin role-preview),
+the lead found the editor UX **confusing** (checklist §4 did not pass). No
+specifics captured yet. Follow-up: sit with a real editor account (not the
+client-side preview) and pin down which of §4a (task header reads "Chapter N ·
+Section" vs raw `mNNNNN`), §4b (module/track/stage jargon leaking), §4c (8-stage
+pipeline view / track switches visible to editors), §4e (unclear or English
+wording), or overall flow is the problem. Then file concrete items. efni
+editorial-server frontend. (Note: the role-preview dropdown is client-side only —
+a real `editor` may see less than admin-previewing-editor, so verify with an
+actual editor login.)
+
 ## K. (UX gap) No logout in the editorial-server UI — **efni**
 
 Live QA (2026-06-23): the editorial server has **no logout affordance** in the
