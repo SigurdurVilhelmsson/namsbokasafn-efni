@@ -43,4 +43,57 @@ function classifyOccurrence(propagatedText, occ) {
   return occ.currentIs === propagatedText ? 'already-matches' : 'eligible';
 }
 
-module.exports = { getDb, _setTestDb, classifyOccurrence };
+/**
+ * For each occurrence, re-check eligibility against the latest non-rejected edit
+ * and (if eligible) insert a pending segment_edit. Cross-module write.
+ * @returns {{ created: Array, skipped: Array }}
+ */
+function createPropagatedEdits(
+  conn,
+  { book, editorId, editorUsername, propagatedText, category, note, occurrences }
+) {
+  const findEdit = conn.prepare(
+    `SELECT edited_content, status FROM segment_edits
+     WHERE book = ? AND module_id = ? AND segment_id = ? AND status != 'rejected'
+     ORDER BY id DESC LIMIT 1`
+  );
+  const insert = conn.prepare(
+    `INSERT INTO segment_edits
+       (book, chapter, module_id, segment_id, original_content, edited_content,
+        category, editor_note, editor_id, editor_username)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+  );
+
+  const created = [];
+  const skipped = [];
+  const tx = conn.transaction(() => {
+    for (const occ of occurrences) {
+      const existingEdit = findEdit.get(book, occ.moduleId, occ.segmentId) || null;
+      const verdict = classifyOccurrence(propagatedText, {
+        currentIs: occ.currentIs,
+        existingEdit,
+      });
+      if (verdict !== 'eligible') {
+        skipped.push({ moduleId: occ.moduleId, segmentId: occ.segmentId, reason: verdict });
+        continue;
+      }
+      insert.run(
+        book,
+        occ.chapter,
+        occ.moduleId,
+        occ.segmentId,
+        occ.currentIs || '',
+        propagatedText,
+        category || null,
+        note || null,
+        String(editorId),
+        editorUsername
+      );
+      created.push({ moduleId: occ.moduleId, segmentId: occ.segmentId });
+    }
+  });
+  tx();
+  return { created, skipped };
+}
+
+module.exports = { getDb, _setTestDb, classifyOccurrence, createPropagatedEdits };
