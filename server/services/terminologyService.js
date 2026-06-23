@@ -1056,7 +1056,22 @@ function findTermsInSegments(segments, bookSlug = null) {
     });
   }
 
-  const terms = Array.from(termMap.values());
+  // Item N: scope translations to the book's subject. A translation is in-scope
+  // when the book has no subject mapping (→ no filtering), or it is tagged with
+  // the book subject, or 'general', or it is untagged. Headwords left with no
+  // in-scope translation are dropped entirely (no match, no missing-term issue).
+  const subjectAllowed = (subjects) =>
+    !bookSubject ||
+    subjects.length === 0 ||
+    subjects.includes(bookSubject) ||
+    subjects.includes('general');
+
+  const terms = Array.from(termMap.values())
+    .map((term) => ({
+      ...term,
+      translations: term.translations.filter((t) => subjectAllowed(t.subjects)),
+    }))
+    .filter((term) => term.translations.length > 0);
   const result = {};
 
   for (const seg of segments) {

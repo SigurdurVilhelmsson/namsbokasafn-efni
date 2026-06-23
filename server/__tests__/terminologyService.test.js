@@ -861,6 +861,111 @@ describe('findTermsInSegments()', () => {
 });
 
 // =====================
+// findTermsInSegments() — subject scoping (item N)
+// =====================
+describe('findTermsInSegments() — subject scoping', () => {
+  const seg = (enContent, isContent) => [{ segmentId: 's', enContent, isContent }];
+
+  it('hides a headword whose only translation is another subject', () => {
+    // "mole" with only a biology translation must not surface in a chemistry book
+    const hw = insertHeadword({ english: 'mole' });
+    const tr = insertTranslation(hw, { icelandic: 'moldvarpa', status: 'approved' });
+    addSubject(tr, 'biology');
+
+    const result = terminologyService.findTermsInSegments(
+      seg('one mole of carbon', 'eitt mól af kolefni'),
+      'efnafraedi-2e'
+    );
+    expect(result.s.matches).toHaveLength(0);
+    expect(result.s.issues).toHaveLength(0);
+  });
+
+  it('keeps an in-subject translation', () => {
+    const hw = insertHeadword({ english: 'acid' });
+    const tr = insertTranslation(hw, { icelandic: 'sýra', status: 'approved' });
+    addSubject(tr, 'chemistry');
+
+    const result = terminologyService.findTermsInSegments(
+      seg('an acid reacts', 'sýra hvarfast'),
+      'efnafraedi-2e'
+    );
+    expect(result.s.matches).toHaveLength(1);
+    expect(result.s.matches[0].icelandic).toBe('sýra');
+  });
+
+  it('keeps a general-tagged translation', () => {
+    const hw = insertHeadword({ english: 'energy' });
+    const tr = insertTranslation(hw, { icelandic: 'orka', status: 'approved' });
+    addSubject(tr, 'general');
+
+    const result = terminologyService.findTermsInSegments(
+      seg('energy flows', 'orka flæðir'),
+      'efnafraedi-2e'
+    );
+    expect(result.s.matches).toHaveLength(1);
+    expect(result.s.matches[0].icelandic).toBe('orka');
+  });
+
+  it('keeps an untagged translation (no subjects)', () => {
+    const hw = insertHeadword({ english: 'thing' });
+    insertTranslation(hw, { icelandic: 'hlutur', status: 'approved' }); // no addSubject
+
+    const result = terminologyService.findTermsInSegments(
+      seg('a thing here', 'hlutur hér'),
+      'efnafraedi-2e'
+    );
+    expect(result.s.matches).toHaveLength(1);
+    expect(result.s.matches[0].icelandic).toBe('hlutur');
+  });
+
+  it('homograph: keeps only the in-subject sense in primary + dropdown', () => {
+    const hw = insertHeadword({ english: 'mole' });
+    const chem = insertTranslation(hw, { icelandic: 'mól', status: 'approved' });
+    const bio = insertTranslation(hw, { icelandic: 'moldvarpa', status: 'approved' });
+    addSubject(chem, 'chemistry');
+    addSubject(bio, 'biology');
+
+    const result = terminologyService.findTermsInSegments(
+      seg('one mole of', 'eitt mól af'),
+      'efnafraedi-2e'
+    );
+    expect(result.s.matches).toHaveLength(1);
+    expect(result.s.matches[0].translations).toHaveLength(1);
+    expect(result.s.matches[0].icelandic).toBe('mól');
+  });
+
+  it('missing-term issue uses only the in-subject approved translation', () => {
+    // chem 'mól' + bio 'moldvarpa'; IS contains the biology homograph but not 'mól'.
+    // Before scoping: anyFound is true (moldvarpa present) → no issue (wrong).
+    // After scoping: only 'mól' counts → it's absent → one issue expecting 'mól'.
+    const hw = insertHeadword({ english: 'mole' });
+    const chem = insertTranslation(hw, { icelandic: 'mól', status: 'approved' });
+    const bio = insertTranslation(hw, { icelandic: 'moldvarpa', status: 'approved' });
+    addSubject(chem, 'chemistry');
+    addSubject(bio, 'biology');
+
+    const result = terminologyService.findTermsInSegments(
+      seg('one mole of', 'ein moldvarpa grefur'),
+      'efnafraedi-2e'
+    );
+    expect(result.s.issues).toHaveLength(1);
+    expect(result.s.issues[0].expected).toBe('mól');
+  });
+
+  it('no book subject (unmapped) → no filtering, all senses kept', () => {
+    const hw = insertHeadword({ english: 'mole' });
+    const chem = insertTranslation(hw, { icelandic: 'mól', status: 'approved' });
+    const bio = insertTranslation(hw, { icelandic: 'moldvarpa', status: 'approved' });
+    addSubject(chem, 'chemistry');
+    addSubject(bio, 'biology');
+
+    const result = terminologyService.findTermsInSegments(seg('one mole of', 'eitt mól af'));
+    expect(result.s.matches).toHaveLength(1);
+    expect(result.s.matches[0].translations).toHaveLength(2);
+  });
+});
+
+// =====================
 // importGlossaryTerms()
 // =====================
 describe('importGlossaryTerms()', () => {
