@@ -1410,9 +1410,6 @@ function getBookSubjectBySlug(db, bookSlug) {
 }
 
 /**
- * Build a regex that matches the base Icelandic form or any inflected form.
- */
-/**
  * Build a case-insensitive, Unicode-aware whole-word regex matching any of the
  * given forms. Uses \p{L}/\p{N} lookarounds instead of \b so Icelandic special
  * letters (þ æ ö ó á í ú ð) form proper word boundaries. Longest form first to
@@ -1425,6 +1422,9 @@ function wholeWordRegex(forms) {
   return new RegExp(`(?<![\\p{L}\\p{N}_])(?:${alts.join('|')})(?![\\p{L}\\p{N}_])`, 'giu');
 }
 
+/**
+ * Build a regex that matches the base Icelandic form or any inflected form.
+ */
 function buildInflectionRegex(icelandic, inflections) {
   return wholeWordRegex([icelandic, ...inflections]);
 }
