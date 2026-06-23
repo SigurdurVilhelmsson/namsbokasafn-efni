@@ -1037,7 +1037,7 @@ function findTermsInSegments(segments, bookSlug = null) {
       termMap.set(row.headword_id, {
         headwordId: row.headword_id,
         english: row.english,
-        regex: new RegExp(`\\b${escapeRegex(row.english)}\\b`, 'gi'),
+        regex: wholeWordRegex([row.english]),
         translations: [],
       });
     }
@@ -1410,14 +1410,23 @@ function getBookSubjectBySlug(db, bookSlug) {
 }
 
 /**
+ * Build a case-insensitive, Unicode-aware whole-word regex matching any of the
+ * given forms. Uses \p{L}/\p{N} lookarounds instead of \b so Icelandic special
+ * letters (þ æ ö ó á í ú ð) form proper word boundaries. Longest form first to
+ * avoid partial matches. Returns a never-matching regex for an empty list.
+ */
+function wholeWordRegex(forms) {
+  const alts = forms.filter(Boolean).map(escapeRegex);
+  if (alts.length === 0) return /(?!)/;
+  alts.sort((a, b) => b.length - a.length);
+  return new RegExp(`(?<![\\p{L}\\p{N}_])(?:${alts.join('|')})(?![\\p{L}\\p{N}_])`, 'giu');
+}
+
+/**
  * Build a regex that matches the base Icelandic form or any inflected form.
  */
 function buildInflectionRegex(icelandic, inflections) {
-  const forms = [icelandic, ...inflections].filter(Boolean).map(escapeRegex);
-  if (forms.length === 0) return /(?!)/; // never matches
-  // Sort longest first to avoid partial matches
-  forms.sort((a, b) => b.length - a.length);
-  return new RegExp(`\\b(?:${forms.join('|')})\\b`, 'gi');
+  return wholeWordRegex([icelandic, ...inflections]);
 }
 
 function escapeRegex(string) {
