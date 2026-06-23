@@ -610,6 +610,28 @@ test.describe('Terminology read-only endpoints', () => {
   });
 });
 
+// ─── Block 7b: Term-mining route ordering (item L regression) ───
+
+test.describe('Term mining endpoints', () => {
+  test.beforeEach(async ({ page }) => {
+    await loginAs(page, 'head-editor');
+  });
+
+  // Regression: GET /:id (parametric) was registered before
+  // GET /mined-candidates, so Express matched "mined-candidates" as a
+  // headword id → 404, taking the whole Unit-3.5 mining queue offline.
+  test('GET /mined-candidates is not shadowed by /:id', async ({ page }) => {
+    const res = await page.request.get(`${API}/mined-candidates?book=efnafraedi-2e`);
+    expect(res.status()).toBe(200);
+  });
+
+  test('GET /mined-candidates returns a candidates array', async ({ page }) => {
+    const res = await page.request.get(`${API}/mined-candidates?book=efnafraedi-2e`);
+    const body = await res.json();
+    expect(Array.isArray(body.candidates)).toBe(true);
+  });
+});
+
 // ─── Block 8: Consistency check ─────────────────────────────────
 
 test.describe('Terminology consistency check', () => {
