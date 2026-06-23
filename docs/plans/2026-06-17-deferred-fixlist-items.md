@@ -239,6 +239,32 @@ scroll container), or `scroll-margin-top` on anchor targets (`[id]` / content
 headings + `.footnote-item` + `.preserved-anchor`). **efni needs no change** —
 anchors are correct; this is reader-layout CSS. Low effort, site-wide benefit.
 
+## I. ⚠️ (regression) Duplicate learning-objectives block — vefur
+
+Live QA (2026-06-23): section pages show the objectives **twice** — efni's static
+`<div class="learning-objectives">` block AND vefur's interactive block. **efni is
+correct**: PR #140 emits objectives both as the visible block (graceful baseline)
+*and* in page-data `objectives:[]` (to feed tracking) — by design, same source.
+The intent was vefur #151 would *replace/upgrade* the static block; instead it
+renders its block **without hiding** the static one. **Fix in vefur:** hide or
+remove `.learning-objectives` from the injected content when rendering the
+interactive objectives UI. No efni change (dual emission is the contract; it must
+keep degrading gracefully when tracking is off). Visible on most section pages →
+higher priority than G/H.
+
+## J. ⚠️ (regression) `/{book}/markmid` redirects to front page — vefur
+
+Live QA (2026-06-23): `/efnafraedi-2e/markmid` redirects to the front page and no
+UI links to it, despite vefur #151 shipping the markmið page. Data is present
+(page-data carries objectives; toc.json regenerated — Group-1 verified), so this
+is a **vefur route/guard or empty-state fallback** issue, not missing data.
+Investigate in a vefur session: the `[bookSlug]/markmid` route + whatever
+condition makes it bounce, and surface a nav link once it works.
+
+> Items G–J were all surfaced by the 2026-06-23 live QA and are **vefur-side**.
+> Per the cross-repo protocol, record/fix them in a namsbokasafn-vefur session
+> (read its CLAUDE.md + memory first); this list is the interim tracker.
+
 ---
 
 ## Quick reference — what PR #133 changed
