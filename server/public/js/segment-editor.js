@@ -524,8 +524,8 @@
     // muted tag shown only to head-editors/admins (de-jargon, audit 4.3).
     const isHeadEditorView = ['head-editor', 'admin'].includes(getEffectiveRole());
     const titleEl = document.getElementById('module-title');
-    titleEl.textContent = moduleData.title || moduleData.moduleId;
-    if (isHeadEditorView && moduleData.title) {
+    titleEl.textContent = moduleData.titleIs || moduleData.title || moduleData.moduleId;
+    if (isHeadEditorView && (moduleData.titleIs || moduleData.title)) {
       const idTag = document.createElement('span');
       idTag.textContent = moduleData.moduleId;
       idTag.style.cssText =
@@ -555,6 +555,7 @@
     const topbarTitle = document.getElementById('topbar-title');
     if (topbarTitle) {
       topbarTitle.textContent =
+        moduleData.titleIs ||
         moduleData.title ||
         (moduleData.chapter === -1 ? 'Viðaukar' : 'Kafli ' + moduleData.chapter);
     }

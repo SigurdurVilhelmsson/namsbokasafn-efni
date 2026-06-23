@@ -264,12 +264,14 @@ function loadModuleForEditing(book, chapter, moduleId) {
     hasTranslation: !!isLookup[en.segmentId],
   }));
 
+  const titleSeg = paired.find((s) => s.segmentType === 'title');
   return {
     book,
     chapter,
     moduleId,
     isSource,
     title: structure ? structure.title?.text : moduleId,
+    titleIs: titleSeg && titleSeg.is ? titleSeg.is : null,
     segments: paired,
     equations,
     segmentCount: paired.length,
