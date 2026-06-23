@@ -286,18 +286,33 @@ but a **residual** call remains in `loadBookImages` (library view, ~line 2844).
 Fix: remove the dead call / image-overview UI, or restore the endpoint if the
 feature is wanted. efni.
 
-## B2. (editor UX, efni) "Editor UX confusing" — needs a focused review
+## B. (editor UX, efni) §4 walk — RESOLVED into concrete items (2026-06-23)
 
-Live QA (2026-06-23): walking the editor as `editor` (via the admin role-preview),
-the lead found the editor UX **confusing** (checklist §4 did not pass). No
-specifics captured yet. Follow-up: sit with a real editor account (not the
-client-side preview) and pin down which of §4a (task header reads "Chapter N ·
-Section" vs raw `mNNNNN`), §4b (module/track/stage jargon leaking), §4c (8-stage
-pipeline view / track switches visible to editors), §4e (unclear or English
-wording), or overall flow is the problem. Then file concrete items. efni
-editorial-server frontend. (Note: the role-preview dropdown is client-side only —
-a real `editor` may see less than admin-previewing-editor, so verify with an
-actual editor login.)
+The editor view itself is clean (§4b/c/e passed; role-gating de-jargon works).
+The "confusing" impression was admin role-juggling, not an editor defect. Concrete
+items (full detail in `2026-06-23-live-qa-followup-efni.md` § B):
+- **B-1** — show **Icelandic** chapter/section titles (prefer `titleIs`), not English.
+- **B-2** — Today empty-state ("relax, no tasks") contradicts the 14-item head-editor
+  review queue shown below; make it queue-aware.
+- **B-3** — "tilbúið að beita" label is opaque; relabel/tooltip.
+- **B-4 ⚠️** — EN pane shows raw markers, MT pane shows rendered forms (mismatch);
+  MT markers are editable → save-error with no undo. Make markers non-editable/
+  move-only and/or render consistently + add undo.
+
+## N. (terminology, efni) Suggestions not subject-scoped
+
+Term matches/suggestions pull from all subjects (e.g. `mole → moldvarpa`);
+chemistry should use **only** the Árnastofnun chemistry set. Scope matching +
+mined suggestions to the book's subject (`resolveBookSubject` on the
+suggestion/consistency paths). Ties into the multi-subject schema work. Detail in
+`2026-06-23-live-qa-followup-efni.md` § N.
+
+## O. (enhancement, efni) Auto-propagate recurring identical segments
+
+Edit-once → apply to all occurrences book-wide for repeated segments (objectives
+intro, "Link to Learning", …) + a "changes everywhere" warning. Builds on Unit-2
+`concordanceService.findRepetitions`. Design-heavy → editorial-throughput roadmap,
+not a quick QA fix. Detail in `2026-06-23-live-qa-followup-efni.md` § O.
 
 ## K. (UX gap) No logout in the editorial-server UI — **efni**
 
