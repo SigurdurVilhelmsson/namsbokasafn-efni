@@ -15,6 +15,11 @@
 (function () {
   'use strict';
 
+  // Shared "log out / log in" glyph (used by the sidebar Innskrá link and the
+  // topbar logout button).
+  const LOGOUT_ICON_SVG =
+    '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>';
+
   /* ====================================================================
      1. SIDEBAR HTML TEMPLATE
      ==================================================================== */
@@ -225,6 +230,7 @@
     highlightActiveNav();
     bindThemeToggle();
     setupRolePreview();
+    bindLogout();
   }
 
   /* ====================================================================
@@ -484,23 +490,61 @@
         sidebarUserEl.innerHTML = avatarHTML + nameHTML;
       }
 
-      // Topbar: avatar + name
+      // Topbar: avatar + name + logout button
       if (topbarUserEl) {
-        topbarUserEl.innerHTML = avatarHTML + nameHTML;
+        topbarUserEl.innerHTML =
+          avatarHTML +
+          nameHTML +
+          '<button type="button" class="topbar-logout" id="logout-btn" title="Útskrá" aria-label="Útskrá">' +
+          LOGOUT_ICON_SVG +
+          '</button>';
       }
     } else {
       // Not logged in: show login link in sidebar, empty topbar
       if (sidebarUserEl) {
         sidebarUserEl.innerHTML =
-          '<a href="/login" class="nav-link">' +
-          '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>' +
-          '<span>Innskrá</span>' +
-          '</a>';
+          '<a href="/login" class="nav-link">' + LOGOUT_ICON_SVG + '<span>Innskrá</span>' + '</a>';
       }
       if (topbarUserEl) {
         topbarUserEl.innerHTML = '<a href="/login" class="btn btn-sm btn-secondary">Innskrá</a>';
       }
     }
+  }
+
+  /* ====================================================================
+     9b. LOGOUT HANDLING
+     ==================================================================== */
+
+  /**
+   * Log the user out: POST the logout endpoint, clear cached auth, go to /login.
+   * Redirects regardless of network outcome — the user must end up logged out.
+   */
+  async function handleLogout() {
+    try {
+      await fetch('/api/auth/logout', { method: 'POST', credentials: 'same-origin' });
+    } catch {
+      /* ignore network error — log out client-side regardless */
+    }
+    try {
+      sessionStorage.removeItem('authCache');
+    } catch {
+      /* sessionStorage may be unavailable */
+    }
+    window.location.href = '/login';
+  }
+
+  /**
+   * Delegated click handler for the topbar logout button. Bound once; survives
+   * re-renders of #user-info (updateUserInfo replaces its innerHTML).
+   */
+  function bindLogout() {
+    document.addEventListener('click', function (e) {
+      const btn = e.target.closest && e.target.closest('#logout-btn');
+      if (btn) {
+        e.preventDefault();
+        handleLogout();
+      }
+    });
   }
 
   /* ====================================================================
