@@ -140,6 +140,33 @@ test.describe('Authenticated pages (admin)', () => {
     await expect(page.locator('.app-layout')).toBeVisible();
     expect(errors).toEqual([]);
   });
+
+  test('buildEmptyTaskMessage is queue-aware (B-2)', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('domcontentloaded');
+
+    const fn = (args) => window.buildEmptyTaskMessage(args.r, args.p, args.k);
+
+    const reviewerPending = await page.evaluate(fn, { r: true, p: 14, k: 0 });
+    expect(reviewerPending.heading).toBe('Engin ritstjórnarverkefni í dag');
+    expect(reviewerPending.body).toContain('14');
+    expect(reviewerPending.body).toContain('úrskurðar');
+    expect(reviewerPending.actionHref).toBe('/editor?view=reviews');
+
+    const reviewerReady = await page.evaluate(fn, { r: true, p: 0, k: 3 });
+    expect(reviewerReady.body).toContain('birtingar');
+    expect(reviewerReady.actionHref).toBe('/editor?view=reviews');
+
+    const reviewerIdle = await page.evaluate(fn, { r: true, p: 0, k: 0 });
+    expect(reviewerIdle.heading).toBe('Ekkert verkefni í dag!');
+    expect(reviewerIdle.actionHref).toBeUndefined();
+
+    const editor = await page.evaluate(fn, { r: false, p: 0, k: 0 });
+    expect(editor.heading).toBe('Ekkert verkefni í dag!');
+
+    const singular = await page.evaluate(fn, { r: true, p: 1, k: 0 });
+    expect(singular.body).toContain('1 breyting bíður');
+  });
 });
 
 // ─── Layout shell ─────────────────────────────────────────────
@@ -207,5 +234,20 @@ test.describe('Legacy redirects', () => {
   test('/books redirects to /library', async ({ page }) => {
     await page.goto('/books');
     expect(page.url()).toContain('/library');
+  });
+});
+
+// ─── B-3 ready-to-publish label ───────────────────────────────
+
+test.describe('B-3 ready-to-publish label', () => {
+  test('quick-stat label is clarified with a tooltip', async ({ page }) => {
+    await loginAs(page, 'head-editor');
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+    const statItem = page.locator('#quick-stats .quick-stat-item:nth-child(2)');
+    await expect(statItem.locator('.quick-stat-label')).toHaveText('Samþykkt, bíður birtingar', {
+      timeout: 5000,
+    });
+    await expect(statItem).toHaveAttribute('title', /beita og birta/);
   });
 });

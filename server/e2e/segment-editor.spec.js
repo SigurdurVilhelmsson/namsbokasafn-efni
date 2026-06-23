@@ -260,3 +260,35 @@ test.describe('B-4 save-block revert hint', () => {
     expect(dialogMessage).toContain('Endurstilla');
   });
 });
+
+test.describe('B-1 Icelandic section title in editor header', () => {
+  test.beforeEach(async ({ page }) => {
+    await loginAs(page, 'admin');
+  });
+
+  test('module GET returns the translated section title', async ({ page }) => {
+    // m68664 (efnafraedi-2e ch01) has a translated title segment: "Efnafræði í samhengi"
+    const res = await page.request.get('/api/segment-editor/efnafraedi-2e/1/m68664');
+    expect(res.ok()).toBe(true);
+    const body = await res.json();
+    expect(body.titleIs).toBe('Efnafræði í samhengi');
+  });
+
+  test('editor header shows the Icelandic title, not the module id', async ({ page }) => {
+    await page.goto('/editor');
+    await page.waitForLoadState('networkidle');
+    await page.locator('#book-select').selectOption('efnafraedi-2e');
+    const chapterSelect = page.locator('#chapter-select');
+    await expect(chapterSelect).toBeVisible({ timeout: 5000 });
+    await expect
+      .poll(() => chapterSelect.locator('option').count(), { timeout: 10000 })
+      .toBeGreaterThan(1);
+    await chapterSelect.selectOption('1');
+    // Open the m68664 module card specifically
+    await page.locator('.module-card[onclick*="m68664"]').click();
+    await expect(page.locator('#module-title')).toContainText('Efnafræði í samhengi', {
+      timeout: 10000,
+    });
+    await expect(page.locator('#module-title')).not.toContainText('Chemistry in Context');
+  });
+});
