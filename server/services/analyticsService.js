@@ -16,9 +16,10 @@ const path = require('path');
 const fs = require('fs');
 const crypto = require('crypto');
 const log = require('../lib/logger');
+const resolveDbPath = require('../lib/dbPath');
 
 // Database path
-const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
+const DB_PATH = resolveDbPath();
 
 // Event types
 const EVENT_TYPES = {
@@ -28,7 +29,7 @@ const EVENT_TYPES = {
   FEEDBACK_SUBMIT: 'feedback_submit',
   ERROR: 'error',
   SEARCH: 'search',
-  DOWNLOAD: 'download'
+  DOWNLOAD: 'download',
 };
 
 // Initialize database tables
@@ -116,7 +117,7 @@ const statements = {
       AND created_at >= datetime('now', ?)
     GROUP BY date(created_at)
     ORDER BY date
-  `)
+  `),
 };
 
 /**
@@ -138,7 +139,7 @@ function logEvent(options) {
     userAgent = null,
     referrer = null,
     sessionId = null,
-    metadata = {}
+    metadata = {},
   } = options;
 
   const result = statements.insert.run(
@@ -157,7 +158,7 @@ function logEvent(options) {
     eventType,
     book,
     chapter,
-    section
+    section,
   };
 }
 
@@ -172,7 +173,7 @@ function logPageView(req, book = null, chapter = null, section = null) {
     section,
     userAgent: req.get('user-agent'),
     referrer: req.get('referer'),
-    sessionId: req.cookies?.sessionId || null
+    sessionId: req.cookies?.sessionId || null,
   });
 }
 
@@ -186,7 +187,7 @@ function logChapterView(req, book, chapter) {
     chapter,
     userAgent: req.get('user-agent'),
     referrer: req.get('referer'),
-    sessionId: req.cookies?.sessionId || null
+    sessionId: req.cookies?.sessionId || null,
   });
 }
 
@@ -201,7 +202,7 @@ function logSectionView(req, book, chapter, section) {
     section,
     userAgent: req.get('user-agent'),
     referrer: req.get('referer'),
-    sessionId: req.cookies?.sessionId || null
+    sessionId: req.cookies?.sessionId || null,
   });
 }
 
@@ -212,7 +213,7 @@ function logError(req, errorType, errorMessage) {
   return logEvent({
     eventType: EVENT_TYPES.ERROR,
     userAgent: req.get('user-agent'),
-    metadata: { errorType, errorMessage }
+    metadata: { errorType, errorMessage },
   });
 }
 
@@ -245,22 +246,22 @@ function getStats(period = '-7 days') {
       if (row.book) acc[row.book] = row.count;
       return acc;
     }, {}),
-    topChapters: byChapter.slice(0, 10).map(row => ({
+    topChapters: byChapter.slice(0, 10).map((row) => ({
       book: row.book,
       chapter: row.chapter,
-      views: row.count
+      views: row.count,
     })),
     uniqueSessions: uniqueSessions.count,
-    dailyViews: dailyViews.map(row => ({
+    dailyViews: dailyViews.map((row) => ({
       date: row.date,
-      views: row.count
+      views: row.count,
     })),
     totalPageViews: byType.reduce((sum, row) => {
       if (['page_view', 'chapter_view', 'section_view'].includes(row.event_type)) {
         return sum + row.count;
       }
       return sum;
-    }, 0)
+    }, 0),
   };
 }
 
@@ -278,7 +279,7 @@ function parseRow(row) {
     referrer: row.referrer,
     sessionId: row.session_id,
     metadata: row.metadata ? JSON.parse(row.metadata) : {},
-    createdAt: row.created_at
+    createdAt: row.created_at,
   };
 }
 
@@ -335,5 +336,5 @@ module.exports = {
   logError,
   getRecentEvents,
   getStats,
-  trackingMiddleware
+  trackingMiddleware,
 };
