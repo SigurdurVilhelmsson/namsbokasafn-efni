@@ -183,6 +183,13 @@ const UI = {
     reverted: 'Afturkallað',
     revertButton: 'Endurstilla',
     revertTooltip: 'Endurstilla bútinn í síðast vistaða útgáfu (eða vélþýðingu)',
+    propagateButton: 'Beita víðar',
+    propagateTooltip: 'Beita þessari þýðingu á aðra eins búta í bókinni',
+    propagateNone: 'Þessi texti finnst hvergi annars staðar.',
+    propagateConfirm: (n) =>
+      `Þessi texti birtist á ${n} öðrum stað/stöðum. Beita þýðingunni þar líka?`,
+    propagateResult: (created, skipped) =>
+      `Fjölgað á ${created} stað/staði` + (skipped ? `, sleppt ${skipped} (þegar breytt)` : ''),
   },
 
   // ── Localization editor specific ────────────────────────────

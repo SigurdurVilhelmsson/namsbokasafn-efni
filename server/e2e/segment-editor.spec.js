@@ -313,4 +313,24 @@ test.describe('O segment propagation', () => {
     // the EN recurs, so at least one occurrence (eligible or skipped) exists
     expect(body.eligible.length + body.skipped.length).toBeGreaterThan(0);
   });
+
+  test('propagate endpoint creates pending edits on other occurrences', async ({ page }) => {
+    const preview = await page.request.get(
+      '/api/segment-editor/efnafraedi-2e/1/m68664/propagation-preview?segmentId=' +
+        encodeURIComponent('m68664:abstract:auto-2')
+    );
+    const { eligible } = await preview.json();
+    test.skip(eligible.length === 0, 'no eligible occurrences in this data state');
+
+    const res = await page.request.post('/api/segment-editor/efnafraedi-2e/1/m68664/propagate', {
+      data: {
+        segmentId: 'm68664:abstract:auto-2',
+        editedContent: 'Þegar þú hefur lokið þessum hluta [e2e-propagation-test]',
+        category: 'readability',
+      },
+    });
+    expect(res.ok()).toBe(true);
+    const body = await res.json();
+    expect(body.created.length).toBeGreaterThan(0);
+  });
 });

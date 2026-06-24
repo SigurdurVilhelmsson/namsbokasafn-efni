@@ -879,6 +879,7 @@
                 </select>
                 <input type="text" id="note-${cssId(seg.segmentId)}" placeholder="Athugasemd (valkvætt)" value="${escapeHtml(latestEdit?.editor_note || '')}">
                 <button class="btn btn-sm btn-primary" onclick="saveEdit('${seg.segmentId}')">Vista</button>
+                <button class="btn btn-sm btn-secondary btn-propagate" onclick="propagateSegment('${seg.segmentId}')" title="${UI.segmentEditor.propagateTooltip}">${UI.segmentEditor.propagateButton}</button>
                 <button class="btn btn-sm btn-secondary btn-revert" onclick="revertEdit('${seg.segmentId}')" title="${UI.segmentEditor.revertTooltip}">&#8617; ${UI.segmentEditor.revertButton}</button>
                 <button class="btn btn-sm btn-secondary" onclick="closeEditPanel('${seg.segmentId}')">Hætta við</button>
               </div>
@@ -1234,6 +1235,48 @@
       if (e && typeof e.id === 'number' && e.id > max) max = e.id;
     }
     return max;
+  }
+
+  /**
+   * Save the segment (if needed), then offer to propagate the translation to
+   * its other book-wide occurrences. Manual — the O(book) scan runs only here,
+   * never on an ordinary save. (Item O)
+   */
+  async function propagateSegment(segmentId) {
+    if (!moduleData?.segments) return;
+    // Ensure the current edit is persisted first so the propagated text is the
+    // saved text. saveEdit reloads the module on success.
+    if (dirtyEdits.has(segmentId)) {
+      await saveEdit(segmentId);
+    }
+    const editedContent = document.getElementById('textarea-' + cssId(segmentId))?.value;
+    const category = document.getElementById('cat-' + cssId(segmentId))?.value;
+    if (!editedContent) return;
+    try {
+      const pv = await fetchJson(
+        `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/propagation-preview?segmentId=${encodeURIComponent(segmentId)}`
+      );
+      if (!pv || !pv.eligible || pv.eligible.length === 0) {
+        saveRetry.showToast(UI.segmentEditor.propagateNone, 'info');
+        return;
+      }
+      if (!confirm(UI.segmentEditor.propagateConfirm(pv.eligible.length))) return;
+      const pr = await fetchJson(
+        `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/propagate`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({ segmentId, editedContent, category: category || undefined }),
+        }
+      );
+      saveRetry.showToast(
+        UI.segmentEditor.propagateResult(pr.created.length, pr.skipped.length),
+        'success'
+      );
+    } catch (err) {
+      saveRetry.showToast('Villa við fjölgun: ' + err.message, 'error');
+    }
   }
 
   async function reviewEdit(editId, action) {
@@ -2565,4 +2608,5 @@
   window.showTermPopup = showTermPopup;
   window.insertTermFromLookup = insertTermFromLookup;
   window.insertRepetition = insertRepetition;
+  window.propagateSegment = propagateSegment;
 })(); // end IIFE
