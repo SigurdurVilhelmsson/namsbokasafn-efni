@@ -102,3 +102,8 @@ __pycache__/
 
 # Ad-hoc pre-fix content backups (real history lives in git)
 *.pre-equation-fix-*
+
+# E2E fixture book: inputs are committed, test-written outputs are not
+books/__e2e-fixture__/03-faithful-translation/
+books/__e2e-fixture__/04-localized-content/
+books/__e2e-fixture__/tm/
