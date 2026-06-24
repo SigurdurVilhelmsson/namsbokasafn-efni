@@ -44,62 +44,58 @@ server, not `main`).
 
 ---
 
-## Recommended sequence
+## ⚠️ CORRECTION 2026-06-24: the "building" phase is DONE — re-aimed
 
-| Pri | Track | Why first | Effort |
-|-----|-------|-----------|--------|
-| **0** | **Deploy the merged batch** (server + content) | nothing helps anyone until shipped; unblocks QA | lead-driven, hours |
-| **1** | **Manual QA on the running server** (remediation §0–5 + this session's features) | validates the deployed batch; catches what unit/E2E can't | lead, ~½ day |
-| **2** | **Complete shipped-but-invisible backends** (UI follow-ups) | turns landed code into editor-usable features — high leverage, low risk | per item, small–med |
-| **3** | **Greynir sidecar deploy** | the one shipped feature inert without infra | infra + wiring |
-| **4** | **Review fast-follows** (batched small fixes) | cheap correctness/polish; clears debt | batch, small |
-| **5** | **E2E test-isolation** (temp-book fixture) | recurring hygiene risk; keeps biting | infra, med |
+A code audit this session found that **all of the throughput roadmap's
+editor-facing features are already built AND wired** on `main` — the
+"shipped-but-invisible backend" framing below (taken from the throughput
+roadmap's stale 2026-06-13 "remaining UI" notes) is wrong:
 
-Tracks 2–5 are independent and cherry-pickable; only 0→1 is strictly ordered.
+| Feature | State on `main` |
+|---|---|
+| Concordance search panel | ✅ built + wired (search/highlight/provenance) |
+| Term-mining candidate queue UI | ✅ built + wired (`loadMinedCandidates`/promote/dismiss) |
+| Repetition-report view | ✅ built + wired (editor button → `runRepetitionReport`) |
+| Live-QA review-summary panel | ✅ built + wired (terms/spell/repetition) |
+| In-editor spellcheck trigger | ✅ button + `runSpellcheck` wired (needs only the sidecar deployed) |
+
+**So the binding constraint is no longer code — it's DATA and ADOPTION.** Only
+**3 faithful modules are applied project-wide**, so the data-driven aids
+(concordance / TM / repetition) have almost nothing to search. More features
+cannot move throughput; only (a) editors producing reviewed Pass-1 content and
+(b) the Greynir sidecar getting deployed will. The corrected priorities:
+
+| Pri | Track | Owner | Note |
+|-----|-------|-------|------|
+| **0** | ✅ Editorial-server deploy | done | #147–#153 live |
+| **1** | **Manual QA on the running server** + **use the platform** | lead | the real lever now — exercise the built features; produce faithful content to populate the indexes |
+| **2** | **Greynir sidecar deploy** (Python on box + `GREYNIR_URL`) | lead/infra | the one feature still inert (UI exists; engine isn't deployed) |
+| **3** | **E2E test-isolation** (temp-book fixture) | AI-doable | recurring hygiene risk; removes the per-test cleanup hacks |
+| **4** | **Review fast-follows** (small batch) | AI-doable | correctness/polish debt from this session's reviews |
+
+There is **no net-new feature building left** in the throughput roadmap.
+Tracks 3–4 are the only AI-doable work, and both are debt/quality, not features.
 
 ---
 
-## Track 0 — Deploy (lead-driven)
-- Pull `main` on the Linode box; restart the editorial server (new server code:
-  routes, services, layout, views).
-- `node scripts/sync-content.js --source ../namsbokasafn-efni` (from vefur) for
-  any content; deploy vefur if reader-side changes are pending.
-- Live-verify the runbook's checklist + spot-check this session's features:
-  logout button, "Beita víðar" propagation, Icelandic editor title, subject-scoped
-  terms, no `/api/images` 404 on `/library`.
-- **Caveat:** the propagation E2E left ~111 test pending-edits (`[e2e-…]`,
-  `Markmiðstexti …`) in the server's `sessions.db` if E2E ran against it — these
-  are NOT in the production DB (tests run in the sandbox), but if prod ever ran
-  the suite, purge those marked rows first.
-
-## Track 1 — Manual QA (lead)
+## Track 1 — QA + adoption (lead) — THE lever now
 - Remediation manual QA §0–5 (authz boundaries, render rollback, restore
   round-trip, enforcement 403/503, stored-XSS, page-auth redirects) — carried
   since June 10; see [`2026-06-10-qa-checklist.md`](2026-06-10-qa-checklist.md).
-- This session's features on a real server (the items above).
-- If QA finds save/apply-path bugs, fix before building further on those paths.
+- Exercise the now-live features on the real server: concordance search,
+  term-mining queue (promote/dismiss), repetition report, review summary, "Beita
+  víðar" propagation, logout, subject-scoped terms.
+- **Produce faithful content.** The data-driven aids stay empty until editors
+  review + apply Pass-1 content (3 modules today). This is what actually raises
+  throughput — the tooling is ready and waiting for input.
 
-## Track 2 — Complete shipped backends (the high-leverage editor work)
-These backends landed (PRs #121–#123) but have no/partial UI, so editors can't
-use them. Each is a focused frontend unit:
-- **Concordance search panel** (Unit 2.3) — the `GET …/concordance` endpoint
-  exists; add the editor search UI + match highlighting.
-- **Term-mining candidate queue UI** (Unit 3.5) — endpoints exist (and the
-  route-shadowing 404 was fixed this session, #147); build the head-editor
-  review queue that consumes `/mined-candidates`.
-- **Repetition-report view** (Unit 2.5) — `GET …/repetition-report` exists;
-  add the head-editor surfacing.
-- **Live-QA report surfacing** (Units 3.3 / 4.5) — terminology + mechanical-QA
-  findings as a per-module review-panel summary (currently only save-time toasts).
-- **In-editor spellcheck trigger** (Unit 4.2) — once Greynir is deployed (Track 3),
-  add the on-demand button calling `GET …/:moduleId/spellcheck`.
-
-## Track 3 — Greynir spellcheck sidecar (infra)
-- Deploy `server/greynir-sidecar/` (Python) on the box; set `GREYNIR_URL`.
+## Track 2 — Greynir spellcheck sidecar (lead/infra)
+- Deploy `server/greynir-sidecar/` (Python) on the box; set `GREYNIR_URL`. The
+  in-editor `btn-spellcheck` → `runSpellcheck` → `GET …/:moduleId/spellcheck`
+  path is already built and returns nothing until the sidecar runs.
 - Glossary-seeded dictionary so chemistry terms aren't flagged.
-- Then wire Track 2's in-editor trigger.
 
-## Track 4 — Review fast-follows (batch one small PR)
+## Track 4 — Review fast-follows (AI-doable; batch one small PR)
 From this session's reviews (all non-blocking, recorded in memory):
 - **O:** re-propagation self-conflict (own prior pending rows reported as
   "þegar breytt"); move inline `'Villa við fjölgun:'` into `ui-strings.js`;
@@ -111,12 +107,14 @@ From this session's reviews (all non-blocking, recorded in memory):
   client EN highlighter too (currently ASCII-only; fine for English, but
   symmetrical).
 
-## Track 5 — E2E test isolation (infra)
+## Track 3 — E2E test isolation (AI-doable; infra)
 The E2E suite mutates **real** `efnafraedi-2e` content + `sessions.db`
 (markers, propagated edits, TMX). Recurring risk: a crashed run or `git add -A`
-could commit test markers. **Isolate the editor/propagation/terminology E2E to a
-temp book fixture** (or a disposable DB), removing the per-test cleanup hacks.
-Long-noted in memory; worth doing before the suite grows further.
+could commit test markers (this session reverted `books/` ~6×, and the
+propagation E2E needed a direct-DB cleanup hack + left ~111 stray pending
+edits). **Isolate the editor/propagation/terminology E2E to a temp book fixture**
+(or a disposable DB), removing the per-test cleanup hacks. Highest-value
+AI-doable item — it pays off every future session.
 
 ## Deliberately still out of scope (unchanged from the throughput roadmap)
 Fuzzy TM matching (MTPE framing — fresh MT beats a stale fuzzy match); Pass-2
@@ -125,11 +123,13 @@ collaboration / dashboard rewrites (wrong scale for a ~5-editor team); more
 platform hardening (diminishing returns after remediation Units 0–5).
 
 ## Open decisions for the lead
-1. **Deploy cadence:** ship the whole merged batch at once, or stage it? (One
-   sync is simplest; the batch is internally consistent and green.)
-2. **Track 2 priority order:** which shipped backend to surface first? Suggest the
-   **term-mining queue** (turns the project's strongest asset — the glossary —
-   into an active feedback loop) or **concordance panel** (most-requested editor
-   aid). Lead's call.
-3. **Greynir:** worth the Python-sidecar operational cost on the box, or defer
-   spellcheck indefinitely? (Number/EN-residue QA already ships engine-free.)
+1. **Greynir:** worth the Python-sidecar operational cost on the box, or defer
+   spellcheck indefinitely? (Number/EN-residue QA already ships engine-free; the
+   in-editor button is built and waiting.)
+2. **AI-doable next:** Track 3 (E2E isolation) and Track 4 (fast-follows) are the
+   only remaining build tasks, both debt/quality. Worth doing now, or park until
+   the QA/adoption phase surfaces concrete needs? (Recommendation: Track 3 — it
+   removes a real, recurring test-hygiene hazard.)
+3. **Bigger picture:** the platform is feature-complete for throughput; the
+   bottleneck is faithful-content production (3 modules applied). Is there a
+   non-code blocker to editors doing Pass 1 at volume worth investigating?
