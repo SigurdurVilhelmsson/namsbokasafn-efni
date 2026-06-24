@@ -1,0 +1,19 @@
+commit d91a52cbd45d63610518fe92a5a5d1746b11f680
+Author: Colby <5865292+yblock@users.noreply.github.com>
+Date:   Thu Apr 23 12:10:10 2026 -0500
+
+    updating md license
+
+diff --git a/collections/chemistry-2e.collection.xml b/collections/chemistry-2e.collection.xml
+index 3f998e7..bbe4193 100644
+--- a/collections/chemistry-2e.collection.xml
++++ b/collections/chemistry-2e.collection.xml
+@@ -3,7 +3,7 @@
+   <md:title>Chemistry 2e</md:title>
+   
+   
+-  <md:license url="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License 4.0</md:license>
++  <md:license url="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</md:license>
+   <md:language>en</md:language>
+ 
+   
