@@ -71,11 +71,20 @@ Keeps cross-module logic out of the single-module `segmentEditorService`.
   `createPropagatedEdits`, returns `{ created, skipped }`.
 
 ### Editor (`segment-editor.js`)
-After a successful `saveEdit`, call propagation-preview for that segment; if
-`eligible.length > 0`, show a confirm dialog: "Þessi texti birtist á N öðrum
-stöðum — beita þýðingunni alls staðar?" listing eligible + skipped. On confirm,
-POST propagate, then toast "Fjölgað á N staði, sleppt M (þegar breytt)".
-Opt-in; never automatic.
+A **manual "Beita víðar" (apply wider) button** in the edit panel — **not** an
+automatic post-save scan. On click it ensures the current edit is saved, calls
+propagation-preview for that segment, and if `eligible.length > 0` shows a
+confirm dialog: "Þessi texti birtist á N öðrum stöðum — beita þýðingunni alls
+staðar?" listing eligible + skipped. On confirm, POST propagate, then toast
+"Fjölgað á N staði, sleppt M (þegar breytt)".
+
+**Why a button, not auto-after-save (performance):** `findOccurrences` scans the
+whole book (~218 modules) per call. Wiring it into every save would make every
+ordinary para edit pay a full-book scan just to learn it does not recur. The
+button shows for free (no scan) and confines the O(book) scan to the deliberate,
+infrequent moment an editor chooses to propagate a segment they know is
+boilerplate. This keeps the on-demand-scan design honest and works for any
+segment type (incl. "Link to Learning"-style paras a type-heuristic would miss).
 
 ## Testing
 - **Unit** (`propagationService`): `classifyOccurrence` all three verdicts;

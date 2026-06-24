@@ -292,3 +292,138 @@ test.describe('B-1 Icelandic section title in editor header', () => {
     await expect(page.locator('#module-title')).not.toContainText('Chemistry in Context');
   });
 });
+
+test.describe('O segment propagation', () => {
+  test.beforeEach(async ({ page }) => {
+    await loginAs(page, 'admin');
+  });
+
+  test('preview returns occurrences for a recurring objectives intro', async ({ page }) => {
+    // m68664 ch01 segment auto-2 is the "By the end of this section…" abstract,
+    // which recurs across chapter intro modules.
+    const res = await page.request.get(
+      '/api/segment-editor/efnafraedi-2e/1/m68664/propagation-preview?segmentId=' +
+        encodeURIComponent('m68664:abstract:auto-2')
+    );
+    expect(res.ok()).toBe(true);
+    const body = await res.json();
+    expect(body).toHaveProperty('eligible');
+    expect(body).toHaveProperty('skipped');
+    expect(Array.isArray(body.eligible)).toBe(true);
+    // the EN recurs, so at least one occurrence (eligible or skipped) exists
+    expect(body.eligible.length + body.skipped.length).toBeGreaterThan(0);
+  });
+
+  test('propagate endpoint is wired end-to-end and returns created/skipped', async ({ page }) => {
+    // End-to-end wiring check. The deterministic "creates edits for eligible /
+    // skips conflicts" logic is covered by propagationService unit tests; this
+    // asserts the route is reachable and returns the right shape regardless of
+    // current DB state (the suite mutates real content, so eligible counts vary
+    // across runs — assert the contract, not a count, so it never silently skips).
+    const res = await page.request.post('/api/segment-editor/efnafraedi-2e/1/m68664/propagate', {
+      data: {
+        segmentId: 'm68664:abstract:auto-2',
+        editedContent: 'Þegar þú hefur lokið þessum hluta [e2e-propagation-test]',
+        category: 'readability',
+      },
+    });
+    expect(res.ok()).toBe(true);
+    const body = await res.json();
+    expect(Array.isArray(body.created)).toBe(true);
+    expect(Array.isArray(body.skipped)).toBe(true);
+    // Every occurrence is accounted for as either created or skipped.
+    expect(body.created.length + body.skipped.length).toBeGreaterThan(0);
+  });
+
+  test('preview classifies against saved pending edit, not stale file text (bug O-crit)', async ({
+    page,
+  }) => {
+    // Discriminating regression test for the critical bug: preview used seg.is
+    // (file text) while propagate used the saved pending edit.  When the editor
+    // saves a unique translation the file is NOT updated, so preview would see
+    // every occurrence as already-matches (if file text matched) or conflict
+    // (if a prior E2E propagate run left pending edits).  Either way eligible=0.
+    // After the fix, preview reads the latest non-rejected edit from the SOURCE
+    // segment, so occurrences that differ from that text become eligible.
+    //
+    // Setup: the sibling "propagate" test leaves [e2e-propagation-test] edits on
+    // ALL occurrence segments.  Clear those pending contamination edits first so
+    // the occurrences read from file text and are genuinely eligible once the fix
+    // is applied. Use direct DB access (sessions.db is a local test artifact,
+    // gitignored; no production data is at risk).
+
+    const Database = require('better-sqlite3');
+    const path = require('path');
+    const dbPath = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
+    const db = new Database(dbPath);
+    // Delete pending edits on occurrence segments whose content was written by the
+    // sibling propagate test.  Keep edits from OTHER tests (status!='pending' rows
+    // are immutable by design; approved/applied edits don't belong here anyway).
+    db.prepare(
+      `DELETE FROM segment_edits
+       WHERE book = 'efnafraedi-2e'
+         AND segment_id LIKE '%:abstract:auto-2'
+         AND segment_id != 'm68664:abstract:auto-2'
+         AND status = 'pending'
+         AND edited_content LIKE '%[e2e-propagation-test]%'`
+    ).run();
+    // Also clear any prior run of THIS test on the source segment.
+    db.prepare(
+      `DELETE FROM segment_edits
+       WHERE book = 'efnafraedi-2e'
+         AND module_id = 'm68664'
+         AND segment_id = 'm68664:abstract:auto-2'
+         AND status = 'pending'
+         AND edited_content LIKE 'Markmiðstexti %'`
+    ).run();
+    db.close();
+
+    const uniqueText = `Markmiðstexti ${Date.now()}`;
+
+    // Step 1: save a unique translation as a pending edit on the SOURCE segment.
+    const editRes = await page.request.post('/api/segment-editor/efnafraedi-2e/1/m68664/edit', {
+      data: {
+        segmentId: 'm68664:abstract:auto-2',
+        originalContent: '',
+        editedContent: uniqueText,
+        category: 'readability',
+        editorNote: 'e2e-critfix-O',
+      },
+    });
+    expect(editRes.ok(), `edit POST failed: ${editRes.status()}`).toBe(true);
+
+    // Step 2: fetch propagation preview — must see eligible > 0.
+    // Under the bug: propagatedText = seg.is (stale file text, e.g. "Í lok þessa
+    //   kafla…"); occurrence currentIs also = that stale text → already-matches →
+    //   eligible = 0.
+    // After the fix: propagatedText = latestEditedText = uniqueText (the just-saved
+    //   pending edit); occurrence currentIs = stale file text → eligible → eligible > 0.
+    const previewRes = await page.request.get(
+      '/api/segment-editor/efnafraedi-2e/1/m68664/propagation-preview?segmentId=' +
+        encodeURIComponent('m68664:abstract:auto-2')
+    );
+    expect(previewRes.ok(), `preview GET failed: ${previewRes.status()}`).toBe(true);
+    const preview = await previewRes.json();
+
+    expect(Array.isArray(preview.eligible), 'eligible must be an array').toBe(true);
+    expect(Array.isArray(preview.skipped), 'skipped must be an array').toBe(true);
+
+    // The unique text (per-run timestamp) cannot appear in ANY occurrence's file
+    // text.  Therefore every occurrence must be eligible — none already-matches.
+    //
+    // Under the bug: propagatedText = seg.is (stale file text, shared by many
+    //   occurrences) → occurrences whose IS text equals the stale source text
+    //   classify as already-matches instead of eligible.
+    // After the fix: propagatedText = latestEditedText (the unique saved edit) →
+    //   no occurrence can match → ALL occurrences are eligible (or conflict if a
+    //   prior test left a different pending edit, but none here after cleanup).
+    const alreadyMatches = preview.skipped.filter((s) => s.reason === 'already-matches');
+    expect(
+      alreadyMatches.length,
+      `expected 0 already-matches but got ${alreadyMatches.length} — ` +
+        `bug present: preview used stale file text so occurrences sharing the old IS text were skipped`
+    ).toBe(0);
+    // And at least some eligible (sanity: the EN recurs across the book).
+    expect(preview.eligible.length, `expected eligible > 0 but got 0`).toBeGreaterThan(0);
+  });
+});

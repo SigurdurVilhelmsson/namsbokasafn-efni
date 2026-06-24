@@ -1,0 +1,173 @@
+import { describe, it, expect } from 'vitest';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const svc = require('../services/propagationService');
+
+describe('classifyOccurrence', () => {
+  const P = 'Sýra og basi'; // propagated text
+
+  it('eligible: no edit, current text differs', () => {
+    expect(svc.classifyOccurrence(P, { currentIs: '', existingEdit: null })).toBe('eligible');
+    expect(svc.classifyOccurrence(P, { currentIs: 'eitthvað annað', existingEdit: null })).toBe(
+      'eligible'
+    );
+  });
+
+  it('already-matches: no edit, current text equals propagated', () => {
+    expect(svc.classifyOccurrence(P, { currentIs: P, existingEdit: null })).toBe('already-matches');
+  });
+
+  it('already-matches: existing edit equals propagated', () => {
+    expect(
+      svc.classifyOccurrence(P, {
+        currentIs: 'x',
+        existingEdit: { edited_content: P, status: 'pending' },
+      })
+    ).toBe('already-matches');
+  });
+
+  it('conflict: existing edit differs (pending)', () => {
+    expect(
+      svc.classifyOccurrence(P, {
+        currentIs: 'x',
+        existingEdit: { edited_content: 'önnur þýðing', status: 'pending' },
+      })
+    ).toBe('conflict');
+  });
+
+  it('conflict: existing edit differs (applied)', () => {
+    expect(
+      svc.classifyOccurrence(P, {
+        currentIs: 'x',
+        existingEdit: { edited_content: 'önnur', status: 'applied' },
+      })
+    ).toBe('conflict');
+  });
+});
+
+describe('createPropagatedEdits', () => {
+  const Database = require('better-sqlite3');
+
+  function freshDb() {
+    const d = new Database(':memory:');
+    d.exec(`
+      CREATE TABLE segment_edits (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        book TEXT NOT NULL, chapter INTEGER NOT NULL, module_id TEXT NOT NULL,
+        segment_id TEXT NOT NULL, original_content TEXT NOT NULL, edited_content TEXT NOT NULL,
+        category TEXT, editor_note TEXT, status TEXT NOT NULL DEFAULT 'pending',
+        editor_id TEXT NOT NULL, editor_username TEXT NOT NULL,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP, reviewed_at DATETIME, applied_at DATETIME
+      );`);
+    return d;
+  }
+
+  const base = {
+    book: 'efnafraedi-2e',
+    editorId: '42',
+    editorUsername: 'tester',
+    propagatedText: 'Sýra og basi',
+    category: 'terminology',
+    note: 'Sjálfvirk fjölgun',
+  };
+
+  it('creates pending edits for eligible occurrences, skips already-matches', () => {
+    const d = freshDb();
+    const occurrences = [
+      { chapter: 1, moduleId: 'm001', segmentId: 'm001:para:a', currentIs: '' }, // eligible
+      { chapter: 1, moduleId: 'm002', segmentId: 'm002:para:b', currentIs: 'Sýra og basi' }, // already-matches
+    ];
+    const res = svc.createPropagatedEdits(d, { ...base, occurrences });
+    expect(res.created).toHaveLength(1);
+    expect(res.created[0].moduleId).toBe('m001');
+    expect(res.skipped).toHaveLength(1);
+    expect(res.skipped[0].reason).toBe('already-matches');
+
+    const row = d.prepare(`SELECT * FROM segment_edits WHERE module_id = 'm001'`).get();
+    expect(row.edited_content).toBe('Sýra og basi');
+    expect(row.status).toBe('pending');
+    expect(row.editor_id).toBe('42');
+  });
+
+  it('skips a target with a conflicting pending edit', () => {
+    const d = freshDb();
+    d.prepare(
+      `INSERT INTO segment_edits (book, chapter, module_id, segment_id, original_content, edited_content, editor_id, editor_username)
+       VALUES (?, 1, 'm003', 'm003:para:c', 'orig', 'önnur þýðing', '99', 'someone')`
+    ).run(base.book);
+    const occurrences = [
+      { chapter: 1, moduleId: 'm003', segmentId: 'm003:para:c', currentIs: 'orig' },
+    ];
+    const res = svc.createPropagatedEdits(d, { ...base, occurrences });
+    expect(res.created).toHaveLength(0);
+    expect(res.skipped[0].reason).toBe('conflict');
+    // did not overwrite the other editor's edit
+    const rows = d.prepare(`SELECT COUNT(*) c FROM segment_edits WHERE module_id = 'm003'`).get();
+    expect(rows.c).toBe(1);
+  });
+});
+
+describe('latestEditedText', () => {
+  const Database = require('better-sqlite3');
+
+  function freshDb() {
+    const d = new Database(':memory:');
+    d.exec(`
+      CREATE TABLE segment_edits (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        book TEXT NOT NULL, chapter INTEGER NOT NULL, module_id TEXT NOT NULL,
+        segment_id TEXT NOT NULL, original_content TEXT NOT NULL, edited_content TEXT NOT NULL,
+        category TEXT, editor_note TEXT, status TEXT NOT NULL DEFAULT 'pending',
+        editor_id TEXT NOT NULL, editor_username TEXT NOT NULL,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP, reviewed_at DATETIME, applied_at DATETIME
+      );`);
+    return d;
+  }
+
+  const BOOK = 'efnafraedi-2e';
+  const MOD = 'm68664';
+  const SEG = 'm68664:abstract:auto-2';
+
+  function insertEdit(d, content, status = 'pending') {
+    d.prepare(
+      `INSERT INTO segment_edits (book, chapter, module_id, segment_id, original_content, edited_content, status, editor_id, editor_username)
+       VALUES (?, 1, ?, ?, 'orig', ?, ?, '1', 'tester')`
+    ).run(BOOK, MOD, SEG, content, status);
+  }
+
+  it('returns null when no edit exists', () => {
+    const d = freshDb();
+    svc._setTestDb(d);
+    expect(svc.latestEditedText(BOOK, MOD, SEG)).toBeNull();
+  });
+
+  it('returns the latest non-rejected edit content', () => {
+    const d = freshDb();
+    svc._setTestDb(d);
+    insertEdit(d, 'Þýðing 1');
+    expect(svc.latestEditedText(BOOK, MOD, SEG)).toBe('Þýðing 1');
+  });
+
+  it('ignores a rejected edit and returns null when that is the only edit', () => {
+    const d = freshDb();
+    svc._setTestDb(d);
+    insertEdit(d, 'Þýðing hafnað', 'rejected');
+    expect(svc.latestEditedText(BOOK, MOD, SEG)).toBeNull();
+  });
+
+  it('returns the newest non-rejected edit when multiple exist', () => {
+    const d = freshDb();
+    svc._setTestDb(d);
+    insertEdit(d, 'Þýðing gömul', 'applied');
+    insertEdit(d, 'Þýðing ný', 'pending');
+    expect(svc.latestEditedText(BOOK, MOD, SEG)).toBe('Þýðing ný');
+  });
+
+  it('skips rejected edits and returns the newest non-rejected one', () => {
+    const d = freshDb();
+    svc._setTestDb(d);
+    insertEdit(d, 'Þýðing 1', 'approved');
+    insertEdit(d, 'Þýðing hafnað', 'rejected');
+    expect(svc.latestEditedText(BOOK, MOD, SEG)).toBe('Þýðing 1');
+  });
+});

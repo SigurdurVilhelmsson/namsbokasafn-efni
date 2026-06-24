@@ -38,6 +38,7 @@ const log = require('../lib/logger');
 const segmentParser = require('../services/segmentParser');
 const segmentEditor = require('../services/segmentEditorService');
 const concordance = require('../services/concordanceService');
+const propagation = require('../services/propagationService');
 const activityLog = require('../services/activityLog');
 const notifications = require('../services/notifications');
 
@@ -832,6 +833,92 @@ router.get(
     } catch (err) {
       log.error({ err }, 'Error finding repetitions');
       res.status(err.message.includes('not found') ? 404 : 500).json({ error: err.message });
+    }
+  }
+);
+
+// GET propagation preview — occurrences of this segment's EN across the book.
+router.get(
+  '/:book/:chapter/:moduleId/propagation-preview',
+  requireAuth,
+  requireRole(ROLES.EDITOR),
+  validateBookChapter,
+  validateModule,
+  (req, res) => {
+    try {
+      const { segmentId } = req.query;
+      if (!segmentId) return res.status(400).json({ error: 'segmentId is required' });
+      const data = segmentParser.loadModuleForEditing(
+        req.params.book,
+        req.chapterNum,
+        req.params.moduleId
+      );
+      const seg = data.segments.find((s) => s.segmentId === segmentId);
+      if (!seg) return res.status(404).json({ error: 'segment not found' });
+      const enNorm = concordance.normalizeEn(seg.en);
+      const propagatedText =
+        propagation.latestEditedText(req.params.book, req.params.moduleId, segmentId) ??
+        (seg.is || '');
+      const occ = propagation.findOccurrences(req.params.book, enNorm, {
+        excludeModuleId: req.params.moduleId,
+        excludeSegmentId: segmentId,
+      });
+      const eligible = [];
+      const skipped = [];
+      for (const o of occ) {
+        const verdict = propagation.classifyOccurrence(propagatedText, o);
+        (verdict === 'eligible' ? eligible : skipped).push({
+          moduleId: o.moduleId,
+          chapter: o.chapter,
+          segmentId: o.segmentId,
+          reason: verdict === 'eligible' ? undefined : verdict,
+        });
+      }
+      res.json({ enNorm, eligible, skipped });
+    } catch (err) {
+      log.error({ err }, 'propagation-preview failed');
+      res.status(500).json({ error: err.message });
+    }
+  }
+);
+
+// POST propagate — create pending edits on eligible occurrences.
+router.post(
+  '/:book/:chapter/:moduleId/propagate',
+  requireAuth,
+  requireRole(ROLES.EDITOR),
+  validateBookChapter,
+  requireBookAccess(),
+  validateModule,
+  (req, res) => {
+    try {
+      const { segmentId, editedContent, category, note } = req.body || {};
+      if (!segmentId || !editedContent) {
+        return res.status(400).json({ error: 'segmentId and editedContent are required' });
+      }
+      const enNorm = concordance.normalizeEn(
+        segmentParser
+          .loadModuleForEditing(req.params.book, req.chapterNum, req.params.moduleId)
+          .segments.find((s) => s.segmentId === segmentId)?.en || ''
+      );
+      if (!enNorm) return res.status(404).json({ error: 'segment not found' });
+      const occurrences = propagation.findOccurrences(req.params.book, enNorm, {
+        excludeModuleId: req.params.moduleId,
+        excludeSegmentId: segmentId,
+      });
+      const result = propagation.createPropagatedEdits(propagation.getDb(), {
+        book: req.params.book,
+        editorId: req.user.id,
+        editorUsername: req.user.username,
+        propagatedText: editedContent,
+        category,
+        note: note || 'Sjálfvirk fjölgun',
+        occurrences,
+      });
+      res.json(result);
+    } catch (err) {
+      log.error({ err }, 'propagate failed');
+      res.status(500).json({ error: err.message });
     }
   }
 );
