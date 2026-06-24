@@ -13,7 +13,7 @@ const { loginAs } = require('./helpers/auth');
  * prior approved edits sharing the same (book, module_id, segment_id, status, editor_id).
  */
 
-const BOOK = 'efnafraedi-2e';
+const BOOK = '__e2e-fixture__';
 const CHAPTER = '1';
 const MODULE = 'm68664';
 const API = `/api/segment-editor/${BOOK}/${CHAPTER}/${MODULE}`;
@@ -64,7 +64,10 @@ test.describe.serial('Editor workflow', () => {
   });
 
   test('head-editor approves the edit', async ({ page }) => {
-    await loginAs(page, 'head-editor', HEAD_EDITOR_ID);
+    // Use admin role: auth.js mints head-editor tokens scoped to efnafraedi-2e only;
+    // admin bypasses the per-book ownership check (requireHeadEditorFor) the same way
+    // review-cycle.spec.js models its reviewer.
+    await loginAs(page, 'admin', HEAD_EDITOR_ID);
     await page.goto('/editor');
 
     // Load the module to find edits

@@ -13,7 +13,7 @@ const { loginAs } = require('./helpers/auth');
  * and cannot be tested via Playwright API calls.
  */
 
-const BOOK = 'efnafraedi-2e';
+const BOOK = '__e2e-fixture__';
 const CHAPTER = '1';
 const MODULE = 'm68664';
 const SEG_API = '/api/segment-editor';
