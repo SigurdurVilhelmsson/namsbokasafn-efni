@@ -19,8 +19,9 @@ const path = require('path');
 const Database = require('better-sqlite3');
 const log = require('../lib/logger');
 const segmentParser = require('./segmentParser');
+const resolveDbPath = require('../lib/dbPath');
 
-const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
+const DB_PATH = resolveDbPath();
 
 let db;
 function getDb() {

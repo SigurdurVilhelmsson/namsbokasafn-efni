@@ -37,7 +37,7 @@ function getTestToken(role = 'admin', userId) {
       name: `Test ${role.charAt(0).toUpperCase() + role.slice(1)}`,
       avatar: '',
       role,
-      books: role === 'head-editor' ? ['efnafraedi-2e'] : [],
+      books: role === 'head-editor' ? ['efnafraedi-2e', '__e2e-fixture__'] : [],
     },
     JWT_SECRET,
     { issuer: JWT_ISSUER, expiresIn: '1h' }

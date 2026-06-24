@@ -20,9 +20,10 @@ const { requireAuth } = require('../middleware/requireAuth');
 const { BOOK_LABELS } = require('../config');
 const activityLog = require('../services/activityLog');
 const dashboardReadModel = require('../services/dashboardReadModel');
+const resolveDbPath = require('../lib/dbPath');
 
 // Database path (same as other services)
-const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
+const DB_PATH = resolveDbPath();
 
 // Lazy database initialization
 let db = null;

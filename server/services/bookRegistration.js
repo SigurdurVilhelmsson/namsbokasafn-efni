@@ -18,8 +18,9 @@ const { SIMPLE_STAGES } = require('../constants');
 const openstaxCatalogue = require('./openstaxCatalogue');
 const openstaxFetcher = require('./openstaxFetcher');
 const pipelineStatusService = require('./pipelineStatusService');
+const resolveDbPath = require('../lib/dbPath');
 
-const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
+const DB_PATH = resolveDbPath();
 const DATA_DIR = path.join(__dirname, '..', 'data');
 const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 
