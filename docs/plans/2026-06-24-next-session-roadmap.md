@@ -15,7 +15,16 @@ and the review fast-follows accumulated this session.
 
 ---
 
-## The headline: a large batch of merged work is UNDEPLOYED
+## ✅ UPDATE 2026-06-24: Track 0 (editorial-server deploy) DONE
+The lead ran `./scripts/deploy.sh` on the box → editorial server (`ritstjorn`)
+is live at `main` (df952f5a); all 8 PRs (#147–#153) are deployed (DB backed up,
+health check passed). **No vefur content sync was needed** for this batch — all
+8 PRs are editorial-server code (no rendered-HTML output change; A1/A2 reader
+output already shipped 2026-06-23). **Next priority is now Track 1 (manual QA on
+the running server), then Track 2 (complete shipped-but-invisible backends).**
+The section below is kept for context.
+
+## The headline: a large batch of merged work is UNDEPLOYED (resolved — see update above)
 
 Everything below the line is gated on one fact — **`main` is far ahead of
 production**. Merged but not deployed:
