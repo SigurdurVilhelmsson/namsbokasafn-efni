@@ -6,9 +6,9 @@
  */
 
 const Database = require('better-sqlite3');
-const path = require('path');
+const resolveDbPath = require('./dbPath');
 
-const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
+const DB_PATH = resolveDbPath();
 
 let _testDb = null;
 

@@ -986,7 +986,7 @@ function resolveBookSubject(bookSlug) {
   if (!bookSlug) return null;
 
   const Database = require('better-sqlite3');
-  const dbPath = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
+  const dbPath = require('../lib/dbPath')();
   if (!fs.existsSync(dbPath)) return null;
 
   const db = new Database(dbPath);
