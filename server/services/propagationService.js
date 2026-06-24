@@ -9,9 +9,7 @@
 
 const path = require('path');
 const Database = require('better-sqlite3');
-// eslint-disable-next-line no-unused-vars
 const segmentParser = require('./segmentParser');
-// eslint-disable-next-line no-unused-vars
 const concordance = require('./concordanceService');
 
 const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
@@ -96,4 +94,42 @@ function createPropagatedEdits(
   return { created, skipped };
 }
 
-module.exports = { getDb, _setTestDb, classifyOccurrence, createPropagatedEdits };
+/**
+ * Find all segments in the book whose source EN normalizes to enNorm
+ * (excluding the source segment). On-demand scan — call only on a deliberate
+ * propagation action.
+ */
+function findOccurrences(book, enNorm, { excludeModuleId, excludeSegmentId } = {}) {
+  const conn = getDb();
+  const findEdit = conn.prepare(
+    `SELECT edited_content, status FROM segment_edits
+     WHERE book = ? AND module_id = ? AND segment_id = ? AND status != 'rejected'
+     ORDER BY id DESC LIMIT 1`
+  );
+  const out = [];
+  for (const chapter of segmentParser.listChapters(book)) {
+    for (const mod of segmentParser.listChapterModules(book, chapter)) {
+      let data;
+      try {
+        data = segmentParser.loadModuleForEditing(book, chapter, mod.moduleId);
+      } catch {
+        continue;
+      }
+      for (const seg of data.segments) {
+        if (concordance.normalizeEn(seg.en) !== enNorm) continue;
+        if (mod.moduleId === excludeModuleId && seg.segmentId === excludeSegmentId) continue;
+        out.push({
+          chapter,
+          moduleId: mod.moduleId,
+          segmentId: seg.segmentId,
+          en: seg.en,
+          currentIs: seg.is || '',
+          existingEdit: findEdit.get(book, mod.moduleId, seg.segmentId) || null,
+        });
+      }
+    }
+  }
+  return out;
+}
+
+module.exports = { getDb, _setTestDb, classifyOccurrence, createPropagatedEdits, findOccurrences };

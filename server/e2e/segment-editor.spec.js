@@ -292,3 +292,25 @@ test.describe('B-1 Icelandic section title in editor header', () => {
     await expect(page.locator('#module-title')).not.toContainText('Chemistry in Context');
   });
 });
+
+test.describe('O segment propagation', () => {
+  test.beforeEach(async ({ page }) => {
+    await loginAs(page, 'admin');
+  });
+
+  test('preview returns occurrences for a recurring objectives intro', async ({ page }) => {
+    // m68664 ch01 segment auto-2 is the "By the end of this section…" abstract,
+    // which recurs across chapter intro modules.
+    const res = await page.request.get(
+      '/api/segment-editor/efnafraedi-2e/1/m68664/propagation-preview?segmentId=' +
+        encodeURIComponent('m68664:abstract:auto-2')
+    );
+    expect(res.ok()).toBe(true);
+    const body = await res.json();
+    expect(body).toHaveProperty('eligible');
+    expect(body).toHaveProperty('skipped');
+    expect(Array.isArray(body.eligible)).toBe(true);
+    // the EN recurs, so at least one occurrence (eligible or skipped) exists
+    expect(body.eligible.length + body.skipped.length).toBeGreaterThan(0);
+  });
+});
