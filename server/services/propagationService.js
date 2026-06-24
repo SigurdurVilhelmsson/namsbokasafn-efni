@@ -95,6 +95,23 @@ function createPropagatedEdits(
 }
 
 /**
+ * The text that would be propagated from a source segment: its latest
+ * non-rejected edit's content, or null if it has none (caller falls back to the
+ * file text). Keeps the preview's classification consistent with what propagate
+ * actually writes.
+ */
+function latestEditedText(book, moduleId, segmentId) {
+  const row = getDb()
+    .prepare(
+      `SELECT edited_content FROM segment_edits
+       WHERE book = ? AND module_id = ? AND segment_id = ? AND status != 'rejected'
+       ORDER BY id DESC LIMIT 1`
+    )
+    .get(book, moduleId, segmentId);
+  return row ? row.edited_content : null;
+}
+
+/**
  * Find all segments in the book whose source EN normalizes to enNorm
  * (excluding the source segment). On-demand scan — call only on a deliberate
  * propagation action.
@@ -132,4 +149,11 @@ function findOccurrences(book, enNorm, { excludeModuleId, excludeSegmentId } = {
   return out;
 }
 
-module.exports = { getDb, _setTestDb, classifyOccurrence, createPropagatedEdits, findOccurrences };
+module.exports = {
+  getDb,
+  _setTestDb,
+  classifyOccurrence,
+  createPropagatedEdits,
+  findOccurrences,
+  latestEditedText,
+};

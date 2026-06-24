@@ -856,7 +856,9 @@ router.get(
       const seg = data.segments.find((s) => s.segmentId === segmentId);
       if (!seg) return res.status(404).json({ error: 'segment not found' });
       const enNorm = concordance.normalizeEn(seg.en);
-      const propagatedText = seg.is || '';
+      const propagatedText =
+        propagation.latestEditedText(req.params.book, req.params.moduleId, segmentId) ??
+        (seg.is || '');
       const occ = propagation.findOccurrences(req.params.book, enNorm, {
         excludeModuleId: req.params.moduleId,
         excludeSegmentId: segmentId,
