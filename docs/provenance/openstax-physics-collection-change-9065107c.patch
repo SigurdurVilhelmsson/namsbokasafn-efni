@@ -1,0 +1,26 @@
+commit 9065107cf140924c253aae15e82f8f75cba401df
+Author: Colby <cp36@rice.edu>
+Date:   Thu Apr 23 10:34:53 2026 -0500
+
+    updating md license
+
+diff --git a/collections/college-physics-2e.collection.xml b/collections/college-physics-2e.collection.xml
+index 8a8c38c..5899bde 100644
+--- a/collections/college-physics-2e.collection.xml
++++ b/collections/college-physics-2e.collection.xml
+@@ -4,7 +4,7 @@
+     <md:slug>college-physics-2e</md:slug>
+     <md:language>en</md:language>
+     <md:uuid>a31df062-930a-4f46-8953-605711e6d204</md:uuid>
+-    <md:license url="http://creativecommons.org/licenses/by/4.0/"/>
++    <md:license url="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike License</md:license>
+   </col:metadata>
+   <col:content>
+     <col:module document="m42955"/>
+@@ -461,4 +461,4 @@
+     <col:module document="m42720"/>
+     <col:module document="m42709"/>
+   </col:content>
+-</col:collection>
+\ No newline at end of file
++</col:collection>

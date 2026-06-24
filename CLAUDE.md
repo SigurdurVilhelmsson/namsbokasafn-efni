@@ -28,6 +28,39 @@
 
 ---
 
+## 🔒 MANDATORY: Never overwrite local OpenStax CNXML from upstream without double written consent
+
+The CNXML files under `books/*/01-source/` are the **legally load-bearing copies** of the
+OpenStax source. The licence that governs each book is the one in force **on the date that
+local copy was obtained** (CC licences are irrevocable for the copy you hold). OpenStax has
+since relicensed several books CC BY → **CC BY-NC-SA**. Full record:
+[docs/provenance/openstax-cnxml-licence-provenance.md](docs/provenance/openstax-cnxml-licence-provenance.md).
+
+**Replacing these files with a fresh pull/clone/download from OpenStax would silently
+substitute today's CC BY-NC-SA bytes for the irrevocable CC BY copies — destroying the
+provenance basis for Chemistry, Biology, and Microbiology and making their derivatives
+unsafe to publish under CC BY.** This is a one-way, hard-to-detect loss.
+
+Therefore, you **MUST NOT** re-download, re-clone, `git pull`, `rsync`, extract, copy, or by
+any other means replace or modify any file under `books/*/01-source/` from an OpenStax/CNX
+source, **unless ALL of the following happen first, in order:**
+
+1. **Remind the user, in writing, of the ramifications** — that overwriting replaces the
+   irrevocable CC BY copies with current CC BY-NC-SA upstream content and cannot be undone
+   without restoring from git history; name exactly which book(s)/files would be touched.
+2. **Obtain the user's explicit written confirmation** — a typed message clearly authorizing
+   the specific overwrite.
+3. **Obtain a SECOND, separate written confirmation.** A bare "yes" / "ok" / "go ahead" /
+   pressing Enter on a permission prompt is **NOT** sufficient. The user must type a distinct,
+   unambiguous second consent for the named operation.
+
+No accidental "hit Enter for consent." If any of the three steps is missing, **do not
+proceed** — stop and report. This guard is in addition to the general `01-source/` READ-ONLY
+rule below; it specifically covers the *replace-from-upstream* path, which a re-download could
+otherwise bypass.
+
+---
+
 ## Notes for Code Reviewers
 
 This project was built iteratively with AI assistance. Known areas of concern:
