@@ -266,6 +266,6 @@ git commit -m "test(e2e): isolate suite to a throwaway sessions.db (task 3)"
 
 - Spec "one env-aware helper" → Task 1. ✅
 - Spec "DRY 27 files / default byte-identical" → Task 2 (29 occurrences incl. variants; grep proves completeness; full unit suite proves default unchanged). ✅
-- Spec "E2E → throwaway DB + globalSetup deletes it + remove cleanup hack" → Task 3. ✅
+- Spec "E2E → throwaway DB (deleted pre-start so migrations rebuild fresh) + remove cleanup hack" → Task 3 (delete done in the webServer command for ordering-safety, simpler than a globalSetup). ✅
 - Spec "acceptance: unit green + E2E green on fresh DB + mtime isolation" → Task 3 Steps 4–5 + Final verification. ✅
 - Spec "_setTestDb seams + shell scripts untouched" → Global Constraints; no task touches them. ✅
