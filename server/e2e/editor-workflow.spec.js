@@ -64,10 +64,10 @@ test.describe.serial('Editor workflow', () => {
   });
 
   test('head-editor approves the edit', async ({ page }) => {
-    // Use admin role: auth.js mints head-editor tokens scoped to efnafraedi-2e only;
-    // admin bypasses the per-book ownership check (requireHeadEditorFor) the same way
-    // review-cycle.spec.js models its reviewer.
-    await loginAs(page, 'admin', HEAD_EDITOR_ID);
+    // auth.js mints head-editor tokens scoped to ['efnafraedi-2e', '__e2e-fixture__'],
+    // so a head-editor can approve in the fixture book — exercises the real
+    // requireHeadEditorFor per-book authz path (not the admin bypass).
+    await loginAs(page, 'head-editor', HEAD_EDITOR_ID);
     await page.goto('/editor');
 
     // Load the module to find edits

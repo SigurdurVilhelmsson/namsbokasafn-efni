@@ -32,7 +32,9 @@ test.describe('Localization editor conflict detection', () => {
     // Load the module to get current segments
     const loadRes = await page.request.get(`${LOC_API}/${BOOK}/${CHAPTER}/${MODULE}`);
 
-    // Faithful translation files may not exist in test env
+    // Faithful translation files may not exist in test env.
+    // TODO: unskip once the __e2e-fixture__ book includes a 03-faithful-translation
+    // seed (the localization 409-conflict path is currently uncovered at E2E level).
     if (!loadRes.ok()) {
       const status = loadRes.status();
       test.skip(
