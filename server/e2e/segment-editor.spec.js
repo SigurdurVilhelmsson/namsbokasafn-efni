@@ -314,27 +314,6 @@ test.describe('O segment propagation', () => {
     expect(body.eligible.length + body.skipped.length).toBeGreaterThan(0);
   });
 
-  test('propagate endpoint is wired end-to-end and returns created/skipped', async ({ page }) => {
-    // End-to-end wiring check. The deterministic "creates edits for eligible /
-    // skips conflicts" logic is covered by propagationService unit tests; this
-    // asserts the route is reachable and returns the right shape regardless of
-    // current DB state (the suite mutates real content, so eligible counts vary
-    // across runs — assert the contract, not a count, so it never silently skips).
-    const res = await page.request.post('/api/segment-editor/efnafraedi-2e/1/m68664/propagate', {
-      data: {
-        segmentId: 'm68664:abstract:auto-2',
-        editedContent: 'Þegar þú hefur lokið þessum hluta [e2e-propagation-test]',
-        category: 'readability',
-      },
-    });
-    expect(res.ok()).toBe(true);
-    const body = await res.json();
-    expect(Array.isArray(body.created)).toBe(true);
-    expect(Array.isArray(body.skipped)).toBe(true);
-    // Every occurrence is accounted for as either created or skipped.
-    expect(body.created.length + body.skipped.length).toBeGreaterThan(0);
-  });
-
   test('preview classifies against saved pending edit, not stale file text (bug O-crit)', async ({
     page,
   }) => {
@@ -346,37 +325,12 @@ test.describe('O segment propagation', () => {
     // After the fix, preview reads the latest non-rejected edit from the SOURCE
     // segment, so occurrences that differ from that text become eligible.
     //
-    // Setup: the sibling "propagate" test leaves [e2e-propagation-test] edits on
-    // ALL occurrence segments.  Clear those pending contamination edits first so
-    // the occurrences read from file text and are genuinely eligible once the fix
-    // is applied. Use direct DB access (sessions.db is a local test artifact,
-    // gitignored; no production data is at risk).
-
-    const Database = require('better-sqlite3');
-    const path = require('path');
-    const dbPath = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
-    const db = new Database(dbPath);
-    // Delete pending edits on occurrence segments whose content was written by the
-    // sibling propagate test.  Keep edits from OTHER tests (status!='pending' rows
-    // are immutable by design; approved/applied edits don't belong here anyway).
-    db.prepare(
-      `DELETE FROM segment_edits
-       WHERE book = 'efnafraedi-2e'
-         AND segment_id LIKE '%:abstract:auto-2'
-         AND segment_id != 'm68664:abstract:auto-2'
-         AND status = 'pending'
-         AND edited_content LIKE '%[e2e-propagation-test]%'`
-    ).run();
-    // Also clear any prior run of THIS test on the source segment.
-    db.prepare(
-      `DELETE FROM segment_edits
-       WHERE book = 'efnafraedi-2e'
-         AND module_id = 'm68664'
-         AND segment_id = 'm68664:abstract:auto-2'
-         AND status = 'pending'
-         AND edited_content LIKE 'Markmiðstexti %'`
-    ).run();
-    db.close();
+    // ORDERING NOTE: this test must run BEFORE the "propagate endpoint" sibling
+    // below.  The propagate test writes [e2e-propagation-test] pending edits onto
+    // all occurrence segments; once those edits exist, occurrences classify as
+    // 'conflict' (not 'eligible') and this test would see eligible=0.  With a
+    // fresh throwaway DB per run there are no cross-run leftovers, but within-run
+    // ordering still matters.
 
     const uniqueText = `Markmiðstexti ${Date.now()}`;
 
@@ -425,5 +379,29 @@ test.describe('O segment propagation', () => {
     ).toBe(0);
     // And at least some eligible (sanity: the EN recurs across the book).
     expect(preview.eligible.length, `expected eligible > 0 but got 0`).toBeGreaterThan(0);
+  });
+
+  test('propagate endpoint is wired end-to-end and returns created/skipped', async ({ page }) => {
+    // End-to-end wiring check. The deterministic "creates edits for eligible /
+    // skips conflicts" logic is covered by propagationService unit tests; this
+    // asserts the route is reachable and returns the right shape regardless of
+    // current DB state (eligible counts vary within a run — assert the contract,
+    // not a count, so it never silently skips).
+    // NOTE: this test writes [e2e-propagation-test] pending edits onto occurrence
+    // segments, making them 'conflict' for subsequent previews.  It runs LAST
+    // within this describe block deliberately (see O-crit test above).
+    const res = await page.request.post('/api/segment-editor/efnafraedi-2e/1/m68664/propagate', {
+      data: {
+        segmentId: 'm68664:abstract:auto-2',
+        editedContent: 'Þegar þú hefur lokið þessum hluta [e2e-propagation-test]',
+        category: 'readability',
+      },
+    });
+    expect(res.ok()).toBe(true);
+    const body = await res.json();
+    expect(Array.isArray(body.created)).toBe(true);
+    expect(Array.isArray(body.skipped)).toBe(true);
+    // Every occurrence is accounted for as either created or skipped.
+    expect(body.created.length + body.skipped.length).toBeGreaterThan(0);
   });
 });
