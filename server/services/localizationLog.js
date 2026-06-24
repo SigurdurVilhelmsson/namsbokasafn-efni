@@ -16,9 +16,8 @@ const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
-const resolveDbPath = require('../lib/dbPath');
 
-const DB_PATH = resolveDbPath();
+const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
 
 // Valid log entry types
 const LOG_ENTRY_TYPES = [

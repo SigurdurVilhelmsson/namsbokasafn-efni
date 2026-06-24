@@ -38,7 +38,7 @@ test.describe('Localization editor — page', () => {
 
     const bookSelect = page.locator('#book-select');
     if (await bookSelect.isVisible()) {
-      await bookSelect.selectOption('__e2e-fixture__');
+      await bookSelect.selectOption('efnafraedi-2e');
 
       const chapterSelect = page.locator('#chapter-select');
       await expect(chapterSelect).toBeVisible({ timeout: 5000 });
@@ -60,11 +60,11 @@ test.describe('Localization editor — API', () => {
     // Navigate first so cookies are sent
     await page.goto('/localization');
 
-    const response = await page.request.get('/api/localization-editor/__e2e-fixture__/chapters');
+    const response = await page.request.get('/api/localization-editor/efnafraedi-2e/chapters');
     expect(response.status()).toBe(200);
 
     const data = await response.json();
-    expect(data).toHaveProperty('book', '__e2e-fixture__');
+    expect(data).toHaveProperty('book', 'efnafraedi-2e');
     expect(data).toHaveProperty('chapters');
     expect(Array.isArray(data.chapters)).toBe(true);
     expect(data.chapters.length).toBeGreaterThan(0);
@@ -73,7 +73,7 @@ test.describe('Localization editor — API', () => {
   test('GET /:chapter returns module list', async ({ page }) => {
     await page.goto('/localization');
 
-    const response = await page.request.get('/api/localization-editor/__e2e-fixture__/1');
+    const response = await page.request.get('/api/localization-editor/efnafraedi-2e/1');
     expect(response.status()).toBe(200);
 
     const data = await response.json();
@@ -83,10 +83,7 @@ test.describe('Localization editor — API', () => {
   test('GET /:chapter/:moduleId returns 404 when faithful file missing', async ({ page }) => {
     await page.goto('/localization');
 
-    // Use a fictional module ID (m99999) that passes format validation but has no faithful
-    // file and will never be written by any test — avoids the inter-spec ordering sensitivity
-    // that arises from review-cycle auto-applying m68663 or m68664.
-    const response = await page.request.get('/api/localization-editor/__e2e-fixture__/1/m99999');
+    const response = await page.request.get('/api/localization-editor/efnafraedi-2e/1/m68663');
     // Faithful translation file does not exist in test env
     // The API should return 404 (or 500) rather than crash
     expect([404, 500]).toContain(response.status());
@@ -96,7 +93,7 @@ test.describe('Localization editor — API', () => {
     await page.goto('/localization');
 
     // m68664 has a faithful translation file (from applyApprovedEdits in prior audit)
-    const response = await page.request.get('/api/localization-editor/__e2e-fixture__/1/m68664');
+    const response = await page.request.get('/api/localization-editor/efnafraedi-2e/1/m68664');
     if (response.status() === 200) {
       const data = await response.json();
       expect(data).toHaveProperty('segments');
@@ -122,7 +119,7 @@ test.describe('Localization editor — API', () => {
     await page.goto('/localization');
 
     const response = await page.request.post(
-      '/api/localization-editor/__e2e-fixture__/1/m68663/save',
+      '/api/localization-editor/efnafraedi-2e/1/m68663/save',
       {
         data: { content: 'test', category: 'terminology', lastModified: 0 },
         headers: { 'Content-Type': 'application/json' },
@@ -136,7 +133,7 @@ test.describe('Localization editor — API', () => {
     await page.goto('/localization');
 
     const response = await page.request.post(
-      '/api/localization-editor/__e2e-fixture__/1/m68663/save',
+      '/api/localization-editor/efnafraedi-2e/1/m68663/save',
       {
         data: { segmentId: 'test:1', content: '', category: 'terminology', lastModified: 0 },
         headers: { 'Content-Type': 'application/json' },
@@ -150,7 +147,7 @@ test.describe('Localization editor — API', () => {
     await page.goto('/localization');
 
     const response = await page.request.get(
-      '/api/localization-editor/__e2e-fixture__/1/m68663/history'
+      '/api/localization-editor/efnafraedi-2e/1/m68663/history'
     );
     // History endpoint may return 200 with empty array or 404 if module unknown
     if (response.status() === 200) {
@@ -165,7 +162,7 @@ test.describe('Localization editor — API', () => {
     await page.goto('/localization');
 
     const response = await page.request.get(
-      '/api/localization-editor/__e2e-fixture__/1/m68663/m68663:para:1/history'
+      '/api/localization-editor/efnafraedi-2e/1/m68663/m68663:para:1/history'
     );
     if (response.status() === 200) {
       const data = await response.json();

@@ -7,12 +7,12 @@
  * stays single-module). No auto-approve, no auto-publish.
  */
 
+const path = require('path');
 const Database = require('better-sqlite3');
 const segmentParser = require('./segmentParser');
 const concordance = require('./concordanceService');
-const resolveDbPath = require('../lib/dbPath');
 
-const DB_PATH = resolveDbPath();
+const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
 
 let db;
 function getDb() {

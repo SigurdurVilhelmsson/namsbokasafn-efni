@@ -224,7 +224,7 @@ router.post('/books/register', requireAuth, requireAdmin(), async (req, res) => 
     if (result.success) {
       try {
         const Database = require('better-sqlite3');
-        const dbPath = require('../lib/dbPath')();
+        const dbPath = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
         const db = new Database(dbPath, { readonly: true });
         refreshValidBooks(db);
         db.close();
@@ -1189,7 +1189,13 @@ router.post('/migrate', requireAuth, requireAdmin(), async (req, res) => {
     // Migrations 001-007 use migrate() with internal DB connection.
     // Migrations 008+ use up(db) and expect a DB instance.
     const Database = require('better-sqlite3');
-    const migrationDbPath = require('../lib/dbPath')();
+    const migrationDbPath = require('path').join(
+      __dirname,
+      '..',
+      '..',
+      'pipeline-output',
+      'sessions.db'
+    );
     let migrationDb;
 
     for (const migration of migrations) {

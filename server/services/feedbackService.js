@@ -20,10 +20,9 @@
 const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
-const resolveDbPath = require('../lib/dbPath');
 
 // Database path
-const DB_PATH = resolveDbPath();
+const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
 
 // Feedback types with Icelandic labels
 const FEEDBACK_TYPES = {

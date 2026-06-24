@@ -16,9 +16,8 @@ const Database = require('better-sqlite3');
 const log = require('../lib/logger');
 const openstaxFetcher = require('./openstaxFetcher');
 const openstaxCatalogue = require('./openstaxCatalogue');
-const resolveDbPath = require('../lib/dbPath');
 
-const DB_PATH = resolveDbPath();
+const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
 const DATA_DIR = path.join(__dirname, '..', 'data');
 
 /**
@@ -141,7 +140,7 @@ async function generateBookData(catalogueSlug, options = {}) {
   let catalogueEntry = null;
   try {
     catalogueEntry = openstaxCatalogue.getCatalogueEntry(catalogueSlug);
-  } catch {
+  } catch (e) {
     // Database not available, continue without catalogue data
     log.info('Database not available, continuing without catalogue metadata');
   }
@@ -174,7 +173,7 @@ async function generateBookData(catalogueSlug, options = {}) {
   let registration = null;
   try {
     registration = getRegistrationData(catalogueSlug);
-  } catch {
+  } catch (e) {
     // Database not available, continue without Icelandic titles
     log.info('Database not available, Icelandic titles will not be merged');
   }
@@ -296,7 +295,7 @@ function listBooks() {
         const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
         chapters = data.chapters?.length || 0;
         generatedAt = data.generatedAt || data.fetchedAt;
-      } catch {
+      } catch (e) {
         // Ignore parse errors
       }
     }
@@ -307,7 +306,7 @@ function listBooks() {
     try {
       catalogueEntry = openstaxCatalogue.getCatalogueEntry(slug);
       expectedChapters = catalogueEntry?.chapter_count || null;
-    } catch {
+    } catch (e) {
       // Database not available, continue without catalogue data
     }
 
@@ -315,7 +314,7 @@ function listBooks() {
     let registration = null;
     try {
       registration = getRegistrationData(slug);
-    } catch {
+    } catch (e) {
       // Database not available, continue without registration data
     }
 

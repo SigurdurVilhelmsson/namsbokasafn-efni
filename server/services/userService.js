@@ -11,9 +11,8 @@ const path = require('path');
 const fs = require('fs');
 const log = require('../lib/logger');
 const { ROLES, ROLE_HIERARCHY } = require('../constants');
-const resolveDbPath = require('../lib/dbPath');
 
-const DB_PATH = resolveDbPath();
+const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
 
 let _testDb = null;
 

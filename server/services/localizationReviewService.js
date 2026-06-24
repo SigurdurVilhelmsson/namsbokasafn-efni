@@ -19,9 +19,8 @@ const path = require('path');
 const fs = require('fs');
 const log = require('../lib/logger');
 const segmentParser = require('./segmentParser');
-const resolveDbPath = require('../lib/dbPath');
 
-const DB_PATH = resolveDbPath();
+const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
 
 let _db;
 let _testDb;

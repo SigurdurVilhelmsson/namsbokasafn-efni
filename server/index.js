@@ -260,7 +260,7 @@ app.get('/api/health', (req, res) => {
   // Check DB connection
   try {
     const Database = require('better-sqlite3');
-    const dbPath = require('./lib/dbPath')();
+    const dbPath = path.join(__dirname, '..', 'pipeline-output', 'sessions.db');
     const db = new Database(dbPath, { readonly: true });
     const row = db.prepare('SELECT COUNT(*) as n FROM users').get();
     checks.db = { ok: true, users: row.n };
@@ -375,7 +375,7 @@ const server = app.listen(PORT, HOST, () => {
   // Refresh VALID_BOOKS from DB so newly registered books are accessible
   try {
     const Database = require('better-sqlite3');
-    const dbPath = require('./lib/dbPath')();
+    const dbPath = path.join(__dirname, '..', 'pipeline-output', 'sessions.db');
     const db = new Database(dbPath, { readonly: true });
     refreshValidBooks(db);
     db.close();

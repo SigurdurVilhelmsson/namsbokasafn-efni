@@ -17,9 +17,9 @@ const { loginAs } = require('./helpers/auth');
  * Uses unique IDs per test run to avoid collisions with stale DB state.
  */
 
-const BOOK = '__e2e-fixture__';
+const BOOK = 'efnafraedi-2e';
 const CHAPTER = '1';
-const MODULE = 'm68663'; // Use m68663 (intro module) to avoid parallel-worker collision with editor-workflow (m68664)
+const MODULE = 'm68664'; // Use m68664 (section 1.1) which has plenty of segments
 const API = `/api/segment-editor`;
 
 // Unique per run to avoid UNIQUE constraint collisions with stale data

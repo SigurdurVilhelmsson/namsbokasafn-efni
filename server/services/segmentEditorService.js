@@ -18,8 +18,7 @@ const qaCheckService = require('./qaCheckService');
 const greynirEngine = require('./greynirEngine');
 
 let BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
-const resolveDbPath = require('../lib/dbPath');
-const DB_PATH = resolveDbPath();
+const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
 
 let db;
 function getDb() {

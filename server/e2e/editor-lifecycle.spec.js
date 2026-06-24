@@ -9,18 +9,14 @@ const { loginAs } = require('./helpers/auth');
  * login → navigate → edit → save → retry on failure → draft recovery → cleanup
  */
 
-const BOOK = '__e2e-fixture__';
+const BOOK = 'efnafraedi-2e';
 const CHAPTER = '1';
-// Pin to m68664 so editor-lifecycle does not pollute m68663, which review-cycle.spec.js
-// uses exclusively. Both live in the fixture; m68664 is also targeted by editor-workflow
-// (DB-only approve, no disk write), so parallel runs remain safely isolated.
-const MODULE = 'm68664';
 const SMOKE_PREFIX = 'SMOKE-TEST-';
 
 /**
- * Navigate to the pinned module (MODULE) in the segment editor.
- * Selects book, chapter, waits for module list, clicks the card matching MODULE.
- * Returns the moduleId string.
+ * Navigate to a module in the segment editor.
+ * Selects book, chapter, waits for module list, clicks first module card.
+ * Returns the moduleId string from the first card.
  */
 async function navigateToFirstModule(page) {
   await page.goto('/editor');
@@ -38,16 +34,12 @@ async function navigateToFirstModule(page) {
   const firstCard = page.locator('.module-card').first();
   await expect(firstCard).toBeVisible({ timeout: 10000 });
 
-  // Find and click the card for the pinned MODULE (title starts with the module ID)
-  const targetCard = page.locator(`.module-card[title^="${MODULE}"]`).first();
-  const cardExists = await targetCard.count();
-  const cardToClick = cardExists > 0 ? targetCard : firstCard;
-
-  const cardTitle = await cardToClick.getAttribute('title');
-  const moduleId = cardTitle.split(' ')[0]; // e.g. "m68664"
+  // Extract module ID from the card's title attribute (format: "mNNNNN — Smelltu til að opna")
+  const cardTitle = await firstCard.getAttribute('title');
+  const moduleId = cardTitle.split(' ')[0]; // e.g. "m68663"
 
   // Click to load the module
-  await cardToClick.click();
+  await firstCard.click();
 
   // Wait for the editor container to become visible and segments to load
   await expect(page.locator('#editor-container')).toBeVisible({ timeout: 10000 });
@@ -321,16 +313,14 @@ test.describe('Editor lifecycle', () => {
     await page.locator('#btn-back').click();
     await expect(page.locator('#module-selector')).toBeVisible({ timeout: 5000 });
 
-    // Re-navigate to the same module (MODULE = m68664, matching navigateToFirstModule)
+    // Re-navigate to the same module
     await page.locator('#book-select').selectOption(BOOK);
     const chapterSelect = page.locator('#chapter-select');
     await expect(chapterSelect).toBeEnabled({ timeout: 5000 });
     await chapterSelect.selectOption(CHAPTER);
-    const targetCard = page.locator(`.module-card[title^="${MODULE}"]`).first();
-    const cardExists = await targetCard.count();
-    const moduleCard = cardExists > 0 ? targetCard : page.locator('.module-card').first();
-    await expect(moduleCard).toBeVisible({ timeout: 10000 });
-    await moduleCard.click();
+    const firstCard = page.locator('.module-card').first();
+    await expect(firstCard).toBeVisible({ timeout: 10000 });
+    await firstCard.click();
     await expect(page.locator('#editor-container')).toBeVisible({ timeout: 10000 });
     await expect(page.locator('#segments-body tr').first()).toBeVisible({ timeout: 10000 });
 
@@ -413,8 +403,13 @@ test.describe('Editor lifecycle', () => {
       }
     });
 
-    // Verify test-admin edits exist on the pinned MODULE (created by earlier tests)
-    moduleId = MODULE;
+    // Verify test-admin edits exist (created by earlier tests)
+    const listResp = await page.request.get(`/api/segment-editor/${BOOK}/${CHAPTER}`);
+    expect(listResp.ok()).toBeTruthy();
+    const { modules } = await listResp.json();
+
+    moduleId = modules[0]?.moduleId;
+    expect(moduleId).toBeTruthy();
 
     const resp = await page.request.get(`/api/segment-editor/${BOOK}/${CHAPTER}/${moduleId}`);
     const data = await resp.json();
