@@ -105,5 +105,7 @@ __pycache__/
 
 # E2E fixture book: inputs are committed, test-written outputs are not
 books/__e2e-fixture__/03-faithful-translation/
+books/__e2e-fixture__/03-translated/
 books/__e2e-fixture__/04-localized-content/
+books/__e2e-fixture__/05-publication/
 books/__e2e-fixture__/tm/
