@@ -293,6 +293,21 @@ test.describe('B-1 Icelandic section title in editor header', () => {
   });
 });
 
+test.describe('E2E fixture book', () => {
+  test.beforeEach(async ({ page }) => {
+    await loginAs(page, 'admin');
+  });
+
+  test('fixture book module loads with segments', async ({ page }) => {
+    const res = await page.request.get('/api/segment-editor/__e2e-fixture__/1/m68664');
+    expect(res.ok()).toBe(true);
+    const body = await res.json();
+    expect(body.moduleId).toBe('m68664');
+    expect(Array.isArray(body.segments)).toBe(true);
+    expect(body.segments.length).toBeGreaterThan(0);
+  });
+});
+
 test.describe('O segment propagation', () => {
   test.beforeEach(async ({ page }) => {
     await loginAs(page, 'admin');

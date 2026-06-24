@@ -13,7 +13,7 @@ const { loginAs } = require('./helpers/auth');
  * prior approved edits sharing the same (book, module_id, segment_id, status, editor_id).
  */
 
-const BOOK = 'efnafraedi-2e';
+const BOOK = '__e2e-fixture__';
 const CHAPTER = '1';
 const MODULE = 'm68664';
 const API = `/api/segment-editor/${BOOK}/${CHAPTER}/${MODULE}`;
@@ -64,6 +64,9 @@ test.describe.serial('Editor workflow', () => {
   });
 
   test('head-editor approves the edit', async ({ page }) => {
+    // auth.js mints head-editor tokens scoped to ['efnafraedi-2e', '__e2e-fixture__'],
+    // so a head-editor can approve in the fixture book — exercises the real
+    // requireHeadEditorFor per-book authz path (not the admin bypass).
     await loginAs(page, 'head-editor', HEAD_EDITOR_ID);
     await page.goto('/editor');
 
