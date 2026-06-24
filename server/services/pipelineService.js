@@ -534,7 +534,7 @@ function countApprovedEdits(book, moduleIds) {
 
   try {
     const Database = require('better-sqlite3');
-    const dbPath = path.join(PROJECT_ROOT, 'pipeline-output', 'sessions.db');
+    const dbPath = require('../lib/dbPath')();
     const db = new Database(dbPath, { readonly: true });
     const placeholders = moduleIds.map(() => '?').join(',');
     const row = db
@@ -775,7 +775,7 @@ function updateSourceTracking(slug) {
 
     const info = JSON.parse(fs.readFileSync(infoPath, 'utf8'));
     const Database = require('better-sqlite3');
-    const dbPath = path.join(PROJECT_ROOT, 'pipeline-output', 'sessions.db');
+    const dbPath = require('../lib/dbPath')();
     const db = new Database(dbPath);
 
     db.prepare(
