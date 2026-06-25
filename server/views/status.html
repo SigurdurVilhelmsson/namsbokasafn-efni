@@ -359,7 +359,7 @@
         <div class="attention-panel" id="attention-panel" style="display:none">
           <h3>
             <span class="attention-badge" id="attention-count">0</span>
-            Athygli &thorn;arf
+            Þarfnast skoðunar
           </h3>
           <ul class="attention-list" id="attention-list"></ul>
         </div>
@@ -376,7 +376,7 @@
       <div id="detail-content" style="display:none">
         <div class="chapter-detail-header">
           <h3 id="detail-title">Kafli</h3>
-          <a href="#" class="btn btn-sm btn-secondary" id="detail-editor-link">Opna ritstj&oacute;ra</a>
+          <a href="#" class="btn btn-sm btn-secondary" id="detail-editor-link">Opna ritil</a>
         </div>
 
         <!-- Module summary -->
@@ -504,7 +504,7 @@
       // Attention panel
       var attentionItems = [];
       if (data.attention.pendingReviews > 0) {
-        attentionItems.push(data.attention.pendingReviews + ' einingar b\u00ed\u00f0a yfirfer\u00f0ar');
+        attentionItems.push(data.attention.pendingReviews + ' einingar b\u00ed\u00f0a yfirlestrar');
       }
       if (data.attention.discussEdits > 0) {
         attentionItems.push(data.attention.discussEdits + ' breytingar \u00ed umr\u00e6\u00f0u');
@@ -603,7 +603,7 @@
           : mod.status === 'in-progress' ? '\u00cd vinnslu' : '\u00d3byrja\u00f0';
         if (mod.reviewStatus === 'pending') {
           statusClass = 'status-review';
-          statusLabel = 'B\u00ed\u00f0ur yfirfer\u00f0ar';
+          statusLabel = 'B\u00ed\u00f0ur yfirlestrar';
         }
 
         var editorUrl = '/editor?book=' + progressData.book +
@@ -645,7 +645,7 @@
         var badges = [
           { key: 'extraction', label: '\u00datdr\u00e1ttur' },
           { key: 'mtOutput', label: 'MT' },
-          { key: 'linguisticReview', label: 'Yfirfer\u00f0' },
+          { key: 'linguisticReview', label: 'Yfirlestur' },
           { key: 'injection', label: 'Inndr\u00e1ttur' },
           { key: 'rendering', label: 'Birting' },
         ];

@@ -19,7 +19,7 @@ const edit = {
 
 describe('buildEditDecisionNotification', () => {
   it('builds an approval notification addressed to the edit author', () => {
-    const n = notifications.buildEditDecisionNotification(edit, 'approved', '99', 'Ritstjóri');
+    const n = notifications.buildEditDecisionNotification(edit, 'approved', '99', 'Yfirlesari');
     expect(n).not.toBeNull();
     expect(n.userId).toBe('42');
     expect(n.type).toBe('edit_approved');

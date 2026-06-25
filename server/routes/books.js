@@ -720,7 +720,7 @@ router.post(
                 noMarkerCount +
                 ' af ' +
                 imported.length +
-                ' skrám — þýðingar munu ekki birtast í ritstjóranum.',
+                ' skrám — þýðingar munu ekki birtast í ritlinum.',
             }
           : undefined,
       files: imported.map((f) => ({

@@ -104,7 +104,7 @@ const UI = {
   // ── Module source labels ────────────────────────────────────
   sourceLabels: {
     'mt-output': 'MT — vélþýðing',
-    faithful: 'Ritstýrt — yfirfarin þýðing',
+    faithful: 'Ritstýrt — bein þýðing',
     localized: 'Staðfærð — aðlöguð að íslensku samhengi',
   },
 
@@ -166,7 +166,7 @@ const UI = {
 
   // ── Segment editor specific ─────────────────────────────────
   segmentEditor: {
-    title: 'Ritstjóri',
+    title: 'Ritill',
     noEnglish: 'Engin enska',
     sentForReview: 'Sent til yfirlestrar!',
     viewReview: 'Skoða yfirlestur →',
@@ -316,8 +316,8 @@ const UI = {
   // ── Tooltip strings ─────────────────────────────────────────
   tooltips: {
     sourceTypes:
-      'MT = óyfirfarin vélþýðing · Yfirlesið = mannlegri yfirferð lokið · Staðfærð = aðlöguð að Íslandi',
-    otherEditor: 'Annar ritstjóri hefur breytt þessum bút',
+      'MT = óyfirfarin vélþýðing · Yfirlesið = mannlegur yfirlestur lokinn · Staðfærð = aðlöguð að Íslandi',
+    otherEditor: 'Annar yfirlesari hefur breytt þessum bút',
   },
 
   // ── Term lookup ─────────────────────────────────────────────

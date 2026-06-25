@@ -74,7 +74,7 @@ function saveSegmentEdit(params) {
       .get(book, moduleId, segmentId, editorId, baseEditId);
     if (conflict) {
       const err = new Error(
-        `Annar ritstjóri (${conflict.editor_username}) hefur breytt þessum bút. Endurhlaðið til að sjá nýjustu útgáfu.`
+        `Annar yfirlesari (${conflict.editor_username}) hefur breytt þessum bút. Endurhlaðið til að sjá nýjustu útgáfu.`
       );
       err.code = 'SEGMENT_CONFLICT';
       throw err;

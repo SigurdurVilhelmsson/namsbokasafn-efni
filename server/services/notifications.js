@@ -53,8 +53,8 @@ const STAGE_LABELS = {
 // Notification categories for preferences
 const NOTIFICATION_CATEGORIES = {
   reviews: {
-    label: 'Yfirferðir',
-    description: 'Tilkynningar um yfirferðir (sendar, samþykktar, breytingar óskast)',
+    label: 'Yfirlestrar',
+    description: 'Tilkynningar um yfirlestra (sendar, samþykktar, breytingar óskast)',
     types: [
       'review_submitted',
       'review_approved',
@@ -685,7 +685,7 @@ async function notifyBookAccessAssigned(userId, bookSlug, role, assignedByUserna
   // Role labels in Icelandic
   const roleLabels = {
     'head-editor': 'aðalritstjóri',
-    editor: 'ritstjóri',
+    editor: 'yfirlesari',
     viewer: 'lesandi',
   };
 

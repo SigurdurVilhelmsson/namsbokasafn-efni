@@ -66,8 +66,8 @@ async function sendReviewDigests(deps = {}) {
         await notify({
           userId: String(he.id),
           type: 'review_digest',
-          title: 'Yfirferðir bíða',
-          message: `${g.count} ${g.count === 1 ? 'eining bíður' : 'einingar bíða'} yfirferðar í ${book}. Elsta hefur beðið í ${oldestDays} ${oldestDays === 1 ? 'dag' : 'daga'}.`,
+          title: 'Yfirlestrar bíða',
+          message: `${g.count} ${g.count === 1 ? 'eining bíður' : 'einingar bíða'} yfirlestrar í ${book}. Elsta hefur beðið í ${oldestDays} ${oldestDays === 1 ? 'dag' : 'daga'}.`,
           link: `/review-queue?book=${encodeURIComponent(book)}`,
         });
         sent++;

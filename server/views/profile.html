@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prófíll - Námsbókasafn</title>
+  <title>Um mig - Námsbókasafn</title>
   <link rel="stylesheet" href="/css/common.css">
   <style>
     .profile-container {
@@ -75,14 +75,14 @@
   </style>
 </head>
 <body>
-  <main class="page-content" data-page="profile" data-title="Prófílinn minn">
+  <main class="page-content" data-page="profile" data-title="Um mig">
     <div class="profile-container">
-      <div id="profile-loading" class="profile-loading">Hleð prófíl...</div>
+      <div id="profile-loading" class="profile-loading">Hleð...</div>
 
       <div id="profile-form-wrapper" style="display:none">
         <div class="profile-card">
           <div class="profile-card-header">
-            <h2>Prófílupplýsingar</h2>
+            <h2>Upplýsingar</h2>
           </div>
           <div class="profile-card-body">
             <div class="form-group">
@@ -108,7 +108,7 @@
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="profile-bio">Um mig</label>
+              <label class="form-label" for="profile-bio">Stutt lýsing</label>
               <textarea id="profile-bio" class="form-textarea" rows="3" placeholder="Stutt lýsing (valfrjálst)" maxlength="1000"></textarea>
             </div>
 
@@ -139,7 +139,7 @@
       const ROLE_LABELS = {
         admin: 'Stjórnandi',
         'head-editor': 'Aðalritstjóri',
-        editor: 'Ritstjóri',
+        editor: 'Yfirlesari',
         viewer: 'Áhorfandi',
       };
 
@@ -196,7 +196,7 @@
         } catch (err) {
           els.loading.innerHTML =
             '<div style="text-align:center;padding:2rem;">' +
-            '<p style="margin-bottom:1rem;">Prófíll finnst ekki í gagnagrunni. Hafðu samband við kerfisstjóra.</p>' +
+            '<p style="margin-bottom:1rem;">Notandinn finnst ekki í gagnagrunni. Hafðu samband við kerfisstjóra.</p>' +
             '<a href="/" class="btn btn-secondary">← Til baka</a>' +
             '</div>';
           console.error('Failed to load profile:', err);
@@ -224,7 +224,7 @@
             throw new Error(err.message || 'HTTP ' + res.status);
           }
 
-          showToast('Prófíll vistaður', 'success');
+          showToast('Vistað', 'success');
 
           // Clear auth cache so sidebar picks up updated name
           try { sessionStorage.removeItem('authCache'); } catch (e) { /* ok */ }

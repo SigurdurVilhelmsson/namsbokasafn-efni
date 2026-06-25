@@ -279,7 +279,7 @@ router.get('/dashboard', requireAuth, async (req, res) => {
           chapter: edit.chapter,
           section: edit.module_id,
           submittedBy: edit.editor_username,
-          message: `Bíður yfirferðar: ${edit.module_id} / ${edit.segment_id}`,
+          message: `Bíður yfirlestrar: ${edit.module_id} / ${edit.segment_id}`,
         });
       }
     } catch (err) {
@@ -780,7 +780,7 @@ router.get('/meeting-agenda', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req,
           book: review.book,
           chapter: review.chapter,
           daysPending,
-          description: `Yfirferð í bið: ${review.module_id}`,
+          description: `Yfirlestur í bið: ${review.module_id}`,
         });
       }
     } catch (err) {
@@ -1701,9 +1701,9 @@ function getActivityColor(type) {
 function formatActivityType(type) {
   const labels = {
     draft_saved: 'Drög vistuð',
-    review_submitted: 'Yfirferð send inn',
+    review_submitted: 'Yfirlestur sendur inn',
     version_restored: 'Útgáfa endurheimt',
-    review_approved: 'Yfirferð samþykkt',
+    review_approved: 'Yfirlestur samþykktur',
     changes_requested: 'Breytingar óskast',
     commit_created: 'Commit búin til',
     push_completed: 'Push lokið',
@@ -1711,7 +1711,7 @@ function formatActivityType(type) {
     workflow_completed: 'Verkflæði lokið',
     file_uploaded: 'Skrá hlaðið upp',
     upload: 'Upphleðsla',
-    assign_reviewer: 'Ritstjóri úthlutaður',
+    assign_reviewer: 'Yfirlesari úthlutaður',
     segment_edit_saved: 'Breyting vistuð',
     segment_edit_approved: 'Breyting samþykkt',
     segment_edit_rejected: 'Breyting hafnað',
@@ -1719,8 +1719,8 @@ function formatActivityType(type) {
     segment_edits_applied: 'Breytingar yfirfærðar',
     assign_localizer: 'Staðfærandi úthlutaður',
     status_change: 'Staða breytt',
-    submit_review: 'Yfirferð send',
-    approve_review: 'Yfirferð samþykkt',
+    submit_review: 'Yfirlestur sendur',
+    approve_review: 'Yfirlestur samþykktur',
     request_changes: 'Breytingar óskast',
     submit_localization: 'Staðfæring send',
     approve_localization: 'Staðfæring samþykkt',

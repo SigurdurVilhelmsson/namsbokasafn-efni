@@ -711,7 +711,7 @@ router.post(
           book: result.book || '',
           chapter: String(result.chapter || ''),
           section: result.module_id || '',
-          description: `${req.user.username} lauk yfirferð á ${result.module_id || req.params.reviewId}`,
+          description: `${req.user.username} lauk yfirlestri á ${result.module_id || req.params.reviewId}`,
         });
       } catch (logErr) {
         log.error({ err: logErr }, 'Activity log failed');
