@@ -2551,7 +2551,7 @@
         const banner = document.createElement('div');
         banner.id = 'review-mode-banner';
         banner.className = 'review-banner';
-        banner.textContent = 'Sýnir einingar sem bíða yfirferðar';
+        banner.textContent = 'Sýnir einingar sem bíða yfirlestrar';
         selectorCard.parentNode.insertBefore(banner, selectorCard.nextSibling);
       }
     }

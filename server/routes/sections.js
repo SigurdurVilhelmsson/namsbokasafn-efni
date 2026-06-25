@@ -323,8 +323,8 @@ router.post(
       await notifications.create({
         userId: reviewerId,
         type: 'assignment',
-        title: 'Ný yfirferð úthlutað',
-        message: `Þú hefur verið úthlutað yfirferð á kafla ${section.sectionNum} í ${section.bookTitleIs}`,
+        title: 'Nýr yfirlestur úthlutaður',
+        message: `Þú hefur verið úthlutað yfirlestri á kafla ${section.sectionNum} í ${section.bookTitleIs}`,
         link: `/segment-editor?book=${section.bookSlug}&chapter=${section.chapterNum}&module=${section.sectionNum}`,
       });
 
@@ -647,8 +647,8 @@ router.post(
         await notifications.create({
           userId: section.linguisticReviewer,
           type: 'approval',
-          title: 'Yfirferð samþykkt',
-          message: `Yfirferð þín á kafla ${section.sectionNum} hefur verið samþykkt`,
+          title: 'Yfirlestur samþykktur',
+          message: `Yfirlestur þinn á kafla ${section.sectionNum} hefur verið samþykktur`,
           link: `/segment-editor?book=${section.bookSlug}&chapter=${section.chapterNum}&module=${section.sectionNum}`,
         });
       }

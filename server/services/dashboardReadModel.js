@@ -164,7 +164,7 @@ function getUserHeadlineCounts(username) {
 }
 
 // =====================================================================
-// Editor workload — for the admin "Vinnuálag ritstjóra" panel.
+// Editor workload — for the admin "Vinnuálag yfirlesara" panel.
 // =====================================================================
 
 /**

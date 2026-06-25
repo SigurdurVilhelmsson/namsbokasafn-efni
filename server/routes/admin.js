@@ -616,7 +616,12 @@ router.get('/users/roles', requireAuth, requireAdmin(), (req, res) => {
         description: 'Manage assigned books and reviewers',
         level: 4,
       },
-      { id: 'editor', name: 'Ritstjóri', description: 'Review and approve translations', level: 3 },
+      {
+        id: 'editor',
+        name: 'Yfirlesari',
+        description: 'Review and approve translations',
+        level: 3,
+      },
 
       { id: 'viewer', name: 'Lesandi', description: 'View only access', level: 1 },
     ],

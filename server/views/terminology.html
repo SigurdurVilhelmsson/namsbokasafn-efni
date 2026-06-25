@@ -777,7 +777,7 @@
             <option value="approved">Sam&#254;ykkt</option>
             <option value="proposed">&#205; bi&#240;</option>
             <option value="disputed">Til umr&#230;&#240;u</option>
-            <option value="needs_review">&#222;arf yfirfer&#240;</option>
+            <option value="needs_review">&#222;arf yfirlestur</option>
           </select>
         </div>
         <div class="filter-item">
@@ -827,14 +827,14 @@
       </div>
       <div class="stat-box">
         <div class="stat-number" style="color: var(--error);" id="stat-needs-review">-</div>
-        <div class="stat-label">&#222;arf yfirfer&#240;</div>
+        <div class="stat-label">&#222;arf yfirlestur</div>
       </div>
     </div>
 
     <!-- Review Queue Alert -->
     <div class="review-alert" id="review-queue-alert" style="display: none;">
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-      <span><span id="review-queue-count"></span> or&#240; b&#237;&#240;a yfirfer&#240;ar.</span>
+      <span><span id="review-queue-count"></span> or&#240; b&#237;&#240;a yfirlestrar.</span>
       <a href="#" onclick="showReviewQueue(); return false;">Sko&#240;a</a>
     </div>
 
@@ -1944,7 +1944,7 @@
         'approved': 'Sam\u00FEykkt',
         'proposed': '\u00CD bi\u00F0',
         'disputed': 'Til umr\u00E6\u00F0u',
-        'needs_review': '\u00DEarf yfirfer\u00F0'
+        'needs_review': '\u00DEarf yfirlestur'
       };
       return escapeHtml(names[status] || status);
     }

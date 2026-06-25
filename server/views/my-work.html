@@ -982,7 +982,7 @@
         </div>
         <div class="quick-stat-item">
           <span class="quick-stat-value" id="stat-pending">-</span>
-          <div class="quick-stat-label">B&iacute;&#240;ur yfirfer&#240;ar</div>
+          <div class="quick-stat-label">B&iacute;&#240;ur yfirlestrar</div>
         </div>
         <div class="quick-stat-item">
           <span class="quick-stat-value" id="stat-terms">-</span>
@@ -1004,7 +1004,7 @@
       <div class="summary-grid" id="summary-grid">
         <div class="summary-card" id="card-pending">
           <div class="summary-value" id="summary-pending">-</div>
-          <div class="summary-label">B&iacute;&#240;ur yfirfer&#240;ar</div>
+          <div class="summary-label">B&iacute;&#240;ur yfirlestrar</div>
         </div>
         <div class="summary-card warning" id="card-changes">
           <div class="summary-value" id="summary-changes">-</div>
@@ -1020,7 +1020,7 @@
       <div class="content-grid">
         <div class="card">
           <div class="card-header">
-            <h2 class="card-title" style="margin-bottom:0">B&iacute;&#240;ur yfirfer&#240;ar</h2>
+            <h2 class="card-title" style="margin-bottom:0">B&iacute;&#240;ur yfirlestrar</h2>
             <span class="badge" id="submissions-badge">0</span>
           </div>
           <div class="card-body" id="submissions-list">
@@ -1074,7 +1074,7 @@
       <!-- Attention Panel -->
       <div class="attention-panel" id="attention-panel">
         <div class="attention-header">
-          <h3>&THORN;arfnast athygli</h3>
+          <h3>Þarfnast skoðunar</h3>
           <div class="attention-stats" id="attention-stats"></div>
         </div>
         <div class="attention-items" id="attention-items">
@@ -1087,12 +1087,12 @@
         <!-- Editor Workload -->
         <div class="workload-panel">
           <div class="panel-header">
-            <h3>Vinnu&aacute;lag ritstj&oacute;ra</h3>
+            <h3>Vinnu&aacute;lag yfirlesara</h3>
           </div>
           <table class="workload-table" id="workload-table">
             <thead>
               <tr>
-                <th>Ritstj&oacute;ri</th>
+                <th>Yfirlesari</th>
                 <th>Virk</th>
                 <th>B&iacute;&#240;ur</th>
                 <th>Elsta &iacute; bi&#240;</th>
@@ -1177,7 +1177,7 @@
       'extraction': 'Útdráttur',
       'mtReady': 'Tilbúið fyrir vélþýðingu',
       'mtOutput': 'Vélþýðing',
-      'linguisticReview': 'Yfirferð',
+      'linguisticReview': 'Yfirlestur',
       'tmCreated': 'Vistað í gagnagrunn',
       'injection': 'Innsetning',
       'rendering': 'Birting',
@@ -1563,7 +1563,7 @@
       var container = document.getElementById('submissions-list');
 
       if (submissions.length === 0) {
-        container.innerHTML = '<div class="empty-state"><p>Engin verkefni bíða yfirferðar</p></div>';
+        container.innerHTML = '<div class="empty-state"><p>Engin verkefni bíða yfirlestrar</p></div>';
         return;
       }
 
@@ -1722,7 +1722,7 @@
       if (attention.items.length === 0) {
         itemsEl.innerHTML =
           '<div class="empty-state">' +
-            '<p style="color:var(--success)">Ekkert þarfnast athygli!</p>' +
+            '<p style="color:var(--success)">Ekkert þarfnast skoðunar!</p>' +
           '</div>';
         return;
       }
@@ -2091,7 +2091,7 @@
     function getStatusLabel(status) {
       var labels = {
         'proposed': 'Í bið',
-        'needs_review': 'Þarf yfirferð',
+        'needs_review': 'Þarf yfirlestur',
         'approved': 'Samþykkt',
         'disputed': 'Deilt um'
       };
