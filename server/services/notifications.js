@@ -29,6 +29,8 @@ const NOTIFICATION_TYPES = {
   EDIT_APPROVED: 'edit_approved',
   EDIT_REJECTED: 'edit_rejected',
   EDIT_DISCUSS: 'edit_discuss',
+  // Daily reviewer-queue digest for book head-editors
+  REVIEW_DIGEST: 'review_digest',
   // Hand-off notifications
   ASSIGNMENT_CREATED: 'assignment_created',
   ASSIGNMENT_HANDOFF: 'assignment_handoff',
@@ -60,6 +62,7 @@ const NOTIFICATION_CATEGORIES = {
       'edit_approved',
       'edit_rejected',
       'edit_discuss',
+      'review_digest',
     ],
   },
   assignments: {
@@ -807,11 +810,29 @@ async function notifyEditDecision(edit, decision, reviewerId, reviewerUsername, 
   return createNotification(options);
 }
 
+/**
+ * Has the user already received a notification of this type today (UTC)?
+ * Used to keep the daily digest from re-sending on server restarts.
+ * @param {string} userId
+ * @param {string} type
+ * @returns {boolean}
+ */
+function sentToday(userId, type) {
+  const row = db
+    .prepare(
+      `SELECT COUNT(*) AS c FROM notifications
+       WHERE user_id = ? AND type = ? AND DATE(created_at) = DATE('now')`
+    )
+    .get(String(userId), type);
+  return (row?.c || 0) > 0;
+}
+
 module.exports = {
   NOTIFICATION_TYPES,
   NOTIFICATION_CATEGORIES,
   buildEditDecisionNotification,
   notifyEditDecision,
+  sentToday,
   DEFAULT_PREFERENCES,
   STAGE_LABELS,
   isEmailConfigured,

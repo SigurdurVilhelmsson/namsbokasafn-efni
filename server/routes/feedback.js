@@ -24,6 +24,19 @@ const router = express.Router();
 const log = require('../lib/logger');
 const feedbackService = require('../services/feedbackService');
 const notifications = require('../services/notifications');
+const userService = require('../services/userService');
+
+// Where a head-editor should land from a feedback notification: the segment
+// editor when the reader's page maps to a module, else the feedback admin.
+function feedbackLink(feedback) {
+  if (feedback.book && feedback.chapter && feedback.section) {
+    return (
+      `/segment-editor?book=${encodeURIComponent(feedback.book)}` +
+      `&chapter=${encodeURIComponent(feedback.chapter)}&module=${encodeURIComponent(feedback.section)}`
+    );
+  }
+  return '/admin/feedback';
+}
 const { requireAuth, optionalAuth } = require('../middleware/requireAuth');
 const { requireRole, ROLES } = require('../middleware/requireRole');
 
@@ -97,6 +110,34 @@ router.post('/', optionalAuth, async (req, res) => {
     } catch (notifyErr) {
       log.error({ err: notifyErr }, 'Feedback notification error');
       // Don't fail the request if notification fails
+    }
+
+    // Route translation-error feedback to the book's head-editors (Unit 5.4),
+    // linking straight to the module in the segment editor when known.
+    if (type === feedbackService.FEEDBACK_TYPES.TRANSLATION_ERROR && feedback.book) {
+      try {
+        const heads = userService
+          .getEditorsForBook(feedback.book)
+          .filter((u) => ['head-editor', 'admin'].includes(u.role));
+        const link = feedbackLink(feedback);
+        const where = feedback.chapter
+          ? `${feedback.book} (kafli ${feedback.chapter})`
+          : feedback.book;
+        const snippet =
+          feedback.message.length > 140 ? feedback.message.slice(0, 140) + '…' : feedback.message;
+        for (const he of heads) {
+          await notifications.createNotification({
+            userId: String(he.id),
+            type: 'feedback_received',
+            title: 'Villa í þýðingu — ábending lesanda',
+            message: `Tilkynnt villa í ${where}: ${snippet}`,
+            link,
+            metadata: { feedbackId: feedback.id, book: feedback.book },
+          });
+        }
+      } catch (routeErr) {
+        log.error({ err: routeErr }, 'Feedback head-editor routing failed');
+      }
     }
 
     res.status(201).json({
