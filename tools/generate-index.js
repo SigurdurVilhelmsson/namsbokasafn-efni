@@ -35,6 +35,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import { extractTermText } from './lib/glossary-term.js';
 
 // ============================================================================
 // Configuration
@@ -266,9 +267,9 @@ function extractGlossaryFromCnxml(cnxmlPath, verbose) {
     const termId = defMatch[1];
     const defContent = defMatch[2];
 
-    // Extract term
-    const termMatch = defContent.match(/<term>([^<]+)<\/term>/);
-    const term = termMatch ? termMatch[1].trim() : null;
+    // Extract term — markup-tolerant (symbols wrapped in <emphasis>/<m:math>);
+    // a naive `<term>([^<]+)</term>` silently drops symbol-annotated terms.
+    const term = extractTermText(defContent);
 
     // Extract meaning (handle nested elements)
     const meaningMatch = defContent.match(/<meaning[^>]*>([\s\S]*?)<\/meaning>/);

@@ -1,0 +1,110 @@
+{
+  "_comment": "Durable curation for efnafraedi-2e glossary, applied by tools/apply-glossary-supplement.js after generate-glossary.js. add = terms with NO CNXML <glossary> source (hand-authored, from inline <dfn> lacking an end-of-chapter definition). graftAlternateEnglish = synonym arrays so inline (e. synonym) annotations resolve to the generated headword. Provenance: commit 4d8ba9df + 2026-06-25 audit. Symbol-annotated terms (enthalpy/heat/etc.) are NOT here: they extract natively after the <term> markup fix (tools/lib/glossary-term.js).",
+  "add": [
+    {
+      "term": "Atwater-kerfið",
+      "definition": "kerfi til að áætla orkuinnihald matvæla út frá magni próteina, fitu og kolvetna",
+      "chapter": 5,
+      "english": "Atwater system"
+    },
+    {
+      "term": "katóðugeisli",
+      "definition": "geisli sem fellur frá katóðu í katóðugeislalampa; samanstendur af rafeindum",
+      "chapter": 2,
+      "english": "cathode ray"
+    },
+    {
+      "term": "lífeldsneyti",
+      "definition": "eldsneyti sem er framleitt úr lífrænum efnum, svo sem plöntuolíu, dýrafitu, eða úrgangsefnum",
+      "chapter": 5,
+      "english": "biofuel"
+    },
+    {
+      "term": "lögmál Gay-Lussacs",
+      "definition": "á við um fast magn gass við fast rúmmál: þrýstingur gass er í beinu hlutfalli við hita þess á Kelvin-skalanum",
+      "chapter": 9,
+      "english": "Gay-Lussac's law"
+    },
+    {
+      "term": "röð (í lotukerfinu)",
+      "definition": "lárétt röð frumefna í lotukerfinu",
+      "chapter": 2,
+      "english": "series"
+    },
+    {
+      "term": "sameindamassi",
+      "definition": "massi í atómmassaeiningum (amu) af einni sameind efnis; jafnt summu atómmassa atómanna í sameindinni",
+      "chapter": 2,
+      "english": "molecular mass"
+    }
+  ],
+  "graftAlternateEnglish": [
+    {
+      "english": "dimensional analysis",
+      "alternateEnglish": [
+        "factor-label method"
+      ]
+    },
+    {
+      "english": "rate expression",
+      "alternateEnglish": [
+        "rate law",
+        "rate equation"
+      ]
+    },
+    {
+      "english": "equilibrium constant (k)",
+      "alternateEnglish": [
+        "equilibrium constant, k"
+      ]
+    },
+    {
+      "english": "calorie (cal)",
+      "alternateEnglish": [
+        "calories (cal)"
+      ]
+    },
+    {
+      "english": "law of constant composition",
+      "alternateEnglish": [
+        "law of definite proportions"
+      ]
+    },
+    {
+      "english": "significant figures",
+      "alternateEnglish": [
+        "significant digits"
+      ]
+    },
+    {
+      "english": "oxidation number",
+      "alternateEnglish": [
+        "oxidation state"
+      ]
+    },
+    {
+      "english": "standard conditions of temperature and pressure (stp)",
+      "alternateEnglish": [
+        "standard temperature and pressure (stp)"
+      ]
+    },
+    {
+      "english": "balanced equation",
+      "alternateEnglish": [
+        "balanced"
+      ]
+    },
+    {
+      "english": "activated complex",
+      "alternateEnglish": [
+        "transition state"
+      ]
+    },
+    {
+      "english": "law of constant composition",
+      "alternateEnglish": [
+        "law of definite proportions"
+      ]
+    }
+  ]
+}
