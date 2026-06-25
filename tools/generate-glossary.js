@@ -27,6 +27,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import { extractTermText } from './lib/glossary-term.js';
 
 // ============================================================================
 // Configuration
@@ -193,9 +194,12 @@ function extractGlossaryFromCnxml(cnxmlPath, verbose) {
   while ((defMatch = definitionPattern.exec(glossaryContent)) !== null) {
     const defContent = defMatch[2];
 
-    // Extract term text
-    const termMatch = defContent.match(/<term>([^<]+)<\/term>/);
-    const term = termMatch ? termMatch[1].replace(/\s+/g, ' ').trim() : null;
+    // Extract term text. NOTE: must tolerate inline markup inside <term> —
+    // physical-quantity symbols are wrapped (e.g. `varmi (<emphasis>q</emphasis>)`,
+    // `entalpía (<emphasis>H</emphasis>)`) and some carry <m:math>/[[math:N]].
+    // A naive `<term>([^<]+)</term>` silently drops every such term (65 book-wide
+    // for efnafraedi-2e). Strip markup the same way <meaning> does.
+    const term = extractTermText(defContent);
 
     // Extract meaning and strip XML tags
     const meaningMatch = defContent.match(/<meaning[^>]*>([\s\S]*?)<\/meaning>/);

@@ -1,12 +1,12 @@
 {
-  "generated": "2026-06-19T15:28:16.750Z",
+  "generated": "2026-06-25T19:22:57.566Z",
   "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]])",
   "summary": {
     "totalChecked": 148,
     "perfect": 118,
     "withDiscrepancies": 30,
     "skippedUntranslated": 0,
-    "totalDiscrepancies": 50
+    "totalDiscrepancies": 47
   },
   "modules": [
     {
@@ -53,10 +53,6 @@
       "moduleId": "m68727",
       "chapter": "ch05",
       "discrepancies": [
-        {
-          "tag": "m:math",
-          "diff": 3
-        },
         {
           "tag": "para",
           "diff": -7
