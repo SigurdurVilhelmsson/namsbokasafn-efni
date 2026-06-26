@@ -57,6 +57,10 @@ else
 fi
 
 # 3. Pull latest from origin
+# Register the "ours" merge driver (see .gitattributes) so the perpetually-dirty
+# books/*/translation-errors.json manifest never conflicts on the rebase pull.
+# Idempotent; lives in .git/config (not committed), so re-assert it every deploy.
+git config merge.ours.driver true
 echo "Pulling from origin..."
 git pull --rebase origin main
 
