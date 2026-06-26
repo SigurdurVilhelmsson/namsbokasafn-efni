@@ -950,6 +950,65 @@ function inferMimeType(src) {
 }
 
 /**
+ * "From-scratch SVG" image-localization route (distinct from the legacy
+ * figure-id mechanism in resolveTranslatedImage). Swap any <image> whose src
+ * basename matches a translated variant, regardless of the enclosing element
+ * (figure / example / exercise / standalone media). The figure-id mechanism
+ * only reaches <figure> images; this pass reaches all of them because it keys
+ * on the image basename, which render emits uniformly.
+ *
+ * Entries are matched by an exact `originalImage` basename (no extension); the
+ * presence of that field is what distinguishes new-route entries from legacy
+ * figure-id entries (which carry `figureId` and are left untouched here).
+ *
+ * @param {string} cnxml - Assembled module CNXML
+ * @param {Array<{originalImage:string,outputName:string}>} basenameMap
+ * @returns {string} CNXML with matching <image> srcs (and mime-types) swapped
+ */
+function applyImageBasenameSwaps(cnxml, basenameMap) {
+  if (!cnxml || !Array.isArray(basenameMap) || basenameMap.length === 0) return cnxml;
+  const byBasename = new Map();
+  for (const e of basenameMap) {
+    if (e && e.originalImage && e.outputName) byBasename.set(e.originalImage, e);
+  }
+  if (byBasename.size === 0) return cnxml;
+
+  return cnxml.replace(/<image\b[^>]*?\/?>/g, (tag) => {
+    const srcMatch = tag.match(/\ssrc="([^"]*)"/);
+    if (!srcMatch) return tag;
+    const file = srcMatch[1].split('/').pop();
+    const basename = file.replace(/\.[^.]+$/, '');
+    const entry = byBasename.get(basename);
+    if (!entry) return tag;
+    const prefix = srcMatch[1].slice(0, srcMatch[1].length - file.length);
+    const newSrc = prefix + entry.outputName;
+    const mimeType = inferMimeType(entry.outputName);
+    let updated = tag.replace(/\ssrc="[^"]*"/, ` src="${newSrc}"`);
+    updated = /\smime-type="[^"]*"/.test(updated)
+      ? updated.replace(/\smime-type="[^"]*"/, ` mime-type="${mimeType}"`)
+      : updated.replace(/<image\b/, `<image mime-type="${mimeType}"`);
+    return updated;
+  });
+}
+
+/**
+ * Load the new-route (basename-keyed) image map from a book's media dir.
+ * Returns only entries that carry `originalImage` — legacy figure-id entries
+ * (and the docx-import route) are intentionally excluded.
+ * @param {string} bookDir - Book directory
+ * @returns {Array<{originalImage:string,outputName:string,extension?:string}>}
+ */
+function loadImageBasenameMap(bookDir) {
+  const mappingPath = path.join(bookDir, 'media', 'image-mapping.json');
+  try {
+    const data = JSON.parse(fs.readFileSync(mappingPath, 'utf-8'));
+    return Array.isArray(data) ? data.filter((e) => e && e.originalImage && e.outputName) : [];
+  } catch {
+    return [];
+  }
+}
+
+/**
  * Escape XML special characters.
  * @param {string} text - Text to escape
  * @returns {string} Escaped text
@@ -3224,6 +3283,13 @@ async function main() {
   if (imageMapping.size > 0 && args.verbose) {
     console.error(`Loaded image mapping: ${imageMapping.size} translated image(s)`);
   }
+  // New-route (from-scratch SVG) basename-keyed swaps — applied as a post-pass
+  // over each assembled module so it reaches example/exercise/standalone images
+  // the figure-id mechanism cannot.
+  const imageBasenameMap = loadImageBasenameMap(BOOKS_DIR);
+  if (imageBasenameMap.length > 0 && args.verbose) {
+    console.error(`Loaded basename image swaps: ${imageBasenameMap.length} translated image(s)`);
+  }
 
   try {
     const modules = findChapterModules(args.chapter, args.module);
@@ -3312,6 +3378,10 @@ async function main() {
         inlineAttrs
       );
 
+      // New-route image localization: swap any <image> (figure or not) whose
+      // basename has a translated SVG variant. No-op when the map is empty.
+      result.cnxml = applyImageBasenameSwaps(result.cnxml, imageBasenameMap);
+
       if (!result.report.complete && !args.allowIncomplete) {
         console.error(`${moduleId}: SKIPPED — incomplete injection`);
         if (result.report.segmentsMissing.length > 0) {
@@ -3392,4 +3462,6 @@ export {
   buildExerciseDom,
   buildNote,
   buildNoteDom,
+  applyImageBasenameSwaps,
+  loadImageBasenameMap,
 };

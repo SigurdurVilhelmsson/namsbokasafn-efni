@@ -85,7 +85,7 @@
 <para id="fs-idm116173824"><link target-id="CNX_Chem_03_03_empform"/> sýnir þessa aðferð á flæðiriti fyrir efni sem inniheldur frumefnin A og X.</para>
 <figure id="CNX_Chem_03_03_empform">
 <media id="fs-idm114759824" alt="A flow chart is shown that is composed of six boxes, two of which are connected together by a right facing arrow and located above two more that are also connected by a right-facing arrow. These two rows of boxes are connected vertically by a line that leads to a right-facing arrow and the last two boxes, connected by a final right facing arrow. The first two upper boxes have the phrases, “Mass of A atoms” and “Moles of A atoms” respectively, while the arrow that connects them has the phrase, “Divide by molar mass,” written below it. The second two bottom boxes have the phrases, “Mass of X atoms” and “Moles of X atoms” respectively, while the arrow that connects them has the phrase, “Divide by molar mass” written below it. The arrow that connects the upper and lower boxes to the last two boxes has the phrase “Divide by lowest number of moles” written below it. The last two boxes have the phrases, “A to X mole ratio” and “Empirical formula” respectively, while the arrow that connects them has the phrase, “Convert ratio to lowest whole numbers” written below it.">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_03_empform.jpg"/>
+<image mime-type="image/svg+xml" src="../../media/CNX_Chem_03_03_empform_IS.svg"/>
 </media>
 <caption>Reynsluformúlu efnasambands má leiða út frá massa allra frumefna í sýninu.</caption>
 </figure>

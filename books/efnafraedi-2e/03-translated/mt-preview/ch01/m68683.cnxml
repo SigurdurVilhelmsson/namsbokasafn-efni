@@ -144,7 +144,7 @@
 <para id="fs-idm288599552">Talan 273,15 í þessum jöfnum hefur verið ákvörðuð með tilraunum, svo hún er ekki nákvæm. <link target-id="CNX_Chem_01_06_TempScales"/> sýnir sambandið milli þriggja hitakvarðanna.</para>
 <figure id="CNX_Chem_01_06_TempScales">
 <media id="fs-idm249665120" alt="A thermometer is shown for the Fahrenheit, Celsius and Kelvin scales. Under the Fahrenheit scale, the boiling point of water is 212 degrees while the freezing point of water is 32 degrees. Therefore, there are 180 Fahrenheit degrees between the boiling point of water and the freezing point of water. Under the Celsius scale, the boiling point of water is 100 degrees while the freezing point of water is 0 degrees. Therefore, there are 100 Celsius degrees between the boiling point and freezing point of water. Under the kelvin scale, the boiling point of water is 373.15 K, while the freezing point of water is 273.15 K. 233.15 K is equal to negative 40 degrees Celsius, which is also equal to negative 40 degrees Fahrenheit.">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_01_06_TempScales.jpg"/>
+<image mime-type="image/svg+xml" src="../../media/CNX_Chem_01_06_TempScales_IS.svg"/>
 </media>
 <caption>Fahrenheit-, Celsíus- og kelvinhitakvarðarnir eru bornir saman.</caption>
 </figure>

@@ -10,17 +10,17 @@
 <content>
 <para id="fs-idp109649680">Líkan blendingsvigrúma virðist gera vel grein fyrir rúmfræði sameinda sem innihalda stök samgild tengi. Getur það einnig lýst sameindum sem innihalda tví- og þrítengi? Við höfum þegar rætt að fjölföld tengi samanstanda af σ- og π-tengjum. Næst getum við skoðað hvernig við sjáum þessa hluti fyrir okkur og hvernig þeir tengjast blendingsvigrúmum. Lewis-bygging etens, C<sub>2</sub>H<sub>4</sub>, sýnir okkur að hvert kolefnisatóm er umkringt einu öðru kolefnisatómi og tveimur vetnisatómum.</para>
 <media id="fs-idp35800208" class="scaled-down" alt="A Lewis structure is shown in which two carbon atoms are bonded together by a double bond. Each carbon atom is bonded to two hydrogen atoms by a single bond.">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_03_C4H4Lewis_img.jpg"/>
+<image mime-type="image/svg+xml" src="../../media/CNX_Chem_08_03_C4H4Lewis_img_IS.svg"/>
 </media>
 <para id="fs-idp40201472">Þrjú tengisvæðin mynda þríhyrningsflatneskju rafeindapara-rúmfræði. Því gerum við ráð fyrir að σ-tengin frá hverju kolefnisatómi séu mynduð með setti af <emphasis effect="italics">sp</emphasis><sup>2</sup>-blendingsvigrúmum sem verða til við blöndun tveggja af 2<emphasis effect="italics">p</emphasis>-svigrúmunum og 2<emphasis effect="italics">s</emphasis>-svigrúminu (<link target-id="CNX_Chem_08_03_sp3config"/>). Þessi svigrúm mynda C–H stök tengi og σ-tengið í <m:math><m:mrow><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mtext>C</m:mtext></m:mrow></m:math> tvítenginu (<link target-id="CNX_Chem_08_03_C2H4orbit"/>)<emphasis effect="italics">.</emphasis> π-tengið í <m:math><m:mrow><m:mtext>C</m:mtext><m:mo>=</m:mo><m:mtext>C</m:mtext></m:mrow></m:math> tvítenginu verður til vegna skörunar þriðja (eftirstandandi) 2<emphasis effect="italics">p</emphasis>-svigrúmsins á hverju kolefnisatómi sem tekur ekki þátt í blönduninni. Þetta óblandaða <emphasis effect="italics">p</emphasis>-svigrúm (bleðlar sýndir í rauðu og bláu á <link target-id="CNX_Chem_08_03_C2H4orbit"/>) er hornrétt á plan <emphasis effect="italics">sp</emphasis><sup>2</sup>-blendingssvigrúmanna. Þannig skarast óblönduðu 2<emphasis effect="italics">p</emphasis>-svigrúmin hlið við hlið, fyrir ofan og neðan tengiásinn (<link target-id="CNX_Chem_08_03_C2H4orbit"/>) og mynda π-tengi<emphasis effect="italics">.</emphasis></para>
 <figure id="CNX_Chem_08_03_sp3config" class="scaled-down">
 <media id="fs-idp21744512" alt="A diagram is shown in two parts, connected by a right facing arrow labeled, “Hybridization.” The left diagram shows an up-facing arrow labeled, “E.” To the lower right of the arrow is a short, horizontal line labeled, “2 s,” that has two vertical half-arrows facing up and down on it. To the upper right of the arrow are a series of three short, horizontal lines labeled, “2 p.” Above both sets of lines is the phrase, “Orbitals in an isolated C atom.” Two of the lines have vertical, up-facing arrows drawn on them. The right side of the diagram shows three short, horizontal lines placed halfway up the space and each labeled, “s p superscript 2.” An upward-facing half arrow is drawn vertically on each line. Above these lines is one other short, horizontal line, labeled, “p.” Above both sets of lines is the phrase, “Orbitals in the s p superscript 2 hybridized C atom in C subscript 2 H subscript 4.”">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_03_sp3config.jpg"/>
+<image mime-type="image/svg+xml" src="../../media/CNX_Chem_08_03_sp3config_IS.svg"/>
 </media>
 <caption>Í eten er hvert kolefnisatóm <emphasis effect="italics">sp</emphasis><sup>2</sup>-blandað og <emphasis effect="italics">sp</emphasis><sup>2</sup>-svigrúmin og <emphasis effect="italics">p</emphasis>-svigrúmið eru hálffull. Blendingssvigrúmin skarast til að mynda σ-tengi, á meðan <emphasis effect="italics">p</emphasis>-svigrúmin á hverju kolefnisatómi skarast til að mynda π-tengi.</caption>
 </figure>
 <figure id="CNX_Chem_08_03_C2H4orbit" class="scaled-down"><media id="fs-idp201403520" alt="Two diagrams are shown labeled, “a” and “b.” Diagram a shows two carbon atoms with three purple balloon-like orbitals arranged in a plane around them and two red balloon-like orbitals arranged vertically and perpendicularly to the plane. There is an overlap of two of the purple orbitals in between the two carbon atoms, and the other four purple orbitals that face the outside of the molecule are shown interacting with spherical blue orbitals from four hydrogen atoms. Diagram b depicts a similar image to diagram a, but the red, vertical orbitals are interacting above and below the plane of the molecule to form two areas labeled, “One pi bond.”">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_03_C2H4orbit.jpg"/>
+<image mime-type="image/svg+xml" src="../../media/CNX_Chem_08_03_C2H4orbit_IS.svg"/>
 </media>
 
 <caption>Í etensameindinni, C<sub>2</sub>H<sub>4,</sub> eru (a) fimm σ-tengi. Eitt C–C σ-tengi verður til vegna skörunar <emphasis effect="italics">sp</emphasis><sup>2</sup>-blendingssvigrúma á kolefnisatóminu við eitt <emphasis effect="italics">sp</emphasis><sup>2</sup>-blendingssvigrúm á hinu kolefnisatóminu. Fjögur C–H tengi verða til vegna skörunar milli <emphasis effect="italics">sp</emphasis><sup>2</sup>-svigrúma kolefnisatómanna og <emphasis effect="italics">s</emphasis>-svigrúma á vetnisatómum. (b) π-tengið myndast við hlið-við-hlið skörun tveggja óblandaðra <emphasis effect="italics">p</emphasis>-svigrúma í kolefnisatómum tveimur. Tveir bleðlar π-tengisins eru fyrir ofan og neðan plan σ-kerfisins.</caption></figure>
@@ -28,13 +28,13 @@
 <para id="fs-idp40636368">Í sameindum með <emphasis effect="italics">sp</emphasis>-blendingssvigrúm eru tvö óblönduð <emphasis effect="italics">p</emphasis>-svigrúm eftir á atóminu (<link target-id="CNX_Chem_08_03_spC"/>). Við finnum þetta ástand í asetýleni, <m:math><m:mrow><m:mtext>H−C≡C−H</m:mtext><m:mo>,</m:mo></m:mrow></m:math> sem er línuleg sameind. <emphasis effect="italics">sp</emphasis>-blendingssvigrúm kolefnisatómanna tveggja skarast enda til enda til að mynda σ-tengi milli kolefnisatómanna (<link target-id="CNX_Chem_08_03_C2H2"/>). Eftirstandandi <emphasis effect="italics">sp</emphasis>-svigrúmin mynda σ-tengi við vetnisatóm. Óblönduðu <emphasis effect="italics">p</emphasis>-svigrúmin tvö á hverju kolefni eru staðsett þannig að þau skarast hlið við hlið og mynda þar með tvö π-tengi. Kolefnisatómin tvö í asetýleni eru því bundin saman með einu σ-tengi og tveimur π-tengjum, sem gefur þrítengi.</para>
 <figure id="CNX_Chem_08_03_spC" class="scaled-down">
 <media id="fs-idp46978352" alt="A diagram of a carbon atom with two balloon-like purple orbitals labeled, “sp” arranged in a linear fashion around it is shown. Four red balloon-like orbitals are aligned in pairs in the y and z axes around the carbon and are labeled, “unhybridized p orbital,” and, “Second unhybridized p orbital.”">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_03_spC.jpg"/>
+<image mime-type="image/svg+xml" src="../../media/CNX_Chem_08_03_spC_IS.svg"/>
 </media>
 <caption>Skýringarmynd af tveimur línulegum <emphasis effect="italics">sp</emphasis>-blendingssvigrúmum kolefnisatóms, sem liggja í beinni línu, og tveimur óblönduðum <emphasis effect="italics">p</emphasis>-svigrúmum sem eru hornrétt á þau.</caption>
 </figure>
 <figure id="CNX_Chem_08_03_C2H2" class="scaled-down">
 <media id="fs-idp112665792" alt="Two diagrams are shown and labeled, “a” and “b.” Diagram a shows two carbon atoms with two purple balloon-like orbitals arranged in a plane around each of them, and four red balloon-like orbitals arranged along the y and z axes perpendicular to the plane of the molecule. There is an overlap of two of the purple orbitals in between the two carbon atoms. The other two purple orbitals that face the outside of the molecule are shown interacting with spherical blue orbitals from two hydrogen atoms. Diagram b depicts a similar image to diagram a, but the red, vertical orbitals are interacting above and below and to the front and back of the plane of the molecule to form two areas labeled, “One pi bond,” and, “Second pi bond,” each respectively.">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_03_C2H2.jpg"/>
+<image mime-type="image/svg+xml" src="../../media/CNX_Chem_08_03_C2H2_IS.svg"/>
 </media>
 <caption>(a) Í asetýlensameindinni, C<sub>2</sub>H<sub>2,</sub> eru tvö C–H σ-tengi og <m:math><m:mrow><m:mtext>C</m:mtext><m:mo>≡</m:mo><m:mtext>C</m:mtext></m:mrow></m:math> þrítengi sem felur í sér eitt C–C σ-tengi og tvö C–C π-tengi. Stiplalínurnar, sem hver um sig tengir tvo bleðla, gefa til kynna hlið-við-hlið skörun fjögurra óblandaðra <emphasis effect="italics">p</emphasis>-svigrúma. (b) Þetta sýnir heildarútlínur tengjanna í C<sub>2</sub>H<sub>2</sub>. Tveir bleðlar hvers π-tengis eru staðsettir hvor á móti öðrum umhverfis línu C–C σ-tengisins.</caption>
 </figure>
@@ -42,7 +42,7 @@
 <para id="fs-idp155207440">Til dæmis hefur sameindin bensen tvö samgildisform (<link target-id="CNX_Chem_08_03_C6H6"/>). Við getum notað hvort þessara forma sem er til að ákvarða að hvert kolefnisatóm sé tengt þremur öðrum atómum án stakra rafeindapara, þannig að rétt blending er <emphasis effect="italics">sp</emphasis><sup>2</sup>. Rafeindirnar í óblönduðu <emphasis effect="italics">p</emphasis>-svigrúmunum mynda π-tengi. Hvorugt samgildisformið lýsir rafeindunum í π-tengjunum að fullu. Þær eru ekki staðsettar í einni stöðu eða annarri, heldur eru þær í raun óstaðbundnar um allan hringinn. Gildisrafeindatengjafræðin á erfitt með að útskýra óstaðbundnar rafeindir. Tengsl í sameindum með samgildisformum er betur lýst með sameindasvigrúmafræði. (Sjá næsta kafla.)</para>
 <figure id="CNX_Chem_08_03_C6H6" class="scaled-down">
 <media id="fs-idp4433648" alt="A diagram is shown that is made up of two Lewis structures connected by a double ended arrow. The left image shows six carbon atoms bonded together with alternating double and single bonds to form a six-sided ring. Each carbon is also bonded to a hydrogen atom by a single bond. The right image shows the same structure, but the double and single bonds in between the carbon atoms have changed positions.">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_03_C6H6.jpg"/>
+<image mime-type="image/svg+xml" src="../../media/CNX_Chem_08_03_C6H6_IS.svg"/>
 </media>
 <caption>Hvert kolefnisatóm í benseni, C<sub>6</sub>H<sub>6</sub>, er <emphasis effect="italics">sp</emphasis><sup>2</sup>-blandað, óháð því hvaða samgildisform er skoðað. Rafeindirnar í π-tengjunum eru ekki staðsettar í einu setti af <emphasis effect="italics">p</emphasis>-svigrúmum eða öðru, heldur eru þær óstaðbundnar um alla sameindina.</caption>
 </figure>
@@ -50,7 +50,7 @@
 <para id="fs-idm123905056"><title>Ákvörðun blendingar með samgildi</title>Súrt regn verður að hluta til vegna hvarfs brennisteinsdíoxíðs við vatnsgufu í andrúmsloftinu og síðari myndunar brennisteinssýru. Brennisteinsdíoxíð, SO<sub>2</sub>, er stór hluti af eldfjallagösum auk þess að vera afurð bruna á brennisteinsríkum kolum. Hver er blending brennisteinsatómsins í SO<sub>2</sub>?</para>
 <para id="fs-idm9390272"><title>Lausn</title>Samgildisform SO<sub>2</sub> eru</para>
 <media id="fs-idp71841872" class="scaled-down" alt="Two Lewis structures connected by a double-ended arrow are shown. The left structure shows a sulfur atom with one lone pair of electrons and a positive sign which is single bonded on one side to an oxygen atom with three lone pairs of electrons and a negative sign. The sulfur atom is double bonded on the other side to another oxygen atom with two lone pairs of electrons. The right-hand structure is the same as the left except that the position of the double bonded oxygen atom is switched. In both structures the attached oxygen atoms form an acute angle in terms of the sulfur atom.">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_03_SO2_img.jpg"/>
+<image mime-type="image/svg+xml" src="../../media/CNX_Chem_08_03_SO2_img_IS.svg"/>
 </media>
 <para id="fs-idp103363168">Brennisteinsatómið er umkringt tveimur tengjum og einu stöku rafeindapari í hvoru samgildisforminu sem er. Þess vegna er rúmfræði rafeindaparanna þríhyrnd og flöt og blending brennisteinsatómsins er <emphasis effect="italics">sp</emphasis><sup>2</sup>.</para>
 <para id="fs-idp41312960"><title>Kannaðu þekkingu þína</title>Önnur sýra í súru regni er saltpéturssýra, HNO<sub>3</sub>, sem myndast við hvarf köfnunarefnisdíoxíðs, NO<sub>2</sub>, við vatnsgufu í andrúmsloftinu. Hver er blending köfnunarefnisatómsins í NO<sub>2</sub>? (Athugið: staka rafeindin á köfnunarefni tekur blandað svigrúm alveg eins og stakt rafeindapar myndi gera.)</para>
@@ -86,7 +86,7 @@
 <para id="fs-idp146093984">(c) Lýstu atómsvigrúmunum sem mynda π-tengin í sameindinni. Athugaðu að það er ekki nauðsynlegt að blanda köfnunarefnisatómið.</para>
 </problem>
 <solution id="fs-idp146234848">
-<para id="fs-idp100065568">(a)<newline/> <media id="fs-idp73575216" alt="A Lewis structure is shown in which a carbon atom is attached by single bonds to three hydrogen atoms. It is also attached by a single bond to a carbon atom that is triple bonded to a nitrogen atom with one lone electron pair. Below the structure is a right facing arrow with its head near the nitrogen and its tail, which looks like a plus sign, located near the carbon atoms. The arrow is labeled, “dipole moment.”"><image mime-type="image/jpeg" src="../../media/CNX_Chem_08_03_Acetonitri_img.jpg"/></media><newline/> (b) Endakolefnisatómið notar <emphasis effect="italics">sp</emphasis><sup>3</sup> blendingssvigrúm, en miðkolefnisatómið er <emphasis effect="italics">sp</emphasis>-blandað. (c) Hvort tveggja π-tengjanna er myndað með skörun 2<emphasis effect="italics">p</emphasis>-svigrúms á kolefni og 2<emphasis effect="italics">p</emphasis>-svigrúms á köfnunarefni.</para></solution>
+<para id="fs-idp100065568">(a)<newline/> <media id="fs-idp73575216" alt="A Lewis structure is shown in which a carbon atom is attached by single bonds to three hydrogen atoms. It is also attached by a single bond to a carbon atom that is triple bonded to a nitrogen atom with one lone electron pair. Below the structure is a right facing arrow with its head near the nitrogen and its tail, which looks like a plus sign, located near the carbon atoms. The arrow is labeled, “dipole moment.”"><image mime-type="image/svg+xml" src="../../media/CNX_Chem_08_03_Acetonitri_img_IS.svg"/></media><newline/> (b) Endakolefnisatómið notar <emphasis effect="italics">sp</emphasis><sup>3</sup> blendingssvigrúm, en miðkolefnisatómið er <emphasis effect="italics">sp</emphasis>-blandað. (c) Hvort tveggja π-tengjanna er myndað með skörun 2<emphasis effect="italics">p</emphasis>-svigrúms á kolefni og 2<emphasis effect="italics">p</emphasis>-svigrúms á köfnunarefni.</para></solution>
 </exercise>
 <exercise id="fs-idm1022320">
 <problem id="fs-idp19757232">
@@ -133,15 +133,15 @@
 <para id="fs-idp78053152">Fyrir hverja eftirfarandi byggingu, ákvarðaðu umbeðið blendingsástand og hvort rafeindirnar verði óstaðbundnar:</para>
 <para id="fs-idp208621408">(a) Blendingsástand hvers kolefnisatóms</para>
 <media id="fs-idm5983024" class="scaled-down-30" alt="A Lewis structure is shown in which a carbon atom is single bonded to three hydrogen atoms and a second carbon atom. This second carbon atom is, in turn, double bonded to an oxygen atom with two lone pairs of electrons. The second carbon atom is also single bonded to another carbon atom that is single bonded to three hydrogen atoms.">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_03_HybridCarb_img.jpg"/>
+<image mime-type="image/svg+xml" src="../../media/CNX_Chem_08_03_HybridCarb_img_IS.svg"/>
 </media>
 <para id="fs-idp81536672">(b) Blendingsástand brennisteins</para>
 <media id="fs-idm13440432" class="scaled-down-30" alt="A Lewis structure is shown in which a sulfur atom with two lone pairs of electrons and a positive sign is double bonded to an oxygen with two lone pairs of electrons. The sulfur atom is also single bonded to an oxygen with three lone pairs of electrons with a negative sign. It is drawn in an angular shape.">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_03_HybridSulf_img.jpg"/>
+<image mime-type="image/svg+xml" src="../../media/CNX_Chem_08_03_HybridSulf_img_IS.svg"/>
 </media>
 <para id="fs-idp40676640">(c) Öll atóm</para>
 <media id="fs-idp64002112" class="scaled-down-30" alt="A Lewis structure is shown in which a hexagonal ring structure is made up of five carbon atoms and one nitrogen atom with a lone pair of electrons. There are alternating double and single bonds in between each carbon atom. Each carbon atom is also single bonded to one hydrogen atom.">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_03_HybridAll_img.jpg"/>
+<image mime-type="image/svg+xml" src="../../media/CNX_Chem_08_03_HybridAll_img_IS.svg"/>
 </media>
 </problem>
 </exercise>
@@ -150,7 +150,7 @@
 </problem>
 <solution id="fs-idp197400320">
 <media id="fs-idp20471104" alt="A diagram is shown in two parts, connected by a right facing arrow labeled, “Hybridization.” The left diagram shows an up-facing arrow labeled, “E.” To the lower right of the arrow is a short, horizontal line labeled, “2 s,” that has two vertical half-arrows facing up and down on it. To the upper right of the arrow are a series of three short, horizontal lines labeled, “2 p.” Above both sets of lines is the phrase, “Orbitals in an isolated C atom.” There are two upward facing arrows on two of these lines. The right side of the diagram shows two short, horizontal lines placed halfway up the space and each labeled, “s p.” An upward-facing half arrow is drawn vertically on each line. Above these lines are two other short, horizontal lines, each labeled, “2 p,” and which have two upward facing arrows on them. Above both sets of lines is the phrase, “Orbitals in the s p hybridized C in C O subscript 2.”">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_08_02_CO2Diag.jpg"/>
+<image mime-type="image/svg+xml" src="../../media/CNX_Chem_08_02_CO2Diag_IS.svg"/>
 </media>
 <para id="fs-idp72644016">Hver af fjórum rafeindum er í sérstöku svigrúmi og skarast við rafeind á súrefnisatómi.</para></solution>
 </exercise>
