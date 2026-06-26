@@ -109,3 +109,9 @@ books/__e2e-fixture__/03-translated/
 books/__e2e-fixture__/04-localized-content/
 books/__e2e-fixture__/05-publication/
 books/__e2e-fixture__/tm/
+
+# SVG image-localization holding areas (orphans / reverted-to-jpg / pending Cowork re-export)
+books/*/media/_orphans/
+books/*/media/_reverted/
+books/*/media/_reexport-pending/
+books/*/media/_broken/
