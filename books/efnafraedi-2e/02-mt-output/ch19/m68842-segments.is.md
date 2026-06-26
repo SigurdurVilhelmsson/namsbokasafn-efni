@@ -525,7 +525,7 @@ Cd | Cd[[sup:2+]], {{i}}M{{/i}} = 0,10 ‖ Ni[[sup:2+]], {{i}}M{{/i}} = 0,50 | N
 Staðalafoxunarspennan fyrir efnahvarfið [[MATH:21]] er um 1,8 V. Afoxunarspennan fyrir efnahvarfið [[MATH:22]] er +0,1 V. Reiknaðu kerspennurnar til að sýna hvort flókajónirnar, [Co(H[[sub:2]]O)[[sub:6]]][[sup:2+]] og/eða [Co(NH[[sub:3]])[[sub:6]]][[sup:2+]], geti oxast í samsvarandi kóbalt(III) flóka með súrefni.
 
 <!-- SEG:m68842:solution:fs-idm203540224 -->
-{{i}}E{{/i}}  = −0,6 V, {{i}}E{{/i}}  er neikvætt svo þessi afoxun er ekki sjálfgeng. {{i}}E{{/i}}  = +1,1 V
+{{i}}E{{/i}}° = −0,6 V, {{i}}E{{/i}}° er neikvætt svo þessi afoxun er ekki sjálfgeng. {{i}}E{{/i}}° = +1,1 V
 
 <!-- SEG:m68842:problem:fs-idm227700096 -->
 Spáðu fyrir um myndefni hvers eftirfarandi efnahvarfs. (Athugið: Auk þess að nota upplýsingarnar í þessum kafla, notaðu einnig þá þekkingu sem þú hefur aflað þér á þessu stigi námsins, þar á meðal upplýsingar um að spá fyrir um myndefni efnahvarfa.)

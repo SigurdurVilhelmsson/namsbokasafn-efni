@@ -11,6 +11,7 @@ import {
   bookToDomain,
   loadGlossary,
   splitAtSegBoundaries,
+  assertNoControlChars,
 } from '../api-translate.js';
 import fs from 'fs';
 import path from 'path';
@@ -427,5 +428,35 @@ describe('splitAtSegBoundaries', () => {
     const inputCount = (input.match(/<!-- SEG:/g) || []).length;
     const outputCount = (reassembled.match(/<!-- SEG:/g) || []).length;
     expect(outputCount).toBe(inputCount);
+  });
+});
+
+// ─── assertNoControlChars ───────────────────
+// Guards the MT boundary: the Malstadur API has been observed returning the
+// degree sign (U+00B0) corrupted as a NUL byte (sometimes NUL + literal "b0").
+// NUL and other C0 control chars are invalid in XML/HTML and silently corrupt
+// content three stages downstream, so we fail loud at the producer.
+
+describe('assertNoControlChars', () => {
+  it('throws when text contains a NUL byte', () => {
+    expect(() => assertNoControlChars('\u0000b0 = 87 kJ', 'm68831')).toThrow(/control char/i);
+  });
+
+  it('throws when text contains another C0 control char (e.g. 0x1F)', () => {
+    expect(() => assertNoControlChars('A\u001fB', 'chunk 1')).toThrow(/control char/i);
+  });
+
+  it('includes the label in the thrown error', () => {
+    expect(() => assertNoControlChars('x\u0000y', 'ch18/m68831')).toThrow(/ch18\/m68831/);
+  });
+
+  it('passes clean text through unchanged (returns the text)', () => {
+    const clean = 'ΔH° = 87 kJ; við 26 °C';
+    expect(assertNoControlChars(clean, 'm68831')).toBe(clean);
+  });
+
+  it('allows tab, newline and carriage return (valid whitespace)', () => {
+    const text = 'line1\n\tindented\r\nline2';
+    expect(() => assertNoControlChars(text, 'ws')).not.toThrow();
   });
 });
