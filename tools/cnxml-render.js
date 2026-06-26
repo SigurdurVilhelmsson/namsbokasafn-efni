@@ -1302,6 +1302,20 @@ function renderNote(note, context, extraClass = '') {
     elementsWithPositions.push({ type: 'figure', item: figure, position: pos !== -1 ? pos : 0 });
   }
 
+  // Standalone <media> not wrapped in a <figure> — e.g. the "Check Your Learning"
+  // answer image inside <example><note>. Strip figures first so their nested
+  // <media> children aren't double-counted (mirrors the example renderer).
+  let contentForMedia = contentWithoutTitle;
+  for (const figure of figures)
+    if (figure.fullMatch) contentForMedia = contentForMedia.replace(figure.fullMatch, '');
+  const medias = extractNestedElements(contentForMedia, 'media');
+  for (const media of medias) {
+    const pos = media.fullMatch
+      ? contentWithoutTitle.indexOf(media.fullMatch)
+      : contentWithoutTitle.indexOf(`id="${media.id}"`);
+    elementsWithPositions.push({ type: 'media', item: media, position: pos !== -1 ? pos : 0 });
+  }
+
   for (const list of lists) {
     const pos = list.id
       ? contentWithoutTitle.indexOf(`id="${list.id}"`)
@@ -1320,6 +1334,8 @@ function renderNote(note, context, extraClass = '') {
       lines.push(`  ${renderFigure(elem.item, context)}`);
     } else if (elem.type === 'list') {
       lines.push(`  ${renderList(elem.item, context)}`);
+    } else if (elem.type === 'media') {
+      lines.push(`  ${renderMedia(elem.item, context)}`);
     }
   }
 

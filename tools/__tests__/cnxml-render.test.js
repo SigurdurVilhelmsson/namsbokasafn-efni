@@ -196,6 +196,25 @@ describe('renderCnxmlToHtml', () => {
     expect(result.html).toContain('Þetta er fyrsta málsgreinin');
   });
 
+  it('renders a standalone <media> inside a note (Check Your Learning answer image)', () => {
+    // Regression: renderNote extracted para/figure/list but not bare <media>, so
+    // an answer image not wrapped in <figure> (the OpenStax "Check Your Learning"
+    // answer pattern: <example><note><media><image/></media></note></example>)
+    // was silently dropped from the rendered HTML.
+    const cnxml = `<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Próf</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml"><md:content-id>m00001</md:content-id><md:title>Próf</md:title></metadata>
+<content>
+<example id="ex-test"><para id="p-q"><title>Athugaðu þekkingu</title>Spurning?</para>
+<note id="note-ans"><title>Svar:</title>
+<media id="media-ans" alt="svarmynd"><image mime-type="image/jpeg" src="../../media/CNX_Test_07_03_answer_img.jpg"/></media>
+</note></example>
+</content>
+</document>`;
+    const result = renderCnxmlToHtml(cnxml, { moduleId: 'm00001', chapter: 7, lang: 'is' });
+    expect(result.html).toContain('CNX_Test_07_03_answer_img');
+  });
+
   it('includes module title in page title', () => {
     const cnxml = readFileSync(join(FIXTURES, 'minimal-translated.cnxml'), 'utf8');
     const result = renderCnxmlToHtml(cnxml, {
