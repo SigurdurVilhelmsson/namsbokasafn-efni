@@ -163,7 +163,7 @@
 <para id="fs-idm64613648">Staðaleining <term id="term-00004">lengdar (e. length)</term> í bæði SI-kerfinu og upprunalega metrakerfinu er <term id="term-00005">metri (m) (e. meter (m))</term>. Metri var upphaflega skilgreindur sem 1/10.000.000 af vegalengdinni frá norðurpólnum að miðbaug. Hann er nú skilgreindur sem vegalengdin sem ljós ferðast í lofttæmi á 1/299.792.458 úr sekúndu. Metri er um 3 tommum lengri en stika (<link target-id="CNX_Chem_01_04_MYdCmIn"/>); einn metri er um 39,37 tommur eða 1,094 stikur. Lengri vegalengdir eru oft gefnar upp í kílómetrum (1 km = 1000 m = 10<sup>3</sup> m), en styttri vegalengdir má gefa upp í sentimetrum (1 cm = 0,01 m = 10<sup>−2</sup> m) eða millimetrum (1 mm = 0,001 m = 10<sup>−3</sup> m).</para>
 <figure id="CNX_Chem_01_04_MYdCmIn" class="scaled-down">
 <media id="fs-idm2958720" alt="One meter is slightly larger than a yard and one centimeter is less than half the size of one inch. 1 inch is equal to 2.54 cm. 1 m is equal to 1.094 yards which is equal to 39.36 inches.">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_01_04_MYdCmIn.jpg"/>
+<image mime-type="image/svg+xml" src="../../media/CNX_Chem_01_04_MYdCmIn_IS.svg"/>
 </media>
 <caption>Hlutfallslegar lengdir 1 m, 1 stiku, 1 cm og 1 tommu eru sýndar (ekki í raunstærð), ásamt samanburði á 2,54 cm og 1 tommu, og 1 m og 1,094 stikum.</caption>
 </figure>
@@ -196,7 +196,7 @@
 <para id="fs-idm163691744"><term id="term-00014">Rúmsentimetri (cm<sup>3</sup>) (e. cubic centimeter (cm3))</term> er rúmmál tenings með brúnlengd nákvæmlega einn sentimetra. Skammstöfunin <emphasis effect="bold">cc</emphasis> (úr ensku <emphasis effect="bold">c</emphasis>ubic <emphasis effect="bold">c</emphasis>entimeter) er oft notuð af heilbrigðisstarfsfólki. Einn rúmsentimetri jafngildir einum <term id="term-00015">millilítra (mL) (e. milliliter (ml))</term> og er 1/1000 úr lítra.</para>
 <figure id="CNX_Chem_01_04_Volume" class="scaled-down">
 <media id="fs-idm75233216" alt="Figure A shows a large cube, which has a volume of 1 meter cubed. This larger cube is made up of many smaller cubes in a 10 by 10 pattern. Each of these smaller cubes has a volume of 1 decimeter cubed, or one liter. Each of these smaller cubes is, in turn, made up of many tiny cubes. Each of these tiny cubes has a volume of 1 centimeter cubed, or one milliliter. A one cubic centimeter cube is about the same width as a dime, which has a width of 1.8 centimeter.">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_01_04_Volume.jpg"/>
+<image mime-type="image/svg+xml" src="../../media/CNX_Chem_01_04_Volume_IS.svg"/>
 </media>
 <caption>(a) Hlutfallslegt rúmmál er sýnt fyrir teninga sem eru 1 m<sup>3</sup>, 1 dm<sup>3</sup> (1 L) og 1 cm<sup>3</sup> (1 mL) (ekki í réttum skala). (b) Þvermál tíu senta Bandaríkjadalsmyntar er borið saman við brúnlengd 1 cm<sup>3</sup> (1 mL) tenings.</caption>
 </figure>

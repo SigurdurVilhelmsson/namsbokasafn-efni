@@ -25,13 +25,13 @@
 </figure>
 <figure id="CNX_Chem_02_01_Dalton2" class="scaled-down">
 <media id="fs-idp25149184" alt="The left image shows a container with a black, powdery compound. The right image calls out the molecular structure of the powder which contains copper atoms that are clustered together with an equal number of oxygen atoms.">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_02_01_Dalton2.jpg"/>
+<image mime-type="image/svg+xml" src="../../media/CNX_Chem_02_01_Dalton2_IS.svg"/>
 </media>
 <caption>Kopar(II)oxíð, duftkennt, svart efnasamband, verður til úr samsetningu tveggja gerða frumeinda – kopars (brúnar kúlur) og súrefnis (rauðar kúlur) – í hlutfallinu 1:1. (Heimild: breyting á verki eftir „Chemicalinterest“/Wikimedia Commons)</caption>
 </figure>
 <figure id="CNX_Chem_02_01_Dalton3" class="scaled-down">
 <media id="fs-idm75378992" alt="The left stoppered bottle contains copper and oxygen. There is a callout which shows that copper is made up of many sphere-shaped atoms. The atoms are densely organized. The open space of the bottle contains oxygen gas, which is made up of bonded pairs of oxygen atoms that are evenly spaced. The right stoppered bottle shows the compound copper two oxide, which is a black, powdery substance. A callout from the powder shows a molecule of copper two oxide, which contains copper atoms that are clustered together with an equal number of oxygen atoms.">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_02_01_Dalton3.jpg"/>
+<image mime-type="image/svg+xml" src="../../media/CNX_Chem_02_01_Dalton3_IS.svg"/>
 </media>
 <caption>Þegar frumefnin kopar (glansandi, rauðbrúnt fast efni, sýnt hér sem brúnar kúlur) og súrefni (glært og litlaust gas, sýnt hér sem rauðar kúlur) hvarfast, endurraðast frumeindir þeirra til að mynda efnasamband sem inniheldur kopar og súrefni (duftkennt, svart fast efni). (Heimild kopar: breyting á verki eftir http://images-of-elements.com/copper.php)</caption>
 </figure>
@@ -39,12 +39,12 @@
 <example id="fs-idp23171216">
 <para id="fs-idm69166560"><title>Prófun á frumeindakenningu Daltons</title>Á eftirfarandi teikningu tákna grænu kúlurnar frumeindir ákveðins frumefnis. Fjólubláu kúlurnar tákna frumeindir annars frumefnis. Ef kúlurnar snertast eru þær hluti af einni einingu efnasambands. Brýtur eftirfarandi efnabreyting, sem táknuð er með þessum táknum, í bága við einhverjar af hugmyndum frumeindakenningar Daltons? Ef svo er, hverja?</para>
 <media id="fs-idp71137024" alt="This equation shows that the starting materials of the reaction are two bonded, green spheres, which are being combined with two smaller, bonded purple spheres. The product of the change is one purple sphere that is bonded to one green sphere." class="scaled-down">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_02_01_Dalton6_img.jpg"/>
+<image mime-type="image/svg+xml" src="../../media/CNX_Chem_02_01_Dalton6_img_IS.svg"/>
 </media>
 <para id="fs-idm4192784"><title>Lausn</title>Hvarfefnin samanstanda af tveimur grænum kúlum og tveimur fjólubláum kúlum. Myndefnin samanstanda af aðeins einni grænni kúlu og einni fjólublárri kúlu. Þetta brýtur í bága við grundvallarsetningu Daltons um að frumeindir verði hvorki til né eyðist við efnabreytingu, heldur sé þeim aðeins endurraðað. (Í þessu tilfelli virðist frumeindum hafa verið eytt.)</para>
 <para id="fs-idp39901584"><title>Skoðaðu þekkingu þína</title>Á eftirfarandi teikningu tákna grænu kúlurnar frumeindir ákveðins frumefnis. Fjólubláu kúlurnar tákna frumeindir annars frumefnis. Ef kúlurnar snertast eru þær hluti af einni einingu efnasambands. Brýtur eftirfarandi efnabreyting, sem táknuð er með þessum táknum, í bága við einhverjar af hugmyndum frumeindakenningar Daltons? Ef svo er, hverja?</para>
 <media id="fs-idp149298560" alt="This equation shows that the starting materials of the reaction are two sets of bonded, green spheres which are each being combined with two smaller, bonded purple spheres. The products of the change are two molecules that each contain one purple sphere bonded between two green spheres." class="scaled-down">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_02_01_Dalton8_img.jpg"/>
+<image mime-type="image/svg+xml" src="../../media/CNX_Chem_02_01_Dalton8_img_IS.svg"/>
 </media>
 <note id="fs-idm55003792">
 <title>Answer:</title>
@@ -83,7 +83,7 @@
 <para id="fs-idm113441696">Þetta má útskýra með frumeindakenningunni ef hlutfall kopars og klórs í brúna efnasambandinu er 1 koparfrumeind á móti 2 klórfrumeindum og hlutfallið í græna efnasambandinu er 1 koparfrumeind á móti 1 klórfrumeind. Hlutfall klórfrumeinda (og þar með hlutfall massa þeirra) er því 2 á móti 1 (<link target-id="CNX_Chem_02_01_MultProp"/>).</para>
 <figure id="CNX_Chem_02_01_MultProp" class="scaled-down">
 <media id="fs-idp111881472" alt="Figure A shows a pile of green powder. A callout shows that the green powder is made up of a lattice of copper atoms interspersed with chlorine atoms. The atoms are color coded brown for copper and green for chlorine. The number of copper atoms is equal to the number of chlorine atoms in the molecule. Figure B shows a pile of brown powder. A callout shows that the brown powder is also made up of copper and chlorine atoms similar to the molecule shown in figure A. However there appears to be two chlorine atoms for every copper atom in this molecule. The copper atoms in figure B bond with both the chlorine atoms and the other copper atoms. The copper atoms in figure A only bond with the chlorine atoms.">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_02_01_MultProp.jpg"/>
+<image mime-type="image/svg+xml" src="../../media/CNX_Chem_02_01_MultProp_IS.svg"/>
 </media>
 <caption>Í samanburði við koparklórsambandið í (a), þar sem kopar er táknaður með brúnum kúlum og klór með grænum kúlum, hefur koparklórsambandið í (b) tvöfalt fleiri klórfrumeindir á hverja koparfrumeind. (heimild a: breyting á verki eftir „Benjah-bmm27“/Wikimedia Commons; heimild b: breyting á verki eftir „Walkerma“/Wikimedia Commons)</caption>
 </figure>
@@ -106,7 +106,7 @@
 <problem id="fs-idm56556832">
 <para id="fs-idm80213408">Á eftirfarandi teikningu tákna grænu kúlurnar frumeindir ákveðins frumefnis. Fjólubláu kúlurnar tákna frumeindir annars frumefnis. Ef kúlur mismunandi frumefna snertast eru þær hluti af einni einingu efnasambands. Efnabreytingin sem sýnd er með þessum kúlum gæti brotið í bága við eina af hugmyndum frumeindakenningar Daltons. Hverja?<newline/></para>
 <media id="fs-idp159684336" alt="This equation contains the starting materials of a single, green sphere plus two smaller, purple spheres bonded together. When the starting materials are added together the products of the change are one purple sphere bonded with one green sphere plus one purple sphere bonded with one green sphere." class="scaled-down">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_02_01_Dalton10_img.jpg"/>
+<image mime-type="image/svg+xml" src="../../media/CNX_Chem_02_01_Dalton10_img_IS.svg"/>
 </media>
 </problem>
 <solution id="fs-idm51350640"><para id="fs-idp159650544">Hvarfefnin samanstanda af einni grænni kúlu og tveimur fjólubláum kúlum. Myndefnin samanstanda af tveimur grænum kúlum og tveimur fjólubláum kúlum. Þetta brýtur í bága við setningu Daltons um að frumeindir verði ekki til við efnabreytingu, heldur endurraðist aðeins.</para></solution>
