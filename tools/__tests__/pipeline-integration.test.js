@@ -1,7 +1,8 @@
-import { describe, it, expect, beforeAll } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { execSync } from 'child_process';
-import { readFileSync, existsSync } from 'fs';
-import { join } from 'path';
+import { readFileSync, existsSync, cpSync, rmSync, mkdtempSync } from 'fs';
+import { join, sep } from 'path';
+import { tmpdir } from 'os';
 import {
   restoreTermMarkers,
   restoreSupersubMarkers,
@@ -12,9 +13,37 @@ import {
   reverseInlineMarkup,
 } from '../cnxml-inject.js';
 
-const ROOT = join(import.meta.dirname, '..', '..');
-const TOOLS = join(ROOT, 'tools');
-const BOOKS = join(ROOT, 'books', 'efnafraedi-2e');
+const REAL_ROOT = join(import.meta.dirname, '..', '..');
+// Tools always run from their real location (absolute path); only their cwd is
+// redirected so the cwd-relative `books/<book>` literal resolves into the copy.
+const TOOLS = join(REAL_ROOT, 'tools');
+
+// These integration tests shell out to cnxml-inject/render/extract, which read
+// and WRITE real book content (03-translated, 05-publication, 02-structure,
+// translation-errors.json) — so a bare `npm test` used to leave the working tree
+// dirty, and now also swaps figure images wherever image-mapping.json exists.
+// Isolate by copying the whole book MINUS media/ into a throwaway temp root and
+// running the tools with cwd there. Text-only (~tens of MB, ~1-2s): inputs and
+// the pre-rendered ch03/ch05 output come along; excluding media/ also drops
+// image-mapping.json, so inject performs no image swaps (tests behave exactly as
+// they did pre-localization). The real book is never touched.
+let ROOT; // temp cwd for the tools
+let BOOKS; // temp book dir the tools read/write and assertions read
+
+beforeAll(() => {
+  ROOT = mkdtempSync(join(tmpdir(), 'efni-pipeline-'));
+  BOOKS = join(ROOT, 'books', 'efnafraedi-2e');
+  // Exclude media/ (heavy images + image-mapping.json → no swaps) and .backup
+  // dirs/files (safeWrite artifacts, ~20k files) so the copy stays ~260MB / ~1s.
+  cpSync(join(REAL_ROOT, 'books', 'efnafraedi-2e'), BOOKS, {
+    recursive: true,
+    filter: (src) => !src.includes(`${sep}media`) && !src.includes('.backup'),
+  });
+}, 60_000); // generous hook timeout: the cold-cache copy must never flake
+
+afterAll(() => {
+  if (ROOT) rmSync(ROOT, { recursive: true, force: true });
+});
 
 function run(cmd) {
   return execSync(cmd, { cwd: ROOT, encoding: 'utf8', timeout: 60_000 });
@@ -220,10 +249,12 @@ describe('cnxml-render', () => {
 // =====================================================================
 
 describe('pipeline regression tests', () => {
-  const ch03path = join(BOOKS, '05-publication', 'mt-preview', 'chapters', '03');
+  // Computed lazily in beforeAll because BOOKS is set by the suite-level copy hook.
+  let ch03path;
 
-  // Verify chapter 3 output exists (pre-rendered)
+  // Verify chapter 3 output exists (pre-rendered, carried in by the book copy)
   beforeAll(() => {
+    ch03path = join(BOOKS, '05-publication', 'mt-preview', 'chapters', '03');
     expect(existsSync(ch03path), 'Chapter 3 HTML not found — run render first').toBe(true);
   });
 
