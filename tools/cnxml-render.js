@@ -3297,7 +3297,8 @@ async function main() {
     process.exit(0);
   }
 
-  if (!args.chapter) {
+  if (args.chapter == null) {
+    // NB: `== null` (not `!args.chapter`) so chapter 0 (the preface / ch00) is valid.
     console.error('Error: --chapter is required');
     printHelp();
     process.exit(1);

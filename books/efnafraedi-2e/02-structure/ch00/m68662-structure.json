@@ -1,0 +1,570 @@
+{
+  "moduleId": "m68662",
+  "title": {
+    "segmentId": "m68662:title:auto-1",
+    "text": "Preface"
+  },
+  "documentClass": "preface",
+  "metadata": {
+    "uuid": "256d4a6d-720e-4862-9e4e-3ed22a212607"
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "pref-p-001",
+      "segmentId": "m68662:para:pref-p-001"
+    },
+    {
+      "type": "para",
+      "id": "pref-p-002",
+      "segmentId": "m68662:para:pref-p-002"
+    },
+    {
+      "type": "section",
+      "id": "pref-sec-003",
+      "class": null,
+      "title": {
+        "segmentId": "m68662:title:pref-sec-003-title",
+        "text": "About Chemistry 2e"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "pref-sub-005",
+          "class": null,
+          "title": {
+            "segmentId": "m68662:title:pref-sub-005-title",
+            "text": "Coverage and scope"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "pref-p-006",
+              "segmentId": "m68662:para:pref-p-006"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "pref-sub-007",
+          "class": null,
+          "title": {
+            "segmentId": "m68662:title:pref-sub-007-title",
+            "text": "Changes to the second edition"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "pref-p-008",
+              "segmentId": "m68662:para:pref-p-008"
+            },
+            {
+              "type": "para",
+              "id": "pref-p-009",
+              "segmentId": "m68662:para:pref-p-009"
+            },
+            {
+              "type": "para",
+              "id": "pref-p-010",
+              "segmentId": "m68662:para:pref-p-010"
+            },
+            {
+              "type": "para",
+              "id": "pref-p-011",
+              "segmentId": "m68662:para:pref-p-011"
+            },
+            {
+              "type": "para",
+              "id": "pref-p-012",
+              "segmentId": "m68662:para:pref-p-012"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "pref-sub-013",
+          "class": null,
+          "title": {
+            "segmentId": "m68662:title:pref-sub-013-title",
+            "text": "Pedagogical foundation and features"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "pref-p-014",
+              "segmentId": "m68662:para:pref-p-014"
+            },
+            {
+              "type": "para",
+              "id": "pref-p-015",
+              "segmentId": "m68662:para:pref-p-015"
+            },
+            {
+              "type": "para",
+              "id": "pref-p-016",
+              "segmentId": "m68662:para:pref-p-016"
+            },
+            {
+              "type": "para",
+              "id": "pref-p-017",
+              "segmentId": "m68662:para:pref-p-017"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "pref-sub-018",
+          "class": null,
+          "title": {
+            "segmentId": "m68662:title:pref-sub-018-title",
+            "text": "Comprehensive art program"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "pref-p-019",
+              "segmentId": "m68662:para:pref-p-019"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "pref-sub-020",
+          "class": null,
+          "title": {
+            "segmentId": "m68662:title:pref-sub-020-title",
+            "text": "Interactives that engage"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "pref-p-021",
+              "segmentId": "m68662:para:pref-p-021"
+            },
+            {
+              "type": "list",
+              "id": "pref-list-022",
+              "listType": "bulleted",
+              "numberStyle": null,
+              "bulletStyle": "none",
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-022-item-1"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-022-item-2"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-022-item-3"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "pref-sub-023",
+          "class": null,
+          "title": {
+            "segmentId": "m68662:title:pref-sub-023-title",
+            "text": "Assessments that reinforce key concepts"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "pref-p-024",
+              "segmentId": "m68662:para:pref-p-024"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "pref-sub-025",
+          "class": null,
+          "title": {
+            "segmentId": "m68662:title:pref-sub-025-title",
+            "text": "Answers to Questions in the Book"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "pref-p-026",
+              "segmentId": "m68662:para:pref-p-026"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "pref-p-004",
+          "segmentId": "m68662:para:pref-p-004"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "pref-sec-027",
+      "class": null,
+      "title": {
+        "segmentId": "m68662:title:pref-sec-027-title",
+        "text": "About the authors"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "pref-sub-028",
+          "class": null,
+          "title": {
+            "segmentId": "m68662:title:pref-sub-028-title",
+            "text": "Senior contributing authors"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "pref-p-029",
+              "segmentId": "m68662:para:pref-p-029"
+            },
+            {
+              "type": "para",
+              "id": "pref-p-030",
+              "segmentId": "m68662:para:pref-p-030"
+            },
+            {
+              "type": "para",
+              "id": "pref-p-031",
+              "segmentId": "m68662:para:pref-p-031"
+            },
+            {
+              "type": "para",
+              "id": "pref-p-032",
+              "segmentId": "m68662:para:pref-p-032"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "pref-sub-033",
+          "class": null,
+          "title": {
+            "segmentId": "m68662:title:pref-sub-033-title",
+            "text": "Contributing authors"
+          },
+          "content": [
+            {
+              "type": "list",
+              "id": "pref-list-034",
+              "listType": "bulleted",
+              "numberStyle": null,
+              "bulletStyle": "none",
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-034-item-1"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-034-item-2"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-034-item-3"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-034-item-4"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-034-item-5"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-034-item-6"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-034-item-7"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-034-item-8"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-034-item-9"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-034-item-10"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-034-item-11"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-034-item-12"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-034-item-13"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-034-item-14"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-034-item-15"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "pref-sub-035",
+          "class": null,
+          "title": {
+            "segmentId": "m68662:title:pref-sub-035-title",
+            "text": "Reviewers"
+          },
+          "content": [
+            {
+              "type": "list",
+              "id": "pref-list-036",
+              "listType": "bulleted",
+              "numberStyle": null,
+              "bulletStyle": "none",
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-1"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-2"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-3"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-4"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-5"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-6"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-7"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-8"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-9"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-10"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-11"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-12"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-13"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-14"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-15"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-16"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-17"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-18"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-19"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-20"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-21"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-22"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-23"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-24"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-25"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-26"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-27"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-28"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-29"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-30"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-31"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-32"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-33"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-34"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-35"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-36"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-37"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-38"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-39"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-40"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-41"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-42"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-43"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-44"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-45"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-46"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-47"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-48"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-49"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-50"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-51"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-52"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-53"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-54"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68662:item:pref-list-036-item-55"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sectionOrder": null
+}

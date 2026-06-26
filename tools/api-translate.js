@@ -603,8 +603,8 @@ async function main() {
     process.exit(0);
   }
 
-  // Validate: --module requires --chapter
-  if (args.module && !args.chapter) {
+  // Validate: --module requires --chapter (`== null` so chapter 0 / preface is valid)
+  if (args.module && args.chapter == null) {
     console.error('Error: --module requires --chapter');
     process.exit(1);
   }
@@ -635,7 +635,8 @@ async function main() {
   }
 
   // Discover modules to translate
-  const chapters = args.chapter ? [formatChapter(args.chapter)] : discoverChapters(BOOKS_DIR);
+  const chapters =
+    args.chapter != null ? [formatChapter(args.chapter)] : discoverChapters(BOOKS_DIR);
 
   if (chapters.length === 0) {
     console.error(`No chapters found in ${mtInputDir}`);

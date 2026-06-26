@@ -34,6 +34,19 @@ has **resolved as CC BY-NC-SA 4.0** (2026-06-24), declining to argue the metadat
 technicality against OpenStax (see §5). Only Organic and Physics need remediation, and both
 have **only machine-translation derivatives, no citable faithful translation**.
 
+**Preface module `m68662` — re-created, not downloaded (2026-06-25).** The Chemistry CNXML
+download (2026-01-19) omitted the book's preface module `m68662` (the CC BY-era pulls of
+Chemistry, Biology, and College Physics all skipped their preface; the lowest captured
+Chemistry module is `m68663`). A fresh OpenStax pull now would be CC BY-NC-SA, so the preface
+was instead **re-authored as CNXML at `books/efnafraedi-2e/01-source/ch00/m68662.cnxml` from
+the user's CC BY-era Word export** (`01-source/docx/ch00/preface.docx`, file date
+**2025-09-12**). The docx body self-states *"Chemistry 2e is licensed under a Creative Commons
+Attribution 4.0 International (CC BY) license,"* corroborating the Word-edition row above. The
+re-created CNXML therefore inherits **CC BY 4.0** and is safe in this CC BY book. (Scope: the
+re-creation kept the preface intro, the CC BY licence statement, "About Chemistry 2e", and the
+full author/contributor/reviewer attribution lists; it dropped OpenStax-platform boilerplate. A
+re-created module carries a locally-generated `md:uuid`, not the original OpenStax uuid.)
+
 ---
 
 ## 2. The relicense pattern (authoritative external anchor)
