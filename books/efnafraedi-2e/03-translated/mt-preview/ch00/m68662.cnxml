@@ -1,0 +1,148 @@
+<document xmlns="http://cnx.rice.edu/cnxml" class="preface">
+<title>Formáli</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68662</md:content-id>
+  <md:title>Formáli</md:title>
+  <md:abstract/>
+  <md:uuid>256d4a6d-720e-4862-9e4e-3ed22a212607</md:uuid>
+</metadata>
+
+<content>
+<para id="pref-p-001">Velkomin í Efnafræði 2e, námsefni frá OpenStax. Þessi kennslubók var skrifuð til að auka aðgengi nemenda að hágæða námsefni, með ströngustu kröfum um akademísk gæði, án nokkurs kostnaðar eða fyrir mjög lítinn kostnað.</para>
+<para id="pref-p-002">Efnafræði 2e er gefin út með Creative Commons Attribution 4.0 International (CC BY) leyfi, sem þýðir að þú mátt dreifa, endurhljóðblanda og byggja á efninu, svo lengi sem þú getur OpenStax og efnishöfunda þess.</para>
+<section id="pref-sec-003">
+<title>Um Efnafræði 2e</title>
+<section id="pref-sub-005">
+<title>Umfang og yfirferð</title>
+<para id="pref-p-006">Kennslubókin okkar, Efnafræði 2e, fylgir umfangi og röð flestra almennra efnafræðinámskeiða á landsvísu. Við leggjum okkur fram um að gera efnafræði, sem fræðigrein, áhugaverða og aðgengilega fyrir nemendur. Með þetta markmið í huga hefur efni þessarar kennslubókar verið þróað og skipulagt til að veita rökrétta framvindu frá grundvallarhugtökum til flóknari hugtaka í efnafræði. Efnisatriði eru kynnt í samhengi við kunnuglegar aðstæður þegar það er mögulegt, meðhöndluð með viðeigandi nákvæmni til að fullnægja vitsmunum nemandans og styrkt í síðari umræðum um tengt efni. Skipulagið og kennslufræðilegir þættir voru þróaðir og yfirfarnir með endurgjöf frá efnafræðikennurum sem helguðu sig verkefninu.</para>
+</section>
+<section id="pref-sub-007">
+<title>Breytingar í annarri útgáfu</title>
+<para id="pref-p-008">OpenStax gefur aðeins út aðrar útgáfur þegar verulegar breytingar á textanum eru nauðsynlegar. Í tilfelli Efnafræði 2e benti endurgjöf notenda á að við þyrftum að einbeita okkur að nokkrum lykilsviðum, sem við höfum gert á eftirfarandi hátt:</para>
+<para id="pref-p-009"><emphasis effect="bold">Endurskoðun efnis til að auka skýrleika og hittni.</emphasis> Endurskoðunaráætlunin var mismunandi eftir köflum eftir þörfum. Um fimm kaflar voru mikið endurskrifaðir og aðrir tólf kaflar voru verulega endurskoðaðir til að bæta læsileika og skýrleika frásagnarinnar.</para>
+<para id="pref-p-010"><emphasis effect="bold">Dæmi og verkefni í lok kafla.</emphasis> Dæmi og verkefni í lok kafla í nokkrum köflum voru yfirfarin með tilliti til hittni og endurskoðuð til að leiðrétta allar villur. Einnig var viðbótarverkefnum bætt við nokkra kafla til að styðja betur við efni kaflans.</para>
+<para id="pref-p-011"><emphasis effect="bold">Myndir og skýringarmyndir.</emphasis> Undir leiðsögn höfunda og sérfræðinga í vísindalegum skýringarmyndum, sérstaklega þeirra sem eru vel að sér í að búa til aðgengilegar myndir, gerði OpenStax teymið breytingar á stórum hluta myndefnis í fyrstu útgáfu Efnafræði. Endurskoðunin fól í sér að leiðrétta villur, endurhanna skýringarmyndir til að bæta skilning og endurlita til að tryggja heildarsamræmi.</para>
+<para id="pref-p-012"><emphasis effect="bold">Bætt aðgengi.</emphasis> Eins og með allar bækur OpenStax var fyrsta útgáfa Efnafræði búin til með áherslu á aðgengi. Við höfum lagt áherslu á og bætt þá nálgun í annarri útgáfu. Til að koma til móts við notendur sérstakrar hjálpartækni var allur valtexti yfirfarinn og endurskoðaður með tilliti til heildstæðni og skýrleika. Margar skýringarmyndir voru endurskoðaðar til að bæta litamun, sem er mikilvægt fyrir suma sjónskerta nemendur. Á heildina litið hefur OpenStax vettvangurinn verið stöðugt uppfærður til að bæta aðgengi.</para>
+</section>
+<section id="pref-sub-013">
+<title>Kennslufræðilegur grunnur og eiginleikar</title>
+<para id="pref-p-014">Í Efnafræði 2e finnur þú eiginleika sem draga nemendur inn í vísindalegar rannsóknir með því að taka valin efnisatriði skrefi lengra. Bæði nemendur og kennarar munu kunna að meta umræður í þessum rammagreinum.</para>
+<para id="pref-p-015"><emphasis effect="bold">Efnafræði í daglegu lífi</emphasis> tengir efnafræðihugtök við hversdagsleg málefni og raunverulega notkun vísinda sem nemendur lenda í í lífi sínu. Meðal efnisatriða eru farsímar, varmaorkuver, endurvinnsla plasts og mæling á blóðþrýstingi.</para>
+<para id="pref-p-016"><emphasis effect="bold">Hvernig vísindi tengjast</emphasis> rammagreinar fjalla um efnafræði í samhengi við samtengingu hennar við aðrar vísindagreinar. Meðal efnisatriða eru taugaboðefni, gróðurhúsalofttegundir og loftslagsbreytingar, og prótein og ensím.</para>
+<para id="pref-p-017"><emphasis effect="bold">Andlitsmynd efnafræðings</emphasis> kynnir stutta ævisögu og inngang að verkum áberandi einstaklinga úr sögunni og nútímanum svo nemendur geti séð „andlit“ þeirra sem hafa lagt sitt af mörkum á þessu sviði sem og vísindi í verki.</para>
+</section>
+<section id="pref-sub-018">
+<title>Alhliða myndskreytingar</title>
+<para id="pref-p-019">Myndskreytingar okkar eru hannaðar til að auka skilning nemenda á hugtökum með skýrum, áhrifaríkum myndum, skýringarmyndum og ljósmyndum.</para>
+</section>
+<section id="pref-sub-020">
+<title>Gagnvirkni sem vekur áhuga</title>
+<para id="pref-p-021">Efnafræði 2e inniheldur tengla á viðeigandi gagnvirkar æfingar og hreyfimyndir sem hjálpa til við að lífga upp á efnisatriði með eiginleikanum „Tengill að námi“. Dæmi eru:</para>
+<list id="pref-list-022" list-type="bulleted" bullet-style="none">
+<item>PhET-hermanir</item>
+<item>IUPAC-gögn og gagnvirkni</item>
+<item>TED-fyrirlestrar</item>
+</list>
+</section>
+<section id="pref-sub-023">
+<title>Verkefni sem styrkja lykilhugtök</title>
+<para id="pref-p-024">Dæmi í köflum leiða nemendur í gegnum verkefni með því að setja fram spurningu, útskýra lausn skref fyrir skref og biðja síðan nemendur um að æfa sig með „Kannaðu þekkingu þína“ hluta. Bókin inniheldur einnig verkefni í lok hvers kafla svo nemendur geti beitt því sem þeir hafa lært með æfingaverkefnum.</para>
+</section>
+<section id="pref-sub-025">
+<title>Svör við spurningum í bókinni</title>
+<para id="pref-p-026">Svör við dæmum eru gefin rétt fyrir neðan spurninguna í bókinni. Svör við oddatöluverkefnum eru veitt nemendum í svarlykli sem og í lausnahandbók nemenda á síðunni Námsefni fyrir nemendur. Svör við jafntöluverkefnum eru aðeins veitt kennurum í svarhandbók kennara á síðunni Námsefni fyrir kennara.</para>
+</section>
+<para id="pref-p-004">Efnafræði 2e er hönnuð til að uppfylla kröfur um umfang og röð almenns efnafræðinámskeiðs sem tekur tvær annir. Kennslubókin veitir nemendum mikilvægt tækifæri til að læra grundvallarhugtök efnafræðinnar og skilja hvernig þau hugtök eiga við um líf þeirra og heiminn í kringum þá. Bókin inniheldur einnig fjölda nýstárlegra eiginleika, þar á meðal gagnvirkar æfingar og raunveruleg dæmi, sem eru hönnuð til að auka nám nemenda. Önnur útgáfan hefur verið endurskoðuð til að fela í sér skýrari, nýrri og kraftmeiri útskýringar, en viðhalda sama skipulagi og fyrsta útgáfan. Verulegar umbætur hafa verið gerðar á myndum, skýringarmyndum og dæmaverkefnum sem styðja við textafrásögnina.</para>
+</section>
+<section id="pref-sec-027">
+<title>About the authors</title>
+<section id="pref-sub-028">
+<title>Senior contributing authors</title>
+<para id="pref-p-029"><emphasis effect="bold">Paul Flowers, University of North Carolina at Pembroke</emphasis> Dr. Paul Flowers earned a BS in Chemistry from St. Andrews Presbyterian College in 1983 and a PhD in Analytical Chemistry from the University of Tennessee in 1988. After a one-year postdoctoral appointment at Los Alamos National Laboratory, he joined the University of North Carolina at Pembroke in the fall of 1989. Dr. Flowers teaches courses in general and analytical chemistry, and conducts experimental research involving the development of new devices and methods for microscale chemical analysis.</para>
+<para id="pref-p-030"><emphasis effect="bold">Klaus Theopold, University of Delaware</emphasis> Dr. Klaus Theopold (born in Berlin, Germany) received his Vordiplom from the Universität Hamburg in 1977. He then decided to pursue his graduate studies in the United States, where he received his PhD in inorganic chemistry from UC Berkeley in 1982. After a year of postdoctoral research at MIT, he joined the faculty at Cornell University. In 1990, he moved to the University of Delaware, where he is a Professor in the Department of Chemistry and Biochemistry and serves as an Associate Director of the University’s Center for Catalytic Science and Technology. Dr. Theopold regularly teaches graduate courses in inorganic and organometallic chemistry as well as general chemistry.</para>
+<para id="pref-p-031"><emphasis effect="bold">Richard Langley, Stephen F. Austin State University</emphasis> Dr. Richard Langley earned BS degrees in Chemistry and Mineralogy from Miami University of Ohio in the early 1970s and went on to receive his PhD in Chemistry from the University of Nebraska in 1977. After a postdoctoral fellowship at the Arizona State University Center for Solid State Studies, Dr. Langley taught in the University of Wisconsin system and participated in research at Argonne National Laboratory. Moving to Stephen F. Austin State University in 1982, Dr. Langley today serves as Professor of Chemistry. His areas of specialization are solid state chemistry, synthetic inorganic chemistry, fluorine chemistry, and chemical education.</para>
+<para id="pref-p-032"><emphasis effect="bold">William R. Robinson, PhD</emphasis></para>
+</section>
+<section id="pref-sub-033">
+<title>Contributing authors</title>
+<list id="pref-list-034" list-type="bulleted" bullet-style="none">
+<item>Mark Blaser, Shasta College</item>
+<item>Simon Bott, University of Houston</item>
+<item>Donald Carpenetti, Craven Community College</item>
+<item>Andrew Eklund, Alfred University</item>
+<item>Emad El-Giar, University of Louisiana at Monroe</item>
+<item>Don Frantz, Wilfrid Laurier University</item>
+<item>Paul Hooker, Westminster College</item>
+<item>Jennifer Look, Mercer University</item>
+<item>George Kaminski, Worcester Polytechnic Institute</item>
+<item>Carol Martinez, Central New Mexico Community College</item>
+<item>Troy Milliken, Jackson State University</item>
+<item>Vicki Moravec, Trine University</item>
+<item>Jason Powell, Ferrum College</item>
+<item>Thomas Sorensen, University of Wisconsin–Milwaukee</item>
+<item>Allison Soult, University of Kentucky</item>
+</list>
+</section>
+<section id="pref-sub-035">
+<title>Reviewers</title>
+<list id="pref-list-036" list-type="bulleted" bullet-style="none">
+<item>Casey Akin, College Station Independent School District</item>
+<item>Lara AL-Hariri, University of Massachusetts–Amherst</item>
+<item>Sahar Atwa, University of Louisiana at Monroe</item>
+<item>Todd Austell, University of North Carolina–Chapel Hill</item>
+<item>Bobby Bailey, University of Maryland–University College</item>
+<item>Robert Baker, Trinity College</item>
+<item>Jeffrey Bartz, Kalamazoo College</item>
+<item>Greg Baxley, Cuesta College</item>
+<item>Ashley Beasley Green, National Institute of Standards and Technology</item>
+<item>Patricia Bianconi, University of Massachusetts</item>
+<item>Lisa Blank, Lyme Central School District</item>
+<item>Daniel Branan, Colorado Community College System</item>
+<item>Dorian Canelas, Duke University</item>
+<item>Emmanuel Chang, York College</item>
+<item>Carolyn Collins, College of Southern Nevada</item>
+<item>Colleen Craig, University of Washington</item>
+<item>Yasmine Daniels, Montgomery College–Germantown</item>
+<item>Patricia Dockham, Grand Rapids Community College</item>
+<item>Erick Fuoco, Richard J. Daley College</item>
+<item>Andrea Geyer, University of Saint Francis</item>
+<item>Daniel Goebbert, University of Alabama</item>
+<item>John Goodwin, Coastal Carolina University</item>
+<item>Stephanie Gould, Austin College</item>
+<item>Patrick Holt, Bellarmine University</item>
+<item>George A. Kaminski, Worcester Polytechnic Institute</item>
+<item>Kevin Kolack, Queensborough Community College</item>
+<item>Amy Kovach, Roberts Wesleyan College</item>
+<item>Judit Kovacs Beagle, University of Dayton</item>
+<item>Krzysztof Kuczera, University of Kansas</item>
+<item>Marcus Lay, University of Georgia</item>
+<item>Pamela Lord, University of Saint Francis</item>
+<item>Oleg Maksimov, Excelsior College</item>
+<item>John Matson, Virginia Tech</item>
+<item>Katrina Miranda, University of Arizona</item>
+<item>Douglas Mulford, Emory University</item>
+<item>Mark Ott, Jackson College</item>
+<item>Adrienne Oxley, Columbia College</item>
+<item>Richard Pennington, Georgia Gwinnett College</item>
+<item>Rodney Powell, Coastal Carolina Community College</item>
+<item>Jeanita Pritchett, Montgomery College–Rockville</item>
+<item>Aheda Saber, University of Illinois at Chicago</item>
+<item>Raymond Sadeghi, University of Texas at San Antonio</item>
+<item>Nirmala Shankar, Rutgers University</item>
+<item>Jonathan Smith, Temple University</item>
+<item>Bryan Spiegelberg, Rider University</item>
+<item>Ron Sternfels, Roane State Community College</item>
+<item>Cynthia Strong, Cornell College</item>
+<item>Kris Varazo, Francis Marion University</item>
+<item>Victor Vilchiz, Virginia State University</item>
+<item>Alex Waterson, Vanderbilt University</item>
+<item>JuchaoYan, Eastern New Mexico University</item>
+<item>Mustafa Yatin, Salem State University</item>
+<item>Kazushige Yokoyama, State University of New York at Geneseo</item>
+<item>Curtis Zaleski, Shippensburg University</item>
+<item>Wei Zhang, University of Colorado–Boulder</item>
+</list>
+</section>
+</section>
+</content>
+</document>
