@@ -97,6 +97,39 @@ export function normalizeUnicode(text) {
   return result;
 }
 
+// Match C0 control characters except the three valid in text: tab, LF, CR.
+const CONTROL_CHAR_REGEX = /[\x00-\x08\x0B\x0C\x0E-\x1F]/g;
+
+/**
+ * Fail loud if the MT API response contains C0 control characters.
+ *
+ * The Málstaður API has been observed corrupting the degree sign (U+00B0) into
+ * a NUL byte (sometimes NUL + literal "b0"). NUL and other C0 control chars are
+ * invalid in XML 1.0 / HTML and silently corrupt content three pipeline stages
+ * downstream (inject → render → publication). Catching it here, at the producer
+ * boundary, surfaces the problem at the MT stage instead of in published HTML.
+ *
+ * @param {string} text - The text to check (an API response chunk).
+ * @param {string} label - A module/chunk label for the error message.
+ * @returns {string} The same text, unchanged, when it is clean.
+ * @throws {Error} When `text` contains any C0 control char other than tab/LF/CR.
+ */
+export function assertNoControlChars(text, label) {
+  const matches = text.match(CONTROL_CHAR_REGEX);
+  if (matches) {
+    const codes = [...new Set(matches)]
+      .map((ch) => `0x${ch.charCodeAt(0).toString(16).padStart(2, '0')}`)
+      .join(', ');
+    throw new Error(
+      `${label}: MT API returned ${matches.length} C0 control char(s) [${codes}]. ` +
+        `These are invalid in XML/HTML and corrupt content downstream ` +
+        `(e.g. the degree sign U+00B0 has been seen mangled to NUL). ` +
+        `Refusing to write corrupted output.`
+    );
+  }
+  return text;
+}
+
 // ─── SEG Tag Repair ─────────────────────────────────────────────────
 
 /**
@@ -442,6 +475,7 @@ async function translateChunk(client, chunkText, glossary, verbose, chunkLabel) 
   let result = await client.translateAuto(chunkText, translateOpts);
   let output = result.text;
 
+  assertNoControlChars(output, chunkLabel);
   output = normalizeUnicode(output);
   output = repairSegTags(chunkText, output);
 
@@ -454,6 +488,7 @@ async function translateChunk(client, chunkText, glossary, verbose, chunkLabel) 
         );
       }
       result = await client.translateAuto(chunkText, { targetLanguage: 'is' });
+      assertNoControlChars(result.text, chunkLabel);
       output = normalizeUnicode(result.text);
       output = repairSegTags(chunkText, output);
     }

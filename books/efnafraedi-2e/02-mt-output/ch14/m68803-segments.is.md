@@ -431,7 +431,7 @@ Tilgreindu hvaða af eftirfarandi efnum eru amfíprótísk og skrifaðu efnajöf
 amfíprótísk: (a) [[MATH:85]] [[MATH:86]] (b) [[MATH:87]] [[MATH:88]] ekki amfíprótísk: (c) Br[[sup:−]]; (d) [[MATH:89]] (e) [[MATH:90]]
 
 <!-- SEG:m68803:problem:fs-idp42982896 -->
-Er sjálfjónun vatns innvermin eða útvermin? Jónunarfasti vatns ({{i}}K{{/i}}[[sub:w]]) er 2,9 [[MATH:91]] 10[[sup:−14]] við 40  C og 9,3 [[MATH:92]] 10[[sup:−14]] við 60  C.
+Er sjálfjónun vatns innvermin eða útvermin? Jónunarfasti vatns ({{i}}K{{/i}}[[sub:w]]) er 2,9 [[MATH:91]] 10[[sup:−14]] við 40 °C og 9,3 [[MATH:92]] 10[[sup:−14]] við 60 °C.
 
 <!-- SEG:m68803:glossary-term:fs-idm26650176-term -->
 sýrujónun

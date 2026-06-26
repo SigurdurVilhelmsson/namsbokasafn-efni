@@ -387,10 +387,10 @@ Skrifaðu formúlu fyrir hvert af eftirfarandi efnasamböndum:
 (c) [[MATH:15]]
 
 <!-- SEG:m68831:solution:fs-idp258684208 -->
-(a) Δ{{i}}H{{/i}} b0 = 87 kJ; Δ{{i}}G{{/i}} b0 = 44 kJ; (b) Δ{{i}}H{{/i}} b0 = −109,9 kJ; Δ{{i}}G b0{{/i}} = −154,7 kJ; (c) Δ{{i}}H{{/i}} b0 = −510 kJ; Δ{{i}}G{{/i}} b0 = −601,5 kJ
+(a) Δ{{i}}H{{/i}}° = 87 kJ; Δ{{i}}G{{/i}}° = 44 kJ; (b) Δ{{i}}H{{/i}}° = −109,9 kJ; Δ{{i}}G°{{/i}} = −154,7 kJ; (c) Δ{{i}}H{{/i}}° = −510 kJ; Δ{{i}}G{{/i}}° = −601,5 kJ
 
 <!-- SEG:m68831:problem:fs-idp52675584 -->
-Kísilhýdríð, sem var útbúið með efnahvarfi Mg[[sub:2]]Si við sýru, myndaði þrýsting upp á 306 torr við 26  b0C í glerkúlu með rúmmáli 57,0 ml. Ef massi hýdríðsins var 0,0861 g, hver er þá sameindamassi þess? Hver er sameindaformúla hýdríðsins?
+Kísilhýdríð, sem var útbúið með efnahvarfi Mg[[sub:2]]Si við sýru, myndaði þrýsting upp á 306 torr við 26 °C í glerkúlu með rúmmáli 57,0 ml. Ef massi hýdríðsins var 0,0861 g, hver er þá sameindamassi þess? Hver er sameindaformúla hýdríðsins?
 
 <!-- SEG:m68831:problem:fs-idm10763856 -->
 Ímyndaðu þér að þú hafir fundið demant sem er alveg umlukinn sílikatbergi. Hvernig myndir þú losa demantinn með efnafræðilegum aðferðum án þess að skemma hann?
