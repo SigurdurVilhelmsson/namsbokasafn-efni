@@ -228,7 +228,7 @@
 <para id="fs-idm39683376">Þessar fjórar sviðsmyndir eru teknar saman í <link target-id="CNX_Chem_16_04_Scenarios"/>.</para>
 <figure id="CNX_Chem_16_04_Scenarios">
 <media id="fs-idm123583264" alt="A table with three columns and four rows is shown. The first column has the phrase, “Delta S greater than zero ( increase in entropy ),” in the third row and the phrase, “Delta S less than zero ( decrease in entropy),” in the fourth row. The second and third columns have the phrase, “Summary of the Four Scenarios for Enthalpy and Entropy Changes,” written above them. The second column has, “delta H greater than zero ( endothermic ),” in the second row, “delta G less than zero at high temperature, delta G greater than zero at low temperature, Process is spontaneous at high temperature,” in the third row, and “delta G greater than zero at any temperature, Process is nonspontaneous at any temperature,” in the fourth row. The third column has, “delta H less than zero ( exothermic ),” in the second row, “delta G less than zero at any temperature, Process is spontaneous at any temperature,” in the third row, and “delta G less than zero at low temperature, delta G greater than zero at high temperature, Process is spontaneous at low temperature.”">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_16_04_Scenarios.jpg"/>
+<image mime-type="image/svg+xml" src="../../media/CNX_Chem_16_04_Scenarios_IS.svg"/>
 </media>
 <caption>Fjórir möguleikar eru fyrir hendi varðandi formerki vermi- og óreiðubreytinga.</caption>
 </figure>

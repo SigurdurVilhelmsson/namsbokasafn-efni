@@ -640,11 +640,6 @@
     "extension": ".svg"
   },
   {
-    "originalImage": "CNX_Chem_06_03_Ex9soln_img",
-    "outputName": "CNX_Chem_06_03_Ex9soln_img_IS.svg",
-    "extension": ".svg"
-  },
-  {
     "originalImage": "CNX_Chem_06_03_OrbOutline_img",
     "outputName": "CNX_Chem_06_03_OrbOutline_img_IS.svg",
     "extension": ".svg"
@@ -1165,11 +1160,6 @@
     "extension": ".svg"
   },
   {
-    "originalImage": "CNX_Chem_08_01_Exover_img",
-    "outputName": "CNX_Chem_08_01_Exover_img_IS.svg",
-    "extension": ".svg"
-  },
-  {
     "originalImage": "CNX_Chem_08_01_Morse-3a8e",
     "outputName": "CNX_Chem_08_01_Morse-3a8e_IS.svg",
     "extension": ".svg"
@@ -1190,18 +1180,8 @@
     "extension": ".svg"
   },
   {
-    "originalImage": "CNX_Chem_08_01_overlap",
-    "outputName": "CNX_Chem_08_01_overlap_IS.svg",
-    "extension": ".svg"
-  },
-  {
     "originalImage": "CNX_Chem_08_01_pi",
     "outputName": "CNX_Chem_08_01_pi_IS.svg",
-    "extension": ".svg"
-  },
-  {
-    "originalImage": "CNX_Chem_08_01_sigma",
-    "outputName": "CNX_Chem_08_01_sigma_IS.svg",
     "extension": ".svg"
   },
   {
@@ -1217,16 +1197,6 @@
   {
     "originalImage": "CNX_Chem_08_02_CO2Diag",
     "outputName": "CNX_Chem_08_02_CO2Diag_IS.svg",
-    "extension": ".svg"
-  },
-  {
-    "originalImage": "CNX_Chem_08_02_H2Otet",
-    "outputName": "CNX_Chem_08_02_H2Otet_IS.svg",
-    "extension": ".svg"
-  },
-  {
-    "originalImage": "CNX_Chem_08_02_H2Ovb",
-    "outputName": "CNX_Chem_08_02_H2Ovb_IS.svg",
     "extension": ".svg"
   },
   {
@@ -1267,11 +1237,6 @@
   {
     "originalImage": "CNX_Chem_08_02_enyne_img",
     "outputName": "CNX_Chem_08_02_enyne_img_IS.svg",
-    "extension": ".svg"
-  },
-  {
-    "originalImage": "CNX_Chem_08_02_ethane",
-    "outputName": "CNX_Chem_08_02_ethane_IS.svg",
     "extension": ".svg"
   },
   {
@@ -1435,11 +1400,6 @@
     "extension": ".svg"
   },
   {
-    "originalImage": "CNX_Chem_08_04_pMOsigma",
-    "outputName": "CNX_Chem_08_04_pMOsigma_IS.svg",
-    "extension": ".svg"
-  },
-  {
     "originalImage": "CNX_Chem_08_04_salabel_img",
     "outputName": "CNX_Chem_08_04_salabel_img_IS.svg",
     "extension": ".svg"
@@ -1522,6 +1482,1971 @@
   {
     "originalImage": "CNX_Chem_09_06_RealGas2",
     "outputName": "CNX_Chem_09_06_RealGas2_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_01_Aminacidch_img",
+    "outputName": "CNX_Chem_10_01_Aminacidch_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_01_DispForces",
+    "outputName": "CNX_Chem_10_01_DispForces_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_01_Geckos",
+    "outputName": "CNX_Chem_10_01_Geckos_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_01_IntravInter",
+    "outputName": "CNX_Chem_10_01_IntravInter_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_01_KMTPhases1",
+    "outputName": "CNX_Chem_10_01_KMTPhases1_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_01_PentIso",
+    "outputName": "CNX_Chem_10_01_PentIso_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_02_CapRise",
+    "outputName": "CNX_Chem_10_02_CapRise_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_02_Question4_img",
+    "outputName": "CNX_Chem_10_02_Question4_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_02_Testtubeoi_img",
+    "outputName": "CNX_Chem_10_02_Testtubeoi_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_03_VapPress1",
+    "outputName": "CNX_Chem_10_03_VapPress1_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_04_CO2PhasDi",
+    "outputName": "CNX_Chem_10_04_CO2PhasDi_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_04_Exercise10a_img",
+    "outputName": "CNX_Chem_10_04_Exercise10a_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_04_Exercise10d_img",
+    "outputName": "CNX_Chem_10_04_Exercise10d_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_04_SupCritCof",
+    "outputName": "CNX_Chem_10_04_SupCritCof_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_05_Carbon",
+    "outputName": "CNX_Chem_10_05_Carbon_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_05_CrystDfcts",
+    "outputName": "CNX_Chem_10_05_CrystDfcts_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_05_Graphene",
+    "outputName": "CNX_Chem_10_05_Graphene_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_05_MolSolids",
+    "outputName": "CNX_Chem_10_05_MolSolids_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_05_NtwrkSolid",
+    "outputName": "CNX_Chem_10_05_NtwrkSolid_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_06_BdyCntrdCb",
+    "outputName": "CNX_Chem_10_06_BdyCntrdCb_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_06_CbcCltPckd",
+    "outputName": "CNX_Chem_10_06_CbcCltPckd_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_06_ClstPckng2",
+    "outputName": "CNX_Chem_10_06_ClstPckng2_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_06_CrystalSys",
+    "outputName": "CNX_Chem_10_06_CrystalSys_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_06_CubUntCll",
+    "outputName": "CNX_Chem_10_06_CubUntCll_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_06_Ex100602_img",
+    "outputName": "CNX_Chem_10_06_Ex100602_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_06_GenUnitCll",
+    "outputName": "CNX_Chem_10_06_GenUnitCll_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_06_IntIonst",
+    "outputName": "CNX_Chem_10_06_IntIonst_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_06_SimpleCub2",
+    "outputName": "CNX_Chem_10_06_SimpleCub2_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_06_SimpleCub3",
+    "outputName": "CNX_Chem_10_06_SimpleCub3_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_06_TetOctHole",
+    "outputName": "CNX_Chem_10_06_TetOctHole_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_06_UnitCell1",
+    "outputName": "CNX_Chem_10_06_UnitCell1_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_06_XRyDiff1",
+    "outputName": "CNX_Chem_10_06_XRyDiff1_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_06_ZnSStrctr",
+    "outputName": "CNX_Chem_10_06_ZnSStrctr_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_07_CaF2Strctr",
+    "outputName": "CNX_Chem_10_07_CaF2Strctr_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_07_CsClStrctr",
+    "outputName": "CNX_Chem_10_07_CsClStrctr_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_07_NaClStrctr",
+    "outputName": "CNX_Chem_10_07_NaClStrctr_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_10_07_XRyDiff2",
+    "outputName": "CNX_Chem_10_07_XRyDiff2_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_11_01_Icepack",
+    "outputName": "CNX_Chem_11_01_Icepack_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_11_01_solusolv",
+    "outputName": "CNX_Chem_11_01_solusolv_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_11_02_ammonia1_img",
+    "outputName": "CNX_Chem_11_02_ammonia1_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_11_03_gasdissolv",
+    "outputName": "CNX_Chem_11_03_gasdissolv_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_11_03_solubility",
+    "outputName": "CNX_Chem_11_03_solubility_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_11_04_EX03Steps_img",
+    "outputName": "CNX_Chem_11_04_EX03Steps_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_11_04_Ex02Steps_img",
+    "outputName": "CNX_Chem_11_04_Ex02Steps_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_11_04_Ex04Steps_img",
+    "outputName": "CNX_Chem_11_04_Ex04Steps_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_11_04_Ex07Steps_img",
+    "outputName": "CNX_Chem_11_04_Ex07Steps_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_11_04_Ex08Steps_img",
+    "outputName": "CNX_Chem_11_04_Ex08Steps_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_11_04_Ex09Steps_img",
+    "outputName": "CNX_Chem_11_04_Ex09Steps_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_11_04_LabDistill",
+    "outputName": "CNX_Chem_11_04_LabDistill_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_11_04_RaoultLaw",
+    "outputName": "CNX_Chem_11_04_RaoultLaw_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_11_04_ionpair",
+    "outputName": "CNX_Chem_11_04_ionpair_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_11_04_osmosis",
+    "outputName": "CNX_Chem_11_04_osmosis_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_11_04_phasediag",
+    "outputName": "CNX_Chem_11_04_phasediag_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_11_04_refinery",
+    "outputName": "CNX_Chem_11_04_refinery_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_11_04_rvosmosis",
+    "outputName": "CNX_Chem_11_04_rvosmosis_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_11_05_detrg",
+    "outputName": "CNX_Chem_11_05_detrg_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_11_05_emulsoil",
+    "outputName": "CNX_Chem_11_05_emulsoil_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_11_05_oilspill",
+    "outputName": "CNX_Chem_11_05_oilspill_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_11_05_soap",
+    "outputName": "CNX_Chem_11_05_soap_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_01_KDataH2O2",
+    "outputName": "CNX_Chem_12_01_KDataH2O2_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_01_NH3Decomp",
+    "outputName": "CNX_Chem_12_01_NH3Decomp_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_01_RRateIll",
+    "outputName": "CNX_Chem_12_01_RRateIll_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_03_OzoneHole",
+    "outputName": "CNX_Chem_12_03_OzoneHole_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_04_2OrdKin",
+    "outputName": "CNX_Chem_12_04_2OrdKin_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_04_AmDecomK",
+    "outputName": "CNX_Chem_12_04_AmDecomK_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_04_CYL1_img",
+    "outputName": "CNX_Chem_12_04_CYL1_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_04_CYL2_img",
+    "outputName": "CNX_Chem_12_04_CYL2_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_04_Exercise02_img",
+    "outputName": "CNX_Chem_12_04_Exercise02_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_04_FrstOKin",
+    "outputName": "CNX_Chem_12_04_FrstOKin_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_05_ArrhPlot",
+    "outputName": "CNX_Chem_12_05_ArrhPlot_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_05_COandO2",
+    "outputName": "CNX_Chem_12_05_COandO2_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_05_RCooDgm",
+    "outputName": "CNX_Chem_12_05_RCooDgm_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_05_SuccessR",
+    "outputName": "CNX_Chem_12_05_SuccessR_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_06_BimoElRe",
+    "outputName": "CNX_Chem_12_06_BimoElRe_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_06_CyclobD_img",
+    "outputName": "CNX_Chem_12_06_CyclobD_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_07_CatReCoDig",
+    "outputName": "CNX_Chem_12_07_CatReCoDig_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_07_Enzyme",
+    "outputName": "CNX_Chem_12_07_Enzyme_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_07_Exercise4a_img",
+    "outputName": "CNX_Chem_12_07_Exercise4a_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_07_Exercise4b_img",
+    "outputName": "CNX_Chem_12_07_Exercise4b_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_07_Exercise5a_img",
+    "outputName": "CNX_Chem_12_07_Exercise5a_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_07_Exercise5b_img",
+    "outputName": "CNX_Chem_12_07_Exercise5b_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_07_Exercise6a_img",
+    "outputName": "CNX_Chem_12_07_Exercise6a_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_07_Exercise6b_img",
+    "outputName": "CNX_Chem_12_07_Exercise6b_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_07_Exercise7a_img",
+    "outputName": "CNX_Chem_12_07_Exercise7a_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_07_Exercise7b_img",
+    "outputName": "CNX_Chem_12_07_Exercise7b_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_07_HMPShuntPa",
+    "outputName": "CNX_Chem_12_07_HMPShuntPa_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_07_HetCats-230a",
+    "outputName": "CNX_Chem_12_07_HetCats-230a_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_07_Rxndiagramcyl_img",
+    "outputName": "CNX_Chem_12_07_Rxndiagramcyl_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_12_07_Rxndiagramex_img",
+    "outputName": "CNX_Chem_12_07_Rxndiagramex_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_13_00_Blood",
+    "outputName": "CNX_Chem_13_00_Blood_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_13_01_equilibrium",
+    "outputName": "CNX_Chem_13_01_equilibrium_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_13_02_mixtures",
+    "outputName": "CNX_Chem_13_02_mixtures_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_13_02_quotient",
+    "outputName": "CNX_Chem_13_02_quotient_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_13_03_catalyst",
+    "outputName": "CNX_Chem_13_03_catalyst_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_13_03_factory",
+    "outputName": "CNX_Chem_13_03_factory_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_13_04_ICETable2_img",
+    "outputName": "CNX_Chem_13_04_ICETable2_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_13_04_ICETable30_img",
+    "outputName": "CNX_Chem_13_04_ICETable30_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_13_04_ICETable3_img",
+    "outputName": "CNX_Chem_13_04_ICETable3_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_13_05_Butane_img",
+    "outputName": "CNX_Chem_13_05_Butane_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_14_01_HF_img",
+    "outputName": "CNX_Chem_14_01_HF_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_14_01_NH3_img",
+    "outputName": "CNX_Chem_14_01_NH3_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_14_01_Water_img",
+    "outputName": "CNX_Chem_14_01_Water_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_14_01_conjugate_img",
+    "outputName": "CNX_Chem_14_01_conjugate_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_14_02_phscale",
+    "outputName": "CNX_Chem_14_02_phscale_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_14_03_AcidpH",
+    "outputName": "CNX_Chem_14_03_AcidpH_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_14_03_FishLemon",
+    "outputName": "CNX_Chem_14_03_FishLemon_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_14_03_ICETable2_img",
+    "outputName": "CNX_Chem_14_03_ICETable2_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_14_03_ICETable3_img",
+    "outputName": "CNX_Chem_14_03_ICETable3_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_14_03_ICETable5_img",
+    "outputName": "CNX_Chem_14_03_ICETable5_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_14_03_OHbonds_img",
+    "outputName": "CNX_Chem_14_03_OHbonds_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_14_03_Oxyacid",
+    "outputName": "CNX_Chem_14_03_Oxyacid_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_14_03_corresp",
+    "outputName": "CNX_Chem_14_03_corresp_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_14_03_strengths",
+    "outputName": "CNX_Chem_14_03_strengths_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_14_03_strong",
+    "outputName": "CNX_Chem_14_03_strong_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_14_04_ICETable13_img",
+    "outputName": "CNX_Chem_14_04_ICETable13_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_14_04_steps1_img",
+    "outputName": "CNX_Chem_14_04_steps1_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_14_05_ICETable1_img",
+    "outputName": "CNX_Chem_14_05_ICETable1_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_14_05_acetic_img",
+    "outputName": "CNX_Chem_14_05_acetic_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_14_06_ICETable16_img",
+    "outputName": "CNX_Chem_14_06_ICETable16_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_14_06_buffer",
+    "outputName": "CNX_Chem_14_06_buffer_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_14_06_bufferchrt",
+    "outputName": "CNX_Chem_14_06_bufferchrt_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_14_07_indicators",
+    "outputName": "CNX_Chem_14_07_indicators_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_14_07_titration2",
+    "outputName": "CNX_Chem_14_07_titration2_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_14_07_titration",
+    "outputName": "CNX_Chem_14_07_titration_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_15_01_ICETable1_img",
+    "outputName": "CNX_Chem_15_01_ICETable1_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_15_01_ICETable2_img",
+    "outputName": "CNX_Chem_15_01_ICETable2_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_15_01_ICETable3_img",
+    "outputName": "CNX_Chem_15_01_ICETable3_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_15_01_ICETable7_img",
+    "outputName": "CNX_Chem_15_01_ICETable7_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_15_02_AlOH4_img",
+    "outputName": "CNX_Chem_15_02_AlOH4_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_15_02_Answer18a_img",
+    "outputName": "CNX_Chem_15_02_Answer18a_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_15_02_Answer18b_img",
+    "outputName": "CNX_Chem_15_02_Answer18b_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_15_02_Answer18c_img",
+    "outputName": "CNX_Chem_15_02_Answer18c_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_15_02_Answer18d_img",
+    "outputName": "CNX_Chem_15_02_Answer18d_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_15_02_Answer18e_img",
+    "outputName": "CNX_Chem_15_02_Answer18e_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_15_02_Answer24a_img",
+    "outputName": "CNX_Chem_15_02_Answer24a_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_15_02_Answer24b_img",
+    "outputName": "CNX_Chem_15_02_Answer24b_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_15_02_Answer24c_img",
+    "outputName": "CNX_Chem_15_02_Answer24c_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_15_02_Answer24d_img",
+    "outputName": "CNX_Chem_15_02_Answer24d_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_15_02_BF3-LA_img",
+    "outputName": "CNX_Chem_15_02_BF3-LA_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_15_02_CuCN2-_img",
+    "outputName": "CNX_Chem_15_02_CuCN2-_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_15_02_Displace_img",
+    "outputName": "CNX_Chem_15_02_Displace_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_15_02_ICETable1_img",
+    "outputName": "CNX_Chem_15_02_ICETable1_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_15_02_NH3-LBase_img",
+    "outputName": "CNX_Chem_15_02_NH3-LBase_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_15_02_NonmetalOx_img",
+    "outputName": "CNX_Chem_15_02_NonmetalOx_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_15_03_AgBr_img",
+    "outputName": "CNX_Chem_15_03_AgBr_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_15_03_hydronium_img",
+    "outputName": "CNX_Chem_15_03_hydronium_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_16_01_carbon",
+    "outputName": "CNX_Chem_16_01_carbon_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_16_01_decayrates",
+    "outputName": "CNX_Chem_16_01_decayrates_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_16_02_EntGraph",
+    "outputName": "CNX_Chem_16_02_EntGraph_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_16_02_Gas",
+    "outputName": "CNX_Chem_16_02_Gas_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_16_03_Energy",
+    "outputName": "CNX_Chem_16_03_Energy_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_16_03_Entropies",
+    "outputName": "CNX_Chem_16_03_Entropies_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_16_04_Scenarios",
+    "outputName": "CNX_Chem_16_04_Scenarios_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_17_02_Galvanicel",
+    "outputName": "CNX_Chem_17_02_Galvanicel_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_17_02_Oxidareduc",
+    "outputName": "CNX_Chem_17_02_Oxidareduc_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_17_03_GalvanCu",
+    "outputName": "CNX_Chem_17_03_GalvanCu_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_17_03_SHE",
+    "outputName": "CNX_Chem_17_03_SHE_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_17_04_Relation",
+    "outputName": "CNX_Chem_17_04_Relation_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_17_05_AlkalineBat",
+    "outputName": "CNX_Chem_17_05_AlkalineBat_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_17_05_DryCell",
+    "outputName": "CNX_Chem_17_05_DryCell_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_17_05_FuelCell",
+    "outputName": "CNX_Chem_17_05_FuelCell_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_17_05_Lead",
+    "outputName": "CNX_Chem_17_05_Lead_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_17_05_LiIon",
+    "outputName": "CNX_Chem_17_05_LiIon_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_17_05_NiCd",
+    "outputName": "CNX_Chem_17_05_NiCd_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_17_06_Protect",
+    "outputName": "CNX_Chem_17_06_Protect_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_17_06_Rust",
+    "outputName": "CNX_Chem_17_06_Rust_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_17_07_Electroplate",
+    "outputName": "CNX_Chem_17_07_Electroplate_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_17_07_NaCl",
+    "outputName": "CNX_Chem_17_07_NaCl_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_17_07_Water",
+    "outputName": "CNX_Chem_17_07_Water_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_17_08_Daniell",
+    "outputName": "CNX_Chem_17_08_Daniell_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_01_PeriodicPU3",
+    "outputName": "CNX_Chem_18_01_PeriodicPU3_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_02_Boricacid_img",
+    "outputName": "CNX_Chem_18_02_Boricacid_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_02_DownsCell",
+    "outputName": "CNX_Chem_18_02_DownsCell_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_02_HallHerCell",
+    "outputName": "CNX_Chem_18_02_HallHerCell_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_03_BorateAnio",
+    "outputName": "CNX_Chem_18_03_BorateAnio_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_03_CO2vsSiO2",
+    "outputName": "CNX_Chem_18_03_CO2vsSiO2_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_03_Exercise2b_img",
+    "outputName": "CNX_Chem_18_03_Exercise2b_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_03_SiPurif",
+    "outputName": "CNX_Chem_18_03_SiPurif_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_04_OxStNonmts",
+    "outputName": "CNX_Chem_18_04_OxStNonmts_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_05_AmmonDeriv_img",
+    "outputName": "CNX_Chem_18_05_AmmonDeriv_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_05_Electrolys",
+    "outputName": "CNX_Chem_18_05_Electrolys_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_07_Exercise1a_img",
+    "outputName": "CNX_Chem_18_07_Exercise1a_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_07_Exercise1b_img",
+    "outputName": "CNX_Chem_18_07_Exercise1b_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_07_Exercise1c_img",
+    "outputName": "CNX_Chem_18_07_Exercise1c_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_07_Exercise1d_img",
+    "outputName": "CNX_Chem_18_07_Exercise1d_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_07_Exercise1e_img",
+    "outputName": "CNX_Chem_18_07_Exercise1e_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_07_Exercise5a_img",
+    "outputName": "CNX_Chem_18_07_Exercise5a_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_07_Exercise5b_img",
+    "outputName": "CNX_Chem_18_07_Exercise5b_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_07_Exercise5c_img",
+    "outputName": "CNX_Chem_18_07_Exercise5c_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_07_N2O5",
+    "outputName": "CNX_Chem_18_07_N2O5_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_07_Nitrogen",
+    "outputName": "CNX_Chem_18_07_Nitrogen_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_07_molecreso",
+    "outputName": "CNX_Chem_18_07_molecreso_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_08_Exercise1a_img",
+    "outputName": "CNX_Chem_18_08_Exercise1a_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_08_Exercise1b_img",
+    "outputName": "CNX_Chem_18_08_Exercise1b_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_08_Exercise1c_img",
+    "outputName": "CNX_Chem_18_08_Exercise1c_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_08_Exercise1d_img",
+    "outputName": "CNX_Chem_18_08_Exercise1d_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_08_Exercise1e_img",
+    "outputName": "CNX_Chem_18_08_Exercise1e_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_08_Exercise8a_img",
+    "outputName": "CNX_Chem_18_08_Exercise8a_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_08_Exercise8b_img",
+    "outputName": "CNX_Chem_18_08_Exercise8b_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_08_Exercise8c_img",
+    "outputName": "CNX_Chem_18_08_Exercise8c_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_08_Exercise8d_img",
+    "outputName": "CNX_Chem_18_08_Exercise8d_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_09_Cl2OClO2",
+    "outputName": "CNX_Chem_18_09_Cl2OClO2_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_09_Limelight",
+    "outputName": "CNX_Chem_18_09_Limelight_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_10_FrachMine",
+    "outputName": "CNX_Chem_18_10_FrachMine_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_11_Exercise4a_img",
+    "outputName": "CNX_Chem_18_11_Exercise4a_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_11_Exercise4b_img",
+    "outputName": "CNX_Chem_18_11_Exercise4b_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_11_Exercise4c_img",
+    "outputName": "CNX_Chem_18_11_Exercise4c_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_11_Exercise4d_img",
+    "outputName": "CNX_Chem_18_11_Exercise4d_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_18_11_Exercise4e_img",
+    "outputName": "CNX_Chem_18_11_Exercise4e_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_01_BlastFurn",
+    "outputName": "CNX_Chem_19_01_BlastFurn_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_01_Oxistatra",
+    "outputName": "CNX_Chem_19_01_Oxistatra_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_01_PeriodicEConfig",
+    "outputName": "CNX_Chem_19_01_PeriodicEConfig_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_01_ResTemp",
+    "outputName": "CNX_Chem_19_01_ResTemp_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_02_4geom",
+    "outputName": "CNX_Chem_19_02_4geom_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_02_Answer4a_img",
+    "outputName": "CNX_Chem_19_02_Answer4a_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_02_Answer4b_img",
+    "outputName": "CNX_Chem_19_02_Answer4b_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_02_Answer4c_img",
+    "outputName": "CNX_Chem_19_02_Answer4c_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_02_Answer4d_img",
+    "outputName": "CNX_Chem_19_02_Answer4d_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_02_Answer4e_img",
+    "outputName": "CNX_Chem_19_02_Answer4e_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_02_Answer4f_img",
+    "outputName": "CNX_Chem_19_02_Answer4f_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_02_BalEnt",
+    "outputName": "CNX_Chem_19_02_BalEnt_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_02_CN",
+    "outputName": "CNX_Chem_19_02_CN_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_02_ChlorBlue",
+    "outputName": "CNX_Chem_19_02_ChlorBlue_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_02_Coen2Cl2",
+    "outputName": "CNX_Chem_19_02_Coen2Cl2_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_02_DMSA",
+    "outputName": "CNX_Chem_19_02_DMSA_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_02_EDTA",
+    "outputName": "CNX_Chem_19_02_EDTA_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_02_Gly",
+    "outputName": "CNX_Chem_19_02_Gly_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_02_H2O2Br2",
+    "outputName": "CNX_Chem_19_02_H2O2Br2_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_02_cistrans",
+    "outputName": "CNX_Chem_19_02_cistrans_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_02_en",
+    "outputName": "CNX_Chem_19_02_en_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_02_enant",
+    "outputName": "CNX_Chem_19_02_enant_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_02_ex10ans_img",
+    "outputName": "CNX_Chem_19_02_ex10ans_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_02_heme",
+    "outputName": "CNX_Chem_19_02_heme_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_02_oct",
+    "outputName": "CNX_Chem_19_02_oct_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_02_structures",
+    "outputName": "CNX_Chem_19_02_structures_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_02_transplatin",
+    "outputName": "CNX_Chem_19_02_transplatin_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_03_CFSE",
+    "outputName": "CNX_Chem_19_03_CFSE_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_03_FECN6FEH2O_img",
+    "outputName": "CNX_Chem_19_03_FECN6FEH2O_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_03_Lightper",
+    "outputName": "CNX_Chem_19_03_Lightper_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_03_Lowhigh",
+    "outputName": "CNX_Chem_19_03_Lowhigh_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_19_03_smalldeltt_img",
+    "outputName": "CNX_Chem_19_03_smalldeltt_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_AromatIso1_img",
+    "outputName": "CNX_Chem_20_01_AromatIso1_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_AromatIso2_img",
+    "outputName": "CNX_Chem_20_01_AromatIso2_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_AromatIso3_img",
+    "outputName": "CNX_Chem_20_01_AromatIso3_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_FracDistil",
+    "outputName": "CNX_Chem_20_01_FracDistil_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_GeomHybr1_img",
+    "outputName": "CNX_Chem_20_01_GeomHybr1_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_HalAlkane2_img",
+    "outputName": "CNX_Chem_20_01_HalAlkane2_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_HalAlkane3_img",
+    "outputName": "CNX_Chem_20_01_HalAlkane3_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_HalAlkane_img",
+    "outputName": "CNX_Chem_20_01_HalAlkane_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_HaloReact2_img",
+    "outputName": "CNX_Chem_20_01_HaloReact2_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_HaloReact_img",
+    "outputName": "CNX_Chem_20_01_HaloReact_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_HybrBAngl_img",
+    "outputName": "CNX_Chem_20_01_HybrBAngl_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_LineStruct1",
+    "outputName": "CNX_Chem_20_01_LineStruct1_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_LineStruct2_img",
+    "outputName": "CNX_Chem_20_01_LineStruct2_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_LineStruct3_img",
+    "outputName": "CNX_Chem_20_01_LineStruct3_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_LineStruct4_img",
+    "outputName": "CNX_Chem_20_01_LineStruct4_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_LineStruct5_img",
+    "outputName": "CNX_Chem_20_01_LineStruct5_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_LineStruct6_img",
+    "outputName": "CNX_Chem_20_01_LineStruct6_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_LineStruct7_img",
+    "outputName": "CNX_Chem_20_01_LineStruct7_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_LineStruct8_img",
+    "outputName": "CNX_Chem_20_01_LineStruct8_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_ReactProd1_img",
+    "outputName": "CNX_Chem_20_01_ReactProd1_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_acetylene_img",
+    "outputName": "CNX_Chem_20_01_acetylene_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_alkanes",
+    "outputName": "CNX_Chem_20_01_alkanes_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_alkenes_img",
+    "outputName": "CNX_Chem_20_01_alkenes_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_alklnm_img",
+    "outputName": "CNX_Chem_20_01_alklnm_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_alkyl_img",
+    "outputName": "CNX_Chem_20_01_alkyl_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_alkyls",
+    "outputName": "CNX_Chem_20_01_alkyls_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_alkyne_img",
+    "outputName": "CNX_Chem_20_01_alkyne_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_aromatic_img",
+    "outputName": "CNX_Chem_20_01_aromatic_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_benzene",
+    "outputName": "CNX_Chem_20_01_benzene_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_butaneIsom_img",
+    "outputName": "CNX_Chem_20_01_butaneIsom_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_ethylChlor_img",
+    "outputName": "CNX_Chem_20_01_ethylChlor_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_ex1_11_c_img",
+    "outputName": "CNX_Chem_20_01_ex1_11_c_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_ex1_11_e_img",
+    "outputName": "CNX_Chem_20_01_ex1_11_e_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_ex1_11_f_img",
+    "outputName": "CNX_Chem_20_01_ex1_11_f_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_ex1_12_c_img",
+    "outputName": "CNX_Chem_20_01_ex1_12_c_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_ex1_12_e_img",
+    "outputName": "CNX_Chem_20_01_ex1_12_e_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_ex1_14_img",
+    "outputName": "CNX_Chem_20_01_ex1_14_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_ex1_16_img",
+    "outputName": "CNX_Chem_20_01_ex1_16_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_ex1_18a_img",
+    "outputName": "CNX_Chem_20_01_ex1_18a_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_ex1_18b_img",
+    "outputName": "CNX_Chem_20_01_ex1_18b_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_ex1_1a_img",
+    "outputName": "CNX_Chem_20_01_ex1_1a_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_ex1_1b_img",
+    "outputName": "CNX_Chem_20_01_ex1_1b_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_ex1_1c_img",
+    "outputName": "CNX_Chem_20_01_ex1_1c_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_ex1_20_img",
+    "outputName": "CNX_Chem_20_01_ex1_20_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_ex1_21_img",
+    "outputName": "CNX_Chem_20_01_ex1_21_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_ex1_23_img",
+    "outputName": "CNX_Chem_20_01_ex1_23_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_geoIsomers_img",
+    "outputName": "CNX_Chem_20_01_geoIsomers_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_halogen_img",
+    "outputName": "CNX_Chem_20_01_halogen_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_hexane_a_img",
+    "outputName": "CNX_Chem_20_01_hexane_a_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_hexane_b_img",
+    "outputName": "CNX_Chem_20_01_hexane_b_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_hexane_c_img",
+    "outputName": "CNX_Chem_20_01_hexane_c_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_hexane_d_img",
+    "outputName": "CNX_Chem_20_01_hexane_d_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_hexane_e_img",
+    "outputName": "CNX_Chem_20_01_hexane_e_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_hexane_f_img",
+    "outputName": "CNX_Chem_20_01_hexane_f_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_monomer",
+    "outputName": "CNX_Chem_20_01_monomer_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_notiso1_img",
+    "outputName": "CNX_Chem_20_01_notiso1_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_notiso2_img",
+    "outputName": "CNX_Chem_20_01_notiso2_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_octane1_img",
+    "outputName": "CNX_Chem_20_01_octane1_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_octane2_img",
+    "outputName": "CNX_Chem_20_01_octane2_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_propane_img",
+    "outputName": "CNX_Chem_20_01_propane_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_propene1",
+    "outputName": "CNX_Chem_20_01_propene1_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_recycle",
+    "outputName": "CNX_Chem_20_01_recycle_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_subbenzene_img",
+    "outputName": "CNX_Chem_20_01_subbenzene_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_01_substitu_img",
+    "outputName": "CNX_Chem_20_01_substitu_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_02_Exercise3a_img",
+    "outputName": "CNX_Chem_20_02_Exercise3a_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_02_Exercise3b_img",
+    "outputName": "CNX_Chem_20_02_Exercise3b_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_02_Exercise3c_img",
+    "outputName": "CNX_Chem_20_02_Exercise3c_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_02_Exercise4a_img",
+    "outputName": "CNX_Chem_20_02_Exercise4a_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_02_Exercise4b_img",
+    "outputName": "CNX_Chem_20_02_Exercise4b_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_02_Exercise4c_img",
+    "outputName": "CNX_Chem_20_02_Exercise4c_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_02_FunctGroup_img",
+    "outputName": "CNX_Chem_20_02_FunctGroup_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_02_MTBE_img",
+    "outputName": "CNX_Chem_20_02_MTBE_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_02_NameEthers_img",
+    "outputName": "CNX_Chem_20_02_NameEthers_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_02_alcohol1_img",
+    "outputName": "CNX_Chem_20_02_alcohol1_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_02_alcohol2_img",
+    "outputName": "CNX_Chem_20_02_alcohol2_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_02_ethanol_img",
+    "outputName": "CNX_Chem_20_02_ethanol_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_02_ether_img",
+    "outputName": "CNX_Chem_20_02_ether_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_02_ethers1_img",
+    "outputName": "CNX_Chem_20_02_ethers1_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_02_ethers2_img",
+    "outputName": "CNX_Chem_20_02_ethers2_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_02_ferment_img",
+    "outputName": "CNX_Chem_20_02_ferment_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_02_polyols_img",
+    "outputName": "CNX_Chem_20_02_polyols_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_02_sugars",
+    "outputName": "CNX_Chem_20_02_sugars_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_03_COgeom_img",
+    "outputName": "CNX_Chem_20_03_COgeom_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_03_CarboxEst1_img",
+    "outputName": "CNX_Chem_20_03_CarboxEst1_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_03_CarboxEst2_img",
+    "outputName": "CNX_Chem_20_03_CarboxEst2_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_03_OxiOrder_img",
+    "outputName": "CNX_Chem_20_03_OxiOrder_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_03_OxiProd1a_a_img",
+    "outputName": "CNX_Chem_20_03_OxiProd1a_a_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_03_OxiProd1a_b_img",
+    "outputName": "CNX_Chem_20_03_OxiProd1a_b_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_03_OxiProd1a_c_img",
+    "outputName": "CNX_Chem_20_03_OxiProd1a_c_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_03_OxiProd1b_a_img",
+    "outputName": "CNX_Chem_20_03_OxiProd1b_a_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_03_OxiProd1b_b_img",
+    "outputName": "CNX_Chem_20_03_OxiProd1b_b_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_03_OxiProd1b_c_img",
+    "outputName": "CNX_Chem_20_03_OxiProd1b_c_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_03_OxiRedu2_img",
+    "outputName": "CNX_Chem_20_03_OxiRedu2_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_03_OxiRedu_img",
+    "outputName": "CNX_Chem_20_03_OxiRedu_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_03_ReduProd1a_a_img",
+    "outputName": "CNX_Chem_20_03_ReduProd1a_a_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_03_ReduProd1a_b_img",
+    "outputName": "CNX_Chem_20_03_ReduProd1a_b_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_03_ReduProd1a_c_img",
+    "outputName": "CNX_Chem_20_03_ReduProd1a_c_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_03_acetate_img",
+    "outputName": "CNX_Chem_20_03_acetate_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_03_alcoholABC_img",
+    "outputName": "CNX_Chem_20_03_alcoholABC_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_03_aldehyde_img",
+    "outputName": "CNX_Chem_20_03_aldehyde_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_03_aldket_img",
+    "outputName": "CNX_Chem_20_03_aldket_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_03_carbonyl_img",
+    "outputName": "CNX_Chem_20_03_carbonyl_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_03_carboxylic_img",
+    "outputName": "CNX_Chem_20_03_carboxylic_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_03_esterform_img",
+    "outputName": "CNX_Chem_20_03_esterform_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_03_oxaldehyde_img",
+    "outputName": "CNX_Chem_20_03_oxaldehyde_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_03_oxidation_img",
+    "outputName": "CNX_Chem_20_03_oxidation_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_03_oxketone_img",
+    "outputName": "CNX_Chem_20_03_oxketone_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_03_oxtoacid_img",
+    "outputName": "CNX_Chem_20_03_oxtoacid_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_04_DNA",
+    "outputName": "CNX_Chem_20_04_DNA_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_04_alkaloids_img",
+    "outputName": "CNX_Chem_20_04_alkaloids_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_04_amide1_img",
+    "outputName": "CNX_Chem_20_04_amide1_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_04_amide2_img",
+    "outputName": "CNX_Chem_20_04_amide2_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_04_amines_img",
+    "outputName": "CNX_Chem_20_04_amines_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_04_ammonia_img",
+    "outputName": "CNX_Chem_20_04_ammonia_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_04_kevlar1",
+    "outputName": "CNX_Chem_20_04_kevlar1_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_04_kevpoly",
+    "outputName": "CNX_Chem_20_04_kevpoly_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_04_peptide",
+    "outputName": "CNX_Chem_20_04_peptide_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_04_pyridine_img",
+    "outputName": "CNX_Chem_20_04_pyridine_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_04_pyridinium_img",
+    "outputName": "CNX_Chem_20_04_pyridinium_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_04_react2a_img",
+    "outputName": "CNX_Chem_20_04_react2a_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_04_react2b_img",
+    "outputName": "CNX_Chem_20_04_react2b_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_04_react2c_img",
+    "outputName": "CNX_Chem_20_04_react2c_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_04_react2e_img",
+    "outputName": "CNX_Chem_20_04_react2e_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_04_reaction1b_img",
+    "outputName": "CNX_Chem_20_04_reaction1b_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_04_reaction1c_img",
+    "outputName": "CNX_Chem_20_04_reaction1c_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_20_04_reaction1f_img",
+    "outputName": "CNX_Chem_20_04_reaction1f_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_21_01_BandStable",
+    "outputName": "CNX_Chem_21_01_BandStable_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_21_01_BindEnergy",
+    "outputName": "CNX_Chem_21_01_BindEnergy_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_21_03_CarbonDate",
+    "outputName": "CNX_Chem_21_03_CarbonDate_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_21_03_DecayS",
+    "outputName": "CNX_Chem_21_03_DecayS_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_21_03_HalfLife",
+    "outputName": "CNX_Chem_21_03_HalfLife_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_21_03_Radiation",
+    "outputName": "CNX_Chem_21_03_Radiation_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_21_03_RadioDecay-e619",
+    "outputName": "CNX_Chem_21_03_RadioDecay-e619_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_21_03_Reaction1",
+    "outputName": "CNX_Chem_21_03_Reaction1_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_21_04_ChnReact1",
+    "outputName": "CNX_Chem_21_04_ChnReact1_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_21_04_ControlRod",
+    "outputName": "CNX_Chem_21_04_ControlRod_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_21_04_CritMass",
+    "outputName": "CNX_Chem_21_04_CritMass_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_21_04_Fission1",
+    "outputName": "CNX_Chem_21_04_Fission1_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_21_04_Fission2",
+    "outputName": "CNX_Chem_21_04_Fission2_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_21_04_FissnBomb",
+    "outputName": "CNX_Chem_21_04_FissnBomb_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_21_04_NuclearPwr",
+    "outputName": "CNX_Chem_21_04_NuclearPwr_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_21_05_Co60Decay",
+    "outputName": "CNX_Chem_21_05_Co60Decay_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_21_05_RadTherapy",
+    "outputName": "CNX_Chem_21_05_RadTherapy_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_21_05_SmokeAlarm",
+    "outputName": "CNX_Chem_21_05_SmokeAlarm_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_21_06_Damage1",
+    "outputName": "CNX_Chem_21_06_Damage1_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_21_06_Damage2",
+    "outputName": "CNX_Chem_21_06_Damage2_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_21_06_Exposure1",
+    "outputName": "CNX_Chem_21_06_Exposure1_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_21_06_Exposure2",
+    "outputName": "CNX_Chem_21_06_Exposure2_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_21_06_Hydroxyrad_img",
+    "outputName": "CNX_Chem_21_06_Hydroxyrad_img_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_21_06_IonRadSpec",
+    "outputName": "CNX_Chem_21_06_IonRadSpec_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_21_06_Penetrate",
+    "outputName": "CNX_Chem_21_06_Penetrate_IS.svg",
+    "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_21_06_RadonExpos",
+    "outputName": "CNX_Chem_21_06_RadonExpos_IS.svg",
     "extension": ".svg"
   }
 ]
