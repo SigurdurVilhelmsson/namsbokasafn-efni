@@ -190,6 +190,7 @@ const UI = {
       `Þessi texti birtist á ${n} öðrum stað/stöðum. Beita þýðingunni þar líka?`,
     propagateResult: (created, skipped) =>
       `Fjölgað á ${created} stað/staði` + (skipped ? `, sleppt ${skipped} (þegar breytt)` : ''),
+    propagateError: (msg) => 'Villa við fjölgun: ' + msg,
   },
 
   // ── Localization editor specific ────────────────────────────

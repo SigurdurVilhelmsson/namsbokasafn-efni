@@ -1275,7 +1275,7 @@
         'success'
       );
     } catch (err) {
-      saveRetry.showToast('Villa við fjölgun: ' + err.message, 'error');
+      saveRetry.showToast(UI.segmentEditor.propagateError(err.message), 'error');
     }
   }
 
@@ -2127,39 +2127,10 @@
   });
 
   // ================================================================
-  // TERM HIGHLIGHTING
+  // TERM HIGHLIGHTING — highlightTermsInHtml lives in term-highlight.js
+  // (dual-mode, tag-aware splice guard, unit-tested). Loaded as a global
+  // before this file; called at the EN-render site above.
   // ================================================================
-
-  /**
-   * Highlight matched terms in already-escaped HTML.
-   * Works on the escaped text, matching term.english case-insensitively.
-   */
-  function highlightTermsInHtml(html, matches) {
-    // Sort by position descending so replacements don't shift indices
-    // But since html is escaped, we match by term text instead
-    // Sort longest first so "molar mass" matches before "mass"
-    const sorted = [...matches].sort((a, b) => b.english.length - a.english.length);
-    const used = new Set();
-
-    for (const m of sorted) {
-      const escaped = escapeHtml(m.english);
-      const pattern = new RegExp(`\\b(${escapeRegexStr(escaped)})\\b`, 'gi');
-      // Only highlight first occurrence to keep it clean
-      let replaced = false;
-      html = html.replace(pattern, (match) => {
-        if (replaced || used.has(m.english.toLowerCase())) return match;
-        replaced = true;
-        used.add(m.english.toLowerCase());
-        const cls = m.status === 'approved' ? 'term-highlight' : 'term-highlight proposed';
-        return `<span class="${cls}" data-term-id="${m.headwordId}" onclick="showTermPopup(${m.headwordId}, this)">${match}</span>`;
-      });
-    }
-    return html;
-  }
-
-  function escapeRegexStr(str) {
-    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  }
 
   // ================================================================
   // TERM POPUP

@@ -872,7 +872,12 @@ router.get(
       const eligible = [];
       const skipped = [];
       for (const o of occ) {
-        const verdict = propagation.classifyOccurrence(propagatedText, o);
+        // Pass editorId so the preview's eligible/skipped split matches what
+        // propagate actually writes (own pending edit → eligible-supersede).
+        const verdict = propagation.classifyOccurrence(propagatedText, {
+          ...o,
+          editorId: req.user.id,
+        });
         (verdict === 'eligible' ? eligible : skipped).push({
           moduleId: o.moduleId,
           chapter: o.chapter,
@@ -901,6 +906,15 @@ router.post(
       const { segmentId, editedContent, category, note } = req.body || {};
       if (!segmentId || !editedContent) {
         return res.status(400).json({ error: 'segmentId and editedContent are required' });
+      }
+      // Parity with the /edit route — bound the payload and constrain category.
+      if (typeof editedContent === 'string' && editedContent.length > 10000) {
+        return res.status(400).json({ error: 'Content too long (max 10,000 characters)' });
+      }
+      if (category && !VALID_CATEGORIES.includes(category)) {
+        return res.status(400).json({
+          error: `Invalid category. Must be one of: ${VALID_CATEGORIES.join(', ')}`,
+        });
       }
       const enNorm = concordance.normalizeEn(
         segmentParser
