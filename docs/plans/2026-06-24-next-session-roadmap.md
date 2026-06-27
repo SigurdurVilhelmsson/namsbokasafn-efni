@@ -95,17 +95,37 @@ Tracks 3–4 are the only AI-doable work, and both are debt/quality, not feature
   path is already built and returns nothing until the sidecar runs.
 - Glossary-seeded dictionary so chemistry terms aren't flagged.
 
-## Track 4 — Review fast-follows (AI-doable; batch one small PR)
-From this session's reviews (all non-blocking, recorded in memory):
-- **O:** re-propagation self-conflict (own prior pending rows reported as
-  "þegar breytt"); move inline `'Villa við fjölgun:'` into `ui-strings.js`;
-  add category/length validation to the propagate route (parity with `/edit`).
-- **B-4:** `highlightTermsInHtml` runs the term regex over rendered HTML — latent
-  span-splice if a glossary headword equals a structural token (0 in committed
-  glossaries today; guard it); `[[link:]]` chip title shows the full URL.
-- **Terminology:** consider applying the Unicode word-boundary helper to the
-  client EN highlighter too (currently ASCII-only; fine for English, but
-  symmetrical).
+## Track 4 — Review fast-follows ✅ DONE 2026-06-27 (PR `fix/track4-fast-follows`)
+All five items addressed in one PR (test-first; 1414 unit tests green, lint clean):
+- **O — self-conflict:** ✅ `classifyOccurrence` is now `editorId`-aware — re-propagating
+  over your *own still-pending* edit supersedes it (eligible) instead of reporting
+  "þegar breytt"; another editor's pending edit, or any approved/applied edit, stays a
+  conflict. `createPropagatedEdits` **updates the own-pending row in place** (mirrors
+  `saveSegmentEdit` edit-again → keeps the one-pending-row-per-(segment,editor)
+  invariant, so it doesn't feed the `completeModuleReview` double-count). `editorId`
+  passed at **both** the preview and propagate routes.
+- **O — ui-string:** ✅ inline `'Villa við fjölgun:'` → `UI.segmentEditor.propagateError`.
+- **O — route validation:** ✅ propagate route now enforces `editedContent` ≤ 10 000 +
+  `category ∈ VALID_CATEGORIES` (parity with `/edit`; `/edit` itself has no route test).
+- **B-4 — splice guard:** ✅ extracted `highlightTermsInHtml` → dual-mode
+  `server/public/js/term-highlight.js` (mirrors `marker-highlight.js`), made **tag-aware**
+  (only ever rewrites text runs, never tag/attribute content — covers the `[[link:]]` chip's
+  full-URL `title`). The "chip title shows the full URL" note was read as the *rationale* for
+  the guard (the URL lives in the `title` the highlighter scans), not a separate UX change —
+  the B-4 design doc has no separate spec and the chip already renders the full URL.
+  **Behavior change beyond the guard:** added a `depth` counter so a shorter headword no
+  longer nests inside a longer one ("molar mass" wins; "mass" doesn't re-highlight inside it).
+- **Terminology item 3:** ✅ Unicode `\p{L}/\p{N}` word-boundary folded into the extracted
+  highlighter (symmetric with `terminologyService.wholeWordRegex`).
+
+Verification note: unit tests `require()` the module directly and can't exercise the browser
+global wiring; that path is verified by exact analogue — `marker-highlight.js` uses the same
+`root.fn = fn` attach and is called bare in `segment-editor.js` (line 1569) in production. Worth
+a glance during the next live QA / E2E pass.
+
+Still deferred (not in this PR, by design): the two **Track 3** residuals — Logout E2E flake;
+`completeModuleReview` review-scoping (real correctness work, entangled with the item-O
+counting concern, deserves its own focused fix).
 
 ## Track 3 — E2E test isolation (AI-doable; infra)
 The E2E suite mutates **real** `efnafraedi-2e` content + `sessions.db`

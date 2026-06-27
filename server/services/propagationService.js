@@ -30,13 +30,26 @@ function _setTestDb(testDb) {
  * Decide what to do with one occurrence given the editor's propagated text.
  * Pure — no DB/file access.
  * @param {string} propagatedText
- * @param {{ currentIs: string, existingEdit: {edited_content: string, status: string}|null }} occ
+ * @param {{ currentIs: string, editorId?: string|number,
+ *           existingEdit: {edited_content: string, status: string, editor_id?: string}|null }} occ
  * @returns {'eligible'|'already-matches'|'conflict'}
  */
 function classifyOccurrence(propagatedText, occ) {
   const existing = occ.existingEdit;
   if (existing) {
-    return existing.edited_content === propagatedText ? 'already-matches' : 'conflict';
+    if (existing.edited_content === propagatedText) return 'already-matches';
+    // Re-propagating over one's OWN still-pending edit supersedes it in place
+    // (mirrors saveSegmentEdit's edit-again update — at most one pending row per
+    // (segment, editor)). Another editor's pending edit, or any approved/applied
+    // edit, stays a genuine conflict (preserves four-eyes).
+    if (
+      existing.status === 'pending' &&
+      occ.editorId != null &&
+      String(existing.editor_id) === String(occ.editorId)
+    ) {
+      return 'eligible';
+    }
+    return 'conflict';
   }
   return occ.currentIs === propagatedText ? 'already-matches' : 'eligible';
 }
@@ -51,7 +64,7 @@ function createPropagatedEdits(
   { book, editorId, editorUsername, propagatedText, category, note, occurrences }
 ) {
   const findEdit = conn.prepare(
-    `SELECT edited_content, status FROM segment_edits
+    `SELECT id, edited_content, status, editor_id FROM segment_edits
      WHERE book = ? AND module_id = ? AND segment_id = ? AND status != 'rejected'
      ORDER BY id DESC LIMIT 1`
   );
@@ -61,6 +74,11 @@ function createPropagatedEdits(
         category, editor_note, editor_id, editor_username)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
   );
+  const update = conn.prepare(
+    `UPDATE segment_edits
+       SET edited_content = ?, category = ?, editor_note = ?, created_at = CURRENT_TIMESTAMP
+     WHERE id = ?`
+  );
 
   const created = [];
   const skipped = [];
@@ -69,10 +87,23 @@ function createPropagatedEdits(
       const existingEdit = findEdit.get(book, occ.moduleId, occ.segmentId) || null;
       const verdict = classifyOccurrence(propagatedText, {
         currentIs: occ.currentIs,
+        editorId,
         existingEdit,
       });
       if (verdict !== 'eligible') {
         skipped.push({ moduleId: occ.moduleId, segmentId: occ.segmentId, reason: verdict });
+        continue;
+      }
+      // Eligible because of an own pending edit → supersede it in place rather
+      // than inserting a duplicate pending row (keeps the one-row-per-(seg,editor)
+      // invariant; classifyOccurrence already guaranteed it is ours + pending).
+      if (
+        existingEdit &&
+        existingEdit.status === 'pending' &&
+        String(existingEdit.editor_id) === String(editorId)
+      ) {
+        update.run(propagatedText, category || null, note || null, existingEdit.id);
+        created.push({ moduleId: occ.moduleId, segmentId: occ.segmentId, superseded: true });
         continue;
       }
       insert.run(
@@ -119,7 +150,7 @@ function latestEditedText(book, moduleId, segmentId) {
 function findOccurrences(book, enNorm, { excludeModuleId, excludeSegmentId } = {}) {
   const conn = getDb();
   const findEdit = conn.prepare(
-    `SELECT edited_content, status FROM segment_edits
+    `SELECT id, edited_content, status, editor_id FROM segment_edits
      WHERE book = ? AND module_id = ? AND segment_id = ? AND status != 'rejected'
      ORDER BY id DESC LIMIT 1`
   );

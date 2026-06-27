@@ -26,11 +26,12 @@ describe('classifyOccurrence', () => {
     ).toBe('already-matches');
   });
 
-  it('conflict: existing edit differs (pending)', () => {
+  it("conflict: another editor's pending edit differs", () => {
     expect(
       svc.classifyOccurrence(P, {
         currentIs: 'x',
-        existingEdit: { edited_content: 'önnur þýðing', status: 'pending' },
+        editorId: '42',
+        existingEdit: { edited_content: 'önnur þýðing', status: 'pending', editor_id: '99' },
       })
     ).toBe('conflict');
   });
@@ -39,7 +40,41 @@ describe('classifyOccurrence', () => {
     expect(
       svc.classifyOccurrence(P, {
         currentIs: 'x',
-        existingEdit: { edited_content: 'önnur', status: 'applied' },
+        editorId: '42',
+        existingEdit: { edited_content: 'önnur', status: 'applied', editor_id: '42' },
+      })
+    ).toBe('conflict');
+  });
+
+  it("eligible: re-propagating over the editor's OWN pending edit (supersede)", () => {
+    expect(
+      svc.classifyOccurrence(P, {
+        currentIs: 'x',
+        editorId: '42',
+        existingEdit: {
+          edited_content: 'eldri sjálfvirk fjölgun',
+          status: 'pending',
+          editor_id: '42',
+        },
+      })
+    ).toBe('eligible');
+  });
+
+  it('conflict: own edit but already approved (no longer supersedable)', () => {
+    expect(
+      svc.classifyOccurrence(P, {
+        currentIs: 'x',
+        editorId: '42',
+        existingEdit: { edited_content: 'samþykkt', status: 'approved', editor_id: '42' },
+      })
+    ).toBe('conflict');
+  });
+
+  it('conflict: pending edit but editorId unknown (no self-supersede)', () => {
+    expect(
+      svc.classifyOccurrence(P, {
+        currentIs: 'x',
+        existingEdit: { edited_content: 'önnur þýðing', status: 'pending', editor_id: '42' },
       })
     ).toBe('conflict');
   });
@@ -87,6 +122,27 @@ describe('createPropagatedEdits', () => {
     expect(row.edited_content).toBe('Sýra og basi');
     expect(row.status).toBe('pending');
     expect(row.editor_id).toBe('42');
+  });
+
+  it("re-propagation updates the editor's own pending row in place (no duplicate)", () => {
+    const d = freshDb();
+    // First propagation by editor 42 creates a pending row.
+    d.prepare(
+      `INSERT INTO segment_edits (book, chapter, module_id, segment_id, original_content, edited_content, status, editor_id, editor_username)
+       VALUES (?, 1, 'm004', 'm004:para:d', 'orig', 'eldri þýðing', 'pending', '42', 'tester')`
+    ).run(base.book);
+    const occurrences = [
+      { chapter: 1, moduleId: 'm004', segmentId: 'm004:para:d', currentIs: 'orig' },
+    ];
+    const res = svc.createPropagatedEdits(d, { ...base, occurrences });
+    // Treated as a successful propagation, not a conflict.
+    expect(res.created).toHaveLength(1);
+    expect(res.skipped).toHaveLength(0);
+    // Same single row, content replaced — invariant: one pending row per (seg, editor).
+    const rows = d.prepare(`SELECT * FROM segment_edits WHERE module_id = 'm004'`).all();
+    expect(rows).toHaveLength(1);
+    expect(rows[0].edited_content).toBe('Sýra og basi');
+    expect(rows[0].status).toBe('pending');
   });
 
   it('skips a target with a conflicting pending edit', () => {
