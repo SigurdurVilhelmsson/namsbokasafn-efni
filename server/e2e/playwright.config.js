@@ -14,10 +14,22 @@ module.exports = defineConfig({
     headless: true,
   },
   webServer: {
+    // The whole suite runs from 127.0.0.1 within a single 15-minute rate-limit
+    // window, so its cumulative request count (160 tests × many API calls each)
+    // exceeds the general limiter's production default (500, ×5 for authed) and
+    // later requests get 429'd — which surfaced as order-dependent "flakes"
+    // (logout's /editor returning 429 instead of redirecting; terminology's
+    // 401-check tolerating 429). Raise only the GENERAL ceiling far above any
+    // suite total; the auth limiter is left at its real value (no test hits
+    // /api/auth/login — auth is via injected cookies). Production keeps all its
+    // real limits; this only affects the test server. See RATE_LIMIT_* in
+    // server/config.js.
     command:
       `rm -f "${E2E_DB}" "${E2E_DB}-wal" "${E2E_DB}-shm"; ` +
       `SESSIONS_DB_PATH="${E2E_DB}" node seed-fixture.js; ` +
-      `SESSIONS_DB_PATH="${E2E_DB}" JWT_SECRET=test-secret-for-e2e-not-production PORT=3456 node ../index.js`,
+      `SESSIONS_DB_PATH="${E2E_DB}" JWT_SECRET=test-secret-for-e2e-not-production ` +
+      `RATE_LIMIT_MAX=10000000 ` +
+      `PORT=3456 node ../index.js`,
     port: 3456,
     reuseExistingServer: !process.env.CI,
     timeout: 15000,
