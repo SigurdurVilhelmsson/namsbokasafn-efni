@@ -188,7 +188,13 @@ router.get('/:book/chapters', requireAuth, requireRole(ROLES.EDITOR), (req, res)
     return res.status(400).json({ error: `Invalid book: ${book}` });
   }
   try {
-    const chapterNums = segmentParser.listChapters(book);
+    // listChapters scans 02-for-mt, which may contain a front-matter `ch00`
+    // (e.g. a preface). The editor's load path (validateParams) only accepts
+    // chapter -1 (appendices) or >= 1, so offering chapter 0 here yields a
+    // dead option that 400s with "Invalid chapter: 0" when selected. Drop it to
+    // match the load contract. (Making front-matter editable would be a separate
+    // feature — teaching validateParams + the load path to handle 0.)
+    const chapterNums = segmentParser.listChapters(book).filter((c) => c !== 0);
     const chapters = enrichChapters(book, chapterNums);
     res.json({ book, chapters });
   } catch (err) {
