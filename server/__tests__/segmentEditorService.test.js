@@ -51,7 +51,8 @@ function createTestDb() {
       reviewer_note TEXT,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
       reviewed_at DATETIME,
-      applied_at DATETIME
+      applied_at DATETIME,
+      review_id INTEGER
     );
 
     CREATE INDEX idx_segment_edits_module ON segment_edits(book, module_id);
@@ -943,6 +944,120 @@ describe('Review queue and edge cases', () => {
     );
     expect(result.status).toBe('changes_requested');
     expect(result.allReviewed).toBe(false);
+  });
+
+  it("completeModuleReview — counts the review's own edits even when created before submit", () => {
+    // Regression: editors create edits, then submit seconds/minutes later, so an
+    // edit's created_at precedes the review's submitted_at. The old
+    // created_at >= submitted_at window wrongly excluded these → a review with
+    // unreviewed edits auto-approved with 0 segments counted. With review_id
+    // scoping the edit is attributed to the review regardless of timing.
+    const { id: editId } = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'Original',
+      editedContent: 'Breytt texti',
+      editorId: 'user-1',
+      editorUsername: 'editor1',
+    });
+    // Backdate the edit so it clearly predates the review submission.
+    db.prepare(
+      `UPDATE segment_edits SET created_at = datetime('now', '-30 seconds') WHERE id = ?`
+    ).run(editId);
+
+    const { id: reviewId } = service.submitModuleForReview({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      submittedBy: 'user-1',
+      submittedByUsername: 'editor1',
+    });
+
+    // Edit left pending → the review must report changes_requested, not approve.
+    const result = service.completeModuleReview(reviewId, 'reviewer-1', 'reviewer1', null);
+    expect(result.status).toBe('changes_requested');
+    expect(result.allReviewed).toBe(false);
+  });
+
+  it('completeModuleReview — an edit created after submit is not part of this review', () => {
+    // Intentional behavior change (the memory note's "not just the review's own"):
+    // an edit appearing mid-review (e.g. a propagated pending edit) belongs to a
+    // future cycle and must not block completing the current review.
+    const { id: editId } = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'Original',
+      editedContent: 'Breytt 1',
+      editorId: 'user-1',
+      editorUsername: 'editor1',
+    });
+    const { id: reviewId } = service.submitModuleForReview({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      submittedBy: 'user-1',
+      submittedByUsername: 'editor1',
+    });
+    service.approveEdit(editId, 'reviewer-1', 'reviewer1');
+    // New pending edit appears after submission — not stamped with this review_id.
+    service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id002',
+      originalContent: 'Original 2',
+      editedContent: 'Breytt 2',
+      editorId: 'user-1',
+      editorUsername: 'editor1',
+    });
+
+    const result = service.completeModuleReview(reviewId, 'reviewer-1', 'reviewer1', null);
+    expect(result.status).toBe('approved');
+    expect(result.allReviewed).toBe(true);
+  });
+
+  it('completeModuleReview — a still-pending edit from a prior cycle is re-claimed on resubmit', () => {
+    // changes-requested → fix → resubmit loop: an unresolved edit must follow
+    // into the new review, not stay stranded on the (frozen) prior one.
+    const { id: editId } = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'Original',
+      editedContent: 'Breytt texti',
+      editorId: 'user-1',
+      editorUsername: 'editor1',
+    });
+    const { id: review1 } = service.submitModuleForReview({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      submittedBy: 'user-1',
+      submittedByUsername: 'editor1',
+    });
+    // Reviewer leaves it unresolved → changes_requested.
+    const c1 = service.completeModuleReview(review1, 'reviewer-1', 'reviewer1', null);
+    expect(c1.status).toBe('changes_requested');
+
+    // Editor resubmits without resolving it (e.g. expecting a second look).
+    const { id: review2 } = service.submitModuleForReview({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      submittedBy: 'user-1',
+      submittedByUsername: 'editor1',
+    });
+    expect(review2).not.toBe(review1);
+    // The pending edit was re-claimed by review2, so it still blocks completion.
+    expect(editId).toBeTruthy();
+    const c2 = service.completeModuleReview(review2, 'reviewer-1', 'reviewer1', null);
+    expect(c2.status).toBe('changes_requested');
+    expect(c2.allReviewed).toBe(false);
   });
 
   it('submitModuleForReview — already pending → throws', () => {

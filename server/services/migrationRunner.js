@@ -67,6 +67,7 @@ function runAllMigrations() {
     require('../migrations/035-enforce-assignments'),
     require('../migrations/036-tm-segments'),
     require('../migrations/037-mined-term-candidates'),
+    require('../migrations/038-segment-edit-review-id'),
   ];
 
   let applied = 0;
