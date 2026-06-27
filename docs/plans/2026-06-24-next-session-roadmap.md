@@ -70,7 +70,7 @@ cannot move throughput; only (a) editors producing reviewed Pass-1 content and
 | **0** | ✅ Editorial-server deploy | done | #147–#153 live |
 | **1** | **Manual QA on the running server** + **use the platform** | lead | the real lever now — exercise the built features; produce faithful content to populate the indexes |
 | **2** | **Greynir sidecar deploy** (Python on box + `GREYNIR_URL`) | lead/infra | the one feature still inert (UI exists; engine isn't deployed) |
-| **3** | ✅ **E2E test-isolation** (DB env-path + `__e2e-fixture__` book) | done | merged 2026-06-24; `books/` + `sessions.db` no longer mutated by tests; B-1 fixed. Residual: Logout parallel flake, `completeModuleReview` review-scoping (both small follow-ups) |
+| **3** | ✅ **E2E test-isolation** (DB env-path + `__e2e-fixture__` book) | done | merged 2026-06-24; `books/` + `sessions.db` no longer mutated by tests; B-1 fixed. Residual: ~~`completeModuleReview` review-scoping~~ ✅ DONE 2026-06-27 (`fix/complete-module-review-scoping`, migration 038); Logout parallel flake still open |
 | **4** | **Review fast-follows** (small batch) | AI-doable | correctness/polish debt from this session's reviews |
 
 There is **no net-new feature building left** in the throughput roadmap.

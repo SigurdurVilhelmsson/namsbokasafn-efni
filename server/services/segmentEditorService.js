@@ -423,17 +423,45 @@ function submitModuleForReview(params) {
     )
     .get(book, moduleId);
 
-  const result = conn
-    .prepare(
-      `INSERT INTO module_reviews
-     (book, chapter, module_id, submitted_by, submitted_by_username,
-      edited_segments)
+  // Create the review and claim the module's edits for it, in one transaction.
+  // The tally then keys off review_id, not the fragile created_at >= submitted_at
+  // window (which excluded a review's own edits, since they're made before
+  // submission). See migration 038.
+  //
+  // Claimed = non-rejected edits that are either not yet tied to a review
+  // (review_id IS NULL — new/self-approved edits) OR still unresolved
+  // (pending/discuss — re-claimed from a prior completed cycle so the
+  // changes-requested → fix → resubmit loop attributes them to the new review).
+  // Already-resolved edits from a prior cycle (approved, review_id set) keep
+  // their old review_id; that review's counts are frozen in its row, so this is
+  // safe.
+  const insertReview = conn.prepare(
+    `INSERT INTO module_reviews
+       (book, chapter, module_id, submitted_by, submitted_by_username, edited_segments)
      VALUES (?, ?, ?, ?, ?, ?)`
-    )
-    .run(book, chapter, moduleId, submittedBy, submittedByUsername, editCounts.pending_edits);
+  );
+  const stampEdits = conn.prepare(
+    `UPDATE segment_edits SET review_id = ?
+     WHERE book = ? AND module_id = ?
+       AND status != 'rejected'
+       AND (review_id IS NULL OR status IN ('pending', 'discuss'))`
+  );
+
+  const reviewId = conn.transaction(() => {
+    const result = insertReview.run(
+      book,
+      chapter,
+      moduleId,
+      submittedBy,
+      submittedByUsername,
+      editCounts.pending_edits
+    );
+    stampEdits.run(result.lastInsertRowid, book, moduleId);
+    return result.lastInsertRowid;
+  })();
 
   return {
-    id: result.lastInsertRowid,
+    id: reviewId,
     editedSegments: editCounts.pending_edits,
   };
 }
@@ -486,7 +514,9 @@ function completeModuleReview(reviewId, reviewerId, reviewerUsername, notes) {
   const review = conn.prepare(`SELECT * FROM module_reviews WHERE id = ?`).get(reviewId);
   if (!review) throw new Error('Review not found');
 
-  // Count segment edit statuses for this review cycle only
+  // Count segment edit statuses for THIS review cycle, keyed by review_id (the
+  // edits stamped at submit time). The old created_at >= submitted_at window
+  // mis-scoped this — see migration 038.
   const counts = conn
     .prepare(
       `SELECT
@@ -496,9 +526,9 @@ function completeModuleReview(reviewId, reviewerId, reviewerUsername, notes) {
        COUNT(CASE WHEN status = 'pending' THEN 1 END) as pending,
        COUNT(CASE WHEN status = 'discuss' THEN 1 END) as discuss
      FROM segment_edits
-     WHERE book = ? AND module_id = ? AND created_at >= ?`
+     WHERE review_id = ?`
     )
-    .get(review.book, review.module_id, review.submitted_at);
+    .get(reviewId);
 
   const allReviewed = counts.pending === 0 && counts.discuss === 0;
   const newStatus = allReviewed ? 'approved' : 'changes_requested';
@@ -914,8 +944,7 @@ function getReviewQueue(book) {
       COUNT(CASE WHEN se.status = 'discuss' THEN 1 END) as discuss_edits
     FROM module_reviews mr
     LEFT JOIN segment_edits se
-      ON mr.book = se.book AND mr.module_id = se.module_id
-      AND se.created_at >= mr.submitted_at
+      ON se.review_id = mr.id
     WHERE mr.status IN ('pending', 'in_review')`;
 
   const params = [];
