@@ -3448,5 +3448,10 @@
     "originalImage": "CNX_Chem_21_06_RadonExpos",
     "outputName": "CNX_Chem_21_06_RadonExpos_IS.svg",
     "extension": ".svg"
+  },
+  {
+    "originalImage": "CNX_Chem_03_01_ibuprofenmass_img",
+    "outputName": "CNX_Chem_03_01_ibuprofenmass_img_IS.svg",
+    "extension": ".svg"
   }
 ]
