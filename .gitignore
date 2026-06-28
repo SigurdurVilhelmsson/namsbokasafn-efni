@@ -116,3 +116,6 @@ books/*/media/_reverted/
 books/*/media/_reexport-pending/
 books/*/media/_broken/
 books/*/media/_suspect/
+
+# B1 glossary probe output (paid run artifacts; regenerate via docs/audit/b1-glossary-probe.mjs)
+docs/audit/probe-out/
