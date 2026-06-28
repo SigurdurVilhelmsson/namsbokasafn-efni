@@ -204,7 +204,12 @@ modules round-trip clean. **C0 safety nets are mandatory before C1.***
 - **Acceptance:** golden HTML unchanged for efnafraedi-2e; the dropped-media and id-less-para cases (add
   biology fixtures) now correct; nesting matrix green.
 
-### C2 — Migrate `renderExample`, then `renderExercise`  ·  L  ·  dep: C1
+### C2 — Migrate `renderExample`, then `renderExercise`  ·  L  ·  dep: C1  ·  ✅ DONE (PR #180)
+> Both migrated onto the seam (`hoistTags` config added: examples/exercises hoist only `<list>`).
+> `isInsidePara` guard retired. renderExercise byte-identical (old-vs-new diff = 0). renderExample
+> golden byte-identical but **changes published output**: de-duplicates equations nested in example
+> paras (rendered twice before — inline + redundant block; now once, inline). 44 efnafraedi sites,
+> 0 in golden. Verified de-dup not drop.
 - Highest-bug-density containers (`cnxml-render.js:1354`, `:1602`). Same seam, one at a time, golden-gated.
 - **Acceptance:** golden unchanged; the figure-escapes-example regression (already fixed) and the
   nesting matrix stay green; the inject-vs-render coverage asymmetry closed.
