@@ -256,13 +256,21 @@ is chosen next** (see Open Decisions).*
 - **Acceptance:** a physics PhET module renders a working iframe; characterization test (currently-drops →
   now-renders).
 
-### D5 — Alternative glossary extractor (key-terms / inline term)  ·  M  ·  blocks organic, microbiology
-- **Problem:** organic (0 `<glossary>`, uses `<section class="key-terms">` ×31) and microbiology (0
-  glossary, 6,395 inline `<term>`) render an empty compiled "Lykilhugtök" page.
-- **Change:** per-book alternative extractor selected in config — build the compiled page from
-  `<section class="key-terms">` (organic) and/or collected inline `<term id=…>` headwords linked to their
-  defining section (microbiology). **Lead product decision needed for microbiology (see Open Decisions).**
-- **Acceptance:** organic + microbiology produce a populated key-terms page.
+### D5 — Alternative glossary extractor (key-terms / appendix glossary)  ·  M  ·  blocks organic, microbiology
+- **Problem:** organic (0 per-module `<glossary>`, uses `<section class="key-terms">` ×31) and
+  microbiology (0 per-module `<glossary>`) render an empty compiled "Lykilhugtök" page — *but each has a
+  book-level glossary source the renderer doesn't read.*
+- **Change:** per-book alternative glossary source, selected in config:
+  - **Organic:** build from `<section class="key-terms">`.
+  - **Microbiology (lead-confirmed 2026-06-28):** the canonical glossary is the **Appendix E glossary
+    module** (one of `appendixModules` [m58946–m58950] in `books/orverufraedi/01-source/collection-order.json`;
+    m58948 = "Metabolic Pathways", so the glossary is a sibling — confirm which at onboarding). Terms are
+    *also* restated in each chapter's Summary text. Extract the Appendix E module as the compiled
+    term-lookup source that feeds the **reader hover feature**. Note: it is **not** built from
+    `<definition>` elements (microbiology has 0) — inspect its actual structure (likely a term/meaning
+    section or list) before writing the extractor.
+- **Acceptance:** organic + microbiology produce a populated key-terms / glossary page; microbiology's
+  feeds the reader hover lookup. (Microbiology is not the next book — implement when it is scheduled.)
 
 ### D6 — Per-book characterization test + parametrized CSS-contract  ·  M  ·  blocks all
 - **Problem:** only e2e test is efnafraedi ch01 (`pipeline-integration.test.js:35`); CSS-contract scoped
@@ -272,7 +280,27 @@ is chosen next** (see Open Decisions).*
   `VEFUR_CONTRACT=1`.
 - **Acceptance:** each book has a characterization spec; CSS-contract runs for every book.
 
-**Track D gate (per book):** D1+D2 done once; then the book's specific D3/D4/D5 + D6 green → onboard.
+### D7 — Species-name MT protection (biology)  ·  S/M  ·  biology
+- **Problem:** biology has **384 `Genus species` italic spans** (`<emphasis effect="italics">`, extracted
+  as `[[i:…]]`). The API translates marker *content*, so species binomials risk being mangled/translated
+  (e.g. *Homo sapiens* must stay verbatim). Not a structural gap — an MT-quality gap specific to biology.
+- **Change:** first **probe** a sample of species-italic segments through Erlendur (reuse the
+  `scratchpad/` probe harness) to measure actual mangling. If material, protect them — candidate
+  approaches: a no-translate marker variant, or seed the glossary with binomials as identity mappings.
+- **Acceptance:** a sample of species names round-trips verbatim; documented rate.
+
+### Biology onboarding (NEXT — lead-confirmed 2026-06-28)
+Biology's required set is **D1, D2, D4, D6, D7** — plus Tracks A (+ C is independent). Notably:
+- **D3 NOT needed** (no os-embed; biology uses inline `<exercise>`).
+- **D5 NOT needed** — biology has formal `<glossary>` in **205 modules** (the existing glossary path works).
+- **3-level hierarchy is a NON-issue** — `books/liffraedi-2e/01-source/collection-order.json` already
+  holds all 259 modules in the flat `chapters → modules` shape (intake flattened the Unit level); verify
+  it loads via `chapter-modules.js` but expect no special work.
+- **D4 (iframe)** is the main content gap (~35 files / ~51 PhET/YouTube embeds in `<media>`).
+- **0 `<example>`** in biology — confirm the example renderers simply no-op (they should); add a biology
+  characterization spec (D6) to lock that in.
+
+**Track D gate (per book):** D1+D2 done once; then the book's specific items (biology = D4+D7) + D6 green → onboard.
 
 ---
 
@@ -294,10 +322,13 @@ is chosen next** (see Open Decisions).*
   `summary-section`, `periodic-table-link` (need vefur selectors). A shared, version-pinned **class
   manifest** between render output and vefur CSS (none exists).
 
-## Open decisions for the lead
+## Decisions (resolved by lead 2026-06-28)
 
-- **Which book is onboarded next?** → fixes the D3/D4/D5 ordering (organic = D3 XL; physics/biology = D4;
-  organic+microbiology = D5).
-- **Microbiology key-terms policy** (D5): synthesize a chapter page from inline `<term>` headwords, or
-  ship without a compiled glossary page?
+- **Next book = Biology.** Onboarding set = D1, D2, **D4** (iframe), D6, **D7** (species names) + Track A.
+  D3/D5 not needed; 3-level hierarchy already flattened. See "Biology onboarding" above.
+- **Microbiology key-terms = the Appendix E glossary module** (one of `appendixModules` m58946–m58950),
+  used as the reader hover-lookup source; terms are also restated in chapter Summary text. Folded into D5
+  (implement when microbiology is scheduled, after biology).
+
+### Still open
 - **CI:** Track A's CI wiring assumes credits are restored; until then the local gate carries it.
