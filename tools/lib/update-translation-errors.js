@@ -47,19 +47,29 @@ function discoverModules(dir) {
 /**
  * Run a full-book fidelity check and write translation-errors.json.
  *
+ * The manifest is **track-qualified**: each track's results live under
+ * `tracks[<track>]`, and a run only replaces its own track's section — so a
+ * faithful inject can no longer clobber the mt-preview record (or vice-versa).
+ * The file keeps its name (`translation-errors.json`) to stay inside the
+ * `merge=ours` .gitattributes glob and the git-backup staging glob.
+ *
  * @param {string} bookDir - Book directory (e.g., 'books/efnafraedi-2e')
  * @param {Object} options
  * @param {string} [options.track='mt-preview'] - Translation track
+ * @param {string} [options.tool='cnxml-inject'] - Producing tool (provenance)
  * @param {boolean} [options.verbose=false] - Log progress
- * @returns {{ perfect: number, withDiscrepancies: number, totalDiscrepancies: number }}
+ * @returns {{ perfect: number, withDiscrepancies: number, totalDiscrepancies: number, skippedUntranslated: number, totalSourceModules: number }}
  */
 export function updateTranslationErrors(bookDir, options = {}) {
   const track = options.track || 'mt-preview';
+  const tool = options.tool || 'cnxml-inject';
   const verbose = options.verbose || false;
   const chapters = discoverChapters(bookDir);
 
   const modules = [];
+  let totalSourceModules = 0;
   let totalChecked = 0;
+  let skippedUntranslated = 0;
   let perfect = 0;
   let withDiscrepancies = 0;
   let totalDiscrepancies = 0;
@@ -70,10 +80,17 @@ export function updateTranslationErrors(bookDir, options = {}) {
     const mods = discoverModules(sourceDir);
 
     for (const mod of mods) {
+      totalSourceModules++;
       const sourcePath = path.join(sourceDir, mod.filename);
       const transPath = path.join(transDir, mod.filename);
 
-      if (!fs.existsSync(transPath)) continue;
+      // Source module with no injected translation: count it, don't drop it.
+      // Dropping un-injected modules was the "false green" bug — a barely
+      // translated book reported the same shape as a fully translated one.
+      if (!fs.existsSync(transPath)) {
+        skippedUntranslated++;
+        continue;
+      }
 
       const sourceCnxml = fs.readFileSync(sourcePath, 'utf8');
       const translatedCnxml = fs.readFileSync(transPath, 'utf8');
@@ -97,28 +114,73 @@ export function updateTranslationErrors(bookDir, options = {}) {
     }
   }
 
-  const result = {
-    generated: new Date().toISOString(),
-    pipeline:
-      'extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]])',
+  // A track is only "green" when every source module was checked AND clean —
+  // skipped (un-injected) modules count against green, not just discrepancies.
+  const green = withDiscrepancies === 0 && skippedUntranslated === 0;
+  const generated = new Date().toISOString();
+
+  const trackSection = {
+    generated,
+    tool,
     summary: {
+      totalSourceModules,
       totalChecked,
+      skippedUntranslated,
       perfect,
       withDiscrepancies,
-      skippedUntranslated: 0,
       totalDiscrepancies,
+      green,
     },
     modules,
   };
 
   const outputPath = path.join(bookDir, 'translation-errors.json');
+
+  // Read-merge-preserve: keep other tracks' sections instead of overwriting
+  // the whole file. Tolerate a missing or legacy flat-shape manifest by
+  // starting from an empty tracks map.
+  const priorTracks = readPriorTracks(outputPath);
+
+  const result = {
+    generated,
+    pipeline:
+      'extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]])',
+    tracks: {
+      ...priorTracks,
+      [track]: trackSection,
+    },
+  };
+
   fs.writeFileSync(outputPath, JSON.stringify(result, null, 2), 'utf8');
 
   if (verbose) {
     console.error(
-      `Updated ${outputPath}: ${perfect} PERFECT, ${withDiscrepancies} with discrepancies, ${totalDiscrepancies} total`
+      `Updated ${outputPath} [${track}]: ${perfect} PERFECT, ${withDiscrepancies} with discrepancies, ${skippedUntranslated} skipped (untranslated), ${totalDiscrepancies} total`
     );
   }
 
-  return { perfect, withDiscrepancies, totalDiscrepancies };
+  return {
+    perfect,
+    withDiscrepancies,
+    totalDiscrepancies,
+    skippedUntranslated,
+    totalSourceModules,
+  };
+}
+
+/**
+ * Read the existing manifest's per-track sections, if any.
+ * Returns `{}` when the file is absent, unreadable, or in the pre-track
+ * (legacy flat) shape — so a run always starts from a valid tracks map.
+ * @param {string} outputPath
+ * @returns {Record<string, object>}
+ */
+function readPriorTracks(outputPath) {
+  if (!fs.existsSync(outputPath)) return {};
+  try {
+    const parsed = JSON.parse(fs.readFileSync(outputPath, 'utf8'));
+    return parsed && typeof parsed.tracks === 'object' && parsed.tracks ? parsed.tracks : {};
+  } catch {
+    return {};
+  }
 }

@@ -276,6 +276,14 @@ auto-backup commit instead of blocking the next pull. If you still see it
 dirty from before this fix, `git checkout -- books/*/translation-errors.json`
 is safe — it is regenerated deterministically.
 
+The manifest is **track-qualified**: results live under `tracks[<track>]`
+(`mt-preview`, `faithful`, …), each with its own `summary` (including
+`totalSourceModules` and a real `skippedUntranslated` count) + `modules` +
+producing `tool`. A run replaces only its own track's section and preserves the
+others, so an `mt-preview` inject and a `faithful` inject no longer clobber each
+other's record. The filename is unchanged on purpose — it must stay inside the
+`merge=ours` `.gitattributes` glob and the git-backup staging glob.
+
 ## Technology Stack
 
 ### Runtime

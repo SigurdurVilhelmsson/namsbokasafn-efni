@@ -3422,12 +3422,15 @@ async function main() {
     }
 
     // Update translation-errors.json with full-book fidelity state
-    const { perfect, withDiscrepancies, totalDiscrepancies } = updateTranslationErrors(BOOKS_DIR, {
-      track,
-      verbose: args.verbose,
-    });
+    const { perfect, withDiscrepancies, totalDiscrepancies, skippedUntranslated } =
+      updateTranslationErrors(BOOKS_DIR, {
+        track,
+        verbose: args.verbose,
+      });
+    const skippedNote =
+      skippedUntranslated > 0 ? `, ${skippedUntranslated} skipped (untranslated)` : '';
     console.log(
-      `\nFidelity summary: ${perfect} PERFECT, ${withDiscrepancies} with discrepancies (${totalDiscrepancies} total)`
+      `\nFidelity summary: ${perfect} PERFECT, ${withDiscrepancies} with discrepancies${skippedNote} (${totalDiscrepancies} total)`
     );
   } catch (error) {
     console.error('Error:', error.message);
