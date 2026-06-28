@@ -215,6 +215,32 @@ describe('renderCnxmlToHtml', () => {
     expect(result.html).toContain('CNX_Test_07_03_answer_img');
   });
 
+  it('keeps a direct-child example figure inside the example when the intro para xrefs it', () => {
+    // Regression: a <figure> that is a direct child of <example> (between the
+    // question para and the Solution para) was rendered OUTSIDE the example box
+    // whenever a sibling para cross-referenced it with <link target-id="figId"/>.
+    // The isInsidePara guard used a bare `id="figId"` substring check, which also
+    // matched `target-id="figId"`, so the figure was wrongly treated as already
+    // rendered-in-para and skipped — then emitted by the section-level pass after
+    // the example closed. (OpenStax "...(Figure X.Y)" pattern; e.g. m68700 copper.)
+    const cnxml = `<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Próf</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml"><md:content-id>m00001</md:content-id><md:title>Próf</md:title></metadata>
+<content>
+<example id="ex-cu"><para id="p-q"><title>Útreikningur</title>Kopar er notaður í rafmagnsvír (<link target-id="CNX_Test_03_02_copper"/>). Hversu margar frumeindir?</para>
+<figure id="CNX_Test_03_02_copper"><media id="m-cu" alt="koparvír"><image mime-type="image/jpeg" src="../../media/CNX_Test_03_02_copper.jpg"/></media><caption>Koparvír.</caption></figure>
+<para id="p-sol"><title>Lausn</title>Lausnartexti.</para>
+</example>
+</content>
+</document>`;
+    const { html } = renderCnxmlToHtml(cnxml, { moduleId: 'm00001', chapter: 3, lang: 'is' });
+    const figIdx = html.indexOf('CNX_Test_03_02_copper.jpg');
+    const exampleCloseIdx = html.indexOf('</aside>');
+    expect(figIdx).toBeGreaterThan(-1); // figure is rendered at all
+    // The figure must appear BEFORE the example <aside> closes — i.e. inside it.
+    expect(figIdx).toBeLessThan(exampleCloseIdx);
+  });
+
   it('includes module title in page title', () => {
     const cnxml = readFileSync(join(FIXTURES, 'minimal-translated.cnxml'), 'utf8');
     const result = renderCnxmlToHtml(cnxml, {
