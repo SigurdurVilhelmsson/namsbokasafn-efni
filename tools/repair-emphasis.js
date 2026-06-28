@@ -363,12 +363,16 @@ function main() {
 
     // Update translation-errors.json if any repairs were made
     if (modulesRepaired > 0) {
-      const { perfect, withDiscrepancies, totalDiscrepancies } = updateTranslationErrors(
-        BOOKS_DIR,
-        { track: args.track, verbose: args.verbose }
-      );
+      const { perfect, withDiscrepancies, totalDiscrepancies, skippedUntranslated } =
+        updateTranslationErrors(BOOKS_DIR, {
+          track: args.track,
+          tool: 'repair-emphasis',
+          verbose: args.verbose,
+        });
+      const skippedNote =
+        skippedUntranslated > 0 ? `, ${skippedUntranslated} skipped (untranslated)` : '';
       console.log(
-        `\nFidelity summary: ${perfect} PERFECT, ${withDiscrepancies} with discrepancies (${totalDiscrepancies} total)`
+        `\nFidelity summary: ${perfect} PERFECT, ${withDiscrepancies} with discrepancies${skippedNote} (${totalDiscrepancies} total)`
       );
     }
   }

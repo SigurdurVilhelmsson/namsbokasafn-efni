@@ -47,7 +47,13 @@ roadmap (Tracks A→D) into ordered, individually-shippable work items.
 
 *Goal: a trustworthy queue + a safety net, before adding editors or refactoring. Cheap, high-value.*
 
-### A1 — Fix manifest false-green  ·  S  ·  no deps
+### A1 — Fix manifest false-green  ·  S  ·  no deps  ·  ✅ DONE (branch `fix/manifest-false-green`)
+- **Shipped 2026-06-28:** manifest now track-qualified (`tracks[<track>]`, read-merge-preserve so
+  injects don't clobber each other), real `skippedUntranslated` + `totalSourceModules` counters,
+  `green` boolean (skips count against green), producer `tool` provenance. New suite
+  `tools/__tests__/update-translation-errors.test.js` (counter invariant, track-preservation,
+  legacy-flat tolerance). Verified on real data: liffraedi-2e was reporting green-ish at 11/259
+  injected; now shows 248 skipped, `green:false`.
 - **Problem:** `skippedUntranslated` is hardcoded `0`; un-injected modules are dropped uncounted, so
   un-injected books report green (physics: "9 of 283 checked, 0 skipped").
 - **Files:** `tools/lib/update-translation-errors.js:76` (the `continue` that drops un-injected),
