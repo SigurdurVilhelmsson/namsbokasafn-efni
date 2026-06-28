@@ -105,10 +105,18 @@ the queue can be trusted with more editors. *Recommended: land A before onboardi
 
 ## TRACK B — API simplification (AFTER the B1 validation gate)
 
-*Goal: retire the now-redundant restoration machinery. Erlendur is fixed (probes), but **gated** on a
-glossary-aware re-test — the live probes ran without a glossary, which counts toward the char budget.*
+*Goal: retire the now-redundant restoration machinery. Erlendur is fixed (probes); **B1 gate PASSED
+2026-06-28** — glossary-aware re-test confirms 100% marker survival with the glossary and a safe 25 KB
+chunk limit (glossary is filtered per chunk to ≤3 KB, not ~36 KB). B2/B3 cleared.*
 
-### B1 — Glossary-aware Erlendur validation run  ·  S  ·  GATES B2/B3
+### B1 — Glossary-aware Erlendur validation run  ·  S  ·  GATES B2/B3  ·  ✅ DONE (PASS)
+- **Shipped 2026-06-28:** findings in [docs/audit/2026-06-28-b1-glossary-validation-findings.md](../audit/2026-06-28-b1-glossary-validation-findings.md);
+  reusable harness `docs/audit/b1-glossary-probe.mjs`. **Result: markers 100% preserved with the
+  glossary attached** (Part A all-types matrix + Part B full ch5: 729 SEG markers / 9 chunks, every
+  per-type bracket count identical, 0 control chars, 0/9 glossary-truncation-retries). **Premise
+  corrected:** production filters the glossary per chunk (`filterGlossaryForText`) to 1–56 terms /
+  ≤3 KB — NOT the full ~36 KB — so a 25 KB chunk + glossary ≈ 28 KB, well under the clean-at-38 KB
+  ceiling. **25 KB chunk limit kept (no re-tune).** B2/B3 cleared. Cost: 114,517 chars, 11 reqs, 0 fail.
 - **Do first:** re-run the truncation/threshold + marker-survival probes **with the production glossary
   attached** (≈1,100 terms add to the payload). Size the chunk limit to `payload + glossary`. Then
   re-translate a **full chapter with glossary** and diff marker integrity end-to-end.
