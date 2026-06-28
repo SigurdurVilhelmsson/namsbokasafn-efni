@@ -33,6 +33,7 @@ import {
   parseAttributes,
   stripTags,
 } from './lib/cnxml-parser.js';
+import { parseCnxmlFragment, serializeCnxmlFragment } from './lib/cnxml-dom.js';
 import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, MODULE_OPTION } from './lib/parseArgs.js';
 import {
   buildCrossModuleHref,
@@ -1252,6 +1253,60 @@ function renderMedia(media, context) {
  * Render a note.
  * Renders paragraphs and figures in document order to preserve content flow.
  */
+/**
+ * Render a container's block children in document order via a DOM walk
+ * (Track C leaf-seam). Replaces fragile global string-position sorting: walks
+ * the parsed CNXML in source order and dispatches each block element to the
+ * caller-supplied renderer, so ordering is correct by construction (no
+ * `indexOf` collapse for id-less elements, no `id="X"`/`target-id="X"` collision).
+ *
+ * HTML emission stays in the existing string renderers — only traversal/ordering
+ * moves to DOM. A block nested inside a <para> is HOISTED: renderPara drops its
+ * block children, so the walk descends into paras and emits their nested
+ * list/figure/media after the para (preserving prior behavior). Figures/lists/
+ * media are leaves here — their own renderers handle their internals.
+ *
+ * @param {string} content - CNXML fragment (a container's inner content)
+ * @param {object} context - Render context passed through to each renderer
+ * @param {Record<string, function(object, object): string>} dispatch
+ *   Map of block localName → renderer(elementObject, context) → HTML string.
+ *   `para` is descended into for hoisting; other names are treated as leaves.
+ * @returns {string[]} Rendered HTML strings, one per emitted block, in order
+ */
+function renderBlockChildrenInOrder(content, context, dispatch) {
+  const out = [];
+  const { root } = parseCnxmlFragment(content);
+
+  // Process one block element: render it via its dispatcher. For a <para>, first
+  // detach its dispatchable block children so renderPara emits inline-only
+  // content (it does not strip blocks itself — they would otherwise leak as raw
+  // CNXML), then hoist those children after the para, in source order. Other
+  // block types are leaves: their own renderers emit their descendants.
+  const processBlock = (node) => {
+    const name = node.localName;
+    if (!dispatch[name]) return;
+
+    if (name === 'para') {
+      const hoisted = Array.from(node.childNodes).filter(
+        (c) => c.nodeType === 1 && dispatch[c.localName]
+      );
+      for (const child of hoisted) node.removeChild(child);
+      const obj = extractElements(serializeCnxmlFragment(node), 'para')[0];
+      if (obj) out.push(dispatch.para(obj, context));
+      for (const child of hoisted) processBlock(child);
+      return;
+    }
+
+    const obj = extractNestedElements(serializeCnxmlFragment(node), name)[0];
+    if (obj) out.push(dispatch[name](obj, context));
+  };
+
+  for (const child of Array.from(root.childNodes)) {
+    if (child.nodeType === 1) processBlock(child);
+  }
+  return out;
+}
+
 function renderNote(note, context, extraClass = '') {
   const lines = [];
   const id = note.id || null;
@@ -1274,69 +1329,19 @@ function renderNote(note, context, extraClass = '') {
     lines.push(`  <h4>${processInlineContent(translateTitle(titleMatch[1]), context)}</h4>`);
   }
 
-  // Extract paragraphs and figures, then render in document order
+  // Render block children (paras, figures, lists, standalone media) in document
+  // order via the DOM seam. Standalone <media> not wrapped in a <figure> — e.g.
+  // the "Check Your Learning" answer image — is handled because the walk visits
+  // it as its own block child (figures render their own media, so no double-count).
   const contentWithoutTitle = note.content.replace(/<title>[^<]*<\/title>/, '');
-
-  // Collect all elements with their positions
-  const elementsWithPositions = [];
-
-  // Extract lists before paras so lists inside paras don't leak as raw CNXML
-  const lists = extractNestedElements(contentWithoutTitle, 'list');
-  let contentForParas = contentWithoutTitle;
-  for (const lst of lists)
-    if (lst.fullMatch) contentForParas = contentForParas.replace(lst.fullMatch, '');
-
-  const paras = extractElements(contentForParas, 'para');
-  for (const para of paras) {
-    const pos = para.id
-      ? contentWithoutTitle.indexOf(`id="${para.id}"`)
-      : contentWithoutTitle.indexOf('<para');
-    elementsWithPositions.push({ type: 'para', item: para, position: pos !== -1 ? pos : 0 });
-  }
-
-  const figures = extractNestedElements(contentWithoutTitle, 'figure');
-  for (const figure of figures) {
-    const pos = figure.id
-      ? contentWithoutTitle.indexOf(`id="${figure.id}"`)
-      : contentWithoutTitle.indexOf('<figure');
-    elementsWithPositions.push({ type: 'figure', item: figure, position: pos !== -1 ? pos : 0 });
-  }
-
-  // Standalone <media> not wrapped in a <figure> — e.g. the "Check Your Learning"
-  // answer image inside <example><note>. Strip figures first so their nested
-  // <media> children aren't double-counted (mirrors the example renderer).
-  let contentForMedia = contentWithoutTitle;
-  for (const figure of figures)
-    if (figure.fullMatch) contentForMedia = contentForMedia.replace(figure.fullMatch, '');
-  const medias = extractNestedElements(contentForMedia, 'media');
-  for (const media of medias) {
-    const pos = media.fullMatch
-      ? contentWithoutTitle.indexOf(media.fullMatch)
-      : contentWithoutTitle.indexOf(`id="${media.id}"`);
-    elementsWithPositions.push({ type: 'media', item: media, position: pos !== -1 ? pos : 0 });
-  }
-
-  for (const list of lists) {
-    const pos = list.id
-      ? contentWithoutTitle.indexOf(`id="${list.id}"`)
-      : contentWithoutTitle.indexOf('<list');
-    elementsWithPositions.push({ type: 'list', item: list, position: pos !== -1 ? pos : 0 });
-  }
-
-  // Sort by position to preserve document order
-  elementsWithPositions.sort((a, b) => a.position - b.position);
-
-  // Render in order
-  for (const elem of elementsWithPositions) {
-    if (elem.type === 'para') {
-      lines.push(`  ${renderPara(elem.item, context)}`);
-    } else if (elem.type === 'figure') {
-      lines.push(`  ${renderFigure(elem.item, context)}`);
-    } else if (elem.type === 'list') {
-      lines.push(`  ${renderList(elem.item, context)}`);
-    } else if (elem.type === 'media') {
-      lines.push(`  ${renderMedia(elem.item, context)}`);
-    }
+  const blocks = renderBlockChildrenInOrder(contentWithoutTitle, context, {
+    para: renderPara,
+    figure: renderFigure,
+    list: renderList,
+    media: renderMedia,
+  });
+  for (const block of blocks) {
+    lines.push(`  ${block}`);
   }
 
   lines.push('</aside>');
