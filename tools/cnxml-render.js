@@ -1479,8 +1479,19 @@ function renderExample(example, context) {
   // These are e.g., problem figures in examples that sit between the question and strategy paras.
   const directFigures = extractNestedElements(contentForSimpleElements, 'figure');
   for (const fig of directFigures) {
-    // Skip figures already inside a para (those are rendered as part of the para)
-    const isInsidePara = parasOutsideNotes.some((p) => p.content.includes(`id="${fig.id}"`));
+    // Skip figures already inside a para (those are rendered as part of the para).
+    // Match the figure's own opening tag (<figure ... id="X">), NOT a bare
+    // id="X" substring — the latter also matches a sibling para's
+    // <link target-id="X"/> xref to this figure, which would wrongly skip a
+    // genuine direct-child figure and leak it outside the example.
+    const isInsidePara = parasOutsideNotes.some((p) => {
+      const figRe = /<figure\b[^>]*\sid="([^"]+)"/g;
+      let fm;
+      while ((fm = figRe.exec(p.content)) !== null) {
+        if (fm[1] === fig.id) return true;
+      }
+      return false;
+    });
     if (isInsidePara) continue;
 
     const pos = fig.fullMatch
