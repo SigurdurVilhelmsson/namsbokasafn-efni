@@ -1,0 +1,789 @@
+[
+  {
+    "title": "Render re-derives document order via string position-tracking — the root of all 3 historical bug classes (the asymmetry's real cost)",
+    "severity": "high",
+    "effort": "L",
+    "evidence": "tools/cnxml-render.js: 63 `.indexOf(` calls, 32 `extractNestedElements`, 15 `extractElements`, 21 `replace(...fullMatch,'')` strips, 38 `.match(`. The core engine (renderContent:696, renderTopLevelContent:924, renderExample:1354, renderExercise:1602, renderNote:1255) all follow the same strip-and-re-extract + `content.indexOf(fullMatch)` + `sort((a,b)=>a.position)` pattern. Position-tracking collides for ID-less elements: `content.indexOf('<para')` returns the FIRST `<para` at 4 sites (cnxml-render.js:829, 1092, 1293, 1437), so multiple ID-less paras get the same position. By contrast inject never does this — it consumes extraction's pre-ordered structure (buildElement dispatch at inject.js:1719) and only reaches for fragment DOM on the 3 hard containers (parseCnxmlFragment at inject.js:2280/2564/2824). The three named render bugs (figure-escapes-example, dropped <media> in notes, duplicate figures) are all ordering/containment failures of exactly this machinery.",
+    "description": "The asymmetry isn't merely stylistic. Render reconstructs document order from scratch by scanning byte offsets, which is inherently ambiguous for repeated/ID-less elements and for nested containers (notes-inside-examples handled by manual `isInsideExample`/`isInsideExercise` offset-range checks at cnxml-render.js:784-795). Inject avoided this entire class because extraction already linearised the document. This is where the asymmetry hurts most and where future books (more nesting variety) will keep generating the same bug shape.",
+    "recommendation": "Migrate render's STRUCTURE TRAVERSAL & ORDERING to DOM: walk `documentElement`/`<content>` childNodes in source order (order falls out for free, killing the position-collision class), serialize each block node back to a string with the existing serializeCnxmlFragment, and hand it to the unchanged leaf renderer. Do NOT rewrite leaf HTML emission in the same step.",
+    "blocks_next_book": false
+  },
+  {
+    "title": "Incremental DOM migration is VIABLE, not all-or-nothing — verified by round-trip probe across 3 books",
+    "severity": "high",
+    "effort": "S",
+    "evidence": "Probe (DOMParser+XMLSerializer from @xmldom/xmldom 0.9, the same dep cnxml-dom.js uses) on real translated modules: efnafraedi-2e/03-translated/mt-preview/ch10/m68768.cnxml (69704 bytes, content children para+section), lifraen-efnafraedi/.../ch03/m00036.cnxml (figure+equation), edlisfraedi-2e/.../ch04/m42130.cnxml (section+para+note+exercise). All three: parsed=true, roundtrip=true, errs=0 — including `<m:math>` (MathML m: prefix) and numeric entities (`&#`). The seam already exists in cnxml-dom.js: parseCnxmlFragment (line 32), serializeCnxmlFragment (line 48, strips redundant xmlns), isBlockElement (line 115), BLOCK_TAGS (line 21).",
+    "description": "The headline feasibility claim is empirically confirmed: a full translated module is well-formed XML that @xmldom/xmldom parses and round-trips losslessly across chemistry, organic, and physics. That means render can be migrated one element-type at a time behind a `serializeCnxmlFragment(node) -> existing renderX(string)` seam, with the DOM walk replacing only the traversal/ordering scaffolding. No flag day required.",
+    "recommendation": "Adopt the leaf-seam pattern: a new DOM traversal (reusing cnxml-dom.js helpers) dispatches per node.localName to the EXISTING string renderers via serializeCnxmlFragment. Keep renderContent's regex path alive in parallel during migration; switch the dispatcher per element type as each is validated.",
+    "blocks_next_book": false
+  },
+  {
+    "title": "Reuse the in-repo migration precedent — but fix the oracle: render's gate is golden-HTML diff, NOT inject's compareTagCounts",
+    "severity": "medium",
+    "effort": "M",
+    "evidence": "The exact migration was already executed for inject: tools/__tests__/cnxml-dom-comparison.test.js runs old-regex vs new-DOM builders on real modules (TEST_MODULES with per-module `baseline` discrepancy budgets, lines 50-60) and asserts new <= baseline. But its oracle is `compareTagCounts` from cnxml-fidelity-check.js (import at comparison test line 23) — it compares CNXML tag counts on a round-trip, which is correct for inject (CNXML->CNXML) but wrong for render (CNXML->HTML). Render's existing tests (tools/__tests__/cnxml-render.test.js, 641 lines) are coarse `toContain` black-box assertions (e.g. line 157 `toContain('<p')`) — they will NOT catch ordering or escaping drift.",
+    "description": "Mirror the proven parallel-run/zero-regression harness, but the comparison must be on rendered HTML. Snapshot current renderer output for all ~149 efnafraedi-2e modules (the mature book) as the golden baseline, then assert the DOM renderer is byte-identical (or diff-reviewed). renderCnxmlToHtml is already cleanly importable (exported at cnxml-render.js:4125; server consumes it via renderService.js:56 and pipeline routes), so capturing golden output is straightforward.",
+    "recommendation": "Build a golden-HTML harness: render all efnafraedi-2e modules with the current renderer, store outputs, then run the DOM renderer and assert equality. Gate every phase on zero HTML diff against this baseline. This is the single most load-bearing 'keep tests green' detail and is easy to get wrong by analogy to inject's tag-count oracle.",
+    "blocks_next_book": false
+  },
+  {
+    "title": "Smallest high-value first phase: renderNote (the dropped-<media> bug site), then example, then exercise",
+    "severity": "medium",
+    "effort": "M",
+    "evidence": "inject piloted DOM on exactly example/exercise/note (buildExampleDom/buildExerciseDom/buildNoteDom, inject.js:2264/2554/2789), and the three historical render bugs live in these same containers. renderNote (cnxml-render.js:1255, ~100 lines) is the smallest and was the dropped-standalone-<media>-in-notes bug site. renderExample (1354) is the largest/most tangled (figure-in-para offset tracking at 1444-1451, the figure-escapes-example site). The fragment-DOM unit is proven: inject parses a single element's `match[0]` via parseCnxmlFragment (inject.js:2280) rather than the whole document — so the migration unit is per-container, low-blast-radius.",
+    "description": "Phasing by risk/value: Phase 1 renderNote (S-M, smallest, proven bug site, validates the seam + golden-HTML harness). Phase 2 renderExample (M-L, highest historical bug density). Phase 3 renderExercise (M). Phase 4 (optional, L) migrate the top-level renderContent/renderTopLevelContent/renderSection ordering to a DOM childNodes walk — biggest structural payoff (kills the position-collision class) but touches every module, do it last once the seam is trusted. Leaf renderers (renderPara, renderTable, renderList, renderEquation, processInlineContent) need not change.",
+    "recommendation": "Start with renderNote behind a parallel old-vs-new dispatcher gated by the golden-HTML harness from finding #3. Reuse parseCnxmlFragment/serializeCnxmlFragment/isBlockElement from cnxml-dom.js verbatim — they are renderer-agnostic. Ship each phase as its own PR with the harness green.",
+    "blocks_next_book": false
+  },
+  {
+    "title": "Scope correction: cnxml-dom.js is NOT a renderer — HTML emission must be ported separately, do not over-promise reuse",
+    "severity": "info",
+    "effort": "S",
+    "evidence": "cnxml-dom.js (239 lines) emits zero HTML — it only parses/serializes/walks CNXML fragments (exports at line 229: parseCnxmlFragment, serializeCnxmlFragment, replaceParaContent, replaceListItems, removeElementsByTag, insertCnxmlBefore). All render HTML logic lives elsewhere: processInlineContent (tools/lib/cnxml-elements.js:668) for inline markers, mathjax-render.js for equations, resolveCrossModuleHref/buildCrossModuleHref (cnxml-elements.js:47/169) for links. These are string-in/string-out and are reused unchanged via the serialize seam — they are NOT replaced by cnxml-dom.js.",
+    "description": "The accurate framing of 'reuse cnxml-dom.js': it supplies the structural traversal/ordering layer (replacing extractNestedElements + indexOf + fullMatch-strip), while the existing string leaf-renderers and processInlineContent stay behind the serialize seam. Conflating the two would imply rewriting all HTML emission — a much larger, riskier effort that is unnecessary and not what makes incremental work.",
+    "recommendation": "In the migration plan, name two layers explicitly: (1) DOM traversal/ordering — new code reusing cnxml-dom.js; (2) HTML leaf emission — existing cnxml-elements.js/mathjax-render.js, untouched, invoked via serializeCnxmlFragment(node). Only layer 1 migrates per phase.",
+    "blocks_next_book": false
+  },
+  {
+    "title": "Content-gap renderers (os-embed, iframe) are a SEPARATE problem from string-vs-DOM — they, not the migration, block specific next books",
+    "severity": "high",
+    "effort": "L",
+    "evidence": "cnxml-render.js has zero iframe handling (`grep -c iframe` = 0) — physics/biology PhET/YouTube `<iframe>` embeds render to nothing. os-embed is only partially handled (resolveOsEmbed at cnxml-render.js:137, used at 1704/1745) and organic chemistry routes ALL ~1961 exercises through `<link class=\"os-embed\">`. The probe modules confirmed organic/physics translated CNXML parse fine — so the gap is missing RENDERERS, not malformed input. The system already ships 80% PERFECT (119/148 efnafraedi-2e modules) on the current string parser, so the string->DOM migration is an enabler, not a blocker.",
+    "description": "Keep this distinct from the architecture migration so DOM isn't oversold: migrating to DOM does not render a single extra iframe or os-embed exercise — it only makes ADDING those renderers safer and ordering-correct. What actually blocks onboarding particular books is the absent content renderers: os-embed completeness blocks organic; iframe support blocks physics/biology.",
+    "recommendation": "Track os-embed-exercise rendering (organic) and iframe/embed rendering (physics/biology) as their own findings/issues with their own acceptance tests, sequenced against which book is onboarded next. Ideally land them AFTER the relevant container is DOM-migrated so the new renderer is written once, on the DOM path.",
+    "blocks_next_book": true
+  },
+  {
+    "title": "Manifest reports false-green for un-injected books — `skippedUntranslated` hardcoded to 0, untranslated modules silently dropped",
+    "severity": "critical",
+    "blocks_next_book": true,
+    "evidence": "tools/lib/update-translation-errors.js:76 `if (!fs.existsSync(transPath)) continue;` drops every un-injected module without counting it; :108 writes `skippedUntranslated: 0` as a literal. Live manifests prove the lie: edlisfraedi-2e reports `totalChecked:9` of 283 source modules with `skipped:0`; liffraedi-2e `totalChecked:11` of 259 with `skipped:0`; orverufraedi `totalChecked:10`/159; lifraen-efnafraedi `totalChecked:8`/342. A book with zero injected modules produces `{perfect:0, withDiscrepancies:0, totalDiscrepancies:0}` and the CLI exits 0 (cnxml-fidelity-check.js:274 `process.exit(totalDiscrepancies>0?1:0)`).",
+    "description": "The single most important answer to 'is this a reliable gate for scaling?': no. The manifest's denominator is invisible. At exactly the moment a new book is onboarded (few/no modules injected), the gate reads 'clean / exit 0'. The summary's `perfect` count is meaningless without the skipped count, and the skipped count is faked. For 4 of the 5 books today the manifest already covers under 5% of modules while advertising `skipped:0`.",
+    "recommendation": "Increment a real counter on the `update-translation-errors.js:76` continue-branch and write it to `summary.skippedUntranslated`; also record `totalSourceModules`. Make exit-code/CI treat `skipped>0` as non-green (or at least non-perfect). Cheap: the discovery loop already walks all source modules, so the denominator is in hand.",
+    "effort": "S"
+  },
+  {
+    "title": "The fidelity check is not actually a gate — never run in CI, inject never fails on a diff, render stage has no structural check at all",
+    "severity": "high",
+    "blocks_next_book": false,
+    "evidence": "No CI invocation: grep of `.github/` and `package.json` for `fidelity`/`translation-errors` returns nothing. In inject, the only hard stop is *incomplete injection* (cnxml-inject.js:3385-3396 sets exitCode=1 + continue); the fidelity diff right after (3398-3410) is logged only when `args.verbose` and never affects exit code or whether the file is written. No server/editor code consumes the manifest or per-module reports (server grep clean except .venv noise). Crucially `compareTagCounts` is only ever run over inject output (03-translated CNXML); the inject→render→HTML stage — the ~4137-line string/regex parser (cnxml-render.js) where all three documented past bugs lived (figure-escapes-example, dropped <media> in notes, duplicate figures) — has no equivalent structural assertion.",
+    "description": "translation-errors.json is an informational artifact committed by scripts/git-backup.sh, read by humans/AI, enforcing nothing. The asymmetry is the real risk: the safe DOM-based stage (inject, cnxml-dom.js) is the one that's checked; the fragile string-parsing stage (render) is the one that's unchecked. Scaling to 10-15 editors and 3-4 books with no automated structural gate means render regressions surface only by eyeball on namsbokasafn.is.",
+    "recommendation": "Add a render-stage structural check that parses the produced HTML and asserts element/figure/note/example survival against the injected CNXML, then wire fidelity into CI as a non-blocking report (or blocking on regression vs the committed manifest). Reuse the existing real DOM in tools/lib/cnxml-dom.js rather than extending the string parser. This is the architectural change worth making now while chem is the only mature book.",
+    "effort": "L"
+  },
+  {
+    "title": "Check is character-blind: untranslated English, mistranslation, dropped sentences, and corrupted math/text all pass as PERFECT",
+    "severity": "high",
+    "blocks_next_book": false,
+    "evidence": "countTags (cnxml-fidelity-check.js:32-48) counts only opening element names via `/<([a-zA-Z][a-zA-Z0-9:]*?)[\\s>/]/g` (:42); text nodes and attribute values are never inspected. MathML is collapsed to `<m:math/>` (:35) so only the element count is compared, never its contents. This is why the null-byte incident (PR #167: Málstaður mangled `°`→`\\x00` in 3 modules) was invisible to fidelity — character corruption preserves tag counts. A segment left 100% in English, a sentence dropped from a <para>, or a wrong-id `target-id` all yield zero diff.",
+    "description": "Tag-count parity is necessary but nowhere near sufficient for a translation-fidelity gate. The discrepancy classes that matter most editorially for scaling (EN residue, semantic loss, equation corruption) are exactly the ones it cannot see. 'PERFECT fidelity' (cnxml-inject.js:3415) overstates what was verified.",
+    "recommendation": "Don't bolt content-diffing onto the tag counter. Instead make fidelity feed the untranslated-EN-residue detector already planned in the editorial-throughput roadmap (Unit 4), and add a cheap C0/control-char scan of inject output (the `assertNoControlChars` guard already exists in api-translate.js — reuse it at the inject boundary too). Reframe the 'PERFECT' label to 'structure preserved' to stop overstating coverage.",
+    "effort": "M"
+  },
+  {
+    "title": "CORRECTION: manifest is not truncated by partial re-injects; it is overwritten per-run/per-track, with a second uncontrolled producer",
+    "severity": "medium",
+    "blocks_next_book": false,
+    "evidence": "updateTranslationErrors (update-translation-errors.js:56-124) does a full-book on-disk rescan of `03-translated/<track>` every call and never reads/appends the prior manifest — so a same-track partial or failed re-inject (inject just `continue`s, leaving prior outputs on disk, cnxml-inject.js:3385-3396) does NOT shrink it. The real truncation is cross-track: track is resolved as `args.track || trackFromSourceDir(sourceDir)` (cnxml-inject.js:3279, 85-89), and `updateTranslationErrors` is called with that track (3425). Running inject `--track faithful` rewrites the whole manifest scanning only the faithful tree — efnafraedi-2e has 149 mt-preview outputs but only 4 faithful (`find ... | wc -l`), so the 149-module picture collapses to 4 and reports `perfect` against that. repair-emphasis.js is a second producer that also calls updateTranslationErrors, so the manifest's basis depends on whichever tool/track ran last.",
+    "description": "The handed-down 'partial re-injects truncate it' claim is false for same-track operation. The actual failure mode is track confusion: as the project pivots from mt-preview to faithful (memory: only ~4 faithful modules exist), a faithful inject silently replaces a full mt-preview manifest with a near-empty faithful one — another false-green path, and one that will bite precisely during the faithful-content push.",
+    "recommendation": "Make the manifest track-qualified (e.g. `translation-errors.<track>.json`, or store per-track sections in one file) so a faithful inject can't clobber the mt-preview record. Record the producing track + tool in the JSON header. Single source of the discovery loop (it's duplicated verbatim in cnxml-fidelity-check.js:79-99 and update-translation-errors.js:20-45 — factor out to avoid drift).",
+    "effort": "M"
+  },
+  {
+    "title": "Attribute-blind and order-blind: bold↔italic swaps, link-kind changes, exercise variants, and mis-nested structure are all invisible",
+    "severity": "medium",
+    "blocks_next_book": false,
+    "evidence": "countTags keys only on element name (cnxml-fidelity-check.js:42), discarding attributes. So `<emphasis effect=\"italics\">`↔`<emphasis effect=\"bold\">` both count as `emphasis`; `<link url=...>` (external) vs `<link target-id=...>` (xref) vs `<link document=...>` (docref) all count as `link`; exercise/note `type=`/`class=` variants (flagged as a cross-book gap) collapse together. Counts are also position-independent: a `<figure>` moved into the wrong parent (the exact figure-escapes-example bug class) keeps total figure count equal and reports zero diff — only the duplicate-figure variant (count +1) would show.",
+    "description": "Two whole discrepancy classes — attribute mutation and structural re-parenting/reordering — are outside the metric. These are not theoretical: the cross-book embed-kind variants and the past figure-nesting bugs fall squarely here. Editors trusting 'PERFECT' get no signal on emphasis-type drift or broken xref targets.",
+    "recommendation": "For a meaningful structural gate, compare a normalized DOM shape (tag + key attributes like emphasis@effect, link target kind, exercise@class) rather than a flat name histogram — reuse @xmldom/xmldom already in tools/lib/cnxml-dom.js. At minimum, key emphasis counts by `effect` and link counts by which of url/target-id/document is present.",
+    "effort": "M"
+  },
+  {
+    "title": "Tag-count signal-to-noise collapses on structurally-different books, making the metric unreadable as a gate at scale",
+    "severity": "medium",
+    "blocks_next_book": false,
+    "evidence": "Across only the handful of injected modules per book the diff density already diverges wildly: liffraedi-2e shows `totalDiscrepancies:326` over 11 modules (~30/module) vs efnafraedi-2e's 47 over 149 (~0.3/module); edlisfraedi-2e 78/9. Biology/physics carry structures chem lacks (iframe embeds, no <example>, deeper hierarchy per the cross-book findings), so even where the manifest IS populated, per-module diff counts in the tens drown any real regression signal.",
+    "description": "A metric tuned to chem's near-perfect round-trip produces hundreds of diffs on biology before any editor touches it, so 'discrepancy count went up' carries no actionable meaning for the new books. The number can't function as a pass/fail or even a trend gate without per-book baselining.",
+    "recommendation": "Baseline per book: store an accepted-discrepancy snapshot per module and gate on *delta vs baseline* (new/regressed tags), not absolute count. Classify known-benign tags (e.g. the sub/sup/term overcounting from EN-marker conversion already documented) so they don't inflate every book's totals.",
+    "effort": "M"
+  },
+  {
+    "title": "Emphasis-collapse normalization deliberately masks a known API loss class (low) and 148 stale per-module `-fidelity.json` artifacts have no consumer",
+    "severity": "low",
+    "blocks_next_book": false,
+    "evidence": "cnxml-fidelity-check.js:36-40 collapses `<emphasis X><emphasis X>`→single in BOTH source and translated before counting, so genuine same-type nested-emphasis flattening (a documented API gap) is hidden by design ('Renders identically'). Separately, `--report` writes per-module `<module>-fidelity.json` next to the CNXML (writeReport :116-133) — 148 of these are committed under books/efnafraedi-2e/03-translated/mt-preview/ (`find ... -name '*-fidelity.json' | wc -l` = 148) — a parallel artifact with a richer schema (timestamp, direction) than the book-level manifest, written by a different code path, read by nothing.",
+    "description": "The emphasis masking is an intentional renders-identically simplification (acceptable), but it means the metric cannot report a real markup-loss class, and 18 emphasis diffs remain the top noise category anyway. The per-module reports are a divergent, stale second representation that will confuse maintainers about which file is authoritative as more books/editors arrive.",
+    "recommendation": "Document the emphasis-collapse as a deliberate exclusion in the file header so it isn't mistaken for a bug. Either delete the committed `-fidelity.json` artifacts and the `--report`/`--annotate` paths, or fold their richer schema into the single book-level manifest so there's one source of truth.",
+    "effort": "S"
+  },
+  {
+    "title": "Two divergent parseSegments implementations + 4–5 distinct SEG-marker regexes across the pipeline",
+    "severity": "high",
+    "evidence": "Same marker, different parsers: tools/cnxml-inject.js:168 `/<!-- SEG:([^\\s]+) -->[ \\t]*\\n?([\\s\\S]*?)(?=<!-- SEG:|$)/g` → returns a Map, first-match-wins, HTML-comment ONLY. server/services/segmentParser.js:24 `/(?:<!--\\s*SEG:([\\w]+):([\\w-]+):([\\w-]+)\\s*-->|\\{\\{SEG:...\\}\\})/` → returns an Array, structured 3-group, ALSO accepts mustache `{{SEG:}}`. api-translate.js:143/158 repair with `/<!-- SEG:(\\S+?) -->/g`; api-translate.js:275/294 normalize with `<!--\\s*SEG:`. cnxml-extract.js:1583 emits `<!-- SEG:${seg.id} -->`. The marker-vs-line-based parser bug (CLAUDE.md #96; segmentParser.js:104-112 comment) is direct evidence these two parsers already silently diverged once and dropped whole modules.",
+    "description": "Segment parsing is reimplemented at least twice with incompatible contracts (return type, dedup policy, marker dialects, whitespace tolerance). They agree only by luck on today's canonical files; any drift re-creates the #96 class of bug where the editor and inject disagree about how many segments a file has. This is exactly the architecture-asymmetry pattern flagged project-wide, localized to segment handling, and it gets riskier as 3-4 books and 10-15 editors arrive.",
+    "recommendation": "Extract one shared `tools/lib/seg-markers.js` (CommonJS+ESM interop already exists in tools/lib) exposing a single canonical regex, a `tokenize(content) -> [{segmentId,moduleId,type,elementId,raw}]`, and an explicit documented duplicate policy. Have cnxml-extract, api-translate, cnxml-inject, and server/services/segmentParser all consume it. Do this now while efnafraedi-2e is the only mature book and divergence is cheap to fix.",
+    "recommendation_note": "",
+    "effort": "M",
+    "blocks_next_book": true
+  },
+  {
+    "title": "Duplicate segment IDs handled three different ways (inject first-wins, editor last-wins, count counts-all)",
+    "severity": "medium",
+    "evidence": "83 of 170 canonical efnafraedi-2e EN files contain duplicate SEG ids (0 in edlisfraedi-2e/liffraedi-2e/lifraen-efnafraedi/orverufraedi). Handling diverges: inject keeps the FIRST (cnxml-inject.js:175 `if (segments.has(id)) duplicateCount++; else segments.set(id,text)`), the editor keeps the LAST (segmentParser.js:231 `isLookup[seg.segmentId] = seg` overwrite), and countModuleSegments counts ALL markers (segmentParser.js:543 `return matches ? matches.length : 0`). The inject docstring itself (cnxml-inject.js:160-162) warns duplicates can carry DIFFERENT content (MATH numbering). applyApprovedEdits rebuilds via `data.segments.map` (segmentEditorService.js:731) so both duplicate rows are re-emitted.",
+    "description": "When duplicate occurrences differ, the editor displays/edits a different occurrence than inject ships, and the dashboard denominator (countModuleSegments) is inflated versus inject's deduped set, so progress percentages and 'translatedCount' (segmentParser.js:278) overcount. The fact that this 'works' today depends on duplicates happening to be identical — accidental, not designed.",
+    "recommendation": "Pick one policy (first-wins, to match inject) and apply it in the shared lib from finding #1; have loadModuleForEditing build isLookup with `if(!isLookup[id])` and surface a per-module duplicate count to the dashboard. Better: dedupe at extraction so duplicate SEG ids never reach the segment files.",
+    "effort": "M",
+    "blocks_next_book": false
+  },
+  {
+    "title": "--allow-en-fallback is a per-run, whole-chapter switch — silently ships English for EVERY untranslated module in the chapter",
+    "severity": "medium",
+    "evidence": "findChapterModules returns ALL modules when --module is omitted (cnxml-inject.js:3154-3155), the default. main() loops every module and passes the single `args.allowEnFallback` into each loadModuleInputs call (cnxml-inject.js:3303). loadModuleInputs only opts into EN per file-existence (cnxml-inject.js:3180-3198): if the faithful/mt file is absent and the flag is set, it loads `02-for-mt/.../-segments.en.md` and warns to stderr only.",
+    "description": "With partially-translated chapters (the normal state once many editors are mid-Pass-1), a single `--allow-en-fallback` on a chapter-wide inject publishes raw English for every module that isn't done yet — not the one module the operator meant to force. The only signal is a stderr warning buried among per-module output. This scales badly to 10-15 editors working a chapter concurrently.",
+    "recommendation": "Restrict EN fallback to runs that pass an explicit `--module`, or require a per-module opt-in list, and emit a machine-readable manifest (e.g. into translation-errors.json) of exactly which modules fell back to English so the publish step can refuse or flag them.",
+    "effort": "S",
+    "blocks_next_book": false
+  },
+  {
+    "title": "Injection gate checks segment PRESENCE, never translatedness — untranslated-English residue passes as COMPLETE",
+    "severity": "high",
+    "evidence": "The only safety checks are: file existence (cnxml-inject.js:3180), per-segment presence where empty string is treated as missing (getSeg cnxml-inject.js:1481 `if (!text)`), and `report.complete = stats.segmentsMissing.length===0 && stats.mathUnresolved.length===0` (cnxml-inject.js:1677). A segment present with still-English text (API echo of proper nouns/formulas, or MT passthrough) is returned verbatim by getSeg (1488-1496) and reported COMPLETE. Title fallbacks substitute the English structure.json text outright: `getSeg(...) || element.title.text` at cnxml-inject.js:1512, 1756, 1795, 2185, 2337 (these do still mark the seg missing, so they fail safe, but illustrate EN leaking into output paths). The throughput roadmap names an 'untranslated-EN-residue detector' as not-yet-built (CLAUDE.md Unit 4).",
+    "description": "There is no per-segment 'is this actually Icelandic?' check anywhere in the segment path. As more books onboard (more formula-heavy/proper-noun-heavy content) and more MT volume flows, English segments will ship silently with a green COMPLETE status — the opposite of the human-verified-asset guarantee Pass 1 is supposed to provide.",
+    "recommendation": "Add an EN≈IS residue check (flag segments whose IS content equals the EN source after stripping markers/numbers/symbols, above a min token threshold) in the shared lib, surfaced both at inject (downgrade report.complete or list residues) and at save/submit in segmentEditorService. Reuse the existing getSegmentQaFindings hook (segmentEditorService.js:203) rather than a new path.",
+    "effort": "M",
+    "blocks_next_book": true
+  },
+  {
+    "title": "SEG-marker whitespace mismatch: inject/split require a literal single space, editor/normalize accept any whitespace",
+    "severity": "low",
+    "evidence": "inject parseSegments matches literal `<!-- SEG:` with one space (cnxml-inject.js:168) and splitAtSegBoundaries lookahead is `(?=<!-- SEG:)` literal (api-translate.js:438), while the editor regex is `<!--\\s*SEG:` (segmentParser.js:24) and normalizeSegMarkers uses `<!--\\s*SEG:` (api-translate.js:275,294). All 294,836 live markers use exactly one space (verified), so this is latent.",
+    "description": "A marker emitted with zero or two spaces after `<!--` would parse in the editor but be invisible to inject (folded into the previous segment's text). It fails safe today (the lost id becomes a missing segment → report incomplete → blocked) but is a confusing footgun for any future producer or hand-edit, and a likely source of the next #96-style 'render not found' misdiagnosis.",
+    "recommendation": "Use the single tolerant regex from finding #1 everywhere (`<!--\\s*SEG:...\\s*-->`), eliminating the literal-space variants in inject and splitAtSegBoundaries.",
+    "effort": "S",
+    "blocks_next_book": false
+  },
+  {
+    "title": "67 orphan `*-segments(b|c|d).en.md` files carry legacy mustache {{SEG:}} markers half the pipeline can't parse",
+    "severity": "low",
+    "evidence": "`find books -name '*-segments(*.md'` → 67 files; all `{{SEG:}}` markers in the tree live in these variant files (grep for `{{SEG:}}` matched only `m*-segments(b).en.md` etc., 0 canonical files). They don't match the `${moduleId}-segments.${lang}.md` path inject/editor construct, so they are never loaded — but inject's parseSegments couldn't read their mustache format anyway (cnxml-inject.js:168 is HTML-comment-only), while segmentParser.js:24 can.",
+    "description": "Dead, format-inconsistent artifacts in the content tree. Harmless today but they (a) pollute any future glob that scans 02-for-mt, (b) demonstrate the mustache dialect is real input the editor accepts yet inject silently can't, and (c) will confuse new editors onboarding the workflow.",
+    "recommendation": "Delete or move the `*-segments(b|c|d).*.md` variants out of 02-for-mt (confirm with the user first — they are under a generated dir, not 01-source). Drop mustache `{{SEG:}}` support from segmentParser entirely once confirmed unused, so the editor and inject accept the same dialect.",
+    "effort": "S",
+    "blocks_next_book": false
+  },
+  {
+    "title": "Highest-risk construct: os-embed external exercises render complete-looking English that passes review silently",
+    "severity": "critical",
+    "evidence": "books/lifraen-efnafraedi/01-source: 1959 of 1961 <exercise> bodies are a bare <link class=\"os-embed\" url=\"#exercise/...\"/> with NO translatable text (e.g. ch11/m00128.cnxml prob-00001). The exercise content lives in external English JSON: books/lifraen-efnafraedi/01-source/exercises/*.json (1961 files, one per nickname). Sample 01-03-OC-P01.json: stimulus_html=\"What is the ground-state electron configuration of each of the following elements:\", questions[0].stem_html=\"Oxygen\" — English. These JSONs are consumed ONLY by cnxml-render.js resolveOsEmbed() (tools/cnxml-render.js:137-157, called at 1704-1745); grep shows no other tool/server file references stem_html/stimulus_html/01-source/exercises. cnxml-extract.js has zero os-embed handling, so the exercise text never enters extract→MT→inject. By contrast efnafraedi/edlisfraedi/liffraedi/orverufraedi all have os-embed=0.",
+    "description": "The pipeline structurally cannot translate os-embed exercises: the CNXML carries no text, and the external JSON is never fed to MT. cnxml-render.js silently fills the gap from the English cache, so organic chemistry's entire exercise corpus renders as fluent, complete-looking English. This is worse than a visible drop (cf. iframe) because nothing looks broken — a linguistic reviewer sees a finished page and the missing translation never surfaces. The os-embed RESOLVER already works; the only gap is that stem_html/stimulus_html bypass extract→MT→inject. This is organic-only among the 5 onboarded books, so it is a risk for a NEW title ONLY IF that title exhibits the construct (not verifiable from this repo — only organic's source is present).",
+    "recommendation": "Add an os-embed extraction path that reuses the existing pipeline: have cnxml-extract.js emit segments from each cached exercise JSON's stimulus_html + stem_html + solutions, run them through MT/review like any segment, and have resolveOsEmbed() prefer a translated sidecar (e.g. exercises/<nickname>.is.json) over the English original. Until then, treat any os-embed-bearing book as exercise-untranslated and surface a per-module warning in render so the gap is visible, not silent.",
+    "recommendation_note": "",
+    "severity_note": "",
+    "effort": "L",
+    "blocks_next_book": false
+  },
+  {
+    "title": "No pre-intake structural gate exists — a candidate title's fitness cannot be assessed before sinking intake effort",
+    "severity": "high",
+    "evidence": "The only structural-profile artifact, docs/openstax-expansion-feasibility-study.md (2026-02-11), is prospective prose, not a runnable check; it predates the actual onboarding of physics/biology/organic/microbiology and never mentions organic or microbiology at all. No script in tools/ scans a candidate's CNXML for the constructs proven to break (os-embed, iframe, glossary-absence, missing BOOK_CONFIGS entry). getBookRenderConfig (tools/lib/book-rendering-config.js:350-363) only warns to console for unknown books.",
+    "description": "Because the next 3-4 titles' source is not in this repo (only the 5 onboarded books plus an empty stjornufraedi/ shell), there is currently no way to tell whether a candidate is safe to onboard until intake is half-done and rendering reveals the gaps. This meta-gap is the one item that genuinely blocks confident onboarding of the next book.",
+    "recommendation": "Add a one-shot pre-intake probe (small script or checklist) run against any candidate's raw CNXML before committing intake. Minimum checks, each tied to a proven failure: (1) grep 'class=\"os-embed\"' >0 → no translation path (finding 1); (2) grep '<iframe' >0 → silently dropped in extract AND render (finding 3); (3) <glossary> count==0 while <term> present → compiled Lykilhugtök page renders empty (finding 4); (4) no BOOK_CONFIGS entry yet → silent default-degrade (finding 5); plus element counts for the difference matrix (finding 6). Gate intake on a clean/triaged probe.",
+    "recommendation_note": "",
+    "severity_note": "",
+    "effort": "M",
+    "blocks_next_book": true
+  },
+  {
+    "title": "<iframe> interactive embeds are silently dropped in both extract and render",
+    "severity": "high",
+    "evidence": "Source counts: edlisfraedi-2e (physics) 57 <iframe>, liffraedi-2e (biology) 51 <iframe> (PhET sims / YouTube, per study §4.2/§5.3). grep 'iframe' returns ZERO hits in tools/cnxml-extract.js and zero emitting hits in tools/cnxml-render.js (only os-embed doc comments). Confirms the seeded finding. Both affected books are already onboarded, so this is live content loss, not a future risk.",
+    "description": "Any <iframe> inside <media>/<note class=\"interactive\"> disappears from rendered output. Physics and biology already lose ~108 interactive elements between them; future interactive titles would too. Visible-ish (a note renders empty) but easy to miss at scale.",
+    "recommendation": "Add an iframe branch to render (emit a responsive <iframe> or a captioned external-resource link with translated surrounding note text) and ensure extract preserves the embed + its alt/caption as a non-translatable marker. Cross-repo flag: the rendered iframe styling lives in namsbokasafn-vefur static/styles/content.css — coordinate, do not edit here.",
+    "recommendation_note": "",
+    "severity_note": "",
+    "effort": "M",
+    "blocks_next_book": false
+  },
+  {
+    "title": "Books without <glossary> render an empty compiled \"Lykilhugtök\" page",
+    "severity": "high",
+    "evidence": "<glossary> element counts: efnafraedi-2e 109, edlisfraedi-2e 229, liffraedi-2e 205, lifraen-efnafraedi 0, orverufraedi 0. Organic instead uses <section class=\"key-terms\"> (31); microbiology has 0 of either despite 6395 inline <term>. Render's glossary path keys strictly off the <glossary> element: tools/cnxml-render.js:873 (/<glossary>([\\s\\S]*?)<\\/glossary>/) and the compiled EOC glossary page at :2263. SHARED_END_OF_CHAPTER.glossary (book-rendering-config.js:36-42, compiled:true) is inherited by ALL books including organic/microbiology.",
+    "description": "For organic and microbiology the compiled 'Lykilhugtök' (Key Terms) page has no source the renderer recognizes, so it renders empty even though terminology exists (key-terms sections / inline <term>). This is exactly the study's Precalculus 'inline <term> only, no formal glossary' warning (§6.3) — already a live reality in two onboarded books, and a near-certainty for math/newer titles next.",
+    "recommendation": "Add an alternative glossary extractor that builds the compiled page from <section class=\"key-terms\"> (organic) and/or inline <term> definitions (microbiology), selected per-book in book-rendering-config.js. Add the '<glossary>==0 with <term> present' check to the pre-intake probe (finding 2).",
+    "recommendation_note": "",
+    "severity_note": "",
+    "effort": "M",
+    "blocks_next_book": false
+  },
+  {
+    "title": "Unknown-book rendering silently degrades instead of failing loud",
+    "severity": "medium",
+    "evidence": "getBookRenderConfig (tools/lib/book-rendering-config.js:350-363) returns a fallback config with only console.warn for any slug not in BOOK_CONFIGS (the 5 registered books at :335-341). Fallback gives English-derived note labels via generateFallbackLabel (:372-380) and a single 'summary' end-of-chapter section, so exercise sections and notes mis-render.",
+    "description": "Onboarding a 6th title without first adding a BOOK_CONFIGS entry produces a page that renders without error but with wrong/English note labels and missing exercise pages — a quiet quality failure that a console warning in a CLI run is easy to miss.",
+    "recommendation": "Make book registration an explicit gate: either throw on unknown slug in the render/inject entrypoints (require an opt-in --allow-default flag), or have the pre-intake probe assert a BOOK_CONFIGS entry exists. Every new title MUST add a config object (note labels, endOfChapterSections, excludedSectionClasses) — document this as step 1 of intake.",
+    "recommendation_note": "",
+    "severity_note": "",
+    "effort": "S",
+    "blocks_next_book": false
+  },
+  {
+    "title": "Empirical difference matrix (re-counted) — corrects seeded/study numbers; confirms MathML passthrough is NOT a blocker",
+    "severity": "info",
+    "evidence": "Re-counted across 01-source (modules; equation; example; glossary; exercise; note; m:math; iframe; os-embed; footnote; term): efnafraedi-2e 149;1559;301;109;1736;460;5369;0;0;36;1615 | edlisfraedi-2e 283;2396;289;229;3867;428;18478;57;0;42;1919 | liffraedi-2e 259;41;0;205;1509;461;85;51;0;42;4799 | lifraen-efnafraedi 342;56;102;0;1961;4;416;0;1959;0;554 | orverufraedi 159;35;0;0;1166;711;61;0;0;458;6395. CORRECTIONS: microbiology footnotes = 458 (seed said 355); biology <example>=0 confirmed; microbiology <example>=0 confirmed; organic os-embed 1959 (seed ~1961 = total exercises, 1959 are os-embed). Distinct note classes: chemistry 4, physics 1 (+title-only), biology ~9, microbiology 7 (confirmed). Study module estimates were high (biology 280→259, physics 318→283).",
+    "description": "Physics already carries 18478 <m:math> blocks and renders via opaque passthrough without issue, confirming the study's 'MathML density = Low pipeline impact' assessment — MathML volume is reassurance, not a blocker, for the next (likely math-heavy) title. The study's Phase-1 'parameterize + per-book config' work is effectively DONE: tools/lib/book-rendering-config.js is a 5-book registry with note labels, EOC sections, exercise-class resolution and a fallback; tools take --book. The study should be retired/rewritten as this empirical per-book profile.",
+    "recommendation": "Replace docs/openstax-expansion-feasibility-study.md's prospective tables with this measured matrix and mark Phase-1 parameterization complete. Keep the matrix as the baseline the pre-intake probe (finding 2) appends each new candidate to.",
+    "recommendation_note": "",
+    "severity_note": "",
+    "effort": "S",
+    "blocks_next_book": false
+  },
+  {
+    "title": "validateMarkers is a count-only check — blind to inline [[bracket]] marker loss AND intra-segment truncation",
+    "severity": "high",
+    "evidence": "tools/api-translate.js:255-259 counts only `<!-- SEG:` and compares input==output. grep confirms NO `[[` handling anywhere in api-translate.js or malstadur-api.js (0 hits). Inline markers ([[i:]], [[xref:]], [[link:]], and the lossy [[BR]]/[[MEDIA]] at ~2-3% loss per context) are never validated at the MT boundary. Same blind spot covers intra-segment truncation: a chunk with 1 segment has 1 SEG marker in / 1 out even if the segment body is truncated mid-text, so validateMarkers passes (currently latent — largest single segment measured is only 2451 chars vs 25000 chunk limit, 10x headroom, but async truncates ~33-35KB).",
+    "description": "The only structural integrity gate at the producer boundary counts top-level segment markers. Inline bracket-marker loss (the documented [[BR]]/[[MEDIA]] ~2-3% drop) flows silently through MT → inject → render and only surfaces as missing line-breaks/images in published HTML, three stages downstream. As physics/biology onboard (iframe/PhET/YouTube → [[MEDIA]]-class markers, higher inline-marker density), this silent-loss surface grows. This is the same class of defect the file already guards against elsewhere (assertNoControlChars, countInlineMarkers) — catching corruption at the MT producer boundary.",
+    "recommendation": "Add a producer-boundary check that counts bracket markers BY TYPE (content is translated, so only the count+type per marker family is comparable) and warns/fails on a per-type input≠output mismatch, mirroring the existing assertNoControlChars/countInlineMarkers philosophy. Reuse the marker regexes already used by cnxml-inject. Keep it advisory-with-summary like normalizeSegMarkers so clean output is a no-op. This is a natural low-friction add, not a new pattern.",
+    "recommendation_note": "",
+    "blocks_next_book": true,
+    "effort": "M"
+  },
+  {
+    "title": "pollTask's poll GET is not wrapped in withRetry — one transient blip fails the whole module on the dominant production path",
+    "severity": "high",
+    "evidence": "malstadur-api.js:293 `const task = await apiRequest(apiKey, 'GET', `/v1/translate/tasks/${taskId}`);` is a BARE call inside the poll loop (up to 180 polls / 6 min, lines 291-314). Contrast translate() at :233 and translateAsync() at :266, both wrapped in withRetry. Any single transient 5xx/network error on any poll throws straight out. This path is dominant: 116/149 chem modules exceed SYNC_CHAR_LIMIT (10K) so translateAuto (:330-336) routes them through translateAsync+pollTask; only ~33 use the sync path. grep confirms the entire client (createClient/translateAuto/translateAsync/pollTask/withRetry) has ZERO test coverage (NONE in tools/__tests__).",
+    "description": "The submit step retries but the polling steps do not, so the most-used translation path is the least resilient: a 6-minute polling window with no transient-error tolerance on any individual poll. A momentary network hiccup mid-poll aborts a module that the API may have translated successfully. The total absence of tests for the async/retry machinery means this went unnoticed.",
+    "recommendation": "Wrap the line-293 poll GET in the existing withRetry helper (same pattern as :233/:266). Add focused tests for the async path (translateAuto routing at the 10K boundary, pollTask completed/failed/timeout, withRetry 5xx-vs-4xx behavior) using a mocked fetch. Reliability fix, not a content-corruption risk — a failed module fails loud and is re-run.",
+    "blocks_next_book": false,
+    "effort": "M"
+  },
+  {
+    "title": "Glossary filtering matches by raw substring with no word boundaries and lossy case-folding",
+    "severity": "low",
+    "evidence": "tools/api-translate.js:413-419 `lowerText.includes(t.sourceWord.toLowerCase())`. Of 617 approved chem terms, 6 are ≤3 chars (gas, ion, pH, ray, STP, ΔH°). Measured raw substring hits in a sample sentence: 'ph' (from pH lowercased) matched 6 times (phase, phosphorus, graph, morphology, …), 'ion' 3 times (ionization, region, …), 'ray' 1 (X-ray). So short/case-sensitive terms like pH get force-included against unrelated words and lose their casing in the match.",
+    "description": "filterGlossaryForText over-includes glossary terms whenever a short source word appears as a substring of unrelated words. If the API applies glossaries by token this risks mis-mapping; if it applies them token-level it is merely payload bloat and noise. Either way word-boundary matching removes the ambiguity cheaply. Lowercasing pH→ph also defeats case-sensitive chemical notation.",
+    "recommendation": "Match on word boundaries (e.g. a per-term regex with \\b … \\b, or token-set intersection) instead of String.includes, and avoid case-folding case-significant terms. Low cost, removes the ambiguity regardless of how the API consumes glossaries.",
+    "blocks_next_book": false,
+    "effort": "S"
+  },
+  {
+    "title": "Control-char (NUL/degree-sign) failure aborts the whole module with no retry, unlike the truncation path which retries",
+    "severity": "low",
+    "evidence": "tools/api-translate.js:478 assertNoControlChars throws immediately (fail-loud, by design, PR #167). The adjacent truncation case at :483-504 instead retries once (without glossary) before throwing. The °→NUL mangling is a known intermittent Málstaður bug.",
+    "description": "The two known intermittent API corruptions are handled asymmetrically: truncation gets one automatic retry, a NUL byte gets none — one mangled degree sign fails the entire module and requires manual re-run. Fail-loud-terminal is the deliberate PR #167 control to stop silent corruption, so this is an optional enhancement, not a defect.",
+    "recommendation": "Optionally mirror the existing truncation-retry: on a control-char detection, retry the chunk once, and only fail loud if the retry is also dirty (preserving fail-loud as the terminal state). Open question that decides whether it helps: is the °→NUL mangling deterministic for identical input (retry wastes a call) or transient (retry recovers)? Cannot be determined from the client; decide before implementing.",
+    "blocks_next_book": false,
+    "effort": "S"
+  },
+  {
+    "title": "429 retry uses fixed exponential backoff — ignores Retry-After and has no jitter",
+    "severity": "low",
+    "evidence": "malstadur-api.js:87-100: 429 is retryable but withRetry computes `initialBackoff * Math.pow(2, attempt)` (1s,2s,4s; MAX_RETRIES=3) with no read of the response's Retry-After header and no jitter. MalstadurApiError captures statusCode/body (:109-116) but the header is discarded in apiRequest (:120-151).",
+    "description": "Defensive-hardening only — there is no evidence of actual Málstaður 429s in production (the 429s in project memory are the editorial server's OWN E2E rate limiter, unrelated). If whole-book runs (149+ sequential modules) ever hit server-side throttling, fixed backoff without honoring Retry-After is a weaker control than the API may be signalling.",
+    "recommendation": "When a 429 carries Retry-After, honor it; otherwise add jitter to the exponential backoff. Capture the header in MalstadurApiError.body or a dedicated field. Low priority pending any real evidence of Málstaður throttling.",
+    "blocks_next_book": false,
+    "effort": "S"
+  },
+  {
+    "title": "Cost-estimate magic number duplicated; dry-run estimates from raw input chars, not billable units",
+    "severity": "info",
+    "evidence": "The `* 5 / 1000` (5 ISK/1000 chars) constant appears in two files: malstadur-api.js:52 (estimatedISK, from API-reported usage.units) and api-translate.js:742 (dry-run, from raw fs input char count). The dry-run sums `content.length` (:733-742) while actual billing uses the API's `usage.units` (:38-42), which can diverge with glossary/markup overhead.",
+    "description": "Minor housekeeping. The rate constant is unsynchronized across two files (a price change must be edited in both), and the dry-run cost can mislead because it counts source characters rather than the units the API actually bills.",
+    "recommendation": "Extract the ISK-per-1000-chars rate to a single exported constant in malstadur-api.js and reuse it in the dry-run. Optionally label the dry-run estimate as 'source chars (pre-billing)' to set expectations.",
+    "blocks_next_book": false,
+    "effort": "S"
+  },
+  {
+    "title": "Design check: clean-cut SEG splitting is correct (overlapping-split not warranted) and chunking is appropriately lean (not over-engineered)",
+    "severity": "info",
+    "evidence": "splitAtSegBoundaries (tools/api-translate.js:437-460) never splits mid-segment; per-chunk glossary is re-filtered in translateChunk (:469). DEFAULT_MAX_CHUNK_CHARS=25000 (:428) vs the documented ~33-35KB async truncation point, with the margin justified by glossary payload headroom (filtered glossary typically 2-5KB).",
+    "description": "Addressing the two explicit asks. (1) Overlapping-split would NOT improve this client: SEG segments are independent translation units, cross-chunk context loss is at most one boundary per 25K, and the glossary (not chunk adjacency) carries term consistency — overlapping would add API cost and dedup complexity for negligible quality gain. Clean-cut is the right choice. (2) Over-engineering is minimal: the only conservative edge is that modules in the 25-33KB band get split into 2 calls where 1 might fit, but that is justified by glossary headroom against the truncation point. The chunking/limit logic is lean and appropriate.",
+    "recommendation": "No change to splitting strategy. If call-count optimization is ever desired, the 25K limit could be made glossary-size-aware (raise toward ~30K when the filtered glossary is small) — but this is not worth the added branching today.",
+    "blocks_next_book": false,
+    "effort": "S"
+  },
+  {
+    "title": "List-flattening remediation diverges: examples PRESERVE the nested list, exercises and notes DELETE it",
+    "severity": "high",
+    "evidence": "All three DOM builders detect the same condition (para segment text contains expanded math AND a sibling <list> is a DOM descendant of the para, i.e. extraction flattened the list into the para text): buildExampleDom tools/cnxml-inject.js:2352-2366. But the remediation is INVERTED. buildExampleDom:2354-2376 sets skipParaText=true, KEEPS the <list> element, empties the para text, then calls replaceListItemsDom -> structured <list><item> survives. buildExerciseDom:2597-2607 and buildNoteDom:2854-2863 instead call `siblingEl.parentNode.removeChild(siblingEl)` -> the <list> is DELETED and the full flattened paraText is injected as inline text. The code comments at 2595 and 2853 ('same embedded-list detection as buildExampleDom') mask the divergence: the detection is identical, the action is opposite. books/efnafraedi-2e/translation-errors.json shows para-count drift in 2 modules (para diff -7, -1), consistent with paras being collapsed; checker does not tag by container so it cannot localize this.",
+    "description": "For the identical input pattern (a para whose extracted segment text absorbed a nested list), an example renders a real Icelandic bulleted/numbered list while an exercise or note renders the same content as one flat run of inline text with the <list>/<item> semantics destroyed. The example path is the correct one (it de-duplicates by emptying para text and re-injecting structured items); the exercise/note paths are lossy of list structure. This is a genuine correctness inconsistency in the mature chemistry book today, and it will diverge more as exercise/note-heavy books (microbiology, biology) onboard.",
+    "recommendation": "Unify buildExerciseDom and buildNoteDom onto buildExampleDom's approach: when the flattened-list condition holds, set skipParaText (inject only the title/empty), KEEP the <list> element, and let replaceListItemsDom translate the items. Factor the shared para+list handling out of the three *Dom builders into one helper in tools/lib/cnxml-dom.js so the remediation cannot drift again. Better still, have cnxml-extract.js mark a flattened list explicitly in structure rather than have three builders sniff for '<m:math' (see separate finding).",
+    "recommendation_detail": "",
+    "effort": "M",
+    "blocks_next_book": true
+  },
+  {
+    "title": "Tables are the only complex element never moved to DOM; cell replacement is self-described \"simplified\" positional regex",
+    "severity": "high",
+    "evidence": "buildTable tools/cnxml-inject.js:1913-1982 extracts the original <table> by regex and replaces <row>/<entry> content positionally with nested String.replace callbacks; line 1933 comment: 'This is simplified - a full implementation would need to match entries by position'. It is the one complex construct still on the string path while buildExampleDom/buildExerciseDom/buildNoteDom use @xmldom DOM (tools/lib/cnxml-dom.js). All five books are table-heavy and use spanning cells (source counts: efnafraedi-2e 191 tables / 183 morerows|namest; orverufraedi 117 / 234; lifraen-efnafraedi 88 / 128; edlisfraedi-2e 103 / 98; liffraedi-2e 64 / 86). The prior three production rebuild bugs (figure-escapes-example, dropped media in notes, duplicate figures) were all string-parsing bugs of exactly this shape.",
+    "description": "Positional cell matching (rowIdx/cellIdx) assumes structure.rows[].cells[] aligns 1:1 with the regex-walked <entry> elements. Spanning cells (morerows makes later rows carry fewer <entry> elements; namest/nameend column spans) are precisely where positional alignment drifts, mis-assigning or duplicating translated cell text. I confirmed the capability gap (string-only, by-position, no span awareness) but did NOT observe a concrete misalignment instance, since that also depends on whether extraction's rows[].cells[] already compensates for spans -- unverified. Treat as a high-likelihood latent gap, not a counted incidence.",
+    "recommendation": "Port buildTable to the DOM path used by the other complex builders: parseCnxmlFragment(originalTable), walk <row>/<entry> nodes, replace content via replaceParaContentDom / a cell analog, serialize via serializeCnxmlFragment. The self-closing <entry/> normalization at 1460/1930 becomes unnecessary under a real parser. Before doing so, add a focused fixture with morerows + namest to confirm extraction's cell model, since the DOM rewrite must consume whatever structure.rows[].cells[] provides.",
+    "effort": "L",
+    "blocks_next_book": true
+  },
+  {
+    "title": "All media-rebuild paths emit only <image>; <iframe> (PhET/YouTube) is lost unless it rides inside an original-preserved container",
+    "severity": "high",
+    "evidence": "Three rebuild paths hardcode a single <image> child and cannot represent <iframe>/<flash>/audio/video: buildMediaElement (inline [[MEDIA:N]] restore) tools/cnxml-inject.js:1030-1038; buildMedia (block 'media' element) :2986-3001; buildFigure fallback :1881-1896. The root cause is upstream: extraction's inline-media capture only reads <image> attrs and stores src='' when there is no image -- tools/cnxml-extract.js:188-197. Concrete inject-side loss instance: books/edlisfraedi-2e/01-source/ch??/m42185.cnxml has `<media id=\"concept-trailer-buoyancy\"><iframe src=\"https://www.youtube.com/embed/...\"/>` inline in a <para> (no <image>); extraction turns it into [[MEDIA:N]] with empty src, and buildMediaElement re-emits `<media><image src=\"\"/></media>` -- the video is replaced by a broken empty image. Context classification: edlisfraedi-2e has 57 iframes (40 inside <note>, which survive because buildNoteDom serializes the original DOM; 17 inline-in-para/top-level, which hit the image-only rebuild and are lost). liffraedi-2e has 51 iframes, ALL inside <note> -- so biology loses none at inject (its loss is render-side, Pillar 1).",
+    "description": "iframe survival at the rebuild stage is accidental: it works only when the iframe happens to live inside a note/example/exercise whose fragment is preserved by DOM serialization. Any iframe inline in a para (->[[MEDIA]]) or as a standalone block media (->buildMedia) is silently degraded to an empty image. This blocks faithful onboarding of physics specifically (17 confirmed instances); biology is unaffected at inject.",
+    "recommendation": "Capture the full inner XML of a <media> in extraction (not just image src/mime), and on rebuild preserve non-image media verbatim: in buildMediaElement/buildMedia, if the captured media has no <image> (or has an <iframe>/other child), re-emit the stored original media markup rather than synthesizing an <image>. Coordinate with namsbokasafn-vefur (CSS/render contract) on how iframes are presented downstream -- FLAG cross-repo, do not edit there.",
+    "effort": "M",
+    "blocks_next_book": true
+  },
+  {
+    "title": "Every DOM builder bootstraps from a lazy greedy regex extraction against the raw module string",
+    "severity": "medium",
+    "evidence": "buildExampleDom:2270, buildExerciseDom:2557, buildNoteDom:2817, buildFigure:1829, buildTable:1917, buildEquation:2921 all locate their element with `new RegExp('<tag\\\\s+id=\"ID\"[^>]*>[\\\\s\\\\S]*?</tag>')` against originalCnxml, then (for the *Dom ones) parseCnxmlFragment on the captured slice. The lazy `[\\s\\S]*?` stops at the FIRST closing tag, so any same-tag nesting (note-in-note, example-in-example, table-in-entry) captures a truncated fragment. Verified safe TODAY: note-in-note = 0 across all five books. So this is latent, not active.",
+    "description": "The 'DOM rebuild' path is really 'regex-extract a slice, then DOM-parse the slice'. It re-introduces string parsing at the entry point of the very path that exists to avoid string parsing, and its correctness rests on an invariant (no same-tag nesting) that holds for the current five books but is not enforced and not guaranteed for the 3-4 books being onboarded. It also forces awkward whole-document regex side-channels (e.g. the note-inside-example position check in buildNoteDom:2795-2814).",
+    "recommendation": "Parse the whole module CNXML into one DOM once at the top of buildCnxml, pass the document down, and locate elements via doc.getElementById(element.id) instead of per-element regex extraction. This removes ~6 fragile regexes, makes the note-nesting check a DOM ancestor walk, and is the structural change worth making now while chemistry is the only mature book.",
+    "effort": "L",
+    "blocks_next_book": false
+  },
+  {
+    "title": "buildExerciseDom drops id-less exercises entirely; buildGenericElement recurses without ctx",
+    "severity": "low",
+    "evidence": "Two distinct robustness bugs on the id-less fallback path. (a) buildExerciseDom:2555 `if (!element.id) return null` discards the whole exercise, whereas buildExampleDom:2266 and buildNoteDom:2791 fall back to buildGenericElement -- inconsistent, and the exercise variant is outright content loss. (b) buildGenericElement signature (:3006) takes no ctx and its child recursion (:3023) calls `buildElement(child, getSeg, equations, originalCnxml)` with ctx omitted, so figure de-dup tracking (figuresHandledInContainers/Notes), imageMapping (translated-SVG basename swaps), and inlineTables are all lost for any child built under the generic path. Reachability today: id-less <exercise>/<example>/<note> = 0 across all five books, so neither path fires now.",
+    "description": "Both are latent given current content (every example/exercise/note in all five books carries an id), but the stated goal is onboarding 3-4 new books whose authoring conventions are unknown; OpenStax CNXML does not require ids on these elements. If a new book ships id-less exercises, they vanish silently; id-less examples/notes render but lose figure dedup and SVG image localization.",
+    "recommendation": "Make buildExerciseDom fall back to buildGenericElement like the other two. Add ctx as a parameter to buildGenericElement and thread it through its buildElement recursion. Cheap and removes a silent-loss footgun before unknown books arrive.",
+    "effort": "S",
+    "blocks_next_book": false
+  },
+  {
+    "title": "~500 lines of legacy string-based builders retained and exported but dead in the dispatcher",
+    "severity": "low",
+    "evidence": "The dispatcher buildElement:1731-1735 routes example/exercise/note exclusively to the *Dom variants. The original string builders buildExample:2146, buildExercise:2454, buildNote:2673 -- plus the string-path helpers they alone reach: replaceListItems:2016, listContainsReplacedParas:1995, replaceParaPreservingNested:2072, stripNestedElements:3040 -- are unreachable in production yet still exported (:3459-3463, comment 'Exported for comparison testing'). buildNote still contains its own divergent figure-caption and list logic.",
+    "description": "This is parallel-implementation debt: two full rebuild engines for the same constructs. Fixes (e.g. the list-flattening unification above) can land in the wrong copy, and a reader cannot tell which path is live. It also doubles the regex surface a security/quality reviewer must audit.",
+    "recommendation": "Delete the legacy buildExample/buildExercise/buildNote and their exclusively-reached string helpers, or move them into a test-only fixture module if the DOM-vs-regex comparison tests are still wanted. Keep one engine (DOM) as the single source of truth before onboarding more books.",
+    "effort": "S",
+    "blocks_next_book": false
+  },
+  {
+    "title": "isApiTranslated is a fragile marker-shape guess, not a real provenance signal — biology/microbiology will be systematically misrouted",
+    "severity": "high",
+    "evidence": "cnxml-inject.js:3307-3313 decides the entire restore code path by sniffing whether any segment contains {{i}}/{{b}}/{{term}}/{{fn}}. But there are now two LIVE producers of 02-mt-output — api-translate.js:649 and docx-import.js:795 — while the only web-UI MT producers are archived (tools/archived/join-mt-output.js, prepare-for-align.js, translate-markdown.js). Measured in efnafraedi-2e: of 170 module files, 124 detected as API, 13 detected NON-API despite carrying bracket markers ([[i:]]/[[sub:]]/[[sup:]]), and 31 carry no inline markers at all. Extraction emits 0 **bold** and 0 __term__ source markers (110 files use {{term}}, only 11 use [[b:]]), so a module whose only inline markup is bracket emphasis/sub/sup and which has no term/footnote is API-translated yet detected as non-API. Biology and microbiology lack <example> and (microbiology) <glossary>, so far fewer {{term}}/{{fn}} markers — meaning a large fraction of those books' API output will be misclassified as non-API and pushed through the legacy/docx repair path.",
+    "description": "The single gate that selects fragile-vs-robust handling is derived from incidental marker shapes rather than knowing who produced the file. It happens to work for chemistry (term/footnote-rich) but is structurally biased against the exact two books slated for onboarding next.",
+    "recommendation": "Have api-translate.js and docx-import.js each stamp explicit producer provenance into 02-mt-output (a sidecar like the existing import-report.json, or a header comment) and gate on that instead of marker sniffing. This single change dissolves findings 2, 3 and 6's routing risk. Reuse the existing import-report.json convention docx-import already writes.",
+    "recommendation_note": "",
+    "effort": "M",
+    "blocks_next_book": false
+  },
+  {
+    "title": "restoreNewlines / restoreMediaMarkers / restoreSupersubMarkers are near-dead for API content but live for docx-import — the gate mismatches both populations",
+    "severity": "medium",
+    "evidence": "These three run only when !isApiTranslated (cnxml-inject.js:3329-3351). Per-segment EN-vs-MT loss measured across all five books (scratchpad loss.mjs): efnafraedi-2e lost 0 [[BR]] and 0 [[MEDIA]]; edlisfraedi-2e, orverufraedi, lifraen-efnafraedi all 0. The only real MEDIA loss is liffraedi-2e (3 segments: m66440/m66442/m66443), and those modules are exactly the ones detected NON-API and were docx-imported (books/liffraedi-2e/02-mt-output/ch03/import-report.json). So api-translate output (hardened by normalizeSegMarkers, api-translate.js:290) essentially never loses these markers, while docx-import — which fuzzy-matches human prose blocks to segment IDs (docx-import.js:561-578) — does. The functions therefore earn their keep only on docx-imported content, yet their comments (cnxml-inject.js:399-403, 477-483) describe a retired 'web UI MT service'.",
+    "description": "The repair scaffold is justified by a pipeline that no longer exists; its real beneficiary (docx-import) is undocumented, and the gate keys off a proxy that lines up with neither cleanly.",
+    "recommendation": "Re-scope and re-document these as docx-import repairs, gated on explicit docx provenance (finding 1). For API content they can be dropped or demoted to a warn-only loss check (compare EN/IS marker counts, log, do not mutate) — the durable fix is producer-side (normalizeSegMarkers/assertNoControlChars), not downstream reconstruction.",
+    "recommendation_note": "",
+    "effort": "M",
+    "blocks_next_book": false
+  },
+  {
+    "title": "restoreMediaMarkers blindly appends [[MEDIA:N]] to the end of the IS text with no alignment check",
+    "severity": "medium",
+    "evidence": "cnxml-inject.js:513-531: when IS has zero media markers, it collects all [[BR]]/[[MEDIA:N]] from EN and does `isSegments.set(segId, result + markerStr)` — concatenating to the trimmed end of whatever IS text exists. For the live liffraedi-2e cases the docx-matched IS text is unrelated to the EN segment (e.g. m66443 EN begins '[[MEDIA:1]] In a double stranded DNA molecule…' while the matched IS is 'Ef stökkbreyting verður og adenín basa er skipt út fyrir sýtósín…'), so the figure marker is appended onto mismatched prose and ends up at the wrong position. In EN the marker is segment-initial, not terminal (line 527 comment even acknowledges 'text:[[BR]][[MEDIA:1]]' ordering is assumed).",
+    "description": "Even where the repair fires legitimately (docx imports), placement is unreliable: it cannot reconstruct mid-segment or leading marker positions and silently puts them at the tail.",
+    "recommendation": "When the EN marker is not segment-terminal, prefer anchor-based insertion (as restoreNewlines attempts at cnxml-inject.js:449-457) or skip with a warning rather than blind-append; gate the whole function behind docx provenance so it never touches clean API output.",
+    "recommendation_note": "",
+    "effort": "S",
+    "blocks_next_book": false
+  },
+  {
+    "title": "restoreMathMarkers is the one genuinely-live fragile heuristic — ~190 lines of anchor/position tracking for 3 fixes book-wide",
+    "severity": "medium",
+    "evidence": "Unlike the others it runs for BOTH pipelines (cnxml-inject.js:3354) and spans restoreMathMarkers (558-641) plus restoreMathBySeparators (654-747). Strategy 2 builds an anchor from the last 15 chars of a 30-char window before the marker (605-609) and re-finds it via result.indexOf (613), then guesses an insertion span bounded by the next [[MATH:]]/label (616-621) — classic position-tracking that the audit context flags as the root of past render bugs. Measured live value is tiny: MATH loss is 3 segments in efnafraedi-2e and 0 in all four other books (loss.mjs). Failure mode: the short substring anchor matches an earlier identical fragment in the IS sentence and splices [[MATH:N]] into the wrong clause; the length<40 guard (624) limits but does not prevent mislocation.",
+    "description": "High structural risk and high complexity for very low yield. It is the function most likely to silently corrupt a segment, and it is the only fragile one not shielded by the API gate.",
+    "recommendation": "Move detection upstream: api-translate.js already has retry/backoff and assertNoControlChars; add a per-segment [[MATH:N]] count check there and re-translate the offending segment (or flag it) instead of reconstructing positions downstream. Keep the separator-based path (restoreMathBySeparators, which safely returns null on structural mismatch, 661-668) as a conservative fallback and retire the anchor path.",
+    "recommendation_note": "",
+    "effort": "L",
+    "blocks_next_book": false
+  },
+  {
+    "title": "annotateInlineTerms attaches English glosses by ordinal position and desyncs on term reorder or count mismatch — wrong gloss reaches readers",
+    "severity": "high",
+    "evidence": "cnxml-inject.js:794-824 walks IS term markers with a running termIndex and pairs each with enTermTexts[termIndex] positionally, assuming EN and IS terms appear in the same order and count. It is ON by default (annotateEn, cnxml-inject.js:104) and writes visible '(e. english)' into reader HTML. In efnafraedi-2e (scratchpad terms.mjs over 21,441 aligned segments) 163 segments carry >=2 EN {{term}} markers (reorder risk — Icelandic word order differs) and 46 segments have EN {{term}} count != IS count (guaranteed positional desync; restoreTermMarkers does NOT trim excess {{term}}, only __ artifacts, so the mismatch survives to here). Coupling failure mode: annotateInlineTerms runs LAST in the mutation sequence (after restoreTermMarkers/MathMarkers), so any {{term}} or __ artifact those steps fail to normalise shifts every subsequent index, attaching the wrong gloss to every later term in the segment.",
+    "description": "A reader-facing correctness bug, not just a fidelity nit: the wrong English term can be printed next to an Icelandic term. The blast radius is bounded (≈209 segments in chem) but grows per book and is invisible without spot checks.",
+    "recommendation": "Skip annotation for any segment where EN and IS {{term}} counts differ (cheap, kills the 46 guaranteed-wrong cases), and prefer matching by content — cross-check the IS term text against the glossary's known translation of the EN term — over ordinal position. The glossary is already loaded for the API stage and could be reused here.",
+    "recommendation_note": "",
+    "effort": "M",
+    "blocks_next_book": false
+  },
+  {
+    "title": "restoreTermMarkers: only the {{term}}-artifact strip is live; the **bold**→__term__ positional branch is unreachable dead code",
+    "severity": "low",
+    "evidence": "The live path is cnxml-inject.js:220-234 (enHasNewTerms): it strips API-overproduced __term__ glossary artifacts when IS uses {{term}} — confirmed by 60 stray __…__ tokens across 6 efnafraedi-2e mt-output files (e.g. __markverðir stafir__, __nákvæmni__). The remaining branches (236-291) parse an enTypes sequence from **bold**/__term__/{{b}} and do positional **→__ restoration, but extraction emits 0 **bold** and 0 __term__ source markers (verified: 110 files {{term}}, 0 **, 0 __), so enTermCount and the isStarPattern restore branch (270-286) can never fire on current content.",
+    "description": "Roughly 55 lines of conditional logic that cannot execute for any file the current extractor produces, sitting in the same function as a small live behaviour — obscures what actually runs.",
+    "recommendation": "Extract the live {{term}}-artifact strip (220-234) into its own small, named function and delete the legacy positional/enTypes branches; this also removes one of the implicit, scattered 'is this API?' re-derivations called out in finding 1.",
+    "recommendation_note": "",
+    "effort": "S",
+    "blocks_next_book": false
+  },
+  {
+    "title": "restoreGlossaryTermMarkup uses first-occurrence replace and appends MathML unconditionally — mis-wraps repeated short tokens",
+    "severity": "low",
+    "evidence": "cnxml-inject.js:847-888. Inline markup is reinstated via `result.replace(text, replacement)` (line 883), which wraps the FIRST occurrence of the captured text; for short notation tokens (single variables like q, C, m — the very tokens the docstring at 838-845 cites) that match can be the wrong instance when the token repeats in the term. Separately, MathML blocks from the original term are appended to the END of the translated term (855-862) regardless of where they sat originally, on the stated assumption that notation is language-independent.",
+    "description": "Low-frequency but a silent correctness footgun for glossary terms containing repeated single-letter variables or mid-term math.",
+    "recommendation": "Guard the replace so it only fires when the token occurs exactly once (or anchor it by surrounding context), and skip re-appending MathML when the count already matches (the existing existingMath guard at 858 only prevents duplicates, not misordering). Low priority relative to findings 1/5.",
+    "recommendation_note": "",
+    "effort": "S",
+    "blocks_next_book": false
+  },
+  {
+    "title": "renderMedia is image-only: every <iframe> embed (108 in physics+biology) is silently lost",
+    "severity": "high",
+    "blocks_next_book": true,
+    "effort": "M",
+    "evidence": "tools/cnxml-render.js:1232-1248 renderMedia() extracts only `<image>` (regex line 1238 `/<image([^>]*)\\/?>/`) and unconditionally emits `<img src=\"${normalizedSrc}\" ...>`; with no <image> child, normalizedSrc='' → an empty/broken <img>. The inline path has the same image-only assumption (tools/lib/cnxml-elements.js:788-790 regex requires `<media ...><image .../></media>`). `grep -rn iframe tools/` (excluding archived) returns ZERO hits — no iframe handler exists anywhere. Confirmed 108 `<media>` elements directly wrap `<iframe>` (node count over the 92 source files): edlisfraedi-2e + liffraedi-2e; src domains: openstax.org 48, www.openstax.org 44, www.youtube.com 16. Example: books/edlisfraedi-2e/01-source/ch11/m42185.cnxml:16-18 `<para id=\"embed\"><media ... alt=\"OpenStax Concept Trailer for Buoyancy\"><iframe src=\"https://www.youtube.com/embed/iShUultAD9M\".../></media></para>`.",
+    "description": "OpenStax Physics and Biology embed PhET simulations and YouTube concept-trailers as `<iframe>` inside `<media>`. The render pipeline only knows how to turn `<media>` into an `<img>`, so the interactive content is dropped: at best a broken empty `<img>` (section-level path), at worst nothing (inline path silently no-matches). This is the single clearest cross-book render gap and it blocks faithful onboarding of both physics and biology. Root cause is broader than iframe — renderMedia handles exactly one media child type, so any non-image media (iframe today; object/download/labview if encountered) is unhandled.",
+    "recommendation": "Teach renderMedia (and the inline cnxml-elements.js:788 path) to branch on the media child element. For `<iframe>`, emit a responsive `<iframe>` (preserve src/width/height, add loading=\"lazy\", title from media @alt) — coordinate the wrapper class with namsbokasafn-vefur's static/styles/content.css (CROSS-REPO: do not edit it here, flag it). Gate on an allowlist of embed hosts (youtube.com/embed, *.openstax.org, phet.colorado.edu) reusing the existing URL-scheme sanitization from the inject layer. Decide policy for PhET (many OpenStax PhET embeds are interactive Flash/HTML5 — confirm the URL still resolves). At minimum, fail-loud: count and report media elements with no <image> child so the loss is visible at render time instead of silent."
+  },
+  {
+    "title": "os-embed organic exercises resolve but render untranslated English — no extraction/translation path exists for the 1961-exercise cache",
+    "severity": "high",
+    "blocks_next_book": true,
+    "effort": "L",
+    "evidence": "The established 'renders empty' claim is WRONG: tools/cnxml-render.js:137-157 resolveOsEmbed() reads books/<book>/01-source/exercises/<nickname>.json and tools/cnxml-render.js:1704-1742 wires it into the problem renderer. The cache is real and populated: 1961 JSON files in books/lifraen-efnafraedi/01-source/exercises/, matching all 1959 `<link class=\"os-embed\" url=\"#exercise/...\"/>` references (e.g. books/lifraen-efnafraedi/01-source/ch01/m00166.cnxml:96-99). BUT the cache is English: 01-09-OC-P13.json stem_html = 'Draw a line-bond structure for propyne...'. tools/resolve-os-embed.js fetches these from https://exercises.openstax.org/api/exercises and caches verbatim; `grep -n 'os-embed|#exercise|stimulus|nickname' tools/cnxml-extract.js` returns ZERO — extract never pulls stems into 02-for-mt, so there is no translation path at all. Render injects the cache HTML raw/unescaped (lines 1711,1720,1734) bypassing processInlineContent.",
+    "description": "When organic chemistry is rendered for real (today only ch03 exists in 02-for-mt), every one of its ~1961 end-of-chapter exercises will display in English. The content isn't lost — it's resolved from the cache — but it never enters the EN→IS pipeline, so it cannot be reviewed, cannot build TM, and ships untranslated. Because the cache HTML is emitted without going through processInlineContent, marker normalization and inline-link resolution also don't apply to it. This blocks meaningful organic onboarding.",
+    "recommendation": "Extend tools/cnxml-extract.js to resolve os-embed references (reuse resolveOsEmbed's JSON shape) and emit stimulus_html/stem_html/solution HTML as translatable segments into 02-for-mt, so they flow through api-translate.js → 03-faithful-translation like any other content. Then have resolveOsEmbed prefer the translated segment over the raw cache at render time. Separately: route the cache HTML through processInlineContent for marker/link handling, and confirm whether any stems reference remote exercises.openstax.org image blobs (the 01-09-OC-P13.json `images[]` array hotlinks them) — if stems embed those, they need the same image-localization treatment as figures."
+  },
+  {
+    "title": "Chapter key-terms page (organic) depends on the key-terms <section> living in the highest-section-number module",
+    "severity": "low",
+    "blocks_next_book": false,
+    "effort": "S",
+    "evidence": "tools/cnxml-render.js:3744-3787 fallback fires only when chapterGlossary.length===0, then reads ONLY `allModules[allModules.length - 1]` (line 3747) for a `<section class=\"key-terms\">`. allModules is sorted by section number, not collection order (tools/cnxml-render.js:3410-3414: `.sort((a,b) => (moduleSections[a]?.section ?? 999) - ...)`). Organic key-terms confirmed in books/lifraen-efnafraedi/01-source/ch{01,02,03}/ as m00169/m00029/m00038 (31 sections book-wide). The produced page is a link-index only — each `<item>` becomes `<li><a href=.../section.html>term</a></li>` (lines 3760-3779); definitions are not aggregated (they live inline in modules as `<term>`, rendered as `<dfn class=\"term\">` at cnxml-elements.js:538/703). The key-terms section is correctly excluded from body render (book-rendering-config.js:260 'key-terms' in excludedSectionClasses).",
+    "description": "The organic key-terms feature works for the sampled chapters, correcting the 'not handled' assumption. But it silently assumes the key-terms section sits in the module with the highest section number (or, lacking a section number, sorted last). A chapter whose terminal module has a real section number lower than a non-terminal module, or two modules without section numbers, would make the fallback read the wrong module and emit no key-terms page — with no warning. Link-index-only (no definitions) is acceptable and matches OpenStax convention.",
+    "recommendation": "Instead of guessing the last module, scan all of allModules for a `<section class=\"key-terms\">` and use the one(s) found (warn if zero or >1). Cheap and removes the ordering assumption. Leave the link-index design as-is."
+  },
+  {
+    "title": "Microbiology has 6395 inline <term> but no <glossary>/<definition>/key-terms source — no chapter Lykilhugtök page is generated",
+    "severity": "medium",
+    "blocks_next_book": false,
+    "effort": "M",
+    "evidence": "books/orverufraedi/01-source: `<term>` count 6395, `<glossary>` 0, `<definition>` 0, `<section class=\"key-terms\">` 0 (greps). Inline terms still render (cnxml-elements.js:703-706 → `<dfn class=\"term\">`, line 538), so they are NOT lost — but both aggregation paths produce nothing: extractChapterGlossary (cnxml-render.js:2512/3688) finds no `<glossary>`, and the key-terms fallback (3744) finds no `<section class=\"key-terms\">`. By contrast biology DOES have 205 `<glossary>` (handled by the shared renderGlossary path, cnxml-render.js:875/2014, same as chemistry — confirmed, not an oversight).",
+    "description": "Microbiology defines terminology only via inline `<term>` elements with no chapter-level aggregation structure in the source. The result is that microbiology chapters get no 'Lykilhugtök' end-of-chapter page at all, unlike chemistry/biology (glossary) and organic (key-terms). This is a content-completeness gap driven by source structure rather than a render crash, but it means a whole navigational/study asset is missing for that book.",
+    "recommendation": "Decide product policy before onboarding microbiology: either (a) synthesize a chapter key-terms page by collecting inline `<term id=...>` headwords across the chapter's modules and linking to their defining section (reuse the link-index emitter at 3760-3779), or (b) explicitly document that microbiology has no aggregated glossary. Option (a) reuses existing moduleSections lookup and the key-terms HTML builder, so effort is modest."
+  },
+  {
+    "title": "Correction: exercise type/class variants ARE handled per-book (config-driven), not ignored — but the extraction regex is non-greedy and would truncate on nested <section>",
+    "severity": "info",
+    "blocks_next_book": false,
+    "effort": "S",
+    "evidence": "End-of-chapter sections carry distinct class= values per book (greps): physics conceptual-questions 223/problems-exercises 214/ap-test-prep 144; microbiology multiple-choice 124/fill-in-the-blank 120/short-answer 115/critical-thinking 96/true-false 33/matching 13. All are declared in tools/lib/book-rendering-config.js: COLLEGE_PHYSICS_CONFIG (lines 297-325), MICROBIOLOGY_CONFIG (160+), ORGANIC (section-exercises/additional-problems 237-256), with titleIs labels + getExerciseSectionClasses(bookSlug) (line 389). Render groups them via cnxml-render.js:2764-2802 and 3023-3030 (data-exercise-type, per-type heading). Extraction regex cnxml-render.js:2785 `<section ... class=\"${cls}\">[\\s\\S]*?</section>` is non-greedy; checked all three books for an exercise-type section wrapping a nested `<section>` → 0 matches, so no truncation occurs today.",
+    "description": "The 'exercise type=/class= variants ignored' finding is inaccurate for current code: variant handling is config-driven and covers the real physics/microbiology/organic classes. The latent risk is the non-greedy section regex (a string-parser fragility consistent with the render architecture): if any future/other-book exercise section nests a child `<section>`, content after the first `</section>` is silently dropped.",
+    "recommendation": "Correct the audit record: variants are handled. Optionally add a guard/test that the exercise-section slice is balanced (count nested `<section>` openings) and warn on imbalance, to pre-empt the nested-section truncation class of bug if a new book introduces it."
+  },
+  {
+    "title": "Correction: microbiology footnotes ARE rendered (count is 458, not 355)",
+    "severity": "info",
+    "blocks_next_book": false,
+    "effort": "S",
+    "evidence": "`grep -rho '<footnote' books/orverufraedi/01-source | wc -l` = 458 (not 355; other books: chemistry 36, biology 42, physics 42, organic 0). Inline `<footnote>` is converted to a numbered superscript ref and collected into context.footnotes (tools/lib/cnxml-elements.js:830-862), then rendered as a trailing `<section class=\"footnotes\"><ol>` (cnxml-elements.js:603-618; cnxml-render.js:668). Footnotes inside end-of-chapter exercise sections are explicitly salvaged so refs don't become dead anchors (cnxml-render.js:3016-3060).",
+    "description": "The 'microbiology 355 footnotes' figure is off (actual 458) and the implication that footnotes are a gap is inaccurate — footnotes are handled in body and salvaged in compiled exercise pages. Worth recording so it isn't re-flagged.",
+    "recommendation": "Correct the audit record (458, handled). No code change. One thing to spot-check during microbiology QA: footnote numbering resets per rendered page/module, so an aggregated multi-section exercise page renumbers footnotes from 1 — verify that matches editor expectations, but it is not a loss."
+  },
+  {
+    "title": "Per-book rendering config is code-resident (BOOK_CONFIGS), not a data file in the book dir — onboarding book #6 requires a code change + test + deploy",
+    "severity": "high",
+    "evidence": "tools/lib/book-rendering-config.js:48-329 holds five hand-written config objects (CHEMISTRY_CONFIG…COLLEGE_PHYSICS_CONFIG); the registry is a hardcoded literal at :335-341 ('efnafraedi-2e': CHEMISTRY_CONFIG, …). getBookRenderConfig (:350) and getExerciseSectionClasses (:389) are the only consumers (tools/cnxml-render.js:53-55,2764,2840,3318; server/services/renderService.js:57,85). There is no per-book render config file anywhere under books/<slug>/ (only translation-errors.json + chemistry's orphan metadata.json).",
+    "description": "Note labels, end-of-chapter section taxonomy, excludedSectionClasses, specialModules and sectionExercises mode all live inside this one JS module. A new book cannot be rendered correctly without editing it. This contradicts the data-file precedent already established for module ordering (chapter-modules.js:7 explicitly notes collection-order.json 'works for any book without hardcoded maps'). At 8+ books this file becomes a 600+ line bottleneck that every onboarding must touch.",
+    "recommendation": "Follow the collection-order.json pattern: move each book's render config into a data file co-located with the book, and load it with SHARED_* defaults deep-merged. The natural home is the already-present-but-orphaned books/<slug>/metadata.json (extend it with a render section). Keep BOOK_CONFIGS as a backward-compat fallback for chemistry. getBookRenderConfig becomes file-first, registry-fallback.",
+    "recommendation_note": "",
+    "blocks_next_book": true,
+    "effort": "L"
+  },
+  {
+    "title": "getBookRenderConfig falls back to a silently-incomplete default for unknown books (stderr warning only)",
+    "severity": "high",
+    "evidence": "tools/lib/book-rendering-config.js:350-363 — for an unregistered slug it console.warn()s to stderr and returns a default with endOfChapterSections = SHARED_END_OF_CHAPTER (only summary+glossary), excludedSectionClasses: ['summary'], specialModules: {}. getExerciseSectionClasses then returns [] (no exerciseType entries), so renderCompiledExercises produces no exercise pages (cnxml-render.js:2764,2840).",
+    "description": "If an editor runs cnxml-render.js --book newbook before anyone has added a config, the render 'succeeds' (exit 0) but silently drops every exercise section, mis-labels notes, and fails to strip end-of-chapter sections from the body. The only signal is a warning line on stderr that is easily lost in batch output. This is the failure mode a 10-15-editor team will hit first.",
+    "recommendation": "Make the missing-config path loud: either hard-fail (non-zero exit) in cnxml-render.js main() when getBookRenderConfig has no real entry, or have the function return a marker (configFound:false) that the renderer refuses to proceed on. Tie this to the data-file approach from the previous finding so the fix is 'drop a config file', not 'edit JS'.",
+    "blocks_next_book": true,
+    "effort": "M"
+  },
+  {
+    "title": "chapter-modules.js silently falls through to Chemistry's partial hardcoded map when collection lookup misses",
+    "severity": "medium",
+    "evidence": "tools/lib/chapter-modules.js:48-79 — when loadCollectionOrder returns a collection but chapterData is not found (:53-54 miss), control falls THROUGH the `if (collection)` block into the CHEMISTRY_2E_MODULES loop (:64-78). That map (:87-158) covers only chapters 1,2,3,4,5,9,12,13 of Chemistry — not even all 21. So getChapterModules(5,'edlisfraedi-2e') with any chapter-numbering mismatch would return Chemistry's chapter-5 modules.",
+    "description": "Cross-book contamination: a new book whose collection-order.json has a chapter index the lookup misses gets Chemistry modules injected into its pipeline, not an error. Currently dormant because all 5 books ship collection-order.json (verified present for all five), but it is a latent chemistry assumption that will surface on the first book with an off-by-one or non-integer chapter scheme (e.g. Biology's 3-level hierarchy).",
+    "recommendation": "When bookSlug is provided and a collection loaded, never fall through to CHEMISTRY_2E_MODULES — return [] or throw a clear 'chapter N not found in collection-order.json for <book>' error. Restrict the legacy map strictly to bookSlug === undefined / 'efnafraedi-2e'.",
+    "blocks_next_book": false,
+    "effort": "S"
+  },
+  {
+    "title": "Every pipeline tool defaults --book to efnafraedi-2e — a forgotten flag silently operates on Chemistry",
+    "severity": "high",
+    "evidence": "Two populations. (a) parseArgs BOOK_OPTION.default = 'efnafraedi-2e' (tools/lib/parseArgs.js:23) feeds the 8 migrated tools (cnxml-extract/inject/render, api-translate, generate-tm, cnxml-fidelity-check, cnxml-linguistic-check, repair-emphasis); each also keeps `let BOOKS_DIR = 'books/efnafraedi-2e'` (e.g. cnxml-inject.js:58, cnxml-render.js:110-111) overwritten in main() (inject:3264, render:4119-4120). (b) 4 audit tools never adopted parseArgs at all (grep -c BOOK_OPTION = 0 for audit-equation-text.js, audit-equation-notation.js, audit-render-output.js, auto-insert-placeholders.js) and hardcode their own chemistry default (e.g. audit-render-output.js:33-40).",
+    "description": "BOOK_OPTION.parse validates the slug regex (parseArgs.js:24-30) but nothing checks that books/<slug> exists, and the default is a real book. Running any tool with --book omitted writes/reads Chemistry artifacts. With one mature book today this is harmless; with 8 books and 10-15 editors it means a dropped flag corrupts the flagship book's regenerable artifacts (02-for-mt, 03-translated, 05-publication). The parseArgs docstring claims it 'unified 21 tool files', but 4 audit tools still parse args by hand — an unfinished parameterization migration.",
+    "recommendation": "Drop the default (default: null) and make --book required in the multi-book tools, erroring if absent or if books/<slug> does not exist (reuse the BOOK_SLUG_PATTERN check site at parseArgs.js:24). Finish migrating the 4 ad-hoc audit tools onto parseArgs/BOOK_OPTION for one consistent surface.",
+    "blocks_next_book": false,
+    "effort": "M"
+  },
+  {
+    "title": "Glossary support is absent for 2 of 5 books and degrades silently (no glossary-unified.json → null → no terms sent)",
+    "severity": "medium",
+    "evidence": "loadGlossary (tools/api-translate.js:320-329) returns null when glossary-unified.json is missing; main() (:660-666) just logs nothing-loaded and proceeds. File presence check: present for efnafraedi-2e, liffraedi-2e, lifraen-efnafraedi; MISSING for edlisfraedi-2e and orverufraedi. Secondary note: bookToDomain (:305-312) hardcodes slug prefixes and returns 'science' for any unrecognized book, but formatGlossary (tools/lib/malstadur-api.js:164-176) treats domain only as a pass-through label, so the prefix list is low-impact, not term-disabling.",
+    "description": "Translation quality for Physics and Microbiology silently runs without the Miðeind glossary, while Chemistry/Biology/Organic get term priming — an invisible cross-book quality asymmetry. As more books onboard, 'did we wire the glossary?' is a per-book step with no signal when it is skipped.",
+    "recommendation": "Log a clear warning when no glossary is found for a book that has a glossary/ directory, and surface domain in the dry-run plan. Derive the domain from book config (metadata.json) instead of the bookToDomain prefix ladder so a new slug isn't implicitly 'science'. Track glossary presence as an onboarding checklist item.",
+    "blocks_next_book": false,
+    "effort": "S"
+  },
+  {
+    "title": "No single source of truth or doc for 'what a new book must provide' — required inputs are scattered, and metadata.json is read by nobody",
+    "severity": "medium",
+    "evidence": "Onboarding inputs are spread across: 01-source/collection-order.json (chapter-modules.js:29), a BOOK_CONFIGS entry (book-rendering-config.js:335), a bookToDomain prefix (api-translate.js:306-310), optional glossary/glossary-unified.json (api-translate.js:321), and books/<slug>/metadata.json. grep for 'metadata.json' across the whole repo (tools/, server/, scripts/, .claude/, excluding node_modules and books/) returns ZERO readers — and only efnafraedi-2e even has one. The intake-source skill registers single source files, not whole books.",
+    "description": "There is no manifest a new book can be validated against and no onboarding checklist. metadata.json looks like the intended manifest (it already carries source/license/directories/statistics) but is dead config. Onboarding therefore depends on tribal knowledge of five disparate touch-points, three of which are code edits.",
+    "recommendation": "Promote metadata.json to the real per-book manifest: have getBookRenderConfig + bookToDomain + glossary loading read from it (with the JS registry as fallback), and add npm run validate coverage that asserts a new book has collection-order.json, metadata.json, and a render config. Write a short docs/workflow/onboarding-a-book.md enumerating the required files.",
+    "blocks_next_book": false,
+    "effort": "M"
+  },
+  {
+    "title": "Chemistry-specific specialModules + hardcoded reader URL baked into the renderer",
+    "severity": "low",
+    "evidence": "book-rendering-config.js:89-91 maps m68859→'periodic-table' (chemistry only). tools/cnxml-render.js:3576 keys off it and :3595 emits a hardcoded <a href=\"/${BOOK_SLUG}/lotukerfi\" …> with inline styles. The mechanism is parameterized (data lives in config, other books have specialModules:{}), but the target route 'lotukerfi' and the inline button styling are Chemistry/vefur-specific and live in the tool, not in CSS.",
+    "description": "Low risk because the specialModules map is genuinely per-book data. The concern is that the rendered output hardcodes a vefur route ('lotukerfi') and presentation inline, coupling the renderer to a single book's reader feature. The /<slug>/lotukerfi route is a sister-repo (namsbokasafn-vefur) contract — flagged cross-repo, not editable here.",
+    "recommendation": "Move the special-module target path and label into the per-book config object (e.g. specialModules: { m68859: { kind:'periodic-table', href:'lotukerfi', label:'…' } }) and the button styling into content.css in namsbokasafn-vefur. Cross-repo: confirm the lotukerfi route with the vefur side before changing the emitted href.",
+    "blocks_next_book": false,
+    "effort": "S"
+  },
+  {
+    "title": "Organic exercise corpus (1961 exercises) is structurally unextractable: os-embed links dropped + external JSON never read",
+    "severity": "critical",
+    "evidence": "books/lifraen-efnafraedi/01-source has 1959 self-closing `<link class=\"os-embed\" url=\"#exercise/...\"/>` (grep) and 1961 `01-source/exercises/*.json` files holding the real problem bodies (stem_html). In CNXML these links sit at `<exercise><problem><para><link class=\"os-embed\".../></para>` (m00126.cnxml ch11). extractInlineText has no case for a self-closing `<link>` bearing only `url`: the url handler (cnxml-extract.js:312-314) requires a closing `</link>`; the self-closing handler (:318-324) requires document+target-id; the self-closing xref handler (:348) requires target-id. So the link survives every regex and is deleted by the final `stripTags(text)` (:374). Empirically `extractInlineText('<link class=\"os-embed\" url=\"#exercise/11-07-OC-P15\"/>')` returns `''`; the empty-text guard in processExercise (:1289 `if (text)`) then discards the para, leaving `problem.content: []`. Separately, findChapterFiles only globs `*.cnxml` (:1618) so the 1961 JSON bodies are never opened. inject rebuilds purely from structure.json (buildCnxml, cnxml-inject.js:1452), so nothing reaches 03-translated.",
+    "description": "Organic chemistry stores every exercise body in separate JSON sidecars referenced by os-embed links. The extractor neither follows the link (it is silently stripped) nor reads the JSON, so all ~1961 organic problems reconstruct empty. This is the single biggest extraction gap and a hard blocker for onboarding organic chemistry.",
+    "recommendation": "Add (a) a marker producer for self-closing `<link>` carrying only `url` (e.g. `[[osembed:url]]` or generalize the url-link regex to also match `/>`), so the reference survives into structure.json; and (b) a dedicated extraction path that reads `01-source/exercises/*.json` (stem_html / answers) as a parallel segment source keyed by the os-embed exercise id. The HTML in those JSON files (`<img>`,`<i>`,`<p>`,`<span>`) needs its own HTML->marker mapping distinct from the CNXML mapping. Coordinate render/CSS in namsbokasafn-vefur (FLAG: cross-repo).",
+    "recommendation_note": "",
+    "blocks_next_book": true,
+    "effort": "XL"
+  },
+  {
+    "title": "`<iframe>` media embeds (PhET/YouTube) dropped at extraction",
+    "severity": "high",
+    "evidence": "57 `<iframe>` in edlisfraedi-2e + 51 in liffraedi-2e (grep). They are wrapped in `<media>`, e.g. m42299.cnxml ch18: `<para id=\"embed\"><media ...><iframe src=\"https://www.youtube.com/embed/...\"/></media></para>`. The inline-media handler (cnxml-extract.js:180-201) and the standalone-media branch (:995-1008) only parse a child `<image>`; there is no `<iframe>` branch. Empirically `extractInlineText('...<media ...><iframe src=\"https://youtube.com/embed/abc\"/></media>...')` yields a `[[MEDIA:1]]` placeholder whose map entry is `{src:'', ...}` — the iframe URL is absent. inject then rebuilds a media element with no embed.",
+    "description": "Every PhET simulation / YouTube concept-trailer embed in physics and biology is silently lost at extraction because the media handler is image-only. ~108 interactive assets disappear from the translated CNXML.",
+    "recommendation": "In the media handlers, detect a child `<iframe>` (and other non-image media children) and record `{embedSrc, width, height}` in inlineMedia/structure so inject can reproduce it. Reuse parseAttributes. Rendering of the embed lives in namsbokasafn-vefur content.css/markup (FLAG: cross-repo).",
+    "recommendation_note": "",
+    "blocks_next_book": true,
+    "effort": "M"
+  },
+  {
+    "title": "Whitelist reconstruction model drops any unrecognized construct silently, with no diagnostic",
+    "severity": "high",
+    "evidence": "extractInlineText ends with `stripTags(text)` (cnxml-extract.js:374) which deletes any inline element it did not explicitly convert. structure.json records only a fixed set of block types, and buildManifest counts a hardcoded whitelist (:1653-1665: para/section/figure/table/example/exercise/note/equation/list/media/glossary). inject (buildCnxml, cnxml-inject.js:1452) rebuilds output purely from structure.json. No warning is emitted for residual markup. A .cnxml-scoped tag inventory surfaces unhandled tags beyond the os-embed/iframe cases above: `<span>` 1074 (organic colored text), `<label>` 2223, `<colspec>` 1701, `<tgroup>` 555, `<thead>` 446 (table column/alignment/header structure not captured by processTable, which only reads row/entry, :1067-1108).",
+    "description": "The pipeline is fail-open by omission: whatever extraction does not recognize is gone, with no log, count, or manifest flag. This is the root cause behind the os-embed, iframe, colored-span and table-internals losses, and the chief risk when onboarding any book with constructs chem lacks. A new book can lose content with zero signal.",
+    "recommendation": "Add an unrecognized-element detector: before the final stripTags, scan for residual `<tag` tokens, accumulate per-tag counts, and surface them in the manifest (and a stderr warning in --verbose). This turns silent loss into a reviewable onboarding checklist. Also extend processTable to retain colspec/tgroup column metadata and thead/tbody designation.",
+    "recommendation_note": "",
+    "blocks_next_book": true,
+    "effort": "L"
+  },
+  {
+    "title": "`<term>` and `<footnote>` still emitted as legacy `{{ }}` markers — the lossy delimiter family, on the highest-volume inline elements",
+    "severity": "medium",
+    "evidence": "Terms become `{{term}}...{{/term}}` (cnxml-extract.js:303) and footnotes `{{fn}}...{{/fn}}` (:370), while sub/sup/emphasis/links were migrated to the ~0%-loss `[[ ]]` brackets (:246-359). Per CLAUDE.md / api-marker-survival, the `{{ }}` class measured ~97.7% survival (Erlendur `{{SEG}}`-stripping) vs ~100% for brackets. These are the largest-volume inline elements: .cnxml-scoped counts are 15,282 `<term>` + 578 `<footnote>` (liffraedi 4,799 terms; orverufraedi 6,395 terms + 458 footnotes). Same gap applies to `++underline++` (56 occurrences, :275, no bracket variant) and the untested `{=...=}` class-emphasis marker (30 occurrences, :281-289).",
+    "description": "The marker migration that fixed loss for other inline elements skipped exactly the two highest-frequency ones. Even sub-1% loss across ~16k terms means hundreds of silently de-tagged terms per book (lost glossary links / term highlighting). Marker dialects also proliferate ([[ ]], {{ }}, {= =}, ++) with three of the four untested or known-lossy.",
+    "recommendation": "Add bracket variants `[[term:...]]` / `[[fn:...]]` (and `[[u:...]]` for underline) in extractInlineText; injection is already backward-compatible per CLAUDE.md so old output keeps working. Consolidate the marker family on `[[ ]]` to retire the lossy/untested delimiters before scaling to books with thousands of terms/footnotes.",
+    "recommendation_note": "",
+    "blocks_next_book": false,
+    "effort": "M"
+  },
+  {
+    "title": "Document/module title containing inline markup extracts as \"Untitled\"",
+    "severity": "medium",
+    "evidence": "extractDocumentTitle (cnxml-parser.js:50-54) matches `<document...>[\\s\\S]*?<title>([^<]+)</title>`; the `[^<]+` cannot match a title that starts with or contains markup, and the lazy prefix then skips to a wrong/later title or fails. 32 module titles contain inline markup, almost all in lifraen-efnafraedi (e.g. `<emphasis effect=\"italics\">sp</emphasis><sup>3</sup> Hybrid Orbitals...`, `p<emphasis>K</emphasis><sub>a</sub>`, `E,Z` stereochemistry). Verified: extractDocumentTitle on the sp³ module returns `\"Untitled\"`. The doc title also bypasses extractInlineText entirely (cnxml-extract.js:446 passes raw doc.title), unlike section/note/example titles which use it.",
+    "description": "Module page titles with chemical/mathematical markup (heavily used in organic chemistry) are lost and replaced with 'Untitled'. 32 modules affected, concentrated in the next likely onboarding candidate.",
+    "recommendation": "Change extractDocumentTitle to capture the full title inner content (`([\\s\\S]*?)`) and route it through extractInlineText (as section titles already are at cnxml-extract.js:653), so sub/sup/emphasis become markers instead of breaking the match.",
+    "recommendation_note": "",
+    "blocks_next_book": false,
+    "effort": "S"
+  },
+  {
+    "title": "Organic colored-text `<span class=\"*-text\">` semantics flattened at extraction",
+    "severity": "medium",
+    "evidence": "1074 `<span>` in organic .cnxml (184 files), all color classes: `magenta-text` 379, `red-text` 364, `cyan-text` 230, `green-text` 93, plus yellow/gray/purple. extractInlineText has no `<span>` case, so these reach the final `stripTags` (cnxml-extract.js:374): the text survives but the color class is dropped. In organic-chemistry reaction mechanisms these colors mark specific atoms/bonds/electron movement, so the chemistry-pedagogical signal is lost. (Confirmed unrelated: biology species italics use `<emphasis effect=\"italics\">`, not `<foreign>` — 0 `<foreign>` in liffraedi .cnxml — so binomials ARE handled as `[[i:]]`.)",
+    "description": "Color-coded text used pervasively in organic mechanisms is silently de-styled at extraction. Not text loss, but loss of meaning-bearing presentation specific to the organic book.",
+    "recommendation": "Add a `<span class=...>` producer mirroring the existing class-emphasis sidecar pattern (cnxml-extract.js:281-289 `{=...=}` + collectedEmphasisAttrs) — e.g. `[[span:class|text]]` with the class stored in the inline-attrs sidecar so inject can restore it. Rendering of the color class lives in namsbokasafn-vefur content.css (FLAG: cross-repo).",
+    "recommendation_note": "",
+    "blocks_next_book": false,
+    "effort": "M"
+  },
+  {
+    "title": "No non-chemistry book is exercised end-to-end; the only integration test is efnafraedi-2e ch01",
+    "severity": "high",
+    "evidence": "tools/__tests__/pipeline-integration.test.js:35-38 copies only books/efnafraedi-2e and runs inject+render against ch01 modules m68663/m68664 (106 it() blocks, all chemistry). The other four books appear in tool tests ONLY at config-unit granularity: liffraedi-2e/orverufraedi just exercise getBookRenderConfig/getExerciseSectionClasses/bookToDomain (cnxml-render.test.js:515-593, api-translate.test.js:189-193), and lifraen-efnafraedi appears once as a buildCnxml regression note (cnxml-inject.test.js:778). grep for 'iframe|os-embed' across tools/__tests__/ returns zero hits. Nothing currently proves that organic/physics/biology/microbiology source even renders to non-empty HTML.",
+    "description": "The render and inject paths carry book-specific branches (note-class label maps, exercise-section-class sets, os-embed resolution, periodic-table appendix map) but only the chemistry branch is ever run on real content. Onboarding a 6th/7th book today would be flying blind: there is no signal that the new book's signature constructs survive the pipeline.",
+    "recommendation": "Add one render-characterization spec per book using the existing inline-CNXML-string pattern already at cnxml-render.test.js:204-235 (feed a synthetic <document> straight to renderCnxmlToHtml — no MT input or full inject run needed, so it does not depend on whether 02-mt-output exists for non-chem books). Each fixture should embed that book's signature construct: organic <link class=\"os-embed\"> exercise + <section class=\"key-terms\">; physics/biology <iframe> embed; microbiology footnote + each of its 7 note classes. Assert the construct produces non-empty, expected HTML. Do the next-to-onboard book first.",
+    "recommendation_note": "blocks the NEXT book specifically; the cross-book gap as a whole is the absence of a safety net.",
+    "effort": "M",
+    "blocks_next_book": true
+  },
+  {
+    "title": "cnxml-parser.js — the string/regex core of the entire render path — has zero direct unit tests",
+    "severity": "high",
+    "evidence": "No file under tools/__tests__/ imports '../lib/cnxml-parser' (grep -rl returns nothing). cnxml-parser.js is 374 lines / 13 exported functions including the two linchpin extractors: extractElements (naive non-greedy regex, line 186-204, used 16× by render) and extractNestedElements (manual depth counter, line 228-, used 32× by render). They are exercised only indirectly through render's higher-level tests, so their edge cases are unspecified.",
+    "description": "extractNestedElements is the function that makes ALL structural nesting work in render (example/exercise/note/section/list/figure/media). Its depth counter at parser.js:242 does content.indexOf('<media', idx) / '<list', idx — an untested edge: a self-closing same-tag element (e.g. <media .../>) is counted as an opening tag with no matching close, which would mis-pair depth. Media-in-media and self-closing lists don't occur in practice today, so this is an untested edge, not a confirmed live bug — but it is exactly the kind of latent fault a refactor would trip over with no test to catch it.",
+    "recommendation": "Add tools/__tests__/cnxml-parser.test.js covering extractElements (paired, self-closing, attribute parsing, sibling repetition) and extractNestedElements (same-tag nesting at depth 2-3, self-closing same-tag sibling, malformed/unterminated input, mixed self-closing + paired). This pins the contract before any render refactor touches it.",
+    "recommendation_note": "gates the wanted render refactor, not the next book onboarding.",
+    "effort": "M",
+    "blocks_next_book": false
+  },
+  {
+    "title": "Render structural-nesting coverage is two narrow regressions; the figure/list/media-in-container × xref matrix is almost empty",
+    "severity": "high",
+    "evidence": "cnxml-render.test.js has 56 it() blocks but only 2 structural-nesting cases: standalone <media> in a note (line 199) and a direct-child example <figure> cross-referenced by its intro para (line 218). grep for 'nested|<list|sublist' in the render test returns zero. There is no render test for: nested <list> (renderList recurses at cnxml-render.js:1887), figure/list/media inside an <exercise> (renderExercise structural extraction at 1602/1643-1654), table inside note/example, or nested <section> (renderSection recurses at 904). The xref-vs-no-xref dimension has exactly one cell filled (line 218, xref present).",
+    "description": "These are precisely the shapes that produced all three historical render bugs (figure-escapes-example, dropped <media> in notes, duplicate figures) — and the lens's structural-nesting concern. Render reimplements this extraction via regex/strip-and-re-extract, independent of inject, so the bugs recur in render specifically. Without a coverage matrix, a render refactor cannot tell whether it preserved these behaviors.",
+    "recommendation": "Build a small render nesting matrix using the inline-CNXML pattern at lines 204-235: {figure, list, media, table} × {example, exercise, note, section} × {with xref to it, without}, asserting the child renders exactly once and inside its parent container (reuse the figIdx < exampleCloseIdx ordering assertion from line 237-241). Start with the four shapes behind the historical bugs.",
+    "recommendation_note": "gates the render refactor; partially relevant to onboarding books with heavy nesting.",
+    "effort": "L",
+    "blocks_next_book": false
+  },
+  {
+    "title": "Coverage asymmetry: inject DOM builders are nesting-tested; render's parallel string-based builders share none of it",
+    "severity": "high",
+    "evidence": "Inject's structural builders have dedicated nesting suites: cnxml-inject.test.js 'buildExampleDom nested list in para' (700), 'buildExampleDom figure inside para' (777), 'buildExerciseDom figure inside para' (923), plus cnxml-dom.test.js (40 it() on replaceParaContent/replaceListItems/removeElementsByTag) and cnxml-dom-comparison.test.js (4 old-vs-new buildExample diffs). Render's renderExample (cnxml-render.js:1354), renderExercise (1602), renderNote (1255) reimplement the same child-extraction via extractElements/extractNestedElements with NO equivalent suite — e.g. inject tests figure-in-exercise (923) but render has no figure-in-exercise test at all.",
+    "description": "The inject side uses a real DOM (@xmldom/xmldom via cnxml-dom.js) and is the better-tested half; render uses regex string-parsing and is the historically buggier, less-tested half. The test investment is inverted relative to the risk. A reviewer trusting 'inject nesting is covered' may wrongly assume render is too.",
+    "recommendation": "Mirror the three inject buildXxxDom nesting describe blocks (inject.test.js:700/777/923) as render specs against renderExample/renderExercise/renderNote, reusing the same fixtures. Where feasible, share fixture CNXML between the inject and render specs so the two halves are tested on identical inputs.",
+    "recommendation_note": "gates the render refactor.",
+    "effort": "M",
+    "blocks_next_book": false
+  },
+  {
+    "title": "Documented cross-book gaps (os-embed exercises, iframe embeds) have no characterization test — including the os-embed path that DOES exist",
+    "severity": "high",
+    "evidence": "CORRECTION to brief: organic exercises do NOT simply 'render empty' — render has an os-embed resolution path (cnxml-render.js:134 cache lookup, :1704 'Check for os-embed exercise reference', :1745 fallback). But grep 'os-embed' in tools/__tests__/ = zero hits, so whether it resolves ~1961 organic exercises or falls through to the :1745 fallback is UNVERIFIED. Separately, <iframe> has no handling in either tool (grep 'iframe' in cnxml-render.js and cnxml-inject.js = zero) and no test — confirming physics/biology PhET/YouTube embeds (~57/51) are silently dropped with no test pinning that behavior.",
+    "description": "These are the highest-volume cross-book constructs and the most likely to ship broken for the next non-chem book. With no characterization test asserting current behavior (resolved vs empty vs dropped), there is neither a TDD anchor for the fix nor a regression guard for a refactor. The os-embed case is especially sharp: code exists but its real-content behavior is unproven.",
+    "recommendation": "Add characterization tests that assert today's actual behavior: (a) an os-embed exercise fixture through renderCnxmlToHtml asserting resolved-vs-fallback output (this also documents whether the ~1961 organic exercises work); (b) an <iframe> fixture asserting the current drop (a failing/xfail test documenting the gap, to flip when handling lands). Use the inline-CNXML pattern from line 204.",
+    "recommendation_note": "the os-embed verification blocks onboarding organic specifically.",
+    "effort": "M",
+    "blocks_next_book": true
+  },
+  {
+    "title": "Render correctness depends on untested strip-before-extract ordering — the duplicate-figure bug class has no ordering guard",
+    "severity": "medium",
+    "evidence": "renderSection/renderExample/renderExercise extract children from progressively stripped copies of the content (cnxml-render.js:741 contentWithoutSections, 968 contentForSimpleElements, 1289 contentForParas, 1480 directFigures from contentForSimpleElements, 1653 contentWithoutFigures). extractElements (naive regex, parser.js:186) is safe for para/equation only because nested containers are stripped out first by these steps. No unit test pins this strip ordering: the duplicate-figure regression (pipeline-integration.test.js:272) and figure-escapes-example (render.test.js:218) are tested only as their specific symptom, not as the ordering invariant.",
+    "description": "All three historical render bugs are strip-ordering faults: a child container left in the string before a naive para/figure extract gets emitted twice or escapes its parent. A refactor that reorders or consolidates these strip steps would silently reintroduce that bug class, and the current symptom-specific tests would not necessarily catch a new manifestation. (Note: extractElements for para/equation is itself fine — para/equation don't nest in CNXML — so the risk is the ordering, not the regex.)",
+    "recommendation": "Add a render differential/snapshot harness modeled on cnxml-dom-comparison.test.js (4 old-vs-new diffs) plus compareTagCounts from cnxml-fidelity-check.js: snapshot renderCnxmlToHtml output (and per-tag counts) across a chemistry corpus sample, so any refactor must prove byte/tag-count identity. This is the concrete 'safe to refactor render' guard and reuses existing utilities.",
+    "recommendation_note": "gates the render refactor.",
+    "effort": "M",
+    "blocks_next_book": false
+  },
+  {
+    "title": "Of ~609 tool tests, only 4 perform old-vs-new differential comparison and all 4 are inject-only",
+    "severity": "medium",
+    "evidence": "Total it()/test() across tools/__tests__/*.js = 609. cnxml-dom-comparison.test.js (the only differential suite, importing compareTagCounts from cnxml-fidelity-check.js and diffing buildExampleOld vs buildExampleDom) has 4 it() and imports '../cnxml-inject.js' only — render is never differentially compared. Per-file pipeline counts: render 56, inject 70, dom 40, dom-comparison 4, integration 106, extract 40.",
+    "description": "The project already owns the right refactor-safety primitive (compareTagCounts + old-vs-new structure) but applies it only to inject's DOM migration. The render rewrite the scale goal calls for has no equivalent net, which is why every render change to date has shipped on hand-built symptom tests.",
+    "recommendation": "Extend the dom-comparison approach to render before refactoring: a corpus-level render snapshot/tag-count baseline that the refactor must match. Generalize compareTagCounts usage so the same utility guards both halves of the pipeline.",
+    "recommendation_note": "gates the render refactor.",
+    "effort": "S",
+    "blocks_next_book": false
+  },
+  {
+    "title": "Document order is re-derived by string search (63 indexOf sites, 5 near-duplicate positioner blocks) instead of read from the parse — the root fragility class",
+    "severity": "high",
+    "evidence": "tools/cnxml-render.js: 63 `.indexOf(` calls total (31 of form indexOf(`id=\"…\"`), 28 of form indexOf(item.fullMatch), 7 bare-tag fallbacks). The same 'extract elements → strip containers with String.replace(fullMatch,'') → recompute each element's position with content.indexOf → sort by position' pattern is copy-pasted across five blocks: top-level loop (lines 718-834), renderTopLevelContent (924-1101), renderNote body (1280-1327), renderExample body (1409-1525), and renderSectionContent inside renderExercise (1643-1696). cnxml-parser.js already exports a single ordered-pass walker walkContent (line 351) that the render path never uses; the inject path (cnxml-dom.js, @xmldom) reads order from a real DOM. efnafraedi-2e (only rendered book) scores 0 on every collision metric below — nothing breaks today; all risk is latent and surfaces as the other four books onboard.",
+    "description": "Order information already exists in the source byte stream and in extraction order, but every renderer throws it away and reconstructs it by searching the string for each element again. indexOf always returns the FIRST match, so any non-uniqueness (duplicate serialization, substring overlap, id-less elements, self-closing tags) silently produces wrong positions, ties, or -1→0. This is the architectural asymmetry the task names: render parses by regex/indexOf while inject trusts a DOM. The three historical render bugs (figure-escapes-example, dropped media, duplicate figures) are all instances of this class.",
+    "recommendation": "Converge the five positioner blocks onto ONE ordered single-pass emitter rather than patching each indexOf. Two reuse paths already in-repo: (a) walkContent (cnxml-parser.js:351) — verify its regex handles your nesting (notes/examples/figures-in-paras) before drop-in; (b) preferred: route render through @xmldom like cnxml-inject.js/cnxml-dom.js already do, walking childNodes in native document order so position is never recomputed. Do this now while efnafraedi-2e is the only mature book and regressions are cheap to detect.",
+    "recommendation_note": "systemic",
+    "severity_note": "latent on current data",
+    "blocks_next_book": false,
+    "effort": "XL"
+  },
+  {
+    "title": "id-less <para> inside <note> renders out of order — deterministic for 95 notes across 77 biology modules",
+    "severity": "medium",
+    "evidence": "renderNote positions paras at tools/cnxml-render.js:1290-1294: `const pos = para.id ? contentWithoutTitle.indexOf(`id=\"${para.id}\"`) : contentWithoutTitle.indexOf('<para')`. liffraedi-2e/01-source has 95 paras with no id, ALL inside <note> (verified: inExercise=0, inNote=95), in 77 modules. Every one follows the pattern [<para id=…>, <para NO-ID>] (e.g. m66430.cnxml, m66436.cnxml). The id-less second para resolves to indexOf('<para') = the FIRST para's opening-tag offset, which is a few chars LESS than the first para's indexOf('id=…'); the sort therefore emits the id-less para BEFORE the id-bearing one, inverting document order. The exercise variant is worse: renderSectionContent line 1658 uses `sectionContent.indexOf(`id=\"${para.id}\"`)` with no bare fallback, so an id-less para yields indexOf('id=\"null\"') → -1 → position 0 (silently pinned to top).",
+    "description": "Unlike the other books, OpenStax biology emits paragraphs without ids (95; edlisfraedi 1; chem/organic/micro 0). The id-less fallback collapses them to the first-para offset (or to 0 in exercises), so any note that mixes id-bearing and id-less paras renders them in the wrong order. Confirmed deterministic from structure for biology; will manifest the moment liffraedi-2e is onboarded.",
+    "recommendation": "Fixed for free by the F1 ordered-pass/DOM convergence. If patching in place first, position id-less paras by their actual match offset (use the para's fullMatch from extractElements, which is populated, instead of the id/bare-tag search) and never emit indexOf('id=\"null\"') for a null id (guard the null at lines 1658, 1668).",
+    "blocks_next_book": true,
+    "blocks_next_book_note": "if biology (liffraedi-2e) is the next onboard",
+    "effort": "M"
+  },
+  {
+    "title": "Positioning by indexOf(`id=\"X\"`) substring-collides with target-id=\"X\"/document target-id references — the already-fixed bug class, still live in the positioners",
+    "severity": "medium",
+    "evidence": "The needle `id=\"X\"` is a substring of `target-id=\"X\"`, `document=\"…\" target-id=\"X\"`, and `reference=\"X\"`. So content.indexOf(`id=\"X\"`) can return an earlier xref instead of the element's own open tag. This exact trap was fixed for the figure isInsidePara check — see the comment at tools/cnxml-render.js:1483-1486 ('Match the figure's own opening tag … NOT a bare id=\"X\" substring … the latter also matches a sibling para's <link target-id=\"X\"/>'). But 31 positioner sites still use the bare substring: para at 829/1092/1293/1436, figure at 1300/1668, list at 1320/1672, plus ~16 dead id-fallback ternaries. String-scan counts of `id=\"X\"` whose first occurrence sits inside a target-id: efnafraedi 701/108 mod, edlisfraedi 1263/238, liffraedi 1118/207, organic 650/251, micro 1019/128. Two reach a real <para> (organic m00016 para-00014; micro m58810 fs-id1168328231014) — but BOTH escape misorder: m00016's para is inside a <table> cell (rendered via renderTable, net section depth aside), and m58810's xref is one section level deeper than its target (between offsets: 4 <section> opens vs 5 closes → different scope), and the positioners run on section-scoped content. So currently latent: only section-scoping accidentally saves it.",
+    "description": "The positioners trust a whole-string id search that is not anchored to an element open tag, exactly the pattern already recognized as a bug elsewhere in the same file. The two concrete hits today are neutralized by table-cell routing and cross-section scope, not by any guard — a forward xref to a LATER <para>/<figure>/<list> within the SAME section would silently misorder it. The precondition is widespread (650-1263 substrings/book).",
+    "recommendation": "Anchor the search to the element's own open tag (`<para … id=\"X\"` / reuse the figure pattern at 1488) or, better, eliminate id-based position lookup entirely via the F1 ordered pass. Do not rely on the empirical 'only 2 hits' — that count is whole-module; same-section forward references are the unguarded case.",
+    "blocks_next_book": false,
+    "severity_note": "precondition present (string scan); no rendered misorder confirmed — both detected cases escape via scope/table routing",
+    "effort": "M"
+  },
+  {
+    "title": "Guarding is inconsistent across the five copied positioner blocks — containers are fullMatch-guarded in the main loops but id-positioned in renderNote/renderExercise",
+    "severity": "medium",
+    "evidence": "Main loop (tools/cnxml-render.js:771-826) and renderTopLevelContent (983-1088) position figure/note/example/exercise/table/media/list by content.indexOf(item.fullMatch) (unique full serialization → safe). But the copies drifted: renderNote positions figure by id (1299-1301) and list by id (1320-1322); renderSectionContent (exercise) positions para by id (1658), figure by id (1668), list by id (1672) — only media keeps the fullMatch guard (1313, 1662). So the same element type is collision-safe in one block and exposed in another, with no test pinning the divergence. The id=\"null\" pos-0 pile (F2) is a direct consequence at 1658/1668.",
+    "description": "Five hand-maintained copies of one algorithm have diverged in exactly the dimension that matters (which key is used to recover position). A reader cannot tell from one block whether a given element type is guarded; fixes applied to one block (e.g. the 1483-1486 figure fix) were not propagated to the others. This is the maintenance hazard that makes the whole class hard to reason about as more books add element shapes.",
+    "recommendation": "Collapse to a single positioning helper (ideally the F1 DOM/walkContent pass). If kept as-is short-term, make every block position by fullMatch (already populated by extractNestedElements/extractElements for all of figure/note/example/exercise/table/media/list/equation/para) and delete the id/bare-tag fallbacks, so all five blocks share one safe key.",
+    "blocks_next_book": false,
+    "effort": "L"
+  },
+  {
+    "title": "id-less ordering correctness silently depends on V8 stable sort, and container-strip uses String.replace (first-occurrence only) with no duplicate guard",
+    "severity": "low",
+    "evidence": "When multiple elements tie on position (id-less paras at indexOf('<para'), or the pos-0/-1→0 cases), correct relative order relies entirely on Array.prototype.sort being stable (true in Node 22, but never asserted or tested). Separately, container stripping uses `simpleContent = simpleContent.replace(e.fullMatch, '')` (tools/cnxml-render.js:752-766, 941-978, 1287, 1310, 1648) — String.replace with a string argument removes only the FIRST occurrence. If two elements ever share byte-identical serialization, the second strip is a no-op (residue leaks into para/media extraction) and indexOf(fullMatch) pins both to the same offset. Measured duplicate-fullMatch elements in source: 0 across all 5 books (figure/note/example/exercise/table/media/list/para/equation), so this is theoretical today.",
+    "description": "Two latent assumptions underpin ordering: stable sort, and globally-unique element serialization. Both hold on current source but neither is enforced. Machine translation can synthesize identical short paragraphs/media captions across a module, at which point the strip becomes lossy/duplicating — the same shape as the historical duplicate-figure render bug (though that one's root cause was nesting-strip leakage, not replace()).",
+    "recommendation": "When the F1 ordered pass lands, both concerns vanish (no strip, no resort). Until then: add a one-line comment/test pinning stable-sort reliance, and prefer offset-based splicing over replace(fullMatch,'') so identical serializations can't collide. Do not treat the 0-in-source count as permanent — it is an input property, not a guarantee.",
+    "blocks_next_book": false,
+    "effort": "S"
+  },
+  {
+    "title": "Depth counter in extractNestedElements/removeNestedElements has no word boundary and no self-closing-tag branch",
+    "severity": "low",
+    "evidence": "cnxml-parser.js:242-243 and cnxml-render.js:2058-2059 advance depth with content.indexOf(`<${tagName}`, idx) / indexOf(`</${tagName}>`). The open-tag probe `<tagName` has no trailing boundary, so for a tagName that prefixes another element it would over-count (CNXML has no such sibling for the tags used, so safe today). More material: a self-closing `<media .../>` (or any `<tag/>`) increments depth via the `<tag` probe but is never matched by a `</tag>`, so depth can never return to 0 for the intended element — the scan runs to the next unrelated close tag or EOF, returning an over-long fullMatch. Standalone self-closed media is exactly a cross-book shape (notes/figures with single <media/> children). Also ~16 id-fallback ternary branches (e.g. lines 772,803,817,986,1027,1060,1082,1315,1410,1457,1499,1520,1664) are currently unreachable (extract* always sets fullMatch) but encode the unsafe substring pattern as latent traps.",
+    "description": "The manual brace-matching that underlies every extractNestedElements/removeNestedElements call assumes paired open/close tags and exact name matches. Self-closing same-name tags and name-prefix overlaps both break the depth invariant. No book currently triggers it, but it is the kind of shape a newly-onboarded book introduces (the task already flags self-contained media and varied element forms).",
+    "recommendation": "Add a self-closing branch (treat `<tag …/>` as depth-neutral) and a word-boundary to the open probe (`<tag` followed by whitespace, `>`, or `/`). Or, again, retire both functions in favor of the @xmldom traversal inject already uses. Delete the dead id-fallback ternaries so the unsafe pattern stops being copied.",
+    "blocks_next_book": false,
+    "effort": "M"
+  },
+  {
+    "title": "CSS-contract test is scoped to efnafraedi-2e only and skips silently when vefur is absent — the keystone gap for onboarding new books",
+    "severity": "high",
+    "blocks_next_book": true,
+    "effort": "M",
+    "evidence": "tools/__tests__/css-contract.test.js:20 hardcodes PUBLICATION_DIR to books/efnafraedi-2e/05-publication; lines 102/162/198 use it.skipIf(!vefurExists || !pubExists) — when ../../../namsbokasafn-vefur is not checked out (CI per MEMORY: 'credits exhausted, local-gate only'), the entire contract suite is a no-op with a green tick. The 'dead selectors' check (line 162) only console.logs, never fails. Cross-book classes (note-microbiology, clinical-focus, biology multi-type exercises) are never scanned.",
+    "description": "This single test is the only automated link between render output (efni) and content.css (vefur). It validates exactly one book and degrades to a silent pass in the very environment (CI without the sister repo) where regressions would otherwise be caught. As books 2-5 onboard, their render classes will go entirely unverified against vefur, so the class/structure mismatches the rest of these findings describe will land in production HTML undetected. It is the generator of unknown-unknowns for the scale goal.",
+    "recommendation": "Parametrize the test over every book that has a 05-publication tree (glob books/*/05-publication), not just efnafraedi-2e. Convert the vefur-absent path from skipIf to a hard fail when an env flag (e.g. VEFUR_CONTRACT=1) is set, so the local gate and any future CI must have vefur present; keep skip only for ad-hoc dev. This reuses the existing extractCssClasses/extractHtmlClasses helpers — only the directory iteration and the skip semantics change."
+  },
+  {
+    "title": "Note rendering passes raw CNXML class attributes straight into HTML class names, coupling every new book's note vocabulary to vefur content.css",
+    "severity": "high",
+    "blocks_next_book": true,
+    "effort": "M",
+    "evidence": "tools/cnxml-render.js:1259 builds classAttr = `note note-${escapeAttr(noteClass)}` from note.attributes.class. Verified in rendered HTML: books/efnafraedi-2e/05-publication emits class=\"note note-chemistry everyday-life\" — only the FIRST CNXML word gets the note- prefix, remaining words pass through bare. Per-book distinct note classes (grep over 01-source): efnafraedi 4 (chemistry+everyday-life/link-to-learning/sciences-interconnect/chemist-portrait), edlisfraedi interactive, liffraedi ~10 incl. malformed 'career ' (trailing space), 'scientific method' (space→two classes), orverufraedi 7 (microbiology case-in-point/clinical-focus/disease-profile/eye-on-ethics/micro-connection/check-your-understanding/link-to-learning). vefur content.css enumerates note-chemistry/everyday-life/clinical-focus etc. explicitly but has NO note-microbiology, and the bare second-word classes for new books are unverified.",
+    "description": "Because the prefix is applied only to the first whitespace-delimited token and the rest pass through verbatim, each new book introduces a fresh set of CSS classes (note-microbiology, micro-connection, disease-profile, ...) that vefur must already style or the note renders unstyled. Whitespace variants in source ('career ', 'scientific method', 'evolution span-all') produce malformed/duplicate classes that no selector matches. This is the largest recurring cross-repo coordination cost per onboarded book.",
+    "recommendation": "Normalize noteClass before emission (trim, collapse internal whitespace to a single semantic token or hyphenate) so 'scientific method' and 'career ' don't leak stray classes. FLAG FOR VEFUR COORDINATION: produce a per-book list of note classes from 01-source at intake (a small CLI report reusing the grep above) and hand it to vefur so content.css selectors are added before first render — do not edit vefur here. Add these note classes to the (newly book-parametrized) css-contract test fixture."
+  },
+  {
+    "title": "Render emits key-equations / exercise classes that vefur already styles under DIFFERENT names — fixable on the efni side, no vefur change needed",
+    "severity": "medium",
+    "blocks_next_book": false,
+    "effort": "M",
+    "evidence": "Key equations: cnxml-render.js:2431 emits <section class=\"key-equations\"> (confirmed in 20 rendered *-key-equations.html files); vefur content.css:920 styles .key-equations-section (and .equation-row), with NO bare .key-equations rule. Exercises: cnxml-render.js:1636 wraps each exercise in class=\"eoc-exercise\"; vefur content.css:690 styles article.chapter-resource.exercises .exercises-list .exercise and :908 .dark ... .exercises-section .exercise-item — grep shows render NEVER emits exercises-list, exercise, or exercise-item (count 0). So vefur's exercise-layout selectors are dead, and render's real wrappers (eoc-exercise, key-equations) are unstyled.",
+    "description": "These are not missing vefur rules — vefur already ships the styling under its expected class/DOM vocabulary; render simply emits a different name/shape. The two repos drifted. Aligning render to the names vefur already uses fixes the appearance with zero cross-repo work and removes vefur dead selectors as a side effect.",
+    "recommendation": "On the efni side: change renderKeyEquations (cnxml-render.js:2431) to emit class=\"key-equations-section\" and have the compiled exercises path wrap items as .exercises-list > .exercise / .exercise-item to match content.css:690/908. Then remove key-equations, key-equations-table, eoc-exercise from KNOWN_GAPS (test lines 47-48,45). Verify against a re-render of efnafraedi-2e before committing. This is a local render change, not a vefur edit."
+  },
+  {
+    "title": "Whole end-of-chapter Summary and periodic-table-link wrappers have NO vefur selector at all — genuine unstyled-in-production gap",
+    "severity": "medium",
+    "blocks_next_book": false,
+    "effort": "S",
+    "evidence": "cnxml-render.js:2674/2695 emit <article class=\"chapter-resource summary\"> and <section class=\"summary-section\"> (summary referenced 32x in render); cnxml-render.js:3595 emits class=\"periodic-table-link\". vefur content.css has zero matches for .summary, .summary-section, or .periodic-table-link (grep confirmed). These sit in KNOWN_GAPS (test lines 49,52-53) so the contract test passes while the compiled Summary pages render with no styling.",
+    "description": "Unlike Finding 3, vefur has no equivalent rule under any name, so these are real cross-repo gaps masked by the KNOWN_GAPS whitelist — a tracked, accepted backlog rather than a surprise, but the Summary chapter-resource page is a first-class reader artifact rendering unstyled today. periodic-table-link relies on inline styles only.",
+    "recommendation": "FLAG FOR VEFUR COORDINATION: hand vefur the small set {summary, summary-section, periodic-table-link} (and any KNOWN_GAPS entry that is genuinely absent rather than renamed) for content.css rules; do not edit vefur here. As each rule lands, remove the class from KNOWN_GAPS so the contract test re-arms. Periodically audit KNOWN_GAPS (test lines 43-54) — it has accreted real gaps that should be either closed or reclassified as STRUCTURAL."
+  },
+  {
+    "title": "Unbounded dynamic class passthrough on lists, inline media, and sections lets arbitrary source classes reach HTML uncontrolled",
+    "severity": "medium",
+    "blocks_next_book": false,
+    "effort": "M",
+    "evidence": "cnxml-render.js:1879 emits class=\"${escapeAttr(list.attributes.class)}\" straight from CNXML <list class=...>; :1247 class=\"media-inline ${className}\"; :2287 class=\"${sectionClass}\"; :891/1179 class=\"${escapeAttr(className)}\". Known live example: 'stepwise' list class is whitelisted in css-contract.test.js KNOWN_GAPS (line 51) precisely because it passed through unstyled.",
+    "description": "Any class attribute present on lists/sections/media in a new book's CNXML flows verbatim into the rendered HTML class and must have a matching vefur selector or it renders unstyled. The set of possible classes is open-ended and grows with each book, so this is a continuous coordination surface, not a one-time mapping. It is escaped (no XSS), but unbounded for styling purposes.",
+    "recommendation": "At minimum, surface it: have the (book-parametrized) css-contract test treat any passthrough class with no vefur selector as a failure rather than letting them accrete into KNOWN_GAPS. Consider an allowlist of known structural list/section classes in render so unexpected source classes are logged at render time (reuse the existing pino logger / translation-errors.json manifest pattern) instead of silently shipped."
+  },
+  {
+    "title": "Contract extends beyond CSS to a hardcoded stylesheet path and JS-consumed DOM hooks with no shared manifest or version pinning",
+    "severity": "low",
+    "blocks_next_book": false,
+    "effort": "S",
+    "evidence": "cnxml-render.js hardcodes <link rel=\"stylesheet\" href=\"/styles/content.css\"> in 5 places (grep count 5) with no cache-busting/version. Structural hooks vefur JS depends on: data-exercise-type (cnxml-render.js:2913,3028), data-exercise-id/number (1637-1638), and the <script type=\"application/json\" id=\"page-data\"> block (2962) consumed by the reader. content.css class extraction also relies on the sibling checkout path ../../../namsbokasafn-vefur (test line 16).",
+    "description": "The efni↔vefur contract is not only class names but a hardcoded URL and a set of data-* / page-data DOM hooks. There is no single source-of-truth manifest enumerating the agreed classes and hooks; the only artifact is the per-book contract test. Renaming content.css, or vefur changing a data-attribute name, silently breaks already-published 05-publication HTML (committed to git, served as-is) with nothing in CI to catch it.",
+    "recommendation": "Document the contract surface (the /styles/content.css path, the class vocabulary, and the data-exercise-type / page-data hooks) in a short docs/technical contract note shared conceptually with vefur, and reference it from both repos' CLAUDE.md. Keep the stylesheet path defined once (a constant in render) rather than 5 string literals. Do not edit vefur; FLAG the data-* / page-data hooks as joint-owned so vefur changes to them are coordinated."
+  }
+]
