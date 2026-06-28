@@ -168,7 +168,9 @@ family. *Keep `repairSegTags` (hyphen-in-id persists) and `assertNoControlChars`
 *Goal: eliminate the string-position fragility class (root of all 3 render bugs). De-risked: 1,192/1,192
 modules round-trip clean. **C0 safety nets are mandatory before C1.***
 
-### C0 — Safety nets before touching render  ·  M  ·  GATES C1-C4
+### C0 — Safety nets before touching render  ·  M  ·  GATES C1-C4  ·  ✅ DONE (PR #177)
+> Golden (byte-exact, MathJax-normalized) + parser characterization + nesting matrix shipped. The
+> matrix found a real bug: `<table>` escapes example/exercise/note (6 cells skipped → C3/C4).
 - **Build a golden-HTML harness:** render all efnafraedi-2e modules with the *current* renderer, store
   outputs; the migration must produce **byte-identical HTML** against this baseline at every phase.
   Model on `tools/__tests__/cnxml-dom-comparison.test.js` (the inject precedent — old-regex vs new-DOM,
@@ -184,7 +186,12 @@ modules round-trip clean. **C0 safety nets are mandatory before C1.***
   (`cnxml-inject.test.js:700/777/923`), sharing fixtures.
 - **Acceptance:** golden baseline committed; parser + nesting suites green on current code.
 
-### C1 — DOM traversal seam + migrate `renderNote`  ·  M  ·  dep: C0
+### C1 — DOM traversal seam + migrate `renderNote`  ·  M  ·  dep: C0  ·  ✅ DONE (PR #179)
+> Reusable `renderBlockChildrenInOrder(content, context, dispatch)` seam established (C2–C4 consume it);
+> `renderNote` migrated. Golden byte-identical book-wide (blast-radius scan: 0 of 149 efnafraedi modules
+> change). **Re-diagnosis:** the plan's "95 id-less notes" were actually commented-out answer paras the
+> old regex rendered (`<!--<para>…-->`); the DOM walk skips comment nodes. id-less ordering also fixed
+> (synthetic/general). Dropped-media was already handled (not touched).
 - **Pattern (leaf-seam):** a new DOM traversal (reuse `parseCnxmlFragment`/`serializeCnxmlFragment`/
   `isBlockElement` from `tools/lib/cnxml-dom.js` **verbatim** — they're renderer-agnostic) walks
   `<content>` childNodes **in source order** (ordering falls out for free) and dispatches per
