@@ -1,0 +1,303 @@
+# Pipeline Architecture — Implementation Plan
+
+**Status:** approved by lead 2026-06-28, ready to implement. **Source of truth:**
+[docs/audit/2026-06-28-pipeline-architecture-audit.md](../audit/2026-06-28-pipeline-architecture-audit.md)
+(+ `2026-06-28-audit-findings.json` = all 83 verified findings with `file:line` evidence;
+`2026-06-28-erlendur-probe-findings.md` = live API re-characterization).
+
+## Context
+
+The pipeline (CNXML → Erlendur MT → inject/rebuild → render HTML) was built for chemistry and is about
+to scale to 4-5 books and 10-15 editors. The audit found: render's string-based structure handling is
+the root of recurring bugs (and a DOM migration is now de-risked — 1,192/1,192 modules round-trip
+clean); Erlendur has been fixed so the marker-restoration machinery is largely retirable; three
+cross-book content gaps will silently corrupt the next books; there is no real correctness gate and the
+manifest reports false-green; onboarding a book currently needs a code change. This plan turns the
+roadmap (Tracks A→D) into ordered, individually-shippable work items.
+
+## How to use this plan (for the implementing session)
+
+1. **Read the audit report first** (10 min) — it explains every "why" this plan only summarizes.
+2. **Work top-down within a track; respect the inter-track gates.** Each item is independently
+   shippable as its own PR. Item IDs (A1, C2…) match the audit roadmap.
+3. **Per item:** branch from `main` (`fix/…`, `feat/…`, or `refactor/…`); write/extend tests first
+   where the repo has them (`superpowers:test-driven-development`); for any behavior change to render,
+   add the characterization/golden test *before* touching code; verify with the commands in the item;
+   open a PR. Use `superpowers:systematic-debugging` for any bug you hit.
+4. **Test gate is local** (`npm test`, `npm run validate`) — CI credits may be exhausted and there's no
+   branch protection, so the local green run is the authoritative gate (see project memory).
+5. **Each item lists: files (`file:line`), the change, reuse, acceptance, effort, deps.** Effort:
+   S(<1d) M(1-3d) L(~1wk) XL(>1wk).
+
+## Constraints (apply to every item)
+
+- 🔒 `books/*/01-source/` is **READ-ONLY** — never re-download/overwrite from upstream (double-consent
+  rule in CLAUDE.md). Reading/scanning is fine.
+- Translations are **API-only** (Miðeind/Málstaður). No AI-generated translations. API test-runs cost
+  ISK — dry-run + estimate first.
+- **Cross-repo:** render's HTML class names/structure are a contract with sister repo
+  `namsbokasafn-vefur` (`static/styles/content.css`). Items tagged **[VEFUR]** require coordinated
+  changes there — **flag and hand off; do not edit vefur from this repo.**
+- `translation-errors.json` is `merge=ours` (each clone needs `git config merge.ours.driver true` once).
+- Node 22 / `nvm use` before any lockfile change. Don't deploy mid-QA.
+
+---
+
+## TRACK A — Correctness & trust gates (DO FIRST)
+
+*Goal: a trustworthy queue + a safety net, before adding editors or refactoring. Cheap, high-value.*
+
+### A1 — Fix manifest false-green  ·  S  ·  no deps
+- **Problem:** `skippedUntranslated` is hardcoded `0`; un-injected modules are dropped uncounted, so
+  un-injected books report green (physics: "9 of 283 checked, 0 skipped").
+- **Files:** `tools/lib/update-translation-errors.js:76` (the `continue` that drops un-injected),
+  `:108` (literal `skippedUntranslated: 0`); also `:56-124` (full-book rescan, no prior-manifest read).
+- **Change:** count real skips on the `:76` branch; write `summary.skippedUntranslated` +
+  `summary.totalSourceModules`; make manifest **track-qualified** (`translation-errors.<track>.json` or
+  per-track sections) so a faithful inject can't clobber the mt-preview record; record producing
+  track+tool. Treat `skipped>0` as non-green/non-perfect.
+- **Acceptance:** run inject on a partially-translated book → manifest shows real `skipped`/`total`;
+  mt-preview and faithful injects no longer overwrite each other's records. Unit test on the counter.
+
+### A2 — Untranslated-EN residue check  ·  M  ·  no deps
+- **Problem:** the injection gate checks segment *presence*, never *translatedness* — untranslated
+  English passes as COMPLETE (the failure behind os-embed English and MTPE residue).
+- **Files:** `tools/cnxml-inject.js:1481` (`getSeg`, empty-only check), `:1677` (`report.complete`);
+  surface also at save/submit in the server editor service.
+- **Change:** flag segments whose IS content ≈ EN source after stripping markers/numbers/symbols, above
+  a min token threshold; downgrade `report.complete` / list residues; emit a machine-readable residue
+  manifest. Reuse the bracket-marker regexes from the shared lib (A-prereq / B3).
+- **Acceptance:** an untranslated-English module no longer reports COMPLETE; residues listed. Tests with
+  EN-residue and clean fixtures. (Aligns with the editorial-throughput roadmap Unit 4.)
+
+### A3 — Render-stage structural check + wire fidelity into CI as regression  ·  M  ·  dep: none (helps C)
+- **Problem:** fidelity check is character-blind (counts opening tags only; text/attrs/MathML contents
+  never inspected — why the null-byte degree-sign incident passed), never runs in CI, never fails inject.
+- **Files:** `tools/cnxml-fidelity-check.js:32-48` (`countTags`); inject diff at `cnxml-inject.js:3398-3410`
+  (verbose-only). No `.github`/`package.json` fidelity invocation.
+- **Change:** add a render-stage check that parses produced HTML (reuse `@xmldom/xmldom` via
+  `tools/lib/cnxml-dom.js`) and asserts element/figure/note/example survival vs injected CNXML; add a
+  C0/control-char scan of inject output (reuse `assertNoControlChars` philosophy from `api-translate.js`);
+  compare a **normalized DOM shape** (tag + key attrs: `emphasis@effect`, link target-kind,
+  `exercise@class`) not a flat name histogram; gate on **delta vs a committed per-book baseline**, not
+  absolute counts (tag-count noise diverges by book). Wire as a CI regression report.
+- **Acceptance:** a deliberately-broken render (dropped figure, bold↔italic swap, injected NUL) fails the
+  check; clean render passes; baseline snapshot per book committed.
+
+### A4 — `pollTask` retry + async-path tests  ·  S  ·  no deps
+- **Problem:** the async (>10K, dominant) path's poll GET is a bare call — one transient blip fails a
+  whole module.
+- **Files:** `tools/lib/malstadur-api.js:293` (bare GET inside poll loop) vs `:233`/`:266` (wrapped).
+- **Change:** wrap `:293` in the existing `withRetry`; add tests (mocked fetch) for `translateAuto`
+  routing at the 10K boundary, `pollTask` completed/failed/timeout, `withRetry` 5xx-vs-4xx.
+- **Acceptance:** simulated transient 5xx during poll recovers; tests green.
+
+**Track A gate / Definition of done:** manifest tells the truth; a real correctness check exists and runs;
+the queue can be trusted with more editors. *Recommended: land A before onboarding any editor cohort.*
+
+---
+
+## TRACK B — API simplification (AFTER the B1 validation gate)
+
+*Goal: retire the now-redundant restoration machinery. Erlendur is fixed (probes), but **gated** on a
+glossary-aware re-test — the live probes ran without a glossary, which counts toward the char budget.*
+
+### B1 — Glossary-aware Erlendur validation run  ·  S  ·  GATES B2/B3
+- **Do first:** re-run the truncation/threshold + marker-survival probes **with the production glossary
+  attached** (≈1,100 terms add to the payload). Size the chunk limit to `payload + glossary`. Then
+  re-translate a **full chapter with glossary** and diff marker integrity end-to-end.
+- **Files/refs:** probe harness pattern in `scratchpad/` (see audit appendix); `tools/api-translate.js`
+  glossary load `:320-329`, `splitAtSegBoundaries`, chunk size 25KB.
+- **Acceptance:** documented marker-integrity rate with glossary; a re-tuned chunk limit (or confirmation
+  the current 25KB is right). **Do not start B2/B3 until this passes.** Note: clean-cut splitting is
+  correct (overlapping-split tested, not warranted) — only the *limit* may change.
+
+### B2 — Downgrade `restore*` heuristics to validate-and-warn  ·  M  ·  dep: B1
+- **Problem:** `restoreNewlines`/`restoreMediaMarkers`/`restoreSupersubMarkers` are near-dead for API
+  content (run only when `!isApiTranslated`); `restoreMathMarkers` is ~190 lines of anchor heuristics for
+  ~3 fixes book-wide; `restoreMediaMarkers` blind-appends `[[MEDIA:N]]` with no alignment.
+- **Files:** `tools/cnxml-inject.js:409-474` / `:489-537` / `:305-394` (the restores), `:3329-3354`
+  (gating), `:558-747` (math). Math detection should move upstream to `api-translate.js` (per-segment
+  `[[MATH:N]]` count check + re-translate/flag).
+- **Change:** for API content, demote these to **warn-only** (compare EN/IS marker counts, log, don't
+  mutate); **keep** them for the `docx-import` population, gated on explicit **producer provenance**
+  (see B-prereq below). Remove dead branches.
+- **Acceptance:** API-translated modules inject with restores in warn-only mode and no marker regressions
+  vs the B1 baseline; docx path unchanged. Tests per population.
+- **Prereq (provenance, M):** `api-translate.js:649` and `docx-import.js:795` each stamp explicit
+  producer provenance into `02-mt-output` (sidecar like `import-report.json`); replace the
+  `isApiTranslated` marker-sniff (`cnxml-inject.js:3307-3313`) with that signal. *This also fixes the
+  biology/microbiology mis-routing (low-marker books) — do it as part of B2.*
+
+### B3 — Per-type bracket-marker count check at producer boundary  ·  S  ·  dep: B1
+- **Problem:** `validateMarkers` is count-only on `<!-- SEG -->` (no `[[` handling anywhere) — blind to
+  inline bracket loss and intra-segment truncation.
+- **Files:** `tools/api-translate.js:255-259`.
+- **Change:** count bracket markers **by type** (content is translated; only count+type per family is
+  comparable) and warn/fail on per-type input≠output, mirroring `assertNoControlChars`/`countInlineMarkers`.
+- **Acceptance:** a synthetic dropped-`[[xref:]]` is caught; clean passes.
+
+### B4 — Move `<term>`/`<footnote>` to bracket markers  ·  M  ·  dep: B1
+- **Problem:** terms/footnotes still emit legacy `{{ }}` (the lossy family) on the highest-volume inline
+  elements; sub/sup/emphasis/links already migrated to ~0%-loss `[[ ]]`.
+- **Files:** `tools/cnxml-extract.js:303` (`{{term}}`), `:370` (`{{fn}}`); add `[[term:…]]`/`[[fn:…]]`
+  (and `[[u:…]]` for underline). Injection is already backward-compatible (CLAUDE.md).
+- **Acceptance:** marker-survival probe on term/fn brackets ≈100%; old `{{ }}` output still injects.
+
+**Track B gate:** restoration complexity retired for API content; markers validated by type; one marker
+family. *Keep `repairSegTags` (hyphen-in-id persists) and `assertNoControlChars` (separate content bug).*
+
+---
+
+## TRACK C — Render → DOM migration (incremental, leaf-seam)
+
+*Goal: eliminate the string-position fragility class (root of all 3 render bugs). De-risked: 1,192/1,192
+modules round-trip clean. **C0 safety nets are mandatory before C1.***
+
+### C0 — Safety nets before touching render  ·  M  ·  GATES C1-C4
+- **Build a golden-HTML harness:** render all efnafraedi-2e modules with the *current* renderer, store
+  outputs; the migration must produce **byte-identical HTML** against this baseline at every phase.
+  Model on `tools/__tests__/cnxml-dom-comparison.test.js` (the inject precedent — old-regex vs new-DOM,
+  per-module baseline budgets). **Oracle note:** render's gate is golden-HTML diff, NOT inject's
+  `compareTagCounts`.
+- **Add `tools/__tests__/cnxml-parser.test.js`** — the string core (`extractElements:186`,
+  `extractNestedElements:228`) has zero direct tests today. Cover paired/self-closing/attr parsing,
+  same-tag nesting depth 2-3, malformed/unterminated input.
+- **Build the render nesting matrix** — `{figure,list,media,table} × {example,exercise,note,section} ×
+  {with xref, without}`, asserting each child renders once and inside its parent (reuse the
+  `figIdx < exampleCloseIdx` ordering assertion + the inline-CNXML pattern at
+  `cnxml-render.test.js:204-235`). Mirror the inject nesting suites
+  (`cnxml-inject.test.js:700/777/923`), sharing fixtures.
+- **Acceptance:** golden baseline committed; parser + nesting suites green on current code.
+
+### C1 — DOM traversal seam + migrate `renderNote`  ·  M  ·  dep: C0
+- **Pattern (leaf-seam):** a new DOM traversal (reuse `parseCnxmlFragment`/`serializeCnxmlFragment`/
+  `isBlockElement` from `tools/lib/cnxml-dom.js` **verbatim** — they're renderer-agnostic) walks
+  `<content>` childNodes **in source order** (ordering falls out for free) and dispatches per
+  `node.localName` to the **existing, unchanged** string renderers via `serializeCnxmlFragment`. Keep the
+  regex path alive in parallel; switch the dispatcher per element type behind the golden harness.
+- **First container:** `renderNote` (`cnxml-render.js:1255`) — the dropped-`<media>` bug site and the
+  id-less-`<para>`-in-note ordering bug (95 notes / 77 biology modules).
+- **Scope note:** `cnxml-dom.js` is a parse/manipulate helper, **not** a renderer — HTML *emission* stays
+  in the string renderers; only traversal/ordering moves to DOM. Don't over-promise reuse.
+- **Acceptance:** golden HTML unchanged for efnafraedi-2e; the dropped-media and id-less-para cases (add
+  biology fixtures) now correct; nesting matrix green.
+
+### C2 — Migrate `renderExample`, then `renderExercise`  ·  L  ·  dep: C1
+- Highest-bug-density containers (`cnxml-render.js:1354`, `:1602`). Same seam, one at a time, golden-gated.
+- **Acceptance:** golden unchanged; the figure-escapes-example regression (already fixed) and the
+  nesting matrix stay green; the inject-vs-render coverage asymmetry closed.
+
+### C3 — Converge the 5 positioner blocks onto one ordered emitter  ·  L  ·  dep: C2
+- **Problem:** 63 `indexOf` sites / 5 near-duplicate positioner blocks; `indexOf(`id="X"`)` still
+  substring-collides with `target-id="X"` in `renderNote`/`renderExercise` (the already-fixed bug class,
+  still live); guarding inconsistent across copies.
+- **Files:** `cnxml-render.js:696`/`:924`/`:1290-1294`/`:1480`… (positioners); consider `walkContent`
+  (`cnxml-parser.js:351`) only if its regex handles the nesting — preferred path is the C1 DOM pass.
+- **Acceptance:** single ordered pass; all `indexOf(id=)` ordering removed; golden unchanged.
+
+### C4 — Port `buildTable` (inject) to DOM  ·  M  ·  dep: none (can parallel C)
+- **Problem:** the one complex element never moved to DOM; self-described "simplified" positional regex
+  (`cnxml-inject.js:1913-1982`, comment at `:1933`).
+- **Change:** port to `parseCnxmlFragment` → walk `<row>`/`<entry>` → `replaceParaContentDom` analog →
+  `serializeCnxmlFragment`; removes the self-closing `<entry/>` normalization hack. *(Bonus per finding:
+  parse the whole module to one DOM at top of `buildCnxml` and locate via `getElementById` instead of the
+  ~6 per-element regex extractions.)*
+- **Acceptance:** inject golden/tag-count unchanged on table-heavy chemistry modules; new table-nesting test.
+
+**Track C gate:** render structure read from a parse, not string positions; the bug class is gone.
+
+---
+
+## TRACK D — Cross-book onboarding (sequence against the NEXT title)
+
+*Goal: make onboarding a data + probe operation and close the content gaps. **Order D3-D5 by which book
+is chosen next** (see Open Decisions).*
+
+### D1 — Per-book config as data file + fail-loud + `--book` required  ·  L  ·  blocks all
+- **Problem:** config is code-resident (`book-rendering-config.js:48-341`); unknown book → silently
+  incomplete default (`:350-363`); every tool defaults `--book` to chemistry (`parseArgs.js:23`);
+  `chapter-modules.js:48-79` falls through to a chemistry hardcoded map.
+- **Change:** move each book's render config into a co-located data file (extend the orphaned
+  `books/<slug>/metadata.json`; deep-merge `SHARED_*` defaults), following the `collection-order.json`
+  pattern. Promote `metadata.json` to the real per-book manifest read by `getBookRenderConfig` +
+  `bookToDomain` + glossary loading. Make unknown-book **fail loud** (throw / require `--allow-default`).
+  Make `--book` **required** in multi-book tools (`default: null`, error if missing or `books/<slug>`
+  absent). Stop `chapter-modules.js` falling through to `CHEMISTRY_2E_MODULES`. Add `npm run validate`
+  coverage asserting a new book provides its required inputs.
+- **Acceptance:** a fresh fake book with a data-file config renders; a missing config errors clearly; a
+  forgotten `--book` errors instead of silently using chemistry.
+
+### D2 — Pre-intake structural probe  ·  M  ·  blocks all
+- One-shot script over a candidate's raw CNXML, each check tied to a proven failure: `os-embed` present
+  (no translation path), `<iframe>` present (dropped), `<glossary>==0 with <term>` present (empty
+  key-terms page), unknown note classes, unrecognized inline elements (the whitelist `stripTags:374`
+  drops them), missing `BOOK_CONFIGS`/metadata entry. Output = a go/no-go fitness checklist.
+- **Acceptance:** running it on the 5 in-repo books reproduces their known gaps.
+
+### D3 — os-embed exercise extraction + translation path  ·  XL  ·  blocks organic
+- **Problem (CRITICAL):** organic's 1,961 `<link class="os-embed">` exercises **resolve to untranslated
+  English** (`resolveOsEmbed` at `cnxml-render.js:137` reads `01-source/exercises/*.json`) — there's **no
+  extraction/translation path**, so reviewed-looking English ships.
+- **Change:** (a) marker producer for self-closing `<link url=…>` (e.g. `[[osembed:url]]`) so the ref
+  survives into `structure.json` (`cnxml-extract.js`); (b) extraction path that reads
+  `01-source/exercises/*.json` (`stem_html`/`stimulus_html`/solutions) as translatable segments into
+  `02-for-mt` → MT → `03-faithful-translation`; (c) `resolveOsEmbed` prefers a translated sidecar.
+- **Acceptance:** an organic exercise round-trips EN→IS and renders Icelandic; a characterization test
+  pins resolved-vs-fallback behavior.
+
+### D4 — `<iframe>` extract + render  ·  M  ·  blocks physics, biology
+- **Problem:** 108 PhET/YouTube embeds dropped at extract (`cnxml-extract.js:180`/`:99`, whitelist strip)
+  AND render (`renderMedia` image-only, `cnxml-render.js:1232`/`:1238`; inline path `cnxml-elements.js:788`).
+- **Change:** capture `<iframe>` (+ other non-image media) child in extraction (`{embedSrc,width,height}`,
+  reuse `parseAttributes`); preserve through inject (media-rebuild currently image-only at
+  `cnxml-inject.js:1030`/`:2986`/`:1881` — re-emit non-image media verbatim); render a responsive
+  `<iframe>` (lazy, title from `@alt`). **[VEFUR]** embed wrapper styling.
+- **Acceptance:** a physics PhET module renders a working iframe; characterization test (currently-drops →
+  now-renders).
+
+### D5 — Alternative glossary extractor (key-terms / inline term)  ·  M  ·  blocks organic, microbiology
+- **Problem:** organic (0 `<glossary>`, uses `<section class="key-terms">` ×31) and microbiology (0
+  glossary, 6,395 inline `<term>`) render an empty compiled "Lykilhugtök" page.
+- **Change:** per-book alternative extractor selected in config — build the compiled page from
+  `<section class="key-terms">` (organic) and/or collected inline `<term id=…>` headwords linked to their
+  defining section (microbiology). **Lead product decision needed for microbiology (see Open Decisions).**
+- **Acceptance:** organic + microbiology produce a populated key-terms page.
+
+### D6 — Per-book characterization test + parametrized CSS-contract  ·  M  ·  blocks all
+- **Problem:** only e2e test is efnafraedi ch01 (`pipeline-integration.test.js:35`); CSS-contract scoped
+  to efnafraedi + skips silently when vefur absent (`css-contract.test.js:20`,`:102/162/198`).
+- **Change:** one render-characterization spec per book (inline-CNXML pattern → `renderCnxmlToHtml`, no
+  MT input needed); parametrize CSS-contract over all `books/*/05-publication`; hard-fail (not skip) when
+  `VEFUR_CONTRACT=1`.
+- **Acceptance:** each book has a characterization spec; CSS-contract runs for every book.
+
+**Track D gate (per book):** D1+D2 done once; then the book's specific D3/D4/D5 + D6 green → onboard.
+
+---
+
+## Suggested execution sequence
+
+1. **Track A in full** (A1→A4) — trust + safety net.
+2. **C0** (safety nets) and **B1** (glossary re-test) in parallel — both are prerequisites, both cheap.
+3. **C1→C2** (render→DOM for note/example/exercise) in parallel with **D1→D2** (config-as-data +
+   pre-intake probe). Then **C3**, **C4**.
+4. **B2→B4** once B1 passes (can overlap C).
+5. **D3/D4/D5 + D6** sequenced by the chosen next title.
+
+## [VEFUR] cross-repo coordination (hand off, do not edit here)
+
+- D4 iframe wrapper styling. Per-book **note-class vocabulary** (raw classes leak via
+  `cnxml-render.js:1259`; produce a note-class report per book at intake). key-equations/exercise
+  class-name mismatches are **fixable efni-side** (`renderKeyEquations:2431` → `key-equations-section`;
+  compiled exercises → `.exercises-list>.exercise`). Genuinely **unstyled in vefur**: `summary`,
+  `summary-section`, `periodic-table-link` (need vefur selectors). A shared, version-pinned **class
+  manifest** between render output and vefur CSS (none exists).
+
+## Open decisions for the lead
+
+- **Which book is onboarded next?** → fixes the D3/D4/D5 ordering (organic = D3 XL; physics/biology = D4;
+  organic+microbiology = D5).
+- **Microbiology key-terms policy** (D5): synthesize a chapter page from inline `<term>` headwords, or
+  ship without a compiled glossary page?
+- **CI:** Track A's CI wiring assumes credits are restored; until then the local gate carries it.
