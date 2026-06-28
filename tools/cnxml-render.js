@@ -1535,59 +1535,23 @@ function renderExercise(exercise, context) {
 
   lines.push(`<div ${attrs.join(' ')}>`);
 
-  // Helper: render problem/solution section content with paras, media, figures, and lists in order
+  // Helper: render problem/solution section content (paras, media, figures,
+  // lists) in document order via the DOM seam. Only <list> is hoisted out of a
+  // <para> (matching the prior list-strip); figures render inline via renderPara.
   function renderSectionContent(sectionContent) {
-    // Extract lists before paras so lists inside paras don't leak as raw CNXML
-    const lists = extractNestedElements(sectionContent, 'list');
-    let contentForParas = sectionContent;
-    for (const lst of lists)
-      if (lst.fullMatch) contentForParas = contentForParas.replace(lst.fullMatch, '');
-
-    const paras = extractElements(contentForParas, 'para');
-    // Strip figures before extracting standalone media
-    const contentWithoutFigures = sectionContent.replace(/<figure[\s\S]*?<\/figure>/g, '');
-    const medias = extractNestedElements(contentWithoutFigures, 'media');
-    const figures = extractNestedElements(sectionContent, 'figure');
-
-    const elementsWithPositions = [];
-    for (const para of paras) {
-      const pos = sectionContent.indexOf(`id="${para.id}"`);
-      elementsWithPositions.push({ type: 'para', item: para, position: pos !== -1 ? pos : 0 });
-    }
-    for (const media of medias) {
-      const pos = media.fullMatch
-        ? sectionContent.indexOf(media.fullMatch)
-        : sectionContent.indexOf(`id="${media.id}"`);
-      elementsWithPositions.push({ type: 'media', item: media, position: pos !== -1 ? pos : 0 });
-    }
-    for (const figure of figures) {
-      const pos = sectionContent.indexOf(`id="${figure.id}"`);
-      elementsWithPositions.push({ type: 'figure', item: figure, position: pos !== -1 ? pos : 0 });
-    }
-    for (const list of lists) {
-      const pos = list.id
-        ? sectionContent.indexOf(`id="${list.id}"`)
-        : sectionContent.indexOf('<list');
-      elementsWithPositions.push({ type: 'list', item: list, position: pos !== -1 ? pos : 0 });
-    }
-
-    elementsWithPositions.sort((a, b) => a.position - b.position);
-
-    for (const { type, item } of elementsWithPositions) {
-      switch (type) {
-        case 'para':
-          lines.push(`    ${renderPara(item, context)}`);
-          break;
-        case 'media':
-          lines.push(`    ${renderMedia(item, context)}`);
-          break;
-        case 'figure':
-          lines.push(`    ${renderFigure(item, context)}`);
-          break;
-        case 'list':
-          lines.push(`    ${renderList(item, context)}`);
-          break;
-      }
+    const blocks = renderBlockChildrenInOrder(
+      sectionContent,
+      context,
+      {
+        para: renderPara,
+        media: renderMedia,
+        figure: renderFigure,
+        list: renderList,
+      },
+      { hoistTags: ['list'] }
+    );
+    for (const block of blocks) {
+      lines.push(`    ${block}`);
     }
   }
 
