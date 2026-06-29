@@ -4,6 +4,7 @@
  */
 
 import { DOMParser } from '@xmldom/xmldom';
+import { SHARED_NOTE_LABELS } from './book-rendering-config.js';
 
 /** Inline tags the extractor converts to markers (everything else gets stripped). */
 export const HANDLED_INLINE = new Set([
@@ -77,4 +78,36 @@ export function runFileChecks(cnxml) {
     noteClasses: extractNoteClasses(text),
     unrecognizedInline: findUnrecognizedInline(text),
   };
+}
+
+/**
+ * Per-book verdict from aggregated findings.
+ * @param {{osEmbed:number,iframe:number,anyTerm:boolean,anyGlossary:boolean,
+ *          noteClasses:Set<string>,unrecognizedInline:Map<string,number>}} agg
+ * @param {object|null} bookConfig - parsed book-config.json (or null in --source mode)
+ * @returns {{checks:object, verdict:'GO'|'GO-WITH-GAPS'|'NO-GO'}}
+ */
+export function evaluateBook(agg, bookConfig) {
+  const knownNoteClasses = new Set([
+    ...Object.keys(SHARED_NOTE_LABELS),
+    ...Object.keys((bookConfig && bookConfig.noteTypeLabels) || {}),
+  ]);
+  const unknownNoteClasses = [...agg.noteClasses].filter((c) => !knownNoteClasses.has(c)).sort();
+  const inlineTags = [...agg.unrecognizedInline.keys()].sort();
+
+  const checks = {
+    osEmbed: { status: agg.osEmbed > 0 ? 'block' : 'ok', count: agg.osEmbed },
+    iframe: { status: agg.iframe > 0 ? 'warn' : 'ok', count: agg.iframe },
+    glossary: { status: agg.anyTerm && !agg.anyGlossary ? 'warn' : 'ok' },
+    noteClass: { status: unknownNoteClasses.length ? 'warn' : 'ok', items: unknownNoteClasses },
+    inline: { status: inlineTags.length ? 'warn' : 'ok', items: inlineTags },
+  };
+
+  const statuses = Object.values(checks).map((c) => c.status);
+  const verdict = statuses.includes('block')
+    ? 'NO-GO'
+    : statuses.includes('warn')
+      ? 'GO-WITH-GAPS'
+      : 'GO';
+  return { checks, verdict };
 }

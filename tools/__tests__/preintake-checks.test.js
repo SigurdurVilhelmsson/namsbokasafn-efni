@@ -1,5 +1,14 @@
 import { describe, it, expect } from 'vitest';
-import { runFileChecks } from '../lib/preintake-checks.js';
+import { runFileChecks, evaluateBook } from '../lib/preintake-checks.js';
+
+const baseAgg = () => ({
+  osEmbed: 0,
+  iframe: 0,
+  anyTerm: false,
+  anyGlossary: false,
+  noteClasses: new Set(),
+  unrecognizedInline: new Map(),
+});
 
 describe('runFileChecks — regex checks', () => {
   it('counts os-embed exercise links', () => {
@@ -61,5 +70,49 @@ describe('runFileChecks — unrecognized inline (DOM)', () => {
   it('returns {} on malformed CNXML (does not throw)', () => {
     expect(() => runFileChecks('<para>unclosed')).not.toThrow();
     expect(runFileChecks('<para>unclosed').unrecognizedInline).toEqual({});
+  });
+});
+
+describe('evaluateBook — verdict', () => {
+  it('GO for a clean, fully-configured book', () => {
+    const r = evaluateBook(baseAgg(), { noteTypeLabels: {} });
+    expect(r.verdict).toBe('GO');
+  });
+
+  it('NO-GO when os-embed is present (BLOCK)', () => {
+    const agg = { ...baseAgg(), osEmbed: 260 };
+    const r = evaluateBook(agg, { noteTypeLabels: {} });
+    expect(r.checks.osEmbed.status).toBe('block');
+    expect(r.verdict).toBe('NO-GO');
+  });
+
+  it('GO-WITH-GAPS on iframe (WARN)', () => {
+    const r = evaluateBook({ ...baseAgg(), iframe: 35 }, { noteTypeLabels: {} });
+    expect(r.checks.iframe.status).toBe('warn');
+    expect(r.verdict).toBe('GO-WITH-GAPS');
+  });
+
+  it('WARN on term-without-glossary', () => {
+    const r = evaluateBook(
+      { ...baseAgg(), anyTerm: true, anyGlossary: false },
+      { noteTypeLabels: {} }
+    );
+    expect(r.checks.glossary.status).toBe('warn');
+  });
+
+  it('does not WARN when a glossary is present', () => {
+    const r = evaluateBook(
+      { ...baseAgg(), anyTerm: true, anyGlossary: true },
+      { noteTypeLabels: {} }
+    );
+    expect(r.checks.glossary.status).toBe('ok');
+  });
+
+  it('WARNs on note classes absent from book-config (+SHARED)', () => {
+    const agg = { ...baseAgg(), noteClasses: new Set(['evolution', 'link-to-learning']) };
+    const r = evaluateBook(agg, { noteTypeLabels: { career: 'Starfsferill' } });
+    // link-to-learning is in SHARED; evolution is not configured
+    expect(r.checks.noteClass.status).toBe('warn');
+    expect(r.checks.noteClass.items).toEqual(['evolution']);
   });
 });
