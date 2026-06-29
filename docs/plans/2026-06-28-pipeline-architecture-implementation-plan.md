@@ -65,7 +65,24 @@ roadmap (Tracks A→D) into ordered, individually-shippable work items.
 - **Acceptance:** run inject on a partially-translated book → manifest shows real `skipped`/`total`;
   mt-preview and faithful injects no longer overwrite each other's records. Unit test on the counter.
 
-### A2 — Untranslated-EN residue check  ·  M  ·  no deps
+### A2 — Untranslated-EN residue check  ·  M  ·  no deps  ·  ✅ DONE (PR #184, branch `feat/a2-en-residue-check`)
+- **Shipped 2026-06-29:** new pure detector `tools/lib/residue-check.js`; `buildCnxml` gates
+  `report.complete` on exact-normalized EN==IS residue (reuses already-loaded `enSegments`, no new I/O);
+  token-overlap ratio ≥0.7 warns (non-gating); per-book track-qualified `residue-report.<track>.json`
+  manifest (read-merge-preserve) + console surfacing; reuses existing `--allow-incomplete` override.
+  Detection skipped when injecting EN-as-content (`--lang en`) or under `--allow-en-fallback`.
+  Design/plan: `docs/plans/2026-06-29-a2-en-residue-check-{design,plan}.md`. **Key fix found in
+  integration testing:** floor on **content words (alphabetic tokens len ≥3)**, not raw token count —
+  else chemistry numeric/unit cells (`neon 0.83 g/L`, answer keys) false-positive (single-letter
+  unit/enum tokens defeated a raw floor). Real cells regression-locked; 3 pipeline-integration tests
+  pass unmodified as the guard. `npm test` 1533/0; efnafraedi ch01 = 0 false positives.
+- **⚠️ DEFERRED FOLLOW-UPS (not yet done — don't forget):**
+  - **(a) Server editor save/submit surface** — wire `detectResidue` into the editor service's
+    save/submit path so editors see residue warnings live. Reuses `residue-check.js` verbatim. Its own
+    PR (needs server tests + UX decisions). *This was in A2's original "Files" line but deliberately
+    scoped out of the inject PR.*
+  - **(b) CI wiring** — A2 has no CI gate yet (Actions credits out till ~Jul 1). When credits return,
+    decide whether residue gates a CI check or stays advisory; the local `npm test` carries it for now.
 - **Problem:** the injection gate checks segment *presence*, never *translatedness* — untranslated
   English passes as COMPLETE (the failure behind os-embed English and MTPE residue).
 - **Files:** `tools/cnxml-inject.js:1481` (`getSeg`, empty-only check), `:1677` (`report.complete`);
