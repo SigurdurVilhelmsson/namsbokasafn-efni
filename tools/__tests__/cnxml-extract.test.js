@@ -477,3 +477,23 @@ describe('para extraction does not duplicate list item content', () => {
     expect(paraTypeSegs.length).toBe(0);
   });
 });
+
+// ─── iframe media capture ──────────────────────────────────────────
+
+describe('extract: iframe media capture', () => {
+  it('captures an inline <media><iframe> as an embed (embedSrc/width/height)', () => {
+    const inlineMedia = new Map();
+    const text = extractInlineText(
+      'See <media id="m1" alt="diet_detective"><iframe width="660" height="371.4" src="https://www.openstax.org/l/diet_detective"/></media>.',
+      new Map(),
+      { math: 0, media: 0 },
+      inlineMedia
+    );
+    expect(text).toContain('[[MEDIA:1]]');
+    const entry = inlineMedia.get('[[MEDIA:1]]');
+    expect(entry.embedSrc).toBe('https://www.openstax.org/l/diet_detective');
+    expect(entry.width).toBe('660');
+    expect(entry.height).toBe('371.4');
+    expect(entry.src).toBe('');
+  });
+});
