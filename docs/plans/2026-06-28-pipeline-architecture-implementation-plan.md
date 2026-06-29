@@ -31,6 +31,13 @@ roadmap (Tracks A→D) into ordered, individually-shippable work items.
 
 ## Constraints (apply to every item)
 
+- **Robustness & future-proofing are the deciding factors** (lead directive 2026-06-29), in both
+  implementation and planning — never the easiest/cheapest option over the most durable one. When two
+  designs both work, choose the one with **one real code path** (not a silent-default branch), that
+  **fails loud**, whose escape hatches are **incapable of reaching production** (validate/publish refuse
+  them, not just warn), that gives every book/entity a **first-class explicit** config, and that **splits
+  behavior-preserving refactors from behavior-changing enforcement** into separate PRs. Project-memory:
+  `feedback-robustness-over-expedience`.
 - 🔒 `books/*/01-source/` is **READ-ONLY** — never re-download/overwrite from upstream (double-consent
   rule in CLAUDE.md). Reading/scanning is fine.
 - Translations are **API-only** (Miðeind/Málstaður). No AI-generated translations. API test-runs cost
