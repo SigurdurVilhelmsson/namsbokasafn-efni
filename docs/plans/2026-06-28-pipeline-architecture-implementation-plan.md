@@ -441,3 +441,31 @@ in their item blocks — this is the consolidated scan list. Append, don't prune
   `merge=ours`) or gitignore it.
 - **Residue warn-tier not calibrated on real data** — efnafraedi ch01 emitted 5 non-gating warnings,
   never reviewed for legitimacy. Revisit the warn threshold once real faithful content exists.
+
+**From the 2026-06-28 audit (findings NOT operationalized as plan items A1–D7).** The audit
+`docs/audit/2026-06-28-audit-findings.json` (83 findings) is the source of truth; the plan scheduled a
+curated subset. The findings below are acknowledged but have **no scheduled plan item** — re-triage
+before biology onboarding (they were seen in the audit but aren't on any to-do list). Finding numbers =
+1-based array index; titles given for stability.
+- **#14 [HIGH, blocks_next_book] SEG-marker parser divergence** — two `parseSegments` impls + 4–5 distinct
+  SEG-marker regexes across inject/editor/split (first-vs-last-match, comment-vs-mustache); caused the
+  PR #96 drift. Unify into one `tools/lib/seg-markers.js`. *Cluster:* **#15** [MED] duplicate-seg-ID policy
+  (inject first-wins / editor last-wins / counter counts-all); **#18** [LOW] whitespace-tolerance mismatch;
+  **#19** [LOW] 67 orphan `*-segments(b|c|d).en.md` legacy mustache files half the pipeline can't parse.
+- **#33 [HIGH, blocks_next_book] inject list-flattening divergence** — `buildExampleDom` PRESERVES nested
+  lists; `buildExerciseDom`/`buildNoteDom` DELETE them (`cnxml-inject.js:2597`/`:2854`). Unify on the
+  example approach. (Distinct from C4 table-DOM and the render-side C-track work.)
+- **#43 [HIGH] `annotateInlineTerms` gloss desync** — `--annotate-en` attaches English glosses by ordinal
+  position; desyncs on term reorder / count mismatch → **the wrong gloss reaches readers**. Real
+  reader-facing correctness bug, not cosmetic.
+- **#37 [LOW]** `buildExerciseDom` drops id-less exercises entirely; `buildGenericElement` recurses without
+  `ctx`. **#30 [LOW]** 429 retry ignores `Retry-After` + has no jitter (A4-adjacent). **#29 [LOW]**
+  control-char (NUL/°) failure aborts the module with no retry — asymmetric vs the truncation path that
+  retries. **#31 [INFO]** cost-rate magic number duplicated (`malstadur-api.js:52` vs `api-translate.js:742`).
+  **#38 [INFO]** ~500 lines of dead legacy string builders retained + exported.
+- *Already scheduled — no register entry needed:* #26→B3, #34→C4, #35→D4, #40/#42→B2, #65→D6, #79→[VEFUR],
+  #56/#58/#61→D-track. *Already resolved:* #73 (id-less `<para>`-in-`<note>`)→C1; #72/#75/#76 (positioner
+  inconsistency)→the C3 5-positioner/63-`indexOf` convergence already listed in the A3/C3 item notes.
+- *Tracked separately (NOT this plan, do not duplicate):* accessibility findings — assistive MathML for
+  equations + figure alt-text translation pipeline — live in
+  `docs/plans/2026-06-25-accessibility-alt-math-handoff.md` and memory `accessibility-alt-math-pending.md`.
