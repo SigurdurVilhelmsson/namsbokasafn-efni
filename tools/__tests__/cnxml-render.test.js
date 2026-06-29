@@ -637,3 +637,22 @@ describe('check-knowledge answer note marking', () => {
     expect(html).not.toContain('link-to-learning check-knowledge-answer');
   });
 });
+
+describe('renderCnxmlToHtml honors options.bookConfig (D6)', () => {
+  const noteCnxml = `<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>T</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml"><md:content-id>m00001</md:content-id><md:title>T</md:title></metadata>
+<content><note id="n1" class="evolution"><para id="p1">Texti.</para></note></content>
+</document>`;
+
+  it('resolves a per-book note label from options.bookConfig (full config)', () => {
+    // bookConfig is a full render config, as getBookRenderConfig/renderService supply.
+    const { html } = renderCnxmlToHtml(noteCnxml, {
+      moduleId: 'm00001',
+      chapter: 1,
+      lang: 'is',
+      bookConfig: getBookRenderConfig('liffraedi-2e'), // biology: evolution → Þróun
+    });
+    expect(html).toContain('Þróun');
+  });
+});

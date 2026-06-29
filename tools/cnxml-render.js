@@ -416,6 +416,14 @@ function renderCnxmlToHtml(cnxml, options = {}) {
   const chapter = options.chapter;
   const moduleId = options.moduleId;
 
+  // D6: honor a per-call book config so inline AND server renders resolve
+  // per-book note labels instead of the module-global default. No-op for the
+  // CLI path, which sets these globals in main() and passes no options.bookConfig.
+  if (options.bookConfig) {
+    BOOK_CONFIG = options.bookConfig;
+    NOTE_TYPE_LABELS = options.bookConfig.noteTypeLabels || {};
+  }
+
   // Parse CNXML
   const doc = parseCnxmlDocument(cnxml);
   const title = options.titleOverride || doc.title;
