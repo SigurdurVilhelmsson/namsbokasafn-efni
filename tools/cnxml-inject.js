@@ -42,6 +42,7 @@ import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, MODULE_OPTION } from './lib/par
 import { compareTagCounts } from './cnxml-fidelity-check.js';
 import { extractGlossary } from './lib/cnxml-parser.js';
 import { updateTranslationErrors } from './lib/update-translation-errors.js';
+import { detectResidue } from './lib/residue-check.js';
 import {
   parseCnxmlFragment,
   serializeCnxmlFragment,
@@ -1471,6 +1472,9 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
     mathPlaceholders: 0,
     mathResolved: 0,
     mathUnresolved: [],
+    residues: [], // exact untranslated-EN (gates complete)
+    residueWarnings: [], // ratio "mostly English" (non-gating)
+    _residueSeen: new Set(), // de-dupe segments referenced more than once
   };
 
   // Helper to get segment text
@@ -1486,6 +1490,21 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
       return '';
     }
     stats.segmentsFound++;
+
+    // A2: flag segments left as untranslated English. Compare the raw
+    // marker-form IS text against the EN source (same marker form). Only
+    // when an EN counterpart exists and we haven't already judged this id.
+    const enText = options.enSegments && options.enSegments.get(segmentId);
+    if (enText && !stats._residueSeen.has(segmentId)) {
+      stats._residueSeen.add(segmentId);
+      const r = detectResidue(enText, text);
+      if (r.exact) {
+        stats.residues.push(segmentId);
+      } else if (r.warn) {
+        stats.residueWarnings.push({ segmentId, ratio: Number(r.ratio.toFixed(2)) });
+      }
+    }
+
     return reverseInlineMarkup(
       text,
       equations,
@@ -1674,7 +1693,12 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
     segmentsFound: stats.segmentsFound,
     segmentsMissing: stats.segmentsMissing,
     unresolvedMathPlaceholders: stats.mathUnresolved,
-    complete: stats.segmentsMissing.length === 0 && stats.mathUnresolved.length === 0,
+    residues: stats.residues.slice().sort(),
+    residueWarnings: stats.residueWarnings,
+    complete:
+      stats.segmentsMissing.length === 0 &&
+      stats.mathUnresolved.length === 0 &&
+      stats.residues.length === 0,
   };
 
   // Always report missing segments (not just verbose)
