@@ -193,6 +193,8 @@ function extractInlineText(
       const parsedAttrs = parseAttributes(attrs);
       const imageMatch = mediaContent.match(/<image([^>]*)>/);
       const imageAttrs = imageMatch ? parseAttributes(imageMatch[1]) : {};
+      const iframeMatch = mediaContent.match(/<iframe([^>]*)\/?>/);
+      const iframeAttrs = iframeMatch ? parseAttributes(iframeMatch[1]) : {};
 
       inlineMediaMap.set(placeholder, {
         id: parsedAttrs.id || null,
@@ -200,6 +202,9 @@ function extractInlineText(
         alt: parsedAttrs.alt || imageAttrs.alt || '',
         src: imageAttrs.src || '',
         mimeType: imageAttrs['mime-type'] || null,
+        embedSrc: iframeAttrs.src || '',
+        width: iframeAttrs.width || '',
+        height: iframeAttrs.height || '',
       });
 
       return placeholder;
@@ -1004,12 +1009,17 @@ function processTopLevelContent(
         const imageAttrs = imageMatch
           ? parseAttributes(imageMatch[0].match(/<image([^>]*)>/)[1])
           : {};
+        const iframeMatch = item.content.match(/<iframe([^>]*)\/?>/);
+        const iframeAttrs = iframeMatch ? parseAttributes(iframeMatch[1]) : {};
         elements.push({
           type: 'media',
           id: item.id,
           class: mediaAttrs.class || null,
           alt: mediaAttrs.alt || imageAttrs.alt || '',
           src: imageAttrs.src || '',
+          embedSrc: iframeAttrs.src || '',
+          width: iframeAttrs.width || '',
+          height: iframeAttrs.height || '',
         });
         break;
       }

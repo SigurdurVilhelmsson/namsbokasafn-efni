@@ -32,6 +32,24 @@ describe('render characterization: efnafraedi-2e (chemistry)', () => {
 });
 
 describe('render characterization: liffraedi-2e (biology)', () => {
+  it('liffraedi-2e: renders an inline PhET/YouTube iframe embed', () => {
+    const embedMap = {
+      'https://www.openstax.org/l/diet_detective': {
+        resolved: 'https://www.youtube.com/embed/xyz',
+        kind: 'youtube',
+        status: 'ok',
+      },
+    };
+    const cnxml = `<document xmlns="http://cnx.rice.edu/cnxml"><content>
+    <note id="n1" class="interactive"><para id="p1">Horfðu á myndbandið
+      <media id="m1" alt="diet_detective"><iframe width="660" height="371.4"
+        src="https://www.openstax.org/l/diet_detective"/></media>.</para></note>
+  </content></document>`;
+    const { html } = renderCnxmlToHtml(cnxml, { bookSlug: 'liffraedi-2e', chapter: 29, embedMap });
+    expect(html).toContain('class="embed-responsive"');
+    expect(html).toContain('https://www.youtube.com/embed/xyz');
+    expect(html).not.toContain('openstax.org/l/');
+  });
   it('renders biology note classes with Icelandic labels', () => {
     const html = renderFor(
       'liffraedi-2e',

@@ -1,0 +1,237 @@
+{
+  "https://openstax.org/l/02balanactphet": {
+    "resolved": "https://phet.colorado.edu/sims/html/balancing-act/latest/balancing-act_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/02circuit_construction_kit_dc": {
+    "resolved": "https://phet.colorado.edu/sims/html/circuit-construction-kit-dc-virtual-lab/latest/circuit-construction-kit-dc-virtual-lab_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/02equation_grapher": {
+    "resolved": "https://phet.colorado.edu/sims/html/graphing-quadratics/latest/graphing-quadratics_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/02john_travoltage": {
+    "resolved": "https://phet.colorado.edu/sims/html/john-travoltage/latest/john-travoltage_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/02masses_springs": {
+    "resolved": "https://phet.colorado.edu/sims/html/masses-and-springs/latest/masses-and-springs_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/02neuronphet": {
+    "resolved": "https://phet.colorado.edu/sims/html/neuron/latest/neuron_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/02pendulum": {
+    "resolved": "https://phet.colorado.edu/sims/html/pendulum-lab/latest/pendulum-lab_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/02statematter": {
+    "resolved": "https://phet.colorado.edu/sims/html/states-of-matter/latest/states-of-matter_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/02states_of_matter": {
+    "resolved": "https://phet.colorado.edu/sims/html/states-of-matter-basics/latest/states-of-matter-basics_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/02twodimkine": {
+    "resolved": "https://www.youtube.com/embed/shFNnyLztWE",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://openstax.org/l/16IdealGasLaw": {
+    "resolved": "https://phet.colorado.edu/sims/html/gas-properties/latest/gas-properties_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/21cirphysbascur": {
+    "resolved": "https://phet.colorado.edu/sims/html/circuit-construction-kit-dc/latest/circuit-construction-kit-dc_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/21phetcirconstr": {
+    "resolved": "https://phet.colorado.edu/sims/html/circuit-construction-kit-ac/latest/circuit-construction-kit-ac_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/21resistwire": {
+    "resolved": "https://phet.colorado.edu/sims/html/resistance-in-a-wire/latest/resistance-in-a-wire_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/28Bendinglight": {
+    "resolved": "https://phet.colorado.edu/sims/html/bending-light/latest/bending-light_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/28Colorvision": {
+    "resolved": "https://phet.colorado.edu/sims/html/color-vision/latest/color-vision_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/28Geometric": {
+    "resolved": "https://phet.colorado.edu/sims/html/geometric-optics/latest/geometric-optics_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/28balloons": {
+    "resolved": "https://phet.colorado.edu/sims/html/balloons-and-static-electricity/latest/balloons-and-static-electricity_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/28charge-cap": {
+    "resolved": "https://phet.colorado.edu/sims/html/capacitor-lab-basics/latest/capacitor-lab-basics_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/28charge-field": {
+    "resolved": "https://phet.colorado.edu/sims/html/charges-and-fields/latest/charges-and-fields_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/28collisionlab": {
+    "resolved": "https://phet.colorado.edu/sims/html/collision-lab/latest/collision-lab_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/28gravityorbit": {
+    "resolved": "https://phet.colorado.edu/sims/html/gravity-and-orbits/latest/gravity-and-orbits_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/28interference": {
+    "resolved": "https://phet.colorado.edu/sims/html/wave-interference/latest/wave-interference_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/28ohms_law": {
+    "resolved": "https://phet.colorado.edu/sims/html/ohms-law/latest/ohms-law_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/28prjctilemtion": {
+    "resolved": "https://phet.colorado.edu/sims/html/projectile-motion/latest/projectile-motion_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/28rutherford": {
+    "resolved": "https://phet.colorado.edu/sims/html/rutherford-scattering/latest/rutherford-scattering_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/28skatepark": {
+    "resolved": "https://phet.colorado.edu/sims/html/energy-skate-park/latest/energy-skate-park_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/28vectoradd/": {
+    "resolved": "https://phet.colorado.edu/sims/html/vector-addition/latest/vector-addition_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/28wavestring": {
+    "resolved": "https://phet.colorado.edu/sims/html/wave-on-a-string/latest/wave-on-a-string_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/forcesandmotion": {
+    "resolved": "https://phet.colorado.edu/sims/html/forces-and-motion-basics/latest/forces-and-motion-basics_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/gravity-force": {
+    "resolved": "https://phet.colorado.edu/sims/html/gravity-force-lab/latest/gravity-force-lab_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://www.youtube.com/embed/8_TjOq5BNo8": {
+    "resolved": "https://www.youtube.com/embed/8_TjOq5BNo8",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.youtube.com/embed/8blVnGZ6-rM": {
+    "resolved": "https://www.youtube.com/embed/8blVnGZ6-rM",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.youtube.com/embed/9KMpE6BGz5Q": {
+    "resolved": "https://www.youtube.com/embed/9KMpE6BGz5Q",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.youtube.com/embed/9YgcdK0qY8w": {
+    "resolved": "https://www.youtube.com/embed/9YgcdK0qY8w",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.youtube.com/embed/COKBImkkJKw": {
+    "resolved": "https://www.youtube.com/embed/COKBImkkJKw",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.youtube.com/embed/FmnkQ2ytlO8": {
+    "resolved": "https://www.youtube.com/embed/FmnkQ2ytlO8",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.youtube.com/embed/GuFHfQlgI1I": {
+    "resolved": "https://www.youtube.com/embed/GuFHfQlgI1I",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.youtube.com/embed/HGXk99frvYM": {
+    "resolved": "https://www.youtube.com/embed/HGXk99frvYM",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.youtube.com/embed/LGh-liBHPcs": {
+    "resolved": "https://www.youtube.com/embed/LGh-liBHPcs",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.youtube.com/embed/SglzRDD1oNI": {
+    "resolved": "https://www.youtube.com/embed/SglzRDD1oNI",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.youtube.com/embed/bkbG8BJsInE": {
+    "resolved": "https://www.youtube.com/embed/bkbG8BJsInE",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.youtube.com/embed/gfZBqviOd-M": {
+    "resolved": "https://www.youtube.com/embed/gfZBqviOd-M",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.youtube.com/embed/hxMaoFcYSrw": {
+    "resolved": "https://www.youtube.com/embed/hxMaoFcYSrw",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.youtube.com/embed/iShUultAD9M": {
+    "resolved": "https://www.youtube.com/embed/iShUultAD9M",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.youtube.com/embed/kbZGcfF9UfA": {
+    "resolved": "https://www.youtube.com/embed/kbZGcfF9UfA",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.youtube.com/embed/lCxxH8nQtZQ": {
+    "resolved": "https://www.youtube.com/embed/lCxxH8nQtZQ",
+    "kind": "youtube",
+    "status": "ok"
+  }
+}

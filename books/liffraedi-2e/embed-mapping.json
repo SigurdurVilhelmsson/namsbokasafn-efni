@@ -1,0 +1,257 @@
+{
+  "https://openstax.org/l/T_brucei": {
+    "resolved": "https://www.youtube.com/embed/EnsydwITLYk",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://openstax.org/l/atoms_isotopes": {
+    "resolved": "https://phet.colorado.edu/sims/html/isotopes-and-atomic-mass/latest/isotopes-and-atomic-mass_en.html",
+    "kind": "phet",
+    "status": "ok"
+  },
+  "https://openstax.org/l/bacteria_biofilm": {
+    "resolved": "https://www.youtube.com/embed/lpI4WCM_9pM",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://openstax.org/l/chara_corallina": {
+    "resolved": "https://www.youtube.com/embed/kud4qUhsCxg",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://openstax.org/l/endosymbiont": {
+    "resolved": "https://www.youtube.com/embed/HOx7SDdIqyU",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://openstax.org/l/paramecium": {
+    "resolved": "https://www.youtube.com/embed/iG6Dd3COug4",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://openstax.org/l/slime_mold": {
+    "resolved": "https://www.youtube.com/embed/bkVhLJLG7ug",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/Packaged_DNA": {
+    "resolved": "https://www.youtube.com/embed/gbSIBhFwQ4s",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/angiosperms": {
+    "resolved": "https://www.youtube.com/embed/bUjVHUf4d1I",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/boyle_breathing": {
+    "resolved": "https://www.youtube.com/embed/NB1aCBId6qA",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/breathing": {
+    "resolved": "https://www.youtube.com/embed/gYSIWceGMxY",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/budding_hydra": {
+    "resolved": "https://www.youtube.com/embed/wfbhwq95Duc",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/cancer": {
+    "resolved": "https://www.youtube.com/embed/RZhL7LDPk8w",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/chasing_bcteria": {
+    "resolved": "https://www.youtube.com/embed/AUih856vaQY",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/chordate_evol": {
+    "resolved": "https://www.youtube.com/embed/ypYesuV3PoI",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/circulation": {
+    "resolved": "https://www.youtube.com/embed/PgI80Ue-AMo",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/contract_muscle": {
+    "resolved": "https://www.youtube.com/embed/CepeYFvqmk4",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/diet_detective": {
+    "resolved": "https://www.youtube.com/embed/VYSw0EWwNhw",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/epigenetic_reg": {
+    "resolved": "https://www.youtube.com/embed/eYrQ0EhVCYA",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/feedback_loops": {
+    "resolved": "https://www.youtube.com/embed/_QbD92p_EVs",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/filter_sponges": {
+    "resolved": "https://www.youtube.com/embed/swKwTNn8Oz4",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/founder_bottle": {
+    "resolved": "https://www.youtube.com/embed/hEYV9WEvwaI",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/gymnosperm2": {
+    "resolved": "https://www.youtube.com/embed/0J-QqDGdprs",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/insulin": {
+    "resolved": "https://www.youtube.com/embed/JAjZv41iUJU",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/ionic_covalent": {
+    "resolved": "https://www.youtube.com/embed/Y2C1j-RugfU",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/killdeer_bird": {
+    "resolved": "https://www.youtube.com/embed/TNG7y0caqj0",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/lac_operon": {
+    "resolved": "https://www.youtube.com/embed/iPQZXMKZEfw",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/lungs_pulmonary": {
+    "resolved": "https://www.youtube.com/embed/SPGRkexI_cs",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/mRNA_splicing": {
+    "resolved": "https://www.youtube.com/embed/FVuAwBGw_pQ",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/nociceptive": {
+    "resolved": "https://www.youtube.com/embed/vy-zFa0qnlo",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/ocean_life": {
+    "resolved": "https://www.youtube.com/embed/ZTYjLFIhQDM",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/orbitals": {
+    "resolved": "https://www.youtube.com/embed/sMt5Dcex0kg",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/pH_scale": {
+    "resolved": "https://www.youtube.com/embed/u837KYKyr9c",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/paralyzation": {
+    "resolved": "https://www.youtube.com/embed/ogBX18maUiM",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/pollen_release": {
+    "resolved": "https://www.youtube.com/embed/7SL76MaFjJ0",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/resting_neuron": {
+    "resolved": "https://www.youtube.com/embed/YP_P6bYvEjE",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/sex-linked_trts": {
+    "resolved": "https://www.youtube.com/embed/-6RGz1YM11o",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/skeletal_muscle": {
+    "resolved": "https://www.youtube.com/embed/XoP1diaXVCI",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/spirometry": {
+    "resolved": "https://www.youtube.com/embed/lWHx31BquBA",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/symmetry": {
+    "resolved": "https://www.youtube.com/embed/OStYEu5WLZA",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/synovial_joints": {
+    "resolved": "https://www.youtube.com/embed/zWo9-3GJpr8",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/tetrapod_evol1": {
+    "resolved": "https://www.youtube.com/embed/E1h4kgt2520",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/tetrapod_evol2": {
+    "resolved": "https://www.youtube.com/embed/__Woo6L1bl0",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/tetrapod_evol4": {
+    "resolved": "https://www.youtube.com/embed/7HSCJVjJvY8",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/thermoregulate": {
+    "resolved": "https://www.youtube.com/embed/TYRsDUOTbHA",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/transcript_RNA": {
+    "resolved": "https://www.youtube.com/embed/WsofH466lqk",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/trp_operon": {
+    "resolved": "https://www.youtube.com/embed/8aAYtMa3GFU",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/venus_flytrap": {
+    "resolved": "https://www.youtube.com/embed/O7eQKSf0LmY",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/vertebrate_evol": {
+    "resolved": "https://www.youtube.com/embed/232wtCuLsoI",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/welwitschia2": {
+    "resolved": "https://www.youtube.com/embed/PVLACJsoGjk",
+    "kind": "youtube",
+    "status": "ok"
+  },
+  "https://www.openstax.org/l/whooping_crane": {
+    "resolved": "https://www.youtube.com/embed/oCxB2Z4OeeI?list=PL89F23D025A54FEB6",
+    "kind": "youtube",
+    "status": "ok"
+  }
+}

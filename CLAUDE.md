@@ -173,6 +173,7 @@ See [docs/workflow/simplified-workflow.md](docs/workflow/simplified-workflow.md)
 | `node tools/api-translate.js --book <book> --dry-run` | Show translation plan + cost estimate |
 | `node tools/translate-chapter-titles.js <slug>` | Translate chapter titles via Málstaður API |
 | `node tools/generate-tm.js --book <book> [--chapter N]` | Generate TMX from paired EN/faithful segments (no Matecat) |
+| `node tools/resolve-embeds.js --book <book>` | Resolve `<iframe>` embed `/l/` redirects → committed `embed-mapping.json` (networked; run at intake) |
 | `/pipeline-status` | Overview of all chapters |
 | `/chapter-status <book> <ch>` | Specific chapter progress |
 | `/review-chapter <book> <ch>` | Pass 1 linguistic review |

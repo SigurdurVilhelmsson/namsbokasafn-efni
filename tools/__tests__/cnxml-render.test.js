@@ -656,3 +656,25 @@ describe('renderCnxmlToHtml honors options.bookConfig (D6)', () => {
     expect(html).toContain('Þróun');
   });
 });
+
+describe('render: iframe embeds (D4)', () => {
+  const embedMap = {
+    'https://www.openstax.org/l/diet_detective': {
+      resolved: 'https://www.youtube.com/embed/xyz',
+      kind: 'youtube',
+      status: 'ok',
+    },
+  };
+
+  it('renders a standalone <media><iframe> as a resolved responsive iframe + fallback', () => {
+    const cnxml = `<document xmlns="http://cnx.rice.edu/cnxml"><content>
+      <media id="m1" alt="diet_detective"><iframe width="660" height="371.4"
+        src="https://www.openstax.org/l/diet_detective"/></media>
+    </content></document>`;
+    const { html } = renderCnxmlToHtml(cnxml, { bookSlug: 'liffraedi-2e', chapter: 29, embedMap });
+    expect(html).toContain('class="embed-responsive"');
+    expect(html).toContain('src="https://www.youtube.com/embed/xyz"');
+    expect(html).toContain('class="embed-fallback"');
+    expect(html).not.toContain('openstax.org/l/');
+  });
+});
