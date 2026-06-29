@@ -1141,5 +1141,9 @@ describe('inject seam: [[MEDIA:n]] → iframe round-trip (D4)', () => {
     expect(restored).not.toContain('[[MEDIA:');
     expect(restored).toContain('<media');
     expect(restored).not.toContain('<image');
+    // Regression guard for the exact bug this seam test caught: the iframe tag
+    // must NOT be XML-escaped to &lt;iframe on its way through reverseInlineMarkup
+    // (the self-closing-tag allowlist was missing `iframe`).
+    expect(restored).not.toContain('&lt;iframe');
   });
 });
