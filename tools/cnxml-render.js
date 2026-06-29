@@ -1665,7 +1665,7 @@ function renderTable(table, context) {
     const tgroupContent = tgroupMatch[1];
 
     // Header
-    const theadMatch = tgroupContent.match(/<thead>([\s\S]*?)<\/thead>/);
+    const theadMatch = tgroupContent.match(/<thead[^>]*>([\s\S]*?)<\/thead>/);
     if (theadMatch) {
       lines.push('  <thead>');
       const rows = extractElements(theadMatch[1], 'row');
@@ -1676,7 +1676,7 @@ function renderTable(table, context) {
     }
 
     // Body
-    const tbodyMatch = tgroupContent.match(/<tbody>([\s\S]*?)<\/tbody>/);
+    const tbodyMatch = tgroupContent.match(/<tbody[^>]*>([\s\S]*?)<\/tbody>/);
     if (tbodyMatch) {
       lines.push('  <tbody>');
       const rows = extractElements(tbodyMatch[1], 'row');

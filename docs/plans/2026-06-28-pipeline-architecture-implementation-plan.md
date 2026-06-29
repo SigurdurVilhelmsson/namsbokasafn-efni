@@ -255,6 +255,20 @@ modules round-trip clean. **C0 safety nets are mandatory before C1.***
   parse the whole module to one DOM at top of `buildCnxml` and locate via `getElementById` instead of the
   ~6 per-element regex extractions.)*
 - **Acceptance:** inject golden/tag-count unchanged on table-heavy chemistry modules; new table-nesting test.
+- **NOTE (2026-06-29):** the A3 drop investigation routed here, but the actual content-loss bug was
+  RENDER-side, not this inject item. **Shipped surgical fix (branch `feat/c4-table-dom`):**
+  `renderTable` matched the BARE tags `/<thead>/` `/<tbody>/`, so OpenStax's attributed
+  `<thead valign="middle">`/`<tbody valign="middle">` matched nothing → the table rendered as an empty
+  `<table>`+caption, dropping ALL cells (text + equations). Live on namsbokasafn.is (Tafla 21.1 m68856).
+  Fix = `/<thead[^>]*>/` `/<tbody[^>]*>/` (`tgroup` already had `[^>]*`; row/entry go through
+  `extractElements`). Old-vs-new sweep: **4 modules recover content** (m68768/m68770/m68856/m68858 —
+  cells+equations), **0 decreases**, bare-tag tables byte-identical (100 byte-diffs were MathJax-ID
+  non-determinism, counts unchanged). The advisor's key call: the "cell-equation drop" was SUBSUMED by
+  the empty-body drop (cells never reached `processInlineContent`); one regex fix recovered both. New
+  test `cnxml-render-table-attrs.test.js`. **This inject `buildTable`→DOM item remains open** as an
+  architecture investment (no active bug) — route to lead as its own decision. **The C0 table-ESCAPE bug
+  (table nested in example/exercise/note renders outside it) is SEPARATE — it's the container-dispatch
+  silent-discard class → C3, not table internals.**
 
 **Track C gate:** render structure read from a parse, not string positions; the bug class is gone.
 
