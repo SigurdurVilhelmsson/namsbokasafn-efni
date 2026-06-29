@@ -55,6 +55,23 @@ describe('renderNote — commented-out content (real biology fix)', () => {
   });
 });
 
+describe('renderNote — direct-child equation (was silently dropped)', () => {
+  it('renders an <equation> that is a direct child of a note as a display block', () => {
+    // renderNote's seam dispatch was {para,figure,list,media} — no `equation` —
+    // so an <equation> placed directly in a note (between paras) was silently
+    // dropped by the seam (e.g. m68849 ch20 lost 2 reaction equations). Adding
+    // the dispatcher recovers it as a centered display block, once.
+    const html = renderNoteContent(
+      '<note id="N"><para id="p">Hvarfið er:</para>' +
+        '<equation id="Q" class="unnumbered"><m:math><m:mi>NOTEEQ</m:mi></m:math></equation>' +
+        '</note>'
+    );
+    expect(html.split('<mjx-container').length - 1).toBe(1);
+    expect(html).toContain('class="equation unnumbered"');
+    expect(html).toContain('class="mathjax-display"');
+  });
+});
+
 describe('renderNote — nested-block hoist (characterization)', () => {
   it('renders a <list> nested inside a note <para> hoisted after the para', () => {
     const html = renderNoteContent(

@@ -486,6 +486,7 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     equationCounter: 0,
     exerciseCounter: 0, // Add exercise counter
     renderedFigureIds: new Set(), // Track rendered figures to prevent duplicates
+    undispatchedBlocks: [], // Loud seam: block elements no dispatch map handled
   };
 
   // Render content
@@ -555,7 +556,7 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     chapterOutline,
   });
 
-  return { html, pageData };
+  return { html, pageData, undispatchedBlocks: context.undispatchedBlocks };
 }
 
 /**
@@ -1281,6 +1282,26 @@ function renderMedia(media, context) {
  *   and render after it. Defaults to every key in `dispatch`.
  * @returns {string[]} Rendered HTML strings, one per emitted block, in order
  */
+// Tags that legitimately appear as element children inside a container but are
+// handled outside the block seam (container metadata) or are inline content that
+// flows within text — NOT silently-dropped block content. Excluded from the
+// loud-seam record so the diagnostic carries signal (a real undispatched block
+// like <equation>/<table>/<figure>) not noise.
+const LOUD_SEAM_IGNORE = new Set([
+  'title',
+  'label',
+  'caption',
+  'meta',
+  'newline',
+  'sub',
+  'sup',
+  'emphasis',
+  'term',
+  'link',
+  'math',
+  'footnote',
+]);
+
 function renderBlockChildrenInOrder(content, context, dispatch, options = {}) {
   const out = [];
   const { root } = parseCnxmlFragment(content);
@@ -1292,7 +1313,18 @@ function renderBlockChildrenInOrder(content, context, dispatch, options = {}) {
   // block types are leaves: their own renderers emit their descendants.
   const processBlock = (node) => {
     const name = node.localName;
-    if (!dispatch[name]) return;
+    if (!dispatch[name]) {
+      // Loud seam: record (don't silently drop) a block element no dispatcher
+      // handles, so a future dispatch-map gap is visible instead of a silent
+      // content loss. Output is unchanged — the element is still not emitted.
+      if (!LOUD_SEAM_IGNORE.has(name) && context.undispatchedBlocks) {
+        context.undispatchedBlocks.push({
+          tag: name,
+          id: (node.getAttribute && node.getAttribute('id')) || null,
+        });
+      }
+      return;
+    }
 
     if (name === 'para') {
       const hoisted = Array.from(node.childNodes).filter(
@@ -1353,6 +1385,9 @@ function renderNote(note, context, extraClass = '') {
     figure: renderFigure,
     list: renderList,
     media: renderMedia,
+    // A direct-child <equation> in a note (between paras) was silently dropped
+    // before this dispatcher existed (m68849 lost 2 reaction equations).
+    equation: renderEquation,
   });
   for (const block of blocks) {
     lines.push(`  ${block}`);
@@ -4000,6 +4035,7 @@ export {
   formatChapterDir,
   calculateColspan,
   renderPara,
+  renderBlockChildrenInOrder,
   renderCnxmlToHtml,
   renderCompiledExercises,
   buildAppendixIdMap,

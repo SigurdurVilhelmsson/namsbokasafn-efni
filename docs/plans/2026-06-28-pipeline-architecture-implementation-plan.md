@@ -239,13 +239,28 @@ modules round-trip clean. **C0 safety nets are mandatory before C1.***
 - **Acceptance:** golden unchanged; the figure-escapes-example regression (already fixed) and the
   nesting matrix stay green; the inject-vs-render coverage asymmetry closed.
 
-### C3 — Converge the 5 positioner blocks onto one ordered emitter  ·  L  ·  dep: C2
-- **Problem:** 63 `indexOf` sites / 5 near-duplicate positioner blocks; `indexOf(`id="X"`)` still
-  substring-collides with `target-id="X"` in `renderNote`/`renderExercise` (the already-fixed bug class,
-  still live); guarding inconsistent across copies.
-- **Files:** `cnxml-render.js:696`/`:924`/`:1290-1294`/`:1480`… (positioners); consider `walkContent`
-  (`cnxml-parser.js:351`) only if its regex handles the nesting — preferred path is the C1 DOM pass.
-- **Acceptance:** single ordered pass; all `indexOf(id=)` ordering removed; golden unchanged.
+### C3 — Loud seam + unify dispatch maps  ·  M  ·  dep: C2  ·  ✅ CORE DONE (branch `feat/c3-loud-seam`)
+- **Problem (root of the whole drop class):** the DOM seam did `if (!dispatch[name]) return;` — any block
+  element absent from a container's dispatch map was **silently discarded**. The three hand-maintained
+  maps had drifted (example had `equation`; exercise + note didn't), each a silent content loss found
+  only after the fact (exercise density formula, ~15 modules' note reaction-equations).
+- **Shipped:** **(1) Loud seam** — `renderBlockChildrenInOrder` now records undispatched block elements
+  into `context.undispatchedBlocks` (surfaced on `renderCnxmlToHtml` return) instead of dropping them
+  silently; output-neutral (golden byte-identical proves it). A `LOUD_SEAM_IGNORE` set excludes
+  container-meta/inline tags (title/label/newline/sub/math/…) so the diagnostic is signal not noise —
+  **verified `{}` (zero undispatched) across the whole efnafraedi corpus post-fix.** **(2) `renderNote`
+  gains `equation: renderEquation`** (default hoistTags picks it up → direct-child + in-para equations
+  render once as display blocks). Old-vs-new sweep: **15 modules recover note equations, 0 decreases**
+  (chemistry reaction equations in `<note>`s, dropped before; golden m68710 regenerated — 3 equations
+  recovered). Tests: `cnxml-render-loud-seam.test.js`, note-dom direct-child-equation case.
+- **Deferred (deliberately, per advisor):** (a) **table-escape** (table nested in example/exercise/note
+  → add `table` to those dispatch maps + `renderedTableIds` dedup) — **0 real nestings in efnafraedi**
+  (the 6 C0 KNOWN_ESCAPES are synthetic matrix cells), so it's un-skipping tests with no content impact;
+  re-check when biology is onboarded. (b) The full **5-positioner / 63-`indexOf` convergence** — the
+  silent-drop class is now closed by the loud seam + complete maps, so the big refactor is optional
+  cleanup, not a correctness need.
+- **Acceptance:** ✅ loud seam records (not drops) undispatched blocks; golden byte-identical (output
+  neutral); note equations recovered; corpus diagnostic clean.
 
 ### C4 — Port `buildTable` (inject) to DOM  ·  M  ·  dep: none (can parallel C)
 - **Problem:** the one complex element never moved to DOM; self-described "simplified" positional regex
