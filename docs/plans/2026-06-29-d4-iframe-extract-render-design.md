@@ -152,6 +152,25 @@ published HTML changes until a re-render + sync is run (render code-fixes don't 
 - New: `resolve-embeds` unit spec (mocked network); extract/inject iframe round-trip spec; render iframe
   spec (mapping hit → iframe+link; mapping miss → fail loud); biology D6 characterization spec extension.
 
+## Final-review fix: server live-preview path (2026-06-29)
+
+The initial implementation left a bug in the server's in-process live-preview path
+(`server/services/renderService.js`): the module never loaded `embed-mapping.json`, so the
+`renderCnxmlToHtml` call received no `embedMap`, and the module global `EMBED_MAP` stayed `{}`
+in the server process. Any preview request for a module with an `<iframe>` embed would throw
+`Unresolved embed` → HTTP 500.
+
+**Corrected behaviour:** `renderService.js` now imports `loadEmbedMapping` from
+`tools/lib/embed-mapping.js` and passes `embedMap: loadEmbedMapping(book)` to
+`renderCnxmlToHtml` alongside `bookConfig`. Books without a mapping file get `{}` (no-op),
+so existing books are unaffected. This mirrors the `bookConfig` plumbing exactly.
+
+The code comment in `cnxml-render.js` that incorrectly described the server path as "using
+the module global" has been corrected to reflect that the server now explicitly loads the map.
+
+Test evidence: `server/__tests__/renderService.test.js` — RED asserts the throw without
+`embedMap`; GREEN asserts `embed-responsive` HTML is emitted after `loadEmbedMapping('liffraedi-2e')`.
+
 ## Out-of-scope issues found
 
 (To be appended to the roadmap's Out-of-scope register + memory as discovered during implementation, per

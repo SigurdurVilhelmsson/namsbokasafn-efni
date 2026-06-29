@@ -426,9 +426,11 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     NOTE_TYPE_LABELS = options.bookConfig.noteTypeLabels || {};
   }
 
-  // D4: test-injection path — caller supplies embedMap to avoid file I/O.
-  // CLI path loads it in main(); server path uses the module global (empty unless
-  // the book has a committed embed-mapping.json).
+  // D4: accept a caller-supplied map (test path, server preview path, future callers).
+  // CLI path loads it in main() via loadEmbedMapping(BOOK_SLUG).
+  // Server preview path (renderService.js) now loads it via loadEmbedMapping(book)
+  // and passes it as options.embedMap, so the module global is never left empty
+  // for a book that has a committed embed-mapping.json.
   if (options.embedMap) EMBED_MAP = options.embedMap;
 
   // Parse CNXML

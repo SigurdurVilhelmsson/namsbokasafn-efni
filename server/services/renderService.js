@@ -81,6 +81,10 @@ async function renderModule(book, chapter, moduleId, track = 'faithful') {
 
   const cnxml = fs.readFileSync(cnxmlPath, 'utf-8');
 
+  const { loadEmbedMapping } = await import(
+    path.join(PROJECT_ROOT, 'tools', 'lib', 'embed-mapping.js')
+  );
+
   // Load book config for note labels, section types, etc.
   // getBookRenderConfig throws if the book has no book-config.json — surface it
   // as a clean, book-scoped error rather than an unhandled throw.
@@ -97,6 +101,7 @@ async function renderModule(book, chapter, moduleId, track = 'faithful') {
     chapter: chapter === 'appendices' ? -1 : Number(chapter),
     moduleId,
     bookConfig,
+    embedMap: loadEmbedMapping(book),
     // Chapter-wide numbering maps — empty for preview (shows "?" for cross-refs)
     chapterFigureNumbers: new Map(),
     chapterTableNumbers: new Map(),
