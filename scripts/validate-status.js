@@ -214,6 +214,27 @@ let totalFiles = 0;
 let validFiles = 0;
 const allErrors = [];
 
+// D1: every book must have a valid book-config.json (domain required).
+for (const book of books) {
+  const cfgPath = path.join(booksDir, book, 'book-config.json');
+  const errors = [];
+  if (!fs.existsSync(cfgPath)) {
+    errors.push('missing book-config.json');
+  } else {
+    try {
+      const cfg = JSON.parse(fs.readFileSync(cfgPath, 'utf8'));
+      if (!cfg.domain || typeof cfg.domain !== 'string') {
+        errors.push('missing or invalid "domain"');
+      }
+    } catch (err) {
+      errors.push(`invalid JSON (${err.message})`);
+    }
+  }
+  if (errors.length > 0) {
+    allErrors.push({ file: `${book}/book-config.json`, errors });
+  }
+}
+
 console.log('Validating chapter status files...\n');
 
 for (const book of books) {
