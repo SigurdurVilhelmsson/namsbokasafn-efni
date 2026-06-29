@@ -412,3 +412,32 @@ Biology's required set is **D1, D2, D4, D6, D7** — plus Tracks A (+ C is indep
 
 ### Still open
 - **CI:** Track A's CI wiring assumes credits are restored; until then the local gate carries it.
+
+---
+
+## Out-of-scope register — issues uncovered during implementation (triage as a batch after the plan completes)
+
+*Standing rule (project-memory feedback `feedback-log-out-of-scope-issues`): every out-of-scope issue
+found while implementing an item is logged here **immediately**, so nothing scoped-out is lost. PRs stay
+tightly scoped; these are revisited together once the plan's last item ships. Per-item deferrals also live
+in their item blocks — this is the consolidated scan list. Append, don't prune.*
+
+**From A2 (untranslated-EN residue check, PR #184):**
+- **Server editor save/submit residue surface** — wire `detectResidue` into the editor service
+  save/submit path so editors see residue warnings live. Reuses `tools/lib/residue-check.js` verbatim;
+  its own PR (needs server tests + UX). *(Also noted in the A2 item.)*
+- **CI wiring for the residue gate** — decide gate-vs-advisory when Actions credits return. *(Also A2 item.)*
+- **`--allow-en-fallback` disables residue detection for the whole run, not per-module** —
+  `cnxml-inject.js` sets `checkResidue = args.lang !== 'en' && !args.allowEnFallback`, so a fallback run
+  also skips residue-checking modules that *do* have real translations. Ideal = a per-module EN-fallback
+  signal from `loadModuleInputs` so only genuinely-fallen-back modules are exempt.
+- **One missing translation file aborts the entire chapter inject (pre-existing)** — `loadModuleInputs`
+  throws on a missing translation (F20 refuse-untranslated) → outer `try/catch` in `main()` → `exit(1)`,
+  skipping all remaining modules; A2's after-loop `residue-report.<track>.json` is then never written for
+  a partially-translated chapter. Fix idea: per-module skip-and-continue + write the manifest in a
+  `finally`.
+- **`residue-report.<track>.json` tracking decision undecided** — prod `scripts/git-backup.sh` stages
+  `books/`, so the new file auto-commits. Decide: track it (like `translation-errors.json` with
+  `merge=ours`) or gitignore it.
+- **Residue warn-tier not calibrated on real data** — efnafraedi ch01 emitted 5 non-gating warnings,
+  never reviewed for legitimacy. Revisit the warn threshold once real faithful content exists.
