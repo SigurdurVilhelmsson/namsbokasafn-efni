@@ -530,10 +530,8 @@ describe('getBookRenderConfig', () => {
     expect(config.excludedSectionClasses).toContain('matching');
   });
 
-  it('returns fallback config for unknown books', () => {
-    const config = getBookRenderConfig('unknown-book');
-    expect(config.noteTypeLabels['link-to-learning']).toBe('Tengill til náms');
-    expect(config.excludedSectionClasses).toContain('summary');
+  it('throws for an unknown book with no config file (fail-loud)', () => {
+    expect(() => getBookRenderConfig('unknown-book')).toThrow(/unknown-book/);
   });
 
   it('Chemistry config does not have periodic-table for non-Chemistry modules', () => {
