@@ -388,7 +388,8 @@ is chosen next** (see Open Decisions).*
   `VEFUR_CONTRACT=1`.
 - **Acceptance:** each book has a characterization spec; CSS-contract runs for every book.
 
-### D7 — Species-name MT protection (biology)  ·  S/M  ·  biology
+### D7 — Species-name MT protection (biology)  ·  S/M  ·  biology  ·  ✅ DONE (PR #TBD — no protection needed)
+> Resolved 2026-06-29 by **probe, not build**. Paid Erlendur probe (`docs/audit/d7-species-probe.mjs`, ~172 ISK, 39 real biology paras through the production extractor, baseline vs identity-glossary) measured **46/46 real Latin binomials surviving verbatim (~100%)** inside their `[[i:]]` markers — incl. abbreviated (`G. lamblia`) and trinomial (`Homo sapiens sapiens`) forms. The API leaves Latin alone (foreign to both EN and IS). The 2 baseline "misses" were detector false positives (translatable English phrases that correctly translated). **Decision: no protection mechanism** — unneeded, and a pattern-based one would *harm* correctness by freezing non-species italic phrases in English (YAGNI + one-real-code-path). Deliverable = findings + a committed re-runnable probe (re-measure if the API drifts); zero pipeline changes. Acceptance ("documented rate") met. Design/findings: `docs/plans/2026-06-29-d7-species-mt-protection-design.md`.
 - **Problem:** biology has **384 `Genus species` italic spans** (`<emphasis effect="italics">`, extracted
   as `[[i:…]]`). The API translates marker *content*, so species binomials risk being mangled/translated
   (e.g. *Homo sapiens* must stay verbatim). Not a structural gap — an MT-quality gap specific to biology.
