@@ -521,3 +521,12 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
 - *Boundaries (owned elsewhere, not D2 — recorded so they're not re-opened against D2):* config-file
   presence → `validate` (D1); structural fidelity → A3; the gap *fixes* D2 detects → D3 (os-embed) / D4
   (iframe) / D5 (glossary), already scheduled. D2 detects only.
+
+**From D6 (parametrized CSS-contract):**
+- **[VEFUR] 14 cross-book CSS variant/section gaps** — parametrizing the css-contract over all 5 books
+  surfaced classes non-chemistry books emit but vefur `content.css` doesn't style (biology/microbiology
+  `note-*` variants + `span-all`; organic/physics exercise-section types; `note-interactive` SHARED).
+  All render via base `.note`/plain divs — cosmetic, not broken. Tracked in efni `css-contract.test.js`
+  `KNOWN_GAPS` + **vefur memory `css-cross-book-gaps`** (the actionable list lives in the vefur repo, per
+  cross-repo protocol). Per-book launch polish; `note-interactive` is a quick vefur win. Remove from
+  `KNOWN_GAPS` as each gets a real rule.
