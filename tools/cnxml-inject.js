@@ -1039,8 +1039,13 @@ function buildMediaElement(media) {
   const classAttr = media.class ? ` class="${media.class}"` : '';
   const altAttr = media.alt ? ` alt="${escapeXml(media.alt)}"` : '';
 
-  const mimeType = media.mimeType || inferMimeType(media.src);
+  if (media.embedSrc) {
+    const w = media.width ? ` width="${escapeXml(media.width)}"` : '';
+    const h = media.height ? ` height="${escapeXml(media.height)}"` : '';
+    return `<media${idAttr}${classAttr}${altAttr}><iframe${w}${h} src="${escapeXml(media.embedSrc)}"/></media>`;
+  }
 
+  const mimeType = media.mimeType || inferMimeType(media.src);
   return `<media${idAttr}${classAttr}${altAttr}><image mime-type="${mimeType}" src="${media.src}"/></media>`;
 }
 
@@ -3022,7 +3027,11 @@ function buildMedia(element) {
   const lines = [];
   lines.push(`<media${idAttr}${classAttr}${alt}>`);
 
-  if (element.src) {
+  if (element.embedSrc) {
+    const w = element.width ? ` width="${escapeXml(element.width)}"` : '';
+    const h = element.height ? ` height="${escapeXml(element.height)}"` : '';
+    lines.push(`<iframe${w}${h} src="${escapeXml(element.embedSrc)}"/>`);
+  } else if (element.src) {
     const mimeType = inferMimeType(element.src);
     lines.push(`<image mime-type="${mimeType}" src="${element.src}"/>`);
   }
@@ -3553,4 +3562,6 @@ export {
   buildNoteDom,
   applyImageBasenameSwaps,
   loadImageBasenameMap,
+  buildMediaElement,
+  buildMedia,
 };

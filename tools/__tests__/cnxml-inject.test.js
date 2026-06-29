@@ -7,6 +7,8 @@ import {
   buildCnxml,
   buildExampleDom,
   buildExerciseDom,
+  buildMediaElement,
+  buildMedia,
 } from '../cnxml-inject.js';
 
 // ─── parseSegments ────────────────────────────────────────────────
@@ -1056,5 +1058,33 @@ describe('buildCnxml EN-residue detection (A2)', () => {
     });
     expect(result.report.residues).toEqual([]);
     expect(result.report.complete).toBe(true);
+  });
+});
+
+// ─── inject: iframe media re-emit ─────────────────────────────────
+
+describe('inject: iframe media re-emit', () => {
+  const embed = {
+    id: 'm1',
+    class: null,
+    alt: 'diet_detective',
+    embedSrc: 'https://www.openstax.org/l/diet_detective',
+    width: '660',
+    height: '371.4',
+  };
+
+  it('buildMediaElement re-emits an inline iframe verbatim', () => {
+    const out = buildMediaElement(embed);
+    expect(out).toContain('<iframe');
+    expect(out).toContain('src="https://www.openstax.org/l/diet_detective"');
+    expect(out).toContain('width="660"');
+    expect(out).not.toContain('<image');
+  });
+
+  it('buildMedia re-emits a block iframe verbatim', () => {
+    const out = buildMedia(embed);
+    expect(out).toContain('<iframe');
+    expect(out).toContain('src="https://www.openstax.org/l/diet_detective"');
+    expect(out).not.toContain('<image');
   });
 });
