@@ -1266,21 +1266,29 @@ function renderMedia(media, context) {
  * list/figure/media after the para (preserving prior behavior). Figures/lists/
  * media are leaves here — their own renderers handle their internals.
  *
+ * A block nested inside a <para> is HOISTED out and rendered after the para
+ * (renderPara does not strip block children, so they would otherwise leak as raw
+ * CNXML). Which child types hoist is configurable via `options.hoistTags`:
+ * notes hoist every block; examples hoist only <list> (their figures/equations
+ * render inline via renderPara). Children NOT hoisted stay inside the para.
+ *
  * @param {string} content - CNXML fragment (a container's inner content)
  * @param {object} context - Render context passed through to each renderer
  * @param {Record<string, function(object, object): string>} dispatch
  *   Map of block localName → renderer(elementObject, context) → HTML string.
- *   `para` is descended into for hoisting; other names are treated as leaves.
+ * @param {object} [options]
+ * @param {string[]} [options.hoistTags] - localNames to hoist out of a <para>
+ *   and render after it. Defaults to every key in `dispatch`.
  * @returns {string[]} Rendered HTML strings, one per emitted block, in order
  */
-function renderBlockChildrenInOrder(content, context, dispatch) {
+function renderBlockChildrenInOrder(content, context, dispatch, options = {}) {
   const out = [];
   const { root } = parseCnxmlFragment(content);
+  const hoistTags = options.hoistTags || Object.keys(dispatch);
 
   // Process one block element: render it via its dispatcher. For a <para>, first
-  // detach its dispatchable block children so renderPara emits inline-only
-  // content (it does not strip blocks itself — they would otherwise leak as raw
-  // CNXML), then hoist those children after the para, in source order. Other
+  // detach the block children flagged for hoisting (so renderPara does not emit
+  // them as raw CNXML), then render those after the para, in source order. Other
   // block types are leaves: their own renderers emit their descendants.
   const processBlock = (node) => {
     const name = node.localName;
@@ -1288,17 +1296,23 @@ function renderBlockChildrenInOrder(content, context, dispatch) {
 
     if (name === 'para') {
       const hoisted = Array.from(node.childNodes).filter(
-        (c) => c.nodeType === 1 && dispatch[c.localName]
+        (c) => c.nodeType === 1 && hoistTags.includes(c.localName)
       );
       for (const child of hoisted) node.removeChild(child);
       const obj = extractElements(serializeCnxmlFragment(node), 'para')[0];
-      if (obj) out.push(dispatch.para(obj, context));
+      if (obj) {
+        const html = dispatch.para(obj, context);
+        if (html) out.push(html);
+      }
       for (const child of hoisted) processBlock(child);
       return;
     }
 
     const obj = extractNestedElements(serializeCnxmlFragment(node), name)[0];
-    if (obj) out.push(dispatch[name](obj, context));
+    if (obj) {
+      const html = dispatch[name](obj, context);
+      if (html) out.push(html);
+    }
   };
 
   for (const child of Array.from(root.childNodes)) {
@@ -1404,197 +1418,80 @@ function renderExample(example, context) {
     lines.push(`  <h4>${processInlineContent(exampleTitle, context)}</h4>`);
   }
 
-  // Collect all elements with their positions for document order rendering
-  const elementsWithPositions = [];
-
-  // Extract notes first (they contain other elements)
-  const notes = extractNestedElements(example.content, 'note');
-  for (const note of notes) {
-    const pos = note.fullMatch
-      ? example.content.indexOf(note.fullMatch)
-      : example.content.indexOf(`id="${note.id}"`);
-    elementsWithPositions.push({
-      type: 'note',
-      item: note,
-      position: pos !== -1 ? pos : 0,
-    });
-  }
-
-  // Strip notes from content before extracting simple elements to avoid duplicates
-  let contentForSimpleElements = example.content;
-  for (const note of notes) {
-    if (note.fullMatch) {
-      contentForSimpleElements = contentForSimpleElements.replace(note.fullMatch, '');
-    }
-  }
-
-  // Extract lists before paras so lists inside paras don't leak as raw CNXML
-  const lists = extractNestedElements(contentForSimpleElements, 'list');
-  for (const lst of lists)
-    if (lst.fullMatch)
-      contentForSimpleElements = contentForSimpleElements.replace(lst.fullMatch, '');
-
-  // Extract paragraphs from content WITHOUT notes or lists
-  const parasOutsideNotes = extractElements(contentForSimpleElements, 'para');
-  for (const para of parasOutsideNotes) {
-    const pos = para.id
-      ? example.content.indexOf(`id="${para.id}"`)
-      : example.content.indexOf('<para');
-    elementsWithPositions.push({
-      type: 'para',
-      item: para,
-      position: pos !== -1 ? pos : 0,
-    });
-
-    // Mark figures inside paras as rendered so section-level renderFigure skips them
-    if (context.renderedFigureIds) {
-      const figPattern = /<figure[^>]*\sid="([^"]+)"/g;
-      let figMatch;
-      while ((figMatch = figPattern.exec(para.content)) !== null) {
-        context.renderedFigureIds.add(figMatch[1]);
-      }
-    }
-  }
-
-  for (const list of lists) {
-    const pos = list.fullMatch
-      ? example.content.indexOf(list.fullMatch)
-      : example.content.indexOf(`id="${list.id}"`);
-    elementsWithPositions.push({
-      type: 'list',
-      item: list,
-      position: pos !== -1 ? pos : 0,
-    });
-  }
-
-  // Extract equations from content WITHOUT notes
-  const equations = extractElements(contentForSimpleElements, 'equation');
-  for (const eq of equations) {
-    const pos = eq.fullMatch
-      ? example.content.indexOf(eq.fullMatch)
-      : example.content.indexOf(`id="${eq.id}"`);
-    elementsWithPositions.push({
-      type: 'equation',
-      item: eq,
-      position: pos !== -1 ? pos : 0,
-    });
-  }
-
-  // Extract direct-child figures (figures between paras, not inside paras).
-  // These are e.g., problem figures in examples that sit between the question and strategy paras.
-  const directFigures = extractNestedElements(contentForSimpleElements, 'figure');
-  for (const fig of directFigures) {
-    // Skip figures already inside a para (those are rendered as part of the para).
-    // Match the figure's own opening tag (<figure ... id="X">), NOT a bare
-    // id="X" substring — the latter also matches a sibling para's
-    // <link target-id="X"/> xref to this figure, which would wrongly skip a
-    // genuine direct-child figure and leak it outside the example.
-    const isInsidePara = parasOutsideNotes.some((p) => {
-      const figRe = /<figure\b[^>]*\sid="([^"]+)"/g;
-      let fm;
-      while ((fm = figRe.exec(p.content)) !== null) {
-        if (fm[1] === fig.id) return true;
-      }
-      return false;
-    });
-    if (isInsidePara) continue;
-
-    const pos = fig.fullMatch
-      ? example.content.indexOf(fig.fullMatch)
-      : example.content.indexOf(`id="${fig.id}"`);
-    elementsWithPositions.push({
-      type: 'figure',
-      item: fig,
-      position: pos !== -1 ? pos : 0,
-    });
-    // NOTE: Don't add to renderedFigureIds here — renderFigure() handles that itself.
-    // Adding early would cause renderFigure to skip it with an empty return.
-  }
-
-  // Strip figures from content before extracting standalone media —
-  // figures inside paras are rendered as part of the para, and direct-child
-  // figures are rendered via the figure case above. Their <media> children
-  // should not appear separately as standalone media.
-  const contentForMedia = contentForSimpleElements.replace(/<figure[^>]*>[\s\S]*?<\/figure>/g, '');
-
-  // Extract standalone media from content WITHOUT notes or figures
-  const standaloneMedia = extractNestedElements(contentForMedia, 'media');
-  for (const media of standaloneMedia) {
-    const pos = media.fullMatch
-      ? example.content.indexOf(media.fullMatch)
-      : example.content.indexOf(`id="${media.id}"`);
-    elementsWithPositions.push({
-      type: 'media',
-      item: media,
-      position: pos !== -1 ? pos : 0,
-    });
-  }
-
-  // Sort by position
-  elementsWithPositions.sort((a, b) => a.position - b.position);
-
-  // Track if we've stripped the example title (from the first para)
+  // Render block children in document order via the DOM seam. A top-level walk
+  // means a figure that is a direct child of the example dispatches to
+  // renderFigure, while a figure nested in a para is rendered inline by
+  // renderPara — so the old `isInsidePara` xref-collision guard is retired (the
+  // DOM distinguishes structurally). Only <list> is hoisted out of paras
+  // (matching the prior list-strip); figures/equations/media stay inline.
   let exampleTitleStripped = false;
 
-  // Render in document order
-  for (const { type, item } of elementsWithPositions) {
-    switch (type) {
-      case 'para': {
-        // Check if this para has a title
-        const titleMatch = item.content.match(/^\s*<title>([^<]+)<\/title>/);
-        let paraTitle = null;
-        let contentWithoutTitle = item.content;
+  const paraHandler = (para, ctx) => {
+    const titleMatch = para.content.match(/^\s*<title>([^<]+)<\/title>/);
+    let paraTitle = null;
+    let contentWithoutTitle = para.content;
 
-        if (titleMatch) {
-          if (!exampleTitleStripped && exampleTitle && titleMatch[1] === exampleTitle) {
-            // This is the example title - strip it (already rendered as h3)
-            contentWithoutTitle = item.content.replace(/^\s*<title>[^<]+<\/title>\s*/, '');
-            exampleTitleStripped = true;
-          } else {
-            // This is a different para title (e.g., "Check Your Learning", "Solution")
-            // Preserve it and render as a strong heading
-            paraTitle = titleMatch[1];
-            contentWithoutTitle = item.content.replace(/^\s*<title>[^<]+<\/title>\s*/, '');
-          }
-        }
-
-        if (paraTitle || contentWithoutTitle.trim()) {
-          const paraWithCleanContent = { ...item, content: contentWithoutTitle };
-          if (paraTitle) {
-            // Render para title as a strong element, then the para content
-            lines.push(
-              `  <p class="para-title"><strong>${escapeHtml(translateTitle(paraTitle))}</strong></p>`
-            );
-          }
-          if (contentWithoutTitle.trim()) {
-            lines.push(`  ${renderPara(paraWithCleanContent, context)}`);
-          }
-        }
-        break;
+    if (titleMatch) {
+      if (!exampleTitleStripped && exampleTitle && titleMatch[1] === exampleTitle) {
+        // The example title — already rendered as the <h4> header; strip it.
+        contentWithoutTitle = para.content.replace(/^\s*<title>[^<]+<\/title>\s*/, '');
+        exampleTitleStripped = true;
+      } else {
+        // A section title (e.g. "Lausn", "Athugaðu þekkingu") — render as a heading.
+        paraTitle = titleMatch[1];
+        contentWithoutTitle = para.content.replace(/^\s*<title>[^<]+<\/title>\s*/, '');
       }
-      case 'list':
-        lines.push(`  ${renderList(item, context)}`);
-        break;
-      case 'equation':
-        lines.push(`  ${renderEquation(item, context)}`);
-        break;
-      case 'note': {
-        // A classless note inside a worked example is the "Check Your Learning"
-        // answer (OpenStax structure: classed notes like link-to-learning carry
-        // an explicit class). Mark it so the reader can hide it behind a
-        // "Sýna svar" reveal toggle.
-        const answerClass =
-          item.attributes && !item.attributes.class ? 'check-knowledge-answer' : '';
-        lines.push(`  ${renderNote(item, context, answerClass)}`);
-        break;
-      }
-      case 'media':
-        lines.push(`  ${renderMedia(item, context)}`);
-        break;
-      case 'figure':
-        lines.push(`  ${renderFigure(item, context)}`);
-        break;
     }
+
+    // Register figures inside this para so section-level renderFigure skips them.
+    if (ctx.renderedFigureIds) {
+      const figPattern = /<figure[^>]*\sid="([^"]+)"/g;
+      let figMatch;
+      while ((figMatch = figPattern.exec(contentWithoutTitle)) !== null) {
+        ctx.renderedFigureIds.add(figMatch[1]);
+      }
+    }
+
+    const parts = [];
+    if (paraTitle) {
+      parts.push(
+        `<p class="para-title"><strong>${escapeHtml(translateTitle(paraTitle))}</strong></p>`
+      );
+    }
+    if (contentWithoutTitle.trim()) {
+      parts.push(renderPara({ ...para, content: contentWithoutTitle }, ctx));
+    }
+    return parts.join('\n  ');
+  };
+
+  const noteHandler = (note, ctx) => {
+    // A classless note inside a worked example is the "Check Your Learning"
+    // answer; tag it so the reader can hide it behind a "Sýna svar" toggle.
+    const answerClass = note.attributes && !note.attributes.class ? 'check-knowledge-answer' : '';
+    return renderNote(note, ctx, answerClass);
+  };
+
+  const blocks = renderBlockChildrenInOrder(
+    example.content,
+    context,
+    {
+      para: paraHandler,
+      note: noteHandler,
+      list: renderList,
+      equation: renderEquation,
+      figure: renderFigure,
+      media: renderMedia,
+    },
+    // Hoist block-level <equation> out of a <para> so it renders ONCE as a
+    // centered display block, not as a cramped inline <span class="math-inline">
+    // copy at its natural position. CNXML <equation> is block-level; the inline
+    // render was a renderPara artifact that, combined with the old position-sort's
+    // separate block, produced a visible duplicate (verified live on
+    // namsbokasafn.is, ch14 Dæmi 14.4/14.5).
+    { hoistTags: ['list', 'equation'] }
+  );
+  for (const block of blocks) {
+    lines.push(`  ${block}`);
   }
 
   lines.push('</aside>');
@@ -1644,59 +1541,29 @@ function renderExercise(exercise, context) {
 
   lines.push(`<div ${attrs.join(' ')}>`);
 
-  // Helper: render problem/solution section content with paras, media, figures, and lists in order
+  // Helper: render problem/solution section content (paras, media, figures,
+  // lists) in document order via the DOM seam. Only <list> is hoisted out of a
+  // <para> (matching the prior list-strip); figures render inline via renderPara.
   function renderSectionContent(sectionContent) {
-    // Extract lists before paras so lists inside paras don't leak as raw CNXML
-    const lists = extractNestedElements(sectionContent, 'list');
-    let contentForParas = sectionContent;
-    for (const lst of lists)
-      if (lst.fullMatch) contentForParas = contentForParas.replace(lst.fullMatch, '');
-
-    const paras = extractElements(contentForParas, 'para');
-    // Strip figures before extracting standalone media
-    const contentWithoutFigures = sectionContent.replace(/<figure[\s\S]*?<\/figure>/g, '');
-    const medias = extractNestedElements(contentWithoutFigures, 'media');
-    const figures = extractNestedElements(sectionContent, 'figure');
-
-    const elementsWithPositions = [];
-    for (const para of paras) {
-      const pos = sectionContent.indexOf(`id="${para.id}"`);
-      elementsWithPositions.push({ type: 'para', item: para, position: pos !== -1 ? pos : 0 });
-    }
-    for (const media of medias) {
-      const pos = media.fullMatch
-        ? sectionContent.indexOf(media.fullMatch)
-        : sectionContent.indexOf(`id="${media.id}"`);
-      elementsWithPositions.push({ type: 'media', item: media, position: pos !== -1 ? pos : 0 });
-    }
-    for (const figure of figures) {
-      const pos = sectionContent.indexOf(`id="${figure.id}"`);
-      elementsWithPositions.push({ type: 'figure', item: figure, position: pos !== -1 ? pos : 0 });
-    }
-    for (const list of lists) {
-      const pos = list.id
-        ? sectionContent.indexOf(`id="${list.id}"`)
-        : sectionContent.indexOf('<list');
-      elementsWithPositions.push({ type: 'list', item: list, position: pos !== -1 ? pos : 0 });
-    }
-
-    elementsWithPositions.sort((a, b) => a.position - b.position);
-
-    for (const { type, item } of elementsWithPositions) {
-      switch (type) {
-        case 'para':
-          lines.push(`    ${renderPara(item, context)}`);
-          break;
-        case 'media':
-          lines.push(`    ${renderMedia(item, context)}`);
-          break;
-        case 'figure':
-          lines.push(`    ${renderFigure(item, context)}`);
-          break;
-        case 'list':
-          lines.push(`    ${renderList(item, context)}`);
-          break;
-      }
+    const blocks = renderBlockChildrenInOrder(
+      sectionContent,
+      context,
+      {
+        para: renderPara,
+        media: renderMedia,
+        figure: renderFigure,
+        list: renderList,
+        equation: renderEquation,
+      },
+      // Hoist block-level <equation> out of a <para> so it renders once as a
+      // centered display block (parity with renderExample). A direct-child
+      // <equation> of <problem>/<solution> also needs the dispatcher above —
+      // without it the DOM seam skipped the node entirely and dropped the
+      // equation (e.g. m68670's density formula d = m/V).
+      { hoistTags: ['list', 'equation'] }
+    );
+    for (const block of blocks) {
+      lines.push(`    ${block}`);
     }
   }
 
