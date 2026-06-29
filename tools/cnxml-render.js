@@ -61,6 +61,7 @@ import {
   generateFallbackLabel,
   getExerciseSectionClasses,
 } from './lib/book-rendering-config.js';
+import { loadEmbedMapping, renderEmbedHtml } from './lib/embed-mapping.js';
 
 // Matches editor/pipeline artifact files that must never live in or sync from
 // the publication dir: safeWrite backups, manual `.pre-fix-*`, `.bak`, and any
@@ -77,6 +78,7 @@ function isPublicationArtifact(name) {
 let NOTE_TYPE_LABELS = {};
 let TITLE_TRANSLATIONS = {};
 let BOOK_CONFIG = null;
+let EMBED_MAP = {};
 
 /**
  * Get the display label for a note type.
@@ -424,6 +426,11 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     NOTE_TYPE_LABELS = options.bookConfig.noteTypeLabels || {};
   }
 
+  // D4: test-injection path — caller supplies embedMap to avoid file I/O.
+  // CLI path loads it in main(); server path uses the module global (empty unless
+  // the book has a committed embed-mapping.json).
+  if (options.embedMap) EMBED_MAP = options.embedMap;
+
   // Parse CNXML
   const doc = parseCnxmlDocument(cnxml);
   const title = options.titleOverride || doc.title;
@@ -471,6 +478,7 @@ function renderCnxmlToHtml(cnxml, options = {}) {
   const context = {
     chapter,
     bookSlug: BOOK_SLUG,
+    embedMap: EMBED_MAP,
     moduleId,
     equations: [],
     terms: {},
@@ -1202,19 +1210,34 @@ function renderFigure(figure, context) {
   if (mediaMatch) {
     const mediaAttrs = parseAttributes(mediaMatch[1]);
     const mediaContent = mediaMatch[2];
-    const imageMatch = mediaContent.match(/<image([^>]*)\/?>(?:<\/image>)?/);
 
-    if (imageMatch) {
-      const imageAttrs = parseAttributes(imageMatch[1]);
-      const src = imageAttrs.src || '';
-      // Use absolute path for vefur content serving
-      const chapterStr = formatChapterOutput(context.chapter);
-      const normalizedSrc = normalizeImageSrc(src, BOOK_SLUG, chapterStr);
-      const alt = mediaAttrs.alt || '';
-
+    // D4: render <iframe> embeds (PhET/YouTube) as resolved responsive iframes
+    const iframeMatch = mediaContent.match(/<iframe([^>]*)\/?>/);
+    if (iframeMatch) {
+      const a = parseAttributes(iframeMatch[1]);
       lines.push(
-        `  <img src="${escapeAttr(normalizedSrc)}" alt="${escapeAttr(alt)}" loading="lazy">`
+        renderEmbedHtml({
+          embedSrc: a.src || '',
+          width: a.width || '',
+          height: a.height || '',
+          title: (mediaAttrs.alt || '').replace(/[_-]+/g, ' '),
+          embedMap: context.embedMap || EMBED_MAP,
+        })
       );
+    } else {
+      const imageMatch = mediaContent.match(/<image([^>]*)\/?>(?:<\/image>)?/);
+      if (imageMatch) {
+        const imageAttrs = parseAttributes(imageMatch[1]);
+        const src = imageAttrs.src || '';
+        // Use absolute path for vefur content serving
+        const chapterStr = formatChapterOutput(context.chapter);
+        const normalizedSrc = normalizeImageSrc(src, BOOK_SLUG, chapterStr);
+        const alt = mediaAttrs.alt || '';
+
+        lines.push(
+          `  <img src="${escapeAttr(normalizedSrc)}" alt="${escapeAttr(alt)}" loading="lazy">`
+        );
+      }
     }
   }
 
@@ -1249,6 +1272,19 @@ function renderMedia(media, context) {
   const id = media.id || null;
   const className = media.attributes.class || null;
   const alt = media.attributes.alt || '';
+
+  // D4: render <iframe> embeds (PhET/YouTube) as resolved responsive iframes
+  const iframeMatch = media.content.match(/<iframe([^>]*)\/?>/);
+  if (iframeMatch) {
+    const a = parseAttributes(iframeMatch[1]);
+    return renderEmbedHtml({
+      embedSrc: a.src || '',
+      width: a.width || '',
+      height: a.height || '',
+      title: alt.replace(/[_-]+/g, ' '),
+      embedMap: context.embedMap || EMBED_MAP,
+    });
+  }
 
   // Extract image src from content
   const imageMatch = media.content.match(/<image([^>]*)\/?>(?:<\/image>)?/);
@@ -2341,6 +2377,7 @@ function renderKeyEquations(chapter, equations, equationTextDictionary) {
   const context = {
     chapter,
     bookSlug: BOOK_SLUG,
+    embedMap: EMBED_MAP,
     figures: {},
     tables: {},
     examples: {},
@@ -3239,6 +3276,7 @@ async function main() {
   BOOK_CONFIG = getBookRenderConfig(BOOK_SLUG);
   NOTE_TYPE_LABELS = BOOK_CONFIG.noteTypeLabels;
   TITLE_TRANSLATIONS = BOOK_CONFIG.titleTranslations;
+  EMBED_MAP = loadEmbedMapping(BOOK_SLUG);
 
   if (args.help) {
     printHelp();
@@ -3866,6 +3904,7 @@ ${anchors}
           lang: args.lang,
           chapter: args.chapter,
           bookSlug: BOOK_SLUG,
+          embedMap: EMBED_MAP,
           moduleSections,
           chapterFigureNumbers,
           chapterTableNumbers,

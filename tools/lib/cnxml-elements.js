@@ -12,6 +12,7 @@ import {
   localizeMathMLText,
 } from './mathml-to-latex.js';
 import { resolveModuleHref } from './module-sections.js';
+import { renderEmbedHtml } from './embed-mapping.js';
 
 // =====================================================================
 // CROSS-MODULE LINK RESOLUTION
@@ -782,6 +783,24 @@ export function processInlineContent(content, context) {
           : escapeHtml(displayText);
       if (href === null) return renderedText;
       return `<a href="${escapeAttr(href)}">${renderedText}</a>`;
+    }
+  );
+
+  // D4: Convert inline <media><iframe> embeds (PhET/YouTube) to resolved responsive iframes
+  result = result.replace(
+    /<media\s([^>]*)>\s*<iframe([^>]*)\/?>\s*<\/media>/g,
+    (match, mediaAttrsStr, iframeAttrsStr) => {
+      const alt = (mediaAttrsStr.match(/alt="([^"]*)"/) || [, ''])[1];
+      const src = (iframeAttrsStr.match(/src="([^"]*)"/) || [, ''])[1];
+      const width = (iframeAttrsStr.match(/width="([^"]*)"/) || [, ''])[1];
+      const height = (iframeAttrsStr.match(/height="([^"]*)"/) || [, ''])[1];
+      return renderEmbedHtml({
+        embedSrc: src,
+        width,
+        height,
+        title: alt.replace(/[_-]+/g, ' '),
+        embedMap: context.embedMap || {},
+      });
     }
   );
 
