@@ -17,7 +17,12 @@ const VEFUR_CSS_PATH = path.resolve(
   __dirname,
   '../../../namsbokasafn-vefur/static/styles/content.css'
 );
-const PUBLICATION_DIR = path.resolve(__dirname, '../../books/efnafraedi-2e/05-publication');
+const BOOKS_DIR = path.resolve(__dirname, '../../books');
+// Every book that has rendered publication output — the contract runs per book.
+const PUBLICATION_DIRS = fs
+  .readdirSync(BOOKS_DIR)
+  .map((book) => ({ book, dir: path.join(BOOKS_DIR, book, '05-publication') }))
+  .filter((e) => fs.existsSync(e.dir));
 
 // Classes that are intentionally NOT in content.css (handled by external libraries or browsers)
 const EXTERNAL_CLASSES = new Set([
@@ -51,6 +56,27 @@ const KNOWN_GAPS = new Set([
   'stepwise', // Step-by-step numbered lists (OpenStax list variant) — needs indentation styling
   'summary', // Chapter summary section wrapper
   'summary-section', // Individual module summary within chapter summary
+  // ── Cross-book gaps surfaced by D6 parametrization (2026-06-29) ──
+  // All render acceptably via base rules (notes via `.note`, sections as plain
+  // divs); these are missing *variant/section* polish in vefur content.css.
+  // Tracked for per-book launch styling — see vefur memory `css-cross-book-gaps`.
+  // Book-specific note-type variants (styled by base .note; lack per-type accent):
+  'note-evolution', // biology
+  'note-career', // biology
+  'note-visual-connection', // biology
+  'note-microbiology', // microbiology
+  'note-interactive', // SHARED 'interactive' note type — quick vefur win (mirror .note-link-to-learning)
+  // Book-specific end-of-chapter / section types (unstyled section divs):
+  'section-exercises', // organic
+  'section-summary', // physics
+  'conceptual-questions', // physics
+  'problems-exercises', // physics
+  'chemistry-matters', // organic eoc section
+  'exercise-part', // organic
+  'key-terms-section', // organic key-terms page
+  // Layout/misc:
+  'span-all', // table full-width row (biology, microbiology)
+  'centered-text', // organic
 ]);
 
 /**
@@ -95,29 +121,36 @@ function extractHtmlClasses(htmlContent) {
 }
 
 describe('CSS contract: namsbokasafn-efni ↔ namsbokasafn-vefur', () => {
-  // Skip entire suite if vefur repo or publication files don't exist
+  // Skip when the sister vefur repo isn't checked out — unless VEFUR_CONTRACT=1,
+  // which turns the missing CSS into a hard failure (for CI/dev with vefur present).
   const vefurExists = fs.existsSync(VEFUR_CSS_PATH);
-  const pubExists = fs.existsSync(PUBLICATION_DIR);
+  const requireVefur = process.env.VEFUR_CONTRACT === '1';
 
-  it.skipIf(!vefurExists || !pubExists)(
-    'rendered HTML classes have matching CSS rules in content.css',
-    () => {
+  if (requireVefur) {
+    it('VEFUR_CONTRACT=1 requires the vefur content.css to be present', () => {
+      expect(vefurExists, `VEFUR_CONTRACT=1 but vefur CSS not found at ${VEFUR_CSS_PATH}`).toBe(
+        true
+      );
+    });
+  }
+
+  // One class↔CSS-match test per book that has publication output.
+  for (const { book, dir } of PUBLICATION_DIRS) {
+    it.skipIf(!vefurExists)(`[${book}] rendered HTML classes have matching CSS rules`, () => {
       const cssContent = fs.readFileSync(VEFUR_CSS_PATH, 'utf-8');
       const cssClasses = extractCssClasses(cssContent);
 
-      // Collect classes from all rendered HTML files
-      const htmlFiles = glob.sync('**/*.html', { cwd: PUBLICATION_DIR });
+      const htmlFiles = glob.sync('**/*.html', { cwd: dir });
       expect(htmlFiles.length).toBeGreaterThan(0);
 
       const allHtmlClasses = new Set();
       for (const file of htmlFiles) {
-        const content = fs.readFileSync(path.join(PUBLICATION_DIR, file), 'utf-8');
+        const content = fs.readFileSync(path.join(dir, file), 'utf-8');
         for (const cls of extractHtmlClasses(content)) {
           allHtmlClasses.add(cls);
         }
       }
 
-      // Find classes used in HTML but missing from CSS
       const missing = [];
       const knownGaps = [];
       for (const cls of allHtmlClasses) {
@@ -132,17 +165,16 @@ describe('CSS contract: namsbokasafn-efni ↔ namsbokasafn-vefur', () => {
         }
       }
 
-      // Log known gaps for awareness
       if (knownGaps.length > 0) {
-        console.log(`Known CSS gaps (${knownGaps.length}): ${knownGaps.sort().join(', ')}`);
+        console.log(
+          `[${book}] known CSS gaps (${knownGaps.length}): ${knownGaps.sort().join(', ')}`
+        );
       }
 
       if (missing.length > 0) {
-        // Provide actionable error message
         const details = missing.sort().map((cls) => {
-          // Find which HTML files use this class
           const files = htmlFiles.filter((f) => {
-            const content = fs.readFileSync(path.join(PUBLICATION_DIR, f), 'utf-8');
+            const content = fs.readFileSync(path.join(dir, f), 'utf-8');
             return (
               content.includes(`class="${cls}"`) ||
               content.includes(` ${cls} `) ||
@@ -153,32 +185,32 @@ describe('CSS contract: namsbokasafn-efni ↔ namsbokasafn-vefur', () => {
         });
         expect(missing).toEqual(
           [],
-          `${missing.length} CSS class(es) used in rendered HTML but missing from content.css:\n${details.join('\n')}\n\nFix: add rules to namsbokasafn-vefur/static/styles/content.css or add to EXTERNAL_CLASSES/STRUCTURAL_CLASSES in this test if intentional.`
+          `[${book}] ${missing.length} CSS class(es) used in rendered HTML but missing from content.css:\n${details.join('\n')}\n\nFix: add rules to namsbokasafn-vefur/static/styles/content.css or add to EXTERNAL_CLASSES/STRUCTURAL_CLASSES in this test if intentional.`
         );
       }
-    }
-  );
+    });
+  }
 
-  it.skipIf(!vefurExists || !pubExists)(
-    'content.css has no obviously dead selectors for content classes',
+  // Dead-selector scan is cross-book: a selector unused by one book may be used
+  // by another, so accumulate HTML classes across ALL books. Informational only.
+  it.skipIf(!vefurExists)(
+    'content.css has no obviously dead selectors for content classes (all books)',
     { timeout: 60_000 },
     () => {
       const cssContent = fs.readFileSync(VEFUR_CSS_PATH, 'utf-8');
       const cssClasses = extractCssClasses(cssContent);
 
-      // Collect classes from all rendered HTML files
-      const htmlFiles = glob.sync('**/*.html', { cwd: PUBLICATION_DIR });
       const allHtmlClasses = new Set();
-      for (const file of htmlFiles) {
-        const content = fs.readFileSync(path.join(PUBLICATION_DIR, file), 'utf-8');
-        for (const cls of extractHtmlClasses(content)) {
-          allHtmlClasses.add(cls);
+      for (const { dir } of PUBLICATION_DIRS) {
+        const htmlFiles = glob.sync('**/*.html', { cwd: dir });
+        for (const file of htmlFiles) {
+          const content = fs.readFileSync(path.join(dir, file), 'utf-8');
+          for (const cls of extractHtmlClasses(content)) {
+            allHtmlClasses.add(cls);
+          }
         }
       }
 
-      // CSS classes not used in any HTML — potential dead code
-      // This is informational, not a failure, since CSS may cover
-      // content types not yet rendered (other books, future chapters)
       const unused = [];
       for (const cls of cssClasses) {
         if (!allHtmlClasses.has(cls)) {
@@ -186,10 +218,9 @@ describe('CSS contract: namsbokasafn-efni ↔ namsbokasafn-vefur', () => {
         }
       }
 
-      // Just log, don't fail — some CSS rules are for future content
       if (unused.length > 0) {
         console.log(
-          `Info: ${unused.length} CSS classes in content.css not used in current rendered HTML:\n  ${unused.sort().join(', ')}`
+          `Info: ${unused.length} CSS classes in content.css not used in any book's rendered HTML:\n  ${unused.sort().join(', ')}`
         );
       }
     }
