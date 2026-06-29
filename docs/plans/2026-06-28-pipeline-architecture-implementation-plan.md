@@ -322,7 +322,8 @@ modules round-trip clean. **C0 safety nets are mandatory before C1.***
 *Goal: make onboarding a data + probe operation and close the content gaps. **Order D3-D5 by which book
 is chosen next** (see Open Decisions).*
 
-### D1 — Per-book config as data file + fail-loud + `--book` required  ·  L  ·  blocks all
+### D1 — Per-book config as data file + fail-loud + `--book` required  ·  L  ·  blocks all  ·  ✅ DONE (PR #187 mechanism + #188 enforcement)
+> Shipped 2026-06-29. `book-config.json` per book; `getBookRenderConfig` loads+merges over `SHARED_*` (lossless loader); `bookToDomain` reads `config.domain`; `--book` required across 9 tools; fail-loud on missing config; `chapter-modules` chemistry-map removed; `validate` requires `book-config.json`. `--allow-default` dropped (YAGNI). Design/plans: `docs/plans/2026-06-29-d1-*`.
 - **Problem:** config is code-resident (`book-rendering-config.js:48-341`); unknown book → silently
   incomplete default (`:350-363`); every tool defaults `--book` to chemistry (`parseArgs.js:23`);
   `chapter-modules.js:48-79` falls through to a chemistry hardcoded map.
@@ -336,7 +337,8 @@ is chosen next** (see Open Decisions).*
 - **Acceptance:** a fresh fake book with a data-file config renders; a missing config errors clearly; a
   forgotten `--book` errors instead of silently using chemistry.
 
-### D2 — Pre-intake structural probe  ·  M  ·  blocks all
+### D2 — Pre-intake structural probe  ·  M  ·  blocks all  ·  ✅ DONE (PR #189)
+> Shipped 2026-06-29. Read-only `tools/preintake-probe.js` (+ pure `tools/lib/preintake-checks.js`): scans candidate CNXML → go/no-go checklist (os-embed BLOCK; iframe/empty-glossary/unknown-note-class/unrecognized-inline WARN); `--book`/`--source`/`--json`. Acceptance test reproduces all 5 books' known gaps. Design/plan: `docs/plans/2026-06-29-d2-*`.
 - One-shot script over a candidate's raw CNXML, each check tied to a proven failure: `os-embed` present
   (no translation path), `<iframe>` present (dropped), `<glossary>==0 with <term>` present (empty
   key-terms page), unknown note classes, unrecognized inline elements (the whitelist `stripTags:374`
@@ -380,7 +382,8 @@ is chosen next** (see Open Decisions).*
 - **Acceptance:** organic + microbiology produce a populated key-terms / glossary page; microbiology's
   feeds the reader hover lookup. (Microbiology is not the next book — implement when it is scheduled.)
 
-### D6 — Per-book characterization test + parametrized CSS-contract  ·  M  ·  blocks all
+### D6 — Per-book characterization test + parametrized CSS-contract  ·  M  ·  blocks all  ·  ✅ DONE (PR #190)
+> Shipped 2026-06-29. `render-characterization.test.js` (1 describe/book, inline CNXML); `renderCnxmlToHtml` now honors `options.bookConfig` (also fixed latent server-preview English-note-labels bug); css-contract parametrized over `books/*/05-publication` + `VEFUR_CONTRACT=1` hard-fail. Surfaced 14 cosmetic cross-book CSS gaps → efni `KNOWN_GAPS` + vefur memory `css-cross-book-gaps`. Design/plan: `docs/plans/2026-06-29-d6-*`.
 - **Problem:** only e2e test is efnafraedi ch01 (`pipeline-integration.test.js:35`); CSS-contract scoped
   to efnafraedi + skips silently when vefur absent (`css-contract.test.js:20`,`:102/162/198`).
 - **Change:** one render-characterization spec per book (inline-CNXML pattern → `renderCnxmlToHtml`, no
