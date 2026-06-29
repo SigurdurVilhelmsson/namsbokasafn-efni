@@ -996,3 +996,65 @@ describe('buildExerciseDom figure inside para', () => {
     expect(ctx.figuresHandledInContainers.has('fig-sol')).toBe(true);
   });
 });
+
+// ─── A2: untranslated-EN residue detection ────────────────────────
+describe('buildCnxml EN-residue detection (A2)', () => {
+  const enText = 'Describe the composition and properties of colloidal dispersions in water';
+
+  const makeInputs = (isPara) => {
+    const structure = {
+      moduleId: 'test',
+      title: { segmentId: 'test:title:auto-1', text: 'Test' },
+      content: [{ type: 'para', id: 'p1', segmentId: 'test:para:p1' }],
+    };
+    const segments = new Map([
+      ['test:title:auto-1', 'Titill'],
+      ['test:para:p1', isPara],
+    ]);
+    const enSegments = new Map([
+      ['test:title:auto-1', 'Title'],
+      ['test:para:p1', enText],
+    ]);
+    const originalCnxml = `<document xmlns="http://cnx.rice.edu/cnxml">
+<title>Test</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml"><md:title>Test</md:title></metadata>
+<content>
+<para id="p1">${enText}</para>
+</content>
+</document>`;
+    return { structure, segments, enSegments, originalCnxml };
+  };
+
+  it('flags a verbatim-English paragraph and reports INCOMPLETE', () => {
+    const { structure, segments, enSegments, originalCnxml } = makeInputs(enText); // IS == EN
+    const result = buildCnxml(structure, segments, {}, originalCnxml, { enSegments });
+    expect(result.report.residues).toContain('test:para:p1');
+    expect(result.report.complete).toBe(false);
+  });
+
+  it('reports COMPLETE for a properly translated paragraph', () => {
+    const is = 'Lýstu samsetningu og eiginleikum kvoðudreifna í vatni nánar tiltekið';
+    const { structure, segments, enSegments, originalCnxml } = makeInputs(is);
+    const result = buildCnxml(structure, segments, {}, originalCnxml, { enSegments });
+    expect(result.report.residues).toEqual([]);
+    expect(result.report.complete).toBe(true);
+  });
+
+  it('does not run detection when enSegments is absent (EN-fallback inject)', () => {
+    const { structure, segments, originalCnxml } = makeInputs(enText);
+    const result = buildCnxml(structure, segments, {}, originalCnxml, {});
+    expect(result.report.residues).toEqual([]);
+    expect(result.report.complete).toBe(true);
+  });
+
+  it('does not run detection when checkResidue is false (--lang en round-trip)', () => {
+    // Injecting the EN source as content: segments == enSegments by construction.
+    const { structure, segments, enSegments, originalCnxml } = makeInputs(enText);
+    const result = buildCnxml(structure, segments, {}, originalCnxml, {
+      enSegments,
+      checkResidue: false,
+    });
+    expect(result.report.residues).toEqual([]);
+    expect(result.report.complete).toBe(true);
+  });
+});
