@@ -52,6 +52,29 @@ describe('resolveEmbeds', () => {
     expect(out['https://www.openstax.org/l/locked'].status).toBe('blocked');
   });
 
+  it('marks a target that sends SAMEORIGIN as blocked', async () => {
+    const fetchFn = fakeFetch({
+      'https://www.openstax.org/l/sameorigin': {
+        finalUrl: 'https://sameorigin.example/page',
+        headers: { 'x-frame-options': 'SAMEORIGIN' },
+      },
+    });
+    const out = await resolveEmbeds(['https://www.openstax.org/l/sameorigin'], fetchFn);
+    expect(out['https://www.openstax.org/l/sameorigin'].status).toBe('blocked');
+  });
+
+  it('marks a 404 response as error, not blocked', async () => {
+    const fetchFn = fakeFetch({
+      'https://www.openstax.org/l/notfound': {
+        finalUrl: 'https://notfound.example/page',
+        status: 404,
+        headers: {},
+      },
+    });
+    const out = await resolveEmbeds(['https://www.openstax.org/l/notfound'], fetchFn);
+    expect(out['https://www.openstax.org/l/notfound'].status).toBe('error');
+  });
+
   it('marks a network failure as error, not ok', async () => {
     const fetchFn = fakeFetch({});
     const out = await resolveEmbeds(['https://www.openstax.org/l/missing'], fetchFn);

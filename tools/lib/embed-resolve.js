@@ -33,8 +33,7 @@ export async function resolveEmbeds(srcs, fetchFn = globalThis.fetch) {
     try {
       const res = await fetchFn(src, { redirect: 'follow', method: 'GET' });
       const resolved = res.url || src;
-      const status =
-        res.status >= 200 && res.status < 400 && isFramable(res.headers) ? 'ok' : 'blocked';
+      const status = res.status >= 400 ? 'error' : isFramable(res.headers) ? 'ok' : 'blocked';
       out[src] = { resolved, kind: classifyKind(resolved), status };
     } catch {
       out[src] = { resolved: '', kind: 'other', status: 'error' };

@@ -17,6 +17,7 @@ import { parseArgs, BOOK_OPTION, requireBook } from './lib/parseArgs.js';
 import { resolveEmbeds } from './lib/embed-resolve.js';
 
 const DRY_RUN_OPTION = { name: 'dryRun', flags: ['--dry-run'], type: 'boolean', default: false };
+const VERBOSE_OPTION = { name: 'verbose', flags: ['--verbose'], type: 'boolean', default: false };
 
 const IFRAME_SRC = /<iframe\b[^>]*\bsrc="([^"]+)"/g;
 
@@ -40,7 +41,7 @@ function collectSrcs(sourceDir) {
 }
 
 async function main() {
-  const args = parseArgs(process.argv.slice(2), [BOOK_OPTION, DRY_RUN_OPTION]);
+  const args = parseArgs(process.argv.slice(2), [BOOK_OPTION, DRY_RUN_OPTION, VERBOSE_OPTION]);
   requireBook(args);
   const bookDir = path.join('books', args.book);
   const sourceDir = path.join(bookDir, '01-source');
