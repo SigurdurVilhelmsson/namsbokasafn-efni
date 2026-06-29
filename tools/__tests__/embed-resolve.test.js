@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { resolveEmbeds, classifyKind } from '../lib/embed-resolve.js';
+import { resolveEmbeds, classifyKind, canonicalizeYouTube } from '../lib/embed-resolve.js';
 
 function fakeFetch(map) {
   return async (url) => {
@@ -12,6 +12,34 @@ function fakeFetch(map) {
     };
   };
 }
+
+describe('canonicalizeYouTube', () => {
+  it('converts watch?v= to /embed/', () => {
+    expect(canonicalizeYouTube('https://www.youtube.com/watch?v=ABC')).toBe(
+      'https://www.youtube.com/embed/ABC'
+    );
+  });
+
+  it('preserves list= param and drops tracking params (si=)', () => {
+    expect(canonicalizeYouTube('https://www.youtube.com/watch?v=ABC&list=PL1&si=xyz')).toBe(
+      'https://www.youtube.com/embed/ABC?list=PL1'
+    );
+  });
+
+  it('converts youtu.be short URL to /embed/', () => {
+    expect(canonicalizeYouTube('https://youtu.be/ABC')).toBe('https://www.youtube.com/embed/ABC');
+  });
+
+  it('returns already-embed URL unchanged', () => {
+    const url = 'https://www.youtube.com/embed/ABC';
+    expect(canonicalizeYouTube(url)).toBe(url);
+  });
+
+  it('returns non-YouTube URLs unchanged', () => {
+    const url = 'https://phet.colorado.edu/sims/html/x_en.html';
+    expect(canonicalizeYouTube(url)).toBe(url);
+  });
+});
 
 describe('classifyKind', () => {
   it('classifies youtube embed URLs', () => {
@@ -79,5 +107,25 @@ describe('resolveEmbeds', () => {
     const fetchFn = fakeFetch({});
     const out = await resolveEmbeds(['https://www.openstax.org/l/missing'], fetchFn);
     expect(out['https://www.openstax.org/l/missing'].status).toBe('error');
+  });
+
+  it('canonicalizes watch?v= to embed URL and re-checks framability', async () => {
+    // /l/foo resolves to a watch page that denies framing; embed URL is framable.
+    const fetchFn = fakeFetch({
+      'https://www.openstax.org/l/foo': {
+        finalUrl: 'https://www.youtube.com/watch?v=ABC',
+        headers: { 'x-frame-options': 'SAMEORIGIN' },
+      },
+      'https://www.youtube.com/embed/ABC': {
+        finalUrl: 'https://www.youtube.com/embed/ABC',
+        headers: {},
+      },
+    });
+    const out = await resolveEmbeds(['https://www.openstax.org/l/foo'], fetchFn);
+    expect(out['https://www.openstax.org/l/foo']).toEqual({
+      resolved: 'https://www.youtube.com/embed/ABC',
+      kind: 'youtube',
+      status: 'ok',
+    });
   });
 });

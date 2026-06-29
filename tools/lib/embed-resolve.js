@@ -15,6 +15,50 @@ export function classifyKind(url) {
   }
 }
 
+/**
+ * Canonicalize YouTube watch/short URLs to the embeddable /embed/<id> form.
+ * - youtube.com/watch?v=<id> (any variant host) → https://www.youtube.com/embed/<id>
+ * - youtu.be/<id>            → https://www.youtube.com/embed/<id>
+ * - Already /embed/ or non-YouTube: returned unchanged.
+ * Preserves the `list=` query param (playlist context); drops tracking params.
+ * @param {string} url
+ * @returns {string}
+ */
+export function canonicalizeYouTube(url) {
+  let parsed;
+  try {
+    parsed = new URL(url);
+  } catch {
+    return url;
+  }
+
+  const host = parsed.hostname;
+  const isYouTubeHost =
+    host === 'www.youtube.com' || host === 'youtube.com' || host === 'm.youtube.com';
+  const isShortHost = host === 'youtu.be';
+
+  if (!isYouTubeHost && !isShortHost) return url;
+
+  // Already embed — leave alone.
+  if (isYouTubeHost && parsed.pathname.startsWith('/embed/')) return url;
+
+  let videoId;
+  if (isYouTubeHost && parsed.pathname === '/watch') {
+    videoId = parsed.searchParams.get('v');
+  } else if (isShortHost) {
+    // path is /<id>
+    videoId = parsed.pathname.slice(1).split('/')[0];
+  }
+
+  if (!videoId) return url;
+
+  const embedUrl = new URL(`https://www.youtube.com/embed/${videoId}`);
+  const list = parsed.searchParams.get('list');
+  if (list) embedUrl.searchParams.set('list', list);
+
+  return embedUrl.toString();
+}
+
 /** A final target is framable unless it sends X-Frame-Options DENY/SAMEORIGIN. */
 function isFramable(headers) {
   const xfo = (headers.get('x-frame-options') || '').toLowerCase();
@@ -32,8 +76,22 @@ export async function resolveEmbeds(srcs, fetchFn = globalThis.fetch) {
   for (const src of srcs) {
     try {
       const res = await fetchFn(src, { redirect: 'follow', method: 'GET' });
-      const resolved = res.url || src;
-      const status = res.status >= 400 ? 'error' : isFramable(res.headers) ? 'ok' : 'blocked';
+      let resolved = res.url || src;
+      let headers = res.headers;
+      let httpStatus = res.status;
+
+      // Canonicalize watch?v= and youtu.be short URLs to /embed/ before deciding
+      // framability — watch pages deny framing but /embed/ is designed to be framed.
+      const canonical = canonicalizeYouTube(resolved);
+      if (canonical !== resolved) {
+        // Re-fetch the embed URL to get accurate framing headers.
+        const embedRes = await fetchFn(canonical, { redirect: 'follow', method: 'GET' });
+        resolved = canonical;
+        headers = embedRes.headers;
+        httpStatus = embedRes.status;
+      }
+
+      const status = httpStatus >= 400 ? 'error' : isFramable(headers) ? 'ok' : 'blocked';
       out[src] = { resolved, kind: classifyKind(resolved), status };
     } catch {
       out[src] = { resolved: '', kind: 'other', status: 'error' };
