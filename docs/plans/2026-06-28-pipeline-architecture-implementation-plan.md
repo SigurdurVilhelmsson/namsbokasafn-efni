@@ -391,7 +391,9 @@ is chosen next** (see Open Decisions).*
 - **Acceptance:** a sample of species names round-trips verbatim; documented rate.
 
 ### Biology onboarding (NEXT — lead-confirmed 2026-06-28)
-Biology's required set is **D1, D2, D4, D6, D7** — plus Tracks A (+ C is independent). Notably:
+Biology's required set is **D1, D2, D4, D6, D7 + audit #14 + audit #33** — plus Tracks A (+ C is
+independent). The two audit items (folded in 2026-06-29 from the out-of-scope register; both
+`blocks_next_book=true`) are pre-onboarding correctness fixes, not optional cleanup. Notably:
 - **D3 NOT needed** (no os-embed; biology uses inline `<exercise>`).
 - **D5 NOT needed** — biology has formal `<glossary>` in **205 modules** (the existing glossary path works).
 - **3-level hierarchy is a NON-issue** — `books/liffraedi-2e/01-source/collection-order.json` already
@@ -400,8 +402,18 @@ Biology's required set is **D1, D2, D4, D6, D7** — plus Tracks A (+ C is indep
 - **D4 (iframe)** is the main content gap (~35 files / ~51 PhET/YouTube embeds in `<media>`).
 - **0 `<example>`** in biology — confirm the example renderers simply no-op (they should); add a biology
   characterization spec (D6) to lock that in.
+- **audit #14 — SEG-marker parser divergence (HIGH).** Biology is a **low-marker book**, the exact class
+  the divergent `parseSegments` impls + the `isApiTranslated` marker-sniff **mis-route** (see the B2
+  provenance prereq). Unify the parsers / fix routing before onboarding so biology segments parse and
+  route correctly. Do this with — or before — the B2 producer-provenance prereq (they overlap).
+- **audit #33 — inject list-flattening divergence (HIGH).** Biology has **0 `<example>`** but *does* use
+  `<exercise>` and `<note>` — and those are exactly the two builders (`buildExerciseDom`/`buildNoteDom`,
+  `cnxml-inject.js:2597`/`:2854`) that **DELETE** nested lists (while `buildExampleDom` preserves them).
+  So any nested list inside a biology exercise/note would be silently dropped. Verify presence in
+  liffraedi-2e source, then unify on the example (preserve) approach before onboarding.
 
-**Track D gate (per book):** D1+D2 done once; then the book's specific items (biology = D4+D7) + D6 green → onboard.
+**Track D gate (per book):** D1+D2 done once; then the book's specific items
+(biology = **D4 + D7 + audit #14 + audit #33**) + D6 green → onboard.
 
 ---
 
@@ -433,3 +445,62 @@ Biology's required set is **D1, D2, D4, D6, D7** — plus Tracks A (+ C is indep
 
 ### Still open
 - **CI:** Track A's CI wiring assumes credits are restored; until then the local gate carries it.
+
+---
+
+## Out-of-scope register — issues uncovered during implementation (triage as a batch after the plan completes)
+
+*Standing rule (project-memory feedback `feedback-log-out-of-scope-issues`): every out-of-scope issue
+found while implementing an item is logged here **immediately**, so nothing scoped-out is lost. PRs stay
+tightly scoped; these are revisited together once the plan's last item ships. Per-item deferrals also live
+in their item blocks — this is the consolidated scan list. Append, don't prune.*
+
+**From A2 (untranslated-EN residue check, PR #184):**
+- **Server editor save/submit residue surface** — wire `detectResidue` into the editor service
+  save/submit path so editors see residue warnings live. Reuses `tools/lib/residue-check.js` verbatim;
+  its own PR (needs server tests + UX). *(Also noted in the A2 item.)*
+- **CI wiring for the residue gate** — decide gate-vs-advisory when Actions credits return. *(Also A2 item.)*
+- **`--allow-en-fallback` disables residue detection for the whole run, not per-module** —
+  `cnxml-inject.js` sets `checkResidue = args.lang !== 'en' && !args.allowEnFallback`, so a fallback run
+  also skips residue-checking modules that *do* have real translations. Ideal = a per-module EN-fallback
+  signal from `loadModuleInputs` so only genuinely-fallen-back modules are exempt.
+- **One missing translation file aborts the entire chapter inject (pre-existing)** — `loadModuleInputs`
+  throws on a missing translation (F20 refuse-untranslated) → outer `try/catch` in `main()` → `exit(1)`,
+  skipping all remaining modules; A2's after-loop `residue-report.<track>.json` is then never written for
+  a partially-translated chapter. Fix idea: per-module skip-and-continue + write the manifest in a
+  `finally`.
+- **`residue-report.<track>.json` tracking decision undecided** — prod `scripts/git-backup.sh` stages
+  `books/`, so the new file auto-commits. Decide: track it (like `translation-errors.json` with
+  `merge=ours`) or gitignore it.
+- **Residue warn-tier not calibrated on real data** — efnafraedi ch01 emitted 5 non-gating warnings,
+  never reviewed for legitimacy. Revisit the warn threshold once real faithful content exists.
+
+**From the 2026-06-28 audit (findings NOT operationalized as plan items A1–D7).** The audit
+`docs/audit/2026-06-28-audit-findings.json` (83 findings) is the source of truth; the plan scheduled a
+curated subset. The findings below are acknowledged but have **no scheduled plan item** — re-triage
+before biology onboarding (they were seen in the audit but aren't on any to-do list). Finding numbers =
+1-based array index; titles given for stability.
+- **#14 [HIGH, blocks_next_book] SEG-marker parser divergence** — two `parseSegments` impls + 4–5 distinct
+  SEG-marker regexes across inject/editor/split (first-vs-last-match, comment-vs-mustache); caused the
+  PR #96 drift. Unify into one `tools/lib/seg-markers.js`. **→ folded into the Biology onboarding required
+  set (2026-06-29).** *Cluster:* **#15** [MED] duplicate-seg-ID policy
+  (inject first-wins / editor last-wins / counter counts-all); **#18** [LOW] whitespace-tolerance mismatch;
+  **#19** [LOW] 67 orphan `*-segments(b|c|d).en.md` legacy mustache files half the pipeline can't parse.
+- **#33 [HIGH, blocks_next_book] inject list-flattening divergence** — `buildExampleDom` PRESERVES nested
+  lists; `buildExerciseDom`/`buildNoteDom` DELETE them (`cnxml-inject.js:2597`/`:2854`). Unify on the
+  example approach. (Distinct from C4 table-DOM and the render-side C-track work.) **→ folded into the
+  Biology onboarding required set (2026-06-29):** biology has exercises + notes, the two affected builders.
+- **#43 [HIGH] `annotateInlineTerms` gloss desync** — `--annotate-en` attaches English glosses by ordinal
+  position; desyncs on term reorder / count mismatch → **the wrong gloss reaches readers**. Real
+  reader-facing correctness bug, not cosmetic.
+- **#37 [LOW]** `buildExerciseDom` drops id-less exercises entirely; `buildGenericElement` recurses without
+  `ctx`. **#30 [LOW]** 429 retry ignores `Retry-After` + has no jitter (A4-adjacent). **#29 [LOW]**
+  control-char (NUL/°) failure aborts the module with no retry — asymmetric vs the truncation path that
+  retries. **#31 [INFO]** cost-rate magic number duplicated (`malstadur-api.js:52` vs `api-translate.js:742`).
+  **#38 [INFO]** ~500 lines of dead legacy string builders retained + exported.
+- *Already scheduled — no register entry needed:* #26→B3, #34→C4, #35→D4, #40/#42→B2, #65→D6, #79→[VEFUR],
+  #56/#58/#61→D-track. *Already resolved:* #73 (id-less `<para>`-in-`<note>`)→C1; #72/#75/#76 (positioner
+  inconsistency)→the C3 5-positioner/63-`indexOf` convergence already listed in the A3/C3 item notes.
+- *Tracked separately (NOT this plan, do not duplicate):* accessibility findings — assistive MathML for
+  equations + figure alt-text translation pipeline — live in
+  `docs/plans/2026-06-25-accessibility-alt-math-handoff.md` and memory `accessibility-alt-math-pending.md`.
