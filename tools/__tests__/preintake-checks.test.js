@@ -71,6 +71,15 @@ describe('runFileChecks — unrecognized inline (DOM)', () => {
     expect(() => runFileChecks('<para>unclosed')).not.toThrow();
     expect(runFileChecks('<para>unclosed').unrecognizedInline).toEqual({});
   });
+
+  it('does not flag pipeline-handled block elements nested in a para', () => {
+    // OpenStax nests figure/list/media/equation/table inside <para>; these are
+    // built by the pipeline, not stripped. Only genuinely-unknown tags flag.
+    const cnxml =
+      '<document><para>x<figure id="f"/><list><item>a</item></list>' +
+      '<equation/><table/><span>s</span></para></document>';
+    expect(runFileChecks(cnxml).unrecognizedInline).toEqual({ span: 1 });
+  });
 });
 
 describe('evaluateBook — verdict', () => {
@@ -114,5 +123,12 @@ describe('evaluateBook — verdict', () => {
     // link-to-learning is in SHARED; evolution is not configured
     expect(r.checks.noteClass.status).toBe('warn');
     expect(r.checks.noteClass.items).toEqual(['evolution']);
+  });
+
+  it('resolves a compound note class via substring (mirrors render)', () => {
+    // "chemistry chemist-portrait" is configured by the un-prefixed key.
+    const agg = { ...baseAgg(), noteClasses: new Set(['chemistry chemist-portrait']) };
+    const r = evaluateBook(agg, { noteTypeLabels: { 'chemist-portrait': 'Efnafræðingur' } });
+    expect(r.checks.noteClass.status).toBe('ok');
   });
 });

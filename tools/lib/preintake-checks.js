@@ -19,7 +19,44 @@ export const HANDLED_INLINE = new Set([
   'math', // <m:math> localName is 'math'
 ]);
 
-/** Inline-only text containers whose direct element children must be handled inline. */
+/**
+ * Block/structural tags the pipeline builds — these legitimately nest inside a
+ * <para> in OpenStax CNXML (figures-in-para etc.) and are NOT stripped. Check 5
+ * flags only elements that are neither handled-inline nor handled-block, so a
+ * genuinely-unknown tag (e.g. <span>, <quote>) still surfaces.
+ */
+export const HANDLED_BLOCK = new Set([
+  'para',
+  'figure',
+  'subfigure',
+  'media',
+  'image',
+  'list',
+  'item',
+  'table',
+  'tgroup',
+  'colspec',
+  'thead',
+  'tbody',
+  'row',
+  'entry',
+  'equation',
+  'note',
+  'example',
+  'exercise',
+  'problem',
+  'solution',
+  'commentary',
+  'section',
+  'title',
+  'caption',
+  'label',
+  'definition',
+  'meaning',
+  'glossary',
+]);
+
+/** Text containers whose direct element children are examined by check 5. */
 export const TEXT_CONTAINERS = ['para', 'title', 'caption', 'label', 'meaning'];
 
 /** Note class values present in the CNXML (deduped); notes without a class are ignored. */
@@ -53,7 +90,7 @@ function findUnrecognizedInline(cnxml) {
       for (let c = nodes[i].firstChild; c; c = c.nextSibling) {
         if (c.nodeType !== 1) continue; // element nodes only
         const name = c.localName || c.nodeName.replace(/^.*:/, '');
-        if (!HANDLED_INLINE.has(name)) {
+        if (!HANDLED_INLINE.has(name) && !HANDLED_BLOCK.has(name)) {
           counts[name] = (counts[name] || 0) + 1;
         }
       }
@@ -88,11 +125,15 @@ export function runFileChecks(cnxml) {
  * @returns {{checks:object, verdict:'GO'|'GO-WITH-GAPS'|'NO-GO'}}
  */
 export function evaluateBook(agg, bookConfig) {
-  const knownNoteClasses = new Set([
+  // Mirror render's getNoteTypeLabel resolution: a class is configured if a
+  // known key equals it OR is a substring of it (compound classes like
+  // "chemistry chemist-portrait" resolve via the un-prefixed key).
+  const knownKeys = [
     ...Object.keys(SHARED_NOTE_LABELS),
     ...Object.keys((bookConfig && bookConfig.noteTypeLabels) || {}),
-  ]);
-  const unknownNoteClasses = [...agg.noteClasses].filter((c) => !knownNoteClasses.has(c)).sort();
+  ].filter((k) => k !== 'default');
+  const isConfigured = (cls) => knownKeys.some((k) => cls === k || cls.includes(k));
+  const unknownNoteClasses = [...agg.noteClasses].filter((c) => !isConfigured(c)).sort();
   const inlineTags = [...agg.unrecognizedInline.keys()].sort();
 
   const checks = {
