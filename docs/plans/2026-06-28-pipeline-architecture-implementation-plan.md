@@ -370,7 +370,9 @@ is chosen next** (see Open Decisions).*
 - **Acceptance:** a sample of species names round-trips verbatim; documented rate.
 
 ### Biology onboarding (NEXT — lead-confirmed 2026-06-28)
-Biology's required set is **D1, D2, D4, D6, D7** — plus Tracks A (+ C is independent). Notably:
+Biology's required set is **D1, D2, D4, D6, D7 + audit #14 + audit #33** — plus Tracks A (+ C is
+independent). The two audit items (folded in 2026-06-29 from the out-of-scope register; both
+`blocks_next_book=true`) are pre-onboarding correctness fixes, not optional cleanup. Notably:
 - **D3 NOT needed** (no os-embed; biology uses inline `<exercise>`).
 - **D5 NOT needed** — biology has formal `<glossary>` in **205 modules** (the existing glossary path works).
 - **3-level hierarchy is a NON-issue** — `books/liffraedi-2e/01-source/collection-order.json` already
@@ -379,8 +381,18 @@ Biology's required set is **D1, D2, D4, D6, D7** — plus Tracks A (+ C is indep
 - **D4 (iframe)** is the main content gap (~35 files / ~51 PhET/YouTube embeds in `<media>`).
 - **0 `<example>`** in biology — confirm the example renderers simply no-op (they should); add a biology
   characterization spec (D6) to lock that in.
+- **audit #14 — SEG-marker parser divergence (HIGH).** Biology is a **low-marker book**, the exact class
+  the divergent `parseSegments` impls + the `isApiTranslated` marker-sniff **mis-route** (see the B2
+  provenance prereq). Unify the parsers / fix routing before onboarding so biology segments parse and
+  route correctly. Do this with — or before — the B2 producer-provenance prereq (they overlap).
+- **audit #33 — inject list-flattening divergence (HIGH).** Biology has **0 `<example>`** but *does* use
+  `<exercise>` and `<note>` — and those are exactly the two builders (`buildExerciseDom`/`buildNoteDom`,
+  `cnxml-inject.js:2597`/`:2854`) that **DELETE** nested lists (while `buildExampleDom` preserves them).
+  So any nested list inside a biology exercise/note would be silently dropped. Verify presence in
+  liffraedi-2e source, then unify on the example (preserve) approach before onboarding.
 
-**Track D gate (per book):** D1+D2 done once; then the book's specific items (biology = D4+D7) + D6 green → onboard.
+**Track D gate (per book):** D1+D2 done once; then the book's specific items
+(biology = **D4 + D7 + audit #14 + audit #33**) + D6 green → onboard.
 
 ---
 
@@ -449,12 +461,14 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
 1-based array index; titles given for stability.
 - **#14 [HIGH, blocks_next_book] SEG-marker parser divergence** — two `parseSegments` impls + 4–5 distinct
   SEG-marker regexes across inject/editor/split (first-vs-last-match, comment-vs-mustache); caused the
-  PR #96 drift. Unify into one `tools/lib/seg-markers.js`. *Cluster:* **#15** [MED] duplicate-seg-ID policy
+  PR #96 drift. Unify into one `tools/lib/seg-markers.js`. **→ folded into the Biology onboarding required
+  set (2026-06-29).** *Cluster:* **#15** [MED] duplicate-seg-ID policy
   (inject first-wins / editor last-wins / counter counts-all); **#18** [LOW] whitespace-tolerance mismatch;
   **#19** [LOW] 67 orphan `*-segments(b|c|d).en.md` legacy mustache files half the pipeline can't parse.
 - **#33 [HIGH, blocks_next_book] inject list-flattening divergence** — `buildExampleDom` PRESERVES nested
   lists; `buildExerciseDom`/`buildNoteDom` DELETE them (`cnxml-inject.js:2597`/`:2854`). Unify on the
-  example approach. (Distinct from C4 table-DOM and the render-side C-track work.)
+  example approach. (Distinct from C4 table-DOM and the render-side C-track work.) **→ folded into the
+  Biology onboarding required set (2026-06-29):** biology has exercises + notes, the two affected builders.
 - **#43 [HIGH] `annotateInlineTerms` gloss desync** — `--annotate-en` attaches English glosses by ordinal
   position; desyncs on term reorder / count mismatch → **the wrong gloss reaches readers**. Real
   reader-facing correctness bug, not cosmetic.
