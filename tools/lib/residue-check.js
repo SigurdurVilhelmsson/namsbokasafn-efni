@@ -7,7 +7,7 @@
  * is a "mostly English" warning (non-gating).
  */
 
-export const RESIDUE_DEFAULTS = { minTokens: 3, warnThreshold: 0.7 };
+export const RESIDUE_DEFAULTS = { minTokens: 3, warnThreshold: 0.7, minWordLen: 3 };
 
 /**
  * Strip inline marker DELIMITERS while keeping their inner content, so a
@@ -38,10 +38,16 @@ export function normalizeForComparison(text) {
   return t.replace(/\s+/g, ' ').trim().toLowerCase();
 }
 
-/** Count whitespace-separated tokens that contain at least one letter. */
-export function countAlphaTokens(normalized) {
+/**
+ * Count "content words" in normalized text: tokens of at least `minWordLen`
+ * letters. This deliberately excludes single-letter unit abbreviations (g, L),
+ * enumeration markers (a, b, c), and short function words — the language-
+ * invariant tokens that make number/unit/formula cells look untranslated. A
+ * genuine English residue is rich in content words; a measurement cell is not.
+ */
+export function countContentWords(normalized, minWordLen = RESIDUE_DEFAULTS.minWordLen) {
   if (!normalized) return 0;
-  return normalized.split(' ').filter((tok) => /\p{L}/u.test(tok)).length;
+  return normalized.split(' ').filter((tok) => tok.length >= minWordLen).length;
 }
 
 /** Overlap coefficient |A∩B| / min(|A|,|B|) over token sets (0 if either empty). */
@@ -59,18 +65,20 @@ export function tokenOverlapRatio(aNorm, bNorm) {
  * @returns {{alphaTokens:number, exact:boolean, ratio:number, warn:boolean}}
  */
 export function detectResidue(enText, isText, opts = {}) {
-  const { minTokens, warnThreshold } = { ...RESIDUE_DEFAULTS, ...opts };
+  const { minTokens, warnThreshold, minWordLen } = { ...RESIDUE_DEFAULTS, ...opts };
   const enNorm = normalizeForComparison(enText);
   const isNorm = normalizeForComparison(isText);
-  const alphaTokens = countAlphaTokens(isNorm);
-  // No EN counterpart, or too short to judge -> never flag.
-  if (!enNorm || alphaTokens < minTokens) {
-    return { alphaTokens, exact: false, ratio: 0, warn: false };
+  const contentWords = countContentWords(isNorm, minWordLen);
+  // No EN counterpart, or too few real words to judge -> never flag. The
+  // content-word floor (not a raw token count) is what keeps number/unit cells
+  // from false-positiving while still catching real English prose.
+  if (!enNorm || contentWords < minTokens) {
+    return { contentWords, exact: false, ratio: 0, warn: false };
   }
   const exact = enNorm === isNorm;
   const ratio = exact ? 1 : tokenOverlapRatio(enNorm, isNorm);
   const warn = !exact && ratio >= warnThreshold;
-  return { alphaTokens, exact, ratio, warn };
+  return { contentWords, exact, ratio, warn };
 }
 
 /**

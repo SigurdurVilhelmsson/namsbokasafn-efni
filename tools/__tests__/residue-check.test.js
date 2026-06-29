@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   normalizeForComparison,
-  countAlphaTokens,
+  countContentWords,
   tokenOverlapRatio,
   detectResidue,
   upsertResidueModule,
@@ -34,12 +34,18 @@ describe('normalizeForComparison', () => {
   });
 });
 
-describe('countAlphaTokens', () => {
-  it('counts space-separated word tokens', () => {
-    expect(countAlphaTokens('these solids settle')).toBe(3);
+describe('countContentWords', () => {
+  it('counts tokens of length >= 3 (real words)', () => {
+    expect(countContentWords('these solids settle')).toBe(3);
+  });
+  it('excludes single-letter units and short function words', () => {
+    // "neon g l" -> only "neon" is a content word; unit letters g/l excluded
+    expect(countContentWords('neon g l')).toBe(1);
+    // enumeration letters a/b/c are not content words
+    expect(countContentWords('a b c d e f')).toBe(0);
   });
   it('returns 0 for empty input', () => {
-    expect(countAlphaTokens('')).toBe(0);
+    expect(countContentWords('')).toBe(0);
   });
 });
 
@@ -72,10 +78,48 @@ describe('detectResidue', () => {
   });
 
   it('does not flag short shared-vocabulary segments below minTokens', () => {
-    // "Colloids" is one alpha token -> below the floor, never flagged
+    // "Colloids" is one content word -> below the floor, never flagged
     const r = detectResidue('Colloids', 'Colloids');
     expect(r.exact).toBe(false);
     expect(r.warn).toBe(false);
+  });
+
+  // Regression lock: real chemistry-domain cells captured from efnafraedi-2e
+  // mt-output that the first detector over-flagged. These are number/unit/
+  // formula/answer-key cells whose surviving word-tokens are language-invariant
+  // (element names, unit abbreviations, enumeration letters). They must NEVER
+  // flag, even though EN and IS are near-identical (numbers localized to commas).
+  describe('does not flag language-invariant numeric/unit cells (regression)', () => {
+    const cells = [
+      ['neon 0.83 g/L', 'neon 0,83 g/L'],
+      ['radon 9.1 g/L', 'radon 9,1 g/L'],
+      ['1 (troy) oz = 31.103 g', '1 (troy) oz = 31,103 g'],
+      [
+        '3 megahertz (MHz) = 3 [[MATH:11]] 10[[sup:6]] Hz',
+        '3 megahertz (MHz) = 3 [[MATH:11]] 10^6^ Hz',
+      ],
+      [
+        '(a) 0.44; (b) 9.0; (c) 27; (d) 140; (e) 1.5; (f) 0.44',
+        '(a) 0,44; (b) 9,0; (c) 27; (d) 140; (e) 1,5; (f) 0,44',
+      ],
+      ['(d) 9.740 [[MATH:20]] 10[[sup:4]] m/s', '(d) 9,740 [[MATH:20]] 10^4^ m/s'],
+      ['(a) 0.599 cm[[sup:3]]; (b) 8.91 g/cm[[sup:3]]', '(a) 0,599 cm^3^; (b) 8,91 g/cm^3^'],
+    ];
+    for (const [en, is] of cells) {
+      it(`does not flag: ${en}`, () => {
+        const r = detectResidue(en, is);
+        expect(r.exact).toBe(false);
+        expect(r.warn).toBe(false);
+      });
+    }
+  });
+
+  it('still flags a fully-untranslated paragraph even when numbers are localized', () => {
+    // A genuine residue: real English prose. Number-stripping must not hide it.
+    const en = 'The sample contains 5 grams of sodium chloride dissolved in water';
+    const is = 'The sample contains 5 grams of sodium chloride dissolved in water';
+    const r = detectResidue(en, is);
+    expect(r.exact).toBe(true);
   });
 
   it('warns (non-gating) on mostly-English partial residue', () => {
