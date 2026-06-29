@@ -76,19 +76,31 @@ roadmap (Tracks A→D) into ordered, individually-shippable work items.
 - **Acceptance:** an untranslated-English module no longer reports COMPLETE; residues listed. Tests with
   EN-residue and clean fixtures. (Aligns with the editorial-throughput roadmap Unit 4.)
 
-### A3 — Render-stage structural check + wire fidelity into CI as regression  ·  M  ·  dep: none (helps C)
+### A3 — Render-stage structural check + wire fidelity into CI as regression  ·  M  ·  dep: none (helps C)  ·  ✅ DONE (branch `feat/a3-render-fidelity-check`)
 - **Problem:** fidelity check is character-blind (counts opening tags only; text/attrs/MathML contents
   never inspected — why the null-byte degree-sign incident passed), never runs in CI, never fails inject.
-- **Files:** `tools/cnxml-fidelity-check.js:32-48` (`countTags`); inject diff at `cnxml-inject.js:3398-3410`
-  (verbose-only). No `.github`/`package.json` fidelity invocation.
-- **Change:** add a render-stage check that parses produced HTML (reuse `@xmldom/xmldom` via
-  `tools/lib/cnxml-dom.js`) and asserts element/figure/note/example survival vs injected CNXML; add a
-  C0/control-char scan of inject output (reuse `assertNoControlChars` philosophy from `api-translate.js`);
-  compare a **normalized DOM shape** (tag + key attrs: `emphasis@effect`, link target-kind,
-  `exercise@class`) not a flat name histogram; gate on **delta vs a committed per-book baseline**, not
-  absolute counts (tag-count noise diverges by book). Wire as a CI regression report.
-- **Acceptance:** a deliberately-broken render (dropped figure, bold↔italic swap, injected NUL) fails the
-  check; clean render passes; baseline snapshot per book committed.
+- **Shipped:** `tools/cnxml-render-fidelity-check.js` — RENDER-stage check (complements the inject-stage
+  `cnxml-fidelity-check.js`), aggregated **per chapter** (the closed unit: render redistributes content
+  within a chapter — exercises→exercises page, key-equations/summary re-present — but never across).
+  Pure `checkChapter({cnxml,html}, baseline)` runs three checks: **(1) control-char scan** (C0, the
+  null-byte class) baseline-free; **(2) cross-stage `>=` invariant** on atomic restructure-stable units
+  (`m:math`→`mjx-container`, `image`→`img`) — render only ADDS (rollups/dedup-bugs), so `HTML<CNXML` is
+  an unambiguous DROP, baseline-free; **(3) shape-drift** vs a committed per-book baseline histogram
+  (figure/img/em/strong/table/list/example/note/exercise/equation/link), the sensitive detector.
+  Regex counting (HTML isn't XML-clean — SVG + page-data `<script>`; a parser would fight it).
+- **Decisions vs original spec:** (a) compare committed 05-publication vs 03-translated, NOT re-render —
+  the chapter render orchestration in `main()` is heavily coupled (`moduleSections`+numbering maps); a
+  re-render driver is deferred (and CI credits are out till ~Jul 1 anyway). So this validates the
+  *published artifact*, not a render-code regression at PR-time. (b) Cross-stage `>=` (not `==`) because
+  rollup pages legitimately inflate counts; only a net drop is honest. (c) No baseline committed yet —
+  current output contains the ~30 known pre-existing math drops + C0 table-escape bug; a baseline now
+  would bless them (capture via `--update-baseline` after a clean re-render).
+- **Acceptance:** ✅ `cnxml-render-fidelity-check.test.js` — clean passes; dropped-figure, bold↔italic
+  swap, injected NUL, and dropped-equation each fail (5 tests). Wired into `validate.yml` as a
+  **non-blocking** report + `npm run fidelity:render`.
+- **Bonus finding:** run against committed output, the cross-stage invariant independently rediscovered
+  the documented fidelity gaps — **~30 net math drops (ch15-21; ch21=15, ch17=9) + 1 image drop
+  (appendices)**. Pre-existing, not regressions. Hard-gating needs the lead to triage these first.
 
 ### A4 — `pollTask` retry + async-path tests  ·  S  ·  no deps
 - **Problem:** the async (>10K, dominant) path's poll GET is a bare call — one transient blip fails a

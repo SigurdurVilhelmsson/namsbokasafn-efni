@@ -8,6 +8,8 @@ on:
       - 'templates/**'
       - 'schemas/**'
       - 'scripts/validate-status.js'
+      - 'books/**/05-publication/**'
+      - 'tools/cnxml-render*.js'
   pull_request:
     branches: [main]
     paths:
@@ -15,6 +17,8 @@ on:
       - 'templates/**'
       - 'schemas/**'
       - 'scripts/validate-status.js'
+      - 'books/**/05-publication/**'
+      - 'tools/cnxml-render*.js'
 
 jobs:
   validate-status:
@@ -32,3 +36,13 @@ jobs:
 
       - name: Validate chapter status files
         run: node scripts/validate-status.js
+
+      # Render-stage structural check (A3). Non-blocking REPORT: it currently
+      # exits non-zero on ~30 pre-existing math/image drops (documented fidelity
+      # gaps), so it must not fail CI until those are triaged (fixed or
+      # explicitly accepted). The detection logic itself is gated by the
+      # acceptance vitest in `npm test`. Flip continue-on-error to false once
+      # the pre-existing drops are resolved to make this a hard gate.
+      - name: Render-stage structural check (report)
+        continue-on-error: true
+        run: npm run fidelity:render
