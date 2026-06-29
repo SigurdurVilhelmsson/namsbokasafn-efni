@@ -1384,8 +1384,8 @@ function reverseInlineMarkup(
       return `\x00CNXML:${cnxmlTags.length - 1}\x00`;
     }
   );
-  // Also protect self-closing tags like <newline/>, <space/>, <link ... />
-  result = result.replace(/<(newline|space|link|image)\s[^>]*\/>/g, (match) => {
+  // Also protect self-closing tags like <newline/>, <space/>, <link ... />, <iframe ... />
+  result = result.replace(/<(newline|space|link|image|iframe)\s[^>]*\/>/g, (match) => {
     cnxmlTags.push(match);
     return `\x00CNXML:${cnxmlTags.length - 1}\x00`;
   });

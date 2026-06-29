@@ -30,9 +30,21 @@ describe('canonicalizeYouTube', () => {
     expect(canonicalizeYouTube('https://youtu.be/ABC')).toBe('https://www.youtube.com/embed/ABC');
   });
 
-  it('returns already-embed URL unchanged', () => {
+  it('returns already-embed URL without query params unchanged', () => {
     const url = 'https://www.youtube.com/embed/ABC';
     expect(canonicalizeYouTube(url)).toBe(url);
+  });
+
+  it('strips tracking params (si=) from already-embed URLs', () => {
+    expect(canonicalizeYouTube('https://www.youtube.com/embed/ABC?si=xyz')).toBe(
+      'https://www.youtube.com/embed/ABC'
+    );
+  });
+
+  it('preserves list= but strips si= from already-embed URLs', () => {
+    expect(canonicalizeYouTube('https://www.youtube.com/embed/ABC?list=PL1&si=xyz')).toBe(
+      'https://www.youtube.com/embed/ABC?list=PL1'
+    );
   });
 
   it('returns non-YouTube URLs unchanged', () => {
@@ -127,5 +139,46 @@ describe('resolveEmbeds', () => {
       kind: 'youtube',
       status: 'ok',
     });
+  });
+
+  // Minor 1: tracking params stripped on early-return (direct /embed/ redirect target)
+  it('strips ?si= tracking param when /l/ redirects directly to /embed/?si=', async () => {
+    const fetchFn = fakeFetch({
+      'https://www.openstax.org/l/foo': {
+        finalUrl: 'https://www.youtube.com/embed/ABC?si=xyz',
+        headers: {},
+      },
+    });
+    const out = await resolveEmbeds(['https://www.openstax.org/l/foo'], fetchFn);
+    expect(out['https://www.openstax.org/l/foo'].resolved).toBe(
+      'https://www.youtube.com/embed/ABC'
+    );
+    expect(out['https://www.openstax.org/l/foo'].status).toBe('ok');
+  });
+
+  // Minor 2: error path preserves the best URL we computed, not ''
+  it('preserves canonical embed URL in resolved when the embed re-fetch throws', async () => {
+    // Initial fetch succeeds (resolves watch URL); re-fetch of /embed/ throws.
+    const fetchFn = fakeFetch({
+      'https://www.openstax.org/l/foo': {
+        finalUrl: 'https://www.youtube.com/watch?v=ABC',
+        headers: {},
+      },
+      // 'https://www.youtube.com/embed/ABC' missing → fakeFetch throws
+    });
+    const out = await resolveEmbeds(['https://www.openstax.org/l/foo'], fetchFn);
+    expect(out['https://www.openstax.org/l/foo'].resolved).toBe(
+      'https://www.youtube.com/embed/ABC'
+    );
+    expect(out['https://www.openstax.org/l/foo'].status).toBe('error');
+  });
+
+  it('preserves original src in resolved when the initial fetch throws', async () => {
+    const fetchFn = fakeFetch({});
+    const out = await resolveEmbeds(['https://www.openstax.org/l/missing'], fetchFn);
+    expect(out['https://www.openstax.org/l/missing'].resolved).toBe(
+      'https://www.openstax.org/l/missing'
+    );
+    expect(out['https://www.openstax.org/l/missing'].status).toBe('error');
   });
 });

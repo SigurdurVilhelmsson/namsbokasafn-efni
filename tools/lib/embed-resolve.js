@@ -39,8 +39,13 @@ export function canonicalizeYouTube(url) {
 
   if (!isYouTubeHost && !isShortHost) return url;
 
-  // Already embed — leave alone.
-  if (isYouTubeHost && parsed.pathname.startsWith('/embed/')) return url;
+  // Already embed — strip non-allowlisted query params (keep list= for playlist context).
+  if (isYouTubeHost && parsed.pathname.startsWith('/embed/')) {
+    const list = parsed.searchParams.get('list');
+    const clean = new URL(`${parsed.protocol}//${parsed.host}${parsed.pathname}`);
+    if (list) clean.searchParams.set('list', list);
+    return clean.toString();
+  }
 
   let videoId;
   if (isYouTubeHost && parsed.pathname === '/watch') {
@@ -74,6 +79,8 @@ function isFramable(headers) {
 export async function resolveEmbeds(srcs, fetchFn = globalThis.fetch) {
   const out = {};
   for (const src of srcs) {
+    // Hoisted so the catch block can emit the best URL we computed before the error.
+    let canonical = src;
     try {
       const res = await fetchFn(src, { redirect: 'follow', method: 'GET' });
       let resolved = res.url || src;
@@ -82,19 +89,26 @@ export async function resolveEmbeds(srcs, fetchFn = globalThis.fetch) {
 
       // Canonicalize watch?v= and youtu.be short URLs to /embed/ before deciding
       // framability — watch pages deny framing but /embed/ is designed to be framed.
-      const canonical = canonicalizeYouTube(resolved);
+      canonical = canonicalizeYouTube(resolved);
       if (canonical !== resolved) {
-        // Re-fetch the embed URL to get accurate framing headers.
-        const embedRes = await fetchFn(canonical, { redirect: 'follow', method: 'GET' });
+        // Only re-fetch when origin+pathname actually changed (watch→embed).
+        // A query-only strip (e.g. ?si= removed) doesn't need a new request.
+        const samePageCanonical =
+          new URL(canonical).origin === new URL(resolved).origin &&
+          new URL(canonical).pathname === new URL(resolved).pathname;
+        if (!samePageCanonical) {
+          // Re-fetch the embed URL to get accurate framing headers.
+          const embedRes = await fetchFn(canonical, { redirect: 'follow', method: 'GET' });
+          headers = embedRes.headers;
+          httpStatus = embedRes.status;
+        }
         resolved = canonical;
-        headers = embedRes.headers;
-        httpStatus = embedRes.status;
       }
 
       const status = httpStatus >= 400 ? 'error' : isFramable(headers) ? 'ok' : 'blocked';
       out[src] = { resolved, kind: classifyKind(resolved), status };
     } catch {
-      out[src] = { resolved: '', kind: 'other', status: 'error' };
+      out[src] = { resolved: canonical, kind: classifyKind(canonical), status: 'error' };
     }
   }
   return out;

@@ -10,6 +10,7 @@ import {
   buildMediaElement,
   buildMedia,
 } from '../cnxml-inject.js';
+import { extractInlineText } from '../cnxml-extract.js';
 
 // ─── parseSegments ────────────────────────────────────────────────
 
@@ -1086,5 +1087,59 @@ describe('inject: iframe media re-emit', () => {
     expect(out).toContain('<iframe');
     expect(out).toContain('src="https://www.openstax.org/l/diet_detective"');
     expect(out).not.toContain('<image');
+  });
+});
+
+// ─── inject seam: [[MEDIA:n]] → <iframe> round-trip (D4) ─────────
+// Proves the extract→inject seam that ~41 of biology's 51 embeds ride on:
+// extractInlineText captures embedSrc from <iframe> into the inlineMediaMap,
+// and reverseInlineMarkup restores [[MEDIA:N]] → <media><iframe…/></media>.
+
+describe('inject seam: [[MEDIA:n]] → iframe round-trip (D4)', () => {
+  const EMBED_SRC = 'https://www.openstax.org/l/diet_detective';
+
+  /**
+   * Run a real extract→inject round-trip on a mini CNXML fragment containing
+   * an inline <media><iframe> element.  The input is a raw CNXML string (NOT a
+   * hand-written placeholder), so the full pipeline chain runs:
+   *   extractInlineText  →  placeholder text + inlineMediaMap
+   *   (identity translation — IS text == EN text)
+   *   reverseInlineMarkup →  CNXML with <iframe> restored
+   */
+  it('extract produces [[MEDIA:1]] placeholder + embedSrc metadata', () => {
+    const cnxml = `Para text: <media id="m1" alt="diet"><iframe src="${EMBED_SRC}" width="660" height="371"/></media>.`;
+    const inlineMediaMap = new Map();
+    const counters = { math: 0, media: 0 };
+    const extracted = extractInlineText(cnxml, new Map(), counters, inlineMediaMap);
+
+    expect(extracted).toContain('[[MEDIA:1]]');
+    expect(extracted).not.toContain('<media');
+    expect(inlineMediaMap.size).toBe(1);
+    const [, meta] = [...inlineMediaMap.entries()][0];
+    expect(meta.embedSrc).toBe(EMBED_SRC);
+    expect(meta.width).toBe('660');
+    expect(meta.height).toBe('371');
+  });
+
+  it('reverseInlineMarkup restores [[MEDIA:1]] to <iframe> CNXML (no placeholder leak)', () => {
+    const cnxml = `Para text: <media id="m1" alt="diet"><iframe src="${EMBED_SRC}" width="660" height="371"/></media>.`;
+    const inlineMediaMap = new Map();
+    const counters = { math: 0, media: 0 };
+    const extracted = extractInlineText(cnxml, new Map(), counters, inlineMediaMap);
+
+    // Convert map to array the same way extract's structure serializer does (extract:615)
+    const inlineMedia = Array.from(inlineMediaMap.entries()).map(([placeholder, data]) => ({
+      placeholder,
+      ...data,
+    }));
+
+    // Identity translation: IS text == extracted EN text (no MT step)
+    const restored = reverseInlineMarkup(extracted, {}, inlineMedia);
+
+    expect(restored).toContain('<iframe');
+    expect(restored).toContain(`src="${EMBED_SRC}"`);
+    expect(restored).not.toContain('[[MEDIA:');
+    expect(restored).toContain('<media');
+    expect(restored).not.toContain('<image');
   });
 });
