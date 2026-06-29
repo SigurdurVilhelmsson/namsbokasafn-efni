@@ -30,7 +30,13 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, MODULE_OPTION } from './lib/parseArgs.js';
+import {
+  parseArgs,
+  BOOK_OPTION,
+  CHAPTER_OPTION,
+  MODULE_OPTION,
+  requireBook,
+} from './lib/parseArgs.js';
 import { createClient, formatGlossary } from './lib/malstadur-api.js';
 import { bookToDomain } from './lib/book-rendering-config.js';
 
@@ -630,6 +636,7 @@ async function main() {
     printHelp();
     process.exit(0);
   }
+  requireBook(args);
 
   // Validate: --module requires --chapter (`== null` so chapter 0 / preface is valid)
   if (args.module && args.chapter == null) {

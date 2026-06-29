@@ -24,7 +24,13 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, MODULE_OPTION } from './lib/parseArgs.js';
+import {
+  parseArgs,
+  BOOK_OPTION,
+  CHAPTER_OPTION,
+  MODULE_OPTION,
+  requireBook,
+} from './lib/parseArgs.js';
 import { compareTagCounts } from './cnxml-fidelity-check.js';
 import { updateTranslationErrors } from './lib/update-translation-errors.js';
 
@@ -244,6 +250,7 @@ function main() {
     printHelp();
     process.exit(0);
   }
+  requireBook(args);
 
   BOOKS_DIR = `books/${args.book}`;
   const chapters = args.chapter ? [formatChapter(args.chapter)] : discoverChapters(BOOKS_DIR);

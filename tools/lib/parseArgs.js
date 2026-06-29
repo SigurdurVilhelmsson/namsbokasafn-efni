@@ -9,6 +9,9 @@
  * const args = parseArgs(process.argv.slice(2), [BOOK_OPTION, CHAPTER_OPTION, MODULE_OPTION]);
  */
 
+import fs from 'fs';
+import path from 'path';
+
 // ─── Validation patterns ─────────────────────────────────────────────
 
 /** Valid book slug: alphanumeric, hyphens, underscores (no path separators) */
@@ -20,7 +23,7 @@ export const BOOK_OPTION = {
   name: 'book',
   flags: ['--book'],
   type: 'string',
-  default: 'efnafraedi-2e',
+  default: null,
   parse: (val) => {
     if (!BOOK_SLUG_PATTERN.test(val)) {
       console.error('Error: --book must be alphanumeric with hyphens/underscores');
@@ -29,6 +32,25 @@ export const BOOK_OPTION = {
     return val;
   },
 };
+
+/**
+ * Boundary check for multi-book tools: require a valid --book.
+ * No-op when --help was requested (so help can still print). Otherwise exits
+ * with a clear error if --book is missing or books/<book>/ does not exist.
+ *
+ * @param {{book: string|null, help: boolean}} args
+ */
+export function requireBook(args) {
+  if (args.help) return;
+  if (!args.book) {
+    console.error('Error: --book is required (e.g. --book efnafraedi-2e)');
+    process.exit(1);
+  }
+  if (!fs.existsSync(path.join('books', args.book))) {
+    console.error(`Error: unknown book "${args.book}" — books/${args.book}/ does not exist`);
+    process.exit(1);
+  }
+}
 
 export const CHAPTER_OPTION = {
   name: 'chapter',

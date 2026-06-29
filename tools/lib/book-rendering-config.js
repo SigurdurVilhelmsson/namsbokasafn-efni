@@ -109,7 +109,10 @@ function mergeWithShared(file) {
 function getBookRenderConfig(bookSlug) {
   const file = readBookConfigFile(bookSlug);
   if (!file) {
-    console.warn(`Warning: No book-config.json for book "${bookSlug}", using defaults`);
+    throw new Error(
+      `No book-config.json for book "${bookSlug}" (books/${bookSlug}/book-config.json). ` +
+        'Every book must have an explicit render config before it can be rendered.'
+    );
   }
   return mergeWithShared(file);
 }

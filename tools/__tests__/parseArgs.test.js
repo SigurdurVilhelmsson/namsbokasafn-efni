@@ -1,5 +1,11 @@
-import { describe, it, expect } from 'vitest';
-import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, MODULE_OPTION } from '../lib/parseArgs.js';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import {
+  parseArgs,
+  BOOK_OPTION,
+  CHAPTER_OPTION,
+  MODULE_OPTION,
+  requireBook,
+} from '../lib/parseArgs.js';
 
 describe('parseArgs', () => {
   // ─── Built-in options ────────────────────────────────────────────
@@ -86,9 +92,9 @@ describe('parseArgs', () => {
 
   // ─── Preset: BOOK_OPTION ────────────────────────────────────────
 
-  it('BOOK_OPTION defaults to efnafraedi-2e', () => {
+  it('BOOK_OPTION defaults to null (--book is required; no chemistry default)', () => {
     const result = parseArgs([], [BOOK_OPTION]);
-    expect(result.book).toBe('efnafraedi-2e');
+    expect(result.book).toBe(null);
   });
 
   it('BOOK_OPTION can be overridden', () => {
@@ -137,7 +143,7 @@ describe('parseArgs', () => {
     expect(result.chapter).toBe(1);
     expect(result.module).toBe('m68663');
     expect(result.track).toBe('faithful');
-    expect(result.book).toBe('efnafraedi-2e');
+    expect(result.book).toBe(null); // no --book passed; no default
     expect(result.verbose).toBe(true);
     expect(result.lang).toBe('is');
   });
@@ -159,5 +165,38 @@ describe('parseArgs', () => {
     expect(result.verbose).toBe(true);
     expect(result.charLimit).toBe(80000);
     expect(result.input).toBe(null);
+  });
+});
+
+describe('requireBook', () => {
+  let exitSpy, errSpy;
+  beforeEach(() => {
+    exitSpy = vi.spyOn(process, 'exit').mockImplementation(() => {
+      throw new Error('__exit__');
+    });
+    errSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+  });
+  afterEach(() => {
+    exitSpy.mockRestore();
+    errSpy.mockRestore();
+  });
+
+  it('exits when --book is missing', () => {
+    expect(() => requireBook({ book: null, help: false })).toThrow('__exit__');
+    expect(exitSpy).toHaveBeenCalledWith(1);
+  });
+
+  it('exits when the book directory does not exist', () => {
+    expect(() => requireBook({ book: 'no-such-book-xyz', help: false })).toThrow('__exit__');
+  });
+
+  it('does not exit when --help was requested', () => {
+    expect(() => requireBook({ book: null, help: true })).not.toThrow();
+    expect(exitSpy).not.toHaveBeenCalled();
+  });
+
+  it('passes for an existing book directory', () => {
+    expect(() => requireBook({ book: 'efnafraedi-2e', help: false })).not.toThrow();
+    expect(exitSpy).not.toHaveBeenCalled();
   });
 });
