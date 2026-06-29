@@ -205,11 +205,17 @@ modules round-trip clean. **C0 safety nets are mandatory before C1.***
   biology fixtures) now correct; nesting matrix green.
 
 ### C2 — Migrate `renderExample`, then `renderExercise`  ·  L  ·  dep: C1  ·  ✅ DONE (PR #180)
-> Both migrated onto the seam (`hoistTags` config added: examples/exercises hoist only `<list>`).
-> `isInsidePara` guard retired. renderExercise byte-identical (old-vs-new diff = 0). renderExample
-> golden byte-identical but **changes published output**: de-duplicates equations nested in example
-> paras (rendered twice before — inline + redundant block; now once, inline). 44 efnafraedi sites,
-> 0 in golden. Verified de-dup not drop.
+> Both migrated onto the seam (`hoistTags` config added). `isInsidePara` guard retired.
+> renderExercise byte-identical (old-vs-new diff = 0). renderExample **changes published output**:
+> de-duplicates equations + standalone media nested in example paras (rendered twice before).
+> 7 equation modules + 2 media modules change, 0 in golden.
+> **CORRECTION (2026-06-29, lead-reviewed live):** the first cut de-duped equations the *wrong*
+> direction — it kept the cramped inline `math-inline` copy and dropped the centered display block.
+> Verified on namsbokasafn.is (ch14 Dæmi 14.4/14.5): both copies render; the centered display block
+> is canonical (CNXML `<equation>` is block-level). Fix: `hoistTags: ['list', 'equation']` for
+> `renderExample` — the in-para `<equation>` hoists out and renders once as the display block; the
+> inline artifact is gone. Media de-dup was already correct (removed true duplicate *images*, not a
+> presentation copy). example-dom test assertions inverted accordingly.
 - Highest-bug-density containers (`cnxml-render.js:1354`, `:1602`). Same seam, one at a time, golden-gated.
 - **Acceptance:** golden unchanged; the figure-escapes-example regression (already fixed) and the
   nesting matrix stay green; the inject-vs-render coverage asymmetry closed.

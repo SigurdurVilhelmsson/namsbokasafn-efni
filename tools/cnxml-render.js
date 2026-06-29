@@ -1482,7 +1482,13 @@ function renderExample(example, context) {
       figure: renderFigure,
       media: renderMedia,
     },
-    { hoistTags: ['list'] }
+    // Hoist block-level <equation> out of a <para> so it renders ONCE as a
+    // centered display block, not as a cramped inline <span class="math-inline">
+    // copy at its natural position. CNXML <equation> is block-level; the inline
+    // render was a renderPara artifact that, combined with the old position-sort's
+    // separate block, produced a visible duplicate (verified live on
+    // namsbokasafn.is, ch14 Dæmi 14.4/14.5).
+    { hoistTags: ['list', 'equation'] }
   );
   for (const block of blocks) {
     lines.push(`  ${block}`);
