@@ -23,7 +23,7 @@ export const BOOK_OPTION = {
   name: 'book',
   flags: ['--book'],
   type: 'string',
-  default: 'efnafraedi-2e',
+  default: null,
   parse: (val) => {
     if (!BOOK_SLUG_PATTERN.test(val)) {
       console.error('Error: --book must be alphanumeric with hyphens/underscores');

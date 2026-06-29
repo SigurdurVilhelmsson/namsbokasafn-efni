@@ -28,7 +28,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { parseArgs, BOOK_OPTION, CHAPTER_OPTION } from './lib/parseArgs.js';
+import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, requireBook } from './lib/parseArgs.js';
 
 const TOOL_NAME = 'generate-tm.js';
 const TOOL_VERSION = '1.0';
@@ -424,6 +424,7 @@ function main() {
     printHelp();
     process.exit(0);
   }
+  requireBook(args);
 
   const book = args.book;
   const bookDir = path.join(BOOKS_DIR, book);

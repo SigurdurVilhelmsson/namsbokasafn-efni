@@ -92,9 +92,9 @@ describe('parseArgs', () => {
 
   // ─── Preset: BOOK_OPTION ────────────────────────────────────────
 
-  it('BOOK_OPTION defaults to efnafraedi-2e', () => {
+  it('BOOK_OPTION defaults to null (--book is required; no chemistry default)', () => {
     const result = parseArgs([], [BOOK_OPTION]);
-    expect(result.book).toBe('efnafraedi-2e');
+    expect(result.book).toBe(null);
   });
 
   it('BOOK_OPTION can be overridden', () => {
@@ -143,7 +143,7 @@ describe('parseArgs', () => {
     expect(result.chapter).toBe(1);
     expect(result.module).toBe('m68663');
     expect(result.track).toBe('faithful');
-    expect(result.book).toBe('efnafraedi-2e');
+    expect(result.book).toBe(null); // no --book passed; no default
     expect(result.verbose).toBe(true);
     expect(result.lang).toBe('is');
   });

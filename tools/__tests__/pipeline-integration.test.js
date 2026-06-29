@@ -56,7 +56,7 @@ function run(cmd) {
 describe('cnxml-inject', () => {
   it('should inject a single module (m68663, ch01 introduction)', () => {
     run(
-      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --module m68663 --source-dir 02-mt-output`
+      `node ${join(TOOLS, 'cnxml-inject.js')} --book efnafraedi-2e --chapter 1 --module m68663 --source-dir 02-mt-output`
     );
 
     // The tool writes to 03-translated/{track}/ — check the standard location
@@ -98,7 +98,9 @@ describe('cnxml-inject', () => {
   });
 
   it('should inject a full chapter', () => {
-    run(`node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --source-dir 02-mt-output`);
+    run(
+      `node ${join(TOOLS, 'cnxml-inject.js')} --book efnafraedi-2e --chapter 1 --source-dir 02-mt-output`
+    );
 
     const outputPath = join(BOOKS, '03-translated', 'mt-preview', 'ch01');
     const modules = ['m68663', 'm68664', 'm68667', 'm68670', 'm68674', 'm68683', 'm68690'];
@@ -129,7 +131,7 @@ describe('cnxml-inject', () => {
   it('should not produce more terms than the source has', () => {
     // m68664 had +56 term overproduction before fix
     run(
-      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --module m68664 --source-dir 02-mt-output`
+      `node ${join(TOOLS, 'cnxml-inject.js')} --book efnafraedi-2e --chapter 1 --module m68664 --source-dir 02-mt-output`
     );
 
     const sourceCnxml = readFileSync(join(BOOKS, '01-source', 'ch01', 'm68664.cnxml'), 'utf8');
@@ -153,7 +155,9 @@ describe('cnxml-inject', () => {
 
 describe('cnxml-render', () => {
   it('should render a chapter to HTML', () => {
-    run(`node ${join(TOOLS, 'cnxml-render.js')} --chapter 1 --track mt-preview`);
+    run(
+      `node ${join(TOOLS, 'cnxml-render.js')} --book efnafraedi-2e --chapter 1 --track mt-preview`
+    );
 
     const outputPath = join(BOOKS, '05-publication', 'mt-preview', 'chapters', '01');
     expect(existsSync(outputPath)).toBe(true);
@@ -395,14 +399,16 @@ describe('inject → render round-trip', () => {
   it('should produce HTML from source segments via inject then render', () => {
     // Inject chapter 1 introduction
     run(
-      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --module m68663 --source-dir 02-mt-output`
+      `node ${join(TOOLS, 'cnxml-inject.js')} --book efnafraedi-2e --chapter 1 --module m68663 --source-dir 02-mt-output`
     );
 
     const injectedCnxml = join(BOOKS, '03-translated', 'mt-preview', 'ch01', 'm68663.cnxml');
     expect(existsSync(injectedCnxml)).toBe(true);
 
     // Render chapter 1
-    run(`node ${join(TOOLS, 'cnxml-render.js')} --chapter 1 --track mt-preview`);
+    run(
+      `node ${join(TOOLS, 'cnxml-render.js')} --book efnafraedi-2e --chapter 1 --track mt-preview`
+    );
 
     const renderedHtml = join(
       BOOKS,
@@ -856,7 +862,7 @@ describe('restoreMathMarkers', () => {
 describe('English term annotation integration', () => {
   it('should produce annotated terms in CNXML output', () => {
     run(
-      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --module m68664 --source-dir 02-mt-output`
+      `node ${join(TOOLS, 'cnxml-inject.js')} --book efnafraedi-2e --chapter 1 --module m68664 --source-dir 02-mt-output`
     );
 
     const cnxml = readFileSync(
@@ -872,7 +878,7 @@ describe('English term annotation integration', () => {
 
   it('should NOT produce annotations with --no-annotate-en', () => {
     run(
-      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --module m68664 --source-dir 02-mt-output --no-annotate-en`
+      `node ${join(TOOLS, 'cnxml-inject.js')} --book efnafraedi-2e --chapter 1 --module m68664 --source-dir 02-mt-output --no-annotate-en`
     );
 
     const cnxml = readFileSync(
@@ -886,7 +892,7 @@ describe('English term annotation integration', () => {
 
   it('should annotate glossary terms with EN originals', () => {
     run(
-      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --module m68664 --source-dir 02-mt-output`
+      `node ${join(TOOLS, 'cnxml-inject.js')} --book efnafraedi-2e --chapter 1 --module m68664 --source-dir 02-mt-output`
     );
 
     const cnxml = readFileSync(
@@ -974,7 +980,7 @@ describe('newline and space tag preservation', () => {
 
   it('should produce <newline/> in translated CNXML (m68674, ch01)', () => {
     run(
-      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 1 --module m68674 --source-dir 02-mt-output`
+      `node ${join(TOOLS, 'cnxml-inject.js')} --book efnafraedi-2e --chapter 1 --module m68674 --source-dir 02-mt-output`
     );
     const cnxml = readFileSync(
       join(BOOKS, '03-translated', 'mt-preview', 'ch01', 'm68674.cnxml'),
@@ -1166,7 +1172,7 @@ describe('reverseInlineMarkup XML escaping', () => {
 
 describe('inline-attrs extraction', () => {
   it('should produce inline-attrs.json for m68687 with class="no-emphasis"', () => {
-    run(`node ${join(TOOLS, 'cnxml-extract.js')} --chapter 2 --module m68687`);
+    run(`node ${join(TOOLS, 'cnxml-extract.js')} --book efnafraedi-2e --chapter 2 --module m68687`);
     const attrsPath = join(BOOKS, '02-structure', 'ch02', 'm68687-inline-attrs.json');
     expect(existsSync(attrsPath)).toBe(true);
 
@@ -1183,9 +1189,9 @@ describe('inline-attrs extraction', () => {
   });
 
   it('should preserve class="no-emphasis" through extract+inject round-trip', () => {
-    run(`node ${join(TOOLS, 'cnxml-extract.js')} --chapter 2 --module m68687`);
+    run(`node ${join(TOOLS, 'cnxml-extract.js')} --book efnafraedi-2e --chapter 2 --module m68687`);
     run(
-      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter 2 --module m68687 --source-dir 02-mt-output`
+      `node ${join(TOOLS, 'cnxml-inject.js')} --book efnafraedi-2e --chapter 2 --module m68687 --source-dir 02-mt-output`
     );
     const cnxml = readFileSync(
       join(BOOKS, '03-translated', 'mt-preview', 'ch02', 'm68687.cnxml'),
@@ -1195,7 +1201,7 @@ describe('inline-attrs extraction', () => {
   });
 
   it('should extract document links in [doc#target] format', () => {
-    run(`node ${join(TOOLS, 'cnxml-extract.js')} --chapter 1 --module m68683`);
+    run(`node ${join(TOOLS, 'cnxml-extract.js')} --book efnafraedi-2e --chapter 1 --module m68683`);
     const segments = readFileSync(
       join(BOOKS, '02-for-mt', 'ch01', 'm68683-segments.en.md'),
       'utf8'
@@ -1205,7 +1211,7 @@ describe('inline-attrs extraction', () => {
   });
 
   it('should extract ++underline++ markers', () => {
-    run(`node ${join(TOOLS, 'cnxml-extract.js')} --chapter 1 --module m68664`);
+    run(`node ${join(TOOLS, 'cnxml-extract.js')} --book efnafraedi-2e --chapter 1 --module m68664`);
     const segments = readFileSync(
       join(BOOKS, '02-for-mt', 'ch01', 'm68664-segments.en.md'),
       'utf8'
@@ -1215,7 +1221,9 @@ describe('inline-attrs extraction', () => {
   });
 
   it('should extract {=emphasis=} markers for class-only emphasis', () => {
-    run(`node ${join(TOOLS, 'cnxml-extract.js')} --chapter appendices --module m68866`);
+    run(
+      `node ${join(TOOLS, 'cnxml-extract.js')} --book efnafraedi-2e --chapter appendices --module m68866`
+    );
     const segments = readFileSync(
       join(BOOKS, '02-for-mt', 'appendices', 'm68866-segments.en.md'),
       'utf8'
@@ -1226,9 +1234,11 @@ describe('inline-attrs extraction', () => {
   });
 
   it('should preserve emphasis class="emphasis-one" through extract+inject round-trip', () => {
-    run(`node ${join(TOOLS, 'cnxml-extract.js')} --chapter appendices --module m68866`);
     run(
-      `node ${join(TOOLS, 'cnxml-inject.js')} --chapter appendices --module m68866 --source-dir 02-for-mt --lang en`
+      `node ${join(TOOLS, 'cnxml-extract.js')} --book efnafraedi-2e --chapter appendices --module m68866`
+    );
+    run(
+      `node ${join(TOOLS, 'cnxml-inject.js')} --book efnafraedi-2e --chapter appendices --module m68866 --source-dir 02-for-mt --lang en`
     );
     const cnxml = readFileSync(
       join(BOOKS, '03-translated', 'mt-preview', 'appendices', 'm68866.cnxml'),

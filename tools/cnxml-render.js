@@ -34,7 +34,13 @@ import {
   stripTags,
 } from './lib/cnxml-parser.js';
 import { parseCnxmlFragment, serializeCnxmlFragment } from './lib/cnxml-dom.js';
-import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, MODULE_OPTION } from './lib/parseArgs.js';
+import {
+  parseArgs,
+  BOOK_OPTION,
+  CHAPTER_OPTION,
+  MODULE_OPTION,
+  requireBook,
+} from './lib/parseArgs.js';
 import {
   buildCrossModuleHref,
   escapeAttr,
@@ -3230,6 +3236,7 @@ async function main() {
     printHelp();
     process.exit(0);
   }
+  requireBook(args);
 
   if (args.chapter == null) {
     // NB: `== null` (not `!args.chapter`) so chapter 0 (the preface / ch00) is valid.

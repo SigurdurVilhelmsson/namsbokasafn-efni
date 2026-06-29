@@ -39,7 +39,13 @@ import {
 import { convertMathMLToLatex } from './lib/mathml-to-latex.js';
 import { getChapterModules } from './lib/chapter-modules.js';
 import { safeWrite, logBackup } from './lib/safeWrite.js';
-import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, MODULE_OPTION } from './lib/parseArgs.js';
+import {
+  parseArgs,
+  BOOK_OPTION,
+  CHAPTER_OPTION,
+  MODULE_OPTION,
+  requireBook,
+} from './lib/parseArgs.js';
 
 // =====================================================================
 // CONFIGURATION
@@ -1770,6 +1776,7 @@ async function main() {
     printHelp();
     process.exit(0);
   }
+  requireBook(args);
 
   if (!args.input && !args.chapter) {
     console.error('Error: Either --input or --chapter is required');

@@ -38,7 +38,13 @@
 import fs from 'fs';
 import path from 'path';
 import { safeWrite, logBackup } from './lib/safeWrite.js';
-import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, MODULE_OPTION } from './lib/parseArgs.js';
+import {
+  parseArgs,
+  BOOK_OPTION,
+  CHAPTER_OPTION,
+  MODULE_OPTION,
+  requireBook,
+} from './lib/parseArgs.js';
 import { compareTagCounts } from './cnxml-fidelity-check.js';
 import { extractGlossary } from './lib/cnxml-parser.js';
 import { updateTranslationErrors } from './lib/update-translation-errors.js';
@@ -3292,6 +3298,7 @@ async function main() {
     printHelp();
     process.exit(0);
   }
+  requireBook(args);
 
   if (args.chapter == null) {
     // NB: `== null` (not `!args.chapter`) so chapter 0 (the preface / ch00) is valid.

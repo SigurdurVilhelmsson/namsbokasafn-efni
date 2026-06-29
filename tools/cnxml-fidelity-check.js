@@ -18,7 +18,13 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, MODULE_OPTION } from './lib/parseArgs.js';
+import {
+  parseArgs,
+  BOOK_OPTION,
+  CHAPTER_OPTION,
+  MODULE_OPTION,
+  requireBook,
+} from './lib/parseArgs.js';
 
 let BOOKS_DIR = 'books/efnafraedi-2e';
 
@@ -192,6 +198,7 @@ function main() {
     printHelp();
     process.exit(0);
   }
+  requireBook(args);
   if (args.module && !args.chapter) {
     console.error('Error: --module requires --chapter');
     process.exit(1);

@@ -45,7 +45,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { parseArgs, BOOK_OPTION, CHAPTER_OPTION } from './lib/parseArgs.js';
+import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, requireBook } from './lib/parseArgs.js';
 
 // C0 control chars except the three valid in text (tab, LF, CR). Mirrors
 // api-translate.js assertNoControlChars — the degree-sign-> NUL incident.
@@ -239,6 +239,7 @@ function main() {
     console.log('cnxml-render-fidelity-check.js — render-stage structural check. See file header.');
     process.exit(0);
   }
+  requireBook(args);
   const bookDir = `books/${args.book}`;
   const chapters = args.chapter
     ? [String(args.chapter)]
