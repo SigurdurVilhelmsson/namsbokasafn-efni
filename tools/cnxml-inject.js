@@ -42,7 +42,7 @@ import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, MODULE_OPTION } from './lib/par
 import { compareTagCounts } from './cnxml-fidelity-check.js';
 import { extractGlossary } from './lib/cnxml-parser.js';
 import { updateTranslationErrors } from './lib/update-translation-errors.js';
-import { detectResidue } from './lib/residue-check.js';
+import { detectResidue, upsertResidueModule } from './lib/residue-check.js';
 import {
   parseCnxmlFragment,
   serializeCnxmlFragment,
@@ -1495,7 +1495,8 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
     // marker-form IS text against the EN source (same marker form). Only
     // when an EN counterpart exists and we haven't already judged this id.
     const enText = options.enSegments && options.enSegments.get(segmentId);
-    if (enText && !stats._residueSeen.has(segmentId)) {
+    const checkResidue = options.checkResidue !== false; // default on when EN is present
+    if (checkResidue && enText && !stats._residueSeen.has(segmentId)) {
       stats._residueSeen.add(segmentId);
       const r = detectResidue(enText, text);
       if (r.exact) {
@@ -3302,6 +3303,19 @@ async function main() {
   const sourceDir = args.sourceDir || '02-mt-output';
   const track = args.track || trackFromSourceDir(sourceDir);
 
+  // A2: per-book, track-qualified residue manifest. Read-merge-preserve so a
+  // per-chapter inject doesn't clobber other chapters' records.
+  let residueReport = { track };
+  const residueReportPath = path.join(BOOKS_DIR, `residue-report.${track}.json`);
+  if (fs.existsSync(residueReportPath)) {
+    try {
+      residueReport = JSON.parse(fs.readFileSync(residueReportPath, 'utf-8'));
+      residueReport.track = track; // keep authoritative
+    } catch {
+      residueReport = { track }; // tolerate a corrupt prior manifest
+    }
+  }
+
   // Load translated image mapping (from docx-import) if available
   const imageMapping = loadImageMapping(BOOKS_DIR);
   if (imageMapping.size > 0 && args.verbose) {
@@ -3398,6 +3412,10 @@ async function main() {
           enSegments,
           annotateEn: args.annotateEn,
           imageMapping,
+          // A2: residue detection only makes sense when injecting a translation.
+          // Skip when deliberately injecting the EN source as content (--lang en
+          // round-trip) or under the explicit EN-fallback escape hatch.
+          checkResidue: args.lang !== 'en' && !args.allowEnFallback,
         },
         inlineAttrs
       );
@@ -3406,6 +3424,30 @@ async function main() {
       // basename has a translated SVG variant. No-op when the map is empty.
       result.cnxml = applyImageBasenameSwaps(result.cnxml, imageBasenameMap);
 
+      // A2: record/clear this module's residue BEFORE the skip check below, so
+      // a residue-blocked module is still recorded in the manifest, and surface
+      // it on the console.
+      residueReport = upsertResidueModule(residueReport, moduleId, {
+        exact: result.report.residues,
+        warnings: result.report.residueWarnings,
+      });
+      if (result.report.residues.length > 0) {
+        console.error(
+          `  WARNING: ${result.report.residues.length} untranslated-EN residue segment(s):`
+        );
+        for (const id of result.report.residues.slice(0, 10)) {
+          console.error(`    - ${id}`);
+        }
+        if (result.report.residues.length > 10) {
+          console.error(`    ... and ${result.report.residues.length - 10} more`);
+        }
+      }
+      if (result.report.residueWarnings.length > 0) {
+        console.error(
+          `  NOTE: ${result.report.residueWarnings.length} "mostly English" segment(s) (warn-only)`
+        );
+      }
+
       if (!result.report.complete && !args.allowIncomplete) {
         console.error(`${moduleId}: SKIPPED — incomplete injection`);
         if (result.report.segmentsMissing.length > 0) {
@@ -3413,6 +3455,9 @@ async function main() {
         }
         if (result.report.unresolvedMathPlaceholders.length > 0) {
           console.error(`  Unresolved math: ${result.report.unresolvedMathPlaceholders.length}`);
+        }
+        if (result.report.residues.length > 0) {
+          console.error(`  Untranslated-EN residue: ${result.report.residues.length}`);
         }
         console.error('  Use --allow-incomplete to write anyway');
         process.exitCode = 1;
@@ -3443,6 +3488,16 @@ async function main() {
         console.log(`  Missing segments: ${result.report.segmentsMissing.length}`);
         console.log(`  Unresolved math: ${result.report.unresolvedMathPlaceholders.length}`);
       }
+    }
+
+    // A2: persist the per-book, track-qualified residue manifest.
+    fs.writeFileSync(residueReportPath, JSON.stringify(residueReport, null, 2) + '\n');
+    if (residueReport.summary && residueReport.summary.modulesWithResidue > 0) {
+      console.log(
+        `Residue: ${residueReport.summary.exactResidues} untranslated-EN segment(s) across ` +
+          `${residueReport.summary.modulesWithResidue} module(s), ` +
+          `${residueReport.summary.ratioWarnings} warning(s) → ${residueReportPath}`
+      );
     }
 
     // Update translation-errors.json with full-book fidelity state

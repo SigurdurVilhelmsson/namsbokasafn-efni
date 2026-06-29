@@ -1046,4 +1046,15 @@ describe('buildCnxml EN-residue detection (A2)', () => {
     expect(result.report.residues).toEqual([]);
     expect(result.report.complete).toBe(true);
   });
+
+  it('does not run detection when checkResidue is false (--lang en round-trip)', () => {
+    // Injecting the EN source as content: segments == enSegments by construction.
+    const { structure, segments, enSegments, originalCnxml } = makeInputs(enText);
+    const result = buildCnxml(structure, segments, {}, originalCnxml, {
+      enSegments,
+      checkResidue: false,
+    });
+    expect(result.report.residues).toEqual([]);
+    expect(result.report.complete).toBe(true);
+  });
 });
