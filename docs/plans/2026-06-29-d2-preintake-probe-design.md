@@ -51,9 +51,16 @@ uses that are not yet in its `book-config.json`, i.e. the `noteTypeLabels` entri
 - **Note classes (check 4):** the candidate's `book-config.json.noteTypeLabels` keys ∪ `SHARED_NOTE_LABELS`.
   In `--source` mode with no `book-config.json` yet, compare against `SHARED_NOTE_LABELS` only and report
   every book-specific class as "to configure".
-- **Inline elements (check 5):** an explicit, documented `HANDLED_INLINE` constant in the probe that
-  mirrors the set `cnxml-extract.js` converts (emphasis, sub, sup, link, term, footnote, newline, space,
-  m:math, …). The extractor exposes no single list to import — see the drift caveat in Out of scope.
+- **Inline elements (check 5):** flag a text-container's direct element child only when its tag is in
+  **neither** `HANDLED_INLINE` (emphasis, sub, sup, link, term, footnote, newline, space, math) **nor**
+  `HANDLED_BLOCK` (figure, list, media, table, equation, … — block elements OpenStax legitimately nests
+  inside `<para>` and the pipeline builds). Both are explicit, documented constants; the pipeline exposes
+  no single importable list — see the drift caveat in Out of scope. *(HANDLED_BLOCK was added after the
+  real-data smoke test showed block-in-para nesting; genuine unknowns like `span`/`quote`/`foreign` still
+  surface.)*
+- **Note classes (check 4) mirror render's resolution:** a class is "configured" if a known key equals it
+  **or is a substring of it** (so the compound `chemistry chemist-portrait` resolves via the un-prefixed
+  key `chemist-portrait`), matching `getNoteTypeLabel`.
 
 ## Architecture (isolation)
 

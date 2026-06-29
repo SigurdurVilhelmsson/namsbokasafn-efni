@@ -513,11 +513,11 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
   `docs/plans/2026-06-25-accessibility-alt-math-handoff.md` and memory `accessibility-alt-math-pending.md`.
 
 **From D2 (pre-intake probe) design — `docs/plans/2026-06-29-d2-preintake-probe-design.md` § Out of scope:**
-- **D2 check-5 `HANDLED_INLINE` drift risk** — the probe hand-maintains a mirror of the extractor's
-  handled inline tags because `cnxml-extract.js` exposes no single importable list. If the extractor's
-  inline handling changes, the probe over/under-reports unrecognized inline elements until the constant is
-  updated. Revisit a "single source of inline tags" refactor (extractor exports its handled set; probe +
-  extractor share it). Low severity; latent.
+- **D2 check-5 `HANDLED_INLINE`/`HANDLED_BLOCK` drift risk** — the probe hand-maintains mirrors of the
+  pipeline's handled inline AND block tags (the extractor/render expose no single importable list). If the
+  pipeline's tag handling changes, the probe over/under-reports unrecognized inline elements until the
+  constants are updated. Revisit a "single source of handled tags" refactor (pipeline exports its handled
+  set; probe shares it). Low severity; latent.
 - *Boundaries (owned elsewhere, not D2 — recorded so they're not re-opened against D2):* config-file
   presence → `validate` (D1); structural fidelity → A3; the gap *fixes* D2 detects → D3 (os-embed) / D4
   (iframe) / D5 (glossary), already scheduled. D2 detects only.
