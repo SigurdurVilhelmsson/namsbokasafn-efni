@@ -82,7 +82,14 @@ async function renderModule(book, chapter, moduleId, track = 'faithful') {
   const cnxml = fs.readFileSync(cnxmlPath, 'utf-8');
 
   // Load book config for note labels, section types, etc.
-  const bookConfig = getBookRenderConfig(book);
+  // getBookRenderConfig throws if the book has no book-config.json — surface it
+  // as a clean, book-scoped error rather than an unhandled throw.
+  let bookConfig;
+  try {
+    bookConfig = getBookRenderConfig(book);
+  } catch (err) {
+    throw new Error(`Cannot render "${book}": ${err.message}`);
+  }
 
   // Render with minimal options (no chapter-wide numbering for preview)
   const result = renderCnxmlToHtml(cnxml, {

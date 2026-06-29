@@ -27,9 +27,7 @@ describe('book-config.json loader merge semantics', () => {
     expect(cfg.endOfChapterSections.glossary.slug).toBe('key-terms');
   });
 
-  it('falls back to SHARED-only for a book with no config file', () => {
-    const cfg = getBookRenderConfig('no-such-book-xyz');
-    expect(cfg.excludedSectionClasses).toEqual(['summary']);
-    expect(cfg.specialModules).toEqual({});
+  it('throws for a book with no config file (fail-loud)', () => {
+    expect(() => getBookRenderConfig('no-such-book-xyz')).toThrow(/no-such-book-xyz/);
   });
 });
