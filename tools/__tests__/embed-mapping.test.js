@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { renderEmbedHtml } from '../lib/embed-mapping.js';
+import { renderEmbedHtml, loadEmbedMapping } from '../lib/embed-mapping.js';
 
 const embedMap = {
   'https://www.openstax.org/l/diet_detective': {
@@ -33,9 +33,21 @@ describe('renderEmbedHtml', () => {
     expect(html).not.toContain('openstax.org/l/');
   });
 
-  it('throws (fail loud) when the src is not in the mapping', () => {
+  it('throws (fail loud) when the src is not in the mapping, mentioning the resolver tool', () => {
     expect(() =>
       renderEmbedHtml({ embedSrc: 'https://www.openstax.org/l/unknown', embedMap })
+    ).toThrow(/Unresolved embed/);
+    expect(() =>
+      renderEmbedHtml({ embedSrc: 'https://www.openstax.org/l/unknown', embedMap })
+    ).toThrow(/resolve-embeds/);
+  });
+
+  it('throws when the entry has status ok but resolved is falsy', () => {
+    const mapWithFalsy = {
+      'https://example.com/phet': { resolved: '', kind: 'youtube', status: 'ok' },
+    };
+    expect(() =>
+      renderEmbedHtml({ embedSrc: 'https://example.com/phet', embedMap: mapWithFalsy })
     ).toThrow(/Unresolved embed/);
   });
 
@@ -43,5 +55,11 @@ describe('renderEmbedHtml', () => {
     expect(() =>
       renderEmbedHtml({ embedSrc: 'https://www.openstax.org/l/locked', embedMap })
     ).toThrow(/Unresolved embed/);
+  });
+});
+
+describe('loadEmbedMapping', () => {
+  it('returns {} when the embed-mapping.json file does not exist', () => {
+    expect(loadEmbedMapping('__nonexistent_slug__')).toEqual({});
   });
 });
