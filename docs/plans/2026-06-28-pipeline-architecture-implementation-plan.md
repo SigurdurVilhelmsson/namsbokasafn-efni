@@ -216,6 +216,13 @@ modules round-trip clean. **C0 safety nets are mandatory before C1.***
 > `renderExample` — the in-para `<equation>` hoists out and renders once as the display block; the
 > inline artifact is gone. Media de-dup was already correct (removed true duplicate *images*, not a
 > presentation copy). example-dom test assertions inverted accordingly.
+> **EXERCISE follow-up (2026-06-29, lead-requested):** `renderExercise`'s section renderer had NO
+> `equation` dispatcher → a direct-child `<equation>` of `<problem>`/`<solution>` was **dropped
+> entirely** (silent content loss — m68670's density formula `d = m/V`), and an in-para exercise
+> equation rendered inline. Fix: add `equation: renderEquation` + `hoistTags: ['list','equation']` to
+> `renderSectionContent`. All 6 exercise-equation modules now render each `<equation>` once as a
+> display block (m68667/68670/68744/68745/68747/68811); legit inline math untouched; new
+> `cnxml-render-exercise-dom.test.js`.
 - Highest-bug-density containers (`cnxml-render.js:1354`, `:1602`). Same seam, one at a time, golden-gated.
 - **Acceptance:** golden unchanged; the figure-escapes-example regression (already fixed) and the
   nesting matrix stay green; the inject-vs-render coverage asymmetry closed.

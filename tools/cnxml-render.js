@@ -1553,8 +1553,14 @@ function renderExercise(exercise, context) {
         media: renderMedia,
         figure: renderFigure,
         list: renderList,
+        equation: renderEquation,
       },
-      { hoistTags: ['list'] }
+      // Hoist block-level <equation> out of a <para> so it renders once as a
+      // centered display block (parity with renderExample). A direct-child
+      // <equation> of <problem>/<solution> also needs the dispatcher above —
+      // without it the DOM seam skipped the node entirely and dropped the
+      // equation (e.g. m68670's density formula d = m/V).
+      { hoistTags: ['list', 'equation'] }
     );
     for (const block of blocks) {
       lines.push(`    ${block}`);
