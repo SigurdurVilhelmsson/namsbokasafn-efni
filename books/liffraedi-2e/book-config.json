@@ -1,0 +1,39 @@
+{
+  "domain": "biology",
+  "excludedSectionClasses": [
+    "summary",
+    "multiple-choice",
+    "critical-thinking",
+    "visual-exercise"
+  ],
+  "specialModules": {},
+  "noteTypeLabels": {
+    "visual-connection": "Sjónræn tenging",
+    "evolution": "Þróun",
+    "career": "Starfsferill"
+  },
+  "titleTranslations": {},
+  "endOfChapterSections": {
+    "multiple-choice": {
+      "titleIs": "Fjölvalsspurningar",
+      "titleEn": "Multiple Choice",
+      "slug": "exercises",
+      "exerciseType": true,
+      "compiled": true
+    },
+    "critical-thinking": {
+      "titleIs": "Gagnrýnin hugsun",
+      "titleEn": "Critical Thinking",
+      "slug": "exercises",
+      "exerciseType": true,
+      "compiled": true
+    },
+    "visual-exercise": {
+      "titleIs": "Sjónrænar æfingar",
+      "titleEn": "Visual Exercise",
+      "slug": "exercises",
+      "exerciseType": true,
+      "compiled": true
+    }
+  }
+}

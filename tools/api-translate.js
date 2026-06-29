@@ -32,6 +32,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, MODULE_OPTION } from './lib/parseArgs.js';
 import { createClient, formatGlossary } from './lib/malstadur-api.js';
+import { bookToDomain } from './lib/book-rendering-config.js';
 
 // ─── Configuration ──────────────────────────────────────────────────
 
@@ -298,18 +299,10 @@ export function normalizeSegMarkers(text) {
 }
 
 // ─── Book → Domain Mapping ──────────────────────────────────────────
-
-/**
- * Derive glossary domain from book slug.
- */
-export function bookToDomain(bookSlug) {
-  if (bookSlug.startsWith('efnafraedi')) return 'chemistry';
-  if (bookSlug.startsWith('lifraen')) return 'chemistry';
-  if (bookSlug.startsWith('liffraedi')) return 'biology';
-  if (bookSlug.startsWith('orverufraedi')) return 'microbiology';
-  if (bookSlug.startsWith('edlisfraedi')) return 'physics';
-  return 'science';
-}
+// bookToDomain now lives in book-rendering-config.js (reads book-config.json
+// `domain`). Imported above for internal use; re-exported here for backward
+// compatibility with existing callers/tests.
+export { bookToDomain };
 
 // ─── Glossary Loading ───────────────────────────────────────────────
 

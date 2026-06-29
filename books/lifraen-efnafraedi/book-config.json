@@ -1,0 +1,36 @@
+{
+  "domain": "chemistry",
+  "excludedSectionClasses": [
+    "summary",
+    "key-terms",
+    "section-exercises",
+    "additional-problems",
+    "chemistry-matters"
+  ],
+  "sectionExercises": "both",
+  "specialModules": {},
+  "noteTypeLabels": {},
+  "titleTranslations": {},
+  "endOfChapterSections": {
+    "section-exercises": {
+      "titleIs": "Æfingar",
+      "titleEn": "Exercises",
+      "slug": "exercises",
+      "exerciseType": true,
+      "compiled": true
+    },
+    "additional-problems": {
+      "titleIs": "Viðbótardæmi",
+      "titleEn": "Additional Problems",
+      "slug": "additional-problems",
+      "exerciseType": true,
+      "compiled": true
+    },
+    "chemistry-matters": {
+      "titleIs": "Efnafræði skiptir máli",
+      "titleEn": "Chemistry Matters",
+      "slug": "chemistry-matters",
+      "compiled": true
+    }
+  }
+}

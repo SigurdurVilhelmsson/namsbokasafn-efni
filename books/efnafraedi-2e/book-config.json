@@ -1,0 +1,40 @@
+{
+  "domain": "chemistry",
+  "excludedSectionClasses": [
+    "summary",
+    "key-equations",
+    "exercises"
+  ],
+  "specialModules": {
+    "m68859": "periodic-table"
+  },
+  "noteTypeLabels": {
+    "chemistry everyday-life": "Efnafræði í daglegu lífi",
+    "everyday-life": "Efnafræði í daglegu lífi",
+    "sciences-interconnect": "Hvernig vísindagreinar tengjast",
+    "chemist-portrait": "Efnafræðingur í brennidepli",
+    "chem-connections": "Tengsl við efnafræði",
+    "green-chemistry": "Græn efnafræði",
+    "safety-hazard": "Öryggisviðvörun",
+    "lab-equipment": "Tilraunabúnaður"
+  },
+  "titleTranslations": {
+    "Solution: Using the Equation": "Lausn: Notkun jöfnunnar",
+    "Solution: Supporting Why the General Equation Is Valid": "Lausn: Rökstuðningur fyrir almennri jöfnu"
+  },
+  "endOfChapterSections": {
+    "key-equations": {
+      "titleIs": "Lykiljöfnur",
+      "titleEn": "Key Equations",
+      "slug": "key-equations",
+      "compiled": false
+    },
+    "exercises": {
+      "titleIs": "Dæmi í lok kafla",
+      "titleEn": "End of Chapter Exercises",
+      "slug": "exercises",
+      "exerciseType": true,
+      "compiled": true
+    }
+  }
+}

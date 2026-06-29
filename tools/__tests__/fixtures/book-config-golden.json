@@ -1,0 +1,327 @@
+{
+  "efnafraedi-2e": {
+    "noteTypeLabels": {
+      "link-to-learning": "Tengill til náms",
+      "interactive": "Gagnvirkt",
+      "default": null,
+      "chemistry everyday-life": "Efnafræði í daglegu lífi",
+      "everyday-life": "Efnafræði í daglegu lífi",
+      "sciences-interconnect": "Hvernig vísindagreinar tengjast",
+      "chemist-portrait": "Efnafræðingur í brennidepli",
+      "chem-connections": "Tengsl við efnafræði",
+      "green-chemistry": "Græn efnafræði",
+      "safety-hazard": "Öryggisviðvörun",
+      "lab-equipment": "Tilraunabúnaður"
+    },
+    "titleTranslations": {
+      "Answer:": "Svar:",
+      "Answer": "Svar",
+      "Solution": "Lausn",
+      "Check Your Learning": "Prófaðu þekkingu þína",
+      "CHECK YOUR LEARNING": "Prófaðu þekkingu þína",
+      "Solution: Using the Equation": "Lausn: Notkun jöfnunnar",
+      "Solution: Supporting Why the General Equation Is Valid": "Lausn: Rökstuðningur fyrir almennri jöfnu"
+    },
+    "endOfChapterSections": {
+      "summary": {
+        "titleIs": "Samantekt",
+        "titleEn": "Key Concepts and Summary",
+        "slug": "summary",
+        "compiled": true
+      },
+      "glossary": {
+        "titleIs": "Lykilhugtök",
+        "titleEn": "Key Terms",
+        "slug": "key-terms",
+        "compiled": true
+      },
+      "key-equations": {
+        "titleIs": "Lykiljöfnur",
+        "titleEn": "Key Equations",
+        "slug": "key-equations",
+        "compiled": false
+      },
+      "exercises": {
+        "titleIs": "Dæmi í lok kafla",
+        "titleEn": "End of Chapter Exercises",
+        "slug": "exercises",
+        "exerciseType": true,
+        "compiled": true
+      }
+    },
+    "excludedSectionClasses": [
+      "summary",
+      "key-equations",
+      "exercises"
+    ],
+    "specialModules": {
+      "m68859": "periodic-table"
+    }
+  },
+  "liffraedi-2e": {
+    "noteTypeLabels": {
+      "link-to-learning": "Tengill til náms",
+      "interactive": "Gagnvirkt",
+      "default": null,
+      "visual-connection": "Sjónræn tenging",
+      "evolution": "Þróun",
+      "career": "Starfsferill"
+    },
+    "titleTranslations": {
+      "Answer:": "Svar:",
+      "Answer": "Svar",
+      "Solution": "Lausn",
+      "Check Your Learning": "Prófaðu þekkingu þína",
+      "CHECK YOUR LEARNING": "Prófaðu þekkingu þína"
+    },
+    "endOfChapterSections": {
+      "summary": {
+        "titleIs": "Samantekt",
+        "titleEn": "Key Concepts and Summary",
+        "slug": "summary",
+        "compiled": true
+      },
+      "glossary": {
+        "titleIs": "Lykilhugtök",
+        "titleEn": "Key Terms",
+        "slug": "key-terms",
+        "compiled": true
+      },
+      "multiple-choice": {
+        "titleIs": "Fjölvalsspurningar",
+        "titleEn": "Multiple Choice",
+        "slug": "exercises",
+        "exerciseType": true,
+        "compiled": true
+      },
+      "critical-thinking": {
+        "titleIs": "Gagnrýnin hugsun",
+        "titleEn": "Critical Thinking",
+        "slug": "exercises",
+        "exerciseType": true,
+        "compiled": true
+      },
+      "visual-exercise": {
+        "titleIs": "Sjónrænar æfingar",
+        "titleEn": "Visual Exercise",
+        "slug": "exercises",
+        "exerciseType": true,
+        "compiled": true
+      }
+    },
+    "excludedSectionClasses": [
+      "summary",
+      "multiple-choice",
+      "critical-thinking",
+      "visual-exercise"
+    ],
+    "specialModules": {}
+  },
+  "orverufraedi": {
+    "noteTypeLabels": {
+      "link-to-learning": "Tengill til náms",
+      "interactive": "Gagnvirkt",
+      "default": null,
+      "microbiology check-your-understanding": "Prófaðu skilning þinn",
+      "microbiology clinical-focus": "Klínísk sjónarmið",
+      "microbiology link-to-learning": "Tengill til náms",
+      "microbiology micro-connection": "Tengsl við örverufræði",
+      "microbiology disease-profile": "Sjúkdómslýsing",
+      "microbiology eye-on-ethics": "Siðfræðilegt sjónarhorn",
+      "microbiology case-in-point": "Dæmi úr veruleikanum"
+    },
+    "titleTranslations": {
+      "Answer:": "Svar:",
+      "Answer": "Svar",
+      "Solution": "Lausn",
+      "Check Your Learning": "Prófaðu þekkingu þína",
+      "CHECK YOUR LEARNING": "Prófaðu þekkingu þína"
+    },
+    "endOfChapterSections": {
+      "summary": {
+        "titleIs": "Samantekt",
+        "titleEn": "Key Concepts and Summary",
+        "slug": "summary",
+        "compiled": true
+      },
+      "glossary": {
+        "titleIs": "Lykilhugtök",
+        "titleEn": "Key Terms",
+        "slug": "key-terms",
+        "compiled": true
+      },
+      "multiple-choice": {
+        "titleIs": "Fjölvalsspurningar",
+        "titleEn": "Multiple Choice",
+        "slug": "multiple-choice",
+        "exerciseType": true,
+        "compiled": true
+      },
+      "fill-in-the-blank": {
+        "titleIs": "Fylltu í eyðurnar",
+        "titleEn": "Fill in the Blank",
+        "slug": "fill-in-the-blank",
+        "exerciseType": true,
+        "compiled": true
+      },
+      "short-answer": {
+        "titleIs": "Stuttsvörun",
+        "titleEn": "Short Answer",
+        "slug": "short-answer",
+        "exerciseType": true,
+        "compiled": true
+      },
+      "critical-thinking": {
+        "titleIs": "Gagnrýnin hugsun",
+        "titleEn": "Critical Thinking",
+        "slug": "critical-thinking",
+        "exerciseType": true,
+        "compiled": true
+      },
+      "true-false": {
+        "titleIs": "Rétt eða rangt",
+        "titleEn": "True/False",
+        "slug": "true-false",
+        "exerciseType": true,
+        "compiled": true
+      },
+      "matching": {
+        "titleIs": "Pörun",
+        "titleEn": "Matching",
+        "slug": "matching",
+        "exerciseType": true,
+        "compiled": true
+      }
+    },
+    "excludedSectionClasses": [
+      "summary",
+      "multiple-choice",
+      "fill-in-the-blank",
+      "short-answer",
+      "critical-thinking",
+      "true-false",
+      "matching"
+    ],
+    "specialModules": {}
+  },
+  "lifraen-efnafraedi": {
+    "noteTypeLabels": {
+      "link-to-learning": "Tengill til náms",
+      "interactive": "Gagnvirkt",
+      "default": null
+    },
+    "titleTranslations": {
+      "Answer:": "Svar:",
+      "Answer": "Svar",
+      "Solution": "Lausn",
+      "Check Your Learning": "Prófaðu þekkingu þína",
+      "CHECK YOUR LEARNING": "Prófaðu þekkingu þína"
+    },
+    "endOfChapterSections": {
+      "summary": {
+        "titleIs": "Samantekt",
+        "titleEn": "Key Concepts and Summary",
+        "slug": "summary",
+        "compiled": true
+      },
+      "glossary": {
+        "titleIs": "Lykilhugtök",
+        "titleEn": "Key Terms",
+        "slug": "key-terms",
+        "compiled": true
+      },
+      "section-exercises": {
+        "titleIs": "Æfingar",
+        "titleEn": "Exercises",
+        "slug": "exercises",
+        "exerciseType": true,
+        "compiled": true
+      },
+      "additional-problems": {
+        "titleIs": "Viðbótardæmi",
+        "titleEn": "Additional Problems",
+        "slug": "additional-problems",
+        "exerciseType": true,
+        "compiled": true
+      },
+      "chemistry-matters": {
+        "titleIs": "Efnafræði skiptir máli",
+        "titleEn": "Chemistry Matters",
+        "slug": "chemistry-matters",
+        "compiled": true
+      }
+    },
+    "excludedSectionClasses": [
+      "summary",
+      "key-terms",
+      "section-exercises",
+      "additional-problems",
+      "chemistry-matters"
+    ],
+    "sectionExercises": "both",
+    "specialModules": {}
+  },
+  "edlisfraedi-2e": {
+    "noteTypeLabels": {
+      "link-to-learning": "Tengill til náms",
+      "interactive": "Gagnvirkt",
+      "default": null
+    },
+    "titleTranslations": {
+      "Answer:": "Svar:",
+      "Answer": "Svar",
+      "Solution": "Lausn",
+      "Check Your Learning": "Prófaðu þekkingu þína",
+      "CHECK YOUR LEARNING": "Prófaðu þekkingu þína"
+    },
+    "endOfChapterSections": {
+      "summary": {
+        "titleIs": "Samantekt",
+        "titleEn": "Key Concepts and Summary",
+        "slug": "summary",
+        "compiled": true
+      },
+      "glossary": {
+        "titleIs": "Lykilhugtök",
+        "titleEn": "Key Terms",
+        "slug": "key-terms",
+        "compiled": true
+      },
+      "section-summary": {
+        "titleIs": "Samantekt",
+        "titleEn": "Section Summary",
+        "slug": "summary",
+        "compiled": true
+      },
+      "conceptual-questions": {
+        "titleIs": "Hugtakaspurningar",
+        "titleEn": "Conceptual Questions",
+        "slug": "conceptual-questions",
+        "exerciseType": true,
+        "compiled": true
+      },
+      "problems-exercises": {
+        "titleIs": "Verkefni og dæmi",
+        "titleEn": "Problems & Exercises",
+        "slug": "problems-exercises",
+        "exerciseType": true,
+        "compiled": true
+      },
+      "ap-test-prep": {
+        "titleIs": "AP prófundirbúningur",
+        "titleEn": "AP Test Prep",
+        "slug": "ap-test-prep",
+        "exerciseType": true,
+        "compiled": true
+      }
+    },
+    "excludedSectionClasses": [
+      "summary",
+      "section-summary",
+      "conceptual-questions",
+      "problems-exercises",
+      "ap-test-prep"
+    ],
+    "specialModules": {}
+  }
+}
