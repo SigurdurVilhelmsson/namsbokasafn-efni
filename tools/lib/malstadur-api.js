@@ -290,7 +290,13 @@ function createClient(options = {}) {
 
     for (let attempt = 0; attempt < maxAttempts; attempt++) {
       await rateLimiter();
-      const task = await apiRequest(apiKey, 'GET', `/v1/translate/tasks/${taskId}`);
+      // Wrap the poll GET in withRetry so a transient blip (5xx/429) on a
+      // single poll doesn't fail the whole module — parity with the wrapped
+      // submit/translate calls. 4xx (non-429) still fails fast.
+      const task = await withRetry(
+        () => apiRequest(apiKey, 'GET', `/v1/translate/tasks/${taskId}`),
+        { maxRetries }
+      );
 
       if (opts.onPoll) opts.onPoll(task);
 
