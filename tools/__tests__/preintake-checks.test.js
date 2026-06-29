@@ -39,3 +39,27 @@ describe('runFileChecks — regex checks', () => {
     expect(r.noteClasses).toEqual([]);
   });
 });
+
+describe('runFileChecks — unrecognized inline (DOM)', () => {
+  it('flags an unhandled inline element inside a para', () => {
+    const cnxml =
+      '<document xmlns:m="http://www.w3.org/1998/Math/MathML">' +
+      '<para>A <quote>q</quote> and <emphasis>e</emphasis> and <m:math><m:mn>2</m:mn></m:math></para>' +
+      '</document>';
+    const r = runFileChecks(cnxml);
+    expect(r.unrecognizedInline).toEqual({ quote: 1 });
+  });
+
+  it('does not flag handled inline or MathML internals', () => {
+    const cnxml =
+      '<document xmlns:m="http://www.w3.org/1998/Math/MathML">' +
+      '<para><emphasis>e</emphasis><sub>2</sub><link url="x">l</link>' +
+      '<m:math><m:mrow><m:mi>x</m:mi></m:mrow></m:math></para></document>';
+    expect(runFileChecks(cnxml).unrecognizedInline).toEqual({});
+  });
+
+  it('returns {} on malformed CNXML (does not throw)', () => {
+    expect(() => runFileChecks('<para>unclosed')).not.toThrow();
+    expect(runFileChecks('<para>unclosed').unrecognizedInline).toEqual({});
+  });
+});
