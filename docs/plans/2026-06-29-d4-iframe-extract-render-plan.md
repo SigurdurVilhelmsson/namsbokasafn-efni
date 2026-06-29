@@ -687,7 +687,9 @@ In `renderCnxmlToHtml(cnxml, options = {})` (~`:413`), accept an injected map (t
   if (options.embedMap) EMBED_MAP = options.embedMap;
 ```
 
-Wherever the render `context` object is built (the object that already carries `bookSlug`/`chapter`), add `embedMap: EMBED_MAP` so `cnxml-elements.js` receives it.
+**Add `embedMap: EMBED_MAP` to all THREE `const context = {…}` blocks** — `tools/cnxml-render.js:471`, `:2341`, and the options object at `:3868` (each already carries `bookSlug: BOOK_SLUG`; add the line right after it). The iframe render path uses only `embedMap` (not `bookSlug`/`chapter`), but `processInlineContent`→`cnxml-elements.js` reads `context.embedMap`, and a media renderer can be reached from any of the three contexts — so **all three must carry it** or fail-loud throws on whichever path's context is missing it.
+
+**Test-isolation note:** `EMBED_MAP` is a module global; `options.embedMap` overwrites it per call. Every render test that exercises an embed MUST pass `embedMap` (the tests in this plan do). Tests that don't touch embeds are unaffected (no embed → no lookup).
 
 - [ ] **Step 4: Implement — `renderMedia` (standalone block)**
 
@@ -779,7 +781,9 @@ git commit -m "feat(d4): render <iframe> embeds as resolved responsive iframes (
 - Consumes: all prior tasks.
 - Produces: a committed biology embed mapping and a regression test pinning extract→inject→render iframe survival.
 
-- [ ] **Step 1: Generate the biology mapping (networked, one-time)**
+- [ ] **Step 1: Generate the biology mapping (networked, one-time — NOT for an offline executor)**
+
+> ⚠️ This single step needs network access (it follows the `/l/` redirects). Do not dispatch it to an offline subagent; run it in an environment with network. Every other step is offline.
 
 Run: `node tools/resolve-embeds.js --book liffraedi-2e --verbose`
 Expected: `Found 44 distinct iframe src(s)…` (51 occurrences across ~44 distinct slugs) and `Wrote books/liffraedi-2e/embed-mapping.json`. Inspect the file — every entry should be `status: "ok"` with a `youtube.com/embed` or `phet…` resolved URL. Investigate (do not commit `ok`-faking) any `blocked`/`error` entries; if a slug is genuinely dead, leave it recorded as non-`ok` (render will fail loud on it, surfacing the dead link for editorial follow-up — log it to the out-of-scope register).
@@ -810,7 +814,9 @@ it('liffraedi-2e: renders an inline PhET/YouTube iframe embed', () => {
 - [ ] **Step 3: Run it to verify pass (proves the inline-in-note path works end to end)**
 
 Run: `npx vitest run tools/__tests__/render-characterization.test.js -t "iframe embed"`
-Expected: PASS. If it FAILS because the embed leaks as raw CNXML, the `buildNoteDom`/`reverseInlineMarkup` inline-restore path needs the same `embedSrc` plumbing — extend `reverseInlineMarkup`'s `[[MEDIA:n]]` restore (it already calls `buildMediaElement`, fixed in Task 3, so this should pass; if not, trace the note-injection path and fix there).
+Expected: PASS.
+
+> **Why this test is the real arbiter (Task 3 green ≠ biology proven).** `buildNoteDom` (`cnxml-inject.js:2820`) replaces each note `<para>` via `getSeg()` (its translated text carries `[[MEDIA:n]]`, restored by `reverseInlineMarkup` → `buildMediaElement`, fixed in Task 3) — so **inline-in-note** embeds (most of biology's) flow through Task 3. But a `<media>` placed **directly in a note** (not inside a para) is *preserved verbatim from the original CNXML* by `buildNoteDom` (it keeps non-para/list/figure children untouched) — it never reaches `buildMedia`, so **render** (Task 5's `renderMedia`) is what handles it. This characterization spec exercises the real note→para→media pipeline; if it FAILS with the embed leaking as raw CNXML or a placeholder, trace which path the fixture took (`getSeg`/`reverseInlineMarkup` for inline; the preserved-CNXML render path for block) and fix there.
 
 - [ ] **Step 4: Run the full suite**
 
@@ -870,7 +876,7 @@ gh pr create --title "D4: <iframe> extract + render (resolve /l/ → embeddable 
 ## Manual / live acceptance (post-merge, not a unit gate)
 
 1. Deploy + re-render biology: `node tools/cnxml-render.js --book liffraedi-2e --chapter 29` (and any other chapters with embeds), then sync to vefur (`node scripts/sync-content.js` from vefur — auto-sync Action is unconfigured).
-2. Open module m66594 on namsbokasafn.is; confirm the `diet_detective` video iframe renders and plays, and the fallback link works.
+2. Open module m66594 on namsbokasafn.is; confirm the `diet_detective` video iframe **actually plays** (not just that the `<iframe>` element exists) and the fallback link works. Note: a `status:"ok"` entry is header-framable but a specific YouTube video can still refuse embedding with no header signal ("Video unavailable") — the fallback link is the mitigation, so spot-check a few embeds play.
 3. Confirm the [VEFUR] CSS makes the embed responsive (no overflow on mobile width).
 
 ## Self-review notes (author)
