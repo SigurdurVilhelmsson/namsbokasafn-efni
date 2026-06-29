@@ -119,7 +119,11 @@ roadmap (Tracks A→D) into ordered, individually-shippable work items.
   the documented fidelity gaps — **~30 net math drops (ch15-21; ch21=15, ch17=9) + 1 image drop
   (appendices)**. Pre-existing, not regressions. Hard-gating needs the lead to triage these first.
 
-### A4 — `pollTask` retry + async-path tests  ·  S  ·  no deps
+### A4 — `pollTask` retry + async-path tests  ·  S  ·  no deps  ·  ✅ DONE (PR #185, branch `feat/a4-polltask-retry`)
+- **Shipped 2026-06-29:** poll GET wrapped in the existing `withRetry` (transient 5xx/429 retry, 4xx fails
+  fast). First test suite for `malstadur-api.js` (mocked fetch + fake timers): translateAuto 10K-boundary
+  routing, pollTask completed/failed/timeout, transient-5xx recovery, withRetry 5xx-vs-4xx. `npm test` 1513/0.
+  **Track A (A1/A2/A3/A4) now complete.**
 - **Problem:** the async (>10K, dominant) path's poll GET is a bare call — one transient blip fails a
   whole module.
 - **Files:** `tools/lib/malstadur-api.js:293` (bare GET inside poll loop) vs `:233`/`:266` (wrapped).
