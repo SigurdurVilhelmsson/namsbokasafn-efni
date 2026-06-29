@@ -1,0 +1,67 @@
+{
+  "domain": "microbiology",
+  "excludedSectionClasses": [
+    "summary",
+    "multiple-choice",
+    "fill-in-the-blank",
+    "short-answer",
+    "critical-thinking",
+    "true-false",
+    "matching"
+  ],
+  "specialModules": {},
+  "noteTypeLabels": {
+    "microbiology check-your-understanding": "Prófaðu skilning þinn",
+    "microbiology clinical-focus": "Klínísk sjónarmið",
+    "microbiology link-to-learning": "Tengill til náms",
+    "microbiology micro-connection": "Tengsl við örverufræði",
+    "microbiology disease-profile": "Sjúkdómslýsing",
+    "microbiology eye-on-ethics": "Siðfræðilegt sjónarhorn",
+    "microbiology case-in-point": "Dæmi úr veruleikanum"
+  },
+  "titleTranslations": {},
+  "endOfChapterSections": {
+    "multiple-choice": {
+      "titleIs": "Fjölvalsspurningar",
+      "titleEn": "Multiple Choice",
+      "slug": "multiple-choice",
+      "exerciseType": true,
+      "compiled": true
+    },
+    "fill-in-the-blank": {
+      "titleIs": "Fylltu í eyðurnar",
+      "titleEn": "Fill in the Blank",
+      "slug": "fill-in-the-blank",
+      "exerciseType": true,
+      "compiled": true
+    },
+    "short-answer": {
+      "titleIs": "Stuttsvörun",
+      "titleEn": "Short Answer",
+      "slug": "short-answer",
+      "exerciseType": true,
+      "compiled": true
+    },
+    "critical-thinking": {
+      "titleIs": "Gagnrýnin hugsun",
+      "titleEn": "Critical Thinking",
+      "slug": "critical-thinking",
+      "exerciseType": true,
+      "compiled": true
+    },
+    "true-false": {
+      "titleIs": "Rétt eða rangt",
+      "titleEn": "True/False",
+      "slug": "true-false",
+      "exerciseType": true,
+      "compiled": true
+    },
+    "matching": {
+      "titleIs": "Pörun",
+      "titleEn": "Matching",
+      "slug": "matching",
+      "exerciseType": true,
+      "compiled": true
+    }
+  }
+}

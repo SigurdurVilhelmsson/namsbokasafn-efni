@@ -13,3 +13,23 @@ describe('getBookRenderConfig golden equality (migration oracle)', () => {
     });
   }
 });
+
+describe('book-config.json loader merge semantics', () => {
+  it('shallow-merges file overrides over SHARED defaults', () => {
+    const cfg = getBookRenderConfig('efnafraedi-2e');
+    expect(cfg.noteTypeLabels['link-to-learning']).toBe('Tengill til náms'); // from SHARED
+    expect(cfg.noteTypeLabels['green-chemistry']).toBe('Græn efnafræði'); // from file
+  });
+
+  it('keeps SHARED end-of-chapter sections (summary/glossary) after merge', () => {
+    const cfg = getBookRenderConfig('liffraedi-2e');
+    expect(cfg.endOfChapterSections.summary.titleIs).toBe('Samantekt');
+    expect(cfg.endOfChapterSections.glossary.slug).toBe('key-terms');
+  });
+
+  it('falls back to SHARED-only for a book with no config file', () => {
+    const cfg = getBookRenderConfig('no-such-book-xyz');
+    expect(cfg.excludedSectionClasses).toEqual(['summary']);
+    expect(cfg.specialModules).toEqual({});
+  });
+});

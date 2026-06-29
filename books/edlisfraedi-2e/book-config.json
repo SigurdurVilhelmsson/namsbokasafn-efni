@@ -1,0 +1,42 @@
+{
+  "domain": "physics",
+  "excludedSectionClasses": [
+    "summary",
+    "section-summary",
+    "conceptual-questions",
+    "problems-exercises",
+    "ap-test-prep"
+  ],
+  "specialModules": {},
+  "noteTypeLabels": {},
+  "titleTranslations": {},
+  "endOfChapterSections": {
+    "section-summary": {
+      "titleIs": "Samantekt",
+      "titleEn": "Section Summary",
+      "slug": "summary",
+      "compiled": true
+    },
+    "conceptual-questions": {
+      "titleIs": "Hugtakaspurningar",
+      "titleEn": "Conceptual Questions",
+      "slug": "conceptual-questions",
+      "exerciseType": true,
+      "compiled": true
+    },
+    "problems-exercises": {
+      "titleIs": "Verkefni og dæmi",
+      "titleEn": "Problems & Exercises",
+      "slug": "problems-exercises",
+      "exerciseType": true,
+      "compiled": true
+    },
+    "ap-test-prep": {
+      "titleIs": "AP prófundirbúningur",
+      "titleEn": "AP Test Prep",
+      "slug": "ap-test-prep",
+      "exerciseType": true,
+      "compiled": true
+    }
+  }
+}
