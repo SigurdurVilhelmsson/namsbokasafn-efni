@@ -517,8 +517,26 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
       That inertness is fragile, not guaranteed → B2 still ships **as producer provenance, NOT a sniff-patch**.
       Payoff: probe proves the provenance swap is **behavior-preserving on all current content**, so B2 lands
       as a clean low-risk refactor. [[feedback-robustness-over-expedience]]
+    - **✅ B2 IMPLEMENTED & VERIFIED (2026-06-30, branch `feat/b2-provenance-routing`):** design
+      `docs/plans/2026-06-30-b2-provenance-routing-design.md`, plan `…-b2-provenance-routing-plan.md`.
+      Per-module provenance sidecar (`mNNNNN-provenance.json`) written by both producers
+      (`api-translate`, `docx-import`); `tools/lib/provenance.js` maps tool→policy (`api-translate`→warn,
+      `docx-import`→mutate, unknown→throw); inject resolves policy from `02-mt-output` and **fails loud**
+      on missing provenance for MT-origin content; warn policy runs the 3 web-UI restores on a clone
+      (no mutate) — also a mis-stamp detector. Backfilled 189 existing sidecars (only liffraedi ch03 is
+      docx). **Orphan `/import-mt` route retired** (un-stamped producer, found during design). **Pure
+      refactor proven** by `scripts/verify-b2-idempotent.sh` (baseline-ref vs HEAD inject in worktrees;
+      16/side real injects; 0 real `.cnxml` diff). `restoreMathMarkers`/`restoreTermMarkers` untouched.
   - *Still open cluster:* **#15** duplicate-seg-ID policy convergence (the behavior-changing enforcement PR);
     **#19** [LOW] orphan `*-segments(b|c|d).en.md` legacy files cleanup.
+  - *New out-of-scope finds (logged during B2 execution 2026-06-30 — NOT B2's job):*
+    **(a)** ~8 **stale committed `03-translated` CNXML** produced by an older renderer (pre-#179..#183);
+    both main and B2 now emit the newer placement, so the committed files lag → regenerate in a separate
+    **re-render+sync PR**. **(b)** ~15 chapter/track combos **fail to inject** identically on main & B2:
+    2 faithful chapters missing translation files; 13 mt-preview chapters blocked by the A2 residue gate
+    (chapters MT'd before A2 existed) — pre-existing, decide whether to re-translate or grandfather.
+    **(c)** the `--book` slug validator (`BOOK_OPTION`) rejects `__e2e-fixture__` (leading underscores), so
+    backfill/CLI tools can't target the test fixture — pre-existing across all `--book` tools (LOW).
 - **#33 [HIGH] inject list-flattening divergence — ✅ DONE (PR #197, branch `fix/inject-list-flatten-unify`).**
   One `paraHasFlattenedList` helper now serves all three DOM builders; `buildExerciseDom`/`buildNoteDom`
   **preserve** a `<list>` flattened into a math-bearing `<para>` (was `removeChild`-deleted), matching
