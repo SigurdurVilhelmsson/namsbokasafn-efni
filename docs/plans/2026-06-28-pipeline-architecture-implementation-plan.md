@@ -657,9 +657,13 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
 | **B2-math** `restoreMathMarkers` upstream-move | `cnxml-inject.js:572,3403`; no `[[MATH:N]]` count in `api-translate.js` | Works correctly; deferred design move (per-segment count check upstream) |
 
 ### 🔗 Cross-repo `[vefur]` (owned by namsbokasafn-vefur — fix THERE, do not edit here)
-Tracked in vefur's memory/plans per the cross-repo protocol; listed here only so this plan is complete:
-- **[vefur] 14 cross-book CSS gaps** (`css-contract.test.js KNOWN_GAPS` + vefur memory `css-cross-book-gaps`) + **D4 embed-wrapper CSS** (`.embed-responsive`/`.embed-fallback`) + per-book **note-class vocabulary** + a shared **class manifest**.
-- **[vefur] live-QA regressions:** **I** duplicate learning-objectives block (visible on most pages — higher priority), **J** `/{book}/markmid` redirects to front page, **H** sticky banner hides anchor targets (`scroll-padding-top`), **E** empty-glossary TOC suppression, **G** interactive-appendix one-click, **F** cross-repo confirmations.
+**Handed off 2026-06-30** as a self-contained plan in the sister repo: `namsbokasafn-vefur`
+`docs/plans/2026-06-30-cross-book-css-and-embed-handoff.md` (vefur PR #175) + vefur memory pointer.
+Reconciled against vefur memory — only the CSS work is genuinely open:
+- **[vefur] D4 embed-wrapper CSS** (🟠 `.embed-responsive`/`.embed-fallback`) — gates biology embeds; exact rules in the handoff doc.
+- **[vefur] 14 cross-book CSS gap classes** (🟡, biology note-variants + `.span-all` prioritized; `.note-interactive` quick win) — coordinated with efni `KNOWN_GAPS` + `VEFUR_CONTRACT=1` css-contract; per-book **note-class vocabulary** + a shared **class manifest** fold into this.
+- *Already DONE in vefur (NOT open — corrected from an earlier draft):* live-QA **I/J/H/G** fixed & merged (vefur PR #164; J's nginx side #166).
+- *Reclassified efni-side (NOT vefur):* fixlist **E** "empty-glossary TOC suppression" = stale efni-built `glossary.json`/`index.json` aggregates (vefur memory `glossary-aggregates-stale`) → folds into the glossary/**D5** work above. **F** cross-repo confirmations = resolved.
 
 ### 🧭 Process / adoption (non-code — lead)
 - **Adoption is the binding throughput constraint:** only ~3 faithful modules applied; concordance/TM/repetition aids stay empty until editors review Pass-1 at volume. *(Priority 1 per `2026-06-24-next-session-roadmap.md`.)*
