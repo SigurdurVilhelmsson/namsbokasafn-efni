@@ -507,10 +507,17 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
     The clean fix needs **producer provenance (B2)** — A1's manifest carries no `tool`/`track`. Do with/after B2.
   - *Still open cluster:* **#15** duplicate-seg-ID policy convergence (the behavior-changing enforcement PR);
     **#19** [LOW] orphan `*-segments(b|c|d).en.md` legacy files cleanup.
-- **#33 [HIGH, blocks_next_book] inject list-flattening divergence** — `buildExampleDom` PRESERVES nested
-  lists; `buildExerciseDom`/`buildNoteDom` DELETE them (`cnxml-inject.js:2597`/`:2854`). Unify on the
-  example approach. (Distinct from C4 table-DOM and the render-side C-track work.) **→ folded into the
-  Biology onboarding required set (2026-06-29):** biology has exercises + notes, the two affected builders.
+- **#33 [HIGH] inject list-flattening divergence — ✅ DONE (PR #197, branch `fix/inject-list-flatten-unify`).**
+  One `paraHasFlattenedList` helper now serves all three DOM builders; `buildExerciseDom`/`buildNoteDom`
+  **preserve** a `<list>` flattened into a math-bearing `<para>` (was `removeChild`-deleted), matching
+  `buildExampleDom` (byte-identical no-op there). Characterization tests prove preserve + example no-op;
+  full suite green. **Evidence corrected the `blocks_next_book` label:** the divergence is narrow (fires
+  only when a `<list>` is nested inside a `<para>` whose restored segment has `<m:math>`). Measured blast
+  radius (`find`-based, 2026-06-30): **biology 0 trigger hits → NOT a biology blocker**; the real
+  beneficiaries are **physics 11 / chemistry 3 / organic 1** (microbiology 0, astronomy 0). Direct-child
+  lists (the common exercise-options case) were always preserved. Design/plan: `docs/plans/2026-06-30-audit33-*`.
+  - With #14 + #33 done and D4/D6/D7 merged, biology onboarding's **only remaining gate is the re-scoped
+    `isApiTranslated` routing/provenance fix (needs B2)**.
 - **#43 [HIGH] `annotateInlineTerms` gloss desync** — `--annotate-en` attaches English glosses by ordinal
   position; desyncs on term reorder / count mismatch → **the wrong gloss reaches readers**. Real
   reader-facing correctness bug, not cosmetic.

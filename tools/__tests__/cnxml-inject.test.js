@@ -7,6 +7,7 @@ import {
   buildCnxml,
   buildExampleDom,
   buildExerciseDom,
+  buildNoteDom,
   buildMediaElement,
   buildMedia,
 } from '../cnxml-inject.js';
@@ -1145,5 +1146,90 @@ describe('inject seam: [[MEDIA:n]] → iframe round-trip (D4)', () => {
     // must NOT be XML-escaped to &lt;iframe on its way through reverseInlineMarkup
     // (the self-closing-tag allowlist was missing `iframe`).
     expect(restored).not.toContain('&lt;iframe');
+  });
+});
+
+// ─── Nested list preservation — audit #33 ────────────────────────
+describe('buildExerciseDom nested list in para (audit #33)', () => {
+  it('preserves a nested list when the para segment contains math', () => {
+    const element = {
+      type: 'exercise',
+      id: 'exr-nested',
+      problem: {
+        content: [
+          { type: 'para', id: 'p-prob', segmentId: 'm1:para:p-prob' },
+          {
+            type: 'list',
+            id: 'list-x',
+            listType: 'enumerated',
+            items: [
+              { id: 'it-a', segmentId: 'm1:item:it-a' },
+              { id: 'it-b', segmentId: 'm1:item:it-b' },
+            ],
+          },
+        ],
+      },
+    };
+    const segments = new Map([
+      [
+        'm1:para:p-prob',
+        'Spurning með <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:mn>3</m:mn></m:math>',
+      ],
+      ['m1:item:it-a', 'Liður (a)'],
+      ['m1:item:it-b', 'Liður (b)'],
+    ]);
+    const getSeg = (id) => segments.get(id) ?? '';
+    const originalCnxml = `<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<content>
+<exercise id="exr-nested"><problem id="prob-1">
+<para id="p-prob"><list id="list-x" list-type="enumerated">
+<item id="it-a">Item A original</item>
+<item id="it-b">Item B original</item>
+</list></para>
+</problem></exercise>
+</content>
+</document>`;
+    const result = buildExerciseDom(element, getSeg, {}, originalCnxml, {});
+    expect(result).toContain('<list id="list-x"');
+    expect(result).toContain('Liður (a)');
+    expect(result).toContain('Liður (b)');
+    expect(result).not.toContain('Item A original');
+  });
+});
+
+describe('buildNoteDom nested list in para (audit #33)', () => {
+  it('preserves a nested list when the para segment contains math', () => {
+    const element = {
+      type: 'note',
+      id: 'note-nested',
+      content: [
+        { type: 'para', id: 'p-note', segmentId: 'm1:para:p-note' },
+        {
+          type: 'list',
+          id: 'list-n',
+          listType: 'bulleted',
+          items: [{ id: 'n-a', segmentId: 'm1:item:n-a' }],
+        },
+      ],
+    };
+    const segments = new Map([
+      [
+        'm1:para:p-note',
+        'Athugið <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:mn>9</m:mn></m:math>',
+      ],
+      ['m1:item:n-a', 'Liður eitt'],
+    ]);
+    const getSeg = (id) => segments.get(id) ?? '';
+    const originalCnxml = `<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<content>
+<note id="note-nested" class="note"><para id="p-note"><list id="list-n" list-type="bulleted">
+<item id="n-a">Item one original</item>
+</list></para></note>
+</content>
+</document>`;
+    const result = buildNoteDom(element, getSeg, {}, originalCnxml, {});
+    expect(result).toContain('<list id="list-n"');
+    expect(result).toContain('Liður eitt');
+    expect(result).not.toContain('Item one original');
   });
 });
