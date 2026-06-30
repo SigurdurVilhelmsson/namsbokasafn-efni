@@ -12,6 +12,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import { parseSegmentsMap } from './lib/seg-markers.cjs';
 
 let BOOKS_DIR = 'books/efnafraedi-2e';
 
@@ -53,20 +54,11 @@ Examples:
 }
 
 /**
- * Parse segment file into a map of segment ID -> text
+ * Parse segment file into a map of segment ID -> text (last-wins).
+ * Delegates to shared seg-markers.cjs (audit #14).
  */
 function parseSegments(content) {
-  const segments = new Map();
-  const pattern = /<!-- SEG:([^\s]+) -->[ \t]*\n?([\s\S]*?)(?=<!-- SEG:|$)/g;
-
-  let match;
-  while ((match = pattern.exec(content)) !== null) {
-    const id = match[1];
-    const text = match[2].trim();
-    segments.set(id, text);
-  }
-
-  return segments;
+  return parseSegmentsMap(content, { duplicates: 'last' });
 }
 
 /**

@@ -33,23 +33,14 @@ import {
 } from './lib/parseArgs.js';
 import { compareTagCounts } from './cnxml-fidelity-check.js';
 import { updateTranslationErrors } from './lib/update-translation-errors.js';
+import { parseSegmentsMap } from './lib/seg-markers.cjs';
 
 let BOOKS_DIR = 'books/efnafraedi-2e';
 
 // ─── Segment parsing ─────────────────────────────────────────────
 
 function parseSegments(content) {
-  const segments = new Map();
-  const pattern = /<!-- SEG:([^\s]+) -->[ \t]*\n?([\s\S]*?)(?=<!-- SEG:|$)/g;
-  let match;
-  while ((match = pattern.exec(content)) !== null) {
-    const id = match[1];
-    const text = match[2].trim();
-    if (!segments.has(id)) {
-      segments.set(id, text);
-    }
-  }
-  return segments;
+  return parseSegmentsMap(content);
 }
 
 // ─── Emphasis analysis ───────────────────────────────────────────
