@@ -533,6 +533,24 @@ function restoreMediaMarkers(isSegments, enSegments) {
 }
 
 /**
+ * Run the three web-UI marker restores over a segment map and report the counts.
+ * Both inject policy branches call this ONE helper so they cannot drift: 'mutate'
+ * passes the real `segments` map (rewrites in place); 'warn' passes a throwaway
+ * `new Map(segments)` clone (reports what WOULD change without touching the real
+ * segments). The restores mutate their argument map in place — isolation is purely
+ * the caller's choice of which map to hand in.
+ * @param {Map<string,string>} targetSegments - map the restores mutate in place
+ * @param {Map<string,string>} enSegments - English source segments
+ * @returns {{ supStripped:number, subStripped:number, mediaRestored:number, brRestored:number }}
+ */
+function runWebUiRestores(targetSegments, enSegments) {
+  const { supStripped, subStripped } = restoreSupersubMarkers(targetSegments, enSegments);
+  const { restoredCount: mediaRestored } = restoreMediaMarkers(targetSegments, enSegments);
+  const { restoredCount: brRestored } = restoreNewlines(targetSegments, enSegments);
+  return { supStripped, subStripped, mediaRestored, brRestored };
+}
+
+/**
  * Restore [[MATH:N]] placeholders that the MT API resolved to plain text.
  *
  * The API sometimes "helpfully" replaces simple math placeholders (especially
@@ -3351,33 +3369,32 @@ async function main() {
       // (api-translate / human-authored) detects-and-reports without mutating —
       // which doubles as a mis-stamped-backfill detector.
       if (restorePolicy.policy === 'mutate') {
-        const { supStripped, subStripped } = restoreSupersubMarkers(segments, enSegments);
+        const { supStripped, subStripped, mediaRestored, brRestored } = runWebUiRestores(
+          segments,
+          enSegments
+        );
         if (supStripped > 0 || subStripped > 0) {
           console.error(
             `  Note: stripped ${supStripped} excess sup + ${subStripped} excess sub marker(s)`
           );
         }
-        const { restoredCount: mediaRestoredCount } = restoreMediaMarkers(segments, enSegments);
-        if (mediaRestoredCount > 0) {
-          console.error(
-            `  Restored ${mediaRestoredCount} [[MEDIA:N]] placeholder(s) from EN source`
-          );
+        if (mediaRestored > 0) {
+          console.error(`  Restored ${mediaRestored} [[MEDIA:N]] placeholder(s) from EN source`);
         }
-        const { restoredCount: brRestoredCount } = restoreNewlines(segments, enSegments);
-        if (args.verbose && brRestoredCount > 0) {
-          console.error(`  Restored ${brRestoredCount} newline placeholder(s) from EN source`);
+        if (args.verbose && brRestored > 0) {
+          console.error(`  Restored ${brRestored} newline placeholder(s) from EN source`);
         }
       } else {
         // warn-only: run on a throwaway clone so the real segments are never mutated.
-        const probe = new Map(segments);
-        const { supStripped, subStripped } = restoreSupersubMarkers(probe, enSegments);
-        const { restoredCount: wouldMedia } = restoreMediaMarkers(probe, enSegments);
-        const { restoredCount: wouldBr } = restoreNewlines(probe, enSegments);
-        if (supStripped || subStripped || wouldMedia || wouldBr) {
+        const { supStripped, subStripped, mediaRestored, brRestored } = runWebUiRestores(
+          new Map(segments),
+          enSegments
+        );
+        if (supStripped || subStripped || mediaRestored || brRestored) {
           console.error(
             `  Note [warn-only, provenance=${restorePolicy.tool || 'human-authored'}]: ` +
               `would have stripped ${supStripped} sup/${subStripped} sub and restored ` +
-              `${wouldMedia} media/${wouldBr} BR marker(s) — not mutating`
+              `${mediaRestored} media/${brRestored} BR marker(s) — not mutating`
           );
         }
       }
