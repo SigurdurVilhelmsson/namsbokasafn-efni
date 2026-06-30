@@ -175,9 +175,17 @@ export function addHistograms(a, b) {
  * @param {string[]} inputs.cnxml - injected CNXML strings (03-translated) for the chapter
  * @param {string[]} inputs.html  - produced HTML strings (05-publication) for the chapter
  * @param {Record<string, number>|null} [baseline] - committed shape histogram for this chapter
+ * @param {object} [options]
+ * @param {number} [options.knownIntentionalImageDrops=0] - number of CNXML <image> elements
+ *   whose absence from the produced HTML is intentional. These are modules listed in
+ *   book-config specialModules whose static source image is replaced by a custom
+ *   interactive element (e.g. "periodic-table" → /efnafraedi-2e/lotukerfi). The
+ *   driver computes this via computeIntentionalImageDrops(). This is an explicit
+ *   allow-list, not a silent skip — callers must name the reason at the call site.
  * @returns {Array<object>} findings (empty = clean)
  */
-export function checkChapter(inputs, baseline = null) {
+export function checkChapter(inputs, baseline = null, options = {}) {
+  const { knownIntentionalImageDrops = 0 } = options;
   const findings = [];
   const cnxmlAll = inputs.cnxml.join('\n');
   const htmlAll = inputs.html.join('\n');
@@ -197,13 +205,20 @@ export function checkChapter(inputs, baseline = null) {
   }
 
   // 2. cross-stage ">=" invariant (baseline-free): a DROP is unambiguous.
+  // knownIntentionalImageDrops: images intentionally absent because the module uses
+  // a custom interactive replacement (book-config specialModules). Subtract from
+  // the CNXML count so the invariant is not falsely triggered.
   const invariants = [
     {
       unit: 'math',
       cnxml: count(cnxmlAll, /<m:math\b/g),
       html: count(htmlAll, /<mjx-container\b/g),
     },
-    { unit: 'image', cnxml: count(cnxmlAll, /<image\b/g), html: count(htmlAll, /<img\b/g) },
+    {
+      unit: 'image',
+      cnxml: count(cnxmlAll, /<image\b/g) - knownIntentionalImageDrops,
+      html: count(htmlAll, /<img\b/g),
+    },
   ];
   for (const inv of invariants) {
     if (inv.html < inv.cnxml) {
@@ -286,6 +301,41 @@ export function readChapterFromDisk(bookDir, chapter, track) {
   return { cnxml, html };
 }
 
+/**
+ * Count CNXML <image> elements that will intentionally be absent from the
+ * produced HTML because the owning module uses a custom interactive replacement
+ * (book-config specialModules, e.g. "periodic-table" → /efnafraedi-2e/lotukerfi).
+ *
+ * Explicit allow-list: each module whose images are excluded is identified by its
+ * <md:content-id> in the CNXML, matched against specialModules in book-config.
+ * If the module type is not "periodic-table" (or another recognised replacement),
+ * the images are still counted. Add new recognised types below if more interactive
+ * replacements are introduced.
+ *
+ * @param {string[]} cnxmlList - injected CNXML strings for the chapter
+ * @param {object|null} bookConfig - parsed book-config.json (may be null)
+ * @returns {number} total intentionally-absent image count
+ */
+function computeIntentionalImageDrops(cnxmlList, bookConfig) {
+  if (!bookConfig?.specialModules) return 0;
+  // Only these special-module types replace their static images with interactive
+  // elements. New types must be added here with a comment explaining the replacement.
+  const REPLACEMENT_TYPES = new Set([
+    'periodic-table', // Replaced by the interactive /lotukerfi page (see cnxml-render.js)
+  ]);
+  let drops = 0;
+  for (const cnxmlText of cnxmlList) {
+    const m = cnxmlText.match(/<md:content-id>(m\d+)<\/md:content-id>/);
+    if (!m) continue;
+    const moduleId = m[1];
+    const moduleType = bookConfig.specialModules[moduleId];
+    if (moduleType && REPLACEMENT_TYPES.has(moduleType)) {
+      drops += count(cnxmlText, /<image\b/g);
+    }
+  }
+  return drops;
+}
+
 function baselinePath(bookDir) {
   return path.join(bookDir, 'render-fidelity-baseline.json');
 }
@@ -321,6 +371,15 @@ function main() {
   const newBaseline = {};
   let totalFindings = 0;
 
+  // Load book config for intentional-replacement detection (specialModules).
+  // Modules listed in specialModules may replace their static source images with
+  // custom interactive elements; their images are excluded from the cross-stage
+  // image-drop count via computeIntentionalImageDrops().
+  const bookConfigPath = path.join(bookDir, 'book-config.json');
+  const bookConfig = fs.existsSync(bookConfigPath)
+    ? JSON.parse(fs.readFileSync(bookConfigPath, 'utf8'))
+    : null;
+
   for (const chapter of chapters) {
     const inputs = readChapterFromDisk(bookDir, chapter, args.track);
     if (inputs.html.length === 0) continue;
@@ -336,7 +395,10 @@ function main() {
 
     const chapterBaseline =
       baselineData && baselineData.chapters ? baselineData.chapters[chapter] : null;
-    const findings = checkChapter(inputs, chapterBaseline);
+    const intentionalImageDrops = computeIntentionalImageDrops(inputs.cnxml, bookConfig);
+    const findings = checkChapter(inputs, chapterBaseline, {
+      knownIntentionalImageDrops: intentionalImageDrops,
+    });
 
     // Identity-diff: per-equation MathML skeleton multiset (rollup-masking immune)
     const { lostSkeletons, lostCount } = identityDiffChapter(inputs);
