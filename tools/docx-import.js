@@ -24,6 +24,7 @@
 import fs from 'fs';
 import path from 'path';
 import mammoth from 'mammoth';
+import { parseSegmentRecords } from './lib/seg-markers.cjs';
 
 // =====================================================================
 // ARGUMENT PARSING
@@ -150,21 +151,12 @@ function classifyBlock(text) {
  * @returns {Array<{segmentId: string, text: string, type: string, moduleId: string}>}
  */
 function parseSegmentFile(content) {
-  const segments = [];
-  const pattern = /<!-- SEG:([^\s]+) -->[ \t]*\n?([\s\S]*?)(?=<!-- SEG:|$)/g;
-
-  let match;
-  while ((match = pattern.exec(content)) !== null) {
-    const segmentId = match[1];
-    const text = match[2].trim();
-    const parts = segmentId.split(':');
-    const moduleId = parts[0];
-    const type = parts[1]; // title, para, caption, abstract, abstract-item, problem, solution, etc.
-
-    segments.push({ segmentId, text, type, moduleId });
-  }
-
-  return segments;
+  return parseSegmentRecords(content).map((r) => ({
+    segmentId: r.segmentId,
+    text: r.content,
+    type: r.segmentType,
+    moduleId: r.moduleId,
+  }));
 }
 
 /**
