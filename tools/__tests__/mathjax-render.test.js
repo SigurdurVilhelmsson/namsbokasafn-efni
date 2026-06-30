@@ -46,4 +46,24 @@ describe('renderMathML — assistive MathML sibling', () => {
   it('buildAssistiveMml returns "" when there is no <math> (degrade to SVG-only)', () => {
     expect(buildAssistiveMml('plain text, no math here', false)).toBe('');
   });
+
+  it('buildAssistiveMml only wraps the FIRST <math> when two adjacent blocks are given (lazy-regex contract)', () => {
+    // Two adjacent <math> blocks — a greedy [\s\S]* would span from the opening
+    // <math of the first to the closing </math> of the second, producing an
+    // `inner` that includes BOTH blocks. The replace only rewrites the first
+    // <math tag, so the output leaks the raw second block and contains the
+    // malformed interior sequence </math><math>.
+    // The lazy [\s\S]*? stops at the FIRST </math>, so `inner` = first block
+    // only. The second block's content is never included in the return value.
+    const MML_A = '<math><mi>A</mi></math>';
+    const MML_B = '<math><mi>B</mi></math>';
+    const result = buildAssistiveMml(MML_A + MML_B, false);
+    // With lazy: the result is the first block only, wrapped with assistive attrs.
+    expect(result).toContain('class="assistive-mathml"');
+    expect(result).toContain('<mi>A</mi>');
+    // The second block's content must NOT be leaked into the output.
+    expect(result).not.toContain('<mi>B</mi>');
+    // No malformed interior sequence (greedy would produce this).
+    expect(result).not.toContain('</math><math>');
+  });
 });

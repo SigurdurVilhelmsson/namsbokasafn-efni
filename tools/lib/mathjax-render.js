@@ -39,7 +39,7 @@ const VISUALLY_HIDDEN_STYLE =
  * @returns {string} the <math …>…</math> string, or '' if no <math> present
  */
 export function buildAssistiveMml(cleanMml, displayMode) {
-  const mathMatch = cleanMml.match(/<math\b[\s\S]*<\/math>/i);
+  const mathMatch = cleanMml.match(/<math\b[\s\S]*?<\/math>/i);
   if (!mathMatch) return '';
   const inner = mathMatch[0];
   const attrs = [

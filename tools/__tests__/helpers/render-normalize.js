@@ -12,7 +12,9 @@
  * portable (no machine-specific or per-run content) and small enough to commit
  * as golden fixtures, while still proving each equation rendered (its LaTeX
  * survives) and preserving all the surrounding structural HTML the migration
- * must keep byte-identical.
+ * must keep byte-identical. It also collapses `<math class="assistive-mathml">`
+ * siblings to an `[ASSISTIVE-MML]` presence marker, confirming the sibling is
+ * emitted without encoding the volatile inline-style attribute verbatim.
  */
 
 import { readFileSync } from 'fs';
