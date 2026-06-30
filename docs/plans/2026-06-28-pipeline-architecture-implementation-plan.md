@@ -502,10 +502,21 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
   regex is the tolerant superset). **Evidence corrected the plan's premise:** parser divergence is INERT on
   biology (0/13 files differ) — this is hygiene/drift-prevention, it does **NOT** unblock biology routing.
   - **↳ `isApiTranslated` routing mis-route is the REAL biology risk, RE-SCOPED as its own item** (NOT #14):
-    the `{{i/b/term/fn}}` content-sniff (`cnxml-inject.js:3361`) returns false for low-marker biology modules
-    (9/13) → routes them through legacy web-UI marker-repair. Latent today (those 9 are marker-less prose so the
-    repair no-ops), but a real risk for a biology module bearing `[[sub:]]`/`[[sup:]]`/`[[i:]]` without `{{}}`.
-    The clean fix needs **producer provenance (B2)** — A1's manifest carries no `tool`/`track`. Do with/after B2.
+    the `{{i/b/term/fn}}` content-sniff (`cnxml-inject.js:3330`) returns false for low-marker biology modules
+    → routes them through legacy web-UI marker-repair. The clean fix needs **producer provenance (B2)** —
+    A1's manifest carries no `tool`/`track`. Do with/after B2.
+    - **✅ DIAGNOSTIC PROBE DONE (2026-06-30):** `docs/audit/2026-06-30-b2-isapitranslated-misroute-probe.md`.
+      Quantified blast radius. The sniff effectively reduces to "has `<term>`/`<footnote>`?" (extract emits
+      bracket `[[i:]]`/`[[b:]]` now, so `{{i}}`/`{{b}}` clauses are dead). **Q1:** **50/259 (19%)** biology
+      modules are term/footnote-free → mis-route (a floor — `{{term}}` is the lossy legacy family, so live
+      count is ≥50); **49/259** are the *structural danger zone* (mis-route **and** media-bearing). **Q2:**
+      corruption on **current** API content (ch05; ch03 is docx, restores intended) is **ZERO** — only
+      m66372 mis-routes and its restore triggers (MEDIA/BR/sup/sub) are all 0 EN=IS, so the restores
+      provably no-op; verified byte-identical re-inject + real-code run. **Verdict: mis-routing is real and
+      common but incidentally inert today** (API preserves MEDIA/BR; lossy `{{term}}` happens to survive).
+      That inertness is fragile, not guaranteed → B2 still ships **as producer provenance, NOT a sniff-patch**.
+      Payoff: probe proves the provenance swap is **behavior-preserving on all current content**, so B2 lands
+      as a clean low-risk refactor. [[feedback-robustness-over-expedience]]
   - *Still open cluster:* **#15** duplicate-seg-ID policy convergence (the behavior-changing enforcement PR);
     **#19** [LOW] orphan `*-segments(b|c|d).en.md` legacy files cleanup.
 - **#33 [HIGH] inject list-flattening divergence — ✅ DONE (PR #197, branch `fix/inject-list-flatten-unify`).**
