@@ -34,25 +34,35 @@ book — is the *real* biology correctness risk, but it is a **provenance** prob
 "B2" tool/track provenance; A1's manifest carries none). It is **re-scoped as its own item**, NOT part of
 #14. This refactor does **not** claim to unblock biology routing.
 
-## Design — `tools/lib/seg-markers.js` (one regex, one parser)
+## Design — `tools/lib/seg-markers.cjs` (one regex, one parser, dual-consumable)
 
 A single module replaces all 7 copies. Behavior at every call site is **preserved exactly** via options;
 no policy is converged in this PR.
 
+**Module system (decided 2026-06-29):** the lib is **CommonJS** (`.cjs`). The server is a CommonJS island
+(`server/package.json` → `"type":"commonjs"`) and `segmentParser.parseSegments` is called synchronously —
+a CJS module cannot synchronously `import` ESM, so a plain-ESM lib would force the server's sync parse path
+async (a large ripple). A `.cjs` lib is consumable by **both** sides, verified: ESM tools named-import it
+(`import { parseSegmentsMap } from './seg-markers.cjs'` — Node CJS→ESM interop), and the CJS server
+`require()`s it synchronously. (Smoke-tested both directions 2026-06-29.)
+
 ```js
+// tools/lib/seg-markers.cjs
 // Canonical marker — whitespace-tolerant, permissive 3-part id.
 // Proven identical to all variants on 54,379 corpus markers.
-export const SEG_MARKER = /<!--\s*SEG:([^\s]+?)\s*-->/g;
+const SEG_MARKER = /<!--\s*SEG:([^\s]+?)\s*-->/g;
 
 // Map<id,text>. Marker-based slicing (content = marker→next marker, trimmed),
 // so it tolerates a marker glued onto the previous line (the PR #96 case).
 //   duplicates: 'first' (skip repeats) | 'last' (overwrite)
-export function parseSegmentsMap(content, { duplicates = 'first' } = {}) { … }
+function parseSegmentsMap(content, { duplicates = 'first' } = {}) { … }
 
 // Structured, keep-ALL records (order preserved). content trimmed, NOT
 // wrap-normalized (callers that need that apply it themselves).
 //   → [{ segmentId, moduleId, segmentType, elementId, content }]
-export function parseSegmentRecords(content) { … }
+function parseSegmentRecords(content) { … }
+
+module.exports = { SEG_MARKER, parseSegmentsMap, parseSegmentRecords };
 ```
 
 - **One implementation**, marker-based (matchAll + slice), so the glued-marker robustness lives in exactly
@@ -60,6 +70,9 @@ export function parseSegmentRecords(content) { … }
 - `duplicates` defaults to `'first'` (the majority + the load-bearing inject path).
 - `parseSegmentRecords` keeps all occurrences (segmentParser's contract) and splits the id into parts.
 - No `normalizeWraps` in the lib — it is editor-display-specific and stays in `segmentParser.js`.
+- **Consumption:** ESM tools `import { … } from '../lib/seg-markers.cjs'` (or `./lib/…` per location);
+  the CJS server `require('../../tools/lib/seg-markers.cjs')`. `SEG_MARKER` is a single shared `/g` regex —
+  callers that iterate must reset `.lastIndex` or use `new RegExp(SEG_MARKER.source, 'g')` / `matchAll`.
 
 ## Call-site migration (each preserves current behavior)
 
@@ -96,5 +109,5 @@ there is one regex. Archived `tools/archived/*` copies are out of scope (dead co
 
 ## Acceptance
 
-One `tools/lib/seg-markers.js`; all 7 live call sites use it; characterization proves byte-identical
+One `tools/lib/seg-markers.cjs`; all 7 live call sites use it; characterization proves byte-identical
 output on the real corpus (incl. dup-ID files); unit tests cover the lib; `npm test` green.
