@@ -2371,23 +2371,9 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
 
       // Check if this para contains a sibling list whose content is already
       // included in the para's segment (the extraction flattens nested lists
-      // into the para text). Detected by: para text contains expanded math
-      // AND a sibling list is a DOM child of this para.
-      const paraHasExpandedContent = paraText && /<m:math/.test(paraText);
-      let skipParaText = false;
-      if (paraHasExpandedContent) {
-        for (const sibling of element.content || []) {
-          if (sibling !== child && sibling.type === 'list' && sibling.id) {
-            const siblingEl = doc.getElementById(sibling.id);
-            if (siblingEl && isDescendantOf(siblingEl, paraEl)) {
-              // The extraction flattened the nested list into the para segment.
-              // Preserve the list for the list handler — only inject the title.
-              skipParaText = true;
-              break;
-            }
-          }
-        }
-      }
+      // into the para text). Preserve the list for the list handler — only
+      // inject the title. (audit #33: unified via paraHasFlattenedList)
+      const skipParaText = paraHasFlattenedList(child, paraEl, element.content, paraText, doc);
 
       let titleText = '';
       if (isFirstPara && element.title?.segmentId) {
@@ -2468,6 +2454,24 @@ function isDescendantOf(node, ancestor) {
   while (current) {
     if (current === ancestor) return true;
     current = current.parentNode;
+  }
+  return false;
+}
+
+/**
+ * True iff `child` (a para) has a sibling <list> that extraction flattened into
+ * the para's segment text. Detected by: the para's (restored) segment text
+ * contains <m:math> AND a sibling <list> (with id) is a DOM descendant of paraEl.
+ * When true, callers inject only the para title and leave the list for the list
+ * handler to preserve — they must NOT removeChild the list. (audit #33)
+ */
+function paraHasFlattenedList(child, paraEl, contentArray, paraText, doc) {
+  if (!paraText || !/<m:math/.test(paraText)) return false;
+  for (const sibling of contentArray || []) {
+    if (sibling !== child && sibling.type === 'list' && sibling.id) {
+      const siblingEl = doc.getElementById(sibling.id);
+      if (siblingEl && isDescendantOf(siblingEl, paraEl)) return true;
+    }
   }
   return false;
 }
@@ -2616,21 +2620,10 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
           continue;
         }
 
-        // Embedded list detection (same heuristic as buildExampleDom):
-        // if para text has expanded math and a sibling list is inside, remove list
-        const paraHasExpandedContent = /<m:math/.test(paraText);
-        if (paraHasExpandedContent) {
-          for (const sibling of contentArray) {
-            if (sibling !== child && sibling.type === 'list' && sibling.id) {
-              const siblingEl = doc.getElementById(sibling.id);
-              if (siblingEl && isDescendantOf(siblingEl, paraEl)) {
-                siblingEl.parentNode.removeChild(siblingEl);
-              }
-            }
-          }
-        }
-
-        replaceParaContentDom(doc, paraEl, paraText, '');
+        // Preserve a list flattened into this para's segment (audit #33): inject
+        // only text the list handler won't duplicate, and never removeChild the list.
+        const skipParaText = paraHasFlattenedList(child, paraEl, contentArray, paraText, doc);
+        replaceParaContentDom(doc, paraEl, skipParaText ? '' : paraText, '');
         replacedParaIds.add(child.id);
       }
 
@@ -2874,20 +2867,8 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
       const paraText = getSeg(child.segmentId);
       if (!paraText) continue;
 
-      // Same embedded-list detection as buildExampleDom
-      const paraHasExpandedContent = /<m:math/.test(paraText);
-      if (paraHasExpandedContent) {
-        for (const sibling of element.content || []) {
-          if (sibling !== child && sibling.type === 'list' && sibling.id) {
-            const siblingEl = doc.getElementById(sibling.id);
-            if (siblingEl && isDescendantOf(siblingEl, paraEl)) {
-              siblingEl.parentNode.removeChild(siblingEl);
-            }
-          }
-        }
-      }
-
-      replaceParaContentDom(doc, paraEl, paraText, '');
+      const skipParaText = paraHasFlattenedList(child, paraEl, element.content, paraText, doc);
+      replaceParaContentDom(doc, paraEl, skipParaText ? '' : paraText, '');
       replacedParaIds.add(child.id);
     }
 
