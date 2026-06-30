@@ -22,26 +22,61 @@ await MathJax.startup.document.outputJax.font.loadDynamicFiles();
 const adaptor = MathJax.startup.adaptor;
 const doc = MathJax.startup.document;
 
+// Inline visually-hidden style (the standard sr-only clip technique). Inline so
+// the assistive MathML is hidden without any external stylesheet — the rendered
+// HTML is self-contained and needs no vefur CSS rule.
+const VISUALLY_HIDDEN_STYLE =
+  'position:absolute;width:1px;height:1px;padding:0;margin:-1px;' +
+  'overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;';
+
 /**
- * Render MathML to self-contained SVG string.
+ * Build a visually-hidden, screen-reader-only MathML sibling from source MathML.
+ * The renderer's input IS MathML, so the accessible representation is free to
+ * emit — we just decline to discard it. Returns '' when there is no parseable
+ * <math>…</math>, so the visual SVG ships alone (degrade, don't crash).
+ * @param {string} cleanMml - MathML with the m: namespace prefix already stripped
+ * @param {boolean} displayMode - true for block equations
+ * @returns {string} the <math …>…</math> string, or '' if no <math> present
+ */
+export function buildAssistiveMml(cleanMml, displayMode) {
+  const mathMatch = cleanMml.match(/<math\b[\s\S]*<\/math>/i);
+  if (!mathMatch) return '';
+  const inner = mathMatch[0];
+  const attrs = [
+    'class="assistive-mathml"',
+    /\bxmlns=/.test(inner) ? '' : 'xmlns="http://www.w3.org/1998/Math/MathML"',
+    displayMode && !/\bdisplay=/.test(inner) ? 'display="block"' : '',
+    `style="${VISUALLY_HIDDEN_STYLE}"`,
+  ]
+    .filter(Boolean)
+    .join(' ');
+  return inner.replace(/^<math\b/i, `<math ${attrs}`);
+}
+
+/**
+ * Render MathML to self-contained SVG string with assistive MathML sibling.
  * @param {string} mml - MathML markup (with or without m: namespace prefix)
  * @param {boolean} displayMode - True for block equations
- * @returns {string} SVG HTML string
+ * @returns {string} SVG HTML string followed by visually-hidden <math> sibling
  */
 export function renderMathML(mml, displayMode = true) {
   // Strip namespace prefix if present
   const cleanMml = mml.replace(/<(\/?)m:/g, '<$1');
 
   const node = doc.convert(cleanMml, { display: displayMode });
-  let svg = adaptor.outerHTML(node);
+  let visual = adaptor.outerHTML(node);
 
   // Add crisp rendering attributes to prevent antialiasing
-  svg = svg.replace(
+  visual = visual.replace(
     /<svg/,
     '<svg shape-rendering="geometricPrecision" text-rendering="geometricPrecision"'
   );
 
-  return svg;
+  // The SVG is purely visual; hide it from assistive tech (it is a nameless
+  // role="img"). The accessible representation is the MathML sibling below.
+  visual = visual.replace(/<mjx-container\b/, '<mjx-container aria-hidden="true"');
+
+  return visual + buildAssistiveMml(cleanMml, displayMode);
 }
 
 /**
