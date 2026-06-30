@@ -29,11 +29,20 @@ const REPO_ROOT = join(import.meta.dirname, '..', '..', '..');
  * @returns {string}
  */
 export function normalizeMathJax(html) {
-  return html.replace(/<mjx-container\b([^>]*)>[\s\S]*?<\/mjx-container>/g, (_full, attrs) => {
-    const m = attrs.match(/data-latex="([^"]*)"/);
-    const latex = m ? m[1] : '';
-    return `<mjx-container data-latex="${latex}">[MATHJAX]</mjx-container>`;
-  });
+  return (
+    html
+      // Volatile MathJax SVG container → stable data-latex placeholder.
+      .replace(/<mjx-container\b([^>]*)>[\s\S]*?<\/mjx-container>/g, (_full, attrs) => {
+        const m = attrs.match(/data-latex="([^"]*)"/);
+        const latex = m ? m[1] : '';
+        return `<mjx-container data-latex="${latex}">[MATHJAX]</mjx-container>`;
+      })
+      // Assistive MathML sibling (deterministic but bulky) → presence marker.
+      .replace(
+        /<math\b[^>]*class="assistive-mathml"[^>]*>[\s\S]*?<\/math>/g,
+        '<math class="assistive-mathml">[ASSISTIVE-MML]</math>'
+      )
+  );
 }
 
 /**
