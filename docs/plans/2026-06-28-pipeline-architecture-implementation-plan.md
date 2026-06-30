@@ -564,7 +564,7 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
 - *Tracked separately (NOT this plan, do not duplicate):* accessibility findings — assistive MathML for
   equations + figure alt-text translation pipeline — live in
   `docs/plans/2026-06-25-accessibility-alt-math-handoff.md` and memory `accessibility-alt-math-pending.md`.
-  **a11y-2 (assistive MathML) is now DONE** (branch `feat/a11y-2-assistive-mathml`). Out-of-scope issues found during a11y-2 implementation: none.
+  **a11y-2 (assistive MathML) is now DONE** (PR #203 merged 2026-06-30). Out-of-scope issues found during a11y-2 implementation: none in efni; cross-repo vefur follow-ups (search-index strip for the new `<math>` sibling + print/bionic verify; no CSS) handed off to `namsbokasafn-vefur docs/plans/2026-06-30-cross-book-css-and-embed-handoff.md` Task 3.
 
 **From D2 (pre-intake probe) design — `docs/plans/2026-06-29-d2-preintake-probe-design.md` § Out of scope:**
 - **D2 check-5 `HANDLED_INLINE`/`HANDLED_BLOCK` drift risk** — the probe hand-maintains mirrors of the
@@ -614,7 +614,7 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
 |---|---|---|---|
 | **D5** organic/microbiology empty key-terms | lifraen 31 `key-terms` / 0 `<glossary>`, render fallback `cnxml-render.js:3706` emits EN term names; orverufraedi 0/0 → empty "Lykilhugtök" | Key-terms page ships English (organic) or blank (microbiology) | `[build]` Track D — blocks organic+microbiology |
 | **a11y-1** figure `alt` text English | `cnxml-extract.js:202,1018,1061` never segments `alt`; ~1 572 EN `alt=` across 215 published files | Screen-reader gap across ALL published content; needs extract→MT→review + backfill | `[build]` (= deferred-fixlist B / a11y handoff Item 1) |
-| ✅ DONE **a11y-2** assistive MathML missing | `tools/lib/mathjax-render.js:12` SVG-only, no `mjx-assistive-mml` sibling | Equations inaccessible to screen readers; one-file fix + re-render | `[fix]` a11y handoff Item 2 (branch `feat/a11y-2-assistive-mathml`; self-contained inline-hidden `<math>` sibling; no vefur leg; delivery awaits a re-render+sync) |
+| ✅ DONE **a11y-2** assistive MathML missing | `tools/lib/mathjax-render.js:12` SVG-only, no `mjx-assistive-mml` sibling | Equations inaccessible to screen readers; one-file fix + re-render | `[fix]` a11y handoff Item 2 (**PR #203 merged** 2026-06-30; self-contained visually-hidden `<math>` sibling; no vefur CSS leg; delivery awaits a re-render+sync; **vefur search-index strip + verify items handed off** — vefur cross-book handoff Task 3) |
 | **infra-1** content-sync Action fails silently | `.github/workflows/sync-content.yml:37` needs unset `VEFUR_DEPLOY_TOKEN`; every push to `05-publication/**` no-ops | Auto-publish to vefur is dead; sync is manual `node scripts/sync-content.js` | `[infra]` set the token or accept manual |
 | **process-1** remediation manual QA §0–§5 | `docs/plans/2026-06-10-qa-checklist.md` — 👁/◐ gates unwalked since 2026-06-12 | Authz/rollback/enforcement/XSS/page-auth gates never verified on a running server | `[process]` lead — gates server deploys |
 
@@ -665,7 +665,7 @@ Reconciled against vefur memory — only the CSS work is genuinely open:
 - **[vefur] 14 cross-book CSS gap classes** (🟡, biology note-variants + `.span-all` prioritized; `.note-interactive` quick win) — coordinated with efni `KNOWN_GAPS` + `VEFUR_CONTRACT=1` css-contract; per-book **note-class vocabulary** + a shared **class manifest** fold into this.
 - *Already DONE in vefur (NOT open — corrected from an earlier draft):* live-QA **I/J/H/G** fixed & merged (vefur PR #164; J's nginx side #166).
 - *Reclassified efni-side (NOT vefur):* fixlist **E** "empty-glossary TOC suppression" = stale efni-built `glossary.json`/`index.json` aggregates (vefur memory `glossary-aggregates-stale`) → folds into the glossary/**D5** work above. **F** cross-repo confirmations = resolved.
-- *a11y-2 (assistive MathML) shipped self-contained — no vefur CSS needed (distinct from D4 embed CSS, still open).*
+- **[vefur] a11y-2 assistive-MathML follow-ups** (🟡/🟢, PR #203 merged efni-side; handed off as Task 3 in the cross-book handoff doc): NO vefur CSS needed (self-contained inline hiding — must not add a rule that fights it), but the new `<math>` sibling lands in all rendered math after re-render+sync → **(a)** add a search-index strip in `search.worker.ts` (inline `.math-inline` MathML text otherwise pollutes the index); **(b)** verify print/PDF keeps it hidden + bionic-reading skip-list; **(c)** post-deploy screen-reader validation (reader-plan § P2.5). `equations.ts` is class-based → unaffected.
 
 ### 🧭 Process / adoption (non-code — lead)
 - **Adoption is the binding throughput constraint:** only ~3 faithful modules applied; concordance/TM/repetition aids stay empty until editors review Pass-1 at volume. *(Priority 1 per `2026-06-24-next-session-roadmap.md`.)*
