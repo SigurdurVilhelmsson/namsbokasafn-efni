@@ -89,3 +89,30 @@ describe('render-fidelity check — dropped equation (the bug class A3 targets)'
     ).toBe(true);
   });
 });
+
+import { identityDiffChapter } from '../cnxml-render-fidelity-check.js';
+
+const M = '<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:mi>x</m:mi></m:math>';
+const ASSIST = '<math class="assistive-mathml"><mi>x</mi></math>';
+
+describe('fidelity check — identity diff (rollup-masking immune)', () => {
+  it('flags an equation present in CNXML but absent from every HTML page', () => {
+    const cnxml = [`<content><equation>${M}</equation><equation>${M}</equation></content>`];
+    const html = [`<mjx-container></mjx-container>${ASSIST}`]; // only 1 of 2 rendered
+    expect(identityDiffChapter({ cnxml, html }).lostCount).toBe(1);
+  });
+
+  it('does NOT flag an equation re-presented in a rollup page (no false drop)', () => {
+    const cnxml = [`<content><equation>${M}</equation></content>`];
+    const html = [
+      `<mjx-container></mjx-container>${ASSIST}`,
+      `<mjx-container></mjx-container>${ASSIST}`,
+    ];
+    expect(identityDiffChapter({ cnxml, html }).lostCount).toBe(0);
+  });
+
+  it('reports 0 when every equation is present', () => {
+    const cnxml = [`<content><equation>${M}</equation></content>`];
+    expect(identityDiffChapter({ cnxml, html: [`${ASSIST}`] }).lostCount).toBe(0);
+  });
+});

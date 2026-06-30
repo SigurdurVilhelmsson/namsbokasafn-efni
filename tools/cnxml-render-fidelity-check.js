@@ -53,6 +53,78 @@ const CONTROL_CHAR_REGEX = /[\x00-\x08\x0B\x0C\x0E-\x1F]/g;
 
 const count = (s, re) => (s.match(re) || []).length;
 
+// ─── Identity diff: per-equation MathML tag-skeleton multiset ────────
+
+/**
+ * Extract tag-skeletons for each math element found in text.
+ *
+ * For CNXML: matches `<m:math …>…</m:math>` (opening = 'm:math').
+ * For HTML:  matches `<math …class="assistive-mathml"…>…</math>` (opening = 'math').
+ *
+ * A skeleton is the comma-joined sequence of element localNames inside the math,
+ * with the `m:` prefix stripped and attributes/text dropped. This is
+ * localization-invariant: two equations that differ only in number values or
+ * variable names (e.g. after Icelandic localization) share the same skeleton.
+ *
+ * @param {string} text
+ * @param {'m:math'|'math'} opening  - which tag family to match
+ * @returns {string[]} skeleton strings, one per found math element
+ */
+function mathSkeletons(text, opening) {
+  const out = [];
+  const openRe =
+    opening === 'm:math' ? /<m:math\b[^>]*>/gi : /<math\b[^>]*class="assistive-mathml"[^>]*>/gi;
+  const closeTag = opening === 'm:math' ? '</m:math>' : '</math>';
+  let m;
+  while ((m = openRe.exec(text))) {
+    const start = m.index + m[0].length;
+    const end = text.indexOf(closeTag, start);
+    if (end < 0) continue;
+    const inner = text.slice(start, end);
+    const tags = (inner.match(/<\/?[a-zA-Z][\w:.-]*/g) || []).map((t) =>
+      t.replace(/^<\/?(?:m:)?/, '').toLowerCase()
+    );
+    out.push(tags.join(','));
+  }
+  return out;
+}
+
+/**
+ * Multiset-diff CNXML <m:math> skeletons vs all-chapter HTML assistive-MathML skeletons.
+ *
+ * Rollup pages re-present equations (so H[skel] may exceed C[skel]) — that is
+ * NOT a drop. A genuine drop is when the HTML side has FEWER copies of a skeleton
+ * than the CNXML side.
+ *
+ * @param {{ cnxml: string[], html: string[] }} inputs
+ * @returns {{ lostSkeletons: Array<[string, number]>, lostCount: number }}
+ */
+export function identityDiffChapter({ cnxml, html }) {
+  // Build CNXML multiset
+  const cnxmlSkels = cnxml.flatMap((t) => mathSkeletons(t, 'm:math'));
+  const C = new Map();
+  for (const k of cnxmlSkels) C.set(k, (C.get(k) || 0) + 1);
+
+  // Build HTML multiset (all chapter pages pooled — rollup re-presentation cancels naturally)
+  const htmlSkels = html.flatMap((t) => mathSkeletons(t, 'math'));
+  const H = new Map();
+  for (const k of htmlSkels) H.set(k, (H.get(k) || 0) + 1);
+
+  // Multiset difference: only count genuine losses (CNXML has more than HTML)
+  const lostSkeletons = [];
+  let lostCount = 0;
+  for (const [skel, cn] of C) {
+    const hn = H.get(skel) || 0;
+    if (cn > hn) {
+      const loss = cn - hn;
+      lostCount += loss;
+      lostSkeletons.push([skel, loss]);
+    }
+  }
+  lostSkeletons.sort((a, b) => b[1] - a[1]);
+  return { lostSkeletons, lostCount };
+}
+
 // ─── Pure structural measures ───────────────────────────────────────
 
 /**
@@ -265,6 +337,13 @@ function main() {
     const chapterBaseline =
       baselineData && baselineData.chapters ? baselineData.chapters[chapter] : null;
     const findings = checkChapter(inputs, chapterBaseline);
+
+    // Identity-diff: per-equation MathML skeleton multiset (rollup-masking immune)
+    const { lostSkeletons, lostCount } = identityDiffChapter(inputs);
+    if (lostCount > 0) {
+      findings.push({ type: 'genuine-math-drop', lostCount, lostSkeletons });
+    }
+
     if (findings.length) {
       totalFindings += findings.length;
       console.log(`\nch${chapter}: ${findings.length} finding(s)`);
