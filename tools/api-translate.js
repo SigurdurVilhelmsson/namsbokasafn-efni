@@ -37,7 +37,7 @@ import {
   MODULE_OPTION,
   requireBook,
 } from './lib/parseArgs.js';
-import { createClient, formatGlossary } from './lib/malstadur-api.js';
+import { createClient, formatGlossary, estimateIsk } from './lib/malstadur-api.js';
 import { bookToDomain } from './lib/book-rendering-config.js';
 
 // ─── Configuration ──────────────────────────────────────────────────
@@ -739,7 +739,7 @@ async function main() {
       }
     }
     console.log(`\n  Estimated characters: ${totalChars.toLocaleString()}`);
-    console.log(`  Estimated cost: ~${((totalChars * 5) / 1000).toFixed(0)} ISK`);
+    console.log(`  Estimated cost: ~${estimateIsk(totalChars).toFixed(0)} ISK`);
     process.exit(0);
   }
 

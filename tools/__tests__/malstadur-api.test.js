@@ -1,5 +1,11 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { createClient, MalstadurApiError, SYNC_CHAR_LIMIT } from '../lib/malstadur-api.js';
+import {
+  createClient,
+  MalstadurApiError,
+  SYNC_CHAR_LIMIT,
+  estimateIsk,
+  ISK_PER_1000_CHARS,
+} from '../lib/malstadur-api.js';
 
 // Build a minimal fetch Response stand-in. apiRequest reads .ok/.status and
 // .json() on success, .json()/.text() on error.
@@ -157,5 +163,24 @@ describe('withRetry behaviour via the sync path', () => {
     await assertion;
 
     expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+});
+
+// ─── Cost estimator (audit #31) ───────────────────────────────────
+// Málstaður price is 1 ISK per 100 chars (10 ISK per 1000). The estimator
+// previously used (chars*5)/1000 = 0.5 ISK/100 — half the true rate.
+describe('estimateIsk', () => {
+  it('charges 1 ISK per 100 characters (10 ISK / 1000)', () => {
+    expect(estimateIsk(100)).toBe(1);
+    expect(estimateIsk(1000)).toBe(10);
+  });
+  it('returns 0 for empty input', () => {
+    expect(estimateIsk(0)).toBe(0);
+  });
+  it('scales linearly (4,691,298 chars ≈ 46,913 ISK)', () => {
+    expect(Math.round(estimateIsk(4_691_298))).toBe(46_913);
+  });
+  it('exposes the rate constant as 10 ISK / 1000 chars', () => {
+    expect(ISK_PER_1000_CHARS).toBe(10);
   });
 });
