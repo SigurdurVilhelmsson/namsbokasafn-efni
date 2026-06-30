@@ -146,7 +146,7 @@ function classifyBlock(text) {
 
 /**
  * Parse segments from a segment markdown file.
- * Reuses the same regex as cnxml-inject.js:parseSegments() (line 166).
+ * Uses `parseSegmentRecords` from the shared `./lib/seg-markers.cjs`.
  * @param {string} content - Segments markdown content
  * @returns {Array<{segmentId: string, text: string, type: string, moduleId: string}>}
  */
