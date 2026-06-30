@@ -47,6 +47,7 @@ import {
 } from './lib/parseArgs.js';
 import { compareTagCounts } from './cnxml-fidelity-check.js';
 import { extractGlossary } from './lib/cnxml-parser.js';
+import { resolveRestorePolicy } from './lib/provenance.js';
 import { updateTranslationErrors } from './lib/update-translation-errors.js';
 import { detectResidue, upsertResidueModule } from './lib/residue-check.js';
 import { SEG_MARKER, parseSegmentsMap } from './lib/seg-markers.cjs';
@@ -3173,6 +3174,8 @@ function findChapterModules(chapter, moduleId = null) {
  */
 function loadModuleInputs(chapter, moduleId, lang, sourceDir, allowEnFallback = false) {
   const chapterDir = formatChapter(chapter);
+  const mtOutputChapterDir = path.join(BOOKS_DIR, '02-mt-output', chapterDir);
+  const restorePolicy = resolveRestorePolicy({ mtOutputChapterDir, moduleId });
 
   // Load structure
   const structPath = path.join(BOOKS_DIR, '02-structure', chapterDir, `${moduleId}-structure.json`);
@@ -3238,7 +3241,7 @@ function loadModuleInputs(chapter, moduleId, lang, sourceDir, allowEnFallback = 
   }
   const originalCnxml = fs.readFileSync(originalPath, 'utf-8');
 
-  return { structure, segments, equations, originalCnxml, enSegments, inlineAttrs };
+  return { structure, segments, equations, originalCnxml, enSegments, inlineAttrs, restorePolicy };
 }
 
 /**
@@ -3322,18 +3325,15 @@ async function main() {
         console.error(`Processing: ${moduleId} (source: ${sourceDir}, track: ${track})`);
       }
 
-      const { structure, segments, equations, originalCnxml, enSegments, inlineAttrs } =
-        loadModuleInputs(args.chapter, moduleId, args.lang, sourceDir, args.allowEnFallback);
-
-      // Detect API vs web UI segments: API-translated segments contain
-      // {{i}}, {{b}}, {{term}}, or {{fn}} markers that survive the API.
-      const isApiTranslated = [...segments.values()].some(
-        (s) =>
-          s.includes('{{i}}') ||
-          s.includes('{{b}}') ||
-          s.includes('{{term}}') ||
-          s.includes('{{fn}}')
-      );
+      const {
+        structure,
+        segments,
+        equations,
+        originalCnxml,
+        enSegments,
+        inlineAttrs,
+        restorePolicy,
+      } = loadModuleInputs(args.chapter, moduleId, args.lang, sourceDir, args.allowEnFallback);
 
       // Restore/strip term markers (needed for both pipelines):
       // - New {{term}} format: strips any __term__ glossary artifacts from IS
@@ -3346,30 +3346,39 @@ async function main() {
         console.error(`  Note: ${strippedCount} API-added term marker(s) stripped`);
       }
 
-      // Web-UI-only restoration functions — skip for API-translated segments.
-      // The API preserves [[sub:]], [[sup:]], [[MEDIA:N]], and [[BR]] markers,
-      // so these repair functions are unnecessary and could cause false positives.
-      if (!isApiTranslated) {
-        // Limit sup/sub markers in IS to match EN counts (prevents overproduction)
+      // B2: web-UI marker restoration is gated on recorded producer provenance,
+      // not a content sniff. 'mutate' (docx) rewrites segments as before; 'warn'
+      // (api-translate / human-authored) detects-and-reports without mutating —
+      // which doubles as a mis-stamped-backfill detector.
+      if (restorePolicy.policy === 'mutate') {
         const { supStripped, subStripped } = restoreSupersubMarkers(segments, enSegments);
         if (supStripped > 0 || subStripped > 0) {
           console.error(
             `  Note: stripped ${supStripped} excess sup + ${subStripped} excess sub marker(s)`
           );
         }
-
-        // Restore [[MEDIA:N]] placeholders dropped by web UI MT
         const { restoredCount: mediaRestoredCount } = restoreMediaMarkers(segments, enSegments);
         if (mediaRestoredCount > 0) {
           console.error(
             `  Restored ${mediaRestoredCount} [[MEDIA:N]] placeholder(s) from EN source`
           );
         }
-
-        // Restore [[BR]] placeholders from EN source into IS segments
         const { restoredCount: brRestoredCount } = restoreNewlines(segments, enSegments);
         if (args.verbose && brRestoredCount > 0) {
           console.error(`  Restored ${brRestoredCount} newline placeholder(s) from EN source`);
+        }
+      } else {
+        // warn-only: run on a throwaway clone so the real segments are never mutated.
+        const probe = new Map(segments);
+        const { supStripped, subStripped } = restoreSupersubMarkers(probe, enSegments);
+        const { restoredCount: wouldMedia } = restoreMediaMarkers(probe, enSegments);
+        const { restoredCount: wouldBr } = restoreNewlines(probe, enSegments);
+        if (supStripped || subStripped || wouldMedia || wouldBr) {
+          console.error(
+            `  Note [warn-only, provenance=${restorePolicy.tool || 'human-authored'}]: ` +
+              `would have stripped ${supStripped} sup/${subStripped} sub and restored ` +
+              `${wouldMedia} media/${wouldBr} BR marker(s) — not mutating`
+          );
         }
       }
 
