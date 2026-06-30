@@ -525,7 +525,7 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
 - **#37 [LOW]** `buildExerciseDom` drops id-less exercises entirely; `buildGenericElement` recurses without
   `ctx`. **#30 [LOW]** 429 retry ignores `Retry-After` + has no jitter (A4-adjacent). **#29 [LOW]**
   control-char (NUL/°) failure aborts the module with no retry — asymmetric vs the truncation path that
-  retries. **#31 ✅ DONE (PR #TBD)** cost-rate magic number was duplicated AND 2× wrong. Fixed: one shared `estimateIsk(chars)` + `ISK_PER_1000_CHARS = 10` in `malstadur-api.js`, consumed by all 4 sites (`malstadur-api.js` tracker, `api-translate.js:742`, `translate-chapter-titles.js:91` — a 4th site the audit missed; `:815` derives from the tracker). True price 1 ISK/100 chars = 10 ISK/1000 (lead-confirmed 2026-06-30). Unit-tested (`malstadur-api.test.js` § estimateIsk). See memory `malstadur-api-integration` § API PRICE.
+  retries. **#31 ✅ DONE (PR #199)** cost-rate magic number was duplicated AND 2× wrong. Fixed: one shared `estimateIsk(chars)` + `ISK_PER_1000_CHARS = 10` in `malstadur-api.js`, consumed by all 4 sites (`malstadur-api.js` tracker, `api-translate.js:742`, `translate-chapter-titles.js:91` — a 4th site the audit missed; `:815` derives from the tracker). True price 1 ISK/100 chars = 10 ISK/1000 (lead-confirmed 2026-06-30). Unit-tested (`malstadur-api.test.js` § estimateIsk). See memory `malstadur-api-integration` § API PRICE.
   **#38 [INFO]** ~500 lines of dead legacy string builders retained + exported.
 - *Already scheduled — no register entry needed:* #26→B3, #34→C4, #35→D4, #40/#42→B2, #65→D6, #79→[VEFUR],
   #56/#58/#61→D-track. *Already resolved:* #73 (id-less `<para>`-in-`<note>`)→C1; #72/#75/#76 (positioner
