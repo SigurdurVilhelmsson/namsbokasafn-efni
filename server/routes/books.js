@@ -18,7 +18,6 @@ const log = require('../lib/logger');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireEditor, requireAdmin, requireBookAccess } = require('../middleware/requireRole');
 const chapterFilesService = require('../services/chapterFilesService');
-const { advanceChapterStatus } = require('../services/pipelineService');
 const { VALID_BOOKS, BOOK_LABELS } = require('../config');
 const { MAX_CHAPTERS } = require('../constants');
 
@@ -600,129 +599,6 @@ router.post(
       chapter: chapterNum,
       imported: imported.length,
       errors: errors.length > 0 ? errors : undefined,
-      files: imported.map((f) => ({
-        original: f.originalName,
-        stored: f.storedAs,
-      })),
-    });
-  }
-);
-
-/**
- * POST /api/books/:bookId/chapters/:chapter/import-mt
- * Import MT output files for a chapter
- *
- * Accepts multiple .md files and stores them in 02-mt-output/ch{NN}/
- * These are the Icelandic segments returned from the machine translation service.
- */
-router.post(
-  '/:bookId/chapters/:chapter/import-mt',
-  requireAuth,
-  requireEditor(),
-  upload.array('files', 50),
-  async (req, res) => {
-    const { bookId, chapter } = req.params;
-    const chapterNum = parseInt(chapter, 10);
-    const userId = req.user?.username || 'system';
-
-    if (!req.files || req.files.length === 0) {
-      return res.status(400).json({
-        error: 'No files uploaded',
-        message: 'Please upload at least one .md file',
-      });
-    }
-
-    const paddedChapter = String(chapterNum).padStart(2, '0');
-    const targetDir = path.join(booksDir, bookId, '02-mt-output', `ch${paddedChapter}`);
-
-    // Ensure target directory exists
-    if (!fs.existsSync(targetDir)) {
-      fs.mkdirSync(targetDir, { recursive: true });
-    }
-
-    const imported = [];
-    const errors = [];
-
-    for (const file of req.files) {
-      try {
-        const filename = file.originalname;
-        // Accept IS segment files: m{NNNNN}-segments.is.md or {section}.is.md
-        const validPattern = /^(m\d{5}-segments|[\w-]+)\.is\.md$/;
-
-        if (!validPattern.test(filename)) {
-          errors.push({
-            file: filename,
-            error: 'Invalid filename format. Expected: {moduleId}-segments.is.md or {name}.is.md',
-          });
-          fs.unlinkSync(file.path);
-          continue;
-        }
-
-        const targetPath = path.join(targetDir, filename);
-
-        // Move file to MT output directory
-        fs.renameSync(file.path, targetPath);
-
-        // Check for segment markers
-        const content = fs.readFileSync(targetPath, 'utf-8');
-        const hasMarkers = /(?:<!--\s*SEG:|\{\{SEG:)/.test(content);
-
-        imported.push({
-          originalName: filename,
-          storedAs: filename,
-          path: targetPath,
-          hasMarkers,
-        });
-      } catch (err) {
-        errors.push({
-          file: file.originalname,
-          error: err.message,
-        });
-        if (fs.existsSync(file.path)) {
-          fs.unlinkSync(file.path);
-        }
-      }
-    }
-
-    // Register imported files in database (best-effort)
-    if (imported.length > 0) {
-      try {
-        const filesToRegister = imported.map((f) => ({
-          type: 'mt-output',
-          path: f.path,
-          metadata: { importedFrom: f.originalName },
-        }));
-
-        chapterFilesService.registerFiles(bookId, chapterNum, filesToRegister, userId);
-      } catch (dbErr) {
-        log.error({ err: dbErr }, 'Failed to register MT output files');
-      }
-
-      // Advance pipeline status — MT output is now available
-      advanceChapterStatus(bookId, chapterNum, 'mtOutput');
-    }
-
-    const noMarkerCount = imported.filter((f) => !f.hasMarkers).length;
-
-    res.json({
-      success: true,
-      bookId,
-      chapter: chapterNum,
-      imported: imported.length,
-      errors: errors.length > 0 ? errors : undefined,
-      markerWarning:
-        noMarkerCount > 0
-          ? {
-              count: noMarkerCount,
-              total: imported.length,
-              message:
-                'Hlutamerki vantar í ' +
-                noMarkerCount +
-                ' af ' +
-                imported.length +
-                ' skrám — þýðingar munu ekki birtast í ritlinum.',
-            }
-          : undefined,
       files: imported.map((f) => ({
         original: f.originalName,
         stored: f.storedAs,

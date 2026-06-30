@@ -39,6 +39,7 @@ import {
 } from './lib/parseArgs.js';
 import { createClient, formatGlossary, estimateIsk } from './lib/malstadur-api.js';
 import { bookToDomain } from './lib/book-rendering-config.js';
+import { writeProvenance } from './lib/provenance.js';
 
 // ─── Configuration ──────────────────────────────────────────────────
 
@@ -505,6 +506,11 @@ async function translateChunk(client, chunkText, glossary, verbose, chunkLabel) 
   return { text: output, usage: result.usage };
 }
 
+/** Derive a module id (mNNNNN) from an mt-output output path. */
+export function moduleIdFromOutputPath(outputPath) {
+  return path.basename(outputPath).replace('-segments.is.md', '');
+}
+
 /**
  * Translate a single module file via the API.
  * Automatically splits large modules at SEG boundaries to avoid API truncation.
@@ -575,6 +581,9 @@ async function translateModule(
     fs.mkdirSync(outputDir, { recursive: true });
   }
   fs.writeFileSync(outputPath, output, 'utf8');
+
+  // B2: stamp producer provenance next to the segment file.
+  writeProvenance(outputDir, moduleIdFromOutputPath(outputPath), { tool: 'api-translate' });
 
   // Copy -links.json if it exists
   const linksFilename = path.basename(inputPath).replace('-segments.en.md', '-segments-links.json');

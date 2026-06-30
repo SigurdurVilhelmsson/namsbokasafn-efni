@@ -47,6 +47,7 @@ import {
 } from './lib/parseArgs.js';
 import { compareTagCounts } from './cnxml-fidelity-check.js';
 import { extractGlossary } from './lib/cnxml-parser.js';
+import { resolveRestorePolicy } from './lib/provenance.js';
 import { updateTranslationErrors } from './lib/update-translation-errors.js';
 import { detectResidue, upsertResidueModule } from './lib/residue-check.js';
 import { SEG_MARKER, parseSegmentsMap } from './lib/seg-markers.cjs';
@@ -529,6 +530,24 @@ function restoreMediaMarkers(isSegments, enSegments) {
   }
 
   return { segments: isSegments, restoredCount };
+}
+
+/**
+ * Run the three web-UI marker restores over a segment map and report the counts.
+ * Both inject policy branches call this ONE helper so they cannot drift: 'mutate'
+ * passes the real `segments` map (rewrites in place); 'warn' passes a throwaway
+ * `new Map(segments)` clone (reports what WOULD change without touching the real
+ * segments). The restores mutate their argument map in place — isolation is purely
+ * the caller's choice of which map to hand in.
+ * @param {Map<string,string>} targetSegments - map the restores mutate in place
+ * @param {Map<string,string>} enSegments - English source segments
+ * @returns {{ supStripped:number, subStripped:number, mediaRestored:number, brRestored:number }}
+ */
+function runWebUiRestores(targetSegments, enSegments) {
+  const { supStripped, subStripped } = restoreSupersubMarkers(targetSegments, enSegments);
+  const { restoredCount: mediaRestored } = restoreMediaMarkers(targetSegments, enSegments);
+  const { restoredCount: brRestored } = restoreNewlines(targetSegments, enSegments);
+  return { supStripped, subStripped, mediaRestored, brRestored };
 }
 
 /**
@@ -3173,6 +3192,8 @@ function findChapterModules(chapter, moduleId = null) {
  */
 function loadModuleInputs(chapter, moduleId, lang, sourceDir, allowEnFallback = false) {
   const chapterDir = formatChapter(chapter);
+  const mtOutputChapterDir = path.join(BOOKS_DIR, '02-mt-output', chapterDir);
+  const restorePolicy = resolveRestorePolicy({ mtOutputChapterDir, moduleId });
 
   // Load structure
   const structPath = path.join(BOOKS_DIR, '02-structure', chapterDir, `${moduleId}-structure.json`);
@@ -3238,7 +3259,7 @@ function loadModuleInputs(chapter, moduleId, lang, sourceDir, allowEnFallback = 
   }
   const originalCnxml = fs.readFileSync(originalPath, 'utf-8');
 
-  return { structure, segments, equations, originalCnxml, enSegments, inlineAttrs };
+  return { structure, segments, equations, originalCnxml, enSegments, inlineAttrs, restorePolicy };
 }
 
 /**
@@ -3322,18 +3343,15 @@ async function main() {
         console.error(`Processing: ${moduleId} (source: ${sourceDir}, track: ${track})`);
       }
 
-      const { structure, segments, equations, originalCnxml, enSegments, inlineAttrs } =
-        loadModuleInputs(args.chapter, moduleId, args.lang, sourceDir, args.allowEnFallback);
-
-      // Detect API vs web UI segments: API-translated segments contain
-      // {{i}}, {{b}}, {{term}}, or {{fn}} markers that survive the API.
-      const isApiTranslated = [...segments.values()].some(
-        (s) =>
-          s.includes('{{i}}') ||
-          s.includes('{{b}}') ||
-          s.includes('{{term}}') ||
-          s.includes('{{fn}}')
-      );
+      const {
+        structure,
+        segments,
+        equations,
+        originalCnxml,
+        enSegments,
+        inlineAttrs,
+        restorePolicy,
+      } = loadModuleInputs(args.chapter, moduleId, args.lang, sourceDir, args.allowEnFallback);
 
       // Restore/strip term markers (needed for both pipelines):
       // - New {{term}} format: strips any __term__ glossary artifacts from IS
@@ -3346,30 +3364,38 @@ async function main() {
         console.error(`  Note: ${strippedCount} API-added term marker(s) stripped`);
       }
 
-      // Web-UI-only restoration functions — skip for API-translated segments.
-      // The API preserves [[sub:]], [[sup:]], [[MEDIA:N]], and [[BR]] markers,
-      // so these repair functions are unnecessary and could cause false positives.
-      if (!isApiTranslated) {
-        // Limit sup/sub markers in IS to match EN counts (prevents overproduction)
-        const { supStripped, subStripped } = restoreSupersubMarkers(segments, enSegments);
+      // B2: web-UI marker restoration is gated on recorded producer provenance,
+      // not a content sniff. 'mutate' (docx) rewrites segments as before; 'warn'
+      // (api-translate / human-authored) detects-and-reports without mutating —
+      // which doubles as a mis-stamped-backfill detector.
+      if (restorePolicy.policy === 'mutate') {
+        const { supStripped, subStripped, mediaRestored, brRestored } = runWebUiRestores(
+          segments,
+          enSegments
+        );
         if (supStripped > 0 || subStripped > 0) {
           console.error(
             `  Note: stripped ${supStripped} excess sup + ${subStripped} excess sub marker(s)`
           );
         }
-
-        // Restore [[MEDIA:N]] placeholders dropped by web UI MT
-        const { restoredCount: mediaRestoredCount } = restoreMediaMarkers(segments, enSegments);
-        if (mediaRestoredCount > 0) {
-          console.error(
-            `  Restored ${mediaRestoredCount} [[MEDIA:N]] placeholder(s) from EN source`
-          );
+        if (mediaRestored > 0) {
+          console.error(`  Restored ${mediaRestored} [[MEDIA:N]] placeholder(s) from EN source`);
         }
-
-        // Restore [[BR]] placeholders from EN source into IS segments
-        const { restoredCount: brRestoredCount } = restoreNewlines(segments, enSegments);
-        if (args.verbose && brRestoredCount > 0) {
-          console.error(`  Restored ${brRestoredCount} newline placeholder(s) from EN source`);
+        if (args.verbose && brRestored > 0) {
+          console.error(`  Restored ${brRestored} newline placeholder(s) from EN source`);
+        }
+      } else {
+        // warn-only: run on a throwaway clone so the real segments are never mutated.
+        const { supStripped, subStripped, mediaRestored, brRestored } = runWebUiRestores(
+          new Map(segments),
+          enSegments
+        );
+        if (supStripped || subStripped || mediaRestored || brRestored) {
+          console.error(
+            `  Note [warn-only, provenance=${restorePolicy.tool || 'human-authored'}]: ` +
+              `would have stripped ${supStripped} sup/${subStripped} sub and restored ` +
+              `${mediaRestored} media/${brRestored} BR marker(s) — not mutating`
+          );
         }
       }
 

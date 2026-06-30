@@ -502,12 +502,41 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
   regex is the tolerant superset). **Evidence corrected the plan's premise:** parser divergence is INERT on
   biology (0/13 files differ) — this is hygiene/drift-prevention, it does **NOT** unblock biology routing.
   - **↳ `isApiTranslated` routing mis-route is the REAL biology risk, RE-SCOPED as its own item** (NOT #14):
-    the `{{i/b/term/fn}}` content-sniff (`cnxml-inject.js:3361`) returns false for low-marker biology modules
-    (9/13) → routes them through legacy web-UI marker-repair. Latent today (those 9 are marker-less prose so the
-    repair no-ops), but a real risk for a biology module bearing `[[sub:]]`/`[[sup:]]`/`[[i:]]` without `{{}}`.
-    The clean fix needs **producer provenance (B2)** — A1's manifest carries no `tool`/`track`. Do with/after B2.
+    the `{{i/b/term/fn}}` content-sniff (`cnxml-inject.js:3330`) returns false for low-marker biology modules
+    → routes them through legacy web-UI marker-repair. The clean fix needs **producer provenance (B2)** —
+    A1's manifest carries no `tool`/`track`. Do with/after B2.
+    - **✅ DIAGNOSTIC PROBE DONE (2026-06-30):** `docs/audit/2026-06-30-b2-isapitranslated-misroute-probe.md`.
+      Quantified blast radius. The sniff effectively reduces to "has `<term>`/`<footnote>`?" (extract emits
+      bracket `[[i:]]`/`[[b:]]` now, so `{{i}}`/`{{b}}` clauses are dead). **Q1:** **50/259 (19%)** biology
+      modules are term/footnote-free → mis-route (a floor — `{{term}}` is the lossy legacy family, so live
+      count is ≥50); **49/259** are the *structural danger zone* (mis-route **and** media-bearing). **Q2:**
+      corruption on **current** API content (ch05; ch03 is docx, restores intended) is **ZERO** — only
+      m66372 mis-routes and its restore triggers (MEDIA/BR/sup/sub) are all 0 EN=IS, so the restores
+      provably no-op; verified byte-identical re-inject + real-code run. **Verdict: mis-routing is real and
+      common but incidentally inert today** (API preserves MEDIA/BR; lossy `{{term}}` happens to survive).
+      That inertness is fragile, not guaranteed → B2 still ships **as producer provenance, NOT a sniff-patch**.
+      Payoff: probe proves the provenance swap is **behavior-preserving on all current content**, so B2 lands
+      as a clean low-risk refactor. [[feedback-robustness-over-expedience]]
+    - **✅ B2 IMPLEMENTED & VERIFIED (2026-06-30, branch `feat/b2-provenance-routing`):** design
+      `docs/plans/2026-06-30-b2-provenance-routing-design.md`, plan `…-b2-provenance-routing-plan.md`.
+      Per-module provenance sidecar (`mNNNNN-provenance.json`) written by both producers
+      (`api-translate`, `docx-import`); `tools/lib/provenance.js` maps tool→policy (`api-translate`→warn,
+      `docx-import`→mutate, unknown→throw); inject resolves policy from `02-mt-output` and **fails loud**
+      on missing provenance for MT-origin content; warn policy runs the 3 web-UI restores on a clone
+      (no mutate) — also a mis-stamp detector. Backfilled 189 existing sidecars (only liffraedi ch03 is
+      docx). **Orphan `/import-mt` route retired** (un-stamped producer, found during design). **Pure
+      refactor proven** by `scripts/verify-b2-idempotent.sh` (baseline-ref vs HEAD inject in worktrees;
+      16/side real injects; 0 real `.cnxml` diff). `restoreMathMarkers`/`restoreTermMarkers` untouched.
   - *Still open cluster:* **#15** duplicate-seg-ID policy convergence (the behavior-changing enforcement PR);
     **#19** [LOW] orphan `*-segments(b|c|d).en.md` legacy files cleanup.
+  - *New out-of-scope finds (logged during B2 execution 2026-06-30 — NOT B2's job):*
+    **(a)** ~8 **stale committed `03-translated` CNXML** produced by an older renderer (pre-#179..#183);
+    both main and B2 now emit the newer placement, so the committed files lag → regenerate in a separate
+    **re-render+sync PR**. **(b)** ~15 chapter/track combos **fail to inject** identically on main & B2:
+    2 faithful chapters missing translation files; 13 mt-preview chapters blocked by the A2 residue gate
+    (chapters MT'd before A2 existed) — pre-existing, decide whether to re-translate or grandfather.
+    **(c)** the `--book` slug validator (`BOOK_OPTION`) rejects `__e2e-fixture__` (leading underscores), so
+    backfill/CLI tools can't target the test fixture — pre-existing across all `--book` tools (LOW).
 - **#33 [HIGH] inject list-flattening divergence — ✅ DONE (PR #197, branch `fix/inject-list-flatten-unify`).**
   One `paraHasFlattenedList` helper now serves all three DOM builders; `buildExerciseDom`/`buildNoteDom`
   **preserve** a `<list>` flattened into a math-bearing `<para>` (was `removeChild`-deleted), matching
