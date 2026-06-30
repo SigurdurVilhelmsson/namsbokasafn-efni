@@ -41,7 +41,8 @@ roadmap (Tracks A→D) into ordered, individually-shippable work items.
 - 🔒 `books/*/01-source/` is **READ-ONLY** — never re-download/overwrite from upstream (double-consent
   rule in CLAUDE.md). Reading/scanning is fine.
 - Translations are **API-only** (Miðeind/Málstaður). No AI-generated translations. API test-runs cost
-  ISK — dry-run + estimate first.
+  ISK — dry-run + estimate first. **Price = 1 ISK / 100 chars (10 ISK / 1,000).** The code's estimator is
+  2× low (`(chars*5)/1000`) until #31 is fixed — **double any printed estimate** to get true spend.
 - **Cross-repo:** render's HTML class names/structure are a contract with sister repo
   `namsbokasafn-vefur` (`static/styles/content.css`). Items tagged **[VEFUR]** require coordinated
   changes there — **flag and hand off; do not edit vefur from this repo.**
@@ -517,7 +518,7 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
 - **#37 [LOW]** `buildExerciseDom` drops id-less exercises entirely; `buildGenericElement` recurses without
   `ctx`. **#30 [LOW]** 429 retry ignores `Retry-After` + has no jitter (A4-adjacent). **#29 [LOW]**
   control-char (NUL/°) failure aborts the module with no retry — asymmetric vs the truncation path that
-  retries. **#31 [INFO]** cost-rate magic number duplicated (`malstadur-api.js:52` vs `api-translate.js:742`).
+  retries. **#31 [LOW — also WRONG by 2×]** cost-rate magic number duplicated AND incorrect: `malstadur-api.js:52` + `api-translate.js:742` use `(chars*5)/1000` (0.5 ISK/100), but the real price is **1 ISK/100 chars = 10 ISK/1000** (lead-confirmed 2026-06-30) → every cost estimate is HALF the true spend. Fix: one shared `ISK_PER_1000_CHARS = 10` constant. See memory `malstadur-api-integration` § API PRICE.
   **#38 [INFO]** ~500 lines of dead legacy string builders retained + exported.
 - *Already scheduled — no register entry needed:* #26→B3, #34→C4, #35→D4, #40/#42→B2, #65→D6, #79→[VEFUR],
   #56/#58/#61→D-track. *Already resolved:* #73 (id-less `<para>`-in-`<note>`)→C1; #72/#75/#76 (positioner
