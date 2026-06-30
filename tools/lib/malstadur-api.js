@@ -23,6 +23,21 @@ const INITIAL_BACKOFF_MS = 1000;
 const ASYNC_POLL_INTERVAL_MS = 2000;
 const ASYNC_MAX_POLL_ATTEMPTS = 180; // 6 minutes at 2s intervals
 
+// Málstaður/Erlendur price: 1 ISK per 100 characters = 10 ISK per 1,000.
+// (lead-confirmed 2026-06-30; was wrongly 5/1000 — audit #31)
+const ISK_PER_1000_CHARS = 10;
+
+/**
+ * Estimate translation cost in ISK for a character count.
+ * Single source of truth for the rate (used by the usage tracker and the
+ * api-translate dry-run estimate).
+ * @param {number} chars
+ * @returns {number} estimated ISK
+ */
+function estimateIsk(chars) {
+  return (chars * ISK_PER_1000_CHARS) / 1000;
+}
+
 // ─── Usage Tracker ──────────────────────────────────────────────────
 
 function createUsageTracker() {
@@ -49,7 +64,7 @@ function createUsageTracker() {
       return {
         ...stats,
         elapsedMs: Date.now() - stats.startTime,
-        estimatedISK: (stats.totalChars * 5) / 1000, // 5 ISK per 1000 chars
+        estimatedISK: estimateIsk(stats.totalChars),
       };
     },
   };
@@ -374,4 +389,11 @@ function createClient(options = {}) {
 
 // ─── Exports ────────────────────────────────────────────────────────
 
-export { createClient, formatGlossary, MalstadurApiError, SYNC_CHAR_LIMIT };
+export {
+  createClient,
+  formatGlossary,
+  MalstadurApiError,
+  SYNC_CHAR_LIMIT,
+  estimateIsk,
+  ISK_PER_1000_CHARS,
+};

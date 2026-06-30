@@ -13,7 +13,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { createClient, formatGlossary } from './lib/malstadur-api.js';
+import { createClient, formatGlossary, estimateIsk } from './lib/malstadur-api.js';
 import { loadEnvFile } from './api-translate.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -88,7 +88,7 @@ for (const item of toTranslate) {
 
 if (dryRun) {
   const totalChars = toTranslate.reduce((sum, t) => sum + t.titleEn.length, 0);
-  console.log(`\nTotal: ${totalChars} characters (~${((totalChars * 5) / 1000).toFixed(1)} ISK)`);
+  console.log(`\nTotal: ${totalChars} characters (~${estimateIsk(totalChars).toFixed(1)} ISK)`);
   process.exit(0);
 }
 
