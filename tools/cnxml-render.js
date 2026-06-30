@@ -1861,10 +1861,52 @@ function renderList(list, context) {
       // Simple items: check for nested paragraphs
       const nestedParas = extractElements(item.content, 'para');
       if (nestedParas.length > 0) {
-        const content = nestedParas
-          .map((p) => processInlineContent(p.content, context))
-          .join('<br>');
-        lines.push(`  <li${itemId}>${content}</li>`);
+        // Use the DOM to check for DIRECT-CHILD equation/media siblings — extractElements
+        // is not depth-aware (it matches equations nested inside <para> content too),
+        // which would cause false-positives and lose the inter-para <br> separator for
+        // pure-para items that merely have inline equations in their para text.
+        const { root: itemRoot } = parseCnxmlFragment(item.content);
+        const directBlocks = Array.from(itemRoot.childNodes).filter((n) => n.nodeType === 1);
+        const hasDirectBlockSiblings = directBlocks.some(
+          (n) => n.localName === 'equation' || n.localName === 'media'
+        );
+        if (hasDirectBlockSiblings) {
+          // DOM-walk: render all direct block children (para, equation, media) in source
+          // order. Equations/media that are top-level siblings of <para> inside an <item>
+          // were previously dropped by the para-only branch. Worked-solution pattern:
+          // stepwise <list> inside <example> — <item> has <para>+<equation>+<media>.
+          const parts = [];
+          for (const node of directBlocks) {
+            const name = node.localName;
+            const serialized = serializeCnxmlFragment(node);
+            if (name === 'para') {
+              const objs = extractElements(serialized, 'para');
+              if (objs[0]) parts.push(processInlineContent(objs[0].content, context));
+            } else if (name === 'equation') {
+              const objs = extractElements(serialized, 'equation');
+              if (objs[0]) parts.push(renderEquation(objs[0], context));
+            } else if (name === 'media') {
+              const objs = extractNestedElements(serialized, 'media');
+              if (objs[0]) parts.push(renderMedia(objs[0], context));
+            } else {
+              // Loud seam: record unhandled block child type rather than drop silently
+              if (context.undispatchedBlocks) {
+                context.undispatchedBlocks.push({
+                  tag: name,
+                  id: (node.getAttribute && node.getAttribute('id')) || null,
+                  location: 'renderList-item',
+                });
+              }
+            }
+          }
+          lines.push(`  <li${itemId}>${parts.join('')}</li>`);
+        } else {
+          // Pure para case (no direct-child equation/media): preserve existing byte-identical output
+          const content = nestedParas
+            .map((p) => processInlineContent(p.content, context))
+            .join('<br>');
+          lines.push(`  <li${itemId}>${content}</li>`);
+        }
       } else {
         // Check for nested block-level <equation> elements. Source pattern, e.g.
         // ch21-2 historical-milestones bullets: each <item> contains text +
@@ -1979,16 +2021,20 @@ function renderGlossary(content, context) {
   const definitions = extractNestedElements(content, 'definition');
   for (const def of definitions) {
     const id = def.id || null;
-    const termMatch = def.content.match(/<term>([^<]*)<\/term>/);
+    // Use [\s\S]*? so terms containing <m:math> children are captured.
+    const termMatch = def.content.match(/<term>([\s\S]*?)<\/term>/);
     const meaningMatch = def.content.match(/<meaning[^>]*>([\s\S]*?)<\/meaning>/);
 
     if (termMatch && meaningMatch) {
-      const term = termMatch[1].trim();
+      const termInner = termMatch[1].trim();
+      const termHtml = processInlineContent(termInner, context);
       const meaning = processInlineContent(meaningMatch[1], context);
 
-      context.terms[term] = stripTags(meaningMatch[1]).trim();
+      // Plain-text key for context.terms (used by reader for tooltips)
+      const termKey = stripTags(termInner).trim();
+      context.terms[termKey] = stripTags(meaningMatch[1]).trim();
 
-      lines.push(`    <dt${id ? ` id="${escapeAttr(id)}"` : ''}>${escapeHtml(term)}</dt>`);
+      lines.push(`    <dt${id ? ` id="${escapeAttr(id)}"` : ''}>${termHtml}</dt>`);
       lines.push(`    <dd>${meaning}</dd>`);
     }
   }
@@ -2487,13 +2533,15 @@ function extractChapterGlossary(chapter, modules, track) {
 
     const defs = extractNestedElements(glossaryMatch[1], 'definition');
     for (const def of defs) {
-      const termMatch = def.content.match(/<term>([^<]*)<\/term>/);
+      // Use [\s\S]*? so terms containing <m:math> or <emphasis> children are captured.
+      const termMatch = def.content.match(/<term>([\s\S]*?)<\/term>/);
       const meaningMatch = def.content.match(/<meaning[^>]*>([\s\S]*?)<\/meaning>/);
 
       if (termMatch && meaningMatch) {
         definitions.push({
           id: def.id || null,
-          term: termMatch[1].trim(),
+          term: stripTags(termMatch[1]).trim(), // plain text for sort / termsMap key
+          termContent: termMatch[1].trim(), // raw inner HTML for rendering
           meaningContent: meaningMatch[1],
           moduleId,
         });
@@ -2522,10 +2570,9 @@ function renderCompiledGlossary(chapter, definitions, context) {
     lines.push('  <dl>');
 
     for (const def of definitions) {
+      const termHtml = processInlineContent(def.termContent || def.term, context);
       const meaning = processInlineContent(def.meaningContent, context);
-      lines.push(
-        `    <dt${def.id ? ` id="${escapeAttr(def.id)}"` : ''}>${escapeHtml(def.term)}</dt>`
-      );
+      lines.push(`    <dt${def.id ? ` id="${escapeAttr(def.id)}"` : ''}>${termHtml}</dt>`);
       lines.push(`    <dd>${meaning}</dd>`);
     }
 
@@ -4094,6 +4141,7 @@ export {
   renderBlockChildrenInOrder,
   renderCnxmlToHtml,
   renderCompiledExercises,
+  renderCompiledGlossary,
   buildAppendixIdMap,
   rollbackWrittenFiles,
   escapeJsonForScript,

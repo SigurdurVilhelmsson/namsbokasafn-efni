@@ -101,7 +101,7 @@ roadmap (Tracks A→D) into ordered, individually-shippable work items.
 - **Acceptance:** an untranslated-English module no longer reports COMPLETE; residues listed. Tests with
   EN-residue and clean fixtures. (Aligns with the editorial-throughput roadmap Unit 4.)
 
-### A3 — Render-stage structural check + wire fidelity into CI as regression  ·  M  ·  dep: none (helps C)  ·  ✅ DONE (branch `feat/a3-render-fidelity-check`)
+### A3 — Render-stage structural check + wire fidelity into CI as regression  ·  M  ·  dep: none (helps C)  ·  ✅ DONE (feat/a3-render-fidelity-check + fix/a3-render-fidelity-recovery)
 - **Problem:** fidelity check is character-blind (counts opening tags only; text/attrs/MathML contents
   never inspected — why the null-byte degree-sign incident passed), never runs in CI, never fails inject.
 - **Shipped:** `tools/cnxml-render-fidelity-check.js` — RENDER-stage check (complements the inject-stage
@@ -117,15 +117,28 @@ roadmap (Tracks A→D) into ordered, individually-shippable work items.
   the chapter render orchestration in `main()` is heavily coupled (`moduleSections`+numbering maps); a
   re-render driver is deferred (and CI credits are out till ~Jul 1 anyway). So this validates the
   *published artifact*, not a render-code regression at PR-time. (b) Cross-stage `>=` (not `==`) because
-  rollup pages legitimately inflate counts; only a net drop is honest. (c) No baseline committed yet —
-  current output contains the ~30 known pre-existing math drops + C0 table-escape bug; a baseline now
-  would bless them (capture via `--update-baseline` after a clean re-render).
+  rollup pages legitimately inflate counts; only a net drop is honest. (c) **Baseline now committed**
+  (`books/efnafraedi-2e/render-fidelity-baseline.json`), regenerated against a fresh full re-render in
+  `fix/a3-render-fidelity-recovery` after the drops below were fixed; shape-drift check now enforced.
 - **Acceptance:** ✅ `cnxml-render-fidelity-check.test.js` — clean passes; dropped-figure, bold↔italic
   swap, injected NUL, and dropped-equation each fail (5 tests). Wired into `validate.yml` as a
   **non-blocking** report + `npm run fidelity:render`.
-- **Bonus finding:** run against committed output, the cross-stage invariant independently rediscovered
-  the documented fidelity gaps — **~30 net math drops (ch15-21; ch21=15, ch17=9) + 1 image drop
-  (appendices)**. Pre-existing, not regressions. Hard-gating needs the lead to triage these first.
+- **Bonus finding (stale description corrected 2026-06-30):** initial run against committed output found
+  **~30 net math + 1 image drop** (stale label: ch21=15, ch17=9). The identity-diff oracle (`identityDiffChapter`,
+  Task 1 of `fix/a3-render-fidelity-recovery`) revealed these were really **22 math + 2 image drops** across
+  3 render-path root causes — all fixed; whole-book oracle now reports **0 genuine-math-drop / 0 image-drop**:
+  - **~17 eq + ch13 ICE-table image (`renderList`):** block equation/media children of list items were
+    silently dropped (Task 2 — `renderList` now renders block children in source order via a DOM direct-child walk (`parseCnxmlFragment` + `nodeType===1`), reusing `renderEquation`/`renderMedia`).
+  - **5 math (`renderGlossary` + compiled-keyterms path):** inline math inside glossary `<term>`/`<meaning>`
+    was passed through as raw text instead of rendered MathJax markup (Task 3).
+  - **1 appendix image = INTENTIONAL:** appendix-A periodic table `<image>` → the rendered page serves a
+    custom interactive replacement; allowlisted via `computeIntentionalImageDrops` + `specialModules` in
+    `book-config.json` (Task 4). Not a bug.
+  - **Identity-diff gate** (`identityDiffChapter`): replaces the rollup-masking count-only check with a full
+    `<math class="assistive-mathml">` skeleton diff (a11y-2 content, present only after a fresh re-render).
+    Hard-gates on `genuine-math-drop`. **Reader delivery rides a separate re-render** — the oracle validates
+    render *code* against a fresh local render; the committed `05-publication` does not auto-update. A
+    follow-on re-render+sync is required to serve the recovered equations/images to readers on namsbokasafn.is.
 
 ### A4 — `pollTask` retry + async-path tests  ·  S  ·  no deps  ·  ✅ DONE (PR #185, branch `feat/a4-polltask-retry`)
 - **Shipped 2026-06-29:** poll GET wrapped in the existing `withRetry` (transient 5xx/429 retry, 4xx fails

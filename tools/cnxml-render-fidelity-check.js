@@ -53,6 +53,78 @@ const CONTROL_CHAR_REGEX = /[\x00-\x08\x0B\x0C\x0E-\x1F]/g;
 
 const count = (s, re) => (s.match(re) || []).length;
 
+// ─── Identity diff: per-equation MathML tag-skeleton multiset ────────
+
+/**
+ * Extract tag-skeletons for each math element found in text.
+ *
+ * For CNXML: matches `<m:math …>…</m:math>` (opening = 'm:math').
+ * For HTML:  matches `<math …class="assistive-mathml"…>…</math>` (opening = 'math').
+ *
+ * A skeleton is the comma-joined sequence of element localNames inside the math,
+ * with the `m:` prefix stripped and attributes/text dropped. This is
+ * localization-invariant: two equations that differ only in number values or
+ * variable names (e.g. after Icelandic localization) share the same skeleton.
+ *
+ * @param {string} text
+ * @param {'m:math'|'math'} opening  - which tag family to match
+ * @returns {string[]} skeleton strings, one per found math element
+ */
+function mathSkeletons(text, opening) {
+  const out = [];
+  const openRe =
+    opening === 'm:math' ? /<m:math\b[^>]*>/gi : /<math\b[^>]*class="assistive-mathml"[^>]*>/gi;
+  const closeTag = opening === 'm:math' ? '</m:math>' : '</math>';
+  let m;
+  while ((m = openRe.exec(text))) {
+    const start = m.index + m[0].length;
+    const end = text.indexOf(closeTag, start);
+    if (end < 0) continue;
+    const inner = text.slice(start, end);
+    const tags = (inner.match(/<\/?[a-zA-Z][\w:.-]*/g) || []).map((t) =>
+      t.replace(/^<\/?(?:m:)?/, '').toLowerCase()
+    );
+    out.push(tags.join(','));
+  }
+  return out;
+}
+
+/**
+ * Multiset-diff CNXML <m:math> skeletons vs all-chapter HTML assistive-MathML skeletons.
+ *
+ * Rollup pages re-present equations (so H[skel] may exceed C[skel]) — that is
+ * NOT a drop. A genuine drop is when the HTML side has FEWER copies of a skeleton
+ * than the CNXML side.
+ *
+ * @param {{ cnxml: string[], html: string[] }} inputs
+ * @returns {{ lostSkeletons: Array<[string, number]>, lostCount: number }}
+ */
+export function identityDiffChapter({ cnxml, html }) {
+  // Build CNXML multiset
+  const cnxmlSkels = cnxml.flatMap((t) => mathSkeletons(t, 'm:math'));
+  const C = new Map();
+  for (const k of cnxmlSkels) C.set(k, (C.get(k) || 0) + 1);
+
+  // Build HTML multiset (all chapter pages pooled — rollup re-presentation cancels naturally)
+  const htmlSkels = html.flatMap((t) => mathSkeletons(t, 'math'));
+  const H = new Map();
+  for (const k of htmlSkels) H.set(k, (H.get(k) || 0) + 1);
+
+  // Multiset difference: only count genuine losses (CNXML has more than HTML)
+  const lostSkeletons = [];
+  let lostCount = 0;
+  for (const [skel, cn] of C) {
+    const hn = H.get(skel) || 0;
+    if (cn > hn) {
+      const loss = cn - hn;
+      lostCount += loss;
+      lostSkeletons.push([skel, loss]);
+    }
+  }
+  lostSkeletons.sort((a, b) => b[1] - a[1]);
+  return { lostSkeletons, lostCount };
+}
+
 // ─── Pure structural measures ───────────────────────────────────────
 
 /**
@@ -103,9 +175,17 @@ export function addHistograms(a, b) {
  * @param {string[]} inputs.cnxml - injected CNXML strings (03-translated) for the chapter
  * @param {string[]} inputs.html  - produced HTML strings (05-publication) for the chapter
  * @param {Record<string, number>|null} [baseline] - committed shape histogram for this chapter
+ * @param {object} [options]
+ * @param {number} [options.knownIntentionalImageDrops=0] - number of CNXML <image> elements
+ *   whose absence from the produced HTML is intentional. These are modules listed in
+ *   book-config specialModules whose static source image is replaced by a custom
+ *   interactive element (e.g. "periodic-table" → /efnafraedi-2e/lotukerfi). The
+ *   driver computes this via computeIntentionalImageDrops(). This is an explicit
+ *   allow-list, not a silent skip — callers must name the reason at the call site.
  * @returns {Array<object>} findings (empty = clean)
  */
-export function checkChapter(inputs, baseline = null) {
+export function checkChapter(inputs, baseline = null, options = {}) {
+  const { knownIntentionalImageDrops = 0 } = options;
   const findings = [];
   const cnxmlAll = inputs.cnxml.join('\n');
   const htmlAll = inputs.html.join('\n');
@@ -125,13 +205,20 @@ export function checkChapter(inputs, baseline = null) {
   }
 
   // 2. cross-stage ">=" invariant (baseline-free): a DROP is unambiguous.
+  // knownIntentionalImageDrops: images intentionally absent because the module uses
+  // a custom interactive replacement (book-config specialModules). Subtract from
+  // the CNXML count so the invariant is not falsely triggered.
   const invariants = [
     {
       unit: 'math',
       cnxml: count(cnxmlAll, /<m:math\b/g),
       html: count(htmlAll, /<mjx-container\b/g),
     },
-    { unit: 'image', cnxml: count(cnxmlAll, /<image\b/g), html: count(htmlAll, /<img\b/g) },
+    {
+      unit: 'image',
+      cnxml: count(cnxmlAll, /<image\b/g) - knownIntentionalImageDrops,
+      html: count(htmlAll, /<img\b/g),
+    },
   ];
   for (const inv of invariants) {
     if (inv.html < inv.cnxml) {
@@ -214,6 +301,41 @@ export function readChapterFromDisk(bookDir, chapter, track) {
   return { cnxml, html };
 }
 
+/**
+ * Count CNXML <image> elements that will intentionally be absent from the
+ * produced HTML because the owning module uses a custom interactive replacement
+ * (book-config specialModules, e.g. "periodic-table" → /efnafraedi-2e/lotukerfi).
+ *
+ * Explicit allow-list: each module whose images are excluded is identified by its
+ * <md:content-id> in the CNXML, matched against specialModules in book-config.
+ * If the module type is not "periodic-table" (or another recognised replacement),
+ * the images are still counted. Add new recognised types below if more interactive
+ * replacements are introduced.
+ *
+ * @param {string[]} cnxmlList - injected CNXML strings for the chapter
+ * @param {object|null} bookConfig - parsed book-config.json (may be null)
+ * @returns {number} total intentionally-absent image count
+ */
+function computeIntentionalImageDrops(cnxmlList, bookConfig) {
+  if (!bookConfig?.specialModules) return 0;
+  // Only these special-module types replace their static images with interactive
+  // elements. New types must be added here with a comment explaining the replacement.
+  const REPLACEMENT_TYPES = new Set([
+    'periodic-table', // Replaced by the interactive /lotukerfi page (see cnxml-render.js)
+  ]);
+  let drops = 0;
+  for (const cnxmlText of cnxmlList) {
+    const m = cnxmlText.match(/<md:content-id>(m\d+)<\/md:content-id>/);
+    if (!m) continue;
+    const moduleId = m[1];
+    const moduleType = bookConfig.specialModules[moduleId];
+    if (moduleType && REPLACEMENT_TYPES.has(moduleType)) {
+      drops += count(cnxmlText, /<image\b/g);
+    }
+  }
+  return drops;
+}
+
 function baselinePath(bookDir) {
   return path.join(bookDir, 'render-fidelity-baseline.json');
 }
@@ -249,6 +371,15 @@ function main() {
   const newBaseline = {};
   let totalFindings = 0;
 
+  // Load book config for intentional-replacement detection (specialModules).
+  // Modules listed in specialModules may replace their static source images with
+  // custom interactive elements; their images are excluded from the cross-stage
+  // image-drop count via computeIntentionalImageDrops().
+  const bookConfigPath = path.join(bookDir, 'book-config.json');
+  const bookConfig = fs.existsSync(bookConfigPath)
+    ? JSON.parse(fs.readFileSync(bookConfigPath, 'utf8'))
+    : null;
+
   for (const chapter of chapters) {
     const inputs = readChapterFromDisk(bookDir, chapter, args.track);
     if (inputs.html.length === 0) continue;
@@ -264,7 +395,17 @@ function main() {
 
     const chapterBaseline =
       baselineData && baselineData.chapters ? baselineData.chapters[chapter] : null;
-    const findings = checkChapter(inputs, chapterBaseline);
+    const intentionalImageDrops = computeIntentionalImageDrops(inputs.cnxml, bookConfig);
+    const findings = checkChapter(inputs, chapterBaseline, {
+      knownIntentionalImageDrops: intentionalImageDrops,
+    });
+
+    // Identity-diff: per-equation MathML skeleton multiset (rollup-masking immune)
+    const { lostSkeletons, lostCount } = identityDiffChapter(inputs);
+    if (lostCount > 0) {
+      findings.push({ type: 'genuine-math-drop', lostCount, lostSkeletons });
+    }
+
     if (findings.length) {
       totalFindings += findings.length;
       console.log(`\nch${chapter}: ${findings.length} finding(s)`);
