@@ -93,6 +93,15 @@ if [ "$base_ok" -eq 0 ] || [ "$curr_ok" -eq 0 ]; then
   exit 3
 fi
 
+# A pure refactor must not change WHICH modules inject. If the success/failure
+# split diverges, one side produced a fresh .cnxml where the other kept the stale
+# committed copy — a "diff -rq" reports that as an uncounted "Only in:" line, so
+# assert the counts match rather than rely on the content-diff alone.
+if [ "$base_ok" -ne "$curr_ok" ] || [ "$base_fail" -ne "$curr_fail" ]; then
+  echo "ABORT: inject success/failure split diverges (baseline $base_ok/$base_fail vs current $curr_ok/$curr_fail) — B2 changed which modules inject; investigate."
+  exit 4
+fi
+
 echo "Diffing CNXML output (baseline vs current)..."
 diffs=0
 for b in "$WT_CURR"/books/*/; do
