@@ -1,7 +1,7 @@
 # Runbook — efnafraedi-2e combined re-render + sync (a11y-2 + A3 + stale-render)
 
 **Date:** 2026-06-30. **Scope:** efnafraedi-2e ONLY. **Type:** pipeline Step 5b (render) + cross-repo sync.
-**Status:** scoped, decisions resolved; Phase 1 ready to execute.
+**Status:** Phase 1 (re-render, PR #205) ✅ + Phase 2 (vefur Task 3a search-index strip, vefur PR #176) ✅ MERGED. **Phase 3 (sync + deploy) is the only remaining step — unblocked, runs on the deployment server [lead].**
 
 ## Why
 
@@ -52,6 +52,8 @@ Aggregates (`05-publication/{glossary.json,toc.json}`) are produced by separate 
 ## Phase 2 — vefur Task 3a (search-index strip) [in namsbokasafn-vefur]
 
 Implement the `search.worker.ts` strip for `<math class="assistive-mathml">…</math>` per the handoff (`namsbokasafn-vefur docs/plans/2026-06-30-cross-book-css-and-embed-handoff.md` Task 3a). Its own small PR in the vefur repo. **Must merge before Phase 3.** (Cross-repo: relaunch Claude in namsbokasafn-vefur for that work per the repo's cross-repo protocol.)
+
+> **✅ DONE 2026-06-30 — vefur PR #176 MERGED to `main` (`0c219e1`).** The strip moved out of the worker into `$lib/utils/html.ts` (`htmlToPlainText`, now imported by `search.worker.ts`); the worker copy was the leak site. The real bug was **inline** math (`<span class="math-inline">`, not `mathjax…`): block math was already stripped, inline assistive `<math>` text leaked through the generic tag-strip (~4,300 eq). Regex hardened to `\bassistive-mathml\b` after grepping the real `05-publication` shape (no namespace prefix; class is first attr). New `html.test.ts` (RED-verified). **Phase 2 gate is satisfied — Phase 3 is unblocked.**
 
 ## Phase 3 — sync to vefur + deploy [in namsbokasafn-vefur, lead]
 
