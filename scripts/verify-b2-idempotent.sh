@@ -41,10 +41,21 @@ echo "Current:  $CURRENT_REF"
 git worktree add --quiet --detach "$WT_BASE" "$BASELINE_REF"
 git worktree add --quiet --detach "$WT_CURR" "$CURRENT_REF"
 
+# A git worktree does NOT contain node_modules (gitignored, never checked out), so
+# `node tools/cnxml-inject.js` there would ERR_MODULE_NOT_FOUND and — with failures
+# tolerated below — every inject would silently no-op, yielding a VACUOUS "0 diff".
+# Link the real repo's node_modules into each worktree (deps are identical across
+# the two refs; inject only reads from node_modules).
+ln -s "$(realpath node_modules)" "$WT_BASE/node_modules"
+ln -s "$(realpath node_modules)" "$WT_CURR/node_modules"
+
 # Re-inject every committed (book, track, chapter) combo inside a worktree.
+# Returns via globals: INJECT_OK / INJECT_FAIL counts (a run that injects NOTHING
+# must not be mistaken for a clean refactor — the caller asserts INJECT_OK > 0).
 inject_all() {
   local W="$1"
   local trackdir book track src chdir base ch
+  INJECT_OK=0; INJECT_FAIL=0
   shopt -s nullglob
   for trackdir in "$W"/books/*/03-translated/*/; do
     book=$(echo "$trackdir" | sed -E 's#.*/books/([^/]+)/03-translated/.*#\1#')
@@ -53,28 +64,46 @@ inject_all() {
       mt-preview) src=02-mt-output ;;
       faithful)   src=03-faithful-translation ;;
       localized)  src=04-localized-content ;;
-      *) echo "unknown track: $track"; return 2 ;;
+      *) echo "unknown track: $track"; continue ;;
     esac
     for chdir in "$trackdir"ch*/ "$trackdir"appendices/; do
       [ -d "$chdir" ] || continue
       base=$(basename "$chdir")
       if [ "$base" = "appendices" ]; then ch="appendices"; else ch=$((10#${base#ch})); fi
-      ( cd "$W" && node tools/cnxml-inject.js --book "$book" --chapter "$ch" \
-          --source-dir "$src" --track "$track" >/dev/null 2>&1 ) || true
+      if ( cd "$W" && node tools/cnxml-inject.js --book "$book" --chapter "$ch" \
+            --source-dir "$src" --track "$track" >/dev/null 2>&1 ); then
+        INJECT_OK=$((INJECT_OK + 1))
+      else
+        INJECT_FAIL=$((INJECT_FAIL + 1))
+      fi
     done
   done
 }
 
 echo "Injecting in baseline worktree..."; inject_all "$WT_BASE"
+base_ok=$INJECT_OK; base_fail=$INJECT_FAIL
+echo "  baseline: $base_ok injected, $base_fail failed/skipped"
 echo "Injecting in current worktree...";  inject_all "$WT_CURR"
+curr_ok=$INJECT_OK; curr_fail=$INJECT_FAIL
+echo "  current:  $curr_ok injected, $curr_fail failed/skipped"
+
+# Anti-vacuous guard: if nothing actually injected, a 0-diff is meaningless.
+if [ "$base_ok" -eq 0 ] || [ "$curr_ok" -eq 0 ]; then
+  echo "ABORT: zero successful injects (baseline=$base_ok current=$curr_ok) — gate would be vacuous."
+  exit 3
+fi
 
 echo "Diffing CNXML output (baseline vs current)..."
 diffs=0
 for b in "$WT_CURR"/books/*/; do
   book=$(basename "$b")
   [ -d "$WT_BASE/books/$book/03-translated" ] || continue
-  out=$(diff -rq "$WT_BASE/books/$book/03-translated" "$WT_CURR/books/$book/03-translated" 2>/dev/null \
-        | grep '\.cnxml')
+  # Exclude inject's timestamped *.backup.* files: safeWrite writes a per-run
+  # backup whose name carries the wall-clock time, so it always "differs" — that
+  # is run noise, not output. Count only real content differences ("X and Y differ").
+  out=$(diff -rq --exclude='*.backup.*' \
+          "$WT_BASE/books/$book/03-translated" "$WT_CURR/books/$book/03-translated" 2>/dev/null \
+        | grep 'differ$')
   if [ -n "$out" ]; then
     echo "$out"
     diffs=$((diffs + $(echo "$out" | wc -l)))
