@@ -463,6 +463,8 @@ independent). The two audit items (folded in 2026-06-29 from the out-of-scope re
 
 ## Out-of-scope register — issues uncovered during implementation (triage as a batch after the plan completes)
 
+> **→ For the consolidated, urgency-tagged, re-verified scan list, see [§ ★ Consolidated Backlog](#-consolidated-backlog--follow-ups--tech-debt-the-single-triage-list) at the end of this doc.** This register remains the detailed prose source for each find; the Consolidated Backlog is the authoritative triage view.
+
 *Standing rule (project-memory feedback `feedback-log-out-of-scope-issues`): every out-of-scope issue
 found while implementing an item is logged here **immediately**, so nothing scoped-out is lost. PRs stay
 tightly scoped; these are revisited together once the plan's last item ships. Per-item deferrals also live
@@ -581,3 +583,92 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
   `KNOWN_GAPS` + **vefur memory `css-cross-book-gaps`** (the actionable list lives in the vefur repo, per
   cross-repo protocol). Per-book launch polish; `note-interactive` is a quick vefur win. Remove from
   `KNOWN_GAPS` as each gets a real rule.
+
+---
+
+## ★ Consolidated Backlog — Follow-ups & Tech-Debt (THE single triage list)
+
+> **Authoritative as of 2026-06-30.** This consolidates every still-open item from this plan's tracks,
+> its out-of-scope register (above), and all prior plans (editorial-throughput, security-remediation,
+> accessibility, deferred-fixlist, term-system audit), into one tagged list. **Every code item below was
+> re-verified against `main` HEAD on 2026-06-30** (4 parallel verification passes; `file:line` evidence
+> shown) — items already fixed by a later PR or made moot were dropped (e.g. audit **#19** orphan
+> `*-segments[bcd].en.md` cleanup → **0 such files exist, retired**; **#31** cost estimator → done #199).
+> The detailed prose for each lives in its track item / register entry above; this is the scan+triage view.
+>
+> **Urgency tags:** **🔴 Breaking** (ships wrong content to readers / blocks a book onboarding / corrupts
+> data) · **🟠 High** (real correctness or reader-facing gap, or ops/security exposure) · **🟡 Medium**
+> (robustness/maintainability that bites soon or on the next book; meaningful UX) · **🟢 Low**
+> (minor/latent/cleanup) · **⚪ Info** (dead code / decision-to-make / no behavior impact).
+> **Owner tags:** `[build]` scheduled track item · `[fix]` tech-debt bugfix · `[infra]`/`[process]`
+> non-code · `[decision]` needs lead call · `[vefur]` sister-repo (do not fix here).
+
+### 🔴 Breaking
+| Item | Evidence | What & why | Owner |
+|---|---|---|---|
+| **D3** os-embed organic exercises ship English | `cnxml-render.js:146` reads `01-source/exercises/*.json` (EN); 260/342 organic files, 1 961 `os-embed`; no extract/translate path | Every organic end-of-section problem renders untranslated English | `[build]` Track D — **blocks organic onboarding** |
+
+### 🟠 High
+| Item | Evidence | What & why | Owner |
+|---|---|---|---|
+| **D5** organic/microbiology empty key-terms | lifraen 31 `key-terms` / 0 `<glossary>`, render fallback `cnxml-render.js:3706` emits EN term names; orverufraedi 0/0 → empty "Lykilhugtök" | Key-terms page ships English (organic) or blank (microbiology) | `[build]` Track D — blocks organic+microbiology |
+| **a11y-1** figure `alt` text English | `cnxml-extract.js:202,1018,1061` never segments `alt`; ~1 572 EN `alt=` across 215 published files | Screen-reader gap across ALL published content; needs extract→MT→review + backfill | `[build]` (= deferred-fixlist B / a11y handoff Item 1) |
+| **a11y-2** assistive MathML missing | `tools/lib/mathjax-render.js:12` SVG-only, no `mjx-assistive-mml` sibling | Equations inaccessible to screen readers; one-file fix + re-render | `[fix]` a11y handoff Item 2 (do first — cheap) |
+| **infra-1** content-sync Action fails silently | `.github/workflows/sync-content.yml:37` needs unset `VEFUR_DEPLOY_TOKEN`; every push to `05-publication/**` no-ops | Auto-publish to vefur is dead; sync is manual `node scripts/sync-content.js` | `[infra]` set the token or accept manual |
+| **process-1** remediation manual QA §0–§5 | `docs/plans/2026-06-10-qa-checklist.md` — 👁/◐ gates unwalked since 2026-06-12 | Authz/rollback/enforcement/XSS/page-auth gates never verified on a running server | `[process]` lead — gates server deploys |
+
+### 🟡 Medium
+| Item | Evidence | What & why | Owner |
+|---|---|---|---|
+| **#43** annotateInlineTerms gloss desync | `cnxml-inject.js:808` `termIndex++`, no id-match | `--annotate-en` attaches glosses by ordinal → wrong gloss if order/count differ (only that flag's path) | `[fix]` |
+| **#37** id-less exercises dropped | `cnxml-inject.js:2602` `if(!element.id) return null`; `buildGenericElement` calls `buildElement` w/o `ctx` (`:3051`) | `<exercise>` without id silently dropped; fallback loses figure-tracking ctx | `[fix]` |
+| **A2-a** `--allow-en-fallback` disables residue run-wide | `cnxml-inject.js:3429` `checkResidue = lang!=='en' && !allowEnFallback` (run-scope) | One fallback module silences residue detection for ALL modules in the run | `[fix]` per-module signal |
+| **A2-b** missing translation aborts whole chapter | `:3338` try wraps loop, `:3214` throw → `:3525` `exit(1)`; residue-report write `:3505` never reached | A partially-translated chapter fails entirely + no residue manifest written | `[fix]` per-module skip-continue + `finally` write |
+| **B3** producer bracket-marker count check | `api-translate.js:263-266` `validateMarkers` counts `<!-- SEG` only, no `[[` per-type | Inline bracket-marker loss/truncation invisible at MT boundary | `[build]` Track B |
+| **B4** term/footnote still lossy `{{ }}` | `cnxml-extract.js:314`(`{{term}}`)/`:381`(`{{fn}}`) | ~2.3% per-call API loss on the highest-volume inline elements; brackets = ~0% | `[build]` Track B |
+| **C4** inject `buildTable` → DOM | `cnxml-inject.js:1956-2013` positional regex (render-side table bug already fixed separately) | Architecture investment; no active bug — fragile for nested/multi-para cells | `[decision]` Track C — invest? |
+| **C3-a** table escapes note/example/exercise | dispatch maps `cnxml-render.js:1435/1561/1635` lack `table`; loud seam logs it (not silent) but renders nothing | 0 real nestings in efnafraedi; **re-check at biology onboarding** | `[build]` Track C (biology-gated) |
+| **D2** HANDLED_INLINE/BLOCK drift | `tools/lib/preintake-checks.js:10-57` hand-maintained mirrors; no shared importable list | Probe over/under-reports when extractor/render add a tag (biology likely trigger) | `[fix]` single-source refactor |
+| **#15** duplicate-seg-ID policy diverges | `seg-markers.cjs:18-37` per-site `first`/`last`; inject=first (`:177`), placeholder/section=last; 185 files have dup IDs | On a duplicated segment, inject vs other tools silently pick different text | `[fix]` converge policy (behavior-changing) |
+| **infra-2** Greynir spellcheck sidecar deploy | code complete (`greynirEngine.js:77` `GREYNIR_URL`, `/spellcheck` returns `enabled:false`); `server/greynir-sidecar/` unshipped | In-editor spellcheck silently disabled until sidecar deployed + env set | `[infra]` lead — worth the Python sidecar? |
+| **decision-1** `residue-report.<track>.json` disposition | written `cnxml-inject.js:3315`; not gitignored, not committed | First inject on any book leaves untracked working-tree dirt | `[decision]` gitignore vs `merge=ours` |
+| **rem-2.2** localized restore parity | remediation roadmap line 69 — `content_versions` is faithful-only | Pass-2 localized content has only `.bak` restore, no UI version history | `[fix]` follow-up |
+| **term-§5 / D5-dup** lifraen zero `<glossary>` | 0 `<glossary>`, 31 `key-terms` in `books/lifraen-efnafraedi/01-source` | `generate-glossary.js` aggregate is empty for organic (subset of D5) | `[build]` folds into D5 |
+
+### 🟢 Low
+| Item | Evidence | What & why | Owner |
+|---|---|---|---|
+| **#30** 429 retry no `Retry-After`/jitter | `malstadur-api.js:113` pure exp-backoff (A4 added backoff, not these) | Thundering-herd unlikely at this scale | `[fix]` |
+| **#29** control-char no retry (asymmetric) | `api-translate.js:478` throws → `:803` per-module catch (module fails, **run continues**) vs truncation retries | Module-level only (claim of process-abort was overstated) | `[fix]` |
+| **C3-b** positioner/`indexOf` convergence | `cnxml-render.js:745-860` ~9 `indexOf` section-level positioners | Optional cleanup; silent-drop class already closed by C3 loud seam | `[fix]` cleanup |
+| **A2-c** server-editor residue surface | not wired in `segmentEditorService.js` (by design; A2 gate lives in inject) | Editors get no live untranslated-EN warning on save | `[fix]` future UX |
+| **stale-render** ~8 stale committed CNXML + ~15 inject failures | session worktree-inject finding (baseline≡current); pre-#179..#183 renderer | Stale CNXML lag the renderer; ~15 chapters fail (A2 gate / missing translations) | `[process]` re-render+sync PR; re-translate or grandfather |
+| **term-§4** inline `dfn` w/o glossary match | term-system audit §4 (e.g. §6.1 `bylgjulengd`, `tíðni`) | Source `<glossary>` never defined them → no hover lookup | `[content]` add to source/supplement |
+| **fixlist-A2** fnref-N collision (latent) | deferred-fixlist — not currently occurring | Only if a compiled exercises page gains ≥2 footnote-bearing sections | `[latent]` re-number page-globally if triggered |
+| **decision-2** table-as-image transcription | m68852/m68854 (efnafraedi ch21) | Tables shipped as images (alt suffices); manual expert transcription not automatable | `[decision]` lead |
+| **low-cli** `--book` rejects `__e2e-fixture__` | `parseArgs.js:18` pattern rejects leading `_` | Latent — only if a CLI tool is run with `--book __e2e-fixture__` | `[fix]` low |
+| **throughput** deferred enhancements | roadmap `2026-06-12` `[ ]`: 2.4b review-dedup v2, 3.3 term-cat→glossary link, 3.4 glossary-export freshness on approve, 5.2 reviewer daily digest, 5.4 feedback routing | All deliberately deferred; build after adoption proves the need | `[build]` lead sign-off |
+| **rem-minor** remediation follow-ups | 2.4 unified Pass-1 dashboard; 3.3 per-chapter SLA aging; 4.1 full editor URL rewrite (`?module=`) | Deliberately deferred polish | `[fix]` follow-ups |
+
+### ⚪ Info / deferred-by-design
+| Item | Evidence | Note |
+|---|---|---|
+| **#38** ~500 lines dead legacy string builders | `cnxml-inject.js` `buildExample`/`buildExercise`/`buildNote` (2189/2501/2709), exported `:3552-3556` | Superseded by `*Dom`; comparison tests depend on the export → delete with the tests | 
+| **B2-math** `restoreMathMarkers` upstream-move | `cnxml-inject.js:572,3403`; no `[[MATH:N]]` count in `api-translate.js` | Works correctly; deferred design move (per-segment count check upstream) |
+
+### 🔗 Cross-repo `[vefur]` (owned by namsbokasafn-vefur — fix THERE, do not edit here)
+Tracked in vefur's memory/plans per the cross-repo protocol; listed here only so this plan is complete:
+- **[vefur] 14 cross-book CSS gaps** (`css-contract.test.js KNOWN_GAPS` + vefur memory `css-cross-book-gaps`) + **D4 embed-wrapper CSS** (`.embed-responsive`/`.embed-fallback`) + per-book **note-class vocabulary** + a shared **class manifest**.
+- **[vefur] live-QA regressions:** **I** duplicate learning-objectives block (visible on most pages — higher priority), **J** `/{book}/markmid` redirects to front page, **H** sticky banner hides anchor targets (`scroll-padding-top`), **E** empty-glossary TOC suppression, **G** interactive-appendix one-click, **F** cross-repo confirmations.
+
+### 🧭 Process / adoption (non-code — lead)
+- **Adoption is the binding throughput constraint:** only ~3 faithful modules applied; concordance/TM/repetition aids stay empty until editors review Pass-1 at volume. *(Priority 1 per `2026-06-24-next-session-roadmap.md`.)*
+- **Lead decisions pending:** C4 (invest in the inject DOM port?), table-as-image transcription, grandfather-vs-retranslate the ~15 inject failures, Greynir operational cost.
+
+### Suggested sequencing (cheapest-impactful first)
+1. **a11y-2 assistive MathML** (🟠, one file + re-render) · **decision-1 residue-report** (🟡, prevents tree dirt) · **B3** (🟡, S).
+2. **A2-a/A2-b** residue robustness (🟡 `[fix]` pair) · **B4** (🟡, M) · **#15** convergence (🟡, needs a policy decision).
+3. Biology content production (foundation done) → re-check **C3-a** when biology injects.
+4. Organic onboarding wave: **D3** (🔴) + **D5** (🟠) together.
+5. Batch the 🟢/⚪ tech-debt (`#43 #37 #30 #29 #38`, C3-b) as a cleanup PR or two.
+6. Lead/infra parallel: **process-1 manual QA**, **infra-1 sync token**, **infra-2 Greynir deploy**, **adoption**.
