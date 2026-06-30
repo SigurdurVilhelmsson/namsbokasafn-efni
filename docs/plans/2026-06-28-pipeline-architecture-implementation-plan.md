@@ -492,7 +492,7 @@ in their item blocks — this is the consolidated scan list. Append, don't prune
 curated subset. The findings below are acknowledged but have **no scheduled plan item** — re-triage
 before biology onboarding (they were seen in the audit but aren't on any to-do list). Finding numbers =
 1-based array index; titles given for stability.
-- **#14 [HIGH] SEG-marker parser divergence — ✅ PARSER UNIFICATION DONE (PR #TBD, branch `feat/seg-markers-unification`).**
+- **#14 [HIGH] SEG-marker parser divergence — ✅ PARSER UNIFICATION DONE (PR #196, branch `feat/seg-markers-unification`).**
   Was **7** copies of `parseSegments` (not 2) + ad-hoc regexes. Consolidated into one `tools/lib/seg-markers.cjs`
   (CommonJS so the CJS server *and* ESM tools both consume it; interop verified). **Characterization-tested
   no-op:** lib reproduces all 3 old parser variants byte-identically across 523 corpus files. Duplicate-policy
