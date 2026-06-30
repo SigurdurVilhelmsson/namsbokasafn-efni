@@ -23,8 +23,10 @@
 
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import mammoth from 'mammoth';
 import { parseSegmentRecords } from './lib/seg-markers.cjs';
+import { writeProvenance } from './lib/provenance.js';
 
 // =====================================================================
 // ARGUMENT PARSING
@@ -782,7 +784,7 @@ function alignBlocks(docxBlocks, enSegments, moduleMetadata, chapter, verbose = 
  * @param {Map} moduleMetadata - Module metadata
  * @param {boolean} dryRun - Don't write files
  */
-function writeSegmentFiles(alignments, booksDir, chapter, moduleMetadata, dryRun) {
+export function writeSegmentFiles(alignments, booksDir, chapter, moduleMetadata, dryRun) {
   const chapterDir = `ch${String(chapter).padStart(2, '0')}`;
   const outputDir = path.join(booksDir, '02-mt-output', chapterDir);
 
@@ -823,6 +825,8 @@ function writeSegmentFiles(alignments, booksDir, chapter, moduleMetadata, dryRun
     } else {
       fs.writeFileSync(filePath, content, 'utf-8');
       console.log(`  Written: ${filePath} (${moduleAlignments.length} segments)`);
+      // B2: stamp producer provenance next to the segment file.
+      writeProvenance(outputDir, moduleId, { tool: 'docx-import' });
     }
   }
 }
@@ -1057,7 +1061,10 @@ async function main() {
   }
 }
 
-main().catch((err) => {
-  console.error('Error:', err.message);
-  process.exit(1);
-});
+// Only run when executed directly
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  main().catch((err) => {
+    console.error('Error:', err.message);
+    process.exit(1);
+  });
+}
