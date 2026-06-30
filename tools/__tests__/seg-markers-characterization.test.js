@@ -75,6 +75,12 @@ describe('seg-markers characterization (no-op proof on real corpus)', () => {
     expect(files.length).toBeGreaterThan(100);
   });
 
+  it('corpus contains at least 1000 markers (guards against vacuous equality passes on empty corpus)', () => {
+    let totalMarkers = 0;
+    for (const f of files) totalMarkers += parseSegmentsMap(fs.readFileSync(f, 'utf8')).size;
+    expect(totalMarkers).toBeGreaterThan(1000);
+  });
+
   it('parseSegmentsMap(first) matches old Pattern-A-first on every file', () => {
     const diffs = files.filter((f) => {
       const c = fs.readFileSync(f, 'utf8');
@@ -97,6 +103,9 @@ describe('seg-markers characterization (no-op proof on real corpus)', () => {
     expect(diffs).toEqual([]);
   });
   it('parseSegmentRecords content matches old Pattern-B slice on every file', () => {
+    // Pattern-A (lookahead keep-all) coincides with the lib's marker-based strict slice on this
+    // corpus: the 54k-marker proof rules out stray non-marker "<!-- SEG:" prefixes, so the strict
+    // golden validly characterizes docx-import's old Pattern-A behavior too.
     const diffs = files.filter((f) => {
       const c = fs.readFileSync(f, 'utf8');
       const recs = parseSegmentRecords(c);

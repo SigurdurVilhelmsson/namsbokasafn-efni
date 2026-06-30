@@ -65,4 +65,8 @@ describe('SEG_MARKER', () => {
   it('is a global regex', () => {
     expect(SEG_MARKER.flags).toContain('g');
   });
+  it('lastIndex stays 0 after parseSegmentsMap (exported regex never mutated)', () => {
+    parseSegmentsMap('<!-- SEG:m1:para:p1 -->\nHello');
+    expect(SEG_MARKER.lastIndex).toBe(0);
+  });
 });

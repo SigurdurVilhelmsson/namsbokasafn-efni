@@ -49,7 +49,7 @@ import { compareTagCounts } from './cnxml-fidelity-check.js';
 import { extractGlossary } from './lib/cnxml-parser.js';
 import { updateTranslationErrors } from './lib/update-translation-errors.js';
 import { detectResidue, upsertResidueModule } from './lib/residue-check.js';
-import { parseSegmentsMap } from './lib/seg-markers.cjs';
+import { SEG_MARKER, parseSegmentsMap } from './lib/seg-markers.cjs';
 import {
   parseCnxmlFragment,
   serializeCnxmlFragment,
@@ -172,9 +172,7 @@ Examples:
  * @returns {Map<string, string>} Map of segment ID to text
  */
 function parseSegments(content) {
-  const all = [...content.matchAll(new RegExp('<!--\\s*SEG:([^\\s]+?)\\s*-->', 'g'))].map(
-    (m) => m[1]
-  );
+  const all = [...content.matchAll(new RegExp(SEG_MARKER.source, 'g'))].map((m) => m[1]);
   const segments = parseSegmentsMap(content); // first-wins
   const duplicateCount = all.length - segments.size;
   if (duplicateCount > 0) {
