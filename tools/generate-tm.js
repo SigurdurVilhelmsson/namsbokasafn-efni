@@ -29,6 +29,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, requireBook } from './lib/parseArgs.js';
+import { parseSegmentsMap } from './lib/seg-markers.cjs';
 
 const TOOL_NAME = 'generate-tm.js';
 const TOOL_VERSION = '1.0';
@@ -37,39 +38,14 @@ let BOOKS_DIR = path.join(fileURLToPath(new URL('..', import.meta.url)), 'books'
 
 // ─── Segment parsing ─────────────────────────────────────────────────
 
-// Capture the full segment id (module:type:elementId) as one token.
-const SEG_MARKER_REGEX = /<!--\s*SEG:([\w]+:[\w-]+:[\w-]+)\s*-->/g;
-
 /**
- * Parse a segment file into a Map of segmentId → text.
- *
- * Marker-based (not line-based): a segment's content runs from its marker to
- * the next marker regardless of newlines, matching segmentParser.js (post-#96)
- * and tolerating MT output that glues a marker onto the previous line.
- * First occurrence of a duplicate id wins.
- *
+ * Parse a segment file into a Map of segmentId → text (first-wins).
+ * Delegates to shared seg-markers.cjs (audit #14).
  * @param {string} content - Raw file content
  * @returns {Map<string, string>}
  */
 function parseSegments(content) {
-  const segments = new Map();
-  if (!content) return segments;
-
-  let currentId = null;
-  let contentStart = 0;
-
-  for (const match of content.matchAll(SEG_MARKER_REGEX)) {
-    if (currentId !== null && !segments.has(currentId)) {
-      segments.set(currentId, content.slice(contentStart, match.index).trim());
-    }
-    currentId = match[1];
-    contentStart = match.index + match[0].length;
-  }
-  if (currentId !== null && !segments.has(currentId)) {
-    segments.set(currentId, content.slice(contentStart).trim());
-  }
-
-  return segments;
+  return parseSegmentsMap(content);
 }
 
 // ─── Marker stripping & text cleanup ──────────────────────────────────

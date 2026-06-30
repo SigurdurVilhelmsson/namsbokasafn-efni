@@ -61,6 +61,18 @@ Second paragraph.`;
     expect(segments[0].content).toBe('First paragraph.');
     expect(segments[1].segmentId).toBe('m68663:para:fs-id002');
     expect(segments[1].content).toBe('Second paragraph.');
+
+    // Pre-normalization proof: mustache→comment conversion must yield identical records to
+    // a native comment-format input (the shared lib is HTML-comment-only; mustache is legacy).
+    const commentEquiv = `<!-- SEG:m68663:para:fs-id001 -->
+First paragraph.
+
+<!-- SEG:m68663:para:fs-id002 -->
+Second paragraph.`;
+    const fromComment = parseSegments(commentEquiv);
+    expect(segments.map((s) => ({ segmentId: s.segmentId, content: s.content }))).toEqual(
+      fromComment.map((s) => ({ segmentId: s.segmentId, content: s.content }))
+    );
   });
 
   it('handles mixed marker formats', () => {

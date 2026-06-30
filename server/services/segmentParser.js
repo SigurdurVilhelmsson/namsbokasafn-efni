@@ -15,6 +15,7 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const { parseSegmentRecords } = require('../../tools/lib/seg-markers.cjs');
 
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
 let BOOKS_DIR = path.join(PROJECT_ROOT, 'books');
@@ -100,49 +101,13 @@ function normalizeTermMarkers(enContent, isContent) {
  * @returns {Array<{segmentId: string, moduleId: string, segmentType: string, elementId: string, content: string}>}
  */
 function parseSegments(content) {
-  const segments = [];
-
-  // Marker-based parse (not line-based): the content of a segment is everything
-  // between its marker and the next marker, regardless of newlines. This matches
-  // the injection tool's parser and tolerates malformed MT output where a
-  // segment's text and the following marker share a line, e.g.
-  //   <!-- SEG:…:note-title:… -->
-  //   Some title<!-- SEG:…:para:… -->
-  // A line-based parser dropped the pre-marker text ("Some title") and emitted an
-  // empty segment, which made injection skip the whole module.
-  const markerRegex = new RegExp(SEG_MARKER_REGEX.source, 'g');
-  let current = null;
-  let contentStart = 0;
-
-  for (const match of content.matchAll(markerRegex)) {
-    // Close out the previous segment: its content runs up to this marker.
-    if (current) {
-      current.content = normalizeWraps(content.slice(contentStart, match.index).trim());
-      segments.push(current);
-    }
-
-    // Extract from whichever capture group matched (HTML comment or mustache)
-    const moduleId = match[1] || match[4];
-    const segmentType = match[2] || match[5];
-    const elementId = match[3] || match[6];
-
-    current = {
-      segmentId: `${moduleId}:${segmentType}:${elementId}`,
-      moduleId,
-      segmentType,
-      elementId,
-      content: '',
-    };
-    contentStart = match.index + match[0].length;
-  }
-
-  // Don't forget the last segment
-  if (current) {
-    current.content = normalizeWraps(content.slice(contentStart).trim());
-    segments.push(current);
-  }
-
-  return segments;
+  // Normalize legacy mustache markers ({{SEG:...}}) to HTML comment format before parsing.
+  // The shared lib is HTML-comment-only; mustache only appears in legacy backup files.
+  const normalized = content.replace(/\{\{SEG:([^}]+)\}\}/g, '<!-- SEG:$1 -->');
+  return parseSegmentRecords(normalized).map((r) => ({
+    ...r,
+    content: normalizeWraps(r.content),
+  }));
 }
 
 /**

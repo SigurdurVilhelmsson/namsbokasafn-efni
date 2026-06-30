@@ -8,6 +8,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import { parseSegmentsMap } from './seg-markers.cjs';
 
 const REPO_ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', '..');
 
@@ -85,17 +86,7 @@ export function slugify(title) {
  * @returns {Map<string, string>} Map of segment ID to text
  */
 function parseSegments(content) {
-  const segments = new Map();
-  const pattern = /<!-- SEG:([^\s]+) -->[ \t]*\n?([\s\S]*?)(?=<!-- SEG:|$)/g;
-
-  let match;
-  while ((match = pattern.exec(content)) !== null) {
-    const id = match[1];
-    const text = match[2].trim();
-    segments.set(id, text);
-  }
-
-  return segments;
+  return parseSegmentsMap(content, { duplicates: 'last' });
 }
 
 /**

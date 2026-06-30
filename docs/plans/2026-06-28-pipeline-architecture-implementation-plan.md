@@ -492,12 +492,21 @@ in their item blocks — this is the consolidated scan list. Append, don't prune
 curated subset. The findings below are acknowledged but have **no scheduled plan item** — re-triage
 before biology onboarding (they were seen in the audit but aren't on any to-do list). Finding numbers =
 1-based array index; titles given for stability.
-- **#14 [HIGH, blocks_next_book] SEG-marker parser divergence** — two `parseSegments` impls + 4–5 distinct
-  SEG-marker regexes across inject/editor/split (first-vs-last-match, comment-vs-mustache); caused the
-  PR #96 drift. Unify into one `tools/lib/seg-markers.js`. **→ folded into the Biology onboarding required
-  set (2026-06-29).** *Cluster:* **#15** [MED] duplicate-seg-ID policy
-  (inject first-wins / editor last-wins / counter counts-all); **#18** [LOW] whitespace-tolerance mismatch;
-  **#19** [LOW] 67 orphan `*-segments(b|c|d).en.md` legacy mustache files half the pipeline can't parse.
+- **#14 [HIGH] SEG-marker parser divergence — ✅ PARSER UNIFICATION DONE (PR #196, branch `feat/seg-markers-unification`).**
+  Was **7** copies of `parseSegments` (not 2) + ad-hoc regexes. Consolidated into one `tools/lib/seg-markers.cjs`
+  (CommonJS so the CJS server *and* ESM tools both consume it; interop verified). **Characterization-tested
+  no-op:** lib reproduces all 3 old parser variants byte-identically across 523 corpus files. Duplicate-policy
+  **preserved per-site** via a `duplicates:'first'|'last'` option (185 corpus files have dup IDs, so it's
+  exercised — convergence is the separate #15 enforcement step, NOT done here). #18 whitespace absorbed (canonical
+  regex is the tolerant superset). **Evidence corrected the plan's premise:** parser divergence is INERT on
+  biology (0/13 files differ) — this is hygiene/drift-prevention, it does **NOT** unblock biology routing.
+  - **↳ `isApiTranslated` routing mis-route is the REAL biology risk, RE-SCOPED as its own item** (NOT #14):
+    the `{{i/b/term/fn}}` content-sniff (`cnxml-inject.js:3361`) returns false for low-marker biology modules
+    (9/13) → routes them through legacy web-UI marker-repair. Latent today (those 9 are marker-less prose so the
+    repair no-ops), but a real risk for a biology module bearing `[[sub:]]`/`[[sup:]]`/`[[i:]]` without `{{}}`.
+    The clean fix needs **producer provenance (B2)** — A1's manifest carries no `tool`/`track`. Do with/after B2.
+  - *Still open cluster:* **#15** duplicate-seg-ID policy convergence (the behavior-changing enforcement PR);
+    **#19** [LOW] orphan `*-segments(b|c|d).en.md` legacy files cleanup.
 - **#33 [HIGH, blocks_next_book] inject list-flattening divergence** — `buildExampleDom` PRESERVES nested
   lists; `buildExerciseDom`/`buildNoteDom` DELETE them (`cnxml-inject.js:2597`/`:2854`). Unify on the
   example approach. (Distinct from C4 table-DOM and the render-side C-track work.) **→ folded into the
