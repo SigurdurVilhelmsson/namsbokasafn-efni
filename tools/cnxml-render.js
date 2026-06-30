@@ -2021,16 +2021,20 @@ function renderGlossary(content, context) {
   const definitions = extractNestedElements(content, 'definition');
   for (const def of definitions) {
     const id = def.id || null;
-    const termMatch = def.content.match(/<term>([^<]*)<\/term>/);
+    // Use [\s\S]*? so terms containing <m:math> children are captured.
+    const termMatch = def.content.match(/<term>([\s\S]*?)<\/term>/);
     const meaningMatch = def.content.match(/<meaning[^>]*>([\s\S]*?)<\/meaning>/);
 
     if (termMatch && meaningMatch) {
-      const term = termMatch[1].trim();
+      const termInner = termMatch[1].trim();
+      const termHtml = processInlineContent(termInner, context);
       const meaning = processInlineContent(meaningMatch[1], context);
 
-      context.terms[term] = stripTags(meaningMatch[1]).trim();
+      // Plain-text key for context.terms (used by reader for tooltips)
+      const termKey = stripTags(termInner).trim();
+      context.terms[termKey] = stripTags(meaningMatch[1]).trim();
 
-      lines.push(`    <dt${id ? ` id="${escapeAttr(id)}"` : ''}>${escapeHtml(term)}</dt>`);
+      lines.push(`    <dt${id ? ` id="${escapeAttr(id)}"` : ''}>${termHtml}</dt>`);
       lines.push(`    <dd>${meaning}</dd>`);
     }
   }
@@ -2529,13 +2533,15 @@ function extractChapterGlossary(chapter, modules, track) {
 
     const defs = extractNestedElements(glossaryMatch[1], 'definition');
     for (const def of defs) {
-      const termMatch = def.content.match(/<term>([^<]*)<\/term>/);
+      // Use [\s\S]*? so terms containing <m:math> or <emphasis> children are captured.
+      const termMatch = def.content.match(/<term>([\s\S]*?)<\/term>/);
       const meaningMatch = def.content.match(/<meaning[^>]*>([\s\S]*?)<\/meaning>/);
 
       if (termMatch && meaningMatch) {
         definitions.push({
           id: def.id || null,
-          term: termMatch[1].trim(),
+          term: stripTags(termMatch[1]).trim(), // plain text for sort / termsMap key
+          termContent: termMatch[1].trim(), // raw inner HTML for rendering
           meaningContent: meaningMatch[1],
           moduleId,
         });
@@ -2564,10 +2570,9 @@ function renderCompiledGlossary(chapter, definitions, context) {
     lines.push('  <dl>');
 
     for (const def of definitions) {
+      const termHtml = processInlineContent(def.termContent || def.term, context);
       const meaning = processInlineContent(def.meaningContent, context);
-      lines.push(
-        `    <dt${def.id ? ` id="${escapeAttr(def.id)}"` : ''}>${escapeHtml(def.term)}</dt>`
-      );
+      lines.push(`    <dt${def.id ? ` id="${escapeAttr(def.id)}"` : ''}>${termHtml}</dt>`);
       lines.push(`    <dd>${meaning}</dd>`);
     }
 
@@ -4136,6 +4141,7 @@ export {
   renderBlockChildrenInOrder,
   renderCnxmlToHtml,
   renderCompiledExercises,
+  renderCompiledGlossary,
   buildAppendixIdMap,
   rollbackWrittenFiles,
   escapeJsonForScript,
