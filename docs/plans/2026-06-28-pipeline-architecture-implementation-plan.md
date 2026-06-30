@@ -564,6 +564,7 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
 - *Tracked separately (NOT this plan, do not duplicate):* accessibility findings — assistive MathML for
   equations + figure alt-text translation pipeline — live in
   `docs/plans/2026-06-25-accessibility-alt-math-handoff.md` and memory `accessibility-alt-math-pending.md`.
+  **a11y-2 (assistive MathML) is now DONE** (branch `feat/a11y-2-assistive-mathml`). Out-of-scope issues found during a11y-2 implementation: none.
 
 **From D2 (pre-intake probe) design — `docs/plans/2026-06-29-d2-preintake-probe-design.md` § Out of scope:**
 - **D2 check-5 `HANDLED_INLINE`/`HANDLED_BLOCK` drift risk** — the probe hand-maintains mirrors of the
@@ -613,7 +614,7 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
 |---|---|---|---|
 | **D5** organic/microbiology empty key-terms | lifraen 31 `key-terms` / 0 `<glossary>`, render fallback `cnxml-render.js:3706` emits EN term names; orverufraedi 0/0 → empty "Lykilhugtök" | Key-terms page ships English (organic) or blank (microbiology) | `[build]` Track D — blocks organic+microbiology |
 | **a11y-1** figure `alt` text English | `cnxml-extract.js:202,1018,1061` never segments `alt`; ~1 572 EN `alt=` across 215 published files | Screen-reader gap across ALL published content; needs extract→MT→review + backfill | `[build]` (= deferred-fixlist B / a11y handoff Item 1) |
-| **a11y-2** assistive MathML missing | `tools/lib/mathjax-render.js:12` SVG-only, no `mjx-assistive-mml` sibling | Equations inaccessible to screen readers; one-file fix + re-render | `[fix]` a11y handoff Item 2 (do first — cheap) |
+| ✅ DONE **a11y-2** assistive MathML missing | `tools/lib/mathjax-render.js:12` SVG-only, no `mjx-assistive-mml` sibling | Equations inaccessible to screen readers; one-file fix + re-render | `[fix]` a11y handoff Item 2 (branch `feat/a11y-2-assistive-mathml`; self-contained inline-hidden `<math>` sibling; no vefur leg; delivery awaits a re-render+sync) |
 | **infra-1** content-sync Action fails silently | `.github/workflows/sync-content.yml:37` needs unset `VEFUR_DEPLOY_TOKEN`; every push to `05-publication/**` no-ops | Auto-publish to vefur is dead; sync is manual `node scripts/sync-content.js` | `[infra]` set the token or accept manual |
 | **process-1** remediation manual QA §0–§5 | `docs/plans/2026-06-10-qa-checklist.md` — 👁/◐ gates unwalked since 2026-06-12 | Authz/rollback/enforcement/XSS/page-auth gates never verified on a running server | `[process]` lead — gates server deploys |
 
@@ -664,13 +665,14 @@ Reconciled against vefur memory — only the CSS work is genuinely open:
 - **[vefur] 14 cross-book CSS gap classes** (🟡, biology note-variants + `.span-all` prioritized; `.note-interactive` quick win) — coordinated with efni `KNOWN_GAPS` + `VEFUR_CONTRACT=1` css-contract; per-book **note-class vocabulary** + a shared **class manifest** fold into this.
 - *Already DONE in vefur (NOT open — corrected from an earlier draft):* live-QA **I/J/H/G** fixed & merged (vefur PR #164; J's nginx side #166).
 - *Reclassified efni-side (NOT vefur):* fixlist **E** "empty-glossary TOC suppression" = stale efni-built `glossary.json`/`index.json` aggregates (vefur memory `glossary-aggregates-stale`) → folds into the glossary/**D5** work above. **F** cross-repo confirmations = resolved.
+- *a11y-2 (assistive MathML) shipped self-contained — no vefur CSS needed (distinct from D4 embed CSS, still open).*
 
 ### 🧭 Process / adoption (non-code — lead)
 - **Adoption is the binding throughput constraint:** only ~3 faithful modules applied; concordance/TM/repetition aids stay empty until editors review Pass-1 at volume. *(Priority 1 per `2026-06-24-next-session-roadmap.md`.)*
 - **Lead decisions pending:** C4 (invest in the inject DOM port?), table-as-image transcription, grandfather-vs-retranslate the ~15 inject failures, Greynir operational cost.
 
 ### Suggested sequencing (cheapest-impactful first)
-1. **a11y-2 assistive MathML** (🟠, one file + re-render) · **decision-1 residue-report** (🟡, prevents tree dirt) · **B3** (🟡, S).
+1. ✅ ~~**a11y-2 assistive MathML**~~ (done — branch `feat/a11y-2-assistive-mathml`) · **decision-1 residue-report** (🟡, prevents tree dirt) · **B3** (🟡, S).
 2. **A2-a/A2-b** residue robustness (🟡 `[fix]` pair) · **B4** (🟡, M) · **#15** convergence (🟡, needs a policy decision).
 3. Biology content production (foundation done) → re-check **C3-a** when biology injects.
 4. Organic onboarding wave: **D3** (🔴) + **D5** (🟠) together.
