@@ -507,7 +507,7 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
     The clean fix needs **producer provenance (B2)** — A1's manifest carries no `tool`/`track`. Do with/after B2.
   - *Still open cluster:* **#15** duplicate-seg-ID policy convergence (the behavior-changing enforcement PR);
     **#19** [LOW] orphan `*-segments(b|c|d).en.md` legacy files cleanup.
-- **#33 [HIGH] inject list-flattening divergence — ✅ DONE (PR #TBD, branch `fix/inject-list-flatten-unify`).**
+- **#33 [HIGH] inject list-flattening divergence — ✅ DONE (PR #197, branch `fix/inject-list-flatten-unify`).**
   One `paraHasFlattenedList` helper now serves all three DOM builders; `buildExerciseDom`/`buildNoteDom`
   **preserve** a `<list>` flattened into a math-bearing `<para>` (was `removeChild`-deleted), matching
   `buildExampleDom` (byte-identical no-op there). Characterization tests prove preserve + example no-op;
