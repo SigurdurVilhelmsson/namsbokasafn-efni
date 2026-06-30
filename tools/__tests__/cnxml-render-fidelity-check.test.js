@@ -9,7 +9,11 @@
  */
 
 import { describe, it, expect } from 'vitest';
-import { checkChapter, htmlShapeHistogram } from '../cnxml-render-fidelity-check.js';
+import {
+  checkChapter,
+  htmlShapeHistogram,
+  identityDiffChapter,
+} from '../cnxml-render-fidelity-check.js';
 
 // A minimal but representative "chapter": one injected CNXML module + one
 // produced HTML page. Counts reconcile: 1 figure/image, 1 em, 1 strong,
@@ -89,8 +93,6 @@ describe('render-fidelity check — dropped equation (the bug class A3 targets)'
     ).toBe(true);
   });
 });
-
-import { identityDiffChapter } from '../cnxml-render-fidelity-check.js';
 
 const M = '<m:math xmlns:m="http://www.w3.org/1998/Math/MathML"><m:mi>x</m:mi></m:math>';
 const ASSIST = '<math class="assistive-mathml"><mi>x</mi></math>';

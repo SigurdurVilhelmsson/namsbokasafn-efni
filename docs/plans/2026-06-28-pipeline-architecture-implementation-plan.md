@@ -128,7 +128,7 @@ roadmap (Tracks A→D) into ordered, individually-shippable work items.
   Task 1 of `fix/a3-render-fidelity-recovery`) revealed these were really **22 math + 2 image drops** across
   3 render-path root causes — all fixed; whole-book oracle now reports **0 genuine-math-drop / 0 image-drop**:
   - **~17 eq + ch13 ICE-table image (`renderList`):** block equation/media children of list items were
-    silently dropped (Task 2 — `renderList` now dispatches block children via `renderBlockChildrenInOrder`).
+    silently dropped (Task 2 — `renderList` now renders block children in source order via a DOM direct-child walk (`parseCnxmlFragment` + `nodeType===1`), reusing `renderEquation`/`renderMedia`).
   - **5 math (`renderGlossary` + compiled-keyterms path):** inline math inside glossary `<term>`/`<meaning>`
     was passed through as raw text instead of rendered MathJax markup (Task 3).
   - **1 appendix image = INTENTIONAL:** appendix-A periodic table `<image>` → the rendered page serves a
