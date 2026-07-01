@@ -575,6 +575,12 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
     `config.js` missing-secret warning, not this). The scary framing in the original (d) was wrong. **Lead
     chose the run-once migration-ledger fix** (schema_migrations table + backfill for existing DBs) — its own
     PR, separate from d1.
+    **(f) [MED] `renderService.test.js` liffraedi embed-mapping test fails locally but passes in CI** —
+    "GREEN — renderCnxmlToHtml … embed-responsive iframe … from liffraedi-2e mapping" fails on clean `main`
+    locally (`embedMap[BIOLOGY_EMBED_SRC]` not `ok`) yet CI's `test` job is green. Local/CI discrepancy —
+    likely a stale/local biology `embed-mapping.json` vs the committed one, or an env-dependent read. Unrelated
+    to migrations; found while running the full suite for the idempotency PR. Needs its own look (which copy is
+    authoritative); until then the local `npm test` gate has 1 red here that CI doesn't.
     **(e) [LOW/hygiene] stale generated docs** — `npm run docs:generate` produces uncommitted diffs in
     `docs/_generated/routes.md` + `tools.md` (propagation routes, term-mining `/mine*` reorder, `import-mt`
     removal — drift from earlier PRs that never regenerated). The `docs-check` job only runs on
