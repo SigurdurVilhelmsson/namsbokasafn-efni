@@ -35,4 +35,13 @@ describe('scanSegmentsForResidue', () => {
     expect(out.exact).toEqual([]);
     expect(out.warnings).toEqual([]);
   });
+
+  it('flags a high-overlap-but-not-exact segment as a ratio warning', () => {
+    const en = seg('m1:para:1', 'The reaction reaches equilibrium quickly indeed.');
+    const is = seg('m1:para:1', 'The reaction reaches equilibrium quickly.');
+    const out = scanSegmentsForResidue(en, is);
+    expect(out.exact).toEqual([]);
+    expect(out.warnings).toEqual([{ segmentId: 'm1:para:1', ratio: expect.any(Number) }]);
+    expect(out.warnings[0].ratio).toBeGreaterThanOrEqual(0.7);
+  });
 });

@@ -30,7 +30,21 @@ const JSON_OPTION = { name: 'json', flags: ['--json'], type: 'boolean', default:
 
 function main() {
   const args = parseArgs(process.argv.slice(2), [BOOK_OPTION, CHAPTER_OPTION, JSON_OPTION]);
+
+  if (args.help) {
+    console.log(
+      'Usage: node tools/scan-residue.js --book <slug> [--chapter N|appendices] [--json]\n' +
+        'Read-only EN-residue scan over 02-for-mt x 02-mt-output. Prints a report; --json for machine output.'
+    );
+    return;
+  }
+
   requireBook(args);
+
+  if (args.chapter !== null && args.chapter !== 'appendices' && Number.isNaN(args.chapter)) {
+    console.error('Error: --chapter must be a number or "appendices"');
+    process.exit(1);
+  }
 
   const forMtRoot = path.join(REPO_ROOT, 'books', args.book, '02-for-mt');
   const mtOutRoot = path.join(REPO_ROOT, 'books', args.book, '02-mt-output');
