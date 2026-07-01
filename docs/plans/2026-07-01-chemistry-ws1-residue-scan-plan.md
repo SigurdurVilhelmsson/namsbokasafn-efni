@@ -268,7 +268,7 @@ git commit -m "feat(residue): read-only scan-residue CLI over 02-for-mt x 02-mt-
 
 - [ ] **Step 1: Run the whole-book scan and capture the report**
 
-Run: `node tools/scan-residue.js --book efnafraedi-2e --json > /tmp/claude-1000/-home-siggi-dev-repos-namsbokasafn-efni/8bcae3be-cc99-4de9-8610-76dd4a379997/scratchpad/chem-residue.json ; node tools/scan-residue.js --book efnafraedi-2e`
+Run: `node tools/scan-residue.js --book efnafraedi-2e --json > /tmp/chem-residue.json ; node tools/scan-residue.js --book efnafraedi-2e`
 Expected: a full report. Note `modulesMissingEn` — chemistry has 149 modules with MT output; a handful of non-`m*` metadata files may lack siblings and are ignorable.
 
 - [ ] **Step 2: Classify the flagged segments**
