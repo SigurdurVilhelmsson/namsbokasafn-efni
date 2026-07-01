@@ -39,6 +39,7 @@ const STRUCTURAL_CLASSES = new Set([
   'note-default', // Default note type — inherits from .note
   'check-knowledge-answer', // JS-hook marker for the reader's "Sýna svar" reveal toggle (vefur practiceReveal); hiding is vefur-injected, no content.css rule
   'preserved-anchor', // Empty invisible <span> used purely as a deep-link/cross-reference id target; no visual styling needed
+  'assistive-mathml', // a11y-2 visually-hidden <math> sibling for screen readers; hidden via inline style, NO content.css rule by design (vefur Task 3c)
 ]);
 
 // Known gaps: classes emitted by cnxml-render.js but not yet in content.css.
@@ -65,7 +66,7 @@ const KNOWN_GAPS = new Set([
   'note-career', // biology
   'note-visual-connection', // biology
   'note-microbiology', // microbiology
-  'note-interactive', // SHARED 'interactive' note type — quick vefur win (mirror .note-link-to-learning)
+  // note-interactive: styled in vefur content.css (blue tint, mirrors .note-link-to-learning) 2026-06-30 — contract re-armed
   // Book-specific end-of-chapter / section types (unstyled section divs):
   'section-exercises', // organic
   'section-summary', // physics
