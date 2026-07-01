@@ -119,11 +119,21 @@ router.get('/callback', async (req, res) => {
     // Complete authentication
     const { user, token } = await auth.authenticate(code);
 
-    // Set JWT as httpOnly cookie
+    // Set JWT as httpOnly cookie.
+    //
+    // SameSite=Lax (NOT Strict) is required here: this cookie is set during the
+    // Microsoft OAuth callback, and the browser immediately follows a redirect to
+    // '/'. That final hop is part of a redirect chain *initiated by the cross-site
+    // Microsoft origin*, so a Strict cookie would be withheld on the request to '/'
+    // — requirePageAuth() would then bounce the just-logged-in user back to /login
+    // (an infinite-looking login loop; see git history / CLAUDE.md). Lax still
+    // refuses cross-site POST/subresource sends (the CSRF protection that matters,
+    // and our mutating endpoints are all POST) while permitting this top-level GET
+    // return navigation to carry the cookie. Do NOT change back to 'strict'.
     res.cookie('auth_token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict',
+      sameSite: 'lax',
       maxAge: 24 * 60 * 60 * 1000, // 24 hours
       path: '/',
     });
@@ -192,7 +202,7 @@ router.post('/logout', (req, res) => {
   res.clearCookie('auth_token', {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
-    sameSite: 'strict', // match the attributes the cookie was set with
+    sameSite: 'lax', // match the attributes the cookie was set with
     path: '/',
   });
 
