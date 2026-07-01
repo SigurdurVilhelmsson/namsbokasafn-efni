@@ -637,6 +637,24 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
   cross-repo protocol). Per-book launch polish; `note-interactive` is a quick vefur win. Remove from
   `KNOWN_GAPS` as each gets a real rule.
 
+**From chemistry WS1 (EN-residue scan, 2026-07-01 — `docs/plans/2026-07-01-chemistry-ws1-residue-scan-plan.md`):**
+- **A2 `detectResidue` false-positives on chemistry answer-key / formula cells** — the content-word
+  floor (`residue-check.js:48`, alphabetic tokens ≥3 letters) is defeated by **3-letter unit
+  abbreviations** (`amu`, `atm`, `kPa`, `torr`, `bar`, `rem`, `rad`) and **chemical-formula letter
+  clusters** (`CrP`, `HgS`): after `normalizeForComparison` strips digits/symbols, a *correctly-localized*
+  numeric cell (EN `12.01 amu` → IS `12,01 amu`, decimal `.`→`,`) collapses to `amu amu…` on both sides
+  and flags as exact residue. The whole-book chemistry scan produced **24 such false positives** (13
+  modules) + scientist proper-name note-titles (`Dorothy Crowfoot Hodgkin`) — **0 genuine body residues**.
+  Recalibration candidates: a unit/symbol stop-list, or treat a decimal `,`/`.` swap as positive evidence
+  of localization. Low urgency (noise, never wrong content), but it means a residue *gate* would cry wolf
+  on chemistry answer keys — relevant before wiring residue into CI or the editor save path (A2-c). Also
+  bears on biology (species Latin binomials would similarly false-positive). `[fix]` detector calibration.
+- **`requireBook()` resolves `books/<slug>` against `process.cwd()`** — `parseArgs.js:49`
+  (`fs.existsSync(path.join('books', args.book))`) is cwd-relative while every tool's own resource paths
+  are now `import.meta.url`-rooted (#213). Running a `--book` tool from a non-repo-root cwd falsely
+  rejects a valid book. Shared by ~21 tools; masked in prod only by systemd `WorkingDirectory`. Same class
+  as #210/#213/f. `[fix]` own PR (shared-lib change; split from any enforcement).
+
 ---
 
 ## ★ Consolidated Backlog — Follow-ups & Tech-Debt (THE single triage list)
