@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+import os from 'os';
 import { renderEmbedHtml, loadEmbedMapping } from '../lib/embed-mapping.js';
 
 const embedMap = {
@@ -61,5 +62,19 @@ describe('renderEmbedHtml', () => {
 describe('loadEmbedMapping', () => {
   it('returns {} when the embed-mapping.json file does not exist', () => {
     expect(loadEmbedMapping('__nonexistent_slug__')).toEqual({});
+  });
+
+  it('resolves books/ relative to the repo root, not process.cwd() (regression)', () => {
+    // The editorial server starts with cwd=server/, so a cwd-relative path
+    // silently returned {} → embed modules 500'd. From any cwd the committed
+    // mapping must still load. chdir to a dir with no books/ to prove it.
+    const orig = process.cwd();
+    try {
+      process.chdir(os.tmpdir());
+      const map = loadEmbedMapping('liffraedi-2e');
+      expect(Object.keys(map).length).toBeGreaterThan(0);
+    } finally {
+      process.chdir(orig);
+    }
   });
 });

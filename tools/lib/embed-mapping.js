@@ -1,5 +1,12 @@
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Resolve books/ relative to the repo root (this file is <root>/tools/lib/),
+// NOT the process cwd. The editorial server starts with cwd=server/ (via
+// `cd server && npm start`), so a cwd-relative 'books/…' path silently missed
+// the mapping and returned {} → embed modules 500'd in live preview.
+const REPO_ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 
 /** Minimal HTML attribute escape (mirrors render's escapeAttr). */
 function esc(s) {
@@ -12,7 +19,7 @@ function esc(s) {
 
 /** Load a book's committed embed mapping. Returns {} when absent. */
 export function loadEmbedMapping(bookSlug) {
-  const p = path.join('books', bookSlug, 'embed-mapping.json');
+  const p = path.join(REPO_ROOT, 'books', bookSlug, 'embed-mapping.json');
   if (!fs.existsSync(p)) return {};
   return JSON.parse(fs.readFileSync(p, 'utf8'));
 }

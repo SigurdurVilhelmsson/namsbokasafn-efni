@@ -11,6 +11,11 @@
 
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Resolve books/ relative to the repo root (this file is <root>/tools/lib/), not
+// the process cwd, so `requireBook` works regardless of where a CLI tool is run.
+const REPO_ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 
 // ─── Validation patterns ─────────────────────────────────────────────
 
@@ -46,7 +51,7 @@ export function requireBook(args) {
     console.error('Error: --book is required (e.g. --book efnafraedi-2e)');
     process.exit(1);
   }
-  if (!fs.existsSync(path.join('books', args.book))) {
+  if (!fs.existsSync(path.join(REPO_ROOT, 'books', args.book))) {
     console.error(`Error: unknown book "${args.book}" — books/${args.book}/ does not exist`);
     process.exit(1);
   }

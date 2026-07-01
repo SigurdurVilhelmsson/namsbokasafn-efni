@@ -11,6 +11,14 @@
 
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Resolve books/ relative to the repo root (this file is <root>/tools/lib/),
+// NOT the process cwd. The editorial server starts with cwd=server/, so a
+// cwd-relative 'books/…' path would miss every book-config.json → getBookRenderConfig
+// throws → live preview 500s for every book. (Currently masked only because prod's
+// systemd WorkingDirectory happens to be the repo root.)
+const REPO_ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 
 // =====================================================================
 // SHARED CONFIG (all OpenStax books)
@@ -60,7 +68,7 @@ const _fileCache = new Map();
  */
 function readBookConfigFile(bookSlug) {
   if (_fileCache.has(bookSlug)) return _fileCache.get(bookSlug);
-  const p = path.join('books', bookSlug, 'book-config.json');
+  const p = path.join(REPO_ROOT, 'books', bookSlug, 'book-config.json');
   const data = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null;
   _fileCache.set(bookSlug, data);
   return data;

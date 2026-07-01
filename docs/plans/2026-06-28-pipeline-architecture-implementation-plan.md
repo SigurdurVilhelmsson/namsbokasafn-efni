@@ -575,12 +575,17 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
     `config.js` missing-secret warning, not this). The scary framing in the original (d) was wrong. **Lead
     chose the run-once migration-ledger fix** (schema_migrations table + backfill for existing DBs) — its own
     PR, separate from d1.
-    **(f) [MED] `renderService.test.js` liffraedi embed-mapping test fails locally but passes in CI** —
-    "GREEN — renderCnxmlToHtml … embed-responsive iframe … from liffraedi-2e mapping" fails on clean `main`
-    locally (`embedMap[BIOLOGY_EMBED_SRC]` not `ok`) yet CI's `test` job is green. Local/CI discrepancy —
-    likely a stale/local biology `embed-mapping.json` vs the committed one, or an env-dependent read. Unrelated
-    to migrations; found while running the full suite for the idempotency PR. Needs its own look (which copy is
-    authoritative); until then the local `npm test` gate has 1 red here that CI doesn't.
+    **(f) [MED] cwd-relative `books/…` paths in `tools/lib` → live-preview 500 risk — ✅ FIXED.** The
+    `renderService.test.js` "local-fails/CI-passes" was NOT a data issue: `loadEmbedMapping` used
+    `path.join('books', …)` resolved against **process.cwd()**, so it returned `{}` unless run from the repo
+    root (my `cd server && vitest` invocation was the wrong cwd; CI runs from root). But the same pattern bites
+    the **server**: it starts `cd server && npm start` (cwd=server/), so `loadEmbedMapping` (embed modules) AND
+    `book-rendering-config.readBookConfigFile` (EVERY book — `getBookRenderConfig` throws when config missing)
+    would 500 live preview. Currently masked ONLY because prod's systemd `WorkingDirectory` is the repo root —
+    the code shouldn't rely on that. Fixed all three cwd-relative sites (`embed-mapping.js`,
+    `book-rendering-config.js`, `parseArgs.js`) to resolve `books/` via `import.meta.url` (repo root), + a
+    chdir-to-tmp regression test. efnafraedi (live) has no embeds so no live impact today; this unblocks biology
+    embed live-preview. Same *class* as the #210 DB-path bug (cwd/path fragility masked by happenstance env).
     **(e) [LOW/hygiene] stale generated docs** — `npm run docs:generate` produces uncommitted diffs in
     `docs/_generated/routes.md` + `tools.md` (propagation routes, term-mining `/mine*` reorder, `import-mt`
     removal — drift from earlier PRs that never regenerated). The `docs-check` job only runs on
