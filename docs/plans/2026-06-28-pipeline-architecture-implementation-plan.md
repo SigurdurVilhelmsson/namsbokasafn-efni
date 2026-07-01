@@ -555,14 +555,26 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
   - *New out-of-scope finds (surfaced by CI on PR #208 auth-cookie fix 2026-07-01 — NOT #208's job; CI
     credits came back ~2026-07-01 so these red jobs are newly visible, both pre-existing & unrelated to the
     2-line SameSite change):*
-    **(d) [HIGH] fresh-DB migration failures in e2e** — the throwaway `e2e-sessions.db` boots with
-    `ERROR: Migration errors: ["004-terminology: no such column: term_id", "006-user-management: no such
-    column: github_id"]` (logged `This would be a fatal error in production`). Enough schema exists that
-    157/160 e2e pass, but `GET /api/terminology/.../mined-candidates` **500s** (missing `term_id`), failing
-    2 term-mining specs (`terminology.spec.js:623,628`). The failing test is *named* "not shadowed by /:id"
-    but the real cause is the broken migration, not route shadowing. Fresh-build path for migrations 004/006
-    is broken — likely a later migration/schema-build ordering or idempotency regression. **Prod risk:** a
-    truly fresh prod DB could hit the same fatal path. Needs systematic-debugging on the migration runner.
+    **(d1) [HIGH] e2e mined-candidates 500 — ✅ FIXED (PR #209).** `terminology.spec.js:623,628` failed
+    deterministically in CI (both PR & post-merge main runs) but NEVER reproduced locally (isolated, full
+    suite, `--workers=1` all 159-pass). Root cause (found by instrumenting the swallowed catch → deterministic
+    CI printed it): **`termMiningService.js` hardcoded `pipeline-output/sessions.db` instead of
+    `resolveDbPath()`, so it ignored `SESSIONS_DB_PATH`.** Under E2E, migrations built the schema in
+    `e2e-sessions.db` while the service queried the canonical DB → `no such table: mined_term_candidates`.
+    Passed locally because the dev's canonical DB happens to have the table (a silent test-isolation
+    violation — the service was reading the real dev DB during tests); 500'd in CI where no canonical DB
+    exists. **Prod unaffected** (with `SESSIONS_DB_PATH` unset the two paths coincide). Fix = use
+    `resolveDbPath()` (the lone service that didn't); guard `termMiningDbPath.test.js`. Same class as the
+    known `analyticsService.js` eager-DB latent (see memory Test-isolation) — worth a sweep for other
+    hardcoders. The migration errors (d2) were a RED HERRING here — proven not the cause.
+    **(d2) [LOW] migration 004/006 non-idempotency (benign)** — on any migration RE-RUN (e2e does two: seed
+    then boot), `004`'s `CREATE INDEX … terminology_discussions(term_id)` and `006`'s `… users(github_id)`
+    throw `no such column` because later migrations (032 redesign, 022 provider-auth) removed those columns;
+    `CREATE INDEX IF NOT EXISTS` guards the index name, not the column. **Benign** — boot continues, endpoints
+    work, prod logs these 2 lines harmlessly every boot (the "fatal in production" log is a *separate*
+    `config.js` missing-secret warning, not this). The scary framing in the original (d) was wrong. **Lead
+    chose the run-once migration-ledger fix** (schema_migrations table + backfill for existing DBs) — its own
+    PR, separate from d1.
     **(e) [LOW/hygiene] stale generated docs** — `npm run docs:generate` produces uncommitted diffs in
     `docs/_generated/routes.md` + `tools.md` (propagation routes, term-mining `/mine*` reorder, `import-mt`
     removal — drift from earlier PRs that never regenerated). The `docs-check` job only runs on
