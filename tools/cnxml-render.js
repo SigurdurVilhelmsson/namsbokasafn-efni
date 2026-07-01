@@ -1625,6 +1625,13 @@ function renderExercise(exercise, context) {
   attrs.push('class="eoc-exercise"');
   attrs.push(`data-exercise-id="${escapeAttr(id || '')}"`);
   attrs.push(`data-exercise-number="${displayNumber}"`);
+  // Ground-truth answer signal for the reader: true iff this exercise will have
+  // an `.answer-entry` on the answer-key page. Uses the SAME predicate as the
+  // answer-key generator (`<solution id="…">` present) so the two never diverge.
+  // The reader keys "Sjá svar" off this, NOT off number parity (which drifts in
+  // ch12–17 — see docs/handoffs/2026-07-01-exercise-answer-has-answer-signal.md).
+  const hasAnswer = /<solution\s+id="[^"]*">/.test(exercise.content || '');
+  attrs.push(`data-has-answer="${hasAnswer}"`);
 
   lines.push(`<div ${attrs.join(' ')}>`);
 
