@@ -87,6 +87,15 @@ known-clean EN==IS numeric/formula cell (not flagged).
 
 **Reaches readers via:** the WS5 backfill re-render (only if any re-translation happened).
 
+**✅ RESULT (2026-07-01, PR pending):** scanner shipped (`tools/scan-residue.js` + pure
+`tools/lib/residue-scan.js`). Whole-book chemistry scan = **0 genuine body residues** — all 24 body flags
+are false positives (localized-decimal answer keys, chemical formulae, scientist proper-name note-titles,
+unit relations). The only genuine English is the **preface `m68662` (76 segments = OpenStax
+author/contributor attribution)**, which the lead chose to **leave verbatim** (names/institutions don't
+translate; a custom Icelandic *formáli* already exists). **No re-translation; no `02-mt-output` change.**
+Two out-of-scope finds logged to the pipeline plan's register (A2 detector false-positives on ≥3-letter
+units; `requireBook` cwd-relative path).
+
 ## WS2 — Fidelity triage → honest manifest · M · no deps
 
 **Goal:** every remaining fidelity discrepancy is either fixed or **explicitly classified with a
