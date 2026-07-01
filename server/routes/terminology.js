@@ -271,6 +271,10 @@ router.get('/mined-candidates', requireAuth, requireRole(ROLES.HEAD_EDITOR), (re
     const candidates = termMining.listCandidates(book, status ? { status } : {});
     res.json({ book, candidates });
   } catch (err) {
+    // Log server-side (parity with the sibling POST /mine handler). This catch
+    // previously swallowed the error into the response body only, which made a
+    // CI-only 500 here impossible to diagnose from server logs.
+    log.error({ err, book }, 'listCandidates failed');
     res.status(500).json({ error: err.message });
   }
 });

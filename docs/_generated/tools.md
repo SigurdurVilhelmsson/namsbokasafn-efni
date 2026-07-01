@@ -15,27 +15,33 @@
 | Tool | Description |
 |------|-------------|
 | `api-translate` | Translates English segment files to Icelandic using the Miðeind Málstaður |
+| `apply-glossary-supplement` | WHY THIS EXISTS |
 | `audit-equation-notation` | Pre-publication validator that compares source equation numbers (US format) |
 | `audit-equation-text` | Scan equation structure files and report untranslated English text |
 | `audit-render-output` | Post-render audit: compares source CNXML against rendered HTML output |
 | `auto-insert-placeholders` | Automatically insert [[MEDIA:n]] and [[TABLE:id]] placeholders into Icelandic se |
+| `backfill-provenance` | Stamp producer provenance onto pre-existing 02-mt-output content. |
 | `check-openstax-errata` | Track and manage OpenStax errata for Chemistry 2e. |
 | `check-source-updates` | Compare local 01-source/ CNXML files against upstream OpenStax GitHub |
 | `cnxml-fidelity-check` | Counts opening tags by element name in both source and translated CNXML |
 | `cnxml-linguistic-check` | checking whether the TEXT CONTENT was actually translated. Flags leaf-level |
+| `cnxml-render-fidelity-check` | CNXML at the INJECT stage). This tool validates the RENDER stage: the |
 | `docx-import` | Import human translations from Word (.docx) files into the pipeline. |
 | `download-source` | Downloads a tarball of the repository, extracts module CNXML files organized |
 | `generate-glossary` | translated CNXML files. Produces a book-wide glossary sorted by |
+| `generate-image-mapping` | translated figure files. This is the producer side of the image-localization |
 | `generate-index` | translated CNXML files and organizing them alphabetically with |
 | `generate-tm` | The EN source segments (02-for-mt/) and the human-reviewed IS segments |
 | `merge-glossary` | Three-source glossary merge tool. Combines: |
 | `migrate-pipeline-status` | and populates the chapter_pipeline_status table in the database. |
+| `normalize-svg-dimensions` | Make translated figure SVGs render at full figure size in the reader. |
+| `preintake-probe` | Scans a candidate book's raw CNXML and prints a go/no-go fitness checklist: |
 | `repair-emphasis` | Compares EN and IS segment files to find segments where the MT API dropped |
+| `resolve-embeds` | Scans a book's 01-source CNXML for <iframe src="...openstax.org/l/..."> embeds, |
 | `resolve-os-embed` | Resolves <link class="os-embed" url="#exercise/{nickname}"/> references |
 | `test-glossary-comparison` | Tests whether the server-side glossary (activated in the Málstaður web UI) |
 | `test-malstadur-api` | Sends carefully crafted test strings to the Málstaður translation API and |
 | `translate-chapter-titles` | Translate chapter titles for a book via the Málstaður API. |
-| `translate-markdown` | Splits the markdown by level-2 headings, translates each section, |
 | `validate-chapter` | Validate chapter structure and status |
 | `validate-pipeline-consistency` | Pipeline Status Consistency Validator |
 
@@ -48,6 +54,6 @@ These tools are deprecated and replaced by Matecat Align in the simplified workf
 
 ---
 
-*27 tools total (27 active, 0 deprecated)*
+*33 tools total (33 active, 0 deprecated)*
 
 See [cli-reference.md](../technical/cli-reference.md) for detailed usage instructions.

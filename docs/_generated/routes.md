@@ -83,7 +83,6 @@
 | GET | `/:bookId/download` |
 | GET | `/:bookId/chapters/:chapter/faithful-count` |
 | POST | `/:bookId/chapters/:chapter/import` |
-| POST | `/:bookId/chapters/:chapter/import-mt` |
 
 ## /feedback
 
@@ -216,6 +215,8 @@
 | POST | `/edit/:editId/comment` |
 | GET | `/:book/:chapter/:moduleId/terms` |
 | GET | `/:book/:chapter/:moduleId/repetitions` |
+| GET | `/:book/:chapter/:moduleId/propagation-preview` |
+| POST | `/:book/:chapter/:moduleId/propagate` |
 | GET | `/:book/:chapter/:moduleId/terminology-report` |
 | GET | `/:book/:chapter/:moduleId/spellcheck` |
 | GET | `/:book/:chapter/:moduleId/stats` |
@@ -273,6 +274,10 @@
 | GET | `/subjects` |
 | GET | `/categories` |
 | GET | `/export` |
+| POST | `/mine` |
+| GET | `/mined-candidates` |
+| POST | `/mined-candidates/:id/dismiss` |
+| POST | `/mined-candidates/:id/promote` |
 | GET | `/:id` |
 | POST | `/` |
 | PUT | `/:id` |
@@ -289,10 +294,6 @@
 | POST | `/import/key-terms` |
 | POST | `/import/existing-glossary` |
 | POST | `/check-consistency` |
-| POST | `/mine` |
-| GET | `/mined-candidates` |
-| POST | `/mined-candidates/:id/dismiss` |
-| POST | `/mined-candidates/:id/promote` |
 
 ## /views
 

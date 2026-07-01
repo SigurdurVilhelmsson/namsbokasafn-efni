@@ -552,6 +552,22 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
     (chapters MT'd before A2 existed) — pre-existing, decide whether to re-translate or grandfather.
     **(c)** the `--book` slug validator (`BOOK_OPTION`) rejects `__e2e-fixture__` (leading underscores), so
     backfill/CLI tools can't target the test fixture — pre-existing across all `--book` tools (LOW).
+  - *New out-of-scope finds (surfaced by CI on PR #208 auth-cookie fix 2026-07-01 — NOT #208's job; CI
+    credits came back ~2026-07-01 so these red jobs are newly visible, both pre-existing & unrelated to the
+    2-line SameSite change):*
+    **(d) [HIGH] fresh-DB migration failures in e2e** — the throwaway `e2e-sessions.db` boots with
+    `ERROR: Migration errors: ["004-terminology: no such column: term_id", "006-user-management: no such
+    column: github_id"]` (logged `This would be a fatal error in production`). Enough schema exists that
+    157/160 e2e pass, but `GET /api/terminology/.../mined-candidates` **500s** (missing `term_id`), failing
+    2 term-mining specs (`terminology.spec.js:623,628`). The failing test is *named* "not shadowed by /:id"
+    but the real cause is the broken migration, not route shadowing. Fresh-build path for migrations 004/006
+    is broken — likely a later migration/schema-build ordering or idempotency regression. **Prod risk:** a
+    truly fresh prod DB could hit the same fatal path. Needs systematic-debugging on the migration runner.
+    **(e) [LOW/hygiene] stale generated docs** — `npm run docs:generate` produces uncommitted diffs in
+    `docs/_generated/routes.md` + `tools.md` (propagation routes, term-mining `/mine*` reorder, `import-mt`
+    removal — drift from earlier PRs that never regenerated). The `docs-check` job only runs on
+    `server/routes/**` touches, so it stays green until any route PR trips it (as #208 did). Fix = regenerate
+    + commit; consider making `docs:generate` part of the routes-touching pre-commit hook.
 - **#33 [HIGH] inject list-flattening divergence — ✅ DONE (PR #197, branch `fix/inject-list-flatten-unify`).**
   One `paraHasFlattenedList` helper now serves all three DOM builders; `buildExerciseDom`/`buildNoteDom`
   **preserve** a `<list>` flattened into a math-bearing `<para>` (was `removeChild`-deleted), matching
