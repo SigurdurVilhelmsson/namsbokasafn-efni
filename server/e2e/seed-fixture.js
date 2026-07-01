@@ -2,10 +2,15 @@
 // Run by playwright.config.js's webServer command BEFORE `node ../index.js`,
 // with SESSIONS_DB_PATH pointing at the throwaway DB. Never runs in production.
 const Database = require('better-sqlite3');
-const { runAllMigrations } = require('../services/migrationRunner');
+const { runAllMigrations, failLoudOnMigrationErrors } = require('../services/migrationRunner');
 const resolveDbPath = require('../lib/dbPath');
 
-runAllMigrations(); // builds full schema + migration seed on the fresh DB
+// builds full schema + migration seed on the fresh DB; abort loudly if the
+// schema build errors (previously the result was discarded, hiding failures).
+const migrationResult = runAllMigrations();
+failLoudOnMigrationErrors(migrationResult, {
+  onError: (errors) => console.error('seed-fixture: migration errors — aborting', errors),
+});
 
 const db = new Database(resolveDbPath());
 try {

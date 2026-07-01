@@ -30,7 +30,7 @@ const { validateSecrets, config, refreshValidBooks, VALID_BOOKS } = require('./c
 validateSecrets();
 
 // Auto-run pending database migrations before starting the server
-const { runAllMigrations } = require('./services/migrationRunner');
+const { runAllMigrations, failLoudOnMigrationErrors } = require('./services/migrationRunner');
 const migrationResult = runAllMigrations();
 if (migrationResult.applied > 0) {
   log.info(
@@ -38,9 +38,11 @@ if (migrationResult.applied > 0) {
     'Migrations applied'
   );
 }
-if (migrationResult.errors.length > 0) {
-  log.error({ errors: migrationResult.errors }, 'Migration errors');
-}
+// Fail loud: refuse to serve on a broken schema. Migrations are idempotent
+// (re-run asserted clean in CI), so any error here is real.
+failLoudOnMigrationErrors(migrationResult, {
+  onError: (errors) => log.error({ errors }, 'Migration errors — refusing to start'),
+});
 
 const express = require('express');
 const cors = require('cors');
