@@ -1,0 +1,20 @@
+{
+  "track": "mt-preview",
+  "generatedBy": "cnxml-inject.js",
+  "summary": {
+    "modulesWithResidue": 1,
+    "exactResidues": 0,
+    "ratioWarnings": 1
+  },
+  "modules": {
+    "m68710": {
+      "exact": [],
+      "warnings": [
+        {
+          "segmentId": "m68710:problem:fs-idm6095856",
+          "ratio": 0.71
+        }
+      ]
+    }
+  }
+}

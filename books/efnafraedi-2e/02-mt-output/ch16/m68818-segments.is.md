@@ -2,124 +2,124 @@
 Annað og þriðja lögmál varmafræðinnar
 
 <!-- SEG:m68818:abstract:auto-2 -->
-Þegar þú hefur lokið við þennan kafla muntu geta:
+Þegar þú hefur lokið við þennan kafla getur þú:
 
 <!-- SEG:m68818:abstract-item:abstract-item-1 -->
-Sett fram og útskýrt annað og þriðja lögmál varmafræðinnar
+Lýst og útskýrt annað og þriðja lögmál varmafræðinnar
 
 <!-- SEG:m68818:abstract-item:abstract-item-2 -->
-Reiknað út óreiðubreytingar fyrir fasaumbreytingar og efnahvörf við staðalaðstæður
+Reiknað óreiðubreytingar fyrir fasaskipti og efnahvörf við staðalaðstæður
 
 <!-- SEG:m68818:title:fs-idm4119136-title -->
 Annað lögmál varmafræðinnar
 
 <!-- SEG:m68818:para:fs-idp3609760 -->
-Í leitinni að eiginleika sem getur áreiðanlega spáð fyrir um sjálfsprottið eðli ferlis hefur vænlegur kandídat verið fundinn: óreiða. Ferli sem fela í sér aukningu á óreiðu [[i:kerfisins]] (Δ[[i:S]] > 0) eru mjög oft sjálfsprottið; þó eru mörg dæmi um hið gagnstæða. Með því að víkka út skoðun okkar á óreiðubreytingum til að ná yfir [[i:umhverfið]] getum við komist að mikilvægri niðurstöðu varðandi sambandið milli þessa eiginleika og sjálfsprotta eðlis. Í varmafræðilegum líkönum samanstanda kerfið og umhverfið af öllu, það er að segja alheiminum, og því gildir eftirfarandi:
+Í leitinni að eiginleika sem getur áreiðanlega spáð fyrir um sjálfgengi ferlis hefur vænlegur kandídat verið fundinn: óreiða. Ferli sem fela í sér aukningu á óreiðu [[i:kerfisins]] (Δ[[i:S]] > 0) eru mjög oft sjálfgeng; þó eru dæmi um hið gagnstæða fjölmörg. Með því að víkka út skoðun á óreiðubreytingum til að ná yfir [[i:umhverfið]] getum við komist að mikilvægri niðurstöðu varðandi sambandið milli þessa eiginleika og sjálfgengis. Í varmafræðilegum líkönum samanstanda kerfið og umhverfið af öllu, það er alheiminum, og því gildir eftirfarandi:
 
 <!-- SEG:m68818:para:fs-idp115428960 -->
-Til að útskýra þetta samband skulum við aftur skoða ferlið þar sem varmi flæðir milli tveggja hluta, þar sem annar er skilgreindur sem kerfið og hinn sem umhverfið. Þrír möguleikar eru fyrir slíkt ferli:
+Til að lýsa þessu sambandi skulum við aftur skoða ferli varmaflæðis milli tveggja hluta, þar sem annar er skilgreindur sem kerfið og hinn sem umhverfið. Það eru þrír möguleikar fyrir slíkt ferli:
 
 <!-- SEG:m68818:item:fs-idm90348816-item-1 -->
-Hlutirnir eru með mismunandi hitastig og varmi flæðir frá heitari hlutnum til þess kaldari. [[i:Þetta sést alltaf gerast sjálfkrafa.]] Með því að tilnefna heitari hlutinn sem kerfið og nota skilgreininguna á óreiðu fæst eftirfarandi: [[MATH:1]] Stærðirnar −[[i:q]][[sub:aft]] og [[i:q]][[sub:aft]] eru jafnar, en andstæð formerki þeirra tákna varmatap kerfisins og varmaaukningu umhverfisins. Þar sem [[i:T]][[sub:kerfi]] > [[i:T]][[sub:umhv]] í þessu tilviki, verður óreiðu[[i:minnkun]] kerfisins minni en óreiðu[[i:aukning]] umhverfisins, og því [[i:mun óreiða alheimsins aukast]]: [[MATH:2]]
+Hlutirnir eru með mismunandi hitastig og varmi flæðir frá heitari hlutnum til þess kaldari. [[i:Þetta sést alltaf gerast sjálfkrafa.]] Með því að tilnefna heitari hlutinn sem kerfið og beita skilgreiningu óreiðu fæst eftirfarandi: [[MATH:1]] Stærðirnar −[[i:q]][[sub:rev]] og [[i:q]][[sub:rev]] eru jafnar, en andstæð formerki þeirra tákna varmatap kerfisins og varmaaukningu umhverfisins. Þar sem [[i:T]][[sub:sys]] > [[i:T]][[sub:surr]] í þessu tilviki verður óreiðu[[i:minnkun]] kerfisins minni en óreiðu[[i:aukning]] umhverfisins, og því [[i:mun óreiða alheimsins aukast]]: [[MATH:2]]
 
 <!-- SEG:m68818:item:fs-idm90348816-item-2 -->
-Hlutirnir eru með mismunandi hitastig og varmi flæðir frá kaldari hlutnum til þess heitari. [[i:Þetta sést aldrei gerast sjálfkrafa.]] Með því að tilnefna aftur heitari hlutinn sem kerfið og nota skilgreininguna á óreiðu fæst eftirfarandi: [[MATH:3]] Formerki [[i:q]][[sub:aft]] tákna varmaaukningu kerfisins og varmatap umhverfisins. Stærð óreiðubreytingarinnar fyrir umhverfið verður aftur meiri en fyrir kerfið, en í þessu tilviki munu formerki varmabreytinganna (það er, [[i:stefna varmaflæðisins]]) gefa neikvætt gildi fyrir Δ[[i:S]][[sub:alheimur]]. [[i:Þetta ferli felur í sér minnkun á óreiðu alheimsins.]]
+Hlutirnir eru með mismunandi hitastig og varmi flæðir frá kaldari hlutnum til þess heitari. [[i:Þetta sést aldrei gerast sjálfkrafa.]] Með því að tilnefna aftur heitari hlutinn sem kerfið og beita skilgreiningu óreiðu fæst eftirfarandi: [[MATH:3]] Formerki [[i:q]][[sub:rev]] tákna varmaaukningu kerfisins og varmatap umhverfisins. Stærð óreiðubreytingarinnar fyrir umhverfið verður aftur meiri en fyrir kerfið, en í þessu tilviki munu formerki varmabreytinganna (það er, [[i:stefna varmaflæðisins]]) gefa neikvætt gildi fyrir Δ[[i:S]][[sub:univ]]. [[i:Þetta ferli felur í sér minnkun á óreiðu alheimsins.]]
 
 <!-- SEG:m68818:item:fs-idm90348816-item-3 -->
-Hlutirnir eru með nánast sama hitastig, [[i:T]][[sub:kerfi]] ≈ [[i:T]][[sub:umhv]], og því eru stærðir óreiðubreytinganna nánast þær sömu fyrir bæði kerfið og umhverfið. Í þessu tilviki er óreiðubreyting alheimsins núll og kerfið er [[i:í jafnvægi]]. [[MATH:4]]
+Hlutirnir eru með nánast sama hitastig, [[i:T]][[sub:sys]] ≈ [[i:T]][[sub:surr]], og því eru stærðir óreiðubreytinganna nánast þær sömu fyrir bæði kerfið og umhverfið. Í þessu tilviki er óreiðubreyting alheimsins núll og kerfið er [[i:í jafnvægi]]. [[MATH:4]]
 
 <!-- SEG:m68818:para:fs-idp26583536 -->
-Þessar niðurstöður leiða til djúptækrar staðhæfingar um sambandið milli óreiðu og sjálfsprotta eðlis, þekkt sem {{term}}annað lögmál varmafræðinnar{{/term}}: [[i:allar sjálfsprotnar breytingar valda aukningu á óreiðu alheimsins.]] Samantekt á þessum þremur samböndum er að finna í [[xref:fs-idp41455824]].
+Þessar niðurstöður leiða til djúprar staðhæfingar um sambandið milli óreiðu og sjálfgengis sem er þekkt sem {{term}}annað lögmál varmafræðinnar{{/term}}: [[i:allar sjálfgengar breytingar valda aukningu á óreiðu alheimsins.]] Samantekt á þessum þremur samböndum er að finna í [[xref:fs-idp41455824]].
 
 <!-- SEG:m68818:entry:auto-12 -->
 Annað lögmál varmafræðinnar
 
 <!-- SEG:m68818:entry:auto-13 -->
-Δ[[i:S]][[sub:alheimur]] > 0
+Δ[[i:S]][[sub:univ]] > 0
 
 <!-- SEG:m68818:entry:auto-14 -->
-sjálfsprottið
+sjálfgengur
 
 <!-- SEG:m68818:entry:auto-15 -->
-Δ[[i:S]][[sub:alheimur]] &lt; 0
+Δ[[i:S]][[sub:univ]] < 0
 
 <!-- SEG:m68818:entry:auto-16 -->
-ekki sjálfsprottið (sjálfsprottið í öfuga átt)
+ekki sjálfgengur (sjálfgengur í öfuga átt)
 
 <!-- SEG:m68818:entry:auto-17 -->
-Δ[[i:S]][[sub:alheimur]] = 0
+Δ[[i:S]][[sub:univ]] = 0
 
 <!-- SEG:m68818:entry:auto-18 -->
 í jafnvægi
 
 <!-- SEG:m68818:para:fs-idp172517200 -->
-Í mörgum raunhæfum tilvikum er umhverfið gríðarstórt í samanburði við kerfið. Í slíkum tilfellum er varminn sem umhverfið fær eða tapar vegna einhvers ferlis mjög lítið, nánast óendanlega lítið, brot af heildarvarmaorku þess. Til dæmis felur bruni eldsneytis í lofti í sér varmaflutning frá kerfi (eldsneytis- og súrefnissameindunum sem hvarfast) yfir í umhverfi sem er óendanlega miklu massameira (andrúmsloft jarðar). Fyrir vikið er [[i:q]][[sub:umhv]] góð nálgun á [[i:q]][[sub:aft]] og annað lögmálið má setja fram á eftirfarandi hátt:
+Í mörgum raunhæfum tilvikum er umhverfið gríðarstórt í samanburði við kerfið. Í slíkum tilvikum er varminn sem umhverfið fær eða tapar vegna einhvers ferlis mjög lítið, nánast óendanlega lítið, brot af heildarvarmaorku þess. Til dæmis felur bruni eldsneytis í lofti í sér varmaflutning frá kerfi (eldsneytis- og súrefnissameindirnar sem hvarfast) til umhverfis sem er óendanlega miklu massameira (andrúmsloft jarðar). Þar af leiðandi er [[i:q]][[sub:surr]] góð nálgun á [[i:q]][[sub:rev]] og annað lögmálið má setja fram á eftirfarandi hátt:
 
 <!-- SEG:m68818:para:fs-idp5341920 -->
-Við getum notað þessa jöfnu til að spá fyrir um sjálfsprottið eðli ferlis eins og sýnt er í [[xref:fs-idp33042160]].
+Við getum notað þessa jöfnu til að spá fyrir um sjálfgengi ferlis eins og sýnt er í [[xref:fs-idp33042160]].
 
 <!-- SEG:m68818:example-title:fs-idp33042160-title -->
-Mun ís bráðna sjálfkrafa?
+Bráðnar ís sjálfkrafa?
 
 <!-- SEG:m68818:para:fs-idp271291696 -->
 Óreiðubreytingin fyrir ferlið
 
 <!-- SEG:m68818:para:fs-idp175389120 -->
-er 22,1 J/K og krefst þess að umhverfið flytji 6,00 kJ af varma til kerfisins. Er ferlið sjálfsprottið við −10,00 °C? Er það sjálfsprottið við +10,00 °C?
+er 22,1 J/K og krefst þess að umhverfið flytji 6,00 kJ af varma til kerfisins. Er ferlið sjálfgengt við −10,00 °C? Er það sjálfgengt við +10,00 °C?
 
 <!-- SEG:m68818:para-title:fs-idp54282352-title -->
 Lausn
 
 <!-- SEG:m68818:para:fs-idp54282352 -->
-Við getum metið sjálfsprottið eðli ferlisins með því að reikna út óreiðubreytingu alheimsins. Ef Δ[[i:S]][[sub:alheimur]] er jákvætt er ferlið sjálfsprottið. Við bæði hitastigin er Δ[[i:S]][[sub:kerfi]] = 22,1 J/K og [[i:q]][[sub:umhv]] = −6,00 kJ.
+Við getum metið sjálfgengi ferlisins með því að reikna óreiðubreytingu alheimsins. Ef Δ[[i:S]][[sub:univ]] er jákvætt er ferlið sjálfgengt. Við bæði hitastigin er Δ[[i:S]][[sub:sys]] = 22,1 J/K og [[i:q]][[sub:surr]] = −6,00 kJ.
 
 <!-- SEG:m68818:para:fs-idp9805936 -->
 Við −10,00 °C (263,15 K) gildir eftirfarandi:
 
 <!-- SEG:m68818:para:fs-idp43894736 -->
-[[i:S]][[sub:alheimur]] &lt; 0, þannig að bráðnun er ekki sjálfsprottið ([[i:ekki]] sjálfsprottið) við −10,0 °C.
+[[i:S]][[sub:univ]] < 0, þannig að bráðnun er ekki sjálfgeng ([[i:ekki]] sjálfgeng) við −10,0 °C.
 
 <!-- SEG:m68818:para:fs-idp156182416 -->
 Við 10,00 °C (283,15 K) gildir eftirfarandi:
 
 <!-- SEG:m68818:para:fs-idp34700864 -->
-[[i:S]][[sub:univ]] > 0, þannig að bráðnun [[i:er]] sjálfsprottin við 10,00 °C.
+[[i:S]][[sub:univ]] > 0, þannig að [[i:bráðnun]] er [[i:sjálfgeng]] við 10,00 °C.
 
 <!-- SEG:m68818:para-title:fs-idp54808912-title -->
 Kannaðu þekkingu þína
 
 <!-- SEG:m68818:para:fs-idp54808912 -->
-Notaðu þessar upplýsingar til að ákvarða hvort fljótandi vatn muni frjósa sjálfkrafa við sama hitastig. Hvað geturðu sagt um gildin á [[i:S]][[sub:univ]]?
+Notaðu þessar upplýsingar til að ákvarða hvort fljótandi vatn frjósi sjálfkrafa við sama hitastig. Hvað geturðu sagt um gildin á [[i:S]][[sub:univ]]?
 
 <!-- SEG:m68818:para:fs-idp105321744 -->
-Óreiða er ástandsfall, þannig að Δ[[i:S]][[sub:frysting]] = −Δ[[i:S]][[sub:bráðnun]] = −22,1 J/K og [[i:q]][[sub:umhv]] = +6,00 kJ. Við −10,00 °C sjálfsprottið, +0,7 J/K; við +10,00 °C ekki sjálfsprottið, −0,9 J/K.
+Óreiða er ástandsfall, þannig að Δ[[i:S]][[sub:frysting]] = −Δ[[i:S]][[sub:bráðnun]] = −22,1 J/K og [[i:q]][[sub:umhv]] = +6,00 kJ. Við −10,00 °C sjálfgengt, +0,7 J/K; við +10,00 °C ekki sjálfgengt, −0,9 J/K.
 
 <!-- SEG:m68818:note-title:fs-idp106254880-title -->
 Svar:
 
 <!-- SEG:m68818:para:fs-idp105321744 -->
-Óreiða er ástandsfall, þannig að Δ[[i:S]][[sub:frysting]] = −Δ[[i:S]][[sub:bráðnun]] = −22,1 J/K og [[i:q]][[sub:umhv]] = +6,00 kJ. Við −10,00 °C sjálfsprottið, +0,7 J/K; við +10,00 °C ekki sjálfsprottið, −0,9 J/K.
+Óreiða er ástandsfall, þannig að Δ[[i:S]][[sub:frysting]] = −Δ[[i:S]][[sub:bráðnun]] = −22,1 J/K og [[i:q]][[sub:umhv]] = +6,00 kJ. Við −10,00 °C sjálfgengt, +0,7 J/K; við +10,00 °C ekki sjálfgengt, −0,9 J/K.
 
 <!-- SEG:m68818:title:fs-idp45100816-title -->
 Þriðja lögmál varmafræðinnar
 
 <!-- SEG:m68818:para:fs-idm3499504 -->
-Í fyrri hlutanum var lýst hinum ýmsu þáttum dreifingar efnis og orku sem stuðla að óreiðu kerfis. Með þessa þætti í huga skulum við skoða óreiðu hreins, fullkomlega kristallaðs efnis á föstu formi sem býr ekki yfir neinni hreyfiorku (þ.e. við alkul, 0 K). Þetta kerfi má lýsa með einu smáástandi, þar sem hreinleiki þess, fullkomin kristalbygging og algjör hreyfingarleysi þýðir að það er aðeins einn mögulegur staður fyrir hverja eins frumeind eða sameind sem myndar kristallinn ([[i:W]] = 1). Samkvæmt Boltzmann-jöfnunni er óreiða þessa kerfis núll.
+Í fyrri hlutanum var lýst hinum ýmsu þáttum dreifingar efnis og orku sem stuðla að óreiðu kerfis. Með þessa þætti í huga skulum við skoða óreiðu hreins, fullkomins kristalkennds fastefnis sem hefur enga hreyfiorku (það er að segja við alkul, 0 K). Þessu kerfi má lýsa með einni smásæisstöðu, þar sem hreinleiki þess, fullkomin kristalbygging og algjör hreyfingarleysi þýðir að það er aðeins einn mögulegur staður fyrir hverja eins frumeind eða sameind sem myndar kristallinn ([[i:W]] = 1). Samkvæmt Boltzmann-jöfnunni er óreiða þessa kerfis núll.
 
 <!-- SEG:m68818:para:fs-idm15206896 -->
-Þetta takmarkandi skilyrði fyrir óreiðu kerfis táknar {{term}}þriðja lögmál varmafræðinnar{{/term}}: [[i:óreiða hreins, fullkomins kristallaðs efnis við 0 K er núll.]]
+Þetta takmarkandi skilyrði fyrir óreiðu kerfis táknar {{term}}þriðja lögmál varmafræðinnar{{/term}}: [[i:óreiða hreins, fullkomins kristalkennds efnis við 0 K er núll.]]
 
 <!-- SEG:m68818:para:fs-idp12220368 -->
-Hægt er að gera nákvæmar varmamælingar til að ákvarða hitastigsháð óreiðu efnis og til að leiða út algild óreiðugildi við sérstakar aðstæður. {{term}}Staðalóreiða ([[i:S]]°){{/term}} er fyrir eitt mól af efni við staðalaðstæður (þrýstingur 1 bar og hitastig 298,15 K; sjá nánar um staðalaðstæður í kaflanum um varmaefnafræði í þessari bók). {{term}}Staðalóreiðubreytingu (Δ[[i:S]]°){{/term}} fyrir efnahvarf má reikna út með því að nota staðalóreiðugildi eins og sýnt er hér að neðan:
+Hægt er að gera nákvæmar varmamælingar til að ákvarða hitastigsháð óreiðu efnis og til að leiða út algild óreiðugildi við sérstakar aðstæður. {{term}}Staðalóreiða ([[i:S]]°){{/term}} er fyrir eitt mól af efni við staðalaðstæður (þrýstingur 1 bar og hitastig 298,15 K; sjá nánar um staðalaðstæður í kaflanum um varmaefnafræði í þessum texta). {{term}}Staðalóreiðubreytingu (Δ[[i:S]]°){{/term}} fyrir efnahvarf má reikna út með því að nota staðalóreiðu eins og sýnt er hér að neðan:
 
 <!-- SEG:m68818:para:fs-idm44012816 -->
-þar sem ν táknar efnismagnsstuðla í stilltri efnajöfnu sem táknar ferlið. Til dæmis, Δ[[i:S]]° fyrir eftirfarandi efnahvarf við stofuhita
+þar sem ν táknar efnajöfnustuðla í stilltri jöfnu sem táknar ferlið. Til dæmis, Δ[[i:S]]° fyrir eftirfarandi efnahvarf við stofuhita
 
 <!-- SEG:m68818:para:fs-idp156085024 -->
 er reiknað sem:
 
 <!-- SEG:m68818:para:fs-idp43524064 -->
-Listi yfir nokkur staðalóreiðugildi er í [[xref:fs-idm78597984]] og frekari gildi eru í [[docref:viðauka G|m68865]]. Dæmin sem fylgja sýna notkun [[i:S]]°-gilda við útreikning á staðalóreiðubreytingum fyrir eðlis- og efnafræðileg ferli.
+Listi yfir hluta staðalóreiðugilda er í [[xref:fs-idm78597984]] og fleiri gildi eru í [[docref:Appendix G|m68865]]. Dæmin sem fylgja sýna notkun [[i:S]]°-gilda við útreikning á staðalóreiðubreytingum fyrir eðlis- og efnafræðileg ferli.
 
 <!-- SEG:m68818:entry:auto-42 -->
 [[b:Efni]]
@@ -236,22 +236,22 @@ O[[sub:2]]([[i:g]])
 Ákvörðun á Δ[[i:S]]°
 
 <!-- SEG:m68818:para:fs-idp155406304 -->
-Reiknið út staðalóreiðubreytinguna fyrir eftirfarandi ferli:
+Reiknaðu staðalóreiðubreytinguna fyrir eftirfarandi ferli:
 
 <!-- SEG:m68818:para-title:fs-idp180269712-title -->
 Lausn
 
 <!-- SEG:m68818:para:fs-idp180269712 -->
-Reiknið út óreiðubreytinguna með því að nota staðalóreiðugildi eins og sýnt er hér að ofan:
+Reiknaðu óreiðubreytinguna með því að nota staðalóreiðu eins og sýnt er hér að ofan:
 
 <!-- SEG:m68818:para:fs-idm47317216 -->
-Gildið fyrir Δ[[i:S]]° er neikvætt, eins og við var að búast fyrir þessa fasaumbreytingu (þéttingu), sem fjallað var um í fyrri kafla.
+Gildið fyrir Δ[[i:S]]° er neikvætt, eins og við var að búast fyrir þessa fasabreytingu (þéttingu), sem fjallað var um í fyrri hlutanum.
 
 <!-- SEG:m68818:para-title:fs-idp319200-title -->
-Kannaðu þekkingu þína
+Prófaðu þekkingu þína
 
 <!-- SEG:m68818:para:fs-idp319200 -->
-Reiknið út staðalóreiðubreytinguna fyrir eftirfarandi ferli:
+Reiknaðu staðalóreiðubreytinguna fyrir eftirfarandi ferli:
 
 <!-- SEG:m68818:para:fs-idm48282704 -->
 −120,6 J K[[sup:–1]] mól[[sup:–1]]
@@ -266,19 +266,19 @@ Svar:
 Ákvörðun á Δ[[i:S]]°
 
 <!-- SEG:m68818:para:fs-idp44594448 -->
-Reiknið út staðalóreiðubreytinguna fyrir bruna metanóls, CH[[sub:3]]OH:
+Reiknaðu staðalóreiðubreytinguna fyrir bruna metanóls, CH[[sub:3]]OH:
 
 <!-- SEG:m68818:para-title:fs-idp118976224-title -->
 Lausn
 
 <!-- SEG:m68818:para:fs-idp118976224 -->
-Reiknið út óreiðubreytinguna með því að nota staðalóreiðugildi eins og sýnt er hér að ofan:
+Reiknaðu óreiðubreytinguna með því að nota staðalóreiðu eins og sýnt er hér að ofan:
 
 <!-- SEG:m68818:para-title:fs-idm27377968-title -->
-Kannaðu þekkingu þína
+Prófaðu þekkingu þína
 
 <!-- SEG:m68818:para:fs-idm27377968 -->
-Reiknið út staðalóreiðubreytinguna fyrir eftirfarandi efnahvarf:
+Reiknaðu staðalóreiðubreytinguna fyrir eftirfarandi efnahvarf:
 
 <!-- SEG:m68818:para:fs-idp170733152 -->
 24,7 J/K
@@ -293,10 +293,10 @@ Svar:
 Lykilhugtök og samantekt
 
 <!-- SEG:m68818:para:fs-idp116042384 -->
-Annað lögmál varmafræðinnar segir að sjálfsprottið ferli auki óreiðu alheimsins, [[i:S]][[sub:alheimur]] > 0. Ef Δ[[i:S]][[sub:alheimur]] < 0 er ferlið ekki sjálfsprottið og ef Δ[[i:S]][[sub:alheimur]] = 0 er kerfið í jafnvægi. Þriðja lögmál varmafræðinnar skilgreinir núllpunkt óreiðu sem óreiðu fullkomins, hreins kristallaðs fasts efnis við 0 K. Þar sem aðeins eitt smáástand er mögulegt er óreiðan núll. Við getum reiknað út staðalóreiðubreytingu fyrir ferli með því að nota staðalóreiðugildi fyrir hvarfefni og myndefni sem koma við sögu í ferlinu.
+Annað lögmál varmafræðinnar segir að sjálfgengt ferli auki óreiðu alheimsins, [[i:S]][[sub:alheimur]] > 0. Ef Δ[[i:S]][[sub:alheimur]] < 0 er ferlið ekki sjálfgengt og ef Δ[[i:S]][[sub:alheimur]] = 0 er kerfið í jafnvægi. Þriðja lögmál varmafræðinnar skilgreinir núllpunkt óreiðu sem óreiðu fullkomins, hreins kristalkennds fastefnis við 0 K. Þar sem aðeins er eitt mögulegt smáástand er óreiðan núll. Við getum reiknað staðalóreiðubreytingu fyrir ferli með því að nota staðalóreiðugildi fyrir hvarfefnin og myndefnin sem koma við sögu í ferlinu.
 
 <!-- SEG:m68818:title:fs-idp50875552-title -->
-Lykiljöfnur
+Lykiljafna
 
 <!-- SEG:m68818:entry:auto-101 -->
 [[MATH:6]]
@@ -311,13 +311,13 @@ Lykiljöfnur
 [[MATH:8]]
 
 <!-- SEG:m68818:title:fs-idm53180608-title -->
-Efnafræði – Æfingar í lok kafla
+Efnafræði – verkefni í lok kafla
 
 <!-- SEG:m68818:problem:fs-idp50899456 -->
 Hver er munurinn á Δ[[i:S]] og Δ[[i:S]]° fyrir efnabreytingu?
 
 <!-- SEG:m68818:problem:fs-idp86374576 -->
-Reiknið [[MATH:9]] fyrir eftirfarandi breytingar.
+Reiknaðu [[MATH:9]] fyrir eftirfarandi breytingar.
 
 <!-- SEG:m68818:problem:fs-idp115997344 -->
 (a) [[MATH:10]]
@@ -344,19 +344,19 @@ Reiknið [[MATH:9]] fyrir eftirfarandi breytingar.
 (a) 107 J/K; (b) −86,7 J/K; (c) 133,2 J/K; (d) 118,8 J/K; (e) −326,6 J/K; (f) −171,9 J/K; (g) −7,2 J/K
 
 <!-- SEG:m68818:problem:fs-idp169035952 -->
-Ákvarðið óreiðubreytinguna fyrir bruna fljótandi etanóls, C[[sub:2]]H[[sub:5]]OH, við staðalaðstæður þar sem myndast loftkenndur koltvísýringur og fljótandi vatn.
+Ákvarðaðu óreiðubreytinguna fyrir bruna fljótandi etanóls, C[[sub:2]]H[[sub:5]]OH, við staðalaðstæður til að mynda koldíoxíð í gasformi og vatn í vökvaformi.
 
 <!-- SEG:m68818:problem:fs-idp180337456 -->
-Ákvarðið óreiðubreytinguna fyrir bruna loftkennds própans, C[[sub:3]]H[[sub:8]], við staðalaðstæður þar sem myndast loftkenndur koltvísýringur og vatn.
+Ákvarðaðu óreiðubreytinguna fyrir bruna própans í gasformi, C[[sub:3]]H[[sub:8]], við staðalaðstæður til að mynda koldíoxíð og vatn í gasformi.
 
 <!-- SEG:m68818:solution:fs-idp87090368 -->
 100,3 J/K
 
 <!-- SEG:m68818:problem:fs-idp156839632 -->
-„Termít“-efnahvörf hafa verið notuð til að sjóða saman málmhluta eins og járnbrautarteina og við málmhreinsun. Eitt slíkt termít-efnahvarf er [[MATH:17]] Er efnahvarfið sjálfsprottið við stofuhita við staðalaðstæður? Við efnahvarfið gleypir umhverfið 851,8 kJ/mól af varma.
+„Termít“-efnahvörf hafa verið notuð til að sjóða saman málmhluta eins og járnbrautarteina og við málmhreinsun. Eitt slíkt termít-efnahvarf er [[MATH:17]] Er efnahvarfið sjálfgengt við stofuhita við staðalaðstæður? Við efnahvarfið gleypir umhverfið 851,8 kJ/mól af varma.
 
 <!-- SEG:m68818:problem:fs-idp169049744 -->
-Notið viðeigandi [[MATH:18]] gildi úr [[docref:Appendix G|m68865]] til að reikna út [[MATH:19]] fyrir eftirfarandi breytingar:
+Notaðu viðeigandi [[MATH:18]] gildi sem talin eru upp í [[docref:viðauka G|m68865]] og reiknaðu [[MATH:19]] fyrir eftirfarandi breytingar:
 
 <!-- SEG:m68818:problem:fs-idp101398384 -->
 (a) [[MATH:20]]
@@ -368,7 +368,7 @@ Notið viðeigandi [[MATH:18]] gildi úr [[docref:Appendix G|m68865]] til að re
 (a) −198,1 J/K; (b) −348,9 J/K
 
 <!-- SEG:m68818:problem:fs-idp53811536 -->
-Ákvarðið [[MATH:22]] fyrir eftirfarandi út frá neðangreindum upplýsingum:
+Ákvarðaðu [[MATH:22]] fyrir eftirfarandi út frá eftirfarandi upplýsingum:
 
 <!-- SEG:m68818:problem:fs-idp105472336 -->
 [[MATH:23]]
@@ -383,16 +383,16 @@ Notið viðeigandi [[MATH:18]] gildi úr [[docref:Appendix G|m68865]] til að re
 [[MATH:26]]
 
 <!-- SEG:m68818:problem:fs-idp15550848 -->
-Með því að reikna Δ[[i:S]][[sub:univ]] við hvort hitastig, ákvarðaðu hvort bráðnun á 1 móli af NaCl([[i:s]]) sé sjálfsprottið ferli við 500 °C og við 700 °C.[[BR]] [[MATH:27]]
+Reiknaðu Δ[[i:S]][[sub:univ]] við hvort hitastig fyrir sig til að ákvarða hvort bráðnun á 1 móli af NaCl([[i:s]]) sé sjálfgeng við 500 °C og við 700 °C.[[BR]] [[MATH:27]]
 
 <!-- SEG:m68818:problem:fs-idp105474192 -->
-Hvaða forsendur eru gefnar um varmafræðilegu upplýsingarnar (óreiðu- og entalpíugildi) sem notaðar eru til að leysa þetta dæmi?
+Hvaða forsendur eru gefnar um varmafræðilegar upplýsingar (óreiðu- og vermigildi) sem notaðar eru til að leysa þetta dæmi?
 
 <!-- SEG:m68818:solution:fs-idp13901792 -->
-Þar sem Δ[[i:S]][[sub:univ]] < 0 við bæði þessi hitastig er bráðnun ekki sjálfsprottið ferli við hvorugt þeirra. Gefin gildi fyrir óreiðu og entalpíu eru fyrir NaCl við 298 K. Gert er ráð fyrir að þau breytist ekki marktækt við hærra hitastig sem notað er í dæminu.
+Þar sem Δ[[i:S]][[sub:univ]] < 0 við bæði þessi hitastig er bráðnun ekki sjálfgeng við hvorugt þeirra. Gefin gildi fyrir óreiðu og vermi eru fyrir NaCl við 298 K. Gert er ráð fyrir að þau breytist ekki marktækt við hærra hitastig sem notað er í dæminu.
 
 <!-- SEG:m68818:problem:fs-idp51175024 -->
-Notið staðalóreiðugögn í [[docref:viðauka G|m68865]] til að ákvarða óreiðubreytinguna fyrir hvert eftirfarandi efnahvarfa. Öll ferlin eiga sér stað við staðalaðstæður og 25 °C.
+Notaðu staðalóreiðugögnin í [[docref:Appendix G|m68865]] til að ákvarða óreiðubreytinguna fyrir hvert eftirfarandi efnahvarf. Öll ferlin eiga sér stað við staðalaðstæður og 25 °C.
 
 <!-- SEG:m68818:problem:fs-idm370443200 -->
 (a) [[MATH:28]]
@@ -413,7 +413,7 @@ Notið staðalóreiðugögn í [[docref:viðauka G|m68865]] til að ákvarða ó
 (f) [[MATH:33]]
 
 <!-- SEG:m68818:problem:fs-idp127897104 -->
-Notið staðalóreiðugögn í [[docref:viðauka G|m68865]] til að ákvarða óreiðubreytinguna fyrir hvert eftirfarandi efnahvarfa. Öll ferlin eiga sér stað við staðalaðstæður og 25 °C.
+Notaðu staðalóreiðugögnin í [[docref:Appendix G|m68865]] til að ákvarða óreiðubreytinguna fyrir hvert eftirfarandi efnahvarf. Öll ferlin eiga sér stað við staðalaðstæður og 25 °C.
 
 <!-- SEG:m68818:problem:fs-idm249306432 -->
 (a) [[MATH:34]]
@@ -440,19 +440,19 @@ Notið staðalóreiðugögn í [[docref:viðauka G|m68865]] til að ákvarða ó
 annað lögmál varmafræðinnar
 
 <!-- SEG:m68818:glossary-def:fs-idp194754048-def -->
-öll sjálfsprottin ferli fela í sér aukningu á óreiðu alheimsins
+öll sjálfgeng ferli fela í sér aukningu á óreiðu alheimsins
 
 <!-- SEG:m68818:glossary-term:fs-idp170415152-term -->
-staðalóreiða (S°)
+staðalóreiða ([[i:S]]°)
 
 <!-- SEG:m68818:glossary-def:fs-idp170415152-def -->
-óreiða fyrir eitt mól af efni við 1 bar þrýsting; töflufærð gildi eru venjulega ákvörðuð við 298,15 K
+óreiða fyrir eitt mól af efni við 1 bars þrýsting; töflufærð gildi eru venjulega ákvörðuð við 298,15 K
 
 <!-- SEG:m68818:glossary-term:fs-idp85418944-term -->
-staðalóreiðubreyting (ΔS°)
+staðalóreiðubreyting (Δ[[i:S]]°)
 
 <!-- SEG:m68818:glossary-def:fs-idp85418944-def -->
-óreiðubreyting fyrir efnahvarf reiknuð út frá staðalóreiðugildum
+óreiðubreyting fyrir efnahvarf reiknuð út frá staðalóreiðum
 
 <!-- SEG:m68818:glossary-term:fs-idp90512720-term -->
 þriðja lögmál varmafræðinnar

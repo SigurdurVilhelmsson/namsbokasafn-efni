@@ -12,7 +12,9 @@
  *   node tools/cnxml-fidelity-check.js --book efnafraedi-2e --chapter 1 --module m68664
  *   node tools/cnxml-fidelity-check.js --book efnafraedi-2e
  *
- * Exit code 0 if identical, 1 if discrepancies found.
+ * Exit code 0 if no UNEXPLAINED discrepancies remain (allowlisted discrepancies
+ * — see tools/lib/fidelity-allowlist.js and books/<book>/fidelity-allowlist.json
+ * — don't block a green exit), 1 otherwise.
  */
 
 import fs from 'fs';
@@ -25,6 +27,7 @@ import {
   MODULE_OPTION,
   requireBook,
 } from './lib/parseArgs.js';
+import { loadAllowlist, classifyDiff } from './lib/fidelity-allowlist.js';
 
 let BOOKS_DIR = 'books/efnafraedi-2e';
 
@@ -173,7 +176,8 @@ function printHelp() {
 cnxml-fidelity-check.js — Compare source vs translated CNXML structure
 
 Counts XML elements in source and translated files, reports differences.
-Exit code 0 if identical, 1 if discrepancies found.
+Exit code 0 if no UNEXPLAINED discrepancies remain (allowlisted ones don't
+block green — see books/<book>/fidelity-allowlist.json), 1 otherwise.
 
 Usage:
   node tools/cnxml-fidelity-check.js --book <slug> --chapter <num>
@@ -212,7 +216,10 @@ function main() {
     process.exit(1);
   }
 
+  const allowlist = loadAllowlist(BOOKS_DIR);
+
   let totalDiscrepancies = 0;
+  let unexplainedDiscrepancies = 0;
   let modulesChecked = 0;
   let modulesWithDiffs = 0;
   let modulesPerfect = 0;
@@ -253,8 +260,16 @@ function main() {
         totalDiscrepancies += totalDiff;
         console.log(`${chapterDir}/${mod.moduleId}: ${diffs.length} discrepancy(ies)`);
         for (const d of diffs) {
+          const classification = classifyDiff(mod.moduleId, d.tag, d.diff, allowlist);
+          if (classification.status === 'unexplained') {
+            unexplainedDiscrepancies += Math.abs(d.diff);
+          }
+          const statusSuffix =
+            classification.status === 'unexplained'
+              ? ' [UNEXPLAINED]'
+              : ` [${classification.status}]`;
           console.log(
-            `  ${d.tag}: ${d.source} → ${d.translated} (${d.diff > 0 ? '+' : ''}${d.diff})`
+            `  ${d.tag}: ${d.source} → ${d.translated} (${d.diff > 0 ? '+' : ''}${d.diff})${statusSuffix}`
           );
         }
       }
@@ -276,9 +291,11 @@ function main() {
   console.log(`Perfect: ${modulesPerfect}`);
   console.log(`With discrepancies: ${modulesWithDiffs}`);
   console.log(`Skipped: ${modulesSkipped}`);
-  console.log(`Total discrepancies: ${totalDiscrepancies}`);
+  console.log(
+    `Total discrepancies: ${totalDiscrepancies} (${unexplainedDiscrepancies} unexplained)`
+  );
 
-  process.exit(totalDiscrepancies > 0 ? 1 : 0);
+  process.exit(unexplainedDiscrepancies > 0 ? 1 : 0);
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
