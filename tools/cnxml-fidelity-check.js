@@ -268,6 +268,7 @@ function main() {
   let modulesWithDiffs = 0;
   let modulesPerfect = 0;
   let modulesSkipped = 0;
+  const orderMismatchModules = []; // F1: warn-only, never affects exit code
 
   for (const chapterDir of chapters) {
     const sourceDir = path.join(BOOKS_DIR, '01-source', chapterDir);
@@ -292,6 +293,17 @@ function main() {
       const sourceCnxml = fs.readFileSync(sourcePath, 'utf8');
       const translatedCnxml = fs.readFileSync(transPath, 'utf8');
       const diffs = compareTagCounts(sourceCnxml, translatedCnxml);
+
+      // F1: orthogonal, warn-only document-order check (not routed through green/allowlist).
+      const order = compareElementOrder(sourceCnxml, translatedCnxml);
+      if (!order.ok) {
+        orderMismatchModules.push(mod.moduleId);
+        const shown = order.moved.slice(0, 8).join(', ');
+        const more = order.moved.length > 8 ? ` …(+${order.moved.length - 8})` : '';
+        console.log(
+          `  ORDER [warn-only]: ${mod.moduleId} — ${order.moved.length} id(s) out of document order: ${shown}${more}`
+        );
+      }
 
       modulesChecked++;
 
@@ -338,7 +350,12 @@ function main() {
   console.log(
     `Total discrepancies: ${totalDiscrepancies} (${unexplainedDiscrepancies} unexplained)`
   );
+  console.log(
+    `Order check (warn-only): ${orderMismatchModules.length} module(s) with reordered content`
+  );
 
+  // Exit code is driven ONLY by unexplained tag-count discrepancies — the order
+  // check is warn-only until the affected modules are re-extracted/re-injected (WS5).
   process.exit(unexplainedDiscrepancies > 0 ? 1 : 0);
 }
 
