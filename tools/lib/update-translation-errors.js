@@ -11,6 +11,7 @@
 import fs from 'fs';
 import path from 'path';
 import { compareTagCounts } from '../cnxml-fidelity-check.js';
+import { loadAllowlist, classifyDiff } from './fidelity-allowlist.js';
 
 /**
  * Discover chapter directories in a book's source folder.
@@ -65,6 +66,7 @@ export function updateTranslationErrors(bookDir, options = {}) {
   const tool = options.tool || 'cnxml-inject';
   const verbose = options.verbose || false;
   const chapters = discoverChapters(bookDir);
+  const allowlist = loadAllowlist(bookDir);
 
   const modules = [];
   let totalSourceModules = 0;
@@ -73,6 +75,9 @@ export function updateTranslationErrors(bookDir, options = {}) {
   let perfect = 0;
   let withDiscrepancies = 0;
   let totalDiscrepancies = 0;
+  let unexplainedDiscrepancies = 0;
+  let deferredLosses = 0;
+  let benignArtifacts = 0;
 
   for (const chapterDir of chapters) {
     const sourceDir = path.join(bookDir, '01-source', chapterDir);
@@ -105,18 +110,29 @@ export function updateTranslationErrors(bookDir, options = {}) {
         const moduleDiffs = diffs.reduce((s, d) => s + Math.abs(d.diff), 0);
         totalDiscrepancies += moduleDiffs;
 
+        const classifiedDiscrepancies = diffs.map((d) => {
+          const classification = classifyDiff(mod.moduleId, d.tag, d.diff, allowlist);
+          const abs = Math.abs(d.diff);
+          if (classification.status === 'unexplained') unexplainedDiscrepancies += abs;
+          else if (classification.status === 'known-loss-deferred') deferredLosses += abs;
+          else if (classification.status === 'benign') benignArtifacts += abs;
+          return { tag: d.tag, diff: d.diff, ...classification };
+        });
+
         modules.push({
           moduleId: mod.moduleId,
           chapter: chapterDir,
-          discrepancies: diffs.map((d) => ({ tag: d.tag, diff: d.diff })),
+          discrepancies: classifiedDiscrepancies,
         });
       }
     }
   }
 
-  // A track is only "green" when every source module was checked AND clean —
-  // skipped (un-injected) modules count against green, not just discrepancies.
-  const green = withDiscrepancies === 0 && skippedUntranslated === 0;
+  // A track is only "green" when every source module was checked AND every
+  // discrepancy is explained (allowlisted as benign or a deferred known loss).
+  // An unlisted or drifted-diff discrepancy is "unexplained" and blocks green;
+  // a "known-loss-deferred" one is tracked (deferredLosses) but does not.
+  const green = unexplainedDiscrepancies === 0 && skippedUntranslated === 0;
   const generated = new Date().toISOString();
 
   const trackSection = {
@@ -129,6 +145,9 @@ export function updateTranslationErrors(bookDir, options = {}) {
       perfect,
       withDiscrepancies,
       totalDiscrepancies,
+      unexplainedDiscrepancies,
+      deferredLosses,
+      benignArtifacts,
       green,
     },
     modules,
@@ -155,7 +174,7 @@ export function updateTranslationErrors(bookDir, options = {}) {
 
   if (verbose) {
     console.error(
-      `Updated ${outputPath} [${track}]: ${perfect} PERFECT, ${withDiscrepancies} with discrepancies, ${skippedUntranslated} skipped (untranslated), ${totalDiscrepancies} total`
+      `Updated ${outputPath} [${track}]: ${perfect} PERFECT, ${withDiscrepancies} with discrepancies, ${skippedUntranslated} skipped (untranslated), ${totalDiscrepancies} total (${unexplainedDiscrepancies} unexplained, ${deferredLosses} deferred, ${benignArtifacts} benign)`
     );
   }
 

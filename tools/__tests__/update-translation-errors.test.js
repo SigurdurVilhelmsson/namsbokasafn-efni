@@ -130,4 +130,90 @@ describe('updateTranslationErrors', () => {
       totalDiscrepancies: 1,
     });
   });
+
+  describe('fidelity allowlist', () => {
+    function writeAllowlist(entries) {
+      fs.writeFileSync(path.join(bookDir, 'fidelity-allowlist.json'), JSON.stringify({ entries }));
+    }
+
+    it('is green with a benign-allowlisted discrepancy, and tags it in the manifest', () => {
+      writeAllowlist([
+        { moduleId: 'm2', tag: 'emphasis', diff: -1, class: 'benign', reason: 'artifact' },
+      ]);
+      writeModule('ch01', 'm1', PERFECT);
+      writeModule('ch01', 'm2', DISCREPANT); // drops <emphasis> => emphasis:-1
+
+      updateTranslationErrors(bookDir);
+      const section = readManifest().tracks['mt-preview'];
+
+      expect(section.summary.green).toBe(true);
+      expect(section.summary.unexplainedDiscrepancies).toBe(0);
+      expect(section.summary.benignArtifacts).toBe(1);
+
+      const mod = section.modules.find((m) => m.moduleId === 'm2');
+      expect(mod.discrepancies[0].status).toBe('benign');
+    });
+
+    it('is green with a known-loss-deferred discrepancy, but still counts it as deferred', () => {
+      const src = '<document><title>T</title>' + '<para>x</para>'.repeat(8) + '</document>';
+      const trans = '<document><title>T</title>' + '<para>x</para>'.repeat(1) + '</document>';
+      fs.mkdirSync(path.join(bookDir, '01-source', 'ch01'), { recursive: true });
+      fs.writeFileSync(path.join(bookDir, '01-source', 'ch01', 'm3.cnxml'), src);
+      fs.mkdirSync(path.join(bookDir, '03-translated', 'mt-preview', 'ch01'), {
+        recursive: true,
+      });
+      fs.writeFileSync(
+        path.join(bookDir, '03-translated', 'mt-preview', 'ch01', 'm3.cnxml'),
+        trans
+      );
+      writeAllowlist([
+        {
+          moduleId: 'm3',
+          tag: 'para',
+          diff: -7,
+          class: 'known-loss-deferred',
+          reason: 'nested para/list',
+          pointer: 'Track C',
+        },
+      ]);
+
+      updateTranslationErrors(bookDir);
+      const section = readManifest().tracks['mt-preview'];
+
+      expect(section.summary.green).toBe(true);
+      expect(section.summary.unexplainedDiscrepancies).toBe(0);
+      expect(section.summary.deferredLosses).toBe(7);
+
+      const mod = section.modules.find((m) => m.moduleId === 'm3');
+      expect(mod.discrepancies[0]).toMatchObject({
+        status: 'known-loss-deferred',
+        reason: 'nested para/list',
+        pointer: 'Track C',
+      });
+    });
+
+    it('is not green when a discrepancy is unlisted (unexplained)', () => {
+      const src = '<document><title>T</title><para><sub>2</sub></para></document>';
+      const trans = '<document><title>T</title><para>2</para></document>';
+      fs.mkdirSync(path.join(bookDir, '01-source', 'ch01'), { recursive: true });
+      fs.writeFileSync(path.join(bookDir, '01-source', 'ch01', 'm4.cnxml'), src);
+      fs.mkdirSync(path.join(bookDir, '03-translated', 'mt-preview', 'ch01'), {
+        recursive: true,
+      });
+      fs.writeFileSync(
+        path.join(bookDir, '03-translated', 'mt-preview', 'ch01', 'm4.cnxml'),
+        trans
+      );
+      // No allowlist file at all: nothing is pre-explained.
+
+      updateTranslationErrors(bookDir);
+      const section = readManifest().tracks['mt-preview'];
+
+      expect(section.summary.green).toBe(false);
+      expect(section.summary.unexplainedDiscrepancies).toBe(1);
+
+      const mod = section.modules.find((m) => m.moduleId === 'm4');
+      expect(mod.discrepancies[0].status).toBe('unexplained');
+    });
+  });
 });
