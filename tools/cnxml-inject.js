@@ -824,6 +824,7 @@ function annotateInlineTerms(isSegments, enSegments) {
         .replace(/\[\[b:([^\]]+)\]\]/g, '$1')
         .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '$1')
         .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '$1')
+        .replace(/\[\[[A-Za-z][\w]*:[^\]]*\]\]/g, '') // F6: drop MATH/MEDIA/any remaining placeholder
         .toLowerCase();
       termIndex++;
 
@@ -1663,6 +1664,7 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
               .replace(/\[\[b:([^\]]+)\]\]/g, '$1')
               .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '$1')
               .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '$1')
+              .replace(/\[\[[A-Za-z][\w]*:[^\]]*\]\]/g, '') // F6: drop remaining placeholder
               .trim()
               .toLowerCase();
             // Strip any __term__ markers from IS text for comparison

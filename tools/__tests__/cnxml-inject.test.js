@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   parseSegments,
+  annotateInlineTerms,
   reverseInlineMarkup,
   restoreMathMarkers,
   restoreMathBySeparators,
@@ -1231,5 +1232,23 @@ describe('buildNoteDom nested list in para (audit #33)', () => {
     expect(result).toContain('<list id="list-n"');
     expect(result).toContain('Liður eitt');
     expect(result).not.toContain('Item one original');
+  });
+});
+
+describe('annotateInlineTerms — F6 MATH placeholder', () => {
+  it('drops [[MATH:N]] from the EN annotation instead of lowercasing it', () => {
+    const en = new Map([['s1', '{{term}}standard enthalpy of formation [[MATH:23]]{{/term}}']]);
+    const is = new Map([['s1', '{{term}}staðalmyndunarvermi{{/term}}']]);
+    const { segments } = annotateInlineTerms(is, en);
+    const out = segments.get('s1');
+    expect(out).not.toMatch(/\[\[math:/i); // no [[math:23]] or [[MATH:23]]
+    expect(out).toContain('(e. standard enthalpy of formation'); // annotation still present
+  });
+
+  it('still unwraps [[sup:2]] to plain text in the annotation', () => {
+    const en = new Map([['s2', '{{term}}mol[[sup:2]]{{/term}}']]);
+    const is = new Map([['s2', '{{term}}mól{{/term}}']]);
+    const { segments } = annotateInlineTerms(is, en);
+    expect(segments.get('s2')).toContain('(e. mol2)');
   });
 });
