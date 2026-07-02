@@ -47,4 +47,12 @@ describe('classifyDiff', () => {
     };
     expect(classifyDiff('m3', 'sub', -1, bad).status).toBe('unexplained');
   });
+  it('is unexplained when a known-loss-deferred entry has no pointer (a real loss must stay tracked, not silently green)', () => {
+    const noPtr = {
+      entries: [
+        { moduleId: 'm4', tag: 'para', diff: -3, class: 'known-loss-deferred', reason: 'nested' },
+      ],
+    };
+    expect(classifyDiff('m4', 'para', -3, noPtr).status).toBe('unexplained');
+  });
 });

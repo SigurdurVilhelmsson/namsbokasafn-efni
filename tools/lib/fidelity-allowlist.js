@@ -23,6 +23,10 @@ export function classifyDiff(moduleId, tag, diff, allowlist) {
     (x) => x.moduleId === moduleId && x.tag === tag && x.diff === diff
   );
   if (!e || !VALID_CLASSES.has(e.class)) return { status: 'unexplained' };
+  // A real loss must stay tracked: a known-loss-deferred entry without a pointer
+  // would count as "explained" and keep the manifest green — an untracked loss,
+  // i.e. a weaker silent-green. Enforce the mandatory pointer here (fail-loud).
+  if (e.class === 'known-loss-deferred' && !e.pointer) return { status: 'unexplained' };
   const out = { status: e.class, reason: e.reason };
   if (e.pointer) out.pointer = e.pointer;
   return out;
