@@ -19,6 +19,7 @@ const fs = require('fs');
 const crypto = require('crypto');
 const log = require('../lib/logger');
 const pipelineStatus = require('./pipelineStatusService');
+const { listCnxmlFiles } = require('../../tools/lib/source-manifest.cjs');
 
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
 const TOOLS_DIR = path.join(PROJECT_ROOT, 'tools');
@@ -588,6 +589,17 @@ function computeSourceHash(book, chapter) {
 }
 
 /**
+ * F2 provenance guard: does this book already have CNXML under 01-source/?
+ * Used to refuse a server-triggered re-fetch over the irrevocable CC BY copies.
+ *
+ * @param {string} book - Book slug
+ * @returns {boolean}
+ */
+function isSourcePopulated(book) {
+  return listCnxmlFiles(path.join(BOOKS_DIR, book, '01-source')).length > 0;
+}
+
+/**
  * Check downstream work across an entire book (for source import guard).
  * Scans all chapters for extracted modules, faithful translations, and
  * localized content that could be invalidated by a source update.
@@ -902,6 +914,7 @@ module.exports = {
   getStageStatus,
   checkExtractionImpact,
   checkBookDownstreamWork,
+  isSourcePopulated,
   countApprovedEdits,
   computeSourceHash,
   TRACK_SOURCE_DIR,

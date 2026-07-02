@@ -335,6 +335,19 @@ router.post('/books/:slug/fetch-source', requireAuth, requireAdmin(), (req, res)
         .json({ error: 'No repo URL', message: 'Book has no GitHub repo URL configured' });
     }
 
+    // F2: never overwrite the irrevocable CC BY 01-source/ copies from the server.
+    // A deliberate re-fetch is a human CLI act (see CLAUDE.md double-consent) — delete
+    // 01-source/ by hand first, then re-run download-source.js --allow-overwrite-source.
+    if (pipeline.isSourcePopulated(slug)) {
+      return res.status(409).json({
+        error: 'Source already present',
+        message:
+          `Book '${slug}' already has CNXML in 01-source/. The server will not overwrite the ` +
+          `irrevocable CC BY provenance copies. To intentionally replace them, follow the ` +
+          `CLAUDE.md double-consent rule and re-fetch from the CLI.`,
+      });
+    }
+
     // Pre-check: warn about downstream work that could be invalidated
     if (!req.body.confirmed) {
       const impact = pipeline.checkBookDownstreamWork(slug);
