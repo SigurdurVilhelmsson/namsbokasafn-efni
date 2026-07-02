@@ -41,4 +41,10 @@ describe('classifyDiff', () => {
   it('is unexplained for an unlisted module/tag', () => {
     expect(classifyDiff('m9', 'sub', -1, AL).status).toBe('unexplained');
   });
+  it('is unexplained when a matched entry has an invalid class (typo → fail-loud, never silently escapes counting)', () => {
+    const bad = {
+      entries: [{ moduleId: 'm3', tag: 'sub', diff: -1, class: 'beneign', reason: 'typo' }],
+    };
+    expect(classifyDiff('m3', 'sub', -1, bad).status).toBe('unexplained');
+  });
 });
