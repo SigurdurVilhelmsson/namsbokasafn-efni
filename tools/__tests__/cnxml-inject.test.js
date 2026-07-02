@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import {
   parseSegments,
   annotateInlineTerms,
+  assertNoMarkerResidue,
   reverseInlineMarkup,
   restoreMathMarkers,
   restoreMathBySeparators,
@@ -1274,5 +1275,30 @@ describe('reverseInlineMarkup — F5 nested emphasis over link', () => {
     expect(out).not.toContain('[[');
     expect(out).toContain('<emphasis effect="bold">');
     expect(out).toContain('<link url="http://u">x</link>');
+  });
+});
+
+describe('assertNoMarkerResidue — F5/F6 gate', () => {
+  it('throws on a lowercased [[math:23]]', () => {
+    expect(() => assertNoMarkerResidue('<para>[[math:23]]</para>', 'm00001')).toThrow(
+      /marker residue/i
+    );
+  });
+  it('throws on a surviving [[i: emphasis marker', () => {
+    expect(() => assertNoMarkerResidue('<para>[[i:x]]</para>', 'm00001')).toThrow();
+  });
+  it('passes clean output', () => {
+    expect(() => assertNoMarkerResidue('<para>hreint</para>', 'm00001')).not.toThrow();
+  });
+  it('passes legit nested chemistry brackets (no word: prefix)', () => {
+    expect(() => assertNoMarkerResidue('<para>[[Ag(NH3)2]+]</para>', 'm00001')).not.toThrow();
+  });
+  it('does NOT fire on tolerated [[MATH:N]] / [[MEDIA:N]]', () => {
+    expect(() =>
+      assertNoMarkerResidue('<para>[[MATH:5]] [[MEDIA:2]]</para>', 'm00001')
+    ).not.toThrow();
+  });
+  it('does NOT fire on [[TABLE:…]] (deferred to F4)', () => {
+    expect(() => assertNoMarkerResidue('<para>[[TABLE:t1]]</para>', 'm00001')).not.toThrow();
   });
 });

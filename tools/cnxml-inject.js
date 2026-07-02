@@ -1481,6 +1481,31 @@ function collectBlockEquationIds(elements, idSet) {
   }
 }
 
+/**
+ * F5/F6 gate: fail loud if any marker-form placeholder [[TYPE:…]] survived into
+ * injected output. Marker-form (requires `word:`) so legit nested chemistry brackets
+ * like [[Ag(NH3)2]+] are not flagged.
+ *
+ * Carve-outs (all case-sensitive):
+ *  - [[MATH:N]] / [[MEDIA:N]] — pre-existing tolerant soft-report path (line ~1720).
+ *  - [[TABLE:…]] — deferred: expansion is F4 (extraction double-models the table as
+ *    both a section element and an inline ref; see the plan register). Until F4 lands
+ *    the placeholder legitimately survives, so it must not hard-fail here.
+ *
+ * @param {string} cnxml - assembled module output
+ * @param {string} moduleId
+ */
+function assertNoMarkerResidue(cnxml, moduleId) {
+  const residue = cnxml.match(/\[\[(?!MATH:|MEDIA:|TABLE:)[A-Za-z][\w]*:[^\]]*\]\]/g);
+  if (residue) {
+    const shown = [...new Set(residue)].slice(0, 10).join(', ');
+    throw new Error(
+      `Marker residue in injected output for ${moduleId}: ${shown} — a [[TYPE:…]] placeholder ` +
+        `was not converted. Fix the inject path before publishing.`
+    );
+  }
+}
+
 function buildCnxml(structure, segments, equations, originalCnxml, options = {}, inlineAttrs = {}) {
   const verbose = options.verbose || false;
 
@@ -1713,6 +1738,10 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
   // Examples/exercises preserve original CNXML (with inline media), and the
   // structure tree may also emit standalone media blocks for the same IDs.
   output = deduplicateMedia(output);
+
+  // F5/F6 gate: no [[TYPE:…]] marker residue may reach output (fail loud).
+  // [[TABLE:]] is carved out until F4 lands (see assertNoMarkerResidue).
+  assertNoMarkerResidue(output, structure.moduleId);
 
   // Verify: check for unresolved [[MATH:N]] placeholders in output
   const unresolvedMath = output.match(/\[\[MATH:(\d+)\]\]/g) || [];
@@ -3559,6 +3588,7 @@ export {
   restoreMathBySeparators,
   restoreNewlines,
   annotateInlineTerms,
+  assertNoMarkerResidue,
   parseSegments,
   reverseInlineMarkup,
   buildCnxml,
