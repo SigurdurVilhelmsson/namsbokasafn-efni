@@ -1146,37 +1146,45 @@ function reverseInlineMarkup(
   // leaf-level markers — those whose content has no [[ or ]] sequences.
   // Single brackets are allowed (e.g., chemical notation [NO], [O₃]).
   // After conversion, outer markers become leaf-level for the next iteration.
-  let bracketChanged = true;
-  while (bracketChanged) {
-    const before = result;
+  // Resolve leaf-level emphasis/sub/sup markers to a fixpoint, innermost-first.
+  // Called again after link conversion so [[i:[[link:…]]]] (emphasis wrapping a
+  // link) resolves once the inner link becomes a leaf (F5).
+  function resolveBracketEmphasis(s) {
+    let changed = true;
+    while (changed) {
+      const before = s;
 
-    // Leaf-level emphasis: [[i:text]] and [[b:text]] where text has no [[ or ]]
-    result = result.replace(
-      /\[\[i:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g,
-      '<emphasis effect="italics">$1</emphasis>'
-    );
-    result = result.replace(
-      /\[\[b:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g,
-      '<emphasis effect="bold">$1</emphasis>'
-    );
+      // Leaf-level emphasis: [[i:text]] and [[b:text]] where text has no [[ or ]]
+      s = s.replace(
+        /\[\[i:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g,
+        '<emphasis effect="italics">$1</emphasis>'
+      );
+      s = s.replace(
+        /\[\[b:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g,
+        '<emphasis effect="bold">$1</emphasis>'
+      );
 
-    // Leaf-level sub/sup: [[sub:content]] and [[sup:content]] where content has no [[ or ]].
-    // Inner legacy {{i}}/{{b}} handled for backward compat with older segments.
-    result = result.replace(/\[\[sub:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g, (match, content) => {
-      const inner = content
-        .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '<emphasis effect="bold">$1</emphasis>')
-        .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '<emphasis effect="italics">$1</emphasis>');
-      return `<sub>${inner}</sub>`;
-    });
-    result = result.replace(/\[\[sup:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g, (match, content) => {
-      const inner = content
-        .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '<emphasis effect="bold">$1</emphasis>')
-        .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '<emphasis effect="italics">$1</emphasis>');
-      return `<sup>${inner}</sup>`;
-    });
+      // Leaf-level sub/sup: [[sub:content]] and [[sup:content]] where content has no [[ or ]].
+      // Inner legacy {{i}}/{{b}} handled for backward compat with older segments.
+      s = s.replace(/\[\[sub:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g, (match, content) => {
+        const inner = content
+          .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '<emphasis effect="bold">$1</emphasis>')
+          .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '<emphasis effect="italics">$1</emphasis>');
+        return `<sub>${inner}</sub>`;
+      });
+      s = s.replace(/\[\[sup:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g, (match, content) => {
+        const inner = content
+          .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '<emphasis effect="bold">$1</emphasis>')
+          .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '<emphasis effect="italics">$1</emphasis>');
+        return `<sup>${inner}</sup>`;
+      });
 
-    bracketChanged = result !== before;
+      changed = s !== before;
+    }
+    return s;
   }
+
+  result = resolveBracketEmphasis(result);
 
   // Restore API-safe {{i}}text{{/i}} and {{b}}text{{/b}} emphasis markers to CNXML.
   // Legacy paired marker format — kept for backward compatibility.
@@ -1300,6 +1308,10 @@ function reverseInlineMarkup(
 
   // [[link:text|url]]
   result = result.replace(/\[\[link:([^\]|]+)\|([^\]]+)\]\]/g, '<link url="$2">$1</link>');
+
+  // F5: an emphasis marker that wrapped a link (e.g. [[i:[[link:…]]]]) is only now
+  // leaf-level (its inner link became a <link>). Re-resolve emphasis to catch it.
+  result = resolveBracketEmphasis(result);
 
   // BACKWARD COMPAT: Legacy link formats (for segments not yet re-translated)
   // Self-closing document cross-references (e.g., [m68674#fs-idm81346144])

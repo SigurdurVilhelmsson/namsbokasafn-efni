@@ -1252,3 +1252,27 @@ describe('annotateInlineTerms — F6 MATH placeholder', () => {
     expect(segments.get('s2')).toContain('(e. mol2)');
   });
 });
+
+describe('reverseInlineMarkup — F5 nested emphasis over link', () => {
+  const rev = (t) => reverseInlineMarkup(t, {}, [], [], null, []);
+
+  it('resolves [[i:[[link:text|url]]]] with no residue', () => {
+    const out = rev('See [[i:[[link:Handbook|http://x.org/h]]]] now');
+    expect(out).toContain(
+      '<emphasis effect="italics"><link url="http://x.org/h">Handbook</link></emphasis>'
+    );
+    expect(out).not.toContain('[[');
+  });
+
+  it('still resolves a plain [[link:text|url]]', () => {
+    const out = rev('[[link:Foo|http://y.org]]');
+    expect(out).toBe('<link url="http://y.org">Foo</link>');
+  });
+
+  it('resolves deeper [[b:[[i:[[link:x|u]]]]]] fully', () => {
+    const out = rev('[[b:[[i:[[link:x|http://u]]]]]]');
+    expect(out).not.toContain('[[');
+    expect(out).toContain('<emphasis effect="bold">');
+    expect(out).toContain('<link url="http://u">x</link>');
+  });
+});
