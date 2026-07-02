@@ -78,6 +78,50 @@ export function compareTagCounts(sourceCnxml, translatedCnxml) {
   return diffs;
 }
 
+/**
+ * Every id="..." in document order, first occurrence per id.
+ * @param {string} cnxml
+ * @returns {string[]}
+ */
+export function extractIdSequence(cnxml) {
+  const seq = [];
+  const seen = new Set();
+  const re = /\bid="([^"]+)"/g;
+  let m;
+  while ((m = re.exec(cnxml)) !== null) {
+    if (!seen.has(m[1])) {
+      seen.add(m[1]);
+      seq.push(m[1]);
+    }
+  }
+  return seq;
+}
+
+/**
+ * Compare the relative document order of ids common to source and translated CNXML.
+ * Add/drop (ids in only one side) is the tag-count check's job and is ignored here.
+ * Orthogonal to the tag-count/green/allowlist machinery (F1; do not wire into green).
+ *
+ * @param {string} sourceCnxml
+ * @param {string} translatedCnxml
+ * @returns {{ ok: boolean, moved: string[] }}
+ */
+export function compareElementOrder(sourceCnxml, translatedCnxml) {
+  const srcSeq = extractIdSequence(sourceCnxml);
+  const transSeq = extractIdSequence(translatedCnxml);
+  const srcSet = new Set(srcSeq);
+  const transSet = new Set(transSeq);
+
+  const srcCommon = srcSeq.filter((id) => transSet.has(id));
+  const transCommon = transSeq.filter((id) => srcSet.has(id));
+
+  const moved = [];
+  for (let i = 0; i < srcCommon.length; i++) {
+    if (srcCommon[i] !== transCommon[i]) moved.push(srcCommon[i]);
+  }
+  return { ok: moved.length === 0, moved };
+}
+
 // ─── CLI ────────────────────────────────────────────────────────────
 
 function formatChapter(chapter) {
