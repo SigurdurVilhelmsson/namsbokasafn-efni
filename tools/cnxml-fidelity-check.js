@@ -78,6 +78,50 @@ export function compareTagCounts(sourceCnxml, translatedCnxml) {
   return diffs;
 }
 
+/**
+ * Every id="..." in document order, first occurrence per id.
+ * @param {string} cnxml
+ * @returns {string[]}
+ */
+export function extractIdSequence(cnxml) {
+  const seq = [];
+  const seen = new Set();
+  const re = /\bid="([^"]+)"/g;
+  let m;
+  while ((m = re.exec(cnxml)) !== null) {
+    if (!seen.has(m[1])) {
+      seen.add(m[1]);
+      seq.push(m[1]);
+    }
+  }
+  return seq;
+}
+
+/**
+ * Compare the relative document order of ids common to source and translated CNXML.
+ * Add/drop (ids in only one side) is the tag-count check's job and is ignored here.
+ * Orthogonal to the tag-count/green/allowlist machinery (F1; do not wire into green).
+ *
+ * @param {string} sourceCnxml
+ * @param {string} translatedCnxml
+ * @returns {{ ok: boolean, moved: string[] }}
+ */
+export function compareElementOrder(sourceCnxml, translatedCnxml) {
+  const srcSeq = extractIdSequence(sourceCnxml);
+  const transSeq = extractIdSequence(translatedCnxml);
+  const srcSet = new Set(srcSeq);
+  const transSet = new Set(transSeq);
+
+  const srcCommon = srcSeq.filter((id) => transSet.has(id));
+  const transCommon = transSeq.filter((id) => srcSet.has(id));
+
+  const moved = [];
+  for (let i = 0; i < srcCommon.length; i++) {
+    if (srcCommon[i] !== transCommon[i]) moved.push(srcCommon[i]);
+  }
+  return { ok: moved.length === 0, moved };
+}
+
 // ─── CLI ────────────────────────────────────────────────────────────
 
 function formatChapter(chapter) {
@@ -224,6 +268,7 @@ function main() {
   let modulesWithDiffs = 0;
   let modulesPerfect = 0;
   let modulesSkipped = 0;
+  const orderMismatchModules = []; // F1: warn-only, never affects exit code
 
   for (const chapterDir of chapters) {
     const sourceDir = path.join(BOOKS_DIR, '01-source', chapterDir);
@@ -248,6 +293,17 @@ function main() {
       const sourceCnxml = fs.readFileSync(sourcePath, 'utf8');
       const translatedCnxml = fs.readFileSync(transPath, 'utf8');
       const diffs = compareTagCounts(sourceCnxml, translatedCnxml);
+
+      // F1: orthogonal, warn-only document-order check (not routed through green/allowlist).
+      const order = compareElementOrder(sourceCnxml, translatedCnxml);
+      if (!order.ok) {
+        orderMismatchModules.push(mod.moduleId);
+        const shown = order.moved.slice(0, 8).join(', ');
+        const more = order.moved.length > 8 ? ` …(+${order.moved.length - 8})` : '';
+        console.log(
+          `  ORDER [warn-only]: ${mod.moduleId} — ${order.moved.length} id(s) out of document order: ${shown}${more}`
+        );
+      }
 
       modulesChecked++;
 
@@ -294,7 +350,12 @@ function main() {
   console.log(
     `Total discrepancies: ${totalDiscrepancies} (${unexplainedDiscrepancies} unexplained)`
   );
+  console.log(
+    `Order check (warn-only): ${orderMismatchModules.length} module(s) with reordered content`
+  );
 
+  // Exit code is driven ONLY by unexplained tag-count discrepancies — the order
+  // check is warn-only until the affected modules are re-extracted/re-injected (WS5).
   process.exit(unexplainedDiscrepancies > 0 ? 1 : 0);
 }
 

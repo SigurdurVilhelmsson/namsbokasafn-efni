@@ -1,0 +1,22 @@
+<document xmlns="http://cnx.rice.edu/cnxml">
+
+<title>Order Test</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m00099</md:content-id>
+  <md:title>Order Test</md:title>
+  <md:abstract/>
+  <md:uuid>00000000-0000-0000-0000-000000000099</md:uuid>
+</metadata>
+
+<content>
+<section id="sec-outer">
+<title>Outer</title>
+<para id="para-intro">Intro paragraph before the subsection.</para>
+<section id="sec-inner">
+<title>Inner</title>
+<para id="para-inner">Paragraph inside the subsection.</para>
+</section>
+<para id="para-outro">Outro paragraph after the subsection.</para>
+</section>
+</content>
+</document>

@@ -497,3 +497,33 @@ describe('extract: iframe media capture', () => {
     expect(entry.src).toBe('');
   });
 });
+
+// ─── processSection document order (F1) ───────────────────────────
+
+describe('section content order (F1)', () => {
+  it('interleaves loose paras and nested subsections by document position', () => {
+    const cnxml = readFileSync(join(FIXTURES, 'interleaved-section.cnxml'), 'utf8');
+    const { structure } = extractSegments(cnxml, { moduleId: 'm00099' });
+
+    const outer = structure.content.find((c) => c.type === 'section' && c.id === 'sec-outer');
+    const order = outer.content.map((c) => `${c.type}:${c.id}`);
+
+    expect(order).toEqual(['para:para-intro', 'section:sec-inner', 'para:para-outro']);
+  });
+
+  it('keeps segment emission order (ids) stable — processing order unchanged', () => {
+    const cnxml = readFileSync(join(FIXTURES, 'interleaved-section.cnxml'), 'utf8');
+    const { segments } = extractSegments(cnxml, { moduleId: 'm00099' });
+
+    // Sections are still processed before loose content, so segment ids emit in this fixed order.
+    const ids = segments.map((s) => s.id);
+    expect(ids).toEqual([
+      'm00099:title:auto-1', // document <title> "Order Test"
+      'm00099:title:sec-outer-title',
+      'm00099:title:sec-inner-title',
+      'm00099:para:para-inner',
+      'm00099:para:para-intro',
+      'm00099:para:para-outro',
+    ]);
+  });
+});
