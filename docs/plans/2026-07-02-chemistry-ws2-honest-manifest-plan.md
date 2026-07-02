@@ -1,5 +1,11 @@
 # Chemistry WS2 — Fidelity Honest-Manifest Implementation Plan
 
+> **✅ STATUS: COMPLETE — PR #217** (branch `feat/chem-ws2-fidelity-honest-manifest`, 2026-07-02). All 4 tasks
+> shipped + reviewed (spec+quality per task, opus whole-branch). Manifest honest-green (mt-preview:
+> green:true, unexplained:0, deferredLosses:10 / 4 entries, benignArtifacts:34 = 44 total). Full suite
+> 1696 / validate 24/24. Plus the re-MT recovery (m68764 PERFECT, m68818 italics) + m68710 golden regen.
+> Overall clean-slate status + resume point: project memory `chemistry-clean-slate`.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax.
 
 **Goal:** Make the fidelity manifest *honest* — every discrepancy is either fixed or explicitly classified with a reason, so `green` means "zero **unexplained** discrepancies," and genuine reader-facing losses stay visibly counted (never silently allowlisted as benign).
