@@ -669,7 +669,12 @@ function processSection(
   // Remove title from content for further processing
   const contentWithoutTitle = section.content.replace(/<title>[\s\S]*?<\/title>/, '');
 
-  // Process nested sections first
+  // Collect subsections and loose content with document positions, then interleave.
+  // Processing order is unchanged (sections first) so segment ids stay stable; only
+  // the assembled content[] is sorted — mirrors the module level (cnxml-extract.js:497-525).
+  const itemsWithPositions = [];
+
+  // Process nested sections first (UNCHANGED processing order)
   const nestedSections = extractNestedElements(contentWithoutTitle, 'section');
   for (const nested of nestedSections) {
     const nestedStructure = processSection(
@@ -682,10 +687,11 @@ function processSection(
       inlineMediaMap,
       inlineTablesMap
     );
-    sectionStructure.content.push(nestedStructure);
+    const position = nested.fullMatch ? contentWithoutTitle.indexOf(nested.fullMatch) : 0;
+    itemsWithPositions.push({ item: nestedStructure, position: position !== -1 ? position : 0 });
   }
 
-  // Process other content (excluding nested sections)
+  // Process other content (excluding nested sections) — UNCHANGED processing order
   const contentWithoutSections = removeNestedElements(contentWithoutTitle, 'section');
   const elements = processTopLevelContent(
     contentWithoutSections,
@@ -697,7 +703,17 @@ function processSection(
     inlineMediaMap,
     inlineTablesMap
   );
-  sectionStructure.content.push(...elements);
+  for (const element of elements) {
+    const idStr = element.id ? `id="${element.id}"` : null;
+    const position = idStr ? contentWithoutTitle.indexOf(idStr) : 0;
+    itemsWithPositions.push({ item: element, position: position !== -1 ? position : 0 });
+  }
+
+  // Interleave by document position (the fix)
+  itemsWithPositions.sort((a, b) => a.position - b.position);
+  for (const { item } of itemsWithPositions) {
+    sectionStructure.content.push(item);
+  }
 
   return sectionStructure;
 }
