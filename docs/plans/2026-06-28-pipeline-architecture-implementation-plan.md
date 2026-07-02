@@ -626,6 +626,23 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
   cross-repo protocol). Per-book launch polish; `note-interactive` is a quick vefur win. Remove from
   `KNOWN_GAPS` as each gets a real rule.
 
+**From chemistry WS2 (fidelity honest-manifest, 2026-07-02 — `docs/plans/2026-07-02-chemistry-ws2-honest-manifest-plan.md`):**
+- **m68826 dropped note heading (`title:-1`) — real content loss, deferred.** The translated CNXML lost the
+  `<title>` "Statue of Liberty: Changing Colors" (a corrosion note/sidebar heading); source has 4 titles,
+  translated 3. Allowlisted `known-loss-deferred` in `books/efnafraedi-2e/fidelity-allowlist.json` so the
+  manifest stays honest, but the **root cause is unfixed** — investigate note-title extraction/injection
+  (does `cnxml-extract`/`cnxml-inject` handle a `<note>`/example `<title>` in this shape?). Reader-facing:
+  a section/sidebar heading is missing on the published page. `[fix]`.
+- **m68860 untranslated-English `<title>` residue.** The appendix module m68860's `title:+1` artifact
+  (duplicate heading) exposed an untranslated title — "Graphing the Dependence of y…" ships in **English**
+  alongside its Icelandic translation. WS1's residue scan (`scan-residue.js`) only covers **body segments**,
+  not titles, so title-level EN residue is currently undetected. Decide: extend the residue scan to titles,
+  or handle as a one-off. `[fix]`/`[decision]`.
+- *(Mechanism note, not a bug)*: the emphasis/sub/sup `:-N` discrepancies are **fidelity-checker counting
+  artifacts** (nested markers like `[[i:Q[[sub:sp]]]]` + the checker's own nested-emphasis normalization at
+  `cnxml-fidelity-check.js:45`), verified text-present — allowlisted `benign`. Not worth "fixing" in the
+  checker unless it becomes noisy for a new book.
+
 ---
 
 ## ★ Consolidated Backlog — Follow-ups & Tech-Debt (THE single triage list)
