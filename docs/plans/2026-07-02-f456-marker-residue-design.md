@@ -176,7 +176,31 @@ legit `[[Ag]]`-style non-marker bracket) does not.
 2. **Gate strictness** → hard-fail at inject time (robustness>expedience), armed for the batched
    re-inject.
 
+## Split outcome (2026-07-02): F4 deferred to its own PR
+
+F5, F6, and the gate shipped in this PR. **F4 was split out** (the lead-approved escape hatch fired)
+after its characterization test surfaced a **root cause deeper than an inject-side strip fix**:
+
+> **F4 root cause — extraction double-models inline tables.** In m68789, table `fs-idm121830912` is
+> captured **both** as a standalone structure element (`section#fs-idm273385984 > table#fs-idm121830912`,
+> emitted by the structure-tree walk via `buildTable`) **and** as an `inlineTables` entry referenced by
+> `[[TABLE:fs-idm121830912]]` inside a `problem` segment (`m68789:problem:fs-idm84914160`). So expanding
+> the placeholder inline is *additive* on top of the standalone emission → the table triples
+> (`table: 14→16`, all `tgroup/tbody/row/entry/colspec` inflated; verified via `compareTagCounts`).
+> The naive inject-side fix (expand + strip-only-non-para tables) passes an isolated synthetic exercise
+> but duplicates on real modules. **The real fix is likely at extraction** (`cnxml-extract.js`): a table
+> should be modelled *once* — either a structure element or an inline ref, not both — mirroring how
+> `figuresHandledInContainers` suppresses the standalone figure copy. F4's PR should start there, not
+> from an inject-side suppression hack.
+
+The gate ships with `[[TABLE:…]]` **carved out** (silent, not warn-plumbing) so the still-live TABLE
+residue doesn't hard-fail existing tests (the comparison test calls `buildCnxml` on m68789) or the
+future batched re-inject before F4 lands. **F4's PR flips TABLE from carve-out to hard-fail.**
+
 ## Out-of-scope finds to log (register: `docs/plans/2026-06-28-pipeline-architecture-implementation-plan.md`)
 
+- **F4 (deferred):** `[[TABLE:]]` inline expansion — root cause above (extraction double-modelling).
+  Fix at extraction; then remove the TABLE carve-out from `assertNoMarkerResidue`; re-inject the 6
+  modules (m68764/70/89/91/93, m68829) in the batched WS5 pass.
 - The gate only runs at inject time; today's committed `03-translated` still carries residue until the
   batched re-inject (WS5). Note in the WS5 runbook that the re-inject must pass the new gate.
