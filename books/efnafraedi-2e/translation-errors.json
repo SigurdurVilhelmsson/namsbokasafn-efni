@@ -1,9 +1,9 @@
 {
-  "generated": "2026-07-02T03:18:39.996Z",
+  "generated": "2026-07-02T03:47:22.503Z",
   "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]])",
   "tracks": {
     "mt-preview": {
-      "generated": "2026-07-02T03:18:39.996Z",
+      "generated": "2026-07-02T03:47:22.503Z",
       "tool": "cnxml-inject",
       "summary": {
         "totalSourceModules": 149,
@@ -12,7 +12,10 @@
         "perfect": 120,
         "withDiscrepancies": 29,
         "totalDiscrepancies": 44,
-        "green": false
+        "unexplainedDiscrepancies": 0,
+        "deferredLosses": 10,
+        "benignArtifacts": 34,
+        "green": true
       },
       "modules": [
         {
@@ -21,7 +24,9 @@
           "discrepancies": [
             {
               "tag": "emphasis",
-              "diff": -1
+              "diff": -1,
+              "status": "benign",
+              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
             }
           ]
         },
@@ -31,7 +36,9 @@
           "discrepancies": [
             {
               "tag": "term",
-              "diff": 1
+              "diff": 1,
+              "status": "benign",
+              "reason": "term-annotation / legacy {{term}} marker edge; term text present in prose"
             }
           ]
         },
@@ -41,7 +48,9 @@
           "discrepancies": [
             {
               "tag": "emphasis",
-              "diff": -1
+              "diff": -1,
+              "status": "benign",
+              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
             }
           ]
         },
@@ -51,7 +60,9 @@
           "discrepancies": [
             {
               "tag": "emphasis",
-              "diff": -1
+              "diff": -1,
+              "status": "benign",
+              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
             }
           ]
         },
@@ -61,7 +72,10 @@
           "discrepancies": [
             {
               "tag": "para",
-              "diff": -7
+              "diff": -7,
+              "status": "known-loss-deferred",
+              "reason": "nested para/list not fully preserved by inject",
+              "pointer": "Track C — nested para/list (docs/plans/2026-06-28-pipeline-architecture-implementation-plan.md)"
             }
           ]
         },
@@ -71,7 +85,9 @@
           "discrepancies": [
             {
               "tag": "emphasis",
-              "diff": -4
+              "diff": -4,
+              "status": "benign",
+              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
             }
           ]
         },
@@ -81,7 +97,9 @@
           "discrepancies": [
             {
               "tag": "emphasis",
-              "diff": -1
+              "diff": -1,
+              "status": "benign",
+              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
             }
           ]
         },
@@ -91,7 +109,9 @@
           "discrepancies": [
             {
               "tag": "term",
-              "diff": 1
+              "diff": 1,
+              "status": "benign",
+              "reason": "term-annotation / legacy {{term}} marker edge; term text present in prose"
             }
           ]
         },
@@ -101,7 +121,9 @@
           "discrepancies": [
             {
               "tag": "sub",
-              "diff": -1
+              "diff": -1,
+              "status": "benign",
+              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
             }
           ]
         },
@@ -111,7 +133,9 @@
           "discrepancies": [
             {
               "tag": "sub",
-              "diff": -1
+              "diff": -1,
+              "status": "benign",
+              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
             }
           ]
         },
@@ -121,7 +145,9 @@
           "discrepancies": [
             {
               "tag": "emphasis",
-              "diff": -1
+              "diff": -1,
+              "status": "benign",
+              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
             }
           ]
         },
@@ -131,7 +157,9 @@
           "discrepancies": [
             {
               "tag": "sub",
-              "diff": -1
+              "diff": -1,
+              "status": "benign",
+              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
             }
           ]
         },
@@ -141,7 +169,9 @@
           "discrepancies": [
             {
               "tag": "sub",
-              "diff": -2
+              "diff": -2,
+              "status": "benign",
+              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
             }
           ]
         },
@@ -151,7 +181,9 @@
           "discrepancies": [
             {
               "tag": "emphasis",
-              "diff": -1
+              "diff": -1,
+              "status": "benign",
+              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
             }
           ]
         },
@@ -161,7 +193,9 @@
           "discrepancies": [
             {
               "tag": "term",
-              "diff": -1
+              "diff": -1,
+              "status": "benign",
+              "reason": "term-annotation / legacy {{term}} marker edge; term text present in prose"
             }
           ]
         },
@@ -171,7 +205,9 @@
           "discrepancies": [
             {
               "tag": "sub",
-              "diff": -1
+              "diff": -1,
+              "status": "benign",
+              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
             }
           ]
         },
@@ -181,7 +217,9 @@
           "discrepancies": [
             {
               "tag": "emphasis",
-              "diff": -1
+              "diff": -1,
+              "status": "benign",
+              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
             }
           ]
         },
@@ -191,7 +229,9 @@
           "discrepancies": [
             {
               "tag": "emphasis",
-              "diff": 1
+              "diff": 1,
+              "status": "benign",
+              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
             }
           ]
         },
@@ -201,7 +241,9 @@
           "discrepancies": [
             {
               "tag": "emphasis",
-              "diff": -1
+              "diff": -1,
+              "status": "benign",
+              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
             }
           ]
         },
@@ -211,7 +253,10 @@
           "discrepancies": [
             {
               "tag": "para",
-              "diff": -1
+              "diff": -1,
+              "status": "known-loss-deferred",
+              "reason": "nested para/list not fully preserved by inject",
+              "pointer": "Track C — nested para/list (docs/plans/2026-06-28-pipeline-architecture-implementation-plan.md)"
             }
           ]
         },
@@ -221,7 +266,9 @@
           "discrepancies": [
             {
               "tag": "sub",
-              "diff": -1
+              "diff": -1,
+              "status": "benign",
+              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
             }
           ]
         },
@@ -231,7 +278,10 @@
           "discrepancies": [
             {
               "tag": "title",
-              "diff": -1
+              "diff": -1,
+              "status": "known-loss-deferred",
+              "reason": "dropped note heading 'Statue of Liberty: Changing Colors'",
+              "pointer": "note-title drop 'Statue of Liberty: Changing Colors' — investigate note-title extraction/inject (WS2 register)"
             }
           ]
         },
@@ -241,11 +291,15 @@
           "discrepancies": [
             {
               "tag": "emphasis",
-              "diff": -1
+              "diff": -1,
+              "status": "benign",
+              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
             },
             {
               "tag": "sub",
-              "diff": -1
+              "diff": -1,
+              "status": "benign",
+              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
             }
           ]
         },
@@ -255,11 +309,15 @@
           "discrepancies": [
             {
               "tag": "emphasis",
-              "diff": -2
+              "diff": -2,
+              "status": "benign",
+              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
             },
             {
               "tag": "sup",
-              "diff": -1
+              "diff": -1,
+              "status": "benign",
+              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
             }
           ]
         },
@@ -269,7 +327,9 @@
           "discrepancies": [
             {
               "tag": "emphasis",
-              "diff": -1
+              "diff": -1,
+              "status": "benign",
+              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
             }
           ]
         },
@@ -279,7 +339,9 @@
           "discrepancies": [
             {
               "tag": "emphasis",
-              "diff": -1
+              "diff": -1,
+              "status": "benign",
+              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
             }
           ]
         },
@@ -289,7 +351,10 @@
           "discrepancies": [
             {
               "tag": "link",
-              "diff": -1
+              "diff": -1,
+              "status": "known-loss-deferred",
+              "reason": "cross-reference (xref/docref) dropped at inject",
+              "pointer": "inject xref/docref restore — Track B/C (docs/plans/2026-06-28-pipeline-architecture-implementation-plan.md)"
             }
           ]
         },
@@ -299,11 +364,15 @@
           "discrepancies": [
             {
               "tag": "emphasis",
-              "diff": 2
+              "diff": 2,
+              "status": "benign",
+              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
             },
             {
               "tag": "title",
-              "diff": 1
+              "diff": 1,
+              "status": "benign",
+              "reason": "duplicate-title artifact (untranslated + translated heading both emitted); no content loss"
             }
           ]
         },
@@ -313,7 +382,9 @@
           "discrepancies": [
             {
               "tag": "emphasis",
-              "diff": 1
+              "diff": 1,
+              "status": "benign",
+              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
             }
           ]
         }

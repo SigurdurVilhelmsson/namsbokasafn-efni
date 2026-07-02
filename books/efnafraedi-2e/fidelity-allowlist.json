@@ -1,0 +1,233 @@
+{
+  "_comment": "WS2 honest-manifest allowlist. class: benign (not a real loss) | known-loss-deferred (real loss, tracked via pointer). Exact match on moduleId+tag+diff; any drift → unexplained (red). See docs/plans/2026-07-02-chemistry-ws2-honest-manifest-plan.md.",
+  "entries": [
+    {
+      "moduleId": "m68700",
+      "tag": "emphasis",
+      "diff": -1,
+      "class": "benign",
+      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+    },
+    {
+      "moduleId": "m68709",
+      "tag": "term",
+      "diff": 1,
+      "class": "benign",
+      "reason": "term-annotation / legacy {{term}} marker edge; term text present in prose"
+    },
+    {
+      "moduleId": "m68710",
+      "tag": "emphasis",
+      "diff": -1,
+      "class": "benign",
+      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+    },
+    {
+      "moduleId": "m68716",
+      "tag": "emphasis",
+      "diff": -1,
+      "class": "benign",
+      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+    },
+    {
+      "moduleId": "m68727",
+      "tag": "para",
+      "diff": -7,
+      "class": "known-loss-deferred",
+      "reason": "nested para/list not fully preserved by inject",
+      "pointer": "Track C — nested para/list (docs/plans/2026-06-28-pipeline-architecture-implementation-plan.md)"
+    },
+    {
+      "moduleId": "m68733",
+      "tag": "emphasis",
+      "diff": -4,
+      "class": "benign",
+      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+    },
+    {
+      "moduleId": "m68734",
+      "tag": "emphasis",
+      "diff": -1,
+      "class": "benign",
+      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+    },
+    {
+      "moduleId": "m68735",
+      "tag": "term",
+      "diff": 1,
+      "class": "benign",
+      "reason": "term-annotation / legacy {{term}} marker edge; term text present in prose"
+    },
+    {
+      "moduleId": "m68741",
+      "tag": "sub",
+      "diff": -1,
+      "class": "benign",
+      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+    },
+    {
+      "moduleId": "m68752",
+      "tag": "sub",
+      "diff": -1,
+      "class": "benign",
+      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+    },
+    {
+      "moduleId": "m68768",
+      "tag": "emphasis",
+      "diff": -1,
+      "class": "benign",
+      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+    },
+    {
+      "moduleId": "m68781",
+      "tag": "sub",
+      "diff": -1,
+      "class": "benign",
+      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+    },
+    {
+      "moduleId": "m68783",
+      "tag": "sub",
+      "diff": -2,
+      "class": "benign",
+      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+    },
+    {
+      "moduleId": "m68786",
+      "tag": "emphasis",
+      "diff": -1,
+      "class": "benign",
+      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+    },
+    {
+      "moduleId": "m68789",
+      "tag": "term",
+      "diff": -1,
+      "class": "benign",
+      "reason": "term-annotation / legacy {{term}} marker edge; term text present in prose"
+    },
+    {
+      "moduleId": "m68791",
+      "tag": "sub",
+      "diff": -1,
+      "class": "benign",
+      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+    },
+    {
+      "moduleId": "m68793",
+      "tag": "emphasis",
+      "diff": -1,
+      "class": "benign",
+      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+    },
+    {
+      "moduleId": "m68805",
+      "tag": "emphasis",
+      "diff": 1,
+      "class": "benign",
+      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+    },
+    {
+      "moduleId": "m68811",
+      "tag": "emphasis",
+      "diff": -1,
+      "class": "benign",
+      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+    },
+    {
+      "moduleId": "m68818",
+      "tag": "para",
+      "diff": -1,
+      "class": "known-loss-deferred",
+      "reason": "nested para/list not fully preserved by inject",
+      "pointer": "Track C — nested para/list (docs/plans/2026-06-28-pipeline-architecture-implementation-plan.md)"
+    },
+    {
+      "moduleId": "m68822",
+      "tag": "sub",
+      "diff": -1,
+      "class": "benign",
+      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+    },
+    {
+      "moduleId": "m68826",
+      "tag": "title",
+      "diff": -1,
+      "class": "known-loss-deferred",
+      "reason": "dropped note heading 'Statue of Liberty: Changing Colors'",
+      "pointer": "note-title drop 'Statue of Liberty: Changing Colors' — investigate note-title extraction/inject (WS2 register)"
+    },
+    {
+      "moduleId": "m68844",
+      "tag": "emphasis",
+      "diff": -1,
+      "class": "benign",
+      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+    },
+    {
+      "moduleId": "m68844",
+      "tag": "sub",
+      "diff": -1,
+      "class": "benign",
+      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+    },
+    {
+      "moduleId": "m68846",
+      "tag": "emphasis",
+      "diff": -2,
+      "class": "benign",
+      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+    },
+    {
+      "moduleId": "m68846",
+      "tag": "sup",
+      "diff": -1,
+      "class": "benign",
+      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+    },
+    {
+      "moduleId": "m68847",
+      "tag": "emphasis",
+      "diff": -1,
+      "class": "benign",
+      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+    },
+    {
+      "moduleId": "m68848",
+      "tag": "emphasis",
+      "diff": -1,
+      "class": "benign",
+      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+    },
+    {
+      "moduleId": "m68854",
+      "tag": "link",
+      "diff": -1,
+      "class": "known-loss-deferred",
+      "reason": "cross-reference (xref/docref) dropped at inject",
+      "pointer": "inject xref/docref restore — Track B/C (docs/plans/2026-06-28-pipeline-architecture-implementation-plan.md)"
+    },
+    {
+      "moduleId": "m68860",
+      "tag": "emphasis",
+      "diff": 2,
+      "class": "benign",
+      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+    },
+    {
+      "moduleId": "m68860",
+      "tag": "title",
+      "diff": 1,
+      "class": "benign",
+      "reason": "duplicate-title artifact (untranslated + translated heading both emitted); no content loss"
+    },
+    {
+      "moduleId": "m68863",
+      "tag": "emphasis",
+      "diff": 1,
+      "class": "benign",
+      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+    }
+  ]
+}
