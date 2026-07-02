@@ -216,4 +216,27 @@ describe('organizeSourceFiles', () => {
     expect(result.mediaCount).toBe(0);
     expect(result.moduleCount).toBe(9);
   });
+
+  it('refuses to overwrite a populated 01-source/ by default', () => {
+    const structure = parseCollectionXml(SAMPLE_COLLECTION_XML);
+    organizeSourceFiles({ extractedDir, sourceDir, structure, verbose: false }); // populate once
+
+    expect(() =>
+      organizeSourceFiles({ extractedDir, sourceDir, structure, verbose: false })
+    ).toThrow(/Refusing to overwrite populated 01-source/);
+  });
+
+  it('allows overwrite when allowOverwrite:true', () => {
+    const structure = parseCollectionXml(SAMPLE_COLLECTION_XML);
+    organizeSourceFiles({ extractedDir, sourceDir, structure, verbose: false });
+
+    const result = organizeSourceFiles({
+      extractedDir,
+      sourceDir,
+      structure,
+      verbose: false,
+      allowOverwrite: true,
+    });
+    expect(result.moduleCount).toBe(9);
+  });
 });

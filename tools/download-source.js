@@ -19,6 +19,10 @@ import { execFileSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+const { listCnxmlFiles } = require('./lib/source-manifest.cjs');
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -72,11 +76,14 @@ function parseArgs(argv) {
       case '--verbose':
         args.verbose = true;
         break;
+      case '--allow-overwrite-source':
+        args.allowOverwrite = true;
+        break;
     }
   }
   if (!args.repo || !args.collection || !args.book) {
     console.error(
-      'Usage: node download-source.js --repo OWNER/REPO --collection FILE --book SLUG [--branch main] [--verbose]'
+      'Usage: node download-source.js --repo OWNER/REPO --collection FILE --book SLUG [--branch main] [--verbose] [--allow-overwrite-source]'
     );
     process.exit(1);
   }
@@ -173,7 +180,25 @@ export function parseCollectionXml(xml) {
  * @param {boolean} params.verbose - Whether to log progress
  * @returns {{ moduleCount: number, mediaCount: number, warnings: string[] }}
  */
-export function organizeSourceFiles({ extractedDir, sourceDir, structure, verbose }) {
+export function organizeSourceFiles({
+  extractedDir,
+  sourceDir,
+  structure,
+  verbose,
+  allowOverwrite = false,
+}) {
+  // F2 provenance guard: never silently overwrite the irrevocable CC BY copies.
+  const existingCnxml = listCnxmlFiles(sourceDir);
+  if (existingCnxml.length > 0 && !allowOverwrite) {
+    const book = path.basename(path.dirname(sourceDir));
+    throw new Error(
+      `Refusing to overwrite populated 01-source/ for '${book}' (${existingCnxml.length} CNXML ` +
+        `files present). These are the irrevocable CC BY provenance copies. To intentionally ` +
+        `replace them, follow the CLAUDE.md double-consent rule, delete 01-source/ by hand, then ` +
+        `re-run with --allow-overwrite-source.`
+    );
+  }
+
   const modulesDir = path.join(extractedDir, 'modules');
   const mediaDir = path.join(extractedDir, 'media');
   const warnings = [];
@@ -399,7 +424,13 @@ async function main() {
 
     // Step 4: Organize files into 01-source/
     fs.mkdirSync(sourceDir, { recursive: true });
-    const result = organizeSourceFiles({ extractedDir, sourceDir, structure, verbose });
+    const result = organizeSourceFiles({
+      extractedDir,
+      sourceDir,
+      structure,
+      verbose,
+      allowOverwrite: args.allowOverwrite === true,
+    });
 
     // Log warnings for missing modules
     for (const warning of result.warnings) {
