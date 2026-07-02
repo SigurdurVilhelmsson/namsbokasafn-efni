@@ -575,6 +575,17 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
     `config.js` missing-secret warning, not this). The scary framing in the original (d) was wrong. **Lead
     chose the run-once migration-ledger fix** (schema_migrations table + backfill for existing DBs) — its own
     PR, separate from d1.
+    **(f) [MED] cwd-relative `books/…` paths in `tools/lib` → live-preview 500 risk — ✅ FIXED.** The
+    `renderService.test.js` "local-fails/CI-passes" was NOT a data issue: `loadEmbedMapping` used
+    `path.join('books', …)` resolved against **process.cwd()**, so it returned `{}` unless run from the repo
+    root (my `cd server && vitest` invocation was the wrong cwd; CI runs from root). But the same pattern bites
+    the **server**: it starts `cd server && npm start` (cwd=server/), so `loadEmbedMapping` (embed modules) AND
+    `book-rendering-config.readBookConfigFile` (EVERY book — `getBookRenderConfig` throws when config missing)
+    would 500 live preview. Currently masked ONLY because prod's systemd `WorkingDirectory` is the repo root —
+    the code shouldn't rely on that. Fixed all three cwd-relative sites (`embed-mapping.js`,
+    `book-rendering-config.js`, `parseArgs.js`) to resolve `books/` via `import.meta.url` (repo root), + a
+    chdir-to-tmp regression test. efnafraedi (live) has no embeds so no live impact today; this unblocks biology
+    embed live-preview. Same *class* as the #210 DB-path bug (cwd/path fragility masked by happenstance env).
     **(e) [LOW/hygiene] stale generated docs** — `npm run docs:generate` produces uncommitted diffs in
     `docs/_generated/routes.md` + `tools.md` (propagation routes, term-mining `/mine*` reorder, `import-mt`
     removal — drift from earlier PRs that never regenerated). The `docs-check` job only runs on
@@ -625,6 +636,24 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
   `KNOWN_GAPS` + **vefur memory `css-cross-book-gaps`** (the actionable list lives in the vefur repo, per
   cross-repo protocol). Per-book launch polish; `note-interactive` is a quick vefur win. Remove from
   `KNOWN_GAPS` as each gets a real rule.
+
+**From chemistry WS1 (EN-residue scan, 2026-07-01 — `docs/plans/2026-07-01-chemistry-ws1-residue-scan-plan.md`):**
+- **A2 `detectResidue` false-positives on chemistry answer-key / formula cells** — the content-word
+  floor (`residue-check.js:48`, alphabetic tokens ≥3 letters) is defeated by **3-letter unit
+  abbreviations** (`amu`, `atm`, `kPa`, `torr`, `bar`, `rem`, `rad`) and **chemical-formula letter
+  clusters** (`CrP`, `HgS`): after `normalizeForComparison` strips digits/symbols, a *correctly-localized*
+  numeric cell (EN `12.01 amu` → IS `12,01 amu`, decimal `.`→`,`) collapses to `amu amu…` on both sides
+  and flags as exact residue. The whole-book chemistry scan produced **24 such false positives** (13
+  modules) + scientist proper-name note-titles (`Dorothy Crowfoot Hodgkin`) — **0 genuine body residues**.
+  Recalibration candidates: a unit/symbol stop-list, or treat a decimal `,`/`.` swap as positive evidence
+  of localization. Low urgency (noise, never wrong content), but it means a residue *gate* would cry wolf
+  on chemistry answer keys — relevant before wiring residue into CI or the editor save path (A2-c). Also
+  bears on biology (species Latin binomials would similarly false-positive). `[fix]` detector calibration.
+- **`requireBook()` resolves `books/<slug>` against `process.cwd()`** — `parseArgs.js:49`
+  (`fs.existsSync(path.join('books', args.book))`) is cwd-relative while every tool's own resource paths
+  are now `import.meta.url`-rooted (#213). Running a `--book` tool from a non-repo-root cwd falsely
+  rejects a valid book. Shared by ~21 tools; masked in prod only by systemd `WorkingDirectory`. Same class
+  as #210/#213/f. `[fix]` own PR (shared-lib change; split from any enforcement).
 
 **From chemistry WS2 (fidelity honest-manifest, 2026-07-02 — `docs/plans/2026-07-02-chemistry-ws2-honest-manifest-plan.md`):**
 - **m68826 dropped note heading (`title:-1`) — real content loss, deferred.** The translated CNXML lost the

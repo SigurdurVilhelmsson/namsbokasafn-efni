@@ -126,4 +126,25 @@ function runAllMigrations() {
   return { applied, skipped, errors };
 }
 
-module.exports = { runAllMigrations };
+/**
+ * Fail loud on migration errors: report them and exit non-zero so a broken
+ * schema never silently serves. Called by server boot (index.js) and the E2E
+ * seed (seed-fixture.js).
+ *
+ * Fatal in ALL environments by design: migrations are idempotent (their re-run
+ * is asserted clean by migrationIdempotency.test.js in CI), so a non-empty
+ * `errors` here means a genuinely broken schema, not benign re-run noise.
+ *
+ * `exit`/`onError` are injectable for testing.
+ *
+ * @param {{errors: string[]}} result - the return value of runAllMigrations()
+ * @param {{exit?: (code: number) => void, onError?: (errors: string[]) => void}} [deps]
+ */
+function failLoudOnMigrationErrors(result, { exit = process.exit, onError } = {}) {
+  if (result && result.errors && result.errors.length > 0) {
+    if (onError) onError(result.errors);
+    exit(1);
+  }
+}
+
+module.exports = { runAllMigrations, failLoudOnMigrationErrors };

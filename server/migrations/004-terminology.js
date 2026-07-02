@@ -6,6 +6,8 @@
  * - Localization suggestions (auto-detected changes)
  */
 
+const { createIndexIfColumnsExist } = require('../lib/migrationSchema');
+
 module.exports = {
   name: '004-terminology',
 
@@ -32,16 +34,16 @@ module.exports = {
         updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         UNIQUE(english, book_id)
       );
-
-      CREATE INDEX IF NOT EXISTS idx_terminology_terms_book
-        ON terminology_terms(book_id);
-      CREATE INDEX IF NOT EXISTS idx_terminology_terms_english
-        ON terminology_terms(english);
-      CREATE INDEX IF NOT EXISTS idx_terminology_terms_status
-        ON terminology_terms(status);
-      CREATE INDEX IF NOT EXISTS idx_terminology_terms_category
-        ON terminology_terms(category);
     `);
+
+    createIndexIfColumnsExist(db, 'idx_terminology_terms_book', 'terminology_terms', ['book_id']);
+    createIndexIfColumnsExist(db, 'idx_terminology_terms_english', 'terminology_terms', [
+      'english',
+    ]);
+    createIndexIfColumnsExist(db, 'idx_terminology_terms_status', 'terminology_terms', ['status']);
+    createIndexIfColumnsExist(db, 'idx_terminology_terms_category', 'terminology_terms', [
+      'category',
+    ]);
 
     // Create terminology_discussions table
     db.exec(`
@@ -55,10 +57,12 @@ module.exports = {
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (term_id) REFERENCES terminology_terms(id) ON DELETE CASCADE
       );
-
-      CREATE INDEX IF NOT EXISTS idx_terminology_discussions_term
-        ON terminology_discussions(term_id);
     `);
+
+    // Guarded: migration 032 (terminology redesign) later removes term_id.
+    createIndexIfColumnsExist(db, 'idx_terminology_discussions_term', 'terminology_discussions', [
+      'term_id',
+    ]);
 
     // Create terminology_imports table
     db.exec(`
@@ -95,14 +99,23 @@ module.exports = {
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (section_id) REFERENCES book_sections(id) ON DELETE CASCADE
       );
-
-      CREATE INDEX IF NOT EXISTS idx_localization_suggestions_section
-        ON localization_suggestions(section_id);
-      CREATE INDEX IF NOT EXISTS idx_localization_suggestions_status
-        ON localization_suggestions(status);
-      CREATE INDEX IF NOT EXISTS idx_localization_suggestions_type
-        ON localization_suggestions(suggestion_type);
     `);
+
+    createIndexIfColumnsExist(
+      db,
+      'idx_localization_suggestions_section',
+      'localization_suggestions',
+      ['section_id']
+    );
+    createIndexIfColumnsExist(
+      db,
+      'idx_localization_suggestions_status',
+      'localization_suggestions',
+      ['status']
+    );
+    createIndexIfColumnsExist(db, 'idx_localization_suggestions_type', 'localization_suggestions', [
+      'suggestion_type',
+    ]);
 
     // Create trigger to update terminology_terms.updated_at
     db.exec(`

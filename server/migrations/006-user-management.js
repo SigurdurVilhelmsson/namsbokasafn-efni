@@ -8,6 +8,8 @@
  * This allows managing user roles in-app instead of via GitHub teams.
  */
 
+const { createIndexIfColumnsExist } = require('../lib/migrationSchema');
+
 module.exports = {
   name: '006-user-management',
 
@@ -28,16 +30,14 @@ module.exports = {
         updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         last_login_at DATETIME
       );
-
-      CREATE INDEX IF NOT EXISTS idx_users_github_id
-        ON users(github_id);
-      CREATE INDEX IF NOT EXISTS idx_users_github_username
-        ON users(github_username);
-      CREATE INDEX IF NOT EXISTS idx_users_role
-        ON users(role);
-      CREATE INDEX IF NOT EXISTS idx_users_is_active
-        ON users(is_active);
     `);
+
+    // Indexes are guarded: migration 022 later renames github_id/github_username
+    // → provider_id/provider_username, so on a re-run those columns are gone.
+    createIndexIfColumnsExist(db, 'idx_users_github_id', 'users', ['github_id']);
+    createIndexIfColumnsExist(db, 'idx_users_github_username', 'users', ['github_username']);
+    createIndexIfColumnsExist(db, 'idx_users_role', 'users', ['role']);
+    createIndexIfColumnsExist(db, 'idx_users_is_active', 'users', ['is_active']);
 
     // Create user_book_access table for book-level permissions
     db.exec(`
@@ -51,12 +51,10 @@ module.exports = {
         FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
         UNIQUE(user_id, book_slug)
       );
-
-      CREATE INDEX IF NOT EXISTS idx_user_book_access_user
-        ON user_book_access(user_id);
-      CREATE INDEX IF NOT EXISTS idx_user_book_access_book
-        ON user_book_access(book_slug);
     `);
+
+    createIndexIfColumnsExist(db, 'idx_user_book_access_user', 'user_book_access', ['user_id']);
+    createIndexIfColumnsExist(db, 'idx_user_book_access_book', 'user_book_access', ['book_slug']);
 
     // Create trigger to update users.updated_at
     db.exec(`
