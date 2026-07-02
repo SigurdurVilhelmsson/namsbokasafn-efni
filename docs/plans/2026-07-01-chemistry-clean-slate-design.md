@@ -205,3 +205,68 @@ Each WS = its own PR off `main`; local `npm test` from repo root is the gate.
 - WS2 honest-manifest **allowlist is mandatory** (not a prose note).
 - WS4 substitution applied at **inject** (not render).
 - Faithful/TM/localized tracks stay out (human Pass-1, adoption-bound).
+
+---
+
+## Re-prioritization after Fable-5 fidelity review (2026-07-02)
+
+A multi-agent **Claude Fable 5** review of the fidelity/provenance pipeline (11 agents, adversarially
+verified, top claims hand-spot-checked; full report: **`docs/audit/2026-07-02-fable5-fidelity-provenance-review.md`**)
+found that **"119/148 PERFECT / green" is not a losslessness guarantee** — the check compares only the
+opening-tag-name multiset (MathML collapsed, attributes/text/**order** ignored). Real reader-visible
+corruption is live inside the PERFECT/benign/green labels. 22 findings survived → 15 ranked (13 CONFIRMED,
+2 PLAUSIBLE). **This does not replace WS1–WS5; it re-sequences them, because several findings are
+prerequisites to this plan's own remaining workstreams and one reopens WS2.**
+
+### How the findings attach to the existing workstreams
+- **WS2 (was ✅ done) is REOPENED** by **F3** (the 28 `benign` allowlist entries were classified by tag
+  *family* with boilerplate reasons, never instance-verified; ≥6 mask byte-verified glossary `<sub>`
+  corruption, incl. the **faithful** track) and **F7** (allowlist matches a bare signed integer → track-,
+  cause-, and netting-blind). The manifest *arithmetic* stands; the *classifications* and the check's *scope*
+  don't. WS2's own DoD ("green is honest") is not yet met.
+- **WS4 (math labels) gains a prerequisite: F8** — all MathML is stripped before counting, so WS4's
+  `<m:mtext>`/`<m:mi>` edits are invisible to certification. Add normalized-math-content hashing to the
+  fidelity check *before or with* WS4.
+- **WS5 (delivery re-render) is now gated on F1 + F4/F5/F6**, not just WS1/2/4 — a re-render re-bakes the
+  scramble (F1) and re-emits the marker residue (F4/F5/F6) into published HTML.
+- **F2 is new and standalone** (server provenance safety) — no workstream owns it, but "clean slate before
+  biology" requires it.
+
+### DO NOW — blocks biology onboarding and/or the WS5 re-render
+1. **F2 — guard `01-source/`** (`server/routes/admin.js` fetch-source; `pipelineService.js:598–637`;
+   `tools/download-source.js`). Single generic `confirmed:true` (zero when no faithful segments) can overwrite
+   the irrevocable CC BY copies; triple-consent rule unenforced in code; no `01-source` checksum. **Only
+   irreversible risk on the list — do first.** Refuse-overwrite + commit a SHA-256 manifest CI verifies.
+2. **F1 — fix extract section ordering** (`cnxml-extract.js:685` `processSection` — port the top-level
+   position-sort ~512–525) **+ add an id-order (LCS) check to the fidelity check.** ~15–36 PERFECT modules
+   publish scrambled order (verified m68702, m68833). Deterministic → will corrupt biology and re-bake on WS5.
+3. **F4/F5/F6 — three marker-residue inject bugs** (`cnxml-inject.js` ~1136 `[[TABLE:]]`, ~1154 nested
+   `[[i:[[link:]]]]`, ~827 lowercased `[[math:N]]`) **+ add a "no `[[` in output" assertion to the
+   completeness gate.** Verified live in `05-publication/` HTML. Must be clean before the WS5 re-render.
+4. **F3 — re-triage all 28 `benign` allowlist entries** with a real per-instance source-vs-output text diff
+   (one-off script), and fix the glossary `<sub>`/emphasis re-anchoring in inject. **Closes WS2's actual
+   honesty gap.**
+5. **F8 — normalized-math-content hashing in the fidelity check** — do *with* WS4 (its only safety net when
+   editing equations).
+
+### FOLLOW-UP — non-blocking (robustness; after the clean slate is delivered)
+- **F7** allowlist track + cause-fingerprint; **F9** `<link>` attribute (`document`/`target-id`/`url`) check
+  (already one live broken cross-doc link, m68692); **F10** give the **faithful** track its own manifest
+  record; **F11** capture note-nested tables/equations in position at extract; **F12** `--strict` nonzero exit
+  on skipped/zero-checked; **F13** count closing tags + allow hyphenated element names; **F14** make
+  known-loss pointers repo-relative + resolvable; **F15** read the manifest `generated` timestamp, don't trust
+  `green` alone (merge=ours staleness window).
+- **Two un-reviewed surfaces = future Fable-5 targets** (use sparingly): a systematic **`server/` authz pass**
+  (F2 hints at more unenforced-guard gaps of that class) and the **vefur / cross-repo seam**. Neither was in
+  this review's scope (pipeline-tools only; server touched only where it intersected CC-BY provenance).
+
+### Revised sequencing
+1. **F2** (standalone, urgent, small) → land first.
+2. **F1 + F4/F5/F6 + the completeness-gate `[[` assertion** → these gate WS5.
+3. **F3** benign re-triage + inject `<sub>` fix → completes WS2's honesty DoD.
+4. **WS4 + F8 together** (math-label map from lead + math-content hashing guard).
+5. **WS5 last** — backfill re-render (now emitting corrected order + no residue) + Phase-3 hand-off.
+   **⚠️ Do not run the Phase-3 sync/deploy until steps 1–4 land, or it re-publishes the corruption.**
+
+> Amended Definition of Done: WS2's "green is honest" now additionally requires the benign class to be
+> instance-verified (F3) and the check to cover order (F1) and math content (F8) — not just tag-name counts.
