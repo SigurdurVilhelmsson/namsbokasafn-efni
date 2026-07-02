@@ -1276,3 +1276,50 @@ describe('reverseInlineMarkup — F5 nested emphasis over link', () => {
     expect(out).toContain('<link url="http://u">x</link>');
   });
 });
+
+describe('buildExerciseDom — F4 [[TABLE:]] in exercise', () => {
+  it('expands an embedded table placeholder inline, once, with no residue', () => {
+    const original =
+      '<exercise id="ex1"><problem id="pr1">' +
+      '<para id="p1">Use the table.</para>' +
+      '<table id="t1" summary="s"><tgroup cols="1"><tbody><row><entry>A</entry></row></tbody></tgroup></table>' +
+      '</problem></exercise>';
+    const element = {
+      id: 'ex1',
+      problem: { content: [{ type: 'para', id: 'p1', segmentId: 'seg-p1' }] },
+    };
+    const getSeg = (id) => (id === 'seg-p1' ? 'Notaðu töfluna. [[TABLE:t1]]' : '');
+    const ctx = {
+      inlineTables: [{ tableId: 't1', structure: { id: 't1', rows: [] } }],
+      figuresHandledInContainers: new Set(),
+    };
+    const out = buildExerciseDom(element, getSeg, {}, original, ctx);
+
+    expect(out).not.toContain('[[TABLE:'); // no residue
+    expect((out.match(/<table\b/g) || []).length).toBe(1); // exactly one table, in place
+    expect(out).toContain('Notaðu töfluna.');
+  });
+});
+
+describe('buildExampleDom — F4 [[TABLE:]] in example', () => {
+  it('expands an embedded table placeholder inline, once, with no residue', () => {
+    const original =
+      '<example id="ex1"><para id="p1">See table.</para>' +
+      '<table id="t1" summary="s"><tgroup cols="1"><tbody><row><entry>A</entry></row></tbody></tgroup></table>' +
+      '</example>';
+    const element = {
+      id: 'ex1',
+      content: [{ type: 'para', id: 'p1', segmentId: 'seg-p1' }],
+    };
+    const getSeg = (id) => (id === 'seg-p1' ? 'Sjá töflu. [[TABLE:t1]]' : '');
+    const ctx = {
+      inlineTables: [{ tableId: 't1', structure: { id: 't1', rows: [] } }],
+      figuresHandledInContainers: new Set(),
+    };
+    const out = buildExampleDom(element, getSeg, {}, original, ctx);
+
+    expect(out).not.toContain('[[TABLE:');
+    expect((out.match(/<table\b/g) || []).length).toBe(1);
+    expect(out).toContain('Sjá töflu.');
+  });
+});

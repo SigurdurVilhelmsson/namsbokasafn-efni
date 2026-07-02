@@ -2400,7 +2400,15 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
         continue;
       }
 
-      const paraText = child.segmentId ? getSeg(child.segmentId) : '';
+      let paraText = child.segmentId ? getSeg(child.segmentId) : '';
+
+      // F4: expand embedded table placeholders inline (same as buildExerciseDom).
+      if (ctx && ctx.inlineTables && paraText.includes('[[TABLE:')) {
+        paraText = paraText.replace(/\[\[TABLE:([^\]]+)\]\]/g, (m, tableId) => {
+          const td = ctx.inlineTables.find((t) => t.tableId === tableId);
+          return td && td.structure ? buildTable(td.structure, getSeg, originalCnxml) : m;
+        });
+      }
 
       // Check if this para contains a sibling list whose content is already
       // included in the para's segment (the extraction flattens nested lists
@@ -2448,9 +2456,20 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
     }
   }
 
-  // Step 4b: Remove tables unconditionally; remove figures UNLESS they were kept.
+  // Step 4b: Strip stray container-level tables, but KEEP tables expanded inline
+  // inside a <para> from a [[TABLE:]] placeholder (F4). Remove figures UNLESS kept.
   // Equations are NOT removed — they pass through unchanged inside examples.
-  removeElementsByTag(exampleEl, ['table']);
+  const allExampleTables = Array.from(exampleEl.getElementsByTagName('table'));
+  for (const tbl of allExampleTables) {
+    let inPara = false;
+    for (let p = tbl.parentNode; p && p !== exampleEl; p = p.parentNode) {
+      if (p.localName === 'para') {
+        inPara = true;
+        break;
+      }
+    }
+    if (!inPara) tbl.parentNode.removeChild(tbl);
+  }
   const allFigures = Array.from(exampleEl.getElementsByTagName('figure'));
   for (const fig of allFigures) {
     const figId = fig.getAttribute('id');
@@ -2636,8 +2655,18 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
         const paraEl = doc.getElementById(child.id);
         if (!paraEl) continue;
 
-        const paraText = getSeg(child.segmentId);
+        let paraText = getSeg(child.segmentId);
         if (!paraText) continue;
+
+        // F4: expand embedded table placeholders inline (buildPara does this; the
+        // exercise DOM path didn't). The expanded <table> lands inside this <para>;
+        // the table strip below keeps in-para tables and removes only stray siblings.
+        if (ctx && ctx.inlineTables && paraText.includes('[[TABLE:')) {
+          paraText = paraText.replace(/\[\[TABLE:([^\]]+)\]\]/g, (m, tableId) => {
+            const td = ctx.inlineTables.find((t) => t.tableId === tableId);
+            return td && td.structure ? buildTable(td.structure, getSeg, originalCnxml) : m;
+          });
+        }
 
         // For paras that contain figures: strip expanded <media> from segment text
         // so the figure (already in the DOM) isn't duplicated.
@@ -2693,8 +2722,21 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
     }
   }
 
-  // Strip tables unconditionally; remove figures UNLESS they were kept.
-  removeElementsByTag(exerciseEl, ['table']);
+  // Strip stray container-level tables (emitted separately by the structure tree),
+  // but KEEP tables expanded inline inside a <para> from a [[TABLE:]] placeholder (F4).
+  const allTables = Array.from(exerciseEl.getElementsByTagName('table'));
+  for (const tbl of allTables) {
+    let inPara = false;
+    for (let p = tbl.parentNode; p && p !== exerciseEl; p = p.parentNode) {
+      if (p.localName === 'para') {
+        inPara = true;
+        break;
+      }
+    }
+    if (!inPara) tbl.parentNode.removeChild(tbl);
+  }
+
+  // Remove figures UNLESS they were kept.
   const allFigures = Array.from(exerciseEl.getElementsByTagName('figure'));
   for (const fig of allFigures) {
     const figId = fig.getAttribute('id');
