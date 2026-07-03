@@ -536,8 +536,7 @@ function extractSegments(cnxml, options = {}) {
   // Add top-level elements with positions
   for (const element of topLevelElements) {
     // Find position using element id
-    const idStr = element.id ? `id="${element.id}"` : null;
-    const position = idStr ? content.indexOf(idStr) : 0;
+    const position = element.id ? elementIdPosition(content, element.id) : 0;
     itemsWithPositions.push({ item: element, position: position !== -1 ? position : 0 });
   }
 
@@ -724,8 +723,7 @@ function processSection(
     inlineTablesMap
   );
   for (const element of elements) {
-    const idStr = element.id ? `id="${element.id}"` : null;
-    const position = idStr ? contentWithoutTitle.indexOf(idStr) : 0;
+    const position = element.id ? elementIdPosition(contentWithoutTitle, element.id) : 0;
     itemsWithPositions.push({ item: element, position: position !== -1 ? position : 0 });
   }
 
@@ -814,15 +812,14 @@ function processTopLevelContent(
   // Add all elements with their positions
   // For elements without fullMatch, find by id attribute
   for (const para of paras) {
-    const idPattern = para.id ? `id="${para.id}"` : null;
-    const position = idPattern ? content.indexOf(idPattern) : content.indexOf('<para');
+    const position = para.id ? elementIdPosition(content, para.id) : content.indexOf('<para');
     elementsWithPositions.push({ ...para, type: 'para', position: position !== -1 ? position : 0 });
   }
 
   for (const figure of figures) {
     const position = figure.fullMatch
       ? content.indexOf(figure.fullMatch)
-      : content.indexOf(`id="${figure.id}"`);
+      : elementIdPosition(content, figure.id);
     elementsWithPositions.push({
       ...figure,
       type: 'figure',
@@ -833,7 +830,7 @@ function processTopLevelContent(
   for (const table of tables) {
     const position = table.fullMatch
       ? content.indexOf(table.fullMatch)
-      : content.indexOf(`id="${table.id}"`);
+      : elementIdPosition(content, table.id);
     elementsWithPositions.push({
       ...table,
       type: 'table',
@@ -844,7 +841,7 @@ function processTopLevelContent(
   for (const example of examples) {
     const position = example.fullMatch
       ? content.indexOf(example.fullMatch)
-      : content.indexOf(`id="${example.id}"`);
+      : elementIdPosition(content, example.id);
     elementsWithPositions.push({
       ...example,
       type: 'example',
@@ -855,7 +852,7 @@ function processTopLevelContent(
   for (const exercise of exercises) {
     const position = exercise.fullMatch
       ? content.indexOf(exercise.fullMatch)
-      : content.indexOf(`id="${exercise.id}"`);
+      : elementIdPosition(content, exercise.id);
     elementsWithPositions.push({
       ...exercise,
       type: 'exercise',
@@ -868,7 +865,7 @@ function processTopLevelContent(
   for (const note of notes) {
     const notePosition = note.fullMatch
       ? content.indexOf(note.fullMatch)
-      : content.indexOf(`id="${note.id}"`);
+      : elementIdPosition(content, note.id);
 
     // Check if this note is inside any example
     const isInsideExample = examples.some((ex) => {
@@ -894,8 +891,7 @@ function processTopLevelContent(
   }
 
   for (const eq of equations) {
-    const idPattern = eq.id ? `id="${eq.id}"` : null;
-    const position = idPattern ? content.indexOf(idPattern) : content.indexOf('<equation');
+    const position = eq.id ? elementIdPosition(content, eq.id) : content.indexOf('<equation');
     elementsWithPositions.push({
       ...eq,
       type: 'equation',
@@ -906,14 +902,14 @@ function processTopLevelContent(
   for (const list of lists) {
     const position = list.fullMatch
       ? content.indexOf(list.fullMatch)
-      : content.indexOf(`id="${list.id}"`);
+      : elementIdPosition(content, list.id);
     elementsWithPositions.push({ ...list, type: 'list', position: position !== -1 ? position : 0 });
   }
 
   for (const media of standaloneMedia) {
     const position = media.fullMatch
       ? content.indexOf(media.fullMatch)
-      : content.indexOf(`id="${media.id}"`);
+      : elementIdPosition(content, media.id);
     elementsWithPositions.push({
       ...media,
       type: 'media',
