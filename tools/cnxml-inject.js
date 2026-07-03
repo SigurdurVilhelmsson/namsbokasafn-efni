@@ -2438,6 +2438,7 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
   // structure entries. To avoid duplication, we keep the figure in the DOM and
   // strip the expanded <media> from the segment text before injection.
   const keptFigureIds = new Set();
+  const keptTableIds = new Set();
   const parasWithFigures = new Map(); // paraId → Set of figure IDs
 
   for (const child of element.content || []) {
@@ -2483,7 +2484,16 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
           titleText = getSeg(child.title.segmentId) || child.title.text || '';
         }
         const titleCnxml = titleText ? `<title>${titleText}</title>` : '';
-        replaceParaContentDom(doc, paraEl, textWithoutMedia, titleCnxml);
+        const idsBefore = new Set(keptTableIds);
+        const expandedText = expandInlineTables(
+          textWithoutMedia,
+          ctx,
+          getSeg,
+          originalCnxml,
+          keptTableIds
+        );
+        removeStaleExpandedTables(paraEl, keptTableIds, idsBefore);
+        replaceParaContentDom(doc, paraEl, expandedText, titleCnxml);
         replacedParaIds.add(child.id);
         isFirstPara = false;
         continue;
@@ -2505,7 +2515,12 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
       }
 
       const titleCnxml = titleText ? `<title>${titleText}</title>` : '';
-      replaceParaContentDom(doc, paraEl, skipParaText ? '' : paraText, titleCnxml);
+      const idsBefore = new Set(keptTableIds);
+      const expandedParaText = skipParaText
+        ? ''
+        : expandInlineTables(paraText, ctx, getSeg, originalCnxml, keptTableIds);
+      removeStaleExpandedTables(paraEl, keptTableIds, idsBefore);
+      replaceParaContentDom(doc, paraEl, expandedParaText, titleCnxml);
       replacedParaIds.add(child.id);
       isFirstPara = false;
     }
@@ -2537,9 +2552,10 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
     }
   }
 
-  // Step 4b: Remove tables unconditionally; remove figures UNLESS they were kept.
+  // Step 4b: Remove tables UNLESS they were kept (expanded inline / already in DOM);
+  // remove figures UNLESS they were kept.
   // Equations are NOT removed — they pass through unchanged inside examples.
-  removeElementsByTag(exampleEl, ['table']);
+  removeTablesExceptKept(exampleEl, keptTableIds);
   const allFigures = Array.from(exampleEl.getElementsByTagName('figure'));
   for (const fig of allFigures) {
     const figId = fig.getAttribute('id');
@@ -3002,6 +3018,7 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
 
   // Replace paragraphs and lists via DOM
   const replacedParaIds = new Set();
+  const keptTableIds = new Set();
   for (const child of element.content || []) {
     if (child.type === 'para' && child.id && child.segmentId) {
       const paraEl = doc.getElementById(child.id);
@@ -3011,7 +3028,12 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
       if (!paraText) continue;
 
       const skipParaText = paraHasFlattenedList(child, paraEl, element.content, paraText, doc);
-      replaceParaContentDom(doc, paraEl, skipParaText ? '' : paraText, '');
+      const idsBefore = new Set(keptTableIds);
+      const expandedParaText = skipParaText
+        ? ''
+        : expandInlineTables(paraText, ctx, getSeg, originalCnxml, keptTableIds);
+      removeStaleExpandedTables(paraEl, keptTableIds, idsBefore);
+      replaceParaContentDom(doc, paraEl, expandedParaText, '');
       replacedParaIds.add(child.id);
     }
 
@@ -3054,8 +3076,10 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
     }
   }
 
-  // Strip tables, examples, exercises (figures and equations are kept)
-  removeElementsByTag(noteEl, ['table', 'example', 'exercise']);
+  // Strip examples, exercises (figures and equations are kept); tables are kept
+  // unless not re-expanded inline (F4).
+  removeElementsByTag(noteEl, ['example', 'exercise']);
+  removeTablesExceptKept(noteEl, keptTableIds);
 
   return serializeCnxmlFragment(noteEl);
 }
