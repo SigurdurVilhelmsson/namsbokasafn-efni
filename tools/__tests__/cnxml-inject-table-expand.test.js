@@ -127,3 +127,50 @@ describe('buildNoteDom expands [[TABLE:]] inline', () => {
     expect((out.match(/<table\b[^>]*\bid="t3"/g) || []).length).toBe(1);
   });
 });
+
+// F4 review fix: a missing/empty translation for the table-bearing para must never
+// result in the original <table> being silently dropped. Before the fix,
+// buildExerciseDom's `if (!paraText) continue` (and buildNoteDom's equivalent) skip
+// the para entirely, so expandInlineTables never runs, the table's id never enters
+// keptTableIds, and removeTablesExceptKept silently deletes the table with zero
+// [[TABLE:]] residue for assertNoMarkerResidue to catch. The fix must fail loud
+// instead: removeTablesExceptKept now throws when a table's id is inline-referenced
+// (present in ctx.inlineTables) but was never expanded.
+describe('removeTablesExceptKept fails loud on an unexpanded inline-referenced table', () => {
+  it('buildExerciseDom throws when the table-bearing para has no translation', () => {
+    const getSegMissing = (id) => (id === 'seg-pp1' ? '' : segs[id] || '');
+    expect(() => buildExerciseDom(element, getSegMissing, {}, ORIGINAL, ctx)).toThrow(
+      /inline-referenced.*never expanded/i
+    );
+  });
+
+  it('buildNoteDom throws when the table-bearing para has no translation', () => {
+    const noteOriginal = `<note id="n1" class="note"><para id="np1">Data:<newline/><table id="t3" class="unnumbered" summary="s"><tgroup cols="1"><tbody><row><entry>a</entry></row></tbody></tgroup></table></para></note>`;
+    const noteElement = {
+      type: 'note',
+      id: 'n1',
+      class: 'note',
+      content: [{ type: 'para', id: 'np1', segmentId: 's1' }],
+    };
+    const noteCtx = {
+      figuresHandledInContainers: new Set(),
+      figuresHandledInNotes: new Set(),
+      inlineTables: [
+        {
+          tableId: 't3',
+          structure: {
+            type: 'table',
+            id: 't3',
+            class: 'unnumbered',
+            summary: 's',
+            rows: [{ cells: [{ segmentId: 'c3' }] }],
+          },
+        },
+      ],
+    };
+    const getSegMissing = () => ''; // simulate a missing/empty translation
+    expect(() => buildNoteDom(noteElement, getSegMissing, {}, noteOriginal, noteCtx)).toThrow(
+      /inline-referenced.*never expanded/i
+    );
+  });
+});

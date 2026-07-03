@@ -2094,16 +2094,31 @@ function expandInlineTables(text, ctx, getSeg, originalCnxml, keptTableIds) {
 /**
  * Remove every <table> descendant of parentElement whose id is NOT in keptTableIds.
  * Mirrors the keep-unless-kept figure loop (cnxml-inject.js ~2727). (F4)
+ *
+ * Invariant (F4 review fix): a table whose id is in inlineTableIds was
+ * inline-referenced by extraction (a `[[TABLE:id]]` placeholder exists in some
+ * para's segment). Such a table must never be stripped unless it was actually
+ * expanded (i.e. its id is in keptTableIds) — if its containing para's
+ * translation was empty/missing, `expandInlineTables` never ran for it, so
+ * stripping it here would silently delete the table with no `[[TABLE:]]`
+ * residue for `assertNoMarkerResidue` to catch. Fail loud instead of
+ * publishing a silently-vanished table.
  * @param {Element} parentElement
  * @param {Set<string>} keptTableIds
+ * @param {Set<string>} [inlineTableIds] - ids extraction inline-referenced via [[TABLE:id]]
  */
-function removeTablesExceptKept(parentElement, keptTableIds) {
+function removeTablesExceptKept(parentElement, keptTableIds, inlineTableIds = new Set()) {
   const tables = Array.from(parentElement.getElementsByTagName('table'));
   for (const table of tables) {
     const id = table.getAttribute('id');
-    if (!keptTableIds.has(id)) {
-      table.parentNode.removeChild(table);
+    if (keptTableIds.has(id)) continue;
+    if (inlineTableIds.has(id)) {
+      const containerId = parentElement.getAttribute('id') || '(unknown)';
+      throw new Error(
+        `removeTablesExceptKept: table id="${id}" inside <${parentElement.nodeName} id="${containerId}"> was inline-referenced ([[TABLE:${id}]]) by extraction but never expanded — its containing para's translation was likely empty/missing, so expandInlineTables never ran. Refusing to silently strip the table (would delete it from the published output with no [[TABLE:]] residue for assertNoMarkerResidue to catch). Fix the missing translation for that para, or investigate why the table wasn't expanded.`
+      );
     }
+    table.parentNode.removeChild(table);
   }
 }
 
@@ -2556,7 +2571,11 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
   // Step 4b: Remove tables UNLESS they were kept (expanded inline / already in DOM);
   // remove figures UNLESS they were kept.
   // Equations are NOT removed — they pass through unchanged inside examples.
-  removeTablesExceptKept(exampleEl, keptTableIds);
+  removeTablesExceptKept(
+    exampleEl,
+    keptTableIds,
+    new Set((ctx?.inlineTables || []).map((t) => t.tableId))
+  );
   const allFigures = Array.from(exampleEl.getElementsByTagName('figure'));
   for (const fig of allFigures) {
     const figId = fig.getAttribute('id');
@@ -2821,7 +2840,11 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
   }
 
   // Remove tables and figures UNLESS they were kept (expanded inline / already in DOM).
-  removeTablesExceptKept(exerciseEl, keptTableIds);
+  removeTablesExceptKept(
+    exerciseEl,
+    keptTableIds,
+    new Set((ctx?.inlineTables || []).map((t) => t.tableId))
+  );
   const allFigures = Array.from(exerciseEl.getElementsByTagName('figure'));
   for (const fig of allFigures) {
     const figId = fig.getAttribute('id');
@@ -3080,7 +3103,11 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
   // Strip examples, exercises (figures and equations are kept); tables are kept
   // unless not re-expanded inline (F4).
   removeElementsByTag(noteEl, ['example', 'exercise']);
-  removeTablesExceptKept(noteEl, keptTableIds);
+  removeTablesExceptKept(
+    noteEl,
+    keptTableIds,
+    new Set((ctx?.inlineTables || []).map((t) => t.tableId))
+  );
 
   return serializeCnxmlFragment(noteEl);
 }
