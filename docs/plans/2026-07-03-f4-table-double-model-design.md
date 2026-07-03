@@ -99,6 +99,19 @@ exempt pattern works against the identical strip, resolving the open question th
 `cnxml-inject.js` `assertNoMarkerResidue`: remove `TABLE` from the carve-out so the marker-form
 residue regex hard-fails on any surviving `[[TABLE:…]]`. `MATH`/`MEDIA` carve-outs unchanged.
 
+**Precise scope of the residue gate (correction, 2026-07-03 final review):** this gate catches only
+a `[[TABLE:]]` placeholder that *physically survives* into assembled output. It does **not** catch a
+table that is silently *dropped* — e.g. a container para skipped via `if (!paraText) continue`
+(missing translation) never emits its placeholder, so there is no residue to catch, yet
+`removeTablesExceptKept` would then delete the original block-child `<table>`. Since F4 removed the
+standalone fallback, that would be silent table loss. **Second guard (added in the same arc):**
+`removeTablesExceptKept` now also receives the inline-referenced id set and **throws** if it is about
+to strip a `<table>` whose id ∈ `ctx.inlineTables` but ∉ `keptTableIds` (inline-referenced but never
+expanded). So the two guards together are the fail-loud net: the residue gate catches surviving
+`[[TABLE:]]`; the strip guard catches an inline table that was never expanded. Neither preserves an
+untranslated table (that would publish English silently). The broader *para-text* loss from
+`if (!paraText) continue` is pre-existing and out of F4 scope (logged separately).
+
 ## Testing — fresh in-memory extract, zero fixture regeneration
 
 **The critical constraint** (advisor-flagged): `cnxml-dom-comparison.test.js` sources structure
