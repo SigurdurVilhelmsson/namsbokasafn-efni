@@ -11,7 +11,7 @@
 ## Global Constraints
 
 - **Read-only / in-memory.** Writes nothing under `books/`. No committed pipeline artifact changes.
-- The tool is a **diagnostic, not a gate**: exit 0 regardless of how many reorders are found; exit non-zero only on a real error (unreadable source / build throw).
+- The tool is a **diagnostic, not a gate**: exit 0 regardless of how many reorders are found. A single module that fails to build is recorded (a `buildFailures` bucket) and the run continues; exit non-zero (`2`) is reserved for the total-failure case where **no** module could be analyzed at all.
 - Resolve `books/` against `import.meta.url`, **never** `process.cwd()` (project rule; server runs cwd=`server/`).
 - `npm test` from the repo root is the authoritative gate. Also `npm run validate`.
 - One PR off `feat/chem-f4-table-double-model` (rebase to main when #223 merges).
@@ -193,6 +193,37 @@ describe('analyzeModuleOrder (real modules, in-memory fresh build)', () => {
 
 > If m68702/m68814's exact fresh behavior has shifted by implementation time, run `analyzeModuleOrder` on them first and set the assertions to the observed values — but the point of each (one clean, one residual-with-known-tags) must hold; if m68702 is no longer clean, pick another module the tool reports as moved=[] and note it.
 
+Also add this `aggregateBook` resilience unit test (uses an injected fake analyzer — no real module needed — so the "one bad module doesn't abort the run" behavior is directly asserted):
+
+```js
+import { aggregateBook } from '../analyze-order-causes.js';
+
+describe('aggregateBook resilience + aggregation', () => {
+  const fake = (source) => {
+    if (source === 'THROW') throw new Error('boom');
+    if (source === 'CLEAN') return { moved: [], counts: {}, unresolved: [] };
+    return { moved: ['e1'], counts: { equation: 1 }, unresolved: [] };
+  };
+  const out = aggregateBook(
+    [
+      { moduleId: 'mA', source: 'CLEAN' },
+      { moduleId: 'mB', source: 'RESIDUAL' },
+      { moduleId: 'mC', source: 'THROW' },
+    ],
+    fake
+  );
+
+  it('records a throwing module in buildFailures and continues (does not abort)', () => {
+    expect(out.buildFailures).toEqual([{ moduleId: 'mC', error: 'boom' }]);
+  });
+  it('still aggregates the modules that built', () => {
+    expect(out.cleanModules).toEqual(['mA']);
+    expect(out.perModule.map((m) => m.moduleId)).toEqual(['mB']);
+    expect(out.perCause.equation.movedIds).toBe(1);
+  });
+});
+```
+
 - [ ] **Step 2: Run to verify failure**
 
 Run: `npx vitest run tools/__tests__/analyze-order-causes.test.js`
@@ -260,6 +291,46 @@ function discoverModules(dir) {
     .map((f) => ({ moduleId: f.replace('.cnxml', ''), filename: f }));
 }
 
+/**
+ * Aggregate per-module order analysis across a book's modules. A module whose
+ * `analyze` throws is recorded in `buildFailures` and the loop continues — one
+ * unbuildable module must NOT discard the whole-book breakdown. `analyze` is
+ * injectable so the resilience/aggregation logic is unit-testable without a
+ * real throwing module.
+ * @param {{ moduleId: string, source: string }[]} moduleEntries
+ * @param {(source: string) => { moved: string[], counts: Record<string, number>, unresolved: string[] }} [analyze]
+ * @returns {{ cleanModules: string[], perModule: object[], perCause: object, unresolvedAll: object[], buildFailures: object[] }}
+ */
+export function aggregateBook(moduleEntries, analyze = analyzeModuleOrder) {
+  const perCause = {};        // tag -> { modules: Set, movedIds: number }
+  const perModule = [];       // { moduleId, moved, counts, unresolved }
+  const cleanModules = [];
+  const unresolvedAll = [];
+  const buildFailures = [];   // { moduleId, error } — a module that can't build is DATA, not a run-abort
+
+  for (const { moduleId, source } of moduleEntries) {
+    let res;
+    try {
+      res = analyze(source);
+    } catch (err) {
+      buildFailures.push({ moduleId, error: err.message });
+      continue;
+    }
+    if (res.moved.length === 0) {
+      cleanModules.push(moduleId);
+      continue;
+    }
+    perModule.push({ moduleId, moved: res.moved.length, counts: res.counts, unresolved: res.unresolved });
+    for (const [tag, n] of Object.entries(res.counts)) {
+      perCause[tag] = perCause[tag] || { modules: new Set(), movedIds: 0 };
+      perCause[tag].modules.add(moduleId);
+      perCause[tag].movedIds += n;
+    }
+    if (res.unresolved.length) unresolvedAll.push({ moduleId, ids: res.unresolved });
+  }
+  return { cleanModules, perModule, perCause, unresolvedAll, buildFailures };
+}
+
 function main() {
   const args = parseArgs(process.argv.slice(2), [BOOK_OPTION, CHAPTER_OPTION, MODULE_OPTION, { name: 'json', flags: ['--json'], type: 'boolean', default: false }]);
   requireBook(args);
@@ -268,50 +339,33 @@ function main() {
   const fmtCh = (c) => (c === 'appendices' ? 'appendices' : `ch${String(c).padStart(2, '0')}`);
   const chapters = args.chapter ? [fmtCh(args.chapter)] : discoverChapters(bookDir);
 
-  const perCause = {};        // tag -> { modules: Set, movedIds: number }
-  const perModule = [];       // { moduleId, moved, counts, unresolved }
-  const cleanModules = [];
-  const unresolvedAll = [];
-
+  // Collect (moduleId, source) entries, then aggregate (resilient) in one place.
+  const moduleEntries = [];
   for (const ch of chapters) {
     const srcDir = path.join(bookDir, '01-source', ch);
     let modules = discoverModules(srcDir);
     if (args.module) modules = modules.filter((m) => m.moduleId === args.module);
     for (const mod of modules) {
-      const source = fs.readFileSync(path.join(srcDir, mod.filename), 'utf8');
-      let res;
-      try {
-        res = analyzeModuleOrder(source);
-      } catch (err) {
-        console.error(`ERROR building ${mod.moduleId}: ${err.message}`);
-        process.exit(2);
-      }
-      if (res.moved.length === 0) {
-        cleanModules.push(mod.moduleId);
-        continue;
-      }
-      perModule.push({ moduleId: mod.moduleId, moved: res.moved.length, counts: res.counts, unresolved: res.unresolved });
-      for (const [tag, n] of Object.entries(res.counts)) {
-        perCause[tag] = perCause[tag] || { modules: new Set(), movedIds: 0 };
-        perCause[tag].modules.add(mod.moduleId);
-        perCause[tag].movedIds += n;
-      }
-      if (res.unresolved.length) unresolvedAll.push({ moduleId: mod.moduleId, ids: res.unresolved });
+      moduleEntries.push({ moduleId: mod.moduleId, source: fs.readFileSync(path.join(srcDir, mod.filename), 'utf8') });
     }
   }
+
+  const { cleanModules, perModule, perCause, unresolvedAll, buildFailures } = aggregateBook(moduleEntries);
 
   const causeRows = Object.entries(perCause)
     .map(([tag, v]) => ({ tag, modules: v.modules.size, movedIds: v.movedIds }))
     .sort((a, b) => b.movedIds - a.movedIds);
 
   if (args.json) {
-    console.log(JSON.stringify({ book: args.book, cleanModuleCount: cleanModules.length, causeRows, perModule, unresolved: unresolvedAll }, null, 2));
+    console.log(JSON.stringify({ book: args.book, cleanModuleCount: cleanModules.length, causeRows, perModule, unresolved: unresolvedAll, buildFailures }, null, 2));
+    if (cleanModules.length + perModule.length === 0) process.exit(2);
     return;
   }
 
   console.log(`\nOrder-cause breakdown — ${args.book} (fresh in-memory build)\n${'═'.repeat(56)}`);
   console.log(`Clean modules (moved=0): ${cleanModules.length}`);
-  console.log(`Modules with residual reorder: ${perModule.length}\n`);
+  console.log(`Modules with residual reorder: ${perModule.length}`);
+  console.log(`Modules that FAILED to build: ${buildFailures.length}\n`);
   console.log(`Cause (element tag)      | modules | moved ids`);
   console.log(`-------------------------|---------|----------`);
   for (const r of causeRows) {
@@ -326,6 +380,15 @@ function main() {
     const by = Object.entries(m.counts).map(([t, n]) => `${t}:${n}`).join(' ');
     console.log(`  ${m.moduleId.padEnd(8)} moved=${String(m.moved).padStart(3)}  ${by}`);
   }
+
+  if (buildFailures.length) {
+    console.log(`\nFAILED TO BUILD (recorded, run continued):`);
+    for (const f of buildFailures) console.log(`  ${f.moduleId}: ${f.error}`);
+  }
+
+  // Non-zero exit ONLY when nothing at all could be analyzed (a real, total
+  // failure) — never on reorders or on some-but-not-all modules failing.
+  if (cleanModules.length + perModule.length === 0) process.exit(2);
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
@@ -374,6 +437,7 @@ Create `docs/audit/2026-07-03-fresh-order-cause-breakdown.md` with these section
 2. **Headline split** — clean-module count (transient/section-bug wins, F1 confirmed) vs residual-module count, out of the total analyzed. Contrast with the 51 the warn-only check flags on stale committed output.
 3. **Per-cause table** — element tag → # modules, # moved ids (verbatim from the run), sorted by moved ids.
 4. **UNRESOLVED ids** — list any (should be none); if present, flag for investigation (they mean the classifier or a synthetic/derived id needs handling).
+4b. **FAILED-TO-BUILD modules** — list any modules the tool recorded as unbuildable on fresh build (should be none for efnafraedi, since the full run exits 0 today; if any appear, they are themselves a finding — a module the pipeline can't rebuild cleanly — worth a register note).
 5. **Per-cause triage** — for EACH cause in the table, a recommendation: **benign→filter candidate** (e.g. a glossary/term block that legitimately relocates as a unit; a terminal block whose absolute position is not reader-order-meaningful) vs **real-bug→fix candidate** (element genuinely lands in the wrong reading position). Base each call on inspecting 1-2 representative modules' source vs fresh placement for that cause (cite module + id). Where uncertain, say so and mark "needs deeper look" — do not overclaim.
 6. **Recommended next step** — given the triage, which of {filter benign in `compareElementOrder`, fix cause X as its own item, small real-deferred allowlist} the evidence points to, as input to the lead's gate decision. This is a recommendation, not a commitment.
 
