@@ -1488,15 +1488,16 @@ function collectBlockEquationIds(elements, idSet) {
  *
  * Carve-outs (all case-sensitive):
  *  - [[MATH:N]] / [[MEDIA:N]] — pre-existing tolerant soft-report path (line ~1720).
- *  - [[TABLE:…]] — deferred: expansion is F4 (extraction double-models the table as
- *    both a section element and an inline ref; see the plan register). Until F4 lands
- *    the placeholder legitimately survives, so it must not hard-fail here.
+ *
+ * As of F4, [[TABLE:…]] is NOT carved out — it hard-fails like any other unconverted
+ * marker. TABLE expansion is handled upstream by buildExerciseDom/buildExampleDom/
+ * buildNoteDom, so a surviving [[TABLE:…]] here means a real inject-path miss.
  *
  * @param {string} cnxml - assembled module output
  * @param {string} moduleId
  */
 function assertNoMarkerResidue(cnxml, moduleId) {
-  const residue = cnxml.match(/\[\[(?!MATH:|MEDIA:|TABLE:)[A-Za-z][\w]*:[^\]]*\]\]/g);
+  const residue = cnxml.match(/\[\[(?!MATH:|MEDIA:)[A-Za-z][\w]*:[^\]]*\]\]/g);
   if (residue) {
     const shown = [...new Set(residue)].slice(0, 10).join(', ');
     throw new Error(
@@ -1740,7 +1741,7 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
   output = deduplicateMedia(output);
 
   // F5/F6 gate: no [[TYPE:…]] marker residue may reach output (fail loud).
-  // [[TABLE:]] is carved out until F4 lands (see assertNoMarkerResidue).
+  // Marker-residue gate: any unconverted [[TYPE:…]] (incl. [[TABLE:]]) hard-fails. (F4)
   assertNoMarkerResidue(output, structure.moduleId);
 
   // Verify: check for unresolved [[MATH:N]] placeholders in output
@@ -2068,6 +2069,81 @@ function buildTable(element, getSeg, originalCnxml) {
 }
 
 /**
+ * Expand [[TABLE:id]] placeholders in a para's translated text into full <table>
+ * markup, recording each expanded id so the container's post-strip pass keeps it.
+ * Mirrors buildPara's inline-table restoration (cnxml-inject.js ~1853). (F4)
+ * @param {string} text - translated para text possibly containing [[TABLE:id]]
+ * @param {object} ctx - inject context; ctx.inlineTables = [{ tableId, structure }]
+ * @param {Function} getSeg - segment resolver
+ * @param {string} originalCnxml - original module CNXML (buildTable dependency)
+ * @param {Set<string>} keptTableIds - mutated: ids that were expanded inline
+ * @returns {string} text with known [[TABLE:id]] replaced by <table> markup
+ */
+function expandInlineTables(text, ctx, getSeg, originalCnxml, keptTableIds) {
+  if (!text || !ctx || !ctx.inlineTables) return text;
+  return text.replace(/\[\[TABLE:([^\]]+)\]\]/g, (match, tableId) => {
+    const tableData = ctx.inlineTables.find((t) => t.tableId === tableId);
+    if (tableData && tableData.structure) {
+      keptTableIds.add(tableId);
+      return buildTable(tableData.structure, getSeg, originalCnxml);
+    }
+    return match; // unknown id → leave placeholder; the gate will catch it
+  });
+}
+
+/**
+ * Remove every <table> descendant of parentElement whose id is NOT in keptTableIds.
+ * Mirrors the keep-unless-kept figure loop (cnxml-inject.js ~2727). (F4)
+ *
+ * Invariant (F4 review fix): a table whose id is in inlineTableIds was
+ * inline-referenced by extraction (a `[[TABLE:id]]` placeholder exists in some
+ * para's segment). Such a table must never be stripped unless it was actually
+ * expanded (i.e. its id is in keptTableIds) — if its containing para's
+ * translation was empty/missing, `expandInlineTables` never ran for it, so
+ * stripping it here would silently delete the table with no `[[TABLE:]]`
+ * residue for `assertNoMarkerResidue` to catch. Fail loud instead of
+ * publishing a silently-vanished table.
+ * @param {Element} parentElement
+ * @param {Set<string>} keptTableIds
+ * @param {Set<string>} [inlineTableIds] - ids extraction inline-referenced via [[TABLE:id]]
+ */
+function removeTablesExceptKept(parentElement, keptTableIds, inlineTableIds = new Set()) {
+  const tables = Array.from(parentElement.getElementsByTagName('table'));
+  for (const table of tables) {
+    const id = table.getAttribute('id');
+    if (keptTableIds.has(id)) continue;
+    if (inlineTableIds.has(id)) {
+      const containerId = parentElement.getAttribute('id') || '(unknown)';
+      throw new Error(
+        `removeTablesExceptKept: table id="${id}" inside <${parentElement.nodeName} id="${containerId}"> was inline-referenced ([[TABLE:${id}]]) by extraction but never expanded — its containing para's translation was likely empty/missing, so expandInlineTables never ran. Refusing to silently strip the table (would delete it from the published output with no [[TABLE:]] residue for assertNoMarkerResidue to catch). Fix the missing translation for that para, or investigate why the table wasn't expanded.`
+      );
+    }
+    table.parentNode.removeChild(table);
+  }
+}
+
+/**
+ * Remove the pre-existing untranslated <table> node(s) from paraElement whose id
+ * was just re-expanded (added to keptTableIds by expandInlineTables during this
+ * call). CNXML nests container-embedded tables as a block child of the para
+ * (same shape as figures), and replaceParaContent deliberately preserves block
+ * children — so without this, the stale original survives alongside the newly
+ * built translated <table> string inserted as inline content. (F4)
+ * @param {Element} paraElement
+ * @param {Set<string>} keptTableIds - ids kept after this para's expansion
+ * @param {Set<string>} idsBefore - snapshot of keptTableIds before this para's expansion
+ */
+function removeStaleExpandedTables(paraElement, keptTableIds, idsBefore) {
+  const tables = Array.from(paraElement.getElementsByTagName('table'));
+  for (const table of tables) {
+    const id = table.getAttribute('id');
+    if (id && keptTableIds.has(id) && !idsBefore.has(id)) {
+      table.parentNode.removeChild(table);
+    }
+  }
+}
+
+/**
  * Check if a list in the CNXML contains any already-replaced para IDs.
  * Used to prevent replaceListItems from overwriting paras that were
  * already individually translated in buildExample/buildExercise.
@@ -2378,6 +2454,7 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
   // structure entries. To avoid duplication, we keep the figure in the DOM and
   // strip the expanded <media> from the segment text before injection.
   const keptFigureIds = new Set();
+  const keptTableIds = new Set();
   const parasWithFigures = new Map(); // paraId → Set of figure IDs
 
   for (const child of element.content || []) {
@@ -2423,7 +2500,16 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
           titleText = getSeg(child.title.segmentId) || child.title.text || '';
         }
         const titleCnxml = titleText ? `<title>${titleText}</title>` : '';
-        replaceParaContentDom(doc, paraEl, textWithoutMedia, titleCnxml);
+        const idsBefore = new Set(keptTableIds);
+        const expandedText = expandInlineTables(
+          textWithoutMedia,
+          ctx,
+          getSeg,
+          originalCnxml,
+          keptTableIds
+        );
+        removeStaleExpandedTables(paraEl, keptTableIds, idsBefore);
+        replaceParaContentDom(doc, paraEl, expandedText, titleCnxml);
         replacedParaIds.add(child.id);
         isFirstPara = false;
         continue;
@@ -2445,7 +2531,12 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
       }
 
       const titleCnxml = titleText ? `<title>${titleText}</title>` : '';
-      replaceParaContentDom(doc, paraEl, skipParaText ? '' : paraText, titleCnxml);
+      const idsBefore = new Set(keptTableIds);
+      const expandedParaText = skipParaText
+        ? ''
+        : expandInlineTables(paraText, ctx, getSeg, originalCnxml, keptTableIds);
+      removeStaleExpandedTables(paraEl, keptTableIds, idsBefore);
+      replaceParaContentDom(doc, paraEl, expandedParaText, titleCnxml);
       replacedParaIds.add(child.id);
       isFirstPara = false;
     }
@@ -2477,9 +2568,14 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
     }
   }
 
-  // Step 4b: Remove tables unconditionally; remove figures UNLESS they were kept.
+  // Step 4b: Remove tables UNLESS they were kept (expanded inline / already in DOM);
+  // remove figures UNLESS they were kept.
   // Equations are NOT removed — they pass through unchanged inside examples.
-  removeElementsByTag(exampleEl, ['table']);
+  removeTablesExceptKept(
+    exampleEl,
+    keptTableIds,
+    new Set((ctx?.inlineTables || []).map((t) => t.tableId))
+  );
   const allFigures = Array.from(exampleEl.getElementsByTagName('figure'));
   for (const fig of allFigures) {
     const figId = fig.getAttribute('id');
@@ -2658,6 +2754,7 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
   // Process problem and solution content via DOM
   const replacedParaIds = new Set();
   const keptFigureIds = new Set();
+  const keptTableIds = new Set();
 
   function processContent(contentArray) {
     for (const child of contentArray || []) {
@@ -2676,7 +2773,19 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
             const figId = figures[i].getAttribute('id');
             if (figId) keptFigureIds.add(figId);
           }
-          const textWithoutMedia = paraText.replace(/<media\s[^>]*>[\s\S]*?<\/media>/g, '').trim();
+          const tableIdsBefore = new Set(keptTableIds);
+          const textWithoutMedia = expandInlineTables(
+            paraText.replace(/<media\s[^>]*>[\s\S]*?<\/media>/g, '').trim(),
+            ctx,
+            getSeg,
+            originalCnxml,
+            keptTableIds
+          );
+          // The original CNXML nests <table> as a block child of this para (same
+          // pattern as figures); replaceParaContentDom preserves block children,
+          // so remove the stale untranslated node for any id just re-expanded from
+          // text, or the translated + original copies would both survive. (F4)
+          removeStaleExpandedTables(paraEl, keptTableIds, tableIdsBefore);
           replaceParaContentDom(doc, paraEl, textWithoutMedia, '');
           replacedParaIds.add(child.id);
           continue;
@@ -2685,7 +2794,15 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
         // Preserve a list flattened into this para's segment (audit #33): inject
         // only text the list handler won't duplicate, and never removeChild the list.
         const skipParaText = paraHasFlattenedList(child, paraEl, contentArray, paraText, doc);
-        replaceParaContentDom(doc, paraEl, skipParaText ? '' : paraText, '');
+        const tableIdsBeforeExpand = new Set(keptTableIds);
+        const expandedParaText = skipParaText
+          ? ''
+          : expandInlineTables(paraText, ctx, getSeg, originalCnxml, keptTableIds);
+        // See comment above: strip the stale nested <table> this para's text just
+        // re-expanded, so replaceParaContentDom's block-preservation doesn't leave
+        // a duplicate untranslated copy behind. (F4)
+        removeStaleExpandedTables(paraEl, keptTableIds, tableIdsBeforeExpand);
+        replaceParaContentDom(doc, paraEl, expandedParaText, '');
         replacedParaIds.add(child.id);
       }
 
@@ -2722,8 +2839,12 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
     }
   }
 
-  // Strip tables unconditionally; remove figures UNLESS they were kept.
-  removeElementsByTag(exerciseEl, ['table']);
+  // Remove tables and figures UNLESS they were kept (expanded inline / already in DOM).
+  removeTablesExceptKept(
+    exerciseEl,
+    keptTableIds,
+    new Set((ctx?.inlineTables || []).map((t) => t.tableId))
+  );
   const allFigures = Array.from(exerciseEl.getElementsByTagName('figure'));
   for (const fig of allFigures) {
     const figId = fig.getAttribute('id');
@@ -2921,6 +3042,7 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
 
   // Replace paragraphs and lists via DOM
   const replacedParaIds = new Set();
+  const keptTableIds = new Set();
   for (const child of element.content || []) {
     if (child.type === 'para' && child.id && child.segmentId) {
       const paraEl = doc.getElementById(child.id);
@@ -2930,7 +3052,12 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
       if (!paraText) continue;
 
       const skipParaText = paraHasFlattenedList(child, paraEl, element.content, paraText, doc);
-      replaceParaContentDom(doc, paraEl, skipParaText ? '' : paraText, '');
+      const idsBefore = new Set(keptTableIds);
+      const expandedParaText = skipParaText
+        ? ''
+        : expandInlineTables(paraText, ctx, getSeg, originalCnxml, keptTableIds);
+      removeStaleExpandedTables(paraEl, keptTableIds, idsBefore);
+      replaceParaContentDom(doc, paraEl, expandedParaText, '');
       replacedParaIds.add(child.id);
     }
 
@@ -2973,8 +3100,14 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
     }
   }
 
-  // Strip tables, examples, exercises (figures and equations are kept)
-  removeElementsByTag(noteEl, ['table', 'example', 'exercise']);
+  // Strip examples, exercises (figures and equations are kept); tables are kept
+  // unless not re-expanded inline (F4).
+  removeElementsByTag(noteEl, ['example', 'exercise']);
+  removeTablesExceptKept(
+    noteEl,
+    keptTableIds,
+    new Set((ctx?.inlineTables || []).map((t) => t.tableId))
+  );
 
   return serializeCnxmlFragment(noteEl);
 }

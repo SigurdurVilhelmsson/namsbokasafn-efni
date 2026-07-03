@@ -631,6 +631,48 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
     removal — drift from earlier PRs that never regenerated). The `docs-check` job only runs on
     `server/routes/**` touches, so it stays green until any route PR trips it (as #208 did). Fix = regenerate
     + commit; consider making `docs:generate` part of the routes-touching pre-commit hook.
+  - *New out-of-scope finds (logged during F4 table-double-model execution 2026-07-03 — NOT F4's job).*
+    **F4 itself is ✅ DONE** (branch `feat/chem-f4-table-double-model`): extraction now models a
+    container-embedded table once via an `inlineTablesMap`-membership guard (`cnxml-extract.js` `case
+    'table'`); inject expands `[[TABLE:]]` inline in `buildExerciseDom`/`buildExampleDom`/`buildNoteDom`
+    (three module-local helpers `expandInlineTables`/`removeTablesExceptKept`/`removeStaleExpandedTables`,
+    the last needed because `replaceParaContent` preserves block-child `<table>`s → the expanded copy would
+    otherwise duplicate the original); `assertNoMarkerResidue` now hard-fails on `[[TABLE:]]`. End-to-end
+    proven on all 6 affected modules (m68764/70/89/91/93, m68829) via fresh in-memory extract → 0 residue,
+    `<table>` count == source. No committed `01-`/`02-`/`03-`/`05-` bytes changed. Design/plan:
+    `docs/plans/2026-07-03-f4-table-double-model-{design,plan}.md`.
+    **(F4-a) [MED] deferred WS5 re-inject/re-render of the 6 modules.** F4 only *arms* the fix + gate; today's
+    committed `03-translated`/`05-publication` still carry the `[[TABLE:]]` residue until the batched WS5
+    re-extract→re-inject→re-render pass. **The WS5 re-inject MUST pass the new hard-fail gate** (that is the
+    point of arming it now). Note in the WS5 runbook.
+    **(F4-b) [LOW] pre-existing list-item / top-level-para table → standalone sibling.** A `<table>` embedded
+    in a `<list>` item (or a top-level `<para>`) is stripped from `contentForSimpleElements` *before* list/para
+    extraction (`cnxml-extract.js:771-778`), so it is never inline-referenced and renders as a standalone
+    sibling (the list item's own segment text loses the table). Pre-existing, unchanged by F4; `buildList`
+    needs no `[[TABLE:]]` support because no such ref is ever produced (so no gate landmine). Fixing the
+    *placement* would need a coordinated extraction-reorder + `buildList` inject change — its own future task.
+    **(F4-c) [LOW] `buildExample`(legacy regex)-vs-`buildExampleDom` parity gap** on m68789 example
+    `fs-idm234815200` (figure/caption/equation tag-count divergence; DOM builder appears *more* complete, i.e.
+    likely an improvement not a regression). Surfaced when m68789's comparison baseline was tightened to 0,
+    newly activating the DOM-vs-regex parity check. Suppressed for m68789 only via a `domRegexParityKnownGap`
+    flag in `cnxml-dom-comparison.test.js` (preserves prior dormancy, no coverage lost — the check never ran
+    at the old baseline 5). Remove the flag once the parity gap is triaged/closed. Table-unrelated; the legacy
+    regex `buildExample` is off the dispatch path (#38 dead-builder cluster).
+    **(F4-d) [LOW] `mod.chapterNum` typo in `cnxml-dom-comparison.test.js` Parts 2-4** — those DOM-vs-regex
+    parity describe blocks call `loadModule(id, chapter, mod.chapterNum)`, but no `TEST_MODULES` entry has a
+    `chapterNum` field (always `undefined` → falls to the stale on-disk path). Pre-existing, harmless no-op;
+    left untouched. If Parts 2-4 should ever run on fresh extract, this needs fixing.
+    **(F4-e) [LOW] pre-existing silent para-TEXT skip.** `if (!paraText) continue` in the container
+    builders (`buildExerciseDom`/`buildExampleDom`/`buildNoteDom`) silently drops a para (its text) when
+    its translation is empty/missing. Pre-existing and broader than F4 (affects any content, not just
+    tables). F4 did NOT fix this; F4 *did* add a fail-loud guard for the table-loss consequence of it
+    (final review found F4 removed the standalone table fallback → a skipped table-bearing para would
+    silently drop its `<table>`; `removeTablesExceptKept` now THROWS if a table id ∈ `ctx.inlineTables`
+    is about to be stripped without having been expanded — inline-referenced-but-never-expanded = loud
+    abort, not silent loss). The residue gate `assertNoMarkerResidue` is residue-only and does NOT cover
+    the never-emitted case — the strip guard does. The general silent para-*text* skip remains a
+    separate latent issue worth its own fix (fail-loud or diagnostic on empty translation of a
+    non-empty-source para).
 - **#33 [HIGH] inject list-flattening divergence — ✅ DONE (PR #197, branch `fix/inject-list-flatten-unify`).**
   One `paraHasFlattenedList` helper now serves all three DOM builders; `buildExerciseDom`/`buildNoteDom`
   **preserve** a `<list>` flattened into a math-bearing `<para>` (was `removeChild`-deleted), matching

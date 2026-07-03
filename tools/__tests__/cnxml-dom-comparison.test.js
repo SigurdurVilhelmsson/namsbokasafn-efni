@@ -21,6 +21,7 @@ import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import * as inject from '../cnxml-inject.js';
 import { compareTagCounts } from '../cnxml-fidelity-check.js';
+import { extractSegments, formatSegmentsMarkdown } from '../cnxml-extract.js';
 
 const {
   parseSegments,
@@ -56,7 +57,25 @@ const TEST_MODULES = [
   { moduleId: 'm68710', chapter: 'ch04', baseline: 1 },
   { moduleId: 'm68727', chapter: 'ch05', baseline: 16 },
   { moduleId: 'm68739', chapter: 'ch07', baseline: 6 },
-  { moduleId: 'm68789', chapter: 'ch12', baseline: 5 },
+  // m68789: re-pointed to fresh single-model extraction (F4 Task 2). Part 1's
+  // measured discrepancy count on fresh-extracted structure is 0 (the stale
+  // on-disk structure's duplicate-table gap is exactly what this closes).
+  // domRegexParityKnownGap: Parts 2-4 (DOM vs regex builder comparison) run
+  // against STALE on-disk data (unaffected by freshExtract) and independently
+  // surface a pre-existing figure/caption/equation divergence between
+  // buildExample (regex) and buildExampleDom for an unrelated example in this
+  // module (fs-idm234815200) — present on both stale and fresh structure,
+  // nothing to do with tables. It was previously masked by baseline=5 (which
+  // skipped Parts 2-4's strict check); baseline=0 would newly trip it. That
+  // gap is out of scope here (belongs to buildExampleDom, i.e. Task 3) so we
+  // keep Parts 2-4's parity check dormant for this module, same as before.
+  {
+    moduleId: 'm68789',
+    chapter: 'ch12',
+    baseline: 0,
+    freshExtract: true,
+    domRegexParityKnownGap: true,
+  },
 ];
 
 // ─── Module Loading ──────────────────────────────────────────────────
@@ -65,7 +84,28 @@ const TEST_MODULES = [
  * Load and prepare module data for testing.
  * Replicates the same loading and marker restoration done by the CLI pipeline.
  */
-function loadModule(moduleId, chapter) {
+function loadModule(moduleId, chapter, freshExtract = false) {
+  const originalCnxml = readFileSync(
+    join(BOOKS, '01-source', chapter, `${moduleId}.cnxml`),
+    'utf8'
+  );
+
+  if (freshExtract) {
+    // Source structure/segments from a fresh in-memory extract instead of the
+    // (possibly stale, pre-F4) on-disk 02-structure/02-for-mt files. There is no
+    // MT/review pass for a fresh extract, so the "segments" fed to buildCnxml are
+    // the EN extraction text itself — fine for this fidelity check, which compares
+    // structural tag counts, not translated content. (F4 Task 2 re-point)
+    const { segments, structure, equations, inlineAttrs } = extractSegments(originalCnxml);
+    return {
+      structure,
+      segments: parseSegments(formatSegmentsMarkdown(segments)),
+      equations,
+      inlineAttrs,
+      originalCnxml,
+    };
+  }
+
   const structPath = join(BOOKS, '02-structure', chapter, `${moduleId}-structure.json`);
   const structure = JSON.parse(readFileSync(structPath, 'utf8'));
 
@@ -84,11 +124,6 @@ function loadModule(moduleId, chapter) {
   const enSegments = existsSync(enSegPath)
     ? parseSegments(readFileSync(enSegPath, 'utf8'))
     : new Map();
-
-  const originalCnxml = readFileSync(
-    join(BOOKS, '01-source', chapter, `${moduleId}.cnxml`),
-    'utf8'
-  );
 
   // Apply marker restoration (same as CLI pipeline)
   const isApiTranslated = [...segments.values()].some(
@@ -166,7 +201,8 @@ describe('Full-module fidelity baseline', () => {
     it(`${mod.moduleId} (${mod.chapter}): discrepancies ≤ ${mod.baseline}`, () => {
       const { structure, segments, equations, originalCnxml, inlineAttrs } = loadModule(
         mod.moduleId,
-        mod.chapter
+        mod.chapter,
+        mod.freshExtract
       );
 
       const result = buildCnxml(structure, segments, equations, originalCnxml, {}, inlineAttrs);
@@ -214,7 +250,7 @@ describeExample('buildExample: DOM vs regex comparison', () => {
           const oldVsNew = compareTagCounts(oldOutput, newOutput);
           const diffCount = totalDiscrepancies(oldVsNew);
 
-          if (mod.baseline === 0) {
+          if (mod.baseline === 0 && !mod.domRegexParityKnownGap) {
             // PERFECT module: DOM must produce identical tag counts
             expect(oldVsNew).toEqual([]);
           } else {
@@ -262,7 +298,7 @@ describeExercise('buildExercise: DOM vs regex comparison', () => {
           expect(newOutput).toBeTruthy();
 
           const oldVsNew = compareTagCounts(oldOutput, newOutput);
-          if (mod.baseline === 0) {
+          if (mod.baseline === 0 && !mod.domRegexParityKnownGap) {
             expect(oldVsNew).toEqual([]);
           }
         });
@@ -305,7 +341,7 @@ describeNote('buildNote: DOM vs regex comparison', () => {
           if (oldOutput) {
             expect(newOutput).toBeTruthy();
             const oldVsNew = compareTagCounts(oldOutput, newOutput);
-            if (mod.baseline === 0) {
+            if (mod.baseline === 0 && !mod.domRegexParityKnownGap) {
               expect(oldVsNew).toEqual([]);
             }
           }

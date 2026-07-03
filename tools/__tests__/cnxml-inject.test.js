@@ -1298,7 +1298,7 @@ describe('assertNoMarkerResidue — F5/F6 gate', () => {
       assertNoMarkerResidue('<para>[[MATH:5]] [[MEDIA:2]]</para>', 'm00001')
     ).not.toThrow();
   });
-  it('does NOT fire on [[TABLE:…]] (deferred to F4)', () => {
-    expect(() => assertNoMarkerResidue('<para>[[TABLE:t1]]</para>', 'm00001')).not.toThrow();
+  it('throws on a surviving [[TABLE:…]] (un-carved by F4)', () => {
+    expect(() => assertNoMarkerResidue('<para>[[TABLE:t1]]</para>', 'm00001')).toThrow(/TABLE:t1/);
   });
 });
