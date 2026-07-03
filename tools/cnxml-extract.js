@@ -120,6 +120,26 @@ function generateSegmentId(moduleId, type, elementId, counter) {
   return `${moduleId}:${type}:auto-${counter}`;
 }
 
+/** Escape a string for safe literal use inside a RegExp. */
+function escapeRegExp(s) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+/**
+ * Document offset of the element DEFINING id="<id>" — never a target-id="<id>"
+ * reference. The (?<![\w-]) lookbehind ensures `id="` is a real attribute, not
+ * the tail of `target-id="` (`-` is a non-word char, so a bare \b would match
+ * inside target-id). Returns the index of the opening `<tag … id="<id>">`, or -1.
+ * @param {string} content
+ * @param {string} id
+ * @returns {number}
+ */
+function elementIdPosition(content, id) {
+  if (!id) return -1;
+  const m = content.match(new RegExp(`<[\\w:-]+\\b[^>]*(?<![\\w-])id="${escapeRegExp(id)}"`));
+  return m ? m.index : -1;
+}
+
 /**
  * Side-channel for inline attribute collection.
  * Populated by extractInlineText() on each call with { terms: [...], footnotes: [...] }.
@@ -1916,4 +1936,10 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   main();
 }
 
-export { generateSegmentId, extractInlineText, extractSegments, formatSegmentsMarkdown };
+export {
+  generateSegmentId,
+  extractInlineText,
+  extractSegments,
+  formatSegmentsMarkdown,
+  elementIdPosition,
+};
