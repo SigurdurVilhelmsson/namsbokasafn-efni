@@ -50,6 +50,19 @@ describe('extractIdSequence', () => {
   });
 });
 
+describe('extractIdSequence skips target-id references (OC-C)', () => {
+  it('does not emit a phantom id for a target-id reference', () => {
+    const src = `<para id="p1">see <link target-id="figZ"/></para><figure id="figZ"/>`;
+    // figZ must appear exactly once (its definition), not twice (ref + def)
+    expect(extractIdSequence(src)).toEqual(['p1', 'figZ']);
+  });
+
+  it('drops a cross-document target-id that has no local definition', () => {
+    const src = `<para id="p1">see <link target-id="ghost" document="m999"/></para>`;
+    expect(extractIdSequence(src)).toEqual(['p1']);
+  });
+});
+
 describe('compareElementOrder', () => {
   it('ok:true when common ids are in the same relative order', () => {
     const src = '<x id="a"/><x id="b"/><x id="c"/>';
