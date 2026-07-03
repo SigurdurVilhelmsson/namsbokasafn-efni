@@ -2068,6 +2068,66 @@ function buildTable(element, getSeg, originalCnxml) {
 }
 
 /**
+ * Expand [[TABLE:id]] placeholders in a para's translated text into full <table>
+ * markup, recording each expanded id so the container's post-strip pass keeps it.
+ * Mirrors buildPara's inline-table restoration (cnxml-inject.js ~1853). (F4)
+ * @param {string} text - translated para text possibly containing [[TABLE:id]]
+ * @param {object} ctx - inject context; ctx.inlineTables = [{ tableId, structure }]
+ * @param {Function} getSeg - segment resolver
+ * @param {string} originalCnxml - original module CNXML (buildTable dependency)
+ * @param {Set<string>} keptTableIds - mutated: ids that were expanded inline
+ * @returns {string} text with known [[TABLE:id]] replaced by <table> markup
+ */
+function expandInlineTables(text, ctx, getSeg, originalCnxml, keptTableIds) {
+  if (!text || !ctx || !ctx.inlineTables) return text;
+  return text.replace(/\[\[TABLE:([^\]]+)\]\]/g, (match, tableId) => {
+    const tableData = ctx.inlineTables.find((t) => t.tableId === tableId);
+    if (tableData && tableData.structure) {
+      keptTableIds.add(tableId);
+      return buildTable(tableData.structure, getSeg, originalCnxml);
+    }
+    return match; // unknown id → leave placeholder; the gate will catch it
+  });
+}
+
+/**
+ * Remove every <table> descendant of parentElement whose id is NOT in keptTableIds.
+ * Mirrors the keep-unless-kept figure loop (cnxml-inject.js ~2727). (F4)
+ * @param {Element} parentElement
+ * @param {Set<string>} keptTableIds
+ */
+function removeTablesExceptKept(parentElement, keptTableIds) {
+  const tables = Array.from(parentElement.getElementsByTagName('table'));
+  for (const table of tables) {
+    const id = table.getAttribute('id');
+    if (!keptTableIds.has(id)) {
+      table.parentNode.removeChild(table);
+    }
+  }
+}
+
+/**
+ * Remove the pre-existing untranslated <table> node(s) from paraElement whose id
+ * was just re-expanded (added to keptTableIds by expandInlineTables during this
+ * call). CNXML nests container-embedded tables as a block child of the para
+ * (same shape as figures), and replaceParaContent deliberately preserves block
+ * children — so without this, the stale original survives alongside the newly
+ * built translated <table> string inserted as inline content. (F4)
+ * @param {Element} paraElement
+ * @param {Set<string>} keptTableIds - ids kept after this para's expansion
+ * @param {Set<string>} idsBefore - snapshot of keptTableIds before this para's expansion
+ */
+function removeStaleExpandedTables(paraElement, keptTableIds, idsBefore) {
+  const tables = Array.from(paraElement.getElementsByTagName('table'));
+  for (const table of tables) {
+    const id = table.getAttribute('id');
+    if (id && keptTableIds.has(id) && !idsBefore.has(id)) {
+      table.parentNode.removeChild(table);
+    }
+  }
+}
+
+/**
  * Check if a list in the CNXML contains any already-replaced para IDs.
  * Used to prevent replaceListItems from overwriting paras that were
  * already individually translated in buildExample/buildExercise.
@@ -2658,6 +2718,7 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
   // Process problem and solution content via DOM
   const replacedParaIds = new Set();
   const keptFigureIds = new Set();
+  const keptTableIds = new Set();
 
   function processContent(contentArray) {
     for (const child of contentArray || []) {
@@ -2676,7 +2737,19 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
             const figId = figures[i].getAttribute('id');
             if (figId) keptFigureIds.add(figId);
           }
-          const textWithoutMedia = paraText.replace(/<media\s[^>]*>[\s\S]*?<\/media>/g, '').trim();
+          const tableIdsBefore = new Set(keptTableIds);
+          const textWithoutMedia = expandInlineTables(
+            paraText.replace(/<media\s[^>]*>[\s\S]*?<\/media>/g, '').trim(),
+            ctx,
+            getSeg,
+            originalCnxml,
+            keptTableIds
+          );
+          // The original CNXML nests <table> as a block child of this para (same
+          // pattern as figures); replaceParaContentDom preserves block children,
+          // so remove the stale untranslated node for any id just re-expanded from
+          // text, or the translated + original copies would both survive. (F4)
+          removeStaleExpandedTables(paraEl, keptTableIds, tableIdsBefore);
           replaceParaContentDom(doc, paraEl, textWithoutMedia, '');
           replacedParaIds.add(child.id);
           continue;
@@ -2685,7 +2758,15 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
         // Preserve a list flattened into this para's segment (audit #33): inject
         // only text the list handler won't duplicate, and never removeChild the list.
         const skipParaText = paraHasFlattenedList(child, paraEl, contentArray, paraText, doc);
-        replaceParaContentDom(doc, paraEl, skipParaText ? '' : paraText, '');
+        const tableIdsBeforeExpand = new Set(keptTableIds);
+        const expandedParaText = skipParaText
+          ? ''
+          : expandInlineTables(paraText, ctx, getSeg, originalCnxml, keptTableIds);
+        // See comment above: strip the stale nested <table> this para's text just
+        // re-expanded, so replaceParaContentDom's block-preservation doesn't leave
+        // a duplicate untranslated copy behind. (F4)
+        removeStaleExpandedTables(paraEl, keptTableIds, tableIdsBeforeExpand);
+        replaceParaContentDom(doc, paraEl, expandedParaText, '');
         replacedParaIds.add(child.id);
       }
 
@@ -2722,8 +2803,8 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
     }
   }
 
-  // Strip tables unconditionally; remove figures UNLESS they were kept.
-  removeElementsByTag(exerciseEl, ['table']);
+  // Remove tables and figures UNLESS they were kept (expanded inline / already in DOM).
+  removeTablesExceptKept(exerciseEl, keptTableIds);
   const allFigures = Array.from(exerciseEl.getElementsByTagName('figure'));
   for (const fig of allFigures) {
     const figId = fig.getAttribute('id');
