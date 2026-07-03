@@ -73,6 +73,13 @@ describe('classifyMovedIds', () => {
     const { counts } = classifyMovedIds(src, ['p1']);
     expect(counts).toEqual({ note: 1 });
   });
+
+  it('attributes to the real element, not an earlier target-id reference to it', () => {
+    // `id` must not match inside `target-id="..."` (the CNXML xref attribute).
+    const src = `<link target-id="fig1">see</link><figure id="fig1"><media id="m1"/></figure>`;
+    const { counts } = classifyMovedIds(src, ['fig1']);
+    expect(counts).toEqual({ figure: 1 });
+  });
 });
 ```
 
@@ -114,8 +121,11 @@ export function classifyMovedIds(sourceCnxml, movedIds) {
   const counts = {};
   const unresolved = [];
   for (const id of movedIds) {
-    // Match the opening tag whose id attribute is exactly this id.
-    const re = new RegExp(`<([\\w:-]+)\\b[^>]*\\bid="${escapeRegExp(id)}"`);
+    // Match the opening tag whose `id` attribute is exactly this id.
+    // (?<![\w-]) ensures `id="` is a real attribute, NOT the tail of
+    // `target-id="` (the CNXML xref attribute) — a plain \b would match there
+    // because `-` is a non-word char, misattributing xref'd elements to `link`.
+    const re = new RegExp(`<([\\w:-]+)\\b[^>]*(?<![\\w-])id="${escapeRegExp(id)}"`);
     const m = sourceCnxml.match(re);
     if (m) {
       const tag = m[1];
