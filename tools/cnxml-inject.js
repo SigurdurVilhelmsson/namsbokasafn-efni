@@ -1488,9 +1488,10 @@ function collectBlockEquationIds(elements, idSet) {
  *
  * Carve-outs (all case-sensitive):
  *  - [[MATH:N]] / [[MEDIA:N]] — pre-existing tolerant soft-report path (line ~1720).
- *  - [[TABLE:…]] — deferred: expansion is F4 (extraction double-models the table as
- *    both a section element and an inline ref; see the plan register). Until F4 lands
- *    the placeholder legitimately survives, so it must not hard-fail here.
+ *
+ * As of F4, [[TABLE:…]] is NOT carved out — it hard-fails like any other unconverted
+ * marker. TABLE expansion is handled upstream by buildExerciseDom/buildExampleDom/
+ * buildNoteDom, so a surviving [[TABLE:…]] here means a real inject-path miss.
  *
  * @param {string} cnxml - assembled module output
  * @param {string} moduleId
