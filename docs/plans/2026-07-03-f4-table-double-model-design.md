@@ -65,13 +65,18 @@ to catch. Correct placement is worth the two-file cost.
 
 ## The fix (two files + gate)
 
-### Extraction — suppress standalone tables inside containers
-`cnxml-extract.js` `processTopLevelContent`. Mirror the existing **note-in-container** exclusion
-(:848–874): a table whose document position falls inside any `example`/`exercise`/`note`/`list`
-`fullMatch` is **not** added to `elementsWithPositions` as a standalone `type: 'table'`. It is
-already claimed as an inline ref by the container processor. Tables that are **not** inside a
-container (direct section children, or embedded in top-level paras — already standalone-only via
-the :771–775 strip) are unaffected.
+### Extraction — suppress standalone tables that were inline-referenced
+`cnxml-extract.js` `processTopLevelContent`, `case 'table':` (~957). **Refined mechanism**
+(safer than position-based exclusion): elements are processed in document order, and a container
+always sorts before the tables nested within it, so `inlineTablesMap` is already populated by the
+time a container-embedded table's `case 'table':` runs. Guard: **skip standalone emission iff the
+table id is already in `inlineTablesMap`** (i.e. it was actually captured as an inline ref). This
+is strictly safer than position math — a table that is a *direct* `<problem>`/`<note>` child (not
+inside any `<para>`, hence never inline-referenced) is **not** in `inlineTablesMap`, so it still
+emits standalone and is never lost. It covers all four container types for free, since every
+container processor populates `inlineTablesMap`. Tables embedded in top-level paras remain
+standalone-only (extraction strips them from para content at :771–775 before para extraction, so
+no inline ref is generated → not in `inlineTablesMap` → still standalone). Unchanged.
 
 ### Inject — expand `[[TABLE:]]` in container builders, exempt from strip
 `cnxml-inject.js` `buildExerciseDom` / `buildExampleDom` (+ `buildNoteDom` and the list path, per
