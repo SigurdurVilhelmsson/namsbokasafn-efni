@@ -681,7 +681,18 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
     (`docs/audit/2026-07-03-fresh-order-cause-breakdown.md`) bucketed them by source element type and
     root-caused the dominant two (both **real bugs → FIX, not filter-as-benign**; the report recommends
     against any benign allowlist):
-    **(OC-A) [HIGH] `target-id` collision in the extract position-sort.** THREE site families in
+    **(OC-A) [HIGH] `target-id` collision in the extract position-sort — ✅ DONE (branch
+    `fix/chem-oca-targetid-position`).** New exported `elementIdPosition(content, id)` (negative-lookbehind
+    `(?<![\w-])id="`) replaced all 11 id-based `indexOf('id="X"')` position lookups in `cnxml-extract.js`
+    (module-level, `processSection`, para, equation, + the 7 fullMatch-first fallbacks; fullMatch-only
+    sites untouched). **(OC-C) also fixed same PR:** `extractIdSequence` (`cnxml-fidelity-check.js`) regex
+    `\bid=` → `(?<![\w-])id=`. **Measured (via `analyze-order-causes`): residual 60→19, clean 89→130 —
+    41 modules cleaned.** m68674/m68795/m68830 → clean, m68710 → moved=3. OC-C shifted the count 17→19 =
+    more honest (removing `target-id` phantoms unmasked 2 real reorders the phantom alignment had hidden).
+    No committed `01-`/`02-`/`03-`/`05-` bytes changed (armed for WS5). Remaining 19 residual = **OC-B**
+    (m68789=72, m68819=33) + the needs-deeper-look tail — the next items before the id-order gate flip.
+    Minor logged: the lookbehind excludes `-`+word but not `:` — inert (no `xml:id` in corpus), `(?<![\w:-])`
+    if ever needed. *Original find (for history):* THREE site families in
     `cnxml-extract.js` compute an element's document position via `<content>.indexOf('id="' + id + '"')`:
     module-level (:519-520), `processSection` (:708, F1's interleave-sort), and the
     `processTopLevelContent` element-position sites (~:796-902). All share the bug: Because `id="X"` is a substring of
@@ -700,7 +711,8 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
     `CNX_Chem_04_00_Rocket` is a `<link target-id=… document=…/>` with no local element; `extractIdSequence`
     (`cnxml-fidelity-check.js:89`, `\bid="`) picks it up while `classifyMovedIds`'s lookbehind correctly
     refuses to attribute it → surfaced as `unresolved`, not misclassified. Same `\bid=` collision class as
-    OC-A — worth hardening `extractIdSequence` too when OC-A is fixed.
+    OC-A — worth hardening `extractIdSequence` too when OC-A is fixed. **✅ DONE with OC-A** (regex
+    lookbehind; order-discriminating regression test).
     **(OC-D) [LOW] `analyze-order-causes` exit-code path untested.** `maybeExitNothingAnalyzable`
     (exit 2 only when nothing analyzable) is manual-verified only; add a `process.exit`-mocked unit test.
     **Reshaped next step for gate item 2:** fix OC-A (+ harden `extractIdSequence` per OC-C) → fix OC-B →
