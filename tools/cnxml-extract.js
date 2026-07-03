@@ -955,6 +955,15 @@ function processTopLevelContent(
         break;
       }
       case 'table': {
+        // Model each table once. If this table was already captured as an inline
+        // [[TABLE:]] ref inside a container (exercise/example/note process their
+        // paras with inlineTablesMap on untouched content), skip the standalone
+        // emission — the container owns it, in place. Containers sort before the
+        // tables nested within them, so inlineTablesMap is populated by now. A
+        // table NOT inline-referenced (a direct <problem>/<section> child, or a
+        // list-item table — stripped before list extraction) is absent from
+        // inlineTablesMap and still emits standalone, so nothing is lost. (F4)
+        if (inlineTablesMap && inlineTablesMap.has(item.id)) break;
         const tableStructure = processTable(item, moduleId, addSegment, mathMap, counters);
         elements.push(tableStructure);
         break;
