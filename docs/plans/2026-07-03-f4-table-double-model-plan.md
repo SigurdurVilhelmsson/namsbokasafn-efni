@@ -426,8 +426,9 @@ git commit -m "fix(inject): expand [[TABLE:]] inline in buildExerciseDom; re-poi
 - Test: extend `tools/__tests__/cnxml-inject-table-expand.test.js`
 
 **Interfaces:**
-- Consumes: `expandInlineTables`, `removeTablesExceptKept` (Task 2).
-- Produces: `buildExampleDom` and `buildNoteDom` render an embedded table inline, once, no residue. `buildNoteDom` keeps its `example`/`exercise` stripping unchanged; only table stripping becomes keep-unless-kept.
+- Consumes: `expandInlineTables`, `removeTablesExceptKept`, **and `removeStaleExpandedTables`** — all three module-local helpers already exist in `cnxml-inject.js` from Task 2. No new helper is needed; this task only wires them into two more builders.
+- Produces: `buildExampleDom` and `buildNoteDom` render an embedded table inline, once, no residue (no duplicate from the preserved block child). `buildNoteDom` keeps its `example`/`exercise` stripping unchanged; only table stripping becomes keep-unless-kept.
+- **Out of scope (do NOT fix here; pre-existing, table-unrelated):** the `buildExample`(regex)-vs-`buildExampleDom` figure/caption/equation parity diff on m68789 example `fs-idm234815200` (see Task 2 report). Leave the `domRegexParityKnownGap` flag on m68789 as-is. If your wiring happens to close it, that's a bonus, but do not chase it — log status to the register in Task 7.
 
 - [ ] **Step 1: Write the failing tests**
 
@@ -439,10 +440,10 @@ import { buildExampleDom, buildNoteDom } from '../cnxml-inject.js';
 describe('buildExampleDom expands [[TABLE:]] inline', () => {
   const ORIGINAL = `<example id="exa1"><para id="ea1">Data:<newline/><table id="t2" class="unnumbered" summary="s"><tgroup cols="1"><tbody><row><entry>a</entry></row></tbody></tgroup></table></para></example>`;
   const element = { type: 'example', id: 'exa1', content: [{ type: 'para', id: 'ea1', segmentId: 's1' }] };
-  const getSeg = (id) => (id === 's1' ? 'Gögn:[[TABLE:t2]]' : '');
+  const getSeg = (id) => (id === 's1' ? 'Gögn:[[TABLE:t2]]' : id === 'c2' ? 'a' : '');
   const ctx = {
     figuresHandledInContainers: new Set(), figuresHandledInNotes: new Set(),
-    inlineTables: [{ tableId: 't2', structure: { type: 'table', id: 't2', class: 'unnumbered', summary: 's', rows: [['a']] } }],
+    inlineTables: [{ tableId: 't2', structure: { type: 'table', id: 't2', class: 'unnumbered', summary: 's', rows: [{ cells: [{ segmentId: 'c2' }] }] } }],
   };
   const out = buildExampleDom(element, getSeg, {}, ORIGINAL, ctx);
   it('no residue, one table', () => {
@@ -454,10 +455,10 @@ describe('buildExampleDom expands [[TABLE:]] inline', () => {
 describe('buildNoteDom expands [[TABLE:]] inline', () => {
   const ORIGINAL = `<note id="n1" class="note"><para id="np1">Data:<newline/><table id="t3" class="unnumbered" summary="s"><tgroup cols="1"><tbody><row><entry>a</entry></row></tbody></tgroup></table></para></note>`;
   const element = { type: 'note', id: 'n1', class: 'note', content: [{ type: 'para', id: 'np1', segmentId: 's1' }] };
-  const getSeg = (id) => (id === 's1' ? 'Gögn:[[TABLE:t3]]' : '');
+  const getSeg = (id) => (id === 's1' ? 'Gögn:[[TABLE:t3]]' : id === 'c3' ? 'a' : '');
   const ctx = {
     figuresHandledInContainers: new Set(), figuresHandledInNotes: new Set(),
-    inlineTables: [{ tableId: 't3', structure: { type: 'table', id: 't3', class: 'unnumbered', summary: 's', rows: [['a']] } }],
+    inlineTables: [{ tableId: 't3', structure: { type: 'table', id: 't3', class: 'unnumbered', summary: 's', rows: [{ cells: [{ segmentId: 'c3' }] }] } }],
   };
   const out = buildNoteDom(element, getSeg, {}, ORIGINAL, ctx);
   it('no residue, one table', () => {
@@ -474,13 +475,30 @@ describe('buildNoteDom expands [[TABLE:]] inline', () => {
 Run: `npx vitest run tools/__tests__/cnxml-inject-table-expand.test.js`
 Expected: the two new describes FAIL (literal `[[TABLE:` in output).
 
+**IMPORTANT — reuse Task 2's three-helper pattern exactly.** Task 2 discovered that
+`replaceParaContentDom` *preserves* block children (a `<table>` is a `BLOCK_TAG`), so expanding
+`[[TABLE:]]` in the para text and calling `replaceParaContentDom` leaves the original untranslated
+table **plus** the expanded translated copy = a duplicate. Task 2 added a **third** module-local
+helper, `removeStaleExpandedTables(paraElement, keptTableIds, idsBefore)`, already present in
+`cnxml-inject.js`. `buildExampleDom`/`buildNoteDom` use the same `replaceParaContentDom` and need
+the identical treatment. Study Task 2's `buildExerciseDom` `processContent` wiring and mirror it.
+
 - [ ] **Step 3: Wire `buildExampleDom`**
 
-Add `const keptTableIds = new Set();` beside its `keptFigureIds` (~2398). At both `replaceParaContentDom` sites (~2426 figure-para path, ~2448 normal path), wrap the injected text with `expandInlineTables(..., ctx, getSeg, originalCnxml, keptTableIds)` exactly as in Task 2. Change the strip (~2482) `removeElementsByTag(exampleEl, ['table']);` → `removeTablesExceptKept(exampleEl, keptTableIds);`.
+Add `const keptTableIds = new Set();` beside its `keptFigureIds` (~2398). At **each** `replaceParaContentDom` site (the figure-para path ~2426 and the normal path ~2448), do exactly what Task 2's `buildExerciseDom` does at its injection sites — for each site:
+
+```js
+    const idsBefore = new Set(keptTableIds);
+    const expandedText = expandInlineTables(<the text arg>, ctx, getSeg, originalCnxml, keptTableIds);
+    removeStaleExpandedTables(paraEl, keptTableIds, idsBefore);
+    replaceParaContentDom(doc, paraEl, expandedText, <the title arg unchanged>);
+```
+
+(substitute the exact text/title arguments each existing `replaceParaContentDom` call passes; keep the `skipParaText`/`textWithoutMedia` logic intact — expand whatever text was going to be injected). Change the strip (~2482) `removeElementsByTag(exampleEl, ['table']);` → `removeTablesExceptKept(exampleEl, keptTableIds);`.
 
 - [ ] **Step 4: Wire `buildNoteDom`**
 
-Add `const keptTableIds = new Set();` beside its kept sets. Wrap its para-injection text site(s) with `expandInlineTables(...)` (same signature). Change the strip (~2977) from:
+Add `const keptTableIds = new Set();` beside its kept sets. At its para-injection site(s), apply the same four-line pattern (`idsBefore` snapshot → `expandInlineTables` → `removeStaleExpandedTables(paraEl, keptTableIds, idsBefore)` → `replaceParaContentDom`). Change the strip (~2977) from:
 
 ```js
   removeElementsByTag(noteEl, ['table', 'example', 'exercise']);
