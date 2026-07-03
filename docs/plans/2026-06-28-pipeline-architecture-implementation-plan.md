@@ -483,6 +483,18 @@ found while implementing an item is logged here **immediately**, so nothing scop
 tightly scoped; these are revisited together once the plan's last item ships. Per-item deferrals also live
 in their item blocks — this is the consolidated scan list. Append, don't prune.*
 
+**From F4/F5/F6 (marker-residue inject fixes, 2026-07-02):**
+- **F4 `[[TABLE:]]` inline expansion — SPLIT OUT to its own PR.** Root cause is extraction-level
+  double-modelling: a table referenced by an inline `[[TABLE:id]]` placeholder is **also** captured as a
+  standalone structure `table` element, so any inline expansion duplicates it (verified m68789:
+  `table 14→16`, triple emission). Fix belongs in `cnxml-extract.js` (model the table once, or add a
+  `tablesHandledInline` suppression mirroring `figuresHandledInContainers`), **not** an inject-side strip
+  hack. After the fix: remove the `[[TABLE:]]` carve-out from `assertNoMarkerResidue` (flip to hard-fail)
+  and re-inject the 6 modules (m68764/70/89/91/93, m68829) in the batched WS5 pass. Full diagnosis:
+  `docs/plans/2026-07-02-f456-marker-residue-design.md` § Split outcome.
+- **Marker-residue gate is inject-time only** — committed `03-translated` still carries residue until the
+  batched WS5 re-inject; the runbook must require that re-inject pass `assertNoMarkerResidue`.
+
 **From A2 (untranslated-EN residue check, PR #184):**
 - **Server editor save/submit residue surface** — wire `detectResidue` into the editor service
   save/submit path so editors see residue warnings live. Reuses `tools/lib/residue-check.js` verbatim;

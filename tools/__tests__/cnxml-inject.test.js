@@ -1,6 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import {
   parseSegments,
+  annotateInlineTerms,
+  assertNoMarkerResidue,
   reverseInlineMarkup,
   restoreMathMarkers,
   restoreMathBySeparators,
@@ -1231,5 +1233,72 @@ describe('buildNoteDom nested list in para (audit #33)', () => {
     expect(result).toContain('<list id="list-n"');
     expect(result).toContain('Liður eitt');
     expect(result).not.toContain('Item one original');
+  });
+});
+
+describe('annotateInlineTerms — F6 MATH placeholder', () => {
+  it('drops [[MATH:N]] from the EN annotation instead of lowercasing it', () => {
+    const en = new Map([['s1', '{{term}}standard enthalpy of formation [[MATH:23]]{{/term}}']]);
+    const is = new Map([['s1', '{{term}}staðalmyndunarvermi{{/term}}']]);
+    const { segments } = annotateInlineTerms(is, en);
+    const out = segments.get('s1');
+    expect(out).not.toMatch(/\[\[math:/i); // no [[math:23]] or [[MATH:23]]
+    expect(out).toContain('(e. standard enthalpy of formation'); // annotation still present
+  });
+
+  it('still unwraps [[sup:2]] to plain text in the annotation', () => {
+    const en = new Map([['s2', '{{term}}mol[[sup:2]]{{/term}}']]);
+    const is = new Map([['s2', '{{term}}mól{{/term}}']]);
+    const { segments } = annotateInlineTerms(is, en);
+    expect(segments.get('s2')).toContain('(e. mol2)');
+  });
+});
+
+describe('reverseInlineMarkup — F5 nested emphasis over link', () => {
+  const rev = (t) => reverseInlineMarkup(t, {}, [], [], null, []);
+
+  it('resolves [[i:[[link:text|url]]]] with no residue', () => {
+    const out = rev('See [[i:[[link:Handbook|http://x.org/h]]]] now');
+    expect(out).toContain(
+      '<emphasis effect="italics"><link url="http://x.org/h">Handbook</link></emphasis>'
+    );
+    expect(out).not.toContain('[[');
+  });
+
+  it('still resolves a plain [[link:text|url]]', () => {
+    const out = rev('[[link:Foo|http://y.org]]');
+    expect(out).toBe('<link url="http://y.org">Foo</link>');
+  });
+
+  it('resolves deeper [[b:[[i:[[link:x|u]]]]]] fully', () => {
+    const out = rev('[[b:[[i:[[link:x|http://u]]]]]]');
+    expect(out).not.toContain('[[');
+    expect(out).toContain('<emphasis effect="bold">');
+    expect(out).toContain('<link url="http://u">x</link>');
+  });
+});
+
+describe('assertNoMarkerResidue — F5/F6 gate', () => {
+  it('throws on a lowercased [[math:23]]', () => {
+    expect(() => assertNoMarkerResidue('<para>[[math:23]]</para>', 'm00001')).toThrow(
+      /marker residue/i
+    );
+  });
+  it('throws on a surviving [[i: emphasis marker', () => {
+    expect(() => assertNoMarkerResidue('<para>[[i:x]]</para>', 'm00001')).toThrow();
+  });
+  it('passes clean output', () => {
+    expect(() => assertNoMarkerResidue('<para>hreint</para>', 'm00001')).not.toThrow();
+  });
+  it('passes legit nested chemistry brackets (no word: prefix)', () => {
+    expect(() => assertNoMarkerResidue('<para>[[Ag(NH3)2]+]</para>', 'm00001')).not.toThrow();
+  });
+  it('does NOT fire on tolerated [[MATH:N]] / [[MEDIA:N]]', () => {
+    expect(() =>
+      assertNoMarkerResidue('<para>[[MATH:5]] [[MEDIA:2]]</para>', 'm00001')
+    ).not.toThrow();
+  });
+  it('does NOT fire on [[TABLE:…]] (deferred to F4)', () => {
+    expect(() => assertNoMarkerResidue('<para>[[TABLE:t1]]</para>', 'm00001')).not.toThrow();
   });
 });
