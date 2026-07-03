@@ -681,9 +681,10 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
     (`docs/audit/2026-07-03-fresh-order-cause-breakdown.md`) bucketed them by source element type and
     root-caused the dominant two (both **real bugs → FIX, not filter-as-benign**; the report recommends
     against any benign allowlist):
-    **(OC-A) [HIGH] `target-id` collision in the extract position-sort.** `cnxml-extract.js:708`
-    (`processSection`) and the module-level counterpart (~:519) compute an element's document position via
-    `contentWithoutTitle.indexOf('id="' + element.id + '"')`. Because `id="X"` is a substring of
+    **(OC-A) [HIGH] `target-id` collision in the extract position-sort.** THREE site families in
+    `cnxml-extract.js` compute an element's document position via `<content>.indexOf('id="' + id + '"')`:
+    module-level (:519-520), `processSection` (:708, F1's interleave-sort), and the
+    `processTopLevelContent` element-position sites (~:796-902). All share the bug: Because `id="X"` is a substring of
     `target-id="X"`, an element cross-referenced by an EARLIER `<link target-id="X"/>` resolves to the
     reference's position → sorts too early → reorder (figures/equations/media/notes hoisted). This lives
     inside **F1's own interleave-sort** and is the SAME substring-collision class as the `classifyMovedIds`
