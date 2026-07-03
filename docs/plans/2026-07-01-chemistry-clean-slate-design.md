@@ -270,3 +270,74 @@ prerequisites to this plan's own remaining workstreams and one reopens WS2.**
 
 > Amended Definition of Done: WS2's "green is honest" now additionally requires the benign class to be
 > instance-verified (F3) and the check to cover order (F1) and math content (F8) — not just tag-name counts.
+
+---
+
+## Amendment 2026-07-03 — clean-slate re-architecture decision + oracle-hardening gate
+
+**Trigger:** the parked "should we rebuild the pipeline ground-up from CNXML-EN + the Erlendur API?"
+question was investigated and answered. Design spec:
+**`docs/design/2026-07-03-clean-slate-translation-system-design.md`** (merged, PR #221; advisor +
+Fable-5 adversarial red-team). This amendment folds its conclusions into this plan. It does not add a
+workstream — it closes the rewrite question, converts the scattered oracle findings into an explicit
+**biology gate**, and adds one new editorial item (F16).
+
+### Decision: DON'T rewrite to unblock biology — finish this clean-slate, onboard on the current pipeline
+- The current inject is confirmed **reconstruct-from-sidecar + re-serialize** (not splice); that step is
+  the F1/F4/note-relocation/finding-9 bug factory.
+- But the scorecard is **3-of-4 and mostly already-banked**: F1/F5/F6 shipped (#219/#220). A
+  structure-preserving design kills only **F4** of the three *reader-visible* residue classes;
+  **F5/F6 inline-marker residue is intrinsic to ANY plain-text-API design** → a rewrite does NOT clean
+  the pages, finishing the inline fixes does.
+- The ideal's unique win (untouched-byte/attribute fidelity) is a **remerge** concern, and remerge needs
+  **canonical-equivalence, not byte-identity** (`docs/pipeline/cnxml-fidelity-gaps.md` Gaps 3/5 classify
+  whitespace/attribute-order as cosmetic) — off biology's critical path.
+
+### The oracle work is now a GATE, not scattered next-steps
+The memo's highest-leverage point: the fidelity oracle is *blind* (tag-name multiset only; order/attrs/
+math/text ignored), and hardening it is **needed either way** — it is the prerequisite that makes both
+"finish now" and any future candidate-D swap safe. Split the F-items by whether they **gate biology**
+(silent, baked-in corruption of a fresh book) or **trail** it (quality hardening):
+
+**GATE biology extraction + the WS5 re-render (land before onboarding biology):**
+- **Promote the id-order (LCS) check from warn-only → hard-fail.** #219 added it *warn-only*
+  (`cnxml-fidelity-check.js:357-359`); as a warn it does not stop biology's F1-class reorders baking in
+  and certifying PERFECT (audit's #1 pre-biology warning). Small change, high leverage.
+- **F8 — normalized math-content hash** (already planned *with* WS4). Must land before biology
+  extraction, not after — the only guard when WS4 edits equations; chemistry's densest content is
+  otherwise unprotected.
+- **F4 — table double-model, fixed at extraction** (model once; mirror `figuresHandledInContainers`).
+  Already the next clean-slate item; the memo confirms the extraction-level fix, not an inject-side hack.
+
+**TRAIL into the throughput/robustness track (harden quality; do not cause irreversible corruption of a
+fresh book):**
+- **F9** `<link>` attribute diff (`document`/`target-id`/`url`) — the finding-9 class (marker-grammar
+  lossiness at `cnxml-extract.js:265`; one live broken cross-doc link, m68692). **F7** allowlist
+  track-field + cause-fingerprint; **F10** faithful-track manifest record.
+- **F16 (NEW) — per-segment marker-sequence flag.** The Erlendur API **reorders clauses** (verified: a
+  Table-1.1 link swapped position; Icelandic is V2), so a faithful pipeline — spliced OR reconstructed —
+  re-emits `[[MATH:2]]…[[MATH:1]]` in swapped order → prose attributes the **wrong** equation,
+  **oracle-green under every architecture**. The id-order/LCS check cannot tell this from legitimate
+  Icelandic reordering. Only mitigation: an editorial flag — where the IS marker order differs from EN
+  within a segment, surface for human review. Owner = throughput track (editorial feature), not
+  clean-slate.
+
+### Candidate-D watch-item (revisit trigger — do NOT build now)
+If we ever migrate, the documented ideal is **candidate D** — faithful DOM edit-in-place + canonical
+serialize + canonical-diff remerge — **not** the byte-splice candidate C (highest-risk component the
+project has ever considered) and **not** an incremental hybrid (double-writing tar pit; guard oracle
+can't go green mid-migration). Bring it forward only as a **clean, prototype-proven whole-pipeline swap**
+(validated on m68789/m68811/m68702 against the hardened oracle) and **only if** onboarding
+biology/organic/microbiology requires **writing a new container-type builder**
+(`buildExerciseDom`/`processNote`-style) — the observable signal that reconstruction cost is scaling
+per-book. The per-book *translatability taxonomy* cost is present under all designs and is NOT the
+trigger. Absent the signal, it stays parked.
+
+### Revised sequencing (supersedes the 2026-07-02 "Revised sequencing" for the biology-gating question)
+1. **F2** ✅ (#218) → **F1** ✅ (#219) → **F5/F6 + `[[` gate** ✅ (#220).
+2. **F4** (extraction) + **promote id-order check to hard-fail** + **F8 math-hash (with WS4)** → the
+   **oracle-hardening gate**.
+3. **F3** benign re-triage (now byte-diff-backed by the hardened oracle) → completes WS2 honesty DoD.
+4. **WS5** batched re-extract → re-inject → re-render → sync (chemistry clean slate delivered).
+5. **Biology onboarding** — gated behind step 2 (id-order hard-fail + math-hash) and F4. F9/F7/F10/F16
+   trail.
