@@ -266,10 +266,12 @@ Add to `tools/__tests__/cnxml-fidelity-check.test.js` (import `extractIdSequence
 import { extractIdSequence } from '../cnxml-fidelity-check.js';
 
 describe('extractIdSequence skips target-id references (OC-C)', () => {
-  it('does not emit a phantom id for a target-id reference', () => {
-    const src = `<para id="p1">see <link target-id="figZ"/></para><figure id="figZ"/>`;
-    // figZ must appear exactly once (its definition), not twice (ref + def)
-    expect(extractIdSequence(src)).toEqual(['p1', 'figZ']);
+  it('does not emit a phantom id for a target-id reference (order-discriminating)', () => {
+    // An element BETWEEN the reference and the definition exposes the ref-vs-def
+    // position difference (Set-dedup alone hides it): old \bid= → ['p1','figZ','mid'];
+    // new lookbehind skips the target-id → definition order ['p1','mid','figZ'].
+    const src = `<para id="p1">see <link target-id="figZ"/></para><para id="mid">x</para><figure id="figZ"/>`;
+    expect(extractIdSequence(src)).toEqual(['p1', 'mid', 'figZ']);
   });
 
   it('drops a cross-document target-id that has no local definition', () => {
