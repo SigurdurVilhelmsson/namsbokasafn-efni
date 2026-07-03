@@ -1,5 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import { classifyMovedIds } from '../analyze-order-causes.js';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+import { classifyMovedIds, analyzeModuleOrder } from '../analyze-order-causes.js';
 
 const SRC = `<document>
 <para id="p1">text</para>
@@ -38,5 +40,24 @@ describe('classifyMovedIds', () => {
     const src = `<link target-id="fig1">see</link><figure id="fig1"><media id="m1"/></figure>`;
     const { counts } = classifyMovedIds(src, ['fig1']);
     expect(counts).toEqual({ figure: 1 });
+  });
+});
+
+const SRCDIR = join(import.meta.dirname, '..', '..', 'books', 'efnafraedi-2e', '01-source');
+
+describe('analyzeModuleOrder (real modules, in-memory fresh build)', () => {
+  it('reports a fully clean module as moved=[] (m68702, section-bug fixed by F1)', () => {
+    const src = readFileSync(join(SRCDIR, 'ch03', 'm68702.cnxml'), 'utf8');
+    const { moved } = analyzeModuleOrder(src);
+    expect(moved).toEqual([]);
+  });
+
+  it("classifies a residual module's moved ids by element tag (m68814 → equation + media)", () => {
+    const src = readFileSync(join(SRCDIR, 'ch15', 'm68814.cnxml'), 'utf8');
+    const { moved, counts, unresolved } = analyzeModuleOrder(src);
+    expect(moved.length).toBeGreaterThan(0);
+    expect(unresolved).toEqual([]);
+    // residual causes for this module are block-equation + inline-media positioning
+    expect(Object.keys(counts).sort()).toEqual(['equation', 'media']);
   });
 });
