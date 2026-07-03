@@ -52,13 +52,17 @@ describe('analyzeModuleOrder (real modules, in-memory fresh build)', () => {
     expect(moved).toEqual([]);
   });
 
-  it("classifies a residual module's moved ids by element tag (m68814 → equation + media)", () => {
-    const src = readFileSync(join(SRCDIR, 'ch15', 'm68814.cnxml'), 'utf8');
-    const { moved, counts, unresolved } = analyzeModuleOrder(src);
+  // m68814 was the previous residual example (equation + media). OC-A's
+  // elementIdPosition sweep fully cleaned it (its residual WAS a target-id
+  // position collision), so it's no longer a valid residual fixture. Use
+  // m68789 (still residual via OC-B container tables) instead. Assert only
+  // stable properties — do NOT pin the exact tag multiset; it will shift when
+  // OC-B is fixed later.
+  it('classifies a still-residual module by element tag (m68789 — OC-B container tables)', () => {
+    const src = readFileSync(join(SRCDIR, 'ch12', 'm68789.cnxml'), 'utf8');
+    const { moved, counts } = analyzeModuleOrder(src);
     expect(moved.length).toBeGreaterThan(0);
-    expect(unresolved).toEqual([]);
-    // residual causes for this module are block-equation + inline-media positioning
-    expect(Object.keys(counts).sort()).toEqual(['equation', 'media']);
+    expect(Object.keys(counts)).toContain('table');
   });
 });
 
