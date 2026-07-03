@@ -618,12 +618,12 @@ import { buildCnxml, parseSegments } from '../cnxml-inject.js';
 const SRC = join(import.meta.dirname, '..', '..', 'books', 'efnafraedi-2e', '01-source');
 
 const MODULES = [
-  { moduleId: 'm68764', chapter: 'ch09' },
+  { moduleId: 'm68764', chapter: 'ch10' },
   { moduleId: 'm68770', chapter: 'ch10' },
   { moduleId: 'm68789', chapter: 'ch12' },
   { moduleId: 'm68791', chapter: 'ch12' },
   { moduleId: 'm68793', chapter: 'ch12' },
-  { moduleId: 'm68829', chapter: 'ch17' },
+  { moduleId: 'm68829', chapter: 'ch18' },
 ];
 
 function countTag(xml, tag) {
