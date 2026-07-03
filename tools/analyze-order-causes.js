@@ -96,6 +96,59 @@ function discoverModules(dir) {
     .map((f) => ({ moduleId: f.replace('.cnxml', ''), filename: f }));
 }
 
+/**
+ * Aggregate order-cause results across a book's modules, resiliently.
+ *
+ * A module whose fresh build throws is RECORDED in `buildFailures` and the run
+ * continues — one unbuildable module never aborts the whole diagnostic. The
+ * `analyze` dependency is injectable so this resilience is unit-testable.
+ *
+ * @param {{ moduleId: string, source: string }[]} moduleEntries
+ * @param {(source: string) => { moved: string[], counts: Record<string,number>, unresolved: string[] }} [analyze]
+ * @returns {{
+ *   cleanModules: string[],
+ *   perModule: { moduleId: string, moved: number, counts: Record<string,number>, unresolved: string[] }[],
+ *   perCause: Record<string, { modules: Set<string>, movedIds: number }>,
+ *   unresolvedAll: { moduleId: string, ids: string[] }[],
+ *   buildFailures: { moduleId: string, error: string }[]
+ * }}
+ */
+export function aggregateBook(moduleEntries, analyze = analyzeModuleOrder) {
+  const perCause = {}; // tag -> { modules: Set, movedIds: number }
+  const perModule = []; // { moduleId, moved, counts, unresolved }
+  const cleanModules = [];
+  const unresolvedAll = [];
+  const buildFailures = [];
+
+  for (const { moduleId, source } of moduleEntries) {
+    let res;
+    try {
+      res = analyze(source);
+    } catch (err) {
+      buildFailures.push({ moduleId, error: err.message });
+      continue;
+    }
+    if (res.moved.length === 0) {
+      cleanModules.push(moduleId);
+      continue;
+    }
+    perModule.push({
+      moduleId,
+      moved: res.moved.length,
+      counts: res.counts,
+      unresolved: res.unresolved,
+    });
+    for (const [tag, n] of Object.entries(res.counts)) {
+      perCause[tag] = perCause[tag] || { modules: new Set(), movedIds: 0 };
+      perCause[tag].modules.add(moduleId);
+      perCause[tag].movedIds += n;
+    }
+    if (res.unresolved.length) unresolvedAll.push({ moduleId, ids: res.unresolved });
+  }
+
+  return { cleanModules, perModule, perCause, unresolvedAll, buildFailures };
+}
+
 function main() {
   const args = parseArgs(process.argv.slice(2), [
     BOOK_OPTION,
@@ -109,43 +162,22 @@ function main() {
   const fmtCh = (c) => (c === 'appendices' ? 'appendices' : `ch${String(c).padStart(2, '0')}`);
   const chapters = args.chapter ? [fmtCh(args.chapter)] : discoverChapters(bookDir);
 
-  const perCause = {}; // tag -> { modules: Set, movedIds: number }
-  const perModule = []; // { moduleId, moved, counts, unresolved }
-  const cleanModules = [];
-  const unresolvedAll = [];
-
+  // Read every (moduleId, source) up front, then aggregate resiliently.
+  const moduleEntries = [];
   for (const ch of chapters) {
     const srcDir = path.join(bookDir, '01-source', ch);
     let modules = discoverModules(srcDir);
     if (args.module) modules = modules.filter((m) => m.moduleId === args.module);
     for (const mod of modules) {
-      const source = fs.readFileSync(path.join(srcDir, mod.filename), 'utf8');
-      let res;
-      try {
-        res = analyzeModuleOrder(source);
-      } catch (err) {
-        console.error(`ERROR building ${mod.moduleId}: ${err.message}`);
-        process.exit(2);
-      }
-      if (res.moved.length === 0) {
-        cleanModules.push(mod.moduleId);
-        continue;
-      }
-      perModule.push({
+      moduleEntries.push({
         moduleId: mod.moduleId,
-        moved: res.moved.length,
-        counts: res.counts,
-        unresolved: res.unresolved,
+        source: fs.readFileSync(path.join(srcDir, mod.filename), 'utf8'),
       });
-      for (const [tag, n] of Object.entries(res.counts)) {
-        perCause[tag] = perCause[tag] || { modules: new Set(), movedIds: 0 };
-        perCause[tag].modules.add(mod.moduleId);
-        perCause[tag].movedIds += n;
-      }
-      if (res.unresolved.length)
-        unresolvedAll.push({ moduleId: mod.moduleId, ids: res.unresolved });
     }
   }
+
+  const { cleanModules, perModule, perCause, unresolvedAll, buildFailures } =
+    aggregateBook(moduleEntries);
 
   const causeRows = Object.entries(perCause)
     .map(([tag, v]) => ({ tag, modules: v.modules.size, movedIds: v.movedIds }))
@@ -160,17 +192,19 @@ function main() {
           causeRows,
           perModule,
           unresolved: unresolvedAll,
+          buildFailures,
         },
         null,
         2
       )
     );
-    return;
+    return maybeExitNothingAnalyzable(cleanModules, perModule);
   }
 
   console.log(`\nOrder-cause breakdown — ${args.book} (fresh in-memory build)\n${'═'.repeat(56)}`);
   console.log(`Clean modules (moved=0): ${cleanModules.length}`);
-  console.log(`Modules with residual reorder: ${perModule.length}\n`);
+  console.log(`Modules with residual reorder: ${perModule.length}`);
+  console.log(`Modules that FAILED to build: ${buildFailures.length}\n`);
   console.log(`Cause (element tag)      | modules | moved ids`);
   console.log(`-------------------------|---------|----------`);
   for (const r of causeRows) {
@@ -188,6 +222,24 @@ function main() {
       .map(([t, n]) => `${t}:${n}`)
       .join(' ');
     console.log(`  ${m.moduleId.padEnd(8)} moved=${String(m.moved).padStart(3)}  ${by}`);
+  }
+  if (buildFailures.length) {
+    console.log(`\nFAILED TO BUILD (recorded, run continued):`);
+    for (const f of buildFailures) console.log(`  ${f.moduleId.padEnd(8)} ${f.error}`);
+  }
+
+  return maybeExitNothingAnalyzable(cleanModules, perModule);
+}
+
+/**
+ * Exit non-zero ONLY when nothing at all was analyzable (every module failed to
+ * build, or the book had no modules) — that is a real error, not a finding.
+ * Any successful analysis (clean or residual) is a valid diagnostic result → exit 0.
+ */
+function maybeExitNothingAnalyzable(cleanModules, perModule) {
+  if (cleanModules.length + perModule.length === 0) {
+    console.error('ERROR: no modules could be analyzed (all failed to build or none found).');
+    process.exit(2);
   }
 }
 

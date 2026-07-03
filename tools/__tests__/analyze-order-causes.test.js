@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'fs';
 import { join } from 'path';
-import { classifyMovedIds, analyzeModuleOrder } from '../analyze-order-causes.js';
+import { classifyMovedIds, analyzeModuleOrder, aggregateBook } from '../analyze-order-causes.js';
 
 const SRC = `<document>
 <para id="p1">text</para>
@@ -59,5 +59,34 @@ describe('analyzeModuleOrder (real modules, in-memory fresh build)', () => {
     expect(unresolved).toEqual([]);
     // residual causes for this module are block-equation + inline-media positioning
     expect(Object.keys(counts).sort()).toEqual(['equation', 'media']);
+  });
+});
+
+describe('aggregateBook (resilience — one module fails to build)', () => {
+  // Injected fake analyzer keyed off the source string, so the resilience is
+  // unit-testable without a real fresh build.
+  const fakeAnalyze = (source) => {
+    if (source === 'THROW') throw new Error('boom');
+    if (source === 'RESIDUAL') return { moved: ['e1'], counts: { equation: 1 }, unresolved: [] };
+    return { moved: [], counts: {}, unresolved: [] }; // CLEAN
+  };
+
+  const entries = [
+    { moduleId: 'mClean', source: 'CLEAN' },
+    { moduleId: 'mThrow', source: 'THROW' },
+    { moduleId: 'mResidual', source: 'RESIDUAL' },
+  ];
+
+  it('records the throwing module in buildFailures instead of aborting', () => {
+    const { buildFailures } = aggregateBook(entries, fakeAnalyze);
+    expect(buildFailures).toEqual([{ moduleId: 'mThrow', error: 'boom' }]);
+  });
+
+  it('continues the run and aggregates the survivors', () => {
+    const { cleanModules, perModule, perCause } = aggregateBook(entries, fakeAnalyze);
+    expect(cleanModules).toEqual(['mClean']);
+    expect(perModule.map((m) => m.moduleId)).toEqual(['mResidual']);
+    expect(perCause.equation.movedIds).toBe(1);
+    expect([...perCause.equation.modules]).toEqual(['mResidual']);
   });
 });
