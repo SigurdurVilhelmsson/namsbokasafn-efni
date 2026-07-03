@@ -51,15 +51,20 @@ to catch. Correct placement is worth the two-file cost.
 
 ## Decisions (lead, 2026-07-03)
 
-1. **Guard breadth → all container types.** Suppress standalone emission for tables inside
-   `example` / `exercise` / `note` / `list` (every processor that competes by producing an
-   inline `[[TABLE:]]` ref), not just the live-residue set (exercise/example). Pre-empts the
-   biology case; honours robustness>expedience. **Forced coupling:** because the gate is flipped
-   to hard-fail (below), robust extraction dedup requires robust inject expansion — a container
-   whose standalone copy is suppressed but whose builder does not expand `[[TABLE:]]` would
-   hard-fail inject. So the inject expand + exempt-from-strip fix extends to **every** container
-   builder that strips tables (exercise, example, note, and the list path), matched to the
-   extraction breadth.
+1. **Guard breadth → all container types that inline-reference tables.** The
+   `inlineTablesMap`-membership guard is self-scoping: it suppresses the standalone copy of any
+   table that a container captured as an inline `[[TABLE:]]` ref. In practice that is
+   `exercise` / `example` / `note` — the processors that route their paras through
+   `extractInlineText` on *untouched* container content. **`list` is excluded automatically and
+   correctly:** extraction strips a list item's table markup out of `contentForSimpleElements`
+   *before* `lists` is extracted (`cnxml-extract.js:771-778`), so a list-item table never reaches
+   `processList`, never becomes an inline ref, and stays standalone — pre-existing behaviour,
+   identical to a table embedded in a top-level para (both render as a standalone sibling). The
+   membership guard leaves that untouched. **Consequence for the coupling below:** because no
+   `list` `[[TABLE:]]` ref is ever produced, `buildList` needs **no** change and there is **no**
+   gate landmine there. The inject expand + exempt-from-strip fix therefore covers exactly the
+   three DOM builders that both receive an inline ref and strip tables: `buildExerciseDom`,
+   `buildExampleDom`, `buildNoteDom`.
 2. **Gate → flip `[[TABLE:]]` carve-out to hard-fail now** (armed for the batched WS5 re-inject).
    `assertNoMarkerResidue` throws on any `[[TABLE:…]]` in assembled output.
 
@@ -147,12 +152,17 @@ committed fixture changes.
 - **Actual re-extract + re-inject + re-render** of the 6 modules → the batched WS5 pass. The
   gate is *armed* for it; today's committed output still carries residue until then. The WS5
   runbook must note the re-inject has to pass the new gate.
-- **Top-level-para embedded tables** render as a standalone sibling (extraction :771–775 strips
-  the table out of the para before para extraction, so no inline ref is generated). Placement
-  differs from source but is pre-existing, not introduced by F4 — separate finding.
-- **List-path inject expand** is included only if the list DOM builder strips tables; confirm
-  during implementation (TDD). If lists never carry `[[TABLE:]]` today, the gate still protects
-  them (fail loud) — note as a robustness follow-up rather than blocking F4.
+- **Top-level-para AND list-item embedded tables** render as a standalone sibling (extraction
+  :771–778 strips the table out of `contentForSimpleElements` before para/list extraction, so no
+  inline ref is generated and the table survives only via the standalone `tables` array). The
+  list item's own segment text loses the table (e.g. reads "Item table:" with no placeholder).
+  Placement differs from source but is **pre-existing**, not introduced by F4 — separate finding
+  (log to register). Confirmed during implementation (Task 1): `list.fullMatch` handed to
+  `processList` never contains the table, so `inlineTablesMap` never holds a list-table id.
+- **`buildList` needs no `[[TABLE:]]` support** for F4: since no list `[[TABLE:]]` ref is ever
+  produced, none can leak into the gate. (Fixing the pre-existing list-table-to-standalone
+  behaviour would need a coordinated extraction-reorder + `buildList` inject change — its own
+  future task, out of F4 scope.)
 
 ## Workflow
 

@@ -27,7 +27,7 @@
 
 **Interfaces:**
 - Consumes: exported `extractSegments(cnxml, options)` → `{ segments, structure, equations, inlineAttrs }` (`cnxml-extract.js:1910`). `structure.content` is the top-level element array; `structure.inlineTables` is `[{ tableId, structure }]`.
-- Produces: after this task, a table embedded inside an exercise/example/note/list para appears **only** in `structure.inlineTables` (as a `[[TABLE:]]` ref target), never as a standalone `{ type: 'table' }` in `structure.content`. A table that is a direct section child still appears as a standalone `{ type: 'table' }`.
+- Produces: after this task, a table embedded inside an **exercise/example/note** para appears **only** in `structure.inlineTables` (as a `[[TABLE:]]` ref target), never as a standalone `{ type: 'table' }` in `structure.content`. A table that is a **direct section child** — or embedded in a **list item** (pre-existing: extraction strips it out of `contentForSimpleElements` before `lists` is extracted, so it is never inline-referenced) — still appears as a standalone `{ type: 'table' }`. The guard is self-scoping: it suppresses exactly the ids present in `inlineTablesMap`.
 
 - [ ] **Step 1: Write the failing test**
 
@@ -37,7 +37,8 @@ Create `tools/__tests__/cnxml-extract-table-dedup.test.js`:
 import { describe, it, expect } from 'vitest';
 import { extractSegments } from '../cnxml-extract.js';
 
-// Minimal CNXML with a table in each container + one direct section child.
+// Minimal CNXML: a table in each of exercise/example/note (inline-referenced),
+// plus a direct-section-child table and a list-item table (both standalone).
 const CNXML = `<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
 <title>Doc</title>
 <content>
@@ -64,19 +65,19 @@ function standaloneTableIds(structure) {
   return ids;
 }
 
-describe('extraction models container-embedded tables once (inline ref, not standalone)', () => {
+describe('extraction models inline-referenced tables once (inline ref, not standalone)', () => {
   const { structure } = extractSegments(CNXML);
   const inlineIds = (structure.inlineTables || []).map((t) => t.tableId);
   const standaloneIds = standaloneTableIds(structure);
 
-  it('captures each container table as an inline ref', () => {
-    for (const id of ['t-ex', 't-exa', 't-note', 't-list']) {
+  it('captures exercise/example/note tables as inline refs', () => {
+    for (const id of ['t-ex', 't-exa', 't-note']) {
       expect(inlineIds).toContain(id);
     }
   });
 
-  it('does NOT emit container tables as standalone structure elements', () => {
-    for (const id of ['t-ex', 't-exa', 't-note', 't-list']) {
+  it('does NOT emit those container tables as standalone structure elements', () => {
+    for (const id of ['t-ex', 't-exa', 't-note']) {
       expect(standaloneIds).not.toContain(id);
     }
   });
@@ -85,13 +86,22 @@ describe('extraction models container-embedded tables once (inline ref, not stan
     expect(standaloneIds).toContain('t-standalone');
     expect(inlineIds).not.toContain('t-standalone');
   });
+
+  // Pre-existing behaviour (NOT changed by F4): a list-item table is stripped from
+  // contentForSimpleElements before `lists` is extracted, so it is never inline-
+  // referenced and survives only as a standalone entry. Documented here so a future
+  // change to that behaviour trips this test deliberately.
+  it('leaves a list-item table as standalone (pre-existing, never inline-referenced)', () => {
+    expect(standaloneIds).toContain('t-list');
+    expect(inlineIds).not.toContain('t-list');
+  });
 });
 ```
 
 - [ ] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run tools/__tests__/cnxml-extract-table-dedup.test.js`
-Expected: FAIL — the "does NOT emit container tables as standalone" cases fail (container tables currently appear in both `inlineTables` and `content`).
+Expected: FAIL — the "does NOT emit those container tables as standalone" case fails (exercise/example/note tables currently appear in both `inlineTables` and `content`). The direct-child and list-item cases already pass.
 
 - [ ] **Step 3: Implement the guard**
 
@@ -110,11 +120,13 @@ to:
 ```js
       case 'table': {
         // Model each table once. If this table was already captured as an inline
-        // [[TABLE:]] ref inside a container (exercise/example/note/list), skip the
-        // standalone emission — the container owns it, in place. Containers sort
-        // before the tables nested within them, so inlineTablesMap is populated by
-        // now. A table NOT inline-referenced (e.g. a direct <problem>/<section>
-        // child) is absent from inlineTablesMap and still emits standalone. (F4)
+        // [[TABLE:]] ref inside a container (exercise/example/note process their
+        // paras with inlineTablesMap on untouched content), skip the standalone
+        // emission — the container owns it, in place. Containers sort before the
+        // tables nested within them, so inlineTablesMap is populated by now. A
+        // table NOT inline-referenced (a direct <problem>/<section> child, or a
+        // list-item table — stripped before list extraction) is absent from
+        // inlineTablesMap and still emits standalone, so nothing is lost. (F4)
         if (inlineTablesMap && inlineTablesMap.has(item.id)) break;
         const tableStructure = processTable(item, moduleId, addSegment, mathMap, counters);
         elements.push(tableStructure);
@@ -129,8 +141,8 @@ Expected: PASS (all 3 tests).
 
 - [ ] **Step 5: Run the broader extract + comparison suites to check for fallout**
 
-Run: `npx vitest run tools/__tests__/cnxml-extract` `tools/__tests__/cnxml-dom-comparison.test.js`
-Expected: `cnxml-extract*` PASS. `cnxml-dom-comparison` may now FAIL on **m68789** — that is expected and fixed in Task 6 (it reads stale on-disk structure). Note the failure; do not fix it here.
+Run: `npx vitest run tools/__tests__/cnxml-extract tools/__tests__/cnxml-dom-comparison.test.js`
+Expected: **all PASS.** The guard only affects *fresh* in-memory extracts; `cnxml-dom-comparison` reads *stale on-disk* structure, so it is unaffected here (m68789 stays green). It only goes red once inject-expand lands in Task 2 — which is why the m68789 re-point is folded into Task 2, not this task.
 
 - [ ] **Step 6: Commit**
 
@@ -141,10 +153,18 @@ git commit -m "fix(extract): model container-embedded tables once (skip standalo
 
 ---
 
-### Task 2: Inject — shared `expandInlineTables` helper + `removeTablesExceptKept`, wired into `buildExerciseDom`
+### Task 2: Inject — shared `expandInlineTables` helper + `removeTablesExceptKept`, wired into `buildExerciseDom` (+ re-point m68789 comparison)
+
+> **Why the re-point is in this task, not a later one:** the m68789 comparison test reads
+> *stale on-disk* structure that still double-models the table. Adding the inject-expand here makes
+> `buildCnxml(stale m68789)` render the stale standalone table **plus** the newly-expanded inline
+> table = a duplicate → the comparison test goes red. The only structure that stays green is *fresh
+> single-model + inject-expand together*. So this task must both add the expansion **and** re-point
+> m68789's comparison entry to fresh extraction, in one commit, or the suite is left red.
 
 **Files:**
 - Modify: `tools/cnxml-inject.js` — add two module-local helpers near `buildTable` (~1999); wire into `buildExerciseDom` (~2662 `processContent`, ~2726 strip)
+- Modify: `tools/__tests__/cnxml-dom-comparison.test.js` — re-point m68789 to fresh extract (Steps 8–11)
 - Test: `tools/__tests__/cnxml-inject-table-expand.test.js` (create)
 
 **Interfaces:**
@@ -325,11 +345,76 @@ Expected: PASS (all 3).
 Run: `npx vitest run tools/__tests__/cnxml-inject.test.js`
 Expected: PASS (no existing inject unit test relies on the old unconditional table strip; if one fails, it reveals a real table it was silently dropping — inspect before adjusting).
 
-- [ ] **Step 7: Commit**
+- [ ] **Step 7: Confirm the m68789 comparison test is now red (the reason for Steps 8–11)**
+
+Run: `npx vitest run tools/__tests__/cnxml-dom-comparison.test.js -t m68789`
+Expected: **FAIL** — `buildCnxml` on stale on-disk structure now renders the stale standalone table plus the expanded inline table (duplicate), exceeding baseline 5. This is expected; Steps 8–11 fix it by sourcing single-model structure.
+
+- [ ] **Step 8: Mark m68789 for fresh extraction**
+
+In `tools/__tests__/cnxml-dom-comparison.test.js`, add the imports at the top of the file (beside the existing imports):
+
+```js
+import { extractSegments, formatSegmentsMarkdown } from '../cnxml-extract.js';
+```
+
+In `TEST_MODULES` (~:59) change:
+
+```js
+  { moduleId: 'm68789', chapter: 'ch12', baseline: 5 },
+```
+to (baseline updated in Step 10 after measuring):
+
+```js
+  { moduleId: 'm68789', chapter: 'ch12', baseline: 5, freshExtract: true },
+```
+
+- [ ] **Step 9: Branch `loadModule` on `freshExtract`**
+
+Give `loadModule` a `freshExtract` parameter and, when set, source structure/segments/equations/inlineAttrs from a fresh in-memory extract instead of the on-disk `02-structure`/`02-for-mt` files. At the top of `loadModule(moduleId, chapter)` (~:66):
+
+```js
+function loadModule(moduleId, chapter, freshExtract = false) {
+  const originalCnxml = readFileSync(
+    join(BOOKS, '01-source', chapter, `${moduleId}.cnxml`), 'utf8'
+  );
+
+  if (freshExtract) {
+    const { segments, structure, equations, inlineAttrs } = extractSegments(originalCnxml);
+    return {
+      structure,
+      segments: parseSegments(formatSegmentsMarkdown(segments)),
+      equations,
+      inlineAttrs,
+      originalCnxml,
+    };
+  }
+  // ...existing on-disk loading unchanged, returning the SAME object shape...
+}
+```
+
+> Match the exact keys the existing `loadModule` returns (inspect :66–:110) so the fresh-extract branch returns an identical shape; if it also returns e.g. `enSegments`, add the equivalent from `result` or omit only if the caller tolerates it.
+
+Pass the flag through at the call site in the test loop (find where `loadModule(mod.moduleId, mod.chapter)` is called):
+
+```js
+    const { structure, segments, equations, inlineAttrs, originalCnxml } =
+      loadModule(mod.moduleId, mod.chapter, mod.freshExtract);
+```
+
+- [ ] **Step 10: Measure and set the real baseline**
+
+Run: `npx vitest run tools/__tests__/cnxml-dom-comparison.test.js -t m68789`
+Read the reported discrepancy count for m68789 on single-model structure and set `baseline` to that exact number (expected ≤ 5; may reach 0 if the duplicate table was the whole gap). Re-run to confirm PASS. Then run the full comparison suite to confirm no other module regressed:
+
+Run: `npx vitest run tools/__tests__/cnxml-dom-comparison.test.js`
+Expected: all PASS.
+
+- [ ] **Step 11: Commit**
 
 ```bash
-git add tools/cnxml-inject.js tools/__tests__/cnxml-inject-table-expand.test.js
-git commit -m "fix(inject): expand [[TABLE:]] inline in buildExerciseDom, strip source tables except kept [F4]"
+git add tools/cnxml-inject.js tools/__tests__/cnxml-inject-table-expand.test.js tools/__tests__/cnxml-dom-comparison.test.js
+git commit -m "fix(inject): expand [[TABLE:]] inline in buildExerciseDom; re-point m68789 comparison to fresh single-model structure [F4]"
 ```
 
 ---
@@ -561,77 +646,12 @@ git commit -m "test(f4): end-to-end single-model build for the 6 table-double-mo
 
 ---
 
-### Task 6: Re-point m68789's comparison-test entry to fresh single-model structure
+### Task 6: (folded into Task 2 — no separate work)
 
-**Files:**
-- Modify: `tools/__tests__/cnxml-dom-comparison.test.js` — `TEST_MODULES` (:50), `loadModule` (:66)
-
-**Interfaces:**
-- Consumes: `extractSegments`, `formatSegmentsMarkdown` (`cnxml-extract.js`).
-- Produces: m68789 validated against single-model structure; its baseline reflects the post-F4 discrepancy count (expected to drop from 5 as the duplicate table disappears).
-
-- [ ] **Step 1: Mark m68789 for fresh extraction**
-
-In `TEST_MODULES` (:59) change:
-
-```js
-  { moduleId: 'm68789', chapter: 'ch12', baseline: 5 },
-```
-to (baseline updated in Step 3 after measuring):
-
-```js
-  { moduleId: 'm68789', chapter: 'ch12', baseline: 5, freshExtract: true },
-```
-
-- [ ] **Step 2: Branch `loadModule` on `freshExtract`**
-
-At the top of `loadModule(moduleId, chapter)` (~:66), before the on-disk reads, add a fresh-extract path (import `extractSegments`, `formatSegmentsMarkdown` at the top of the file, and reuse the existing `parseSegments`):
-
-```js
-function loadModule(moduleId, chapter, freshExtract = false) {
-  const originalCnxml = readFileSync(
-    join(BOOKS, '01-source', chapter, `${moduleId}.cnxml`), 'utf8'
-  );
-
-  if (freshExtract) {
-    const { segments, structure, equations, inlineAttrs } = extractSegments(originalCnxml);
-    return {
-      structure,
-      segments: parseSegments(formatSegmentsMarkdown(segments)),
-      equations,
-      inlineAttrs,
-      originalCnxml,
-    };
-  }
-  // ...existing on-disk loading unchanged, returning the same shape...
-}
-```
-
-Pass the flag through at the call site in the test loop:
-
-```js
-    const { structure, segments, equations, inlineAttrs, originalCnxml } =
-      loadModule(mod.moduleId, mod.chapter, mod.freshExtract);
-```
-
-> Match the exact object keys `loadModule` currently returns (inspect :66–:110) so the fresh-extract branch returns the identical shape.
-
-- [ ] **Step 3: Measure and set the real baseline**
-
-Run: `npx vitest run tools/__tests__/cnxml-dom-comparison.test.js -t m68789`
-Read the reported discrepancy count for m68789 on single-model structure. Set `baseline` to that exact number (it should be ≤ 5; if the duplicate table was the whole gap, it may reach 0). Re-run to confirm PASS.
-
-- [ ] **Step 4: Run the full comparison suite**
-
-Run: `npx vitest run tools/__tests__/cnxml-dom-comparison.test.js`
-Expected: PASS — all other modules keep their on-disk sourcing and baselines.
-
-- [ ] **Step 5: Commit**
-
-```bash
-git add tools/__tests__/cnxml-dom-comparison.test.js
-git commit -m "test(f4): validate m68789 comparison against fresh single-model structure"
-```
+The m68789 comparison re-point was merged into **Task 2** (Steps 7–11), because the inject-expand
+in Task 2 is precisely what turns that comparison test red, and only *fresh-extract + inject-expand
+committed together* keeps it green. Do not dispatch this task separately; it exists only to keep the
+numbering stable. Proceed from Task 7.
 
 ---
 
@@ -657,14 +677,19 @@ Expected: 24/24 (or current known-good count).
 Add under the register in `docs/plans/2026-06-28-pipeline-architecture-implementation-plan.md`:
 - F4 **done**: extraction models container tables once (inline-ref guard); inject expands `[[TABLE:]]` in `buildExerciseDom`/`buildExampleDom`/`buildNoteDom` with `keptTableIds`; `assertNoMarkerResidue` hard-fails `[[TABLE:]]`.
 - **Deferred:** actual re-extract + re-inject + re-render of `m68764/70/89/91/93, m68829` → batched WS5 pass; the WS5 runbook re-inject **must pass the new gate**.
-- **Robustness follow-up:** `buildList` (`cnxml-inject.js:3011`) has no `ctx` and cannot expand `[[TABLE:]]`; a table embedded in a list item now hard-fails the gate (fail-loud, not silent). No chemistry module has one today; biology may. Plumbing `ctx`+`buildTable` into `buildList` is the fix if one appears.
-- **Pre-existing (not F4):** a table embedded in a *top-level para* still renders as a standalone sibling (extraction strips it from para content at `cnxml-extract.js:771–775` before para extraction, so no inline ref is generated). Separate finding.
+- **Pre-existing (not F4), confirmed in Task 1:** a table embedded in a *top-level para* **or a
+  `<list>` item* renders as a standalone sibling — extraction strips it from `contentForSimpleElements`
+  at `cnxml-extract.js:771–778` before para/list extraction, so it is never inline-referenced (never
+  a `[[TABLE:]]` ref) and survives only via the standalone `tables` array; the list item's own segment
+  text loses the table. Because no list `[[TABLE:]]` ref is ever produced, `buildList` needs no change
+  and there is no gate landmine. Fixing the list-table-to-standalone placement would need a coordinated
+  extraction-reorder + `buildList` inject change — its own future task, out of F4 scope.
 
 - [ ] **Step 4: Commit**
 
 ```bash
 git add docs/plans/2026-06-28-pipeline-architecture-implementation-plan.md
-git commit -m "docs(register): F4 table double-model done + deferred WS5 re-inject + buildList robustness follow-up"
+git commit -m "docs(register): F4 table double-model done + deferred WS5 re-inject + list-table-standalone pre-existing find"
 ```
 
 - [ ] **Step 5: Push and open the PR**
