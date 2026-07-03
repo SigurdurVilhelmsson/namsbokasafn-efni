@@ -673,6 +673,40 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
     the never-emitted case — the strip guard does. The general silent para-*text* skip remains a
     separate latent issue worth its own fix (fail-loud or diagnostic on empty translation of a
     non-empty-source para).
+  - *New finds — order-cause characterization (2026-07-03, branch `feat/chem-order-cause-characterization`
+    off #223).* Gate item 2 ("promote the id-order fidelity check warn-only→hard-fail") is NOT a flip:
+    on FRESH (in-memory, post-F1/F4) inject output, 60/149 efnafraedi modules still show element reorders
+    (89 clean). A read-only diagnostic (`tools/analyze-order-causes.js`, exports `classifyMovedIds` /
+    `analyzeModuleOrder` / `aggregateBook`) + report
+    (`docs/audit/2026-07-03-fresh-order-cause-breakdown.md`) bucketed them by source element type and
+    root-caused the dominant two (both **real bugs → FIX, not filter-as-benign**; the report recommends
+    against any benign allowlist):
+    **(OC-A) [HIGH] `target-id` collision in the extract position-sort.** THREE site families in
+    `cnxml-extract.js` compute an element's document position via `<content>.indexOf('id="' + id + '"')`:
+    module-level (:519-520), `processSection` (:708, F1's interleave-sort), and the
+    `processTopLevelContent` element-position sites (~:796-902). All share the bug: Because `id="X"` is a substring of
+    `target-id="X"`, an element cross-referenced by an EARLIER `<link target-id="X"/>` resolves to the
+    reference's position → sorts too early → reorder (figures/equations/media/notes hoisted). This lives
+    inside **F1's own interleave-sort** and is the SAME substring-collision class as the `classifyMovedIds`
+    regex bug (fixed there with a `(?<![\w-])` negative-lookbehind). Confirmed on m68710/m68674/m68795/
+    m68830; explains the `para`/`equation` collateral too. Fix = collision-safe position lookup (anchor
+    `id="` as a real attribute, e.g. `<tag …id="X"` or the negative-lookbehind).
+    **(OC-B) [MED] direct-child container-table mispositioning (F4-adjacent gap).** In
+    `buildExampleDom`/`buildExerciseDom`/`buildNoteDom`, a `<table>` that is a DIRECT child of the
+    container (not an inline `[[TABLE:]]` ref) has no `keptTableIds` entry (only inline expansion populates
+    it), so `removeTablesExceptKept` strips it and the outer interleave mis-places it. Distinct from F4
+    (which fixed inline-table *duplication*; this is direct-child *positioning*). Confirmed m68819/m68789.
+    **(OC-C) [INFO] cross-document `target-id` shows as an UNRESOLVED moved id.** m68710's
+    `CNX_Chem_04_00_Rocket` is a `<link target-id=… document=…/>` with no local element; `extractIdSequence`
+    (`cnxml-fidelity-check.js:89`, `\bid="`) picks it up while `classifyMovedIds`'s lookbehind correctly
+    refuses to attribute it → surfaced as `unresolved`, not misclassified. Same `\bid=` collision class as
+    OC-A — worth hardening `extractIdSequence` too when OC-A is fixed.
+    **(OC-D) [LOW] `analyze-order-causes` exit-code path untested.** `maybeExitNothingAnalyzable`
+    (exit 2 only when nothing analyzable) is manual-verified only; add a `process.exit`-mocked unit test.
+    **Reshaped next step for gate item 2:** fix OC-A (+ harden `extractIdSequence` per OC-C) → fix OC-B →
+    re-run the diagnostic (residual should collapse toward 0) → re-triage the "needs deeper look" tail
+    (`list`/`solution`/`example`/`footnote`, likely OC-A/B collateral) → THEN the id-order gate can
+    hard-fail cleanly (little/no benign allowlist needed). Sequence still precedes WS5.
 - **#33 [HIGH] inject list-flattening divergence — ✅ DONE (PR #197, branch `fix/inject-list-flatten-unify`).**
   One `paraHasFlattenedList` helper now serves all three DOM builders; `buildExerciseDom`/`buildNoteDom`
   **preserve** a `<list>` flattened into a math-bearing `<para>` (was `removeChild`-deleted), matching
