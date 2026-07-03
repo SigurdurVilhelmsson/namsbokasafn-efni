@@ -472,6 +472,34 @@ independent). The two audit items (folded in 2026-06-29 from the out-of-scope re
 ### Still open
 - **CI:** Track A's CI wiring assumes credits are restored; until then the local gate carries it.
 
+### Amendment 2026-07-03 — clean-slate rewrite decision + biology-onboarding gate
+
+The parked "should we rebuild the pipeline ground-up?" question is **resolved**. Design spec:
+**`docs/design/2026-07-03-clean-slate-translation-system-design.md`** (merged #221; advisor + Fable-5).
+Mechanics + F-item sequencing live in `docs/plans/2026-07-01-chemistry-clean-slate-design.md`
+§ Amendment 2026-07-03; this block records the strategic decision + the biology gate this plan owns.
+
+- **Decision — DON'T rewrite to unblock biology.** Finish the chemistry clean-slate (F4 + oracle gate +
+  F3 + WS5), onboard biology on the current pipeline. Rationale: the ideal design kills only the
+  reconstruction bug class (F1/F4/note) and only **F4** of the reader-visible residue; **F5/F6 inline
+  residue is intrinsic to any plain-text-API design and survives a rewrite** (so finishing the inline
+  fixes cleans the pages, a rewrite does not); the ideal's unique win (byte/attribute fidelity) is a
+  remerge concern where **canonical-equivalence suffices** (`docs/pipeline/cnxml-fidelity-gaps.md` Gaps
+  3/5) — not on biology's path.
+- **Documented ideal *if* we migrate = candidate D** (faithful DOM edit-in-place + canonical serialize +
+  canonical-diff remerge) — NOT byte-splice candidate C, NOT an incremental hybrid. **Revisit trigger:**
+  onboarding a book requires a **new per-container builder** (`buildExerciseDom`/`processNote`-style) —
+  the signal that reconstruction cost is scaling per-book. Otherwise parked.
+- **Biology-onboarding gate (amends "Biology onboarding (NEXT)" above):** biology **extraction** is now
+  gated behind the chemistry clean-slate's **oracle-hardening gate** — promote the id-order/LCS check
+  from warn-only → **hard-fail** (`cnxml-fidelity-check.js:357-359`) + land **F8** math-content hashing +
+  **F4** extraction fix — *before* extracting biology. Without the id-order hard-fail, biology's F1-class
+  section reorders bake in and certify PERFECT (audit finding 1, the #1 pre-biology warning). D1/D2/D4/D6/
+  D7 + Track A remain the onboarding set; this adds the oracle gate as a hard predecessor. A new editorial
+  item **F16 (per-segment marker-sequence flag)** — for the API-clause-reorder → wrong-equation case that
+  is oracle-green under *any* architecture — trails in the throughput track (defined in the chemistry
+  amendment).
+
 ---
 
 ## Out-of-scope register — issues uncovered during implementation (triage as a batch after the plan completes)
