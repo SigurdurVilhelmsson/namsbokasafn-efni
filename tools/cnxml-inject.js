@@ -1496,7 +1496,7 @@ function collectBlockEquationIds(elements, idSet) {
  * @param {string} moduleId
  */
 function assertNoMarkerResidue(cnxml, moduleId) {
-  const residue = cnxml.match(/\[\[(?!MATH:|MEDIA:|TABLE:)[A-Za-z][\w]*:[^\]]*\]\]/g);
+  const residue = cnxml.match(/\[\[(?!MATH:|MEDIA:)[A-Za-z][\w]*:[^\]]*\]\]/g);
   if (residue) {
     const shown = [...new Set(residue)].slice(0, 10).join(', ');
     throw new Error(
@@ -1740,7 +1740,7 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
   output = deduplicateMedia(output);
 
   // F5/F6 gate: no [[TYPE:…]] marker residue may reach output (fail loud).
-  // [[TABLE:]] is carved out until F4 lands (see assertNoMarkerResidue).
+  // Marker-residue gate: any unconverted [[TYPE:…]] (incl. [[TABLE:]]) hard-fails. (F4)
   assertNoMarkerResidue(output, structure.moduleId);
 
   // Verify: check for unresolved [[MATH:N]] placeholders in output
