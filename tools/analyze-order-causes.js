@@ -27,7 +27,10 @@ export function classifyMovedIds(sourceCnxml, movedIds) {
   const unresolved = [];
   for (const id of movedIds) {
     // Match the opening tag whose id attribute is exactly this id.
-    const re = new RegExp(`<([\\w:-]+)\\b[^>]*\\bid="${escapeRegExp(id)}"`);
+    // (?<![\w-]) ensures `id="` is a real attribute, NOT the tail of
+    // `target-id="` (the CNXML xref attribute) — a plain \b would match there
+    // because `-` is a non-word char, misattributing xref'd elements to `link`.
+    const re = new RegExp(`<([\\w:-]+)\\b[^>]*(?<![\\w-])id="${escapeRegExp(id)}"`);
     const m = sourceCnxml.match(re);
     if (m) {
       const tag = m[1];

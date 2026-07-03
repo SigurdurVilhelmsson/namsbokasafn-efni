@@ -32,4 +32,11 @@ describe('classifyMovedIds', () => {
     const { counts } = classifyMovedIds(src, ['p1']);
     expect(counts).toEqual({ note: 1 });
   });
+
+  it('attributes to the real element, not an earlier target-id reference to it', () => {
+    // `id` must not match inside `target-id="..."` (the CNXML xref attribute).
+    const src = `<link target-id="fig1">see</link><figure id="fig1"><media id="m1"/></figure>`;
+    const { counts } = classifyMovedIds(src, ['fig1']);
+    expect(counts).toEqual({ figure: 1 });
+  });
 });
