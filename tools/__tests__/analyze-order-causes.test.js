@@ -52,17 +52,16 @@ describe('analyzeModuleOrder (real modules, in-memory fresh build)', () => {
     expect(moved).toEqual([]);
   });
 
-  // m68814 was the previous residual example (equation + media). OC-A's
-  // elementIdPosition sweep fully cleaned it (its residual WAS a target-id
-  // position collision), so it's no longer a valid residual fixture. Use
-  // m68789 (still residual via OC-B container tables) instead. Assert only
-  // stable properties — do NOT pin the exact tag multiset; it will shift when
-  // OC-B is fixed later.
-  it('classifies a still-residual module by element tag (m68789 — OC-B container tables)', () => {
-    const src = readFileSync(join(SRCDIR, 'ch12', 'm68789.cnxml'), 'utf8');
-    const { moved, counts } = analyzeModuleOrder(src);
+  // m68814 (equation+media) was cleaned by OC-A's elementIdPosition sweep;
+  // m68789 (container tables) was cleaned by OC-B's tablesHandledInContainers
+  // fix — neither is a valid residual fixture anymore. Anchor on m68739, a tail
+  // module whose residual is non-table (equation/media/list) and survives both
+  // OC-A and OC-B. Assert only the stable property (moved>0); do NOT pin the
+  // tag multiset — this tail may be fixed by a later pass.
+  it('classifies a still-residual tail module (m68739 — non-table needs-deeper-look tail)', () => {
+    const src = readFileSync(join(SRCDIR, 'ch07', 'm68739.cnxml'), 'utf8');
+    const { moved } = analyzeModuleOrder(src);
     expect(moved.length).toBeGreaterThan(0);
-    expect(Object.keys(counts)).toContain('table');
   });
 });
 
