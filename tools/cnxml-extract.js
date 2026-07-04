@@ -653,6 +653,8 @@ function extractSegments(cnxml, options = {}) {
     );
   }
 
+  assertNoDroppedListBlocks(content, structure, segments, equations);
+
   return { segments, structure, equations, inlineAttrs: inlineAttrsMap };
 }
 
@@ -792,22 +794,24 @@ function processTopLevelContent(
     }
   }
 
-  const standaloneMedia = extractNestedElements(contentForSimpleElements, 'media');
   const lists = extractNestedElements(contentForSimpleElements, 'list');
 
-  // Strip list content before para extraction — paras inside list items
-  // are already captured as item segments by processList(). Without this,
-  // they get extracted as BOTH item AND standalone para segments, causing
-  // duplication (m68727: +12 emphasis, +2 m:math, +2 sub).
-  let contentForParas = contentForSimpleElements;
+  // Strip list content before extracting standalone media, paras, AND equations.
+  // Block <media>/<para>/<equation> nested inside <list><item> are captured in-item
+  // by processList() and render via their [[MEDIA:N]]/[[MATH:N]] placeholders. Without
+  // stripping lists here, they are ALSO hoisted to top-level content and re-emitted
+  // AFTER the list (OC-E order bug). Paras were already stripped; equations/media were
+  // not — this unifies all three.
+  let contentWithoutLists = contentForSimpleElements;
   for (const list of lists) {
     if (list.fullMatch) {
-      contentForParas = contentForParas.replace(list.fullMatch, '');
+      contentWithoutLists = contentWithoutLists.replace(list.fullMatch, '');
     }
   }
 
-  const paras = extractElements(contentForParas, 'para');
-  const equations = extractElements(contentForSimpleElements, 'equation');
+  const standaloneMedia = extractNestedElements(contentWithoutLists, 'media');
+  const paras = extractElements(contentWithoutLists, 'para');
+  const equations = extractElements(contentWithoutLists, 'equation');
 
   // Add all elements with their positions
   // For elements without fullMatch, find by id attribute
@@ -1492,6 +1496,90 @@ function processNote(
 }
 
 /**
+ * OC-E safety net: after Task 2 stops hoisting list-nested blocks to top-level
+ * content, verify no such block is silently dropped. compareElementOrder ignores
+ * DROPPED ids, so a drop would look green — this guard fails loud instead.
+ * Throws listing any <equation>/<media> id that is inside a <list> in source but
+ * will render nowhere (not a content node, no placeholder, not a blockChild).
+ */
+function assertNoDroppedListBlocks(cnxml, structure, segments, equations) {
+  // 1. Source block ids inside any <list>…</list>. Use extractNestedElements
+  // (depth-correct) rather than a hand-rolled non-greedy regex: a non-greedy
+  // `<list[\s>][\s\S]*?<\/list>` match terminates at the FIRST closing </list>,
+  // so a nested <list> followed by a sibling block in the SAME <item> would end
+  // the match at the nested list's close and never see the sibling id — hiding
+  // a genuine drop from this scan. extractNestedElements's fullMatch spans the
+  // entire top-level list including all nested content, so every id is caught.
+  //
+  // Exclude <example>/<exercise> subtrees FIRST: their lists render via the
+  // PRESERVED original CNXML (buildExampleDom/buildExerciseDom), never via a
+  // top-level content node or a [[MATH:N]]/[[MEDIA:N]] placeholder, so the
+  // "rendered" set built in step 2 never counts them. This mirrors
+  // collectBlockEquationIds/collectBlockMediaIds in cnxml-inject.js, which
+  // skip example/exercise subtrees for the identical reason. Without this
+  // exclusion the guard false-positives on every exercise/example-nested list
+  // block (regression found reviewing OC-E: books/edlisfraedi-2e/01-source/
+  // ch04/m42076.cnxml has block <media> inside <exercise><solution><list>).
+  const cnxmlForListScan = removeNestedElements(removeNestedElements(cnxml, 'example'), 'exercise');
+  const listBlocks = extractNestedElements(cnxmlForListScan, 'list');
+  const inListEqIds = new Set();
+  const inListMediaIds = new Set();
+  for (const block of listBlocks) {
+    if (!block.fullMatch) continue;
+    for (const mm of block.fullMatch.matchAll(/<equation\b[^>]*\bid="([^"]+)"/g))
+      inListEqIds.add(mm[1]);
+    for (const mm of block.fullMatch.matchAll(/<media\b[^>]*\bid="([^"]+)"/g))
+      inListMediaIds.add(mm[1]);
+  }
+  if (inListEqIds.size === 0 && inListMediaIds.size === 0) return;
+
+  // 2. Ids that WILL render.
+  const rendered = new Set();
+  // 2a. content nodes (recursively) + item blockChildren + nested-list children
+  // (blockChildren: populated by Task 4 (Layer 2); harmless no-op until then)
+  const walk = (nodes) => {
+    for (const n of nodes || []) {
+      if (n.id && (n.type === 'equation' || n.type === 'media')) rendered.add(n.id);
+      // Figures are hoisted to top-level content regardless of list nesting
+      // (processTopLevelContent scans the full document for <figure> before any
+      // list-stripping); their media id lives at n.media.id, not n.id.
+      if (n.type === 'figure' && n.media && n.media.id) rendered.add(n.media.id);
+      if (n.content) walk(n.content);
+      for (const it of n.items || []) {
+        for (const c of it.children || []) walk([c]);
+        for (const bc of it.blockChildren || []) if (bc.id) rendered.add(bc.id);
+      }
+    }
+  };
+  walk(structure.content || []);
+  // 2b. equation ids referenced by [[MATH:N]] placeholders in any segment
+  const segText = segments.map((s) => s.text).join('\n');
+  for (const mm of segText.matchAll(/\[\[MATH:(\d+)\]\]/g)) {
+    const eq = equations[`math-${mm[1]}`];
+    if (eq && eq.equationId) rendered.add(eq.equationId);
+  }
+  // 2c. media ids referenced by [[MEDIA:N]] placeholders
+  const mediaByPlaceholder = new Map(
+    (structure.inlineMedia || []).map((m) => [m.placeholder, m.id])
+  );
+  for (const mm of segText.matchAll(/\[\[MEDIA:\d+\]\]/g)) {
+    const id = mediaByPlaceholder.get(mm[0]);
+    if (id) rendered.add(id);
+  }
+
+  // 3. Assert coverage.
+  const missing = [
+    ...[...inListEqIds].filter((id) => !rendered.has(id)),
+    ...[...inListMediaIds].filter((id) => !rendered.has(id)),
+  ];
+  if (missing.length > 0) {
+    throw new Error(
+      `OC-E guard: list-nested block(s) would render nowhere (silent drop): ${missing.join(', ')}`
+    );
+  }
+}
+
+/**
  * Process a list element.
  */
 function processList(
@@ -1552,11 +1640,34 @@ function processList(
         children,
       });
     } else {
-      // Check if item content is a single <para> wrapper — if so, record it so
-      // the injector can preserve the <para> element around the translated text.
-      const paraWrapMatch = item.content.trim().match(/^(<para[^>]*>)([\s\S]*?)<\/para>\s*$/);
-      const innerContent = paraWrapMatch ? paraWrapMatch[2] : item.content;
-      const paraOpenTag = paraWrapMatch ? paraWrapMatch[1] : null;
+      // Single <para> wrapping the whole item, OR a leading <para> followed by block
+      // <equation>/<media> siblings (e.g. m68793 item-1) — record wrapsPara so the
+      // injector reproduces the <para> element, and blockChildren so it re-emits the
+      // block siblings in place (their in-item [[MATH:N]]/[[MEDIA:N]] placeholder is
+      // suppressed at inject).
+      //
+      // BYTE-IDENTICAL SEGMENT CONSTRAINT: the segment text must match 02-mt-output
+      // exactly, so extractInlineText runs on:
+      //   - single-para item → the para INNER content (what the old paraWrapMatch used)
+      //   - everything else (multi-child para item, multi-<para>, non-para) → the FULL
+      //     item content (the old regex's `\s*$` anchor failed on all of these → full).
+      // Only the new wrapsPara/blockChildren metadata is added; segment text is unchanged.
+      const leadParaMatch = item.content
+        .trim()
+        .match(/^(<para\b[^>]*>)([\s\S]*?)<\/para>\s*([\s\S]*)$/);
+      const trailing = leadParaMatch ? leadParaMatch[3].trim() : '';
+      const isSingleParaItem = leadParaMatch && trailing === '';
+      // Multi-child only when the trailing content is EXCLUSIVELY block equation/media
+      // siblings: strip them + whitespace and require the remainder empty. This bounds
+      // the metadata to precisely the "leading para + block siblings" pattern and never
+      // fires for multi-<para> items or para-then-prose.
+      const trailingResidue = trailing
+        .replace(/<(equation|media)\b[^>]*>[\s\S]*?<\/\1>/g, '')
+        .replace(/<(equation|media)\b[^>]*?\/>/g, '')
+        .trim();
+      const isMultiChildParaItem = leadParaMatch && trailing !== '' && trailingResidue === '';
+
+      const innerContent = isSingleParaItem ? leadParaMatch[2] : item.content;
 
       const text = extractInlineText(
         innerContent,
@@ -1571,10 +1682,18 @@ function processList(
           id: item.id,
           segmentId: itemId,
         };
-        if (paraOpenTag) {
+        if (leadParaMatch && (isSingleParaItem || isMultiChildParaItem)) {
           // Extract the para's id attribute so the injector can reproduce the element
+          const paraOpenTag = leadParaMatch[1];
           const paraIdMatch = paraOpenTag.match(/id="([^"]+)"/);
           itemEntry.wrapsPara = { openTag: paraOpenTag, id: paraIdMatch ? paraIdMatch[1] : null };
+        }
+        if (isMultiChildParaItem) {
+          const blockChildren = [];
+          for (const mm of trailing.matchAll(/<(equation|media)\b[^>]*\bid="([^"]+)"/g)) {
+            blockChildren.push({ type: mm[1], id: mm[2] });
+          }
+          if (blockChildren.length > 0) itemEntry.blockChildren = blockChildren;
         }
         listStructure.items.push(itemEntry);
       }
@@ -1938,4 +2057,5 @@ export {
   extractSegments,
   formatSegmentsMarkdown,
   elementIdPosition,
+  assertNoDroppedListBlocks,
 };

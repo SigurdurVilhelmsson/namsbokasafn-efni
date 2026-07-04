@@ -1072,7 +1072,8 @@ function reverseInlineMarkup(
   inlineMedia = [],
   inlineTables = [],
   inlineAttrs = null,
-  blockEquationIds = null
+  blockEquationIds = null,
+  blockMediaIds = null
 ) {
   let result = text;
 
@@ -1123,6 +1124,11 @@ function reverseInlineMarkup(
     const placeholder = `[[MEDIA:${num}]]`;
     const media = inlineMedia.find((m) => m.placeholder === placeholder);
     if (media) {
+      // OC-E Layer 2: suppress if this media is a list-item block child re-emitted
+      // in place by buildList (avoid a duplicate <media>).
+      if (media.id && blockMediaIds && blockMediaIds.has(media.id)) {
+        return '';
+      }
       return buildMediaElement(media);
     }
     return match; // Keep placeholder if not found
@@ -1475,9 +1481,36 @@ function collectBlockEquationIds(elements, idSet) {
     if (el.type === 'example' || el.type === 'exercise') {
       continue;
     }
+    // List-item block children (OC-E Layer 2): a leading-<para> item's trailing
+    // block <equation> is re-emitted in place by buildList, so its in-item
+    // [[MATH:N]] placeholder must be suppressed to avoid a duplicate.
+    for (const item of el.items || []) {
+      for (const bc of item.blockChildren || []) {
+        if (bc.type === 'equation' && bc.id) idSet.add(bc.id);
+      }
+      for (const child of item.children || []) collectBlockEquationIds([child], idSet);
+    }
     if (el.content) {
       collectBlockEquationIds(el.content, idSet);
     }
+  }
+}
+
+/**
+ * OC-E Layer 2 companion to collectBlockEquationIds for list-item block <media>
+ * children. Their in-item [[MEDIA:N]] placeholder is suppressed in reverseInlineMarkup
+ * because buildList re-emits the media element in place.
+ */
+function collectBlockMediaIds(elements, idSet) {
+  for (const el of elements) {
+    if (el.type === 'example' || el.type === 'exercise') continue;
+    for (const item of el.items || []) {
+      for (const bc of item.blockChildren || []) {
+        if (bc.type === 'media' && bc.id) idSet.add(bc.id);
+      }
+      for (const child of item.children || []) collectBlockMediaIds([child], idSet);
+    }
+    if (el.content) collectBlockMediaIds(el.content, idSet);
   }
 }
 
@@ -1520,6 +1553,10 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
   // Collect block-level equation IDs to prevent duplication in reverseInlineMarkup
   const blockEquationIds = new Set();
   collectBlockEquationIds(structure.content, blockEquationIds);
+  // OC-E Layer 2: list-item block <media> children re-emitted in place by buildList —
+  // suppress their in-item [[MEDIA:N]] placeholder to avoid a duplicate.
+  const blockMediaIds = new Set();
+  collectBlockMediaIds(structure.content, blockMediaIds);
 
   // Injection tracking
   const stats = {
@@ -1569,7 +1606,8 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
       structure.inlineMedia || [],
       structure.inlineTables || [],
       inlineAttrs[segmentId] || null,
-      blockEquationIds
+      blockEquationIds,
+      blockMediaIds
     );
   };
 
@@ -1828,7 +1866,7 @@ function buildElement(element, getSeg, equations, originalCnxml, ctx) {
     case 'equation':
       return buildEquation(element, equations, originalCnxml);
     case 'list':
-      return buildList(element, getSeg);
+      return buildList(element, getSeg, equations, ctx);
     case 'media':
       return buildMedia(element);
     default:
@@ -2704,7 +2742,11 @@ function buildExercise(element, getSeg, equations, originalCnxml) {
               let embeddedListCnxml = '';
               while (ci + 1 < solContent.length && solContent[ci + 1].type === 'list') {
                 const listChild = solContent[ci + 1];
-                embeddedListCnxml += '\n' + buildList(listChild, getSeg);
+                // buildExercise has no `ctx` param (unlike buildExerciseDom, the
+                // production dispatch path) — pass null explicitly. buildList
+                // treats a null 4th arg as "no blockChildren context", which is
+                // the correct legacy behavior for this dead/comparison-only path.
+                embeddedListCnxml += '\n' + buildList(listChild, getSeg, equations, null);
                 ci++;
               }
 
@@ -3170,7 +3212,7 @@ function buildEquation(element, equations, originalCnxml) {
 /**
  * Build a list element.
  */
-function buildList(element, getSeg) {
+function buildList(element, getSeg, equations = {}, ctx = null) {
   const lines = [];
   const idAttr = element.id ? ` id="${element.id}"` : '';
   const listType = element.listType || 'bulleted';
@@ -3179,19 +3221,56 @@ function buildList(element, getSeg) {
 
   lines.push(`<list${idAttr} list-type="${listType}"${numberStyleAttr}${bulletStyleAttr}>`);
 
+  // OC-E Layer 2: re-emit a list item's block <equation>/<media> children in place
+  // (their in-item [[MATH:N]]/[[MEDIA:N]] placeholder was suppressed at getSeg time).
+  const buildBlockChildren = (item) =>
+    (item.blockChildren || [])
+      .map((bc) => {
+        if (bc.type === 'equation') {
+          const eq = equations && equations[bc.id];
+          if (!eq || !eq.mathml) return '';
+          // The equation's class lives on the [[MATH:N]] placeholder meta entry
+          // (equationId === bc.id), NOT on the id-keyed standalone entry — look it
+          // up so class="unnumbered" etc. is preserved (no test-visible attr otherwise).
+          const meta = Object.values(equations).find((e) => e && e.equationId === bc.id);
+          const cls = (meta && meta.equationClass) || eq.equationClass;
+          const classAttr = cls ? ` class="${cls}"` : '';
+          return `<equation id="${bc.id}"${classAttr}>${eq.mathml}</equation>`;
+        }
+        if (bc.type === 'media') {
+          const m = (ctx && ctx.inlineMedia ? ctx.inlineMedia : []).find((x) => x.id === bc.id);
+          return m ? buildMedia({ ...m }) : '';
+        }
+        return '';
+      })
+      .filter(Boolean)
+      .join('\n');
+
   for (const item of element.items || []) {
     const itemText = getSeg(item.segmentId);
     const itemIdAttr = item.id ? ` id="${item.id}"` : '';
+    const blockChildXml = buildBlockChildren(item);
 
     if (item.children && item.children.length > 0) {
       // Item has nested lists — build them recursively
-      lines.push(`<item${itemIdAttr}>${itemText || ''}`);
+      const head = item.wrapsPara
+        ? `${item.wrapsPara.openTag}${(itemText || '').trimEnd()}</para>`
+        : itemText || '';
+      lines.push(`<item${itemIdAttr}>${head}`);
       for (const child of item.children) {
         if (child.type === 'list') {
-          lines.push(buildList(child, getSeg));
+          lines.push(buildList(child, getSeg, equations, ctx));
         }
       }
+      if (blockChildXml) lines.push(blockChildXml);
       lines.push('</item>');
+    } else if (item.wrapsPara && blockChildXml) {
+      // Leading <para> followed by block <equation>/<media> siblings (OC-E Layer 2).
+      // trimEnd() the para text: the suppressed placeholder left a trailing space
+      // that the source <para> did not have.
+      lines.push(
+        `<item${itemIdAttr}>${item.wrapsPara.openTag}${itemText.trimEnd()}</para>\n${blockChildXml}</item>`
+      );
     } else if (itemText) {
       if (item.wrapsPara) {
         // Original item content was wrapped in a <para> — preserve that element
