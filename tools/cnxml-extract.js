@@ -1503,19 +1503,29 @@ function processNote(
  * will render nowhere (not a content node, no placeholder, not a blockChild).
  */
 function assertNoDroppedListBlocks(cnxml, structure, segments, equations) {
-  // 1. Source block ids inside any <list>…</list>.
-  const listBlocks = cnxml.match(/<list[\s>][\s\S]*?<\/list>/g) || [];
+  // 1. Source block ids inside any <list>…</list>. Use extractNestedElements
+  // (depth-correct) rather than a hand-rolled non-greedy regex: a non-greedy
+  // `<list[\s>][\s\S]*?<\/list>` match terminates at the FIRST closing </list>,
+  // so a nested <list> followed by a sibling block in the SAME <item> would end
+  // the match at the nested list's close and never see the sibling id — hiding
+  // a genuine drop from this scan. extractNestedElements's fullMatch spans the
+  // entire top-level list including all nested content, so every id is caught.
+  const listBlocks = extractNestedElements(cnxml, 'list');
   const inListEqIds = new Set();
   const inListMediaIds = new Set();
   for (const block of listBlocks) {
-    for (const mm of block.matchAll(/<equation\b[^>]*\bid="([^"]+)"/g)) inListEqIds.add(mm[1]);
-    for (const mm of block.matchAll(/<media\b[^>]*\bid="([^"]+)"/g)) inListMediaIds.add(mm[1]);
+    if (!block.fullMatch) continue;
+    for (const mm of block.fullMatch.matchAll(/<equation\b[^>]*\bid="([^"]+)"/g))
+      inListEqIds.add(mm[1]);
+    for (const mm of block.fullMatch.matchAll(/<media\b[^>]*\bid="([^"]+)"/g))
+      inListMediaIds.add(mm[1]);
   }
   if (inListEqIds.size === 0 && inListMediaIds.size === 0) return;
 
   // 2. Ids that WILL render.
   const rendered = new Set();
   // 2a. content nodes (recursively) + item blockChildren + nested-list children
+  // (blockChildren: populated by Task 4 (Layer 2); harmless no-op until then)
   const walk = (nodes) => {
     for (const n of nodes || []) {
       if (n.id && (n.type === 'equation' || n.type === 'media')) rendered.add(n.id);

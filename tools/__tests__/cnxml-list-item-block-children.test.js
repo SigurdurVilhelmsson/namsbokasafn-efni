@@ -69,6 +69,20 @@ describe('OC-E: fail-loud guard', () => {
     expect(() => _extract(bad, 'mTEST')).toThrow(/EQGHOST/);
   });
 
+  it('throws if a list-nested block equation is hidden behind a nested list with a sibling block (nested-list under-scoping)', () => {
+    // Synthetic module: L1's item contains a nested list L2, followed by a
+    // SIBLING <equation> in the same item. A non-greedy `<list...>...</list>`
+    // regex would terminate at L2's closing </list> and never see EQAFTER,
+    // hiding a genuine drop from step 1 of the guard. extractNestedElements
+    // (depth-correct) must still catch it.
+    const bad = `<?xml version="1.0"?>
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" id="mTEST">
+<title>t</title><content>
+<list id="L1"><item><list id="L2"><item>x</item></list><equation id="EQAFTER"></equation></item></list>
+</content></document>`;
+    expect(() => _extract(bad, 'mTEST')).toThrow(/EQAFTER/);
+  });
+
   it('does not throw for the real modules (all in-item blocks accounted for)', () => {
     // m68739/m68793: bare block equation/media directly in a list item, covered
     // via [[MATH:N]]/[[MEDIA:N]] placeholders (Task 2's fix).
