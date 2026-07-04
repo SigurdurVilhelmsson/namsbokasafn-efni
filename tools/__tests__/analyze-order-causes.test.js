@@ -54,14 +54,15 @@ describe('analyzeModuleOrder (real modules, in-memory fresh build)', () => {
 
   // m68814 (equation+media) was cleaned by OC-A's elementIdPosition sweep;
   // m68789 (container tables) was cleaned by OC-B's tablesHandledInContainers
-  // fix — neither is a valid residual fixture anymore. Anchor on m68739, a tail
-  // module whose residual is non-table (equation/media/list) and survives both
-  // OC-A and OC-B. Assert only the stable property (moved>0); do NOT pin the
-  // tag multiset — this tail may be fixed by a later pass.
-  it('classifies a still-residual tail module (m68739 — non-table needs-deeper-look tail)', () => {
+  // fix; m68739 (equation/media/list nested in <list><item>) was cleaned by
+  // OC-E's list-stripping-before-equation/media-extraction fix (see
+  // tools/__tests__/cnxml-list-item-block-children.test.js for the dedicated
+  // regression suite covering all 4 OC-E tail modules). None of these is a
+  // valid residual fixture anymore — book-wide measurement is 149/0/0.
+  it('reports the former OC-E tail module as moved=[] (m68739, fixed by OC-E)', () => {
     const src = readFileSync(join(SRCDIR, 'ch07', 'm68739.cnxml'), 'utf8');
     const { moved } = analyzeModuleOrder(src);
-    expect(moved.length).toBeGreaterThan(0);
+    expect(moved).toEqual([]);
   });
 });
 

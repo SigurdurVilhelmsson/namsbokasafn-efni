@@ -792,22 +792,24 @@ function processTopLevelContent(
     }
   }
 
-  const standaloneMedia = extractNestedElements(contentForSimpleElements, 'media');
   const lists = extractNestedElements(contentForSimpleElements, 'list');
 
-  // Strip list content before para extraction — paras inside list items
-  // are already captured as item segments by processList(). Without this,
-  // they get extracted as BOTH item AND standalone para segments, causing
-  // duplication (m68727: +12 emphasis, +2 m:math, +2 sub).
-  let contentForParas = contentForSimpleElements;
+  // Strip list content before extracting standalone media, paras, AND equations.
+  // Block <media>/<para>/<equation> nested inside <list><item> are captured in-item
+  // by processList() and render via their [[MEDIA:N]]/[[MATH:N]] placeholders. Without
+  // stripping lists here, they are ALSO hoisted to top-level content and re-emitted
+  // AFTER the list (OC-E order bug). Paras were already stripped; equations/media were
+  // not — this unifies all three.
+  let contentWithoutLists = contentForSimpleElements;
   for (const list of lists) {
     if (list.fullMatch) {
-      contentForParas = contentForParas.replace(list.fullMatch, '');
+      contentWithoutLists = contentWithoutLists.replace(list.fullMatch, '');
     }
   }
 
-  const paras = extractElements(contentForParas, 'para');
-  const equations = extractElements(contentForSimpleElements, 'equation');
+  const standaloneMedia = extractNestedElements(contentWithoutLists, 'media');
+  const paras = extractElements(contentWithoutLists, 'para');
+  const equations = extractElements(contentWithoutLists, 'equation');
 
   // Add all elements with their positions
   // For elements without fullMatch, find by id attribute
