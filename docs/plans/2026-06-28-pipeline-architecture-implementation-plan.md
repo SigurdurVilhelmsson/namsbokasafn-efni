@@ -702,7 +702,15 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
     regex bug (fixed there with a `(?<![\w-])` negative-lookbehind). Confirmed on m68710/m68674/m68795/
     m68830; explains the `para`/`equation` collateral too. Fix = collision-safe position lookup (anchor
     `id="` as a real attribute, e.g. `<tag …id="X"` or the negative-lookbehind).
-    **(OC-B) [MED] direct-child container-table mispositioning (F4-adjacent gap).** In
+    **(OC-B) [MED] direct-child container-table mispositioning — ✅ DONE (branch
+    `fix/chem-ocb-container-tables`).** Inject-only `ctx.tablesHandledInContainers` (table analog of
+    `figuresHandledInContainers`): the 3 container builders keep direct-child (non-inline, filtered by
+    `inlineTableIds` to preserve F4's fail-loud throw) tables in-container + register them; the standalone
+    `case 'table':` dispatch skips a registered id. **Measured (analyze-order-causes): residual 19→4,
+    clean 130→145 — all 16 table-cause modules cleared, m68789 CLEAN.** No committed bytes (armed for WS5).
+    **Combined OC-A+OC-B took the element-reorder residual 60→4.** Remaining 4 = the needs-deeper-look
+    tail (m68739 eq/media/list, m68793 eq/para, m68832/m68852 eq/term — NO table/target-id cause) →
+    re-triage next, then the id-order gate flip. *Original find (for history):* In
     `buildExampleDom`/`buildExerciseDom`/`buildNoteDom`, a `<table>` that is a DIRECT child of the
     container (not an inline `[[TABLE:]]` ref) has no `keptTableIds` entry (only inline expansion populates
     it), so `removeTablesExceptKept` strips it and the outer interleave mis-places it. Distinct from F4
