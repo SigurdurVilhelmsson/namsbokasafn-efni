@@ -188,3 +188,74 @@ authoritative). One PR off `main`.
 Log any discovered issues to the register in
 `docs/plans/2026-06-28-pipeline-architecture-implementation-plan.md` and to memory, per
 the batch-triage convention — do not fix inline.
+
+---
+
+## Amendment 2026-07-04 — position-aware length cap (post-smoke-run)
+
+The first smoke run on `efnafraedi-2e` produced **133 Bucket-1 keys**, far more than the
+"~15–25 subscript labels" the original design assumed. Inspection showed the scan
+faithfully surfaces **two populations** of English-inside-math, and the single `≤6`
+length rule fits only one of them:
+
+1. **Subscript labels** (`mol`, `rate`, `cell`, `vap`, `surr`, `sys`, `cathode`, `rxn`,
+   `fus`…) — render as small subscripts, so a compact Icelandic form (`≤6` chars) is
+   genuinely required; a longer value reflows the equation.
+2. **Inline content-words in word-equations / annotations** (`pancakes`, `sunlight`,
+   `graphite`, `diamond`, `glucose`, `electrolysis`, `catalyst`, `density`, `mass`,
+   `volume`…) — full words in the body of an expression. A faithful Icelandic edition
+   should translate these, but their Icelandic exceeds 6 chars
+   (`pancakes`→`pönnukökur`=10) — the `≤6` **hard cap would wrongly reject them.**
+
+There is **no frequency or regex discriminator** between the two (real subscript labels
+sit at low counts — `fus`(5), `rxn`(5); content-words sit high — `mass`(15),
+`density`(12)), so filtering is rejected — it would hide real low-count labels, exactly
+the silent loss the two-bucket design forbids. **Lead decision (2026-07-04): make the cap
+position-aware** — keep all tokens, enforce `≤6` **only** where the token renders as a
+subscript.
+
+### Position rule (requires DOM)
+
+A token occurrence is **`script`** (subscript/superscript position) iff its node descends
+from the **≥2nd element-child** of an `m:msub` / `m:msup` / `m:msubsup` ancestor (child
+index 0 is the base; index ≥1 is a script slot). Otherwise it is **`body`**. This needs a
+parsed tree — a flat regex cannot see structural role through the common `<m:mrow>`
+wrapping and nesting. The tool therefore parses each source file with `@xmldom/xmldom`
+(already a project dependency, used by `tools/lib/cnxml-dom.js`); `xmlns:m` is declared on
+the CNXML root so prefixes resolve. `collectMathTokens` moves from regex to DOM and
+returns `{ text, context, position }` per occurrence. `decodeEntities` stays exported (DOM
+`textContent` is already entity-decoded, so `collectMathTokens` no longer needs it, but it
+remains a tested utility).
+
+### Per-key classification
+
+A distinct token is classified **`subscript`** if **any** of its occurrences is in
+`script` position (conservative — a too-long value would reflow wherever it *is* a
+subscript), else **`inline`**. Icelandic is frequently shorter than English
+(`solution`→`lausn`=5, `reaction`→`hvarf`=5), so the conservative rule rarely blocks a
+real translation; where it genuinely can't fit, abbreviating is the correct outcome for a
+subscript anyway. The report shows both position counts so the lead has visibility.
+
+### Validation (position-aware)
+
+`validateValue(value, { enforceLength })`: non-empty, no whitespace, and no `< > & " '`
+apply to **all** values; the `≤6` code-point cap applies **only when `enforceLength` is
+true** (i.e. the key is `subscript`-class). `validateMap(map, classes)` looks up each
+key's class and passes `enforceLength` accordingly. The map file stays a plain
+`{ english: icelandic }` object (keys sorted) — position is **re-derived at validate time**
+by re-scanning `01-source/` (validate is already book-scoped), so the fill format the lead
+edits never carries structural metadata.
+
+### Report (three sections)
+
+`renderReport` splits Bucket 1 into two ranked tables — **Subscript labels (`≤6`
+enforced)** and **Inline content-words (no length cap)** — followed by the unchanged
+**Also review** (Bucket 2) list. Each subscript/inline row shows count and current value;
+the constraints block states the cap applies to subscript labels only.
+
+### Additional hardening (lead-directed, this branch)
+
+`--validate`'s `JSON.parse` of the hand-edited map is wrapped so a JSON typo yields a
+clean `ERROR: <path> is not valid JSON: <message>` (exit 1) instead of a raw stack trace —
+the lead hand-edits 133 values and runs `--validate` to check them, so the friendly error
+lands exactly in the path they lean on.
