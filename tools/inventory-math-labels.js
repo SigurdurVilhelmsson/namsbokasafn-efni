@@ -31,7 +31,9 @@ const REPO_ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 /** Recursively collect *.cnxml paths under a directory. */
 function findCnxml(dir) {
   const out = [];
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+  for (const entry of fs
+    .readdirSync(dir, { withFileTypes: true })
+    .sort((a, b) => a.name.localeCompare(b.name))) {
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) out.push(...findCnxml(full));
     else if (entry.name.endsWith('.cnxml')) out.push(full);
@@ -104,6 +106,11 @@ function runValidate(mapPath, srcDir) {
     process.exit(1);
   }
   const map = readJsonOrExit(mapPath);
+
+  if (!fs.existsSync(srcDir)) {
+    console.error(`ERROR: no 01-source/ under ${srcDir}`);
+    process.exit(1);
+  }
 
   // Re-derive each key's position class by re-scanning source.
   const tokens = [];
