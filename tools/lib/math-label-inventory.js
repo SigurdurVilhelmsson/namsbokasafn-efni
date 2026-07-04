@@ -1,3 +1,45 @@
+import { DOMParser } from '@xmldom/xmldom';
+
+// Namespaces used when wrapping a bare CNXML fragment for parsing (mirrors
+// tools/lib/cnxml-dom.js). Real CNXML files declare these on <document>
+// already; test fixtures and loose fragments may not, so wrapping keeps
+// collectMathTokens robust to both without changing its public behavior.
+const CNXML_NS = 'http://cnx.rice.edu/cnxml';
+const MATHML_NS = 'http://www.w3.org/1998/Math/MathML';
+
+const TOKEN_NAMES = new Set(['m:mtext', 'm:mi']);
+const SCRIPT_PARENTS = new Set(['m:msub', 'm:msup', 'm:msubsup']);
+
+/** Element children of a node, in document order. */
+function elementChildren(node) {
+  const out = [];
+  for (let c = node.firstChild; c; c = c.nextSibling) if (c.nodeType === 1) out.push(c);
+  return out;
+}
+
+/** True if `node` sits in a subscript/superscript slot: it descends from the ≥2nd
+ *  element-child of an m:msub/m:msup/m:msubsup ancestor (index 0 is the base). */
+function isScriptPosition(node) {
+  let child = node;
+  let parent = node.parentNode;
+  while (parent && parent.nodeType === 1) {
+    if (SCRIPT_PARENTS.has(parent.tagName) && elementChildren(parent).indexOf(child) >= 1) {
+      return true;
+    }
+    child = parent;
+    parent = parent.parentNode;
+  }
+  return false;
+}
+
+/** Nearest enclosing <m:math> ancestor, or null. */
+function enclosingMath(node) {
+  for (let p = node.parentNode; p && p.nodeType === 1; p = p.parentNode) {
+    if (p.tagName === 'm:math') return p;
+  }
+  return null;
+}
+
 /**
  * Units and math functions confirmed to STAY unchanged in Icelandic.
  * NOTE: `mol` is deliberately absent — it localizes to `mól`, so it must
@@ -39,52 +81,82 @@ export function decodeEntities(s) {
     .replace(/&amp;/g, '&');
 }
 
-const NODE_RE = /<m:(?:mtext|mi)\b[^>]*>([\s\S]*?)<\/m:(?:mtext|mi)>/g;
-
 /**
- * Extract every <m:mtext>/<m:mi> text value from one CNXML string, each with a
- * best-effort readable context = the space-joined tokens of its enclosing
- * <m:math> block. Nodes outside any <m:math> (defensive; rare) get context ''.
+ * Extract every <m:mtext>/<m:mi> text value from one CNXML string via DOM, each with:
+ *  - context: space-joined tokens of the enclosing <m:math> (document order); '' if none
+ *  - position: 'script' (subscript/superscript slot) | 'body'
+ * Throws on a fatal XML parse error (fail-loud — never silently drop a file's tokens).
+ *
+ * The fragment is wrapped in a synthetic root that declares the CNXML/MathML
+ * namespaces (mirrors tools/lib/cnxml-dom.js's parseCnxmlFragment) so this
+ * works for a bare fragment (no single root element, no xmlns declared) as
+ * well as a full CNXML document that already declares its own namespaces.
  * @param {string} cnxml
- * @returns {Array<{ text: string, context: string }>}
+ * @returns {Array<{ text: string, context: string, position: 'script'|'body' }>}
  */
 export function collectMathTokens(cnxml) {
+  const wrapped = `<root xmlns="${CNXML_NS}" xmlns:m="${MATHML_NS}">${cnxml}</root>`;
+  let fatal = false;
+  const doc = new DOMParser({
+    onError: (level) => {
+      if (level === 'fatalError') fatal = true;
+    },
+  }).parseFromString(wrapped, 'text/xml');
+  if (fatal || !doc || !doc.documentElement) {
+    throw new Error('collectMathTokens: fatal XML parse error');
+  }
+
+  const tokenNodes = Array.from(doc.getElementsByTagName('*')).filter((el) =>
+    TOKEN_NAMES.has(el.tagName)
+  );
+  const contextCache = new Map(); // math element -> context string
   const results = [];
-  const push = (raw, context) => {
-    const t = decodeEntities(raw).trim();
-    if (t) results.push({ text: t, context });
-  };
-  // 1. Tokens inside <m:math> blocks, carrying enclosing-expression context.
-  //    Blank each block from a working copy so step 2 only sees stray nodes.
-  const withoutBlocks = cnxml.replace(/<m:math\b[^>]*>([\s\S]*?)<\/m:math>/g, (_full, inner) => {
-    const raws = [...inner.matchAll(new RegExp(NODE_RE.source, 'g'))].map((m) => m[1]);
-    const context = raws
-      .map((r) => decodeEntities(r).trim())
-      .filter(Boolean)
-      .join(' ');
-    for (const r of raws) push(r, context);
-    return '';
-  });
-  // 2. Defensive: any mtext/mi outside a math block — no silent miss.
-  for (const m of withoutBlocks.matchAll(new RegExp(NODE_RE.source, 'g'))) push(m[1], '');
+  for (const node of tokenNodes) {
+    const text = node.textContent.trim();
+    if (!text) continue;
+    const math = enclosingMath(node);
+    let context = '';
+    if (math) {
+      if (!contextCache.has(math)) {
+        const toks = Array.from(math.getElementsByTagName('*'))
+          .filter((el) => TOKEN_NAMES.has(el.tagName))
+          .map((el) => el.textContent.trim())
+          .filter(Boolean);
+        contextCache.set(math, toks.join(' '));
+      }
+      context = contextCache.get(math);
+    }
+    results.push({ text, context, position: isScriptPosition(node) ? 'script' : 'body' });
+  }
   return results;
 }
 
 /**
- * Tally distinct token values into label / other buckets.
- * @param {Array<{text:string,context:string}>} tokens
+ * Tally distinct token values into label / other buckets, additionally tracking
+ * how many occurrences render as a subscript/superscript slot ('script') vs
+ * plain body text ('body'). `klass` is 'subscript' if any occurrence was
+ * script-positioned, else 'inline'.
+ * @param {Array<{text:string,context:string,position?:'script'|'body'}>} tokens
  * @param {Set<string>} [stoplist]
- * @returns {{ labels: Map<string,{count:number,context:string}>,
- *             others: Map<string,{count:number,context:string}> }}
+ * @returns {{ labels: Map<string,{count:number,context:string,scriptCount:number,bodyCount:number,klass:'subscript'|'inline'}>,
+ *             others: Map<string,{count:number,context:string,scriptCount:number,bodyCount:number,klass:'subscript'|'inline'}> }}
  */
 export function aggregate(tokens, stoplist = DEFAULT_STOPLIST) {
   const labels = new Map();
   const others = new Map();
-  for (const { text, context } of tokens) {
+  for (const { text, context, position } of tokens) {
     const target = bucketToken(text, stoplist) === 'label' ? labels : others;
-    const cur = target.get(text);
-    if (cur) cur.count += 1;
-    else target.set(text, { count: 1, context });
+    let cur = target.get(text);
+    if (!cur) {
+      cur = { count: 0, context, scriptCount: 0, bodyCount: 0 };
+      target.set(text, cur);
+    }
+    cur.count += 1;
+    if (position === 'script') cur.scriptCount += 1;
+    else cur.bodyCount += 1;
+  }
+  for (const map of [labels, others]) {
+    for (const v of map.values()) v.klass = v.scriptCount > 0 ? 'subscript' : 'inline';
   }
   return { labels, others };
 }

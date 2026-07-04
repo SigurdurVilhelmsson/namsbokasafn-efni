@@ -113,6 +113,41 @@ describe('validateMap', () => {
   });
 });
 
+describe('collectMathTokens position', () => {
+  const cnxml = `<doc xmlns:m="http://www.w3.org/1998/Math/MathML">
+    <m:math><m:mrow><m:mtext>Δ</m:mtext><m:msub><m:mi>H</m:mi>
+      <m:mrow><m:mtext>vap</m:mtext></m:mrow></m:msub></m:mrow></m:math>
+    <m:math><m:mtext>pancakes</m:mtext></m:math></doc>`;
+
+  it('marks subscript-slot tokens script and body tokens body', () => {
+    const toks = collectMathTokens(cnxml);
+    const vap = toks.find((t) => t.text === 'vap');
+    const base = toks.find((t) => t.text === 'H');
+    const pan = toks.find((t) => t.text === 'pancakes');
+    expect(vap.position).toBe('script'); // 2nd child of m:msub
+    expect(base.position).toBe('body'); // base (1st child) is not a script slot
+    expect(pan.position).toBe('body'); // standalone mtext
+  });
+  it('still captures context (enclosing expression tokens)', () => {
+    const vap = collectMathTokens(cnxml).find((t) => t.text === 'vap');
+    expect(vap.context).toBe('Δ H vap');
+  });
+});
+
+describe('aggregate classification', () => {
+  it('classes a token subscript if ANY occurrence is script, else inline', () => {
+    const toks = [
+      { text: 'vap', context: 'H vap', position: 'script' },
+      { text: 'vap', context: 'x', position: 'body' },
+      { text: 'pancakes', context: 'pancakes', position: 'body' },
+    ];
+    const { labels } = aggregate(toks);
+    expect(labels.get('vap').klass).toBe('subscript'); // any script wins
+    expect(labels.get('vap').scriptCount).toBe(1);
+    expect(labels.get('pancakes').klass).toBe('inline');
+  });
+});
+
 import { renderReport } from '../lib/math-label-inventory.js';
 
 describe('renderReport', () => {
