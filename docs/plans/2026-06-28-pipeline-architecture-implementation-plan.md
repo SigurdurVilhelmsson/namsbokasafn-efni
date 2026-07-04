@@ -723,10 +723,36 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
     lookbehind; order-discriminating regression test).
     **(OC-D) [LOW] `analyze-order-causes` exit-code path untested.** `maybeExitNothingAnalyzable`
     (exit 2 only when nothing analyzable) is manual-verified only; add a `process.exit`-mocked unit test.
-    **Reshaped next step for gate item 2:** fix OC-A (+ harden `extractIdSequence` per OC-C) → fix OC-B →
-    re-run the diagnostic (residual should collapse toward 0) → re-triage the "needs deeper look" tail
-    (`list`/`solution`/`example`/`footnote`, likely OC-A/B collateral) → THEN the id-order gate can
-    hard-fail cleanly (little/no benign allowlist needed). Sequence still precedes WS5.
+    **(OC-E) [MED] block `<equation>`/`<media>` nested in `<list><item>` hoisted after the list — ✅ DONE
+    (branch `fix/chem-oce-list-item-block-children`).** Triage: `docs/audit/2026-07-04-order-tail-triage-list-item-block-children.md`;
+    design/plan: `docs/plans/2026-07-04-oce-list-item-block-children-{design,plan}.md`. Root cause: a block
+    `<equation>`/`<media>` (or a nested `<list>` beyond the first) inside a `<list><item>` was lifted out to
+    top-level `structure.content` during extraction — `processTopLevelContent`'s equation/media extraction
+    didn't strip lists first the way para extraction did — losing its in-item position; `buildList` only
+    re-emitted nested `list` children, so the lifted block re-appeared as a standalone element after the
+    whole list (reader-visible: an equation/figure that belongs inside item N of a list renders after the
+    list instead). Fix, three layers: **Layer 1** — strip `<list>` subtrees before equation/media extraction
+    (they render in place via the item's own `[[MATH:N]]`/`[[MEDIA:N]]` placeholder, same mechanism as any
+    other in-item block); **fail-loud guard** `assertNoDroppedListBlocks` (uses `extractNestedElements` for
+    depth-correct list scoping, closing an under-scoping gap found mid-implementation) so a future list-block
+    class can't silently drop again instead of hard-failing; **Layer 2** — for the one item that needed it
+    (m68793 item 1: a multi-child `<item>` whose first child is a `<para>` followed by the block
+    `<equation>`), restore the `<para>` wrapper and emit the block child as a sibling inside `<item>`,
+    narrow-scoped (attempt-then-fallback), no segment-text change. **Measured (analyze-order-causes):
+    residual 4→0, clean 145→149 — efnafraedi-2e now 149/149 clean, 0 residual, 0 build failures. Combined
+    OC-A+OC-B+OC-E took the element-reorder residual 60→0.** No committed `01-`/`02-`/`03-`/`05-` bytes
+    changed (armed for WS5, like OC-A/OC-B) — **the id-order gate flip itself stays deferred to post-WS5**
+    (the order check reads committed `03-translated/`, which is stale until WS5 re-injects; same deferral
+    as OC-A/OC-B). Out-of-scope finds logged during implementation: **(a)** [LATENT] the tightened
+    list-item classifier no longer sets `wrapsPara` on a multi-`<para>` item that has no nested block/list
+    (an order-invisible render-shape delta; segment text is unchanged) — verified **0 such items exist** in
+    efnafraedi-2e today, but worth rechecking at biology onboarding, where list shapes differ; **(b)** [LOW]
+    test-hardening nit — the OC-E `class="unnumbered"` equation assertion is a whole-output `toContain`,
+    not bound to the specific equation id; tighten if the test ever needs to disambiguate multiple
+    unnumbered equations in one fixture.
+    **Gate item 2 status: the residual is now 0/149 — the id-order check is ready to flip warn-only→hard-fail
+    once WS5 re-injects** (flipping against the still-stale committed `03-translated/` would hard-fail on
+    output the fix hasn't reached yet).
 - **#33 [HIGH] inject list-flattening divergence — ✅ DONE (PR #197, branch `fix/inject-list-flatten-unify`).**
   One `paraHasFlattenedList` helper now serves all three DOM builders; `buildExerciseDom`/`buildNoteDom`
   **preserve** a `<list>` flattened into a math-bearing `<para>` (was `removeChild`-deleted), matching
