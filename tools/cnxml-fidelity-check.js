@@ -79,14 +79,17 @@ export function compareTagCounts(sourceCnxml, translatedCnxml) {
 }
 
 /**
- * Every id="..." in document order, first occurrence per id.
+ * Every element-definition id="..." in document order, first occurrence per id.
+ * Skips `target-id="..."` cross-references (they are not element definitions). (OC-C)
  * @param {string} cnxml
  * @returns {string[]}
  */
 export function extractIdSequence(cnxml) {
   const seq = [];
   const seen = new Set();
-  const re = /\bid="([^"]+)"/g;
+  // (?<![\w-]) excludes the tail of `target-id="…"` (and any `*-id="…"`) so a
+  // cross-reference is never counted as an element id in the order sequence. (OC-C)
+  const re = /(?<![\w-])id="([^"]+)"/g;
   let m;
   while ((m = re.exec(cnxml)) !== null) {
     if (!seen.has(m[1])) {

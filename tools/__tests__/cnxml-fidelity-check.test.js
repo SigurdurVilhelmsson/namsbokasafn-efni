@@ -50,6 +50,20 @@ describe('extractIdSequence', () => {
   });
 });
 
+describe('extractIdSequence skips target-id references (OC-C)', () => {
+  it('does not emit a phantom id for a target-id reference (order-discriminating)', () => {
+    const src = `<para id="p1">see <link target-id="figZ"/></para><para id="mid">x</para><figure id="figZ"/>`;
+    // old \bid= regex: figZ captured at the target-id ref (before mid) → ['p1','figZ','mid']
+    // new lookbehind: target-id skipped → definition order ['p1','mid','figZ']
+    expect(extractIdSequence(src)).toEqual(['p1', 'mid', 'figZ']);
+  });
+
+  it('drops a cross-document target-id that has no local definition', () => {
+    const src = `<para id="p1">see <link target-id="ghost" document="m999"/></para>`;
+    expect(extractIdSequence(src)).toEqual(['p1']);
+  });
+});
+
 describe('compareElementOrder', () => {
   it('ok:true when common ids are in the same relative order', () => {
     const src = '<x id="a"/><x id="b"/><x id="c"/>';
