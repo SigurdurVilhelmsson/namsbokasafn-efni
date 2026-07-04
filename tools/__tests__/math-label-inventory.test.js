@@ -183,3 +183,26 @@ describe('renderReport', () => {
     expect(md).toMatch(/self-map/i);
   });
 });
+
+describe('validateValue position-aware', () => {
+  it('skips the length cap when enforceLength is false', () => {
+    expect(validateValue('pönnukökur', { enforceLength: false })).toBeNull(); // 10 cp, inline ok
+    expect(validateValue('a b', { enforceLength: false })).toMatch(/whitespace/); // other rules still apply
+  });
+  it('still enforces the cap by default', () => {
+    expect(validateValue('pönnukökur')).toMatch(/> 6/);
+  });
+});
+
+describe('validateMap position-aware', () => {
+  it('caps subscript-class keys but not inline-class keys', () => {
+    const map = { vap: 'uppgufun', pancakes: 'pönnukökur' }; // both > 6 chars
+    const classes = { vap: 'subscript', pancakes: 'inline' };
+    const v = validateMap(map, classes);
+    expect(v.map((x) => x.key)).toEqual(['vap']); // only the subscript one is flagged
+  });
+  it('enforces length for keys with unknown class (safe default)', () => {
+    const v = validateMap({ foo: 'toolongvalue' }, {});
+    expect(v).toHaveLength(1);
+  });
+});

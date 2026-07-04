@@ -193,28 +193,34 @@ export function mergeSkeleton(existing, labels) {
 /**
  * Validate one filled Icelandic label value against the WS4 rules.
  * @param {string} value
+ * @param {Object} [opts]
+ * @param {boolean} [opts.enforceLength=true]  when false, the ≤6 cap is skipped (all other rules still apply)
  * @returns {string|null}  human-readable reason if invalid, else null
  */
-export function validateValue(value) {
+export function validateValue(value, { enforceLength = true } = {}) {
   if (typeof value !== 'string' || value.length === 0) {
     return 'empty (use a self-map like "surr"→"surr" to keep the English label)';
   }
   if (/\s/.test(value)) return 'contains whitespace (must be a single token)';
   if (/[<>&"']/.test(value)) return 'contains a forbidden XML character (one of < > & " \')';
-  const codePoints = [...value].length;
-  if (codePoints > 6) return `${codePoints} chars > 6-char cap`;
+  if (enforceLength) {
+    const codePoints = [...value].length;
+    if (codePoints > 6) return `${codePoints} chars > 6-char cap`;
+  }
   return null;
 }
 
 /**
  * Validate every value in a filled map.
  * @param {Record<string,string>} map
+ * @param {Record<string,'subscript'|'inline'>} [classes={}]  key's class determines if length is enforced; unknown class → enforce (safe default)
  * @returns {Array<{ key: string, value: string, reason: string }>}
  */
-export function validateMap(map) {
+export function validateMap(map, classes = {}) {
   const violations = [];
   for (const [key, value] of Object.entries(map)) {
-    const reason = validateValue(value);
+    const enforceLength = classes[key] !== 'inline';
+    const reason = validateValue(value, { enforceLength });
     if (reason) violations.push({ key, value, reason });
   }
   return violations;
