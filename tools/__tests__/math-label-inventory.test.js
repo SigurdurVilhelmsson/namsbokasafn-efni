@@ -134,6 +134,12 @@ describe('collectMathTokens position', () => {
   });
 });
 
+describe('collectMathTokens fail-loud', () => {
+  it('throws on a fatal XML parse error (no silent miss)', () => {
+    expect(() => collectMathTokens('<m:math><m:mi>x</para></m:math>')).toThrow();
+  });
+});
+
 describe('aggregate classification', () => {
   it('classes a token subscript if ANY occurrence is script, else inline', () => {
     const toks = [

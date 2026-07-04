@@ -1,11 +1,12 @@
 import { DOMParser } from '@xmldom/xmldom';
+import { CNXML_NS, MATHML_NS } from './cnxml-dom.js';
 
 // Namespaces used when wrapping a bare CNXML fragment for parsing (mirrors
 // tools/lib/cnxml-dom.js). Real CNXML files declare these on <document>
 // already; test fixtures and loose fragments may not, so wrapping keeps
 // collectMathTokens robust to both without changing its public behavior.
-const CNXML_NS = 'http://cnx.rice.edu/cnxml';
-const MATHML_NS = 'http://www.w3.org/1998/Math/MathML';
+// CNXML_NS/MATHML_NS are imported (not re-declared) so the two files' wrap
+// strings can never drift apart.
 
 const TOKEN_NAMES = new Set(['m:mtext', 'm:mi']);
 const SCRIPT_PARENTS = new Set(['m:msub', 'm:msup', 'm:msubsup']);
