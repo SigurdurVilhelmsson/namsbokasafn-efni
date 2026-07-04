@@ -57,8 +57,18 @@ function main() {
   const mapPath = path.join(bookDir, 'math-label-map.json');
   const reportPath = path.join(bookDir, 'math-label-inventory.md');
 
-  if (args.validate) return runValidate(mapPath);
+  if (args.validate) return runValidate(mapPath, path.join(bookDir, '01-source'));
   return runGenerate(args.book, bookDir, mapPath, reportPath);
+}
+
+/** Parse a JSON file, exiting with a friendly message on parse failure. */
+function readJsonOrExit(file) {
+  try {
+    return JSON.parse(fs.readFileSync(file, 'utf8'));
+  } catch (err) {
+    console.error(`ERROR: ${file} is not valid JSON: ${err.message}`);
+    process.exit(1);
+  }
 }
 
 function runGenerate(book, bookDir, mapPath, reportPath) {
@@ -72,7 +82,7 @@ function runGenerate(book, bookDir, mapPath, reportPath) {
     tokens.push(...collectMathTokens(fs.readFileSync(file, 'utf8')));
   }
   const { labels, others } = aggregate(tokens);
-  const existing = fs.existsSync(mapPath) ? JSON.parse(fs.readFileSync(mapPath, 'utf8')) : {};
+  const existing = fs.existsSync(mapPath) ? readJsonOrExit(mapPath) : {};
   const { merged, addedKeys, orphanKeys } = mergeSkeleton(existing, labels);
 
   fs.writeFileSync(mapPath, serializeMap(merged));
@@ -88,13 +98,23 @@ function runGenerate(book, bookDir, mapPath, reportPath) {
   }
 }
 
-function runValidate(mapPath) {
+function runValidate(mapPath, srcDir) {
   if (!fs.existsSync(mapPath)) {
     console.error(`ERROR: ${mapPath} not found — run generate first (without --validate).`);
     process.exit(1);
   }
-  const map = JSON.parse(fs.readFileSync(mapPath, 'utf8'));
-  const violations = validateMap(map);
+  const map = readJsonOrExit(mapPath);
+
+  // Re-derive each key's position class by re-scanning source.
+  const tokens = [];
+  for (const file of findCnxml(srcDir)) {
+    tokens.push(...collectMathTokens(fs.readFileSync(file, 'utf8')));
+  }
+  const { labels, others } = aggregate(tokens);
+  const classes = {};
+  for (const [k, v] of [...labels, ...others]) classes[k] = v.klass;
+
+  const violations = validateMap(map, classes);
   if (violations.length === 0) {
     console.log(`✓ ${Object.keys(map).length} label values valid.`);
     return;

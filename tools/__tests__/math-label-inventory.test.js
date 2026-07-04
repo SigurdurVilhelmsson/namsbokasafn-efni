@@ -158,8 +158,8 @@ import { renderReport } from '../lib/math-label-inventory.js';
 
 describe('renderReport', () => {
   const labels = new Map([
-    ['rate', { count: 64, context: 'Δ[A]/Δt = rate' }],
-    ['cell', { count: 50, context: 'E cell' }],
+    ['rate', { count: 64, context: 'Δ[A]/Δt = rate', klass: 'subscript' }],
+    ['cell', { count: 50, context: 'E cell', klass: 'subscript' }],
   ]);
   const others = new Map([['atm', { count: 39, context: 'P atm' }]]);
   const md = renderReport({
@@ -170,6 +170,7 @@ describe('renderReport', () => {
   });
 
   it('lists likely labels sorted by count with counts and context', () => {
+    expect(md).toMatch(/## Subscript labels/);
     expect(md).toMatch(/rate/);
     expect(md).toMatch(/64/);
     expect(md.indexOf('rate')).toBeLessThan(md.indexOf('cell')); // 64 before 50
@@ -204,5 +205,37 @@ describe('validateMap position-aware', () => {
   it('enforces length for keys with unknown class (safe default)', () => {
     const v = validateMap({ foo: 'toolongvalue' }, {});
     expect(v).toHaveLength(1);
+  });
+});
+
+describe('renderReport three sections', () => {
+  const labels = new Map([
+    ['vap', { count: 19, context: 'Δ H vap', scriptCount: 19, bodyCount: 0, klass: 'subscript' }],
+    [
+      'pancakes',
+      { count: 3, context: 'egg pancakes', scriptCount: 0, bodyCount: 3, klass: 'inline' },
+    ],
+  ]);
+  const others = new Map([
+    ['atm', { count: 39, context: 'P atm', scriptCount: 0, bodyCount: 39, klass: 'inline' }],
+  ]);
+  const md = renderReport({
+    book: 'efnafraedi-2e',
+    labels,
+    others,
+    currentMap: { vap: '', pancakes: '' },
+  });
+
+  it('has a subscript section that mentions the 6-char cap', () => {
+    expect(md).toMatch(/Subscript labels/);
+    expect(md).toMatch(/vap/);
+  });
+  it('has an inline content-words section noting no length cap', () => {
+    expect(md).toMatch(/Inline content-words/);
+    expect(md).toMatch(/pancakes/);
+    expect(md).toMatch(/no length cap|no cap/i);
+  });
+  it('still prints the also-review bucket', () => {
+    expect(md).toMatch(/atm/);
   });
 });
