@@ -116,3 +116,33 @@ export function mergeSkeleton(existing, labels) {
   }
   return { merged, addedKeys, orphanKeys };
 }
+
+/**
+ * Validate one filled Icelandic label value against the WS4 rules.
+ * @param {string} value
+ * @returns {string|null}  human-readable reason if invalid, else null
+ */
+export function validateValue(value) {
+  if (typeof value !== 'string' || value.length === 0) {
+    return 'empty (use a self-map like "surr"→"surr" to keep the English label)';
+  }
+  if (/\s/.test(value)) return 'contains whitespace (must be a single token)';
+  if (/[<>&"']/.test(value)) return 'contains a forbidden XML character (one of < > & " \')';
+  const codePoints = [...value].length;
+  if (codePoints > 6) return `${codePoints} chars > 6-char cap`;
+  return null;
+}
+
+/**
+ * Validate every value in a filled map.
+ * @param {Record<string,string>} map
+ * @returns {Array<{ key: string, value: string, reason: string }>}
+ */
+export function validateMap(map) {
+  const violations = [];
+  for (const [key, value] of Object.entries(map)) {
+    const reason = validateValue(value);
+    if (reason) violations.push({ key, value, reason });
+  }
+  return violations;
+}

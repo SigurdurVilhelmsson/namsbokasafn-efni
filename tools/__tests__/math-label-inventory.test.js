@@ -6,6 +6,8 @@ import {
   decodeEntities,
   aggregate,
   mergeSkeleton,
+  validateValue,
+  validateMap,
 } from '../lib/math-label-inventory.js';
 
 describe('bucketToken', () => {
@@ -85,5 +87,28 @@ describe('mergeSkeleton', () => {
     const { merged, orphanKeys } = mergeSkeleton({ aq: 'vökvi' }, labels);
     expect(merged.aq).toBe('vökvi');
     expect(orphanKeys).toEqual(['aq']);
+  });
+});
+
+describe('validateValue', () => {
+  it('accepts a short Icelandic value and a self-map', () => {
+    expect(validateValue('hraði')).toBeNull(); // 5 code points
+    expect(validateValue('surr')).toBeNull(); // self-map keeps English
+  });
+  it('rejects empty, too-long, whitespace, and XML-special', () => {
+    expect(validateValue('')).toMatch(/empty/);
+    expect(validateValue('bakskaut')).toMatch(/> 6/); // 8 chars
+    expect(validateValue('a b')).toMatch(/whitespace/);
+    expect(validateValue('x<')).toMatch(/forbidden/);
+  });
+  it('counts Icelandic letters as single code points (þ, ð, æ, ö ok up to 6)', () => {
+    expect(validateValue('þðæösý')).toBeNull(); // 6 code points, allowed
+  });
+});
+
+describe('validateMap', () => {
+  it('returns one entry per violating key', () => {
+    const v = validateMap({ rate: 'hraði', surr: '', cathode: 'bakskaut' });
+    expect(v.map((x) => x.key).sort()).toEqual(['cathode', 'surr']);
   });
 });
