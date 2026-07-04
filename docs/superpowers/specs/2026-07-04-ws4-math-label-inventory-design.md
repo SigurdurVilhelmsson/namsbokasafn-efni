@@ -21,19 +21,24 @@ never sees them, so they render (and read aloud via assistive MathML) in English
 The chemistry source has ~19,000 `<m:mtext>` and ~10,700 `<m:mi>` nodes. The genuine
 translatable labels are a small island among look-alikes:
 
-- **Real labels (targets):** `rate`(64), `cell`(50), `vap`(19), `surr`(17), `sys`(16),
-  `mass`(15), `volume`(13), `cathode`(13), `solution`(12), `density`(12), `change`(12),
-  `anode`(12), `water`(11), `univ`(11), `molecules`(10), `and`(11), …
+- **Real labels (targets):** `rate`(64), `mol`(208, → Icelandic `mól`), `cell`(50),
+  `vap`(19), `surr`(17), `sys`(16), `mass`(15), `volume`(13), `cathode`(13),
+  `solution`(12), `density`(12), `change`(12), `anode`(12), `water`(11), `univ`(11),
+  `molecules`(10), `and`(11), …
 - **Chemical formulae (never touch):** `MnO`, `HCl`, `CaCO`, `AgCl`, `NaCl`, `pOH` — all
   carry uppercase element symbols.
-- **Units (never touch):** `mol`, `atm`, `torr`, `ppb`, `kPa`, `kJ` — all-lowercase, so
-  **not** separable from real labels by casing alone.
+- **Units — mostly keep, but some localize:** `atm`, `torr`, `ppb`, `kPa`, `kJ` stay as
+  is; but `mol` localizes to `mól`. All are all-lowercase, so **not** separable from real
+  labels by casing — and even a "unit" may be a translatable label. Whether a given unit
+  localizes is a chemistry-domain human call, which is exactly why these surface for the
+  lead to decide rather than being auto-kept.
 - **Math functions:** `log`, `ln`, `rms` — all-lowercase too.
 - **Operators / single chars:** `−`, `Δ`, `°`, `/`, and single-letter variables (`k`, `P`).
 
-No heuristic can perfectly separate "label" from "unit/function" — `mol` and `rate` look
-identical to a regex. That separation is intrinsically a **chemistry-domain human
-decision** (the lead is a chemistry teacher). The tool's job is therefore to **surface
+No heuristic can perfectly separate "keep" from "translate" — `atm` (keeps) and `rate`
+(→ `hraði`) look identical to a regex, and `mol` (→ `mól`) shows even a unit may localize.
+That separation is intrinsically a **chemistry-domain human decision** (the lead is a
+chemistry teacher). The tool's job is therefore to **surface
 candidates with enough context to decide, without silently hiding any real label** — a
 hidden label is a silent, reader-visible loss at render, the exact failure WS4 exists to
 prevent.
@@ -69,8 +74,10 @@ for biology and the other books later; this item runs it for `efnafraedi-2e`.
      enclosing expression (e.g. `Δ H vap`) plus the module id it first appears in.
 3. **Bucket each distinct token:**
    - **Bucket 1 — likely labels:** all-lowercase, ≥3 ASCII letters, and **not** in a
-     curated units/functions stoplist (`mol, atm, torr, ppb, kPa, kJ, log, ln, exp,
-     sin, cos, tan, …` — seeded from observed content, extensible as a `const`).
+     curated units/functions stoplist (`atm, torr, ppb, kPa, kJ, log, ln, exp, sin, cos,
+     tan, …` — seeded from observed content, extensible as a `const`). Note `mol` is
+     **not** stoplisted: it localizes to `mól`, so it must reach the lead as a Bucket-1
+     fill slot. The stoplist holds only units/functions confirmed to stay unchanged.
    - **Bucket 2 — also review:** everything else — contains any uppercase (formula-like:
      `MnO`, `HCl`, `pOH`), fewer than 3 letters, non-alphabetic operators, or a
      stoplisted unit/function.
@@ -162,8 +169,8 @@ The CLI `main()` wires these; the helpers are exported for unit tests.
 
 Unit tests on the pure helpers (no filesystem needed for the core logic):
 
-- **bucketer:** `rate`, `surr`, `and`, `vap` → Bucket 1; `mol`, `MnO`, `pOH`, `−`, `k`
-  → Bucket 2.
+- **bucketer:** `rate`, `surr`, `and`, `vap`, `mol` → Bucket 1 (`mol` localizes to `mól`,
+  so it must NOT be stoplisted); `atm`, `MnO`, `pOH`, `−`, `k` → Bucket 2.
 - **validator:** rejects `""` (empty), `bakskaut` (8 > 6), `a b` (space), `x<` (special);
   accepts `surr`→`surr` (self-map) and `hraði` (5 chars, Icelandic letters).
 - **merge:** existing filled value preserved; a new source token added with `""`; a key
