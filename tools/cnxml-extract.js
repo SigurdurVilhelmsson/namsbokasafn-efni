@@ -1629,11 +1629,34 @@ function processList(
         children,
       });
     } else {
-      // Check if item content is a single <para> wrapper — if so, record it so
-      // the injector can preserve the <para> element around the translated text.
-      const paraWrapMatch = item.content.trim().match(/^(<para[^>]*>)([\s\S]*?)<\/para>\s*$/);
-      const innerContent = paraWrapMatch ? paraWrapMatch[2] : item.content;
-      const paraOpenTag = paraWrapMatch ? paraWrapMatch[1] : null;
+      // Single <para> wrapping the whole item, OR a leading <para> followed by block
+      // <equation>/<media> siblings (e.g. m68793 item-1) — record wrapsPara so the
+      // injector reproduces the <para> element, and blockChildren so it re-emits the
+      // block siblings in place (their in-item [[MATH:N]]/[[MEDIA:N]] placeholder is
+      // suppressed at inject).
+      //
+      // BYTE-IDENTICAL SEGMENT CONSTRAINT: the segment text must match 02-mt-output
+      // exactly, so extractInlineText runs on:
+      //   - single-para item → the para INNER content (what the old paraWrapMatch used)
+      //   - everything else (multi-child para item, multi-<para>, non-para) → the FULL
+      //     item content (the old regex's `\s*$` anchor failed on all of these → full).
+      // Only the new wrapsPara/blockChildren metadata is added; segment text is unchanged.
+      const leadParaMatch = item.content
+        .trim()
+        .match(/^(<para\b[^>]*>)([\s\S]*?)<\/para>\s*([\s\S]*)$/);
+      const trailing = leadParaMatch ? leadParaMatch[3].trim() : '';
+      const isSingleParaItem = leadParaMatch && trailing === '';
+      // Multi-child only when the trailing content is EXCLUSIVELY block equation/media
+      // siblings: strip them + whitespace and require the remainder empty. This bounds
+      // the metadata to precisely the "leading para + block siblings" pattern and never
+      // fires for multi-<para> items or para-then-prose.
+      const trailingResidue = trailing
+        .replace(/<(equation|media)\b[^>]*>[\s\S]*?<\/\1>/g, '')
+        .replace(/<(equation|media)\b[^>]*?\/>/g, '')
+        .trim();
+      const isMultiChildParaItem = leadParaMatch && trailing !== '' && trailingResidue === '';
+
+      const innerContent = isSingleParaItem ? leadParaMatch[2] : item.content;
 
       const text = extractInlineText(
         innerContent,
@@ -1648,10 +1671,18 @@ function processList(
           id: item.id,
           segmentId: itemId,
         };
-        if (paraOpenTag) {
+        if (leadParaMatch && (isSingleParaItem || isMultiChildParaItem)) {
           // Extract the para's id attribute so the injector can reproduce the element
+          const paraOpenTag = leadParaMatch[1];
           const paraIdMatch = paraOpenTag.match(/id="([^"]+)"/);
           itemEntry.wrapsPara = { openTag: paraOpenTag, id: paraIdMatch ? paraIdMatch[1] : null };
+        }
+        if (isMultiChildParaItem) {
+          const blockChildren = [];
+          for (const mm of trailing.matchAll(/<(equation|media)\b[^>]*\bid="([^"]+)"/g)) {
+            blockChildren.push({ type: mm[1], id: mm[2] });
+          }
+          if (blockChildren.length > 0) itemEntry.blockChildren = blockChildren;
         }
         listStructure.items.push(itemEntry);
       }

@@ -55,6 +55,26 @@ describe('OC-E: block children inside <list><item>', () => {
   });
 });
 
+describe('OC-E Layer 2: <para> wrapper on multi-child item', () => {
+  it('m68793 item-1 renders <para id=fs-idm136564352>…</para><equation …/> inside the item', () => {
+    const out = buildFresh(read('ch12', 'm68793'));
+    const para = out.indexOf('id="fs-idm136564352"');
+    const eq = out.indexOf('id="fs-idm98497056"');
+    const listClose = out.indexOf('</list>', out.indexOf('id="fs-idm90348816"'));
+    // both the para wrapper and the equation are present, inside the list, in order
+    expect(para).toBeGreaterThan(-1);
+    expect(eq).toBeGreaterThan(para);
+    expect(eq).toBeLessThan(listClose);
+    // the equation is NOT nested inside the para (para closes before the equation)
+    const paraClose = out.indexOf('</para>', para);
+    expect(paraClose).toBeLessThan(eq);
+    // fidelity: the equation's original class="unnumbered" must be preserved
+    // (it lives on the [[MATH:N]] placeholder meta, not the id-keyed equations entry;
+    // dropping it would be a silent regression from the pre-Layer-2 in-item render)
+    expect(out).toContain('class="unnumbered"');
+  });
+});
+
 describe('OC-E: fail-loud guard', () => {
   it('throws if a list-nested block equation has no in-item placeholder or content node', () => {
     // Synthetic module: a list item references a block equation by id, but the
