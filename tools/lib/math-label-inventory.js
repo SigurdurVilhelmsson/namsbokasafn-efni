@@ -69,3 +69,50 @@ export function collectMathTokens(cnxml) {
   for (const m of withoutBlocks.matchAll(new RegExp(NODE_RE.source, 'g'))) push(m[1], '');
   return results;
 }
+
+/**
+ * Tally distinct token values into label / other buckets.
+ * @param {Array<{text:string,context:string}>} tokens
+ * @param {Set<string>} [stoplist]
+ * @returns {{ labels: Map<string,{count:number,context:string}>,
+ *             others: Map<string,{count:number,context:string}> }}
+ */
+export function aggregate(tokens, stoplist = DEFAULT_STOPLIST) {
+  const labels = new Map();
+  const others = new Map();
+  for (const { text, context } of tokens) {
+    const target = bucketToken(text, stoplist) === 'label' ? labels : others;
+    const cur = target.get(text);
+    if (cur) cur.count += 1;
+    else target.set(text, { count: 1, context });
+  }
+  return { labels, others };
+}
+
+/**
+ * Merge discovered Bucket-1 keys into an existing map object without clobbering
+ * filled values. Never deletes: keys present in the map but absent from the
+ * current discovery are preserved and reported as orphans for the lead to judge.
+ * @param {Record<string,string>} existing  parsed math-label-map.json ({} if none)
+ * @param {Map<string,{count,context}>} labels
+ * @returns {{ merged: Record<string,string>, addedKeys: string[], orphanKeys: string[] }}
+ */
+export function mergeSkeleton(existing, labels) {
+  const merged = {};
+  const addedKeys = [];
+  for (const key of labels.keys()) {
+    if (Object.prototype.hasOwnProperty.call(existing, key)) merged[key] = existing[key];
+    else {
+      merged[key] = '';
+      addedKeys.push(key);
+    }
+  }
+  const orphanKeys = [];
+  for (const key of Object.keys(existing)) {
+    if (!labels.has(key)) {
+      merged[key] = existing[key];
+      orphanKeys.push(key);
+    }
+  }
+  return { merged, addedKeys, orphanKeys };
+}

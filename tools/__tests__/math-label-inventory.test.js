@@ -4,6 +4,8 @@ import {
   DEFAULT_STOPLIST,
   collectMathTokens,
   decodeEntities,
+  aggregate,
+  mergeSkeleton,
 } from '../lib/math-label-inventory.js';
 
 describe('bucketToken', () => {
@@ -44,5 +46,44 @@ describe('collectMathTokens', () => {
   it('decodes entities in token content', () => {
     expect(decodeEntities('&#8722;')).toBe('−');
     expect(decodeEntities('a&amp;b')).toBe('a&b');
+  });
+});
+
+describe('aggregate', () => {
+  const toks = [
+    { text: 'rate', context: 'rate a' },
+    { text: 'rate', context: 'rate b' },
+    { text: 'mol', context: 'n mol' },
+    { text: 'atm', context: 'P atm' },
+    { text: 'MnO', context: 'MnO' },
+  ];
+  it('counts occurrences and buckets labels vs others', () => {
+    const { labels, others } = aggregate(toks);
+    expect(labels.get('rate').count).toBe(2);
+    expect(labels.get('mol').count).toBe(1);
+    expect(labels.has('atm')).toBe(false);
+    expect(others.has('atm')).toBe(true);
+    expect(others.has('MnO')).toBe(true);
+  });
+  it('keeps the first-seen context', () => {
+    const { labels } = aggregate(toks);
+    expect(labels.get('rate').context).toBe('rate a');
+  });
+});
+
+describe('mergeSkeleton', () => {
+  const labels = new Map([
+    ['rate', { count: 2, context: 'rate' }],
+    ['cell', { count: 1, context: 'E cell' }],
+  ]);
+  it('adds new keys empty and preserves filled values', () => {
+    const { merged, addedKeys } = mergeSkeleton({ rate: 'hraði' }, labels);
+    expect(merged).toEqual({ rate: 'hraði', cell: '' });
+    expect(addedKeys).toEqual(['cell']);
+  });
+  it('keeps and reports keys absent from discovery (never deletes)', () => {
+    const { merged, orphanKeys } = mergeSkeleton({ aq: 'vökvi' }, labels);
+    expect(merged.aq).toBe('vökvi');
+    expect(orphanKeys).toEqual(['aq']);
   });
 });
