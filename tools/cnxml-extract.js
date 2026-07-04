@@ -1510,7 +1510,18 @@ function assertNoDroppedListBlocks(cnxml, structure, segments, equations) {
   // the match at the nested list's close and never see the sibling id — hiding
   // a genuine drop from this scan. extractNestedElements's fullMatch spans the
   // entire top-level list including all nested content, so every id is caught.
-  const listBlocks = extractNestedElements(cnxml, 'list');
+  //
+  // Exclude <example>/<exercise> subtrees FIRST: their lists render via the
+  // PRESERVED original CNXML (buildExampleDom/buildExerciseDom), never via a
+  // top-level content node or a [[MATH:N]]/[[MEDIA:N]] placeholder, so the
+  // "rendered" set built in step 2 never counts them. This mirrors
+  // collectBlockEquationIds/collectBlockMediaIds in cnxml-inject.js, which
+  // skip example/exercise subtrees for the identical reason. Without this
+  // exclusion the guard false-positives on every exercise/example-nested list
+  // block (regression found reviewing OC-E: books/edlisfraedi-2e/01-source/
+  // ch04/m42076.cnxml has block <media> inside <exercise><solution><list>).
+  const cnxmlForListScan = removeNestedElements(removeNestedElements(cnxml, 'example'), 'exercise');
+  const listBlocks = extractNestedElements(cnxmlForListScan, 'list');
   const inListEqIds = new Set();
   const inListMediaIds = new Set();
   for (const block of listBlocks) {

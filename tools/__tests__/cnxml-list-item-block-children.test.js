@@ -71,7 +71,39 @@ describe('OC-E Layer 2: <para> wrapper on multi-child item', () => {
     // fidelity: the equation's original class="unnumbered" must be preserved
     // (it lives on the [[MATH:N]] placeholder meta, not the id-keyed equations entry;
     // dropping it would be a silent regression from the pre-Layer-2 in-item render)
-    expect(out).toContain('class="unnumbered"');
+    // fidelity: the equation's class is bound to THIS block equation id, not
+    // merely present anywhere in the output (a bare toContain('class="unnumbered"')
+    // would also pass if some unrelated equation happened to carry that class).
+    expect(out).toMatch(/id="fs-idm98497056"[^>]*class="unnumbered"/);
+  });
+
+  it('synthetic: leading <para> followed by block <media> renders as a sibling in the item (Layer 2 media path)', () => {
+    // No real-book module exercises collectBlockMediaIds/blockMediaIds
+    // suppression/buildList's media blockChild branch end to end (the only
+    // existing Layer-2 test above uses a block <equation>) — build a minimal
+    // synthetic fixture via the same extract→inject (buildFresh) round trip.
+    const src = `<?xml version="1.0"?>
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" id="mTEST">
+<title>t</title><content>
+<list id="L1"><item><para id="P1">text</para><media id="M1" alt="a"><image mime-type="image/jpg" src="../../media/x.jpg"/></media></item></list>
+</content></document>`;
+    const out = buildFresh(src);
+
+    const itemOpen = out.indexOf('<item');
+    const para = out.indexOf('id="P1"');
+    const paraClose = out.indexOf('</para>', para);
+    const media = out.indexOf('id="M1"');
+    const itemClose = out.indexOf('</item>', media);
+
+    // both the para and the media are present, inside the same item, in order
+    expect(para).toBeGreaterThan(itemOpen);
+    expect(media).toBeGreaterThan(para);
+    expect(itemClose).toBeGreaterThan(media);
+    // the media is NOT nested inside the para — the para closes BEFORE the
+    // media starts, i.e. they are siblings within the item, not parent/child
+    expect(paraClose).toBeLessThan(media);
+    // the media element itself (with its image child) survived the round trip
+    expect(out).toContain('src="../../media/x.jpg"');
   });
 });
 
@@ -101,6 +133,28 @@ describe('OC-E: fail-loud guard', () => {
 <list id="L1"><item><list id="L2"><item>x</item></list><equation id="EQAFTER"></equation></item></list>
 </content></document>`;
     expect(() => _extract(bad, 'mTEST')).toThrow(/EQAFTER/);
+  });
+
+  it('does not throw for a list-nested block media inside <exercise><solution> (regression: example/exercise subtrees must be excluded from the source scan)', () => {
+    // Real-world shape from books/edlisfraedi-2e/01-source/ch04/m42076.cnxml:
+    // a <media> block sibling inside a <list><item> that itself lives inside
+    // <exercise><solution>. That media renders via the PRESERVED original
+    // exercise CNXML (buildExerciseDom), never via a top-level content node or
+    // a [[MEDIA:N]] placeholder — collectBlockMediaIds/collectBlockEquationIds
+    // in cnxml-inject.js already skip example/exercise subtrees for exactly
+    // this reason. The guard's step-1 source scan must mirror that exclusion,
+    // or it flags a false positive on every exercise-nested list block.
+    const src = `<?xml version="1.0"?>
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" id="mTEST">
+<title>t</title><content>
+<exercise id="EX1"><problem><para id="P0">q</para></problem>
+<solution id="SOL1">
+  <list id="L1"><item>Draw a diagram:
+      <media id="EXMEDIA" alt="x"><image mime-type="image/jpg" src="../../media/x.jpg"/></media>
+  </item></list>
+</solution></exercise>
+</content></document>`;
+    expect(() => _extract(src, 'mTEST')).not.toThrow();
   });
 
   it('does not throw for the real modules (all in-item blocks accounted for)', () => {

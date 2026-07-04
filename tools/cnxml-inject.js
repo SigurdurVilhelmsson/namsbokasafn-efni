@@ -2742,7 +2742,11 @@ function buildExercise(element, getSeg, equations, originalCnxml) {
               let embeddedListCnxml = '';
               while (ci + 1 < solContent.length && solContent[ci + 1].type === 'list') {
                 const listChild = solContent[ci + 1];
-                embeddedListCnxml += '\n' + buildList(listChild, getSeg, equations, ctx);
+                // buildExercise has no `ctx` param (unlike buildExerciseDom, the
+                // production dispatch path) — pass null explicitly. buildList
+                // treats a null 4th arg as "no blockChildren context", which is
+                // the correct legacy behavior for this dead/comparison-only path.
+                embeddedListCnxml += '\n' + buildList(listChild, getSeg, equations, null);
                 ci++;
               }
 
