@@ -79,7 +79,8 @@ export function compareTagCounts(sourceCnxml, translatedCnxml) {
 }
 
 /**
- * Every id="..." in document order, first occurrence per id.
+ * Every element-definition id="..." in document order, first occurrence per id.
+ * Skips `target-id="..."` cross-references (they are not element definitions). (OC-C)
  * @param {string} cnxml
  * @returns {string[]}
  */
