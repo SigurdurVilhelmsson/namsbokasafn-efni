@@ -1646,10 +1646,12 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
   collectFigureCaptions(structure.content, figureCaptions);
   const figuresHandledInNotes = new Set();
   const figuresHandledInContainers = new Set();
+  const tablesHandledInContainers = new Set();
   const ctx = {
     figureCaptions,
     figuresHandledInNotes,
     figuresHandledInContainers,
+    tablesHandledInContainers,
     inlineMedia: structure.inlineMedia || [],
     inlineTables: structure.inlineTables || [],
     imageMapping: options.imageMapping || new Map(),
@@ -1813,6 +1815,9 @@ function buildElement(element, getSeg, equations, originalCnxml, ctx) {
     case 'figure':
       return buildFigure(element, getSeg, originalCnxml, ctx);
     case 'table':
+      if (ctx && ctx.tablesHandledInContainers && ctx.tablesHandledInContainers.has(element.id)) {
+        return null;
+      }
       return buildTable(element, getSeg, originalCnxml);
     case 'example':
       return buildExampleDom(element, getSeg, equations, originalCnxml, ctx);
@@ -2556,15 +2561,15 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
     }
   }
 
-  // Step 4a: Also keep figures that are direct children of the example element.
-  // These are figures between paras (e.g., problem figures in examples) that were
-  // not captured inside any <para> but still belong to the example.
+  // Step 4a: keep figures AND non-inline tables that are direct children of the example.
+  const exampleInlineTableIds = new Set((ctx?.inlineTables || []).map((t) => t.tableId));
   for (const child of Array.from(exampleEl.childNodes)) {
     if (child.nodeName === 'figure') {
       const figId = child.getAttribute('id');
-      if (figId) {
-        keptFigureIds.add(figId);
-      }
+      if (figId) keptFigureIds.add(figId);
+    } else if (child.nodeName === 'table') {
+      const tId = child.getAttribute('id');
+      if (tId && !exampleInlineTableIds.has(tId)) keptTableIds.add(tId);
     }
   }
 
@@ -2589,6 +2594,10 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
     for (const figId of keptFigureIds) {
       ctx.figuresHandledInContainers.add(figId);
     }
+  }
+
+  if (ctx && ctx.tablesHandledInContainers) {
+    for (const tId of keptTableIds) ctx.tablesHandledInContainers.add(tId);
   }
 
   // Step 5: Serialize
@@ -2830,11 +2839,15 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
   const solutions = exerciseEl.getElementsByTagName('solution');
   for (let i = 0; i < problems.length; i++) containers.push(problems[i]);
   for (let i = 0; i < solutions.length; i++) containers.push(solutions[i]);
+  const exerciseInlineTableIds = new Set((ctx?.inlineTables || []).map((t) => t.tableId));
   for (const container of containers) {
     for (const child of Array.from(container.childNodes)) {
       if (child.nodeName === 'figure') {
         const figId = child.getAttribute('id');
         if (figId) keptFigureIds.add(figId);
+      } else if (child.nodeName === 'table') {
+        const tId = child.getAttribute('id');
+        if (tId && !exerciseInlineTableIds.has(tId)) keptTableIds.add(tId);
       }
     }
   }
@@ -2858,6 +2871,10 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
     for (const figId of keptFigureIds) {
       ctx.figuresHandledInContainers.add(figId);
     }
+  }
+
+  if (ctx && ctx.tablesHandledInContainers) {
+    for (const tId of keptTableIds) ctx.tablesHandledInContainers.add(tId);
   }
 
   let result = serializeCnxmlFragment(exerciseEl);
@@ -3098,6 +3115,18 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
         ctx.figuresHandledInNotes.add(figId);
       }
     }
+  }
+
+  // Keep + register non-inline tables that are direct children of the note (OC-B).
+  const noteInlineTableIds = new Set((ctx?.inlineTables || []).map((t) => t.tableId));
+  for (const child of Array.from(noteEl.childNodes)) {
+    if (child.nodeName === 'table') {
+      const tId = child.getAttribute('id');
+      if (tId && !noteInlineTableIds.has(tId)) keptTableIds.add(tId);
+    }
+  }
+  if (ctx && ctx.tablesHandledInContainers) {
+    for (const tId of keptTableIds) ctx.tablesHandledInContainers.add(tId);
   }
 
   // Strip examples, exercises (figures and equations are kept); tables are kept
