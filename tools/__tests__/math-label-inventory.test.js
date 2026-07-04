@@ -112,3 +112,33 @@ describe('validateMap', () => {
     expect(v.map((x) => x.key).sort()).toEqual(['cathode', 'surr']);
   });
 });
+
+import { renderReport } from '../lib/math-label-inventory.js';
+
+describe('renderReport', () => {
+  const labels = new Map([
+    ['rate', { count: 64, context: 'Δ[A]/Δt = rate' }],
+    ['cell', { count: 50, context: 'E cell' }],
+  ]);
+  const others = new Map([['atm', { count: 39, context: 'P atm' }]]);
+  const md = renderReport({
+    book: 'efnafraedi-2e',
+    labels,
+    others,
+    currentMap: { rate: 'hraði', cell: '' },
+  });
+
+  it('lists likely labels sorted by count with counts and context', () => {
+    expect(md).toMatch(/rate/);
+    expect(md).toMatch(/64/);
+    expect(md.indexOf('rate')).toBeLessThan(md.indexOf('cell')); // 64 before 50
+  });
+  it('shows the current filled value and marks empty ones', () => {
+    expect(md).toMatch(/hraði/);
+  });
+  it('includes the also-review bucket and the constraints', () => {
+    expect(md).toMatch(/atm/);
+    expect(md).toMatch(/6/); // 6-char cap mentioned
+    expect(md).toMatch(/self-map/i);
+  });
+});
