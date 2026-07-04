@@ -3,7 +3,11 @@ import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { analyzeModuleOrder } from '../analyze-order-causes.js';
-import { extractSegments, formatSegmentsMarkdown } from '../cnxml-extract.js';
+import {
+  extractSegments,
+  extractSegments as _extract,
+  formatSegmentsMarkdown,
+} from '../cnxml-extract.js';
 import { buildCnxml, parseSegments } from '../cnxml-inject.js';
 import { compareTagCounts } from '../cnxml-fidelity-check.js';
 
@@ -48,5 +52,37 @@ describe('OC-E: block children inside <list><item>', () => {
     const eq = out.indexOf('id="fs-idm98497056"');
     expect(eq).toBeGreaterThan(listOpen);
     expect(eq).toBeLessThan(listClose);
+  });
+});
+
+describe('OC-E: fail-loud guard', () => {
+  it('throws if a list-nested block equation has no in-item placeholder or content node', () => {
+    // Synthetic module: a list item references a block equation by id, but the
+    // equation has NO <m:math> (so no [[MATH:N]] placeholder is produced) and it
+    // is inside the list (so Task 2 strips it from top-level content) → it would
+    // be silently dropped. The guard must throw.
+    const bad = `<?xml version="1.0"?>
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" id="mTEST">
+<title>t</title><content>
+<list id="L1"><item><equation id="EQGHOST"></equation></item></list>
+</content></document>`;
+    expect(() => _extract(bad, 'mTEST')).toThrow(/EQGHOST/);
+  });
+
+  it('does not throw for the real modules (all in-item blocks accounted for)', () => {
+    // m68739/m68793: bare block equation/media directly in a list item, covered
+    // via [[MATH:N]]/[[MEDIA:N]] placeholders (Task 2's fix).
+    // m68685: <figure><media/></figure> nested in a list item — the figure is
+    // hoisted to top-level content by the pre-existing (Task-2-independent)
+    // blanket <figure> extraction in processTopLevelContent, so its media id
+    // renders via the figure's own `media.id` field rather than a placeholder.
+    // Exercises the guard's figure-aware coverage branch against the real gate.
+    for (const [ch, m] of [
+      ['ch07', 'm68739'],
+      ['ch12', 'm68793'],
+      ['ch02', 'm68685'],
+    ]) {
+      expect(() => _extract(read(ch, m), m)).not.toThrow();
+    }
   });
 });

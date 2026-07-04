@@ -653,6 +653,8 @@ function extractSegments(cnxml, options = {}) {
     );
   }
 
+  assertNoDroppedListBlocks(content, structure, segments, equations);
+
   return { segments, structure, equations, inlineAttrs: inlineAttrsMap };
 }
 
@@ -1494,6 +1496,69 @@ function processNote(
 }
 
 /**
+ * OC-E safety net: after Task 2 stops hoisting list-nested blocks to top-level
+ * content, verify no such block is silently dropped. compareElementOrder ignores
+ * DROPPED ids, so a drop would look green — this guard fails loud instead.
+ * Throws listing any <equation>/<media> id that is inside a <list> in source but
+ * will render nowhere (not a content node, no placeholder, not a blockChild).
+ */
+function assertNoDroppedListBlocks(cnxml, structure, segments, equations) {
+  // 1. Source block ids inside any <list>…</list>.
+  const listBlocks = cnxml.match(/<list[\s>][\s\S]*?<\/list>/g) || [];
+  const inListEqIds = new Set();
+  const inListMediaIds = new Set();
+  for (const block of listBlocks) {
+    for (const mm of block.matchAll(/<equation\b[^>]*\bid="([^"]+)"/g)) inListEqIds.add(mm[1]);
+    for (const mm of block.matchAll(/<media\b[^>]*\bid="([^"]+)"/g)) inListMediaIds.add(mm[1]);
+  }
+  if (inListEqIds.size === 0 && inListMediaIds.size === 0) return;
+
+  // 2. Ids that WILL render.
+  const rendered = new Set();
+  // 2a. content nodes (recursively) + item blockChildren + nested-list children
+  const walk = (nodes) => {
+    for (const n of nodes || []) {
+      if (n.id && (n.type === 'equation' || n.type === 'media')) rendered.add(n.id);
+      // Figures are hoisted to top-level content regardless of list nesting
+      // (processTopLevelContent scans the full document for <figure> before any
+      // list-stripping); their media id lives at n.media.id, not n.id.
+      if (n.type === 'figure' && n.media && n.media.id) rendered.add(n.media.id);
+      if (n.content) walk(n.content);
+      for (const it of n.items || []) {
+        for (const c of it.children || []) walk([c]);
+        for (const bc of it.blockChildren || []) if (bc.id) rendered.add(bc.id);
+      }
+    }
+  };
+  walk(structure.content || []);
+  // 2b. equation ids referenced by [[MATH:N]] placeholders in any segment
+  const segText = segments.map((s) => s.text).join('\n');
+  for (const mm of segText.matchAll(/\[\[MATH:(\d+)\]\]/g)) {
+    const eq = equations[`math-${mm[1]}`];
+    if (eq && eq.equationId) rendered.add(eq.equationId);
+  }
+  // 2c. media ids referenced by [[MEDIA:N]] placeholders
+  const mediaByPlaceholder = new Map(
+    (structure.inlineMedia || []).map((m) => [m.placeholder, m.id])
+  );
+  for (const mm of segText.matchAll(/\[\[MEDIA:\d+\]\]/g)) {
+    const id = mediaByPlaceholder.get(mm[0]);
+    if (id) rendered.add(id);
+  }
+
+  // 3. Assert coverage.
+  const missing = [
+    ...[...inListEqIds].filter((id) => !rendered.has(id)),
+    ...[...inListMediaIds].filter((id) => !rendered.has(id)),
+  ];
+  if (missing.length > 0) {
+    throw new Error(
+      `OC-E guard: list-nested block(s) would render nowhere (silent drop): ${missing.join(', ')}`
+    );
+  }
+}
+
+/**
  * Process a list element.
  */
 function processList(
@@ -1940,4 +2005,5 @@ export {
   extractSegments,
   formatSegmentsMarkdown,
   elementIdPosition,
+  assertNoDroppedListBlocks,
 };
