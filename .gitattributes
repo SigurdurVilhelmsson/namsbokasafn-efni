@@ -10,4 +10,9 @@
 # the repo — git config lives in .git/config). One-time per clone:
 #     git config merge.ours.driver true
 # The production deploy script (scripts/deploy.sh) sets this before each pull.
+#
+# books/<book>/residue-report.<track>.json (the A2 EN-residue scan manifest) is
+# the exact same class: cnxml-inject rewrites it on every run, so it is dirty on
+# prod after each "Vista + Birta" and would otherwise wedge the deploy pull.
 books/*/translation-errors.json merge=ours
+books/*/residue-report.*.json merge=ours
