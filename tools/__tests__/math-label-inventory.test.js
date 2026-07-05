@@ -90,26 +90,56 @@ describe('mergeSkeleton', () => {
   });
 });
 
-describe('validateValue', () => {
-  it('accepts a short Icelandic value and a self-map', () => {
-    expect(validateValue('hraði')).toBeNull(); // 5 code points
-    expect(validateValue('surr')).toBeNull(); // self-map keeps English
+describe('validateValue (value-level: charset hard, length/whitespace advisory)', () => {
+  it('empty value is neither hard nor warned (map decides pending)', () => {
+    expect(validateValue('')).toEqual({ hard: null, warnings: [] });
   });
-  it('rejects empty, too-long, whitespace, and XML-special', () => {
-    expect(validateValue('')).toMatch(/empty/);
-    expect(validateValue('bakskaut')).toMatch(/> 6/); // 8 chars
-    expect(validateValue('a b')).toMatch(/whitespace/);
-    expect(validateValue('x<')).toMatch(/forbidden/);
+  it('charset is the only hard failure', () => {
+    expect(validateValue('a<b').hard).toMatch(/forbidden/);
+    expect(validateValue('a&b').hard).toMatch(/forbidden/);
+    expect(validateValue('hraði').hard).toBeNull();
   });
-  it('counts Icelandic letters as single code points (þ, ð, æ, ö ok up to 6)', () => {
-    expect(validateValue('þðæösý')).toBeNull(); // 6 code points, allowed
+  it('whitespace is an advisory warning, not hard', () => {
+    const r = validateValue('fast efni');
+    expect(r.hard).toBeNull();
+    expect(r.warnings.join(' ')).toMatch(/whitespace|multi-word/);
+  });
+  it('length >6 warns only when enforceLength (subscript); never hard', () => {
+    const sub = validateValue('uppgufun', { enforceLength: true }); // 8 cp
+    expect(sub.hard).toBeNull();
+    expect(sub.warnings.join(' ')).toMatch(/> ?6/);
+    const inl = validateValue('uppgufun', { enforceLength: false });
+    expect(inl.warnings.join(' ')).not.toMatch(/> ?6/);
+  });
+  it('6 Icelandic code points is within the cap (no length warning)', () => {
+    expect(validateValue('þðæösý', { enforceLength: true }).warnings).toEqual([]);
   });
 });
 
-describe('validateMap', () => {
-  it('returns one entry per violating key', () => {
-    const v = validateMap({ rate: 'hraði', surr: '', cathode: 'bakskaut' });
-    expect(v.map((x) => x.key).sort()).toEqual(['cathode', 'surr']);
+describe('validateMap (states: translated / final-English / pending + advisories)', () => {
+  it('classifies self-map as final-English and empty as pending', () => {
+    const r = validateMap({ ppm: 'ppm', sub: '', rate: 'hraði' }, {});
+    expect(r.finalEnglish).toEqual(['ppm']);
+    expect(r.pending).toEqual(['sub']);
+    expect(r.hard).toEqual([]);
+    expect(r.warnings).toEqual([]);
+  });
+  it('length warning fires for subscript class only', () => {
+    const r = validateMap(
+      { vap: 'uppgufun', pancakes: 'pönnukökur' },
+      { vap: 'subscript', pancakes: 'inline' }
+    );
+    expect(r.warnings.map((w) => w.key)).toEqual(['vap']); // inline long value: no warning
+    expect(r.hard).toEqual([]);
+  });
+  it('collects a charset value as hard', () => {
+    const r = validateMap({ bad: 'a<b' }, { bad: 'inline' });
+    expect(r.hard.map((h) => h.key)).toEqual(['bad']);
+  });
+  it('a value equal to its key is final-English even if long', () => {
+    const r = validateMap({ reaction: 'reaction' }, { reaction: 'subscript' });
+    expect(r.finalEnglish).toEqual(['reaction']);
+    expect(r.warnings).toEqual([]);
   });
 });
 
@@ -182,29 +212,6 @@ describe('renderReport', () => {
     expect(md).toMatch(/atm/);
     expect(md).toMatch(/6/); // 6-char cap mentioned
     expect(md).toMatch(/self-map/i);
-  });
-});
-
-describe('validateValue position-aware', () => {
-  it('skips the length cap when enforceLength is false', () => {
-    expect(validateValue('pönnukökur', { enforceLength: false })).toBeNull(); // 10 cp, inline ok
-    expect(validateValue('a b', { enforceLength: false })).toMatch(/whitespace/); // other rules still apply
-  });
-  it('still enforces the cap by default', () => {
-    expect(validateValue('pönnukökur')).toMatch(/> 6/);
-  });
-});
-
-describe('validateMap position-aware', () => {
-  it('caps subscript-class keys but not inline-class keys', () => {
-    const map = { vap: 'uppgufun', pancakes: 'pönnukökur' }; // both > 6 chars
-    const classes = { vap: 'subscript', pancakes: 'inline' };
-    const v = validateMap(map, classes);
-    expect(v.map((x) => x.key)).toEqual(['vap']); // only the subscript one is flagged
-  });
-  it('enforces length for keys with unknown class (safe default)', () => {
-    const v = validateMap({ foo: 'toolongvalue' }, {});
-    expect(v).toHaveLength(1);
   });
 });
 
