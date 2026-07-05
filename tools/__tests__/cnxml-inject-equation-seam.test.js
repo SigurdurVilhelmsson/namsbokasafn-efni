@@ -12,7 +12,7 @@
 // <equation id="fs-idm243742160"> sliced straight from originalCnxml.
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { execSync } from 'child_process';
-import { readFileSync, existsSync, cpSync, rmSync, mkdtempSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, cpSync, rmSync, mkdtempSync } from 'fs';
 import { join, sep } from 'path';
 import { tmpdir } from 'os';
 
@@ -67,5 +67,40 @@ describe('originalCnxml math-label substitution seam (standalone <equation>)', (
     expect(bareRateLabels).toBe(0);
     const hradiLabels = (cnxml.match(/<m:mtext>hraði<\/m:mtext>/g) || []).length;
     expect(hradiLabels).toBeGreaterThanOrEqual(2);
+  });
+});
+
+// Regression test for WS4 #3: the unmapped-math-label WARNING must also cover the
+// second seam. Before the fix, reportMathLabels() only read Object.values(equations)
+// — a label whose ONLY occurrence is inside a standalone <equation> (sliced verbatim
+// from originalCnxml, never entering the equations object) shipped English with no
+// warning. The fix runs reportMathLabels() on the raw originalCnxml instead.
+describe('unmapped math label report covers standalone <equation> math (WS4 #3)', () => {
+  it('warns about a label that appears only in a standalone <equation>, not in the equations object', () => {
+    const sourcePath = join(BOOKS, '01-source', 'ch12', 'm68786.cnxml');
+    const original = readFileSync(sourcePath, 'utf8');
+
+    // "enzyme" is all-lowercase ASCII >=3 chars (buckets as a label), is absent from
+    // efnafraedi-2e's math-label-map.json overlay, and never occurs as m:mtext/m:mi
+    // content anywhere else in the book — so this is its one and only unmapped
+    // occurrence, planted inside a standalone <equation> that buildEquation slices
+    // verbatim from originalCnxml (never touching the `equations` object).
+    const marker = '<equation id="fs-idm243742160"';
+    expect(original.includes(marker), 'anchor equation not found in fixture').toBe(true);
+    const injected = original.replace(
+      marker,
+      '<equation id="fs-test-ws4-3-enzyme" class="unnumbered"><m:math><m:mrow><m:mtext>enzyme</m:mtext></m:mrow></m:math></equation>' +
+        marker
+    );
+    expect(injected).not.toBe(original);
+    writeFileSync(sourcePath, injected, 'utf8');
+
+    // Capture stderr (merged via shell redirection) — console.error warnings land there.
+    const output = execSync(
+      `node ${join(TOOLS, 'cnxml-inject.js')} --book efnafraedi-2e --chapter 12 --module m68786 2>&1`,
+      { cwd: ROOT, encoding: 'utf8', timeout: 60_000 }
+    );
+
+    expect(output).toMatch(/unmapped math label\(s\): .*\benzyme\b/);
   });
 });

@@ -3526,24 +3526,6 @@ function loadModuleInputs(chapter, moduleId, lang, sourceDir, allowEnFallback = 
 
   // WS4 item 5: substitute English math labels before any emit site reads eq.mathml.
   const { resolve: resolveMathLabel, overlay: mathLabelOverlay } = getMathLabelResolver(BOOKS_DIR);
-  const mathLabelReport = reportMathLabels(
-    Object.values(equations)
-      .map((e) => e && e.mathml)
-      .filter(Boolean)
-      .join('\n'),
-    resolveMathLabel,
-    { overlay: mathLabelOverlay }
-  );
-  if (mathLabelReport.unmapped.length) {
-    console.error(
-      `  ⚠ ${moduleId}: ${mathLabelReport.unmapped.length} unmapped math label(s): ${mathLabelReport.unmapped.join(', ')}`
-    );
-  }
-  for (const a of mathLabelReport.longSubscriptFills) {
-    console.error(
-      `  ⚠ ${moduleId}: glossary term "${a.value}" is ${a.cp} chars in a subscript (label "${a.token}") — consider a compact overlay override`
-    );
-  }
   applyMathLabelSubstitution(equations, resolveMathLabel);
 
   // Load inline attributes (term class, footnote id, etc.)
@@ -3574,10 +3556,26 @@ function loadModuleInputs(chapter, moduleId, lang, sourceDir, allowEnFallback = 
   // substitution above does not reach them. substituteMathLabels only rewrites leaf
   // <m:mtext>/<m:mi> label text; ids/tags/structure (and thus the builders' slicing
   // regexes) are unaffected. Idempotent, so math also covered via equations is safe.
-  const originalCnxml = substituteMathLabels(
-    fs.readFileSync(originalPath, 'utf-8'),
-    resolveMathLabel
-  );
+  //
+  // WS4 #3: report unmapped labels + subscript advisories on the RAW source, which
+  // contains ALL math (inline, standalone <equation>, note/example/exercise) — the
+  // equations object misses the second-seam classes. Must run pre-substitution so
+  // Icelandic fills don't pollute token collection.
+  const rawOriginalCnxml = fs.readFileSync(originalPath, 'utf-8');
+  const mathLabelReport = reportMathLabels(rawOriginalCnxml, resolveMathLabel, {
+    overlay: mathLabelOverlay,
+  });
+  if (mathLabelReport.unmapped.length) {
+    console.error(
+      `  ⚠ ${moduleId}: ${mathLabelReport.unmapped.length} unmapped math label(s): ${mathLabelReport.unmapped.join(', ')}`
+    );
+  }
+  for (const a of mathLabelReport.longSubscriptFills) {
+    console.error(
+      `  ⚠ ${moduleId}: glossary term "${a.value}" is ${a.cp} chars in a subscript (label "${a.token}") — consider a compact overlay override`
+    );
+  }
+  const originalCnxml = substituteMathLabels(rawOriginalCnxml, resolveMathLabel);
 
   return { structure, segments, equations, originalCnxml, enSegments, inlineAttrs, restorePolicy };
 }
