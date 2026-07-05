@@ -28,6 +28,7 @@ import {
   requireBook,
 } from './lib/parseArgs.js';
 import { loadAllowlist, classifyDiff } from './lib/fidelity-allowlist.js';
+import { loadMathLabelResolver, substituteMathLabels } from './lib/math-label-substitute.js';
 
 let BOOKS_DIR = 'books/efnafraedi-2e';
 
@@ -123,6 +124,41 @@ export function compareElementOrder(sourceCnxml, translatedCnxml) {
     if (srcCommon[i] !== transCommon[i]) moved.push(srcCommon[i]);
   }
   return { ok: moved.length === 0, moved };
+}
+
+/**
+ * Every <m:math>…</m:math> block in document order (verbatim substrings).
+ * @param {string} cnxml
+ * @returns {string[]}
+ */
+export function extractMathBlocks(cnxml) {
+  return cnxml.match(/<m:math[\s\S]*?<\/m:math>/g) || [];
+}
+
+/**
+ * F8 (warn-only): does substitute(source math) equal the translated math on disk?
+ * Runs the SAME substitution on the source side so intended label substitutions
+ * cancel; any other difference (corruption, or stale/never-re-injected math) is a
+ * mismatch. A block-count difference counts each unpaired block as a mismatch.
+ * @param {string} sourceCnxml
+ * @param {string} translatedCnxml
+ * @param {(label:string)=>{value:string,source:string}} resolve
+ * @returns {{ok:boolean, mismatched:number, sourceBlocks:number, translatedBlocks:number}}
+ */
+export function compareMathBlocks(sourceCnxml, translatedCnxml, resolve) {
+  const src = extractMathBlocks(sourceCnxml).map((b) => substituteMathLabels(b, resolve));
+  const trans = extractMathBlocks(translatedCnxml);
+  let mismatched = 0;
+  const n = Math.max(src.length, trans.length);
+  for (let i = 0; i < n; i++) {
+    if (src[i] !== trans[i]) mismatched += 1;
+  }
+  return {
+    ok: mismatched === 0,
+    mismatched,
+    sourceBlocks: src.length,
+    translatedBlocks: trans.length,
+  };
 }
 
 // ─── CLI ────────────────────────────────────────────────────────────
@@ -264,6 +300,7 @@ function main() {
   }
 
   const allowlist = loadAllowlist(BOOKS_DIR);
+  const { resolve: mathResolve } = loadMathLabelResolver(BOOKS_DIR);
 
   let totalDiscrepancies = 0;
   let unexplainedDiscrepancies = 0;
@@ -272,6 +309,7 @@ function main() {
   let modulesPerfect = 0;
   let modulesSkipped = 0;
   const orderMismatchModules = []; // F1: warn-only, never affects exit code
+  const mathMismatchModules = []; // F8: warn-only, never affects exit code (pre-WS5 noise)
 
   for (const chapterDir of chapters) {
     const sourceDir = path.join(BOOKS_DIR, '01-source', chapterDir);
@@ -305,6 +343,16 @@ function main() {
         const more = order.moved.length > 8 ? ` …(+${order.moved.length - 8})` : '';
         console.log(
           `  ORDER [warn-only]: ${mod.moduleId} — ${order.moved.length} id(s) out of document order: ${shown}${more}`
+        );
+      }
+
+      // F8: math-content check (warn-only until WS5 re-inject; committed 03-translated
+      // is stale English pre-WS5, so mismatches are expected noise until then).
+      const mathCmp = compareMathBlocks(sourceCnxml, translatedCnxml, mathResolve);
+      if (!mathCmp.ok) {
+        mathMismatchModules.push(mod.moduleId);
+        console.log(
+          `  MATH [warn-only]: ${mod.moduleId} — ${mathCmp.mismatched} math block(s) differ from substituted source`
         );
       }
 
@@ -355,6 +403,9 @@ function main() {
   );
   console.log(
     `Order check (warn-only): ${orderMismatchModules.length} module(s) with reordered content`
+  );
+  console.log(
+    `Math check (warn-only): ${mathMismatchModules.length} module(s) with math differing from substituted source`
   );
 
   // Exit code is driven ONLY by unexplained tag-count discrepancies — the order
