@@ -516,6 +516,32 @@ in their item blocks — this is the consolidated scan list. Append, don't prune
 - **🟡 OV-M2 self-map short-circuits before charset validation** (`math-label-inventory.js` validateMap: `if (value === key) { finalEnglish.push(key); continue; }` runs before validateValue). Unreachable with current data (keys are clean `<m:mtext>` tokens, 0 charset-bad in the map) but matters at **item 5**: final-English emits the English string into MathML, so a charset-bearing English label would corrupt output unflagged. Fix at substitution: charset-validate self-maps too, or assert final-English values charset-clean at emit.
 - **🟢 OV-M3 cosmetic count skew** in `runValidate` summary (`tools/inventory-math-labels.js`): `warnings.length` counts warning *entries* not distinct keys (a value warned for both whitespace+length counts twice). Informational output only; no functional impact.
 
+**From Fable-5 RUN 2 — recent-merges ambient-state re-review (2026-07-04, NOT tied to one item; adversarially verified, full report `docs/audit/2026-07-04-fable5-recent-merges-ambient-state-review.md`):**
+- **🔴 FR2-1 `cnxml-render.js` module globals not set in server preview (CONFIRMED, medium).** `BOOK_SLUG`,
+  `TITLE_TRANSLATIONS`, `BOOKS_DIR` are set only by CLI `main()`; `renderService.js` dynamic-imports the
+  module so `main()` never runs → the in-process live preview renders **every** book as chemistry:
+  untranslated headings (preview shows `Answer:`, published shows `Svar:` — m68700 repro today), chemistry
+  image srcs/cross-module hrefs for non-chem books, and (FR2-3) os-embed exercises silently dropped
+  (`resolveOsEmbed` reads cwd-relative chem-hardcoded `BOOKS_DIR` → `existsSync` miss → silent fallthrough,
+  raw `<link class="os-embed">` emitted; lifraen-efnafraedi m00034 repro: 0 exercise-part divs in preview vs
+  10 published). **Same #213 class the sweep missed inside `cnxml-render.js`'s own module state.** Fix
+  Findings 1+3+4 as ONE patch: thread `bookSlug`/`titleTranslations`/exercises-dir through render
+  options/context (kill the CLI-only globals); add a regression test that renders in-process WITHOUT
+  `_loadBookConfigForTest()`. **Blocks trustworthy biology previews.**
+- **🔴 FR2-2 `residue-report.<track>.json` missing deploy protections → WS5 deploy wedge (CONFIRMED, medium).**
+  A2 (#184) writes it per inject but it got neither `translation-errors.json` fix: not staged in
+  `scripts/git-backup.sh` (#95) nor `.gitattributes merge=ours` (#162). The untracked `residue-report.faithful.json`
+  a WS5 faithful re-inject creates will make prod's `deploy.sh` `git pull --rebase` abort
+  (`set -euo pipefail`) once dev commits that path. **Two-line fix (git-backup add-list + .gitattributes);
+  land BEFORE WS5 re-inject.** Aggravator: inject's manifest parse-error path resets to `{track}` (silently
+  discards other chapters' records) — consider fail-loud.
+- **🟢 FR2-5 `backfill-provenance.js` cwd-relative `books/` + fail-open on missing dir (PLAUSIBLE 1/3, low).**
+  From `cwd=server/` validation passes (uses REPO_ROOT) but `bookDir` is cwd-relative → `existsSync` fail-opens →
+  prints `stamped 0` success. Downstream stays fail-closed (no corruption). Drive-by fix during the FR2-1 sweep:
+  resolve `bookDir` against REPO_ROOT; make `backfillBook` throw/warn on absent `mtRoot`.
+- *Sweep note:* the #213 `process.cwd()` sweep covered `tools/lib/` but NOT top-level `tools/*.js` module state
+  — run `grep -rn "process.cwd()\|path.join('books'" tools/*.js server/` once.
+
 **From F4/F5/F6 (marker-residue inject fixes, 2026-07-02):**
 - **F4 `[[TABLE:]]` inline expansion — SPLIT OUT to its own PR.** Root cause is extraction-level
   double-modelling: a table referenced by an inline `[[TABLE:id]]` placeholder is **also** captured as a
