@@ -521,6 +521,10 @@ in their item blocks — this is the consolidated scan list. Append, don't prune
 - **🟢 WS4-M3 `inner.replace(trimmed, value)` interprets `$` patterns** (`substituteMathLabels`): `String.replace` string-arg treats `$&`/`$1`/`$$` specially. No `$` in Icelandic values → no real-data impact. Harden with a function replacement or `$$`-escape if ever relevant.
 - **🟢 WS4-M4 OV-M2 throw uncaught in F8 loop** (`tools/cnxml-fidelity-check.js` main → `compareMathBlocks` → `substituteMathLabels`): a forbidden char in a map/glossary value would throw and crash the fidelity check with a non-zero exit, nominally violating "F8 never affects exit code." Overlay is `--validate`-clean and no approved glossary value carries one → unreachable. Optional: wrap the F8 compare in try/catch → warn.
 
+**From the WS4 Fable-5 fix wave (2026-07-05, PR #233 — the 5 review findings were FIXED; these two Minors surfaced during the fixes and are deferred):**
+- **🟢 WS4-M5 `substituteMathLabels` `inner.replace(key, value)` assumes the decoded core is a literal substring of the raw inner** (`tools/lib/math-label-substitute.js`): holds for the audited #5 case (trailing entity-encoded whitespace, label chars are literal), but would silently no-op/mismatch if a non-whitespace entity ever sat *inside* the label token. Revisit before onboarding books with denser entity use in math-label text.
+- **🟢 WS4-M6 `decodeEntities` double-decode cascade** (`tools/lib/math-label-inventory.js:74`): numeric-charref decoding runs before `&lt;`/`&gt;`/`&amp;`, so a pathological double-escaped input like `&#38;lt;` decodes twice (`&lt;`→`<`). Never occurs in real CNXML math; pre-existing, unrelated to the fix that now also uses it in F8. Reorder or guard if it ever bites.
+
 **From Fable-5 RUN 2 — recent-merges ambient-state re-review (2026-07-04, NOT tied to one item; adversarially verified, full report `docs/audit/2026-07-04-fable5-recent-merges-ambient-state-review.md`):**
 - **🔴 FR2-1 `cnxml-render.js` module globals not set in server preview (CONFIRMED, medium).** `BOOK_SLUG`,
   `TITLE_TRANSLATIONS`, `BOOKS_DIR` are set only by CLI `main()`; `renderService.js` dynamic-imports the

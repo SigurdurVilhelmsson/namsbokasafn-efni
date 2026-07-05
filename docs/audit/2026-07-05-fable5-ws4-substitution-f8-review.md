@@ -82,3 +82,19 @@ Ranked most-severe first.
 - **The cross-cutting lesson:** F8 forward-substitutes both sides with the same resolver, so it cannot catch any resolver-level bug (#1, #4, #5) or any originalCnxml-only unmapped label (#3). Do not treat F8 as the backstop for substitution correctness; the unmapped-label *report* (once it covers both seams, #3) and hard validation of the map (#4) are the real tripwires.
 
 All five are beyond the seven already-logged items. Confidence is high on the mechanisms (each was demonstrated by executing the real functions on real source); the honest caveats are on *reach*, noted per finding — #4 needs a human typo, #5 has no current chemistry hits.
+
+---
+
+## Resolution (2026-07-05) — all 5 fixed on branch before merge
+
+Lead directive: fix all 5 before merging #233 (robustness > expedience). Fixed via a subagent-driven fix wave (plan `docs/superpowers/plans/2026-07-05-ws4-fable5-fixes.md`), each task independently reviewed, full suite green (1880 passed).
+
+| # | Fix | Commit |
+|---|-----|--------|
+| 1 | Case-fold: `resolveLabel` tries exact overlay key then lowercase (word tokens `/^[A-Za-z][a-z]{2,}$/` only — protects formulae/symbols); glossary lookup lowercased. | `5e8da9ed` |
+| 4 | Whitespace: `resolveLabel` gates overlay on `.trim().length>0` (whitespace-only → pending); self-map compares trimmed; `validateValue` makes whitespace-only a HARD error (`--validate` now fails on it). | `5e8da9ed` |
+| 5 | Entity: `substituteMathLabels` matches on `decodeEntities(inner).trim()`, replacing the decoded core in the raw inner (preserves entity-encoded whitespace) — inventory and substitution now tokenize identically. | `5e8da9ed` |
+| 3 | Report seam: `reportMathLabels` now runs on the raw `originalCnxml` (all math, pre-substitution) instead of the equations-object join — covers standalone `<equation>`/note/example/exercise. | `54bfbd72` |
+| 2 | F8 normalization: `compareMathBlocks` decodes entities on both sides, so xmldom's DOM-emit normalization (`&#x394;`→`Δ`, `>`→`&gt;`) is no longer a false mismatch; real corruption still flagged. | `8efb4003` |
+
+Two follow-up Minors surfaced during the fixes (WS4-M5 `inner.replace` literal-substring assumption; WS4-M6 `decodeEntities` double-decode cascade) — logged in the register, biology-era.
