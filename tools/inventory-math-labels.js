@@ -121,13 +121,30 @@ function runValidate(mapPath, srcDir) {
   const classes = {};
   for (const [k, v] of [...labels, ...others]) classes[k] = v.klass;
 
-  const violations = validateMap(map, classes);
-  if (violations.length === 0) {
-    console.log(`✓ ${Object.keys(map).length} label values valid.`);
+  const { hard, warnings, pending, finalEnglish } = validateMap(map, classes);
+  const translated = Object.keys(map).length - pending.length - finalEnglish.length - hard.length;
+
+  if (warnings.length) {
+    console.log(`⚠ ${warnings.length} advisory (not blocking):`);
+    for (const { key, value, warning } of warnings) {
+      console.log(`  '${key}' → '${value}' : ${warning}`);
+    }
+  }
+  console.log(
+    `Pending (render English, auto-upgrade from glossary): ${pending.length}` +
+      (pending.length ? ` — ${pending.join(', ')}` : '')
+  );
+  console.log(
+    `Final-English (kept, no auto-replace): ${finalEnglish.length}` +
+      (finalEnglish.length ? ` — ${finalEnglish.join(', ')}` : '')
+  );
+
+  if (hard.length === 0) {
+    console.log(`✓ no correctness errors. ${translated} translated, ${warnings.length} advisory.`);
     return;
   }
-  console.error(`✗ ${violations.length} invalid value(s):`);
-  for (const { key, value, reason } of violations) {
+  console.error(`✗ ${hard.length} correctness error(s) — must fix:`);
+  for (const { key, value, reason } of hard) {
     console.error(`  '${key}' → '${value}' : ${reason}`);
   }
   process.exit(1);
