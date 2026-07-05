@@ -65,13 +65,13 @@ export function substituteMathLabels(mathml, resolve) {
   return mathml.replace(LEAF_MATH_TOKEN, (full, open, inner, close) => {
     const trimmed = inner.trim();
     if (!trimmed) return full;
-    const { value } = resolve(trimmed);
-    if (value === trimmed) return full;
-    if (FORBIDDEN_XML.test(value)) {
+    const { value, source } = resolve(trimmed);
+    if (source !== 'english' && FORBIDDEN_XML.test(value)) {
       throw new Error(
         `math-label substitution: value "${value}" for "${trimmed}" contains a forbidden XML character`
       );
     }
+    if (value === trimmed) return full;
     return open + inner.replace(trimmed, value) + close;
   });
 }

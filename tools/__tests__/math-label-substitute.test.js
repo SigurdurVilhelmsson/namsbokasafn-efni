@@ -84,6 +84,16 @@ describe('substituteMathLabels', () => {
     const bad = buildResolver({ overlay: { rate: 'a<b' }, glossaryMap: new Map() });
     expect(() => substituteMathLabels('<m:mi>rate</m:mi>', bad)).toThrow(/forbidden/);
   });
+  it('throws (OV-M2) on a self-map whose value carries a forbidden XML char', () => {
+    const r = buildResolver({ overlay: { 'a"b': 'a"b' }, glossaryMap: new Map() });
+    expect(() => substituteMathLabels('<m:mtext>a"b</m:mtext>', r)).toThrow(/forbidden/);
+  });
+  it('does not throw on english-passthrough text containing legal quotes/entities', () => {
+    const r = buildResolver({ overlay: { rate: 'hraði' }, glossaryMap: new Map() });
+    const s = '<m:mtext>"products" &amp; more</m:mtext>';
+    expect(() => substituteMathLabels(s, r)).not.toThrow();
+    expect(substituteMathLabels(s, r)).toBe(s);
+  });
 });
 
 describe('reportMathLabels', () => {
