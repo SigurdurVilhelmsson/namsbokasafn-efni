@@ -52,14 +52,17 @@ function main() {
   const args = parseArgs(process.argv.slice(2), [
     BOOK_OPTION,
     { name: 'validate', flags: ['--validate'], type: 'boolean', default: false },
+    { name: 'pending', flags: ['--pending'], type: 'boolean', default: false },
   ]);
   requireBook(args);
 
   const bookDir = path.join(REPO_ROOT, 'books', args.book);
   const mapPath = path.join(bookDir, 'math-label-map.json');
   const reportPath = path.join(bookDir, 'math-label-inventory.md');
+  const srcDir = path.join(bookDir, '01-source');
 
-  if (args.validate) return runValidate(mapPath, path.join(bookDir, '01-source'));
+  if (args.pending) return runPending(mapPath, srcDir);
+  if (args.validate) return runValidate(mapPath, srcDir);
   return runGenerate(args.book, bookDir, mapPath, reportPath);
 }
 
@@ -121,16 +124,66 @@ function runValidate(mapPath, srcDir) {
   const classes = {};
   for (const [k, v] of [...labels, ...others]) classes[k] = v.klass;
 
-  const violations = validateMap(map, classes);
-  if (violations.length === 0) {
-    console.log(`✓ ${Object.keys(map).length} label values valid.`);
+  const { hard, warnings, pending, finalEnglish } = validateMap(map, classes);
+  const translated = Object.keys(map).length - pending.length - finalEnglish.length - hard.length;
+
+  if (warnings.length) {
+    console.log(`⚠ ${warnings.length} advisory (not blocking):`);
+    for (const { key, value, warning } of warnings) {
+      console.log(`  '${key}' → '${value}' : ${warning}`);
+    }
+  }
+  console.log(
+    `Pending (render English, auto-upgrade from glossary): ${pending.length}` +
+      (pending.length ? ` — ${pending.join(', ')}` : '')
+  );
+  console.log(
+    `Final-English (kept, no auto-replace): ${finalEnglish.length}` +
+      (finalEnglish.length ? ` — ${finalEnglish.join(', ')}` : '')
+  );
+
+  if (hard.length === 0) {
+    console.log(`✓ no correctness errors. ${translated} translated, ${warnings.length} advisory.`);
     return;
   }
-  console.error(`✗ ${violations.length} invalid value(s):`);
-  for (const { key, value, reason } of violations) {
+  console.error(`✗ ${hard.length} correctness error(s) — must fix:`);
+  for (const { key, value, reason } of hard) {
     console.error(`  '${key}' → '${value}' : ${reason}`);
   }
   process.exit(1);
+}
+
+/**
+ * Print the pending work-list — labels currently rendering English, grouped by class,
+ * plus the final-English (self-mapped) set for reference. Read-only; exits 0.
+ */
+function runPending(mapPath, srcDir) {
+  if (!fs.existsSync(mapPath)) {
+    console.error(`ERROR: ${mapPath} not found — run generate first.`);
+    process.exit(1);
+  }
+  if (!fs.existsSync(srcDir)) {
+    console.error(`ERROR: no 01-source/ under ${srcDir}`);
+    process.exit(1);
+  }
+  const map = readJsonOrExit(mapPath);
+  const tokens = [];
+  for (const file of findCnxml(srcDir))
+    tokens.push(...collectMathTokens(fs.readFileSync(file, 'utf8')));
+  const { labels, others } = aggregate(tokens);
+  const classes = {};
+  for (const [k, v] of [...labels, ...others]) classes[k] = v.klass;
+
+  const { pending, finalEnglish } = validateMap(map, classes);
+  const sub = pending.filter((k) => classes[k] === 'subscript');
+  const inl = pending.filter((k) => classes[k] !== 'subscript');
+  console.log(
+    `Pending labels — render English now, auto-upgrade when a glossary term lands: ${pending.length}`
+  );
+  console.log(`  subscript (${sub.length}): ${sub.join(', ') || '—'}`);
+  console.log(`  inline    (${inl.length}): ${inl.join(', ') || '—'}`);
+  console.log(`\nFinal-English (self-mapped, kept as-is): ${finalEnglish.length}`);
+  console.log(`  ${finalEnglish.join(', ') || '—'}`);
 }
 
 main();

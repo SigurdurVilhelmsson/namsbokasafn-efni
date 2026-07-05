@@ -511,6 +511,11 @@ found while implementing an item is logged here **immediately**, so nothing scop
 tightly scoped; these are revisited together once the plan's last item ships. Per-item deferrals also live
 in their item blocks — this is the consolidated scan list. Append, don't prune.*
 
+**From the math-label overlay-model refinement (2026-07-05, opus final review — all Minor, carry to the WS4-substitution/item-5 PR):**
+- **🟡 OV-M1 `renderReport` prints the OLD validation model** (`tools/lib/math-label-inventory.js` renderReport constraints block + section headings): still says "single token (no spaces)", "blank deletes it", "subscript labels MUST be ≤ 6 characters". Under the overlay model, blank = pending (safe), whitespace/length are advisory. The regenerated lead-facing `math-label-inventory.md` now misinstructs. Reword to "blank = pending (safe)", spaces/length advisory. `renderReport` was out of the overlay plan's 4-file scope → deferred.
+- **🟡 OV-M2 self-map short-circuits before charset validation** (`math-label-inventory.js` validateMap: `if (value === key) { finalEnglish.push(key); continue; }` runs before validateValue). Unreachable with current data (keys are clean `<m:mtext>` tokens, 0 charset-bad in the map) but matters at **item 5**: final-English emits the English string into MathML, so a charset-bearing English label would corrupt output unflagged. Fix at substitution: charset-validate self-maps too, or assert final-English values charset-clean at emit.
+- **🟢 OV-M3 cosmetic count skew** in `runValidate` summary (`tools/inventory-math-labels.js`): `warnings.length` counts warning *entries* not distinct keys (a value warned for both whitespace+length counts twice). Informational output only; no functional impact.
+
 **From F4/F5/F6 (marker-residue inject fixes, 2026-07-02):**
 - **F4 `[[TABLE:]]` inline expansion — SPLIT OUT to its own PR.** Root cause is extraction-level
   double-modelling: a table referenced by an inline `[[TABLE:id]]` placeholder is **also** captured as a

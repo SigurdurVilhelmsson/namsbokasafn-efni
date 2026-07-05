@@ -191,39 +191,56 @@ export function mergeSkeleton(existing, labels) {
 }
 
 /**
- * Validate one filled Icelandic label value against the WS4 rules.
+ * Value-level validation. Charset is the only hard failure; whitespace and (when
+ * enforceLength) length are advisory warnings. Empty is not judged here — the map
+ * decides pending. Pass non-empty values for meaningful results.
  * @param {string} value
- * @param {Object} [opts]
- * @param {boolean} [opts.enforceLength=true]  when false, the ≤6 cap is skipped (all other rules still apply)
- * @returns {string|null}  human-readable reason if invalid, else null
+ * @param {{ enforceLength?: boolean }} [opts]
+ * @returns {{ hard: string|null, warnings: string[] }}
  */
 export function validateValue(value, { enforceLength = true } = {}) {
-  if (typeof value !== 'string' || value.length === 0) {
-    return 'empty (use a self-map like "surr"→"surr" to keep the English label)';
-  }
-  if (/\s/.test(value)) return 'contains whitespace (must be a single token)';
-  if (/[<>&"']/.test(value)) return 'contains a forbidden XML character (one of < > & " \')';
+  const warnings = [];
+  if (typeof value !== 'string' || value.length === 0) return { hard: null, warnings };
+  const hard = /[<>&"']/.test(value)
+    ? 'contains a forbidden XML character (one of < > & " \')'
+    : null;
+  if (/\s/.test(value)) warnings.push('multi-word (contains whitespace)');
   if (enforceLength) {
-    const codePoints = [...value].length;
-    if (codePoints > 6) return `${codePoints} chars > 6-char cap`;
+    const cp = [...value].length;
+    if (cp > 6) warnings.push(`${cp} chars > 6 (long for a subscript)`);
   }
-  return null;
+  return { hard, warnings };
 }
 
 /**
- * Validate every value in a filled map.
+ * Classify every overlay entry into a state, aggregating advisories.
+ * - value === key            → finalEnglish (self-map: keep English, no auto-replace)
+ * - value empty/absent       → pending (renders English; auto-upgrades from glossary)
+ * - otherwise                → translated; run validateValue (subscript-only length)
  * @param {Record<string,string>} map
- * @param {Record<string,'subscript'|'inline'>} [classes={}]  key's class determines if length is enforced; unknown class → enforce (safe default)
- * @returns {Array<{ key: string, value: string, reason: string }>}
+ * @param {Record<string,'subscript'|'inline'>} [classes]
+ * @returns {{ hard: Array<{key,value,reason}>, warnings: Array<{key,value,warning}>,
+ *            pending: string[], finalEnglish: string[] }}
  */
 export function validateMap(map, classes = {}) {
-  const violations = [];
+  const hard = [];
+  const warnings = [];
+  const pending = [];
+  const finalEnglish = [];
   for (const [key, value] of Object.entries(map)) {
-    const enforceLength = classes[key] !== 'inline';
-    const reason = validateValue(value, { enforceLength });
-    if (reason) violations.push({ key, value, reason });
+    if (typeof value !== 'string' || value.length === 0) {
+      pending.push(key);
+      continue;
+    }
+    if (value === key) {
+      finalEnglish.push(key);
+      continue;
+    }
+    const r = validateValue(value, { enforceLength: classes[key] === 'subscript' });
+    if (r.hard) hard.push({ key, value, reason: r.hard });
+    for (const w of r.warnings) warnings.push({ key, value, warning: w });
   }
-  return violations;
+  return { hard, warnings, pending, finalEnglish };
 }
 
 /** Sort a Map's entries by count desc, then key asc. */
