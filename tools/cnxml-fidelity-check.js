@@ -29,6 +29,7 @@ import {
 } from './lib/parseArgs.js';
 import { loadAllowlist, classifyDiff } from './lib/fidelity-allowlist.js';
 import { loadMathLabelResolver, substituteMathLabels } from './lib/math-label-substitute.js';
+import { decodeEntities } from './lib/math-label-inventory.js';
 
 let BOOKS_DIR = 'books/efnafraedi-2e';
 
@@ -146,8 +147,14 @@ export function extractMathBlocks(cnxml) {
  * @returns {{ok:boolean, mismatched:number, sourceBlocks:number, translatedBlocks:number}}
  */
 export function compareMathBlocks(sourceCnxml, translatedCnxml, resolve) {
-  const src = extractMathBlocks(sourceCnxml).map((b) => substituteMathLabels(b, resolve));
-  const trans = extractMathBlocks(translatedCnxml);
+  // #2: the DOM builders (example/exercise/note) round-trip math through xmldom, which
+  // decodes numeric charrefs and re-escapes raw '>'. substituteMathLabels leaves the
+  // source raw, so decode entities on BOTH sides before comparing — otherwise F8 flags
+  // correct math permanently and masks real corruption. Comparison-only normalization.
+  const src = extractMathBlocks(sourceCnxml).map((b) =>
+    decodeEntities(substituteMathLabels(b, resolve))
+  );
+  const trans = extractMathBlocks(translatedCnxml).map((b) => decodeEntities(b));
   let mismatched = 0;
   const n = Math.max(src.length, trans.length);
   for (let i = 0; i < n; i++) {
