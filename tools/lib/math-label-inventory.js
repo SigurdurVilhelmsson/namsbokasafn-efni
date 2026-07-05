@@ -201,6 +201,12 @@ export function mergeSkeleton(existing, labels) {
 export function validateValue(value, { enforceLength = true } = {}) {
   const warnings = [];
   if (typeof value !== 'string' || value.length === 0) return { hard: null, warnings };
+  if (value.trim().length === 0) {
+    return {
+      hard: 'whitespace-only (would delete the label — leave blank for pending instead)',
+      warnings,
+    };
+  }
   const hard = /[<>&"']/.test(value)
     ? 'contains a forbidden XML character (one of < > & " \')'
     : null;

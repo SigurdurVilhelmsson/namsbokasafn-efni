@@ -114,6 +114,12 @@ describe('validateValue (value-level: charset hard, length/whitespace advisory)'
   it('6 Icelandic code points is within the cap (no length warning)', () => {
     expect(validateValue('þðæösý', { enforceLength: true }).warnings).toEqual([]);
   });
+  it('flags a whitespace-only value as a hard error (would delete the label)', () => {
+    expect(validateValue(' ').hard).toMatch(/whitespace-only/);
+  });
+  it('still treats a multi-word value as advisory, not hard', () => {
+    expect(validateValue('fast efni').hard).toBeNull();
+  });
 });
 
 describe('validateMap (states: translated / final-English / pending + advisories)', () => {

@@ -1,7 +1,7 @@
 // tools/lib/math-label-substitute.js
 import fs from 'fs';
 import path from 'path';
-import { collectMathTokens, bucketToken } from './math-label-inventory.js';
+import { collectMathTokens, bucketToken, decodeEntities } from './math-label-inventory.js';
 
 const FORBIDDEN_XML = /[<>&"']/;
 
@@ -31,13 +31,27 @@ export function buildGlossaryMap(glossary) {
  * @returns {{value:string, source:'overlay-translated'|'overlay-self'|'glossary'|'english'}}
  */
 export function resolveLabel(label, { overlay = {}, glossaryMap = new Map() } = {}) {
-  const ov = overlay[label];
-  if (typeof ov === 'string' && ov.length > 0) {
-    return ov === label
-      ? { value: label, source: 'overlay-self' }
-      : { value: ov, source: 'overlay-translated' };
+  // #1: pure alphabetic words (>=3 chars) fall back to their lowercase form so a
+  // capitalized occurrence (Rate/Acid/Base) resolves like the lowercase key, while
+  // formulae / element symbols (digits, mixed case, <3 chars) are never case-folded.
+  const isWord = /^[A-Za-z][a-z]{2,}$/.test(label);
+  const lower = label.toLowerCase();
+
+  // overlay: exact key first (honors hand-added exact-case keys), then lowercase for words.
+  let ovRaw = overlay[label];
+  if (!(typeof ovRaw === 'string' && ovRaw.trim().length > 0) && isWord && lower !== label) {
+    ovRaw = overlay[lower];
   }
-  const g = glossaryMap.get(label);
+  if (typeof ovRaw === 'string' && ovRaw.trim().length > 0) {
+    // #4: trim before judging — a value equal to the label (or its lowercase) after
+    // trimming is a self-map (renders English); otherwise the trimmed value is emitted
+    // (a stray leading/trailing space never reaches the output).
+    const v = ovRaw.trim();
+    if (v === label || v === lower) return { value: label, source: 'overlay-self' };
+    return { value: v, source: 'overlay-translated' };
+  }
+  // glossary keys are lowercased in buildGlossaryMap; look up the lowercase form for words.
+  const g = glossaryMap.get(isWord ? lower : label);
   if (typeof g === 'string' && g.trim()) return { value: g, source: 'glossary' };
   return { value: label, source: 'english' };
 }
@@ -63,16 +77,20 @@ const LEAF_MATH_TOKEN = /(<m:m(?:text|i)\b[^>]*>)([^<]*)(<\/m:m(?:text|i)>)/g;
 export function substituteMathLabels(mathml, resolve) {
   if (typeof mathml !== 'string') return mathml;
   return mathml.replace(LEAF_MATH_TOKEN, (full, open, inner, close) => {
-    const trimmed = inner.trim();
-    if (!trimmed) return full;
-    const { value, source } = resolve(trimmed);
+    // #5: match on the DECODED, trimmed text so a token the inventory recorded
+    // (collectMathTokens uses DOM textContent, which decodes entities) is found here
+    // too. Replace the literal decoded core in the raw inner, preserving other bytes
+    // (e.g. a trailing entity-encoded NBSP).
+    const key = decodeEntities(inner).trim();
+    if (!key) return full;
+    const { value, source } = resolve(key);
     if (source !== 'english' && FORBIDDEN_XML.test(value)) {
       throw new Error(
-        `math-label substitution: value "${value}" for "${trimmed}" contains a forbidden XML character`
+        `math-label substitution: value "${value}" for "${key}" contains a forbidden XML character`
       );
     }
-    if (value === trimmed) return full;
-    return open + inner.replace(trimmed, value) + close;
+    if (value === key) return full;
+    return open + inner.replace(key, value) + close;
   });
 }
 

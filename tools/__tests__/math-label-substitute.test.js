@@ -96,6 +96,65 @@ describe('substituteMathLabels', () => {
   });
 });
 
+describe('resolveLabel — case + whitespace hardening', () => {
+  const glossaryMap = new Map([['acid', 'sýra']]);
+  it('#1 capitalized word falls back to the lowercase overlay key', () => {
+    expect(resolveLabel('Rate', { overlay: { rate: 'hraði' }, glossaryMap })).toEqual({
+      value: 'hraði',
+      source: 'overlay-translated',
+    });
+  });
+  it('#1 capitalized word falls back to the lowercased glossary key', () => {
+    expect(resolveLabel('Acid', { overlay: {}, glossaryMap })).toEqual({
+      value: 'sýra',
+      source: 'glossary',
+    });
+  });
+  it('#1 exact-case overlay key still wins over the lowercase fallback', () => {
+    expect(
+      resolveLabel('Rate', { overlay: { Rate: 'Hraði', rate: 'hraði' }, glossaryMap: new Map() })
+    ).toEqual({ value: 'Hraði', source: 'overlay-translated' });
+  });
+  it('#1 a formula / short / mixed token is NOT case-folded', () => {
+    // "NaCl" lowercases to "nacl" which is not a key → stays english (no false hit)
+    expect(resolveLabel('NaCl', { overlay: { nacl: 'x' }, glossaryMap: new Map() })).toEqual({
+      value: 'NaCl',
+      source: 'english',
+    });
+  });
+  it('#4 whitespace-only overlay value is pending (falls through), not a translation', () => {
+    expect(resolveLabel('vap', { overlay: { vap: ' ' }, glossaryMap: new Map() })).toEqual({
+      value: 'vap',
+      source: 'english',
+    });
+  });
+  it('#4 value equal to the key after trimming is a self-map', () => {
+    expect(resolveLabel('amu', { overlay: { amu: 'amu ' }, glossaryMap: new Map() })).toEqual({
+      value: 'amu',
+      source: 'overlay-self',
+    });
+  });
+  it('#4 a trailing space on a real translation is trimmed off the emitted value', () => {
+    expect(resolveLabel('rate', { overlay: { rate: 'hraði ' }, glossaryMap: new Map() })).toEqual({
+      value: 'hraði',
+      source: 'overlay-translated',
+    });
+  });
+});
+
+describe('substituteMathLabels — entity-decoded matching (#5)', () => {
+  const resolve = buildResolver({ overlay: { all: 'allur' }, glossaryMap: new Map() });
+  it('matches a label whose node carries a trailing entity-encoded NBSP, preserving the entity', () => {
+    expect(substituteMathLabels('<m:mtext>all&#x00A0;</m:mtext>', resolve)).toBe(
+      '<m:mtext>allur&#x00A0;</m:mtext>'
+    );
+  });
+  it('#4 whitespace-only overlay never blanks a label (pending → unchanged)', () => {
+    const r = buildResolver({ overlay: { rate: ' ' }, glossaryMap: new Map() });
+    expect(substituteMathLabels('<m:mtext>rate</m:mtext>', r)).toBe('<m:mtext>rate</m:mtext>');
+  });
+});
+
 describe('reportMathLabels', () => {
   it('flags a bucket-1 label absent from the overlay as unmapped', () => {
     const resolve = buildResolver({ overlay: {}, glossaryMap: new Map() });
