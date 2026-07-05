@@ -59,6 +59,11 @@ import {
   removeElementsByTag,
   insertCnxmlBefore,
 } from './lib/cnxml-dom.js';
+import {
+  loadMathLabelResolver,
+  substituteMathLabels,
+  reportMathLabels,
+} from './lib/math-label-substitute.js';
 
 // =====================================================================
 // CONFIGURATION
@@ -3519,6 +3524,28 @@ function loadModuleInputs(chapter, moduleId, lang, sourceDir, allowEnFallback = 
   const eqPath = path.join(BOOKS_DIR, '02-structure', chapterDir, `${moduleId}-equations.json`);
   const equations = fs.existsSync(eqPath) ? JSON.parse(fs.readFileSync(eqPath, 'utf-8')) : {};
 
+  // WS4 item 5: substitute English math labels before any emit site reads eq.mathml.
+  const { resolve: resolveMathLabel, overlay: mathLabelOverlay } = getMathLabelResolver(BOOKS_DIR);
+  const mathLabelReport = reportMathLabels(
+    Object.values(equations)
+      .map((e) => e && e.mathml)
+      .filter(Boolean)
+      .join('\n'),
+    resolveMathLabel,
+    { overlay: mathLabelOverlay }
+  );
+  if (mathLabelReport.unmapped.length) {
+    console.error(
+      `  ⚠ ${moduleId}: ${mathLabelReport.unmapped.length} unmapped math label(s): ${mathLabelReport.unmapped.join(', ')}`
+    );
+  }
+  for (const a of mathLabelReport.longSubscriptFills) {
+    console.error(
+      `  ⚠ ${moduleId}: glossary term "${a.value}" is ${a.cp} chars in a subscript (label "${a.token}") — consider a compact overlay override`
+    );
+  }
+  applyMathLabelSubstitution(equations, resolveMathLabel);
+
   // Load inline attributes (term class, footnote id, etc.)
   const inlineAttrsPath = path.join(
     BOOKS_DIR,
@@ -3567,6 +3594,35 @@ function writeOutput(chapter, moduleId, cnxml, track) {
   const backup = safeWrite(outputPath, cnxml);
   if (backup) logBackup(path.basename(BOOKS_DIR), chapter, 'inject', outputPath, backup);
   return outputPath;
+}
+
+// WS4 item 5 — math-label substitution. Resolver (overlay + glossary) is per-book;
+// cache it so a whole-book inject run builds it once.
+const _mathLabelResolverCache = new Map();
+function getMathLabelResolver(bookDir) {
+  if (!_mathLabelResolverCache.has(bookDir)) {
+    _mathLabelResolverCache.set(bookDir, loadMathLabelResolver(bookDir));
+  }
+  return _mathLabelResolverCache.get(bookDir);
+}
+
+/**
+ * Substitute English math labels → Icelandic across a loaded equations object,
+ * mutating each eq.mathml in place. Byte-minimal (see substituteMathLabels).
+ * @param {Record<string,{mathml?:string}>} equations
+ * @param {(label:string)=>{value:string,source:string}} resolve
+ * @returns {{modulesSubstituted:number}}
+ */
+function applyMathLabelSubstitution(equations, resolve) {
+  let modulesSubstituted = 0;
+  for (const eq of Object.values(equations)) {
+    if (eq && typeof eq.mathml === 'string') {
+      const before = eq.mathml;
+      eq.mathml = substituteMathLabels(eq.mathml, resolve);
+      if (eq.mathml !== before) modulesSubstituted += 1;
+    }
+  }
+  return { modulesSubstituted };
 }
 
 // =====================================================================
@@ -3844,4 +3900,5 @@ export {
   loadImageBasenameMap,
   buildMediaElement,
   buildMedia,
+  applyMathLabelSubstitution,
 };
