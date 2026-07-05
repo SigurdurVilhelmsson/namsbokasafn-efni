@@ -59,6 +59,11 @@ import {
   removeElementsByTag,
   insertCnxmlBefore,
 } from './lib/cnxml-dom.js';
+import {
+  loadMathLabelResolver,
+  substituteMathLabels,
+  reportMathLabels,
+} from './lib/math-label-substitute.js';
 
 // =====================================================================
 // CONFIGURATION
@@ -3519,6 +3524,10 @@ function loadModuleInputs(chapter, moduleId, lang, sourceDir, allowEnFallback = 
   const eqPath = path.join(BOOKS_DIR, '02-structure', chapterDir, `${moduleId}-equations.json`);
   const equations = fs.existsSync(eqPath) ? JSON.parse(fs.readFileSync(eqPath, 'utf-8')) : {};
 
+  // WS4 item 5: substitute English math labels before any emit site reads eq.mathml.
+  const { resolve: resolveMathLabel, overlay: mathLabelOverlay } = getMathLabelResolver(BOOKS_DIR);
+  applyMathLabelSubstitution(equations, resolveMathLabel);
+
   // Load inline attributes (term class, footnote id, etc.)
   const inlineAttrsPath = path.join(
     BOOKS_DIR,
@@ -3541,7 +3550,32 @@ function loadModuleInputs(chapter, moduleId, lang, sourceDir, allowEnFallback = 
   if (!fs.existsSync(originalPath)) {
     throw new Error(`Original CNXML not found: ${originalPath}`);
   }
-  const originalCnxml = fs.readFileSync(originalPath, 'utf-8');
+  // WS4 item 5: substitute math labels in the raw source too. Standalone <equation>
+  // blocks and example/exercise/note math are sliced verbatim from originalCnxml by
+  // the builders and never touch the `equations` object, so the equations-object
+  // substitution above does not reach them. substituteMathLabels only rewrites leaf
+  // <m:mtext>/<m:mi> label text; ids/tags/structure (and thus the builders' slicing
+  // regexes) are unaffected. Idempotent, so math also covered via equations is safe.
+  //
+  // WS4 #3: report unmapped labels + subscript advisories on the RAW source, which
+  // contains ALL math (inline, standalone <equation>, note/example/exercise) — the
+  // equations object misses the second-seam classes. Must run pre-substitution so
+  // Icelandic fills don't pollute token collection.
+  const rawOriginalCnxml = fs.readFileSync(originalPath, 'utf-8');
+  const mathLabelReport = reportMathLabels(rawOriginalCnxml, resolveMathLabel, {
+    overlay: mathLabelOverlay,
+  });
+  if (mathLabelReport.unmapped.length) {
+    console.error(
+      `  ⚠ ${moduleId}: ${mathLabelReport.unmapped.length} unmapped math label(s): ${mathLabelReport.unmapped.join(', ')}`
+    );
+  }
+  for (const a of mathLabelReport.longSubscriptFills) {
+    console.error(
+      `  ⚠ ${moduleId}: glossary term "${a.value}" is ${a.cp} chars in a subscript (label "${a.token}") — consider a compact overlay override`
+    );
+  }
+  const originalCnxml = substituteMathLabels(rawOriginalCnxml, resolveMathLabel);
 
   return { structure, segments, equations, originalCnxml, enSegments, inlineAttrs, restorePolicy };
 }
@@ -3567,6 +3601,35 @@ function writeOutput(chapter, moduleId, cnxml, track) {
   const backup = safeWrite(outputPath, cnxml);
   if (backup) logBackup(path.basename(BOOKS_DIR), chapter, 'inject', outputPath, backup);
   return outputPath;
+}
+
+// WS4 item 5 — math-label substitution. Resolver (overlay + glossary) is per-book;
+// cache it so a whole-book inject run builds it once.
+const _mathLabelResolverCache = new Map();
+function getMathLabelResolver(bookDir) {
+  if (!_mathLabelResolverCache.has(bookDir)) {
+    _mathLabelResolverCache.set(bookDir, loadMathLabelResolver(bookDir));
+  }
+  return _mathLabelResolverCache.get(bookDir);
+}
+
+/**
+ * Substitute English math labels → Icelandic across a loaded equations object,
+ * mutating each eq.mathml in place. Byte-minimal (see substituteMathLabels).
+ * @param {Record<string,{mathml?:string}>} equations
+ * @param {(label:string)=>{value:string,source:string}} resolve
+ * @returns {{modulesSubstituted:number}}
+ */
+function applyMathLabelSubstitution(equations, resolve) {
+  let modulesSubstituted = 0;
+  for (const eq of Object.values(equations)) {
+    if (eq && typeof eq.mathml === 'string') {
+      const before = eq.mathml;
+      eq.mathml = substituteMathLabels(eq.mathml, resolve);
+      if (eq.mathml !== before) modulesSubstituted += 1;
+    }
+  }
+  return { modulesSubstituted };
 }
 
 // =====================================================================
@@ -3844,4 +3907,5 @@ export {
   loadImageBasenameMap,
   buildMediaElement,
   buildMedia,
+  applyMathLabelSubstitution,
 };
