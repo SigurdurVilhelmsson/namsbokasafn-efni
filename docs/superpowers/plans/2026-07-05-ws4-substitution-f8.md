@@ -6,6 +6,13 @@
 
 **Architecture:** One pure lib `tools/lib/math-label-substitute.js` owns resolution + byte-minimal regex substitution + the report pass. `cnxml-inject.js` imports it and substitutes at the equations load seam (mutating the loaded `equations` object — every emit site inherits it). `cnxml-fidelity-check.js` imports the *same* `substituteMathLabels`, runs it on the source math, and compares to the on-disk translated math (F8, warn-only until WS5).
 
+> **Correction (post-review, same day):** the equations-object seam does not reach
+> standalone `<equation>` blocks or example/exercise/note math — those are sliced
+> verbatim out of `originalCnxml` by regex builders and never touch the `equations`
+> object. A second seam substitutes `originalCnxml` itself at read time in
+> `loadModuleInputs()` so those builders inherit the substitution too. Fixed +
+> regression-tested same day (module m68786, ch12, was the confirmed repro).
+
 **Tech Stack:** Node.js 22 ESM, Vitest, `@xmldom/xmldom` (via the existing `collectMathTokens`).
 
 ## Global Constraints

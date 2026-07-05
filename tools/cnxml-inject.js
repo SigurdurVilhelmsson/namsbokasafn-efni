@@ -3568,7 +3568,16 @@ function loadModuleInputs(chapter, moduleId, lang, sourceDir, allowEnFallback = 
   if (!fs.existsSync(originalPath)) {
     throw new Error(`Original CNXML not found: ${originalPath}`);
   }
-  const originalCnxml = fs.readFileSync(originalPath, 'utf-8');
+  // WS4 item 5: substitute math labels in the raw source too. Standalone <equation>
+  // blocks and example/exercise/note math are sliced verbatim from originalCnxml by
+  // the builders and never touch the `equations` object, so the equations-object
+  // substitution above does not reach them. substituteMathLabels only rewrites leaf
+  // <m:mtext>/<m:mi> label text; ids/tags/structure (and thus the builders' slicing
+  // regexes) are unaffected. Idempotent, so math also covered via equations is safe.
+  const originalCnxml = substituteMathLabels(
+    fs.readFileSync(originalPath, 'utf-8'),
+    resolveMathLabel
+  );
 
   return { structure, segments, equations, originalCnxml, enSegments, inlineAttrs, restorePolicy };
 }

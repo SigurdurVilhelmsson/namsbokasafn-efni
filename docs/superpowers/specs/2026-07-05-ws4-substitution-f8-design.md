@@ -92,6 +92,16 @@ Applied once at the equations load seam (`cnxml-inject.js:3520`, where
 form. No emit site hashes, dedups, or compares `eq.mathml` by byte-identity
 (verified), so mutating the loaded `equations` object is safe.
 
+> **Correction (post-review, same day):** the equations-object seam above does
+> **not** cover standalone `<equation>` blocks or example/exercise/note math —
+> those are sliced verbatim out of `originalCnxml` by regex-based builders
+> (`buildEquation`, `buildExample`, `buildExerciseDom`, `buildNoteDom`) and never
+> touch the `equations` object. A **second seam** substitutes `originalCnxml`
+> itself at read time in `loadModuleInputs()`, so every builder that slices from
+> it also inherits the substitution. Confirmed via module m68786 (ch12), whose
+> standalone `<equation id="fs-idm243742160">` stayed English until this second
+> seam was added.
+
 ```
 /(<m:m(?:text|i)\b[^>]*>)([^<]*)(<\/m:m(?:text|i)>)/g
 ```
