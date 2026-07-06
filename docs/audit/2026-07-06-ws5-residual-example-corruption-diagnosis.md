@@ -83,22 +83,39 @@ then the 3 duplicate paras+equation; `structure.json` shows the list plus the 3 
 This is the known "nested para/list still partial" limitation (memory `nested-list-limitation`).
 
 **At-risk population (source `<item>` with a block child):** 5 modules — `m68710` (ch04),
-`m68727` (ch05), `m68789` (ch12), `m68793` (ch12), `m68801` (ch13). Per-module confirmation of
-actual duplication still needed for the other 4.
+`m68727` (ch05), `m68789` (ch12), `m68793` (ch12), `m68801` (ch13). All mt-preview (pure MT, no
+human review at risk).
 
-**Delivery cost:** extraction-only fix, but re-extract → re-inject → re-render for the affected
-modules + gate verification (more delicate than (b); touches the generated 02-structure and
-03-translated stages).
+**UPDATE — the extraction code is ALREADY FIXED; this is stale data, and the resolution is
+DEFERRED to Track B4 (lead decision 2026-07-06).** `cnxml-extract.js` lines ~797–804 (the **OC-E
+fix, #227, merged 2026-07-04**) strip lists before extracting standalone paras precisely to stop
+this double-hoist — the code comment names the exact "re-emitted AFTER the list" bug. m68793's
+committed `structure.json` is from a **March** backup, predating OC-E; WS5 re-*injected* from that
+stale structure but never re-*extracted*, so the duplication persisted into published HTML.
+**Proven:** re-extracting m68793 with current code removes the double-record from `structure.json`
+entirely (0 duplicated top-level paras).
+
+So there is **no code fix** — resolution is a re-extract. But re-extraction changes the MT
+**segment boundaries** substantially (probe on m68793: 51 insertions / 108 deletions in
+`m68793-segments.en.md`) → the existing MT output goes stale → the module needs **re-MT**. That
+collides with the standing rule *"full re-MT only after Track B4"* (the same rule that deferred
+RC3/RC4). **Lead decision: DEFER signature (a) to Track B4**, which re-extracts the whole book with
+the OC-E-fixed code and re-MTs — the 5 modules self-correct then. A targeted re-MT-now was rejected
+(re-translates 5 whole modules wholesale to fix a localized duplication) and an inject/render dedup
+stopgap was rejected (workaround downstream of an already-fixed root cause). Registered as a
+known-residual alongside RC3/RC4.
 
 ## NON-issues (do not chase)
 - The **double `</aside>`** in rendered 12-5 is *correct* nesting (check-knowledge note-aside
   closes, then the example aside closes). Not a defect.
-- Signature (a) is **not** an injection bug (injection is faithful) and **not** the same bug as
-  (b). Different stages, different modules (15 for (b) vs ~5 for (a)), different fixes.
+- Signature (a) is **not** an injection bug (injection is faithful), **not** a live code bug
+  (OC-E already fixed extraction), and **not** the same bug as (b). Different stage, different
+  modules (15 for (b) vs ~5 for (a)), different resolution.
 
-## Recommended sequencing
-1. **(b) render fix first** — higher impact (15 modules), lower risk (render-only), one PR.
-2. **(a) extraction fix second** — separate PR; needs re-extract/re-inject/re-render.
-Each as its own brainstorm → plan → PR per the chemistry-clean-slate workflow; both fold into a
-WS5-style re-render (b) / re-inject+re-render (a) with golden regen + gate verification, then the
-lead's sync+deploy.
+## Outcome / status
+1. **(b) render fix — DONE, PR #238** (b1 title-leak + b2 escaped-table + b3 section/note
+   heading). Reader-facing; gate-verified; awaits lead merge + sync/deploy.
+2. **(a) extraction double-record — DEFERRED to Track B4** (stale March structure; OC-E already
+   fixes the code; re-extract needs re-MT → B4). Registered as a known-residual with RC3/RC4.
+   Until B4, 12-5 (and the other 4 mt-preview modules) will still show the list/equation
+   duplication in published HTML — a known, tracked gap, not a regression from (b).
