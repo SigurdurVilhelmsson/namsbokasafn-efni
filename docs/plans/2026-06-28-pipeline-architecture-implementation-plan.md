@@ -532,6 +532,7 @@ in their item blocks — this is the consolidated scan list. Append, don't prune
 - **🟡 RC2 term-split mis-attaches id/English gloss to the wrong (mistranslated) span** (m68709 `efnaformúlur`, m68735 `rafeindaskipan`) — silently emits wrong inline glosses; not a tag-count loss. Also a 3-way terminology inconsistency. Defer/decide.
 - **🟢 method limit:** the tag-count check is blind to count-balanced position-only mis-anchors (RC1 only *partially* visible via collateral `emphasis` drops); a content-level glossary check would be needed to guarantee RC1 is fully caught.
 - **⚠ WS5:** m68811 `emphasis` flips −1→+1 (UNEXPLAINED) on fresh re-inject — update that allowlist entry to +1 at WS5 or the re-injected book breaks green.
+- **FIX OUTCOME (2026-07-06, lead-decided):** **RC1 ✅ FIXED (PR #235)** — inject-stage, `restoreGlossaryTermMarkup` notation-run restore. **RC3 → 🔵 Track B4** (legacy `{=…=}` class-emphasis marker destroyed by Málstaður API; needs survivable bracket marker at extract + re-MT — m68847). **RC4 → 🔵 Track B4** (m68860 extraction drops title-only para; m68863 inject table-header dup — both appendix, re-MT-adjacent). **B4 must pick up RC3 + RC4-m68860.** Full detail: `docs/audit/2026-07-06-f3-benign-retriage.md` § Fix outcome.
 
 **From Fable-5 RUN 2 — recent-merges ambient-state re-review (2026-07-04, NOT tied to one item; adversarially verified, full report `docs/audit/2026-07-04-fable5-recent-merges-ambient-state-review.md`):**
 - **🔴 FR2-1 `cnxml-render.js` module globals not set in server preview (CONFIRMED, medium).** `BOOK_SLUG`,
