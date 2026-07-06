@@ -260,14 +260,14 @@
 </tgroup>
 </table>
 <para id="fs-idm81523280">Þótt til séu margar leiðir til að ákvarða eðlismassa hlutar er einfaldasta aðferðin líklega sú að finna massa og rúmmál hlutarins hvort í sínu lagi og deila síðan massa sýnisins með rúmmáli þess. Í eftirfarandi dæmi er massi hlutarins mældur með vog en rúmmál hans er reiknað rúmfræðilega út frá lengdarmælingum.</para>
-<equation id="fs-idm166517584" class="unnumbered"><m:math><m:mrow><m:mtext>density</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mrow><m:mtext>volume</m:mtext></m:mrow></m:mfrac></m:mrow></m:math></equation>
+<equation id="fs-idm166517584" class="unnumbered"><m:math><m:mrow><m:mtext>eðlismassi</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>massi</m:mtext></m:mrow><m:mrow><m:mtext>rúmmál</m:mtext></m:mrow></m:mfrac></m:mrow></m:math></equation>
 </section>
 <para id="fs-idm10854912">Við getum leitt margar einingar af sjö grunneiningum SI-kerfisins. Til dæmis getum við notað grunneiningu lengdar til að skilgreina rúmmálseiningu og grunneiningar massa og lengdar til að skilgreina eðlismassaeiningu.</para>
 <example id="Example_01_04_01">
 <para id="fs-idm112138272"><title>Útreikningur á eðlismassa</title>Gull – í formi hleifa, stanga og myntar – hefur verið gjaldmiðill um aldir. Til að svindla á fólki og fá það til að borga fyrir gullhleif án þess að fjárfesta í raunverulegum gullhleif hefur fólk íhugað að fylla holar gullblokkir með blýi til að blekkja kaupendur til að halda að allur hleifurinn sé úr gulli. Það virkar ekki: Blý er þétt efni en eðlismassi þess er ekki jafn mikill og eðlismassi gulls, 19,3 g/cm<sup>3</sup>. Hver er eðlismassi blýs ef teningur úr blýi hefur brúnlengdina 2,00 cm og massa 90,7 g?</para>
 <para id="fs-idp40298832"><title>Lausn</title>Eðlismassa efnis má reikna með því að deila massa þess með rúmmáli þess. Rúmmál tenings er reiknað með því að hefja brúnlengdina í þriðja veldi.</para>
 <equation id="fs-idm163080256" class="unnumbered"><m:math><m:mrow><m:mtext>volume of lead cube</m:mtext><m:mo>=</m:mo><m:mn>2.00 cm</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>2.00 cm</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>2.00 cm</m:mn><m:mo>=</m:mo><m:msup><m:mrow><m:mtext>8.00 cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math></equation>
-<equation id="fs-idm193550528" class="unnumbered"><m:math><m:mrow><m:mtext>density</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mrow><m:mtext>volume</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>90.7 g</m:mtext></m:mrow><m:mrow><m:msup><m:mrow><m:mtext>8.00 cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>11.3 g/cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math></equation><para id="fs-idp264752">(Við munum ræða ástæðuna fyrir því að námunda að fyrsta aukastaf í næsta kafla.)</para>
+<equation id="fs-idm193550528" class="unnumbered"><m:math><m:mrow><m:mtext>eðlismassi</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>massi</m:mtext></m:mrow><m:mrow><m:mtext>rúmmál</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>90.7 g</m:mtext></m:mrow><m:mrow><m:msup><m:mrow><m:mtext>8.00 cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>11.3 g/cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math></equation><para id="fs-idp264752">(Við munum ræða ástæðuna fyrir því að námunda að fyrsta aukastaf í næsta kafla.)</para>
 <para id="fs-idp2742064"><title>Kannaðu þekkingu þína</title>(a) Hvert er rúmmál tenings (cm<sup>3</sup>) með brúnlengdina 0,843 cm, með þremur aukastöfum?</para>
 <para id="fs-idp116749488">(b) Ef teningurinn í hluta (a) er úr kopar og hefur massa 5,34 g, hver er eðlismassi kopars með tveimur aukastöfum?</para>
 <note id="fs-idp2744272">
@@ -281,13 +281,13 @@
 <example id="Example_01_04_02">
 <para id="fs-idm108240880"><title>Notkun vatnsrýmdar til að ákvarða eðlismassa</title>Þessi æfing notar <link url="http://openstax.org/l/16phetmasvolden">hermi</link> til að sýna aðra aðferð við að ákvarða eðlismassa sem felur í sér að mæla rúmmál hlutarins með vatnsrýmd. Notaðu herminn til að ákvarða eðlismassa járns og viðar.</para>
 <para id="fs-idp206606992"><title>Lausn</title>Smelltu á hnappinn „breyta vökva í vatn“ í herminum til að stilla eðlismassa vökvans í bikarglasinu á 1,00 g/ml. Fjarlægðu rauðu blokkina úr bikarglasinu og taktu eftir að rúmmál vatnsins er 25,5 ml. Veldu járnsýnið með því að smella á „járn“ í efnistöflunni neðst á skjánum, settu járnblokkina á vogarskálina og sjáðu að massi hennar er 31,48 g. Færðu járnblokkina yfir í bikarglasið og taktu eftir að hún sekkur, ryður frá sér vatnsrúmmáli sem jafngildir eigin rúmmáli og veldur því að vatnsborðið hækkar í 29,5 ml. Rúmmál járnblokkarinnar er því:</para>
-<equation id="fs-idm94054304" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>v</m:mi><m:mtext>iron</m:mtext></m:msub><m:mo>=</m:mo><m:mn>29.5 mL</m:mn><m:mo>–</m:mo><m:mn>25.5 mL</m:mn><m:mo>=</m:mo><m:mn>4.0 mL</m:mn>
+<equation id="fs-idm94054304" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>v</m:mi><m:mtext>járn</m:mtext></m:msub><m:mo>=</m:mo><m:mn>29.5 mL</m:mn><m:mo>–</m:mo><m:mn>25.5 mL</m:mn><m:mo>=</m:mo><m:mn>4.0 mL</m:mn>
 </m:mrow></m:math></equation><para id="newness">Eðlismassi járnsins er þá reiknaður sem:</para>
-<equation id="fs-idm14274016" class="unnumbered"><m:math><m:mrow><m:mtext>density</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mrow><m:mtext>volume</m:mtext></m:mrow></m:mfrac>
+<equation id="fs-idm14274016" class="unnumbered"><m:math><m:mrow><m:mtext>eðlismassi</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>massi</m:mtext></m:mrow><m:mrow><m:mtext>rúmmál</m:mtext></m:mrow></m:mfrac>
 <m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/>
 <m:mfrac><m:mrow><m:mtext>31.48 g</m:mtext></m:mrow><m:mrow><m:mn>4.0 mL</m:mn></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>7.9 g/mL</m:mtext></m:mrow></m:math></equation>
 <para id="newness2">Fjarlægðu járnblokkina úr bikarglasinu, breyttu efninu í blokkinni í við og endurtaktu massa- og rúmmálsmælingarnar. Ólíkt járni sekkur viðarblokkin ekki í vatninu heldur flýtur á yfirborði vatnsins. Til að mæla rúmmál hennar skaltu draga hana undir yfirborð vatnsins þannig að hún sé alveg á kafi.</para>
-<equation id="fs-idm1774016" class="unnumbered"><m:math><m:mrow><m:mtext>density</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mrow><m:mtext>volume</m:mtext></m:mrow></m:mfrac>
+<equation id="fs-idm1774016" class="unnumbered"><m:math><m:mrow><m:mtext>eðlismassi</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>massi</m:mtext></m:mrow><m:mrow><m:mtext>rúmmál</m:mtext></m:mrow></m:mfrac>
 <m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/>
 <m:mfrac><m:mrow><m:mtext>1.95 g</m:mtext></m:mrow><m:mrow><m:mn>3.0 mL</m:mn></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>0.65 g/mL</m:mtext></m:mrow></m:math></equation>
 
@@ -306,7 +306,7 @@
 <table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
 <tgroup cols="1"><colspec colnum="1" colname="c1"/>
 <tbody>
-<row><entry><m:math><m:mrow><m:mtext>density</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mrow><m:mtext>volume</m:mtext></m:mrow></m:mfrac></m:mrow></m:math></entry>
+<row><entry><m:math><m:mrow><m:mtext>eðlismassi</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>massi</m:mtext></m:mrow><m:mrow><m:mtext>rúmmál</m:mtext></m:mrow></m:mfrac></m:mrow></m:math></entry>
 </row>
 </tbody></tgroup></table>
 </section>

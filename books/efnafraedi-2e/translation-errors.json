@@ -1,35 +1,23 @@
 {
-  "generated": "2026-07-02T03:47:22.503Z",
+  "generated": "2026-07-06T14:26:01.317Z",
   "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]])",
   "tracks": {
     "mt-preview": {
-      "generated": "2026-07-02T03:47:22.503Z",
+      "generated": "2026-07-06T14:25:13.092Z",
       "tool": "cnxml-inject",
       "summary": {
         "totalSourceModules": 149,
         "totalChecked": 149,
         "skippedUntranslated": 0,
-        "perfect": 120,
-        "withDiscrepancies": 29,
-        "totalDiscrepancies": 44,
-        "unexplainedDiscrepancies": 0,
-        "deferredLosses": 10,
-        "benignArtifacts": 34,
-        "green": true
+        "perfect": 121,
+        "withDiscrepancies": 28,
+        "totalDiscrepancies": 45,
+        "unexplainedDiscrepancies": 9,
+        "deferredLosses": 20,
+        "benignArtifacts": 16,
+        "green": false
       },
       "modules": [
-        {
-          "moduleId": "m68700",
-          "chapter": "ch03",
-          "discrepancies": [
-            {
-              "tag": "emphasis",
-              "diff": -1,
-              "status": "benign",
-              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
-            }
-          ]
-        },
         {
           "moduleId": "m68709",
           "chapter": "ch04",
@@ -38,7 +26,7 @@
               "tag": "term",
               "diff": 1,
               "status": "benign",
-              "reason": "term-annotation / legacy {{term}} marker edge; term text present in prose"
+              "reason": "benign tag-count (over-annotation from term-split); RC2 wrong-gloss defect tracked separately"
             }
           ]
         },
@@ -50,7 +38,7 @@
               "tag": "emphasis",
               "diff": -1,
               "status": "benign",
-              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+              "reason": "empty self-closing <emphasis/> in OpenStax source (zero content)"
             }
           ]
         },
@@ -61,8 +49,9 @@
             {
               "tag": "emphasis",
               "diff": -1,
-              "status": "benign",
-              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+              "status": "known-loss-deferred",
+              "reason": "(aq) state-symbol italic dropped (cosmetic)",
+              "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
             }
           ]
         },
@@ -85,9 +74,8 @@
           "discrepancies": [
             {
               "tag": "emphasis",
-              "diff": -4,
-              "status": "benign",
-              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+              "diff": -3,
+              "status": "unexplained"
             }
           ]
         },
@@ -99,7 +87,7 @@
               "tag": "emphasis",
               "diff": -1,
               "status": "benign",
-              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+              "reason": "empty self-closing <emphasis/> in source (zero content)"
             }
           ]
         },
@@ -111,7 +99,7 @@
               "tag": "term",
               "diff": 1,
               "status": "benign",
-              "reason": "term-annotation / legacy {{term}} marker edge; term text present in prose"
+              "reason": "benign tag-count (over-annotation from term-split); RC2 wrong-gloss defect tracked separately"
             }
           ]
         },
@@ -120,10 +108,16 @@
           "chapter": "ch07",
           "discrepancies": [
             {
+              "tag": "emphasis",
+              "diff": -1,
+              "status": "unexplained"
+            },
+            {
               "tag": "sub",
               "diff": -1,
-              "status": "benign",
-              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+              "status": "known-loss-deferred",
+              "reason": "RC1 glossary <term> lost <sub>: grindarorka (ΔH_lattice)",
+              "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
             }
           ]
         },
@@ -135,7 +129,7 @@
               "tag": "sub",
               "diff": -1,
               "status": "benign",
-              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+              "reason": "nested-<sub> normalization; content present (Total→Heildar)"
             }
           ]
         },
@@ -147,7 +141,7 @@
               "tag": "emphasis",
               "diff": -1,
               "status": "benign",
-              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+              "reason": "empty self-closing <emphasis/> in source (zero content)"
             }
           ]
         },
@@ -159,7 +153,7 @@
               "tag": "sub",
               "diff": -1,
               "status": "benign",
-              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+              "reason": "nested-<sub> normalization; subscript content present"
             }
           ]
         },
@@ -171,7 +165,7 @@
               "tag": "sub",
               "diff": -2,
               "status": "benign",
-              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+              "reason": "nested-<sub> normalization; subscript content present"
             }
           ]
         },
@@ -183,7 +177,7 @@
               "tag": "emphasis",
               "diff": -1,
               "status": "benign",
-              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+              "reason": "empty self-closing <emphasis/> in source (inside <sub>)"
             }
           ]
         },
@@ -194,8 +188,9 @@
             {
               "tag": "term",
               "diff": -1,
-              "status": "benign",
-              "reason": "term-annotation / legacy {{term}} marker edge; term text present in prose"
+              "status": "known-loss-deferred",
+              "reason": "<term>rate equations</term> glossary anchor dropped",
+              "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
             }
           ]
         },
@@ -204,10 +199,16 @@
           "chapter": "ch12",
           "discrepancies": [
             {
+              "tag": "emphasis",
+              "diff": -1,
+              "status": "unexplained"
+            },
+            {
               "tag": "sub",
               "diff": -1,
-              "status": "benign",
-              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+              "status": "known-loss-deferred",
+              "reason": "RC1 glossary <term> lost <sub>: half-life t_1/2",
+              "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
             }
           ]
         },
@@ -219,7 +220,7 @@
               "tag": "emphasis",
               "diff": -1,
               "status": "benign",
-              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+              "reason": "empty self-closing <emphasis/>; prior virkjun<sub>a</sub>rorka corruption resolved (absent in fresh)"
             }
           ]
         },
@@ -231,7 +232,7 @@
               "tag": "emphasis",
               "diff": 1,
               "status": "benign",
-              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+              "reason": "benign over-wrap (Icelandic rephrase adds one italic span)"
             }
           ]
         },
@@ -241,9 +242,8 @@
           "discrepancies": [
             {
               "tag": "emphasis",
-              "diff": -1,
-              "status": "benign",
-              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+              "diff": 1,
+              "status": "unexplained"
             }
           ]
         },
@@ -265,10 +265,16 @@
           "chapter": "ch17",
           "discrepancies": [
             {
+              "tag": "emphasis",
+              "diff": -1,
+              "status": "unexplained"
+            },
+            {
               "tag": "sub",
               "diff": -1,
-              "status": "benign",
-              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+              "status": "known-loss-deferred",
+              "reason": "RC1 glossary <term> lost <sub>: kerspenna E_cell",
+              "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
             }
           ]
         },
@@ -286,20 +292,13 @@
           ]
         },
         {
-          "moduleId": "m68844",
+          "moduleId": "m68842",
           "chapter": "ch19",
           "discrepancies": [
             {
               "tag": "emphasis",
-              "diff": -1,
-              "status": "benign",
-              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
-            },
-            {
-              "tag": "sub",
-              "diff": -1,
-              "status": "benign",
-              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+              "diff": -2,
+              "status": "unexplained"
             }
           ]
         },
@@ -311,13 +310,13 @@
               "tag": "emphasis",
               "diff": -2,
               "status": "benign",
-              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+              "reason": "2× empty self-closing <emphasis/> in source (zero content)"
             },
             {
               "tag": "sup",
               "diff": -1,
               "status": "benign",
-              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+              "reason": "nested/normalization; superscript content present"
             }
           ]
         },
@@ -328,8 +327,9 @@
             {
               "tag": "emphasis",
               "diff": -1,
-              "status": "benign",
-              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+              "status": "known-loss-deferred",
+              "reason": "RC3 <emphasis class=\"emphasis-one\"> not round-tripped by extractor (ether R-O-R)",
+              "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
             }
           ]
         },
@@ -341,7 +341,7 @@
               "tag": "emphasis",
               "diff": -1,
               "status": "benign",
-              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+              "reason": "empty self-closing <emphasis/> in source (zero content)"
             }
           ]
         },
@@ -365,14 +365,16 @@
             {
               "tag": "emphasis",
               "diff": 2,
-              "status": "benign",
-              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+              "status": "known-loss-deferred",
+              "reason": "RC4 duplicated-title emphasis drift (appendices)",
+              "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
             },
             {
               "tag": "title",
               "diff": 1,
-              "status": "benign",
-              "reason": "duplicate-title artifact (untranslated + translated heading both emitted); no content loss"
+              "status": "known-loss-deferred",
+              "reason": "RC4 untranslated-EN title in place + phantom title grafted onto wrong para",
+              "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
             }
           ]
         },
@@ -383,12 +385,30 @@
             {
               "tag": "emphasis",
               "diff": 1,
-              "status": "benign",
-              "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+              "status": "known-loss-deferred",
+              "reason": "RC4 table-header EN residue (ΔH kJ/mol duplicated) + column drift",
+              "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
             }
           ]
         }
       ]
+    },
+    "faithful": {
+      "generated": "2026-07-06T14:26:01.317Z",
+      "tool": "cnxml-inject",
+      "summary": {
+        "totalSourceModules": 149,
+        "totalChecked": 4,
+        "skippedUntranslated": 145,
+        "perfect": 4,
+        "withDiscrepancies": 0,
+        "totalDiscrepancies": 0,
+        "unexplainedDiscrepancies": 0,
+        "deferredLosses": 0,
+        "benignArtifacts": 0,
+        "green": false
+      },
+      "modules": []
     }
   }
 }

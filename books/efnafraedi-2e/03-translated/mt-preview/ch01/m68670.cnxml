@@ -119,7 +119,7 @@
 <exercise id="fs-idp121106016">
 <problem id="fs-idp120485696">
 <para id="fs-idp153016768">Eðlismassi (d) efnis er eðliseiginleiki sem er skilgreindur sem hlutfall massa þess (m) og rúmmáls (V).</para>
-<equation class="unnumbered" id="eip-idm75994368"><m:math><m:mrow><m:mtext>density</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mrow><m:mtext>volume</m:mtext></m:mrow></m:mfrac><m:mspace width="2em"/><m:mtext>d</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mtext>m</m:mtext><m:mtext>V</m:mtext></m:mfrac></m:mrow></m:math></equation><para id="fs-idp178060896">Í ljósi þess að massi og rúmmál eru bæði magnbundnir eiginleikar, útskýrðu hvers vegna hlutfall þeirra, eðlismassi, er eðliseiginleiki.</para>
+<equation class="unnumbered" id="eip-idm75994368"><m:math><m:mrow><m:mtext>eðlismassi</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>massi</m:mtext></m:mrow><m:mrow><m:mtext>rúmmál</m:mtext></m:mrow></m:mfrac><m:mspace width="2em"/><m:mtext>d</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mtext>m</m:mtext><m:mtext>V</m:mtext></m:mfrac></m:mrow></m:math></equation><para id="fs-idp178060896">Í ljósi þess að massi og rúmmál eru bæði magnbundnir eiginleikar, útskýrðu hvers vegna hlutfall þeirra, eðlismassi, er eðliseiginleiki.</para>
 </problem>
 <solution id="fs-idp160222736">
 <para id="fs-idp166947136">Þar sem bæði massi og rúmmál eru magnbundnir eiginleikar eru þau í beinu hlutfalli við magn efnisins sem er til skoðunar. Með því að deila einum magnbundnum eiginleika með öðrum er í raun „eytt“ þessari háðni af magni, sem gefur hlutfall sem er óháð magni (eðliseiginleiki).</para>

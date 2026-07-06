@@ -84,7 +84,7 @@
 </media>
 <caption>Mismunandi hvolf eru númeruð með höfuðskammtatölum.</caption></figure>
 <para id="fs-idm166868080">Þetta skammtafræðilíkan um hvar rafeindir búa í frumeind er hægt að nota til að skoða rafeindaflutninga, atburðina þegar rafeind færist frá einu orkustigi til annars. Ef flutningurinn er á hærra orkustig er orka tekin upp og orkubreytingin hefur jákvætt gildi. Til að fá þá orku sem nauðsynleg er fyrir flutninginn á hærra orkustig gleypir frumeindin ljóseind. Flutningur á lægra orkustig felur í sér losun orku og orkubreytingin er neikvæð. Þessu ferli fylgir losun ljóseindar frá frumeindinni. Eftirfarandi jafna tekur saman þessi tengsl og byggir á vetnisfrumeindinni:</para>
-<equation id="fs-idm7360128" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd><m:mtext>Δ</m:mtext><m:mi>E</m:mi><m:mo>=</m:mo><m:msub><m:mi>E</m:mi><m:mrow><m:mtext>final</m:mtext></m:mrow></m:msub><m:mo>−</m:mo><m:msub><m:mi>E</m:mi><m:mrow><m:mtext>initial</m:mtext></m:mrow></m:msub></m:mtd></m:mtr><m:mtr/><m:mtr/><m:mtr><m:mtd><m:mo>=</m:mo><m:mn>−2.18</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−18</m:mn></m:mrow></m:msup><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msubsup><m:mi>n</m:mi><m:mtext>f</m:mtext><m:mn>2</m:mn></m:msubsup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msubsup><m:mi>n</m:mi><m:mtext>i</m:mtext><m:mn>2</m:mn></m:msubsup></m:mrow></m:mfrac><m:mspace width="0.2em"/></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mtext>J</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
+<equation id="fs-idm7360128" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd><m:mtext>Δ</m:mtext><m:mi>E</m:mi><m:mo>=</m:mo><m:msub><m:mi>E</m:mi><m:mrow><m:mtext>lok</m:mtext></m:mrow></m:msub><m:mo>−</m:mo><m:msub><m:mi>E</m:mi><m:mrow><m:mtext>upphafs</m:mtext></m:mrow></m:msub></m:mtd></m:mtr><m:mtr/><m:mtr/><m:mtr><m:mtd><m:mo>=</m:mo><m:mn>−2.18</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−18</m:mn></m:mrow></m:msup><m:mrow><m:mo>(</m:mo><m:mrow><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msubsup><m:mi>n</m:mi><m:mtext>f</m:mtext><m:mn>2</m:mn></m:msubsup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msubsup><m:mi>n</m:mi><m:mtext>i</m:mtext><m:mn>2</m:mn></m:msubsup></m:mrow></m:mfrac><m:mspace width="0.2em"/></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mtext>J</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
 <para id="fs-idm187603312">Gildin <emphasis effect="italics">n</emphasis><sub>f</sub> og <emphasis effect="italics">n</emphasis><sub>i</sub> eru loka- og upphafsorkuástönd rafeindarinnar. <link document="m68732" target-id="fs-idp30549440"/> í fyrri hluta kaflans sýnir útreikninga á slíkum orkubreytingum.</para>
 <para id="fs-idm12861216">Höfuðskammtatalan er ein af þremur skammtatölum sem notaðar eru til að lýsa svigrúmi. <term id="term-00010">Frumeindasvigrúm (e. atomic orbital)</term> er almennt svæði í frumeind þar sem líklegast er að finna rafeind. Skammtafræðilíkanið tilgreinir líkurnar á að finna rafeind í þrívíðu rúmi í kringum kjarnann og byggir á lausnum Schrödinger-jöfnunnar. Auk þess skilgreinir höfuðskammtatalan orku rafeindar í vetnisfrumeind eða vetnislíkri jón (frumeind eða jón með aðeins eina rafeind) og almenna svæðið þar sem aðskilin orkustig rafeinda í fjölrafeinda frumeindum og jónum eru staðsett.</para>
 <para id="fs-idm174719856">Önnur skammtatala er <emphasis effect="italics">l</emphasis>, <term id="term-00011">hliðarskammtatala (hverfiþungaskammtatala) (e. secondary (angular momentum) quantum number)</term>. Hún er heiltala sem getur tekið gildin <emphasis effect="italics">l =</emphasis> 0, 1, 2, …, <emphasis effect="italics">n</emphasis> – 1. Þetta þýðir að svigrúm með <emphasis effect="italics">n</emphasis> = 1 getur aðeins haft eitt gildi fyrir <emphasis effect="italics">l</emphasis>, <emphasis effect="italics">l</emphasis> = 0, en <emphasis effect="italics">n</emphasis> = 2 leyfir <emphasis effect="italics">l</emphasis> = 0 og <emphasis effect="italics">l</emphasis> = 1, og svo framvegis. Á meðan höfuðskammtatalan, <emphasis effect="italics">n</emphasis>, skilgreinir almenna stærð og orku svigrúmsins, þá tilgreinir hliðarskammtatalan <emphasis effect="italics">l</emphasis> lögun svigrúmsins. Svigrúm með sama gildi fyrir <emphasis effect="italics">l</emphasis> mynda <term id="term-00012">undirhvolf (e. subshell)</term>.</para>
@@ -195,19 +195,6 @@
 </example>
 <example id="fs-idm161581600">
 <para id="fs-idm88167648"><title>Að vinna með skammtatölur</title>Fylltu út eftirfarandi töflu fyrir frumeindasvigrúm:</para>
-
-<para id="fs-idm65557984"><title>Lausn</title>Hægt er að fylla út töfluna með eftirfarandi reglum:</para>
-<list id="fs-idm186359744" list-type="bulleted" bullet-style="bullet">
-<item>Svigrúmsheitið er <emphasis effect="italics">nl</emphasis>, þar sem <emphasis effect="italics">l</emphasis> = 0, 1, 2, 3, 4, 5, … er varpað yfir á bókstafaröðina s, <emphasis effect="italics">p</emphasis>, <emphasis effect="italics">d</emphasis>, <emphasis effect="italics">f</emphasis>, <emphasis effect="italics">g</emphasis>, <emphasis effect="italics">h</emphasis>, …,</item>
-<item><emphasis effect="italics">m<sub>l</sub></emphasis> úrkynjunin er fjöldi svigrúma innan <emphasis effect="italics">l</emphasis> undirhvolfs og er því 2<emphasis effect="italics">l</emphasis> + 1 (það er eitt <emphasis effect="italics">s</emphasis> svigrúm, þrjú <emphasis effect="italics">p</emphasis> svigrúm, fimm <emphasis effect="italics">d</emphasis> svigrúm, sjö <emphasis effect="italics">f</emphasis> svigrúm og svo framvegis).</item>
-<item>Fjöldi geislanóða er jafn <emphasis effect="italics">n –</emphasis> <emphasis effect="italics">l</emphasis> – 1.</item>
-</list>
-
-<para id="fs-idm278629648"><title>Skoðaðu þekkingu þína</title>Hversu mörg svigrúm hafa <emphasis effect="italics">l</emphasis> = 2 og <emphasis effect="italics">n</emphasis> = 3?</para>
-<note id="fs-idm55454448"><title>Answer:</title>
-<para id="fs-idm129700624">Fimm úrkynjuðu 3<emphasis effect="italics">d</emphasis> svigrúmin</para>
-</note>
-</example>
 <table id="fs-idm179835952" class="unnumbered" summary="This table has five columns and five rows. The first row is a header row, and it labels each column: “orbital,” “n,” “l,” “m subscript l degeneracy,” and “number radial nodes.” Under the “orbital” column are: “4 f,” two blank cells, and “5 d.” Under the “n” column is a blank cell, 4, 7, and another blank cell. Under the “l” column is a blank cell, 1, and two more blank cells. Under the “m subscript l degeneracy” column are two blank cells, 7, and then one more blank cell. Under the “number radial nodes” column are two blank cells, 3, and then one more blank cell.">
 <label/>
 <tgroup cols="5">
@@ -257,6 +244,12 @@
 </tbody>
 </tgroup>
 </table>
+<para id="fs-idm65557984"><title>Lausn</title>Hægt er að fylla út töfluna með eftirfarandi reglum:</para>
+<list id="fs-idm186359744" list-type="bulleted" bullet-style="bullet">
+<item>Svigrúmsheitið er <emphasis effect="italics">nl</emphasis>, þar sem <emphasis effect="italics">l</emphasis> = 0, 1, 2, 3, 4, 5, … er varpað yfir á bókstafaröðina s, <emphasis effect="italics">p</emphasis>, <emphasis effect="italics">d</emphasis>, <emphasis effect="italics">f</emphasis>, <emphasis effect="italics">g</emphasis>, <emphasis effect="italics">h</emphasis>, …,</item>
+<item><emphasis effect="italics">m<sub>l</sub></emphasis> úrkynjunin er fjöldi svigrúma innan <emphasis effect="italics">l</emphasis> undirhvolfs og er því 2<emphasis effect="italics">l</emphasis> + 1 (það er eitt <emphasis effect="italics">s</emphasis> svigrúm, þrjú <emphasis effect="italics">p</emphasis> svigrúm, fimm <emphasis effect="italics">d</emphasis> svigrúm, sjö <emphasis effect="italics">f</emphasis> svigrúm og svo framvegis).</item>
+<item>Fjöldi geislanóða er jafn <emphasis effect="italics">n –</emphasis> <emphasis effect="italics">l</emphasis> – 1.</item>
+</list>
 <table id="fs-idm91407168" class="unnumbered" summary="This table has five columns and five rows. The first row is a header row, and it labels each column: “orbital,” “n,” “l,” “m subscript l degeneracy,” and “number radial nodes.” Under the “orbital” column are: “4 f,” “4 p,” “7 f,” and “5 d.” Under the “n” column are: 4, 4, 7, and 5. Under the “l” column are: 3, 1, 3, and 2. Under the “m subscript l degeneracy” column are: 7, 3, 7, and 5. Under the “number radial nodes” column are: 0, 2, 3, and 2.">
 <label/>
 <tgroup cols="5">
@@ -306,6 +299,11 @@
 </tbody>
 </tgroup>
 </table>
+<para id="fs-idm278629648"><title>Skoðaðu þekkingu þína</title>Hversu mörg svigrúm hafa <emphasis effect="italics">l</emphasis> = 2 og <emphasis effect="italics">n</emphasis> = 3?</para>
+<note id="fs-idm55454448"><title>Answer:</title>
+<para id="fs-idm129700624">Fimm úrkynjuðu 3<emphasis effect="italics">d</emphasis> svigrúmin</para>
+</note>
+</example>
 </section>
 <section id="fs-idm55472464" class="summary">
 <title>Lykilhugtök og samantekt</title>
@@ -389,7 +387,6 @@
 <exercise id="fs-idm24126560"><problem id="fs-idm145952864">
 <para id="fs-idm133893888">Skrifaðu mengi skammtatalna fyrir hverja rafeind með <emphasis effect="italics">n</emphasis> = 4 í Se-frumeind.</para></problem>
 <solution id="fs-idm29306320">
-</solution></exercise>
 <table id="fs-idm2123072" summary="This table has four columns and seven rows. The first row is a header row, and it labels each column: “n,” “l,” “m subscript l,” and “s.” Under the “n” column are the following numbers: 4, 4, 4, 4, 4, and 4. Under the “l” column are the following numbers: 0, 0, 1, 1, 1, and 1. Under the “m subscript l” column are the following numbers: 0, 0, negative 1, 0, positive 1, and negative 1. Under the “s” column are the following numbers: positive one half, negative one half, positive one half, positive one half, positive one half, and negative one half." class="unnumbered">
 <label/>
 <tgroup cols="4">
@@ -444,12 +441,12 @@
 </row>
 </tbody>
 </tgroup>
-</table>
+</table></solution></exercise>
 </section>
 </content>
 <glossary>
 <definition id="fs-idm176142304">
-<term>h<emphasis effect="italics">l</emphasis>iðarskammtatala (l) (e. secondary (angular momentum) quantum number (l))</term>
+<term>hliðarskammtatala (<emphasis effect="italics">l</emphasis>) (e. secondary (angular momentum) quantum number (l))</term>
 <meaning id="fs-idm176142304-meaning">skammtatala sem greinir á milli mismunandi lögunar svigrúma; hún er einnig mælikvarði á hverfiþunga svigrúmsins</meaning>
 </definition>
 <definition id="fs-idm147438368">
@@ -477,7 +474,7 @@
 <meaning id="fs-idm7039408-meaning">regla sem segir að ómögulegt sé að ákvarða nákvæmlega samtímis báða tiltekna samtengda hreyfifræðilega eiginleika eins og skriðþunga og staðsetningu eindar. Óvissulögmálið er afleiðing þess að skammtaeindir sýna tvíeðli bylgju og eindar</meaning>
 </definition>
 <definition id="fs-idm166903488">
-<term>segu<sub>l</sub>skammtatala (ml) (e. magnetic quantum number (ml))</term>
+<term>segulskammtatala (<emphasis effect="italics">m<sub>l</sub></emphasis>) (e. magnetic quantum number (ml))</term>
 <meaning id="fs-idm166903488-meaning">skammtatala sem táknar stefnu frumeindasvigrúms í kringum kjarnann</meaning>
 </definition>
 <definition id="fs-idm147658080">
@@ -497,7 +494,7 @@
 <meaning id="fs-idm160875424-meaning">fræðasvið sem felur í sér skömmtun orku, tvíeðli bylgju og eindar og óvissulögmál Heisenbergs til að lýsa efni</meaning>
 </definition>
 <definition id="fs-idm144189680">
-<term><emphasis effect="italics">s</emphasis>-svigrúm (e. s orbital)</term>
+<term>s-svigrúm (e. s orbital)</term>
 <meaning id="fs-idm144189680-meaning">kúlulaga svæði í rúmi með háan rafeindaþéttleika, lýsir svigrúmum með <emphasis effect="italics">l</emphasis> = 0</meaning>
 </definition>
 <definition id="fs-idm174396336">
@@ -505,7 +502,7 @@
 <meaning id="fs-idm174396336-meaning">frumeindasvigrúm með sömu höfuðskammtatölu, <emphasis effect="italics">n</emphasis></meaning>
 </definition>
 <definition id="fs-idm137493808">
-<term><sub>s</sub>punaskammtatala (ms) (e. spin quantum number (ms))</term>
+<term>spunaskammtatala (<emphasis effect="italics">m<sub>s</sub></emphasis>) (e. spin quantum number (ms))</term>
 <meaning id="fs-idm137493808-meaning">tala sem tilgreinir stefnu rafeindaspuna, annaðhvort <m:math><m:mrow><m:mo>+</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math> eða <m:math><m:mrow><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math></meaning>
 </definition>
 <definition id="fs-idm148470816">

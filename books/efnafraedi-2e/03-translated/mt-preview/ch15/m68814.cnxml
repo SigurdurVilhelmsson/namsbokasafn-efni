@@ -158,7 +158,7 @@
 </m:mrow></m:math></equation><para id="fs-idm388155072">Að lokum er hægt að reikna heildarmassa <m:math><m:mrow><m:msub><m:mtext>Na</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow></m:math> sem þarf til að veita nægilegt þíósúlfat til að gefa þá styrki sem nefndir eru hér að ofan.</para>
 <para id="eip-672">Massi <m:math><m:mrow><m:msub><m:mtext>Na</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow></m:math> sem þarf til að gefa 0,00532 M <m:math><m:mrow><m:mtext>Ag</m:mtext><m:mo>(</m:mo><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mo>)</m:mo><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mn>3–</m:mn></m:msup> </m:mrow></m:math></para><equation id="fs-idm330874144" class="unnumbered"><m:math><m:mrow>
 <m:mn>0.00532</m:mn>
-<m:mfrac><m:mrow><m:mtext>mol</m:mtext><m:mspace width="0.2em"/>
+<m:mfrac><m:mrow><m:mtext>mól</m:mtext><m:mspace width="0.2em"/>
 <m:mtext>Ag</m:mtext><m:mo stretchy="false">(</m:mo><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub>
 <m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub>
 <m:msub><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msub>
@@ -166,9 +166,9 @@
 <m:mrow><m:mn>1.00</m:mn><m:mspace width="0.2em"/><m:mtext>L</m:mtext></m:mrow>
 </m:mfrac>
 <m:mo>×</m:mo>
-<m:mfrac><m:mrow><m:mn>2</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub>
+<m:mfrac><m:mrow><m:mn>2</m:mn><m:mspace width="0.2em"/><m:mtext>mól</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub>
 <m:msup><m:mrow/><m:mn>2–</m:mn></m:msup></m:mrow>
-<m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/>
+<m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mól</m:mtext><m:mspace width="0.2em"/>
 <m:mtext>Ag</m:mtext><m:mo stretchy="false">(</m:mo><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub>
 <m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub>
 <m:msub><m:mo stretchy="false">)</m:mo><m:mn>2</m:mn></m:msub>
@@ -176,28 +176,28 @@
 </m:mrow>
 </m:mfrac>
 <m:mo>×</m:mo>
-<m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>Na</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow>
-<m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mn>2–</m:mn></m:msup></m:mrow>
+<m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mól</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>Na</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow>
+<m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mól</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mn>2–</m:mn></m:msup></m:mrow>
 </m:mfrac>
 <m:mo>×</m:mo>
 <m:mfrac><m:mrow><m:mn>158.1</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>Na</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow>
-<m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>Na</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow>
+<m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mól</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>Na</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow>
 </m:mfrac>
 <m:mo>=</m:mo>
 <m:mn>1.68</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow></m:math></equation><para id="fs-idm124142688">Massi <m:math><m:mrow><m:msub><m:mtext>Na</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow></m:math> sem þarf til að gefa 0,00110 M <m:math><m:mrow><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub>
 <m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub>
 <m:msup><m:mrow/><m:mn>2–</m:mn></m:msup> </m:mrow></m:math></para><equation id="eip-108"><m:math><m:mrow>
 <m:mn>0.0011</m:mn>
-<m:mfrac><m:mrow><m:mtext>mol</m:mtext><m:mspace width="0.2em"/>
+<m:mfrac><m:mrow><m:mtext>mól</m:mtext><m:mspace width="0.2em"/>
 <m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub>
 <m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub>
 <m:msup><m:mrow/><m:mn>2–</m:mn></m:msup></m:mrow>
 <m:mrow><m:mn>1.00</m:mn><m:mspace width="0.2em"/><m:mtext>L</m:mtext></m:mrow>
 </m:mfrac>
 <m:mo>×</m:mo>
-<m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub>
+<m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mól</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub>
 <m:msup><m:mrow/><m:mn>2–</m:mn></m:msup></m:mrow>
-<m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/>
+<m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mól</m:mtext><m:mspace width="0.2em"/>
 <m:msub><m:mtext>Na</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub>
 <m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub>
 
@@ -205,7 +205,7 @@
 </m:mfrac>
 <m:mo>×</m:mo>
 <m:mfrac><m:mrow><m:mn>158.1</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>Na</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow>
-<m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>Na</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow>
+<m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>mól</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>Na</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow>
 </m:mfrac>
 <m:mo>=</m:mo>
 <m:mn>0.17</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mrow></m:math></equation><para id="eip-528">Massi <m:math><m:mrow><m:msub><m:mtext>Na</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>S</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow></m:math> sem þarf til að leysa upp 1,00 g af AgBr í 1,00 L af vatni er því 1,68 g + 0,17 g = 1,85 g</para><para id="fs-idm58241696"><title>Kannaðu þekkingu þína</title>AgCl(<emphasis effect="italics">s</emphasis>), silfurklóríð, hefur mjög lítinn leysni: <m:math><m:mrow><m:mtext>AgCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msup><m:mrow><m:mtext>Ag</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>,</m:mo></m:mrow></m:math> <emphasis effect="italics">K</emphasis><sub>sp</sub> = 1,6 <m:math><m:mo>×</m:mo></m:math> 10<sup>–10</sup>. Með því að bæta við ammóníaki eykst leysni AgCl verulega vegna þess að flókajón myndast: <m:math><m:mrow><m:msup><m:mrow><m:mtext>Ag</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mtext>Ag</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mo>+</m:mo></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>,</m:mo></m:mrow></m:math> <emphasis effect="italics">K</emphasis><sub>f</sub> = 1,7 <m:math><m:mo>×</m:mo></m:math> 10<sup>7</sup>. Hver er massi NH<sub>3</sub> sem þarf til að útbúa 1,00 L af lausn sem leysir upp 2,00 g af AgCl með myndun <m:math><m:mrow><m:mtext>Ag</m:mtext><m:msub><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo>?</m:mo></m:mrow></m:math></para><note id="fs-idm81440704"><title>Answer:</title>1.00 L of a solution prepared with 5.0 g NH<sub>3</sub> dissolves 2.0 g of AgCl.</note></example>

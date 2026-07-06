@@ -58,7 +58,7 @@
 <para id="fs-idm69273568">Tafla yfir jónunarfasta veikra basa er í <link document="m68867">Appendix I</link>. Eins og með sýrur endurspeglast hlutfallslegur styrkur basa einnig í jónunarprósentu hans, sem er reiknuð sem</para>
 <equation id="fs-idm208527632" class="unnumbered"><m:math>
 <m:mrow>
-<m:mi>%</m:mi><m:mspace width="0.2em"/><m:mtext>ionization</m:mtext><m:mo>=</m:mo><m:msub>
+<m:mi>%</m:mi><m:mspace width="0.2em"/><m:mtext>jónun</m:mtext><m:mo>=</m:mo><m:msub>
 <m:mrow>
 <m:mo stretchy="false">[</m:mo><m:msup>
 <m:mrow>
@@ -135,7 +135,7 @@
 <m:mtable columnalign="left">
 <m:mtr>
 <m:mtd>
-<m:mtext>strong</m:mtext><m:mspace width="0.2em"/><m:mtext>acid</m:mtext><m:mo>:</m:mo><m:mspace width="5em"/><m:msub>
+<m:mtext>sterkur</m:mtext><m:mspace width="0.2em"/><m:mtext>sýra</m:mtext><m:mo>:</m:mo><m:mspace width="5em"/><m:msub>
 <m:mi>K</m:mi>
 <m:mtext>a</m:mtext>
 </m:msub>
@@ -144,7 +144,7 @@
 </m:mtr>
 <m:mtr>
 <m:mtd>
-<m:mtext>conjugate</m:mtext><m:mspace width="0.2em"/><m:mtext>base</m:mtext><m:mo>:</m:mo><m:mspace width="0.2em"/><m:msub>
+<m:mtext>samoka</m:mtext><m:mspace width="0.2em"/><m:mtext>basi</m:mtext><m:mo>:</m:mo><m:mspace width="0.2em"/><m:msub>
 <m:mi>K</m:mi>
 <m:mtext>b</m:mtext>
 </m:msub>
@@ -765,11 +765,11 @@
 </content>
 <glossary>
 <definition id="fs-idp86058640">
-<term>sýrujónun<sub>a</sub>rfasti (<emphasis effect="italics">K</emphasis>a) (e. acid ionization constant (ka))</term>
+<term>sýrujónunarfasti (<emphasis effect="italics">K</emphasis><sub>a</sub>) (e. acid ionization constant (ka))</term>
 <meaning id="fs-idp86058640-meaning">jafnvægisfasti fyrir sýrujónunarhvarf</meaning>
 </definition>
 <definition id="fs-idp86060672">
-<term><sub>b</sub>asajónunarfasti (<emphasis effect="italics">K</emphasis>b) (e. base ionization constant (kb))</term>
+<term>basajónunarfasti (<emphasis effect="italics">K</emphasis><sub>b</sub>) (e. base ionization constant (kb))</term>
 <meaning id="fs-idp86060672-meaning">jafnvægisfasti fyrir basajónunarhvarf</meaning>
 </definition>
 <definition id="fs-idm94080720">
