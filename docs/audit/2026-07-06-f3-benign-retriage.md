@@ -98,3 +98,17 @@ Fresh re-inject (post the merges since RUN 1) already diverges from the committe
 - Residue-report detector misses title / table-header text (RC4 EN residue uncaught).
 - RC2 wrong-gloss / 3-way terminology inconsistency for single concepts (m68709/m68735).
 - Count-balanced mis-anchor blind spot (RC1) — checker method limit.
+
+---
+
+## Fix outcome (2026-07-06) — lead-decided: RC1 + RC3 + RC4, but only RC1 was inject-fixable
+
+Root-causing each RC revealed the failure *stage* differs, which determines whether a fix needs re-MT:
+
+- **RC1 — FIXED (PR #235).** Inject-stage: `restoreGlossaryTermMarkup`'s naive first-occurrence substring replace (`<sub>A</sub>vogadros`) + a regex that couldn't span nested emphasis. Fix = notation-run restoration anchored on the parenthesized plain form, exactly-once, skip-when-translated-away. The source markup is available at inject (sidecar), so no re-MT. 13 unit tests + empirical (`--allow-incomplete`) verify; reaches readers at WS5 re-inject.
+- **RC3 — DEFERRED to Track B4 (re-MT).** MT-stage: the legacy `{=…=}` marker for `class=` emphasis (m68847 red `O` in `R–O–R`) is destroyed by the Málstaður API (present in 02-for-mt, gone from mt-output). The clean fix is a survivable `[[…]]` bracket marker at extraction — which forces re-MT. This IS the legacy-marker-survival class B4 exists to fix. No inject-side signal survives to restore from (single-letter `O` content-anchoring rejected as fragile).
+- **RC4 — DEFERRED to Track B4 (re-MT).** Split: **m68860** is extraction-stage (the title-only para `fs-idm111716000` is dropped; its title mis-attributed to an example under `fs-idp9271248`) → re-extract → re-MT. **m68863** is inject-stage (ΔH table header duplicated translated+EN in the math appendix) — inject-fixable in principle, but low-value appendix edge case; batched with m68860 into B4.
+
+**Lesson:** the four RCs looked identical in F3 ("dropped/mangled markup") but the *stage of failure* (inject vs MT vs extraction), not the symptom, decides the fix path and the re-MT dependency. The existence of a translation somewhere does not imply an inject-only fix (m68860 misled the initial fix-split).
+
+**WS5 re-triage note:** once RC1 (#235) merges and WS5 re-injects, the RC1 known-loss-deferred allowlist entries change — m68700/m68733/m68844 glossary terms become correct (restore the `known-loss-deferred` → remove/PERFECT), while m68741/m68791/m68822 stay plain (content translated away; keep deferred). Re-run the F3 pass against fresh WS5 output.
