@@ -49,4 +49,32 @@ describe('translateKeptContainerTables', () => {
       translateKeptContainerTables(result, new Set(['t1']), undefined, getSeg, originalCnxml, 'mX')
     ).toBe(result);
   });
+
+  it('throws (fail loud) when buildTable cannot find the table by id in originalCnxml (returns null)', () => {
+    // result DOES contain the id-anchored block (so the later block-not-found check
+    // would pass) — this isolates the buildTable-null throw, which runs first.
+    const result = `<example><table id="t1"><row><entry>Reactants</entry></row></table></example>`;
+    // originalCnxml lacks a table with id="t1" — buildTable's id-anchored regex
+    // won't match, so it falls through to `return null`.
+    const originalCnxmlMissingId = `<table id="t2"><row><entry>Reactants</entry></row></table>`;
+    expect(() =>
+      translateKeptContainerTables(
+        result,
+        new Set(['t1']),
+        ctx,
+        getSeg,
+        originalCnxmlMissingId,
+        'mX'
+      )
+    ).toThrow(/buildTable returned null.*t1|t1.*buildTable returned null/);
+  });
+
+  it('throws (fail loud) when the id-anchored source block is not found in result', () => {
+    // originalCnxml DOES contain the id="t1" table, so buildTable succeeds and
+    // returns a non-null translation — this isolates the block-not-found throw.
+    const result = `<example>no table here</example>`;
+    expect(() =>
+      translateKeptContainerTables(result, new Set(['t1']), ctx, getSeg, originalCnxml, 'mX')
+    ).toThrow(/source table block.*t1|t1.*not found/);
+  });
 });
