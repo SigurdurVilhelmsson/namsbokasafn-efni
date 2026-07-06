@@ -168,7 +168,7 @@
 <para id="fs-idm175980608"><title>Lausn</title>Með því að setja gildin <emphasis effect="italics">a</emphasis> = 3, <emphasis effect="italics">b</emphasis> = 13, <emphasis effect="italics">c</emphasis> = −10 inn í formúluna fáum við</para>
 <equation id="fs-idm77074320" class="unnumbered"><m:math><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>13</m:mn><m:mo>±</m:mo><m:msqrt><m:mrow><m:msup><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>13</m:mn><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>−</m:mo><m:mn>4</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>3</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mn>−10</m:mn><m:mo stretchy="false">)</m:mo></m:mrow></m:msqrt></m:mrow><m:mrow><m:mn>2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>3</m:mn></m:mrow></m:mfrac></m:mrow></m:math></equation>
 <equation id="eip-576" class="unnumbered"><m:math><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>13</m:mn><m:mo>±</m:mo><m:msqrt><m:mrow><m:mn>169</m:mn><m:mo>+</m:mo><m:mn>120</m:mn></m:mrow></m:msqrt></m:mrow><m:mn>6</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>13</m:mn><m:mo>±</m:mo><m:msqrt><m:mrow><m:mn>289</m:mn></m:mrow></m:msqrt></m:mrow><m:mn>6</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>13</m:mn><m:mo>±</m:mo><m:mn>17</m:mn></m:mrow><m:mn>6</m:mn></m:mfrac></m:mrow></m:math></equation><para id="fs-idm171950464">Ræturnar tvær eru því</para>
-<equation id="fs-idp244754576" class="unnumbered"><m:math><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>13</m:mn><m:mo>+</m:mo><m:mn>17</m:mn></m:mrow><m:mn>6</m:mn></m:mfrac><m:mo>=</m:mo><m:mfrac><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>3</m:mn></m:mfrac><m:mspace width="0.5em"/><m:mtext>and</m:mtext><m:mspace width="0.5em"/><m:mi>x</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>13</m:mn><m:mo>−</m:mo><m:mn>17</m:mn></m:mrow><m:mn>6</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>−5</m:mn></m:mrow></m:math></equation></example>
+<equation id="fs-idp244754576" class="unnumbered"><m:math><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>13</m:mn><m:mo>+</m:mo><m:mn>17</m:mn></m:mrow><m:mn>6</m:mn></m:mfrac><m:mo>=</m:mo><m:mfrac><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>3</m:mn></m:mfrac><m:mspace width="0.5em"/><m:mtext>og</m:mtext><m:mspace width="0.5em"/><m:mi>x</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>13</m:mn><m:mo>−</m:mo><m:mn>17</m:mn></m:mrow><m:mn>6</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>−5</m:mn></m:mrow></m:math></equation></example>
 <para id="fs-idm147616016">Annars stigs jöfnur sem byggja á eðlisfræðilegum gögnum hafa alltaf raunrætur og af þessum raunrótum hafa oft aðeins þær sem hafa jákvæð gildi einhverja þýðingu.</para>
 </section>
 <section id="fs-idm180300896">
@@ -177,12 +177,6 @@
 <para id="fs-idm78087840">Þegar gildi <emphasis effect="italics">y</emphasis> breytist sem fall af <emphasis effect="italics">x</emphasis> (það er að segja, mismunandi gildi <emphasis effect="italics">x</emphasis> samsvara mismunandi gildum <emphasis effect="italics">y</emphasis>), er hægt að teikna eða skissa graf yfir þessa breytingu. Grafið er hægt að búa til með því að nota ákveðin gildi fyrir (<emphasis effect="italics">x</emphasis>,<emphasis effect="italics">y</emphasis>) gagnapör.</para>
 <example id="fs-idp9271248">
 <para id="fs-idm111716000"><title>Graphing the Dependence of <emphasis effect="italics">y</emphasis> on <emphasis effect="italics">x</emphasis></title></para>
-
-<para id="fs-idm176114816"><title>Graf yfir fylgni <emphasis effect="italics">y</emphasis> við <emphasis effect="italics">x</emphasis></title>Þessi tafla inniheldur eftirfarandi punkta: (1,5), (2,10), (3,7) og (4,14). Hægt er að teikna hvern þessara punkta á graf og tengja þá saman til að búa til myndræna framsetningu á fylgni <emphasis effect="italics">y</emphasis> við <emphasis effect="italics">x</emphasis>.</para>
-<media id="fs-idm174022560" class="scaled-down" alt="A graph is titled “Dependency of Y on X.” The x-axis ranges from 0 to 4.5. The y-axis ranges from 0 to 16. Four points are plotted as a line graph; the points are 1 and 5, 2 and 10, 3 and 7, and 4 and 14.">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_00_BB_Dependence_img.jpg"/>
-</media>
-</example>
 <table id="fs-idm165592384" class="unnumbered" summary="A table has two columns labeled x and y. In the first row, the value of x is 1, and the value of y is 5. In the second row, the value of x is 2, and the value of y is 10. In the third row, the value of x is 3, and the value of y is 7. In the fourth row, the value of x is 4, and the value of y is 14.">
 <label/>
 <tgroup cols="2">
@@ -214,14 +208,14 @@
 </tbody>
 </tgroup>
 </table>
+<para id="fs-idm176114816"><title>Graf yfir fylgni <emphasis effect="italics">y</emphasis> við <emphasis effect="italics">x</emphasis></title>Þessi tafla inniheldur eftirfarandi punkta: (1,5), (2,10), (3,7) og (4,14). Hægt er að teikna hvern þessara punkta á graf og tengja þá saman til að búa til myndræna framsetningu á fylgni <emphasis effect="italics">y</emphasis> við <emphasis effect="italics">x</emphasis>.</para>
+<media id="fs-idm174022560" class="scaled-down" alt="A graph is titled “Dependency of Y on X.” The x-axis ranges from 0 to 4.5. The y-axis ranges from 0 to 16. Four points are plotted as a line graph; the points are 1 and 5, 2 and 10, 3 and 7, and 4 and 14.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_00_BB_Dependence_img.jpg"/>
+</media>
+</example>
 <para id="fs-idm164107136">Ef fallið sem lýsir fylgni <emphasis effect="italics">y</emphasis> við <emphasis effect="italics">x</emphasis> er þekkt, er hægt að nota það til að reikna út x,y gagnapör sem síðan er hægt að teikna.</para>
 <example id="fs-idm173153104">
 <para id="fs-idm144872640"><title>Teikning gagnapara</title>Ef við vitum að <emphasis effect="italics">y</emphasis> = <emphasis effect="italics">x</emphasis><sup>2</sup> + 2, getum við búið til töflu með nokkrum (<emphasis effect="italics">x</emphasis>,<emphasis effect="italics">y</emphasis>) gildum og síðan teiknað línuna út frá gögnunum sem sýnd eru hér.</para>
-
-<media id="fs-idp112843584" class="scaled-down" alt="A graph is titled “Y equals x superscript 2 plus 2.” The x-axis ranges from 0 to 4.5. The y-axis ranges from 0 to 20. Four points are plotted as a line graph; the points are 1 and 3, 2 and 6, 3 and 11, and 4 and 18.">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_00_BB_Function_img.jpg"/>
-</media>
-</example>
 <table id="fs-idm70341712" class="unnumbered" summary="A table has two columns: the first is labeled x, and the second is labeled y equals x superscript 2 plus 2. In the first row, the value of x is 1, and the value of y equals x superscript 2 plus 2 is 3. In the second row, the value of x is 2, and the value of y equals x superscript 2 plus 2 is 6. In the third row, the value of x is 3, and the value of y equals x superscript 2 plus 2 is 11. In the fourth row, the value of x is 4, and the value of y equals x superscript 2 plus 2 is 18.">
 <label/>
 <tgroup cols="2">
@@ -253,6 +247,10 @@
 </tbody>
 </tgroup>
 </table>
+<media id="fs-idp112843584" class="scaled-down" alt="A graph is titled “Y equals x superscript 2 plus 2.” The x-axis ranges from 0 to 4.5. The y-axis ranges from 0 to 20. Four points are plotted as a line graph; the points are 1 and 3, 2 and 6, 3 and 11, and 4 and 18.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_00_BB_Function_img.jpg"/>
+</media>
+</example>
 </section>
 </content>
 </document>

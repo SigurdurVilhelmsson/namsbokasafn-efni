@@ -1,0 +1,28 @@
+{
+  "track": "faithful",
+  "generatedBy": "cnxml-inject.js",
+  "summary": {
+    "modulesWithResidue": 1,
+    "exactResidues": 3,
+    "ratioWarnings": 2
+  },
+  "modules": {
+    "m68700": {
+      "exact": [
+        "m68700:solution:fs-idm15352224",
+        "m68700:solution:fs-idp18584256",
+        "m68700:solution:fs-idp50221696"
+      ],
+      "warnings": [
+        {
+          "segmentId": "m68700:solution:fs-idp27797488",
+          "ratio": 0.86
+        },
+        {
+          "segmentId": "m68700:solution:fs-idp56664624",
+          "ratio": 0.86
+        }
+      ]
+    }
+  }
+}

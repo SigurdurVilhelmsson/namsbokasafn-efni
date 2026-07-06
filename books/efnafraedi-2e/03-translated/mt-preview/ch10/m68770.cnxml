@@ -219,10 +219,7 @@
 </exercise>
 <exercise id="fs-idm128882560">
 <problem id="fs-idp61136928">
-<para id="fs-idp69181888">Flokkaðu hvert efni í töflunni sem annaðhvort málm, jónaefni, sameindaefni eða samgilt net:<newline/> [[TABLE:fs-idm7525216]]</para>
-</problem>
-</exercise>
-<table id="fs-idm7525216" class="unnumbered" summary="This table has four rows and five columns. The first row is a header row, and it labels each column: “Substance,” “Appearance,” “Melting Point,” “Electrical Conductivity,” and “Solubility in Water.” Under the “Substance” column are the following: X, Y, and Z. Under the “Appearance” column are the following: lustrous, malleable; soft, yellow; hard, white. Under the “Melting Point,” column are the following: 1500 degrees C, 113 degrees C, and 800 degrees C. Under the “Electrical Conductivity” column are the following: high; none; only if melted / dissolved. Under the “Solubility in Water” column are the following: insoluble, insoluble, and soluble.">
+<para id="fs-idp69181888">Flokkaðu hvert efni í töflunni sem annaðhvort málm, jónaefni, sameindaefni eða samgilt net:<newline/> <table id="fs-idm7525216" class="unnumbered" summary="This table has four rows and five columns. The first row is a header row, and it labels each column: “Substance,” “Appearance,” “Melting Point,” “Electrical Conductivity,” and “Solubility in Water.” Under the “Substance” column are the following: X, Y, and Z. Under the “Appearance” column are the following: lustrous, malleable; soft, yellow; hard, white. Under the “Melting Point,” column are the following: 1500 degrees C, 113 degrees C, and 800 degrees C. Under the “Electrical Conductivity” column are the following: high; none; only if melted / dissolved. Under the “Solubility in Water” column are the following: insoluble, insoluble, and soluble.">
 <label/>
 <tgroup cols="5">
 <colspec colnum="1" colname="c1"/>
@@ -258,21 +255,17 @@
 <entry align="left">Z</entry>
 <entry align="left">hart, hvítt</entry>
 <entry align="left">800 °C</entry>
-<entry align="left">aðeins ef bráðið/uppleyst</entry>
-<entry align="left">leysanlegt</entry>
+<entry align="left">aðeins ef bráðið/leyst</entry>
+<entry align="left">leyst</entry>
 </row>
 </tbody>
 </tgroup>
-</table>
+</table></para>
+</problem>
+</exercise>
 <exercise id="fs-idm39063008">
 <problem id="fs-idm134639376">
-<para id="fs-idm77899792">Flokkaðu hvert efni í töflunni sem annaðhvort málm, jónaefni, sameindaefni eða samgilt net:<newline/> [[TABLE:fs-idp139392608]]</para>
-</problem>
-<solution id="fs-idm12335424">
-<para id="fs-idm45120288">X = jónaefni; Y = málmur; Z = samgilt net</para>
-</solution>
-</exercise>
-<table id="fs-idp139392608" class="unnumbered" summary="This table has four rows and five columns. The first row is a header row, and it labels each column: “Substance,” “Appearance,” “Melting Point,” “Electrical Conductivity,” and “Solubility in Water.” Under the “Substance” column are the following: X, Y, and Z. Under the “Appearance” column are the following: brittle, white; shiny, malleable; hard, colorless. Under the “Melting Point,” column are the following: 800 degrees C, 1100 degrees C, and 3550 degrees C. Under the “Electrical Conductivity” column are the following: only if melted / dissolved, high, and none. Under the “Solubility in Water” column are the following: soluble, insoluble, and insoluble.">
+<para id="fs-idm77899792">Flokkaðu hvert efni í töflunni sem annaðhvort málm, jónaefni, sameindaefni eða samgilt net:<newline/> <table id="fs-idp139392608" class="unnumbered" summary="This table has four rows and five columns. The first row is a header row, and it labels each column: “Substance,” “Appearance,” “Melting Point,” “Electrical Conductivity,” and “Solubility in Water.” Under the “Substance” column are the following: X, Y, and Z. Under the “Appearance” column are the following: brittle, white; shiny, malleable; hard, colorless. Under the “Melting Point,” column are the following: 800 degrees C, 1100 degrees C, and 3550 degrees C. Under the “Electrical Conductivity” column are the following: only if melted / dissolved, high, and none. Under the “Solubility in Water” column are the following: soluble, insoluble, and insoluble.">
 <label/>
 <tgroup cols="5">
 <colspec colnum="1" colname="c1"/>
@@ -294,26 +287,31 @@
 <entry align="left">X</entry>
 <entry align="left">stökkt, hvítt</entry>
 <entry align="left">800 °C</entry>
-<entry align="left">aðeins ef bráðið/uppleyst</entry>
-<entry align="left">leysanlegt</entry>
+<entry align="left">aðeins bráðið/uppleyst</entry>
+<entry align="left">auðleyst</entry>
 </row>
 <row valign="top">
 <entry align="left">Y</entry>
-<entry align="left">gljáandi, sveigjanlegt</entry>
+<entry align="left">gljáandi, mótanlegt</entry>
 <entry align="left">1100 °C</entry>
 <entry align="left">mikil</entry>
-<entry align="left">óleyst</entry>
+<entry align="left">torleyst</entry>
 </row>
 <row valign="top">
 <entry align="left">Z</entry>
 <entry align="left">hart, litlaust</entry>
 <entry align="left">3550 °C</entry>
 <entry align="left">engin</entry>
-<entry align="left">óleyst</entry>
+<entry align="left">torleyst</entry>
 </row>
 </tbody>
 </tgroup>
-</table>
+</table></para>
+</problem>
+<solution id="fs-idm12335424">
+<para id="fs-idm45120288">X = jónaefni; Y = málmur; Z = samgilt net</para>
+</solution>
+</exercise>
 <exercise id="fs-idm126229856">
 <problem id="fs-idm13217728">
 <para id="fs-idp141786208">Greindu eftirfarandi efni sem jónaefni, málma, samgild net eða sameindaefni:</para>

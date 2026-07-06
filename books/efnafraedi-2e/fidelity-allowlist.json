@@ -42,9 +42,9 @@
     {
       "moduleId": "m68733",
       "tag": "emphasis",
-      "diff": -4,
+      "diff": -3,
       "class": "known-loss-deferred",
-      "reason": "RC1 glossary <term> mis-anchor ×2 (m_l/m_s quantum numbers) + 2 empty-source-tag artifacts",
+      "reason": "WS5 fresh re-inject: RC1 recovered 1 of 2 mis-anchors → now -3 = 1 inline <term> notation flatten (m_l/m_s quantum numbers) + 2 empty-source-tag artifacts. RC1 fixed the citable headword, inline term notation stays plain (Track B4 re-MT)",
       "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
     },
     {
@@ -67,6 +67,14 @@
       "diff": -1,
       "class": "known-loss-deferred",
       "reason": "RC1 glossary <term> lost <sub>: grindarorka (ΔH_lattice)",
+      "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
+    },
+    {
+      "moduleId": "m68741",
+      "tag": "emphasis",
+      "diff": -1,
+      "class": "known-loss-deferred",
+      "reason": "WS5 surfaced: same <term> flatten as the sub loss — italic H in 'lattice energy (ΔH_lattice)' dropped (ΔHgrind plain). RC1 leaves inline term notation plain (Track B4 re-MT)",
       "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
     },
     {
@@ -121,6 +129,14 @@
       "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
     },
     {
+      "moduleId": "m68791",
+      "tag": "emphasis",
+      "diff": -1,
+      "class": "known-loss-deferred",
+      "reason": "WS5 surfaced: same <term> flatten as the sub loss — italic t in 'half-life of a reaction (t_1/2)' dropped (t1/2 plain). RC1 leaves inline term notation plain (Track B4 re-MT)",
+      "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
+    },
+    {
       "moduleId": "m68793",
       "tag": "emphasis",
       "diff": -1,
@@ -137,9 +153,9 @@
     {
       "moduleId": "m68811",
       "tag": "emphasis",
-      "diff": -1,
+      "diff": 1,
       "class": "benign",
-      "reason": "benign over-wrap on one K_sp. WS5: fresh re-inject flips this to +1 — update entry at WS5 (see F3 audit)"
+      "reason": "benign over-wrap on one K_sp — Icelandic rephrase adds one italic span (verified benign, F3 audit predicted the WS5 -1→+1 flip)"
     },
     {
       "moduleId": "m68818",
@@ -155,6 +171,14 @@
       "diff": -1,
       "class": "known-loss-deferred",
       "reason": "RC1 glossary <term> lost <sub>: kerspenna E_cell",
+      "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
+    },
+    {
+      "moduleId": "m68822",
+      "tag": "emphasis",
+      "diff": -1,
+      "class": "known-loss-deferred",
+      "reason": "WS5 surfaced: same <term> flatten as the sub loss — italic E in 'cell potential (E_cell)' dropped (Eker plain). RC1 leaves inline term notation plain (Track B4 re-MT)",
       "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
     },
     {
@@ -240,6 +264,14 @@
       "diff": 1,
       "class": "known-loss-deferred",
       "reason": "RC4 table-header EN residue (ΔH kJ/mol duplicated) + column drift",
+      "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
+    },
+    {
+      "moduleId": "m68842",
+      "tag": "emphasis",
+      "diff": -2,
+      "class": "known-loss-deferred",
+      "reason": "WS5 surfaced: <term> flatten — italic d + f dropped from 'd-block elements' / 'f-block elements' glossary terms (same RC1 inline-term family; content present, italic marker lost). Track B4 re-MT",
       "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
     }
   ]

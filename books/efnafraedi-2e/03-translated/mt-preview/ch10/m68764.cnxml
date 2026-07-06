@@ -234,15 +234,7 @@
 </exercise>
 <exercise id="fs-idm92213792">
 <problem id="fs-idm92213536">
-<para id="fs-idm57322944">Yfirborðsspenna og seigja vatns við nokkur mismunandi hitastig eru gefin í þessari töflu.<newline/> [[TABLE:fs-idm84550336]]</para>
-<para id="fs-idm133407872">(a) Þegar hitastig hækkar, hvað gerist með yfirborðsspennu vatns? Útskýrðu hvers vegna þetta gerist, með tilliti til víxlverkana sameinda og áhrifa breytts hitastigs.</para>
-<para id="fs-idm47328896">(b) Þegar hitastig hækkar, hvað gerist með seigju vatns? Útskýrðu hvers vegna þetta gerist, með tilliti til víxlverkana sameinda og áhrifa breytts hitastigs.</para>
-</problem>
-<solution id="fs-idm121605168">
-<para id="fs-idm52338928">(a) Þegar vatnið nær hærra hitastigi er aukin hreyfiorka sameinda þess áhrifaríkari við að yfirstíga vetnistengi og því minnkar yfirborðsspenna þess. Yfirborðsspenna og millisameindakraftar eru í beinu sambandi. (b) Sama þróun sést í seigju og í yfirborðsspennu, og af sömu ástæðu.</para>
-</solution>
-</exercise>
-<table id="fs-idm84550336" class="unnumbered" summary="This table contains five rows and three columns. The first row is a header row, and it labels each column: “Water,” “Surface Tension ( m N / m ),” and “Viscosity ( m P a do t s ).” Under the “Water” column are the following: 0 degrees C, 20 degrees C, 60 degrees C, and 100 degrees C. Under the “Surface Tension ( m N / m )” column are the following: 75.6, 72.8, 66.2, and 58.9. Under the “Viscosity ( m P a do t s )” column are the following: 1.79, 1.00, 0.47, and 0.28.">
+<para id="fs-idm57322944">Yfirborðsspenna og seigja vatns við nokkur mismunandi hitastig eru gefin í þessari töflu.<newline/> <table id="fs-idm84550336" class="unnumbered" summary="This table contains five rows and three columns. The first row is a header row, and it labels each column: “Water,” “Surface Tension ( m N / m ),” and “Viscosity ( m P a do t s ).” Under the “Water” column are the following: 0 degrees C, 20 degrees C, 60 degrees C, and 100 degrees C. Under the “Surface Tension ( m N / m )” column are the following: 75.6, 72.8, 66.2, and 58.9. Under the “Viscosity ( m P a do t s )” column are the following: 1.79, 1.00, 0.47, and 0.28.">
 <label/>
 <tgroup cols="3">
 <colspec colnum="1" colname="c1"/>
@@ -278,7 +270,14 @@
 </row>
 </tbody>
 </tgroup>
-</table>
+</table></para>
+<para id="fs-idm133407872">(a) Þegar hitastig hækkar, hvað gerist með yfirborðsspennu vatns? Útskýrðu hvers vegna þetta gerist, með tilliti til víxlverkana sameinda og áhrifa breytts hitastigs.</para>
+<para id="fs-idm47328896">(b) Þegar hitastig hækkar, hvað gerist með seigju vatns? Útskýrðu hvers vegna þetta gerist, með tilliti til víxlverkana sameinda og áhrifa breytts hitastigs.</para>
+</problem>
+<solution id="fs-idm121605168">
+<para id="fs-idm52338928">(a) Þegar vatnið nær hærra hitastigi er aukin hreyfiorka sameinda þess áhrifaríkari við að yfirstíga vetnistengi og því minnkar yfirborðsspenna þess. Yfirborðsspenna og millisameindakraftar eru í beinu sambandi. (b) Sama þróun sést í seigju og í yfirborðsspennu, og af sömu ástæðu.</para>
+</solution>
+</exercise>
 <exercise id="fs-idp26872272">
 <problem id="fs-idp26872528">
 <para id="fs-idm237890176">Við 25 °C, hversu hátt mun vatn stíga í hárpípugleri með 0,63 mm innra þvermáli? Sjá <link target-id="fs-idp7578512"/> fyrir nauðsynlegar upplýsingar.</para>

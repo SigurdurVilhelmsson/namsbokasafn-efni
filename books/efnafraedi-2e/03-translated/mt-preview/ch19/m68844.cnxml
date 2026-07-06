@@ -65,7 +65,7 @@
 </media>
 <caption>This diagram shows the orientation of the tetrahedral ligands with respect to the axis system for the orbitals.</caption>
 </figure>
-<para id="fs-idp69600720"><title>Lausn</title>Þar sem kristalsviðskenningin byggir á rafstöðufráhrindingu munu svigrúmin sem eru nær bindunum verða óstöðugri og hækka í orku miðað við hitt settið af svigrúmum. Klofnunin er minni en fyrir áttflötungagirði vegna þess að skörunin er minni, þannig að Δ<sub>tet</sub> er yfirleitt lítið <m:math><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mtext>Δ</m:mtext><m:mrow><m:mtext>tet</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>4</m:mn><m:mn>9</m:mn></m:mfrac><m:mspace width="0.2em"/><m:msub><m:mtext>Δ</m:mtext><m:mrow><m:mtext>oct</m:mtext></m:mrow></m:msub></m:mrow><m:mo>)</m:mo><m:mo>:</m:mo></m:mrow></m:mrow></m:math></para>
+<para id="fs-idp69600720"><title>Lausn</title>Þar sem kristalsviðskenningin byggir á rafstöðufráhrindingu munu svigrúmin sem eru nær bindunum verða óstöðugri og hækka í orku miðað við hitt settið af svigrúmum. Klofnunin er minni en fyrir áttflötungagirði vegna þess að skörunin er minni, þannig að Δ<sub>tet</sub> er yfirleitt lítið <m:math><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mtext>Δ</m:mtext><m:mrow><m:mtext>tet</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>4</m:mn><m:mn>9</m:mn></m:mfrac><m:mspace width="0.2em"/><m:msub><m:mtext>Δ</m:mtext><m:mrow><m:mtext>okt</m:mtext></m:mrow></m:msub></m:mrow><m:mo>)</m:mo><m:mo>:</m:mo></m:mrow></m:mrow></m:math></para>
 <media id="fs-idp4747504" class="scaled-down" alt="A diagram is shown with a vertical arrow pointing upward along the height of the diagram at its left side. This arrow is labeled, “E.” to the right of this arrow are two rows of squares outlined in yellow. The first row has two adjacent squares. The second row is positioned just above the first and includes three adjacent squares. At the right side of the diagram, a short horizontal line segment is drawn just right of the lower side of the rightmost square in the first row. A double-headed arrow extends from this line segment to a second horizontal line segment directly above the first and right of the lower side of the squares in the second row. The arrow is labeled, “small capital delta subscript tet,” to the right. The lower horizontal line segment is similarly labeled, “e subscript,” and the upper line segment is labeled, “t subscript 2.”">
 <image mime-type="image/svg+xml" src="../../media/CNX_Chem_19_03_smalldeltt_img_IS.svg"/>
 </media>
@@ -241,7 +241,7 @@
 <meaning id="fs-idm31354480-meaning">líkan sem útskýrir orku svigrúma í hliðarmálmum með tilliti til rafstöðufræðilegrar víxlverkunar við tengla en tekur ekki til málm-tengil tenginga</meaning>
 </definition>
 <definition id="fs-idm148194896">
-<term>e<sub>g</sub> svigrúm (e. eg orbitals)</term>
+<term><emphasis effect="italics">e<sub>g</sub></emphasis> svigrúm (e. eg orbitals)</term>
 <meaning id="fs-idm148194896-meaning">sett af tveimur <emphasis effect="italics">d</emphasis> svigrúmum sem eru stillt á kartesísku ásana fyrir samhæfingarflóka; í áttflötungsflókum eru þau orkuhærri en <emphasis effect="italics">t</emphasis><sub>2<emphasis effect="italics">g</emphasis></sub> svigrúmin</meaning>
 </definition>
 <definition id="fs-idm132411312">
@@ -269,7 +269,7 @@
 <meaning id="fs-idm24403040-meaning">tengill sem veldur stærri kristalsviðsklofnun</meaning>
 </definition>
 <definition id="fs-idm104611088">
-<term><emphasis effect="italics">t</emphasis>2<emphasis effect="italics">g</emphasis>-svigrúm (e. t2g orbitals)</term>
+<term><emphasis effect="italics">t</emphasis><sub>2<emphasis effect="italics">g</emphasis></sub>-svigrúm (e. t2g orbitals)</term>
 <meaning id="fs-idm104611088-meaning">sett af þremur <emphasis effect="italics">d</emphasis>-svigrúmum sem liggja á milli kartesískra ása fyrir samhæfingarflóka; í áttflötungsflókum eru þau lækkuð í orku miðað við <emphasis effect="italics">e<sub>g</sub></emphasis>-svigrúmin samkvæmt kristalsviðskenningunni (CFT)</meaning>
 </definition>
 <definition id="fs-idp10927328">
