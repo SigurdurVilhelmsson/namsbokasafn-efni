@@ -85,3 +85,23 @@ describe('renderExample — title containing inline markup (WS5 residual fix b)'
     expect(html.indexOf('Vandamálstexti')).toBeLessThan(html.indexOf('Lausn'));
   });
 });
+
+describe('renderExample — direct-child table (WS5 residual fix b2)', () => {
+  it('renders an example-child table INSIDE the aside, exactly once', () => {
+    // renderExample had no `table` handler → the table escaped the aside and was
+    // re-rendered by the section-level pass AFTER </aside> (m68793 tables 12.31/12.32).
+    const html = renderExampleContent(
+      '<example id="E"><para id="p"><title>Lausn</title>Sjá töflu:</para>' +
+        '<table id="TBL" class="unnumbered"><tgroup cols="1">' +
+        '<tbody><row><entry>GILDI</entry></row></tbody></tgroup></table>' +
+        '</example>'
+    );
+    // exactly one render of the table
+    expect(html.split('GILDI').length - 1).toBe(1);
+    // it is inside the example aside
+    const tblIdx = html.indexOf('GILDI');
+    const asideClose = html.lastIndexOf('</aside>');
+    expect(tblIdx).toBeGreaterThan(-1);
+    expect(tblIdx).toBeLessThan(asideClose);
+  });
+});

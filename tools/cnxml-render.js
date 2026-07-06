@@ -523,6 +523,7 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     equationCounter: 0,
     exerciseCounter: 0, // Add exercise counter
     renderedFigureIds: new Set(), // Track rendered figures to prevent duplicates
+    renderedTableIds: new Set(), // Track rendered tables (example-child vs section pass)
     undispatchedBlocks: [], // Loud seam: block elements no dispatch map handled
   };
 
@@ -1587,6 +1588,10 @@ function renderExample(example, context) {
       equation: renderEquation,
       figure: renderFigure,
       media: renderMedia,
+      // A <table> that is a direct child of the example renders in place here;
+      // renderTable registers its id in context.renderedTableIds so the later
+      // section-level pass skips the duplicate (m68793 tables 12.31/12.32).
+      table: renderTable,
     },
     // Hoist block-level <equation> out of a <para> so it renders ONCE as a
     // centered display block, not as a cramped inline <span class="math-inline">
@@ -1752,6 +1757,17 @@ function renderExercise(exercise, context) {
 function renderTable(table, context) {
   const lines = [];
   const id = table.id || null;
+
+  // A table that is a direct child of an example/note renders in place via that
+  // block's dispatcher; skip the later section-level pass so it renders once
+  // (mirrors renderFigure / context.renderedFigureIds).
+  if (id && context.renderedTableIds && context.renderedTableIds.has(id)) {
+    return '';
+  }
+  if (id && context.renderedTableIds) {
+    context.renderedTableIds.add(id);
+  }
+
   const className = table.attributes.class || null;
 
   // Get table number from chapter-wide map for data attribute (composite key for cross-module uniqueness)
