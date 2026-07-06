@@ -210,7 +210,21 @@ chunk limit (glossary is filtered per chunk to ≤3 KB, not ~36 KB). B2/B3 clear
   elements; sub/sup/emphasis/links already migrated to ~0%-loss `[[ ]]`.
 - **Files:** `tools/cnxml-extract.js:303` (`{{term}}`), `:370` (`{{fn}}`); add `[[term:…]]`/`[[fn:…]]`
   (and `[[u:…]]` for underline). Injection is already backward-compatible (CLAUDE.md).
-- **Acceptance:** marker-survival probe on term/fn brackets ≈100%; old `{{ }}` output still injects.
+- **⚠️ HARD REQUIREMENT — anchor the id IN the marker.** Injection today restores term/footnote
+  `id`/`class` **purely by occurrence index** (`cnxml-inject.js:1439`/`:1455`, per-segment, no
+  content-anchoring, no drop-compensation). So a dropped marker doesn't just lose one element — in a
+  2+-term segment it shifts every downstream term's id (a silent id-cascade, invisible to linguistic
+  review; 163 segments are cascade-capable). B4's `[[term:id|text]]`/`[[fn:id|text]]` MUST carry the id
+  so restoration is content-anchored, not positional — upgrading B4 from "0% loss if nothing drops" to
+  "correct even when something drops," which is the property that matters for a clean OpenStax remerge.
+- **⚠️ SEQUENCING — do B4 BEFORE the Pass-1 review push.** B4's re-extract changes segment boundaries
+  (measured 51+/108− on m68793), so review done on pre-B4 segmentation may not remap. Review investment
+  (`03-faithful-translation`) is the one non-regenerable asset; don't strand it. Rationale + the
+  full re-MT/remerge analysis: `docs/decisions/2026-07-06-re-mt-vs-editor-fixes-and-openstax-remerge.md`.
+- **Sweeps up on re-extract:** the B4-deferred residuals — (a) list double-record, RC3, RC4 —
+  self-correct when B4 re-extracts + re-MTs.
+- **Acceptance:** marker-survival probe on term/fn brackets ≈100%; id round-trips even with an
+  induced marker drop (no positional cascade); old `{{ }}` output still injects.
 
 **Track B gate:** restoration complexity retired for API content; markers validated by type; one marker
 family. *Keep `repairSegTags` (hyphen-in-id persists) and `assertNoControlChars` (separate content bug).*
@@ -928,7 +942,7 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
 | **A2-a** `--allow-en-fallback` disables residue run-wide | `cnxml-inject.js:3429` `checkResidue = lang!=='en' && !allowEnFallback` (run-scope) | One fallback module silences residue detection for ALL modules in the run | `[fix]` per-module signal |
 | **A2-b** missing translation aborts whole chapter | `:3338` try wraps loop, `:3214` throw → `:3525` `exit(1)`; residue-report write `:3505` never reached | A partially-translated chapter fails entirely + no residue manifest written | `[fix]` per-module skip-continue + `finally` write |
 | **B3** producer bracket-marker count check | `api-translate.js:263-266` `validateMarkers` counts `<!-- SEG` only, no `[[` per-type | Inline bracket-marker loss/truncation invisible at MT boundary | `[build]` Track B |
-| **B4** term/footnote still lossy `{{ }}` | `cnxml-extract.js:314`(`{{term}}`)/`:381`(`{{fn}}`) | ~2.3% per-call API loss on the highest-volume inline elements; brackets = ~0% | `[build]` Track B |
+| **B4** term/footnote still lossy `{{ }}` | `cnxml-extract.js:314`(`{{term}}`)/`:381`(`{{fn}}`); id restore is positional `cnxml-inject.js:1439/1455` | ~2.3% API loss on highest-volume inline elements (brackets ~0%); **dropped marker → silent per-segment id-cascade** (163 cascade-capable segments). B4 markers MUST anchor the id; **do B4 before the Pass-1 review push** (re-extract shifts segments). Decision: `docs/decisions/2026-07-06-re-mt-vs-editor-fixes-and-openstax-remerge.md` | `[build]` Track B |
 | **WS5-a** list/equation double-record (stale structure) | 5 mt-preview mods m68710/727/789/793/801 carry pre-OC-E March `structure.json`; `<item>` block-children double-recorded → 12-5 postulates render twice | OC-E (#227) already fixes extract; re-extract removes it but changes MT segments → needs re-MT → **B4 re-extract+re-MT self-corrects**; live tracked gap until then | `[build]` Track B4 (with RC3/RC4) |
 | **C4** inject `buildTable` → DOM | `cnxml-inject.js:1956-2013` positional regex (render-side table bug already fixed separately) | Architecture investment; no active bug — fragile for nested/multi-para cells | `[decision]` Track C — invest? |
 | **C3-a** table escapes note/exercise (example ✅ FIXED PR #238) | `renderExample` now has a `table` dispatcher + `renderedTableIds` dedup; `renderNote`/`renderExercise` dispatch maps still lack `table` (loud seam logs, renders nothing) | example nesting fixed & re-rendered; note/exercise = 0 real nestings in efnafraedi (verified), **re-check at biology onboarding** | `[build]` Track C (biology-gated) |
