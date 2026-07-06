@@ -881,30 +881,89 @@ function restoreGlossaryTermMarkup(translatedTerm, originalRawTerm) {
     }
   }
 
-  // Collect all inline markup from original term
-  const inlinePattern =
-    /<(emphasis)\s+effect="([^"]+)">([^<]+)<\/emphasis>|<(sub|sup)>([^<]+)<\/\4>/g;
-  let match;
-
-  while ((match = inlinePattern.exec(originalRawTerm)) !== null) {
-    const isEmphasis = !!match[1];
-    const tag = isEmphasis ? 'emphasis' : match[4];
-    const effect = isEmphasis ? match[2] : null;
-    const text = isEmphasis ? match[3] : match[5];
-
-    // Build the CNXML replacement
-    const replacement = isEmphasis
-      ? `<emphasis effect="${effect}">${text}</emphasis>`
-      : `<${tag}>${text}</${tag}>`;
-
-    // Only restore if the exact text appears in the translated term
-    // and isn't already wrapped (prevents double-wrapping)
-    if (result.includes(text) && !result.includes(replacement)) {
-      result = result.replace(text, replacement);
-    }
+  // Restore inline markup as whole NOTATION RUNS (a contiguous run of emphasis/sub/sup
+  // elements plus the notation chars gluing them, e.g. "Δ<emphasis>H</emphasis><sub>lattice</sub>").
+  // Anchor each run on its parenthesized plain form "(NA)" when the original parenthesizes
+  // it (parens disambiguate a single letter like "(l)" from a letter inside the translated
+  // word), else on the bare plain form — and only when that anchor occurs EXACTLY ONCE.
+  // This never mis-anchors a bare letter onto the wrong occurrence (the old first-match bug:
+  // <sub>A</sub>vogadrosartala); when the notation content was translated away (lattice→grind)
+  // the anchor is absent and the run is left plain rather than corrupted.
+  for (const { plain, markup, parenthesized } of collectNotationRuns(originalRawTerm)) {
+    if (!plain || result.includes(markup)) continue;
+    const anchor = parenthesized ? `(${plain})` : plain;
+    const idx = result.indexOf(anchor);
+    if (idx === -1 || result.indexOf(anchor, idx + 1) !== -1) continue; // absent or ambiguous → skip
+    const replacement = parenthesized ? `(${markup})` : markup;
+    result = result.slice(0, idx) + replacement + result.slice(idx + anchor.length);
   }
 
   return result;
+}
+
+/** Strip all XML tags from a fragment, leaving its text content. */
+function stripInlineTags(s) {
+  return s.replace(/<[^>]+>/g, '');
+}
+
+/**
+ * Outermost <emphasis>/<sub>/<sup> element spans in `s`, balanced (a nested
+ * <sub> inside an <emphasis> yields one span covering the whole <emphasis>).
+ * @returns {Array<{start:number,end:number}>}
+ */
+function findTopLevelInlineElements(s) {
+  const tagRe = /<(\/?)(?:emphasis|sub|sup)\b[^>]*>/g;
+  const spans = [];
+  let depth = 0;
+  let start = -1;
+  let m;
+  while ((m = tagRe.exec(s)) !== null) {
+    if (m[1] === '/') {
+      depth--;
+      if (depth === 0) spans.push({ start, end: m.index + m[0].length });
+    } else {
+      if (depth === 0) start = m.index;
+      depth++;
+    }
+  }
+  return spans;
+}
+
+/**
+ * Group the original term's inline markup into notation runs — maximal contiguous
+ * sequences of markup elements plus the non-space, non-paren "glue" chars between and
+ * directly around them. Each run carries its verbatim markup, its plain (tag-stripped)
+ * text, and whether the original wraps it in parentheses.
+ * @param {string} original  original CNXML term inner
+ * @returns {Array<{plain:string, markup:string, parenthesized:boolean}>}
+ */
+function collectNotationRuns(original) {
+  const els = findTopLevelInlineElements(original);
+  const isGlue = (c) => c !== undefined && /[^\s()]/.test(c);
+  const runs = [];
+  let i = 0;
+  while (i < els.length) {
+    let runStart = els[i].start;
+    let runEnd = els[i].end;
+    let j = i + 1;
+    while (j < els.length) {
+      const gap = original.slice(runEnd, els[j].start);
+      if (gap.length === 0 || [...gap].every(isGlue)) {
+        runEnd = els[j].end;
+        j++;
+      } else break;
+    }
+    while (runStart > 0 && isGlue(original[runStart - 1])) runStart--;
+    while (runEnd < original.length && isGlue(original[runEnd])) runEnd++;
+    const markup = original.slice(runStart, runEnd);
+    runs.push({
+      plain: stripInlineTags(markup),
+      markup,
+      parenthesized: original[runStart - 1] === '(' && original[runEnd] === ')',
+    });
+    i = j;
+  }
+  return runs;
 }
 
 /**
@@ -3886,6 +3945,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
 
 export {
   restoreTermMarkers,
+  restoreGlossaryTermMarkup,
   restoreSupersubMarkers,
   restoreMediaMarkers,
   restoreMathMarkers,
