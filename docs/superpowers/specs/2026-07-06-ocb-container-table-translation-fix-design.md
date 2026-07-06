@@ -3,6 +3,8 @@
 **Date:** 2026-07-06. **Type:** inject bug fix + new fail-loud gate. **One PR.**
 **Blocks:** WS5 (see `docs/audit/2026-07-06-ws5-oc-b-table-translation-regression.md`).
 **Branch:** `fix/chem-ocb-container-table-translation` (off main + the WS5 audit doc).
+> **⚠ UPDATE 2026-07-06 (post-implementation):** The **Gate (Gate A)** in this design was **split out to a follow-up** after stress-testing showed it too brittle to hard-fail (2 proven false positives from IS-text processing). This PR ships **only the fix (Fix A)**. Robust-gate redesign + rationale: `docs/plans/2026-07-06-table-cell-translation-gate-followup.md`.
+
 
 ## Problem (proven)
 

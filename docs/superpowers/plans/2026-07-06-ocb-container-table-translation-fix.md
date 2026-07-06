@@ -345,7 +345,10 @@ git commit -m "fix(inject): translate OC-B kept container tables via buildTable 
 
 ---
 
-### Task 4: `assertTableCellsTranslated` gate
+### Task 4: `assertTableCellsTranslated` gate — ❌ DEFERRED to follow-up
+
+> **Not implemented in this PR.** Stress-testing proved Gate A brittle (false positives from IS-text processing); split to `docs/plans/2026-07-06-table-cell-translation-gate-followup.md` per 'split refactor from enforcement'. The original Task 4 spec is retained below for the follow-up's reference.
+
 
 **Files:**
 - Modify: `tools/cnxml-inject.js` (add gate near `assertNoMarkerResidue` ~1596; call in `buildCnxml`
