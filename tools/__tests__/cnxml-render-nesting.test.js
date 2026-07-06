@@ -53,7 +53,10 @@ const PARENTS = {
 };
 
 // table escapes these containers today — tracked for Track C C4 (buildTable→DOM).
-const KNOWN_ESCAPES = new Set(['table-in-example', 'table-in-exercise', 'table-in-note']);
+// table-in-example was FIXED (WS5 residual b2): renderExample now has a table
+// dispatcher + renderedTableIds dedup, so the table renders in place. exercise/note
+// still escape (renderExercise/renderNote have no table handler yet).
+const KNOWN_ESCAPES = new Set(['table-in-exercise', 'table-in-note']);
 
 function doc(inner) {
   return `<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML"><title>T</title><metadata xmlns:md="http://cnx.rice.edu/mdml"><md:content-id>m00001</md:content-id><md:title>T</md:title></metadata><content>${inner}</content></document>`;
@@ -128,7 +131,8 @@ describe('render nesting matrix: child renders once and inside its container', (
 describe('render nesting matrix: known table-escape gap (Track C C4)', () => {
   // Pin the count invariant even for the escaping cells: the table is never
   // dropped or duplicated, it is merely positioned after the container closes.
-  for (const parentName of ['example', 'exercise', 'note']) {
+  // (example is no longer here — WS5 residual b2 keeps its table in place.)
+  for (const parentName of ['exercise', 'note']) {
     it(`table-in-${parentName} still renders exactly once (but escapes — see C4)`, () => {
       const { html, marker } = render('table', parentName, false);
       expect(html.split(marker).length - 1).toBe(1);
