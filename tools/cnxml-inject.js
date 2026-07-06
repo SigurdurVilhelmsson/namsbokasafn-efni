@@ -1525,6 +1525,22 @@ function collectFigureCaptions(elements, map) {
 }
 
 /**
+ * Recursively map every <table> node's id to its structure node (with .rows/.cells).
+ * Used so container builders can translate direct-child tables they keep in place
+ * (their structure node is a sibling of the container, not held by the builder). OC-B fix.
+ */
+function collectTableNodes(elements, map) {
+  for (const el of elements) {
+    if (el.type === 'table' && el.id) {
+      map[el.id] = el;
+    }
+    if (el.content) {
+      collectTableNodes(el.content, map);
+    }
+  }
+}
+
+/**
  * Recursively collect equation IDs from block-level elements in the structure tree.
  * These are equations handled by buildEquation() from the original CNXML — if the
  * same equationId appears in a [[MATH:N]] placeholder, reverseInlineMarkup() should
@@ -1746,6 +1762,8 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
   // Build context for tracking figures handled inside notes/examples (to avoid duplicates)
   const figureCaptions = {};
   collectFigureCaptions(structure.content, figureCaptions);
+  const tableNodesById = {};
+  collectTableNodes(structure.content, tableNodesById);
   const figuresHandledInNotes = new Set();
   const figuresHandledInContainers = new Set();
   const tablesHandledInContainers = new Set();
@@ -1754,6 +1772,7 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
     figuresHandledInNotes,
     figuresHandledInContainers,
     tablesHandledInContainers,
+    tableNodesById,
     inlineMedia: structure.inlineMedia || [],
     inlineTables: structure.inlineTables || [],
     imageMapping: options.imageMapping || new Map(),
@@ -2176,6 +2195,57 @@ function buildTable(element, getSeg, originalCnxml) {
 }
 
 /**
+ * Replace, inside an already-serialized container fragment, each OC-B-kept direct-child
+ * table's SOURCE block with its buildTable() translation. Fail loud rather than leave a
+ * source (untranslated) table in the published output.
+ *
+ * Contract: if `ctx.tableNodesById` (the structure map) is absent entirely — i.e. this is
+ * an isolated-builder/library call (e.g. a DOM-comparison test calling buildExampleDom/
+ * buildExerciseDom/buildNoteDom directly, without the full buildCnxml context) rather than
+ * a full document build — this is a no-op: `result` is returned unchanged. `buildCnxml`
+ * always provides `ctx.tableNodesById` for real production builds. If the map IS present
+ * but a specific kept-table id is missing from it (or its translation/serialized block is
+ * missing), that is a real production gap and still throws.
+ * @param {Set<string>} keptContainerTableIds - OC-B direct-child, non-inline table ids only.
+ */
+function translateKeptContainerTables(
+  result,
+  keptContainerTableIds,
+  ctx,
+  getSeg,
+  originalCnxml,
+  moduleId
+) {
+  // No table-node map → isolated-builder/library context (not a full buildCnxml
+  // document build). Leave tables as the caller's DOM has them; buildCnxml always
+  // provides ctx.tableNodesById for real production builds.
+  if (!ctx || !ctx.tableNodesById) return result;
+
+  for (const tableId of keptContainerTableIds) {
+    const node = ctx && ctx.tableNodesById && ctx.tableNodesById[tableId];
+    if (!node) {
+      throw new Error(
+        `translateKeptContainerTables: no structure node for kept container table id="${tableId}" in module ${moduleId} — cannot translate; refusing to emit source table.`
+      );
+    }
+    const translated = buildTable(node, getSeg, originalCnxml);
+    if (!translated) {
+      throw new Error(
+        `translateKeptContainerTables: buildTable returned null for table id="${tableId}" in module ${moduleId}.`
+      );
+    }
+    const blockRe = new RegExp(`<table[^>]*\\sid="${tableId}"[^>]*>[\\s\\S]*?<\\/table>`);
+    if (!blockRe.test(result)) {
+      throw new Error(
+        `translateKeptContainerTables: source table block id="${tableId}" not found in serialized container for module ${moduleId}.`
+      );
+    }
+    result = result.replace(blockRe, () => translated);
+  }
+  return result;
+}
+
+/**
  * Expand [[TABLE:id]] placeholders in a para's translated text into full <table>
  * markup, recording each expanded id so the container's post-strip pass keeps it.
  * Mirrors buildPara's inline-table restoration (cnxml-inject.js ~1853). (F4)
@@ -2562,6 +2632,7 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
   // strip the expanded <media> from the segment text before injection.
   const keptFigureIds = new Set();
   const keptTableIds = new Set();
+  const keptContainerTableIds = new Set();
   const parasWithFigures = new Map(); // paraId → Set of figure IDs
 
   for (const child of element.content || []) {
@@ -2671,7 +2742,10 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
       if (figId) keptFigureIds.add(figId);
     } else if (child.nodeName === 'table') {
       const tId = child.getAttribute('id');
-      if (tId && !exampleInlineTableIds.has(tId)) keptTableIds.add(tId);
+      if (tId && !exampleInlineTableIds.has(tId)) {
+        keptTableIds.add(tId);
+        keptContainerTableIds.add(tId);
+      }
     }
   }
 
@@ -2704,6 +2778,14 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
 
   // Step 5: Serialize
   let result = serializeCnxmlFragment(exampleEl);
+  result = translateKeptContainerTables(
+    result,
+    keptContainerTableIds,
+    ctx,
+    getSeg,
+    originalCnxml,
+    element.id
+  );
 
   // Step 6: Deduplicate media and equations.
   // The DOM preserves block children (equations) inside list items, but the
@@ -2870,6 +2952,7 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
   const replacedParaIds = new Set();
   const keptFigureIds = new Set();
   const keptTableIds = new Set();
+  const keptContainerTableIds = new Set();
 
   function processContent(contentArray) {
     for (const child of contentArray || []) {
@@ -2953,7 +3036,10 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
         if (figId) keptFigureIds.add(figId);
       } else if (child.nodeName === 'table') {
         const tId = child.getAttribute('id');
-        if (tId && !exerciseInlineTableIds.has(tId)) keptTableIds.add(tId);
+        if (tId && !exerciseInlineTableIds.has(tId)) {
+          keptTableIds.add(tId);
+          keptContainerTableIds.add(tId);
+        }
       }
     }
   }
@@ -2984,6 +3070,14 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
   }
 
   let result = serializeCnxmlFragment(exerciseEl);
+  result = translateKeptContainerTables(
+    result,
+    keptContainerTableIds,
+    ctx,
+    getSeg,
+    originalCnxml,
+    element.id
+  );
   result = deduplicateMedia(result);
   result = deduplicateElementsById(result, 'equation');
 
@@ -3166,6 +3260,7 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
   // Replace paragraphs and lists via DOM
   const replacedParaIds = new Set();
   const keptTableIds = new Set();
+  const keptContainerTableIds = new Set();
   for (const child of element.content || []) {
     if (child.type === 'para' && child.id && child.segmentId) {
       const paraEl = doc.getElementById(child.id);
@@ -3228,7 +3323,10 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
   for (const child of Array.from(noteEl.childNodes)) {
     if (child.nodeName === 'table') {
       const tId = child.getAttribute('id');
-      if (tId && !noteInlineTableIds.has(tId)) keptTableIds.add(tId);
+      if (tId && !noteInlineTableIds.has(tId)) {
+        keptTableIds.add(tId);
+        keptContainerTableIds.add(tId);
+      }
     }
   }
   if (ctx && ctx.tablesHandledInContainers) {
@@ -3244,7 +3342,16 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
     new Set((ctx?.inlineTables || []).map((t) => t.tableId))
   );
 
-  return serializeCnxmlFragment(noteEl);
+  let result = serializeCnxmlFragment(noteEl);
+  result = translateKeptContainerTables(
+    result,
+    keptContainerTableIds,
+    ctx,
+    getSeg,
+    originalCnxml,
+    element.id
+  );
+  return result;
 }
 
 /**
@@ -3953,6 +4060,8 @@ export {
   restoreNewlines,
   annotateInlineTerms,
   assertNoMarkerResidue,
+  collectTableNodes,
+  translateKeptContainerTables,
   parseSegments,
   reverseInlineMarkup,
   buildCnxml,
