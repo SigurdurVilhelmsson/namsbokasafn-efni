@@ -1,33 +1,35 @@
 {
-  "_comment": "WS2 honest-manifest allowlist. class: benign (not a real loss) | known-loss-deferred (real loss, tracked via pointer). Exact match on moduleId+tag+diff; any drift → unexplained (red). See docs/plans/2026-07-02-chemistry-ws2-honest-manifest-plan.md.",
+  "_comment": "WS2 honest-manifest allowlist. class: benign (not a real loss) | known-loss-deferred (real loss, tracked via pointer). Exact match on moduleId+tag+diff; any drift → unexplained (red). See docs/plans/2026-07-02-chemistry-ws2-honest-manifest-plan.md. | 2026-07-06 F3 per-instance re-triage: 13 real-loss reclassified known-loss-deferred, 15 artifact reasons corrected — see docs/audit/2026-07-06-f3-benign-retriage.md",
   "entries": [
     {
       "moduleId": "m68700",
       "tag": "emphasis",
       "diff": -1,
-      "class": "benign",
-      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+      "class": "known-loss-deferred",
+      "reason": "RC1 glossary <term> sub mis-anchor + italics drop: Avogadro N_A → <sub>A</sub>vogadrosartala (citable key-terms)",
+      "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
     },
     {
       "moduleId": "m68709",
       "tag": "term",
       "diff": 1,
       "class": "benign",
-      "reason": "term-annotation / legacy {{term}} marker edge; term text present in prose"
+      "reason": "benign tag-count (over-annotation from term-split); RC2 wrong-gloss defect tracked separately"
     },
     {
       "moduleId": "m68710",
       "tag": "emphasis",
       "diff": -1,
       "class": "benign",
-      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+      "reason": "empty self-closing <emphasis/> in OpenStax source (zero content)"
     },
     {
       "moduleId": "m68716",
       "tag": "emphasis",
       "diff": -1,
-      "class": "benign",
-      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+      "class": "known-loss-deferred",
+      "reason": "(aq) state-symbol italic dropped (cosmetic)",
+      "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
     },
     {
       "moduleId": "m68727",
@@ -41,99 +43,103 @@
       "moduleId": "m68733",
       "tag": "emphasis",
       "diff": -4,
-      "class": "benign",
-      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+      "class": "known-loss-deferred",
+      "reason": "RC1 glossary <term> mis-anchor ×2 (m_l/m_s quantum numbers) + 2 empty-source-tag artifacts",
+      "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
     },
     {
       "moduleId": "m68734",
       "tag": "emphasis",
       "diff": -1,
       "class": "benign",
-      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+      "reason": "empty self-closing <emphasis/> in source (zero content)"
     },
     {
       "moduleId": "m68735",
       "tag": "term",
       "diff": 1,
       "class": "benign",
-      "reason": "term-annotation / legacy {{term}} marker edge; term text present in prose"
+      "reason": "benign tag-count (over-annotation from term-split); RC2 wrong-gloss defect tracked separately"
     },
     {
       "moduleId": "m68741",
       "tag": "sub",
       "diff": -1,
-      "class": "benign",
-      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+      "class": "known-loss-deferred",
+      "reason": "RC1 glossary <term> lost <sub>: grindarorka (ΔH_lattice)",
+      "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
     },
     {
       "moduleId": "m68752",
       "tag": "sub",
       "diff": -1,
       "class": "benign",
-      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+      "reason": "nested-<sub> normalization; content present (Total→Heildar)"
     },
     {
       "moduleId": "m68768",
       "tag": "emphasis",
       "diff": -1,
       "class": "benign",
-      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+      "reason": "empty self-closing <emphasis/> in source (zero content)"
     },
     {
       "moduleId": "m68781",
       "tag": "sub",
       "diff": -1,
       "class": "benign",
-      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+      "reason": "nested-<sub> normalization; subscript content present"
     },
     {
       "moduleId": "m68783",
       "tag": "sub",
       "diff": -2,
       "class": "benign",
-      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+      "reason": "nested-<sub> normalization; subscript content present"
     },
     {
       "moduleId": "m68786",
       "tag": "emphasis",
       "diff": -1,
       "class": "benign",
-      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+      "reason": "empty self-closing <emphasis/> in source (inside <sub>)"
     },
     {
       "moduleId": "m68789",
       "tag": "term",
       "diff": -1,
-      "class": "benign",
-      "reason": "term-annotation / legacy {{term}} marker edge; term text present in prose"
+      "class": "known-loss-deferred",
+      "reason": "<term>rate equations</term> glossary anchor dropped",
+      "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
     },
     {
       "moduleId": "m68791",
       "tag": "sub",
       "diff": -1,
-      "class": "benign",
-      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+      "class": "known-loss-deferred",
+      "reason": "RC1 glossary <term> lost <sub>: half-life t_1/2",
+      "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
     },
     {
       "moduleId": "m68793",
       "tag": "emphasis",
       "diff": -1,
       "class": "benign",
-      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+      "reason": "empty self-closing <emphasis/>; prior virkjun<sub>a</sub>rorka corruption resolved (absent in fresh)"
     },
     {
       "moduleId": "m68805",
       "tag": "emphasis",
       "diff": 1,
       "class": "benign",
-      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+      "reason": "benign over-wrap (Icelandic rephrase adds one italic span)"
     },
     {
       "moduleId": "m68811",
       "tag": "emphasis",
       "diff": -1,
       "class": "benign",
-      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+      "reason": "benign over-wrap on one K_sp. WS5: fresh re-inject flips this to +1 — update entry at WS5 (see F3 audit)"
     },
     {
       "moduleId": "m68818",
@@ -147,8 +153,9 @@
       "moduleId": "m68822",
       "tag": "sub",
       "diff": -1,
-      "class": "benign",
-      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+      "class": "known-loss-deferred",
+      "reason": "RC1 glossary <term> lost <sub>: kerspenna E_cell",
+      "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
     },
     {
       "moduleId": "m68826",
@@ -162,43 +169,46 @@
       "moduleId": "m68844",
       "tag": "emphasis",
       "diff": -1,
-      "class": "benign",
-      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+      "class": "known-loss-deferred",
+      "reason": "RC1 glossary <term> lost <emphasis>: e_g orbitals",
+      "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
     },
     {
       "moduleId": "m68844",
       "tag": "sub",
       "diff": -1,
-      "class": "benign",
-      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+      "class": "known-loss-deferred",
+      "reason": "RC1 glossary <term> lost <sub>: t_2g orbitals",
+      "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
     },
     {
       "moduleId": "m68846",
       "tag": "emphasis",
       "diff": -2,
       "class": "benign",
-      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+      "reason": "2× empty self-closing <emphasis/> in source (zero content)"
     },
     {
       "moduleId": "m68846",
       "tag": "sup",
       "diff": -1,
       "class": "benign",
-      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+      "reason": "nested/normalization; superscript content present"
     },
     {
       "moduleId": "m68847",
       "tag": "emphasis",
       "diff": -1,
-      "class": "benign",
-      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+      "class": "known-loss-deferred",
+      "reason": "RC3 <emphasis class=\"emphasis-one\"> not round-tripped by extractor (ether R-O-R)",
+      "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
     },
     {
       "moduleId": "m68848",
       "tag": "emphasis",
       "diff": -1,
       "class": "benign",
-      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+      "reason": "empty self-closing <emphasis/> in source (zero content)"
     },
     {
       "moduleId": "m68854",
@@ -212,22 +222,25 @@
       "moduleId": "m68860",
       "tag": "emphasis",
       "diff": 2,
-      "class": "benign",
-      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+      "class": "known-loss-deferred",
+      "reason": "RC4 duplicated-title emphasis drift (appendices)",
+      "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
     },
     {
       "moduleId": "m68860",
       "tag": "title",
       "diff": 1,
-      "class": "benign",
-      "reason": "duplicate-title artifact (untranslated + translated heading both emitted); no content loss"
+      "class": "known-loss-deferred",
+      "reason": "RC4 untranslated-EN title in place + phantom title grafted onto wrong para",
+      "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
     },
     {
       "moduleId": "m68863",
       "tag": "emphasis",
       "diff": 1,
-      "class": "benign",
-      "reason": "fidelity-checker counting artifact (nested marker / normalization); text + inline formatting present in output"
+      "class": "known-loss-deferred",
+      "reason": "RC4 table-header EN residue (ΔH kJ/mol duplicated) + column drift",
+      "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
     }
   ]
 }
