@@ -2619,6 +2619,7 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
   // strip the expanded <media> from the segment text before injection.
   const keptFigureIds = new Set();
   const keptTableIds = new Set();
+  const keptContainerTableIds = new Set();
   const parasWithFigures = new Map(); // paraId → Set of figure IDs
 
   for (const child of element.content || []) {
@@ -2728,7 +2729,10 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
       if (figId) keptFigureIds.add(figId);
     } else if (child.nodeName === 'table') {
       const tId = child.getAttribute('id');
-      if (tId && !exampleInlineTableIds.has(tId)) keptTableIds.add(tId);
+      if (tId && !exampleInlineTableIds.has(tId)) {
+        keptTableIds.add(tId);
+        keptContainerTableIds.add(tId);
+      }
     }
   }
 
@@ -2761,6 +2765,14 @@ function buildExampleDom(element, getSeg, equations, originalCnxml, ctx) {
 
   // Step 5: Serialize
   let result = serializeCnxmlFragment(exampleEl);
+  result = translateKeptContainerTables(
+    result,
+    keptContainerTableIds,
+    ctx,
+    getSeg,
+    originalCnxml,
+    element.id
+  );
 
   // Step 6: Deduplicate media and equations.
   // The DOM preserves block children (equations) inside list items, but the
@@ -2927,6 +2939,7 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
   const replacedParaIds = new Set();
   const keptFigureIds = new Set();
   const keptTableIds = new Set();
+  const keptContainerTableIds = new Set();
 
   function processContent(contentArray) {
     for (const child of contentArray || []) {
@@ -3010,7 +3023,10 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
         if (figId) keptFigureIds.add(figId);
       } else if (child.nodeName === 'table') {
         const tId = child.getAttribute('id');
-        if (tId && !exerciseInlineTableIds.has(tId)) keptTableIds.add(tId);
+        if (tId && !exerciseInlineTableIds.has(tId)) {
+          keptTableIds.add(tId);
+          keptContainerTableIds.add(tId);
+        }
       }
     }
   }
@@ -3041,6 +3057,14 @@ function buildExerciseDom(element, getSeg, equations, originalCnxml, ctx) {
   }
 
   let result = serializeCnxmlFragment(exerciseEl);
+  result = translateKeptContainerTables(
+    result,
+    keptContainerTableIds,
+    ctx,
+    getSeg,
+    originalCnxml,
+    element.id
+  );
   result = deduplicateMedia(result);
   result = deduplicateElementsById(result, 'equation');
 
@@ -3223,6 +3247,7 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
   // Replace paragraphs and lists via DOM
   const replacedParaIds = new Set();
   const keptTableIds = new Set();
+  const keptContainerTableIds = new Set();
   for (const child of element.content || []) {
     if (child.type === 'para' && child.id && child.segmentId) {
       const paraEl = doc.getElementById(child.id);
@@ -3285,7 +3310,10 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
   for (const child of Array.from(noteEl.childNodes)) {
     if (child.nodeName === 'table') {
       const tId = child.getAttribute('id');
-      if (tId && !noteInlineTableIds.has(tId)) keptTableIds.add(tId);
+      if (tId && !noteInlineTableIds.has(tId)) {
+        keptTableIds.add(tId);
+        keptContainerTableIds.add(tId);
+      }
     }
   }
   if (ctx && ctx.tablesHandledInContainers) {
@@ -3301,7 +3329,16 @@ function buildNoteDom(element, getSeg, equations, originalCnxml, ctx) {
     new Set((ctx?.inlineTables || []).map((t) => t.tableId))
   );
 
-  return serializeCnxmlFragment(noteEl);
+  let result = serializeCnxmlFragment(noteEl);
+  result = translateKeptContainerTables(
+    result,
+    keptContainerTableIds,
+    ctx,
+    getSeg,
+    originalCnxml,
+    element.id
+  );
+  return result;
 }
 
 /**

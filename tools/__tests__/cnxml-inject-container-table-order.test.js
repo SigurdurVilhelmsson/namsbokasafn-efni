@@ -65,3 +65,25 @@ describe('m68789 renders both the inline (F4) and direct-child (OC-B) tables onc
     expect((out.match(/<table\b[^>]*\bid="fs-idm205685856"/g) || []).length).toBe(1);
   });
 });
+
+it('translates a table kept in place inside an example (OC-B fix)', () => {
+  const CNXML_T = `<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Doc</title>
+<content>
+<section id="s1"><title>S1</title>
+<example id="ex1"><title>Ex</title>
+<para id="ep1">Intro.</para>
+<table id="tX" class="unnumbered" summary="s"><tgroup cols="2"><tbody><row><entry>Reactants</entry><entry>Products</entry></row></tbody></tgroup></table>
+</example>
+</content>
+</document>`;
+  const { segments, structure, equations, inlineAttrs } = extractSegments(CNXML_T);
+  const parsed = parseSegments(formatSegmentsMarkdown(segments));
+  // Translate EVERY extracted segment (Map) to a distinct Icelandic-marked string.
+  for (const id of [...parsed.keys()]) parsed.set(id, 'ISL_' + parsed.get(id));
+  const out = buildCnxml(structure, parsed, equations, CNXML_T, {}, inlineAttrs).cnxml;
+  expect(out).toContain('ISL_Reactants'); // kept container-table cell translated
+  expect(out).toContain('ISL_Products');
+  expect(out).not.toMatch(/<entry[^>]*>Reactants<\/entry>/); // no bare source cell survives
+  expect((out.match(/<table\b[^>]*\bid="tX"/g) || []).length).toBe(1); // position/uniqueness (OC-B) held
+});
