@@ -48,6 +48,26 @@ Two distinct mechanisms, both in `renderExample`:
 **Delivery cost:** render-only — code fix + re-render (no re-inject) + golden/baseline regen +
 gate verification.
 
+#### (b3) — SAME bug class in `renderSection` + `renderNote` (found during fix, advisor-flagged)
+
+The identical `[^<]+` title regex also lived in `renderSection` (~935/941), `renderNote`
+(~1439/1448), and a non-reader-facing end-of-chapter extractor (~2342). These are the *same
+root cause* with a **different symptom**: because these matchers are *unanchored* (first
+`<title>` anywhere in the block), a markup section/note title didn't leak — it was **dropped or
+mis-captured**:
+- `renderSection`: a section whose own title had markup (`K<sub>sp</sub> og leysni`,
+  `<em>sp</em><sup>2</sup>-blending`) failed `[^<]+`, so the regex matched the *next plain
+  title deeper in the section* — a nested example's "Lausn" — and rendered **"Lausn" as the
+  section `<h2>"**, or dropped the heading entirely (8-2 lost 4 hybridization headings).
+- `renderNote`: a markup note title (`Koffínlosun … CO<sub>2</sub>`) rendered no `<h4>`.
+
+The count>1 leak-scan was blind to this (no leaked `<title>` element). Fixed by the minimal
+`[^<]`→`[\s\S]` swap (preserving the unanchored first-title semantics; NOT the anchored
+`matchLeadingTitle`). Reader-facing improvement across **6 additional files** (8-2, 10-4, 15-1,
+16-2, 16-4, appendices-2). Regression test: `cnxml-render-note-dom.test.js` markup-title case.
+This makes fix (b) a real bug-*class* fix, matching the plan's "consolidate the title regexes"
+intent.
+
 ### Signature (a) — EXTRACTION stage (`tools/cnxml-extract.js`) — ~5 modules
 
 Symptom (12-5 m68793): the 3 collision-theory postulates render **twice** — once as the
