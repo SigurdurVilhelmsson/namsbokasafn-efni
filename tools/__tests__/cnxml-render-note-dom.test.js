@@ -85,3 +85,18 @@ describe('renderNote — nested-block hoist (characterization)', () => {
     expect(html.indexOf('<p id="p1">')).toBeLessThan(html.indexOf('<ul id="L">'));
   });
 });
+
+describe('renderNote — title with inline markup (WS5 residual fix b, class hardening)', () => {
+  it('does not leak a markup note <title>; renders it as the note h4', () => {
+    // Same [^<]+ bug class fixed in renderExample: a note <title> carrying
+    // <sub>/<emphasis> must be captured whole, not leaked as literal text.
+    const html = renderNoteContent(
+      '<note id="N"><title>Útreikningur á <emphasis effect="italics">K</emphasis><sub>a</sub></title>' +
+        '<para id="p">Texti.</para></note>'
+    );
+    // only the single <head> title remains (no leaked body <title>)
+    expect(html.split('<title>').length - 1).toBe(1);
+    // the note heading renders the markup
+    expect(html).toMatch(/<h4>Útreikningur á <em>K<\/em><sub>a<\/sub><\/h4>/);
+  });
+});

@@ -112,6 +112,19 @@ function translateTitle(title) {
   return TITLE_TRANSLATIONS[trimmed] || title;
 }
 
+// A CNXML <title> may contain inline markup (<emphasis>, <sub>, <sup>, <m:math>).
+// The old /<title>([^<]+)<\/title>/ pattern used `[^<]+`, which stops at the first
+// child tag, so it silently failed on such titles — the WS5 residual example
+// corruption (title leaked as literal text, and the next plain-text para-title
+// wrongly became the example <h4>). Match the LEADING <title>…</title>
+// non-greedily so the inner markup is captured whole.
+const LEADING_TITLE_RE = /^\s*<title>([\s\S]*?)<\/title>\s*/;
+function matchLeadingTitle(content) {
+  const m = content.match(LEADING_TITLE_RE);
+  if (!m) return { title: null, rest: content };
+  return { title: m[1], rest: content.replace(LEADING_TITLE_RE, '') };
+}
+
 // =====================================================================
 // CONFIGURATION
 // =====================================================================
@@ -510,6 +523,7 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     equationCounter: 0,
     exerciseCounter: 0, // Add exercise counter
     renderedFigureIds: new Set(), // Track rendered figures to prevent duplicates
+    renderedTableIds: new Set(), // Track rendered tables (example-child vs section pass)
     undispatchedBlocks: [], // Loud seam: block elements no dispatch map handled
   };
 
@@ -917,14 +931,17 @@ function renderSection(section, context, level) {
     `<section${id ? ` id="${escapeAttr(id)}"` : ''}${className ? ` class="${escapeAttr(className)}"` : ''}>`
   );
 
-  // Extract and render title
-  const titleMatch = section.content.match(/<title>([^<]+)<\/title>/);
+  // Extract and render title. [\s\S]*? (not [^<]+) so a section <title> carrying
+  // inline markup (<sub>/<em>/math) is captured whole and not leaked — same bug
+  // class fixed for examples via matchLeadingTitle. h-level already renders markup
+  // via processInlineContent, so this is output-neutral for plain titles.
+  const titleMatch = section.content.match(/<title>([\s\S]*?)<\/title>/);
   if (titleMatch) {
     lines.push(`  <h${level}>${processInlineContent(titleMatch[1], context)}</h${level}>`);
   }
 
   // Remove title from content
-  const contentWithoutTitle = section.content.replace(/<title>[^<]*<\/title>/, '');
+  const contentWithoutTitle = section.content.replace(/<title>[\s\S]*?<\/title>/, '');
 
   // Process nested sections
   const nestedSections = extractNestedElements(contentWithoutTitle, 'section');
@@ -1421,8 +1438,11 @@ function renderNote(note, context, extraClass = '') {
     lines.push(`  <p class="note-type">${escapeHtml(typeLabel)}</p>`);
   }
 
-  // Title
-  const titleMatch = note.content.match(/<title>([^<]+)<\/title>/);
+  // Title. [\s\S]*? (not [^<]+) so a note <title> with inline markup is captured
+  // whole and not leaked (same bug class fixed for examples). Dormant on current
+  // chem note titles ("Svar:"/"Answer:") but hardens for biology (species/sub/sup);
+  // the h4 already renders markup via processInlineContent — output-neutral today.
+  const titleMatch = note.content.match(/<title>([\s\S]*?)<\/title>/);
   if (titleMatch) {
     lines.push(`  <h4>${processInlineContent(translateTitle(titleMatch[1]), context)}</h4>`);
   }
@@ -1431,7 +1451,7 @@ function renderNote(note, context, extraClass = '') {
   // order via the DOM seam. Standalone <media> not wrapped in a <figure> — e.g.
   // the "Check Your Learning" answer image — is handled because the walk visits
   // it as its own block child (figures render their own media, so no double-count).
-  const contentWithoutTitle = note.content.replace(/<title>[^<]*<\/title>/, '');
+  const contentWithoutTitle = note.content.replace(/<title>[\s\S]*?<\/title>/, '');
   const blocks = renderBlockChildrenInOrder(contentWithoutTitle, context, {
     para: renderPara,
     figure: renderFigure,
@@ -1483,17 +1503,19 @@ function renderExample(example, context) {
   let exampleTitle = null;
 
   for (const para of allParas) {
-    // Check if this paragraph starts with a <title> element (allowing whitespace)
-    const titleMatch = para.content.match(/^\s*<title>([^<]+)<\/title>/);
-    if (titleMatch && !exampleTitle) {
-      exampleTitle = titleMatch[1];
+    // The leading <title> may carry inline markup (E<sub>a</sub>); matchLeadingTitle
+    // captures it whole — the old [^<]+ pattern skipped such titles and fell through
+    // to the next plain-text para-title.
+    const { title } = matchLeadingTitle(para.content);
+    if (title) {
+      exampleTitle = title;
       break;
     }
   }
 
-  // Fallback: look for standalone title
+  // Fallback: first standalone <title> anywhere in the example content.
   if (!exampleTitle) {
-    const standaloneTitle = example.content.match(/<title>([^<]+)<\/title>/);
+    const standaloneTitle = example.content.match(/<title>([\s\S]*?)<\/title>/);
     if (standaloneTitle) {
       exampleTitle = standaloneTitle[1];
     }
@@ -1514,19 +1536,21 @@ function renderExample(example, context) {
   let exampleTitleStripped = false;
 
   const paraHandler = (para, ctx) => {
-    const titleMatch = para.content.match(/^\s*<title>([^<]+)<\/title>/);
+    // matchLeadingTitle handles a <title> that carries inline markup; the old
+    // [^<]+ pattern left such a title un-stripped, leaking it as literal text.
+    const { title, rest } = matchLeadingTitle(para.content);
     let paraTitle = null;
     let contentWithoutTitle = para.content;
 
-    if (titleMatch) {
-      if (!exampleTitleStripped && exampleTitle && titleMatch[1] === exampleTitle) {
+    if (title) {
+      if (!exampleTitleStripped && exampleTitle && title === exampleTitle) {
         // The example title — already rendered as the <h4> header; strip it.
-        contentWithoutTitle = para.content.replace(/^\s*<title>[^<]+<\/title>\s*/, '');
+        contentWithoutTitle = rest;
         exampleTitleStripped = true;
       } else {
         // A section title (e.g. "Lausn", "Athugaðu þekkingu") — render as a heading.
-        paraTitle = titleMatch[1];
-        contentWithoutTitle = para.content.replace(/^\s*<title>[^<]+<\/title>\s*/, '');
+        paraTitle = title;
+        contentWithoutTitle = rest;
       }
     }
 
@@ -1541,8 +1565,10 @@ function renderExample(example, context) {
 
     const parts = [];
     if (paraTitle) {
+      // processInlineContent (not escapeHtml) so a para-title carrying inline
+      // markup renders it; plain titles ("Lausn", "Svar") are unchanged.
       parts.push(
-        `<p class="para-title"><strong>${escapeHtml(translateTitle(paraTitle))}</strong></p>`
+        `<p class="para-title"><strong>${processInlineContent(translateTitle(paraTitle), ctx)}</strong></p>`
       );
     }
     if (contentWithoutTitle.trim()) {
@@ -1568,6 +1594,10 @@ function renderExample(example, context) {
       equation: renderEquation,
       figure: renderFigure,
       media: renderMedia,
+      // A <table> that is a direct child of the example renders in place here;
+      // renderTable registers its id in context.renderedTableIds so the later
+      // section-level pass skips the duplicate (m68793 tables 12.31/12.32).
+      table: renderTable,
     },
     // Hoist block-level <equation> out of a <para> so it renders ONCE as a
     // centered display block, not as a cramped inline <span class="math-inline">
@@ -1733,6 +1763,17 @@ function renderExercise(exercise, context) {
 function renderTable(table, context) {
   const lines = [];
   const id = table.id || null;
+
+  // A table that is a direct child of an example/note renders in place via that
+  // block's dispatcher; skip the later section-level pass so it renders once
+  // (mirrors renderFigure / context.renderedFigureIds).
+  if (id && context.renderedTableIds && context.renderedTableIds.has(id)) {
+    return '';
+  }
+  if (id && context.renderedTableIds) {
+    context.renderedTableIds.add(id);
+  }
+
   const className = table.attributes.class || null;
 
   // Get table number from chapter-wide map for data attribute (composite key for cross-module uniqueness)
@@ -2303,8 +2344,10 @@ function extractEndOfChapterSections(cnxml) {
     while ((match = pattern.exec(cnxml)) !== null) {
       const sectionContent = match[1];
 
-      // Extract title if present
-      const titleMatch = sectionContent.match(/<title>([^<]+)<\/title>/);
+      // Extract title if present. [\s\S]*? (not [^<]+) for the same markup-title
+      // bug class; here the value is a fallback that titleIs overrides downstream,
+      // so it is not reader-facing, but kept consistent.
+      const titleMatch = sectionContent.match(/<title>([\s\S]*?)<\/title>/);
       const title = titleMatch ? titleMatch[1] : config.titleEn;
 
       sections.push({
