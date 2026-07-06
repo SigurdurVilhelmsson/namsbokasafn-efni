@@ -99,7 +99,7 @@ Add `tableNodesById,` to the `ctx` object literal (next to `tablesHandledInConta
 
 - [ ] **Step 5: Export `collectTableNodes`**
 
-Add `collectTableNodes` to the `module.exports` block (beside `assertNoMarkerResidue` at ~line 3955).
+Add `collectTableNodes` to the ES `export { … }` block (~line 3946, beside `assertNoMarkerResidue`).
 
 - [ ] **Step 6: Run test to verify it passes**
 
@@ -208,7 +208,7 @@ function translateKeptContainerTables(result, keptContainerTableIds, ctx, getSeg
 Note: the `.replace(blockRe, () => translated)` uses a function replacement so `$`-sequences in the
 translated CNXML are not interpreted.
 
-- [ ] **Step 4: Export the helper** (module.exports, ~line 3955)
+- [ ] **Step 4: Export the helper** (ES `export { … }` block, ~line 3946)
 
 Add `translateKeptContainerTables,`.
 
@@ -445,9 +445,9 @@ function assertTableCellsTranslated(output, tableNodesById, getSeg, moduleId) {
   assertTableCellsTranslated(output, tableNodesById, getSeg, structure.moduleId);
 ```
 
-- [ ] **Step 5: Export the gate + normalizer** (module.exports)
+- [ ] **Step 5: Export the gate** (ES `export { … }` block, ~line 3946)
 
-Add `assertTableCellsTranslated,` (export `normalizeForTableGate` too if a test needs it directly — not required).
+Add `assertTableCellsTranslated,`.
 
 - [ ] **Step 6: Run test to verify it passes**
 
@@ -463,77 +463,88 @@ git commit -m "feat(inject): assertTableCellsTranslated gate — fail loud on IS
 
 ---
 
-### Task 5: Real-module regression (m68710/m68789), golden regen, full suite
+### Task 5: Real-module regression (m68710, in-memory) + full suite — CODE-ONLY
+
+**Scope decision (pre-flight, lead-approved 2026-07-06):** this PR is **code + tests only — no
+content bytes, no golden regeneration.** Reason: `renderTranslatedModule` (the golden harness) reads
+the **on-disk `03-translated`**, which — untouched by a code-only change — still holds the pre-OC-B
+(correct, Icelandic) state, so the render goldens already **pass 7/7** on this branch and the committed
+`m68710` golden already shows Icelandic tables. Re-injecting/regenerating goldens here would (a) bake
+WS4 (`rate→hraði`) changes that belong to WS5 into this PR, and (b) commit a *partial* `03-translated`
+(one module fixed, ~29 stale). Golden regeneration + the full re-inject happen together in **WS5
+Phase 1** (see "After the plan"). So: **do NOT re-inject to disk, do NOT run `UPDATE_GOLDEN`, do NOT
+commit any `books/**` file.** The real-module check below builds m68710 **in memory** (reads committed
+inputs, never writes).
 
 **Files:**
-- Modify: `tools/__tests__/fixtures/render-golden/ch04/m68710.html`,
-  `tools/__tests__/fixtures/render-golden/ch12/m68789.html` (regenerate)
 - Test: `tools/__tests__/cnxml-inject-m68710-table-regression.test.js` (create)
+- (No `books/**` or golden fixture changes.)
 
 **Interfaces:**
-- Consumes: the full fixed inject path (Tasks 1–4).
+- Consumes: `buildCnxml(structure, segments, equations, originalCnxml, options, inlineAttrs)` → `{ cnxml }`
+  (existing); `parseSegments(content)` → Map (existing).
 
-- [ ] **Step 1: Write the real-module regression test**
+- [ ] **Step 1: Write the in-memory real-module regression test**
 
 ```js
 // tools/__tests__/cnxml-inject-m68710-table-regression.test.js
 import { describe, it, expect } from 'vitest';
-import { execFileSync } from 'child_process';
 import { readFileSync } from 'fs';
+import { join } from 'path';
+import { buildCnxml, parseSegments } from '../cnxml-inject.js';
 
-// Re-inject m68710 (mt-preview) and assert the Reactants/charge table is Icelandic again.
-describe('m68710 container-table translation (OC-B regression guard)', () => {
-  it('emits Icelandic table headers, not English source', () => {
-    execFileSync('node', [
-      'tools/cnxml-inject.js', '--book', 'efnafraedi-2e',
-      '--chapter', '4', '--module', 'm68710', '--allow-incomplete',
-    ], { cwd: process.cwd() });
-    const out = readFileSync('books/efnafraedi-2e/03-translated/mt-preview/ch04/m68710.cnxml', 'utf8');
-    expect(out).toContain('<entry align="left">Hvarfefni</entry>');
-    expect(out).toContain('<entry align="left">Hleðsla</entry>');
-    expect(out).not.toContain('<entry align="left">Reactants</entry>');
-    expect(out).not.toContain('<entry align="left">charge</entry>');
+// Build m68710 in memory from its COMMITTED inputs (no disk writes) and assert the
+// Reactants/charge container table is translated to Icelandic (OC-B regression guard).
+const B = join(import.meta.dirname, '..', '..', 'books', 'efnafraedi-2e');
+
+describe('m68710 container-table translation (OC-B regression, in-memory)', () => {
+  it('emits Icelandic table cells, not English source', () => {
+    const structure = JSON.parse(
+      readFileSync(join(B, '02-structure', 'ch04', 'm68710-structure.json'), 'utf8')
+    );
+    const equations = JSON.parse(
+      readFileSync(join(B, '02-structure', 'ch04', 'm68710-equations.json'), 'utf8')
+    );
+    const segments = parseSegments(
+      readFileSync(join(B, '02-mt-output', 'ch04', 'm68710-segments.is.md'), 'utf8')
+    );
+    const originalCnxml = readFileSync(join(B, '01-source', 'ch04', 'm68710.cnxml'), 'utf8');
+
+    // inlineAttrs={} is fine: table cell text comes from segments, not inline attrs.
+    const { cnxml } = buildCnxml(structure, segments, equations, originalCnxml, {}, {});
+
+    expect(cnxml).toContain('<entry align="left">Hvarfefni</entry>');
+    expect(cnxml).toContain('<entry align="left">Hleðsla</entry>');
+    expect(cnxml).not.toContain('<entry align="left">Reactants</entry>');
+    expect(cnxml).not.toContain('<entry align="left">charge</entry>');
   });
 });
 ```
 
-Note: this test **writes** `03-translated/mt-preview/ch04/m68710.cnxml`. That file is regenerated by
-WS5 anyway; leave the re-injected file in place (it is the correct, fixed output) — do not restore it.
-Confirm no other tracked files changed by this run (`git status`).
-
-- [ ] **Step 2: Run it to verify it fails on the current (unfixed working-tree) state**
-
-If Tasks 1–4 are already applied, this will PASS. To see it fail first, `git stash` the
-`cnxml-inject.js` changes, run, observe FAIL (English), then `git stash pop`. (Optional if confident.)
+- [ ] **Step 2: Run it — must PASS with the fix (Tasks 1–4) applied**
 
 Run: `npx vitest run tools/__tests__/cnxml-inject-m68710-table-regression.test.js`
-Expected (with fix applied): PASS.
+Expected: PASS. (To confirm it genuinely guards the bug, optionally `git stash` the `cnxml-inject.js`
+changes, run → observe FAIL with English `Reactants`/`charge`, then `git stash pop`.)
 
-- [ ] **Step 3: Regenerate the two render goldens the bug broke**
+- [ ] **Step 3: Confirm no `books/**` or fixture bytes changed**
 
-Run: `UPDATE_GOLDEN=1 npx vitest run tools/__tests__/cnxml-render-golden.test.js`
+Run: `git status --porcelain`
+Expected: only the new test file (+ any Task 1–4 code) — **no `books/**`, no `render-golden/**`.**
+If a `books/**` file appears, a step wrote to disk — investigate and restore it.
 
-- [ ] **Step 4: Review the golden diff — it must be ONLY intended changes**
-
-Run: `git diff tools/__tests__/fixtures/render-golden/`
-Expected: m68710 diff shows table cells `Reactants→Hvarfefni`, `charge→Hleðsla` (+ the already-verified
-WS4 relabels `acid→sýra`, `oxidation→oxun`); m68789 shows WS4 `rate→hraði` + any table IS restoration.
-**No English-reverted table cells may remain.** If anything else changed, STOP and investigate.
-
-- [ ] **Step 5: Run the full suite from repo root**
+- [ ] **Step 4: Run the full suite from repo root**
 
 Run: `npm test`
-Expected: PASS — including `cnxml-render-golden.test.js` (the gate that caught this) and all inject
-suites. Note the count vs the pre-change baseline (~1889 passing before this work).
+Expected: PASS — including `cnxml-render-golden.test.js` (green because on-disk `03-translated` is
+unchanged) and all inject suites. Baseline before this work: ~1889 passing; expect that plus the new
+tests from Tasks 1–5.
 
-- [ ] **Step 6: Commit**
+- [ ] **Step 5: Commit**
 
 ```bash
-git add tools/__tests__/fixtures/render-golden/ch04/m68710.html \
-        tools/__tests__/fixtures/render-golden/ch12/m68789.html \
-        tools/__tests__/cnxml-inject-m68710-table-regression.test.js \
-        books/efnafraedi-2e/03-translated/mt-preview/ch04/m68710.cnxml
-git commit -m "test(inject): m68710 OC-B table regression guard + regenerate goldens [OC-B fix]"
+git add tools/__tests__/cnxml-inject-m68710-table-regression.test.js
+git commit -m "test(inject): m68710 OC-B container-table regression guard (in-memory, code-only) [OC-B fix]"
 ```
 
 ---
@@ -546,8 +557,10 @@ git commit -m "test(inject): m68710 OC-B table regression guard + regenerate gol
 - Only OC-B direct-child (non-inline) tables re-translated → Task 3 `keptContainerTableIds` (separate
   from `keptTableIds`, populated only at the direct-child branch). ✓
 - OC-B ordering unchanged → Tasks 3 (registration/skip untouched; OC-B order tests must still pass). ✓
-- Tests: unit fix, unit gate, real-module regression, golden regen, full suite → Tasks 2–5. ✓
+- Tests: unit fix (T2/T3), unit gate (T4), in-memory real-module regression (T5), full suite (T5). ✓
 - Fail loud (no silent source fallback) → Task 2 + Task 4 throws. ✓
+- **Code-only PR (no content bytes, no golden regen)** — scope decision above; golden regeneration +
+  full re-inject deferred to WS5 (see "After the plan" + WS5 followup checklist). ✓
 
 **Placeholder scan:** none — every step has concrete code/commands.
 
@@ -562,9 +575,27 @@ buildCnxml(...).cnxml` round-trip (confirmed against the file's existing imports
 introduced. `parseSegments` returns a Map — the test overrides via `.set`. `getSeg` reads
 `segments.get(id)` (confirmed).
 
-## After the plan
+## After the plan — WS5 followup checklist (deferred from this PR; do NOT let these fall through)
 
-Resume WS5 from Phase 1 (its runbook) once `npm test` is green: re-inject (new gate must pass) →
-re-render → regenerate `render-fidelity-baseline.json` from the fixed render → re-do the F3
-fidelity-allowlist re-triage (table-independent, re-verify). Cross-book: the gate is book-agnostic and
-protects biology onboarding for free.
+This PR is **code-only**. The following were deliberately deferred to **WS5 Phase 1** (runbook
+`docs/plans/2026-07-06-ws5-reinject-rerender-sync-runbook.md`) so they happen consistently for the
+whole book, not piecemeal. Each is now the WS5 owner's responsibility:
+
+1. **Re-inject both tracks** with the fixed tool — the **new `assertTableCellsTranslated` gate must
+   pass** for all 149 modules (it will hard-fail any residual IS→EN table cell). Handle the 15
+   false-positive-residue modules with per-module `--allow-incomplete` (list in the WS5 audit /
+   chemistry-clean-slate memory).
+2. **Regenerate ALL render goldens** (`UPDATE_GOLDEN=1 npx vitest run tools/__tests__/cnxml-render-golden.test.js`)
+   from the fixed on-disk `03-translated`, and **review the diff**: expect WS4 relabels
+   (`rate→hraði`, `mol→mól`, `acid→sýra`, …) on m68683/m68710/m68727/m68789 and **Icelandic table
+   cells** on m68710/m68789 — **no English-reverted table cell may remain**. Commit the regenerated
+   goldens with the WS5 content.
+3. **Regenerate `render-fidelity-baseline.json` from the FIXED render** (the one captured during the
+   halted WS5 attempt was from the buggy render and was discarded).
+4. **Re-do the F3 fidelity-allowlist re-triage** against fixed output (the halted attempt's emphasis
+   reconciliations — m68733 −4→−3, add emphasis known-loss-deferred for m68741/m68791/m68822/m68842,
+   m68811 −1→+1 — are table-independent and should re-apply; re-verify).
+5. **Verify the ~30 formerly-regressed modules** now show Icelandic table cells + comma-decimals in
+   both `03-translated` and rendered HTML before sync/deploy.
+
+Cross-book: the gate is book-agnostic — it protects biology onboarding for free at its next inject.
