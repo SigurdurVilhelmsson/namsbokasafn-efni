@@ -1525,6 +1525,22 @@ function collectFigureCaptions(elements, map) {
 }
 
 /**
+ * Recursively map every <table> node's id to its structure node (with .rows/.cells).
+ * Used so container builders can translate direct-child tables they keep in place
+ * (their structure node is a sibling of the container, not held by the builder). OC-B fix.
+ */
+function collectTableNodes(elements, map) {
+  for (const el of elements) {
+    if (el.type === 'table' && el.id) {
+      map[el.id] = el;
+    }
+    if (el.content) {
+      collectTableNodes(el.content, map);
+    }
+  }
+}
+
+/**
  * Recursively collect equation IDs from block-level elements in the structure tree.
  * These are equations handled by buildEquation() from the original CNXML — if the
  * same equationId appears in a [[MATH:N]] placeholder, reverseInlineMarkup() should
@@ -1746,6 +1762,8 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
   // Build context for tracking figures handled inside notes/examples (to avoid duplicates)
   const figureCaptions = {};
   collectFigureCaptions(structure.content, figureCaptions);
+  const tableNodesById = {};
+  collectTableNodes(structure.content, tableNodesById);
   const figuresHandledInNotes = new Set();
   const figuresHandledInContainers = new Set();
   const tablesHandledInContainers = new Set();
@@ -1754,6 +1772,7 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
     figuresHandledInNotes,
     figuresHandledInContainers,
     tablesHandledInContainers,
+    tableNodesById,
     inlineMedia: structure.inlineMedia || [],
     inlineTables: structure.inlineTables || [],
     imageMapping: options.imageMapping || new Map(),
@@ -3953,6 +3972,7 @@ export {
   restoreNewlines,
   annotateInlineTerms,
   assertNoMarkerResidue,
+  collectTableNodes,
   parseSegments,
   reverseInlineMarkup,
   buildCnxml,
