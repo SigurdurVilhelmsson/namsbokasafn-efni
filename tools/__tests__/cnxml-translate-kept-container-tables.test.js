@@ -35,4 +35,18 @@ describe('translateKeptContainerTables', () => {
       translateKeptContainerTables(result, new Set(['t9']), ctx, getSeg, originalCnxml, 'mX')
     ).toThrow(/t9/);
   });
+
+  it('returns result unchanged (no throw) when ctx has no tableNodesById (isolated-builder context)', () => {
+    const result = `<example><table id="t1"><row><entry>Reactants</entry></row></table></example>`;
+    expect(
+      translateKeptContainerTables(result, new Set(['t1']), {}, getSeg, originalCnxml, 'mX')
+    ).toBe(result);
+  });
+
+  it('returns result unchanged (no throw) when ctx itself is undefined (isolated-builder context)', () => {
+    const result = `<example><table id="t1"><row><entry>Reactants</entry></row></table></example>`;
+    expect(
+      translateKeptContainerTables(result, new Set(['t1']), undefined, getSeg, originalCnxml, 'mX')
+    ).toBe(result);
+  });
 });

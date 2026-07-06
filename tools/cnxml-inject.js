@@ -2198,6 +2198,14 @@ function buildTable(element, getSeg, originalCnxml) {
  * Replace, inside an already-serialized container fragment, each OC-B-kept direct-child
  * table's SOURCE block with its buildTable() translation. Fail loud rather than leave a
  * source (untranslated) table in the published output.
+ *
+ * Contract: if `ctx.tableNodesById` (the structure map) is absent entirely — i.e. this is
+ * an isolated-builder/library call (e.g. a DOM-comparison test calling buildExampleDom/
+ * buildExerciseDom/buildNoteDom directly, without the full buildCnxml context) rather than
+ * a full document build — this is a no-op: `result` is returned unchanged. `buildCnxml`
+ * always provides `ctx.tableNodesById` for real production builds. If the map IS present
+ * but a specific kept-table id is missing from it (or its translation/serialized block is
+ * missing), that is a real production gap and still throws.
  * @param {Set<string>} keptContainerTableIds - OC-B direct-child, non-inline table ids only.
  */
 function translateKeptContainerTables(
@@ -2208,6 +2216,11 @@ function translateKeptContainerTables(
   originalCnxml,
   moduleId
 ) {
+  // No table-node map → isolated-builder/library context (not a full buildCnxml
+  // document build). Leave tables as the caller's DOM has them; buildCnxml always
+  // provides ctx.tableNodesById for real production builds.
+  if (!ctx || !ctx.tableNodesById) return result;
+
   for (const tableId of keptContainerTableIds) {
     const node = ctx && ctx.tableNodesById && ctx.tableNodesById[tableId];
     if (!node) {
