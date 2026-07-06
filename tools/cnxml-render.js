@@ -112,6 +112,19 @@ function translateTitle(title) {
   return TITLE_TRANSLATIONS[trimmed] || title;
 }
 
+// A CNXML <title> may contain inline markup (<emphasis>, <sub>, <sup>, <m:math>).
+// The old /<title>([^<]+)<\/title>/ pattern used `[^<]+`, which stops at the first
+// child tag, so it silently failed on such titles — the WS5 residual example
+// corruption (title leaked as literal text, and the next plain-text para-title
+// wrongly became the example <h4>). Match the LEADING <title>…</title>
+// non-greedily so the inner markup is captured whole.
+const LEADING_TITLE_RE = /^\s*<title>([\s\S]*?)<\/title>\s*/;
+function matchLeadingTitle(content) {
+  const m = content.match(LEADING_TITLE_RE);
+  if (!m) return { title: null, rest: content };
+  return { title: m[1], rest: content.replace(LEADING_TITLE_RE, '') };
+}
+
 // =====================================================================
 // CONFIGURATION
 // =====================================================================
@@ -1483,17 +1496,19 @@ function renderExample(example, context) {
   let exampleTitle = null;
 
   for (const para of allParas) {
-    // Check if this paragraph starts with a <title> element (allowing whitespace)
-    const titleMatch = para.content.match(/^\s*<title>([^<]+)<\/title>/);
-    if (titleMatch && !exampleTitle) {
-      exampleTitle = titleMatch[1];
+    // The leading <title> may carry inline markup (E<sub>a</sub>); matchLeadingTitle
+    // captures it whole — the old [^<]+ pattern skipped such titles and fell through
+    // to the next plain-text para-title.
+    const { title } = matchLeadingTitle(para.content);
+    if (title) {
+      exampleTitle = title;
       break;
     }
   }
 
-  // Fallback: look for standalone title
+  // Fallback: first standalone <title> anywhere in the example content.
   if (!exampleTitle) {
-    const standaloneTitle = example.content.match(/<title>([^<]+)<\/title>/);
+    const standaloneTitle = example.content.match(/<title>([\s\S]*?)<\/title>/);
     if (standaloneTitle) {
       exampleTitle = standaloneTitle[1];
     }
@@ -1514,19 +1529,21 @@ function renderExample(example, context) {
   let exampleTitleStripped = false;
 
   const paraHandler = (para, ctx) => {
-    const titleMatch = para.content.match(/^\s*<title>([^<]+)<\/title>/);
+    // matchLeadingTitle handles a <title> that carries inline markup; the old
+    // [^<]+ pattern left such a title un-stripped, leaking it as literal text.
+    const { title, rest } = matchLeadingTitle(para.content);
     let paraTitle = null;
     let contentWithoutTitle = para.content;
 
-    if (titleMatch) {
-      if (!exampleTitleStripped && exampleTitle && titleMatch[1] === exampleTitle) {
+    if (title) {
+      if (!exampleTitleStripped && exampleTitle && title === exampleTitle) {
         // The example title — already rendered as the <h4> header; strip it.
-        contentWithoutTitle = para.content.replace(/^\s*<title>[^<]+<\/title>\s*/, '');
+        contentWithoutTitle = rest;
         exampleTitleStripped = true;
       } else {
         // A section title (e.g. "Lausn", "Athugaðu þekkingu") — render as a heading.
-        paraTitle = titleMatch[1];
-        contentWithoutTitle = para.content.replace(/^\s*<title>[^<]+<\/title>\s*/, '');
+        paraTitle = title;
+        contentWithoutTitle = rest;
       }
     }
 
@@ -1541,8 +1558,10 @@ function renderExample(example, context) {
 
     const parts = [];
     if (paraTitle) {
+      // processInlineContent (not escapeHtml) so a para-title carrying inline
+      // markup renders it; plain titles ("Lausn", "Svar") are unchanged.
       parts.push(
-        `<p class="para-title"><strong>${escapeHtml(translateTitle(paraTitle))}</strong></p>`
+        `<p class="para-title"><strong>${processInlineContent(translateTitle(paraTitle), ctx)}</strong></p>`
       );
     }
     if (contentWithoutTitle.trim()) {

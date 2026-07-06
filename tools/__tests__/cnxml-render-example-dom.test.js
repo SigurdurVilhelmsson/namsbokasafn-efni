@@ -61,3 +61,27 @@ describe('renderExample — direct-child figure (isInsidePara guard retired)', (
     expect(html.split('EX_FIG.jpg').length - 1).toBe(1); // exactly once
   });
 });
+
+describe('renderExample — title containing inline markup (WS5 residual fix b)', () => {
+  it('does not leak a markup <title> as literal text; renders it as the example h4', () => {
+    // Real m68793 shape: the example title lives in the FIRST para's <title> and
+    // contains <emphasis>/<sub> markup. The old /<title>([^<]+)<\/title>/ regex
+    // could not match it → title leaked as literal <title> AND the next para's
+    // plain-text title ("Lausn") wrongly became the example <h4>.
+    const html = renderExampleContent(
+      '<example id="E">' +
+        '<para id="p1"><title>Ákvörðun á <emphasis effect="italics">E</emphasis><sub>a</sub></title>Vandamálstexti.</para>' +
+        '<para id="p2"><title>Lausn</title>Lausnartexti.</para>' +
+        '</example>'
+    );
+    // 1. no literal <title> leaked into the body — only the single <head> title
+    // remains (the exact "body-leaked <title> past the head" QA signature).
+    expect(html.split('<title>').length - 1).toBe(1);
+    // 2. the real title is the example heading, with its markup rendered
+    expect(html).toMatch(/<h4>Ákvörðun á <em>E<\/em><sub>a<\/sub><\/h4>/);
+    // 3. "Lausn" is a para-title in its own position, NOT the example h4
+    expect(html).not.toContain('<h4>Lausn</h4>');
+    expect(html).toContain('class="para-title"');
+    expect(html.indexOf('Vandamálstexti')).toBeLessThan(html.indexOf('Lausn'));
+  });
+});
