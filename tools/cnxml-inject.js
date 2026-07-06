@@ -2195,6 +2195,44 @@ function buildTable(element, getSeg, originalCnxml) {
 }
 
 /**
+ * Replace, inside an already-serialized container fragment, each OC-B-kept direct-child
+ * table's SOURCE block with its buildTable() translation. Fail loud rather than leave a
+ * source (untranslated) table in the published output.
+ * @param {Set<string>} keptContainerTableIds - OC-B direct-child, non-inline table ids only.
+ */
+function translateKeptContainerTables(
+  result,
+  keptContainerTableIds,
+  ctx,
+  getSeg,
+  originalCnxml,
+  moduleId
+) {
+  for (const tableId of keptContainerTableIds) {
+    const node = ctx && ctx.tableNodesById && ctx.tableNodesById[tableId];
+    if (!node) {
+      throw new Error(
+        `translateKeptContainerTables: no structure node for kept container table id="${tableId}" in module ${moduleId} — cannot translate; refusing to emit source table.`
+      );
+    }
+    const translated = buildTable(node, getSeg, originalCnxml);
+    if (!translated) {
+      throw new Error(
+        `translateKeptContainerTables: buildTable returned null for table id="${tableId}" in module ${moduleId}.`
+      );
+    }
+    const blockRe = new RegExp(`<table[^>]*\\sid="${tableId}"[^>]*>[\\s\\S]*?<\\/table>`);
+    if (!blockRe.test(result)) {
+      throw new Error(
+        `translateKeptContainerTables: source table block id="${tableId}" not found in serialized container for module ${moduleId}.`
+      );
+    }
+    result = result.replace(blockRe, () => translated);
+  }
+  return result;
+}
+
+/**
  * Expand [[TABLE:id]] placeholders in a para's translated text into full <table>
  * markup, recording each expanded id so the container's post-strip pass keeps it.
  * Mirrors buildPara's inline-table restoration (cnxml-inject.js ~1853). (F4)
@@ -3973,6 +4011,7 @@ export {
   annotateInlineTerms,
   assertNoMarkerResidue,
   collectTableNodes,
+  translateKeptContainerTables,
   parseSegments,
   reverseInlineMarkup,
   buildCnxml,
