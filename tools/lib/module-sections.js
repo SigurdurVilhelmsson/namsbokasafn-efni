@@ -34,17 +34,20 @@ export function legacyStructComparator(a, b) {
  * collection-order.json object. Numeric chapters use chapters[].modules;
  * 'appendices' uses appendixModules; everything else (chapter 0 / preface,
  * unknown chapter, or a null object) returns null → caller uses the fallback.
+ * Returns a shallow copy of the id array (never the live reference into the
+ * memoized collection-order object) so a caller can sort/mutate it freely
+ * without corrupting the process-wide cache.
  * @param {object|null} co - parsed collection-order.json (or null)
  * @param {number|string} chapter
  * @returns {string[]|null}
  */
 export function authoritativeOrder(co, chapter) {
   if (!co) return null;
-  if (chapter === 'appendices') return co.appendixModules ?? null;
+  if (chapter === 'appendices') return co.appendixModules ? [...co.appendixModules] : null;
   const chapterNum = Number(chapter);
   if (!Number.isInteger(chapterNum)) return null;
   const entry = co.chapters?.find((c) => Number(c.chapter) === chapterNum);
-  return entry?.modules ?? null;
+  return entry?.modules ? [...entry.modules] : null;
 }
 
 /**
@@ -76,6 +79,10 @@ export function sortByAuthoritativeOrder(structEntries, authIds, { book, chapter
   return [...listed, ...stragglers];
 }
 
+// Cached per book for the process lifetime and never invalidated: the source
+// file lives under 01-source/, which is READ-ONLY and provenance-locked, so it
+// cannot change under a running process. authoritativeOrder() returns copies,
+// so the cached object is never mutated by callers.
 const _collectionOrderCache = new Map();
 
 /**
