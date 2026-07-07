@@ -40,6 +40,14 @@
 </section>
 <section id="fs-idp14008096">
 <title>Rafneikvæðni</title>
+<para id="fs-idm42504736">Það hvort efnatengi er óskautað eða skautað samgilt ræðst af eiginleika frumeindanna sem mynda efnatengið sem kallast <term id="term-00005">rafneikvæðni (e. electronegativity)</term>. Rafneikvæðni er mælikvarði á tilhneigingu frumeindar til að draga að sér rafeindir (eða rafeindaþéttleika). Hún ákvarðar hvernig sameiginlegu rafeindirnar dreifast á milli frumeindanna tveggja í efnatengi. Því sterkara sem aðdráttarkraftur frumeindar er á rafeindir í efnatengjum sínum, þeim mun meiri er rafneikvæðni hennar. Rafeindir í skautuðu samgildu tengi færast í átt að rafneikvæðari frumeindinni; þannig er rafneikvæðari frumeindin sú sem hefur neikvæða hlutahleðslu. Því meiri sem mismunurinn er á rafneikvæðni, þeim mun skautaðri er dreifing rafeindanna og þeim mun stærri eru hlutahleðslur frumeindanna.</para>
+<para id="fs-idm49461456"><link target-id="CNX_Chem_07_02_ENTable"/> sýnir rafneikvæðnigildi frumefnanna eins og þau voru sett fram af einum frægasta efnafræðingi tuttugustu aldar: Linus Pauling (<link target-id="CNX_Chem_07_02_Pauling"/>). Almennt eykst rafneikvæðni frá vinstri til hægri yfir lotu í lotukerfinu og minnkar niður eftir hóp. Þannig hafa málmleysingjar, sem eru efst til hægri, tilhneigingu til að hafa hæstu rafneikvæðnina, þar sem flúor er rafneikvæðasta frumefnið af öllum (EN = 4,0). Málmar hafa tilhneigingu til að vera minna rafneikvæð frumefni og málmar í hópi 1 hafa lægstu rafneikvæðnina. Athugið að eðalgös eru undanskilin á þessari mynd vegna þess að þessar frumeindir deila yfirleitt ekki rafeindum með öðrum frumeindum þar sem þær hafa fullt gildishvolf. (Þótt eðalgassambönd eins og XeO<sub>2</sub> séu til, geta þau aðeins myndast við erfiðar aðstæður og passa því ekki vel inn í almenna líkanið um rafneikvæðni.)</para>
+<figure id="CNX_Chem_07_02_ENTable">
+<media id="fs-idp15011408" alt="Part of the periodic table is shown. A downward-facing arrow is drawn to the left of the table and labeled, “Decreasing electronegativity,” while a right-facing arrow is drawn above the table and labeled “Increasing electronegativity.” The electronegativity for almost all the elements is given.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_02_ENTable.jpg"/>
+</media>
+<caption>Rafneikvæðnigildin sem Pauling leiddi út fylgja fyrirsjáanlegum lotubundnum eiginleikum, þar sem hærri rafneikvæðni er efst til hægri í lotukerfinu.</caption>
+</figure>
 <section id="fs-idm115216">
 <title>Rafneikvæðni samanborið við rafsækni</title>
 <para id="fs-idp19127744">Við verðum að gæta þess að rugla ekki saman rafneikvæðni og rafsækni. Rafsækni frumefnis er mælanlegur eðlisfræðilegur stærð, þ.e. orkan sem losnar eða er tekin upp þegar einangruð frumeind í gasfasa tekur til sín rafeind, mæld í kJ/mól. Rafneikvæðni lýsir aftur á móti því hversu fast frumeind dregur að sér rafeindir í efnatengi. Hún er víddlaus stærð sem er reiknuð út, ekki mæld. Pauling leiddi út fyrstu gildin fyrir rafneikvæðni með því að bera saman orkuna sem þarf til að rjúfa mismunandi gerðir efnatengja. Hann valdi geðþóttakvarða sem náði frá 0 til 4.</para>
@@ -163,14 +171,6 @@
 </tgroup>
 </table>
 </section>
-<para id="fs-idm42504736">Það hvort efnatengi er óskautað eða skautað samgilt ræðst af eiginleika frumeindanna sem mynda efnatengið sem kallast <term id="term-00005">rafneikvæðni (e. electronegativity)</term>. Rafneikvæðni er mælikvarði á tilhneigingu frumeindar til að draga að sér rafeindir (eða rafeindaþéttleika). Hún ákvarðar hvernig sameiginlegu rafeindirnar dreifast á milli frumeindanna tveggja í efnatengi. Því sterkara sem aðdráttarkraftur frumeindar er á rafeindir í efnatengjum sínum, þeim mun meiri er rafneikvæðni hennar. Rafeindir í skautuðu samgildu tengi færast í átt að rafneikvæðari frumeindinni; þannig er rafneikvæðari frumeindin sú sem hefur neikvæða hlutahleðslu. Því meiri sem mismunurinn er á rafneikvæðni, þeim mun skautaðri er dreifing rafeindanna og þeim mun stærri eru hlutahleðslur frumeindanna.</para>
-<para id="fs-idm49461456"><link target-id="CNX_Chem_07_02_ENTable"/> sýnir rafneikvæðnigildi frumefnanna eins og þau voru sett fram af einum frægasta efnafræðingi tuttugustu aldar: Linus Pauling (<link target-id="CNX_Chem_07_02_Pauling"/>). Almennt eykst rafneikvæðni frá vinstri til hægri yfir lotu í lotukerfinu og minnkar niður eftir hóp. Þannig hafa málmleysingjar, sem eru efst til hægri, tilhneigingu til að hafa hæstu rafneikvæðnina, þar sem flúor er rafneikvæðasta frumefnið af öllum (EN = 4,0). Málmar hafa tilhneigingu til að vera minna rafneikvæð frumefni og málmar í hópi 1 hafa lægstu rafneikvæðnina. Athugið að eðalgös eru undanskilin á þessari mynd vegna þess að þessar frumeindir deila yfirleitt ekki rafeindum með öðrum frumeindum þar sem þær hafa fullt gildishvolf. (Þótt eðalgassambönd eins og XeO<sub>2</sub> séu til, geta þau aðeins myndast við erfiðar aðstæður og passa því ekki vel inn í almenna líkanið um rafneikvæðni.)</para>
-<figure id="CNX_Chem_07_02_ENTable">
-<media id="fs-idp15011408" alt="Part of the periodic table is shown. A downward-facing arrow is drawn to the left of the table and labeled, “Decreasing electronegativity,” while a right-facing arrow is drawn above the table and labeled “Increasing electronegativity.” The electronegativity for almost all the elements is given.">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_02_ENTable.jpg"/>
-</media>
-<caption>Rafneikvæðnigildin sem Pauling leiddi út fylgja fyrirsjáanlegum lotubundnum eiginleikum, þar sem hærri rafneikvæðni er efst til hægri í lotukerfinu.</caption>
-</figure>
 </section>
 <section id="fs-idm4705056" class="summary">
 <title>Lykilhugtök og samantekt</title>
