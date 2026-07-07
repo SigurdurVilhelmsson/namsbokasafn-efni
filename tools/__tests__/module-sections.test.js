@@ -4,6 +4,18 @@ import {
   sortByAuthoritativeOrder,
   legacyStructComparator,
 } from '../lib/module-sections.js';
+import { buildModuleSections, loadCollectionOrder } from '../lib/module-sections.js';
+import fs from 'fs';
+import path from 'path';
+
+const REPO_ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', '..');
+const readCO = (book) =>
+  JSON.parse(
+    fs.readFileSync(
+      path.join(REPO_ROOT, 'books', book, '01-source', 'collection-order.json'),
+      'utf-8'
+    )
+  );
 
 const CO = {
   chapters: [
@@ -116,5 +128,52 @@ describe('legacyStructComparator', () => {
     expect(
       [e('b', null), e('a', null)].sort(legacyStructComparator).map((x) => x.filename)
     ).toEqual(['a', 'b']);
+  });
+});
+
+describe('loadCollectionOrder', () => {
+  it('loads the object for a real book', () => {
+    const co = loadCollectionOrder('efnafraedi-2e');
+    expect(co).toBeTruthy();
+    expect(Array.isArray(co.chapters)).toBe(true);
+  });
+  it('returns null for a book with no collection-order.json (no throw)', () => {
+    expect(loadCollectionOrder('nonexistent-book-xyz')).toBeNull();
+  });
+});
+
+describe('buildModuleSections — collection-order authority (efnafraedi-2e)', () => {
+  it('places m68733 at section 3 (the ch06 null-sectionOrder bug fix)', () => {
+    const sections = buildModuleSections('efnafraedi-2e', 6);
+    expect(sections['m68733'].section).toBe('3');
+    // siblings keep their positions; intro is 0
+    expect(sections['m68729'].section).toBe('1');
+    expect(sections['m68732'].section).toBe('2');
+    expect(sections['m68734'].section).toBe('4');
+    expect(sections['m68735'].section).toBe('5');
+    expect(sections['m68728'].section).toBe('0'); // intro
+  });
+
+  it('orders the appendices by appendixModules', () => {
+    const sections = buildModuleSections('efnafraedi-2e', 'appendices');
+    const co = readCO('efnafraedi-2e');
+    // non-appended sanity: every appendixModules id has a section, in ascending order
+    const ordered = co.appendixModules
+      .filter((id) => sections[id])
+      .sort((a, b) => Number(sections[a].section) - Number(sections[b].section));
+    expect(ordered).toEqual(co.appendixModules.filter((id) => sections[id]));
+  });
+
+  it('is inert everywhere else: non-intro section order matches collection-order for all 21 chapters', () => {
+    const co = readCO('efnafraedi-2e');
+    for (const ch of co.chapters) {
+      const sections = buildModuleSections('efnafraedi-2e', ch.chapter);
+      // reconstruct rendered order from assigned section numbers, excluding intro ('0')
+      const rendered = ch.modules
+        .filter((id) => sections[id] && sections[id].section !== '0')
+        .sort((a, b) => Number(sections[a].section) - Number(sections[b].section));
+      const expected = ch.modules.filter((id) => sections[id] && sections[id].section !== '0');
+      expect(rendered).toEqual(expected); // collection-order == assigned order
+    }
   });
 });

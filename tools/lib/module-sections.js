@@ -76,6 +76,23 @@ export function sortByAuthoritativeOrder(structEntries, authIds, { book, chapter
   return [...listed, ...stragglers];
 }
 
+const _collectionOrderCache = new Map();
+
+/**
+ * Load and memoize a book's collection-order.json (the authoritative module
+ * order, generated at intake by download-source.js). Returns null if the file
+ * is absent — a book without one uses the legacy comparator.
+ * @param {string} book
+ * @returns {object|null}
+ */
+export function loadCollectionOrder(book) {
+  if (_collectionOrderCache.has(book)) return _collectionOrderCache.get(book);
+  const p = path.join(REPO_ROOT, 'books', book, '01-source', 'collection-order.json');
+  const co = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null;
+  _collectionOrderCache.set(book, co);
+  return co;
+}
+
 /**
  * Format chapter for use in directory paths.
  * @param {number|string} chapter - Chapter number or "appendices"
@@ -174,17 +191,12 @@ export function buildModuleSections(book, chapter) {
     data: JSON.parse(fs.readFileSync(path.join(structDir, f), 'utf-8')),
   }));
 
-  structEntries.sort((a, b) => {
-    const aOrder = a.data.sectionOrder;
-    const bOrder = b.data.sectionOrder;
-    // If both have sectionOrder, sort numerically
-    if (aOrder != null && bOrder != null) return aOrder - bOrder;
-    // If only one has it, prefer the one with sectionOrder first
-    if (aOrder != null) return -1;
-    if (bOrder != null) return 1;
-    // Fallback: alphabetical by filename
-    return a.filename.localeCompare(b.filename);
-  });
+  // Order by the authoritative collection-order.json when it covers this
+  // chapter/appendix; otherwise fall back to the legacy sectionOrder sort.
+  const authIds = authoritativeOrder(loadCollectionOrder(book), chapter);
+  const orderedEntries = authIds
+    ? sortByAuthoritativeOrder(structEntries, authIds, { book, chapter })
+    : [...structEntries].sort(legacyStructComparator);
 
   // 2. Read all segment files for Icelandic titles
   // Try both 02-for-mt (old chapters) and 03-faithful-translation (new chapters)
@@ -215,7 +227,7 @@ export function buildModuleSections(book, chapter) {
   const result = {};
   let sectionCounter = 1;
 
-  for (const entry of structEntries) {
+  for (const entry of orderedEntries) {
     const structure = entry.data;
     const moduleId = structure.moduleId;
     const isIntro = structure.documentClass === 'introduction';
