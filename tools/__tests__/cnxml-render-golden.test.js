@@ -28,6 +28,7 @@ const GOLDEN_MODULES = [
   { chapter: 'ch03', moduleId: 'm68699' },
   { chapter: 'ch04', moduleId: 'm68710' },
   { chapter: 'ch05', moduleId: 'm68727' },
+  { chapter: 'ch06', moduleId: 'm68733' },
   { chapter: 'ch07', moduleId: 'm68739' },
   { chapter: 'ch12', moduleId: 'm68789' },
 ];
