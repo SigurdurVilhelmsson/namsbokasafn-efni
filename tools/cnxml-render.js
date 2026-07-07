@@ -734,6 +734,28 @@ function buildHtmlDocument(options) {
  * Preserves document order by interleaving sections and top-level content.
  */
 function renderContent(content, context, _verbose) {
+  const lines = renderChildrenInDocumentOrder(content, context, {
+    excludeSections: context.excludeSections,
+    sectionLevel: 2,
+  });
+
+  // Process glossary (always at end)
+  const glossaryMatch = content.match(/<glossary>([\s\S]*?)<\/glossary>/);
+  if (glossaryMatch) {
+    lines.push(renderGlossary(glossaryMatch[1], context));
+  }
+
+  return lines.join('\n');
+}
+
+/**
+ * Render the direct children of a content block (sections + loose elements)
+ * in document order. Returns one rendered HTML string per child.
+ *
+ * Shared by renderContent (top-level content) and renderSection (nested
+ * sections), so both preserve document order the same way.
+ */
+function renderChildrenInDocumentOrder(content, context, { excludeSections, sectionLevel }) {
   const lines = [];
 
   // Sections to exclude from main content (they have their own pages)
@@ -764,7 +786,7 @@ function renderContent(content, context, _verbose) {
     // Only exclude sections if excludeSections flag is true (default)
     // When rendering standalone sections, excludeSections will be false
     const shouldExclude =
-      context.excludeSections && EXCLUDED_SECTION_CLASSES.some((cls) => sectionClass.includes(cls));
+      excludeSections && EXCLUDED_SECTION_CLASSES.some((cls) => sectionClass.includes(cls));
     if (shouldExclude) {
       continue;
     }
@@ -877,7 +899,7 @@ function renderContent(content, context, _verbose) {
   for (const { type, item } of itemsWithPositions) {
     switch (type) {
       case 'section':
-        lines.push(renderSection(item, context, 2));
+        lines.push(renderSection(item, context, sectionLevel));
         break;
       case 'figure':
         lines.push(renderFigure(item, context));
@@ -909,14 +931,7 @@ function renderContent(content, context, _verbose) {
     }
   }
 
-  // Process glossary (always at end)
-  const glossaryMatch = content.match(/<glossary>([\s\S]*?)<\/glossary>/);
-  if (glossaryMatch) {
-    const glossaryHtml = renderGlossary(glossaryMatch[1], context);
-    lines.push(glossaryHtml);
-  }
-
-  return lines.join('\n');
+  return lines;
 }
 
 /**
@@ -943,240 +958,17 @@ function renderSection(section, context, level) {
   // Remove title from content
   const contentWithoutTitle = section.content.replace(/<title>[\s\S]*?<\/title>/, '');
 
-  // Process nested sections
-  const nestedSections = extractNestedElements(contentWithoutTitle, 'section');
-  for (const nested of nestedSections) {
-    const nestedHtml = renderSection(nested, context, Math.min(level + 1, 6));
-    lines.push(nestedHtml);
-  }
-
-  // Process other content
-  const contentWithoutNestedSections = removeNestedElements(contentWithoutTitle, 'section');
-  const contentHtml = renderTopLevelContent(contentWithoutNestedSections, context);
-  if (contentHtml) {
-    lines.push(contentHtml);
-  }
+  // Render children (loose content + nested subsections) in document order.
+  // excludeSections:false preserves the prior behaviour of rendering all nested
+  // subsections; sectionLevel deepens the heading for nested sections (capped at 6).
+  lines.push(
+    ...renderChildrenInDocumentOrder(contentWithoutTitle, context, {
+      excludeSections: false,
+      sectionLevel: Math.min(level + 1, 6),
+    })
+  );
 
   lines.push('</section>');
-  return lines.join('\n');
-}
-
-/**
- * Render top-level content elements in document order.
- */
-function renderTopLevelContent(content, context) {
-  // Collect all elements with their positions
-  const elementsWithPositions = [];
-
-  // Extract container elements first (notes, examples, exercises contain other elements)
-  const figures = extractNestedElements(content, 'figure');
-  const notes = extractNestedElements(content, 'note');
-  const examples = extractNestedElements(content, 'example');
-  const exercises = extractNestedElements(content, 'exercise');
-  const tables = extractNestedElements(content, 'table');
-
-  // For paragraphs, lists, equations - only extract those NOT inside container elements
-  // Remove container element content before extracting to avoid duplicates
-  // IMPORTANT: Strip examples and exercises BEFORE notes, because examples/exercises
-  // can contain nested notes. If we strip notes first, the example.fullMatch won't
-  // match anymore (the note inside it was already removed from contentForSimpleElements).
-  let contentForSimpleElements = content;
-  for (const example of examples) {
-    if (example.fullMatch) {
-      contentForSimpleElements = contentForSimpleElements.replace(example.fullMatch, '');
-    }
-  }
-  for (const exercise of exercises) {
-    if (exercise.fullMatch) {
-      contentForSimpleElements = contentForSimpleElements.replace(exercise.fullMatch, '');
-    }
-  }
-  for (const note of notes) {
-    if (note.fullMatch) {
-      contentForSimpleElements = contentForSimpleElements.replace(note.fullMatch, '');
-    }
-  }
-  for (const figure of figures) {
-    if (figure.fullMatch) {
-      contentForSimpleElements = contentForSimpleElements.replace(figure.fullMatch, '');
-    }
-  }
-  for (const table of tables) {
-    if (table.fullMatch) {
-      contentForSimpleElements = contentForSimpleElements.replace(table.fullMatch, '');
-    }
-  }
-
-  // Extract standalone media elements (not inside figures — those are already stripped)
-  const medias = extractNestedElements(contentForSimpleElements, 'media');
-  for (const media of medias) {
-    if (media.fullMatch) {
-      contentForSimpleElements = contentForSimpleElements.replace(media.fullMatch, '');
-    }
-  }
-
-  const lists = extractNestedElements(contentForSimpleElements, 'list');
-  for (const lst of lists)
-    if (lst.fullMatch)
-      contentForSimpleElements = contentForSimpleElements.replace(lst.fullMatch, '');
-  const equations = extractElements(contentForSimpleElements, 'equation');
-  const paras = extractElements(contentForSimpleElements, 'para');
-
-  // Add all elements with their positions in the content string
-  for (const figure of figures) {
-    const position = figure.fullMatch
-      ? content.indexOf(figure.fullMatch)
-      : content.indexOf(`id="${figure.id}"`);
-    elementsWithPositions.push({
-      item: figure,
-      type: 'figure',
-      position: position !== -1 ? position : 0,
-    });
-  }
-
-  // Only add notes that are NOT inside examples or exercises
-  // (notes inside examples/exercises will be rendered by renderExample/renderExercise)
-  for (const note of notes) {
-    const notePosition = note.fullMatch
-      ? content.indexOf(note.fullMatch)
-      : content.indexOf(`id="${note.id}"`);
-
-    // Check if this note is inside any example
-    const isInsideExample = examples.some((ex) => {
-      if (!ex.fullMatch || !note.fullMatch) return false;
-      const exPosition = content.indexOf(ex.fullMatch);
-      return notePosition >= exPosition && notePosition < exPosition + ex.fullMatch.length;
-    });
-
-    // Check if this note is inside any exercise
-    const isInsideExercise = exercises.some((ex) => {
-      if (!ex.fullMatch || !note.fullMatch) return false;
-      const exPosition = content.indexOf(ex.fullMatch);
-      return notePosition >= exPosition && notePosition < exPosition + ex.fullMatch.length;
-    });
-
-    if (!isInsideExample && !isInsideExercise) {
-      elementsWithPositions.push({
-        item: note,
-        type: 'note',
-        position: notePosition !== -1 ? notePosition : 0,
-      });
-    }
-  }
-
-  for (const example of examples) {
-    const position = example.fullMatch
-      ? content.indexOf(example.fullMatch)
-      : content.indexOf(`id="${example.id}"`);
-    elementsWithPositions.push({
-      item: example,
-      type: 'example',
-      position: position !== -1 ? position : 0,
-    });
-  }
-
-  for (const exercise of exercises) {
-    const position = exercise.fullMatch
-      ? content.indexOf(exercise.fullMatch)
-      : content.indexOf(`id="${exercise.id}"`);
-    elementsWithPositions.push({
-      item: exercise,
-      type: 'exercise',
-      position: position !== -1 ? position : 0,
-    });
-  }
-
-  for (const table of tables) {
-    const position = table.fullMatch
-      ? content.indexOf(table.fullMatch)
-      : content.indexOf(`id="${table.id}"`);
-    elementsWithPositions.push({
-      item: table,
-      type: 'table',
-      position: position !== -1 ? position : 0,
-    });
-  }
-
-  for (const media of medias) {
-    const position = media.fullMatch
-      ? content.indexOf(media.fullMatch)
-      : content.indexOf(`id="${media.id}"`);
-    elementsWithPositions.push({
-      item: media,
-      type: 'media',
-      position: position !== -1 ? position : 0,
-    });
-  }
-
-  for (const list of lists) {
-    const position = list.fullMatch
-      ? content.indexOf(list.fullMatch)
-      : content.indexOf(`id="${list.id}"`);
-    elementsWithPositions.push({
-      item: list,
-      type: 'list',
-      position: position !== -1 ? position : 0,
-    });
-  }
-
-  for (const eq of equations) {
-    const position = eq.fullMatch
-      ? content.indexOf(eq.fullMatch)
-      : content.indexOf(`id="${eq.id}"`);
-    elementsWithPositions.push({
-      item: eq,
-      type: 'equation',
-      position: position !== -1 ? position : 0,
-    });
-  }
-
-  for (const para of paras) {
-    const idPattern = para.id ? `id="${para.id}"` : null;
-    const position = idPattern ? content.indexOf(idPattern) : content.indexOf('<para');
-    elementsWithPositions.push({
-      item: para,
-      type: 'para',
-      position: position !== -1 ? position : 0,
-    });
-  }
-
-  // Sort by position to preserve document order
-  elementsWithPositions.sort((a, b) => a.position - b.position);
-
-  // Render elements in document order
-  const lines = [];
-  for (const { item, type } of elementsWithPositions) {
-    switch (type) {
-      case 'figure':
-        lines.push(renderFigure(item, context));
-        break;
-      case 'note':
-        lines.push(renderNote(item, context));
-        break;
-      case 'example':
-        lines.push(renderExample(item, context));
-        break;
-      case 'exercise':
-        lines.push(renderExercise(item, context));
-        break;
-      case 'table':
-        lines.push(renderTable(item, context));
-        break;
-      case 'media':
-        lines.push(renderMedia(item, context));
-        break;
-      case 'list':
-        lines.push(renderList(item, context));
-        break;
-      case 'equation':
-        lines.push(renderEquation(item, context));
-        break;
-      case 'para':
-        lines.push(renderPara(item, context));
-        break;
-    }
-  }
-
   return lines.join('\n');
 }
 

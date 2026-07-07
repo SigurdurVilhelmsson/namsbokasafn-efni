@@ -335,6 +335,33 @@ describe('renderCnxmlToHtml', () => {
   });
 });
 
+// ─── renderSection — document-order children (F2) ──────────────────
+
+describe('renderSection — document-order children (F2)', () => {
+  it('renders a section intro paragraph BEFORE its nested subsection', () => {
+    // Regression: renderSection rendered ALL nested <section>s first, then the
+    // parent's own loose content (renderTopLevelContent) — so a reader met a
+    // subsection's body before the parent section's intro paragraph that sets
+    // it up. This is the render half of the STALE-STRUCT reading-order bug.
+    const cnxml = `<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Próf</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml"><md:content-id>m00001</md:content-id><md:title>Próf</md:title></metadata>
+<content>
+<section id="sec-parent"><title>Parent</title>
+<para id="intro">Intro sentence that defines the concept.</para>
+<section id="sub"><title>Sub</title><para id="subp">Sub body.</para></section>
+</section>
+</content>
+</document>`;
+    const { html } = renderCnxmlToHtml(cnxml, { moduleId: 'm00001', chapter: 7, lang: 'is' });
+    const introPos = html.indexOf('Intro sentence');
+    const subPos = html.indexOf('Sub body');
+    expect(introPos).toBeGreaterThan(-1);
+    expect(subPos).toBeGreaterThan(-1);
+    expect(introPos).toBeLessThan(subPos); // intro before subsection
+  });
+});
+
 // ─── Footnotes on compiled end-of-chapter pages (deferred fix A2) ──────
 
 describe('footnotes on the compiled exercises page', () => {
