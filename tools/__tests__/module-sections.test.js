@@ -164,16 +164,40 @@ describe('buildModuleSections — collection-order authority (efnafraedi-2e)', (
     expect(ordered).toEqual(co.appendixModules.filter((id) => sections[id]));
   });
 
-  it('is inert everywhere else: non-intro section order matches collection-order for all 21 chapters', () => {
-    const co = readCO('efnafraedi-2e');
-    for (const ch of co.chapters) {
-      const sections = buildModuleSections('efnafraedi-2e', ch.chapter);
-      // reconstruct rendered order from assigned section numbers, excluding intro ('0')
-      const rendered = ch.modules
+  it.each([...Array(21)].map((_, i) => i + 1).concat(['appendices']))(
+    'chapter %s: authoritative order equals the legacy sectionOrder sort (except ch06, which is fixed)',
+    (chapter) => {
+      const chapterDir =
+        chapter === 'appendices' ? 'appendices' : `ch${String(chapter).padStart(2, '0')}`;
+      const structDir = path.join(REPO_ROOT, 'books', 'efnafraedi-2e', '02-structure', chapterDir);
+      const entries = fs
+        .readdirSync(structDir)
+        .filter((f) => f.endsWith('-structure.json'))
+        .map((f) => ({
+          filename: f,
+          data: JSON.parse(fs.readFileSync(path.join(structDir, f), 'utf-8')),
+        }));
+
+      // Old behaviour: sort by legacyStructComparator, drop the intro.
+      const legacyOrder = [...entries]
+        .sort(legacyStructComparator)
+        .filter((e) => e.data.documentClass !== 'introduction')
+        .map((e) => e.data.moduleId);
+
+      // New behaviour: read the assigned section numbers, drop the intro ('0'), order by them.
+      const sections = buildModuleSections('efnafraedi-2e', chapter);
+      const newOrder = entries
+        .map((e) => e.data.moduleId)
         .filter((id) => sections[id] && sections[id].section !== '0')
         .sort((a, b) => Number(sections[a].section) - Number(sections[b].section));
-      const expected = ch.modules.filter((id) => sections[id] && sections[id].section !== '0');
-      expect(rendered).toEqual(expected); // collection-order == assigned order
+
+      if (chapter === 6) {
+        // The fix: m68733 (null sectionOrder) moves from the legacy chapter-end to its true slot 3.
+        expect(newOrder).not.toEqual(legacyOrder);
+        expect(newOrder.indexOf('m68733')).toBe(2); // 3rd non-intro module → section '3'
+      } else {
+        expect(newOrder).toEqual(legacyOrder); // inert everywhere else
+      }
     }
-  });
+  );
 });
