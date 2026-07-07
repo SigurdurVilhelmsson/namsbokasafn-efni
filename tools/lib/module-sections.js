@@ -13,6 +13,94 @@ import { parseSegmentsMap } from './seg-markers.cjs';
 const REPO_ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', '..');
 
 /**
+ * Legacy structure-entry comparator: sectionOrder ascending (nulls last),
+ * then filename. Retained for the fallback path (chapters/books not covered
+ * by collection-order.json) and for ordering unlisted stragglers.
+ * @param {{filename:string,data:{sectionOrder:?number}}} a
+ * @param {{filename:string,data:{sectionOrder:?number}}} b
+ * @returns {number}
+ */
+export function legacyStructComparator(a, b) {
+  const aOrder = a.data.sectionOrder;
+  const bOrder = b.data.sectionOrder;
+  if (aOrder != null && bOrder != null) return aOrder - bOrder;
+  if (aOrder != null) return -1;
+  if (bOrder != null) return 1;
+  return a.filename.localeCompare(b.filename);
+}
+
+/**
+ * Resolve a chapter to its authoritative ordered module-id list from a parsed
+ * collection-order.json object. Numeric chapters use chapters[].modules;
+ * 'appendices' uses appendixModules; everything else (chapter 0 / preface,
+ * unknown chapter, or a null object) returns null → caller uses the fallback.
+ * Returns a shallow copy of the id array (never the live reference into the
+ * memoized collection-order object) so a caller can sort/mutate it freely
+ * without corrupting the process-wide cache.
+ * @param {object|null} co - parsed collection-order.json (or null)
+ * @param {number|string} chapter
+ * @returns {string[]|null}
+ */
+export function authoritativeOrder(co, chapter) {
+  if (!co) return null;
+  if (chapter === 'appendices') return co.appendixModules ? [...co.appendixModules] : null;
+  const chapterNum = Number(chapter);
+  if (!Number.isInteger(chapterNum)) return null;
+  const entry = co.chapters?.find((c) => Number(c.chapter) === chapterNum);
+  return entry?.modules ? [...entry.modules] : null;
+}
+
+/**
+ * Order structure entries by their moduleId's position in an authoritative
+ * id list. Entries whose id is absent ("stragglers") are appended after all
+ * listed ones (ordered by legacyStructComparator) and a warning is emitted —
+ * this is a data-drift signal, not a fatal error.
+ * @param {Array<{filename:string,data:{moduleId:string,sectionOrder:?number}}>} structEntries
+ * @param {string[]} authIds - authoritative ordered module ids
+ * @param {{book:string,chapter:(number|string)}} ctx
+ * @returns {Array} entries in authoritative order (new array)
+ */
+export function sortByAuthoritativeOrder(structEntries, authIds, { book, chapter }) {
+  const indexOf = new Map(authIds.map((id, i) => [id, i]));
+  const listed = [];
+  const stragglers = [];
+  for (const entry of structEntries) {
+    if (indexOf.has(entry.data.moduleId)) listed.push(entry);
+    else stragglers.push(entry);
+  }
+  listed.sort((a, b) => indexOf.get(a.data.moduleId) - indexOf.get(b.data.moduleId));
+  if (stragglers.length > 0) {
+    stragglers.sort(legacyStructComparator);
+    console.warn(
+      `[module-sections] ${book} chapter ${chapter}: ${stragglers.length} module(s) not in collection-order.json — ` +
+        `placing after listed modules: ${stragglers.map((e) => e.data.moduleId).join(', ')}`
+    );
+  }
+  return [...listed, ...stragglers];
+}
+
+// Cached per book for the process lifetime and never invalidated: the source
+// file lives under 01-source/, which is READ-ONLY and provenance-locked, so it
+// cannot change under a running process. authoritativeOrder() returns copies,
+// so the cached object is never mutated by callers.
+const _collectionOrderCache = new Map();
+
+/**
+ * Load and memoize a book's collection-order.json (the authoritative module
+ * order, generated at intake by download-source.js). Returns null if the file
+ * is absent — a book without one uses the legacy comparator.
+ * @param {string} book
+ * @returns {object|null}
+ */
+export function loadCollectionOrder(book) {
+  if (_collectionOrderCache.has(book)) return _collectionOrderCache.get(book);
+  const p = path.join(REPO_ROOT, 'books', book, '01-source', 'collection-order.json');
+  const co = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf-8')) : null;
+  _collectionOrderCache.set(book, co);
+  return co;
+}
+
+/**
  * Format chapter for use in directory paths.
  * @param {number|string} chapter - Chapter number or "appendices"
  * @returns {string} Formatted chapter string (e.g., "ch01", "appendices")
@@ -110,17 +198,12 @@ export function buildModuleSections(book, chapter) {
     data: JSON.parse(fs.readFileSync(path.join(structDir, f), 'utf-8')),
   }));
 
-  structEntries.sort((a, b) => {
-    const aOrder = a.data.sectionOrder;
-    const bOrder = b.data.sectionOrder;
-    // If both have sectionOrder, sort numerically
-    if (aOrder != null && bOrder != null) return aOrder - bOrder;
-    // If only one has it, prefer the one with sectionOrder first
-    if (aOrder != null) return -1;
-    if (bOrder != null) return 1;
-    // Fallback: alphabetical by filename
-    return a.filename.localeCompare(b.filename);
-  });
+  // Order by the authoritative collection-order.json when it covers this
+  // chapter/appendix; otherwise fall back to the legacy sectionOrder sort.
+  const authIds = authoritativeOrder(loadCollectionOrder(book), chapter);
+  const orderedEntries = authIds
+    ? sortByAuthoritativeOrder(structEntries, authIds, { book, chapter })
+    : [...structEntries].sort(legacyStructComparator);
 
   // 2. Read all segment files for Icelandic titles
   // Try both 02-for-mt (old chapters) and 03-faithful-translation (new chapters)
@@ -151,7 +234,7 @@ export function buildModuleSections(book, chapter) {
   const result = {};
   let sectionCounter = 1;
 
-  for (const entry of structEntries) {
+  for (const entry of orderedEntries) {
     const structure = entry.data;
     const moduleId = structure.moduleId;
     const isIntro = structure.documentClass === 'introduction';
