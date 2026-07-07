@@ -1252,6 +1252,83 @@ describe('annotateInlineTerms — F6 MATH placeholder', () => {
     const { segments } = annotateInlineTerms(is, en);
     expect(segments.get('s2')).toContain('(e. mol2)');
   });
+
+  // m68852: "positron (+10β or +10e)" — the +10β / +10e notation is captured as
+  // [[MATH:N]] placeholders during extraction. Dropping them (old F6 behaviour)
+  // collapsed the annotation to the garble "positron  or". With an `equations`
+  // map supplied, the placeholders should resolve to their visible MathML text
+  // instead of vanishing.
+  it('resolves [[MATH:N]] to visible notation instead of dropping it (m68852 positron case)', () => {
+    const en = new Map([['s3', '{{term}}positron ([[MATH:1]] or [[MATH:2]]){{/term}}']]);
+    const is = new Map([['s3', '{{term}}jáeind{{/term}}']]);
+    const equations = {
+      'math-1': { mathml: '<m:mn>+1</m:mn><m:mn>0</m:mn>β' },
+      'math-2': { mathml: '<m:mn>+1</m:mn><m:mn>0</m:mn>e' },
+    };
+    const { segments } = annotateInlineTerms(is, en, equations);
+    const out = segments.get('s3');
+    expect(out).not.toContain('[[MATH:');
+    expect(out).not.toContain('( or )');
+    expect(out).toContain('+10β');
+    expect(out).toContain('+10e');
+  });
+});
+
+describe('buildCnxml glossary annotation — MATH placeholder resolution (m68852)', () => {
+  // The actual m68852 garble is NOT produced by annotateInlineTerms — the offending
+  // segment is a bare glossary term (m68852:glossary-term:fs-idp72108384-term =
+  // "positron [[MATH:51]] or [[MATH:52]]") with no {{term}} wrapper, so
+  // annotateInlineTerms' enMarkerPattern never matches it. The "(e. ...)" hint for
+  // glossary terms is built separately, inline in buildCnxml's glossary block
+  // (~line 1825), which has its own copy of the same F6 MATH-drop bug. This test
+  // exercises that real site.
+  it('resolves [[MATH:N]] in a glossary term annotation instead of dropping it', () => {
+    const structure = {
+      moduleId: 'm68852',
+      title: { text: 'Test' },
+      content: [],
+      glossary: {
+        items: [
+          {
+            id: 'fs-idp72108384',
+            termSegmentId: 'm68852:glossary-term:fs-idp72108384-term',
+            definitionSegmentId: 'm68852:glossary-def:fs-idp72108384-def',
+          },
+        ],
+      },
+    };
+    const segments = new Map([
+      ['m68852:glossary-term:fs-idp72108384-term', 'jáeind'],
+      ['m68852:glossary-def:fs-idp72108384-def', 'andeind rafeindar'],
+    ]);
+    const enSegments = new Map([
+      ['m68852:glossary-term:fs-idp72108384-term', 'positron [[MATH:51]] or [[MATH:52]]'],
+    ]);
+    const equations = {
+      'math-51': {
+        mathml: '<m:mtext>(</m:mtext><m:mn>+1</m:mn><m:mn>0</m:mn><m:mtext>β</m:mtext>',
+      },
+      'math-52': { mathml: '<m:mn>+1</m:mn><m:mn>0</m:mn><m:mtext>e)</m:mtext>' },
+    };
+    const originalCnxml = `<document xmlns="http://cnx.rice.edu/cnxml">
+<glossary>
+<definition id="fs-idp72108384">
+<term>positron (β or e)</term>
+<meaning id="fs-idp72108384-meaning">antiparticle to the electron</meaning>
+</definition>
+</glossary>
+</document>`;
+
+    const { cnxml } = buildCnxml(structure, segments, equations, originalCnxml, {
+      enSegments,
+      annotateEn: true,
+    });
+
+    expect(cnxml).not.toContain('[[MATH:');
+    expect(cnxml).not.toContain('( or )');
+    expect(cnxml).toContain('+10β');
+    expect(cnxml).toContain('+10e');
+  });
 });
 
 describe('reverseInlineMarkup — F5 nested emphasis over link', () => {
