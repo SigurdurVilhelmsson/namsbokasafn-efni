@@ -1272,6 +1272,21 @@ describe('annotateInlineTerms — F6 MATH placeholder', () => {
     expect(out).toContain('+10β');
     expect(out).toContain('+10e');
   });
+
+  // F3 (Fable): the resolved MATH notation must keep its case — the annotation
+  // lowercases the English prose, but ΔHf° must not become δhf°.
+  it('preserves the CASE of resolved MATH notation (ΔHf° not δhf°)', () => {
+    const en = new Map([['s4', '{{term}}standard enthalpy of formation [[MATH:1]]{{/term}}']]);
+    const is = new Map([['s4', '{{term}}staðalmyndunarvermi{{/term}}']]);
+    const equations = {
+      'math-1': { mathml: '<m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mtext>f</m:mtext><m:mo>°</m:mo>' },
+    };
+    const { segments } = annotateInlineTerms(is, en, equations);
+    const out = segments.get('s4');
+    expect(out).toContain('ΔHf°'); // notation keeps its case
+    expect(out).not.toContain('δhf°'); // not lowercased
+    expect(out).toContain('(e. standard enthalpy of formation'); // prose still lowercased
+  });
 });
 
 describe('buildCnxml glossary annotation — MATH placeholder resolution (m68852)', () => {

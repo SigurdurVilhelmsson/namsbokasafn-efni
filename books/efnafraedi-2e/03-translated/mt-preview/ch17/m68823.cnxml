@@ -302,7 +302,7 @@
 </content>
 <glossary>
 <definition id="fs-idp227872832">
-<term>staðalkerspenna (Ekerfis°) <m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:msubsup><m:mi>E</m:mi><m:mrow><m:mtext>ker</m:mtext></m:mrow><m:mo>°</m:mo></m:msubsup><m:mo stretchy="false">)</m:mo></m:mrow></m:math> (e. standard cell potential (eker°))</term>
+<term>staðalkerspenna (Ekerfis°) <m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:msubsup><m:mi>E</m:mi><m:mrow><m:mtext>ker</m:mtext></m:mrow><m:mo>°</m:mo></m:msubsup><m:mo stretchy="false">)</m:mo></m:mrow></m:math> (e. standard cell potential (Eker°))</term>
 <meaning id="fs-idp227872832-meaning">kerspennan þegar öll hvarfefni og myndefni eru í staðalham (1 bar eða 1 atm fyrir lofttegundir; 1 <emphasis effect="italics">M</emphasis> fyrir uppleyst efni), venjulega við 298,15 K</meaning>
 </definition>
 <definition id="fs-idp198657264">
@@ -310,7 +310,7 @@
 <meaning id="fs-idp198657264-meaning">hálfkerfi byggt á myndun vetnisjóna, með spennuna nákvæmlega 0 V við staðalaðstæður, notað sem almennur viðmiðunarpunktur til að mæla raftroðsspennu</meaning>
 </definition>
 <definition id="fs-idm4867824">
-<term>staðalraftroðsspenna ((EX°)) <m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:msubsup><m:mi>E</m:mi><m:mrow><m:mi>X</m:mi></m:mrow><m:mo>°</m:mo></m:msubsup><m:mo stretchy="false">)</m:mo></m:mrow></m:math> (e. standard electrode potential ((ex°)))</term>
+<term>staðalraftroðsspenna ((EX°)) <m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:msubsup><m:mi>E</m:mi><m:mrow><m:mi>X</m:mi></m:mrow><m:mo>°</m:mo></m:msubsup><m:mo stretchy="false">)</m:mo></m:mrow></m:math> (e. standard electrode potential ((EX°)))</term>
 <meaning id="fs-idm4867824-meaning">raftroðsspenna mæld við staðalaðstæður (1 bar eða 1 atm fyrir lofttegundir; 1 <emphasis effect="italics">M</emphasis> fyrir uppleyst efni) venjulega við 298,15 K</meaning>
 </definition>
 </glossary>

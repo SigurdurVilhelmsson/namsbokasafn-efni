@@ -833,19 +833,19 @@ function annotateInlineTerms(isSegments, enSegments, equations = {}) {
         .replace(/\[\[b:([^\]]+)\]\]/g, '$1')
         .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '$1')
         .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '$1')
-        .replace(/\[\[MATH:(\d+)\]\]/g, (m, n) => {
-          // Resolve to visible notation (MathML stripped to text) rather than
-          // dropping it — dropping collapsed e.g. "positron (+10β or +10e)" to
-          // the garbled "positron ( or )" (m68852).
+        .replace(/\[\[(?!MATH:)[A-Za-z][\w]*:[^\]]*\]\]/g, '') // F6: drop MEDIA / other placeholders, but NOT MATH
+        .toLowerCase()
+        // Resolve MATH AFTER lowercasing so the visible notation keeps its case
+        // (ΔHf° must not become δhf°). Dropping instead of resolving collapsed e.g.
+        // "positron (+10β or +10e)" to the garbled "positron ( or )" (m68852).
+        .replace(/\[\[math:(\d+)\]\]/g, (m, n) => {
           const eq = equations[`math-${n}`];
           if (!eq || !eq.mathml) return ''; // unresolved → drop (old behaviour, rare)
           return eq.mathml
             .replace(/<[^>]+>/g, '')
             .replace(/\s+/g, ' ')
             .trim();
-        })
-        .replace(/\[\[[A-Za-z][\w]*:[^\]]*\]\]/g, '') // F6: still drop MEDIA / any OTHER placeholder
-        .toLowerCase();
+        });
       termIndex++;
 
       // Skip if IS and EN terms are the same (case-insensitive)
@@ -1840,20 +1840,20 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
               .replace(/\[\[b:([^\]]+)\]\]/g, '$1')
               .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '$1')
               .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '$1')
-              .replace(/\[\[MATH:(\d+)\]\]/g, (m, n) => {
-                // Resolve to visible notation (MathML stripped to text) rather than
-                // dropping it — dropping collapsed e.g. "positron ([[MATH:51]] or
-                // [[MATH:52]])" to the garbled "positron ( or )" (m68852 glossary term).
+              .replace(/\[\[(?!MATH:)[A-Za-z][\w]*:[^\]]*\]\]/g, '') // F6: drop MEDIA / other placeholders, but NOT MATH
+              .trim()
+              .toLowerCase()
+              // Resolve MATH AFTER lowercasing so the visible notation keeps its case
+              // (ΔHc° must not become δhc°). Dropping instead of resolving collapsed e.g.
+              // "positron (+10β or +10e)" to the garbled "positron ( or )" (m68852 glossary term).
+              .replace(/\[\[math:(\d+)\]\]/g, (m, n) => {
                 const eq = equations[`math-${n}`];
                 if (!eq || !eq.mathml) return ''; // unresolved → drop (old behaviour, rare)
                 return eq.mathml
                   .replace(/<[^>]+>/g, '')
                   .replace(/\s+/g, ' ')
                   .trim();
-              })
-              .replace(/\[\[[A-Za-z][\w]*:[^\]]*\]\]/g, '') // F6: still drop MEDIA / any OTHER placeholder
-              .trim()
-              .toLowerCase();
+              });
             // Strip any __term__ markers from IS text for comparison
             const isTermClean = annotatedTerm
               .replace(/__([^_]+)__/g, '$1')

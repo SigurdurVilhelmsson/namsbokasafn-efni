@@ -686,7 +686,7 @@ Write a set of quantum numbers for each of the electrons with an [[i:n]] of 4 in
 [[MATH:38]]
 
 <!-- SEG:m68733:glossary-term:fs-idm176142304-term -->
-secondary (angular momentum) quantum number ([[i:l]])
+secondary (angular momentum) quantum number (l)
 
 <!-- SEG:m68733:glossary-def:fs-idm176142304-def -->
 quantum number distinguishing the different shapes of orbitals; it is also a measure of the orbital angular momentum
@@ -698,7 +698,7 @@ atomic orbital
 mathematical function that describes the behavior of an electron in an atom (also called the wavefunction)
 
 <!-- SEG:m68733:glossary-term:fs-idp12032-term -->
-[[i:d]] orbital
+d orbital
 
 <!-- SEG:m68733:glossary-def:fs-idp12032-def -->
 region of space with high electron density that is either four lobed or contains a dumbbell and torus shape; describes orbitals with [[i:l]] = 2.
@@ -716,7 +716,7 @@ electron density
 a measure of the probability of locating an electron in a particular region of space, it is equal to the squared absolute value of the wave function [[i:ψ]]
 
 <!-- SEG:m68733:glossary-term:fs-idm124229040-term -->
-[[i:f]] orbital
+f orbital
 
 <!-- SEG:m68733:glossary-def:fs-idm124229040-def -->
 multilobed region of space with high electron density, describes orbitals with [[i:l]] = 3
@@ -728,13 +728,13 @@ Heisenberg uncertainty principle
 rule stating that it is impossible to exactly determine both certain conjugate dynamical properties such as the momentum and the position of a particle at the same time. The uncertainty principle is a consequence of quantum particles exhibiting wave–particle duality
 
 <!-- SEG:m68733:glossary-term:fs-idm166903488-term -->
-magnetic quantum number ([[i:m[[sub:l]]]])
+magnetic quantum number (ml)
 
 <!-- SEG:m68733:glossary-def:fs-idm166903488-def -->
 quantum number signifying the orientation of an atomic orbital around the nucleus
 
 <!-- SEG:m68733:glossary-term:fs-idm147658080-term -->
-[[i:p]] orbital
+p orbital
 
 <!-- SEG:m68733:glossary-def:fs-idm147658080-def -->
 dumbbell-shaped region of space with high electron density, describes orbitals with [[i:l]] = 1
@@ -746,7 +746,7 @@ Pauli exclusion principle
 specifies that no two electrons in an atom can have the same value for all four quantum numbers
 
 <!-- SEG:m68733:glossary-term:fs-idm140352128-term -->
-principal quantum number ([[i:n]])
+principal quantum number (n)
 
 <!-- SEG:m68733:glossary-def:fs-idm140352128-def -->
 quantum number specifying the shell an electron occupies in an atom
@@ -758,7 +758,7 @@ quantum mechanics
 field of study that includes quantization of energy, wave-particle duality, and the Heisenberg uncertainty principle to describe matter
 
 <!-- SEG:m68733:glossary-term:fs-idm144189680-term -->
-[[i:s]] orbital
+s orbital
 
 <!-- SEG:m68733:glossary-def:fs-idm144189680-def -->
 spherical region of space with high electron density, describes orbitals with [[i:l]] = 0
@@ -770,7 +770,7 @@ shell
 atomic orbitals with the same principal quantum number, [[i:n]]
 
 <!-- SEG:m68733:glossary-term:fs-idm137493808-term -->
-spin quantum number ([[i:m[[sub:s]]]])
+spin quantum number (ms)
 
 <!-- SEG:m68733:glossary-def:fs-idm137493808-def -->
 number specifying the electron spin direction, either [[MATH:39]] or [[MATH:40]]
@@ -782,7 +782,7 @@ subshell
 atomic orbitals with the same values of [[i:n]] and [[i:l]]
 
 <!-- SEG:m68733:glossary-term:fs-idm163956768-term -->
-wavefunction ([[i:ψ]])
+wavefunction (ψ)
 
 <!-- SEG:m68733:glossary-def:fs-idm163956768-def -->
 mathematical description of an atomic orbital that describes the shape of the orbital; it can be used to calculate the probability of finding the electron at any given location in the orbital, as well as dynamical variables such as the energy and the angular momentum

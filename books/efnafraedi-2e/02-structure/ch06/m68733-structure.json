@@ -922,12 +922,6 @@
             {
               "cells": [
                 {
-                  "segmentId": null,
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
                   "segmentId": "m68733:entry:auto-128",
                   "attributes": {
                     "align": "left"
@@ -956,19 +950,7 @@
             {
               "cells": [
                 {
-                  "segmentId": null,
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
                   "segmentId": "m68733:entry:auto-130",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": null,
                   "attributes": {
                     "align": "left"
                   }
@@ -1898,5 +1880,5 @@
       }
     ]
   },
-  "sectionOrder": 3
+  "sectionOrder": null
 }
