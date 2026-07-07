@@ -13,6 +13,70 @@ import { parseSegmentsMap } from './seg-markers.cjs';
 const REPO_ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', '..');
 
 /**
+ * Legacy structure-entry comparator: sectionOrder ascending (nulls last),
+ * then filename. Retained for the fallback path (chapters/books not covered
+ * by collection-order.json) and for ordering unlisted stragglers.
+ * @param {{filename:string,data:{sectionOrder:?number}}} a
+ * @param {{filename:string,data:{sectionOrder:?number}}} b
+ * @returns {number}
+ */
+export function legacyStructComparator(a, b) {
+  const aOrder = a.data.sectionOrder;
+  const bOrder = b.data.sectionOrder;
+  if (aOrder != null && bOrder != null) return aOrder - bOrder;
+  if (aOrder != null) return -1;
+  if (bOrder != null) return 1;
+  return a.filename.localeCompare(b.filename);
+}
+
+/**
+ * Resolve a chapter to its authoritative ordered module-id list from a parsed
+ * collection-order.json object. Numeric chapters use chapters[].modules;
+ * 'appendices' uses appendixModules; everything else (chapter 0 / preface,
+ * unknown chapter, or a null object) returns null → caller uses the fallback.
+ * @param {object|null} co - parsed collection-order.json (or null)
+ * @param {number|string} chapter
+ * @returns {string[]|null}
+ */
+export function authoritativeOrder(co, chapter) {
+  if (!co) return null;
+  if (chapter === 'appendices') return co.appendixModules ?? null;
+  const chapterNum = Number(chapter);
+  if (!Number.isInteger(chapterNum)) return null;
+  const entry = co.chapters?.find((c) => Number(c.chapter) === chapterNum);
+  return entry?.modules ?? null;
+}
+
+/**
+ * Order structure entries by their moduleId's position in an authoritative
+ * id list. Entries whose id is absent ("stragglers") are appended after all
+ * listed ones (ordered by legacyStructComparator) and a warning is emitted —
+ * this is a data-drift signal, not a fatal error.
+ * @param {Array<{filename:string,data:{moduleId:string,sectionOrder:?number}}>} structEntries
+ * @param {string[]} authIds - authoritative ordered module ids
+ * @param {{book:string,chapter:(number|string)}} ctx
+ * @returns {Array} entries in authoritative order (new array)
+ */
+export function sortByAuthoritativeOrder(structEntries, authIds, { book, chapter }) {
+  const indexOf = new Map(authIds.map((id, i) => [id, i]));
+  const listed = [];
+  const stragglers = [];
+  for (const entry of structEntries) {
+    if (indexOf.has(entry.data.moduleId)) listed.push(entry);
+    else stragglers.push(entry);
+  }
+  listed.sort((a, b) => indexOf.get(a.data.moduleId) - indexOf.get(b.data.moduleId));
+  if (stragglers.length > 0) {
+    stragglers.sort(legacyStructComparator);
+    console.warn(
+      `[module-sections] ${book} chapter ${chapter}: ${stragglers.length} module(s) not in collection-order.json — ` +
+        `placing after listed modules: ${stragglers.map((e) => e.data.moduleId).join(', ')}`
+    );
+  }
+  return [...listed, ...stragglers];
+}
+
+/**
  * Format chapter for use in directory paths.
  * @param {number|string} chapter - Chapter number or "appendices"
  * @returns {string} Formatted chapter string (e.g., "ch01", "appendices")
