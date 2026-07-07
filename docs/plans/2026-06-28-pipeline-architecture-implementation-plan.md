@@ -923,6 +923,7 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
 ### 🔴 Breaking
 | Item | Evidence | What & why | Owner |
 |---|---|---|---|
+| **STALE-STRUCT** whole-book `structure.json` predates the July extract fixes → order corruption LIVE | all 148 `structure.json` committed 2026-03 (0 July); WS5 #237 re-*injected* from them, never re-*extracted* → F1/OC-A/B/E/OC-E (all EXTRACTION fixes) NEVER landed in committed/live content. Order gate flags **39** on `main`; **~22 = live nested-`<section>`-hoisted-before-parent reading-order scramble** (Fable-confirmed m68702). Full analysis + per-chapter scope: `docs/audit/2026-07-07-stale-structure-whole-book-analysis.md` | Flagship book ships reader-visible out-of-order prose (concept referenced before defined) in ~22 modules. **The "149/149 clean / armed-for-WS5" order work is fixed IN CODE / on fresh extract, but NOT in committed data.** Fix = book-wide re-extract → re-inject → re-render: **128 modules re-MT-free + edit-safe; 6 need re-MT (→ B4: m68764/770/789/791/793/829)**; verified end-to-end on m68702 | `[build]` **the real "clean efnafraedi" delivery — precedes gate-flip + biology** |
 | **D3** os-embed organic exercises ship English | `cnxml-render.js:146` reads `01-source/exercises/*.json` (EN); 260/342 organic files, 1 961 `os-embed`; no extract/translate path | Every organic end-of-section problem renders untranslated English | `[build]` Track D — **blocks organic onboarding** |
 
 ### 🟠 High
@@ -943,7 +944,7 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
 | **A2-b** missing translation aborts whole chapter | `:3338` try wraps loop, `:3214` throw → `:3525` `exit(1)`; residue-report write `:3505` never reached | A partially-translated chapter fails entirely + no residue manifest written | `[fix]` per-module skip-continue + `finally` write |
 | **B3** producer bracket-marker count check | `api-translate.js:263-266` `validateMarkers` counts `<!-- SEG` only, no `[[` per-type | Inline bracket-marker loss/truncation invisible at MT boundary | `[build]` Track B |
 | **B4** term/footnote still lossy `{{ }}` | `cnxml-extract.js:314`(`{{term}}`)/`:381`(`{{fn}}`); id restore is positional `cnxml-inject.js:1439/1455` | ~2.3% API loss on highest-volume inline elements (brackets ~0%); **dropped marker → silent per-segment id-cascade** (163 cascade-capable segments). B4 markers MUST anchor the id; **do B4 before the Pass-1 review push** (re-extract shifts segments). Decision: `docs/decisions/2026-07-06-re-mt-vs-editor-fixes-and-openstax-remerge.md` | `[build]` Track B |
-| **WS5-a** list/equation double-record (stale structure) | 5 mt-preview mods m68710/727/789/793/801 carry pre-OC-E March `structure.json`; `<item>` block-children double-recorded → 12-5 postulates render twice | OC-E (#227) already fixes extract; re-extract removes it but changes MT segments → needs re-MT → **B4 re-extract+re-MT self-corrects**; live tracked gap until then | `[build]` Track B4 (with RC3/RC4) |
+| **WS5-a** list/equation double-record (stale structure) — **SUBSUMED by STALE-STRUCT** | now confirmed a subset: of the 6 re-MT (seg-id-changing) modules in the whole-book analysis, m68789/m68793 are this family | OC-E (#227) fixes extract; these 6 re-MT modules ride the STALE-STRUCT re-extract but need re-MT → **B4** with RC3/RC4. See `docs/audit/2026-07-07-stale-structure-whole-book-analysis.md` | `[build]` Track B4 (with RC3/RC4) |
 | **C4** inject `buildTable` → DOM | `cnxml-inject.js:1956-2013` positional regex (render-side table bug already fixed separately) | Architecture investment; no active bug — fragile for nested/multi-para cells | `[decision]` Track C — invest? |
 | **C3-a** table escapes note/exercise (example ✅ FIXED PR #238) | `renderExample` now has a `table` dispatcher + `renderedTableIds` dedup; `renderNote`/`renderExercise` dispatch maps still lack `table` (loud seam logs, renders nothing) | example nesting fixed & re-rendered; note/exercise = 0 real nestings in efnafraedi (verified), **re-check at biology onboarding** | `[build]` Track C (biology-gated) |
 | **D2** HANDLED_INLINE/BLOCK drift | `tools/lib/preintake-checks.js:10-57` hand-maintained mirrors; no shared importable list | Probe over/under-reports when extractor/render add a tag (biology likely trigger) | `[fix]` single-source refactor |
@@ -960,7 +961,7 @@ before biology onboarding (they were seen in the audit but aren't on any to-do l
 | **#29** control-char no retry (asymmetric) | `api-translate.js:478` throws → `:803` per-module catch (module fails, **run continues**) vs truncation retries | Module-level only (claim of process-abort was overstated) | `[fix]` |
 | **C3-b** positioner/`indexOf` convergence | `cnxml-render.js:745-860` ~9 `indexOf` section-level positioners | Optional cleanup; silent-drop class already closed by C3 loud seam | `[fix]` cleanup |
 | **A2-c** server-editor residue surface | not wired in `segmentEditorService.js` (by design; A2 gate lives in inject) | Editors get no live untranslated-EN warning on save | `[fix]` future UX |
-| **stale-render** ~8 stale committed CNXML + ~15 inject failures | session worktree-inject finding (baseline≡current); pre-#179..#183 renderer | Stale CNXML lag the renderer; ~15 chapters fail (A2 gate / missing translations) | `[process]` re-render+sync PR; re-translate or grandfather |
+| **stale-render** ~8 stale committed CNXML + ~15 inject failures — **folds into STALE-STRUCT re-extract** | session worktree-inject finding (baseline≡current); pre-#179..#183 renderer | Stale CNXML lag the renderer; ~15 chapters fail (A2 gate / missing translations). The book-wide re-extract→re-inject→re-render (STALE-STRUCT) is the vehicle that clears these too — not a separate PR | `[build]` fold into STALE-STRUCT |
 | **term-§4** inline `dfn` w/o glossary match | term-system audit §4 (e.g. §6.1 `bylgjulengd`, `tíðni`) | Source `<glossary>` never defined them → no hover lookup | `[content]` add to source/supplement |
 | **fixlist-A2** fnref-N collision (latent) | deferred-fixlist — not currently occurring | Only if a compiled exercises page gains ≥2 footnote-bearing sections | `[latent]` re-number page-globally if triggered |
 | **decision-2** table-as-image transcription | m68852/m68854 (efnafraedi ch21) | Tables shipped as images (alt suffices); manual expert transcription not automatable | `[decision]` lead |
@@ -988,10 +989,18 @@ Reconciled against vefur memory — only the CSS work is genuinely open:
 - **Adoption is the binding throughput constraint:** only ~3 faithful modules applied; concordance/TM/repetition aids stay empty until editors review Pass-1 at volume. *(Priority 1 per `2026-06-24-next-session-roadmap.md`.)*
 - **Lead decisions pending:** C4 (invest in the inject DOM port?), table-as-image transcription, grandfather-vs-retranslate the ~15 inject failures, Greynir operational cost.
 
-### Suggested sequencing (cheapest-impactful first)
-1. ✅ ~~**a11y-2 assistive MathML**~~ (done — branch `feat/a11y-2-assistive-mathml`) · **decision-1 residue-report** (🟡, prevents tree dirt) · **B3** (🟡, S).
-2. **A2-a/A2-b** residue robustness (🟡 `[fix]` pair) · **B4** (🟡, M) · **#15** convergence (🟡, needs a policy decision).
-3. Biology content production (foundation done) → re-check **C3-a** when biology injects.
+### Suggested sequencing (cheapest-impactful first) — **REVISED 2026-07-07 for STALE-STRUCT**
+0. **🔴 STALE-STRUCT book-wide re-extract → re-inject → re-render** (128 re-MT-free + edit-safe; 6 → B4). This is the *actual* delivery of the F1/OC-A/B/E/OC-E order work — WS5 only re-injected, so it never landed. Do FIRST: it fixes ~22 live reading-order scrambles, then the order gate drops to ~0 → **its warn→hard flip becomes real** (gate item 2), and it clears **stale-render** too. Precedes editing + biology. (render-3 unnumbered-table fix — PR #244 — folds into this re-render.)
+1. **B4** (🟡, M — now carries the 6 re-MT modules + id-anchoring + before-review) · **decision-1 residue-report** (🟡) · **B3** (🟡, S).
+2. **A2-a/A2-b** residue robustness (🟡 `[fix]` pair) · **#15** convergence (🟡, policy decision) · **F8 math** triage (11 modules, WS4 coverage — separate axis).
+3. Biology content production (foundation done, **gated on step 0 + gate flip**) → re-check **C3-a** when biology injects.
 4. Organic onboarding wave: **D3** (🔴) + **D5** (🟠) together.
 5. Batch the 🟢/⚪ tech-debt (`#43 #37 #30 #29 #38`, C3-b) as a cleanup PR or two.
 6. Lead/infra parallel: **process-1 manual QA**, **infra-1 sync token**, **infra-2 Greynir deploy**, **adoption**.
+
+> **⚠️ Correction to the OC-A/B/E "armed for WS5" note (2026-07-07):** those fixes and F1 are *extraction*
+> fixes; their measured "residual 60→0 / 149/149 clean" is on a **fresh re-extract**, and they committed no
+> bytes. **WS5 (#237) re-*injected* from the March `structure.json`, it did NOT re-*extract*** — so the order
+> work never reached committed/live content (order gate still flags 39 on `main`). The deferral "flip the gate
+> post-WS5" was therefore based on a wrong premise (WS5 ≠ re-extract). The fix is the **STALE-STRUCT re-extract**
+> (step 0). "149/0/0 clean" means the **tag-count** check (order-blind); the book is NOT order-clean live.
