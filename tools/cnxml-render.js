@@ -734,6 +734,28 @@ function buildHtmlDocument(options) {
  * Preserves document order by interleaving sections and top-level content.
  */
 function renderContent(content, context, _verbose) {
+  const lines = renderChildrenInDocumentOrder(content, context, {
+    excludeSections: context.excludeSections,
+    sectionLevel: 2,
+  });
+
+  // Process glossary (always at end)
+  const glossaryMatch = content.match(/<glossary>([\s\S]*?)<\/glossary>/);
+  if (glossaryMatch) {
+    lines.push(renderGlossary(glossaryMatch[1], context));
+  }
+
+  return lines.join('\n');
+}
+
+/**
+ * Render the direct children of a content block (sections + loose elements)
+ * in document order. Returns one rendered HTML string per child.
+ *
+ * Shared by renderContent (top-level content) and renderSection (nested
+ * sections), so both preserve document order the same way.
+ */
+function renderChildrenInDocumentOrder(content, context, { excludeSections, sectionLevel }) {
   const lines = [];
 
   // Sections to exclude from main content (they have their own pages)
@@ -764,7 +786,7 @@ function renderContent(content, context, _verbose) {
     // Only exclude sections if excludeSections flag is true (default)
     // When rendering standalone sections, excludeSections will be false
     const shouldExclude =
-      context.excludeSections && EXCLUDED_SECTION_CLASSES.some((cls) => sectionClass.includes(cls));
+      excludeSections && EXCLUDED_SECTION_CLASSES.some((cls) => sectionClass.includes(cls));
     if (shouldExclude) {
       continue;
     }
@@ -877,7 +899,7 @@ function renderContent(content, context, _verbose) {
   for (const { type, item } of itemsWithPositions) {
     switch (type) {
       case 'section':
-        lines.push(renderSection(item, context, 2));
+        lines.push(renderSection(item, context, sectionLevel));
         break;
       case 'figure':
         lines.push(renderFigure(item, context));
@@ -909,14 +931,7 @@ function renderContent(content, context, _verbose) {
     }
   }
 
-  // Process glossary (always at end)
-  const glossaryMatch = content.match(/<glossary>([\s\S]*?)<\/glossary>/);
-  if (glossaryMatch) {
-    const glossaryHtml = renderGlossary(glossaryMatch[1], context);
-    lines.push(glossaryHtml);
-  }
-
-  return lines.join('\n');
+  return lines;
 }
 
 /**
