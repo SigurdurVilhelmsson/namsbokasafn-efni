@@ -90,6 +90,41 @@ describe('extractElements', () => {
   });
 });
 
+describe('extractElements — self-closing with attributes (F1 regression)', () => {
+  it('parses a leading self-closing empty entry as its own cell (3 cells, no leak)', () => {
+    const row =
+      '<entry align="left"/>\n<entry align="left">Reactants</entry>\n<entry align="left">Products</entry>';
+    const cells = extractElements(row, 'entry');
+    expect(cells.map((c) => c.content.trim())).toEqual(['', 'Reactants', 'Products']);
+    expect(cells[0].attributes.align).toBe('left');
+    // No raw opening tag leaked into cell content:
+    expect(cells.some((c) => c.content.includes('<entry'))).toBe(false);
+  });
+
+  it('parses a bare self-closing entry followed by a paired entry', () => {
+    const cells = extractElements('<entry/><entry>X</entry>', 'entry');
+    expect(cells.length).toBe(2);
+    expect(cells[1].content).toBe('X');
+  });
+
+  it('leaves paired entries with attributes byte-identical (no regression)', () => {
+    const cells = extractElements(
+      '<entry align="left">A</entry><entry namest="c1" nameend="c2">B</entry>',
+      'entry'
+    );
+    expect(cells.length).toBe(2);
+    expect(cells[0].content).toBe('A');
+    expect(cells[1].attributes.namest).toBe('c1');
+    expect(cells[1].attributes.nameend).toBe('c2');
+  });
+
+  it('parses two consecutive empty self-closing entries as two cells', () => {
+    const cells = extractElements('<entry align="left"/><entry align="left"/>', 'entry');
+    expect(cells.length).toBe(2);
+    expect(cells.every((c) => c.content === '')).toBe(true);
+  });
+});
+
 describe('extractNestedElements', () => {
   it('extracts a single element', () => {
     const els = extractNestedElements('<note id="n1">body</note>', 'note');
