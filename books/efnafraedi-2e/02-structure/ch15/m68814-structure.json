@@ -109,6 +109,11 @@
       "segmentId": "m68814:para:fs-idp11065808"
     },
     {
+      "type": "equation",
+      "id": "fs-idp12952768",
+      "class": "unnumbered"
+    },
+    {
       "type": "figure",
       "id": "CNX_Chem_15_03_Apatite",
       "class": "scaled-down",
@@ -121,11 +126,6 @@
         "src": "../../media/CNX_Chem_15_03_Apatite.jpg",
         "mimeType": "image/jpeg"
       }
-    },
-    {
-      "type": "equation",
-      "id": "fs-idp12952768",
-      "class": "unnumbered"
     },
     {
       "type": "para",
@@ -217,7 +217,10 @@
       "id": "fs-idp137004736",
       "class": "scaled-down",
       "alt": "An H atom is bonded to an O atom. The O atom has 2 dots above it and 2 dots below it. The O atom is bonded to an A l atom, which has three additional O atoms bonded to it as well. Each of these additional O atoms has 4 dots arranged around it, and is bonded to an H atom. This entire molecule is contained in brackets, to the right of which is a superscripted negative sign.",
-      "src": "../../media/CNX_Chem_15_02_AlOH4_img.jpg"
+      "src": "../../media/CNX_Chem_15_02_AlOH4_img.jpg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "type": "para",
@@ -994,5 +997,5 @@
       }
     ]
   },
-  "sectionOrder": null
+  "sectionOrder": 3
 }

@@ -72,6 +72,16 @@
       "segmentId": "m68837:para:fs-idm13883760"
     },
     {
+      "type": "equation",
+      "id": "fs-idm29856000",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp152283536",
+      "segmentId": "m68837:para:fs-idp152283536"
+    },
+    {
       "type": "figure",
       "id": "CNX_Chem_18_09_Ozone",
       "class": "scaled-down",
@@ -84,16 +94,6 @@
         "src": "../../media/CNX_Chem_18_09_Ozone.jpg",
         "mimeType": "image/jpeg"
       }
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm29856000",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp152283536",
-      "segmentId": "m68837:para:fs-idp152283536"
     },
     {
       "type": "para",
@@ -124,6 +124,11 @@
         "text": "Reactions"
       },
       "content": [
+        {
+          "type": "para",
+          "id": "fs-idp69945600",
+          "segmentId": "m68837:para:fs-idp69945600"
+        },
         {
           "type": "section",
           "id": "fs-idp17442128",
@@ -180,11 +185,6 @@
               "segmentId": "m68837:para:fs-idm10089904"
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idp69945600",
-          "segmentId": "m68837:para:fs-idp69945600"
         }
       ]
     },
@@ -197,6 +197,11 @@
         "text": "Oxides, Peroxides, and Hydroxides"
       },
       "content": [
+        {
+          "type": "para",
+          "id": "fs-idp94807728",
+          "segmentId": "m68837:para:fs-idp94807728"
+        },
         {
           "type": "section",
           "id": "fs-idm30222976",
@@ -561,11 +566,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idp94807728",
-          "segmentId": "m68837:para:fs-idp94807728"
         }
       ]
     },
@@ -578,6 +578,11 @@
         "text": "Nonmetal Oxygen Compounds"
       },
       "content": [
+        {
+          "type": "para",
+          "id": "fs-idm14503248",
+          "segmentId": "m68837:para:fs-idm14503248"
+        },
         {
           "type": "section",
           "id": "fs-idm13348784",
@@ -676,11 +681,6 @@
               }
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idm14503248",
-          "segmentId": "m68837:para:fs-idm14503248"
         }
       ]
     },
@@ -1840,5 +1840,5 @@
       }
     ]
   },
-  "sectionOrder": null
+  "sectionOrder": 9
 }

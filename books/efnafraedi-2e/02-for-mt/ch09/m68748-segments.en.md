@@ -23,7 +23,7 @@ Non-Ideal Gas Behavior
 The hot air inside these balloons is less dense than the surrounding cool air. This results in a buoyant force that causes the balloons to rise when their guy lines are untied. (credit: modification of work by Anthony Quintano)
 
 <!-- SEG:m68748:para:fs-idm58981280 -->
-We are surrounded by an ocean of gas—the atmosphere—and many of the properties of gases are familiar to us from our daily activities. Heated gases expand, which can make a hot air balloon rise ([#CNX_Chem_09_00_HotAirBall]) or cause a blowout in a bicycle tire left in the sun on a hot day.
+We are surrounded by an ocean of gas—the atmosphere—and many of the properties of gases are familiar to us from our daily activities. Heated gases expand, which can make a hot air balloon rise ([[xref:CNX_Chem_09_00_HotAirBall]]) or cause a blowout in a bicycle tire left in the sun on a hot day.
 
 <!-- SEG:m68748:para:fs-idm145175104 -->
 Gases have played an important part in the development of chemistry. In the seventeenth and eighteenth centuries, many scientists investigated gas behavior, providing the first mathematical descriptions of the behavior of matter.

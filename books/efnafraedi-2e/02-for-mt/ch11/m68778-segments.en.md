@@ -20,7 +20,7 @@ An earlier chapter of this text introduced [[i:solutions]], defined as homogeneo
 The subscript “[[i:aq]]” in the equation signifies that the sucrose molecules are solutes and are therefore [[i:individually dispersed]] throughout the [[i:aqueous solution]] (water is the solvent). Although sucrose molecules are heavier than water molecules, they remain dispersed throughout the solution; gravity does not cause them to “settle out” over time.
 
 <!-- SEG:m68778:para:fs-idm75208096 -->
-Potassium dichromate, K[[sub:2]]Cr[[sub:2]]O[[sub:7]], is an ionic compound composed of colorless potassium ions, K[[sup:+]], and orange dichromate ions, [[MATH:1]] When a small amount of solid potassium dichromate is added to water, the compound dissolves and dissociates to yield potassium ions and dichromate ions uniformly distributed throughout the mixture ([#CNX_Chem_11_01_K2Cr2O7_1]), as indicated in this equation:
+Potassium dichromate, K[[sub:2]]Cr[[sub:2]]O[[sub:7]], is an ionic compound composed of colorless potassium ions, K[[sup:+]], and orange dichromate ions, [[MATH:1]] When a small amount of solid potassium dichromate is added to water, the compound dissolves and dissociates to yield potassium ions and dichromate ions uniformly distributed throughout the mixture ([[xref:CNX_Chem_11_01_K2Cr2O7_1]]), as indicated in this equation:
 
 <!-- SEG:m68778:para:fs-idm32498064 -->
 As with the mixture of sugar and water, this mixture is also an aqueous solution. Its solutes, potassium and dichromate ions, remain individually dispersed among the solvent (water) molecules.
@@ -29,10 +29,10 @@ As with the mixture of sugar and water, this mixture is also an aqueous solution
 When potassium dichromate (K[[sub:2]]Cr[[sub:2]]O[[sub:7]]) is mixed with water, it forms a homogeneous orange solution. (credit: modification of work by Mark Ott)
 
 <!-- SEG:m68778:para:fs-idm40076400 -->
-Visit this [virtual lab](http://openstax.org/l/16Phetsugar) to view simulations of the dissolution of common covalent and ionic substances (sugar and salt) in water.
+Visit this [[link:virtual lab|http://openstax.org/l/16Phetsugar]] to view simulations of the dissolution of common covalent and ionic substances (sugar and salt) in water.
 
 <!-- SEG:m68778:para:fs-idm72001728 -->
-Water is used so often as a solvent that the word solution has come to imply an aqueous solution to many people. However, almost any gas, liquid, or solid can act as a solvent. Many {{term}}alloys{{/term}} are solid solutions of one metal dissolved in another; for example, US five-cent coins contain nickel dissolved in copper. Air is a gaseous solution, a homogeneous mixture of nitrogen, oxygen, and several other gases. Oxygen (a gas), alcohol (a liquid), and sugar (a solid) all dissolve in water (a liquid) to form liquid solutions. [#fs-idp13681744] gives examples of several different solutions and the phases of the solutes and solvents.
+Water is used so often as a solvent that the word solution has come to imply an aqueous solution to many people. However, almost any gas, liquid, or solid can act as a solvent. Many {{term}}alloys{{/term}} are solid solutions of one metal dissolved in another; for example, US five-cent coins contain nickel dissolved in copper. Air is a gaseous solution, a homogeneous mixture of nitrogen, oxygen, and several other gases. Oxygen (a gas), alcohol (a liquid), and sugar (a solid) all dissolve in water (a liquid) to form liquid solutions. [[xref:fs-idp13681744]] gives examples of several different solutions and the phases of the solutes and solvents.
 
 <!-- SEG:m68778:entry:auto-13 -->
 Different Types of Solutions
@@ -107,7 +107,7 @@ Solutions exhibit these defining traits:
 They are homogeneous; after a solution is mixed, it has the same composition at all points throughout (its composition is uniform).
 
 <!-- SEG:m68778:item:fs-idm73911888-item-2 -->
-The physical state of a solution—solid, liquid, or gas—is typically the same as that of the solvent, as demonstrated by the examples in [#fs-idp13681744].
+The physical state of a solution—solid, liquid, or gas—is typically the same as that of the solvent, as demonstrated by the examples in [[xref:fs-idp13681744]].
 
 <!-- SEG:m68778:item:fs-idm73911888-item-3 -->
 The components of a solution are dispersed on a molecular scale; they consist of a mixture of separated solute particles (molecules, atoms, and/or ions) each closely surrounded by solvent species.
@@ -137,7 +137,7 @@ How do solutions differ from compounds? From other mixtures?
 A solution can vary in composition, while a compound cannot vary in composition. Solutions are homogeneous at the molecular level, while other mixtures are heterogeneous.
 
 <!-- SEG:m68778:problem:fs-idm52012368 -->
-Which of the principal characteristics of solutions are evident in the solutions of K[[sub:2]]Cr[[sub:2]]O[[sub:7]] shown in [#CNX_Chem_11_01_K2Cr2O7_1]?
+Which of the principal characteristics of solutions are evident in the solutions of K[[sub:2]]Cr[[sub:2]]O[[sub:7]] shown in [[xref:CNX_Chem_11_01_K2Cr2O7_1]]?
 
 <!-- SEG:m68778:problem:fs-idm25522416 -->
 When KNO[[sub:3]] is dissolved in water, the resulting solution is significantly colder than the water was originally.
@@ -170,7 +170,7 @@ Give an example of each of the following types of solutions:
 Indicate the most important types of intermolecular attractions in each of the following solutions:
 
 <!-- SEG:m68778:problem:fs-idm96983392 -->
-(a) The solution in [#CNX_Chem_11_01_K2Cr2O7_1].
+(a) The solution in [[xref:CNX_Chem_11_01_K2Cr2O7_1]].
 
 <!-- SEG:m68778:problem:fs-idm57903504 -->
 (b) NO([[i:l]]) in CO([[i:l]])
@@ -233,31 +233,31 @@ In the process of dissolution, an internal energy change often, but not always, 
 When the strengths of the intermolecular forces of attraction between solute and solvent species in a solution are no different than those present in the separated components, the solution is formed with no accompanying energy change. Such a solution is called an {{term}}ideal solution{{/term}}. A mixture of ideal gases (or gases such as helium and argon, which closely approach ideal behavior) is an example of an ideal solution, since the entities comprising these gases experience no significant intermolecular attractions.
 
 <!-- SEG:m68778:para:fs-idm90097568 -->
-When containers of helium and argon are connected, the gases spontaneously mix due to diffusion and form a solution ([#CNX_Chem_11_01_HeArsol]). The formation of this solution clearly involves an increase in matter dispersal, since the helium and argon atoms occupy a volume twice as large as that which each occupied before mixing.
+When containers of helium and argon are connected, the gases spontaneously mix due to diffusion and form a solution ([[xref:CNX_Chem_11_01_HeArsol]]). The formation of this solution clearly involves an increase in matter dispersal, since the helium and argon atoms occupy a volume twice as large as that which each occupied before mixing.
 
 <!-- SEG:m68778:caption:CNX_Chem_11_01_HeArsol-caption -->
 Samples of helium and argon spontaneously mix to give a solution.
 
 <!-- SEG:m68778:para:fs-idm67575520 -->
-Ideal solutions may also form when structurally similar liquids are mixed. For example, mixtures of the alcohols methanol (CH[[sub:3]]OH) and ethanol (C[[sub:2]]H[[sub:5]]OH) form ideal solutions, as do mixtures of the hydrocarbons pentane, C[[sub:5]]H[[sub:12]], and hexane, C[[sub:6]]H[[sub:14]]. Placing methanol and ethanol, or pentane and hexane, in the bulbs shown in [#CNX_Chem_11_01_HeArsol] will result in the same diffusion and subsequent mixing of these liquids as is observed for the He and Ar gases (although at a much slower rate), yielding solutions with no significant change in energy. Unlike a mixture of gases, however, the components of these liquid-liquid solutions do, indeed, experience intermolecular attractive forces. But since the molecules of the two substances being mixed are structurally very similar, the intermolecular attractive forces between like and unlike molecules are essentially the same, and the dissolution process, therefore, does not entail any appreciable increase or decrease in energy. These examples illustrate how increased matter dispersal alone can provide the driving force required to cause the spontaneous formation of a solution. In some cases, however, the relative magnitudes of intermolecular forces of attraction between solute and solvent species may prevent dissolution.
+Ideal solutions may also form when structurally similar liquids are mixed. For example, mixtures of the alcohols methanol (CH[[sub:3]]OH) and ethanol (C[[sub:2]]H[[sub:5]]OH) form ideal solutions, as do mixtures of the hydrocarbons pentane, C[[sub:5]]H[[sub:12]], and hexane, C[[sub:6]]H[[sub:14]]. Placing methanol and ethanol, or pentane and hexane, in the bulbs shown in [[xref:CNX_Chem_11_01_HeArsol]] will result in the same diffusion and subsequent mixing of these liquids as is observed for the He and Ar gases (although at a much slower rate), yielding solutions with no significant change in energy. Unlike a mixture of gases, however, the components of these liquid-liquid solutions do, indeed, experience intermolecular attractive forces. But since the molecules of the two substances being mixed are structurally very similar, the intermolecular attractive forces between like and unlike molecules are essentially the same, and the dissolution process, therefore, does not entail any appreciable increase or decrease in energy. These examples illustrate how increased matter dispersal alone can provide the driving force required to cause the spontaneous formation of a solution. In some cases, however, the relative magnitudes of intermolecular forces of attraction between solute and solvent species may prevent dissolution.
 
 <!-- SEG:m68778:para:fs-idm24702144 -->
-Three types of intermolecular attractive forces are relevant to the dissolution process: solute-solute, solvent-solvent, and solute-solvent. As illustrated in [#CNX_Chem_11_01_solusolv], the formation of a solution may be viewed as a stepwise process in which energy is consumed to overcome solute-solute and solvent-solvent attractions (endothermic processes) and released when solute-solvent attractions are established (an exothermic process referred to as {{term}}solvation{{/term}}). The relative magnitudes of the energy changes associated with these stepwise processes determine whether the dissolution process overall will release or absorb energy. In some cases, solutions do not form because the energy required to separate solute and solvent species is so much greater than the energy released by solvation.
+Three types of intermolecular attractive forces are relevant to the dissolution process: solute-solute, solvent-solvent, and solute-solvent. As illustrated in [[xref:CNX_Chem_11_01_solusolv]], the formation of a solution may be viewed as a stepwise process in which energy is consumed to overcome solute-solute and solvent-solvent attractions (endothermic processes) and released when solute-solvent attractions are established (an exothermic process referred to as {{term}}solvation{{/term}}). The relative magnitudes of the energy changes associated with these stepwise processes determine whether the dissolution process overall will release or absorb energy. In some cases, solutions do not form because the energy required to separate solute and solvent species is so much greater than the energy released by solvation.
 
 <!-- SEG:m68778:caption:CNX_Chem_11_01_solusolv-caption -->
 This schematic represents the direct formation of a solution as a hypothetical stepwise process. Steps 1 and 2 involve separation/expansion of the solute and solvent molecules, both of which require an input of energy to overcome intermolecular attractions and are thus endothermic. Step 3 involves establishing intermolecular attractive forces between solute and solvent molecules (solvation), and is thus exothermic.
 
 <!-- SEG:m68778:para:fs-idm96486640 -->
-Consider the example of an ionic compound dissolving in water. Formation of the solution requires the electrostatic forces between the cations and anions of the compound (solute–solute) be overcome completely as attractive forces are established between these ions and water molecules (solute–solvent). Hydrogen bonding between a relatively small fraction of the water molecules must also be overcome to accommodate any dissolved solute. If the solute’s electrostatic forces are significantly greater than the solvation forces, the dissolution process is significantly endothermic and the compound may not dissolve to an appreciable extent. Calcium carbonate, the major component of coral reefs, is one example of such an “insoluble” ionic compound (see [m68776#CNX_Chem_11_00_coralreef]). On the other hand, if the solvation forces are much stronger than the compound’s electrostatic forces, the dissolution is significantly exothermic and the compound may be highly soluble. A common example of this type of ionic compound is sodium hydroxide, commonly known as lye.
+Consider the example of an ionic compound dissolving in water. Formation of the solution requires the electrostatic forces between the cations and anions of the compound (solute–solute) be overcome completely as attractive forces are established between these ions and water molecules (solute–solvent). Hydrogen bonding between a relatively small fraction of the water molecules must also be overcome to accommodate any dissolved solute. If the solute’s electrostatic forces are significantly greater than the solvation forces, the dissolution process is significantly endothermic and the compound may not dissolve to an appreciable extent. Calcium carbonate, the major component of coral reefs, is one example of such an “insoluble” ionic compound (see [[docref:m68776#CNX_Chem_11_00_coralreef]]). On the other hand, if the solvation forces are much stronger than the compound’s electrostatic forces, the dissolution is significantly exothermic and the compound may be highly soluble. A common example of this type of ionic compound is sodium hydroxide, commonly known as lye.
 
 <!-- SEG:m68778:para:fs-idm37742128 -->
-As noted at the beginning of this module, spontaneous solution formation is favored, but not guaranteed, by exothermic dissolution processes. While many soluble compounds do, indeed, dissolve with the release of heat, some dissolve endothermically. Ammonium nitrate (NH[[sub:4]]NO[[sub:3]]) is one such example and is used to make instant cold packs, like the one pictured in [#CNX_Chem_11_01_Icepack], which are used for treating injuries. A thin-walled plastic bag of water is sealed inside a larger bag with solid NH[[sub:4]]NO[[sub:3]]. When the smaller bag is broken, a solution of NH[[sub:4]]NO[[sub:3]] forms, absorbing heat from the surroundings (the injured area to which the pack is applied) and providing a cold compress that decreases swelling. Endothermic dissolutions such as this one require a greater energy input to separate the solute species than is recovered when the solutes are solvated, but they are spontaneous nonetheless due to the increase in disorder that accompanies formation of the solution.
+As noted at the beginning of this module, spontaneous solution formation is favored, but not guaranteed, by exothermic dissolution processes. While many soluble compounds do, indeed, dissolve with the release of heat, some dissolve endothermically. Ammonium nitrate (NH[[sub:4]]NO[[sub:3]]) is one such example and is used to make instant cold packs, like the one pictured in [[xref:CNX_Chem_11_01_Icepack]], which are used for treating injuries. A thin-walled plastic bag of water is sealed inside a larger bag with solid NH[[sub:4]]NO[[sub:3]]. When the smaller bag is broken, a solution of NH[[sub:4]]NO[[sub:3]] forms, absorbing heat from the surroundings (the injured area to which the pack is applied) and providing a cold compress that decreases swelling. Endothermic dissolutions such as this one require a greater energy input to separate the solute species than is recovered when the solutes are solvated, but they are spontaneous nonetheless due to the increase in disorder that accompanies formation of the solution.
 
 <!-- SEG:m68778:caption:CNX_Chem_11_01_Icepack-caption -->
 An instant cold pack gets cold when certain salts, such as ammonium nitrate, dissolve in water—an endothermic process.
 
 <!-- SEG:m68778:para:fs-idm36370704 -->
-Watch this brief [video](http://openstax.org/l/16endoexo) illustrating endothermic and exothermic dissolution processes.
+Watch this brief [[link:video|http://openstax.org/l/16endoexo]] illustrating endothermic and exothermic dissolution processes.
 
 <!-- SEG:m68778:glossary-term:fs-idm104294208-term -->
 alloy

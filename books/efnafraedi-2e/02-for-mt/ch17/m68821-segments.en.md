@@ -287,7 +287,7 @@ In basic solution, [OH[[sup:−]]] > 1 [[MATH:68]] 10[[sup:−7]] [[i:M]] > [H[[
 Why must the charge balance in oxidation-reduction reactions?
 
 <!-- SEG:m68821:glossary-term:fs-idp85536816-term -->
-electrode potential (EX)
+electrode potential ([[i:E]][[sub:X]])
 
 <!-- SEG:m68821:glossary-def:fs-idp85536816-def -->
 the potential of a cell in which the half-cell of interest acts as a cathode when connected to the standard hydrogen electrode

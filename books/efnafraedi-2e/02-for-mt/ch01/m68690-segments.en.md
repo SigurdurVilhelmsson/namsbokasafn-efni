@@ -17,7 +17,7 @@ Correctly represent uncertainty in quantities using significant figures
 Apply proper rounding rules to computed quantities
 
 <!-- SEG:m68690:para:fs-idm288863760 -->
-Counting is the only type of measurement that is free from uncertainty, provided the number of objects being counted does not change while the counting process is underway. The result of such a counting measurement is an example of an {{term}}exact number{{/term}}. By counting the eggs in a carton, one can determine {{i}}exactly{{/i}} how many eggs the carton contains. The numbers of defined quantities are also exact. By definition, 1 foot is exactly 12 inches, 1 inch is exactly 2.54 centimeters, and 1 gram is exactly 0.001 kilogram. Quantities derived from measurements other than counting, however, are uncertain to varying extents due to practical limitations of the measurement process used.
+Counting is the only type of measurement that is free from uncertainty, provided the number of objects being counted does not change while the counting process is underway. The result of such a counting measurement is an example of an {{term}}exact number{{/term}}. By counting the eggs in a carton, one can determine [[i:exactly]] how many eggs the carton contains. The numbers of defined quantities are also exact. By definition, 1 foot is exactly 12 inches, 1 inch is exactly 2.54 centimeters, and 1 gram is exactly 0.001 kilogram. Quantities derived from measurements other than counting, however, are uncertain to varying extents due to practical limitations of the measurement process used.
 
 <!-- SEG:m68690:title:fs-idm217277536-title -->
 Significant Figures in Measurement
@@ -29,10 +29,10 @@ The numbers of measured quantities, unlike defined or directly counted quantitie
 To measure the volume of liquid in this graduated cylinder, you must mentally subdivide the distance between the 21 and 22 mL marks into tenths of a milliliter, and then make a reading (estimate) at the bottom of the meniscus.
 
 <!-- SEG:m68690:para:fs-idm176542448 -->
-Refer to the illustration in [#fs-idm337865984]. The bottom of the meniscus in this case clearly lies between the 21 and 22 markings, meaning the liquid volume is {{i}}certainly{{/i}} greater than 21 mL but less than 22 mL. The meniscus appears to be a bit closer to the 22-mL mark than to the 21-mL mark, and so a reasonable estimate of the liquid’s volume would be 21.6 mL. In the number 21.6, then, the digits 2 and 1 are certain, but the 6 is an estimate. Some people might estimate the meniscus position to be equally distant from each of the markings and estimate the tenth-place digit as 5, while others may think it to be even closer to the 22-mL mark and estimate this digit to be 7. Note that it would be pointless to attempt to estimate a digit for the hundredths place, given that the tenths-place digit is uncertain. In general, numerical scales such as the one on this graduated cylinder will permit measurements to one-tenth of the smallest scale division. The scale in this case has 1-mL divisions, and so volumes may be measured to the nearest 0.1 mL.
+Refer to the illustration in [[xref:fs-idm337865984]]. The bottom of the meniscus in this case clearly lies between the 21 and 22 markings, meaning the liquid volume is [[i:certainly]] greater than 21 mL but less than 22 mL. The meniscus appears to be a bit closer to the 22-mL mark than to the 21-mL mark, and so a reasonable estimate of the liquid’s volume would be 21.6 mL. In the number 21.6, then, the digits 2 and 1 are certain, but the 6 is an estimate. Some people might estimate the meniscus position to be equally distant from each of the markings and estimate the tenth-place digit as 5, while others may think it to be even closer to the 22-mL mark and estimate this digit to be 7. Note that it would be pointless to attempt to estimate a digit for the hundredths place, given that the tenths-place digit is uncertain. In general, numerical scales such as the one on this graduated cylinder will permit measurements to one-tenth of the smallest scale division. The scale in this case has 1-mL divisions, and so volumes may be measured to the nearest 0.1 mL.
 
 <!-- SEG:m68690:para:fs-idm254904560 -->
-This concept holds true for all measurements, even if you do not actively make an estimate. If you place a quarter on a standard electronic balance, you may obtain a reading of 6.72 g. The digits 6 and 7 are certain, and the 2 indicates that the mass of the quarter is likely between 6.71 and 6.73 grams. The quarter weighs {{i}}about{{/i}} 6.72 grams, with a nominal uncertainty in the measurement of ± 0.01 gram. If the coin is weighed on a more sensitive balance, the mass might be 6.723 g. This means its mass lies between 6.722 and 6.724 grams, an uncertainty of 0.001 gram. Every measurement has some {{term}}uncertainty{{/term}}, which depends on the device used (and the user’s ability). All of the digits in a measurement, including the uncertain last digit, are called {{term}}significant figures{{/term}} or {{term}}significant digits{{/term}}. Note that zero may be a measured value; for example, if you stand on a scale that shows weight to the nearest pound and it shows “120,” then the 1 (hundreds), 2 (tens) and 0 (ones) are all significant (measured) values.
+This concept holds true for all measurements, even if you do not actively make an estimate. If you place a quarter on a standard electronic balance, you may obtain a reading of 6.72 g. The digits 6 and 7 are certain, and the 2 indicates that the mass of the quarter is likely between 6.71 and 6.73 grams. The quarter weighs [[i:about]] 6.72 grams, with a nominal uncertainty in the measurement of ± 0.01 gram. If the coin is weighed on a more sensitive balance, the mass might be 6.723 g. This means its mass lies between 6.722 and 6.724 grams, an uncertainty of 0.001 gram. Every measurement has some {{term}}uncertainty{{/term}}, which depends on the device used (and the user’s ability). All of the digits in a measurement, including the uncertain last digit, are called {{term}}significant figures{{/term}} or {{term}}significant digits{{/term}}. Note that zero may be a measured value; for example, if you stand on a scale that shows weight to the nearest pound and it shows “120,” then the 1 (hundreds), 2 (tens) and 0 (ones) are all significant (measured) values.
 
 <!-- SEG:m68690:para:fs-idm264880544 -->
 A measurement result is properly reported when its significant digits accurately represent the certainty of the measurement process. But what if you were analyzing a reported value and trying to determine what is significant and what is not? Well, for starters, all nonzero digits are significant, and it is only zeros that require some thought. We will use the terms “leading,” “trailing,” and “captive” for the zeros and will consider how to deal with them.
@@ -44,7 +44,7 @@ Starting with the first nonzero digit on the left, count this digit and all rema
 Captive zeros result from measurement and are therefore always significant. Leading zeros, however, are never significant—they merely tell us where the decimal point is located.
 
 <!-- SEG:m68690:para:fs-idm262013360 -->
-The leading zeros in this example are not significant. We could use exponential notation (as described in [Appendix B](doc:m68860)) and express the number as 8.32407 [[MATH:1]] 10[[sup:−3]]; then the number 8.32407 contains all of the significant figures, and 10[[sup:−3]] locates the decimal point.
+The leading zeros in this example are not significant. We could use exponential notation (as described in [[docref:Appendix B|m68860]]) and express the number as 8.32407 [[MATH:1]] 10[[sup:−3]]; then the number 8.32407 contains all of the significant figures, and 10[[sup:−3]] locates the decimal point.
 
 <!-- SEG:m68690:para:fs-idm210460000 -->
 The number of significant figures is uncertain in a number that ends with a zero to the left of the decimal point location. The zeros in the measurement 1,300 grams could be significant or they could simply indicate where the decimal point is located. The ambiguity can be resolved with the use of exponential notation: 1.3 [[MATH:2]] 10[[sup:3]] (two significant figures), 1.30 [[MATH:3]] 10[[sup:3]] (three significant figures, if the tens place was measured), or 1.300 [[MATH:4]] 10[[sup:3]] (four significant figures, if the ones place was also measured). In cases where only the decimal-formatted number is available, it is prudent to assume that all trailing zeros are not significant.
@@ -284,7 +284,7 @@ The density is the mass-to-volume ratio:
 (rounded to two significant figures, per the rule for multiplication and division)
 
 <!-- SEG:m68690:para:fs-idm243666944 -->
-From [m68674#fs-idm45639696], the density of iron is 7.9 g/cm[[sup:3]], very close to that of rebar, which lends some support to the fact that rebar is mostly iron.
+From [[docref:m68674#fs-idm45639696]], the density of iron is 7.9 g/cm[[sup:3]], very close to that of rebar, which lends some support to the fact that rebar is mostly iron.
 
 <!-- SEG:m68690:para-title:fs-idm259990592-title -->
 Check Your Learning
@@ -299,25 +299,25 @@ An irregularly shaped piece of a shiny yellowish material is weighed and then su
 (b) Do you have any reasonable guesses as to the identity of this material? Explain your reasoning.
 
 <!-- SEG:m68690:para:fs-idm287839728 -->
-(a) 19 g/cm[[sup:3]]; (b) It is likely gold; the right appearance for gold and very close to the density given for gold in [m68674#fs-idm45639696].
+(a) 19 g/cm[[sup:3]]; (b) It is likely gold; the right appearance for gold and very close to the density given for gold in [[docref:m68674#fs-idm45639696]].
 
 <!-- SEG:m68690:note-title:fs-idm113054800-title -->
 Answer:
 
 <!-- SEG:m68690:para:fs-idm287839728 -->
-(a) 19 g/cm[[sup:3]]; (b) It is likely gold; the right appearance for gold and very close to the density given for gold in [m68674#fs-idm45639696].
+(a) 19 g/cm[[sup:3]]; (b) It is likely gold; the right appearance for gold and very close to the density given for gold in [[docref:m68674#fs-idm45639696]].
 
 <!-- SEG:m68690:title:fs-idp33954960-title -->
 Accuracy and Precision
 
 <!-- SEG:m68690:para:fs-idp4474304 -->
-Scientists typically make repeated measurements of a quantity to ensure the quality of their findings and to evaluate both the {{term}}precision{{/term}} and the {{term}}accuracy{{/term}} of their results. Measurements are said to be precise if they yield very similar results when repeated in the same manner. A measurement is considered accurate if it yields a result that is very close to the true or accepted value. Precise values agree with each other; accurate values agree with a true value. These characterizations can be extended to other contexts, such as the results of an archery competition ([#fs-idm1827280]).
+Scientists typically make repeated measurements of a quantity to ensure the quality of their findings and to evaluate both the {{term}}precision{{/term}} and the {{term}}accuracy{{/term}} of their results. Measurements are said to be precise if they yield very similar results when repeated in the same manner. A measurement is considered accurate if it yields a result that is very close to the true or accepted value. Precise values agree with each other; accurate values agree with a true value. These characterizations can be extended to other contexts, such as the results of an archery competition ([[xref:fs-idm1827280]]).
 
 <!-- SEG:m68690:caption:fs-idm1827280-caption -->
 (a) These arrows are close to both the bull’s eye and one another, so they are both accurate and precise. (b) These arrows are close to one another but not on target, so they are precise but not accurate. (c) These arrows are neither on target nor close to one another, so they are neither accurate nor precise.
 
 <!-- SEG:m68690:para:fs-idp174984224 -->
-Suppose a quality control chemist at a pharmaceutical company is tasked with checking the accuracy and precision of three different machines that are meant to dispense 10 ounces (296 mL) of cough syrup into storage bottles. She proceeds to use each machine to fill five bottles and then carefully determines the actual volume dispensed, obtaining the results tabulated in [#fs-idp31780400].
+Suppose a quality control chemist at a pharmaceutical company is tasked with checking the accuracy and precision of three different machines that are meant to dispense 10 ounces (296 mL) of cough syrup into storage bottles. She proceeds to use each machine to fill five bottles and then carefully determines the actual volume dispensed, obtaining the results tabulated in [[xref:fs-idp31780400]].
 
 <!-- SEG:m68690:entry:auto-108 -->
 Volume (mL) of Cough Medicine Delivered by 10-oz (296 mL) Dispensers

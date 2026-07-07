@@ -26,7 +26,7 @@ The test of vinegar with potassium carbonate is one type of {{term}}quantitative
 Titration
 
 <!-- SEG:m68716:para:fs-idp43277952 -->
-The described approach to measuring vinegar strength was an early version of the analytical technique known as {{term}}titration analysis{{/term}}. A typical titration analysis involves the use of a {{term}}buret{{/term}} ([#CNX_Chem_04_05_titration]) to make incremental additions of a solution containing a known concentration of some substance (the {{term}}titrant{{/term}}) to a sample solution containing the substance whose concentration is to be measured (the {{term}}analyte{{/term}}). The titrant and analyte undergo a chemical reaction of known stoichiometry, and so measuring the volume of titrant solution required for complete reaction with the analyte (the {{term}}equivalence point{{/term}} of the titration) allows calculation of the analyte concentration. The equivalence point of a titration may be detected visually if a distinct change in the appearance of the sample solution accompanies the completion of the reaction. The halt of bubble formation in the classic vinegar analysis is one such example, though, more commonly, special dyes called {{term}}indicators{{/term}} are added to the sample solutions to impart a change in color at or very near the equivalence point of the titration. Equivalence points may also be detected by measuring some solution property that changes in a predictable way during the course of the titration. Regardless of the approach taken to detect a titration’s equivalence point, the volume of titrant actually measured is called the {{term}}end point{{/term}}. Properly designed titration methods typically ensure that the difference between the equivalence and end points is negligible. Though any type of chemical reaction may serve as the basis for a titration analysis, the three described in this chapter (precipitation, acid-base, and redox) are most common. Additional details regarding titration analysis are provided in the chapter on acid-base equilibria.
+The described approach to measuring vinegar strength was an early version of the analytical technique known as {{term}}titration analysis{{/term}}. A typical titration analysis involves the use of a {{term}}buret{{/term}} ([[xref:CNX_Chem_04_05_titration]]) to make incremental additions of a solution containing a known concentration of some substance (the {{term}}titrant{{/term}}) to a sample solution containing the substance whose concentration is to be measured (the {{term}}analyte{{/term}}). The titrant and analyte undergo a chemical reaction of known stoichiometry, and so measuring the volume of titrant solution required for complete reaction with the analyte (the {{term}}equivalence point{{/term}} of the titration) allows calculation of the analyte concentration. The equivalence point of a titration may be detected visually if a distinct change in the appearance of the sample solution accompanies the completion of the reaction. The halt of bubble formation in the classic vinegar analysis is one such example, though, more commonly, special dyes called {{term}}indicators{{/term}} are added to the sample solutions to impart a change in color at or very near the equivalence point of the titration. Equivalence points may also be detected by measuring some solution property that changes in a predictable way during the course of the titration. Regardless of the approach taken to detect a titration’s equivalence point, the volume of titrant actually measured is called the {{term}}end point{{/term}}. Properly designed titration methods typically ensure that the difference between the equivalence and end points is negligible. Though any type of chemical reaction may serve as the basis for a titration analysis, the three described in this chapter (precipitation, acid-base, and redox) are most common. Additional details regarding titration analysis are provided in the chapter on acid-base equilibria.
 
 <!-- SEG:m68716:caption:CNX_Chem_04_05_titration-caption -->
 (a) A student fills a buret in preparation for a titration analysis. (b) A typical buret permits volume measurements to the nearest 0.01 mL. (credit a: modification of work by Mark Blaser and Matt Evans; credit b: modification of work by Mark Blaser and Matt Evans)
@@ -56,7 +56,7 @@ The molar amount of HCl is calculated to be:
 Using the provided volume of HCl solution and the definition of molarity, the HCl concentration is:
 
 <!-- SEG:m68716:para:fs-idp24080800 -->
-Note: For these types of titration calculations, it is convenient to recognize that solution molarity is also equal to the number of {{i}}milli{{/i}}moles of solute per {{i}}milli{{/i}}liter of solution:
+Note: For these types of titration calculations, it is convenient to recognize that solution molarity is also equal to the number of [[i:milli]]moles of solute per [[i:milli]]liter of solution:
 
 <!-- SEG:m68716:para:fs-idm35999792 -->
 Using this version of the molarity unit will shorten the calculation by eliminating two conversion factors:
@@ -65,19 +65,19 @@ Using this version of the molarity unit will shorten the calculation by eliminat
 Check Your Learning
 
 <!-- SEG:m68716:para:fs-idm12966032 -->
-A 20.00-mL sample of aqueous oxalic acid, H[[sub:2]]C[[sub:2]]O[[sub:4]], was titrated with a 0.09113-{{i}}M{{/i}} solution of potassium permanganate, KMnO[[sub:4]] (see net ionic equation below).
+A 20.00-mL sample of aqueous oxalic acid, H[[sub:2]]C[[sub:2]]O[[sub:4]], was titrated with a 0.09113-[[i:M]] solution of potassium permanganate, KMnO[[sub:4]] (see net ionic equation below).
 
 <!-- SEG:m68716:para:fs-idm46826912 -->
 A volume of 23.24 mL was required to reach the end point. What is the oxalic acid molarity?
 
 <!-- SEG:m68716:para:fs-idm9637984 -->
-0.2648 {{i}}M{{/i}}
+0.2648 [[i:M]]
 
 <!-- SEG:m68716:note-title:fs-idp52546208-title -->
 Answer:
 
 <!-- SEG:m68716:para:fs-idm9637984 -->
-0.2648 {{i}}M{{/i}}
+0.2648 [[i:M]]
 
 <!-- SEG:m68716:title:fs-idp68434144-title -->
 Gravimetric Analysis
@@ -86,7 +86,7 @@ Gravimetric Analysis
 A {{term}}gravimetric analysis{{/term}} is one in which a sample is subjected to some treatment that causes a change in the physical state of the analyte that permits its separation from the other components of the sample. Mass measurements of the sample, the isolated analyte, or some other component of the analysis system, used along with the known stoichiometry of the compounds involved, permit calculation of the analyte concentration. Gravimetric methods were the first techniques used for quantitative chemical analysis, and they remain important tools in the modern chemistry laboratory.
 
 <!-- SEG:m68716:para:fs-idp272684448 -->
-The required change of state in a gravimetric analysis may be achieved by various physical and chemical processes. For example, the moisture (water) content of a sample is routinely determined by measuring the mass of a sample before and after it is subjected to a controlled heating process that evaporates the water. Also common are gravimetric techniques in which the analyte is subjected to a precipitation reaction of the sort described earlier in this chapter. The precipitate is typically isolated from the reaction mixture by filtration, carefully dried, and then weighed ([#CNX_Chem_04_05_Filter]). The mass of the precipitate may then be used, along with relevant stoichiometric relationships, to calculate analyte concentration.
+The required change of state in a gravimetric analysis may be achieved by various physical and chemical processes. For example, the moisture (water) content of a sample is routinely determined by measuring the mass of a sample before and after it is subjected to a controlled heating process that evaporates the water. Also common are gravimetric techniques in which the analyte is subjected to a precipitation reaction of the sort described earlier in this chapter. The precipitate is typically isolated from the reaction mixture by filtration, carefully dried, and then weighed ([[xref:CNX_Chem_04_05_Filter]]). The mass of the precipitate may then be used, along with relevant stoichiometric relationships, to calculate analyte concentration.
 
 <!-- SEG:m68716:caption:CNX_Chem_04_05_Filter-caption -->
 Precipitate may be removed from a reaction mixture by filtration.
@@ -128,7 +128,7 @@ Answer:
 23.76%
 
 <!-- SEG:m68716:para:fs-idp91356704 -->
-The elemental composition of hydrocarbons and related compounds may be determined via a gravimetric method known as {{term}}combustion analysis{{/term}}. In a combustion analysis, a weighed sample of the compound is heated to a high temperature under a stream of oxygen gas, resulting in its complete combustion to yield gaseous products of known identities. The complete combustion of hydrocarbons, for example, will yield carbon dioxide and water as the only products. The gaseous combustion products are swept through separate, preweighed collection devices containing compounds that selectively absorb each product ([#CNX_Chem_04_05_combustion]). The mass increase of each device corresponds to the mass of the absorbed product and may be used in an appropriate stoichiometric calculation to derive the mass of the relevant element.
+The elemental composition of hydrocarbons and related compounds may be determined via a gravimetric method known as {{term}}combustion analysis{{/term}}. In a combustion analysis, a weighed sample of the compound is heated to a high temperature under a stream of oxygen gas, resulting in its complete combustion to yield gaseous products of known identities. The complete combustion of hydrocarbons, for example, will yield carbon dioxide and water as the only products. The gaseous combustion products are swept through separate, preweighed collection devices containing compounds that selectively absorb each product ([[xref:CNX_Chem_04_05_combustion]]). The mass increase of each device corresponds to the mass of the absorbed product and may be used in an appropriate stoichiometric calculation to derive the mass of the relevant element.
 
 <!-- SEG:m68716:caption:CNX_Chem_04_05_combustion-caption -->
 This schematic diagram illustrates the basic components of a combustion analysis device for determining the carbon and hydrogen content of a sample.
@@ -146,7 +146,7 @@ Solution
 The primary assumption in this exercise is that all the carbon in the sample combusted is converted to carbon dioxide, and all the hydrogen in the sample is converted to water:
 
 <!-- SEG:m68716:para:fs-idp83118528 -->
-Note that a balanced equation is not necessary for the task at hand. To derive the empirical formula of the compound, only the subscripts {{i}}x{{/i}} and {{i}}y{{/i}} are needed.
+Note that a balanced equation is not necessary for the task at hand. To derive the empirical formula of the compound, only the subscripts [[i:x]] and [[i:y]] are needed.
 
 <!-- SEG:m68716:para:fs-idm26289056 -->
 First, calculate the molar amounts of carbon and hydrogen in the sample, using the provided masses of the carbon dioxide and water, respectively. With these molar amounts, the empirical formula for the compound may be written as described in the previous chapter of this text. An outline of this approach is given in the following flow chart:
@@ -182,25 +182,25 @@ The stoichiometry of chemical reactions may serve as the basis for quantitative 
 Chemistry End of Chapter Exercises
 
 <!-- SEG:m68716:problem:fs-idm47784592 -->
-What volume of 0.0105-M HBr solution is required to titrate 125 mL of a 0.0100-{{i}}M{{/i}} Ca(OH)[[sub:2]] solution?[[BR]] [[MATH:1]]
+What volume of 0.0105-M HBr solution is required to titrate 125 mL of a 0.0100-[[i:M]] Ca(OH)[[sub:2]] solution?[[BR]] [[MATH:1]]
 
 <!-- SEG:m68716:problem:fs-idp15073216 -->
-Titration of a 20.0-mL sample of acid rain required 1.7 mL of 0.0811 {{i}}M{{/i}} NaOH to reach the end point. If we assume that the acidity of the rain is due to the presence of sulfuric acid, what was the concentration of sulfuric acid in this sample of rain?
+Titration of a 20.0-mL sample of acid rain required 1.7 mL of 0.0811 [[i:M]] NaOH to reach the end point. If we assume that the acidity of the rain is due to the presence of sulfuric acid, what was the concentration of sulfuric acid in this sample of rain?
 
 <!-- SEG:m68716:solution:fs-idp29571152 -->
-3.4 [[MATH:2]] 10[[sup:−3]] {{i}}M{{/i}} H[[sub:2]]SO[[sub:4]]
+3.4 [[MATH:2]] 10[[sup:−3]] [[i:M]] H[[sub:2]]SO[[sub:4]]
 
 <!-- SEG:m68716:problem:fs-idp22780032 -->
-What is the concentration of NaCl in a solution if titration of 15.00 mL of the solution with 0.2503 {{i}}M{{/i}} AgNO[[sub:3]] requires 20.22 mL of the AgNO[[sub:3]] solution to reach the end point?[[BR]] [[MATH:3]]
+What is the concentration of NaCl in a solution if titration of 15.00 mL of the solution with 0.2503 [[i:M]] AgNO[[sub:3]] requires 20.22 mL of the AgNO[[sub:3]] solution to reach the end point?[[BR]] [[MATH:3]]
 
 <!-- SEG:m68716:problem:fs-idm49690448 -->
 In a common medical laboratory determination of the concentration of free chloride ion in blood serum, a serum sample is titrated with a Hg(NO[[sub:3]])[[sub:2]] solution.[[BR]] [[MATH:4]]
 
 <!-- SEG:m68716:problem:fs-idm1068656 -->
-What is the Cl[[sup:−]] concentration in a 0.25-mL sample of normal serum that requires 1.46 mL of 8.25 [[MATH:5]] 10[[sup:−4]] {{i}}M{{/i}} Hg(NO[[sub:3]])[[sub:2]]({{i}}aq{{/i}}) to reach the end point?
+What is the Cl[[sup:−]] concentration in a 0.25-mL sample of normal serum that requires 1.46 mL of 8.25 [[MATH:5]] 10[[sup:−4]] [[i:M]] Hg(NO[[sub:3]])[[sub:2]]([[i:aq]]) to reach the end point?
 
 <!-- SEG:m68716:solution:fs-idm88200368 -->
-9.6 [[MATH:6]] 10[[sup:−3]] {{i}}M{{/i}} Cl[[sup:−]]
+9.6 [[MATH:6]] 10[[sup:−3]] [[i:M]] Cl[[sup:−]]
 
 <!-- SEG:m68716:problem:fs-idp14481088 -->
 Potatoes can be peeled commercially by soaking them in a 3-M to 6-M solution of sodium hydroxide, then removing the loosened skins by spraying them with water. Does a sodium hydroxide solution have a suitable concentration if titration of 12.00 mL of the solution requires 30.6 mL of 1.65 M HCl to reach the end point?
@@ -224,37 +224,37 @@ The empirical formula is BH[[sub:3]]. The molecular formula is B[[sub:2]]H[[sub:
 Sodium bicarbonate (baking soda), NaHCO[[sub:3]], can be purified by dissolving it in hot water (60 °C), filtering to remove insoluble impurities, cooling to 0 °C to precipitate solid NaHCO[[sub:3]], and then filtering to remove the solid, leaving soluble impurities in solution. Any NaHCO[[sub:3]] that remains in solution is not recovered. The solubility of NaHCO[[sub:3]] in hot water of 60 °C is 164 g/L. Its solubility in cold water of 0 °C is 69 g/L. What is the percent yield of NaHCO[[sub:3]] when it is purified by this method?
 
 <!-- SEG:m68716:problem:fs-idp39627680 -->
-What volume of 0.600 {{i}}M{{/i}} HCl is required to react completely with 2.50 g of sodium hydrogen carbonate?[[BR]] [[MATH:7]]
+What volume of 0.600 [[i:M]] HCl is required to react completely with 2.50 g of sodium hydrogen carbonate?[[BR]] [[MATH:7]]
 
 <!-- SEG:m68716:solution:fs-idp51612096 -->
 49.6 mL
 
 <!-- SEG:m68716:problem:fs-idm43072400 -->
-What volume of 0.08892 {{i}}M{{/i}} HNO[[sub:3]] is required to react completely with 0.2352 g of potassium hydrogen phosphate?[[BR]] [[MATH:8]]
+What volume of 0.08892 [[i:M]] HNO[[sub:3]] is required to react completely with 0.2352 g of potassium hydrogen phosphate?[[BR]] [[MATH:8]]
 
 <!-- SEG:m68716:problem:fs-idm37154064 -->
-What volume of a 0.3300-{{i}}M{{/i}} solution of sodium hydroxide would be required to titrate 15.00 mL of 0.1500 {{i}}M{{/i}} oxalic acid?[[BR]] [[MATH:9]]
+What volume of a 0.3300-[[i:M]] solution of sodium hydroxide would be required to titrate 15.00 mL of 0.1500 [[i:M]] oxalic acid?[[BR]] [[MATH:9]]
 
 <!-- SEG:m68716:solution:fs-idm27864640 -->
 13.64 mL
 
 <!-- SEG:m68716:problem:fs-idp126851936 -->
-What volume of a 0.00945-{{i}}M{{/i}} solution of potassium hydroxide would be required to titrate 50.00 mL of a sample of acid rain with a H[[sub:2]]SO[[sub:4]] concentration of 1.23 [[MATH:10]] 10[[sup:−4]] {{i}}M{{/i}}.[[BR]] [[MATH:11]]
+What volume of a 0.00945-[[i:M]] solution of potassium hydroxide would be required to titrate 50.00 mL of a sample of acid rain with a H[[sub:2]]SO[[sub:4]] concentration of 1.23 [[MATH:10]] 10[[sup:−4]] [[i:M]].[[BR]] [[MATH:11]]
 
 <!-- SEG:m68716:problem:fs-idm49266896 -->
-A sample of solid calcium hydroxide, Ca(OH)[[sub:2]], is allowed to stand in water until a saturated solution is formed. A titration of 75.00 mL of this solution with 5.00 [[MATH:12]] 10[[sup:−2]] {{i}}M{{/i}} HCl requires 36.6 mL of the acid to reach the end point.[[BR]] [[MATH:13]]
+A sample of solid calcium hydroxide, Ca(OH)[[sub:2]], is allowed to stand in water until a saturated solution is formed. A titration of 75.00 mL of this solution with 5.00 [[MATH:12]] 10[[sup:−2]] [[i:M]] HCl requires 36.6 mL of the acid to reach the end point.[[BR]] [[MATH:13]]
 
 <!-- SEG:m68716:problem:fs-idm404608 -->
 What is the molarity?
 
 <!-- SEG:m68716:solution:fs-idm9471168 -->
-0.0122 {{i}}M{{/i}}
+0.0122 [[i:M]]
 
 <!-- SEG:m68716:problem:fs-idp123399264 -->
 What mass of Ca(OH)[[sub:2]] will react with 25.0 g of butanoic to form the preservative calcium butanoate according to the equation?
 
 <!-- SEG:m68716:problem:fs-idp126876816 -->
-How many milliliters of a 0.1500-{{i}}M{{/i}} solution of KOH will be required to titrate 40.00 mL of a 0.0656-{{i}}M{{/i}} solution of H[[sub:3]]PO[[sub:4]]?[[BR]] [[MATH:14]]
+How many milliliters of a 0.1500-[[i:M]] solution of KOH will be required to titrate 40.00 mL of a 0.0656-[[i:M]] solution of H[[sub:3]]PO[[sub:4]]?[[BR]] [[MATH:14]]
 
 <!-- SEG:m68716:solution:fs-idp46830048 -->
 34.99 mL KOH
@@ -263,7 +263,7 @@ How many milliliters of a 0.1500-{{i}}M{{/i}} solution of KOH will be required t
 Potassium hydrogen phthalate, KHC[[sub:8]]H[[sub:4]]O[[sub:4]], or KHP, is used in many laboratories, including general chemistry laboratories, to standardize solutions of base. KHP is one of only a few stable solid acids that can be dried by warming and weighed. A 0.3420-g sample of KHC[[sub:8]]H[[sub:4]]O[[sub:4]] reacts with 35.73 mL of a NaOH solution in a titration. What is the molar concentration of the NaOH?[[BR]] [[MATH:15]]
 
 <!-- SEG:m68716:problem:fs-idp92291424 -->
-The reaction of WCl[[sub:6]] with Al at ~400 °C gives black crystals of a compound containing only tungsten and chlorine. A sample of this compound, when reduced with hydrogen, gives 0.2232 g of tungsten metal and hydrogen chloride, which is absorbed in water. Titration of the hydrochloric acid thus produced requires 46.2 mL of 0.1051 {{i}}M{{/i}} NaOH to reach the end point. What is the empirical formula of the black tungsten chloride?
+The reaction of WCl[[sub:6]] with Al at ~400 °C gives black crystals of a compound containing only tungsten and chlorine. A sample of this compound, when reduced with hydrogen, gives 0.2232 g of tungsten metal and hydrogen chloride, which is absorbed in water. Titration of the hydrochloric acid thus produced requires 46.2 mL of 0.1051 [[i:M]] NaOH to reach the end point. What is the empirical formula of the black tungsten chloride?
 
 <!-- SEG:m68716:solution:fs-idp66345312 -->
 The empirical formula is WCl[[sub:4]].
@@ -290,7 +290,7 @@ gravimetric technique used to determine the elemental composition of a compound 
 end point
 
 <!-- SEG:m68716:glossary-def:fs-idp276080304-def -->
-measured volume of titrant solution that yields the change in sample solution appearance or other property expected for stoichiometric equivalence (see {{i}}equivalence point{{/i}})
+measured volume of titrant solution that yields the change in sample solution appearance or other property expected for stoichiometric equivalence (see [[i:equivalence point]])
 
 <!-- SEG:m68716:glossary-term:fs-idp90910688-term -->
 equivalence point

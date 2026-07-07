@@ -141,6 +141,29 @@
       },
       "content": [
         {
+          "type": "para",
+          "id": "fs-idm42504736",
+          "segmentId": "m68738:para:fs-idm42504736"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm49461456",
+          "segmentId": "m68738:para:fs-idm49461456"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_07_02_ENTable",
+          "caption": {
+            "segmentId": "m68738:caption:CNX_Chem_07_02_ENTable-caption"
+          },
+          "media": {
+            "id": "fs-idp15011408",
+            "alt": "Part of the periodic table is shown. A downward-facing arrow is drawn to the left of the table and labeled, “Decreasing electronegativity,” while a right-facing arrow is drawn above the table and labeled “Increasing electronegativity.” The electronegativity for almost all the elements is given.",
+            "src": "../../media/CNX_Chem_07_02_ENTable.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
           "type": "section",
           "id": "fs-idm115216",
           "class": null,
@@ -573,29 +596,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idm42504736",
-          "segmentId": "m68738:para:fs-idm42504736"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm49461456",
-          "segmentId": "m68738:para:fs-idm49461456"
-        },
-        {
-          "type": "figure",
-          "id": "CNX_Chem_07_02_ENTable",
-          "caption": {
-            "segmentId": "m68738:caption:CNX_Chem_07_02_ENTable-caption"
-          },
-          "media": {
-            "id": "fs-idp15011408",
-            "alt": "Part of the periodic table is shown. A downward-facing arrow is drawn to the left of the table and labeled, “Decreasing electronegativity,” while a right-facing arrow is drawn above the table and labeled “Increasing electronegativity.” The electronegativity for almost all the elements is given.",
-            "src": "../../media/CNX_Chem_07_02_ENTable.jpg",
-            "mimeType": "image/jpeg"
-          }
         }
       ]
     },
@@ -1156,5 +1156,5 @@
       }
     ]
   },
-  "sectionOrder": null
+  "sectionOrder": 2
 }

@@ -122,6 +122,105 @@
       },
       "content": [
         {
+          "type": "para",
+          "id": "fs-idp70329680",
+          "segmentId": "m68831:para:fs-idp70329680"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp96845840",
+          "segmentId": "m68831:para:fs-idp96845840"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp120612224",
+          "segmentId": "m68831:para:fs-idp120612224"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp30766032",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp204527824",
+          "segmentId": "m68831:para:fs-idp204527824"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm91488",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp112457184",
+          "segmentId": "m68831:para:fs-idp112457184"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp27647072",
+          "segmentId": "m68831:para:fs-idp27647072"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm50570016",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm43188096",
+          "segmentId": "m68831:para:fs-idm43188096"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_18_03_SiPurif",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68831:caption:CNX_Chem_18_03_SiPurif-caption"
+          },
+          "media": {
+            "id": "fs-idp87854400",
+            "alt": "A diagram of a long, vertical tube is shown. The side is cut away to show a glass tube inside. At the top of the glass tube is a darker section labeled, “Impure silicon,” while toward the middle of the tube is a lighter section labeled, “Molten silicon,” and the bottom of the tube contains a white substance labeled, “Pure silicon.” A downward-facing arrow is drawn on the bottom of the tube.",
+            "src": "../../media/CNX_Chem_18_03_SiPurif.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm29187152",
+          "segmentId": "m68831:para:fs-idm29187152"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm38894288",
+          "segmentId": "m68831:para:fs-idm38894288"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp306866064",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp112356272",
+          "segmentId": "m68831:para:fs-idp112356272"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp120941520",
+          "segmentId": "m68831:para:fs-idp120941520"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp219248048",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp28729488",
+          "segmentId": "m68831:para:fs-idp28729488"
+        },
+        {
           "type": "section",
           "id": "fs-idp39834912",
           "class": null,
@@ -165,7 +264,10 @@
               "id": "fs-idp60354928",
               "class": null,
               "alt": "Two Lewis structures are drawn and connected by a right-facing arrow. The left structure shows a boron atom surrounded by four fluorine atoms, each with four lone pairs of electrons. The left fluorine atom has a positive and negative symbol drawn next to it. The second image is the same as the first except the positive and negative signs are missing and the entire structure is surrounded by brackets. There is a negative sign outside and superscript to the brackets.",
-              "src": "../../media/CNX_Chem_18_03_BLewisAcid_img.jpg"
+              "src": "../../media/CNX_Chem_18_03_BLewisAcid_img.jpg",
+              "embedSrc": "",
+              "width": "",
+              "height": ""
             },
             {
               "type": "para",
@@ -323,105 +425,6 @@
               "segmentId": "m68831:para:fs-idp23643168"
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idp70329680",
-          "segmentId": "m68831:para:fs-idp70329680"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp96845840",
-          "segmentId": "m68831:para:fs-idp96845840"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp120612224",
-          "segmentId": "m68831:para:fs-idp120612224"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp30766032",
-          "class": "unnumbered"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp204527824",
-          "segmentId": "m68831:para:fs-idp204527824"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idm91488",
-          "class": "unnumbered"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp112457184",
-          "segmentId": "m68831:para:fs-idp112457184"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp27647072",
-          "segmentId": "m68831:para:fs-idp27647072"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idm50570016",
-          "class": "unnumbered"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm43188096",
-          "segmentId": "m68831:para:fs-idm43188096"
-        },
-        {
-          "type": "figure",
-          "id": "CNX_Chem_18_03_SiPurif",
-          "class": "scaled-down",
-          "caption": {
-            "segmentId": "m68831:caption:CNX_Chem_18_03_SiPurif-caption"
-          },
-          "media": {
-            "id": "fs-idp87854400",
-            "alt": "A diagram of a long, vertical tube is shown. The side is cut away to show a glass tube inside. At the top of the glass tube is a darker section labeled, “Impure silicon,” while toward the middle of the tube is a lighter section labeled, “Molten silicon,” and the bottom of the tube contains a white substance labeled, “Pure silicon.” A downward-facing arrow is drawn on the bottom of the tube.",
-            "src": "../../media/CNX_Chem_18_03_SiPurif.jpg",
-            "mimeType": "image/jpeg"
-          }
-        },
-        {
-          "type": "para",
-          "id": "fs-idm29187152",
-          "segmentId": "m68831:para:fs-idm29187152"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm38894288",
-          "segmentId": "m68831:para:fs-idm38894288"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp306866064",
-          "class": "unnumbered"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp112356272",
-          "segmentId": "m68831:para:fs-idp112356272"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp120941520",
-          "segmentId": "m68831:para:fs-idp120941520"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp219248048",
-          "class": "unnumbered"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp28729488",
-          "segmentId": "m68831:para:fs-idp28729488"
         }
       ]
     },
@@ -1046,7 +1049,10 @@
       "class": null,
       "alt": "This Lewis structure is composed of a boron atom single bonded to a phosphorus atom. Each of these atoms is single bonded to three hydrogen atoms.",
       "src": "../../media/CNX_Chem_18_03_Exercise2a_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:2]]",
@@ -1054,7 +1060,10 @@
       "class": null,
       "alt": "This Lewis structure is composed of a boron atom single bonded to four fluorine atoms, each of which has three lone pairs of electrons. The structure is surrounded by brackets, and a negative sign appears as a superscript outside the brackets.",
       "src": "../../media/CNX_Chem_18_03_Exercise2b_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:3]]",
@@ -1062,7 +1071,10 @@
       "class": null,
       "alt": "This Lewis structure is composed of a boron atom single bonded to three bromine atoms, each of which has three lone pairs of electrons.",
       "src": "../../media/CNX_Chem_18_03_Exercise2c_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:4]]",
@@ -1070,7 +1082,10 @@
       "class": null,
       "alt": "This Lewis structure is composed of a boron atom that is single bonded to three carbon atoms, each of which is single bonded to three hydrogen atoms.",
       "src": "../../media/CNX_Chem_18_03_Exercise2d_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:5]]",
@@ -1078,8 +1093,11 @@
       "class": null,
       "alt": "This Lewis structure is composed of a boron atom that is single bonded to three oxygen atoms, each of which has two lone pairs of electrons. Each oxygen atom is single bonded to a hydrogen atom.",
       "src": "../../media/CNX_Chem_18_03_Exercise2e_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
-  "sectionOrder": null
+  "sectionOrder": 3
 }

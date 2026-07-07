@@ -1250,7 +1250,7 @@ selective precipitation
 process in which ions are separated using differences in their solubility with a given precipitating reagent
 
 <!-- SEG:m68811:glossary-term:fs-idp3053344-term -->
-solubility product constant (Ksp)
+solubility product constant ([[i:K]][[sub:sp]])
 
 <!-- SEG:m68811:glossary-def:fs-idp3053344-def -->
 equilibrium constant for the dissolution of an ionic compound

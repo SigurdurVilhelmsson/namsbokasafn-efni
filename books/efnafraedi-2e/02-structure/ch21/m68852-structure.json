@@ -214,31 +214,6 @@
               "segmentId": "m68852:item:fs-idp95347744-item-5"
             }
           ]
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp31649008",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp1428976",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp93036048",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp34445296",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp77197616",
-          "class": "unnumbered"
         }
       ]
     },
@@ -572,5 +547,5 @@
       }
     ]
   },
-  "sectionOrder": null
+  "sectionOrder": 2
 }

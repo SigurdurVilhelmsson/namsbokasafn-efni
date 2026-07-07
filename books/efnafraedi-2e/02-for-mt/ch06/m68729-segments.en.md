@@ -398,7 +398,7 @@ electromagnetic spectrum
 range of energies that electromagnetic radiation can comprise, including radio, microwaves, infrared, visible, ultraviolet, X-rays, and gamma rays
 
 <!-- SEG:m68729:glossary-term:fs-idp121959824-term -->
-frequency (ν)
+frequency ([[i:ν]])
 
 <!-- SEG:m68729:glossary-def:fs-idp121959824-def -->
 number of wave cycles (peaks or troughs) that pass a specified point in space per unit time
@@ -458,7 +458,7 @@ wave
 oscillation of a property over time or space; can transport energy from one point to another
 
 <!-- SEG:m68729:glossary-term:fs-idp70511136-term -->
-wavelength (λ)
+wavelength ([[i:λ]])
 
 <!-- SEG:m68729:glossary-def:fs-idp70511136-def -->
 distance between two consecutive peaks or troughs in a wave

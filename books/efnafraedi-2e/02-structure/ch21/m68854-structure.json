@@ -610,6 +610,11 @@
       },
       "content": [
         {
+          "type": "para",
+          "id": "fs-idm40273488",
+          "segmentId": "m68854:para:fs-idm40273488"
+        },
+        {
           "type": "section",
           "id": "fs-idm78225712",
           "class": null,
@@ -917,11 +922,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idm40273488",
-          "segmentId": "m68854:para:fs-idm40273488"
         }
       ]
     },
@@ -1804,5 +1804,5 @@
       }
     ]
   },
-  "sectionOrder": null
+  "sectionOrder": 3
 }

@@ -618,6 +618,11 @@
       },
       "content": [
         {
+          "type": "para",
+          "id": "fs-idp389936",
+          "segmentId": "m68674:para:fs-idp389936"
+        },
+        {
           "type": "section",
           "id": "fs-idp679312",
           "class": null,
@@ -708,11 +713,6 @@
               "segmentId": "m68674:para:fs-idm101738864"
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idp389936",
-          "segmentId": "m68674:para:fs-idp389936"
         }
       ]
     },
@@ -725,6 +725,11 @@
         "text": "Derived SI Units"
       },
       "content": [
+        {
+          "type": "para",
+          "id": "fs-idm10854912",
+          "segmentId": "m68674:para:fs-idm10854912"
+        },
         {
           "type": "section",
           "id": "fs-idm16046736",
@@ -991,11 +996,6 @@
               "class": "unnumbered"
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idm10854912",
-          "segmentId": "m68674:para:fs-idm10854912"
         },
         {
           "type": "example",

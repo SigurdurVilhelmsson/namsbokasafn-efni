@@ -348,6 +348,11 @@
       },
       "content": [
         {
+          "type": "para",
+          "id": "fs-idp2820144",
+          "segmentId": "m68808:para:fs-idp2820144"
+        },
+        {
           "type": "list",
           "id": "fs-idm128259280",
           "listType": "enumerated",
@@ -363,11 +368,6 @@
               "segmentId": "m68808:item:fs-idm128259280-item-2"
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idp2820144",
-          "segmentId": "m68808:para:fs-idp2820144"
         },
         {
           "type": "figure",
@@ -983,5 +983,5 @@
       }
     ]
   },
-  "sectionOrder": null
+  "sectionOrder": 6
 }

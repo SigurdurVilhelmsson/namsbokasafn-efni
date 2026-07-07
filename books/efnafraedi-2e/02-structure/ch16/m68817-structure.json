@@ -152,7 +152,7 @@
           "id": "fs-idm141128112",
           "title": {
             "segmentId": "m68817:example-title:fs-idm141128112-title",
-            "text": "Determination of Δ{{i}}S{{/i}}"
+            "text": "Determination of Δ[[i:S]]"
           },
           "content": [
             {
@@ -221,7 +221,7 @@
       "class": null,
       "title": {
         "segmentId": "m68817:title:fs-idp49499248-title",
-        "text": "Predicting the Sign of Δ{{i}}S{{/i}}"
+        "text": "Predicting the Sign of Δ[[i:S]]"
       },
       "content": [
         {
@@ -298,7 +298,7 @@
           "id": "fs-idm151499136",
           "title": {
             "segmentId": "m68817:example-title:fs-idm151499136-title",
-            "text": "Predicting the Sign of ∆{{i}}S{{/i}}"
+            "text": "Predicting the Sign of ∆[[i:S]]"
           },
           "content": [
             {
@@ -842,5 +842,5 @@
       }
     ]
   },
-  "sectionOrder": null
+  "sectionOrder": 2
 }

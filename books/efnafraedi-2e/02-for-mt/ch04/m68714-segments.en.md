@@ -14,16 +14,16 @@ Derive the theoretical yield for a reaction under specified conditions.
 Calculate the percent yield for a reaction.
 
 <!-- SEG:m68714:para:fs-idp24998416 -->
-The relative amounts of reactants and products represented in a balanced chemical equation are often referred to as {{i}}stoichiometric amounts{{/i}}. All the exercises of the preceding module involved stoichiometric amounts of reactants. For example, when calculating the amount of product generated from a given amount of reactant, it was assumed that any other reactants required were available in stoichiometric amounts (or greater). In this module, more realistic situations are considered, in which reactants are not present in stoichiometric amounts.
+The relative amounts of reactants and products represented in a balanced chemical equation are often referred to as [[i:stoichiometric amounts]]. All the exercises of the preceding module involved stoichiometric amounts of reactants. For example, when calculating the amount of product generated from a given amount of reactant, it was assumed that any other reactants required were available in stoichiometric amounts (or greater). In this module, more realistic situations are considered, in which reactants are not present in stoichiometric amounts.
 
 <!-- SEG:m68714:title:fs-idp5731792-title -->
 Limiting Reactant
 
 <!-- SEG:m68714:para:fs-idp103911360 -->
-Consider another food analogy, making grilled cheese sandwiches ([#CNX_Chem_04_04_sandwich]):
+Consider another food analogy, making grilled cheese sandwiches ([[xref:CNX_Chem_04_04_sandwich]]):
 
 <!-- SEG:m68714:para:fs-idp39531056 -->
-Stoichiometric amounts of sandwich ingredients for this recipe are bread and cheese slices in a 2:1 ratio. Provided with 28 slices of bread and 11 slices of cheese, one may prepare 11 sandwiches per the provided recipe, using all the provided cheese and having six slices of bread left over. In this scenario, the number of sandwiches prepared has been {{i}}limited{{/i}} by the number of cheese slices, and the bread slices have been provided in {{i}}excess{{/i}}.
+Stoichiometric amounts of sandwich ingredients for this recipe are bread and cheese slices in a 2:1 ratio. Provided with 28 slices of bread and 11 slices of cheese, one may prepare 11 sandwiches per the provided recipe, using all the provided cheese and having six slices of bread left over. In this scenario, the number of sandwiches prepared has been [[i:limited]] by the number of cheese slices, and the bread slices have been provided in [[i:excess]].
 
 <!-- SEG:m68714:caption:CNX_Chem_04_04_sandwich-caption -->
 Sandwich making can illustrate the concepts of limiting and excess reactants.
@@ -41,13 +41,13 @@ An alternative approach to identifying the limiting reactant involves comparing 
 Complete reaction of the provided chlorine would produce
 
 <!-- SEG:m68714:para:fs-idm39942944 -->
-The chlorine will be completely consumed once 4 moles of HCl have been produced. Since enough hydrogen was provided to yield 6 moles of HCl, there will be unreacted hydrogen remaining once this reaction is complete. Chlorine, therefore, is the limiting reactant and hydrogen is the excess reactant ([#CNX_Chem_04_04_limiting]).
+The chlorine will be completely consumed once 4 moles of HCl have been produced. Since enough hydrogen was provided to yield 6 moles of HCl, there will be unreacted hydrogen remaining once this reaction is complete. Chlorine, therefore, is the limiting reactant and hydrogen is the excess reactant ([[xref:CNX_Chem_04_04_limiting]]).
 
 <!-- SEG:m68714:caption:CNX_Chem_04_04_limiting-caption -->
 When H[[sub:2]] and Cl[[sub:2]] are combined in nonstoichiometric amounts, one of these reactants will limit the amount of HCl that can be produced. This illustration shows a reaction in which hydrogen is present in excess and chlorine is the limiting reactant.
 
 <!-- SEG:m68714:para:fs-idm52028528 -->
-View this interactive [simulation](http://openstax.org/l/16reactantprod) illustrating the concepts of limiting and excess reactants.
+View this interactive [[link:simulation|http://openstax.org/l/16reactantprod]] illustrating the concepts of limiting and excess reactants.
 
 <!-- SEG:m68714:example-title:fs-idp70587344-title -->
 Identifying the Limiting Reactant
@@ -101,7 +101,7 @@ O[[sub:2]]
 Percent Yield
 
 <!-- SEG:m68714:para:fs-idm22072192 -->
-The amount of product that {{i}}may be{{/i}} produced by a reaction under specified conditions, as calculated per the stoichiometry of an appropriate balanced chemical equation, is called the {{term}}theoretical yield{{/term}} of the reaction. In practice, the amount of product obtained is called the {{term}}actual yield{{/term}}, and it is often less than the theoretical yield for a number of reasons. Some reactions are inherently inefficient, being accompanied by {{i}}side reactions{{/i}} that generate other products. Others are, by nature, incomplete (consider the partial reactions of weak acids and bases discussed earlier in this chapter). Some products are difficult to collect without some loss, and so less than perfect recovery will reduce the actual yield. The extent to which a reaction’s theoretical yield is achieved is commonly expressed as its {{term}}percent yield{{/term}}:
+The amount of product that [[i:may be]] produced by a reaction under specified conditions, as calculated per the stoichiometry of an appropriate balanced chemical equation, is called the {{term}}theoretical yield{{/term}} of the reaction. In practice, the amount of product obtained is called the {{term}}actual yield{{/term}}, and it is often less than the theoretical yield for a number of reasons. Some reactions are inherently inefficient, being accompanied by [[i:side reactions]] that generate other products. Others are, by nature, incomplete (consider the partial reactions of weak acids and bases discussed earlier in this chapter). Some products are difficult to collect without some loss, and so less than perfect recovery will reduce the actual yield. The extent to which a reaction’s theoretical yield is achieved is commonly expressed as its {{term}}percent yield{{/term}}:
 
 <!-- SEG:m68714:para:fs-idm52282816 -->
 Actual and theoretical yields may be expressed as masses or molar amounts (or any other appropriate property; e.g., volume, if the product is a gas). As long as both yields are expressed using the same units, these units will cancel when percent yield is calculated.
@@ -143,13 +143,13 @@ Answer:
 Green Chemistry and Atom Economy
 
 <!-- SEG:m68714:para:fs-idm49080288 -->
-The purposeful design of chemical products and processes that minimize the use of environmentally hazardous substances and the generation of waste is known as {{i}}green chemistry{{/i}}. Green chemistry is a philosophical approach that is being applied to many areas of science and technology, and its practice is summarized by guidelines known as the “Twelve Principles of Green Chemistry” (see details at this [website](http://openstax.org/l/16greenchem)). One of the 12 principles is aimed specifically at maximizing the efficiency of processes for synthesizing chemical products. The {{i}}atom economy{{/i}} of a process is a measure of this efficiency, defined as the percentage by mass of the final product of a synthesis relative to the masses of {{i}}all{{/i}} the reactants used:
+The purposeful design of chemical products and processes that minimize the use of environmentally hazardous substances and the generation of waste is known as [[i:green chemistry]]. Green chemistry is a philosophical approach that is being applied to many areas of science and technology, and its practice is summarized by guidelines known as the “Twelve Principles of Green Chemistry” (see details at this [[link:website|http://openstax.org/l/16greenchem]]). One of the 12 principles is aimed specifically at maximizing the efficiency of processes for synthesizing chemical products. The [[i:atom economy]] of a process is a measure of this efficiency, defined as the percentage by mass of the final product of a synthesis relative to the masses of [[i:all]] the reactants used:
 
 <!-- SEG:m68714:para:fs-idp59920960 -->
-Though the definition of atom economy at first glance appears very similar to that for percent yield, be aware that this property represents a difference in the {{i}}theoretical{{/i}} efficiencies of {{i}}different{{/i}} chemical processes. The percent yield of a given chemical process, on the other hand, evaluates the efficiency of a process by comparing the yield of product actually obtained to the maximum yield predicted by stoichiometry.
+Though the definition of atom economy at first glance appears very similar to that for percent yield, be aware that this property represents a difference in the [[i:theoretical]] efficiencies of [[i:different]] chemical processes. The percent yield of a given chemical process, on the other hand, evaluates the efficiency of a process by comparing the yield of product actually obtained to the maximum yield predicted by stoichiometry.
 
 <!-- SEG:m68714:para:fs-idp167996000 -->
-The synthesis of the common nonprescription pain medication, ibuprofen, nicely illustrates the success of a green chemistry approach ([#CNX_Chem_04_04_GreenChem]). First marketed in the early 1960s, ibuprofen was produced using a six-step synthesis that required 514 g of reactants to generate each mole (206 g) of ibuprofen, an atom economy of 40%. In the 1990s, an alternative process was developed by the BHC Company (now BASF Corporation) that requires only three steps and has an atom economy of ~80%, nearly twice that of the original process. The BHC process generates significantly less chemical waste; uses less-hazardous and recyclable materials; and provides significant cost-savings to the manufacturer (and, subsequently, the consumer). In recognition of the positive environmental impact of the BHC process, the company received the Environmental Protection Agency’s Greener Synthetic Pathways Award in 1997.
+The synthesis of the common nonprescription pain medication, ibuprofen, nicely illustrates the success of a green chemistry approach ([[xref:CNX_Chem_04_04_GreenChem]]). First marketed in the early 1960s, ibuprofen was produced using a six-step synthesis that required 514 g of reactants to generate each mole (206 g) of ibuprofen, an atom economy of 40%. In the 1990s, an alternative process was developed by the BHC Company (now BASF Corporation) that requires only three steps and has an atom economy of ~80%, nearly twice that of the original process. The BHC process generates significantly less chemical waste; uses less-hazardous and recyclable materials; and provides significant cost-savings to the manufacturer (and, subsequently, the consumer). In recognition of the positive environmental impact of the BHC process, the company received the Environmental Protection Agency’s Greener Synthetic Pathways Award in 1997.
 
 <!-- SEG:m68714:caption:CNX_Chem_04_04_GreenChem-caption -->
 (a) Ibuprofen is a popular nonprescription pain medication commonly sold as 200 mg tablets. (b) The BHC process for synthesizing ibuprofen requires only three steps and exhibits an impressive atom economy. (credit a: modification of work by Derrick Coetzee)
@@ -212,7 +212,7 @@ Freon-12, CCl[[sub:2]]F[[sub:2]], is prepared from CCl[[sub:4]] by reaction with
 [[MATH:5]] [[MATH:6]]
 
 <!-- SEG:m68714:problem:fs-idp27686272 -->
-Citric acid, C[[sub:6]]H[[sub:8]]O[[sub:7]], a component of jams, jellies, and fruity soft drinks, is prepared industrially via fermentation of sucrose by the mold {{i}}Aspergillus niger{{/i}}. The equation representing this reaction is[[BR]] [[MATH:7]]
+Citric acid, C[[sub:6]]H[[sub:8]]O[[sub:7]], a component of jams, jellies, and fruity soft drinks, is prepared industrially via fermentation of sucrose by the mold [[i:Aspergillus niger]]. The equation representing this reaction is[[BR]] [[MATH:7]]
 
 <!-- SEG:m68714:problem:fs-idm8793984 -->
 What mass of citric acid is produced from exactly 1 metric ton (1.000 [[MATH:8]] 10[[sup:3]] kg) of sucrose if the yield is 92.30%?

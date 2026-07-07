@@ -389,7 +389,10 @@
           "id": "CNX_Chem_06_05_Oxygen122_img",
           "class": "scaled-down",
           "alt": "This figure includes the element symbol O followed by the electron configuration 1 s superscript 2 2 s superscript 2 2 p superscript 4. An orbital diagram follows, which consists of two individual squares, labeled as, “1 s,” and, “2 s,” below followed by a grouping of three connected squares which are labeled, “2 p.” All boxes are oriented in a row. The two individual squares and the first square in the row of connected squares contain a pair of half arrows. One half arrow in each pair points up, and one points down. The downward pointing arrow in the first square in the row of connected squares is red. The remaining two squares each contain single upward pointing half arrows.",
-          "src": "../../media/CNX_Chem_06_05_Oxygen122_img.jpg"
+          "src": "../../media/CNX_Chem_06_05_Oxygen122_img.jpg",
+          "embedSrc": "",
+          "width": "",
+          "height": ""
         },
         {
           "type": "para",
@@ -1205,5 +1208,5 @@
       }
     ]
   },
-  "sectionOrder": null
+  "sectionOrder": 5
 }

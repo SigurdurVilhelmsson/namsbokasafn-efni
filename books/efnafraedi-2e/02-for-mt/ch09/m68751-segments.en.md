@@ -632,7 +632,7 @@ ideal gas
 hypothetical gas whose physical properties are perfectly described by the gas laws
 
 <!-- SEG:m68751:glossary-term:fs-idm78852976-term -->
-ideal gas constant (R)
+ideal gas constant ([[i:R]])
 
 <!-- SEG:m68751:glossary-def:fs-idm78852976-def -->
 constant derived from the ideal gas equation [[i:R]] = 0.08206 L atm mol[[sup:–1]] K[[sup:–1]] or 8.314 L kPa mol[[sup:–1]] K[[sup:–1]]

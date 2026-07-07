@@ -20,7 +20,7 @@ In the previous section, we discussed how to write Lewis structures for molecule
 Calculating Formal Charge
 
 <!-- SEG:m68740:para:fs-idm16217792 -->
-The {{term}}formal charge{{/term}} of an atom in a molecule is the {{i}}hypothetical{{/i}} charge the atom would have if we could redistribute the electrons in the bonds evenly between the atoms. Another way of saying this is that formal charge results when we take the number of valence electrons of a neutral atom, subtract the nonbonding electrons, and then subtract the number of bonds connected to that atom in the Lewis structure.
+The {{term}}formal charge{{/term}} of an atom in a molecule is the [[i:hypothetical]] charge the atom would have if we could redistribute the electrons in the bonds evenly between the atoms. Another way of saying this is that formal charge results when we take the number of valence electrons of a neutral atom, subtract the nonbonding electrons, and then subtract the number of bonds connected to that atom in the Lewis structure.
 
 <!-- SEG:m68740:para:fs-idp126842624 -->
 Thus, we calculate formal charge as follows:
@@ -29,7 +29,7 @@ Thus, we calculate formal charge as follows:
 We can double-check formal charge calculations by determining the sum of the formal charges for the whole structure. The sum of the formal charges of all atoms in a molecule must be zero; the sum of the formal charges in an ion should equal the charge of the ion.
 
 <!-- SEG:m68740:para:fs-idp15200480 -->
-We must remember that the formal charge calculated for an atom is not the {{i}}actual{{/i}} charge of the atom in the molecule. Formal charge is only a useful bookkeeping procedure; it does not indicate the presence of actual charges.
+We must remember that the formal charge calculated for an atom is not the [[i:actual]] charge of the atom in the molecule. Formal charge is only a useful bookkeeping procedure; it does not indicate the presence of actual charges.
 
 <!-- SEG:m68740:example-title:fs-idm21031296-title -->
 Calculating Formal Charge from Lewis Structures
@@ -50,13 +50,13 @@ Calculate the formal charge for each atom in the carbon monoxide molecule:
 C −1, O +1
 
 <!-- SEG:m68740:item:fs-idm30182496-item-1 -->
-{{i}}We divide the bonding electron pairs equally for all I–Cl bonds:{{/i}}[[BR]] [[MEDIA:1]]
+[[i:We divide the bonding electron pairs equally for all I–Cl bonds:]][[BR]] [[MEDIA:1]]
 
 <!-- SEG:m68740:item:fs-idm30182496-item-2 -->
-{{i}}We assign lone pairs of electrons to their atoms{{/i}}. Each Cl atom now has seven electrons assigned to it, and the I atom has eight.
+[[i:We assign lone pairs of electrons to their atoms]]. Each Cl atom now has seven electrons assigned to it, and the I atom has eight.
 
 <!-- SEG:m68740:item:fs-idm30182496-item-3 -->
-{{i}}Subtract this number from the number of valence electrons for the neutral atom:{{/i}}[[BR]] I: 7 – 8 = –1[[BR]] Cl: 7 – 7 = 0[[BR]] The sum of the formal charges of all the atoms equals –1, which is identical to the charge of the ion (–1).
+[[i:Subtract this number from the number of valence electrons for the neutral atom:]][[BR]] I: 7 – 8 = –1[[BR]] Cl: 7 – 7 = 0[[BR]] The sum of the formal charges of all the atoms equals –1, which is identical to the charge of the ion (–1).
 
 <!-- SEG:m68740:note-title:fs-idm19244912-title -->
 Answer:
@@ -83,13 +83,13 @@ Determine the formal charge for each atom in NCl[[sub:3]].
 N: 0; all three Cl atoms: 0
 
 <!-- SEG:m68740:item:fs-idp8784496-item-1 -->
-{{i}}Assign one of the electrons in each Br–Cl bond to the Br atom and one to the Cl atom in that bond:{{/i}}[[BR]] [[MEDIA:2]]
+[[i:Assign one of the electrons in each Br–Cl bond to the Br atom and one to the Cl atom in that bond:]][[BR]] [[MEDIA:2]]
 
 <!-- SEG:m68740:item:fs-idp8784496-item-2 -->
-{{i}}Assign the lone pairs to their atom.{{/i}} Now each Cl atom has seven electrons and the Br atom has seven electrons.
+[[i:Assign the lone pairs to their atom.]] Now each Cl atom has seven electrons and the Br atom has seven electrons.
 
 <!-- SEG:m68740:item:fs-idp8784496-item-3 -->
-{{i}}Subtract this number from the number of valence electrons for the neutral atom.{{/i}} This gives the formal charge:[[BR]] Br: 7 – 7 = 0[[BR]] Cl: 7 – 7 = 0[[BR]] All atoms in BrCl[[sub:3]] have a formal charge of zero, and the sum of the formal charges totals zero, as it must in a neutral molecule.
+[[i:Subtract this number from the number of valence electrons for the neutral atom.]] This gives the formal charge:[[BR]] Br: 7 – 7 = 0[[BR]] Cl: 7 – 7 = 0[[BR]] All atoms in BrCl[[sub:3]] have a formal charge of zero, and the sum of the formal charges totals zero, as it must in a neutral molecule.
 
 <!-- SEG:m68740:note-title:fs-idp11154656-title -->
 Answer:
@@ -116,7 +116,7 @@ Lewis structures are preferable when adjacent formal charges are zero or of the 
 When we must choose among several Lewis structures with similar distributions of formal charges, the structure with the negative formal charges on the more electronegative atoms is preferable.
 
 <!-- SEG:m68740:para:fs-idp52450560 -->
-To see how these guidelines apply, let us consider some possible structures for carbon dioxide, CO[[sub:2]]. We know from our previous discussion that the less electronegative atom typically occupies the central position, but formal charges allow us to understand {{i}}why{{/i}} this occurs. We can draw three possibilities for the structure: carbon in the center and double bonds, carbon in the center with a single and triple bond, and oxygen in the center with double bonds:
+To see how these guidelines apply, let us consider some possible structures for carbon dioxide, CO[[sub:2]]. We know from our previous discussion that the less electronegative atom typically occupies the central position, but formal charges allow us to understand [[i:why]] this occurs. We can draw three possibilities for the structure: carbon in the center and double bonds, carbon in the center with a single and triple bond, and oxygen in the center with double bonds:
 
 <!-- SEG:m68740:para:fs-idp58268848 -->
 Comparing the three formal charges, we can definitively identify the structure on the left as preferable because it has only formal charges of zero (Guideline 1).
@@ -164,16 +164,16 @@ ONO[[sup:–]]
 Resonance
 
 <!-- SEG:m68740:para:fs-idp81027344 -->
-Notice that the more likely structure for the nitrite anion in [#fs-idp56478288] may actually be drawn in two different ways, distinguished by the locations of the N-O and N=O bonds:
+Notice that the more likely structure for the nitrite anion in [[xref:fs-idp56478288]] may actually be drawn in two different ways, distinguished by the locations of the N-O and N=O bonds:
 
 <!-- SEG:m68740:para:fs-idm7645504 -->
 If nitrite ions do indeed contain a single and a double bond, we would expect for the two bond lengths to be different. A double bond between two atoms is shorter (and stronger) than a single bond between the same two atoms. Experiments show, however, that both N–O bonds in [[MATH:3]] have the same strength and length, and are identical in all other properties.
 
 <!-- SEG:m68740:para:fs-idp203952864 -->
-It is not possible to write a single Lewis structure for [[MATH:4]] in which nitrogen has an octet and both bonds are equivalent. Instead, we use the concept of {{term}}resonance{{/term}}: if two or more Lewis structures with the same arrangement of atoms can be written for a molecule or ion, the actual distribution of electrons is an {{i}}average{{/i}} of that shown by the various Lewis structures. The actual distribution of electrons in each of the nitrogen-oxygen bonds in [[MATH:5]] is the average of a double bond and a single bond. We call the individual Lewis structures {{term}}resonance forms{{/term}}. The actual electronic structure of the molecule (the average of the resonance forms) is called a {{term}}resonance hybrid{{/term}} of the individual resonance forms. A double-headed arrow between Lewis structures indicates that they are resonance forms.
+It is not possible to write a single Lewis structure for [[MATH:4]] in which nitrogen has an octet and both bonds are equivalent. Instead, we use the concept of {{term}}resonance{{/term}}: if two or more Lewis structures with the same arrangement of atoms can be written for a molecule or ion, the actual distribution of electrons is an [[i:average]] of that shown by the various Lewis structures. The actual distribution of electrons in each of the nitrogen-oxygen bonds in [[MATH:5]] is the average of a double bond and a single bond. We call the individual Lewis structures {{term}}resonance forms{{/term}}. The actual electronic structure of the molecule (the average of the resonance forms) is called a {{term}}resonance hybrid{{/term}} of the individual resonance forms. A double-headed arrow between Lewis structures indicates that they are resonance forms.
 
 <!-- SEG:m68740:para:fs-idm12853328 -->
-We should remember that a molecule described as a resonance hybrid {{i}}never{{/i}} possesses an electronic structure described by either resonance form. It does not fluctuate between resonance forms; rather, the actual electronic structure is {{i}}always{{/i}} the average of that shown by all resonance forms. George Wheland, one of the pioneers of resonance theory, used a historical analogy to describe the relationship between resonance forms and resonance hybrids. A medieval traveler, having never before seen a rhinoceros, described it as a hybrid of a dragon and a unicorn because it had many properties in common with both. Just as a rhinoceros is neither a dragon sometimes nor a unicorn at other times, a resonance hybrid is neither of its resonance forms at any given time. Like a rhinoceros, it is a real entity that experimental evidence has shown to exist. It has some characteristics in common with its resonance forms, but the resonance forms themselves are convenient, imaginary images (like the unicorn and the dragon).
+We should remember that a molecule described as a resonance hybrid [[i:never]] possesses an electronic structure described by either resonance form. It does not fluctuate between resonance forms; rather, the actual electronic structure is [[i:always]] the average of that shown by all resonance forms. George Wheland, one of the pioneers of resonance theory, used a historical analogy to describe the relationship between resonance forms and resonance hybrids. A medieval traveler, having never before seen a rhinoceros, described it as a hybrid of a dragon and a unicorn because it had many properties in common with both. Just as a rhinoceros is neither a dragon sometimes nor a unicorn at other times, a resonance hybrid is neither of its resonance forms at any given time. Like a rhinoceros, it is a real entity that experimental evidence has shown to exist. It has some characteristics in common with its resonance forms, but the resonance forms themselves are convenient, imaginary images (like the unicorn and the dragon).
 
 <!-- SEG:m68740:para:fs-idp245720144 -->
 The carbonate anion, [[MATH:6]] provides a second example of resonance:
@@ -182,7 +182,7 @@ The carbonate anion, [[MATH:6]] provides a second example of resonance:
 One oxygen atom must have a double bond to carbon to complete the octet on the central atom. All oxygen atoms, however, are equivalent, and the double bond could form from any one of the three atoms. This gives rise to three resonance forms of the carbonate ion. Because we can write three identical resonance structures, we know that the actual arrangement of electrons in the carbonate ion is the average of the three structures. Again, experiments show that all three C–O bonds are exactly the same.
 
 <!-- SEG:m68740:para:fs-idp64654736 -->
-Use this [online quiz](http://openstax.org/l/16LewisMake) to practice your skills in drawing resonance structures and estimating formal charges.
+Use this [[link:online quiz|http://openstax.org/l/16LewisMake]] to practice your skills in drawing resonance structures and estimating formal charges.
 
 <!-- SEG:m68740:title:fs-idm30786384-title -->
 Key Concepts and Summary

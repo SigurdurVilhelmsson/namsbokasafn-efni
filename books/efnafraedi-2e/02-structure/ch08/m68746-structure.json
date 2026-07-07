@@ -26,7 +26,10 @@
       "id": "fs-idp35800208",
       "class": "scaled-down",
       "alt": "A Lewis structure is shown in which two carbon atoms are bonded together by a double bond. Each carbon atom is bonded to two hydrogen atoms by a single bond.",
-      "src": "../../media/CNX_Chem_08_03_C4H4Lewis_img.jpg"
+      "src": "../../media/CNX_Chem_08_03_C4H4Lewis_img.jpg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "type": "para",
@@ -500,8 +503,11 @@
       "class": null,
       "alt": "A Lewis structure is shown in which a carbon atom is attached by single bonds to three hydrogen atoms. It is also attached by a single bond to a carbon atom that is triple bonded to a nitrogen atom with one lone electron pair. Below the structure is a right facing arrow with its head near the nitrogen and its tail, which looks like a plus sign, located near the carbon atoms. The arrow is labeled, “dipole moment.”",
       "src": "../../media/CNX_Chem_08_03_Acetonitri_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
-  "sectionOrder": null
+  "sectionOrder": 3
 }

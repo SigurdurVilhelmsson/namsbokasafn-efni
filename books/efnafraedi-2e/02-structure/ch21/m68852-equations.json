@@ -209,6 +209,14 @@
     "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mn mathvariant=\"bold\">0</m:mn></m:mrow><m:mn mathvariant=\"bold\">0</m:mn></m:msubsup><m:mtext mathvariant=\"bold\">γ</m:mtext><m:mtext mathvariant=\"bold\">)</m:mtext></m:math>",
     "latex": "_{{0}}^{0}\\text{γ}\\text{)}"
   },
+  "math-51": {
+    "mathml": "<m:math><m:mrow><m:mtext>(</m:mtext><m:msubsup><m:mrow/><m:mn>+1</m:mn><m:mrow><m:mspace width=\"0.5em\"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>β</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{(}_{+1}^{{\\, 0}}\\text{β}}"
+  },
+  "math-52": {
+    "mathml": "<m:math><m:mrow><m:msubsup><m:mrow/><m:mn>+1</m:mn><m:mrow><m:mspace width=\"0.5em\"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>e</m:mtext><m:mtext>)</m:mtext></m:mrow></m:math>",
+    "latex": "{_{+1}^{{\\, 0}}\\text{e}\\text{)}}"
+  },
   "fs-idm4841104": {
     "mathml": "<m:math><m:mrow><m:msubsup><m:mrow/><m:mn>−1</m:mn><m:mrow><m:mspace width=\"0.5em\"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>e</m:mtext><m:mo>+</m:mo><m:msubsup><m:mrow/><m:mn>+1</m:mn><m:mrow><m:mspace width=\"0.5em\"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>e</m:mtext><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mtext>γ</m:mtext><m:mo>+</m:mo><m:mtext>γ</m:mtext></m:mrow></m:math>",
     "latex": "{_{−1}^{{\\, 0}}\\text{e}+_{+1}^{{\\, 0}}\\text{e}\\, \\longrightarrow \\, \\text{γ}+\\text{γ}}",

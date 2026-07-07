@@ -582,7 +582,10 @@
       "id": "fs-idp200689696",
       "class": "scaled-down",
       "alt": "A diagram contains three Lewis structures. The left most structure shows an H atom bonded to a C l atom by a single bond. The C l atom has three lone pairs of electrons. The phrase “One sigma bond No pi bonds” is written below the drawing. The center structure shows two O atoms bonded by a double bond. The O atoms each have two lone pairs of electrons. The phrase “One sigma bond One pi bond” is written below the drawing. The right most structure shows two N atoms bonded by a triple bond. Each N atom has a lone pairs of electrons. The phrase “One sigma bond Two pi bonds” is written below the drawing.",
-      "src": "../../media/CNX_Chem_08_01_bondtype_img.jpg"
+      "src": "../../media/CNX_Chem_08_01_bondtype_img.jpg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "type": "para",
@@ -904,7 +907,10 @@
       "class": "scaled-down",
       "alt": "This figure shows a molecule composed of four carbon atoms. There is a double bond between carbons one and two and three and four, while a single bond holds carbon two and three together. Carbons one and four are also bonded to two hydrogens with a single bond while carbons two and three are each bonded to one hydrogen each by a single bond.",
       "src": "../../media/CNX_Chem_08_01_C4H6_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:2]]",
@@ -912,7 +918,10 @@
       "class": null,
       "alt": "This figure shows the orbitals of two atoms being added together as they form bonds. The two atoms are shown separately on the right, each having two peanut-shaped orbitals lying perpendicularly to one another. A right-facing arrow shows that the two have moved closer together and now the upper and lower portions of the vertical peanut-shaped orbitals are shown as merging together above and below the plane of the molecule while the horizontal peanut-shaped orbitals are overlapping between the two nuclei.",
       "src": "../../media/CNX_Chem_08_01_O2bonds_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:3]]",
@@ -920,8 +929,11 @@
       "class": "scaled-down",
       "alt": "Two nitrogen atoms are shown both in a Lewis structure and as a diagram. The Lewis structure depicts the two nitrogen atoms bonded by a triple bond. The diagram shows two nitrogen atoms and their three peanut-shaped p-orbitals. One of the orbitals lies horizontally and overlaps between the two nuclei. It is labeled, “sigma bond.” The other two lie vertically and in the z-plane of the page. They overlap above and below and into and out of the page in relation to the nuclei. They are each labeled, “pi bond.”",
       "src": "../../media/CNX_Chem_08_01_N2LewStru_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
-  "sectionOrder": null
+  "sectionOrder": 1
 }

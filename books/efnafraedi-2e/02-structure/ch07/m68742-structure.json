@@ -45,6 +45,52 @@
       },
       "content": [
         {
+          "type": "para",
+          "id": "fs-idp36050992",
+          "segmentId": "m68742:para:fs-idp36050992"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp46353584",
+          "segmentId": "m68742:para:fs-idp46353584"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp122770240",
+          "segmentId": "m68742:para:fs-idp122770240"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_07_06_BeF2",
+          "caption": {
+            "segmentId": "m68742:caption:CNX_Chem_07_06_BeF2-caption"
+          },
+          "media": {
+            "id": "fs-idp229524848",
+            "alt": "A Lewis structure is shown. A fluorine atom with three lone pairs of electrons is single bonded to a beryllium atom which is single bonded to a fluorine atom with three lone pairs of electrons. The angle of the bonds between the two fluorine atoms and the beryllium atom is labeled, “180 degrees.”",
+            "src": "../../media/CNX_Chem_07_06_BeF2.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp87297072",
+          "segmentId": "m68742:para:fs-idp87297072"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_07_06_Egeom",
+          "caption": {
+            "segmentId": "m68742:caption:CNX_Chem_07_06_Egeom-caption"
+          },
+          "media": {
+            "id": "fs-idp73717728",
+            "alt": "A table with four rows and six columns is shown. The header column contains the phrases, “Number of regions,” “Spatial arrangement,” “Wedge/dash Notation,” and “Electron region Geometry.” The first row reads: “Two regions of high electron density ( bonds and/or unshared pairs )”, “Three regions of high electron density ( bonds and/or unshared pairs ),” “Four regions of high electron density ( bonds and/or unshared pairs ),” “Five regions of high electron density ( bonds and/or unshared pairs ),” and “Six regions of high electron density ( bonds and/or unshared pairs ).” The second row shows diagrams of orbitals. The first image shows two oval-shaped orbs with an arrow indicating an angle of 180 degrees. The second image shows three oval-shaped orbs with an arrow indicating an angle of 120 degrees. The third image shows four oval-shaped orbs with an arrow indicating an angle of 109.5 degrees. The fourth image shows five oval-shaped orbs with an arrow indicating an angle of 90 and 120 degrees. The fifth image shows six oval-shaped orbs with an arrow indicating an angle of 90 degrees. The third row contains Lewis structures. The first structure shows a beryllium atom single bonded to two hydrogen atoms. The second structure shows a boron atom single bonded to three hydrogen atoms. The third structure shows a carbon atom single bonded to four hydrogen atoms. The fourth structure shows a phosphorus atom single bonded to five fluorine atoms. The fifth structure shows a sulfur atom single bonded to six fluorine atoms. The fourth row contains the phrases “Linear; 180 degree angle,” Trigonal Planar; all angles 120 degrees,” “Tetrahedral; all angles 109.5 degrees,” “Trigonal bipyramidal; angles of 90 degrees and 120 degrees. An attached atom may be equatorial, ( in the plane of the triangle ), or axial, ( above the plane of the triangle ),” and “Octahedral; 90 degrees or 180 degrees.”",
+            "src": "../../media/CNX_Chem_07_06_Egeom.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
           "type": "section",
           "id": "fs-idm5284928",
           "class": null,
@@ -803,52 +849,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idp36050992",
-          "segmentId": "m68742:para:fs-idp36050992"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp46353584",
-          "segmentId": "m68742:para:fs-idp46353584"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp122770240",
-          "segmentId": "m68742:para:fs-idp122770240"
-        },
-        {
-          "type": "figure",
-          "id": "CNX_Chem_07_06_BeF2",
-          "caption": {
-            "segmentId": "m68742:caption:CNX_Chem_07_06_BeF2-caption"
-          },
-          "media": {
-            "id": "fs-idp229524848",
-            "alt": "A Lewis structure is shown. A fluorine atom with three lone pairs of electrons is single bonded to a beryllium atom which is single bonded to a fluorine atom with three lone pairs of electrons. The angle of the bonds between the two fluorine atoms and the beryllium atom is labeled, “180 degrees.”",
-            "src": "../../media/CNX_Chem_07_06_BeF2.jpg",
-            "mimeType": "image/jpeg"
-          }
-        },
-        {
-          "type": "para",
-          "id": "fs-idp87297072",
-          "segmentId": "m68742:para:fs-idp87297072"
-        },
-        {
-          "type": "figure",
-          "id": "CNX_Chem_07_06_Egeom",
-          "caption": {
-            "segmentId": "m68742:caption:CNX_Chem_07_06_Egeom-caption"
-          },
-          "media": {
-            "id": "fs-idp73717728",
-            "alt": "A table with four rows and six columns is shown. The header column contains the phrases, “Number of regions,” “Spatial arrangement,” “Wedge/dash Notation,” and “Electron region Geometry.” The first row reads: “Two regions of high electron density ( bonds and/or unshared pairs )”, “Three regions of high electron density ( bonds and/or unshared pairs ),” “Four regions of high electron density ( bonds and/or unshared pairs ),” “Five regions of high electron density ( bonds and/or unshared pairs ),” and “Six regions of high electron density ( bonds and/or unshared pairs ).” The second row shows diagrams of orbitals. The first image shows two oval-shaped orbs with an arrow indicating an angle of 180 degrees. The second image shows three oval-shaped orbs with an arrow indicating an angle of 120 degrees. The third image shows four oval-shaped orbs with an arrow indicating an angle of 109.5 degrees. The fourth image shows five oval-shaped orbs with an arrow indicating an angle of 90 and 120 degrees. The fifth image shows six oval-shaped orbs with an arrow indicating an angle of 90 degrees. The third row contains Lewis structures. The first structure shows a beryllium atom single bonded to two hydrogen atoms. The second structure shows a boron atom single bonded to three hydrogen atoms. The third structure shows a carbon atom single bonded to four hydrogen atoms. The fourth structure shows a phosphorus atom single bonded to five fluorine atoms. The fifth structure shows a sulfur atom single bonded to six fluorine atoms. The fourth row contains the phrases “Linear; 180 degree angle,” Trigonal Planar; all angles 120 degrees,” “Tetrahedral; all angles 109.5 degrees,” “Trigonal bipyramidal; angles of 90 degrees and 120 degrees. An attached atom may be equatorial, ( in the plane of the triangle ), or axial, ( above the plane of the triangle ),” and “Octahedral; 90 degrees or 180 degrees.”",
-            "src": "../../media/CNX_Chem_07_06_Egeom.jpg",
-            "mimeType": "image/jpeg"
-          }
         }
       ]
     },
@@ -861,6 +861,134 @@
         "text": "Molecular Polarity and Dipole Moment"
       },
       "content": [
+        {
+          "type": "para",
+          "id": "fs-idp30351200",
+          "segmentId": "m68742:para:fs-idp30351200"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp16382464",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp33849296",
+          "segmentId": "m68742:para:fs-idp33849296"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_07_06_BondVector",
+          "caption": {
+            "segmentId": "m68742:caption:CNX_Chem_07_06_BondVector-caption"
+          },
+          "media": {
+            "id": "fs-idp53563840",
+            "alt": "Two images are shown and labeled, “a” and “b.” Image a shows a large sphere labeled, “C,” a left-facing arrow with a crossed end, and a smaller sphere labeled “H.” Image b shows a large sphere labeled, “B,” a right-facing arrow with a crossed end, and a smaller sphere labeled “F.”",
+            "src": "../../media/CNX_Chem_07_06_BondVector.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp52773168",
+          "segmentId": "m68742:para:fs-idp52773168"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm10056464",
+          "segmentId": "m68742:para:fs-idm10056464"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp218363312",
+          "segmentId": "m68742:para:fs-idp218363312"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_07_06_CO2H2Odip",
+          "caption": {
+            "segmentId": "m68742:caption:CNX_Chem_07_06_CO2H2Odip-caption"
+          },
+          "media": {
+            "id": "fs-idp102085104",
+            "alt": "Two images are shown and labeled, “a” and “b.” Image a shows a carbon atom bonded to two oxygen atoms in a ball-and-stick representation. Two arrows face away from the center of the molecule in opposite directions and are drawn horizontally like the molecule. These arrows are labeled, “Bond moments,” and the image is labeled, “Overall dipole moment equals 0.” Image b shows an oxygen atom bonded to two hydrogen atoms in a downward-facing v-shaped arrangement. An upward-facing, vertical arrow is drawn below the molecule while two upward and inward facing arrows are drawn above the molecule. The upper arrows are labeled, “Bond moments,” while the image is labeled, “Overall dipole moment.”",
+            "src": "../../media/CNX_Chem_07_06_CO2H2Odip.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp54246320",
+          "segmentId": "m68742:para:fs-idp54246320"
+        },
+        {
+          "type": "media",
+          "id": "fs-idp52090304",
+          "class": "scaled-down",
+          "alt": "An image shows a carbon atom double bonded to a sulfur atom and an oxygen atom which are arranged in a horizontal plane. Two arrows face away from the center of the molecule in opposite directions and are drawn horizontally like the molecule. The left-facing arrow is larger than the right-facing arrow. These arrows are labeled, “Bond moments,” and a left-facing arrow below the molecule is labeled, “Overall dipole moment.”",
+          "src": "../../media/CNX_Chem_07_06_OSC_img.jpg",
+          "embedSrc": "",
+          "width": "",
+          "height": ""
+        },
+        {
+          "type": "para",
+          "id": "fs-idp225382864",
+          "segmentId": "m68742:para:fs-idp225382864"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp66532464",
+          "segmentId": "m68742:para:fs-idp66532464"
+        },
+        {
+          "type": "media",
+          "id": "fs-idm3023712",
+          "class": "scaled-down",
+          "alt": "An image shows a carbon atom single bonded to three hydrogen atoms and a chlorine atom. There are arrows with crossed ends pointing from the hydrogen to the carbon near each bond, and one pointing from the carbon to the chlorine along that bond. The carbon and chlorine arrow is longer. This image uses dashes and wedges to give it a three-dimensional appearance.",
+          "src": "../../media/CNX_Chem_07_06_CHCl3_img.jpg",
+          "embedSrc": "",
+          "width": "",
+          "height": ""
+        },
+        {
+          "type": "para",
+          "id": "fs-idp214036816",
+          "segmentId": "m68742:para:fs-idp214036816"
+        },
+        {
+          "type": "media",
+          "id": "fs-idp35612832",
+          "class": "scaled-down",
+          "alt": "Two Lewis structures are shown. The left structure shows a sulfur atom with two lone pairs of electrons single bonded to two hydrogen atoms. Near the sulfur is a dipole symbol with a superscripted negative sign. Near each hydrogen is a dipole symbol with a superscripted positive sign. The right structure shows a nitrogen atom with one lone pair of electrons single bonded to three hydrogen atoms. Near the nitrogen is a dipole symbol with a superscripted negative sign. Near each hydrogen is a dipole symbol with a superscripted positive sign.",
+          "src": "../../media/CNX_Chem_07_06_SH2NH3_img.jpg",
+          "embedSrc": "",
+          "width": "",
+          "height": ""
+        },
+        {
+          "type": "para",
+          "id": "fs-idp51111376",
+          "segmentId": "m68742:para:fs-idp51111376"
+        },
+        {
+          "type": "list",
+          "id": "fs-idp94928768",
+          "listType": "enumerated",
+          "numberStyle": "arabic",
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m68742:item:fs-idp94928768-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m68742:item:fs-idp94928768-item-2"
+            }
+          ]
+        },
         {
           "type": "section",
           "id": "fs-idp83627232",
@@ -973,125 +1101,6 @@
                   ]
                 }
               ]
-            }
-          ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idp30351200",
-          "segmentId": "m68742:para:fs-idp30351200"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp16382464",
-          "class": "unnumbered"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp33849296",
-          "segmentId": "m68742:para:fs-idp33849296"
-        },
-        {
-          "type": "figure",
-          "id": "CNX_Chem_07_06_BondVector",
-          "caption": {
-            "segmentId": "m68742:caption:CNX_Chem_07_06_BondVector-caption"
-          },
-          "media": {
-            "id": "fs-idp53563840",
-            "alt": "Two images are shown and labeled, “a” and “b.” Image a shows a large sphere labeled, “C,” a left-facing arrow with a crossed end, and a smaller sphere labeled “H.” Image b shows a large sphere labeled, “B,” a right-facing arrow with a crossed end, and a smaller sphere labeled “F.”",
-            "src": "../../media/CNX_Chem_07_06_BondVector.jpg",
-            "mimeType": "image/jpeg"
-          }
-        },
-        {
-          "type": "para",
-          "id": "fs-idp52773168",
-          "segmentId": "m68742:para:fs-idp52773168"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm10056464",
-          "segmentId": "m68742:para:fs-idm10056464"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp218363312",
-          "segmentId": "m68742:para:fs-idp218363312"
-        },
-        {
-          "type": "figure",
-          "id": "CNX_Chem_07_06_CO2H2Odip",
-          "caption": {
-            "segmentId": "m68742:caption:CNX_Chem_07_06_CO2H2Odip-caption"
-          },
-          "media": {
-            "id": "fs-idp102085104",
-            "alt": "Two images are shown and labeled, “a” and “b.” Image a shows a carbon atom bonded to two oxygen atoms in a ball-and-stick representation. Two arrows face away from the center of the molecule in opposite directions and are drawn horizontally like the molecule. These arrows are labeled, “Bond moments,” and the image is labeled, “Overall dipole moment equals 0.” Image b shows an oxygen atom bonded to two hydrogen atoms in a downward-facing v-shaped arrangement. An upward-facing, vertical arrow is drawn below the molecule while two upward and inward facing arrows are drawn above the molecule. The upper arrows are labeled, “Bond moments,” while the image is labeled, “Overall dipole moment.”",
-            "src": "../../media/CNX_Chem_07_06_CO2H2Odip.jpg",
-            "mimeType": "image/jpeg"
-          }
-        },
-        {
-          "type": "para",
-          "id": "fs-idp54246320",
-          "segmentId": "m68742:para:fs-idp54246320"
-        },
-        {
-          "type": "media",
-          "id": "fs-idp52090304",
-          "class": "scaled-down",
-          "alt": "An image shows a carbon atom double bonded to a sulfur atom and an oxygen atom which are arranged in a horizontal plane. Two arrows face away from the center of the molecule in opposite directions and are drawn horizontally like the molecule. The left-facing arrow is larger than the right-facing arrow. These arrows are labeled, “Bond moments,” and a left-facing arrow below the molecule is labeled, “Overall dipole moment.”",
-          "src": "../../media/CNX_Chem_07_06_OSC_img.jpg"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp225382864",
-          "segmentId": "m68742:para:fs-idp225382864"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp66532464",
-          "segmentId": "m68742:para:fs-idp66532464"
-        },
-        {
-          "type": "media",
-          "id": "fs-idm3023712",
-          "class": "scaled-down",
-          "alt": "An image shows a carbon atom single bonded to three hydrogen atoms and a chlorine atom. There are arrows with crossed ends pointing from the hydrogen to the carbon near each bond, and one pointing from the carbon to the chlorine along that bond. The carbon and chlorine arrow is longer. This image uses dashes and wedges to give it a three-dimensional appearance.",
-          "src": "../../media/CNX_Chem_07_06_CHCl3_img.jpg"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp214036816",
-          "segmentId": "m68742:para:fs-idp214036816"
-        },
-        {
-          "type": "media",
-          "id": "fs-idp35612832",
-          "class": "scaled-down",
-          "alt": "Two Lewis structures are shown. The left structure shows a sulfur atom with two lone pairs of electrons single bonded to two hydrogen atoms. Near the sulfur is a dipole symbol with a superscripted negative sign. Near each hydrogen is a dipole symbol with a superscripted positive sign. The right structure shows a nitrogen atom with one lone pair of electrons single bonded to three hydrogen atoms. Near the nitrogen is a dipole symbol with a superscripted negative sign. Near each hydrogen is a dipole symbol with a superscripted positive sign.",
-          "src": "../../media/CNX_Chem_07_06_SH2NH3_img.jpg"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp51111376",
-          "segmentId": "m68742:para:fs-idp51111376"
-        },
-        {
-          "type": "list",
-          "id": "fs-idp94928768",
-          "listType": "enumerated",
-          "numberStyle": "arabic",
-          "bulletStyle": null,
-          "items": [
-            {
-              "id": null,
-              "segmentId": "m68742:item:fs-idp94928768-item-1"
-            },
-            {
-              "id": null,
-              "segmentId": "m68742:item:fs-idp94928768-item-2"
             }
           ]
         }
@@ -2229,7 +2238,10 @@
       "class": null,
       "alt": "Three Lewis diagrams are shown. The first diagram shows the letter A single bonded to the left and right to the letter B. An example, “C O subscript 2,” and the term, “linear,” are written beside this diagram. The second diagram shows the letter A with two lone pairs of electrons, single bonded to the left and lower right to the letter B. An example, “H subscript 2 O,” and the term, “bent with an approximately 109 degree angle,” are written beside this diagram. The third diagram shows the letter A with one lone electron pair, single bonded to the left and lower right to the letter B. An example, “S O subscript 2,” and the term, “bent with an approximately 120 degree angle,” are written beside this diagram.",
       "src": "../../media/CNX_Chem_07_06_Ques23ans_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:2]]",
@@ -2237,7 +2249,10 @@
       "class": null,
       "alt": "The figure shows three Lewis structures that are each surrounded by brackets and have a superscripted 2 negative sign. They are written with a double-headed arrow in between each diagram. The first of this trio has a carbon atom single bonded to two sulfur atoms, each of which has thee lone pairs of electrons, and double bonded to a third sulfur atom with two lone pairs of electrons. The second and third diagrams have the same atoms present, but each time the double bond moves between a different carbon and sulfur pair. The lone electron pairs also shift to correspond with the bond changes.",
       "src": "../../media/CNX_Chem_07_06_CS3a_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:3]]",
@@ -2245,7 +2260,10 @@
       "class": null,
       "alt": "The Lewis structure shows a carbon atom double bonded to two sulfur atoms, each of which has two lone pairs of electrons.",
       "src": "../../media/CNX_Chem_07_06_CS3b_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:4]]",
@@ -2253,7 +2271,10 @@
       "class": null,
       "alt": "This diagram shows a carbon with one lone electron pair triple bonded to a sulfur with one lone electron pair.",
       "src": "../../media/CNX_Chem_07_06_CS3c_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:5]]",
@@ -2261,8 +2282,11 @@
       "class": null,
       "alt": "A Lewis structure is shown in which a carbon atom is single bonded to three hydrogen atoms and a second carbon atom. The second carbon is single bonded to a hydrogen atom and double bonded to a third carbon atom which is single bonded to two hydrogen atoms.",
       "src": "../../media/CNX_Chem_07_06_Ques28ans_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
-  "sectionOrder": null
+  "sectionOrder": 6
 }

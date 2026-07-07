@@ -20,10 +20,10 @@ Mass Percentage
 Earlier in this chapter, percent composition was introduced as a measure of the relative amount of a given element in a compound. Percentages are also commonly used to express the composition of mixtures, including solutions. The {{term}}mass percentage{{/term}} of a solution component is defined as the ratio of the component’s mass to the solution’s mass, expressed as a percentage:
 
 <!-- SEG:m68704:para:fs-idm3484528 -->
-Mass percentage is also referred to by similar names such as {{i}}percent mass, percent weight, weight/weight percent{{/i}}, and other variations on this theme. The most common symbol for mass percentage is simply the percent sign, %, although more detailed symbols are often used including %mass, %weight, and (w/w)%. Use of these more detailed symbols can prevent confusion of mass percentages with other types of percentages, such as volume percentages (to be discussed later in this section).
+Mass percentage is also referred to by similar names such as [[i:percent mass, percent weight, weight/weight percent]], and other variations on this theme. The most common symbol for mass percentage is simply the percent sign, %, although more detailed symbols are often used including %mass, %weight, and (w/w)%. Use of these more detailed symbols can prevent confusion of mass percentages with other types of percentages, such as volume percentages (to be discussed later in this section).
 
 <!-- SEG:m68704:para:fs-idm21823696 -->
-Mass percentages are popular concentration units for consumer products. The label of a typical liquid bleach bottle ([#CNX_Chem_03_05_bleach]) cites the concentration of its active ingredient, sodium hypochlorite (NaOCl), as being 7.4%. A 100.0-g sample of bleach would therefore contain 7.4 g of NaOCl.
+Mass percentages are popular concentration units for consumer products. The label of a typical liquid bleach bottle ([[xref:CNX_Chem_03_05_bleach]]) cites the concentration of its active ingredient, sodium hypochlorite (NaOCl), as being 7.4%. A 100.0-g sample of bleach would therefore contain 7.4 g of NaOCl.
 
 <!-- SEG:m68704:caption:CNX_Chem_03_05_bleach-caption -->
 Liquid bleach is an aqueous solution of sodium hypochlorite (NaOCl). This brand has a concentration of 7.4% NaOCl by mass.
@@ -131,7 +131,7 @@ Answer:
 Mass-Volume Percentage
 
 <!-- SEG:m68704:para:fs-idm16796176 -->
-“Mixed” percentage units, derived from the mass of solute and the volume of solution, are popular for certain biochemical and medical applications. A {{term}}mass-volume percent{{/term}} is a ratio of a solute’s mass to the solution’s volume expressed as a percentage. The specific units used for solute mass and solution volume may vary, depending on the solution. For example, physiological saline solution, used to prepare intravenous fluids, has a concentration of 0.9% mass/volume (m/v), indicating that the composition is 0.9 g of solute per 100 mL of solution. The concentration of glucose in blood (commonly referred to as “blood sugar”) is also typically expressed in terms of a mass-volume ratio. Though not expressed explicitly as a percentage, its concentration is usually given in milligrams of glucose per deciliter (100 mL) of blood ([#CNX_Chem_03_05_saline]).
+“Mixed” percentage units, derived from the mass of solute and the volume of solution, are popular for certain biochemical and medical applications. A {{term}}mass-volume percent{{/term}} is a ratio of a solute’s mass to the solution’s volume expressed as a percentage. The specific units used for solute mass and solution volume may vary, depending on the solution. For example, physiological saline solution, used to prepare intravenous fluids, has a concentration of 0.9% mass/volume (m/v), indicating that the composition is 0.9 g of solute per 100 mL of solution. The concentration of glucose in blood (commonly referred to as “blood sugar”) is also typically expressed in terms of a mass-volume ratio. Though not expressed explicitly as a percentage, its concentration is usually given in milligrams of glucose per deciliter (100 mL) of blood ([[xref:CNX_Chem_03_05_saline]]).
 
 <!-- SEG:m68704:caption:CNX_Chem_03_05_saline-caption -->
 “Mixed” mass-volume units are commonly encountered in medical settings. (a) The NaCl concentration of physiological saline is 0.9% (m/v). (b) This device measures glucose levels in a sample of blood. The normal range for glucose concentration in blood (fasting) is around 70–100 mg/dL. (credit a: modification of work by “The National Guard”/Flickr; credit b: modification of work by Biswarup Ganguly)
@@ -146,7 +146,7 @@ Very low solute concentrations are often expressed using appropriately small uni
 The mass-based definitions of ppm and ppb are given here:
 
 <!-- SEG:m68704:para:fs-idm37568416 -->
-Both ppm and ppb are convenient units for reporting the concentrations of pollutants and other trace contaminants in water. Concentrations of these contaminants are typically very low in treated and natural waters, and their levels cannot exceed relatively low concentration thresholds without causing adverse effects on health and wildlife. For example, the EPA has identified the maximum safe level of fluoride ion in tap water to be 4 ppm. Inline water filters are designed to reduce the concentration of fluoride and several other trace-level contaminants in tap water ([#CNX_Chem_03_05_faucet]).
+Both ppm and ppb are convenient units for reporting the concentrations of pollutants and other trace contaminants in water. Concentrations of these contaminants are typically very low in treated and natural waters, and their levels cannot exceed relatively low concentration thresholds without causing adverse effects on health and wildlife. For example, the EPA has identified the maximum safe level of fluoride ion in tap water to be 4 ppm. Inline water filters are designed to reduce the concentration of fluoride and several other trace-level contaminants in tap water ([[xref:CNX_Chem_03_05_faucet]]).
 
 <!-- SEG:m68704:caption:CNX_Chem_03_05_faucet-caption -->
 (a) In some areas, trace-level concentrations of contaminants can render unfiltered tap water unsafe for drinking and cooking. (b) Inline water filters reduce the concentration of solutes in tap water. (credit a: modification of work by Jenn Durfey; credit b: modification of work by “vastateparkstaff”/Wikimedia commons)
@@ -218,13 +218,13 @@ What mass of HCl is contained in 45.0 mL of an aqueous HCl solution that has a d
 The hardness of water (hardness count) is usually expressed in parts per million (by mass) of CaCO[[sub:3]], which is equivalent to milligrams of CaCO[[sub:3]] per liter of water. What is the molar concentration of Ca[[sup:2+ ]]ions in a water sample with a hardness count of 175 mg CaCO[[sub:3]]/L?
 
 <!-- SEG:m68704:solution:fs-idm8356352 -->
-1.75 [[MATH:3]] 10[[sup:−3]] {{i}}M{{/i}}
+1.75 [[MATH:3]] 10[[sup:−3]] [[i:M]]
 
 <!-- SEG:m68704:problem:fs-idp16215312 -->
 The level of mercury in a stream was suspected to be above the minimum considered safe (1 part per billion by weight). An analysis indicated that the concentration was 0.68 parts per billion. Assume a density of 1.0 g/mL and calculate the molarity of mercury in the stream.
 
 <!-- SEG:m68704:problem:fs-idp6805168 -->
-In Canada and the United Kingdom, devices that measure blood glucose levels provide a reading in millimoles per liter. If a measurement of 5.3 m{{i}}M{{/i}} is observed, what is the concentration of glucose (C[[sub:6]]H[[sub:12]]O[[sub:6]]) in mg/dL?
+In Canada and the United Kingdom, devices that measure blood glucose levels provide a reading in millimoles per liter. If a measurement of 5.3 m[[i:M]] is observed, what is the concentration of glucose (C[[sub:6]]H[[sub:12]]O[[sub:6]]) in mg/dL?
 
 <!-- SEG:m68704:solution:fs-idp18917136 -->
 95 mg/dL

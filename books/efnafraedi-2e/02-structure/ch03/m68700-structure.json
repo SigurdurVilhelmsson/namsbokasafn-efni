@@ -32,6 +32,11 @@
       },
       "content": [
         {
+          "type": "para",
+          "id": "fs-idp76705136",
+          "segmentId": "m68700:para:fs-idp76705136"
+        },
+        {
           "type": "section",
           "id": "fs-idp16940464",
           "class": null,
@@ -222,11 +227,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idp76705136",
-          "segmentId": "m68700:para:fs-idp76705136"
         }
       ]
     },
@@ -2013,7 +2013,10 @@
       "class": "scaled-down-30",
       "alt": "A structure is shown. A C atom is bonded to two C l atoms and forms a double bond with one O atom.",
       "src": "../../media/CNX_Chem_03_01_Ex01_05a_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:2]]",
@@ -2021,7 +2024,10 @@
       "class": "scaled-down-30",
       "alt": "A structure is shown. Two C atoms form a triple bond with each other. Each C atom also forms a single bond with on H atom.",
       "src": "../../media/CNX_Chem_03_01_Ex01_05b_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:3]]",
@@ -2029,7 +2035,10 @@
       "class": "scaled-down-30",
       "alt": "A structure is shown. Two C atoms form double bonds with each other. Each C atom also forms a single bond with an H atom and a B r atom.",
       "src": "../../media/CNX_Chem_03_01_Ex01_05c_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:4]]",
@@ -2037,7 +2046,10 @@
       "class": "scaled-down-30",
       "alt": "A structure is shown. An S atom forms double bonds with two O atoms. The S atom also forms a single bond with an O atom which forms a single bond with an H atom. The S atom also forms a single bond with another O atom which forms a single bond with another H atom.",
       "src": "../../media/CNX_Chem_03_01_Ex01_05d_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:5]]",
@@ -2045,7 +2057,10 @@
       "class": "scaled-down-30",
       "alt": "A structure is shown. Two C atoms form double bonds with each other. The C atom on the left forms a single bond with two H atoms each. The C atom on the right forms a single bond with an H atom and with a C H subscript 2 C H subscript 3 group.",
       "src": "../../media/CNX_Chem_03_01_Ex01_06a_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:6]]",
@@ -2053,7 +2068,10 @@
       "class": "scaled-down-30",
       "alt": "A structure is shown. There is a C atom which forms single bonds with three H atoms each. This C atom is bonded to another C atom. This second C atom forms a triple bond with another C atom which forms a single bond with a fourth C atom. The fourth C atom forms single bonds with three H atoms each.",
       "src": "../../media/CNX_Chem_03_01_Ex01_06b_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:7]]",
@@ -2061,7 +2079,10 @@
       "class": "scaled-down-30",
       "alt": "A structure is shown. An S i atom forms a single bond with a C l atom, a single bond with a C l atom, a single bond with an H atom, and a single bond with another S i atom. The second S i atom froms a single bond with a C l atom, a single bond with a C l atom, and a single bond with an H atom.",
       "src": "../../media/CNX_Chem_03_01_Ex01_06c_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:8]]",
@@ -2069,7 +2090,10 @@
       "class": "scaled-down-30",
       "alt": "A structure is shown. A P atom forms a double bond with an O atom. It also forms a single bond with an O atom which forms a single bond with an H atom. It also forms a single bond with another O atom which forms a single bond with an H atom. It also forms a single bond with another O atom which forms a single bond with an H atom.",
       "src": "../../media/CNX_Chem_03_01_Ex01_06d_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:9]]",
@@ -2077,7 +2101,10 @@
       "class": "scaled-down-30",
       "alt": "A structure is shown. A C atom forms a triple bond with another C atom. Each C atom also forms a single bond with an H atom.",
       "src": "../../media/CNX_Chem_03_01_Ex01_07a_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:10]]",
@@ -2085,7 +2112,10 @@
       "class": "scaled-down-30",
       "alt": "A structure is shown. Two C atoms form a double bond with each other. Each C atom also forms a single bond with two H atoms.",
       "src": "../../media/CNX_Chem_03_01_Ex01_07b_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:11]]",
@@ -2093,7 +2123,10 @@
       "class": "scaled-down-30",
       "alt": "A structure is shown. A C atom forms a single bond with three H atoms each and with another C atom. The second C atom also forms a single bond with three H atoms each.",
       "src": "../../media/CNX_Chem_03_01_Ex01_07c_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
   "sectionOrder": 1

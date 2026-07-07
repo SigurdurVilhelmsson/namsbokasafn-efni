@@ -35,7 +35,10 @@
       "id": "fs-idm11559264",
       "class": null,
       "alt": "This image contains two equilibrium reactions. The first shows a C atom bonded to three H atoms and another C atom. The second C atom is double bonded to an O atom and also forms a single bond to another O atom. The second O atom is bonded to an H atom. There is a plus sign and then the molecular formula H subscript 2 O. An equilibrium arrow follows the H subscript 2 O. To the right of the arrow is H subscript 3 O superscript positive sign. There is a plus sign. The final structure shows a C atom bonded the three H atoms and another C atom. This second C atom is double bonded to an O atom and single bonded to another O atom. The entire structure is in brackets and a superscript negative sign appears outside the brackets. The second reaction shows C H subscript 3 C O O H ( a q ) plus H subscript 2 O ( l ) equilibrium arrow H subscript 3 O ( a q ) plus C H subscript 3 C O O superscript negative sign ( a q ).",
-      "src": "../../media/CNX_Chem_14_05_acetic_img.jpg"
+      "src": "../../media/CNX_Chem_14_05_acetic_img.jpg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "type": "para",
@@ -422,8 +425,11 @@
       "class": null,
       "alt": "This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium concentration ( M ). The second column has the header of “H subscript 2 C O subscript 3 plus sign H subscript 2 O equilibrium arrow H subscript 3 O superscript positive sign plus sign H C O subscript 3 superscript negative sign.” Under the second column is a subgroup of three columns and three rows. The first column has the following: 0.033, negative sign x, 0.033 minus sign x. The second column has the following: approximately 0, positive x, x. The third column has the following: 0, positive x, x.",
       "src": "../../media/CNX_Chem_14_05_ICETable1_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
-  "sectionOrder": null
+  "sectionOrder": 5
 }

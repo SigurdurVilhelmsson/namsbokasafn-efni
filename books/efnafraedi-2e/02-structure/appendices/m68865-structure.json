@@ -4429,6 +4429,12 @@
               }
             },
             {
+              "segmentId": null,
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
               "segmentId": "m68865:entry:auto-619",
               "attributes": {
                 "align": "left"
@@ -6316,6 +6322,12 @@
           "cells": [
             {
               "segmentId": "m68865:entry:auto-883",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
               "attributes": {
                 "align": "left"
               }

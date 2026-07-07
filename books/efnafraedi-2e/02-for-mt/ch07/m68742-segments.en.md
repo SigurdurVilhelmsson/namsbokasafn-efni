@@ -14,7 +14,7 @@ Explain the concepts of polar covalent bonds and molecular polarity
 Assess the polarity of a molecule based on its bonding and structure
 
 <!-- SEG:m68742:para:fs-idp51102864 -->
-Thus far, we have used two-dimensional Lewis structures to represent molecules. However, molecular structure is actually three-dimensional, and it is important to be able to describe molecular bonds in terms of their distances, angles, and relative arrangements in space ([#CNX_Chem_07_06_CH2O]). A {{term}}bond angle{{/term}} is the angle between any two bonds that include a common atom, usually measured in degrees. A {{term}}bond distance{{/term}} (or bond length) is the distance between the nuclei of two bonded atoms along the straight line joining the nuclei. Bond distances are measured in Ångstroms (1 Å = 10[[sup:–10]] m) or picometers (1 pm = 10[[sup:–12]] m, 100 pm = 1 Å).
+Thus far, we have used two-dimensional Lewis structures to represent molecules. However, molecular structure is actually three-dimensional, and it is important to be able to describe molecular bonds in terms of their distances, angles, and relative arrangements in space ([[xref:CNX_Chem_07_06_CH2O]]). A {{term}}bond angle{{/term}} is the angle between any two bonds that include a common atom, usually measured in degrees. A {{term}}bond distance{{/term}} (or bond length) is the distance between the nuclei of two bonded atoms along the straight line joining the nuclei. Bond distances are measured in Ångstroms (1 Å = 10[[sup:–10]] m) or picometers (1 pm = 10[[sup:–12]] m, 100 pm = 1 Å).
 
 <!-- SEG:m68742:caption:CNX_Chem_07_06_CH2O-caption -->
 Bond distances (lengths) and angles are shown for the formaldehyde molecule, H[[sub:2]]CO.
@@ -26,13 +26,13 @@ VSEPR Theory
 Electron-pair Geometry versus Molecular Structure
 
 <!-- SEG:m68742:para:fs-idp238100128 -->
-It is important to note that electron-pair geometry around a central atom is {{i}}not{{/i}} the same thing as its molecular structure. The electron-pair geometries shown in [#CNX_Chem_07_06_Egeom] describe all regions where electrons are located, bonds as well as lone pairs. Molecular structure describes the location of the {{i}}atoms{{/i}}, not the electrons.
+It is important to note that electron-pair geometry around a central atom is [[i:not]] the same thing as its molecular structure. The electron-pair geometries shown in [[xref:CNX_Chem_07_06_Egeom]] describe all regions where electrons are located, bonds as well as lone pairs. Molecular structure describes the location of the [[i:atoms]], not the electrons.
 
 <!-- SEG:m68742:para:fs-idm334496 -->
-We differentiate between these two situations by naming the geometry that includes {{i}}all{{/i}} electron pairs the {{term}}electron-pair geometry{{/term}}. The structure that includes only the placement of the atoms in the molecule is called the {{term}}molecular structure{{/term}}. The electron-pair geometries will be the same as the molecular structures when there are no lone electron pairs around the central atom, but they will be different when there are lone pairs present on the central atom.
+We differentiate between these two situations by naming the geometry that includes [[i:all]] electron pairs the {{term}}electron-pair geometry{{/term}}. The structure that includes only the placement of the atoms in the molecule is called the {{term}}molecular structure{{/term}}. The electron-pair geometries will be the same as the molecular structures when there are no lone electron pairs around the central atom, but they will be different when there are lone pairs present on the central atom.
 
 <!-- SEG:m68742:para:fs-idp48943296 -->
-For example, the methane molecule, CH[[sub:4]], which is the major component of natural gas, has four bonding pairs of electrons around the central carbon atom; the electron-pair geometry is tetrahedral, as is the molecular structure ([#CNX_Chem_07_06_CH4]). On the other hand, the ammonia molecule, NH[[sub:3]], also has four electron pairs associated with the nitrogen atom, and thus has a tetrahedral electron-pair geometry. One of these regions, however, is a lone pair, which is not included in the molecular structure, and this lone pair influences the shape of the molecule ([#CNX_Chem_07_06_NH3]).
+For example, the methane molecule, CH[[sub:4]], which is the major component of natural gas, has four bonding pairs of electrons around the central carbon atom; the electron-pair geometry is tetrahedral, as is the molecular structure ([[xref:CNX_Chem_07_06_CH4]]). On the other hand, the ammonia molecule, NH[[sub:3]], also has four electron pairs associated with the nitrogen atom, and thus has a tetrahedral electron-pair geometry. One of these regions, however, is a lone pair, which is not included in the molecular structure, and this lone pair influences the shape of the molecule ([[xref:CNX_Chem_07_06_NH3]]).
 
 <!-- SEG:m68742:caption:CNX_Chem_07_06_CH4-caption -->
 The molecular structure of the methane molecule, CH[[sub:4]], is shown with a tetrahedral arrangement of the hydrogen atoms. VSEPR structures like this one are often drawn using the wedge and dash notation, in which solid lines represent bonds in the plane of the page, solid wedges represent bonds coming up out of the plane, and dashed lines represent bonds going down into the plane.
@@ -41,31 +41,31 @@ The molecular structure of the methane molecule, CH[[sub:4]], is shown with a te
 (a) The electron-pair geometry for the ammonia molecule is tetrahedral with one lone pair and three single bonds. (b) The trigonal pyramidal molecular structure is determined from the electron-pair geometry. (c) The actual bond angles deviate slightly from the idealized angles because the lone pair takes up a larger region of space than do the single bonds, causing the HNH angle to be slightly smaller than 109.5°.
 
 <!-- SEG:m68742:para:fs-idp38238416 -->
-As seen in [#CNX_Chem_07_06_NH3], small distortions from the ideal angles in [#CNX_Chem_07_06_Egeom] can result from differences in repulsion between various regions of electron density. VSEPR theory predicts these distortions by establishing an order of repulsions and an order of the amount of space occupied by different kinds of electron pairs. The order of electron-pair repulsions from greatest to least repulsion is:
+As seen in [[xref:CNX_Chem_07_06_NH3]], small distortions from the ideal angles in [[xref:CNX_Chem_07_06_Egeom]] can result from differences in repulsion between various regions of electron density. VSEPR theory predicts these distortions by establishing an order of repulsions and an order of the amount of space occupied by different kinds of electron pairs. The order of electron-pair repulsions from greatest to least repulsion is:
 
 <!-- SEG:m68742:para:fs-idp7623536 -->
 This order of repulsions determines the amount of space occupied by different regions of electrons. A lone pair of electrons occupies a larger region of space than the electrons in a triple bond; in turn, electrons in a triple bond occupy more space than those in a double bond, and so on. The order of sizes from largest to smallest is:
 
 <!-- SEG:m68742:para:fs-idp215771104 -->
-Consider formaldehyde, H[[sub:2]]CO, which is used as a preservative for biological and anatomical specimens ([#CNX_Chem_07_06_CH2O]). This molecule has regions of high electron density that consist of two single bonds and one double bond. The basic geometry is trigonal planar with 120° bond angles, but we see that the double bond causes slightly larger angles (121°), and the angle between the single bonds is slightly smaller (118°).
+Consider formaldehyde, H[[sub:2]]CO, which is used as a preservative for biological and anatomical specimens ([[xref:CNX_Chem_07_06_CH2O]]). This molecule has regions of high electron density that consist of two single bonds and one double bond. The basic geometry is trigonal planar with 120° bond angles, but we see that the double bond causes slightly larger angles (121°), and the angle between the single bonds is slightly smaller (118°).
 
 <!-- SEG:m68742:para:fs-idp125916256 -->
-In the ammonia molecule, the three hydrogen atoms attached to the central nitrogen are not arranged in a flat, trigonal planar molecular structure, but rather in a three-dimensional trigonal pyramid ([#CNX_Chem_07_06_NH3]) with the nitrogen atom at the apex and the three hydrogen atoms forming the base. The ideal bond angles in a trigonal pyramid are based on the tetrahedral electron pair geometry. Again, there are slight deviations from the ideal because lone pairs occupy larger regions of space than do bonding electrons. The H–N–H bond angles in NH[[sub:3]] are slightly smaller than the 109.5° angle in a regular tetrahedron ([#CNX_Chem_07_06_Egeom]) because the lone pair-bonding pair repulsion is greater than the bonding pair-bonding pair repulsion ([#CNX_Chem_07_06_NH3]). [#CNX_Chem_07_06_molgeom] illustrates the ideal molecular structures, which are predicted based on the electron-pair geometries for various combinations of lone pairs and bonding pairs.
+In the ammonia molecule, the three hydrogen atoms attached to the central nitrogen are not arranged in a flat, trigonal planar molecular structure, but rather in a three-dimensional trigonal pyramid ([[xref:CNX_Chem_07_06_NH3]]) with the nitrogen atom at the apex and the three hydrogen atoms forming the base. The ideal bond angles in a trigonal pyramid are based on the tetrahedral electron pair geometry. Again, there are slight deviations from the ideal because lone pairs occupy larger regions of space than do bonding electrons. The H–N–H bond angles in NH[[sub:3]] are slightly smaller than the 109.5° angle in a regular tetrahedron ([[xref:CNX_Chem_07_06_Egeom]]) because the lone pair-bonding pair repulsion is greater than the bonding pair-bonding pair repulsion ([[xref:CNX_Chem_07_06_NH3]]). [[xref:CNX_Chem_07_06_molgeom]] illustrates the ideal molecular structures, which are predicted based on the electron-pair geometries for various combinations of lone pairs and bonding pairs.
 
 <!-- SEG:m68742:caption:CNX_Chem_07_06_molgeom-caption -->
 The molecular structures are identical to the electron-pair geometries when there are no lone pairs present (first column). For a particular number of electron pairs (row), the molecular structures for one or more lone pairs are determined based on modifications of the corresponding electron-pair geometry.
 
 <!-- SEG:m68742:para:fs-idp3259504 -->
-According to VSEPR theory, the terminal atom locations (Xs in [#CNX_Chem_07_06_molgeom]) are equivalent within the linear, trigonal planar, and tetrahedral electron-pair geometries (the first three rows of the table). It does not matter which X is replaced with a lone pair because the molecules can be rotated to convert positions. For trigonal bipyramidal electron-pair geometries, however, there are two distinct X positions, as shown in [#CNX_Chem_07_06_Axeq]: an {{term}}axial position{{/term}} (if we hold a model of a trigonal bipyramid by the two axial positions, we have an axis around which we can rotate the model) and an {{term}}equatorial position{{/term}} (three positions form an equator around the middle of the molecule). As shown in [#CNX_Chem_07_06_molgeom], the axial position is surrounded by bond angles of 90°, whereas the equatorial position has more space available because of the 120° bond angles. In a trigonal bipyramidal electron-pair geometry, lone pairs always occupy equatorial positions because these more spacious positions can more easily accommodate the larger lone pairs.
+According to VSEPR theory, the terminal atom locations (Xs in [[xref:CNX_Chem_07_06_molgeom]]) are equivalent within the linear, trigonal planar, and tetrahedral electron-pair geometries (the first three rows of the table). It does not matter which X is replaced with a lone pair because the molecules can be rotated to convert positions. For trigonal bipyramidal electron-pair geometries, however, there are two distinct X positions, as shown in [[xref:CNX_Chem_07_06_Axeq]]: an {{term}}axial position{{/term}} (if we hold a model of a trigonal bipyramid by the two axial positions, we have an axis around which we can rotate the model) and an {{term}}equatorial position{{/term}} (three positions form an equator around the middle of the molecule). As shown in [[xref:CNX_Chem_07_06_molgeom]], the axial position is surrounded by bond angles of 90°, whereas the equatorial position has more space available because of the 120° bond angles. In a trigonal bipyramidal electron-pair geometry, lone pairs always occupy equatorial positions because these more spacious positions can more easily accommodate the larger lone pairs.
 
 <!-- SEG:m68742:para:fs-idm50931488 -->
-Theoretically, we can come up with three possible arrangements for the three bonds and two lone pairs for the ClF[[sub:3]] molecule ([#CNX_Chem_07_06_Axeq]). The stable structure is the one that puts the lone pairs in equatorial locations, giving a T-shaped molecular structure.
+Theoretically, we can come up with three possible arrangements for the three bonds and two lone pairs for the ClF[[sub:3]] molecule ([[xref:CNX_Chem_07_06_Axeq]]). The stable structure is the one that puts the lone pairs in equatorial locations, giving a T-shaped molecular structure.
 
 <!-- SEG:m68742:caption:CNX_Chem_07_06_Axeq-caption -->
 (a) In a trigonal bipyramid, the two axial positions are located directly across from one another, whereas the three equatorial positions are located in a triangular arrangement. (b–d) The two lone pairs (red lines) in ClF[[sub:3]] have several possible arrangements, but the T-shaped molecular structure (b) is the one actually observed, consistent with the larger lone pairs both occupying equatorial positions.
 
 <!-- SEG:m68742:para:fs-idp56476752 -->
-When a central atom has two lone electron pairs and four bonding regions, we have an octahedral electron-pair geometry. The two lone pairs are on opposite sides of the octahedron (180° apart), giving a square planar molecular structure that minimizes lone pair-lone pair repulsions ([#CNX_Chem_07_06_molgeom]).
+When a central atom has two lone electron pairs and four bonding regions, we have an octahedral electron-pair geometry. The two lone pairs are on opposite sides of the octahedron (180° apart), giving a square planar molecular structure that minimizes lone pair-lone pair repulsions ([[xref:CNX_Chem_07_06_molgeom]]).
 
 <!-- SEG:m68742:title:fs-idm759712-title -->
 Predicting Electron Pair Geometry and Molecular Structure
@@ -80,10 +80,10 @@ Write the Lewis structure of the molecule or polyatomic ion.
 Count the number of regions of electron density (lone pairs and bonds) around the central atom. A single, double, or triple bond counts as one region of electron density.
 
 <!-- SEG:m68742:item:fs-idp267826096-item-3 -->
-Identify the electron-pair geometry based on the number of regions of electron density: linear, trigonal planar, tetrahedral, trigonal bipyramidal, or octahedral ([#CNX_Chem_07_06_molgeom], first column).
+Identify the electron-pair geometry based on the number of regions of electron density: linear, trigonal planar, tetrahedral, trigonal bipyramidal, or octahedral ([[xref:CNX_Chem_07_06_molgeom]], first column).
 
 <!-- SEG:m68742:item:fs-idp267826096-item-4 -->
-Use the number of lone pairs to determine the molecular structure ([#CNX_Chem_07_06_molgeom]). If more than one arrangement of lone pairs and chemical bonds is possible, choose the one that will minimize repulsions, remembering that lone pairs occupy more space than multiple bonds, which occupy more space than single bonds. In trigonal bipyramidal arrangements, repulsion is minimized when every lone pair is in an equatorial position. In an octahedral arrangement with two lone pairs, repulsion is minimized when the lone pairs are on opposite sides of the central atom.
+Use the number of lone pairs to determine the molecular structure ([[xref:CNX_Chem_07_06_molgeom]]). If more than one arrangement of lone pairs and chemical bonds is possible, choose the one that will minimize repulsions, remembering that lone pairs occupy more space than multiple bonds, which occupy more space than single bonds. In trigonal bipyramidal arrangements, repulsion is minimized when every lone pair is in an equatorial position. In an octahedral arrangement with two lone pairs, repulsion is minimized when the lone pairs are on opposite sides of the central atom.
 
 <!-- SEG:m68742:para:fs-idp53389712 -->
 The following examples illustrate the use of VSEPR theory to predict the molecular structure of molecules or ions that have no lone pairs of electrons. In this case, the molecular structure is identical to the electron pair geometry.
@@ -113,7 +113,7 @@ This shows us two regions of high electron density around the carbon atom—each
 (b) We write the Lewis structure of BCl[[sub:3]] as:
 
 <!-- SEG:m68742:para:fs-idp34925552 -->
-Thus we see that BCl[[sub:3]] contains three bonds, and there are no lone pairs of electrons on boron. The arrangement of three regions of high electron density gives a trigonal planar electron-pair geometry. The B–Cl bonds lie in a plane with 120° angles between them. BCl[[sub:3]] also has a trigonal planar molecular structure ([#CNX_Chem_07_06_BCl3mol]).
+Thus we see that BCl[[sub:3]] contains three bonds, and there are no lone pairs of electrons on boron. The arrangement of three regions of high electron density gives a trigonal planar electron-pair geometry. The B–Cl bonds lie in a plane with 120° angles between them. BCl[[sub:3]] also has a trigonal planar molecular structure ([[xref:CNX_Chem_07_06_BCl3mol]]).
 
 <!-- SEG:m68742:para:fs-idp211059664 -->
 The electron-pair geometry and molecular structure of BCl[[sub:3]] are both trigonal planar. Note that the VSEPR geometry indicates the correct bond angles (120°), unlike the Lewis structure shown above.
@@ -146,7 +146,7 @@ Solution
 We write the Lewis structure of [[MATH:3]] as:
 
 <!-- SEG:m68742:para:fs-idm9973280 -->
-We can see that [[MATH:4]] contains four bonds from the nitrogen atom to hydrogen atoms and no lone pairs. We expect the four regions of high electron density to arrange themselves so that they point to the corners of a tetrahedron with the central nitrogen atom in the middle ([#CNX_Chem_07_06_molgeom]). Therefore, the electron pair geometry of [[MATH:5]] is tetrahedral, and the molecular structure is also tetrahedral ([#CNX_Chem_07_06_NH4mol]).
+We can see that [[MATH:4]] contains four bonds from the nitrogen atom to hydrogen atoms and no lone pairs. We expect the four regions of high electron density to arrange themselves so that they point to the corners of a tetrahedron with the central nitrogen atom in the middle ([[xref:CNX_Chem_07_06_molgeom]]). Therefore, the electron pair geometry of [[MATH:5]] is tetrahedral, and the molecular structure is also tetrahedral ([[xref:CNX_Chem_07_06_NH4mol]]).
 
 <!-- SEG:m68742:para-title:fs-idp94577296-title -->
 Check Your Learning
@@ -182,7 +182,7 @@ Solution
 The Lewis structure of H[[sub:2]]O indicates that there are four regions of high electron density around the oxygen atom: two lone pairs and two chemical bonds:
 
 <!-- SEG:m68742:para:fs-idp35029328 -->
-We predict that these four regions are arranged in a tetrahedral fashion ([#CNX_Chem_07_06_H2Omol]), as indicated in [#CNX_Chem_07_06_molgeom]. Thus, the electron-pair geometry is tetrahedral and the molecular structure is bent with an angle slightly less than 109.5°. In fact, the bond angle is 104.5°.
+We predict that these four regions are arranged in a tetrahedral fashion ([[xref:CNX_Chem_07_06_H2Omol]]), as indicated in [[xref:CNX_Chem_07_06_molgeom]]. Thus, the electron-pair geometry is tetrahedral and the molecular structure is bent with an angle slightly less than 109.5°. In fact, the bond angle is 104.5°.
 
 <!-- SEG:m68742:para-title:fs-idp51567744-title -->
 Check Your Learning
@@ -215,7 +215,7 @@ Solution
 The Lewis structure of SF[[sub:4]] indicates five regions of electron density around the sulfur atom: one lone pair and four bonding pairs:
 
 <!-- SEG:m68742:para:fs-idp72937360 -->
-We expect these five regions to adopt a trigonal bipyramidal electron-pair geometry. To minimize lone pair repulsions, the lone pair occupies one of the equatorial positions. The molecular structure ([#CNX_Chem_07_06_SF4mol]) is that of a seesaw ([#CNX_Chem_07_06_molgeom]).
+We expect these five regions to adopt a trigonal bipyramidal electron-pair geometry. To minimize lone pair repulsions, the lone pair occupies one of the equatorial positions. The molecular structure ([[xref:CNX_Chem_07_06_SF4mol]]) is that of a seesaw ([[xref:CNX_Chem_07_06_molgeom]]).
 
 <!-- SEG:m68742:para-title:fs-idp24574032-title -->
 Check Your Learning
@@ -248,7 +248,7 @@ Solution
 The Lewis structure of XeF[[sub:4]] indicates six regions of high electron density around the xenon atom: two lone pairs and four bonds:
 
 <!-- SEG:m68742:para:fs-idp60591280 -->
-These six regions adopt an octahedral arrangement ([#CNX_Chem_07_06_molgeom]), which is the electron-pair geometry. To minimize repulsions, the lone pairs should be on opposite sides of the central atom ([#CNX_Chem_07_06_XeF4mol]). The five atoms are all in the same plane and have a square planar molecular structure.
+These six regions adopt an octahedral arrangement ([[xref:CNX_Chem_07_06_molgeom]]), which is the electron-pair geometry. To minimize repulsions, the lone pairs should be on opposite sides of the central atom ([[xref:CNX_Chem_07_06_XeF4mol]]). The five atoms are all in the same plane and have a square planar molecular structure.
 
 <!-- SEG:m68742:para-title:fs-idp225615216-title -->
 Check Your Learning
@@ -329,13 +329,13 @@ Answer:
 electron-pair geometries: nitrogen––tetrahedral; carbon (++C++H)—tetrahedral; carbon (++C++H[[sub:3]])—tetrahedral; carbon (++C++O[[sub:2]])—trigonal planar; oxygen (++O++H)—tetrahedral; local structures: nitrogen—trigonal pyramidal; carbon (++C++H)—tetrahedral; carbon (++C++H[[sub:3]])—tetrahedral; carbon (++C++O[[sub:2]])—trigonal planar; oxygen (++O++H)—bent (109°)
 
 <!-- SEG:m68742:para:fs-idp159959216 -->
-The [molecular shape simulator](http://openstax.org/l/16MolecShape) lets you build various molecules and practice naming their electron-pair geometries and molecular structures.
+The [[link:molecular shape simulator|http://openstax.org/l/16MolecShape]] lets you build various molecules and practice naming their electron-pair geometries and molecular structures.
 
 <!-- SEG:m68742:example-title:fs-idp54012352-title -->
 Molecular Simulation
 
 <!-- SEG:m68742:para:fs-idp52927344 -->
-Using [molecular shape simulator](http://openstax.org/l/16MolecShape) allows us to control whether bond angles and/or lone pairs are displayed by checking or unchecking the boxes under “Options” on the right. We can also use the “Name” checkboxes at bottom-left to display or hide the electron pair geometry (called “electron geometry” in the simulator) and/or molecular structure (called “molecular shape” in the simulator).
+Using [[link:molecular shape simulator|http://openstax.org/l/16MolecShape]] allows us to control whether bond angles and/or lone pairs are displayed by checking or unchecking the boxes under “Options” on the right. We can also use the “Name” checkboxes at bottom-left to display or hide the electron pair geometry (called “electron geometry” in the simulator) and/or molecular structure (called “molecular shape” in the simulator).
 
 <!-- SEG:m68742:para:fs-idp224051488 -->
 Build the molecule HCN in the simulator based on the following Lewis structure:
@@ -371,13 +371,13 @@ Answers will vary. For example, an atom with four single bonds, a double bond, a
 VSEPR theory predicts the arrangement of electron pairs around each central atom and, usually, the correct arrangement of atoms in a molecule. We should understand, however, that the theory only considers electron-pair repulsions. Other interactions, such as nuclear-nuclear repulsions and nuclear-electron attractions, are also involved in the final arrangement that atoms adopt in a particular molecular structure.
 
 <!-- SEG:m68742:para:fs-idp122770240 -->
-As a simple example of VSEPR theory, let us predict the structure of a gaseous BeF[[sub:2]] molecule. The Lewis structure of BeF[[sub:2]] ([#CNX_Chem_07_06_BeF2]) shows only two electron pairs around the central beryllium atom. With two bonds and no lone pairs of electrons on the central atom, the bonds are as far apart as possible, and the electrostatic repulsion between these regions of high electron density is reduced to a minimum when they are on opposite sides of the central atom. The bond angle is 180° ([#CNX_Chem_07_06_BeF2]).
+As a simple example of VSEPR theory, let us predict the structure of a gaseous BeF[[sub:2]] molecule. The Lewis structure of BeF[[sub:2]] ([[xref:CNX_Chem_07_06_BeF2]]) shows only two electron pairs around the central beryllium atom. With two bonds and no lone pairs of electrons on the central atom, the bonds are as far apart as possible, and the electrostatic repulsion between these regions of high electron density is reduced to a minimum when they are on opposite sides of the central atom. The bond angle is 180° ([[xref:CNX_Chem_07_06_BeF2]]).
 
 <!-- SEG:m68742:caption:CNX_Chem_07_06_BeF2-caption -->
 The BeF[[sub:2]] molecule adopts a linear structure in which the two bonds are as far apart as possible, on opposite sides of the Be atom.
 
 <!-- SEG:m68742:para:fs-idp87297072 -->
-[#CNX_Chem_07_06_Egeom] illustrates this and other electron-pair geometries that minimize the repulsions among regions of high electron density (bonds and/or lone pairs). Two regions of electron density around a central atom in a molecule form a {{term}}linear{{/term}} geometry; three regions form a {{term}}trigonal planar{{/term}} geometry; four regions form a {{term}}tetrahedral{{/term}} geometry; five regions form a {{term}}trigonal bipyramidal{{/term}} geometry; and six regions form an {{term}}octahedral{{/term}} geometry.
+[[xref:CNX_Chem_07_06_Egeom]] illustrates this and other electron-pair geometries that minimize the repulsions among regions of high electron density (bonds and/or lone pairs). Two regions of electron density around a central atom in a molecule form a {{term}}linear{{/term}} geometry; three regions form a {{term}}trigonal planar{{/term}} geometry; four regions form a {{term}}tetrahedral{{/term}} geometry; five regions form a {{term}}trigonal bipyramidal{{/term}} geometry; and six regions form an {{term}}octahedral{{/term}} geometry.
 
 <!-- SEG:m68742:caption:CNX_Chem_07_06_Egeom-caption -->
 The basic electron-pair geometries predicted by VSEPR theory maximize the space around any region of electron density (bonds or lone pairs).
@@ -389,19 +389,19 @@ Molecular Polarity and Dipole Moment
 Properties of Polar Molecules
 
 <!-- SEG:m68742:para:fs-idp272047168 -->
-Polar molecules tend to align when placed in an electric field with the positive end of the molecule oriented toward the negative plate and the negative end toward the positive plate ([#CNX_Chem_07_06_Dipolfield]). We can use an electrically charged object to attract polar molecules, but nonpolar molecules are not attracted. Also, polar solvents are better at dissolving polar substances, and nonpolar solvents are better at dissolving nonpolar substances.
+Polar molecules tend to align when placed in an electric field with the positive end of the molecule oriented toward the negative plate and the negative end toward the positive plate ([[xref:CNX_Chem_07_06_Dipolfield]]). We can use an electrically charged object to attract polar molecules, but nonpolar molecules are not attracted. Also, polar solvents are better at dissolving polar substances, and nonpolar solvents are better at dissolving nonpolar substances.
 
 <!-- SEG:m68742:caption:CNX_Chem_07_06_Dipolfield-caption -->
 (a) Molecules are always randomly distributed in the liquid state in the absence of an electric field. (b) When an electric field is applied, polar molecules like HF will align to the dipoles with the field direction.
 
 <!-- SEG:m68742:para:fs-idp103820464 -->
-The [molecule polarity simulation](http://openstax.org/l/16MolecPolarity) provides many ways to explore dipole moments of bonds and molecules.
+The [[link:molecule polarity simulation|http://openstax.org/l/16MolecPolarity]] provides many ways to explore dipole moments of bonds and molecules.
 
 <!-- SEG:m68742:example-title:fs-idm708128-title -->
 Polarity Simulations
 
 <!-- SEG:m68742:para:fs-idp55551344 -->
-Open the [molecule polarity simulation](http://openstax.org/l/16MolecPolarity) and select the “Three Atoms” tab at the top. This should display a molecule ABC with three electronegativity adjustors. You can display or hide the bond moments, molecular dipoles, and partial charges at the right. Turning on the Electric Field will show whether the molecule moves when exposed to a field, similar to [#CNX_Chem_07_06_Dipolfield].
+Open the [[link:molecule polarity simulation|http://openstax.org/l/16MolecPolarity]] and select the “Three Atoms” tab at the top. This should display a molecule ABC with three electronegativity adjustors. You can display or hide the bond moments, molecular dipoles, and partial charges at the right. Turning on the Electric Field will show whether the molecule moves when exposed to a field, similar to [[xref:CNX_Chem_07_06_Dipolfield]].
 
 <!-- SEG:m68742:para:fs-idp55109824 -->
 Use the electronegativity controls to determine how the molecular dipole will look for the starting bent molecule if:
@@ -437,10 +437,10 @@ Answer:
 The largest bond moments will occur with the largest partial charges. The two solutions above represent how unevenly the electrons are shared in the bond. The bond moments will be maximized when the electronegativity difference is greatest. The controls for A and C should be set to one extreme, and B should be set to the opposite extreme. Although the magnitude of the bond moment will not change based on whether B is the most electronegative or the least, the direction of the bond moment will.
 
 <!-- SEG:m68742:para:fs-idp30351200 -->
-As discussed previously, polar covalent bonds connect two atoms with differing electronegativities, leaving one atom with a partial positive charge (δ+) and the other atom with a partial negative charge (δ–), as the electrons are pulled toward the more electronegative atom. This separation of charge gives rise to a {{term}}bond dipole moment{{/term}}. The magnitude of a bond dipole moment is represented by the Greek letter mu ({{i}}µ{{/i}}) and is given by the formula shown here, where Q is the magnitude of the partial charges (determined by the electronegativity difference) and r is the distance between the charges:
+As discussed previously, polar covalent bonds connect two atoms with differing electronegativities, leaving one atom with a partial positive charge (δ+) and the other atom with a partial negative charge (δ–), as the electrons are pulled toward the more electronegative atom. This separation of charge gives rise to a {{term}}bond dipole moment{{/term}}. The magnitude of a bond dipole moment is represented by the Greek letter mu ([[i:µ]]) and is given by the formula shown here, where Q is the magnitude of the partial charges (determined by the electronegativity difference) and r is the distance between the charges:
 
 <!-- SEG:m68742:para:fs-idp33849296 -->
-This bond moment can be represented as a {{term}}vector{{/term}}, a quantity having both direction and magnitude ([#CNX_Chem_07_06_BondVector]). Dipole vectors are shown as arrows pointing along the bond from the less electronegative atom toward the more electronegative atom. A small plus sign is drawn on the less electronegative end to indicate the partially positive end of the bond. The length of the arrow is proportional to the magnitude of the electronegativity difference between the two atoms.
+This bond moment can be represented as a {{term}}vector{{/term}}, a quantity having both direction and magnitude ([[xref:CNX_Chem_07_06_BondVector]]). Dipole vectors are shown as arrows pointing along the bond from the less electronegative atom toward the more electronegative atom. A small plus sign is drawn on the less electronegative end to indicate the partially positive end of the bond. The length of the arrow is proportional to the magnitude of the electronegativity difference between the two atoms.
 
 <!-- SEG:m68742:caption:CNX_Chem_07_06_BondVector-caption -->
 (a) There is a small difference in electronegativity between C and H, represented as a short vector. (b) The electronegativity difference between B and F is much larger, so the vector representing the bond moment is much longer.
@@ -452,7 +452,7 @@ A whole molecule may also have a separation of charge, depending on its molecula
 For diatomic molecules, there is only one bond, so its bond dipole moment determines the molecular polarity. Homonuclear diatomic molecules such as Br[[sub:2]] and N[[sub:2]] have no difference in electronegativity, so their dipole moment is zero. For heteronuclear molecules such as CO, there is a small dipole moment. For HF, there is a larger dipole moment because there is a larger difference in electronegativity.
 
 <!-- SEG:m68742:para:fs-idp218363312 -->
-When a molecule contains more than one bond, the geometry must be taken into account. If the bonds in a molecule are arranged such that their bond moments cancel (vector sum equals zero), then the molecule is nonpolar. This is the situation in CO[[sub:2]] ([#CNX_Chem_07_06_CO2H2Odip]). Each of the bonds is polar, but the molecule as a whole is nonpolar. From the Lewis structure, and using VSEPR theory, we determine that the CO[[sub:2]] molecule is linear with polar C=O bonds on opposite sides of the carbon atom. The bond moments cancel because they are pointed in opposite directions. In the case of the water molecule ([#CNX_Chem_07_06_CO2H2Odip]), the Lewis structure again shows that there are two bonds to a central atom, and the electronegativity difference again shows that each of these bonds has a nonzero bond moment. In this case, however, the molecular structure is bent because of the lone pairs on O, and the two bond moments do not cancel. Therefore, water does have a net dipole moment and is a polar molecule (dipole).
+When a molecule contains more than one bond, the geometry must be taken into account. If the bonds in a molecule are arranged such that their bond moments cancel (vector sum equals zero), then the molecule is nonpolar. This is the situation in CO[[sub:2]] ([[xref:CNX_Chem_07_06_CO2H2Odip]]). Each of the bonds is polar, but the molecule as a whole is nonpolar. From the Lewis structure, and using VSEPR theory, we determine that the CO[[sub:2]] molecule is linear with polar C=O bonds on opposite sides of the carbon atom. The bond moments cancel because they are pointed in opposite directions. In the case of the water molecule ([[xref:CNX_Chem_07_06_CO2H2Odip]]), the Lewis structure again shows that there are two bonds to a central atom, and the electronegativity difference again shows that each of these bonds has a nonzero bond moment. In this case, however, the molecular structure is bent because of the lone pairs on O, and the two bond moments do not cancel. Therefore, water does have a net dipole moment and is a polar molecule (dipole).
 
 <!-- SEG:m68742:caption:CNX_Chem_07_06_CO2H2Odip-caption -->
 The overall dipole moment of a molecule depends on the individual bond dipole moments and how they are arranged. (a) Each CO bond has a bond dipole moment, but they point in opposite directions so that the net CO[[sub:2]] molecule is nonpolar. (b) In contrast, water is polar because the OH bond moments do not cancel out.
@@ -842,7 +842,7 @@ A compound with a molar mass of about 42 g/mol contains 85.7% carbon and 14.3% h
 The Lewis structure is made from three units, but the atoms must be rearranged:[[BR]] [[MEDIA:5]]
 
 <!-- SEG:m68742:problem:fs-idp63767408 -->
-Use the [simulation](http://openstax.org/l/16MolecPolarity) to perform the following exercises for a two-atom molecule:
+Use the [[link:simulation|http://openstax.org/l/16MolecPolarity]] to perform the following exercises for a two-atom molecule:
 
 <!-- SEG:m68742:problem:fs-idp112678528 -->
 (a) Adjust the electronegativity value so the bond dipole is pointing toward B. Then determine what the electronegativity values must be to switch the dipole so that it points toward A.
@@ -857,7 +857,7 @@ Use the [simulation](http://openstax.org/l/16MolecPolarity) to perform the follo
 (d) Reset all, and then with a large partial negative charge on A, turn on the electric field and describe what happens.
 
 <!-- SEG:m68742:problem:fs-idp67165664 -->
-Use the [simulation](http://openstax.org/l/16MolecPolarity) to perform the following exercises for a real molecule. You may need to rotate the molecules in three dimensions to see certain dipoles.
+Use the [[link:simulation|http://openstax.org/l/16MolecPolarity]] to perform the following exercises for a real molecule. You may need to rotate the molecules in three dimensions to see certain dipoles.
 
 <!-- SEG:m68742:problem:fs-idp102821904 -->
 (a) Sketch the bond dipoles and molecular dipole (if any) for O[[sub:3.]] Explain your observations.
@@ -872,16 +872,16 @@ Use the [simulation](http://openstax.org/l/16MolecPolarity) to perform the follo
 The molecular dipole points away from the hydrogen atoms.
 
 <!-- SEG:m68742:problem:fs-idp250860400 -->
-Use the [Molecule Shape simulator](http://openstax.org/l/16MolecShape) to build a molecule. Starting with the central atom, click on the double bond to add one double bond. Then add one single bond and one lone pair. Rotate the molecule to observe the complete geometry. Name the electron group geometry and molecular structure and predict the bond angle. Then click the check boxes at the bottom and right of the simulator to check your answers.
+Use the [[link:Molecule Shape simulator|http://openstax.org/l/16MolecShape]] to build a molecule. Starting with the central atom, click on the double bond to add one double bond. Then add one single bond and one lone pair. Rotate the molecule to observe the complete geometry. Name the electron group geometry and molecular structure and predict the bond angle. Then click the check boxes at the bottom and right of the simulator to check your answers.
 
 <!-- SEG:m68742:problem:fs-idp25136064 -->
-Use the [Molecule Shape simulator](http://openstax.org/l/16MolecShape) to explore real molecules. On the Real Molecules tab, select H[[sub:2]]O. Switch between the “real” and “model” modes. Explain the difference observed.
+Use the [[link:Molecule Shape simulator|http://openstax.org/l/16MolecShape]] to explore real molecules. On the Real Molecules tab, select H[[sub:2]]O. Switch between the “real” and “model” modes. Explain the difference observed.
 
 <!-- SEG:m68742:solution:fs-idp62144768 -->
 The structures are very similar. In the model mode, each electron group occupies the same amount of space, so the bond angle is shown as 109.5°. In the “real” mode, the lone pairs are larger, causing the hydrogens to be compressed. This leads to the smaller angle of 104.5°.
 
 <!-- SEG:m68742:problem:fs-idm5201232 -->
-Use the [Molecule Shape simulator](http://openstax.org/l/16MolecShape) to explore real molecules. On the Real Molecules tab, select “model” mode and S[[sub:2]]O. What is the model bond angle? Explain whether the “real” bond angle should be larger or smaller than the ideal model angle.
+Use the [[link:Molecule Shape simulator|http://openstax.org/l/16MolecShape]] to explore real molecules. On the Real Molecules tab, select “model” mode and S[[sub:2]]O. What is the model bond angle? Explain whether the “real” bond angle should be larger or smaller than the ideal model angle.
 
 <!-- SEG:m68742:glossary-term:fs-idp280671424-term -->
 axial position

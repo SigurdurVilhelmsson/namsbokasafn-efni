@@ -27,6 +27,16 @@
       "segmentId": "m68797:para:fs-idp3488592"
     },
     {
+      "type": "equation",
+      "id": "fs-idp102698592",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp239057616",
+      "segmentId": "m68797:para:fs-idp239057616"
+    },
+    {
       "type": "figure",
       "id": "CNX_Chem_13_01_equilibrium",
       "caption": {
@@ -38,16 +48,6 @@
         "src": "../../media/CNX_Chem_13_01_equilibrium.jpg",
         "mimeType": "image/jpeg"
       }
-    },
-    {
-      "type": "equation",
-      "id": "fs-idp102698592",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp239057616",
-      "segmentId": "m68797:para:fs-idp239057616"
     },
     {
       "type": "para",

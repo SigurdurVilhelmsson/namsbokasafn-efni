@@ -110,7 +110,7 @@ milligram (mg)
 kilogram (kg)
 
 <!-- SEG:m68861:entry:auto-38 -->
-= 1000 g (exact, definition)[[BR]]= 2.205 lb {{fn}}Strictly speaking, the ounce and pound are units of weight, {{i}}W{{/i}} (a force equal to the product of mass and gravitational acceleration, {{i}}W{{/i}} = {{i}}mg{{/i}}). The conversion relations in this table are commonly used to equate masses and weight assuming a nominal value for {{i}}g{{/i}} at the surface of the earth.{{/fn}}
+= 1000 g (exact, definition)[[BR]]= 2.205 lb {{fn}}Strictly speaking, the ounce and pound are units of weight, [[i:W]] (a force equal to the product of mass and gravitational acceleration, [[i:W]] = [[i:mg]]). The conversion relations in this table are commonly used to equate masses and weight assuming a nominal value for [[i:g]] at the surface of the earth.{{/fn}}
 
 <!-- SEG:m68861:entry:auto-39 -->
 ton (metric)

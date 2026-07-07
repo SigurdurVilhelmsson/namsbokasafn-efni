@@ -253,7 +253,10 @@
           "id": "fs-idp21768928",
           "class": "scaled-down",
           "alt": "Three Lewis structures are shown. The left and right structures show a carbon atom double bonded to two oxygen atoms, each of which has two lone pairs of electrons. The center structure shows a carbon atom that is triple bonded to an oxygen atom with one lone pair of electrons and single bonded to an oxygen atom with three lone pairs of electrons. The third structure shows an oxygen atom double bonded to another oxygen atom with to lone pairs of electrons. The first oxygen atom is also double bonded to a carbon atom with two lone pairs of electrons.",
-          "src": "../../media/CNX_Chem_07_04_CO2pos_img.jpg"
+          "src": "../../media/CNX_Chem_07_04_CO2pos_img.jpg",
+          "embedSrc": "",
+          "width": "",
+          "height": ""
         },
         {
           "type": "para",
@@ -270,7 +273,10 @@
           "id": "fs-idm21731296",
           "class": null,
           "alt": "Two rows of structures and numbers are shown. The top row is labeled, “Structure” and depicts three Lewis structures and the bottom row is labeled, “Formal charge.” The left structure shows a carbon atom double bonded to a nitrogen atom with two lone electron pairs on one side and double bonded to a sulfur atom with two lone electron pairs on the other. The structure is surrounded by brackets and has a superscripted negative sign. Below this structure are the numbers negative one, zero, and zero. The middle structure shows a carbon atom with two lone pairs of electrons double bonded to a nitrogen atom that is double bonded to a sulfur atom with two lone electron pairs. The structure is surrounded by brackets and has a superscripted negative sign. Below this structure are the numbers negative two, positive one, and zero. The right structure shows a carbon atom with two lone electron pairs double bonded to a sulfur atom that is double bonded to a nitrogen atom with two lone electron pairs. The structure is surrounded by brackets and has a superscripted negative sign. Below this structure are the numbers negative two, positive two, and one.",
-          "src": "../../media/CNX_Chem_07_04_Thiocyan_img.jpg"
+          "src": "../../media/CNX_Chem_07_04_Thiocyan_img.jpg",
+          "embedSrc": "",
+          "width": "",
+          "height": ""
         },
         {
           "type": "para",
@@ -361,7 +367,10 @@
           "id": "fs-idp25860608",
           "class": "scaled-down",
           "alt": "Two Lewis structures are shown. The left structure shows an oxygen atom with three lone pairs of electrons single bonded to a nitrogen atom with one lone pair of electrons that is double bonded to an oxygen with two lone pairs of electrons. Brackets surround this structure, and there is a superscripted negative sign. The right structure shows an oxygen atom with two lone pairs of electrons double bonded to a nitrogen atom with one lone pair of electrons that is single bonded to an oxygen atom with three lone pairs of electrons. Brackets surround this structure, and there is a superscripted negative sign.",
-          "src": "../../media/CNX_Chem_07_04_NO2res_img.jpg"
+          "src": "../../media/CNX_Chem_07_04_NO2res_img.jpg",
+          "embedSrc": "",
+          "width": "",
+          "height": ""
         },
         {
           "type": "para",
@@ -378,7 +387,10 @@
           "id": "fs-idp40211808",
           "class": "scaled-down",
           "alt": "Two Lewis structures are shown with a double sided arrow between them. The left structure shows an oxygen atom with three lone pairs of electrons single bonded to a nitrogen atom with one lone pair of electrons that is double bonded to an oxygen with two lone pairs of electrons. Brackets surround this structure, and there is a superscripted negative sign. The right structure shows an oxygen atom with two lone pairs of electrons double bonded to a nitrogen atom with one lone pair of electrons that is single bonded to an oxygen atom with three lone pairs of electrons. Brackets surround this structure, and there is a superscripted negative sign.",
-          "src": "../../media/CNX_Chem_07_04_NO2resarr_img.jpg"
+          "src": "../../media/CNX_Chem_07_04_NO2resarr_img.jpg",
+          "embedSrc": "",
+          "width": "",
+          "height": ""
         },
         {
           "type": "para",
@@ -395,7 +407,10 @@
           "id": "fs-idm34742304",
           "class": "scaled-down",
           "alt": "Three Lewis structures are shown with double headed arrows in between. Each structure is surrounded by brackets, and each has a superscripted two negative sign. The left structure depicts a carbon atom bonded to three oxygen atoms. It is single bonded to two of these oxygen atoms, each of which has three lone pairs of electrons, and double bonded to the third, which has two lone pairs of electrons. The double bond is located between the lower left oxygen atom and the carbon atom. The central and right structures are the same as the first, but the position of the double bonded oxygen has moved to the lower right oxygen in the central structure and to the top oxygen in the right structure.",
-          "src": "../../media/CNX_Chem_07_04_CO3res_img.jpg"
+          "src": "../../media/CNX_Chem_07_04_CO3res_img.jpg",
+          "embedSrc": "",
+          "width": "",
+          "height": ""
         },
         {
           "type": "para",
@@ -1070,7 +1085,10 @@
       "class": "scaled-down",
       "alt": "A Lewis structure is shown. An iodine atom with two lone pairs of electrons is single bonded to four chlorine atoms, each of which has three lone pairs of electrons. Brackets surround the structure and there is a superscripted negative sign.",
       "src": "../../media/CNX_Chem_07_04_ICL4_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:2]]",
@@ -1078,7 +1096,10 @@
       "class": "scaled-down",
       "alt": "A Lewis structure is shown. A bromine atom with two lone pairs of electrons is single bonded to three chlorine atoms, each of which has three lone pairs of electrons.",
       "src": "../../media/CNX_Chem_07_04_BRCL3_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:3]]",
@@ -1086,7 +1107,10 @@
       "class": null,
       "alt": "Two Lewis structures are shown with a double-headed arrow in between. The left structure shows a sulfur atom with a lone pair of electrons single bonded to the left to an oxygen atom with three lone pairs of electrons. The sulfur atom is also double bonded on the right to an oxygen atom with two lone pairs of electrons. The right structure depicts the same atoms, but this time the double bond is between the left oxygen and the sulfur atom. The lone pairs of electrons have also shifted to account for the change of bond types. The sulfur atom in the right structures, also has a third electron dot below it.",
       "src": "../../media/CNX_Chem_07_04_Ques2ansa_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:4]]",
@@ -1094,7 +1118,10 @@
       "class": null,
       "alt": "Three Lewis structures are shown, with double-headed arrows in between, each surrounded by brackets and a superscripted two negative sign. The left structure depicts a carbon atom bonded to three oxygen atoms. It is single bonded to two of these oxygen atoms, each of which has three lone pairs of electrons, and double bonded to the third, which has two lone pairs of electrons. The double bond is located between the bottom oxygen and the carbon. The central and right structures are the same as the first, but the position of the double bonded oxygen has moved to the left oxygen in the right structure while the central structure only has single bonds. The lone pairs of electrons change to correspond with the bonds as well.",
       "src": "../../media/CNX_Chem_07_04_Ques2ansb_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:5]]",
@@ -1102,7 +1129,10 @@
       "class": null,
       "alt": "Two Lewis structures are shown, with a double-headed arrow in between, each surrounded by brackets and a superscripted negative sign. The left structure depicts a carbon atom bonded to three oxygen atoms. It is single bonded to one of these oxygen atoms, which has three lone pairs of electrons, and double bonded to the other two, which have two lone pairs of electrons. One of the double bonded oxygen atoms also has a single bond to a hydrogen atom. The right structure is the same as the first, but there is only one double bonded oxygen. The oxygen with the single bonded hydrogen now has a single bond to the carbon atom. The lone pairs of electrons have also changed to correspond with the bonds.",
       "src": "../../media/CNX_Chem_07_04_Ques2ansc_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:6]]",
@@ -1110,7 +1140,10 @@
       "class": null,
       "alt": "Two Lewis structures are shown with a double-headed arrow in between. The left structure depicts a hexagonal ring composed of five carbon atoms, each single bonded to a hydrogen atom, and one nitrogen atom that has a lone pair of electrons. The ring has alternating single and double bonds. The right structure is the same as the first, but each double bond has rotated to a new position.",
       "src": "../../media/CNX_Chem_07_04_Ques2ansd_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:7]]",
@@ -1118,7 +1151,10 @@
       "class": null,
       "alt": "Two Lewis structures are shown with a double-headed arrow in between. The left structure shows a carbon atom single bonded to two hydrogen atoms and a second carbon atom. The second carbon atom is single bonded to a hydrogen atom and double bonded to a third carbon atom. The third carbon atom is single bonded to two hydrogen atoms. The whole structure is surrounded by brackets and a superscripted negative sign. The right structure shows a carbon atom single bonded to two hydrogen atoms and double bonded to a second carbon atom. The second carbon atom is single bonded to a hydrogen atom and a third carbon atom. The third carbon atom is single bonded to two hydrogen atoms. The whole structure is surrounded by brackets and a superscripted negative sign.",
       "src": "../../media/CNX_Chem_07_04_Ques2anse_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:8]]",
@@ -1126,7 +1162,10 @@
       "class": null,
       "alt": "A pair of Lewis structures are shown with a double-headed arrow in between the pair. The left structure of the first pair shows a nitrogen atom with one lone pair of electrons single bonded to an oxygen atom with three lone pairs of electrons. It is also double bonded to an oxygen with two lone pairs of electrons. The right image of this pair depicts the mirror image of the left. Both images are surrounded by brackets and a superscripted negative sign. They are labeled, “For N O subscript two superscript negative sign.”",
       "src": "../../media/CNX_Chem_07_04_Ques11ans_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:9]]",
@@ -1134,7 +1173,10 @@
       "class": null,
       "alt": "This structure shows a carbon atom double bonded to two oxygen atoms, each of which has two lone pairs of electrons.",
       "src": "../../media/CNX_Chem_07_04_Ques13ansb_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:10]]",
@@ -1142,7 +1184,10 @@
       "class": null,
       "alt": "The right structure of this pair shows a carbon atom with one lone pair of electrons triple bonded to an oxygen with one lone pair of electrons.",
       "src": "../../media/CNX_Chem_07_04_Ques13ansc_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:11]]",
@@ -1150,7 +1195,10 @@
       "class": null,
       "alt": "Two Lewis structures are shown with a double-headed arrow in between. The left structure shows an oxygen atom with one lone pair of electrons single bonded to an oxygen atom with three lone pairs of electrons. It is also double bonded to an oxygen atom with two lone pairs of electrons. The symbols and numbers below this structure read, “( 0 ), ( positive 1 ), ( negative 1 ).” The phrase, “Formal charge,” and a right-facing arrow lie to the left of this structure. The right structure appears as a mirror image of the left and the symbols and numbers below this structure read, “( negative 1 ), ( positive 1 ), ( 0 ).”",
       "src": "../../media/CNX_Chem_07_04_Exercis12a_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:12]]",
@@ -1158,7 +1206,10 @@
       "class": null,
       "alt": "Two Lewis structures are shown, with a double-headed arrow in between. The left structure shows a sulfur atom with one lone pair of electrons single bonded to an oxygen atom with three lone pairs of electrons. The sulfur atom also double bonded to an oxygen atom with two lone pairs of electrons. The symbols and numbers below this structure read, “( negative 1 ), ( positive 1 ), ( 0 ).” The right structure appears as a mirror image of the left and the symbols and numbers below this structure read, “( 0 ), ( positive 1 ), ( negative 1 ).”",
       "src": "../../media/CNX_Chem_07_04_Exercis12b_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:13]]",
@@ -1166,7 +1217,10 @@
       "class": null,
       "alt": "[Two Lewis structures are shown, with brackets surrounding each with a superscripted negative sign and a double ended arrow in between. The left structure shows a nitrogen atom with one lone pair of electrons single bonded to an oxygen atom with three lone pairs of electrons and double bonded to an oxygen atom with two lone pairs of electrons. The symbols and numbers below this structure read “open parenthesis, 0, close parenthesis, open parenthesis, 0, close parenthesis, open parenthesis, negative 1, close parenthesis. The right structure appears as a mirror image of the left and the symbols and numbers below this structure read “open parenthesis, negative 1, close parenthesis, open parenthesis, 0, close parenthesis, open parenthesis, 0, close parenthesis.]",
       "src": "../../media/CNX_Chem_07_04_Exercis12c_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:14]]",
@@ -1174,7 +1228,10 @@
       "class": null,
       "alt": "[Three Lewis structures are shown, with brackets surrounding each with a superscripted negative sign and a double ended arrow in between. The left structure shows a nitrogen atom single bonded to two oxygen atoms, each with three lone pairs of electrons and double bonded to an oxygen atom with two lone pairs of electrons. The single bonded oxygen atoms are labeled, from the top of the structure and going clockwise, “open parenthesis, negative 1, close parenthesis, open parenthesis, positive 1, close parenthesis”. The symbols and numbers below this structure read “open parenthesis, 0, close parenthesis, open parenthesis, negative 1, close parenthesis. The middle structure shows a nitrogen atom single bonded to two oxygen atoms, each with three lone pairs of electrons, one of which is labeled “open parenthesis, positive 1, close parenthesis” and double bonded to an oxygen atom with two lone pairs of electrons labeled “open parenthesis, 0, close parenthesis”. The symbols and numbers below this structure read “open parenthesis, negative 1, close parenthesis, open parenthesis, negative 1, close parenthesis. The right structure shows a nitrogen atom single bonded to two oxygen atoms, each with three lone pairs of electrons and double bonded to an oxygen atom with two lone pairs of electrons. One of the single bonded oxygen atoms is labeled, “open parenthesis, negative 1, close parenthesis while the double bonded oxygen is labeled, “open parenthesis, positive 1, close parenthesis”. The symbols and numbers below this structure read “open parenthesis, negative 1, close parenthesis” and “open parenthesis, 0, close parenthesis”.]",
       "src": "../../media/CNX_Chem_07_04_Exercis12d_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:15]]",
@@ -1182,7 +1239,10 @@
       "class": null,
       "alt": "A Lewis structure shows a nitrogen atom with one lone pair of electrons single bonded to two hydrogen atoms and an oxygen atom which has two lone pairs of electrons. The oxygen atom is single bonded to a hydrogen atom.",
       "src": "../../media/CNX_Chem_07_04_OHamine_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:16]]",
@@ -1190,7 +1250,10 @@
       "class": null,
       "alt": "A Lewis structure shows a nitrogen atom with one lone pair of electrons single bonded to three fluorine atoms, each with three lone pairs of electrons.",
       "src": "../../media/CNX_Chem_07_04_NF3_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:17]]",
@@ -1198,8 +1261,11 @@
       "class": null,
       "alt": "A Lewis structure shows a hydrogen atom single bonded to an oxygen atom with two lone pairs of electrons. The oxygen atom is single bonded to a sulfur atom. The sulfur atom is double bonded to two oxygen atoms, each of which have three lone pairs of electrons, and single bonded to an oxygen atom with two lone pairs of electrons. This oxygen atom is single bonded to a hydrogen atom.",
       "src": "../../media/CNX_Chem_07_04_H2SO4.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
-  "sectionOrder": null
+  "sectionOrder": 4
 }

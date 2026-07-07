@@ -1232,7 +1232,7 @@ isotonic
 of equal osmotic pressure
 
 <!-- SEG:m68783:glossary-term:fs-idp141108496-term -->
-molality (m)
+molality ([[i:m]])
 
 <!-- SEG:m68783:glossary-def:fs-idp141108496-def -->
 a concentration unit defined as the ratio of the numbers of moles of solute to the mass of the solvent in kilograms
@@ -1244,7 +1244,7 @@ osmosis
 diffusion of solvent molecules through a semipermeable membrane
 
 <!-- SEG:m68783:glossary-term:fs-idp141114480-term -->
-osmotic pressure (Π)
+osmotic pressure ([[i:Π]])
 
 <!-- SEG:m68783:glossary-def:fs-idp141114480-def -->
 opposing pressure required to prevent bulk transfer of solvent molecules through a semipermeable membrane
@@ -1262,7 +1262,7 @@ semipermeable membrane
 a membrane that selectively permits passage of certain ions or molecules
 
 <!-- SEG:m68783:glossary-term:fs-idp11034384-term -->
-van’t Hoff factor (i)
+van’t Hoff factor ([[i:i]])
 
 <!-- SEG:m68783:glossary-def:fs-idp11034384-def -->
 the ratio of the number of moles of particles in a solution to the number of moles of formula units dissolved in the solution

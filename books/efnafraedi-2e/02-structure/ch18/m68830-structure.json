@@ -36,6 +36,11 @@
       },
       "content": [
         {
+          "type": "para",
+          "id": "fs-idp79571184",
+          "segmentId": "m68830:para:fs-idp79571184"
+        },
+        {
           "type": "section",
           "id": "fs-idp25974496",
           "class": null,
@@ -174,11 +179,6 @@
               "segmentId": "m68830:para:fs-idp217984240"
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idp79571184",
-          "segmentId": "m68830:para:fs-idp79571184"
         }
       ]
     },
@@ -191,6 +191,16 @@
         "text": "Chemical Reduction"
       },
       "content": [
+        {
+          "type": "para",
+          "id": "fs-idp79584928",
+          "segmentId": "m68830:para:fs-idp79584928"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp109004816",
+          "segmentId": "m68830:para:fs-idp109004816"
+        },
         {
           "type": "section",
           "id": "fs-idp81243920",
@@ -283,16 +293,6 @@
               "segmentId": "m68830:para:fs-idp117978352"
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idp79584928",
-          "segmentId": "m68830:para:fs-idp79584928"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp109004816",
-          "segmentId": "m68830:para:fs-idp109004816"
         }
       ]
     },
@@ -615,5 +615,5 @@
       }
     ]
   },
-  "sectionOrder": null
+  "sectionOrder": 2
 }

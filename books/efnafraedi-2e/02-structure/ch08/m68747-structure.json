@@ -29,7 +29,10 @@
       "id": "fs-idm39755904",
       "class": null,
       "alt": "A Lewis structure is shown. It is made up of two oxygen atoms, each with two lone pairs of electrons, bonded together with a double bond.",
-      "src": "../../media/CNX_Chem_08_04_O2_img.jpg"
+      "src": "../../media/CNX_Chem_08_04_O2_img.jpg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "type": "para",
@@ -504,6 +507,72 @@
         "text": "Bonding in Diatomic Molecules"
       },
       "content": [
+        {
+          "type": "para",
+          "id": "fs-idm182437472",
+          "segmentId": "m68747:para:fs-idm182437472"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm108439328",
+          "segmentId": "m68747:para:fs-idm108439328"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_08_04_H2MO",
+          "caption": {
+            "segmentId": "m68747:caption:CNX_Chem_08_04_H2MO-caption"
+          },
+          "media": {
+            "id": "fs-idm45698032",
+            "alt": "A diagram is shown that has an upward-facing vertical arrow running along the left side labeled “E.” At the bottom center of the diagram is a horizontal line labeled, “sigma subscript 1 s,” that has two vertical half arrows drawn on it, one facing up and one facing down. This line is connected to the right and left by upward-facing, dotted lines to two more horizontal lines, each labeled, “1 s,” and each with one vertical half-arrow facing up drawn on it. These two lines are connected by upward-facing dotted lines to another line in the center of the diagram, but farther up from the first, and labeled, “sigma subscript 1 s superscript asterisk.” The left and right sides of the diagram have headers that read, ”Atomic orbitals,” while the center header reads, “Molecular orbitals.” The bottom left and right are labeled “H” while the center is labeled “H subscript 2.”",
+            "src": "../../media/CNX_Chem_08_04_H2MO-a7a1.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm43412080",
+          "segmentId": "m68747:para:fs-idm43412080"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm61635600",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm130556608",
+          "segmentId": "m68747:para:fs-idm130556608"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm142555728",
+          "segmentId": "m68747:para:fs-idm142555728"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp1555152",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm166378064",
+          "segmentId": "m68747:para:fs-idm166378064"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_08_04_He2MO",
+          "caption": {
+            "segmentId": "m68747:caption:CNX_Chem_08_04_He2MO-caption"
+          },
+          "media": {
+            "id": "fs-idm8319568",
+            "alt": "A diagram is shown that has an upward-facing vertical arrow running along the left side labeled, “E.” At the bottom center of the diagram is a horizontal line labeled, “sigma subscript 1 s,” that has two vertical half arrows drawn on it, one facing up and one facing down. This line is connected to the right and left by upward-facing, dotted lines to two more horizontal lines, each labeled, “1 s,” and each with one vertical half-arrow facing up and one facing down drawn on it. These two lines are connected by upward-facing dotted lines to another line in the center of the diagram, but farther up from the first, and labeled, “sigma subscript 1 s superscript asterisk.” This line has one upward-facing and one downward-facing vertical arrow drawn on it. The left and right sides of the diagram have headers that read, “Atomic orbitals,” while the center header reads, “Molecular orbitals.” The bottom left and right are labeled, “H e,” while the center is labeled, “H e subscript 2.”",
+            "src": "../../media/CNX_Chem_08_04_He2MO-cf1f.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
         {
           "type": "section",
           "id": "fs-idm131917488",
@@ -989,72 +1058,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idm182437472",
-          "segmentId": "m68747:para:fs-idm182437472"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm108439328",
-          "segmentId": "m68747:para:fs-idm108439328"
-        },
-        {
-          "type": "figure",
-          "id": "CNX_Chem_08_04_H2MO",
-          "caption": {
-            "segmentId": "m68747:caption:CNX_Chem_08_04_H2MO-caption"
-          },
-          "media": {
-            "id": "fs-idm45698032",
-            "alt": "A diagram is shown that has an upward-facing vertical arrow running along the left side labeled “E.” At the bottom center of the diagram is a horizontal line labeled, “sigma subscript 1 s,” that has two vertical half arrows drawn on it, one facing up and one facing down. This line is connected to the right and left by upward-facing, dotted lines to two more horizontal lines, each labeled, “1 s,” and each with one vertical half-arrow facing up drawn on it. These two lines are connected by upward-facing dotted lines to another line in the center of the diagram, but farther up from the first, and labeled, “sigma subscript 1 s superscript asterisk.” The left and right sides of the diagram have headers that read, ”Atomic orbitals,” while the center header reads, “Molecular orbitals.” The bottom left and right are labeled “H” while the center is labeled “H subscript 2.”",
-            "src": "../../media/CNX_Chem_08_04_H2MO-a7a1.jpg",
-            "mimeType": "image/jpeg"
-          }
-        },
-        {
-          "type": "para",
-          "id": "fs-idm43412080",
-          "segmentId": "m68747:para:fs-idm43412080"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idm61635600",
-          "class": "unnumbered"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm130556608",
-          "segmentId": "m68747:para:fs-idm130556608"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm142555728",
-          "segmentId": "m68747:para:fs-idm142555728"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp1555152",
-          "class": "unnumbered"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm166378064",
-          "segmentId": "m68747:para:fs-idm166378064"
-        },
-        {
-          "type": "figure",
-          "id": "CNX_Chem_08_04_He2MO",
-          "caption": {
-            "segmentId": "m68747:caption:CNX_Chem_08_04_He2MO-caption"
-          },
-          "media": {
-            "id": "fs-idm8319568",
-            "alt": "A diagram is shown that has an upward-facing vertical arrow running along the left side labeled, “E.” At the bottom center of the diagram is a horizontal line labeled, “sigma subscript 1 s,” that has two vertical half arrows drawn on it, one facing up and one facing down. This line is connected to the right and left by upward-facing, dotted lines to two more horizontal lines, each labeled, “1 s,” and each with one vertical half-arrow facing up and one facing down drawn on it. These two lines are connected by upward-facing dotted lines to another line in the center of the diagram, but farther up from the first, and labeled, “sigma subscript 1 s superscript asterisk.” This line has one upward-facing and one downward-facing vertical arrow drawn on it. The left and right sides of the diagram have headers that read, “Atomic orbitals,” while the center header reads, “Molecular orbitals.” The bottom left and right are labeled, “H e,” while the center is labeled, “H e subscript 2.”",
-            "src": "../../media/CNX_Chem_08_04_He2MO-cf1f.jpg",
-            "mimeType": "image/jpeg"
-          }
         }
       ]
     },
@@ -1688,5 +1691,5 @@
       }
     ]
   },
-  "sectionOrder": null
+  "sectionOrder": 4
 }

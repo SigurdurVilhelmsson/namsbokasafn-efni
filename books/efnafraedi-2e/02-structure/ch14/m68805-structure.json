@@ -452,14 +452,20 @@
           "id": "fs-idp23785056",
           "class": "scaled-down",
           "alt": "This image shows two bottles containing clear colorless solutions. Each bottle contains a single p H indicator strip. The strip in the bottle on the left is red, and a similar red strip is placed on a filter paper circle in front of the bottle on surface on which the bottles are resting. Similarly, the second bottle on the right contains and orange strip and an orange strip is placed in front of it on a filter paper circle. Between the two bottles is a pack of p Hydrion papers with a p H color scale on its cover.",
-          "src": "../../media/CNX_Chem_14_03_acetate_img.jpg"
+          "src": "../../media/CNX_Chem_14_03_acetate_img.jpg",
+          "embedSrc": "",
+          "width": "",
+          "height": ""
         },
         {
           "type": "media",
           "id": "fs-idm134302736",
           "class": "scaled-down",
           "alt": "This photo shows two glass containers filled with a transparent liquid. In between the containers is a p H strip indicator guide. There are p H strips placed in front of each glass container. The liquid in the container on the left appears to have a p H of 10 or 11. The liquid in the container on the right appears to have a p H of about 13 or 14.",
-          "src": "../../media/CNX_Chem_14_03_ammonia.jpg"
+          "src": "../../media/CNX_Chem_14_03_ammonia.jpg",
+          "embedSrc": "",
+          "width": "",
+          "height": ""
         },
         {
           "type": "example",
@@ -1090,7 +1096,10 @@
           "id": "fs-idm107871568",
           "class": "scaled-down",
           "alt": "A diagram is shown that includes a central atom designated with the letter E. Single bonds extend above, below, left, and right of the E. An O atom is bonded to the right of the E, and an arrow points to the bond labeling it, “Bond a.” An H atom is single bonded to the right of the O atom. An arrow pointing to this bond connects it to the label, “Bond b.”",
-          "src": "../../media/CNX_Chem_14_03_OHbonds_img.jpg"
+          "src": "../../media/CNX_Chem_14_03_OHbonds_img.jpg",
+          "embedSrc": "",
+          "width": "",
+          "height": ""
         },
         {
           "type": "para",
@@ -2418,7 +2427,10 @@
       "class": "scaled-down",
       "alt": "This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium concentration ( M ). The second column has the header of “( C H subscript 3 ) subscript 3 N plus sign H subscript 2 O equilibrium arrow ( C H subscript 3 ) subscript 3 N H superscript positive sign plus sign O H superscript positive sign.” Under the second column is a subgroup of four columns and three rows. The first column has the following: 0.25, negative x, 0.25 plus sign negative x. The second column is blank in all three rows. The third column has the following: 0, x, 0 plus x. The fourth column has the following: approximately 0, x, and approximately 0 plus x.",
       "src": "../../media/CNX_Chem_14_03_ICETable4_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:2]]",
@@ -2426,8 +2438,11 @@
       "class": "scaled-down",
       "alt": "This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium ( M ). The second column has the header of “H S O subscript 4 superscript negative sign plus sign H subscript 2 O equilibrium sign H subscript 3 O superscript positive sign plus sign S O subscript 4 superscript 2 superscript negative sign.” Under the second column is a subgroup of four columns and three rows. The first column has the following: 0.50, negative x, 0.50 minus x. The second column is blank for all three rows. The third column has the following: approximately 0, positive x, x. The fourth column has the following: 0, positive x, x.",
       "src": "../../media/CNX_Chem_14_03_ICETable5_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
-  "sectionOrder": null
+  "sectionOrder": 3
 }

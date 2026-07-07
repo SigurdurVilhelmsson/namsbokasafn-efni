@@ -241,7 +241,10 @@
       "id": "fs-idm271037008",
       "class": "scaled-down",
       "alt": "A line graph is titled “Density of Water as a Function of Temperature.” The x-axis is titled “Temperature, degrees Celsius,” and the y-axis is titled “Density, Kilograms per cubic meter.” A line connects plot points at the coordinates 0 and 999.8395, 4 and 999.9720, 10 and 999.7026, 15 and 999.1026, 20 and 998.2071, 22 and 997.7735, 25 and 997.0479, 30 and 995.6502, 40 and 992.2, 60 and 983.2, 80 and 971.8, and 100 and 958.4. ",
-      "src": "../../media/CNX_Chem_00_EE_Density_img.jpg"
+      "src": "../../media/CNX_Chem_00_EE_Density_img.jpg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "type": "table",
@@ -773,7 +776,10 @@
       "id": "fs-idm60922784",
       "class": "scaled-down",
       "alt": "A line graph is titled “Vapor Pressure as a Function of Temperature.” The x-axis is titled “Temperature, degrees Celsius,” and the y-axis is titled “Vapor pressure, torr.” A line connects plot points at the coordinates 0 and 4.6, 4 and 6.1, 10 and 9.2, 15 and 12.8, 20 and 17.5, 22 and 19.8, 25 and 23.8, 30 and 31.8, 35 and 42.2, 40 and 55.3, 45 and 71.9, 50 and 92.5, 55 and 118.0, 60 and 149.4, 65 and 187.5, 70 and 233.7, 75 and 289.1, 80 and 355.1, 85 and 433.6, 90 and 525.8, 95 and 633.9, and 100 and 760.0.",
-      "src": "../../media/CNX_Chem_00_EE_Vapor_img.jpg"
+      "src": "../../media/CNX_Chem_00_EE_Vapor_img.jpg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "type": "table",
@@ -1151,7 +1157,10 @@
       "id": "fs-idm370140880",
       "class": "scaled-down",
       "alt": "A line graph is titled “Water pK subscript W as a Function of Temperature.” The x-axis is titled “Temperature, degrees Celsius,” and the y-axis is titled “pK subscript W.” A line connects plot points at the coordinates 0 and 14.95, 5 and 14.74, 10 and 14.54, 15 and 14.33, 20 and 14.17, 25 and 14, 30 and 13.84, 35 and 13.69, 40 and 13.55, 45 and 13.41, 50 and 13.28, 55 and 13.15, 60 and 13.03, 75 and 12.7, and 100 and 12.25.",
-      "src": "../../media/CNX_Chem_00_EE_WaterpKw_img.jpg"
+      "src": "../../media/CNX_Chem_00_EE_WaterpKw_img.jpg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "type": "table",
@@ -1220,6 +1229,12 @@
         },
         {
           "cells": [
+            {
+              "segmentId": null,
+              "attributes": {
+                "align": "left"
+              }
+            },
             {
               "segmentId": "m68863:entry:auto-153",
               "attributes": {

@@ -62,26 +62,6 @@
           ]
         },
         {
-          "type": "equation",
-          "id": "fs-idp67516128",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idm241116384",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp14273600",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idm250691808",
-          "class": "unnumbered"
-        },
-        {
           "type": "para",
           "id": "fs-idp26583536",
           "segmentId": "m68818:para:fs-idp26583536"
@@ -1190,5 +1170,5 @@
       }
     ]
   },
-  "sectionOrder": null
+  "sectionOrder": 3
 }

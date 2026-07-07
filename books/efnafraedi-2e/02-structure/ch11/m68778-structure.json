@@ -38,6 +38,16 @@
       "segmentId": "m68778:para:fs-idm75208096"
     },
     {
+      "type": "equation",
+      "id": "fs-idm25804880",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm32498064",
+      "segmentId": "m68778:para:fs-idm32498064"
+    },
+    {
       "type": "figure",
       "id": "CNX_Chem_11_01_K2Cr2O7_1",
       "class": "scaled-down",
@@ -50,16 +60,6 @@
         "src": "../../media/CNX_Chem_11_01_K2Cr2O7_1.jpg",
         "mimeType": "image/jpeg"
       }
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm25804880",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm32498064",
-      "segmentId": "m68778:para:fs-idm32498064"
     },
     {
       "type": "note",
@@ -296,6 +296,116 @@
         "text": "The Formation of Solutions"
       },
       "content": [
+        {
+          "type": "para",
+          "id": "fs-idm54470368",
+          "segmentId": "m68778:para:fs-idm54470368"
+        },
+        {
+          "type": "list",
+          "id": "fs-idm93605392",
+          "listType": "enumerated",
+          "numberStyle": "arabic",
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m68778:item:fs-idm93605392-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m68778:item:fs-idm93605392-item-2"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm32719984",
+          "segmentId": "m68778:para:fs-idm32719984"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm23823840",
+          "segmentId": "m68778:para:fs-idm23823840"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm90097568",
+          "segmentId": "m68778:para:fs-idm90097568"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_11_01_HeArsol",
+          "caption": {
+            "segmentId": "m68778:caption:CNX_Chem_11_01_HeArsol-caption"
+          },
+          "media": {
+            "id": "fs-idm50751088",
+            "alt": "Two figures are shown. The first contains two spherical containers joined by a closed stopcock. The container to the left is labeled H e. It holds about thirty evenly dispersed, small, light blue spheres. The container on the right is labeled A r and contains about thirty slightly larger blue-green spheres. The second, similar figure has an open stopcock between the two spherical containers. The light blue and green spheres are evenly dispersed and present in both containers.",
+            "src": "../../media/CNX_Chem_11_01_HeArsol.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm67575520",
+          "segmentId": "m68778:para:fs-idm67575520"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm24702144",
+          "segmentId": "m68778:para:fs-idm24702144"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_11_01_solusolv",
+          "caption": {
+            "segmentId": "m68778:caption:CNX_Chem_11_01_solusolv-caption"
+          },
+          "media": {
+            "id": "fs-idm145554960",
+            "alt": "The top, central region of the figure shows solute particles as seven blue spheres and solvent particles as 16 red spheres in separate, labeled boxes. The particles in these boxes are touching. An arrow labeled “Step 1” points left of the solute box, and shows the blue spheres no longer touching in another box labeled “expanded solute.” An arrow labeled “Step 2” points right from the solvent box and shows the red spheres no longer touching in another box labeled “expanded solvent.” Arrows proceed from the bottom of the expanded solute and expanded solvent boxes and join at the bottom of the figure where a step 3 label is shown. The joined arrows point to a box just above in which the red and blue spheres are mixed together and touching. The solute and solvent boxes are joined by another arrow labeled “direct formation of solution” which points downward at the center of the figure. This arrow also points to the box containing mixed red and blue spheres near the bottom of the figure.",
+            "src": "../../media/CNX_Chem_11_01_solusolv.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm96486640",
+          "segmentId": "m68778:para:fs-idm96486640"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm37742128",
+          "segmentId": "m68778:para:fs-idm37742128"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_11_01_Icepack",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68778:caption:CNX_Chem_11_01_Icepack-caption"
+          },
+          "media": {
+            "id": "fs-idm26849248",
+            "alt": "This figure shows a single use instant cold pack with labels indicating an inner bag of water surrounded by white particulate ammonium nitrate.",
+            "src": "../../media/CNX_Chem_11_01_Icepack.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idm57797360",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm36370704",
+              "segmentId": "m68778:para:fs-idm36370704"
+            }
+          ]
+        },
         {
           "type": "section",
           "id": "fs-idm71104864",
@@ -551,116 +661,6 @@
               "solution": null
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idm54470368",
-          "segmentId": "m68778:para:fs-idm54470368"
-        },
-        {
-          "type": "list",
-          "id": "fs-idm93605392",
-          "listType": "enumerated",
-          "numberStyle": "arabic",
-          "bulletStyle": null,
-          "items": [
-            {
-              "id": null,
-              "segmentId": "m68778:item:fs-idm93605392-item-1"
-            },
-            {
-              "id": null,
-              "segmentId": "m68778:item:fs-idm93605392-item-2"
-            }
-          ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idm32719984",
-          "segmentId": "m68778:para:fs-idm32719984"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm23823840",
-          "segmentId": "m68778:para:fs-idm23823840"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm90097568",
-          "segmentId": "m68778:para:fs-idm90097568"
-        },
-        {
-          "type": "figure",
-          "id": "CNX_Chem_11_01_HeArsol",
-          "caption": {
-            "segmentId": "m68778:caption:CNX_Chem_11_01_HeArsol-caption"
-          },
-          "media": {
-            "id": "fs-idm50751088",
-            "alt": "Two figures are shown. The first contains two spherical containers joined by a closed stopcock. The container to the left is labeled H e. It holds about thirty evenly dispersed, small, light blue spheres. The container on the right is labeled A r and contains about thirty slightly larger blue-green spheres. The second, similar figure has an open stopcock between the two spherical containers. The light blue and green spheres are evenly dispersed and present in both containers.",
-            "src": "../../media/CNX_Chem_11_01_HeArsol.jpg",
-            "mimeType": "image/jpeg"
-          }
-        },
-        {
-          "type": "para",
-          "id": "fs-idm67575520",
-          "segmentId": "m68778:para:fs-idm67575520"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm24702144",
-          "segmentId": "m68778:para:fs-idm24702144"
-        },
-        {
-          "type": "figure",
-          "id": "CNX_Chem_11_01_solusolv",
-          "caption": {
-            "segmentId": "m68778:caption:CNX_Chem_11_01_solusolv-caption"
-          },
-          "media": {
-            "id": "fs-idm145554960",
-            "alt": "The top, central region of the figure shows solute particles as seven blue spheres and solvent particles as 16 red spheres in separate, labeled boxes. The particles in these boxes are touching. An arrow labeled “Step 1” points left of the solute box, and shows the blue spheres no longer touching in another box labeled “expanded solute.” An arrow labeled “Step 2” points right from the solvent box and shows the red spheres no longer touching in another box labeled “expanded solvent.” Arrows proceed from the bottom of the expanded solute and expanded solvent boxes and join at the bottom of the figure where a step 3 label is shown. The joined arrows point to a box just above in which the red and blue spheres are mixed together and touching. The solute and solvent boxes are joined by another arrow labeled “direct formation of solution” which points downward at the center of the figure. This arrow also points to the box containing mixed red and blue spheres near the bottom of the figure.",
-            "src": "../../media/CNX_Chem_11_01_solusolv.jpg",
-            "mimeType": "image/jpeg"
-          }
-        },
-        {
-          "type": "para",
-          "id": "fs-idm96486640",
-          "segmentId": "m68778:para:fs-idm96486640"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm37742128",
-          "segmentId": "m68778:para:fs-idm37742128"
-        },
-        {
-          "type": "figure",
-          "id": "CNX_Chem_11_01_Icepack",
-          "class": "scaled-down",
-          "caption": {
-            "segmentId": "m68778:caption:CNX_Chem_11_01_Icepack-caption"
-          },
-          "media": {
-            "id": "fs-idm26849248",
-            "alt": "This figure shows a single use instant cold pack with labels indicating an inner bag of water surrounded by white particulate ammonium nitrate.",
-            "src": "../../media/CNX_Chem_11_01_Icepack.jpg",
-            "mimeType": "image/jpeg"
-          }
-        },
-        {
-          "type": "note",
-          "id": "fs-idm57797360",
-          "class": "chemistry link-to-learning",
-          "title": null,
-          "content": [
-            {
-              "type": "para",
-              "id": "fs-idm36370704",
-              "segmentId": "m68778:para:fs-idm36370704"
-            }
-          ]
         }
       ]
     }
@@ -706,5 +706,5 @@
       }
     ]
   },
-  "sectionOrder": null
+  "sectionOrder": 1
 }

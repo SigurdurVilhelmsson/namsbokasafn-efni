@@ -47,6 +47,58 @@
       },
       "content": [
         {
+          "type": "para",
+          "id": "fs-idp26867440",
+          "segmentId": "m68858:para:fs-idp26867440"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_21_06_IonRadSpec",
+          "caption": {
+            "segmentId": "m68858:caption:CNX_Chem_21_06_IonRadSpec-caption"
+          },
+          "media": {
+            "id": "fs-idp63337488",
+            "alt": "A diagram has two vertical sections. The upper section has two right-facing, horizontal arrows labeled “Increasing energy, E” and “Increasing frequency, rho symbol,” respectively. A left-facing, horizontal arrow lies below the first two and is labeled “Increasing wavelength, lambda symbol.” Beginning on the left side of the diagram, a horizontal, sinusoidal line begins and moves across the diagram to the far right, becoming increasingly more compact. The lower section of the diagram has a double ended, horizontal arrow along its top, with the left end drawn in red and labeled “Non-ionizing” and the right end drawn in green and labeled “Ionizing.” Below this is a set of terms, read from left to right as “Broadcast and wireless radio,” “Microwave,” “Terahertz,” “Infrared,” “Visible light,” “Ultraviolet,” “X dash ray,” and “Gamma.” Four columns lie below this row of terms. The first contains the phrases “Non-thermal” and “Induces low currents” while the second reads “Thermal” and “Induces high currents, Heating.” The third contains the phrases “Optical” and “Excites electrons, Photo, dash, chemical effects” while the fourth reads “Broken bonds” and “Damages D N A.” A series of terms lie below these columns are read, from left to right, “Static field,” “Power line,” “A M radio,” “F M radio,” “Microwave oven,” “Heat lamp,” “Tanning booth” and “Medical x, dash rays.”",
+            "src": "../../media/CNX_Chem_21_06_IonRadSpec.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp146155504",
+          "segmentId": "m68858:para:fs-idp146155504"
+        },
+        {
+          "type": "media",
+          "id": "fs-idp161523696",
+          "class": null,
+          "alt": "This image shows a reaction. It starts with H subscript 2 O plus radiation. There is a right-facing arrow which points to H subscript 2 O superscript positive sign plus H subscript 2 O. From the arrow, there is another arrow that curves upward and points to an e superscript negative sign. After the second H subscript 2 O there is another right-facing arrow which points to H subscript 3 O superscript positive sign plus O H superscript negative sign.",
+          "src": "../../media/CNX_Chem_21_06_Hydroxyrad_img.jpg",
+          "embedSrc": "",
+          "width": "",
+          "height": ""
+        },
+        {
+          "type": "para",
+          "id": "fs-idp73842464",
+          "segmentId": "m68858:para:fs-idp73842464"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_21_06_Damage2",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68858:caption:CNX_Chem_21_06_Damage2-caption"
+          },
+          "media": {
+            "id": "fs-idp22664256",
+            "alt": "Two pairs of images are shown and labeled “a” and “b.” In the first pair, a helical structure on the left with a starburst on it middle right side is connected by a right-facing arrow to a sphere composed of smaller green and white spheres. A squiggly arrow points toward the sphere from the upper left and a downward-facing arrow leads away from the sphere to a small circle with a negative sign. In the second pair of images, a squiggly arrow lead to a water molecule while a downward-facing arrow leads away from it to a small circle with a negative charge written on it. A helical shape with a starburst on it middle right side is drawn to the far right and an upward-facing arrow leads to it from the following equation “H, subscript 2, O, plus sign, radiation, yield arrow, H, subscript 2, O, superscript plus sign, plus sign, e, superscript negative sign, down-facing arrow, H, subscript 2, O, superscript plus sign, plus sign, H, subscript 2, O, right-facing arrow, H, subscript 3, O, superscript plus sign, plus sign, O H, superscript negative sign. Below this equation is the phrase “Indirect effect.”",
+            "src": "../../media/CNX_Chem_21_06_Damage2.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
           "type": "section",
           "id": "fs-idp37875536",
           "class": null,
@@ -113,55 +165,6 @@
               }
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idp26867440",
-          "segmentId": "m68858:para:fs-idp26867440"
-        },
-        {
-          "type": "figure",
-          "id": "CNX_Chem_21_06_IonRadSpec",
-          "caption": {
-            "segmentId": "m68858:caption:CNX_Chem_21_06_IonRadSpec-caption"
-          },
-          "media": {
-            "id": "fs-idp63337488",
-            "alt": "A diagram has two vertical sections. The upper section has two right-facing, horizontal arrows labeled “Increasing energy, E” and “Increasing frequency, rho symbol,” respectively. A left-facing, horizontal arrow lies below the first two and is labeled “Increasing wavelength, lambda symbol.” Beginning on the left side of the diagram, a horizontal, sinusoidal line begins and moves across the diagram to the far right, becoming increasingly more compact. The lower section of the diagram has a double ended, horizontal arrow along its top, with the left end drawn in red and labeled “Non-ionizing” and the right end drawn in green and labeled “Ionizing.” Below this is a set of terms, read from left to right as “Broadcast and wireless radio,” “Microwave,” “Terahertz,” “Infrared,” “Visible light,” “Ultraviolet,” “X dash ray,” and “Gamma.” Four columns lie below this row of terms. The first contains the phrases “Non-thermal” and “Induces low currents” while the second reads “Thermal” and “Induces high currents, Heating.” The third contains the phrases “Optical” and “Excites electrons, Photo, dash, chemical effects” while the fourth reads “Broken bonds” and “Damages D N A.” A series of terms lie below these columns are read, from left to right, “Static field,” “Power line,” “A M radio,” “F M radio,” “Microwave oven,” “Heat lamp,” “Tanning booth” and “Medical x, dash rays.”",
-            "src": "../../media/CNX_Chem_21_06_IonRadSpec.jpg",
-            "mimeType": "image/jpeg"
-          }
-        },
-        {
-          "type": "para",
-          "id": "fs-idp146155504",
-          "segmentId": "m68858:para:fs-idp146155504"
-        },
-        {
-          "type": "media",
-          "id": "fs-idp161523696",
-          "class": null,
-          "alt": "This image shows a reaction. It starts with H subscript 2 O plus radiation. There is a right-facing arrow which points to H subscript 2 O superscript positive sign plus H subscript 2 O. From the arrow, there is another arrow that curves upward and points to an e superscript negative sign. After the second H subscript 2 O there is another right-facing arrow which points to H subscript 3 O superscript positive sign plus O H superscript negative sign.",
-          "src": "../../media/CNX_Chem_21_06_Hydroxyrad_img.jpg"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp73842464",
-          "segmentId": "m68858:para:fs-idp73842464"
-        },
-        {
-          "type": "figure",
-          "id": "CNX_Chem_21_06_Damage2",
-          "class": "scaled-down",
-          "caption": {
-            "segmentId": "m68858:caption:CNX_Chem_21_06_Damage2-caption"
-          },
-          "media": {
-            "id": "fs-idp22664256",
-            "alt": "Two pairs of images are shown and labeled “a” and “b.” In the first pair, a helical structure on the left with a starburst on it middle right side is connected by a right-facing arrow to a sphere composed of smaller green and white spheres. A squiggly arrow points toward the sphere from the upper left and a downward-facing arrow leads away from the sphere to a small circle with a negative sign. In the second pair of images, a squiggly arrow lead to a water molecule while a downward-facing arrow leads away from it to a small circle with a negative charge written on it. A helical shape with a starburst on it middle right side is drawn to the far right and an upward-facing arrow leads to it from the following equation “H, subscript 2, O, plus sign, radiation, yield arrow, H, subscript 2, O, superscript plus sign, plus sign, e, superscript negative sign, down-facing arrow, H, subscript 2, O, superscript plus sign, plus sign, H, subscript 2, O, right-facing arrow, H, subscript 3, O, superscript plus sign, plus sign, O H, superscript negative sign. Below this equation is the phrase “Indirect effect.”",
-            "src": "../../media/CNX_Chem_21_06_Damage2.jpg",
-            "mimeType": "image/jpeg"
-          }
         }
       ]
     },
@@ -174,6 +177,53 @@
         "text": "Measuring Radiation Exposure"
       },
       "content": [
+        {
+          "type": "para",
+          "id": "fs-idm3484976",
+          "segmentId": "m68858:para:fs-idm3484976"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_21_06_Monitors",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68858:caption:CNX_Chem_21_06_Monitors-caption"
+          },
+          "media": {
+            "id": "fs-idp202105696",
+            "alt": "Three photographs are shown and labeled “a,” “b” and “c.” Photo a shows a Geiger counter sitting on a table. It is made up of a metal box with a read-out screen and a wire leading away from the box connected to a sensor wand. Photograph b shows a collection of tall and short vertical tubes arranged in a grouping while photograph c shows a person’s hand holding a small machine with a digital readout while standing on the edge of a roadway.",
+            "src": "../../media/CNX_Chem_21_06_Monitors.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp31333632",
+          "segmentId": "m68858:para:fs-idp31333632"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp224481296",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp192182752",
+          "segmentId": "m68858:para:fs-idp192182752"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_21_06_Exposure1",
+          "caption": {
+            "segmentId": "m68858:caption:CNX_Chem_21_06_Exposure1-caption"
+          },
+          "media": {
+            "id": "fs-idp239786256",
+            "alt": "Two images are shown. The first, labeled “Rate of radioactive decay measured in becquerels or curies,” shows a red sphere with ten red squiggly arrows facing away from it in a 360 degree circle. The second image shows the head and torso of a woman wearing medical scrubs with a badge on her chest. The caption to the badge reads “Film badge or dosimeter measures tissue damage exposure in rems or sieverts” while a phrase under this image states “Absorbed dose measured in grays or rads.”",
+            "src": "../../media/CNX_Chem_21_06_Exposure1.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
         {
           "type": "section",
           "id": "fs-idp31180688",
@@ -469,53 +519,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idm3484976",
-          "segmentId": "m68858:para:fs-idm3484976"
-        },
-        {
-          "type": "figure",
-          "id": "CNX_Chem_21_06_Monitors",
-          "class": "scaled-down",
-          "caption": {
-            "segmentId": "m68858:caption:CNX_Chem_21_06_Monitors-caption"
-          },
-          "media": {
-            "id": "fs-idp202105696",
-            "alt": "Three photographs are shown and labeled “a,” “b” and “c.” Photo a shows a Geiger counter sitting on a table. It is made up of a metal box with a read-out screen and a wire leading away from the box connected to a sensor wand. Photograph b shows a collection of tall and short vertical tubes arranged in a grouping while photograph c shows a person’s hand holding a small machine with a digital readout while standing on the edge of a roadway.",
-            "src": "../../media/CNX_Chem_21_06_Monitors.jpg",
-            "mimeType": "image/jpeg"
-          }
-        },
-        {
-          "type": "para",
-          "id": "fs-idp31333632",
-          "segmentId": "m68858:para:fs-idp31333632"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp224481296",
-          "class": "unnumbered"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp192182752",
-          "segmentId": "m68858:para:fs-idp192182752"
-        },
-        {
-          "type": "figure",
-          "id": "CNX_Chem_21_06_Exposure1",
-          "caption": {
-            "segmentId": "m68858:caption:CNX_Chem_21_06_Exposure1-caption"
-          },
-          "media": {
-            "id": "fs-idp239786256",
-            "alt": "Two images are shown. The first, labeled “Rate of radioactive decay measured in becquerels or curies,” shows a red sphere with ten red squiggly arrows facing away from it in a 360 degree circle. The second image shows the head and torso of a woman wearing medical scrubs with a badge on her chest. The caption to the badge reads “Film badge or dosimeter measures tissue damage exposure in rems or sieverts” while a phrase under this image states “Absorbed dose measured in grays or rads.”",
-            "src": "../../media/CNX_Chem_21_06_Exposure1.jpg",
-            "mimeType": "image/jpeg"
-          }
         }
       ]
     },
@@ -1152,5 +1155,5 @@
       }
     ]
   },
-  "sectionOrder": null
+  "sectionOrder": 6
 }

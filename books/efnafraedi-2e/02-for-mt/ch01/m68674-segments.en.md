@@ -653,13 +653,13 @@ Celsius (°C)
 unit of temperature; water freezes at 0 °C and boils at 100 °C on this scale
 
 <!-- SEG:m68674:glossary-term:fs-idm227540096-term -->
-cubic centimeter (cm3 or cc)
+cubic centimeter (cm[[sup:3]] or cc)
 
 <!-- SEG:m68674:glossary-def:fs-idm227540096-def -->
 volume of a cube with an edge length of exactly 1 cm
 
 <!-- SEG:m68674:glossary-term:fs-idm244788352-term -->
-cubic meter (m3)
+cubic meter (m[[sup:3]])
 
 <!-- SEG:m68674:glossary-def:fs-idm244788352-def -->
 SI unit of volume

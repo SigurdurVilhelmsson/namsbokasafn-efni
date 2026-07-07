@@ -896,407 +896,6 @@
       },
       "content": [
         {
-          "type": "section",
-          "id": "fs-idp98840016",
-          "class": null,
-          "title": {
-            "segmentId": "m68710:title:fs-idp98840016-title",
-            "text": "Balancing Redox Reactions via the Half-Reaction Method"
-          },
-          "content": [
-            {
-              "type": "para",
-              "id": "fs-idm141853312",
-              "segmentId": "m68710:para:fs-idm141853312"
-            },
-            {
-              "type": "para",
-              "id": "fs-idm64885712",
-              "segmentId": "m68710:para:fs-idm64885712"
-            },
-            {
-              "type": "para",
-              "id": "fs-idm219773632",
-              "segmentId": "m68710:para:fs-idm219773632"
-            },
-            {
-              "type": "para",
-              "id": "fs-idm339557376",
-              "segmentId": "m68710:para:fs-idm339557376"
-            },
-            {
-              "type": "para",
-              "id": "fs-idm161858496",
-              "segmentId": "m68710:para:fs-idm161858496"
-            },
-            {
-              "type": "para",
-              "id": "fs-idm218459968",
-              "segmentId": "m68710:para:fs-idm218459968"
-            },
-            {
-              "type": "para",
-              "id": "fs-idm31626864",
-              "segmentId": "m68710:para:fs-idm31626864"
-            },
-            {
-              "type": "para",
-              "id": "fs-idm241499680",
-              "segmentId": "m68710:para:fs-idm241499680"
-            },
-            {
-              "type": "para",
-              "id": "fs-idm228573904",
-              "segmentId": "m68710:para:fs-idm228573904"
-            },
-            {
-              "type": "list",
-              "id": "fs-idp48488192",
-              "listType": "enumerated",
-              "numberStyle": "lower-alpha",
-              "bulletStyle": null,
-              "items": [
-                {
-                  "id": null,
-                  "segmentId": "m68710:item:fs-idp48488192-item-1"
-                },
-                {
-                  "id": null,
-                  "segmentId": "m68710:item:fs-idp48488192-item-2"
-                },
-                {
-                  "id": null,
-                  "segmentId": "m68710:item:fs-idp48488192-item-3"
-                }
-              ]
-            },
-            {
-              "type": "para",
-              "id": "fs-idm268418480",
-              "segmentId": "m68710:para:fs-idm268418480"
-            },
-            {
-              "type": "example",
-              "id": "fs-idm53644080",
-              "title": {
-                "segmentId": "m68710:example-title:fs-idm53644080-title",
-                "text": "Balancing Redox Reactions in Acidic Solution"
-              },
-              "content": [
-                {
-                  "type": "para",
-                  "id": "fs-idp164751888",
-                  "segmentId": "m68710:para:fs-idp164751888"
-                },
-                {
-                  "type": "para",
-                  "id": "fs-idp3143536",
-                  "segmentId": "m68710:para:fs-idp3143536",
-                  "title": {
-                    "segmentId": "m68710:para-title:fs-idp3143536-title",
-                    "text": "Solution"
-                  }
-                },
-                {
-                  "type": "para",
-                  "id": "fs-idm9107808",
-                  "segmentId": "m68710:para:fs-idm9107808"
-                },
-                {
-                  "type": "para",
-                  "id": "fs-idm63161856",
-                  "segmentId": "m68710:para:fs-idm63161856"
-                },
-                {
-                  "type": "para",
-                  "id": "fs-idm39730544",
-                  "segmentId": "m68710:para:fs-idm39730544"
-                },
-                {
-                  "type": "para",
-                  "id": "fs-idp2853568",
-                  "segmentId": "m68710:para:fs-idp2853568"
-                },
-                {
-                  "type": "para",
-                  "id": "fs-idp23619040",
-                  "segmentId": "m68710:para:fs-idp23619040"
-                },
-                {
-                  "type": "para",
-                  "id": "fs-idm52131936",
-                  "segmentId": "m68710:para:fs-idm52131936"
-                },
-                {
-                  "type": "para",
-                  "id": "fs-idp2921088",
-                  "segmentId": "m68710:para:fs-idp2921088"
-                },
-                {
-                  "type": "para",
-                  "id": "fs-idp73258288",
-                  "segmentId": "m68710:para:fs-idp73258288"
-                },
-                {
-                  "type": "para",
-                  "id": "fs-idp66154720",
-                  "segmentId": "m68710:para:fs-idp66154720"
-                },
-                {
-                  "type": "para",
-                  "id": "fs-idm59483360",
-                  "segmentId": "m68710:para:fs-idm59483360"
-                },
-                {
-                  "type": "para",
-                  "id": "fs-idp193051584",
-                  "segmentId": "m68710:para:fs-idp193051584",
-                  "title": {
-                    "segmentId": "m68710:para-title:fs-idp193051584-title",
-                    "text": "Check Your Learning"
-                  }
-                },
-                {
-                  "type": "list",
-                  "id": "fs-idp34895184",
-                  "listType": "enumerated",
-                  "numberStyle": "arabic",
-                  "bulletStyle": null,
-                  "items": [
-                    {
-                      "id": null,
-                      "segmentId": "m68710:item:fs-idp34895184-item-1"
-                    },
-                    {
-                      "id": null,
-                      "segmentId": "m68710:item:fs-idp34895184-item-2"
-                    },
-                    {
-                      "id": null,
-                      "segmentId": "m68710:item:fs-idp34895184-item-3"
-                    },
-                    {
-                      "id": null,
-                      "segmentId": "m68710:item:fs-idp34895184-item-4"
-                    },
-                    {
-                      "id": null,
-                      "segmentId": "m68710:item:fs-idp34895184-item-5"
-                    },
-                    {
-                      "id": null,
-                      "segmentId": "m68710:item:fs-idp34895184-item-6"
-                    },
-                    {
-                      "id": null,
-                      "segmentId": "m68710:item:fs-idp34895184-item-7"
-                    }
-                  ]
-                },
-                {
-                  "type": "equation",
-                  "id": "fs-idm59837744"
-                },
-                {
-                  "type": "equation",
-                  "id": "fs-idm158485920"
-                },
-                {
-                  "type": "equation",
-                  "id": "fs-idm115501120"
-                },
-                {
-                  "type": "equation",
-                  "id": "fs-idm214288784"
-                },
-                {
-                  "type": "equation",
-                  "id": "fs-idm209224928"
-                },
-                {
-                  "type": "equation",
-                  "id": "fs-idm223648432"
-                },
-                {
-                  "type": "equation",
-                  "id": "fs-idm110660208"
-                },
-                {
-                  "type": "equation",
-                  "id": "fs-idm113051632"
-                },
-                {
-                  "type": "equation",
-                  "id": "fs-idm225038592"
-                },
-                {
-                  "type": "equation",
-                  "id": "fs-idm249297696"
-                },
-                {
-                  "type": "equation",
-                  "id": "fs-idm65092096"
-                },
-                {
-                  "type": "equation",
-                  "id": "fs-idm129012256"
-                },
-                {
-                  "type": "equation",
-                  "id": "fs-idm208390896"
-                },
-                {
-                  "type": "equation",
-                  "id": "fs-idm273483584"
-                },
-                {
-                  "type": "note",
-                  "id": "fs-idm39281984",
-                  "title": {
-                    "segmentId": "m68710:note-title:fs-idm39281984-title",
-                    "text": "Answer:"
-                  },
-                  "content": []
-                }
-              ]
-            },
-            {
-              "type": "table",
-              "id": "fs-idp8525760",
-              "class": "unnumbered",
-              "summary": "This table has three columns and six rows. The first column is unlabeled but the second and third columns are labeled, “Reactants,” and “Products.” Under the first column are the following: “F e,” “C r,” “O,” “H,” and, “charge.” Under the “Reactants” column are the numbers: 6, 2, 7, 14, 24 plus sign. Under the “Products” column are the numbers: 6, 2, 7, 14 and 24 plus sign.",
-              "rows": [
-                {
-                  "cells": [
-                    {
-                      "segmentId": "m68710:entry:auto-160",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68710:entry:auto-161",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "cells": [
-                    {
-                      "segmentId": "m68710:entry:auto-162",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68710:entry:auto-163",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68710:entry:auto-164",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "cells": [
-                    {
-                      "segmentId": "m68710:entry:auto-165",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68710:entry:auto-166",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68710:entry:auto-167",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "cells": [
-                    {
-                      "segmentId": "m68710:entry:auto-168",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68710:entry:auto-169",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68710:entry:auto-170",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "cells": [
-                    {
-                      "segmentId": "m68710:entry:auto-171",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68710:entry:auto-172",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68710:entry:auto-173",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "cells": [
-                    {
-                      "segmentId": "m68710:entry:auto-174",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68710:entry:auto-175",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68710:entry:auto-176",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
           "type": "para",
           "id": "fs-idp3801440",
           "segmentId": "m68710:para:fs-idp3801440"
@@ -1723,6 +1322,429 @@
                   "type": "para",
                   "id": "fs-idm50940704",
                   "segmentId": "m68710:para:fs-idm50940704"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idp98840016",
+          "class": null,
+          "title": {
+            "segmentId": "m68710:title:fs-idp98840016-title",
+            "text": "Balancing Redox Reactions via the Half-Reaction Method"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm141853312",
+              "segmentId": "m68710:para:fs-idm141853312"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm64885712",
+              "segmentId": "m68710:para:fs-idm64885712"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm219773632",
+              "segmentId": "m68710:para:fs-idm219773632"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm339557376",
+              "segmentId": "m68710:para:fs-idm339557376"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm161858496",
+              "segmentId": "m68710:para:fs-idm161858496"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm218459968",
+              "segmentId": "m68710:para:fs-idm218459968"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm31626864",
+              "segmentId": "m68710:para:fs-idm31626864"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm241499680",
+              "segmentId": "m68710:para:fs-idm241499680"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm228573904",
+              "segmentId": "m68710:para:fs-idm228573904"
+            },
+            {
+              "type": "list",
+              "id": "fs-idp48488192",
+              "listType": "enumerated",
+              "numberStyle": "lower-alpha",
+              "bulletStyle": null,
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m68710:item:fs-idp48488192-item-1"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68710:item:fs-idp48488192-item-2"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68710:item:fs-idp48488192-item-3"
+                }
+              ]
+            },
+            {
+              "type": "para",
+              "id": "fs-idm268418480",
+              "segmentId": "m68710:para:fs-idm268418480"
+            },
+            {
+              "type": "example",
+              "id": "fs-idm53644080",
+              "title": {
+                "segmentId": "m68710:example-title:fs-idm53644080-title",
+                "text": "Balancing Redox Reactions in Acidic Solution"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp164751888",
+                  "segmentId": "m68710:para:fs-idp164751888"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp3143536",
+                  "segmentId": "m68710:para:fs-idp3143536",
+                  "title": {
+                    "segmentId": "m68710:para-title:fs-idp3143536-title",
+                    "text": "Solution"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm9107808",
+                  "segmentId": "m68710:para:fs-idm9107808"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm63161856",
+                  "segmentId": "m68710:para:fs-idm63161856"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm39730544",
+                  "segmentId": "m68710:para:fs-idm39730544"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp2853568",
+                  "segmentId": "m68710:para:fs-idp2853568"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp23619040",
+                  "segmentId": "m68710:para:fs-idp23619040"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm52131936",
+                  "segmentId": "m68710:para:fs-idm52131936"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp2921088",
+                  "segmentId": "m68710:para:fs-idp2921088"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp73258288",
+                  "segmentId": "m68710:para:fs-idp73258288"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp66154720",
+                  "segmentId": "m68710:para:fs-idp66154720"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm59483360",
+                  "segmentId": "m68710:para:fs-idm59483360"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp193051584",
+                  "segmentId": "m68710:para:fs-idp193051584",
+                  "title": {
+                    "segmentId": "m68710:para-title:fs-idp193051584-title",
+                    "text": "Check Your Learning"
+                  }
+                },
+                {
+                  "type": "list",
+                  "id": "fs-idp34895184",
+                  "listType": "enumerated",
+                  "numberStyle": "arabic",
+                  "bulletStyle": null,
+                  "items": [
+                    {
+                      "id": null,
+                      "segmentId": "m68710:item:fs-idp34895184-item-1"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m68710:item:fs-idp34895184-item-2",
+                      "wrapsPara": {
+                        "openTag": "<para id=\"fs-idm63161856\">",
+                        "id": "fs-idm63161856"
+                      }
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m68710:item:fs-idp34895184-item-3",
+                      "wrapsPara": {
+                        "openTag": "<para id=\"fs-idm39730544\">",
+                        "id": "fs-idm39730544"
+                      }
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m68710:item:fs-idp34895184-item-4",
+                      "wrapsPara": {
+                        "openTag": "<para id=\"fs-idp2853568\">",
+                        "id": "fs-idp2853568"
+                      }
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m68710:item:fs-idp34895184-item-5"
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m68710:item:fs-idp34895184-item-6",
+                      "wrapsPara": {
+                        "openTag": "<para id=\"fs-idp2921088\">",
+                        "id": "fs-idp2921088"
+                      }
+                    },
+                    {
+                      "id": null,
+                      "segmentId": "m68710:item:fs-idp34895184-item-7"
+                    }
+                  ]
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm59837744"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm158485920"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm115501120"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm214288784"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm209224928"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm223648432"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm110660208"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm113051632"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm225038592"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm249297696"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm65092096"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm129012256"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm208390896"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm273483584"
+                },
+                {
+                  "type": "note",
+                  "id": "fs-idm39281984",
+                  "title": {
+                    "segmentId": "m68710:note-title:fs-idm39281984-title",
+                    "text": "Answer:"
+                  },
+                  "content": []
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "id": "fs-idp8525760",
+              "class": "unnumbered",
+              "summary": "This table has three columns and six rows. The first column is unlabeled but the second and third columns are labeled, “Reactants,” and “Products.” Under the first column are the following: “F e,” “C r,” “O,” “H,” and, “charge.” Under the “Reactants” column are the numbers: 6, 2, 7, 14, 24 plus sign. Under the “Products” column are the numbers: 6, 2, 7, 14 and 24 plus sign.",
+              "rows": [
+                {
+                  "cells": [
+                    {
+                      "segmentId": null,
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68710:entry:auto-160",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68710:entry:auto-161",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68710:entry:auto-162",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68710:entry:auto-163",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68710:entry:auto-164",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68710:entry:auto-165",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68710:entry:auto-166",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68710:entry:auto-167",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68710:entry:auto-168",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68710:entry:auto-169",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68710:entry:auto-170",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68710:entry:auto-171",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68710:entry:auto-172",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68710:entry:auto-173",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68710:entry:auto-174",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68710:entry:auto-175",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68710:entry:auto-176",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
                 }
               ]
             }

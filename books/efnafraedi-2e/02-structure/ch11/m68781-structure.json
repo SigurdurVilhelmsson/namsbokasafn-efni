@@ -114,7 +114,10 @@
           "id": "fs-idp29456368",
           "class": "scaled-down",
           "alt": "A chemical equation is shown. To the left, two hydrogen atoms are linked, each with a single dash to a central oxygen atom to the left and below the oxygen symbol, which has two pairs of dots, above and to the right of the atom. A plus sign is shown to the right, then a hydrogen atom linked to the left side of chlorine atom by a single dash with three pairs of dots, above, to the right, and below the element symbol. An arrow points to the products which are three hydrogen atoms linked by single dashes to a central oxygen atom shown in brackets with superscript plus. The oxygen atom has a single pair of dots above the element symbol. This is followed by a plus and C l superscript minus. This symbol is surrounded by four pairs of dots, above and below and to the left and right of the element symbol.",
-          "src": "../../media/CNX_Chem_11_02_H3O_CL_img.jpg"
+          "src": "../../media/CNX_Chem_11_02_H3O_CL_img.jpg",
+          "embedSrc": "",
+          "width": "",
+          "height": ""
         },
         {
           "type": "para",
@@ -387,5 +390,5 @@
       }
     ]
   },
-  "sectionOrder": null
+  "sectionOrder": 2
 }

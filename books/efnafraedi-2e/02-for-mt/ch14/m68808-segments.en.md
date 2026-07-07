@@ -11,10 +11,10 @@ Describe the composition and function of acid–base buffers
 Calculate the pH of a buffer before and after the addition of added acid or base
 
 <!-- SEG:m68808:para:fs-idm117447344 -->
-A solution containing appreciable amounts of a weak conjugate acid-base pair is called a buffer solution, or a {{term}}buffer{{/term}}. Buffer solutions resist a change in pH when small amounts of a strong acid or a strong base are added ([#CNX_Chem_14_06_compare]). A solution of acetic acid and sodium acetate (CH[[sub:3]]COOH + CH[[sub:3]]COONa) is an example of a buffer that consists of a weak acid and its salt. An example of a buffer that consists of a weak base and its salt is a solution of ammonia and ammonium chloride (NH[[sub:3]]({{i}}aq{{/i}}) + NH[[sub:4]]Cl({{i}}aq{{/i}})).
+A solution containing appreciable amounts of a weak conjugate acid-base pair is called a buffer solution, or a {{term}}buffer{{/term}}. Buffer solutions resist a change in pH when small amounts of a strong acid or a strong base are added ([[xref:CNX_Chem_14_06_compare]]). A solution of acetic acid and sodium acetate (CH[[sub:3]]COOH + CH[[sub:3]]COONa) is an example of a buffer that consists of a weak acid and its salt. An example of a buffer that consists of a weak base and its salt is a solution of ammonia and ammonium chloride (NH[[sub:3]]([[i:aq]]) + NH[[sub:4]]Cl([[i:aq]])).
 
 <!-- SEG:m68808:caption:CNX_Chem_14_06_compare-caption -->
-(a) The unbuffered solution on the left and the buffered solution on the right have the same pH (pH 8); they are basic, showing the yellow color of the indicator methyl orange at this pH. (b) After the addition of 1 mL of a 0.01-{{i}}M{{/i}} HCl solution, the buffered solution has not detectably changed its pH but the unbuffered solution has become acidic, as indicated by the change in color of the methyl orange, which turns red at a pH of about 4. (credit: modification of work by Mark Ott)
+(a) The unbuffered solution on the left and the buffered solution on the right have the same pH (pH 8); they are basic, showing the yellow color of the indicator methyl orange at this pH. (b) After the addition of 1 mL of a 0.01-[[i:M]] HCl solution, the buffered solution has not detectably changed its pH but the unbuffered solution has become acidic, as indicated by the change in color of the methyl orange, which turns red at a pH of about 4. (credit: modification of work by Mark Ott)
 
 <!-- SEG:m68808:title:fs-idm112960288-title -->
 How Buffers Work
@@ -23,7 +23,7 @@ How Buffers Work
 To illustrate the function of a buffer solution, consider a mixture of roughly equal amounts of acetic acid and sodium acetate. The presence of a weak conjugate acid-base pair in the solution imparts the ability to neutralize modest amounts of added strong acid or base. For example, strong base added to this solution will neutralize hydronium ion, causing the acetic acid ionization equilibrium to shift to the right and generate additional amounts of the weak conjugate base (acetate ion):
 
 <!-- SEG:m68808:para:fs-idp41915456 -->
-Likewise, strong acid added to this buffer solution will shift the above ionization equilibrium left, producing additional amounts of the weak conjugate acid (acetic acid). [#CNX_Chem_14_06_bufferchrt] provides a graphical illustration of the changes in conjugate-partner concentration that occur in this buffer solution when strong acid and base are added. The buffering action of the solution is essentially a result of the added strong acid and base being converted to the weak acid and base that make up the buffer's conjugate pair. The weaker acid and base undergo only slight ionization, as compared with the complete ionization of the strong acid and base, and the solution pH, therefore, changes much less drastically than it would in an unbuffered solution.
+Likewise, strong acid added to this buffer solution will shift the above ionization equilibrium left, producing additional amounts of the weak conjugate acid (acetic acid). [[xref:CNX_Chem_14_06_bufferchrt]] provides a graphical illustration of the changes in conjugate-partner concentration that occur in this buffer solution when strong acid and base are added. The buffering action of the solution is essentially a result of the added strong acid and base being converted to the weak acid and base that make up the buffer's conjugate pair. The weaker acid and base undergo only slight ionization, as compared with the complete ionization of the strong acid and base, and the solution pH, therefore, changes much less drastically than it would in an unbuffered solution.
 
 <!-- SEG:m68808:caption:CNX_Chem_14_06_bufferchrt-caption -->
 Buffering action in a mixture of acetic acid and acetate salt.
@@ -35,13 +35,13 @@ pH Changes in Buffered and Unbuffered Solutions
 Acetate buffers are used in biochemical studies of enzymes and other chemical components of cells to prevent pH changes that might affect the biochemical activity of these compounds.
 
 <!-- SEG:m68808:para:fs-idp41841344 -->
-(a) Calculate the pH of an acetate buffer that is a mixture with 0.10 {{i}}M{{/i}} acetic acid and 0.10 {{i}}M{{/i}} sodium acetate.
+(a) Calculate the pH of an acetate buffer that is a mixture with 0.10 [[i:M]] acetic acid and 0.10 [[i:M]] sodium acetate.
 
 <!-- SEG:m68808:para:fs-idm197032080 -->
 (b) Calculate the pH after 1.0 mL of 0.10 NaOH is added to 100 mL of this buffer.
 
 <!-- SEG:m68808:para:fs-idm215059040 -->
-(c) For comparison, calculate the pH after 1.0 mL of 0.10 {{i}}M{{/i}} NaOH is added to 100 mL of a solution of an unbuffered solution with a pH of 4.74.
+(c) For comparison, calculate the pH after 1.0 mL of 0.10 [[i:M]] NaOH is added to 100 mL of a solution of an unbuffered solution with a pH of 4.74.
 
 <!-- SEG:m68808:para-title:fs-idm105719280-title -->
 Solution
@@ -50,10 +50,10 @@ Solution
 (a) Following the ICE approach to this equilibrium calculation yields the following:
 
 <!-- SEG:m68808:para:fs-idm192051584 -->
-Substituting the equilibrium concentration terms into the {{i}}K{{/i}}[[sub:a]] expression, assuming {{i}}x{{/i}} &lt;&lt; 0.10, and solving the simplified equation for {{i}}x{{/i}} yields
+Substituting the equilibrium concentration terms into the [[i:K]][[sub:a]] expression, assuming [[i:x]] &lt;&lt; 0.10, and solving the simplified equation for [[i:x]] yields
 
 <!-- SEG:m68808:para:fs-idp98075040 -->
-(b) Calculate the pH after 1.0 mL of 0.10 {{i}}M{{/i}} NaOH is added to 100 mL of this buffer.
+(b) Calculate the pH after 1.0 mL of 0.10 [[i:M]] NaOH is added to 100 mL of this buffer.
 
 <!-- SEG:m68808:para:fs-idm196351552 -->
 Adding strong base will neutralize some of the acetic acid, yielding the conjugate base acetate ion. Compute the new concentrations of these two buffer components, then repeat the equilibrium calculation of part (a) using these new concentrations.
@@ -74,7 +74,7 @@ Compute molar concentrations for the two buffer components:
 Using these concentrations, the pH of the solution may be computed as in part (a) above, yielding pH = 4.75 (only slightly different from that prior to adding the strong base).
 
 <!-- SEG:m68808:para:fs-idm140802864 -->
-(c) For comparison, calculate the pH after 1.0 mL of 0.10 {{i}}M{{/i}} NaOH is added to 100 mL of a solution of an unbuffered solution with a pH of 4.74.
+(c) For comparison, calculate the pH after 1.0 mL of 0.10 [[i:M]] NaOH is added to 100 mL of a solution of an unbuffered solution with a pH of 4.74.
 
 <!-- SEG:m68808:para:fs-idm216667360 -->
 The amount of hydronium ion initially present in the solution is
@@ -104,34 +104,34 @@ In this unbuffered solution, addition of the base results in a significant rise 
 Check Your Learning
 
 <!-- SEG:m68808:para:fs-idm159189968 -->
-Show that adding 1.0 mL of 0.10 {{i}}M{{/i}} HCl changes the pH of 100 mL of a 1.8 [[MATH:1]] 10[[sup:−5]] {{i}}M{{/i}} HCl solution from 4.74 to 3.00.
+Show that adding 1.0 mL of 0.10 [[i:M]] HCl changes the pH of 100 mL of a 1.8 [[MATH:1]] 10[[sup:−5]] [[i:M]] HCl solution from 4.74 to 3.00.
 
 <!-- SEG:m68808:para:fs-idm119337184 -->
-Initial pH of 1.8 [[MATH:3]] 10[[sup:−5]] {{i}}M{{/i}} HCl; pH = −log[H[[sub:3]]O[[sup:+]]] = −log[1.8 [[MATH:4]] 10[[sup:−5]]] = 4.74[[BR]] Moles of H[[sub:3]]O[[sup:+]] in 100 mL 1.8 [[MATH:5]] 10[[sup:−5]] {{i}}M{{/i}} HCl; 1.8 [[MATH:6]] 10[[sup:−5]] moles/L [[MATH:7]] 0.100 L = 1.8 [[MATH:8]] 10[[sup:−6]][[BR]] Moles of H[[sub:3]]O[[sup:+]] added by addition of 1.0 mL of 0.10 {{i}}M{{/i}} HCl: 0.10 moles/L [[MATH:9]] 0.0010 L = 1.0 [[MATH:10]] 10[[sup:−4]] moles; final pH after addition of 1.0 mL of 0.10 {{i}}M{{/i}} HCl:[[BR]] [[MATH:2]]
+Initial pH of 1.8 [[MATH:3]] 10[[sup:−5]] [[i:M]] HCl; pH = −log[H[[sub:3]]O[[sup:+]]] = −log[1.8 [[MATH:4]] 10[[sup:−5]]] = 4.74[[BR]] Moles of H[[sub:3]]O[[sup:+]] in 100 mL 1.8 [[MATH:5]] 10[[sup:−5]] [[i:M]] HCl; 1.8 [[MATH:6]] 10[[sup:−5]] moles/L [[MATH:7]] 0.100 L = 1.8 [[MATH:8]] 10[[sup:−6]][[BR]] Moles of H[[sub:3]]O[[sup:+]] added by addition of 1.0 mL of 0.10 [[i:M]] HCl: 0.10 moles/L [[MATH:9]] 0.0010 L = 1.0 [[MATH:10]] 10[[sup:−4]] moles; final pH after addition of 1.0 mL of 0.10 [[i:M]] HCl:[[BR]] [[MATH:2]]
 
 <!-- SEG:m68808:note-title:fs-idm145837936-title -->
 Answer:
 
 <!-- SEG:m68808:para:fs-idm119337184 -->
-Initial pH of 1.8 [[MATH:12]] 10[[sup:−5]] {{i}}M{{/i}} HCl; pH = −log[H[[sub:3]]O[[sup:+]]] = −log[1.8 [[MATH:13]] 10[[sup:−5]]] = 4.74[[BR]] Moles of H[[sub:3]]O[[sup:+]] in 100 mL 1.8 [[MATH:14]] 10[[sup:−5]] {{i}}M{{/i}} HCl; 1.8 [[MATH:15]] 10[[sup:−5]] moles/L [[MATH:16]] 0.100 L = 1.8 [[MATH:17]] 10[[sup:−6]][[BR]] Moles of H[[sub:3]]O[[sup:+]] added by addition of 1.0 mL of 0.10 {{i}}M{{/i}} HCl: 0.10 moles/L [[MATH:18]] 0.0010 L = 1.0 [[MATH:19]] 10[[sup:−4]] moles; final pH after addition of 1.0 mL of 0.10 {{i}}M{{/i}} HCl:[[BR]] [[MATH:11]]
+Initial pH of 1.8 [[MATH:12]] 10[[sup:−5]] [[i:M]] HCl; pH = −log[H[[sub:3]]O[[sup:+]]] = −log[1.8 [[MATH:13]] 10[[sup:−5]]] = 4.74[[BR]] Moles of H[[sub:3]]O[[sup:+]] in 100 mL 1.8 [[MATH:14]] 10[[sup:−5]] [[i:M]] HCl; 1.8 [[MATH:15]] 10[[sup:−5]] moles/L [[MATH:16]] 0.100 L = 1.8 [[MATH:17]] 10[[sup:−6]][[BR]] Moles of H[[sub:3]]O[[sup:+]] added by addition of 1.0 mL of 0.10 [[i:M]] HCl: 0.10 moles/L [[MATH:18]] 0.0010 L = 1.0 [[MATH:19]] 10[[sup:−4]] moles; final pH after addition of 1.0 mL of 0.10 [[i:M]] HCl:[[BR]] [[MATH:11]]
 
 <!-- SEG:m68808:title:fs-idp107911744-title -->
 Buffer Capacity
 
 <!-- SEG:m68808:para:fs-idm68764768 -->
-Buffer solutions do not have an unlimited capacity to keep the pH relatively constant ([#CNX_Chem_14_06_exhaust]). Instead, the ability of a buffer solution to resist changes in pH relies on the presence of appreciable amounts of its conjugate weak acid-base pair. When enough strong acid or base is added to substantially lower the concentration of either member of the buffer pair, the buffering action within the solution is compromised.
+Buffer solutions do not have an unlimited capacity to keep the pH relatively constant ([[xref:CNX_Chem_14_06_exhaust]]). Instead, the ability of a buffer solution to resist changes in pH relies on the presence of appreciable amounts of its conjugate weak acid-base pair. When enough strong acid or base is added to substantially lower the concentration of either member of the buffer pair, the buffering action within the solution is compromised.
 
 <!-- SEG:m68808:caption:CNX_Chem_14_06_exhaust-caption -->
 The indicator color (methyl orange) shows that a small amount of acid added to a buffered solution of pH 8 (beaker on the left) has little affect on the buffered system (middle beaker). However, a large amount of acid exhausts the buffering capacity of the solution and the pH changes dramatically (beaker on the right). (credit: modification of work by Mark Ott)
 
 <!-- SEG:m68808:para:fs-idm103629216 -->
-The {{term}}buffer capacity{{/term}} is the amount of acid or base that can be added to a given volume of a buffer solution before the pH changes significantly, usually by one unit. Buffer capacity depends on the amounts of the weak acid and its conjugate base that are in a buffer mixture. For example, 1 L of a solution that is 1.0 {{i}}M{{/i}} in acetic acid and 1.0 {{i}}M{{/i}} in sodium acetate has a greater buffer capacity than 1 L of a solution that is 0.10 {{i}}M{{/i}} in acetic acid and 0.10 {{i}}M{{/i}} in sodium acetate even though both solutions have the same pH. The first solution has more buffer capacity because it contains more acetic acid and acetate ion.
+The {{term}}buffer capacity{{/term}} is the amount of acid or base that can be added to a given volume of a buffer solution before the pH changes significantly, usually by one unit. Buffer capacity depends on the amounts of the weak acid and its conjugate base that are in a buffer mixture. For example, 1 L of a solution that is 1.0 [[i:M]] in acetic acid and 1.0 [[i:M]] in sodium acetate has a greater buffer capacity than 1 L of a solution that is 0.10 [[i:M]] in acetic acid and 0.10 [[i:M]] in sodium acetate even though both solutions have the same pH. The first solution has more buffer capacity because it contains more acetic acid and acetate ion.
 
 <!-- SEG:m68808:title:fs-idm124351376-title -->
 Selection of Suitable Buffer Mixtures
 
 <!-- SEG:m68808:item:fs-idm128259280-item-1 -->
-A good buffer mixture should have about equal concentrations of both of its components. A buffer solution has generally lost its usefulness when one component of the buffer pair is less than about 10% of the other. [#CNX_Chem_14_06_buffer] shows how pH changes for an acetic acid-acetate ion buffer as base is added. The initial pH is 4.74. A change of 1 pH unit occurs when the acetic acid concentration is reduced to 11% of the acetate ion concentration.[[BR]]
+A good buffer mixture should have about equal concentrations of both of its components. A buffer solution has generally lost its usefulness when one component of the buffer pair is less than about 10% of the other. [[xref:CNX_Chem_14_06_buffer]] shows how pH changes for an acetic acid-acetate ion buffer as base is added. The initial pH is 4.74. A change of 1 pH unit occurs when the acetic acid concentration is reduced to 11% of the acetate ion concentration.[[BR]]
 
 <!-- SEG:m68808:item:fs-idm128259280-item-2 -->
 Weak acids and their salts are better as buffers for pHs less than 7; weak bases and their salts are better as buffers for pHs greater than 7.
@@ -140,7 +140,7 @@ Weak acids and their salts are better as buffers for pHs less than 7; weak bases
 There are two useful rules of thumb for selecting buffer mixtures:
 
 <!-- SEG:m68808:caption:CNX_Chem_14_06_buffer-caption -->
-Change in pH as an increasing amount of a 0.10-{{i}}M{{/i}} NaOH solution is added to 100 mL of a buffer solution in which, initially, [CH[[sub:3]]CO[[sub:2]]H] = 0.10 {{i}}M{{/i}} and [[MATH:20]] Note the greatly diminished buffering action occurring after the buffer capacity has been reached, resulting in drastic rises in pH on adding more strong base.
+Change in pH as an increasing amount of a 0.10-[[i:M]] NaOH solution is added to 100 mL of a buffer solution in which, initially, [CH[[sub:3]]CO[[sub:2]]H] = 0.10 [[i:M]] and [[MATH:20]] Note the greatly diminished buffering action occurring after the buffer capacity has been reached, resulting in drastic rises in pH on adding more strong base.
 
 <!-- SEG:m68808:para:fs-idm53419232 -->
 Blood is an important example of a buffered solution, with the principal acid and ion responsible for the buffering action being carbonic acid, H[[sub:2]]CO[[sub:3]], and the bicarbonate ion, [[MATH:21]] When a hydronium ion is introduced to the blood stream, it is removed primarily by the reaction:
@@ -167,7 +167,7 @@ Taking the negative logarithm of both sides of this equation gives
 which can be written as
 
 <!-- SEG:m68808:para:fs-idp97287200 -->
-where p{{i}}K{{/i}}[[sub:a]] is the negative of the logarithm of the ionization constant of the weak acid (p{{i}}K{{/i}}[[sub:a]] = −log {{i}}K{{/i}}[[sub:a]]). This equation relates the pH, the ionization constant of a weak acid, and the concentrations of the weak conjugate acid-base pair in a buffered solution. Scientists often use this expression, called the {{term}}Henderson-Hasselbalch equation{{/term}}, to calculate the pH of buffer solutions. It is important to note that the “{{i}}x{{/i}} is small” assumption must be valid to use this equation.
+where p[[i:K]][[sub:a]] is the negative of the logarithm of the ionization constant of the weak acid (p[[i:K]][[sub:a]] = −log [[i:K]][[sub:a]]). This equation relates the pH, the ionization constant of a weak acid, and the concentrations of the weak conjugate acid-base pair in a buffered solution. Scientists often use this expression, called the {{term}}Henderson-Hasselbalch equation{{/term}}, to calculate the pH of buffer solutions. It is important to note that the “[[i:x]] is small” assumption must be valid to use this equation.
 
 <!-- SEG:m68808:note-title:fs-idp1420208-title -->
 Lawrence Joseph Henderson and Karl Albert Hasselbalch
@@ -185,7 +185,7 @@ Medicine: The Buffer System in Blood
 The normal pH of human blood is about 7.4. The carbonate buffer system in the blood uses the following equilibrium reaction:
 
 <!-- SEG:m68808:para:fs-idm43954064 -->
-The concentration of carbonic acid, H[[sub:2]]CO[[sub:3]] is approximately 0.0012 {{i}}M{{/i}}, and the concentration of the hydrogen carbonate ion, [[MATH:22]] is around 0.024 {{i}}M{{/i}}. Using the Henderson-Hasselbalch equation and the p{{i}}K{{/i}}[[sub:a]] of carbonic acid at body temperature, we can calculate the pH of blood:
+The concentration of carbonic acid, H[[sub:2]]CO[[sub:3]] is approximately 0.0012 [[i:M]], and the concentration of the hydrogen carbonate ion, [[MATH:22]] is around 0.024 [[i:M]]. Using the Henderson-Hasselbalch equation and the p[[i:K]][[sub:a]] of carbonic acid at body temperature, we can calculate the pH of blood:
 
 <!-- SEG:m68808:para:fs-idm108864208 -->
 The fact that the H[[sub:2]]CO[[sub:3]] concentration is significantly lower than that of the [[MATH:23]] ion may seem unusual, but this imbalance is due to the fact that most of the by-products of our metabolism that enter our bloodstream are acidic. Therefore, there must be a larger proportion of base than acid, so that the capacity of the buffer will not be exceeded.
@@ -194,7 +194,7 @@ The fact that the H[[sub:2]]CO[[sub:3]] concentration is significantly lower tha
 Lactic acid is produced in our muscles when we exercise. As the lactic acid enters the bloodstream, it is neutralized by the [[MATH:24]] ion, producing H[[sub:2]]CO[[sub:3]]. An enzyme then accelerates the breakdown of the excess carbonic acid to carbon dioxide and water, which can be eliminated by breathing. In fact, in addition to the regulating effects of the carbonate buffering system on the pH of blood, the body uses breathing to regulate blood pH. If the pH of the blood decreases too far, an increase in breathing removes CO[[sub:2]] from the blood through the lungs driving the equilibrium reaction such that [H[[sub:3]]O[[sup:+]]] is lowered. If the blood is too alkaline, a lower breath rate increases CO[[sub:2]] concentration in the blood, driving the equilibrium reaction the other way, increasing [H[[sup:+]]] and restoring an appropriate pH.
 
 <!-- SEG:m68808:para:fs-idm108605600 -->
-View [information](http://openstax.org/l/16BufferSystem) on the buffer system encountered in natural waters.
+View [[link:information|http://openstax.org/l/16BufferSystem]] on the buffer system encountered in natural waters.
 
 <!-- SEG:m68808:title:fs-idm104045184-title -->
 Key Concepts and Summary
@@ -206,10 +206,10 @@ Solutions that contain appreciable amounts of a weak conjugate acid-base pair ar
 Key Equations
 
 <!-- SEG:m68808:entry:auto-70 -->
-p{{i}}K{{/i}}[[sub:a]] = −log {{i}}K{{/i}}[[sub:a]]
+p[[i:K]][[sub:a]] = −log [[i:K]][[sub:a]]
 
 <!-- SEG:m68808:entry:auto-71 -->
-p{{i}}K{{/i}}[[sub:b]] = −log {{i}}K{{/i}}[[sub:b]]
+p[[i:K]][[sub:b]] = −log [[i:K]][[sub:b]]
 
 <!-- SEG:m68808:entry:auto-72 -->
 [[MATH:25]]
@@ -227,22 +227,22 @@ Excess H[[sub:3]]O[[sup:+]] is removed primarily by the reaction: [[MATH:26]][[B
 Explain why the pH does not change significantly when a small amount of an acid or a base is added to a solution that contains equal amounts of the base NH[[sub:3]] and a salt of its conjugate acid NH[[sub:4]]Cl.
 
 <!-- SEG:m68808:problem:fs-idm118172320 -->
-What is [H[[sub:3]]O[[sup:+]]] in a solution of 0.25 {{i}}M{{/i}} CH[[sub:3]]CO[[sub:2]]H and 0.030 {{i}}M{{/i}} NaCH[[sub:3]]CO[[sub:2]]?[[BR]] [[MATH:28]]
+What is [H[[sub:3]]O[[sup:+]]] in a solution of 0.25 [[i:M]] CH[[sub:3]]CO[[sub:2]]H and 0.030 [[i:M]] NaCH[[sub:3]]CO[[sub:2]]?[[BR]] [[MATH:28]]
 
 <!-- SEG:m68808:solution:fs-idm115330864 -->
-[H[[sub:3]]O[[sup:+]]] = 1.5 [[MATH:29]] 10[[sup:−4]] {{i}}M{{/i}}
+[H[[sub:3]]O[[sup:+]]] = 1.5 [[MATH:29]] 10[[sup:−4]] [[i:M]]
 
 <!-- SEG:m68808:problem:fs-idm63656480 -->
-What is [H[[sub:3]]O[[sup:+]]] in a solution of 0.075 {{i}}M{{/i}} HNO[[sub:2]] and 0.030 {{i}}M{{/i}} NaNO[[sub:2]]?[[BR]] [[MATH:30]]
+What is [H[[sub:3]]O[[sup:+]]] in a solution of 0.075 [[i:M]] HNO[[sub:2]] and 0.030 [[i:M]] NaNO[[sub:2]]?[[BR]] [[MATH:30]]
 
 <!-- SEG:m68808:problem:fs-idm165406368 -->
-What is [OH[[sup:−]]] in a solution of 0.125 {{i}}M{{/i}} CH[[sub:3]]NH[[sub:2]] and 0.130 {{i}}M{{/i}} CH[[sub:3]]NH[[sub:3]]Cl?[[BR]] [[MATH:31]]
+What is [OH[[sup:−]]] in a solution of 0.125 [[i:M]] CH[[sub:3]]NH[[sub:2]] and 0.130 [[i:M]] CH[[sub:3]]NH[[sub:3]]Cl?[[BR]] [[MATH:31]]
 
 <!-- SEG:m68808:solution:fs-idm233737504 -->
-[OH[[sup:−]]] = 4.2 [[MATH:32]] 10[[sup:−4]] {{i}}M{{/i}}
+[OH[[sup:−]]] = 4.2 [[MATH:32]] 10[[sup:−4]] [[i:M]]
 
 <!-- SEG:m68808:problem:fs-idm57608480 -->
-What is [OH[[sup:−]]] in a solution of 1.25 {{i}}M{{/i}} NH[[sub:3]] and 0.78 {{i}}M{{/i}} NH[[sub:4]]NO[[sub:3]]?[[BR]] [[MATH:33]]
+What is [OH[[sup:−]]] in a solution of 1.25 [[i:M]] NH[[sub:3]] and 0.78 [[i:M]] NH[[sub:4]]NO[[sub:3]]?[[BR]] [[MATH:33]]
 
 <!-- SEG:m68808:problem:fs-idp157984 -->
 What is the effect on the concentration of acetic acid, hydronium ion, and acetate ion when the following are added to an acidic buffer solution of equal concentrations of acetic acid and sodium acetate:
@@ -293,16 +293,16 @@ pH = 8.95
 Calculate the pH of a buffer solution prepared from 0.155 mol of phosphoric acid, 0.250 mole of KH[[sub:2]]PO[[sub:4]], and enough water to make 0.500 L of solution.
 
 <!-- SEG:m68808:problem:fs-idm146630688 -->
-How much solid NaCH[[sub:3]]CO[[sub:2]]•3H[[sub:2]]O must be added to 0.300 L of a 0.50-{{i}}M{{/i}} acetic acid solution to give a buffer with a pH of 5.00? (Hint: Assume a negligible change in volume as the solid is added.)
+How much solid NaCH[[sub:3]]CO[[sub:2]]•3H[[sub:2]]O must be added to 0.300 L of a 0.50-[[i:M]] acetic acid solution to give a buffer with a pH of 5.00? (Hint: Assume a negligible change in volume as the solid is added.)
 
 <!-- SEG:m68808:solution:fs-idm71413376 -->
 37 g (0.27 mol)
 
 <!-- SEG:m68808:problem:fs-idp55194704 -->
-What mass of NH[[sub:4]]Cl must be added to 0.750 L of a 0.100-{{i}}M{{/i}} solution of NH[[sub:3]] to give a buffer solution with a pH of 9.26? (Hint: Assume a negligible change in volume as the solid is added.)
+What mass of NH[[sub:4]]Cl must be added to 0.750 L of a 0.100-[[i:M]] solution of NH[[sub:3]] to give a buffer solution with a pH of 9.26? (Hint: Assume a negligible change in volume as the solid is added.)
 
 <!-- SEG:m68808:problem:fs-idm64046528 -->
-A buffer solution is prepared from equal volumes of 0.200 {{i}}M{{/i}} acetic acid and 0.600 {{i}}M{{/i}} sodium acetate. Use 1.80 [[MATH:41]] 10[[sup:−5]] as {{i}}K{{/i}}[[sub:a]] for acetic acid.
+A buffer solution is prepared from equal volumes of 0.200 [[i:M]] acetic acid and 0.600 [[i:M]] sodium acetate. Use 1.80 [[MATH:41]] 10[[sup:−5]] as [[i:K]][[sub:a]] for acetic acid.
 
 <!-- SEG:m68808:problem:fs-idm28191808 -->
 (a) What is the pH of the solution?
@@ -311,13 +311,13 @@ A buffer solution is prepared from equal volumes of 0.200 {{i}}M{{/i}} acetic ac
 (b) Is the solution acidic or basic?
 
 <!-- SEG:m68808:problem:fs-idm96192752 -->
-(c) What is the pH of a solution that results when 3.00 mL of 0.034 {{i}}M{{/i}} HCl is added to 0.200 L of the original buffer?
+(c) What is the pH of a solution that results when 3.00 mL of 0.034 [[i:M]] HCl is added to 0.200 L of the original buffer?
 
 <!-- SEG:m68808:solution:fs-idp147776 -->
 (a) pH = 5.222; (b) The solution is acidic. (c) pH = 5.220
 
 <!-- SEG:m68808:problem:fs-idm104905248 -->
-A 5.36–g sample of NH[[sub:4]]Cl was added to 25.0 mL of 1.00 {{i}}M{{/i}} NaOH and the resulting solution
+A 5.36–g sample of NH[[sub:4]]Cl was added to 25.0 mL of 1.00 [[i:M]] NaOH and the resulting solution
 
 <!-- SEG:m68808:problem:fs-idm2218160 -->
 diluted to 0.100 L.
@@ -329,7 +329,7 @@ diluted to 0.100 L.
 (b) Is the solution acidic or basic?
 
 <!-- SEG:m68808:problem:fs-idm105727920 -->
-(c) What is the pH of a solution that results when 3.00 mL of 0.034 {{i}}M{{/i}} HCl is added to the solution?
+(c) What is the pH of a solution that results when 3.00 mL of 0.034 [[i:M]] HCl is added to the solution?
 
 <!-- SEG:m68808:glossary-term:fs-idp88494848-term -->
 buffer capacity

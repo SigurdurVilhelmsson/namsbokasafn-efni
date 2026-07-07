@@ -71,20 +71,6 @@
       "segmentId": "m68750:para:fs-idm32668544"
     },
     {
-      "type": "figure",
-      "id": "CNX_Chem_09_01_Pressure2",
-      "class": "scaled-down",
-      "caption": {
-        "segmentId": "m68750:caption:CNX_Chem_09_01_Pressure2-caption"
-      },
-      "media": {
-        "id": "fs-idp170647376",
-        "alt": "This figure includes two photographs. Figure a is a photo of a large gray elephant on grassy, beige terrain. Figure b is a photo of a figure skater with her right skate on the ice, upper torso lowered, arms extended upward behind her chest, and left leg extended upward behind her.",
-        "src": "../../media/CNX_Chem_09_01_Pressure2.jpg",
-        "mimeType": "image/jpeg"
-      }
-    },
-    {
       "type": "equation",
       "id": "fs-idm100445488",
       "class": "unnumbered"
@@ -108,6 +94,20 @@
       "type": "equation",
       "id": "fs-idp9821216",
       "class": "unnumbered"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_09_01_Pressure2",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68750:caption:CNX_Chem_09_01_Pressure2-caption"
+      },
+      "media": {
+        "id": "fs-idp170647376",
+        "alt": "This figure includes two photographs. Figure a is a photo of a large gray elephant on grassy, beige terrain. Figure b is a photo of a figure skater with her right skate on the ice, upper torso lowered, arms extended upward behind her chest, and left leg extended upward behind her.",
+        "src": "../../media/CNX_Chem_09_01_Pressure2.jpg",
+        "mimeType": "image/jpeg"
+      }
     },
     {
       "type": "para",

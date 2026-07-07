@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68747",
-  "extractedAt": "2026-03-21T17:47:22.731Z",
+  "extractedAt": "2026-07-07T09:12:37.445Z",
   "sourceHash": "72267d71555a9c12",
   "segmentCount": 232,
   "segmentIds": [
@@ -339,12 +339,12 @@
       "CNX_Chem_08_04_Kohn",
       "CNX_Chem_08_04_HIVProteas",
       "CNX_Chem_08_04_FillMo",
+      "CNX_Chem_08_04_H2MO",
+      "CNX_Chem_08_04_He2MO",
       "CNX_Chem_08_04_X2MOs",
       "CNX_Chem_08_04_spmix",
       "CNX_Chem_08_04_Band",
-      "CNX_Chem_08_04_O2MO",
-      "CNX_Chem_08_04_H2MO",
-      "CNX_Chem_08_04_He2MO"
+      "CNX_Chem_08_04_O2MO"
     ],
     "table": [
       "fs-idm162808816",
@@ -390,9 +390,9 @@
     ],
     "equation": [
       "fs-idp20436816",
-      "fs-idm75364784",
       "fs-idm61635600",
-      "fs-idp1555152"
+      "fs-idp1555152",
+      "fs-idm75364784"
     ],
     "section": [
       "fs-idm108525232",

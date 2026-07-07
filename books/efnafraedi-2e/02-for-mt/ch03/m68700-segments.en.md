@@ -23,13 +23,13 @@ Formula Mass
 Formula Mass for Covalent Substances
 
 <!-- SEG:m68700:para:fs-idp128238864 -->
-For covalent substances, the formula represents the numbers and types of atoms composing a single molecule of the substance; therefore, the formula mass may be correctly referred to as a molecular mass. Consider chloroform (CHCl[[sub:3]]), a covalent compound once used as a surgical anesthetic and now primarily used in the production of tetrafluoroethylene, the building block for the "anti-stick" polymer, Teflon. The molecular formula of chloroform indicates that a single molecule contains one carbon atom, one hydrogen atom, and three chlorine atoms. The average molecular mass of a chloroform molecule is therefore equal to the sum of the average atomic masses of these atoms. [#CNX_Chem_03_01_chloroform] outlines the calculations used to derive the molecular mass of chloroform, which is 119.37 amu.
+For covalent substances, the formula represents the numbers and types of atoms composing a single molecule of the substance; therefore, the formula mass may be correctly referred to as a molecular mass. Consider chloroform (CHCl[[sub:3]]), a covalent compound once used as a surgical anesthetic and now primarily used in the production of tetrafluoroethylene, the building block for the "anti-stick" polymer, Teflon. The molecular formula of chloroform indicates that a single molecule contains one carbon atom, one hydrogen atom, and three chlorine atoms. The average molecular mass of a chloroform molecule is therefore equal to the sum of the average atomic masses of these atoms. [[xref:CNX_Chem_03_01_chloroform]] outlines the calculations used to derive the molecular mass of chloroform, which is 119.37 amu.
 
 <!-- SEG:m68700:caption:CNX_Chem_03_01_chloroform-caption -->
 The average mass of a chloroform molecule, CHCl[[sub:3]], is 119.37 amu, which is the sum of the average atomic masses of each of its constituent atoms. The model shows the molecular structure of chloroform.
 
 <!-- SEG:m68700:para:fs-idp139124096 -->
-Likewise, the molecular mass of an aspirin molecule, C[[sub:9]]H[[sub:8]]O[[sub:4]], is the sum of the atomic masses of nine carbon atoms, eight hydrogen atoms, and four oxygen atoms, which amounts to 180.15 amu ([#CNX_Chem_03_01_aspirin]).
+Likewise, the molecular mass of an aspirin molecule, C[[sub:9]]H[[sub:8]]O[[sub:4]], is the sum of the atomic masses of nine carbon atoms, eight hydrogen atoms, and four oxygen atoms, which amounts to 180.15 amu ([[xref:CNX_Chem_03_01_aspirin]]).
 
 <!-- SEG:m68700:caption:CNX_Chem_03_01_aspirin-caption -->
 The average mass of an aspirin molecule is 180.15 amu. The model shows the molecular structure of aspirin, C[[sub:9]]H[[sub:8]]O[[sub:4]].
@@ -68,7 +68,7 @@ Formula Mass for Ionic Compounds
 Ionic compounds are composed of discrete cations and anions combined in ratios to yield electrically neutral bulk matter. The formula mass for an ionic compound is calculated in the same way as the formula mass for covalent compounds: by summing the average atomic masses of all the atoms in the compound’s formula. Keep in mind, however, that the formula for an ionic compound does not represent the composition of a discrete molecule, so it may not correctly be referred to as the “molecular mass.”
 
 <!-- SEG:m68700:para:fs-idm4173824 -->
-As an example, consider sodium chloride, NaCl, the chemical name for common table salt. Sodium chloride is an ionic compound composed of sodium cations, Na[[sup:+]], and chloride anions, Cl[[sup:−]], combined in a 1:1 ratio. The formula mass for this compound is computed as 58.44 amu (see [#CNX_Chem_03_01_saltMass]).
+As an example, consider sodium chloride, NaCl, the chemical name for common table salt. Sodium chloride is an ionic compound composed of sodium cations, Na[[sup:+]], and chloride anions, Cl[[sup:−]], combined in a 1:1 ratio. The formula mass for this compound is computed as 58.44 amu (see [[xref:CNX_Chem_03_01_saltMass]]).
 
 <!-- SEG:m68700:caption:CNX_Chem_03_01_saltMass-caption -->
 Table salt, NaCl, contains an array of sodium and chloride ions combined in a 1:1 ratio. Its formula mass is 58.44 amu.
@@ -110,19 +110,19 @@ An earlier chapter of this text described the development of the atomic mass uni
 The Mole
 
 <!-- SEG:m68700:para:fs-idm38739232 -->
-The identity of a substance is defined not only by the types of atoms or ions it contains, but by the quantity of each type of atom or ion. For example, water, H[[sub:2]]O, and hydrogen peroxide, H[[sub:2]]O[[sub:2]], are alike in that their respective molecules are composed of hydrogen and oxygen atoms. However, because a hydrogen peroxide molecule contains two oxygen atoms, as opposed to the water molecule, which has only one, the two substances exhibit very different properties. Today, sophisticated instruments allow the direct measurement of these defining microscopic traits; however, the same traits were originally derived from the measurement of macroscopic properties (the masses and volumes of bulk quantities of matter) using relatively simple tools (balances and volumetric glassware). This experimental approach required the introduction of a new unit for amount of substances, the {{i}}mole{{/i}}, which remains indispensable in modern chemical science.
+The identity of a substance is defined not only by the types of atoms or ions it contains, but by the quantity of each type of atom or ion. For example, water, H[[sub:2]]O, and hydrogen peroxide, H[[sub:2]]O[[sub:2]], are alike in that their respective molecules are composed of hydrogen and oxygen atoms. However, because a hydrogen peroxide molecule contains two oxygen atoms, as opposed to the water molecule, which has only one, the two substances exhibit very different properties. Today, sophisticated instruments allow the direct measurement of these defining microscopic traits; however, the same traits were originally derived from the measurement of macroscopic properties (the masses and volumes of bulk quantities of matter) using relatively simple tools (balances and volumetric glassware). This experimental approach required the introduction of a new unit for amount of substances, the [[i:mole]], which remains indispensable in modern chemical science.
 
 <!-- SEG:m68700:para:fs-idp4269776 -->
-The {{i}}mole{{/i}} is an amount unit similar to familiar units like pair, dozen, gross, etc. It provides a specific measure of {{i}}the number{{/i}} of atoms or molecules in a sample of matter. One Latin connotation for the word “mole” is “large mass” or “bulk,” which is consistent with its use as the name for this unit. The mole provides a link between an easily measured macroscopic property, bulk mass, and an extremely important fundamental property, number of atoms, molecules, and so forth. A {{term}}mole{{/term}} of substance is that amount in which there are 6.02214076 [[MATH:1]] 10[[sup:23]] discrete entities (atoms or molecules). This large number is a fundamental constant known as {{term}}Avogadro’s number ({{i}}N[[sub:A]]{{/i}}){{/term}} or the Avogadro constant in honor of Italian scientist Amedeo Avogadro. This constant is properly reported with an explicit unit of “per mole,” a conveniently rounded version being 6.022 [[MATH:2]] 10[[sup:23]]/mol.
+The [[i:mole]] is an amount unit similar to familiar units like pair, dozen, gross, etc. It provides a specific measure of [[i:the number]] of atoms or molecules in a sample of matter. One Latin connotation for the word “mole” is “large mass” or “bulk,” which is consistent with its use as the name for this unit. The mole provides a link between an easily measured macroscopic property, bulk mass, and an extremely important fundamental property, number of atoms, molecules, and so forth. A {{term}}mole{{/term}} of substance is that amount in which there are 6.02214076 [[MATH:1]] 10[[sup:23]] discrete entities (atoms or molecules). This large number is a fundamental constant known as {{term}}Avogadro’s number ([[i:N[[sub:A]]]]){{/term}} or the Avogadro constant in honor of Italian scientist Amedeo Avogadro. This constant is properly reported with an explicit unit of “per mole,” a conveniently rounded version being 6.022 [[MATH:2]] 10[[sup:23]]/mol.
 
 <!-- SEG:m68700:para:fs-idm42768912 -->
-Consistent with its definition as an amount unit, 1 mole of any element contains the same number of atoms as 1 mole of any other element. The masses of 1 mole of different elements, however, are different, since the masses of the individual atoms are drastically different. The {{term}}molar mass{{/term}} of an element (or compound) is the mass in grams of 1 mole of that substance, a property expressed in units of grams per mole (g/mol) (see [#CNX_Chem_03_02_moles]).
+Consistent with its definition as an amount unit, 1 mole of any element contains the same number of atoms as 1 mole of any other element. The masses of 1 mole of different elements, however, are different, since the masses of the individual atoms are drastically different. The {{term}}molar mass{{/term}} of an element (or compound) is the mass in grams of 1 mole of that substance, a property expressed in units of grams per mole (g/mol) (see [[xref:CNX_Chem_03_02_moles]]).
 
 <!-- SEG:m68700:caption:CNX_Chem_03_02_moles-caption -->
 Each sample contains 6.022 [[MATH:3]] 10[[sup:23]] atoms —1.00 mol of atoms. From left to right (top row): 65.4 g zinc, 12.0 g carbon, 24.3 g magnesium, and 63.5 g copper. From left to right (bottom row): 32.1 g sulfur, 28.1 g silicon, 207 g lead, and 118.7 g tin. (credit: modification of work by Mark Ott)
 
 <!-- SEG:m68700:para:fs-idm26436032 -->
-The molar mass of any substance is numerically equivalent to its atomic or formula weight in amu. Per the amu definition, a single [[sup:12]]C atom weighs 12 amu (its atomic mass is 12 amu). A mole of [[sup:12]]C weighs 12 g (its molar mass is 12 g/mol). This relationship holds for all elements, since their atomic masses are measured relative to that of the amu-reference substance, [[sup:12]]C. Extending this principle, the molar mass of a compound in grams is likewise numerically equivalent to its formula mass in amu ([#CNX_Chem_03_02_compound]).
+The molar mass of any substance is numerically equivalent to its atomic or formula weight in amu. Per the amu definition, a single [[sup:12]]C atom weighs 12 amu (its atomic mass is 12 amu). A mole of [[sup:12]]C weighs 12 g (its molar mass is 12 g/mol). This relationship holds for all elements, since their atomic masses are measured relative to that of the amu-reference substance, [[sup:12]]C. Extending this principle, the molar mass of a compound in grams is likewise numerically equivalent to its formula mass in amu ([[xref:CNX_Chem_03_02_compound]]).
 
 <!-- SEG:m68700:caption:CNX_Chem_03_02_compound-caption -->
 Each sample contains 6.02 [[MATH:4]] 10[[sup:23]] molecules or formula units—1.00 mol of the compound or element. Clock-wise from the upper left: 130.2 g of C[[sub:8]]H[[sub:17]]OH (1-octanol, formula mass 130.2 amu), 454.4 g of HgI[[sub:2]] (mercury(II) iodide, formula mass 454.4 amu), 32.0 g of CH[[sub:3]]OH (methanol, formula mass 32.0 amu) and 256.5 g of S[[sub:8]] (sulfur, formula mass 256.5 amu). (credit: Sahar Atwa)
@@ -200,13 +200,13 @@ Cl
 6.022 [[MATH:9]] 10[[sup:23]]
 
 <!-- SEG:m68700:para:fs-idp18068224 -->
-While atomic mass and molar mass are numerically equivalent, keep in mind that they are vastly different in terms of scale, as represented by the vast difference in the magnitudes of their respective units (amu versus g). To appreciate the enormity of the mole, consider a small drop of water weighing about 0.03 g (see [#CNX_Chem_03_02_water]). Although this represents just a tiny fraction of 1 mole of water (~18 g), it contains more water molecules than can be clearly imagined. If the molecules were distributed equally among the roughly seven billion people on earth, each person would receive more than 100 billion molecules.
+While atomic mass and molar mass are numerically equivalent, keep in mind that they are vastly different in terms of scale, as represented by the vast difference in the magnitudes of their respective units (amu versus g). To appreciate the enormity of the mole, consider a small drop of water weighing about 0.03 g (see [[xref:CNX_Chem_03_02_water]]). Although this represents just a tiny fraction of 1 mole of water (~18 g), it contains more water molecules than can be clearly imagined. If the molecules were distributed equally among the roughly seven billion people on earth, each person would receive more than 100 billion molecules.
 
 <!-- SEG:m68700:caption:CNX_Chem_03_02_water-caption -->
 The number of molecules in a single droplet of water is roughly 100 billion times greater than the number of people on earth. (credit: “tanakawho”/Wikimedia commons)
 
 <!-- SEG:m68700:para:fs-idp18455776 -->
-The mole is used in chemistry to represent 6.022 [[MATH:10]] 10[[sup:23]] of something, but it can be difficult to conceptualize such a large number. Watch this [video](http://openstax.org/l/16molevideo) and then complete the “Think” questions that follow. Explore more about the mole by reviewing the information under “Dig Deeper.”
+The mole is used in chemistry to represent 6.022 [[MATH:10]] 10[[sup:23]] of something, but it can be difficult to conceptualize such a large number. Watch this [[link:video|http://openstax.org/l/16molevideo]] and then complete the “Think” questions that follow. Explore more about the mole by reviewing the information under “Dig Deeper.”
 
 <!-- SEG:m68700:para:fs-idm4828384 -->
 The relationships between formula mass, the mole, and Avogadro’s number can be applied to compute various quantities that describe the composition of substances and compounds, as demonstrated in the next several example problems.
@@ -284,16 +284,16 @@ Answer:
 Deriving Number of Atoms from Mass for an Element
 
 <!-- SEG:m68700:para:fs-idm24646960 -->
-Copper is commonly used to fabricate electrical wire ([#CNX_Chem_03_02_copper]). How many copper atoms are in 5.00 g of copper wire?
+Copper is commonly used to fabricate electrical wire ([[xref:CNX_Chem_03_02_copper]]). How many copper atoms are in 5.00 g of copper wire?
 
 <!-- SEG:m68700:para-title:fs-idm40043360-title -->
 Solution
 
 <!-- SEG:m68700:para:fs-idm40043360 -->
-The number of Cu atoms in the wire may be conveniently derived from its mass by a two-step computation: first calculating the molar amount of Cu, and then using Avogadro’s number ({{i}}N[[sub:A]]{{/i}}) to convert this molar amount to number of Cu atoms:
+The number of Cu atoms in the wire may be conveniently derived from its mass by a two-step computation: first calculating the molar amount of Cu, and then using Avogadro’s number ([[i:N[[sub:A]]]]) to convert this molar amount to number of Cu atoms:
 
 <!-- SEG:m68700:para:fs-idp18362672 -->
-Considering that the provided sample mass (5.00 g) is a little less than one-tenth the mass of 1 mole of Cu (~64 g), a reasonable estimate for the number of atoms in the sample would be on the order of one-tenth {{i}}N[[sub:A]]{{/i}}, or approximately 10[[sup:22]] Cu atoms. Carrying out the two-step computation yields:
+Considering that the provided sample mass (5.00 g) is a little less than one-tenth the mass of 1 mole of Cu (~64 g), a reasonable estimate for the number of atoms in the sample would be on the order of one-tenth [[i:N[[sub:A]]]], or approximately 10[[sup:22]] Cu atoms. Carrying out the two-step computation yields:
 
 <!-- SEG:m68700:para:fs-idp27818080 -->
 The factor-label method yields the desired cancellation of units, and the computed result is on the order of 10[[sup:22]] as expected.
@@ -326,7 +326,7 @@ Our bodies synthesize protein from amino acids. One of these amino acids is glyc
 Solution
 
 <!-- SEG:m68700:para:fs-idp1446192 -->
-Derive the number of moles of a compound from its mass following the same procedure used for an element in [#fs-idp76540048]:
+Derive the number of moles of a compound from its mass following the same procedure used for an element in [[xref:fs-idp76540048]]:
 
 <!-- SEG:m68700:para:fs-idm36743808 -->
 The molar mass of glycine is required for this calculation, and it is computed in the same fashion as its molecular mass. One mole of glycine, C[[sub:2]]H[[sub:5]]O[[sub:2]]N, contains 2 moles of carbon, 5 moles of hydrogen, 2 moles of oxygen, and 1 mole of nitrogen:
@@ -398,7 +398,7 @@ Given that saccharin has a molar mass of 183.18 g/mol, how many saccharin molecu
 Solution
 
 <!-- SEG:m68700:para:fs-idm20251168 -->
-The number of molecules in a given mass of compound is computed by first deriving the number of moles, as demonstrated in [#fs-idm1714048], and then multiplying by Avogadro’s number:
+The number of molecules in a given mass of compound is computed by first deriving the number of moles, as demonstrated in [[xref:fs-idm1714048]], and then multiplying by Avogadro’s number:
 
 <!-- SEG:m68700:para:fs-idp195552 -->
 Using the provided mass and molar mass for saccharin yields:
@@ -425,16 +425,16 @@ Answer:
 Counting Neurotransmitter Molecules in the Brain
 
 <!-- SEG:m68700:para:fs-idm4217280 -->
-The brain is the control center of the central nervous system ([#CNX_Chem_03_01_brain]). It sends and receives signals to and from muscles and other internal organs to monitor and control their functions; it processes stimuli detected by sensory organs to guide interactions with the external world; and it houses the complex physiological processes that give rise to our intellect and emotions. The broad field of neuroscience spans all aspects of the structure and function of the central nervous system, including research on the anatomy and physiology of the brain. Great progress has been made in brain research over the past few decades, and the BRAIN Initiative, a federal initiative announced in 2013, aims to accelerate and capitalize on these advances through the concerted efforts of various industrial, academic, and government agencies (more details available at www.whitehouse.gov/share/brain-initiative).
+The brain is the control center of the central nervous system ([[xref:CNX_Chem_03_01_brain]]). It sends and receives signals to and from muscles and other internal organs to monitor and control their functions; it processes stimuli detected by sensory organs to guide interactions with the external world; and it houses the complex physiological processes that give rise to our intellect and emotions. The broad field of neuroscience spans all aspects of the structure and function of the central nervous system, including research on the anatomy and physiology of the brain. Great progress has been made in brain research over the past few decades, and the BRAIN Initiative, a federal initiative announced in 2013, aims to accelerate and capitalize on these advances through the concerted efforts of various industrial, academic, and government agencies (more details available at www.whitehouse.gov/share/brain-initiative).
 
 <!-- SEG:m68700:para:fs-idm14541088 -->
-Specialized cells called neurons transmit information between different parts of the central nervous system by way of electrical and chemical signals. Chemical signaling occurs at the interface between different neurons when one of the cells releases molecules (called neurotransmitters) that diffuse across the small gap between the cells (called the synapse) and bind to the surface of the other cell. These neurotransmitter molecules are stored in small intracellular structures called vesicles that fuse to the cell membrane and then break open to release their contents when the neuron is appropriately stimulated. This process is called exocytosis (see [#CNX_Chem_03_01_exocytosis]). One neurotransmitter that has been very extensively studied is dopamine, C[[sub:8]]H[[sub:11]]NO[[sub:2]]. Dopamine is involved in various neurological processes that impact a wide variety of human behaviors. Dysfunctions in the dopamine systems of the brain underlie serious neurological diseases such as Parkinson’s and schizophrenia.
+Specialized cells called neurons transmit information between different parts of the central nervous system by way of electrical and chemical signals. Chemical signaling occurs at the interface between different neurons when one of the cells releases molecules (called neurotransmitters) that diffuse across the small gap between the cells (called the synapse) and bind to the surface of the other cell. These neurotransmitter molecules are stored in small intracellular structures called vesicles that fuse to the cell membrane and then break open to release their contents when the neuron is appropriately stimulated. This process is called exocytosis (see [[xref:CNX_Chem_03_01_exocytosis]]). One neurotransmitter that has been very extensively studied is dopamine, C[[sub:8]]H[[sub:11]]NO[[sub:2]]. Dopamine is involved in various neurological processes that impact a wide variety of human behaviors. Dysfunctions in the dopamine systems of the brain underlie serious neurological diseases such as Parkinson’s and schizophrenia.
 
 <!-- SEG:m68700:para:fs-idp15499232 -->
 One important aspect of the complex processes related to dopamine signaling is the number of neurotransmitter molecules released during exocytosis. Since this number is a central factor in determining neurological response (and subsequent human thought and action), it is important to know how this number changes with certain controlled stimulations, such as the administration of drugs. It is also important to understand the mechanism responsible for any changes in the number of neurotransmitter molecules released—for example, some dysfunction in exocytosis, a change in the number of vesicles in the neuron, or a change in the number of neurotransmitter molecules in each vesicle.
 
 <!-- SEG:m68700:para:fs-idm2962416 -->
-Significant progress has been made recently in directly measuring the number of dopamine molecules stored in individual vesicles and the amount actually released when the vesicle undergoes exocytosis. Using miniaturized probes that can selectively detect dopamine molecules in very small amounts, scientists have determined that the vesicles of a certain type of mouse brain neuron contain an average of 30,000 dopamine molecules per vesicle (about [[MATH:19]] mol or 50 zmol). Analysis of these neurons from mice subjected to various drug therapies shows significant changes in the average number of dopamine molecules contained in individual vesicles, increasing or decreasing by up to three-fold, depending on the specific drug used. These studies also indicate that not all of the dopamine in a given vesicle is released during exocytosis, suggesting that it may be possible to regulate the fraction released using pharmaceutical therapies. {{fn}}Omiatek, Donna M., Amanda J. Bressler, Ann-Sofie Cans, Anne M. Andrews, Michael L. Heien, and Andrew G. Ewing. “The Real Catecholamine Content of Secretory Vesicles in the CNS Revealed by Electrochemical Cytometry.” {{i}}Scientific Report{{/i}} 3 (2013): 1447, accessed January 14, 2015, doi:10.1038/srep01447.{{/fn}}
+Significant progress has been made recently in directly measuring the number of dopamine molecules stored in individual vesicles and the amount actually released when the vesicle undergoes exocytosis. Using miniaturized probes that can selectively detect dopamine molecules in very small amounts, scientists have determined that the vesicles of a certain type of mouse brain neuron contain an average of 30,000 dopamine molecules per vesicle (about [[MATH:19]] mol or 50 zmol). Analysis of these neurons from mice subjected to various drug therapies shows significant changes in the average number of dopamine molecules contained in individual vesicles, increasing or decreasing by up to three-fold, depending on the specific drug used. These studies also indicate that not all of the dopamine in a given vesicle is released during exocytosis, suggesting that it may be possible to regulate the fraction released using pharmaceutical therapies. {{fn}}Omiatek, Donna M., Amanda J. Bressler, Ann-Sofie Cans, Anne M. Andrews, Michael L. Heien, and Andrew G. Ewing. “The Real Catecholamine Content of Secretory Vesicles in the CNS Revealed by Electrochemical Cytometry.” [[i:Scientific Report]] 3 (2013): 1447, accessed January 14, 2015, doi:10.1038/srep01447.{{/fn}}
 
 <!-- SEG:m68700:caption:CNX_Chem_03_01_brain-caption -->
 (a) A typical human brain weighs about 1.5 kg and occupies a volume of roughly 1.1 L. (b) Information is transmitted in brain tissue and throughout the central nervous system by specialized cells called neurons (micrograph shows cells at 1600× magnification).
@@ -821,7 +821,7 @@ Which of the following represents the least number of molecules?
 20.0 g H[[sub:2]]O represents the least number of molecules since it has the least number of moles.
 
 <!-- SEG:m68700:glossary-term:fs-idp40901280-term -->
-Avogadro’s number (NA)
+Avogadro’s number ([[i:N[[sub:A]]]])
 
 <!-- SEG:m68700:glossary-def:fs-idp40901280-def -->
 experimentally determined value of the number of entities comprising 1 mole of substance, equal to 6.022 [[MATH:33]] 10[[sup:23]] mol[[sup:−1]]

@@ -165,6 +165,11 @@
       "segmentId": "m68835:para:fs-idp23039360"
     },
     {
+      "type": "equation",
+      "id": "fs-idp190363104",
+      "class": "unnumbered"
+    },
+    {
       "type": "figure",
       "id": "CNX_Chem_18_07_N2O4",
       "class": "scaled-down",
@@ -179,14 +184,19 @@
       }
     },
     {
+      "type": "para",
+      "id": "fs-idp120707200",
+      "segmentId": "m68835:para:fs-idp120707200"
+    },
+    {
       "type": "equation",
-      "id": "fs-idp190363104",
+      "id": "fs-idp77732832",
       "class": "unnumbered"
     },
     {
       "type": "para",
-      "id": "fs-idp120707200",
-      "segmentId": "m68835:para:fs-idp120707200"
+      "id": "fs-idp30681184",
+      "segmentId": "m68835:para:fs-idp30681184"
     },
     {
       "type": "figure",
@@ -201,16 +211,6 @@
         "src": "../../media/CNX_Chem_18_07_N2O5.jpg",
         "mimeType": "image/jpeg"
       }
-    },
-    {
-      "type": "equation",
-      "id": "fs-idp77732832",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp30681184",
-      "segmentId": "m68835:para:fs-idp30681184"
     },
     {
       "type": "para",
@@ -561,7 +561,10 @@
       "class": null,
       "alt": "This Lewis structure shows a nitrogen atom with three lone pairs of electrons single bonded to a hydrogen atom. The structure is surrounded by brackets. Outside and superscript to the brackets is a two negative sign.",
       "src": "../../media/CNX_Chem_18_07_Exercise1a_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:2]]",
@@ -569,7 +572,10 @@
       "class": null,
       "alt": "This Lewis structure shows two nitrogen atoms, each with one lone pair of electrons, single bonded to one another and each single bonded to two fluorine atoms. Each fluorine atom has three lone pairs of electrons.",
       "src": "../../media/CNX_Chem_18_07_Exercise1b_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:3]]",
@@ -577,7 +583,10 @@
       "class": null,
       "alt": "This Lewis structure shows a nitrogen atom with two lone pairs of electrons single bonded to two hydrogen atoms. The structure is surrounded by brackets. Outside and superscript to the brackets is a negative sign.",
       "src": "../../media/CNX_Chem_18_07_Exercise1c_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:4]]",
@@ -585,7 +594,10 @@
       "class": null,
       "alt": "This Lewis structure shows a nitrogen atom, with one lone pair of electrons, single bonded to three fluorine atoms. Each fluorine atom has three lone pairs of electrons.",
       "src": "../../media/CNX_Chem_18_07_Exercise1d_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:5]]",
@@ -593,7 +605,10 @@
       "class": null,
       "alt": "Three Lewis structures are shown and connected by double-headed arrows in between. The left structure shows a nitrogen atom with a lone pair of electrons triple bonded to a second nitrogen which is single bonded to a third nitrogen. The third nitrogen has three lone pairs of electrons. The entire structure is surrounded by brackets, and outside and superscript to the brackets is a negative sign. The middle structure shows a nitrogen atom with three lone pair of electrons single bonded to a second nitrogen which is triple bonded to a third nitrogen. The third nitrogen which has one lone pair of electrons. The entire structure is surrounded by brackets, and outside and superscript to the brackets is a negative sign. The right structure shows a nitrogen atom with two lone pairs of electrons double bonded to a second nitrogen which is double bonded to a third nitrogen. The third nitrogen atom has two lone pairs of electrons. The entire structure is surrounded by brackets, and outside and superscript to the brackets is a negative sign.",
       "src": "../../media/CNX_Chem_18_07_Exercise1e_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:6]]",
@@ -601,7 +616,10 @@
       "class": null,
       "alt": "Two Lewis structures are shown and connected by double-headed arrows in between. The left structure shows a nitrogen atom with a single electron double bonded to an oxygen atom which has two lone pairs of electrons. The nitrogen atom is also single bonded to an oxygen atom with three lone pairs of electrons. The right structure is a mirror image of the left structure.",
       "src": "../../media/CNX_Chem_18_07_Exercise5a_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:7]]",
@@ -609,7 +627,10 @@
       "class": null,
       "alt": "Two Lewis structures are shown and connected by double-headed arrows in between. Each structure is surrounded by brackets, and outside and superscript to the brackets is a negative sign. The left structure shows a nitrogen atom with a lone pair of electrons double bonded to an oxygen atom which has two lone pairs of electrons. The nitrogen atom is also single bonded to an oxygen atom with three lone pair of electrons. The right structure is a mirror image of the left structure.",
       "src": "../../media/CNX_Chem_18_07_Exercise5b_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:8]]",
@@ -617,8 +638,11 @@
       "class": null,
       "alt": "This Lewis structure shows a nitrogen atom double bonded on both sides to an oxygen atom which has two lone pairs of electrons each. The structure is surrounded by brackets and outside and superscript to the brackets is a negative sign.",
       "src": "../../media/CNX_Chem_18_07_Exercise5c_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
-  "sectionOrder": null
+  "sectionOrder": 7
 }
