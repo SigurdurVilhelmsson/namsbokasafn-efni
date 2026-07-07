@@ -26,7 +26,7 @@ Legend: `[fix]` code tech-debt · `[build]` scheduled/content work · `[decision
 | # | Item | Why | Owner | Status |
 |---|---|---|---|---|
 | 5 | **Flip order gate warn→hard** (+ fingerprint allowlist, `assertOrderAllowlistScope`) | the STALE-STRUCT plan's Task 6, DEFERRED: it was contingent on "order → near-0", which needs #3 (5 incomplete) + #4 (re-MT) resolved first. Then the flip is real | `[decision]`/`[build]` | plan text ready in the STALE-STRUCT plan Task 6; gated on #3 + #4 |
-| 6 | **buildModuleSections null-`sectionOrder` fallback → `collection-order.json`** | it sorts null-`sectionOrder` modules to chapter END (caused the ch10/ch18 regression in STALE-STRUCT, and **now blocked ch06 from the F2 re-render** — m68733 null → mislabeled 6.5 + 3 renamed URLs). **Bit twice → do this NEXT.** A future null could silently mis-order again | `[fix]` | one-function fix in `tools/lib/module-sections.js`; **DO BEFORE any further re-render** (roadmap sequence step 3) so ch06 can re-render cleanly |
+| 6 | **buildModuleSections null-`sectionOrder` fallback → `collection-order.json`** | it sorted null-`sectionOrder` modules to chapter END (caused ch10/ch18 in STALE-STRUCT, then blocked ch06 from the F2 re-render — m68733 null → mislabeled 6.5) | `[fix]` | ✅ **DELIVERED 2026-07-07** (branch `fix/chem-module-sections-collection-order`, own PR). `buildModuleSections` now orders chapters via `collection-order.json` `chapters[].modules` + appendices via `appendixModules` (validated identical to upstream `collection.xml`); legacy `sectionOrder` sort kept as fallback for chapter 0/no-file. **Provably inert except ch06** (real legacy-vs-new test across all 22 targets). Opus whole-branch merge YES; suite 1965 green, 0 goldens. **Unblocks ch06's clean re-render under F1.** |
 | 7 | **F8 math-content gate** (warn→hard) + re-triage | separate warn-only axis (WS4 substitution coverage); several flags are the same stale/(a) modules → resolves alongside #4 | `[build]` | triage after #4 |
 
 ### Tier 3 — robustness / tech-debt (quality; not reader-blocking)
@@ -43,8 +43,8 @@ Legend: `[fix]` code tech-debt · `[build]` scheduled/content work · `[decision
 ## Suggested sequence
 
 1. ✅ **F2 (#1)** — DONE 2026-07-07 (delivered clean, ch06 excluded, Fable-confirmed).
-2. **#6** NEXT — `buildModuleSections` null-`sectionOrder` fallback. It has now bit twice (ch10/ch18, then ch06); fixing it lets ch06 re-render cleanly and prevents recurrence. **Do before F1's re-render.**
-3. **F1 (#2)** right after #6 (same render file, same review cycle) → re-include m68710/m68733; m68733 gains a real `sectionOrder`, self-healing ch06.
+2. ✅ **#6** — DONE 2026-07-07 (collection-order authority for chapters + appendices; provably inert except ch06; ch06 re-render now produces correct 6.3 numbering, matching the currently-published URLs — no reader URL churn).
+3. **F1 (#2)** NEXT (same render file) → re-include m68710/m68733 + fix the `<entry>`-leak, then re-render ch06 (now clean under #6) + the 2 tables. m68733's re-extract also gives it a real `sectionOrder`.
 4. **#8, #9, #10, #11, #12, #13** — the rest of the code tech-debt sweep; small, independent, can batch (#13 = add a section-ordering golden fixture so this class is gated).
 5. **Pass-1 (#3)** — the sustained content-labor track (MTPE the 15 incomplete modules).
 6. **B4 (#4)** — re-MT the 6, id-anchored.
