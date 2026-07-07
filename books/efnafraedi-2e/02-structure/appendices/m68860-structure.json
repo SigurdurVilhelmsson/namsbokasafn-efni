@@ -19,6 +19,21 @@
       },
       "content": [
         {
+          "type": "para",
+          "id": "fs-idp659968",
+          "segmentId": "m68860:para:fs-idp659968"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp294750912",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "eip-985",
+          "segmentId": "m68860:para:eip-985"
+        },
+        {
           "type": "section",
           "id": "eip-963",
           "class": null,
@@ -318,21 +333,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idp659968",
-          "segmentId": "m68860:para:fs-idp659968"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp294750912",
-          "class": "unnumbered"
-        },
-        {
-          "type": "para",
-          "id": "eip-985",
-          "segmentId": "m68860:para:eip-985"
         }
       ]
     },
@@ -652,21 +652,6 @@
               "segmentId": "m68860:item:eip-12-item-3"
             }
           ]
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp300953968",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idm26956384",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp316554112",
-          "class": "unnumbered"
         }
       ]
     },

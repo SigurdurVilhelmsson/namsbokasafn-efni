@@ -14,34 +14,34 @@ Relate the concept of resonance to π-bonding and electron delocalization
 The hybrid orbital model appears to account well for the geometry of molecules involving single covalent bonds. Is it also capable of describing molecules containing double and triple bonds? We have already discussed that multiple bonds consist of σ and π bonds. Next we can consider how we visualize these components and how they relate to hybrid orbitals. The Lewis structure of ethene, C[[sub:2]]H[[sub:4]], shows us that each carbon atom is surrounded by one other carbon atom and two hydrogen atoms.
 
 <!-- SEG:m68746:para:fs-idp40201472 -->
-The three bonding regions form a trigonal planar electron-pair geometry. Thus we expect the σ bonds from each carbon atom are formed using a set of {{i}}sp{{/i}}[[sup:2]] hybrid orbitals that result from hybridization of two of the 2{{i}}p{{/i}} orbitals and the 2{{i}}s{{/i}} orbital ([#CNX_Chem_08_03_sp3config]). These orbitals form the C–H single bonds and the σ bond in the [[MATH:1]] double bond ([#CNX_Chem_08_03_C2H4orbit]){{i}}.{{/i}} The π bond in the [[MATH:2]] double bond results from the overlap of the third (remaining) 2{{i}}p{{/i}} orbital on each carbon atom that is not involved in hybridization. This unhybridized {{i}}p{{/i}} orbital (lobes shown in red and blue in [#CNX_Chem_08_03_C2H4orbit]) is perpendicular to the plane of the {{i}}sp{{/i}}[[sup:2]] hybrid orbitals. Thus the unhybridized 2{{i}}p{{/i}} orbitals overlap in a side-by-side fashion, above and below the internuclear axis ([#CNX_Chem_08_03_C2H4orbit]) and form a π bond{{i}}.{{/i}}
+The three bonding regions form a trigonal planar electron-pair geometry. Thus we expect the σ bonds from each carbon atom are formed using a set of [[i:sp]][[sup:2]] hybrid orbitals that result from hybridization of two of the 2[[i:p]] orbitals and the 2[[i:s]] orbital ([[xref:CNX_Chem_08_03_sp3config]]). These orbitals form the C–H single bonds and the σ bond in the [[MATH:1]] double bond ([[xref:CNX_Chem_08_03_C2H4orbit]])[[i:.]] The π bond in the [[MATH:2]] double bond results from the overlap of the third (remaining) 2[[i:p]] orbital on each carbon atom that is not involved in hybridization. This unhybridized [[i:p]] orbital (lobes shown in red and blue in [[xref:CNX_Chem_08_03_C2H4orbit]]) is perpendicular to the plane of the [[i:sp]][[sup:2]] hybrid orbitals. Thus the unhybridized 2[[i:p]] orbitals overlap in a side-by-side fashion, above and below the internuclear axis ([[xref:CNX_Chem_08_03_C2H4orbit]]) and form a π bond[[i:.]]
 
 <!-- SEG:m68746:caption:CNX_Chem_08_03_sp3config-caption -->
-In ethene, each carbon atom is {{i}}sp{{/i}}[[sup:2]] hybridized, and the {{i}}sp{{/i}}[[sup:2]] orbitals and the {{i}}p{{/i}} orbital are singly occupied. The hybrid orbitals overlap to form σ bonds, while the {{i}}p{{/i}} orbitals on each carbon atom overlap to form a π bond.
+In ethene, each carbon atom is [[i:sp]][[sup:2]] hybridized, and the [[i:sp]][[sup:2]] orbitals and the [[i:p]] orbital are singly occupied. The hybrid orbitals overlap to form σ bonds, while the [[i:p]] orbitals on each carbon atom overlap to form a π bond.
 
 <!-- SEG:m68746:caption:CNX_Chem_08_03_C2H4orbit-caption -->
-In the ethene molecule, C[[sub:2]]H[[sub:4,]] there are (a) five σ bonds. One C–C σ bond results from overlap of {{i}}sp{{/i}}[[sup:2]] hybrid orbitals on the carbon atom with one {{i}}sp{{/i}}[[sup:2]] hybrid orbital on the other carbon atom. Four C–H bonds result from the overlap between the C atoms' {{i}}sp{{/i}}[[sup:2]] orbitals with {{i}}s{{/i}} orbitals on the hydrogen atoms. (b) The π bond is formed by the side-by-side overlap of the two unhybridized {{i}}p{{/i}} orbitals in the two carbon atoms. The two lobes of the π bond are above and below the plane of the σ system.
+In the ethene molecule, C[[sub:2]]H[[sub:4,]] there are (a) five σ bonds. One C–C σ bond results from overlap of [[i:sp]][[sup:2]] hybrid orbitals on the carbon atom with one [[i:sp]][[sup:2]] hybrid orbital on the other carbon atom. Four C–H bonds result from the overlap between the C atoms' [[i:sp]][[sup:2]] orbitals with [[i:s]] orbitals on the hydrogen atoms. (b) The π bond is formed by the side-by-side overlap of the two unhybridized [[i:p]] orbitals in the two carbon atoms. The two lobes of the π bond are above and below the plane of the σ system.
 
 <!-- SEG:m68746:para:fs-idp52367024 -->
-In an ethene molecule, the four hydrogen atoms and the two carbon atoms are all in the same plane. If the two planes of {{i}}sp{{/i}}[[sup:2]] hybrid orbitals tilted relative to each other, the {{i}}p{{/i}} orbitals would not be oriented to overlap efficiently to create the π bond. The planar configuration for the ethene molecule occurs because it is the most stable bonding arrangement. This is a significant difference between σ and π bonds; rotation around single (σ) bonds occurs easily because the end-to-end orbital overlap does not depend on the relative orientation of the orbitals on each atom in the bond. In other words, rotation around the internuclear axis does not change the extent to which the σ bonding orbitals overlap because the bonding electron density is symmetric about the axis. Rotation about the internuclear axis is much more difficult for multiple bonds since this would drastically decrease the off-axis overlap of the π bonding orbitals, essentially breaking the π bond.
+In an ethene molecule, the four hydrogen atoms and the two carbon atoms are all in the same plane. If the two planes of [[i:sp]][[sup:2]] hybrid orbitals tilted relative to each other, the [[i:p]] orbitals would not be oriented to overlap efficiently to create the π bond. The planar configuration for the ethene molecule occurs because it is the most stable bonding arrangement. This is a significant difference between σ and π bonds; rotation around single (σ) bonds occurs easily because the end-to-end orbital overlap does not depend on the relative orientation of the orbitals on each atom in the bond. In other words, rotation around the internuclear axis does not change the extent to which the σ bonding orbitals overlap because the bonding electron density is symmetric about the axis. Rotation about the internuclear axis is much more difficult for multiple bonds since this would drastically decrease the off-axis overlap of the π bonding orbitals, essentially breaking the π bond.
 
 <!-- SEG:m68746:para:fs-idp40636368 -->
-In molecules with {{i}}sp{{/i}} hybrid orbitals, two unhybridized {{i}}p{{/i}} orbitals remain on the atom ([#CNX_Chem_08_03_spC]). We find this situation in acetylene, [[MATH:3]] which is a linear molecule. The {{i}}sp{{/i}} hybrid orbitals of the two carbon atoms overlap end to end to form a σ bond between the carbon atoms ([#CNX_Chem_08_03_C2H2]). The remaining {{i}}sp{{/i}} orbitals form σ bonds with hydrogen atoms. The two unhybridized {{i}}p{{/i}} orbitals per carbon are positioned such that they overlap side by side and, hence, form two π bonds. The two carbon atoms of acetylene are thus bound together by one σ bond and two π bonds, giving a triple bond.
+In molecules with [[i:sp]] hybrid orbitals, two unhybridized [[i:p]] orbitals remain on the atom ([[xref:CNX_Chem_08_03_spC]]). We find this situation in acetylene, [[MATH:3]] which is a linear molecule. The [[i:sp]] hybrid orbitals of the two carbon atoms overlap end to end to form a σ bond between the carbon atoms ([[xref:CNX_Chem_08_03_C2H2]]). The remaining [[i:sp]] orbitals form σ bonds with hydrogen atoms. The two unhybridized [[i:p]] orbitals per carbon are positioned such that they overlap side by side and, hence, form two π bonds. The two carbon atoms of acetylene are thus bound together by one σ bond and two π bonds, giving a triple bond.
 
 <!-- SEG:m68746:caption:CNX_Chem_08_03_spC-caption -->
-Diagram of the two linear {{i}}sp{{/i}} hybrid orbitals of a carbon atom, which lie in a straight line, and the two unhybridized {{i}}p{{/i}} orbitals at perpendicular angles.
+Diagram of the two linear [[i:sp]] hybrid orbitals of a carbon atom, which lie in a straight line, and the two unhybridized [[i:p]] orbitals at perpendicular angles.
 
 <!-- SEG:m68746:caption:CNX_Chem_08_03_C2H2-caption -->
-(a) In the acetylene molecule, C[[sub:2]]H[[sub:2,]] there are two C–H σ bonds and a [[MATH:4]] triple bond involving one C–C σ bond and two C–C π bonds. The dashed lines, each connecting two lobes, indicate the side-by-side overlap of the four unhybridized {{i}}p{{/i}} orbitals. (b) This shows the overall outline of the bonds in C[[sub:2]]H[[sub:2]]. The two lobes of each of the π bonds are positioned across from each other around the line of the C–C σ bond.
+(a) In the acetylene molecule, C[[sub:2]]H[[sub:2,]] there are two C–H σ bonds and a [[MATH:4]] triple bond involving one C–C σ bond and two C–C π bonds. The dashed lines, each connecting two lobes, indicate the side-by-side overlap of the four unhybridized [[i:p]] orbitals. (b) This shows the overall outline of the bonds in C[[sub:2]]H[[sub:2]]. The two lobes of each of the π bonds are positioned across from each other around the line of the C–C σ bond.
 
 <!-- SEG:m68746:para:fs-idp135325968 -->
 Hybridization involves only σ bonds, lone pairs of electrons, and single unpaired electrons (radicals). Structures that account for these features describe the correct hybridization of the atoms. However, many structures also include resonance forms. Remember that resonance forms occur when various arrangements of π bonds are possible. Since the arrangement of π bonds involves only the unhybridized orbitals, resonance does not influence the assignment of hybridization.
 
 <!-- SEG:m68746:para:fs-idp155207440 -->
-For example, molecule benzene has two resonance forms ([#CNX_Chem_08_03_C6H6]). We can use either of these forms to determine that each of the carbon atoms is bonded to three other atoms with no lone pairs, so the correct hybridization is {{i}}sp{{/i}}[[sup:2]]. The electrons in the unhybridized {{i}}p{{/i}} orbitals form π bonds. Neither resonance structure completely describes the electrons in the π bonds. They are not located in one position or the other, but in reality are delocalized throughout the ring. Valence bond theory does not easily address delocalization. Bonding in molecules with resonance forms is better described by molecular orbital theory. (See the next module.)
+For example, molecule benzene has two resonance forms ([[xref:CNX_Chem_08_03_C6H6]]). We can use either of these forms to determine that each of the carbon atoms is bonded to three other atoms with no lone pairs, so the correct hybridization is [[i:sp]][[sup:2]]. The electrons in the unhybridized [[i:p]] orbitals form π bonds. Neither resonance structure completely describes the electrons in the π bonds. They are not located in one position or the other, but in reality are delocalized throughout the ring. Valence bond theory does not easily address delocalization. Bonding in molecules with resonance forms is better described by molecular orbital theory. (See the next module.)
 
 <!-- SEG:m68746:caption:CNX_Chem_08_03_C6H6-caption -->
-Each carbon atom in benzene, C[[sub:6]]H[[sub:6]], is {{i}}sp{{/i}}[[sup:2]] hybridized, independently of which resonance form is considered. The electrons in the π bonds are not located in one set of {{i}}p{{/i}} orbitals or the other, but rather delocalized throughout the molecule.
+Each carbon atom in benzene, C[[sub:6]]H[[sub:6]], is [[i:sp]][[sup:2]] hybridized, independently of which resonance form is considered. The electrons in the π bonds are not located in one set of [[i:p]] orbitals or the other, but rather delocalized throughout the molecule.
 
 <!-- SEG:m68746:example-title:fs-idp109093216-title -->
 Assignment of Hybridization Involving Resonance
@@ -56,7 +56,7 @@ Solution
 The resonance structures of SO[[sub:2]] are
 
 <!-- SEG:m68746:para:fs-idp103363168 -->
-The sulfur atom is surrounded by two bonds and one lone pair of electrons in either resonance structure. Therefore, the electron-pair geometry is trigonal planar, and the hybridization of the sulfur atom is {{i}}sp{{/i}}[[sup:2]].
+The sulfur atom is surrounded by two bonds and one lone pair of electrons in either resonance structure. Therefore, the electron-pair geometry is trigonal planar, and the hybridization of the sulfur atom is [[i:sp]][[sup:2]].
 
 <!-- SEG:m68746:para-title:fs-idp41312960-title -->
 Check Your Learning
@@ -65,13 +65,13 @@ Check Your Learning
 Another acid in acid rain is nitric acid, HNO[[sub:3]], which is produced by the reaction of nitrogen dioxide, NO[[sub:2]], with atmospheric water vapor. What is the hybridization of the nitrogen atom in NO[[sub:2]]? (Note: the lone electron on nitrogen occupies a hybridized orbital just as a lone pair would.)
 
 <!-- SEG:m68746:para:fs-idp224648848 -->
-{{i}}sp{{/i}}[[sup:2]]
+[[i:sp]][[sup:2]]
 
 <!-- SEG:m68746:note-title:fs-idm1257648-title -->
 Answer:
 
 <!-- SEG:m68746:para:fs-idp224648848 -->
-{{i}}sp{{/i}}[[sup:2]]
+[[i:sp]][[sup:2]]
 
 <!-- SEG:m68746:title:fs-idp38327968-title -->
 Key Concepts and Summary
@@ -104,7 +104,7 @@ A useful solvent that will dissolve salts as well as organic compounds is the co
 (c) Describe the atomic orbitals that form the π bonds in the molecule. Note that it is not necessary to hybridize the nitrogen atom.
 
 <!-- SEG:m68746:solution:fs-idp100065568 -->
-(a)[[BR]] [[MEDIA:1]][[BR]] (b) The terminal carbon atom uses {{i}}sp{{/i}}[[sup:3]] hybrid orbitals, while the central carbon atom is {{i}}sp{{/i}} hybridized. (c) Each of the two π bonds is formed by overlap of a 2{{i}}p{{/i}} orbital on carbon and a nitrogen 2{{i}}p{{/i}} orbital.
+(a)[[BR]] [[MEDIA:1]][[BR]] (b) The terminal carbon atom uses [[i:sp]][[sup:3]] hybrid orbitals, while the central carbon atom is [[i:sp]] hybridized. (c) Each of the two π bonds is formed by overlap of a 2[[i:p]] orbital on carbon and a nitrogen 2[[i:p]] orbital.
 
 <!-- SEG:m68746:problem:fs-idm15581520 -->
 For the molecule allene, [[MATH:7]] give the hybridization of each carbon atom. Will the hydrogen atoms be in the same plane or perpendicular planes?
@@ -134,7 +134,7 @@ Identify the hybridization of the central atom in each of the following molecule
 (g) [[MATH:8]] (Cl is the central atom)
 
 <!-- SEG:m68746:solution:fs-idp37493536 -->
-(a) {{i}}sp{{/i}}[[sup:2]]; (b) {{i}}sp{{/i}}; (c) {{i}}sp{{/i}}[[sup:2]]; (d) {{i}}sp{{/i}}[[sup:3]]; (e) {{i}}sp{{/i}}[[sup:3]]; (f) {{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}}; (g) {{i}}sp{{/i}}[[sup:3]]
+(a) [[i:sp]][[sup:2]]; (b) [[i:sp]]; (c) [[i:sp]][[sup:2]]; (d) [[i:sp]][[sup:3]]; (e) [[i:sp]][[sup:3]]; (f) [[i:sp]][[sup:3]][[i:d]]; (g) [[i:sp]][[sup:3]]
 
 <!-- SEG:m68746:problem:fs-idp48603152 -->
 Describe the molecular geometry and hybridization of the N, P, or S atoms in each of the following compounds.
@@ -167,7 +167,7 @@ For each of the following molecules, indicate the hybridization requested and wh
 (d) phosphate ion [[MATH:9]] central P hybridization
 
 <!-- SEG:m68746:solution:fs-idp257551776 -->
-(a) {{i}}sp{{/i}}[[sup:2]], delocalized; (b) {{i}}sp{{/i}}, localized; (c) {{i}}sp{{/i}}[[sup:2]], delocalized; (d) {{i}}sp{{/i}}[[sup:3]], delocalized
+(a) [[i:sp]][[sup:2]], delocalized; (b) [[i:sp]], localized; (c) [[i:sp]][[sup:2]], delocalized; (d) [[i:sp]][[sup:3]], delocalized
 
 <!-- SEG:m68746:problem:fs-idp78053152 -->
 For each of the following structures, determine the hybridization requested and whether the electrons will be delocalized:

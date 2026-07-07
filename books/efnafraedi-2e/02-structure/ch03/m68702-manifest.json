@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68702",
-  "extractedAt": "2026-03-19T19:49:11.302Z",
+  "extractedAt": "2026-07-07T09:12:30.890Z",
   "sourceHash": "73fd97029886fc95",
   "segmentCount": 138,
   "segmentIds": [
@@ -195,18 +195,18 @@
   },
   "elementIds": {
     "figure": [
-      "CNX_Chem_03_03_BrewTank",
       "CNX_Chem_03_03_empform",
-      "CNX_Chem_03_03_hematite"
+      "CNX_Chem_03_03_hematite",
+      "CNX_Chem_03_03_BrewTank"
     ],
     "table": [
       "key-equations-table"
     ],
     "example": [
-      "fs-idm162294688",
       "fs-idm150394080",
-      "fs-idp11336208",
+      "fs-idm162294688",
       "fs-idp70151968",
+      "fs-idp11336208",
       "fs-idm153155296"
     ],
     "exercise": [
@@ -224,32 +224,32 @@
       "fs-idp63104368"
     ],
     "note": [
-      "fs-idm63137328",
       "fs-idp63474576",
-      "fs-idm61160608",
+      "fs-idm63137328",
       "fs-idp52798448",
       "fs-idm160004320",
+      "fs-idm61160608",
       "fs-idm149132352"
     ],
     "equation": [
-      "fs-idm150406144",
-      "fs-idm106112",
-      "fs-idm172254128",
-      "fs-idp8443552",
       "fs-idp62101552",
       "fs-idp85788016",
       "fs-idm95716912",
       "fs-idp9583632",
       "fs-idm181555088",
-      "fs-idm50369216",
-      "fs-idm107059040",
-      "fs-idm112786736",
+      "fs-idm150406144",
+      "fs-idm106112",
+      "fs-idm172254128",
+      "fs-idp8443552",
       "fs-idm182904000",
       "fs-idm173344864",
       "fs-idm153644640",
       "fs-idp81202080",
       "fs-idm186572544",
       "fs-idm9646560",
+      "fs-idm50369216",
+      "fs-idm107059040",
+      "fs-idm112786736",
       "fs-idm157027008",
       "fs-idp3369296",
       "fs-idm11480608",

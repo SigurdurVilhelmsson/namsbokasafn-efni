@@ -297,7 +297,10 @@
           "id": "fs-idm6075904",
           "class": null,
           "alt": "A diagram is shown with four rows of vertically oriented rectangles. The lower level has two rectangles with a space between them. The rectangle on the left is labeled, “d subscript x z,” below. The rectangle to its right is similarly labeled, “d subscript y z.” Just above, the second row contains only 1 rectangle above and between the lower two. This rectangle is labeled, “d subscript z squared.” Just above, the third row contains only 1 rectangle directly above. This rectangle is labeled, “d subscript x z.” Just above, the fourth row contains only 1 rectangle directly above. This rectangle is labeled, “d subscript x squared minus y squared.”",
-          "src": "../../media/CNX_Chem_19_03_Pattern_img.jpg"
+          "src": "../../media/CNX_Chem_19_03_Pattern_img.jpg",
+          "embedSrc": "",
+          "width": "",
+          "height": ""
         }
       ]
     },
@@ -881,8 +884,11 @@
       "class": null,
       "alt": "A diagram is shown with two columns and two rows of squares outlined in yellow. The first column is labeled “[ F e ( N O subscript 2 ) subscript 6 ] superscript 4 negative sign.” The second is labeled, “[ F e F subscript 6 ] superscript 3 negative sign.” In the left column, three linked squares outlined in yellow are shown. Each of the squares contains two half arrows, one pointing up and one pointing down. In a row just above, two empty linked squares are shown. The label, “Low spin, diamagnetic, P less than capital delta subscript oct,” is provided below the column. In the right column, three linked squares outlined in yellow are shown. The square on the left contains two half arrows, one pointing up and one pointing down. The other two squares each contain a single upward pointing half arrow. In a row just above, two linked squares are shown which each contain a single upward pointing half arrow. The label, “High spin, paramagnetic, P greater than capital delta subscript oct,” is provided below the column.",
       "src": "../../media/CNX_Chem_19_03_FECN6FEH2O_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
-  "sectionOrder": null
+  "sectionOrder": 3
 }

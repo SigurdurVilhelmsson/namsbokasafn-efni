@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68832",
-  "extractedAt": "2026-03-23T16:04:32.480Z",
+  "extractedAt": "2026-07-07T09:12:48.844Z",
   "sourceHash": "059e0f2ab732e9d7",
   "segmentCount": 86,
   "segmentIds": [
@@ -120,7 +120,7 @@
     "example": 0,
     "exercise": 7,
     "note": 1,
-    "equation": 8,
+    "equation": 0,
     "list": 2,
     "media": 0,
     "glossary": 2
@@ -149,16 +149,7 @@
     "note": [
       "fs-idm138324592"
     ],
-    "equation": [
-      "fs-idm105130112",
-      "fs-idm148994256",
-      "fs-idm67787760",
-      "fs-idm172599328",
-      "fs-idm186857456",
-      "fs-idm109648992",
-      "fs-idm129468080",
-      "fs-idm166000096"
-    ],
+    "equation": [],
     "section": [
       "fs-idm108618080",
       "fs-idm57470288",

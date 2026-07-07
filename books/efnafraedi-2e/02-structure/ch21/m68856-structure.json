@@ -452,35 +452,6 @@
       },
       "content": [
         {
-          "type": "section",
-          "id": "fs-idm211205296",
-          "class": null,
-          "title": {
-            "segmentId": "m68856:title:fs-idm211205296-title",
-            "text": "Fission Reactors"
-          },
-          "content": [
-            {
-              "type": "para",
-              "id": "fs-idm211204656",
-              "segmentId": "m68856:para:fs-idm211204656"
-            },
-            {
-              "type": "figure",
-              "id": "CNX_Chem_21_04_NuclearPwr",
-              "caption": {
-                "segmentId": "m68856:caption:CNX_Chem_21_04_NuclearPwr-caption"
-              },
-              "media": {
-                "id": "fs-idm35246480",
-                "alt": "A photo labeled “a” and a diagram labeled “b” is shown. The photo is of a power plant with two large white domes and many buildings. The diagram shows a cylindrical container with thick walls labeled “Walls made of concrete and steel” and three main components inside. The first of these components is a pair of tall cylinders labeled “Steam generators” that sit to either side of a shorter cylinder labeled “Core.” Next to the core is a thin cylinder labeled “Pressurizer.” To the left of the outer walls is a set of pistons labeled “Turbines” that sit above a series of other equipment.",
-                "src": "../../media/CNX_Chem_21_04_NuclearPwr.jpg",
-                "mimeType": "image/jpeg"
-              }
-            }
-          ]
-        },
-        {
           "type": "para",
           "id": "fs-idm313917616",
           "segmentId": "m68856:para:fs-idm313917616"
@@ -588,6 +559,35 @@
             "src": "../../media/CNX_Chem_21_04_FissnBomb.jpg",
             "mimeType": "image/jpeg"
           }
+        },
+        {
+          "type": "section",
+          "id": "fs-idm211205296",
+          "class": null,
+          "title": {
+            "segmentId": "m68856:title:fs-idm211205296-title",
+            "text": "Fission Reactors"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm211204656",
+              "segmentId": "m68856:para:fs-idm211204656"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_21_04_NuclearPwr",
+              "caption": {
+                "segmentId": "m68856:caption:CNX_Chem_21_04_NuclearPwr-caption"
+              },
+              "media": {
+                "id": "fs-idm35246480",
+                "alt": "A photo labeled “a” and a diagram labeled “b” is shown. The photo is of a power plant with two large white domes and many buildings. The diagram shows a cylindrical container with thick walls labeled “Walls made of concrete and steel” and three main components inside. The first of these components is a pair of tall cylinders labeled “Steam generators” that sit to either side of a shorter cylinder labeled “Core.” Next to the core is a thin cylinder labeled “Pressurizer.” To the left of the outer walls is a set of pistons labeled “Turbines” that sit above a series of other equipment.",
+                "src": "../../media/CNX_Chem_21_04_NuclearPwr.jpg",
+                "mimeType": "image/jpeg"
+              }
+            }
+          ]
         }
       ]
     },
@@ -1244,5 +1244,5 @@
       }
     ]
   },
-  "sectionOrder": null
+  "sectionOrder": 4
 }

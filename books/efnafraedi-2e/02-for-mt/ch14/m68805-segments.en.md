@@ -854,13 +854,13 @@ The pH of a solution of household ammonia, a 0.950 M solution of NH[[sub:3,]] is
 [[MATH:199]]
 
 <!-- SEG:m68805:glossary-term:fs-idp86058640-term -->
-acid ionization constant (Ka)
+acid ionization constant ([[i:K]][[sub:a]])
 
 <!-- SEG:m68805:glossary-def:fs-idp86058640-def -->
 equilibrium constant for an acid ionization reaction
 
 <!-- SEG:m68805:glossary-term:fs-idp86060672-term -->
-base ionization constant (Kb)
+base ionization constant ([[i:K]][[sub:b]])
 
 <!-- SEG:m68805:glossary-def:fs-idp86060672-def -->
 equilibrium constant for a base ionization reaction

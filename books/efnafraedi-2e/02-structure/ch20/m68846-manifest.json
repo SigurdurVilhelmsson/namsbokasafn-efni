@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68846",
-  "extractedAt": "2026-03-21T17:47:25.420Z",
+  "extractedAt": "2026-07-07T09:12:51.602Z",
   "sourceHash": "8a75d0ca7a990b03",
   "segmentCount": 317,
   "segmentIds": [
@@ -364,10 +364,10 @@
       "CNX_Chem_20_01_butane_img",
       "CNX_Chem_20_01_alkyls",
       "CNX_Chem_20_01_FracDistil",
-      "CNX_Chem_20_01_geoIsomers_img",
       "CNX_Chem_20_01_Propene1",
       "CNX_Chem_20_01_Monomer",
       "CNX_Chem_20_01_Recycle",
+      "CNX_Chem_20_01_geoIsomers_img",
       "CNX_Chem_20_01_benzene"
     ],
     "table": [
@@ -419,8 +419,8 @@
       "fs-idp13281248",
       "fs-idp5918672",
       "fs-idp32763136",
-      "fs-idp64218000",
       "fs-idp67935232",
+      "fs-idp64218000",
       "fs-idp11395248",
       "fs-idp72044400"
     ],

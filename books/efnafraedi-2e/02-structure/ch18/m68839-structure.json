@@ -957,7 +957,10 @@
       "class": null,
       "alt": "This Lewis structure shows an iodine atom with one lone pair of electrons single bonded to five fluorine atoms, each of which has three lone pairs of electrons. The image is labeled, “Square pyramidal.”",
       "src": "../../media/CNX_Chem_18_11_Exercise4a_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:2]]",
@@ -965,7 +968,10 @@
       "class": null,
       "alt": "This Lewis structure shows an iodine atom with three lone pairs of electrons single bonded to two iodine atoms, each of which has three lone pairs of electrons. The image is surrounded by brackets. A superscript negative sign appears outside the brackets. The image is labeled, “Linear.”",
       "src": "../../media/CNX_Chem_18_11_Exercise4b_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:3]]",
@@ -973,7 +979,10 @@
       "class": null,
       "alt": "This Lewis structure shows a phosphorus atom single bonded to five chlorine atoms, each of which has three lone pairs of electrons. The image is labeled, “Trigonal bipyramidal.”",
       "src": "../../media/CNX_Chem_18_11_Exercise4c_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:4]]",
@@ -981,7 +990,10 @@
       "class": null,
       "alt": "This Lewis structure shows a selenium atom with one lone pair of electrons single bonded to four fluorine atoms, each of which has three lone pairs of electrons. The image is labeled “Seesaw.”",
       "src": "../../media/CNX_Chem_18_11_Exercise4d_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:5]]",
@@ -989,8 +1001,11 @@
       "class": null,
       "alt": "This Lewis structure shows a chlorine atom with two lone pairs of electrons single bonded to three fluorine atoms, each of which has three lone pairs of electrons. The image is labeled, “T-shaped.”",
       "src": "../../media/CNX_Chem_18_11_Exercise4e_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
-  "sectionOrder": null
+  "sectionOrder": 11
 }

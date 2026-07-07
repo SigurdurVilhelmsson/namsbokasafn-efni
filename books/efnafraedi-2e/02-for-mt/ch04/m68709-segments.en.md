@@ -11,7 +11,7 @@ Derive chemical equations from narrative descriptions of chemical reactions.
 Write and balance chemical equations in molecular, total ionic, and net ionic formats.
 
 <!-- SEG:m68709:para:fs-idp47467664 -->
-An earlier chapter of this text introduced the use of element symbols to represent individual atoms. When atoms gain or lose electrons to yield ions, or combine with other atoms to form molecules, their symbols are modified or combined to generate chemical formulas that appropriately represent these species. Extending this symbolism to represent both the identities and the relative quantities of substances undergoing a chemical (or physical) change involves writing and balancing a {{term}}chemical equation{{/term}}. Consider as an example the reaction between one methane molecule (CH[[sub:4]]) and two diatomic oxygen molecules (O[[sub:2]]) to produce one carbon dioxide molecule (CO[[sub:2]]) and two water molecules (H[[sub:2]]O). The chemical equation representing this process is provided in the upper half of [#CNX_Chem_04_01_rxn2], with space-filling molecular models shown in the lower half of the figure.
+An earlier chapter of this text introduced the use of element symbols to represent individual atoms. When atoms gain or lose electrons to yield ions, or combine with other atoms to form molecules, their symbols are modified or combined to generate chemical formulas that appropriately represent these species. Extending this symbolism to represent both the identities and the relative quantities of substances undergoing a chemical (or physical) change involves writing and balancing a {{term}}chemical equation{{/term}}. Consider as an example the reaction between one methane molecule (CH[[sub:4]]) and two diatomic oxygen molecules (O[[sub:2]]) to produce one carbon dioxide molecule (CO[[sub:2]]) and two water molecules (H[[sub:2]]O). The chemical equation representing this process is provided in the upper half of [[xref:CNX_Chem_04_01_rxn2]], with space-filling molecular models shown in the lower half of the figure.
 
 <!-- SEG:m68709:caption:CNX_Chem_04_01_rxn2-caption -->
 The reaction between methane and oxygen to yield carbon dioxide and water (shown at bottom) may be represented by a chemical equation using formulas (top).
@@ -32,16 +32,16 @@ Plus signs (+) separate individual reactant and product formulas, and an arrow [
 The relative numbers of reactant and product species are represented by {{term}}coefficients{{/term}} (numbers placed immediately to the left of each formula). A coefficient of 1 is typically omitted.
 
 <!-- SEG:m68709:para:fs-idm33251968 -->
-It is common practice to use the smallest possible whole-number coefficients in a chemical equation, as is done in this example. Realize, however, that these coefficients represent the {{i}}relative{{/i}} numbers of reactants and products, and, therefore, they may be correctly interpreted as ratios. Methane and oxygen react to yield carbon dioxide and water in a 1:2:1:2 ratio. This ratio is satisfied if the numbers of these molecules are, respectively, 1-2-1-2, or 2-4-2-4, or 3-6-3-6, and so on ([#CNX_Chem_04_01_rxn3]). Likewise, these coefficients may be interpreted with regard to any amount (number) unit, and so this equation may be correctly read in many ways, including:
+It is common practice to use the smallest possible whole-number coefficients in a chemical equation, as is done in this example. Realize, however, that these coefficients represent the [[i:relative]] numbers of reactants and products, and, therefore, they may be correctly interpreted as ratios. Methane and oxygen react to yield carbon dioxide and water in a 1:2:1:2 ratio. This ratio is satisfied if the numbers of these molecules are, respectively, 1-2-1-2, or 2-4-2-4, or 3-6-3-6, and so on ([[xref:CNX_Chem_04_01_rxn3]]). Likewise, these coefficients may be interpreted with regard to any amount (number) unit, and so this equation may be correctly read in many ways, including:
 
 <!-- SEG:m68709:item:fs-idp42981680-item-1 -->
-{{i}}One{{/i}} methane molecule and {{i}}two{{/i}} oxygen molecules react to yield {{i}}one{{/i}} carbon dioxide molecule and {{i}}two{{/i}} water molecules.
+[[i:One]] methane molecule and [[i:two]] oxygen molecules react to yield [[i:one]] carbon dioxide molecule and [[i:two]] water molecules.
 
 <!-- SEG:m68709:item:fs-idp42981680-item-2 -->
-{{i}}One dozen{{/i}} methane molecules and {{i}}two dozen{{/i}} oxygen molecules react to yield {{i}}one dozen{{/i}} carbon dioxide molecules and {{i}}two dozen{{/i}} water molecules.
+[[i:One dozen]] methane molecules and [[i:two dozen]] oxygen molecules react to yield [[i:one dozen]] carbon dioxide molecules and [[i:two dozen]] water molecules.
 
 <!-- SEG:m68709:item:fs-idp42981680-item-3 -->
-{{i}}One mole{{/i}} of methane molecules and {{i}}2 moles{{/i}} of oxygen molecules react to yield {{i}}1 mole{{/i}} of carbon dioxide molecules and {{i}}2 moles{{/i}} of water molecules.
+[[i:One mole]] of methane molecules and [[i:2 moles]] of oxygen molecules react to yield [[i:1 mole]] of carbon dioxide molecules and [[i:2 moles]] of water molecules.
 
 <!-- SEG:m68709:caption:CNX_Chem_04_01_rxn3-caption -->
 Regardless of the absolute numbers of molecules involved, the ratios between numbers of molecules of each species that react (the reactants) and molecules of each species that form (the products) are the same and are given by the chemical reaction equation.
@@ -104,7 +104,7 @@ O
 4 = 4, yes
 
 <!-- SEG:m68709:para:fs-idp8426240 -->
-A balanced chemical equation often may be derived from a qualitative description of some chemical reaction by a fairly simple approach known as balancing by inspection. Consider as an example the decomposition of water to yield molecular hydrogen and oxygen. This process is represented qualitatively by an {{i}}unbalanced{{/i}} chemical equation:
+A balanced chemical equation often may be derived from a qualitative description of some chemical reaction by a fairly simple approach known as balancing by inspection. Consider as an example the decomposition of water to yield molecular hydrogen and oxygen. This process is represented qualitatively by an [[i:unbalanced]] chemical equation:
 
 <!-- SEG:m68709:para:fs-idp20832160 -->
 Comparing the number of H and O atoms on either side of this equation confirms its imbalance:
@@ -146,7 +146,7 @@ O
 1 ≠ 2, no
 
 <!-- SEG:m68709:para:fs-idp116453584 -->
-The numbers of H atoms on the reactant and product sides of the equation are equal, but the numbers of O atoms are not. To achieve balance, the {{i}}coefficients{{/i}} of the equation may be changed as needed. Keep in mind, of course, that the {{i}}formula subscripts{{/i}} define, in part, the identity of the substance, and so these cannot be changed without altering the qualitative meaning of the equation. For example, changing the reactant formula from H[[sub:2]]O to H[[sub:2]]O[[sub:2]] would yield balance in the number of atoms, but doing so also changes the reactant’s identity (it’s now hydrogen peroxide and not water). The O atom balance may be achieved by changing the coefficient for H[[sub:2]]O to 2.
+The numbers of H atoms on the reactant and product sides of the equation are equal, but the numbers of O atoms are not. To achieve balance, the [[i:coefficients]] of the equation may be changed as needed. Keep in mind, of course, that the [[i:formula subscripts]] define, in part, the identity of the substance, and so these cannot be changed without altering the qualitative meaning of the equation. For example, changing the reactant formula from H[[sub:2]]O to H[[sub:2]]O[[sub:2]] would yield balance in the number of atoms, but doing so also changes the reactant’s identity (it’s now hydrogen peroxide and not water). The O atom balance may be achieved by changing the coefficient for H[[sub:2]]O to 2.
 
 <!-- SEG:m68709:entry:auto-51 -->
 Element
@@ -164,7 +164,7 @@ Balanced?
 H
 
 <!-- SEG:m68709:entry:auto-56 -->
-{{b}}2{{/b}} [[MATH:13]] 2 = 4
+[[b:2]] [[MATH:13]] 2 = 4
 
 <!-- SEG:m68709:entry:auto-57 -->
 1 [[MATH:14]] 2 = 2
@@ -206,7 +206,7 @@ H
 2 [[MATH:17]] 2 = 4
 
 <!-- SEG:m68709:entry:auto-70 -->
-{{b}}2{{/b}} [[MATH:18]] 2 = 4
+[[b:2]] [[MATH:18]] 2 = 4
 
 <!-- SEG:m68709:entry:auto-71 -->
 4 = 4, yes
@@ -314,7 +314,7 @@ N
 1 [[MATH:25]] 2 = 2
 
 <!-- SEG:m68709:entry:auto-106 -->
-{{b}}2{{/b}} [[MATH:26]] 2 = 4
+[[b:2]] [[MATH:26]] 2 = 4
 
 <!-- SEG:m68709:entry:auto-107 -->
 2 ≠ 4, no
@@ -323,10 +323,10 @@ N
 O
 
 <!-- SEG:m68709:entry:auto-109 -->
-{{b}}5{{/b}} [[MATH:27]] 2 = 10
+[[b:5]] [[MATH:27]] 2 = 10
 
 <!-- SEG:m68709:entry:auto-110 -->
-{{b}}2{{/b}} [[MATH:28]] 5 = 10
+[[b:2]] [[MATH:28]] 5 = 10
 
 <!-- SEG:m68709:entry:auto-111 -->
 10 = 10, yes
@@ -347,7 +347,7 @@ Balanced?
 N
 
 <!-- SEG:m68709:entry:auto-117 -->
-{{b}}2{{/b}} [[MATH:29]] 2 = 4
+[[b:2]] [[MATH:29]] 2 = 4
 
 <!-- SEG:m68709:entry:auto-118 -->
 2 [[MATH:30]] 2 = 4
@@ -380,19 +380,19 @@ This results in seven O atoms on the product side of the equation, an odd number
 A conventional balanced equation with integer-only coefficients is derived by multiplying each coefficient by 2:
 
 <!-- SEG:m68709:para:fs-idp57635360 -->
-Finally with regard to balanced equations, recall that convention dictates use of the {{i}}smallest whole-number coefficients{{/i}}. Although the equation for the reaction between molecular nitrogen and molecular hydrogen to produce ammonia is, indeed, balanced,
+Finally with regard to balanced equations, recall that convention dictates use of the [[i:smallest whole-number coefficients]]. Although the equation for the reaction between molecular nitrogen and molecular hydrogen to produce ammonia is, indeed, balanced,
 
 <!-- SEG:m68709:para:fs-idp117890176 -->
 the coefficients are not the smallest possible integers representing the relative numbers of reactant and product molecules. Dividing each coefficient by the greatest common factor, 3, gives the preferred equation:
 
 <!-- SEG:m68709:para:fs-idp94095504 -->
-Use this interactive [tutorial](http://openstax.org/l/16BalanceEq) for additional practice balancing equations.
+Use this interactive [[link:tutorial|http://openstax.org/l/16BalanceEq]] for additional practice balancing equations.
 
 <!-- SEG:m68709:title:fs-idp50900304-title -->
 Additional Information in Chemical Equations
 
 <!-- SEG:m68709:para:fs-idp46664848 -->
-The physical states of reactants and products in chemical equations very often are indicated with a parenthetical abbreviation following the formulas. Common abbreviations include {{i}}s{{/i}} for solids, {{i}}l{{/i}} for liquids, {{i}}g{{/i}} for gases, and {{i}}aq{{/i}} for substances dissolved in water ({{i}}aqueous solutions{{/i}}, as introduced in the preceding chapter). These notations are illustrated in the example equation here:
+The physical states of reactants and products in chemical equations very often are indicated with a parenthetical abbreviation following the formulas. Common abbreviations include [[i:s]] for solids, [[i:l]] for liquids, [[i:g]] for gases, and [[i:aq]] for substances dissolved in water ([[i:aqueous solutions]], as introduced in the preceding chapter). These notations are illustrated in the example equation here:
 
 <!-- SEG:m68709:para:fs-idp38373104 -->
 This equation represents the reaction that takes place when sodium metal is placed in water. The solid sodium reacts with liquid water to produce molecular hydrogen gas and the ionic compound sodium hydroxide (a solid in pure form, but readily dissolved in water).
@@ -410,16 +410,16 @@ Equations for Ionic Reactions
 Given the abundance of water on earth, it stands to reason that a great many chemical reactions take place in aqueous media. When ions are involved in these reactions, the chemical equations may be written with various levels of detail appropriate to their intended use. To illustrate this, consider a reaction between ionic compounds taking place in an aqueous solution. When aqueous solutions of CaCl[[sub:2]] and AgNO[[sub:3]] are mixed, a reaction takes place producing aqueous Ca(NO[[sub:3]])[[sub:2]] and solid AgCl:
 
 <!-- SEG:m68709:para:fs-idp204481712 -->
-This balanced equation, derived in the usual fashion, is called a {{term}}molecular equation{{/term}} because it doesn’t explicitly represent the ionic species that are present in solution. When ionic compounds dissolve in water, they may {{i}}dissociate{{/i}} into their constituent ions, which are subsequently dispersed homogenously throughout the resulting solution (a thorough discussion of this important process is provided in the chapter on solutions). Ionic compounds dissolved in water are, therefore, more realistically represented as dissociated ions, in this case:
+This balanced equation, derived in the usual fashion, is called a {{term}}molecular equation{{/term}} because it doesn’t explicitly represent the ionic species that are present in solution. When ionic compounds dissolve in water, they may [[i:dissociate]] into their constituent ions, which are subsequently dispersed homogenously throughout the resulting solution (a thorough discussion of this important process is provided in the chapter on solutions). Ionic compounds dissolved in water are, therefore, more realistically represented as dissociated ions, in this case:
 
 <!-- SEG:m68709:para:fs-idp24388656 -->
-Unlike these three ionic compounds, AgCl does not dissolve in water to a significant extent, as signified by its physical state notation, {{i}}s{{/i}}.
+Unlike these three ionic compounds, AgCl does not dissolve in water to a significant extent, as signified by its physical state notation, [[i:s]].
 
 <!-- SEG:m68709:para:fs-idp6577008 -->
 Explicitly representing all dissolved ions results in a {{term}}complete ionic equation{{/term}}. In this particular case, the formulas for the dissolved ionic compounds are replaced by formulas for their dissociated ions:
 
 <!-- SEG:m68709:para:fs-idp146097648 -->
-Examining this equation shows that two chemical species are present in identical form on both sides of the arrow, Ca[[sup:2+]]({{i}}aq{{/i}}) and [[MATH:34]] These {{term}}spectator ions{{/term}}—ions whose presence is required to maintain charge neutrality—are neither chemically nor physically changed by the process, and so they may be eliminated from the equation to yield a more succinct representation called a {{term}}net ionic equation{{/term}}:
+Examining this equation shows that two chemical species are present in identical form on both sides of the arrow, Ca[[sup:2+]]([[i:aq]]) and [[MATH:34]] These {{term}}spectator ions{{/term}}—ions whose presence is required to maintain charge neutrality—are neither chemically nor physically changed by the process, and so they may be eliminated from the equation to yield a more succinct representation called a {{term}}net ionic equation{{/term}}:
 
 <!-- SEG:m68709:para:fs-idp8534256 -->
 Following the convention of using the smallest possible integers as coefficients, this equation is then written:
@@ -446,7 +446,7 @@ Balance is achieved easily in this case by changing the coefficient for NaOH to 
 The two dissolved ionic compounds, NaOH and Na[[sub:2]]CO[[sub:3]], can be represented as dissociated ions to yield the complete ionic equation:
 
 <!-- SEG:m68709:para:fs-idp111986480 -->
-Finally, identify the spectator ion(s), in this case Na[[sup:+]]({{i}}aq{{/i}}), and remove it from each side of the equation to generate the net ionic equation:
+Finally, identify the spectator ion(s), in this case Na[[sup:+]]([[i:aq]]), and remove it from each side of the equation to generate the net ionic equation:
 
 <!-- SEG:m68709:para-title:fs-idp71485312-title -->
 Check Your Learning

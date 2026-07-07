@@ -20,7 +20,7 @@ A bond’s strength describes how strongly each atom is joined to another atom, 
 Bond Strength: Covalent Bonds
 
 <!-- SEG:m68741:para:fs-idm12470240 -->
-Stable molecules exist because covalent bonds hold the atoms together. We measure the strength of a covalent bond by the energy required to break it, that is, the energy necessary to separate the bonded atoms. Separating any pair of bonded atoms requires energy (see [m68738#CNX_Chem_07_02_Morse]). The stronger a bond, the greater the energy required to break it.
+Stable molecules exist because covalent bonds hold the atoms together. We measure the strength of a covalent bond by the energy required to break it, that is, the energy necessary to separate the bonded atoms. Separating any pair of bonded atoms requires energy (see [[docref:m68738#CNX_Chem_07_02_Morse]]). The stronger a bond, the greater the energy required to break it.
 
 <!-- SEG:m68741:para:fs-idp84340368 -->
 The energy required to break a specific covalent bond in one mole of gaseous molecules is called the bond energy or the bond dissociation energy. The bond energy for a diatomic molecule, D[[sub:X–Y]], is defined as the standard enthalpy change for the endothermic reaction:
@@ -35,7 +35,7 @@ Molecules with three or more atoms have two or more bonds. The sum of all bond e
 The average C–H bond energy, D[[sub:C–H]], is 1660/4 = 415 kJ/mol because there are four moles of C–H bonds broken per mole of the reaction. Although the four C–H bonds are equivalent in the original molecule, they do not each require the same energy to break; once the first bond is broken (which requires 439 kJ/mol), the remaining bonds are easier to break. The 415 kJ/mol value is the average, not the exact value required to break any one bond.
 
 <!-- SEG:m68741:para:fs-idp26225392 -->
-The strength of a bond between two atoms increases as the number of electron pairs in the bond increases. Generally, as the bond strength increases, the bond length decreases. Thus, we find that triple bonds are stronger and shorter than double bonds between the same two atoms; likewise, double bonds are stronger and shorter than single bonds between the same two atoms. Average bond energies for some common bonds appear in [#fs-idp13638832], and a comparison of bond lengths and bond strengths for some common bonds appears in [#fs-idm44464336]. When one atom bonds to various atoms in a group, the bond strength typically decreases as we move down the group. For example, C–F is 439 kJ/mol, C–Cl is 330 kJ/mol, and C–Br is 275 kJ/mol.
+The strength of a bond between two atoms increases as the number of electron pairs in the bond increases. Generally, as the bond strength increases, the bond length decreases. Thus, we find that triple bonds are stronger and shorter than double bonds between the same two atoms; likewise, double bonds are stronger and shorter than single bonds between the same two atoms. Average bond energies for some common bonds appear in [[xref:fs-idp13638832]], and a comparison of bond lengths and bond strengths for some common bonds appears in [[xref:fs-idm44464336]]. When one atom bonds to various atoms in a group, the bond strength typically decreases as we move down the group. For example, C–F is 439 kJ/mol, C–Cl is 330 kJ/mol, and C–Br is 275 kJ/mol.
 
 <!-- SEG:m68741:entry:auto-14 -->
 Bond Energies (kJ/mol)
@@ -560,13 +560,13 @@ C–O
 1080
 
 <!-- SEG:m68741:para:fs-idp29959728 -->
-We can use bond energies to calculate approximate enthalpy changes for reactions where enthalpies of formation are not available. Calculations of this type will also tell us whether a reaction is exothermic or endothermic. An exothermic reaction (Δ{{i}}H{{/i}} negative, heat produced) results when the bonds in the products are stronger than the bonds in the reactants. An endothermic reaction (Δ{{i}}H{{/i}} positive, heat absorbed) results when the bonds in the products are weaker than those in the reactants.
+We can use bond energies to calculate approximate enthalpy changes for reactions where enthalpies of formation are not available. Calculations of this type will also tell us whether a reaction is exothermic or endothermic. An exothermic reaction (Δ[[i:H]] negative, heat produced) results when the bonds in the products are stronger than the bonds in the reactants. An endothermic reaction (Δ[[i:H]] positive, heat absorbed) results when the bonds in the products are weaker than those in the reactants.
 
 <!-- SEG:m68741:para:fs-idp234028832 -->
-The enthalpy change, Δ{{i}}H{{/i}}, for a chemical reaction is approximately equal to the sum of the energy required to break all bonds in the reactants (energy “in”, positive sign) plus the energy released when all bonds are formed in the products (energy “out,” negative sign). This can be expressed mathematically in the following way:
+The enthalpy change, Δ[[i:H]], for a chemical reaction is approximately equal to the sum of the energy required to break all bonds in the reactants (energy “in”, positive sign) plus the energy released when all bonds are formed in the products (energy “out,” negative sign). This can be expressed mathematically in the following way:
 
 <!-- SEG:m68741:para:fs-idp118053616 -->
-In this expression, the symbol Ʃ means “the sum of” and D represents the bond energy in kilojoules per mole, which is always a positive number. The bond energy is obtained from a table (like [#fs-idm44464336]) and will depend on whether the particular bond is a single, double, or triple bond. Thus, in calculating enthalpies in this manner, it is important that we consider the bonding in all reactants and products. Because D values are typically averages for one type of bond in many different molecules, this calculation provides a rough estimate, not an exact value, for the enthalpy of reaction.
+In this expression, the symbol Ʃ means “the sum of” and D represents the bond energy in kilojoules per mole, which is always a positive number. The bond energy is obtained from a table (like [[xref:fs-idm44464336]]) and will depend on whether the particular bond is a single, double, or triple bond. Thus, in calculating enthalpies in this manner, it is important that we consider the bonding in all reactants and products. Because D values are typically averages for one type of bond in many different molecules, this calculation provides a rough estimate, not an exact value, for the enthalpy of reaction.
 
 <!-- SEG:m68741:para:fs-idp17129504 -->
 Consider the following reaction:
@@ -578,13 +578,13 @@ or
 To form two moles of HCl, one mole of H–H bonds and one mole of Cl–Cl bonds must be broken. The energy required to break these bonds is the sum of the bond energy of the H–H bond (436 kJ/mol) and the Cl–Cl bond (243 kJ/mol). During the reaction, two moles of H–Cl bonds are formed (bond energy = 432 kJ/mol), releasing 2 [[MATH:16]] 432 kJ; or 864 kJ. Because the bonds in the products are stronger than those in the reactants, the reaction releases more energy than it consumes:
 
 <!-- SEG:m68741:para:fs-idp29639024 -->
-This excess energy is released as heat, so the reaction is exothermic. [Appendix G](doc:m68865) gives a value for the standard molar enthalpy of formation of HCl(g), [[MATH:17]] of –92.307 kJ/mol. Twice that value is –184.6 kJ, which agrees well with the answer obtained earlier for the formation of two moles of HCl.
+This excess energy is released as heat, so the reaction is exothermic. [[docref:Appendix G|m68865]] gives a value for the standard molar enthalpy of formation of HCl(g), [[MATH:17]] of –92.307 kJ/mol. Twice that value is –184.6 kJ, which agrees well with the answer obtained earlier for the formation of two moles of HCl.
 
 <!-- SEG:m68741:example-title:fs-idm33428592-title -->
 Using Bond Energies to Calculate Approximate Enthalpy Changes
 
 <!-- SEG:m68741:para:fs-idp71590928 -->
-Methanol, CH[[sub:3]]OH, may be an excellent alternative fuel. The high-temperature reaction of steam and carbon produces a mixture of the gases carbon monoxide, CO, and hydrogen, H[[sub:2]], from which methanol can be produced. Using the bond energies in [#fs-idm44464336], calculate the approximate enthalpy change, Δ{{i}}H{{/i}}, for the reaction here:
+Methanol, CH[[sub:3]]OH, may be an excellent alternative fuel. The high-temperature reaction of steam and carbon produces a mixture of the gases carbon monoxide, CO, and hydrogen, H[[sub:2]], from which methanol can be produced. Using the bond energies in [[xref:fs-idm44464336]], calculate the approximate enthalpy change, Δ[[i:H]], for the reaction here:
 
 <!-- SEG:m68741:para-title:fs-idp41458304-title -->
 Solution
@@ -593,16 +593,16 @@ Solution
 First, we need to write the Lewis structures of the reactants and the products:
 
 <!-- SEG:m68741:para:fs-idp202067232 -->
-From this, we see that Δ{{i}}H{{/i}} for this reaction involves the energy required to break a C–O triple bond and two H–H single bonds, as well as the energy produced by the formation of three C–H single bonds, a C–O single bond, and an O–H single bond. We can express this as follows:
+From this, we see that Δ[[i:H]] for this reaction involves the energy required to break a C–O triple bond and two H–H single bonds, as well as the energy produced by the formation of three C–H single bonds, a C–O single bond, and an O–H single bond. We can express this as follows:
 
 <!-- SEG:m68741:para:fs-idp53734416 -->
-Using the bond energy values in [#fs-idm44464336], we obtain:
+Using the bond energy values in [[xref:fs-idm44464336]], we obtain:
 
 <!-- SEG:m68741:para:fs-idp126256512 -->
 We can compare this value to the value calculated based on [[MATH:18]] data from Appendix G:
 
 <!-- SEG:m68741:para:fs-idp56832128 -->
-Note that there is a fairly significant gap between the values calculated using the two different methods. This occurs because D values are the {{i}}average{{/i}} of different bond strengths; therefore, they often give only rough agreement with other data.
+Note that there is a fairly significant gap between the values calculated using the two different methods. This occurs because D values are the [[i:average]] of different bond strengths; therefore, they often give only rough agreement with other data.
 
 <!-- SEG:m68741:para-title:fs-idp36454672-title -->
 Check Your Learning
@@ -611,7 +611,7 @@ Check Your Learning
 Ethyl alcohol, CH[[sub:3]]CH[[sub:2]]OH, was one of the first organic chemicals deliberately synthesized by humans. It has many uses in industry, and it is the alcohol contained in alcoholic beverages. It can be obtained by the fermentation of sugar or synthesized by the hydration of ethylene in the following reaction:
 
 <!-- SEG:m68741:para:fs-idp27645248 -->
-Using the bond energies in [#fs-idm44464336], calculate an approximate enthalpy change, Δ{{i}}H{{/i}}, for this reaction.
+Using the bond energies in [[xref:fs-idm44464336]], calculate an approximate enthalpy change, Δ[[i:H]], for this reaction.
 
 <!-- SEG:m68741:para:fs-idp24314032 -->
 –35 kJ
@@ -626,13 +626,13 @@ Answer:
 Ionic Bond Strength and Lattice Energy
 
 <!-- SEG:m68741:para:fs-idm57606496 -->
-An ionic compound is stable because of the electrostatic attraction between its positive and negative ions. The lattice energy of a compound is a measure of the strength of this attraction. The {{term}}lattice energy (Δ{{i}}H{{/i}}[[sub:lattice]]){{/term}} of an ionic compound is defined as the energy required to separate one mole of the solid into its component gaseous ions. For the ionic solid MX, the lattice energy is the enthalpy change of the process:
+An ionic compound is stable because of the electrostatic attraction between its positive and negative ions. The lattice energy of a compound is a measure of the strength of this attraction. The {{term}}lattice energy (Δ[[i:H]][[sub:lattice]]){{/term}} of an ionic compound is defined as the energy required to separate one mole of the solid into its component gaseous ions. For the ionic solid MX, the lattice energy is the enthalpy change of the process:
 
 <!-- SEG:m68741:para:fs-idm45000976 -->
-Note that we are using the convention where the ionic solid is separated into ions, so our lattice energies will be {{i}}endothermic{{/i}} (positive values). Some texts use the equivalent but opposite convention, defining lattice energy as the energy released when separate ions combine to form a lattice and giving negative (exothermic) values. Thus, if you are looking up lattice energies in another reference, be certain to check which definition is being used. In both cases, a larger magnitude for lattice energy indicates a more stable ionic compound. For sodium chloride, Δ{{i}}H{{/i}}[[sub:lattice]] = 769 kJ. Thus, it requires 769 kJ to separate one mole of solid NaCl into gaseous Na[[sup:+]] and Cl[[sup:–]] ions. When one mole each of gaseous Na[[sup:+]] and Cl[[sup:–]] ions form solid NaCl, 769 kJ of heat is released.
+Note that we are using the convention where the ionic solid is separated into ions, so our lattice energies will be [[i:endothermic]] (positive values). Some texts use the equivalent but opposite convention, defining lattice energy as the energy released when separate ions combine to form a lattice and giving negative (exothermic) values. Thus, if you are looking up lattice energies in another reference, be certain to check which definition is being used. In both cases, a larger magnitude for lattice energy indicates a more stable ionic compound. For sodium chloride, Δ[[i:H]][[sub:lattice]] = 769 kJ. Thus, it requires 769 kJ to separate one mole of solid NaCl into gaseous Na[[sup:+]] and Cl[[sup:–]] ions. When one mole each of gaseous Na[[sup:+]] and Cl[[sup:–]] ions form solid NaCl, 769 kJ of heat is released.
 
 <!-- SEG:m68741:para:fs-idp17453088 -->
-The lattice energy Δ{{i}}H{{/i}}[[sub:lattice]] of an ionic crystal can be expressed by the following equation (derived from Coulomb’s law, governing the forces between electric charges):
+The lattice energy Δ[[i:H]][[sub:lattice]] of an ionic crystal can be expressed by the following equation (derived from Coulomb’s law, governing the forces between electric charges):
 
 <!-- SEG:m68741:para:fs-idp14812032 -->
 in which C is a constant that depends on the type of crystal structure; Z[[sup:+]] and Z[[sup:–]] are the charges on the ions; and R[[sub:o]] is the interionic distance (the sum of the radii of the positive and negative ions). Thus, the lattice energy of an ionic crystal increases rapidly as the charges of the ions increase and the sizes of the ions decrease. When all other parameters are kept constant, doubling the charge of both the cation and anion quadruples the lattice energy. For example, the lattice energy of LiF (Z[[sup:+]] and Z[[sup:–]] = 1) is 1023 kJ/mol, whereas that of MgO (Z[[sup:+]] and Z[[sup:–]] = 2) is 3900 kJ/mol (R[[sub:o]] is nearly the same—about 200 pm for both compounds).
@@ -677,34 +677,34 @@ It is not possible to measure lattice energies directly. However, the lattice en
 [[MATH:19]] the standard enthalpy of formation of the compound
 
 <!-- SEG:m68741:item:fs-idp77725760-item-2 -->
-{{i}}IE{{/i}}, the ionization energy of the metal
+[[i:IE]], the ionization energy of the metal
 
 <!-- SEG:m68741:item:fs-idp77725760-item-3 -->
-{{i}}EA{{/i}}, the electron affinity of the nonmetal
+[[i:EA]], the electron affinity of the nonmetal
 
 <!-- SEG:m68741:item:fs-idp77725760-item-4 -->
 [[MATH:20]] the enthalpy of sublimation of the metal
 
 <!-- SEG:m68741:item:fs-idp77725760-item-5 -->
-{{i}}D{{/i}}, the bond dissociation energy of the nonmetal
+[[i:D]], the bond dissociation energy of the nonmetal
 
 <!-- SEG:m68741:item:fs-idp77725760-item-6 -->
-Δ{{i}}H{{/i}}[[sub:lattice]], the lattice energy of the compound
+Δ[[i:H]][[sub:lattice]], the lattice energy of the compound
 
 <!-- SEG:m68741:para:fs-idm6705632 -->
-[#CNX_Chem_07_05_BornHaber] diagrams the Born-Haber cycle for the formation of solid cesium fluoride.
+[[xref:CNX_Chem_07_05_BornHaber]] diagrams the Born-Haber cycle for the formation of solid cesium fluoride.
 
 <!-- SEG:m68741:caption:CNX_Chem_07_05_BornHaber-caption -->
 The Born-Haber cycle shows the relative energies of each step involved in the formation of an ionic solid from the necessary elements in their reference states.
 
 <!-- SEG:m68741:para:fs-idp53345328 -->
-We begin with the elements in their most common states, Cs({{i}}s{{/i}}) and F[[sub:2]]({{i}}g{{/i}}). The [[MATH:21]] represents the conversion of solid cesium into a gas, and then the ionization energy converts the gaseous cesium atoms into cations. In the next step, we account for the energy required to break the F–F bond to produce fluorine atoms. Converting one mole of fluorine atoms into fluoride ions is an exothermic process, so this step gives off energy (the electron affinity) and is shown as decreasing along the {{i}}y{{/i}}-axis. We now have one mole of Cs cations and one mole of F anions. These ions combine to produce solid cesium fluoride. The enthalpy change in this step is the negative of the lattice energy, so it is also an exothermic quantity. The total energy involved in this conversion is equal to the experimentally determined enthalpy of formation, [[MATH:22]] of the compound from its elements. In this case, the overall change is exothermic.
+We begin with the elements in their most common states, Cs([[i:s]]) and F[[sub:2]]([[i:g]]). The [[MATH:21]] represents the conversion of solid cesium into a gas, and then the ionization energy converts the gaseous cesium atoms into cations. In the next step, we account for the energy required to break the F–F bond to produce fluorine atoms. Converting one mole of fluorine atoms into fluoride ions is an exothermic process, so this step gives off energy (the electron affinity) and is shown as decreasing along the [[i:y]]-axis. We now have one mole of Cs cations and one mole of F anions. These ions combine to produce solid cesium fluoride. The enthalpy change in this step is the negative of the lattice energy, so it is also an exothermic quantity. The total energy involved in this conversion is equal to the experimentally determined enthalpy of formation, [[MATH:22]] of the compound from its elements. In this case, the overall change is exothermic.
 
 <!-- SEG:m68741:para:fs-idm23453808 -->
-Hess’s law can also be used to show the relationship between the enthalpies of the individual steps and the enthalpy of formation. [#fs-idm33829552] shows this for fluoride, CsF.
+Hess’s law can also be used to show the relationship between the enthalpies of the individual steps and the enthalpy of formation. [[xref:fs-idm33829552]] shows this for fluoride, CsF.
 
 <!-- SEG:m68741:entry:auto-236 -->
-Enthalpy of sublimation of Cs({{i}}s{{/i}})
+Enthalpy of sublimation of Cs([[i:s]])
 
 <!-- SEG:m68741:entry:auto-237 -->
 [[MATH:23]]
@@ -722,7 +722,7 @@ One-half of the bond energy of F[[sub:2]]
 [[MATH:26]]
 
 <!-- SEG:m68741:entry:auto-242 -->
-Ionization energy of Cs({{i}}g{{/i}})
+Ionization energy of Cs([[i:g]])
 
 <!-- SEG:m68741:entry:auto-243 -->
 [[MATH:27]]
@@ -740,7 +740,7 @@ Electron affinity of F
 [[MATH:30]]
 
 <!-- SEG:m68741:entry:auto-248 -->
-Negative of the lattice energy of CsF({{i}}s{{/i}})
+Negative of the lattice energy of CsF([[i:s]])
 
 <!-- SEG:m68741:entry:auto-249 -->
 [[MATH:31]]
@@ -749,7 +749,7 @@ Negative of the lattice energy of CsF({{i}}s{{/i}})
 [[MATH:32]]
 
 <!-- SEG:m68741:entry:auto-251 -->
-Enthalpy of formation of CsF({{i}}s{{/i}}), add steps 1–5
+Enthalpy of formation of CsF([[i:s]]), add steps 1–5
 
 <!-- SEG:m68741:entry:auto-252 -->
 [[MATH:33]]
@@ -761,7 +761,7 @@ Enthalpy of formation of CsF({{i}}s{{/i}}), add steps 1–5
 Thus, the lattice energy can be calculated from other values. For cesium fluoride, using this data, the lattice energy is:
 
 <!-- SEG:m68741:para:fs-idm78151632 -->
-The Born-Haber cycle may also be used to calculate any one of the other quantities in the equation for lattice energy, provided that the remainder is known. For example, if the relevant enthalpy of sublimation [[MATH:35]] ionization energy (IE), bond dissociation enthalpy (D), lattice energy Δ{{i}}H{{/i}}[[sub:lattice,]] and standard enthalpy of formation [[MATH:36]] are known, the Born-Haber cycle can be used to determine the electron affinity of an atom.
+The Born-Haber cycle may also be used to calculate any one of the other quantities in the equation for lattice energy, provided that the remainder is known. For example, if the relevant enthalpy of sublimation [[MATH:35]] ionization energy (IE), bond dissociation enthalpy (D), lattice energy Δ[[i:H]][[sub:lattice,]] and standard enthalpy of formation [[MATH:36]] are known, the Born-Haber cycle can be used to determine the electron affinity of an atom.
 
 <!-- SEG:m68741:para:fs-idm10039728 -->
 Lattice energies calculated for ionic compounds are typically much higher than bond dissociation energies measured for covalent bonds. Whereas lattice energies typically fall in the range of 600–4000 kJ/mol (some even higher), covalent bond dissociation energies are typically between 150–400 kJ/mol for single bonds. Keep in mind, however, that these are not directly comparable values. For ionic compounds, lattice energies are associated with many interactions, as cations and anions pack together in an extended lattice. For covalent bonds, the bond dissociation energy is associated with the interaction of just two atoms.
@@ -779,7 +779,7 @@ Key Equations
 Bond energy for a diatomic molecule: [[MATH:37]]
 
 <!-- SEG:m68741:entry:auto-261 -->
-Enthalpy change: Δ{{i}}H{{/i}} = ƩD[[sub:bonds broken]] – ƩD[[sub:bonds formed]]
+Enthalpy change: Δ[[i:H]] = ƩD[[sub:bonds broken]] – ƩD[[sub:bonds formed]]
 
 <!-- SEG:m68741:entry:auto-262 -->
 Lattice energy for a solid MX: [[MATH:38]]
@@ -812,7 +812,7 @@ Which bond in each of the following pairs of bonds is the strongest?
 (f) C–N or C–O
 
 <!-- SEG:m68741:problem:fs-idm20426752 -->
-Using the bond energies in [#fs-idp13638832], determine the approximate enthalpy change for each of the following reactions:
+Using the bond energies in [[xref:fs-idp13638832]], determine the approximate enthalpy change for each of the following reactions:
 
 <!-- SEG:m68741:problem:fs-idp13624240 -->
 (a) [[MATH:44]]
@@ -827,7 +827,7 @@ Using the bond energies in [#fs-idp13638832], determine the approximate enthalpy
 (a) −114 kJ; (b) 30 kJ; (c) −1055 kJ
 
 <!-- SEG:m68741:problem:fs-idp240397744 -->
-Using the bond energies in [#fs-idp13638832], determine the approximate enthalpy change for each of the following reactions:
+Using the bond energies in [[xref:fs-idp13638832]], determine the approximate enthalpy change for each of the following reactions:
 
 <!-- SEG:m68741:problem:fs-idp188770912 -->
 (a) [[MATH:47]]
@@ -845,25 +845,25 @@ When a molecule can form two different structures, the structure with the strong
 The greater bond energy is in the figure on the left. It is the more stable form.
 
 <!-- SEG:m68741:problem:fs-idm22015856 -->
-How does the bond energy of HCl({{i}}g{{/i}}) differ from the standard enthalpy of formation of HCl({{i}}g{{/i}})?
+How does the bond energy of HCl([[i:g]]) differ from the standard enthalpy of formation of HCl([[i:g]])?
 
 <!-- SEG:m68741:problem:fs-idp16480976 -->
-Using the standard enthalpy of formation data in [Appendix G](doc:m68865), show how the standard enthalpy of formation of HCl({{i}}g{{/i}}) can be used to determine the bond energy.
+Using the standard enthalpy of formation data in [[docref:Appendix G|m68865]], show how the standard enthalpy of formation of HCl([[i:g]]) can be used to determine the bond energy.
 
 <!-- SEG:m68741:solution:fs-idm85832672 -->
 [[BR]][[MATH:50]][[BR]] [[MATH:51]]
 
 <!-- SEG:m68741:problem:fs-idp23041312 -->
-Using the standard enthalpy of formation data in [Appendix G](doc:m68865), calculate the bond energy of the carbon-sulfur double bond in CS[[sub:2]].
+Using the standard enthalpy of formation data in [[docref:Appendix G|m68865]], calculate the bond energy of the carbon-sulfur double bond in CS[[sub:2]].
 
 <!-- SEG:m68741:problem:fs-idp16871296 -->
-Using the standard enthalpy of formation data in [Appendix G](doc:m68865), determine which bond is stronger: the S–F bond in SF[[sub:4]]({{i}}g{{/i}}) or in SF[[sub:6]]({{i}}g{{/i}})?
+Using the standard enthalpy of formation data in [[docref:Appendix G|m68865]], determine which bond is stronger: the S–F bond in SF[[sub:4]]([[i:g]]) or in SF[[sub:6]]([[i:g]])?
 
 <!-- SEG:m68741:solution:fs-idm223998784 -->
 The S–F bond in SF[[sub:4]] is stronger.
 
 <!-- SEG:m68741:problem:fs-idp88452992 -->
-Using the standard enthalpy of formation data in [Appendix G](doc:m68865), determine which bond is stronger: the P–Cl bond in PCl[[sub:3]]({{i}}g{{/i}}) or in PCl[[sub:5]]({{i}}g{{/i}})?
+Using the standard enthalpy of formation data in [[docref:Appendix G|m68865]], determine which bond is stronger: the P–Cl bond in PCl[[sub:3]]([[i:g]]) or in PCl[[sub:5]]([[i:g]])?
 
 <!-- SEG:m68741:problem:fs-idp16666592 -->
 Complete the following Lewis structure by adding bonds (not atoms), and then indicate the longest bond:
@@ -872,7 +872,7 @@ Complete the following Lewis structure by adding bonds (not atoms), and then ind
 [[BR]][[MEDIA:1]][[BR]] The C–C single bonds are longest.
 
 <!-- SEG:m68741:problem:fs-idp78457664 -->
-Use the bond energy to calculate an approximate value of Δ{{i}}H{{/i}} for the following reaction. Which is the more stable form of FNO[[sub:2]]?
+Use the bond energy to calculate an approximate value of Δ[[i:H]] for the following reaction. Which is the more stable form of FNO[[sub:2]]?
 
 <!-- SEG:m68741:problem:fs-idp15947888 -->
 Use principles of atomic structure to answer each of the following: {{fn}}This question is taken from the Chemistry Advanced Placement Examination and is used with the permission of the Educational Testing Service.{{/fn}}
@@ -881,7 +881,7 @@ Use principles of atomic structure to answer each of the following: {{fn}}This q
 (a) The radius of the Ca atom is 197 pm; the radius of the Ca[[sup:2+]] ion is 99 pm. Account for the difference.
 
 <!-- SEG:m68741:problem:fs-idp235052400 -->
-(b) The lattice energy of CaO({{i}}s{{/i}}) is –3460 kJ/mol; the lattice energy of K[[sub:2]]O is –2240 kJ/mol. Account for the difference.
+(b) The lattice energy of CaO([[i:s]]) is –3460 kJ/mol; the lattice energy of K[[sub:2]]O is –2240 kJ/mol. Account for the difference.
 
 <!-- SEG:m68741:problem:fs-idp15127728 -->
 (c) Given these ionization values, explain the difference between Ca and K with regard to their first and second ionization energies.
@@ -890,7 +890,7 @@ Use principles of atomic structure to answer each of the following: {{fn}}This q
 (d) The first ionization energy of Mg is 738 kJ/mol and that of Al is 578 kJ/mol. Account for this difference.
 
 <!-- SEG:m68741:solution:fs-idp77726880 -->
-(a) When two electrons are removed from the valence shell, the Ca radius loses the outermost energy level and reverts to the lower {{i}}n{{/i}} = 3 level, which is much smaller in radius. (b) The +2 charge on calcium pulls the oxygen much closer compared with K, thereby increasing the lattice energy relative to a less charged ion. (c) Removal of the 4{{i}}s{{/i}} electron in Ca requires more energy than removal of the 4{{i}}s{{/i}} electron in K because of the stronger attraction of the nucleus and the extra energy required to break the pairing of the electrons. The second ionization energy for K requires that an electron be removed from a lower energy level, where the attraction is much stronger from the nucleus for the electron. In addition, energy is required to unpair two electrons in a full orbital. For Ca, the second ionization potential requires removing only a lone electron in the exposed outer energy level. (d) In Al, the removed electron is relatively unprotected and unpaired in a {{i}}p{{/i}} orbital. The higher energy for Mg mainly reflects the unpairing of the 2{{i}}s{{/i}} electron.
+(a) When two electrons are removed from the valence shell, the Ca radius loses the outermost energy level and reverts to the lower [[i:n]] = 3 level, which is much smaller in radius. (b) The +2 charge on calcium pulls the oxygen much closer compared with K, thereby increasing the lattice energy relative to a less charged ion. (c) Removal of the 4[[i:s]] electron in Ca requires more energy than removal of the 4[[i:s]] electron in K because of the stronger attraction of the nucleus and the extra energy required to break the pairing of the electrons. The second ionization energy for K requires that an electron be removed from a lower energy level, where the attraction is much stronger from the nucleus for the electron. In addition, energy is required to unpair two electrons in a full orbital. For Ca, the second ionization potential requires removing only a lone electron in the exposed outer energy level. (d) In Al, the removed electron is relatively unprotected and unpaired in a [[i:p]] orbital. The higher energy for Mg mainly reflects the unpairing of the 2[[i:s]] electron.
 
 <!-- SEG:m68741:entry:auto-299 -->
 Element
@@ -1061,7 +1061,7 @@ Born-Haber cycle
 thermochemical cycle relating the various energetic steps involved in the formation of an ionic solid from the relevant elements
 
 <!-- SEG:m68741:glossary-term:fs-idp29295648-term -->
-lattice energy (ΔHlattice)
+lattice energy (Δ[[i:H]][[sub:lattice]])
 
 <!-- SEG:m68741:glossary-def:fs-idp29295648-def -->
 energy required to separate one mole of an ionic solid into its component gaseous ions

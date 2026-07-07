@@ -977,19 +977,19 @@ What happens to [[MATH:113]] (becomes more negative or more positive) for the fo
 (a) Increasing the oxygen partial pressure will yield a decrease in [[i:Q]] and [[MATH:117]] thus becomes more negative. (b) Increasing the oxygen partial pressure will yield a decrease in [[i:Q]] and [[MATH:118]] thus becomes more negative. (c) Increasing the oxygen partial pressure will yield an increase in [[i:Q]] and [[MATH:119]] thus becomes more positive.
 
 <!-- SEG:m68819:glossary-term:fs-idm119810368-term -->
-Gibbs free energy change (G)
+Gibbs free energy change ([[i:G]])
 
 <!-- SEG:m68819:glossary-def:fs-idm119810368-def -->
 thermodynamic property defined in terms of system enthalpy and entropy; all spontaneous processes involve a decrease in [[i:G]]
 
 <!-- SEG:m68819:glossary-term:fs-idm119807952-term -->
-standard free energy change (ΔG°)
+standard free energy change (Δ[[i:G]]°)
 
 <!-- SEG:m68819:glossary-def:fs-idm119807952-def -->
 change in free energy for a process occurring under standard conditions (1 bar pressure for gases, 1 M concentration for solutions)
 
 <!-- SEG:m68819:glossary-term:fs-idm119806032-term -->
-standard free energy of formation (ΔGf°)
+standard free energy of formation [[MATH:120]]
 
 <!-- SEG:m68819:glossary-def:fs-idm119806032-def -->
 change in free energy accompanying the formation of one mole of substance from its elements in their standard states

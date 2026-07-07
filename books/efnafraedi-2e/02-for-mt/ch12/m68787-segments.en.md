@@ -20,13 +20,13 @@ The rate of a reaction depends on the nature of the participating substances. Re
 The Physical States of the Reactants
 
 <!-- SEG:m68787:para:fs-idm89852336 -->
-A chemical reaction between two or more substances requires intimate contact between the reactants. When reactants are in different physical states, or phases (solid, liquid, gaseous, dissolved), the reaction takes place only at the interface between the phases. Consider the heterogeneous reaction between a solid phase and either a liquid or gaseous phase. Compared with the reaction rate for large solid particles, the rate for smaller particles will be greater because the surface area in contact with the other reactant phase is greater. For example, large pieces of iron react more slowly with acids than they do with finely divided iron powder ([#CNX_Chem_12_02_AcidDissol]). Large pieces of wood smolder, smaller pieces burn rapidly, and saw dust burns explosively.
+A chemical reaction between two or more substances requires intimate contact between the reactants. When reactants are in different physical states, or phases (solid, liquid, gaseous, dissolved), the reaction takes place only at the interface between the phases. Consider the heterogeneous reaction between a solid phase and either a liquid or gaseous phase. Compared with the reaction rate for large solid particles, the rate for smaller particles will be greater because the surface area in contact with the other reactant phase is greater. For example, large pieces of iron react more slowly with acids than they do with finely divided iron powder ([[xref:CNX_Chem_12_02_AcidDissol]]). Large pieces of wood smolder, smaller pieces burn rapidly, and saw dust burns explosively.
 
 <!-- SEG:m68787:caption:CNX_Chem_12_02_AcidDissol-caption -->
-(a) Iron powder reacts rapidly with dilute hydrochloric acid and produces bubbles of hydrogen gas: Fe({{i}}s{{/i}}) + HCl({{i}}aq{{/i}}) [[MATH:1]] 2FeCl[[sub:2]]({{i}}aq{{/i}}) + 3H[[sub:2]]({{i}}g{{/i}}). (b) An iron nail reacts more slowly because the surface area exposed to the acid is much less.
+(a) Iron powder reacts rapidly with dilute hydrochloric acid and produces bubbles of hydrogen gas: Fe([[i:s]]) + HCl([[i:aq]]) [[MATH:1]] 2FeCl[[sub:2]]([[i:aq]]) + 3H[[sub:2]]([[i:g]]). (b) An iron nail reacts more slowly because the surface area exposed to the acid is much less.
 
 <!-- SEG:m68787:para:fs-idm33181984 -->
-Watch [this video](http://openstax.org/l/16cesium) to see the reaction of cesium with water in slow motion and a discussion of how the state of reactants and particle size affect reaction rates.
+Watch [[link:this video|http://openstax.org/l/16cesium]] to see the reaction of cesium with water in slow motion and a discussion of how the state of reactants and particle size affect reaction rates.
 
 <!-- SEG:m68787:title:fs-idm100022464-title -->
 Temperature of the Reactants
@@ -38,7 +38,7 @@ Chemical reactions typically occur faster at higher temperatures. Food can spoil
 Concentrations of the Reactants
 
 <!-- SEG:m68787:para:fs-idm31855392 -->
-The rates of many reactions depend on the concentrations of the reactants. Rates usually increase when the concentration of one or more of the reactants increases. For example, calcium carbonate (CaCO[[sub:3]]) deteriorates as a result of its reaction with the pollutant sulfur dioxide. The rate of this reaction depends on the amount of sulfur dioxide in the air ([#CNX_Chem_12_02_NYSStatue]). An acidic oxide, sulfur dioxide combines with water vapor in the air to produce sulfurous acid in the following reaction:
+The rates of many reactions depend on the concentrations of the reactants. Rates usually increase when the concentration of one or more of the reactants increases. For example, calcium carbonate (CaCO[[sub:3]]) deteriorates as a result of its reaction with the pollutant sulfur dioxide. The rate of this reaction depends on the amount of sulfur dioxide in the air ([[xref:CNX_Chem_12_02_NYSStatue]]). An acidic oxide, sulfur dioxide combines with water vapor in the air to produce sulfurous acid in the following reaction:
 
 <!-- SEG:m68787:para:fs-idp125234816 -->
 Calcium carbonate reacts with sulfurous acid as follows:
@@ -50,7 +50,7 @@ In a polluted atmosphere where the concentration of sulfur dioxide is high, calc
 Statues made from carbonate compounds such as limestone and marble typically weather slowly over time due to the actions of water, and thermal expansion and contraction. However, pollutants like sulfur dioxide can accelerate weathering. As the concentration of air pollutants increases, deterioration of limestone occurs more rapidly. (credit: James P Fisher III)
 
 <!-- SEG:m68787:para:fs-idm30692176 -->
-Phosphorus burns rapidly in air, but it will burn even more rapidly if the concentration of oxygen is higher. Watch this [video](http://openstax.org/l/16phosphor) to see an example.
+Phosphorus burns rapidly in air, but it will burn even more rapidly if the concentration of oxygen is higher. Watch this [[link:video|http://openstax.org/l/16phosphor]] to see an example.
 
 <!-- SEG:m68787:title:fs-idm33945488-title -->
 The Presence of a Catalyst
@@ -62,7 +62,7 @@ Relatively dilute aqueous solutions of hydrogen peroxide, H[[sub:2]]O[[sub:2]], 
 Under typical conditions, this decomposition occurs very slowly. When dilute H[[sub:2]]O[[sub:2]](aq) is poured onto an open wound, however, the reaction occurs rapidly and the solution foams because of the vigorous production of oxygen gas. This dramatic difference is caused by the presence of substances within the wound’s exposed tissues that accelerate the decomposition process. Substances that function to increase the rate of a reaction are called {{term}}catalysts{{/term}}, a topic treated in greater detail later in this chapter.
 
 <!-- SEG:m68787:para:fs-idm89663808 -->
-Chemical reactions occur when molecules collide with each other and undergo a chemical transformation. Before physically performing a reaction in a laboratory, scientists can use molecular modeling simulations to predict how the parameters discussed earlier will influence the rate of a reaction. Use the [PhET Reactions &amp; Rates interactive](http://openstax.org/l/16PHETreaction) to explore how temperature, concentration, and the nature of the reactants affect reaction rates.
+Chemical reactions occur when molecules collide with each other and undergo a chemical transformation. Before physically performing a reaction in a laboratory, scientists can use molecular modeling simulations to predict how the parameters discussed earlier will influence the rate of a reaction. Use the [[link:PhET Reactions &amp; Rates interactive|http://openstax.org/l/16PHETreaction]] to explore how temperature, concentration, and the nature of the reactants affect reaction rates.
 
 <!-- SEG:m68787:title:fs-idm70094032-title -->
 Key Concepts and Summary
@@ -83,7 +83,7 @@ Higher molarity increases the rate of the reaction. Higher temperature increases
 Explain why an egg cooks more slowly in boiling water in Denver than in New York City. (Hint: Consider the effect of temperature on reaction rate and the effect of pressure on boiling point.)
 
 <!-- SEG:m68787:problem:fs-idm176952992 -->
-Go to the [PhET Reactions &amp; Rates](http://openstax.org/l/16PHETreaction) interactive. Use the Single Collision tab to represent how the collision between monatomic oxygen (O) and carbon monoxide (CO) results in the breaking of one bond and the formation of another. Pull back on the red plunger to release the atom and observe the results. Then, click on “Reload Launcher” and change to “Angled shot” to see the difference.
+Go to the [[link:PhET Reactions &amp; Rates|http://openstax.org/l/16PHETreaction]] interactive. Use the Single Collision tab to represent how the collision between monatomic oxygen (O) and carbon monoxide (CO) results in the breaking of one bond and the formation of another. Pull back on the red plunger to release the atom and observe the results. Then, click on “Reload Launcher” and change to “Angled shot” to see the difference.
 
 <!-- SEG:m68787:problem:fs-idm60742624 -->
 (a) What happens when the angle of the collision is changed?
@@ -95,10 +95,10 @@ Go to the [PhET Reactions &amp; Rates](http://openstax.org/l/16PHETreaction) int
 (a) Depending on the angle selected, the atom may take a long time to collide with the molecule and, when a collision does occur, it may not result in the breaking of the bond and the forming of the other. (b) Particles of reactant must come into contact with each other before they can react.
 
 <!-- SEG:m68787:problem:fs-idm63416144 -->
-In the [PhET Reactions &amp; Rates](http://openstax.org/l/16PHETreaction) interactive, use the “Many Collisions” tab to observe how multiple atoms and molecules interact under varying conditions. Select a molecule to pump into the chamber. Set the initial temperature and select the current amounts of each reactant. Select “Show bonds” under Options. How is the rate of the reaction affected by concentration and temperature?
+In the [[link:PhET Reactions &amp; Rates|http://openstax.org/l/16PHETreaction]] interactive, use the “Many Collisions” tab to observe how multiple atoms and molecules interact under varying conditions. Select a molecule to pump into the chamber. Set the initial temperature and select the current amounts of each reactant. Select “Show bonds” under Options. How is the rate of the reaction affected by concentration and temperature?
 
 <!-- SEG:m68787:problem:fs-idm26937872 -->
-In the [PhET Reactions &amp; Rates](http://openstax.org/l/16PHETreaction) interactive, on the Many Collisions tab, set up a simulation with 15 molecules of A and 10 molecules of BC. Select “Show Bonds” under Options.
+In the [[link:PhET Reactions &amp; Rates|http://openstax.org/l/16PHETreaction]] interactive, on the Many Collisions tab, set up a simulation with 15 molecules of A and 10 molecules of BC. Select “Show Bonds” under Options.
 
 <!-- SEG:m68787:problem:fs-idm148287808 -->
 (a) Leave the Initial Temperature at the default setting. Observe the reaction. Is the rate of reaction fast or slow?
@@ -107,7 +107,7 @@ In the [PhET Reactions &amp; Rates](http://openstax.org/l/16PHETreaction) intera
 (b) Click “Pause” and then “Reset All,” and then enter 15 molecules of A and 10 molecules of BC once again. Select “Show Bonds” under Options. This time, increase the initial temperature until, on the graph, the total average energy line is completely above the potential energy curve. Describe what happens to the reaction.
 
 <!-- SEG:m68787:solution:fs-idm111616960 -->
-(a) very slow; (b) As the temperature is increased, the reaction proceeds at a faster rate. The amount of reactants decreases, and the amount of products increases. After a while, there is a roughly equal amount of {{i}}BC{{/i}}, {{i}}AB{{/i}}, and {{i}}C{{/i}} in the mixture and a slight excess of {{i}}A{{/i}}.
+(a) very slow; (b) As the temperature is increased, the reaction proceeds at a faster rate. The amount of reactants decreases, and the amount of products increases. After a while, there is a roughly equal amount of [[i:BC]], [[i:AB]], and [[i:C]] in the mixture and a slight excess of [[i:A]].
 
 <!-- SEG:m68787:glossary-term:fs-idp102379584-term -->
 catalyst

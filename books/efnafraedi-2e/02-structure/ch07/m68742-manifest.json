@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68742",
-  "extractedAt": "2026-03-19T19:48:06.147Z",
+  "extractedAt": "2026-07-07T09:12:36.496Z",
   "sourceHash": "522195d80aa86fd1",
   "segmentCount": 327,
   "segmentIds": [
@@ -387,6 +387,8 @@
   "elementIds": {
     "figure": [
       "CNX_Chem_07_06_CH2O",
+      "CNX_Chem_07_06_BeF2",
+      "CNX_Chem_07_06_Egeom",
       "CNX_Chem_07_06_CH4",
       "CNX_Chem_07_06_NH3",
       "CNX_Chem_07_06_molgeom",
@@ -396,11 +398,9 @@
       "CNX_Chem_07_06_H2Omol",
       "CNX_Chem_07_06_SF4mol",
       "CNX_Chem_07_06_XeF4mol",
-      "CNX_Chem_07_06_BeF2",
-      "CNX_Chem_07_06_Egeom",
-      "CNX_Chem_07_06_Dipolfield",
       "CNX_Chem_07_06_BondVector",
-      "CNX_Chem_07_06_CO2H2Odip"
+      "CNX_Chem_07_06_CO2H2Odip",
+      "CNX_Chem_07_06_Dipolfield"
     ],
     "table": [],
     "example": [

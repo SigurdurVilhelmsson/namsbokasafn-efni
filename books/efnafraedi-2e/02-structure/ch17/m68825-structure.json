@@ -22,6 +22,11 @@
       "segmentId": "m68825:para:fs-idp5014576"
     },
     {
+      "type": "equation",
+      "id": "fs-idm385208672",
+      "class": "unnumbered"
+    },
+    {
       "type": "figure",
       "id": "CNX_Chem_17_08_Daniell",
       "caption": {
@@ -33,11 +38,6 @@
         "src": "../../media/CNX_Chem_17_08_Daniell.jpg",
         "mimeType": "image/jpeg"
       }
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm385208672",
-      "class": "unnumbered"
     },
     {
       "type": "para",
@@ -579,5 +579,5 @@
       }
     ]
   },
-  "sectionOrder": null
+  "sectionOrder": 5
 }

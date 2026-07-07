@@ -32,6 +32,98 @@
       },
       "content": [
         {
+          "type": "para",
+          "id": "fs-idm144417840",
+          "segmentId": "m68702:para:fs-idm144417840"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp62101552",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp85788016",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm144352192",
+          "segmentId": "m68702:para:fs-idm144352192"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm95716912",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp9583632",
+          "class": "unnumbered"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm150394080",
+          "title": {
+            "segmentId": "m68702:example-title:fs-idm150394080-title",
+            "text": "Calculation of Percent Composition"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm20386912",
+              "segmentId": "m68702:para:fs-idm20386912"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm111369568",
+              "segmentId": "m68702:para:fs-idm111369568",
+              "title": {
+                "segmentId": "m68702:para-title:fs-idm111369568-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm125592496",
+              "segmentId": "m68702:para:fs-idm125592496"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp63575312",
+              "segmentId": "m68702:para:fs-idp63575312",
+              "title": {
+                "segmentId": "m68702:para-title:fs-idp63575312-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm146819008",
+              "segmentId": "m68702:para:fs-idm146819008"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm181555088"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp63474576",
+              "title": {
+                "segmentId": "m68702:note-title:fs-idp63474576-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm146819008",
+                  "segmentId": "m68702:para:fs-idm146819008"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "type": "section",
           "id": "fs-idm114973648",
           "class": null,
@@ -126,98 +218,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idm144417840",
-          "segmentId": "m68702:para:fs-idm144417840"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp62101552",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp85788016",
-          "class": "unnumbered"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm144352192",
-          "segmentId": "m68702:para:fs-idm144352192"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idm95716912",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp9583632",
-          "class": "unnumbered"
-        },
-        {
-          "type": "example",
-          "id": "fs-idm150394080",
-          "title": {
-            "segmentId": "m68702:example-title:fs-idm150394080-title",
-            "text": "Calculation of Percent Composition"
-          },
-          "content": [
-            {
-              "type": "para",
-              "id": "fs-idm20386912",
-              "segmentId": "m68702:para:fs-idm20386912"
-            },
-            {
-              "type": "para",
-              "id": "fs-idm111369568",
-              "segmentId": "m68702:para:fs-idm111369568",
-              "title": {
-                "segmentId": "m68702:para-title:fs-idm111369568-title",
-                "text": "Solution"
-              }
-            },
-            {
-              "type": "para",
-              "id": "fs-idm125592496",
-              "segmentId": "m68702:para:fs-idm125592496"
-            },
-            {
-              "type": "para",
-              "id": "fs-idp63575312",
-              "segmentId": "m68702:para:fs-idp63575312",
-              "title": {
-                "segmentId": "m68702:para-title:fs-idp63575312-title",
-                "text": "Check Your Learning"
-              }
-            },
-            {
-              "type": "para",
-              "id": "fs-idm146819008",
-              "segmentId": "m68702:para:fs-idm146819008"
-            },
-            {
-              "type": "equation",
-              "id": "fs-idm181555088"
-            },
-            {
-              "type": "note",
-              "id": "fs-idp63474576",
-              "title": {
-                "segmentId": "m68702:note-title:fs-idp63474576-title",
-                "text": "Answer:"
-              },
-              "content": [
-                {
-                  "type": "para",
-                  "id": "fs-idm146819008",
-                  "segmentId": "m68702:para:fs-idm146819008"
-                }
-              ]
-            }
-          ]
         }
       ]
     },
@@ -230,116 +230,6 @@
         "text": "Determination of Empirical Formulas"
       },
       "content": [
-        {
-          "type": "section",
-          "id": "fs-idp48607392",
-          "class": null,
-          "title": {
-            "segmentId": "m68702:title:fs-idp48607392-title",
-            "text": "Deriving Empirical Formulas from Percent Composition"
-          },
-          "content": [
-            {
-              "type": "para",
-              "id": "fs-idm130157248",
-              "segmentId": "m68702:para:fs-idm130157248"
-            },
-            {
-              "type": "example",
-              "id": "fs-idp11336208",
-              "title": {
-                "segmentId": "m68702:example-title:fs-idp11336208-title",
-                "text": "Determining an Empirical Formula from Percent Composition"
-              },
-              "content": [
-                {
-                  "type": "para",
-                  "id": "fs-idm16856224",
-                  "segmentId": "m68702:para:fs-idm16856224"
-                },
-                {
-                  "type": "para",
-                  "id": "fs-idp8854528",
-                  "segmentId": "m68702:para:fs-idp8854528",
-                  "title": {
-                    "segmentId": "m68702:para-title:fs-idp8854528-title",
-                    "text": "Solution"
-                  }
-                },
-                {
-                  "type": "para",
-                  "id": "fs-idp6456464",
-                  "segmentId": "m68702:para:fs-idp6456464"
-                },
-                {
-                  "type": "para",
-                  "id": "fs-idm174491744",
-                  "segmentId": "m68702:para:fs-idm174491744"
-                },
-                {
-                  "type": "para",
-                  "id": "fs-idm106276304",
-                  "segmentId": "m68702:para:fs-idm106276304"
-                },
-                {
-                  "type": "para",
-                  "id": "fs-idm153398992",
-                  "segmentId": "m68702:para:fs-idm153398992",
-                  "title": {
-                    "segmentId": "m68702:para-title:fs-idm153398992-title",
-                    "text": "Check Your Learning"
-                  }
-                },
-                {
-                  "type": "para",
-                  "id": "fs-idm49848016",
-                  "segmentId": "m68702:para:fs-idm49848016"
-                },
-                {
-                  "type": "equation",
-                  "id": "fs-idm50369216"
-                },
-                {
-                  "type": "equation",
-                  "id": "fs-idm107059040"
-                },
-                {
-                  "type": "equation",
-                  "id": "fs-idm112786736"
-                },
-                {
-                  "type": "note",
-                  "id": "fs-idm61160608",
-                  "title": {
-                    "segmentId": "m68702:note-title:fs-idm61160608-title",
-                    "text": "Answer:"
-                  },
-                  "content": [
-                    {
-                      "type": "para",
-                      "id": "fs-idm49848016",
-                      "segmentId": "m68702:para:fs-idm49848016"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "figure",
-              "id": "CNX_Chem_03_03_BrewTank",
-              "class": "scaled-down",
-              "caption": {
-                "segmentId": "m68702:caption:CNX_Chem_03_03_BrewTank-caption"
-              },
-              "media": {
-                "id": "fs-idm183208576",
-                "alt": "A picture is shown of four copper-colored industrial containers with a large pipe connecting to the top of each one.",
-                "src": "../../media/CNX_Chem_03_03_BrewTank.jpg",
-                "mimeType": "image/jpeg"
-              }
-            }
-          ]
-        },
         {
           "type": "para",
           "id": "fs-idm181573632",
@@ -533,6 +423,116 @@
               "type": "para",
               "id": "fs-idp89502368",
               "segmentId": "m68702:para:fs-idp89502368"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idp48607392",
+          "class": null,
+          "title": {
+            "segmentId": "m68702:title:fs-idp48607392-title",
+            "text": "Deriving Empirical Formulas from Percent Composition"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm130157248",
+              "segmentId": "m68702:para:fs-idm130157248"
+            },
+            {
+              "type": "example",
+              "id": "fs-idp11336208",
+              "title": {
+                "segmentId": "m68702:example-title:fs-idp11336208-title",
+                "text": "Determining an Empirical Formula from Percent Composition"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm16856224",
+                  "segmentId": "m68702:para:fs-idm16856224"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp8854528",
+                  "segmentId": "m68702:para:fs-idp8854528",
+                  "title": {
+                    "segmentId": "m68702:para-title:fs-idp8854528-title",
+                    "text": "Solution"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp6456464",
+                  "segmentId": "m68702:para:fs-idp6456464"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm174491744",
+                  "segmentId": "m68702:para:fs-idm174491744"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm106276304",
+                  "segmentId": "m68702:para:fs-idm106276304"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm153398992",
+                  "segmentId": "m68702:para:fs-idm153398992",
+                  "title": {
+                    "segmentId": "m68702:para-title:fs-idm153398992-title",
+                    "text": "Check Your Learning"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm49848016",
+                  "segmentId": "m68702:para:fs-idm49848016"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm50369216"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm107059040"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm112786736"
+                },
+                {
+                  "type": "note",
+                  "id": "fs-idm61160608",
+                  "title": {
+                    "segmentId": "m68702:note-title:fs-idm61160608-title",
+                    "text": "Answer:"
+                  },
+                  "content": [
+                    {
+                      "type": "para",
+                      "id": "fs-idm49848016",
+                      "segmentId": "m68702:para:fs-idm49848016"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_03_03_BrewTank",
+              "class": "scaled-down",
+              "caption": {
+                "segmentId": "m68702:caption:CNX_Chem_03_03_BrewTank-caption"
+              },
+              "media": {
+                "id": "fs-idm183208576",
+                "alt": "A picture is shown of four copper-colored industrial containers with a large pipe connecting to the top of each one.",
+                "src": "../../media/CNX_Chem_03_03_BrewTank.jpg",
+                "mimeType": "image/jpeg"
+              }
             }
           ]
         }

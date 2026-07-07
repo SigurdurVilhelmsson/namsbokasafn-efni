@@ -70,19 +70,6 @@
       "segmentId": "m68709:para:fs-idm33251968"
     },
     {
-      "type": "figure",
-      "id": "CNX_Chem_04_01_rxn3",
-      "caption": {
-        "segmentId": "m68709:caption:CNX_Chem_04_01_rxn3-caption"
-      },
-      "media": {
-        "id": "fs-idp178489152",
-        "alt": "This image has a left side, labeled, “Mixture before reaction” separated by a vertical dashed line from right side labeled, “Mixture after reaction.” On the left side of the figure, two types of molecules are illustrated with space-filling models. Six of the molecules have only two red spheres bonded together. Three of the molecules have four small white spheres evenly distributed about and bonded to a central, larger black sphere. On the right side of the dashed vertical line, two types of molecules which are different from those on the left side are shown. Six of the molecules have a central red sphere to which smaller white spheres are bonded. The white spheres are not opposite each other on the red atoms, giving the molecule a bent shape or appearance. The second molecule type has a central black sphere to which two red spheres are attached on opposite sides, resulting in a linear shape or appearance. Note that in space filling models of molecules, spheres appear slightly compressed in regions where there is a bond between two atoms. On each side of the dashed line, twelve red, three black, and twelve white spheres are present.",
-        "src": "../../media/CNX_Chem_04_01_rxn3.jpg",
-        "mimeType": "image/jpeg"
-      }
-    },
-    {
       "type": "list",
       "id": "fs-idp42981680",
       "listType": "bulleted",
@@ -102,6 +89,19 @@
           "segmentId": "m68709:item:fs-idp42981680-item-3"
         }
       ]
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_04_01_rxn3",
+      "caption": {
+        "segmentId": "m68709:caption:CNX_Chem_04_01_rxn3-caption"
+      },
+      "media": {
+        "id": "fs-idp178489152",
+        "alt": "This image has a left side, labeled, “Mixture before reaction” separated by a vertical dashed line from right side labeled, “Mixture after reaction.” On the left side of the figure, two types of molecules are illustrated with space-filling models. Six of the molecules have only two red spheres bonded together. Three of the molecules have four small white spheres evenly distributed about and bonded to a central, larger black sphere. On the right side of the dashed vertical line, two types of molecules which are different from those on the left side are shown. Six of the molecules have a central red sphere to which smaller white spheres are bonded. The white spheres are not opposite each other on the red atoms, giving the molecule a bent shape or appearance. The second molecule type has a central black sphere to which two red spheres are attached on opposite sides, resulting in a linear shape or appearance. Note that in space filling models of molecules, spheres appear slightly compressed in regions where there is a bond between two atoms. On each side of the dashed line, twelve red, three black, and twelve white spheres are present.",
+        "src": "../../media/CNX_Chem_04_01_rxn3.jpg",
+        "mimeType": "image/jpeg"
+      }
     },
     {
       "type": "section",

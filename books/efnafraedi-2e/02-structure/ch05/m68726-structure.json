@@ -87,20 +87,6 @@
       "segmentId": "m68726:para:fs-idm10925216"
     },
     {
-      "type": "figure",
-      "id": "CNX_Chem_05_02_HeatTrans2",
-      "class": "scaled-down",
-      "caption": {
-        "segmentId": "m68726:caption:CNX_Chem_05_02_HeatTrans2-caption"
-      },
-      "media": {
-        "id": "fs-idm50825408",
-        "alt": "Two diagrams are shown and labeled a and b. Each diagram is composed of a rectangular container with a thermometer inserted inside from the top right corner. Both containers are connected by a right-facing arrow. Both containers are full of water, which is depicted by the letter “W,” and each container has a square in the middle which represents a metal which is labeled with a letter “M.” In diagram a, the metal is drawn in brown and has three arrows facing away from it. Each arrow has the letter “q” at its end. The metal is labeled “system” and the water is labeled “surroundings.” The thermometer in this diagram has a relatively low reading. In diagram b, the metal is depicted in purple and the thermometer has a relatively high reading.",
-        "src": "../../media/CNX_Chem_05_02_HeatTrans2.jpg",
-        "mimeType": "image/jpeg"
-      }
-    },
-    {
       "type": "equation",
       "id": "fs-idm194903168",
       "class": "unnumbered"
@@ -119,6 +105,20 @@
       "type": "para",
       "id": "fs-idm129199216",
       "segmentId": "m68726:para:fs-idm129199216"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_05_02_HeatTrans2",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68726:caption:CNX_Chem_05_02_HeatTrans2-caption"
+      },
+      "media": {
+        "id": "fs-idm50825408",
+        "alt": "Two diagrams are shown and labeled a and b. Each diagram is composed of a rectangular container with a thermometer inserted inside from the top right corner. Both containers are connected by a right-facing arrow. Both containers are full of water, which is depicted by the letter “W,” and each container has a square in the middle which represents a metal which is labeled with a letter “M.” In diagram a, the metal is drawn in brown and has three arrows facing away from it. Each arrow has the letter “q” at its end. The metal is labeled “system” and the water is labeled “surroundings.” The thermometer in this diagram has a relatively low reading. In diagram b, the metal is depicted in purple and the thermometer has a relatively high reading.",
+        "src": "../../media/CNX_Chem_05_02_HeatTrans2.jpg",
+        "mimeType": "image/jpeg"
+      }
     },
     {
       "type": "example",

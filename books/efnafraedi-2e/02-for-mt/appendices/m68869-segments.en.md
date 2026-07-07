@@ -8,7 +8,7 @@ Formation Constants for Complex Ions
 Equilibrium
 
 <!-- SEG:m68869:entry:auto-4 -->
-{{i}}K{{/i}}[[sub:f]]
+[[i:K]][[sub:f]]
 
 <!-- SEG:m68869:entry:auto-5 -->
 [[MATH:1]]

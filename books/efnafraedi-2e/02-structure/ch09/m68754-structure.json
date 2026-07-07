@@ -78,20 +78,6 @@
       "segmentId": "m68754:para:fs-idp161500496"
     },
     {
-      "type": "figure",
-      "id": "CNX_Chem_09_04_Effusion2",
-      "class": "scaled-down",
-      "caption": {
-        "segmentId": "m68754:caption:CNX_Chem_09_04_Effusion2-caption"
-      },
-      "media": {
-        "id": "fs-idp1374224",
-        "alt": "This figure shows two photos. The first photo shows an inflated orange balloon and an inflated blue balloon. Both balloons are about the same size. The second photo shows the same two balloons, but the orange one is now smaller than the blue one.",
-        "src": "../../media/CNX_Chem_09_04_Effusion2.jpg",
-        "mimeType": "image/jpeg"
-      }
-    },
-    {
       "type": "equation",
       "id": "fs-idp1970368",
       "class": "unnumbered"
@@ -105,6 +91,20 @@
       "type": "equation",
       "id": "fs-idp39119056",
       "class": "unnumbered"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_09_04_Effusion2",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68754:caption:CNX_Chem_09_04_Effusion2-caption"
+      },
+      "media": {
+        "id": "fs-idp1374224",
+        "alt": "This figure shows two photos. The first photo shows an inflated orange balloon and an inflated blue balloon. Both balloons are about the same size. The second photo shows the same two balloons, but the orange one is now smaller than the blue one.",
+        "src": "../../media/CNX_Chem_09_04_Effusion2.jpg",
+        "mimeType": "image/jpeg"
+      }
     },
     {
       "type": "example",

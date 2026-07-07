@@ -311,7 +311,7 @@ No. Au[[sup:+]] has a complete 5[[i:d]] sublevel.
 [CuCl[[sub:4]]][[sup:2−]] is green. [Cu(H[[sub:2]]O)[[sub:6]]][[sup:2+]]is blue. Which absorbs higher-energy photons? Which is predicted to have a larger crystal field splitting?
 
 <!-- SEG:m68844:glossary-term:fs-idm99275552-term -->
-crystal field splitting (Δoct)
+crystal field splitting (Δ[[sub:oct]])
 
 <!-- SEG:m68844:glossary-def:fs-idm99275552-def -->
 difference in energy between the [[i:t]][[sub:2[[i:g]]]] and [[i:e[[sub:g]]]] sets or [[i:t]] and [[i:e]] sets of orbitals
@@ -323,7 +323,7 @@ crystal field theory
 model that explains the energies of the orbitals in transition metals in terms of electrostatic interactions with the ligands but does not include metal ligand bonding
 
 <!-- SEG:m68844:glossary-term:fs-idm148194896-term -->
-eg orbitals
+[[i:e[[sub:g]]]] orbitals
 
 <!-- SEG:m68844:glossary-def:fs-idm148194896-def -->
 set of two [[i:d]] orbitals that are oriented on the Cartesian axes for coordination complexes; in octahedral complexes, they are higher in energy than the [[i:t]][[sub:2[[i:g]]]] orbitals
@@ -365,7 +365,7 @@ strong-field ligand
 ligand that causes larger crystal field splittings
 
 <!-- SEG:m68844:glossary-term:fs-idm104611088-term -->
-t2g orbitals
+[[i:t]][[sub:2[[i:g]]]] orbitals
 
 <!-- SEG:m68844:glossary-def:fs-idm104611088-def -->
 set of three [[i:d]] orbitals aligned between the Cartesian axes for coordination complexes; in octahedral complexes, they are lowered in energy compared to the [[i:e[[sub:g]]]] orbitals according to CFT

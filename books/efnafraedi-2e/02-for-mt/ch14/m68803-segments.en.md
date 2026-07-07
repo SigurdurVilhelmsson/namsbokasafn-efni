@@ -20,10 +20,10 @@ Describe the acid-base behavior of amphiprotic substances
 The acid-base reaction class has been studied for quite some time. In 1680, Robert {{term}}Boyle{{/term}} reported traits of acid solutions that included their ability to dissolve many substances, to change the colors of certain natural dyes, and to lose these traits after coming in contact with alkali (base) solutions. In the eighteenth century, it was recognized that acids have a sour taste, react with limestone to liberate a gaseous substance (now known to be CO[[sub:2]]), and interact with alkalis to form neutral substances. In 1815, Humphry {{term}}Davy{{/term}} contributed greatly to the development of the modern acid-base concept by demonstrating that hydrogen is the essential constituent of acids. Around that same time, Joseph Louis Gay-Lussac concluded that acids are substances that can neutralize bases and that these two classes of substances can be defined only in terms of each other. The significance of hydrogen was reemphasized in 1884 when Svante {{term}}Arrhenius{{/term}} defined an acid as a compound that dissolves in water to yield hydrogen cations (now recognized to be hydronium ions) and a base as a compound that dissolves in water to yield hydroxide anions.
 
 <!-- SEG:m68803:para:fs-idm26037424 -->
-Johannes Brønsted and Thomas Lowry proposed a more general description in 1923 in which acids and bases were defined in terms of the transfer of hydrogen ions, H[[sup:+]]. (Note that these hydrogen ions are often referred to simply as {{i}}protons{{/i}}, since that subatomic particle is the only component of cations derived from the most abundant hydrogen isotope, [[sup:1]]H.) A compound that donates a proton to another compound is called a {{term}}Brønsted-Lowry acid{{/term}}, and a compound that accepts a proton is called a {{term}}Brønsted-Lowry base{{/term}}. An acid-base reaction is, thus, the transfer of a proton from a donor (acid) to an acceptor (base).
+Johannes Brønsted and Thomas Lowry proposed a more general description in 1923 in which acids and bases were defined in terms of the transfer of hydrogen ions, H[[sup:+]]. (Note that these hydrogen ions are often referred to simply as [[i:protons]], since that subatomic particle is the only component of cations derived from the most abundant hydrogen isotope, [[sup:1]]H.) A compound that donates a proton to another compound is called a {{term}}Brønsted-Lowry acid{{/term}}, and a compound that accepts a proton is called a {{term}}Brønsted-Lowry base{{/term}}. An acid-base reaction is, thus, the transfer of a proton from a donor (acid) to an acceptor (base).
 
 <!-- SEG:m68803:para:fs-idm56373376 -->
-The concept of {{i}}conjugate pairs{{/i}} is useful in describing Brønsted-Lowry acid-base reactions (and other reversible reactions, as well). When an acid donates H[[sup:+]], the species that remains is called the {{b}}conjugate base{{/b}} of the acid because it reacts as a proton acceptor in the reverse reaction. Likewise, when a base accepts H[[sup:+]], it is converted to its {{b}}conjugate acid{{/b}}. The reaction between water and ammonia illustrates this idea. In the forward direction, water acts as an acid by donating a proton to ammonia and subsequently becoming a hydroxide ion, OH[[sup:−]], the conjugate base of water. The ammonia acts as a base in accepting this proton, becoming an ammonium ion, [[MATH:1]] the conjugate acid of ammonia. In the reverse direction, a hydroxide ion acts as a base in accepting a proton from ammonium ion, which acts as an acid.
+The concept of [[i:conjugate pairs]] is useful in describing Brønsted-Lowry acid-base reactions (and other reversible reactions, as well). When an acid donates H[[sup:+]], the species that remains is called the [[b:conjugate base]] of the acid because it reacts as a proton acceptor in the reverse reaction. Likewise, when a base accepts H[[sup:+]], it is converted to its [[b:conjugate acid]]. The reaction between water and ammonia illustrates this idea. In the forward direction, water acts as an acid by donating a proton to ammonia and subsequently becoming a hydroxide ion, OH[[sup:−]], the conjugate base of water. The ammonia acts as a base in accepting this proton, becoming an ammonium ion, [[MATH:1]] the conjugate acid of ammonia. In the reverse direction, a hydroxide ion acts as a base in accepting a proton from ammonium ion, which acts as an acid.
 
 <!-- SEG:m68803:para:fs-idm59705584 -->
 The reaction between a Brønsted-Lowry acid and water is called {{term}}acid ionization{{/term}}. For example, when hydrogen fluoride dissolves in water and ionizes, protons are transferred from hydrogen fluoride molecules to water molecules, yielding hydronium ions and fluoride ions:
@@ -41,10 +41,10 @@ The first equation represents the reaction of bicarbonate as an acid with water 
 In the liquid state, molecules of an amphiprotic substance can react with one another as illustrated for water in the equations below:
 
 <!-- SEG:m68803:para:fs-idm114594272 -->
-The process in which like molecules react to yield ions is called {{term}}autoionization{{/term}}. Liquid water undergoes autoionization to a very slight extent; at 25 °C, approximately two out of every billion water molecules are ionized. The extent of the water autoionization process is reflected in the value of its equilibrium constant, the {{term}}ion-product constant for water, {{i}}K{{/i}}[[sub:w]]{{/term}}:
+The process in which like molecules react to yield ions is called {{term}}autoionization{{/term}}. Liquid water undergoes autoionization to a very slight extent; at 25 °C, approximately two out of every billion water molecules are ionized. The extent of the water autoionization process is reflected in the value of its equilibrium constant, the {{term}}ion-product constant for water, [[i:K]][[sub:w]]{{/term}}:
 
 <!-- SEG:m68803:para:fs-idp31161136 -->
-The slight ionization of pure water is reflected in the small value of the equilibrium constant; at 25 °C, {{i}}K{{/i}}[[sub:w]] has a value of 1.0 [[MATH:2]] 10[[sup:−14]]. The process is endothermic, and so the extent of ionization and the resulting concentrations of hydronium ion and hydroxide ion increase with temperature. For example, at 100 °C, the value for {{i}}K{{/i}}[[sub:w]] is about 5.6 [[MATH:3]] 10[[sup:−13]], roughly 50 times larger than the value at 25 °C.
+The slight ionization of pure water is reflected in the small value of the equilibrium constant; at 25 °C, [[i:K]][[sub:w]] has a value of 1.0 [[MATH:2]] 10[[sup:−14]]. The process is endothermic, and so the extent of ionization and the resulting concentrations of hydronium ion and hydroxide ion increase with temperature. For example, at 100 °C, the value for [[i:K]][[sub:w]] is about 5.6 [[MATH:3]] 10[[sup:−13]], roughly 50 times larger than the value at 25 °C.
 
 <!-- SEG:m68803:example-title:fs-idm123712192-title -->
 Ion Concentrations in Pure Water
@@ -56,13 +56,13 @@ What are the hydronium ion concentration and the hydroxide ion concentration in 
 Solution
 
 <!-- SEG:m68803:para:fs-idm173174512 -->
-The autoionization of water yields the same number of hydronium and hydroxide ions. Therefore, in pure water, [H[[sub:3]]O[[sup:+]]] = [OH[[sup:−]]] = {{i}}x{{/i}}. At 25 °C:
+The autoionization of water yields the same number of hydronium and hydroxide ions. Therefore, in pure water, [H[[sub:3]]O[[sup:+]]] = [OH[[sup:−]]] = [[i:x]]. At 25 °C:
 
 <!-- SEG:m68803:para:fs-idm95588864 -->
 So:
 
 <!-- SEG:m68803:para:fs-idm157262416 -->
-The hydronium ion concentration and the hydroxide ion concentration are the same, 1.0 [[MATH:4]] 10[[sup:−7]] {{i}}M{{/i}}.
+The hydronium ion concentration and the hydroxide ion concentration are the same, 1.0 [[MATH:4]] 10[[sup:−7]] [[i:M]].
 
 <!-- SEG:m68803:para-title:fs-idm86436992-title -->
 Check Your Learning
@@ -71,19 +71,19 @@ Check Your Learning
 The ion product of water at 80 °C is 2.4 [[MATH:5]] 10[[sup:−13]]. What are the concentrations of hydronium and hydroxide ions in pure water at 80 °C?
 
 <!-- SEG:m68803:para:fs-idm88673520 -->
-[H[[sub:3]]O[[sup:+]]] = [OH[[sup:−]]] = 4.9 [[MATH:6]] 10[[sup:−7]] {{i}}M{{/i}}
+[H[[sub:3]]O[[sup:+]]] = [OH[[sup:−]]] = 4.9 [[MATH:6]] 10[[sup:−7]] [[i:M]]
 
 <!-- SEG:m68803:note-title:fs-idp5038208-title -->
 Answer:
 
 <!-- SEG:m68803:para:fs-idm88673520 -->
-[H[[sub:3]]O[[sup:+]]] = [OH[[sup:−]]] = 4.9 [[MATH:7]] 10[[sup:−7]] {{i}}M{{/i}}
+[H[[sub:3]]O[[sup:+]]] = [OH[[sup:−]]] = 4.9 [[MATH:7]] 10[[sup:−7]] [[i:M]]
 
 <!-- SEG:m68803:example-title:fs-idm136168496-title -->
 The Inverse Relation between [H[[sub:3]]O[[sup:+]]] and [OH[[sup:−]]]
 
 <!-- SEG:m68803:para:fs-idm176597552 -->
-A solution of an acid in water has a hydronium ion concentration of 2.0 [[MATH:8]] 10[[sup:−6]] {{i}}M{{/i}}. What is the concentration of hydroxide ion at 25 °C?
+A solution of an acid in water has a hydronium ion concentration of 2.0 [[MATH:8]] 10[[sup:−6]] [[i:M]]. What is the concentration of hydroxide ion at 25 °C?
 
 <!-- SEG:m68803:para-title:fs-idm86437536-title -->
 Solution
@@ -95,28 +95,28 @@ Use the value of the ion-product constant for water at 25 °C
 to calculate the missing equilibrium concentration.
 
 <!-- SEG:m68803:para:fs-idm216521216 -->
-Rearrangement of the {{i}}K{{/i}}[[sub:w]] expression shows that [OH[[sup:−]]] is inversely proportional to [H[[sub:3]]O[[sup:+]]]:
+Rearrangement of the [[i:K]][[sub:w]] expression shows that [OH[[sup:−]]] is inversely proportional to [H[[sub:3]]O[[sup:+]]]:
 
 <!-- SEG:m68803:para:fs-idm156698544 -->
 Compared with pure water, a solution of acid exhibits a higher concentration of hydronium ions (due to ionization of the acid) and a proportionally lower concentration of hydroxide ions. This may be explained via Le Châtelier’s principle as a left shift in the water autoionization equilibrium resulting from the stress of increased hydronium ion concentration.
 
 <!-- SEG:m68803:para:fs-idm215254096 -->
-Substituting the ion concentrations into the {{i}}K{{/i}}[[sub:w]] expression confirms this calculation, resulting in the expected value:
+Substituting the ion concentrations into the [[i:K]][[sub:w]] expression confirms this calculation, resulting in the expected value:
 
 <!-- SEG:m68803:para-title:fs-idm88829680-title -->
 Check Your Learning
 
 <!-- SEG:m68803:para:fs-idm88829680 -->
-What is the hydronium ion concentration in an aqueous solution with a hydroxide ion concentration of 0.001 {{i}}M{{/i}} at 25 °C?
+What is the hydronium ion concentration in an aqueous solution with a hydroxide ion concentration of 0.001 [[i:M]] at 25 °C?
 
 <!-- SEG:m68803:para:fs-idm107000608 -->
-[H[[sub:3]]O[[sup:+]]] = 1 [[MATH:9]] 10[[sup:−11]] {{i}}M{{/i}}
+[H[[sub:3]]O[[sup:+]]] = 1 [[MATH:9]] 10[[sup:−11]] [[i:M]]
 
 <!-- SEG:m68803:note-title:fs-idp123132928-title -->
 Answer:
 
 <!-- SEG:m68803:para:fs-idm107000608 -->
-[H[[sub:3]]O[[sup:+]]] = 1 [[MATH:10]] 10[[sup:−11]] {{i}}M{{/i}}
+[H[[sub:3]]O[[sup:+]]] = 1 [[MATH:10]] 10[[sup:−11]] [[i:M]]
 
 <!-- SEG:m68803:example-title:fs-idp171180224-title -->
 Representing the Acid-Base Behavior of an Amphoteric Substance
@@ -167,13 +167,13 @@ Key Concepts and Summary
 A compound that can donate a proton (a hydrogen ion) to another compound is called a Brønsted-Lowry acid. The compound that accepts the proton is called a Brønsted-Lowry base. The species remaining after a Brønsted-Lowry acid has lost a proton is the conjugate base of the acid. The species formed when a Brønsted-Lowry base gains a proton is the conjugate acid of the base. Thus, an acid-base reaction occurs when a proton is transferred from an acid to a base, with formation of the conjugate base of the reactant acid and formation of the conjugate acid of the reactant base. Amphiprotic species can act as both proton donors and proton acceptors. Water is the most important amphiprotic species. It can form both the hydronium ion, H[[sub:3]]O[[sup:+]], and the hydroxide ion, OH[[sup:−]] when it undergoes autoionization:
 
 <!-- SEG:m68803:para:fs-idm41496496 -->
-The ion product of water, {{i}}K{{/i}}[[sub:w]] is the equilibrium constant for the autoionization reaction:
+The ion product of water, [[i:K]][[sub:w]] is the equilibrium constant for the autoionization reaction:
 
 <!-- SEG:m68803:title:fs-idp36036608-title -->
 Key Equations
 
 <!-- SEG:m68803:entry:auto-59 -->
-{{i}}K{{/i}}[[sub:w]] = [H[[sub:3]]O[[sup:+]]][OH[[sup:−]]] = 1.0 [[MATH:19]] 10[[sup:−14]] (at 25 °C)
+[[i:K]][[sub:w]] = [H[[sub:3]]O[[sup:+]]][OH[[sup:−]]] = 1.0 [[MATH:19]] 10[[sup:−14]] (at 25 °C)
 
 <!-- SEG:m68803:title:fs-idp54308864-title -->
 Chemistry End of Chapter Exercises
@@ -431,7 +431,7 @@ State which of the following species are amphiprotic and write chemical equation
 amphiprotic: (a) [[MATH:85]] [[MATH:86]] (b) [[MATH:87]] [[MATH:88]] not amphiprotic: (c) Br[[sup:−]]; (d) [[MATH:89]] (e) [[MATH:90]]
 
 <!-- SEG:m68803:problem:fs-idp42982896 -->
-Is the self-ionization of water endothermic or exothermic? The ionization constant for water ({{i}}K{{/i}}[[sub:w]]) is 2.9 [[MATH:91]] 10[[sup:−14]] at 40 °C and 9.3 [[MATH:92]] 10[[sup:−14]] at 60 °C.
+Is the self-ionization of water endothermic or exothermic? The ionization constant for water ([[i:K]][[sub:w]]) is 2.9 [[MATH:91]] 10[[sup:−14]] at 40 °C and 9.3 [[MATH:92]] 10[[sup:−14]] at 60 °C.
 
 <!-- SEG:m68803:glossary-term:fs-idm26650176-term -->
 acid ionization
@@ -488,7 +488,7 @@ conjugate base
 substance formed when an acid loses a proton
 
 <!-- SEG:m68803:glossary-term:fs-idp9778624-term -->
-ion-product constant for water (Kw)
+ion-product constant for water ([[i:K]][[sub:w]])
 
 <!-- SEG:m68803:glossary-def:fs-idp9778624-def -->
 equilibrium constant for the autoionization of water

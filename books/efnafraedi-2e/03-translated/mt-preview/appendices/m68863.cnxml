@@ -338,9 +338,9 @@
 <entry namest="c1" nameend="c3">Staðlað bræðslu- og suðuhitastig vatns og entalpíur fasaumbreytinga</entry>
 </row>
 <row valign="middle">
+<entry align="left"></entry>
 <entry align="left">Hitastig (K)</entry>
 <entry align="left">Δ<emphasis effect="italics">H</emphasis> (kJ/mól)</entry>
-<entry align="left">Δ<emphasis effect="italics">H</emphasis> (kJ/mol)</entry>
 </row>
 </thead>
 <tbody>

@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68831",
-  "extractedAt": "2026-03-23T16:04:32.454Z",
+  "extractedAt": "2026-07-07T09:12:48.627Z",
   "sourceHash": "1222bd70d98db33b",
   "segmentCount": 142,
   "segmentIds": [
@@ -194,11 +194,11 @@
     "figure": [
       "CNX_Chem_18_03_Structures",
       "CNX_Chem_18_03_BIcosahed",
+      "CNX_Chem_18_03_SiPurif",
       "CNX_Chem_18_02_Glass",
       "CNX_Chem_18_02_Boricacid_img",
       "CNX_Chem_18_03_BorateAnio",
-      "CNX_Chem_18_03_CO2vsSiO2",
-      "CNX_Chem_18_03_SiPurif"
+      "CNX_Chem_18_03_CO2vsSiO2"
     ],
     "table": [],
     "example": [],
@@ -224,17 +224,17 @@
       "fs-idp121376784"
     ],
     "equation": [
+      "fs-idp30766032",
+      "fs-idm91488",
+      "fs-idm50570016",
+      "fs-idp306866064",
+      "fs-idp219248048",
       "fs-idp99815200",
       "fs-idp73493616",
       "fs-idp144955120",
       "fs-idp26130592",
       "fs-idp275317776",
-      "fs-idp28519200",
-      "fs-idp30766032",
-      "fs-idm91488",
-      "fs-idm50570016",
-      "fs-idp306866064",
-      "fs-idp219248048"
+      "fs-idp28519200"
     ],
     "section": [
       "fs-idp249805056",

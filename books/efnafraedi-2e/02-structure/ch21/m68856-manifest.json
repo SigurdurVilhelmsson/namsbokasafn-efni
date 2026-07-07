@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68856",
-  "extractedAt": "2026-03-21T15:10:13.537Z",
+  "extractedAt": "2026-07-07T09:12:52.753Z",
   "sourceHash": "eb7ca93de392034a",
   "segmentCount": 180,
   "segmentIds": [
@@ -242,12 +242,12 @@
   "elementIds": {
     "figure": [
       "CNX_Chem_21_04_CERN",
-      "CNX_Chem_21_04_NuclearPwr",
       "CNX_Chem_21_04_Fission1",
       "CNX_Chem_21_04_Fission2",
       "CNX_Chem_21_04_ChnReact1",
       "CNX_Chem_21_04_CritMass",
       "CNX_Chem_21_04_FissnBomb",
+      "CNX_Chem_21_04_NuclearPwr",
       "CNX_Chem_21_04_ControlRod",
       "CNX_Chem_21_04_3MileIslnd",
       "CNX_Chem_21_04_Fukushima",

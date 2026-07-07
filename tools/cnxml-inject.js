@@ -777,9 +777,13 @@ function restoreMathBySeparators(isText, enText) {
  *
  * @param {Map<string, string>} isSegments - Translated (IS) segments (mutated in place)
  * @param {Map<string, string>} enSegments - Original English segments
+ * @param {Object} [equations] - Equations map (math-N → { mathml }), used to resolve
+ *   [[MATH:N]] placeholders in the EN term text to visible notation instead of
+ *   dropping them. Defaults to {} so existing callers with the old 2-arg arity
+ *   keep working (unresolved placeholders fall back to the old drop behaviour).
  * @returns {{ segments: Map<string, string>, annotatedCount: number }}
  */
-function annotateInlineTerms(isSegments, enSegments) {
+function annotateInlineTerms(isSegments, enSegments, equations = {}) {
   let annotatedCount = 0;
 
   // EN markers: {{term}}text{{/term}}, __term__, **bold**, {{b}}bold{{/b}}
@@ -829,8 +833,19 @@ function annotateInlineTerms(isSegments, enSegments) {
         .replace(/\[\[b:([^\]]+)\]\]/g, '$1')
         .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '$1')
         .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '$1')
-        .replace(/\[\[[A-Za-z][\w]*:[^\]]*\]\]/g, '') // F6: drop MATH/MEDIA/any remaining placeholder
-        .toLowerCase();
+        .replace(/\[\[(?!MATH:)[A-Za-z][\w]*:[^\]]*\]\]/g, '') // F6: drop MEDIA / other placeholders, but NOT MATH
+        .toLowerCase()
+        // Resolve MATH AFTER lowercasing so the visible notation keeps its case
+        // (ΔHf° must not become δhf°). Dropping instead of resolving collapsed e.g.
+        // "positron (+10β or +10e)" to the garbled "positron ( or )" (m68852).
+        .replace(/\[\[math:(\d+)\]\]/g, (m, n) => {
+          const eq = equations[`math-${n}`];
+          if (!eq || !eq.mathml) return ''; // unresolved → drop (old behaviour, rare)
+          return eq.mathml
+            .replace(/<[^>]+>/g, '')
+            .replace(/\s+/g, ' ')
+            .trim();
+        });
       termIndex++;
 
       // Skip if IS and EN terms are the same (case-insensitive)
@@ -1825,9 +1840,20 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
               .replace(/\[\[b:([^\]]+)\]\]/g, '$1')
               .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '$1')
               .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '$1')
-              .replace(/\[\[[A-Za-z][\w]*:[^\]]*\]\]/g, '') // F6: drop remaining placeholder
+              .replace(/\[\[(?!MATH:)[A-Za-z][\w]*:[^\]]*\]\]/g, '') // F6: drop MEDIA / other placeholders, but NOT MATH
               .trim()
-              .toLowerCase();
+              .toLowerCase()
+              // Resolve MATH AFTER lowercasing so the visible notation keeps its case
+              // (ΔHc° must not become δhc°). Dropping instead of resolving collapsed e.g.
+              // "positron (+10β or +10e)" to the garbled "positron ( or )" (m68852 glossary term).
+              .replace(/\[\[math:(\d+)\]\]/g, (m, n) => {
+                const eq = equations[`math-${n}`];
+                if (!eq || !eq.mathml) return ''; // unresolved → drop (old behaviour, rare)
+                return eq.mathml
+                  .replace(/<[^>]+>/g, '')
+                  .replace(/\s+/g, ' ')
+                  .trim();
+              });
             // Strip any __term__ markers from IS text for comparison
             const isTermClean = annotatedTerm
               .replace(/__([^_]+)__/g, '$1')
@@ -3920,7 +3946,7 @@ async function main() {
 
       // Annotate inline terms with English originals: __IS (e. en)__ or {{term}}IS (e. en){{/term}}
       if (args.annotateEn) {
-        const { annotatedCount } = annotateInlineTerms(segments, enSegments);
+        const { annotatedCount } = annotateInlineTerms(segments, enSegments, equations);
         if (args.verbose && annotatedCount > 0) {
           console.error(`  Annotated ${annotatedCount} inline term(s) with EN originals`);
         }

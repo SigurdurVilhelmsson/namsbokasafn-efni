@@ -475,6 +475,10 @@
     "mathml": "<m:math><m:mrow><m:mtext>Δ</m:mtext><m:mi>G</m:mi></m:mrow></m:math>",
     "latex": "{\\text{Δ}G}"
   },
+  "math-120": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mtext>Δ</m:mtext><m:msubsup><m:mi>G</m:mi><m:mtext>f</m:mtext><m:mo>°</m:mo></m:msubsup><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(\\text{Δ}{G}_{\\text{f}}^{^{\\circ}})}"
+  },
   "fs-idm129849344": {
     "mathml": "<m:math><m:mrow><m:mi>G</m:mi><m:mo>=</m:mo><m:mi>H</m:mi><m:mo>−</m:mo><m:mi>T</m:mi><m:mi>S</m:mi></m:mrow></m:math>",
     "latex": "{G=H-TS}",

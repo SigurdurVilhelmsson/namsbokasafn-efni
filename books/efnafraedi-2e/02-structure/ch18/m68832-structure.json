@@ -93,31 +93,6 @@
       ]
     },
     {
-      "type": "equation",
-      "id": "fs-idm105130112",
-      "class": "unnumbered"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm148994256",
-      "class": "unnumbered"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm67787760",
-      "class": "unnumbered"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm172599328",
-      "class": "unnumbered"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm186857456",
-      "class": "unnumbered"
-    },
-    {
       "type": "para",
       "id": "fs-idm159525136",
       "segmentId": "m68832:para:fs-idm159525136"
@@ -142,21 +117,6 @@
           "segmentId": "m68832:item:fs-idm120122192-item-3"
         }
       ]
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm109648992",
-      "class": "unnumbered"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm129468080",
-      "class": "unnumbered"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm166000096",
-      "class": "unnumbered"
     },
     {
       "type": "para",
@@ -657,5 +617,5 @@
       }
     ]
   },
-  "sectionOrder": null
+  "sectionOrder": 4
 }

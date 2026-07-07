@@ -66,7 +66,10 @@
           "id": "fs-idp286503296",
           "class": "scaled-down",
           "alt": "A reaction is shown with Lewis structures. The first structure shows a carbon atom single bonded to four hydrogen atoms with the symbol, “( g )” written next to it. A right-facing arrow points to the letter “C” and the symbol “( g ),” which is followed by a plus sign. Next is the number 4, the letter “H” and the symbol, “( g ).” To the right of this equation is another equation: capital delta H superscript degree symbol equals 1660 k J.",
-          "src": "../../media/CNX_Chem_07_05_CH4bond_img.jpg"
+          "src": "../../media/CNX_Chem_07_05_CH4bond_img.jpg",
+          "embedSrc": "",
+          "width": "",
+          "height": ""
         },
         {
           "type": "para",
@@ -2578,8 +2581,11 @@
       "class": null,
       "alt": "A Lewis structure is shown. A carbon atom that is single bonded to three hydrogen atoms is bonded to a second carbon atom. The second carbon atom is single bonded to two hydrogen atoms. The second carbon atom is single bonded to a third carbon atom that is triple bonded to a fourth carbon atom and single bonded to a fifth carbon atom. The fifth carbon atom is single bonded to a hydrogen atom and double bonded to a sixth carbon atom that is single bonded to two hydrogen atoms.",
       "src": "../../media/CNX_Chem_07_05_C6H8ans_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
-  "sectionOrder": null
+  "sectionOrder": 5
 }

@@ -14,7 +14,7 @@ Use balanced chemical equations to derive stoichiometric factors relating amount
 Perform stoichiometric calculations involving mass, moles, and solution molarity
 
 <!-- SEG:m68713:para:fs-idp65325120 -->
-A balanced chemical equation provides a great deal of information in a very succinct format. Chemical formulas provide the identities of the reactants and products involved in the chemical change, allowing classification of the reaction. Coefficients provide the relative numbers of these chemical species, allowing a quantitative assessment of the relationships between the amounts of substances consumed and produced by the reaction. These quantitative relationships are known as the reaction’s {{term}}stoichiometry{{/term}}, a term derived from the Greek words {{i}}stoicheion{{/i}} (meaning “element”) and {{i}}metron{{/i}} (meaning “measure”). In this module, the use of balanced chemical equations for various stoichiometric applications is explored.
+A balanced chemical equation provides a great deal of information in a very succinct format. Chemical formulas provide the identities of the reactants and products involved in the chemical change, allowing classification of the reaction. Coefficients provide the relative numbers of these chemical species, allowing a quantitative assessment of the relationships between the amounts of substances consumed and produced by the reaction. These quantitative relationships are known as the reaction’s {{term}}stoichiometry{{/term}}, a term derived from the Greek words [[i:stoicheion]] (meaning “element”) and [[i:metron]] (meaning “measure”). In this module, the use of balanced chemical equations for various stoichiometric applications is explored.
 
 <!-- SEG:m68713:para:fs-idp92593072 -->
 The general approach to using stoichiometric relationships is similar in concept to the way people go about many common activities. Food preparation, for example, offers an appropriate comparison. A recipe for making eight pancakes calls for 1 cup pancake mix, [[MATH:1]] cup milk, and one egg. The “equation” representing the preparation of pancakes per this recipe is
@@ -35,7 +35,7 @@ These stoichiometric factors can be used to compute the number of ammonia molecu
 Moles of Reactant Required in a Reaction
 
 <!-- SEG:m68713:para:fs-idp77269456 -->
-How many moles of I[[sub:2]] are required to react with 0.429 mol of Al according to the following equation (see [#CNX_Chem_04_03_iodine])?
+How many moles of I[[sub:2]] are required to react with 0.429 mol of Al according to the following equation (see [[xref:CNX_Chem_04_03_iodine]])?
 
 <!-- SEG:m68713:para-title:fs-idm34598272-title -->
 Solution
@@ -71,7 +71,7 @@ How many carbon dioxide molecules are produced when 0.75 mol of propane is combu
 Solution
 
 <!-- SEG:m68713:para:fs-idp121952928 -->
-The approach here is the same as for [#fs-idp48900096], though the absolute number of molecules is requested, not the number of moles of molecules. This will simply require use of the moles-to-numbers conversion factor, Avogadro’s number.
+The approach here is the same as for [[xref:fs-idp48900096]], though the absolute number of molecules is requested, not the number of moles of molecules. This will simply require use of the moles-to-numbers conversion factor, Avogadro’s number.
 
 <!-- SEG:m68713:para:fs-idp229756528 -->
 The balanced equation shows that carbon dioxide is produced from propane in a 3:1 ratio:
@@ -107,7 +107,7 @@ What mass of sodium hydroxide, NaOH, would be required to produce 16 g of the an
 Solution
 
 <!-- SEG:m68713:para:fs-idm3520480 -->
-The approach used previously in [#fs-idp48900096] and [#fs-idp9124448] is likewise used here; that is, we must derive an appropriate stoichiometric factor from the balanced chemical equation and use it to relate the amounts of the two substances of interest. In this case, however, masses (not molar amounts) are provided and requested, so additional steps of the sort learned in the previous chapter are required. The calculations required are outlined in this flowchart:
+The approach used previously in [[xref:fs-idp48900096]] and [[xref:fs-idp9124448]] is likewise used here; that is, we must derive an appropriate stoichiometric factor from the balanced chemical equation and use it to relate the amounts of the two substances of interest. In this case, however, masses (not molar amounts) are provided and requested, so additional steps of the sort learned in the previous chapter are required. The calculations required are outlined in this flowchart:
 
 <!-- SEG:m68713:para-title:fs-idp52759328-title -->
 Check Your Learning
@@ -134,7 +134,7 @@ What mass of oxygen gas, O[[sub:2]], from the air is consumed in the combustion 
 Solution
 
 <!-- SEG:m68713:para:fs-idp35508016 -->
-The approach required here is the same as for the [#fs-idp113495744], differing only in that the provided and requested masses are both for reactant species.
+The approach required here is the same as for the [[xref:fs-idp113495744]], differing only in that the provided and requested masses are both for reactant species.
 
 <!-- SEG:m68713:para-title:fs-idp24638432-title -->
 Check Your Learning
@@ -152,7 +152,7 @@ Answer:
 13.22 g
 
 <!-- SEG:m68713:para:fs-idp90689472 -->
-These examples illustrate just a few instances of reaction stoichiometry calculations. Numerous variations on the beginning and ending computational steps are possible depending upon what particular quantities are provided and sought (volumes, solution concentrations, and so forth). Regardless of the details, all these calculations share a common essential component: the use of stoichiometric factors derived from balanced chemical equations. [#CNX_Chem_04_03_flowchart] provides a general outline of the various computational steps associated with many reaction stoichiometry calculations.
+These examples illustrate just a few instances of reaction stoichiometry calculations. Numerous variations on the beginning and ending computational steps are possible depending upon what particular quantities are provided and sought (volumes, solution concentrations, and so forth). Regardless of the details, all these calculations share a common essential component: the use of stoichiometric factors derived from balanced chemical equations. [[xref:CNX_Chem_04_03_flowchart]] provides a general outline of the various computational steps associated with many reaction stoichiometry calculations.
 
 <!-- SEG:m68713:caption:CNX_Chem_04_03_flowchart-caption -->
 The flowchart depicts the various computational steps involved in most reaction stoichiometry calculations.
@@ -161,7 +161,7 @@ The flowchart depicts the various computational steps involved in most reaction 
 Airbags
 
 <!-- SEG:m68713:para:fs-idp124943600 -->
-Airbags ([#CNX_Chem_04_03_airbag]) are a safety feature provided in most automobiles since the 1990s. The effective operation of an airbag requires that it be rapidly inflated with an appropriate amount (volume) of gas when the vehicle is involved in a collision. This requirement is satisfied in many automotive airbag systems through use of explosive chemical reactions, one common choice being the decomposition of sodium azide, NaN[[sub:3]]. When sensors in the vehicle detect a collision, an electrical current is passed through a carefully measured amount of NaN[[sub:3]] to initiate its decomposition:
+Airbags ([[xref:CNX_Chem_04_03_airbag]]) are a safety feature provided in most automobiles since the 1990s. The effective operation of an airbag requires that it be rapidly inflated with an appropriate amount (volume) of gas when the vehicle is involved in a collision. This requirement is satisfied in many automotive airbag systems through use of explosive chemical reactions, one common choice being the decomposition of sodium azide, NaN[[sub:3]]. When sensors in the vehicle detect a collision, an electrical current is passed through a carefully measured amount of NaN[[sub:3]] to initiate its decomposition:
 
 <!-- SEG:m68713:para:fs-idp9645888 -->
 This reaction is very rapid, generating gaseous nitrogen that can deploy and fully inflate a typical airbag in a fraction of a second (~0.03–0.1 s). Among many engineering considerations, the amount of sodium azide used must be appropriate for generating enough nitrogen gas to fully inflate the air bag and ensure its proper function. For example, a small mass (~100 g) of NaN[[sub:3]] will generate approximately 50 L of N[[sub:2]].
@@ -200,7 +200,7 @@ Write the balanced equation, then outline the steps necessary to determine the i
 (f) [[MEDIA:1]]
 
 <!-- SEG:m68713:problem:fs-idp53786208 -->
-Determine the number of moles and the mass requested for each reaction in [#fs-idp166618800].
+Determine the number of moles and the mass requested for each reaction in [[xref:fs-idp166618800]].
 
 <!-- SEG:m68713:solution:fs-idp75003744 -->
 (a) 0.435 mol Na, 0.217 mol Cl[[sub:2]], 15.4 g Cl[[sub:2]]; (b) 0.005780 mol HgO, 2.890 [[MATH:8]] 10[[sup:−3]] mol O[[sub:2]], 9.248 [[MATH:9]] 10[[sup:−2]] g O[[sub:2]]; (c) 8.00 mol NaNO[[sub:3]], 6.8 [[MATH:10]] 10[[sup:2]] g NaNO[[sub:3]]; (d) 1665 mol CO[[sub:2]], 73.3 kg CO[[sub:2]]; (e) 18.86 mol CuO, 2.330 kg CuCO[[sub:3]]; (f) 0.4580 mol C[[sub:2]]H[[sub:4]]Br[[sub:2]], 86.05 g C[[sub:2]]H[[sub:4]]Br[[sub:2]]
@@ -227,7 +227,7 @@ Write the balanced equation, then outline the steps necessary to determine the i
 (f) [[MEDIA:2]]
 
 <!-- SEG:m68713:problem:fs-idm1240512 -->
-Determine the number of moles and the mass requested for each reaction in [#fs-idp16477696].
+Determine the number of moles and the mass requested for each reaction in [[xref:fs-idp16477696]].
 
 <!-- SEG:m68713:solution:fs-idp103920384 -->
 (a) 0.0686 mol Mg, 1.67 g Mg; (b) 2.701 [[MATH:11]] 10[[sup:−3]] mol O[[sub:2]], 0.08644 g O[[sub:2]]; (c) 6.43 mol MgCO[[sub:3]], 542 g MgCO[[sub:3]] (d) 768 mol H[[sub:2]]O, 13.8 kg H[[sub:2]]O; (e) 16.31 mol BaO[[sub:2]], 2762 g BaO[[sub:2]]; (f) 0.207 mol C[[sub:2]]H[[sub:4]], 5.81 g C[[sub:2]]H[[sub:4]]
@@ -305,7 +305,7 @@ A compact car gets 37.5 miles per gallon on the highway. If gasoline contains 84
 What volume of 0.750 M hydrochloric acid solution can be prepared from the HCl produced by the reaction of 25.0 g of NaCl with excess sulfuric acid?[[BR]] [[MATH:26]]
 
 <!-- SEG:m68713:problem:fs-idp52899312 -->
-What volume of a 0.2089 {{i}}M{{/i}} KI solution contains enough KI to react exactly with the Cu(NO[[sub:3]])[[sub:2]] in 43.88 mL of a 0.3842 {{i}}M{{/i}} solution of Cu(NO[[sub:3]])[[sub:2]]?[[BR]] [[MATH:27]]
+What volume of a 0.2089 [[i:M]] KI solution contains enough KI to react exactly with the Cu(NO[[sub:3]])[[sub:2]] in 43.88 mL of a 0.3842 [[i:M]] solution of Cu(NO[[sub:3]])[[sub:2]]?[[BR]] [[MATH:27]]
 
 <!-- SEG:m68713:solution:fs-idp74230176 -->
 161.4 mL KI solution

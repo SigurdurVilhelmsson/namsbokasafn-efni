@@ -46,6 +46,16 @@
       "segmentId": "m68816:para:fs-idm7164864"
     },
     {
+      "type": "equation",
+      "id": "fs-idm44290000",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp124196272",
+      "segmentId": "m68816:para:fs-idp124196272"
+    },
+    {
       "type": "figure",
       "id": "CNX_Chem_16_01_carbon",
       "class": "scaled-down",
@@ -58,16 +68,6 @@
         "src": "../../media/CNX_Chem_16_01_carbon.jpg",
         "mimeType": "image/jpeg"
       }
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm44290000",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp124196272",
-      "segmentId": "m68816:para:fs-idp124196272"
     },
     {
       "type": "section",
@@ -428,5 +428,5 @@
       }
     ]
   },
-  "sectionOrder": null
+  "sectionOrder": 1
 }

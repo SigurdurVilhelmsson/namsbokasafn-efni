@@ -540,7 +540,10 @@
       "class": null,
       "alt": "This Lewis structure shows a phosphorus atom with a lone pair of electrons single bonded to three hydrogen atoms.",
       "src": "../../media/CNX_Chem_18_08_Exercise1a_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:2]]",
@@ -548,7 +551,10 @@
       "class": null,
       "alt": "This Lewis structure shows a phosphorus atom single bonded to four hydrogen atoms. The structure is surrounded by brackets and has a superscript positive sign outside the brackets.",
       "src": "../../media/CNX_Chem_18_08_Exercise1b_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:3]]",
@@ -556,7 +562,10 @@
       "class": null,
       "alt": "This Lewis structure shows two phosphorus atoms, each with a lone pair of electrons, single bonded to one another. Each phosphorus atom is also single bonded to two hydrogen atoms.",
       "src": "../../media/CNX_Chem_18_08_Exercise1c_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:4]]",
@@ -564,7 +573,10 @@
       "class": null,
       "alt": "This Lewis structure shows a phosphorus atom single bonded to four oxygen atoms, each with three lone pairs of electrons. The structure is surrounded by brackets and has a superscript 3 negative sign outside the brackets.",
       "src": "../../media/CNX_Chem_18_08_Exercise1d_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:5]]",
@@ -572,7 +584,10 @@
       "class": null,
       "alt": "This Lewis structure shows a phosphorus atom single bonded to five fluorine atoms, each with three lone pairs of electrons.",
       "src": "../../media/CNX_Chem_18_08_Exercise1e_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:6]]",
@@ -580,7 +595,10 @@
       "class": null,
       "alt": "This Lewis structure shows a phosphorus atom single bonded to four fluorine atoms, each with three lone pairs of electrons. The structure is surrounded by brackets and has a superscript positive sign outside the brackets. The label, “Tetrahedral,” is written under the structure. ",
       "src": "../../media/CNX_Chem_18_08_Exercise8a_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:7]]",
@@ -588,7 +606,10 @@
       "class": null,
       "alt": "This Lewis structure shows a phosphorus atom single bonded to five fluorine atoms, each with three lone pairs of electrons. The label, “Trigonal bipyramidal,” is written under the structure.",
       "src": "../../media/CNX_Chem_18_08_Exercise8b_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:8]]",
@@ -596,7 +617,10 @@
       "class": null,
       "alt": "A Lewis structure shows a phosphorus atom single bonded to six fluorine atoms, each with three lone pairs of electrons. The structure is surrounded by brackets and has a superscript negative sign outside the brackets. The label, “Octahedral,” is written under the structure.",
       "src": "../../media/CNX_Chem_18_08_Exercise8c_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:9]]",
@@ -604,8 +628,11 @@
       "class": null,
       "alt": "This Lewis structure shows a phosphorus atom single bonded to three fluorine atoms, each with three lone pairs of electrons. The phosphorus atom is also double bonded to an oxygen atom with two lone pairs of electrons. The label, “Tetrahedral,” is written under the structure.",
       "src": "../../media/CNX_Chem_18_08_Exercise8d_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
-  "sectionOrder": null
+  "sectionOrder": 8
 }

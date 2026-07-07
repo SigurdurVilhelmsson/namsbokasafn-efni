@@ -91,6 +91,16 @@
       "segmentId": "m68823:para:fs-idm167563696"
     },
     {
+      "type": "equation",
+      "id": "fs-idm178639760",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm195216128",
+      "segmentId": "m68823:para:fs-idm195216128"
+    },
+    {
       "type": "figure",
       "id": "CNX_Chem_17_03_GalvanCu",
       "class": "scaled-down",
@@ -103,16 +113,6 @@
         "src": "../../media/CNX_Chem_17_03_GalvanCu.jpg",
         "mimeType": "image/jpeg"
       }
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm178639760",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm195216128",
-      "segmentId": "m68823:para:fs-idm195216128"
     },
     {
       "type": "para",
@@ -1179,5 +1179,5 @@
       }
     ]
   },
-  "sectionOrder": null
+  "sectionOrder": 3
 }

@@ -103,7 +103,7 @@
       "class": null,
       "title": {
         "segmentId": "m68745:title:fs-idp3790928-title",
-        "text": "{{i}}sp{{/i}} Hybridization"
+        "text": "[[i:sp]] Hybridization"
       },
       "content": [
         {
@@ -173,7 +173,7 @@
       "class": null,
       "title": {
         "segmentId": "m68745:title:fs-idp10041360-title",
-        "text": "{{i}}sp{{/i}}[[sup:2]] Hybridization"
+        "text": "[[i:sp]][[sup:2]] Hybridization"
       },
       "content": [
         {
@@ -273,7 +273,7 @@
       "class": null,
       "title": {
         "segmentId": "m68745:title:fs-idm76169824-title",
-        "text": "{{i}}sp{{/i}}[[sup:3]] Hybridization"
+        "text": "[[i:sp]][[sup:3]] Hybridization"
       },
       "content": [
         {
@@ -353,7 +353,7 @@
       "class": null,
       "title": {
         "segmentId": "m68745:title:fs-idm100176160-title",
-        "text": "{{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}} and {{i}}sp{{/i}}[[sup:3]]{{i}}d{{/i}}[[sup:2]] Hybridization"
+        "text": "[[i:sp]][[sup:3]][[i:d]] and [[i:sp]][[sup:3]][[i:d]][[sup:2]] Hybridization"
       },
       "content": [
         {
@@ -473,7 +473,10 @@
           "id": "fs-idp72255632",
           "class": null,
           "alt": "Three Lewis structures are shown. The left structure shows an oxygen atom with two lone pairs of electrons single bonded to two hydrogen atoms. The middle structure is made up of a sulfur atom with two lone pairs of electrons single bonded to two hydrogen atoms. The right structure is made up of a tellurium atom with two lone pairs of electrons single bonded to two hydrogen atoms. From left to right, the bond angles of each molecule decrease.",
-          "src": "../../media/CNX_Chem_08_02_hybrid_img.jpg"
+          "src": "../../media/CNX_Chem_08_02_hybrid_img.jpg",
+          "embedSrc": "",
+          "width": "",
+          "height": ""
         },
         {
           "type": "example",
@@ -1068,7 +1071,10 @@
       "class": null,
       "alt": "A Lewis structure is shown in which eight sulfur atoms, each with two lone pairs of eletrons, are single bonded together into an eight-sided ring.",
       "src": "../../media/CNX_Chem_08_02_SulfManuf1_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:2]]",
@@ -1076,7 +1082,10 @@
       "class": null,
       "alt": "Two Lewis structure are shown, connected by a double-ended arrow. The left structure shows a sulfur atom with one lone pair of electrons double bonded to an oxygen atom with two lone pairs of electrons on the left and single bonded to an oxygen atom with three lone pairs of electrons on the right. The right structure shows the same molecule, except that the double bonded oxygen is on the right side of the sulfur and the single bonded oxygen is to the left of the sulfur.",
       "src": "../../media/CNX_Chem_08_02_SulfManuf2_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:3]]",
@@ -1084,7 +1093,10 @@
       "class": null,
       "alt": "A Lewis structure of a sulfur atom singly bonded to two oxygen atoms, each with three lone pairs of electrons, and double bonded to a third oxygen atom with two lone pairs of electrons is shown.",
       "src": "../../media/CNX_Chem_08_02_SulfManuf3_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:4]]",
@@ -1092,7 +1104,10 @@
       "class": null,
       "alt": "A Lewis structure is shown in which a sulfur atom is single bonded to four oxygen atoms. Two of the oxygen atoms have three lone pairs of electrons while the other two each have two lone pairs of electrons and are each singly bonded to a hydrogen atom.",
       "src": "../../media/CNX_Chem_08_02_SulfManuf4_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:5]]",
@@ -1100,7 +1115,10 @@
       "class": null,
       "alt": "A Lewis structure is shown in which a xenon atom that has three lone pairs of electrons is single bonded to two fluorine atoms, each of which has three lone pairs of electrons.",
       "src": "../../media/CNX_Chem_08_02_xefluoride_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:6]]",
@@ -1108,8 +1126,11 @@
       "class": null,
       "alt": "Two Lewis structure are shown, the left of which depicts three phosphorus atoms single bonded together to form a triangle. Each phosphorus is bonded to a sulfur atom by a vertical single bond and each of those sulfur atoms is then bonded to a single phosphorus atom so that a six-sided ring is created with a sulfur in the middle. Each sulfur atom in this structure has two lone pairs of electrons while each phosphorus has one lone pair. The second Lewis structure shows a chlorate atom single bonded to two oxygen atoms, each of which has three lone pairs of electrons, and double bonded to an oxygen atom, which has two lone pairs of electrons.",
       "src": "../../media/CNX_Chem_08_02_phsphorus2_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
-  "sectionOrder": null
+  "sectionOrder": 2
 }

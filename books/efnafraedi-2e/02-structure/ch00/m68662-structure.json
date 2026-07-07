@@ -29,6 +29,11 @@
       },
       "content": [
         {
+          "type": "para",
+          "id": "pref-p-004",
+          "segmentId": "m68662:para:pref-p-004"
+        },
+        {
           "type": "section",
           "id": "pref-sub-005",
           "class": null,
@@ -195,11 +200,6 @@
               "segmentId": "m68662:para:pref-p-026"
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "pref-p-004",
-          "segmentId": "m68662:para:pref-p-004"
         }
       ]
     },

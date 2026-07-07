@@ -72,34 +72,6 @@
       "segmentId": "m68732:para:fs-idm70061856"
     },
     {
-      "type": "figure",
-      "id": "CNX_Chem_06_02_Hlevels",
-      "class": "scaled-down",
-      "caption": {
-        "segmentId": "m68732:caption:CNX_Chem_06_02_Hlevels-caption"
-      },
-      "media": {
-        "id": "fs-idp29515312",
-        "alt": "The figure includes a diagram representing the relative energy levels of the quantum numbers of the hydrogen atom. An upward pointing arrow at the left of the diagram is labeled, “E.” A grey shaded vertically-oriented rectangle is placed just right of the arrow. The rectangle height matches the arrow length. Colored horizontal line segments are placed inside the rectangle and labels are placed to the right of the box and arranged in a column with the heading, “Energy, n.” At the very base of the rectangle, a purple horizontal line segment is drawn. A black line segment extends to the right to the label, “negative 2.18 times 10 superscript negative 18 J, 1.” At a level approximately three-quarters of the distance to the top of the rectangle, a blue horizontal line segment is drawn. A black line segment extends to the right to the label, “negative 5.45 times 10 superscript negative 19 J, 2.” At a level approximately seven-eighths the distance from the base of the rectangle, a green horizontal line segment is drawn. A black line segment extends to the right to the label, “negative 2.42 times 10 superscript negative 19 J, 3.” Just a short distance above this segment, an orange horizontal line segment is drawn. A black line segment extends to the right to the label, “negative 1.36 times 10 superscript negative 19 J, 4.” Just above this segment, a red horizontal line segment is drawn. A black line segment extends to the right to the label, “negative 8.72 times 10 superscript negative 20 J, 5.” Just a short distance above this segment, a brown horizontal line segment is drawn. A black line segment extends to the right to the label, “0.00 J, infinity.”",
-        "src": "../../media/CNX_Chem_06_02_Hlevels.jpg",
-        "mimeType": "image/jpeg"
-      }
-    },
-    {
-      "type": "figure",
-      "id": "CNX_Chem_06_02_BohrArrows",
-      "class": "scaled-down",
-      "caption": {
-        "segmentId": "m68732:caption:CNX_Chem_06_02_BohrArrows-caption"
-      },
-      "media": {
-        "id": "fs-idp153188464",
-        "alt": "The figure includes a diagram representing the relative energy levels of the quantum numbers of the hydrogen atom. An upward pointing arrow at the left of the diagram is labeled, “E.” A grey shaded vertically oriented rectangle is placed just right of the arrow. The rectangle height matches the arrow length. Colored, horizontal line segments are placed inside the rectangle and labels are placed to the right of the box, arranged in a column with the heading, “Energy, n.” At the very base of the rectangle, a purple horizontal line segment is drawn. A black line extends to the right to the label, “1.” At a level approximately three-quarters of the distance to the top of the rectangle, a blue horizontal line segment is drawn. A black line extends to the right to the label, “2.” At a level approximately seven-eighths the distance from the base of the rectangle, a green horizontal line segment is drawn. A black line extends to the right to the label, “3.” Just a short distance above this segment, an orange horizontal line segment is drawn. A black line segment extends to the right to the label, “4.” Just above this segment, a red horizontal line segment is drawn. A black line extends to the right to the label, “5.” Just a short distance above this segment, a brown horizontal line segment is drawn. A black line extends to the right to the label, “infinity.” Arrows are drawn to depict energies of photons absorbed, as shown by upward pointing arrows on the left, or released as shown by downward pointing arrows on the right side of the diagram between the colored line segments. The label, “Electron moves to higher energy as light is absorbed,” is placed beneath the upward pointing arrows. Similarly, the label, “Electron moves to lower energy as light is emitted,” appears beneath the downward pointing arrows. Moving left to right across the diagram, arrows extend from one colored line segment to the next in the following order: purple to blue, purple to green, purple to orange, purple to red, purple to brown, blue to green, blue to orange, and blue to red. The arrows originating from the same colored segment are grouped together by close placement of the arrows. Similarly, the downward arrows follow in this sequence; brown to purple, red to purple, orange to purple, green to purple, blue to purple, red to blue, orange to blue, and green to blue. Arrows are again grouped by close placement according to the color at which the arrows end.",
-        "src": "../../media/CNX_Chem_06_02_BohrArrows.jpg",
-        "mimeType": "image/jpeg"
-      }
-    },
-    {
       "type": "para",
       "id": "fs-idp56080096",
       "segmentId": "m68732:para:fs-idp56080096"
@@ -133,6 +105,20 @@
       "type": "para",
       "id": "fs-idp245170224",
       "segmentId": "m68732:para:fs-idp245170224"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_06_02_Hlevels",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68732:caption:CNX_Chem_06_02_Hlevels-caption"
+      },
+      "media": {
+        "id": "fs-idp29515312",
+        "alt": "The figure includes a diagram representing the relative energy levels of the quantum numbers of the hydrogen atom. An upward pointing arrow at the left of the diagram is labeled, “E.” A grey shaded vertically-oriented rectangle is placed just right of the arrow. The rectangle height matches the arrow length. Colored horizontal line segments are placed inside the rectangle and labels are placed to the right of the box and arranged in a column with the heading, “Energy, n.” At the very base of the rectangle, a purple horizontal line segment is drawn. A black line segment extends to the right to the label, “negative 2.18 times 10 superscript negative 18 J, 1.” At a level approximately three-quarters of the distance to the top of the rectangle, a blue horizontal line segment is drawn. A black line segment extends to the right to the label, “negative 5.45 times 10 superscript negative 19 J, 2.” At a level approximately seven-eighths the distance from the base of the rectangle, a green horizontal line segment is drawn. A black line segment extends to the right to the label, “negative 2.42 times 10 superscript negative 19 J, 3.” Just a short distance above this segment, an orange horizontal line segment is drawn. A black line segment extends to the right to the label, “negative 1.36 times 10 superscript negative 19 J, 4.” Just above this segment, a red horizontal line segment is drawn. A black line segment extends to the right to the label, “negative 8.72 times 10 superscript negative 20 J, 5.” Just a short distance above this segment, a brown horizontal line segment is drawn. A black line segment extends to the right to the label, “0.00 J, infinity.”",
+        "src": "../../media/CNX_Chem_06_02_Hlevels.jpg",
+        "mimeType": "image/jpeg"
+      }
     },
     {
       "type": "example",
@@ -199,6 +185,20 @@
           ]
         }
       ]
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_06_02_BohrArrows",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68732:caption:CNX_Chem_06_02_BohrArrows-caption"
+      },
+      "media": {
+        "id": "fs-idp153188464",
+        "alt": "The figure includes a diagram representing the relative energy levels of the quantum numbers of the hydrogen atom. An upward pointing arrow at the left of the diagram is labeled, “E.” A grey shaded vertically oriented rectangle is placed just right of the arrow. The rectangle height matches the arrow length. Colored, horizontal line segments are placed inside the rectangle and labels are placed to the right of the box, arranged in a column with the heading, “Energy, n.” At the very base of the rectangle, a purple horizontal line segment is drawn. A black line extends to the right to the label, “1.” At a level approximately three-quarters of the distance to the top of the rectangle, a blue horizontal line segment is drawn. A black line extends to the right to the label, “2.” At a level approximately seven-eighths the distance from the base of the rectangle, a green horizontal line segment is drawn. A black line extends to the right to the label, “3.” Just a short distance above this segment, an orange horizontal line segment is drawn. A black line segment extends to the right to the label, “4.” Just above this segment, a red horizontal line segment is drawn. A black line extends to the right to the label, “5.” Just a short distance above this segment, a brown horizontal line segment is drawn. A black line extends to the right to the label, “infinity.” Arrows are drawn to depict energies of photons absorbed, as shown by upward pointing arrows on the left, or released as shown by downward pointing arrows on the right side of the diagram between the colored line segments. The label, “Electron moves to higher energy as light is absorbed,” is placed beneath the upward pointing arrows. Similarly, the label, “Electron moves to lower energy as light is emitted,” appears beneath the downward pointing arrows. Moving left to right across the diagram, arrows extend from one colored line segment to the next in the following order: purple to blue, purple to green, purple to orange, purple to red, purple to brown, blue to green, blue to orange, and blue to red. The arrows originating from the same colored segment are grouped together by close placement of the arrows. Similarly, the downward arrows follow in this sequence; brown to purple, red to purple, orange to purple, green to purple, blue to purple, red to blue, orange to blue, and green to blue. Arrows are again grouped by close placement according to the color at which the arrows end.",
+        "src": "../../media/CNX_Chem_06_02_BohrArrows.jpg",
+        "mimeType": "image/jpeg"
+      }
     },
     {
       "type": "example",
@@ -715,8 +715,11 @@
       "class": null,
       "alt": "An image is shown with 5 rows. Across the top and bottom of the image is a scale that begins at 4000 angstroms at the left and extends to 740 angstroms at the far right. The top row is a continuous band of the visible spectrum, showing the colors from violet at the far left through indigo, blue, green, yellow, orange, and red at the far right. The second row, labeled, “N a,” shows the emission spectrum for the element sodium, which includes two narrow vertical bands in the blue range, two narrow bands in the yellow-green range, two narrow bands in the yellow range, and one narrow band in the orange range. The third row, labeled, “H,” shows the emission spectrum for hydrogen. This spectrum shows single bands in the violet, indigo, blue, and orange regions. The fourth row, labeled, “C a,” shows the emission spectrum for calcium. This spectrum shows bands in the following colors and frequencies; one violet, five indigo, one blue, two green, two yellow-green, one yellow, two yellow-orange, one orange, and one red. The fifth row, labeled, “H g,” shows the emission spectrum for mercury. This spectrum shows bands in the following colors and frequencies; two violet, one indigo, two blue, one green, two yellow, two orange, and one orange-red. It is important to note that each of the color bands for the emission spectra of the elements matches to a specific wavelength of light. Extending a vertical line from the bands to the scale above or below the diagram will match the band to a specific measurement on the scale.",
       "src": "../../media/CNX_Chem_06_01_2spectra.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
-  "sectionOrder": null
+  "sectionOrder": 2
 }

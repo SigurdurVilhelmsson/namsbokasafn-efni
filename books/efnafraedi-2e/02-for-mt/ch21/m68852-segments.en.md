@@ -239,7 +239,7 @@ nuclear reaction
 change to a nucleus resulting in changes in the atomic number, mass number, or energy state
 
 <!-- SEG:m68852:glossary-term:fs-idp72108384-term -->
-positron (+10β or +10e)
+positron [[MATH:51]] or [[MATH:52]]
 
 <!-- SEG:m68852:glossary-def:fs-idp72108384-def -->
 antiparticle to the electron; it has identical properties to an electron, except for having the opposite (positive) charge

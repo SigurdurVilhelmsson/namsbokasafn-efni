@@ -35,6 +35,11 @@
       },
       "content": [
         {
+          "type": "para",
+          "id": "fs-idp109982400",
+          "segmentId": "m68833:para:fs-idp109982400"
+        },
+        {
           "type": "section",
           "id": "fs-idp230327104",
           "class": null,
@@ -165,11 +170,6 @@
               "segmentId": "m68833:para:fs-idp115381648"
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idp109982400",
-          "segmentId": "m68833:para:fs-idp109982400"
         }
       ]
     },
@@ -182,6 +182,40 @@
         "text": "Reactions"
       },
       "content": [
+        {
+          "type": "para",
+          "id": "fs-idp99527488",
+          "segmentId": "m68833:para:fs-idp99527488"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp151776640",
+          "segmentId": "m68833:para:fs-idp151776640"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp268499792",
+          "segmentId": "m68833:para:fs-idp268499792"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_18_05_LiqHliqO",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68833:caption:CNX_Chem_18_05_LiqHliqO-caption"
+          },
+          "media": {
+            "id": "fs-idp117124896",
+            "alt": "A rocket is shown taking off.",
+            "src": "../../media/CNX_Chem_18_05_LiqHliqO.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp30011296",
+          "segmentId": "m68833:para:fs-idp30011296"
+        },
         {
           "type": "section",
           "id": "fs-idp115312768",
@@ -360,40 +394,6 @@
               "class": "unnumbered"
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idp99527488",
-          "segmentId": "m68833:para:fs-idp99527488"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp151776640",
-          "segmentId": "m68833:para:fs-idp151776640"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp268499792",
-          "segmentId": "m68833:para:fs-idp268499792"
-        },
-        {
-          "type": "figure",
-          "id": "CNX_Chem_18_05_LiqHliqO",
-          "class": "scaled-down",
-          "caption": {
-            "segmentId": "m68833:caption:CNX_Chem_18_05_LiqHliqO-caption"
-          },
-          "media": {
-            "id": "fs-idp117124896",
-            "alt": "A rocket is shown taking off.",
-            "src": "../../media/CNX_Chem_18_05_LiqHliqO.jpg",
-            "mimeType": "image/jpeg"
-          }
-        },
-        {
-          "type": "para",
-          "id": "fs-idp30011296",
-          "segmentId": "m68833:para:fs-idp30011296"
         }
       ]
     },
@@ -406,6 +406,11 @@
         "text": "Hydrogen Compounds"
       },
       "content": [
+        {
+          "type": "para",
+          "id": "fs-idp126496304",
+          "segmentId": "m68833:para:fs-idp126496304"
+        },
         {
           "type": "section",
           "id": "fs-idp82420336",
@@ -488,7 +493,10 @@
               "id": "fs-idp81139952",
               "class": "scaled-down",
               "alt": "Three Lewis structures are pictured and labeled, “a,” “b,” and “c.” Structure a shows a nitrogen atom with one lone pair of electrons single bonded to three hydrogen atoms. The structure is labeled “ammonia.” Structure b shows a nitrogen atom with one lone pair of electrons single bonded to two hydrogen atoms and a chlorine atom with three lone pairs of electrons. The structure is labeled “chloramine.” Structure c shows two nitrogen atoms, each with one lone pair of electrons, single bonded to one another and each single bonded to two hydrogen atoms. The structure is labeled “hydrazine.”",
-              "src": "../../media/CNX_Chem_18_05_AmmonDeriv_img.jpg"
+              "src": "../../media/CNX_Chem_18_05_AmmonDeriv_img.jpg",
+              "embedSrc": "",
+              "width": "",
+              "height": ""
             },
             {
               "type": "para",
@@ -729,11 +737,6 @@
               "segmentId": "m68833:para:fs-idp152109872"
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idp126496304",
-          "segmentId": "m68833:para:fs-idp126496304"
         }
       ]
     },
@@ -894,5 +897,5 @@
       }
     ]
   },
-  "sectionOrder": null
+  "sectionOrder": 5
 }

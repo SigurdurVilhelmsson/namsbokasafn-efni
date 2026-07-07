@@ -35,7 +35,7 @@ If the first ionization constant of a weak diprotic acid is larger than the seco
 Ionization of a Diprotic Acid
 
 <!-- SEG:m68807:para:fs-idp100346864 -->
-“Carbonated water” contains a palatable amount of dissolved carbon dioxide. The solution is acidic because CO[[sub:2]] reacts with water to form carbonic acid, H[[sub:2]]CO[[sub:3]]. What are [[MATH:5]] [[MATH:6]] and [[MATH:7]] in a saturated solution of CO[[sub:2]] with an initial [H[[sub:2]]CO[[sub:3]]] = 0.033 {{i}}M{{/i}}?
+“Carbonated water” contains a palatable amount of dissolved carbon dioxide. The solution is acidic because CO[[sub:2]] reacts with water to form carbonic acid, H[[sub:2]]CO[[sub:3]]. What are [[MATH:5]] [[MATH:6]] and [[MATH:7]] in a saturated solution of CO[[sub:2]] with an initial [H[[sub:2]]CO[[sub:3]]] = 0.033 [[i:M]]?
 
 <!-- SEG:m68807:para-title:fs-idm27159024-title -->
 Solution
@@ -44,28 +44,28 @@ Solution
 As indicated by the ionization constants, H[[sub:2]]CO[[sub:3]] is a much stronger acid than [[MATH:8]] so the stepwise ionization reactions may be treated separately.
 
 <!-- SEG:m68807:para:fs-idm165541424 -->
-The first ionization reaction is[[BR]] [[MATH:9]][[BR]] Using provided information, an ICE table for this first step is prepared:[[BR]] [[MEDIA:1]][[BR]] Substituting the equilibrium concentrations into the equilibrium equation gives[[BR]] [[MATH:10]][[BR]] Assuming {{i}}x{{/i}} &lt;&lt; 0.033 and solving the simplified equation yields[[BR]] [[MATH:11]][[BR]] The ICE table defined {{i}}x{{/i}} as equal to the bicarbonate ion molarity and the hydronium ion molarity:[[BR]] [[MATH:12]][[BR]] [[MATH:13]]
+The first ionization reaction is[[BR]] [[MATH:9]][[BR]] Using provided information, an ICE table for this first step is prepared:[[BR]] [[MEDIA:1]][[BR]] Substituting the equilibrium concentrations into the equilibrium equation gives[[BR]] [[MATH:10]][[BR]] Assuming [[i:x]] &lt;&lt; 0.033 and solving the simplified equation yields[[BR]] [[MATH:11]][[BR]] The ICE table defined [[i:x]] as equal to the bicarbonate ion molarity and the hydronium ion molarity:[[BR]] [[MATH:12]][[BR]] [[MATH:13]]
 
 <!-- SEG:m68807:para:fs-idm162694608 -->
 Using the bicarbonate ion concentration computed above, the second ionization is subjected to a similar equilibrium calculation:
 
 <!-- SEG:m68807:para:fs-idp167647504 -->
-To summarize: at equilibrium [H[[sub:2]]CO[[sub:3]]] = 0.033 {{i}}M{{/i}}; [[MATH:14]] = 1.2 [[MATH:15]] 10[[sup:−4]]; [[MATH:16]] [[MATH:17]]
+To summarize: at equilibrium [H[[sub:2]]CO[[sub:3]]] = 0.033 [[i:M]]; [[MATH:14]] = 1.2 [[MATH:15]] 10[[sup:−4]]; [[MATH:16]] [[MATH:17]]
 
 <!-- SEG:m68807:para-title:fs-idp3314688-title -->
 Check Your Learning
 
 <!-- SEG:m68807:para:fs-idp3314688 -->
-The concentration of H[[sub:2]]S in a saturated aqueous solution at room temperature is approximately 0.1 {{i}}M{{/i}}. Calculate [[MATH:18]] [HS[[sup:−]]], and [S[[sup:2−]]] in the solution:
+The concentration of H[[sub:2]]S in a saturated aqueous solution at room temperature is approximately 0.1 [[i:M]]. Calculate [[MATH:18]] [HS[[sup:−]]], and [S[[sup:2−]]] in the solution:
 
 <!-- SEG:m68807:para:fs-idm69876496 -->
-[H[[sub:2]]S] = 0.1 {{i}}M{{/i}}; [[MATH:19]] = [HS[[sup:−]]] = 0.000094 {{i}}M{{/i}}; [S[[sup:2−]]] = 1 [[MATH:20]] 10[[sup:−19]] {{i}}M{{/i}}
+[H[[sub:2]]S] = 0.1 [[i:M]]; [[MATH:19]] = [HS[[sup:−]]] = 0.000094 [[i:M]]; [S[[sup:2−]]] = 1 [[MATH:20]] 10[[sup:−19]] [[i:M]]
 
 <!-- SEG:m68807:note-title:fs-idm58434032-title -->
 Answer:
 
 <!-- SEG:m68807:para:fs-idm69876496 -->
-[H[[sub:2]]S] = 0.1 {{i}}M{{/i}}; [[MATH:21]] = [HS[[sup:−]]] = 0.000094 {{i}}M{{/i}}; [S[[sup:2−]]] = 1 [[MATH:22]] 10[[sup:−19]] {{i}}M{{/i}}
+[H[[sub:2]]S] = 0.1 [[i:M]]; [[MATH:21]] = [HS[[sup:−]]] = 0.000094 [[i:M]]; [S[[sup:2−]]] = 1 [[MATH:22]] 10[[sup:−19]] [[i:M]]
 
 <!-- SEG:m68807:para:fs-idm49318672 -->
 A {{term}}triprotic acid{{/term}} is an acid that has three ionizable H atoms. Phosphoric acid is one example:
@@ -89,43 +89,43 @@ An acid that contains more than one ionizable proton is a polyprotic acid. These
 Chemistry End of Chapter Exercises
 
 <!-- SEG:m68807:problem:fs-idm49321712 -->
-Which of the following concentrations would be practically equal in a calculation of the equilibrium concentrations in a 0.134-{{i}}M{{/i}} solution of H[[sub:2]]CO[[sub:3]], a diprotic acid: [[MATH:23]] [OH[[sup:−]]], [H[[sub:2]]CO[[sub:3]]], [[MATH:24]] [[MATH:25]] No calculations are needed to answer this question.
+Which of the following concentrations would be practically equal in a calculation of the equilibrium concentrations in a 0.134-[[i:M]] solution of H[[sub:2]]CO[[sub:3]], a diprotic acid: [[MATH:23]] [OH[[sup:−]]], [H[[sub:2]]CO[[sub:3]]], [[MATH:24]] [[MATH:25]] No calculations are needed to answer this question.
 
 <!-- SEG:m68807:solution:fs-idm77925872 -->
 [H[[sub:3]]O[[sup:+]]] and [[MATH:26]] are practically equal
 
 <!-- SEG:m68807:problem:fs-idm54573072 -->
-Calculate the concentration of each species present in a 0.050-{{i}}M{{/i}} solution of H[[sub:2]]S.
+Calculate the concentration of each species present in a 0.050-[[i:M]] solution of H[[sub:2]]S.
 
 <!-- SEG:m68807:problem:fs-idm17589920 -->
-Calculate the concentration of each species present in a 0.010-{{i}}M{{/i}} solution of phthalic acid, C[[sub:6]]H[[sub:4]](CO[[sub:2]]H)[[sub:2]].[[BR]] [[MATH:27]]
+Calculate the concentration of each species present in a 0.010-[[i:M]] solution of phthalic acid, C[[sub:6]]H[[sub:4]](CO[[sub:2]]H)[[sub:2]].[[BR]] [[MATH:27]]
 
 <!-- SEG:m68807:solution:fs-idp126090960 -->
-[C[[sub:6]]H[[sub:4]](CO[[sub:2]]H)[[sub:2]]] 7.2 [[MATH:28]] 10[[sup:−3]] {{i}}M{{/i}}, [C[[sub:6]]H[[sub:4]](CO[[sub:2]]H)(CO[[sub:2]])[[sup:−]]] = [H[[sub:3]]O[[sup:+]]] 2.8 [[MATH:29]] 10[[sup:−3]] {{i}}M{{/i}}, [[MATH:30]]3.9 [[MATH:31]] 10[[sup:−6]] {{i}}M{{/i}}, [OH[[sup:−]]] 3.6 [[MATH:32]] 10[[sup:−12]] {{i}}M{{/i}}
+[C[[sub:6]]H[[sub:4]](CO[[sub:2]]H)[[sub:2]]] 7.2 [[MATH:28]] 10[[sup:−3]] [[i:M]], [C[[sub:6]]H[[sub:4]](CO[[sub:2]]H)(CO[[sub:2]])[[sup:−]]] = [H[[sub:3]]O[[sup:+]]] 2.8 [[MATH:29]] 10[[sup:−3]] [[i:M]], [[MATH:30]]3.9 [[MATH:31]] 10[[sup:−6]] [[i:M]], [OH[[sup:−]]] 3.6 [[MATH:32]] 10[[sup:−12]] [[i:M]]
 
 <!-- SEG:m68807:problem:fs-idm71902576 -->
 Salicylic acid, HOC[[sub:6]]H[[sub:4]]CO[[sub:2]]H, and its derivatives have been used as pain relievers for a long time. Salicylic acid occurs in small amounts in the leaves, bark, and roots of some vegetation (most notably historically in the bark of the willow tree). Extracts of these plants have been used as medications for centuries. The acid was first isolated in the laboratory in 1838.
 
 <!-- SEG:m68807:problem:fs-idm57292128 -->
-(a) Both functional groups of salicylic acid ionize in water, with {{i}}K{{/i}}[[sub:a]] = 1.0 [[MATH:33]] 10[[sup:−3]] for the—CO[[sub:2]]H group and 4.2 [[MATH:34]] 10[[sup:−13]] for the −OH group. What is the pH of a saturated solution of the acid (solubility = 1.8 g/L).
+(a) Both functional groups of salicylic acid ionize in water, with [[i:K]][[sub:a]] = 1.0 [[MATH:33]] 10[[sup:−3]] for the—CO[[sub:2]]H group and 4.2 [[MATH:34]] 10[[sup:−13]] for the −OH group. What is the pH of a saturated solution of the acid (solubility = 1.8 g/L).
 
 <!-- SEG:m68807:problem:fs-idm9714880 -->
-(b) Aspirin was discovered as a result of efforts to produce a derivative of salicylic acid that would not be irritating to the stomach lining. Aspirin is acetylsalicylic acid, CH[[sub:3]]CO[[sub:2]]C[[sub:6]]H[[sub:4]]CO[[sub:2]]H. The −CO[[sub:2]]H functional group is still present, but its acidity is reduced, {{i}}K{{/i}}[[sub:a]] = 3.0 [[MATH:35]] 10[[sup:−4]]. What is the pH of a solution of aspirin with the same concentration as a saturated solution of salicylic acid (See Part a).
+(b) Aspirin was discovered as a result of efforts to produce a derivative of salicylic acid that would not be irritating to the stomach lining. Aspirin is acetylsalicylic acid, CH[[sub:3]]CO[[sub:2]]C[[sub:6]]H[[sub:4]]CO[[sub:2]]H. The −CO[[sub:2]]H functional group is still present, but its acidity is reduced, [[i:K]][[sub:a]] = 3.0 [[MATH:35]] 10[[sup:−4]]. What is the pH of a solution of aspirin with the same concentration as a saturated solution of salicylic acid (See Part a).
 
 <!-- SEG:m68807:problem:fs-idp51100224 -->
 The ion HTe[[sup:−]] is an amphiprotic species; it can act as either an acid or a base.
 
 <!-- SEG:m68807:problem:fs-idm18295328 -->
-(a) What is {{i}}K{{/i}}[[sub:a]] for the acid reaction of HTe[[sup:−]] with H[[sub:2]]O?
+(a) What is [[i:K]][[sub:a]] for the acid reaction of HTe[[sup:−]] with H[[sub:2]]O?
 
 <!-- SEG:m68807:problem:fs-idp102730016 -->
-(b) What is {{i}}K{{/i}}[[sub:b]] for the reaction in which HTe[[sup:−]] functions as a base in water?
+(b) What is [[i:K]][[sub:b]] for the reaction in which HTe[[sup:−]] functions as a base in water?
 
 <!-- SEG:m68807:problem:fs-idp3251712 -->
 (c) Demonstrate whether or not the second ionization of H[[sub:2]]Te can be neglected in the calculation of [HTe[[sup:−]]] in a 0.10 M solution of H[[sub:2]]Te.
 
 <!-- SEG:m68807:solution:fs-idp19287888 -->
-(a) [[MATH:36]][[BR]] (b) [[MATH:37]][[BR]] (c) [[MATH:38]][[BR]] Solving for {{i}}x{{/i}} gives 1.5 [[MATH:39]] 10[[sup:−11]] {{i}}M{{/i}}. Therefore, compared with 0.014 {{i}}M{{/i}}, this value is negligible (1.1 [[MATH:40]] 10[[sup:−7]]%).
+(a) [[MATH:36]][[BR]] (b) [[MATH:37]][[BR]] (c) [[MATH:38]][[BR]] Solving for [[i:x]] gives 1.5 [[MATH:39]] 10[[sup:−11]] [[i:M]]. Therefore, compared with 0.014 [[i:M]], this value is negligible (1.1 [[MATH:40]] 10[[sup:−7]]%).
 
 <!-- SEG:m68807:glossary-term:fs-idp88439392-term -->
 diprotic acid

@@ -42,7 +42,10 @@
       "id": "fs-idp82346208",
       "class": "scaled-down",
       "alt": "Two Lewis diagrams are shown. The diagram on the left shows two nitrogen atoms, represented by the letter N connected by three lines and with a lone pair of electrons on each end of the structure. The diagram on the right shows two oxygen atoms, depicted by the letter O, connected by two lines. Two pairs of electrons surround each oxygen to the top and ends of the structure.",
-      "src": "../../media/CNX_Chem_08_00_N2O2Lewis_img.jpg"
+      "src": "../../media/CNX_Chem_08_00_N2O2Lewis_img.jpg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "type": "para",
@@ -67,5 +70,5 @@
       }
     ]
   },
-  "sectionOrder": null
+  "sectionOrder": 0
 }

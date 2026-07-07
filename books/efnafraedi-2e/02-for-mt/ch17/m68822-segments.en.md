@@ -212,7 +212,7 @@ cell notation (schematic)
 symbolic representation of the components and reactions in an electrochemical cell
 
 <!-- SEG:m68822:glossary-term:fs-idm153779040-term -->
-cell potential (Ecell)
+cell potential ([[i:E]][[sub:cell]])
 
 <!-- SEG:m68822:glossary-def:fs-idm153779040-def -->
 difference in potential of the cathode and anode half-cells

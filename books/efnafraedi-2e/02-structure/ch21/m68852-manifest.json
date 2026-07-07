@@ -1,7 +1,7 @@
 {
   "version": 1,
   "moduleId": "m68852",
-  "extractedAt": "2026-03-21T17:47:25.665Z",
+  "extractedAt": "2026-07-07T09:12:52.406Z",
   "sourceHash": "2395506ee583bc89",
   "segmentCount": 82,
   "segmentIds": [
@@ -88,7 +88,7 @@
     "m68852:glossary-term:fs-idp72108384-term",
     "m68852:glossary-def:fs-idp72108384-def"
   ],
-  "equationCount": 59,
+  "equationCount": 61,
   "equationIds": [
     "math-1",
     "math-2",
@@ -140,6 +140,8 @@
     "math-48",
     "math-49",
     "math-50",
+    "math-51",
+    "math-52",
     "fs-idm4841104",
     "fs-idp203120768",
     "fs-idp153027632",
@@ -158,7 +160,7 @@
     "example": 1,
     "exercise": 8,
     "note": 1,
-    "equation": 9,
+    "equation": 4,
     "list": 2,
     "media": 0,
     "glossary": 6
@@ -188,12 +190,7 @@
       "fs-idm4841104",
       "fs-idp203120768",
       "fs-idp153027632",
-      "fs-idp11232080",
-      "fs-idp31649008",
-      "fs-idp1428976",
-      "fs-idp93036048",
-      "fs-idp34445296",
-      "fs-idp77197616"
+      "fs-idp11232080"
     ],
     "section": [
       "fs-idp49661760",

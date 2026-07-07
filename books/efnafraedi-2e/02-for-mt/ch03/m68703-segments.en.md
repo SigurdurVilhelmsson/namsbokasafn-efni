@@ -14,7 +14,7 @@ Calculate solution concentrations using molarity
 Perform dilution calculations using the dilution equation
 
 <!-- SEG:m68703:para:fs-idm232512 -->
-Preceding sections of this chapter focused on the composition of substances: samples of matter that contain only one type of element or compound. However, mixtures—samples of matter containing two or more substances physically combined—are more commonly encountered in nature than are pure substances. Similar to a pure substance, the relative composition of a mixture plays an important role in determining its properties. The relative amount of oxygen in a planet’s atmosphere determines its ability to sustain aerobic life. The relative amounts of iron, carbon, nickel, and other elements in steel (a mixture known as an “alloy”) determine its physical strength and resistance to corrosion. The relative amount of the active ingredient in a medicine determines its effectiveness in achieving the desired pharmacological effect. The relative amount of sugar in a beverage determines its sweetness (see [#CNX_Chem_03_03_espresso]). This section will describe one of the most common ways in which the relative compositions of mixtures may be quantified.
+Preceding sections of this chapter focused on the composition of substances: samples of matter that contain only one type of element or compound. However, mixtures—samples of matter containing two or more substances physically combined—are more commonly encountered in nature than are pure substances. Similar to a pure substance, the relative composition of a mixture plays an important role in determining its properties. The relative amount of oxygen in a planet’s atmosphere determines its ability to sustain aerobic life. The relative amounts of iron, carbon, nickel, and other elements in steel (a mixture known as an “alloy”) determine its physical strength and resistance to corrosion. The relative amount of the active ingredient in a medicine determines its effectiveness in achieving the desired pharmacological effect. The relative amount of sugar in a beverage determines its sweetness (see [[xref:CNX_Chem_03_03_espresso]]). This section will describe one of the most common ways in which the relative compositions of mixtures may be quantified.
 
 <!-- SEG:m68703:caption:CNX_Chem_03_03_espresso-caption -->
 Sugar is one of many components in the complex mixture known as coffee. The amount of sugar in a given amount of coffee is an important determinant of the beverage’s sweetness. (credit: Jane Whitney)
@@ -32,7 +32,7 @@ The relative amount of a given solution component is known as its {{term}}concen
 A {{term}}solute{{/term}} is a component of a solution that is typically present at a much lower concentration than the solvent. Solute concentrations are often described with qualitative terms such as {{term}}dilute{{/term}} (of relatively low concentration) and {{term}}concentrated{{/term}} (of relatively high concentration).
 
 <!-- SEG:m68703:para:fs-idm62212352 -->
-Concentrations may be quantitatively assessed using a wide variety of measurement units, each convenient for particular applications. {{term}}Molarity ({{i}}M{{/i}}){{/term}} is a useful concentration unit for many applications in chemistry. Molarity is defined as the number of moles of solute in exactly 1 liter (1 L) of the solution:
+Concentrations may be quantitatively assessed using a wide variety of measurement units, each convenient for particular applications. {{term}}Molarity ([[i:M]]){{/term}} is a useful concentration unit for many applications in chemistry. Molarity is defined as the number of moles of solute in exactly 1 liter (1 L) of the solution:
 
 <!-- SEG:m68703:example-title:fs-idm98982768-title -->
 Calculating Molar Concentrations
@@ -53,31 +53,31 @@ Check Your Learning
 A teaspoon of table sugar contains about 0.01 mol sucrose. What is the molarity of sucrose if a teaspoon of sugar has been dissolved in a cup of tea with a volume of 200 mL?
 
 <!-- SEG:m68703:para:fs-idm62230608 -->
-0.05 {{i}}M{{/i}}
+0.05 [[i:M]]
 
 <!-- SEG:m68703:note-title:fs-idm62768528-title -->
 Answer:
 
 <!-- SEG:m68703:para:fs-idm62230608 -->
-0.05 {{i}}M{{/i}}
+0.05 [[i:M]]
 
 <!-- SEG:m68703:example-title:fs-idm64107376-title -->
 Deriving Moles and Volumes from Molar Concentrations
 
 <!-- SEG:m68703:para:fs-idm58170960 -->
-How much sugar (mol) is contained in a modest sip (~10 mL) of the soft drink from [#fs-idm98982768]?
+How much sugar (mol) is contained in a modest sip (~10 mL) of the soft drink from [[xref:fs-idm98982768]]?
 
 <!-- SEG:m68703:para-title:fs-idm768-title -->
 Solution
 
 <!-- SEG:m68703:para:fs-idm768 -->
-Rearrange the definition of molarity to isolate the quantity sought, moles of sugar, then substitute the value for molarity derived in [#fs-idm98982768], 0.375 {{i}}M{{/i}}:
+Rearrange the definition of molarity to isolate the quantity sought, moles of sugar, then substitute the value for molarity derived in [[xref:fs-idm98982768]], 0.375 [[i:M]]:
 
 <!-- SEG:m68703:para-title:fs-idm97768960-title -->
 Check Your Learning
 
 <!-- SEG:m68703:para:fs-idm97768960 -->
-What volume (mL) of the sweetened tea described in [#fs-idm98982768] contains the same amount of sugar (mol) as 10 mL of the soft drink in this example?
+What volume (mL) of the sweetened tea described in [[xref:fs-idm98982768]] contains the same amount of sugar (mol) as 10 mL of the soft drink in this example?
 
 <!-- SEG:m68703:para:fs-idm89023504 -->
 80 mL
@@ -92,7 +92,7 @@ Answer:
 Calculating Molar Concentrations from the Mass of Solute
 
 <!-- SEG:m68703:para:fs-idm98918048 -->
-Distilled white vinegar ([#CNX_Chem_03_04_vinegar]) is a solution of acetic acid, CH[[sub:3]]CO[[sub:2]]H, in water. A 0.500-L vinegar solution contains 25.2 g of acetic acid. What is the concentration of the acetic acid solution in units of molarity?
+Distilled white vinegar ([[xref:CNX_Chem_03_04_vinegar]]) is a solution of acetic acid, CH[[sub:3]]CO[[sub:2]]H, in water. A 0.500-L vinegar solution contains 25.2 g of acetic acid. What is the concentration of the acetic acid solution in units of molarity?
 
 <!-- SEG:m68703:para-title:fs-idm82387696-title -->
 Solution
@@ -107,13 +107,13 @@ Check Your Learning
 Calculate the molarity of 6.52 g of CoCl[[sub:2]] (128.9 g/mol) dissolved in an aqueous solution with a total volume of 75.0 mL.
 
 <!-- SEG:m68703:para:fs-idm103606496 -->
-0.674 {{i}}M{{/i}}
+0.674 [[i:M]]
 
 <!-- SEG:m68703:note-title:fs-idm2856432-title -->
 Answer:
 
 <!-- SEG:m68703:para:fs-idm103606496 -->
-0.674 {{i}}M{{/i}}
+0.674 [[i:M]]
 
 <!-- SEG:m68703:caption:CNX_Chem_03_04_vinegar-caption -->
 Distilled white vinegar is a solution of acetic acid in water.
@@ -122,13 +122,13 @@ Distilled white vinegar is a solution of acetic acid in water.
 Determining the Mass of Solute in a Given Volume of Solution
 
 <!-- SEG:m68703:para:fs-idm2448752 -->
-How many grams of NaCl are contained in 0.250 L of a 5.30-{{i}}M{{/i}} solution?
+How many grams of NaCl are contained in 0.250 L of a 5.30-[[i:M]] solution?
 
 <!-- SEG:m68703:para-title:fs-idm122143856-title -->
 Solution
 
 <!-- SEG:m68703:para:fs-idm122143856 -->
-The volume and molarity of the solution are specified, so the amount (mol) of solute is easily computed as demonstrated in [#fs-idm64107376]:
+The volume and molarity of the solution are specified, so the amount (mol) of solute is easily computed as demonstrated in [[xref:fs-idm64107376]]:
 
 <!-- SEG:m68703:para:fs-idm108465360 -->
 Finally, this molar amount is used to derive the mass of NaCl:
@@ -137,7 +137,7 @@ Finally, this molar amount is used to derive the mass of NaCl:
 Check Your Learning
 
 <!-- SEG:m68703:para:fs-idm122705296 -->
-How many grams of CaCl[[sub:2]] (110.98 g/mol) are contained in 250.0 mL of a 0.200-{{i}}M{{/i}} solution of calcium chloride?
+How many grams of CaCl[[sub:2]] (110.98 g/mol) are contained in 250.0 mL of a 0.200-[[i:M]] solution of calcium chloride?
 
 <!-- SEG:m68703:para:fs-idm73628272 -->
 5.55 g CaCl[[sub:2]]
@@ -149,16 +149,16 @@ Answer:
 5.55 g CaCl[[sub:2]]
 
 <!-- SEG:m68703:para:fs-idm75726960 -->
-When performing calculations stepwise, as in [#fs-idm104693104], it is important to refrain from rounding any intermediate calculation results, which can lead to rounding errors in the final result. In [#fs-idm104693104], the molar amount of NaCl computed in the first step, 1.325 mol, would be properly rounded to 1.32 mol if it were to be reported; however, although the last digit (5) is not significant, it must be retained as a guard digit in the intermediate calculation. If the guard digit had not been retained, the final calculation for the mass of NaCl would have been 77.1 g, a difference of 0.3 g.
+When performing calculations stepwise, as in [[xref:fs-idm104693104]], it is important to refrain from rounding any intermediate calculation results, which can lead to rounding errors in the final result. In [[xref:fs-idm104693104]], the molar amount of NaCl computed in the first step, 1.325 mol, would be properly rounded to 1.32 mol if it were to be reported; however, although the last digit (5) is not significant, it must be retained as a guard digit in the intermediate calculation. If the guard digit had not been retained, the final calculation for the mass of NaCl would have been 77.1 g, a difference of 0.3 g.
 
 <!-- SEG:m68703:para:fs-idm105202592 -->
-In addition to retaining a guard digit for intermediate calculations, rounding errors may also be avoided by performing computations in a single step (see [#fs-idm88061984]). This eliminates intermediate steps so that only the final result is rounded.
+In addition to retaining a guard digit for intermediate calculations, rounding errors may also be avoided by performing computations in a single step (see [[xref:fs-idm88061984]]). This eliminates intermediate steps so that only the final result is rounded.
 
 <!-- SEG:m68703:example-title:fs-idm88061984-title -->
 Determining the Volume of Solution Containing a Given Mass of Solute
 
 <!-- SEG:m68703:para:fs-idm111967328 -->
-In [#fs-idm81897840], the concentration of acetic acid in white vinegar was determined to be 0.839 {{i}}M{{/i}}. What volume of vinegar contains 75.6 g of acetic acid?
+In [[xref:fs-idm81897840]], the concentration of acetic acid in white vinegar was determined to be 0.839 [[i:M]]. What volume of vinegar contains 75.6 g of acetic acid?
 
 <!-- SEG:m68703:para-title:fs-idm108289568-title -->
 Solution
@@ -176,7 +176,7 @@ Combining these two steps into one yields:
 Check Your Learning
 
 <!-- SEG:m68703:para:fs-idm59437344 -->
-What volume of a 1.50-{{i}}M{{/i}} KBr solution contains 66.0 g KBr?
+What volume of a 1.50-[[i:M]] KBr solution contains 66.0 g KBr?
 
 <!-- SEG:m68703:para:fs-idm80069312 -->
 0.370 L
@@ -191,88 +191,88 @@ Answer:
 Dilution of Solutions
 
 <!-- SEG:m68703:para:fs-idm134700400 -->
-{{term}}Dilution{{/term}} is the process whereby the concentration of a solution is lessened by the addition of solvent. For example, a glass of iced tea becomes increasingly diluted as the ice melts. The water from the melting ice increases the volume of the solvent (water) and the overall volume of the solution (iced tea), thereby reducing the relative concentrations of the solutes that give the beverage its taste ([#CNX_Chem_03_04_dilution]).
+{{term}}Dilution{{/term}} is the process whereby the concentration of a solution is lessened by the addition of solvent. For example, a glass of iced tea becomes increasingly diluted as the ice melts. The water from the melting ice increases the volume of the solvent (water) and the overall volume of the solution (iced tea), thereby reducing the relative concentrations of the solutes that give the beverage its taste ([[xref:CNX_Chem_03_04_dilution]]).
 
 <!-- SEG:m68703:caption:CNX_Chem_03_04_dilution-caption -->
 Both solutions contain the same mass of copper nitrate. The solution on the right is more dilute because the copper nitrate is dissolved in more solvent. (credit: Mark Ott)
 
 <!-- SEG:m68703:para:fs-idm77995840 -->
-Dilution is also a common means of preparing solutions of a desired concentration. By adding solvent to a measured portion of a more concentrated {{i}}stock solution{{/i}}, a solution of lesser concentration may be prepared. For example, commercial pesticides are typically sold as solutions in which the active ingredients are far more concentrated than is appropriate for their application. Before they can be used on crops, the pesticides must be diluted. This is also a very common practice for the preparation of a number of common laboratory reagents.
+Dilution is also a common means of preparing solutions of a desired concentration. By adding solvent to a measured portion of a more concentrated [[i:stock solution]], a solution of lesser concentration may be prepared. For example, commercial pesticides are typically sold as solutions in which the active ingredients are far more concentrated than is appropriate for their application. Before they can be used on crops, the pesticides must be diluted. This is also a very common practice for the preparation of a number of common laboratory reagents.
 
 <!-- SEG:m68703:para:fs-idm77996832 -->
-A simple mathematical relationship can be used to relate the volumes and concentrations of a solution before and after the dilution process. According to the definition of molarity, the number of moles of solute in a solution ({{i}}n{{/i}}) is equal to the product of the solution’s molarity ({{i}}M{{/i}}) and its volume in liters ({{i}}L{{/i}}):
+A simple mathematical relationship can be used to relate the volumes and concentrations of a solution before and after the dilution process. According to the definition of molarity, the number of moles of solute in a solution ([[i:n]]) is equal to the product of the solution’s molarity ([[i:M]]) and its volume in liters ([[i:L]]):
 
 <!-- SEG:m68703:para:fs-idm104760288 -->
 Expressions like these may be written for a solution before and after it is diluted:
 
 <!-- SEG:m68703:para:fs-idm123215808 -->
-where the subscripts “1” and “2” refer to the solution before and after the dilution, respectively. Since the dilution process {{i}}does not change the amount of solute in the solution, {{/i}}{{i}}n{{/i}}[[sub:1]] = {{i}}n{{/i}}[[sub:2]]. Thus, these two equations may be set equal to one another:
+where the subscripts “1” and “2” refer to the solution before and after the dilution, respectively. Since the dilution process [[i:does not change the amount of solute in the solution, ]][[i:n]][[sub:1]] = [[i:n]][[sub:2]]. Thus, these two equations may be set equal to one another:
 
 <!-- SEG:m68703:para:fs-idm103311152 -->
 This relation is commonly referred to as the dilution equation. Although this equation uses molarity as the unit of concentration and liters as the unit of volume, other units of concentration and volume may be used as long as the units properly cancel per the factor-label method. Reflecting this versatility, the dilution equation is often written in the more general form:
 
 <!-- SEG:m68703:para:fs-idm81143040 -->
-where {{i}}C{{/i}} and {{i}}V{{/i}} are concentration and volume, respectively.
+where [[i:C]] and [[i:V]] are concentration and volume, respectively.
 
 <!-- SEG:m68703:para:fs-idm105278864 -->
-Use the [simulation](http://openstax.org/l/16Phetsolvents) to explore the relations between solute amount, solution volume, and concentration and to confirm the dilution equation.
+Use the [[link:simulation|http://openstax.org/l/16Phetsolvents]] to explore the relations between solute amount, solution volume, and concentration and to confirm the dilution equation.
 
 <!-- SEG:m68703:example-title:fs-idm81737600-title -->
 Determining the Concentration of a Diluted Solution
 
 <!-- SEG:m68703:para:fs-idm65542512 -->
-If 0.850 L of a 5.00-{{i}}M{{/i}} solution of copper nitrate, Cu(NO[[sub:3]])[[sub:2]], is diluted to a volume of 1.80 L by the addition of water, what is the molarity of the diluted solution?
+If 0.850 L of a 5.00-[[i:M]] solution of copper nitrate, Cu(NO[[sub:3]])[[sub:2]], is diluted to a volume of 1.80 L by the addition of water, what is the molarity of the diluted solution?
 
 <!-- SEG:m68703:para-title:fs-idm63250768-title -->
 Solution
 
 <!-- SEG:m68703:para:fs-idm63250768 -->
-The stock concentration, {{i}}C{{/i}}[[sub:1]], and volume, {{i}}V{{/i}}[[sub:1]], are provided as well as the volume of the diluted solution, {{i}}V{{/i}}[[sub:2]]. Rearrange the dilution equation to isolate the unknown property, the concentration of the diluted solution, {{i}}C{{/i}}[[sub:2]]:
+The stock concentration, [[i:C]][[sub:1]], and volume, [[i:V]][[sub:1]], are provided as well as the volume of the diluted solution, [[i:V]][[sub:2]]. Rearrange the dilution equation to isolate the unknown property, the concentration of the diluted solution, [[i:C]][[sub:2]]:
 
 <!-- SEG:m68703:para:fs-idm81759792 -->
-Since the stock solution is being diluted by more than two-fold (volume is increased from 0.85 L to 1.80 L), the diluted solution’s concentration is expected to be less than one-half 5 {{i}}M{{/i}}. This ballpark estimate will be compared to the calculated result to check for any gross errors in computation (for example, such as an improper substitution of the given quantities). Substituting the given values for the terms on the right side of this equation yields:
+Since the stock solution is being diluted by more than two-fold (volume is increased from 0.85 L to 1.80 L), the diluted solution’s concentration is expected to be less than one-half 5 [[i:M]]. This ballpark estimate will be compared to the calculated result to check for any gross errors in computation (for example, such as an improper substitution of the given quantities). Substituting the given values for the terms on the right side of this equation yields:
 
 <!-- SEG:m68703:para:fs-idm125598048 -->
-This result compares well to our ballpark estimate (it’s a bit less than one-half the stock concentration, 5 {{i}}M{{/i}}).
+This result compares well to our ballpark estimate (it’s a bit less than one-half the stock concentration, 5 [[i:M]]).
 
 <!-- SEG:m68703:para-title:fs-idm105016944-title -->
 Check Your Learning
 
 <!-- SEG:m68703:para:fs-idm105016944 -->
-What is the concentration of the solution that results from diluting 25.0 mL of a 2.04-{{i}}M{{/i}} solution of CH[[sub:3]]OH to 500.0 mL?
+What is the concentration of the solution that results from diluting 25.0 mL of a 2.04-[[i:M]] solution of CH[[sub:3]]OH to 500.0 mL?
 
 <!-- SEG:m68703:para:fs-idm1594608 -->
-0.102 {{i}}M{{/i}} CH[[sub:3]]OH
+0.102 [[i:M]] CH[[sub:3]]OH
 
 <!-- SEG:m68703:note-title:fs-idm112503952-title -->
 Answer:
 
 <!-- SEG:m68703:para:fs-idm1594608 -->
-0.102 {{i}}M{{/i}} CH[[sub:3]]OH
+0.102 [[i:M]] CH[[sub:3]]OH
 
 <!-- SEG:m68703:example-title:fs-idm81033056-title -->
 Volume of a Diluted Solution
 
 <!-- SEG:m68703:para:fs-idm90576336 -->
-What volume of 0.12 {{i}}M{{/i}} HBr can be prepared from 11 mL (0.011 L) of 0.45 {{i}}M{{/i}} HBr?
+What volume of 0.12 [[i:M]] HBr can be prepared from 11 mL (0.011 L) of 0.45 [[i:M]] HBr?
 
 <!-- SEG:m68703:para-title:fs-idm75791728-title -->
 Solution
 
 <!-- SEG:m68703:para:fs-idm75791728 -->
-Provided are the volume and concentration of a stock solution, {{i}}V{{/i}}[[sub:1]] and {{i}}C{{/i}}[[sub:1]], and the concentration of the resultant diluted solution, {{i}}C{{/i}}[[sub:2]]. Find the volume of the diluted solution, {{i}}V{{/i}}[[sub:2]] by rearranging the dilution equation to isolate {{i}}V{{/i}}[[sub:2]]:
+Provided are the volume and concentration of a stock solution, [[i:V]][[sub:1]] and [[i:C]][[sub:1]], and the concentration of the resultant diluted solution, [[i:C]][[sub:2]]. Find the volume of the diluted solution, [[i:V]][[sub:2]] by rearranging the dilution equation to isolate [[i:V]][[sub:2]]:
 
 <!-- SEG:m68703:para:fs-idm61209504 -->
-Since the diluted concentration (0.12 {{i}}M{{/i}}) is slightly more than one-fourth the original concentration (0.45 {{i}}M{{/i}}), the volume of the diluted solution is expected to be roughly four times the original volume, or around 44 mL. Substituting the given values and solving for the unknown volume yields:
+Since the diluted concentration (0.12 [[i:M]]) is slightly more than one-fourth the original concentration (0.45 [[i:M]]), the volume of the diluted solution is expected to be roughly four times the original volume, or around 44 mL. Substituting the given values and solving for the unknown volume yields:
 
 <!-- SEG:m68703:para:fs-idm80652096 -->
-The volume of the 0.12-{{i}}M{{/i}} solution is 0.041 L (41 mL). The result is reasonable and compares well with the rough estimate.
+The volume of the 0.12-[[i:M]] solution is 0.041 L (41 mL). The result is reasonable and compares well with the rough estimate.
 
 <!-- SEG:m68703:para-title:fs-idm78684320-title -->
 Check Your Learning
 
 <!-- SEG:m68703:para:fs-idm78684320 -->
-A laboratory experiment calls for 0.125 {{i}}M{{/i}} HNO[[sub:3]]. What volume of 0.125 {{i}}M{{/i}} HNO[[sub:3]] can be prepared from 0.250 L of 1.88 {{i}}M{{/i}} HNO[[sub:3]]?
+A laboratory experiment calls for 0.125 [[i:M]] HNO[[sub:3]]. What volume of 0.125 [[i:M]] HNO[[sub:3]] can be prepared from 0.250 L of 1.88 [[i:M]] HNO[[sub:3]]?
 
 <!-- SEG:m68703:para:fs-idm590752 -->
 3.76 L
@@ -287,25 +287,25 @@ Answer:
 Volume of a Concentrated Solution Needed for Dilution
 
 <!-- SEG:m68703:para:fs-idm58713072 -->
-What volume of 1.59 {{i}}M{{/i}} KOH is required to prepare 5.00 L of 0.100 {{i}}M{{/i}} KOH?
+What volume of 1.59 [[i:M]] KOH is required to prepare 5.00 L of 0.100 [[i:M]] KOH?
 
 <!-- SEG:m68703:para-title:fs-idm72581456-title -->
 Solution
 
 <!-- SEG:m68703:para:fs-idm72581456 -->
-Given are the concentration of a stock solution, {{i}}C{{/i}}[[sub:1]], and the volume and concentration of the resultant diluted solution, {{i}}V{{/i}}[[sub:2]] and {{i}}C{{/i}}[[sub:2]]. Find the volume of the stock solution, {{i}}V{{/i}}[[sub:1]] by rearranging the dilution equation to isolate {{i}}V{{/i}}[[sub:1]]:
+Given are the concentration of a stock solution, [[i:C]][[sub:1]], and the volume and concentration of the resultant diluted solution, [[i:V]][[sub:2]] and [[i:C]][[sub:2]]. Find the volume of the stock solution, [[i:V]][[sub:1]] by rearranging the dilution equation to isolate [[i:V]][[sub:1]]:
 
 <!-- SEG:m68703:para:fs-idm108418736 -->
-Since the concentration of the diluted solution 0.100 {{i}}M{{/i}} is roughly one-sixteenth that of the stock solution (1.59 {{i}}M{{/i}}), the volume of the stock solution is expected to be about one-sixteenth that of the diluted solution, or around 0.3 liters. Substituting the given values and solving for the unknown volume yields:
+Since the concentration of the diluted solution 0.100 [[i:M]] is roughly one-sixteenth that of the stock solution (1.59 [[i:M]]), the volume of the stock solution is expected to be about one-sixteenth that of the diluted solution, or around 0.3 liters. Substituting the given values and solving for the unknown volume yields:
 
 <!-- SEG:m68703:para:fs-idm85673088 -->
-Thus, 0.314 L of the 1.59-{{i}}M{{/i}} solution is needed to prepare the desired solution. This result is consistent with the rough estimate.
+Thus, 0.314 L of the 1.59-[[i:M]] solution is needed to prepare the desired solution. This result is consistent with the rough estimate.
 
 <!-- SEG:m68703:para-title:fs-idm61586320-title -->
 Check Your Learning
 
 <!-- SEG:m68703:para:fs-idm61586320 -->
-What volume of a 0.575-{{i}}M{{/i}} solution of glucose, C[[sub:6]]H[[sub:12]]O[[sub:6]], can be prepared from 50.00 mL of a 3.00-{{i}}M{{/i}} glucose solution?
+What volume of a 0.575-[[i:M]] solution of glucose, C[[sub:6]]H[[sub:12]]O[[sub:6]], can be prepared from 50.00 mL of a 3.00-[[i:M]] glucose solution?
 
 <!-- SEG:m68703:para:fs-idm68276304 -->
 0.261 L
@@ -359,7 +359,7 @@ Determine the molarity for each of the following solutions:
 (f) 1.8 [[MATH:2]] 10[[sup:4]] mg of HCl in 0.075 L of solution
 
 <!-- SEG:m68703:solution:fs-idm73057968 -->
-(a) 0.679 {{i}}M{{/i}}; (b) 1.00 {{i}}M{{/i}}; (c) 0.06998 {{i}}M{{/i}}; (d) 1.75 {{i}}M{{/i}}; (e) 0.070 {{i}}M{{/i}}; (f) 6.6 {{i}}M{{/i}}
+(a) 0.679 [[i:M]]; (b) 1.00 [[i:M]]; (c) 0.06998 [[i:M]]; (d) 1.75 [[i:M]]; (e) 0.070 [[i:M]]; (f) 6.6 [[i:M]]
 
 <!-- SEG:m68703:problem:fs-idm96636640 -->
 Determine the molarity of each of the following solutions:
@@ -383,7 +383,7 @@ Determine the molarity of each of the following solutions:
 (f) 0.000889 g of glycine, C[[sub:2]]H[[sub:5]]NO[[sub:2]], in 1.05 mL of solution
 
 <!-- SEG:m68703:problem:fs-idm62810592 -->
-Consider this question: What is the mass of the solute in 0.500 L of 0.30 {{i}}M{{/i}} glucose, C[[sub:6]]H[[sub:12]]O[[sub:6]], used for intravenous injection?
+Consider this question: What is the mass of the solute in 0.500 L of 0.30 [[i:M]] glucose, C[[sub:6]]H[[sub:12]]O[[sub:6]], used for intravenous injection?
 
 <!-- SEG:m68703:problem:fs-idm75876656 -->
 (a) Outline the steps necessary to answer the question.
@@ -395,7 +395,7 @@ Consider this question: What is the mass of the solute in 0.500 L of 0.30 {{i}}M
 (a) determine the number of moles of glucose in 0.500 L of solution; determine the molar mass of glucose; determine the mass of glucose from the number of moles and its molar mass; (b) 27 g
 
 <!-- SEG:m68703:problem:fs-idm1320448 -->
-Consider this question: What is the mass of solute in 200.0 L of a 1.556-{{i}}M{{/i}} solution of KBr?
+Consider this question: What is the mass of solute in 200.0 L of a 1.556-[[i:M]] solution of KBr?
 
 <!-- SEG:m68703:problem:fs-idm91536048 -->
 (a) Outline the steps necessary to answer the question.
@@ -407,16 +407,16 @@ Consider this question: What is the mass of solute in 200.0 L of a 1.556-{{i}}M{
 Calculate the number of moles and the mass of the solute in each of the following solutions:
 
 <!-- SEG:m68703:problem:fs-idm102145824 -->
-(a) 2.00 L of 18.5 {{i}}M{{/i}} H[[sub:2]]SO[[sub:4]], concentrated sulfuric acid
+(a) 2.00 L of 18.5 [[i:M]] H[[sub:2]]SO[[sub:4]], concentrated sulfuric acid
 
 <!-- SEG:m68703:problem:fs-idm94203104 -->
-(b) 100.0 mL of 3.8 [[MATH:3]] 10[[sup:−6]] {{i}}M{{/i}} NaCN, the minimum lethal concentration of sodium cyanide in blood serum
+(b) 100.0 mL of 3.8 [[MATH:3]] 10[[sup:−6]] [[i:M]] NaCN, the minimum lethal concentration of sodium cyanide in blood serum
 
 <!-- SEG:m68703:problem:fs-idm60008496 -->
-(c) 5.50 L of 13.3 {{i}}M{{/i}} H[[sub:2]]CO, the formaldehyde used to “fix” tissue samples
+(c) 5.50 L of 13.3 [[i:M]] H[[sub:2]]CO, the formaldehyde used to “fix” tissue samples
 
 <!-- SEG:m68703:problem:fs-idm91658464 -->
-(d) 325 mL of 1.8 [[MATH:4]] 10[[sup:−6]] {{i}}M{{/i}} FeSO[[sub:4]], the minimum concentration of iron sulfate detectable by taste in drinking water
+(d) 325 mL of 1.8 [[MATH:4]] 10[[sup:−6]] [[i:M]] FeSO[[sub:4]], the minimum concentration of iron sulfate detectable by taste in drinking water
 
 <!-- SEG:m68703:solution:fs-idm96721040 -->
 (a) 37.0 mol H[[sub:2]]SO[[sub:4]], 3.63 [[MATH:5]] 10[[sup:3]] g H[[sub:2]]SO[[sub:4]]; (b) 3.8 [[MATH:6]] 10[[sup:−7]] mol NaCN, 1.9 [[MATH:7]] 10[[sup:−5]] g NaCN; (c) 73.2 mol H[[sub:2]]CO, 2.20 kg H[[sub:2]]CO; (d) 5.9 [[MATH:8]] 10[[sup:−7]] mol FeSO[[sub:4]], 8.9 [[MATH:9]] 10[[sup:−5]] g FeSO[[sub:4]]
@@ -425,16 +425,16 @@ Calculate the number of moles and the mass of the solute in each of the followin
 Calculate the number of moles and the mass of the solute in each of the following solutions:
 
 <!-- SEG:m68703:problem:fs-idm9476176 -->
-(a) 325 mL of 8.23 [[MATH:10]] 10[[sup:−5]] {{i}}M{{/i}} KI, a source of iodine in the diet
+(a) 325 mL of 8.23 [[MATH:10]] 10[[sup:−5]] [[i:M]] KI, a source of iodine in the diet
 
 <!-- SEG:m68703:problem:fs-idm26675232 -->
-(b) 75.0 mL of 2.2 [[MATH:11]] 10[[sup:−5]] {{i}}M{{/i}} H[[sub:2]]SO[[sub:4]], a sample of acid rain
+(b) 75.0 mL of 2.2 [[MATH:11]] 10[[sup:−5]] [[i:M]] H[[sub:2]]SO[[sub:4]], a sample of acid rain
 
 <!-- SEG:m68703:problem:fs-idm26426432 -->
-(c) 0.2500 L of 0.1135 {{i}}M{{/i}} K[[sub:2]]CrO[[sub:4]], an analytical reagent used in iron assays
+(c) 0.2500 L of 0.1135 [[i:M]] K[[sub:2]]CrO[[sub:4]], an analytical reagent used in iron assays
 
 <!-- SEG:m68703:problem:fs-idm26424384 -->
-(d) 10.5 L of 3.716 {{i}}M{{/i}} (NH[[sub:4]])[[sub:2]]SO[[sub:4]], a liquid fertilizer
+(d) 10.5 L of 3.716 [[i:M]] (NH[[sub:4]])[[sub:2]]SO[[sub:4]], a liquid fertilizer
 
 <!-- SEG:m68703:problem:fs-idm26505792 -->
 Consider this question: What is the molarity of KMnO[[sub:4]] in a solution of 0.0908 g of KMnO[[sub:4]] in 0.500 L of solution?
@@ -446,7 +446,7 @@ Consider this question: What is the molarity of KMnO[[sub:4]] in a solution of 0
 (b) Answer the question.
 
 <!-- SEG:m68703:solution:fs-idm26504256 -->
-(a) Determine the molar mass of KMnO[[sub:4]]; determine the number of moles of KMnO[[sub:4]] in the solution; from the number of moles and the volume of solution, determine the molarity; (b) 1.15 [[MATH:12]] 10[[sup:−3]] {{i}}M{{/i}}
+(a) Determine the molar mass of KMnO[[sub:4]]; determine the number of moles of KMnO[[sub:4]] in the solution; from the number of moles and the volume of solution, determine the molarity; (b) 1.15 [[MATH:12]] 10[[sup:−3]] [[i:M]]
 
 <!-- SEG:m68703:problem:fs-idm3478320 -->
 Consider this question: What is the molarity of HCl if 35.23 mL of a solution of HCl contain 0.3366 g of HCl?
@@ -473,7 +473,7 @@ Calculate the molarity of each of the following solutions:
 (d) 0.029 g of I[[sub:2]] in 0.100 L of solution, the solubility of I[[sub:2]] in water at 20 °C
 
 <!-- SEG:m68703:solution:fs-idm26572160 -->
-(a) 5.04 [[MATH:13]] 10[[sup:−3]] {{i}}M{{/i}}; (b) 0.499 {{i}}M{{/i}}; (c) 9.92 {{i}}M{{/i}}; (d) 1.1 [[MATH:14]] 10[[sup:−3]] {{i}}M{{/i}}
+(a) 5.04 [[MATH:13]] 10[[sup:−3]] [[i:M]]; (b) 0.499 [[i:M]]; (c) 9.92 [[i:M]]; (d) 1.1 [[MATH:14]] 10[[sup:−3]] [[i:M]]
 
 <!-- SEG:m68703:problem:fs-idm26439952 -->
 Calculate the molarity of each of the following solutions:
@@ -494,61 +494,61 @@ Calculate the molarity of each of the following solutions:
 There is about 1.0 g of calcium, as Ca[[sup:2+]], in 1.0 L of milk. What is the molarity of Ca[[sup:2+]] in milk?
 
 <!-- SEG:m68703:solution:fs-idp35203600 -->
-0.025 {{i}}M{{/i}}
+0.025 [[i:M]]
 
 <!-- SEG:m68703:problem:fs-idm27178432 -->
-What volume of a 1.00-{{i}}M{{/i}} Fe(NO[[sub:3]])[[sub:3]] solution can be diluted to prepare 1.00 L of a solution with a concentration of 0.250 {{i}}M{{/i}}?
+What volume of a 1.00-[[i:M]] Fe(NO[[sub:3]])[[sub:3]] solution can be diluted to prepare 1.00 L of a solution with a concentration of 0.250 [[i:M]]?
 
 <!-- SEG:m68703:problem:fs-idm27167552 -->
-If 0.1718 L of a 0.3556-{{i}}M{{/i}} C[[sub:3]]H[[sub:7]]OH solution is diluted to a concentration of 0.1222 {{i}}M{{/i}}, what is the volume of the resulting solution?
+If 0.1718 L of a 0.3556-[[i:M]] C[[sub:3]]H[[sub:7]]OH solution is diluted to a concentration of 0.1222 [[i:M]], what is the volume of the resulting solution?
 
 <!-- SEG:m68703:solution:fs-idp171131440 -->
 0.5000 L
 
 <!-- SEG:m68703:problem:fs-idm27153472 -->
-If 4.12 L of a 0.850 {{i}}M{{/i}}-H[[sub:3]]PO[[sub:4]] solution is be diluted to a volume of 10.00 L, what is the concentration of the resulting solution?
+If 4.12 L of a 0.850 [[i:M]]-H[[sub:3]]PO[[sub:4]] solution is be diluted to a volume of 10.00 L, what is the concentration of the resulting solution?
 
 <!-- SEG:m68703:problem:fs-idm27693872 -->
-What volume of a 0.33-{{i}}M{{/i}} C[[sub:12]]H[[sub:22]]O[[sub:11]] solution can be diluted to prepare 25 mL of a solution with a concentration of 0.025 {{i}}M{{/i}}?
+What volume of a 0.33-[[i:M]] C[[sub:12]]H[[sub:22]]O[[sub:11]] solution can be diluted to prepare 25 mL of a solution with a concentration of 0.025 [[i:M]]?
 
 <!-- SEG:m68703:solution:fs-idp223045936 -->
 1.9 mL
 
 <!-- SEG:m68703:problem:fs-idm27682864 -->
-What is the concentration of the NaCl solution that results when 0.150 L of a 0.556-{{i}}M{{/i}} solution is allowed to evaporate until the volume is reduced to 0.105 L?
+What is the concentration of the NaCl solution that results when 0.150 L of a 0.556-[[i:M]] solution is allowed to evaporate until the volume is reduced to 0.105 L?
 
 <!-- SEG:m68703:problem:fs-idm27672112 -->
 What is the molarity of the diluted solution when each of the following solutions is diluted to the given final volume?
 
 <!-- SEG:m68703:problem:fs-idm27671600 -->
-(a) 1.00 L of a 0.250-{{i}}M{{/i}} solution of Fe(NO[[sub:3]])[[sub:3]] is diluted to a final volume of 2.00 L
+(a) 1.00 L of a 0.250-[[i:M]] solution of Fe(NO[[sub:3]])[[sub:3]] is diluted to a final volume of 2.00 L
 
 <!-- SEG:m68703:problem:fs-idm26632768 -->
-(b) 0.5000 L of a 0.1222-{{i}}M{{/i}} solution of C[[sub:3]]H[[sub:7]]OH is diluted to a final volume of 1.250 L
+(b) 0.5000 L of a 0.1222-[[i:M]] solution of C[[sub:3]]H[[sub:7]]OH is diluted to a final volume of 1.250 L
 
 <!-- SEG:m68703:problem:fs-idm26631104 -->
-(c) 2.35 L of a 0.350-{{i}}M{{/i}} solution of H[[sub:3]]PO[[sub:4]] is diluted to a final volume of 4.00 L
+(c) 2.35 L of a 0.350-[[i:M]] solution of H[[sub:3]]PO[[sub:4]] is diluted to a final volume of 4.00 L
 
 <!-- SEG:m68703:problem:fs-idm26629440 -->
-(d) 22.50 mL of a 0.025-{{i}}M{{/i}} solution of C[[sub:12]]H[[sub:22]]O[[sub:11]] is diluted to 100.0 mL
+(d) 22.50 mL of a 0.025-[[i:M]] solution of C[[sub:12]]H[[sub:22]]O[[sub:11]] is diluted to 100.0 mL
 
 <!-- SEG:m68703:solution:fs-idm26627008 -->
-(a) 0.125 {{i}}M{{/i}}; (b) 0.04888 {{i}}M{{/i}}; (c) 0.206 {{i}}M{{/i}}; (d) 0.0056 {{i}}M{{/i}}
+(a) 0.125 [[i:M]]; (b) 0.04888 [[i:M]]; (c) 0.206 [[i:M]]; (d) 0.0056 [[i:M]]
 
 <!-- SEG:m68703:problem:fs-idm27383888 -->
-What is the final concentration of the solution produced when 225.5 mL of a 0.09988-{{i}}M{{/i}} solution of Na[[sub:2]]CO[[sub:3]] is allowed to evaporate until the solution volume is reduced to 45.00 mL?
+What is the final concentration of the solution produced when 225.5 mL of a 0.09988-[[i:M]] solution of Na[[sub:2]]CO[[sub:3]] is allowed to evaporate until the solution volume is reduced to 45.00 mL?
 
 <!-- SEG:m68703:problem:fs-idm27373008 -->
 A 2.00-L bottle of a solution of concentrated HCl was purchased for the general chemistry laboratory. The solution contained 868.8 g of HCl. What is the molarity of the solution?
 
 <!-- SEG:m68703:solution:fs-idm27372304 -->
-11.9 {{i}}M{{/i}}
+11.9 [[i:M]]
 
 <!-- SEG:m68703:problem:fs-idm27363856 -->
-An experiment in a general chemistry laboratory calls for a 2.00-{{i}}M{{/i}} solution of HCl. How many mL of 11.9 {{i}}M{{/i}} HCl would be required to make 250 mL of 2.00 {{i}}M{{/i}} HCl?
+An experiment in a general chemistry laboratory calls for a 2.00-[[i:M]] solution of HCl. How many mL of 11.9 [[i:M]] HCl would be required to make 250 mL of 2.00 [[i:M]] HCl?
 
 <!-- SEG:m68703:problem:fs-idm26482880 -->
-What volume of a 0.20-{{i}}M{{/i}} K[[sub:2]]SO[[sub:4]] solution contains 57 g of K[[sub:2]]SO[[sub:4]]?
+What volume of a 0.20-[[i:M]] K[[sub:2]]SO[[sub:4]] solution contains 57 g of K[[sub:2]]SO[[sub:4]]?
 
 <!-- SEG:m68703:solution:fs-idm49632864 -->
 1.6 L
@@ -563,7 +563,7 @@ Key Equations
 [[MATH:15]]
 
 <!-- SEG:m68703:entry:auto-189 -->
-{{i}}C{{/i}}[[sub:1]]{{i}}V{{/i}}[[sub:1]] = {{i}}C{{/i}}[[sub:2]]{{i}}V{{/i}}[[sub:2]]
+[[i:C]][[sub:1]][[i:V]][[sub:1]] = [[i:C]][[sub:2]][[i:V]][[sub:2]]
 
 <!-- SEG:m68703:glossary-term:fs-idm26450752-term -->
 aqueous solution
@@ -602,7 +602,7 @@ dissolved
 describes the process by which solute components are dispersed in a solvent
 
 <!-- SEG:m68703:glossary-term:fs-idm26669728-term -->
-molarity (M)
+molarity ([[i:M]])
 
 <!-- SEG:m68703:glossary-def:fs-idm26669728-def -->
 unit of concentration, defined as the number of moles of solute dissolved in 1 liter of solution

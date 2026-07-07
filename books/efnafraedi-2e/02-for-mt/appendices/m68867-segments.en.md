@@ -11,7 +11,7 @@ Base
 Lewis Structure
 
 <!-- SEG:m68867:entry:auto-5 -->
-{{i}}K{{/i}}[[sub:b]] at 25 °C
+[[i:K]][[sub:b]] at 25 °C
 
 <!-- SEG:m68867:entry:auto-6 -->
 ammonia

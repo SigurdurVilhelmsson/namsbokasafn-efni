@@ -344,7 +344,10 @@
           "id": "fs-idp36245120",
           "class": "scaled-down",
           "alt": "This reaction diagram shows three H atoms bonded to an N atom above, below, and two the left of the N. A single pair of dots is present on the right side of the N. This is followed by a plus, then two H atoms bonded to an O atom to the left and below the O. Two pairs of dots are present on the O, one above and the other to the right of the O. A double arrow, with a top arrow pointing right and a bottom arrow pointing left follows. To the right of the double arrow, four H atoms are shown bonded to a central N atom. These 5 atoms are enclosed in brackets with a superscript plus outside. A plus follows, then an O atom linked by a bond to an H atom on its right. The O atom has pairs of dots above, to the left, and below the atom. The linked O and H are enclosed in brackets with superscript minus outside.",
-          "src": "../../media/CNX_Chem_11_02_ammonia1_img.jpg"
+          "src": "../../media/CNX_Chem_11_02_ammonia1_img.jpg",
+          "embedSrc": "",
+          "width": "",
+          "height": ""
         },
         {
           "type": "para",
@@ -827,5 +830,5 @@
       }
     ]
   },
-  "sectionOrder": null
+  "sectionOrder": 3
 }

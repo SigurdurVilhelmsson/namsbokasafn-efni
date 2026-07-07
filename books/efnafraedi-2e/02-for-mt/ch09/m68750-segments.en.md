@@ -17,25 +17,25 @@ Describe the operation of common tools for measuring gas pressure
 Calculate pressure from manometer data
 
 <!-- SEG:m68750:para:fs-idm2965936 -->
-The earth’s atmosphere exerts a pressure, as does any other gas. Although we do not normally notice atmospheric pressure, we are sensitive to pressure changes—for example, when your ears “pop” during take-off and landing while flying, or when you dive underwater. Gas pressure is caused by the force exerted by gas molecules colliding with the surfaces of objects ([#CNX_Chem_09_01_Pressure1]). Although the force of each collision is very small, any surface of appreciable area experiences a large number of collisions in a short time, which can result in a high pressure. In fact, normal air pressure is strong enough to crush a metal container when not balanced by equal pressure from inside the container.
+The earth’s atmosphere exerts a pressure, as does any other gas. Although we do not normally notice atmospheric pressure, we are sensitive to pressure changes—for example, when your ears “pop” during take-off and landing while flying, or when you dive underwater. Gas pressure is caused by the force exerted by gas molecules colliding with the surfaces of objects ([[xref:CNX_Chem_09_01_Pressure1]]). Although the force of each collision is very small, any surface of appreciable area experiences a large number of collisions in a short time, which can result in a high pressure. In fact, normal air pressure is strong enough to crush a metal container when not balanced by equal pressure from inside the container.
 
 <!-- SEG:m68750:caption:CNX_Chem_09_01_Pressure1-caption -->
 The atmosphere above us exerts a large pressure on objects at the surface of the earth, roughly equal to the weight of a bowling ball pressing on an area the size of a human thumbnail.
 
 <!-- SEG:m68750:para:fs-idp139792368 -->
-A dramatic [illustration](http://openstax.org/l/16atmospressur1) of atmospheric pressure is provided in this brief video, which shows a railway tanker car imploding when its internal pressure is decreased.
+A dramatic [[link:illustration|http://openstax.org/l/16atmospressur1]] of atmospheric pressure is provided in this brief video, which shows a railway tanker car imploding when its internal pressure is decreased.
 
 <!-- SEG:m68750:para:fs-idm26057840 -->
-A smaller scale [demonstration](http://openstax.org/l/16atmospressur2) of this phenomenon is briefly explained.
+A smaller scale [[link:demonstration|http://openstax.org/l/16atmospressur2]] of this phenomenon is briefly explained.
 
 <!-- SEG:m68750:para:fs-idm5227120 -->
-Atmospheric pressure is caused by the weight of the column of air molecules in the atmosphere above an object, such as the tanker car. At sea level, this pressure is roughly the same as that exerted by a full-grown African elephant standing on a doormat, or a typical bowling ball resting on your thumbnail. These may seem like huge amounts, and they are, but life on earth has evolved under such atmospheric pressure. If you actually perch a bowling ball on your thumbnail, the pressure experienced is{{i}} twice{{/i}} the usual pressure, and the sensation is unpleasant.
+Atmospheric pressure is caused by the weight of the column of air molecules in the atmosphere above an object, such as the tanker car. At sea level, this pressure is roughly the same as that exerted by a full-grown African elephant standing on a doormat, or a typical bowling ball resting on your thumbnail. These may seem like huge amounts, and they are, but life on earth has evolved under such atmospheric pressure. If you actually perch a bowling ball on your thumbnail, the pressure experienced is[[i: twice]] the usual pressure, and the sensation is unpleasant.
 
 <!-- SEG:m68750:para:fs-idp26888784 -->
 In general, {{term}}pressure{{/term}} is defined as the force exerted on a given area: [[MATH:1]] Note that pressure is directly proportional to force and inversely proportional to area. Thus, pressure can be increased either by increasing the amount of force or by decreasing the area over which it is applied; pressure can be decreased by decreasing the force or increasing the area.
 
 <!-- SEG:m68750:para:fs-idm32668544 -->
-Let’s apply this concept to determine which exerts a greater pressure in [#CNX_Chem_09_01_Pressure2]—the elephant or the figure skater? A large African elephant can weigh 7 tons, supported on four feet, each with a diameter of about 1.5 ft (footprint area of 250 in[[sup:2]]), so the pressure exerted by each foot is about 14 lb/in[[sup:2]]:
+Let’s apply this concept to determine which exerts a greater pressure in [[xref:CNX_Chem_09_01_Pressure2]]—the elephant or the figure skater? A large African elephant can weigh 7 tons, supported on four feet, each with a diameter of about 1.5 ft (footprint area of 250 in[[sup:2]]), so the pressure exerted by each foot is about 14 lb/in[[sup:2]]:
 
 <!-- SEG:m68750:para:fs-idp79686656 -->
 The figure skater weighs about 120 lbs, supported on two skate blades, each with an area of about 2 in[[sup:2]], so the pressure exerted by each blade is about 30 lb/in[[sup:2]]:
@@ -47,7 +47,7 @@ Even though the elephant is more than one hundred-times heavier than the skater,
 Although (a) an elephant’s weight is large, creating a very large force on the ground, (b) the figure skater exerts a much higher pressure on the ice due to the small surface area of the skates. (credit a: modification of work by Guido da Rozze; credit b: modification of work by Ryosuke Yagi)
 
 <!-- SEG:m68750:para:fs-idm10039728 -->
-The SI unit of pressure is the {{term}}pascal (Pa){{/term}}, with 1 Pa = 1 N/m[[sup:2]], where N is the newton, a unit of force defined as 1 kg m/s[[sup:2]]. One pascal is a small pressure; in many cases, it is more convenient to use units of kilopascal (1 kPa = 1000 Pa) or {{term}}bar{{/term}} (1 bar = 100,000 Pa). In the United States, pressure is often measured in pounds of force on an area of one square inch—{{term}}pounds per square inch (psi){{/term}}—for example, in car tires. Pressure can also be measured using the unit {{term}}atmosphere (atm){{/term}}, which originally represented the average sea level air pressure at the approximate latitude of Paris (45°). [#fs-idp189967312] provides some information on these and a few other common units for pressure measurements
+The SI unit of pressure is the {{term}}pascal (Pa){{/term}}, with 1 Pa = 1 N/m[[sup:2]], where N is the newton, a unit of force defined as 1 kg m/s[[sup:2]]. One pascal is a small pressure; in many cases, it is more convenient to use units of kilopascal (1 kPa = 1000 Pa) or {{term}}bar{{/term}} (1 bar = 100,000 Pa). In the United States, pressure is often measured in pounds of force on an area of one square inch—{{term}}pounds per square inch (psi){{/term}}—for example, in car tires. Pressure can also be measured using the unit {{term}}atmosphere (atm){{/term}}, which originally represented the average sea level air pressure at the approximate latitude of Paris (45°). [[xref:fs-idp189967312]] provides some information on these and a few other common units for pressure measurements
 
 <!-- SEG:m68750:entry:auto-18 -->
 Pressure Units
@@ -134,7 +134,7 @@ The United States National Weather Service reports pressure in both inches of Hg
 Solution
 
 <!-- SEG:m68750:para:fs-idp32588880 -->
-This is a unit conversion problem. The relationships between the various pressure units are given in [#fs-idp189967312].
+This is a unit conversion problem. The relationships between the various pressure units are given in [[xref:fs-idp189967312]].
 
 <!-- SEG:m68750:para:fs-idm19510112 -->
 (a) [[MATH:3]]
@@ -164,16 +164,16 @@ Answer:
 0.974 atm; 740 mm Hg; 98.7 kPa; 0.987 bar
 
 <!-- SEG:m68750:para:fs-idm69336128 -->
-We can measure atmospheric pressure, the force exerted by the atmosphere on the earth’s surface, with a {{term}}barometer{{/term}} ([#CNX_Chem_09_01_Barometer]). A barometer is a glass tube that is closed at one end, filled with a nonvolatile liquid such as mercury, and then inverted and immersed in a container of that liquid. The atmosphere exerts pressure on the liquid outside the tube, the column of liquid exerts pressure inside the tube, and the pressure at the liquid surface is the same inside and outside the tube. The height of the liquid in the tube is therefore proportional to the pressure exerted by the atmosphere.
+We can measure atmospheric pressure, the force exerted by the atmosphere on the earth’s surface, with a {{term}}barometer{{/term}} ([[xref:CNX_Chem_09_01_Barometer]]). A barometer is a glass tube that is closed at one end, filled with a nonvolatile liquid such as mercury, and then inverted and immersed in a container of that liquid. The atmosphere exerts pressure on the liquid outside the tube, the column of liquid exerts pressure inside the tube, and the pressure at the liquid surface is the same inside and outside the tube. The height of the liquid in the tube is therefore proportional to the pressure exerted by the atmosphere.
 
 <!-- SEG:m68750:caption:CNX_Chem_09_01_Barometer-caption -->
-In a barometer, the height, {{i}}h{{/i}}, of the column of liquid is used as a measurement of the air pressure. Using very dense liquid mercury (left) permits the construction of reasonably sized barometers, whereas using water (right) would require a barometer more than 30 feet tall.
+In a barometer, the height, [[i:h]], of the column of liquid is used as a measurement of the air pressure. Using very dense liquid mercury (left) permits the construction of reasonably sized barometers, whereas using water (right) would require a barometer more than 30 feet tall.
 
 <!-- SEG:m68750:para:fs-idm79676464 -->
-If the liquid is water, normal atmospheric pressure will support a column of water over 10 meters high, which is rather inconvenient for making (and reading) a barometer. Because mercury (Hg) is about 13.6-times denser than water, a mercury barometer only needs to be [[MATH:7]] as tall as a water barometer—a more suitable size. Standard atmospheric pressure of 1 atm at sea level (101,325 Pa) corresponds to a column of mercury that is about 760 mm (29.92 in.) high. The {{term}}torr{{/term}} was originally intended to be a unit equal to one millimeter of mercury, but it no longer corresponds exactly. The pressure exerted by a fluid due to gravity is known as {{term}}hydrostatic pressure{{/term}}, {{i}}p{{/i}}:
+If the liquid is water, normal atmospheric pressure will support a column of water over 10 meters high, which is rather inconvenient for making (and reading) a barometer. Because mercury (Hg) is about 13.6-times denser than water, a mercury barometer only needs to be [[MATH:7]] as tall as a water barometer—a more suitable size. Standard atmospheric pressure of 1 atm at sea level (101,325 Pa) corresponds to a column of mercury that is about 760 mm (29.92 in.) high. The {{term}}torr{{/term}} was originally intended to be a unit equal to one millimeter of mercury, but it no longer corresponds exactly. The pressure exerted by a fluid due to gravity is known as {{term}}hydrostatic pressure{{/term}}, [[i:p]]:
 
 <!-- SEG:m68750:para:fs-idm61000288 -->
-where {{i}}h{{/i}} is the height of the fluid, {{i}}ρ{{/i}} (lowercase Greek letter rho) is the density of the fluid, and {{i}}g{{/i}} is acceleration due to gravity.
+where [[i:h]] is the height of the fluid, [[i:ρ]] (lowercase Greek letter rho) is the density of the fluid, and [[i:g]] is acceleration due to gravity.
 
 <!-- SEG:m68750:example-title:fs-idm5509408-title -->
 Calculation of Barometric Pressure
@@ -185,7 +185,7 @@ Show the calculation supporting the claim that atmospheric pressure near sea lev
 Solution
 
 <!-- SEG:m68750:para:fs-idm64631536 -->
-The hydrostatic pressure is given by {{i}}p{{/i}} = {{i}}hρg{{/i}}, with {{i}}h{{/i}} = 760 mm, {{i}}ρ{{/i}} = 13.6 g/cm[[sup:3]], and {{i}}g{{/i}} = 9.81 m/s[[sup:2]]. Plugging these values into the equation and doing the necessary unit conversions will give us the value we seek. (Note: We are expecting to find a pressure of ~101,325 Pa.)
+The hydrostatic pressure is given by [[i:p]] = [[i:hρg]], with [[i:h]] = 760 mm, [[i:ρ]] = 13.6 g/cm[[sup:3]], and [[i:g]] = 9.81 m/s[[sup:2]]. Plugging these values into the equation and doing the necessary unit conversions will give us the value we seek. (Note: We are expecting to find a pressure of ~101,325 Pa.)
 
 <!-- SEG:m68750:para-title:fs-idp70400640-title -->
 Check Your Learning
@@ -203,10 +203,10 @@ Answer:
 10.3 m
 
 <!-- SEG:m68750:para:fs-idp189718992 -->
-A {{term}}manometer{{/term}} is a device similar to a barometer that can be used to measure the pressure of a gas trapped in a container. A closed-end manometer is a U-shaped tube with one closed arm, one arm that connects to the gas to be measured, and a nonvolatile liquid (usually mercury) in between. As with a barometer, the distance between the liquid levels in the two arms of the tube ({{i}}h{{/i}} in the diagram) is proportional to the pressure of the gas in the container. An open-end manometer ([#CNX_Chem_09_01_Manometer]) is the same as a closed-end manometer, but one of its arms is open to the atmosphere. In this case, the distance between the liquid levels corresponds to the difference in pressure between the gas in the container and the atmosphere.
+A {{term}}manometer{{/term}} is a device similar to a barometer that can be used to measure the pressure of a gas trapped in a container. A closed-end manometer is a U-shaped tube with one closed arm, one arm that connects to the gas to be measured, and a nonvolatile liquid (usually mercury) in between. As with a barometer, the distance between the liquid levels in the two arms of the tube ([[i:h]] in the diagram) is proportional to the pressure of the gas in the container. An open-end manometer ([[xref:CNX_Chem_09_01_Manometer]]) is the same as a closed-end manometer, but one of its arms is open to the atmosphere. In this case, the distance between the liquid levels corresponds to the difference in pressure between the gas in the container and the atmosphere.
 
 <!-- SEG:m68750:caption:CNX_Chem_09_01_Manometer-caption -->
-A manometer can be used to measure the pressure of a gas. The (difference in) height between the liquid levels ({{i}}h{{/i}}) is a measure of the pressure. Mercury is usually used because of its large density.
+A manometer can be used to measure the pressure of a gas. The (difference in) height between the liquid levels ([[i:h]]) is a measure of the pressure. Mercury is usually used because of its large density.
 
 <!-- SEG:m68750:example-title:fs-idm31201088-title -->
 Calculation of Pressure Using a Closed-End Manometer
@@ -227,7 +227,7 @@ The pressure of a sample of gas is measured with a closed-end manometer, as show
 Solution
 
 <!-- SEG:m68750:para:fs-idm79648128 -->
-The pressure of the gas is equal to a column of mercury of height 26.4 cm. (The pressure at the bottom horizontal line is equal on both sides of the tube. The pressure on the left is due to the gas and the pressure on the right is due to 26.4 cm Hg, or mercury.) We could use the equation {{i}}p{{/i}} = {{i}}hρg{{/i}} as in [#fs-idm5509408], but it is simpler to just convert between units using [#fs-idp189967312].
+The pressure of the gas is equal to a column of mercury of height 26.4 cm. (The pressure at the bottom horizontal line is equal on both sides of the tube. The pressure on the left is due to the gas and the pressure on the right is due to 26.4 cm Hg, or mercury.) We could use the equation [[i:p]] = [[i:hρg]] as in [[xref:fs-idm5509408]], but it is simpler to just convert between units using [[xref:fs-idp189967312]].
 
 <!-- SEG:m68750:para:fs-idm79108064 -->
 (a) [[MATH:8]]
@@ -320,7 +320,7 @@ Answer:
 Measuring Blood Pressure
 
 <!-- SEG:m68750:para:fs-idm61054480 -->
-Blood pressure is measured using a device called a sphygmomanometer (Greek {{i}}sphygmos{{/i}} = “pulse”). It consists of an inflatable cuff to restrict blood flow, a manometer to measure the pressure, and a method of determining when blood flow begins and when it becomes impeded ([#CNX_Chem_09_01_Spygmo]). Since its invention in 1881, it has been an essential medical device. There are many types of sphygmomanometers: manual ones that require a stethoscope and are used by medical professionals; mercury ones, used when the most accuracy is required; less accurate mechanical ones; and digital ones that can be used with little training but that have limitations. When using a sphygmomanometer, the cuff is placed around the upper arm and inflated until blood flow is completely blocked, then slowly released. As the heart beats, blood forced through the arteries causes a rise in pressure. This rise in pressure at which blood flow begins is the {{i}}systolic pressure—{{/i}}the peak pressure in the cardiac cycle. When the cuff’s pressure equals the arterial systolic pressure, blood flows past the cuff, creating audible sounds that can be heard using a stethoscope. This is followed by a decrease in pressure as the heart’s ventricles prepare for another beat. As cuff pressure continues to decrease, eventually sound is no longer heard; this is the {{i}}diastolic pressure—{{/i}}the lowest pressure (resting phase) in the cardiac cycle. Blood pressure units from a sphygmomanometer are in terms of millimeters of mercury (mm Hg).
+Blood pressure is measured using a device called a sphygmomanometer (Greek [[i:sphygmos]] = “pulse”). It consists of an inflatable cuff to restrict blood flow, a manometer to measure the pressure, and a method of determining when blood flow begins and when it becomes impeded ([[xref:CNX_Chem_09_01_Spygmo]]). Since its invention in 1881, it has been an essential medical device. There are many types of sphygmomanometers: manual ones that require a stethoscope and are used by medical professionals; mercury ones, used when the most accuracy is required; less accurate mechanical ones; and digital ones that can be used with little training but that have limitations. When using a sphygmomanometer, the cuff is placed around the upper arm and inflated until blood flow is completely blocked, then slowly released. As the heart beats, blood forced through the arteries causes a rise in pressure. This rise in pressure at which blood flow begins is the [[i:systolic pressure—]]the peak pressure in the cardiac cycle. When the cuff’s pressure equals the arterial systolic pressure, blood flows past the cuff, creating audible sounds that can be heard using a stethoscope. This is followed by a decrease in pressure as the heart’s ventricles prepare for another beat. As cuff pressure continues to decrease, eventually sound is no longer heard; this is the [[i:diastolic pressure—]]the lowest pressure (resting phase) in the cardiac cycle. Blood pressure units from a sphygmomanometer are in terms of millimeters of mercury (mm Hg).
 
 <!-- SEG:m68750:caption:CNX_Chem_09_01_Spygmo-caption -->
 (a) A medical technician prepares to measure a patient’s blood pressure with a sphygmomanometer. (b) A typical sphygmomanometer uses a valved rubber bulb to inflate the cuff and a diaphragm gauge to measure pressure. (credit a: modification of work by Master Sgt. Jeffrey Allen)
@@ -329,13 +329,13 @@ Blood pressure is measured using a device called a sphygmomanometer (Greek {{i}}
 Meteorology, Climatology, and Atmospheric Science
 
 <!-- SEG:m68750:para:fs-idm77491200 -->
-Throughout the ages, people have observed clouds, winds, and precipitation, trying to discern patterns and make predictions: when it is best to plant and harvest; whether it is safe to set out on a sea voyage; and much more. We now face complex weather and atmosphere-related challenges that will have a major impact on our civilization and the ecosystem. Several different scientific disciplines use chemical principles to help us better understand weather, the atmosphere, and climate. These are meteorology, climatology, and atmospheric science. Meteorology is the study of the atmosphere, atmospheric phenomena, and atmospheric effects on earth’s weather. Meteorologists seek to understand and predict the weather in the short term, which can save lives and benefit the economy. Weather forecasts ([#CNX_Chem_09_01_WeatherMap]) are the result of thousands of measurements of air pressure, temperature, and the like, which are compiled, modeled, and analyzed in weather centers worldwide.
+Throughout the ages, people have observed clouds, winds, and precipitation, trying to discern patterns and make predictions: when it is best to plant and harvest; whether it is safe to set out on a sea voyage; and much more. We now face complex weather and atmosphere-related challenges that will have a major impact on our civilization and the ecosystem. Several different scientific disciplines use chemical principles to help us better understand weather, the atmosphere, and climate. These are meteorology, climatology, and atmospheric science. Meteorology is the study of the atmosphere, atmospheric phenomena, and atmospheric effects on earth’s weather. Meteorologists seek to understand and predict the weather in the short term, which can save lives and benefit the economy. Weather forecasts ([[xref:CNX_Chem_09_01_WeatherMap]]) are the result of thousands of measurements of air pressure, temperature, and the like, which are compiled, modeled, and analyzed in weather centers worldwide.
 
 <!-- SEG:m68750:para:fs-idm8048304 -->
 In terms of weather, low-pressure systems occur when the earth’s surface atmospheric pressure is lower than the surrounding environment: Moist air rises and condenses, producing clouds. Movement of moisture and air within various weather fronts instigates most weather events.
 
 <!-- SEG:m68750:para:fs-idm49021728 -->
-The atmosphere is the gaseous layer that surrounds a planet. Earth’s atmosphere, which is roughly 100–125 km thick, consists of roughly 78.1% nitrogen and 21.0% oxygen, and can be subdivided further into the regions shown in [#CNX_Chem_09_01_Atmosphere]: the exosphere (furthest from earth, > 700 km above sea level), the thermosphere (80–700 km), the mesosphere (50–80 km), the stratosphere (second lowest level of our atmosphere, 12–50 km above sea level), and the troposphere (up to 12 km above sea level, roughly 80% of the earth’s atmosphere by mass and the layer where most weather events originate). As you go higher in the troposphere, air density and temperature both decrease.
+The atmosphere is the gaseous layer that surrounds a planet. Earth’s atmosphere, which is roughly 100–125 km thick, consists of roughly 78.1% nitrogen and 21.0% oxygen, and can be subdivided further into the regions shown in [[xref:CNX_Chem_09_01_Atmosphere]]: the exosphere (furthest from earth, > 700 km above sea level), the thermosphere (80–700 km), the mesosphere (50–80 km), the stratosphere (second lowest level of our atmosphere, 12–50 km above sea level), and the troposphere (up to 12 km above sea level, roughly 80% of the earth’s atmosphere by mass and the layer where most weather events originate). As you go higher in the troposphere, air density and temperature both decrease.
 
 <!-- SEG:m68750:para:fs-idm30549520 -->
 Climatology is the study of the climate, averaged weather conditions over long time periods, using atmospheric data. However, climatologists study patterns and effects that occur over decades, centuries, and millennia, rather than shorter time frames of hours, days, and weeks like meteorologists. Atmospheric science is an even broader field, combining meteorology, climatology, and other scientific disciplines that study the atmosphere.
@@ -359,7 +359,7 @@ Key Equations
 [[MATH:13]]
 
 <!-- SEG:m68750:entry:auto-121 -->
-{{i}}p{{/i}} = {{i}}hρg{{/i}}
+[[i:p]] = [[i:hρg]]
 
 <!-- SEG:m68750:title:fs-idm20163680-title -->
 Chemistry End of Chapter Exercises
@@ -482,7 +482,7 @@ The pressure of a sample of gas is measured at sea level with an open-end mercur
 How would the use of a volatile liquid affect the measurement of a gas using open-ended manometers vs. closed-end manometers?
 
 <!-- SEG:m68750:solution:fs-idm51906080 -->
-With a closed-end manometer, no change would be observed, since the vaporized liquid would contribute equal, opposing pressures in both arms of the manometer tube. However, with an open-ended manometer, a higher pressure reading of the gas would be obtained than expected, since {{i}}P{{/i}}[[sub:gas]] = {{i}}P{{/i}}[[sub:atm]] + {{i}}P{{/i}}[[sub:vol liquid]].
+With a closed-end manometer, no change would be observed, since the vaporized liquid would contribute equal, opposing pressures in both arms of the manometer tube. However, with an open-ended manometer, a higher pressure reading of the gas would be obtained than expected, since [[i:P]][[sub:gas]] = [[i:P]][[sub:atm]] + [[i:P]][[sub:vol liquid]].
 
 <!-- SEG:m68750:glossary-term:fs-idm92046304-term -->
 atmosphere (atm)

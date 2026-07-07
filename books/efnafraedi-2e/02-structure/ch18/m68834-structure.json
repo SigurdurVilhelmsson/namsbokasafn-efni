@@ -125,6 +125,11 @@
       "segmentId": "m68834:para:fs-idp146223104"
     },
     {
+      "type": "equation",
+      "id": "fs-idm48067952",
+      "class": "unnumbered"
+    },
+    {
       "type": "figure",
       "id": "CNX_Chem_18_06_CarbonCO2",
       "class": "scaled-down",
@@ -137,11 +142,6 @@
         "src": "../../media/CNX_Chem_18_06_CarbonCO2.jpg",
         "mimeType": "image/jpeg"
       }
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm48067952",
-      "class": "unnumbered"
     },
     {
       "type": "para",
@@ -296,5 +296,5 @@
       }
     ]
   },
-  "sectionOrder": null
+  "sectionOrder": 6
 }

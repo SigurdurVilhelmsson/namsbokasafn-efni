@@ -8,7 +8,7 @@ Standard Electrode (Half-Cell) Potentials
 Half-Reaction
 
 <!-- SEG:m68870:entry:auto-4 -->
-{{i}}E{{/i}}° (V)
+[[i:E]]° (V)
 
 <!-- SEG:m68870:entry:auto-5 -->
 [[MATH:1]]

@@ -180,24 +180,19 @@
         },
         {
           "id": null,
-          "segmentId": "m68727:item:fs-idm49861360-item-3"
+          "segmentId": "m68727:item:fs-idm49861360-item-3",
+          "wrapsPara": {
+            "openTag": "<para id=\"fs-idm72030880\">",
+            "id": "fs-idm72030880"
+          },
+          "blockChildren": [
+            {
+              "type": "equation",
+              "id": "fs-idp4587936"
+            }
+          ]
         }
       ]
-    },
-    {
-      "type": "equation",
-      "id": "fs-idp13211824",
-      "class": "unnumbered"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm23265328",
-      "class": "unnumbered"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idp4587936",
-      "class": "unnumbered"
     },
     {
       "type": "example",
@@ -1144,37 +1139,13 @@
           "items": [
             {
               "id": null,
-              "segmentId": "m68727:item:fs-idp167198464-item-1",
-              "wrapsPara": {
-                "openTag": "<para id=\"fs-idp167199328\">",
-                "id": "fs-idp167199328"
-              }
+              "segmentId": "m68727:item:fs-idp167198464-item-1"
             },
             {
               "id": null,
               "segmentId": "m68727:item:fs-idp167198464-item-2"
             }
           ]
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp167201504",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp160717072",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp146333552",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp146345216",
-          "class": "unnumbered"
         },
         {
           "type": "example",

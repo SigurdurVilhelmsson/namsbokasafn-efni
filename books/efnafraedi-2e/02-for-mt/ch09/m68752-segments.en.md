@@ -923,7 +923,7 @@ Dalton’s law of partial pressures
 total pressure of a mixture of ideal gases is equal to the sum of the partial pressures of the component gases
 
 <!-- SEG:m68752:glossary-term:fs-idp1132336-term -->
-mole fraction (X)
+mole fraction ([[i:X]])
 
 <!-- SEG:m68752:glossary-def:fs-idp1132336-def -->
 concentration unit defined as the ratio of the molar amount of a mixture component to the total number of moles of all mixture components
