@@ -15,7 +15,22 @@
 - **The 6 re-MT modules are EXCLUDED and must stay byte-unchanged:** `m68764, m68770, m68789, m68791, m68793, m68829`. → Track B4.
 - **`npm test` from the repo root is the authoritative gate** (no branch protection).
 - Robustness > expedience: one real code path, fail loud. Any preflight failure outside the known-exception set **halts the run**.
-- Known same-ID EN-text exceptions (Fable-verified), triage explicitly: `m68692` (benign), `m68819` (benign improvement), `m68852` (garbled `(e. positron  or)` — must fix).
+- Known same-ID content exceptions (empirically derived — see "Preflight calibration" below), triage explicitly: `m68819` (benign improvement — drops a mangled `(ΔGf°)`), `m68852` (garbled `positron or` — must fix). **These are the only two modules whose normalized EN text or equation key-set changes on re-extract; both are math-capture cases.** `m68692` is NOT an exception — its earlier-flagged "drift" was a docref-label modernization the corrected normalizer canonicalizes to equal (its dead local link is a non-delivery, not a content change).
+
+### Preflight calibration (verified 2026-07-07, whole-book re-extract dry-run)
+
+Re-extracting all 149 and running the corrected `normalizeVisibleText` (Task 1) + the equation
+key-set check (Task 1) yields:
+- **segment-ID-set change** = exactly the 6 re-MT modules (scope boundary confirmed exact).
+- **normalized-text drift** (non-re-MT) = exactly `{m68819, m68852}` after the normalizer covers
+  every marker-modernization pattern (legacy `{{ }}`↔bracket `[[ ]]`, sub/sup capture, labeled
+  xref/docref/link visible-label, markdown `[text](url)`/`[text](doc:m…)`, legacy raw refs
+  `[m68674#id]`/`[#id]`). ~20 other modules gain benign modernizations that MUST normalize to
+  equality — if the normalizer is under-built they false-positive and halt the run.
+- **equation key-set change** (added/removed `math-N`, non-re-MT) = the *same* `{m68819, m68852}`.
+  Two independent detectors converging on the same two math-capture modules is the safety proof.
+- **inline-attrs.json + equations.json shared-key values** = byte-stable for all non-re-MT modules
+  (term-ids are source-order stable; a reorder does not renumber them).
 - Branch off `main` after PR #245 (analysis/register) merges, so the register + audit docs are present. One PR for the whole delivery; lead does sync/deploy.
 - `.bak` before any hand-edit to a generated/content file (project rule).
 
@@ -43,7 +58,8 @@ wc -l /tmp/reextract-modules.txt   # expect 143
 - Test: `tools/__tests__/verify-reextract-equivalence.test.js`
 
 **Interfaces:**
-- Produces (pure, testable): `normalizeVisibleText(segText: string) → string` (strips ALL marker formats — legacy `{{i}}X{{/i}}`, bracket `[[i:X]]`, xref `[#X]`/`[[xref:id]]`, `[[MATH:N]]`, `[[MEDIA:N]]`, links — down to reader-visible text, so equivalent content compares equal regardless of marker syntax); `compareModule(committed, fresh) → { ok: boolean, failures: string[] }` where `committed`/`fresh` are `{ segIds: Set, segText: Map<id,string>, equations: Map<key,mathml>, inlineAttrs: string }`.
+- Produces (pure, testable): `normalizeVisibleText(segText: string) → string` — reduces text to reader-visible content so equivalent content compares equal regardless of marker SYNTAX. Must be **loop-until-stable** (nested markers like `[[i:e[[sub:g]]]]`) and cover EVERY modernization: legacy `{{i}}X{{/i}}`↔bracket `[[i:X]]`/`[[sub:X]]`/`[[sup:X]]`, labeled `[[xref|docref|link:text|id]]` → **the visible label (text BEFORE the pipe)**, unlabeled `[[xref|docref:id]]`/`[#id]` → `''`, opaque `[[MATH|MEDIA|TABLE:N]]` → `''`, markdown `[text](url)`/`[text](doc:m…)` → `text`, and legacy raw refs left as literal text `[m68674#id]`/`[#id]` → `''`. (Empirically, an under-built normalizer false-positives on ~20 benign modules and halts the run.)
+- `compareModule(committed, fresh) → { ok: boolean, failures: string[] }`, **5-part** (adds equation KEY-SET): `committed`/`fresh` are `{ segIds: Set, segText: Map<id,string>, equations: Map<key,mathml>, inlineAttrs: string }`. Checks: (1) segment-id-set equality; (2) normalized same-id text equality; (3) equation shared-key value equality; (4) **equation key-set equality (added/removed keys) — a math-N key present on one side only is a `[[MATH:N]]` renumber/strip risk (the m68852 mechanism)**; (5) inline-attrs byte-equality.
 - Consumes: nothing from other tasks.
 
 - [ ] **Step 1: Write the failing test**
@@ -53,22 +69,45 @@ wc -l /tmp/reextract-modules.txt   # expect 143
 import { describe, it, expect } from 'vitest';
 import { normalizeVisibleText, compareModule } from '../verify-reextract-equivalence.js';
 
-describe('normalizeVisibleText — marker-format agnostic', () => {
-  it('treats legacy and bracket emphasis as equal', () => {
+describe('normalizeVisibleText — marker-format agnostic (every modernization pattern)', () => {
+  it('legacy and bracket emphasis are equal', () => {
     expect(normalizeVisibleText('Molarity {{i}}M{{/i}} is'))
       .toBe(normalizeVisibleText('Molarity [[i:M]] is'));
   });
-  it('treats legacy and bracket xref as equal (no visible text)', () => {
-    expect(normalizeVisibleText('see [#CNX_X] here'))
-      .toBe(normalizeVisibleText('see [[xref:CNX_X]] here'));
+  it('plain text and newly-captured sub/sup are equal (re-extract captures inline math)', () => {
+    // March left "me"/"Ei" as plain text; July captures m[[sub:e]]/E[[sub:i]] → must normalize equal
+    expect(normalizeVisibleText('ratio (e/me)')).toBe(normalizeVisibleText('ratio (e/m[[sub:e]])'));
+    expect(normalizeVisibleText('Ei and Ef')).toBe(normalizeVisibleText('E[[sub:i]] and E[[sub:f]]'));
   });
-  it('flags a real visible-text change (MathML capture replacing literal notation)', () => {
+  it('handles NESTED bracket markers (loop-until-stable)', () => {
+    // m68844: "eg orbitals" → "[[i:e[[sub:g]]]] orbitals"
+    expect(normalizeVisibleText('eg orbitals')).toBe(normalizeVisibleText('[[i:e[[sub:g]]]] orbitals'));
+  });
+  it('labeled xref/docref/link keep the VISIBLE label (before pipe), not the id', () => {
+    // regression guard for the before-vs-after-pipe capture bug
+    expect(normalizeVisibleText('see [[xref:Figure 5.2|CNX_X]] now')).toBe('see Figure 5.2 now');
+    expect(normalizeVisibleText('in [[docref:Appendix B|m68860]]')).toBe('in Appendix B');
+    expect(normalizeVisibleText('watch [[link:video|http://x/y]] clip')).toBe('watch video clip');
+  });
+  it('markdown [text](url) / [text](doc:m…) and its bracket form are equal', () => {
+    expect(normalizeVisibleText('see [Appendix B](doc:m68860)'))
+      .toBe(normalizeVisibleText('see [[docref:Appendix B|m68860]]'));
+  });
+  it('legacy raw refs left as visible text normalize to nothing (re-extract fixes them)', () => {
+    // m68690: March shipped literal "[m68674#fs-id…]" text; July converts to an invisible docref
+    expect(normalizeVisibleText('From [m68674#fs-idm45639696], density is'))
+      .toBe(normalizeVisibleText('From [[docref:m68674#fs-idm45639696]], density is'));
+  });
+  it('unlabeled xref has no visible text', () => {
+    expect(normalizeVisibleText('see [#CNX_X] here')).toBe(normalizeVisibleText('see [[xref:CNX_X]] here'));
+  });
+  it('flags a REAL visible-text change (math capture drops literal notation — the m68852 class)', () => {
     expect(normalizeVisibleText('positron (+10β)'))
       .not.toBe(normalizeVisibleText('positron ([[MATH:51]])'));
   });
 });
 
-describe('compareModule — 4-part equivalence', () => {
+describe('compareModule — 5-part equivalence (adds equation key-set)', () => {
   const base = { segIds: new Set(['a']), segText: new Map([['a', 'x [[i:M]]']]),
                  equations: new Map([['math-1', '<mi>k</mi>']]), inlineAttrs: '{"terms":[]}' };
   it('passes when only marker format differs', () => {
@@ -81,6 +120,16 @@ describe('compareModule — 4-part equivalence', () => {
   });
   it('fails on equations shared-key MathML change', () => {
     const fresh = { ...base, equations: new Map([['math-1', '<mi>DIFFERENT</mi>']]) };
+    expect(compareModule(base, fresh).ok).toBe(false);
+  });
+  it('fails on equation key ADDED (math newly captured → [[MATH:N]] renumber risk)', () => {
+    const fresh = { ...base, equations: new Map([['math-1', '<mi>k</mi>'], ['math-2', '<mi>q</mi>']]) };
+    const r = compareModule(base, fresh);
+    expect(r.ok).toBe(false);
+    expect(r.failures.some((f) => /equation.*key/i.test(f))).toBe(true);
+  });
+  it('fails on equation key REMOVED', () => {
+    const fresh = { ...base, equations: new Map() };
     expect(compareModule(base, fresh).ok).toBe(false);
   });
   it('fails on inline-attrs byte change', () => {
@@ -102,22 +151,27 @@ Expected: FAIL — module not found.
 import { execSync } from 'child_process';
 import { readFileSync, existsSync } from 'fs';
 
-// Strip every marker family to the reader-visible text so equivalent content
-// compares equal regardless of marker SYNTAX (the re-extract modernizes
-// {{i}}→[[i:]], [#x]→[[xref:x]]). Non-visible payloads (xref ids, MATH/MEDIA
-// placeholders, link urls) are removed; visible label/inner text is kept.
+// Reduce text to reader-visible content so equivalent content compares equal
+// regardless of marker SYNTAX (re-extract modernizes {{i}} to [[i:]], captures
+// sub/sup that March left as plain text, promotes raw refs to docrefs, etc.).
+// LOOP-UNTIL-STABLE so nested markers (e.g. [[i:e[[sub:g]]]]) fully unwrap.
+// Verified 2026-07-07 over all 149 modules: residual is exactly {m68819, m68852}
+// (the two real math-capture changes). An under-built version false-positives on
+// ~20 benign modules (sub/sup capture, docref labels, raw refs) and halts the run.
 export function normalizeVisibleText(s) {
-  return s
-    .replace(/\[\[(?:xref|docref):[^\]|]*\]\]/g, '')          // [[xref:id]] / [[docref:id]] — no visible text
-    .replace(/\[\[(?:xref|docref):[^\]|]*\|([^\]]*)\]\]/g, '$1') // [[xref:label|id]] — keep label
-    .replace(/\[#[^\]]*\]/g, '')                              // legacy [#id]
-    .replace(/\[\[(?:MATH|MEDIA|TABLE):\d+\]\]/g, '')   // placeholders → sentinel (present but opaque)
-    .replace(/\[\[link:([^\]|]*)\|[^\]]*\]\]/g, '$1')         // [[link:text|url]] — keep text
-    .replace(/\[([^\]]*)\]\(([^)]*)\)/g, '$1')                // legacy [text](url)
-    .replace(/\[\[[a-z]+:([^\]]*)\]\]/g, '$1')                // [[i:X]] [[b:X]] [[sub:X]] [[sup:X]] [[term:X]] → X
-    .replace(/\{\{\/?[a-z]+\}\}/g, '')                        // legacy {{i}} {{/i}} {{term}} {{/term}}
-    .replace(/\s+/g, ' ')
-    .trim();
+  let prev, t = s ?? '';
+  do {
+    prev = t;
+    t = t
+      .replace(/\{\{\/?[a-z]+\}\}/g, '')                       // legacy paired {{i}}X{{/i}} -> strip delimiters
+      .replace(/\[\[[a-z]+:([^\[\]|]*)\|[^\[\]]*\]\]/g, '$1')  // labeled [[link|xref|docref:TEXT|id]] -> TEXT (BEFORE pipe)
+      .replace(/\[\[(?:xref|docref):[^\[\]]*\]\]/g, '')        // unlabeled [[xref|docref:id]] -> '' (no visible text)
+      .replace(/\[\[(?:MATH|MEDIA|TABLE):\d+\]\]/gi, '')       // opaque placeholders -> ''
+      .replace(/\[\[[a-z]+:([^\[\]]*)\]\]/g, '$1')             // bracket inline [[i:X]] [[sub:X]] ... -> X (innermost)
+      .replace(/\[([^\[\]]*)\]\([^)]*\)/g, '$1')               // markdown [text](url) / [text](doc:m123) -> text
+      .replace(/\[(?:m\d+)?#[^\[\]]*\]/g, '');                 // legacy raw ref [m68674#id] / [#id] -> ''
+  } while (t !== prev);
+  return t.replace(/\s+/g, ' ').trim();
 }
 
 export function compareModule(committed, fresh) {
@@ -132,10 +186,18 @@ export function compareModule(committed, fresh) {
       }
     }
   }
+  // equations: shared-key value drift AND key-set (added/removed) -- an added or
+  // removed math-N key renumbers the [[MATH:N]] placeholders the existing IS
+  // translations carry (the m68852 mechanism). Independent math-capture detector.
   for (const [k, v] of committed.equations) {
-    if (fresh.equations.has(k) && fresh.equations.get(k) !== v) {
-      failures.push(`equations shared-key MathML changed: ${k}`);
+    if (fresh.equations.has(k)) {
+      if (fresh.equations.get(k) !== v) failures.push(`equations shared-key MathML changed: ${k}`);
+    } else {
+      failures.push(`equation key removed: ${k}`);
     }
+  }
+  for (const k of fresh.equations.keys()) {
+    if (!committed.equations.has(k)) failures.push(`equation key added: ${k}`);
   }
   if (committed.inlineAttrs !== fresh.inlineAttrs) failures.push('inline-attrs changed');
   return { ok: failures.length === 0, failures };
@@ -180,7 +242,7 @@ export function verifyBook(book, modulesFile, knownExceptions = new Set()) {
 
 if (import.meta.url === `file://${process.argv[1]}`) {
   const modulesFile = process.argv[2] || '/tmp/reextract-modules.txt';
-  const known = new Set(['m68692', 'm68819', 'm68852']);
+  const known = new Set(['m68819', 'm68852']); // the ONLY two real content changes (math-capture); verified whole-book 2026-07-07
   const report = verifyBook('efnafraedi-2e', modulesFile, known);
   const failed = report.filter((r) => !r.ok);
   const waived = report.filter((r) => r.exceptionWaived);
@@ -199,7 +261,7 @@ Expected: PASS (all cases).
 
 ```bash
 git add tools/verify-reextract-equivalence.js tools/__tests__/verify-reextract-equivalence.test.js
-git commit -m "feat(tools): re-extract equivalence preflight (4-part, marker-agnostic) [STALE-STRUCT]
+git commit -m "feat(tools): re-extract equivalence preflight (5-part, marker-agnostic) [STALE-STRUCT]
 
 Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>"
 ```
@@ -242,16 +304,23 @@ Expected: `OK: 6 re-MT modules unchanged`. If FAIL, `git checkout -- <files>` th
 - [ ] **Step 4: Run the equivalence preflight (the safety gate)**
 
 Run: `node tools/verify-reextract-equivalence.js /tmp/reextract-modules.txt`
-Expected: exit 0; output shows only `WAIVED m68692/m68819/m68852` lines (the known exceptions) and `0 FAIL`. **If any `FAIL` line appears, STOP** — a module drifted beyond the known exceptions; investigate before proceeding.
+Expected: exit 0; output shows only `WAIVED m68819/m68852` lines (the two known math-capture exceptions) and `0 FAIL`. **If any `FAIL` line appears, STOP** — a module drifted beyond the known exceptions; investigate before proceeding (do NOT reflexively add it to `known` — a new drift is either a normalizer gap to close or a real content change to triage). Per the whole-book calibration (Global Constraints), the ~20 benign-modernization modules must show neither WAIVED nor FAIL — if they do, the normalizer is under-built.
 
 - [ ] **Step 5: Commit the re-extract**
+
+> **Diff-noise note:** `cnxml-extract.js` stamps `extractedAt: new Date().toISOString()` into every
+> `structure.json`, so **all 143 structure.json files show a diff even where only the timestamp
+> changed** (the 15 already-current modules included). This is invisible to the preflight (it never
+> compares `structure.json`) and harmless — just don't read the structure.json line-count in
+> `git diff --stat` as a proxy for "how much changed", and exclude the `extractedAt` line from any
+> prose-diff review.
 
 ```bash
 git add books/efnafraedi-2e/02-structure books/efnafraedi-2e/02-for-mt
 git commit -m "content(efnafraedi-2e): re-extract 143 re-MT-free modules (delivers F1/OC-A/B/E/OC-E to structure.json) [STALE-STRUCT]
 
 Preflight: equivalence gate green (segment-id-set + normalized EN text + equations
-shared-key + inline-attrs), 3 known glossary exceptions waived (m68692/819/852).
+shared-key + equation key-set + inline-attrs), 2 known math-capture exceptions waived (m68819/852).
 6 re-MT modules (m68764/770/789/791/793/829) excluded → B4.
 
 Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>"
@@ -262,10 +331,22 @@ Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>"
 ### Task 3: Fix the m68852 glossary-annotation garble (+ verify m68819)
 
 **Files:**
-- Investigate: `tools/cnxml-inject.js` `annotateInlineTerms` (~832, F6 math-strip)
-- Modify: either `tools/cnxml-inject.js` (+ test) OR the single m68852 faithful/mt segment (targeted content fix)
+- Modify (primary — code fix): `tools/cnxml-inject.js` (`annotateInlineTerms` signature + line ~832 F6 strip) + `tools/__tests__/*` unit test
+- Fallback only: the single m68852 faithful/mt segment (targeted content fix)
 
-**Interfaces:** consumes the re-extracted structure (Task 2).
+**Decision (settled — do the code fix; content fix is the escape hatch, not a coin-flip):**
+The garble is **one line**. `annotateInlineTerms` (cnxml-inject.js:782) already converts
+`[[sub:]]`/`[[sup:]]`/`[[i:]]`/`[[b:]]` to their inner text (lines ~826–829 — which is why i/sub/sup
+terms like m68733 render fine). Only **line ~832** — `.replace(/\[\[[A-Za-z][\w]*:[^\]]*\]\]/g, '')`
+— drops `[[MATH:N]]` to *empty*, so m68852's `positron (+10β or +10e)` (β/e captured as MATH) →
+`positron ( or )` → `positron or`. Fix = substitute the math's visible notation instead of dropping.
+Injection already resolves `[[MATH:N]]` via `equations['math-N'].mathml` (line ~1164), and
+`equations` is **in scope at the annotate call site (line ~3923)** — so threading it in is a clean
+3rd-param add, not a refactor. Take the content-fix fallback **only if** that plumbing proves
+genuinely entangled; if you do, back up (`.bak`), correct the m68852 segment, and log the code
+root-cause to the register (B4). Record which path you took in the commit message.
+
+**Interfaces:** consumes the re-extracted structure (Task 2) and `equations['math-N'].mathml`.
 
 - [ ] **Step 1: Reproduce — re-inject m68852 and confirm the garble**
 
@@ -275,14 +356,42 @@ grep -o '(e\. positron[^)]*)' books/efnafraedi-2e/03-translated/mt-preview/ch21/
 ```
 Expected: shows `(e. positron  or)` (the garble — math notation stripped from the annotation).
 
-- [ ] **Step 2: Decide the fix location**
+- [ ] **Step 2: Code fix — substitute MATH notation instead of dropping it (TDD)**
 
-Read `annotateInlineTerms` around `cnxml-inject.js:832`. If the math-strip can preserve the math *visible* notation generally (e.g. keep the rendered notation text) without regressing other annotations, prefer a **code fix** + a unit test on the `positron` case. If it is entangled/risky, apply a **targeted content fix**: back up (`.bak`) and correct the m68852 term annotation so the notation reads correctly, and log the code root-cause to the register (B4). Record the decision in the commit message.
+1. **Thread `equations` into `annotateInlineTerms`.** Change the signature to
+   `annotateInlineTerms(isSegments, enSegments, equations = {})` and pass `equations` at the call
+   site (~line 3923: `annotateInlineTerms(segments, enSegments, equations)` — `equations` is already
+   in scope there, used by the `[[MATH:N]]` restore at ~1164). Also update the module export/any
+   other caller for the new arity (default `{}` keeps them safe).
+2. **Replace the line ~832 drop with a resolve-or-empty substitution.** Before the catch-all strip,
+   resolve `[[MATH:N]]` to readable text from the equations map — strip MathML tags to visible
+   characters, so the annotation shows the notation rather than nothing:
+   ```javascript
+   .replace(/\[\[MATH:(\d+)\]\]/g, (m, n) => {
+     const eq = equations[`math-${n}`];
+     if (!eq || !eq.mathml) return '';                 // unresolved → drop (old behaviour, rare)
+     return eq.mathml.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim(); // MathML → visible text
+   })
+   .replace(/\[\[[A-Za-z][\w]*:[^\]]*\]\]/g, '')        // F6: still drop MEDIA / any OTHER placeholder
+   ```
+   Leave lines ~826–829 (`sub`/`sup`/`i`/`b` → inner text) UNTOUCHED — they already render correctly.
+3. **Write the failing test first** (`tools/__tests__/…`): `annotateInlineTerms` on an EN term
+   `positron ([[MATH:1]] or [[MATH:2]])` with `equations = { 'math-1': { mathml: '<mn>+1</mn><mn>0</mn>β' }, 'math-2': {…} }`
+   yields an annotation that is non-empty, contains the notation characters, and has **no** leftover
+   `[[MATH:` and no stray `( or )`. Run red → implement → green.
 
-- [ ] **Step 3: Apply the chosen fix**
+- [ ] **Step 3: Confirm on the real module (+ fallback trigger)**
 
-(Code fix path) add a Vitest case that a term annotation containing math notation renders the notation rather than stripping it; implement minimally; run it.
-(Content fix path) edit the m68852 segment (with `.bak`), re-inject m68852, re-check Step 1 shows a correct annotation.
+```bash
+node tools/cnxml-inject.js --book efnafraedi-2e --chapter 21 --module m68852 >/dev/null 2>&1
+grep -o '(e\. positron[^)]*)' books/efnafraedi-2e/03-translated/mt-preview/ch21/m68852.cnxml
+```
+Expected: reads with the notation present (e.g. `(e. positron …)`), NOT `(e. positron  or)`.
+
+**Fallback (only if threading `equations` proves genuinely entangled — not a default):** revert the
+code change, back up (`.bak`) and correct the m68852 segment's annotation directly, re-inject,
+confirm Step 3 clean, and **log the `annotateInlineTerms` math-strip root-cause to the register (B4)**
+so it's fixed properly later. Note in the commit which path you took.
 
 - [ ] **Step 4: Verify m68819 is the benign improvement**
 
@@ -296,7 +405,11 @@ Expected: reads cleanly (the mangled `(δgf°)` no longer present). Accept.
 
 ```bash
 git add -A books/efnafraedi-2e tools/cnxml-inject.js tools/__tests__ 2>/dev/null
-git commit -m "fix: m68852 glossary term annotation garble ('positron  or') [STALE-STRUCT]
+git commit -m "fix(inject): annotateInlineTerms substitutes MATH notation instead of dropping it [STALE-STRUCT]
+
+annotateInlineTerms threaded 'equations'; line ~832 resolves [[MATH:N]] to visible
+notation (MathML stripped to text) rather than deleting it, fixing the m68852
+glossary garble 'positron  or'. sub/sup/i/b handling unchanged. Unit test added.
 
 Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>"
 ```
@@ -333,7 +446,7 @@ git diff books/efnafraedi-2e/03-translated | grep -E '^[+-]' | grep -vE '^[+-]{3
 # Broad check: the diff should be dominated by MOVED lines (reorders), not changed prose.
 git diff --stat books/efnafraedi-2e/03-translated | tail -3
 ```
-Expected: the only *prose* changes are the m68819/m68852 glossary lines; the bulk is element repositioning. Spot-review 3–4 modules' diffs to confirm reorders, not rewrites.
+Expected: the bulk of the diff is element repositioning (reorders). **Beyond reorders, the delivery legitimately also ships benign marker-modernizations** the re-extract introduces — this is NOT "order-only" (correct the scope framing accordingly): newly-captured inline sub/sup (e.g. `me`→`m<sub>e</sub>`, `Ei`→`E<sub>i</sub>`), emphasis format changes, and raw-ref cleanups where March rendered a literal `[m68674#…]` in the text and July resolves it to a proper link (m68690). These are improvements, expected on the ~20 modules the preflight flagged as benign (Global Constraints calibration). The only *content-affecting* changes are the m68819/m68852 glossary lines. Spot-review 3–4 modules' diffs to confirm: reorders + benign marker modernization, **no reworded prose**.
 
 - [ ] **Step 4: Commit the re-inject**
 
@@ -415,17 +528,28 @@ Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>"
 **Interfaces:**
 - Consumes: `compareElementOrder` (existing). Produces: `orderFingerprint(moved: string[]) → string` (stable hash of the sorted moved-id set); allowlist file shape `{ "<moduleId>": { "fingerprint": "<hash>", "reason": "B4 re-MT" } }`.
 
-- [ ] **Step 1: Confirm the order check is now clean except the 6**
+- [ ] **Step 1: Confirm the order check is now clean except the 6 — and STOP if it isn't**
 
-Run: `node tools/cnxml-fidelity-check.js --book efnafraedi-2e 2>&1 | grep -c 'ORDER \[warn-only\]'`
-Expected: `6` (only the excluded re-MT modules).
+Run: `node tools/cnxml-fidelity-check.js --book efnafraedi-2e 2>&1 | grep 'ORDER \[warn-only\]'`
+Expected: **exactly the 6 re-MT modules** `{m68764, m68770, m68789, m68791, m68793, m68829}`, no others.
+
+**Residual handling (fail-loud — do NOT paper over it).** The audit projects "near-0", not a
+guaranteed 6: some order flags could be injection-side rather than extraction-side, so re-extract
+might not clear them. If the list contains **any module that is NOT one of the 6 re-MT**, that is a
+residual scramble the re-extract did not fix — **STOP and root-cause it** (compare source vs
+`03-translated` element order; is it a nested-para/list injection limitation, a still-stale
+structure, or a genuine new bug?). **Never add a non-re-MT module to the order allowlist to make
+the gate pass** — the allowlist is *exclusively* the 6 re-MT modules pending B4 (Step 4 asserts
+this). Fix the root cause or, if it is a known-accepted injection limitation, log it to the register
+and get explicit sign-off before proceeding. Conversely, if a module in the 6 does **not** flag,
+that is also unexpected (it should still be structurally stale) — investigate before allowlisting it.
 
 - [ ] **Step 2: Write the failing test**
 
 ```javascript
 // tools/__tests__/cnxml-fidelity-order-gate.test.js
 import { describe, it, expect } from 'vitest';
-import { orderFingerprint, isOrderAllowlisted } from '../cnxml-fidelity-check.js';
+import { orderFingerprint, isOrderAllowlisted, assertOrderAllowlistScope } from '../cnxml-fidelity-check.js';
 
 describe('order gate fingerprint allowlist', () => {
   it('fingerprint is order-insensitive over the moved set', () => {
@@ -436,6 +560,10 @@ describe('order gate fingerprint allowlist', () => {
     expect(isOrderAllowlisted('m68793', ['y', 'x'], allow)).toBe(true);   // same set → waived
     expect(isOrderAllowlisted('m68793', ['x', 'z'], allow)).toBe(false);  // NEW reorder → red
     expect(isOrderAllowlisted('m68999', ['x', 'y'], allow)).toBe(false);  // not listed → red
+  });
+  it('rejects any allowlist entry that is not one of the 6 re-MT modules (I1 escape-hatch guard)', () => {
+    expect(() => assertOrderAllowlistScope({ m68793: { fingerprint: 'x' } })).not.toThrow();
+    expect(() => assertOrderAllowlistScope({ m68702: { fingerprint: 'x' } })).toThrow(/stray/);
   });
 });
 ```
@@ -451,14 +579,22 @@ In `tools/cnxml-fidelity-check.js` add:
 ```javascript
 import { createHash } from 'crypto';
 export function orderFingerprint(moved) {
-  return createHash('sha1').update([...moved].sort().join(' ')).digest('hex').slice(0, 16);
+  return createHash('sha1').update([...moved].sort().join('\u0000')).digest('hex').slice(0, 16);
 }
 export function isOrderAllowlisted(moduleId, moved, allow) {
   const e = allow[moduleId];
   return !!e && e.fingerprint === orderFingerprint(moved);
 }
+
+// The order allowlist is EXCLUSIVELY the 6 re-MT modules pending B4. Fail loud if
+// anyone ever adds another module to make the gate pass (the I1 escape-hatch guard).
+const ORDER_ALLOWLIST_SCOPE = new Set(['m68764', 'm68770', 'm68789', 'm68791', 'm68793', 'm68829']);
+export function assertOrderAllowlistScope(allow) {
+  const stray = Object.keys(allow).filter((m) => !ORDER_ALLOWLIST_SCOPE.has(m));
+  if (stray.length) throw new Error(`order-allowlist may only contain the 6 re-MT modules; stray: ${stray.join(', ')}`);
+}
 ```
-Load `books/efnafraedi-2e/order-allowlist.json` at book scope; in the order-check loop, a module with `!order.ok` that **is** allowlisted → warn (does not affect exit); one that is **not** allowlisted → **push to a hard-fail list** and set exit non-zero. Update the summary line to distinguish `allowlisted (B4)` from `HARD-FAIL`.
+Load `books/efnafraedi-2e/order-allowlist.json` at book scope and call `assertOrderAllowlistScope(allow)` immediately (a non-re-MT entry is a hard boot error, never a silent waive). In the order-check loop, a module with `!order.ok` that **is** allowlisted → warn (does not affect exit); one that is **not** allowlisted → **push to a hard-fail list** and set exit non-zero. Update the summary line to distinguish `allowlisted (B4)` from `HARD-FAIL`.
 
 - [ ] **Step 5: Generate the order-allowlist for the 6, run tests**
 
@@ -517,5 +653,6 @@ Lead runs Phase-6 sync + prod deploy. Post-deploy spot-check: a nested-subsectio
 ## Self-Review
 
 - **Spec coverage:** D1 re-extract → Task 2; D2 preflight → Task 1 (tool) + Task 2 (run); D3 re-inject → Task 4; D4 glossary fix → Task 3; D5 re-render/goldens → Task 5; D6 gate flip → Task 6; D7 verification suite → distributed across Tasks 2/4/5/6; D8 delivery + register follow-up → Task 7. All covered.
+- **Preflight empirically calibrated (2026-07-07):** the equivalence gate (Task 1) was validated against a whole-book re-extract dry-run, not just designed. `normalizeVisibleText` is loop-until-stable and covers every observed modernization (sub/sup capture, labeled-ref visible-label, markdown/doc links, legacy raw refs); `compareModule` is 5-part (D2.3's added/removed equation key-set is now implemented, not just "shared-key"). Result: normalized-text drift and equation-key-set drift each independently reduce to exactly `{m68819, m68852}`, the two known math-capture cases — so the exception list is derived, not assumed. `m68692` was dropped from `known` (its earlier "drift" was the labeled-docref capture bug, now fixed).
 - **Placeholder scan:** the only open decision is Task 3's code-fix-vs-content-fix, which is explicitly a decide-at-implementation branch with both paths specified — not a placeholder. PR body text in Task 7 Step 3 is a fill-at-time summary (acceptable).
-- **Type/name consistency:** `normalizeVisibleText`/`compareModule`/`verifyBook` (Task 1) used consistently; `orderFingerprint`/`isOrderAllowlisted` (Task 6) consistent; module-list file `/tmp/reextract-modules.txt` and 6-exclusion set consistent across tasks; `order-allowlist.json` shape consistent between Task 6 Steps 2/4/5.
+- **Type/name consistency:** `normalizeVisibleText`/`compareModule`/`verifyBook` (Task 1) used consistently; `orderFingerprint`/`isOrderAllowlisted`/`assertOrderAllowlistScope` (Task 6) consistent; module-list file `/tmp/reextract-modules.txt` and 6-exclusion set consistent across tasks; `order-allowlist.json` shape consistent between Task 6 Steps 2/4/5.
