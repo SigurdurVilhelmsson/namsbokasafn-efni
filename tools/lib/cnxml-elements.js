@@ -765,6 +765,27 @@ export function processInlineContent(content, context) {
     }
   );
 
+  // 4b. <link document="D">text</link>  (closing tag, document only — no target-id)
+  // Without this arm the shape falls through all others and leaks raw CNXML markup
+  // into the HTML. Renders as text when the document does not resolve (appendix
+  // links are text-only for now — resolving them to /vidauki/{letter} is deferred).
+  result = result.replace(
+    /<link\s+document="([^"]*)"\s*>([\s\S]*?)<\/link>/g,
+    (match, doc, inner) => {
+      const { href } = resolveCrossModuleHref(doc, null, context);
+      const text = inner.trim();
+      const label =
+        text ||
+        context.moduleSections?.[doc]?.titleIs ||
+        context.crossModuleSections?.[doc]?.titleIs ||
+        doc;
+      if (href === null) {
+        return text ? processInlineContent(text, context) : escapeHtml(label);
+      }
+      return `<a href="${escapeAttr(href)}">${text ? processInlineContent(text, context) : escapeHtml(label)}</a>`;
+    }
+  );
+
   // 5. <link target-id="X">text</link>  (target only, with content — no document attribute)
   result = result.replace(
     /<link\s+target-id="([^"]*)"[^>]*>([\s\S]*?)<\/link>/g,
