@@ -721,6 +721,7 @@ export function processInlineContent(content, context) {
   // 2. <link document="D"/>                          (self-closing, doc only)
   // 3. <link target-id="X"/>                         (self-closing, target only)
   // 4. <link document="D" target-id="X">text</link>  (closing tag, both)
+  // 4b. <link document="D">text</link>               (closing tag, doc only)
   // 5. <link target-id="X">text</link>               (closing tag, target only)
 
   // 1. <link document="D" target-id="X"/>  (self-closing, both attributes)
