@@ -151,6 +151,25 @@ Execution overturned two premises in this design. Recording honestly:
    needs its own systematic-debugging session. m68791 is a B4 re-MT module, so re-inclusion is not clean
    → the render-path fix is the correct general fix.
 
+**Characterization of the delivered page changes (per the acceptance gate's "characterize every change"):**
+- **6-3 (m68733):** table only — fill-in cells gain the leading empty entries; verified against
+  `01-source/ch06/m68733.cnxml` (rows `[blank,4,1,blank,blank]` / `[blank,7,blank,7,3]`) and the answer
+  key. Gets a real section number.
+- **4-2 (m68710):** **more than the table.** The re-extract (on current extraction code, vs the stale
+  March structure) also corrected a latent **example mis-ordering**: example `fs-idm53644080` moves from
+  the 3rd to the 5th (last) rendered position, so the worked-example bodies remap, and the same-module
+  cross-reference in `fs-idp45838960` renumbers **4.7 → 4.6**. This is a **correct** fix, verified against
+  source document order (`fs-idp3608096`, `fs-idm49295040`, `fs-idm24634320`, `fs-idp180799104`,
+  `fs-idm53644080` in that order; the xref target `fs-idp180799104` is genuinely the 4th example → "4.6"
+  is now right, old "4.7" was wrong). No other module references any reordered example id (grep-verified),
+  so there are **no stale cross-references** left un-re-rendered — the reorder is self-consistent. Same
+  stale-structure class as the section reorder noted in point 1.
+- **Latent data note:** the single-module `--input` re-extract left m68710's committed `sectionOrder`
+  null while its ch04 siblings keep integer orders. Benign today (collection-order.json is authoritative
+  in `buildModuleSections` per #6/PR #250) but `collection-order.json` is now the *only* thing holding
+  m68710 at slot 4-2; a future whole-chapter `--chapter 4` re-extract would restore positional order. The
+  `module-sections.test.js` ch04 branch documents the symptom.
+
 **Lead decision (2026-07-08): ship this branch as F1-part-1** (m68710/m68733 re-inclusion + defensive
 parser fix). **Roadmap #2 stays OPEN.** The example-table render-path leak becomes **F1b** — its own
 brainstorm → plan → SDD cycle, tracked in the byte-perfect roadmap.
