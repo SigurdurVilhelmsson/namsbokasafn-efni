@@ -11,10 +11,12 @@
  * example because an `id="X"` substring check collided with `target-id="X"`
  * (m68700 copper — see cnxml-render.test.js).
  *
- * KNOWN GAP pinned below: <table> escapes example/exercise/note (renders after
- * the container closes). Root cause = the section-level positional table pass;
- * to be fixed by Track C C3 (converge positioners) / C4 (buildTable→DOM). Those
- * 6 cells are `skip`ped with this pointer rather than asserting the buggy output.
+ * Formerly-known gap (Track C C4): <table> escaped example/exercise/note
+ * (rendered after the container closed instead of in place). example was
+ * fixed by WS5 residual b2 (renderTable dispatch + renderedTableIds dedup);
+ * exercise/note were fixed by F1b (table dispatch + hoistTags entry in
+ * renderSectionContent/renderNote) — see cnxml-render.js. All cells below
+ * now assert the fixed (in-place, exactly-once) behavior.
  */
 
 import { describe, it, expect } from 'vitest';
@@ -52,11 +54,11 @@ const PARENTS = {
     `<section id="P_ID"><title>Kafli</title><para id="pq">Texti${xr(x)}</para>${c}</section>`,
 };
 
-// table escapes these containers today — tracked for Track C C4 (buildTable→DOM).
-// table-in-example was FIXED (WS5 residual b2): renderExample now has a table
-// dispatcher + renderedTableIds dedup, so the table renders in place. exercise/note
-// still escape (renderExercise/renderNote have no table handler yet).
-const KNOWN_ESCAPES = new Set(['table-in-exercise', 'table-in-note']);
+// All table-escape cells (example/exercise/note) are now fixed — F1b closed
+// the last two (exercise, note); example was fixed earlier (WS5 residual b2).
+// Kept as an empty set (rather than deleted outright) so a future regression
+// has an obvious place to re-pin a `skip`, mirroring the pattern above.
+const KNOWN_ESCAPES = new Set();
 
 function doc(inner) {
   return `<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML"><title>T</title><metadata xmlns:md="http://cnx.rice.edu/mdml"><md:content-id>m00001</md:content-id><md:title>T</md:title></metadata><content>${inner}</content></document>`;
@@ -125,18 +127,5 @@ describe('render nesting matrix: child renders once and inside its container', (
         });
       }
     }
-  }
-});
-
-describe('render nesting matrix: known table-escape gap (Track C C4)', () => {
-  // Pin the count invariant even for the escaping cells: the table is never
-  // dropped or duplicated, it is merely positioned after the container closes.
-  // (example is no longer here — WS5 residual b2 keeps its table in place.)
-  for (const parentName of ['exercise', 'note']) {
-    it(`table-in-${parentName} still renders exactly once (but escapes — see C4)`, () => {
-      const { html, marker } = render('table', parentName, false);
-      expect(html.split(marker).length - 1).toBe(1);
-      expect(isInside(html, 'P_ID', marker)).toBe(false); // documents current escape
-    });
   }
 });

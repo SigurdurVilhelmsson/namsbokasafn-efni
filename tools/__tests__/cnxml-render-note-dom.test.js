@@ -100,3 +100,20 @@ describe('renderNote — title with inline markup (WS5 residual fix b, class har
     expect(html).toMatch(/<h4>Útreikningur á <em>K<\/em><sub>a<\/sub><\/h4>/);
   });
 });
+
+describe('renderNote — table inside a para (F1b leak fix)', () => {
+  it('renders a para-nested <table> in a note as a real table, not raw <entry>/<row>', () => {
+    const html = renderNoteContent(
+      '<note id="N"><para id="a">Sjá töfluna:<newline/>' +
+        '<table id="T" summary="s" class="unnumbered"><tgroup cols="2">' +
+        '<colspec colnum="1" colname="c1"/><colspec colnum="2" colname="c2"/>' +
+        '<tbody><row><entry>p</entry><entry>q</entry></row></tbody>' +
+        '</tgroup></table></para></note>'
+    );
+    expect(html).toContain('<table id="T"');
+    expect(html).toContain('<td');
+    expect(html).not.toMatch(/<entry\b/);
+    expect(html).not.toMatch(/<row\b/);
+    expect(html).not.toMatch(/<colspec\b/);
+  });
+});

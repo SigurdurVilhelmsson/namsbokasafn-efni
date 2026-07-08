@@ -31,6 +31,7 @@ const GOLDEN_MODULES = [
   { chapter: 'ch06', moduleId: 'm68733' },
   { chapter: 'ch07', moduleId: 'm68739' },
   { chapter: 'ch12', moduleId: 'm68789' },
+  { chapter: 'ch12', moduleId: 'm68791' },
 ];
 
 describe('render golden baseline (byte-exact, MathJax-normalized)', () => {

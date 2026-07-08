@@ -105,3 +105,23 @@ describe('renderExample — direct-child table (WS5 residual fix b2)', () => {
     expect(tblIdx).toBeLessThan(asideClose);
   });
 });
+
+describe('renderExample — table inside a para (F1b leak fix)', () => {
+  it('renders a para-nested <table> as a real table, not raw <entry>/<row> text', () => {
+    const html = renderExampleContent(
+      '<example id="E"><para id="p"><title>Lausn</title>Gögnin:<newline/>' +
+        '<table id="T" summary="s" class="unnumbered"><tgroup cols="2">' +
+        '<colspec colnum="1" colname="c1"/><colspec colnum="2" colname="c2"/>' +
+        '<tbody><row><entry>Tími</entry><entry>[<emphasis effect="italics">A</emphasis>]</entry></row>' +
+        '<row><entry>4,0</entry><entry>0,220</entry></row></tbody>' +
+        '</tgroup></table></para></example>'
+    );
+    expect(html).toContain('<table id="T"');
+    expect(html).toContain('<td');
+    expect(html).toContain('0,220');
+    expect(html).toContain('<em>A</em>'); // inline cell markup preserved
+    expect(html).not.toMatch(/<entry\b/); // no raw entry leak
+    expect(html).not.toMatch(/<row\b/);
+    expect(html).not.toMatch(/<colspec\b/);
+  });
+});
