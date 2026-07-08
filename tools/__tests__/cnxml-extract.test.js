@@ -6,6 +6,7 @@ import {
   extractInlineText,
   extractSegments,
   formatSegmentsMarkdown,
+  hasExtractTarget,
 } from '../cnxml-extract.js';
 
 const FIXTURES = join(import.meta.dirname, 'fixtures');
@@ -525,5 +526,22 @@ describe('section content order (F1)', () => {
       'm00099:para:para-intro',
       'm00099:para:para-outro',
     ]);
+  });
+});
+
+// ─── hasExtractTarget ────────────────────────────────────────────
+
+describe('hasExtractTarget (--chapter 0 guard)', () => {
+  it('treats chapter 0 (the ch00 preface) as a present target', () => {
+    expect(hasExtractTarget({ chapter: 0 })).toBe(true);
+  });
+  it('treats a chapter number as present', () => {
+    expect(hasExtractTarget({ chapter: 5 })).toBe(true);
+  });
+  it('treats --input as present', () => {
+    expect(hasExtractTarget({ input: 'books/x/01-source/ch00/m1.cnxml' })).toBe(true);
+  });
+  it('reports no target when neither input nor chapter is given', () => {
+    expect(hasExtractTarget({})).toBe(false);
   });
 });
