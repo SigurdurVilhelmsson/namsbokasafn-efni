@@ -185,9 +185,13 @@ export function stripTags(str) {
  */
 export function extractElements(content, tagName) {
   const elements = [];
-  // Match self-closing or paired elements
+  // Match self-closing or paired elements. The attribute capture is LAZY
+  // (`[^>]*?`) so a self-closing `<tag .../>` reaches the `\/>` branch before
+  // the trailing `/` is consumed — a greedy `[^>]*` eats the `/`, defeats the
+  // self-closing branch, and swallows the next element's opening tag as content
+  // (F1: leading-empty table cells, tools/__tests__/cnxml-parser.test.js).
   const safeTag = escapeRegExp(tagName);
-  const pattern = new RegExp(`<${safeTag}([^>]*)(?:\\/>|>([\\s\\S]*?)<\\/${safeTag}>)`, 'g');
+  const pattern = new RegExp(`<${safeTag}([^>]*?)(?:\\/>|>([\\s\\S]*?)<\\/${safeTag}>)`, 'g');
 
   let match;
   while ((match = pattern.exec(content)) !== null) {
