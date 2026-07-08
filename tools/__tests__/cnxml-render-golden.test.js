@@ -30,6 +30,11 @@ const GOLDEN_MODULES = [
   { chapter: 'ch05', moduleId: 'm68727' },
   { chapter: 'ch06', moduleId: 'm68733' },
   { chapter: 'ch07', moduleId: 'm68739' },
+  // m68742 locks section ordering (loose intro content before nested subsections
+  // — the F2 shape). NB: it still captures some untranslated EN captions/labels;
+  // regenerate with UPDATE_GOLDEN=1 when those are translated — that diff is
+  // expected, not a render regression.
+  { chapter: 'ch07', moduleId: 'm68742' },
   { chapter: 'ch12', moduleId: 'm68789' },
   { chapter: 'ch12', moduleId: 'm68791' },
 ];

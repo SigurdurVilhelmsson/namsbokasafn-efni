@@ -22,6 +22,17 @@ await MathJax.startup.document.outputJax.font.loadDynamicFiles();
 const adaptor = MathJax.startup.adaptor;
 const doc = MathJax.startup.document;
 
+/**
+ * Reset the per-container glyph-id counter so each page's MJX-N ids start at 1.
+ * Call once per output PAGE (not per equation — that would collide the glyph
+ * <defs> ids of multiple equations on the same page). The counter is a
+ * process-global on the singleton MathJax document; without this it climbs
+ * across every page in a --chapter render, churning later pages' ids.
+ */
+export function resetMathJaxIds() {
+  doc.outputJax.fontCache.nextID = 0;
+}
+
 // Inline visually-hidden style (the standard sr-only clip technique). Inline so
 // the assistive MathML is hidden without any external stylesheet — the rendered
 // HTML is self-contained and needs no vefur CSS rule.

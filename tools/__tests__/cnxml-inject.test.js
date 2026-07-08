@@ -12,6 +12,7 @@ import {
   buildNoteDom,
   buildMediaElement,
   buildMedia,
+  stripTermMarkersToText,
 } from '../cnxml-inject.js';
 import { extractInlineText } from '../cnxml-extract.js';
 
@@ -1286,6 +1287,34 @@ describe('annotateInlineTerms — F6 MATH placeholder', () => {
     expect(out).toContain('ΔHf°'); // notation keeps its case
     expect(out).not.toContain('δhf°'); // not lowercased
     expect(out).toContain('(e. standard enthalpy of formation'); // prose still lowercased
+  });
+});
+
+describe('stripTermMarkersToText', () => {
+  const eqs = { 'math-3': { mathml: '<math><mi>x</mi></math>' } };
+  // NB: extraction emits UPPERCASE [[MATH:N]]. drop-other's (?!MATH:) is
+  // case-sensitive, so it preserves [[MATH:N]] and only toLowerCase() (which
+  // runs after drop-other) turns it into [[math:N]] for the resolve step. A
+  // lowercase [[math:N]] passed in directly would be DROPPED — so tests use
+  // uppercase, matching real inputs.
+
+  it('strips sub/sup/i/b bracket markers and lowercases (site-A default: no trim)', () => {
+    expect(stripTermMarkersToText('H[[sub:2]]O [[i:Solid]]', eqs)).toBe('h2o solid');
+  });
+  it('resolves [[MATH:N]] AFTER lowercasing (notation keeps its own content)', () => {
+    expect(stripTermMarkersToText('value [[MATH:3]]', eqs)).toBe('value x');
+  });
+  it('drops non-MATH placeholders (MEDIA etc.) but keeps resolved MATH', () => {
+    expect(stripTermMarkersToText('a [[MEDIA:1]] [[MATH:3]]', eqs)).toBe('a  x');
+  });
+  it('default does NOT trim (site-A behavior) — padded input keeps edges', () => {
+    expect(stripTermMarkersToText('  Foo  ', eqs)).toBe('  foo  ');
+  });
+  it('with { trim: true } (site-B behavior) trims after strip, before lowercase', () => {
+    expect(stripTermMarkersToText('  Foo  ', eqs, { trim: true })).toBe('foo');
+  });
+  it('drops an unresolved MATH marker (rare)', () => {
+    expect(stripTermMarkersToText('a [[MATH:9]]', eqs)).toBe('a ');
   });
 });
 

@@ -25,7 +25,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import { renderMathML } from './lib/mathjax-render.js';
+import { renderMathML, resetMathJaxIds } from './lib/mathjax-render.js';
 import {
   parseCnxmlDocument,
   extractNestedElements,
@@ -3404,6 +3404,9 @@ async function main() {
 
     try {
       for (const moduleId of modules) {
+        // Fresh MJX-N id space per page so an edit to one module doesn't churn
+        // the equation ids on every later page in the chapter (#14).
+        resetMathJaxIds();
         if (args.verbose) {
           console.error(`Rendering: ${moduleId}`);
         }

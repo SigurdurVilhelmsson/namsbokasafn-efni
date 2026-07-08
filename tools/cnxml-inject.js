@@ -766,6 +766,43 @@ function restoreMathBySeparators(isText, enText) {
 }
 
 /**
+ * Strip inline API/CNXML markers from an EN term string down to plain,
+ * lowercased text for "(e. …)" reference annotations. Resolves [[math:N]] to
+ * its visible notation AFTER lowercasing so the notation keeps its case
+ * (ΔHf° must not become δhf° — the m68852 invariant). Shared by
+ * annotateInlineTerms() and the glossary annotator; single-sourcing this
+ * prevents divergent fixes (the m68852 misdiagnosis).
+ *
+ * Callers do their own leading pre-strip (e.g. the glossary strips __term__/
+ * {{term}} first). `trim` reproduces the glossary site's mid-chain trim; the
+ * inline-term site does NOT trim (see roadmap #17).
+ *
+ * @param {string} text  EN term text after the caller's own pre-strip
+ * @param {Object} equations  math-N → { mathml }
+ * @param {{trim?: boolean}} [opts]
+ * @returns {string}
+ */
+function stripTermMarkersToText(text, equations, { trim = false } = {}) {
+  let out = text
+    .replace(/\[\[sup:([^\]]+)\]\]/g, '$1')
+    .replace(/\[\[sub:([^\]]+)\]\]/g, '$1')
+    .replace(/\[\[i:([^\]]+)\]\]/g, '$1')
+    .replace(/\[\[b:([^\]]+)\]\]/g, '$1')
+    .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '$1')
+    .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '$1')
+    .replace(/\[\[(?!MATH:)[A-Za-z][\w]*:[^\]]*\]\]/g, ''); // drop MEDIA/other, NOT MATH
+  if (trim) out = out.trim();
+  return out.toLowerCase().replace(/\[\[math:(\d+)\]\]/g, (m, n) => {
+    const eq = equations[`math-${n}`];
+    if (!eq || !eq.mathml) return ''; // unresolved → drop (old behaviour, rare)
+    return eq.mathml
+      .replace(/<[^>]+>/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+  });
+}
+
+/**
  * Annotate inline __term__ markers in IS segments with the English original.
  *
  * For each segment present in both maps, extracts __term__ texts from the EN
@@ -826,26 +863,7 @@ function annotateInlineTerms(isSegments, enSegments, equations = {}) {
       // overcounted by the fidelity check. Plain text avoids this side-effect and
       // also prevents raw API markers from leaking into IS segments.
       const enTermRaw = enTermTexts[termIndex];
-      const enTerm = enTermRaw
-        .replace(/\[\[sup:([^\]]+)\]\]/g, '$1')
-        .replace(/\[\[sub:([^\]]+)\]\]/g, '$1')
-        .replace(/\[\[i:([^\]]+)\]\]/g, '$1')
-        .replace(/\[\[b:([^\]]+)\]\]/g, '$1')
-        .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '$1')
-        .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '$1')
-        .replace(/\[\[(?!MATH:)[A-Za-z][\w]*:[^\]]*\]\]/g, '') // F6: drop MEDIA / other placeholders, but NOT MATH
-        .toLowerCase()
-        // Resolve MATH AFTER lowercasing so the visible notation keeps its case
-        // (ΔHf° must not become δhf°). Dropping instead of resolving collapsed e.g.
-        // "positron (+10β or +10e)" to the garbled "positron ( or )" (m68852).
-        .replace(/\[\[math:(\d+)\]\]/g, (m, n) => {
-          const eq = equations[`math-${n}`];
-          if (!eq || !eq.mathml) return ''; // unresolved → drop (old behaviour, rare)
-          return eq.mathml
-            .replace(/<[^>]+>/g, '')
-            .replace(/\s+/g, ' ')
-            .trim();
-        });
+      const enTerm = stripTermMarkersToText(enTermRaw, equations); // trim:false — site A's current behavior (#17)
       termIndex++;
 
       // Skip if IS and EN terms are the same (case-insensitive)
@@ -1828,32 +1846,14 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
         if (annotateEn && enSegments && item.termSegmentId) {
           const enTermRaw = enSegments.get(item.termSegmentId);
           if (enTermRaw) {
-            // Strip markers from EN glossary term text to plain text for annotations.
-            // Same rationale as annotateInlineTerms(): annotations are reference hints,
-            // not structural content, so they shouldn't add CNXML tags.
-            const enTerm = enTermRaw
-              .replace(/__([^_]+)__/g, '$1')
-              .replace(/\{\{term\}\}([\s\S]*?)\{\{\/term\}\}/g, '$1')
-              .replace(/\[\[sup:([^\]]+)\]\]/g, '$1')
-              .replace(/\[\[sub:([^\]]+)\]\]/g, '$1')
-              .replace(/\[\[i:([^\]]+)\]\]/g, '$1')
-              .replace(/\[\[b:([^\]]+)\]\]/g, '$1')
-              .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '$1')
-              .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '$1')
-              .replace(/\[\[(?!MATH:)[A-Za-z][\w]*:[^\]]*\]\]/g, '') // F6: drop MEDIA / other placeholders, but NOT MATH
-              .trim()
-              .toLowerCase()
-              // Resolve MATH AFTER lowercasing so the visible notation keeps its case
-              // (ΔHc° must not become δhc°). Dropping instead of resolving collapsed e.g.
-              // "positron (+10β or +10e)" to the garbled "positron ( or )" (m68852 glossary term).
-              .replace(/\[\[math:(\d+)\]\]/g, (m, n) => {
-                const eq = equations[`math-${n}`];
-                if (!eq || !eq.mathml) return ''; // unresolved → drop (old behaviour, rare)
-                return eq.mathml
-                  .replace(/<[^>]+>/g, '')
-                  .replace(/\s+/g, ' ')
-                  .trim();
-              });
+            // Glossary pre-strips its paired term markers, then shares the tail.
+            const enTerm = stripTermMarkersToText(
+              enTermRaw
+                .replace(/__([^_]+)__/g, '$1')
+                .replace(/\{\{term\}\}([\s\S]*?)\{\{\/term\}\}/g, '$1'),
+              equations,
+              { trim: true }
+            );
             // Strip any __term__ markers from IS text for comparison
             const isTermClean = annotatedTerm
               .replace(/__([^_]+)__/g, '$1')
@@ -4084,6 +4084,7 @@ export {
   restoreMathMarkers,
   restoreMathBySeparators,
   restoreNewlines,
+  stripTermMarkersToText,
   annotateInlineTerms,
   assertNoMarkerResidue,
   collectTableNodes,

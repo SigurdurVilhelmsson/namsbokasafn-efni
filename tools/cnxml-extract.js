@@ -1938,6 +1938,17 @@ function writeOutput(result, chapter, moduleId, sourceContent) {
 // MAIN
 // =====================================================================
 
+/**
+ * True iff an extraction target was supplied. `--input` or `--chapter` is
+ * required. NB: `== null` (not `!args.chapter`) so chapter 0 (the ch00 preface)
+ * is a valid target — mirrors cnxml-inject.js:3841 / cnxml-render.js:3187.
+ * @param {{input?: string, chapter?: number|string}} args
+ * @returns {boolean}
+ */
+function hasExtractTarget(args) {
+  return args.input != null || args.chapter != null;
+}
+
 async function main() {
   const args = parseCliArgs(process.argv.slice(2));
   BOOKS_DIR = `books/${args.book}`;
@@ -1948,7 +1959,7 @@ async function main() {
   }
   requireBook(args);
 
-  if (!args.input && !args.chapter) {
+  if (!hasExtractTarget(args)) {
     console.error('Error: Either --input or --chapter is required');
     printHelp();
     process.exit(1);
@@ -2058,4 +2069,5 @@ export {
   formatSegmentsMarkdown,
   elementIdPosition,
   assertNoDroppedListBlocks,
+  hasExtractTarget,
 };

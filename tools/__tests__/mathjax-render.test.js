@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { renderMathML, buildAssistiveMml } from '../lib/mathjax-render.js';
+import { renderMathML, buildAssistiveMml, resetMathJaxIds } from '../lib/mathjax-render.js';
 
 // E = mc^2 in m:-prefixed MathML, as the pipeline passes it in.
 const MML =
@@ -65,5 +65,26 @@ describe('renderMathML — assistive MathML sibling', () => {
     expect(result).not.toContain('<mi>B</mi>');
     // No malformed interior sequence (greedy would produce this).
     expect(result).not.toContain('</math><math>');
+  });
+});
+
+describe('resetMathJaxIds', () => {
+  const mml = '<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>x</mi></math>';
+  const firstId = (s) => (s.match(/id="(MJX-\d+)-/) || [])[1];
+
+  it('makes two independent pages produce identical MJX-N id ranges', () => {
+    resetMathJaxIds();
+    const page1 = [renderMathML(mml), renderMathML(mml)].map(firstId);
+    resetMathJaxIds();
+    const page2 = [renderMathML(mml), renderMathML(mml)].map(firstId);
+    expect(page2).toEqual(page1); // deterministic per page
+    expect(new Set(page1).size).toBe(page1.length); // unique within a page
+  });
+
+  it('without a reset the counter keeps climbing (proves the reset does work)', () => {
+    resetMathJaxIds();
+    const a = firstId(renderMathML(mml));
+    const b = firstId(renderMathML(mml));
+    expect(a).not.toBe(b);
   });
 });
