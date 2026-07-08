@@ -165,7 +165,7 @@ describe('buildModuleSections — collection-order authority (efnafraedi-2e)', (
   });
 
   it.each([...Array(21)].map((_, i) => i + 1).concat(['appendices']))(
-    'chapter %s: authoritative order equals the legacy sectionOrder sort (except ch06, which is fixed)',
+    'chapter %s: authoritative order equals the legacy sectionOrder sort (except ch04/ch06, which collection-order fixes)',
     (chapter) => {
       const chapterDir =
         chapter === 'appendices' ? 'appendices' : `ch${String(chapter).padStart(2, '0')}`;
@@ -195,6 +195,15 @@ describe('buildModuleSections — collection-order authority (efnafraedi-2e)', (
         // The fix: m68733 (null sectionOrder) moves from the legacy chapter-end to its true slot 3.
         expect(newOrder).not.toEqual(legacyOrder);
         expect(newOrder.indexOf('m68733')).toBe(2); // 3rd non-intro module → section '3'
+      } else if (chapter === 4) {
+        // F1 re-extracted m68710 via `--input` (single module), which sets its
+        // sectionOrder to null (the whole-chapter `--chapter` pass is what assigns
+        // positional sectionOrder). Under the legacy comparator a null-sectionOrder
+        // module sorts to the chapter end; collection-order (#6) authoritatively
+        // keeps m68710 at its true slot 4-2. So ch04 is now a second legitimate
+        // divergence — collection-order doing exactly its job on a newly-null module.
+        expect(newOrder).not.toEqual(legacyOrder);
+        expect(newOrder.indexOf('m68710')).toBe(1); // 2nd non-intro module → section '2'
       } else {
         expect(newOrder).toEqual(legacyOrder); // inert everywhere else
       }
