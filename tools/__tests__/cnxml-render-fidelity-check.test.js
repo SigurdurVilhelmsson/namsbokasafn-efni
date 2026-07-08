@@ -126,6 +126,11 @@ describe('findRawCnxmlLeaks', () => {
     expect(leaks.length).toBeGreaterThan(0);
     expect(leaks.some((l) => l.pattern.includes('link'))).toBe(true);
   });
+  it('flags a leaked <link url=...>', () => {
+    const leaks = findRawCnxmlLeaks('<link url="http://x">y</link>');
+    expect(leaks.length).toBeGreaterThan(0);
+    expect(leaks.some((l) => l.pattern.includes('link'))).toBe(true);
+  });
   it('flags leaked <term>, <emphasis>, <entry>, <row>', () => {
     for (const s of [
       '<term>x</term>',
