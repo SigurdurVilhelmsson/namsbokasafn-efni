@@ -115,6 +115,14 @@ ran beyond the plan's prediction, both correct:
 
 Whole-book gate held: **zero raw `<entry>`/`<row>`/`<colspec>` in any published page; zero URL renames.**
 
+**Two whole-branch-review follow-ups (non-blocking, logged):** (1) section-level para-nested tables remain
+unguarded — `renderBlockChildrenInOrder` has no `renderContent` caller, so a `<table>` in a top-level
+`<para>` would still leak; 0 instances in efnafraedi-2e, tracked as roadmap tech-debt #15 for biology
+characterization. (2) The `m68791` golden intentionally locks a **partially-untranslated B4 module**
+(English residue: `Answer:`, English figcaptions, a duplicated `Second-Order` header) — render faithfully
+reproduces current content; Pass-1/B4 own the translation. The golden will change when m68791 is
+translated; that is expected, not a regression.
+
 ## Delivery to readers
 
 Render changes reach namsbokasafn.is only via the lead's Phase-6 sync/deploy. F1b lands corrected bytes in
