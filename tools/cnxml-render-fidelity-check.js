@@ -51,6 +51,37 @@ import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, requireBook } from './lib/parse
 // api-translate.js assertNoControlChars — the degree-sign-> NUL incident.
 const CONTROL_CHAR_REGEX = /[\x00-\x08\x0B\x0C\x0E-\x1F]/g;
 
+// CNXML elements that must NEVER survive render into published HTML. Attribute-
+// scoped for <link> (a head <link rel="stylesheet"> is legitimate); the rest are
+// tag names with no valid-HTML counterpart. Extend as new CNXML-only tags surface;
+// never add an HTML-valid name (title, table, list, head-link).
+const RAW_CNXML_LEAK_PATTERNS = [
+  ['link', /<link\s+(?:document|target-id)=/g],
+  ['term', /<term[\s>]/g],
+  ['emphasis', /<emphasis[\s>]/g],
+  ['entry', /<entry[\s/>]/g],
+  ['row', /<row[\s/>]/g],
+  ['colspec', /<colspec[\s/>]/g],
+  ['foreign', /<foreign[\s>]/g],
+  ['footnote', /<footnote[\s>]/g],
+  ['newline', /<newline\s*\/?>/g],
+];
+
+/**
+ * Scan produced HTML for raw CNXML element markup that should never survive
+ * render. Baseline-free. Returns one entry per matched pattern (empty = clean).
+ * @param {string} html
+ * @returns {Array<{pattern:string,count:number,sample:string}>}
+ */
+export function findRawCnxmlLeaks(html) {
+  const leaks = [];
+  for (const [name, re] of RAW_CNXML_LEAK_PATTERNS) {
+    const m = html.match(re);
+    if (m) leaks.push({ pattern: name, count: m.length, sample: m[0] });
+  }
+  return leaks;
+}
+
 const count = (s, re) => (s.match(re) || []).length;
 
 // ─── Identity diff: per-equation MathML tag-skeleton multiset ────────
@@ -202,6 +233,14 @@ export function checkChapter(inputs, baseline = null, options = {}) {
       ];
       findings.push({ type: 'control-char', where: label, count: m.length, codes });
     }
+  }
+
+  // 1b. raw-CNXML-leak scan (baseline-free): CNXML markup that must never survive
+  // render (e.g. <link document=...>, <entry>, <emphasis>). Would have caught both
+  // this <link> leak and the earlier <entry>/<row> arc.
+  const leaks = findRawCnxmlLeaks(htmlAll);
+  if (leaks.length) {
+    findings.push({ type: 'raw-cnxml-leak', where: 'produced-html', leaks });
   }
 
   // 2. cross-stage ">=" invariant (baseline-free): a DROP is unambiguous.

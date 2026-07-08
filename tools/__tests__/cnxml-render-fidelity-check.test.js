@@ -13,6 +13,7 @@ import {
   checkChapter,
   htmlShapeHistogram,
   identityDiffChapter,
+  findRawCnxmlLeaks,
 } from '../cnxml-render-fidelity-check.js';
 
 // A minimal but representative "chapter": one injected CNXML module + one
@@ -116,5 +117,31 @@ describe('fidelity check — identity diff (rollup-masking immune)', () => {
   it('reports 0 when every equation is present', () => {
     const cnxml = [`<content><equation>${M}</equation></content>`];
     expect(identityDiffChapter({ cnxml, html: [`${ASSIST}`] }).lostCount).toBe(0);
+  });
+});
+
+describe('findRawCnxmlLeaks', () => {
+  it('flags a leaked <link document=...>', () => {
+    const leaks = findRawCnxmlLeaks('<p>x <link document="m68865">viðauka G</link> y</p>');
+    expect(leaks.length).toBeGreaterThan(0);
+    expect(leaks.some((l) => l.pattern.includes('link'))).toBe(true);
+  });
+  it('flags leaked <term>, <emphasis>, <entry>, <row>', () => {
+    for (const s of [
+      '<term>x</term>',
+      '<emphasis>x</emphasis>',
+      '<entry>x</entry>',
+      '<row>x</row>',
+    ]) {
+      expect(findRawCnxmlLeaks(s).length).toBeGreaterThan(0);
+    }
+  });
+  it('does NOT flag a legit head stylesheet <link rel=...>', () => {
+    expect(findRawCnxmlLeaks('<link rel="stylesheet" href="/styles/content.css">')).toEqual([]);
+  });
+  it('returns [] for clean HTML', () => {
+    expect(findRawCnxmlLeaks('<p>Hrein <a href="#x">tengill</a> og <em>áhersla</em>.</p>')).toEqual(
+      []
+    );
   });
 });
