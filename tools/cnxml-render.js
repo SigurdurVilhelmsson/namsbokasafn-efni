@@ -1252,6 +1252,11 @@ function renderNote(note, context, extraClass = '') {
     // A direct-child <equation> in a note (between paras) was silently dropped
     // before this dispatcher existed (m68849 lost 2 reaction equations).
     equation: renderEquation,
+    // A <table> in a note — direct child or nested in a <para> — must render via
+    // renderTable, not leak raw <row>/<entry> through renderPara. renderNote
+    // passes no hoistTags, so it defaults to Object.keys(dispatch): adding table
+    // here both dispatches it and hoists it out of a para (F1b).
+    table: renderTable,
   });
   for (const block of blocks) {
     lines.push(`  ${block}`);
@@ -1397,7 +1402,7 @@ function renderExample(example, context) {
     // render was a renderPara artifact that, combined with the old position-sort's
     // separate block, produced a visible duplicate (verified live on
     // namsbokasafn.is, ch14 Dæmi 14.4/14.5).
-    { hoistTags: ['list', 'equation'] }
+    { hoistTags: ['list', 'equation', 'table'] }
   );
   for (const block of blocks) {
     lines.push(`  ${block}`);
@@ -1470,13 +1475,17 @@ function renderExercise(exercise, context) {
         figure: renderFigure,
         list: renderList,
         equation: renderEquation,
+        // A <table> in a problem/solution — direct child or nested in a <para> —
+        // renders via renderTable instead of leaking raw <row>/<entry> through
+        // renderPara (F1b). Hoisted below so a para-nested table is detached.
+        table: renderTable,
       },
       // Hoist block-level <equation> out of a <para> so it renders once as a
       // centered display block (parity with renderExample). A direct-child
       // <equation> of <problem>/<solution> also needs the dispatcher above —
       // without it the DOM seam skipped the node entirely and dropped the
       // equation (e.g. m68670's density formula d = m/V).
-      { hoistTags: ['list', 'equation'] }
+      { hoistTags: ['list', 'equation', 'table'] }
     );
     for (const block of blocks) {
       lines.push(`    ${block}`);

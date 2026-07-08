@@ -53,3 +53,29 @@ describe('renderExercise — in-para equation (was inline)', () => {
     expect(html).not.toContain('class="math-inline"');
   });
 });
+
+describe('renderExercise — table inside a problem para (F1b leak fix)', () => {
+  // The brief's original draft put the table in a <solution> para, but
+  // renderExercise only renders <solution> when context.includeSolutions is
+  // true (answer-key pages use a separate extractAnswerKey/renderAnswerKey
+  // path instead), which this harness never sets — so a solution-based test
+  // never exercises renderSectionContent's hoist/dispatch and can't RED. The
+  // live bug (m68789 problem, e.g. fs-idm84914160) is a table nested in a
+  // <problem> para, which IS always rendered — use that instead so the test
+  // actually reds before the fix and greens after.
+  it('renders a para-nested <table> in a problem as a real table, not raw <entry>/<row>', () => {
+    const html = renderExerciseContent(
+      '<exercise id="E"><problem id="P"><para id="b"><title>Lausn</title>Niðurstöður:<newline/>' +
+        '<table id="T" summary="s" class="unnumbered"><tgroup cols="2">' +
+        '<colspec colnum="1" colname="c1"/><colspec colnum="2" colname="c2"/>' +
+        '<tbody><row><entry>x</entry><entry>y</entry></row>' +
+        '<row><entry>1</entry><entry>2</entry></row></tbody>' +
+        '</tgroup></table></para></problem></exercise>'
+    );
+    expect(html).toContain('<table id="T"');
+    expect(html).toContain('<td');
+    expect(html).not.toMatch(/<entry\b/);
+    expect(html).not.toMatch(/<row\b/);
+    expect(html).not.toMatch(/<colspec\b/);
+  });
+});
