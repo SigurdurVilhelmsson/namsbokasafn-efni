@@ -130,6 +130,31 @@ Re-render/inject changes reach namsbokasafn.is only via the lead's Phase-6 sync/
 `node scripts/sync-content.js --source ../namsbokasafn-efni` → build → deploy). F1 lands the corrected
 bytes in the content repo; the deploy is a separate lead step.
 
+## Delivery outcome — CORRECTION (2026-07-08)
+
+Execution overturned two premises in this design. Recording honestly:
+
+1. **"Inject emits the self-closing `<entry/>` that trips the render leak" — WRONG.** The inject
+   serializer emits the empty cell as **paired** `<entry align="left"></entry>`. So m68710/m68733's
+   tables are fixed by the **re-extract** capturing the empty cell (correct 3-cell rows with translated
+   headers), *not* by the parser fix. Both pages render correctly, zero URL renames — the reader
+   deliverable is real.
+2. **The `extractElements` lazy fix is INERT on the current book render.** The whole-book re-render
+   changed only the two re-injected pages (4-2, 6-3). No live module renders through the standalone
+   `renderTableCells` path with a self-closing entry, so the parser fix — while a correct, unit-tested
+   latent-bug fix — changes nothing observable today. It is kept as defensive correctness.
+3. **The live `<entry>`-leak this item is named after is m68791** (ch12: 12-4 + 12-exercises, 12 raw
+   `<entry>` + 6 raw `<row>`, pre-existing on HEAD). Its leaking table is a **direct child of an
+   `<example>`**; `renderExample` dispatches it to `renderTable`, which emits a proper `<table>` shell
+   **but the rows also dump raw** — a double-emission / row-parse failure (likely the `morerows`
+   spanning-cell structure). This is a **distinct root cause** from the greedy `extractElements` bug and
+   needs its own systematic-debugging session. m68791 is a B4 re-MT module, so re-inclusion is not clean
+   → the render-path fix is the correct general fix.
+
+**Lead decision (2026-07-08): ship this branch as F1-part-1** (m68710/m68733 re-inclusion + defensive
+parser fix). **Roadmap #2 stays OPEN.** The example-table render-path leak becomes **F1b** — its own
+brainstorm → plan → SDD cycle, tracked in the byte-perfect roadmap.
+
 ## Out-of-scope finds (log to register if any surface)
 
 Register: `docs/plans/2026-06-28-pipeline-architecture-implementation-plan.md`. Candidate during
