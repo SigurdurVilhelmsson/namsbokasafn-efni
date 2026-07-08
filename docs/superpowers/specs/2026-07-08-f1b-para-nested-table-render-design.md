@@ -95,6 +95,26 @@ the duplicate — no double-render when a table is hoisted.
   and `renderBlockChildrenInOrder` are unchanged. Unit tests cover each site; the golden + whole-book diff
   cover integration.
 
+## Delivery outcome (2026-07-08)
+
+Delivered on branch `fix/chem-f1b-para-nested-table-render` (3-task SDD; suite 1976 green). Two things
+ran beyond the plan's prediction, both correct:
+- **The `renderNote` fix also corrected direct-child note tables**, not just para-nested ones: a
+  direct-child `<table>` in a note was previously undispatched → picked up by the section-level pass and
+  rendered *after* the note's `</aside>` (escaped). It now renders inside the aside. This closed a pinned
+  known-gap in `cnxml-render-nesting.test.js` (`table-in-exercise`/`table-in-note` were `it.skip`-ped
+  escape assertions; now un-skipped and asserting in-place). Affected 4 extra pages (ch02 2-7/2-exercises,
+  ch07 7-exercises, ch12 12-7) — all correct.
+- **MathJax-id churn:** the `MJX-NNN` id counter is shared across a `--chapter` render, so m68791's fix
+  shifted ids on 4 later ch12 pages (12-5/12-6/12-answer-key/12-key-equations) with **zero content change**
+  (verified 0 non-MJX changed lines). Committed as the canonical post-fix render state; logged as roadmap
+  tech-debt #14 (reset the counter per page).
+- The `m68789` golden came out **byte-identical** (its para-nested table is in an excluded `exercises`
+  section stripped from the module-page render); `m68791` is the real golden witness. The `<solution>`
+  render path is gated off (`includeSolutions` always false), so the exercise unit test uses `<problem>`.
+
+Whole-book gate held: **zero raw `<entry>`/`<row>`/`<colspec>` in any published page; zero URL renames.**
+
 ## Delivery to readers
 
 Render changes reach namsbokasafn.is only via the lead's Phase-6 sync/deploy. F1b lands corrected bytes in
