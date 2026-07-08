@@ -24,6 +24,17 @@ Four small, independent, mechanical code fixes, TDD'd, in one PR:
   execSync template string). Deferred.
 - **#15** — section-level para-nested `<table>` unguarded. 0 instances in
   efnafraedi (grep-clean); defer to biology characterization.
+- **#16 (NEW, logged 2026-07-08 investigating #8)** — the `!args.chapter` falsy-0
+  guard *class* across ~6 sibling tools (`audit-render-output`, `auto-insert-placeholders`,
+  `docx-import`, `validate-chapter`, and the `args.module && !args.chapter` pair in
+  `cnxml-fidelity-check`/`cnxml-linguistic-check`). Real, but killing it properly needs
+  per-tool "is ch00 a meaningful target?" judgment + a shared `chapterMissing(args)`
+  predicate + a regression guard — its own task, **not swept into this PR** (a blind
+  `== null` sweep would turn a clean rejection into a proceed-into-broken-path). Roadmap #16.
+- **#17 (NEW, logged 2026-07-08 during #9)** — `annotateInlineTerms` (site A) lacks the
+  `.trim()` the glossary annotator (site B) has → padded EN term captures can yield a
+  malformed `(e.  foo )` annotation. Cosmetic/rare. Fix as a separate tested step, not
+  smuggled into the #9 refactor ("split refactor from enforcement"). Roadmap #17.
 
 No re-render of published `05-publication/` HTML in this PR (lead's Phase-6
 sync/deploy op). Goldens already normalize MJX ids, so they stay green; the #14
@@ -100,9 +111,12 @@ if (!args.input && !args.chapter) {
 if (args.input == null && args.chapter == null) {
 ```
 
-Mirrors `cnxml-inject.js:3841` / `cnxml-render.js:3187`. Lines 1983 and 2019 stay
-as-is (verified no-op for chapter 0). Removes the `--input` workaround front-matter
-needed this run.
+Mirrors `cnxml-inject.js:3841` / `cnxml-render.js:3187` (which carry an explanatory
+`NB: == null` comment — reuse it). Lines 1983 and 2019 stay as-is (verified no-op for
+chapter 0: `getChapterModules(0)` → `[]`, no collection ch0 title). Removes the `--input`
+workaround front-matter needed this run. The *same* `!args.chapter` footgun in ~6 sibling
+tools is **out of scope** (roadmap #16) — those need per-tool "is ch00 meaningful?"
+verification before flipping, which this mechanical sweep won't do blindly.
 
 **Test:** a unit test that the arg-guard treats `--chapter 0` as present (not the
 "required" error path). Prefer testing the guard predicate directly or the arg-parse
@@ -118,24 +132,39 @@ Introduce one module-local helper in `cnxml-inject.js`:
 /**
  * Strip inline API/CNXML markers from an EN term string down to plain,
  * lowercased text for "(e. …)" reference annotations, resolving [[math:N]]
- * to its visible notation AFTER lowercasing (so notation keeps its case).
- * The common tail shared by annotateInlineTerms() and the glossary annotator.
- * @param {string} text  EN term text (callers do their own pre-strip/trim)
+ * to its visible notation AFTER lowercasing (so notation keeps its case —
+ * ΔHf° must not become δhf°; the m68852 invariant). This is the load-bearing
+ * tail shared by annotateInlineTerms() and the glossary annotator; single-
+ * sourcing it prevents the divergent-fix confusion that caused the m68852
+ * misdiagnosis (one site fixed, the other not).
+ * @param {string} text  EN term text (callers do their own leading pre-strip)
  * @param {Object} equations  math-N → { mathml } map
+ * @param {{trim?: boolean}} [opts]  trim after marker-strip, before lowercase
+ *   (site B's current behavior; site A currently does NOT trim — see #17)
  * @returns {string}
  */
-function stripTermMarkersToText(text, equations) { … }
+function stripTermMarkersToText(text, equations, { trim = false } = {}) { … }
 ```
 
-Body = the exact current tail (sup/sub/i/b + `{{i}}`/`{{b}}` + drop-other + lowercase
-+ resolve-MATH). Site A calls it on `enTermTexts[termIndex]`. Site B keeps its leading
-`__term__`/`{{term}}` strip and `.trim()`, then calls the helper (helper's own
-`.toLowerCase()` makes site B's trailing lowercase redundant — fold it in).
+Body = the exact current chain: `[[sup]]/[[sub]]/[[i]]/[[b]]` + `{{i}}`/`{{b}}` +
+drop-other-placeholders (keep MATH) → **optional `.trim()`** → `.toLowerCase()` →
+resolve `[[math:N]]` from `equations[math-N].mathml`.
 
-**Verification:** characterize BOTH sites' current output on representative inputs
-(a term with sub/sup, one with `[[math:N]]` resolving to notation, one where EN==IS
-so annotation is skipped, m68852-style positron notation) BEFORE refactor; assert the
-refactored output is byte-identical. This is a pure refactor — no behavior change.
+- **Site A** (`annotateInlineTerms`): `stripTermMarkersToText(enTermTexts[termIndex], equations)`
+  — `trim` defaults false, reproducing A's current no-trim output exactly.
+- **Site B** (glossary): keeps its own leading `__term__`/`{{term}}` pre-strip, then
+  `stripTermMarkersToText(preStripped, equations, { trim: true })` — reproducing B's
+  current mid-chain trim exactly. B's now-redundant trailing `.toLowerCase()` folds away.
+
+The `trim` option is what keeps this a **byte-identical refactor** rather than a behavior
+change: it preserves each site's exact current output (site A's missing trim, gap and all
+— that's logged as #17, to be fixed separately if at all, never smuggled here).
+
+**Verification:** characterize BOTH sites' current output on representative inputs BEFORE
+refactor (a term with sub/sup; one with `[[math:N]]` resolving to notation; one where
+EN==IS so the annotation is skipped; m68852-style positron notation; a whitespace-padded
+term to pin the A-vs-B trim divergence), then assert the refactored output is byte-identical
+for each site. Pure refactor — no behavior change.
 
 ### #13 — promote m68742 into render-golden
 
