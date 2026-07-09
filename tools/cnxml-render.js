@@ -3232,6 +3232,11 @@ async function main() {
         ? { idMap: new Map(), moduleLetters: new Map() }
         : buildAppendixIdMap(BOOK_SLUG, args.track);
 
+    // The fields both appendix branches of resolveCrossModuleHref need (#18/#19).
+    // Defined once and spread into every appendix-capable render context so the
+    // set cannot drift across the many context literals main() builds.
+    const appendixResolution = { bookSlug: BOOK_SLUG, appendixIdMap, appendixModuleLetters };
+
     // Load equation text translation dictionary
     const equationTextDictionary = loadEquationTextDictionary(BOOK_SLUG);
 
@@ -3432,8 +3437,7 @@ async function main() {
           chapterExerciseNumbers,
           chapterSectionTitles,
           chapterIdToModule,
-          appendixIdMap,
-          appendixModuleLetters,
+          ...appendixResolution,
           relocatedIds,
           equationTextDictionary,
         });
@@ -3537,7 +3541,7 @@ ${anchors}
               chapterExerciseNumbers,
               chapterSectionTitles,
               chapterIdToModule,
-              appendixModuleLetters,
+              ...appendixResolution,
               equationTextDictionary,
             },
           });
@@ -3720,7 +3724,7 @@ ${anchors}
             chapterExerciseNumbers,
             chapterSectionTitles,
             chapterIdToModule,
-            appendixModuleLetters,
+            ...appendixResolution,
             equationTextDictionary,
           },
         });
@@ -3770,7 +3774,7 @@ ${anchors}
             chapterExerciseNumbers,
             chapterSectionTitles,
             chapterIdToModule,
-            appendixModuleLetters,
+            ...appendixResolution,
             equationTextDictionary,
           },
         });
@@ -3825,7 +3829,7 @@ ${anchors}
           chapterExerciseNumbers,
           chapterSectionTitles,
           chapterIdToModule,
-          appendixModuleLetters,
+          ...appendixResolution,
           relocatedIds,
           equationTextDictionary,
         };
@@ -4005,6 +4009,7 @@ export {
   renderBlockChildrenInOrder,
   renderCnxmlToHtml,
   renderCompiledExercises,
+  renderEndOfChapterSection,
   renderCompiledGlossary,
   buildAppendixIdMap,
   rollbackWrittenFiles,

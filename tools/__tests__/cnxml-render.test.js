@@ -10,6 +10,7 @@ import {
   renderPara,
   renderCnxmlToHtml,
   renderCompiledExercises,
+  renderEndOfChapterSection,
   buildAppendixIdMap,
   rollbackWrittenFiles,
   escapeJsonForScript,
@@ -500,6 +501,79 @@ describe('appendix document= links on the compiled exercises page', () => {
     expect(html).toContain('href="/efnafraedi-2e/vidauki/G"');
     expect(html).toContain('viðauka G');
     expect(html).not.toContain('<link document');
+  });
+});
+
+describe('appendix target-id links on the compiled exercises page (#18)', () => {
+  // Sibling of the piece-2 document= contract test: proves the exercises
+  // renderContext threads appendixIdMap so an A1 target-id appendix link
+  // resolves. RED before Task 1 (renderContext lacked appendixIdMap).
+  const exercisesByType = {
+    exercises: [
+      {
+        moduleId: 'm00001',
+        sectionNumber: '5.1',
+        sectionTitle: 'Æfingar',
+        exercisesContent:
+          '<section class="exercises" id="sec-ex"><title>Æfingar</title>' +
+          '<exercise id="ex-1"><problem id="prob-1">' +
+          '<para id="pa-1">Sjá <link target-id="apx-elem">Appendix A</link>.</para>' +
+          '</problem></exercise></section>',
+      },
+    ],
+  };
+  function render(extraContext) {
+    return renderCompiledExercises(5, exercisesByType, new Map(), {
+      lang: 'is',
+      chapter: 5,
+      bookSlug: 'efnafraedi-2e',
+      moduleSections: {},
+      moduleId: '5-exercises',
+      ...extraContext,
+    });
+  }
+  it('resolves an A1 target-id appendix link to /vidauki/{letter} when appendixIdMap is present', () => {
+    const html = render({
+      appendixIdMap: new Map([['apx-elem', { letter: 'A', basename: 'appendices-1-x' }]]),
+    });
+    expect(html).toContain('<a href="/efnafraedi-2e/vidauki/A">Appendix A</a>');
+    expect(html).not.toContain('<link target-id');
+  });
+});
+
+describe('appendix links on an end-of-chapter section (#18 options-wrapper witness)', () => {
+  // renderEndOfChapterSection renders section.content via
+  // renderCnxmlToHtml(cnxmlDoc, { ...context.options, … }). It is the
+  // representative options-wrapper Tier-1 path (summary/answer-key share the
+  // identical `...appendixResolution` spread into their options object).
+  function render(options) {
+    return renderEndOfChapterSection(
+      {
+        titleIs: 'Æfingar',
+        content:
+          '<section class="exercises" id="sec-ex"><title>Æfingar</title>' +
+          '<para id="pa-1">Sjá <link document="mAPX">viðauka G</link> og ' +
+          '<link target-id="apx-elem">Appendix A</link>.</para></section>',
+      },
+      { renderCnxmlToHtml, options }
+    );
+  }
+  it('resolves both document= and target-id appendix links when the appendix maps are in options', () => {
+    const html = render({
+      bookSlug: 'efnafraedi-2e',
+      moduleId: '5-summary',
+      moduleSections: {},
+      appendixModuleLetters: new Map([['mAPX', 'G']]),
+      appendixIdMap: new Map([['apx-elem', { letter: 'A', basename: 'appendices-1-x' }]]),
+    });
+    expect(html).toContain('<a href="/efnafraedi-2e/vidauki/G">viðauka G</a>');
+    expect(html).toContain('<a href="/efnafraedi-2e/vidauki/A">Appendix A</a>');
+    // Scoped (not a bare '<link') because renderEndOfChapterSection returns a
+    // full HTML document whose <head> legitimately contains
+    // <link rel="stylesheet" ...> — only raw unresolved CNXML <link> markup
+    // should be absent.
+    expect(html).not.toContain('<link document');
+    expect(html).not.toContain('<link target-id');
   });
 });
 
