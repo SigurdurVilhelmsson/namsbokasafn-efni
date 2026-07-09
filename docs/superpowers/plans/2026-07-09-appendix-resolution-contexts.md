@@ -274,7 +274,10 @@ describe('appendix links in the compiled glossary (#19)', () => {
     });
     expect(html).toContain('<a href="/efnafraedi-2e/vidauki/G">viðauka G</a>');
     expect(html).toContain('<a href="/efnafraedi-2e/vidauki/A">Appendix A</a>');
-    expect(html).not.toContain('<link');
+    // Scoped like the piece-2 sibling test — a bare not.toContain('<link') is
+    // fragile if a renderer ever wraps output in a <head> with a stylesheet link.
+    expect(html).not.toContain('<link document');
+    expect(html).not.toContain('<link target-id');
   });
 });
 
