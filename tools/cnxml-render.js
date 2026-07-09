@@ -283,21 +283,23 @@ function loadEquationTextDictionary(book) {
  * `generate-toc.js`; keep the two in sync (shared contract).
  * @param {string} book - Book slug
  * @param {string} track - Publication track
- * @returns {Map<string,{letter:string,basename:string}>}
+ * @returns {{idMap: Map<string,{letter:string,basename:string}>, moduleLetters: Map<string,string>}}
  */
 function buildAppendixIdMap(book, track) {
   const map = new Map();
+  const moduleLetters = new Map();
   let appendixSections;
   try {
     appendixSections = buildModuleSections(book, 'appendices');
   } catch {
-    return map; // book has no appendices
+    return { idMap: map, moduleLetters }; // book has no appendices
   }
   for (const [moduleId, info] of Object.entries(appendixSections)) {
     if (moduleId.startsWith('_') || !info || info.section == null) continue;
     const n = parseInt(info.section, 10);
     if (!Number.isFinite(n) || n < 1 || n > 26) continue;
     const letter = String.fromCharCode(64 + n); // 1→A — matches vefur generate-toc.js
+    moduleLetters.set(moduleId, letter);
     const basename = `appendices-${info.section}-${info.slug}`;
     let cnxmlPath = path.join(
       'books',
@@ -325,7 +327,7 @@ function buildAppendixIdMap(book, track) {
       if (!map.has(m[1])) map.set(m[1], { letter, basename });
     }
   }
-  return map;
+  return { idMap: map, moduleLetters };
 }
 
 /**
@@ -509,6 +511,7 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     chapterSectionTitles: options.chapterSectionTitles || new Map(), // section ID -> title
     chapterIdToModule: options.chapterIdToModule || new Map(), // elementId -> moduleId[]
     appendixIdMap: options.appendixIdMap || new Map(), // appendix elementId -> { letter, basename } (A1)
+    appendixModuleLetters: options.appendixModuleLetters || new Map(), // appendix moduleId -> letter (piece 2)
     relocatedIds: options.relocatedIds || new Map(), // elementId -> compiled-page basename (#3)
     currentPageBasename: options.currentPageBasename || null, // set when rendering a compiled page (#3)
     moduleSections: options.moduleSections || {}, // for cross-module href resolution
@@ -3224,8 +3227,10 @@ async function main() {
     // Appendix id → { letter, basename } lookup, so a chapter→appendix cross-ref
     // resolves to the appendix landing URL (A1). Skipped while rendering the
     // appendices themselves (within-appendix links stay same-page).
-    const appendixIdMap =
-      args.chapter === 'appendices' ? new Map() : buildAppendixIdMap(BOOK_SLUG, args.track);
+    const { idMap: appendixIdMap, moduleLetters: appendixModuleLetters } =
+      args.chapter === 'appendices'
+        ? { idMap: new Map(), moduleLetters: new Map() }
+        : buildAppendixIdMap(BOOK_SLUG, args.track);
 
     // Load equation text translation dictionary
     const equationTextDictionary = loadEquationTextDictionary(BOOK_SLUG);
@@ -3428,6 +3433,7 @@ async function main() {
           chapterSectionTitles,
           chapterIdToModule,
           appendixIdMap,
+          appendixModuleLetters,
           relocatedIds,
           equationTextDictionary,
         });

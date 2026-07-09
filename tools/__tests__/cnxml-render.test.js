@@ -517,15 +517,22 @@ describe('rollbackWrittenFiles', () => {
 describe('buildAppendixIdMap', () => {
   // Integration test against the real efnafraedi-2e appendix CNXML/structure.
   it('maps an appendix element id to its letter (periodic table = A)', () => {
-    const map = buildAppendixIdMap('efnafraedi-2e', 'mt-preview');
-    const entry = map.get('fs-idm379479808');
+    const { idMap } = buildAppendixIdMap('efnafraedi-2e', 'mt-preview');
+    const entry = idMap.get('fs-idm379479808');
     expect(entry).toBeTruthy();
     expect(entry.letter).toBe('A');
   });
 
-  it('returns an empty map for a book with no appendices', () => {
-    const map = buildAppendixIdMap('does-not-exist', 'mt-preview');
-    expect(map.size).toBe(0);
+  it('maps appendix module ids to their letters', () => {
+    const { moduleLetters } = buildAppendixIdMap('efnafraedi-2e', 'mt-preview');
+    expect(moduleLetters.get('m68859')).toBe('A'); // periodic table
+    expect(moduleLetters.get('m68865')).toBe('G'); // standard thermodynamic properties
+  });
+
+  it('returns empty maps for a book with no appendices', () => {
+    const { idMap, moduleLetters } = buildAppendixIdMap('does-not-exist', 'mt-preview');
+    expect(idMap.size).toBe(0);
+    expect(moduleLetters.size).toBe(0);
   });
 });
 
