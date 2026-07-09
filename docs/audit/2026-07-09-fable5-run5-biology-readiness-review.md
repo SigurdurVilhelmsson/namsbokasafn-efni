@@ -3,6 +3,8 @@
 **Date:** 2026-07-09
 **Workflow:** `wf_ba30807b-2b1` (5 finders → dedup → 3-skeptic refute-by-default → synth, all `model:'fable'`)
 **Ops health:** 51 agents, **0 errors, 0 empty results**, 3.03M subagent tokens, ~34 min. (Ops-lesson-3 check passed.)
+
+> **Model-provenance note (added 2026-07-09, after the RUN 6 fallback discovery):** transcript audit shows **27 of 51 agents (~53%) auto-fell-back from Fable-5 to Opus 4.8 mid-run** under degraded Fable capacity (a silent harness fallback, invisible in the workflow result — see [[fable5-review-strategy]] OPS LESSON 4). **This materially weakens this report's "model diversity found what Opus missed" framing — roughly half the finding-analysis finished on Opus 4.8.** Findings validity is NOT affected: all three CRITICALs are confirmed-on-real-`books/liffraedi-2e/`-source, every finding cites an exact `file:line`, all passed 3-skeptic adversarial verification, and each is re-verified at fix time. What is lost is *recall confidence* — a clean-Fable re-run might surface additional biology-readiness bugs; queued as optional/low-priority, after RUN 6, not blocking remediation.
 **Scope:** WHOLE pipeline (not a diff) — `tools/` + `server/` — hunting places that silently assume chemistry and will misbehave when **biology (liffraedi-2e)** or an organic-format book is processed/previewed. Verified against real `books/liffraedi-2e/` source.
 **Result:** 15 raw → 15 deduped → **8 survived** ≥2-refute killing → 6 distinct ranked bugs (synthesis merged 2 duplicate pairs). 5 CONFIRMED, 1 PLAUSIBLE.
 

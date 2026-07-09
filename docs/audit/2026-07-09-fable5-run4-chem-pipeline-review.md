@@ -3,6 +3,8 @@
 **Date:** 2026-07-09
 **Workflow:** `wf_875c71d1-ce7` (5 finders → dedup → 3-skeptic refute-by-default → synth, all `model:'fable'`)
 **Ops health:** 60 agents, **0 errors, 0 empty results**, 3.67M subagent tokens, ~46 min. (Ops-lesson-3 check passed — this is a real result, not a crashed-empty one.)
+
+> **Model-provenance note (added 2026-07-09, after the RUN 6 fallback discovery):** transcript audit shows **11 of 60 agents (~18%) auto-fell-back from Fable-5 to Opus 4.8 mid-run** under degraded Fable capacity (a silent harness fallback, invisible in the workflow result — see [[fable5-review-strategy]] OPS LESSON 4). The bulk of this run ran on Fable, so the model-diversity premise mostly holds. Findings validity is unaffected regardless: every finding is anchored to an exact `file:line` + real module/page and passed 3-skeptic adversarial verification, and each is re-verified against its cited line at fix time.
 **Scope:** the chemistry pipeline code merged since RUN 3 (PR #233): `git diff 15c963b9..HEAD` — `cnxml-render.js` (414 lines), `cnxml-inject.js` (292), `module-sections.js` (107), `cnxml-elements.js` (47), `cnxml-render-fidelity-check.js`, `cnxml-extract.js`, `verify-reextract-equivalence.js`.
 **Result:** 18 raw → 18 deduped → **14 survived** ≥2-refute killing → 12 ranked (rank 6 merges a 3-finding link family).
 
