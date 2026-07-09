@@ -80,13 +80,16 @@ These bypass `renderCnxmlToHtml`, so the fields must live on the context object:
 
 All dormant, so no real content to assert against and 0 golden changes expected (module goldens must stay byte-identical, proving the Tier-1 per-module conversion is behaviour-preserving). Add per-render-path contract tests with **synthetic** appendix links:
 
-For each of `renderEndOfChapterSection`, `renderCompiledSummary`, `renderAnswerKey`, `renderCompiledExercises`, `renderCompiledGlossary`, `renderKeyEquations`:
+Test one renderer per **distinct mechanism** (four — testing all six literals separately is redundant, since summary/answer-key use the byte-identical options-wrapper mechanism as end-of-chapter):
 
-- Build a minimal context via `appendixResolution`-shaped fields (populated `appendixIdMap` mapping a synthetic element id → letter, and `appendixModuleLetters` mapping a synthetic module id → letter), plus `bookSlug: 'efnafraedi-2e'`.
-- Feed content containing a synthetic `document=` appendix link **and** a synthetic `target-id` appendix link.
-- Assert the output contains `<a href="/efnafraedi-2e/vidauki/{letter}">…</a>` for each and `not.toContain('<link')`.
+- `renderCompiledExercises` — Tier-1 **direct-context** path (already exported; mirrors piece 2's contract test, adding the target-id case).
+- `renderEndOfChapterSection` — Tier-1 **options-wrapper** path (export it; represents summary + answer-key, which share the identical `...appendixResolution` spread into their options object).
+- `renderCompiledGlossary` — Tier-2 **direct `processInlineContent`** path (already exported).
+- `renderKeyEquations` — Tier-2 with the **new signature** (export it).
 
-Each test fails if that render path does not thread the maps to the resolver. Where a renderer is exported and cleanly callable, call it directly (mirrors piece 2's `renderCompiledExercises` contract tests). `renderKeyEquations`'s test also covers its new signature.
+Each test builds a context with populated `appendixIdMap` (synthetic element id → letter) and `appendixModuleLetters` (synthetic module id → letter) plus `bookSlug: 'efnafraedi-2e'`, feeds a synthetic `document=` **and** `target-id` appendix link, and asserts `<a href="/efnafraedi-2e/vidauki/{letter}">…</a>` for each with `not.toContain('<link')`.
+
+**Honest scope of these tests:** they are **contract** tests (they pass the maps directly into the render path), proving each renderer threads its context to the resolver and the resolver handles both link forms. They do **not** gate `main()`'s context literals — `main()` is CLI-only, the same limitation piece 2 documented. The `main()` wiring is verified three other ways: (a) **module render goldens stay byte-identical** (proving the per-module `...appendixResolution` conversion is behaviour-preserving); (b) the **existing** piece-2 integration wiring-gate (`pipeline-integration.test.js` renders ch05 → asserts `5-exercises.html` has a `/vidauki/` anchor) now also guards the exercises spread, since both maps travel together in `appendixResolution`; (c) inspection of the remaining dormant literals (summary/answer-key/glossary/key-equations — no live content to gate).
 
 Full suite (`npm test` from repo root) must stay green, including all render goldens **unchanged**.
 
@@ -101,6 +104,6 @@ Full suite (`npm test` from repo root) must stay green, including all render gol
 ## Success criteria
 
 - `appendixResolution` is defined once in `main()` and is the sole source of the appendix fields for all appendix-capable contexts (per-module + 4 compiled + glossary + key-equations).
-- Contract tests prove each of the six compiled/aux render paths resolves both a `document=` and a `target-id` appendix link to `/{book}/vidauki/{letter}`.
+- Contract tests prove each of the four distinct render mechanisms (exercises direct-context, end-of-chapter options-wrapper, glossary, key-equations) resolves both a `document=` and a `target-id` appendix link to `/{book}/vidauki/{letter}`.
 - `npm test` green from repo root; **render goldens byte-identical** (behaviour-preserving); zero `books/` changes.
 - Roadmap #18 + #19 marked delivered.
