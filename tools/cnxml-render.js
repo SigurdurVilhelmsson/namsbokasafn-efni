@@ -2274,9 +2274,10 @@ function extractKeyEquations(chapter, modules, track) {
 /**
  * Render key equations as HTML table.
  */
-function renderKeyEquations(chapter, equations, equationTextDictionary) {
+function renderKeyEquations(chapter, equations, equationTextDictionary, appendixResolution) {
   const lines = [];
   const context = {
+    ...appendixResolution,
     chapter,
     bookSlug: BOOK_SLUG,
     embedMap: EMBED_MAP,
@@ -3569,6 +3570,7 @@ ${anchors}
         }
 
         const glossaryContext = {
+          ...appendixResolution,
           chapter: args.chapter,
           figures: {},
           tables: {},
@@ -3900,7 +3902,8 @@ ${anchors}
         const keyEquationsHtml = renderKeyEquations(
           args.chapter,
           keyEquations,
-          equationTextDictionary
+          equationTextDictionary,
+          appendixResolution
         );
 
         // Wrap in full HTML document
@@ -4011,6 +4014,7 @@ export {
   renderCompiledExercises,
   renderEndOfChapterSection,
   renderCompiledGlossary,
+  renderKeyEquations,
   buildAppendixIdMap,
   rollbackWrittenFiles,
   escapeJsonForScript,

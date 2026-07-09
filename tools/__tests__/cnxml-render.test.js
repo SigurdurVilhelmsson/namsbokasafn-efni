@@ -11,6 +11,8 @@ import {
   renderCnxmlToHtml,
   renderCompiledExercises,
   renderEndOfChapterSection,
+  renderCompiledGlossary,
+  renderKeyEquations,
   buildAppendixIdMap,
   rollbackWrittenFiles,
   escapeJsonForScript,
@@ -839,5 +841,50 @@ describe('render: iframe embeds (D4)', () => {
     expect(html).toContain('src="https://www.youtube.com/embed/xyz"');
     expect(html).toContain('class="embed-fallback"');
     expect(html).not.toContain('openstax.org/l/');
+  });
+});
+
+describe('appendix links in the compiled glossary (#19)', () => {
+  // renderCompiledGlossary renders def.meaningContent via
+  // processInlineContent(context) directly — so the context object itself must
+  // carry the appendix fields (glossaryContext gets them via ...appendixResolution).
+  function render(context) {
+    return renderCompiledGlossary(5, [{ term: 'hugtak', meaningContent: MEANING }], context);
+  }
+  const MEANING =
+    'Sjá <link document="mAPX">viðauka G</link> og <link target-id="apx-elem">Appendix A</link>.';
+  it('resolves document= and target-id appendix links when the context carries the appendix fields', () => {
+    const html = render({
+      bookSlug: 'efnafraedi-2e',
+      appendixModuleLetters: new Map([['mAPX', 'G']]),
+      appendixIdMap: new Map([['apx-elem', { letter: 'A', basename: 'appendices-1-x' }]]),
+    });
+    expect(html).toContain('<a href="/efnafraedi-2e/vidauki/G">viðauka G</a>');
+    expect(html).toContain('<a href="/efnafraedi-2e/vidauki/A">Appendix A</a>');
+    // Scoped like the piece-2 sibling test — a bare not.toContain('<link') is
+    // fragile if a renderer ever wraps output in a <head> with a stylesheet link.
+    expect(html).not.toContain('<link document');
+    expect(html).not.toContain('<link target-id');
+  });
+});
+
+describe('appendix links in key equations (#19)', () => {
+  // renderKeyEquations builds its own context and renders non-MathML entry
+  // content via processInlineContent(context). The new 4th param threads the
+  // appendix fields in. RED before Task 2: the param does not exist.
+  it('resolves an appendix link in a non-MathML key-equation entry via the appendixResolution param', () => {
+    const equations = [{ mathml: 'Sjá <link document="mAPX">viðauka G</link>.' }];
+    const html = renderKeyEquations(
+      5,
+      equations,
+      {},
+      {
+        bookSlug: 'efnafraedi-2e',
+        appendixModuleLetters: new Map([['mAPX', 'G']]),
+        appendixIdMap: new Map(),
+      }
+    );
+    expect(html).toContain('<a href="/efnafraedi-2e/vidauki/G">viðauka G</a>');
+    expect(html).not.toContain('<link document');
   });
 });
