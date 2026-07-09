@@ -32,6 +32,17 @@ function lookupModuleFilename(modId, context) {
 }
 
 /**
+ * The reader URL for an appendix landing page. Shared by the target-id (A1) and
+ * document= (piece 2) appendix branches so the URL shape cannot drift.
+ * @param {string} bookSlug
+ * @param {string} letter  uppercase appendix letter (A, B, …)
+ * @returns {string}
+ */
+export function appendixLandingHref(bookSlug, letter) {
+  return `/${bookSlug}/vidauki/${letter}`;
+}
+
+/**
  * Resolve a CNXML <link> reference into an href and a numbered-label fallback.
  *
  * Inputs:
@@ -90,6 +101,18 @@ export function resolveCrossModuleHref(documentId, targetId, context) {
     };
   }
 
+  // document="<appendix module>" → the appendix landing page. Fires for any arm
+  // that passes documentId. Must run before the lookupModuleFilename() path, which
+  // cannot resolve appendix modules (they render in a separate pass) → href:null.
+  // All such links are document-only (no target-id), so no fragment is emitted.
+  if (documentId && context.bookSlug && context.appendixModuleLetters?.has(documentId)) {
+    return {
+      href: appendixLandingHref(context.bookSlug, context.appendixModuleLetters.get(documentId)),
+      ownerModule: documentId,
+      sameModule: false,
+    };
+  }
+
   // Appendix cross-reference (A1): the target lives in a separately-rendered
   // appendix, so it's absent from the chapter-scoped chapterIdToModule and has
   // no owner. Resolve to the appendix landing URL /{bookSlug}/vidauki/{letter}.
@@ -101,7 +124,7 @@ export function resolveCrossModuleHref(documentId, targetId, context) {
     const appx = context.appendixIdMap.get(targetId);
     if (appx) {
       return {
-        href: `/${context.bookSlug}/vidauki/${appx.letter}`,
+        href: appendixLandingHref(context.bookSlug, appx.letter),
         ownerModule: null,
         sameModule: false,
       };
