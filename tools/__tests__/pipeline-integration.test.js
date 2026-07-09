@@ -245,6 +245,24 @@ describe('cnxml-render', () => {
     const summary = readFileSync(join(outputPath, '1-summary.html'), 'utf8');
     expect(summary).toContain('<!DOCTYPE html>');
   });
+
+  it('compiled exercises page resolves document= appendix links to /vidauki/ (wiring gate for appendixModuleLetters)', () => {
+    // Chapter 5 exercises contain <link document="<appendix module>">text</link>
+    // refs. main() must thread appendixModuleLetters into every compiled-page
+    // render context (unit tests only pin the resolver contract, not main()'s
+    // literal wiring — this guards the CLI plumbing itself).
+    run(
+      `node ${join(TOOLS, 'cnxml-render.js')} --book efnafraedi-2e --chapter 5 --track mt-preview`
+    );
+
+    const outputPath = join(BOOKS, '05-publication', 'mt-preview', 'chapters', '05');
+    const exercises = readFileSync(join(outputPath, '5-exercises.html'), 'utf8');
+
+    // Resolved appendix anchor present on the compiled page
+    expect(exercises).toContain('href="/efnafraedi-2e/vidauki/');
+    // No raw CNXML leaked in as inert text
+    expect(exercises).not.toContain('<link document');
+  });
 });
 
 // =====================================================================

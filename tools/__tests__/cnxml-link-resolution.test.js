@@ -3,6 +3,7 @@ import {
   resolveCrossModuleHref,
   processInlineContent,
   buildCrossModuleHref,
+  appendixLandingHref,
 } from '../lib/cnxml-elements.js';
 
 const moduleSections = {
@@ -192,6 +193,37 @@ describe('resolveCrossModuleHref', () => {
       // bookSlug is set, so chapter-local resolution emits the absolute URL.
       expect(result.href).toBe('/efnafraedi-2e/kafli/05/5-2-varmamaelingar#fs-idm68801008');
     });
+  });
+});
+
+describe('document= appendix links resolve to the appendix landing page', () => {
+  function apxCtx(overrides = {}) {
+    return makeContext({
+      bookSlug: 'efnafraedi-2e',
+      appendixModuleLetters: new Map([
+        ['m68865', 'G'],
+        ['m68859', 'A'],
+      ]),
+      ...overrides,
+    });
+  }
+
+  it('appendixLandingHref builds the /vidauki/{letter} URL', () => {
+    expect(appendixLandingHref('efnafraedi-2e', 'G')).toBe('/efnafraedi-2e/vidauki/G');
+  });
+
+  it('resolveCrossModuleHref resolves a document= appendix module to its landing page', () => {
+    const r = resolveCrossModuleHref('m68865', null, apxCtx());
+    expect(r.href).toBe('/efnafraedi-2e/vidauki/G');
+  });
+
+  it('processInlineContent renders a document-only appendix link as a real anchor', () => {
+    const out = processInlineContent(
+      'Gögn úr <link document="m68865">viðauka G</link> sýna.',
+      apxCtx()
+    );
+    expect(out).toContain('<a href="/efnafraedi-2e/vidauki/G">viðauka G</a>');
+    expect(out).not.toContain('<link');
   });
 });
 
