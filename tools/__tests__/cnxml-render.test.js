@@ -10,6 +10,9 @@ import {
   renderPara,
   renderCnxmlToHtml,
   renderCompiledExercises,
+  renderEndOfChapterSection,
+  renderCompiledGlossary,
+  renderKeyEquations,
   buildAppendixIdMap,
   rollbackWrittenFiles,
   escapeJsonForScript,
@@ -503,6 +506,79 @@ describe('appendix document= links on the compiled exercises page', () => {
   });
 });
 
+describe('appendix target-id links on the compiled exercises page (#18)', () => {
+  // Sibling of the piece-2 document= contract test: proves the exercises
+  // renderContext threads appendixIdMap so an A1 target-id appendix link
+  // resolves. RED before Task 1 (renderContext lacked appendixIdMap).
+  const exercisesByType = {
+    exercises: [
+      {
+        moduleId: 'm00001',
+        sectionNumber: '5.1',
+        sectionTitle: 'Æfingar',
+        exercisesContent:
+          '<section class="exercises" id="sec-ex"><title>Æfingar</title>' +
+          '<exercise id="ex-1"><problem id="prob-1">' +
+          '<para id="pa-1">Sjá <link target-id="apx-elem">Appendix A</link>.</para>' +
+          '</problem></exercise></section>',
+      },
+    ],
+  };
+  function render(extraContext) {
+    return renderCompiledExercises(5, exercisesByType, new Map(), {
+      lang: 'is',
+      chapter: 5,
+      bookSlug: 'efnafraedi-2e',
+      moduleSections: {},
+      moduleId: '5-exercises',
+      ...extraContext,
+    });
+  }
+  it('resolves an A1 target-id appendix link to /vidauki/{letter} when appendixIdMap is present', () => {
+    const html = render({
+      appendixIdMap: new Map([['apx-elem', { letter: 'A', basename: 'appendices-1-x' }]]),
+    });
+    expect(html).toContain('<a href="/efnafraedi-2e/vidauki/A">Appendix A</a>');
+    expect(html).not.toContain('<link target-id');
+  });
+});
+
+describe('appendix links on an end-of-chapter section (#18 options-wrapper witness)', () => {
+  // renderEndOfChapterSection renders section.content via
+  // renderCnxmlToHtml(cnxmlDoc, { ...context.options, … }). It is the
+  // representative options-wrapper Tier-1 path (summary/answer-key share the
+  // identical `...appendixResolution` spread into their options object).
+  function render(options) {
+    return renderEndOfChapterSection(
+      {
+        titleIs: 'Æfingar',
+        content:
+          '<section class="exercises" id="sec-ex"><title>Æfingar</title>' +
+          '<para id="pa-1">Sjá <link document="mAPX">viðauka G</link> og ' +
+          '<link target-id="apx-elem">Appendix A</link>.</para></section>',
+      },
+      { renderCnxmlToHtml, options }
+    );
+  }
+  it('resolves both document= and target-id appendix links when the appendix maps are in options', () => {
+    const html = render({
+      bookSlug: 'efnafraedi-2e',
+      moduleId: '5-summary',
+      moduleSections: {},
+      appendixModuleLetters: new Map([['mAPX', 'G']]),
+      appendixIdMap: new Map([['apx-elem', { letter: 'A', basename: 'appendices-1-x' }]]),
+    });
+    expect(html).toContain('<a href="/efnafraedi-2e/vidauki/G">viðauka G</a>');
+    expect(html).toContain('<a href="/efnafraedi-2e/vidauki/A">Appendix A</a>');
+    // Scoped (not a bare '<link') because renderEndOfChapterSection returns a
+    // full HTML document whose <head> legitimately contains
+    // <link rel="stylesheet" ...> — only raw unresolved CNXML <link> markup
+    // should be absent.
+    expect(html).not.toContain('<link document');
+    expect(html).not.toContain('<link target-id');
+  });
+});
+
 // ─── Render rollback-on-failure (QA §0.2) ───────────────────────
 
 describe('rollbackWrittenFiles', () => {
@@ -765,5 +841,50 @@ describe('render: iframe embeds (D4)', () => {
     expect(html).toContain('src="https://www.youtube.com/embed/xyz"');
     expect(html).toContain('class="embed-fallback"');
     expect(html).not.toContain('openstax.org/l/');
+  });
+});
+
+describe('appendix links in the compiled glossary (#19)', () => {
+  // renderCompiledGlossary renders def.meaningContent via
+  // processInlineContent(context) directly — so the context object itself must
+  // carry the appendix fields (glossaryContext gets them via ...appendixResolution).
+  function render(context) {
+    return renderCompiledGlossary(5, [{ term: 'hugtak', meaningContent: MEANING }], context);
+  }
+  const MEANING =
+    'Sjá <link document="mAPX">viðauka G</link> og <link target-id="apx-elem">Appendix A</link>.';
+  it('resolves document= and target-id appendix links when the context carries the appendix fields', () => {
+    const html = render({
+      bookSlug: 'efnafraedi-2e',
+      appendixModuleLetters: new Map([['mAPX', 'G']]),
+      appendixIdMap: new Map([['apx-elem', { letter: 'A', basename: 'appendices-1-x' }]]),
+    });
+    expect(html).toContain('<a href="/efnafraedi-2e/vidauki/G">viðauka G</a>');
+    expect(html).toContain('<a href="/efnafraedi-2e/vidauki/A">Appendix A</a>');
+    // Scoped like the piece-2 sibling test — a bare not.toContain('<link') is
+    // fragile if a renderer ever wraps output in a <head> with a stylesheet link.
+    expect(html).not.toContain('<link document');
+    expect(html).not.toContain('<link target-id');
+  });
+});
+
+describe('appendix links in key equations (#19)', () => {
+  // renderKeyEquations builds its own context and renders non-MathML entry
+  // content via processInlineContent(context). The new 4th param threads the
+  // appendix fields in. RED before Task 2: the param does not exist.
+  it('resolves an appendix link in a non-MathML key-equation entry via the appendixResolution param', () => {
+    const equations = [{ mathml: 'Sjá <link document="mAPX">viðauka G</link>.' }];
+    const html = renderKeyEquations(
+      5,
+      equations,
+      {},
+      {
+        bookSlug: 'efnafraedi-2e',
+        appendixModuleLetters: new Map([['mAPX', 'G']]),
+        appendixIdMap: new Map(),
+      }
+    );
+    expect(html).toContain('<a href="/efnafraedi-2e/vidauki/G">viðauka G</a>');
+    expect(html).not.toContain('<link document');
   });
 });
