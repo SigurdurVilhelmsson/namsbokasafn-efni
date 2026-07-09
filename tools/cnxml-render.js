@@ -3537,6 +3537,7 @@ ${anchors}
               chapterExerciseNumbers,
               chapterSectionTitles,
               chapterIdToModule,
+              appendixModuleLetters,
               equationTextDictionary,
             },
           });
@@ -3719,6 +3720,7 @@ ${anchors}
             chapterExerciseNumbers,
             chapterSectionTitles,
             chapterIdToModule,
+            appendixModuleLetters,
             equationTextDictionary,
           },
         });
@@ -3768,6 +3770,7 @@ ${anchors}
             chapterExerciseNumbers,
             chapterSectionTitles,
             chapterIdToModule,
+            appendixModuleLetters,
             equationTextDictionary,
           },
         });
@@ -3822,6 +3825,7 @@ ${anchors}
           chapterExerciseNumbers,
           chapterSectionTitles,
           chapterIdToModule,
+          appendixModuleLetters,
           relocatedIds,
           equationTextDictionary,
         };

@@ -448,6 +448,61 @@ describe('footnotes on the compiled exercises page', () => {
   });
 });
 
+// ─── Appendix document= links on compiled pages (#10 piece 2) ──────
+
+describe('appendix document= links on the compiled exercises page', () => {
+  // renderCompiledExercises is the only compiled-page renderer exported for
+  // testing; main()'s four context literals that build ITS caller's context
+  // (the actual site of the piece-2 wiring bug) are unexported/CLI-only, so
+  // this cannot gate that wiring directly. What it CAN pin is the contract
+  // resolveCrossModuleHref relies on: a document-only appendix link
+  // (`<link document="D">text</link>`, arm 4b in cnxml-elements.js) resolves
+  // to a clickable /vidauki/{letter} anchor when appendixModuleLetters +
+  // bookSlug are present in the context, and stays inert text (no leaked
+  // raw <link) when appendixModuleLetters is absent — which was exactly the
+  // state of main()'s four compiled-page contexts before this fix threaded
+  // the map through them.
+  const exercisesByType = {
+    exercises: [
+      {
+        moduleId: 'm00001',
+        sectionNumber: '5.1',
+        sectionTitle: 'Æfingar',
+        exercisesContent:
+          '<section class="exercises" id="sec-ex"><title>Æfingar</title>' +
+          '<exercise id="ex-1"><problem id="prob-1">' +
+          '<para id="pa-1">Sjá <link document="m68791">viðauka G</link>.</para>' +
+          '</problem></exercise></section>',
+      },
+    ],
+  };
+
+  function render(extraContext) {
+    return renderCompiledExercises(5, exercisesByType, new Map(), {
+      lang: 'is',
+      chapter: 5,
+      bookSlug: 'efnafraedi-2e',
+      moduleSections: {},
+      moduleId: '5-exercises',
+      ...extraContext,
+    });
+  }
+
+  it('stays inert text (no anchor, no raw <link document= leak) without appendixModuleLetters', () => {
+    const html = render({});
+    expect(html).toContain('viðauka G');
+    expect(html).not.toContain('href="/efnafraedi-2e/vidauki/G"');
+    expect(html).not.toContain('<link document');
+  });
+
+  it('resolves to a clickable /vidauki/{letter} anchor when appendixModuleLetters is present', () => {
+    const html = render({ appendixModuleLetters: new Map([['m68791', 'G']]) });
+    expect(html).toContain('href="/efnafraedi-2e/vidauki/G"');
+    expect(html).toContain('viðauka G');
+    expect(html).not.toContain('<link document');
+  });
+});
+
 // ─── Render rollback-on-failure (QA §0.2) ───────────────────────
 
 describe('rollbackWrittenFiles', () => {
