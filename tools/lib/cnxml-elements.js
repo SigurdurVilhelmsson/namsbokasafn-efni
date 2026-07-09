@@ -721,6 +721,7 @@ export function processInlineContent(content, context) {
   // 2. <link document="D"/>                          (self-closing, doc only)
   // 3. <link target-id="X"/>                         (self-closing, target only)
   // 4. <link document="D" target-id="X">text</link>  (closing tag, both)
+  // 4b. <link document="D">text</link>               (closing tag, doc only)
   // 5. <link target-id="X">text</link>               (closing tag, target only)
 
   // 1. <link document="D" target-id="X"/>  (self-closing, both attributes)
@@ -758,6 +759,27 @@ export function processInlineContent(content, context) {
       const { href, ownerModule } = resolveCrossModuleHref(doc, targetId, context);
       const text = inner.trim();
       const label = text || resolveLinkLabel(targetId, ownerModule, context) || targetId;
+      if (href === null) {
+        return text ? processInlineContent(text, context) : escapeHtml(label);
+      }
+      return `<a href="${escapeAttr(href)}">${text ? processInlineContent(text, context) : escapeHtml(label)}</a>`;
+    }
+  );
+
+  // 4b. <link document="D">text</link>  (closing tag, document only — no target-id)
+  // Without this arm the shape falls through all others and leaks raw CNXML markup
+  // into the HTML. Renders as text when the document does not resolve (appendix
+  // links are text-only for now — resolving them to /vidauki/{letter} is deferred).
+  result = result.replace(
+    /<link\s+document="([^"]*)"\s*>([\s\S]*?)<\/link>/g,
+    (match, doc, inner) => {
+      const { href } = resolveCrossModuleHref(doc, null, context);
+      const text = inner.trim();
+      const label =
+        text ||
+        context.moduleSections?.[doc]?.titleIs ||
+        context.crossModuleSections?.[doc]?.titleIs ||
+        doc;
       if (href === null) {
         return text ? processInlineContent(text, context) : escapeHtml(label);
       }

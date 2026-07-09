@@ -275,4 +275,13 @@ describe('processInlineContent — link handling', () => {
       expect(out).toContain('href="https://openstax.org"');
     });
   });
+
+  describe('paired document-only <link> (no target-id) does not leak raw CNXML', () => {
+    it('renders the text and emits no raw <link> tag', () => {
+      const cnxml = 'Gögn úr <link document="m68865">viðauka G</link> sýna.';
+      const out = processInlineContent(cnxml, makeContext());
+      expect(out).not.toContain('<link');
+      expect(out).toContain('viðauka G');
+    });
+  });
 });
