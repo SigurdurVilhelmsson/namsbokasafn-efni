@@ -444,6 +444,37 @@ function filterOutlineEntries(moduleSections) {
 }
 
 /**
+ * Class-WORD match for class="unnumbered" (R4-2). Unlike a substring/exact-string
+ * check, this correctly matches multi-class forms like class="column-header
+ * unnumbered" and correctly rejects near-miss substrings like class="unnumbered-foo".
+ * NOTE: the equation pre-scan (below) still uses its own exact-string check
+ * (attrs.includes('class="unnumbered"')) and is deliberately left alone here —
+ * splitting the shared-helper refactor from the table-numbering fix keeps this
+ * change scoped. The equation check has the same multi-class fragility; logged
+ * out-of-scope for a future task.
+ * @param {string} attrs - raw attribute string of an opening tag
+ * @returns {boolean}
+ */
+function hasUnnumberedClass(attrs) {
+  const m = /class="([^"]*)"/.exec(attrs || '');
+  return m ? m[1].split(/\s+/).includes('unnumbered') : false;
+}
+
+/**
+ * Format a table caption number. Normal chapters get "chapter.n"; appendix
+ * modules get a per-letter, per-module-reset "LetterN" (R4-3), e.g. "B3".
+ * Falls back to "appendices.n" defensively if an appendix module has no
+ * resolved letter (should not happen in practice).
+ * @param {string|number} chapter
+ * @param {string|null} letter
+ * @param {number} counter
+ * @returns {string}
+ */
+function formatTableNumber(chapter, letter, counter) {
+  return chapter === 'appendices' && letter ? `${letter}${counter}` : `${chapter}.${counter}`;
+}
+
+/**
  * Build complete HTML document from CNXML.
  * @param {string} cnxml - CNXML content
  * @param {Object} options - Render options
@@ -485,14 +516,23 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     figureNumbers.set(figMatch[1], `${chapter}.${figCounter}`);
   }
 
-  // Pre-scan: collect all table IDs and assign numbers
+  // Pre-scan: collect all table IDs and assign numbers.
+  // Skip class="unnumbered" tables (R4-2) so they don't consume a slot in the
+  // shared counter — mirrors the equation pre-scan below, but via a class-WORD
+  // match (hasUnnumberedClass) since tables use multi-class forms like
+  // class="column-header unnumbered" that the equation pass's exact-string
+  // check would miss.
   const tableNumbers = new Map();
-  const tableIdPattern = /<table\s+[^>]*id="([^"]+)"/g;
+  const tableIdPattern = /<table\s+([^>]*?)>/g;
   let tableMatch;
   let tableCounter = 0;
   while ((tableMatch = tableIdPattern.exec(cnxml)) !== null) {
+    const attrs = tableMatch[1];
+    if (hasUnnumberedClass(attrs)) continue;
+    const idMatch = attrs.match(/id="([^"]+)"/);
+    if (!idMatch) continue;
     tableCounter++;
-    tableNumbers.set(tableMatch[1], `${chapter}.${tableCounter}`);
+    tableNumbers.set(idMatch[1], `${chapter}.${tableCounter}`);
   }
 
   // Pre-scan: collect all numbered equation IDs and assign numbers
@@ -3343,12 +3383,32 @@ async function main() {
         addId(fm[1], modId);
       }
 
-      const tblPattern = /<table\s+[^>]*id="([^"]+)"/g;
+      // R4-2: skip numbering for class="unnumbered" tables (but addId still runs,
+      // unconditionally, below — the id registry drives link resolution and must
+      // not change). R4-3: appendix tables get a per-letter, per-module-reset
+      // label ("B1", "B2", …) instead of "appendices.N".
+      const isAppendixChapter = args.chapter === 'appendices';
+      const appendixLetter = isAppendixChapter ? appendixModuleLetters.get(modId) : null;
+      let appendixTableCounter = 0; // reset every modId iteration
+      const tblPattern = /<table\s+([^>]*?)>/g;
       let tm;
       while ((tm = tblPattern.exec(modCnxml)) !== null) {
-        chapterTableCounter++;
-        chapterTableNumbers.set(`${modId}:${tm[1]}`, `${args.chapter}.${chapterTableCounter}`);
-        addId(tm[1], modId);
+        const attrs = tm[1];
+        const idMatch = attrs.match(/id="([^"]+)"/);
+        if (!idMatch) continue;
+        const tid = idMatch[1];
+        if (!hasUnnumberedClass(attrs)) {
+          let num;
+          if (isAppendixChapter && appendixLetter) {
+            appendixTableCounter++;
+            num = formatTableNumber('appendices', appendixLetter, appendixTableCounter);
+          } else {
+            chapterTableCounter++;
+            num = formatTableNumber(args.chapter, null, chapterTableCounter);
+          }
+          chapterTableNumbers.set(`${modId}:${tid}`, num);
+        }
+        addId(tid, modId);
       }
 
       const examplePattern = /<example\s+id="([^"]+)"/g;
@@ -4061,5 +4121,7 @@ export {
   filterOutlineEntries,
   renderList,
   renderChildrenInDocumentOrder,
+  hasUnnumberedClass,
+  formatTableNumber,
   _loadBookConfigForTest,
 };
