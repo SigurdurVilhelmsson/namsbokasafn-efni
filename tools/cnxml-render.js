@@ -432,6 +432,18 @@ Examples:
 // =====================================================================
 
 /**
+ * Filter module sections, excluding intro (section '0') and metadata keys.
+ * Key guard is placed first to avoid accessing info.section on _-prefixed metadata.
+ * @param {Object} moduleSections - Object with section data
+ * @returns {Array} Array of [key, info] entries after filtering
+ */
+function filterOutlineEntries(moduleSections) {
+  return Object.entries(moduleSections).filter(
+    ([key, info]) => !key.startsWith('_') && info.section !== '0'
+  );
+}
+
+/**
  * Build complete HTML document from CNXML.
  * @param {string} cnxml - CNXML content
  * @param {Object} options - Render options
@@ -569,8 +581,7 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     !options.isEndOfChapter;
   let chapterOutline = null;
   if (isIntro && moduleSections) {
-    chapterOutline = Object.entries(moduleSections)
-      .filter(([key, info]) => info.section !== '0' && !key.startsWith('_')) // Exclude intro and metadata
+    chapterOutline = filterOutlineEntries(moduleSections)
       .sort((a, b) => Number(a[1].section) - Number(b[1].section))
       .map(([, info]) => {
         const section = `${chapter}.${info.section}`;
@@ -4028,5 +4039,6 @@ export {
   buildAppendixIdMap,
   rollbackWrittenFiles,
   escapeJsonForScript,
+  filterOutlineEntries,
   _loadBookConfigForTest,
 };
