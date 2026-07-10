@@ -141,6 +141,12 @@ function bookToDomain(bookSlug) {
  * Generate a readable fallback label from a CSS class name.
  * E.g., 'clinical-focus' → 'Clinical Focus'
  *
+ * Pure — no side effects. This is shared by call sites with different
+ * semantics (note-type labels, exercise-title labels), so it must not assume
+ * "note type" or emit a note-type-specific message. Callers that need a
+ * fail-loud signal for their own context should warn themselves (e.g.
+ * cnxml-render.js's getNoteTypeLabel()).
+ *
  * @param {string} className - CSS class name
  * @returns {string} Human-readable label
  */

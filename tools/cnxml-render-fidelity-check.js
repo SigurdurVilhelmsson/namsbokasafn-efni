@@ -56,7 +56,7 @@ const CONTROL_CHAR_REGEX = /[\x00-\x08\x0B\x0C\x0E-\x1F]/g;
 // tag names with no valid-HTML counterpart. Extend as new CNXML-only tags surface;
 // never add an HTML-valid name (title, table, list, head-link).
 const RAW_CNXML_LEAK_PATTERNS = [
-  ['link', /<link\s+(?:document|target-id|url)=/g],
+  ['link', /<link\b[^>]*\s(?:document|target-id|url)=/g],
   ['term', /<term[\s>]/g],
   ['emphasis', /<emphasis[\s>]/g],
   ['entry', /<entry[\s/>]/g],

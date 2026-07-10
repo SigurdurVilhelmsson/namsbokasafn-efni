@@ -35,6 +35,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { extractTermText } from './lib/glossary-term.js';
 
 // ============================================================================
@@ -42,6 +43,7 @@ import { extractTermText } from './lib/glossary-term.js';
 // ============================================================================
 
 const BOOKS_DIR = 'books';
+const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 // ============================================================================
 // Argument Parsing
@@ -134,13 +136,31 @@ function splitTerm(fullTerm) {
 // ============================================================================
 
 /**
- * Build moduleId → { chapter, section } mapping from chemistry-2e.json
+ * Resolve the server/data/*.json catalogue file whose top-level `slug`
+ * matches the given book. Fails loud (throws) if none matches — never
+ * silently falls back to chemistry. Resolved against import.meta.url,
+ * not process.cwd(), since callers (e.g. the server) may run with a
+ * different working directory.
  */
-function loadModuleMap(_book) {
-  const dataPath = path.join('server', 'data', 'chemistry-2e.json');
-  if (!fs.existsSync(dataPath)) {
-    return null;
+function resolveBookDataFile(book) {
+  const dir = path.join(REPO_ROOT, 'server', 'data');
+  for (const f of fs.readdirSync(dir).filter((f) => f.endsWith('.json'))) {
+    try {
+      const j = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
+      if (j && j.slug === book) return path.join(dir, f);
+    } catch {
+      /* skip malformed catalogue file */
+    }
   }
+  throw new Error(`generate-index: no server/data/*.json has slug === "${book}"`);
+}
+
+/**
+ * Build moduleId → { chapter, section } mapping from the book's
+ * server/data/*.json catalogue file (resolved by slug).
+ */
+export function loadModuleMap(book) {
+  const dataPath = resolveBookDataFile(book); // throws (fail loud) if none
   const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
   const map = new Map();
   for (const ch of data.chapters) {
@@ -474,4 +494,6 @@ async function main() {
   }
 }
 
-main();
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  main();
+}

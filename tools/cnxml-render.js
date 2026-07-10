@@ -102,7 +102,17 @@ function getNoteTypeLabel(noteClass) {
   // (e.g., 'clinical-focus' → 'Clinical Focus')
   // Skip fallback for 'default' — these are classless notes whose <title> already identifies them
   if (NOTE_TYPE_LABELS.default === null && noteClass !== 'default') {
-    return generateFallbackLabel(noteClass);
+    const label = generateFallbackLabel(noteClass);
+    // Fail-loud here (not inside the shared generateFallbackLabel): a
+    // fallback here specifically means an unmapped *note type*, and without
+    // this warning a missing mapping is indistinguishable from a deliberate
+    // English label (R5-3). generateFallbackLabel is also reused for
+    // exercise-title fallbacks, where this note-type-specific message would
+    // be misleading.
+    console.warn(
+      `cnxml-render: unmapped note type "${noteClass}" (book ${BOOK_SLUG}) → fell back to "${label}"`
+    );
+    return label;
   }
   return null;
 }
@@ -422,6 +432,49 @@ Examples:
 // =====================================================================
 
 /**
+ * Filter module sections, excluding intro (section '0') and metadata keys.
+ * Key guard is placed first to avoid accessing info.section on _-prefixed metadata.
+ * @param {Object} moduleSections - Object with section data
+ * @returns {Array} Array of [key, info] entries after filtering
+ */
+function filterOutlineEntries(moduleSections) {
+  return Object.entries(moduleSections).filter(
+    ([key, info]) => !key.startsWith('_') && info.section !== '0'
+  );
+}
+
+/**
+ * Class-WORD match for class="unnumbered" (R4-2). Unlike a substring/exact-string
+ * check, this correctly matches multi-class forms like class="column-header
+ * unnumbered" and correctly rejects near-miss substrings like class="unnumbered-foo".
+ * NOTE: the equation pre-scan (below) still uses its own exact-string check
+ * (attrs.includes('class="unnumbered"')) and is deliberately left alone here —
+ * splitting the shared-helper refactor from the table-numbering fix keeps this
+ * change scoped. The equation check has the same multi-class fragility; logged
+ * out-of-scope for a future task.
+ * @param {string} attrs - raw attribute string of an opening tag
+ * @returns {boolean}
+ */
+function hasUnnumberedClass(attrs) {
+  const m = /class="([^"]*)"/.exec(attrs || '');
+  return m ? m[1].split(/\s+/).includes('unnumbered') : false;
+}
+
+/**
+ * Format a table caption number. Normal chapters get "chapter.n"; appendix
+ * modules get a per-letter, per-module-reset "LetterN" (R4-3), e.g. "B3".
+ * Falls back to "appendices.n" defensively if an appendix module has no
+ * resolved letter (should not happen in practice).
+ * @param {string|number} chapter
+ * @param {string|null} letter
+ * @param {number} counter
+ * @returns {string}
+ */
+function formatTableNumber(chapter, letter, counter) {
+  return chapter === 'appendices' && letter ? `${letter}${counter}` : `${chapter}.${counter}`;
+}
+
+/**
  * Build complete HTML document from CNXML.
  * @param {string} cnxml - CNXML content
  * @param {Object} options - Render options
@@ -463,14 +516,23 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     figureNumbers.set(figMatch[1], `${chapter}.${figCounter}`);
   }
 
-  // Pre-scan: collect all table IDs and assign numbers
+  // Pre-scan: collect all table IDs and assign numbers.
+  // Skip class="unnumbered" tables (R4-2) so they don't consume a slot in the
+  // shared counter — mirrors the equation pre-scan below, but via a class-WORD
+  // match (hasUnnumberedClass) since tables use multi-class forms like
+  // class="column-header unnumbered" that the equation pass's exact-string
+  // check would miss.
   const tableNumbers = new Map();
-  const tableIdPattern = /<table\s+[^>]*id="([^"]+)"/g;
+  const tableIdPattern = /<table\s+([^>]*?)>/g;
   let tableMatch;
   let tableCounter = 0;
   while ((tableMatch = tableIdPattern.exec(cnxml)) !== null) {
+    const attrs = tableMatch[1];
+    if (hasUnnumberedClass(attrs)) continue;
+    const idMatch = attrs.match(/id="([^"]+)"/);
+    if (!idMatch) continue;
     tableCounter++;
-    tableNumbers.set(tableMatch[1], `${chapter}.${tableCounter}`);
+    tableNumbers.set(idMatch[1], `${chapter}.${tableCounter}`);
   }
 
   // Pre-scan: collect all numbered equation IDs and assign numbers
@@ -559,8 +621,7 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     !options.isEndOfChapter;
   let chapterOutline = null;
   if (isIntro && moduleSections) {
-    chapterOutline = Object.entries(moduleSections)
-      .filter(([key, info]) => info.section !== '0' && !key.startsWith('_')) // Exclude intro and metadata
+    chapterOutline = filterOutlineEntries(moduleSections)
       .sort((a, b) => Number(a[1].section) - Number(b[1].section))
       .map(([, info]) => {
         const section = `${chapter}.${info.section}`;
@@ -758,6 +819,23 @@ function renderContent(content, context, _verbose) {
  * Shared by renderContent (top-level content) and renderSection (nested
  * sections), so both preserve document order the same way.
  */
+/**
+ * Resolve an element's position within `content` for document-order sorting.
+ *
+ * Primary lookup is `content.indexOf(fullMatch)`. Some top-level extractions
+ * (notably lists whose items contain a nested `<media>`) have their
+ * `fullMatch` mutated by upstream stripping (see media-strip pass above),
+ * so it no longer appears verbatim in the original `content`. When that
+ * lookup misses (-1) and the element has a stable `id`, fall back to
+ * locating `id="…"` instead of collapsing to position 0 (which would
+ * wrongly hoist the element above everything preceding it).
+ */
+function positionInContent(content, fullMatch, id) {
+  let pos = fullMatch ? content.indexOf(fullMatch) : -1;
+  if (pos === -1 && id) pos = content.indexOf(`id="${id}"`);
+  return pos !== -1 ? pos : 0;
+}
+
 function renderChildrenInDocumentOrder(content, context, { excludeSections, sectionLevel }) {
   const lines = [];
 
@@ -834,16 +912,14 @@ function renderChildrenInDocumentOrder(content, context, { excludeSections, sect
 
   // Add all top-level elements with positions (use original content for position finding)
   for (const fig of figures) {
-    const pos = fig.fullMatch ? content.indexOf(fig.fullMatch) : content.indexOf(`id="${fig.id}"`);
-    itemsWithPositions.push({ type: 'figure', item: fig, position: pos !== -1 ? pos : 0 });
+    const pos = positionInContent(content, fig.fullMatch, fig.id);
+    itemsWithPositions.push({ type: 'figure', item: fig, position: pos });
   }
 
   // Only add notes that are NOT inside examples or exercises
   // (notes inside examples/exercises will be rendered by renderExample/renderExercise)
   for (const note of notes) {
-    const notePos = note.fullMatch
-      ? content.indexOf(note.fullMatch)
-      : content.indexOf(`id="${note.id}"`);
+    const notePos = positionInContent(content, note.fullMatch, note.id);
 
     // Check if this note is inside any example
     const isInsideExample = examples.some((ex) => {
@@ -860,35 +936,33 @@ function renderChildrenInDocumentOrder(content, context, { excludeSections, sect
     });
 
     if (!isInsideExample && !isInsideExercise) {
-      itemsWithPositions.push({ type: 'note', item: note, position: notePos !== -1 ? notePos : 0 });
+      itemsWithPositions.push({ type: 'note', item: note, position: notePos });
     }
   }
 
   for (const ex of examples) {
-    const pos = ex.fullMatch ? content.indexOf(ex.fullMatch) : content.indexOf(`id="${ex.id}"`);
-    itemsWithPositions.push({ type: 'example', item: ex, position: pos !== -1 ? pos : 0 });
+    const pos = positionInContent(content, ex.fullMatch, ex.id);
+    itemsWithPositions.push({ type: 'example', item: ex, position: pos });
   }
   for (const ex of exercises) {
-    const pos = ex.fullMatch ? content.indexOf(ex.fullMatch) : content.indexOf(`id="${ex.id}"`);
-    itemsWithPositions.push({ type: 'exercise', item: ex, position: pos !== -1 ? pos : 0 });
+    const pos = positionInContent(content, ex.fullMatch, ex.id);
+    itemsWithPositions.push({ type: 'exercise', item: ex, position: pos });
   }
   for (const tbl of tables) {
-    const pos = tbl.fullMatch ? content.indexOf(tbl.fullMatch) : content.indexOf(`id="${tbl.id}"`);
-    itemsWithPositions.push({ type: 'table', item: tbl, position: pos !== -1 ? pos : 0 });
+    const pos = positionInContent(content, tbl.fullMatch, tbl.id);
+    itemsWithPositions.push({ type: 'table', item: tbl, position: pos });
   }
   for (const media of medias) {
-    const pos = media.fullMatch
-      ? content.indexOf(media.fullMatch)
-      : content.indexOf(`id="${media.id}"`);
-    itemsWithPositions.push({ type: 'media', item: media, position: pos !== -1 ? pos : 0 });
+    const pos = positionInContent(content, media.fullMatch, media.id);
+    itemsWithPositions.push({ type: 'media', item: media, position: pos });
   }
   for (const lst of lists) {
-    const pos = lst.fullMatch ? content.indexOf(lst.fullMatch) : content.indexOf(`id="${lst.id}"`);
-    itemsWithPositions.push({ type: 'list', item: lst, position: pos !== -1 ? pos : 0 });
+    const pos = positionInContent(content, lst.fullMatch, lst.id);
+    itemsWithPositions.push({ type: 'list', item: lst, position: pos });
   }
   for (const eq of equations) {
-    const pos = eq.fullMatch ? content.indexOf(eq.fullMatch) : content.indexOf(`id="${eq.id}"`);
-    itemsWithPositions.push({ type: 'equation', item: eq, position: pos !== -1 ? pos : 0 });
+    const pos = positionInContent(content, eq.fullMatch, eq.id);
+    itemsWithPositions.push({ type: 'equation', item: eq, position: pos });
   }
   for (const para of paras) {
     const pos = para.id ? content.indexOf(`id="${para.id}"`) : content.indexOf('<para');
@@ -1468,12 +1542,26 @@ function renderExercise(exercise, context) {
   // Helper: render problem/solution section content (paras, media, figures,
   // lists) in document order via the DOM seam. Only <list> is hoisted out of a
   // <para> (matching the prior list-strip); figures render inline via renderPara.
+  const paraHandler = (para, ctx) => {
+    // Register figures nested in this para so the section-level renderFigure
+    // dispatch skips the duplicate (mirrors renderExample's paraHandler —
+    // renderedFigureIds; R4-5).
+    if (ctx.renderedFigureIds) {
+      const figPattern = /<figure[^>]*\sid="([^"]+)"/g;
+      let figMatch;
+      while ((figMatch = figPattern.exec(para.content)) !== null) {
+        ctx.renderedFigureIds.add(figMatch[1]);
+      }
+    }
+    return renderPara(para, ctx);
+  };
+
   function renderSectionContent(sectionContent) {
     const blocks = renderBlockChildrenInOrder(
       sectionContent,
       context,
       {
-        para: renderPara,
+        para: paraHandler,
         media: renderMedia,
         figure: renderFigure,
         list: renderList,
@@ -1686,6 +1774,12 @@ function renderList(list, context) {
   let styleAttr = '';
   if (bulletStyle === 'bullet') styleAttr = ' style="list-style-type: disc"';
   else if (bulletStyle === 'open-circle') styleAttr = ' style="list-style-type: circle"';
+
+  const numberStyle = list.attributes['number-style'];
+  if (listType === 'enumerated') {
+    if (numberStyle === 'lower-alpha') styleAttr = ' style="list-style-type: lower-alpha"';
+    else if (numberStyle === 'upper-alpha') styleAttr = ' style="list-style-type: upper-alpha"';
+  }
 
   const classAttr = list.attributes.class ? ` class="${escapeAttr(list.attributes.class)}"` : '';
   lines.push(`<${tag}${id ? ` id="${escapeAttr(id)}"` : ''}${classAttr}${styleAttr}>`);
@@ -3303,12 +3397,32 @@ async function main() {
         addId(fm[1], modId);
       }
 
-      const tblPattern = /<table\s+[^>]*id="([^"]+)"/g;
+      // R4-2: skip numbering for class="unnumbered" tables (but addId still runs,
+      // unconditionally, below — the id registry drives link resolution and must
+      // not change). R4-3: appendix tables get a per-letter, per-module-reset
+      // label ("B1", "B2", …) instead of "appendices.N".
+      const isAppendixChapter = args.chapter === 'appendices';
+      const appendixLetter = isAppendixChapter ? appendixModuleLetters.get(modId) : null;
+      let appendixTableCounter = 0; // reset every modId iteration
+      const tblPattern = /<table\s+([^>]*?)>/g;
       let tm;
       while ((tm = tblPattern.exec(modCnxml)) !== null) {
-        chapterTableCounter++;
-        chapterTableNumbers.set(`${modId}:${tm[1]}`, `${args.chapter}.${chapterTableCounter}`);
-        addId(tm[1], modId);
+        const attrs = tm[1];
+        const idMatch = attrs.match(/id="([^"]+)"/);
+        if (!idMatch) continue;
+        const tid = idMatch[1];
+        if (!hasUnnumberedClass(attrs)) {
+          let num;
+          if (isAppendixChapter && appendixLetter) {
+            appendixTableCounter++;
+            num = formatTableNumber('appendices', appendixLetter, appendixTableCounter);
+          } else {
+            chapterTableCounter++;
+            num = formatTableNumber(args.chapter, null, chapterTableCounter);
+          }
+          chapterTableNumbers.set(`${modId}:${tid}`, num);
+        }
+        addId(tid, modId);
       }
 
       const examplePattern = /<example\s+id="([^"]+)"/g;
@@ -4018,5 +4132,11 @@ export {
   buildAppendixIdMap,
   rollbackWrittenFiles,
   escapeJsonForScript,
+  filterOutlineEntries,
+  renderList,
+  renderChildrenInDocumentOrder,
+  hasUnnumberedClass,
+  formatTableNumber,
+  renderExercise,
   _loadBookConfigForTest,
 };
