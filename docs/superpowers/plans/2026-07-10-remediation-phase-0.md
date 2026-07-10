@@ -415,7 +415,8 @@ git commit -m "fix(render): dedup para-nested figure in renderExercise (R4-5)"
 
 ## EFNI section gate
 
-- [ ] Run the full suite from the repo root: `npm test`. Expected: all green (existing goldens unchanged for the pre-re-render fixes; new tests pass).
+- [x] Run the full suite from the repo root: `npm test`. Expected: all green (existing goldens unchanged for the pre-re-render fixes; new tests pass).
+  - ✅ **PASSED 2026-07-10** on branch tip `9f694c1d`: **139 test files / 2036 tests / 0 failures** (tools + server, complete-deps env). NB: run via a **detached-HEAD checkout of the commit** in the main checkout (`git checkout 9f694c1d`) — a plain `git checkout <branch>` is refused because the branch is held by the worktree, and the worktree itself lacks the `better-sqlite3` native build so it can't run `server/*`. Two earlier "green" runs were on `docs/fable5-run4-audit` by mistake (129 files/2007 — missing the 10 branch-new specs); the file-count invariant (139 vs 129) is what proves the branch tree was exercised.
 
 ---
 
