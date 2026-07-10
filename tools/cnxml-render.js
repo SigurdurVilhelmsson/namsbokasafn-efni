@@ -301,8 +301,11 @@ function buildAppendixIdMap(book, track) {
   let appendixSections;
   try {
     appendixSections = buildModuleSections(book, 'appendices');
-  } catch {
-    return { idMap: map, moduleLetters }; // book has no appendices
+  } catch (err) {
+    if (err && err.code === 'ENOENT') {
+      return { idMap: map, moduleLetters }; // book has no appendices
+    }
+    throw err; // corrupt structure JSON / anything else: fail loud (R4-12)
   }
   for (const [moduleId, info] of Object.entries(appendixSections)) {
     if (moduleId.startsWith('_') || !info || info.section == null) continue;
