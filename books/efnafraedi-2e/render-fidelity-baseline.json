@@ -3,9 +3,9 @@
   "track": "mt-preview",
   "chapters": {
     "10": {
-      "figure": 68,
-      "img": 83,
-      "table": 13,
+      "figure": 67,
+      "img": 82,
+      "table": 10,
       "ul": 9,
       "ol": 1,
       "li": 37,
@@ -41,18 +41,18 @@
     "12": {
       "figure": 25,
       "img": 42,
-      "table": 44,
+      "table": 36,
       "ul": 9,
       "ol": 6,
       "li": 49,
-      "em": 382,
+      "em": 370,
       "strong": 31,
       "aside.example": 15,
       "aside.note": 26,
       "div.eoc-exercise": 84,
       "div.equation": 121,
-      "mjx-container": 456,
-      "span.math-inline": 331,
+      "mjx-container": 422,
+      "span.math-inline": 297,
       "span.mathjax-display": 121,
       "a[href]": 65
     },
@@ -72,7 +72,7 @@
       "mjx-container": 321,
       "span.math-inline": 199,
       "span.mathjax-display": 120,
-      "a[href]": 26
+      "a[href]": 28
     },
     "14": {
       "figure": 20,
@@ -90,7 +90,7 @@
       "mjx-container": 578,
       "span.math-inline": 380,
       "span.mathjax-display": 193,
-      "a[href]": 46
+      "a[href]": 52
     },
     "15": {
       "figure": 9,
@@ -99,7 +99,7 @@
       "ul": 5,
       "ol": 0,
       "li": 13,
-      "em": 345,
+      "em": 348,
       "strong": 36,
       "aside.example": 16,
       "aside.note": 21,
@@ -108,7 +108,7 @@
       "mjx-container": 430,
       "span.math-inline": 332,
       "span.mathjax-display": 97,
-      "a[href]": 26
+      "a[href]": 37
     },
     "16": {
       "figure": 14,
@@ -117,7 +117,7 @@
       "ul": 6,
       "ol": 2,
       "li": 27,
-      "em": 370,
+      "em": 374,
       "strong": 40,
       "aside.example": 13,
       "aside.note": 14,
@@ -126,7 +126,7 @@
       "mjx-container": 271,
       "span.math-inline": 178,
       "span.mathjax-display": 88,
-      "a[href]": 32
+      "a[href]": 52
     },
     "17": {
       "figure": 20,
@@ -144,12 +144,12 @@
       "mjx-container": 250,
       "span.math-inline": 166,
       "span.mathjax-display": 77,
-      "a[href]": 45
+      "a[href]": 50
     },
     "18": {
       "figure": 63,
       "img": 92,
-      "table": 5,
+      "table": 4,
       "ul": 14,
       "ol": 3,
       "li": 53,
@@ -162,7 +162,7 @@
       "mjx-container": 327,
       "span.math-inline": 170,
       "span.mathjax-display": 157,
-      "a[href]": 88
+      "a[href]": 89
     },
     "19": {
       "figure": 40,
@@ -180,7 +180,7 @@
       "mjx-container": 110,
       "span.math-inline": 74,
       "span.mathjax-display": 36,
-      "a[href]": 64
+      "a[href]": 67
     },
     "20": {
       "figure": 24,
@@ -216,7 +216,7 @@
       "mjx-container": 320,
       "span.math-inline": 262,
       "span.mathjax-display": 57,
-      "a[href]": 76
+      "a[href]": 77
     },
     "appendices": {
       "figure": 1,
@@ -225,7 +225,7 @@
       "ul": 0,
       "ol": 5,
       "li": 13,
-      "em": 416,
+      "em": 440,
       "strong": 11,
       "aside.example": 12,
       "aside.note": 0,
