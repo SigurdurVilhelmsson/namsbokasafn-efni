@@ -13,6 +13,7 @@ import {
 } from './mathml-to-latex.js';
 import { resolveModuleHref } from './module-sections.js';
 import { renderEmbedHtml } from './embed-mapping.js';
+import { parseAttributes } from './cnxml-parser.js';
 
 // =====================================================================
 // CROSS-MODULE LINK RESOLUTION
@@ -244,6 +245,87 @@ function resolveLinkLabel(targetId, ownerModule, context) {
     return context.chapterSectionTitles.get(targetId);
 
   return null;
+}
+
+/**
+ * Render one CNXML `<link>` tag to HTML. The single link code path used by
+ * processInlineContent (R4-6): attributes are parsed once, order-independent,
+ * so a biology-sourced `<link window="new" url="…">` (attribute `window`
+ * before `url`) resolves exactly like `<link url="…" window="new">` — no
+ * position-anchored regex arm to fall through.
+ *
+ * Dispatch order mirrors the previous six position-anchored arms:
+ *   1. url=        → sanitizeUrl(url) → <a href=…> (F19 scheme sanitization).
+ *      `window="new"` is read and ignored — emits a plain <a>, no target="_blank".
+ *   2. document= + target-id=  → resolveCrossModuleHref + resolveLinkLabel.
+ *   3. document= only          → appendix/module resolution.
+ *   4. target-id= only         → resolveCrossModuleHref(null, targetId, …) +
+ *      resolveLinkLabel; preserves the "Figure X.Y" → "Mynd X.Y" MT-residue fix-up.
+ * A null href in any resolved case falls back to visible text only (no <a>).
+ *
+ * @param {Object} attrs - parsed attribute map (parseAttributes output)
+ * @param {string|undefined} innerRaw - text between <link> and </link>, or
+ *   undefined for a self-closing <link .../> tag (no visible text of its own)
+ * @param {Object} context - render context (see resolveCrossModuleHref)
+ * @returns {string} HTML
+ */
+function renderLinkTag(attrs, innerRaw, context) {
+  const url = attrs.url;
+  const doc = attrs.document;
+  const targetId = attrs['target-id'];
+  const hasInner = innerRaw !== undefined;
+  const text = hasInner ? innerRaw.trim() : '';
+
+  // 1. url= present (F19 scheme sanitization). window="new" is simply ignored.
+  if (url) {
+    const linkContent = hasInner ? processInlineContent(innerRaw, context) : escapeHtml(url);
+    return `<a href="${escapeAttr(sanitizeUrl(url))}">${linkContent}</a>`;
+  }
+
+  // 2. document= + target-id=
+  if (doc && targetId) {
+    const { href, ownerModule } = resolveCrossModuleHref(doc, targetId, context);
+    const label = text || resolveLinkLabel(targetId, ownerModule, context) || targetId;
+    if (href === null) {
+      return text ? processInlineContent(text, context) : escapeHtml(label);
+    }
+    return `<a href="${escapeAttr(href)}">${text ? processInlineContent(text, context) : escapeHtml(label)}</a>`;
+  }
+
+  // 3. document= only (no target-id)
+  if (doc) {
+    const { href } = resolveCrossModuleHref(doc, null, context);
+    const label =
+      text ||
+      context.moduleSections?.[doc]?.titleIs ||
+      context.crossModuleSections?.[doc]?.titleIs ||
+      doc;
+    if (href === null) {
+      return text ? processInlineContent(text, context) : escapeHtml(label);
+    }
+    return `<a href="${escapeAttr(href)}">${text ? processInlineContent(text, context) : escapeHtml(label)}</a>`;
+  }
+
+  // 4. target-id= only (no document)
+  if (targetId) {
+    const { href, ownerModule } = resolveCrossModuleHref(null, targetId, context);
+    // Translate "Figure X.Y" left over from machine translation.
+    const figTextMatch = text.match(/^Figure\s+(\d+\.\d+)$/);
+    const displayText = figTextMatch
+      ? `Mynd ${figTextMatch[1]}`
+      : text || resolveLinkLabel(targetId, ownerModule, context) || targetId;
+    const renderedText = figTextMatch
+      ? escapeHtml(displayText)
+      : text
+        ? processInlineContent(text, context)
+        : escapeHtml(displayText);
+    if (href === null) return renderedText;
+    return `<a href="${escapeAttr(href)}">${renderedText}</a>`;
+  }
+
+  // No url/document/target-id — nothing to resolve; keep visible text only so
+  // the tag itself never leaks raw into HTML.
+  return hasInner ? processInlineContent(innerRaw, context) : '';
 }
 
 // =====================================================================
@@ -603,27 +685,6 @@ function sanitizeUrl(url) {
 }
 
 /**
- * Render a link element.
- */
-export function renderLink(content, attrs, context) {
-  const url = attrs.url;
-  const targetId = attrs['target-id'];
-  const document = attrs.document;
-
-  let href;
-  if (url) {
-    href = sanitizeUrl(url);
-  } else if (targetId) {
-    href = document ? `${document}#${targetId}` : `#${targetId}`;
-  } else {
-    href = '#';
-  }
-
-  const processedContent = content ? processInlineContent(content, context) : href;
-  return createElement('a', { href }, processedContent);
-}
-
-/**
  * Render all collected footnotes as a section at end of page.
  * @param {Object} context - Render context with footnotes array
  * @returns {string} HTML for footnotes section
@@ -731,104 +792,16 @@ export function processInlineContent(content, context) {
     return `<dfn class="term">${processInlineContent(inner, context)}</dfn>`;
   });
 
-  // Convert links (sanitize the scheme so a javascript:/data: URL that survived
-  // MT can't land in an href — F19)
-  result = result.replace(/<link\s+url="([^"]*)"[^>]*>([\s\S]*?)<\/link>/g, (match, url, inner) => {
-    return `<a href="${escapeAttr(sanitizeUrl(url))}">${processInlineContent(inner, context)}</a>`;
-  });
-  // NOTE: link-handler match arms below — order matters because regexes overlap.
-  // All SELF-CLOSING variants run BEFORE any closing-tag variant, because the closing-tag
-  // regex uses `[^>]*>([\s\S]*?)</link>` which would otherwise swallow a self-closing tag
-  // (`/>` satisfies `[^>]*>`) and span to the next subsequent `</link>`.
-  // 1. <link document="D" target-id="X"/>            (self-closing, both)
-  // 2. <link document="D"/>                          (self-closing, doc only)
-  // 3. <link target-id="X"/>                         (self-closing, target only)
-  // 4. <link document="D" target-id="X">text</link>  (closing tag, both)
-  // 4b. <link document="D">text</link>               (closing tag, doc only)
-  // 5. <link target-id="X">text</link>               (closing tag, target only)
-
-  // 1. <link document="D" target-id="X"/>  (self-closing, both attributes)
+  // Convert links (R4-6): ONE order-independent handler, attributes parsed
+  // once per tag so `<link window="new" url="…">` and `<link url="…">` (or any
+  // other attribute ordering CNXML/MT produces) resolve identically — see
+  // renderLinkTag(). Sanitizes the URL scheme so a javascript:/data: URL that
+  // survived MT can't land in an href (F19). Non-greedy attrs + alternation
+  // (mirrors cnxml-parser.js extractElements) so a self-closing `<link .../>`
+  // can't be swallowed into a later `</link>`.
   result = result.replace(
-    /<link\s+document="([^"]*)"\s+target-id="([^"]*)"[^>]*\/>/g,
-    (match, doc, targetId) => {
-      const { href, ownerModule } = resolveCrossModuleHref(doc, targetId, context);
-      const label = resolveLinkLabel(targetId, ownerModule, context) || targetId;
-      if (href === null) return escapeHtml(label);
-      return `<a href="${escapeAttr(href)}">${escapeHtml(label)}</a>`;
-    }
-  );
-
-  // 2. <link document="D"/>  (self-closing, document only — arm 1 above handles both-attr case first)
-  result = result.replace(/<link\s+document="([^"]*)"[^>]*\/>/g, (match, doc) => {
-    const { href } = resolveCrossModuleHref(doc, null, context);
-    const label =
-      context.moduleSections?.[doc]?.titleIs || context.crossModuleSections?.[doc]?.titleIs || doc;
-    if (href === null) return escapeHtml(label);
-    return `<a href="${escapeAttr(href)}">${escapeHtml(label)}</a>`;
-  });
-
-  // 3. <link target-id="X"/>  (self-closing, target only — no document attribute)
-  result = result.replace(/<link\s+target-id="([^"]*)"[^>]*\/>/g, (match, targetId) => {
-    const { href, ownerModule } = resolveCrossModuleHref(null, targetId, context);
-    const label = resolveLinkLabel(targetId, ownerModule, context) || targetId;
-    if (href === null) return escapeHtml(label);
-    return `<a href="${escapeAttr(href)}">${escapeHtml(label)}</a>`;
-  });
-
-  // 4. <link document="D" target-id="X">text</link>  (closing tag, both attributes)
-  result = result.replace(
-    /<link\s+document="([^"]*)"\s+target-id="([^"]*)"[^>]*>([\s\S]*?)<\/link>/g,
-    (match, doc, targetId, inner) => {
-      const { href, ownerModule } = resolveCrossModuleHref(doc, targetId, context);
-      const text = inner.trim();
-      const label = text || resolveLinkLabel(targetId, ownerModule, context) || targetId;
-      if (href === null) {
-        return text ? processInlineContent(text, context) : escapeHtml(label);
-      }
-      return `<a href="${escapeAttr(href)}">${text ? processInlineContent(text, context) : escapeHtml(label)}</a>`;
-    }
-  );
-
-  // 4b. <link document="D">text</link>  (closing tag, document only — no target-id)
-  // Without this arm the shape falls through all others and leaks raw CNXML markup
-  // into the HTML. Renders as text when the document does not resolve (appendix
-  // links are text-only for now — resolving them to /vidauki/{letter} is deferred).
-  result = result.replace(
-    /<link\s+document="([^"]*)"\s*>([\s\S]*?)<\/link>/g,
-    (match, doc, inner) => {
-      const { href } = resolveCrossModuleHref(doc, null, context);
-      const text = inner.trim();
-      const label =
-        text ||
-        context.moduleSections?.[doc]?.titleIs ||
-        context.crossModuleSections?.[doc]?.titleIs ||
-        doc;
-      if (href === null) {
-        return text ? processInlineContent(text, context) : escapeHtml(label);
-      }
-      return `<a href="${escapeAttr(href)}">${text ? processInlineContent(text, context) : escapeHtml(label)}</a>`;
-    }
-  );
-
-  // 5. <link target-id="X">text</link>  (target only, with content — no document attribute)
-  result = result.replace(
-    /<link\s+target-id="([^"]*)"[^>]*>([\s\S]*?)<\/link>/g,
-    (match, targetId, inner) => {
-      const text = inner.trim();
-      const { href, ownerModule } = resolveCrossModuleHref(null, targetId, context);
-      // Translate "Figure X.Y" left over from machine translation
-      const figTextMatch = text.match(/^Figure\s+(\d+\.\d+)$/);
-      const displayText = figTextMatch
-        ? `Mynd ${figTextMatch[1]}`
-        : text || resolveLinkLabel(targetId, ownerModule, context) || targetId;
-      const renderedText = figTextMatch
-        ? escapeHtml(displayText)
-        : text
-          ? processInlineContent(text, context)
-          : escapeHtml(displayText);
-      if (href === null) return renderedText;
-      return `<a href="${escapeAttr(href)}">${renderedText}</a>`;
-    }
+    /<link\b([^>]*?)(?:\/>|>([\s\S]*?)<\/link>)/g,
+    (match, attrsStr, innerRaw) => renderLinkTag(parseAttributes(attrsStr), innerRaw, context)
   );
 
   // D4: Convert inline <media><iframe> embeds (PhET/YouTube) to resolved responsive iframes
