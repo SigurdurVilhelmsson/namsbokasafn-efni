@@ -1542,12 +1542,26 @@ function renderExercise(exercise, context) {
   // Helper: render problem/solution section content (paras, media, figures,
   // lists) in document order via the DOM seam. Only <list> is hoisted out of a
   // <para> (matching the prior list-strip); figures render inline via renderPara.
+  const paraHandler = (para, ctx) => {
+    // Register figures nested in this para so the section-level renderFigure
+    // dispatch skips the duplicate (mirrors renderExample's paraHandler —
+    // renderedFigureIds; R4-5).
+    if (ctx.renderedFigureIds) {
+      const figPattern = /<figure[^>]*\sid="([^"]+)"/g;
+      let figMatch;
+      while ((figMatch = figPattern.exec(para.content)) !== null) {
+        ctx.renderedFigureIds.add(figMatch[1]);
+      }
+    }
+    return renderPara(para, ctx);
+  };
+
   function renderSectionContent(sectionContent) {
     const blocks = renderBlockChildrenInOrder(
       sectionContent,
       context,
       {
-        para: renderPara,
+        para: paraHandler,
         media: renderMedia,
         figure: renderFigure,
         list: renderList,
@@ -4123,5 +4137,6 @@ export {
   renderChildrenInDocumentOrder,
   hasUnnumberedClass,
   formatTableNumber,
+  renderExercise,
   _loadBookConfigForTest,
 };
