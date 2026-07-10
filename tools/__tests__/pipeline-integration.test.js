@@ -269,9 +269,8 @@ describe('cnxml-render', () => {
     // The letters map is consumed inside main()'s appendices pass, so only a real
     // CLI render of --chapter appendices exercises that wiring (the unit tests
     // pin formatTableNumber alone and stayed green while the page was wrong).
-    execSync(
-      `node ${join(TOOLS, 'cnxml-render.js')} --book efnafraedi-2e --chapter appendices --track mt-preview`,
-      { cwd: ROOT, encoding: 'utf8', timeout: 240_000 }
+    run(
+      `node ${join(TOOLS, 'cnxml-render.js')} --book efnafraedi-2e --chapter appendices --track mt-preview`
     );
 
     const outputPath = join(BOOKS, '05-publication', 'mt-preview', 'chapters', 'appendices');
@@ -290,7 +289,7 @@ describe('cnxml-render', () => {
     // The continuous chapter-style fallback must be gone
     expect(b).not.toContain('Tafla appendices.');
     expect(c).not.toContain('Tafla appendices.');
-  }, 300_000);
+  });
 });
 
 // =====================================================================
