@@ -1708,6 +1708,12 @@ function renderList(list, context) {
   if (bulletStyle === 'bullet') styleAttr = ' style="list-style-type: disc"';
   else if (bulletStyle === 'open-circle') styleAttr = ' style="list-style-type: circle"';
 
+  const numberStyle = list.attributes['number-style'];
+  if (listType === 'enumerated') {
+    if (numberStyle === 'lower-alpha') styleAttr = ' style="list-style-type: lower-alpha"';
+    else if (numberStyle === 'upper-alpha') styleAttr = ' style="list-style-type: upper-alpha"';
+  }
+
   const classAttr = list.attributes.class ? ` class="${escapeAttr(list.attributes.class)}"` : '';
   lines.push(`<${tag}${id ? ` id="${escapeAttr(id)}"` : ''}${classAttr}${styleAttr}>`);
 
@@ -4040,5 +4046,6 @@ export {
   rollbackWrittenFiles,
   escapeJsonForScript,
   filterOutlineEntries,
+  renderList,
   _loadBookConfigForTest,
 };
