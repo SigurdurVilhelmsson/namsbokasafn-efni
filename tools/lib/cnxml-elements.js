@@ -644,25 +644,6 @@ export function renderTerm(content, attrs, context) {
   return createElement('dfn', { id, class: 'term' }, processedContent);
 }
 
-/**
- * Render emphasis element.
- */
-export function renderEmphasis(content, attrs, context) {
-  const effect = attrs.effect || 'italics';
-  const processedContent = processInlineContent(content, context);
-
-  switch (effect) {
-    case 'bold':
-      return createElement('strong', {}, processedContent);
-    case 'italics':
-      return createElement('em', {}, processedContent);
-    case 'underline':
-      return createElement('u', {}, processedContent);
-    default:
-      return createElement('em', {}, processedContent);
-  }
-}
-
 // Allowed URL schemes for external links. Anything else (javascript:, data:,
 // vbscript:, file:, …) is neutralized to '#' so a dangerous scheme that
 // survived machine translation can't land in an href (F19).
@@ -775,14 +756,27 @@ export function processInlineContent(content, context) {
   // e.g., </emphasis>T*) → </emphasis>T)
   result = result.replace(/(<\/emphasis>[^*<]{0,10})\*(\))/g, '$1$2');
 
-  // Convert emphasis
-  result = result.replace(
-    /<emphasis\s+effect="([^"]*)"[^>]*>([\s\S]*?)<\/emphasis>/g,
-    (match, effect, inner) => {
-      const tag = effect === 'bold' ? 'strong' : effect === 'underline' ? 'u' : 'em';
-      return `<${tag}>${processInlineContent(inner, context)}</${tag}>`;
-    }
-  );
+  // Convert emphasis — innermost-first so nested emphasis pairs correctly. Order-independent
+  // attribute read; effect-less <emphasis> defaults to italics; class="emphasis-one" keeps its
+  // class (styled by vefur CSS). Innermost regex: inner body forbids nested <emphasis> so only
+  // leaf emphases match; loop until none remain.
+  {
+    const EMPHASIS_RE = /<emphasis\b([^>]*)>((?:(?!<\/?emphasis)[\s\S])*)<\/emphasis>/g;
+    let prev;
+    do {
+      prev = result;
+      result = result.replace(EMPHASIS_RE, (match, attrs, inner) => {
+        const effect = (attrs.match(/effect="([^"]*)"/) || [])[1];
+        const cls = (attrs.match(/class="([^"]*)"/) || [])[1] || '';
+        const body = processInlineContent(inner, context);
+        if (effect === 'bold') return `<strong>${body}</strong>`;
+        if (effect === 'underline') return `<u>${body}</u>`;
+        if (effect === 'italics') return `<em>${body}</em>`;
+        if (cls.split(/\s+/).includes('emphasis-one')) return `<em class="emphasis-one">${body}</em>`;
+        return `<em>${body}</em>`; // effect-less default: italics
+      });
+    } while (result !== prev);
+  }
 
   // Convert terms
   result = result.replace(/<term\s+id="([^"]*)"[^>]*>([\s\S]*?)<\/term>/g, (match, id, inner) => {
