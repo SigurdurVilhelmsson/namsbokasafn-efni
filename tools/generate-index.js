@@ -175,6 +175,26 @@ export function loadModuleMap(book) {
 }
 
 /**
+ * Build the section-key → { title, slug, chapter } map from a parsed toc.
+ * Numbered sections key by their `number` ("4.1"); the chapter intro/front-matter
+ * page (type "introduction", empty number) keys under `${chapter}.0` so an intro
+ * module's glossary terms resolve to it instead of a null slug (GI-1). Other
+ * empty-number pages (key-terms/summary/exercises) are intentionally NOT indexed.
+ */
+export function buildTocMap(toc) {
+  const map = new Map();
+  for (const ch of toc.chapters || []) {
+    for (const sec of ch.sections || []) {
+      const key = sec.number || (sec.type === 'introduction' ? `${ch.number}.0` : null);
+      if (key && sec.file) {
+        map.set(key, { title: sec.title, slug: sec.file.replace('.html', ''), chapter: ch.number });
+      }
+    }
+  }
+  return map;
+}
+
+/**
  * Load toc.json and build section number → { title, slug } mapping.
  * Tries multiple auto-detection paths if no explicit path given.
  */
@@ -186,21 +206,7 @@ function loadTocMap(tocPath, book) {
 
   for (const candidate of candidates) {
     if (fs.existsSync(candidate)) {
-      const toc = JSON.parse(fs.readFileSync(candidate, 'utf8'));
-      const map = new Map();
-      for (const ch of toc.chapters || []) {
-        for (const sec of ch.sections || []) {
-          if (sec.number && sec.file) {
-            const slug = sec.file.replace('.html', '');
-            map.set(sec.number, {
-              title: sec.title,
-              slug,
-              chapter: ch.number,
-            });
-          }
-        }
-      }
-      return map;
+      return buildTocMap(JSON.parse(fs.readFileSync(candidate, 'utf8')));
     }
   }
   return null;
@@ -389,7 +395,12 @@ function generateIndex(options) {
 
         // Look up section info from module map
         const modInfo = moduleMap?.get(moduleId);
-        const section = modInfo?.section || null;
+        // Intro modules carry section "intro"; normalize to `${chapter}.0` so they resolve
+        // to the chapter intro page in the toc map (GI-1) instead of a null slug.
+        const section =
+          modInfo?.section === 'intro' && modInfo?.chapter != null
+            ? `${modInfo.chapter}.0`
+            : modInfo?.section || null;
 
         // Look up slug and title from toc map
         const tocInfo = section ? tocMap?.get(section) : null;
