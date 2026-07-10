@@ -22,4 +22,8 @@ describe('emphasis rendering (R4-4)', () => {
     expect(processInlineContent('<emphasis id="a" effect="bold">b</emphasis>', ctx))
       .toBe('<strong>b</strong>');
   });
+  it('class="emphasis-one" survives even when an effect also fires (not observed in-corpus today, but not dropped)', () => {
+    expect(processInlineContent('<emphasis effect="bold" class="emphasis-one">c</emphasis>', ctx))
+      .toBe('<strong class="emphasis-one">c</strong>');
+  });
 });

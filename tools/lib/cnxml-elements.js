@@ -768,12 +768,15 @@ export function processInlineContent(content, context) {
       result = result.replace(EMPHASIS_RE, (match, attrs, inner) => {
         const effect = (attrs.match(/effect="([^"]*)"/) || [])[1];
         const cls = (attrs.match(/class="([^"]*)"/) || [])[1] || '';
+        // Carry class="emphasis-one" through regardless of which effect branch fires, so a
+        // (currently unobserved in-corpus, but not impossible) `effect="…" class="emphasis-one"`
+        // combo doesn't silently drop the class.
+        const classAttr = cls.split(/\s+/).includes('emphasis-one') ? ' class="emphasis-one"' : '';
         const body = processInlineContent(inner, context);
-        if (effect === 'bold') return `<strong>${body}</strong>`;
-        if (effect === 'underline') return `<u>${body}</u>`;
-        if (effect === 'italics') return `<em>${body}</em>`;
-        if (cls.split(/\s+/).includes('emphasis-one')) return `<em class="emphasis-one">${body}</em>`;
-        return `<em>${body}</em>`; // effect-less default: italics
+        if (effect === 'bold') return `<strong${classAttr}>${body}</strong>`;
+        if (effect === 'underline') return `<u${classAttr}>${body}</u>`;
+        if (effect === 'italics') return `<em${classAttr}>${body}</em>`;
+        return `<em${classAttr}>${body}</em>`; // effect-less (or unmapped effect) default: italics
       });
     } while (result !== prev);
   }
