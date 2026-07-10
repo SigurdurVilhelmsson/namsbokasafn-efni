@@ -102,7 +102,7 @@ function getNoteTypeLabel(noteClass) {
   // (e.g., 'clinical-focus' → 'Clinical Focus')
   // Skip fallback for 'default' — these are classless notes whose <title> already identifies them
   if (NOTE_TYPE_LABELS.default === null && noteClass !== 'default') {
-    return generateFallbackLabel(noteClass);
+    return generateFallbackLabel(noteClass, { book: BOOK_SLUG });
   }
   return null;
 }
