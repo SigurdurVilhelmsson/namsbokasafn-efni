@@ -263,6 +263,34 @@ describe('cnxml-render', () => {
     // No raw CNXML leaked in as inert text
     expect(exercises).not.toContain('<link document');
   });
+
+  it('appendix render labels tables per-letter with per-module reset (R4-3)', () => {
+    // R4-3: appendix table captions must read "Tafla B1", not "Tafla appendices.N".
+    // The letters map is consumed inside main()'s appendices pass, so only a real
+    // CLI render of --chapter appendices exercises that wiring (the unit tests
+    // pin formatTableNumber alone and stayed green while the page was wrong).
+    execSync(
+      `node ${join(TOOLS, 'cnxml-render.js')} --book efnafraedi-2e --chapter appendices --track mt-preview`,
+      { cwd: ROOT, encoding: 'utf8', timeout: 240_000 }
+    );
+
+    const outputPath = join(BOOKS, '05-publication', 'mt-preview', 'chapters', 'appendices');
+    const b = readFileSync(
+      join(outputPath, 'appendices-2-grundvallaratridi-i-staerdfraedi.html'),
+      'utf8'
+    );
+    const c = readFileSync(
+      join(outputPath, 'appendices-3-einingar-og-umreiknistudlar.html'),
+      'utf8'
+    );
+
+    // Per-letter labels, and each module restarts its own counter at 1
+    expect(b).toContain('Tafla B1');
+    expect(c).toContain('Tafla C1');
+    // The continuous chapter-style fallback must be gone
+    expect(b).not.toContain('Tafla appendices.');
+    expect(c).not.toContain('Tafla appendices.');
+  }, 300_000);
 });
 
 // =====================================================================

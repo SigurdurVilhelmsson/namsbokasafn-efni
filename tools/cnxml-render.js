@@ -3336,12 +3336,13 @@ async function main() {
     const moduleSections = buildModuleSections(BOOK_SLUG, args.chapter);
 
     // Appendix id → { letter, basename } lookup, so a chapter→appendix cross-ref
-    // resolves to the appendix landing URL (A1). Skipped while rendering the
-    // appendices themselves (within-appendix links stay same-page).
-    const { idMap: appendixIdMap, moduleLetters: appendixModuleLetters } =
-      args.chapter === 'appendices'
-        ? { idMap: new Map(), moduleLetters: new Map() }
-        : buildAppendixIdMap(BOOK_SLUG, args.track);
+    // resolves to the appendix landing URL (A1). moduleLetters is built for every
+    // chapter — the appendices pass itself consumes it for per-letter table
+    // numbers (R4-3). Only idMap is emptied while rendering the appendices, so
+    // within-appendix target-id links stay same-page instead of landing-URL.
+    const appendixMaps = buildAppendixIdMap(BOOK_SLUG, args.track);
+    const appendixIdMap = args.chapter === 'appendices' ? new Map() : appendixMaps.idMap;
+    const appendixModuleLetters = appendixMaps.moduleLetters;
 
     // The fields both appendix branches of resolveCrossModuleHref need (#18/#19).
     // Defined once and spread into every appendix-capable render context so the
