@@ -424,6 +424,14 @@ git commit -m "fix(render): dedup para-nested figure in renderExercise (R4-5)"
 
 > Each vefur task's first step is to **read the current file** (RUN 6 line numbers may have drifted) and follow vefur conventions (Svelte 5 runes, amber accent, Icelandic UI). Tests use Vitest/Playwright per vefur's setup.
 
+> ✅ **STATUS 2026-07-10 — VEFUR SECTION COMPLETE (V1–V4 + P0-9).** Delivered in `namsbokasafn-vefur` **PR #187** (branch `fix/phase-0-remediation-vefur`, 5 commits). Each task TDD'd (failing test → fix) + browser/computed-style verified; `npm run check`/`test` (471)/`build` all green.
+> - **V1** — footer names both licences; fail-loud gate in `licences.test.ts` scans landing/FAQ/`app.html`/**all print routes** (windowed: each "CC BY 4.0" must have "NC-SA" within 240 chars). Only aggregate blanket claim was the footer.
+> - **V2** — `liffraedi-2e` `status: 'in-progress' → 'preview'`; all credit sites key off status. Side-effect (intended): biology moves to the landing "Sýnishorn" (samples) section. **Flip back to `in-progress` + restore the human credit when faithful biology lands.** Þórhallur stays in the contributor roster (correct). Durable per-page-credit refactor (Step 3) deferred (credit sites are book-level; no book-level reviewed signal).
+> - **V3** — selectors corrected to hyphenated `note-visual-connection`/`-evolution`/`-career`; box now blue-tinted.
+> - **V4** ⚠️ — scoped `article.cnx-module ol` decimal to `ol:not([style*="list-style-type"])` so E5's inline alpha wins. **Still merge together with efni Task E5** per the atomic directive (V4 is forward-safe alone, but coordinate the landings).
+> - **P0-9** — added `em.emphasis-one` (bold/red, theme-aware var) for E8's acidic-H marker.
+> All five are inert to end-users until efni re-renders the biology/appendix content and it is synced (lead-gate below).
+
 ## Task V1: R6-1 — per-book footer licence + fail-loud blanket-claim gate
 
 **Files:**
