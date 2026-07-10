@@ -492,8 +492,8 @@ Code above is inert in published HTML until a re-render + sync. Hand this to the
 
 - [ ] **Combined chemistry re-render** (heals R4-1/2/3/4/5): `for ch in $(seq 0 21) appendices; do node tools/cnxml-render.js --book efnafraedi-2e --chapter "$ch"; done`
 - [ ] **liffraedi ch03 re-render** (heals R4-6 leak): confirm the fidelity gate now reports the ch03 page RED **before** re-render, GREEN after.
-- [ ] **Biology render** once R5-1/R5-3 land (alpha lists + note labels) — verify a lower-alpha MC list shows letters and biology note headers are Icelandic.
-- [ ] **Sync** to vefur (`node scripts/sync-content.js --source ../namsbokasafn-efni` from vefur) + deploy per the standard flow.
+- [ ] **Biology render** once R5-1 lands (alpha lists) — verify a lower-alpha MC list shows letters. ⚠️ **AMENDED 2026-07-10 (post-merge review, RV-1):** R5-3 note-label **VALUES were deferred** (translations come only from the Miðeind API, never AI), so biology note headers **render English + a console warn BY DESIGN** until the Icelandic labels are sourced into `books/liffraedi-2e/book-config.json` `noteTypeLabels`. Do NOT read English note headers as a render failure — the `unmapped note type` warn is the intended fail-loud signal. Lead call: render biology now with English+warn headers (accepted interim) or wait for the Miðeind labels.
+- [ ] **Sync** to vefur (`node scripts/sync-content.js --source ../namsbokasafn-efni` from vefur) + deploy per the standard flow. ⚠️ **Sync-ordering note (RV-2):** Phase 1 ("before-next-sync" seams R6-3/R6-4/R6-6) is not yet built, and biology `index.json` + orverufraedi/lifraen `glossary.json` are still absent with no generation step scheduled (E1 unblocked `generate-index --book liffraedi-2e`; nothing runs it). Syncing now causes **no regression** (all three seams are already live-broken) — but decide explicitly: land the small Phase-1 gating fixes + generate the aggregates first, or sync now and fast-follow Phase 1.
 - [ ] Post-render spot-check: no literal `[[…]]` markers; table numbers match OpenStax; 7.3 reading order correct; no raw `<link>` on biology ch03.
 
 ---
