@@ -301,8 +301,11 @@ function buildAppendixIdMap(book, track) {
   let appendixSections;
   try {
     appendixSections = buildModuleSections(book, 'appendices');
-  } catch {
-    return { idMap: map, moduleLetters }; // book has no appendices
+  } catch (err) {
+    if (err && err.code === 'ENOENT') {
+      return { idMap: map, moduleLetters }; // book has no appendices
+    }
+    throw err; // corrupt structure JSON / anything else: fail loud (R4-12)
   }
   for (const [moduleId, info] of Object.entries(appendixSections)) {
     if (moduleId.startsWith('_') || !info || info.section == null) continue;
@@ -2897,7 +2900,13 @@ function renderSingleTypeExercises(
       // Remove the original section title
       sectionHtml = sectionHtml.replace(/<h2[^>]*>[\s\S]*?<\/h2>/, '');
 
-      // Replace the section class and add module info
+      // Replace the section class and add module info.
+      // NOTE (R5-4): unlike renderCompiledExercises' identical-looking emit,
+      // this one is intentionally NOT type-suffixed. This function only ever
+      // renders ONE exerciseClass per call, each to its OWN standalone file
+      // (the "separate slugs" path, e.g. microbiology) — so the bare id is
+      // already unique within its document; there is no `hasMultipleTypes`
+      // in scope here, and there is no sibling-duplicate-id to fix.
       const classRegex = new RegExp(`<section([^>]*)class="${exerciseClass}"([^>]*)>`);
       sectionHtml = sectionHtml.replace(
         classRegex,
@@ -3029,7 +3038,14 @@ function renderCompiledExercises(chapter, exercisesByType, chapterExerciseNumber
         const classRegex = new RegExp(`<section([^>]*)class="${exerciseClass}"([^>]*)>`);
         sectionHtml = sectionHtml.replace(
           classRegex,
-          `<section class="exercises-section" id="exercises-${exercises.moduleId}" data-section="${exercises.sectionNumber}">`
+          // Multi-type books (e.g. biology) compile several exercise classes
+          // into this ONE file; a module with sections of more than one type
+          // would otherwise emit sibling <section id="exercises-<moduleId>">
+          // wrappers with the same id (invalid HTML, R5-4). Suffix with the
+          // exercise class only when there's more than one type in play —
+          // single-type books (chemistry) keep the legacy bare id
+          // byte-identically (their compiled pages are already published).
+          `<section class="exercises-section" id="exercises-${exercises.moduleId}${hasMultipleTypes ? `-${exerciseClass}` : ''}" data-section="${exercises.sectionNumber}">`
         );
 
         // For single-type books, add section title as h3; for multi-type, use h3 under the type h2
