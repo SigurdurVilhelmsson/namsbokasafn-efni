@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll } from 'vitest';
+import { describe, it, expect, beforeAll, vi } from 'vitest';
 import { readFileSync, mkdtempSync, writeFileSync, existsSync, rmSync, readdirSync } from 'fs';
 import { join } from 'path';
 import { tmpdir } from 'os';
@@ -53,6 +53,18 @@ describe('getNoteTypeLabel', () => {
   it('returns fallback label for unknown note types', () => {
     // Now generates readable labels instead of null
     expect(getNoteTypeLabel('completely-unknown-type')).toBe('Completely Unknown Type');
+  });
+
+  it('warns (fail-loud, note-type-specific) when it falls back for an unmapped note class', () => {
+    // The warning belongs here (not in the shared generateFallbackLabel) because
+    // this is the only call site where "note type" is actually true — the
+    // exercise-title call sites reuse generateFallbackLabel for a different kind
+    // of label, and a note-type-specific message there would be misleading.
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const label = getNoteTypeLabel('everyday');
+    expect(label).toBe('Everyday');
+    expect(warn).toHaveBeenCalledWith(expect.stringMatching(/unmapped note type.*everyday/i));
+    warn.mockRestore();
   });
 
   it('returns correct labels for Microbiology note types', () => {

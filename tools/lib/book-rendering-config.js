@@ -141,30 +141,23 @@ function bookToDomain(bookSlug) {
  * Generate a readable fallback label from a CSS class name.
  * E.g., 'clinical-focus' → 'Clinical Focus'
  *
- * Warns (fail-loud, does not throw) on every call — a fallback always means
- * the class has no translated label in book-config.json, and without a
- * visible signal that's indistinguishable from a deliberate English label.
+ * Pure — no side effects. This is shared by call sites with different
+ * semantics (note-type labels, exercise-title labels), so it must not assume
+ * "note type" or emit a note-type-specific message. Callers that need a
+ * fail-loud signal for their own context should warn themselves (e.g.
+ * cnxml-render.js's getNoteTypeLabel()).
  *
  * @param {string} className - CSS class name
- * @param {object} [context]
- * @param {string} [context.book] - Active book slug, included in the warning if known
  * @returns {string} Human-readable label
  */
-function generateFallbackLabel(className, { book } = {}) {
+function generateFallbackLabel(className) {
   if (!className) return '';
   // Remove book prefix (e.g., "microbiology " from "microbiology clinical-focus")
   const words = className
     .replace(/^(chemistry|biology|microbiology)\s+/i, '')
     .split(/[-_\s]+/)
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
-  const label = words.join(' ');
-  // Fail-loud: a fallback means the note type has no translated label in
-  // book-config.json — without this warning a missing mapping is
-  // indistinguishable from a deliberate English label (R5-3).
-  console.warn(
-    `book-rendering-config: unmapped note type "${className}"${book ? ` (book ${book})` : ''} → fell back to "${label}"`
-  );
-  return label;
+  return words.join(' ');
 }
 
 /**

@@ -102,7 +102,17 @@ function getNoteTypeLabel(noteClass) {
   // (e.g., 'clinical-focus' → 'Clinical Focus')
   // Skip fallback for 'default' — these are classless notes whose <title> already identifies them
   if (NOTE_TYPE_LABELS.default === null && noteClass !== 'default') {
-    return generateFallbackLabel(noteClass, { book: BOOK_SLUG });
+    const label = generateFallbackLabel(noteClass);
+    // Fail-loud here (not inside the shared generateFallbackLabel): a
+    // fallback here specifically means an unmapped *note type*, and without
+    // this warning a missing mapping is indistinguishable from a deliberate
+    // English label (R5-3). generateFallbackLabel is also reused for
+    // exercise-title fallbacks, where this note-type-specific message would
+    // be misleading.
+    console.warn(
+      `cnxml-render: unmapped note type "${noteClass}" (book ${BOOK_SLUG}) → fell back to "${label}"`
+    );
+    return label;
   }
   return null;
 }
