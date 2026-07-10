@@ -1,0 +1,248 @@
+{
+  "generated": "2026-07-10T21:57:08.294Z",
+  "termCount": 22,
+  "entries": [
+    {
+      "termIs": "annað lögmál Newtons um hreyfingu",
+      "termEn": "newton’s second law of motion",
+      "termFull": "annað lögmál Newtons um hreyfingu (e. newton’s second law of motion)",
+      "definition": "heildarytri krafturinn Fnet á hlut með massa m er í réttu hlutfalli við og í sömu átt og hröðun hlutarins, a, og í öfugu hlutfalli við massann; skilgreint stærðfræðilega sem a=Fnetm",
+      "chapter": 4,
+      "section": "4.1",
+      "sectionTitle": "Þróun krafthugtaksins",
+      "sectionSlug": "4-1-throun-krafthugtaksins",
+      "termId": "import-auto-id3094830"
+    },
+    {
+      "termIs": "frjálst fall",
+      "termEn": "free-fall",
+      "termFull": "frjálst fall (e. free-fall)",
+      "definition": "aðstæður þar sem eini krafturinn sem verkar á hlut er krafturinn vegna þyngdarafls",
+      "chapter": 4,
+      "section": "4.1",
+      "sectionTitle": "Þróun krafthugtaksins",
+      "sectionSlug": "4-1-throun-krafthugtaksins",
+      "termId": "import-auto-id3146487"
+    },
+    {
+      "termIs": "fyrsta lögmál Newtons um hreyfingu",
+      "termEn": "newton’s first law of motion",
+      "termFull": "fyrsta lögmál Newtons um hreyfingu (e. newton’s first law of motion)",
+      "definition": "hlutur í kyrrstöðu helst í kyrrstöðu, eða, ef hann er á hreyfingu, helst hann á hreyfingu með stöðugum hraða nema ytri heildarkraftur verki á hann; einnig þekkt sem tregðulögmálið",
+      "chapter": 4,
+      "section": "4.6",
+      "sectionTitle": "Lausn vandamála",
+      "sectionSlug": "4-6-lausn-vandamala",
+      "termId": "import-auto-id2667112"
+    },
+    {
+      "termIs": "heildarytri kraftur",
+      "termEn": "net external force",
+      "termFull": "heildarytri kraftur (e. net external force)",
+      "definition": "vigursumma allra ytri krafta sem verka á hlut eða kerfi; veldur því að massi fær hröðun",
+      "chapter": 4,
+      "section": "4.1",
+      "sectionTitle": "Þróun krafthugtaksins",
+      "sectionSlug": "4-1-throun-krafthugtaksins",
+      "termId": "import-auto-id3144942"
+    },
+    {
+      "termIs": "hröðun",
+      "termEn": "acceleration",
+      "termFull": "hröðun (e. acceleration)",
+      "definition": "hraði sem hraði hlutar breytist á ákveðnu tímabili",
+      "chapter": 4,
+      "section": "4.1",
+      "sectionTitle": "Þróun krafthugtaksins",
+      "sectionSlug": "4-1-throun-krafthugtaksins",
+      "termId": "import-auto-id3036510"
+    },
+    {
+      "termIs": "kerfi",
+      "termEn": "system",
+      "termFull": "kerfi (e. system)",
+      "definition": "skilgreint af mörkum hlutar eða safns hluta sem verið er að fylgjast með; allir kraftar sem eiga uppruna sinn utan kerfisins eru taldir ytri kraftar",
+      "chapter": 4,
+      "section": "4.1",
+      "sectionTitle": "Þróun krafthugtaksins",
+      "sectionSlug": "4-1-throun-krafthugtaksins",
+      "termId": "import-auto-id2670363"
+    },
+    {
+      "termIs": "kraftafræði",
+      "termEn": "dynamics",
+      "termFull": "kraftafræði (e. dynamics)",
+      "definition": "fræðin um hvernig kraftar hafa áhrif á hreyfingu hluta og kerfa",
+      "chapter": 4,
+      "section": "4.0",
+      "sectionTitle": "Inngangur að kraftafræði: Hreyfilögmál Newtons",
+      "sectionSlug": "4-0-introduction",
+      "termId": "import-auto-id2660636"
+    },
+    {
+      "termIs": "kraftamynd",
+      "termEn": "free-body diagram",
+      "termFull": "kraftamynd (e. free-body diagram)",
+      "definition": "skissa sem sýnir alla ytri krafta sem verka á hlut eða kerfi; kerfið er táknað með punkti og kraftarnir eru táknaðir með vigrum sem teygja sig út frá punktinum",
+      "chapter": 4,
+      "section": "4.0",
+      "sectionTitle": "Inngangur að kraftafræði: Hreyfilögmál Newtons",
+      "sectionSlug": "4-0-introduction",
+      "termId": "import-auto-id2027750"
+    },
+    {
+      "termIs": "kraftsvið",
+      "termEn": "force field",
+      "termFull": "kraftsvið (e. force field)",
+      "definition": "svæði þar sem prófunarögn verður fyrir krafti",
+      "chapter": 4,
+      "section": "4.8",
+      "sectionTitle": "Ítarefni: Inngangur að grunnkröftunum fjórum",
+      "sectionSlug": "4-8-itarefni-inngangur-ad-grunnkroftunum-fjorum",
+      "termId": "import-auto-id1977355"
+    },
+    {
+      "termIs": "kraftur",
+      "termEn": "force",
+      "termFull": "kraftur (e. force)",
+      "definition": "tog eða þrýstingur á hlut með ákveðinni stærð og stefnu; má tákna með vigrum; má gefa upp sem margfeldi af staðalkrafti",
+      "chapter": 4,
+      "section": "4.0",
+      "sectionTitle": "Inngangur að kraftafræði: Hreyfilögmál Newtons",
+      "sectionSlug": "4-0-introduction",
+      "termId": "import-auto-id1415968"
+    },
+    {
+      "termIs": "massi",
+      "termEn": "mass",
+      "termFull": "massi (e. mass)",
+      "definition": "magn efnis í efni; mælt í kílógrömmum",
+      "chapter": 4,
+      "section": "4.6",
+      "sectionTitle": "Lausn vandamála",
+      "sectionSlug": "4-6-lausn-vandamala",
+      "termId": "import-auto-id1571848"
+    },
+    {
+      "termIs": "miðlunarögn",
+      "termEn": "carrier particle",
+      "termFull": "miðlunarögn (e. carrier particle)",
+      "definition": "grundeindarögn í náttúrunni sem er umlukin einkennandi kraftsviði; ljóseindir eru miðlunaragnir rafsegulkraftsins",
+      "chapter": 4,
+      "section": "4.8",
+      "sectionTitle": "Ítarefni: Inngangur að grunnkröftunum fjórum",
+      "sectionSlug": "4-8-itarefni-inngangur-ad-grunnkroftunum-fjorum",
+      "termId": "import-auto-id1916122"
+    },
+    {
+      "termIs": "núningur",
+      "termEn": "friction",
+      "termFull": "núningur (e. friction)",
+      "definition": "kraftur milli hluta sem snertast og hreyfast hvor fram hjá öðrum; dæmi eru hrjúfir fletir og loftmótstaða",
+      "chapter": 4,
+      "section": "4.1",
+      "sectionTitle": "Þróun krafthugtaksins",
+      "sectionSlug": "4-1-throun-krafthugtaksins",
+      "termId": "import-auto-id3092291"
+    },
+    {
+      "termIs": "spenna",
+      "termEn": "tension",
+      "termFull": "spenna (e. tension)",
+      "definition": "togkrafturinn sem verkar eftir miðli, sérstaklega eftir strekktum, sveigjanlegum tengi, eins og reipi eða kapli; þegar reipi ber þyngd hlutar er krafturinn frá reipinu á hlutinn kallaður spennukraftur",
+      "chapter": 4,
+      "section": "4.3",
+      "sectionTitle": "Annað lögmál Newtons um hreyfingu: Hugtakið kerfi",
+      "sectionSlug": "4-3-annad-logmal-newtons-um-hreyfingu-hugtakid-kerfi",
+      "termId": "import-auto-id2367248"
+    },
+    {
+      "termIs": "tregða",
+      "termEn": "inertia",
+      "termFull": "tregða (e. inertia)",
+      "definition": "tilhneiging hlutar til að haldast í kyrrstöðu eða haldast á hreyfingu",
+      "chapter": 4,
+      "section": "4.6",
+      "sectionTitle": "Lausn vandamála",
+      "sectionSlug": "4-6-lausn-vandamala",
+      "termId": "import-auto-id1323961"
+    },
+    {
+      "termIs": "tregðulögmálið",
+      "termEn": "law of inertia",
+      "termFull": "tregðulögmálið (e. law of inertia)",
+      "definition": "sjá fyrsta lögmál Newtons um hreyfingu",
+      "chapter": 4,
+      "section": "4.6",
+      "sectionTitle": "Lausn vandamála",
+      "sectionSlug": "4-6-lausn-vandamala",
+      "termId": "import-auto-id966062"
+    },
+    {
+      "termIs": "tregðuviðmiðunarkerfi",
+      "termEn": "inertial frame of reference",
+      "termFull": "tregðuviðmiðunarkerfi (e. inertial frame of reference)",
+      "definition": "hnitakerfi sem er ekki á hröðun; allir kraftar sem verka í tregðuviðmiðunarkerfi eru raunverulegir kraftar, öfugt við sýndarkrafta sem sjást vegna viðmiðunarkerfis á hröðun",
+      "chapter": 4,
+      "section": "4.3",
+      "sectionTitle": "Annað lögmál Newtons um hreyfingu: Hugtakið kerfi",
+      "sectionSlug": "4-3-annad-logmal-newtons-um-hreyfingu-hugtakid-kerfi",
+      "termId": "import-auto-id1679828"
+    },
+    {
+      "termIs": "ytri kraftur",
+      "termEn": "external force",
+      "termFull": "ytri kraftur (e. external force)",
+      "definition": "kraftur sem verkar á hlut eða kerfi og á uppruna sinn utan hlutarins eða kerfisins",
+      "chapter": 4,
+      "section": "4.0",
+      "sectionTitle": "Inngangur að kraftafræði: Hreyfilögmál Newtons",
+      "sectionSlug": "4-0-introduction",
+      "termId": "import-auto-id2142877"
+    },
+    {
+      "termIs": "Þriðja lögmál Newtons um hreyfingu",
+      "termEn": "newton’s third law of motion",
+      "termFull": "Þriðja lögmál Newtons um hreyfingu (e. newton’s third law of motion)",
+      "definition": "alltaf þegar einn hlutur beitir krafti á annan hlut, verður fyrri hluturinn fyrir krafti sem er jafnstór og í gagnstæða átt við kraftinn sem fyrri hluturinn beitir",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Fyrsta lögmál Newtons um hreyfingu: Tregða",
+      "sectionSlug": "4-2-fyrsta-logmal-newtons-um-hreyfingu-tregda",
+      "termId": "import-auto-id1046121"
+    },
+    {
+      "termIs": "þrýstikraftur",
+      "termEn": "thrust",
+      "termFull": "þrýstikraftur (e. thrust)",
+      "definition": "viðbragðskraftur sem ýtir hlut áfram sem svar við krafti aftur á bak; eldflaugum, flugvélum og bílum er ýtt áfram með viðbragðsþrýstikrafti",
+      "chapter": 4,
+      "section": "4.2",
+      "sectionTitle": "Fyrsta lögmál Newtons um hreyfingu: Tregða",
+      "sectionSlug": "4-2-fyrsta-logmal-newtons-um-hreyfingu-tregda",
+      "termId": "import-auto-id1552615"
+    },
+    {
+      "termIs": "þverkraftur",
+      "termEn": "normal force",
+      "termFull": "þverkraftur (e. normal force)",
+      "definition": "krafturinn sem yfirborð beitir á hlut til að bera þyngd hlutarins; verkar hornrétt á yfirborðið sem hluturinn hvílir á",
+      "chapter": 4,
+      "section": "4.3",
+      "sectionTitle": "Annað lögmál Newtons um hreyfingu: Hugtakið kerfi",
+      "sectionSlug": "4-3-annad-logmal-newtons-um-hreyfingu-hugtakid-kerfi",
+      "termId": "import-auto-id2367244"
+    },
+    {
+      "termIs": "þyngd",
+      "termEn": "weight",
+      "termFull": "þyngd (e. weight)",
+      "definition": "krafturinn w vegna þyngdarafls sem verkar á hlut með massa m; skilgreint stærðfræðilega sem: w=mg, þar sem g er stærð og stefna hröðunar vegna þyngdarafls",
+      "chapter": 4,
+      "section": "4.1",
+      "sectionTitle": "Þróun krafthugtaksins",
+      "sectionSlug": "4-1-throun-krafthugtaksins",
+      "termId": "import-auto-id1397785"
+    }
+  ]
+}
