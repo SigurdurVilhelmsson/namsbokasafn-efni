@@ -120,9 +120,11 @@ These are the finder prompts (each finder also receives the file inventory and e
 5. **Interface-contract drift** — For each route that feeds a view/client-JS file, diff the JSON shape produced vs consumed: fields advertised in JSDoc/response but never populated (May-audit F3 `workload`/`readyForAssignment` class), fields the client reads that the server never sends, type/shape mismatches; client `fetchJson` error handling of non-2xx; `ui-strings.js` coverage vs hardcoded inline strings.
 6. **Dead code & config rot** — Never-referenced endpoints/services/exports; half-wired features (a service written but never called from a route — e.g. is `qaCheckService`/`check-consistency` reachable?); env flags read but never set, or set but never read; stale `server/data/*.json`; dependencies in package.json unused, or used but undeclared.
 
-- [ ] **Step 2: Author the workflow script and launch it in the background**
+- [ ] **Step 2: Author the workflow script and launch it in the background — EXPLICIT GO/NO-GO FIRST**
 
-Invoke the Workflow tool with the script below. Before invoking, read `SCRATCH/finder-context.md` and `SCRATCH/exclusion-list.md` and paste their contents into the `INVENTORY` and `EXCLUSIONS` template literals (the script cannot read scratch files at run time). Launch with `run_in_background` default (true).
+**Gate:** A Fable fan-out is real spend (~2.5–3.5M subagent tokens) and standing policy requires a *per-run* go-ahead — design approval is not launch approval. Before invoking Workflow, post one line to the user: "Ready to launch the code-review fan-out (~3M tokens, background). Go?" and wait for an explicit yes. (Design §5; memory `fable5-review-strategy` STANDING POLICY.)
+
+On go, invoke the Workflow tool with the script below. Before invoking, read `SCRATCH/finder-context.md` and `SCRATCH/exclusion-list.md` and paste their contents into the `INVENTORY` and `EXCLUSIONS` template literals (the script cannot read scratch files at run time). Launch with `run_in_background` default (true).
 
 ```javascript
 export const meta = {
@@ -328,18 +330,24 @@ Confirm every gate in `workflow-model.md` has a corresponding row (match or drif
 
 **Files:**
 - Create: `SCRATCH/walkthrough-log.md`, screenshots under `SCRATCH/shots/`
-- Create (temporary, driver): `SCRATCH/walk.spec.js` — a Playwright spec run against the live server
-- Read: `server/e2e/helpers/auth.js`, `server/e2e/playwright.config.js`, existing specs for patterns
+- Create (temporary, driver, INSIDE the e2e dir so Playwright discovers it): `server/e2e/walk.spec.js` — deleted in Task 5 teardown
+- Read: `server/e2e/helpers/auth.js`, `server/e2e/playwright.config.js`, `server/e2e/seed-fixture.js`, existing specs for patterns
 
 **Interfaces:**
 - Consumes: `SCRATCH/workflow-model.md` (scenarios exercise its states).
-- Produces: `SCRATCH/walkthrough-log.md` — per-persona narrative with friction points, each anchored to a screen/endpoint + screenshot. Consumed by Task 8's editorial report and Task 5's QA table.
+- Produces: `SCRATCH/walkthrough-log.md` — per-persona narrative with friction points, each anchored to a screen/endpoint + screenshot, and each tagged with its **evidence basis** (LIVE / SEEDED / CODE-READ). Consumed by Task 8's editorial report and Task 5's QA table.
 
-- [ ] **Step 1: Bring up a throwaway live server**
+- [ ] **Step 1: Bring up a throwaway live server + capture the pre-walkthrough fixture baseline**
 
 ```bash
 cd /home/siggi/dev/repos/namsbokasafn-efni/server
 lsof -ti:3456 | xargs -r kill
+# Record the fixture's git state (tracked + ignored) BEFORE any live writes,
+# so teardown removes only paths that appear afterward (apply/publish create
+# NEW untracked files under 03-faithful-translation/ and 05-publication/;
+# `git checkout` won't remove those and `git clean` would eat gitignored .bak files).
+( cd /home/siggi/dev/repos/namsbokasafn-efni && \
+  git status --porcelain --ignored books/__e2e-fixture__/ | sort > "$SCRATCH/fixture-before.txt" )
 E2E_DB="$(pwd)/../pipeline-output/review-sessions.db"
 rm -f "$E2E_DB" "$E2E_DB-wal" "$E2E_DB-shm"
 SESSIONS_DB_PATH="$E2E_DB" node e2e/seed-fixture.js
@@ -348,38 +356,54 @@ SESSIONS_DB_PATH="$E2E_DB" JWT_SECRET=test-secret-for-e2e-not-production \
 sleep 2
 curl -s localhost:3456/api/health | head -c 400
 ```
-Expected: `/api/health` returns `ok` with db/migrations/books/auth fields. Leave the server running (background) for the walkthrough; note the PID.
+Expected: `/api/health` returns `ok`; `fixture-before.txt` written. Leave the server running (background) for the walkthrough; note the PID.
 
-- [ ] **Step 2: Author a walkthrough driver spec**
+- [ ] **Step 2: Establish precondition data — decide per surface, don't benchmark against an empty DB (CRITICAL)**
 
-Write `SCRATCH/walk.spec.js` using `loginAs(page, role)` from `server/e2e/helpers/auth.js`. It is a *driver*, not an assertion suite — it navigates each persona's path, screenshots each screen to `SCRATCH/shots/`, and dumps any non-2xx API response + browser console errors to stdout. Cover the fixture book `__e2e-fixture__` (chapter 1, module `m68664`) since that's what the seed registers. Structure the spec by persona (below). Run headed-off:
+`seed-fixture.js` only registers the book + subject mapping. Every DB-backed surface starts empty: **no glossary terms, no term-mining queue, no `content_versions`, no localization edits, no FTS-indexed segments, no TM.** The self-seeding surfaces are fine — the editor→approve→apply→restore chain *creates* its own edits and versions within the persona sequence (Steps 3–4). But terminology governance, TM lifecycle, concordance, and repetition leverage have preconditions that can't self-seed. **Running them against an empty DB would record known data-starvation (memory: "binding constraint = DATA + ADOPTION, ~3 faithful modules") as if it were a fresh process gap — a false finding.**
+
+For each such surface, pick and record the evidence basis in `walkthrough-log.md`:
+| Surface | Precondition | Basis this review uses |
+|---|---|---|
+| Segment review → apply → version → restore | editor's own edits | **LIVE** (self-seeds in Steps 3–4) |
+| Terminology governance (add → approve → glossary → export) | a term exists | **SEEDED via the admin UI in Step 5** (create the term through the terminology manager, then walk the approve/export loop) |
+| Term-mining queue | mined candidates | **CODE-READ** — mining runs on apply of real modules; note the wiring in `termMiningService.js`, don't fake candidates |
+| Concordance / repetition leverage | FTS-indexed segment corpus | **CODE-READ** unless a ≤15-line seed of a handful of `segment_edits` + FTS rows is trivial after reading the owning migration; otherwise assess by reading `concordanceService.js` + its index |
+| Pass-2 localization review | a pending localized edit + `enforce_localization_review` ON | **LIVE** — toggle ON in Step 5, create the edit in Step 6 |
+| TM lifecycle | applied faithful pairs | **CODE-READ** — confirm the `tmService` auto-regen call site + that `tm/` is empty project-wide (design note); do not synthesize a TM |
+
+Rule: a dimension assessed CODE-READ is labeled as such in the report and in Phase E — never dressed up as a live verdict. If you do write a minimal seed script, read the owning migration first for exact columns (008 `segment_edits`/`module_reviews`; 032 terminology headwords+translations; 034 `localization_pending_edits`+`book_settings`; 035 `enforce_assignments`) and follow `seed-fixture.js`'s better-sqlite3 `prepare().run()` style; keep it in `SCRATCH/` and run it against `$E2E_DB` after seed-fixture.
+
+- [ ] **Step 3: Author a walkthrough driver spec (inside the e2e dir)**
+
+Write `server/e2e/walk.spec.js` (NOT in SCRATCH — Playwright's config uses `testDir: '.'` = `server/e2e/` with `testMatch: '*.spec.js'`, so a spec outside that dir is not discovered). Use `loginAs(page, role)` from `server/e2e/helpers/auth.js`. It is a *driver*, not an assertion suite — it navigates each persona's path, screenshots each screen to `SCRATCH/shots/`, and dumps any non-2xx API response + browser console errors to stdout. Cover the fixture book `__e2e-fixture__` (chapter 1, module `m68664`). With the manual server from Step 1 already up, `reuseExistingServer` (dev, non-CI) reuses it on `review-sessions.db` rather than spawning one on `e2e-sessions.db`:
 
 ```bash
 cd /home/siggi/dev/repos/namsbokasafn-efni/server
-npx playwright test --config=e2e/playwright.config.js "$SCRATCH/walk.spec.js" \
+npx playwright test --config=e2e/playwright.config.js walk.spec.js \
   --reporter=list 2>&1 | tee "$SCRATCH/walk-run.txt"
 ```
-(Set the config's `reuseExistingServer` path — the running server from Step 1 will be reused.)
+The persona sub-flows below are the spec's structure. **Note:** "Vista + Birta" may legitimately fail to fully render/publish a 2-module fixture — record that as an observation, don't let it wedge the run or teardown.
 
-- [ ] **Step 3: Editor persona — the Anna test, post-remediation**
+- [ ] **Step 4: Editor persona — the Anna test, post-remediation**
 
 Drive: login `editor` → `/` (what's my work? is "Today" honest?) → open module editor → exercise the MTPE loop: edit a segment, observe bracket-marker handling/overlay, term hints, concordance search, repetition/propagation surfacing → save (does it tell me state? do I know what happens next?) → look for/avoid the "submit module" gesture (the F2 trap; is direct-queue live or still flag-gated?). Record friction in `walkthrough-log.md` under "Editor".
 
-- [ ] **Step 4: Head-editor persona — the review→apply→recover loop**
+- [ ] **Step 5: Head-editor persona — the review→apply→recover loop**
 
 Drive: login `head-editor` → find pending work (dashboard queue vs `/editor?view=reviews`) → approve/reject/discuss a segment edit → apply ("Vista + Birta") → observe the rebuild affordance (`getApplyStatus.can_rebuild`) → edit-again on a published segment → open version history → perform a restore and confirm the round-trip. Record under "Head-editor".
 
-- [ ] **Step 5: Admin persona — governance surfaces**
+- [ ] **Step 6: Admin persona — governance surfaces**
 
 Drive: login `admin` → assignments dashboard, toggle `enforce_assignments`, confirm a now-unassigned editor path 403s (via API call as `editor`) → book settings incl. `enforce_localization_review` → terminology governance (mining queue → approve a term → see it in glossary → CSV export) → dashboard truthfulness: compare the headline tiles + `Þarfnast athygli` against the actual DB row counts. Record under "Admin".
 
-- [ ] **Step 6: Cross-cutting scenarios**
+- [ ] **Step 7: Cross-cutting scenarios**
 
 Drive: (a) two editors on one segment — second save should 409; capture both editors' experience of the prompt. (b) Pass 2 with `enforce_localization_review` ON — a localized edit enters the review queue. (c) QA/spellcheck with the Greynir sidecar absent (as in prod) — confirm graceful degradation, not a hard error. Record under "Cross-cutting".
 
-- [ ] **Step 7: Verify walkthrough completeness**
+- [ ] **Step 8: Verify walkthrough completeness**
 
-Confirm `walkthrough-log.md` has all four persona sections, each screen has a screenshot in `SCRATCH/shots/`, and every non-2xx/console error from `walk-run.txt` is either explained or flagged as a finding. Leave the server running for Task 5, then it will be torn down.
+Confirm `walkthrough-log.md` has all four persona sections, each screen has a screenshot in `SCRATCH/shots/`, each throughput dimension carries its evidence-basis tag (LIVE/SEEDED/CODE-READ), and every non-2xx/console error from `walk-run.txt` is either explained or flagged as a finding. Leave the server running for Task 5, then it will be torn down.
 
 ---
 
@@ -425,14 +449,22 @@ Items needing real Entra OAuth, nginx headers, or the deploy path (e.g. §5c bro
 
 - [ ] **Step 5: Teardown + hygiene gate (CRITICAL)**
 
+Revert the fixture precisely: restore *modified tracked* files with `git checkout`, and delete only paths that appeared *after* the baseline (apply/publish create new untracked files under `03-faithful-translation/`/`05-publication/`; `git clean` is banned because it would also eat the gitignored `.bak` files the fixture legitimately carries).
+
 ```bash
 cd /home/siggi/dev/repos/namsbokasafn-efni
 lsof -ti:3456 | xargs -r kill
-rm -f server/../pipeline-output/review-sessions.db*
-git checkout -- books/__e2e-fixture__/            # revert any fixture writes from the walkthrough
-git status --short                                # MUST be clean (ignore SCRATCH — it's outside the repo)
+rm -f pipeline-output/review-sessions.db*
+rm -f server/e2e/walk.spec.js                     # delete the temporary driver spec
+git checkout -- books/__e2e-fixture__/            # revert MODIFIED tracked fixture files
+# Remove only paths new since the pre-walkthrough baseline (Task 4 Step 1):
+git status --porcelain --ignored books/__e2e-fixture__/ | sort > "$SCRATCH/fixture-after.txt"
+comm -13 "$SCRATCH/fixture-before.txt" "$SCRATCH/fixture-after.txt" \
+  | sed -E 's/^.. //' | while read -r p; do echo "NEW: $p"; done
+# Inspect the NEW list; rm -f each confirmed walkthrough artifact (do NOT rm pre-existing .bak files).
+git status --short                                # MUST be clean (SCRATCH is outside the repo — ignore)
 ```
-Expected: port free, throwaway DB removed, `git status` clean. **If the tree is dirty, stop and reconcile before continuing** (Phase-0 lesson: walkthrough writes must not leak into the review's commits).
+Expected: port free, throwaway DB + walk spec removed, only genuinely-new walkthrough files deleted, `git status` clean. **If the tree is still dirty, stop and reconcile before continuing** (Phase-0 lesson: walkthrough writes must not leak into the review's commits).
 
 ---
 
@@ -457,6 +489,12 @@ grep -l '"type":"fallback"' "$TDIR"/agent-*.jsonl | wc -l     # fallback count
 ```
 Expected: `survivorCount` ≥ 0 with a real report; `agents_error` was 0 during the run. Server code shouldn't trip the `bio` classifier, so fallback count ≈ 0; if >2 finders fell back, label the code report "hybrid run (some agents Opus, cache-read billed)". If the result is empty AND errors/fallbacks are high, re-run the fan-out before trusting it (ops-lesson-3).
 
+Also confirm the finders (which have Bash) left the tree clean — read-only review means no source drift:
+```bash
+cd /home/siggi/dev/repos/namsbokasafn-efni && git status --short
+```
+Expected: clean. If a finder wrote a file, revert it before proceeding (memory: review finder-agents with Bash can dirty the tree — `git status` before merging after fan-outs).
+
 - [ ] **Step 2: Save the raw report and hand-spot-check the top findings**
 
 Save the workflow's `report` markdown to `SCRATCH/code-findings-raw.json` (or `.md`). Then, for the **top 3–5 findings**, personally open the cited `file:line` and confirm the failure scenario reproduces by reading (not by re-running the finder). This is the RUN 1 discipline: the synthesis is a draft until the main session has verified the headline claims.
@@ -473,7 +511,7 @@ Using the walkthrough log, drift catalog, and QA evidence, write `SCRATCH/practi
 - Rollback & recovery safety — version restore, rebuild, backup posture
 - Onboarding load — what a new editor must be told vs what the system teaches
 
-Constraint reminder: critique the process; keep the chemistry-teacher vocabulary boundary.
+Each verdict states its **evidence basis** (LIVE / SEEDED / CODE-READ, carried from Task 4 Step 2). A CODE-READ dimension (e.g. TM lifecycle, term-mining, possibly concordance) is a verdict about *what the code would do*, never dressed as an observed live result — and where the real constraint is data-starvation (empty `tm/`, ~3 faithful modules), say that explicitly rather than filing it as a process defect. Constraint reminder: critique the process; keep the chemistry-teacher vocabulary boundary.
 
 - [ ] **Step 4: Verify**
 
