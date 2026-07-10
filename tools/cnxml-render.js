@@ -779,6 +779,23 @@ function renderContent(content, context, _verbose) {
  * Shared by renderContent (top-level content) and renderSection (nested
  * sections), so both preserve document order the same way.
  */
+/**
+ * Resolve an element's position within `content` for document-order sorting.
+ *
+ * Primary lookup is `content.indexOf(fullMatch)`. Some top-level extractions
+ * (notably lists whose items contain a nested `<media>`) have their
+ * `fullMatch` mutated by upstream stripping (see media-strip pass above),
+ * so it no longer appears verbatim in the original `content`. When that
+ * lookup misses (-1) and the element has a stable `id`, fall back to
+ * locating `id="…"` instead of collapsing to position 0 (which would
+ * wrongly hoist the element above everything preceding it).
+ */
+function positionInContent(content, fullMatch, id) {
+  let pos = fullMatch ? content.indexOf(fullMatch) : -1;
+  if (pos === -1 && id) pos = content.indexOf(`id="${id}"`);
+  return pos !== -1 ? pos : 0;
+}
+
 function renderChildrenInDocumentOrder(content, context, { excludeSections, sectionLevel }) {
   const lines = [];
 
@@ -855,16 +872,14 @@ function renderChildrenInDocumentOrder(content, context, { excludeSections, sect
 
   // Add all top-level elements with positions (use original content for position finding)
   for (const fig of figures) {
-    const pos = fig.fullMatch ? content.indexOf(fig.fullMatch) : content.indexOf(`id="${fig.id}"`);
-    itemsWithPositions.push({ type: 'figure', item: fig, position: pos !== -1 ? pos : 0 });
+    const pos = positionInContent(content, fig.fullMatch, fig.id);
+    itemsWithPositions.push({ type: 'figure', item: fig, position: pos });
   }
 
   // Only add notes that are NOT inside examples or exercises
   // (notes inside examples/exercises will be rendered by renderExample/renderExercise)
   for (const note of notes) {
-    const notePos = note.fullMatch
-      ? content.indexOf(note.fullMatch)
-      : content.indexOf(`id="${note.id}"`);
+    const notePos = positionInContent(content, note.fullMatch, note.id);
 
     // Check if this note is inside any example
     const isInsideExample = examples.some((ex) => {
@@ -881,35 +896,33 @@ function renderChildrenInDocumentOrder(content, context, { excludeSections, sect
     });
 
     if (!isInsideExample && !isInsideExercise) {
-      itemsWithPositions.push({ type: 'note', item: note, position: notePos !== -1 ? notePos : 0 });
+      itemsWithPositions.push({ type: 'note', item: note, position: notePos });
     }
   }
 
   for (const ex of examples) {
-    const pos = ex.fullMatch ? content.indexOf(ex.fullMatch) : content.indexOf(`id="${ex.id}"`);
-    itemsWithPositions.push({ type: 'example', item: ex, position: pos !== -1 ? pos : 0 });
+    const pos = positionInContent(content, ex.fullMatch, ex.id);
+    itemsWithPositions.push({ type: 'example', item: ex, position: pos });
   }
   for (const ex of exercises) {
-    const pos = ex.fullMatch ? content.indexOf(ex.fullMatch) : content.indexOf(`id="${ex.id}"`);
-    itemsWithPositions.push({ type: 'exercise', item: ex, position: pos !== -1 ? pos : 0 });
+    const pos = positionInContent(content, ex.fullMatch, ex.id);
+    itemsWithPositions.push({ type: 'exercise', item: ex, position: pos });
   }
   for (const tbl of tables) {
-    const pos = tbl.fullMatch ? content.indexOf(tbl.fullMatch) : content.indexOf(`id="${tbl.id}"`);
-    itemsWithPositions.push({ type: 'table', item: tbl, position: pos !== -1 ? pos : 0 });
+    const pos = positionInContent(content, tbl.fullMatch, tbl.id);
+    itemsWithPositions.push({ type: 'table', item: tbl, position: pos });
   }
   for (const media of medias) {
-    const pos = media.fullMatch
-      ? content.indexOf(media.fullMatch)
-      : content.indexOf(`id="${media.id}"`);
-    itemsWithPositions.push({ type: 'media', item: media, position: pos !== -1 ? pos : 0 });
+    const pos = positionInContent(content, media.fullMatch, media.id);
+    itemsWithPositions.push({ type: 'media', item: media, position: pos });
   }
   for (const lst of lists) {
-    const pos = lst.fullMatch ? content.indexOf(lst.fullMatch) : content.indexOf(`id="${lst.id}"`);
-    itemsWithPositions.push({ type: 'list', item: lst, position: pos !== -1 ? pos : 0 });
+    const pos = positionInContent(content, lst.fullMatch, lst.id);
+    itemsWithPositions.push({ type: 'list', item: lst, position: pos });
   }
   for (const eq of equations) {
-    const pos = eq.fullMatch ? content.indexOf(eq.fullMatch) : content.indexOf(`id="${eq.id}"`);
-    itemsWithPositions.push({ type: 'equation', item: eq, position: pos !== -1 ? pos : 0 });
+    const pos = positionInContent(content, eq.fullMatch, eq.id);
+    itemsWithPositions.push({ type: 'equation', item: eq, position: pos });
   }
   for (const para of paras) {
     const pos = para.id ? content.indexOf(`id="${para.id}"`) : content.indexOf('<para');
@@ -4047,5 +4060,6 @@ export {
   escapeJsonForScript,
   filterOutlineEntries,
   renderList,
+  renderChildrenInDocumentOrder,
   _loadBookConfigForTest,
 };
