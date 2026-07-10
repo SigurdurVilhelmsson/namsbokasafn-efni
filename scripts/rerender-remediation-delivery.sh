@@ -124,9 +124,10 @@ echo "Spot-checks (diagnostic — review, non-fatal):"
 ap="books/efnafraedi-2e/05-publication/mt-preview/chapters/appendices"
 echo "  E7 'Tafla appendices.' residual: $(grep -rho 'Tafla appendices\.[0-9]*' "$ap" 2>/dev/null | wc -l) (want 0)"
 echo "  E7 per-letter 'Tafla [A-M]' labels: $(grep -rhoE 'Tafla [A-M][0-9]+' "$ap" 2>/dev/null | sort -u | tr '\n' ' ')"
-# E9 — para-nested exercise figure once per page
+# E9 — para-nested exercise figure once per page (count rendered <figure> elements,
+# not lines: the figure id and its img src legitimately land on 2 separate lines)
 for f in books/efnafraedi-2e/05-publication/*/chapters/10/10-exercises.html; do
-  [[ -f "$f" ]] && echo "  E9 CNX_Chem_10_02_Needlefloa in ${f#books/*/05-publication/}: $(grep -c 'CNX_Chem_10_02_Needlefloa' "$f") (want 1)"
+  [[ -f "$f" ]] && echo "  E9 CNX_Chem_10_02_Needlefloa <figure> in ${f#books/*/05-publication/}: $(grep -o '<figure id="CNX_Chem_10_02_Needlefloa"' "$f" | wc -l) (want 1)"
 done
 # E5 — ch04 alpha list
 echo "  E5 lower-alpha lists in efnafraedi ch04: $(grep -rho 'list-style-type: lower-alpha' books/efnafraedi-2e/05-publication/*/chapters/04/ 2>/dev/null | wc -l) (want ≥1)"
