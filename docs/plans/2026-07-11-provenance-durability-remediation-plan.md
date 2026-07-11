@@ -15,7 +15,7 @@
 - **Resolve paths against something intrinsic** (`__dirname`/`import.meta.url` for files, `resolveDbPath()` for the DB) — never `process.cwd()`.
 - **`npm test` from the repo root is the authoritative gate** (no branch protection). Run it before every commit.
 - **Node 22.x / npm 10.x;** the server runs with cwd=`server/`.
-- **Backup destination:** Linode Object Storage via `rclone` crypt (client-side encryption); code is destination-agnostic via `BACKUP_REMOTE`/`BACKUP_ENCRYPTION_KEY`.
+- **Backup destination:** Linode Object Storage via `rclone` crypt (client-side encryption); code is destination-agnostic via `BACKUP_REMOTE`.
 - **MT lock trigger:** the first saved segment edit for a module (first `segment_edits` row). Lock is one-way for MVP.
 - Each track is a separate branch off `main` and a separate PR.
 
@@ -162,7 +162,7 @@ git commit -m "feat(backup): encrypt + off-box upload of sessions.db (config-gat
 - Test: extend `scripts/__tests__/backup-db.test.mjs`
 
 **Interfaces:**
-- Consumes: `BACKUP_REMOTE`/`BACKUP_ENCRYPTION_KEY` (same as A1).
+- Consumes: `BACKUP_REMOTE` (same as A1).
 - Produces: exit 0 on a restorable+intact backup, non-zero on FAIL.
 
 - [ ] **Step 1: Write the failing test** (append to `backup-db.test.mjs`)
@@ -881,6 +881,6 @@ gh pr create --title "MT edit-lock: 02-mt-output re-runnable until a module is o
 
 **Placeholder scan:** The C2 test arrange block is described rather than fully coded because it depends on the repo's existing `_setTestDb`/`runAllMigrations` fixture pattern (cited: `segmentEditConflict.test.js`) — the implementer copies that established setup. This is a pointer to real existing code, not an unfilled placeholder; the assertion logic and the implementation code are complete. All other steps carry runnable code.
 
-**Type consistency:** `mtLockPathFor`/`isMtLocked`/`writeMtLock(mtOutputPath, meta)` are used identically in C1 (def), C2 (`writeMtLock`), C3 (`isMtLocked`), C4 (`writeMtLock`). `mtRunDecision({exists,force,locked})` returns `'write'|'skip'|'locked-skip'` consistently in C3. `computeOffboxBackupHealth({heartbeatMtimeMs,nowMs,staleHours})` matches between A3's test and impl. Env-var names (`BACKUP_REMOTE`, `BACKUP_ENCRYPTION_KEY`, `BACKUP_REMOTE_KEEP`, `OFFBOX_BACKUP_STALE_HOURS`) match across A1/A3/A4.
+**Type consistency:** `mtLockPathFor`/`isMtLocked`/`writeMtLock(mtOutputPath, meta)` are used identically in C1 (def), C2 (`writeMtLock`), C3 (`isMtLocked`), C4 (`writeMtLock`). `mtRunDecision({exists,force,locked})` returns `'write'|'skip'|'locked-skip'` consistently in C3. `computeOffboxBackupHealth({heartbeatMtimeMs,nowMs,staleHours})` matches between A3's test and impl. Env-var names (`BACKUP_REMOTE`, `BACKUP_REMOTE_KEEP`, `OFFBOX_BACKUP_STALE_HOURS`) match across A1/A3/A4.
 
 **Scope:** three independent subsystems, correctly one-PR-each; the plan is one document with three self-contained track sections, each shippable alone. Correct decomposition.

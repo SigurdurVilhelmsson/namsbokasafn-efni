@@ -33,20 +33,20 @@ Turn the three highest-leverage provenance/durability gaps into enforced-in-code
 
 **Design.** Five units, all additive to the existing script family.
 
-1. **Encrypt-then-upload** (extend `scripts/backup-db.sh`). After the local timestamped copy, if `BACKUP_REMOTE` is set, upload the backup to it via `rclone` using a **crypt remote** (client-side encryption — plaintext never leaves the box; the encryption passphrase comes from `BACKUP_ENCRYPTION_KEY`). If `BACKUP_REMOTE` is unset, **log a clear warning and skip the upload** (local-only still works; dev/CI unaffected). Upload failure is **loud**: `log.error`-equivalent to stderr and a **non-zero exit**, and the heartbeat (unit 4) is *not* written.
+1. **Encrypt-then-upload** (extend `scripts/backup-db.sh`). After the local timestamped copy, if `BACKUP_REMOTE` is set, upload the backup to it via `rclone` using a **crypt remote** (client-side encryption — plaintext never leaves the box; the encryption passphrase lives in the rclone crypt config (not a script env)). If `BACKUP_REMOTE` is unset, **log a clear warning and skip the upload** (local-only still works; dev/CI unaffected). Upload failure is **loud**: `log.error`-equivalent to stderr and a **non-zero exit**, and the heartbeat (unit 4) is *not* written.
 2. **Remote retention.** Prune the remote to the N most-recent copies (mirror local keep-30), via `rclone`. Failure to prune is a warning, not fatal (the upload already succeeded).
 3. **`scripts/verify-db-backup.sh`** (new). Downloads the latest off-box backup, decrypts it to a temp file, opens it with `sqlite3`, runs `PRAGMA integrity_check` **and** a sanity query (non-zero row counts on `segment_edits`, `terminology_translations`, `content_versions`), and prints PASS/FAIL with a non-zero exit on FAIL. This is the "restore-tested" guarantee — proves the encrypted off-box copy is actually recoverable.
 4. **Staleness heartbeat.** On each successful off-box upload, write `pipeline-output/backups/.last-offbox-backup` (ISO timestamp). Extend `GET /api/health` to report `offbox_backup_age_hours` (from that file's mtime/content) and flag `stale` when older than a threshold (default 26h — one missed 6h cycle + margin). This makes a silently-stopped cron observable instead of discovered in a disaster.
 5. **Docs & ops** (`docs/technical/` + script headers). The crontab lines (backup 6-hourly, `verify-db-backup.sh` monthly), the env vars, one-time Linode Object Storage bucket + rclone-crypt setup, and a **restore runbook** (how to recover `sessions.db` from an off-box copy onto a fresh box).
 
 **Interfaces.**
-- Config (env): `BACKUP_REMOTE` (rclone `remote:bucket/path`), `BACKUP_ENCRYPTION_KEY` (crypt passphrase), optional `BACKUP_REMOTE_KEEP` (default 30), `OFFBOX_BACKUP_STALE_HOURS` (default 26).
+- Config (env): `BACKUP_REMOTE` (rclone `remote:bucket/path` crypt remote; passphrase in rclone config), optional `BACKUP_REMOTE_KEEP` (default 30), `OFFBOX_BACKUP_STALE_HOURS` (default 26).
 - New file: `pipeline-output/backups/.last-offbox-backup` (gitignored).
 - Health field: `health.checks.offbox_backup = { age_hours, stale: bool }`.
 
 **Testing.** `verify-db-backup.sh` is itself the restore integration test. The bash upload/prune/heartbeat logic gets a focused test that runs the script against a temp DB and a **local `rclone` remote** (a temp dir configured as an rclone `local`+`crypt` remote), asserting: encrypted object appears, decrypts+opens clean, heartbeat written, unset-`BACKUP_REMOTE` skips with warning + zero exit, upload failure → non-zero exit + no heartbeat. The health-field addition gets a Vitest server test (stale vs fresh vs missing heartbeat).
 
-**Prerequisite the lead supplies (documented, not code):** create the Linode Object Storage bucket, an access key, and set `BACKUP_REMOTE`/`BACKUP_ENCRYPTION_KEY` in the prod environment + crontab. The plan delivers everything up to that boundary and a runbook for it.
+**Prerequisite the lead supplies (documented, not code):** create the Linode Object Storage bucket, an access key, and set `BACKUP_REMOTE` (+ the rclone crypt config) in the prod environment + crontab. The plan delivers everything up to that boundary and a runbook for it.
 
 ---
 
