@@ -19,6 +19,7 @@ There are two layers:
 ## One-time setup (Linode Object Storage)
 
 1. In the Linode console, create an **Object Storage bucket** (e.g. `namsbokasafn-db`) and an **S3 access key** (access key + secret).
+   **Pick a different region than the Linode hosting the server** (e.g. server in Frankfurt → bucket in Amsterdam/London): the off-box copy then also survives a datacenter-level event, at no extra cost — the backup object is a few MB every 6h, so cross-region transfer and latency are irrelevant. (Residual risk both share: the single Linode *account*; the crypt design makes adding a second remote at another provider a config-only change later.)
 2. On the server, `rclone config`:
    - a plain **s3** remote (`linode`) pointing at the bucket's endpoint with the access key/secret;
    - a **crypt** remote (`secret`) that wraps it: `remote = linode:namsbokasafn-db`, with a strong passphrase (store the passphrase in your password manager — losing it makes the backups unrecoverable).

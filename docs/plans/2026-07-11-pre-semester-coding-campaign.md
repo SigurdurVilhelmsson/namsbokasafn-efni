@@ -1,0 +1,56 @@
+# Pre-Semester Coding Campaign — 2026-07-11
+
+**Constraints:** ~2 weeks until biology onboarding starts; ~5 weeks until semester start.
+**Priority rule (lead-set):** maximize Claude-executable coding work; lead-manual tasks run in a parallel lane, never on the critical path.
+**Method (standing workflow):** each numbered item below becomes its own session: `superpowers:brainstorming` → `writing-plans` → SDD execution, one PR each, `npm test` from repo root as the gate. This document is the ORDERING, not the implementation plan.
+
+## Phase 0 — ✅ COMPLETE (2026-07-11)
+Track C (MT edit-lock) SHIPPED + MERGED (PR #266; final whole-branch review: ready-to-merge, 0 Critical/Important). #265 merged. All three provenance-remediation tracks are shipped (A #262 · B #264 · C #266); remaining activation is operational, in the LEAD lane (L1/L2 below).
+
+## Phase 1 — server security & correctness sprint (~days 1–3, 4 small PRs)
+Rationale: highest-severity unfixed defects; protects live editors immediately; all sized S; zero dependence on biology decisions.
+1. **Batch 1 — book-scoped authz sweep**: wire `requireHeadEditorFor` into `pipeline.js:29`, `sections.js:627`, `sections.js:156` (+ `books.js:509` SA-11 rider); one shared cross-book test.
+2. **Batch 2 — `discuss`/`rejected` exit path + dropped error messages**: server-side path for stale-row re-save (kills the raw-SQL `alert()`); surface clean server messages (`pipeline.js:83`, `saveRetry.js:209`).
+3. **Batch 4 — fail-loud sweep**: ~6 silent `catch{}` on approve/reject/unapprove audit writes; no fake zeros on admin-list failures; fix eager DB-open.
+4. **SR-OOS-2 — server-side structural-marker backstop** on the save route (client-only today).
+4b. **git-backup.sh atomic-add hardening** (Track C final-review recommendation): one empty pathspec in the shared `git add` list silently no-ops the ENTIRE content backup (`|| true` hides the exit-128). Per-pattern staging or drop `2>/dev/null` so failures log. Small, and a durability feature (the `.locked` glob) now leans on this cron.
+
+## Phase 2 — biology-readiness pipeline sprint (~days 4–10, before onboarding)
+Rationale: every item here either bites ON biology intake or gates the Pass-1/re-MT push that precedes it.
+5. **B4 — bracket markers for `{{term}}`/`{{fn}}`** (the last lossy ~2.3% inline class) + positional-id restore hardening. Gates the 6-module re-MT (RC3/RC4) and the Pass-1 push. After merge: re-MT of m68764/770/789/791/793/829 — needs lead OK for API spend (small; ISK estimate via --dry-run first). Note: MT edit-lock does NOT block these (unedited modules stay re-runnable — by design).
+6. **P0-1 — depth-aware nested-element extraction** (`renderChildrenInDocumentOrder`/`extractNestedElements` depth-blindness; E6/E9 patched symptoms only). Biology-likely trigger.
+7. **A2-a/b — inject robustness**: `--allow-en-fallback` scoping to module (not run), partial-chapter failure isolation + residue report always written.
+8. **Boundary-check trio (one or two sessions)**: B3 producer bracket-marker count check; #15 duplicate-seg-ID policy unification (`seg-markers.cjs` one policy, documented); D2 shared HANDLED_INLINE/BLOCK list imported by probe+extractor+renderer.
+9. **D3 — os-embed exercise translation path** (organic ships 1,961 EN problems today; biology uses os-embed too — extract→MT→inject path for `01-source/exercises/*.json` content, respecting 01-source read-only: translated output lands downstream, never in source).
+10. **Renderer biology-watch sweep (one session)**: P0-2 (multi-class `unnumbered`), P0-3 (null-info section key), P0-4 (roman lists), P0-5 (dropped emphasis classes), RV-3 (figure pre-scan unnumbered skip), RV-4 (id-needle vs target-id) + appendix roadmap #20/#22 (fragment drop; key-terms fallback bypasses resolver).
+11. **[Cross-repo, relaunch in vefur] embed CSS** (`.embed-responsive`/`.embed-fallback`, handoff plan vefur PR #175) — the one external gate for biology embed-bearing chapters.
+
+## Phase 3 — semester editorial-quality sprint (weeks 3–4)
+Rationale: editors return at semester start; these protect and de-confuse their daily flow.
+12. **Batch 5 — apply/job/version integrity** (approve-then-write order, same-second tie-break, restore reindex, render-in-progress check, jobs get `book`).
+13. **Batch 6 — concurrent-edit lost updates** (localization pending-edit scoping by editor; stale-retry cancellation).
+14. **Batch 8 — appendices label unification** (progress + search indexing).
+15. **rem-2.2 — localized restore parity** (version history for Pass-2, matching faithful).
+16. **Batch 7 — dashboard/view contract repair** (12 mismatches; L — timebox or split).
+
+## Phase 4 — products & provenance gaps (weeks 4–5, audit's own order)
+17. **Licence metadata per product** — needs lead posture decision on Physics+Organic (CC BY-NC-SA) FIRST (decision lane); then book-config licence field → renderer emission → vefur consumption (small cross-repo tail).
+18. **Terminology subject-fallback-on-miss** (lead-clarified requirement; currently hides other subjects).
+19. **Glossary review-queue** (proposed terms go live immediately today).
+20. **Aligned research-corpus export** (EN/MT/faithful/localized; MT↔edited is the MTPE research asset).
+21. **TM + Árnastofnun export path.**
+
+## Phase 5 — hygiene (fill-in / opportunistic, no deadline)
+22. Batch 9 (undeclared `glob` first, then dead-code deletion; SR-OOS-1 archiver skew). 23. Batch 3 (docs authority triage + Submit-button decision [lead]). 24. Hardening-tests one-shot: TB-OOS-1 net widening question, Track A residuals (download-guard, health route-wiring), C3 workList-wiring test. 25. 🟢 smalls as warm-ups: #29/#30, C3-b, A2-c, TERM-1, low-cli, decision-1 disposition [lead call].
+
+## Parallel LEAD lane (not on the coding path; unblock whenever convenient)
+- L1. Linode Object Storage bucket + rclone crypt + `BACKUP_REMOTE` cron (Track A activation). **Recommendation: different region than the Linode** — see bucket note in session log; runbook line to be added.
+- L2. Deploy server + one-time `node scripts/backfill-mt-locks.js --db` on prod (Track C activation).
+- L3. Vefur sync + build + deploy (Phase-0/-6 content delivery — readers see appendix labels/glossary/answer fixes).
+- L4. `VEFUR_DEPLOY_TOKEN` secret (revives auto-sync; infra-1).
+- L5. Manual QA §0–§5 walk + 3 prod-only cases (combined efni+vefur pass, per June plan).
+- L6. Greynir sidecar deploy + `GREYNIR_URL` (in-editor spellcheck goes live).
+- L7. Decisions: Physics/Organic licence posture (gates #17); residue-report disposition (decision-1); table-as-image transcription (decision-2); Submit-button fate (with #23); re-MT API spend OK (with #5).
+
+## Sizing honesty
+Phases 1–2 ≈ 10–12 PR-sized sessions in ~10 working days — feasible but tight; #9 (D3) and #5 (B4) are the two likely-to-grow items. If time squeezes before onboarding: #10 and #11 must survive (biology-gating); #9 can slip into onboarding itself (organic already ships EN — no new regression). Phases 3–5 fit weeks 3–5 with room; Phase 4's #20/#21 are the first to defer past semester if needed — they serve research deliverables, not the classroom.
