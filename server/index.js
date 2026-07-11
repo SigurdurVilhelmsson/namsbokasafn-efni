@@ -287,6 +287,32 @@ app.get('/api/health', (req, res) => {
   // Check auth configured
   checks.auth = { ok: !!process.env.JWT_SECRET && process.env.JWT_SECRET.length >= 32 };
 
+  // Check off-box backup heartbeat (Track A, Task A3) — surfaces a
+  // silently-stopped backup-db.sh cron instead of it being discovered in a
+  // disaster. Missing heartbeat => stale (handled by the helper).
+  try {
+    const { computeOffboxBackupHealth } = require('./lib/offboxBackupHealth');
+    const fs = require('fs');
+    let hbMtime = null;
+    try {
+      const hb = path.join(__dirname, '..', 'pipeline-output', 'backups', '.last-offbox-backup');
+      hbMtime = fs.statSync(hb).mtimeMs;
+    } catch {
+      /* missing heartbeat => stale, handled by the helper */
+    }
+    const offbox = computeOffboxBackupHealth({
+      heartbeatMtimeMs: hbMtime,
+      nowMs: Date.now(),
+      staleHours: Number(process.env.OFFBOX_BACKUP_STALE_HOURS) || 26,
+    });
+    // Spread {age_hours, stale} and add `ok` so this check gates `allOk` the
+    // same way every other check here does — a stale/missing heartbeat must
+    // flip overall status to "degraded", not just report a silent field.
+    checks.offbox_backup = { ...offbox, ok: !offbox.stale };
+  } catch (err) {
+    checks.offbox_backup = { ok: false, error: err.message };
+  }
+
   const allOk = Object.values(checks).every((c) => c.ok);
 
   res.json({

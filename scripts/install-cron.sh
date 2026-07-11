@@ -13,9 +13,15 @@ cat <<EOF
 # Git backup: content files every 2 hours
 0 */2 * * * ${DEPLOY_PATH}/scripts/git-backup.sh
 
-# DB backup: SQLite snapshot every 6 hours
-30 */6 * * * ${DEPLOY_PATH}/scripts/backup-db.sh
+# DB backup: local snapshot + encrypted off-box upload, every 6 hours.
+# BACKUP_REMOTE must be set or off-box upload is SKIPPED (and /api/health reports
+# the backup stale). It is an rclone crypt remote (passphrase lives in rclone config).
+# See docs/technical/backup-and-restore.md.
+30 */6 * * * BACKUP_REMOTE=${BACKUP_REMOTE:-secret:namsbokasafn-db} ${DEPLOY_PATH}/scripts/backup-db.sh
+
+# Monthly restore-test: prove an off-box backup actually round-trips (RESTORE VERIFY: PASS).
+0 4 1 * * BACKUP_REMOTE=${BACKUP_REMOTE:-secret:namsbokasafn-db} ${DEPLOY_PATH}/scripts/verify-db-backup.sh
 
 # To install, run:  crontab -e  and paste the lines above.
-# Both scripts log to ${DEPLOY_PATH}/pipeline-output/
+# All scripts log to ${DEPLOY_PATH}/pipeline-output/
 EOF
