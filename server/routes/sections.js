@@ -18,7 +18,7 @@ const fs = require('fs');
 
 const log = require('../lib/logger');
 const { requireAuth } = require('../middleware/requireAuth');
-const { requireRole, ROLES } = require('../middleware/requireRole');
+const { requireRole, requireHeadEditorFor, ROLES } = require('../middleware/requireRole');
 const bookRegistration = require('../services/bookRegistration');
 const notifications = require('../services/notifications');
 const activityLog = require('../services/activityLog');
@@ -294,8 +294,8 @@ router.post(
 router.post(
   '/:sectionId/assign-reviewer',
   requireAuth,
-  requireRole(ROLES.HEAD_EDITOR),
   loadSection,
+  requireHeadEditorFor((req) => req.sectionData?.bookSlug),
   async (req, res) => {
     const section = req.sectionData;
     const { reviewerId, reviewerName } = req.body;
@@ -377,8 +377,8 @@ router.post(
 router.post(
   '/:sectionId/assign-localizer',
   requireAuth,
-  requireRole(ROLES.HEAD_EDITOR),
   loadSection,
+  requireHeadEditorFor((req) => req.sectionData?.bookSlug),
   async (req, res) => {
     const section = req.sectionData;
     const { localizerId, localizerName } = req.body;
@@ -508,10 +508,12 @@ router.post(
     // Some transitions require higher permissions
     const headEditorRequired = ['review_approved', 'localization_approved'];
     if (headEditorRequired.includes(status)) {
-      if (req.user.role !== ROLES.ADMIN && req.user.role !== ROLES.HEAD_EDITOR) {
+      const isOwningHeadEditor =
+        req.user.role === ROLES.HEAD_EDITOR && req.user.books?.includes(section.bookSlug);
+      if (req.user.role !== ROLES.ADMIN && !isOwningHeadEditor) {
         return res.status(403).json({
           error: 'Insufficient permissions',
-          message: `Status '${status}' requires head editor or admin role`,
+          message: `Status '${status}' requires a head editor assigned to ${section.bookSlug} (or admin)`,
         });
       }
     }
@@ -629,8 +631,8 @@ router.post(
 router.post(
   '/:sectionId/approve-review',
   requireAuth,
-  requireRole(ROLES.HEAD_EDITOR),
   loadSection,
+  requireHeadEditorFor((req) => req.sectionData?.bookSlug),
   async (req, res) => {
     const section = req.sectionData;
 
@@ -701,8 +703,8 @@ router.post(
 router.post(
   '/:sectionId/request-changes',
   requireAuth,
-  requireRole(ROLES.HEAD_EDITOR),
   loadSection,
+  requireHeadEditorFor((req) => req.sectionData?.bookSlug),
   async (req, res) => {
     const section = req.sectionData;
     const { notes } = req.body;

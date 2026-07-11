@@ -39,15 +39,21 @@ let server;
 let base;
 
 beforeAll(() => {
-  // Minimal subset of migration 003's tables — just what getSection's JOIN reads.
+  // Minimal subset of migration 003's tables — just what getSection's JOIN reads,
+  // plus the columns that section head-editor actions (approve-review, status
+  // elevated branch) actually write via bookRegistration.updateSectionStatus /
+  // updateChapterStatus. Types/defaults copied verbatim from 003-book-catalogue.js.
   const db = new Database(process.env.SESSIONS_DB_PATH);
   db.exec(`
     CREATE TABLE IF NOT EXISTS registered_books (id INTEGER PRIMARY KEY, slug TEXT, title_is TEXT);
-    CREATE TABLE IF NOT EXISTS book_chapters (id INTEGER PRIMARY KEY, title_en TEXT, title_is TEXT);
+    CREATE TABLE IF NOT EXISTS book_chapters (
+      id INTEGER PRIMARY KEY, title_en TEXT, title_is TEXT, status TEXT DEFAULT 'not_started'
+    );
     CREATE TABLE IF NOT EXISTS book_sections (
       id INTEGER PRIMARY KEY, book_id INTEGER NOT NULL, chapter_id INTEGER NOT NULL,
       chapter_num INTEGER NOT NULL, section_num TEXT NOT NULL, module_id TEXT,
-      title_en TEXT, title_is TEXT, status TEXT DEFAULT 'not_started'
+      title_en TEXT, title_is TEXT, status TEXT DEFAULT 'not_started',
+      linguistic_approved_at DATETIME, linguistic_approved_by TEXT, linguistic_approved_by_name TEXT
     );
   `);
   db.prepare(
@@ -126,4 +132,55 @@ describe('pipeline POSTs are book-scoped', () => {
       expect(res.status).toBe(403);
     });
   }
+});
+
+describe('section head-editor actions are book-scoped', () => {
+  // Section rows 42-46 all belong to liffraedi-2e (HE_B's book).
+  const CASES = [
+    { name: 'approve-review', path: '/api/sections/42/approve-review', body: {} },
+    {
+      name: 'assign-reviewer',
+      path: '/api/sections/43/assign-reviewer',
+      body: { reviewerId: 'someone' },
+    },
+    {
+      name: 'assign-localizer',
+      path: '/api/sections/44/assign-localizer',
+      body: { localizerId: 'someone' },
+    },
+    { name: 'request-changes', path: '/api/sections/45/request-changes', body: { notes: 'x' } },
+  ];
+  for (const c of CASES) {
+    it(`${c.name}: head-editor of another book → 403`, async () => {
+      const res = await post(c.path, HE_A, c.body);
+      expect(res.status).toBe(403);
+    });
+    it(`${c.name}: owning head-editor clears authz (never 401/403)`, async () => {
+      const res = await post(c.path, HE_B, c.body);
+      expect([401, 403]).not.toContain(res.status);
+      // "Clears authz" means a genuine handler-level outcome, not a crash slipping
+      // through the loose non-401/403 check above.
+      expect(res.status).toBeLessThan(500);
+    });
+    it(`${c.name}: plain editor → 403`, async () => {
+      const res = await post(c.path, EDITOR, c.body);
+      expect(res.status).toBe(403);
+    });
+  }
+  it('unknown section → 404 for a head-editor (resolver missing-target path)', async () => {
+    const res = await post('/api/sections/99999/approve-review', HE_A, {});
+    expect(res.status).toBe(404);
+  });
+
+  it('status elevated transition: head-editor of another book → 403', async () => {
+    const res = await post('/api/sections/46/status', HE_A, { status: 'review_approved' });
+    expect(res.status).toBe(403);
+  });
+  it('status elevated transition: owning head-editor allowed', async () => {
+    const res = await post('/api/sections/46/status', HE_B, { status: 'review_approved' });
+    expect([401, 403]).not.toContain(res.status);
+    // "Allowed" means a genuine handler-level outcome, not a crash slipping
+    // through the loose non-401/403 check above.
+    expect(res.status).toBeLessThan(500);
+  });
 });
