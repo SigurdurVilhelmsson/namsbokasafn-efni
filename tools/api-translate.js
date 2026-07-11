@@ -40,6 +40,7 @@ import {
 import { createClient, formatGlossary, estimateIsk } from './lib/malstadur-api.js';
 import { bookToDomain } from './lib/book-rendering-config.js';
 import { writeProvenance } from './lib/provenance.js';
+import { isMtLocked } from './lib/mt-lock.cjs';
 
 // ─── Configuration ──────────────────────────────────────────────────
 
@@ -329,6 +330,26 @@ export function loadGlossary(glossaryDir, domain) {
   } catch {
     return null;
   }
+}
+
+// ─── MT Edit-Lock ───────────────────────────────────────────────────
+
+/**
+ * Decide what api-translate does with one module's MT output.
+ *
+ * `locked` (an existing `.locked` marker next to the mtOutput file — see
+ * tools/lib/mt-lock.cjs) always wins: once a module has been opened for
+ * editing, MT must never overwrite its baseline again, not even with
+ * --force. Absent a lock, `exists && !force` is the pre-existing accident
+ * guard, unchanged.
+ *
+ * @param {{ exists: boolean, force: boolean, locked: boolean }} state
+ * @returns {'locked-skip'|'skip'|'write'}
+ */
+export function mtRunDecision({ exists, force, locked }) {
+  if (locked) return 'locked-skip'; // absolute: editing has begun, never clobber
+  if (exists && !force) return 'skip'; // accident guard (unchanged)
+  return 'write';
 }
 
 // ─── CLI ────────────────────────────────────────────────────────────
@@ -713,12 +734,15 @@ async function main() {
     for (const mod of modules) {
       const outputPath = path.join(outputDir, mod.filename.replace('.en.md', '.is.md'));
       const exists = fs.existsSync(outputPath);
+      const locked = isMtLocked(outputPath);
+      const action = mtRunDecision({ exists, force: args.force, locked });
 
       workList.push({
         ...mod,
         chapterDir,
         outputPath,
-        skip: exists && !args.force,
+        action,
+        skip: action !== 'write',
       });
     }
   }
@@ -733,9 +757,26 @@ async function main() {
 
   // Dry run
   if (args.dryRun) {
+    const lockedList = workList.filter((m) => m.action === 'locked-skip');
     console.log(`\nDry run — ${workList.length} modules found:`);
     console.log(`  To translate: ${toTranslate.length}`);
-    console.log(`  Already done:  ${toSkip.length} (use --force to re-translate)`);
+    // The Already-done count includes locked modules, but --force does NOT
+    // apply to those — qualify the hint so the operator isn't misled.
+    const lockedHint =
+      lockedList.length > 0 ? `; ${lockedList.length} of these locked — --force refused` : '';
+    console.log(`  Already done:  ${toSkip.length} (use --force to re-translate${lockedHint})`);
+
+    // The 🔒 warn further down lives in the live translate loop, which a dry
+    // run never reaches (this block exits the process first) — so locked
+    // modules must be surfaced here too, or a dry run can't show lock state.
+    if (lockedList.length > 0) {
+      console.log(`  Locked:        ${lockedList.length} (editing started — MT re-run refused)`);
+      if (args.verbose) {
+        for (const mod of lockedList) {
+          console.log(`    🔒 ${mod.chapterDir}/${mod.moduleId}`);
+        }
+      }
+    }
 
     let totalChars = 0;
     for (const mod of toTranslate) {
@@ -768,6 +809,7 @@ async function main() {
   const results = {
     translated: 0,
     skipped: toSkip.length,
+    lockedSkipped: 0,
     failed: 0,
     markersNormalized: 0,
     errors: [],
@@ -779,6 +821,14 @@ async function main() {
   const failedChapters = new Set();
 
   for (const mod of workList) {
+    if (mod.action === 'locked-skip') {
+      console.warn(
+        `  🔒 ${mod.chapterDir}/${mod.moduleId} LOCKED (editing started) — MT re-run refused` +
+          `${args.force ? ' (--force ignored)' : ''}`
+      );
+      results.lockedSkipped++;
+      continue;
+    }
     if (mod.skip) {
       if (args.verbose) console.log(`  ⏭  ${mod.chapterDir}/${mod.moduleId} (exists)`);
       continue;
@@ -814,6 +864,9 @@ async function main() {
   console.log('Summary:');
   console.log(`  Translated: ${results.translated}`);
   console.log(`  Skipped:    ${results.skipped}`);
+  if (results.lockedSkipped > 0) {
+    console.log(`  Locked:     ${results.lockedSkipped} (editing started — MT re-run refused)`);
+  }
   console.log(`  Failed:     ${results.failed}`);
   if (results.markersNormalized > 0) {
     console.log(

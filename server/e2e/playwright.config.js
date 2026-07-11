@@ -9,6 +9,9 @@ module.exports = defineConfig({
   testMatch: '*.spec.js',
   timeout: 30000,
   retries: 0,
+  // Writer specs trigger the MT edit-lock first-edit hook against the committed
+  // fixture book; sweep the resulting .locked markers so the tree stays clean.
+  globalTeardown: require.resolve('./global-teardown.js'),
   use: {
     baseURL: 'http://localhost:3456',
     headless: true,

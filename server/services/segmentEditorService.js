@@ -9,6 +9,7 @@ const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
 const log = require('../lib/logger');
+const mtLock = require('../../tools/lib/mt-lock.cjs');
 const { advanceChapterStatus } = require('./pipelineService');
 const contentVersionService = require('./contentVersionService');
 const tmService = require('./tmService');
@@ -131,6 +132,35 @@ function saveSegmentEdit(params) {
       editorId,
       editorUsername
     );
+
+  // MT edit-lock (Track C2): once a module has been opened for editing, its MT
+  // output must never be silently re-run and overwritten (see tools/lib/mt-lock.cjs).
+  // Cheap correctness check via COUNT rather than threading "is this the first
+  // edit" state through from the caller. Loud but non-blocking: a lock-write
+  // failure must never break the edit save itself.
+  try {
+    const priorCount = conn
+      .prepare(
+        `SELECT count(*) AS n FROM segment_edits WHERE book = ? AND chapter = ? AND module_id = ?`
+      )
+      .get(book, chapter, moduleId).n;
+    if (priorCount === 1) {
+      // This INSERT was the first segment_edits row for the module.
+      const { mtOutput } = segmentParser.getModulePaths(book, chapter, moduleId);
+      // Guard against locking a module with no MT output on disk (e.g. test
+      // fixtures using synthetic book/module ids that were never through
+      // extraction+MT) — a real editing session always has an mtOutput file,
+      // since that's what the editor loaded segments from in the first place.
+      if (fs.existsSync(mtOutput)) {
+        mtLock.writeMtLock(mtOutput, {
+          reason: 'editing-started',
+          firstEditId: result.lastInsertRowid,
+        });
+      }
+    }
+  } catch (err) {
+    log.error({ err, book, chapter, moduleId }, 'MT lock write failed on first edit');
+  }
 
   return { id: result.lastInsertRowid, updated: false };
 }
