@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { execFileSync } from 'node:child_process';
-import { mkdtempSync, existsSync, readdirSync, rmSync, symlinkSync } from 'node:fs';
+import { mkdtempSync, existsSync, readdirSync, rmSync, symlinkSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { createRequire } from 'node:module';
@@ -35,6 +35,25 @@ function addRequiredTables(dbPath) {
     CREATE TABLE content_versions (id INTEGER PRIMARY KEY);
   `);
   d.close();
+}
+
+// Structurally corrupt a valid SQLite file in place, well past the first page, by
+// flipping the page-type byte at the start of page 2 (the b-tree root of the first
+// user table). This is a deliberate choice, not an arbitrary offset: flipping bytes
+// inside a page's free/unused space (tried empirically: several offsets across pages
+// 2-4) goes completely undetected by `PRAGMA integrity_check` — SQLite doesn't
+// checksum payload bytes. Flipping the page-header type byte instead makes sqlite3
+// itself error out (`stepping, database disk image is malformed`, exit 11) while
+// executing the query — reproducing the exact "sqlite3 errors mid-query" gap Fix 1
+// closes, as distinct from the openable-but-corrupt case (integrity_check returns
+// non-"ok" text with exit 0) the script already handled before this fix.
+function corruptDb(dbPath) {
+  const buf = readFileSync(dbPath);
+  const raw = (buf[16] << 8) | buf[17]; // SQLite header bytes 16-17: page size
+  const pageSize = raw === 1 ? 65536 : raw; // header quirk: 1 means 64 KiB pages
+  const offset = buf.length >= pageSize * 2 ? pageSize : 100; // start of page 2, else schema page fallback
+  buf[offset] = buf[offset] ^ 0xff;
+  writeFileSync(dbPath, buf);
 }
 
 describe('backup-db.sh off-box upload', () => {
@@ -244,6 +263,47 @@ describe('verify-db-backup.sh', () => {
     expect(error).toBeDefined();
     expect(error.status).not.toBe(0);
     expect(error.stdout).toMatch(/RESTORE VERIFY: FAIL \(segment_edits absent\)/);
+    rmSync(work, { recursive: true, force: true });
+  });
+
+  // Regression guard (fix 1): a structurally corrupt backup must produce a clean
+  // `RESTORE VERIFY: FAIL` line, not a raw sqlite3 crash. Before the fix, the
+  // unguarded `rclone copyto` / `INTEGRITY=$(sqlite3 ...)` lines let a mid-query
+  // sqlite3 error ("database disk image is malformed", its own exit code, e.g. 11)
+  // propagate straight through `set -e`, aborting the script before it ever reached
+  // the FAIL check — breaking the grep-able monitoring contract for exactly the
+  // corruption this script exists to catch. Deliberately not asserting which FAIL
+  // sub-case fires (integrity_check non-"ok" vs. sqlite3 erroring outright): fix 1
+  // routes both to a FAIL line, and this guard only cares that corruption is always
+  // reported cleanly.
+  it.skipIf(!hasRclone)('fails loudly (not a raw crash) when the restored backup is corrupt', () => {
+    const work = mkdtempSync(path.join(tmpdir(), 'bkup-'));
+    const db = path.join(work, 'sessions.db');
+    const remoteDir = path.join(work, 'remote');
+    const backups = path.join(work, 'backups');
+    makeTestDb(db);
+    addRequiredTables(db);
+    corruptDb(db);
+    const env = {
+      ...process.env, DB_PATH_OVERRIDE: db,
+      RCLONE_CONFIG_LOCALBK_TYPE: 'local',
+      RCLONE_CONFIG_SECRET_TYPE: 'crypt',
+      RCLONE_CONFIG_SECRET_REMOTE: `localbk:${remoteDir}`,
+      RCLONE_CONFIG_SECRET_PASSWORD: execFileSync('rclone', ['obscure', 'testpass'], { encoding: 'utf8' }).trim(),
+      BACKUP_REMOTE: 'secret:',
+    };
+    // Arrange: upload the already-corrupt DB as the off-box backup (same recipe as above).
+    execFileSync('bash', [SCRIPT, backups], { env, encoding: 'utf8' });
+
+    let error;
+    try {
+      execFileSync('bash', [VERIFY], { env, encoding: 'utf8' });
+    } catch (e) {
+      error = e;
+    }
+    expect(error).toBeDefined();
+    expect(error.status).not.toBe(0);
+    expect(error.stdout).toMatch(/RESTORE VERIFY: FAIL/);
     rmSync(work, { recursive: true, force: true });
   });
 });

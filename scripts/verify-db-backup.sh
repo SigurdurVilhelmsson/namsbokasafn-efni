@@ -19,9 +19,23 @@ TMP="$(mktemp -d)"; trap 'rm -rf "$TMP"' EXIT
 LATEST="$(rclone lsf "$BACKUP_REMOTE" --files-only | grep '^sessions\.' | sort -r | head -1 || true)"
 [ -n "$LATEST" ] || { echo "RESTORE VERIFY: FAIL (no off-box backup found)"; exit 1; }
 echo "Restoring $LATEST ..."
-rclone copyto "${BACKUP_REMOTE}${LATEST}" "${TMP}/restored.db"   # crypt remote decrypts on read
+# crypt remote decrypts on read. Guarded like the LATEST lookup above: under `set -e`,
+# an unguarded failure here would abort with rclone's raw error and exit code instead
+# of a grep-able FAIL line.
+if ! rclone copyto "${BACKUP_REMOTE}${LATEST}" "${TMP}/restored.db"; then
+  echo "RESTORE VERIFY: FAIL (download errored)"
+  exit 1
+fi
 
-INTEGRITY="$(sqlite3 "${TMP}/restored.db" 'PRAGMA integrity_check;')"
+# Guarded the same way: a structurally corrupt backup can make sqlite3 itself error
+# mid-query (e.g. "database disk image is malformed", its own exit code) rather than
+# just returning non-"ok" text. Capturing stderr too (2>&1) surfaces that error message
+# in the log instead of letting it fall through to the terminal uncaptured.
+if ! INTEGRITY="$(sqlite3 "${TMP}/restored.db" 'PRAGMA integrity_check;' 2>&1)"; then
+  echo "integrity_check: ${INTEGRITY}"
+  echo "RESTORE VERIFY: FAIL (integrity_check errored)"
+  exit 1
+fi
 echo "integrity_check: ${INTEGRITY}"
 [ "$INTEGRITY" = "ok" ] || { echo "RESTORE VERIFY: FAIL (integrity_check)"; exit 1; }
 
