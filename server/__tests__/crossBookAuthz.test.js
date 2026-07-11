@@ -185,6 +185,26 @@ describe('section head-editor actions are book-scoped', () => {
   });
 });
 
+describe('chapter markdown-import is head-editor-of-book scoped (SA-11 rider)', () => {
+  const IMPORT = '/api/books/liffraedi-2e/chapters/1/import';
+  it('plain editor → 403 (was allowed before this change)', async () => {
+    const res = await post(IMPORT, EDITOR, {});
+    expect(res.status).toBe(403);
+  });
+  it('head-editor of another book → 403', async () => {
+    const res = await post(IMPORT, HE_A, {});
+    expect(res.status).toBe(403);
+  });
+  it('owning head-editor clears authz (400 no-files, never 401/403)', async () => {
+    const res = await post(IMPORT, HE_B, {});
+    expect(res.status).toBe(400);
+  });
+  it('admin clears authz (400 no-files)', async () => {
+    const res = await post(IMPORT, ADMIN, {});
+    expect(res.status).toBe(400);
+  });
+});
+
 describe('section upload route is retired (design decision 2026-07-11)', () => {
   it('is not registered on the router (introspection, mirrors books-routes.test.js)', () => {
     const sectionsRouter = require('../routes/sections');
