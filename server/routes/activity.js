@@ -15,7 +15,7 @@ const router = express.Router();
 const log = require('../lib/logger');
 const activityLog = require('../services/activityLog');
 const { requireAuth } = require('../middleware/requireAuth');
-const { requireRole, ROLES } = require('../middleware/requireRole');
+const { requireRole, requireHeadEditor, ROLES } = require('../middleware/requireRole');
 
 /**
  * GET /api/activity
@@ -86,7 +86,7 @@ router.get('/user/:userId', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, r
  * GET /api/activity/book/:book
  * Get activity for a specific book
  */
-router.get('/book/:book', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
+router.get('/book/:book', requireAuth, requireHeadEditor('book'), (req, res) => {
   const { book } = req.params;
   const { limit } = req.query;
 

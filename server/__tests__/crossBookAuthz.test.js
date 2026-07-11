@@ -133,6 +133,7 @@ beforeAll(() => {
   app.use('/api/sections', require('../routes/sections'));
   app.use('/api/books', require('../routes/books'));
   app.use('/api/admin', require('../routes/admin'));
+  app.use('/api/activity', require('../routes/activity'));
   server = app.listen(0);
   base = `http://127.0.0.1:${server.address().port}`;
 });
@@ -456,6 +457,30 @@ describe('admin GET assignments is book-scoped (B1-F5, whole-branch review)', ()
     expect(res.status).toBe(200);
   });
   it('GET: admin clears authz and reaches a genuine 200', async () => {
+    const res = await get(READ, ADMIN);
+    expect(res.status).toBe(200);
+  });
+  it('GET: plain editor → 403', async () => {
+    const res = await get(READ, EDITOR);
+    expect(res.status).toBe(403);
+  });
+});
+
+describe('activity book-log read is book-scoped (B1-F5 sibling, whole-branch review)', () => {
+  // GET /api/activity/book/:book leaked another book's full editorial activity
+  // (usernames, actions, timestamps) to any head-editor — same class as the
+  // GET /assignments read-leak fixed in T7. activityLog.getByBook self-inits its
+  // table, so owner/admin reach a genuine 200 (empty log is fine).
+  const READ = '/api/activity/book/liffraedi-2e';
+  it('GET: head-editor of another book → 403', async () => {
+    const res = await get(READ, HE_A);
+    expect(res.status).toBe(403);
+  });
+  it('GET: owning head-editor → 200', async () => {
+    const res = await get(READ, HE_B);
+    expect(res.status).toBe(200);
+  });
+  it('GET: admin → 200', async () => {
     const res = await get(READ, ADMIN);
     expect(res.status).toBe(200);
   });
