@@ -11,7 +11,6 @@
  *   check [--chapter <N>]        Compare local source against upstream
  *   status                       Show last comparison results
  *   diff <moduleId>              Show diff for a changed module
- *   update <moduleId>            Download upstream version to 01-source/
  *
  * Options:
  *   --chapter <num>              Filter to specific chapter
@@ -593,75 +592,6 @@ async function cmdDiff(args) {
   console.log(`  diff ${localPath} ${tmpPath}`);
 }
 
-async function cmdUpdate(args) {
-  if (!args.input) {
-    console.error('Error: Please provide a module ID.');
-    console.error('Usage: node tools/check-source-updates.js update <moduleId>');
-    process.exit(1);
-  }
-
-  const moduleId = args.input;
-  const bookData = loadBookData(args.book);
-  const localPath = getLocalSourcePath(moduleId, bookData);
-
-  if (!localPath) {
-    console.error(`Error: Cannot determine local path for ${moduleId}`);
-    process.exit(1);
-  }
-
-  // Fetch upstream
-  console.log(`Fetching upstream ${moduleId}...`);
-  const url = getUpstreamUrl(moduleId, args.book);
-  const response = await fetchUrl(url);
-
-  if (response.status === 404) {
-    console.error(`Error: Module ${moduleId} not found upstream`);
-    process.exit(1);
-  }
-
-  const upstreamContent = response.data;
-  const upstreamHash = hashContent(upstreamContent);
-
-  // Backup existing file if it exists
-  if (fs.existsSync(localPath)) {
-    const localContent = fs.readFileSync(localPath, 'utf8');
-    const localHash = hashContent(localContent);
-
-    if (localHash === upstreamHash) {
-      console.log(`Module ${moduleId} is already up to date.`);
-      return;
-    }
-
-    // Create backup
-    const timestamp = new Date().toISOString().replace(/[:.]/g, '-').substring(0, 16);
-    const backupPath = `${localPath}.${timestamp}.bak`;
-    fs.copyFileSync(localPath, backupPath);
-    console.log(`Backup created: ${backupPath}`);
-  }
-
-  // Write upstream content
-  const dir = path.dirname(localPath);
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
-  }
-  fs.writeFileSync(localPath, upstreamContent);
-  console.log(`Updated: ${localPath}`);
-  console.log(`New hash: ${upstreamHash} (${upstreamContent.length} bytes)`);
-
-  // Update log
-  const log = loadLog();
-  if (log.modules[moduleId]) {
-    log.modules[moduleId].localHash = upstreamHash;
-    log.modules[moduleId].localSize = upstreamContent.length;
-    log.modules[moduleId].status = 'unchanged';
-    log.modules[moduleId].updatedAt = new Date().toISOString();
-    saveLog(log);
-  }
-
-  console.log(`\nIMPORTANT: Re-run extraction to update segments and manifests:`);
-  console.log(`  node tools/cnxml-extract.js ${localPath}`);
-}
-
 // ============================================================================
 // Argument Parsing
 // ============================================================================
@@ -705,13 +635,11 @@ Usage:
   node tools/check-source-updates.js check [--chapter <N>]
   node tools/check-source-updates.js status
   node tools/check-source-updates.js diff <moduleId>
-  node tools/check-source-updates.js update <moduleId>
 
 Commands:
   check                Compare local source against upstream GitHub
   status               Show results from last comparison
   diff <moduleId>      Show differences for a specific module
-  update <moduleId>    Download upstream version (creates backup first)
 
 Options:
   --book <book>        Book identifier (default: chemistry-2e)
@@ -729,9 +657,6 @@ Examples:
 
   # See what changed in a specific module
   node tools/check-source-updates.js diff m68724
-
-  # Update a module from upstream
-  node tools/check-source-updates.js update m68724
 
 Rate Limiting:
   GitHub allows 60 unauthenticated requests per hour. The check command
@@ -757,7 +682,7 @@ async function main() {
   }
 
   if (!args.command) {
-    console.error('Error: Please provide a command (check, status, diff, update)');
+    console.error('Error: Please provide a command (check, status, diff)');
     console.error('Use --help for usage information.');
     process.exit(1);
   }
@@ -779,12 +704,9 @@ async function main() {
     case 'diff':
       await cmdDiff(args);
       break;
-    case 'update':
-      await cmdUpdate(args);
-      break;
     default:
       console.error(`Error: Unknown command '${args.command}'`);
-      console.error('Valid commands: check, status, diff, update');
+      console.error('Valid commands: check, status, diff');
       process.exit(1);
   }
 }

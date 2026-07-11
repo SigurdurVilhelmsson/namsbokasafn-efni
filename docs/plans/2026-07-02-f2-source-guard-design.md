@@ -44,6 +44,8 @@ Neither path is tamper-evident. The fidelity tooling compares translated CNXML a
 | That existing hash is **not** a sufficient baseline: it lives in a *generated* dir (a re-extract after a swap recomputes it to match the new bytes → swap invisible again) and only covers *extracted* chapters (a fresh biology intake has none). | reasoning + dir listing |
 | No committed checksum manifest exists anywhere | `find -name '*source-manifest*' -o -name '*.sha256*'` → none |
 
+> **Correction (2026-07-11):** `tools/check-source-updates.js update` was a *second*, unguarded overwrite path missed by this analysis; it was removed (PROV-1). `download-source.js`'s `organizeSourceFiles` is now genuinely the only overwrite path for upstream CNXML in `01-source/`, enforced by `tools/__tests__/source-write-guard.test.js`. (The other sanctioned `01-source` writers — `generate-source-manifest.js`'s provenance manifest and `resolve-os-embed.js`'s downloaded media/exercise JSON — never touch CNXML.)
+
 **Design consequence of the existing `sourceHash`:** F2's committed manifest reuses the **same
 algorithm** (`sha256` of the raw CNXML bytes) so the two cross-check rather than diverging. The
 existing `02-structure` value is the 16-char prefix of F2's full-length hash.
