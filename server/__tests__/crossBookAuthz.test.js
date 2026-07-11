@@ -82,36 +82,46 @@ beforeAll(() => {
   db.prepare(
     `INSERT INTO book_chapters (id, title_en, title_is) VALUES (1, 'Chapter 1', 'Kafli 1')`
   ).run();
+  // T7-review Minor (Task 8, Part B): section 47 (book_id=2, efnafraedi-2e) gets its own
+  // chapter row/id — see the `chapter_id=2` note at its INSERT below for why sharing
+  // chapter_id=1 with the book_id=1 sections would be wrong.
+  db.prepare(
+    `INSERT INTO book_chapters (id, title_en, title_is) VALUES (2, 'Chapter 1 (efnafraedi-2e)', 'Kafli 1 (efnafræði)')`
+  ).run();
   // One user row so the admin chapter-assignment routes (Task 6 / B1-F6) can reach a
   // genuine 200 instead of fail-open/500ing on a missing `users` table.
   db.prepare(`INSERT INTO users (id, display_name, role) VALUES (1, 'Editor One', 'editor')`).run();
 
   // One section row per action so cross-book RED-phase mutations can't interfere across tests.
   const ins = db.prepare(
-    `INSERT INTO book_sections (id, book_id, chapter_id, chapter_num, section_num, status) VALUES (?, ?, 1, 1, ?, ?)`
+    `INSERT INTO book_sections (id, book_id, chapter_id, chapter_num, section_num, status) VALUES (?, ?, ?, 1, ?, ?)`
   );
-  ins.run(42, 1, '1.1', 'review_submitted'); // approve-review target
-  ins.run(43, 1, '1.2', 'not_started'); // assign-reviewer target
-  ins.run(44, 1, '1.3', 'not_started'); // assign-localizer target
-  ins.run(45, 1, '1.4', 'review_submitted'); // request-changes target
-  ins.run(46, 1, '1.5', 'review_submitted'); // status-elevated target
+  ins.run(42, 1, 1, '1.1', 'review_submitted'); // approve-review target
+  ins.run(43, 1, 1, '1.2', 'not_started'); // assign-reviewer target
+  ins.run(44, 1, 1, '1.3', 'not_started'); // assign-localizer target
+  ins.run(45, 1, 1, '1.4', 'review_submitted'); // request-changes target
+  ins.run(46, 1, 1, '1.5', 'review_submitted'); // status-elevated target
 
   // G3: efnafraedi-2e-owned (book_id=2) section — proves the approve-review resolver
-  // reads bs.bookSlug rather than a constant stuck on liffraedi-2e.
-  ins.run(47, 2, '1.6', 'review_submitted');
+  // reads bs.bookSlug rather than a constant stuck on liffraedi-2e. T7-review Minor: this
+  // must use its OWN chapter_id (2, not 1) — bookRegistration.updateChapterStatus()
+  // aggregates book_sections by chapter_id alone (no book_id filter), so sharing
+  // chapter_id=1 with the book_id=1 sections above would let approving this section mix
+  // its status into book_id=1's chapter-1 aggregate (and vice versa) across two books.
+  ins.run(47, 2, 2, '1.6', 'review_submitted');
 
   // G4: a FRESH row for the status route's admin-bypass case. Reusing section 46 (already
   // transitioned to review_approved by the "owning head-editor allowed" test below) would
   // hit the transition-validity 400 *before* the hand-rolled elevated-permission branch is
   // ever reached — a regression dropping the admin bypass there would stay green. This row
   // must stay untouched by any other test.
-  ins.run(48, 1, '1.7', 'review_submitted');
+  ins.run(48, 1, 1, '1.7', 'review_submitted');
 
   // G5: gate-passing sections so the activityLog call-shape fix (07cd26e0) actually
   // executes end-to-end at 3 sites that no other test reaches a 200 on today.
-  ins.run(49, 1, '1.12', 'review_in_progress'); // submit-review target
-  ins.run(50, 1, '1.13', 'mt_uploaded'); // assign-reviewer target
-  ins.run(51, 1, '1.14', 'review_approved'); // assign-localizer target
+  ins.run(49, 1, 1, '1.12', 'review_in_progress'); // submit-review target
+  ins.run(50, 1, 1, '1.13', 'mt_uploaded'); // assign-reviewer target
+  ins.run(51, 1, 1, '1.14', 'review_approved'); // assign-localizer target
   // submit-review requires the caller to be the assigned reviewer (or admin); HE_B's
   // minted sub is 'u-he-b' (see mintToken/HE_B below).
   db.prepare(`UPDATE book_sections SET linguistic_reviewer = 'u-he-b' WHERE id = 49`).run();
@@ -303,34 +313,52 @@ describe('activityLog call-shape sites actually execute end-to-end (G5, Importan
   // ran a genuine 200 in the existing matrix. These gate-passing sections let the
   // remaining sites reach past their status/param gates. submit-review has no other
   // blocker and reaches a genuine 200 (its activityLog.log() call executes for real).
-  // assign-reviewer/assign-localizer clear every authz/status gate too, but then hit an
-  // unrelated pre-existing bug (see the two tests below) before reaching activityLog —
-  // left as an honest authz-only assertion per the G5 escape hatch, not silently patched.
+  // assign-reviewer/assign-localizer clear every authz/status gate too, and (as of Task 8)
+  // now also clear the notifications.create->createNotification bug below them, so all
+  // three cases in this describe reach a genuine 200 and exercise their activityLog.log()
+  // call for real.
   it('submit-review: the assigned reviewer (HE_B) reaches a genuine 200', async () => {
     const res = await post('/api/sections/49/submit-review', HE_B, {});
     expect(res.status).toBe(200);
   });
 
-  // ESCAPE HATCH (G5): this uncovered a real bug, not a harness gap — sections.js calls
-  // `notifications.create(...)`, but server/services/notifications.js exports
-  // `createNotification`, not `create`. The gate-passing section clears every prior gate
-  // (authz, status validation) and reaches this call, which throws → 500. Filed as a new
-  // finding (register follow-up); NOT fixed here (out of this commit's scope — see G5
-  // escape-hatch policy). Asserting only that authz cleared, honestly, until it's fixed.
-  it('assign-reviewer: owning head-editor (HE_B) clears authz on a gate-passing section (500 today — notifications.create bug, see report)', async () => {
+  // Task 8: was an ESCAPE HATCH (G5) — sections.js called `notifications.create(...)`, but
+  // server/services/notifications.js exports `createNotification`, not `create`. The
+  // gate-passing section cleared every prior gate (authz, status validation) and reached
+  // this call, which threw → 500 (after the section-status write had already committed).
+  // Fixed by renaming the 4 call sites to `createNotification` (param-compatible, pure
+  // rename) — these now assert the genuine 200, closing the G5 deferral for real.
+  it('assign-reviewer: owning head-editor (HE_B) reaches a genuine 200 on a gate-passing section', async () => {
     const res = await post('/api/sections/50/assign-reviewer', HE_B, {
       reviewerId: 'rev-1',
       reviewerName: 'Test Reviewer',
     });
-    expect([401, 403]).not.toContain(res.status);
+    expect(res.status).toBe(200);
   });
 
-  it('assign-localizer: owning head-editor (HE_B) clears authz on a gate-passing section (500 today — notifications.create bug, see report)', async () => {
+  it('assign-localizer: owning head-editor (HE_B) reaches a genuine 200 on a gate-passing section', async () => {
     const res = await post('/api/sections/51/assign-localizer', HE_B, {
       localizerId: 'loc-1',
       localizerName: 'Test Localizer',
     });
-    expect([401, 403]).not.toContain(res.status);
+    expect(res.status).toBe(200);
+  });
+
+  // Static guard for the other 2 of the 4 renamed call sites (approve-review:448,
+  // request-changes:531): neither is reached by any test's current seed data (both sit
+  // behind an `if (section.linguisticReviewer)` / `if (assignedUserId)` guard that's false
+  // for every section this suite drives through those routes), so the runtime 200
+  // assertions above only exercise sites 118/201. This source-level check covers all 4
+  // regardless of which are runtime-exercised, so a reintroduced `notifications.create(`
+  // typo anywhere in sections.js can't slip back in unnoticed.
+  it('sections.js has no lingering notifications.create( call (all 4 sites renamed)', () => {
+    const fs = require('fs');
+    const sectionsSrc = fs.readFileSync(require.resolve('../routes/sections.js'), 'utf8');
+    expect(sectionsSrc).not.toMatch(/notifications\.create\(/);
+
+    const notificationsService = require('../services/notifications');
+    expect(typeof notificationsService.create).toBe('undefined');
+    expect(typeof notificationsService.createNotification).toBe('function');
   });
 });
 

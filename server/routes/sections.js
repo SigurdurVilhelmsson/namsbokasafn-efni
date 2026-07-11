@@ -115,7 +115,7 @@ router.post(
       bookRegistration.assignLinguisticReviewer(section.id, reviewerId, reviewerName);
 
       // Send notification to reviewer
-      await notifications.create({
+      await notifications.createNotification({
         userId: reviewerId,
         type: 'assignment',
         title: 'Nýr yfirlestur úthlutaður',
@@ -198,7 +198,7 @@ router.post(
       bookRegistration.assignLocalizer(section.id, localizerId, localizerName);
 
       // Send notification to localizer
-      await notifications.create({
+      await notifications.createNotification({
         userId: localizerId,
         type: 'assignment',
         title: 'Ný staðfæring úthlutað',
@@ -445,7 +445,7 @@ router.post(
 
       // Notify the reviewer
       if (section.linguisticReviewer) {
-        await notifications.create({
+        await notifications.createNotification({
           userId: section.linguisticReviewer,
           type: 'approval',
           title: 'Yfirlestur samþykktur',
@@ -528,7 +528,7 @@ router.post(
         section.status === 'review_submitted' ? section.linguisticReviewer : section.localizer;
 
       if (assignedUserId) {
-        await notifications.create({
+        await notifications.createNotification({
           userId: assignedUserId,
           type: 'changes_requested',
           title: 'Breytingar óskast',
