@@ -78,6 +78,7 @@ beforeAll(() => {
   app.use('/api/pipeline', require('../routes/pipeline'));
   app.use('/api/sections', require('../routes/sections'));
   app.use('/api/books', require('../routes/books'));
+  app.use('/api/admin', require('../routes/admin'));
   server = app.listen(0);
   base = `http://127.0.0.1:${server.address().port}`;
 });
@@ -92,6 +93,13 @@ async function post(pathname, user, body) {
     method: 'POST',
     headers: { 'content-type': 'application/json', authorization: `Bearer ${mintToken(user)}` },
     body: JSON.stringify(body ?? {}),
+  });
+}
+
+async function del(pathname, user) {
+  return fetch(base + pathname, {
+    method: 'DELETE',
+    headers: { authorization: `Bearer ${mintToken(user)}` },
   });
 }
 
@@ -231,5 +239,46 @@ describe('section upload route is retired (design decision 2026-07-11)', () => {
   it('POST → 404 even for admin', async () => {
     const res = await post('/api/sections/42/upload/faithful', ADMIN, {});
     expect(res.status).toBe(404);
+  });
+});
+
+describe('admin chapter-assignment routes are book-scoped (Task 6)', () => {
+  // liffraedi-2e is HE_B's book (owner). HE_A only has efnafraedi-2e.
+  const ASSIGN = '/api/admin/assignments/liffraedi-2e/1';
+
+  it('POST assign: head-editor of another book → 403', async () => {
+    const res = await post(ASSIGN, HE_A, { userId: 1 });
+    expect(res.status).toBe(403);
+  });
+  it('POST assign: owning head-editor clears authz (never 401/403)', async () => {
+    const res = await post(ASSIGN, HE_B, { userId: 1 });
+    expect([401, 403]).not.toContain(res.status);
+  });
+  it('POST assign: admin clears authz (never 401/403)', async () => {
+    const res = await post(ASSIGN, ADMIN, { userId: 1 });
+    expect([401, 403]).not.toContain(res.status);
+  });
+  it('POST assign: plain editor → 403', async () => {
+    const res = await post(ASSIGN, EDITOR, { userId: 1 });
+    expect(res.status).toBe(403);
+  });
+
+  it('DELETE assign: head-editor of another book → 403', async () => {
+    const res = await del(ASSIGN, HE_A);
+    expect(res.status).toBe(403);
+  });
+  it('DELETE assign: owning head-editor clears authz (never 401/403)', async () => {
+    const res = await del(ASSIGN, HE_B);
+    expect([401, 403]).not.toContain(res.status);
+    expect(res.status).toBeLessThan(500);
+  });
+  it('DELETE assign: admin clears authz (never 401/403)', async () => {
+    const res = await del(ASSIGN, ADMIN);
+    expect([401, 403]).not.toContain(res.status);
+    expect(res.status).toBeLessThan(500);
+  });
+  it('DELETE assign: plain editor → 403', async () => {
+    const res = await del(ASSIGN, EDITOR);
+    expect(res.status).toBe(403);
   });
 });
