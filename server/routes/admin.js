@@ -983,7 +983,7 @@ router.delete('/users/:id/chapters/:book/:chapter', requireAuth, requireAdmin(),
  * GET /api/admin/assignments/:book
  * Returns all chapters with their assignment status and available editors.
  */
-router.get('/assignments/:book', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
+router.get('/assignments/:book', requireAuth, requireHeadEditor('book'), (req, res) => {
   const { book } = req.params;
   if (!VALID_BOOKS.includes(book)) {
     return res.status(400).json({ error: `Invalid book: ${book}` });

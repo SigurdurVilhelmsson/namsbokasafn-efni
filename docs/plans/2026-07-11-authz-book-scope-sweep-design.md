@@ -17,7 +17,7 @@ Keep the router-wide `router.use(requireAuth, requireRole(ROLES.HEAD_EDITOR))` a
 requireHeadEditorFor((req) => req.body?.book)
 ```
 
-as route-level middleware. Behavior note (intended): non-owned book → 403; absent/garbage book → 404 from the guard (middleware runs before `validateParams`' 400) — acceptable information-hiding; owned-but-invalid books still 400 in `validateParams`. **Job GETs stay role-gated:** job objects carry no `book` field until Batch 5's job-model fix (review finding 5) — their scoping lands there, on the record here.
+as route-level middleware. Behavior note (corrected 2026-07-11, whole-branch review): non-owned book → 403; absent/empty (falsy) book → 404 from the guard (middleware runs before `validateParams`' 400); a truthy-but-unowned/invalid book string still hits the ordinary membership check → 403 (not information-hiding — `requireHeadEditorFor`'s `!book` branch only fires on a falsy resolver result). Owned-but-invalid books still 400 in `validateParams`. **Job GETs stay role-gated:** job objects carry no `book` field until Batch 5's job-model fix (review finding 5) — their scoping lands there, on the record here.
 
 ### 2. `server/routes/sections.js` — head-editor action family
 Routes: `assign-reviewer` (`:293`), `assign-localizer` (`:375`), `approve-review` (`:624`), `request-changes` (`:695`). Replace `requireRole(ROLES.HEAD_EDITOR)` with `requireHeadEditorFor` placed **after** `loadSection`:
