@@ -240,17 +240,18 @@ router.post(
 
       // Log activity
       activityLog.log({
+        type: 'upload',
         userId: req.user.id,
         username: req.user.username,
-        action: 'upload',
-        entityType: 'section',
-        entityId: section.id,
-        details: {
+        book: section.bookSlug,
+        chapter: String(section.chapterNum),
+        section: section.sectionNum,
+        description: `${req.user.username} hlóð upp ${uploadType} skrá fyrir kafla ${section.sectionNum}`,
+        metadata: {
+          entityType: 'section',
+          entityId: section.id,
           uploadType,
           filename: req.file.originalname,
-          sectionNum: section.sectionNum,
-          chapterNum: section.chapterNum,
-          book: section.bookSlug,
         },
       });
 
@@ -330,17 +331,18 @@ router.post(
 
       // Log activity
       activityLog.log({
+        type: 'assign_reviewer',
         userId: req.user.id,
         username: req.user.username,
-        action: 'assign_reviewer',
-        entityType: 'section',
-        entityId: section.id,
-        details: {
+        book: section.bookSlug,
+        chapter: String(section.chapterNum),
+        section: section.sectionNum,
+        description: `${req.user.username} úthlutaði ${reviewerName} yfirlestri á kafla ${section.sectionNum}`,
+        metadata: {
+          entityType: 'section',
+          entityId: section.id,
           reviewerId,
           reviewerName,
-          sectionNum: section.sectionNum,
-          chapterNum: section.chapterNum,
-          book: section.bookSlug,
         },
       });
 
@@ -412,17 +414,18 @@ router.post(
 
       // Log activity
       activityLog.log({
+        type: 'assign_localizer',
         userId: req.user.id,
         username: req.user.username,
-        action: 'assign_localizer',
-        entityType: 'section',
-        entityId: section.id,
-        details: {
+        book: section.bookSlug,
+        chapter: String(section.chapterNum),
+        section: section.sectionNum,
+        description: `${req.user.username} úthlutaði ${localizerName} staðfæringu á kafla ${section.sectionNum}`,
+        metadata: {
+          entityType: 'section',
+          entityId: section.id,
           localizerId,
           localizerName,
-          sectionNum: section.sectionNum,
-          chapterNum: section.chapterNum,
-          book: section.bookSlug,
         },
       });
 
@@ -518,18 +521,19 @@ router.post(
 
       // Log activity
       activityLog.log({
+        type: 'status_change',
         userId: req.user.id,
         username: req.user.username,
-        action: 'status_change',
-        entityType: 'section',
-        entityId: section.id,
-        details: {
+        book: section.bookSlug,
+        chapter: String(section.chapterNum),
+        section: section.sectionNum,
+        description: `${req.user.username} breytti stöðu kafla ${section.sectionNum} úr '${section.status}' í '${status}'`,
+        metadata: {
+          entityType: 'section',
+          entityId: section.id,
           fromStatus: section.status,
           toStatus: status,
           notes,
-          sectionNum: section.sectionNum,
-          chapterNum: section.chapterNum,
-          book: section.bookSlug,
         },
       });
 
@@ -587,15 +591,16 @@ router.post(
       // (In a real implementation, you'd query for head editors)
 
       activityLog.log({
+        type: 'submit_review',
         userId: req.user.id,
         username: req.user.username,
-        action: 'submit_review',
-        entityType: 'section',
-        entityId: section.id,
-        details: {
-          sectionNum: section.sectionNum,
-          chapterNum: section.chapterNum,
-          book: section.bookSlug,
+        book: section.bookSlug,
+        chapter: String(section.chapterNum),
+        section: section.sectionNum,
+        description: `${req.user.username} sendi inn yfirlestur á kafla ${section.sectionNum} til samþykktar`,
+        metadata: {
+          entityType: 'section',
+          entityId: section.id,
         },
       });
 
@@ -654,15 +659,16 @@ router.post(
       }
 
       activityLog.log({
+        type: 'approve_review',
         userId: req.user.id,
         username: req.user.username,
-        action: 'approve_review',
-        entityType: 'section',
-        entityId: section.id,
-        details: {
-          sectionNum: section.sectionNum,
-          chapterNum: section.chapterNum,
-          book: section.bookSlug,
+        book: section.bookSlug,
+        chapter: String(section.chapterNum),
+        section: section.sectionNum,
+        description: `${req.user.username} samþykkti yfirlestur á kafla ${section.sectionNum}`,
+        metadata: {
+          entityType: 'section',
+          entityId: section.id,
           reviewer: section.linguisticReviewerName,
         },
       });
@@ -736,15 +742,16 @@ router.post(
       }
 
       activityLog.log({
+        type: 'request_changes',
         userId: req.user.id,
         username: req.user.username,
-        action: 'request_changes',
-        entityType: 'section',
-        entityId: section.id,
-        details: {
-          sectionNum: section.sectionNum,
-          chapterNum: section.chapterNum,
-          book: section.bookSlug,
+        book: section.bookSlug,
+        chapter: String(section.chapterNum),
+        section: section.sectionNum,
+        description: `${req.user.username} óskaði eftir breytingum á kafla ${section.sectionNum}`,
+        metadata: {
+          entityType: 'section',
+          entityId: section.id,
           notes,
         },
       });
