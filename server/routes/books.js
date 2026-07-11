@@ -16,7 +16,12 @@ const multer = require('multer');
 
 const log = require('../lib/logger');
 const { requireAuth } = require('../middleware/requireAuth');
-const { requireEditor, requireAdmin, requireBookAccess } = require('../middleware/requireRole');
+const {
+  requireEditor,
+  requireAdmin,
+  requireBookAccess,
+  requireHeadEditor,
+} = require('../middleware/requireRole');
 const chapterFilesService = require('../services/chapterFilesService');
 const { VALID_BOOKS, BOOK_LABELS } = require('../config');
 const { MAX_CHAPTERS } = require('../constants');
@@ -505,7 +510,7 @@ router.get(
 router.post(
   '/:bookId/chapters/:chapter/import',
   requireAuth,
-  requireEditor(),
+  requireHeadEditor('bookId'),
   upload.array('files', 50),
   async (req, res) => {
     const { bookId, chapter } = req.params;

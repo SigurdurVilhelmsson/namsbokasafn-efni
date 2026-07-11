@@ -3,7 +3,6 @@
  *
  * Handles operations on individual translation sections:
  * - Get section details
- * - Upload MT translation
  * - Assign reviewers and localizers
  * - Update section status
  *
@@ -12,83 +11,15 @@
 
 const express = require('express');
 const router = express.Router();
-const multer = require('multer');
-const path = require('path');
-const fs = require('fs');
 
 const log = require('../lib/logger');
 const { requireAuth } = require('../middleware/requireAuth');
-const { requireRole, ROLES } = require('../middleware/requireRole');
+const { requireRole, requireHeadEditorFor, ROLES } = require('../middleware/requireRole');
 const bookRegistration = require('../services/bookRegistration');
 const notifications = require('../services/notifications');
 const activityLog = require('../services/activityLog');
 
-// Configure multer for section file uploads
-const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    // Determine destination based on upload type
-    const section = req.sectionData;
-    if (!section) {
-      return cb(new Error('Section not found'));
-    }
-
-    const bookDir = path.join(BOOKS_DIR, section.bookSlug);
-    let uploadDir;
-
-    switch (req.params.uploadType) {
-      case 'mt':
-        uploadDir = path.join(
-          bookDir,
-          '02-mt-output',
-          `ch${String(section.chapterNum).padStart(2, '0')}`
-        );
-        break;
-      case 'faithful':
-        uploadDir = path.join(
-          bookDir,
-          '03-faithful-translation',
-          `ch${String(section.chapterNum).padStart(2, '0')}`
-        );
-        break;
-      case 'localized':
-        uploadDir = path.join(
-          bookDir,
-          '04-localized-content',
-          `ch${String(section.chapterNum).padStart(2, '0')}`
-        );
-        break;
-      default:
-        return cb(new Error('Invalid upload type'));
-    }
-
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true });
-    }
-    cb(null, uploadDir);
-  },
-  filename: (req, file, cb) => {
-    const section = req.sectionData;
-    const sectionNum = section.sectionNum.replace('.', '-');
-    cb(null, `${sectionNum}.is.md`);
-  },
-});
-
-const upload = multer({
-  storage,
-  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB limit
-  fileFilter: (req, file, cb) => {
-    const ext = path.extname(file.originalname).toLowerCase();
-    if (ext === '.md') {
-      cb(null, true);
-    } else {
-      cb(new Error('Only markdown (.md) files are allowed'));
-    }
-  },
-});
-
-// Middleware to load section data before upload
+// Middleware to load section data
 function loadSection(req, res, next) {
   const { sectionId } = req.params;
 
@@ -143,142 +74,6 @@ router.get('/:sectionId', requireAuth, requireRole(ROLES.EDITOR), (req, res) => 
 });
 
 // ============================================================================
-// UPLOAD HANDLERS
-// ============================================================================
-
-/**
- * POST /api/sections/:sectionId/upload/:uploadType
- * Upload a file for a section (mt, faithful, or localized)
- *
- * uploadType: 'mt' | 'faithful' | 'localized'
- */
-router.post(
-  '/:sectionId/upload/:uploadType',
-  requireAuth,
-  requireRole(ROLES.EDITOR),
-  loadSection,
-  (req, res, next) => {
-    // Check for re-upload restrictions
-    const section = req.sectionData;
-    const { uploadType } = req.params;
-
-    // MT re-upload requires HEAD_EDITOR
-    if (
-      uploadType === 'mt' &&
-      section.status !== 'not_started' &&
-      section.status !== 'mt_pending'
-    ) {
-      if (req.user.role !== ROLES.ADMIN && req.user.role !== ROLES.HEAD_EDITOR) {
-        return res.status(403).json({
-          error: 'Re-upload restricted',
-          message: 'Re-uploading MT translation requires head editor or admin role',
-          currentStatus: section.status,
-          yourRole: req.user.role,
-        });
-      }
-    }
-
-    // Faithful re-upload requires HEAD_EDITOR if already approved
-    if (uploadType === 'faithful' && section.status === 'review_approved') {
-      if (req.user.role !== ROLES.ADMIN && req.user.role !== ROLES.HEAD_EDITOR) {
-        return res.status(403).json({
-          error: 'Re-upload restricted',
-          message: 'Re-uploading approved translation requires head editor or admin role',
-          currentStatus: section.status,
-        });
-      }
-    }
-
-    next();
-  },
-  upload.single('file'),
-  async (req, res) => {
-    const section = req.sectionData;
-    const { uploadType } = req.params;
-
-    if (!req.file) {
-      return res.status(400).json({
-        error: 'No file uploaded',
-        message: 'Please upload a markdown file',
-      });
-    }
-
-    try {
-      // Update section status and path based on upload type
-      let newStatus;
-      const updates = {};
-
-      switch (uploadType) {
-        case 'mt':
-          newStatus = 'mt_uploaded';
-          updates.mtOutputPath = path.relative(
-            path.join(BOOKS_DIR, section.bookSlug),
-            req.file.path
-          );
-          break;
-        case 'faithful':
-          // Only update status if coming from review
-          if (section.status.startsWith('review_')) {
-            newStatus = section.status; // Keep current status
-          }
-          updates.faithfulPath = path.relative(
-            path.join(BOOKS_DIR, section.bookSlug),
-            req.file.path
-          );
-          break;
-        case 'localized':
-          updates.localizedPath = path.relative(
-            path.join(BOOKS_DIR, section.bookSlug),
-            req.file.path
-          );
-          break;
-      }
-
-      if (newStatus) {
-        bookRegistration.updateSectionStatus(section.id, newStatus, updates);
-      }
-
-      // Log activity
-      activityLog.log({
-        userId: req.user.id,
-        username: req.user.username,
-        action: 'upload',
-        entityType: 'section',
-        entityId: section.id,
-        details: {
-          uploadType,
-          filename: req.file.originalname,
-          sectionNum: section.sectionNum,
-          chapterNum: section.chapterNum,
-          book: section.bookSlug,
-        },
-      });
-
-      res.json({
-        success: true,
-        message: `${uploadType} file uploaded successfully`,
-        section: {
-          id: section.id,
-          sectionNum: section.sectionNum,
-          status: newStatus || section.status,
-        },
-        file: {
-          name: req.file.filename,
-          path: req.file.path,
-          size: req.file.size,
-        },
-      });
-    } catch (err) {
-      log.error({ err }, 'Upload error');
-      res.status(500).json({
-        error: 'Failed to process upload',
-        message: err.message,
-      });
-    }
-  }
-);
-
-// ============================================================================
 // ASSIGNMENT HANDLERS
 // ============================================================================
 
@@ -293,8 +88,8 @@ router.post(
 router.post(
   '/:sectionId/assign-reviewer',
   requireAuth,
-  requireRole(ROLES.HEAD_EDITOR),
   loadSection,
+  requireHeadEditorFor((req) => req.sectionData?.bookSlug),
   async (req, res) => {
     const section = req.sectionData;
     const { reviewerId, reviewerName } = req.body;
@@ -320,7 +115,7 @@ router.post(
       bookRegistration.assignLinguisticReviewer(section.id, reviewerId, reviewerName);
 
       // Send notification to reviewer
-      await notifications.create({
+      await notifications.createNotification({
         userId: reviewerId,
         type: 'assignment',
         title: 'Nýr yfirlestur úthlutaður',
@@ -330,17 +125,18 @@ router.post(
 
       // Log activity
       activityLog.log({
+        type: 'assign_reviewer',
         userId: req.user.id,
         username: req.user.username,
-        action: 'assign_reviewer',
-        entityType: 'section',
-        entityId: section.id,
-        details: {
+        book: section.bookSlug,
+        chapter: String(section.chapterNum),
+        section: section.sectionNum,
+        description: `${req.user.username} úthlutaði ${reviewerName} yfirlestri á kafla ${section.sectionNum}`,
+        metadata: {
+          entityType: 'section',
+          entityId: section.id,
           reviewerId,
           reviewerName,
-          sectionNum: section.sectionNum,
-          chapterNum: section.chapterNum,
-          book: section.bookSlug,
         },
       });
 
@@ -375,8 +171,8 @@ router.post(
 router.post(
   '/:sectionId/assign-localizer',
   requireAuth,
-  requireRole(ROLES.HEAD_EDITOR),
   loadSection,
+  requireHeadEditorFor((req) => req.sectionData?.bookSlug),
   async (req, res) => {
     const section = req.sectionData;
     const { localizerId, localizerName } = req.body;
@@ -402,7 +198,7 @@ router.post(
       bookRegistration.assignLocalizer(section.id, localizerId, localizerName);
 
       // Send notification to localizer
-      await notifications.create({
+      await notifications.createNotification({
         userId: localizerId,
         type: 'assignment',
         title: 'Ný staðfæring úthlutað',
@@ -412,17 +208,18 @@ router.post(
 
       // Log activity
       activityLog.log({
+        type: 'assign_localizer',
         userId: req.user.id,
         username: req.user.username,
-        action: 'assign_localizer',
-        entityType: 'section',
-        entityId: section.id,
-        details: {
+        book: section.bookSlug,
+        chapter: String(section.chapterNum),
+        section: section.sectionNum,
+        description: `${req.user.username} úthlutaði ${localizerName} staðfæringu á kafla ${section.sectionNum}`,
+        metadata: {
+          entityType: 'section',
+          entityId: section.id,
           localizerId,
           localizerName,
-          sectionNum: section.sectionNum,
-          chapterNum: section.chapterNum,
-          book: section.bookSlug,
         },
       });
 
@@ -505,10 +302,12 @@ router.post(
     // Some transitions require higher permissions
     const headEditorRequired = ['review_approved', 'localization_approved'];
     if (headEditorRequired.includes(status)) {
-      if (req.user.role !== ROLES.ADMIN && req.user.role !== ROLES.HEAD_EDITOR) {
+      const isOwningHeadEditor =
+        req.user.role === ROLES.HEAD_EDITOR && req.user.books?.includes(section.bookSlug);
+      if (req.user.role !== ROLES.ADMIN && !isOwningHeadEditor) {
         return res.status(403).json({
           error: 'Insufficient permissions',
-          message: `Status '${status}' requires head editor or admin role`,
+          message: `Status '${status}' requires a head editor assigned to ${section.bookSlug} (or admin)`,
         });
       }
     }
@@ -518,18 +317,19 @@ router.post(
 
       // Log activity
       activityLog.log({
+        type: 'status_change',
         userId: req.user.id,
         username: req.user.username,
-        action: 'status_change',
-        entityType: 'section',
-        entityId: section.id,
-        details: {
+        book: section.bookSlug,
+        chapter: String(section.chapterNum),
+        section: section.sectionNum,
+        description: `${req.user.username} breytti stöðu kafla ${section.sectionNum} úr '${section.status}' í '${status}'`,
+        metadata: {
+          entityType: 'section',
+          entityId: section.id,
           fromStatus: section.status,
           toStatus: status,
           notes,
-          sectionNum: section.sectionNum,
-          chapterNum: section.chapterNum,
-          book: section.bookSlug,
         },
       });
 
@@ -587,15 +387,16 @@ router.post(
       // (In a real implementation, you'd query for head editors)
 
       activityLog.log({
+        type: 'submit_review',
         userId: req.user.id,
         username: req.user.username,
-        action: 'submit_review',
-        entityType: 'section',
-        entityId: section.id,
-        details: {
-          sectionNum: section.sectionNum,
-          chapterNum: section.chapterNum,
-          book: section.bookSlug,
+        book: section.bookSlug,
+        chapter: String(section.chapterNum),
+        section: section.sectionNum,
+        description: `${req.user.username} sendi inn yfirlestur á kafla ${section.sectionNum} til samþykktar`,
+        metadata: {
+          entityType: 'section',
+          entityId: section.id,
         },
       });
 
@@ -624,8 +425,8 @@ router.post(
 router.post(
   '/:sectionId/approve-review',
   requireAuth,
-  requireRole(ROLES.HEAD_EDITOR),
   loadSection,
+  requireHeadEditorFor((req) => req.sectionData?.bookSlug),
   async (req, res) => {
     const section = req.sectionData;
 
@@ -644,7 +445,7 @@ router.post(
 
       // Notify the reviewer
       if (section.linguisticReviewer) {
-        await notifications.create({
+        await notifications.createNotification({
           userId: section.linguisticReviewer,
           type: 'approval',
           title: 'Yfirlestur samþykktur',
@@ -654,15 +455,16 @@ router.post(
       }
 
       activityLog.log({
+        type: 'approve_review',
         userId: req.user.id,
         username: req.user.username,
-        action: 'approve_review',
-        entityType: 'section',
-        entityId: section.id,
-        details: {
-          sectionNum: section.sectionNum,
-          chapterNum: section.chapterNum,
-          book: section.bookSlug,
+        book: section.bookSlug,
+        chapter: String(section.chapterNum),
+        section: section.sectionNum,
+        description: `${req.user.username} samþykkti yfirlestur á kafla ${section.sectionNum}`,
+        metadata: {
+          entityType: 'section',
+          entityId: section.id,
           reviewer: section.linguisticReviewerName,
         },
       });
@@ -695,8 +497,8 @@ router.post(
 router.post(
   '/:sectionId/request-changes',
   requireAuth,
-  requireRole(ROLES.HEAD_EDITOR),
   loadSection,
+  requireHeadEditorFor((req) => req.sectionData?.bookSlug),
   async (req, res) => {
     const section = req.sectionData;
     const { notes } = req.body;
@@ -726,7 +528,7 @@ router.post(
         section.status === 'review_submitted' ? section.linguisticReviewer : section.localizer;
 
       if (assignedUserId) {
-        await notifications.create({
+        await notifications.createNotification({
           userId: assignedUserId,
           type: 'changes_requested',
           title: 'Breytingar óskast',
@@ -736,15 +538,16 @@ router.post(
       }
 
       activityLog.log({
+        type: 'request_changes',
         userId: req.user.id,
         username: req.user.username,
-        action: 'request_changes',
-        entityType: 'section',
-        entityId: section.id,
-        details: {
-          sectionNum: section.sectionNum,
-          chapterNum: section.chapterNum,
-          book: section.bookSlug,
+        book: section.bookSlug,
+        chapter: String(section.chapterNum),
+        section: section.sectionNum,
+        description: `${req.user.username} óskaði eftir breytingum á kafla ${section.sectionNum}`,
+        metadata: {
+          entityType: 'section',
+          entityId: section.id,
           notes,
         },
       });
