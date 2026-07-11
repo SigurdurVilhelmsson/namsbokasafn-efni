@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { execFileSync } from 'node:child_process';
-import { mkdtempSync, existsSync, readdirSync, rmSync } from 'node:fs';
+import { mkdtempSync, existsSync, readdirSync, rmSync, symlinkSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { createRequire } from 'node:module';
@@ -70,6 +70,96 @@ describe('backup-db.sh off-box upload', () => {
     const walk = (d) => readdirSync(d, { withFileTypes: true }).flatMap((e) =>
       e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)]);
     expect(walk(remoteDir).length).toBeGreaterThan(0);
+    rmSync(work, { recursive: true, force: true });
+  });
+
+  // Regression lock: this behavior already exists in backup-db.sh (loud `exit 4`
+  // BEFORE the heartbeat write, see the script's off-box upload block) — this test
+  // should pass immediately, not go through a RED phase.
+  it.skipIf(!hasRclone)('exits 4 and does not write the heartbeat when the off-box upload fails', () => {
+    const work = mkdtempSync(path.join(tmpdir(), 'bkup-'));
+    const db = path.join(work, 'sessions.db');
+    const backups = path.join(work, 'backups');
+    makeTestDb(db);
+    // A syntactically valid remote reference (trailing ':') that isn't configured —
+    // rclone fails fast with "didn't find section in config file"; no network I/O.
+    const env = { ...process.env, DB_PATH_OVERRIDE: db, BACKUP_REMOTE: 'no-such-remote-xyz:' };
+    let error;
+    try {
+      execFileSync('bash', [SCRIPT, backups], { env, encoding: 'utf8' });
+    } catch (e) {
+      error = e;
+    }
+    expect(error).toBeDefined();
+    expect(error.status).toBe(4);
+    expect(existsSync(path.join(backups, '.last-offbox-backup'))).toBe(false);
+    rmSync(work, { recursive: true, force: true });
+  });
+
+  // Regression lock: this behavior already exists in backup-db.sh (loud `exit 3`
+  // when BACKUP_REMOTE is set but rclone isn't on PATH) — this test should pass
+  // immediately, not go through a RED phase. No it.skipIf(!hasRclone): the PATH
+  // below deliberately excludes rclone regardless of what's installed on this box,
+  // so the "rclone missing" branch is exercised deterministically either way.
+  it('exits 3 and does not write the heartbeat when rclone is not installed', () => {
+    const work = mkdtempSync(path.join(tmpdir(), 'bkup-'));
+    const db = path.join(work, 'sessions.db');
+    const backups = path.join(work, 'backups');
+    makeTestDb(db);
+
+    // Symlink every external backup-db.sh needs EXCEPT rclone into an isolated bin
+    // dir, then run with PATH restricted to only that dir. sqlite3 is deliberately
+    // left out too — the script tolerates a missing sqlite3 CLI via its WAL-checkpoint
+    // fallback (`sqlite3 ... || { ... }`), so excluding it isn't a new dependency.
+    const binDir = mkdtempSync(path.join(tmpdir(), 'bkup-bin-'));
+    const needed = ['bash', 'cp', 'du', 'cut', 'ls', 'wc', 'tail', 'xargs', 'rm', 'mkdir', 'date', 'basename', 'grep', 'sort', 'dirname', 'cat'];
+    for (const bin of needed) {
+      let real = '';
+      try {
+        real = execFileSync('bash', ['-lc', `command -v ${bin}`], { encoding: 'utf8' }).trim();
+      } catch {
+        // Not resolvable on this system — skip rather than fail the whole test.
+      }
+      if (real) symlinkSync(real, path.join(binDir, bin));
+    }
+
+    const env = { PATH: binDir, DB_PATH_OVERRIDE: db, BACKUP_REMOTE: 'secret:' };
+    let error;
+    try {
+      execFileSync('bash', [SCRIPT, backups], { env, encoding: 'utf8' });
+    } catch (e) {
+      error = e;
+    }
+    expect(error).toBeDefined();
+    expect(error.status).toBe(3);
+    expect(existsSync(path.join(backups, '.last-offbox-backup'))).toBe(false);
+    rmSync(work, { recursive: true, force: true });
+    rmSync(binDir, { recursive: true, force: true });
+  });
+
+  // New guard (fix 2): BACKUP_REMOTE must end in ':' or '/' or the filename
+  // concatenation `${BACKUP_REMOTE}$(basename ...)` munges silently. No
+  // it.skipIf(!hasRclone): the guard fires before the rclone-installed check, so
+  // it's deterministic regardless of whether rclone is present on this box.
+  it('exits 5 when BACKUP_REMOTE does not end in : or /', () => {
+    const work = mkdtempSync(path.join(tmpdir(), 'bkup-'));
+    const db = path.join(work, 'sessions.db');
+    const backups = path.join(work, 'backups');
+    makeTestDb(db);
+    // cwd: work — belt-and-suspenders. Without the guard, rclone reads a
+    // separator-less BACKUP_REMOTE as a *local relative path* and silently writes a
+    // stray file into the process cwd (confirmed empirically); pinning cwd to the
+    // disposable temp dir keeps any such regression from littering the repo root.
+    const env = { ...process.env, DB_PATH_OVERRIDE: db, BACKUP_REMOTE: 'secret' };
+    let error;
+    try {
+      execFileSync('bash', [SCRIPT, backups], { env, cwd: work, encoding: 'utf8' });
+    } catch (e) {
+      error = e;
+    }
+    expect(error).toBeDefined();
+    expect(error.status).toBe(5);
+    expect(existsSync(path.join(backups, '.last-offbox-backup'))).toBe(false);
     rmSync(work, { recursive: true, force: true });
   });
 });

@@ -64,6 +64,10 @@ HEARTBEAT="${BACKUP_DIR}/.last-offbox-backup"
 if [ -z "${BACKUP_REMOTE:-}" ]; then
   echo "BACKUP_REMOTE not set — skipping off-box upload (local backup only)."
 else
+  case "$BACKUP_REMOTE" in
+    *: | */) ;;  # a proper rclone remote path ends in ':' or '/'
+    *) echo "ERROR: BACKUP_REMOTE must end in ':' or '/' (got '$BACKUP_REMOTE') — else the object name is munged and retention breaks" >&2; exit 5 ;;
+  esac
   if ! command -v rclone >/dev/null 2>&1; then
     echo "ERROR: BACKUP_REMOTE set but rclone not installed" >&2
     exit 3
