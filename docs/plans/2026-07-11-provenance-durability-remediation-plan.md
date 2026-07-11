@@ -8,6 +8,13 @@
 
 **Tech Stack:** Node 22.x ESM + CommonJS mix; better-sqlite3; Vitest; bash + `rclone` + `sqlite3` (Track A); the `tools/lib/*.cjs` dual-consumption pattern (imported from both ESM tools and CommonJS server).
 
+## Status (updated 2026-07-11)
+
+- **Track A (PROV-2) — ✅ SHIPPED + MERGED (PR #262).** Off-box encrypted `sessions.db` backup + restore-test + `/api/health` staleness heartbeat + runbook. **[LEAD PREREQ] the off-box path activates only once the Linode Object Storage bucket + rclone crypt remote exist and `BACKUP_REMOTE` is set in cron** — see `docs/technical/backup-and-restore.md`; until then `/api/health` reports `"degraded"` (expected, deploy-gate-whitelisted). Residual minors noted in the PR (download-guard test, route-wiring test).
+- **Track B (PROV-1) — ⏳ NEXT.** Branch `fix/prov-1-delete-source-update-verb` off `main`; 2 tasks. B1's guard test uses the corrected two-honest-tests form (the naive filename heuristic was an advisor-caught defect — it exempted `check-source-updates.js` because its name contains "check").
+- **Track C (MT edit-lock) — ⏳ after B.** Branch `fix/mt-edit-lock` off `main`; 5 tasks. Note C4 MUST add the marker glob to `git-backup.sh`'s staged list or markers never leave prod.
+- Execute B and C via superpowers:subagent-driven-development, one PR each. Full resume detail in project memory `server-editor-review-2026-07`.
+
 ## Global Constraints
 
 - **Robustness over expedience:** one real code path; fail loud; no escape hatch reaches prod; split refactor from enforcement.
