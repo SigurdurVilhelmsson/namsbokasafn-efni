@@ -132,6 +132,18 @@ describe('pipeline POSTs are book-scoped', () => {
       expect(res.status).toBe(403);
     });
   }
+
+  // Discriminates the resolver from a hardcoded constant (T1 review finding):
+  // HE_A succeeds on their OWN book, so the guard must be reading req.body.book —
+  // a resolver stuck on 'liffraedi-2e' would 403 here.
+  it('/api/pipeline/inject: head-editor clears authz for their own book (later 400)', async () => {
+    const res = await post('/api/pipeline/inject', HE_A, {
+      book: 'efnafraedi-2e',
+      chapter: 9999,
+      track: 'faithful',
+    });
+    expect(res.status).toBe(400);
+  });
 });
 
 describe('section head-editor actions are book-scoped', () => {
@@ -167,7 +179,10 @@ describe('section head-editor actions are book-scoped', () => {
       expect(res.status).toBe(403);
     });
   }
-  it('unknown section → 404 for a head-editor (resolver missing-target path)', async () => {
+  // NOTE (T2 review): this 404 comes from loadSection's own not-found guard, which runs
+  // BEFORE the book-scope middleware — the resolver's internal !book→404 branch is
+  // unreachable on these routes (loadSection always yields a section with a bookSlug).
+  it('unknown section → 404 for a head-editor (loadSection not-found guard)', async () => {
     const res = await post('/api/sections/99999/approve-review', HE_A, {});
     expect(res.status).toBe(404);
   });
