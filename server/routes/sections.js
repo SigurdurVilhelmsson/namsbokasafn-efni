@@ -3,7 +3,6 @@
  *
  * Handles operations on individual translation sections:
  * - Get section details
- * - Upload MT translation
  * - Assign reviewers and localizers
  * - Update section status
  *
@@ -12,9 +11,6 @@
 
 const express = require('express');
 const router = express.Router();
-const multer = require('multer');
-const path = require('path');
-const fs = require('fs');
 
 const log = require('../lib/logger');
 const { requireAuth } = require('../middleware/requireAuth');
@@ -23,72 +19,7 @@ const bookRegistration = require('../services/bookRegistration');
 const notifications = require('../services/notifications');
 const activityLog = require('../services/activityLog');
 
-// Configure multer for section file uploads
-const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    // Determine destination based on upload type
-    const section = req.sectionData;
-    if (!section) {
-      return cb(new Error('Section not found'));
-    }
-
-    const bookDir = path.join(BOOKS_DIR, section.bookSlug);
-    let uploadDir;
-
-    switch (req.params.uploadType) {
-      case 'mt':
-        uploadDir = path.join(
-          bookDir,
-          '02-mt-output',
-          `ch${String(section.chapterNum).padStart(2, '0')}`
-        );
-        break;
-      case 'faithful':
-        uploadDir = path.join(
-          bookDir,
-          '03-faithful-translation',
-          `ch${String(section.chapterNum).padStart(2, '0')}`
-        );
-        break;
-      case 'localized':
-        uploadDir = path.join(
-          bookDir,
-          '04-localized-content',
-          `ch${String(section.chapterNum).padStart(2, '0')}`
-        );
-        break;
-      default:
-        return cb(new Error('Invalid upload type'));
-    }
-
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true });
-    }
-    cb(null, uploadDir);
-  },
-  filename: (req, file, cb) => {
-    const section = req.sectionData;
-    const sectionNum = section.sectionNum.replace('.', '-');
-    cb(null, `${sectionNum}.is.md`);
-  },
-});
-
-const upload = multer({
-  storage,
-  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB limit
-  fileFilter: (req, file, cb) => {
-    const ext = path.extname(file.originalname).toLowerCase();
-    if (ext === '.md') {
-      cb(null, true);
-    } else {
-      cb(new Error('Only markdown (.md) files are allowed'));
-    }
-  },
-});
-
-// Middleware to load section data before upload
+// Middleware to load section data
 function loadSection(req, res, next) {
   const { sectionId } = req.params;
 
@@ -141,143 +72,6 @@ router.get('/:sectionId', requireAuth, requireRole(ROLES.EDITOR), (req, res) => 
     });
   }
 });
-
-// ============================================================================
-// UPLOAD HANDLERS
-// ============================================================================
-
-/**
- * POST /api/sections/:sectionId/upload/:uploadType
- * Upload a file for a section (mt, faithful, or localized)
- *
- * uploadType: 'mt' | 'faithful' | 'localized'
- */
-router.post(
-  '/:sectionId/upload/:uploadType',
-  requireAuth,
-  requireRole(ROLES.EDITOR),
-  loadSection,
-  (req, res, next) => {
-    // Check for re-upload restrictions
-    const section = req.sectionData;
-    const { uploadType } = req.params;
-
-    // MT re-upload requires HEAD_EDITOR
-    if (
-      uploadType === 'mt' &&
-      section.status !== 'not_started' &&
-      section.status !== 'mt_pending'
-    ) {
-      if (req.user.role !== ROLES.ADMIN && req.user.role !== ROLES.HEAD_EDITOR) {
-        return res.status(403).json({
-          error: 'Re-upload restricted',
-          message: 'Re-uploading MT translation requires head editor or admin role',
-          currentStatus: section.status,
-          yourRole: req.user.role,
-        });
-      }
-    }
-
-    // Faithful re-upload requires HEAD_EDITOR if already approved
-    if (uploadType === 'faithful' && section.status === 'review_approved') {
-      if (req.user.role !== ROLES.ADMIN && req.user.role !== ROLES.HEAD_EDITOR) {
-        return res.status(403).json({
-          error: 'Re-upload restricted',
-          message: 'Re-uploading approved translation requires head editor or admin role',
-          currentStatus: section.status,
-        });
-      }
-    }
-
-    next();
-  },
-  upload.single('file'),
-  async (req, res) => {
-    const section = req.sectionData;
-    const { uploadType } = req.params;
-
-    if (!req.file) {
-      return res.status(400).json({
-        error: 'No file uploaded',
-        message: 'Please upload a markdown file',
-      });
-    }
-
-    try {
-      // Update section status and path based on upload type
-      let newStatus;
-      const updates = {};
-
-      switch (uploadType) {
-        case 'mt':
-          newStatus = 'mt_uploaded';
-          updates.mtOutputPath = path.relative(
-            path.join(BOOKS_DIR, section.bookSlug),
-            req.file.path
-          );
-          break;
-        case 'faithful':
-          // Only update status if coming from review
-          if (section.status.startsWith('review_')) {
-            newStatus = section.status; // Keep current status
-          }
-          updates.faithfulPath = path.relative(
-            path.join(BOOKS_DIR, section.bookSlug),
-            req.file.path
-          );
-          break;
-        case 'localized':
-          updates.localizedPath = path.relative(
-            path.join(BOOKS_DIR, section.bookSlug),
-            req.file.path
-          );
-          break;
-      }
-
-      if (newStatus) {
-        bookRegistration.updateSectionStatus(section.id, newStatus, updates);
-      }
-
-      // Log activity
-      activityLog.log({
-        type: 'upload',
-        userId: req.user.id,
-        username: req.user.username,
-        book: section.bookSlug,
-        chapter: String(section.chapterNum),
-        section: section.sectionNum,
-        description: `${req.user.username} hlóð upp ${uploadType} skrá fyrir kafla ${section.sectionNum}`,
-        metadata: {
-          entityType: 'section',
-          entityId: section.id,
-          uploadType,
-          filename: req.file.originalname,
-        },
-      });
-
-      res.json({
-        success: true,
-        message: `${uploadType} file uploaded successfully`,
-        section: {
-          id: section.id,
-          sectionNum: section.sectionNum,
-          status: newStatus || section.status,
-        },
-        file: {
-          name: req.file.filename,
-          path: req.file.path,
-          size: req.file.size,
-        },
-      });
-    } catch (err) {
-      log.error({ err }, 'Upload error');
-      res.status(500).json({
-        error: 'Failed to process upload',
-        message: err.message,
-      });
-    }
-  }
-);
 
 // ============================================================================
 // ASSIGNMENT HANDLERS

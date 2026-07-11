@@ -184,3 +184,17 @@ describe('section head-editor actions are book-scoped', () => {
     expect(res.status).toBeLessThan(500);
   });
 });
+
+describe('section upload route is retired (design decision 2026-07-11)', () => {
+  it('is not registered on the router (introspection, mirrors books-routes.test.js)', () => {
+    const sectionsRouter = require('../routes/sections');
+    const registeredPaths = sectionsRouter.stack
+      .filter((layer) => layer.route)
+      .map((layer) => layer.route.path);
+    expect(registeredPaths).not.toContain('/:sectionId/upload/:uploadType');
+  });
+  it('POST → 404 even for admin', async () => {
+    const res = await post('/api/sections/42/upload/faithful', ADMIN, {});
+    expect(res.status).toBe(404);
+  });
+});
