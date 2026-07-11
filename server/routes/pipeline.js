@@ -21,7 +21,7 @@ const router = express.Router();
 
 const pipeline = require('../services/pipelineService');
 const { requireAuth } = require('../middleware/requireAuth');
-const { requireRole, ROLES } = require('../middleware/requireRole');
+const { requireRole, requireHeadEditorFor, ROLES } = require('../middleware/requireRole');
 const { VALID_BOOKS } = require('../config');
 const { VALID_TRACKS, MAX_CHAPTERS } = require('../constants');
 
@@ -63,131 +63,143 @@ function validateParams(req, res) {
  * POST /inject
  * Run cnxml-inject for a chapter or specific module.
  */
-router.post('/inject', (req, res) => {
-  const params = validateParams(req, res);
-  if (!params) return;
+router.post(
+  '/inject',
+  requireHeadEditorFor((req) => req.body?.book),
+  (req, res) => {
+    const params = validateParams(req, res);
+    if (!params) return;
 
-  // Check for already running job
-  const running = pipeline.hasRunningJob(params.chapter, 'inject');
-  if (running) {
-    return res.status(409).json({
-      error: 'An inject job is already running for this chapter',
-      jobId: running.id,
-    });
-  }
-
-  // Prerequisite: extraction must have run before inject
-  if (!req.body.confirmed) {
-    const stageStatus = pipeline.getStageStatus(params.book, params.chapter);
-    if (!stageStatus.extraction?.complete) {
+    // Check for already running job
+    const running = pipeline.hasRunningJob(params.chapter, 'inject');
+    if (running) {
       return res.status(409).json({
-        requiresConfirmation: true,
-        warning:
-          'Extraction has not been run for this chapter. Inject may fail without extracted segments.',
+        error: 'An inject job is already running for this chapter',
+        jobId: running.id,
       });
     }
+
+    // Prerequisite: extraction must have run before inject
+    if (!req.body.confirmed) {
+      const stageStatus = pipeline.getStageStatus(params.book, params.chapter);
+      if (!stageStatus.extraction?.complete) {
+        return res.status(409).json({
+          requiresConfirmation: true,
+          warning:
+            'Extraction has not been run for this chapter. Inject may fail without extracted segments.',
+        });
+      }
+    }
+
+    const { jobId } = pipeline.runInject({
+      book: params.book,
+      chapter: params.chapter,
+      moduleId: params.moduleId,
+      track: params.track,
+      userId: req.user.id,
+    });
+
+    res.json({
+      success: true,
+      jobId,
+      message: `Inject started for chapter ${params.chapter}${params.moduleId ? ` module ${params.moduleId}` : ''}`,
+    });
   }
-
-  const { jobId } = pipeline.runInject({
-    book: params.book,
-    chapter: params.chapter,
-    moduleId: params.moduleId,
-    track: params.track,
-    userId: req.user.id,
-  });
-
-  res.json({
-    success: true,
-    jobId,
-    message: `Inject started for chapter ${params.chapter}${params.moduleId ? ` module ${params.moduleId}` : ''}`,
-  });
-});
+);
 
 /**
  * POST /render
  * Run cnxml-render for a chapter or specific module.
  */
-router.post('/render', (req, res) => {
-  const params = validateParams(req, res);
-  if (!params) return;
+router.post(
+  '/render',
+  requireHeadEditorFor((req) => req.body?.book),
+  (req, res) => {
+    const params = validateParams(req, res);
+    if (!params) return;
 
-  const running = pipeline.hasRunningJob(params.chapter, 'render');
-  if (running) {
-    return res.status(409).json({
-      error: 'A render job is already running for this chapter',
-      jobId: running.id,
-    });
-  }
-
-  // Prerequisite: injection must have run before render
-  if (!req.body.confirmed) {
-    const stageStatus = pipeline.getStageStatus(params.book, params.chapter);
-    if (!stageStatus.injection?.complete) {
+    const running = pipeline.hasRunningJob(params.chapter, 'render');
+    if (running) {
       return res.status(409).json({
-        requiresConfirmation: true,
-        warning:
-          'Injection has not been run for this chapter. Render requires translated CNXML from inject.',
+        error: 'A render job is already running for this chapter',
+        jobId: running.id,
       });
     }
+
+    // Prerequisite: injection must have run before render
+    if (!req.body.confirmed) {
+      const stageStatus = pipeline.getStageStatus(params.book, params.chapter);
+      if (!stageStatus.injection?.complete) {
+        return res.status(409).json({
+          requiresConfirmation: true,
+          warning:
+            'Injection has not been run for this chapter. Render requires translated CNXML from inject.',
+        });
+      }
+    }
+
+    const { jobId } = pipeline.runRender({
+      book: params.book,
+      chapter: params.chapter,
+      moduleId: params.moduleId,
+      track: params.track,
+      userId: req.user.id,
+    });
+
+    res.json({
+      success: true,
+      jobId,
+      message: `Render started for chapter ${params.chapter}${params.moduleId ? ` module ${params.moduleId}` : ''}`,
+    });
   }
-
-  const { jobId } = pipeline.runRender({
-    book: params.book,
-    chapter: params.chapter,
-    moduleId: params.moduleId,
-    track: params.track,
-    userId: req.user.id,
-  });
-
-  res.json({
-    success: true,
-    jobId,
-    message: `Render started for chapter ${params.chapter}${params.moduleId ? ` module ${params.moduleId}` : ''}`,
-  });
-});
+);
 
 /**
  * POST /run
  * Run full pipeline (inject then render) for a chapter or module.
  */
-router.post('/run', (req, res) => {
-  const params = validateParams(req, res);
-  if (!params) return;
+router.post(
+  '/run',
+  requireHeadEditorFor((req) => req.body?.book),
+  (req, res) => {
+    const params = validateParams(req, res);
+    if (!params) return;
 
-  const running = pipeline.hasRunningJob(params.chapter, 'pipeline');
-  if (running) {
-    return res.status(409).json({
-      error: 'A pipeline job is already running for this chapter',
-      jobId: running.id,
-    });
-  }
-
-  // Prerequisite: extraction must have run before full pipeline
-  if (!req.body.confirmed) {
-    const stageStatus = pipeline.getStageStatus(params.book, params.chapter);
-    if (!stageStatus.extraction?.complete) {
+    const running = pipeline.hasRunningJob(params.chapter, 'pipeline');
+    if (running) {
       return res.status(409).json({
-        requiresConfirmation: true,
-        warning:
-          'Extraction has not been run for this chapter. The pipeline requires extracted segments.',
+        error: 'A pipeline job is already running for this chapter',
+        jobId: running.id,
       });
     }
+
+    // Prerequisite: extraction must have run before full pipeline
+    if (!req.body.confirmed) {
+      const stageStatus = pipeline.getStageStatus(params.book, params.chapter);
+      if (!stageStatus.extraction?.complete) {
+        return res.status(409).json({
+          requiresConfirmation: true,
+          warning:
+            'Extraction has not been run for this chapter. The pipeline requires extracted segments.',
+        });
+      }
+    }
+
+    const { jobId } = pipeline.runPipeline({
+      book: params.book,
+      chapter: params.chapter,
+      moduleId: params.moduleId,
+      track: params.track,
+      userId: req.user.id,
+    });
+
+    res.json({
+      success: true,
+      jobId,
+      message: `Pipeline started for chapter ${params.chapter}${params.moduleId ? ` module ${params.moduleId}` : ''}`,
+    });
   }
-
-  const { jobId } = pipeline.runPipeline({
-    book: params.book,
-    chapter: params.chapter,
-    moduleId: params.moduleId,
-    track: params.track,
-    userId: req.user.id,
-  });
-
-  res.json({
-    success: true,
-    jobId,
-    message: `Pipeline started for chapter ${params.chapter}${params.moduleId ? ` module ${params.moduleId}` : ''}`,
-  });
-});
+);
 
 /**
  * GET /jobs
