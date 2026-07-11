@@ -40,4 +40,21 @@ export default defineWorkspace([
       fileParallelism: false,
     },
   },
+  {
+    // Scripts tests — drive real shell scripts as subprocesses (no shared DB
+    // state), safe to parallelize like tools tests.
+    test: {
+      name: 'scripts',
+      include: ['scripts/__tests__/**/*.test.mjs'],
+      exclude: [
+        '**/node_modules/**',
+        '**/_archived/**',
+        '**/books/**',
+        '**/.worktrees/**',
+        '**/.claude/**',
+      ],
+      environment: 'node',
+      testTimeout: 30000,
+    },
+  },
 ]);
