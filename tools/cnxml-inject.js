@@ -1188,6 +1188,11 @@ function reverseInlineMarkup(
   // One extraction produced the segment, so formats never mix within it.
   const hasIdAnchoredMarkers = /\[\[(?:term|fn):/.test(text);
 
+  // A new-format segment carries class in the [[em:text|class]] marker itself;
+  // its emphases sidecar entries are vestigial and must not trigger the
+  // positional path or its mismatch warning.
+  const hasEmBrackets = /\[\[em:/.test(text);
+
   // B4 hardening: report a positional count mismatch loudly and let the caller
   // aggregate it. Missing attrs beat silently-wrong attrs.
   const reportAttrMismatch = (family, expected, found) => {
@@ -1372,7 +1377,9 @@ function reverseInlineMarkup(
   // Convert class-only emphasis markers {=text=} back to CNXML.
   // Restore class from sidecar by occurrence index — HARDENED: on a count
   // mismatch, convert without class instead of mis-assigning positionally.
-  if (inlineAttrs && inlineAttrs.emphases) {
+  // New-format [[em:]] segments skip this path entirely (the marker carries
+  // its own class; the sidecar is vestigial for them — see hasEmBrackets).
+  if (inlineAttrs && inlineAttrs.emphases && !hasEmBrackets) {
     const found = (result.match(/\{=(.+?)=\}/g) || []).length;
     const expected = inlineAttrs.emphases.length;
     if (found !== expected) {
@@ -1390,7 +1397,8 @@ function reverseInlineMarkup(
       });
     }
   } else {
-    // No sidecar — convert to plain emphasis
+    // No sidecar (or new-format [[em:]] segment) — convert any {=...=} to
+    // plain emphasis (no-op for [[em:]] segments; formats never mix).
     result = result.replace(/\{=(.+?)=\}/g, '<emphasis>$1</emphasis>');
   }
 

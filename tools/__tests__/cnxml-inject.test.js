@@ -1625,4 +1625,16 @@ describe('reverseInlineMarkup positional-restore hardening (legacy path)', () =>
     expect(warnSpy).toHaveBeenCalled();
     warnSpy.mockRestore();
   });
+
+  it('new-format [[em:]] segment skips the emphases positional path (no false warning)', () => {
+    // Extraction emits [[em:text|class]] AND still populates the emphases
+    // sidecar; the marker carries its own class, so the vestigial sidecar
+    // entries must not trigger the positional path or its mismatch warning.
+    const inlineAttrs = { emphases: [{ class: 'emphasis-one' }] };
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const result = reverseInlineMarkup('[[em:R—O—R|emphasis-one]]', {}, [], [], inlineAttrs);
+    expect(result).toContain('<emphasis class="emphasis-one">R—O—R</emphasis>');
+    expect(warnSpy).not.toHaveBeenCalled();
+    warnSpy.mockRestore();
+  });
 });
