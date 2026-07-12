@@ -154,8 +154,10 @@ function requireHeadEditorFor(resolveBook) {
  * admin passes; a head-editor OF THIS BOOK passes; everyone else (plain editors
  * AND head-editors of other books) takes the chapter-assignment path — fail-open
  * when the caller has no assignments for the book and enforcement is OFF,
- * default-deny when the book's enforce_assignments toggle is ON, 503 fail-closed
- * when enforcement is ON but assignments cannot be evaluated.
+ * default-deny when the book's enforce_assignments toggle is ON — for callers
+ * resolvable to a DB user (a JWT holder with no users row falls through —
+ * pre-existing requireBookAccess behavior) — 503 fail-closed when enforcement
+ * is ON but assignments cannot be evaluated.
  *
  * Also attaches the resolved section as req.section for downstream handlers.
  *

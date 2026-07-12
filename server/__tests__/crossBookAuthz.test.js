@@ -186,6 +186,9 @@ beforeAll(() => {
   ins.run(60, 1, 1, '1.20', 'not_started'); // liffraedi: fail-open matrix + bulk
   ins.run(61, 2, 2, '1.21', 'not_started'); // efnafraedi: enforcement-ON + resolver discrimination
   ins.run(62, 1, 1, '1.22', 'not_started'); // liffraedi: sync-log (kept suggestion-free → entriesCreated 0, no localization_log table needed)
+  ins.run(63, 1, 1, '1.23', 'not_started'); // liffraedi: sync-log assigned-localizer positive case (kept suggestion-free)
+  // canSync's first disjunct compares section.localizer to the JWT id ('u-ed' = EDITOR persona).
+  db.prepare(`UPDATE book_sections SET localizer = 'u-ed' WHERE id = 63`).run();
   const insSug = db.prepare(
     `INSERT INTO localization_suggestions (id, section_id, suggestion_type, original_text, suggested_text)
      VALUES (?, ?, 'unit_conversion', '5 miles', '8.0 km')`
@@ -615,6 +618,10 @@ describe('suggestions section-keyed routes are book/section-scoped (B1-F2/F3 fol
     const res = await post('/api/suggestions/scan/61', EDITOR);
     expect(res.status).toBe(403);
   });
+  it('stats: unassigned editor → 403 under enforcement (pins the stats-route wiring — the fail-open 200 alone also passes under the old role gate)', async () => {
+    const res = await get('/api/suggestions/61/stats', EDITOR);
+    expect(res.status).toBe(403);
+  });
   it('read: unassigned editor → 403 under enforcement (GETs are gated too)', async () => {
     const res = await get('/api/suggestions/61', EDITOR);
     expect(res.status).toBe(403);
@@ -667,6 +674,10 @@ describe('suggestions sync-log: middleware + book-scoped canSync (rider)', () =>
   });
   it('owning head-editor reaches a genuine 200 (sync-log activityLog site executes)', async () => {
     const res = await post('/api/suggestions/62/sync-log', HE_B);
+    expect(res.status).toBe(200);
+  });
+  it('assigned localizer (plain editor) reaches a genuine 200 on their own section (pins the localizer disjunct of canSync)', async () => {
+    const res = await post('/api/suggestions/63/sync-log', EDITOR);
     expect(res.status).toBe(200);
   });
 });
