@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll, afterAll, vi } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll, afterEach, vi } from 'vitest';
 import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -553,15 +553,19 @@ describe('admin chapter-assignment routes are book-scoped (Task 6)', () => {
     const res = await del(ASSIGN, HE_A);
     expect(res.status).toBe(403);
   });
-  it('DELETE assign: owning head-editor clears authz (never 401/403)', async () => {
+  it('DELETE assign: owning head-editor clears authz and reports removed:true (assignment exists from the POST tests above, B1-F8 rider)', async () => {
     const res = await del(ASSIGN, HE_B);
     expect([401, 403]).not.toContain(res.status);
-    expect(res.status).toBeLessThan(500);
+    expect(res.status).toBe(200);
+    const body = await res.json();
+    expect(body).toEqual({ success: true, removed: true });
   });
-  it('DELETE assign: admin clears authz (never 401/403)', async () => {
+  it('DELETE assign: admin clears authz and reports removed:false (the previous test already removed it, B1-F8 rider)', async () => {
     const res = await del(ASSIGN, ADMIN);
     expect([401, 403]).not.toContain(res.status);
-    expect(res.status).toBeLessThan(500);
+    expect(res.status).toBe(200);
+    const body = await res.json();
+    expect(body).toEqual({ success: true, removed: false });
   });
   it('DELETE assign: plain editor → 403', async () => {
     const res = await del(ASSIGN, EDITOR);
@@ -785,5 +789,34 @@ describe('suggestions.js activityLog call shape (static guard, mirrors the secti
     expect(src).not.toMatch(/\baction:\s*['"`]/);
     expect(src).not.toMatch(/\bentityType:/);
     expect(src).not.toMatch(/\bdetails:/);
+  });
+});
+
+// FIX 3 (whole-branch review): B1-F8 made user_chapter_assignments reads fail
+// loud on a corrupted DB. This describe deliberately drops that table to pin
+// the DELETE route's 500, then restores it afterEach — schema copied verbatim
+// from the fixture's beforeAll above so sibling tests are unaffected. Placed
+// LAST in the file (declaration-order execution, fileParallelism:false in
+// vitest.workspace.js) so no other describe can observe the table missing.
+describe('DELETE chapter assignment fails loud on a corrupted DB (B1-F8 rider)', () => {
+  afterEach(() => {
+    const db = new Database(process.env.SESSIONS_DB_PATH);
+    db.exec(`
+      CREATE TABLE IF NOT EXISTS user_chapter_assignments (
+        id INTEGER PRIMARY KEY AUTOINCREMENT, user_id INTEGER NOT NULL, book_slug TEXT NOT NULL,
+        chapter INTEGER NOT NULL, assigned_by TEXT, assigned_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        UNIQUE(user_id, book_slug, chapter)
+      );
+    `);
+    db.close();
+  });
+
+  it('DELETE assign: owning head-editor → 500 when user_chapter_assignments is missing (was a fake 200 pre-B1-F8)', async () => {
+    const db = new Database(process.env.SESSIONS_DB_PATH);
+    db.exec('DROP TABLE user_chapter_assignments');
+    db.close();
+
+    const res = await del('/api/admin/assignments/liffraedi-2e/1', HE_B);
+    expect(res.status).toBe(500);
   });
 });
