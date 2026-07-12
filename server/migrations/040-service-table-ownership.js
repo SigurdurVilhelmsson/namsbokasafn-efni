@@ -49,6 +49,7 @@ module.exports = {
       CREATE INDEX IF NOT EXISTS idx_notifications_read ON notifications(read);
       CREATE INDEX IF NOT EXISTS idx_notifications_created_at ON notifications(created_at);
 
+      -- Notification preferences table
       CREATE TABLE IF NOT EXISTS notification_preferences (
         user_id TEXT PRIMARY KEY,
         preferences TEXT NOT NULL,
