@@ -59,35 +59,49 @@ if ! git rev-parse --git-dir > /dev/null 2>&1; then
   exit 1
 fi
 
-# Stage content directories under books/
+# Stage content directories under books/, one pathspec at a time.
 # translation-errors.json and residue-report.<track>.json are regenerated on
 # every inject, so they are always dirty on the production server after a
 # "Vista + Birta"; stage them here so they ride along with the backup commit
 # instead of snagging the next `git pull`.
 #
-# Invariant every pathspec below depends on: it must match >=1 committed
-# file, or `git add` errors "did not match any files" (exit 128) for the
-# WHOLE command below — bash (nullglob is off) passes an unmatched glob
-# through to git as a literal string, and git treats that as a failing
-# pathspec. Because every glob here shares one `git add` invocation, one bad
-# pathspec means NOTHING from ANY of them gets staged that run, and the
-# `2>/dev/null || true` on the whole block hides the failure completely. The
-# books/*/02-mt-output/*/*-segments.locked glob is guaranteed to match by the
-# 4 markers committed alongside it (tools/lib/mt-lock.cjs backfill) — if a
-# future revert ever removed every committed .locked marker, this whole
-# backup step would silently stop staging anything, for every glob, not just
-# this one.
-git add \
-  books/*/03-faithful-translation/ \
-  books/*/03-translated/ \
-  books/*/04-localized-content/ \
-  books/*/04-localization/ \
-  books/*/05-publication/ \
-  books/*/chapters/ \
-  books/*/translation-errors.json \
-  books/*/residue-report.*.json \
-  books/*/02-mt-output/*/*-segments.locked \
-  2>/dev/null || true
+# Per-pattern staging (campaign item 4b): an unmatched glob is a legitimate
+# state (fresh deploy without residue reports; every .locked marker
+# reverted) — it logs a WARN and is skipped, and can no longer take the
+# other pathspecs down with it (the old shared `git add … || true` exited
+# 128 for the WHOLE command on one unmatched glob, silently staging
+# nothing). A real `git add` failure (index lock, permissions) fails the
+# run loudly instead of being suppressed.
+PATHSPECS=(
+  'books/*/03-faithful-translation/'
+  'books/*/03-translated/'
+  'books/*/04-localized-content/'
+  'books/*/04-localization/'
+  'books/*/05-publication/'
+  'books/*/chapters/'
+  'books/*/translation-errors.json'
+  'books/*/residue-report.*.json'
+  'books/*/02-mt-output/*/*-segments.locked'
+)
+
+ADD_FAILURES=0
+for pathspec in "${PATHSPECS[@]}"; do
+  if compgen -G "$pathspec" > /dev/null; then
+    # shellcheck disable=SC2086 # the glob must expand into git's arguments
+    if ! git add -- $pathspec; then
+      log "ERROR: git add failed for pathspec: $pathspec"
+      ADD_FAILURES=$((ADD_FAILURES + 1))
+    fi
+  else
+    log "WARN: pathspec matched nothing (skipped): $pathspec"
+  fi
+done
+
+if [ "$ADD_FAILURES" -gt 0 ]; then
+  log "ERROR: ${ADD_FAILURES} pathspec(s) failed to stage — aborting backup run"
+  write_status "error" "git add failed for ${ADD_FAILURES} pathspec(s)"
+  exit 1
+fi
 
 # Check if there's anything to commit
 if git diff --cached --quiet; then
