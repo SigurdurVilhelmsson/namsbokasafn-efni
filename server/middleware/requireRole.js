@@ -8,6 +8,7 @@
 const { ROLES, hasRole } = require('../services/auth');
 const userService = require('../services/userService');
 const bookRegistration = require('../services/bookRegistration');
+const log = require('../lib/logger');
 
 /**
  * Require minimum role middleware factory
@@ -286,6 +287,15 @@ function requireBookAccess() {
         throw err;
       }
       if (!allowed) {
+        // Identity-bearing deny log (batch 4 D7 motivating scenario): the
+        // service-side warn has no request context, so log who was denied
+        // here when the denial traces to a JWT with no `users` row.
+        if (!dbUser) {
+          log.warn(
+            { providerId: req.user.id, username: req.user.username, book, chapter },
+            'Chapter access denied for JWT with no users row'
+          );
+        }
         return res.status(403).json({
           error: 'Chapter access denied',
           message: `You are not assigned to chapter ${chapter} of ${book}`,

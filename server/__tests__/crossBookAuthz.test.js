@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll, vi } from 'vitest';
 import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -16,6 +16,7 @@ const Database = require('better-sqlite3');
 const jwt = require('jsonwebtoken');
 const migration040 = require('../migrations/040-service-table-ownership');
 const { createSegmentEditsSchema } = require('./helpers/segmentEditsSchema.cjs');
+const logger = require('../lib/logger');
 
 // Personas — role strings match server/e2e/helpers/auth.js; books[] holds slugs.
 const HE_A = { username: 'he-a', role: 'head-editor', books: ['efnafraedi-2e'] };
@@ -686,8 +687,19 @@ describe('suggestions section-keyed routes are book/section-scoped (B1-F2/F3 fol
     expect(res.status).toBe(200);
   });
   it('read: editor with NO users row → 403 under enforcement (dbUser-null no longer bypasses default-deny, batch 4 D7)', async () => {
+    const warnSpy = vi.spyOn(logger, 'warn');
     const res = await get('/api/suggestions/61', ED_NOROW);
     expect(res.status).toBe(403);
+    // FIX 2: the middleware-level identity-bearing deny log — the service-side
+    // warn has no request context, so this is the only place `providerId`
+    // (the still-valid JWT's `sub`, since the users row was hard-deleted)
+    // is recorded for the D7 motivating scenario.
+    const call = warnSpy.mock.calls.find(
+      ([, msg]) => msg === 'Chapter access denied for JWT with no users row'
+    );
+    expect(call).toBeTruthy();
+    expect(call[0].providerId).toBe('u-ed-norow');
+    warnSpy.mockRestore();
   });
 
   // ── Not-found + route-ordering pins
