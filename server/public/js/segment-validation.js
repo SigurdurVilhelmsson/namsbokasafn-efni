@@ -97,11 +97,15 @@
     // `<!-- SEG:` (tools/lib/seg-markers.cjs SEG_MARKER) and the legacy
     // `{{SEG:` mustache form (segmentParser.parseSegments normalizes it to
     // the HTML-comment form before parsing) — either would still corrupt
-    // boundaries if it reached a segment file.
-    if (edited.indexOf('<!-- SEG:') !== -1) {
+    // boundaries if it reached a segment file. The HTML dialect must be
+    // whitespace-tolerant (final-review N1): both parsers accept
+    // `<!--\s*SEG:` (seg-markers.cjs:13, segmentParser.js:25), so
+    // `<!--SEG:` / `<!--  SEG:` corrupt boundaries just the same.
+    // params.marker carries the canonical prefix, not the matched bytes.
+    if (/<!--\s*SEG:/.test(edited)) {
       blocked.push({ code: 'seg-marker-injected', params: { marker: '<!-- SEG:' } });
     }
-    if (edited.indexOf('{{SEG:') !== -1) {
+    if (/\{\{SEG:/.test(edited)) {
       blocked.push({ code: 'seg-marker-injected', params: { marker: '{{SEG:' } });
     }
 

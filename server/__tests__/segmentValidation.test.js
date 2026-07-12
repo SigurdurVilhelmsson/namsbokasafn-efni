@@ -122,6 +122,19 @@ describe('seg-marker-injected: literal SEG marker in edited content (8th hard bl
     expect(codes(result)).toContain('seg-marker-injected');
   });
 
+  // Whitespace tolerance (final-review N1): both parsers accept
+  // `<!--\s*SEG:` (tools/lib/seg-markers.cjs:13, segmentParser.js:25), so
+  // zero- and multi-space variants corrupt boundaries on apply just the same.
+  it('violating: zero-space HTML form (<!--SEG:) is blocked', () => {
+    const result = validateStructure('en', 'orig', 'texti <!--SEG:m1:para:x--> meira');
+    expect(codes(result)).toContain('seg-marker-injected');
+  });
+
+  it('violating: two-space HTML form (<!--  SEG:) is blocked', () => {
+    const result = validateStructure('en', 'orig', 'texti <!--  SEG:m1:para:x --> meira');
+    expect(codes(result)).toContain('seg-marker-injected');
+  });
+
   it('passing: content free of both marker forms is not blocked', () => {
     const result = validateStructure('en', 'orig', 'venjulegur texti án merkja');
     expect(codes(result)).not.toContain('seg-marker-injected');
