@@ -22,6 +22,10 @@ const HE_A = { username: 'he-a', role: 'head-editor', books: ['efnafraedi-2e'] }
 const HE_B = { username: 'he-b', role: 'head-editor', books: ['liffraedi-2e'] };
 const ADMIN = { username: 'adm', role: 'admin', books: [] };
 const EDITOR = { username: 'ed', role: 'editor', books: [] };
+// Deliberately NO users row (dbUser-null): mints a valid JWT for 'u-ed-norow',
+// but findByProviderId resolves nothing for it — the batch-4 D7 scenario
+// (e.g. a still-valid JWT whose users row was hard-deleted mid-lifetime).
+const ED_NOROW = { username: 'ed-norow', role: 'editor', books: [] };
 
 function mintToken(user) {
   return jwt.sign(
@@ -186,10 +190,10 @@ beforeAll(() => {
     `INSERT INTO book_settings (book, enforce_assignments) VALUES ('efnafraedi-2e', 1)`
   ).run();
   // users rows WITH provider_id so findByProviderId resolves these personas.
-  // A JWT user with no users row skips the chapter check entirely (dbUser-null
-  // fall-through in requireBookAccess) — that would mask the enforcement-ON 403s
-  // asserted below. HE_A deliberately gets NO row: the fail-open cases document
-  // that the unknown-to-DB fall-through also passes when enforcement is off.
+  // A JWT user with no users row is now decided by hasChapterAccess's null-user
+  // branch (batch 4 D7): denied under enforcement — pinned by ED_NOROW below —
+  // fail-open otherwise. HE_A deliberately gets NO row: the fail-open cases
+  // document that a no-row caller still passes when enforcement is off.
   db.prepare(
     `INSERT INTO users (id, display_name, role, provider_id) VALUES (2, 'Editor Ed', 'editor', 'u-ed')`
   ).run();
@@ -473,6 +477,38 @@ describe('chapter markdown-import is head-editor-of-book scoped (SA-11 rider)', 
   });
 });
 
+describe('faithful-count route feeds requireBookAccess and keeps its book-slug whitelist (D10 rider)', () => {
+  // Before this fix the route was mounted on `:bookId`, so requireBookAccess()
+  // (which always reads req.params.book) saw `book === undefined` and its
+  // chapter-assignment check could never bite. Renaming the param to `:book`
+  // wires the guard up for real — but a bare rename would ALSO silently drop
+  // the router.param('bookId', ...) VALID_BOOKS whitelist that guarded the
+  // path.join(booksDir, book, ...) below it from an arbitrary slug. Both must
+  // hold: the whitelist survives under the new param name, and a legitimate
+  // editor still reaches a genuine 200.
+  it('unknown book slug → 400 (VALID_BOOKS whitelist preserved under the renamed :book param)', async () => {
+    const res = await get('/api/books/not-a-real-book/chapters/1/faithful-count', EDITOR);
+    expect(res.status).toBe(400);
+  });
+  it('registered book + fail-open editor → genuine 200 (req.params.book now reaches requireBookAccess)', async () => {
+    const res = await get('/api/books/liffraedi-2e/chapters/1/faithful-count', EDITOR);
+    expect(res.status).toBe(200);
+    const body = await res.json();
+    expect(body).toHaveProperty('count');
+    expect(body).toHaveProperty('modules');
+  });
+  // The discriminating case: before the :bookId → :book rename, requireBookAccess()
+  // always read req.params.book === undefined here, so its chapter-assignment
+  // check was a permanent no-op (isAssignmentEnforced(undefined) is always
+  // false → legacy fail-open) regardless of the book named in the URL. With the
+  // param wired up, an unassigned editor on efnafraedi-2e (enforcement ON,
+  // fixture book_settings row) is genuinely denied.
+  it('enforcement-ON book + unassigned editor → 403 (proves req.params.book — not just a valid slug — now reaches the chapter check)', async () => {
+    const res = await get('/api/books/efnafraedi-2e/chapters/1/faithful-count', EDITOR);
+    expect(res.status).toBe(403);
+  });
+});
+
 describe('section upload route is retired (design decision 2026-07-11)', () => {
   it('is not registered on the router (introspection, mirrors books-routes.test.js)', () => {
     const sectionsRouter = require('../routes/sections');
@@ -617,7 +653,7 @@ describe('suggestions section-keyed routes are book/section-scoped (B1-F2/F3 fol
     const res = await post('/api/suggestions/scan/60', EDITOR);
     expect(res.status).toBe(200);
   });
-  it('read: head-editor of another book ALSO clears fail-open (documented requireBookAccess fall-through, same as any editor)', async () => {
+  it('read: head-editor of another book ALSO clears fail-open (no-row caller, legacy fail-open, same as any editor)', async () => {
     const res = await get('/api/suggestions/60', HE_A);
     expect(res.status).toBe(200);
   });
@@ -648,6 +684,10 @@ describe('suggestions section-keyed routes are book/section-scoped (B1-F2/F3 fol
   it('read: admin short-circuits enforcement (200)', async () => {
     const res = await get('/api/suggestions/61', ADMIN);
     expect(res.status).toBe(200);
+  });
+  it('read: editor with NO users row → 403 under enforcement (dbUser-null no longer bypasses default-deny, batch 4 D7)', async () => {
+    const res = await get('/api/suggestions/61', ED_NOROW);
+    expect(res.status).toBe(403);
   });
 
   // ── Not-found + route-ordering pins

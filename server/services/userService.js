@@ -586,6 +586,12 @@ function assignmentUnavailableError(detail) {
  * explicitly assigned the chapter — and a missing assignment/user table is
  * fail-closed (throws `ASSIGNMENT_TABLE_UNAVAILABLE`) rather than allowed.
  *
+ * `userId` may be `null`/`undefined` for a caller not resolvable to a DB user
+ * (e.g. a still-valid JWT whose `users` row was hard-deleted mid-lifetime,
+ * batch 4 D7). Under enforcement such a caller is denied — nobody unassignable
+ * may pass; under the legacy model it stays fail-open, same as any other
+ * caller with zero assignments.
+ *
  * Note: admins and book head-editors never reach here — `requireBookAccess`
  * short-circuits them before the chapter check.
  */
@@ -594,6 +600,18 @@ function hasChapterAccess(userId, bookSlug, chapter) {
 
   if (!isUserTableReady()) {
     if (enforce) throw assignmentUnavailableError('user table not ready');
+    return true;
+  }
+
+  // Caller not resolvable to a DB user. Under enforcement nobody unassignable
+  // may pass; under the legacy model this stays fail-open regardless of
+  // whether the book has assignments for OTHER users — pinned by
+  // crossBookAuthz.test.js and assignmentEnforcement.test.js.
+  if (userId === null || userId === undefined) {
+    if (enforce) {
+      log.warn({ bookSlug, chapter }, 'Enforcement denied caller with no users row');
+      return false;
+    }
     return true;
   }
 
