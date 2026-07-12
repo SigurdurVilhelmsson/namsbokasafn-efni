@@ -30,12 +30,24 @@ const LOG_ENTRY_TYPES = [
   'other', // Other adaptations
 ];
 
-// Module-level singleton database connection (matches sessionCore.js pattern)
-const dbDir = path.dirname(DB_PATH);
-if (!fs.existsSync(dbDir)) {
-  fs.mkdirSync(dbDir, { recursive: true });
+let _testDb = null;
+function _setTestDb(db) {
+  _testDb = db;
 }
-const db = new Database(DB_PATH);
+
+let _db;
+function getDb() {
+  if (_testDb) return _testDb;
+  if (!_db) {
+    const dbDir = path.dirname(DB_PATH);
+    if (!fs.existsSync(dbDir)) {
+      fs.mkdirSync(dbDir, { recursive: true });
+    }
+    _db = new Database(DB_PATH);
+    _db.pragma('journal_mode = WAL');
+  }
+  return _db;
+}
 
 /**
  * Get or create a localization log for a section
@@ -45,6 +57,7 @@ const db = new Database(DB_PATH);
  * @returns {object} Log record
  */
 function getOrCreateLog(sectionId, localizer) {
+  const db = getDb();
   // Check for existing log
   const log = db
     .prepare(
@@ -99,6 +112,7 @@ function getOrCreateLog(sectionId, localizer) {
  * @returns {object} Updated log
  */
 function addEntry(sectionId, entry, localizer) {
+  const db = getDb();
   if (!LOG_ENTRY_TYPES.includes(entry.type)) {
     throw new Error(
       `Invalid entry type: ${entry.type}. Valid types: ${LOG_ENTRY_TYPES.join(', ')}`
@@ -176,6 +190,7 @@ function addEntry(sectionId, entry, localizer) {
  * @returns {object} Updated entry
  */
 function updateEntry(sectionId, entryId, updates) {
+  const db = getDb();
   const log = db
     .prepare(
       `
@@ -229,6 +244,7 @@ function updateEntry(sectionId, entryId, updates) {
  * @returns {boolean} Success
  */
 function removeEntry(sectionId, entryId) {
+  const db = getDb();
   const log = db
     .prepare(
       `
@@ -266,6 +282,7 @@ function removeEntry(sectionId, entryId) {
  * @returns {object|null} Log with entries
  */
 function getLog(sectionId) {
+  const db = getDb();
   const log = db
     .prepare(
       `
@@ -295,6 +312,7 @@ function getLog(sectionId) {
  * @returns {object} Updated log
  */
 function saveEntries(sectionId, entries, localizer) {
+  const db = getDb();
   // Validate all entries
   for (const entry of entries) {
     if (!LOG_ENTRY_TYPES.includes(entry.type)) {
@@ -357,6 +375,7 @@ function saveEntries(sectionId, entries, localizer) {
  * @returns {object} Statistics
  */
 function getStats(bookId = null) {
+  const db = getDb();
   let query = `
     SELECT
       COUNT(DISTINCT ll.section_id) as sections_with_logs,
@@ -412,4 +431,5 @@ module.exports = {
   saveEntries,
   getStats,
   LOG_ENTRY_TYPES,
+  _setTestDb,
 };
