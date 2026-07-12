@@ -16,6 +16,7 @@ const Database = require('better-sqlite3');
 
 const service = require('../services/segmentEditorService');
 const segmentParser = require('../services/segmentParser');
+const { createSegmentEditsSchema } = require('./helpers/segmentEditsSchema.cjs');
 
 // Store original BOOKS_DIR to restore after tests
 const originalBooksDir = segmentParser.BOOKS_DIR;
@@ -27,39 +28,8 @@ function createTestDb() {
   const db = new Database(':memory:');
   db.pragma('journal_mode = WAL');
 
-  // Migration 008: segment_edits table
-  db.exec(`
-    CREATE TABLE segment_edits (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      book TEXT NOT NULL,
-      chapter INTEGER NOT NULL,
-      module_id TEXT NOT NULL,
-      segment_id TEXT NOT NULL,
-      original_content TEXT NOT NULL,
-      edited_content TEXT NOT NULL,
-      category TEXT CHECK(category IN (
-        'terminology', 'accuracy', 'readability', 'style', 'omission'
-      )),
-      editor_note TEXT,
-      status TEXT NOT NULL DEFAULT 'pending' CHECK(status IN (
-        'pending', 'approved', 'rejected', 'discuss'
-      )),
-      editor_id TEXT NOT NULL,
-      editor_username TEXT NOT NULL,
-      reviewer_id TEXT,
-      reviewer_username TEXT,
-      reviewer_note TEXT,
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      reviewed_at DATETIME,
-      applied_at DATETIME,
-      review_id INTEGER
-    );
-
-    CREATE INDEX idx_segment_edits_module ON segment_edits(book, module_id);
-    CREATE INDEX idx_segment_edits_status ON segment_edits(status);
-    CREATE INDEX idx_segment_edits_segment ON segment_edits(module_id, segment_id);
-    CREATE INDEX idx_segment_edits_applied ON segment_edits(module_id, status, applied_at);
-  `);
+  // Migration 008 (post-039 shape): segment_edits table
+  createSegmentEditsSchema(db);
 
   // Migration 008: module_reviews table
   db.exec(`
@@ -476,6 +446,282 @@ describe('segmentEditorService — DB lifecycle', () => {
 });
 
 // =====================================================================
+// Supersede-on-save: discuss/rejected exit path (post-039)
+// =====================================================================
+
+describe('discuss/rejected exit path — supersede-on-save + collision matrix', () => {
+  let db;
+
+  beforeAll(() => {
+    db = createTestDb();
+    service._setTestDb(db);
+  });
+
+  afterAll(() => {
+    db.close();
+    service._setTestDb(null);
+  });
+
+  beforeEach(() => {
+    db.exec('DELETE FROM segment_edits');
+  });
+
+  // Shorthand: a save by editor u1 on segment s1 of module m1.
+  function save(overrides = {}) {
+    return service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'seg-exit-1',
+      originalContent: 'original',
+      editedContent: 'edited v' + Math.random(),
+      editorId: 'u1',
+      editorUsername: 'editor1',
+      ...overrides,
+    });
+  }
+
+  // Note: the brief refers to this as `getSegmentEditHistory` — the service's
+  // actual function with that shape (all rows for a segment, newest-first) is
+  // `getSegmentEdits(book, moduleId, segmentId)` (segmentEditorService.js:279).
+
+  it('re-discuss after a re-save is clean (the live-reproduced alert() bug)', () => {
+    const first = save();
+    service.markForDiscussion(first.id, 'rev1', 'reviewer1', 'ræðum þetta');
+    const second = save(); // supersedes the stranded discuss row
+    expect(() => service.markForDiscussion(second.id, 'rev1', 'reviewer1', 'aftur')).not.toThrow();
+    const rows = service.getSegmentEdits('testbook', 'm00001', 'seg-exit-1');
+    expect(rows.find((r) => r.id === first.id).status).toBe('superseded');
+    expect(rows.find((r) => r.id === second.id).status).toBe('discuss');
+  });
+
+  it('re-reject after a re-save is clean', () => {
+    const first = save({ segmentId: 'seg-exit-2' });
+    service.rejectEdit(first.id, 'rev1', 'reviewer1', 'nei');
+    const second = save({ segmentId: 'seg-exit-2' });
+    expect(() => service.rejectEdit(second.id, 'rev1', 'reviewer1', 'enn nei')).not.toThrow();
+  });
+
+  it('a second approval while an earlier approved row is unapplied is clean', () => {
+    const first = save({ segmentId: 'seg-exit-3' });
+    service.approveEdit(first.id, 'rev1', 'reviewer1');
+    const second = save({ segmentId: 'seg-exit-3' });
+    expect(() => service.approveEdit(second.id, 'rev1', 'reviewer1')).not.toThrow();
+    // The approved row is live work product — save must NOT supersede it.
+    const rows = service.getSegmentEdits('testbook', 'm00001', 'seg-exit-3');
+    expect(rows.find((r) => r.id === first.id).status).toBe('approved');
+  });
+
+  it('supersedes only the SAME editor’s rows on the SAME segment', () => {
+    const mine = save({ segmentId: 'seg-exit-4' });
+    service.rejectEdit(mine.id, 'rev1', 'reviewer1', 'nei');
+    const theirs = save({ segmentId: 'seg-exit-4', editorId: 'u2', editorUsername: 'editor2' });
+    service.rejectEdit(theirs.id, 'rev1', 'reviewer1', 'nei');
+    const otherSeg = save({ segmentId: 'seg-exit-5' });
+    service.rejectEdit(otherSeg.id, 'rev1', 'reviewer1', 'nei');
+
+    save({ segmentId: 'seg-exit-4' }); // u1 re-saves seg-exit-4 only
+    const seg4 = service.getSegmentEdits('testbook', 'm00001', 'seg-exit-4');
+    expect(seg4.find((r) => r.id === mine.id).status).toBe('superseded');
+    expect(seg4.find((r) => r.id === theirs.id).status).toBe('rejected'); // other editor untouched
+    const seg5 = service.getSegmentEdits('testbook', 'm00001', 'seg-exit-5');
+    expect(seg5.find((r) => r.id === otherSeg.id).status).toBe('rejected'); // other segment untouched
+  });
+
+  it('supersede preserves the reviewer’s fields as history', () => {
+    const first = save({ segmentId: 'seg-exit-6' });
+    service.markForDiscussion(first.id, 'rev1', 'reviewer1', 'athugasemd');
+    save({ segmentId: 'seg-exit-6' });
+    const row = service
+      .getSegmentEdits('testbook', 'm00001', 'seg-exit-6')
+      .find((r) => r.id === first.id);
+    expect(row.status).toBe('superseded');
+    expect(row.reviewer_note).toBe('athugasemd');
+    expect(row.reviewer_username).toBe('reviewer1');
+  });
+
+  it('withdraw (content == original) does NOT supersede anything', () => {
+    const first = save({ segmentId: 'seg-exit-7' });
+    service.markForDiscussion(first.id, 'rev1', 'reviewer1', 'ræðum');
+    save({ segmentId: 'seg-exit-7', editedContent: 'original' }); // withdraw path
+    const row = service
+      .getSegmentEdits('testbook', 'm00001', 'seg-exit-7')
+      .find((r) => r.id === first.id);
+    expect(row.status).toBe('discuss'); // no new revision happened — history stands
+  });
+
+  it('legacy pre-039 coexistence: the update-in-place branch also sweeps stale discuss/rejected rows', () => {
+    // Pre-039 production shape: saveSegmentEdit never superseded, so a
+    // rejected row and a newer pending row by the SAME editor+segment could
+    // coexist on disk. Recreate that directly (bypassing saveSegmentEdit's
+    // own sweep, since we need the stranded pair to exist *before* the save
+    // under test).
+    const rejected = save({ segmentId: 'seg-exit-legacy' });
+    service.rejectEdit(rejected.id, 'rev1', 'reviewer1', 'nei');
+    const pendingResult = db
+      .prepare(
+        `INSERT INTO segment_edits
+         (book, chapter, module_id, segment_id, original_content, edited_content,
+          status, editor_id, editor_username)
+         VALUES ('testbook', 1, 'm00001', 'seg-exit-legacy', 'original', 'edited legacy',
+                 'pending', 'u1', 'editor1')`
+      )
+      .run();
+    const pendingId = Number(pendingResult.lastInsertRowid);
+
+    // Sanity: both rows coexist before the save under test — the shape that,
+    // pre-fix, would take the UPDATE branch and never sweep.
+    let rows = service.getSegmentEdits('testbook', 'm00001', 'seg-exit-legacy');
+    expect(rows.find((r) => r.id === rejected.id).status).toBe('rejected');
+    expect(rows.find((r) => r.id === pendingId).status).toBe('pending');
+
+    // Editor saves again — existing pending row found, so this hits the
+    // UPDATE branch, not the INSERT branch.
+    const result = save({ segmentId: 'seg-exit-legacy', editedContent: 'edited legacy v2' });
+    expect(result.id).toBe(pendingId);
+    expect(result.updated).toBe(true);
+
+    rows = service.getSegmentEdits('testbook', 'm00001', 'seg-exit-legacy');
+    expect(rows.find((r) => r.id === rejected.id).status).toBe('superseded');
+    const pendingRow = rows.find((r) => r.id === pendingId);
+    expect(pendingRow.status).toBe('pending');
+    expect(pendingRow.edited_content).toBe('edited legacy v2');
+  });
+});
+
+describe('returnEditToPending — head-editor manual exit', () => {
+  let db;
+
+  beforeAll(() => {
+    db = createTestDb();
+    service._setTestDb(db);
+  });
+
+  afterAll(() => {
+    db.close();
+    service._setTestDb(null);
+  });
+
+  beforeEach(() => {
+    db.exec('DELETE FROM segment_edits');
+  });
+
+  function save(overrides = {}) {
+    return service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'seg-rtp-1',
+      originalContent: 'original',
+      editedContent: 'edited v' + Math.random(),
+      editorId: 'u1',
+      editorUsername: 'editor1',
+      ...overrides,
+    });
+  }
+
+  it('returns a discuss row to pending and clears reviewer fields', () => {
+    const e = save();
+    service.markForDiscussion(e.id, 'rev1', 'reviewer1', 'ræðum');
+    const back = service.returnEditToPending(e.id);
+    expect(back.status).toBe('pending');
+    expect(back.reviewer_id).toBeNull();
+    expect(back.reviewer_username).toBeNull();
+    expect(back.reviewer_note).toBeNull();
+    expect(back.reviewed_at).toBeNull();
+  });
+
+  it('returns a rejected row to pending', () => {
+    const e = save({ segmentId: 'seg-rtp-2' });
+    service.rejectEdit(e.id, 'rev1', 'reviewer1', 'nei');
+    expect(service.returnEditToPending(e.id).status).toBe('pending');
+  });
+
+  it('refuses when the editor already has a newer pending row (409 code)', () => {
+    const e = save({ segmentId: 'seg-rtp-3' });
+    service.rejectEdit(e.id, 'rev1', 'reviewer1', 'nei');
+    save({ segmentId: 'seg-rtp-3' }); // editor already responded — old row is superseded…
+    // …so returnEditToPending must refuse on status, or on the pending guard for
+    // a row that somehow stayed rejected. Recreate that state directly:
+    db.prepare(`UPDATE segment_edits SET status = 'rejected' WHERE id = ?`).run(e.id);
+    let err;
+    try {
+      service.returnEditToPending(e.id);
+    } catch (x) {
+      err = x;
+    }
+    expect(err?.code).toBe('PENDING_EXISTS');
+  });
+
+  it('refuses non-discuss/rejected rows and applied rows', () => {
+    const e = save({ segmentId: 'seg-rtp-4' });
+    expect(() => service.returnEditToPending(e.id)).toThrow(/discuss/);
+    service.rejectEdit(e.id, 'rev1', 'reviewer1', 'nei');
+    db.prepare(`UPDATE segment_edits SET applied_at = CURRENT_TIMESTAMP WHERE id = ?`).run(e.id);
+    expect(() => service.returnEditToPending(e.id)).toThrow(/applied/);
+  });
+});
+
+describe('unapproveEdit — pending-exists guard', () => {
+  let db;
+
+  beforeAll(() => {
+    db = createTestDb();
+    service._setTestDb(db);
+  });
+
+  afterAll(() => {
+    db.close();
+    service._setTestDb(null);
+  });
+
+  beforeEach(() => {
+    db.exec('DELETE FROM segment_edits');
+  });
+
+  function save(overrides = {}) {
+    return service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'seg-unapprove-1',
+      originalContent: 'original',
+      editedContent: 'edited v' + Math.random(),
+      editorId: 'u1',
+      editorUsername: 'editor1',
+      ...overrides,
+    });
+  }
+
+  it('refuses when the same editor already has a pending row on the segment (409 code)', () => {
+    // save → approve → save again: the approved row and the fresh pending
+    // row now coexist on the same segment for the same editor.
+    const first = save();
+    service.approveEdit(first.id, 'rev1', 'reviewer1');
+    save(); // fresh pending row, same editor, same segment
+
+    let err;
+    try {
+      service.unapproveEdit(first.id);
+    } catch (x) {
+      err = x;
+    }
+    expect(err?.code).toBe('PENDING_EXISTS');
+  });
+
+  it('normal unapprove (no pending row) still works', () => {
+    const e = save({ segmentId: 'seg-unapprove-2' });
+    service.approveEdit(e.id, 'rev1', 'reviewer1');
+    const back = service.unapproveEdit(e.id);
+    expect(back.status).toBe('pending');
+    expect(back.reviewer_id).toBeNull();
+    expect(back.reviewer_username).toBeNull();
+    expect(back.reviewer_note).toBeNull();
+    expect(back.reviewed_at).toBeNull();
+  });
+});
+
+// =====================================================================
 // applyApprovedEdits Integration Tests
 // =====================================================================
 
@@ -604,7 +850,7 @@ describe('applyApprovedEdits — integration', () => {
     expect(edit.applied_at).toBeTruthy();
   });
 
-  it('apply with superseded edits: latest approved wins, older marked rejected', () => {
+  it('apply with superseded edits: latest approved wins, older marked superseded', () => {
     // Create two approved edits for the same segment (different editors)
     const { id: id1 } = service.saveSegmentEdit({
       book: 'testbook',
@@ -645,9 +891,10 @@ describe('applyApprovedEdits — integration', () => {
     const seg1 = segments.find((s) => s.segmentId === 'm00001:para:fs-id001');
     expect(seg1.content).toBe('Nýrri breyting');
 
-    // The older edit should be marked as rejected/superseded
+    // The older edit should be marked as superseded (not rejected — apply-time
+    // supersede is resolved history, not a review decision).
     const olderEdit = service.getEditById(id1);
-    expect(olderEdit.status).toBe('rejected');
+    expect(olderEdit.status).toBe('superseded');
     expect(olderEdit.applied_at).toBeTruthy();
   });
 
@@ -714,6 +961,236 @@ describe('applyApprovedEdits — integration', () => {
     const segments = segmentParser.parseSegments(content);
     const seg1 = segments.find((s) => s.segmentId === 'm00001:para:fs-id001');
     expect(seg1.content).toBe('Yfirfarið efnisgrein.');
+  });
+
+  describe("apply-time supersede uses 'superseded' (was mislabelled 'rejected')", () => {
+    it('marks the losing approved row superseded, keeps note + applied_at stamp', () => {
+      // Two approved edits by the same editor on one segment. The second save
+      // doesn't touch the first row — save-time supersede only acts on
+      // 'discuss'/'rejected' rows, and this one is 'approved' — so both
+      // reach 'approved' cleanly (post-039, a second approval collides with
+      // nothing).
+      const { id: id1 } = service.saveSegmentEdit({
+        book: 'testbook',
+        chapter: 1,
+        moduleId: 'm00001',
+        segmentId: 'm00001:para:fs-id002',
+        originalContent: 'original',
+        editedContent: 'Fyrri samþykkta breytingin',
+        editorId: 'editor-1',
+        editorUsername: 'editor1',
+      });
+      service.approveEdit(id1, 'reviewer-1', 'reviewer1');
+      // Backdate so the second approval is unambiguously newer (apply orders
+      // approved-and-unapplied edits by reviewed_at DESC).
+      db.prepare(
+        `UPDATE segment_edits SET reviewed_at = datetime('now', '-1 hour') WHERE id = ?`
+      ).run(id1);
+
+      const { id: id2 } = service.saveSegmentEdit({
+        book: 'testbook',
+        chapter: 1,
+        moduleId: 'm00001',
+        segmentId: 'm00001:para:fs-id002',
+        originalContent: 'original',
+        editedContent: 'Nýrri samþykkta breytingin',
+        editorId: 'editor-1',
+        editorUsername: 'editor1',
+      });
+      service.approveEdit(id2, 'reviewer-1', 'reviewer1');
+
+      service.applyApprovedEdits('testbook', 1, 'm00001');
+
+      const rows = service.getSegmentEdits('testbook', 'm00001', 'm00001:para:fs-id002');
+      const loser = rows.find((r) => r.id === id1);
+      expect(loser).toBeDefined();
+      expect(loser.status).toBe('superseded');
+      expect(loser.reviewer_note).toBe('Leyst úr gildi af nýrri samþykktri breytingu');
+      expect(loser.applied_at).not.toBeNull();
+      expect(rows.filter((r) => r.status === 'rejected')).toEqual([]);
+    });
+
+    it('apply is clean when the editor also has an old rejected row on the segment (the :812 in-transaction collision)', () => {
+      // editor-1 holds an APPROVED row and a genuinely-standing REJECTED row
+      // on the SAME segment at once: approve first (so the row is 'approved'
+      // when the next save happens — save-time supersede leaves it alone),
+      // then save+reject a second row (which stands, since editor-1 never
+      // saves again). A second editor's competing approval makes editor-1's
+      // approved row the apply-time LOSER, so apply must flip it onto a
+      // status for which a 'rejected' sibling row (same book/module/segment/
+      // editor) already exists. Pre-039, marking the loser 'rejected' hit the
+      // table-level UNIQUE(book, module_id, segment_id, status, editor_id)
+      // against that standing rejected row. Post-039 + 'superseded' it cannot.
+      const { id: approvedId } = service.saveSegmentEdit({
+        book: 'testbook',
+        chapter: 1,
+        moduleId: 'm00001',
+        segmentId: 'm00001:para:fs-id002',
+        originalContent: 'original',
+        editedContent: 'editor-1 fyrri samþykkt',
+        editorId: 'editor-1',
+        editorUsername: 'editor1',
+      });
+      service.approveEdit(approvedId, 'reviewer-1', 'reviewer1');
+      // Backdate so editor-1's approval is clearly the OLDER (losing) one.
+      db.prepare(
+        `UPDATE segment_edits SET reviewed_at = datetime('now', '-1 hour') WHERE id = ?`
+      ).run(approvedId);
+
+      const { id: rejectedId } = service.saveSegmentEdit({
+        book: 'testbook',
+        chapter: 1,
+        moduleId: 'm00001',
+        segmentId: 'm00001:para:fs-id002',
+        originalContent: 'original',
+        editedContent: 'editor-1 hafnað tilraun',
+        editorId: 'editor-1',
+        editorUsername: 'editor1',
+      });
+      service.rejectEdit(rejectedId, 'reviewer-1', 'reviewer1', 'nei');
+
+      const { id: winnerId } = service.saveSegmentEdit({
+        book: 'testbook',
+        chapter: 1,
+        moduleId: 'm00001',
+        segmentId: 'm00001:para:fs-id002',
+        originalContent: 'original',
+        editedContent: 'editor-2 nýrri samþykkt',
+        editorId: 'editor-2',
+        editorUsername: 'editor2',
+      });
+      service.approveEdit(winnerId, 'reviewer-1', 'reviewer1');
+
+      let result;
+      expect(() => {
+        result = service.applyApprovedEdits('testbook', 1, 'm00001');
+      }).not.toThrow();
+      expect(existsSync(result.savedPath)).toBe(true);
+
+      // The loser is 'superseded', not 'rejected' — the latter would collide
+      // with editor-1's standing rejected row under the pre-039 schema.
+      const loser = service.getEditById(approvedId);
+      expect(loser.status).toBe('superseded');
+      const standingRejected = service.getEditById(rejectedId);
+      expect(standingRejected.status).toBe('rejected'); // untouched, still stands
+    });
+  });
+
+  describe('superseded rows are invisible to effective content and review stamping', () => {
+    beforeEach(() => {
+      db.exec('DELETE FROM module_reviews');
+    });
+
+    it('buildEffectiveSegments ignores superseded rows (withdraw-after-supersede regression)', () => {
+      const segmentId = 'm00001:para:fs-id002';
+      const { id: v1Id } = service.saveSegmentEdit({
+        book: 'testbook',
+        chapter: 1,
+        moduleId: 'm00001',
+        segmentId,
+        originalContent: 'original',
+        editedContent: 'fyrsta breyting',
+        editorId: 'editor-1',
+        editorUsername: 'editor1',
+      });
+      service.rejectEdit(v1Id, 'reviewer-1', 'reviewer1', 'nei');
+      const { id: v2Id } = service.saveSegmentEdit({
+        // Same editor re-saving supersedes v1 (save-time supersede).
+        book: 'testbook',
+        chapter: 1,
+        moduleId: 'm00001',
+        segmentId,
+        originalContent: 'original',
+        editedContent: 'onnur breyting',
+        editorId: 'editor-1',
+        editorUsername: 'editor1',
+      });
+      service.deleteSegmentEdit(v2Id, 'editor-1'); // withdraw v2 (pending → delete)
+
+      // Only v1 remains, and it's 'superseded' — it must never resurface as
+      // the "latest non-rejected" edit; the baseline (MT) content must win.
+      const segments = service.buildEffectiveSegments('testbook', 1, 'm00001');
+      const seg = segments.find((s) => s.segmentId === segmentId);
+      expect(seg.isContent).toBe('Þetta er önnur efnisgrein.');
+    });
+
+    it('buildEffectiveSegments returns baseline when the only non-rejected row is superseded (sharper resurface regression)', () => {
+      // save v1 → reject v1 → save v2 (v1 becomes superseded) → reject v2.
+      // The only non-rejected row on the segment is now v1 ('superseded') —
+      // it must NOT resurface as effective content.
+      const segmentId = 'm00001:para:fs-id002';
+      const { id: v1Id } = service.saveSegmentEdit({
+        book: 'testbook',
+        chapter: 1,
+        moduleId: 'm00001',
+        segmentId,
+        originalContent: 'original',
+        editedContent: 'fyrsta breyting',
+        editorId: 'editor-1',
+        editorUsername: 'editor1',
+      });
+      service.rejectEdit(v1Id, 'reviewer-1', 'reviewer1', 'nei');
+      const { id: v2Id } = service.saveSegmentEdit({
+        book: 'testbook',
+        chapter: 1,
+        moduleId: 'm00001',
+        segmentId,
+        originalContent: 'original',
+        editedContent: 'onnur breyting',
+        editorId: 'editor-1',
+        editorUsername: 'editor1',
+      });
+      service.rejectEdit(v2Id, 'reviewer-1', 'reviewer1', 'nei aftur');
+
+      const rows = service.getSegmentEdits('testbook', 'm00001', segmentId);
+      expect(rows.find((r) => r.id === v1Id).status).toBe('superseded');
+      expect(rows.find((r) => r.id === v2Id).status).toBe('rejected');
+
+      const segments = service.buildEffectiveSegments('testbook', 1, 'm00001');
+      const seg = segments.find((s) => s.segmentId === segmentId);
+      expect(seg.isContent).toBe('Þetta er önnur efnisgrein.'); // baseline, not v1's content
+    });
+
+    it('submitModuleForReview does not stamp superseded rows into the new review', () => {
+      const segmentId = 'm00001:para:fs-id002';
+      const { id: v1Id } = service.saveSegmentEdit({
+        book: 'testbook',
+        chapter: 1,
+        moduleId: 'm00001',
+        segmentId,
+        originalContent: 'original',
+        editedContent: 'fyrsta breyting',
+        editorId: 'editor-1',
+        editorUsername: 'editor1',
+      });
+      service.rejectEdit(v1Id, 'reviewer-1', 'reviewer1', 'nei');
+      const { id: v2Id } = service.saveSegmentEdit({
+        // v1 -> superseded; v2 is the fresh pending row.
+        book: 'testbook',
+        chapter: 1,
+        moduleId: 'm00001',
+        segmentId,
+        originalContent: 'original',
+        editedContent: 'onnur breyting',
+        editorId: 'editor-1',
+        editorUsername: 'editor1',
+      });
+
+      const review = service.submitModuleForReview({
+        book: 'testbook',
+        chapter: 1,
+        moduleId: 'm00001',
+        submittedBy: 'editor-1',
+        submittedByUsername: 'editor1',
+      });
+
+      const rows = service.getSegmentEdits('testbook', 'm00001', segmentId);
+      const superseded = rows.find((r) => r.id === v1Id);
+      const pending = rows.find((r) => r.id === v2Id);
+      expect(superseded.status).toBe('superseded');
+      expect(superseded.review_id).toBeNull();
+      expect(pending.review_id).toBe(review.id);
+    });
   });
 });
 
@@ -1058,6 +1535,56 @@ describe('Review queue and edge cases', () => {
     const c2 = service.completeModuleReview(review2, 'reviewer-1', 'reviewer1', null);
     expect(c2.status).toBe('changes_requested');
     expect(c2.allReviewed).toBe(false);
+  });
+
+  it('completeModuleReview — zero-approved completion (submit → discuss → revise) records changes_requested, not approved', () => {
+    // Reachable sequence (final-review wave, item 1d): submit stamps the edit
+    // to this review → discuss → editor revises. The revision supersedes the
+    // discussed row and creates a FRESH pending row with review_id NULL (not
+    // scoped to this review — it belongs to a future cycle, same as the
+    // "edit created after submit" test above). Completing this review then
+    // sees pending=0 and discuss=0 for review_id=? (its only row is now
+    // 'superseded') — allReviewed alone would say true with 0 approved
+    // edits. Pre-039 the same human actions produced 'changes_requested';
+    // without the 1d fix this recorded 'approved' with nothing approved, and
+    // the route's auto-apply then threw 'No approved edits to apply for this
+    // module'.
+    const { id: editId } = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'Original',
+      editedContent: 'Breytt texti',
+      editorId: 'user-1',
+      editorUsername: 'editor1',
+    });
+    const { id: reviewId } = service.submitModuleForReview({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      submittedBy: 'user-1',
+      submittedByUsername: 'editor1',
+    });
+    service.markForDiscussion(editId, 'reviewer-1', 'reviewer1', 'Þarf að ræða þetta');
+
+    service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'Original',
+      editedContent: 'Endurskoðaður texti',
+      editorId: 'user-1',
+      editorUsername: 'editor1',
+    });
+
+    let result;
+    expect(() => {
+      result = service.completeModuleReview(reviewId, 'reviewer-1', 'reviewer1', null);
+    }).not.toThrow();
+    expect(result.status).toBe('changes_requested');
+    expect(result.counts.approved).toBe(0);
   });
 
   it('submitModuleForReview — already pending → throws', () => {

@@ -768,6 +768,7 @@
     // - Own pending edit -> can re-edit
     // - Rejected edit -> can try again
     // - Discuss edit -> can re-edit based on feedback
+    // - Superseded edit (latest, e.g. after a withdraw) -> can re-edit
     // - Published (approved + applied) -> can revise: a new edit supersedes the
     //   old one on the next "Vista + Birta". Open to any editor, since published
     //   content is settled like baseline. loadModuleForEditing reads the
@@ -777,6 +778,7 @@
       !latestEdit ||
       latestEdit.status === 'rejected' ||
       latestEdit.status === 'discuss' ||
+      latestEdit.status === 'superseded' ||
       (latestEdit.status === 'pending' && latestEdit.editor_username === userName) ||
       (latestEdit.status === 'approved' &&
         !latestEdit.applied_at &&
@@ -801,6 +803,19 @@
               <button class="btn btn-sm btn-reject" onclick="reviewEdit(${latestEdit.id}, 'reject')" title="Hafna">&#10007;</button>
               <button class="btn btn-sm btn-discuss" onclick="reviewEdit(${latestEdit.id}, 'discuss')" title="Ræða">&#128172;</button>
             </div>
+          `
+              : ''
+          }
+          ${
+            // Stale discuss/rejected rows: a head-editor can reopen the edit for
+            // fresh review without waiting for the editor to submit a new revision.
+            isHeadEditor &&
+            (latestEdit.status === 'discuss' || latestEdit.status === 'rejected') &&
+            !latestEdit.applied_at
+              ? `
+            <button class="btn btn-sm btn-reopen" onclick="reopenEdit(${latestEdit.id})" style="margin-top: 0.25rem;" title="${UI.tooltips.reopenEdit}">
+              &#8634; Opna aftur
+            </button>
           `
               : ''
           }
@@ -1317,6 +1332,20 @@
     }
   }
 
+  async function reopenEdit(editId) {
+    try {
+      await fetchJson(`${API_BASE}/edit/${editId}/return-to-pending`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+      });
+
+      await loadModule(currentModuleId);
+    } catch (err) {
+      alert(UI.common.errorPrefix + err.message);
+    }
+  }
+
   // ================================================================
   // SUBMIT FOR REVIEW
   // ================================================================
@@ -1718,6 +1747,39 @@
       // Start polling for job status
       pollJobStatus(data.jobId);
     } catch (err) {
+      if (err.data && err.data.requiresConfirmation) {
+        if (window.confirm(err.data.warning || err.message)) {
+          try {
+            const data = await fetchJson(`/api/pipeline/${action}`, {
+              method: 'POST',
+              credentials: 'include',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                book: currentBook,
+                chapter: currentChapter,
+                moduleId: currentModuleId !== 'all' ? currentModuleId : undefined,
+                track,
+                confirmed: true,
+              }),
+            });
+            pollJobStatus(data.jobId);
+            return;
+          } catch (retryErr) {
+            err = retryErr;
+          }
+        } else {
+          // User declined the confirmation dialog — this is not a failure,
+          // just a cancelled action. Reset to a neutral idle state instead
+          // of falling through to the red failure badge/'Error:' line below.
+          badge.style.display = 'none';
+          badge.className = 'pipeline-status-badge';
+          badge.textContent = '';
+          output.classList.remove('active');
+          output.textContent = UI.pipeline.cancelled;
+          setPipelineButtonsDisabled(false);
+          return;
+        }
+      }
       badge.textContent = UI.common.error;
       badge.className = 'pipeline-status-badge failed';
       output.textContent += `Error: ${err.message}\n`;
@@ -2576,6 +2638,7 @@
   window.closeTermPopup = closeTermPopup;
   window.reviewEdit = reviewEdit;
   window.unapproveEdit = unapproveEdit;
+  window.reopenEdit = reopenEdit;
   window.showTermPopup = showTermPopup;
   window.insertTermFromLookup = insertTermFromLookup;
   window.insertRepetition = insertRepetition;

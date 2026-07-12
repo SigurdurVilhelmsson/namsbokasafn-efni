@@ -17,6 +17,7 @@ const require = createRequire(import.meta.url);
 const Database = require('better-sqlite3');
 
 const readModel = require('../services/dashboardReadModel');
+const { createSegmentEditsSchema } = require('./helpers/segmentEditsSchema.cjs');
 
 function createTestDb() {
   const db = new Database(':memory:');
@@ -24,28 +25,7 @@ function createTestDb() {
 
   // Mirror migration 008 + 009 schema (segment_edits only — read model
   // intentionally does NOT touch module_reviews).
-  db.exec(`
-    CREATE TABLE segment_edits (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      book TEXT NOT NULL,
-      chapter INTEGER NOT NULL,
-      module_id TEXT NOT NULL,
-      segment_id TEXT NOT NULL,
-      original_content TEXT NOT NULL,
-      edited_content TEXT NOT NULL,
-      category TEXT,
-      editor_note TEXT,
-      status TEXT NOT NULL DEFAULT 'pending',
-      editor_id TEXT NOT NULL,
-      editor_username TEXT NOT NULL,
-      reviewer_id TEXT,
-      reviewer_username TEXT,
-      reviewer_note TEXT,
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      reviewed_at DATETIME,
-      applied_at DATETIME
-    );
-  `);
+  createSegmentEditsSchema(db);
 
   return db;
 }
@@ -124,12 +104,13 @@ describe('getAdminHeadlineCount', () => {
     expect(readModel.getAdminHeadlineCount()).toBe(0);
   });
 
-  it('counts only pending edits, ignoring approved/rejected/discuss/applied', () => {
+  it('counts only pending edits, ignoring approved/rejected/discuss/superseded/applied', () => {
     insertEdit(db, { status: 'pending' });
-    insertEdit(db, { status: 'pending' });
+    insertEdit(db, { status: 'pending', segment_id: 'm00001:para:fs-id002' });
     insertEdit(db, { status: 'approved' });
     insertEdit(db, { status: 'rejected' });
     insertEdit(db, { status: 'discuss' });
+    insertEdit(db, { status: 'superseded', segment_id: 'm00001:para:fs-id003' });
     expect(readModel.getAdminHeadlineCount()).toBe(2);
   });
 
@@ -162,16 +143,24 @@ describe('getGlobalPendingEdits', () => {
 
   it('filters by chapter', () => {
     insertEdit(db, { chapter: 1 });
-    insertEdit(db, { chapter: 5 });
+    insertEdit(db, { chapter: 5, segment_id: 'm00001:para:fs-id002' });
     expect(readModel.getGlobalPendingEdits({ chapter: 5 })).toHaveLength(1);
   });
 
   it('filters by editor', () => {
-    insertEdit(db, { editor_username: 'annask' });
-    insertEdit(db, { editor_username: 'magnusg' });
+    // Two distinct editors: different editor_id AND editor_username, so the
+    // rows are genuinely independent pending edits (same segment is a valid
+    // real-world case — two editors both proposing a fix for the same spot).
+    insertEdit(db, { editor_id: 'user-1', editor_username: 'annask' });
+    insertEdit(db, { editor_id: 'user-2', editor_username: 'magnusg' });
+
     const onlyAnna = readModel.getGlobalPendingEdits({ editor: 'annask' });
     expect(onlyAnna).toHaveLength(1);
     expect(onlyAnna[0].editor_username).toBe('annask');
+
+    const onlyMagnus = readModel.getGlobalPendingEdits({ editor: 'magnusg' });
+    expect(onlyMagnus).toHaveLength(1);
+    expect(onlyMagnus[0].editor_username).toBe('magnusg');
   });
 
   it('respects limit', () => {
@@ -208,6 +197,23 @@ describe('getUserActionableEdits', () => {
     expect(result.map((r) => r.status).sort()).toEqual(['discuss', 'rejected']);
   });
 
+  // Design D5 (final-review wave, item 2c): a 'superseded' row is the exit
+  // path for a stale discuss/rejected edit — the editor already answered it
+  // with a new revision, so it must NOT resurface as something still needing
+  // a response, even though it shares the same editor.
+  it('does not return superseded edits for the user', () => {
+    insertEdit(db, { editor_username: 'annask', status: 'rejected' });
+    insertEdit(db, {
+      editor_username: 'annask',
+      status: 'superseded',
+      segment_id: 'm00001:para:fs-id002',
+    });
+
+    const result = readModel.getUserActionableEdits('annask');
+    expect(result).toHaveLength(1);
+    expect(result.map((r) => r.status)).toEqual(['rejected']);
+  });
+
   it('returns empty for unknown user', () => {
     expect(readModel.getUserActionableEdits('nobody')).toEqual([]);
   });
@@ -230,7 +236,11 @@ describe('getUserHeadlineCounts', () => {
     insertEdit(db, { editor_username: 'annask', status: 'rejected' });
     insertEdit(db, { editor_username: 'annask', status: 'discuss' });
     insertEdit(db, { editor_username: 'annask', status: 'pending' });
-    insertEdit(db, { editor_username: 'annask', status: 'pending' });
+    insertEdit(db, {
+      editor_username: 'annask',
+      status: 'pending',
+      segment_id: 'm00001:para:fs-id002',
+    });
     insertEdit(db, {
       editor_username: 'annask',
       status: 'approved',
@@ -243,7 +253,18 @@ describe('getUserHeadlineCounts', () => {
       reviewed_at: '2026-01-01 12:00:00',
     });
     // Other user — must not affect counts
-    insertEdit(db, { editor_username: 'magnusg', status: 'pending' });
+    insertEdit(db, {
+      editor_username: 'magnusg',
+      status: 'pending',
+      segment_id: 'm00001:para:fs-id003',
+    });
+    // Superseded (design D5) — the editor already answered this one with a
+    // newer revision; must not count toward actionable or any other tile.
+    insertEdit(db, {
+      editor_username: 'annask',
+      status: 'superseded',
+      segment_id: 'm00001:para:fs-id004',
+    });
 
     const counts = readModel.getUserHeadlineCounts('annask');
     expect(counts).toEqual({
@@ -265,7 +286,11 @@ describe('getEditorWorkload', () => {
 
   it('aggregates per editor over the time window', () => {
     insertEdit(db, { editor_username: 'annask', status: 'pending' });
-    insertEdit(db, { editor_username: 'annask', status: 'pending' });
+    insertEdit(db, {
+      editor_username: 'annask',
+      status: 'pending',
+      segment_id: 'm00001:para:fs-id002',
+    });
     insertEdit(db, { editor_username: 'annask', status: 'approved' });
     insertEdit(db, { editor_username: 'magnusg', status: 'rejected' });
 

@@ -16,6 +16,7 @@ const require = createRequire(import.meta.url);
 const Database = require('better-sqlite3');
 
 const service = require('../services/segmentEditorService');
+const { createSegmentEditsSchema } = require('./helpers/segmentEditsSchema.cjs');
 
 const BOOK = 'testbook';
 const CHAPTER = 1;
@@ -24,23 +25,7 @@ const MODULE = 'm00001';
 function createTestDb() {
   const db = new Database(':memory:');
   db.pragma('journal_mode = WAL');
-  db.exec(`
-    CREATE TABLE segment_edits (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      book TEXT NOT NULL,
-      chapter INTEGER NOT NULL,
-      module_id TEXT NOT NULL,
-      segment_id TEXT NOT NULL,
-      original_content TEXT NOT NULL,
-      edited_content TEXT NOT NULL,
-      status TEXT NOT NULL DEFAULT 'pending',
-      editor_id TEXT NOT NULL,
-      editor_username TEXT NOT NULL,
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      reviewed_at DATETIME,
-      applied_at DATETIME
-    );
-  `);
+  createSegmentEditsSchema(db);
   return db;
 }
 

@@ -85,6 +85,9 @@ router.post(
       if (!stageStatus.extraction?.complete) {
         return res.status(409).json({
           requiresConfirmation: true,
+          error: 'Staðfestingar krafist',
+          message:
+            'Extraction has not been run for this chapter. Inject may fail without extracted segments.',
           warning:
             'Extraction has not been run for this chapter. Inject may fail without extracted segments.',
         });
@@ -132,6 +135,9 @@ router.post(
       if (!stageStatus.injection?.complete) {
         return res.status(409).json({
           requiresConfirmation: true,
+          error: 'Staðfestingar krafist',
+          message:
+            'Injection has not been run for this chapter. Render requires translated CNXML from inject.',
           warning:
             'Injection has not been run for this chapter. Render requires translated CNXML from inject.',
         });
@@ -179,6 +185,9 @@ router.post(
       if (!stageStatus.extraction?.complete) {
         return res.status(409).json({
           requiresConfirmation: true,
+          error: 'Staðfestingar krafist',
+          message:
+            'Extraction has not been run for this chapter. The pipeline requires extracted segments.',
           warning:
             'Extraction has not been run for this chapter. The pipeline requires extracted segments.',
         });

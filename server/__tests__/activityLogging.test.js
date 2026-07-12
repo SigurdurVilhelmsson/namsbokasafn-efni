@@ -75,6 +75,7 @@ describe('ACTIVITY_TYPES', () => {
     expect(ACTIVITY_TYPES.SEGMENT_EDIT_REJECTED).toBe('segment_edit_rejected');
     expect(ACTIVITY_TYPES.SEGMENT_EDIT_DISCUSS).toBe('segment_edit_discuss');
     expect(ACTIVITY_TYPES.SEGMENT_EDITS_APPLIED).toBe('segment_edits_applied');
+    expect(ACTIVITY_TYPES.SEGMENT_EDIT_REOPENED).toBe('segment_edit_reopened');
   });
 
   it('contains localization suggestion action types', () => {
@@ -86,9 +87,10 @@ describe('ACTIVITY_TYPES', () => {
     expect(ACTIVITY_TYPES.SUGGESTIONS_SYNCED).toBe('suggestions_synced');
   });
 
-  it('has 22 activity types total', () => {
-    // 16 pre-existing + 6 suggestions-family members added for B1-F1 (server/services/activityLog.js).
-    expect(Object.keys(ACTIVITY_TYPES)).toHaveLength(22);
+  it('has 23 activity types total', () => {
+    // 16 pre-existing + 6 suggestions-family members added for B1-F1 + SEGMENT_EDIT_REOPENED
+    // (head-editor manual exit path, server/services/activityLog.js).
+    expect(Object.keys(ACTIVITY_TYPES)).toHaveLength(23);
   });
 
   it('all values are non-empty strings', () => {

@@ -101,37 +101,81 @@ function saveSegmentEdit(params) {
   }
 
   if (existing) {
-    // Update existing edit
-    conn
-      .prepare(
-        `UPDATE segment_edits
-       SET edited_content = ?, category = ?, editor_note = ?, created_at = CURRENT_TIMESTAMP
-       WHERE id = ?`
-      )
-      .run(editedContent, category || null, editorNote || null, existing.id);
+    // Update existing edit. Same idempotent supersede sweep as the INSERT
+    // path below, wrapped in its own transaction: pre-039 saves never
+    // superseded a stale discuss/rejected row, so production can hold a
+    // pending row that COEXISTS with an older stranded discuss/rejected row
+    // by the same editor+segment (the "can never coexist" reasoning below
+    // only holds for rows created post-039). Without this sweep, every
+    // future save on such a segment takes this UPDATE branch — never the
+    // INSERT branch — so the stale row would never heal, and
+    // returnEditToPending would keep 409ing with PENDING_EXISTS forever.
+    // The sweep is idempotent (no-op once there's nothing left to supersede),
+    // so this costs nothing on the common post-039 case where it never
+    // matches anything.
+    const updateWithSupersede = conn.transaction(() => {
+      conn
+        .prepare(
+          `UPDATE segment_edits SET status = 'superseded'
+           WHERE book = ? AND module_id = ? AND segment_id = ? AND editor_id = ?
+             AND status IN ('discuss', 'rejected')`
+        )
+        .run(book, moduleId, segmentId, editorId);
+
+      conn
+        .prepare(
+          `UPDATE segment_edits
+         SET edited_content = ?, category = ?, editor_note = ?, created_at = CURRENT_TIMESTAMP
+         WHERE id = ?`
+        )
+        .run(editedContent, category || null, editorNote || null, existing.id);
+    });
+    updateWithSupersede();
     return { id: existing.id, updated: true };
   }
 
-  // Create new edit
-  const result = conn
-    .prepare(
-      `INSERT INTO segment_edits
-     (book, chapter, module_id, segment_id, original_content, edited_content,
-      category, editor_note, editor_id, editor_username)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
-    )
-    .run(
-      book,
-      chapter,
-      moduleId,
-      segmentId,
-      originalContent,
-      editedContent,
-      category || null,
-      editorNote || null,
-      editorId,
-      editorUsername
-    );
+  // Create new edit. A fresh revision is also the exit path for the editor's
+  // own stale discuss/rejected rows on this segment (batch 2): they become
+  // 'superseded' — reviewer note preserved as history — so review actions on
+  // the new row can't collide and the old row stops counting as awaiting work.
+  // Same transaction as the INSERT: a save either fully lands or fully doesn't.
+  //
+  // Scoping note: the update-existing-pending branch above runs the identical
+  // sweep for the same reason — see its comment. Under normal post-039
+  // operation a pending row can only exist after an earlier INSERT already
+  // superseded the stale rows, so the sweep here is usually a no-op by the
+  // time it runs on the update path; it stays load-bearing for legacy
+  // pre-039 data where that invariant doesn't hold.
+  const insertWithSupersede = conn.transaction(() => {
+    conn
+      .prepare(
+        `UPDATE segment_edits SET status = 'superseded'
+         WHERE book = ? AND module_id = ? AND segment_id = ? AND editor_id = ?
+           AND status IN ('discuss', 'rejected')`
+      )
+      .run(book, moduleId, segmentId, editorId);
+
+    return conn
+      .prepare(
+        `INSERT INTO segment_edits
+       (book, chapter, module_id, segment_id, original_content, edited_content,
+        category, editor_note, editor_id, editor_username)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+      )
+      .run(
+        book,
+        chapter,
+        moduleId,
+        segmentId,
+        originalContent,
+        editedContent,
+        category || null,
+        editorNote || null,
+        editorId,
+        editorUsername
+      );
+  });
+  const result = insertWithSupersede();
 
   // MT edit-lock (Track C2): once a module has been opened for editing, its MT
   // output must never be silently re-run and overwritten (see tools/lib/mt-lock.cjs).
@@ -186,7 +230,8 @@ function getModuleEdits(book, moduleId, statusFilter) {
 
 /**
  * Build the module's "to-be-published" segments: faithful/MT baseline with the
- * latest non-rejected edit per segment overlaid (what apply would write).
+ * latest live edit per segment (rejected and superseded rows are skipped)
+ * overlaid (what apply would write).
  *
  * @returns {Array<{segmentId, enContent, isContent}>}
  */
@@ -194,7 +239,7 @@ function buildEffectiveSegments(book, chapter, moduleId) {
   const data = segmentParser.loadModuleForEditing(book, chapter, moduleId);
   const latestBySeg = {};
   for (const e of getModuleEdits(book, moduleId)) {
-    if (e.status === 'rejected') continue;
+    if (e.status === 'rejected' || e.status === 'superseded') continue;
     const cur = latestBySeg[e.segment_id];
     if (!cur || e.id > cur.id) latestBySeg[e.segment_id] = e;
   }
@@ -394,7 +439,11 @@ function markForDiscussion(editId, reviewerId, reviewerUsername, reviewerNote) {
 
 /**
  * Revert an approved edit back to pending (only if not yet applied to files).
- * Clears all reviewer fields so the edit can be re-reviewed.
+ * Clears all reviewer fields so the edit can be re-reviewed. Refused when the
+ * same editor already has a pending row on the segment (mirror of
+ * returnEditToPending's guard): under the partial unique index on
+ * (book, module_id, segment_id, editor_id) WHERE status = 'pending', flipping
+ * this row to 'pending' too would otherwise hit a raw SQLite UNIQUE error.
  */
 function unapproveEdit(editId) {
   const conn = getDb();
@@ -402,6 +451,67 @@ function unapproveEdit(editId) {
   if (!edit) throw new Error('Edit not found');
   if (edit.status !== 'approved') throw new Error('Edit is not approved');
   if (edit.applied_at) throw new Error('Edit has already been applied to files');
+
+  const pending = conn
+    .prepare(
+      `SELECT id FROM segment_edits
+     WHERE book = ? AND module_id = ? AND segment_id = ? AND editor_id = ?
+       AND status = 'pending'`
+    )
+    .get(edit.book, edit.module_id, edit.segment_id, edit.editor_id);
+  if (pending) {
+    const err = new Error(
+      'Yfirlesarinn á nýrri breytingu í bið á þessum bút — farið yfir þá breytingu í staðinn.'
+    );
+    err.code = 'PENDING_EXISTS';
+    throw err;
+  }
+
+  conn
+    .prepare(
+      `UPDATE segment_edits
+     SET status = 'pending',
+         reviewer_id = NULL,
+         reviewer_username = NULL,
+         reviewer_note = NULL,
+         reviewed_at = NULL
+     WHERE id = ?`
+    )
+    .run(editId);
+
+  return conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+}
+
+/**
+ * Return a discussed/rejected edit to pending for re-review (head-editor
+ * manual exit path — mirror of unapproveEdit). Refused when the same editor
+ * already has a pending row on the segment: the one-pending invariant would
+ * be violated, and that pending row IS the editor's answer to the old one
+ * (it supersedes it on save).
+ */
+function returnEditToPending(editId) {
+  const conn = getDb();
+  const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+  if (!edit) throw new Error('Edit not found');
+  if (edit.status !== 'discuss' && edit.status !== 'rejected') {
+    throw new Error('Edit is not in discuss/rejected status');
+  }
+  if (edit.applied_at) throw new Error('Edit has already been applied to files');
+
+  const pending = conn
+    .prepare(
+      `SELECT id FROM segment_edits
+     WHERE book = ? AND module_id = ? AND segment_id = ? AND editor_id = ?
+       AND status = 'pending'`
+    )
+    .get(edit.book, edit.module_id, edit.segment_id, edit.editor_id);
+  if (pending) {
+    const err = new Error(
+      'Yfirlesarinn á nýrri breytingu í bið á þessum bút — farið yfir þá breytingu í staðinn.'
+    );
+    err.code = 'PENDING_EXISTS';
+    throw err;
+  }
 
   conn
     .prepare(
@@ -458,7 +568,7 @@ function submitModuleForReview(params) {
   // window (which excluded a review's own edits, since they're made before
   // submission). See migration 038.
   //
-  // Claimed = non-rejected edits that are either not yet tied to a review
+  // Claimed = live edits (not rejected/superseded) that are either not yet tied to a review
   // (review_id IS NULL — new/self-approved edits) OR still unresolved
   // (pending/discuss — re-claimed from a prior completed cycle so the
   // changes-requested → fix → resubmit loop attributes them to the new review).
@@ -473,7 +583,7 @@ function submitModuleForReview(params) {
   const stampEdits = conn.prepare(
     `UPDATE segment_edits SET review_id = ?
      WHERE book = ? AND module_id = ?
-       AND status != 'rejected'
+       AND status NOT IN ('rejected', 'superseded')
        AND (review_id IS NULL OR status IN ('pending', 'discuss'))`
   );
 
@@ -561,7 +671,21 @@ function completeModuleReview(reviewId, reviewerId, reviewerUsername, notes) {
     .get(reviewId);
 
   const allReviewed = counts.pending === 0 && counts.discuss === 0;
-  const newStatus = allReviewed ? 'approved' : 'changes_requested';
+  // Zero-approved completion (final-review wave, item 1d): allReviewed can go
+  // true with nothing actually approved — e.g. submit (edit stamped to this
+  // review) → discuss → editor revises (the discussed row becomes
+  // 'superseded'; the fresh pending row is a NEW row with review_id NULL, so
+  // it isn't scoped to this review) → complete sees pending=0, discuss=0 for
+  // review_id=? and used to record 'approved' with counts.approved still 0.
+  // The route then auto-applies on 'approved', and applyApprovedEdits throws
+  // ('No approved edits to apply for this module') because there's nothing
+  // to apply. Pre-039 the same sequence of human actions produced
+  // 'changes_requested'. Only override when the review actually had edits
+  // stamped to it (counts.total > 0) — an edge-case review submitted with
+  // zero edits keeps the old allReviewed result instead of being forced to
+  // changes_requested for no reason.
+  const hasApprovals = counts.approved > 0 || counts.total === 0;
+  const newStatus = allReviewed && hasApprovals ? 'approved' : 'changes_requested';
 
   conn
     .prepare(
@@ -803,13 +927,13 @@ function applyApprovedEdits(book, chapter, moduleId) {
       );
     }
 
-    // 6. Mark winning edits as applied; mark superseded edits as rejected
+    // 6. Mark winning edits as applied; mark losing approved edits as superseded
     const winnerIds = Object.values(approvedLookup).map((e) => e.id);
     const markApplied = conn.prepare(
       `UPDATE segment_edits SET applied_at = CURRENT_TIMESTAMP WHERE id = ?`
     );
     const markSuperseded = conn.prepare(
-      `UPDATE segment_edits SET status = 'rejected', reviewer_note = 'Leyst úr gildi af nýrri samþykktri breytingu', applied_at = CURRENT_TIMESTAMP WHERE id = ?`
+      `UPDATE segment_edits SET status = 'superseded', reviewer_note = 'Leyst úr gildi af nýrri samþykktri breytingu', applied_at = CURRENT_TIMESTAMP WHERE id = ?`
     );
 
     for (const id of winnerIds) {
@@ -1170,11 +1294,13 @@ module.exports = {
   getSegmentEdits,
   getEditById,
   deleteSegmentEdit,
+  buildEffectiveSegments,
   // Review actions
   approveEdit,
   rejectEdit,
   markForDiscussion,
   unapproveEdit,
+  returnEditToPending,
   // Module reviews
   submitModuleForReview,
   getPendingModuleReviews,

@@ -667,7 +667,38 @@ router.post(
         /* fire-and-forget */
       }
     } catch (err) {
-      res.status(400).json({ error: err.message });
+      res.status(err.code === 'PENDING_EXISTS' ? 409 : 400).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * POST /edit/:editId/return-to-pending
+ * Return a discussed/rejected edit to pending for re-review (manual exit path).
+ */
+router.post(
+  '/edit/:editId/return-to-pending',
+  requireAuth,
+  requireHeadEditorFor(bookFromEditId),
+  (req, res) => {
+    try {
+      const edit = segmentEditor.returnEditToPending(parseInt(req.params.editId, 10));
+      try {
+        activityLog.log({
+          type: activityLog.ACTIVITY_TYPES.SEGMENT_EDIT_REOPENED,
+          userId: String(req.user.id),
+          username: req.user.username,
+          book: edit.book,
+          chapter: edit.chapter,
+          section: edit.module_id,
+          description: `${req.user.username} opnaði aftur breytingu á ${edit.module_id}:${edit.segment_id}`,
+        });
+      } catch {
+        /* fire-and-forget */
+      }
+      res.json({ success: true, edit });
+    } catch (err) {
+      res.status(err.code === 'PENDING_EXISTS' ? 409 : 400).json({ error: err.message });
     }
   }
 );

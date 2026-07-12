@@ -55,8 +55,9 @@ function classifyOccurrence(propagatedText, occ) {
 }
 
 /**
- * For each occurrence, re-check eligibility against the latest non-rejected edit
- * and (if eligible) insert a pending segment_edit. Cross-module write.
+ * For each occurrence, re-check eligibility against the latest live edit
+ * (rejected and superseded rows don't count) and (if eligible) insert a
+ * pending segment_edit. Cross-module write.
  * @returns {{ created: Array, skipped: Array }}
  */
 function createPropagatedEdits(
@@ -65,7 +66,7 @@ function createPropagatedEdits(
 ) {
   const findEdit = conn.prepare(
     `SELECT id, edited_content, status, editor_id FROM segment_edits
-     WHERE book = ? AND module_id = ? AND segment_id = ? AND status != 'rejected'
+     WHERE book = ? AND module_id = ? AND segment_id = ? AND status NOT IN ('rejected', 'superseded')
      ORDER BY id DESC LIMIT 1`
   );
   const insert = conn.prepare(
@@ -126,16 +127,16 @@ function createPropagatedEdits(
 }
 
 /**
- * The text that would be propagated from a source segment: its latest
- * non-rejected edit's content, or null if it has none (caller falls back to the
- * file text). Keeps the preview's classification consistent with what propagate
- * actually writes.
+ * The text that would be propagated from a source segment: its latest live
+ * edit's content (rejected and superseded rows don't count), or null if it
+ * has none (caller falls back to the file text). Keeps the preview's
+ * classification consistent with what propagate actually writes.
  */
 function latestEditedText(book, moduleId, segmentId) {
   const row = getDb()
     .prepare(
       `SELECT edited_content FROM segment_edits
-       WHERE book = ? AND module_id = ? AND segment_id = ? AND status != 'rejected'
+       WHERE book = ? AND module_id = ? AND segment_id = ? AND status NOT IN ('rejected', 'superseded')
        ORDER BY id DESC LIMIT 1`
     )
     .get(book, moduleId, segmentId);
@@ -151,7 +152,7 @@ function findOccurrences(book, enNorm, { excludeModuleId, excludeSegmentId } = {
   const conn = getDb();
   const findEdit = conn.prepare(
     `SELECT id, edited_content, status, editor_id FROM segment_edits
-     WHERE book = ? AND module_id = ? AND segment_id = ? AND status != 'rejected'
+     WHERE book = ? AND module_id = ? AND segment_id = ? AND status NOT IN ('rejected', 'superseded')
      ORDER BY id DESC LIMIT 1`
   );
   const out = [];

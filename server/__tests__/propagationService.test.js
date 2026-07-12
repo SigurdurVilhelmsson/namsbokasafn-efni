@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const svc = require('../services/propagationService');
+const { createSegmentEditsSchema } = require('./helpers/segmentEditsSchema.cjs');
 
 describe('classifyOccurrence', () => {
   const P = 'Sýra og basi'; // propagated text
@@ -85,15 +86,7 @@ describe('createPropagatedEdits', () => {
 
   function freshDb() {
     const d = new Database(':memory:');
-    d.exec(`
-      CREATE TABLE segment_edits (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        book TEXT NOT NULL, chapter INTEGER NOT NULL, module_id TEXT NOT NULL,
-        segment_id TEXT NOT NULL, original_content TEXT NOT NULL, edited_content TEXT NOT NULL,
-        category TEXT, editor_note TEXT, status TEXT NOT NULL DEFAULT 'pending',
-        editor_id TEXT NOT NULL, editor_username TEXT NOT NULL,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP, reviewed_at DATETIME, applied_at DATETIME
-      );`);
+    createSegmentEditsSchema(d);
     return d;
   }
 
@@ -168,15 +161,7 @@ describe('latestEditedText', () => {
 
   function freshDb() {
     const d = new Database(':memory:');
-    d.exec(`
-      CREATE TABLE segment_edits (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        book TEXT NOT NULL, chapter INTEGER NOT NULL, module_id TEXT NOT NULL,
-        segment_id TEXT NOT NULL, original_content TEXT NOT NULL, edited_content TEXT NOT NULL,
-        category TEXT, editor_note TEXT, status TEXT NOT NULL DEFAULT 'pending',
-        editor_id TEXT NOT NULL, editor_username TEXT NOT NULL,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP, reviewed_at DATETIME, applied_at DATETIME
-      );`);
+    createSegmentEditsSchema(d);
     return d;
   }
 
@@ -184,11 +169,11 @@ describe('latestEditedText', () => {
   const MOD = 'm68664';
   const SEG = 'm68664:abstract:auto-2';
 
-  function insertEdit(d, content, status = 'pending') {
+  function insertEdit(d, content, status = 'pending', appliedAt = null) {
     d.prepare(
-      `INSERT INTO segment_edits (book, chapter, module_id, segment_id, original_content, edited_content, status, editor_id, editor_username)
-       VALUES (?, 1, ?, ?, 'orig', ?, ?, '1', 'tester')`
-    ).run(BOOK, MOD, SEG, content, status);
+      `INSERT INTO segment_edits (book, chapter, module_id, segment_id, original_content, edited_content, status, editor_id, editor_username, applied_at)
+       VALUES (?, 1, ?, ?, 'orig', ?, ?, '1', 'tester', ?)`
+    ).run(BOOK, MOD, SEG, content, status, appliedAt);
   }
 
   it('returns null when no edit exists', () => {
@@ -214,7 +199,9 @@ describe('latestEditedText', () => {
   it('returns the newest non-rejected edit when multiple exist', () => {
     const d = freshDb();
     svc._setTestDb(d);
-    insertEdit(d, 'Þýðing gömul', 'applied');
+    // "applied" is not a status value — applied-ness is `applied_at IS NOT
+    // NULL` on an 'approved' row. Seed the older edit as approved+applied.
+    insertEdit(d, 'Þýðing gömul', 'approved', '2026-01-01 12:00:00');
     insertEdit(d, 'Þýðing ný', 'pending');
     expect(svc.latestEditedText(BOOK, MOD, SEG)).toBe('Þýðing ný');
   });
@@ -225,5 +212,71 @@ describe('latestEditedText', () => {
     insertEdit(d, 'Þýðing 1', 'approved');
     insertEdit(d, 'Þýðing hafnað', 'rejected');
     expect(svc.latestEditedText(BOOK, MOD, SEG)).toBe('Þýðing 1');
+  });
+});
+
+describe('superseded rows are not live content', () => {
+  const Database = require('better-sqlite3');
+
+  function freshDb() {
+    const d = new Database(':memory:');
+    createSegmentEditsSchema(d);
+    return d;
+  }
+
+  const BOOK = 'efnafraedi-2e';
+  const MOD = 'm68664';
+  const SEG = 'm68664:abstract:auto-2';
+
+  const base = {
+    book: BOOK,
+    editorId: '42',
+    editorUsername: 'tester',
+    propagatedText: 'Sýra og basi',
+    category: 'terminology',
+    note: 'Sjálfvirk fjölgun',
+  };
+
+  function insertEdit(d, content, status = 'pending') {
+    d.prepare(
+      `INSERT INTO segment_edits (book, chapter, module_id, segment_id, original_content, edited_content, status, editor_id, editor_username)
+       VALUES (?, 1, ?, ?, 'orig', ?, ?, '1', 'tester')`
+    ).run(BOOK, MOD, SEG, content, status);
+  }
+
+  it("latestEditedText ignores a superseded row even when it's the highest-id non-rejected candidate", () => {
+    const d = freshDb();
+    svc._setTestDb(d);
+    // Lower-id rejected row, then a higher-id superseded row — the superseded
+    // row would win a naive `status != 'rejected'` ORDER BY id DESC LIMIT 1.
+    insertEdit(d, 'Þýðing hafnað eldri', 'rejected');
+    insertEdit(d, 'Þýðing úrelt', 'superseded');
+    expect(svc.latestEditedText(BOOK, MOD, SEG)).toBeNull();
+  });
+
+  it('createPropagatedEdits treats a superseded-only occurrence as propagatable, not conflict', () => {
+    const d = freshDb();
+    // Same shape: an older rejected row, then a newer superseded row is the
+    // only non-rejected candidate for this segment.
+    d.prepare(
+      `INSERT INTO segment_edits (book, chapter, module_id, segment_id, original_content, edited_content, status, editor_id, editor_username)
+       VALUES (?, 1, 'm005', 'm005:para:e', 'orig', 'gömul höfnun', 'rejected', '7', 'someone')`
+    ).run(base.book);
+    d.prepare(
+      `INSERT INTO segment_edits (book, chapter, module_id, segment_id, original_content, edited_content, status, editor_id, editor_username)
+       VALUES (?, 1, 'm005', 'm005:para:e', 'orig', 'úrelt eldri þýðing', 'superseded', '7', 'someone')`
+    ).run(base.book);
+    const occurrences = [
+      { chapter: 1, moduleId: 'm005', segmentId: 'm005:para:e', currentIs: 'orig' },
+    ];
+    const res = svc.createPropagatedEdits(d, { ...base, occurrences });
+    // A superseded row must not be read back as "the latest live edit" — the
+    // occurrence should be eligible (propagated), not skipped as a conflict.
+    expect(res.created).toHaveLength(1);
+    expect(res.skipped).toHaveLength(0);
+    const rows = d.prepare(`SELECT * FROM segment_edits WHERE module_id = 'm005'`).all();
+    expect(rows).toHaveLength(3); // rejected + superseded (untouched) + new pending
+    const pending = rows.find((r) => r.status === 'pending');
+    expect(pending.edited_content).toBe('Sýra og basi');
   });
 });
