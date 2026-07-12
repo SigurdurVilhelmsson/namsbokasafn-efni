@@ -1021,107 +1021,37 @@
   }
 
   /**
-   * Validate a segment edit before saving.
+   * Validate a segment edit before saving. Rules live in the shared
+   * segment-validation.js module (also enforced server-side, SR-OOS-2);
+   * this wrapper only maps violation codes to the pane's wording.
    * Returns { blocked: string[]|null, warnings: string[]|null }
    */
   function validateSegmentEdit(enText, originalIs, editedIs) {
-    const blocked = [];
-    const warnings = [];
-
-    // Hard block: [[MATH:N]] in EN but missing from edited IS
-    const enMath = (enText || '').match(/\[\[MATH:\d+\]\]/g) || [];
-    for (const m of enMath) {
-      if (!editedIs.includes(m)) {
-        blocked.push(UI.validation.mathMissing(m));
-      }
-    }
-
-    // Hard block: [[BR]] removed (present in original IS but not edited)
-    const origBR = (originalIs || '').match(/\[\[BR\]\]/g) || [];
-    const editBR = (editedIs || '').match(/\[\[BR\]\]/g) || [];
-    if (origBR.length > editBR.length) {
-      blocked.push(UI.validation.brRemoved(origBR.length, editBR.length));
-    }
-
-    // Hard block: [#CNX_...] cross-references in EN but missing from edited IS
-    const enXrefs = (enText || '').match(/\[#[A-Za-z0-9_.-]+\]/g) || [];
-    for (const xref of enXrefs) {
-      if (!editedIs.includes(xref)) {
-        blocked.push(UI.validation.xrefMissing(xref));
-      }
-    }
-
-    // Hard block: [text](#anchor) or [text](doc#target) links in original IS but removed
-    const origLinks = (originalIs || '').match(/\[[^\]]+\]\([^)]+\)/g) || [];
-    for (const link of origLinks) {
-      if (!editedIs.includes(link)) {
-        blocked.push(UI.validation.linkRemoved(link));
-      }
-    }
-
-    // Hard block: [doc#target] self-closing document refs in EN but missing from edited IS
-    const enDocRefs = (enText || '').match(/\[[A-Za-z0-9_.-]+#[A-Za-z0-9_.-]+\]/g) || [];
-    for (const ref of enDocRefs) {
-      if (!editedIs.includes(ref)) {
-        blocked.push(UI.validation.docRefMissing(ref));
-      }
-    }
-
-    // Hard block: [[MEDIA:N]] in EN but missing from edited IS
-    const enMedia = (enText || '').match(/\[\[MEDIA:\d+\]\]/g) || [];
-    for (const m of enMedia) {
-      if (!editedIs.includes(m)) {
-        blocked.push(UI.validation.mediaMissing(m));
-      }
-    }
-
-    // Hard block: [[SPACE]] / [[SPACE:N]] in original IS but removed
-    const origSpaces = (originalIs || '').match(/\[\[SPACE(?::\d+)?\]\]/g) || [];
-    const editSpaces = (editedIs || '').match(/\[\[SPACE(?::\d+)?\]\]/g) || [];
-    if (origSpaces.length > editSpaces.length) {
-      blocked.push(UI.validation.spaceRemoved(origSpaces.length, editSpaces.length));
-    }
-
-    // Warning: unmatched formatting pairs (odd count)
-    const pairs = [
-      { marker: '**', name: UI.validation.pairNames.bold, re: /\*\*/g },
-      { marker: '__', name: UI.validation.pairNames.term, re: /__/g },
-      { marker: '++', name: UI.validation.pairNames.underline, re: /\+\+/g },
-    ];
-    for (const { name, re } of pairs) {
-      const count = (editedIs.match(re) || []).length;
-      if (count % 2 !== 0) {
-        warnings.push(UI.validation.unmatchedPair(name, count));
-      }
-    }
-
-    // Asymmetric pair: {= must match =}
-    const openEmph = (editedIs.match(/\{=/g) || []).length;
-    const closeEmph = (editedIs.match(/=\}/g) || []).length;
-    if (openEmph !== closeEmph) {
-      warnings.push(UI.validation.unmatchedEmphasis(openEmph, closeEmph));
-    }
-
-    // Warning: unmatched ~ for subscript (but ignore ~~ which could be strikethrough)
-    const tildeCount = (editedIs.match(/(?<![~])~(?!~)/g) || []).length;
-    if (tildeCount % 2 !== 0) {
-      warnings.push(UI.validation.unmatchedSubscript(tildeCount));
-    }
-
-    // Warning: unmatched ^ for superscript
-    const caretCount = (editedIs.match(/\^/g) || []).length;
-    if (caretCount % 2 !== 0) {
-      warnings.push(UI.validation.unmatchedSuperscript(caretCount));
-    }
-
-    // Warning: segment cleared when original had content
-    if (originalIs && originalIs.trim() && (!editedIs || !editedIs.trim())) {
-      warnings.push(UI.validation.segmentCleared);
-    }
-
+    const result = segmentValidation.validateStructure(enText, originalIs, editedIs);
+    const PAIR_NAMES = {
+      '**': UI.validation.pairNames.bold,
+      __: UI.validation.pairNames.term,
+      '++': UI.validation.pairNames.underline,
+    };
+    const BLOCK_MSG = {
+      'math-missing': (p) => UI.validation.mathMissing(p.marker),
+      'br-removed': (p) => UI.validation.brRemoved(p.from, p.to),
+      'xref-missing': (p) => UI.validation.xrefMissing(p.ref),
+      'link-removed': (p) => UI.validation.linkRemoved(p.link),
+      'docref-missing': (p) => UI.validation.docRefMissing(p.ref),
+      'media-missing': (p) => UI.validation.mediaMissing(p.marker),
+      'space-removed': (p) => UI.validation.spaceRemoved(p.from, p.to),
+    };
+    const WARN_MSG = {
+      'unmatched-pair': (p) => UI.validation.unmatchedPair(PAIR_NAMES[p.marker], p.count),
+      'unmatched-emphasis': (p) => UI.validation.unmatchedEmphasis(p.open, p.close),
+      'unmatched-subscript': (p) => UI.validation.unmatchedSubscript(p.count),
+      'unmatched-superscript': (p) => UI.validation.unmatchedSuperscript(p.count),
+      'segment-cleared': () => UI.validation.segmentCleared,
+    };
     return {
-      blocked: blocked.length > 0 ? blocked : null,
-      warnings: warnings.length > 0 ? warnings : null,
+      blocked: result.blocked ? result.blocked.map((v) => BLOCK_MSG[v.code](v.params)) : null,
+      warnings: result.warnings ? result.warnings.map((v) => WARN_MSG[v.code](v.params)) : null,
     };
   }
 
