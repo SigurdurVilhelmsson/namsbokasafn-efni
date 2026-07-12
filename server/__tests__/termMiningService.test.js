@@ -10,6 +10,7 @@ const Database = require('better-sqlite3');
 const migration037 = require('../migrations/037-mined-term-candidates');
 const termMining = require('../services/termMiningService');
 const terminologyService = require('../services/terminologyService');
+const { createSegmentEditsSchema } = require('./helpers/segmentEditsSchema.cjs');
 
 let db;
 
@@ -17,12 +18,8 @@ function makeDb() {
   const d = new Database(':memory:');
   d.pragma('foreign_keys = ON');
   migration037.up(d);
+  createSegmentEditsSchema(d);
   d.exec(`
-    CREATE TABLE segment_edits (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      book TEXT, chapter INTEGER, module_id TEXT, segment_id TEXT,
-      original_content TEXT, edited_content TEXT, status TEXT
-    );
     CREATE TABLE terminology_headwords (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       english TEXT NOT NULL, pos TEXT, definition_en TEXT,
@@ -44,9 +41,13 @@ function makeDb() {
 }
 
 function addEdit(book, moduleId, segId, before, after, status = 'approved') {
+  // editor_id/editor_username are NOT NULL in the canonical (post-039) schema
+  // but termMiningService's mining query doesn't care whose edit it was.
   db.prepare(
-    `INSERT INTO segment_edits (book, chapter, module_id, segment_id, original_content, edited_content, status)
-     VALUES (?, 3, ?, ?, ?, ?, ?)`
+    `INSERT INTO segment_edits
+       (book, chapter, module_id, segment_id, original_content, edited_content,
+        status, editor_id, editor_username)
+     VALUES (?, 3, ?, ?, ?, ?, ?, 'test-editor', 'testeditor')`
   ).run(book, moduleId, segId, before, after, status);
 }
 

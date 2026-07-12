@@ -17,6 +17,7 @@ const require = createRequire(import.meta.url);
 const Database = require('better-sqlite3');
 
 const readModel = require('../services/dashboardReadModel');
+const { createSegmentEditsSchema } = require('./helpers/segmentEditsSchema.cjs');
 
 function createTestDb() {
   const db = new Database(':memory:');
@@ -24,28 +25,7 @@ function createTestDb() {
 
   // Mirror migration 008 + 009 schema (segment_edits only — read model
   // intentionally does NOT touch module_reviews).
-  db.exec(`
-    CREATE TABLE segment_edits (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      book TEXT NOT NULL,
-      chapter INTEGER NOT NULL,
-      module_id TEXT NOT NULL,
-      segment_id TEXT NOT NULL,
-      original_content TEXT NOT NULL,
-      edited_content TEXT NOT NULL,
-      category TEXT,
-      editor_note TEXT,
-      status TEXT NOT NULL DEFAULT 'pending',
-      editor_id TEXT NOT NULL,
-      editor_username TEXT NOT NULL,
-      reviewer_id TEXT,
-      reviewer_username TEXT,
-      reviewer_note TEXT,
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      reviewed_at DATETIME,
-      applied_at DATETIME
-    );
-  `);
+  createSegmentEditsSchema(db);
 
   return db;
 }
