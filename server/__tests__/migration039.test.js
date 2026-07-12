@@ -76,7 +76,7 @@ describe('migration 039 — segment_edits exit-path rebuild', () => {
     }
   });
 
-  it('has the partial unique index on pending plus the five plain indexes', () => {
+  it('has the partial unique index on pending plus the six plain indexes', () => {
     const indexes = db.prepare(`PRAGMA index_list(segment_edits)`).all();
     const names = indexes.map((i) => i.name);
     expect(names).toContain('idx_segment_edits_one_pending');
@@ -137,8 +137,10 @@ describe('migration 039 — segment_edits exit-path rebuild', () => {
     expect(() => insert({ status: 'discuss', segment_id: 's-inv' })).not.toThrow();
   });
 
-  it('copies pre-existing rows across the rebuild intact (FK check clean)', () => {
+  it('foreign-key check is clean after the full migration chain', () => {
     // runAllMigrations bootstrapped 008 → seeded nothing; verify structural health.
+    // (Actual copy-across-rebuild verification lives in the populated-copy
+    // describe block below, which seeds real rows before migrating.)
     expect(db.prepare(`PRAGMA foreign_key_check`).all()).toEqual([]);
   });
 
@@ -182,7 +184,7 @@ describe('migration 039 — populated-copy against a hand-built pre-039 schema',
         UNIQUE(book, module_id, segment_id, status, editor_id)
       );
       ALTER TABLE segment_edits ADD COLUMN applied_at DATETIME;
-      ALTER TABLE segment_edits ADD COLUMN review_id INTEGER;
+      ALTER TABLE segment_edits ADD COLUMN review_id INTEGER REFERENCES module_reviews(id);
 
       CREATE TABLE module_reviews (
         id INTEGER PRIMARY KEY
@@ -339,5 +341,38 @@ describe('migration 039 — populated-copy against a hand-built pre-039 schema',
         )
         .run()
     ).toThrow(/UNIQUE/);
+  });
+
+  it('drops a pre-fix crash orphan and still rebuilds the real data intact (rebuild is atomic)', () => {
+    const db = preMigrationDb();
+    seed(db);
+
+    // Simulate an orphan segment_edits_new left behind by a crash of the
+    // PRE-transactional version of this migration (a kill between its old
+    // CREATE TABLE segment_edits_new and DROP TABLE segment_edits). The
+    // marker row is a decoy: if the rebuild ever silently merged instead of
+    // replacing, or the transaction didn't run atomically, this row would
+    // leak into (or corrupt) the final table.
+    db.exec(`
+      CREATE TABLE segment_edits_new (id INTEGER PRIMARY KEY, marker TEXT);
+      INSERT INTO segment_edits_new (marker) VALUES ('crash-orphan-marker');
+    `);
+
+    expect(() => require('../migrations/039-segment-edit-exit-path').up(db)).not.toThrow();
+
+    // The orphan's decoy schema is gone — segment_edits now has the real
+    // rebuilt shape, not the decoy's single 'marker' column.
+    const cols = db
+      .prepare(`PRAGMA table_info(segment_edits)`)
+      .all()
+      .map((c) => c.name);
+    expect(cols).not.toContain('marker');
+
+    // The real seeded rows survived the rebuild untouched — the orphan drop
+    // was safe because it happened inside the same transaction as the copy.
+    const rows = db.prepare(`SELECT * FROM segment_edits ORDER BY id`).all();
+    expect(rows).toHaveLength(3);
+    expect(rows.map((r) => r.id)).toEqual([1, 5, 9]);
+    expect(rows).toEqual(seedRows);
   });
 });

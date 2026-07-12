@@ -14,9 +14,9 @@
  * Explicit column mapping in the copy INSERT — never SELECT * (026 lesson).
  * Idempotent: guarded on the old UNIQUE still being present in sqlite_master
  * (belt-and-braces on top of the runner's applied-migrations tracking). The
- * rebuild also self-heals an orphan segment_edits_new left by a mid-rebuild
- * crash (DROP TABLE IF EXISTS before CREATE TABLE) — see the inline comment
- * at the top of the exec block for why that matters.
+ * whole rebuild runs inside a single db.transaction() so a crash at any point
+ * rolls back to the intact pre-039 table — see the inline comment above the
+ * transaction for why that's safe on the shared migration-runner connection.
  */
 
 module.exports = {
@@ -32,15 +32,24 @@ module.exports = {
       return; // already rebuilt
     }
 
-    db.exec(`
-      -- Statement order below already protects data: the old table is only
-      -- dropped after a successful copy into segment_edits_new. So a crash
-      -- between CREATE TABLE segment_edits_new and DROP TABLE segment_edits
-      -- can only ever leave an ORPHAN segment_edits_new (never data loss) —
-      -- but that orphan makes the CREATE TABLE below throw "already exists"
-      -- on retry, and migrationRunner's catch treats "already exists" as a
-      -- benign skip, so the migration would silently never land. Drop the
-      -- orphan first so a crashed rebuild is retryable.
+    // The whole rebuild is one transaction: a crash at ANY point rolls back to
+    // the intact pre-039 table (SQLite DDL is transactional; better-sqlite3's
+    // db.transaction() wrapper ROLLBACKs on throw, and a process kill mid-
+    // transaction rolls back via the journal on the next open — no open
+    // transaction is left on the shared connection, which was the concern
+    // that previously ruled out a raw BEGIN/COMMIT here). That closes the
+    // window a re-review demonstrated: outside a transaction, a crash between
+    // DROP TABLE segment_edits and ALTER TABLE ... RENAME left ALL data only
+    // in segment_edits_new; on the retry boot, migration 008's
+    // CREATE TABLE IF NOT EXISTS segment_edits resurrected an EMPTY old-schema
+    // table, this migration's guard saw the old UNIQUE and proceeded, and the
+    // DROP TABLE IF EXISTS below then destroyed the only copy of the data
+    // before copying 0 rows across. Inside the transaction that statement can
+    // never be destructive again — it stays purely as belt-and-braces for an
+    // orphan segment_edits_new left by a crash of the PRE-transactional
+    // version of this migration.
+    const rebuild = db.transaction(() => {
+      db.exec(`
       DROP TABLE IF EXISTS segment_edits_new;
 
       CREATE TABLE segment_edits_new (
@@ -101,5 +110,7 @@ module.exports = {
       CREATE INDEX IF NOT EXISTS idx_segment_edits_review
         ON segment_edits(review_id);
     `);
+    });
+    rebuild();
   },
 };
