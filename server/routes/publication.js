@@ -141,19 +141,15 @@ router.post(
       const result = await publicationService.publishMtPreview(bookSlug, chapter, req.user.id);
 
       // Log activity
-      try {
-        activityLog.log({
-          type: 'publish_mt_preview',
-          userId: req.user.id,
-          username: req.user.name || req.user.login,
-          book: bookSlug,
-          chapter: String(chapter),
-          description: `MT forskoðun hafin fyrir ${bookSlug} kafla ${chapter}`,
-          metadata: { jobId: result.jobId, moduleCount: result.moduleCount },
-        });
-      } catch (logErr) {
-        log.error({ err: logErr }, 'Failed to log publication activity');
-      }
+      activityLog.log({
+        type: 'publish_mt_preview',
+        userId: req.user.id,
+        username: req.user.name || req.user.login,
+        book: bookSlug,
+        chapter: String(chapter),
+        description: `MT forskoðun hafin fyrir ${bookSlug} kafla ${chapter}`,
+        metadata: { jobId: result.jobId, moduleCount: result.moduleCount },
+      });
 
       res.json({
         success: true,
@@ -199,19 +195,15 @@ router.post(
     try {
       const result = await publicationService.publishFaithful(bookSlug, chapter, req.user.id);
 
-      try {
-        activityLog.log({
-          type: 'publish_faithful',
-          userId: req.user.id,
-          username: req.user.name || req.user.login,
-          book: bookSlug,
-          chapter: String(chapter),
-          description: `Ritstýrð útgáfa hafin fyrir ${bookSlug} kafla ${chapter}`,
-          metadata: { jobId: result.jobId, moduleCount: result.moduleCount },
-        });
-      } catch (logErr) {
-        log.error({ err: logErr }, 'Failed to log publication activity');
-      }
+      activityLog.log({
+        type: 'publish_faithful',
+        userId: req.user.id,
+        username: req.user.name || req.user.login,
+        book: bookSlug,
+        chapter: String(chapter),
+        description: `Ritstýrð útgáfa hafin fyrir ${bookSlug} kafla ${chapter}`,
+        metadata: { jobId: result.jobId, moduleCount: result.moduleCount },
+      });
 
       res.json({
         success: true,
@@ -259,19 +251,15 @@ router.post(
     try {
       const result = await publicationService.publishLocalized(bookSlug, chapter, req.user.id);
 
-      try {
-        activityLog.log({
-          type: 'publish_localized',
-          userId: req.user.id,
-          username: req.user.name || req.user.login,
-          book: bookSlug,
-          chapter: String(chapter),
-          description: `Staðfærð útgáfa hafin fyrir ${bookSlug} kafla ${chapter}`,
-          metadata: { jobId: result.jobId, moduleCount: result.moduleCount },
-        });
-      } catch (logErr) {
-        log.error({ err: logErr }, 'Failed to log publication activity');
-      }
+      activityLog.log({
+        type: 'publish_localized',
+        userId: req.user.id,
+        username: req.user.name || req.user.login,
+        book: bookSlug,
+        chapter: String(chapter),
+        description: `Staðfærð útgáfa hafin fyrir ${bookSlug} kafla ${chapter}`,
+        metadata: { jobId: result.jobId, moduleCount: result.moduleCount },
+      });
 
       res.json({
         success: true,

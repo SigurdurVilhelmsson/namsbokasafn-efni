@@ -108,17 +108,13 @@ router.post('/settings/:book', requireAuth, requireRole(ROLES.ADMIN), (req, res)
   }
   try {
     const enabled = localizationReview.setReviewEnabled(book, req.body.enforceLocalizationReview);
-    try {
-      activityLog.log({
-        type: 'localization_review_toggled',
-        userId: String(req.user.id),
-        username: req.user.username,
-        book,
-        description: `${req.user.username} ${enabled ? 'kveikti á' : 'slökkti á'} yfirlestri staðfærslu fyrir ${book}`,
-      });
-    } catch {
-      /* fire-and-forget */
-    }
+    activityLog.log({
+      type: 'localization_review_toggled',
+      userId: String(req.user.id),
+      username: req.user.username,
+      book,
+      description: `${req.user.username} ${enabled ? 'kveikti á' : 'slökkti á'} yfirlestri staðfærslu fyrir ${book}`,
+    });
     res.json({ book, enforceLocalizationReview: enabled });
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -155,19 +151,15 @@ router.post(
         req.body?.note
       );
       res.json({ success: true, edit, savedPath });
-      try {
-        activityLog.log({
-          type: 'localization_edit_approved',
-          userId: String(req.user.id),
-          username: req.user.username,
-          book: edit.book,
-          chapter: String(edit.chapter),
-          section: edit.module_id,
-          description: `${req.user.username} samþykkti staðfærslu á ${edit.module_id}:${edit.segment_id}`,
-        });
-      } catch {
-        /* fire-and-forget */
-      }
+      activityLog.log({
+        type: 'localization_edit_approved',
+        userId: String(req.user.id),
+        username: req.user.username,
+        book: edit.book,
+        chapter: String(edit.chapter),
+        section: edit.module_id,
+        description: `${req.user.username} samþykkti staðfærslu á ${edit.module_id}:${edit.segment_id}`,
+      });
     } catch (err) {
       const status = err.message.includes('not found') ? 404 : 400;
       res.status(status).json({ error: err.message });
@@ -192,19 +184,15 @@ router.post(
         req.body?.note
       );
       res.json({ success: true, edit });
-      try {
-        activityLog.log({
-          type: 'localization_edit_rejected',
-          userId: String(req.user.id),
-          username: req.user.username,
-          book: edit.book,
-          chapter: String(edit.chapter),
-          section: edit.module_id,
-          description: `${req.user.username} hafnaði staðfærslu á ${edit.module_id}:${edit.segment_id}`,
-        });
-      } catch {
-        /* fire-and-forget */
-      }
+      activityLog.log({
+        type: 'localization_edit_rejected',
+        userId: String(req.user.id),
+        username: req.user.username,
+        book: edit.book,
+        chapter: String(edit.chapter),
+        section: edit.module_id,
+        description: `${req.user.username} hafnaði staðfærslu á ${edit.module_id}:${edit.segment_id}`,
+      });
     } catch (err) {
       const status = err.message.includes('not found') ? 404 : 400;
       res.status(status).json({ error: err.message });
@@ -381,19 +369,15 @@ router.post(
           editorUsername: req.user.username,
         });
         res.json({ success: true, pending: true, segmentId, editId: submitted.id });
-        try {
-          activityLog.log({
-            type: 'localization_edit_submitted',
-            userId: String(req.user.id),
-            username: req.user.username,
-            book: req.params.book,
-            chapter: String(req.chapterNum),
-            section: req.params.moduleId,
-            description: `${req.user.username} sendi staðfærslu á ${segmentId} til yfirlestrar`,
-          });
-        } catch {
-          /* fire-and-forget */
-        }
+        activityLog.log({
+          type: 'localization_edit_submitted',
+          userId: String(req.user.id),
+          username: req.user.username,
+          book: req.params.book,
+          chapter: String(req.chapterNum),
+          section: req.params.moduleId,
+          description: `${req.user.username} sendi staðfærslu á ${segmentId} til yfirlestrar`,
+        });
         return;
       }
 
@@ -436,19 +420,15 @@ router.post(
         savedPath,
         lastModified: newMtime,
       });
-      try {
-        activityLog.log({
-          type: 'localization_edit_saved',
-          userId: String(req.user.id),
-          username: req.user.username,
-          book: req.params.book,
-          chapter: String(req.chapterNum),
-          section: req.params.moduleId,
-          description: `${req.user.username} breytti ${segmentId} í ${req.params.moduleId}`,
-        });
-      } catch (logErr) {
-        log.error({ err: logErr }, 'Activity log failed');
-      }
+      activityLog.log({
+        type: 'localization_edit_saved',
+        userId: String(req.user.id),
+        username: req.user.username,
+        book: req.params.book,
+        chapter: String(req.chapterNum),
+        section: req.params.moduleId,
+        description: `${req.user.username} breytti ${segmentId} í ${req.params.moduleId}`,
+      });
     } catch (err) {
       log.error({ err }, 'Error saving localized segment');
       res.status(500).json({ error: err.message });
@@ -573,19 +553,15 @@ router.post(
           submittedSegments: auditEdits.length,
           totalSegments: allSegments.length,
         });
-        try {
-          activityLog.log({
-            type: 'localization_edits_submitted',
-            userId: String(req.user.id),
-            username: req.user.username,
-            book: req.params.book,
-            chapter: String(req.chapterNum),
-            section: req.params.moduleId,
-            description: `${req.user.username} sendi ${auditEdits.length} hluta í ${req.params.moduleId} til yfirlestrar`,
-          });
-        } catch {
-          /* fire-and-forget */
-        }
+        activityLog.log({
+          type: 'localization_edits_submitted',
+          userId: String(req.user.id),
+          username: req.user.username,
+          book: req.params.book,
+          chapter: String(req.chapterNum),
+          section: req.params.moduleId,
+          description: `${req.user.username} sendi ${auditEdits.length} hluta í ${req.params.moduleId} til yfirlestrar`,
+        });
         return;
       }
 
@@ -619,19 +595,15 @@ router.post(
         savedPath,
         lastModified: newMtime,
       });
-      try {
-        activityLog.log({
-          type: 'localization_edits_saved',
-          userId: String(req.user.id),
-          username: req.user.username,
-          book: req.params.book,
-          chapter: String(req.chapterNum),
-          section: req.params.moduleId,
-          description: `${req.user.username} vistaði ${Object.keys(editLookup).length} hluta í ${req.params.moduleId}`,
-        });
-      } catch (logErr) {
-        log.error({ err: logErr }, 'Activity log failed');
-      }
+      activityLog.log({
+        type: 'localization_edits_saved',
+        userId: String(req.user.id),
+        username: req.user.username,
+        book: req.params.book,
+        chapter: String(req.chapterNum),
+        section: req.params.moduleId,
+        description: `${req.user.username} vistaði ${Object.keys(editLookup).length} hluta í ${req.params.moduleId}`,
+      });
     } catch (err) {
       log.error({ err }, 'Error saving localized segments');
       res.status(500).json({ error: err.message });

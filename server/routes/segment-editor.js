@@ -347,19 +347,15 @@ router.post(
         baseEditId: typeof baseEditId === 'number' ? baseEditId : undefined,
       });
 
-      try {
-        activityLog.log({
-          type: 'segment_edit_saved',
-          userId: String(req.user.id),
-          username: req.user.username,
-          book: req.params.book,
-          chapter: String(req.chapterNum),
-          section: req.params.moduleId,
-          description: `${req.user.username} vistaði breytingu á ${req.params.moduleId}:${segmentId}`,
-        });
-      } catch (logErr) {
-        log.error({ err: logErr }, 'Activity log failed');
-      }
+      activityLog.log({
+        type: 'segment_edit_saved',
+        userId: String(req.user.id),
+        username: req.user.username,
+        book: req.params.book,
+        chapter: String(req.chapterNum),
+        section: req.params.moduleId,
+        description: `${req.user.username} vistaði breytingu á ${req.params.moduleId}:${segmentId}`,
+      });
 
       // Live QA (non-blocking): terminology violations + mechanical checks
       // (number slips, untranslated-EN residue). Advisory — never hard-blocks.
@@ -418,19 +414,15 @@ router.delete('/edit/:editId', requireAuth, requireRole(ROLES.EDITOR), (req, res
     const edit = segmentEditor.getEditById(editId);
     segmentEditor.deleteSegmentEdit(editId, req.user.id);
     res.json({ success: true });
-    try {
-      activityLog.log({
-        type: 'segment_edit_deleted',
-        userId: String(req.user.id),
-        username: req.user.username,
-        book: edit?.book || '',
-        chapter: String(edit?.chapter || ''),
-        section: edit?.module_id || '',
-        description: `${req.user.username} eyddi breytingu á ${edit?.segment_id || editId}`,
-      });
-    } catch {
-      /* fire-and-forget */
-    }
+    activityLog.log({
+      type: 'segment_edit_deleted',
+      userId: String(req.user.id),
+      username: req.user.username,
+      book: edit?.book || '',
+      chapter: String(edit?.chapter || ''),
+      section: edit?.module_id || '',
+      description: `${req.user.username} eyddi breytingu á ${edit?.segment_id || editId}`,
+    });
   } catch (err) {
     res.status(err.message === 'Not your edit' ? 403 : 400).json({ error: err.message });
   }
@@ -461,19 +453,15 @@ router.post(
         reviewId: result.id,
         editedSegments: result.editedSegments,
       });
-      try {
-        activityLog.log({
-          type: 'module_submitted_for_review',
-          userId: String(req.user.id),
-          username: req.user.username,
-          book: req.params.book,
-          chapter: String(req.chapterNum),
-          section: req.params.moduleId,
-          description: `${req.user.username} sendi ${req.params.moduleId} til yfirlestrar`,
-        });
-      } catch (logErr) {
-        log.error({ err: logErr }, 'Activity log failed');
-      }
+      activityLog.log({
+        type: 'module_submitted_for_review',
+        userId: String(req.user.id),
+        username: req.user.username,
+        book: req.params.book,
+        chapter: String(req.chapterNum),
+        section: req.params.moduleId,
+        description: `${req.user.username} sendi ${req.params.moduleId} til yfirlestrar`,
+      });
     } catch (err) {
       const status = err.message.includes('already has') ? 409 : 500;
       res.status(status).json({ error: err.message });
@@ -546,19 +534,15 @@ router.post(
         req.user.username,
         req.body?.note
       );
-      try {
-        activityLog.log({
-          type: 'segment_edit_approved',
-          userId: String(req.user.id),
-          username: req.user.username,
-          book: edit.book,
-          chapter: edit.chapter,
-          section: edit.module_id,
-          description: `${req.user.username} samþykkti breytingu á ${edit.module_id}:${edit.segment_id}`,
-        });
-      } catch {
-        /* fire-and-forget */
-      }
+      activityLog.log({
+        type: 'segment_edit_approved',
+        userId: String(req.user.id),
+        username: req.user.username,
+        book: edit.book,
+        chapter: edit.chapter,
+        section: edit.module_id,
+        description: `${req.user.username} samþykkti breytingu á ${edit.module_id}:${edit.segment_id}`,
+      });
       notifyDecision(edit, 'approved', req);
       res.json({ success: true, edit });
     } catch (err) {
@@ -583,19 +567,15 @@ router.post(
         req.user.username,
         req.body?.note
       );
-      try {
-        activityLog.log({
-          type: 'segment_edit_rejected',
-          userId: String(req.user.id),
-          username: req.user.username,
-          book: edit.book,
-          chapter: edit.chapter,
-          section: edit.module_id,
-          description: `${req.user.username} hafnaði breytingu á ${edit.module_id}:${edit.segment_id}`,
-        });
-      } catch {
-        /* fire-and-forget */
-      }
+      activityLog.log({
+        type: 'segment_edit_rejected',
+        userId: String(req.user.id),
+        username: req.user.username,
+        book: edit.book,
+        chapter: edit.chapter,
+        section: edit.module_id,
+        description: `${req.user.username} hafnaði breytingu á ${edit.module_id}:${edit.segment_id}`,
+      });
       notifyDecision(edit, 'rejected', req);
       res.json({ success: true, edit });
     } catch (err) {
@@ -620,19 +600,15 @@ router.post(
         req.user.username,
         req.body?.note
       );
-      try {
-        activityLog.log({
-          type: 'segment_edit_discuss',
-          userId: String(req.user.id),
-          username: req.user.username,
-          book: edit.book,
-          chapter: edit.chapter,
-          section: edit.module_id,
-          description: `${req.user.username} merkti ${edit.module_id}:${edit.segment_id} til umræðu`,
-        });
-      } catch {
-        /* fire-and-forget */
-      }
+      activityLog.log({
+        type: 'segment_edit_discuss',
+        userId: String(req.user.id),
+        username: req.user.username,
+        book: edit.book,
+        chapter: edit.chapter,
+        section: edit.module_id,
+        description: `${req.user.username} merkti ${edit.module_id}:${edit.segment_id} til umræðu`,
+      });
       notifyDecision(edit, 'discuss', req);
       res.json({ success: true, edit });
     } catch (err) {
@@ -653,19 +629,15 @@ router.post(
     try {
       const edit = segmentEditor.unapproveEdit(parseInt(req.params.editId, 10));
       res.json({ success: true, edit });
-      try {
-        activityLog.log({
-          type: 'segment_edit_unapproved',
-          userId: String(req.user.id),
-          username: req.user.username,
-          book: edit.book || '',
-          chapter: String(edit.chapter || ''),
-          section: edit.module_id || '',
-          description: `${req.user.username} afturkallaði samþykki á ${edit.segment_id}`,
-        });
-      } catch {
-        /* fire-and-forget */
-      }
+      activityLog.log({
+        type: 'segment_edit_unapproved',
+        userId: String(req.user.id),
+        username: req.user.username,
+        book: edit.book || '',
+        chapter: String(edit.chapter || ''),
+        section: edit.module_id || '',
+        description: `${req.user.username} afturkallaði samþykki á ${edit.segment_id}`,
+      });
     } catch (err) {
       res.status(err.code === 'PENDING_EXISTS' ? 409 : 400).json({ error: err.message });
     }
@@ -683,19 +655,15 @@ router.post(
   (req, res) => {
     try {
       const edit = segmentEditor.returnEditToPending(parseInt(req.params.editId, 10));
-      try {
-        activityLog.log({
-          type: activityLog.ACTIVITY_TYPES.SEGMENT_EDIT_REOPENED,
-          userId: String(req.user.id),
-          username: req.user.username,
-          book: edit.book,
-          chapter: edit.chapter,
-          section: edit.module_id,
-          description: `${req.user.username} opnaði aftur breytingu á ${edit.module_id}:${edit.segment_id}`,
-        });
-      } catch {
-        /* fire-and-forget */
-      }
+      activityLog.log({
+        type: activityLog.ACTIVITY_TYPES.SEGMENT_EDIT_REOPENED,
+        userId: String(req.user.id),
+        username: req.user.username,
+        book: edit.book,
+        chapter: edit.chapter,
+        section: edit.module_id,
+        description: `${req.user.username} opnaði aftur breytingu á ${edit.module_id}:${edit.segment_id}`,
+      });
       res.json({ success: true, edit });
     } catch (err) {
       res.status(err.code === 'PENDING_EXISTS' ? 409 : 400).json({ error: err.message });
@@ -740,19 +708,15 @@ router.post(
       }
 
       res.json({ success: true, ...result, applied });
-      try {
-        activityLog.log({
-          type: 'review_completed',
-          userId: String(req.user.id),
-          username: req.user.username,
-          book: result.book || '',
-          chapter: String(result.chapter || ''),
-          section: result.module_id || '',
-          description: `${req.user.username} lauk yfirlestri á ${result.module_id || req.params.reviewId}`,
-        });
-      } catch (logErr) {
-        log.error({ err: logErr }, 'Activity log failed');
-      }
+      activityLog.log({
+        type: 'review_completed',
+        userId: String(req.user.id),
+        username: req.user.username,
+        book: result.book || '',
+        chapter: String(result.chapter || ''),
+        section: result.module_id || '',
+        description: `${req.user.username} lauk yfirlestri á ${result.module_id || req.params.reviewId}`,
+      });
     } catch (err) {
       res.status(400).json({ error: err.message });
     }
@@ -780,21 +744,30 @@ router.post('/edit/:editId/comment', requireAuth, requireRole(ROLES.EDITOR), (re
       req.user.username,
       comment
     );
+    // Response stays first (the comment IS saved; a context-lookup failure
+    // must not flip a committed mutation into a 400 — that is the
+    // nested-site defect class this batch fixes). Only the lookup is
+    // guarded, with a log; the audit write goes bare with degraded context
+    // on lookup failure (edit stays null → the || '' fallbacks apply).
     res.json({ success: true, commentId: result.id });
+    let edit = null;
     try {
-      const edit = segmentEditor.getEditById(parseInt(req.params.editId, 10));
-      activityLog.log({
-        type: 'segment_edit_comment',
-        userId: String(req.user.id),
-        username: req.user.username,
-        book: edit?.book || '',
-        chapter: String(edit?.chapter || ''),
-        section: edit?.module_id || '',
-        description: `${req.user.username} bætti við athugasemd á ${edit?.segment_id || req.params.editId}`,
-      });
-    } catch {
-      /* fire-and-forget */
+      edit = segmentEditor.getEditById(parseInt(req.params.editId, 10));
+    } catch (lookupErr) {
+      log.error(
+        { err: lookupErr, editId: req.params.editId },
+        'Edit lookup for comment audit failed'
+      );
     }
+    activityLog.log({
+      type: 'segment_edit_comment',
+      userId: String(req.user.id),
+      username: req.user.username,
+      book: edit?.book || '',
+      chapter: String(edit?.chapter || ''),
+      section: edit?.module_id || '',
+      description: `${req.user.username} bætti við athugasemd á ${edit?.segment_id || req.params.editId}`,
+    });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
@@ -1098,19 +1071,15 @@ router.post(
         req.params.moduleId
       );
 
-      try {
-        activityLog.log({
-          type: 'segment_edits_applied',
-          userId: String(req.user.id),
-          username: req.user.username,
-          book: req.params.book,
-          chapter: String(req.chapterNum),
-          section: req.params.moduleId,
-          description: `${req.user.username} yfirfærði ${result.appliedCount} breytingu/ar á ${req.params.moduleId}`,
-        });
-      } catch (logErr) {
-        log.error({ err: logErr }, 'Activity log failed');
-      }
+      activityLog.log({
+        type: 'segment_edits_applied',
+        userId: String(req.user.id),
+        username: req.user.username,
+        book: req.params.book,
+        chapter: String(req.chapterNum),
+        section: req.params.moduleId,
+        description: `${req.user.username} yfirfærði ${result.appliedCount} breytingu/ar á ${req.params.moduleId}`,
+      });
 
       res.json({
         success: true,
@@ -1163,19 +1132,15 @@ router.post(
         userId: req.user.id,
       });
 
-      try {
-        activityLog.log({
-          type: 'segment_edits_applied',
-          userId: String(req.user.id),
-          username: req.user.username,
-          book: req.params.book,
-          chapter: String(req.chapterNum),
-          section: req.params.moduleId,
-          description: `${req.user.username} yfirfærði ${applyResult.appliedCount} breytingu/ar á ${req.params.moduleId} og ræsti leiðslu`,
-        });
-      } catch (logErr) {
-        log.error({ err: logErr }, 'Activity log failed');
-      }
+      activityLog.log({
+        type: 'segment_edits_applied',
+        userId: String(req.user.id),
+        username: req.user.username,
+        book: req.params.book,
+        chapter: String(req.chapterNum),
+        section: req.params.moduleId,
+        description: `${req.user.username} yfirfærði ${applyResult.appliedCount} breytingu/ar á ${req.params.moduleId} og ræsti leiðslu`,
+      });
 
       res.json({
         success: true,
