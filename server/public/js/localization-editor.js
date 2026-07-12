@@ -875,91 +875,70 @@
   // ----------------------------------------------------------------
 
   /**
-   * Validate a segment edit before saving (localization editor).
+   * Validate a segment edit before saving (localization editor). Rules live
+   * in the shared segment-validation.js module (also enforced server-side,
+   * SR-OOS-2); this wrapper maps codes to this pane's shorter wording.
+   * Note: the shared rules add the ~/^ warnings this pane previously lacked
+   * (advisory only).
    */
   function edValidateSegmentEdit(enText, originalIs, editedIs) {
-    var blocked = [];
-    var warnings = [];
-
-    var enMath = (enText || '').match(/\[\[MATH:\d+\]\]/g) || [];
-    for (var i = 0; i < enMath.length; i++) {
-      if (editedIs.indexOf(enMath[i]) === -1) {
-        blocked.push(UI.validation.mathMissingShort(enMath[i]));
-      }
-    }
-
-    var origBR = (originalIs || '').match(/\[\[BR\]\]/g) || [];
-    var editBR = (editedIs || '').match(/\[\[BR\]\]/g) || [];
-    if (origBR.length > editBR.length) {
-      blocked.push(UI.validation.brRemovedShort);
-    }
-
-    var enXrefs = (enText || '').match(/\[#[A-Za-z0-9_.-]+\]/g) || [];
-    for (var j = 0; j < enXrefs.length; j++) {
-      if (editedIs.indexOf(enXrefs[j]) === -1) {
-        blocked.push(UI.validation.xrefMissingShort(enXrefs[j]));
-      }
-    }
-
-    // Block: [doc#target] self-closing document refs in EN but missing
-    var enDocRefs = (enText || '').match(/\[[A-Za-z0-9_.-]+#[A-Za-z0-9_.-]+\]/g) || [];
-    for (var k = 0; k < enDocRefs.length; k++) {
-      if (editedIs.indexOf(enDocRefs[k]) === -1) {
-        blocked.push(UI.validation.docRefMissingShort(enDocRefs[k]));
-      }
-    }
-
-    // Block: [text](#anchor) or [text](doc#target) links in original IS but removed
-    var origLinks = (originalIs || '').match(/\[[^\]]+\]\([^)]+\)/g) || [];
-    for (var l = 0; l < origLinks.length; l++) {
-      if (editedIs.indexOf(origLinks[l]) === -1) {
-        blocked.push(UI.validation.linkRemoved(origLinks[l]));
-      }
-    }
-
-    // Block: [[MEDIA:N]] in EN but missing from edited IS
-    var enMedia = (enText || '').match(/\[\[MEDIA:\d+\]\]/g) || [];
-    for (var n = 0; n < enMedia.length; n++) {
-      if (editedIs.indexOf(enMedia[n]) === -1) {
-        blocked.push(UI.validation.mediaMissingShort(enMedia[n]));
-      }
-    }
-
-    // Block: [[SPACE]] / [[SPACE:N]] in original IS but removed
-    var origSpaces = (originalIs || '').match(/\[\[SPACE(?::\d+)?\]\]/g) || [];
-    var editSpaces = (editedIs || '').match(/\[\[SPACE(?::\d+)?\]\]/g) || [];
-    if (origSpaces.length > editSpaces.length) {
-      blocked.push(UI.validation.spaceRemoved(origSpaces.length, editSpaces.length));
-    }
-
-    if (originalIs && originalIs.trim() && (!editedIs || !editedIs.trim())) {
-      warnings.push(UI.validation.segmentCleared);
-    }
-
-    // Warning: unmatched formatting pairs
-    var ppCount = (editedIs.match(/\+\+/g) || []).length;
-    if (ppCount % 2 !== 0) {
-      warnings.push(UI.validation.unmatchedPair(UI.validation.pairNames.underline, ppCount));
-    }
-    var boldCount = (editedIs.match(/\*\*/g) || []).length;
-    if (boldCount % 2 !== 0) {
-      warnings.push(UI.validation.unmatchedPair(UI.validation.pairNames.bold, boldCount));
-    }
-    var termCount = (editedIs.match(/__/g) || []).length;
-    if (termCount % 2 !== 0) {
-      warnings.push(UI.validation.unmatchedPair(UI.validation.pairNames.term, termCount));
-    }
-
-    // Asymmetric pair: {= must match =}
-    var openEmph = (editedIs.match(/\{=/g) || []).length;
-    var closeEmph = (editedIs.match(/=\}/g) || []).length;
-    if (openEmph !== closeEmph) {
-      warnings.push(UI.validation.unmatchedEmphasis(openEmph, closeEmph));
-    }
-
+    var result = segmentValidation.validateStructure(enText, originalIs, editedIs);
+    var pairNames = {
+      '**': UI.validation.pairNames.bold,
+      __: UI.validation.pairNames.term,
+      '++': UI.validation.pairNames.underline,
+    };
+    var blockMsg = {
+      'math-missing': function (p) {
+        return UI.validation.mathMissingShort(p.marker);
+      },
+      'br-removed': function () {
+        return UI.validation.brRemovedShort;
+      },
+      'xref-missing': function (p) {
+        return UI.validation.xrefMissingShort(p.ref);
+      },
+      'link-removed': function (p) {
+        return UI.validation.linkRemoved(p.link);
+      },
+      'docref-missing': function (p) {
+        return UI.validation.docRefMissingShort(p.ref);
+      },
+      'media-missing': function (p) {
+        return UI.validation.mediaMissingShort(p.marker);
+      },
+      'space-removed': function (p) {
+        return UI.validation.spaceRemoved(p.from, p.to);
+      },
+    };
+    var warnMsg = {
+      'unmatched-pair': function (p) {
+        return UI.validation.unmatchedPair(pairNames[p.marker], p.count);
+      },
+      'unmatched-emphasis': function (p) {
+        return UI.validation.unmatchedEmphasis(p.open, p.close);
+      },
+      'unmatched-subscript': function (p) {
+        return UI.validation.unmatchedSubscript(p.count);
+      },
+      'unmatched-superscript': function (p) {
+        return UI.validation.unmatchedSuperscript(p.count);
+      },
+      'segment-cleared': function () {
+        return UI.validation.segmentCleared;
+      },
+    };
     return {
-      blocked: blocked.length > 0 ? blocked : null,
-      warnings: warnings.length > 0 ? warnings : null,
+      blocked: result.blocked
+        ? result.blocked.map(function (v) {
+            return blockMsg[v.code](v.params);
+          })
+        : null,
+      warnings: result.warnings
+        ? result.warnings.map(function (v) {
+            return warnMsg[v.code](v.params);
+          })
+        : null,
     };
   }
 
