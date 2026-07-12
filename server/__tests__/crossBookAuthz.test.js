@@ -587,3 +587,86 @@ describe('suggestions scan-book is head-editor-of-book scoped (B1-F1)', () => {
     expect(res.status).toBe(403);
   });
 });
+
+describe('suggestions section-keyed routes are book/section-scoped (B1-F2/F3 fold-in)', () => {
+  // ── Fail-open block (liffraedi-2e, enforcement OFF — the project's default
+  // model, enforce_assignments not set). requireBookAccessForSection delegates
+  // to requireBookAccess, so a caller with no assignments for the book passes:
+  // that includes plain editors AND head-editors of OTHER books (they take the
+  // same editor path — see the middleware JSDoc). The cross-book denials live
+  // in the enforcement-ON block below.
+  it('scan: plain editor clears authz fail-open and reaches a genuine 200 (scan activityLog site executes)', async () => {
+    const res = await post('/api/suggestions/scan/60', EDITOR);
+    expect(res.status).toBe(200);
+  });
+  it('read: head-editor of another book ALSO clears fail-open (documented requireBookAccess fall-through, same as any editor)', async () => {
+    const res = await get('/api/suggestions/60', HE_A);
+    expect(res.status).toBe(200);
+  });
+  it('stats: plain editor clears fail-open (200)', async () => {
+    const res = await get('/api/suggestions/60/stats', EDITOR);
+    expect(res.status).toBe(200);
+  });
+
+  // ── Enforcement-ON block (efnafraedi-2e, enforce_assignments=1 in the
+  // harness): the chapter-assignment path turns default-deny, which is where
+  // the middleware's cross-book protection actually bites.
+  it('scan: unassigned editor → 403 under enforcement (default-deny)', async () => {
+    const res = await post('/api/suggestions/scan/61', EDITOR);
+    expect(res.status).toBe(403);
+  });
+  it('read: unassigned editor → 403 under enforcement (GETs are gated too)', async () => {
+    const res = await get('/api/suggestions/61', EDITOR);
+    expect(res.status).toBe(403);
+  });
+  it('read: owning head-editor short-circuits enforcement (200)', async () => {
+    const res = await get('/api/suggestions/61', HE_A);
+    expect(res.status).toBe(200);
+  });
+  it('read: admin short-circuits enforcement (200)', async () => {
+    const res = await get('/api/suggestions/61', ADMIN);
+    expect(res.status).toBe(200);
+  });
+
+  // ── Not-found + route-ordering pins
+  it('scan: unknown section → 404', async () => {
+    const res = await post('/api/suggestions/scan/99999', HE_B);
+    expect(res.status).toBe(404);
+  });
+  it('read: non-numeric :sectionId → 404 (getSection(NaN) yields no row)', async () => {
+    const res = await get('/api/suggestions/abc', HE_B);
+    expect(res.status).toBe(404);
+  });
+  it('patterns route stays first and unscoped (requireAuth only)', async () => {
+    const res = await get('/api/suggestions/patterns', EDITOR);
+    expect(res.status).toBe(200);
+  });
+});
+
+describe('suggestions bulk route contains ids to the gated section (id-smuggling rider)', () => {
+  it('owning head-editor bulk-accepts same-section ids and reaches a genuine 200 (bulk activityLog site executes)', async () => {
+    const res = await post('/api/suggestions/60/bulk', HE_B, { ids: [73, 74], action: 'accept' });
+    expect(res.status).toBe(200);
+  });
+  it('ids belonging to another section → 400 (suggestion 75 is section 61 / efnafraedi)', async () => {
+    const res = await post('/api/suggestions/60/bulk', HE_B, { ids: [75], action: 'accept' });
+    expect(res.status).toBe(400);
+  });
+});
+
+describe('suggestions sync-log: middleware + book-scoped canSync (rider)', () => {
+  // Section 62 is liffraedi-owned and suggestion-free (entriesCreated: 0), so a
+  // genuine 200 needs no localization_log table and no cross-test ordering.
+  it('head-editor of another book → 403 from canSync (clears fail-open middleware, then the book-scoped elevated check denies)', async () => {
+    const res = await post('/api/suggestions/62/sync-log', HE_A);
+    expect(res.status).toBe(403);
+  });
+  it('plain editor (not the assigned localizer) → 403 from canSync (localizer gate preserved beneath the middleware)', async () => {
+    const res = await post('/api/suggestions/62/sync-log', EDITOR);
+    expect(res.status).toBe(403);
+  });
+  it('owning head-editor reaches a genuine 200 (sync-log activityLog site executes)', async () => {
+    const res = await post('/api/suggestions/62/sync-log', HE_B);
+    expect(res.status).toBe(200);
+  });
+});
