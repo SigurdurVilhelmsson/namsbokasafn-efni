@@ -1645,7 +1645,11 @@
             data.books
               .map(function (book) {
                 // Use editorial progress (approved segments / total segments) — same metric as progress page
-                var pct = book.editorialProgress ? book.editorialProgress.percent : 0;
+                var ep = book.editorialProgress;
+                var pct = ep && typeof ep.percent === 'number' ? ep.percent : 0;
+                var pctLabel = book.editorialProgressUnavailable
+                  ? 'Framvinda \u00f3tilt\u00e6k'
+                  : pct + '% loki\u00f0';
                 return (
                   '<div class="book-card" onclick="loadBookDetail(\'' +
                   book.slug +
@@ -1661,8 +1665,8 @@
                   book.chapters +
                   ' kaflar</span>' +
                   '<span>' +
-                  pct +
-                  '% loki\u00f0</span>' +
+                  pctLabel +
+                  '</span>' +
                   '</div>' +
                   '<div class="book-card-progress">' +
                   '<div class="book-card-progress-fill" style="width:' +

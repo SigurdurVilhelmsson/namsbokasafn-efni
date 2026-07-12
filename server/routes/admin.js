@@ -233,8 +233,9 @@ router.post('/books/register', requireAuth, requireAdmin(), async (req, res) => 
         const db = new Database(dbPath, { readonly: true });
         refreshValidBooks(db);
         db.close();
-      } catch {
+      } catch (refreshErr) {
         // Non-fatal — book will be accessible after next server restart
+        log.warn({ err: refreshErr, book: slug }, 'VALID_BOOKS refresh failed after registration');
       }
     }
 
@@ -399,8 +400,10 @@ router.get('/books', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
           approvedSegments: progress.summary.approvedSegments,
           totalSegments: progress.summary.totalSegments,
         };
-      } catch {
-        book.editorialProgress = { percent: 0, approvedSegments: 0, totalSegments: 0 };
+      } catch (err) {
+        log.error({ err, book: book.slug }, 'Editorial progress failed for book list');
+        book.editorialProgress = null;
+        book.editorialProgressUnavailable = true;
       }
     }
 
@@ -997,8 +1000,9 @@ router.get('/assignments/:book', requireAuth, requireHeadEditor('book'), (req, r
     try {
       const progress = segmentEditorService.getEditorialProgress(book);
       chapterProgress = progress.chapters;
-    } catch {
-      // Progress data is optional
+    } catch (err) {
+      // Progress data is optional on this dashboard — but a failure must be visible.
+      log.error({ err, book }, 'Editorial progress failed for assignments dashboard');
     }
 
     res.json({
@@ -1220,6 +1224,7 @@ router.post('/migrate', requireAuth, requireAdmin(), async (req, res) => {
           if (err.message && err.message.includes('duplicate column')) {
             result = { success: true, alreadyApplied: true, name: migration.name };
           } else {
+            log.error({ err, migration: migration.name }, 'Manual migration failed');
             result = { success: false, error: err.message, name: migration.name };
           }
         }
@@ -1294,7 +1299,11 @@ router.get('/validate-pipeline', requireAuth, requireAdmin(), (req, res) => {
           flat[stage] = typeof info === 'string' ? info : info.status || 'not_started';
         }
         return flat;
-      } catch {
+      } catch (err) {
+        log.error(
+          { err, book: bookSlug, chapter: chapterNum },
+          'getStageData failed; treating as missing DB stage data'
+        );
         return null;
       }
     }
