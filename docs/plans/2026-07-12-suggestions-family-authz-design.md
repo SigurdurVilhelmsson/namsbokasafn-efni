@@ -98,3 +98,24 @@ Full `npm test` from repo root is the authoritative gate.
 - Mechanism reuses `requireBookAccess` (no authz-logic duplication); only adds section resolution. ✅
 - Circular-require risk flagged for the implementer to verify. ✅
 - Test plan covers the security property (cross-book 403), the fail-open editor model (documented), the resolver discrimination, and activityLog regression-insurance. ✅
+
+## Amendment (2026-07-12, implementation)
+
+Implemented per `docs/plans/2026-07-12-suggestions-family-authz-plan.md`, with three
+verified corrections to this design: (1) the §Testing line "cross-book HE → 403" on
+editor-level routes contradicted the delegation mechanism — `requireBookAccess` sends a
+non-owning head-editor down the editor fail-open path; the shipped matrix pins the true
+fail-open semantics and supplies the cross-book 403s via an enforcement-ON
+(`book_settings.enforce_assignments=1`) block instead. (2) `localization_suggestions` is
+created by migration 004, not self-init'd by the service — the test harness creates it
+plus `faithful_path`/`provider_id`/`user_book_access`/`book_settings`. (3) Two same-class
+riders shipped with tests: `/bulk` id-containment (ids must belong to the gated section,
+else 400) and sync-log `canSync` head-editor branch scoped to the section's book.
+
+Final whole-branch review (multi-lens + adversarial verify): zero confirmed
+critical/important findings. Two follow-ups register-noted rather than shipped here:
+(a) `POST /scan/:sectionId` reproduces the scan-book destructive effect at section
+granularity under the default fail-open model (lead-approved model; becomes moot if
+enforcement is turned ON for production books); (b) `requireBookAccess`'s dbUser-null
+fall-through means enforcement-ON default-deny holds only for callers resolvable to a
+DB user (pre-existing Unit-3 behavior, belongs with the B1-F8 fail-loud batch).
