@@ -36,6 +36,7 @@ const router = express.Router();
 
 const log = require('../lib/logger');
 const segmentParser = require('../services/segmentParser');
+const segmentValidation = require('../public/js/segment-validation');
 const segmentEditor = require('../services/segmentEditorService');
 const concordance = require('../services/concordanceService');
 const propagation = require('../services/propagationService');
@@ -330,6 +331,42 @@ router.post(
       return res.status(400).json({
         error: `Invalid category. Must be one of: ${VALID_CATEGORIES.join(', ')}`,
       });
+    }
+
+    // SR-OOS-2 backstop: the client's hard-block gate is bypassable, so the
+    // save route re-checks structural markers against SERVER-loaded baselines
+    // (never the client-supplied originalContent). Identity edits skip — the
+    // UI never validates withdrawals (parity, design §5). Warnings are
+    // advisory and deliberately NOT enforced here (design D3).
+    let baseline;
+    try {
+      const modData = segmentParser.loadModuleForEditing(
+        req.params.book,
+        req.chapterNum,
+        req.params.moduleId
+      );
+      baseline = modData.segments.find((s) => s.segmentId === segmentId);
+    } catch (loadErr) {
+      log.error({ err: loadErr }, 'Backstop baseline load failed');
+      return res.status(loadErr.message.includes('not found') ? 404 : 500).json({
+        error: loadErr.message,
+      });
+    }
+    if (!baseline) {
+      return res.status(404).json({ error: 'segment not found' });
+    }
+    if (editedContent !== baseline.is) {
+      const structure = segmentValidation.validateStructure(
+        baseline.en,
+        baseline.is,
+        editedContent
+      );
+      if (structure.blocked) {
+        return res.status(400).json({
+          error: 'Vistun hafnað: byggingarmerki vantar eða hafa breyst.',
+          violations: structure.blocked,
+        });
+      }
     }
 
     try {
