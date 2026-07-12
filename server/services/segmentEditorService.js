@@ -215,7 +215,7 @@ function buildEffectiveSegments(book, chapter, moduleId) {
   const data = segmentParser.loadModuleForEditing(book, chapter, moduleId);
   const latestBySeg = {};
   for (const e of getModuleEdits(book, moduleId)) {
-    if (e.status === 'rejected') continue;
+    if (e.status === 'rejected' || e.status === 'superseded') continue;
     const cur = latestBySeg[e.segment_id];
     if (!cur || e.id > cur.id) latestBySeg[e.segment_id] = e;
   }
@@ -415,7 +415,11 @@ function markForDiscussion(editId, reviewerId, reviewerUsername, reviewerNote) {
 
 /**
  * Revert an approved edit back to pending (only if not yet applied to files).
- * Clears all reviewer fields so the edit can be re-reviewed.
+ * Clears all reviewer fields so the edit can be re-reviewed. Refused when the
+ * same editor already has a pending row on the segment (mirror of
+ * returnEditToPending's guard): under the partial unique index on
+ * (book, module_id, segment_id, editor_id) WHERE status = 'pending', flipping
+ * this row to 'pending' too would otherwise hit a raw SQLite UNIQUE error.
  */
 function unapproveEdit(editId) {
   const conn = getDb();
@@ -423,6 +427,21 @@ function unapproveEdit(editId) {
   if (!edit) throw new Error('Edit not found');
   if (edit.status !== 'approved') throw new Error('Edit is not approved');
   if (edit.applied_at) throw new Error('Edit has already been applied to files');
+
+  const pending = conn
+    .prepare(
+      `SELECT id FROM segment_edits
+     WHERE book = ? AND module_id = ? AND segment_id = ? AND editor_id = ?
+       AND status = 'pending'`
+    )
+    .get(edit.book, edit.module_id, edit.segment_id, edit.editor_id);
+  if (pending) {
+    const err = new Error(
+      'Ritstjórinn á nýrri breytingu í bið á þessum bút — sú eldri leysist úr gildi við næstu vistun.'
+    );
+    err.code = 'PENDING_EXISTS';
+    throw err;
+  }
 
   conn
     .prepare(
@@ -540,7 +559,7 @@ function submitModuleForReview(params) {
   const stampEdits = conn.prepare(
     `UPDATE segment_edits SET review_id = ?
      WHERE book = ? AND module_id = ?
-       AND status != 'rejected'
+       AND status NOT IN ('rejected', 'superseded')
        AND (review_id IS NULL OR status IN ('pending', 'discuss'))`
   );
 
@@ -870,13 +889,13 @@ function applyApprovedEdits(book, chapter, moduleId) {
       );
     }
 
-    // 6. Mark winning edits as applied; mark superseded edits as rejected
+    // 6. Mark winning edits as applied; mark losing approved edits as superseded
     const winnerIds = Object.values(approvedLookup).map((e) => e.id);
     const markApplied = conn.prepare(
       `UPDATE segment_edits SET applied_at = CURRENT_TIMESTAMP WHERE id = ?`
     );
     const markSuperseded = conn.prepare(
-      `UPDATE segment_edits SET status = 'rejected', reviewer_note = 'Leyst úr gildi af nýrri samþykktri breytingu', applied_at = CURRENT_TIMESTAMP WHERE id = ?`
+      `UPDATE segment_edits SET status = 'superseded', reviewer_note = 'Leyst úr gildi af nýrri samþykktri breytingu', applied_at = CURRENT_TIMESTAMP WHERE id = ?`
     );
 
     for (const id of winnerIds) {
@@ -1237,6 +1256,7 @@ module.exports = {
   getSegmentEdits,
   getEditById,
   deleteSegmentEdit,
+  buildEffectiveSegments,
   // Review actions
   approveEdit,
   rejectEdit,

@@ -667,7 +667,7 @@ router.post(
         /* fire-and-forget */
       }
     } catch (err) {
-      res.status(400).json({ error: err.message });
+      res.status(err.code === 'PENDING_EXISTS' ? 409 : 400).json({ error: err.message });
     }
   }
 );
