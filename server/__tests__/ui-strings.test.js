@@ -85,3 +85,30 @@ describe('UI string key validation', () => {
     });
   }
 });
+
+describe('propagateResult (SR-OOS-2 FIX6c)', () => {
+  const source = readFileSync(join(publicJs, 'ui-strings.js'), 'utf-8');
+  const UI = new Function(`${source}; return UI;`)();
+
+  it('no skips: just the created count, no parenthetical', () => {
+    expect(UI.segmentEditor.propagateResult(3, 0, 0)).toBe('Fjölgað á 3 stað/staði');
+  });
+
+  it('structure_blocked skips get an explicit label, not the generic bucket', () => {
+    const msg = UI.segmentEditor.propagateResult(1, 2, 2);
+    expect(msg).toContain('byggingarmerki hindra');
+    expect(msg).not.toContain('þegar breytt');
+  });
+
+  it('mixed skip reasons: both labels appear, generic bucket only for the non-structural remainder', () => {
+    const msg = UI.segmentEditor.propagateResult(1, 3, 1);
+    expect(msg).toContain('1 vegna þess að byggingarmerki hindra');
+    expect(msg).toContain('2 þegar breytt');
+  });
+
+  it('all-non-structural skips: only the generic bucket appears', () => {
+    const msg = UI.segmentEditor.propagateResult(1, 2, 0);
+    expect(msg).toContain('2 þegar breytt');
+    expect(msg).not.toContain('byggingarmerki hindra');
+  });
+});

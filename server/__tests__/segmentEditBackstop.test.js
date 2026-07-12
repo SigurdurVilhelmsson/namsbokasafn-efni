@@ -240,7 +240,10 @@ describe('POST /edit — blocked structural violations (synthetic marker fixture
       },
     };
     const { status } = await invoke(req);
-    expect(status).not.toBe(400);
+    // SR-OOS-2 FIX6a: tightened from `not.toBe(400)` — the identity edit is a
+    // genuine withdraw-with-no-existing-edit, so the route must succeed
+    // (200), not merely avoid the specific 400 this test targets.
+    expect(status).toBe(200);
     expect(countRows(SYN_BOOK, SYN_MODULE, SYN_SEGMENT_ID_2)).toBe(0);
   });
 

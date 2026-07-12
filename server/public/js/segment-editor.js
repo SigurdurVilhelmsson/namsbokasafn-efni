@@ -1216,8 +1216,15 @@
           body: JSON.stringify({ segmentId, editedContent, category: category || undefined }),
         }
       );
+      const structureBlockedCount = pr.skipped.filter(
+        (s) => s.reason === 'structure_blocked'
+      ).length;
       saveRetry.showToast(
-        UI.segmentEditor.propagateResult(pr.created.length, pr.skipped.length),
+        UI.segmentEditor.propagateResult(
+          pr.created.length,
+          pr.skipped.length,
+          structureBlockedCount
+        ),
         'success'
       );
     } catch (err) {
