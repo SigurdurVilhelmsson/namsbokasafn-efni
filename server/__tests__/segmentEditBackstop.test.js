@@ -59,6 +59,7 @@ const REAL_MODULE = 'm68664';
 let handler;
 let db;
 let segmentParser;
+let segmentEditor;
 
 function invoke(req) {
   return new Promise((resolve) => {
@@ -98,6 +99,7 @@ beforeAll(() => {
   db = new Database(process.env.SESSIONS_DB_PATH);
 
   segmentParser = require('../services/segmentParser');
+  segmentEditor = require('../services/segmentEditorService');
 
   const router = require('../routes/segment-editor');
   const layer = router.stack.find(
@@ -240,6 +242,44 @@ describe('POST /edit — blocked structural violations (synthetic marker fixture
     const { status } = await invoke(req);
     expect(status).not.toBe(400);
     expect(countRows(SYN_BOOK, SYN_MODULE, SYN_SEGMENT_ID_2)).toBe(0);
+  });
+
+  it('case 6: the conflict check runs BEFORE the structural guard — a stale baseEditId 409s, not 400 (SR-OOS-2 FIX3)', async () => {
+    // Seed a newer conflicting edit by a DIFFERENT editor on SYN_SEGMENT_ID
+    // (the same marker-bearing segment case 1/2 use). A stale pane posting
+    // violating content with an out-of-date baseEditId must see the familiar
+    // SEGMENT_CONFLICT 409 (batch 2's alert+reload flow) — not a 400 that
+    // masks the real reason with a structural-marker message.
+    const seeded = segmentEditor.saveSegmentEdit({
+      book: SYN_BOOK,
+      chapter: 1,
+      moduleId: SYN_MODULE,
+      segmentId: SYN_SEGMENT_ID,
+      originalContent: ORIG_IS,
+      editedContent: ORIG_IS + ' breytt af öðrum ritstjóra',
+      category: 'accuracy',
+      editorId: 'other-editor',
+      editorUsername: 'annar',
+    });
+    expect(seeded.id).toBeGreaterThan(0);
+
+    const req = {
+      params: { book: SYN_BOOK, chapter: '1', moduleId: SYN_MODULE },
+      chapterNum: 1,
+      user: { id: 'u-test', username: 'prufa', role: 'editor', books: [SYN_BOOK] },
+      body: {
+        segmentId: SYN_SEGMENT_ID,
+        originalContent: ORIG_IS,
+        editedContent: STRIPPED_IS, // structurally violating (math-missing)
+        category: 'accuracy',
+        baseEditId: 0, // stale — the seeded row's id is > 0
+      },
+    };
+    const { status, body } = await invoke(req);
+    expect(status).toBe(409);
+    expect(body.error).toBe('conflict');
+    // Only the seeded row exists — the conflict was caught before any save attempt.
+    expect(countRows(SYN_BOOK, SYN_MODULE, SYN_SEGMENT_ID)).toBe(1);
   });
 });
 

@@ -333,43 +333,62 @@ router.post(
       });
     }
 
-    // SR-OOS-2 backstop: the client's hard-block gate is bypassable, so the
-    // save route re-checks structural markers against SERVER-loaded baselines
-    // (never the client-supplied originalContent). Identity edits skip — the
-    // UI never validates withdrawals (parity, design §5). Warnings are
-    // advisory and deliberately NOT enforced here (design D3).
-    let baseline;
-    try {
-      const modData = segmentParser.loadModuleForEditing(
-        req.params.book,
-        req.chapterNum,
-        req.params.moduleId
-      );
-      baseline = modData.segments.find((s) => s.segmentId === segmentId);
-    } catch (loadErr) {
-      log.error({ err: loadErr }, 'Backstop baseline load failed');
-      return res.status(loadErr.message.includes('not found') ? 404 : 500).json({
-        error: loadErr.message,
-      });
-    }
-    if (!baseline) {
-      return res.status(404).json({ error: 'segment not found' });
-    }
-    if (editedContent !== baseline.is) {
-      const structure = segmentValidation.validateStructure(
-        baseline.en,
-        baseline.is,
-        editedContent
-      );
-      if (structure.blocked) {
-        return res.status(400).json({
-          error: 'Vistun hafnað: byggingarmerki vantar eða hafa breyst.',
-          violations: structure.blocked,
-        });
-      }
-    }
+    const resolvedBaseEditId = typeof baseEditId === 'number' ? baseEditId : undefined;
 
     try {
+      // SR-OOS-2 FIX3: the conflict check runs BEFORE the structural-marker
+      // backstop guard below, so a stale pane gets its familiar 409
+      // (alert+reload flow) instead of a 400 that masks the real reason the
+      // save failed — same args the saveSegmentEdit call below passes.
+      segmentEditor.checkEditConflict({
+        book: req.params.book,
+        moduleId: req.params.moduleId,
+        segmentId,
+        editorId: String(req.user.id),
+        baseEditId: resolvedBaseEditId,
+      });
+
+      // SR-OOS-2 backstop: the client's hard-block gate is bypassable, so the
+      // save route re-checks structural markers against SERVER-loaded
+      // baselines (never the client-supplied originalContent). Identity
+      // edits (editedContent === baseline.is) skip the check: content equal
+      // to the server's own baseline cannot introduce NEW corruption
+      // relative to what's already on disk, so the server deliberately
+      // stays permissive here even on a withdrawal whose baseline would
+      // itself fail an EN-derived rule in the UI (e.g. an MT baseline that
+      // already dropped a [[MATH:N]]). Warnings are advisory and
+      // deliberately NOT enforced here (design D3).
+      let baseline;
+      try {
+        const modData = segmentParser.loadModuleForEditing(
+          req.params.book,
+          req.chapterNum,
+          req.params.moduleId
+        );
+        baseline = modData.segments.find((s) => s.segmentId === segmentId);
+      } catch (loadErr) {
+        log.error({ err: loadErr }, 'Backstop baseline load failed');
+        return res.status(loadErr.message.includes('not found') ? 404 : 500).json({
+          error: loadErr.message,
+        });
+      }
+      if (!baseline) {
+        return res.status(404).json({ error: 'segment not found' });
+      }
+      if (editedContent !== baseline.is) {
+        const structure = segmentValidation.validateStructure(
+          baseline.en,
+          baseline.is,
+          editedContent
+        );
+        if (structure.blocked) {
+          return res.status(400).json({
+            error: 'Vistun hafnað: byggingarmerki vantar eða hafa breyst.',
+            violations: structure.blocked,
+          });
+        }
+      }
+
       const result = segmentEditor.saveSegmentEdit({
         book: req.params.book,
         chapter: req.chapterNum,
@@ -381,7 +400,7 @@ router.post(
         editorNote,
         editorId: String(req.user.id),
         editorUsername: req.user.username,
-        baseEditId: typeof baseEditId === 'number' ? baseEditId : undefined,
+        baseEditId: resolvedBaseEditId,
       });
 
       activityLog.log({

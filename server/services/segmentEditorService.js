@@ -40,6 +40,39 @@ function getDb() {
 // =====================================================================
 
 /**
+ * Optimistic concurrency check (F13, parity with the localization editor's
+ * 409): baseEditId is the highest edit id the client saw on this segment at
+ * load. If a *different* editor has since added an edit beyond it, throws a
+ * SEGMENT_CONFLICT error so the caller reloads instead of silently racing on
+ * a stale view of the segment. A no-op when baseEditId is omitted/null
+ * (legacy callers).
+ *
+ * Extracted from saveSegmentEdit (SR-OOS-2 FIX3) so the segment-edit ROUTE
+ * can run the identical check ahead of its structural-marker backstop guard
+ * — a stale pane must see its familiar 409 (alert+reload flow) first, not a
+ * 400 that masks the real reason the save failed.
+ */
+function checkEditConflict({ book, moduleId, segmentId, editorId, baseEditId }) {
+  if (baseEditId === undefined || baseEditId === null) return;
+  const conn = getDb();
+  const conflict = conn
+    .prepare(
+      `SELECT editor_username FROM segment_edits
+       WHERE book = ? AND module_id = ? AND segment_id = ?
+         AND editor_id != ? AND id > ?
+       ORDER BY id DESC LIMIT 1`
+    )
+    .get(book, moduleId, segmentId, editorId, baseEditId);
+  if (conflict) {
+    const err = new Error(
+      `Annar yfirlesari (${conflict.editor_username}) hefur breytt þessum bút. Endurhlaðið til að sjá nýjustu útgáfu.`
+    );
+    err.code = 'SEGMENT_CONFLICT';
+    throw err;
+  }
+}
+
+/**
  * Create or update a segment edit.
  * If the editor already has a pending edit for this segment, update it.
  */
@@ -60,27 +93,7 @@ function saveSegmentEdit(params) {
 
   const conn = getDb();
 
-  // Optimistic concurrency (F13, parity with the localization editor's 409):
-  // baseEditId is the highest edit id the client saw on this segment at load.
-  // If a *different* editor has since added an edit beyond it, reject so the
-  // editor reloads instead of silently racing on a stale view of the segment.
-  if (baseEditId !== undefined && baseEditId !== null) {
-    const conflict = conn
-      .prepare(
-        `SELECT editor_username FROM segment_edits
-         WHERE book = ? AND module_id = ? AND segment_id = ?
-           AND editor_id != ? AND id > ?
-         ORDER BY id DESC LIMIT 1`
-      )
-      .get(book, moduleId, segmentId, editorId, baseEditId);
-    if (conflict) {
-      const err = new Error(
-        `Annar yfirlesari (${conflict.editor_username}) hefur breytt þessum bút. Endurhlaðið til að sjá nýjustu útgáfu.`
-      );
-      err.code = 'SEGMENT_CONFLICT';
-      throw err;
-    }
-  }
+  checkEditConflict({ book, moduleId, segmentId, editorId, baseEditId });
 
   // Check for existing pending edit by this editor on this segment
   const existing = conn
@@ -1290,6 +1303,7 @@ function _setTestBooksDir(dir) {
 module.exports = {
   // Segment edits
   saveSegmentEdit,
+  checkEditConflict,
   getModuleEdits,
   getSegmentEdits,
   getEditById,
