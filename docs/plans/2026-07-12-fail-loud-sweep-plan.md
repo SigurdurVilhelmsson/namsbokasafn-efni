@@ -16,7 +16,7 @@
 - Logger convention: `const log = require('../lib/logger')` — a single shared pino instance. **Exception:** inside `server/services/activityLog.js` import it as `logger` (the file exports a function named `log`).
 - Log call shape: merged object first, message second — `log.error({ err, ...context }, 'Message')`.
 - Resolve paths against `__dirname`/`resolveDbPath()`, never `process.cwd()`.
-- Migrations export `{ name, up(db) }`; next free number is **040**. `migrationRunner.runAllMigrations()` picks up new files automatically, and `server/__tests__/migrationIdempotency.test.js` runs the whole chain twice — 040 gets idempotency coverage for free.
+- Migrations export `{ name, up(db) }`; next free number is **040**. **`migrationRunner.js` keeps a HARDCODED require array (no auto-discovery)** — a new migration must be added to that array or it never runs (Task-1 review finding; the plan originally claimed auto-discovery). `server/__tests__/migrationIdempotency.test.js` runs the whole chain twice, and `startup.test.js` pins the migration count (bump the pin when registering 040).
 - Verified by spike (2026-07-12): `logger.error` is an own, writable, configurable property of the pino instance and the CJS cache shares one instance — `vi.spyOn(require('../lib/logger'), 'error')` intercepts calls made from any module. Use `.mockImplementation(() => {})` to keep test output clean and always `mockRestore()` in `afterEach`.
 - The uniform lazy-DB pattern for this batch (used in Tasks 2, 4, 5 — repeated in each task so tasks are self-contained):
 
