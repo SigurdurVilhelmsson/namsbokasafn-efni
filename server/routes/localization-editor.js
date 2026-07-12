@@ -339,6 +339,16 @@ router.post(
         req.params.moduleId
       );
 
+      // SR-OOS-2 FIX5: an unknown segmentId used to fall through silently —
+      // it's absent from data.segments (paired from the EN source), so the
+      // map below just never wrote it and the route still returned 200/success.
+      // 404 instead (parity with the segment-editor route's identical guard).
+      const targetSeg = data.segments.find((seg) => seg.segmentId === segmentId);
+      if (!targetSeg) {
+        return res.status(404).json({ error: 'segment not found' });
+      }
+      const previousContent = targetSeg.hasLocalized ? targetSeg.localized : targetSeg.faithful;
+
       // Build the full segment list for saving.
       // Start from existing localized data, or from faithful if no localized file yet.
       const segments = data.segments.map((seg) => ({
@@ -347,19 +357,11 @@ router.post(
           seg.segmentId === segmentId ? content : seg.hasLocalized ? seg.localized : seg.faithful,
       }));
 
-      // Compute previous content for audit trail
-      const targetSeg = data.segments.find((seg) => seg.segmentId === segmentId);
-      const previousContent = targetSeg
-        ? targetSeg.hasLocalized
-          ? targetSeg.localized
-          : targetSeg.faithful
-        : '';
-
       // SR-OOS-2 backstop (parity with the segment-editor's edValidateSegmentEdit):
       // baseline is the FAITHFUL text (localization's source of truth), warnings
       // are advisory-only and never enforced here (design D3/D5). Identity edits
       // (content unchanged from what the pane currently shows) skip validation.
-      if (targetSeg && content !== previousContent) {
+      if (content !== previousContent) {
         const structure = segmentValidation.validateStructure(
           targetSeg.en,
           targetSeg.faithful,

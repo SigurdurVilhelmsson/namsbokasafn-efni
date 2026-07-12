@@ -222,6 +222,17 @@ describe('POST /save — structural backstop (baseline = faithful)', () => {
     expect(seg2.hasLocalized).toBe(true);
     expect(seg2.localized).toBe(EDITED_SEG2_VALID);
   });
+
+  it('case 6: an unknown segmentId 404s instead of silently no-op-saving (SR-OOS-2 FIX5, parity with the segment route)', async () => {
+    const before = readLocalizedRaw();
+    const unknownSegmentId = `${SYN_MODULE}:para:does-not-exist`;
+    const req = baseReq({ body: { segmentId: unknownSegmentId, content: 'anything' } });
+    const { status, body } = await invoke(saveHandler, req);
+
+    expect(status).toBe(404);
+    expect(body.error).toBe('segment not found');
+    expect(readLocalizedRaw()).toBe(before);
+  });
 });
 
 // ─── Cases 3/4/5: save-all (whole-batch reject) ──────────────────────────
