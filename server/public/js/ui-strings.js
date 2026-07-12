@@ -117,6 +117,7 @@ const UI = {
     },
     completed: 'Lokið',
     failed: 'Mistókst',
+    cancelled: 'Hætt við.',
     connectionLost: 'Tenging rofnaði',
     connectionLostDetail: '\nGat ekki náð sambandi við þjón.',
     starting: function (action) {

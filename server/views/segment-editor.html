@@ -535,7 +535,8 @@
 
     .btn-approve,
     .btn-reject,
-    .btn-discuss {
+    .btn-discuss,
+    .btn-reopen {
       border: none;
       border-radius: var(--radius-md);
       cursor: pointer;
@@ -548,9 +549,13 @@
     .btn-approve { background: var(--success); }
     .btn-reject { background: var(--error); }
     .btn-discuss { background: var(--warning); }
+    /* Muted/neutral — distinct from the approve/reject/discuss status colors;
+       reopening isn't a review verdict, it just re-enables one. */
+    .btn-reopen { background: var(--info); }
     .btn-approve:hover { filter: brightness(1.1); }
     .btn-reject:hover { filter: brightness(1.1); }
     .btn-discuss:hover { filter: brightness(1.1); }
+    .btn-reopen:hover { filter: brightness(1.1); }
 
     /* --- Edit status badges --- */
     .edit-status {

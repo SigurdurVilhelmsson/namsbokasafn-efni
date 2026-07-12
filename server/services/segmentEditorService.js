@@ -461,7 +461,7 @@ function unapproveEdit(editId) {
     .get(edit.book, edit.module_id, edit.segment_id, edit.editor_id);
   if (pending) {
     const err = new Error(
-      'Ritstjórinn á nýrri breytingu í bið á þessum bút — sú eldri leysist úr gildi við næstu vistun.'
+      'Yfirlesarinn á nýrri breytingu í bið á þessum bút — farið yfir þá breytingu í staðinn.'
     );
     err.code = 'PENDING_EXISTS';
     throw err;
@@ -507,7 +507,7 @@ function returnEditToPending(editId) {
     .get(edit.book, edit.module_id, edit.segment_id, edit.editor_id);
   if (pending) {
     const err = new Error(
-      'Ritstjórinn á nýrri breytingu í bið á þessum bút — sú eldri leysist úr gildi við næstu vistun.'
+      'Yfirlesarinn á nýrri breytingu í bið á þessum bút — farið yfir þá breytingu í staðinn.'
     );
     err.code = 'PENDING_EXISTS';
     throw err;

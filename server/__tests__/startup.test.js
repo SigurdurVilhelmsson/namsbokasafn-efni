@@ -84,10 +84,10 @@ describe('Server startup smoke tests', () => {
       }
     });
 
-    it('migrationRunner references all 38 migrations', () => {
+    it('migrationRunner references all 39 migrations', () => {
       const source = readFileSync(join(serverDir, 'services', 'migrationRunner.js'), 'utf-8');
 
-      for (let i = 1; i <= 38; i++) {
+      for (let i = 1; i <= 39; i++) {
         const prefix = String(i).padStart(3, '0');
         expect(source).toContain(`'../migrations/${prefix}-`);
       }

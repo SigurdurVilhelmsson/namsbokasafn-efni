@@ -104,12 +104,13 @@ describe('getAdminHeadlineCount', () => {
     expect(readModel.getAdminHeadlineCount()).toBe(0);
   });
 
-  it('counts only pending edits, ignoring approved/rejected/discuss/applied', () => {
+  it('counts only pending edits, ignoring approved/rejected/discuss/superseded/applied', () => {
     insertEdit(db, { status: 'pending' });
     insertEdit(db, { status: 'pending', segment_id: 'm00001:para:fs-id002' });
     insertEdit(db, { status: 'approved' });
     insertEdit(db, { status: 'rejected' });
     insertEdit(db, { status: 'discuss' });
+    insertEdit(db, { status: 'superseded', segment_id: 'm00001:para:fs-id003' });
     expect(readModel.getAdminHeadlineCount()).toBe(2);
   });
 
@@ -196,6 +197,23 @@ describe('getUserActionableEdits', () => {
     expect(result.map((r) => r.status).sort()).toEqual(['discuss', 'rejected']);
   });
 
+  // Design D5 (final-review wave, item 2c): a 'superseded' row is the exit
+  // path for a stale discuss/rejected edit — the editor already answered it
+  // with a new revision, so it must NOT resurface as something still needing
+  // a response, even though it shares the same editor.
+  it('does not return superseded edits for the user', () => {
+    insertEdit(db, { editor_username: 'annask', status: 'rejected' });
+    insertEdit(db, {
+      editor_username: 'annask',
+      status: 'superseded',
+      segment_id: 'm00001:para:fs-id002',
+    });
+
+    const result = readModel.getUserActionableEdits('annask');
+    expect(result).toHaveLength(1);
+    expect(result.map((r) => r.status)).toEqual(['rejected']);
+  });
+
   it('returns empty for unknown user', () => {
     expect(readModel.getUserActionableEdits('nobody')).toEqual([]);
   });
@@ -239,6 +257,13 @@ describe('getUserHeadlineCounts', () => {
       editor_username: 'magnusg',
       status: 'pending',
       segment_id: 'm00001:para:fs-id003',
+    });
+    // Superseded (design D5) — the editor already answered this one with a
+    // newer revision; must not count toward actionable or any other tile.
+    insertEdit(db, {
+      editor_username: 'annask',
+      status: 'superseded',
+      segment_id: 'm00001:para:fs-id004',
     });
 
     const counts = readModel.getUserHeadlineCounts('annask');

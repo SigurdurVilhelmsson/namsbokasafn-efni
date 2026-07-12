@@ -813,7 +813,9 @@
             (latestEdit.status === 'discuss' || latestEdit.status === 'rejected') &&
             !latestEdit.applied_at
               ? `
-            <button class="btn btn-sm btn-reopen" onclick="reopenEdit(${latestEdit.id})" style="margin-top: 0.25rem;" title="${UI.tooltips.reopenEdit}">&#8634;</button>
+            <button class="btn btn-sm btn-reopen" onclick="reopenEdit(${latestEdit.id})" style="margin-top: 0.25rem;" title="${UI.tooltips.reopenEdit}">
+              &#8634; Opna aftur
+            </button>
           `
               : ''
           }
@@ -1765,6 +1767,17 @@
           } catch (retryErr) {
             err = retryErr;
           }
+        } else {
+          // User declined the confirmation dialog — this is not a failure,
+          // just a cancelled action. Reset to a neutral idle state instead
+          // of falling through to the red failure badge/'Error:' line below.
+          badge.style.display = 'none';
+          badge.className = 'pipeline-status-badge';
+          badge.textContent = '';
+          output.classList.remove('active');
+          output.textContent = UI.pipeline.cancelled;
+          setPipelineButtonsDisabled(false);
+          return;
         }
       }
       badge.textContent = UI.common.error;

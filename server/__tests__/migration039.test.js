@@ -438,11 +438,38 @@ describe('migration 039 — populated-copy against a hand-built pre-039 schema',
     expect(cols).not.toContain('marker');
 
     // The real seeded rows survived the rebuild untouched (except the
-    // deliberate relabel, id 13) — the orphan drop was safe because it
-    // happened inside the same transaction as the copy.
+    // deliberate relabel, id 13) and the decoy is gone. This shows the
+    // end-to-end outcome is correct when an orphan is present — it does NOT
+    // exercise crash-mid-transaction atomicity (this test never interrupts
+    // the migration; a real interpreter kill can't be simulated from inside
+    // a synchronous unit test). The static db.transaction(...) wrapper pin
+    // below is what actually stands in for that guarantee.
     const rows = db.prepare(`SELECT * FROM segment_edits ORDER BY id`).all();
     expect(rows).toHaveLength(5);
     expect(rows.map((r) => r.id)).toEqual([1, 5, 9, 13, 17]);
     expect(rows).toEqual(expectedPostMigrationRows);
+  });
+});
+
+describe('migration 039 — atomicity is a static source property (not behaviorally exercised above)', () => {
+  // Neither test above actually kills the process mid-migration (a unit test
+  // can't do that safely), so they can only show the rebuild is CORRECT when
+  // it runs to completion, not that it's ATOMIC if interrupted. That
+  // guarantee comes from the rebuild's db.exec(...) being lexically inside a
+  // db.transaction(() => { ... }) wrapper — better-sqlite3 rolls that back on
+  // throw, and SQLite's journal rolls it back on an unclean process exit.
+  // Pinned statically (regex over the source) rather than behaviorally.
+  it('wraps the rebuild db.exec(...) inside db.transaction(...)', () => {
+    const source = fs.readFileSync(
+      path.join(__dirname, '..', 'migrations', '039-segment-edit-exit-path.js'),
+      'utf-8'
+    );
+    const transactionIdx = source.indexOf('db.transaction(');
+    expect(transactionIdx).toBeGreaterThan(-1);
+    const execIdx = source.indexOf('db.exec(', transactionIdx);
+    expect(execIdx).toBeGreaterThan(transactionIdx);
+    // The transaction is invoked (not just defined) after the exec call it wraps.
+    const invokeIdx = source.indexOf('rebuild();');
+    expect(invokeIdx).toBeGreaterThan(execIdx);
   });
 });
