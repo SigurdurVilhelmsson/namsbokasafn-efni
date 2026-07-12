@@ -124,6 +124,25 @@
     var keys = Object.keys(edPendingChanges);
     if (keys.length === 0) return;
 
+    // SR-OOS-2 FIX2: autosave used to post every pending change UNVALIDATED,
+    // so a single transiently-broken segment would draw the new whole-batch
+    // 400 and silently block ALL pending persistence every 60s (the catch
+    // below only handled 409). Validate each pending change here and EXCLUDE
+    // blocked ones from the batch — they stay in edPendingChanges/localStorage
+    // and stay counted as unsaved in the status bar; manual "Vista allt"
+    // already explains them via its own gate. No alert here — autosave stays
+    // unobtrusive. A pending change whose segment can't be found (module data
+    // changed underneath us) can't be validated, so it's let through as before.
+    var saveableKeys = keys.filter(function (segmentId) {
+      var seg = edModuleData.segments.find(function (s) {
+        return s.segmentId === segmentId;
+      });
+      if (!seg) return true;
+      var v = edValidateSegmentEdit(seg.en, seg.faithful, edPendingChanges[segmentId].content);
+      return !v.blocked;
+    });
+    if (saveableKeys.length === 0) return;
+
     edSaveInFlight = true;
     var bar = document.getElementById('save-status-bar');
     if (bar) {
@@ -132,7 +151,7 @@
       document.getElementById('save-status-text').textContent = UI.save.autoSaving;
     }
 
-    var segments = keys.map(function (segmentId) {
+    var segments = saveableKeys.map(function (segmentId) {
       return {
         segmentId: segmentId,
         content: edPendingChanges[segmentId].content,
@@ -167,8 +186,8 @@
       if (result.lastModified != null) edLastModified = result.lastModified;
 
       // Update local state for all saved segments
-      for (var i = 0; i < keys.length; i++) {
-        var segmentId = keys[i];
+      for (var i = 0; i < saveableKeys.length; i++) {
+        var segmentId = saveableKeys[i];
         var seg = edModuleData.segments.find(function (s) {
           return s.segmentId === segmentId;
         });
@@ -187,8 +206,17 @@
         var row = document.getElementById('row-' + edCssId(segmentId));
         if (row) row.className = 'segment-row saved';
       }
-      edPendingChanges = {};
-      edClearDraft();
+      // Only drop the entries that actually saved — blocked ones (excluded
+      // from the batch above) stay pending so they keep counting as unsaved
+      // and manual "Vista allt" can still explain them.
+      for (var j = 0; j < saveableKeys.length; j++) {
+        delete edPendingChanges[saveableKeys[j]];
+      }
+      if (Object.keys(edPendingChanges).length === 0) {
+        edClearDraft();
+      } else {
+        edSaveDraft();
+      }
 
       edModuleData.localizedCount = edModuleData.segments.filter(function (s) {
         return s.hasLocalized;

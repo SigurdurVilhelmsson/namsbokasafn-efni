@@ -38,6 +38,24 @@ describe('propagation guard arming (SR-OOS-2 FIX4)', () => {
   });
 });
 
+describe('localization autosave excludes blocked segments (SR-OOS-2 FIX2)', () => {
+  it('edAutoSave validates each pending change and never alerts (stays unobtrusive)', () => {
+    const src = read('public/js/localization-editor.js');
+    const startIdx = src.indexOf('async function edAutoSave() {');
+    expect(startIdx).toBeGreaterThan(-1);
+    const endIdx = src.indexOf('// DRAFT PERSISTENCE', startIdx);
+    expect(endIdx).toBeGreaterThan(startIdx);
+    const body = src.slice(startIdx, endIdx);
+
+    // Validates each pending change against its shared-rule baseline...
+    expect(body).toMatch(/edValidateSegmentEdit\(seg\.en, seg\.faithful,/);
+    // ...and excludes blocked ones from the batch rather than aborting it.
+    expect(body).toMatch(/saveableKeys/);
+    // Autosave must stay unobtrusive — no alert() anywhere in this function.
+    expect(body).not.toMatch(/alert\(/);
+  });
+});
+
 describe('client panes delegate (no inline rule bodies)', () => {
   for (const pane of ['public/js/segment-editor.js', 'public/js/localization-editor.js']) {
     it(`${pane} calls the shared module and owns no MATH regex`, () => {
