@@ -551,6 +551,79 @@ describe('discuss/rejected exit path — supersede-on-save + collision matrix', 
   });
 });
 
+describe('returnEditToPending — head-editor manual exit', () => {
+  let db;
+
+  beforeAll(() => {
+    db = createTestDb();
+    service._setTestDb(db);
+  });
+
+  afterAll(() => {
+    db.close();
+    service._setTestDb(null);
+  });
+
+  beforeEach(() => {
+    db.exec('DELETE FROM segment_edits');
+  });
+
+  function save(overrides = {}) {
+    return service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'seg-rtp-1',
+      originalContent: 'original',
+      editedContent: 'edited v' + Math.random(),
+      editorId: 'u1',
+      editorUsername: 'editor1',
+      ...overrides,
+    });
+  }
+
+  it('returns a discuss row to pending and clears reviewer fields', () => {
+    const e = save();
+    service.markForDiscussion(e.id, 'rev1', 'reviewer1', 'ræðum');
+    const back = service.returnEditToPending(e.id);
+    expect(back.status).toBe('pending');
+    expect(back.reviewer_id).toBeNull();
+    expect(back.reviewer_username).toBeNull();
+    expect(back.reviewer_note).toBeNull();
+    expect(back.reviewed_at).toBeNull();
+  });
+
+  it('returns a rejected row to pending', () => {
+    const e = save({ segmentId: 'seg-rtp-2' });
+    service.rejectEdit(e.id, 'rev1', 'reviewer1', 'nei');
+    expect(service.returnEditToPending(e.id).status).toBe('pending');
+  });
+
+  it('refuses when the editor already has a newer pending row (409 code)', () => {
+    const e = save({ segmentId: 'seg-rtp-3' });
+    service.rejectEdit(e.id, 'rev1', 'reviewer1', 'nei');
+    save({ segmentId: 'seg-rtp-3' }); // editor already responded — old row is superseded…
+    // …so returnEditToPending must refuse on status, or on the pending guard for
+    // a row that somehow stayed rejected. Recreate that state directly:
+    db.prepare(`UPDATE segment_edits SET status = 'rejected' WHERE id = ?`).run(e.id);
+    let err;
+    try {
+      service.returnEditToPending(e.id);
+    } catch (x) {
+      err = x;
+    }
+    expect(err?.code).toBe('PENDING_EXISTS');
+  });
+
+  it('refuses non-discuss/rejected rows and applied rows', () => {
+    const e = save({ segmentId: 'seg-rtp-4' });
+    expect(() => service.returnEditToPending(e.id)).toThrow(/discuss/);
+    service.rejectEdit(e.id, 'rev1', 'reviewer1', 'nei');
+    db.prepare(`UPDATE segment_edits SET applied_at = CURRENT_TIMESTAMP WHERE id = ?`).run(e.id);
+    expect(() => service.returnEditToPending(e.id)).toThrow(/applied/);
+  });
+});
+
 // =====================================================================
 // applyApprovedEdits Integration Tests
 // =====================================================================

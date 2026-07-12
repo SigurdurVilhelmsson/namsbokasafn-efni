@@ -40,6 +40,7 @@ const ACTIVITY_TYPES = {
   SEGMENT_EDIT_REJECTED: 'segment_edit_rejected',
   SEGMENT_EDIT_DISCUSS: 'segment_edit_discuss',
   SEGMENT_EDITS_APPLIED: 'segment_edits_applied',
+  SEGMENT_EDIT_REOPENED: 'segment_edit_reopened',
 
   // Localization suggestion actions
   SUGGESTIONS_SCANNED: 'suggestions_scanned',

@@ -439,6 +439,52 @@ function unapproveEdit(editId) {
   return conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
 }
 
+/**
+ * Return a discussed/rejected edit to pending for re-review (head-editor
+ * manual exit path — mirror of unapproveEdit). Refused when the same editor
+ * already has a pending row on the segment: the one-pending invariant would
+ * be violated, and that pending row IS the editor's answer to the old one
+ * (it supersedes it on save).
+ */
+function returnEditToPending(editId) {
+  const conn = getDb();
+  const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+  if (!edit) throw new Error('Edit not found');
+  if (edit.status !== 'discuss' && edit.status !== 'rejected') {
+    throw new Error('Edit is not in discuss/rejected status');
+  }
+  if (edit.applied_at) throw new Error('Edit has already been applied to files');
+
+  const pending = conn
+    .prepare(
+      `SELECT id FROM segment_edits
+     WHERE book = ? AND module_id = ? AND segment_id = ? AND editor_id = ?
+       AND status = 'pending'`
+    )
+    .get(edit.book, edit.module_id, edit.segment_id, edit.editor_id);
+  if (pending) {
+    const err = new Error(
+      'Ritstjórinn á nýrri breytingu í bið á þessum bút — sú eldri leysist úr gildi við næstu vistun.'
+    );
+    err.code = 'PENDING_EXISTS';
+    throw err;
+  }
+
+  conn
+    .prepare(
+      `UPDATE segment_edits
+     SET status = 'pending',
+         reviewer_id = NULL,
+         reviewer_username = NULL,
+         reviewer_note = NULL,
+         reviewed_at = NULL
+     WHERE id = ?`
+    )
+    .run(editId);
+
+  return conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+}
+
 // =====================================================================
 // MODULE REVIEWS
 // =====================================================================
@@ -1196,6 +1242,7 @@ module.exports = {
   rejectEdit,
   markForDiscussion,
   unapproveEdit,
+  returnEditToPending,
   // Module reviews
   submitModuleForReview,
   getPendingModuleReviews,
