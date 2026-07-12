@@ -14,6 +14,7 @@ process.env.JWT_SECRET = process.env.JWT_SECRET || 'test-secret';
 const express = require('express');
 const Database = require('better-sqlite3');
 const jwt = require('jsonwebtoken');
+const migration040 = require('../migrations/040-service-table-ownership');
 
 // Personas — role strings match server/e2e/helpers/auth.js; books[] holds slugs.
 const HE_A = { username: 'he-a', role: 'head-editor', books: ['efnafraedi-2e'] };
@@ -46,6 +47,11 @@ beforeAll(() => {
   // verbatim from 003-book-catalogue.js. `users` + `user_chapter_assignments` mirror
   // migrations 006/010 (minimal columns only — see B1-F6).
   const db = new Database(process.env.SESSIONS_DB_PATH);
+  // activity_log/notifications/notification_preferences: owned by migration 040
+  // (batch 4 D1/D4 — activityLog.js no longer self-inits its table on require;
+  // this harness DB skips the real migration runner, so apply 040 directly, same
+  // as production's boot-time runAllMigrations()).
+  migration040.up(db);
   db.exec(`
     CREATE TABLE IF NOT EXISTS registered_books (id INTEGER PRIMARY KEY, slug TEXT, title_is TEXT);
     CREATE TABLE IF NOT EXISTS book_chapters (
@@ -545,8 +551,9 @@ describe('admin GET assignments is book-scoped (B1-F5, whole-branch review)', ()
 describe('activity book-log read is book-scoped (B1-F5 sibling, whole-branch review)', () => {
   // GET /api/activity/book/:book leaked another book's full editorial activity
   // (usernames, actions, timestamps) to any head-editor — same class as the
-  // GET /assignments read-leak fixed in T7. activityLog.getByBook self-inits its
-  // table, so owner/admin reach a genuine 200 (empty log is fine).
+  // GET /assignments read-leak fixed in T7. activity_log is provisioned by
+  // migration040.up(db) above (batch 4 — activityLog.getByBook no longer
+  // self-inits the table), so owner/admin reach a genuine 200 (empty log is fine).
   const READ = '/api/activity/book/liffraedi-2e';
   it('GET: head-editor of another book → 403', async () => {
     const res = await get(READ, HE_A);
