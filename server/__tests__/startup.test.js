@@ -67,16 +67,17 @@ describe('Server startup smoke tests', () => {
   });
 
   describe('migration file inventory', () => {
-    it('all 38 migration files exist on disk', () => {
+    it('all 39 migration files exist on disk', () => {
       const migrationsDir = join(serverDir, 'migrations');
       const files = readdirSync(migrationsDir)
         .filter((f) => f.endsWith('.js'))
         .sort();
 
-      expect(files.length).toBe(38);
+      // 39 as of migration 039-segment-edit-exit-path (bumped from 38).
+      expect(files.length).toBe(39);
 
-      // Verify sequential numbering 001-038
-      for (let i = 1; i <= 38; i++) {
+      // Verify sequential numbering 001-039
+      for (let i = 1; i <= 39; i++) {
         const prefix = String(i).padStart(3, '0');
         const match = files.find((f) => f.startsWith(prefix));
         expect(match).toBeTruthy();

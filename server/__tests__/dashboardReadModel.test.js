@@ -106,7 +106,7 @@ describe('getAdminHeadlineCount', () => {
 
   it('counts only pending edits, ignoring approved/rejected/discuss/applied', () => {
     insertEdit(db, { status: 'pending' });
-    insertEdit(db, { status: 'pending' });
+    insertEdit(db, { status: 'pending', segment_id: 'm00001:para:fs-id002' });
     insertEdit(db, { status: 'approved' });
     insertEdit(db, { status: 'rejected' });
     insertEdit(db, { status: 'discuss' });
@@ -142,16 +142,24 @@ describe('getGlobalPendingEdits', () => {
 
   it('filters by chapter', () => {
     insertEdit(db, { chapter: 1 });
-    insertEdit(db, { chapter: 5 });
+    insertEdit(db, { chapter: 5, segment_id: 'm00001:para:fs-id002' });
     expect(readModel.getGlobalPendingEdits({ chapter: 5 })).toHaveLength(1);
   });
 
   it('filters by editor', () => {
-    insertEdit(db, { editor_username: 'annask' });
-    insertEdit(db, { editor_username: 'magnusg' });
+    // Two distinct editors: different editor_id AND editor_username, so the
+    // rows are genuinely independent pending edits (same segment is a valid
+    // real-world case — two editors both proposing a fix for the same spot).
+    insertEdit(db, { editor_id: 'user-1', editor_username: 'annask' });
+    insertEdit(db, { editor_id: 'user-2', editor_username: 'magnusg' });
+
     const onlyAnna = readModel.getGlobalPendingEdits({ editor: 'annask' });
     expect(onlyAnna).toHaveLength(1);
     expect(onlyAnna[0].editor_username).toBe('annask');
+
+    const onlyMagnus = readModel.getGlobalPendingEdits({ editor: 'magnusg' });
+    expect(onlyMagnus).toHaveLength(1);
+    expect(onlyMagnus[0].editor_username).toBe('magnusg');
   });
 
   it('respects limit', () => {
@@ -210,7 +218,11 @@ describe('getUserHeadlineCounts', () => {
     insertEdit(db, { editor_username: 'annask', status: 'rejected' });
     insertEdit(db, { editor_username: 'annask', status: 'discuss' });
     insertEdit(db, { editor_username: 'annask', status: 'pending' });
-    insertEdit(db, { editor_username: 'annask', status: 'pending' });
+    insertEdit(db, {
+      editor_username: 'annask',
+      status: 'pending',
+      segment_id: 'm00001:para:fs-id002',
+    });
     insertEdit(db, {
       editor_username: 'annask',
       status: 'approved',
@@ -223,7 +235,11 @@ describe('getUserHeadlineCounts', () => {
       reviewed_at: '2026-01-01 12:00:00',
     });
     // Other user — must not affect counts
-    insertEdit(db, { editor_username: 'magnusg', status: 'pending' });
+    insertEdit(db, {
+      editor_username: 'magnusg',
+      status: 'pending',
+      segment_id: 'm00001:para:fs-id003',
+    });
 
     const counts = readModel.getUserHeadlineCounts('annask');
     expect(counts).toEqual({
@@ -245,7 +261,11 @@ describe('getEditorWorkload', () => {
 
   it('aggregates per editor over the time window', () => {
     insertEdit(db, { editor_username: 'annask', status: 'pending' });
-    insertEdit(db, { editor_username: 'annask', status: 'pending' });
+    insertEdit(db, {
+      editor_username: 'annask',
+      status: 'pending',
+      segment_id: 'm00001:para:fs-id002',
+    });
     insertEdit(db, { editor_username: 'annask', status: 'approved' });
     insertEdit(db, { editor_username: 'magnusg', status: 'rejected' });
 

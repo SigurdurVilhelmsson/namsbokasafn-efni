@@ -169,11 +169,11 @@ describe('latestEditedText', () => {
   const MOD = 'm68664';
   const SEG = 'm68664:abstract:auto-2';
 
-  function insertEdit(d, content, status = 'pending') {
+  function insertEdit(d, content, status = 'pending', appliedAt = null) {
     d.prepare(
-      `INSERT INTO segment_edits (book, chapter, module_id, segment_id, original_content, edited_content, status, editor_id, editor_username)
-       VALUES (?, 1, ?, ?, 'orig', ?, ?, '1', 'tester')`
-    ).run(BOOK, MOD, SEG, content, status);
+      `INSERT INTO segment_edits (book, chapter, module_id, segment_id, original_content, edited_content, status, editor_id, editor_username, applied_at)
+       VALUES (?, 1, ?, ?, 'orig', ?, ?, '1', 'tester', ?)`
+    ).run(BOOK, MOD, SEG, content, status, appliedAt);
   }
 
   it('returns null when no edit exists', () => {
@@ -199,7 +199,9 @@ describe('latestEditedText', () => {
   it('returns the newest non-rejected edit when multiple exist', () => {
     const d = freshDb();
     svc._setTestDb(d);
-    insertEdit(d, 'Þýðing gömul', 'applied');
+    // "applied" is not a status value — applied-ness is `applied_at IS NOT
+    // NULL` on an 'approved' row. Seed the older edit as approved+applied.
+    insertEdit(d, 'Þýðing gömul', 'approved', '2026-01-01 12:00:00');
     insertEdit(d, 'Þýðing ný', 'pending');
     expect(svc.latestEditedText(BOOK, MOD, SEG)).toBe('Þýðing ný');
   });
