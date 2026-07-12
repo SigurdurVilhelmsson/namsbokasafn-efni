@@ -70,6 +70,42 @@ beforeAll(() => {
       UNIQUE(user_id, book_slug, chapter)
     );
   `);
+  // Suggestions-family (B1-F1) schema extension. localization_suggestions is
+  // created by migration 004 in production (the service does NOT self-init it);
+  // DDL copied from 004-terminology.js:85 (FK omitted — better-sqlite3 defaults
+  // foreign_keys off and the harness uses explicit ids). faithful_path: scanBook's
+  // SQL names bs.faithful_path, so the column must exist even though every harness
+  // row leaves it NULL (→ 0 sections scanned). provider_id: requireBookAccess's
+  // editor path calls userService.findByProviderId, which queries it — without the
+  // column every editor-path request 500s. user_book_access: findByProviderId calls
+  // getBookAccess whenever it finds a row. book_settings: isAssignmentEnforced.
+  db.exec(`
+    ALTER TABLE book_sections ADD COLUMN faithful_path TEXT;
+    ALTER TABLE users ADD COLUMN provider_id TEXT;
+    CREATE TABLE IF NOT EXISTS user_book_access (
+      user_id INTEGER NOT NULL, book_slug TEXT NOT NULL, role_for_book TEXT
+    );
+    CREATE TABLE IF NOT EXISTS book_settings (
+      book TEXT PRIMARY KEY, enforce_assignments INTEGER DEFAULT 0,
+      updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+    CREATE TABLE IF NOT EXISTS localization_suggestions (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      section_id INTEGER NOT NULL,
+      suggestion_type TEXT NOT NULL,
+      original_text TEXT NOT NULL,
+      suggested_text TEXT NOT NULL,
+      context TEXT,
+      line_number INTEGER,
+      pattern_id TEXT,
+      status TEXT DEFAULT 'pending',
+      reviewer_modified_text TEXT,
+      reviewed_by TEXT,
+      reviewed_by_name TEXT,
+      reviewed_at DATETIME,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+  `);
   db.prepare(
     `INSERT INTO registered_books (id, slug, title_is) VALUES (1, 'liffraedi-2e', 'Líffræði')`
   ).run();
@@ -125,6 +161,42 @@ beforeAll(() => {
   // submit-review requires the caller to be the assigned reviewer (or admin); HE_B's
   // minted sub is 'u-he-b' (see mintToken/HE_B below).
   db.prepare(`UPDATE book_sections SET linguistic_reviewer = 'u-he-b' WHERE id = 49`).run();
+
+  // ── Suggestions-family fixtures (B1-F1 + folded B1-F2/F3) ──
+  // Enforcement stays OFF for liffraedi-2e (fail-open matrix — the project's
+  // default model) and is turned ON for efnafraedi-2e (default-deny matrix).
+  // Only the new suggestions routes reach requireBookAccess's chapter-assignment
+  // path in this suite (everything older is requireHeadEditor/-For gated), so
+  // the toggle cannot affect the pre-existing tests.
+  db.prepare(
+    `INSERT INTO book_settings (book, enforce_assignments) VALUES ('efnafraedi-2e', 1)`
+  ).run();
+  // users rows WITH provider_id so findByProviderId resolves these personas.
+  // A JWT user with no users row skips the chapter check entirely (dbUser-null
+  // fall-through in requireBookAccess) — that would mask the enforcement-ON 403s
+  // asserted below. HE_A deliberately gets NO row: the fail-open cases document
+  // that the unknown-to-DB fall-through also passes when enforcement is off.
+  db.prepare(
+    `INSERT INTO users (id, display_name, role, provider_id) VALUES (2, 'Editor Ed', 'editor', 'u-ed')`
+  ).run();
+  db.prepare(
+    `INSERT INTO users (id, display_name, role, provider_id) VALUES (3, 'Head B', 'head-editor', 'u-he-b')`
+  ).run();
+  // Fresh sections (no interference with rows 42-51):
+  ins.run(60, 1, 1, '1.20', 'not_started'); // liffraedi: fail-open matrix + bulk
+  ins.run(61, 2, 2, '1.21', 'not_started'); // efnafraedi: enforcement-ON + resolver discrimination
+  ins.run(62, 1, 1, '1.22', 'not_started'); // liffraedi: sync-log (kept suggestion-free → entriesCreated 0, no localization_log table needed)
+  const insSug = db.prepare(
+    `INSERT INTO localization_suggestions (id, section_id, suggestion_type, original_text, suggested_text)
+     VALUES (?, ?, 'unit_conversion', '5 miles', '8.0 km')`
+  );
+  insSug.run(70, 60); // accept target (fail-open editor)
+  insSug.run(71, 60); // reject target
+  insSug.run(72, 60); // modify target
+  insSug.run(73, 60); // bulk-accept target
+  insSug.run(74, 60); // bulk-accept target
+  insSug.run(75, 61); // efnafraedi: discrimination + enforcement-ON target
+
   db.close();
 
   const app = express();
@@ -134,6 +206,7 @@ beforeAll(() => {
   app.use('/api/books', require('../routes/books'));
   app.use('/api/admin', require('../routes/admin'));
   app.use('/api/activity', require('../routes/activity'));
+  app.use('/api/suggestions', require('../routes/suggestions'));
   server = app.listen(0);
   base = `http://127.0.0.1:${server.address().port}`;
 });
@@ -486,6 +559,31 @@ describe('activity book-log read is book-scoped (B1-F5 sibling, whole-branch rev
   });
   it('GET: plain editor → 403', async () => {
     const res = await get(READ, EDITOR);
+    expect(res.status).toBe(403);
+  });
+});
+
+// ============================================================================
+// Suggestions family (B1-F1 + folded B1-F2/F3 for this family)
+// ============================================================================
+
+describe('suggestions scan-book is head-editor-of-book scoped (B1-F1)', () => {
+  const SCAN_BOOK = '/api/suggestions/scan-book/liffraedi-2e';
+
+  it('head-editor of another book → 403 (was: any head-editor could regenerate any book)', async () => {
+    const res = await post(SCAN_BOOK, HE_A);
+    expect(res.status).toBe(403);
+  });
+  it('owning head-editor reaches a genuine 200 (scan-book activityLog site executes end-to-end)', async () => {
+    const res = await post(SCAN_BOOK, HE_B);
+    expect(res.status).toBe(200);
+  });
+  it('admin bypasses book scope (200)', async () => {
+    const res = await post(SCAN_BOOK, ADMIN);
+    expect(res.status).toBe(200);
+  });
+  it('plain editor → 403 (role gate, unchanged)', async () => {
+    const res = await post(SCAN_BOOK, EDITOR);
     expect(res.status).toBe(403);
   });
 });

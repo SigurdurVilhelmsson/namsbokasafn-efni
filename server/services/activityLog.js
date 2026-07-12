@@ -40,6 +40,14 @@ const ACTIVITY_TYPES = {
   SEGMENT_EDIT_REJECTED: 'segment_edit_rejected',
   SEGMENT_EDIT_DISCUSS: 'segment_edit_discuss',
   SEGMENT_EDITS_APPLIED: 'segment_edits_applied',
+
+  // Localization suggestion actions
+  SUGGESTIONS_SCANNED: 'suggestions_scanned',
+  SUGGESTION_ACCEPTED: 'suggestion_accepted',
+  SUGGESTION_REJECTED: 'suggestion_rejected',
+  SUGGESTION_MODIFIED: 'suggestion_modified',
+  SUGGESTIONS_BULK_REVIEWED: 'suggestions_bulk_reviewed',
+  SUGGESTIONS_SYNCED: 'suggestions_synced',
 };
 
 // Initialize database tables

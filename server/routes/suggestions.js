@@ -12,7 +12,13 @@ const router = express.Router();
 
 const log = require('../lib/logger');
 const { requireAuth } = require('../middleware/requireAuth');
-const { requireRole, ROLES } = require('../middleware/requireRole');
+const {
+  requireRole,
+  requireHeadEditor,
+  // eslint-disable-next-line no-unused-vars -- wired up in Task 3 (section-keyed routes)
+  requireBookAccessForSection,
+  ROLES,
+} = require('../middleware/requireRole');
 const suggestions = require('../services/localizationSuggestions');
 const bookRegistration = require('../services/bookRegistration');
 const activityLog = require('../services/activityLog');
@@ -54,18 +60,23 @@ router.post('/scan/:sectionId', requireAuth, requireRole(ROLES.EDITOR), (req, re
  * POST /api/suggestions/scan-book/:bookSlug
  * Scan an entire book for localization suggestions
  */
-router.post('/scan-book/:bookSlug', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
+router.post('/scan-book/:bookSlug', requireAuth, requireHeadEditor('bookSlug'), (req, res) => {
   const { bookSlug } = req.params;
 
   try {
     const result = suggestions.scanBook(bookSlug);
 
     activityLog.log({
+      type: activityLog.ACTIVITY_TYPES.SUGGESTIONS_SCANNED,
       userId: req.user.id,
       username: req.user.username,
-      action: 'scan_book_suggestions',
-      entityType: 'book',
-      details: { bookSlug, totalSuggestions: result.totalSuggestions },
+      book: bookSlug,
+      description: `${req.user.username} skannaði bókina ${bookSlug} eftir staðfæringartillögum`,
+      metadata: {
+        bookSlug,
+        sectionsScanned: result.sectionsScanned,
+        totalSuggestions: result.totalSuggestions,
+      },
     });
 
     res.json(result);
