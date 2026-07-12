@@ -15,6 +15,7 @@ const express = require('express');
 const Database = require('better-sqlite3');
 const jwt = require('jsonwebtoken');
 const migration040 = require('../migrations/040-service-table-ownership');
+const { createSegmentEditsSchema } = require('./helpers/segmentEditsSchema.cjs');
 
 // Personas — role strings match server/e2e/helpers/auth.js; books[] holds slugs.
 const HE_A = { username: 'he-a', role: 'head-editor', books: ['efnafraedi-2e'] };
@@ -52,6 +53,13 @@ beforeAll(() => {
   // this harness DB skips the real migration runner, so apply 040 directly, same
   // as production's boot-time runAllMigrations()).
   migration040.up(db);
+  // segment_edits (canonical post-039 shape, batch-2 helper): GET
+  // /api/admin/assignments/:book reaches getEditorialProgress, whose first
+  // query hits this table. Without it the call threw — silently pre-batch-4,
+  // as a fail-loud ERROR since the T7 admin-honesty fix. With the table
+  // present the route exercises its real happy path (legitimate zero
+  // progress) instead of the degraded branch.
+  createSegmentEditsSchema(db);
   db.exec(`
     CREATE TABLE IF NOT EXISTS registered_books (id INTEGER PRIMARY KEY, slug TEXT, title_is TEXT);
     CREATE TABLE IF NOT EXISTS book_chapters (
