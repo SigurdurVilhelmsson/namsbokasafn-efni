@@ -79,6 +79,16 @@ router.param('bookId', (req, res, next, bookId) => {
   next();
 });
 
+// Same whitelist, for the one route below whose param is named :book (D10 —
+// requireBookAccess() always reads req.params.book, so that route's param
+// can't be named :bookId without silently no-opping the authz check).
+router.param('book', (req, res, next, book) => {
+  if (!VALID_BOOKS.includes(book)) {
+    return res.status(400).json({ error: 'Ógild bók' });
+  }
+  next();
+});
+
 /**
  * GET /api/books/list
  * Lightweight endpoint returning registered book slugs + labels for dropdown population.
@@ -463,27 +473,22 @@ router.get('/:bookId/download', requireAuth, async (req, res) => {
 });
 
 /**
- * GET /api/books/:bookId/chapters/:chapter/faithful-count
+ * GET /api/books/:book/chapters/:chapter/faithful-count
  * Count faithful translation files for a chapter.
  * Used by the client to show enhanced warnings before MT upload.
  */
 router.get(
-  '/:bookId/chapters/:chapter/faithful-count',
+  '/:book/chapters/:chapter/faithful-count',
   requireAuth,
   requireBookAccess(),
   (req, res) => {
-    const { bookId, chapter } = req.params;
+    const { book, chapter } = req.params;
     const chapterNum = parseInt(chapter, 10);
     if (isNaN(chapterNum) || chapterNum < 1 || chapterNum > 99) {
       return res.status(400).json({ error: 'Ógilt kaflanúmer' });
     }
     const paddedChapter = String(chapterNum).padStart(2, '0');
-    const faithfulDir = path.join(
-      booksDir,
-      bookId,
-      '03-faithful-translation',
-      `ch${paddedChapter}`
-    );
+    const faithfulDir = path.join(booksDir, book, '03-faithful-translation', `ch${paddedChapter}`);
 
     let count = 0;
     const modules = [];

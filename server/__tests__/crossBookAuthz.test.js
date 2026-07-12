@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll, afterEach, vi } from 'vitest';
 import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -14,12 +14,19 @@ process.env.JWT_SECRET = process.env.JWT_SECRET || 'test-secret';
 const express = require('express');
 const Database = require('better-sqlite3');
 const jwt = require('jsonwebtoken');
+const migration040 = require('../migrations/040-service-table-ownership');
+const { createSegmentEditsSchema } = require('./helpers/segmentEditsSchema.cjs');
+const logger = require('../lib/logger');
 
 // Personas — role strings match server/e2e/helpers/auth.js; books[] holds slugs.
 const HE_A = { username: 'he-a', role: 'head-editor', books: ['efnafraedi-2e'] };
 const HE_B = { username: 'he-b', role: 'head-editor', books: ['liffraedi-2e'] };
 const ADMIN = { username: 'adm', role: 'admin', books: [] };
 const EDITOR = { username: 'ed', role: 'editor', books: [] };
+// Deliberately NO users row (dbUser-null): mints a valid JWT for 'u-ed-norow',
+// but findByProviderId resolves nothing for it — the batch-4 D7 scenario
+// (e.g. a still-valid JWT whose users row was hard-deleted mid-lifetime).
+const ED_NOROW = { username: 'ed-norow', role: 'editor', books: [] };
 
 function mintToken(user) {
   return jwt.sign(
@@ -46,6 +53,18 @@ beforeAll(() => {
   // verbatim from 003-book-catalogue.js. `users` + `user_chapter_assignments` mirror
   // migrations 006/010 (minimal columns only — see B1-F6).
   const db = new Database(process.env.SESSIONS_DB_PATH);
+  // activity_log/notifications/notification_preferences: owned by migration 040
+  // (batch 4 D1/D4 — activityLog.js no longer self-inits its table on require;
+  // this harness DB skips the real migration runner, so apply 040 directly, same
+  // as production's boot-time runAllMigrations()).
+  migration040.up(db);
+  // segment_edits (canonical post-039 shape, batch-2 helper): GET
+  // /api/admin/assignments/:book reaches getEditorialProgress, whose first
+  // query hits this table. Without it the call threw — silently pre-batch-4,
+  // as a fail-loud ERROR since the T7 admin-honesty fix. With the table
+  // present the route exercises its real happy path (legitimate zero
+  // progress) instead of the degraded branch.
+  createSegmentEditsSchema(db);
   db.exec(`
     CREATE TABLE IF NOT EXISTS registered_books (id INTEGER PRIMARY KEY, slug TEXT, title_is TEXT);
     CREATE TABLE IF NOT EXISTS book_chapters (
@@ -172,10 +191,10 @@ beforeAll(() => {
     `INSERT INTO book_settings (book, enforce_assignments) VALUES ('efnafraedi-2e', 1)`
   ).run();
   // users rows WITH provider_id so findByProviderId resolves these personas.
-  // A JWT user with no users row skips the chapter check entirely (dbUser-null
-  // fall-through in requireBookAccess) — that would mask the enforcement-ON 403s
-  // asserted below. HE_A deliberately gets NO row: the fail-open cases document
-  // that the unknown-to-DB fall-through also passes when enforcement is off.
+  // A JWT user with no users row is now decided by hasChapterAccess's null-user
+  // branch (batch 4 D7): denied under enforcement — pinned by ED_NOROW below —
+  // fail-open otherwise. HE_A deliberately gets NO row: the fail-open cases
+  // document that a no-row caller still passes when enforcement is off.
   db.prepare(
     `INSERT INTO users (id, display_name, role, provider_id) VALUES (2, 'Editor Ed', 'editor', 'u-ed')`
   ).run();
@@ -459,6 +478,38 @@ describe('chapter markdown-import is head-editor-of-book scoped (SA-11 rider)', 
   });
 });
 
+describe('faithful-count route feeds requireBookAccess and keeps its book-slug whitelist (D10 rider)', () => {
+  // Before this fix the route was mounted on `:bookId`, so requireBookAccess()
+  // (which always reads req.params.book) saw `book === undefined` and its
+  // chapter-assignment check could never bite. Renaming the param to `:book`
+  // wires the guard up for real — but a bare rename would ALSO silently drop
+  // the router.param('bookId', ...) VALID_BOOKS whitelist that guarded the
+  // path.join(booksDir, book, ...) below it from an arbitrary slug. Both must
+  // hold: the whitelist survives under the new param name, and a legitimate
+  // editor still reaches a genuine 200.
+  it('unknown book slug → 400 (VALID_BOOKS whitelist preserved under the renamed :book param)', async () => {
+    const res = await get('/api/books/not-a-real-book/chapters/1/faithful-count', EDITOR);
+    expect(res.status).toBe(400);
+  });
+  it('registered book + fail-open editor → genuine 200 (req.params.book now reaches requireBookAccess)', async () => {
+    const res = await get('/api/books/liffraedi-2e/chapters/1/faithful-count', EDITOR);
+    expect(res.status).toBe(200);
+    const body = await res.json();
+    expect(body).toHaveProperty('count');
+    expect(body).toHaveProperty('modules');
+  });
+  // The discriminating case: before the :bookId → :book rename, requireBookAccess()
+  // always read req.params.book === undefined here, so its chapter-assignment
+  // check was a permanent no-op (isAssignmentEnforced(undefined) is always
+  // false → legacy fail-open) regardless of the book named in the URL. With the
+  // param wired up, an unassigned editor on efnafraedi-2e (enforcement ON,
+  // fixture book_settings row) is genuinely denied.
+  it('enforcement-ON book + unassigned editor → 403 (proves req.params.book — not just a valid slug — now reaches the chapter check)', async () => {
+    const res = await get('/api/books/efnafraedi-2e/chapters/1/faithful-count', EDITOR);
+    expect(res.status).toBe(403);
+  });
+});
+
 describe('section upload route is retired (design decision 2026-07-11)', () => {
   it('is not registered on the router (introspection, mirrors books-routes.test.js)', () => {
     const sectionsRouter = require('../routes/sections');
@@ -502,15 +553,19 @@ describe('admin chapter-assignment routes are book-scoped (Task 6)', () => {
     const res = await del(ASSIGN, HE_A);
     expect(res.status).toBe(403);
   });
-  it('DELETE assign: owning head-editor clears authz (never 401/403)', async () => {
+  it('DELETE assign: owning head-editor clears authz and reports removed:true (assignment exists from the POST tests above, B1-F8 rider)', async () => {
     const res = await del(ASSIGN, HE_B);
     expect([401, 403]).not.toContain(res.status);
-    expect(res.status).toBeLessThan(500);
+    expect(res.status).toBe(200);
+    const body = await res.json();
+    expect(body).toEqual({ success: true, removed: true });
   });
-  it('DELETE assign: admin clears authz (never 401/403)', async () => {
+  it('DELETE assign: admin clears authz and reports removed:false (the previous test already removed it, B1-F8 rider)', async () => {
     const res = await del(ASSIGN, ADMIN);
     expect([401, 403]).not.toContain(res.status);
-    expect(res.status).toBeLessThan(500);
+    expect(res.status).toBe(200);
+    const body = await res.json();
+    expect(body).toEqual({ success: true, removed: false });
   });
   it('DELETE assign: plain editor → 403', async () => {
     const res = await del(ASSIGN, EDITOR);
@@ -545,8 +600,9 @@ describe('admin GET assignments is book-scoped (B1-F5, whole-branch review)', ()
 describe('activity book-log read is book-scoped (B1-F5 sibling, whole-branch review)', () => {
   // GET /api/activity/book/:book leaked another book's full editorial activity
   // (usernames, actions, timestamps) to any head-editor — same class as the
-  // GET /assignments read-leak fixed in T7. activityLog.getByBook self-inits its
-  // table, so owner/admin reach a genuine 200 (empty log is fine).
+  // GET /assignments read-leak fixed in T7. activity_log is provisioned by
+  // migration040.up(db) above (batch 4 — activityLog.getByBook no longer
+  // self-inits the table), so owner/admin reach a genuine 200 (empty log is fine).
   const READ = '/api/activity/book/liffraedi-2e';
   it('GET: head-editor of another book → 403', async () => {
     const res = await get(READ, HE_A);
@@ -602,7 +658,7 @@ describe('suggestions section-keyed routes are book/section-scoped (B1-F2/F3 fol
     const res = await post('/api/suggestions/scan/60', EDITOR);
     expect(res.status).toBe(200);
   });
-  it('read: head-editor of another book ALSO clears fail-open (documented requireBookAccess fall-through, same as any editor)', async () => {
+  it('read: head-editor of another book ALSO clears fail-open (no-row caller, legacy fail-open, same as any editor)', async () => {
     const res = await get('/api/suggestions/60', HE_A);
     expect(res.status).toBe(200);
   });
@@ -633,6 +689,21 @@ describe('suggestions section-keyed routes are book/section-scoped (B1-F2/F3 fol
   it('read: admin short-circuits enforcement (200)', async () => {
     const res = await get('/api/suggestions/61', ADMIN);
     expect(res.status).toBe(200);
+  });
+  it('read: editor with NO users row → 403 under enforcement (dbUser-null no longer bypasses default-deny, batch 4 D7)', async () => {
+    const warnSpy = vi.spyOn(logger, 'warn');
+    const res = await get('/api/suggestions/61', ED_NOROW);
+    expect(res.status).toBe(403);
+    // FIX 2: the middleware-level identity-bearing deny log — the service-side
+    // warn has no request context, so this is the only place `providerId`
+    // (the still-valid JWT's `sub`, since the users row was hard-deleted)
+    // is recorded for the D7 motivating scenario.
+    const call = warnSpy.mock.calls.find(
+      ([, msg]) => msg === 'Chapter access denied for JWT with no users row'
+    );
+    expect(call).toBeTruthy();
+    expect(call[0].providerId).toBe('u-ed-norow');
+    warnSpy.mockRestore();
   });
 
   // ── Not-found + route-ordering pins
@@ -718,5 +789,34 @@ describe('suggestions.js activityLog call shape (static guard, mirrors the secti
     expect(src).not.toMatch(/\baction:\s*['"`]/);
     expect(src).not.toMatch(/\bentityType:/);
     expect(src).not.toMatch(/\bdetails:/);
+  });
+});
+
+// FIX 3 (whole-branch review): B1-F8 made user_chapter_assignments reads fail
+// loud on a corrupted DB. This describe deliberately drops that table to pin
+// the DELETE route's 500, then restores it afterEach — schema copied verbatim
+// from the fixture's beforeAll above so sibling tests are unaffected. Placed
+// LAST in the file (declaration-order execution, fileParallelism:false in
+// vitest.workspace.js) so no other describe can observe the table missing.
+describe('DELETE chapter assignment fails loud on a corrupted DB (B1-F8 rider)', () => {
+  afterEach(() => {
+    const db = new Database(process.env.SESSIONS_DB_PATH);
+    db.exec(`
+      CREATE TABLE IF NOT EXISTS user_chapter_assignments (
+        id INTEGER PRIMARY KEY AUTOINCREMENT, user_id INTEGER NOT NULL, book_slug TEXT NOT NULL,
+        chapter INTEGER NOT NULL, assigned_by TEXT, assigned_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        UNIQUE(user_id, book_slug, chapter)
+      );
+    `);
+    db.close();
+  });
+
+  it('DELETE assign: owning head-editor → 500 when user_chapter_assignments is missing (was a fake 200 pre-B1-F8)', async () => {
+    const db = new Database(process.env.SESSIONS_DB_PATH);
+    db.exec('DROP TABLE user_chapter_assignments');
+    db.close();
+
+    const res = await del('/api/admin/assignments/liffraedi-2e/1', HE_B);
+    expect(res.status).toBe(500);
   });
 });

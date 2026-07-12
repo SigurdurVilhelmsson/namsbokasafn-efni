@@ -3,14 +3,28 @@
  *
  * Tests the API contract of the activity log service (Phase 1 audit fixes).
  * These tests verify exports, function signatures, and basic behavior
- * against the real database — no mocking needed.
+ * against an in-memory database injected via activityLog._setTestDb()
+ * (schema owned by migration 040 — batch 4 lazy-open change).
  */
 
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
 const activityLog = require('../services/activityLog');
+const Database = require('better-sqlite3');
+const migration040 = require('../migrations/040-service-table-ownership');
+
+let _db;
+beforeAll(() => {
+  _db = new Database(':memory:');
+  migration040.up(_db);
+  activityLog._setTestDb(_db);
+});
+afterAll(() => {
+  activityLog._setTestDb(null);
+  _db.close();
+});
 
 describe('activityLog exports', () => {
   it('exports log as a function', () => {

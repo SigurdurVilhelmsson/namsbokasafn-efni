@@ -8,6 +8,7 @@
 const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
+const logger = require('../lib/logger');
 const resolveDbPath = require('../lib/dbPath');
 
 // Database path
@@ -51,138 +52,145 @@ const ACTIVITY_TYPES = {
   SUGGESTIONS_SYNCED: 'suggestions_synced',
 };
 
-// Initialize database tables
-function initDb() {
-  const dbDir = path.dirname(DB_PATH);
-  if (!fs.existsSync(dbDir)) {
-    fs.mkdirSync(dbDir, { recursive: true });
-  }
-
-  const db = new Database(DB_PATH);
-  db.pragma('journal_mode = WAL');
-
-  // Create activity_log table if not exists
-  db.exec(`
-    CREATE TABLE IF NOT EXISTS activity_log (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      type TEXT NOT NULL,
-      user_id TEXT NOT NULL,
-      username TEXT NOT NULL,
-      book TEXT,
-      chapter TEXT,
-      section TEXT,
-      description TEXT NOT NULL,
-      metadata TEXT,
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    );
-
-    CREATE INDEX IF NOT EXISTS idx_activity_log_type ON activity_log(type);
-    CREATE INDEX IF NOT EXISTS idx_activity_log_user_id ON activity_log(user_id);
-    CREATE INDEX IF NOT EXISTS idx_activity_log_book ON activity_log(book);
-    CREATE INDEX IF NOT EXISTS idx_activity_log_created_at ON activity_log(created_at);
-  `);
-
-  return db;
+let _testDb = null;
+function _setTestDb(db) {
+  _testDb = db;
+  _stmts = null; // statements must be rebuilt against the new handle
 }
 
-const db = initDb();
+let _db;
+function getDb() {
+  if (_testDb) return _testDb;
+  if (!_db) {
+    const dbDir = path.dirname(DB_PATH);
+    if (!fs.existsSync(dbDir)) {
+      fs.mkdirSync(dbDir, { recursive: true });
+    }
+    _db = new Database(DB_PATH);
+    _db.pragma('journal_mode = WAL');
+  }
+  return _db;
+}
 
-// Prepared statements
-const statements = {
-  insert: db.prepare(`
-    INSERT INTO activity_log (type, user_id, username, book, chapter, section, description, metadata)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-  `),
-  getRecent: db.prepare(`
-    SELECT * FROM activity_log
-    ORDER BY created_at DESC
-    LIMIT ?
-  `),
-  getByUser: db.prepare(`
-    SELECT * FROM activity_log
-    WHERE user_id = ?
-    ORDER BY created_at DESC
-    LIMIT ?
-  `),
-  getByBook: db.prepare(`
-    SELECT * FROM activity_log
-    WHERE book = ?
-    ORDER BY created_at DESC
-    LIMIT ?
-  `),
-  getBySection: db.prepare(`
-    SELECT * FROM activity_log
-    WHERE book = ? AND chapter = ? AND section = ?
-    ORDER BY created_at DESC
-    LIMIT ?
-  `),
-  getByType: db.prepare(`
-    SELECT * FROM activity_log
-    WHERE type = ?
-    ORDER BY created_at DESC
-    LIMIT ?
-  `),
-  search: db.prepare(`
-    SELECT * FROM activity_log
-    WHERE (book = ? OR ? IS NULL)
-      AND (type = ? OR ? IS NULL)
-      AND (user_id = ? OR ? IS NULL)
-    ORDER BY created_at DESC
-    LIMIT ? OFFSET ?
-  `),
-  count: db.prepare(`
-    SELECT COUNT(*) as count FROM activity_log
-    WHERE (book = ? OR ? IS NULL)
-      AND (type = ? OR ? IS NULL)
-      AND (user_id = ? OR ? IS NULL)
-  `),
-};
+function initStatements(db) {
+  return {
+    insert: db.prepare(`
+      INSERT INTO activity_log (type, user_id, username, book, chapter, section, description, metadata)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `),
+    getRecent: db.prepare(`
+      SELECT * FROM activity_log
+      ORDER BY created_at DESC
+      LIMIT ?
+    `),
+    getByUser: db.prepare(`
+      SELECT * FROM activity_log
+      WHERE user_id = ?
+      ORDER BY created_at DESC
+      LIMIT ?
+    `),
+    getByBook: db.prepare(`
+      SELECT * FROM activity_log
+      WHERE book = ?
+      ORDER BY created_at DESC
+      LIMIT ?
+    `),
+    getBySection: db.prepare(`
+      SELECT * FROM activity_log
+      WHERE book = ? AND chapter = ? AND section = ?
+      ORDER BY created_at DESC
+      LIMIT ?
+    `),
+    getByType: db.prepare(`
+      SELECT * FROM activity_log
+      WHERE type = ?
+      ORDER BY created_at DESC
+      LIMIT ?
+    `),
+    search: db.prepare(`
+      SELECT * FROM activity_log
+      WHERE (book = ? OR ? IS NULL)
+        AND (type = ? OR ? IS NULL)
+        AND (user_id = ? OR ? IS NULL)
+      ORDER BY created_at DESC
+      LIMIT ? OFFSET ?
+    `),
+    count: db.prepare(`
+      SELECT COUNT(*) as count FROM activity_log
+      WHERE (book = ? OR ? IS NULL)
+        AND (type = ? OR ? IS NULL)
+        AND (user_id = ? OR ? IS NULL)
+    `),
+  };
+}
+
+let _stmts = null;
+function stmts() {
+  if (!_stmts) {
+    _stmts = initStatements(getDb());
+  }
+  return _stmts;
+}
 
 /**
- * Log an activity
+ * Log an activity. NEVER throws (design D1, batch 4): the mutation that
+ * triggered an audit write must not fail over its audit record. On any
+ * failure this pino-logs 'Activity log write failed' and returns null —
+ * the error log is the fail-loud channel for a broken audit trail.
  */
 function log(options) {
-  const {
-    type,
-    userId,
-    username,
-    book = null,
-    chapter = null,
-    section = null,
-    description,
-    metadata = {},
-  } = options;
+  try {
+    const {
+      type,
+      userId,
+      username,
+      book = null,
+      chapter = null,
+      section = null,
+      description,
+      metadata = {},
+    } = options;
 
-  const result = statements.insert.run(
-    type,
-    userId,
-    username,
-    book,
-    chapter,
-    section,
-    description,
-    JSON.stringify(metadata)
-  );
+    const result = stmts().insert.run(
+      type,
+      userId,
+      username,
+      book,
+      chapter,
+      section,
+      description,
+      JSON.stringify(metadata)
+    );
 
-  return {
-    id: result.lastInsertRowid,
-    type,
-    userId,
-    username,
-    book,
-    chapter,
-    section,
-    description,
-    metadata,
-    createdAt: new Date().toISOString(),
-  };
+    return {
+      id: result.lastInsertRowid,
+      type,
+      userId,
+      username,
+      book,
+      chapter,
+      section,
+      description,
+      metadata,
+      createdAt: new Date().toISOString(),
+    };
+  } catch (err) {
+    // The destructuring above is inside this try, so `options` itself may be
+    // null/undefined here (never-throw contract, batch 4 D1) — options?.x is
+    // safe in that case and just yields undefined for the log context.
+    logger.error(
+      { err, type: options?.type, book: options?.book, userId: options?.userId },
+      'Activity log write failed'
+    );
+    return null;
+  }
 }
 
 /**
  * Get recent activity
  */
 function getRecent(limit = 50) {
-  const rows = statements.getRecent.all(Math.min(limit, 200));
+  const rows = stmts().getRecent.all(Math.min(limit, 200));
   return rows.map(parseRow);
 }
 
@@ -190,7 +198,7 @@ function getRecent(limit = 50) {
  * Get activity by user
  */
 function getByUser(userId, limit = 50) {
-  const rows = statements.getByUser.all(userId, Math.min(limit, 200));
+  const rows = stmts().getByUser.all(userId, Math.min(limit, 200));
   return rows.map(parseRow);
 }
 
@@ -198,7 +206,7 @@ function getByUser(userId, limit = 50) {
  * Get activity by book
  */
 function getByBook(book, limit = 50) {
-  const rows = statements.getByBook.all(book, Math.min(limit, 200));
+  const rows = stmts().getByBook.all(book, Math.min(limit, 200));
   return rows.map(parseRow);
 }
 
@@ -206,7 +214,7 @@ function getByBook(book, limit = 50) {
  * Get activity by section
  */
 function getBySection(book, chapter, section, limit = 50) {
-  const rows = statements.getBySection.all(book, chapter, section, Math.min(limit, 200));
+  const rows = stmts().getBySection.all(book, chapter, section, Math.min(limit, 200));
   return rows.map(parseRow);
 }
 
@@ -216,7 +224,7 @@ function getBySection(book, chapter, section, limit = 50) {
 function search(options = {}) {
   const { book = null, type = null, userId = null, limit = 50, offset = 0 } = options;
 
-  const rows = statements.search.all(
+  const rows = stmts().search.all(
     book,
     book,
     type,
@@ -227,7 +235,7 @@ function search(options = {}) {
     offset
   );
 
-  const countResult = statements.count.get(book, book, type, type, userId, userId);
+  const countResult = stmts().count.get(book, book, type, type, userId, userId);
 
   return {
     activities: rows.map(parseRow),
@@ -263,4 +271,5 @@ module.exports = {
   getByBook,
   getBySection,
   search,
+  _setTestDb,
 };

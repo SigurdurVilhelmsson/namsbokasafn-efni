@@ -232,26 +232,22 @@ function restoreVersion(book, chapter, moduleId, version, restoredBy = {}) {
   };
 
   // 6. Audit trail (best-effort — never fail the restore over a log write)
-  try {
-    activityLog.log({
-      type: activityLog.ACTIVITY_TYPES.VERSION_RESTORED,
-      userId: String(restoredBy.userId != null ? restoredBy.userId : 'system'),
-      username: actorName,
-      book,
-      chapter: String(chapter),
-      section: moduleId,
-      description: `Færði ${moduleId} í útgáfu ${version} (núverandi efni vistað sem útgáfa ${snapshotVersion})`,
-      metadata: {
-        restoredVersion: version,
-        snapshotVersion,
-        segmentsRestored,
-        segmentsKept,
-        segmentsSkipped: skipped.length,
-      },
-    });
-  } catch (logErr) {
-    log.error({ err: logErr }, 'Activity log failed for version_restored');
-  }
+  activityLog.log({
+    type: activityLog.ACTIVITY_TYPES.VERSION_RESTORED,
+    userId: String(restoredBy.userId != null ? restoredBy.userId : 'system'),
+    username: actorName,
+    book,
+    chapter: String(chapter),
+    section: moduleId,
+    description: `Færði ${moduleId} í útgáfu ${version} (núverandi efni vistað sem útgáfa ${snapshotVersion})`,
+    metadata: {
+      restoredVersion: version,
+      snapshotVersion,
+      segmentsRestored,
+      segmentsKept,
+      segmentsSkipped: skipped.length,
+    },
+  });
 
   log.info({ book, moduleId, ...result }, 'Module restored to previous version');
   return result;

@@ -84,97 +84,84 @@ const DEFAULT_PREFERENCES = {
   feedback: { inApp: true, email: true },
 };
 
-// Initialize database tables
-function initDb() {
-  const dbDir = path.dirname(DB_PATH);
-  if (!fs.existsSync(dbDir)) {
-    fs.mkdirSync(dbDir, { recursive: true });
-  }
-
-  const db = new Database(DB_PATH);
-  db.pragma('journal_mode = WAL');
-
-  // Create notifications table if not exists
-  db.exec(`
-    CREATE TABLE IF NOT EXISTS notifications (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      user_id TEXT NOT NULL,
-      type TEXT NOT NULL,
-      title TEXT NOT NULL,
-      message TEXT NOT NULL,
-      link TEXT,
-      metadata TEXT,
-      read INTEGER DEFAULT 0,
-      email_sent INTEGER DEFAULT 0,
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    );
-
-    CREATE INDEX IF NOT EXISTS idx_notifications_user_id ON notifications(user_id);
-    CREATE INDEX IF NOT EXISTS idx_notifications_read ON notifications(read);
-    CREATE INDEX IF NOT EXISTS idx_notifications_created_at ON notifications(created_at);
-
-    -- Notification preferences table
-    CREATE TABLE IF NOT EXISTS notification_preferences (
-      user_id TEXT PRIMARY KEY,
-      preferences TEXT NOT NULL,
-      updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    );
-  `);
-
-  return db;
+let _testDb = null;
+function _setTestDb(db) {
+  _testDb = db;
+  _stmts = null; // statements must be rebuilt against the new handle
 }
 
-const db = initDb();
+let _db;
+function getDb() {
+  if (_testDb) return _testDb;
+  if (!_db) {
+    const dbDir = path.dirname(DB_PATH);
+    if (!fs.existsSync(dbDir)) {
+      fs.mkdirSync(dbDir, { recursive: true });
+    }
+    _db = new Database(DB_PATH);
+    _db.pragma('journal_mode = WAL');
+  }
+  return _db;
+}
 
-// Prepared statements
-const statements = {
-  insertNotification: db.prepare(`
-    INSERT INTO notifications (user_id, type, title, message, link, metadata, email_sent)
-    VALUES (?, ?, ?, ?, ?, ?, ?)
-  `),
-  getUnreadForUser: db.prepare(`
-    SELECT * FROM notifications
-    WHERE user_id = ? AND read = 0
-    ORDER BY created_at DESC
-    LIMIT ?
-  `),
-  getAllForUser: db.prepare(`
-    SELECT * FROM notifications
-    WHERE user_id = ?
-    ORDER BY created_at DESC
-    LIMIT ?
-  `),
-  markAsRead: db.prepare(`
-    UPDATE notifications SET read = 1 WHERE id = ? AND user_id = ?
-  `),
-  markAllAsRead: db.prepare(`
-    UPDATE notifications SET read = 1 WHERE user_id = ?
-  `),
-  getUnreadCount: db.prepare(`
-    SELECT COUNT(*) as count FROM notifications WHERE user_id = ? AND read = 0
-  `),
-  getAdminUserIds: db.prepare(`
-    SELECT DISTINCT user_id FROM notifications WHERE user_id IN (
-      SELECT user_id FROM notifications GROUP BY user_id
-    )
-  `),
-  // Preferences statements
-  getPreferences: db.prepare(`
-    SELECT preferences FROM notification_preferences WHERE user_id = ?
-  `),
-  upsertPreferences: db.prepare(`
-    INSERT INTO notification_preferences (user_id, preferences, updated_at)
-    VALUES (?, ?, CURRENT_TIMESTAMP)
-    ON CONFLICT(user_id) DO UPDATE SET preferences = excluded.preferences, updated_at = CURRENT_TIMESTAMP
-  `),
-};
+function initStatements(db) {
+  return {
+    insertNotification: db.prepare(`
+      INSERT INTO notifications (user_id, type, title, message, link, metadata, email_sent)
+      VALUES (?, ?, ?, ?, ?, ?, ?)
+    `),
+    getUnreadForUser: db.prepare(`
+      SELECT * FROM notifications
+      WHERE user_id = ? AND read = 0
+      ORDER BY created_at DESC
+      LIMIT ?
+    `),
+    getAllForUser: db.prepare(`
+      SELECT * FROM notifications
+      WHERE user_id = ?
+      ORDER BY created_at DESC
+      LIMIT ?
+    `),
+    markAsRead: db.prepare(`
+      UPDATE notifications SET read = 1 WHERE id = ? AND user_id = ?
+    `),
+    markAllAsRead: db.prepare(`
+      UPDATE notifications SET read = 1 WHERE user_id = ?
+    `),
+    getUnreadCount: db.prepare(`
+      SELECT COUNT(*) as count FROM notifications WHERE user_id = ? AND read = 0
+    `),
+    getAdminUserIds: db.prepare(`
+      SELECT DISTINCT user_id FROM notifications WHERE user_id IN (
+        SELECT user_id FROM notifications GROUP BY user_id
+      )
+    `),
+    // Preferences statements
+    getPreferences: db.prepare(`
+      SELECT preferences FROM notification_preferences WHERE user_id = ?
+    `),
+    upsertPreferences: db.prepare(`
+      INSERT INTO notification_preferences (user_id, preferences, updated_at)
+      VALUES (?, ?, CURRENT_TIMESTAMP)
+      ON CONFLICT(user_id) DO UPDATE SET preferences = excluded.preferences, updated_at = CURRENT_TIMESTAMP
+    `),
+  };
+}
+
+let _stmts = null;
+function stmts() {
+  if (!_stmts) {
+    _stmts = initStatements(getDb());
+  }
+  return _stmts;
+}
 
 /**
  * Get notification preferences for a user
  * Returns default preferences if user hasn't set any
  */
 function getPreferences(userId) {
-  const row = statements.getPreferences.get(userId);
+  const row = stmts().getPreferences.get(userId);
   if (row && row.preferences) {
     try {
       return { ...DEFAULT_PREFERENCES, ...JSON.parse(row.preferences) };
@@ -190,7 +177,7 @@ function getPreferences(userId) {
  */
 function setPreferences(userId, preferences) {
   const merged = { ...DEFAULT_PREFERENCES, ...preferences };
-  statements.upsertPreferences.run(userId, JSON.stringify(merged));
+  stmts().upsertPreferences.run(userId, JSON.stringify(merged));
   return merged;
 }
 
@@ -287,7 +274,7 @@ async function createNotification(options) {
 
   // Store in database if in-app is enabled
   if (inAppEnabled) {
-    const result = statements.insertNotification.run(
+    const result = stmts().insertNotification.run(
       userId,
       type,
       title,
@@ -308,7 +295,7 @@ async function createNotification(options) {
 
     if (emailSent && notificationId) {
       // Update email_sent flag
-      db.prepare('UPDATE notifications SET email_sent = 1 WHERE id = ?').run(notificationId);
+      getDb().prepare('UPDATE notifications SET email_sent = 1 WHERE id = ?').run(notificationId);
     }
   }
 
@@ -619,7 +606,7 @@ function generateFeedbackEmailHtml(feedback, typeLabel, location) {
  * Get unread notifications for a user
  */
 function getUnreadNotifications(userId, limit = 20) {
-  const rows = statements.getUnreadForUser.all(userId, limit);
+  const rows = stmts().getUnreadForUser.all(userId, limit);
   return rows.map(parseNotificationRow);
 }
 
@@ -627,7 +614,7 @@ function getUnreadNotifications(userId, limit = 20) {
  * Get all notifications for a user
  */
 function getAllNotifications(userId, limit = 50) {
-  const rows = statements.getAllForUser.all(userId, limit);
+  const rows = stmts().getAllForUser.all(userId, limit);
   return rows.map(parseNotificationRow);
 }
 
@@ -635,7 +622,7 @@ function getAllNotifications(userId, limit = 50) {
  * Get unread count for a user
  */
 function getUnreadCount(userId) {
-  const result = statements.getUnreadCount.get(userId);
+  const result = stmts().getUnreadCount.get(userId);
   return result.count;
 }
 
@@ -643,14 +630,14 @@ function getUnreadCount(userId) {
  * Mark notification as read
  */
 function markAsRead(notificationId, userId) {
-  statements.markAsRead.run(notificationId, userId);
+  stmts().markAsRead.run(notificationId, userId);
 }
 
 /**
  * Mark all notifications as read for a user
  */
 function markAllAsRead(userId) {
-  statements.markAllAsRead.run(userId);
+  stmts().markAllAsRead.run(userId);
 }
 
 /**
@@ -818,7 +805,7 @@ async function notifyEditDecision(edit, decision, reviewerId, reviewerUsername, 
  * @returns {boolean}
  */
 function sentToday(userId, type) {
-  const row = db
+  const row = getDb()
     .prepare(
       `SELECT COUNT(*) AS c FROM notifications
        WHERE user_id = ? AND type = ? AND DATE(created_at) = DATE('now')`
@@ -855,4 +842,5 @@ module.exports = {
   getPreferences,
   setPreferences,
   isNotificationEnabled,
+  _setTestDb,
 };

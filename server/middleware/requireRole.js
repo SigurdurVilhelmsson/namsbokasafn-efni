@@ -8,6 +8,7 @@
 const { ROLES, hasRole } = require('../services/auth');
 const userService = require('../services/userService');
 const bookRegistration = require('../services/bookRegistration');
+const log = require('../lib/logger');
 
 /**
  * Require minimum role middleware factory
@@ -154,10 +155,10 @@ function requireHeadEditorFor(resolveBook) {
  * admin passes; a head-editor OF THIS BOOK passes; everyone else (plain editors
  * AND head-editors of other books) takes the chapter-assignment path — fail-open
  * when the caller has no assignments for the book and enforcement is OFF,
- * default-deny when the book's enforce_assignments toggle is ON — for callers
- * resolvable to a DB user (a JWT holder with no users row falls through —
- * pre-existing requireBookAccess behavior) — 503 fail-closed when enforcement
- * is ON but assignments cannot be evaluated.
+ * default-deny when the book's enforce_assignments toggle is ON. A JWT holder
+ * with no `users` row is decided the same way — denied under enforcement
+ * (batch 4 D7: hasChapterAccess's null-user branch), fail-open otherwise —
+ * 503 fail-closed when enforcement is ON but assignments cannot be evaluated.
  *
  * Also attaches the resolved section as req.section for downstream handlers.
  *
@@ -267,30 +268,39 @@ function requireBookAccess() {
     const chapter = req.chapterNum || req.params.chapter;
 
     if (chapter) {
-      // Look up the DB user ID from the provider ID in the JWT
+      // Look up the DB user ID from the provider ID in the JWT. A caller
+      // with no users row is decided by hasChapterAccess: denied under
+      // enforcement, legacy fail-open otherwise (batch 4, design D7).
       const dbUser = userService.findByProviderId(req.user.id);
-      if (dbUser) {
-        let allowed;
-        try {
-          allowed = userService.hasChapterAccess(dbUser.id, book, chapter);
-        } catch (err) {
-          // Enforcement is on but assignments can't be evaluated → fail closed.
-          if (err.code === 'ASSIGNMENT_TABLE_UNAVAILABLE') {
-            return res.status(503).json({
-              error: 'Assignment enforcement unavailable',
-              message:
-                'Chapter assignments cannot be verified right now. Access is blocked until this is resolved.',
-            });
-          }
-          throw err;
-        }
-        if (!allowed) {
-          return res.status(403).json({
-            error: 'Chapter access denied',
-            message: `You are not assigned to chapter ${chapter} of ${book}`,
-            yourRole: req.user.role,
+      let allowed;
+      try {
+        allowed = userService.hasChapterAccess(dbUser ? dbUser.id : null, book, chapter);
+      } catch (err) {
+        // Enforcement is on but assignments can't be evaluated → fail closed.
+        if (err.code === 'ASSIGNMENT_TABLE_UNAVAILABLE') {
+          return res.status(503).json({
+            error: 'Assignment enforcement unavailable',
+            message:
+              'Chapter assignments cannot be verified right now. Access is blocked until this is resolved.',
           });
         }
+        throw err;
+      }
+      if (!allowed) {
+        // Identity-bearing deny log (batch 4 D7 motivating scenario): the
+        // service-side warn has no request context, so log who was denied
+        // here when the denial traces to a JWT with no `users` row.
+        if (!dbUser) {
+          log.warn(
+            { providerId: req.user.id, username: req.user.username, book, chapter },
+            'Chapter access denied for JWT with no users row'
+          );
+        }
+        return res.status(403).json({
+          error: 'Chapter access denied',
+          message: `You are not assigned to chapter ${chapter} of ${book}`,
+          yourRole: req.user.role,
+        });
       }
     }
 

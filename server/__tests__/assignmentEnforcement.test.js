@@ -126,4 +126,23 @@ describe('userService assignment enforcement', () => {
       }
     });
   });
+
+  describe('hasChapterAccess with a null userId (dbUser-null fall-through fix, batch 4 D7)', () => {
+    it('enforcement ON → false (deny): unresolvable callers cannot be assigned', () => {
+      userService.setAssignmentEnforced(BOOK, true);
+      expect(userService.hasChapterAccess(null, BOOK, 5)).toBe(false);
+    });
+
+    it('enforcement OFF → true (legacy fail-open preserved, even when the book has assignments)', () => {
+      // editorId already has assignments for BOOK (see outer beforeEach), so the
+      // legacy count>0 path exists — a null userId must not fall into it.
+      expect(userService.isAssignmentEnforced(BOOK)).toBe(false);
+      expect(userService.hasChapterAccess(null, BOOK, 5)).toBe(true);
+    });
+
+    it('enforcement ON → false for undefined userId too (both null and undefined denote "no DB user")', () => {
+      userService.setAssignmentEnforced(BOOK, true);
+      expect(userService.hasChapterAccess(undefined, BOOK, 5)).toBe(false);
+    });
+  });
 });

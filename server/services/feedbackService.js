@@ -70,61 +70,25 @@ const PRIORITY_LABELS = {
   [PRIORITIES.CRITICAL]: 'Mjög há',
 };
 
-// Initialize database tables
-function initDb() {
-  const dbDir = path.dirname(DB_PATH);
-  if (!fs.existsSync(dbDir)) {
-    fs.mkdirSync(dbDir, { recursive: true });
-  }
-
-  const db = new Database(DB_PATH);
-  db.pragma('journal_mode = WAL');
-
-  // Create tables if migration hasn't run
-  db.exec(`
-    CREATE TABLE IF NOT EXISTS feedback (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      type TEXT NOT NULL,
-      book TEXT,
-      chapter TEXT,
-      section TEXT,
-      message TEXT NOT NULL,
-      user_email TEXT,
-      user_name TEXT,
-      status TEXT DEFAULT 'open',
-      priority TEXT DEFAULT 'normal',
-      assigned_to TEXT,
-      resolved_by TEXT,
-      resolved_by_name TEXT,
-      resolution_notes TEXT,
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      resolved_at DATETIME
-    );
-
-    CREATE INDEX IF NOT EXISTS idx_feedback_status ON feedback(status);
-    CREATE INDEX IF NOT EXISTS idx_feedback_type ON feedback(type);
-    CREATE INDEX IF NOT EXISTS idx_feedback_book ON feedback(book);
-    CREATE INDEX IF NOT EXISTS idx_feedback_created_at ON feedback(created_at);
-
-    CREATE TABLE IF NOT EXISTS feedback_responses (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      feedback_id INTEGER NOT NULL,
-      responder_id TEXT NOT NULL,
-      responder_name TEXT NOT NULL,
-      message TEXT NOT NULL,
-      is_internal BOOLEAN DEFAULT 0,
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      FOREIGN KEY (feedback_id) REFERENCES feedback(id) ON DELETE CASCADE
-    );
-
-    CREATE INDEX IF NOT EXISTS idx_feedback_responses_feedback ON feedback_responses(feedback_id);
-  `);
-
-  return db;
+let _testDb = null;
+function _setTestDb(db) {
+  _testDb = db;
+  _stmts = null; // statements must be rebuilt against the new handle
 }
 
-let db = initDb();
+let _db;
+function getDb() {
+  if (_testDb) return _testDb;
+  if (!_db) {
+    const dbDir = path.dirname(DB_PATH);
+    if (!fs.existsSync(dbDir)) {
+      fs.mkdirSync(dbDir, { recursive: true });
+    }
+    _db = new Database(DB_PATH);
+    _db.pragma('journal_mode = WAL');
+  }
+  return _db;
+}
 
 function initStatements(database) {
   return {
@@ -210,47 +174,12 @@ function initStatements(database) {
   };
 }
 
-let statements = initStatements(db);
-
-/**
- * Inject a test database (for unit tests)
- */
-function _setTestDb(testDb) {
-  if (testDb) {
-    testDb.exec(`
-      CREATE TABLE IF NOT EXISTS feedback (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        type TEXT NOT NULL,
-        book TEXT,
-        chapter TEXT,
-        section TEXT,
-        message TEXT NOT NULL,
-        user_email TEXT,
-        user_name TEXT,
-        status TEXT DEFAULT 'open',
-        priority TEXT DEFAULT 'normal',
-        assigned_to TEXT,
-        resolved_by TEXT,
-        resolved_by_name TEXT,
-        resolution_notes TEXT,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        resolved_at DATETIME
-      );
-      CREATE TABLE IF NOT EXISTS feedback_responses (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        feedback_id INTEGER NOT NULL,
-        responder_id TEXT NOT NULL,
-        responder_name TEXT NOT NULL,
-        message TEXT NOT NULL,
-        is_internal BOOLEAN DEFAULT 0,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (feedback_id) REFERENCES feedback(id) ON DELETE CASCADE
-      );
-    `);
-    db = testDb;
-    statements = initStatements(db);
+let _stmts = null;
+function stmts() {
+  if (!_stmts) {
+    _stmts = initStatements(getDb());
   }
+  return _stmts;
 }
 
 /**
@@ -278,7 +207,7 @@ function submitFeedback(options) {
     throw new Error('Message must be at least 10 characters');
   }
 
-  const result = statements.insert.run(
+  const result = stmts().insert.run(
     type,
     book,
     chapter,
@@ -308,7 +237,7 @@ function submitFeedback(options) {
  * Get feedback by ID
  */
 function getFeedback(id) {
-  const row = statements.getById.get(id);
+  const row = stmts().getById.get(id);
   if (!row) return null;
 
   const feedback = parseRow(row);
@@ -329,7 +258,7 @@ function searchFeedback(options = {}) {
     offset = 0,
   } = options;
 
-  const rows = statements.search.all(
+  const rows = stmts().search.all(
     status,
     status,
     type,
@@ -342,16 +271,7 @@ function searchFeedback(options = {}) {
     offset
   );
 
-  const countResult = statements.count.get(
-    status,
-    status,
-    type,
-    type,
-    book,
-    book,
-    priority,
-    priority
-  );
+  const countResult = stmts().count.get(status, status, type, type, book, book, priority, priority);
 
   return {
     items: rows.map(parseRow),
@@ -365,7 +285,7 @@ function searchFeedback(options = {}) {
  * Get open/in-progress feedback
  */
 function getOpenFeedback(limit = 100) {
-  const rows = statements.getOpen.all(limit);
+  const rows = stmts().getOpen.all(limit);
   return rows.map(parseRow);
 }
 
@@ -373,7 +293,7 @@ function getOpenFeedback(limit = 100) {
  * Get recent feedback
  */
 function getRecentFeedback(limit = 20) {
-  const rows = statements.getRecent.all(limit);
+  const rows = stmts().getRecent.all(limit);
   return rows.map(parseRow);
 }
 
@@ -381,8 +301,8 @@ function getRecentFeedback(limit = 20) {
  * Get statistics
  */
 function getStats() {
-  const byStatus = statements.countByStatus.all();
-  const byType = statements.countByType.all();
+  const byStatus = stmts().countByStatus.all();
+  const byType = stmts().countByType.all();
 
   return {
     byStatus: byStatus.reduce((acc, row) => {
@@ -407,7 +327,7 @@ function updateStatus(id, status) {
     throw new Error(`Invalid status: ${status}`);
   }
 
-  const result = statements.updateStatus.run(status, id);
+  const result = stmts().updateStatus.run(status, id);
   if (result.changes === 0) {
     throw new Error(`Feedback not found: ${id}`);
   }
@@ -419,7 +339,7 @@ function updateStatus(id, status) {
  * Resolve feedback
  */
 function resolveFeedback(id, userId, userName, notes) {
-  const result = statements.resolve.run(userId, userName, notes || null, id);
+  const result = stmts().resolve.run(userId, userName, notes || null, id);
   if (result.changes === 0) {
     throw new Error(`Feedback not found: ${id}`);
   }
@@ -435,7 +355,7 @@ function setPriority(id, priority) {
     throw new Error(`Invalid priority: ${priority}`);
   }
 
-  const result = statements.setPriority.run(priority, id);
+  const result = stmts().setPriority.run(priority, id);
   if (result.changes === 0) {
     throw new Error(`Feedback not found: ${id}`);
   }
@@ -447,7 +367,7 @@ function setPriority(id, priority) {
  * Assign feedback to user
  */
 function assignFeedback(id, assigneeId) {
-  const result = statements.assignTo.run(assigneeId, id);
+  const result = stmts().assignTo.run(assigneeId, id);
   if (result.changes === 0) {
     throw new Error(`Feedback not found: ${id}`);
   }
@@ -463,7 +383,7 @@ function addResponse(feedbackId, responderId, responderName, message, isInternal
     throw new Error('Response message is required');
   }
 
-  const result = statements.insertResponse.run(
+  const result = stmts().insertResponse.run(
     feedbackId,
     responderId,
     responderName,
@@ -486,7 +406,7 @@ function addResponse(feedbackId, responderId, responderName, message, isInternal
  * Get responses for feedback
  */
 function getResponses(feedbackId) {
-  const rows = statements.getResponses.all(feedbackId);
+  const rows = stmts().getResponses.all(feedbackId);
   return rows.map(parseResponseRow);
 }
 
