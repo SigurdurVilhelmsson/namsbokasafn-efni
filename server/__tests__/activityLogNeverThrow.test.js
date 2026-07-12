@@ -82,6 +82,18 @@ describe('activityLog.log — never-throw contract', () => {
     expect(errorSpy).toHaveBeenCalledTimes(1);
     expect(db.prepare('SELECT COUNT(*) AS c FROM activity_log').get().c).toBe(0);
   });
+
+  it('returns null and pino-logs on log(null) (destructuring itself must not throw outside the try)', () => {
+    let result;
+    expect(() => {
+      result = activityLog.log(null);
+    }).not.toThrow();
+    expect(result).toBeNull();
+    expect(errorSpy).toHaveBeenCalledTimes(1);
+    const [ctx, msg] = errorSpy.mock.calls[0];
+    expect(msg).toBe('Activity log write failed');
+    expect(ctx.err).toBeTruthy();
+  });
 });
 
 describe('activityLog reads still fail loud', () => {

@@ -139,18 +139,18 @@ function stmts() {
  * the error log is the fail-loud channel for a broken audit trail.
  */
 function log(options) {
-  const {
-    type,
-    userId,
-    username,
-    book = null,
-    chapter = null,
-    section = null,
-    description,
-    metadata = {},
-  } = options;
-
   try {
+    const {
+      type,
+      userId,
+      username,
+      book = null,
+      chapter = null,
+      section = null,
+      description,
+      metadata = {},
+    } = options;
+
     const result = stmts().insert.run(
       type,
       userId,
@@ -175,7 +175,13 @@ function log(options) {
       createdAt: new Date().toISOString(),
     };
   } catch (err) {
-    logger.error({ err, type, book, userId }, 'Activity log write failed');
+    // The destructuring above is inside this try, so `options` itself may be
+    // null/undefined here (never-throw contract, batch 4 D1) — options?.x is
+    // safe in that case and just yields undefined for the log context.
+    logger.error(
+      { err, type: options?.type, book: options?.book, userId: options?.userId },
+      'Activity log write failed'
+    );
     return null;
   }
 }
