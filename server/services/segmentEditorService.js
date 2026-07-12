@@ -112,26 +112,47 @@ function saveSegmentEdit(params) {
     return { id: existing.id, updated: true };
   }
 
-  // Create new edit
-  const result = conn
-    .prepare(
-      `INSERT INTO segment_edits
-     (book, chapter, module_id, segment_id, original_content, edited_content,
-      category, editor_note, editor_id, editor_username)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
-    )
-    .run(
-      book,
-      chapter,
-      moduleId,
-      segmentId,
-      originalContent,
-      editedContent,
-      category || null,
-      editorNote || null,
-      editorId,
-      editorUsername
-    );
+  // Create new edit. A fresh revision is also the exit path for the editor's
+  // own stale discuss/rejected rows on this segment (batch 2): they become
+  // 'superseded' — reviewer note preserved as history — so review actions on
+  // the new row can't collide and the old row stops counting as awaiting work.
+  // Same transaction as the INSERT: a save either fully lands or fully doesn't.
+  //
+  // Deliberate scoping: this only runs on the INSERT path, not the
+  // update-existing-pending branch above — a pending row can only exist after
+  // an earlier INSERT already superseded the stale rows, and reject/discuss
+  // only ever consume a pending row, so no discuss/rejected row can coexist
+  // with a pending one for this editor+segment.
+  const insertWithSupersede = conn.transaction(() => {
+    conn
+      .prepare(
+        `UPDATE segment_edits SET status = 'superseded'
+         WHERE book = ? AND module_id = ? AND segment_id = ? AND editor_id = ?
+           AND status IN ('discuss', 'rejected')`
+      )
+      .run(book, moduleId, segmentId, editorId);
+
+    return conn
+      .prepare(
+        `INSERT INTO segment_edits
+       (book, chapter, module_id, segment_id, original_content, edited_content,
+        category, editor_note, editor_id, editor_username)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+      )
+      .run(
+        book,
+        chapter,
+        moduleId,
+        segmentId,
+        originalContent,
+        editedContent,
+        category || null,
+        editorNote || null,
+        editorId,
+        editorUsername
+      );
+  });
+  const result = insertWithSupersede();
 
   // MT edit-lock (Track C2): once a module has been opened for editing, its MT
   // output must never be silently re-run and overwritten (see tools/lib/mt-lock.cjs).

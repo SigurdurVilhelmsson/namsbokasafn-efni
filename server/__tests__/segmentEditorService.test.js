@@ -446,6 +446,112 @@ describe('segmentEditorService — DB lifecycle', () => {
 });
 
 // =====================================================================
+// Supersede-on-save: discuss/rejected exit path (post-039)
+// =====================================================================
+
+describe('discuss/rejected exit path — supersede-on-save + collision matrix', () => {
+  let db;
+
+  beforeAll(() => {
+    db = createTestDb();
+    service._setTestDb(db);
+  });
+
+  afterAll(() => {
+    db.close();
+    service._setTestDb(null);
+  });
+
+  beforeEach(() => {
+    db.exec('DELETE FROM segment_edits');
+  });
+
+  // Shorthand: a save by editor u1 on segment s1 of module m1.
+  function save(overrides = {}) {
+    return service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'seg-exit-1',
+      originalContent: 'original',
+      editedContent: 'edited v' + Math.random(),
+      editorId: 'u1',
+      editorUsername: 'editor1',
+      ...overrides,
+    });
+  }
+
+  // Note: the brief refers to this as `getSegmentEditHistory` — the service's
+  // actual function with that shape (all rows for a segment, newest-first) is
+  // `getSegmentEdits(book, moduleId, segmentId)` (segmentEditorService.js:279).
+
+  it('re-discuss after a re-save is clean (the live-reproduced alert() bug)', () => {
+    const first = save();
+    service.markForDiscussion(first.id, 'rev1', 'reviewer1', 'ræðum þetta');
+    const second = save(); // supersedes the stranded discuss row
+    expect(() => service.markForDiscussion(second.id, 'rev1', 'reviewer1', 'aftur')).not.toThrow();
+    const rows = service.getSegmentEdits('testbook', 'm00001', 'seg-exit-1');
+    expect(rows.find((r) => r.id === first.id).status).toBe('superseded');
+    expect(rows.find((r) => r.id === second.id).status).toBe('discuss');
+  });
+
+  it('re-reject after a re-save is clean', () => {
+    const first = save({ segmentId: 'seg-exit-2' });
+    service.rejectEdit(first.id, 'rev1', 'reviewer1', 'nei');
+    const second = save({ segmentId: 'seg-exit-2' });
+    expect(() => service.rejectEdit(second.id, 'rev1', 'reviewer1', 'enn nei')).not.toThrow();
+  });
+
+  it('a second approval while an earlier approved row is unapplied is clean', () => {
+    const first = save({ segmentId: 'seg-exit-3' });
+    service.approveEdit(first.id, 'rev1', 'reviewer1');
+    const second = save({ segmentId: 'seg-exit-3' });
+    expect(() => service.approveEdit(second.id, 'rev1', 'reviewer1')).not.toThrow();
+    // The approved row is live work product — save must NOT supersede it.
+    const rows = service.getSegmentEdits('testbook', 'm00001', 'seg-exit-3');
+    expect(rows.find((r) => r.id === first.id).status).toBe('approved');
+  });
+
+  it('supersedes only the SAME editor’s rows on the SAME segment', () => {
+    const mine = save({ segmentId: 'seg-exit-4' });
+    service.rejectEdit(mine.id, 'rev1', 'reviewer1', 'nei');
+    const theirs = save({ segmentId: 'seg-exit-4', editorId: 'u2', editorUsername: 'editor2' });
+    service.rejectEdit(theirs.id, 'rev1', 'reviewer1', 'nei');
+    const otherSeg = save({ segmentId: 'seg-exit-5' });
+    service.rejectEdit(otherSeg.id, 'rev1', 'reviewer1', 'nei');
+
+    save({ segmentId: 'seg-exit-4' }); // u1 re-saves seg-exit-4 only
+    const seg4 = service.getSegmentEdits('testbook', 'm00001', 'seg-exit-4');
+    expect(seg4.find((r) => r.id === mine.id).status).toBe('superseded');
+    expect(seg4.find((r) => r.id === theirs.id).status).toBe('rejected'); // other editor untouched
+    const seg5 = service.getSegmentEdits('testbook', 'm00001', 'seg-exit-5');
+    expect(seg5.find((r) => r.id === otherSeg.id).status).toBe('rejected'); // other segment untouched
+  });
+
+  it('supersede preserves the reviewer’s fields as history', () => {
+    const first = save({ segmentId: 'seg-exit-6' });
+    service.markForDiscussion(first.id, 'rev1', 'reviewer1', 'athugasemd');
+    save({ segmentId: 'seg-exit-6' });
+    const row = service
+      .getSegmentEdits('testbook', 'm00001', 'seg-exit-6')
+      .find((r) => r.id === first.id);
+    expect(row.status).toBe('superseded');
+    expect(row.reviewer_note).toBe('athugasemd');
+    expect(row.reviewer_username).toBe('reviewer1');
+  });
+
+  it('withdraw (content == original) does NOT supersede anything', () => {
+    const first = save({ segmentId: 'seg-exit-7' });
+    service.markForDiscussion(first.id, 'rev1', 'reviewer1', 'ræðum');
+    save({ segmentId: 'seg-exit-7', editedContent: 'original' }); // withdraw path
+    const row = service
+      .getSegmentEdits('testbook', 'm00001', 'seg-exit-7')
+      .find((r) => r.id === first.id);
+    expect(row.status).toBe('discuss'); // no new revision happened — history stands
+  });
+});
+
+// =====================================================================
 // applyApprovedEdits Integration Tests
 // =====================================================================
 
