@@ -630,10 +630,21 @@ The two mechanical transforms (keep every `activityLog.log({...})` payload **byt
       /* fire-and-forget */
     }
 
-// AFTER — lookup moves ABOVE res.json (inside the route's outer try, which
-// already 400s on a throw before anything was sent), audit write goes bare
-    const edit = segmentEditor.getEditById(parseInt(req.params.editId, 10));
+// AFTER — response stays first (the comment IS saved; a context-lookup
+// failure must not flip a committed mutation into a 400 — that is the
+// nested-site defect class this batch fixes). Only the lookup is guarded,
+// with a log; the audit write goes bare with degraded context on lookup
+// failure (edit stays null → the || '' fallbacks apply).
     res.json({ success: true, commentId: result.id });
+    let edit = null;
+    try {
+      edit = segmentEditor.getEditById(parseInt(req.params.editId, 10));
+    } catch (lookupErr) {
+      log.error(
+        { err: lookupErr, editId: req.params.editId },
+        'Edit lookup for comment audit failed'
+      );
+    }
     activityLog.log({
       type: 'segment_edit_comment',
       userId: String(req.user.id),
