@@ -221,6 +221,11 @@ campaign register.
 - **B4-D3 `[hygiene]`** stray duplicate source files in ch12: `m68789-segments(b).en.md`,
   `m68791-segments(b).en.md` + `(c)`, `m68793-segments(b).en.md` — clean up during the
   post-merge re-extract of those modules.
+- **B4-D4 `[fix]`** the example title-donation logic also mis-donated physics-style
+  "Strategy/Solution" para-headings: 287 title-only first paras across 166
+  edlisfraedi-2e source files were being donated as example titles and dropped as
+  paras. The Task-5 fix corrects this class for every FUTURE extraction; physics
+  content heals when edlisfraedi is (re-)extracted, not in this arc.
 
 ## 10. Post-merge delivery op (own branch/PR, after lead merges the code PR)
 

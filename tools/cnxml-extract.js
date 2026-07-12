@@ -1207,9 +1207,14 @@ function processExample(
   // The example title comes from the FIRST paragraph that has a <title> child
   // Use regex that allows whitespace between para tag and title
   let exampleTitleFound = false;
+  let donorPara = null;
   for (const para of paras) {
     const titleMatch = para.content.match(/^\s*<title>([\s\S]*?)<\/title>/);
     if (titleMatch && !exampleTitleFound) {
+      // RC4-m68860: a title-ONLY para is content (a heading), never a donor —
+      // donating it both fabricated an example title and dropped the para.
+      const rest = para.content.replace(/^\s*<title>[\s\S]*?<\/title>\s*/, '');
+      if (!rest.trim()) continue;
       // This is the example's main title (e.g., "Measuring Heat")
       const titleText = extractInlineText(titleMatch[1], mathMap, counters);
       const titleId = addSegment(
@@ -1219,12 +1224,16 @@ function processExample(
       );
       exampleStructure.title = { segmentId: titleId, text: titleText };
       exampleTitleFound = true;
+      donorPara = para;
     }
   }
 
   // Fallback: look for standalone title element
   if (!exampleTitleFound) {
-    const standaloneTitle = example.content.match(/<title>([\s\S]*?)<\/title>/);
+    // RC4-m68860: strip paras first so a para-nested title can't be stolen
+    // as the example title (it stays with its para as a para-title).
+    const contentWithoutParas = example.content.replace(/<para[^>]*>[\s\S]*?<\/para>/g, '');
+    const standaloneTitle = contentWithoutParas.match(/<title>([\s\S]*?)<\/title>/);
     if (standaloneTitle) {
       const titleText = extractInlineText(standaloneTitle[1], mathMap, counters);
       const titleId = addSegment(
@@ -1237,19 +1246,17 @@ function processExample(
   }
 
   // Process all paragraphs
-  // The first para's title was already used as the example title, so strip it
+  // The donor para's title was already used as the example title, so strip it
   // Other para titles (like "Check Your Learning") should be preserved
-  let firstParaWithTitleProcessed = false;
   for (const para of paras) {
     const titleMatch = para.content.match(/^\s*<title>([\s\S]*?)<\/title>/);
     let paraTitle = null;
     let contentWithoutTitle = para.content;
 
     if (titleMatch) {
-      if (!firstParaWithTitleProcessed && exampleTitleFound) {
-        // This is the first para whose title was used as the example title - strip it
+      if (para === donorPara) {
+        // This para's title was donated as the example title — strip it
         contentWithoutTitle = para.content.replace(/^\s*<title>[\s\S]*?<\/title>\s*/, '');
-        firstParaWithTitleProcessed = true;
       } else {
         // This is a different para with its own title (e.g., "Check Your Learning")
         // Preserve this title in the structure
