@@ -73,3 +73,46 @@ SQLite cannot alter table constraints → 12-step rebuild in one new migration (
 - Vocabulary + all consumers (badges, counts, buttons) change in the same PR (B1-F7 lesson). ✅
 - Migration risk mitigated: idempotency test, deploy backup, transaction, fidelity assertions. ✅
 - Riders scoped to message surfacing + completing an existing server handshake; no new product surface beyond the lead-approved return-to-pending. ✅
+
+## Amendment (2026-07-12, implementation)
+
+Implemented per `docs/plans/2026-07-12-segment-edit-exit-path-plan.md`. Findings folded in
+during execution (each with tests):
+
+1. **Consumer audit was incomplete twice.** The five status-count queries needed no changes
+   (explicit per-status COUNTs), but beyond the two consumers the plan added
+   (`buildEffectiveSegments`, review stamping), task review found THREE more in
+   `propagationService.js` (`:68/:138/:154` — `status != 'rejected'` would have served
+   superseded rows as live propagation content / false conflicts). All now
+   `NOT IN ('rejected','superseded')`.
+2. **A fifth collision-class member was unguarded:** `unapproveEdit` (approved→pending)
+   could hit the partial unique index raw; it now carries the same `PENDING_EXISTS` → 409
+   guard as `returnEditToPending`.
+3. **Migration 039 hardening (task-review driven):** carries 038's `idx_segment_edits_review`
+   (a DROP TABLE takes indexes with it); the whole rebuild is one `db.transaction()` (a
+   reviewer empirically demonstrated the naive self-heal could destroy the only data copy in
+   the DROP→RENAME crash window via 008's empty-table resurrection); populated-copy +
+   decoy-orphan + atomicity-pin tests.
+4. **One deliberate data rewrite added (final review):** rows the pre-039 apply path stamped
+   with the superseded NOTE but the only-available `'rejected'` STATUS
+   (`rejected` + `applied_at` + exact note string — git-archaeology-confirmed unique write
+   site) are relabeled `'superseded'` in the migration, so legacy rows stop counting as
+   needs-response and history renders one vocabulary.
+5. **Supersede sweep also runs on the update-in-place save path** — pre-039 production data
+   holds stranded rows COEXISTING with a newer pending row (pre-039 saves never superseded);
+   insert-only sweeping would never have healed exactly the rows that motivated this fix.
+6. **`completeModuleReview` semantics preserved:** a review whose edits were all
+   superseded/rejected (zero approved) now completes as `changes_requested`, not
+   `'approved'`-with-nothing-approved (also fixes a latent pre-existing all-rejected variant;
+   follow-up test for that variant register-noted).
+7. **saveRetry finding-24 fix was initially dead code** — the crafted rejection was swallowed
+   by its own chained `.catch` (unanimous adversarial verification with node simulations);
+   now the two-argument `.then` form with a strengthened static pin.
+8. **Fixture-drift root cause:** all 8 hand-rolled `segment_edits` fixtures omitted every
+   constraint — the reason this bug class was invisible to a 2,100+-test suite. One canonical
+   post-039 helper (`server/__tests__/helpers/segmentEditsSchema.cjs`) now backs them; 7
+   revealed seed defects fixed intent-preserving (one vacuous assertion made real).
+
+Final whole-branch review: 3-lens Workflow + 3-vote adversarial verification — 1 confirmed
+important (item 7), 9 minors all addressed in the fix wave, 9 earlier task-review minors
+triaged fine-as-is. Post-fix verification: all ten items implemented as specified, ready for PR.
