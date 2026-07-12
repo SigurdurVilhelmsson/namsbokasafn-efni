@@ -206,7 +206,7 @@ const saveRetry = (function () {
         return response
           .json()
           .then(function (data) {
-            const err = new Error(data.error || 'Villa ' + response.status);
+            const err = new Error(data.message || data.error || 'Villa ' + response.status);
             err.status = response.status;
             return Promise.reject(err);
           })

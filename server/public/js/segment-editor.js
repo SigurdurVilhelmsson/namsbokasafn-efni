@@ -1745,6 +1745,28 @@
       // Start polling for job status
       pollJobStatus(data.jobId);
     } catch (err) {
+      if (err.data && err.data.requiresConfirmation) {
+        if (window.confirm(err.data.warning || err.message)) {
+          try {
+            const data = await fetchJson(`/api/pipeline/${action}`, {
+              method: 'POST',
+              credentials: 'include',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                book: currentBook,
+                chapter: currentChapter,
+                moduleId: currentModuleId !== 'all' ? currentModuleId : undefined,
+                track,
+                confirmed: true,
+              }),
+            });
+            pollJobStatus(data.jobId);
+            return;
+          } catch (retryErr) {
+            err = retryErr;
+          }
+        }
+      }
       badge.textContent = UI.common.error;
       badge.className = 'pipeline-status-badge failed';
       output.textContent += `Error: ${err.message}\n`;

@@ -34,18 +34,22 @@ function escapeHtml(text) {
 async function fetchJson(url, options) {
   // Standardize the credentials mode so cookies ride along on same-origin API
   // calls without each caller re-specifying it. Cross-site requests can't read
-  // the response anyway (CORS), and the auth cookie is SameSite=strict, so
+  // the response anyway (CORS), and the auth cookie is SameSite=Lax, so
   // 'same-origin' is the right default; explicit callers still win.
   const res = await fetch(url, { credentials: 'same-origin', ...options });
   if (!res.ok) {
     let msg = 'Villa: HTTP ' + res.status;
+    let data;
     try {
-      const data = await res.json();
+      data = await res.json();
       msg = data.error || data.message || msg;
     } catch {
       /* non-JSON error body */
     }
-    throw new Error(msg);
+    const err = new Error(msg);
+    err.status = res.status;
+    err.data = data;
+    throw err;
   }
   return res.json();
 }
