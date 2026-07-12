@@ -97,6 +97,10 @@ describe('createPropagatedEdits', () => {
     propagatedText: 'Sýra og basi',
     category: 'terminology',
     note: 'Sjálfvirk fjölgun',
+    // No EN-rule interference intended in this describe block — '' legitimately
+    // carries no EN markers, so only original-IS rules can fire (SR-OOS-2 FIX4:
+    // sourceEn is now required, not just checked with `!== undefined`).
+    sourceEn: '',
   };
 
   it('creates pending edits for eligible occurrences, skips already-matches', () => {
@@ -235,6 +239,8 @@ describe('superseded rows are not live content', () => {
     propagatedText: 'Sýra og basi',
     category: 'terminology',
     note: 'Sjálfvirk fjölgun',
+    // No EN-rule interference intended — see the sibling describe block's note.
+    sourceEn: '',
   };
 
   function insertEdit(d, content, status = 'pending') {
@@ -346,5 +352,24 @@ describe('structural-marker guard on propagation (SR-OOS-2 D8)', () => {
     const row = d.prepare(`SELECT * FROM segment_edits WHERE module_id = 'm012'`).get();
     expect(row.edited_content).toBe('Sýra og basi');
     expect(row.status).toBe('pending');
+  });
+
+  it('omitting sourceEn throws — arming must fail loud, not silently disarm (SR-OOS-2 FIX4)', () => {
+    const d = freshDb();
+    const occurrences = [{ chapter: 1, moduleId: 'm099', segmentId: 'm099:para:z', currentIs: '' }];
+    expect(() => {
+      svc.createPropagatedEdits(d, {
+        book: base.book,
+        editorId: base.editorId,
+        editorUsername: base.editorUsername,
+        propagatedText: base.propagatedText,
+        category: base.category,
+        note: base.note,
+        occurrences,
+        // sourceEn intentionally omitted.
+      });
+    }).toThrow(/sourceEn is required/);
+    const row = d.prepare(`SELECT * FROM segment_edits WHERE module_id = 'm099'`).get();
+    expect(row).toBeUndefined();
   });
 });

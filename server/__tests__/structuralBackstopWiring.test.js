@@ -31,6 +31,13 @@ describe('server enforcement sites', () => {
   });
 });
 
+describe('propagation guard arming (SR-OOS-2 FIX4)', () => {
+  it('routes/segment-editor.js wires sourceEn into the propagate call (omitting it would disarm the guard)', () => {
+    const src = read('routes/segment-editor.js');
+    expect(src).toMatch(/sourceEn:\s*sourceSeg\?\.en/);
+  });
+});
+
 describe('client panes delegate (no inline rule bodies)', () => {
   for (const pane of ['public/js/segment-editor.js', 'public/js/localization-editor.js']) {
     it(`${pane} calls the shared module and owns no MATH regex`, () => {
