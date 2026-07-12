@@ -214,3 +214,69 @@ describe('latestEditedText', () => {
     expect(svc.latestEditedText(BOOK, MOD, SEG)).toBe('Þýðing 1');
   });
 });
+
+describe('superseded rows are not live content', () => {
+  const Database = require('better-sqlite3');
+
+  function freshDb() {
+    const d = new Database(':memory:');
+    createSegmentEditsSchema(d);
+    return d;
+  }
+
+  const BOOK = 'efnafraedi-2e';
+  const MOD = 'm68664';
+  const SEG = 'm68664:abstract:auto-2';
+
+  const base = {
+    book: BOOK,
+    editorId: '42',
+    editorUsername: 'tester',
+    propagatedText: 'Sýra og basi',
+    category: 'terminology',
+    note: 'Sjálfvirk fjölgun',
+  };
+
+  function insertEdit(d, content, status = 'pending') {
+    d.prepare(
+      `INSERT INTO segment_edits (book, chapter, module_id, segment_id, original_content, edited_content, status, editor_id, editor_username)
+       VALUES (?, 1, ?, ?, 'orig', ?, ?, '1', 'tester')`
+    ).run(BOOK, MOD, SEG, content, status);
+  }
+
+  it("latestEditedText ignores a superseded row even when it's the highest-id non-rejected candidate", () => {
+    const d = freshDb();
+    svc._setTestDb(d);
+    // Lower-id rejected row, then a higher-id superseded row — the superseded
+    // row would win a naive `status != 'rejected'` ORDER BY id DESC LIMIT 1.
+    insertEdit(d, 'Þýðing hafnað eldri', 'rejected');
+    insertEdit(d, 'Þýðing úrelt', 'superseded');
+    expect(svc.latestEditedText(BOOK, MOD, SEG)).toBeNull();
+  });
+
+  it('createPropagatedEdits treats a superseded-only occurrence as propagatable, not conflict', () => {
+    const d = freshDb();
+    // Same shape: an older rejected row, then a newer superseded row is the
+    // only non-rejected candidate for this segment.
+    d.prepare(
+      `INSERT INTO segment_edits (book, chapter, module_id, segment_id, original_content, edited_content, status, editor_id, editor_username)
+       VALUES (?, 1, 'm005', 'm005:para:e', 'orig', 'gömul höfnun', 'rejected', '7', 'someone')`
+    ).run(base.book);
+    d.prepare(
+      `INSERT INTO segment_edits (book, chapter, module_id, segment_id, original_content, edited_content, status, editor_id, editor_username)
+       VALUES (?, 1, 'm005', 'm005:para:e', 'orig', 'úrelt eldri þýðing', 'superseded', '7', 'someone')`
+    ).run(base.book);
+    const occurrences = [
+      { chapter: 1, moduleId: 'm005', segmentId: 'm005:para:e', currentIs: 'orig' },
+    ];
+    const res = svc.createPropagatedEdits(d, { ...base, occurrences });
+    // A superseded row must not be read back as "the latest live edit" — the
+    // occurrence should be eligible (propagated), not skipped as a conflict.
+    expect(res.created).toHaveLength(1);
+    expect(res.skipped).toHaveLength(0);
+    const rows = d.prepare(`SELECT * FROM segment_edits WHERE module_id = 'm005'`).all();
+    expect(rows).toHaveLength(3); // rejected + superseded (untouched) + new pending
+    const pending = rows.find((r) => r.status === 'pending');
+    expect(pending.edited_content).toBe('Sýra og basi');
+  });
+});

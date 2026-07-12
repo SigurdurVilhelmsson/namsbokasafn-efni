@@ -207,7 +207,8 @@ function getModuleEdits(book, moduleId, statusFilter) {
 
 /**
  * Build the module's "to-be-published" segments: faithful/MT baseline with the
- * latest non-rejected edit per segment overlaid (what apply would write).
+ * latest live edit per segment (rejected and superseded rows are skipped)
+ * overlaid (what apply would write).
  *
  * @returns {Array<{segmentId, enContent, isContent}>}
  */
@@ -544,7 +545,7 @@ function submitModuleForReview(params) {
   // window (which excluded a review's own edits, since they're made before
   // submission). See migration 038.
   //
-  // Claimed = non-rejected edits that are either not yet tied to a review
+  // Claimed = live edits (not rejected/superseded) that are either not yet tied to a review
   // (review_id IS NULL — new/self-approved edits) OR still unresolved
   // (pending/discuss — re-claimed from a prior completed cycle so the
   // changes-requested → fix → resubmit loop attributes them to the new review).
