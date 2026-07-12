@@ -15,7 +15,12 @@ import { createRequire } from 'module';
 process.env.JWT_SECRET = process.env.JWT_SECRET || 'test-secret';
 
 const require = createRequire(import.meta.url);
-const { requireHeadEditor, requireHeadEditorFor, ROLES } = require('../middleware/requireRole');
+const {
+  requireHeadEditor,
+  requireHeadEditorFor,
+  requireBookAccessForSection,
+  ROLES,
+} = require('../middleware/requireRole');
 
 function mockRes() {
   return {
@@ -152,5 +157,65 @@ describe('requireHeadEditorFor(resolveBook)', () => {
     const { nextCalled, res } = run(requireHeadEditorFor(resolveToBookX), { params: {} });
     expect(nextCalled).toBe(false);
     expect(res.statusCode).toBe(401);
+  });
+});
+
+describe('requireBookAccessForSection(resolveSectionId)', () => {
+  // These cover only the pre-resolution branches — nothing here may reach
+  // bookRegistration.getSection (this suite has no DB). The resolution +
+  // delegation branches are covered end-to-end in crossBookAuthz.test.js.
+  const viewer = { id: 5, username: 'view', role: ROLES.VIEWER, books: [] };
+
+  it('rejects anonymous with 401 before resolving anything', () => {
+    let resolverCalled = false;
+    const { res, nextCalled } = run(
+      requireBookAccessForSection(() => {
+        resolverCalled = true;
+        return 1;
+      }),
+      { params: {} }
+    );
+    expect(nextCalled).toBe(false);
+    expect(res.statusCode).toBe(401);
+    expect(resolverCalled).toBe(false);
+  });
+
+  it('rejects below-editor roles with 403 before resolving (no DB work for viewers)', () => {
+    let resolverCalled = false;
+    const { res, nextCalled } = run(
+      requireBookAccessForSection(() => {
+        resolverCalled = true;
+        return 1;
+      }),
+      { user: viewer, params: {} }
+    );
+    expect(nextCalled).toBe(false);
+    expect(res.statusCode).toBe(403);
+    expect(resolverCalled).toBe(false);
+  });
+
+  it('maps a throwing resolver to 404 (missing-target contract, requireHeadEditorFor parity)', () => {
+    const { res, nextCalled } = run(
+      requireBookAccessForSection(() => {
+        throw new Error('Suggestion not found');
+      }),
+      { user: editorA, params: {} }
+    );
+    expect(nextCalled).toBe(false);
+    expect(res.statusCode).toBe(404);
+    expect(res.body.error).toBe('Suggestion not found');
+  });
+
+  it('maps a falsy resolution to 404', () => {
+    const { res, nextCalled } = run(
+      requireBookAccessForSection(() => null),
+      {
+        user: editorA,
+        params: {},
+      }
+    );
+    expect(nextCalled).toBe(false);
+    expect(res.statusCode).toBe(404);
+    expect(res.body.error).toBe('Target not found');
   });
 });

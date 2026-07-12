@@ -7,6 +7,7 @@
 
 const { ROLES, hasRole } = require('../services/auth');
 const userService = require('../services/userService');
+const bookRegistration = require('../services/bookRegistration');
 
 /**
  * Require minimum role middleware factory
@@ -144,6 +145,70 @@ function requireHeadEditorFor(resolveBook) {
 }
 
 /**
+ * Book-scope a route keyed by a section (or an entity that resolves to a section).
+ *
+ * resolveSectionId(req) returns a section id (number|string), or a falsy value /
+ * throws when the target entity does not exist (both → 404). The section's owning
+ * book + chapter are resolved via bookRegistration.getSection, then the request is
+ * delegated to requireBookAccess() — so the semantics are exactly its semantics:
+ * admin passes; a head-editor OF THIS BOOK passes; everyone else (plain editors
+ * AND head-editors of other books) takes the chapter-assignment path — fail-open
+ * when the caller has no assignments for the book and enforcement is OFF,
+ * default-deny when the book's enforce_assignments toggle is ON — for callers
+ * resolvable to a DB user (a JWT holder with no users row falls through —
+ * pre-existing requireBookAccess behavior) — 503 fail-closed when enforcement
+ * is ON but assignments cannot be evaluated.
+ *
+ * Also attaches the resolved section as req.section for downstream handlers.
+ *
+ * @param {function(req): (number|string|undefined)} resolveSectionId
+ * @returns {function} Express middleware
+ */
+function requireBookAccessForSection(resolveSectionId) {
+  return (req, res, next) => {
+    if (!req.user) {
+      return res.status(401).json({
+        error: 'Authentication required',
+        message: 'Please log in to access this resource',
+      });
+    }
+
+    // Min-role fast-fail so sub-editor callers never trigger DB resolution.
+    if (!hasRole(req.user.role, ROLES.EDITOR)) {
+      return res.status(403).json({
+        error: 'Insufficient permissions',
+        message: 'This action requires editor role or higher',
+        yourRole: req.user.role,
+      });
+    }
+
+    let sectionId;
+    try {
+      sectionId = resolveSectionId(req);
+    } catch (err) {
+      // Resolver signals a missing target by throwing (requireHeadEditorFor parity)
+      return res.status(404).json({ error: err.message });
+    }
+
+    if (!sectionId) {
+      return res.status(404).json({ error: 'Target not found' });
+    }
+
+    const section = bookRegistration.getSection(parseInt(sectionId, 10));
+    if (!section) {
+      return res.status(404).json({ error: 'Section not found' });
+    }
+
+    // Hand requireBookAccess exactly what it reads, and keep the resolved
+    // section for handlers (audit-log columns, sync-log's localizer check).
+    req.section = section;
+    req.params.book = section.bookSlug;
+    req.chapterNum = String(section.chapterNum); // String: chapter 0 (front matter) must stay truthy
+    return requireBookAccess()(req, res, next);
+  };
+}
+
+/**
  * Require editor or higher
  */
 function requireEditor() {
@@ -237,6 +302,7 @@ module.exports = {
   requireRole,
   requireHeadEditor,
   requireHeadEditorFor,
+  requireBookAccessForSection,
   requireEditor,
   requireAdmin,
   requireBookAccess,

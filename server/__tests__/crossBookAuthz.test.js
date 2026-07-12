@@ -70,6 +70,42 @@ beforeAll(() => {
       UNIQUE(user_id, book_slug, chapter)
     );
   `);
+  // Suggestions-family (B1-F1) schema extension. localization_suggestions is
+  // created by migration 004 in production (the service does NOT self-init it);
+  // DDL copied from 004-terminology.js:85 (FK omitted — better-sqlite3 defaults
+  // foreign_keys off and the harness uses explicit ids). faithful_path: scanBook's
+  // SQL names bs.faithful_path, so the column must exist even though every harness
+  // row leaves it NULL (→ 0 sections scanned). provider_id: requireBookAccess's
+  // editor path calls userService.findByProviderId, which queries it — without the
+  // column every editor-path request 500s. user_book_access: findByProviderId calls
+  // getBookAccess whenever it finds a row. book_settings: isAssignmentEnforced.
+  db.exec(`
+    ALTER TABLE book_sections ADD COLUMN faithful_path TEXT;
+    ALTER TABLE users ADD COLUMN provider_id TEXT;
+    CREATE TABLE IF NOT EXISTS user_book_access (
+      user_id INTEGER NOT NULL, book_slug TEXT NOT NULL, role_for_book TEXT
+    );
+    CREATE TABLE IF NOT EXISTS book_settings (
+      book TEXT PRIMARY KEY, enforce_assignments INTEGER DEFAULT 0,
+      updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+    CREATE TABLE IF NOT EXISTS localization_suggestions (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      section_id INTEGER NOT NULL,
+      suggestion_type TEXT NOT NULL,
+      original_text TEXT NOT NULL,
+      suggested_text TEXT NOT NULL,
+      context TEXT,
+      line_number INTEGER,
+      pattern_id TEXT,
+      status TEXT DEFAULT 'pending',
+      reviewer_modified_text TEXT,
+      reviewed_by TEXT,
+      reviewed_by_name TEXT,
+      reviewed_at DATETIME,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+  `);
   db.prepare(
     `INSERT INTO registered_books (id, slug, title_is) VALUES (1, 'liffraedi-2e', 'Líffræði')`
   ).run();
@@ -125,6 +161,45 @@ beforeAll(() => {
   // submit-review requires the caller to be the assigned reviewer (or admin); HE_B's
   // minted sub is 'u-he-b' (see mintToken/HE_B below).
   db.prepare(`UPDATE book_sections SET linguistic_reviewer = 'u-he-b' WHERE id = 49`).run();
+
+  // ── Suggestions-family fixtures (B1-F1 + folded B1-F2/F3) ──
+  // Enforcement stays OFF for liffraedi-2e (fail-open matrix — the project's
+  // default model) and is turned ON for efnafraedi-2e (default-deny matrix).
+  // Only the new suggestions routes reach requireBookAccess's chapter-assignment
+  // path in this suite (everything older is requireHeadEditor/-For gated), so
+  // the toggle cannot affect the pre-existing tests.
+  db.prepare(
+    `INSERT INTO book_settings (book, enforce_assignments) VALUES ('efnafraedi-2e', 1)`
+  ).run();
+  // users rows WITH provider_id so findByProviderId resolves these personas.
+  // A JWT user with no users row skips the chapter check entirely (dbUser-null
+  // fall-through in requireBookAccess) — that would mask the enforcement-ON 403s
+  // asserted below. HE_A deliberately gets NO row: the fail-open cases document
+  // that the unknown-to-DB fall-through also passes when enforcement is off.
+  db.prepare(
+    `INSERT INTO users (id, display_name, role, provider_id) VALUES (2, 'Editor Ed', 'editor', 'u-ed')`
+  ).run();
+  db.prepare(
+    `INSERT INTO users (id, display_name, role, provider_id) VALUES (3, 'Head B', 'head-editor', 'u-he-b')`
+  ).run();
+  // Fresh sections (no interference with rows 42-51):
+  ins.run(60, 1, 1, '1.20', 'not_started'); // liffraedi: fail-open matrix + bulk
+  ins.run(61, 2, 2, '1.21', 'not_started'); // efnafraedi: enforcement-ON + resolver discrimination
+  ins.run(62, 1, 1, '1.22', 'not_started'); // liffraedi: sync-log (kept suggestion-free → entriesCreated 0, no localization_log table needed)
+  ins.run(63, 1, 1, '1.23', 'not_started'); // liffraedi: sync-log assigned-localizer positive case (kept suggestion-free)
+  // canSync's first disjunct compares section.localizer to the JWT id ('u-ed' = EDITOR persona).
+  db.prepare(`UPDATE book_sections SET localizer = 'u-ed' WHERE id = 63`).run();
+  const insSug = db.prepare(
+    `INSERT INTO localization_suggestions (id, section_id, suggestion_type, original_text, suggested_text)
+     VALUES (?, ?, 'unit_conversion', '5 miles', '8.0 km')`
+  );
+  insSug.run(70, 60); // accept target (fail-open editor)
+  insSug.run(71, 60); // reject target
+  insSug.run(72, 60); // modify target
+  insSug.run(73, 60); // bulk-accept target
+  insSug.run(74, 60); // bulk-accept target
+  insSug.run(75, 61); // efnafraedi: discrimination + enforcement-ON target
+
   db.close();
 
   const app = express();
@@ -134,6 +209,7 @@ beforeAll(() => {
   app.use('/api/books', require('../routes/books'));
   app.use('/api/admin', require('../routes/admin'));
   app.use('/api/activity', require('../routes/activity'));
+  app.use('/api/suggestions', require('../routes/suggestions'));
   server = app.listen(0);
   base = `http://127.0.0.1:${server.address().port}`;
 });
@@ -487,5 +563,160 @@ describe('activity book-log read is book-scoped (B1-F5 sibling, whole-branch rev
   it('GET: plain editor → 403', async () => {
     const res = await get(READ, EDITOR);
     expect(res.status).toBe(403);
+  });
+});
+
+// ============================================================================
+// Suggestions family (B1-F1 + folded B1-F2/F3 for this family)
+// ============================================================================
+
+describe('suggestions scan-book is head-editor-of-book scoped (B1-F1)', () => {
+  const SCAN_BOOK = '/api/suggestions/scan-book/liffraedi-2e';
+
+  it('head-editor of another book → 403 (was: any head-editor could regenerate any book)', async () => {
+    const res = await post(SCAN_BOOK, HE_A);
+    expect(res.status).toBe(403);
+  });
+  it('owning head-editor reaches a genuine 200 (scan-book activityLog site executes end-to-end)', async () => {
+    const res = await post(SCAN_BOOK, HE_B);
+    expect(res.status).toBe(200);
+  });
+  it('admin bypasses book scope (200)', async () => {
+    const res = await post(SCAN_BOOK, ADMIN);
+    expect(res.status).toBe(200);
+  });
+  it('plain editor → 403 (role gate, unchanged)', async () => {
+    const res = await post(SCAN_BOOK, EDITOR);
+    expect(res.status).toBe(403);
+  });
+});
+
+describe('suggestions section-keyed routes are book/section-scoped (B1-F2/F3 fold-in)', () => {
+  // ── Fail-open block (liffraedi-2e, enforcement OFF — the project's default
+  // model, enforce_assignments not set). requireBookAccessForSection delegates
+  // to requireBookAccess, so a caller with no assignments for the book passes:
+  // that includes plain editors AND head-editors of OTHER books (they take the
+  // same editor path — see the middleware JSDoc). The cross-book denials live
+  // in the enforcement-ON block below.
+  it('scan: plain editor clears authz fail-open and reaches a genuine 200 (scan activityLog site executes)', async () => {
+    const res = await post('/api/suggestions/scan/60', EDITOR);
+    expect(res.status).toBe(200);
+  });
+  it('read: head-editor of another book ALSO clears fail-open (documented requireBookAccess fall-through, same as any editor)', async () => {
+    const res = await get('/api/suggestions/60', HE_A);
+    expect(res.status).toBe(200);
+  });
+  it('stats: plain editor clears fail-open (200)', async () => {
+    const res = await get('/api/suggestions/60/stats', EDITOR);
+    expect(res.status).toBe(200);
+  });
+
+  // ── Enforcement-ON block (efnafraedi-2e, enforce_assignments=1 in the
+  // harness): the chapter-assignment path turns default-deny, which is where
+  // the middleware's cross-book protection actually bites.
+  it('scan: unassigned editor → 403 under enforcement (default-deny)', async () => {
+    const res = await post('/api/suggestions/scan/61', EDITOR);
+    expect(res.status).toBe(403);
+  });
+  it('stats: unassigned editor → 403 under enforcement (pins the stats-route wiring — the fail-open 200 alone also passes under the old role gate)', async () => {
+    const res = await get('/api/suggestions/61/stats', EDITOR);
+    expect(res.status).toBe(403);
+  });
+  it('read: unassigned editor → 403 under enforcement (GETs are gated too)', async () => {
+    const res = await get('/api/suggestions/61', EDITOR);
+    expect(res.status).toBe(403);
+  });
+  it('read: owning head-editor short-circuits enforcement (200)', async () => {
+    const res = await get('/api/suggestions/61', HE_A);
+    expect(res.status).toBe(200);
+  });
+  it('read: admin short-circuits enforcement (200)', async () => {
+    const res = await get('/api/suggestions/61', ADMIN);
+    expect(res.status).toBe(200);
+  });
+
+  // ── Not-found + route-ordering pins
+  it('scan: unknown section → 404', async () => {
+    const res = await post('/api/suggestions/scan/99999', HE_B);
+    expect(res.status).toBe(404);
+  });
+  it('read: non-numeric :sectionId → 404 (getSection(NaN) yields no row)', async () => {
+    const res = await get('/api/suggestions/abc', HE_B);
+    expect(res.status).toBe(404);
+  });
+  it('patterns route stays first and unscoped (requireAuth only)', async () => {
+    const res = await get('/api/suggestions/patterns', EDITOR);
+    expect(res.status).toBe(200);
+  });
+});
+
+describe('suggestions bulk route contains ids to the gated section (id-smuggling rider)', () => {
+  it('owning head-editor bulk-accepts same-section ids and reaches a genuine 200 (bulk activityLog site executes)', async () => {
+    const res = await post('/api/suggestions/60/bulk', HE_B, { ids: [73, 74], action: 'accept' });
+    expect(res.status).toBe(200);
+  });
+  it('ids belonging to another section → 400 (suggestion 75 is section 61 / efnafraedi)', async () => {
+    const res = await post('/api/suggestions/60/bulk', HE_B, { ids: [75], action: 'accept' });
+    expect(res.status).toBe(400);
+  });
+});
+
+describe('suggestions sync-log: middleware + book-scoped canSync (rider)', () => {
+  // Section 62 is liffraedi-owned and suggestion-free (entriesCreated: 0), so a
+  // genuine 200 needs no localization_log table and no cross-test ordering.
+  it('head-editor of another book → 403 from canSync (clears fail-open middleware, then the book-scoped elevated check denies)', async () => {
+    const res = await post('/api/suggestions/62/sync-log', HE_A);
+    expect(res.status).toBe(403);
+  });
+  it('plain editor (not the assigned localizer) → 403 from canSync (localizer gate preserved beneath the middleware)', async () => {
+    const res = await post('/api/suggestions/62/sync-log', EDITOR);
+    expect(res.status).toBe(403);
+  });
+  it('owning head-editor reaches a genuine 200 (sync-log activityLog site executes)', async () => {
+    const res = await post('/api/suggestions/62/sync-log', HE_B);
+    expect(res.status).toBe(200);
+  });
+  it('assigned localizer (plain editor) reaches a genuine 200 on their own section (pins the localizer disjunct of canSync)', async () => {
+    const res = await post('/api/suggestions/63/sync-log', EDITOR);
+    expect(res.status).toBe(200);
+  });
+});
+
+describe('suggestion-id routes resolve to their owning section and book-scope on it', () => {
+  // Suggestion 75 → section 61 → efnafraedi-2e (enforcement ON, HE_A's book).
+  it('accept: head-editor of another book → 403 under enforcement (suggestion 75 is efnafraedi)', async () => {
+    const res = await post('/api/suggestions/75/accept', HE_B);
+    expect(res.status).toBe(403);
+  });
+  it('accept: owning head-editor → genuine 200 via the suggestion→section resolver (discriminates the resolver from a liffraedi constant; accept activityLog site executes)', async () => {
+    const res = await post('/api/suggestions/75/accept', HE_A);
+    expect(res.status).toBe(200);
+  });
+  // Suggestions 70-72 → section 60 → liffraedi-2e (fail-open).
+  it('accept: plain editor clears fail-open on liffraedi and reaches a genuine 200', async () => {
+    const res = await post('/api/suggestions/70/accept', EDITOR);
+    expect(res.status).toBe(200);
+  });
+  it('reject: owning head-editor → genuine 200 (reject activityLog site executes)', async () => {
+    const res = await post('/api/suggestions/71/reject', HE_B);
+    expect(res.status).toBe(200);
+  });
+  it('modify: owning head-editor → genuine 200 (modify activityLog site executes)', async () => {
+    const res = await post('/api/suggestions/72/modify', HE_B, { modifiedText: '8,0 km' });
+    expect(res.status).toBe(200);
+  });
+  it('unknown suggestion id → 404 from the resolver (was a formatSuggestion TypeError → 500)', async () => {
+    const res = await post('/api/suggestions/99999/accept', HE_B);
+    expect(res.status).toBe(404);
+  });
+});
+
+describe('suggestions.js activityLog call shape (static guard, mirrors the sections.js guard)', () => {
+  it('has no legacy {action:/entityType:/details:} call shape left', () => {
+    const fs = require('fs');
+    const src = fs.readFileSync(require.resolve('../routes/suggestions.js'), 'utf8');
+    expect(src).not.toMatch(/\baction:\s*['"`]/);
+    expect(src).not.toMatch(/\bentityType:/);
+    expect(src).not.toMatch(/\bdetails:/);
   });
 });
