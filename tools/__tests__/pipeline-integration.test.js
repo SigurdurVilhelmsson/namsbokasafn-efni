@@ -612,6 +612,28 @@ describe('restoreTermMarkers', () => {
     expect(strippedCount).toBe(0);
     expect(restoredCount).toBe(0);
   });
+
+  it('restoreTermMarkers strips glossary __artifacts__ when both sides use bracket terms', () => {
+    const isSegments = new Map([['s1', '[[term:seigja|t1]] og __aukaorð__']]);
+    const enSegments = new Map([['s1', '[[term:viscosity|t1]] and more']]);
+    const { strippedCount } = restoreTermMarkers(isSegments, enSegments);
+    expect(strippedCount).toBe(1);
+    expect(isSegments.get('s1')).toBe('[[term:seigja|t1]] og aukaorð');
+  });
+
+  // Divergence check: proves the bracket-aware branch is actually reached
+  // (not just producing output identical to the legacy positional path).
+  // EN mixes a bracket term with a legacy __term__ marker — the bracket
+  // presence check must still route this to the "both new format" branch,
+  // which strips ALL __text__ from IS (2), not just the legacy positional
+  // count (which would keep 1 and strip 1).
+  it('restoreTermMarkers routes to bracket-aware branch when EN has bracket + legacy __term__', () => {
+    const isSegments = new Map([['s1', '[[term:seigja|t1]] og __a__ og __b__']]);
+    const enSegments = new Map([['s1', '[[term:viscosity|t1]] and __x__ more']]);
+    const { strippedCount } = restoreTermMarkers(isSegments, enSegments);
+    expect(strippedCount).toBe(2);
+    expect(isSegments.get('s1')).toBe('[[term:seigja|t1]] og a og b');
+  });
 });
 
 // =====================================================================
@@ -725,6 +747,21 @@ describe('annotateInlineTerms', () => {
       '{{term}}Orka (e. energy){{/term}} og {{term}}vinna (e. work){{/term}} eru skyld.'
     );
     expect(annotatedCount).toBe(2);
+  });
+
+  it('annotateInlineTerms annotates bracket-format terms inside the text field', () => {
+    const isSegments = new Map([['s1', 'Þetta er [[term:seigja|term-1]] hugtak']]);
+    const enSegments = new Map([['s1', 'This is a [[term:viscosity|term-1]] concept']]);
+    const { annotatedCount } = annotateInlineTerms(isSegments, enSegments);
+    expect(annotatedCount).toBe(1);
+    expect(isSegments.get('s1')).toContain('[[term:seigja (e. viscosity)|term-1]]');
+  });
+
+  it('annotateInlineTerms handles bracket EN + legacy {{term}} IS (mixed dialects)', () => {
+    const isSegments = new Map([['s1', 'Þetta er {{term}}seigja{{/term}} hugtak']]);
+    const enSegments = new Map([['s1', 'This is a [[term:viscosity|term-1]] concept']]);
+    annotateInlineTerms(isSegments, enSegments);
+    expect(isSegments.get('s1')).toContain('{{term}}seigja (e. viscosity){{/term}}');
   });
 });
 

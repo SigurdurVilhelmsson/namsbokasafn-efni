@@ -1316,6 +1316,18 @@ describe('stripTermMarkersToText', () => {
   it('drops an unresolved MATH marker (rare)', () => {
     expect(stripTermMarkersToText('a [[MATH:9]]', eqs)).toBe('a ');
   });
+
+  it('stripTermMarkersToText unwraps [[term:|id]]/[[fn:|id]]/[[em:|class]] keeping text', () => {
+    expect(stripTermMarkersToText('[[term:Viscosity|term-1]]', {})).toBe('viscosity');
+    expect(stripTermMarkersToText('[[fn:A note|fs-1]]', {})).toBe('a note');
+    expect(stripTermMarkersToText('[[em:R-O-R|emphasis-one]]', {})).toBe('r-o-r');
+    expect(stripTermMarkersToText('[[u:Key]]', {})).toBe('key');
+    expect(stripTermMarkersToText('[[term:Plain]]', {})).toBe('plain');
+  });
+
+  it('stripTermMarkersToText still drops unknown bracket markers wholesale', () => {
+    expect(stripTermMarkersToText('[[MEDIA:1]]x', {})).toBe('x');
+  });
 });
 
 describe('buildCnxml glossary annotation — MATH placeholder resolution (m68852)', () => {

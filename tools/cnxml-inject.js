@@ -218,9 +218,9 @@ function restoreTermMarkers(isSegments, enSegments) {
     // Only strip __term__ from IS when IS also has {{term}} markers — this proves
     // the IS was API-translated with new extraction, and __term__ are glossary artifacts.
     // If IS has __term__ but NO {{term}}, it's a legacy translation — keep them.
-    const enHasNewTerms = enText.includes('{{term}}');
+    const enHasNewTerms = enText.includes('{{term}}') || enText.includes('[[term:');
     if (enHasNewTerms) {
-      const isHasNewTerms = isText.includes('{{term}}');
+      const isHasNewTerms = isText.includes('{{term}}') || isText.includes('[[term:');
       if (isHasNewTerms) {
         // Both use new format: any __term__ in IS is API glossary overproduction
         const legacyTerms = isText.match(/__[^_]+__/g);
@@ -790,6 +790,10 @@ function stripTermMarkersToText(text, equations, { trim = false } = {}) {
     .replace(/\[\[b:([^\]]+)\]\]/g, '$1')
     .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '$1')
     .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '$1')
+    // B4: unwrap id-anchored markers to their display text BEFORE the
+    // catch-all below deletes unknown [[type:…]] markers wholesale.
+    .replace(/\[\[(?:term|fn|em):([^\]|]*)\|[^\]]*\]\]/g, '$1')
+    .replace(/\[\[(?:term|fn|u):([^\]]*)\]\]/g, '$1')
     .replace(/\[\[(?!MATH:)[A-Za-z][\w]*:[^\]]*\]\]/g, ''); // drop MEDIA/other, NOT MATH
   if (trim) out = out.trim();
   return out.toLowerCase().replace(/\[\[math:(\d+)\]\]/g, (m, n) => {
@@ -823,11 +827,12 @@ function stripTermMarkersToText(text, equations, { trim = false } = {}) {
 function annotateInlineTerms(isSegments, enSegments, equations = {}) {
   let annotatedCount = 0;
 
-  // EN markers: {{term}}text{{/term}}, __term__, **bold**, {{b}}bold{{/b}}
+  // EN markers: {{term}}text{{/term}}, __term__, **bold**, {{b}}bold{{/b}}, [[term:text|id]]
   const enMarkerPattern =
-    /(\{\{term\}\}([\s\S]*?)\{\{\/term\}\}|__([^_]+)__|\*\*(.+?)\*\*|\{\{b\}\}(.+?)\{\{\/b\}\})/g;
-  // IS: both new {{term}} and legacy __term__ formats
-  const isTermPattern = /(\{\{term\}\}([\s\S]*?)\{\{\/term\}\}|__([^_]+)__)/g;
+    /(\{\{term\}\}([\s\S]*?)\{\{\/term\}\}|__([^_]+)__|\*\*(.+?)\*\*|\{\{b\}\}(.+?)\{\{\/b\}\}|\[\[term:((?:(?!\[\[|\]\])[\s\S])+?)(?:\|[A-Za-z0-9_.:-]+)?\]\])/g;
+  // IS: new {{term}}, legacy __term__, and B4 bracket [[term:text|id]] formats
+  const isTermPattern =
+    /(\{\{term\}\}([\s\S]*?)\{\{\/term\}\}|__([^_]+)__|\[\[term:((?:(?!\[\[|\]\])[\s\S])+?)(?:\|([A-Za-z0-9_.:-]+))?\]\])/g;
 
   for (const [segId, isText] of isSegments) {
     const enText = enSegments.get(segId);
@@ -844,37 +849,54 @@ function annotateInlineTerms(isSegments, enSegments, equations = {}) {
       } else if (enMatch[3] !== undefined) {
         // __term__ match
         enTermTexts.push(enMatch[3]);
+      } else if (enMatch[6] !== undefined) {
+        // [[term:text|id]] match — text field only
+        enTermTexts.push(enMatch[6]);
       }
       // **bold** or {{b}} — skip
     }
 
     if (enTermTexts.length === 0) continue;
 
-    // Replace IS term markers positionally (handles both {{term}} and __term__ formats)
+    // Replace IS term markers positionally (handles {{term}}, __term__, and
+    // [[term:text|id]] formats)
     let termIndex = 0;
-    const annotated = isText.replace(isTermPattern, (match, _full, newInner, legacyInner) => {
-      const inner = newInner !== undefined ? newInner : legacyInner;
-      const isNewFormat = newInner !== undefined;
-      if (termIndex >= enTermTexts.length) return match;
+    const annotated = isText.replace(
+      isTermPattern,
+      (match, _full, newInner, legacyInner, bracketInner, bracketId) => {
+        const inner =
+          newInner !== undefined
+            ? newInner
+            : legacyInner !== undefined
+              ? legacyInner
+              : bracketInner;
+        if (termIndex >= enTermTexts.length) return match;
 
-      // Strip inline markers from EN term text to plain text for annotations.
-      // Annotations are reference hints "(e. english term)" — they don't exist in
-      // source CNXML, so any CNXML tags (sub, sup, emphasis) inside them would be
-      // overcounted by the fidelity check. Plain text avoids this side-effect and
-      // also prevents raw API markers from leaking into IS segments.
-      const enTermRaw = enTermTexts[termIndex];
-      const enTerm = stripTermMarkersToText(enTermRaw, equations); // trim:false — site A's current behavior (#17)
-      termIndex++;
+        // Strip inline markers from EN term text to plain text for annotations.
+        // Annotations are reference hints "(e. english term)" — they don't exist in
+        // source CNXML, so any CNXML tags (sub, sup, emphasis) inside them would be
+        // overcounted by the fidelity check. Plain text avoids this side-effect and
+        // also prevents raw API markers from leaking into IS segments.
+        const enTermRaw = enTermTexts[termIndex];
+        const enTerm = stripTermMarkersToText(enTermRaw, equations); // trim:false — site A's current behavior (#17)
+        termIndex++;
 
-      // Skip if IS and EN terms are the same (case-insensitive)
-      if (inner.toLowerCase() === enTerm) return match;
+        // Skip if IS and EN terms are the same (case-insensitive)
+        if (inner.toLowerCase() === enTerm) return match;
 
-      annotatedCount++;
-      if (isNewFormat) {
-        return `{{term}}${inner} (e. ${enTerm}){{/term}}`;
+        annotatedCount++;
+        if (bracketInner !== undefined) {
+          // B4: annotation lands INSIDE the text field so the id stays opaque
+          return bracketId !== undefined
+            ? `[[term:${inner} (e. ${enTerm})|${bracketId}]]`
+            : `[[term:${inner} (e. ${enTerm})]]`;
+        }
+        if (newInner !== undefined) {
+          return `{{term}}${inner} (e. ${enTerm}){{/term}}`;
+        }
+        return `__${inner} (e. ${enTerm})__`;
       }
-      return `__${inner} (e. ${enTerm})__`;
-    });
+    );
 
     if (annotated !== isText) {
       isSegments.set(segId, annotated);
