@@ -768,6 +768,7 @@
     // - Own pending edit -> can re-edit
     // - Rejected edit -> can try again
     // - Discuss edit -> can re-edit based on feedback
+    // - Superseded edit (latest, e.g. after a withdraw) -> can re-edit
     // - Published (approved + applied) -> can revise: a new edit supersedes the
     //   old one on the next "Vista + Birta". Open to any editor, since published
     //   content is settled like baseline. loadModuleForEditing reads the
@@ -777,6 +778,7 @@
       !latestEdit ||
       latestEdit.status === 'rejected' ||
       latestEdit.status === 'discuss' ||
+      latestEdit.status === 'superseded' ||
       (latestEdit.status === 'pending' && latestEdit.editor_username === userName) ||
       (latestEdit.status === 'approved' &&
         !latestEdit.applied_at &&
@@ -801,6 +803,17 @@
               <button class="btn btn-sm btn-reject" onclick="reviewEdit(${latestEdit.id}, 'reject')" title="Hafna">&#10007;</button>
               <button class="btn btn-sm btn-discuss" onclick="reviewEdit(${latestEdit.id}, 'discuss')" title="Ræða">&#128172;</button>
             </div>
+          `
+              : ''
+          }
+          ${
+            // Stale discuss/rejected rows: a head-editor can reopen the edit for
+            // fresh review without waiting for the editor to submit a new revision.
+            isHeadEditor &&
+            (latestEdit.status === 'discuss' || latestEdit.status === 'rejected') &&
+            !latestEdit.applied_at
+              ? `
+            <button class="btn btn-sm btn-reopen" onclick="reopenEdit(${latestEdit.id})" style="margin-top: 0.25rem;" title="${UI.tooltips.reopenEdit}">&#8634;</button>
           `
               : ''
           }
@@ -1306,6 +1319,20 @@
 
     try {
       await fetchJson(`${API_BASE}/edit/${editId}/unapprove`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+      });
+
+      await loadModule(currentModuleId);
+    } catch (err) {
+      alert(UI.common.errorPrefix + err.message);
+    }
+  }
+
+  async function reopenEdit(editId) {
+    try {
+      await fetchJson(`${API_BASE}/edit/${editId}/return-to-pending`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -2576,6 +2603,7 @@
   window.closeTermPopup = closeTermPopup;
   window.reviewEdit = reviewEdit;
   window.unapproveEdit = unapproveEdit;
+  window.reopenEdit = reopenEdit;
   window.showTermPopup = showTermPopup;
   window.insertTermFromLookup = insertTermFromLookup;
   window.insertRepetition = insertRepetition;

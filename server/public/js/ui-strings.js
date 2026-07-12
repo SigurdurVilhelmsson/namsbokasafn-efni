@@ -90,6 +90,7 @@ const UI = {
     approved: 'Samþykkt',
     rejected: 'Hafnað',
     discuss: 'Umræða',
+    superseded: 'Leyst úr gildi',
   },
 
   // ── Edit category labels ────────────────────────────────────
@@ -319,6 +320,7 @@ const UI = {
     sourceTypes:
       'MT = óyfirfarin vélþýðing · Yfirlesið = mannlegur yfirlestur lokinn · Staðfærð = aðlöguð að Íslandi',
     otherEditor: 'Annar yfirlesari hefur breytt þessum bút',
+    reopenEdit: 'Opna aftur til yfirferðar',
   },
 
   // ── Term lookup ─────────────────────────────────────────────
