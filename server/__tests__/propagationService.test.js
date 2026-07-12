@@ -280,3 +280,71 @@ describe('superseded rows are not live content', () => {
     expect(pending.edited_content).toBe('Sýra og basi');
   });
 });
+
+describe('structural-marker guard on propagation (SR-OOS-2 D8)', () => {
+  const Database = require('better-sqlite3');
+
+  function freshDb() {
+    const d = new Database(':memory:');
+    createSegmentEditsSchema(d);
+    return d;
+  }
+
+  const base = {
+    book: 'efnafraedi-2e',
+    editorId: '42',
+    editorUsername: 'tester',
+    propagatedText: 'Sýra og basi',
+    category: 'terminology',
+    note: 'Sjálfvirk fjölgun',
+  };
+
+  it('skips an occurrence whose currentIs carries a link the propagated text drops', () => {
+    const d = freshDb();
+    const occurrences = [
+      // baseline carries a markdown link; propagatedText ('Sýra og basi') omits it → blocked.
+      {
+        chapter: 1,
+        moduleId: 'm010',
+        segmentId: 'm010:para:link',
+        currentIs: 'Sjá [hlekk](http://example.com) hér.',
+      },
+      // no structural markers, differs from propagatedText → still eligible.
+      { chapter: 1, moduleId: 'm011', segmentId: 'm011:para:plain', currentIs: '' },
+    ];
+    const res = svc.createPropagatedEdits(d, {
+      ...base,
+      sourceEn: 'See the link here.',
+      occurrences,
+    });
+    expect(res.created).toHaveLength(1);
+    expect(res.created[0].moduleId).toBe('m011');
+    expect(res.skipped).toHaveLength(1);
+    expect(res.skipped[0]).toEqual({
+      moduleId: 'm010',
+      segmentId: 'm010:para:link',
+      reason: 'structure_blocked',
+    });
+
+    const blockedRow = d.prepare(`SELECT * FROM segment_edits WHERE module_id = 'm010'`).get();
+    expect(blockedRow).toBeUndefined();
+    const createdRow = d.prepare(`SELECT * FROM segment_edits WHERE module_id = 'm011'`).get();
+    expect(createdRow.edited_content).toBe('Sýra og basi');
+  });
+
+  it('propagates normally when baselines are marker-compatible', () => {
+    const d = freshDb();
+    const occurrences = [{ chapter: 1, moduleId: 'm012', segmentId: 'm012:para:g', currentIs: '' }];
+    const res = svc.createPropagatedEdits(d, {
+      ...base,
+      sourceEn: 'Acid and base.',
+      occurrences,
+    });
+    expect(res.created).toHaveLength(1);
+    expect(res.skipped).toHaveLength(0);
+
+    const row = d.prepare(`SELECT * FROM segment_edits WHERE module_id = 'm012'`).get();
+    expect(row.edited_content).toBe('Sýra og basi');
+    expect(row.status).toBe('pending');
+  });
+});

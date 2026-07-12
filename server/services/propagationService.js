@@ -10,6 +10,7 @@
 const Database = require('better-sqlite3');
 const segmentParser = require('./segmentParser');
 const concordance = require('./concordanceService');
+const segmentValidation = require('../public/js/segment-validation');
 const resolveDbPath = require('../lib/dbPath');
 
 const DB_PATH = resolveDbPath();
@@ -62,7 +63,7 @@ function classifyOccurrence(propagatedText, occ) {
  */
 function createPropagatedEdits(
   conn,
-  { book, editorId, editorUsername, propagatedText, category, note, occurrences }
+  { book, editorId, editorUsername, propagatedText, category, note, occurrences, sourceEn }
 ) {
   const findEdit = conn.prepare(
     `SELECT id, edited_content, status, editor_id FROM segment_edits
@@ -94,6 +95,25 @@ function createPropagatedEdits(
       if (verdict !== 'eligible') {
         skipped.push({ moduleId: occ.moduleId, segmentId: occ.segmentId, reason: verdict });
         continue;
+      }
+      // SR-OOS-2: propagated content is validated per-occurrence against the
+      // occurrence's own baseline (currentIs) + the source EN. Blocked
+      // occurrences are skipped (propagation's existing verdict model), not
+      // fatal — other occurrences still propagate.
+      if (sourceEn !== undefined) {
+        const structure = segmentValidation.validateStructure(
+          sourceEn,
+          occ.currentIs,
+          propagatedText
+        );
+        if (structure.blocked) {
+          skipped.push({
+            moduleId: occ.moduleId,
+            segmentId: occ.segmentId,
+            reason: 'structure_blocked',
+          });
+          continue;
+        }
       }
       // Eligible because of an own pending edit → supersede it in place rather
       // than inserting a duplicate pending row (keeps the one-row-per-(seg,editor)

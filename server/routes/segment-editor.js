@@ -957,11 +957,10 @@ router.post(
           error: `Invalid category. Must be one of: ${VALID_CATEGORIES.join(', ')}`,
         });
       }
-      const enNorm = concordance.normalizeEn(
-        segmentParser
-          .loadModuleForEditing(req.params.book, req.chapterNum, req.params.moduleId)
-          .segments.find((s) => s.segmentId === segmentId)?.en || ''
-      );
+      const sourceSeg = segmentParser
+        .loadModuleForEditing(req.params.book, req.chapterNum, req.params.moduleId)
+        .segments.find((s) => s.segmentId === segmentId);
+      const enNorm = concordance.normalizeEn(sourceSeg?.en || '');
       if (!enNorm) return res.status(404).json({ error: 'segment not found' });
       const occurrences = propagation.findOccurrences(req.params.book, enNorm, {
         excludeModuleId: req.params.moduleId,
@@ -975,6 +974,7 @@ router.post(
         category,
         note: note || 'Sjálfvirk fjölgun',
         occurrences,
+        sourceEn: sourceSeg?.en,
       });
       res.json(result);
     } catch (err) {
