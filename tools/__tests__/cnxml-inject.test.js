@@ -1531,4 +1531,98 @@ describe('reverseInlineMarkup B4 id-anchored markers', () => {
       /Marker residue/
     );
   });
+
+  it('corrupted id (charset-invalid) fails LOUD, not into visible text', () => {
+    // ' bad id' contains spaces → with-id regex rejects; bare fallback must NOT swallow it
+    const result = reverseInlineMarkup('[[term:hugtak|bad id!]]', {});
+    expect(result).toContain('[[term:'); // marker survives...
+    expect(() => assertNoMarkerResidue(result, 'm99999')).toThrow(/Marker residue/); // ...and the gate catches it
+  });
+
+  it('legitimate pipe-free bare markers still convert', () => {
+    const result = reverseInlineMarkup('[[term:seigja]] og [[fn:nóta]]', {});
+    expect(result).toContain('<term>seigja</term>');
+    expect(result).toContain('<footnote>nóta</footnote>');
+  });
+});
+
+// ─── B4: reverseInlineMarkup positional-restore hardening (legacy path) ────
+
+describe('reverseInlineMarkup positional-restore hardening (legacy path)', () => {
+  const emptyEq = {};
+
+  it('HARDENING: marker-count mismatch warns and attaches NOTHING (terms)', () => {
+    // Sidecar expects 3 terms; the API dropped one marker → 2 survive.
+    // Old behavior: term-1/term-2 attached positionally (third lost, and a
+    // NON-last drop would mis-id downstream terms). New: no attrs at all.
+    const inlineAttrs = {
+      terms: [{ id: 'term-1' }, { id: 'term-2' }, { id: 'term-3' }],
+    };
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const mismatches = [];
+    const result = reverseInlineMarkup(
+      '{{term}}eitt{{/term}} og {{term}}tvö{{/term}}',
+      emptyEq,
+      [],
+      [],
+      inlineAttrs,
+      null,
+      null,
+      { segmentId: 'm1:para:x', attrMismatches: mismatches }
+    );
+    expect(result).toContain('<term>eitt</term>');
+    expect(result).toContain('<term>tvö</term>');
+    expect(result).not.toContain('term-1'); // missing attrs beat wrong attrs
+    expect(mismatches).toEqual([
+      { segmentId: 'm1:para:x', family: 'terms', expected: 3, found: 2 },
+    ]);
+    expect(warnSpy).toHaveBeenCalled();
+    warnSpy.mockRestore();
+  });
+
+  it('matched counts attach exactly as before (zero behavior change)', () => {
+    const inlineAttrs = { terms: [{ id: 'term-1' }, { class: 'no-emphasis', id: 'term-2' }] };
+    const result = reverseInlineMarkup(
+      '{{term}}eitt{{/term}} og {{term}}tvö{{/term}}',
+      emptyEq,
+      [],
+      [],
+      inlineAttrs
+    );
+    expect(result).toContain('<term id="term-1">eitt</term>');
+    expect(result).toContain('<term class="no-emphasis" id="term-2">tvö</term>');
+  });
+
+  it('HARDENING applies to footnotes', () => {
+    const inlineAttrs = { footnotes: [{ id: 'fn-1' }, { id: 'fn-2' }] };
+    const mismatches = [];
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const result = reverseInlineMarkup(
+      '{{fn}}ein{{/fn}}',
+      emptyEq,
+      [],
+      [],
+      inlineAttrs,
+      null,
+      null,
+      {
+        segmentId: 's',
+        attrMismatches: mismatches,
+      }
+    );
+    expect(result).toContain('<footnote>ein</footnote>');
+    expect(result).not.toContain('fn-1');
+    expect(mismatches[0]).toMatchObject({ family: 'footnotes', expected: 2, found: 1 });
+    warnSpy.mockRestore();
+  });
+
+  it('HARDENING applies to {= class-emphasis (converts without class on mismatch)', () => {
+    const inlineAttrs = { emphases: [{ class: 'emphasis-one' }, { class: 'emphasis-one' }] };
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const result = reverseInlineMarkup('{=eitt=}', emptyEq, [], [], inlineAttrs);
+    expect(result).toContain('<emphasis>eitt</emphasis>'); // converted, no class, no residue
+    expect(result).not.toContain('emphasis-one');
+    expect(warnSpy).toHaveBeenCalled();
+    warnSpy.mockRestore();
+  });
 });

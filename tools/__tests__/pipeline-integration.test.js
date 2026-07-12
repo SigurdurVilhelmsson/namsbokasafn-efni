@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll, vi } from 'vitest';
 import { execSync } from 'child_process';
 import { readFileSync, existsSync, cpSync, rmSync, mkdtempSync } from 'fs';
 import { join, sep } from 'path';
@@ -1173,14 +1173,22 @@ describe('reverseInlineMarkup XML escaping', () => {
     expect(result).toContain('<footnote>note</footnote>');
   });
 
-  it('should handle more terms than attrs entries (extra terms get no attrs)', () => {
+  it('should attach NO term attrs when sidecar count does not match (B4 hardening)', () => {
+    // B4 hardened reverseInlineMarkup: a count mismatch (1 sidecar entry vs 3
+    // terms in text) used to attach the first entry positionally and drop the
+    // rest silently. That's exactly the mis-assignment risk the hardening
+    // closes — on any mismatch, attach NOTHING rather than guess.
     const attrs = {
       terms: [{ class: 'no-emphasis' }],
     };
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
     const result = reverseInlineMarkup('__A__ and __B__ and __C__', {}, [], [], attrs);
-    expect(result).toContain('<term class="no-emphasis">A</term>');
+    expect(result).toContain('<term>A</term>');
     expect(result).toContain('<term>B</term>');
     expect(result).toContain('<term>C</term>');
+    expect(result).not.toContain('no-emphasis');
+    expect(warnSpy).toHaveBeenCalled();
+    warnSpy.mockRestore();
   });
 
   // --- Space count preservation ---

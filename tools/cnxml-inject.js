@@ -1170,7 +1170,8 @@ function reverseInlineMarkup(
   inlineTables = [],
   inlineAttrs = null,
   blockEquationIds = null,
-  blockMediaIds = null
+  blockMediaIds = null,
+  context = null
 ) {
   let result = text;
 
@@ -1186,6 +1187,20 @@ function reverseInlineMarkup(
   // unsafe (an attr-less [[term:text]] must not consume a positional slot).
   // One extraction produced the segment, so formats never mix within it.
   const hasIdAnchoredMarkers = /\[\[(?:term|fn):/.test(text);
+
+  // B4 hardening: report a positional count mismatch loudly and let the caller
+  // aggregate it. Missing attrs beat silently-wrong attrs.
+  const reportAttrMismatch = (family, expected, found) => {
+    const segLabel = context && context.segmentId ? ` [${context.segmentId}]` : '';
+    console.warn(
+      `  Warning: inline-attrs count mismatch${segLabel} — ${family}: sidecar has ${expected}, ` +
+        `text has ${found}. Attaching NO ${family} attributes for this segment ` +
+        `(a dropped/duplicated marker would mis-assign ids positionally).`
+    );
+    if (context && Array.isArray(context.attrMismatches)) {
+      context.attrMismatches.push({ segmentId: context.segmentId, family, expected, found });
+    }
+  };
 
   // Remove backslash escapes from MT (e.g., \[\[MATH:1\]\] → [[MATH:1]])
   result = result.replace(/\\\[/g, '[');
@@ -1354,18 +1369,26 @@ function reverseInlineMarkup(
     result = result.replace(/\*([^*]+)\*/g, '<emphasis effect="italics">$1</emphasis>');
   }
 
-  // Convert class-only emphasis markers {=text=} back to CNXML
-  // Restore class from sidecar by occurrence index
+  // Convert class-only emphasis markers {=text=} back to CNXML.
+  // Restore class from sidecar by occurrence index — HARDENED: on a count
+  // mismatch, convert without class instead of mis-assigning positionally.
   if (inlineAttrs && inlineAttrs.emphases) {
-    let emphasisIndex = 0;
-    result = result.replace(/\{=(.+?)=\}/g, (match, inner) => {
-      const attrs = inlineAttrs.emphases[emphasisIndex] || null;
-      emphasisIndex++;
-      if (attrs && attrs.class) {
-        return `<emphasis class="${attrs.class}">${inner}</emphasis>`;
-      }
-      return `<emphasis>${inner}</emphasis>`;
-    });
+    const found = (result.match(/\{=(.+?)=\}/g) || []).length;
+    const expected = inlineAttrs.emphases.length;
+    if (found !== expected) {
+      reportAttrMismatch('emphases', expected, found);
+      result = result.replace(/\{=(.+?)=\}/g, '<emphasis>$1</emphasis>');
+    } else {
+      let emphasisIndex = 0;
+      result = result.replace(/\{=(.+?)=\}/g, (match, inner) => {
+        const attrs = inlineAttrs.emphases[emphasisIndex] || null;
+        emphasisIndex++;
+        if (attrs && attrs.class) {
+          return `<emphasis class="${attrs.class}">${inner}</emphasis>`;
+        }
+        return `<emphasis>${inner}</emphasis>`;
+      });
+    }
   } else {
     // No sidecar — convert to plain emphasis
     result = result.replace(/\{=(.+?)=\}/g, '<emphasis>$1</emphasis>');
@@ -1495,13 +1518,18 @@ function reverseInlineMarkup(
       return `<term${classAttr} id="${id}">${inner}</term>`;
     }
   );
-  result = result.replace(/\[\[term:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g, '<term>$1</term>');
+  // B4 hardening: the bare (no-payload) fallback content group must ALSO
+  // exclude `|` — otherwise a marker whose id failed the charset check above
+  // (e.g. a corrupted/space-containing id) would fall through here and the
+  // pipe + mangled id would be silently swallowed into visible text instead
+  // of surviving for assertNoMarkerResidue to catch.
+  result = result.replace(/\[\[term:((?:(?!\[\[|\]\])[^|])+)\]\]/g, '<term>$1</term>');
 
   result = result.replace(
     /\[\[fn:((?:(?!\[\[|\]\])[\s\S])+)\|([A-Za-z0-9_.:-]+)\]\]/g,
     '<footnote id="$2">$1</footnote>'
   );
-  result = result.replace(/\[\[fn:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g, '<footnote>$1</footnote>');
+  result = result.replace(/\[\[fn:((?:(?!\[\[|\]\])[^|])+)\]\]/g, '<footnote>$1</footnote>');
 
   result = result.replace(
     /\[\[u:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g,
@@ -1516,31 +1544,43 @@ function reverseInlineMarkup(
   if (inlineAttrs && !hasIdAnchoredMarkers) {
     // Restore term attributes by occurrence index
     if (inlineAttrs.terms) {
-      let termIndex = 0;
-      result = result.replace(/<term>/g, () => {
-        const attrs = inlineAttrs.terms[termIndex] || null;
-        termIndex++;
-        if (attrs) {
-          const parts = ['<term'];
-          if (attrs.class) parts.push(` class="${attrs.class}"`);
-          if (attrs.id) parts.push(` id="${attrs.id}"`);
-          parts.push('>');
-          return parts.join('');
-        }
-        return '<term>';
-      });
+      const found = (result.match(/<term>/g) || []).length;
+      const expected = inlineAttrs.terms.length;
+      if (found !== expected) {
+        reportAttrMismatch('terms', expected, found);
+      } else {
+        let termIndex = 0;
+        result = result.replace(/<term>/g, () => {
+          const attrs = inlineAttrs.terms[termIndex] || null;
+          termIndex++;
+          if (attrs) {
+            const parts = ['<term'];
+            if (attrs.class) parts.push(` class="${attrs.class}"`);
+            if (attrs.id) parts.push(` id="${attrs.id}"`);
+            parts.push('>');
+            return parts.join('');
+          }
+          return '<term>';
+        });
+      }
     }
     // Restore footnote attributes by occurrence index
     if (inlineAttrs.footnotes) {
-      let footnoteIndex = 0;
-      result = result.replace(/<footnote>/g, () => {
-        const attrs = inlineAttrs.footnotes[footnoteIndex] || null;
-        footnoteIndex++;
-        if (attrs && attrs.id) {
-          return `<footnote id="${attrs.id}">`;
-        }
-        return '<footnote>';
-      });
+      const found = (result.match(/<footnote>/g) || []).length;
+      const expected = inlineAttrs.footnotes.length;
+      if (found !== expected) {
+        reportAttrMismatch('footnotes', expected, found);
+      } else {
+        let footnoteIndex = 0;
+        result = result.replace(/<footnote>/g, () => {
+          const attrs = inlineAttrs.footnotes[footnoteIndex] || null;
+          footnoteIndex++;
+          if (attrs && attrs.id) {
+            return `<footnote id="${attrs.id}">`;
+          }
+          return '<footnote>';
+        });
+      }
     }
   }
 
@@ -1729,6 +1769,7 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
     mathUnresolved: [],
     residues: [], // exact untranslated-EN (gates complete)
     residueWarnings: [], // ratio "mostly English" (non-gating)
+    attrMismatches: [], // B4: positional-restore count mismatches (terms/footnotes/emphases)
     _residueSeen: new Set(), // de-dupe segments referenced more than once
   };
 
@@ -1768,7 +1809,8 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
       structure.inlineTables || [],
       inlineAttrs[segmentId] || null,
       blockEquationIds,
-      blockMediaIds
+      blockMediaIds,
+      { segmentId, attrMismatches: stats.attrMismatches }
     );
   };
 
@@ -1955,6 +1997,7 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
     unresolvedMathPlaceholders: stats.mathUnresolved,
     residues: stats.residues.slice().sort(),
     residueWarnings: stats.residueWarnings,
+    attrMismatches: stats.attrMismatches,
     complete:
       stats.segmentsMissing.length === 0 &&
       stats.mathUnresolved.length === 0 &&
@@ -4043,6 +4086,13 @@ async function main() {
       if (result.report.residueWarnings.length > 0) {
         console.error(
           `  NOTE: ${result.report.residueWarnings.length} "mostly English" segment(s) (warn-only)`
+        );
+      }
+
+      if (result.report.attrMismatches && result.report.attrMismatches.length > 0) {
+        console.error(
+          `  WARNING: ${result.report.attrMismatches.length} inline-attr count mismatch(es) — ` +
+            `term/footnote ids NOT attached for those segments (see warnings above)`
         );
       }
 
