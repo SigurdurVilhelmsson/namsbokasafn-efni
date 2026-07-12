@@ -1178,7 +1178,14 @@ function reverseInlineMarkup(
   // API segments use {{i}}, {{b}}, {{term}}, {{fn}}, [[sub:]], [[sup:]] — so legacy
   // patterns (*text*, ~text~, ^text^) would be false positives from translated content.
   const hasApiMarkers =
-    /\{\{[ib]\}\}|\{\{[ib]:|\{\{term\}\}|\{\{fn\}\}|\[\[sub:|\[\[sup:|\[\[i:|\[\[b:/.test(text);
+    /\{\{[ib]\}\}|\{\{[ib]:|\{\{term\}\}|\{\{fn\}\}|\[\[sub:|\[\[sup:|\[\[i:|\[\[b:|\[\[term:|\[\[fn:|\[\[u:|\[\[em:/.test(
+      text
+    );
+
+  // B4: id-anchored markers make the positional attr restore unnecessary AND
+  // unsafe (an attr-less [[term:text]] must not consume a positional slot).
+  // One extraction produced the segment, so formats never mix within it.
+  const hasIdAnchoredMarkers = /\[\[(?:term|fn):/.test(text);
 
   // Remove backslash escapes from MT (e.g., \[\[MATH:1\]\] → [[MATH:1]])
   result = result.replace(/\\\[/g, '[');
@@ -1464,8 +1471,49 @@ function reverseInlineMarkup(
     '<footnote>$1</footnote>'
   );
 
+  // ── B4: id-anchored bracket markers (term/fn/u/em) ────────────────
+  // Text-first pipe like [[xref:text|id]]; the id (an XML NCName) rides in the
+  // marker so restoration is content-anchored — a dropped marker can no longer
+  // shift downstream ids. Runs AFTER link conversion + resolveBracketEmphasis,
+  // so inner markers in the text field have already resolved to XML and the
+  // content-exclusion groups below only ever see [[/]]-free text. GREEDY text
+  // + trailing id-charset constraint anchors the split on the LAST pipe
+  // (MathML restored into term text may legitimately contain |).
+  result = result.replace(
+    /\[\[term:((?:(?!\[\[|\]\])[\s\S])+)\|([A-Za-z0-9_.:-]+)\]\]/g,
+    (match, inner, id) => {
+      const entry =
+        inlineAttrs && inlineAttrs.terms ? inlineAttrs.terms.find((t) => t && t.id === id) : null;
+      if (inlineAttrs && inlineAttrs.terms && !entry) {
+        // Loud miss: either the API corrupted the id or the sidecar is stale.
+        console.warn(
+          `  Warning: [[term:…|${id}]] id not found in inline-attrs sidecar — ` +
+            `keeping the marker-carried id without class`
+        );
+      }
+      const classAttr = entry && entry.class ? ` class="${entry.class}"` : '';
+      return `<term${classAttr} id="${id}">${inner}</term>`;
+    }
+  );
+  result = result.replace(/\[\[term:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g, '<term>$1</term>');
+
+  result = result.replace(
+    /\[\[fn:((?:(?!\[\[|\]\])[\s\S])+)\|([A-Za-z0-9_.:-]+)\]\]/g,
+    '<footnote id="$2">$1</footnote>'
+  );
+  result = result.replace(/\[\[fn:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g, '<footnote>$1</footnote>');
+
+  result = result.replace(
+    /\[\[u:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g,
+    '<emphasis effect="underline">$1</emphasis>'
+  );
+  result = result.replace(
+    /\[\[em:((?:(?!\[\[|\]\])[\s\S])+)\|([^\]|]+)\]\]/g,
+    '<emphasis class="$2">$1</emphasis>'
+  );
+
   // Restore inline attributes from sidecar metadata (term class, footnote id, etc.)
-  if (inlineAttrs) {
+  if (inlineAttrs && !hasIdAnchoredMarkers) {
     // Restore term attributes by occurrence index
     if (inlineAttrs.terms) {
       let termIndex = 0;

@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import {
   parseSegments,
   annotateInlineTerms,
@@ -1421,5 +1421,114 @@ describe('assertNoMarkerResidue — F5/F6 gate', () => {
   });
   it('throws on a surviving [[TABLE:…]] (un-carved by F4)', () => {
     expect(() => assertNoMarkerResidue('<para>[[TABLE:t1]]</para>', 'm00001')).toThrow(/TABLE:t1/);
+  });
+});
+
+// ─── B4: id-anchored bracket markers ──────────────────────────────
+
+describe('reverseInlineMarkup B4 id-anchored markers', () => {
+  const emptyEq = {};
+
+  it('converts [[term:text|id]] to <term id>', () => {
+    const result = reverseInlineMarkup('Þetta er [[term:seigja|term-00001]] hugtak', emptyEq);
+    expect(result).toContain('<term id="term-00001">seigja</term>');
+  });
+
+  it('converts [[term:text]] (no payload) to bare <term>', () => {
+    const result = reverseInlineMarkup('Þetta er [[term:seigja]] hugtak', emptyEq);
+    expect(result).toContain('<term>seigja</term>');
+  });
+
+  it('recovers class from the sidecar BY ID, not by position', () => {
+    const inlineAttrs = { terms: [{ class: 'no-emphasis', id: 'term-00006' }] };
+    const result = reverseInlineMarkup('[[term:vatn|term-00006]]', emptyEq, [], [], inlineAttrs);
+    expect(result).toContain('<term class="no-emphasis" id="term-00006">vatn</term>');
+  });
+
+  it('ANTI-CASCADE: a dropped marker does not shift downstream ids', () => {
+    // Sidecar has three terms; the middle marker was dropped by the API.
+    const inlineAttrs = {
+      terms: [{ id: 'term-1' }, { id: 'term-2' }, { id: 'term-3' }],
+    };
+    const text = '[[term:fyrsta|term-1]] og þriðja [[term:þriðja|term-3]]';
+    const result = reverseInlineMarkup(text, emptyEq, [], [], inlineAttrs);
+    expect(result).toContain('<term id="term-1">fyrsta</term>');
+    expect(result).toContain('<term id="term-3">þriðja</term>'); // NOT term-2
+    expect(result).not.toContain('term-2');
+  });
+
+  it('warns but keeps the marker-carried id when the sidecar lookup misses', () => {
+    const inlineAttrs = { terms: [{ id: 'term-1' }] };
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const result = reverseInlineMarkup('[[term:orð|term-9]]', emptyEq, [], [], inlineAttrs);
+    expect(result).toContain('<term id="term-9">orð</term>');
+    expect(warnSpy).toHaveBeenCalled();
+    warnSpy.mockRestore();
+  });
+
+  it('handles nested resolved markup inside term text', () => {
+    const result = reverseInlineMarkup('[[term:H[[sub:2]]O|t1]]', emptyEq);
+    expect(result).toContain('<term id="t1">H<sub>2</sub>O</term>');
+  });
+
+  it('anchors the id on the LAST pipe (pipe inside text survives)', () => {
+    const result = reverseInlineMarkup('[[term:a|b vensl|term-7]]', emptyEq);
+    expect(result).toContain('<term id="term-7">a|b vensl</term>');
+  });
+
+  it('converts [[fn:text|id]] to <footnote id>', () => {
+    const result = reverseInlineMarkup('Texti [[fn:athugasemd|fs-idp123]] hér', emptyEq);
+    expect(result).toContain('<footnote id="fs-idp123">athugasemd</footnote>');
+  });
+
+  it('converts [[fn:text]] to bare <footnote>', () => {
+    const result = reverseInlineMarkup('Texti [[fn:athugasemd]] hér', emptyEq);
+    expect(result).toContain('<footnote>athugasemd</footnote>');
+  });
+
+  it('footnote text containing a resolved xref converts cleanly', () => {
+    const result = reverseInlineMarkup('[[fn:Sjá [[xref:Mynd 5|CNX_Fig]] hér|fs-id1]]', emptyEq);
+    expect(result).toContain(
+      '<footnote id="fs-id1">Sjá <link target-id="CNX_Fig">Mynd 5</link> hér</footnote>'
+    );
+  });
+
+  it('converts [[u:text]] to underline emphasis', () => {
+    const result = reverseInlineMarkup('[[u:lykilatriði]]', emptyEq);
+    expect(result).toContain('<emphasis effect="underline">lykilatriði</emphasis>');
+  });
+
+  it('converts [[em:text|class]] with the marker-carried class (RC3)', () => {
+    const result = reverseInlineMarkup('[[em:R—O—R|emphasis-one]]', emptyEq);
+    expect(result).toContain('<emphasis class="emphasis-one">R—O—R</emphasis>');
+  });
+
+  it('new-format segment SKIPS the positional attr block entirely', () => {
+    // Sidecar entries exist, but the segment is new-format: the attr-less term
+    // must NOT consume a positional slot (no id attached to it).
+    const inlineAttrs = { terms: [{ id: 'term-1' }, null] };
+    const text = '[[term:fyrsta|term-1]] og [[term:annað]]';
+    const result = reverseInlineMarkup(text, emptyEq, [], [], inlineAttrs);
+    expect(result).toContain('<term id="term-1">fyrsta</term>');
+    expect(result).toContain('<term>annað</term>');
+  });
+
+  it('legacy {{term}} segments still use the positional path (unchanged)', () => {
+    const inlineAttrs = { terms: [{ id: 'term-1' }] };
+    const result = reverseInlineMarkup('{{term}}seigja{{/term}}', emptyEq, [], [], inlineAttrs);
+    expect(result).toContain('<term id="term-1">seigja</term>');
+  });
+
+  it('hasApiMarkers recognizes the new types (no legacy false positives)', () => {
+    // A bracket-era segment containing a literal *asterisk* phrase must not
+    // get legacy markdown conversion applied.
+    const result = reverseInlineMarkup('[[term:orð|t1]] og *stjarna*', emptyEq);
+    expect(result).not.toContain('<emphasis effect="italics">stjarna</emphasis>');
+  });
+
+  it('assertNoMarkerResidue hard-fails an unconverted [[term: marker', () => {
+    expect(() => assertNoMarkerResidue('<para>[[term:orð|t1]]</para>', 'm99999')).toThrow(
+      /Marker residue/
+    );
   });
 });
