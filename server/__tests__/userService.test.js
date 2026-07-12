@@ -4,7 +4,7 @@
  * Uses in-memory SQLite via _setTestDb to avoid touching the real database.
  */
 
-import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll, beforeEach, afterEach } from 'vitest';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
@@ -412,5 +412,54 @@ describe('chapter assignments', () => {
     userService.assignChapter(id, 'efnafraedi-2e', 3, 'admin');
     const result = userService.hasChapterAccess(id, 'efnafraedi-2e', 5);
     expect(result).toBe(false);
+  });
+});
+
+// ────────────────────────────────────────────────────────────────────
+// Read-side no-such-table swallows are gone (B1-F8)
+// ────────────────────────────────────────────────────────────────────
+
+describe('read-side no-such-table swallows are gone (B1-F8)', () => {
+  // Each case DROPs a sibling table while `users` still exists. The shared
+  // `db`/beforeEach above only DELETEs rows (it doesn't recreate schema), so
+  // dropping a table there would leak into every later test in the file.
+  // Run this block against its own disposable in-memory DB instead, and
+  // restore the shared one afterward.
+  let isolatedDb;
+
+  beforeEach(() => {
+    isolatedDb = new Database(':memory:');
+    isolatedDb.pragma('foreign_keys = ON');
+    isolatedDb.exec(SCHEMA);
+    userService._setTestDb(isolatedDb);
+  });
+
+  afterEach(() => {
+    userService._setTestDb(db);
+    isolatedDb.close();
+  });
+
+  // In each case `users` exists (isUserTableReady() → true) but a sibling
+  // table was dropped — post-#212 that is a corrupted DB, not bootstrap,
+  // and must fail loud instead of returning a plausible [].
+
+  it('getBookAssignments throws when user_chapter_assignments is missing', () => {
+    isolatedDb.exec('DROP TABLE user_chapter_assignments');
+    expect(() => userService.getBookAssignments('efnafraedi-2e')).toThrow(/no such table/);
+  });
+
+  it('getChapterAssignments throws when user_chapter_assignments is missing', () => {
+    isolatedDb.exec('DROP TABLE user_chapter_assignments');
+    expect(() => userService.getChapterAssignments(1, 'efnafraedi-2e')).toThrow(/no such table/);
+  });
+
+  it('getAllChapterAssignments throws when user_chapter_assignments is missing', () => {
+    isolatedDb.exec('DROP TABLE user_chapter_assignments');
+    expect(() => userService.getAllChapterAssignments(1)).toThrow(/no such table/);
+  });
+
+  it('getEditorsForBook throws when user_book_access is missing', () => {
+    isolatedDb.exec('DROP TABLE user_book_access');
+    expect(() => userService.getEditorsForBook('efnafraedi-2e')).toThrow(/no such table/);
   });
 });

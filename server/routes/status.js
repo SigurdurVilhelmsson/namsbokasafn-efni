@@ -164,8 +164,9 @@ router.get('/dashboard', requireAuth, async (req, res) => {
         for (const a of assignments) {
           assignmentMap[a.chapter] = a;
         }
-      } catch {
+      } catch (err) {
         // Assignment data unavailable — treat all as unassigned
+        log.error({ err, book }, 'Failed to load chapter assignments for dashboard');
       }
 
       for (const chapterDir of chapterDirs) {

@@ -674,17 +674,11 @@ function getChapterAssignments(userId, bookSlug) {
   if (!isUserTableReady()) return [];
 
   const db = getDb();
-  try {
-    return db
-      .prepare(
-        'SELECT * FROM user_chapter_assignments WHERE user_id = ? AND book_slug = ? ORDER BY chapter'
-      )
-      .all(userId, bookSlug);
-  } catch (err) {
-    if (err.message && err.message.includes('no such table')) return [];
-    throw err;
-  } finally {
-  }
+  return db
+    .prepare(
+      'SELECT * FROM user_chapter_assignments WHERE user_id = ? AND book_slug = ? ORDER BY chapter'
+    )
+    .all(userId, bookSlug);
 }
 
 /**
@@ -694,17 +688,9 @@ function getAllChapterAssignments(userId) {
   if (!isUserTableReady()) return [];
 
   const db = getDb();
-  try {
-    return db
-      .prepare(
-        'SELECT * FROM user_chapter_assignments WHERE user_id = ? ORDER BY book_slug, chapter'
-      )
-      .all(userId);
-  } catch (err) {
-    if (err.message && err.message.includes('no such table')) return [];
-    throw err;
-  } finally {
-  }
+  return db
+    .prepare('SELECT * FROM user_chapter_assignments WHERE user_id = ? ORDER BY book_slug, chapter')
+    .all(userId);
 }
 
 /**
@@ -715,21 +701,16 @@ function getBookAssignments(bookSlug) {
   if (!isUserTableReady()) return [];
 
   const db = getDb();
-  try {
-    return db
-      .prepare(
-        `SELECT a.chapter, a.assigned_by, a.assigned_at,
-                u.id as user_id, u.display_name as user_name, u.role
-         FROM user_chapter_assignments a
-         JOIN users u ON a.user_id = u.id
-         WHERE a.book_slug = ?
-         ORDER BY a.chapter`
-      )
-      .all(bookSlug);
-  } catch (err) {
-    if (err.message && err.message.includes('no such table')) return [];
-    throw err;
-  }
+  return db
+    .prepare(
+      `SELECT a.chapter, a.assigned_by, a.assigned_at,
+              u.id as user_id, u.display_name as user_name, u.role
+       FROM user_chapter_assignments a
+       JOIN users u ON a.user_id = u.id
+       WHERE a.book_slug = ?
+       ORDER BY a.chapter`
+    )
+    .all(bookSlug);
 }
 
 /**
@@ -741,35 +722,30 @@ function getEditorsForBook(bookSlug) {
   if (!isUserTableReady()) return [];
 
   const db = getDb();
-  try {
-    const bookAccessCount = db
-      .prepare('SELECT COUNT(*) as cnt FROM user_book_access WHERE book_slug = ?')
-      .get(bookSlug);
+  const bookAccessCount = db
+    .prepare('SELECT COUNT(*) as cnt FROM user_book_access WHERE book_slug = ?')
+    .get(bookSlug);
 
-    if (bookAccessCount && bookAccessCount.cnt > 0) {
-      return db
-        .prepare(
-          `SELECT u.id, u.display_name as name, u.role
-           FROM users u
-           JOIN user_book_access ba ON u.id = ba.user_id AND ba.book_slug = ?
-           WHERE u.is_active = 1 AND u.role IN ('editor', 'head-editor', 'admin')
-           ORDER BY u.display_name`
-        )
-        .all(bookSlug);
-    }
-
+  if (bookAccessCount && bookAccessCount.cnt > 0) {
     return db
       .prepare(
-        `SELECT id, display_name as name, role
-         FROM users
-         WHERE is_active = 1 AND role IN ('editor', 'head-editor', 'admin')
-         ORDER BY display_name`
+        `SELECT u.id, u.display_name as name, u.role
+         FROM users u
+         JOIN user_book_access ba ON u.id = ba.user_id AND ba.book_slug = ?
+         WHERE u.is_active = 1 AND u.role IN ('editor', 'head-editor', 'admin')
+         ORDER BY u.display_name`
       )
-      .all();
-  } catch (err) {
-    if (err.message && err.message.includes('no such table')) return [];
-    throw err;
+      .all(bookSlug);
   }
+
+  return db
+    .prepare(
+      `SELECT id, display_name as name, role
+       FROM users
+       WHERE is_active = 1 AND role IN ('editor', 'head-editor', 'admin')
+       ORDER BY display_name`
+    )
+    .all();
 }
 
 module.exports = {

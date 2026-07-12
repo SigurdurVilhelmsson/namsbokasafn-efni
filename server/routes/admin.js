@@ -1114,7 +1114,7 @@ router.delete('/assignments/:book/:chapter', requireAuth, requireHeadEditor('boo
         description: `Unassigned chapter ${chapterNum}`,
       });
     }
-    res.json({ success: true });
+    res.json({ success: true, removed: !!current });
   } catch (err) {
     log.error({ err }, 'Unassign chapter error');
     res.status(500).json({ error: err.message });
