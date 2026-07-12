@@ -72,7 +72,11 @@ function getStatusDataFromDb(bookSlug, chapterNum) {
       title: metadata.title || metadata.titleIs || metadata.titleEn || null,
       status: statusObj,
     };
-  } catch {
+  } catch (err) {
+    log.warn(
+      { err, bookSlug, chapterNum },
+      'Pipeline status DB read failed; serving cached status.json'
+    );
     // Fallback: read status.json directly if DB is unavailable
     const chDir = chapterNum === -1 ? 'appendices' : `ch${String(chapterNum).padStart(2, '0')}`;
     const statusPath = path.join(PROJECT_ROOT, 'books', bookSlug, 'chapters', chDir, 'status.json');
