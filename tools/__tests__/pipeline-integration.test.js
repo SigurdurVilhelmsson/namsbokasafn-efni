@@ -1255,17 +1255,17 @@ describe('inline-attrs extraction', () => {
     expect(segments).toContain('m68674#');
   });
 
-  it('should extract ++underline++ markers', () => {
+  it('should extract [[u:text]] underline markers (B4, replaces ++text++)', () => {
     run(`node ${join(TOOLS, 'cnxml-extract.js')} --book efnafraedi-2e --chapter 1 --module m68664`);
     const segments = readFileSync(
       join(BOOKS, '02-for-mt', 'ch01', 'm68664-segments.en.md'),
       'utf8'
     );
     // m68664 has emphasis effect="underline" elements
-    expect(segments).toContain('++');
+    expect(segments).toContain('[[u:');
   });
 
-  it('should extract {=emphasis=} markers for class-only emphasis', () => {
+  it('should extract [[em:text|class]] markers for class-only emphasis (B4, replaces {=text=})', () => {
     run(
       `node ${join(TOOLS, 'cnxml-extract.js')} --book efnafraedi-2e --chapter appendices --module m68866`
     );
@@ -1274,8 +1274,8 @@ describe('inline-attrs extraction', () => {
       'utf8'
     );
     // m68866 has <emphasis class="emphasis-one"> elements (ionizable H atoms)
-    expect(segments).toContain('{=');
-    expect(segments).toContain('=}');
+    expect(segments).toContain('[[em:');
+    expect(segments).toContain('|emphasis-one]]');
   });
 
   it('should preserve emphasis class="emphasis-one" through extract+inject round-trip', () => {

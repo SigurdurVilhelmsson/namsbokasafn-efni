@@ -303,17 +303,18 @@ function extractInlineText(
     (match, effect, inner) => {
       if (effect === 'italics') return `[[i:${inner}]]`;
       if (effect === 'bold') return `[[b:${inner}]]`;
-      if (effect === 'underline') return `++${inner}++`;
+      if (effect === 'underline') return `[[u:${inner}]]`;
       return inner;
     }
   );
   // Handle emphasis with class= but no effect= (e.g., <emphasis class="emphasis-one">)
-  // Uses {{text}} marker and stores class in sidecar for restoration
+  // B4/RC3: [[em:text|class]] carries the class in the marker (API-survivable);
+  // sidecar collection is kept unchanged as the legacy-content fallback.
   text = text.replace(/<emphasis([^>]*)>([\s\S]*?)<\/emphasis>/g, (match, attrs, inner) => {
     const parsedAttrs = parseAttributes(attrs);
     if (parsedAttrs.class) {
       collectedEmphasisAttrs.push({ class: parsedAttrs.class });
-      return `{=${inner}=}`;
+      return `[[em:${inner}|${parsedAttrs.class}]]`;
     }
     // No class, no effect — default to italic (common in CNXML for bare emphasis)
     return `[[i:${inner}]]`;
@@ -331,7 +332,11 @@ function extractInlineText(
     } else {
       collectedTermAttrs.push(null);
     }
-    return `{{term}}${stripTags(inner).trim()}{{/term}}`;
+    const termText = stripTags(inner).trim();
+    // B4: id rides IN the marker (text-first pipe, like [[xref:text|id]]) so
+    // injection restores ids content-anchored, not positionally. class (always
+    // co-occurring with id in the corpus) stays in the sidecar, recovered by id.
+    return parsedAttrs.id ? `[[term:${termText}|${parsedAttrs.id}]]` : `[[term:${termText}]]`;
   });
 
   // Handle links using API-safe bracket format [[type:content]].
@@ -398,7 +403,8 @@ function extractInlineText(
     } else {
       collectedFootnoteAttrs.push(null);
     }
-    return ` {{fn}}${stripTags(inner).trim()}{{/fn}}`;
+    const fnText = stripTags(inner).trim();
+    return parsedAttrs.id ? ` [[fn:${fnText}|${parsedAttrs.id}]]` : ` [[fn:${fnText}]]`;
   });
 
   // Strip remaining tags
