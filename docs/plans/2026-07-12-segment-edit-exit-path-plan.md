@@ -34,7 +34,7 @@
 
 **Interfaces:**
 - Consumes: nothing from other tasks. Live schema facts (verified): 008 columns + `applied_at DATETIME` (009) + `review_id INTEGER REFERENCES module_reviews(id)` (038); indexes `idx_segment_edits_module(book, module_id)`, `_status(status)`, `_editor(editor_id)`, `_segment(module_id, segment_id)` (008), `_applied(module_id, status, applied_at)` (009).
-- Produces: the canonical post-039 schema — the exact DDL Task 2's helper duplicates. New partial unique index name: `idx_segment_edits_one_pending`. New CHECK: `status IN ('pending','approved','rejected','discuss','superseded')`.
+- Produces: the canonical post-039 schema — the exact DDL Task 2's helper duplicates. New partial unique index name: `idx_segment_edits_one_pending`. New CHECK: `status IN ('pending','approved','rejected','discuss','superseded')`. **Review amendment (T1 task review):** the rebuild must ALSO recreate `idx_segment_edits_review ON segment_edits(review_id)` (created by migration 038 — a `DROP TABLE` takes its indexes with it); include a `DROP TABLE IF EXISTS segment_edits_new` self-heal so a mid-rebuild crash cannot strand an orphan that the runner's `already exists` swallow would mask; and the migration test must exercise the copy against a POPULATED old-schema table (mirror `migration038.test.js`'s populate-then-migrate structure).
 
 - [ ] **Step 1: Write the failing test**
 
@@ -353,6 +353,7 @@ function createSegmentEditsSchema(db) {
     CREATE INDEX idx_segment_edits_editor ON segment_edits(editor_id);
     CREATE INDEX idx_segment_edits_segment ON segment_edits(module_id, segment_id);
     CREATE INDEX idx_segment_edits_applied ON segment_edits(module_id, status, applied_at);
+    CREATE INDEX idx_segment_edits_review ON segment_edits(review_id);
   `);
 }
 
