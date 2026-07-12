@@ -88,6 +88,23 @@
       });
     }
 
+    // Hard block: a literal segment-file marker inside the edited content
+    // (LEAD-APPROVED design amendment). Content carrying a real marker
+    // passes every other guard today and corrupts segment-boundary parsing
+    // on apply — parseSegments splits on this exact token, and an injected
+    // marker can even shadow a different segment via last-wins duplicate
+    // handling. Checks both marker dialects' openings: the canonical
+    // `<!-- SEG:` (tools/lib/seg-markers.cjs SEG_MARKER) and the legacy
+    // `{{SEG:` mustache form (segmentParser.parseSegments normalizes it to
+    // the HTML-comment form before parsing) — either would still corrupt
+    // boundaries if it reached a segment file.
+    if (edited.indexOf('<!-- SEG:') !== -1) {
+      blocked.push({ code: 'seg-marker-injected', params: { marker: '<!-- SEG:' } });
+    }
+    if (edited.indexOf('{{SEG:') !== -1) {
+      blocked.push({ code: 'seg-marker-injected', params: { marker: '{{SEG:' } });
+    }
+
     // Warning: unmatched formatting pairs (odd count)
     const pairs = [
       { marker: '**', re: /\*\*/g },

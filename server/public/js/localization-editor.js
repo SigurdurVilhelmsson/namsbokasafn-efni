@@ -910,6 +910,9 @@
       'space-removed': function (p) {
         return UI.validation.spaceRemoved(p.from, p.to);
       },
+      'seg-marker-injected': function (p) {
+        return UI.validation.segMarkerInjected(p.marker);
+      },
     };
     var warnMsg = {
       'unmatched-pair': function (p) {

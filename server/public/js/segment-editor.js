@@ -1041,6 +1041,7 @@
       'docref-missing': (p) => UI.validation.docRefMissing(p.ref),
       'media-missing': (p) => UI.validation.mediaMissing(p.marker),
       'space-removed': (p) => UI.validation.spaceRemoved(p.from, p.to),
+      'seg-marker-injected': (p) => UI.validation.segMarkerInjected(p.marker),
     };
     const WARN_MSG = {
       'unmatched-pair': (p) => UI.validation.unmatchedPair(PAIR_NAMES[p.marker], p.count),

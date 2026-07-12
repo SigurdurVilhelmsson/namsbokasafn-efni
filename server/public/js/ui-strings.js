@@ -301,6 +301,13 @@ const UI = {
     unmatchedSuperscript: function (count) {
       return 'Ójafn fjöldi ^ merkja (' + count + ') — vantar lokun á uppskrift?';
     },
+    segMarkerInjected: function (marker) {
+      return (
+        'Textinn inniheldur bútamerki (' +
+        marker +
+        '…) sem má ekki standa inni í bút — fjarlægðu það.'
+      );
+    },
     // Formatting pair names (used with unmatchedPair)
     pairNames: {
       bold: 'feitletrað (**)',

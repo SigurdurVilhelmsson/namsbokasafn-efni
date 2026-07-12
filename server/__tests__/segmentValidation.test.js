@@ -104,6 +104,36 @@ describe('hard blocks', () => {
   });
 });
 
+describe('seg-marker-injected: literal SEG marker in edited content (8th hard block)', () => {
+  // Content containing a literal segment marker passes every other guard
+  // today and corrupts segment boundaries on apply (parseSegments splits on
+  // this exact token; an injected marker can even shadow a different
+  // segment via last-wins duplicate handling). Checks both marker dialects'
+  // openings: the canonical `<!-- SEG:` (tools/lib/seg-markers.cjs
+  // SEG_MARKER) and the legacy `{{SEG:` mustache form
+  // (segmentParser.parseSegments normalizes it before parsing).
+  it('violating: HTML comment form (<!-- SEG:) is blocked', () => {
+    const result = validateStructure('en', 'orig', 'texti <!-- SEG:m1:para:x --> meira');
+    expect(codes(result)).toContain('seg-marker-injected');
+  });
+
+  it('violating: legacy mustache form ({{SEG:) is blocked', () => {
+    const result = validateStructure('en', 'orig', 'texti {{SEG:m1:para:x}} meira');
+    expect(codes(result)).toContain('seg-marker-injected');
+  });
+
+  it('passing: content free of both marker forms is not blocked', () => {
+    const result = validateStructure('en', 'orig', 'venjulegur texti án merkja');
+    expect(codes(result)).not.toContain('seg-marker-injected');
+  });
+
+  it('passing: identity edit where the baseline is clean passes', () => {
+    const orig = 'hreinn texti án merkja';
+    const result = validateStructure('en', orig, orig);
+    expect(result.blocked).toBeNull();
+  });
+});
+
 describe('warnings (advisory — never enforced server-side)', () => {
   it('odd ** count → unmatched-pair (bold)', () => {
     const result = validateStructure('', 'a', 'feitletrað ** stakt');
