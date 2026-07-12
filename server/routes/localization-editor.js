@@ -19,6 +19,7 @@ const router = express.Router();
 
 const log = require('../lib/logger');
 const segmentParser = require('../services/segmentParser');
+const segmentValidation = require('../public/js/segment-validation');
 const localizationEditService = require('../services/localizationEditService');
 const localizationReview = require('../services/localizationReviewService');
 const activityLog = require('../services/activityLog');
@@ -354,6 +355,24 @@ router.post(
           : targetSeg.faithful
         : '';
 
+      // SR-OOS-2 backstop (parity with the segment-editor's edValidateSegmentEdit):
+      // baseline is the FAITHFUL text (localization's source of truth), warnings
+      // are advisory-only and never enforced here (design D3/D5). Identity edits
+      // (content unchanged from what the pane currently shows) skip validation.
+      if (targetSeg && content !== previousContent) {
+        const structure = segmentValidation.validateStructure(
+          targetSeg.en,
+          targetSeg.faithful,
+          content
+        );
+        if (structure.blocked) {
+          return res.status(400).json({
+            error: 'Vistun hafnað: byggingarmerki vantar eða hafa breyst.',
+            violations: structure.blocked,
+          });
+        }
+      }
+
       // Review tier: when enforced for this book, hold the edit as pending for
       // head-editor approval instead of writing 04-localized-content/ directly.
       if (localizationReview.isReviewEnabled(req.params.book)) {
@@ -529,6 +548,32 @@ router.post(
             });
           }
         }
+      }
+
+      // SR-OOS-2 backstop: validate every changed segment against its
+      // faithful baseline; reject the whole batch on any violation — a
+      // partial apply of a structurally broken batch is worse than a clean
+      // retry (design §4).
+      const batchViolations = [];
+      for (const e of auditEdits) {
+        const segData = data.segments.find((s) => s.segmentId === e.segmentId);
+        if (!segData) continue;
+        const structure = segmentValidation.validateStructure(
+          segData.en,
+          segData.faithful,
+          e.newContent
+        );
+        if (structure.blocked) {
+          for (const v of structure.blocked) {
+            batchViolations.push({ code: v.code, params: { ...v.params, segmentId: e.segmentId } });
+          }
+        }
+      }
+      if (batchViolations.length > 0) {
+        return res.status(400).json({
+          error: 'Vistun hafnað: byggingarmerki vantar eða hafa breyst.',
+          violations: batchViolations,
+        });
       }
 
       // Review tier: when enforced, submit each changed segment for approval
