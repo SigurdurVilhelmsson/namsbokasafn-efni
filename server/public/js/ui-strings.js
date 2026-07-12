@@ -190,8 +190,22 @@ const UI = {
     propagateNone: 'Þessi texti finnst hvergi annars staðar.',
     propagateConfirm: (n) =>
       `Þessi texti birtist á ${n} öðrum stað/stöðum. Beita þýðingunni þar líka?`,
-    propagateResult: (created, skipped) =>
-      `Fjölgað á ${created} stað/staði` + (skipped ? `, sleppt ${skipped} (þegar breytt)` : ''),
+    // SR-OOS-2 FIX6c: structure_blocked skips used to fall into the generic
+    // "(þegar breytt)" bucket with every other skip reason — give them an
+    // explicit label so an editor isn't told a propagation-blocking
+    // structural marker is just "already changed".
+    propagateResult: (created, skipped, structureBlocked) => {
+      let msg = `Fjölgað á ${created} stað/staði`;
+      if (skipped) {
+        const blocked = structureBlocked || 0;
+        const other = skipped - blocked;
+        const parts = [];
+        if (blocked) parts.push(`${blocked} vegna þess að byggingarmerki hindra`);
+        if (other > 0) parts.push(`${other} þegar breytt`);
+        msg += `, sleppt ${skipped} (${parts.join(', ')})`;
+      }
+      return msg;
+    },
     propagateError: (msg) => 'Villa við fjölgun: ' + msg,
   },
 
@@ -300,6 +314,13 @@ const UI = {
     },
     unmatchedSuperscript: function (count) {
       return 'Ójafn fjöldi ^ merkja (' + count + ') — vantar lokun á uppskrift?';
+    },
+    segMarkerInjected: function (marker) {
+      return (
+        'Textinn inniheldur bútamerki (' +
+        marker +
+        '…) sem má ekki standa inni í bút — fjarlægðu það.'
+      );
     },
     // Formatting pair names (used with unmatchedPair)
     pairNames: {

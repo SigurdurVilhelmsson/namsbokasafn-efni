@@ -10,6 +10,7 @@
 const Database = require('better-sqlite3');
 const segmentParser = require('./segmentParser');
 const concordance = require('./concordanceService');
+const segmentValidation = require('../public/js/segment-validation');
 const resolveDbPath = require('../lib/dbPath');
 
 const DB_PATH = resolveDbPath();
@@ -62,8 +63,20 @@ function classifyOccurrence(propagatedText, occ) {
  */
 function createPropagatedEdits(
   conn,
-  { book, editorId, editorUsername, propagatedText, category, note, occurrences }
+  { book, editorId, editorUsername, propagatedText, category, note, occurrences, sourceEn }
 ) {
+  // SR-OOS-2 FIX4: sourceEn arms the per-occurrence structural-marker guard
+  // (D8) below. A caller silently omitting it (e.g. deleting the
+  // `sourceEn: sourceSeg?.en` line at the route call site) used to disarm
+  // the guard with the suite green — required now so that mistake fails
+  // loud instead. Pass '' explicitly when EN-rule interference is
+  // deliberately not wanted; only original-IS rules fire on an empty EN.
+  if (sourceEn === undefined) {
+    throw new Error(
+      'createPropagatedEdits: sourceEn is required — omitting it would disarm the structural guard'
+    );
+  }
+
   const findEdit = conn.prepare(
     `SELECT id, edited_content, status, editor_id FROM segment_edits
      WHERE book = ? AND module_id = ? AND segment_id = ? AND status NOT IN ('rejected', 'superseded')
@@ -93,6 +106,24 @@ function createPropagatedEdits(
       });
       if (verdict !== 'eligible') {
         skipped.push({ moduleId: occ.moduleId, segmentId: occ.segmentId, reason: verdict });
+        continue;
+      }
+      // SR-OOS-2: propagated content is validated per-occurrence against the
+      // occurrence's own baseline (currentIs) + the source EN (required —
+      // see the guard at the top of this function). Blocked occurrences are
+      // skipped (propagation's existing verdict model), not fatal — other
+      // occurrences still propagate.
+      const structure = segmentValidation.validateStructure(
+        sourceEn,
+        occ.currentIs,
+        propagatedText
+      );
+      if (structure.blocked) {
+        skipped.push({
+          moduleId: occ.moduleId,
+          segmentId: occ.segmentId,
+          reason: 'structure_blocked',
+        });
         continue;
       }
       // Eligible because of an own pending edit → supersede it in place rather
