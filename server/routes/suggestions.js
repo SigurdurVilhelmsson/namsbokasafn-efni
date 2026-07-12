@@ -13,7 +13,6 @@ const router = express.Router();
 const log = require('../lib/logger');
 const { requireAuth } = require('../middleware/requireAuth');
 const {
-  requireRole,
   requireHeadEditor,
   requireBookAccessForSection,
   ROLES,
@@ -25,7 +24,6 @@ const activityLog = require('../services/activityLog');
 // Resolve the gated section straight from the :sectionId route param.
 const bySectionParam = (req) => req.params.sectionId;
 // Resolve a suggestion :id to its owning section (null → middleware 404s).
-// eslint-disable-next-line no-unused-vars -- wired up in Task 4 (id-keyed routes)
 const bySuggestionParam = (req) => {
   const s = suggestions.getSuggestion(parseInt(req.params.id, 10));
   return s ? s.sectionId : null;
@@ -188,73 +186,89 @@ router.get(
  * POST /api/suggestions/:id/accept
  * Accept a suggestion as-is
  */
-router.post('/:id/accept', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
-  const { id } = req.params;
+router.post(
+  '/:id/accept',
+  requireAuth,
+  requireBookAccessForSection(bySuggestionParam),
+  (req, res) => {
+    const { id } = req.params;
 
-  try {
-    const suggestion = suggestions.acceptSuggestion(parseInt(id, 10), req.user.id, req.user.name);
+    try {
+      const suggestion = suggestions.acceptSuggestion(parseInt(id, 10), req.user.id, req.user.name);
 
-    activityLog.log({
-      userId: req.user.id,
-      username: req.user.username,
-      action: 'accept_suggestion',
-      entityType: 'suggestion',
-      entityId: parseInt(id, 10),
-      details: {
-        sectionId: suggestion.sectionId,
-        type: suggestion.type,
-        original: suggestion.originalText,
-      },
-    });
+      activityLog.log({
+        type: activityLog.ACTIVITY_TYPES.SUGGESTION_ACCEPTED,
+        userId: req.user.id,
+        username: req.user.username,
+        book: req.section.bookSlug,
+        chapter: String(req.section.chapterNum),
+        section: req.section.sectionNum,
+        description: `${req.user.username} samþykkti staðfæringartillögu #${id} í kafla ${req.section.sectionNum}`,
+        metadata: {
+          suggestionId: parseInt(id, 10),
+          sectionId: suggestion.sectionId,
+          suggestionType: suggestion.type,
+          original: suggestion.originalText,
+        },
+      });
 
-    res.json({
-      success: true,
-      suggestion,
-    });
-  } catch (err) {
-    log.error({ err }, 'Accept suggestion error');
-    res.status(500).json({
-      error: 'Failed to accept suggestion',
-      message: err.message,
-    });
+      res.json({
+        success: true,
+        suggestion,
+      });
+    } catch (err) {
+      log.error({ err }, 'Accept suggestion error');
+      res.status(500).json({
+        error: 'Failed to accept suggestion',
+        message: err.message,
+      });
+    }
   }
-});
+);
 
 /**
  * POST /api/suggestions/:id/reject
  * Reject a suggestion
  */
-router.post('/:id/reject', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
-  const { id } = req.params;
+router.post(
+  '/:id/reject',
+  requireAuth,
+  requireBookAccessForSection(bySuggestionParam),
+  (req, res) => {
+    const { id } = req.params;
 
-  try {
-    const suggestion = suggestions.rejectSuggestion(parseInt(id, 10), req.user.id, req.user.name);
+    try {
+      const suggestion = suggestions.rejectSuggestion(parseInt(id, 10), req.user.id, req.user.name);
 
-    activityLog.log({
-      userId: req.user.id,
-      username: req.user.username,
-      action: 'reject_suggestion',
-      entityType: 'suggestion',
-      entityId: parseInt(id, 10),
-      details: {
-        sectionId: suggestion.sectionId,
-        type: suggestion.type,
-        original: suggestion.originalText,
-      },
-    });
+      activityLog.log({
+        type: activityLog.ACTIVITY_TYPES.SUGGESTION_REJECTED,
+        userId: req.user.id,
+        username: req.user.username,
+        book: req.section.bookSlug,
+        chapter: String(req.section.chapterNum),
+        section: req.section.sectionNum,
+        description: `${req.user.username} hafnaði staðfæringartillögu #${id} í kafla ${req.section.sectionNum}`,
+        metadata: {
+          suggestionId: parseInt(id, 10),
+          sectionId: suggestion.sectionId,
+          suggestionType: suggestion.type,
+          original: suggestion.originalText,
+        },
+      });
 
-    res.json({
-      success: true,
-      suggestion,
-    });
-  } catch (err) {
-    log.error({ err }, 'Reject suggestion error');
-    res.status(500).json({
-      error: 'Failed to reject suggestion',
-      message: err.message,
-    });
+      res.json({
+        success: true,
+        suggestion,
+      });
+    } catch (err) {
+      log.error({ err }, 'Reject suggestion error');
+      res.status(500).json({
+        error: 'Failed to reject suggestion',
+        message: err.message,
+      });
+    }
   }
-});
+);
 
 /**
  * POST /api/suggestions/:id/modify
@@ -263,51 +277,59 @@ router.post('/:id/reject', requireAuth, requireRole(ROLES.EDITOR), (req, res) =>
  * Body:
  *   modifiedText: The modified suggestion text
  */
-router.post('/:id/modify', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
-  const { id } = req.params;
-  const { modifiedText } = req.body;
+router.post(
+  '/:id/modify',
+  requireAuth,
+  requireBookAccessForSection(bySuggestionParam),
+  (req, res) => {
+    const { id } = req.params;
+    const { modifiedText } = req.body;
 
-  if (!modifiedText) {
-    return res.status(400).json({
-      error: 'Missing modifiedText',
-      message: 'modifiedText is required',
-    });
+    if (!modifiedText) {
+      return res.status(400).json({
+        error: 'Missing modifiedText',
+        message: 'modifiedText is required',
+      });
+    }
+
+    try {
+      const suggestion = suggestions.modifySuggestion(
+        parseInt(id, 10),
+        modifiedText,
+        req.user.id,
+        req.user.name
+      );
+
+      activityLog.log({
+        type: activityLog.ACTIVITY_TYPES.SUGGESTION_MODIFIED,
+        userId: req.user.id,
+        username: req.user.username,
+        book: req.section.bookSlug,
+        chapter: String(req.section.chapterNum),
+        section: req.section.sectionNum,
+        description: `${req.user.username} breytti og samþykkti staðfæringartillögu #${id} í kafla ${req.section.sectionNum}`,
+        metadata: {
+          suggestionId: parseInt(id, 10),
+          sectionId: suggestion.sectionId,
+          suggestionType: suggestion.type,
+          original: suggestion.originalText,
+          modified: modifiedText,
+        },
+      });
+
+      res.json({
+        success: true,
+        suggestion,
+      });
+    } catch (err) {
+      log.error({ err }, 'Modify suggestion error');
+      res.status(500).json({
+        error: 'Failed to modify suggestion',
+        message: err.message,
+      });
+    }
   }
-
-  try {
-    const suggestion = suggestions.modifySuggestion(
-      parseInt(id, 10),
-      modifiedText,
-      req.user.id,
-      req.user.name
-    );
-
-    activityLog.log({
-      userId: req.user.id,
-      username: req.user.username,
-      action: 'modify_suggestion',
-      entityType: 'suggestion',
-      entityId: parseInt(id, 10),
-      details: {
-        sectionId: suggestion.sectionId,
-        type: suggestion.type,
-        original: suggestion.originalText,
-        modified: modifiedText,
-      },
-    });
-
-    res.json({
-      success: true,
-      suggestion,
-    });
-  } catch (err) {
-    log.error({ err }, 'Modify suggestion error');
-    res.status(500).json({
-      error: 'Failed to modify suggestion',
-      message: err.message,
-    });
-  }
-});
+);
 
 /**
  * POST /api/suggestions/:sectionId/bulk
@@ -315,7 +337,7 @@ router.post('/:id/modify', requireAuth, requireRole(ROLES.EDITOR), (req, res) =>
  *
  * Body:
  *   ids: Array of suggestion IDs
- *   action: 'accept' or 'reject'
+ *   action: accept or reject
  */
 router.post(
   '/:sectionId/bulk',

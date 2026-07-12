@@ -670,3 +670,42 @@ describe('suggestions sync-log: middleware + book-scoped canSync (rider)', () =>
     expect(res.status).toBe(200);
   });
 });
+
+describe('suggestion-id routes resolve to their owning section and book-scope on it', () => {
+  // Suggestion 75 → section 61 → efnafraedi-2e (enforcement ON, HE_A's book).
+  it('accept: head-editor of another book → 403 under enforcement (suggestion 75 is efnafraedi)', async () => {
+    const res = await post('/api/suggestions/75/accept', HE_B);
+    expect(res.status).toBe(403);
+  });
+  it('accept: owning head-editor → genuine 200 via the suggestion→section resolver (discriminates the resolver from a liffraedi constant; accept activityLog site executes)', async () => {
+    const res = await post('/api/suggestions/75/accept', HE_A);
+    expect(res.status).toBe(200);
+  });
+  // Suggestions 70-72 → section 60 → liffraedi-2e (fail-open).
+  it('accept: plain editor clears fail-open on liffraedi and reaches a genuine 200', async () => {
+    const res = await post('/api/suggestions/70/accept', EDITOR);
+    expect(res.status).toBe(200);
+  });
+  it('reject: owning head-editor → genuine 200 (reject activityLog site executes)', async () => {
+    const res = await post('/api/suggestions/71/reject', HE_B);
+    expect(res.status).toBe(200);
+  });
+  it('modify: owning head-editor → genuine 200 (modify activityLog site executes)', async () => {
+    const res = await post('/api/suggestions/72/modify', HE_B, { modifiedText: '8,0 km' });
+    expect(res.status).toBe(200);
+  });
+  it('unknown suggestion id → 404 from the resolver (was a formatSuggestion TypeError → 500)', async () => {
+    const res = await post('/api/suggestions/99999/accept', HE_B);
+    expect(res.status).toBe(404);
+  });
+});
+
+describe('suggestions.js activityLog call shape (static guard, mirrors the sections.js guard)', () => {
+  it('has no legacy {action:/entityType:/details:} call shape left', () => {
+    const fs = require('fs');
+    const src = fs.readFileSync(require.resolve('../routes/suggestions.js'), 'utf8');
+    expect(src).not.toMatch(/\baction:\s*['"`]/);
+    expect(src).not.toMatch(/\bentityType:/);
+    expect(src).not.toMatch(/\bdetails:/);
+  });
+});
