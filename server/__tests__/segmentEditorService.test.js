@@ -549,6 +549,44 @@ describe('discuss/rejected exit path — supersede-on-save + collision matrix', 
       .find((r) => r.id === first.id);
     expect(row.status).toBe('discuss'); // no new revision happened — history stands
   });
+
+  it('legacy pre-039 coexistence: the update-in-place branch also sweeps stale discuss/rejected rows', () => {
+    // Pre-039 production shape: saveSegmentEdit never superseded, so a
+    // rejected row and a newer pending row by the SAME editor+segment could
+    // coexist on disk. Recreate that directly (bypassing saveSegmentEdit's
+    // own sweep, since we need the stranded pair to exist *before* the save
+    // under test).
+    const rejected = save({ segmentId: 'seg-exit-legacy' });
+    service.rejectEdit(rejected.id, 'rev1', 'reviewer1', 'nei');
+    const pendingResult = db
+      .prepare(
+        `INSERT INTO segment_edits
+         (book, chapter, module_id, segment_id, original_content, edited_content,
+          status, editor_id, editor_username)
+         VALUES ('testbook', 1, 'm00001', 'seg-exit-legacy', 'original', 'edited legacy',
+                 'pending', 'u1', 'editor1')`
+      )
+      .run();
+    const pendingId = Number(pendingResult.lastInsertRowid);
+
+    // Sanity: both rows coexist before the save under test — the shape that,
+    // pre-fix, would take the UPDATE branch and never sweep.
+    let rows = service.getSegmentEdits('testbook', 'm00001', 'seg-exit-legacy');
+    expect(rows.find((r) => r.id === rejected.id).status).toBe('rejected');
+    expect(rows.find((r) => r.id === pendingId).status).toBe('pending');
+
+    // Editor saves again — existing pending row found, so this hits the
+    // UPDATE branch, not the INSERT branch.
+    const result = save({ segmentId: 'seg-exit-legacy', editedContent: 'edited legacy v2' });
+    expect(result.id).toBe(pendingId);
+    expect(result.updated).toBe(true);
+
+    rows = service.getSegmentEdits('testbook', 'm00001', 'seg-exit-legacy');
+    expect(rows.find((r) => r.id === rejected.id).status).toBe('superseded');
+    const pendingRow = rows.find((r) => r.id === pendingId);
+    expect(pendingRow.status).toBe('pending');
+    expect(pendingRow.edited_content).toBe('edited legacy v2');
+  });
 });
 
 describe('returnEditToPending — head-editor manual exit', () => {
@@ -1497,6 +1535,56 @@ describe('Review queue and edge cases', () => {
     const c2 = service.completeModuleReview(review2, 'reviewer-1', 'reviewer1', null);
     expect(c2.status).toBe('changes_requested');
     expect(c2.allReviewed).toBe(false);
+  });
+
+  it('completeModuleReview — zero-approved completion (submit → discuss → revise) records changes_requested, not approved', () => {
+    // Reachable sequence (final-review wave, item 1d): submit stamps the edit
+    // to this review → discuss → editor revises. The revision supersedes the
+    // discussed row and creates a FRESH pending row with review_id NULL (not
+    // scoped to this review — it belongs to a future cycle, same as the
+    // "edit created after submit" test above). Completing this review then
+    // sees pending=0 and discuss=0 for review_id=? (its only row is now
+    // 'superseded') — allReviewed alone would say true with 0 approved
+    // edits. Pre-039 the same human actions produced 'changes_requested';
+    // without the 1d fix this recorded 'approved' with nothing approved, and
+    // the route's auto-apply then threw 'No approved edits to apply for this
+    // module'.
+    const { id: editId } = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'Original',
+      editedContent: 'Breytt texti',
+      editorId: 'user-1',
+      editorUsername: 'editor1',
+    });
+    const { id: reviewId } = service.submitModuleForReview({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      submittedBy: 'user-1',
+      submittedByUsername: 'editor1',
+    });
+    service.markForDiscussion(editId, 'reviewer-1', 'reviewer1', 'Þarf að ræða þetta');
+
+    service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'Original',
+      editedContent: 'Endurskoðaður texti',
+      editorId: 'user-1',
+      editorUsername: 'editor1',
+    });
+
+    let result;
+    expect(() => {
+      result = service.completeModuleReview(reviewId, 'reviewer-1', 'reviewer1', null);
+    }).not.toThrow();
+    expect(result.status).toBe('changes_requested');
+    expect(result.counts.approved).toBe(0);
   });
 
   it('submitModuleForReview — already pending → throws', () => {

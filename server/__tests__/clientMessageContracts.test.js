@@ -14,10 +14,40 @@ const require = createRequire(import.meta.url);
 const read = (p) => fs.readFileSync(require.resolve(p), 'utf8');
 
 describe('saveRetry conflict message order (finding 24)', () => {
+  const src = read('../public/js/saveRetry.js');
+
   it('reads data.message before data.error', () => {
-    const src = read('../public/js/saveRetry.js');
     expect(src).toMatch(/data\.message\s*\|\|\s*data\.error/);
     expect(src).not.toMatch(/new Error\(data\.error \|\|/);
+  });
+
+  // Final-review wave (item 1a): a single-argument .then(onFulfilled)
+  // chained into .catch(...) lets the .catch() intercept the *deliberate*
+  // rejection crafted inside onFulfilled — a promise returned/thrown from a
+  // .then() callback propagates to the next handler in the chain, which used
+  // to be that .catch(), silently replacing the Icelandic conflict text
+  // (data.message/data.error) with a generic 'Villa <status>'. The
+  // two-argument form .then(onFulfilled, onRejected) fixes this: onRejected
+  // only fires when response.json() itself fails to parse, never on a
+  // rejection manufactured by onFulfilled. There's no JS parser available
+  // here, so this pins the narrower but still-meaningful structural fact —
+  // isolate the non-retryable block (from its comment marker to the next
+  // top-level .catch, which is the *outer* catch of the surrounding
+  // attempt() chain and therefore always present) and assert it calls
+  // response.json().then( with two function arguments and contains no
+  // .catch( of its own. Behavior itself rides manual QA/Playwright.
+  it('non-retryable branch uses the two-argument .then() form, not .then().catch()', () => {
+    const markerIdx = src.indexOf('// Non-retryable');
+    expect(markerIdx).toBeGreaterThan(-1);
+    const rest = src.slice(markerIdx);
+    const outerCatchIdx = rest.indexOf('.catch(function (err) {');
+    expect(outerCatchIdx).toBeGreaterThan(-1);
+    const block = rest.slice(0, outerCatchIdx);
+
+    // Two function arguments to response.json().then(...).
+    expect(block).toMatch(/response\.json\(\)\.then\(\s*function[\s\S]*?,\s*function/);
+    // No .catch( anywhere in the isolated block — the old buggy chain form.
+    expect(block).not.toMatch(/\.catch\(/);
   });
 });
 

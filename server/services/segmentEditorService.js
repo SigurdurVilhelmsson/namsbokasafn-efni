@@ -101,14 +101,36 @@ function saveSegmentEdit(params) {
   }
 
   if (existing) {
-    // Update existing edit
-    conn
-      .prepare(
-        `UPDATE segment_edits
-       SET edited_content = ?, category = ?, editor_note = ?, created_at = CURRENT_TIMESTAMP
-       WHERE id = ?`
-      )
-      .run(editedContent, category || null, editorNote || null, existing.id);
+    // Update existing edit. Same idempotent supersede sweep as the INSERT
+    // path below, wrapped in its own transaction: pre-039 saves never
+    // superseded a stale discuss/rejected row, so production can hold a
+    // pending row that COEXISTS with an older stranded discuss/rejected row
+    // by the same editor+segment (the "can never coexist" reasoning below
+    // only holds for rows created post-039). Without this sweep, every
+    // future save on such a segment takes this UPDATE branch — never the
+    // INSERT branch — so the stale row would never heal, and
+    // returnEditToPending would keep 409ing with PENDING_EXISTS forever.
+    // The sweep is idempotent (no-op once there's nothing left to supersede),
+    // so this costs nothing on the common post-039 case where it never
+    // matches anything.
+    const updateWithSupersede = conn.transaction(() => {
+      conn
+        .prepare(
+          `UPDATE segment_edits SET status = 'superseded'
+           WHERE book = ? AND module_id = ? AND segment_id = ? AND editor_id = ?
+             AND status IN ('discuss', 'rejected')`
+        )
+        .run(book, moduleId, segmentId, editorId);
+
+      conn
+        .prepare(
+          `UPDATE segment_edits
+         SET edited_content = ?, category = ?, editor_note = ?, created_at = CURRENT_TIMESTAMP
+         WHERE id = ?`
+        )
+        .run(editedContent, category || null, editorNote || null, existing.id);
+    });
+    updateWithSupersede();
     return { id: existing.id, updated: true };
   }
 
@@ -118,11 +140,12 @@ function saveSegmentEdit(params) {
   // the new row can't collide and the old row stops counting as awaiting work.
   // Same transaction as the INSERT: a save either fully lands or fully doesn't.
   //
-  // Deliberate scoping: this only runs on the INSERT path, not the
-  // update-existing-pending branch above — a pending row can only exist after
-  // an earlier INSERT already superseded the stale rows, and reject/discuss
-  // only ever consume a pending row, so no discuss/rejected row can coexist
-  // with a pending one for this editor+segment.
+  // Scoping note: the update-existing-pending branch above runs the identical
+  // sweep for the same reason — see its comment. Under normal post-039
+  // operation a pending row can only exist after an earlier INSERT already
+  // superseded the stale rows, so the sweep here is usually a no-op by the
+  // time it runs on the update path; it stays load-bearing for legacy
+  // pre-039 data where that invariant doesn't hold.
   const insertWithSupersede = conn.transaction(() => {
     conn
       .prepare(
@@ -648,7 +671,21 @@ function completeModuleReview(reviewId, reviewerId, reviewerUsername, notes) {
     .get(reviewId);
 
   const allReviewed = counts.pending === 0 && counts.discuss === 0;
-  const newStatus = allReviewed ? 'approved' : 'changes_requested';
+  // Zero-approved completion (final-review wave, item 1d): allReviewed can go
+  // true with nothing actually approved — e.g. submit (edit stamped to this
+  // review) → discuss → editor revises (the discussed row becomes
+  // 'superseded'; the fresh pending row is a NEW row with review_id NULL, so
+  // it isn't scoped to this review) → complete sees pending=0, discuss=0 for
+  // review_id=? and used to record 'approved' with counts.approved still 0.
+  // The route then auto-applies on 'approved', and applyApprovedEdits throws
+  // ('No approved edits to apply for this module') because there's nothing
+  // to apply. Pre-039 the same sequence of human actions produced
+  // 'changes_requested'. Only override when the review actually had edits
+  // stamped to it (counts.total > 0) — an edge-case review submitted with
+  // zero edits keeps the old allReviewed result instead of being forced to
+  // changes_requested for no reason.
+  const hasApprovals = counts.approved > 0 || counts.total === 0;
+  const newStatus = allReviewed && hasApprovals ? 'approved' : 'changes_requested';
 
   conn
     .prepare(

@@ -202,19 +202,28 @@ const saveRetry = (function () {
           );
         }
 
-        // Non-retryable — parse error and reject
-        return response
-          .json()
-          .then(function (data) {
+        // Non-retryable — parse error and reject. Two-argument .then(onFulfilled,
+        // onRejected) — NOT a single-argument .then(onFulfilled) chained into a
+        // separate catch handler — is load-bearing here: a rejected promise
+        // returned from onFulfilled propagates to the *next* handler in the
+        // chain, so a trailing catch would intercept the deliberate
+        // Promise.reject(err) crafted below (with the Icelandic conflict
+        // message from data.message/data.error) and silently replace it with
+        // the generic 'Villa <status>' text — the message never reaches the
+        // user. The two-arg form's second callback only ever fires when
+        // response.json() itself fails to parse.
+        return response.json().then(
+          function (data) {
             const err = new Error(data.message || data.error || 'Villa ' + response.status);
             err.status = response.status;
             return Promise.reject(err);
-          })
-          .catch(function () {
+          },
+          function () {
             const err = new Error('Villa ' + response.status);
             err.status = response.status;
             return Promise.reject(err);
-          });
+          }
+        );
       })
       .catch(function (err) {
         // Network failure (TypeError from fetch)

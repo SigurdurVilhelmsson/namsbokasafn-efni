@@ -263,7 +263,65 @@ describe('migration 039 — populated-copy against a hand-built pre-039 schema',
       applied_at: null,
       review_id: null,
     },
+    // Rows 13/17 target the migration's one deliberate data rewrite (the
+    // relabel of pre-039 apply-supersede rows). Row 13 matches all three
+    // predicate conditions exactly — status='rejected', applied_at set, and
+    // the exact note string the old applyApprovedEdits markSuperseded
+    // statement wrote — and must come out 'superseded'. Row 17 is a
+    // near-miss sharing status='rejected' and a non-null applied_at (so the
+    // note text, not those two conditions, is what disqualifies it) but
+    // carries a DIFFERENT reviewer_note — a genuine editorial rejection that
+    // happens to have applied_at set — and must be left completely alone.
+    {
+      id: 13,
+      book: 'liffraedi-2e',
+      chapter: 2,
+      module_id: 'm68780',
+      segment_id: 'm68780:seg:3',
+      original_content: 'Original text D',
+      edited_content: 'Edited text D',
+      category: 'accuracy',
+      editor_note: 'note D',
+      status: 'rejected',
+      editor_id: 'u4',
+      editor_username: 'ritstjori4',
+      reviewer_id: 'r3',
+      reviewer_username: 'yfirritstjori3',
+      reviewer_note: 'Leyst úr gildi af nýrri samþykktri breytingu',
+      created_at: '2026-01-07 07:00:00',
+      reviewed_at: '2026-01-08 07:30:00',
+      applied_at: '2026-01-08 07:30:00',
+      review_id: null,
+    },
+    {
+      id: 17,
+      book: 'liffraedi-2e',
+      chapter: 2,
+      module_id: 'm68781',
+      segment_id: 'm68781:seg:4',
+      original_content: 'Original text E',
+      edited_content: 'Edited text E',
+      category: 'omission',
+      editor_note: 'note E',
+      status: 'rejected',
+      editor_id: 'u5',
+      editor_username: 'ritstjori5',
+      reviewer_id: 'r4',
+      reviewer_username: 'yfirritstjori4',
+      reviewer_note: 'Ekki nógu nákvæmt',
+      created_at: '2026-01-09 07:00:00',
+      reviewed_at: '2026-01-10 07:30:00',
+      applied_at: '2026-01-10 08:00:00',
+      review_id: null,
+    },
   ];
+
+  // Expected shape after migration: byte-identical to every seeded row
+  // EXCEPT id 13, which the relabel UPDATE flips to 'superseded' (all other
+  // columns, including reviewer_note and applied_at, preserved as history).
+  const expectedPostMigrationRows = seedRows.map((row) =>
+    row.id === 13 ? { ...row, status: 'superseded' } : row
+  );
 
   function seed(db) {
     db.prepare(`INSERT INTO module_reviews (id) VALUES (42)`).run();
@@ -281,19 +339,30 @@ describe('migration 039 — populated-copy against a hand-built pre-039 schema',
     for (const row of seedRows) stmt.run(row);
   }
 
-  it('copies every seeded row byte-identical, preserves ids, carries the AUTOINCREMENT sequence, and rebuilds the exit-path constraints', () => {
+  it('copies every seeded row byte-identical (except the deliberate relabel), preserves ids, carries the AUTOINCREMENT sequence, and rebuilds the exit-path constraints', () => {
     const db = preMigrationDb();
     seed(db);
 
     require('../migrations/039-segment-edit-exit-path').up(db);
 
     const rows = db.prepare(`SELECT * FROM segment_edits ORDER BY id`).all();
-    expect(rows).toHaveLength(3);
-    expect(rows.map((r) => r.id)).toEqual([1, 5, 9]);
-    expect(rows).toEqual(seedRows);
+    expect(rows).toHaveLength(5);
+    expect(rows.map((r) => r.id)).toEqual([1, 5, 9, 13, 17]);
+    expect(rows).toEqual(expectedPostMigrationRows);
+
+    // The relabel target: exact predicate match → 'superseded', note + applied_at preserved.
+    const relabelled = rows.find((r) => r.id === 13);
+    expect(relabelled.status).toBe('superseded');
+    expect(relabelled.reviewer_note).toBe('Leyst úr gildi af nýrri samþykktri breytingu');
+    expect(relabelled.applied_at).toBe('2026-01-08 07:30:00');
+
+    // The near-miss: different note text → left as 'rejected', untouched.
+    const nearMiss = rows.find((r) => r.id === 17);
+    expect(nearMiss.status).toBe('rejected');
+    expect(nearMiss.reviewer_note).toBe('Ekki nógu nákvæmt');
 
     // AUTOINCREMENT sequence carried across the rebuild: the next auto id is
-    // 10 (max seeded id + 1), not 4 (row count + 1) or 1 (fresh table).
+    // 18 (max seeded id + 1), not 6 (row count + 1) or 1 (fresh table).
     const fresh = db
       .prepare(
         `INSERT INTO segment_edits
@@ -302,7 +371,7 @@ describe('migration 039 — populated-copy against a hand-built pre-039 schema',
          VALUES ('efnafraedi-2e', 1, 'm1', 's-fresh', 'o', 'e', 'pending', 'u9', 'ritstjori9')`
       )
       .run();
-    expect(Number(fresh.lastInsertRowid)).toBe(10);
+    expect(Number(fresh.lastInsertRowid)).toBe(18);
 
     // Old 5-column UNIQUE is gone.
     const sql = db
@@ -368,11 +437,12 @@ describe('migration 039 — populated-copy against a hand-built pre-039 schema',
       .map((c) => c.name);
     expect(cols).not.toContain('marker');
 
-    // The real seeded rows survived the rebuild untouched — the orphan drop
-    // was safe because it happened inside the same transaction as the copy.
+    // The real seeded rows survived the rebuild untouched (except the
+    // deliberate relabel, id 13) — the orphan drop was safe because it
+    // happened inside the same transaction as the copy.
     const rows = db.prepare(`SELECT * FROM segment_edits ORDER BY id`).all();
-    expect(rows).toHaveLength(3);
-    expect(rows.map((r) => r.id)).toEqual([1, 5, 9]);
-    expect(rows).toEqual(seedRows);
+    expect(rows).toHaveLength(5);
+    expect(rows.map((r) => r.id)).toEqual([1, 5, 9, 13, 17]);
+    expect(rows).toEqual(expectedPostMigrationRows);
   });
 });

@@ -17,6 +17,12 @@
  * whole rebuild runs inside a single db.transaction() so a crash at any point
  * rolls back to the intact pre-039 table — see the inline comment above the
  * transaction for why that's safe on the shared migration-runner connection.
+ *
+ * After the rebuild, one targeted UPDATE relabels rows the pre-039
+ * apply-time supersede path stamped 'rejected' (the only status it could
+ * spell) with the superseded NOTE — see the inline comment above that
+ * statement for the exact 3-condition predicate and why it can't match a
+ * genuine editorial rejection.
  */
 
 module.exports = {
@@ -109,6 +115,24 @@ module.exports = {
         ON segment_edits(module_id, status, applied_at);
       CREATE INDEX IF NOT EXISTS idx_segment_edits_review
         ON segment_edits(review_id);
+
+      -- The one deliberate data rewrite in this migration: relabel rows the
+      -- PRE-039 apply-time supersede path wrote. That old code stamped the
+      -- superseded NOTE ('Leyst úr gildi af nýrri samþykktri breytingu') but
+      -- could only spell the STATUS as 'rejected' — 'superseded' didn't exist
+      -- in the CHECK constraint yet. Those rows are semantically superseded
+      -- (a losing approved edit at apply time, not an editorial rejection)
+      -- and, mislabelled 'rejected', they count forever as needs-response in
+      -- dashboardReadModel/my-work even though applied_at proves they were
+      -- resolved by the apply itself. The predicate is exact: this note
+      -- string was only ever written by that one code path (see
+      -- applyApprovedEdits' markSuperseded statement, pre-039), combined with
+      -- applied_at IS NOT NULL (an editorial rejection never sets applied_at)
+      -- — together they can't match a genuine editorial rejection.
+      UPDATE segment_edits SET status = 'superseded'
+       WHERE status = 'rejected'
+         AND applied_at IS NOT NULL
+         AND reviewer_note = 'Leyst úr gildi af nýrri samþykktri breytingu';
     `);
     });
     rebuild();
