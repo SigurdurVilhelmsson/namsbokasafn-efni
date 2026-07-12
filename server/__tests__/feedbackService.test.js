@@ -2,6 +2,8 @@
  * feedbackService unit tests
  *
  * Uses in-memory SQLite via _setTestDb to avoid touching the real database.
+ * Schema comes from migration 005 (`feedback`, `feedback_responses`,
+ * `analytics_events`) — the service no longer creates tables itself.
  */
 
 import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest';
@@ -10,6 +12,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const Database = require('better-sqlite3');
 
+const migration005 = require('../migrations/005-feedback');
 const feedbackService = require('../services/feedbackService');
 const { FEEDBACK_TYPES, FEEDBACK_STATUSES, PRIORITIES } = feedbackService;
 
@@ -18,6 +21,7 @@ let db;
 beforeAll(() => {
   db = new Database(':memory:');
   db.pragma('foreign_keys = ON');
+  migration005.up(db);
   feedbackService._setTestDb(db);
 });
 

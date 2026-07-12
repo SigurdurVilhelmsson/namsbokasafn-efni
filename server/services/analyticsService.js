@@ -32,93 +32,86 @@ const EVENT_TYPES = {
   DOWNLOAD: 'download',
 };
 
-// Initialize database tables
-function initDb() {
-  const dbDir = path.dirname(DB_PATH);
-  if (!fs.existsSync(dbDir)) {
-    fs.mkdirSync(dbDir, { recursive: true });
-  }
-
-  const db = new Database(DB_PATH);
-  db.pragma('journal_mode = WAL');
-
-  // Create analytics_events table if not exists
-  db.exec(`
-    CREATE TABLE IF NOT EXISTS analytics_events (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      event_type TEXT NOT NULL,
-      book TEXT,
-      chapter TEXT,
-      section TEXT,
-      user_agent TEXT,
-      referrer TEXT,
-      session_id TEXT,
-      metadata TEXT,
-      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    );
-
-    CREATE INDEX IF NOT EXISTS idx_analytics_events_type ON analytics_events(event_type);
-    CREATE INDEX IF NOT EXISTS idx_analytics_events_book ON analytics_events(book);
-    CREATE INDEX IF NOT EXISTS idx_analytics_events_created_at ON analytics_events(created_at);
-    CREATE INDEX IF NOT EXISTS idx_analytics_events_session ON analytics_events(session_id);
-  `);
-
-  return db;
+let _testDb = null;
+function _setTestDb(db) {
+  _testDb = db;
+  _stmts = null; // statements must be rebuilt against the new handle
 }
 
-const db = initDb();
+let _db;
+function getDb() {
+  if (_testDb) return _testDb;
+  if (!_db) {
+    const dbDir = path.dirname(DB_PATH);
+    if (!fs.existsSync(dbDir)) {
+      fs.mkdirSync(dbDir, { recursive: true });
+    }
+    _db = new Database(DB_PATH);
+    _db.pragma('journal_mode = WAL');
+  }
+  return _db;
+}
 
-// Prepared statements
-const statements = {
-  insert: db.prepare(`
-    INSERT INTO analytics_events (event_type, book, chapter, section, user_agent, referrer, session_id, metadata)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-  `),
-  getRecent: db.prepare(`
-    SELECT * FROM analytics_events
-    ORDER BY created_at DESC
-    LIMIT ?
-  `),
-  getByType: db.prepare(`
-    SELECT * FROM analytics_events
-    WHERE event_type = ?
-    ORDER BY created_at DESC
-    LIMIT ?
-  `),
-  getByBook: db.prepare(`
-    SELECT * FROM analytics_events
-    WHERE book = ?
-    ORDER BY created_at DESC
-    LIMIT ?
-  `),
-  countByType: db.prepare(`
-    SELECT event_type, COUNT(*) as count FROM analytics_events
-    WHERE created_at >= datetime('now', ?)
-    GROUP BY event_type
-  `),
-  countByBook: db.prepare(`
-    SELECT book, COUNT(*) as count FROM analytics_events
-    WHERE event_type = 'chapter_view' AND created_at >= datetime('now', ?)
-    GROUP BY book
-  `),
-  countByChapter: db.prepare(`
-    SELECT book, chapter, COUNT(*) as count FROM analytics_events
-    WHERE event_type IN ('chapter_view', 'section_view') AND created_at >= datetime('now', ?)
-    GROUP BY book, chapter
-    ORDER BY count DESC
-  `),
-  countUniqueSessions: db.prepare(`
-    SELECT COUNT(DISTINCT session_id) as count FROM analytics_events
-    WHERE created_at >= datetime('now', ?)
-  `),
-  dailyPageViews: db.prepare(`
-    SELECT date(created_at) as date, COUNT(*) as count FROM analytics_events
-    WHERE event_type IN ('page_view', 'chapter_view', 'section_view')
-      AND created_at >= datetime('now', ?)
-    GROUP BY date(created_at)
-    ORDER BY date
-  `),
-};
+function initStatements(db) {
+  return {
+    insert: db.prepare(`
+      INSERT INTO analytics_events (event_type, book, chapter, section, user_agent, referrer, session_id, metadata)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `),
+    getRecent: db.prepare(`
+      SELECT * FROM analytics_events
+      ORDER BY created_at DESC
+      LIMIT ?
+    `),
+    getByType: db.prepare(`
+      SELECT * FROM analytics_events
+      WHERE event_type = ?
+      ORDER BY created_at DESC
+      LIMIT ?
+    `),
+    getByBook: db.prepare(`
+      SELECT * FROM analytics_events
+      WHERE book = ?
+      ORDER BY created_at DESC
+      LIMIT ?
+    `),
+    countByType: db.prepare(`
+      SELECT event_type, COUNT(*) as count FROM analytics_events
+      WHERE created_at >= datetime('now', ?)
+      GROUP BY event_type
+    `),
+    countByBook: db.prepare(`
+      SELECT book, COUNT(*) as count FROM analytics_events
+      WHERE event_type = 'chapter_view' AND created_at >= datetime('now', ?)
+      GROUP BY book
+    `),
+    countByChapter: db.prepare(`
+      SELECT book, chapter, COUNT(*) as count FROM analytics_events
+      WHERE event_type IN ('chapter_view', 'section_view') AND created_at >= datetime('now', ?)
+      GROUP BY book, chapter
+      ORDER BY count DESC
+    `),
+    countUniqueSessions: db.prepare(`
+      SELECT COUNT(DISTINCT session_id) as count FROM analytics_events
+      WHERE created_at >= datetime('now', ?)
+    `),
+    dailyPageViews: db.prepare(`
+      SELECT date(created_at) as date, COUNT(*) as count FROM analytics_events
+      WHERE event_type IN ('page_view', 'chapter_view', 'section_view')
+        AND created_at >= datetime('now', ?)
+      GROUP BY date(created_at)
+      ORDER BY date
+    `),
+  };
+}
+
+let _stmts = null;
+function stmts() {
+  if (!_stmts) {
+    _stmts = initStatements(getDb());
+  }
+  return _stmts;
+}
 
 /**
  * Generate a session ID
@@ -142,7 +135,7 @@ function logEvent(options) {
     metadata = {},
   } = options;
 
-  const result = statements.insert.run(
+  const result = stmts().insert.run(
     eventType,
     book,
     chapter,
@@ -221,7 +214,7 @@ function logError(req, errorType, errorMessage) {
  * Get recent events
  */
 function getRecentEvents(limit = 100) {
-  const rows = statements.getRecent.all(Math.min(limit, 1000));
+  const rows = stmts().getRecent.all(Math.min(limit, 1000));
   return rows.map(parseRow);
 }
 
@@ -230,11 +223,11 @@ function getRecentEvents(limit = 100) {
  * @param {string} period - '-1 day', '-7 days', '-30 days'
  */
 function getStats(period = '-7 days') {
-  const byType = statements.countByType.all(period);
-  const byBook = statements.countByBook.all(period);
-  const byChapter = statements.countByChapter.all(period);
-  const uniqueSessions = statements.countUniqueSessions.get(period);
-  const dailyViews = statements.dailyPageViews.all(period);
+  const byType = stmts().countByType.all(period);
+  const byBook = stmts().countByBook.all(period);
+  const byChapter = stmts().countByChapter.all(period);
+  const uniqueSessions = stmts().countUniqueSessions.get(period);
+  const dailyViews = stmts().dailyPageViews.all(period);
 
   return {
     period,
@@ -337,4 +330,6 @@ module.exports = {
   getRecentEvents,
   getStats,
   trackingMiddleware,
+  // Test helpers
+  _setTestDb,
 };
