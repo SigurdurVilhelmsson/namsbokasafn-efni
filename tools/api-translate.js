@@ -306,6 +306,92 @@ export function normalizeSegMarkers(text) {
   return { text: normalized, fixed };
 }
 
+// ─── B4-D11: paired-bracket MT round-trip for term/footnote translation ───
+
+/** Split a marker's inner content at the last top-level `|` (id separator),
+ *  ignoring `|` nested inside `[[ ]]`. Returns { text, id } (id null if none). */
+function splitTopLevelId(inner) {
+  let depth = 0;
+  let idx = -1;
+  for (let i = 0; i < inner.length; i++) {
+    if (inner.startsWith('[[', i)) {
+      depth++;
+      i++;
+    } else if (inner.startsWith(']]', i)) {
+      if (depth > 0) depth--;
+      i++;
+    } else if (inner[i] === '|' && depth === 0) {
+      idx = i;
+    }
+  }
+  if (idx === -1) return { text: inner, id: null };
+  return { text: inner.slice(0, idx), id: inner.slice(idx + 1) };
+}
+
+/** Rewrite every `[[type:...]]` in `text` to paired `[[type]]...[[/type]]`,
+ *  nesting-aware; returns { text, ids } with captured ids (null when absent). */
+function rewriteToPaired(text, type) {
+  const openTok = `[[${type}:`;
+  const ids = [];
+  let out = '';
+  let i = 0;
+  while (i < text.length) {
+    if (text.startsWith(openTok, i)) {
+      let j = i + openTok.length;
+      let depth = 1;
+      while (j < text.length && depth > 0) {
+        if (text.startsWith('[[', j)) {
+          depth++;
+          j += 2;
+        } else if (text.startsWith(']]', j)) {
+          depth--;
+          if (depth === 0) break;
+          j += 2;
+        } else j++;
+      }
+      const inner = text.slice(i + openTok.length, j);
+      const { text: termText, id } = splitTopLevelId(inner);
+      ids.push(id);
+      out += `[[${type}]]${termText}[[/${type}]]`;
+      i = j + 2; // past closing ]]
+    } else {
+      out += text[i];
+      i++;
+    }
+  }
+  return { text: out, ids };
+}
+
+const SEG_SPLIT_RE = /(?=<!-- SEG:)/;
+const SEG_ID_RE = /<!-- SEG:(\S+?) -->/;
+
+/**
+ * Rewrite id-anchored inline term/footnote markers to PAIRED bracket form for the
+ * API leg (B4-D11: the API treats [[term:text|id]] as an opaque token and does not
+ * translate inside it; text BETWEEN [[term]]…[[/term]] translates and both delimiters
+ * survive). The id never rides the wire; it is re-attached after MT by reattachIds().
+ * @param {string} chunkText - a segment-file chunk (one or more whole SEG segments)
+ * @returns {{ wireText: string, segments: Array<{segId:string, originalText:string,
+ *   termIds:(string|null)[], fnIds:(string|null)[]}> }}
+ */
+export function stripTermFnToPaired(chunkText) {
+  const parts = chunkText.split(SEG_SPLIT_RE).filter((p) => p.length > 0);
+  const segments = [];
+  let wireText = '';
+  for (const part of parts) {
+    const m = part.match(SEG_ID_RE);
+    if (!m) {
+      wireText += part;
+      continue;
+    } // leading non-SEG text (rare); pass through
+    const term = rewriteToPaired(part, 'term');
+    const fn = rewriteToPaired(term.text, 'fn');
+    segments.push({ segId: m[1], originalText: part, termIds: term.ids, fnIds: fn.ids });
+    wireText += fn.text;
+  }
+  return { wireText, segments };
+}
+
 // ─── Book → Domain Mapping ──────────────────────────────────────────
 // bookToDomain now lives in book-rendering-config.js (reads book-config.json
 // `domain`). Imported above for internal use; re-exported here for backward
