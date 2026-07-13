@@ -710,9 +710,9 @@
         },
         {
           "type": "table",
-          "id": "fs-idm140502592",
+          "id": "fs-idp62232800",
           "class": "unnumbered",
-          "summary": "This table contains two columns and six rows. The first row is a header row and it labels each column, “Time ( s ),” and “[ C subscript 4 H subscript 6 ] ( M ).”  Under the “Time ( s )” column are the numbers: 0, 1600, 3200, 4800, and 6200. Under the column “[ C subscript 4 H subscript 6 ] ( M )” are the numbers: 1.00 times ten to the negative 2; 5.04 times ten to the negative 3; 3.37 times ten to the negative 3; 2.53 times ten to the negative 3; and 2.08 times ten to the negative 3.",
+          "summary": "This table contains three columns and six rows. The first row is a header row and it labels each column, “Time ( s ),” “1 over [ C subscript 4 H subscript 6 ] ( M superscript negative 1 ),” and “l n [ C subscript 4 H subscript 6 ].” Under the column “Time ( s )” are the numbers: 0, 1600, 3200, 4800, and 6200. Under the “1 over [ C subscript 4 H subscript 6 ] ( M superscript negative 1 )” column are the numbers: 100, 198, 296, 395, and 481. Under the “l n [ C subscript 4 H subscript 6 ]” column are the numbers: negative 4.605, negative 5.289, negative 5.692, negative 5.978, and negative 6.175.",
           "rows": [
             {
               "cells": [
@@ -727,27 +727,23 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68791:entry:auto-103",
                   "attributes": {
                     "align": "left"
                   }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-104",
-                  "attributes": {
-                    "align": "left"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-104",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
                 {
                   "segmentId": "m68791:entry:auto-105",
                   "attributes": {
@@ -775,27 +771,23 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68791:entry:auto-109",
                   "attributes": {
                     "align": "left"
                   }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-110",
-                  "attributes": {
-                    "align": "left"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-110",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
                 {
                   "segmentId": "m68791:entry:auto-111",
                   "attributes": {
@@ -809,15 +801,7 @@
                   }
                 }
               ]
-            }
-          ]
-        },
-        {
-          "type": "table",
-          "id": "fs-idp62232800",
-          "class": "unnumbered",
-          "summary": "This table contains three columns and six rows. The first row is a header row and it labels each column, “Time ( s ),” “1 over [ C subscript 4 H subscript 6 ] ( M superscript negative 1 ),” and “l n [ C subscript 4 H subscript 6 ].” Under the column “Time ( s )” are the numbers: 0, 1600, 3200, 4800, and 6200. Under the “1 over [ C subscript 4 H subscript 6 ] ( M superscript negative 1 )” column are the numbers: 100, 198, 296, 395, and 481. Under the “l n [ C subscript 4 H subscript 6 ]” column are the numbers: negative 4.605, negative 5.289, negative 5.692, negative 5.978, and negative 6.175.",
-          "rows": [
+            },
             {
               "cells": [
                 {
@@ -861,15 +845,31 @@
                   }
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_12_04_2OrdKin",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68791:caption:CNX_Chem_12_04_2OrdKin-caption"
+          },
+          "media": {
+            "id": "fs-idp16234496",
+            "alt": "Two graphs are shown, each with the label “Time ( s )” on the x-axis. The graph on the left is labeled, “l n [ C subscript 4 H subscript 6 ],” on the y-axis. The graph on the right is labeled “1 divided by [ C subscript 4 H subscript 6 ],” on the y-axis. The x-axes for both graphs show markings at 3000 and 6000. The y-axis for the graph on the left shows markings at negative 6, negative 5, and negative 4. A decreasing slightly concave up curve is drawn through five points at coordinates that are (0, negative 4.605), (1600, negative 5.289), (3200, negative 5.692), (4800, negative 5.978), and (6200, negative 6.175). The y-axis for the graph on the right shows markings at 100, 300, and 500. An approximately linear increasing curve is drawn through five points at coordinates that are (0, 100), (1600, 198), (3200, 296), and (4800, 395), and (6200, 481).",
+            "src": "../../media/CNX_Chem_12_04_2OrdKin.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "table",
+          "id": "fs-idm88760288",
+          "class": "unnumbered",
+          "summary": "This table contains two columns and seven rows. The first row is a header row, and it labels each column “Time ( s )” and “[ A ] ( M ).” Under the “Time ( s )” column are the numbers: 5, 10, 15, 20, 25, and 35. Under the “[ A ] ( M )” column are the numbers 0.952, 0.625, 0.465, 0.370, 0.308, and 0.230.",
+          "rows": [
             {
               "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-119",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
                 {
                   "segmentId": "m68791:entry:auto-120",
                   "attributes": {
@@ -897,9 +897,19 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68791:entry:auto-124",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-125",
                   "attributes": {
                     "align": "left"
                   }
@@ -908,12 +918,6 @@
             },
             {
               "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-125",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
                 {
                   "segmentId": "m68791:entry:auto-126",
                   "attributes": {
@@ -941,37 +945,25 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68791:entry:auto-130",
                   "attributes": {
                     "align": "left"
                   }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-131",
+                  "attributes": {
+                    "align": "left"
+                  }
                 }
               ]
-            }
-          ]
-        },
-        {
-          "type": "figure",
-          "id": "CNX_Chem_12_04_2OrdKin",
-          "class": "scaled-down",
-          "caption": {
-            "segmentId": "m68791:caption:CNX_Chem_12_04_2OrdKin-caption"
-          },
-          "media": {
-            "id": "fs-idp16234496",
-            "alt": "Two graphs are shown, each with the label “Time ( s )” on the x-axis. The graph on the left is labeled, “l n [ C subscript 4 H subscript 6 ],” on the y-axis. The graph on the right is labeled “1 divided by [ C subscript 4 H subscript 6 ],” on the y-axis. The x-axes for both graphs show markings at 3000 and 6000. The y-axis for the graph on the left shows markings at negative 6, negative 5, and negative 4. A decreasing slightly concave up curve is drawn through five points at coordinates that are (0, negative 4.605), (1600, negative 5.289), (3200, negative 5.692), (4800, negative 5.978), and (6200, negative 6.175). The y-axis for the graph on the right shows markings at 100, 300, and 500. An approximately linear increasing curve is drawn through five points at coordinates that are (0, 100), (1600, 198), (3200, 296), and (4800, 395), and (6200, 481).",
-            "src": "../../media/CNX_Chem_12_04_2OrdKin.jpg",
-            "mimeType": "image/jpeg"
-          }
-        },
-        {
-          "type": "table",
-          "id": "fs-idm88760288",
-          "class": "unnumbered",
-          "summary": "This table contains two columns and seven rows. The first row is a header row, and it labels each column “Time ( s )” and “[ A ] ( M ).” Under the “Time ( s )” column are the numbers: 5, 10, 15, 20, 25, and 35. Under the “[ A ] ( M )” column are the numbers 0.952, 0.625, 0.465, 0.370, 0.308, and 0.230.",
-          "rows": [
+            },
             {
               "cells": [
                 {
@@ -982,102 +974,6 @@
                 },
                 {
                   "segmentId": "m68791:entry:auto-133",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-134",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-135",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-136",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-137",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-138",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-139",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-140",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-141",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-142",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-143",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-144",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-145",
                   "attributes": {
                     "align": "left"
                   }
@@ -1209,6 +1105,11 @@
         "text": "The Half-Life of a Reaction"
       },
       "content": [
+        {
+          "type": "para",
+          "id": "fs-idm99562880",
+          "segmentId": "m68791:para:fs-idm99562880"
+        },
         {
           "type": "section",
           "id": "fs-idm97307168",
@@ -1435,7 +1336,7 @@
                 {
                   "cells": [
                     {
-                      "segmentId": "m68791:entry:auto-189",
+                      "segmentId": "m68791:entry:auto-177",
                       "attributes": {
                         "namest": "c1",
                         "nameend": "c4",
@@ -1446,6 +1347,96 @@
                 },
                 {
                   "cells": [
+                    {
+                      "segmentId": null,
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-178",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-179",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-180",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68791:entry:auto-181",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-182",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-183",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-184",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68791:entry:auto-185",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-186",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-187",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-188",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68791:entry:auto-189",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
                     {
                       "segmentId": "m68791:entry:auto-190",
                       "attributes": {
@@ -1549,90 +1540,6 @@
                       }
                     }
                   ]
-                },
-                {
-                  "cells": [
-                    {
-                      "segmentId": "m68791:entry:auto-205",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68791:entry:auto-206",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68791:entry:auto-207",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68791:entry:auto-208",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "cells": [
-                    {
-                      "segmentId": "m68791:entry:auto-209",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68791:entry:auto-210",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68791:entry:auto-211",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68791:entry:auto-212",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "cells": [
-                    {
-                      "segmentId": "m68791:entry:auto-213",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68791:entry:auto-214",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68791:entry:auto-215",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68791:entry:auto-216",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    }
-                  ]
                 }
               ]
             },
@@ -1694,11 +1601,6 @@
               ]
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idm99562880",
-          "segmentId": "m68791:para:fs-idm99562880"
         }
       ]
     },
@@ -1741,7 +1643,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68791:entry:auto-231",
+                  "segmentId": "m68791:entry:auto-219",
                   "attributes": {}
                 }
               ]
@@ -1749,7 +1651,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68791:entry:auto-232",
+                  "segmentId": "m68791:entry:auto-220",
                   "attributes": {}
                 }
               ]
@@ -1757,7 +1659,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68791:entry:auto-233",
+                  "segmentId": "m68791:entry:auto-221",
                   "attributes": {}
                 }
               ]
@@ -1765,7 +1667,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68791:entry:auto-234",
+                  "segmentId": "m68791:entry:auto-222",
                   "attributes": {}
                 }
               ]
@@ -1773,7 +1675,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68791:entry:auto-235",
+                  "segmentId": "m68791:entry:auto-223",
                   "attributes": {}
                 }
               ]
@@ -1781,7 +1683,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68791:entry:auto-236",
+                  "segmentId": "m68791:entry:auto-224",
                   "attributes": {}
                 }
               ]
@@ -1844,6 +1746,86 @@
             {
               "cells": [
                 {
+                  "segmentId": "m68791:entry:auto-229",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-230",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-231",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-232",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-233",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-234",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-235",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-236",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-237",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-238",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-239",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-240",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
                   "segmentId": "m68791:entry:auto-241",
                   "attributes": {
                     "align": "left"
@@ -1855,6 +1837,16 @@
                     "align": "left"
                   }
                 },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "morerows": "1"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68791:entry:auto-243",
                   "attributes": {
@@ -1872,99 +1864,9 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68791:entry:auto-246",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-247",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-248",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-249",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-250",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-251",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-252",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-253",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-254",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": null,
-                  "attributes": {
-                    "morerows": "1"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-255",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-256",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-257",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-258",
                   "attributes": {
                     "align": "left"
                   }
@@ -1996,144 +1898,6 @@
           }
         },
         {
-          "type": "table",
-          "id": "fs-idp72766816",
-          "class": "column-header unnumbered",
-          "summary": "This table has two columns and eight rows. The first row is a header row, and it labels each column, “Time ( h ),” and, “[ O subscript 3 ] ( M ).” Under the “Time ( h )” column are the numbers: 0; 2.0 times ten to the third power; 7.6 times ten to the third power; 1.00 times ten to the fourth power; 1.23 times ten to the fourth power; 1.43 times ten to the fourth power; 1.70 times ten to the fourth power. Under the “[ O subscript 3 ] ( M )” column are the numbers: 1.00 times ten to the negative 5; 4.98 times ten to the negative 6; 2.07 times ten to the negative 6; 1.66 times ten to the negative 6; 1.39 times ten to the negative 6; 1.22 times ten to the negative 6; and 1.05 times ten to the negative 6.",
-          "rows": [
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-261",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-262",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-263",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-264",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-265",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-266",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-267",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-268",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-269",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-270",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-271",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-272",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-273",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-274",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": null,
-                  "attributes": {
-                    "morerows": "1"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-275",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-276",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-277",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-278",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
           "type": "exercise",
           "id": "fs-idm81797520",
           "problem": {
@@ -2146,130 +1910,6 @@
             ]
           },
           "solution": null
-        },
-        {
-          "type": "table",
-          "id": "fs-idm133654768",
-          "class": "column-header unnumbered",
-          "summary": "This table contains two columns and nine rows. The first row is a header row, and it labels each column, “Time ( s ),” and “[ X ] ( M ).” Under the “Time ( s )” column are the numbers: 5.0, 10.0, 15.0, 20.0, 25.0, 30.0, 35.0, and 40.0. Under the “[ X ] ( M )” column are the numbers; 0.0990, 0.497, 0.0332, 0.0249, 0.0200, 0.0166, 0.0143, and 0.0125.",
-          "rows": [
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-280",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-281",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-282",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-283",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-284",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-285",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-286",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-287",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-288",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-289",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-290",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-291",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-292",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-293",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-294",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-295",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-296",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-297",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            }
-          ]
         },
         {
           "type": "exercise",
@@ -2402,78 +2042,6 @@
           }
         },
         {
-          "type": "table",
-          "id": "fs-idp79245440",
-          "class": "unnumbered",
-          "summary": "This table contains two columns and four rows. The first row is a header row, and it labels each column, “[ Penicillin ] ( M ),” and, “Rate ( mol / L / min ).” Under the “[ Penicillin ] ( M )” column are the numbers: 2.0 times ten to the negative six; 3.0 times ten to the negative six; and 4.0 times ten to the negative 6. Under the “Rate ( mol / L / min )” column are the numbers: 1.0 times ten to the negative ten; 1.5 times ten to the negative 10; and 2.0 times ten to the negative 10.",
-          "rows": [
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-309",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-310",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-311",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-312",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-313",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-314",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-315",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-316",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
           "type": "exercise",
           "id": "fs-idm22532944",
           "problem": {
@@ -2602,340 +2170,6 @@
           }
         },
         {
-          "type": "table",
-          "id": "fs-idp121895360",
-          "class": "column-header unnumbered",
-          "summary": "This table contains three columns and nine rows. The first row is a header row, and it labels each column, “Initial [ C subscript 3 H subscript 5 N subscript 3 O subscript 9 ] ( M ),” “t ( s ),” and “% Decomposed.” Under the “Initial [ C subscript 3 H subscript 5 N subscript 3 O subscript 9 ] ( M )” column are the numbers: 4.88, 3.52, 2.29, 1.81, 5.33, 4.05, 2.95, and 1.72. Under the “t ( s )” column are the numbers: 300, 300, 300, 300, 180, 180, 180, and 180. Under the “% Decomposed” column are the numbers: 52.0, 52.9, 53.2, 53.9, 34.6, 35.9, 36.0, and 35.4.",
-          "rows": [
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-330",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-331",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-332",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-333",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-334",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-335",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-336",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-337",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-338",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-339",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-340",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-341",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-342",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-343",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-344",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-345",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-346",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-347",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-348",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-349",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-350",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-351",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-352",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-353",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-354",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-355",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-356",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "table",
-          "id": "fs-idm247275488",
-          "class": "unnumbered",
-          "summary": "This table has five columns and nine rows. The first row is a header row, and it labels each column: “[ A ] subscript 0 ( M ),” “[ A ] ( M ),” “l n ( [ A ] subscript 0 over [ A ] ),” “t ( s ),” and “k times 10 to the third power ( s superscript negative 1 ).” Under the “[ A ] subscript 0 ( M )” column are the numbers: 4.88, 3.52, 2.29, 1.81, 5.33, 4.05, 2.95, and 1.72. Under the “[ A ] ( M )” column are the numbers: 2.34, 1.66, 1.07, 0.834, 3.49, 2.61, 1.89, and 1.11. Under the “l n ( [ A ] subscript 0 over [ A ] )” column are the numbers: 0.734, 0.752, 0.761, 0.775, 0.423, 0.439, 0.445, and 0.438. Under the “t ( s )” column are the numbers: 300, 300, 300, 300, 180, 180, 180, and 180. Under the “k times 10 to the third power ( s superscript negative 1 )” columns are the numbers: 2.45, 2.51, 2.54, 2.58, 2.35, 2.44, 2.47, and 2.43.",
-          "rows": [
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-357",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-358",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-359",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-360",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-361",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-362",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-363",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-364",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-365",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-366",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-367",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-368",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-369",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-370",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-371",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-372",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68791:entry:auto-373",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68791:entry:auto-374",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
           "type": "exercise",
           "id": "fs-idm43018880",
           "problem": {
@@ -2998,7 +2232,10 @@
       "class": null,
       "alt": "A graph is shown with the label “Time ( s )” on the x-axis and “l n [ S O subscript 2 C l subscript 2 ] M” on the y-axis. The x-axis begins at 0 and extends to 4.00 times 10 superscript 4 with markings every 1.00 times 10 superscript 4. The y-axis shows markings extending from negative 3.5 to negative 2.5. A decreasing linear trend line is drawn through seven points at the approximate coordinates: (0, negative 2.3), (0.5 times 10 superscript 4, negative 2.4), (1.0 times 10 superscript 4, negative 2.5), (1.5 times 10 superscript 4, negative 2.6), (2.0 times 10 superscript 4, negative 2.9), (2.5 times 10 superscript 4, negative 3.0), and (3.0 times 10 superscript 4, negative 3.2).",
       "src": "../../media/CNX_Chem_12_04_Exercise02_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:2]]",
@@ -3006,7 +2243,10 @@
       "class": null,
       "alt": "A graph is shown with the label, “t ( h ,)” on the x-axis and, “1 divided by [ O subscript 3 ] M,” on the y-axis. The x-axis shows markings at 0, 2 times 10 superscript 3, 6 times 10 superscript 3, 10 time 10 superscript 3, 14 times 10 superscript 3, and 18 times 10 superscript 3. The y-axis shows markings beginning at 0, increasing by 1 up to and including 9. An increasing linear trend line is drawn through seven points at the coordinates: (0, 1.00), (2.0 times 10 superscript 3, 2.01), (7.6 times 10 superscript 3, 4.83), (1.00 times 10 superscript 4, 6.02), (1.23 times 10 superscript 4 , 6.02), (1.43 times 10 superscript 4, 8.20) and (1.70 times 10 superscript 4, 9.52). A horizontal line segment is drawn through the first point and a vertical line segment is similarly drawn through the last point to make a right triangle on the graph. The horizontal leg of the triangle is labeled “ capital delta t.” The vertical leg is labeled “capital delta 1 divided by [ O subscript 3 ].”",
       "src": "../../media/CNX_Chem_12_04_Exercise04_img_new.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:3]]",
@@ -3014,7 +2254,10 @@
       "class": null,
       "alt": "A structural formula for cyclopropane is shown. Three C H subscript 2 groups are positioned as vertices of an equilateral triangle connected with single bonds represented by line segments.",
       "src": "../../media/CNX_Chem_12_04_Cycloprop_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:4]]",
@@ -3022,7 +2265,10 @@
       "class": null,
       "alt": "A structural formula for cyclobutene is shown. The figure has two C H subscript 2 groups as the upper two vertices of a square structure. These groups are connected by a single, short line segment. Line segments extend below each of these C H subscript 2 groups to C H groups positioned at the lower two vertices of the square structure. The C H groups are connected with a double line segment indicating a double bond.",
       "src": "../../media/CNX_Chem_12_04_ExSolutio2_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
   "inlineTables": [
@@ -3037,13 +2283,13 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-381",
+                "segmentId": "m68791:entry:auto-280",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-382",
+                "segmentId": "m68791:entry:auto-281",
                 "attributes": {
                   "align": "left"
                 }
@@ -3053,13 +2299,13 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-383",
+                "segmentId": "m68791:entry:auto-282",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-384",
+                "segmentId": "m68791:entry:auto-283",
                 "attributes": {
                   "align": "left"
                 }
@@ -3069,13 +2315,13 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-385",
+                "segmentId": "m68791:entry:auto-284",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-386",
+                "segmentId": "m68791:entry:auto-285",
                 "attributes": {
                   "align": "left"
                 }
@@ -3085,13 +2331,13 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-387",
+                "segmentId": "m68791:entry:auto-286",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-388",
+                "segmentId": "m68791:entry:auto-287",
                 "attributes": {
                   "align": "left"
                 }
@@ -3101,13 +2347,13 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-389",
+                "segmentId": "m68791:entry:auto-288",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-390",
+                "segmentId": "m68791:entry:auto-289",
                 "attributes": {
                   "align": "left"
                 }
@@ -3117,13 +2363,13 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-391",
+                "segmentId": "m68791:entry:auto-290",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-392",
+                "segmentId": "m68791:entry:auto-291",
                 "attributes": {
                   "align": "left"
                 }
@@ -3144,31 +2390,31 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-393",
+                "segmentId": "m68791:entry:auto-292",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-394",
+                "segmentId": "m68791:entry:auto-293",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-395",
+                "segmentId": "m68791:entry:auto-294",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-396",
+                "segmentId": "m68791:entry:auto-295",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-397",
+                "segmentId": "m68791:entry:auto-296",
                 "attributes": {
                   "align": "left"
                 }
@@ -3178,31 +2424,31 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-398",
+                "segmentId": "m68791:entry:auto-297",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-399",
+                "segmentId": "m68791:entry:auto-298",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-400",
+                "segmentId": "m68791:entry:auto-299",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-401",
+                "segmentId": "m68791:entry:auto-300",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-402",
+                "segmentId": "m68791:entry:auto-301",
                 "attributes": {
                   "align": "left"
                 }
@@ -3212,25 +2458,25 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-403",
+                "segmentId": "m68791:entry:auto-302",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-404",
+                "segmentId": "m68791:entry:auto-303",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-405",
+                "segmentId": "m68791:entry:auto-304",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-406",
+                "segmentId": "m68791:entry:auto-305",
                 "attributes": {
                   "align": "left"
                 }
@@ -3246,25 +2492,25 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-407",
+                "segmentId": "m68791:entry:auto-306",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-408",
+                "segmentId": "m68791:entry:auto-307",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-409",
+                "segmentId": "m68791:entry:auto-308",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-410",
+                "segmentId": "m68791:entry:auto-309",
                 "attributes": {
                   "align": "left"
                 }
@@ -3285,55 +2531,55 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-411",
+                "segmentId": "m68791:entry:auto-310",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-412",
+                "segmentId": "m68791:entry:auto-311",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-413",
+                "segmentId": "m68791:entry:auto-312",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-414",
+                "segmentId": "m68791:entry:auto-313",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-415",
+                "segmentId": "m68791:entry:auto-314",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-416",
+                "segmentId": "m68791:entry:auto-315",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-417",
+                "segmentId": "m68791:entry:auto-316",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-418",
+                "segmentId": "m68791:entry:auto-317",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-419",
+                "segmentId": "m68791:entry:auto-318",
                 "attributes": {
                   "align": "left"
                 }
@@ -3343,55 +2589,55 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-420",
+                "segmentId": "m68791:entry:auto-319",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-421",
+                "segmentId": "m68791:entry:auto-320",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-422",
+                "segmentId": "m68791:entry:auto-321",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-423",
+                "segmentId": "m68791:entry:auto-322",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-424",
+                "segmentId": "m68791:entry:auto-323",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-425",
+                "segmentId": "m68791:entry:auto-324",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-426",
+                "segmentId": "m68791:entry:auto-325",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-427",
+                "segmentId": "m68791:entry:auto-326",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-428",
+                "segmentId": "m68791:entry:auto-327",
                 "attributes": {
                   "align": "left"
                 }
@@ -3412,13 +2658,13 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-429",
+                "segmentId": "m68791:entry:auto-328",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-430",
+                "segmentId": "m68791:entry:auto-329",
                 "attributes": {
                   "align": "left"
                 }
@@ -3428,13 +2674,13 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-431",
+                "segmentId": "m68791:entry:auto-330",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-432",
+                "segmentId": "m68791:entry:auto-331",
                 "attributes": {
                   "align": "left"
                 }
@@ -3444,13 +2690,13 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-433",
+                "segmentId": "m68791:entry:auto-332",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-434",
+                "segmentId": "m68791:entry:auto-333",
                 "attributes": {
                   "align": "left"
                 }
@@ -3460,13 +2706,13 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-435",
+                "segmentId": "m68791:entry:auto-334",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-436",
+                "segmentId": "m68791:entry:auto-335",
                 "attributes": {
                   "align": "left"
                 }
@@ -3487,55 +2733,55 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-437",
+                "segmentId": "m68791:entry:auto-336",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-438",
+                "segmentId": "m68791:entry:auto-337",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-439",
+                "segmentId": "m68791:entry:auto-338",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-440",
+                "segmentId": "m68791:entry:auto-339",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-441",
+                "segmentId": "m68791:entry:auto-340",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-442",
+                "segmentId": "m68791:entry:auto-341",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-443",
+                "segmentId": "m68791:entry:auto-342",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-444",
+                "segmentId": "m68791:entry:auto-343",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-445",
+                "segmentId": "m68791:entry:auto-344",
                 "attributes": {
                   "align": "left"
                 }
@@ -3545,55 +2791,55 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-446",
+                "segmentId": "m68791:entry:auto-345",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-447",
+                "segmentId": "m68791:entry:auto-346",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-448",
+                "segmentId": "m68791:entry:auto-347",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-449",
+                "segmentId": "m68791:entry:auto-348",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-450",
+                "segmentId": "m68791:entry:auto-349",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-451",
+                "segmentId": "m68791:entry:auto-350",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-452",
+                "segmentId": "m68791:entry:auto-351",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-453",
+                "segmentId": "m68791:entry:auto-352",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-454",
+                "segmentId": "m68791:entry:auto-353",
                 "attributes": {
                   "align": "left"
                 }
@@ -3603,55 +2849,55 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-455",
+                "segmentId": "m68791:entry:auto-354",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-456",
+                "segmentId": "m68791:entry:auto-355",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-457",
+                "segmentId": "m68791:entry:auto-356",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-458",
+                "segmentId": "m68791:entry:auto-357",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-459",
+                "segmentId": "m68791:entry:auto-358",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-460",
+                "segmentId": "m68791:entry:auto-359",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-461",
+                "segmentId": "m68791:entry:auto-360",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-462",
+                "segmentId": "m68791:entry:auto-361",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-463",
+                "segmentId": "m68791:entry:auto-362",
                 "attributes": {
                   "align": "left"
                 }
@@ -3672,13 +2918,13 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-464",
+                "segmentId": "m68791:entry:auto-363",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-465",
+                "segmentId": "m68791:entry:auto-364",
                 "attributes": {
                   "align": "left"
                 }
@@ -3688,13 +2934,13 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-466",
+                "segmentId": "m68791:entry:auto-365",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-467",
+                "segmentId": "m68791:entry:auto-366",
                 "attributes": {
                   "align": "left"
                 }
@@ -3704,13 +2950,13 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-468",
+                "segmentId": "m68791:entry:auto-367",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-469",
+                "segmentId": "m68791:entry:auto-368",
                 "attributes": {
                   "align": "left"
                 }
@@ -3720,13 +2966,13 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-470",
+                "segmentId": "m68791:entry:auto-369",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-471",
+                "segmentId": "m68791:entry:auto-370",
                 "attributes": {
                   "align": "left"
                 }
@@ -3736,13 +2982,13 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-472",
+                "segmentId": "m68791:entry:auto-371",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-473",
+                "segmentId": "m68791:entry:auto-372",
                 "attributes": {
                   "align": "left"
                 }
@@ -3752,13 +2998,13 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-474",
+                "segmentId": "m68791:entry:auto-373",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-475",
+                "segmentId": "m68791:entry:auto-374",
                 "attributes": {
                   "align": "left"
                 }
@@ -3768,13 +3014,13 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-476",
+                "segmentId": "m68791:entry:auto-375",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-477",
+                "segmentId": "m68791:entry:auto-376",
                 "attributes": {
                   "align": "left"
                 }
@@ -3784,13 +3030,13 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-478",
+                "segmentId": "m68791:entry:auto-377",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-479",
+                "segmentId": "m68791:entry:auto-378",
                 "attributes": {
                   "align": "left"
                 }
@@ -3800,13 +3046,13 @@
           {
             "cells": [
               {
-                "segmentId": "m68791:entry:auto-480",
+                "segmentId": "m68791:entry:auto-379",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68791:entry:auto-481",
+                "segmentId": "m68791:entry:auto-380",
                 "attributes": {
                   "align": "left"
                 }

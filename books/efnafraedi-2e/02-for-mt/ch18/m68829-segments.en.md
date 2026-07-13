@@ -14,19 +14,19 @@ Make predictions about the periodicity properties of the representative elements
 We begin this section by examining the behaviors of representative metals in relation to their positions in the periodic table. The primary focus of this section will be the application of periodicity to the representative metals.
 
 <!-- SEG:m68829:para:fs-idp149998640 -->
-It is possible to divide elements into groups according to their electron configurations. The {{term}}representative elements{{/term}} are elements where the [[i:s]] and [[i:p]] orbitals are filling. The transition elements are elements where the [[i:d]] orbitals (groups 3–11 on the periodic table) are filling, and the inner transition metals are the elements where the [[i:f]] orbitals are filling. The [[i:d]] orbitals fill with the elements in group 11; therefore, the elements in group 12 qualify as representative elements because the last electron enters an [[i:s]] orbital. Metals among the representative elements are the {{term}}representative metals{{/term}}. Metallic character results from an element’s ability to lose its outer valence electrons and results in high thermal and electrical conductivity, among other physical and chemical properties. There are 20 nonradioactive representative metals in groups 1, 2, 3, 12, 13, 14, and 15 of the periodic table (the elements shaded in yellow in [[xref:CNX_Chem_18_01_PeriodicPU3]]). The radioactive elements copernicium, flerovium, polonium, and livermorium are also metals but are beyond the scope of this chapter.
+It is possible to divide elements into groups according to their electron configurations. The [[term:representative elements|term-00001]] are elements where the [[i:s]] and [[i:p]] orbitals are filling. The transition elements are elements where the [[i:d]] orbitals (groups 3–11 on the periodic table) are filling, and the inner transition metals are the elements where the [[i:f]] orbitals are filling. The [[i:d]] orbitals fill with the elements in group 11; therefore, the elements in group 12 qualify as representative elements because the last electron enters an [[i:s]] orbital. Metals among the representative elements are the [[term:representative metals|term-00002]]. Metallic character results from an element’s ability to lose its outer valence electrons and results in high thermal and electrical conductivity, among other physical and chemical properties. There are 20 nonradioactive representative metals in groups 1, 2, 3, 12, 13, 14, and 15 of the periodic table (the elements shaded in yellow in [[xref:CNX_Chem_18_01_PeriodicPU3]]). The radioactive elements copernicium, flerovium, polonium, and livermorium are also metals but are beyond the scope of this chapter.
 
 <!-- SEG:m68829:para:fs-idp47516784 -->
-In addition to the representative metals, some of the representative elements are metalloids. A {{term}}metalloid{{/term}} is an element that has properties that are between those of metals and nonmetals; these elements are typically semiconductors.
+In addition to the representative metals, some of the representative elements are metalloids. A [[term:metalloid|term-00003]] is an element that has properties that are between those of metals and nonmetals; these elements are typically semiconductors.
 
 <!-- SEG:m68829:para:fs-idp226047824 -->
-The remaining representative elements are nonmetals. Unlike {{term}}metals{{/term}}, which typically form cations and ionic compounds (containing ionic bonds), nonmetals tend to form anions or molecular compounds. In general, the combination of a metal and a nonmetal produces a salt. A salt is an ionic compound consisting of cations and anions.
+The remaining representative elements are nonmetals. Unlike [[term:metals|term-00004]], which typically form cations and ionic compounds (containing ionic bonds), nonmetals tend to form anions or molecular compounds. In general, the combination of a metal and a nonmetal produces a salt. A salt is an ionic compound consisting of cations and anions.
 
 <!-- SEG:m68829:caption:CNX_Chem_18_01_PeriodicPU3-caption -->
 The location of the representative metals is shown in the periodic table. Nonmetals are shown in green, metalloids in purple, and the transition metals and inner transition metals in blue.
 
 <!-- SEG:m68829:para:fs-idp105201728 -->
-Most of the representative metals do not occur naturally in an uncombined state because they readily react with water and oxygen in the air. However, it is possible to isolate elemental beryllium, magnesium, zinc, cadmium, mercury, aluminum, tin, and lead from their naturally occurring minerals and use them because they react very slowly with air. Part of the reason why these elements react slowly is that these elements react with air to form a protective coating. The formation of this protective coating is {{term}}passivation{{/term}}. The coating is a nonreactive film of oxide or some other compound. Elemental magnesium, aluminum, zinc, and tin are important in the fabrication of many familiar items, including wire, cookware, foil, and many household and personal objects. Although beryllium, cadmium, mercury, and lead are readily available, there are limitations in their use because of their toxicity.
+Most of the representative metals do not occur naturally in an uncombined state because they readily react with water and oxygen in the air. However, it is possible to isolate elemental beryllium, magnesium, zinc, cadmium, mercury, aluminum, tin, and lead from their naturally occurring minerals and use them because they react very slowly with air. Part of the reason why these elements react slowly is that these elements react with air to form a protective coating. The formation of this protective coating is [[term:passivation|term-00005]]. The coating is a nonreactive film of oxide or some other compound. Elemental magnesium, aluminum, zinc, and tin are important in the fabrication of many familiar items, including wire, cookware, foil, and many household and personal objects. Although beryllium, cadmium, mercury, and lead are readily available, there are limitations in their use because of their toxicity.
 
 <!-- SEG:m68829:title:fs-idp227210256-title -->
 Group 1: The Alkali Metals
@@ -65,7 +65,7 @@ This [[link:video|http://openstax.org/l/16alkalih2o]] demonstrates the reactions
 Group 2: The Alkaline Earth Metals
 
 <!-- SEG:m68829:para:fs-idp45202896 -->
-The {{term}}alkaline earth metals{{/term}} (beryllium, magnesium, calcium, strontium, barium, and radium) constitute group 2 of the periodic table. The name alkaline metal comes from the fact that the oxides of the heavier members of the group react with water to form alkaline solutions. The nuclear charge increases when going from group 1 to group 2. Because of this charge increase, the atoms of the alkaline earth metals are smaller and have higher first ionization energies than the alkali metals within the same period. The higher ionization energy makes the alkaline earth metals less reactive than the alkali metals; however, they are still very reactive elements. Their reactivity increases, as expected, with increasing size and decreasing ionization energy. In chemical reactions, these metals readily lose both valence electrons to form compounds in which they exhibit an oxidation state of 2+. Due to their high reactivity, it is common to produce the alkaline earth metals, like the alkali metals, by electrolysis. Even though the ionization energies are low, the two metals with the highest ionization energies (beryllium and magnesium) do form compounds that exhibit some covalent characters. Like the alkali metals, the heavier alkaline earth metals impart color to a flame. As in the case of the alkali metals, this is part of the emission spectrum of these elements. Calcium and strontium produce shades of red, whereas barium produces a green color.
+The [[term:alkaline earth metals|term-00006]] (beryllium, magnesium, calcium, strontium, barium, and radium) constitute group 2 of the periodic table. The name alkaline metal comes from the fact that the oxides of the heavier members of the group react with water to form alkaline solutions. The nuclear charge increases when going from group 1 to group 2. Because of this charge increase, the atoms of the alkaline earth metals are smaller and have higher first ionization energies than the alkali metals within the same period. The higher ionization energy makes the alkaline earth metals less reactive than the alkali metals; however, they are still very reactive elements. Their reactivity increases, as expected, with increasing size and decreasing ionization energy. In chemical reactions, these metals readily lose both valence electrons to form compounds in which they exhibit an oxidation state of 2+. Due to their high reactivity, it is common to produce the alkaline earth metals, like the alkali metals, by electrolysis. Even though the ionization energies are low, the two metals with the highest ionization energies (beryllium and magnesium) do form compounds that exhibit some covalent characters. Like the alkali metals, the heavier alkaline earth metals impart color to a flame. As in the case of the alkali metals, this is part of the emission spectrum of these elements. Calcium and strontium produce shades of red, whereas barium produces a green color.
 
 <!-- SEG:m68829:para:fs-idp261367120 -->
 Magnesium is a silver-white metal that is malleable and ductile at high temperatures. Passivation decreases the reactivity of magnesium metal. Upon exposure to air, a tightly adhering layer of magnesium oxycarbonate forms on the surface of the metal and inhibits further reaction. (The carbonate comes from the reaction of carbon dioxide in the atmosphere.) Magnesium is the lightest of the widely used structural metals, which is why most magnesium production is for lightweight alloys.
@@ -185,7 +185,7 @@ The metallic members of group 14 are tin, lead, and flerovium. Carbon is a typic
 Tin reacts readily with nonmetals and acids to form tin(II) compounds (indicating that it is more easily oxidized than hydrogen) and with nonmetals to form either tin(II) or tin(IV) compounds (shown in [[xref:CNX_Chem_18_01_TinChlorid]]), depending on the stoichiometry and reaction conditions. Lead is less reactive. It is only slightly easier to oxidize than hydrogen, and oxidation normally requires a hot concentrated acid.
 
 <!-- SEG:m68829:para:fs-idp33378208 -->
-Many of these elements exist as allotropes. {{term}}Allotropes{{/term}} are two or more forms of the same element in the same physical state with different chemical and physical properties. There are two common allotropes of tin. These allotropes are grey (brittle) tin and white tin. As with other allotropes, the difference between these forms of tin is in the arrangement of the atoms. White tin is stable above 13.2 °C and is malleable like other metals. At low temperatures, gray tin is the more stable form. Gray tin is brittle and tends to break down to a powder. Consequently, articles made of tin will disintegrate in cold weather, particularly if the cold spell is lengthy. The change progresses slowly from the spot of origin, and the gray tin that is first formed catalyzes further change. In a way, this effect is similar to the spread of an infection in a plant or animal body, leading people to call this process tin disease or tin pest.
+Many of these elements exist as allotropes. [[term:Allotropes|term-00007]] are two or more forms of the same element in the same physical state with different chemical and physical properties. There are two common allotropes of tin. These allotropes are grey (brittle) tin and white tin. As with other allotropes, the difference between these forms of tin is in the arrangement of the atoms. White tin is stable above 13.2 °C and is malleable like other metals. At low temperatures, gray tin is the more stable form. Gray tin is brittle and tends to break down to a powder. Consequently, articles made of tin will disintegrate in cold weather, particularly if the cold spell is lengthy. The change progresses slowly from the spot of origin, and the gray tin that is first formed catalyzes further change. In a way, this effect is similar to the spread of an infection in a plant or animal body, leading people to call this process tin disease or tin pest.
 
 <!-- SEG:m68829:para:fs-idp40395408 -->
 The principal use of tin is in the coating of steel to form tin plate-sheet iron, which constitutes the tin in tin cans. Important tin alloys are bronze (Cu and Sn) and solder (Sn and Pb). Lead is important in the lead storage batteries in automobiles.
@@ -194,7 +194,7 @@ The principal use of tin is in the coating of steel to form tin plate-sheet iron
 Group 15
 
 <!-- SEG:m68829:para:fs-idp16969776 -->
-{{term}}Bismuth{{/term}}, the heaviest member of group 15, is a less reactive metal than the other representative metals. It readily gives up three of its five valence electrons to active nonmetals to form the tri-positive ion, Bi[[sup:3+]]. It forms compounds with the group oxidation state of 5+ only when treated with strong oxidizing agents. The stability of the 3+-oxidation state is another example of the inert pair effect.
+[[term:Bismuth|term-00008]], the heaviest member of group 15, is a less reactive metal than the other representative metals. It readily gives up three of its five valence electrons to active nonmetals to form the tri-positive ion, Bi[[sup:3+]]. It forms compounds with the group oxidation state of 5+ only when treated with strong oxidizing agents. The stability of the 3+-oxidation state is another example of the inert pair effect.
 
 <!-- SEG:m68829:title:fs-idp21711600-title -->
 Key Concepts and Summary
@@ -219,30 +219,6 @@ Predict the formulas for the nine compounds that may form when each species in c
 
 <!-- SEG:m68829:solution:fs-idp228365696 -->
 [[BR]][[MATH:5]][[BR]] [[MATH:6]][[BR]] [[MATH:7]]
-
-<!-- SEG:m68829:entry:auto-75 -->
-1
-
-<!-- SEG:m68829:entry:auto-76 -->
-2
-
-<!-- SEG:m68829:entry:auto-77 -->
-Na
-
-<!-- SEG:m68829:entry:auto-78 -->
-I
-
-<!-- SEG:m68829:entry:auto-79 -->
-Sr
-
-<!-- SEG:m68829:entry:auto-80 -->
-Se
-
-<!-- SEG:m68829:entry:auto-81 -->
-Al
-
-<!-- SEG:m68829:entry:auto-82 -->
-O
 
 <!-- SEG:m68829:problem:fs-idp198100640 -->
 Predict the best choice in each of the following. You may wish to review the chapter on electronic structure for relevant examples.
@@ -388,26 +364,26 @@ representative metal
 <!-- SEG:m68829:glossary-def:fs-idm2235360-def -->
 metal among the representative elements
 
-<!-- SEG:m68829:entry:auto-131 -->
+<!-- SEG:m68829:entry:auto-123 -->
 1
 
-<!-- SEG:m68829:entry:auto-132 -->
+<!-- SEG:m68829:entry:auto-124 -->
 2
 
-<!-- SEG:m68829:entry:auto-133 -->
+<!-- SEG:m68829:entry:auto-125 -->
 Na
 
-<!-- SEG:m68829:entry:auto-134 -->
+<!-- SEG:m68829:entry:auto-126 -->
 I
 
-<!-- SEG:m68829:entry:auto-135 -->
+<!-- SEG:m68829:entry:auto-127 -->
 Sr
 
-<!-- SEG:m68829:entry:auto-136 -->
+<!-- SEG:m68829:entry:auto-128 -->
 Se
 
-<!-- SEG:m68829:entry:auto-137 -->
+<!-- SEG:m68829:entry:auto-129 -->
 Al
 
-<!-- SEG:m68829:entry:auto-138 -->
+<!-- SEG:m68829:entry:auto-130 -->
 O

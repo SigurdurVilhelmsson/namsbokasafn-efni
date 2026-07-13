@@ -14,7 +14,7 @@ Define viscosity, surface tension, and capillary rise
 Describe the roles of intermolecular attractive forces in each of these properties/phenomena
 
 <!-- SEG:m68764:para:fs-idm130666608 -->
-When you pour a glass of water, or fill a car with gasoline, you observe that water and gasoline flow freely. But when you pour syrup on pancakes or add oil to a car engine, you note that syrup and motor oil do not flow as readily. The {{term}}viscosity{{/term}} of a liquid is a measure of its resistance to flow. Water, gasoline, and other liquids that flow freely have a low viscosity. Honey, syrup, motor oil, and other liquids that do not flow freely, like those shown in [[xref:CNX_Chem_10_02_Viscosity]], have higher viscosities. We can measure viscosity by measuring the rate at which a metal ball falls through a liquid (the ball falls more slowly through a more viscous liquid) or by measuring the rate at which a liquid flows through a narrow tube (more viscous liquids flow more slowly).
+When you pour a glass of water, or fill a car with gasoline, you observe that water and gasoline flow freely. But when you pour syrup on pancakes or add oil to a car engine, you note that syrup and motor oil do not flow as readily. The [[term:viscosity|term-00001]] of a liquid is a measure of its resistance to flow. Water, gasoline, and other liquids that flow freely have a low viscosity. Honey, syrup, motor oil, and other liquids that do not flow freely, like those shown in [[xref:CNX_Chem_10_02_Viscosity]], have higher viscosities. We can measure viscosity by measuring the rate at which a metal ball falls through a liquid (the ball falls more slowly through a more viscous liquid) or by measuring the rate at which a liquid flows through a narrow tube (more viscous liquids flow more slowly).
 
 <!-- SEG:m68764:caption:CNX_Chem_10_02_Viscosity-caption -->
 (a) Honey and (b) motor oil are examples of liquids with high viscosities; they flow slowly. (credit a: modification of work by Scott Bauer; credit b: modification of work by David Nagy)
@@ -98,13 +98,13 @@ variable
 ~50–500
 
 <!-- SEG:m68764:para:fs-idm45103712 -->
-The various IMFs between identical molecules of a substance are examples of {{term}}cohesive forces{{/term}}. The molecules within a liquid are surrounded by other molecules and are attracted equally in all directions by the cohesive forces within the liquid. However, the molecules on the surface of a liquid are attracted only by about one-half as many molecules. Because of the unbalanced molecular attractions on the surface molecules, liquids contract to form a shape that minimizes the number of molecules on the surface—that is, the shape with the minimum surface area. A small drop of liquid tends to assume a spherical shape, as shown in [[xref:CNX_Chem_10_02_Droplet]], because in a sphere, the ratio of surface area to volume is at a minimum. Larger drops are more greatly affected by gravity, air resistance, surface interactions, and so on, and as a result, are less spherical.
+The various IMFs between identical molecules of a substance are examples of [[term:cohesive forces|term-00002]]. The molecules within a liquid are surrounded by other molecules and are attracted equally in all directions by the cohesive forces within the liquid. However, the molecules on the surface of a liquid are attracted only by about one-half as many molecules. Because of the unbalanced molecular attractions on the surface molecules, liquids contract to form a shape that minimizes the number of molecules on the surface—that is, the shape with the minimum surface area. A small drop of liquid tends to assume a spherical shape, as shown in [[xref:CNX_Chem_10_02_Droplet]], because in a sphere, the ratio of surface area to volume is at a minimum. Larger drops are more greatly affected by gravity, air resistance, surface interactions, and so on, and as a result, are less spherical.
 
 <!-- SEG:m68764:caption:CNX_Chem_10_02_Droplet-caption -->
 Attractive forces result in a spherical water drop that minimizes surface area; cohesive forces hold the sphere together; adhesive forces keep the drop attached to the web. (credit photo: modification of work by “OliBac”/Flickr)
 
 <!-- SEG:m68764:para:fs-idm78773504 -->
-{{term}}Surface tension{{/term}} is defined as the energy required to increase the surface area of a liquid, or the force required to increase the length of a liquid surface by a given amount. This property results from the cohesive forces between molecules at the surface of a liquid, and it causes the surface of a liquid to behave like a stretched rubber membrane. Surface tensions of several liquids are presented in [[xref:fs-idm139826368]]. Among common liquids, water exhibits a distinctly high surface tension due to strong hydrogen bonding between its molecules. As a result of this high surface tension, the surface of water represents a relatively “tough skin” that can withstand considerable force without breaking. A steel needle carefully placed on water will float. Some insects, like the one shown in [[xref:CNX_Chem_10_02_Strider]], even though they are denser than water, move on its surface because they are supported by the surface tension.
+[[term:Surface tension|term-00003]] is defined as the energy required to increase the surface area of a liquid, or the force required to increase the length of a liquid surface by a given amount. This property results from the cohesive forces between molecules at the surface of a liquid, and it causes the surface of a liquid to behave like a stretched rubber membrane. Surface tensions of several liquids are presented in [[xref:fs-idm139826368]]. Among common liquids, water exhibits a distinctly high surface tension due to strong hydrogen bonding between its molecules. As a result of this high surface tension, the surface of water represents a relatively “tough skin” that can withstand considerable force without breaking. A steel needle carefully placed on water will float. Some insects, like the one shown in [[xref:CNX_Chem_10_02_Strider]], even though they are denser than water, move on its surface because they are supported by the surface tension.
 
 <!-- SEG:m68764:entry:auto-37 -->
 Surface Tensions of Common Substances at 25 °C
@@ -170,13 +170,13 @@ Surface tension (right) prevents this insect, a “water strider,” from sinkin
 Surface tension is affected by a variety of variables, including the introduction of additional substances on the surface. In the late 1800s, Agnes Pockels, who was initially blocked from pursuing a scientific career but studied on her own, began investigating the impact and characteristics of soapy and greasy films in water. Using homemade materials, she developed an instrument known as a trough for measuring surface contaminants and their effects. With the support of renowned scientist Lord Rayleigh, her 1891 paper showed that surface contamination significantly reduces surface tension, and also that changing the characteristics of the surface (compressing or expanding it) also affects surface tension. Decades later, Irving Langmuir and Katharine Blodgett built on Pockels' work in their own trough and important advances in surface chemistry. Langmuir pioneered methods for producing single-molecule layers of film; Blodgett applied these to the development of non-reflective glass (critical for film-making and other applications), and also studied methods related to cleaning surfaces, which are important in semiconductor fabrication.
 
 <!-- SEG:m68764:para:fs-idm245342800 -->
-The IMFs of attraction between two [[i:different]] molecules are called {{term}}adhesive forces{{/term}}. Consider what happens when water comes into contact with some surface. If the adhesive forces between water molecules and the molecules of the surface are weak compared to the cohesive forces between the water molecules, the water does not “wet” the surface. For example, water does not wet waxed surfaces or many plastics such as polyethylene. Water forms drops on these surfaces because the cohesive forces within the drops are greater than the adhesive forces between the water and the plastic. Water spreads out on glass because the adhesive force between water and glass is greater than the cohesive forces within the water. When water is confined in a glass tube, its meniscus (surface) has a concave shape because the water wets the glass and creeps up the side of the tube. On the other hand, the cohesive forces between mercury atoms are much greater than the adhesive forces between mercury and glass. Mercury therefore does not wet glass, and it forms a convex meniscus when confined in a tube because the cohesive forces within the mercury tend to draw it into a drop ([[xref:CNX_Chem_10_02_Meniscus]]).
+The IMFs of attraction between two [[i:different]] molecules are called [[term:adhesive forces|term-00004]]. Consider what happens when water comes into contact with some surface. If the adhesive forces between water molecules and the molecules of the surface are weak compared to the cohesive forces between the water molecules, the water does not “wet” the surface. For example, water does not wet waxed surfaces or many plastics such as polyethylene. Water forms drops on these surfaces because the cohesive forces within the drops are greater than the adhesive forces between the water and the plastic. Water spreads out on glass because the adhesive force between water and glass is greater than the cohesive forces within the water. When water is confined in a glass tube, its meniscus (surface) has a concave shape because the water wets the glass and creeps up the side of the tube. On the other hand, the cohesive forces between mercury atoms are much greater than the adhesive forces between mercury and glass. Mercury therefore does not wet glass, and it forms a convex meniscus when confined in a tube because the cohesive forces within the mercury tend to draw it into a drop ([[xref:CNX_Chem_10_02_Meniscus]]).
 
 <!-- SEG:m68764:caption:CNX_Chem_10_02_Meniscus-caption -->
 Differences in the relative strengths of cohesive and adhesive forces result in different meniscus shapes for mercury (left) and water (right) in glass tubes. (credit: Mark Ott)
 
 <!-- SEG:m68764:para:fs-idp26089824 -->
-If you place one end of a paper towel in spilled wine, as shown in [[xref:CNX_Chem_10_02_Wicking]], the liquid wicks up the paper towel. A similar process occurs in a cloth towel when you use it to dry off after a shower. These are examples of {{term}}capillary action{{/term}}—when a liquid flows within a porous material due to the attraction of the liquid molecules to the surface of the material and to other liquid molecules. The adhesive forces between the liquid and the porous material, combined with the cohesive forces within the liquid, may be strong enough to move the liquid upward against gravity.
+If you place one end of a paper towel in spilled wine, as shown in [[xref:CNX_Chem_10_02_Wicking]], the liquid wicks up the paper towel. A similar process occurs in a cloth towel when you use it to dry off after a shower. These are examples of [[term:capillary action|term-00005]]—when a liquid flows within a porous material due to the attraction of the liquid molecules to the surface of the material and to other liquid molecules. The adhesive forces between the liquid and the porous material, combined with the cohesive forces within the liquid, may be strong enough to move the liquid upward against gravity.
 
 <!-- SEG:m68764:caption:CNX_Chem_10_02_Wicking-caption -->
 Wine wicks up a paper towel (left) because of the strong attractions of water (and ethanol) molecules to the −OH groups on the towel’s cellulose fibers and the strong attractions of water molecules to other water (and ethanol) molecules (right). (credit photo: modification of work by Mark Blaser)
@@ -298,51 +298,6 @@ The surface tension and viscosity of water at several different temperatures are
 <!-- SEG:m68764:solution:fs-idm52338928 -->
 (a) As the water reaches higher temperatures, the increased kinetic energies of its molecules are more effective in overcoming hydrogen bonding, and so its surface tension decreases. Surface tension and intermolecular forces are directly related. (b) The same trend in viscosity is seen as in surface tension, and for the same reason.
 
-<!-- SEG:m68764:entry:auto-101 -->
-Water
-
-<!-- SEG:m68764:entry:auto-102 -->
-Surface Tension (mN/m)
-
-<!-- SEG:m68764:entry:auto-103 -->
-Viscosity (mPa s)
-
-<!-- SEG:m68764:entry:auto-104 -->
-0 °C
-
-<!-- SEG:m68764:entry:auto-105 -->
-75.6
-
-<!-- SEG:m68764:entry:auto-106 -->
-1.79
-
-<!-- SEG:m68764:entry:auto-107 -->
-20 °C
-
-<!-- SEG:m68764:entry:auto-108 -->
-72.8
-
-<!-- SEG:m68764:entry:auto-109 -->
-1.00
-
-<!-- SEG:m68764:entry:auto-110 -->
-60 °C
-
-<!-- SEG:m68764:entry:auto-111 -->
-66.2
-
-<!-- SEG:m68764:entry:auto-112 -->
-0.47
-
-<!-- SEG:m68764:entry:auto-113 -->
-100 °C
-
-<!-- SEG:m68764:entry:auto-114 -->
-58.9
-
-<!-- SEG:m68764:entry:auto-115 -->
-0.28
-
 <!-- SEG:m68764:problem:fs-idm237890176 -->
 At 25 °C, how high will water rise in a glass capillary tube with an inner diameter of 0.63 mm? Refer to [[xref:fs-idp7578512]] for the required information.
 
@@ -382,47 +337,47 @@ viscosity
 <!-- SEG:m68764:glossary-def:fs-idm129199712-def -->
 measure of a liquid’s resistance to flow
 
-<!-- SEG:m68764:entry:auto-129 -->
+<!-- SEG:m68764:entry:auto-114 -->
 Water
 
-<!-- SEG:m68764:entry:auto-130 -->
+<!-- SEG:m68764:entry:auto-115 -->
 Surface Tension (mN/m)
 
-<!-- SEG:m68764:entry:auto-131 -->
+<!-- SEG:m68764:entry:auto-116 -->
 Viscosity (mPa s)
 
-<!-- SEG:m68764:entry:auto-132 -->
+<!-- SEG:m68764:entry:auto-117 -->
 0 °C
 
-<!-- SEG:m68764:entry:auto-133 -->
+<!-- SEG:m68764:entry:auto-118 -->
 75.6
 
-<!-- SEG:m68764:entry:auto-134 -->
+<!-- SEG:m68764:entry:auto-119 -->
 1.79
 
-<!-- SEG:m68764:entry:auto-135 -->
+<!-- SEG:m68764:entry:auto-120 -->
 20 °C
 
-<!-- SEG:m68764:entry:auto-136 -->
+<!-- SEG:m68764:entry:auto-121 -->
 72.8
 
-<!-- SEG:m68764:entry:auto-137 -->
+<!-- SEG:m68764:entry:auto-122 -->
 1.00
 
-<!-- SEG:m68764:entry:auto-138 -->
+<!-- SEG:m68764:entry:auto-123 -->
 60 °C
 
-<!-- SEG:m68764:entry:auto-139 -->
+<!-- SEG:m68764:entry:auto-124 -->
 66.2
 
-<!-- SEG:m68764:entry:auto-140 -->
+<!-- SEG:m68764:entry:auto-125 -->
 0.47
 
-<!-- SEG:m68764:entry:auto-141 -->
+<!-- SEG:m68764:entry:auto-126 -->
 100 °C
 
-<!-- SEG:m68764:entry:auto-142 -->
+<!-- SEG:m68764:entry:auto-127 -->
 58.9
 
-<!-- SEG:m68764:entry:auto-143 -->
+<!-- SEG:m68764:entry:auto-128 -->
 0.28
