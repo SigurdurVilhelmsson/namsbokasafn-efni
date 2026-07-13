@@ -349,6 +349,26 @@ Throughout human history, people have tried to convert matter into more useful f
       { name: 'id byte-intact', test: (input, output) => output.includes('|term-00099]]') },
     ],
   },
+  {
+    id: 'T1.18',
+    name: 'Paired-bracket term/fn translate inner text AND survive ([[term]]x[[/term]]) — B4-D11',
+    input:
+      'The [[term]]viscosity[[/term]] of a liquid. Water boils at 100 degrees. [[fn]]At standard pressure.[[/fn]]',
+    checks: [
+      {
+        name: '[[term]] delimiter survives',
+        test: (input, output) => output.includes('[[term]]') && output.includes('[[/term]]'),
+      },
+      {
+        name: '[[fn]] delimiter survives',
+        test: (input, output) => output.includes('[[fn]]') && output.includes('[[/fn]]'),
+      },
+      {
+        name: 'term inner text is translated (not still "viscosity")',
+        test: (input, output) => !/\[\[term\]\]viscosity\[\[\/term\]\]/.test(output),
+      },
+    ],
+  },
 ];
 
 // ─── Test Runner ────────────────────────────────────────────────────
