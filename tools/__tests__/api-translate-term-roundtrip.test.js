@@ -1,4 +1,7 @@
 import { describe, it, expect } from 'vitest';
+import fs from 'fs';
+import os from 'os';
+import path from 'path';
 import { stripTermFnToPaired, reattachIds } from '../api-translate.js';
 
 const SEG = (id, body) => `<!-- SEG:${id} -->\n${body}\n`;
@@ -183,5 +186,26 @@ describe('translateChunk round-trip (mocked client)', () => {
     expect(seen.text).not.toContain('[[term:'); // id did NOT ride the wire
     expect(res.text).toContain('[[term:seigja|term-00001]]'); // returned id-anchored + translated
     expect(res.mismatches).toEqual([]);
+  });
+});
+
+describe('translateModule surfaces reattach mismatches', () => {
+  it('returns mismatches from a chunk whose paired marker was dropped', async () => {
+    const { translateModule } = await import('../api-translate.js');
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'b4d11-'));
+    const inPath = path.join(dir, 'm9-segments.en.md');
+    const outPath = path.join(dir, 'm9-segments.is.md');
+    fs.writeFileSync(inPath, '<!-- SEG:m9:para:a -->\nA [[term:one|id1]] and [[term:two|id2]].\n');
+    const fakeClient = {
+      async translateAuto(text) {
+        // drop the first closing delimiter → only 1 paired term parses vs 2 ids → count-guard trips
+        return { text: text.replace('[[/term]]', ''), usage: 1 };
+      },
+    };
+    const res = await translateModule(fakeClient, inPath, outPath, null, false);
+    expect(res.mismatches.length).toBeGreaterThan(0);
+    // on-disk output degraded that segment to original (valid markers, correct ids)
+    const written = fs.readFileSync(outPath, 'utf8');
+    expect(written).toContain('[[term:one|id1]]');
   });
 });

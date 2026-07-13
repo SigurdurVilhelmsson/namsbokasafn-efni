@@ -768,7 +768,7 @@ export function moduleIdFromOutputPath(outputPath) {
  * Automatically splits large modules at SEG boundaries to avoid API truncation.
  * Filters glossary to terms in source text. Retries without glossary on truncation.
  */
-async function translateModule(
+export async function translateModule(
   client,
   inputPath,
   outputPath,
@@ -789,6 +789,7 @@ async function translateModule(
 
   let totalUsage = 0;
   const translatedChunks = [];
+  const mismatches = [];
 
   for (let i = 0; i < chunks.length; i++) {
     const chunkLabel = needsSplitting ? `chunk ${i + 1}/${chunks.length}` : moduleId;
@@ -800,6 +801,7 @@ async function translateModule(
     const result = await translateChunk(client, chunks[i], glossary, verbose, chunkLabel);
     translatedChunks.push(result.text);
     totalUsage += result.usage || 0;
+    if (result.mismatches && result.mismatches.length) mismatches.push(...result.mismatches);
   }
 
   // Reassemble chunks
@@ -845,7 +847,7 @@ async function translateModule(
     fs.copyFileSync(linksSource, linksDest);
   }
 
-  return { chars: input.length, usage: totalUsage, markersNormalized };
+  return { chars: input.length, usage: totalUsage, markersNormalized, mismatches };
 }
 
 // ─── Pipeline Status ────────────────────────────────────────────────
@@ -1043,6 +1045,7 @@ async function main() {
     lockedSkipped: 0,
     failed: 0,
     markersNormalized: 0,
+    mismatches: 0,
     errors: [],
   };
 
@@ -1068,7 +1071,7 @@ async function main() {
     process.stdout.write(`  ${mod.chapterDir}/${mod.moduleId}... `);
 
     try {
-      const { chars, markersNormalized } = await translateModule(
+      const { chars, markersNormalized, mismatches } = await translateModule(
         client,
         mod.path,
         mod.outputPath,
@@ -1080,6 +1083,14 @@ async function main() {
       console.log(`✅ (${chars.toLocaleString()} chars${fixedNote})`);
       results.translated++;
       results.markersNormalized += markersNormalized;
+      if (mismatches && mismatches.length) {
+        results.mismatches += mismatches.length;
+        for (const mm of mismatches) {
+          console.error(
+            `  WARNING: id-reattach mismatch in ${mm.segId} (${mm.type}: expected ${mm.expected}, got ${mm.got}) — segment left untranslated (B4-D11 count-guard)`
+          );
+        }
+      }
       succeededChapters.add(mod.chapterDir);
     } catch (err) {
       console.log(`❌ ${err.message}`);
@@ -1102,6 +1113,11 @@ async function main() {
   if (results.markersNormalized > 0) {
     console.log(
       `  Markers un-glued: ${results.markersNormalized} (MT API ran them onto prev line)`
+    );
+  }
+  if (results.mismatches > 0) {
+    console.log(
+      `  Marker id-reattach mismatches: ${results.mismatches} (segments degraded to source — see warnings)`
     );
   }
   console.log(`  API usage:  ${usage.totalChars.toLocaleString()} chars`);
@@ -1132,7 +1148,7 @@ async function main() {
     }
   }
 
-  if (results.failed > 0) process.exit(1);
+  if (results.failed > 0 || results.mismatches > 0) process.exit(1);
 }
 
 // Only run when executed directly
