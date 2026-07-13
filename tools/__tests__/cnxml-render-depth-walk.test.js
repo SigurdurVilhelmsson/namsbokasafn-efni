@@ -112,4 +112,35 @@ describe('depth-aware section walk', () => {
     expect(html).toContain('note-chemist-portrait unnumbered'); // class value intact through renderNote
     expect(html).toContain('Efni.');
   });
+
+  // C1/C2 — double-encode at the serialize→escapeAttr seam. The depth-aware
+  // walk re-serializes each node (xmldom entity-encodes text/attrs), so values
+  // derived from it arrive ALREADY entity-encoded (`&gt;`); escapeAttr must
+  // decode once first, or it re-encodes the `&` → `&amp;gt;` (double-encode).
+  it('data-latex is single-encoded at the serialize→escapeAttr seam (no double-encode)', () => {
+    // vefur's "Afrita LaTeX" copy button reads data-latex verbatim to the
+    // clipboard — a double-encoded `&amp;gt;` copies BROKEN LaTeX for the reader.
+    const html = render(
+      '<equation id="eqGT"><m:math><m:mrow><m:mtext>a</m:mtext>' +
+        '<m:mo>></m:mo><m:mtext>b</m:mtext></m:mrow></m:math></equation>'
+    ).html;
+    expect(html).toContain('mathjax-display'); // guard: equation reached renderEquation
+    const dl = html.match(/data-latex="([^"]*)"/);
+    expect(dl).not.toBeNull();
+    expect(dl[1]).toContain('&gt;'); // single-encoded → decodes to '>'
+    expect(dl[1]).not.toContain('&amp;gt;'); // NOT double-encoded
+  });
+
+  it('media alt is single-encoded at the serialize→escapeAttr seam (no double-encode)', () => {
+    // Screen-reader alt: a double-encoded `&amp;lt;` is read out as the literal
+    // characters "&lt;" instead of "<".
+    const html = render(
+      '<figure id="fA"><media alt="x &lt; y og a &gt; b">' +
+        '<image src="alt_seam.jpg" mime-type="image/jpeg"/></media></figure>'
+    ).html;
+    const img = html.match(/<img[^>]*alt="([^"]*)"[^>]*>/);
+    expect(img).not.toBeNull();
+    expect(img[1]).toContain('&lt;'); // single-encoded → decodes to '<'
+    expect(img[1]).not.toContain('&amp;lt;'); // NOT double-encoded
+  });
 });

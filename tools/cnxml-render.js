@@ -54,6 +54,7 @@ import {
   localizeNumbersInMathML,
   localizeMathMLText,
 } from './lib/mathml-to-latex.js';
+import { decodeEntities } from './lib/math-label-inventory.js';
 import { buildModuleSections } from './lib/module-sections.js';
 import { safeWrite, logBackup } from './lib/safeWrite.js';
 import {
@@ -972,8 +973,13 @@ function renderFigure(figure, context) {
         const normalizedSrc = normalizeImageSrc(src, BOOK_SLUG, chapterStr);
         const alt = mediaAttrs.alt || '';
 
+        // Decode-then-escape at the serialize→escapeAttr seam: the depth-aware
+        // walk hands renderers a re-serialized node, so `alt` arrives already
+        // entity-encoded (e.g. `&gt;`). escapeAttr alone would re-encode the `&`
+        // → `&amp;gt;` (double-encode). decodeEntities is idempotent on values
+        // with no entities, so byte-identical for plain alt text. (P0-1 C1/C2)
         lines.push(
-          `  <img src="${escapeAttr(normalizedSrc)}" alt="${escapeAttr(alt)}" loading="lazy">`
+          `  <img src="${escapeAttr(normalizedSrc)}" alt="${escapeAttr(decodeEntities(alt))}" loading="lazy">`
         );
       }
     }
@@ -1761,7 +1767,13 @@ function renderEquation(eq, context) {
     context.renderStats.success++;
   }
 
-  const eqContent = `<span class="mathjax-display" data-latex="${escapeAttr(latex)}">${mathHtml}</span>`;
+  // Decode-then-escape at the serialize→escapeAttr seam (same fix as media alt):
+  // the depth-aware walk serializes the equation node, so `latex` — derived from
+  // the re-serialized MathML — arrives with entity-encoded operators (e.g. `&gt;`).
+  // escapeAttr alone would re-encode the `&` → `&amp;gt;`, breaking vefur's
+  // "Afrita LaTeX" copy button. decodeEntities is idempotent on entity-free
+  // values, so byte-identical for latex without `<`/`>`/`&`. (P0-1 C1/C2)
+  const eqContent = `<span class="mathjax-display" data-latex="${escapeAttr(decodeEntities(latex))}">${mathHtml}</span>`;
   const numberSpan = isUnnumbered ? '' : '<span class="equation-number"></span>';
 
   // Get equation number from chapter-wide map for numbered equations only
