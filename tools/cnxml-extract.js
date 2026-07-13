@@ -1211,10 +1211,14 @@ function processExample(
   for (const para of paras) {
     const titleMatch = para.content.match(/^\s*<title>([\s\S]*?)<\/title>/);
     if (titleMatch && !exampleTitleFound) {
-      // RC4-m68860: a title-ONLY para is content (a heading), never a donor —
-      // donating it both fabricated an example title and dropped the para.
+      // RC4-m68860 / M2: the donation decision is made at the FIRST
+      // para-with-leading-title ONLY. A title-ONLY first para is content (a
+      // heading), never a donor — donating it both fabricated an example title
+      // and dropped the para. BREAK (not continue) so a LATER title+body para
+      // cannot become the donor and fabricate a wrong example title; fall through
+      // to the standalone-title fallback / no-title instead.
       const rest = para.content.replace(/^\s*<title>[\s\S]*?<\/title>\s*/, '');
-      if (!rest.trim()) continue;
+      if (!rest.trim()) break;
       // This is the example's main title (e.g., "Measuring Heat")
       const titleText = extractInlineText(titleMatch[1], mathMap, counters);
       const titleId = addSegment(

@@ -83,6 +83,24 @@ describe('RC4-m68860: title-only first para inside <example>', () => {
     expect(example.title).toBeNull();
   });
 
+  it('M2: title-only first para blocks a LATER title+body para from donating', () => {
+    // Pre-fix the donor scan `continue`d past the title-only first para and let
+    // para2 donate "Solution" as the example title (a fabricated title, and para2
+    // lost its step heading). The donation decision must be made at the FIRST
+    // para-with-leading-title only: if it is title-only, NO para donates.
+    const cnxml = wrapDoc(`<example id="ex-5">
+<para id="p-1"><title>Strategy</title></para>
+<para id="p-2"><title>Solution</title>Work it out.</para>
+</example>`);
+    const { structure } = extractSegments(cnxml);
+    const example = findExample(structure.content, 'ex-5');
+    expect(example.title).toBeNull(); // no fabricated title from para2
+    const para1 = example.content.find((el) => el.id === 'p-1');
+    const para2 = example.content.find((el) => el.id === 'p-2');
+    expect(para1.title.text).toBe('Strategy'); // para1 keeps its para-title
+    expect(para2.title.text).toBe('Solution'); // para2 keeps its para-title (not donated)
+  });
+
   it('a direct <title> child still becomes the example title', () => {
     const cnxml = wrapDoc(`<example id="ex-4">
 <title>Real Example Title</title>
