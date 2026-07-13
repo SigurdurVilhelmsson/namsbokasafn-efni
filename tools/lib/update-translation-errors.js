@@ -163,7 +163,7 @@ export function updateTranslationErrors(bookDir, options = {}) {
   const result = {
     generated,
     pipeline:
-      'extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]])',
+      'extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]], [[term:]], [[fn:]])',
     tracks: {
       ...priorTracks,
       [track]: trackSection,

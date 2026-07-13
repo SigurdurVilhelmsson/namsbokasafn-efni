@@ -1464,6 +1464,22 @@
     html = html.replace(/\[\[b:(.+?)\]\]/g, '<strong>$1</strong>');
     html = html.replace(/\[\[sub:(.+?)\]\]/g, '<sub>$1</sub>');
     html = html.replace(/\[\[sup:(.+?)\]\]/g, '<sup>$1</sup>');
+    // B4 id-anchored markers
+    html = html.replace(
+      /\[\[term:([^|\]]+)\|([^\]]+)\]\]/g,
+      '<span class="preview-term" title="$2">$1</span>'
+    );
+    html = html.replace(/\[\[term:([^\]]+)\]\]/g, '<span class="preview-term">$1</span>');
+    html = html.replace(
+      /\[\[fn:([^|\]]+)\|([^\]]+)\]\]/g,
+      '<span class="xref-chip" title="Neðanmálsgrein: $2">&#8224;$1</span>'
+    );
+    html = html.replace(
+      /\[\[fn:([^\]]+)\]\]/g,
+      '<span class="xref-chip" title="Neðanmálsgrein">&#8224;$1</span>'
+    );
+    html = html.replace(/\[\[u:([^\]]+)\]\]/g, '<u>$1</u>');
+    html = html.replace(/\[\[em:([^|\]]+)\|[^\]]+\]\]/g, '<em>$1</em>');
     // ── Brace family (term/footnote + legacy emphasis from old files) ──
     html = html.replace(/\{\{term\}\}(.+?)\{\{\/term\}\}/g, '<span class="preview-term">$1</span>');
     html = html.replace(

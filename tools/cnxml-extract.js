@@ -303,17 +303,18 @@ function extractInlineText(
     (match, effect, inner) => {
       if (effect === 'italics') return `[[i:${inner}]]`;
       if (effect === 'bold') return `[[b:${inner}]]`;
-      if (effect === 'underline') return `++${inner}++`;
+      if (effect === 'underline') return `[[u:${inner}]]`;
       return inner;
     }
   );
   // Handle emphasis with class= but no effect= (e.g., <emphasis class="emphasis-one">)
-  // Uses {{text}} marker and stores class in sidecar for restoration
+  // B4/RC3: [[em:text|class]] carries the class in the marker (API-survivable);
+  // sidecar collection is kept unchanged as the legacy-content fallback.
   text = text.replace(/<emphasis([^>]*)>([\s\S]*?)<\/emphasis>/g, (match, attrs, inner) => {
     const parsedAttrs = parseAttributes(attrs);
     if (parsedAttrs.class) {
       collectedEmphasisAttrs.push({ class: parsedAttrs.class });
-      return `{=${inner}=}`;
+      return `[[em:${inner}|${parsedAttrs.class}]]`;
     }
     // No class, no effect — default to italic (common in CNXML for bare emphasis)
     return `[[i:${inner}]]`;
@@ -331,7 +332,11 @@ function extractInlineText(
     } else {
       collectedTermAttrs.push(null);
     }
-    return `{{term}}${stripTags(inner).trim()}{{/term}}`;
+    const termText = stripTags(inner).trim();
+    // B4: id rides IN the marker (text-first pipe, like [[xref:text|id]]) so
+    // injection restores ids content-anchored, not positionally. class (always
+    // co-occurring with id in the corpus) stays in the sidecar, recovered by id.
+    return parsedAttrs.id ? `[[term:${termText}|${parsedAttrs.id}]]` : `[[term:${termText}]]`;
   });
 
   // Handle links using API-safe bracket format [[type:content]].
@@ -398,7 +403,8 @@ function extractInlineText(
     } else {
       collectedFootnoteAttrs.push(null);
     }
-    return ` {{fn}}${stripTags(inner).trim()}{{/fn}}`;
+    const fnText = stripTags(inner).trim();
+    return parsedAttrs.id ? ` [[fn:${fnText}|${parsedAttrs.id}]]` : ` [[fn:${fnText}]]`;
   });
 
   // Strip remaining tags
@@ -1201,9 +1207,18 @@ function processExample(
   // The example title comes from the FIRST paragraph that has a <title> child
   // Use regex that allows whitespace between para tag and title
   let exampleTitleFound = false;
+  let donorPara = null;
   for (const para of paras) {
     const titleMatch = para.content.match(/^\s*<title>([\s\S]*?)<\/title>/);
     if (titleMatch && !exampleTitleFound) {
+      // RC4-m68860 / M2: the donation decision is made at the FIRST
+      // para-with-leading-title ONLY. A title-ONLY first para is content (a
+      // heading), never a donor — donating it both fabricated an example title
+      // and dropped the para. BREAK (not continue) so a LATER title+body para
+      // cannot become the donor and fabricate a wrong example title; fall through
+      // to the standalone-title fallback / no-title instead.
+      const rest = para.content.replace(/^\s*<title>[\s\S]*?<\/title>\s*/, '');
+      if (!rest.trim()) break;
       // This is the example's main title (e.g., "Measuring Heat")
       const titleText = extractInlineText(titleMatch[1], mathMap, counters);
       const titleId = addSegment(
@@ -1213,12 +1228,16 @@ function processExample(
       );
       exampleStructure.title = { segmentId: titleId, text: titleText };
       exampleTitleFound = true;
+      donorPara = para;
     }
   }
 
   // Fallback: look for standalone title element
   if (!exampleTitleFound) {
-    const standaloneTitle = example.content.match(/<title>([\s\S]*?)<\/title>/);
+    // RC4-m68860: strip paras first so a para-nested title can't be stolen
+    // as the example title (it stays with its para as a para-title).
+    const contentWithoutParas = example.content.replace(/<para[^>]*>[\s\S]*?<\/para>/g, '');
+    const standaloneTitle = contentWithoutParas.match(/<title>([\s\S]*?)<\/title>/);
     if (standaloneTitle) {
       const titleText = extractInlineText(standaloneTitle[1], mathMap, counters);
       const titleId = addSegment(
@@ -1231,19 +1250,17 @@ function processExample(
   }
 
   // Process all paragraphs
-  // The first para's title was already used as the example title, so strip it
+  // The donor para's title was already used as the example title, so strip it
   // Other para titles (like "Check Your Learning") should be preserved
-  let firstParaWithTitleProcessed = false;
   for (const para of paras) {
     const titleMatch = para.content.match(/^\s*<title>([\s\S]*?)<\/title>/);
     let paraTitle = null;
     let contentWithoutTitle = para.content;
 
     if (titleMatch) {
-      if (!firstParaWithTitleProcessed && exampleTitleFound) {
-        // This is the first para whose title was used as the example title - strip it
+      if (para === donorPara) {
+        // This para's title was donated as the example title — strip it
         contentWithoutTitle = para.content.replace(/^\s*<title>[\s\S]*?<\/title>\s*/, '');
-        firstParaWithTitleProcessed = true;
       } else {
         // This is a different para with its own title (e.g., "Check Your Learning")
         // Preserve this title in the structure

@@ -29,6 +29,7 @@
 import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
+import { fileURLToPath } from 'url';
 
 let BOOKS_DIR = 'books/efnafraedi-2e';
 let BOOK_SLUG = 'efnafraedi-2e';
@@ -169,6 +170,12 @@ function checkPlaceholderLeaks(html) {
   const commentLeaks = html.match(/<!--\s*SEG:[^>]+-->/g) || [];
   for (const leak of commentLeaks) {
     leaks.push({ type: 'SEG-COMMENT', value: leak.substring(0, 50) });
+  }
+
+  // B4 inline markers that should have been consumed at inject
+  const inlineMarkerLeaks = html.match(/\[\[(?:term|fn|u|em):[^\]]*\]\]/g) || [];
+  for (const leak of inlineMarkerLeaks) {
+    leaks.push({ type: 'INLINE-MARKER', value: leak.substring(0, 60) });
   }
 
   // Unresolved cross-references showing as raw IDs
@@ -540,4 +547,9 @@ async function main() {
   }
 }
 
-main();
+// Run as CLI when executed directly (allows safe import for unit testing).
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  main();
+}
+
+export { checkPlaceholderLeaks };

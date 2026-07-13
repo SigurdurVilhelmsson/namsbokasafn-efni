@@ -76,4 +76,55 @@ describe('highlightMarkersInPlace — marker detection', () => {
     const out = highlightMarkersInPlace('[[xref:fs-idm222]]');
     expect(stripTags(out)).toBe(escapeHtml('[[xref:fs-idm222]]'));
   });
+
+  it('highlights [[term:text|id]] with delimiter spans, text plain', () => {
+    const html = highlightMarkersInPlace('A [[term:seigja|term-1]] here');
+    expect(html).toContain('marker-hl-delim');
+    expect(stripTags(html)).toBe(escapeHtml('A [[term:seigja|term-1]] here'));
+  });
+
+  it('preserves the invariant for [[fn:|id]], [[u:]], [[em:|class]] and no-payload forms', () => {
+    for (const t of [
+      'x [[fn:nóta|fs-1]] y',
+      'x [[u:undir]] y',
+      'x [[em:R-O-R|emphasis-one]] y',
+      'x [[term:plain]] y',
+      'x [[fn:plain]] y',
+    ]) {
+      expect(stripTags(highlightMarkersInPlace(t))).toBe(escapeHtml(t));
+    }
+  });
+});
+
+describe('highlightMarkersInPlace — B4 marker detection (non-vacuous per type)', () => {
+  it('highlights [[term:text|id]] delimiters', () => {
+    expect(highlightMarkersInPlace('[[term:seigja|term-1]]')).toContain('marker-hl-delim');
+  });
+
+  it('highlights [[term:text]] (no-payload) delimiters', () => {
+    expect(highlightMarkersInPlace('[[term:seigja]]')).toContain('marker-hl-delim');
+  });
+
+  it('highlights [[fn:text|id]] delimiters', () => {
+    expect(highlightMarkersInPlace('[[fn:nóta|fs-1]]')).toContain('marker-hl-delim');
+  });
+
+  it('highlights [[fn:text]] (no-payload) delimiters', () => {
+    expect(highlightMarkersInPlace('[[fn:nóta]]')).toContain('marker-hl-delim');
+  });
+
+  it('highlights [[u:text]] delimiters', () => {
+    expect(highlightMarkersInPlace('[[u:undir]]')).toContain('marker-hl-delim');
+  });
+
+  it('highlights [[em:text|class]] delimiters', () => {
+    expect(highlightMarkersInPlace('[[em:R-O-R|emphasis-one]]')).toContain('marker-hl-delim');
+  });
+
+  it('preserves a surrogate-pair emoji plus a dagger character inside a B4 marker', () => {
+    // † (U+2020, single BMP code unit) plus a surrogate-pair emoji to exercise
+    // multi-code-unit text through the character-preservation invariant.
+    const t = 'x [[fn:nóta † 😀|fs-1]] y';
+    expect(stripTags(highlightMarkersInPlace(t))).toBe(escapeHtml(t));
+  });
 });

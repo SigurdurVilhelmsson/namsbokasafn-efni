@@ -70,24 +70,66 @@ describe('extractInlineText', () => {
     expect(result).toContain('[[BR]]');
   });
 
-  it('extracts <term> as {{term}}text{{/term}} API-safe markers', () => {
+  it('extracts <term id> as id-anchored [[term:text|id]] markers (B4)', () => {
     const mathMap = new Map();
     const counters = { math: 0, media: 0, segment: 0 };
-    const input = 'A <term id="t1">molecule</term> is important';
+    const input = 'A <term id="term-00001">molecule</term> is important';
     const result = extractInlineText(input, mathMap, counters);
-    expect(result).toContain('{{term}}molecule{{/term}}');
+    expect(result).toContain('[[term:molecule|term-00001]]');
     expect(result).not.toContain('<term');
-    expect(result).not.toContain('__');
+    expect(result).not.toContain('{{term}}');
   });
 
-  it('extracts <footnote> as {{fn}}text{{/fn}} API-safe markers', () => {
+  it('extracts attr-less <term> as [[term:text]] (no payload)', () => {
     const mathMap = new Map();
     const counters = { math: 0, media: 0, segment: 0 };
-    const input = 'Some text<footnote id="fn1">A note about this</footnote> here';
+    const result = extractInlineText('A <term>molecule</term> here', mathMap, counters);
+    expect(result).toContain('[[term:molecule]]');
+  });
+
+  it('extracts <term class+id> as [[term:text|id]] — class stays sidecar-only', () => {
+    const mathMap = new Map();
+    const counters = { math: 0, media: 0, segment: 0 };
+    const input = '<term class="no-emphasis" id="term-00006">water</term>';
     const result = extractInlineText(input, mathMap, counters);
-    expect(result).toContain('{{fn}}A note about this{{/fn}}');
+    expect(result).toContain('[[term:water|term-00006]]');
+    expect(result).not.toContain('no-emphasis'); // class rides the sidecar, not the marker
+  });
+
+  it('keeps nested sub markers inside id-anchored term text', () => {
+    const mathMap = new Map();
+    const counters = { math: 0, media: 0, segment: 0 };
+    const input = '<term id="t1">H<sub>2</sub>O</term>';
+    const result = extractInlineText(input, mathMap, counters);
+    expect(result).toContain('[[term:H[[sub:2]]O|t1]]');
+  });
+
+  it('extracts <footnote id> as [[fn:text|id]] markers (B4)', () => {
+    const mathMap = new Map();
+    const counters = { math: 0, media: 0, segment: 0 };
+    const input = 'Some text<footnote id="fs-idp2355696">A note about this</footnote> here';
+    const result = extractInlineText(input, mathMap, counters);
+    expect(result).toContain('[[fn:A note about this|fs-idp2355696]]');
     expect(result).not.toContain('<footnote');
-    expect(result).not.toContain('[footnote:');
+    expect(result).not.toContain('{{fn}}');
+  });
+
+  it('extracts underline emphasis as [[u:text]] (replaces ++text++)', () => {
+    const mathMap = new Map();
+    const counters = { math: 0, media: 0, segment: 0 };
+    const input = '<emphasis effect="underline">key point</emphasis>';
+    const result = extractInlineText(input, mathMap, counters);
+    expect(result).toContain('[[u:key point]]');
+    expect(result).not.toContain('++');
+  });
+
+  it('extracts class-only emphasis as [[em:text|class]] (replaces {=text=}, RC3)', () => {
+    const mathMap = new Map();
+    const counters = { math: 0, media: 0, segment: 0 };
+    const input = '<emphasis class="emphasis-one">R—O—R</emphasis>';
+    const result = extractInlineText(input, mathMap, counters);
+    expect(result).toContain('[[em:R—O—R|emphasis-one]]');
+    expect(result).not.toContain('{=');
   });
 
   it('handles inline media with inlineMediaMap', () => {

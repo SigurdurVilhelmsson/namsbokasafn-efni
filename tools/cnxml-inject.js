@@ -218,9 +218,9 @@ function restoreTermMarkers(isSegments, enSegments) {
     // Only strip __term__ from IS when IS also has {{term}} markers — this proves
     // the IS was API-translated with new extraction, and __term__ are glossary artifacts.
     // If IS has __term__ but NO {{term}}, it's a legacy translation — keep them.
-    const enHasNewTerms = enText.includes('{{term}}');
+    const enHasNewTerms = enText.includes('{{term}}') || enText.includes('[[term:');
     if (enHasNewTerms) {
-      const isHasNewTerms = isText.includes('{{term}}');
+      const isHasNewTerms = isText.includes('{{term}}') || isText.includes('[[term:');
       if (isHasNewTerms) {
         // Both use new format: any __term__ in IS is API glossary overproduction
         const legacyTerms = isText.match(/__[^_]+__/g);
@@ -790,6 +790,10 @@ function stripTermMarkersToText(text, equations, { trim = false } = {}) {
     .replace(/\[\[b:([^\]]+)\]\]/g, '$1')
     .replace(/\{\{i\}\}([\s\S]*?)\{\{\/i\}\}/g, '$1')
     .replace(/\{\{b\}\}([\s\S]*?)\{\{\/b\}\}/g, '$1')
+    // B4: unwrap id-anchored markers to their display text BEFORE the
+    // catch-all below deletes unknown [[type:…]] markers wholesale.
+    .replace(/\[\[(?:term|fn|em):([^\]|]*)\|[^\]]*\]\]/g, '$1')
+    .replace(/\[\[(?:term|fn|u):([^\]]*)\]\]/g, '$1')
     .replace(/\[\[(?!MATH:)[A-Za-z][\w]*:[^\]]*\]\]/g, ''); // drop MEDIA/other, NOT MATH
   if (trim) out = out.trim();
   return out.toLowerCase().replace(/\[\[math:(\d+)\]\]/g, (m, n) => {
@@ -823,11 +827,25 @@ function stripTermMarkersToText(text, equations, { trim = false } = {}) {
 function annotateInlineTerms(isSegments, enSegments, equations = {}) {
   let annotatedCount = 0;
 
-  // EN markers: {{term}}text{{/term}}, __term__, **bold**, {{b}}bold{{/b}}
-  const enMarkerPattern =
-    /(\{\{term\}\}([\s\S]*?)\{\{\/term\}\}|__([^_]+)__|\*\*(.+?)\*\*|\{\{b\}\}(.+?)\{\{\/b\}\})/g;
-  // IS: both new {{term}} and legacy __term__ formats
-  const isTermPattern = /(\{\{term\}\}([\s\S]*?)\{\{\/term\}\}|__([^_]+)__)/g;
+  // C2/C3: the [[term:…]] text token must tolerate ONE level of nested non-term
+  // markers ([[sub:]], [[i:]], [[MATH:n]]) — annotateInlineTerms runs on RAW
+  // segment text where those inner markers are still unresolved brackets. The old
+  // content-exclusion group `(?!\[\[|\]\])` matched NEITHER side, causing silent
+  // annotation loss AND positional mis-pairing (a WRONG "(e. …)" onto the wrong
+  // term) when only one dialect/side matched. `|` stays excluded so the trailing
+  // (?:\|id)? still anchors the id split. MATH-alt first: the base class excludes
+  // `[` so a nested marker is only reachable via the token alternatives.
+  const TERM_TEXT = String.raw`(?:\[\[MATH:\d+\]\]|\[\[[a-z]+:[^\]]*\]\]|[^\[\]|])+?`;
+  // EN markers: {{term}}text{{/term}}, __term__, **bold**, {{b}}bold{{/b}}, [[term:text|id]]
+  const enMarkerPattern = new RegExp(
+    String.raw`(\{\{term\}\}([\s\S]*?)\{\{\/term\}\}|__([^_]+)__|\*\*(.+?)\*\*|\{\{b\}\}(.+?)\{\{\/b\}\}|\[\[term:(${TERM_TEXT})(?:\|[A-Za-z0-9_.:-]+)?\]\])`,
+    'g'
+  );
+  // IS: new {{term}}, legacy __term__, and B4 bracket [[term:text|id]] formats
+  const isTermPattern = new RegExp(
+    String.raw`(\{\{term\}\}([\s\S]*?)\{\{\/term\}\}|__([^_]+)__|\[\[term:(${TERM_TEXT})(?:\|([A-Za-z0-9_.:-]+))?\]\])`,
+    'g'
+  );
 
   for (const [segId, isText] of isSegments) {
     const enText = enSegments.get(segId);
@@ -844,37 +862,54 @@ function annotateInlineTerms(isSegments, enSegments, equations = {}) {
       } else if (enMatch[3] !== undefined) {
         // __term__ match
         enTermTexts.push(enMatch[3]);
+      } else if (enMatch[6] !== undefined) {
+        // [[term:text|id]] match — text field only
+        enTermTexts.push(enMatch[6]);
       }
       // **bold** or {{b}} — skip
     }
 
     if (enTermTexts.length === 0) continue;
 
-    // Replace IS term markers positionally (handles both {{term}} and __term__ formats)
+    // Replace IS term markers positionally (handles {{term}}, __term__, and
+    // [[term:text|id]] formats)
     let termIndex = 0;
-    const annotated = isText.replace(isTermPattern, (match, _full, newInner, legacyInner) => {
-      const inner = newInner !== undefined ? newInner : legacyInner;
-      const isNewFormat = newInner !== undefined;
-      if (termIndex >= enTermTexts.length) return match;
+    const annotated = isText.replace(
+      isTermPattern,
+      (match, _full, newInner, legacyInner, bracketInner, bracketId) => {
+        const inner =
+          newInner !== undefined
+            ? newInner
+            : legacyInner !== undefined
+              ? legacyInner
+              : bracketInner;
+        if (termIndex >= enTermTexts.length) return match;
 
-      // Strip inline markers from EN term text to plain text for annotations.
-      // Annotations are reference hints "(e. english term)" — they don't exist in
-      // source CNXML, so any CNXML tags (sub, sup, emphasis) inside them would be
-      // overcounted by the fidelity check. Plain text avoids this side-effect and
-      // also prevents raw API markers from leaking into IS segments.
-      const enTermRaw = enTermTexts[termIndex];
-      const enTerm = stripTermMarkersToText(enTermRaw, equations); // trim:false — site A's current behavior (#17)
-      termIndex++;
+        // Strip inline markers from EN term text to plain text for annotations.
+        // Annotations are reference hints "(e. english term)" — they don't exist in
+        // source CNXML, so any CNXML tags (sub, sup, emphasis) inside them would be
+        // overcounted by the fidelity check. Plain text avoids this side-effect and
+        // also prevents raw API markers from leaking into IS segments.
+        const enTermRaw = enTermTexts[termIndex];
+        const enTerm = stripTermMarkersToText(enTermRaw, equations); // trim:false — site A's current behavior (#17)
+        termIndex++;
 
-      // Skip if IS and EN terms are the same (case-insensitive)
-      if (inner.toLowerCase() === enTerm) return match;
+        // Skip if IS and EN terms are the same (case-insensitive)
+        if (inner.toLowerCase() === enTerm) return match;
 
-      annotatedCount++;
-      if (isNewFormat) {
-        return `{{term}}${inner} (e. ${enTerm}){{/term}}`;
+        annotatedCount++;
+        if (bracketInner !== undefined) {
+          // B4: annotation lands INSIDE the text field so the id stays opaque
+          return bracketId !== undefined
+            ? `[[term:${inner} (e. ${enTerm})|${bracketId}]]`
+            : `[[term:${inner} (e. ${enTerm})]]`;
+        }
+        if (newInner !== undefined) {
+          return `{{term}}${inner} (e. ${enTerm}){{/term}}`;
+        }
+        return `__${inner} (e. ${enTerm})__`;
       }
-      return `__${inner} (e. ${enTerm})__`;
-    });
+    );
 
     if (annotated !== isText) {
       isSegments.set(segId, annotated);
@@ -1170,7 +1205,8 @@ function reverseInlineMarkup(
   inlineTables = [],
   inlineAttrs = null,
   blockEquationIds = null,
-  blockMediaIds = null
+  blockMediaIds = null,
+  context = null
 ) {
   let result = text;
 
@@ -1178,7 +1214,33 @@ function reverseInlineMarkup(
   // API segments use {{i}}, {{b}}, {{term}}, {{fn}}, [[sub:]], [[sup:]] — so legacy
   // patterns (*text*, ~text~, ^text^) would be false positives from translated content.
   const hasApiMarkers =
-    /\{\{[ib]\}\}|\{\{[ib]:|\{\{term\}\}|\{\{fn\}\}|\[\[sub:|\[\[sup:|\[\[i:|\[\[b:/.test(text);
+    /\{\{[ib]\}\}|\{\{[ib]:|\{\{term\}\}|\{\{fn\}\}|\[\[sub:|\[\[sup:|\[\[i:|\[\[b:|\[\[term:|\[\[fn:|\[\[u:|\[\[em:/.test(
+      text
+    );
+
+  // B4: id-anchored markers make the positional attr restore unnecessary AND
+  // unsafe (an attr-less [[term:text]] must not consume a positional slot).
+  // One extraction produced the segment, so formats never mix within it.
+  const hasIdAnchoredMarkers = /\[\[(?:term|fn):/.test(text);
+
+  // A new-format segment carries class in the [[em:text|class]] marker itself;
+  // its emphases sidecar entries are vestigial and must not trigger the
+  // positional path or its mismatch warning.
+  const hasEmBrackets = /\[\[em:/.test(text);
+
+  // B4 hardening: report a positional count mismatch loudly and let the caller
+  // aggregate it. Missing attrs beat silently-wrong attrs.
+  const reportAttrMismatch = (family, expected, found) => {
+    const segLabel = context && context.segmentId ? ` [${context.segmentId}]` : '';
+    console.warn(
+      `  Warning: inline-attrs count mismatch${segLabel} — ${family}: sidecar has ${expected}, ` +
+        `text has ${found}. Attaching NO ${family} attributes for this segment ` +
+        `(a dropped/duplicated marker would mis-assign ids positionally).`
+    );
+    if (context && Array.isArray(context.attrMismatches)) {
+      context.attrMismatches.push({ segmentId: context.segmentId, family, expected, found });
+    }
+  };
 
   // Remove backslash escapes from MT (e.g., \[\[MATH:1\]\] → [[MATH:1]])
   result = result.replace(/\\\[/g, '[');
@@ -1347,20 +1409,31 @@ function reverseInlineMarkup(
     result = result.replace(/\*([^*]+)\*/g, '<emphasis effect="italics">$1</emphasis>');
   }
 
-  // Convert class-only emphasis markers {=text=} back to CNXML
-  // Restore class from sidecar by occurrence index
-  if (inlineAttrs && inlineAttrs.emphases) {
-    let emphasisIndex = 0;
-    result = result.replace(/\{=(.+?)=\}/g, (match, inner) => {
-      const attrs = inlineAttrs.emphases[emphasisIndex] || null;
-      emphasisIndex++;
-      if (attrs && attrs.class) {
-        return `<emphasis class="${attrs.class}">${inner}</emphasis>`;
-      }
-      return `<emphasis>${inner}</emphasis>`;
-    });
+  // Convert class-only emphasis markers {=text=} back to CNXML.
+  // Restore class from sidecar by occurrence index — HARDENED: on a count
+  // mismatch, convert without class instead of mis-assigning positionally.
+  // New-format [[em:]] segments skip this path entirely (the marker carries
+  // its own class; the sidecar is vestigial for them — see hasEmBrackets).
+  if (inlineAttrs && inlineAttrs.emphases && !hasEmBrackets) {
+    const found = (result.match(/\{=(.+?)=\}/g) || []).length;
+    const expected = inlineAttrs.emphases.length;
+    if (found !== expected) {
+      reportAttrMismatch('emphases', expected, found);
+      result = result.replace(/\{=(.+?)=\}/g, '<emphasis>$1</emphasis>');
+    } else {
+      let emphasisIndex = 0;
+      result = result.replace(/\{=(.+?)=\}/g, (match, inner) => {
+        const attrs = inlineAttrs.emphases[emphasisIndex] || null;
+        emphasisIndex++;
+        if (attrs && attrs.class) {
+          return `<emphasis class="${attrs.class}">${inner}</emphasis>`;
+        }
+        return `<emphasis>${inner}</emphasis>`;
+      });
+    }
   } else {
-    // No sidecar — convert to plain emphasis
+    // No sidecar (or new-format [[em:]] segment) — convert any {=...=} to
+    // plain emphasis (no-op for [[em:]] segments; formats never mix).
     result = result.replace(/\{=(.+?)=\}/g, '<emphasis>$1</emphasis>');
   }
 
@@ -1464,35 +1537,101 @@ function reverseInlineMarkup(
     '<footnote>$1</footnote>'
   );
 
+  // ── B4: id-anchored bracket markers (term/fn/u/em) ────────────────
+  // Text-first pipe like [[xref:text|id]]; the id (an XML NCName) rides in the
+  // marker so restoration is content-anchored — a dropped marker can no longer
+  // shift downstream ids. Runs AFTER link conversion + resolveBracketEmphasis,
+  // so inner markers in the text field have already resolved to XML and the
+  // content-exclusion groups below only ever see [[/]]-free text. GREEDY text
+  // + trailing id-charset constraint anchors the split on the LAST pipe
+  // (MathML restored into term text may legitimately contain |).
+  result = result.replace(
+    /\[\[term:((?:(?!\[\[|\]\])[\s\S])+)\|([A-Za-z0-9_.:-]+)\]\]/g,
+    (match, inner, id) => {
+      const entry =
+        inlineAttrs && inlineAttrs.terms ? inlineAttrs.terms.find((t) => t && t.id === id) : null;
+      if (inlineAttrs && inlineAttrs.terms && !entry) {
+        // Loud miss: either the API corrupted the id or the sidecar is stale.
+        console.warn(
+          `  Warning: [[term:…|${id}]] id not found in inline-attrs sidecar — ` +
+            `keeping the marker-carried id without class`
+        );
+      }
+      const classAttr = entry && entry.class ? ` class="${entry.class}"` : '';
+      return `<term${classAttr} id="${id}">${inner}</term>`;
+    }
+  );
+  // B4 hardening: the bare (no-payload) fallback content group must ALSO
+  // exclude `|` — otherwise a marker whose id failed the charset check above
+  // (e.g. a corrupted/space-containing id) would fall through here and the
+  // pipe + mangled id would be silently swallowed into visible text instead
+  // of surviving for assertNoMarkerResidue to catch.
+  result = result.replace(/\[\[term:((?:(?!\[\[|\]\])[^|])+)\]\]/g, '<term>$1</term>');
+
+  result = result.replace(
+    /\[\[fn:((?:(?!\[\[|\]\])[\s\S])+)\|([A-Za-z0-9_.:-]+)\]\]/g,
+    '<footnote id="$2">$1</footnote>'
+  );
+  result = result.replace(/\[\[fn:((?:(?!\[\[|\]\])[^|])+)\]\]/g, '<footnote>$1</footnote>');
+
+  result = result.replace(
+    /\[\[u:((?:(?!\[\[|\]\])[\s\S])+)\]\]/g,
+    '<emphasis effect="underline">$1</emphasis>'
+  );
+  result = result.replace(
+    /\[\[em:((?:(?!\[\[|\]\])[\s\S])+)\|([^\]|]+)\]\]/g,
+    '<emphasis class="$2">$1</emphasis>'
+  );
+
+  // C1: an emphasis marker that wrapped a term/footnote (e.g. [[i:[[term:…|id]]]]
+  // from <emphasis><term>…</term></emphasis>) is only NOW leaf-level — its inner
+  // [[term:]]/[[fn:]] became <term>/<footnote> XML in the block above. Re-resolve
+  // emphasis to finish it, mirroring the F5 precedent applied after link conversion
+  // (:1477). Without this pass the [[i:]]/[[b:]] wrapper survives as residue and
+  // assertNoMarkerResidue aborts the whole --chapter batch.
+  result = resolveBracketEmphasis(result);
+
   // Restore inline attributes from sidecar metadata (term class, footnote id, etc.)
-  if (inlineAttrs) {
+  if (inlineAttrs && !hasIdAnchoredMarkers) {
     // Restore term attributes by occurrence index
     if (inlineAttrs.terms) {
-      let termIndex = 0;
-      result = result.replace(/<term>/g, () => {
-        const attrs = inlineAttrs.terms[termIndex] || null;
-        termIndex++;
-        if (attrs) {
-          const parts = ['<term'];
-          if (attrs.class) parts.push(` class="${attrs.class}"`);
-          if (attrs.id) parts.push(` id="${attrs.id}"`);
-          parts.push('>');
-          return parts.join('');
-        }
-        return '<term>';
-      });
+      const found = (result.match(/<term>/g) || []).length;
+      const expected = inlineAttrs.terms.length;
+      if (found !== expected) {
+        reportAttrMismatch('terms', expected, found);
+      } else {
+        let termIndex = 0;
+        result = result.replace(/<term>/g, () => {
+          const attrs = inlineAttrs.terms[termIndex] || null;
+          termIndex++;
+          if (attrs) {
+            const parts = ['<term'];
+            if (attrs.class) parts.push(` class="${attrs.class}"`);
+            if (attrs.id) parts.push(` id="${attrs.id}"`);
+            parts.push('>');
+            return parts.join('');
+          }
+          return '<term>';
+        });
+      }
     }
     // Restore footnote attributes by occurrence index
     if (inlineAttrs.footnotes) {
-      let footnoteIndex = 0;
-      result = result.replace(/<footnote>/g, () => {
-        const attrs = inlineAttrs.footnotes[footnoteIndex] || null;
-        footnoteIndex++;
-        if (attrs && attrs.id) {
-          return `<footnote id="${attrs.id}">`;
-        }
-        return '<footnote>';
-      });
+      const found = (result.match(/<footnote>/g) || []).length;
+      const expected = inlineAttrs.footnotes.length;
+      if (found !== expected) {
+        reportAttrMismatch('footnotes', expected, found);
+      } else {
+        let footnoteIndex = 0;
+        result = result.replace(/<footnote>/g, () => {
+          const attrs = inlineAttrs.footnotes[footnoteIndex] || null;
+          footnoteIndex++;
+          if (attrs && attrs.id) {
+            return `<footnote id="${attrs.id}">`;
+          }
+          return '<footnote>';
+        });
+      }
     }
   }
 
@@ -1681,6 +1820,8 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
     mathUnresolved: [],
     residues: [], // exact untranslated-EN (gates complete)
     residueWarnings: [], // ratio "mostly English" (non-gating)
+    attrMismatches: [], // B4: positional-restore count mismatches (terms/footnotes/emphases)
+    tableCellGaps: [], // RC4/B4-D5: row.cells under-counts <entry> elements (gates complete)
     _residueSeen: new Set(), // de-dupe segments referenced more than once
   };
 
@@ -1720,7 +1861,8 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
       structure.inlineTables || [],
       inlineAttrs[segmentId] || null,
       blockEquationIds,
-      blockMediaIds
+      blockMediaIds,
+      { segmentId, attrMismatches: stats.attrMismatches }
     );
   };
 
@@ -1809,6 +1951,7 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
     inlineMedia: structure.inlineMedia || [],
     inlineTables: structure.inlineTables || [],
     imageMapping: options.imageMapping || new Map(),
+    tableCellGaps: stats.tableCellGaps, // RC4/B4-D5 gap sink for buildTable
   };
 
   for (const element of structure.content) {
@@ -1907,10 +2050,13 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
     unresolvedMathPlaceholders: stats.mathUnresolved,
     residues: stats.residues.slice().sort(),
     residueWarnings: stats.residueWarnings,
+    attrMismatches: stats.attrMismatches,
+    tableCellGaps: stats.tableCellGaps,
     complete:
       stats.segmentsMissing.length === 0 &&
       stats.mathUnresolved.length === 0 &&
-      stats.residues.length === 0,
+      stats.residues.length === 0 &&
+      stats.tableCellGaps.length === 0,
   };
 
   // Always report missing segments (not just verbose)
@@ -1928,6 +2074,25 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
     console.error(
       `  WARNING: ${stats.mathUnresolved.length} unresolved [[MATH:N]] placeholder(s) in output`
     );
+  }
+
+  // RC4/B4-D5: structure.json under-counts a row's cells vs its <entry>
+  // elements — untranslated source entry emitted; module gated incomplete.
+  if (stats.tableCellGaps.length > 0) {
+    console.error(
+      `  WARNING: ${stats.tableCellGaps.length} table cell gap(s) — structure.json ` +
+        `under-counts row cells; untranslated source entry emitted (RC4/B4-D5). ` +
+        `Re-extract this module's structure.json.`
+    );
+    for (const g of stats.tableCellGaps.slice(0, 10)) {
+      console.error(
+        `    - table ${g.tableId} row ${g.rowIndex} entry ${g.entryIndex} ` +
+          `(${g.recordedCells} cell(s) recorded): "${g.text}"`
+      );
+    }
+    if (stats.tableCellGaps.length > 10) {
+      console.error(`    ... and ${stats.tableCellGaps.length - 10} more`);
+    }
   }
 
   if (verbose) {
@@ -1965,7 +2130,7 @@ function buildElement(element, getSeg, equations, originalCnxml, ctx) {
       if (ctx && ctx.tablesHandledInContainers && ctx.tablesHandledInContainers.has(element.id)) {
         return null;
       }
-      return buildTable(element, getSeg, originalCnxml);
+      return buildTable(element, getSeg, originalCnxml, ctx && ctx.tableCellGaps);
     case 'example':
       return buildExampleDom(element, getSeg, equations, originalCnxml, ctx);
     case 'exercise':
@@ -2007,7 +2172,7 @@ function buildPara(element, getSeg, equations, originalCnxml, ctx) {
     text = text.replace(/\[\[TABLE:([^\]]+)\]\]/g, (match, tableId) => {
       const tableData = ctx.inlineTables.find((t) => t.tableId === tableId);
       if (tableData && tableData.structure) {
-        return buildTable(tableData.structure, getSeg, originalCnxml);
+        return buildTable(tableData.structure, getSeg, originalCnxml, ctx.tableCellGaps);
       }
       return match; // Keep placeholder if not found
     });
@@ -2149,7 +2314,17 @@ function buildFigure(element, getSeg, originalCnxml, ctx) {
 /**
  * Build a table element.
  */
-function buildTable(element, getSeg, originalCnxml) {
+/**
+ * Build a table by extracting the source table block and replacing entry
+ * content positionally from the structure's row/cell records.
+ * @param {Array|undefined} tableCellGaps - optional sink (buildCnxml's
+ *   stats.tableCellGaps, threaded via ctx): records RC4-class gaps where a
+ *   row's <entry> has NO structure cell record and non-blank source text
+ *   (see the !cell branch below). Absent for isolated-builder/library calls,
+ *   which then keep the lenient pre-fix pass-through (same contract as
+ *   translateKeptContainerTables' missing-ctx no-op).
+ */
+function buildTable(element, getSeg, originalCnxml, tableCellGaps) {
   // For tables, extract from original and replace cell content
   if (element.id) {
     // Match table by ID - id attribute can appear anywhere in the opening tag
@@ -2201,6 +2376,34 @@ function buildTable(element, getSeg, originalCnxml) {
                   if (cellText) {
                     cellIdx++;
                     return `<entry${entryAttrs}>${cellText}</entry>`;
+                  }
+                } else if (!cell && tableCellGaps) {
+                  // RC4 / m68863 class defect: structure.rows[rowIdx].cells has no
+                  // entry at this position at all (as opposed to a legitimate
+                  // { segmentId: null } placeholder for a blank cell — that case is
+                  // handled by the `cell && cell.segmentId` branch above and falls
+                  // through silently, which is correct). This means extraction
+                  // under-counted cells relative to the actual <entry> elements in
+                  // this row, so the raw untranslated SOURCE entry is about to be
+                  // emitted (exactly what happened to m68863's "ΔH (kJ/mol)"
+                  // header cell). Do NOT throw here — a throw at this depth
+                  // bypasses the CLI's per-module isolation (fires before the
+                  // incomplete-check, isn't gated by --allow-incomplete, and
+                  // aborts the whole chapter batch). Instead: record the gap so
+                  // buildCnxml gates report.complete on it, and emit the source
+                  // entry as before — the CLI's established skip+continue+
+                  // exitCode=1 path then handles the module. Only a gap with
+                  // visible text counts; a genuinely blank uncovered entry is
+                  // harmless.
+                  const rawText = entryContent.replace(/<[^>]*>/g, '').trim();
+                  if (rawText) {
+                    tableCellGaps.push({
+                      tableId: element.id,
+                      rowIndex: rowIdx,
+                      entryIndex: cellIdx,
+                      recordedCells: row.cells ? row.cells.length : 0,
+                      text: rawText.slice(0, 60),
+                    });
                   }
                 }
                 cellIdx++;
@@ -2254,7 +2457,7 @@ function translateKeptContainerTables(
         `translateKeptContainerTables: no structure node for kept container table id="${tableId}" in module ${moduleId} — cannot translate; refusing to emit source table.`
       );
     }
-    const translated = buildTable(node, getSeg, originalCnxml);
+    const translated = buildTable(node, getSeg, originalCnxml, ctx.tableCellGaps);
     if (!translated) {
       throw new Error(
         `translateKeptContainerTables: buildTable returned null for table id="${tableId}" in module ${moduleId}.`
@@ -2288,7 +2491,7 @@ function expandInlineTables(text, ctx, getSeg, originalCnxml, keptTableIds) {
     const tableData = ctx.inlineTables.find((t) => t.tableId === tableId);
     if (tableData && tableData.structure) {
       keptTableIds.add(tableId);
-      return buildTable(tableData.structure, getSeg, originalCnxml);
+      return buildTable(tableData.structure, getSeg, originalCnxml, ctx.tableCellGaps);
     }
     return match; // unknown id → leave placeholder; the gate will catch it
   });
@@ -3998,6 +4201,13 @@ async function main() {
         );
       }
 
+      if (result.report.attrMismatches && result.report.attrMismatches.length > 0) {
+        console.error(
+          `  WARNING: ${result.report.attrMismatches.length} inline-attr count mismatch(es) — ` +
+            `term/footnote ids NOT attached for those segments (see warnings above)`
+        );
+      }
+
       if (!result.report.complete && !args.allowIncomplete) {
         console.error(`${moduleId}: SKIPPED — incomplete injection`);
         if (result.report.segmentsMissing.length > 0) {
@@ -4008,6 +4218,11 @@ async function main() {
         }
         if (result.report.residues.length > 0) {
           console.error(`  Untranslated-EN residue: ${result.report.residues.length}`);
+        }
+        if (result.report.tableCellGaps.length > 0) {
+          console.error(
+            `  Table cell gaps (RC4/B4-D5, re-extract needed): ${result.report.tableCellGaps.length}`
+          );
         }
         console.error('  Use --allow-incomplete to write anyway');
         process.exitCode = 1;

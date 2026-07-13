@@ -232,6 +232,25 @@ describe('validateChapter', () => {
     expect(htmlCheck.issues[0].message).toContain('[[MATH:N]] placeholder');
   });
 
+  it('detects B4 inline markers ([[term:]]/[[fn:]]/[[u:]]/[[em:]]) leaked into HTML output', async () => {
+    const pubDir = setupHtmlPub(tmpDir, 'test-book', 1, 'mt-preview');
+    fs.writeFileSync(
+      path.join(pubDir, '1-1-intro.html'),
+      '<main><p>The [[term:viscosity|term-1]] of a fluid.</p></main>'
+    );
+
+    const results = await validateChapter({
+      book: 'test-book',
+      chapter: 1,
+      track: 'mt-preview',
+      projectRoot: tmpDir,
+    });
+
+    const htmlCheck = results.checks['html-placeholder-leaks'];
+    expect(htmlCheck.passed).toBe(false);
+    expect(htmlCheck.issues[0].message).toContain('B4 inline marker');
+  });
+
   it('passes when HTML output has no leaked placeholders', async () => {
     const pubDir = setupHtmlPub(tmpDir, 'test-book', 1, 'mt-preview');
     fs.writeFileSync(

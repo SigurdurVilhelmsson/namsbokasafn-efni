@@ -36,6 +36,28 @@ describe('checkNumbers', () => {
   it('passes when all EN numbers appear in IS', () => {
     expect(qa.checkNumbers('7 and 250', 'Eitthvað 250 og 7')).toHaveLength(0);
   });
+
+  it('id digits do not enter the number-consistency check', () => {
+    // fs-idm123456 digits must not count as content numbers on either side.
+    const findings = qa.checkNumbers(
+      'The [[term:rate|fs-idm123456]] doubles at 25 degrees.',
+      'Hraðinn [[term:hraði|fs-idm123456]] tvöfaldast við 25 gráður.'
+    );
+    expect(findings).toEqual([]);
+  });
+});
+
+describe('stripMarkers', () => {
+  it('unwraps B4 id-anchored markers to display text', () => {
+    expect(qa.stripMarkers('A [[term:viscosity|term-1]] here')).toBe('A viscosity here');
+    expect(qa.stripMarkers('[[fn:a note|fs-1]] and [[u:key]] and [[em:x|emphasis-one]]')).toBe(
+      'a note and key and x'
+    );
+  });
+  // M1/M4 mirror: MATH-in-term text kept verbatim (no id/pipe leak into extractNumbers).
+  it('keeps [[MATH:n]] verbatim inside a term marker', () => {
+    expect(qa.stripMarkers('[[term:rate [[MATH:1]]|t9]]')).toBe('rate [[MATH:1]]');
+  });
 });
 
 describe('checkEnResidue', () => {

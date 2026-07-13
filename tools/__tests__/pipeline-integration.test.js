@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll, afterAll } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll, vi } from 'vitest';
 import { execSync, execFileSync } from 'child_process';
 import {
   readFileSync,
@@ -665,6 +665,28 @@ describe('restoreTermMarkers', () => {
     expect(strippedCount).toBe(0);
     expect(restoredCount).toBe(0);
   });
+
+  it('restoreTermMarkers strips glossary __artifacts__ when both sides use bracket terms', () => {
+    const isSegments = new Map([['s1', '[[term:seigja|t1]] og __aukaorð__']]);
+    const enSegments = new Map([['s1', '[[term:viscosity|t1]] and more']]);
+    const { strippedCount } = restoreTermMarkers(isSegments, enSegments);
+    expect(strippedCount).toBe(1);
+    expect(isSegments.get('s1')).toBe('[[term:seigja|t1]] og aukaorð');
+  });
+
+  // Divergence check: proves the bracket-aware branch is actually reached
+  // (not just producing output identical to the legacy positional path).
+  // EN mixes a bracket term with a legacy __term__ marker — the bracket
+  // presence check must still route this to the "both new format" branch,
+  // which strips ALL __text__ from IS (2), not just the legacy positional
+  // count (which would keep 1 and strip 1).
+  it('restoreTermMarkers routes to bracket-aware branch when EN has bracket + legacy __term__', () => {
+    const isSegments = new Map([['s1', '[[term:seigja|t1]] og __a__ og __b__']]);
+    const enSegments = new Map([['s1', '[[term:viscosity|t1]] and __x__ more']]);
+    const { strippedCount } = restoreTermMarkers(isSegments, enSegments);
+    expect(strippedCount).toBe(2);
+    expect(isSegments.get('s1')).toBe('[[term:seigja|t1]] og a og b');
+  });
 });
 
 // =====================================================================
@@ -778,6 +800,21 @@ describe('annotateInlineTerms', () => {
       '{{term}}Orka (e. energy){{/term}} og {{term}}vinna (e. work){{/term}} eru skyld.'
     );
     expect(annotatedCount).toBe(2);
+  });
+
+  it('annotateInlineTerms annotates bracket-format terms inside the text field', () => {
+    const isSegments = new Map([['s1', 'Þetta er [[term:seigja|term-1]] hugtak']]);
+    const enSegments = new Map([['s1', 'This is a [[term:viscosity|term-1]] concept']]);
+    const { annotatedCount } = annotateInlineTerms(isSegments, enSegments);
+    expect(annotatedCount).toBe(1);
+    expect(isSegments.get('s1')).toContain('[[term:seigja (e. viscosity)|term-1]]');
+  });
+
+  it('annotateInlineTerms handles bracket EN + legacy {{term}} IS (mixed dialects)', () => {
+    const isSegments = new Map([['s1', 'Þetta er {{term}}seigja{{/term}} hugtak']]);
+    const enSegments = new Map([['s1', 'This is a [[term:viscosity|term-1]] concept']]);
+    annotateInlineTerms(isSegments, enSegments);
+    expect(isSegments.get('s1')).toContain('{{term}}seigja (e. viscosity){{/term}}');
   });
 });
 
@@ -1226,14 +1263,22 @@ describe('reverseInlineMarkup XML escaping', () => {
     expect(result).toContain('<footnote>note</footnote>');
   });
 
-  it('should handle more terms than attrs entries (extra terms get no attrs)', () => {
+  it('should attach NO term attrs when sidecar count does not match (B4 hardening)', () => {
+    // B4 hardened reverseInlineMarkup: a count mismatch (1 sidecar entry vs 3
+    // terms in text) used to attach the first entry positionally and drop the
+    // rest silently. That's exactly the mis-assignment risk the hardening
+    // closes — on any mismatch, attach NOTHING rather than guess.
     const attrs = {
       terms: [{ class: 'no-emphasis' }],
     };
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
     const result = reverseInlineMarkup('__A__ and __B__ and __C__', {}, [], [], attrs);
-    expect(result).toContain('<term class="no-emphasis">A</term>');
+    expect(result).toContain('<term>A</term>');
     expect(result).toContain('<term>B</term>');
     expect(result).toContain('<term>C</term>');
+    expect(result).not.toContain('no-emphasis');
+    expect(warnSpy).toHaveBeenCalled();
+    warnSpy.mockRestore();
   });
 
   // --- Space count preservation ---
@@ -1308,17 +1353,17 @@ describe('inline-attrs extraction', () => {
     expect(segments).toContain('m68674#');
   });
 
-  it('should extract ++underline++ markers', () => {
+  it('should extract [[u:text]] underline markers (B4, replaces ++text++)', () => {
     run(`node ${join(TOOLS, 'cnxml-extract.js')} --book efnafraedi-2e --chapter 1 --module m68664`);
     const segments = readFileSync(
       join(BOOKS, '02-for-mt', 'ch01', 'm68664-segments.en.md'),
       'utf8'
     );
     // m68664 has emphasis effect="underline" elements
-    expect(segments).toContain('++');
+    expect(segments).toContain('[[u:');
   });
 
-  it('should extract {=emphasis=} markers for class-only emphasis', () => {
+  it('should extract [[em:text|class]] markers for class-only emphasis (B4, replaces {=text=})', () => {
     run(
       `node ${join(TOOLS, 'cnxml-extract.js')} --book efnafraedi-2e --chapter appendices --module m68866`
     );
@@ -1327,8 +1372,8 @@ describe('inline-attrs extraction', () => {
       'utf8'
     );
     // m68866 has <emphasis class="emphasis-one"> elements (ionizable H atoms)
-    expect(segments).toContain('{=');
-    expect(segments).toContain('=}');
+    expect(segments).toContain('[[em:');
+    expect(segments).toContain('|emphasis-one]]');
   });
 
   it('should preserve emphasis class="emphasis-one" through extract+inject round-trip', () => {
