@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
-import { stripTermFnToPaired, reattachIds } from '../api-translate.js';
+import { stripTermFnToPaired, reattachIds, repairSegTags } from '../api-translate.js';
 
 const SEG = (id, body) => `<!-- SEG:${id} -->\n${body}\n`;
 
@@ -207,5 +207,102 @@ describe('translateModule surfaces reattach mismatches', () => {
     // on-disk output degraded that segment to original (valid markers, correct ids)
     const written = fs.readFileSync(outPath, 'utf8');
     expect(written).toContain('[[term:one|id1]]');
+  });
+});
+
+// ─── Finding A: repairSegTags must run BEFORE reattachIds ─────────────────
+//
+// reattachIds looks up captured term/fn ids by the SEG id that rode the wire.
+// If the API mangles a numeric SEG id (e.g. m68683 -> m6-8683) on a
+// term-bearing segment, and reattachIds runs first, its lookup misses (the
+// mangled id isn't in the map) and it passes the segment through UNCHANGED —
+// leaking colon-less paired [[term]]...[[/term]] wire form into the on-disk
+// output, with no mismatch recorded. repairSegTags exists precisely to fix
+// this class of mangle; it must run first so reattachIds sees a clean id.
+describe('translateChunk reorders repairSegTags before reattachIds (Finding A.1)', () => {
+  it('repairs a mangled numeric SEG id before reattaching term ids — no colon-less leak', async () => {
+    const { translateChunk } = await import('../api-translate.js');
+    const chunk = '<!-- SEG:m68683:para:x -->\nThe [[term:viscosity|term-00001]] of a liquid.\n';
+    const fakeClient = {
+      async translateAuto(text) {
+        // Málstaður occasionally inserts a hyphen into a numeric module id —
+        // this exact mangle is what repairSegTags's Strategy 1 repairs (see
+        // 'fixes hyphenated module IDs in SEG tags' in api-translate.test.js).
+        let out = text.replace('<!-- SEG:m68683:para:x -->', '<!-- SEG:m6-8683:para:x -->');
+        out = out.replace('[[term]]viscosity[[/term]]', '[[term]]seigja[[/term]]');
+        return { text: out, usage: 1 };
+      },
+    };
+    const res = await translateChunk(fakeClient, chunk, null, false, 'm68683');
+
+    // Correctly re-attached, id preserved.
+    expect(res.text).toContain('[[term:seigja|term-00001]]');
+    // No leaked wire-only (colon-less) paired form.
+    expect(res.text).not.toContain('[[term]]');
+    expect(res.text).not.toContain('[[/term]]');
+    // SEG id repaired back to the clean, original form.
+    expect(res.text).toContain('<!-- SEG:m68683:para:x -->');
+    expect(res.text).not.toContain('m6-8683');
+    // repairSegTags fixed the id before reattachIds ran, so no mismatch.
+    expect(res.mismatches).toEqual([]);
+  });
+});
+
+// ─── Finding A.2: leak-guard backstop in translateModule ──────────────────
+//
+// The reorder (A.1) closes the common case, but a SEG-id mangle that
+// repairSegTags itself cannot repair would still cause reattachIds to miss —
+// leaking a colon-less [[term]]/[[fn]] wire token all the way to disk.
+// translateModule must refuse to write in that case instead of silently
+// producing a format cnxml-inject.js cannot parse (inject only recognizes
+// the colon form [[term:...|id]]).
+describe('translateModule leak guard refuses to write a wire-only paired marker (Finding A.2)', () => {
+  const mangledInput = '<!-- SEG:m68664:para:1 -->\nA [[term:one|id1]].\n';
+  const mangledOutput = '<!-- SEG:m99999:para:1 -->\nA [[term]]einn[[/term]].\n';
+
+  it('precondition: repairSegTags cannot repair this SEG-id mangle', () => {
+    // Same shape as the existing 'does not modify tags that cannot be
+    // matched' case in api-translate.test.js: same suffix, but the module id
+    // shares no digits with the original, so neither repair strategy fires.
+    expect(repairSegTags(mangledInput, mangledOutput)).toBe(mangledOutput);
+  });
+
+  it('throws instead of writing when a wire-only paired marker survives to write', async () => {
+    const { translateModule } = await import('../api-translate.js');
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'b4d11-leak-'));
+    const inPath = path.join(dir, 'm68664-segments.en.md');
+    const outPath = path.join(dir, 'm68664-segments.is.md');
+    fs.writeFileSync(inPath, mangledInput);
+    const fakeClient = {
+      async translateAuto(text) {
+        let out = text.replace('<!-- SEG:m68664:para:1 -->', '<!-- SEG:m99999:para:1 -->');
+        out = out.replace('[[term]]one[[/term]]', '[[term]]einn[[/term]]');
+        return { text: out, usage: 1 };
+      },
+    };
+
+    await expect(translateModule(fakeClient, inPath, outPath, null, false)).rejects.toThrow(
+      /m68664/
+    );
+    expect(fs.existsSync(outPath)).toBe(false);
+  });
+});
+
+// ─── T4: mismatch-bearing chapters must not be reported complete ──────────
+describe('computeCompleteChapters (T4 — mismatch chapters excluded from completion)', () => {
+  it('excludes a chapter that reported a mismatch even though its module "succeeded"', async () => {
+    const { computeCompleteChapters } = await import('../api-translate.js');
+    const succeeded = new Set(['ch01', 'ch02']);
+    const failed = new Set();
+    const mismatched = new Set(['ch02']);
+    expect(computeCompleteChapters(succeeded, failed, mismatched)).toEqual(['ch01']);
+  });
+
+  it('mirrors the existing failedChapters exclusion (both filters combine)', async () => {
+    const { computeCompleteChapters } = await import('../api-translate.js');
+    const succeeded = new Set(['ch01', 'ch02', 'ch03']);
+    const failed = new Set(['ch02']);
+    const mismatched = new Set(['ch03']);
+    expect(computeCompleteChapters(succeeded, failed, mismatched)).toEqual(['ch01']);
   });
 });

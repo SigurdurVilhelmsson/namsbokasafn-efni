@@ -366,6 +366,14 @@ const SEG_SPLIT_RE = /(?=<!-- SEG:)/;
 const SEG_ID_RE = /<!-- SEG:(\S+?) -->/;
 
 /**
+ * Matches a wire-only (colon-less) paired term/fn token, e.g. `[[term]]`,
+ * `[[/term]]`, `[[fn]]`, `[[/fn]]`. On-disk form is always id-anchored with a
+ * colon (`[[term:text|id]]`), so this can never false-match that form, nor
+ * nested inline markers like `[[i:]]`/`[[sub:]]` (Finding A.2 leak guard).
+ */
+const WIRE_ONLY_PAIRED_TOKEN_RE = /\[\[\/?(?:term|fn)\]\]/;
+
+/**
  * Rewrite id-anchored inline term/footnote markers to PAIRED bracket form for the
  * API leg (B4-D11: the API treats [[term:text|id]] as an opaque token and does not
  * translate inside it; text BETWEEN [[term]]…[[/term]] translates and both delimiters
@@ -570,6 +578,26 @@ export function mtRunDecision({ exists, force, locked }) {
   return 'write';
 }
 
+/**
+ * Chapters eligible for --update-status completion (T4).
+ *
+ * A chapter is complete only if every translated module in it both (a)
+ * succeeded outright, and (b) reported no id-reattach mismatches — a
+ * mismatch means some segment silently degraded to its English source
+ * (B4-D11 count-guard), which must hold the chapter back exactly like a
+ * hard module failure does.
+ *
+ * @param {Set<string>} succeededChapters
+ * @param {Set<string>} failedChapters
+ * @param {Set<string>} mismatchChapters
+ * @returns {string[]}
+ */
+export function computeCompleteChapters(succeededChapters, failedChapters, mismatchChapters) {
+  return [...succeededChapters].filter(
+    (ch) => !failedChapters.has(ch) && !mismatchChapters.has(ch)
+  );
+}
+
 // ─── CLI ────────────────────────────────────────────────────────────
 
 function parseCliArgs(argv) {
@@ -719,14 +747,21 @@ export async function translateChunk(client, chunkText, glossary, verbose, chunk
     translateOpts.glossaries = [filteredGlossary];
   }
 
+  // Order matters (Finding A): repairSegTags must run on the paired-form
+  // output BEFORE reattachIds. reattachIds looks up captured term/fn ids by
+  // the SEG id that rode the wire — if the API mangled that id (e.g. an
+  // inserted hyphen), the lookup misses and the segment passes through
+  // UNCHANGED, leaking colon-less [[term]]/[[fn]] wire form with no mismatch
+  // recorded. repairSegTags fixes exactly that class of mangle, so running it
+  // first means reattachIds always sees a clean id.
   let result = await client.translateAuto(wireText, translateOpts);
-  let reattach = reattachIds(result.text, segments);
-  let output = reattach.text;
-  let mismatches = reattach.mismatches;
-
+  let output = result.text;
   assertNoControlChars(output, chunkLabel);
   output = normalizeUnicode(output);
   output = repairSegTags(chunkText, output);
+  let reattach = reattachIds(output, segments);
+  output = reattach.text;
+  let mismatches = reattach.mismatches;
 
   // Validate — retry without glossary if truncated
   if (!validateMarkers(chunkText, output)) {
@@ -737,12 +772,13 @@ export async function translateChunk(client, chunkText, glossary, verbose, chunk
         );
       }
       result = await client.translateAuto(wireText, { targetLanguage: 'is' });
-      reattach = reattachIds(result.text, segments);
-      output = reattach.text;
-      mismatches = reattach.mismatches;
+      output = result.text;
       assertNoControlChars(output, chunkLabel);
       output = normalizeUnicode(output);
       output = repairSegTags(chunkText, output);
+      reattach = reattachIds(output, segments);
+      output = reattach.text;
+      mismatches = reattach.mismatches;
     }
 
     if (!validateMarkers(chunkText, output)) {
@@ -826,6 +862,22 @@ export async function translateModule(
     throw new Error(
       `Reassembled output has ${outputCount} segments but input has ${inputCount}. ` +
         `Split/reassemble lost segments.`
+    );
+  }
+
+  // Finding A.2 — leak-guard backstop. The A.1 reorder (repairSegTags before
+  // reattachIds) closes the common case, but if a SEG-id mangle survives
+  // repairSegTags (outside its known repair strategies), reattachIds's
+  // per-id lookup still misses and a wire-only (colon-less) [[term]]/[[fn]]
+  // token can reach this point. cnxml-inject.js only recognizes the
+  // id-anchored colon form ([[term:text|id]]) — writing the wire form would
+  // silently lose the term/fn wrapper, class, and id downstream. Fail loud
+  // instead of writing it.
+  if (WIRE_ONLY_PAIRED_TOKEN_RE.test(output)) {
+    throw new Error(
+      `${moduleId}: a wire-only paired marker ([[term]]/[[fn]]) survived to write in ` +
+        `${outputPath} — a SEG-id mangle that repairSegTags did not fix, or an ` +
+        `otherwise-unresolved marker. Refusing to write corrupted output.`
     );
   }
 
@@ -1051,8 +1103,12 @@ async function main() {
 
   // Track per-chapter outcome so --update-status only advances chapters whose
   // modules all succeeded (a chapter with any failed module is NOT complete).
+  // T4: a chapter with any module whose id-reattach mismatched (a segment
+  // silently degraded to English) is likewise held back — mirrors
+  // failedChapters exactly, just for a softer failure mode.
   const succeededChapters = new Set();
   const failedChapters = new Set();
+  const mismatchChapters = new Set();
 
   for (const mod of workList) {
     if (mod.action === 'locked-skip') {
@@ -1090,6 +1146,7 @@ async function main() {
             `  WARNING: id-reattach mismatch in ${mm.segId} (${mm.type}: expected ${mm.expected}, got ${mm.got}) — segment left untranslated (B4-D11 count-guard)`
           );
         }
+        mismatchChapters.add(mod.chapterDir);
       }
       succeededChapters.add(mod.chapterDir);
     } catch (err) {
@@ -1132,18 +1189,26 @@ async function main() {
   }
 
   // Update pipeline status if requested. Only mark a chapter's mtOutput
-  // complete when every translated module in it succeeded — a chapter with any
-  // failure stays incomplete instead of silently transitioning (F7).
+  // complete when every translated module in it succeeded AND reported no
+  // id-reattach mismatches — a chapter with any failure OR any segment
+  // silently degraded to English stays incomplete instead of silently
+  // transitioning (F7 / T4).
   if (args.updateStatus && results.translated > 0) {
-    const completeChapters = [...succeededChapters].filter((ch) => !failedChapters.has(ch));
+    const completeChapters = computeCompleteChapters(
+      succeededChapters,
+      failedChapters,
+      mismatchChapters
+    );
     if (completeChapters.length > 0) {
       console.log('\nUpdating pipeline status...');
       await updatePipelineStatus(args.book, completeChapters);
     }
-    const heldBack = [...succeededChapters].filter((ch) => failedChapters.has(ch));
+    const heldBack = [...succeededChapters].filter(
+      (ch) => failedChapters.has(ch) || mismatchChapters.has(ch)
+    );
     if (heldBack.length > 0) {
       console.log(
-        `  Held back (had failures): ${heldBack.join(', ')} — fix and re-run to mark complete`
+        `  Held back (failures or marker mismatches): ${heldBack.join(', ')} — fix and re-run to mark complete`
       );
     }
   }
