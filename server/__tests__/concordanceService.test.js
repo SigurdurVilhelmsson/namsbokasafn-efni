@@ -67,6 +67,10 @@ describe('concordanceService', () => {
       expect(concordance.cleanText('Ca[[sup:2+]] and [[i:fast]]')).toBe('Ca2+ and fast');
       expect(concordance.cleanText('value [[MATH:5]] x*y')).toBe('value [[MATH:5]] x*y');
     });
+    // M1/M4 mirror: MATH-in-term text kept verbatim (no id/pipe leak into the FTS index).
+    it('keeps [[MATH:n]] verbatim inside a term marker', () => {
+      expect(concordance.stripMarkers('[[term:rate [[MATH:1]]|t9]]')).toBe('rate [[MATH:1]]');
+    });
     it('normalizeEn lowercases and collapses', () => {
       expect(concordance.normalizeEn('Check  Your\nLearning')).toBe('check your learning');
     });

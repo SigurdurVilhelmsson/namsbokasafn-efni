@@ -54,6 +54,10 @@ describe('stripMarkers', () => {
       'a note and key and x'
     );
   });
+  // M1/M4 mirror: MATH-in-term text kept verbatim (no id/pipe leak into extractNumbers).
+  it('keeps [[MATH:n]] verbatim inside a term marker', () => {
+    expect(qa.stripMarkers('[[term:rate [[MATH:1]]|t9]]')).toBe('rate [[MATH:1]]');
+  });
 });
 
 describe('checkEnResidue', () => {

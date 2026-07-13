@@ -55,9 +55,14 @@ function stripMarkers(text) {
       .replace(/\{\{([a-z]+)\}\}([\s\S]*?)\{\{\/\1\}\}/g, '$2')
       // B4 id-anchored markers: keep the display text (left of the pipe).
       // Placed AFTER the inline rule so nested [[sub:]] inside term text is
-      // already unwrapped when this runs.
-      .replace(/\[\[(?:term|fn|em):([^\]|]*)\|[^\]]*\]\]/g, '$1')
-      .replace(/\[\[(?:term|fn|u):([^\]]*)\]\]/g, '$1')
+      // already unwrapped when this runs. M1/M4: the text group tolerates a
+      // [[MATH:n]] placeholder (kept verbatim) or one level of nested [[x:y]]
+      // so the wrapper never leaks its id/pipe when term text carries math.
+      .replace(
+        /\[\[(?:term|fn|em):((?:\[\[MATH:\d+\]\]|\[\[[a-z]+:[^\]]*\]\]|[^\]|])*)\|[^\]]*\]\]/g,
+        '$1'
+      )
+      .replace(/\[\[(?:term|fn|u):((?:\[\[MATH:\d+\]\]|\[\[[a-z]+:[^\]]*\]\]|[^\]])*)\]\]/g, '$1')
   );
 }
 
