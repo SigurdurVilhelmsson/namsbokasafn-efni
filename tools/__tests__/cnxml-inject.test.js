@@ -1415,6 +1415,57 @@ describe('annotateInlineTerms — F6 MATH placeholder', () => {
   });
 });
 
+// ─── C2/C3: annotateInlineTerms nested-marker tolerance ───────────────
+// The bracket arms' content-exclusion group could not match term text carrying a
+// nested marker ([[sub:]], [[i:]], [[MATH:n]]) — causing deterministic annotation
+// loss AND positional mis-pairing (a WRONG "(e. …)" attached) when only one side
+// matched. annotateInlineTerms runs on RAW segment text (inner markers unresolved).
+
+describe('annotateInlineTerms — C2/C3 nested-marker tolerance', () => {
+  it('(a) both sides carry a nested [[sub:]] term — annotates the text field, id untouched', () => {
+    const en = new Map([['s1', 'Ein [[term:H[[sub:2]]O|t1]] sameind']]);
+    const is = new Map([['s1', 'Ein [[term:þungt H[[sub:2]]O|t1]] sameind']]);
+    const { segments, annotatedCount } = annotateInlineTerms(is, en);
+    const out = segments.get('s1');
+    expect(annotatedCount).toBe(1);
+    expect(out).toBe('Ein [[term:þungt H[[sub:2]]O (e. h2o)|t1]] sameind'); // id t1 untouched
+  });
+
+  it('(b) mis-pairing probe: EN nested + plain vs IS both-plain — NO wrong annotation', () => {
+    // Pre-fix: EN pattern skips the nested H2O term, sees only "acid" → the first
+    // IS term (H2O) is wrongly annotated "(e. acid)". Post-fix both sides see 2 terms.
+    const en = new Map([['s2', 'A [[term:H[[sub:2]]O|t1]] molecule and an [[term:acid|t2]] here']]);
+    const is = new Map([['s2', 'Ein [[term:H2O|t1]] sameind og [[term:sýra|t2]] hér']]);
+    const { segments } = annotateInlineTerms(is, en);
+    const out = segments.get('s2');
+    expect(out).not.toContain('H2O (e. acid)'); // the wrong pairing must NOT happen
+    expect(out).toContain('[[term:sýra (e. acid)|t2]]'); // acid pairs with its real IS term
+    expect(out).toContain('[[term:H2O|t1]]'); // H2O left unannotated (EN "h2o" === IS, skipped)
+  });
+
+  it('(c) [[MATH:n]]-bearing EN term text is matched and its notation resolved', () => {
+    const en = new Map([['s3', 'The [[term:rate [[MATH:1]]|t9]] rises']]);
+    const is = new Map([['s3', 'The [[term:hraði|t9]] rises']]);
+    const equations = { 'math-1': { mathml: '<m:mi>k</m:mi>' } };
+    const { segments, annotatedCount } = annotateInlineTerms(is, en, equations);
+    const out = segments.get('s3');
+    expect(annotatedCount).toBe(1);
+    expect(out).toContain('[[term:hraði (e. rate k)|t9]]'); // MATH resolved into the annotation
+  });
+
+  it('(C3 mixed dialect) EN bracket-nested + IS legacy {{term}} pair correctly', () => {
+    const en = new Map([
+      ['s4', 'The [[term:[[i:s]] orbitals|term-1]] and [[term:viscosity|term-2]]'],
+    ]);
+    const is = new Map([['s4', '{{term}}s svigrúm{{/term}} og {{term}}seigja{{/term}}']]);
+    const { segments } = annotateInlineTerms(is, en);
+    const out = segments.get('s4');
+    expect(out).not.toContain('s svigrúm (e. viscosity)'); // the silent-wrong class B4 kills
+    expect(out).toContain('{{term}}s svigrúm (e. s orbitals){{/term}}');
+    expect(out).toContain('{{term}}seigja (e. viscosity){{/term}}');
+  });
+});
+
 describe('stripTermMarkersToText', () => {
   const eqs = { 'math-3': { mathml: '<math><mi>x</mi></math>' } };
   // NB: extraction emits UPPERCASE [[MATH:N]]. drop-other's (?!MATH:) is

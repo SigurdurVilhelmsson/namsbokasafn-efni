@@ -827,12 +827,25 @@ function stripTermMarkersToText(text, equations, { trim = false } = {}) {
 function annotateInlineTerms(isSegments, enSegments, equations = {}) {
   let annotatedCount = 0;
 
+  // C2/C3: the [[term:…]] text token must tolerate ONE level of nested non-term
+  // markers ([[sub:]], [[i:]], [[MATH:n]]) — annotateInlineTerms runs on RAW
+  // segment text where those inner markers are still unresolved brackets. The old
+  // content-exclusion group `(?!\[\[|\]\])` matched NEITHER side, causing silent
+  // annotation loss AND positional mis-pairing (a WRONG "(e. …)" onto the wrong
+  // term) when only one dialect/side matched. `|` stays excluded so the trailing
+  // (?:\|id)? still anchors the id split. MATH-alt first: the base class excludes
+  // `[` so a nested marker is only reachable via the token alternatives.
+  const TERM_TEXT = String.raw`(?:\[\[MATH:\d+\]\]|\[\[[a-z]+:[^\]]*\]\]|[^\[\]|])+?`;
   // EN markers: {{term}}text{{/term}}, __term__, **bold**, {{b}}bold{{/b}}, [[term:text|id]]
-  const enMarkerPattern =
-    /(\{\{term\}\}([\s\S]*?)\{\{\/term\}\}|__([^_]+)__|\*\*(.+?)\*\*|\{\{b\}\}(.+?)\{\{\/b\}\}|\[\[term:((?:(?!\[\[|\]\])[\s\S])+?)(?:\|[A-Za-z0-9_.:-]+)?\]\])/g;
+  const enMarkerPattern = new RegExp(
+    String.raw`(\{\{term\}\}([\s\S]*?)\{\{\/term\}\}|__([^_]+)__|\*\*(.+?)\*\*|\{\{b\}\}(.+?)\{\{\/b\}\}|\[\[term:(${TERM_TEXT})(?:\|[A-Za-z0-9_.:-]+)?\]\])`,
+    'g'
+  );
   // IS: new {{term}}, legacy __term__, and B4 bracket [[term:text|id]] formats
-  const isTermPattern =
-    /(\{\{term\}\}([\s\S]*?)\{\{\/term\}\}|__([^_]+)__|\[\[term:((?:(?!\[\[|\]\])[\s\S])+?)(?:\|([A-Za-z0-9_.:-]+))?\]\])/g;
+  const isTermPattern = new RegExp(
+    String.raw`(\{\{term\}\}([\s\S]*?)\{\{\/term\}\}|__([^_]+)__|\[\[term:(${TERM_TEXT})(?:\|([A-Za-z0-9_.:-]+))?\]\])`,
+    'g'
+  );
 
   for (const [segId, isText] of isSegments) {
     const enText = enSegments.get(segId);
