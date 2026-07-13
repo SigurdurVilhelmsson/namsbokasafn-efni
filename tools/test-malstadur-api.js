@@ -289,6 +289,66 @@ Throughout human history, people have tried to convert matter into more useful f
       },
     ],
   },
+  {
+    id: 'T1.14',
+    name: 'Id-anchored term marker survival ([[term:text|id]])',
+    input:
+      'The [[term:viscosity|term-00001]] of a liquid is a measure of its resistance to flow, unlike the [[term:surface tension|fs-idm12345678]] at the interface.',
+    checks: [
+      {
+        name: 'two [[term: markers survive',
+        test: (input, output) => (output.match(/\[\[term:/g) || []).length === 2,
+      },
+      {
+        name: 'id term-00001 byte-intact',
+        test: (input, output) => output.includes('|term-00001]]'),
+      },
+      {
+        name: 'id fs-idm12345678 byte-intact',
+        test: (input, output) => output.includes('|fs-idm12345678]]'),
+      },
+      { name: 'no backslash escaping', test: (input, output) => !output.includes('\\[\\[') },
+      { name: 'text translated', test: (input, output) => output !== input },
+    ],
+  },
+  {
+    id: 'T1.15',
+    name: 'Id-anchored footnote marker survival ([[fn:text|id]])',
+    input:
+      'Water boils at 100 degrees. [[fn:At standard atmospheric pressure of 101.325 kPa.|fs-idp2355696]] This varies with altitude.',
+    checks: [
+      { name: '[[fn: marker survives', test: (input, output) => output.includes('[[fn:') },
+      {
+        name: 'id fs-idp2355696 byte-intact',
+        test: (input, output) => output.includes('|fs-idp2355696]]'),
+      },
+      { name: 'no backslash escaping', test: (input, output) => !output.includes('\\[\\[') },
+    ],
+  },
+  {
+    id: 'T1.16',
+    name: 'Underline + class-emphasis marker survival ([[u:]], [[em:|class]])',
+    input:
+      'The [[u:most important]] rule is that an ether has the structure [[em:R-O-R|emphasis-one]] in general.',
+    checks: [
+      { name: '[[u: marker survives', test: (input, output) => output.includes('[[u:') },
+      { name: '[[em: marker survives', test: (input, output) => output.includes('[[em:') },
+      {
+        name: 'class payload byte-intact',
+        test: (input, output) => output.includes('|emphasis-one]]'),
+      },
+    ],
+  },
+  {
+    id: 'T1.17',
+    name: 'Nested markup inside id-anchored term ([[term:H[[sub:2]]O|id]])',
+    input: 'The formula for [[term:water H[[sub:2]]O|term-00099]] is well known.',
+    checks: [
+      { name: 'outer [[term: survives', test: (input, output) => output.includes('[[term:') },
+      { name: 'inner [[sub: survives', test: (input, output) => output.includes('[[sub:2]]') },
+      { name: 'id byte-intact', test: (input, output) => output.includes('|term-00099]]') },
+    ],
+  },
 ];
 
 // ─── Test Runner ────────────────────────────────────────────────────
