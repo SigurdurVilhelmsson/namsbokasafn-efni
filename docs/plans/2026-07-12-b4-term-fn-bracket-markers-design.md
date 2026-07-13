@@ -299,6 +299,20 @@ campaign register.
   m68793/794/795 inject clean (COMPLETE, no gap); m68791 writes only under `--allow-incomplete`
   (INCOMPLETE, gap named). Both heal at the §10 re-extract; until then the gate correctly refuses
   to overwrite them in a normal run.
+  **THIRD gap-gated module — m66443 (liffraedi-2e ch03), added post-merge review (minor M7):** the
+  design's live-corpus check was scoped to efnafraedi ch12 only, so it surfaced m68789/m68791. A
+  static replay of the exact `!cell && tableCellGaps` guard across *all* books finds a third
+  affected module: **liffraedi-2e ch03 m66443**, table `tab-ch03-05-01` (source row 1 has 3
+  `<entry>` incl. a blank leading spacer; structure recorded only 2 cells → the trailing "RNA"
+  entry hits `row.cells[2]=undefined`, non-blank). liffraedi-2e is on the **active biology
+  onboarding path** (memory: NEXT = translate+inject biology chapters). The committed
+  `books/liffraedi-2e/03-translated/mt-preview/ch03/m66443.cnxml` is already garbled from a March
+  2026 extraction (row0="RNA", mis-shifted rows), so the gate firing is **correct** — but the
+  server runs `cnxml-inject` without `--allow-incomplete` and treats non-zero exit as a failed job
+  (blocking render/publish), so a `node tools/cnxml-inject.js --book liffraedi-2e --chapter 3` (or
+  any Vista+Birta of that chapter/module) now exits 1 where it previously exited 0. **Add m66443's
+  structure.json to the re-extract list** for the biology op; until then the operator hits an
+  expected (undocumented-before-now) block.
 - **B4-D6 `[gap]`** (Task 7) `localization-editor.js`'s preview renderer
   (`edRenderMarkdownPreview`, `:1318-1359`) has no arms for the whole `[[i:]]/[[b:]]/
   [[sub:]]/[[sup:]]/[[xref:]]` bracket family — confirmed absent via
@@ -306,6 +320,38 @@ campaign register.
   (zero matches). Task 7 ported only the four new B4 id-anchored types
   (`[[term:]]`/`[[fn:]]`/`[[u:]]`/`[[em:]]`) into this pane per its brief's scope note;
   porting the pre-existing i/b/sub/sup/xref gap is out of scope here — follow-up.
+- **B4-D7 `[gap]`** (final-review minor M3, **un-fixed — census 0 today**) class-only
+  `<term class="X">` with **no id** silently loses its class end-to-end. Extraction pushes
+  `{class}` to the sidecar but emits the id-less bare marker `[[term:text]]`; at inject the bare
+  marker sets `hasIdAnchoredMarkers`, skipping the positional block, and the bare conversion does
+  no sidecar lookup — the class is dropped with no warning, no `attrMismatch` entry, invisible to
+  `compareTagCounts`. Census over `books/*/01-source` = **0 occurrences today** (matches the
+  design census: 0 class-without-id across 1,333 term entries), so nothing regresses now — but
+  microbiology/other future intake could bring the shape and degrade silently. The one silent-loss
+  path left in an otherwise fail-loud design. Fix when it appears: a one-line extract-time
+  `warn(parsedAttrs.class && !parsedAttrs.id)` converts it to a loud intake signal.
+- **B4-D8 `[gap]`** (final-review minor M5, **un-fixed — test-harness only**) the design's
+  consumer-sweep item `tools/__tests__/cnxml-dom-comparison.test.js:129` `isApiTranslated` sniff
+  was not extended for bracket-era segments. Production is fine (the CLI gates the restore trio on
+  recorded producer provenance, not a content sniff — `cnxml-inject.js ~4090`), but the **test
+  harness** still sniffs only `{{i}}/{{b}}/{{term}}/{{fn}}` (:129-133). After the §10 re-MT the 8
+  modules' `02-mt-output` is bracket-only, so `isApiTranslated` evaluates false and the harness
+  runs `restoreSupersub/Media/Newlines` over API-translated segments — the legacy `~/^`
+  false-positive processing the guard exists to prevent — skewing the fidelity comparison for
+  exactly the modules the op validates. No `books/` change in this PR → suite unaffected today;
+  breaks silently at the data op. One-line fix: add `[[term:/[[fn:/[[u:/[[em:` (or `[[sub:/[[i:`)
+  to the sniff, or read provenance like the CLI.
+- **B4-D9 `[gap]`** (final-review minor M6, **un-fixed — cosmetic, preview-only**) nested-marker
+  B4 terms mis-highlight in the editor EN pane (`server/public/js/marker-highlight.js:60-63`): the
+  pipe rule `[^|\]]+` text group can't match a term whose text contains a nested marker (`]`
+  present), so the step-3 `[[term:(.+?)]]` fallback interacts with earlier i/sub delim spans —
+  ` orbitals|term-1]]` renders undimmed and delimiter spans nest wrongly for all ~128 nested terms
+  once books re-extract. Character preservation holds (stripTags invariant true) — display-only.
+  Related: `localization-editor.js`'s B4 arms use the same groups and that pane has **no**
+  `[[i:]]/[[sub:]]` arms at all (see B4-D6), so a nested term there is partially consumed.
+  `segment-editor.js` is fine for single-level nesting (sub/sup/i/b run before its B4 arms). Fix:
+  a tempered-greedy pipe rule (the inject idiom) in marker-highlight; fold the loc-pane case into
+  the B4-D6 follow-up.
 
 ## 10. Post-merge delivery op (own branch/PR, after lead merges the code PR)
 
