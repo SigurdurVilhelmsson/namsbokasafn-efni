@@ -54,6 +54,7 @@ import {
   localizeNumbersInMathML,
   localizeMathMLText,
 } from './lib/mathml-to-latex.js';
+import { decodeEntities } from './lib/math-label-inventory.js';
 import { buildModuleSections } from './lib/module-sections.js';
 import { safeWrite, logBackup } from './lib/safeWrite.js';
 import {
@@ -590,8 +591,6 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     exampleCounter: 0,
     equationCounter: 0,
     exerciseCounter: 0, // Add exercise counter
-    renderedFigureIds: new Set(), // Track rendered figures to prevent duplicates
-    renderedTableIds: new Set(), // Track rendered tables (example-child vs section pass)
     undispatchedBlocks: [], // Loud seam: block elements no dispatch map handled
   };
 
@@ -822,26 +821,7 @@ function renderContent(content, context, _verbose) {
  * Shared by renderContent (top-level content) and renderSection (nested
  * sections), so both preserve document order the same way.
  */
-/**
- * Resolve an element's position within `content` for document-order sorting.
- *
- * Primary lookup is `content.indexOf(fullMatch)`. Some top-level extractions
- * (notably lists whose items contain a nested `<media>`) have their
- * `fullMatch` mutated by upstream stripping (see media-strip pass above),
- * so it no longer appears verbatim in the original `content`. When that
- * lookup misses (-1) and the element has a stable `id`, fall back to
- * locating `id="…"` instead of collapsing to position 0 (which would
- * wrongly hoist the element above everything preceding it).
- */
-function positionInContent(content, fullMatch, id) {
-  let pos = fullMatch ? content.indexOf(fullMatch) : -1;
-  if (pos === -1 && id) pos = content.indexOf(`id="${id}"`);
-  return pos !== -1 ? pos : 0;
-}
-
 function renderChildrenInDocumentOrder(content, context, { excludeSections, sectionLevel }) {
-  const lines = [];
-
   // Sections to exclude from main content (they have their own pages)
   // Loaded from book config — varies by book (e.g., Biology uses multiple-choice, critical-thinking)
   let EXCLUDED_SECTION_CLASSES = BOOK_CONFIG
@@ -855,163 +835,42 @@ function renderChildrenInDocumentOrder(content, context, { excludeSections, sect
     );
   }
 
-  // Extract sections
-  const sections = extractNestedElements(content, 'section');
-
-  // Get content without sections for top-level elements
-  const contentWithoutSections = removeNestedElements(content, 'section');
-
-  // Collect all renderable items with their positions
-  const itemsWithPositions = [];
-
-  // Add sections with their positions
-  for (const section of sections) {
+  const sectionHandler = (section, ctx) => {
     const sectionClass = section.attributes.class || '';
-    // Only exclude sections if excludeSections flag is true (default)
-    // When rendering standalone sections, excludeSections will be false
+    // Only exclude sections if excludeSections flag is true (default).
+    // When rendering standalone sections, excludeSections is false.
     const shouldExclude =
       excludeSections && EXCLUDED_SECTION_CLASSES.some((cls) => sectionClass.includes(cls));
-    if (shouldExclude) {
-      continue;
-    }
-    const position = section.fullMatch ? content.indexOf(section.fullMatch) : 0;
-    itemsWithPositions.push({
-      type: 'section',
-      item: section,
-      position,
+    if (shouldExclude) return '';
+    return renderSection(section, ctx, sectionLevel);
+  };
+
+  // Direct-children DOM walk (Track C leaf-seam promoted to section level).
+  // The corpus vocabulary of direct <content>/<section> children is closed
+  // (11 block tags; title/label are consumed by renderSection; comments are
+  // skipped by the walk); anything else lands in the loud seam. No hoistTags
+  // option → default hoist-all, matching the old strip cascade where every
+  // block type was pulled out of a top-level <para> and rendered after it.
+  try {
+    return renderBlockChildrenInOrder(content, context, {
+      section: sectionHandler,
+      figure: renderFigure,
+      note: renderNote,
+      example: renderExample,
+      exercise: renderExercise,
+      table: renderTable,
+      media: renderMedia,
+      list: renderList,
+      equation: renderEquation,
+      para: renderPara,
     });
+  } catch (err) {
+    // xmldom 0.9 throws ParseError on malformed XML. Fail loud with module
+    // identity; the CLI loop converts this to a per-module skip + exit 1.
+    throw new Error(
+      `CNXML parse failed for module ${context.moduleId || '(unknown)'}: ${err.message}`
+    );
   }
-
-  // Add top-level elements with their positions
-  // Extract and position each top-level element type
-  const figures = extractNestedElements(contentWithoutSections, 'figure');
-  const notes = extractNestedElements(contentWithoutSections, 'note');
-  const examples = extractNestedElements(contentWithoutSections, 'example');
-  const exercises = extractNestedElements(contentWithoutSections, 'exercise');
-  const tables = extractNestedElements(contentWithoutSections, 'table');
-
-  // For simple elements, strip containers first
-  // IMPORTANT: Strip examples and exercises BEFORE notes, because examples/exercises
-  // can contain nested notes. If we strip notes first, the example.fullMatch won't
-  // match anymore (the note inside it was already removed from simpleContent).
-  let simpleContent = contentWithoutSections;
-  for (const e of examples) if (e.fullMatch) simpleContent = simpleContent.replace(e.fullMatch, '');
-  for (const e of exercises) {
-    if (e.fullMatch) simpleContent = simpleContent.replace(e.fullMatch, '');
-  }
-  for (const n of notes) if (n.fullMatch) simpleContent = simpleContent.replace(n.fullMatch, '');
-  for (const f of figures) if (f.fullMatch) simpleContent = simpleContent.replace(f.fullMatch, '');
-  for (const t of tables) if (t.fullMatch) simpleContent = simpleContent.replace(t.fullMatch, '');
-
-  // Extract standalone media elements (not inside figures — those are already stripped)
-  const medias = extractNestedElements(simpleContent, 'media');
-  for (const m of medias) if (m.fullMatch) simpleContent = simpleContent.replace(m.fullMatch, '');
-
-  const lists = extractNestedElements(simpleContent, 'list');
-  for (const lst of lists)
-    if (lst.fullMatch) simpleContent = simpleContent.replace(lst.fullMatch, '');
-  const equations = extractElements(simpleContent, 'equation');
-  const paras = extractElements(simpleContent, 'para');
-
-  // Add all top-level elements with positions (use original content for position finding)
-  for (const fig of figures) {
-    const pos = positionInContent(content, fig.fullMatch, fig.id);
-    itemsWithPositions.push({ type: 'figure', item: fig, position: pos });
-  }
-
-  // Only add notes that are NOT inside examples or exercises
-  // (notes inside examples/exercises will be rendered by renderExample/renderExercise)
-  for (const note of notes) {
-    const notePos = positionInContent(content, note.fullMatch, note.id);
-
-    // Check if this note is inside any example
-    const isInsideExample = examples.some((ex) => {
-      if (!ex.fullMatch || !note.fullMatch) return false;
-      const exPos = content.indexOf(ex.fullMatch);
-      return notePos >= exPos && notePos < exPos + ex.fullMatch.length;
-    });
-
-    // Check if this note is inside any exercise
-    const isInsideExercise = exercises.some((ex) => {
-      if (!ex.fullMatch || !note.fullMatch) return false;
-      const exPos = content.indexOf(ex.fullMatch);
-      return notePos >= exPos && notePos < exPos + ex.fullMatch.length;
-    });
-
-    if (!isInsideExample && !isInsideExercise) {
-      itemsWithPositions.push({ type: 'note', item: note, position: notePos });
-    }
-  }
-
-  for (const ex of examples) {
-    const pos = positionInContent(content, ex.fullMatch, ex.id);
-    itemsWithPositions.push({ type: 'example', item: ex, position: pos });
-  }
-  for (const ex of exercises) {
-    const pos = positionInContent(content, ex.fullMatch, ex.id);
-    itemsWithPositions.push({ type: 'exercise', item: ex, position: pos });
-  }
-  for (const tbl of tables) {
-    const pos = positionInContent(content, tbl.fullMatch, tbl.id);
-    itemsWithPositions.push({ type: 'table', item: tbl, position: pos });
-  }
-  for (const media of medias) {
-    const pos = positionInContent(content, media.fullMatch, media.id);
-    itemsWithPositions.push({ type: 'media', item: media, position: pos });
-  }
-  for (const lst of lists) {
-    const pos = positionInContent(content, lst.fullMatch, lst.id);
-    itemsWithPositions.push({ type: 'list', item: lst, position: pos });
-  }
-  for (const eq of equations) {
-    const pos = positionInContent(content, eq.fullMatch, eq.id);
-    itemsWithPositions.push({ type: 'equation', item: eq, position: pos });
-  }
-  for (const para of paras) {
-    const pos = para.id ? content.indexOf(`id="${para.id}"`) : content.indexOf('<para');
-    itemsWithPositions.push({ type: 'para', item: para, position: pos !== -1 ? pos : 0 });
-  }
-
-  // Sort by position to preserve document order
-  itemsWithPositions.sort((a, b) => a.position - b.position);
-
-  // Render in document order
-  for (const { type, item } of itemsWithPositions) {
-    switch (type) {
-      case 'section':
-        lines.push(renderSection(item, context, sectionLevel));
-        break;
-      case 'figure':
-        lines.push(renderFigure(item, context));
-        break;
-      case 'note':
-        lines.push(renderNote(item, context));
-        break;
-      case 'example':
-        lines.push(renderExample(item, context));
-        break;
-      case 'exercise':
-        lines.push(renderExercise(item, context));
-        break;
-      case 'table':
-        lines.push(renderTable(item, context));
-        break;
-      case 'media':
-        lines.push(renderMedia(item, context));
-        break;
-      case 'list':
-        lines.push(renderList(item, context));
-        break;
-      case 'equation':
-        lines.push(renderEquation(item, context));
-        break;
-      case 'para':
-        lines.push(renderPara(item, context));
-        break;
-    }
-  }
-
-  return lines;
 }
 
 /**
@@ -1063,20 +922,9 @@ function renderPara(para, context) {
 
 /**
  * Render a figure.
- * Skips rendering if the figure has already been rendered (tracked in context.renderedFigureIds).
  */
 function renderFigure(figure, context) {
   const id = figure.id || null;
-
-  // Skip if this figure was already rendered (e.g., inside a note)
-  if (id && context.renderedFigureIds && context.renderedFigureIds.has(id)) {
-    return '';
-  }
-
-  // Mark this figure as rendered
-  if (id && context.renderedFigureIds) {
-    context.renderedFigureIds.add(id);
-  }
 
   const lines = [];
   const className = figure.attributes.class || null;
@@ -1125,8 +973,13 @@ function renderFigure(figure, context) {
         const normalizedSrc = normalizeImageSrc(src, BOOK_SLUG, chapterStr);
         const alt = mediaAttrs.alt || '';
 
+        // Decode-then-escape at the serialize→escapeAttr seam: the depth-aware
+        // walk hands renderers a re-serialized node, so `alt` arrives already
+        // entity-encoded (e.g. `&gt;`). escapeAttr alone would re-encode the `&`
+        // → `&amp;gt;` (double-encode). decodeEntities is idempotent on values
+        // with no entities, so byte-identical for plain alt text. (P0-1 C1/C2)
         lines.push(
-          `  <img src="${escapeAttr(normalizedSrc)}" alt="${escapeAttr(alt)}" loading="lazy">`
+          `  <img src="${escapeAttr(normalizedSrc)}" alt="${escapeAttr(decodeEntities(alt))}" loading="lazy">`
         );
       }
     }
@@ -1281,7 +1134,12 @@ function renderBlockChildrenInOrder(content, context, dispatch, options = {}) {
       return;
     }
 
-    const obj = extractNestedElements(serializeCnxmlFragment(node), name)[0];
+    // extractNestedElements cannot match a self-closing element (the serializer
+    // emits <tag/> for empty nodes); extractElements handles that form. The
+    // fallback only fires when the nested-aware scan found nothing, i.e. the
+    // element is empty — so extractElements' same-tag truncation cannot bite.
+    const serialized = serializeCnxmlFragment(node);
+    const obj = extractNestedElements(serialized, name)[0] || extractElements(serialized, name)[0];
     if (obj) {
       const html = dispatch[name](obj, context);
       if (html) out.push(html);
@@ -1431,15 +1289,6 @@ function renderExample(example, context) {
       }
     }
 
-    // Register figures inside this para so section-level renderFigure skips them.
-    if (ctx.renderedFigureIds) {
-      const figPattern = /<figure[^>]*\sid="([^"]+)"/g;
-      let figMatch;
-      while ((figMatch = figPattern.exec(contentWithoutTitle)) !== null) {
-        ctx.renderedFigureIds.add(figMatch[1]);
-      }
-    }
-
     const parts = [];
     if (paraTitle) {
       // processInlineContent (not escapeHtml) so a para-title carrying inline
@@ -1471,9 +1320,9 @@ function renderExample(example, context) {
       equation: renderEquation,
       figure: renderFigure,
       media: renderMedia,
-      // A <table> that is a direct child of the example renders in place here;
-      // renderTable registers its id in context.renderedTableIds so the later
-      // section-level pass skips the duplicate (m68793 tables 12.31/12.32).
+      // A <table> that is a direct child of the example renders in place here
+      // (the depth-aware walk itemizes it once, at this container — m68793
+      // tables 12.31/12.32).
       table: renderTable,
     },
     // Hoist block-level <equation> out of a <para> so it renders ONCE as a
@@ -1542,29 +1391,15 @@ function renderExercise(exercise, context) {
 
   lines.push(`<div ${attrs.join(' ')}>`);
 
-  // Helper: render problem/solution section content (paras, media, figures,
-  // lists) in document order via the DOM seam. Only <list> is hoisted out of a
-  // <para> (matching the prior list-strip); figures render inline via renderPara.
-  const paraHandler = (para, ctx) => {
-    // Register figures nested in this para so the section-level renderFigure
-    // dispatch skips the duplicate (mirrors renderExample's paraHandler —
-    // renderedFigureIds; R4-5).
-    if (ctx.renderedFigureIds) {
-      const figPattern = /<figure[^>]*\sid="([^"]+)"/g;
-      let figMatch;
-      while ((figMatch = figPattern.exec(para.content)) !== null) {
-        ctx.renderedFigureIds.add(figMatch[1]);
-      }
-    }
-    return renderPara(para, ctx);
-  };
-
+  // Render problem/solution section content (paras, media, figures, lists) in
+  // document order via the DOM seam. Only <list> is hoisted out of a <para>
+  // (matching the prior list-strip); figures render inline via renderPara.
   function renderSectionContent(sectionContent) {
     const blocks = renderBlockChildrenInOrder(
       sectionContent,
       context,
       {
-        para: paraHandler,
+        para: renderPara,
         media: renderMedia,
         figure: renderFigure,
         list: renderList,
@@ -1658,16 +1493,6 @@ function renderExercise(exercise, context) {
 function renderTable(table, context) {
   const lines = [];
   const id = table.id || null;
-
-  // A table that is a direct child of an example/note renders in place via that
-  // block's dispatcher; skip the later section-level pass so it renders once
-  // (mirrors renderFigure / context.renderedFigureIds).
-  if (id && context.renderedTableIds && context.renderedTableIds.has(id)) {
-    return '';
-  }
-  if (id && context.renderedTableIds) {
-    context.renderedTableIds.add(id);
-  }
 
   const className = table.attributes.class || null;
 
@@ -1765,6 +1590,101 @@ function calculateColspan(namest, nameend) {
 }
 
 /**
+ * Render a list item's mixed content: inline text interleaved with block
+ * children (nested list, figure, table, media, equation) either as direct
+ * item children or nested inside an item <para> — the two depths the corpus
+ * carries.
+ *
+ * Blocks are swapped for NUL-delimited placeholders IN PLACE (preserving
+ * their position in the text flow — the mechanism proven by the former
+ * equation-only branch), the remaining text renders through the existing
+ * para/<br> and inline paths, then placeholders are substituted with each
+ * block's rendered HTML. Extraction order (list → figure → table → media →
+ * equation) keeps each pass blind to content an earlier pass already owns
+ * (a figure-wrapped <media> stays the figure's; blocks inside a nested list
+ * belong to its own renderList recursion).
+ */
+function renderItemBody(content, context) {
+  let working = content;
+  const placeholders = [];
+
+  const swap = (elements, renderer) => {
+    for (const el of elements) {
+      if (!el.fullMatch) continue;
+      const idx = working.indexOf(el.fullMatch);
+      if (idx === -1) {
+        // fullMatch no longer present (should not happen — swaps preserve all
+        // other bytes). Record loudly rather than lose content silently.
+        if (context.undispatchedBlocks) {
+          context.undispatchedBlocks.push({
+            tag: 'unswappable',
+            id: el.id || null,
+            location: 'renderList-item',
+          });
+        }
+        continue;
+      }
+      const ph = `\u0000BLOCK_${placeholders.length}\u0000`;
+      working = working.slice(0, idx) + ph + working.slice(idx + el.fullMatch.length);
+      placeholders.push({ ph, html: renderer(el, context) });
+    }
+  };
+
+  swap(extractNestedElements(working, 'list'), (el, ctx) => renderList(el, ctx));
+  swap(extractNestedElements(working, 'figure'), renderFigure);
+  swap(extractNestedElements(working, 'table'), renderTable);
+  swap(extractNestedElements(working, 'media'), renderMedia);
+  swap(extractElements(working, 'equation'), renderEquation);
+
+  // Loud seam for block-shaped elements we do not dispatch in items (e.g. quote).
+  // Inline elements and item metadata are expected here and stay in the text flow.
+  if (context.undispatchedBlocks) {
+    const ITEM_INLINE_OK = new Set([...LOUD_SEAM_IGNORE, 'para', 'space', 'image', 'span']);
+    const leftoverTag = /<([a-z][\w-]*)[\s/>]/g;
+    let m;
+    while ((m = leftoverTag.exec(working)) !== null) {
+      if (!ITEM_INLINE_OK.has(m[1])) {
+        context.undispatchedBlocks.push({ tag: m[1], id: null, location: 'renderList-item' });
+      }
+    }
+  }
+
+  // Paras: render each at its position; '<br>' only between ADJACENT paras
+  // (byte-parity with the former pure-para join); text/placeholders between or
+  // around paras render inline at their natural position.
+  const paras = extractElements(working, 'para');
+  let rendered;
+  if (paras.length > 0) {
+    const parts = []; // strings (inline runs) and {para: html} objects
+    let rest = working;
+    for (const p of paras) {
+      const idx = rest.indexOf(p.fullMatch);
+      if (idx === -1) continue;
+      const before = rest.slice(0, idx);
+      if (before.trim()) parts.push(processInlineContent(before, context));
+      parts.push({ para: processInlineContent(p.content, context) });
+      rest = rest.slice(idx + p.fullMatch.length);
+    }
+    if (rest.trim()) parts.push(processInlineContent(rest, context));
+    rendered = '';
+    for (let i = 0; i < parts.length; i++) {
+      const cur = parts[i];
+      if (i > 0 && typeof cur === 'object' && typeof parts[i - 1] === 'object') {
+        rendered += '<br>';
+      }
+      rendered += typeof cur === 'object' ? cur.para : cur;
+    }
+  } else {
+    rendered = processInlineContent(working, context);
+  }
+
+  for (const { ph, html } of placeholders) {
+    rendered = rendered.replace(ph, html);
+  }
+  return rendered;
+}
+
+/**
  * Render a list.
  */
 function renderList(list, context) {
@@ -1790,99 +1710,7 @@ function renderList(list, context) {
   const items = extractNestedElements(list.content, 'item');
   for (const item of items) {
     const itemId = item.id ? ` id="${escapeAttr(item.id)}"` : '';
-
-    // Check for nested lists inside items
-    const nestedLists = extractNestedElements(item.content, 'list');
-    if (nestedLists.length > 0) {
-      // Strip nested lists from item content before processing text
-      let textContent = item.content;
-      for (const nl of nestedLists)
-        if (nl.fullMatch) textContent = textContent.replace(nl.fullMatch, '');
-      const nestedParas = extractElements(textContent, 'para');
-      const text =
-        nestedParas.length > 0
-          ? nestedParas.map((p) => processInlineContent(p.content, context)).join('<br>')
-          : processInlineContent(textContent, context);
-      lines.push(`  <li${itemId}>${text}`);
-      for (const nl of nestedLists) lines.push(renderList(nl, context));
-      lines.push('  </li>');
-    } else {
-      // Simple items: check for nested paragraphs
-      const nestedParas = extractElements(item.content, 'para');
-      if (nestedParas.length > 0) {
-        // Use the DOM to check for DIRECT-CHILD equation/media siblings — extractElements
-        // is not depth-aware (it matches equations nested inside <para> content too),
-        // which would cause false-positives and lose the inter-para <br> separator for
-        // pure-para items that merely have inline equations in their para text.
-        const { root: itemRoot } = parseCnxmlFragment(item.content);
-        const directBlocks = Array.from(itemRoot.childNodes).filter((n) => n.nodeType === 1);
-        const hasDirectBlockSiblings = directBlocks.some(
-          (n) => n.localName === 'equation' || n.localName === 'media'
-        );
-        if (hasDirectBlockSiblings) {
-          // DOM-walk: render all direct block children (para, equation, media) in source
-          // order. Equations/media that are top-level siblings of <para> inside an <item>
-          // were previously dropped by the para-only branch. Worked-solution pattern:
-          // stepwise <list> inside <example> — <item> has <para>+<equation>+<media>.
-          const parts = [];
-          for (const node of directBlocks) {
-            const name = node.localName;
-            const serialized = serializeCnxmlFragment(node);
-            if (name === 'para') {
-              const objs = extractElements(serialized, 'para');
-              if (objs[0]) parts.push(processInlineContent(objs[0].content, context));
-            } else if (name === 'equation') {
-              const objs = extractElements(serialized, 'equation');
-              if (objs[0]) parts.push(renderEquation(objs[0], context));
-            } else if (name === 'media') {
-              const objs = extractNestedElements(serialized, 'media');
-              if (objs[0]) parts.push(renderMedia(objs[0], context));
-            } else {
-              // Loud seam: record unhandled block child type rather than drop silently
-              if (context.undispatchedBlocks) {
-                context.undispatchedBlocks.push({
-                  tag: name,
-                  id: (node.getAttribute && node.getAttribute('id')) || null,
-                  location: 'renderList-item',
-                });
-              }
-            }
-          }
-          lines.push(`  <li${itemId}>${parts.join('')}</li>`);
-        } else {
-          // Pure para case (no direct-child equation/media): preserve existing byte-identical output
-          const content = nestedParas
-            .map((p) => processInlineContent(p.content, context))
-            .join('<br>');
-          lines.push(`  <li${itemId}>${content}</li>`);
-        }
-      } else {
-        // Check for nested block-level <equation> elements. Source pattern, e.g.
-        // ch21-2 historical-milestones bullets: each <item> contains text +
-        // <newline/> + <equation>. Previously the top-level extraction pass
-        // pulled these equations out of the list and rendered them as siblings
-        // AFTER </ul>. Keep them inline here so they stay inside their <li>.
-        const nestedEquations = extractElements(item.content, 'equation');
-        if (nestedEquations.length > 0) {
-          let working = item.content;
-          const placeholders = [];
-          nestedEquations.forEach((eq, i) => {
-            if (!eq.fullMatch) return;
-            const ph = `\u0000EQ_PLACEHOLDER_${i}\u0000`;
-            working = working.replace(eq.fullMatch, ph);
-            placeholders.push({ ph, html: renderEquation(eq, context) });
-          });
-          let rendered = processInlineContent(working, context);
-          for (const { ph, html } of placeholders) {
-            rendered = rendered.replace(ph, html);
-          }
-          lines.push(`  <li${itemId}>${rendered}</li>`);
-        } else {
-          const content = processInlineContent(item.content, context);
-          lines.push(`  <li${itemId}>${content}</li>`);
-        }
-      }
-    }
+    lines.push(`  <li${itemId}>${renderItemBody(item.content, context)}</li>`);
   }
 
   lines.push(`</${tag}>`);
@@ -1939,7 +1767,13 @@ function renderEquation(eq, context) {
     context.renderStats.success++;
   }
 
-  const eqContent = `<span class="mathjax-display" data-latex="${escapeAttr(latex)}">${mathHtml}</span>`;
+  // Decode-then-escape at the serialize→escapeAttr seam (same fix as media alt):
+  // the depth-aware walk serializes the equation node, so `latex` — derived from
+  // the re-serialized MathML — arrives with entity-encoded operators (e.g. `&gt;`).
+  // escapeAttr alone would re-encode the `&` → `&amp;gt;`, breaking vefur's
+  // "Afrita LaTeX" copy button. decodeEntities is idempotent on entity-free
+  // values, so byte-identical for latex without `<`/`>`/`&`. (P0-1 C1/C2)
+  const eqContent = `<span class="mathjax-display" data-latex="${escapeAttr(decodeEntities(latex))}">${mathHtml}</span>`;
   const numberSpan = isUnnumbered ? '' : '<span class="equation-number"></span>';
 
   // Get equation number from chapter-wide map for numbered equations only
@@ -1991,45 +1825,6 @@ function renderGlossary(content, context) {
   lines.push('  </dl>');
   lines.push('</section>');
   return lines.join('\n');
-}
-
-/**
- * Remove nested elements of a given type from content.
- */
-function removeNestedElements(content, tagName) {
-  const openTag = new RegExp(`<${tagName}(\\s[^>]*)?>`, 'g');
-  const closeTag = `</${tagName}>`;
-
-  let result = content;
-  let match;
-
-  while ((match = openTag.exec(result)) !== null) {
-    const startIdx = match.index;
-    let depth = 1;
-    let idx = startIdx + match[0].length;
-
-    while (depth > 0 && idx < result.length) {
-      const nextOpen = result.indexOf(`<${tagName}`, idx);
-      const nextClose = result.indexOf(closeTag, idx);
-
-      if (nextClose === -1) break;
-
-      if (nextOpen !== -1 && nextOpen < nextClose) {
-        depth++;
-        idx = nextOpen + tagName.length + 1;
-      } else {
-        depth--;
-        if (depth === 0) {
-          const endIdx = nextClose + closeTag.length;
-          result = result.substring(0, startIdx) + result.substring(endIdx);
-          openTag.lastIndex = startIdx;
-        }
-        idx = nextClose + closeTag.length;
-      }
-    }
-  }
-
-  return result;
 }
 
 // =====================================================================
@@ -3543,54 +3338,58 @@ async function main() {
     }
 
     const writtenFiles = []; // Track files written in this render pass for cleanup on failure
+    const failedModules = [];
 
     try {
       for (const moduleId of modules) {
-        // Fresh MJX-N id space per page so an edit to one module doesn't churn
-        // the equation ids on every later page in the chapter (#14).
-        resetMathJaxIds();
-        if (args.verbose) {
-          console.error(`Rendering: ${moduleId}`);
-        }
+        try {
+          // Fresh MJX-N id space per page so an edit to one module doesn't churn
+          // the equation ids on every later page in the chapter (#14).
+          resetMathJaxIds();
+          if (args.verbose) {
+            console.error(`Rendering: ${moduleId}`);
+          }
 
-        const cnxmlPath = translatedCnxmlPath(args.track, chapterDir, moduleId);
-        const cnxml = fs.readFileSync(cnxmlPath, 'utf-8');
+          const cnxmlPath = translatedCnxmlPath(args.track, chapterDir, moduleId);
+          const cnxml = fs.readFileSync(cnxmlPath, 'utf-8');
 
-        const renderResult = renderCnxmlToHtml(cnxml, {
-          verbose: args.verbose,
-          lang: args.lang,
-          chapter: args.chapter,
-          moduleId,
-          moduleSections,
-          chapterFigureNumbers,
-          chapterTableNumbers,
-          chapterEquationNumbers,
-          chapterExampleNumbers,
-          chapterExerciseNumbers,
-          chapterSectionTitles,
-          chapterIdToModule,
-          ...appendixResolution,
-          relocatedIds,
-          equationTextDictionary,
-        });
-        let html = renderResult.html;
-        const pageData = renderResult.pageData;
+          const renderResult = renderCnxmlToHtml(cnxml, {
+            verbose: args.verbose,
+            lang: args.lang,
+            chapter: args.chapter,
+            moduleId,
+            moduleSections,
+            chapterFigureNumbers,
+            chapterTableNumbers,
+            chapterEquationNumbers,
+            chapterExampleNumbers,
+            chapterExerciseNumbers,
+            chapterSectionTitles,
+            chapterIdToModule,
+            ...appendixResolution,
+            relocatedIds,
+            equationTextDictionary,
+          });
+          let html = renderResult.html;
+          const pageData = renderResult.pageData;
 
-        // Special handling for Periodic Table appendix
-        // Replace static image with link to interactive periodic table
-        if (BOOK_CONFIG?.specialModules?.[moduleId] === 'periodic-table') {
-          const mainContentMatch = html.match(/(<main>)([\s\S]*?)(<\/main>)/);
-          if (mainContentMatch) {
-            // Preserve any element ids from the original rendered content so
-            // cross-references from chapter text (e.g. <a href="#fs-idm…">viðauka A</a>)
-            // still resolve to a real anchor on this page.
-            const preservedIds = Array.from(
-              new Set(Array.from(mainContentMatch[2].matchAll(/\sid="([^"]+)"/g)).map((m) => m[1]))
-            ).filter((id) => id !== 'title' && id !== 'page-data');
-            const anchors = preservedIds
-              .map((id) => `<span id="${id}" class="preserved-anchor"></span>`)
-              .join('');
-            const newMainContent = `<main>
+          // Special handling for Periodic Table appendix
+          // Replace static image with link to interactive periodic table
+          if (BOOK_CONFIG?.specialModules?.[moduleId] === 'periodic-table') {
+            const mainContentMatch = html.match(/(<main>)([\s\S]*?)(<\/main>)/);
+            if (mainContentMatch) {
+              // Preserve any element ids from the original rendered content so
+              // cross-references from chapter text (e.g. <a href="#fs-idm…">viðauka A</a>)
+              // still resolve to a real anchor on this page.
+              const preservedIds = Array.from(
+                new Set(
+                  Array.from(mainContentMatch[2].matchAll(/\sid="([^"]+)"/g)).map((m) => m[1])
+                )
+              ).filter((id) => id !== 'title' && id !== 'page-data');
+              const anchors = preservedIds
+                .map((id) => `<span id="${id}" class="preserved-anchor"></span>`)
+                .join('');
+              const newMainContent = `<main>
 ${anchors}
 <div style="text-align: center; padding: 2rem;">
   <h2>Gagnavirkt lotukerfi frumefna</h2>
@@ -3605,40 +3404,58 @@ ${anchors}
   </p>
 </div>
 </main>`;
-            html = html.replace(/(<main>)[\s\S]*?(<\/main>)/, newMainContent);
+              html = html.replace(/(<main>)[\s\S]*?(<\/main>)/, newMainContent);
+            }
           }
-        }
 
-        // Validate output is non-empty
-        if (!html || html.trim().length < 100) {
-          console.error(
-            `  ERROR: Rendered HTML for ${moduleId} is empty or too short (${html?.length || 0} chars)`
-          );
-        }
-
-        const outputPath = writeOutput(args.chapter, moduleId, args.track, html, moduleSections);
-        writtenFiles.push(outputPath);
-
-        console.log(`${moduleId}: Rendered to HTML`);
-        console.log(`  → ${outputPath}`);
-
-        // Report equation render stats from pageData context
-        // Extract render stats from the context that was used
-        const renderStats = pageData._renderStats;
-        if (renderStats && renderStats.equations > 0) {
-          if (renderStats.failures.length > 0) {
+          // Validate output is non-empty
+          if (!html || html.trim().length < 100) {
             console.error(
-              `  Equations: ${renderStats.success}/${renderStats.equations} rendered OK, ${renderStats.failures.length} FAILED`
+              `  ERROR: Rendered HTML for ${moduleId} is empty or too short (${html?.length || 0} chars)`
             );
-            for (const f of renderStats.failures.slice(0, 3)) {
+          }
+
+          const outputPath = writeOutput(args.chapter, moduleId, args.track, html, moduleSections);
+          writtenFiles.push(outputPath);
+
+          console.log(`${moduleId}: Rendered to HTML`);
+          console.log(`  → ${outputPath}`);
+
+          // Report equation render stats from pageData context
+          // Extract render stats from the context that was used
+          const renderStats = pageData._renderStats;
+          if (renderStats && renderStats.equations > 0) {
+            if (renderStats.failures.length > 0) {
               console.error(
-                `    - ${f.id || 'unknown'}: ${f.reason}${f.latex ? ` (${f.latex})` : ''}`
+                `  Equations: ${renderStats.success}/${renderStats.equations} rendered OK, ${renderStats.failures.length} FAILED`
+              );
+              for (const f of renderStats.failures.slice(0, 3)) {
+                console.error(
+                  `    - ${f.id || 'unknown'}: ${f.reason}${f.latex ? ` (${f.latex})` : ''}`
+                );
+              }
+            } else if (args.verbose) {
+              console.log(
+                `  Equations: ${renderStats.success}/${renderStats.equations} rendered OK`
               );
             }
-          } else if (args.verbose) {
-            console.log(`  Equations: ${renderStats.success}/${renderStats.equations} rendered OK`);
           }
+        } catch (moduleErr) {
+          // Per-module fail-loud (spec §6): a malformed/unrenderable module is
+          // skipped — its previously published file stays in place — the rest of
+          // the chapter renders, and the run exits non-zero. A throw here must
+          // not reach the chapter-wide catch, which would roll back GOOD pages.
+          console.error(`  ERROR: ${moduleId} failed to render — skipped: ${moduleErr.message}`);
+          failedModules.push(moduleId);
+          continue;
         }
+      }
+
+      if (failedModules.length > 0) {
+        console.error(
+          `Render incomplete: ${failedModules.length} module(s) failed and were skipped: ${failedModules.join(', ')}`
+        );
+        process.exitCode = 1;
       }
 
       // Extract and render end-of-chapter sections from the last module
