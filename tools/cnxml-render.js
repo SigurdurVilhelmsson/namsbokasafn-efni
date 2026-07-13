@@ -1765,6 +1765,101 @@ function calculateColspan(namest, nameend) {
 }
 
 /**
+ * Render a list item's mixed content: inline text interleaved with block
+ * children (nested list, figure, table, media, equation) either as direct
+ * item children or nested inside an item <para> — the two depths the corpus
+ * carries.
+ *
+ * Blocks are swapped for NUL-delimited placeholders IN PLACE (preserving
+ * their position in the text flow — the mechanism proven by the former
+ * equation-only branch), the remaining text renders through the existing
+ * para/<br> and inline paths, then placeholders are substituted with each
+ * block's rendered HTML. Extraction order (list → figure → table → media →
+ * equation) keeps each pass blind to content an earlier pass already owns
+ * (a figure-wrapped <media> stays the figure's; blocks inside a nested list
+ * belong to its own renderList recursion).
+ */
+function renderItemBody(content, context) {
+  let working = content;
+  const placeholders = [];
+
+  const swap = (elements, renderer) => {
+    for (const el of elements) {
+      if (!el.fullMatch) continue;
+      const idx = working.indexOf(el.fullMatch);
+      if (idx === -1) {
+        // fullMatch no longer present (should not happen — swaps preserve all
+        // other bytes). Record loudly rather than lose content silently.
+        if (context.undispatchedBlocks) {
+          context.undispatchedBlocks.push({
+            tag: 'unswappable',
+            id: el.id || null,
+            location: 'renderList-item',
+          });
+        }
+        continue;
+      }
+      const ph = `\u0000BLOCK_${placeholders.length}\u0000`;
+      working = working.slice(0, idx) + ph + working.slice(idx + el.fullMatch.length);
+      placeholders.push({ ph, html: renderer(el, context) });
+    }
+  };
+
+  swap(extractNestedElements(working, 'list'), (el, ctx) => renderList(el, ctx));
+  swap(extractNestedElements(working, 'figure'), renderFigure);
+  swap(extractNestedElements(working, 'table'), renderTable);
+  swap(extractNestedElements(working, 'media'), renderMedia);
+  swap(extractElements(working, 'equation'), renderEquation);
+
+  // Loud seam for block-shaped elements we do not dispatch in items (e.g. quote).
+  // Inline elements and item metadata are expected here and stay in the text flow.
+  if (context.undispatchedBlocks) {
+    const ITEM_INLINE_OK = new Set([...LOUD_SEAM_IGNORE, 'para', 'space', 'image', 'span']);
+    const leftoverTag = /<([a-z][\w-]*)[\s/>]/g;
+    let m;
+    while ((m = leftoverTag.exec(working)) !== null) {
+      if (!ITEM_INLINE_OK.has(m[1])) {
+        context.undispatchedBlocks.push({ tag: m[1], id: null, location: 'renderList-item' });
+      }
+    }
+  }
+
+  // Paras: render each at its position; '<br>' only between ADJACENT paras
+  // (byte-parity with the former pure-para join); text/placeholders between or
+  // around paras render inline at their natural position.
+  const paras = extractElements(working, 'para');
+  let rendered;
+  if (paras.length > 0) {
+    const parts = []; // strings (inline runs) and {para: html} objects
+    let rest = working;
+    for (const p of paras) {
+      const idx = rest.indexOf(p.fullMatch);
+      if (idx === -1) continue;
+      const before = rest.slice(0, idx);
+      if (before.trim()) parts.push(processInlineContent(before, context));
+      parts.push({ para: processInlineContent(p.content, context) });
+      rest = rest.slice(idx + p.fullMatch.length);
+    }
+    if (rest.trim()) parts.push(processInlineContent(rest, context));
+    rendered = '';
+    for (let i = 0; i < parts.length; i++) {
+      const cur = parts[i];
+      if (i > 0 && typeof cur === 'object' && typeof parts[i - 1] === 'object') {
+        rendered += '<br>';
+      }
+      rendered += typeof cur === 'object' ? cur.para : cur;
+    }
+  } else {
+    rendered = processInlineContent(working, context);
+  }
+
+  for (const { ph, html } of placeholders) {
+    rendered = rendered.replace(ph, html);
+  }
+  return rendered;
+}
+
+/**
  * Render a list.
  */
 function renderList(list, context) {
@@ -1790,99 +1885,7 @@ function renderList(list, context) {
   const items = extractNestedElements(list.content, 'item');
   for (const item of items) {
     const itemId = item.id ? ` id="${escapeAttr(item.id)}"` : '';
-
-    // Check for nested lists inside items
-    const nestedLists = extractNestedElements(item.content, 'list');
-    if (nestedLists.length > 0) {
-      // Strip nested lists from item content before processing text
-      let textContent = item.content;
-      for (const nl of nestedLists)
-        if (nl.fullMatch) textContent = textContent.replace(nl.fullMatch, '');
-      const nestedParas = extractElements(textContent, 'para');
-      const text =
-        nestedParas.length > 0
-          ? nestedParas.map((p) => processInlineContent(p.content, context)).join('<br>')
-          : processInlineContent(textContent, context);
-      lines.push(`  <li${itemId}>${text}`);
-      for (const nl of nestedLists) lines.push(renderList(nl, context));
-      lines.push('  </li>');
-    } else {
-      // Simple items: check for nested paragraphs
-      const nestedParas = extractElements(item.content, 'para');
-      if (nestedParas.length > 0) {
-        // Use the DOM to check for DIRECT-CHILD equation/media siblings — extractElements
-        // is not depth-aware (it matches equations nested inside <para> content too),
-        // which would cause false-positives and lose the inter-para <br> separator for
-        // pure-para items that merely have inline equations in their para text.
-        const { root: itemRoot } = parseCnxmlFragment(item.content);
-        const directBlocks = Array.from(itemRoot.childNodes).filter((n) => n.nodeType === 1);
-        const hasDirectBlockSiblings = directBlocks.some(
-          (n) => n.localName === 'equation' || n.localName === 'media'
-        );
-        if (hasDirectBlockSiblings) {
-          // DOM-walk: render all direct block children (para, equation, media) in source
-          // order. Equations/media that are top-level siblings of <para> inside an <item>
-          // were previously dropped by the para-only branch. Worked-solution pattern:
-          // stepwise <list> inside <example> — <item> has <para>+<equation>+<media>.
-          const parts = [];
-          for (const node of directBlocks) {
-            const name = node.localName;
-            const serialized = serializeCnxmlFragment(node);
-            if (name === 'para') {
-              const objs = extractElements(serialized, 'para');
-              if (objs[0]) parts.push(processInlineContent(objs[0].content, context));
-            } else if (name === 'equation') {
-              const objs = extractElements(serialized, 'equation');
-              if (objs[0]) parts.push(renderEquation(objs[0], context));
-            } else if (name === 'media') {
-              const objs = extractNestedElements(serialized, 'media');
-              if (objs[0]) parts.push(renderMedia(objs[0], context));
-            } else {
-              // Loud seam: record unhandled block child type rather than drop silently
-              if (context.undispatchedBlocks) {
-                context.undispatchedBlocks.push({
-                  tag: name,
-                  id: (node.getAttribute && node.getAttribute('id')) || null,
-                  location: 'renderList-item',
-                });
-              }
-            }
-          }
-          lines.push(`  <li${itemId}>${parts.join('')}</li>`);
-        } else {
-          // Pure para case (no direct-child equation/media): preserve existing byte-identical output
-          const content = nestedParas
-            .map((p) => processInlineContent(p.content, context))
-            .join('<br>');
-          lines.push(`  <li${itemId}>${content}</li>`);
-        }
-      } else {
-        // Check for nested block-level <equation> elements. Source pattern, e.g.
-        // ch21-2 historical-milestones bullets: each <item> contains text +
-        // <newline/> + <equation>. Previously the top-level extraction pass
-        // pulled these equations out of the list and rendered them as siblings
-        // AFTER </ul>. Keep them inline here so they stay inside their <li>.
-        const nestedEquations = extractElements(item.content, 'equation');
-        if (nestedEquations.length > 0) {
-          let working = item.content;
-          const placeholders = [];
-          nestedEquations.forEach((eq, i) => {
-            if (!eq.fullMatch) return;
-            const ph = `\u0000EQ_PLACEHOLDER_${i}\u0000`;
-            working = working.replace(eq.fullMatch, ph);
-            placeholders.push({ ph, html: renderEquation(eq, context) });
-          });
-          let rendered = processInlineContent(working, context);
-          for (const { ph, html } of placeholders) {
-            rendered = rendered.replace(ph, html);
-          }
-          lines.push(`  <li${itemId}>${rendered}</li>`);
-        } else {
-          const content = processInlineContent(item.content, context);
-          lines.push(`  <li${itemId}>${content}</li>`);
-        }
-      }
-    }
+    lines.push(`  <li${itemId}>${renderItemBody(item.content, context)}</li>`);
   }
 
   lines.push(`</${tag}>`);
