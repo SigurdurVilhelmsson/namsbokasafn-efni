@@ -156,3 +156,29 @@ Gate: `npm test` from repo root, all green.
 Separate lead-gated data step (finishes the halted B4 data op): paired-survival probe (~3 ISK) → targeted
 re-MT of the 6 term-bearing chemistry modules (~1,500 ISK) on branch `data/b4-remt-8modules` → re-inject →
 re-render → order/F8 recheck → data-delivery PR. Biology intake stays gated until this fix is on `main`.
+
+## 11. Known limitations & follow-ups (from the whole-branch review, 2026-07-13)
+
+Implemented and re-reviewed READY-TO-MERGE (final-review fix `42876fa5`: reattach reordered AFTER
+`repairSegTags` on both paths + a pre-write leak guard `/\[\[\/?(?:term|fn)\]\]/` in `translateModule`
++ `computeCompleteChapters()` excluding failed AND mismatch-bearing chapters). Register these residuals:
+
+- **[known limitation] Cross-type term/fn nesting permanently degrades to English + perpetual `exit 1`.**
+  A `[[term:…]]` inside a `[[fn:…]]` (or vice versa) is *structural*, not a random drop, so the
+  count-guard's `nested` mismatch fires every run — the segment is always degraded to its English
+  original and never receives Icelandic term text, and the run always exits non-zero. Safe (no
+  corruption, loud) but a genuine ceiling. **Biology has 42 footnotes** (32 modules); if any wrap a
+  `<term>`, those need a recursive re-attach or manual handling. Fix candidate: recursive/stack-based
+  span resolution in `reattachIds` (deferred as YAGNI — 0 corpus instances today).
+- **[L1, cosmetic] Degrade path emits un-normalized English.** When a segment degrades to
+  `originalText`, that text bypasses `normalizeUnicode` (which now runs pre-reattach on the discarded
+  translated form), so a raw Unicode sub/sup in the EN source lands raw rather than as `~N~`/`^N^`.
+  Only affects already-flagged, held-back mismatch segments; invariant + fail-loud intact.
+- **[L2, by-design] Whole-module hard-fail on one unrepairable SEG-id mangle.** The leak guard throws
+  for the whole module → nothing written, must re-MT. Deliberate fail-loud tradeoff.
+- **[T1, register] DRY:** `SEG_SPLIT_RE`/`SEG_ID_RE` duplicate pre-existing inline regexes in
+  `api-translate.js` (never migrated to `tools/lib/seg-markers.cjs`); `splitTopLevelId` last-top-level-`|`
+  -wins misparses a no-id term whose prose contains a bare top-level `|` (near-impossible corpus).
+- **[T5, register] Probe asymmetry:** `T1.18` checks term inner-text translation + both delimiters'
+  survival but not *fn* inner-text translation (one-line add:
+  `!/\[\[fn\]\]At standard pressure\.\[\[\/fn\]\]/.test(output)`).
