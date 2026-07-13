@@ -163,3 +163,25 @@ describe('reattachIds', () => {
     expect(text).toContain('[[fn:note|fs-9]]');
   });
 });
+
+describe('translateChunk round-trip (mocked client)', () => {
+  // import translateChunk lazily since it is not exported yet in Task 1/2
+  it('sends paired form to the API and returns id-anchored translated markers', async () => {
+    const { translateChunk } = await import('../api-translate.js');
+    const seen = {};
+    const fakeClient = {
+      async translateAuto(text) {
+        seen.text = text;
+        // API translates the word between paired brackets, keeps delimiters + SEG
+        const out = text.replace('[[term]]viscosity[[/term]]', '[[term]]seigja[[/term]]');
+        return { text: out, usage: 1 };
+      },
+    };
+    const chunk = '<!-- SEG:m1:para:a -->\nThe [[term:viscosity|term-00001]] of a liquid.\n';
+    const res = await translateChunk(fakeClient, chunk, null, false, 'm1');
+    expect(seen.text).toContain('[[term]]viscosity[[/term]]'); // API saw paired form
+    expect(seen.text).not.toContain('[[term:'); // id did NOT ride the wire
+    expect(res.text).toContain('[[term:seigja|term-00001]]'); // returned id-anchored + translated
+    expect(res.mismatches).toEqual([]);
+  });
+});

@@ -702,17 +702,27 @@ export function splitAtSegBoundaries(text, maxChars) {
 
 /**
  * Translate a single chunk via the API with glossary and retry logic.
- * @returns {{ text: string, usage: number }}
+ *
+ * B4-D11: id-anchored [[term:text|id]]/[[fn:text|id]] markers are opaque to the
+ * API (it doesn't translate inside them). The chunk is rewritten to paired
+ * [[term]]text[[/term]] form for the wire (stripTermFnToPaired), and ids are
+ * restored immediately after each translateAuto call (reattachIds) — before
+ * the existing post-processing chain, which continues to operate on the
+ * original id-anchored on-disk form.
+ * @returns {{ text: string, usage: number, mismatches: Array }}
  */
-async function translateChunk(client, chunkText, glossary, verbose, chunkLabel) {
+export async function translateChunk(client, chunkText, glossary, verbose, chunkLabel) {
+  const { wireText, segments } = stripTermFnToPaired(chunkText);
   const filteredGlossary = filterGlossaryForText(glossary, chunkText);
   const translateOpts = { targetLanguage: 'is' };
   if (filteredGlossary) {
     translateOpts.glossaries = [filteredGlossary];
   }
 
-  let result = await client.translateAuto(chunkText, translateOpts);
-  let output = result.text;
+  let result = await client.translateAuto(wireText, translateOpts);
+  let reattach = reattachIds(result.text, segments);
+  let output = reattach.text;
+  let mismatches = reattach.mismatches;
 
   assertNoControlChars(output, chunkLabel);
   output = normalizeUnicode(output);
@@ -726,9 +736,12 @@ async function translateChunk(client, chunkText, glossary, verbose, chunkLabel) 
           `\n    ${chunkLabel}: truncated with glossary (${filteredGlossary.terms.length} terms), retrying without...`
         );
       }
-      result = await client.translateAuto(chunkText, { targetLanguage: 'is' });
-      assertNoControlChars(result.text, chunkLabel);
-      output = normalizeUnicode(result.text);
+      result = await client.translateAuto(wireText, { targetLanguage: 'is' });
+      reattach = reattachIds(result.text, segments);
+      output = reattach.text;
+      mismatches = reattach.mismatches;
+      assertNoControlChars(output, chunkLabel);
+      output = normalizeUnicode(output);
       output = repairSegTags(chunkText, output);
     }
 
@@ -742,7 +755,7 @@ async function translateChunk(client, chunkText, glossary, verbose, chunkLabel) 
     }
   }
 
-  return { text: output, usage: result.usage };
+  return { text: output, usage: result.usage, mismatches };
 }
 
 /** Derive a module id (mNNNNN) from an mt-output output path. */
