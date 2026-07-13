@@ -70,6 +70,9 @@ describe('concordanceService', () => {
     it('normalizeEn lowercases and collapses', () => {
       expect(concordance.normalizeEn('Check  Your\nLearning')).toBe('check your learning');
     });
+    it('normalizeEn strips B4 markers to lowercase display text', () => {
+      expect(concordance.normalizeEn('The [[term:Viscosity|term-1]]')).toBe('the viscosity');
+    });
   });
 
   describe('indexModule', () => {

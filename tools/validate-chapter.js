@@ -739,6 +739,15 @@ const VALIDATORS = {
         if (eqLeaks.length > 0) {
           issues.push({ file, message: `${eqLeaks.length} [[EQ:N]] placeholder(s) in output` });
         }
+
+        // Check for B4 inline markers ([[term:]], [[fn:]], [[u:]], [[em:]])
+        const inlineLeaks = content.match(/\[\[(?:term|fn|u|em):[^\]]*\]\]/g) || [];
+        if (inlineLeaks.length > 0) {
+          issues.push({
+            file,
+            message: `${inlineLeaks.length} B4 inline marker(s) ([[term:/fn:/u:/em:]]) in output`,
+          });
+        }
       }
 
       return issues;

@@ -48,6 +48,14 @@ describe('normalizeVisibleText — marker-format agnostic (every modernization p
       normalizeVisibleText('positron ([[MATH:51]])')
     );
   });
+
+  // PIN (B4): the existing labeled-marker rule (line 19) already covers the
+  // new [[term:]]/[[fn:]] id-anchored types — no code change needed here.
+  it('legacy {{term}} and B4 bracket [[term:...|id]] are equal', () => {
+    expect(normalizeVisibleText('{{term}}viscosity{{/term}}')).toBe(
+      normalizeVisibleText('[[term:viscosity|term-00001]]')
+    );
+  });
 });
 
 describe('compareModule — 5-part equivalence (adds equation key-set)', () => {

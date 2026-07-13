@@ -24,14 +24,25 @@ function stripMath(text) {
   return text.replace(/\[\[MATH:\d+\]\]/g, ' ');
 }
 
-/** Strip inline markers to their inner text (display text for pipe forms). */
+/**
+ * Strip inline markers to their inner text (display text for pipe forms).
+ * Also unwraps B4 id-anchored markers ([[term:]]/[[fn:]]/[[u:]]/[[em:]]) to
+ * their display text (mirror of tools/generate-tm.js stripMarkers).
+ */
 function stripMarkers(text) {
-  return text
-    .replace(/\[\[(?:link|xref|docref):([^\]|]*)\|[^\]]*\]\]/g, '$1')
-    .replace(/ ?\[\[(?:xref|docref):[^\]]*\]\]/g, '')
-    .replace(/\[\[(?:i|b|sub|sup):([^\]]*)\]\]/g, '$1')
-    .replace(/\+\+([^+]+)\+\+/g, '$1')
-    .replace(/\{\{([a-z]+)\}\}([\s\S]*?)\{\{\/\1\}\}/g, '$2');
+  return (
+    text
+      .replace(/\[\[(?:link|xref|docref):([^\]|]*)\|[^\]]*\]\]/g, '$1')
+      .replace(/ ?\[\[(?:xref|docref):[^\]]*\]\]/g, '')
+      .replace(/\[\[(?:i|b|sub|sup):([^\]]*)\]\]/g, '$1')
+      .replace(/\+\+([^+]+)\+\+/g, '$1')
+      .replace(/\{\{([a-z]+)\}\}([\s\S]*?)\{\{\/\1\}\}/g, '$2')
+      // B4 id-anchored markers: keep the display text (left of the pipe).
+      // Placed AFTER the inline rule so nested [[sub:]] inside term text is
+      // already unwrapped when this runs.
+      .replace(/\[\[(?:term|fn|em):([^\]|]*)\|[^\]]*\]\]/g, '$1')
+      .replace(/\[\[(?:term|fn|u):([^\]]*)\]\]/g, '$1')
+  );
 }
 
 // ─── Number-consistency check ─────────────────────────────────────────

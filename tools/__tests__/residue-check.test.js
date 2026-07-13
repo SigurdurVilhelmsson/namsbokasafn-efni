@@ -32,6 +32,13 @@ describe('normalizeForComparison', () => {
   it('preserves Icelandic letters as alphabetic', () => {
     expect(normalizeForComparison('Þétt lausn í vatni')).toBe('þétt lausn í vatni');
   });
+
+  // PIN (B4): the generic [[type:content]] rule above already covers the new
+  // id-anchored marker types ([[term:]]/[[fn:]]/[[u:]]/[[em:]]) — no code
+  // change needed here. Keeps the display text, drops the id after the pipe.
+  it('keeps display text and drops the id for B4 id-anchored markers', () => {
+    expect(normalizeForComparison('[[term:viscosity|term-1]]')).toBe('viscosity');
+  });
 });
 
 describe('countContentWords', () => {

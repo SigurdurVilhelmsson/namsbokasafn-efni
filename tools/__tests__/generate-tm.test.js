@@ -110,6 +110,14 @@ describe('stripMarkers', () => {
   it('leaves ambiguous single-char legacy markers alone', () => {
     expect(stripMarkers('2*3 and x^2 and a~b and __x__')).toBe('2*3 and x^2 and a~b and __x__');
   });
+
+  it('strips B4 id-anchored markers to display text', () => {
+    expect(stripMarkers('A [[term:viscosity|term-1]] here')).toBe('A viscosity here');
+    expect(stripMarkers('Note [[fn:a comment|fs-1]] end')).toBe('Note a comment end');
+    expect(stripMarkers('[[em:R-O-R|emphasis-one]]')).toBe('R-O-R');
+    expect(stripMarkers('[[u:key]] and [[term:plain]]')).toBe('key and plain');
+    expect(stripMarkers('[[term:H[[sub:2]]O|t1]]')).toBe('H2O'); // nested unwraps first
+  });
 });
 
 // ─── cleanSegmentText ───────────────────────────────────────────────

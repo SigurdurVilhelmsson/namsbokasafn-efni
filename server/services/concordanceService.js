@@ -38,18 +38,27 @@ function getDb() {
  * Strip inline bracket/legacy markers to plain text (mirror of
  * tools/generate-tm.js stripMarkers; kept in CJS for the server). MATH
  * placeholders are preserved; ambiguous single-char legacy markers are left.
+ * Also unwraps B4 id-anchored markers ([[term:]]/[[fn:]]/[[u:]]/[[em:]]) to
+ * their display text.
  *
  * @param {string} text
  * @returns {string}
  */
 function stripMarkers(text) {
   if (!text) return '';
-  return text
-    .replace(/\[\[(?:link|xref|docref):([^\]|]*)\|[^\]]*\]\]/g, '$1')
-    .replace(/ ?\[\[(?:xref|docref):[^\]]*\]\]/g, '')
-    .replace(/\[\[(?:i|b|sub|sup):([^\]]*)\]\]/g, '$1')
-    .replace(/\+\+([^+]+)\+\+/g, '$1')
-    .replace(/\{\{([a-z]+)\}\}([\s\S]*?)\{\{\/\1\}\}/g, '$2');
+  return (
+    text
+      .replace(/\[\[(?:link|xref|docref):([^\]|]*)\|[^\]]*\]\]/g, '$1')
+      .replace(/ ?\[\[(?:xref|docref):[^\]]*\]\]/g, '')
+      .replace(/\[\[(?:i|b|sub|sup):([^\]]*)\]\]/g, '$1')
+      .replace(/\+\+([^+]+)\+\+/g, '$1')
+      .replace(/\{\{([a-z]+)\}\}([\s\S]*?)\{\{\/\1\}\}/g, '$2')
+      // B4 id-anchored markers: keep the display text (left of the pipe).
+      // Placed AFTER the inline rule so nested [[sub:]] inside term text is
+      // already unwrapped when this runs.
+      .replace(/\[\[(?:term|fn|em):([^\]|]*)\|[^\]]*\]\]/g, '$1')
+      .replace(/\[\[(?:term|fn|u):([^\]]*)\]\]/g, '$1')
+  );
 }
 
 /** Clean display text: strip markers, flatten newlines, collapse spaces. */
