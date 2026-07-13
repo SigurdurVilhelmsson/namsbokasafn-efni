@@ -1683,6 +1683,49 @@ describe('reverseInlineMarkup B4 id-anchored markers', () => {
   });
 });
 
+// ─── B4/C1: emphasis-wrapped term/footnote (third resolveBracketEmphasis pass) ───
+// Source shape <emphasis effect="italics"><term id="X">t</term></emphasis> extracts
+// to a NESTED marker [[i:[[term:t|X]]]]. The [[i:]] wrapper is only leaf-level once
+// the inner [[term:]] became <term> XML in the B4 block — so without a THIRD
+// resolveBracketEmphasis pass after that block, the [[i:]] survives as residue and
+// assertNoMarkerResidue aborts the whole --chapter batch (the C1 blast radius).
+
+describe('reverseInlineMarkup B4 emphasis-wrapped term/fn (C1)', () => {
+  it('resolves [[i:[[term:text|id]]]] fully (italics wrapping a term)', () => {
+    const result = reverseInlineMarkup('[[i:[[term:Gram positive|term-00004]]]]', {});
+    expect(result).toContain(
+      '<emphasis effect="italics"><term id="term-00004">Gram positive</term></emphasis>'
+    );
+    expect(result).not.toContain('[[');
+    expect(() => assertNoMarkerResidue(result, 'm66545')).not.toThrow();
+  });
+
+  it('resolves [[b:[[fn:text|id]]]] fully (bold wrapping a footnote)', () => {
+    const result = reverseInlineMarkup('[[b:[[fn:See the appendix|fs-id42]]]]', {});
+    expect(result).toContain(
+      '<emphasis effect="bold"><footnote id="fs-id42">See the appendix</footnote></emphasis>'
+    );
+    expect(result).not.toContain('[[');
+    expect(() => assertNoMarkerResidue(result, 'm42215')).not.toThrow();
+  });
+
+  it('end-to-end: extract → inject round-trip of <emphasis><term> passes the residue gate', () => {
+    // The real source shape from the C1 corpus census (liffraedi-2e ch22 m66545).
+    const counters = { segment: 0, math: 0, equation: 0, media: 0 };
+    const marker = extractInlineText(
+      '<emphasis effect="italics"><term id="term-00004">Gram positive</term></emphasis>',
+      new Map(),
+      counters
+    );
+    expect(marker).toBe('[[i:[[term:Gram positive|term-00004]]]]');
+    const injected = reverseInlineMarkup(marker, {});
+    expect(injected).toContain(
+      '<emphasis effect="italics"><term id="term-00004">Gram positive</term></emphasis>'
+    );
+    expect(() => assertNoMarkerResidue(injected, 'm66545')).not.toThrow();
+  });
+});
+
 // ─── B4: reverseInlineMarkup positional-restore hardening (legacy path) ────
 
 describe('reverseInlineMarkup positional-restore hardening (legacy path)', () => {

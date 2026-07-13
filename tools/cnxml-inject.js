@@ -1570,6 +1570,14 @@ function reverseInlineMarkup(
     '<emphasis class="$2">$1</emphasis>'
   );
 
+  // C1: an emphasis marker that wrapped a term/footnote (e.g. [[i:[[term:…|id]]]]
+  // from <emphasis><term>…</term></emphasis>) is only NOW leaf-level — its inner
+  // [[term:]]/[[fn:]] became <term>/<footnote> XML in the block above. Re-resolve
+  // emphasis to finish it, mirroring the F5 precedent applied after link conversion
+  // (:1477). Without this pass the [[i:]]/[[b:]] wrapper survives as residue and
+  // assertNoMarkerResidue aborts the whole --chapter batch.
+  result = resolveBracketEmphasis(result);
+
   // Restore inline attributes from sidecar metadata (term class, footnote id, etc.)
   if (inlineAttrs && !hasIdAnchoredMarkers) {
     // Restore term attributes by occurrence index
