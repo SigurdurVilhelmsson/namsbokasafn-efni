@@ -67,6 +67,8 @@ function unescapeMtMarkers(text) {
  * @param {string} isContent - IS translation segment content
  * @returns {string} IS content with term markers normalized
  */
+// B4 note: bracket-era EN segments ([[term:text|id]]) contain no __term__
+// markers, so enTermCount is 0 and this repair is a deliberate no-op for them.
 function normalizeTermMarkers(enContent, isContent) {
   if (!enContent || !isContent) return isContent;
 

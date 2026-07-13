@@ -226,6 +226,13 @@ campaign register.
   edlisfraedi-2e source files were being donated as example titles and dropped as
   paras. The Task-5 fix corrects this class for every FUTURE extraction; physics
   content heals when edlisfraedi is (re-)extracted, not in this arc.
+- **B4-D6 `[gap]`** (Task 7) `localization-editor.js`'s preview renderer
+  (`edRenderMarkdownPreview`, `:1318-1359`) has no arms for the whole `[[i:]]/[[b:]]/
+  [[sub:]]/[[sup:]]/[[xref:]]` bracket family — confirmed absent via
+  `grep -n '\[\[i:\|\[\[b:\|\[\[sub:\|\[\[sup:\|\[\[xref:' server/public/js/localization-editor.js`
+  (zero matches). Task 7 ported only the four new B4 id-anchored types
+  (`[[term:]]`/`[[fn:]]`/`[[u:]]`/`[[em:]]`) into this pane per its brief's scope note;
+  porting the pre-existing i/b/sub/sup/xref gap is out of scope here — follow-up.
 
 ## 10. Post-merge delivery op (own branch/PR, after lead merges the code PR)
 

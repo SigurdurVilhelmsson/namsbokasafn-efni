@@ -53,6 +53,11 @@
       /\[\[docref:([^|\]]+)\|([^\]]+)\]\]/g,
       (_m, t, d) => `${delim('[[docref:')}${t}${delim('|' + d + ']]')}`
     );
+    // B4 id-anchored pipe markers — text stays plain, delimiters + payload dimmed.
+    html = html.replace(
+      /\[\[(term|fn|em):([^|\]]+)\|([^\]]+)\]\]/g,
+      (_m, k, t, id) => `${delim('[[' + k + ':')}${t}${delim('|' + id + ']]')}`
+    );
     // 2b. Bracket reference markers, no text → atom.
     html = html.replace(/\[\[xref:[^\]]+\]\]/g, (m) => atom(m));
     html = html.replace(/\[\[docref:[^\]]+\]\]/g, (m) => atom(m));
@@ -62,6 +67,9 @@
     html = html.replace(/\[\[b:(.+?)\]\]/g, (_m, t) => `${delim('[[b:')}${t}${delim(']]')}`);
     html = html.replace(/\[\[sub:(.+?)\]\]/g, (_m, t) => `${delim('[[sub:')}${t}${delim(']]')}`);
     html = html.replace(/\[\[sup:(.+?)\]\]/g, (_m, t) => `${delim('[[sup:')}${t}${delim(']]')}`);
+    html = html.replace(/\[\[term:(.+?)\]\]/g, (_m, t) => `${delim('[[term:')}${t}${delim(']]')}`);
+    html = html.replace(/\[\[fn:(.+?)\]\]/g, (_m, t) => `${delim('[[fn:')}${t}${delim(']]')}`);
+    html = html.replace(/\[\[u:(.+?)\]\]/g, (_m, t) => `${delim('[[u:')}${t}${delim(']]')}`);
 
     // 4. Brace markers (term/footnote + legacy emphasis from old files).
     html = html.replace(
