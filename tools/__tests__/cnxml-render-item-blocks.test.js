@@ -44,22 +44,17 @@ describe('renderItemBody — blocks render in place inside <li>', () => {
     expect(body).toContain('step1.svg');
   });
 
-  // SKIPPED — this bare (no <example>/<section> container) <list> is a
-  // document-level list. It is routed through renderChildrenInDocumentOrder
-  // (cnxml-render.js ~858-913), which string-strips <figure>/<table>/<media>
-  // out of the WHOLE content blob (any depth, including inside list items)
-  // before <list> is ever extracted — so the figure never reaches
-  // renderItemBody's swap pass at all; renderItemBody renders it correctly
-  // once it gets a chance to see it (verified separately). That upstream
-  // section-level walk is explicitly out of scope for Task 1 ("do not touch
-  // ... the section-level walk (later tasks)") and is exactly what Task 2
-  // ("routes section-level lists here too") fixes. Un-skip in Task 2.
-  it.skip('figure in a no-para item renders INSIDE the li via renderFigure (no raw leak)', () => {
+  it('figure in a no-para item renders INSIDE the li via renderFigure (no raw leak)', () => {
     // Organic shape (191 sites): figure-wrapped media as item child.
+    // The <example> wrapper routes the list through renderExample's dispatch
+    // (list → renderList) with items intact — same path as the media test
+    // above. A bare document-level <list> would instead have the figure
+    // string-stripped by renderChildrenInDocumentOrder before renderList ever
+    // ran (that section-level walk is Task 2's fix).
     const html = render(
-      '<list id="L1"><item>Sameind:' +
+      '<example id="exF"><list id="L1"><item>Sameind:' +
         '<figure id="figX"><media id="mX" alt="x"><image src="molecule.jpg" mime-type="image/jpeg"/></media>' +
-        '<caption>Skýring</caption></figure></item></list>'
+        '<caption>Skýring</caption></figure></item></list></example>'
     ).html;
     const body = liBody(html);
     expect(body).toContain('<figure');
@@ -79,16 +74,12 @@ describe('renderItemBody — blocks render in place inside <li>', () => {
     expect(html).not.toMatch(/<equation[^>]*id="eqN"/); // raw wrapper gone
   });
 
-  // SKIPPED — same root cause as the figure test above: this bare <list> is
-  // document-level content, so renderChildrenInDocumentOrder strips the
-  // <table> out of the content blob before <list> extraction ever runs;
-  // renderItemBody never gets a chance to see it. Out of scope for Task 1;
-  // fixed by Task 2's section-level routing. Un-skip in Task 2.
-  it.skip('table in an item renders via renderTable inside the li', () => {
+  it('table in an item renders via renderTable inside the li', () => {
+    // <example> wrapper for the same routing reason as the figure test above.
     const html = render(
-      '<list id="L2"><item>Sjá:' +
+      '<example id="exT"><list id="L2"><item>Sjá:' +
         '<table id="tbl1" summary="s"><tgroup cols="1"><tbody><row><entry>klefi</entry></row></tbody></tgroup></table>' +
-        '</item></list>'
+        '</item></list></example>'
     ).html;
     const body = liBody(html);
     expect(body).toContain('<table');
