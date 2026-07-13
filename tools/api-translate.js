@@ -411,9 +411,43 @@ function collectPaired(segText, type) {
 }
 
 /**
+ * Count `[[term]]…[[/term]]` / `[[fn]]…[[/fn]]` span pairs that are cross-type
+ * nested — one type's span containing the other type's start offset.
+ *
+ * `stripTermFnToPaired`'s bracket-balancing (`rewriteToPaired`) is generic
+ * across marker types, so a `[[term:…]]` whose text sits inside a `[[fn:…]]`
+ * (or vice versa) round-trips into nested paired form, e.g.
+ * `[[fn]]…[[term]]…[[/term]]…[[/fn]]`. `collectPaired` matches each open to
+ * the *next* close per type, so it happily returns spans for both types even
+ * when nested — and each type's surviving count can still equal its captured
+ * id count, so the plain count-guard below would see no problem and attempt
+ * the splice, corrupting output (stale offsets once the inner splice shifts
+ * the outer span's length). This check exists to catch that case upstream so
+ * it can degrade + record instead (B4-D11 fix).
+ *
+ * @param {Array<{start:number, end:number}>} termSpans
+ * @param {Array<{start:number, end:number}>} fnSpans
+ * @returns {number} count of cross-type span pairs that nest
+ */
+function countCrossTypeNesting(termSpans, fnSpans) {
+  let count = 0;
+  for (const t of termSpans) {
+    for (const f of fnSpans) {
+      const nested =
+        (f.start >= t.start && f.start < t.end) || (t.start >= f.start && t.start < f.end);
+      if (nested) count++;
+    }
+  }
+  return count;
+}
+
+/**
  * Re-attach ids to the paired-form MT output, restoring on-disk [[type:text|id]] form.
  * Per-segment/per-type count-guard: if surviving paired markers != captured ids, that
  * segment degrades to its original text and a mismatch is recorded (B4-D11).
+ * A segment whose term/fn spans are cross-type nested (see countCrossTypeNesting)
+ * degrades the same way, with a `type: 'nested'` mismatch — the splice logic below
+ * assumes mutually disjoint spans and would otherwise corrupt output silently.
  * @param {string} wireOutput - MT output (paired form, SEG markers intact)
  * @param {Array} segments - records from stripTermFnToPaired
  * @returns {{ text:string, mismatches:Array<{segId,type,expected,got}> }}
@@ -433,6 +467,14 @@ export function reattachIds(wireOutput, segments) {
 
     const termSpans = collectPaired(part, 'term');
     const fnSpans = collectPaired(part, 'fn');
+
+    const nestedCount = countCrossTypeNesting(termSpans, fnSpans);
+    if (nestedCount > 0) {
+      mismatches.push({ segId: rec.segId, type: 'nested', expected: 0, got: nestedCount });
+      out += rec.originalText;
+      continue;
+    } // safe degrade — never splice overlapping spans
+
     const termOk = termSpans.length === rec.termIds.length;
     const fnOk = fnSpans.length === rec.fnIds.length;
 

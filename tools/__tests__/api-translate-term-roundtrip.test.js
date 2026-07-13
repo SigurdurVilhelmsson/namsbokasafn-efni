@@ -104,4 +104,62 @@ describe('reattachIds', () => {
     expect(text).toContain('[[term:two|id2]]');
     expect(mismatches).toEqual([{ segId: 'm1:para:e', type: 'term', expected: 2, got: 1 }]);
   });
+
+  it('degrades a cross-type nested term-inside-fn segment to original + records a nested mismatch', () => {
+    // stripTermFnToPaired's bracket-balancing is generic across types, so a
+    // [[term:]] whose text sits inside a [[fn:]] round-trips into nested paired
+    // form: [[fn]]...[[term]]...[[/term]]...[[/fn]]. termSpans/fnSpans are NOT
+    // mutually disjoint here — the naive count-guard would see 1==1 for both
+    // types and silently splice, corrupting output.
+    const raw = SEG(
+      'm1:para:f',
+      'The [[fn:this refers to [[term:activation energy|term-1]] concept|fs-1]] here.'
+    );
+    const { segments } = stripTermFnToPaired(raw);
+    // simulate MT: translate the visible words, keep the paired delimiters
+    const wireOut = SEG(
+      'm1:para:f',
+      'The [[fn]]þetta vísar til [[term]]virkjunarorka[[/term]] hugtak[[/fn]] here.'
+    );
+    const { text, mismatches } = reattachIds(wireOut, segments);
+    // whole segment falls back to ORIGINAL (English, valid nested markers, correct ids)
+    expect(text).toContain('[[fn:this refers to [[term:activation energy|term-1]] concept|fs-1]]');
+    expect(text).not.toContain('[[term]]');
+    expect(text).not.toContain('[[/term]]');
+    expect(mismatches.length).toBeGreaterThan(0);
+    expect(mismatches.some((m) => m.segId === 'm1:para:f' && m.type === 'nested')).toBe(true);
+  });
+
+  it('degrades a cross-type nested fn-inside-term segment to original + records a nested mismatch', () => {
+    // symmetric case: a [[fn:]] whose text sits inside a [[term:]]
+    const raw = SEG(
+      'm1:para:g',
+      'The [[term:activation energy [[fn:see note|fs-2]] concept|term-2]] here.'
+    );
+    const { segments } = stripTermFnToPaired(raw);
+    const wireOut = SEG(
+      'm1:para:g',
+      'The [[term]]virkjunarorka [[fn]]sjá athugasemd[[/fn]] hugtak[[/term]] here.'
+    );
+    const { text, mismatches } = reattachIds(wireOut, segments);
+    expect(text).toContain('[[term:activation energy [[fn:see note|fs-2]] concept|term-2]]');
+    expect(text).not.toContain('[[fn]]');
+    expect(text).not.toContain('[[/fn]]');
+    expect(mismatches.length).toBeGreaterThan(0);
+    expect(mismatches.some((m) => m.segId === 'm1:para:g' && m.type === 'nested')).toBe(true);
+  });
+
+  it('degrades the whole segment + records only the mismatching type when term matches but fn is dropped', () => {
+    const { segments } = stripTermFnToPaired(
+      SEG('m1:para:h', 'A [[term:one|id1]] B [[fn:note|fs-9]] C')
+    );
+    // term paired markers survive intact; fn paired markers are dropped entirely
+    const wireOut = SEG('m1:para:h', 'Á [[term]]einn[[/term]] B minnispunktur C');
+    const { text, mismatches } = reattachIds(wireOut, segments);
+    // only the fn type mismatches — term alone would have counted OK
+    expect(mismatches).toEqual([{ segId: 'm1:para:h', type: 'fn', expected: 1, got: 0 }]);
+    // but the WHOLE segment degrades, including the otherwise-fine term
+    expect(text).toContain('[[term:one|id1]]');
+    expect(text).toContain('[[fn:note|fs-9]]');
+  });
 });
