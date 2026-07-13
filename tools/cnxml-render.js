@@ -3326,54 +3326,58 @@ async function main() {
     }
 
     const writtenFiles = []; // Track files written in this render pass for cleanup on failure
+    const failedModules = [];
 
     try {
       for (const moduleId of modules) {
-        // Fresh MJX-N id space per page so an edit to one module doesn't churn
-        // the equation ids on every later page in the chapter (#14).
-        resetMathJaxIds();
-        if (args.verbose) {
-          console.error(`Rendering: ${moduleId}`);
-        }
+        try {
+          // Fresh MJX-N id space per page so an edit to one module doesn't churn
+          // the equation ids on every later page in the chapter (#14).
+          resetMathJaxIds();
+          if (args.verbose) {
+            console.error(`Rendering: ${moduleId}`);
+          }
 
-        const cnxmlPath = translatedCnxmlPath(args.track, chapterDir, moduleId);
-        const cnxml = fs.readFileSync(cnxmlPath, 'utf-8');
+          const cnxmlPath = translatedCnxmlPath(args.track, chapterDir, moduleId);
+          const cnxml = fs.readFileSync(cnxmlPath, 'utf-8');
 
-        const renderResult = renderCnxmlToHtml(cnxml, {
-          verbose: args.verbose,
-          lang: args.lang,
-          chapter: args.chapter,
-          moduleId,
-          moduleSections,
-          chapterFigureNumbers,
-          chapterTableNumbers,
-          chapterEquationNumbers,
-          chapterExampleNumbers,
-          chapterExerciseNumbers,
-          chapterSectionTitles,
-          chapterIdToModule,
-          ...appendixResolution,
-          relocatedIds,
-          equationTextDictionary,
-        });
-        let html = renderResult.html;
-        const pageData = renderResult.pageData;
+          const renderResult = renderCnxmlToHtml(cnxml, {
+            verbose: args.verbose,
+            lang: args.lang,
+            chapter: args.chapter,
+            moduleId,
+            moduleSections,
+            chapterFigureNumbers,
+            chapterTableNumbers,
+            chapterEquationNumbers,
+            chapterExampleNumbers,
+            chapterExerciseNumbers,
+            chapterSectionTitles,
+            chapterIdToModule,
+            ...appendixResolution,
+            relocatedIds,
+            equationTextDictionary,
+          });
+          let html = renderResult.html;
+          const pageData = renderResult.pageData;
 
-        // Special handling for Periodic Table appendix
-        // Replace static image with link to interactive periodic table
-        if (BOOK_CONFIG?.specialModules?.[moduleId] === 'periodic-table') {
-          const mainContentMatch = html.match(/(<main>)([\s\S]*?)(<\/main>)/);
-          if (mainContentMatch) {
-            // Preserve any element ids from the original rendered content so
-            // cross-references from chapter text (e.g. <a href="#fs-idm…">viðauka A</a>)
-            // still resolve to a real anchor on this page.
-            const preservedIds = Array.from(
-              new Set(Array.from(mainContentMatch[2].matchAll(/\sid="([^"]+)"/g)).map((m) => m[1]))
-            ).filter((id) => id !== 'title' && id !== 'page-data');
-            const anchors = preservedIds
-              .map((id) => `<span id="${id}" class="preserved-anchor"></span>`)
-              .join('');
-            const newMainContent = `<main>
+          // Special handling for Periodic Table appendix
+          // Replace static image with link to interactive periodic table
+          if (BOOK_CONFIG?.specialModules?.[moduleId] === 'periodic-table') {
+            const mainContentMatch = html.match(/(<main>)([\s\S]*?)(<\/main>)/);
+            if (mainContentMatch) {
+              // Preserve any element ids from the original rendered content so
+              // cross-references from chapter text (e.g. <a href="#fs-idm…">viðauka A</a>)
+              // still resolve to a real anchor on this page.
+              const preservedIds = Array.from(
+                new Set(
+                  Array.from(mainContentMatch[2].matchAll(/\sid="([^"]+)"/g)).map((m) => m[1])
+                )
+              ).filter((id) => id !== 'title' && id !== 'page-data');
+              const anchors = preservedIds
+                .map((id) => `<span id="${id}" class="preserved-anchor"></span>`)
+                .join('');
+              const newMainContent = `<main>
 ${anchors}
 <div style="text-align: center; padding: 2rem;">
   <h2>Gagnavirkt lotukerfi frumefna</h2>
@@ -3388,40 +3392,58 @@ ${anchors}
   </p>
 </div>
 </main>`;
-            html = html.replace(/(<main>)[\s\S]*?(<\/main>)/, newMainContent);
+              html = html.replace(/(<main>)[\s\S]*?(<\/main>)/, newMainContent);
+            }
           }
-        }
 
-        // Validate output is non-empty
-        if (!html || html.trim().length < 100) {
-          console.error(
-            `  ERROR: Rendered HTML for ${moduleId} is empty or too short (${html?.length || 0} chars)`
-          );
-        }
-
-        const outputPath = writeOutput(args.chapter, moduleId, args.track, html, moduleSections);
-        writtenFiles.push(outputPath);
-
-        console.log(`${moduleId}: Rendered to HTML`);
-        console.log(`  → ${outputPath}`);
-
-        // Report equation render stats from pageData context
-        // Extract render stats from the context that was used
-        const renderStats = pageData._renderStats;
-        if (renderStats && renderStats.equations > 0) {
-          if (renderStats.failures.length > 0) {
+          // Validate output is non-empty
+          if (!html || html.trim().length < 100) {
             console.error(
-              `  Equations: ${renderStats.success}/${renderStats.equations} rendered OK, ${renderStats.failures.length} FAILED`
+              `  ERROR: Rendered HTML for ${moduleId} is empty or too short (${html?.length || 0} chars)`
             );
-            for (const f of renderStats.failures.slice(0, 3)) {
+          }
+
+          const outputPath = writeOutput(args.chapter, moduleId, args.track, html, moduleSections);
+          writtenFiles.push(outputPath);
+
+          console.log(`${moduleId}: Rendered to HTML`);
+          console.log(`  → ${outputPath}`);
+
+          // Report equation render stats from pageData context
+          // Extract render stats from the context that was used
+          const renderStats = pageData._renderStats;
+          if (renderStats && renderStats.equations > 0) {
+            if (renderStats.failures.length > 0) {
               console.error(
-                `    - ${f.id || 'unknown'}: ${f.reason}${f.latex ? ` (${f.latex})` : ''}`
+                `  Equations: ${renderStats.success}/${renderStats.equations} rendered OK, ${renderStats.failures.length} FAILED`
+              );
+              for (const f of renderStats.failures.slice(0, 3)) {
+                console.error(
+                  `    - ${f.id || 'unknown'}: ${f.reason}${f.latex ? ` (${f.latex})` : ''}`
+                );
+              }
+            } else if (args.verbose) {
+              console.log(
+                `  Equations: ${renderStats.success}/${renderStats.equations} rendered OK`
               );
             }
-          } else if (args.verbose) {
-            console.log(`  Equations: ${renderStats.success}/${renderStats.equations} rendered OK`);
           }
+        } catch (moduleErr) {
+          // Per-module fail-loud (spec §6): a malformed/unrenderable module is
+          // skipped — its previously published file stays in place — the rest of
+          // the chapter renders, and the run exits non-zero. A throw here must
+          // not reach the chapter-wide catch, which would roll back GOOD pages.
+          console.error(`  ERROR: ${moduleId} failed to render — skipped: ${moduleErr.message}`);
+          failedModules.push(moduleId);
+          continue;
         }
+      }
+
+      if (failedModules.length > 0) {
+        console.error(
+          `Render incomplete: ${failedModules.length} module(s) failed and were skipped: ${failedModules.join(', ')}`
+        );
+        process.exitCode = 1;
       }
 
       // Extract and render end-of-chapter sections from the last module

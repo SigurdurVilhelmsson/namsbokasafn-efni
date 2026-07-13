@@ -1,6 +1,14 @@
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
-import { execSync } from 'child_process';
-import { readFileSync, existsSync, cpSync, rmSync, mkdtempSync } from 'fs';
+import { execSync, execFileSync } from 'child_process';
+import {
+  readFileSync,
+  writeFileSync,
+  readdirSync,
+  existsSync,
+  cpSync,
+  rmSync,
+  mkdtempSync,
+} from 'fs';
 import { join, sep } from 'path';
 import { tmpdir } from 'os';
 import {
@@ -244,6 +252,51 @@ describe('cnxml-render', () => {
     // Summary
     const summary = readFileSync(join(outputPath, '1-summary.html'), 'utf8');
     expect(summary).toContain('<!DOCTYPE html>');
+  });
+
+  it('renders the rest of a chapter and exits 1 when one module is malformed', () => {
+    // Corrupt one ch01 module in the TEMP copy (never the real book). m68670 is
+    // neither the first nor the last of ch01's 7 modules (m68663, m68664, m68667,
+    // m68670, m68674, m68683, m68690) — the last module is separately re-read by
+    // main() to extract end-of-chapter sections, which is out of scope here.
+    const badModule = join(BOOKS, '03-translated', 'mt-preview', 'ch01', 'm68670.cnxml');
+    const original = readFileSync(badModule, 'utf8');
+    // Mismatched inline tag INSIDE content — </content> must stay intact so the
+    // content-extraction regex still finds the body and the DOM parse is what trips.
+    writeFileSync(
+      badModule,
+      original.replace('</content>', '<para id="broken"><emphasis>brotið</para></content>')
+    );
+
+    let exitCode = 0;
+    let stderr = '';
+    try {
+      execFileSync(
+        'node',
+        [
+          join(TOOLS, 'cnxml-render.js'),
+          '--book',
+          'efnafraedi-2e',
+          '--chapter',
+          '1',
+          '--track',
+          'mt-preview',
+        ],
+        { cwd: ROOT, encoding: 'utf-8' }
+      );
+    } catch (err) {
+      exitCode = err.status;
+      stderr = String(err.stderr || '');
+    } finally {
+      writeFileSync(badModule, original); // restore for any later tests in this file
+    }
+
+    expect(exitCode).toBe(1);
+    expect(stderr).toContain('m68670');
+    // The other ch01 modules still rendered (batch not aborted):
+    const publishedDir = join(BOOKS, '05-publication', 'mt-preview', 'chapters', '01');
+    const pages = readdirSync(publishedDir).filter((f) => f.endsWith('.html'));
+    expect(pages.length).toBeGreaterThan(1);
   });
 
   it('compiled exercises page resolves document= appendix links to /vidauki/ (wiring gate for appendixModuleLetters)', () => {
