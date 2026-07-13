@@ -32,8 +32,10 @@ list-double-record family on re-extract.
    paired markers are the droppable-half class B4 exists to escape.)
 2. **Post-merge re-MT set = 8 modules + probe:** core 6 (m68764, m68770, m68789, m68791,
    m68793, m68829) + m68847 (RC3) + m68860 (RC4). ≈2,284 ISK + ~30 ISK live survival probe,
-   run **before** the re-MT. m68863 decided after diagnosis (if inject-stage, re-inject fixes it
-   free; if not, +78 ISK follow-up ask). Dry-run estimates 2026-07-12:
+   run **before** the re-MT. m68863 diagnosis resolved (Task 9): inject-stage, and the instance
+   was already healed on disk by the 2026-07-07 STALE-STRUCT re-extract/re-inject — **NO re-MT
+   needed, the +78 ISK follow-up ask is off the table**; see register B4-D5 for the mechanism
+   and the guard shipped against the defect class. Dry-run estimates 2026-07-12:
    m68764 234 / m68770 257 / m68789 388 / m68791 466 / m68793 270 / m68829 369 /
    m68847 168 / m68860 132 (ISK; pre-B4 boundaries, id-bearing markers add a few %).
 3. Design approved as presented (sections 1–6 of the session presentation).
@@ -259,27 +261,44 @@ campaign register.
   simply never revisited once the fix landed.
   **Residual hardening shipped this task (Outcome A):** the *mechanism* — `buildTable` silently
   passing raw source text through when `row.cells[]` under-counts a row's `<entry>` elements —
-  was still live code, unrelated to whether m68863 itself was already fixed. Added a fail-loud
-  guard: when a row's `<entry>` index has no matching `row.cells[cellIdx]` at all (not the
+  was still live code, unrelated to whether m68863 itself was already fixed. The guard **rides the
+  existing per-module incomplete idiom, it does NOT throw** (a throw at `buildTable` depth would
+  bypass per-module isolation: it fires inside `buildCnxml` before the CLI's incomplete-check,
+  isn't gated by `--allow-incomplete`, and would abort a whole `--chapter` batch at the first bad
+  module). When a row's `<entry>` index has no matching `row.cells[cellIdx]` at all (not the
   legitimate `{segmentId: null}` placeholder case, which still passes through silently and
-  correctly) **and** the uncovered entry has non-blank text, `buildTable` now throws
-  (`tools/cnxml-inject.js:2326-2345`) naming the table id, row, and truncated leaked text, instead
-  of leaking it into `03-translated`/`05-publication`. TDD: failing-first fixture in
-  `tools/__tests__/cnxml-inject.test.js` (describe `"buildCnxml table row: undercounted
-  structure.cells (RC4 / m68863)"`, 2 tests — fail-loud on real leaked content, no false-positive
-  on a genuinely blank uncovered cell). `npx vitest run tools/__tests__/cnxml-inject.test.js
-  tools/__tests__/cnxml-dom-comparison.test.js` → 351/351 green; full `tools/__tests__/` →
-  97 files / 1495 green (baseline 97/1493 + this task's 2 new tests).
-  **Side-finding, out of scope, logged not fixed:** a live whole-book `cnxml-inject.js` re-run
-  (all chapters + appendices, `--allow-incomplete`; reverted with `git checkout -- books/`,
-  verified clean — zero persistent `books/` changes) shows the new guard now throws for
-  **m68789** (ch12, table `fs-idm189410736`): its currently-committed
-  `03-translated/mt-preview/ch12/m68789.cnxml` already contains the identical RC4-class defect
-  (`<entry>1</entry><entry>2</entry><entry>3</entry><entry>3</entry>` — a duplicated untranslated
-  "3" header cell). This is **not a regression introduced here** — m68789 is already one of the 8
-  modules queued for post-merge re-extract/re-MT (§10 above, "m68789/791/793 ch12"); the new guard
-  will correctly block m68789's next inject until it is re-extracted, which is the intended
-  fail-loud behavior. No action needed in this task; flagging for the post-merge op.
+  correctly) **and** the uncovered entry has non-blank text, `buildTable` records the gap
+  (`tools/cnxml-inject.js` `!cell && tableCellGaps` branch — `{tableId, rowIndex, entryIndex,
+  recordedCells, text}` pushed to `stats.tableCellGaps`, threaded via `ctx.tableCellGaps` through
+  all four call sites), still emits the source entry (pre-fix visible behavior), and
+  `report.tableCellGaps` gates `report.complete` — so the CLI's established
+  skip+continue+`process.exitCode=1` path handles it: module skipped unless `--allow-incomplete`,
+  gap named loud on the console either way, blast radius one module not the batch. TDD:
+  failing-first fixture in `tools/__tests__/cnxml-inject.test.js` (describe `"buildCnxml table
+  row: undercounted structure.cells (RC4 / m68863)"`, 2 tests — gap recorded + incomplete +
+  source emitted on real leaked content; no false-positive on a genuinely blank uncovered cell).
+  Suites: inject + dom-comparison 351/351 green; full `tools/__tests__/` 97 files / 1495 green
+  (baseline 97/1493 + this task's 2 new tests).
+  **Side-findings, out of scope, logged not fixed — for the post-merge op:** live ch12/corpus
+  `cnxml-inject.js` re-runs (reverted afterwards; `git status --porcelain books/` verified empty)
+  show the guard fires on **two** committed ch12 modules, both already in the §10
+  re-extract/re-MT queue ("m68789/791/793 ch12") — **not regressions introduced here**, their
+  currently-committed output already contains the identical RC4-class defect:
+  - **m68789** (table `fs-idm189410736` row 0 entry 3): committed header row
+    `<entry>1</entry><entry>2</entry><entry>3</entry><entry>3</entry>` — duplicated untranslated
+    "3".
+  - **m68791** (table `fs-idm117482272` row 1 entry 3): committed header row carries translated
+    "Núllta stig/Fyrsta stig/Annars stigs" **plus** a leftover untranslated
+    `<entry align="left">Second-Order</entry>` (source has 4 entries incl. a blank spacer;
+    structure recorded only 3 cells). This one was invisible to the earlier throw-version corpus
+    check precisely because the batch aborted at m68789 first — found by the reworked
+    skip+continue behavior.
+  **What the op should expect:** a routine `--chapter 12` inject now completes the batch, writes
+  m68785/786/787/793/794/795, prints `SKIPPED — incomplete injection` + `Table cell gaps
+  (RC4/B4-D5, re-extract needed): 1` for m68789 and m68791, and exits 1. Verified per-module:
+  m68793/794/795 inject clean (COMPLETE, no gap); m68791 writes only under `--allow-incomplete`
+  (INCOMPLETE, gap named). Both heal at the §10 re-extract; until then the gate correctly refuses
+  to overwrite them in a normal run.
 - **B4-D6 `[gap]`** (Task 7) `localization-editor.js`'s preview renderer
   (`edRenderMarkdownPreview`, `:1318-1359`) has no arms for the whole `[[i:]]/[[b:]]/
   [[sub:]]/[[sup:]]/[[xref:]]` bracket family — confirmed absent via

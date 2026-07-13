@@ -712,9 +712,20 @@ describe('table injection: self-closing entry expansion', () => {
 // row's <entry> elements), buildTable's positional cellIdx walk runs off
 // the end of row.cells for the trailing entries. Historically this fell
 // through to `return entryMatch`, silently emitting the RAW SOURCE entry
-// (untranslated English) instead of failing loud — exactly what m68863's
+// (untranslated English) with no signal at all — exactly what m68863's
 // committed 03-translated output showed before it was incidentally healed
 // by an unrelated re-extract (structure.json regained the missing cell).
+//
+// The guard must NOT throw: a throw at buildTable depth bypasses the
+// per-module isolation idiom (it fires inside buildCnxml, before the CLI
+// main loop's incomplete-check, is not gated by --allow-incomplete, and
+// aborts the whole chapter batch — e.g. --chapter 12 would die at m68789
+// and never process m68791+). Instead it rides the existing
+// incomplete-module mechanism: record the gap on report.tableCellGaps,
+// emit the source entry (the pre-fix visible behavior), and gate
+// report.complete — the established skip+continue+exitCode=1 path in the
+// CLI handles the rest (module skipped unless --allow-incomplete, loud on
+// the console either way).
 describe('buildCnxml table row: undercounted structure.cells (RC4 / m68863)', () => {
   const structure = {
     moduleId: 'test',
@@ -758,16 +769,39 @@ describe('buildCnxml table row: undercounted structure.cells (RC4 / m68863)', ()
 </content>
 </document>`;
 
-  it('fails loud instead of leaking the untranslated trailing entry', () => {
-    // Before the fix: buildCnxml silently returns "Raw EN 3" verbatim in the
-    // output (English residue, RC4). After the fix: it throws, surfacing the
-    // structure/entry-count mismatch at inject time instead of downstream.
-    expect(() => buildCnxml(structure, segments, {}, originalCnxml)).toThrow(/tbl-rc4/);
+  it('records the gap, marks the module incomplete, and emits the source entry (no throw)', () => {
+    // Before the fix: buildCnxml silently returns "Raw EN 3" verbatim with a
+    // fully "complete" report (English residue, RC4, invisible). After the
+    // fix: same visible output, but the gap is recorded and completeness is
+    // gated so the CLI's per-module skip+exitCode=1 path catches it — without
+    // aborting the rest of the chapter batch.
+    let result;
+    expect(() => {
+      result = buildCnxml(structure, segments, {}, originalCnxml);
+    }).not.toThrow();
+
+    // (a) gap recorded, naming table/row/entry and the leaked text
+    expect(result.report.tableCellGaps).toHaveLength(1);
+    expect(result.report.tableCellGaps[0]).toMatchObject({
+      tableId: 'tbl-rc4',
+      rowIndex: 0,
+      entryIndex: 2,
+    });
+    expect(result.report.tableCellGaps[0].text).toContain('Raw EN 3');
+
+    // (b) source entry emitted as before (pre-fix visible behavior)
+    expect(result.cnxml).toContain('Raw EN 3');
+    expect(result.cnxml).toContain('Þýtt 1');
+    expect(result.cnxml).toContain('Þýtt 2');
+
+    // (c) completeness gated → CLI skip path (not process abort) handles it
+    expect(result.report.complete).toBe(false);
   });
 
-  it('leaves a legitimately blank trailing entry untouched (no false-positive throw)', () => {
+  it('leaves a legitimately blank trailing entry untouched (no false positive)', () => {
     // Same undercount, but the uncovered trailing entry is genuinely blank
-    // in the source (e.g. a decorative spacer cell) — must NOT throw.
+    // in the source (e.g. a decorative spacer cell) — must NOT record a gap
+    // or gate completeness.
     const blankOriginalCnxml = `<document xmlns="http://cnx.rice.edu/cnxml">
 <title>Test</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml"><md:title>Test</md:title></metadata>
@@ -788,6 +822,8 @@ describe('buildCnxml table row: undercounted structure.cells (RC4 / m68863)', ()
     }).not.toThrow();
     expect(result.cnxml).toContain('Þýtt 1');
     expect(result.cnxml).toContain('Þýtt 2');
+    expect(result.report.tableCellGaps).toHaveLength(0);
+    expect(result.report.complete).toBe(true);
   });
 });
 

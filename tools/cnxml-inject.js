@@ -1800,6 +1800,7 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
     residues: [], // exact untranslated-EN (gates complete)
     residueWarnings: [], // ratio "mostly English" (non-gating)
     attrMismatches: [], // B4: positional-restore count mismatches (terms/footnotes/emphases)
+    tableCellGaps: [], // RC4/B4-D5: row.cells under-counts <entry> elements (gates complete)
     _residueSeen: new Set(), // de-dupe segments referenced more than once
   };
 
@@ -1929,6 +1930,7 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
     inlineMedia: structure.inlineMedia || [],
     inlineTables: structure.inlineTables || [],
     imageMapping: options.imageMapping || new Map(),
+    tableCellGaps: stats.tableCellGaps, // RC4/B4-D5 gap sink for buildTable
   };
 
   for (const element of structure.content) {
@@ -2028,10 +2030,12 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
     residues: stats.residues.slice().sort(),
     residueWarnings: stats.residueWarnings,
     attrMismatches: stats.attrMismatches,
+    tableCellGaps: stats.tableCellGaps,
     complete:
       stats.segmentsMissing.length === 0 &&
       stats.mathUnresolved.length === 0 &&
-      stats.residues.length === 0,
+      stats.residues.length === 0 &&
+      stats.tableCellGaps.length === 0,
   };
 
   // Always report missing segments (not just verbose)
@@ -2049,6 +2053,25 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
     console.error(
       `  WARNING: ${stats.mathUnresolved.length} unresolved [[MATH:N]] placeholder(s) in output`
     );
+  }
+
+  // RC4/B4-D5: structure.json under-counts a row's cells vs its <entry>
+  // elements — untranslated source entry emitted; module gated incomplete.
+  if (stats.tableCellGaps.length > 0) {
+    console.error(
+      `  WARNING: ${stats.tableCellGaps.length} table cell gap(s) — structure.json ` +
+        `under-counts row cells; untranslated source entry emitted (RC4/B4-D5). ` +
+        `Re-extract this module's structure.json.`
+    );
+    for (const g of stats.tableCellGaps.slice(0, 10)) {
+      console.error(
+        `    - table ${g.tableId} row ${g.rowIndex} entry ${g.entryIndex} ` +
+          `(${g.recordedCells} cell(s) recorded): "${g.text}"`
+      );
+    }
+    if (stats.tableCellGaps.length > 10) {
+      console.error(`    ... and ${stats.tableCellGaps.length - 10} more`);
+    }
   }
 
   if (verbose) {
@@ -2086,7 +2109,7 @@ function buildElement(element, getSeg, equations, originalCnxml, ctx) {
       if (ctx && ctx.tablesHandledInContainers && ctx.tablesHandledInContainers.has(element.id)) {
         return null;
       }
-      return buildTable(element, getSeg, originalCnxml);
+      return buildTable(element, getSeg, originalCnxml, ctx && ctx.tableCellGaps);
     case 'example':
       return buildExampleDom(element, getSeg, equations, originalCnxml, ctx);
     case 'exercise':
@@ -2128,7 +2151,7 @@ function buildPara(element, getSeg, equations, originalCnxml, ctx) {
     text = text.replace(/\[\[TABLE:([^\]]+)\]\]/g, (match, tableId) => {
       const tableData = ctx.inlineTables.find((t) => t.tableId === tableId);
       if (tableData && tableData.structure) {
-        return buildTable(tableData.structure, getSeg, originalCnxml);
+        return buildTable(tableData.structure, getSeg, originalCnxml, ctx.tableCellGaps);
       }
       return match; // Keep placeholder if not found
     });
@@ -2270,7 +2293,17 @@ function buildFigure(element, getSeg, originalCnxml, ctx) {
 /**
  * Build a table element.
  */
-function buildTable(element, getSeg, originalCnxml) {
+/**
+ * Build a table by extracting the source table block and replacing entry
+ * content positionally from the structure's row/cell records.
+ * @param {Array|undefined} tableCellGaps - optional sink (buildCnxml's
+ *   stats.tableCellGaps, threaded via ctx): records RC4-class gaps where a
+ *   row's <entry> has NO structure cell record and non-blank source text
+ *   (see the !cell branch below). Absent for isolated-builder/library calls,
+ *   which then keep the lenient pre-fix pass-through (same contract as
+ *   translateKeptContainerTables' missing-ctx no-op).
+ */
+function buildTable(element, getSeg, originalCnxml, tableCellGaps) {
   // For tables, extract from original and replace cell content
   if (element.id) {
     // Match table by ID - id attribute can appear anywhere in the opening tag
@@ -2323,24 +2356,33 @@ function buildTable(element, getSeg, originalCnxml) {
                     cellIdx++;
                     return `<entry${entryAttrs}>${cellText}</entry>`;
                   }
-                } else if (!cell) {
+                } else if (!cell && tableCellGaps) {
                   // RC4 / m68863 class defect: structure.rows[rowIdx].cells has no
                   // entry at this position at all (as opposed to a legitimate
                   // { segmentId: null } placeholder for a blank cell — that case is
                   // handled by the `cell && cell.segmentId` branch above and falls
                   // through silently, which is correct). This means extraction
                   // under-counted cells relative to the actual <entry> elements in
-                  // this row. Silently falling through to the raw `entryMatch`
-                  // here would leak the untranslated SOURCE text into
-                  // 03-translated/05-publication (exactly what happened to
-                  // m68863's "ΔH (kJ/mol)" header cell). Fail loud instead —
-                  // but only when the uncovered entry actually carries visible
-                  // text; a genuinely blank uncovered entry is harmless.
+                  // this row, so the raw untranslated SOURCE entry is about to be
+                  // emitted (exactly what happened to m68863's "ΔH (kJ/mol)"
+                  // header cell). Do NOT throw here — a throw at this depth
+                  // bypasses the CLI's per-module isolation (fires before the
+                  // incomplete-check, isn't gated by --allow-incomplete, and
+                  // aborts the whole chapter batch). Instead: record the gap so
+                  // buildCnxml gates report.complete on it, and emit the source
+                  // entry as before — the CLI's established skip+continue+
+                  // exitCode=1 path then handles the module. Only a gap with
+                  // visible text counts; a genuinely blank uncovered entry is
+                  // harmless.
                   const rawText = entryContent.replace(/<[^>]*>/g, '').trim();
                   if (rawText) {
-                    throw new Error(
-                      `buildTable: table id="${element.id}" row ${rowIdx} entry index ${cellIdx} has no matching cell in structure.rows[${rowIdx}].cells (recorded ${row.cells ? row.cells.length : 0} cell(s)) — refusing to leak untranslated source text "${rawText.slice(0, 60)}" into output. Re-extract this module's structure.json (RC4 class defect; see docs/plans/2026-07-12-b4-term-fn-bracket-markers-design.md § B4-D5).`
-                    );
+                    tableCellGaps.push({
+                      tableId: element.id,
+                      rowIndex: rowIdx,
+                      entryIndex: cellIdx,
+                      recordedCells: row.cells ? row.cells.length : 0,
+                      text: rawText.slice(0, 60),
+                    });
                   }
                 }
                 cellIdx++;
@@ -2394,7 +2436,7 @@ function translateKeptContainerTables(
         `translateKeptContainerTables: no structure node for kept container table id="${tableId}" in module ${moduleId} — cannot translate; refusing to emit source table.`
       );
     }
-    const translated = buildTable(node, getSeg, originalCnxml);
+    const translated = buildTable(node, getSeg, originalCnxml, ctx.tableCellGaps);
     if (!translated) {
       throw new Error(
         `translateKeptContainerTables: buildTable returned null for table id="${tableId}" in module ${moduleId}.`
@@ -2428,7 +2470,7 @@ function expandInlineTables(text, ctx, getSeg, originalCnxml, keptTableIds) {
     const tableData = ctx.inlineTables.find((t) => t.tableId === tableId);
     if (tableData && tableData.structure) {
       keptTableIds.add(tableId);
-      return buildTable(tableData.structure, getSeg, originalCnxml);
+      return buildTable(tableData.structure, getSeg, originalCnxml, ctx.tableCellGaps);
     }
     return match; // unknown id → leave placeholder; the gate will catch it
   });
@@ -4155,6 +4197,11 @@ async function main() {
         }
         if (result.report.residues.length > 0) {
           console.error(`  Untranslated-EN residue: ${result.report.residues.length}`);
+        }
+        if (result.report.tableCellGaps.length > 0) {
+          console.error(
+            `  Table cell gaps (RC4/B4-D5, re-extract needed): ${result.report.tableCellGaps.length}`
+          );
         }
         console.error('  Use --allow-incomplete to write anyway');
         process.exitCode = 1;
