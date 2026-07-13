@@ -590,8 +590,6 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     exampleCounter: 0,
     equationCounter: 0,
     exerciseCounter: 0, // Add exercise counter
-    renderedFigureIds: new Set(), // Track rendered figures to prevent duplicates
-    renderedTableIds: new Set(), // Track rendered tables (example-child vs section pass)
     undispatchedBlocks: [], // Loud seam: block elements no dispatch map handled
   };
 
@@ -923,20 +921,9 @@ function renderPara(para, context) {
 
 /**
  * Render a figure.
- * Skips rendering if the figure has already been rendered (tracked in context.renderedFigureIds).
  */
 function renderFigure(figure, context) {
   const id = figure.id || null;
-
-  // Skip if this figure was already rendered (e.g., inside a note)
-  if (id && context.renderedFigureIds && context.renderedFigureIds.has(id)) {
-    return '';
-  }
-
-  // Mark this figure as rendered
-  if (id && context.renderedFigureIds) {
-    context.renderedFigureIds.add(id);
-  }
 
   const lines = [];
   const className = figure.attributes.class || null;
@@ -1296,15 +1283,6 @@ function renderExample(example, context) {
       }
     }
 
-    // Register figures inside this para so section-level renderFigure skips them.
-    if (ctx.renderedFigureIds) {
-      const figPattern = /<figure[^>]*\sid="([^"]+)"/g;
-      let figMatch;
-      while ((figMatch = figPattern.exec(contentWithoutTitle)) !== null) {
-        ctx.renderedFigureIds.add(figMatch[1]);
-      }
-    }
-
     const parts = [];
     if (paraTitle) {
       // processInlineContent (not escapeHtml) so a para-title carrying inline
@@ -1336,9 +1314,9 @@ function renderExample(example, context) {
       equation: renderEquation,
       figure: renderFigure,
       media: renderMedia,
-      // A <table> that is a direct child of the example renders in place here;
-      // renderTable registers its id in context.renderedTableIds so the later
-      // section-level pass skips the duplicate (m68793 tables 12.31/12.32).
+      // A <table> that is a direct child of the example renders in place here
+      // (the depth-aware walk itemizes it once, at this container — m68793
+      // tables 12.31/12.32).
       table: renderTable,
     },
     // Hoist block-level <equation> out of a <para> so it renders ONCE as a
@@ -1407,29 +1385,15 @@ function renderExercise(exercise, context) {
 
   lines.push(`<div ${attrs.join(' ')}>`);
 
-  // Helper: render problem/solution section content (paras, media, figures,
-  // lists) in document order via the DOM seam. Only <list> is hoisted out of a
-  // <para> (matching the prior list-strip); figures render inline via renderPara.
-  const paraHandler = (para, ctx) => {
-    // Register figures nested in this para so the section-level renderFigure
-    // dispatch skips the duplicate (mirrors renderExample's paraHandler —
-    // renderedFigureIds; R4-5).
-    if (ctx.renderedFigureIds) {
-      const figPattern = /<figure[^>]*\sid="([^"]+)"/g;
-      let figMatch;
-      while ((figMatch = figPattern.exec(para.content)) !== null) {
-        ctx.renderedFigureIds.add(figMatch[1]);
-      }
-    }
-    return renderPara(para, ctx);
-  };
-
+  // Render problem/solution section content (paras, media, figures, lists) in
+  // document order via the DOM seam. Only <list> is hoisted out of a <para>
+  // (matching the prior list-strip); figures render inline via renderPara.
   function renderSectionContent(sectionContent) {
     const blocks = renderBlockChildrenInOrder(
       sectionContent,
       context,
       {
-        para: paraHandler,
+        para: renderPara,
         media: renderMedia,
         figure: renderFigure,
         list: renderList,
@@ -1523,16 +1487,6 @@ function renderExercise(exercise, context) {
 function renderTable(table, context) {
   const lines = [];
   const id = table.id || null;
-
-  // A table that is a direct child of an example/note renders in place via that
-  // block's dispatcher; skip the later section-level pass so it renders once
-  // (mirrors renderFigure / context.renderedFigureIds).
-  if (id && context.renderedTableIds && context.renderedTableIds.has(id)) {
-    return '';
-  }
-  if (id && context.renderedTableIds) {
-    context.renderedTableIds.add(id);
-  }
 
   const className = table.attributes.class || null;
 
