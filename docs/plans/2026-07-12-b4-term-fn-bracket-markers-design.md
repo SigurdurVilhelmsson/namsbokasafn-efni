@@ -352,6 +352,12 @@ campaign register.
   `segment-editor.js` is fine for single-level nesting (sub/sup/i/b run before its B4 arms). Fix:
   a tempered-greedy pipe rule (the inject idiom) in marker-highlight; fold the loc-pane case into
   the B4-D6 follow-up.
+- **B4-D10 `[gap]`** (fix-wave re-review residual, **un-fixed — TM-text-quality only**) the three
+  `stripMarkers` mirrors now tolerate one level of nesting (`[[MATH:n]]`, `[[sub:]]` etc.) inside
+  `[[term:/fn:]]` text, but a **depth-2** nested marker still leaves the inner marker verbatim in
+  the stripped text (e.g. `e[[i:g]] orbitals` in TM output — id/pipe no longer leak, behavior
+  strictly improved vs pre-B4). 5 corpus modules carry the shape (m68700/m68733/m68747/m68844 +1);
+  none is in the 8-module re-MT set. Fold into the registered stripMarkers-dedup follow-up.
 
 ## 10. Post-merge delivery op (own branch/PR, after lead merges the code PR)
 
