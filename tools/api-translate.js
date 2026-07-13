@@ -392,6 +392,96 @@ export function stripTermFnToPaired(chunkText) {
   return { wireText, segments };
 }
 
+/** Collect paired [[type]]…[[/type]] spans in a segment (term/fn do not self-nest,
+ *  so match each open to the next close). Returns [{ start, end, inner }]. */
+function collectPaired(segText, type) {
+  const openTok = `[[${type}]]`;
+  const closeTok = `[[/${type}]]`;
+  const spans = [];
+  let i = 0;
+  while (true) {
+    const o = segText.indexOf(openTok, i);
+    if (o === -1) break;
+    const c = segText.indexOf(closeTok, o + openTok.length);
+    if (c === -1) break; // unbalanced → fewer matches → count-guard trips
+    spans.push({ start: o, end: c + closeTok.length, inner: segText.slice(o + openTok.length, c) });
+    i = c + closeTok.length;
+  }
+  return spans;
+}
+
+/**
+ * Re-attach ids to the paired-form MT output, restoring on-disk [[type:text|id]] form.
+ * Per-segment/per-type count-guard: if surviving paired markers != captured ids, that
+ * segment degrades to its original text and a mismatch is recorded (B4-D11).
+ * @param {string} wireOutput - MT output (paired form, SEG markers intact)
+ * @param {Array} segments - records from stripTermFnToPaired
+ * @returns {{ text:string, mismatches:Array<{segId,type,expected,got}> }}
+ */
+export function reattachIds(wireOutput, segments) {
+  const byId = new Map(segments.map((s) => [s.segId, s]));
+  const parts = wireOutput.split(SEG_SPLIT_RE).filter((p) => p.length > 0);
+  const mismatches = [];
+  let out = '';
+  for (const part of parts) {
+    const m = part.match(SEG_ID_RE);
+    const rec = m ? byId.get(m[1]) : null;
+    if (!rec) {
+      out += part;
+      continue;
+    } // unknown/leading segment → pass through
+
+    const termSpans = collectPaired(part, 'term');
+    const fnSpans = collectPaired(part, 'fn');
+    const termOk = termSpans.length === rec.termIds.length;
+    const fnOk = fnSpans.length === rec.fnIds.length;
+
+    if (!termOk)
+      mismatches.push({
+        segId: rec.segId,
+        type: 'term',
+        expected: rec.termIds.length,
+        got: termSpans.length,
+      });
+    if (!fnOk)
+      mismatches.push({
+        segId: rec.segId,
+        type: 'fn',
+        expected: rec.fnIds.length,
+        got: fnSpans.length,
+      });
+
+    if (!termOk || !fnOk) {
+      out += rec.originalText;
+      continue;
+    } // safe degrade
+
+    // Build replacement list (term + fn), splice right-to-left to keep offsets valid.
+    const repls = [];
+    termSpans.forEach((s, k) => {
+      const id = rec.termIds[k];
+      repls.push({
+        start: s.start,
+        end: s.end,
+        text: id === null ? `[[term:${s.inner}]]` : `[[term:${s.inner}|${id}]]`,
+      });
+    });
+    fnSpans.forEach((s, k) => {
+      const id = rec.fnIds[k];
+      repls.push({
+        start: s.start,
+        end: s.end,
+        text: id === null ? `[[fn:${s.inner}]]` : `[[fn:${s.inner}|${id}]]`,
+      });
+    });
+    repls.sort((a, b) => b.start - a.start);
+    let segOut = part;
+    for (const r of repls) segOut = segOut.slice(0, r.start) + r.text + segOut.slice(r.end);
+    out += segOut;
+  }
+  return { text: out, mismatches };
+}
+
 // ─── Book → Domain Mapping ──────────────────────────────────────────
 // bookToDomain now lives in book-rendering-config.js (reads book-config.json
 // `domain`). Imported above for internal use; re-exported here for backward
