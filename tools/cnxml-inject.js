@@ -2323,6 +2323,25 @@ function buildTable(element, getSeg, originalCnxml) {
                     cellIdx++;
                     return `<entry${entryAttrs}>${cellText}</entry>`;
                   }
+                } else if (!cell) {
+                  // RC4 / m68863 class defect: structure.rows[rowIdx].cells has no
+                  // entry at this position at all (as opposed to a legitimate
+                  // { segmentId: null } placeholder for a blank cell — that case is
+                  // handled by the `cell && cell.segmentId` branch above and falls
+                  // through silently, which is correct). This means extraction
+                  // under-counted cells relative to the actual <entry> elements in
+                  // this row. Silently falling through to the raw `entryMatch`
+                  // here would leak the untranslated SOURCE text into
+                  // 03-translated/05-publication (exactly what happened to
+                  // m68863's "ΔH (kJ/mol)" header cell). Fail loud instead —
+                  // but only when the uncovered entry actually carries visible
+                  // text; a genuinely blank uncovered entry is harmless.
+                  const rawText = entryContent.replace(/<[^>]*>/g, '').trim();
+                  if (rawText) {
+                    throw new Error(
+                      `buildTable: table id="${element.id}" row ${rowIdx} entry index ${cellIdx} has no matching cell in structure.rows[${rowIdx}].cells (recorded ${row.cells ? row.cells.length : 0} cell(s)) — refusing to leak untranslated source text "${rawText.slice(0, 60)}" into output. Re-extract this module's structure.json (RC4 class defect; see docs/plans/2026-07-12-b4-term-fn-bracket-markers-design.md § B4-D5).`
+                    );
+                  }
                 }
                 cellIdx++;
                 return entryMatch;

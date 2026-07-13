@@ -226,6 +226,60 @@ campaign register.
   edlisfraedi-2e source files were being donated as example titles and dropped as
   paras. The Task-5 fix corrects this class for every FUTURE extraction; physics
   content heals when edlisfraedi is (re-)extracted, not in this arc.
+- **B4-D5 `[fix]`** (Task 9) m68863 (appendices, RC4 second F3 member —
+  `docs/audit/2026-07-06-f3-benign-retriage.md` § RC4) — table-header duplication ("ΔH (kJ/mol)"
+  landing as both a translated and an untranslated copy) **reproduces in git history but is
+  already healed on disk.** Current `books/efnafraedi-2e/03-translated/mt-preview/appendices/
+  m68863.cnxml` is `PERFECT` (`node tools/cnxml-fidelity-check.js --book efnafraedi-2e --chapter
+  appendices --module m68863` → 0 discrepancies); `books/efnafraedi-2e/translation-errors.json`'s
+  `diff:1 emphasis "known-loss-deferred"` entry for m68863 is **stale** (generated 2026-07-06T14:34,
+  one day before the fix landed) — do not trust it; re-generate on the next full fidelity sweep.
+  **Stage classification: inject-stage. No re-MT needed** — segments `m68863:entry:auto-153`/`-154`
+  in `02-mt-output/appendices/m68863-segments.is.md` were always correct Icelandic
+  ("Hitastig (K)" / "Δ[[i:H]] (kJ/mól)"); the defect never touched translation quality.
+  **Mechanism (file:line evidence):** `buildTable` (`tools/cnxml-inject.js:2273-2361`) walks each
+  row's source `<entry>` elements positionally via a `cellIdx` counter, looking up
+  `row.cells[cellIdx]` from the module's `02-structure/*-structure.json`. m68863's header row has
+  3 source `<entry>` elements (a blank spacer, "Temperature (K)", "ΔH (kJ/mol)") but the
+  *pre-fix* `m68863-structure.json` recorded only 2 cells for that row — extraction had omitted a
+  cell object for the blank leading `<entry align="left"/>`. That desynced `cellIdx` by one for
+  the row's tail: entry #1 (blank) wrongly consumed `cells[0]` (the "Temperature" cell data,
+  → "Hitastig (K)"), entry #2 consumed `cells[1]` (→ translated "ΔH (kJ/mól)"), and entry #3 hit
+  `row.cells[2]` = `undefined`. The pre-fix code's final fallback simply `return`ed `entryMatch`
+  (the untouched, untranslated source `<entry>`) whenever no cell matched — silently emitting the
+  raw English "ΔH (kJ/mol)" as a phantom 3rd column. Proof: `git show 3d0c40d2 -- books/efnafraedi-2e/
+  03-translated/mt-preview/appendices/m68863.cnxml` shows the fix-diff (blank `<entry>` restored,
+  English-residue `<entry>` removed); `git show 689ddf3e -- books/efnafraedi-2e/02-structure/
+  appendices/m68863-structure.json` shows the paired structure fix — a new
+  `{"segmentId": null, "attributes": {"align": "left"}}` cell inserted as the row's first cell.
+  Both commits are from the unrelated STALE-STRUCT re-extract/re-inject campaign
+  (`re-extract 143 re-MT-free modules`, 2026-07-07 09:15; `re-inject 143 modules from fixed
+  structure`, 2026-07-07 09:59) — m68863 was one of the 143 modules incidentally healed, a day
+  *after* the F3 audit (2026-07-06) recorded the defect as still-open. The register entry was
+  simply never revisited once the fix landed.
+  **Residual hardening shipped this task (Outcome A):** the *mechanism* — `buildTable` silently
+  passing raw source text through when `row.cells[]` under-counts a row's `<entry>` elements —
+  was still live code, unrelated to whether m68863 itself was already fixed. Added a fail-loud
+  guard: when a row's `<entry>` index has no matching `row.cells[cellIdx]` at all (not the
+  legitimate `{segmentId: null}` placeholder case, which still passes through silently and
+  correctly) **and** the uncovered entry has non-blank text, `buildTable` now throws
+  (`tools/cnxml-inject.js:2326-2345`) naming the table id, row, and truncated leaked text, instead
+  of leaking it into `03-translated`/`05-publication`. TDD: failing-first fixture in
+  `tools/__tests__/cnxml-inject.test.js` (describe `"buildCnxml table row: undercounted
+  structure.cells (RC4 / m68863)"`, 2 tests — fail-loud on real leaked content, no false-positive
+  on a genuinely blank uncovered cell). `npx vitest run tools/__tests__/cnxml-inject.test.js
+  tools/__tests__/cnxml-dom-comparison.test.js` → 351/351 green; full `tools/__tests__/` →
+  97 files / 1495 green (baseline 97/1493 + this task's 2 new tests).
+  **Side-finding, out of scope, logged not fixed:** a live whole-book `cnxml-inject.js` re-run
+  (all chapters + appendices, `--allow-incomplete`; reverted with `git checkout -- books/`,
+  verified clean — zero persistent `books/` changes) shows the new guard now throws for
+  **m68789** (ch12, table `fs-idm189410736`): its currently-committed
+  `03-translated/mt-preview/ch12/m68789.cnxml` already contains the identical RC4-class defect
+  (`<entry>1</entry><entry>2</entry><entry>3</entry><entry>3</entry>` — a duplicated untranslated
+  "3" header cell). This is **not a regression introduced here** — m68789 is already one of the 8
+  modules queued for post-merge re-extract/re-MT (§10 above, "m68789/791/793 ch12"); the new guard
+  will correctly block m68789's next inject until it is re-extracted, which is the intended
+  fail-loud behavior. No action needed in this task; flagging for the post-merge op.
 - **B4-D6 `[gap]`** (Task 7) `localization-editor.js`'s preview renderer
   (`edRenderMarkdownPreview`, `:1318-1359`) has no arms for the whole `[[i:]]/[[b:]]/
   [[sub:]]/[[sup:]]/[[xref:]]` bracket family — confirmed absent via

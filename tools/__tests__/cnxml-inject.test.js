@@ -702,6 +702,95 @@ describe('table injection: self-closing entry expansion', () => {
   });
 });
 
+// ─── RC4 / m68863: undercounted structure.cells leaks raw EN entry ─
+// Regression test for the mechanism behind m68863's "table-header EN
+// residue" (B4-D5, docs/plans/2026-07-12-b4-term-fn-bracket-markers-design.md
+// § Register). Root cause: structure.json's row.cells[] must have exactly one
+// entry per source <entry> in that row (including a { segmentId: null }
+// placeholder for legitimately blank cells — see "Fix B" above). When
+// extraction under-counts (omits a cell object entirely for one of the
+// row's <entry> elements), buildTable's positional cellIdx walk runs off
+// the end of row.cells for the trailing entries. Historically this fell
+// through to `return entryMatch`, silently emitting the RAW SOURCE entry
+// (untranslated English) instead of failing loud — exactly what m68863's
+// committed 03-translated output showed before it was incidentally healed
+// by an unrelated re-extract (structure.json regained the missing cell).
+describe('buildCnxml table row: undercounted structure.cells (RC4 / m68863)', () => {
+  const structure = {
+    moduleId: 'test',
+    title: { segmentId: 'test:title:auto-1', text: 'Test' },
+    content: [
+      {
+        type: 'table',
+        id: 'tbl-rc4',
+        class: null,
+        summary: null,
+        rows: [
+          {
+            // Only 2 cells recorded, but the source row (below) has 3
+            // <entry> elements — mirrors the m68863 defect where the
+            // leading blank <entry> was never captured as a cell.
+            cells: [
+              { segmentId: 'test:entry:c1', attributes: { align: 'left' } },
+              { segmentId: 'test:entry:c2', attributes: { align: 'left' } },
+            ],
+          },
+        ],
+      },
+    ],
+  };
+  const segments = new Map([
+    ['test:title:auto-1', 'Titill'],
+    ['test:entry:c1', 'Þýtt 1'],
+    ['test:entry:c2', 'Þýtt 2'],
+  ]);
+  const originalCnxml = `<document xmlns="http://cnx.rice.edu/cnxml">
+<title>Test</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml"><md:title>Test</md:title></metadata>
+<content>
+<table id="tbl-rc4" summary="">
+<tgroup cols="3">
+<tbody>
+<row><entry align="left">Raw EN 1</entry><entry align="left">Raw EN 2</entry><entry align="left">Raw EN 3</entry></row>
+</tbody>
+</tgroup>
+</table>
+</content>
+</document>`;
+
+  it('fails loud instead of leaking the untranslated trailing entry', () => {
+    // Before the fix: buildCnxml silently returns "Raw EN 3" verbatim in the
+    // output (English residue, RC4). After the fix: it throws, surfacing the
+    // structure/entry-count mismatch at inject time instead of downstream.
+    expect(() => buildCnxml(structure, segments, {}, originalCnxml)).toThrow(/tbl-rc4/);
+  });
+
+  it('leaves a legitimately blank trailing entry untouched (no false-positive throw)', () => {
+    // Same undercount, but the uncovered trailing entry is genuinely blank
+    // in the source (e.g. a decorative spacer cell) — must NOT throw.
+    const blankOriginalCnxml = `<document xmlns="http://cnx.rice.edu/cnxml">
+<title>Test</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml"><md:title>Test</md:title></metadata>
+<content>
+<table id="tbl-rc4" summary="">
+<tgroup cols="3">
+<tbody>
+<row><entry align="left">Raw EN 1</entry><entry align="left">Raw EN 2</entry><entry align="left"/></row>
+</tbody>
+</tgroup>
+</table>
+</content>
+</document>`;
+
+    let result;
+    expect(() => {
+      result = buildCnxml(structure, segments, {}, blankOriginalCnxml);
+    }).not.toThrow();
+    expect(result.cnxml).toContain('Þýtt 1');
+    expect(result.cnxml).toContain('Þýtt 2');
+  });
+});
+
 // ─── Nested list preservation in buildExampleDom ──────────────────
 
 describe('buildExampleDom nested list in para', () => {
