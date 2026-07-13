@@ -822,26 +822,7 @@ function renderContent(content, context, _verbose) {
  * Shared by renderContent (top-level content) and renderSection (nested
  * sections), so both preserve document order the same way.
  */
-/**
- * Resolve an element's position within `content` for document-order sorting.
- *
- * Primary lookup is `content.indexOf(fullMatch)`. Some top-level extractions
- * (notably lists whose items contain a nested `<media>`) have their
- * `fullMatch` mutated by upstream stripping (see media-strip pass above),
- * so it no longer appears verbatim in the original `content`. When that
- * lookup misses (-1) and the element has a stable `id`, fall back to
- * locating `id="…"` instead of collapsing to position 0 (which would
- * wrongly hoist the element above everything preceding it).
- */
-function positionInContent(content, fullMatch, id) {
-  let pos = fullMatch ? content.indexOf(fullMatch) : -1;
-  if (pos === -1 && id) pos = content.indexOf(`id="${id}"`);
-  return pos !== -1 ? pos : 0;
-}
-
 function renderChildrenInDocumentOrder(content, context, { excludeSections, sectionLevel }) {
-  const lines = [];
-
   // Sections to exclude from main content (they have their own pages)
   // Loaded from book config — varies by book (e.g., Biology uses multiple-choice, critical-thinking)
   let EXCLUDED_SECTION_CLASSES = BOOK_CONFIG
@@ -855,163 +836,42 @@ function renderChildrenInDocumentOrder(content, context, { excludeSections, sect
     );
   }
 
-  // Extract sections
-  const sections = extractNestedElements(content, 'section');
-
-  // Get content without sections for top-level elements
-  const contentWithoutSections = removeNestedElements(content, 'section');
-
-  // Collect all renderable items with their positions
-  const itemsWithPositions = [];
-
-  // Add sections with their positions
-  for (const section of sections) {
+  const sectionHandler = (section, ctx) => {
     const sectionClass = section.attributes.class || '';
-    // Only exclude sections if excludeSections flag is true (default)
-    // When rendering standalone sections, excludeSections will be false
+    // Only exclude sections if excludeSections flag is true (default).
+    // When rendering standalone sections, excludeSections is false.
     const shouldExclude =
       excludeSections && EXCLUDED_SECTION_CLASSES.some((cls) => sectionClass.includes(cls));
-    if (shouldExclude) {
-      continue;
-    }
-    const position = section.fullMatch ? content.indexOf(section.fullMatch) : 0;
-    itemsWithPositions.push({
-      type: 'section',
-      item: section,
-      position,
+    if (shouldExclude) return '';
+    return renderSection(section, ctx, sectionLevel);
+  };
+
+  // Direct-children DOM walk (Track C leaf-seam promoted to section level).
+  // The corpus vocabulary of direct <content>/<section> children is closed
+  // (11 block tags; title/label are consumed by renderSection; comments are
+  // skipped by the walk); anything else lands in the loud seam. No hoistTags
+  // option → default hoist-all, matching the old strip cascade where every
+  // block type was pulled out of a top-level <para> and rendered after it.
+  try {
+    return renderBlockChildrenInOrder(content, context, {
+      section: sectionHandler,
+      figure: renderFigure,
+      note: renderNote,
+      example: renderExample,
+      exercise: renderExercise,
+      table: renderTable,
+      media: renderMedia,
+      list: renderList,
+      equation: renderEquation,
+      para: renderPara,
     });
+  } catch (err) {
+    // xmldom 0.9 throws ParseError on malformed XML. Fail loud with module
+    // identity; the CLI loop converts this to a per-module skip + exit 1.
+    throw new Error(
+      `CNXML parse failed for module ${context.moduleId || '(unknown)'}: ${err.message}`
+    );
   }
-
-  // Add top-level elements with their positions
-  // Extract and position each top-level element type
-  const figures = extractNestedElements(contentWithoutSections, 'figure');
-  const notes = extractNestedElements(contentWithoutSections, 'note');
-  const examples = extractNestedElements(contentWithoutSections, 'example');
-  const exercises = extractNestedElements(contentWithoutSections, 'exercise');
-  const tables = extractNestedElements(contentWithoutSections, 'table');
-
-  // For simple elements, strip containers first
-  // IMPORTANT: Strip examples and exercises BEFORE notes, because examples/exercises
-  // can contain nested notes. If we strip notes first, the example.fullMatch won't
-  // match anymore (the note inside it was already removed from simpleContent).
-  let simpleContent = contentWithoutSections;
-  for (const e of examples) if (e.fullMatch) simpleContent = simpleContent.replace(e.fullMatch, '');
-  for (const e of exercises) {
-    if (e.fullMatch) simpleContent = simpleContent.replace(e.fullMatch, '');
-  }
-  for (const n of notes) if (n.fullMatch) simpleContent = simpleContent.replace(n.fullMatch, '');
-  for (const f of figures) if (f.fullMatch) simpleContent = simpleContent.replace(f.fullMatch, '');
-  for (const t of tables) if (t.fullMatch) simpleContent = simpleContent.replace(t.fullMatch, '');
-
-  // Extract standalone media elements (not inside figures — those are already stripped)
-  const medias = extractNestedElements(simpleContent, 'media');
-  for (const m of medias) if (m.fullMatch) simpleContent = simpleContent.replace(m.fullMatch, '');
-
-  const lists = extractNestedElements(simpleContent, 'list');
-  for (const lst of lists)
-    if (lst.fullMatch) simpleContent = simpleContent.replace(lst.fullMatch, '');
-  const equations = extractElements(simpleContent, 'equation');
-  const paras = extractElements(simpleContent, 'para');
-
-  // Add all top-level elements with positions (use original content for position finding)
-  for (const fig of figures) {
-    const pos = positionInContent(content, fig.fullMatch, fig.id);
-    itemsWithPositions.push({ type: 'figure', item: fig, position: pos });
-  }
-
-  // Only add notes that are NOT inside examples or exercises
-  // (notes inside examples/exercises will be rendered by renderExample/renderExercise)
-  for (const note of notes) {
-    const notePos = positionInContent(content, note.fullMatch, note.id);
-
-    // Check if this note is inside any example
-    const isInsideExample = examples.some((ex) => {
-      if (!ex.fullMatch || !note.fullMatch) return false;
-      const exPos = content.indexOf(ex.fullMatch);
-      return notePos >= exPos && notePos < exPos + ex.fullMatch.length;
-    });
-
-    // Check if this note is inside any exercise
-    const isInsideExercise = exercises.some((ex) => {
-      if (!ex.fullMatch || !note.fullMatch) return false;
-      const exPos = content.indexOf(ex.fullMatch);
-      return notePos >= exPos && notePos < exPos + ex.fullMatch.length;
-    });
-
-    if (!isInsideExample && !isInsideExercise) {
-      itemsWithPositions.push({ type: 'note', item: note, position: notePos });
-    }
-  }
-
-  for (const ex of examples) {
-    const pos = positionInContent(content, ex.fullMatch, ex.id);
-    itemsWithPositions.push({ type: 'example', item: ex, position: pos });
-  }
-  for (const ex of exercises) {
-    const pos = positionInContent(content, ex.fullMatch, ex.id);
-    itemsWithPositions.push({ type: 'exercise', item: ex, position: pos });
-  }
-  for (const tbl of tables) {
-    const pos = positionInContent(content, tbl.fullMatch, tbl.id);
-    itemsWithPositions.push({ type: 'table', item: tbl, position: pos });
-  }
-  for (const media of medias) {
-    const pos = positionInContent(content, media.fullMatch, media.id);
-    itemsWithPositions.push({ type: 'media', item: media, position: pos });
-  }
-  for (const lst of lists) {
-    const pos = positionInContent(content, lst.fullMatch, lst.id);
-    itemsWithPositions.push({ type: 'list', item: lst, position: pos });
-  }
-  for (const eq of equations) {
-    const pos = positionInContent(content, eq.fullMatch, eq.id);
-    itemsWithPositions.push({ type: 'equation', item: eq, position: pos });
-  }
-  for (const para of paras) {
-    const pos = para.id ? content.indexOf(`id="${para.id}"`) : content.indexOf('<para');
-    itemsWithPositions.push({ type: 'para', item: para, position: pos !== -1 ? pos : 0 });
-  }
-
-  // Sort by position to preserve document order
-  itemsWithPositions.sort((a, b) => a.position - b.position);
-
-  // Render in document order
-  for (const { type, item } of itemsWithPositions) {
-    switch (type) {
-      case 'section':
-        lines.push(renderSection(item, context, sectionLevel));
-        break;
-      case 'figure':
-        lines.push(renderFigure(item, context));
-        break;
-      case 'note':
-        lines.push(renderNote(item, context));
-        break;
-      case 'example':
-        lines.push(renderExample(item, context));
-        break;
-      case 'exercise':
-        lines.push(renderExercise(item, context));
-        break;
-      case 'table':
-        lines.push(renderTable(item, context));
-        break;
-      case 'media':
-        lines.push(renderMedia(item, context));
-        break;
-      case 'list':
-        lines.push(renderList(item, context));
-        break;
-      case 'equation':
-        lines.push(renderEquation(item, context));
-        break;
-      case 'para':
-        lines.push(renderPara(item, context));
-        break;
-    }
-  }
-
-  return lines;
 }
 
 /**
@@ -1281,7 +1141,12 @@ function renderBlockChildrenInOrder(content, context, dispatch, options = {}) {
       return;
     }
 
-    const obj = extractNestedElements(serializeCnxmlFragment(node), name)[0];
+    // extractNestedElements cannot match a self-closing element (the serializer
+    // emits <tag/> for empty nodes); extractElements handles that form. The
+    // fallback only fires when the nested-aware scan found nothing, i.e. the
+    // element is empty — so extractElements' same-tag truncation cannot bite.
+    const serialized = serializeCnxmlFragment(node);
+    const obj = extractNestedElements(serialized, name)[0] || extractElements(serialized, name)[0];
     if (obj) {
       const html = dispatch[name](obj, context);
       if (html) out.push(html);
@@ -1994,45 +1859,6 @@ function renderGlossary(content, context) {
   lines.push('  </dl>');
   lines.push('</section>');
   return lines.join('\n');
-}
-
-/**
- * Remove nested elements of a given type from content.
- */
-function removeNestedElements(content, tagName) {
-  const openTag = new RegExp(`<${tagName}(\\s[^>]*)?>`, 'g');
-  const closeTag = `</${tagName}>`;
-
-  let result = content;
-  let match;
-
-  while ((match = openTag.exec(result)) !== null) {
-    const startIdx = match.index;
-    let depth = 1;
-    let idx = startIdx + match[0].length;
-
-    while (depth > 0 && idx < result.length) {
-      const nextOpen = result.indexOf(`<${tagName}`, idx);
-      const nextClose = result.indexOf(closeTag, idx);
-
-      if (nextClose === -1) break;
-
-      if (nextOpen !== -1 && nextOpen < nextClose) {
-        depth++;
-        idx = nextOpen + tagName.length + 1;
-      } else {
-        depth--;
-        if (depth === 0) {
-          const endIdx = nextClose + closeTag.length;
-          result = result.substring(0, startIdx) + result.substring(endIdx);
-          openTag.lastIndex = startIdx;
-        }
-        idx = nextClose + closeTag.length;
-      }
-    }
-  }
-
-  return result;
 }
 
 // =====================================================================
