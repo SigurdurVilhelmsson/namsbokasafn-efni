@@ -1350,6 +1350,22 @@
     html = html.replace(/(?<!~)~(?!~)(.+?)(?<!~)~(?!~)/g, '<sub>$1</sub>');
     html = html.replace(/\^(.+?)\^/g, '<sup>$1</sup>');
     html = html.replace(/\+\+(.+?)\+\+/g, '<u>$1</u>');
+    // B4 id-anchored markers
+    html = html.replace(/\[\[term:([^|\]]+)\|[^\]]+\]\]/g, '<span class="preview-term">$1</span>');
+    html = html.replace(/\[\[term:([^\]]+)\]\]/g, '<span class="preview-term">$1</span>');
+    html = html.replace(
+      /\[\[fn:([^|\]]+)\|[^\]]+\]\]/g,
+      '<span class="xref-chip" title="Neðanmálsgrein">†$1</span>'
+    );
+    html = html.replace(
+      /\[\[fn:([^\]]+)\]\]/g,
+      '<span class="xref-chip" title="Neðanmálsgrein">†$1</span>'
+    );
+    html = html.replace(/\[\[u:([^\]]+)\]\]/g, '<u>$1</u>');
+    html = html.replace(
+      /\[\[em:([^|\]]+)\|[^\]]+\]\]/g,
+      '<span style="color:#d32f2f;font-weight:bold">$1</span>'
+    );
     html = html.replace(/\{=(.+?)=\}/g, '<span style="color:#d32f2f;font-weight:bold">$1</span>');
     html = html.replace(
       /\[(?:footnote|ne\u00F0anm\u00E1lsgrein): (.+?)\]/g,

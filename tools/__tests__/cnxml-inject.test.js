@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import {
   parseSegments,
   annotateInlineTerms,
@@ -702,6 +702,131 @@ describe('table injection: self-closing entry expansion', () => {
   });
 });
 
+// ─── RC4 / m68863: undercounted structure.cells leaks raw EN entry ─
+// Regression test for the mechanism behind m68863's "table-header EN
+// residue" (B4-D5, docs/plans/2026-07-12-b4-term-fn-bracket-markers-design.md
+// § Register). Root cause: structure.json's row.cells[] must have exactly one
+// entry per source <entry> in that row (including a { segmentId: null }
+// placeholder for legitimately blank cells — see "Fix B" above). When
+// extraction under-counts (omits a cell object entirely for one of the
+// row's <entry> elements), buildTable's positional cellIdx walk runs off
+// the end of row.cells for the trailing entries. Historically this fell
+// through to `return entryMatch`, silently emitting the RAW SOURCE entry
+// (untranslated English) with no signal at all — exactly what m68863's
+// committed 03-translated output showed before it was incidentally healed
+// by an unrelated re-extract (structure.json regained the missing cell).
+//
+// The guard must NOT throw: a throw at buildTable depth bypasses the
+// per-module isolation idiom (it fires inside buildCnxml, before the CLI
+// main loop's incomplete-check, is not gated by --allow-incomplete, and
+// aborts the whole chapter batch — e.g. --chapter 12 would die at m68789
+// and never process m68791+). Instead it rides the existing
+// incomplete-module mechanism: record the gap on report.tableCellGaps,
+// emit the source entry (the pre-fix visible behavior), and gate
+// report.complete — the established skip+continue+exitCode=1 path in the
+// CLI handles the rest (module skipped unless --allow-incomplete, loud on
+// the console either way).
+describe('buildCnxml table row: undercounted structure.cells (RC4 / m68863)', () => {
+  const structure = {
+    moduleId: 'test',
+    title: { segmentId: 'test:title:auto-1', text: 'Test' },
+    content: [
+      {
+        type: 'table',
+        id: 'tbl-rc4',
+        class: null,
+        summary: null,
+        rows: [
+          {
+            // Only 2 cells recorded, but the source row (below) has 3
+            // <entry> elements — mirrors the m68863 defect where the
+            // leading blank <entry> was never captured as a cell.
+            cells: [
+              { segmentId: 'test:entry:c1', attributes: { align: 'left' } },
+              { segmentId: 'test:entry:c2', attributes: { align: 'left' } },
+            ],
+          },
+        ],
+      },
+    ],
+  };
+  const segments = new Map([
+    ['test:title:auto-1', 'Titill'],
+    ['test:entry:c1', 'Þýtt 1'],
+    ['test:entry:c2', 'Þýtt 2'],
+  ]);
+  const originalCnxml = `<document xmlns="http://cnx.rice.edu/cnxml">
+<title>Test</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml"><md:title>Test</md:title></metadata>
+<content>
+<table id="tbl-rc4" summary="">
+<tgroup cols="3">
+<tbody>
+<row><entry align="left">Raw EN 1</entry><entry align="left">Raw EN 2</entry><entry align="left">Raw EN 3</entry></row>
+</tbody>
+</tgroup>
+</table>
+</content>
+</document>`;
+
+  it('records the gap, marks the module incomplete, and emits the source entry (no throw)', () => {
+    // Before the fix: buildCnxml silently returns "Raw EN 3" verbatim with a
+    // fully "complete" report (English residue, RC4, invisible). After the
+    // fix: same visible output, but the gap is recorded and completeness is
+    // gated so the CLI's per-module skip+exitCode=1 path catches it — without
+    // aborting the rest of the chapter batch.
+    let result;
+    expect(() => {
+      result = buildCnxml(structure, segments, {}, originalCnxml);
+    }).not.toThrow();
+
+    // (a) gap recorded, naming table/row/entry and the leaked text
+    expect(result.report.tableCellGaps).toHaveLength(1);
+    expect(result.report.tableCellGaps[0]).toMatchObject({
+      tableId: 'tbl-rc4',
+      rowIndex: 0,
+      entryIndex: 2,
+    });
+    expect(result.report.tableCellGaps[0].text).toContain('Raw EN 3');
+
+    // (b) source entry emitted as before (pre-fix visible behavior)
+    expect(result.cnxml).toContain('Raw EN 3');
+    expect(result.cnxml).toContain('Þýtt 1');
+    expect(result.cnxml).toContain('Þýtt 2');
+
+    // (c) completeness gated → CLI skip path (not process abort) handles it
+    expect(result.report.complete).toBe(false);
+  });
+
+  it('leaves a legitimately blank trailing entry untouched (no false positive)', () => {
+    // Same undercount, but the uncovered trailing entry is genuinely blank
+    // in the source (e.g. a decorative spacer cell) — must NOT record a gap
+    // or gate completeness.
+    const blankOriginalCnxml = `<document xmlns="http://cnx.rice.edu/cnxml">
+<title>Test</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml"><md:title>Test</md:title></metadata>
+<content>
+<table id="tbl-rc4" summary="">
+<tgroup cols="3">
+<tbody>
+<row><entry align="left">Raw EN 1</entry><entry align="left">Raw EN 2</entry><entry align="left"/></row>
+</tbody>
+</tgroup>
+</table>
+</content>
+</document>`;
+
+    let result;
+    expect(() => {
+      result = buildCnxml(structure, segments, {}, blankOriginalCnxml);
+    }).not.toThrow();
+    expect(result.cnxml).toContain('Þýtt 1');
+    expect(result.cnxml).toContain('Þýtt 2');
+    expect(result.report.tableCellGaps).toHaveLength(0);
+    expect(result.report.complete).toBe(true);
+  });
+});
+
 // ─── Nested list preservation in buildExampleDom ──────────────────
 
 describe('buildExampleDom nested list in para', () => {
@@ -1290,6 +1415,57 @@ describe('annotateInlineTerms — F6 MATH placeholder', () => {
   });
 });
 
+// ─── C2/C3: annotateInlineTerms nested-marker tolerance ───────────────
+// The bracket arms' content-exclusion group could not match term text carrying a
+// nested marker ([[sub:]], [[i:]], [[MATH:n]]) — causing deterministic annotation
+// loss AND positional mis-pairing (a WRONG "(e. …)" attached) when only one side
+// matched. annotateInlineTerms runs on RAW segment text (inner markers unresolved).
+
+describe('annotateInlineTerms — C2/C3 nested-marker tolerance', () => {
+  it('(a) both sides carry a nested [[sub:]] term — annotates the text field, id untouched', () => {
+    const en = new Map([['s1', 'Ein [[term:H[[sub:2]]O|t1]] sameind']]);
+    const is = new Map([['s1', 'Ein [[term:þungt H[[sub:2]]O|t1]] sameind']]);
+    const { segments, annotatedCount } = annotateInlineTerms(is, en);
+    const out = segments.get('s1');
+    expect(annotatedCount).toBe(1);
+    expect(out).toBe('Ein [[term:þungt H[[sub:2]]O (e. h2o)|t1]] sameind'); // id t1 untouched
+  });
+
+  it('(b) mis-pairing probe: EN nested + plain vs IS both-plain — NO wrong annotation', () => {
+    // Pre-fix: EN pattern skips the nested H2O term, sees only "acid" → the first
+    // IS term (H2O) is wrongly annotated "(e. acid)". Post-fix both sides see 2 terms.
+    const en = new Map([['s2', 'A [[term:H[[sub:2]]O|t1]] molecule and an [[term:acid|t2]] here']]);
+    const is = new Map([['s2', 'Ein [[term:H2O|t1]] sameind og [[term:sýra|t2]] hér']]);
+    const { segments } = annotateInlineTerms(is, en);
+    const out = segments.get('s2');
+    expect(out).not.toContain('H2O (e. acid)'); // the wrong pairing must NOT happen
+    expect(out).toContain('[[term:sýra (e. acid)|t2]]'); // acid pairs with its real IS term
+    expect(out).toContain('[[term:H2O|t1]]'); // H2O left unannotated (EN "h2o" === IS, skipped)
+  });
+
+  it('(c) [[MATH:n]]-bearing EN term text is matched and its notation resolved', () => {
+    const en = new Map([['s3', 'The [[term:rate [[MATH:1]]|t9]] rises']]);
+    const is = new Map([['s3', 'The [[term:hraði|t9]] rises']]);
+    const equations = { 'math-1': { mathml: '<m:mi>k</m:mi>' } };
+    const { segments, annotatedCount } = annotateInlineTerms(is, en, equations);
+    const out = segments.get('s3');
+    expect(annotatedCount).toBe(1);
+    expect(out).toContain('[[term:hraði (e. rate k)|t9]]'); // MATH resolved into the annotation
+  });
+
+  it('(C3 mixed dialect) EN bracket-nested + IS legacy {{term}} pair correctly', () => {
+    const en = new Map([
+      ['s4', 'The [[term:[[i:s]] orbitals|term-1]] and [[term:viscosity|term-2]]'],
+    ]);
+    const is = new Map([['s4', '{{term}}s svigrúm{{/term}} og {{term}}seigja{{/term}}']]);
+    const { segments } = annotateInlineTerms(is, en);
+    const out = segments.get('s4');
+    expect(out).not.toContain('s svigrúm (e. viscosity)'); // the silent-wrong class B4 kills
+    expect(out).toContain('{{term}}s svigrúm (e. s orbitals){{/term}}');
+    expect(out).toContain('{{term}}seigja (e. viscosity){{/term}}');
+  });
+});
+
 describe('stripTermMarkersToText', () => {
   const eqs = { 'math-3': { mathml: '<math><mi>x</mi></math>' } };
   // NB: extraction emits UPPERCASE [[MATH:N]]. drop-other's (?!MATH:) is
@@ -1315,6 +1491,18 @@ describe('stripTermMarkersToText', () => {
   });
   it('drops an unresolved MATH marker (rare)', () => {
     expect(stripTermMarkersToText('a [[MATH:9]]', eqs)).toBe('a ');
+  });
+
+  it('stripTermMarkersToText unwraps [[term:|id]]/[[fn:|id]]/[[em:|class]] keeping text', () => {
+    expect(stripTermMarkersToText('[[term:Viscosity|term-1]]', {})).toBe('viscosity');
+    expect(stripTermMarkersToText('[[fn:A note|fs-1]]', {})).toBe('a note');
+    expect(stripTermMarkersToText('[[em:R-O-R|emphasis-one]]', {})).toBe('r-o-r');
+    expect(stripTermMarkersToText('[[u:Key]]', {})).toBe('key');
+    expect(stripTermMarkersToText('[[term:Plain]]', {})).toBe('plain');
+  });
+
+  it('stripTermMarkersToText still drops unknown bracket markers wholesale', () => {
+    expect(stripTermMarkersToText('[[MEDIA:1]]x', {})).toBe('x');
   });
 });
 
@@ -1421,5 +1609,263 @@ describe('assertNoMarkerResidue — F5/F6 gate', () => {
   });
   it('throws on a surviving [[TABLE:…]] (un-carved by F4)', () => {
     expect(() => assertNoMarkerResidue('<para>[[TABLE:t1]]</para>', 'm00001')).toThrow(/TABLE:t1/);
+  });
+});
+
+// ─── B4: id-anchored bracket markers ──────────────────────────────
+
+describe('reverseInlineMarkup B4 id-anchored markers', () => {
+  const emptyEq = {};
+
+  it('converts [[term:text|id]] to <term id>', () => {
+    const result = reverseInlineMarkup('Þetta er [[term:seigja|term-00001]] hugtak', emptyEq);
+    expect(result).toContain('<term id="term-00001">seigja</term>');
+  });
+
+  it('converts [[term:text]] (no payload) to bare <term>', () => {
+    const result = reverseInlineMarkup('Þetta er [[term:seigja]] hugtak', emptyEq);
+    expect(result).toContain('<term>seigja</term>');
+  });
+
+  it('recovers class from the sidecar BY ID, not by position', () => {
+    const inlineAttrs = { terms: [{ class: 'no-emphasis', id: 'term-00006' }] };
+    const result = reverseInlineMarkup('[[term:vatn|term-00006]]', emptyEq, [], [], inlineAttrs);
+    expect(result).toContain('<term class="no-emphasis" id="term-00006">vatn</term>');
+  });
+
+  it('ANTI-CASCADE: a dropped marker does not shift downstream ids', () => {
+    // Sidecar has three terms; the middle marker was dropped by the API.
+    const inlineAttrs = {
+      terms: [{ id: 'term-1' }, { id: 'term-2' }, { id: 'term-3' }],
+    };
+    const text = '[[term:fyrsta|term-1]] og þriðja [[term:þriðja|term-3]]';
+    const result = reverseInlineMarkup(text, emptyEq, [], [], inlineAttrs);
+    expect(result).toContain('<term id="term-1">fyrsta</term>');
+    expect(result).toContain('<term id="term-3">þriðja</term>'); // NOT term-2
+    expect(result).not.toContain('term-2');
+  });
+
+  it('warns but keeps the marker-carried id when the sidecar lookup misses', () => {
+    const inlineAttrs = { terms: [{ id: 'term-1' }] };
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const result = reverseInlineMarkup('[[term:orð|term-9]]', emptyEq, [], [], inlineAttrs);
+    expect(result).toContain('<term id="term-9">orð</term>');
+    expect(warnSpy).toHaveBeenCalled();
+    warnSpy.mockRestore();
+  });
+
+  it('handles nested resolved markup inside term text', () => {
+    const result = reverseInlineMarkup('[[term:H[[sub:2]]O|t1]]', emptyEq);
+    expect(result).toContain('<term id="t1">H<sub>2</sub>O</term>');
+  });
+
+  it('anchors the id on the LAST pipe (pipe inside text survives)', () => {
+    const result = reverseInlineMarkup('[[term:a|b vensl|term-7]]', emptyEq);
+    expect(result).toContain('<term id="term-7">a|b vensl</term>');
+  });
+
+  it('converts [[fn:text|id]] to <footnote id>', () => {
+    const result = reverseInlineMarkup('Texti [[fn:athugasemd|fs-idp123]] hér', emptyEq);
+    expect(result).toContain('<footnote id="fs-idp123">athugasemd</footnote>');
+  });
+
+  it('converts [[fn:text]] to bare <footnote>', () => {
+    const result = reverseInlineMarkup('Texti [[fn:athugasemd]] hér', emptyEq);
+    expect(result).toContain('<footnote>athugasemd</footnote>');
+  });
+
+  it('footnote text containing a resolved xref converts cleanly', () => {
+    const result = reverseInlineMarkup('[[fn:Sjá [[xref:Mynd 5|CNX_Fig]] hér|fs-id1]]', emptyEq);
+    expect(result).toContain(
+      '<footnote id="fs-id1">Sjá <link target-id="CNX_Fig">Mynd 5</link> hér</footnote>'
+    );
+  });
+
+  it('converts [[u:text]] to underline emphasis', () => {
+    const result = reverseInlineMarkup('[[u:lykilatriði]]', emptyEq);
+    expect(result).toContain('<emphasis effect="underline">lykilatriði</emphasis>');
+  });
+
+  it('converts [[em:text|class]] with the marker-carried class (RC3)', () => {
+    const result = reverseInlineMarkup('[[em:R—O—R|emphasis-one]]', emptyEq);
+    expect(result).toContain('<emphasis class="emphasis-one">R—O—R</emphasis>');
+  });
+
+  it('new-format segment SKIPS the positional attr block entirely', () => {
+    // Sidecar entries exist, but the segment is new-format: the attr-less term
+    // must NOT consume a positional slot (no id attached to it).
+    const inlineAttrs = { terms: [{ id: 'term-1' }, null] };
+    const text = '[[term:fyrsta|term-1]] og [[term:annað]]';
+    const result = reverseInlineMarkup(text, emptyEq, [], [], inlineAttrs);
+    expect(result).toContain('<term id="term-1">fyrsta</term>');
+    expect(result).toContain('<term>annað</term>');
+  });
+
+  it('legacy {{term}} segments still use the positional path (unchanged)', () => {
+    const inlineAttrs = { terms: [{ id: 'term-1' }] };
+    const result = reverseInlineMarkup('{{term}}seigja{{/term}}', emptyEq, [], [], inlineAttrs);
+    expect(result).toContain('<term id="term-1">seigja</term>');
+  });
+
+  it('hasApiMarkers recognizes the new types (no legacy false positives)', () => {
+    // A bracket-era segment containing a literal *asterisk* phrase must not
+    // get legacy markdown conversion applied.
+    const result = reverseInlineMarkup('[[term:orð|t1]] og *stjarna*', emptyEq);
+    expect(result).not.toContain('<emphasis effect="italics">stjarna</emphasis>');
+  });
+
+  it('assertNoMarkerResidue hard-fails an unconverted [[term: marker', () => {
+    expect(() => assertNoMarkerResidue('<para>[[term:orð|t1]]</para>', 'm99999')).toThrow(
+      /Marker residue/
+    );
+  });
+
+  it('corrupted id (charset-invalid) fails LOUD, not into visible text', () => {
+    // ' bad id' contains spaces → with-id regex rejects; bare fallback must NOT swallow it
+    const result = reverseInlineMarkup('[[term:hugtak|bad id!]]', {});
+    expect(result).toContain('[[term:'); // marker survives...
+    expect(() => assertNoMarkerResidue(result, 'm99999')).toThrow(/Marker residue/); // ...and the gate catches it
+  });
+
+  it('legitimate pipe-free bare markers still convert', () => {
+    const result = reverseInlineMarkup('[[term:seigja]] og [[fn:nóta]]', {});
+    expect(result).toContain('<term>seigja</term>');
+    expect(result).toContain('<footnote>nóta</footnote>');
+  });
+});
+
+// ─── B4/C1: emphasis-wrapped term/footnote (third resolveBracketEmphasis pass) ───
+// Source shape <emphasis effect="italics"><term id="X">t</term></emphasis> extracts
+// to a NESTED marker [[i:[[term:t|X]]]]. The [[i:]] wrapper is only leaf-level once
+// the inner [[term:]] became <term> XML in the B4 block — so without a THIRD
+// resolveBracketEmphasis pass after that block, the [[i:]] survives as residue and
+// assertNoMarkerResidue aborts the whole --chapter batch (the C1 blast radius).
+
+describe('reverseInlineMarkup B4 emphasis-wrapped term/fn (C1)', () => {
+  it('resolves [[i:[[term:text|id]]]] fully (italics wrapping a term)', () => {
+    const result = reverseInlineMarkup('[[i:[[term:Gram positive|term-00004]]]]', {});
+    expect(result).toContain(
+      '<emphasis effect="italics"><term id="term-00004">Gram positive</term></emphasis>'
+    );
+    expect(result).not.toContain('[[');
+    expect(() => assertNoMarkerResidue(result, 'm66545')).not.toThrow();
+  });
+
+  it('resolves [[b:[[fn:text|id]]]] fully (bold wrapping a footnote)', () => {
+    const result = reverseInlineMarkup('[[b:[[fn:See the appendix|fs-id42]]]]', {});
+    expect(result).toContain(
+      '<emphasis effect="bold"><footnote id="fs-id42">See the appendix</footnote></emphasis>'
+    );
+    expect(result).not.toContain('[[');
+    expect(() => assertNoMarkerResidue(result, 'm42215')).not.toThrow();
+  });
+
+  it('end-to-end: extract → inject round-trip of <emphasis><term> passes the residue gate', () => {
+    // The real source shape from the C1 corpus census (liffraedi-2e ch22 m66545).
+    const counters = { segment: 0, math: 0, equation: 0, media: 0 };
+    const marker = extractInlineText(
+      '<emphasis effect="italics"><term id="term-00004">Gram positive</term></emphasis>',
+      new Map(),
+      counters
+    );
+    expect(marker).toBe('[[i:[[term:Gram positive|term-00004]]]]');
+    const injected = reverseInlineMarkup(marker, {});
+    expect(injected).toContain(
+      '<emphasis effect="italics"><term id="term-00004">Gram positive</term></emphasis>'
+    );
+    expect(() => assertNoMarkerResidue(injected, 'm66545')).not.toThrow();
+  });
+});
+
+// ─── B4: reverseInlineMarkup positional-restore hardening (legacy path) ────
+
+describe('reverseInlineMarkup positional-restore hardening (legacy path)', () => {
+  const emptyEq = {};
+
+  it('HARDENING: marker-count mismatch warns and attaches NOTHING (terms)', () => {
+    // Sidecar expects 3 terms; the API dropped one marker → 2 survive.
+    // Old behavior: term-1/term-2 attached positionally (third lost, and a
+    // NON-last drop would mis-id downstream terms). New: no attrs at all.
+    const inlineAttrs = {
+      terms: [{ id: 'term-1' }, { id: 'term-2' }, { id: 'term-3' }],
+    };
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const mismatches = [];
+    const result = reverseInlineMarkup(
+      '{{term}}eitt{{/term}} og {{term}}tvö{{/term}}',
+      emptyEq,
+      [],
+      [],
+      inlineAttrs,
+      null,
+      null,
+      { segmentId: 'm1:para:x', attrMismatches: mismatches }
+    );
+    expect(result).toContain('<term>eitt</term>');
+    expect(result).toContain('<term>tvö</term>');
+    expect(result).not.toContain('term-1'); // missing attrs beat wrong attrs
+    expect(mismatches).toEqual([
+      { segmentId: 'm1:para:x', family: 'terms', expected: 3, found: 2 },
+    ]);
+    expect(warnSpy).toHaveBeenCalled();
+    warnSpy.mockRestore();
+  });
+
+  it('matched counts attach exactly as before (zero behavior change)', () => {
+    const inlineAttrs = { terms: [{ id: 'term-1' }, { class: 'no-emphasis', id: 'term-2' }] };
+    const result = reverseInlineMarkup(
+      '{{term}}eitt{{/term}} og {{term}}tvö{{/term}}',
+      emptyEq,
+      [],
+      [],
+      inlineAttrs
+    );
+    expect(result).toContain('<term id="term-1">eitt</term>');
+    expect(result).toContain('<term class="no-emphasis" id="term-2">tvö</term>');
+  });
+
+  it('HARDENING applies to footnotes', () => {
+    const inlineAttrs = { footnotes: [{ id: 'fn-1' }, { id: 'fn-2' }] };
+    const mismatches = [];
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const result = reverseInlineMarkup(
+      '{{fn}}ein{{/fn}}',
+      emptyEq,
+      [],
+      [],
+      inlineAttrs,
+      null,
+      null,
+      {
+        segmentId: 's',
+        attrMismatches: mismatches,
+      }
+    );
+    expect(result).toContain('<footnote>ein</footnote>');
+    expect(result).not.toContain('fn-1');
+    expect(mismatches[0]).toMatchObject({ family: 'footnotes', expected: 2, found: 1 });
+    warnSpy.mockRestore();
+  });
+
+  it('HARDENING applies to {= class-emphasis (converts without class on mismatch)', () => {
+    const inlineAttrs = { emphases: [{ class: 'emphasis-one' }, { class: 'emphasis-one' }] };
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const result = reverseInlineMarkup('{=eitt=}', emptyEq, [], [], inlineAttrs);
+    expect(result).toContain('<emphasis>eitt</emphasis>'); // converted, no class, no residue
+    expect(result).not.toContain('emphasis-one');
+    expect(warnSpy).toHaveBeenCalled();
+    warnSpy.mockRestore();
+  });
+
+  it('new-format [[em:]] segment skips the emphases positional path (no false warning)', () => {
+    // Extraction emits [[em:text|class]] AND still populates the emphases
+    // sidecar; the marker carries its own class, so the vestigial sidecar
+    // entries must not trigger the positional path or its mismatch warning.
+    const inlineAttrs = { emphases: [{ class: 'emphasis-one' }] };
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const result = reverseInlineMarkup('[[em:R—O—R|emphasis-one]]', {}, [], [], inlineAttrs);
+    expect(result).toContain('<emphasis class="emphasis-one">R—O—R</emphasis>');
+    expect(warnSpy).not.toHaveBeenCalled();
+    warnSpy.mockRestore();
   });
 });

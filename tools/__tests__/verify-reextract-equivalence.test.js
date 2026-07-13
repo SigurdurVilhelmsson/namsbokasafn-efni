@@ -48,6 +48,25 @@ describe('normalizeVisibleText — marker-format agnostic (every modernization p
       normalizeVisibleText('positron ([[MATH:51]])')
     );
   });
+
+  // PIN (B4): the existing labeled-marker rule (line 19) already covers the
+  // new [[term:]]/[[fn:]] id-anchored types — no code change needed here.
+  it('legacy {{term}} and B4 bracket [[term:...|id]] are equal', () => {
+    expect(normalizeVisibleText('{{term}}viscosity{{/term}}')).toBe(
+      normalizeVisibleText('[[term:viscosity|term-00001]]')
+    );
+  });
+
+  // C4: the u/em half of the B4 marker migration. A re-extract modernizes legacy
+  // ++text++ / {=text=} to [[u:text]] / [[em:text|class]]; without strip rules for
+  // the LEGACY forms, committed-legacy vs fresh-bracket normalize UNEQUAL and every
+  // ++/{= module false-fails equivalence (7 efnafraedi ++ files, m68847+m68866 {=).
+  it('legacy ++underline++ and B4 [[u:...]] are equal', () => {
+    expect(normalizeVisibleText('a ++x++ b')).toBe(normalizeVisibleText('a [[u:x]] b'));
+  });
+  it('legacy {=class-emphasis=} and B4 [[em:...|class]] are equal', () => {
+    expect(normalizeVisibleText('{=y=}')).toBe(normalizeVisibleText('[[em:y|emphasis-one]]'));
+  });
 });
 
 describe('compareModule — 5-part equivalence (adds equation key-set)', () => {

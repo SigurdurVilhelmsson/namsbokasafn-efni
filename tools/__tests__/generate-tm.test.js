@@ -110,6 +110,23 @@ describe('stripMarkers', () => {
   it('leaves ambiguous single-char legacy markers alone', () => {
     expect(stripMarkers('2*3 and x^2 and a~b and __x__')).toBe('2*3 and x^2 and a~b and __x__');
   });
+
+  it('strips B4 id-anchored markers to display text', () => {
+    expect(stripMarkers('A [[term:viscosity|term-1]] here')).toBe('A viscosity here');
+    expect(stripMarkers('Note [[fn:a comment|fs-1]] end')).toBe('Note a comment end');
+    expect(stripMarkers('[[em:R-O-R|emphasis-one]]')).toBe('R-O-R');
+    expect(stripMarkers('[[u:key]] and [[term:plain]]')).toBe('key and plain');
+    expect(stripMarkers('[[term:H[[sub:2]]O|t1]]')).toBe('H2O'); // nested unwraps first
+  });
+
+  // M1/M4: a term/fn marker whose text carries [[MATH:n]] (kept verbatim per TM
+  // design). The old `[^\]|]*` text group stopped at the first ']' inside MATH, so
+  // the whole wrapper leaked (id + pipe) into the TM TU. The text group must
+  // tolerate [[MATH:n]] and keep it verbatim.
+  it('keeps [[MATH:n]] verbatim inside a term/fn marker (no id/pipe leak)', () => {
+    expect(stripMarkers('[[term:rate [[MATH:1]]|t9]]')).toBe('rate [[MATH:1]]');
+    expect(stripMarkers('Note [[fn:see [[MATH:2]]|fs-1]] end')).toBe('Note see [[MATH:2]] end');
+  });
 });
 
 // ─── cleanSegmentText ───────────────────────────────────────────────

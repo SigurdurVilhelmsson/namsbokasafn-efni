@@ -16,6 +16,8 @@ export function normalizeVisibleText(s) {
     prev = t;
     t = t
       .replace(/\{\{\/?[a-z]+\}\}/g, '') // legacy paired {{i}}X{{/i}} -> strip delimiters
+      .replace(/\+\+([\s\S]*?)\+\+/g, '$1') // C4: legacy underline ++X++ -> X (modernizes to [[u:X]])
+      .replace(/\{=([\s\S]*?)=\}/g, '$1') // C4: legacy class-emphasis {=X=} -> X (modernizes to [[em:X|class]])
       .replace(/\[\[[a-z]+:([^\[\]|]*)\|[^\[\]]*\]\]/g, '$1') // labeled [[link|xref|docref:TEXT|id]] -> TEXT (BEFORE pipe)
       .replace(/\[\[(?:xref|docref):[^\[\]]*\]\]/g, '') // unlabeled [[xref|docref:id]] -> '' (no visible text)
       .replace(/\[\[(?:MATH|MEDIA|TABLE):\d+\]\]/gi, '') // opaque placeholders -> ''
