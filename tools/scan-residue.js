@@ -11,6 +11,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { parseArgs, BOOK_OPTION, CHAPTER_OPTION, requireBook } from './lib/parseArgs.js';
 import { scanSegmentsForResidue } from './lib/residue-scan.js';
+import { loadResidueAllowlist, classifyResidue } from './lib/residue-allowlist.js';
 
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -53,6 +54,8 @@ function main() {
     process.exit(1);
   }
 
+  const residueAllowlist = loadResidueAllowlist(path.join(REPO_ROOT, 'books', args.book));
+
   const modules = {};
   let modulesMissingEn = 0;
   for (const dir of chapterDirs(mtOutRoot, args.chapter)) {
@@ -69,8 +72,16 @@ function main() {
       }
       const enContent = fs.readFileSync(enFile, 'utf8');
       const isContent = fs.readFileSync(path.join(isDir, file), 'utf8');
-      const { exact, warnings } = scanSegmentsForResidue(enContent, isContent);
-      if (exact.length || warnings.length) modules[moduleId] = { chapter: dir, exact, warnings };
+      const { exact: exactAll, warnings } = scanSegmentsForResidue(enContent, isContent);
+      const tolerated = [];
+      const exact = [];
+      for (const segId of exactAll) {
+        const c = classifyResidue(moduleId, segId, residueAllowlist);
+        if (c.tolerated) tolerated.push({ segmentId: segId, reason: c.reason });
+        else exact.push(segId);
+      }
+      if (exact.length || warnings.length || tolerated.length)
+        modules[moduleId] = { chapter: dir, exact, warnings, tolerated };
     }
   }
 
@@ -79,6 +90,7 @@ function main() {
     modulesWithResidue: ids.filter((m) => modules[m].exact.length).length,
     exactResidues: ids.reduce((s, m) => s + modules[m].exact.length, 0),
     ratioWarnings: ids.reduce((s, m) => s + modules[m].warnings.length, 0),
+    toleratedResidues: ids.reduce((s, m) => s + (modules[m].tolerated || []).length, 0),
     modulesMissingEn,
   };
 
