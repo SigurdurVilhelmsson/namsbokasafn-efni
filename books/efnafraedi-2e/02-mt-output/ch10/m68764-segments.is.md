@@ -2,7 +2,7 @@
 Eiginleikar vökva
 
 <!-- SEG:m68764:abstract:auto-2 -->
-Þegar þú hefur lokið við þennan kafla getur þú:
+Þegar þú hefur lokið við þennan kafla muntu geta:
 
 <!-- SEG:m68764:abstract-item:abstract-item-1 -->
 Greint á milli aðloðunarkrafta og samloðunarkrafta
@@ -14,13 +14,13 @@ Skilgreint seigju, yfirborðsspennu og hárpípukraft
 Lýst hlutverki aðdráttarkrafta milli sameinda í hverjum þessara eiginleika/fyrirbæra
 
 <!-- SEG:m68764:para:fs-idm130666608 -->
-Þegar þú hellir vatni í glas eða bensíni á bíl tekurðu eftir því að vatnið og bensínið flæða greiðlega. En þegar þú hellir sírópi á pönnukökur eða olíu á bílvél tekurðu eftir því að sírópið og vélarolían flæða ekki jafn greiðlega. [[term:viscosity|term-00001]] vökva er mælikvarði á viðnám hans gegn flæði. Vatn, bensín og aðrir vökvar sem flæða greiðlega hafa lága seigju. Hunang, síróp, vélarolía og aðrir vökvar sem flæða ekki greiðlega, eins og þeir sem sýndir eru á [[xref:CNX_Chem_10_02_Viscosity]], hafa meiri seigju. Við getum mælt seigju með því að mæla hraðann sem málmkúla fellur í gegnum vökva (kúlan fellur hægar í gegnum seigari vökva) eða með því að mæla hraðann sem vökvi flæðir í gegnum mjótt rör (seigari vökvar flæða hægar).
+Þegar þú hellir vatni í glas eða bensíni á bíl tekurðu eftir því að vatnið og bensínið flæða greiðlega. En þegar þú hellir sírópi á pönnukökur eða olíu á bílvél tekurðu eftir því að sírópið og vélarolían flæða ekki jafn greiðlega. [[term:Seigja|term-00001]] vökva er mælikvarði á viðnám hans gegn flæði. Vatn, bensín og aðrir vökvar sem flæða greiðlega hafa lága seigju. Hunang, síróp, vélarolía og aðrir vökvar sem flæða ekki greiðlega, eins og þeir sem sýndir eru í [[xref:CNX_Chem_10_02_Viscosity]], hafa meiri seigju. Við getum mælt seigju með því að mæla hraðann sem málmkúla fellur í gegnum vökva (kúlan fellur hægar í gegnum seigari vökva) eða með því að mæla hraðann sem vökvi flæðir í gegnum mjóa pípu (seigari vökvar flæða hægar).
 
 <!-- SEG:m68764:caption:CNX_Chem_10_02_Viscosity-caption -->
 (a) Hunang og (b) vélarolía eru dæmi um vökva með mikla seigju; þeir flæða hægt. (mynd a: breytt útgáfa af verki eftir Scott Bauer; mynd b: breytt útgáfa af verki eftir David Nagy)
 
 <!-- SEG:m68764:para:fs-idm133174592 -->
-Millikraftar milli sameinda vökva, stærð og lögun sameindanna og hitastig ákvarða hversu auðveldlega vökvi flæðir. Eins og [[xref:fs-idm123780960]] sýnir, því flóknari sem sameindirnar í vökva eru að byggingu og því sterkari sem millikraftarnir á milli þeirra eru, því erfiðara er fyrir þær að hreyfast fram hjá hvor annarri og því meiri er seigja vökvans. Eftir því sem hitastig hækkar hreyfast sameindirnar hraðar og hreyfiorka þeirra á auðveldara með að yfirstíga kraftana sem halda þeim saman; þannig minnkar seigja vökvans.
+Millikraftar milli sameinda vökva, stærð og lögun sameindanna og hitastig ákvarða hversu auðveldlega vökvi flæðir. Eins og [[xref:fs-idm123780960]] sýnir, því flóknari sem sameindirnar í vökva eru að byggingu og því sterkari sem millikraftarnir milli þeirra eru, því erfiðara er fyrir þær að hreyfast fram hjá hvor annarri og því meiri er seigja vökvans. Þegar hitastig hækkar hreyfast sameindirnar hraðar og hreyfiorka þeirra á auðveldara með að yfirstíga kraftana sem halda þeim saman; þannig minnkar seigja vökvans.
 
 <!-- SEG:m68764:entry:auto-9 -->
 Seigja algengra efna við 25 °C
@@ -35,7 +35,7 @@ Formúla
 Seigja (mPa·s)
 
 <!-- SEG:m68764:entry:auto-13 -->
-vatn
+Vatn
 
 <!-- SEG:m68764:entry:auto-14 -->
 H[[sub:2]]O
@@ -44,7 +44,7 @@ H[[sub:2]]O
 0,890
 
 <!-- SEG:m68764:entry:auto-16 -->
-kvikasilfur
+Kvikasilfur
 
 <!-- SEG:m68764:entry:auto-17 -->
 Hg
@@ -53,7 +53,7 @@ Hg
 1,526
 
 <!-- SEG:m68764:entry:auto-19 -->
-etanól
+Etanól
 
 <!-- SEG:m68764:entry:auto-20 -->
 C[[sub:2]]H[[sub:5]]OH
@@ -62,7 +62,7 @@ C[[sub:2]]H[[sub:5]]OH
 1,074
 
 <!-- SEG:m68764:entry:auto-22 -->
-oktan
+Oktan
 
 <!-- SEG:m68764:entry:auto-23 -->
 C[[sub:8]]H[[sub:18]]
@@ -71,7 +71,7 @@ C[[sub:8]]H[[sub:18]]
 0,508
 
 <!-- SEG:m68764:entry:auto-25 -->
-etýlen glýkól
+Etýlen glýkól
 
 <!-- SEG:m68764:entry:auto-26 -->
 CH[[sub:2]](OH)CH[[sub:2]](OH)
@@ -80,31 +80,31 @@ CH[[sub:2]](OH)CH[[sub:2]](OH)
 16,1
 
 <!-- SEG:m68764:entry:auto-28 -->
-hunang
+Hunang
 
 <!-- SEG:m68764:entry:auto-29 -->
-breytilegt
+Breytilegt
 
 <!-- SEG:m68764:entry:auto-30 -->
 ~2.000–10.000
 
 <!-- SEG:m68764:entry:auto-31 -->
-vélarolía
+Vélarolía
 
 <!-- SEG:m68764:entry:auto-32 -->
-breytilegt
+Breytilegt
 
 <!-- SEG:m68764:entry:auto-33 -->
 ~50–500
 
 <!-- SEG:m68764:para:fs-idm45103712 -->
-Ýmsir millikraftar milli eins sameinda efnis eru dæmi um [[term:cohesive forces|term-00002]]. Sameindirnar í vökva eru umkringdar öðrum sameindum og laðast jafnt í allar áttir af samloðunarkröftum innan vökvans. Hins vegar laðast sameindirnar á yfirborði vökva aðeins að um helmingi færri sameindum. Vegna ójafnvægis í aðdráttarkröftum sameinda á yfirborðssameindirnar dragast vökvar saman og mynda lögun sem lágmarkar fjölda sameinda á yfirborðinu, þ.e.a.s. lögun með minnsta yfirborðsflatarmáli. Lítill vökvadropi hefur tilhneigingu til að taka á sig kúlulaga lögun, eins og sýnt er á [[xref:CNX_Chem_10_02_Droplet]], því í kúlu er hlutfall yfirborðsflatarmáls og rúmmáls í lágmarki. Stærri dropar verða fyrir meiri áhrifum frá þyngdarafli, loftmótstöðu, yfirborðsviðbrögðum o.s.frv. og eru þar af leiðandi síður kúlulaga.
+Ýmsir millikraftar milli eins sameinda efnis eru dæmi um [[term:samloðunarkrafta|term-00002]]. Sameindirnar í vökva eru umkringdar öðrum sameindum og laðast jafnt í allar áttir af samloðunarkröftum innan vökvans. Hins vegar laðast sameindirnar á yfirborði vökva aðeins að um helmingi færri sameindum. Vegna ójafnvægis í aðdráttarkröftum sameinda á yfirborðssameindirnar dragast vökvar saman og mynda lögun sem lágmarkar fjölda sameinda á yfirborðinu, þ.e.a.s. lögun með minnsta yfirborðsflatarmáli. Lítill vökvadropi hefur tilhneigingu til að taka á sig kúlulaga lögun, eins og sýnt er í [[xref:CNX_Chem_10_02_Droplet]], því í kúlu er hlutfall yfirborðsflatarmáls og rúmmáls í lágmarki. Stærri dropar verða fyrir meiri áhrifum frá þyngdarafli, loftmótstöðu, yfirborðsviðbrögðum o.s.frv. og eru því síður kúlulaga.
 
 <!-- SEG:m68764:caption:CNX_Chem_10_02_Droplet-caption -->
 Aðdráttarkraftar valda kúlulaga vatnsdropa sem lágmarkar yfirborðsflatarmál; samloðunarkraftar halda kúlunni saman; aðloðunarkraftar halda dropanum föstum við vefinn. (mynd: breytt útgáfa af verki eftir „OliBac“/Flickr)
 
 <!-- SEG:m68764:para:fs-idm78773504 -->
-[[term:Surface tension|term-00003]] er skilgreind sem orkan sem þarf til að auka yfirborðsflatarmál vökva, eða krafturinn sem þarf til að auka lengd yfirborðs vökva um tiltekna lengd. Þessi eiginleiki stafar af samloðunarkröftum milli sameinda á yfirborði vökva og veldur því að yfirborð vökva hegðar sér eins og teygð gúmmíhimna. Yfirborðsspenna nokkurra vökva er sýnd í [[xref:fs-idm139826368]]. Meðal algengra vökva sýnir vatn sérstaklega mikla yfirborðsspennu vegna sterkra vetnistengja milli sameinda þess. Vegna þessarar miklu yfirborðsspennu myndar yfirborð vatns tiltölulega „seiga húð“ sem þolir töluverðan kraft án þess að rofna. Stálnál sem er vandlega lögð á vatn mun fljóta. Sum skordýr, eins og það sem sýnt er á [[xref:CNX_Chem_10_02_Strider]], hreyfast á yfirborði þess þótt þau séu eðlisþyngri en vatn, vegna þess að yfirborðsspennan heldur þeim uppi.
+[[term:Yfirborðsspenna|term-00003]] er skilgreind sem orkan sem þarf til að auka yfirborðsflatarmál vökva, eða krafturinn sem þarf til að auka lengd yfirborðs vökva um ákveðna upphæð. Þessi eiginleiki stafar af samloðunarkröftum milli sameinda á yfirborði vökva og veldur því að yfirborð vökva hegðar sér eins og teygð gúmmíhimna. Yfirborðsspenna nokkurra vökva er sýnd í [[xref:fs-idm139826368]]. Meðal algengra vökva sýnir vatn sérstaklega mikla yfirborðsspennu vegna sterkra vetnistengja milli sameinda þess. Vegna þessarar miklu yfirborðsspennu myndar yfirborð vatns tiltölulega „seiga himnu“ sem þolir töluverðan kraft án þess að rofna. Stálnál sem er vandlega lögð á vatn mun fljóta. Sum skordýr, eins og það sem sýnt er í [[xref:CNX_Chem_10_02_Strider]], hreyfast á yfirborði þess þótt þau séu eðlisþyngri en vatn, vegna þess að þau eru studd af yfirborðsspennunni.
 
 <!-- SEG:m68764:entry:auto-37 -->
 Yfirborðsspenna algengra efna við 25 °C
@@ -119,7 +119,7 @@ Formúla
 Yfirborðsspenna (mN/m)
 
 <!-- SEG:m68764:entry:auto-41 -->
-vatn
+Vatn
 
 <!-- SEG:m68764:entry:auto-42 -->
 H[[sub:2]]O
@@ -164,31 +164,31 @@ CH[[sub:2]](OH)CH[[sub:2]](OH)
 47,99
 
 <!-- SEG:m68764:caption:CNX_Chem_10_02_Strider-caption -->
-Yfirborðsspenna (hægra megin) kemur í veg fyrir að þetta skordýr, „brunnklukka“, sökkvi í vatnið.
+Yfirborðsspenna (hægra megin) kemur í veg fyrir að þetta skordýr, „skautari“, sökkvi í vatnið.
 
 <!-- SEG:m68764:para:eip-424 -->
-Yfirborðsspenna er undir áhrifum af ýmsum breytum, þar á meðal viðbót annarra efna á yfirborðið. Seint á 19. öld hóf Agnes Pockels, sem í fyrstu var meinað að stunda vísindastörf en stundaði sjálfsnám, að rannsaka áhrif og eiginleika sápu- og fitufilma í vatni. Með því að nota heimatilbúin efni þróaði hún tæki sem kallast trog til að mæla yfirborðsmengun og áhrif hennar. Með stuðningi hins virta vísindamanns Lord Rayleigh sýndi grein hennar frá 1891 að yfirborðsmengun dregur verulega úr yfirborðsspennu og einnig að breyting á eiginleikum yfirborðsins (þjappa því saman eða þenja það út) hefur einnig áhrif á yfirborðsspennu. Áratugum síðar byggðu Irving Langmuir og Katharine Blodgett á vinnu Pockels í sínu eigin trogi og mikilvægum framförum í yfirborðsefnafræði. Langmuir var frumkvöðull í aðferðum til að framleiða einsameinda filmulög; Blodgett beitti þeim við þróun á glampalausu gleri (sem er mikilvægt fyrir kvikmyndagerð og önnur forrit) og rannsakaði einnig aðferðir sem tengjast hreinsun yfirborða, sem eru mikilvægar í hálfleiðaraframleiðslu.
+Yfirborðsspenna er háð ýmsum breytum, þar á meðal því að öðrum efnum er bætt við yfirborðið. Seint á 19. öld hóf Agnes Pockels, sem í fyrstu var meinað að leggja fyrir sig vísindastörf en stundaði sjálfsnám, að rannsaka áhrif og eiginleika sápu- og fituhimna í vatni. Með heimatilbúnum tækjum þróaði hún tæki sem kallast trog til að mæla yfirborðsmengun og áhrif hennar. Með stuðningi hins virta vísindamanns Lord Rayleigh sýndi grein hennar frá 1891 að yfirborðsmengun dregur verulega úr yfirborðsspennu og einnig að breyting á eiginleikum yfirborðsins (með því að þjappa því saman eða þenja það út) hefur einnig áhrif á yfirborðsspennu. Áratugum síðar byggðu Irving Langmuir og Katharine Blodgett á vinnu Pockels í sínu eigin trogi og náðu miklum framförum í yfirborðsefnafræði. Langmuir var frumkvöðull í aðferðum til að framleiða himnur úr einsameindalögum; Blodgett beitti þessum aðferðum við þróun á glampavörðu gleri (sem er mikilvægt fyrir kvikmyndagerð og önnur not), og rannsakaði einnig aðferðir sem tengjast hreinsun yfirborðsflata, sem eru mikilvægar við framleiðslu hálfleiðara.
 
 <!-- SEG:m68764:para:fs-idm245342800 -->
-Aðdráttarkraftar milli tveggja [[i:ólíkra]] sameinda kallast [[term:adhesive forces|term-00004]]. Íhugaðu hvað gerist þegar vatn kemst í snertingu við eitthvert yfirborð. Ef aðloðunarkraftar milli vatnssameinda og sameinda yfirborðsins eru veikir í samanburði við samloðunarkrafta milli vatnssameindanna, „bleytir“ vatnið ekki yfirborðið. Til dæmis bleytir vatn ekki vaxborin yfirborð eða mörg plastefni eins og pólýetýlen. Vatn myndar dropa á þessum yfirborðum vegna þess að samloðunarkraftarnir innan dropanna eru meiri en aðloðunarkraftarnir milli vatnsins og plastsins. Vatn dreifist út á gleri vegna þess að aðloðunarkrafturinn milli vatns og glers er meiri en samloðunarkraftarnir innan vatnsins. Þegar vatn er lokað inni í glerröri hefur bjúgflötur þess (yfirborð) íhvolft form vegna þess að vatnið bleytir glerið og skríður upp með hlið rörsins. Á hinn bóginn eru samloðunarkraftarnir milli kvikasilfursfrumeinda mun meiri en aðloðunarkraftarnir milli kvikasilfurs og glers. Kvikasilfur bleytir því ekki gler og myndar kúptan bjúgflöt þegar það er lokað inni í röri vegna þess að samloðunarkraftarnir innan kvikasilfursins hafa tilhneigingu til að draga það saman í dropa ([[xref:CNX_Chem_10_02_Meniscus]]).
+Aðdráttarkraftar milli tveggja [[i:ólíkra]] sameinda kallast [[term:viðloðunarkraftar|term-00004]]. Íhugaðu hvað gerist þegar vatn kemst í snertingu við yfirborð. Ef viðloðunarkraftar milli vatnssameinda og sameinda yfirborðsins eru veikir í samanburði við samloðunarkrafta milli vatnssameindanna, „bleytir“ vatnið ekki yfirborðið. Til dæmis bleytir vatn ekki vaxborin yfirborð eða mörg plastefni eins og pólýetýlen. Vatn myndar dropa á þessum yfirborðum vegna þess að samloðunarkraftarnir innan dropanna eru meiri en viðloðunarkraftarnir milli vatnsins og plastsins. Vatn dreifist út á gleri vegna þess að viðloðunarkrafturinn milli vatns og glers er meiri en samloðunarkraftarnir innan vatnsins. Þegar vatn er lokað inni í glerglasi er bjúgflötur þess (yfirborð) íhvolfur vegna þess að vatnið bleytir glerið og skríður upp með hliðum glassins. Á hinn bóginn eru samloðunarkraftar milli kvikasilfursfrumeinda mun meiri en viðloðunarkraftar milli kvikasilfurs og glers. Kvikasilfur bleytir því ekki gler og myndar kúptan bjúgflöt þegar það er lokað inni í glasi vegna þess að samloðunarkraftarnir innan kvikasilfursins hafa tilhneigingu til að draga það saman í dropa ([[xref:CNX_Chem_10_02_Meniscus]]).
 
 <!-- SEG:m68764:caption:CNX_Chem_10_02_Meniscus-caption -->
-Munur á hlutfallslegum styrk samloðunar- og aðloðunarkrafta veldur mismunandi lögun bjúgflatar fyrir kvikasilfur (vinstri) og vatn (hægri) í glerrörum. (heimild: Mark Ott)
+Munur á hlutfallslegum styrk samloðunar- og viðloðunarkrafta veldur mismunandi lögun bjúgflatar fyrir kvikasilfur (vinstri) og vatn (hægri) í glerglösum. (heimild: Mark Ott)
 
 <!-- SEG:m68764:para:fs-idp26089824 -->
-Ef þú setur annan enda pappírshandklæðis í hellt vín, eins og sýnt er á [[xref:CNX_Chem_10_02_Wicking]], sogast vökvinn upp í pappírshandklæðið. Svipað ferli á sér stað í handklæði úr taui þegar þú notar það til að þurrka þér eftir sturtu. Þetta eru dæmi um [[term:capillary action|term-00005]] – þegar vökvi flæðir innan gljúps efnis vegna aðdráttar vökvasameindanna að yfirborði efnisins og að öðrum vökvasameindum. Aðloðunarkraftarnir milli vökvans og gljúpa efnisins, ásamt samloðunarkröftunum innan vökvans, geta verið nógu sterkir til að færa vökvann upp á við gegn þyngdaraflinu.
+Ef þú setur annan enda pappírshandklæðis í vín sem hellst hefur niður, eins og sýnt er á [[xref:CNX_Chem_10_02_Wicking]], sogast vökvinn upp í pappírshandklæðið. Svipað ferli á sér stað í handklæði úr taui þegar þú notar það til að þurrka þér eftir sturtu. Þetta eru dæmi um [[term:hárpípukrafta|term-00005]] — þegar vökvi flæðir innan gljúps efnis vegna aðdráttar vökvasameindanna að yfirborði efnisins og að öðrum vökvasameindum. Viðloðunarkraftarnir milli vökvans og gljúpa efnisins, ásamt samloðunarkröftunum innan vökvans, geta verið nógu sterkir til að færa vökvann upp á við gegn þyngdaraflinu.
 
 <!-- SEG:m68764:caption:CNX_Chem_10_02_Wicking-caption -->
 Vín sogast upp í pappírshandklæði (vinstri) vegna sterkra aðdráttarkrafta vatns- (og etanól-) sameinda að −OH hópum á sellulósaþráðum handklæðisins og sterkra aðdráttarkrafta vatnssameinda að öðrum vatns- (og etanól-) sameindum (hægri). (heimild ljósmyndar: breyting á verki eftir Mark Blaser)
 
 <!-- SEG:m68764:para:fs-idm57496496 -->
-Handklæði drekka í sig vökva eins og vatn vegna þess að þræðir handklæðis eru gerðir úr sameindum sem laðast að vatnssameindum. Flest tauhandklæði eru úr bómull og pappírshandklæði eru yfirleitt gerð úr pappírsmassa. Hvort tveggja samanstendur af löngum sellulósasameindum sem innihalda marga −OH hópa. Vatnssameindir laðast að þessum −OH hópum og mynda vetnistengi við þá, sem dregur H[[sub:2]]O sameindirnar upp eftir sellulósasameindunum. Vatnssameindirnar laðast einnig hver að annarri, þannig að mikið magn af vatni sogast upp í sellulósaþræðina.
+Handklæði drekka í sig vökva eins og vatn vegna þess að þræðir handklæðis eru gerðir úr sameindum sem dragast að vatnssameindum. Flest handklæði úr taui eru gerð úr bómull og pappírshandklæði eru yfirleitt gerð úr pappírsmassa. Hvort tveggja samanstendur af löngum sellulósasameindum sem innihalda marga −OH hópa. Vatnssameindir dragast að þessum −OH hópum og mynda vetnistengi við þá, sem dregur H[[sub:2]]O sameindirnar upp eftir sellulósasameindunum. Vatnssameindirnar dragast einnig hver að annarri, þannig að mikið magn af vatni sogast upp í sellulósaþræðina.
 
 <!-- SEG:m68764:para:fs-idm84525088 -->
-Hárpípukraftur getur einnig átt sér stað þegar annar endi rörs með litlu þvermáli er dýft í vökva, eins og sýnt er á [[xref:CNX_Chem_10_02_CapRise]]. Ef vökvasameindirnar laðast sterklega að rörsameindunum, skríður vökvinn upp innan í rörinu þar til þyngd vökvans og aðloðunarkraftarnir eru í jafnvægi. Því minna sem þvermál rörsins er, því hærra klifrar vökvinn. Það er að hluta til vegna hárpípukrafts sem á sér stað í plöntufrumum sem kallast viðaræðar sem vatn og uppleyst næringarefni eru flutt frá jarðvegi upp í gegnum rætur og inn í plöntu. Hárpípukraftur er grundvöllur þunnlagsskilju, rannsóknarstofutækni sem almennt er notuð til að aðskilja lítið magn af blöndum. Þú ert háður stöðugu framboði af tárum til að halda augunum rökum og hárpípukrafti til að dæla táravökva burt.
+Hárpípukraftar geta einnig komið fram þegar annar endi á mjóu röri er dýft í vökva, eins og sýnt er á [[xref:CNX_Chem_10_02_CapRise]]. Ef vökvasameindirnar dragast sterklega að rörsameindunum skríður vökvinn upp innan í rörinu þar til þyngd vökvans og viðloðunarkraftarnir ná jafnvægi. Því minna sem þvermál rörsins er, því hærra klifrar vökvinn. Það er að hluta til vegna hárpípukrafta sem verka í plöntufrumum sem kallast viðaræðar sem vatn og uppleyst næringarefni berast úr jarðveginum upp í gegnum ræturnar og inn í plöntu. Hárpípukraftar eru grundvöllur þunnlagsskilju, rannsóknarstofutækni sem almennt er notuð til að aðskilja lítið magn af blöndum. Þú ert háður stöðugu framboði af tárum til að halda augunum rökum og hárpípukröftum til að dæla táravökva burt.
 
 <!-- SEG:m68764:caption:CNX_Chem_10_02_CapRise-caption -->
-Háð hlutfallslegum styrk aðloðunar- og samloðunarkrafta getur vökvi risið (eins og vatn) eða fallið (eins og kvikasilfur) í hárpípuglerröri. Umfang hækkunarinnar (eða fallsins) er í beinu hlutfalli við yfirborðsspennu vökvans og í öfugu hlutfalli við eðlismassa vökvans og radíus rörsins.
+Háð hlutfallslegum styrk viðloðunar- og samloðunarkrafta getur vökvi risið (eins og vatn) eða fallið (eins og kvikasilfur) í hárpípuglasi. Hversu mikið hann rís (eða fellur) er í beinu hlutfalli við yfirborðsspennu vökvans og í öfugu hlutfalli við eðlismassa vökvans og radíus rörsins.
 
 <!-- SEG:m68764:para:fs-idm45302000 -->
 Hæðin sem vökvi mun rísa í hárpípuröri ræðst af nokkrum þáttum eins og sýnt er í eftirfarandi jöfnu:
@@ -272,22 +272,22 @@ Vatnssameindirnar hafa sterka millisameindakrafta vetnistengja. Vatnssameindirna
 Yfirborðsspennu- og seigjugildi fyrir díetýleter, asetón, etanól og etýlen glýkól eru sýnd hér.[[BR]] [[MEDIA:2]]
 
 <!-- SEG:m68764:problem:fs-idm59094592 -->
-(a) Útskýrðu muninn á seigju þeirra með tilliti til stærðar og lögunar sameinda þeirra og millisameindakrafta þeirra.
+(a) Útskýrðu muninn á seigju þeirra með tilliti til stærðar og lögunar sameinda þeirra og millisameindakrafta.
 
 <!-- SEG:m68764:problem:fs-idm133108016 -->
-(b) Útskýrðu muninn á yfirborðsspennu þeirra með tilliti til stærðar og lögunar sameinda þeirra og millisameindakrafta þeirra:
+(b) Útskýrðu muninn á yfirborðsspennu þeirra með tilliti til stærðar og lögunar sameinda þeirra og millisameindakrafta:
 
 <!-- SEG:m68764:problem:fs-idp31046720 -->
 Þú hefur kannski heyrt einhvern nota orðatiltækið „hægara en síróp að vetri til“ til að lýsa ferli sem gengur hægt. Útskýrðu hvers vegna þetta er viðeigandi orðatiltæki með því að nota hugtök um stærð og lögun sameinda, víxlverkanir sameinda og áhrif breytts hitastigs.
 
 <!-- SEG:m68764:solution:fs-idm80358384 -->
-Hitastig hefur áhrif á millisameindakrafta: Því hærra sem hitastigið er, því meiri er hreyfiorka sameindanna og því meira er sigrast á millisameindakröftum þeirra og því er vökvinn fljótandi (minni seigja). Því lægra sem hitastigið er, því minna er sigrast á millisameindakröftunum og því seigari er vökvinn.
+Hitastig hefur áhrif á millisameindakrafta: Því hærra sem hitastigið er, því meiri er hreyfiorka sameindanna og því meira sem millisameindakraftar þeirra eru yfirstignir, og því er vökvinn fljótandi (minni seigja). Því lægra sem hitastigið er, því minna eru millisameindakraftarnir yfirstignir og því seigari er vökvinn.
 
 <!-- SEG:m68764:problem:fs-idm84555824 -->
 Oft er mælt með því að láta bílvélinni ganga í lausagangi til að hitna áður en ekið er af stað, sérstaklega á köldum vetrardögum. Þótt ávinningurinn af langvarandi lausagangi sé vafasamur er það vissulega rétt að heit vél er sparneytnari en köld. Útskýrðu ástæðuna fyrir þessu.
 
 <!-- SEG:m68764:problem:fs-idm57322944 -->
-Yfirborðsspenna og seigja vatns við nokkur mismunandi hitastig eru gefin í þessari töflu.[[BR]] [[TABLE:fs-idm84550336]]
+Yfirborðsspenna og seigja vatns við nokkur mismunandi hitastig eru sýnd í þessari töflu.[[BR]] [[TABLE:fs-idm84550336]]
 
 <!-- SEG:m68764:problem:fs-idm133407872 -->
 (a) Hvað gerist með yfirborðsspennu vatns þegar hitastig hækkar? Útskýrðu hvers vegna þetta gerist, með tilliti til víxlverkana sameinda og áhrifa breytts hitastigs.
@@ -296,13 +296,13 @@ Yfirborðsspenna og seigja vatns við nokkur mismunandi hitastig eru gefin í þ
 (b) Hvað gerist með seigju vatns þegar hitastig hækkar? Útskýrðu hvers vegna þetta gerist, með tilliti til víxlverkana sameinda og áhrifa breytts hitastigs.
 
 <!-- SEG:m68764:solution:fs-idm52338928 -->
-(a) Þegar vatnið nær hærra hitastigi er aukin hreyfiorka sameinda þess áhrifaríkari til að yfirstíga vetnistengi og því minnkar yfirborðsspenna þess. Yfirborðsspenna og millisameindakraftar eru í beinu sambandi. (b) Sama þróun sést í seigju og í yfirborðsspennu, og af sömu ástæðu.
+(a) Þegar vatnið nær hærra hitastigi er aukin hreyfiorka sameinda þess áhrifaríkari við að yfirstíga vetnistengi og því minnkar yfirborðsspenna þess. Yfirborðsspenna og millisameindakraftar eru í beinu sambandi. (b) Sama þróun sést í seigju og í yfirborðsspennu, og af sömu ástæðu.
 
 <!-- SEG:m68764:problem:fs-idm237890176 -->
-Við 25 °C, hversu hátt mun vatn stíga í hárpípu úr gleri með 0,63 mm innra þvermáli? Sjá [[xref:fs-idp7578512]] fyrir nauðsynlegar upplýsingar.
+Við 25 °C, hversu hátt mun vatn rísa í hárpípugleri með 0,63 mm innra þvermáli? Sjá [[xref:fs-idp7578512]] fyrir nauðsynlegar upplýsingar.
 
 <!-- SEG:m68764:problem:fs-idm189246496 -->
-Vatn stígur í hárpípu úr gleri upp í 17 cm hæð. Hvert er þvermál hárpípunnar?
+Vatn rís í hárpípugleri upp í 17 cm hæð. Hvert er þvermál hárpípunnar?
 
 <!-- SEG:m68764:solution:fs-idm115532848 -->
 1,7 [[MATH:3]] 10[[sup:−4]] m
@@ -314,7 +314,7 @@ viðloðunarkraftur
 aðdráttarkraftur milli sameinda með mismunandi efnafræðilega eiginleika
 
 <!-- SEG:m68764:glossary-term:fs-idm184465568-term -->
-hárpípuverkun
+hárpípukraftur
 
 <!-- SEG:m68764:glossary-def:fs-idm184465568-def -->
 flæði vökva innan gljúps efnis vegna aðdráttar vökvasameinda að yfirborði efnisins og að öðrum vökvasameindum

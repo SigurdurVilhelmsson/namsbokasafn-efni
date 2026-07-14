@@ -5,79 +5,79 @@
 Þegar þú hefur lokið við þennan kafla getur þú:
 
 <!-- SEG:m68793:abstract-item:abstract-item-1 -->
-Notað fullyrðingar árekstrakenningarinnar til að útskýra áhrif efnisástands, hitastigs og styrks á hraða efnahvarfa
+Notað kenningarsetningar árekstrakenningarinnar til að útskýra áhrif efnisástands, hitastigs og styrks á hraða efnahvarfa
 
 <!-- SEG:m68793:abstract-item:abstract-item-2 -->
 Skilgreint hugtökin virkjunarorka og virkniástand
 
 <!-- SEG:m68793:abstract-item:abstract-item-3 -->
-Notað Arrheniusarjönfuna í útreikningum sem tengja hraðafasta við hitastig
+Notað Arrheniusarjönuna í útreikningum sem tengja hraðafasta við hitastig
 
 <!-- SEG:m68793:para:fs-idm107951360 -->
 Það ætti ekki að koma okkur á óvart að frumeindir, sameindir eða jónir verða að rekast á áður en þær geta hvarfast hver við aðra. Frumeindir verða að vera nálægt hvor annarri til að mynda efnatengi. Þessi einfalda forsenda er grundvöllur að mjög öflugri kenningu sem útskýrir margar athuganir varðandi efnahvörf, þar á meðal þá þætti sem hafa áhrif á hraða efnahvarfa.
 
 <!-- SEG:m68793:para:fs-idm148062976 -->
-[[term:Collision theory|term-00001]] byggir á eftirfarandi fullyrðingum:
+[[term:Árekstrakenningin|term-00001]] byggir á eftirfarandi kenningarsetningum:
 
 <!-- SEG:m68793:item:fs-idm90348816-item-1 -->
-Hraði efnahvarfs er í réttu hlutfalli við árekstrartíðni hvarfefna: [[MATH:1]]
+Hraði efnahvarfs er í réttu hlutfalli við hraða árekstra hvarfefna: [[MATH:1]]
 
 <!-- SEG:m68793:item:fs-idm90348816-item-2 -->
-Hvarfefnin verða að rekast saman í afstöðu sem leyfir snertingu milli þeirra frumeinda sem munu tengjast saman í myndefninu.
+Hvarfefnin verða að rekast saman í stefnu sem leyfir snertingu milli þeirra frumeinda sem munu tengjast saman í myndefninu.
 
 <!-- SEG:m68793:item:fs-idm90348816-item-3 -->
-Áreksturinn verður að eiga sér stað með nægilegri orku til að leyfa gagnkvæma íferð gildisrafeindaskýja hvarfefnanna svo að rafeindirnar geti endurraðast og myndað ný tengi (og ný efnasambönd).
+Áreksturinn verður að eiga sér stað með nægilegri orku til að leyfa gagnkvæma íferð gildisrafeindahvela hvarfefnanna svo að rafeindirnar geti endurraðast og myndað ný tengi (og ný efnasambönd).
 
 <!-- SEG:m68793:para:fs-idm60879872 -->
-Við sjáum mikilvægi þessara tveggja eðlisfræðilegu þátta sem nefndir eru í fullyrðingum 2 og 3, afstöðu og orku árekstra, þegar við skoðum efnahvarf kolmónoxíðs við súrefni:
+Við getum séð mikilvægi tveggja eðlisfræðilegra þátta sem nefndir eru í kenningarsetningum 2 og 3, stefnu og orku árekstra, þegar við skoðum efnahvarf kolmónoxíðs við súrefni:
 
 <!-- SEG:m68793:para:fs-idp29940560 -->
 Kolmónoxíð er mengunarefni sem myndast við bruna kolvetniseldsneytis. Til að draga úr þessu mengunarefni eru bílar með hvarfakúta sem nota hvata til að framkvæma þetta efnahvarf. Það er einnig aukaefnahvarf við bruna byssupúðurs sem veldur hlaupglampa í mörgum skotvopnum. Ef kolmónoxíð og súrefni eru til staðar í nægilegu magni mun efnahvarfið eiga sér stað við hátt hitastig og þrýsting.
 
 <!-- SEG:m68793:para:fs-idm121786272 -->
-Fyrsta skrefið í efnahvarfi kolmónoxíðs og súrefnis í gasfasa er árekstur milli sameindanna tveggja:
+Fyrsta skrefið í efnahvarfi á gasfasa milli kolmónoxíðs og súrefnis er árekstur milli sameindanna tveggja:
 
 <!-- SEG:m68793:para:fs-idm34761136 -->
-Þó að það séu margar mismunandi mögulegar afstöður sem sameindirnar tvær geta haft miðað við hvor aðra, skulum við skoða þær tvær sem sýndar eru í [[xref:CNX_Chem_12_05_COandO2]]. Í fyrra tilvikinu rekst súrefnishlið kolmónoxíðsameindarinnar á súrefnissameindina. Í seinna tilvikinu rekst kolefnishlið kolmónoxíðsameindarinnar á súrefnissameindina. Seinna tilvikið er augljóslega líklegra til að leiða til myndunar koltvísýrings, sem hefur miðlæga kolefnisfrumeind tengda tveimur súrefnisfrumeindum [[MATH:2]]. Þetta er frekar einfalt dæmi um hversu mikilvæg afstaða árekstursins er til að mynda æskilegt myndefni efnahvarfsins.
+Þó að það séu margar mismunandi mögulegar stefnur sem sameindirnar tvær geta haft miðað við hvor aðra, skulum við skoða þær tvær sem sýndar eru í [[xref:CNX_Chem_12_05_COandO2]]. Í fyrra tilvikinu rekst súrefnishlið kolmónoxíðsameindarinnar á súrefnissameindina. Í seinna tilvikinu rekst kolefnishlið kolmónoxíðsameindarinnar á súrefnissameindina. Seinna tilvikið er augljóslega líklegra til að leiða til myndunar koltvísýrings, sem hefur miðlæga kolefnisfrumeind tengda tveimur súrefnisfrumeindum [[MATH:2]]. Þetta er frekar einfalt dæmi um hversu mikilvæg stefna árekstursins er til að mynda æskilegt myndefni efnahvarfsins.
 
 <!-- SEG:m68793:caption:CNX_Chem_12_05_COandO2-caption -->
-Myndin sýnir tvo árekstra sem gætu átt sér stað milli kolmónoxíð- og súrefnissameinda. Afstaða sameindanna sem rekast á ræður að hluta til því hvort efnahvarf eigi sér stað milli þeirra.
+Myndin sýnir tvo árekstra sem gætu átt sér stað milli kolmónoxíð- og súrefnissameinda. Stefna sameindanna sem rekast á ræður að hluta til hvort efnahvarf milli sameindanna tveggja muni eiga sér stað.
 
 <!-- SEG:m68793:para:fs-idm58992896 -->
-Ef áreksturinn á sér stað með réttri afstöðu er samt engin trygging fyrir því að efnahvarfið haldi áfram og myndi koltvísýring. Auk réttrar afstöðu verður áreksturinn einnig að eiga sér stað með nægilegri orku til að leiða til myndunar myndefnis. Þegar hvarfefni rekast á með bæði réttri afstöðu og nægilegri orku, sameinast þau og mynda óstöðugt efnasamband sem kallast [[term:activated complex|term-00002]] eða [[term:transition state|term-00003]]. Þessi efnasambönd eru mjög skammlíf og yfirleitt ógreinanleg með flestum mælitækjum. Í sumum tilfellum hafa háþróaðar litrófsmælingar verið notaðar til að fylgjast með virkniástandi.
+Ef áreksturinn á sér stað með réttri stefnu er samt engin trygging fyrir því að efnahvarfið haldi áfram og myndi koltvísýring. Auk réttarar stefnu verður áreksturinn einnig að eiga sér stað með nægilegri orku til að leiða til myndunar myndefnis. Þegar hvarfefni rekast á með bæði réttri stefnu og nægilegri orku, sameinast þau og mynda óstöðugt efni sem kallast [[term:virkjuð samstæða|term-00002]] eða [[term:virkniástand|term-00003]]. Þessi efni eru mjög skammlíf og yfirleitt ógreinanleg með flestum mælitækjum. Í sumum tilfellum hafa háþróaðar litrófsmælingar verið notaðar til að fylgjast með virkniástandi.
 
 <!-- SEG:m68793:para:fs-idm207258608 -->
-Árekstrakenningin útskýrir hvers vegna hraði flestra efnahvarfa eykst þegar styrkur eykst. Með aukningu á styrk hvers hvarfefnis aukast líkurnar á árekstrum milli sameinda vegna þess að það eru fleiri sameindir á rúmmálseiningu. Fleiri árekstrar þýða meiri hraða efnahvarfs, að því gefnu að orka árekstranna sé nægileg.
+Árekstrakenningin útskýrir hvers vegna flestir efnahvarfshraðar aukast þegar styrkur eykst. Með aukningu á styrk hvers hvarfefnis aukast líkurnar á árekstrum milli sameinda vegna þess að það eru fleiri sameindir á rúmmálseiningu. Fleiri árekstrar þýða hraðara efnahvarf, að því gefnu að orka árekstranna sé nægileg.
 
 <!-- SEG:m68793:title:fs-idm122484320-title -->
 Virkjunarorka og Arrheniusarjafnan
 
 <!-- SEG:m68793:para:fs-idm102149680 -->
-Lágmarksorkan sem er nauðsynleg til að mynda myndefni við árekstur milli hvarfefna er kölluð [[term:activation energy ([[i:E]][[sub:a]])|term-00004]]. Hvernig þessi orka er í samanburði við hreyfiorku sem árekstur hvarfefnasameinda veitir er aðalþátturinn sem hefur áhrif á hraða efnahvarfs. Ef virkjunarorkan er mun stærri en meðalhreyfiorka sameindanna mun efnahvarfið eiga sér stað hægt þar sem aðeins fáar hraðfara sameindir munu hafa næga orku til að hvarfast. Ef virkjunarorkan er mun minni en meðalhreyfiorka sameindanna mun stór hluti sameinda vera nægilega orkumikill og efnahvarfið mun ganga hratt fyrir sig.
+Lágmarksorkan sem er nauðsynleg til að mynda myndefni við árekstur milli hvarfefna er kölluð [[term:virkjunarorka ([[i:E]][[sub:a]])|term-00004]]. Hvernig þessi orka er í samanburði við hreyfiorku sem árekstur hvarfefnasameinda veitir er aðalþátturinn sem hefur áhrif á hraða efnahvarfs. Ef virkjunarorkan er mun stærri en meðalhreyfiorka sameindanna mun efnahvarfið eiga sér stað hægt þar sem aðeins fáar hraðvirkar sameindir munu hafa næga orku til að hvarfast. Ef virkjunarorkan er mun minni en meðalhreyfiorka sameindanna mun stór hluti sameinda vera nægilega orkumikill og efnahvarfið mun ganga hratt fyrir sig.
 
 <!-- SEG:m68793:para:fs-idm3588352 -->
-[[xref:CNX_Chem_12_05_RCooDgm]] sýnir hvernig orka efnafræðilegs kerfis breytist þegar það gengur í gegnum efnahvarf sem breytir hvarfefnum í myndefni samkvæmt jöfnunni
+[[xref:CNX_Chem_12_05_RCooDgm]] sýnir hvernig orka efnakerfis breytist þegar það gengur í gegnum efnahvarf sem breytir hvarfefnum í myndefni samkvæmt jöfnunni
 
 <!-- SEG:m68793:para:fs-idm92123120 -->
-Þessi [[term:reaction diagrams|term-00005]] eru mikið notuð í efnahvarfafræði til að sýna ýmsa eiginleika viðkomandi efnahvarfs. Séð frá vinstri til hægri samanstendur kerfið upphaflega aðeins af hvarfefnum, [[i:A]] + [[i:B]]. Hvarfefnasameindir með nægilega orku geta rekist á og myndað orkuríkt virkjað flókið efnasamband eða virkniástand. Óstöðuga virkniástandið getur síðan brotnað niður og myndað stöðug myndefni, [[i:C]] + [[i:D]]. Myndin sýnir virkjunarorku efnahvarfsins, [[i:E[[sub:a]]]], sem orkumuninn milli hvarfefnanna og virkniástandsins. Með því að nota tiltekna orku, [[i:enthalpy]] (sjá kafla um varmaefnafræði), er vermibreyting efnahvarfsins, Δ[[i:H]], metin sem orkumunurinn milli hvarfefnanna og myndefnanna. Í þessu tilviki er efnahvarfið útvermið (Δ[[i:H]] < 0) þar sem það leiðir til minnkunar á vermi kerfisins.
+Þessi [[term:efnahvarfsrit|term-00005]] eru mikið notuð í efnahvarfafræði til að sýna ýmsa eiginleika viðkomandi efnahvarfs. Séð frá vinstri til hægri samanstendur kerfið upphaflega aðeins af hvarfefnum, [[i:A]] + [[i:B]]. Hvarfefnasameindir með nægilega orku geta rekist á og myndað orkuríka virkjaða samstæðu eða virkniástand. Óstöðuga virkniástandið getur síðan brotnað niður og gefið af sér stöðug myndefni, [[i:C]] + [[i:D]]. Ritið sýnir virkjunarorku efnahvarfsins, [[i:E[[sub:a]]]], sem orkumuninn á milli hvarfefnanna og virkniástandsins. Með því að nota tiltekna orku, [[i:vermibreytingu]] (sjá kafla um varmaefnafræði), er vermibreyting efnahvarfsins, Δ[[i:H]], metin sem orkumunurinn á milli hvarfefnanna og myndefnanna. Í þessu tilviki er efnahvarfið útvermið (Δ[[i:H]] < 0) þar sem það leiðir til minnkunar á vermi kerfisins.
 
 <!-- SEG:m68793:caption:CNX_Chem_12_05_RCooDgm-caption -->
-Efnahvarfsmynd fyrir útvermið efnahvarf [[MATH:3]]
+Efnahvarfsrit fyrir útvermið efnahvarf [[MATH:3]]
 
 <!-- SEG:m68793:para:fs-idm93458160 -->
-[[term:Arrhenius equation|term-00006]] tengir virkjunarorkuna og hraðafastann, [[i:k]], fyrir mörg efnahvörf:
+[[term:Arrheniusarjafnan|term-00006]] tengir virkjunarorkuna og hraðafastann, [[i:k]], fyrir mörg efnahvörf:
 
 <!-- SEG:m68793:para:fs-idp69522176 -->
 Í þessari jöfnu er [[i:R]] kjörgasfastinn, sem hefur gildið 8,314 J/mól/K, T er hitastig á Kelvin-kvarða, [[i:E]][[sub:a]] er virkjunarorkan í júlum á mól, [[i:e]] er fastinn 2,7183 og [[i:A]] er fasti sem kallast [[term:tíðniþáttur|term-00007]] og tengist tíðni árekstra og stefnumörkun hvarfefnasameindanna.
 
 <!-- SEG:m68793:para:fs-idm378964576 -->
-Kenningasetningar árekstrakenningarinnar falla vel að Arrheniusarjöfnunni. Tíðniþátturinn, [[i:A]], endurspeglar hversu vel hvarfskilyrðin stuðla að rétt stilltum árekstrum milli hvarfefnasameinda. Aukin líkindi á árangursríkum árekstrum leiða til hærri gilda fyrir [[i:A]] og hraðari efnahvarfa.
+Ályktanir árekstrakenningarinnar falla vel að Arrheniusarjöfnunni. Tíðniþátturinn, [[i:A]], endurspeglar hversu vel hvarfskilyrðin stuðla að rétt stilltum árekstrum milli hvarfefnasameinda. Aukin líkindi á árangursríkum árekstrum leiða til hærri gilda fyrir [[i:A]] og hraðari efnahvarfa.
 
 <!-- SEG:m68793:para:fs-idm493145248 -->
-Veldisvísisliðurinn, [[i:e[[sup:−Ea/RT]]]], lýsir áhrifum virkjunarorku á hvarfhraða. Samkvæmt hreyfiorkukenningu sameinda (sjá kafla um gös) er hitastig efnis mælikvarði á meðalhreyfiorku atóma eða sameinda þess. Dreifing orku meðal sameinda sem mynda efni við tiltekið hitastig er lýst með grafinu sem sýnt er á [[xref:CNX_Chem_12_05_SuccessR]]([[i:a]]). Tvö skyggð svæði undir ferlinum tákna fjölda sameinda sem búa yfir nægilegri orku ([[i:RT]]) til að yfirstíga virkjunarþröskuldinn ([[i:E[[sub:a]]]]). Lægri virkjunarorka leiðir til stærra hlutfalls nægilega orkumikilla sameinda og hraðara efnahvarfs.
+Veldisvísisliðurinn, [[i:e[[sup:−Ea/RT]]]], lýsir áhrifum virkjunarorku á hvarfhraða. Samkvæmt hreyfifræðikenningu sameinda (sjá kafla um gös) er hitastig efnis mælikvarði á meðalhreyfiorku atóma eða sameinda þess. Dreifing orku meðal sameinda sem mynda efnissýni við tiltekið hitastig er lýst með línuritinu sem sýnt er á [[xref:CNX_Chem_12_05_SuccessR]]([[i:a]]). Tvö skyggð svæði undir ferlinum tákna fjölda sameinda sem búa yfir nægilegri orku ([[i:RT]]) til að yfirstíga virkjunarhindranir ([[i:E[[sub:a]]]]). Lægri virkjunarorka leiðir til stærra hlutfalls nægilega orkumikilla sameinda og hraðara efnahvarfs.
 
 <!-- SEG:m68793:para:fs-idm494984112 -->
-Veldisvísisliðurinn lýsir einnig áhrifum hitastigs á hvarfhraða. Hærra hitastig táknar samsvarandi stærra hlutfall sameinda sem búa yfir nægilegri orku ([[i:RT]]) til að yfirstíga virkjunarþröskuldinn ([[i:E[[sub:a]]]]), eins og sýnt er á [[xref:CNX_Chem_12_05_SuccessR]]([[i:b]]). Þetta gefur hærra gildi fyrir hraðafastann og samsvarandi hraðari hvarfhraða.
+Veldisvísisliðurinn lýsir einnig áhrifum hitastigs á hvarfhraða. Hærra hitastig táknar samsvarandi stærra hlutfall sameinda sem búa yfir nægilegri orku ([[i:RT]]) til að yfirstíga virkjunarhindrunina ([[i:E[[sub:a]]]]), eins og sýnt er á [[xref:CNX_Chem_12_05_SuccessR]]([[i:b]]). Þetta gefur hærra gildi fyrir hraðafastann og samsvarandi hraðari hvarfhraða.
 
 <!-- SEG:m68793:caption:CNX_Chem_12_05_SuccessR-caption -->
 Orkudreifing sameinda sem sýnir fjölda sameinda með orku sem er hærri en (a) tvær mismunandi virkjunarorkur við tiltekið hitastig og (b) tiltekin virkjunarorka við tvö mismunandi hitastig.
@@ -86,37 +86,37 @@ Orkudreifing sameinda sem sýnir fjölda sameinda með orku sem er hærri en (a)
 Hentug aðferð til að ákvarða [[i:E]][[sub:a]] fyrir efnahvarf felur í sér mælingu á [[i:k]] við tvö eða fleiri mismunandi hitastig og notkun á annarri útgáfu af Arrheniusarjöfnunni sem tekur á sig form línulegrar jöfnu
 
 <!-- SEG:m68793:para:fs-idm161357136 -->
-Graf af ln [[i:k]] á móti [[MATH:4]] er línulegt með halla sem er jafn [[MATH:5]] og [[i:y]]-skurðpunkt sem er jafn ln [[i:A]].
+Línurit af ln [[i:k]] á móti [[MATH:4]] er línulegt með halla sem er jafn [[MATH:5]] og [[i:y]]-skurðpunkt sem er jafn ln [[i:A]].
 
 <!-- SEG:m68793:example-title:fs-idm160727824-title -->
 Ákvörðun á [[i:E]][[sub:a]]
 
 <!-- SEG:m68793:para:fs-idp108035392 -->
-Breyting hraðafastans með hitastigi fyrir niðurbrot HI([[i:g]]) í H[[sub:2]]([[i:g]]) og I[[sub:2]]([[i:g]]) er gefin hér. Hver er virkjunarorka efnahvarfsins?
+Breytileiki hraðafastans með hitastigi fyrir niðurbrot HI([[i:g]]) í H[[sub:2]]([[i:g]]) og I[[sub:2]]([[i:g]]) er gefinn hér. Hver er virkjunarorka efnahvarfsins?
 
 <!-- SEG:m68793:para-title:fs-idm178775392-title -->
 Lausn
 
 <!-- SEG:m68793:para:fs-idm178775392 -->
-Notaðu uppgefin gögn til að finna gildi fyrir [[MATH:6]] og ln [[i:k]]:
+Notaðu uppgefin gögn til að leiða út gildi fyrir [[MATH:6]] og ln [[i:k]]:
 
 <!-- SEG:m68793:para:fs-idm197951232 -->
-[[xref:CNX_Chem_12_05_ArrhPlot]] er graf af ln [[i:k]] á móti [[MATH:7]]. Í reynd væri jafna línunnar (halli og [[i:y]]-skurðpunktur) sem passar best við þessa punktaslóð fengin með tölfræðilegu ferli sem kallast aðhvarfsgreining. Þetta er gagnlegt fyrir flest tilraunagögn þar sem sjaldgæft er að hver gagnapunktur passi fullkomlega við línuna. Fyrir gögnin hér er samsvörunin næstum fullkomin og hægt er að áætla hallann með því að nota hvaða tvö gagnapör sem er. Með því að nota fyrsta og síðasta gagnapunktinn er hægt að áætla hallann.
+[[xref:CNX_Chem_12_05_ArrhPlot]] er línurit af ln [[i:k]] á móti [[MATH:7]]. Í reynd væri jafna línunnar (halli og [[i:y]]-skurðpunktur) sem passar best við þessa punktaslóð fengin með tölfræðilegu ferli sem kallast aðhvarfsgreining. Þetta er gagnlegt fyrir flest tilraunagögn þar sem fullkomin samsvörun hvers gagnapunkts við línuna er sjaldgæf. Fyrir gögnin hér er samsvörunin næstum fullkomin og hægt er að áætla hallann með því að nota hvaða tvö gagnapör sem er. Með því að nota fyrsta og síðasta gagnapunktinn er hægt að áætla hallann.
 
 <!-- SEG:m68793:para:fs-idm158222928 -->
-Önnur aðferð: Fljótlegri aðferð felur í sér að finna virkjunarorku út frá mælingum á hraðafasta við aðeins tvö hitastig. Í þessari aðferð er Arrheniusarjöfnunni endurraðað í hentugt tveggja punkta form:
+Önnur aðferð: Skjótvirkari aðferð felur í sér að leiða út virkjunarorku úr mælingum á hraðafasta við aðeins tvö hitastig. Í þessari aðferð er Arrheniusarjöfnunni endurraðað í hentugt tveggja punkta form:
 
 <!-- SEG:m68793:para:fs-idm47402880 -->
-Með því að endurraða þessari jöfnu til að einangra virkjunarorku fæst:
+Með því að endurraða þessari jöfnu til að einangra virkjunarorkuna fæst:
 
 <!-- SEG:m68793:para:fs-idm208269280 -->
-Hægt er að setja hvaða tvö gagnapör sem er inn í þessa jöfnu – til dæmis fyrstu og síðustu færslurnar úr gagnatöflunni hér að ofan:
+Setja má hvaða tvö gagnapör sem er inn í þessa jöfnu – til dæmis fyrstu og síðustu færslurnar úr gagnatöflunni hér að ofan:
 
 <!-- SEG:m68793:para:fs-idm101188896 -->
 og niðurstaðan er [[i:E]][[sub:a]] = 1,8 [[MATH:8]] 10[[sup:5]] J mól[[sup:−1]] eða 180 kJ mól[[sup:−1]]
 
 <!-- SEG:m68793:para:fs-idm65968064 -->
-Þessi aðferð gefur sömu niðurstöðu og nákvæmari grafaðferðin sem notuð var hér að ofan, eins og við var að búast. Í reynd gefur grafaðferðin yfirleitt áreiðanlegri niðurstöður þegar unnið er með raunveruleg tilraunagögn.
+Þessi aðferð gefur sömu niðurstöðu og nákvæmari línuritsaðferðin sem notuð var hér að ofan, eins og við var að búast. Í reynd gefur línuritsaðferðin yfirleitt áreiðanlegri niðurstöður þegar unnið er með raunveruleg tilraunagögn.
 
 <!-- SEG:m68793:para-title:fs-idm90823520-title -->
 Spyrðu sjálfan þig
@@ -338,22 +338,22 @@ fylgir fyrsta stigs hraðajöfnu fyrir eyðingu súkrósa: hraði = [[i:k]][C[[s
 Notaðu [[link:gagnvirku PhET-hermunina um efnahvörf og hraða|http://openstax.org/l/16PHETreaction]] til að herma eftir kerfi. Í flipanum „Einn árekstur“ í hermunarforritinu skaltu virkja „Orkusýn“ með því að smella á „+“ táknið. Veldu fyrsta [[MATH:45]] efnahvarfið (A er gult, B er fjólublátt og C er dökkblátt). Notaðu sjálfgefna valkostinn „beint skot“ og reyndu að skjóta [[i:A]] frumeindinni af stað með mismikilli orku. Hvað breytist þegar heildarorkulínan við af stað setningu er fyrir neðan virkniástand stöðuorkulínunnar? Hvers vegna? Hvað gerist þegar hún er fyrir ofan virkniástandið? Hvers vegna?
 
 <!-- SEG:m68793:problem:fs-idp46127280 -->
-Notaðu [[link:PhET Reactions &amp; Rates gagnvirka herminn|http://openstax.org/l/16PHETreaction]] til að herma eftir kerfi. Á flipanum „Einn árekstur“ í herminum skaltu virkja „Orkusýn“ með því að smella á „+“ táknið. Veldu fyrsta [[MATH:46]] efnahvarfið (A er gult, B er fjólublátt og C er dökkblátt). Notaðu „skot úr horni“ valkostinn og reyndu að skjóta [[i:A]] frumeindinni með mismunandi hornum, en með meiri heildarorku en virkniástandið. Hvað gerist þegar [[i:A]] frumeindin rekst á [[i:BC]] sameindina úr mismunandi áttum? Hvers vegna?
+Notaðu [[link:PhET Reactions &amp; Rates gagnvirka herminn|http://openstax.org/l/16PHETreaction]] til að herma eftir kerfi. Í flipanum „Einn árekstur“ í hermiforritinu skaltu virkja „Orkusýn“ með því að smella á „+“ táknið. Veldu fyrsta [[MATH:46]] efnahvarfið (A er gult, B er fjólublátt og C er dökkblátt). Notaðu „skáskot“ valkostinn og reyndu að skjóta [[i:A]] frumeindinni með mismunandi hornum, en með meiri heildarorku en virkniástandið. Hvað gerist þegar [[i:A]] frumeindin rekst á [[i:BC]] sameindina úr mismunandi áttum? Hvers vegna?
 
 <!-- SEG:m68793:solution:fs-idm206557120 -->
-[[i:A]] frumeindin hefur næga orku til að hvarfast við [[i:BC]]; hins vegar benda mismunandi horn sem hún skoppar af [[i:BC]] án þess að hvarfast til þess að stefna sameindarinnar er mikilvægur hluti af hraðafræði efnahvarfsins og ákvarðar hvort efnahvarf muni eiga sér stað.
+[[i:A]] frumeindin hefur næga orku til að hvarfast við [[i:BC]]; hins vegar gefa mismunandi horn sem hún skoppar af [[i:BC]] án þess að hvarfast til kynna að stefna sameindarinnar sé mikilvægur hluti af hraðafræði efnahvarfsins og ákvarði hvort efnahvarf muni eiga sér stað.
 
 <!-- SEG:m68793:glossary-term:fs-idm89472432-term -->
 virkjaður flóki
 
 <!-- SEG:m68793:glossary-def:fs-idm89472432-def -->
-(einnig, virkniástand) óstöðug samsetning hvarfefnategunda sem myndast við efnahvarf
+(einnig, virkniástand) óstöðug samsetning hvarfefna sem myndast við efnahvarf
 
 <!-- SEG:m68793:glossary-term:fs-idm162201904-term -->
 virkjunarorka ([[i:E]][[sub:a]])
 
 <!-- SEG:m68793:glossary-def:fs-idm162201904-def -->
-lágmarksorka sem er nauðsynleg til þess að efnahvarf geti átt sér stað
+lágmarksorka sem er nauðsynleg til að efnahvarf geti átt sér stað
 
 <!-- SEG:m68793:glossary-term:fs-idm187159584-term -->
 Arrheniusar-jafna
@@ -377,7 +377,7 @@ hlutfallsfasti í Arrheniusar-jöfnunni, sem tengist hlutfallslegum fjölda áre
 efnahvarfsrit
 
 <!-- SEG:m68793:glossary-def:fs-idm355773584-def -->
-notað í efnahraðafræði til að sýna ýmsa eiginleika efnahvarfs
+notað í hraðafræði efna til að sýna ýmsa eiginleika efnahvarfs
 
 <!-- SEG:m68793:entry:auto-128 -->
 Hitastig (K)

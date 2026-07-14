@@ -1,14 +1,14 @@
 <!-- SEG:m68791:title:auto-1 -->
-Heildarhraðalögmál
+Heilduð hraðalögmál
 
 <!-- SEG:m68791:abstract:auto-2 -->
-Í lok þessa kafla muntu geta:
+Þegar þú hefur lokið við þennan kafla getur þú:
 
 <!-- SEG:m68791:abstract-item:abstract-item-1 -->
-Útskýrt form og virkni heildarhraðalögmáls
+Útskýrt form og virkni heildaðs hraðalögmáls
 
 <!-- SEG:m68791:abstract-item:abstract-item-2 -->
-Framkvæmt útreikninga með heildarhraðalögmáli fyrir núllta, fyrsta og annars stigs efnahvörf
+Framkvæmt útreikninga með heildað hraðalögmál fyrir núllta, fyrsta og annars stigs efnahvörf
 
 <!-- SEG:m68791:abstract-item:abstract-item-3 -->
 Skilgreint helmingunartíma og framkvæmt tengda útreikninga
@@ -17,31 +17,31 @@ Skilgreint helmingunartíma og framkvæmt tengda útreikninga
 Greint stig efnahvarfs út frá gögnum um styrk/tíma
 
 <!-- SEG:m68791:para:fs-idp89497264 -->
-Hraðalögmálin sem fjallað hefur verið um hingað til tengja saman hraða og styrk hvarfefna. Við getum einnig ákvarðað annað form hvers hraðalögmáls sem tengir saman styrk hvarfefna og tíma. Þau eru kölluð [[term:integrated rate laws|term-00001]]. Við getum notað heildarhraðalögmál til að ákvarða magn hvarfefnis eða myndefnis sem er til staðar eftir ákveðinn tíma eða til að áætla þann tíma sem það tekur fyrir efnahvarf að ná ákveðnu stigi. Til dæmis er heildarhraðalögmál notað til að ákvarða hversu lengi þarf að geyma geislavirkt efni til að geislavirkni þess minnki niður í öruggt magn.
+Hraðalögmálin sem fjallað hefur verið um hingað til tengja saman hvarfhraða og styrk hvarfefna. Við getum einnig ákvarðað annað form hvers hraðalögmáls sem tengir saman styrk hvarfefna og tíma. Þau eru kölluð [[term:heildun hraðalögmál|term-00001]]. Við getum notað heildað hraðalögmál til að ákvarða magn hvarfefnis eða myndefnis sem er til staðar eftir ákveðinn tíma eða til að áætla þann tíma sem það tekur fyrir efnahvarf að ná ákveðnu marki. Til dæmis er heildað hraðalögmál notað til að ákvarða hversu lengi þarf að geyma geislavirkt efni til að geislavirkni þess minnki niður í öruggt magn.
 
 <!-- SEG:m68791:para:fs-idp93158656 -->
-Með notkun örsmæðareiknings er hægt að heilda afleiðuhraðalögmál fyrir efnahvarf með tilliti til tíma til að fá jöfnu sem tengir magn hvarfefnis eða myndefnis í hvarfblöndu við liðinn tíma efnahvarfsins. Þetta ferli getur verið annaðhvort mjög einfalt eða mjög flókið, allt eftir því hversu flókið afleiðuhraðalögmálið er. Í þessari umfjöllun munum við einbeita okkur að heildarhraðalögmálum fyrir fyrsta, annars og núllta stigs efnahvörf.
+Með örsmæðareikningi er hægt að heilda diffrað hraðalögmál fyrir efnahvarf með tilliti til tíma til að fá jöfnu sem tengir magn hvarfefnis eða myndefnis sem er til staðar í efnablöndu við liðinn tíma efnahvarfsins. Þetta ferli getur verið annaðhvort mjög einfalt eða mjög flókið, allt eftir því hversu flókið diffraða hraðalögmálið er. Í þessari umfjöllun munum við einbeita okkur að heildun hraðalögmála fyrir fyrsta, annars og núllta stigs efnahvörf.
 
 <!-- SEG:m68791:title:fs-idm140678368-title -->
 Fyrsta stigs efnahvörf
 
 <!-- SEG:m68791:para:fs-idm144782000 -->
-Heildun hraðalögmáls fyrir einfalt fyrsta stigs efnahvarf (hraði = [[i:k]][[[i:A]]]) gefur jöfnu sem lýsir því hvernig styrkur hvarfefnis breytist með tíma:
+Heildun hraðajöfnunnar fyrir einfalt fyrsta stigs efnahvarf (hvarfhraði = [[i:k]][[[i:A]]]) gefur jöfnu sem lýsir því hvernig styrkur hvarfefnis breytist með tíma:
 
 <!-- SEG:m68791:para:fs-idm63176528 -->
-þar sem [[[i:A]]][[i:t]] er styrkur [[i:A]] á tímanum [[i:t]], [[[i:A]]][[sub:0]] er upphafsstyrkur [[i:A]] og [[i:k]] er hraðafasti fyrsta stigs efnahvarfs.
+þar sem [[[i:A]]][[i:t]] er styrkur [[i:A]] á tímanum [[i:t]], [[[i:A]]][[sub:0]] er upphafsstyrkur [[i:A]] og [[i:k]] er fyrsta stigs hraðafasti.
 
 <!-- SEG:m68791:para:fs-idm512172928 -->
-Til þæginda í stærðfræði má endurraða þessari jöfnu á önnur form, þar á meðal bein og óbein hlutföll:
+Til þæginda í stærðfræði er hægt að endurraða þessari jöfnu á önnur form, þar á meðal bein og óbein hlutföll:
 
 <!-- SEG:m68791:para:fs-idm352207008 -->
-og form sem sýnir línulega fylgni styrks við tíma:
+og form sem sýnir línulega fylgni styrks og tíma:
 
 <!-- SEG:m68791:example-title:fs-idm148528000-title -->
-Heildarhraðalögmál fyrir fyrsta stigs efnahvarf
+Heildað hraðalögmál fyrir fyrsta stigs efnahvarf
 
 <!-- SEG:m68791:para:fs-idm87528896 -->
-Hraðafastinn fyrir fyrsta stigs niðurbrot sýklóbútans, C[[sub:4]]H[[sub:8]] við 500 °C er 9,2 [[MATH:1]] 10[[sup:−3]] s[[sup:−1]]:
+Hraðafastinn fyrir fyrsta stigs niðurbrotsefnahvarf sýklóbútans, C[[sub:4]]H[[sub:8]] við 500 °C er 9,2 [[MATH:1]] 10[[sup:−3]] s[[sup:−1]]:
 
 <!-- SEG:m68791:para:fs-idm139703904 -->
 Hversu langan tíma tekur það fyrir 80,0% af sýni af C[[sub:4]]H[[sub:8]] að brotna niður?
@@ -50,10 +50,10 @@ Hversu langan tíma tekur það fyrir 80,0% af sýni af C[[sub:4]]H[[sub:8]] að
 Lausn
 
 <!-- SEG:m68791:para:fs-idm133511056 -->
-Þar sem hlutfallsleg breyting á styrk hvarfefnis er gefin er þægilegt form fyrir heildarhraðalögmálið:
+Þar sem hlutfallsleg breyting á styrk hvarfefnis er gefin er þægilegt form fyrir heildað hraðalögmál:
 
 <!-- SEG:m68791:para:fs-idm149413632 -->
-Upphafsstyrkur C[[sub:4]]H[[sub:8]], [[[i:A]]][[sub:0]], er ekki gefinn, en upplýsingarnar um að 80,0% af sýninu hafi brotnað niður eru nægar til að leysa þetta dæmi. Látum [[i:x]] vera upphafsstyrkinn, en þá er styrkurinn eftir 80,0% niðurbrot 20,0% af [[i:x]] eða 0,200[[i:x]]. Með því að endurraða hraðalögmálinu til að einangra [[i:t]] og setja inn gefnar stærðir fæst:
+Upphafsstyrkur C[[sub:4]]H[[sub:8]], [[[i:A]]][[sub:0]], er ekki gefinn, en upplýsingarnar um að 80,0% af sýninu hafi brotnað niður eru nægar til að leysa þetta dæmi. Látum [[i:x]] vera upphafsstyrkinn, en þá er styrkurinn eftir 80,0% niðurbrot 20,0% af [[i:x]] eða 0,200[[i:x]]. Með því að endurraða hraðajöfnunni til að einangra [[i:t]] og setja inn gefnar stærðir fæst:
 
 <!-- SEG:m68791:para-title:fs-idp38768624-title -->
 Skoðaðu þekkingu þína
@@ -62,7 +62,7 @@ Skoðaðu þekkingu þína
 Joð-131 er geislavirk samsæta sem er notuð til að greina og meðhöndla sumar tegundir skjaldkirtilskrabbameins. Joð-131 brotnar niður í xenon-131 samkvæmt jöfnunni:
 
 <!-- SEG:m68791:para:fs-idm29159424 -->
-Niðurbrotið er fyrsta stigs með hraðafastann 0,138 d[[sup:−1]]. Hversu marga daga tekur það fyrir 90% af joð-131 í 0,500 [[i:M]] lausn af þessu efni að brotna niður í Xe-131?
+Niðurbrotið er fyrsta stigs með hraðafasta 0,138 d[[sup:−1]]. Hversu marga daga tekur það fyrir 90% af joð-131 í 0,500 [[i:M]] lausn af þessu efni að brotna niður í Xe-131?
 
 <!-- SEG:m68791:para:fs-idm22449888 -->
 16,7 dagar
@@ -74,16 +74,16 @@ Svar:
 16,7 dagar
 
 <!-- SEG:m68791:para:fs-idm132947408 -->
-Í næsta dæmi verður þægilegt að nota línulegt form fyrir heildarhraðalögmálið:
+Í næsta dæmi verður þægilegt að nota línulegt form fyrir heildað hraðalögmál:
 
 <!-- SEG:m68791:para:fs-idm134557872 -->
-Graf af ln[[[i:A]]][[sub:[[i:t]]]] á móti [[i:t]] fyrir fyrsta stigs efnahvarf er bein lína með hallatöluna −[[i:k]] og skurðpunkt við [[i:y]]-ás í ln[[[i:A]]][[sub:0]]. Ef safn hraðagagna er sett upp á þennan hátt en myndar [[i:ekki]] beina línu, er efnahvarfið ekki fyrsta stigs með tilliti til [[i:A]].
+Graf af ln[[[i:A]]][[sub:[[i:t]]]] á móti [[i:t]] fyrir fyrsta stigs efnahvarf er bein lína með hallatöluna −[[i:k]] og skurðpunkt við [[i:y]]-ás í ln[[[i:A]]][[sub:0]]. Ef safn af hraðagögnum er teiknað á þennan hátt en myndar [[i:ekki]] beina línu, er efnahvarfið ekki fyrsta stigs með tilliti til [[i:A]].
 
 <!-- SEG:m68791:example-title:fs-idp35909968-title -->
 Grafísk ákvörðun á stigi efnahvarfs og hraðafasta
 
 <!-- SEG:m68791:para:fs-idm76041456 -->
-Sýndu að gögnin í [[docref:m68786#CNX_Chem_12_01_KDataH2O2]] geta verið táknuð með fyrsta stigs hraðalögmáli með því að teikna graf af ln[H[[sub:2]]O[[sub:2]]] á móti tíma. Ákvarðaðu hraðafastann fyrir niðurbrot H[[sub:2]]O[[sub:2]] út frá þessum gögnum.
+Sýndu að gögnin í [[docref:m68786#CNX_Chem_12_01_KDataH2O2]] geta verið táknuð með fyrsta stigs hraðajöfnu með því að teikna graf af ln[H[[sub:2]]O[[sub:2]]] á móti tíma. Ákvarðaðu hraðafastann fyrir niðurbrot H[[sub:2]]O[[sub:2]] út frá þessum gögnum.
 
 <!-- SEG:m68791:para-title:fs-idm136711920-title -->
 Lausn
@@ -92,19 +92,19 @@ Lausn
 Gögnin úr [[docref:m68786#CNX_Chem_12_01_KDataH2O2]] eru sett fram í töflu hér að neðan og graf af ln[H[[sub:2]]O[[sub:2]]] er sýnt í [[xref:CNX_Chem_12_04_FrstOKin]].
 
 <!-- SEG:m68791:para:fs-idm88773168 -->
-Grafið af ln[H[[sub:2]]O[[sub:2]]] á móti tíma er línulegt, sem gefur til kynna að hægt sé að lýsa efnahvarfinu með hraðalögmáli af fyrsta stigi.
+Grafið af ln[H[[sub:2]]O[[sub:2]]] á móti tíma er línulegt, sem gefur til kynna að efnahvarfinu megi lýsa með hraðajöfnu af fyrsta stigi.
 
 <!-- SEG:m68791:para:fs-idm97546480 -->
 Samkvæmt línulegu formi heildaðs hraðalögmáls af fyrsta stigi er hraðafastinn gefinn með neikvæðri hallatölu þessa grafs.
 
 <!-- SEG:m68791:para:fs-idm145444128 -->
-Hallatölu þessarar línu má leiða út frá tveimur gildum ln[H[[sub:2]]O[[sub:2]]] við mismunandi gildi [[i:t]] (helst einu nálægt hvorum enda línunnar). Til dæmis er gildi ln[H[[sub:2]]O[[sub:2]]] þegar [[i:t]] er 0,00 klst. 0,000; gildið þegar [[i:t]] = 24,00 klst. er −2,772
+Hallatölu þessarar línu má leiða út frá tveimur gildum af ln[H[[sub:2]]O[[sub:2]]] á mismunandi gildum [[i:t]] (helst einu nálægt hvorum enda línunnar). Til dæmis er gildi ln[H[[sub:2]]O[[sub:2]]] þegar [[i:t]] er 0,00 klst. 0,000; gildið þegar [[i:t]] = 24,00 klst. er −2,772
 
 <!-- SEG:m68791:para-title:fs-idp92343136-title -->
-Kannaðu þekkingu þína
+Skoðaðu þekkingu þína
 
 <!-- SEG:m68791:para:fs-idp92343136 -->
-Teiknaðu graf út frá eftirfarandi gögnum til að ákvarða hvort efnahvarfið [[MATH:2]] sé af fyrsta stigi.
+Teiknaðu graf með eftirfarandi gögnum til að ákvarða hvort efnahvarfið [[MATH:2]] sé af fyrsta stigi.
 
 <!-- SEG:m68791:para:fs-idp73329760 -->
 Grafið af ln[[[i:A]]][[sub:[[i:t]]]] á móti [[i:t]] er ekki línulegt, sem gefur til kynna að efnahvarfið sé ekki af fyrsta stigi:[[BR]]
@@ -212,40 +212,40 @@ Tími (s)
 Efnahvörf af öðru stigi
 
 <!-- SEG:m68791:para:fs-idm75401888 -->
-Jöfnurnar sem tengja styrk hvarfefna og hraðafasta efnahvarfa af öðru stigi geta verið nokkuð flóknar. Til að sýna fram á þetta með sem minnstri flækju verður hér aðeins lýst einföldustu efnahvörfum af öðru stigi, þ.e. þeim þar sem hraðinn er háður styrk aðeins eins hvarfefnis. Fyrir þessar tegundir efnahvarfa er deildunarhraðalögmálið skrifað sem:
+Jöfnurnar sem tengja saman styrk hvarfefna og hraðafasta efnahvarfa af öðru stigi geta verið nokkuð flóknar. Til að sýna fram á þetta með sem minnstri flækju verður hér aðeins lýst einföldustu efnahvörfum af öðru stigi, þ.e. þeim þar sem hvarfhraðinn er háður styrk aðeins eins hvarfefnis. Fyrir þessar tegundir efnahvarfa er diffrað hraðalögmál skrifað sem:
 
 <!-- SEG:m68791:para:fs-idm55886848 -->
-Fyrir þessi efnahvörf af öðru stigi er heildaða hraðalögmálið:
+Fyrir þessi efnahvörf af öðru stigi er heildað hraðalögmál:
 
 <!-- SEG:m68791:para:fs-idm19194496 -->
 þar sem liðirnir í jöfnunni hafa sína venjulegu merkingu eins og skilgreint var áður.
 
 <!-- SEG:m68791:example-title:fs-idm85213520-title -->
-Heildaða hraðalögmálið fyrir efnahvarf af öðru stigi
+Heildað hraðalögmál fyrir efnahvarf af öðru stigi
 
 <!-- SEG:m68791:para:fs-idp6881136 -->
-Efnahvarfi bútadíengass (C[[sub:4]]H[[sub:6]]) sem myndar C[[sub:8]]H[[sub:12]] gas er lýst með jöfnunni:
+Efnahvarfi bútadíengass (C[[sub:4]]H[[sub:6]]) sem gefur C[[sub:8]]H[[sub:12]] gas er lýst með jöfnunni:
 
 <!-- SEG:m68791:para:fs-idp68803280 -->
-Þetta „tvíliðunarhvarf“ er af öðru stigi með hraðafasta sem er jafn 5,76 [[MATH:3]] 10[[sup:−2]] L mól[[sup:−1]] mín[[sup:−1]] við ákveðnar aðstæður. Ef upphafsstyrkur bútadíens er 0,200 [[i:M]], hver er þá styrkurinn eftir 10,0 mín?
+Þetta „tvíliðunarefnahvarf“ er af öðru stigi með hraðafasta sem er jafn 5,76 [[MATH:3]] 10[[sup:−2]] L mól[[sup:−1]] mín[[sup:−1]] við ákveðnar aðstæður. Ef upphafsstyrkur bútadíens er 0,200 [[i:M]], hver er þá styrkurinn eftir 10,0 mín.?
 
 <!-- SEG:m68791:para-title:fs-idm47025104-title -->
 Lausn
 
 <!-- SEG:m68791:para:fs-idm47025104 -->
-Fyrir efnahvarf af öðru stigi er heildaða hraðalögmálið skrifað
+Fyrir efnahvarf af öðru stigi er heildað hraðalögmál skrifað
 
 <!-- SEG:m68791:para:fs-idm25993952 -->
-Við þekkjum þrjár breytur í þessari jöfnu: [[[i:A]]][[sub:0]] = 0,200 mól/L, [[i:k]] = 5,76 [[MATH:4]] 10[[sup:−2]] L/mól/mín og [[i:t]] = 10,0 mín. Þess vegna getum við leyst fyrir [[[i:A]]], fjórðu breytuna:
+Við þekkjum þrjár breytur í þessari jöfnu: [[[i:A]]][[sub:0]] = 0,200 mól/L, [[i:k]] = 5,76 [[MATH:4]] 10[[sup:−2]] L/mól/mín. og [[i:t]] = 10,0 mín. Þess vegna getum við leyst fyrir [[[i:A]]], fjórðu breytuna:
 
 <!-- SEG:m68791:para:fs-idm85057584 -->
-Þess vegna eru 0,179 mól/L af bútadíeni eftir að 10,0 mínútum liðnum, samanborið við 0,200 mól/L sem voru upphaflega til staðar.
+Þess vegna eru 0,179 mól/L af bútadíeni eftir að 10,0 mín. liðnum, samanborið við 0,200 mól/L sem voru upphaflega til staðar.
 
 <!-- SEG:m68791:para-title:fs-idp90256-title -->
-Kannaðu þekkingu þína
+Skoðaðu þekkingu þína
 
 <!-- SEG:m68791:para:fs-idp90256 -->
-Ef upphafsstyrkur bútadíens er 0,0200 [[i:M]], hver er þá styrkurinn sem eftir er eftir 20,0 mínútur?
+Ef upphafsstyrkur bútadíens er 0,0200 [[i:M]], hver er þá styrkurinn sem eftir er eftir 20,0 mín?
 
 <!-- SEG:m68791:para:fs-idm23200256 -->
 0,0195 mól/L
@@ -257,16 +257,16 @@ Svar:
 0,0195 mól/L
 
 <!-- SEG:m68791:para:fs-idm88643152 -->
-Heildaða hraðalögmálið fyrir annars stigs efnahvörf hefur form jöfnu beinnar línu:
+Heildað hraðalögmál fyrir efnahvörf af annarri gráðu hefur form jöfnu beinnar línu:
 
 <!-- SEG:m68791:para:fs-idm67290896 -->
-Graf af [[MATH:5]] á móti [[i:t]] fyrir annars stigs efnahvarf er bein lína með hallatöluna [[i:k]] og skurðpunkt við [[i:y]]-ás [[MATH:6]]. Ef grafið er ekki bein lína er efnahvarfið ekki annars stigs.
+Graf af [[MATH:5]] á móti [[i:t]] fyrir efnahvarf af annarri gráðu er bein lína með hallatöluna [[i:k]] og [[i:y]]-skurðpunktinn [[MATH:6]]. Ef grafið er ekki bein lína er efnahvarfið ekki af annarri gráðu.
 
 <!-- SEG:m68791:example-title:fs-idp69093472-title -->
-Myndræn ákvörðun á stigi efnahvarfs og hraðafasta
+Grafísk ákvörðun á gráðu efnahvarfs og hraðafasta
 
 <!-- SEG:m68791:para:fs-idm27496000 -->
-Gögnin hér að neðan eru fyrir sama efnahvarf og lýst er í [[xref:fs-idm85213520]]. Undirbúðu og berðu saman tvö viðeigandi gröf til að ákvarða hvort efnahvarfið sé annaðhvort fyrsta eða annars stigs. Eftir að hafa ákvarðað stig efnahvarfsins skaltu meta gildi fyrir hraðafastann.
+Gögnin hér að neðan eru fyrir sama efnahvarf og lýst er í [[xref:fs-idm85213520]]. Undirbúðu og berðu saman tvö viðeigandi gröf til að ákvarða hvort efnahvarfið sé af fyrstu eða annarri gráðu. Eftir að hafa ákvarðað gráðu efnahvarfsins skaltu áætla gildi fyrir hraðafastann.
 
 <!-- SEG:m68791:para-title:fs-idp4978176-title -->
 Lausn
@@ -275,19 +275,19 @@ Lausn
 [[TABLE:fs-idm140502592]]
 
 <!-- SEG:m68791:para:fs-idm190212352 -->
-Til að greina á milli fyrsta stigs efnahvarfs og annars stigs efnahvarfs skaltu undirbúa graf af ln[C[[sub:4]]H[[sub:6]]][[sub:[[i:t]]]] á móti [[i:t]] og bera það saman við graf af [[MATH:12]] á móti [[i:t]]. Gildin sem þarf fyrir þessi gröf eru eftirfarandi.
+Til að greina á milli efnahvarfs af fyrstu gráðu og efnahvarfs af annarri gráðu skaltu undirbúa graf af ln[C[[sub:4]]H[[sub:6]]][[sub:[[i:t]]]] á móti [[i:t]] og bera það saman við graf af [[MATH:12]] á móti [[i:t]]. Gildin sem þarf fyrir þessi gröf eru eftirfarandi.
 
 <!-- SEG:m68791:para:fs-idp69115360 -->
-Gröfin eru sýnd á [[xref:CNX_Chem_12_04_2OrdKin]], sem sýnir greinilega að grafið af ln[C[[sub:4]]H[[sub:6]]][[sub:[[i:t]]]] á móti [[i:t]] er ekki línulegt, þess vegna er efnahvarfið ekki fyrsta stigs. Grafið af [[MATH:13]] á móti [[i:t]] er línulegt, sem gefur til kynna að efnahvarfið sé annars stigs.
+Gröfin eru sýnd á [[xref:CNX_Chem_12_04_2OrdKin]], sem sýnir greinilega að grafið af ln[C[[sub:4]]H[[sub:6]]][[sub:[[i:t]]]] á móti [[i:t]] er ekki línulegt og því er efnahvarfið ekki af fyrstu gráðu. Grafið af [[MATH:13]] á móti [[i:t]] er línulegt, sem gefur til kynna að efnahvarfið sé af annarri gráðu.
 
 <!-- SEG:m68791:para:fs-idm339836784 -->
-Samkvæmt heildaða hraðalögmálinu fyrir annars stigs efnahvörf er hraðafastinn jafn hallatölu grafsins [[MATH:14]] á móti [[i:t]]. Með því að nota gögnin fyrir [[i:t]] = 0 [[i:s]] og [[i:t]] = 6200 [[i:s]] er hraðafastinn metinn sem hér segir:
+Samkvæmt heildaða hraðalögmálinu fyrir aðra gráðu er hraðafastinn jafn hallatölu grafsins [[MATH:14]] á móti [[i:t]]. Með því að nota gögnin fyrir [[i:t]] = 0 [[i:s]] og [[i:t]] = 6200 [[i:s]] er hraðafastinn áætlaður sem hér segir:
 
 <!-- SEG:m68791:para-title:fs-idm56284464-title -->
 Kannaðu þekkingu þína
 
 <!-- SEG:m68791:para:fs-idm56284464 -->
-Passa eftirfarandi gögn við annars stigs hraðalögmál?
+Passa eftirfarandi gögn við hraðalögmál af annarri gráðu?
 
 <!-- SEG:m68791:para:fs-idp122966448 -->
 Já. Grafið af [[MATH:15]] á móti [[i:t]] er línulegt:
@@ -353,7 +353,7 @@ ln[C[[sub:4]]H[[sub:6]]]
 −6,175
 
 <!-- SEG:m68791:caption:CNX_Chem_12_04_2OrdKin-caption -->
-Þessi tvö gröf sýna fyrsta og annars stigs gröf fyrir tvíliðun C[[sub:4]]H[[sub:6]]. Línulega stefnan í annars stigs grafinu (hægra megin) gefur til kynna að efnahvarfið fylgi annars stigs hvarfhraðafræði.
+Þessi tvö gröf sýna gröf af fyrstu og annarri gráðu fyrir tvíliðun C[[sub:4]]H[[sub:6]]. Línulega stefnan í grafinu fyrir aðra gráðu (hægra megin) gefur til kynna að efnahvarfið fylgi hraðafræði af annarri gráðu.
 
 <!-- SEG:m68791:entry:auto-120 -->
 Tími (s)
@@ -398,37 +398,37 @@ Tími (s)
 0,230
 
 <!-- SEG:m68791:title:fs-idm152558640-title -->
-Núllta stigs efnahvörf
+Efnahvörf af núllgráðu
 
 <!-- SEG:m68791:para:fs-idp474768 -->
-Fyrir núllta stigs efnahvörf er afleiðuhraðalögmálið:
+Fyrir efnahvörf af núllgráðu er diffrað hraðalögmál:
 
 <!-- SEG:m68791:para:fs-idm91448320 -->
-Núllta stigs efnahvarf sýnir því fastan hvarfhraða, óháð styrk hvarfefnis eða hvarfefna þess. Þetta kann að virðast órökrétt, þar sem hvarfhraðinn getur vissulega ekki verið endanlegur þegar styrkur hvarfefnis er núll. Í þessum inngangstexta nægir að taka fram að núllta stigs hvarfhraðafræði sést aðeins við ákveðnar sérstakar aðstæður fyrir sum efnahvörf. Sömu efnahvörf sýna aðra hvarfhraðafræðilega hegðun þegar sérstökum skilyrðum er ekki fullnægt og af þeim sökum er stundum notað varfærnislegra hugtakið [[i:sýndar-núllta stigs]].
+Efnahvarf af núllgráðu sýnir því stöðugan hvarfhraða, óháð styrk hvarfefnis eða hvarfefna. Þetta kann að virðast órökrétt, þar sem hvarfhraðinn getur vissulega ekki verið endanlegur þegar styrkur hvarfefnis er núll. Í þessum inngangstexta nægir að taka fram að hraðafræði af núllgráðu sést aðeins við ákveðnar sérstakar aðstæður fyrir sum efnahvörf. Sömu efnahvörf sýna aðra hraðafræðilega hegðun þegar sérstök skilyrði eru ekki uppfyllt og af þeim sökum er stundum notað varfærnislegra hugtakið [[i:sýndar-núllgráða]].
 
 <!-- SEG:m68791:para:fs-idp73236848 -->
-Heildaða hraðalögmálið fyrir núllta stigs efnahvarf er línulegt fall:
+Heildað hraðalögmál fyrir efnahvarf af núllgráðu er línulegt fall:
 
 <!-- SEG:m68791:para:fs-idm99514160 -->
-Graf af [[[i:A]]] á móti [[i:t]] fyrir núllta stigs efnahvarf er bein lína með hallatöluna [[i:−k]] og [[i:y]]-skurðpunktinn [[[i:A]]][[sub:0]]. [[xref:CNX_Chem_12_04_AmDecomK]] sýnir graf af [NH[[sub:3]]] á móti [[i:t]] fyrir varmasundrun ammoníaks á yfirborði tveggja mismunandi upphitaðra fastra efna. Sundrunarhvarfið sýnir fyrsta stigs hegðun á kvarsyfirborði (SiO[[sub:2]]), eins og sést á veldisvísisfallandi grafi styrks á móti tíma. Á wolframyfirborði er grafið hins vegar línulegt, sem gefur til kynna núllta stigs hvarfhraðafræði.
+Graf af [[[i:A]]] á móti [[i:t]] fyrir núllta stigs efnahvarf er bein lína með hallatöluna [[i:−k]] og [[i:y]]-skurðpunktinn [[[i:A]]][[sub:0]]. [[xref:CNX_Chem_12_04_AmDecomK]] sýnir graf af [NH[[sub:3]]] á móti [[i:t]] fyrir hitaniðurbrot ammóníaks á yfirborði tveggja mismunandi upphitaðra fastra efna. Niðurbrotsefnahvarfið sýnir fyrsta stigs hegðun á kvarsyfirborði (SiO[[sub:2]]), eins og sést á veldisvísisfallandi grafi styrks á móti tíma. Á wolframyfirborði er grafið hins vegar línulegt, sem gefur til kynna núllta stigs hraðafræði.
 
 <!-- SEG:m68791:example-title:fs-idm339943456-title -->
-Grafísk ákvörðun á núllta stigs hraðafasta
+Myndræn ákvörðun á núllta stigs hraðafasta
 
 <!-- SEG:m68791:para:fs-idm358086992 -->
-Notaðu gagnagrafið í [[xref:CNX_Chem_12_04_AmDecomK]] til að meta með grafískum hætti núllta stigs hraðafastann fyrir sundrun ammoníaks á wolframyfirborði.
+Notaðu gagnagrafið í [[xref:CNX_Chem_12_04_AmDecomK]] til að áætla myndrænt núllta stigs hraðafasta fyrir niðurbrot ammóníaks á wolframyfirborði.
 
 <!-- SEG:m68791:para-title:fs-idm382849456-title -->
 Lausn
 
 <!-- SEG:m68791:para:fs-idm382849456 -->
-Heildaða hraðalögmálið fyrir núllta stigs hvarfhraðafræði lýsir línulegu grafi hvarfefnisstyrks, [[[i:A]]][[sub:[[i:t]]]], á móti tíma, [[i:t]], með hallatölu sem er jöfn neikvæðum hraðafasta, −[[i:k]]. Með því að fylgja sömu stærðfræðilegu nálgun og í fyrri dæmum er hallatala línulega gagnagrafsins (fyrir sundrun á W) metin út frá grafinu. Með því að nota styrk ammoníaks við [[i:t]] = 0 og [[i:t]] = 1000 s:
+Heildað hraðalögmál fyrir núllta stigs hraðafræði lýsir línulegu grafi styrks hvarfefnis, [[[i:A]]][[sub:[[i:t]]]], á móti tíma, [[i:t]], með hallatölu sem er jöfn neikvæðum hraðafasta, −[[i:k]]. Með því að fylgja stærðfræðilegri nálgun fyrri dæma er hallatala línulega gagnagrafsins (fyrir niðurbrot á W) áætluð út frá grafinu. Með því að nota styrk ammóníaks við [[i:t]] = 0 og [[i:t]] = 1000 s:
 
 <!-- SEG:m68791:para-title:fs-idm376604432-title -->
 Kannaðu þekkingu þína
 
 <!-- SEG:m68791:para:fs-idm376604432 -->
-Núllta stigs grafið í [[xref:CNX_Chem_12_04_AmDecomK]] sýnir upphafsstyrk ammoníaks sem er 0,0028 mól L[[sup:−1]] og minnkar línulega með tíma í 1000 s. Að því gefnu að engin breyting verði á þessari núllta stigs hegðun, á hvaða tíma (mín) mun styrkurinn ná 0,0001 mól L[[sup:−1]]?
+Núllta stigs grafið í [[xref:CNX_Chem_12_04_AmDecomK]] sýnir upphafsstyrk ammóníaks upp á 0,0028 mól L[[sup:−1]] sem minnkar línulega með tíma í 1000 s. Að því gefnu að engin breyting verði á þessari núllta stigs hegðun, á hvaða tíma (mín) mun styrkurinn ná 0,0001 mól L[[sup:−1]]?
 
 <!-- SEG:m68791:para:fs-idm508285088 -->
 35 mín
@@ -440,7 +440,7 @@ Svar:
 35 mín
 
 <!-- SEG:m68791:caption:CNX_Chem_12_04_AmDecomK-caption -->
-Sundrun NH[[sub:3]] á wolframyfirborði (W) er núllta stigs efnahvarf, en á kvarsyfirborði (SiO[[sub:2]]) er hvarfið fyrsta stigs.
+Niðurbrot NH[[sub:3]] á wolframyfirborði (W) er núllta stigs efnahvarf, en á kvarsyfirborði (SiO[[sub:2]]) er efnahvarfið fyrsta stigs.
 
 <!-- SEG:m68791:title:fs-idp6500464-title -->
 Helmingunartími efnahvarfs
@@ -452,31 +452,31 @@ Fyrsta stigs efnahvörf
 Jöfnu sem tengir helmingunartíma fyrsta stigs efnahvarfs við hraðafasta þess má leiða út frá heildaða hraðalögmálinu á eftirfarandi hátt:
 
 <!-- SEG:m68791:para:fs-idp33747664 -->
-Með því að vísa í skilgreiningu á helmingunartíma, táknað [[MATH:18]], er krafist að styrkur [[i:A]] á þessum tímapunkti sé helmingur af upphafsstyrknum: [[MATH:19]] [[MATH:20]]
+Með því að beita skilgreiningunni á helmingunartíma, táknað með [[MATH:18]], er krafist að styrkur [[i:A]] á þessum tímapunkti sé helmingur af upphafsstyrk þess: [[MATH:19]] [[MATH:20]]
 
 <!-- SEG:m68791:para:fs-idp123084256 -->
 Með því að setja þessa liði inn í endurraðað heildað hraðalögmál og einfalda fæst jafnan fyrir helmingunartíma:
 
 <!-- SEG:m68791:para:fs-idm124479504 -->
-Þessi jafna lýsir væntanlegu öfugu sambandi milli helmingunartíma hvarfsins og hraðafasta þess, [[i:k]]. Hraðari efnahvörf sýna stærri hraðafasta og samsvarandi styttri helmingunartíma. Hægari efnahvörf sýna minni hraðafasta og lengri helmingunartíma.
+Þessi jafna lýsir væntanlegu andhverfu sambandi milli helmingunartíma efnahvarfsins og hraðafasta þess, [[i:k]]. Hraðari efnahvörf sýna stærri hraðafasta og samsvarandi styttri helmingunartíma. Hægari efnahvörf sýna minni hraðafasta og lengri helmingunartíma.
 
 <!-- SEG:m68791:example-title:fs-idm35443680-title -->
 Útreikningur á fyrsta stigs hraðafasta með helmingunartíma
 
 <!-- SEG:m68791:para:fs-idm33355984 -->
-Reiknaðu hraðafastann fyrir fyrsta stigs sundrun vetnisperoxíðs í vatni við 40 °C með því að nota gögnin sem gefin eru í [[xref:CNX_Chem_12_04_HPerDcmp]].
+Reiknaðu hraðafastann fyrir fyrsta stigs niðurbrot vetnisperoxíðs í vatni við 40 °C með því að nota gögnin sem gefin eru í [[xref:CNX_Chem_12_04_HPerDcmp]].
 
 <!-- SEG:m68791:para-title:fs-idp122074992-title -->
 Lausn
 
 <!-- SEG:m68791:para:fs-idp122074992 -->
-Skoðun á styrk/tíma gögnum í [[xref:CNX_Chem_12_04_HPerDcmp]] sýnir að helmingunartími fyrir sundrun H[[sub:2]]O[[sub:2]] er 2,16 [[MATH:21]] 10[[sup:4]] s:
+Skoðun á styrk/tíma gögnum í [[xref:CNX_Chem_12_04_HPerDcmp]] sýnir að helmingunartími fyrir niðurbrot H[[sub:2]]O[[sub:2]] er 2,16 [[MATH:21]] 10[[sup:4]] s:
 
 <!-- SEG:m68791:para-title:fs-idp33836864-title -->
 Kannaðu þekkingu þína
 
 <!-- SEG:m68791:para:fs-idp33836864 -->
-Fyrsta stigs geislavirk hrörnun joðs-131 sýnir hraðafastann 0,138 d[[sup:−1]]. Hver er helmingunartími þessarar hrörnunar?
+Fyrsta stigs geislavirka niðurbrot joð-131 sýnir hraðafasta upp á 0,138 d[[sup:−1]]. Hver er helmingunartími þessa niðurbrots?
 
 <!-- SEG:m68791:para:fs-idm101854176 -->
 5,02 d.
@@ -488,7 +488,7 @@ Svar:
 5,02 d.
 
 <!-- SEG:m68791:caption:CNX_Chem_12_04_HPerDcmp-caption -->
-Sundrun H[[sub:2]]O[[sub:2]] [[MATH:22]] við 40 °C er sýnd. Styrkur litarins táknar styrk H[[sub:2]]O[[sub:2]] á tilgreindum tímum; H[[sub:2]]O[[sub:2]] er í raun litlaust.
+Niðurbrot H[[sub:2]]O[[sub:2]] [[MATH:22]] við 40 °C er sýnt. Styrkur litarins táknar styrk H[[sub:2]]O[[sub:2]] á tilgreindum tímum; H[[sub:2]]O[[sub:2]] er í raun litlaust.
 
 <!-- SEG:m68791:title:fs-idm87302368-title -->
 Annars stigs efnahvörf
@@ -506,25 +506,25 @@ Takmarkaðu [[i:t]] við [[i:t]][[sub:1/2]]
 skilgreindu [[[i:A]]][[sub:[[i:t]]]] sem helming af [[[i:A]]][[sub:0]]
 
 <!-- SEG:m68791:para:fs-idm148624880 -->
-og settu síðan inn í heildaða hraðalögmálið og einfaldaðu:
+og settu síðan inn í heildað hraðalögmál og einfaldaðu:
 
 <!-- SEG:m68791:para:fs-idm75571200 -->
-Fyrir annars stigs efnahvarf er [[MATH:23]] í öfugu hlutfalli við styrk hvarfefnisins og helmingunartíminn eykst eftir því sem hvarfið gengur áfram vegna þess að styrkur hvarfefnisins minnkar. Ólíkt fyrsta stigs efnahvörfum er ekki hægt að reikna hraðafastann fyrir annars stigs efnahvarf beint út frá helmingunartímanum nema upphafsstyrkurinn sé þekktur.
+Fyrir annars stigs efnahvarf er [[MATH:23]] í öfugu hlutfalli við styrk hvarfefnisins og helmingunartíminn eykst eftir því sem efnahvarfið heldur áfram vegna þess að styrkur hvarfefnisins minnkar. Ólíkt fyrsta stigs efnahvörfum er ekki hægt að reikna hraðafasta annars stigs efnahvarfs beint út frá helmingunartímanum nema upphafsstyrkurinn sé þekktur.
 
 <!-- SEG:m68791:title:fs-idm130842880-title -->
 Núllta stigs efnahvörf
 
 <!-- SEG:m68791:para:fs-idm187241520 -->
-Eins og fyrir önnur hvarfstig er hægt að leiða út jöfnu fyrir helmingunartíma núllta stigs efnahvarfs út frá heildaða hraðalögmálinu:
+Eins og fyrir önnur stigs efnahvörf er hægt að leiða út jöfnu fyrir helmingunartíma núllta stigs efnahvarfs út frá heildaða hraðalögmálinu:
 
 <!-- SEG:m68791:para:fs-idp132272768 -->
-Með því að takmarka tímann og styrkinn við það sem skilgreint er með helmingunartíma: [[MATH:24]] og [[MATH:25]]. Með því að setja þessa liði inn í heildaða hraðalögmálið fyrir núllta stig fæst:
+Með því að takmarka tíma og styrk við það sem skilgreint er með helmingunartíma: [[MATH:24]] og [[MATH:25]]. Með því að setja þessi hugtök inn í heildað hraðalögmál núllta stigs fæst:
 
 <!-- SEG:m68791:para:fs-idm115295344 -->
-Eins og fyrir öll hvarfstig er helmingunartími núllta stigs efnahvarfs í öfugu hlutfalli við hraðafasta þess. Hins vegar eykst helmingunartími núllta stigs efnahvarfs eftir því sem upphafsstyrkurinn eykst.
+Eins og fyrir öll stigs efnahvörf er helmingunartími núllta stigs efnahvarfs í öfugu hlutfalli við hraðafasta þess. Hins vegar eykst helmingunartími núllta stigs efnahvarfs eftir því sem upphafsstyrkurinn eykst.
 
 <!-- SEG:m68791:para:fs-idm22269120 -->
-Jöfnur fyrir bæði afleiðu- og heildað hraðalögmál og samsvarandi helmingunartímar fyrir núllta, fyrsta og annars stigs efnahvörf eru teknar saman í [[xref:fs-idm117482272]].
+Jöfnur fyrir bæði diffruð og heilduð hraðalögmál og samsvarandi helmingunartímar fyrir núllta, fyrsta og annars stigs efnahvörf eru teknar saman í [[xref:fs-idm117482272]].
 
 <!-- SEG:m68791:entry:auto-177 -->
 Samantekt á hraðalögmálum fyrir núllta, fyrsta og annars stigs efnahvörf
@@ -539,7 +539,7 @@ Samantekt á hraðalögmálum fyrir núllta, fyrsta og annars stigs efnahvörf
 Annars stigs
 
 <!-- SEG:m68791:entry:auto-181 -->
-hraðalögmál
+hraðajafna
 
 <!-- SEG:m68791:entry:auto-182 -->
 hraði = [[i:k]]
@@ -575,7 +575,7 @@ heildað hraðalögmál
 [[MATH:28]]
 
 <!-- SEG:m68791:entry:auto-193 -->
-myndrit sem þarf fyrir línulega aðhverfingu hraðagagna
+rit sem þarf fyrir línulega aðhverfingu hraðagagna
 
 <!-- SEG:m68791:entry:auto-194 -->
 [[[i:A]]] á móti [[i:t]]
@@ -587,7 +587,7 @@ ln[[[i:A]]] á móti [[i:t]]
 [[MATH:29]] á móti [[i:t]]
 
 <!-- SEG:m68791:entry:auto-197 -->
-samband milli hallatölu línulegs myndrits og hraðafasta
+samband milli hallatölu línulegs rits og hraðafasta
 
 <!-- SEG:m68791:entry:auto-198 -->
 [[i:k]] = −hallatala
@@ -614,19 +614,19 @@ helmingunartími
 Helmingunartími fyrir núllta og annars stigs efnahvörf
 
 <!-- SEG:m68791:para:fs-idm494886416 -->
-Hver er helmingunartíminn fyrir tvíliðun bútadíens sem lýst er í [[xref:fs-idm85213520]]?
+Hver er helmingunartími tvíliðunarefnahvarfs bútadíens sem lýst er í [[xref:fs-idm85213520]]?
 
 <!-- SEG:m68791:para-title:fs-idm376934816-title -->
 Lausn
 
 <!-- SEG:m68791:para:fs-idm376934816 -->
-Efnahvarfið sem um ræðir er annars stigs, er hafið með 0,200 mól L[[sup:−1]] hvarfefnislausn og hefur hraðafastann 0,0576 L mól[[sup:−1]] mín[[sup:−1]]. Með því að setja þessar stærðir inn í jöfnuna fyrir helmingunartíma annars stigs efnahvarfs fæst:
+Efnahvarfið sem um ræðir er annars stigs, er hafið með 0,200 mól L[[sup:−1]] hvarfefnislausn og sýnir hraðafasta upp á 0,0576 L mól[[sup:−1]] mín[[sup:−1]]. Með því að setja þessar stærðir inn í jöfnu fyrir helmingunartíma annars stigs efnahvarfs fæst:
 
 <!-- SEG:m68791:para-title:fs-idm327019216-title -->
 Skoðaðu þekkingu þína
 
 <!-- SEG:m68791:para:fs-idm327019216 -->
-Hver er helmingunartíminn (mín) fyrir varmasundrun ammoníaks á volframi (sjá [[xref:fs-idm339943456]])?
+Hver er helmingunartíminn (mín) fyrir varmaniðurbrot ammoníaks á volframi (sjá [[xref:fs-idm339943456]])?
 
 <!-- SEG:m68791:para:fs-idm339802240 -->
 18 mín
@@ -638,16 +638,16 @@ Svar:
 18 mín
 
 <!-- SEG:m68791:para:fs-idm99562880 -->
-[[term:Helmingunartími efnahvarfs ([[i:t]][[sub:1/2]])|term-00002]] er sá tími sem það tekur fyrir helming af tilteknu magni hvarfefnis að eyðast. Í hverjum helmingunartíma sem á eftir kemur eyðist helmingur af þeim styrk hvarfefnisins sem eftir er. Ef við notum niðurbrot vetnisperoxíðs ([[docref:m68786#CNX_Chem_12_01_KDataH2O2]]) sem dæmi sjáum við að á fyrsta helmingunartímanum (frá 0,00 klst. til 6,00 klst.) minnkar styrkur H[[sub:2]]O[[sub:2]] úr 1,000 [[i:M]] í 0,500 [[i:M]]. Á öðrum helmingunartímanum (frá 6,00 klst. til 12,00 klst.) minnkar hann úr 0,500 [[i:M]] í 0,250 [[i:M]]; á þriðja helmingunartímanum minnkar hann úr 0,250 [[i:M]] í 0,125 [[i:M]]. Styrkur H[[sub:2]]O[[sub:2]] minnkar um helming á hverri 6,00 klukkustunda lotu sem á eftir kemur. Niðurbrot vetnisperoxíðs er fyrsta stigs efnahvarf og eins og sýna má fram á er helmingunartími fyrsta stigs efnahvarfs óháður styrk hvarfefnisins. Hins vegar er helmingunartími efnahvarfa af öðrum stigum háður styrk hvarfefnanna.
+[[term:Helmingunartími efnahvarfs ([[i:t]][[sub:1/2]])|term-00002]] er sá tími sem það tekur fyrir helming af tilteknu magni hvarfefnis að eyðast. Í hverjum helmingunartíma sem á eftir kemur eyðist helmingur af þeim styrk hvarfefnisins sem eftir er. Ef við notum niðurbrot vetnisperoxíðs ([[docref:m68786#CNX_Chem_12_01_KDataH2O2]]) sem dæmi sjáum við að á fyrsta helmingunartímanum (frá 0,00 klst. til 6,00 klst.) minnkar styrkur H[[sub:2]]O[[sub:2]] úr 1,000 [[i:M]] í 0,500 [[i:M]]. Á öðrum helmingunartímanum (frá 6,00 klst. til 12,00 klst.) minnkar hann úr 0,500 [[i:M]] í 0,250 [[i:M]]; á þriðja helmingunartímanum minnkar hann úr 0,250 [[i:M]] í 0,125 [[i:M]]. Styrkur H[[sub:2]]O[[sub:2]] helmingast á hverju 6,00 klukkustunda tímabili. Niðurbrot vetnisperoxíðs er fyrsta stigs efnahvarf og eins og sýna má fram á er helmingunartími fyrsta stigs efnahvarfs óháður styrk hvarfefnisins. Hins vegar er helmingunartími efnahvarfa af öðrum stigum háður styrk hvarfefnanna.
 
 <!-- SEG:m68791:title:fs-idm63099680-title -->
 Lykilhugtök og samantekt
 
 <!-- SEG:m68791:para:fs-idm85329552 -->
-Heilduð hraðalögmál eru stærðfræðilega leidd út frá deildunarhraðalögmálum og þau lýsa tímabundinni breytingu á styrk hvarfefna og myndefna.
+Heilduð hraðalögmál eru stærðfræðilega leidd út frá deilduðum hraðalögmálum og þau lýsa tímaháðni styrks hvarfefna og myndefna.
 
 <!-- SEG:m68791:para:fs-idp258559744 -->
-Helmingunartími efnahvarfs er sá tími sem það tekur að minnka magn tiltekins hvarfefnis um helming. Helmingunartími efnahvarfs er breytilegur eftir hraðafasta og, fyrir sum efnahvörf, styrk hvarfefnis. Helmingunartími núllta stigs efnahvarfs styttist eftir því sem upphafsstyrkur hvarfefnisins í efnahvarfinu minnkar. Helmingunartími fyrsta stigs efnahvarfs er óháður styrk og helmingunartími annars stigs efnahvarfs styttist eftir því sem styrkurinn eykst.
+Helmingunartími efnahvarfs er sá tími sem þarf til að minnka magn tiltekins hvarfefnis um helming. Helmingunartími efnahvarfs er breytilegur eftir hraðafasta og, fyrir sum hvarfstig, styrk hvarfefnis. Helmingunartími núllta stigs efnahvarfs styttist eftir því sem upphafsstyrkur hvarfefnisins í efnahvarfinu minnkar. Helmingunartími fyrsta stigs efnahvarfs er óháður styrk og helmingunartími annars stigs efnahvarfs styttist eftir því sem styrkurinn eykst.
 
 <!-- SEG:m68791:title:fs-idm150818384-title -->
 Lykiljafna
@@ -740,7 +740,7 @@ Tími (s)
 Hreint óson brotnar hægt niður í súrefni, [[MATH:47]] Notaðu gögnin sem gefin eru í grafískri aðferð og ákvarðaðu stig og hraðafasta efnahvarfsins.[[BR]] [[TABLE:fs-idp72766816]]
 
 <!-- SEG:m68791:solution:fs-idm228482928 -->
-[[MEDIA:2]][[BR]] Grafið er fallega línulegt, þannig að efnahvarfið er annars stigs. [[i:k]] = 50,1 L mól[[sup:−1]] klst.[[sup:−1]]
+[[MEDIA:2]][[BR]] Grafið er nokkuð línulegt, þannig að efnahvarfið er annars stigs. [[i:k]] = 50,1 L mól[[sup:−1]] klst[[sup:−1]]
 
 <!-- SEG:m68791:problem:fs-idp122307472 -->
 Notaðu grafíska aðferð til að ákvarða stig og hraðafasta eftirfarandi efnahvarfs út frá gefnum gögnum:[[BR]] [[MATH:61]][[BR]] [[TABLE:fs-idm133654768]]
@@ -752,19 +752,19 @@ Hver er helmingunartími fyrir fyrsta stigs niðurbrot fosfórs-32? [[MATH:62]] 
 14,3 d
 
 <!-- SEG:m68791:problem:fs-idp123053008 -->
-Hver er helmingunartími fyrir fyrsta stigs hrörnun kolefnis-14? [[MATH:64]] Hraðafastinn fyrir hrörnunina er 1,21 [[MATH:65]] 10[[sup:−4]] ár[[sup:−1]].
+Hver er helmingunartími fyrir fyrsta stigs hrörnun kolefnis-14? [[MATH:64]] Hraðafasti fyrir hrörnunina er 1,21 [[MATH:65]] 10[[sup:−4]] ár[[sup:−1]].
 
 <!-- SEG:m68791:problem:fs-idp120043280 -->
-Hver er helmingunartími fyrir niðurbrot NOCl þegar styrkur NOCl er 0,15 [[i:M]]? Hraðafastinn fyrir þetta annars stigs efnahvarf er 8,0 [[MATH:66]] 10[[sup:−8]] L mól[[sup:−1]] s[[sup:−1]].
+Hver er helmingunartími fyrir niðurbrot NOCl þegar styrkur NOCl er 0,15 [[i:M]]? Hraðafasti fyrir þetta annars stigs efnahvarf er 8,0 [[MATH:66]] 10[[sup:−8]] L mól[[sup:−1]] s[[sup:−1]].
 
 <!-- SEG:m68791:solution:fs-idm23381360 -->
 8,3 [[MATH:67]] 10[[sup:7]] s
 
 <!-- SEG:m68791:problem:fs-idm71090288 -->
-Hver er helmingunartími fyrir niðurbrot O[[sub:3]] þegar styrkur O[[sub:3]] er 2,35 [[MATH:68]] 10[[sup:−6]] [[i:M]]? Hraðafastinn fyrir þetta annars stigs efnahvarf er 50,4 L mól[[sup:−1]] klst.[[sup:−1]].
+Hver er helmingunartími fyrir niðurbrot O[[sub:3]] þegar styrkur O[[sub:3]] er 2,35 [[MATH:68]] 10[[sup:−6]] [[i:M]]? Hraðafasti fyrir þetta annars stigs efnahvarf er 50,4 L mól[[sup:−1]] klst.[[sup:−1]].
 
 <!-- SEG:m68791:problem:fs-idm110942832 -->
-Efnahvarf efnasambandsins [[i:A]] sem gefur efnasamböndin [[i:C]] og [[i:D]] reyndist vera annars stigs með tilliti til [[i:A]]. Hraðafastinn fyrir efnahvarfið var ákvarðaður 2,42 L mól[[sup:−1]] s[[sup:−1]]. Ef upphafsstyrkurinn er 0,500 mól/L, hvert er þá gildi t[[sub:1/2]]?
+Efnahvarf efnasambandsins [[i:A]] sem gefur efnasamböndin [[i:C]] og [[i:D]] reyndist vera annars stigs með tilliti til [[i:A]]. Hraðafasti fyrir efnahvarfið var ákvarðaður sem 2,42 L mól[[sup:−1]] s[[sup:−1]]. Ef upphafsstyrkur er 0,500 mól/L, hvert er þá gildi t[[sub:1/2]]?
 
 <!-- SEG:m68791:solution:fs-idm46875440 -->
 0,826 s
@@ -773,28 +773,28 @@ Efnahvarf efnasambandsins [[i:A]] sem gefur efnasamböndin [[i:C]] og [[i:D]] re
 Helmingunartími efnahvarfs efnasambandsins [[i:A]] sem gefur efnasamböndin [[i:D]] og [[i:E]] er 8,50 mínútur þegar upphafsstyrkur [[i:A]] er 0,150 M. Hversu langan tíma tekur það fyrir styrkinn að falla niður í 0,0300 M ef efnahvarfið er (a) fyrsta stigs með tilliti til [[i:A]] eða (b) annars stigs með tilliti til [[i:A]]?
 
 <!-- SEG:m68791:problem:fs-idp55839088 -->
-Sumar bakteríur eru ónæmar fyrir sýklalyfinu pensilíni vegna þess að þær framleiða pensilínasa, ensím með mólmassa 3 [[MATH:69]] 10[[sup:4]] g/mól sem breytir pensilíni í óvirkar sameindir. Þrátt fyrir að hraðafræði ensímhvataðra efnahvarfa geti verið flókin, er hægt að lýsa þessu efnahvarfi við lágan styrk með hraðajöfnu sem er fyrsta stigs með tilliti til hvatans (pensilínasa) og sem felur einnig í sér styrk pensilíns. Ákvarðaðu út frá eftirfarandi gögnum: 1,0 L af lausn sem inniheldur 0,15 µg (0,15 [[MATH:70]] 10[[sup:−6]] g) af pensilínasa, stig efnahvarfsins með tilliti til pensilíns og gildi hraðafastans.[[BR]] [[TABLE:fs-idp79245440]]
+Sumar bakteríur eru ónæmar fyrir sýklalyfinu penisillíni vegna þess að þær framleiða penisillínasa, ensím með mólmassa 3 [[MATH:69]] 10[[sup:4]] g/mól sem breytir penisillíni í óvirkar sameindir. Þrátt fyrir að hraðafræði ensímhvataðra efnahvarfa geti verið flókin, er hægt að lýsa þessu efnahvarfi við lágan styrk með hraðajöfnu sem er fyrsta stigs með tilliti til hvatans (penisillínasa) og sem einnig tekur mið af styrk penisillíns. Ákvarðið stig efnahvarfsins með tilliti til penisillíns og gildi hraðafastans út frá eftirfarandi gögnum: 1,0 L af lausn sem inniheldur 0,15 µg (0,15 [[MATH:70]] 10[[sup:−6]] g) af penisillínasa.[[BR]] [[TABLE:fs-idp79245440]]
 
 <!-- SEG:m68791:solution:fs-idp69326720 -->
 Efnahvarfið er fyrsta stigs. [[i:k]] = 1,0 [[MATH:77]] 10[[sup:7]] L mól[[sup:−1]] mín[[sup:−1]]
 
 <!-- SEG:m68791:problem:fs-idm22532432 -->
-Bæði teknetín-99 og tallín-201 eru notuð til að mynda hjartavöðva hjá sjúklingum með grun um hjartavandamál. Helmingunartímarnir eru 6 klst. og 73 klst. Hversu mörg prósent af geislavirkni yrðu eftir fyrir hvora samsætuna eftir 2 daga (48 klst.)?
+Bæði teknetín-99 og þallín-201 eru notuð til að mynda hjartavöðva hjá sjúklingum með grun um hjartavandamál. Helmingunartímarnir eru 6 klst. og 73 klst. Hversu mörg prósent af geislavirkni yrðu eftir fyrir hvora samsætuna eftir 2 daga (48 klst.)?
 
 <!-- SEG:m68791:problem:fs-idm84405120 -->
 Það eru tvær sameindir með formúluna C[[sub:3]]H[[sub:6]]. Própen, [[MATH:78]] er einliða fjölliðunnar pólýprópýlen, sem er notað í teppi fyrir inni- og útisvæði. Sýklóprópan er notað sem svæfingarlyf:[[BR]] [[MEDIA:3]]
 
 <!-- SEG:m68791:problem:fs-idm21762608 -->
-Þegar sýklóprópan er hitað í 499 °C endurraðast það (ísómerast) og myndar própen með hraðafasta upp á[[BR]]5,95 [[MATH:79]] 10[[sup:−4]] s[[sup:−1]]. Hver er helmingunartími þessa efnahvarfs? Hve stór hluti sýklóprópans er eftir eftir 0,75 klst. við 499 °C?
+Þegar sýklóprópan er hitað í 499 °C endurraðast það (ísómerast) og myndar própen með hraðafasta upp á[[BR]]5,95 [[MATH:79]] 10[[sup:−4]] s[[sup:−1]]. Hver er helmingunartími þessa efnahvarfs? Hversu stór hluti sýklóprópans er eftir eftir 0,75 klst. við 499 °C?
 
 <!-- SEG:m68791:solution:fs-idp5273216 -->
-1,16 × 10[[sup:3]] s; 20% eftir
+1,16 × 10[[sup:3]] s ; 20% eftir
 
 <!-- SEG:m68791:problem:fs-idm45931824 -->
-Flúor-18 er geislavirk samsæta sem hrörnar með jáeindarútblæstri og myndar súrefni-18 með helmingunartíma 109,7 mín. (Jáeind er eind með massa rafeindar og staka jákvæða hleðslu; jafnan er [[MATH:80]] Læknar nota [[sup:18]]F til að rannsaka heilann með því að sprauta magni af flúorsettu glúkósa í blóð sjúklings. Glúkósinn safnast fyrir á þeim svæðum þar sem heilinn er virkur og þarfnast næringar.
+Flúor-18 er geislavirk samsæta sem hrörnar með útsendingu jáeindar og myndar súrefni-18 með helmingunartíma 109,7 mín. (Jáeind er eind með massa rafeindar og staka jákvæða hleðslu; jafnan er [[MATH:80]] Læknar nota [[sup:18]]F til að rannsaka heilann með því að sprauta magni af flúorsettu glúkósa í blóð sjúklings. Glúkósinn safnast fyrir á þeim svæðum þar sem heilinn er virkur og þarfnast næringar.
 
 <!-- SEG:m68791:problem:fs-idm57070352 -->
-(a) Hver er hraðafastinn fyrir niðurbrot flúors-18?
+(a) Hver er hraðafasti fyrir niðurbrot flúors-18?
 
 <!-- SEG:m68791:problem:fs-idm57069968 -->
 (b) Ef sýni af glúkósa sem inniheldur geislavirkt flúor-18 er sprautað í blóðið, hversu mörg prósent af geislavirkni verða eftir eftir 5,59 klst.?
@@ -803,22 +803,22 @@ Flúor-18 er geislavirk samsæta sem hrörnar með jáeindarútblæstri og mynda
 (c) Hversu langan tíma tekur það fyrir 99,99% af [[sup:18]]F að hrörna?
 
 <!-- SEG:m68791:problem:fs-idp89139280 -->
-Gerum ráð fyrir að helmingunartími stera sem íþróttamaður tekur sé 42 dagar. Að því gefnu að sterarnir brotni niður í líkamanum með fyrsta stigs ferli, hversu langan tíma tæki það fyrir [[MATH:81]] af upphafsskammtinum að vera eftir í líkama íþróttamannsins?
+Gerum ráð fyrir að helmingunartími stera sem íþróttamaður tekur sé 42 dagar. Miðað við að sterarnir brotni niður í líkamanum með fyrsta stigs ferli, hversu langan tíma tæki það fyrir [[MATH:81]] af upphafsskammtinum að vera eftir í líkama íþróttamannsins?
 
 <!-- SEG:m68791:solution:fs-idp89141488 -->
 252 dagar
 
 <!-- SEG:m68791:problem:fs-idp120051712 -->
-Nýlega fannst beinagrind Ríkharðs III konungs undir bílastæði í Englandi. Ef vefjasýni úr beinagrindinni innihalda um 93,79% af því kolefni-14 sem búast má við í lifandi vef, hvaða ár dó Ríkharður III konungur? Helmingunartími kolefnis-14 er 5730 ár.
+Nýlega fannst beinagrind Ríkharðs III konungs undir bílastæði í Englandi. Ef vefjasýni úr beinagrindinni innihalda um 93,79% af því kolefni-14 sem búast má við í lifandi vef, hvaða ár dó Ríkharður III konungur? Helmingunartími fyrir kolefni-14 er 5730 ár.
 
 <!-- SEG:m68791:problem:fs-idp121893664 -->
-Nítróglýserín er afar viðkvæmt sprengiefni. Í röð vandlega stýrðra tilrauna voru sýni af sprengiefninu hituð í 160 °C og fyrsta stigs niðurbrot þeirra rannsakað. Ákvarðaðu meðalhraðafastana fyrir hverja tilraun með því að nota eftirfarandi gögn:[[BR]] [[TABLE:fs-idp121895360]]
+Nítróglýserín er afar viðkvæmt sprengiefni. Í röð vandlega stýrðra tilrauna voru sýni af sprengiefninu hituð í 160 °C og fyrsta stigs niðurbrot þeirra rannsakað. Ákvarðaðu meðalhraðafasta fyrir hverja tilraun með því að nota eftirfarandi gögn:[[BR]] [[TABLE:fs-idp121895360]]
 
 <!-- SEG:m68791:solution:fs-idm215408672 -->
 [[TABLE:fs-idm247275488]]
 
 <!-- SEG:m68791:problem:fs-idm43018368 -->
-Undanfarin 10 ár hefur ómettaða kolvetnið 1,3-bútadíen [[MATH:83]] verið í 38. sæti yfir 50 efstu iðnaðarefnin. Það er aðallega notað til framleiðslu á gervigúmmíi. Hverfa þess er einnig til sem sýklóbúten:[[BR]] [[MEDIA:4]]
+Undanfarin 10 ár hefur ómettaða kolvetnið 1,3-bútadíen [[MATH:83]] verið í 38. sæti yfir 50 efstu iðnaðarefnin. Það er aðallega notað til framleiðslu á gervigúmmíi. Hverfa er einnig til sem sýklóbúten:[[BR]] [[MEDIA:4]]
 
 <!-- SEG:m68791:problem:fs-idp18442736 -->
 Hverfun sýklóbútens í bútadíen er fyrsta stigs og hraðafastinn hefur verið mældur 2,0 [[MATH:84]] 10[[sup:−4]] s[[sup:−1]] við 150 °C í 0,53 L flösku. Ákvarðaðu hlutþrýsting sýklóbútens og styrk þess eftir 30,0 mínútur ef hverfunar-efnahvarf er framkvæmt við 150 °C með upphafsþrýsting upp á 55 torr.
@@ -827,7 +827,7 @@ Hverfun sýklóbútens í bútadíen er fyrsta stigs og hraðafastinn hefur veri
 helmingunartími efnahvarfs ([[i:t]][[sub:l/2]])
 
 <!-- SEG:m68791:glossary-def:fs-idm46849712-def -->
-tíminn sem það tekur fyrir helming af gefnu magni hvarfefnis að eyðast
+tíminn sem það tekur fyrir helming af tilteknu magni hvarfefnis að eyðast
 
 <!-- SEG:m68791:glossary-term:fs-idm46847680-term -->
 heildað hraðalögmál

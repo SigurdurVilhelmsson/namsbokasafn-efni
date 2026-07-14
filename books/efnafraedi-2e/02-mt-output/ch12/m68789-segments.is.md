@@ -2,7 +2,7 @@
 Hraðajöfnur
 
 <!-- SEG:m68789:abstract:auto-2 -->
-Þegar þú hefur lokið þessum kafla muntu geta:
+Þegar þú hefur lokið við þennan kafla getur þú:
 
 <!-- SEG:m68789:abstract-item:abstract-item-1 -->
 Útskýrt form og virkni hraðajöfnu
@@ -14,13 +14,13 @@ Notað hraðajöfnur til að reikna út hvarfhraða
 Notað gögn um hraða og styrk til að bera kennsl á stig efnahvarfa og leiða út hraðajöfnur
 
 <!-- SEG:m68789:para:fs-idm238441168 -->
-Eins og lýst var í fyrri einingu hefur styrkur hvarfefna oft áhrif á hraða efnahvarfs. [[term:Hraðajöfnur|term-00001]] (stundum kallaðar [[i:deildunarhraðajöfnur]]) eða [[term:hraðajöfnur|term-00002]] eru stærðfræðilegar jöfnur sem lýsa sambandi milli hraða efnahvarfs og styrks hvarfefna þess. Sem dæmi má nefna efnahvarfið sem lýst er með efnajöfnunni
+Eins og lýst var í fyrri einingu hefur styrkur hvarfefna oft áhrif á hraða efnahvarfs. [[term:Hraðajöfnur|term-00001]] (stundum kallaðar [[i:deildanlegar hraðajöfnur]]) eða [[term:hraðalögmál|term-00002]] eru stærðfræðilegar jöfnur sem lýsa sambandi milli hraða efnahvarfs og styrks hvarfefna þess. Sem dæmi má nefna efnahvarfið sem lýst er með efnajöfnunni
 
 <!-- SEG:m68789:para:fs-idm656673904 -->
 þar sem [[i:a]] og [[i:b]] eru stuðlar efnajöfnunnar. Hraðajafna þessa efnahvarfs er skrifuð sem:
 
 <!-- SEG:m68789:para:fs-idp18257184 -->
-þar sem [[[i:A]]] og [[[i:B]]] tákna mólstyrk hvarfefna og [[i:k]] er [[term:hraðafastinn|term-00003]], sem er sértækur fyrir tiltekið efnahvarf við tiltekið hitastig. Veldin [[i:m]] og [[i:n]] eru [[term:stig efnahvarfsins|term-00004]] og eru yfirleitt jákvæðar heiltölur, þó þau geti verið brot, neikvæð eða núll. Hraðafastinn [[i:k]] og stig efnahvarfsins [[i:m]] og [[i:n]] verða að vera ákvörðuð með tilraunum með því að fylgjast með því hvernig hraði efnahvarfs breytist þegar styrkur hvarfefnanna breytist. Hraðafastinn [[i:k]] er óháður styrk hvarfefnanna en hann breytist með hitastigi.
+þar sem [[[i:A]]] og [[[i:B]]] tákna mólstyrk hvarfefna og [[i:k]] er [[term:hraðafastinn|term-00003]], sem er sértækur fyrir tiltekið efnahvarf við tiltekið hitastig. Veldisvísarnir [[i:m]] og [[i:n]] eru [[term:stig efnahvarfsins|term-00004]] og eru yfirleitt jákvæðar heiltölur, þótt þær geti verið brot, neikvæðar eða núll. Hraðafastinn [[i:k]] og stig efnahvarfsins [[i:m]] og [[i:n]] verða að vera ákvörðuð með tilraunum með því að fylgjast með því hvernig hraði efnahvarfs breytist þegar styrkur hvarfefnanna breytist. Hraðafastinn [[i:k]] er óháður styrk hvarfefnanna en hann breytist með hitastigi.
 
 <!-- SEG:m68789:para:fs-idm115903376 -->
 Stig efnahvarfs í hraðajöfnu lýsa stærðfræðilegu sambandi hraða og styrks hvarfefna. Ef við vísum í almennu hraðajöfnuna hér að ofan er efnahvarfið af [[i:m]]-ta stigi með tilliti til [[i:A]] og af [[i:n]]-ta stigi með tilliti til [[i:B]]. Til dæmis, ef [[i:m]] = 1 og [[i:n]] = 2, er efnahvarfið af fyrsta stigi í [[i:A]] og af öðru stigi í [[i:B]]. [[term:Heildarstig efnahvarfsins|term-00005]] er einfaldlega summa stiga fyrir hvert hvarfefni. Fyrir dæmið um hraðajöfnuna hér er efnahvarfið af þriðja stigi í heildina (1 + 2 = 3). Nokkur sértæk dæmi eru sýnd hér að neðan til að útskýra þetta hugtak nánar.
@@ -59,22 +59,22 @@ Efnahvarfið er af öðru stigi í NO[[sub:2]]; því er [[i:m]] = 2. Efnahvarfi
 Mundu að tala í núllta veldi er jöfn 1, þannig að [CO][[sup:0]] = 1, sem er ástæðan fyrir því að styrklið CO má sleppa úr hraðajöfnunni: hvarfhraðinn er eingöngu háður styrk NO[[sub:2]]. Í síðari kafla um hvarfkerfi verður útskýrt hvernig styrkur hvarfefnis getur ekki haft nein áhrif á hvarfhraða þrátt fyrir að taka þátt í efnahvarfinu.
 
 <!-- SEG:m68789:para-title:fs-idm273206544-title -->
-Spyrðu þig
+Skoðaðu þekkingu þína
 
 <!-- SEG:m68789:para:fs-idm273206544 -->
 Hraðajafna efnahvarfsins:
 
 <!-- SEG:m68789:para:fs-idm122425904 -->
-hefur verið ákvörðuð sem hraði = [[i:k]][NO][[sup:2]][H[[sub:2]]]. Hvert er stig efnahvarfsins með tilliti til hvers hvarfefnis og hvert er heildarstig efnahvarfsins?
+hefur verið ákvörðuð sem hraði = [[i:k]][NO][[sup:2]][H[[sub:2]]]. Hver eru stigin með tilliti til hvers hvarfefnis og hvert er heildarstig efnahvarfsins?
 
 <!-- SEG:m68789:para:fs-idm141295376 -->
 stig í NO = 2; stig í H[[sub:2]] = 1; heildarstig = 3
 
 <!-- SEG:m68789:para-title:fs-idm117052240-title -->
-Spyrðu þig
+Skoðaðu þekkingu þína
 
 <!-- SEG:m68789:para:fs-idm117052240 -->
-Í umesterun hvarfast þríglýseríð við alkóhól og myndar ester og glýseról. Margir nemendur læra um efnahvarfið milli metanóls (CH[[sub:3]]OH) og etýlasetats (CH[[sub:3]]CH[[sub:2]]OCOCH[[sub:3]]) sem dæmi um efnahvarf áður en þeir læra um efnahvörfin sem framleiða lífdísil:
+Í umestrunarhvarfi hvarfast þríglýseríð við alkóhól og myndar ester og glýseról. Margir nemendur læra um efnahvarfið milli metanóls (CH[[sub:3]]OH) og etýlasetats (CH[[sub:3]]CH[[sub:2]]OCOCH[[sub:3]]) sem sýnishorn af efnahvarfi áður en þeir kynna sér efnahvörfin sem framleiða lífdísil:
 
 <!-- SEG:m68789:para:fs-idm213233440 -->
 Hraðajafna efnahvarfsins milli metanóls og etýlasetats er, við ákveðnar aðstæður, ákvörðuð sem:
@@ -95,10 +95,10 @@ stig í NO = 2; stig í H[[sub:2]] = 1; heildarstig = 3
 Svar:
 
 <!-- SEG:m68789:para:fs-idm215326320 -->
-hvarfstig í CH[[sub:3]]OH = 1; hvarfstig í CH[[sub:3]]CH[[sub:2]]OCOCH[[sub:3]] = 0; heildarhvarfstig = 1
+hvarfstig með tilliti til CH[[sub:3]]OH = 1; hvarfstig með tilliti til CH[[sub:3]]CH[[sub:2]]OCOCH[[sub:3]] = 0; heildarhvarfstig = 1
 
 <!-- SEG:m68789:para:fs-idm147402384 -->
-Algeng tilraunaaðferð til að ákvarða hraðajöfnur er [[term:method of initial rates|aðferð upphafshraða]]. Þessi aðferð felur í sér að mæla hvarfhraða fyrir margar tilraunir sem gerðar eru með mismunandi upphafsstyrk hvarfefna. Með því að bera saman mælda hraða fyrir þessar tilraunir er hægt að ákvarða hvarfstigin og í kjölfarið hraðafastann, sem saman eru notaðir til að setja fram hraðajöfnu. Þessi aðferð er sýnd í næstu tveimur dæmum.
+Algeng tilraunaaðferð til að ákvarða hraðajöfnur er [[term:aðferð upphafshraða|term-00006]]. Þessi aðferð felur í sér að mæla hvarfhraða fyrir margar tilraunir sem gerðar eru með mismunandi upphafsstyrk hvarfefna. Með því að bera saman mælda hraða fyrir þessar tilraunir er hægt að ákvarða hvarfstigin og í kjölfarið hraðafastann, sem saman eru notaðir til að setja fram hraðajöfnu. Þessi aðferð er sýnd í næstu tveimur dæmum.
 
 <!-- SEG:m68789:example-title:fs-idm234815200-title -->
 Ákvörðun hraðajöfnu út frá upphafshraða
@@ -122,13 +122,13 @@ Hraðajafnan mun hafa formið:
 Ákvarðaðu gildin á [[i:m]], [[i:n]] og [[i:k]] út frá tilraunagögnum með því að nota eftirfarandi þriggja þrepa ferli:
 
 <!-- SEG:m68789:para:fs-idp221247360 -->
-[[i:Ákvarðaðu gildi]] m [[i:út frá gögnum þar sem [NO] breytist og [O[[sub:3]]] er fasti.]] Í síðustu þremur tilraununum breytist [NO] á meðan [O[[sub:3]]] er fasti. Þegar [NO] tvöfaldast frá tilraun 3 til 4 tvöfaldast hraðinn og þegar [NO] þrefaldast frá tilraun 3 til 5 þrefaldast hraðinn einnig. Þannig er hraðinn einnig í beinu hlutfalli við [NO] og [[i:m]] í hraðajöfnunni er jafnt og 1.
+[[i:Ákvarðaðu gildið á]] m [[i:út frá gögnum þar sem [NO] breytist og [O[[sub:3]]] er fasti.]] Í síðustu þremur tilraununum breytist [NO] á meðan [O[[sub:3]]] helst óbreytt. Þegar [NO] tvöfaldast frá tilraun 3 til 4 tvöfaldast hraðinn og þegar [NO] þrefaldast frá tilraun 3 til 5 þrefaldast hraðinn einnig. Þannig er hraðinn einnig í beinu hlutfalli við [NO] og [[i:m]] í hraðajöfnunni er jafnt og 1.
 
 <!-- SEG:m68789:para:fs-idm59663552 -->
-[[i:Ákvarðaðu gildi]] n [[i:út frá gögnum þar sem [O[[sub:3]]] breytist og [NO] er fasti.]] Í fyrstu þremur tilraununum er [NO] fasti og [O[[sub:3]]] breytist. Hvarfhraðinn breytist í beinu hlutfalli við breytinguna á [O[[sub:3]]]. Þegar [O[[sub:3]]] tvöfaldast frá tilraun 1 til 2 tvöfaldast hraðinn; þegar [O[[sub:3]]] þrefaldast frá tilraun 1 til 3 þrefaldast hraðinn einnig. Þannig er hraðinn í beinu hlutfalli við [O[[sub:3]]] og [[i:n]] er jafnt og 1. Hraðajafnan er því:[[BR]] [[MATH:1]]
+[[i:Ákvarðaðu gildið á]] n [[i:út frá gögnum þar sem [O[[sub:3]]] breytist og [NO] er fasti.]] Í fyrstu þremur tilraununum er [NO] fasti og [O[[sub:3]]] breytist. Hvarfhraðinn breytist í beinu hlutfalli við breytinguna á [O[[sub:3]]]. Þegar [O[[sub:3]]] tvöfaldast frá tilraun 1 til 2 tvöfaldast hraðinn; þegar [O[[sub:3]]] þrefaldast frá tilraun 1 til 3 þrefaldast hraðinn einnig. Þannig er hraðinn í beinu hlutfalli við [O[[sub:3]]] og [[i:n]] er jafnt og 1. Hraðajafnan er því:[[BR]] [[MATH:1]]
 
 <!-- SEG:m68789:para:fs-idm10220816 -->
-[[i:Ákvarðaðu gildi]] k [[i:út frá einu setti af styrkjum og samsvarandi hraða]]. Gögnin úr tilraun 1 eru notuð hér að neðan:[[BR]] [[MATH:2]]
+[[i:Ákvarðaðu gildið á]] k [[i:út frá einu setti af styrkjum og samsvarandi hraða]]. Gögnin úr tilraun 1 eru notuð hér að neðan:[[BR]] [[MATH:2]]
 
 <!-- SEG:m68789:para-title:fs-idm352713280-title -->
 Skoðaðu þekkingu þína
@@ -143,13 +143,13 @@ Asetaldehýð brotnar niður við hitun og myndar metan og kolmónoxíð samkvæ
 [[MATH:3]] með [[i:k]] = 6,73 [[MATH:4]] 10[[sup:−6]] L/mól/s
 
 <!-- SEG:m68789:item:fs-idp46707232-item-1 -->
-[[i:Ákvarðaðu gildi]] m [[i:út frá gögnum þar sem [NO] breytist og [O[[sub:3]]] er fasti.]] Í síðustu þremur tilraununum breytist [NO] á meðan [O[[sub:3]]] er fasti. Þegar [NO] tvöfaldast frá tilraun 3 til 4 tvöfaldast hraðinn og þegar [NO] þrefaldast frá tilraun 3 til 5 þrefaldast hraðinn einnig. Þannig er hraðinn einnig í beinu hlutfalli við [NO] og [[i:m]] í hraðajöfnunni er jafnt og 1.
+[[i:Ákvarðaðu gildið á]] m [[i:út frá gögnum þar sem [NO] breytist og [O[[sub:3]]] er fasti.]] Í síðustu þremur tilraununum breytist [NO] á meðan [O[[sub:3]]] helst óbreytt. Þegar [NO] tvöfaldast frá tilraun 3 til 4 tvöfaldast hraðinn og þegar [NO] þrefaldast frá tilraun 3 til 5 þrefaldast hraðinn einnig. Þannig er hraðinn einnig í beinu hlutfalli við [NO] og [[i:m]] í hraðajöfnunni er jafnt og 1.
 
 <!-- SEG:m68789:item:fs-idp46707232-item-2 -->
-[[i:Ákvarðaðu gildi]] n [[i:út frá gögnum þar sem [O[[sub:3]]] breytist og [NO] er fasti.]] Í fyrstu þremur tilraununum er [NO] fasti og [O[[sub:3]]] breytist. Hvarfhraðinn breytist í beinu hlutfalli við breytinguna á [O[[sub:3]]]. Þegar [O[[sub:3]]] tvöfaldast frá tilraun 1 til 2 tvöfaldast hraðinn; þegar [O[[sub:3]]] þrefaldast frá tilraun 1 til 3 þrefaldast hraðinn einnig. Þannig er hraðinn í beinu hlutfalli við [O[[sub:3]]] og [[i:n]] er jafnt og 1. Hraðajafnan er því:[[BR]] [[MATH:5]]
+[[i:Ákvarðaðu gildið á]] n [[i:út frá gögnum þar sem [O[[sub:3]]] breytist og [NO] er fasti.]] Í fyrstu þremur tilraununum er [NO] fasti og [O[[sub:3]]] breytist. Hvarfhraðinn breytist í beinu hlutfalli við breytinguna á [O[[sub:3]]]. Þegar [O[[sub:3]]] tvöfaldast frá tilraun 1 til 2 tvöfaldast hraðinn; þegar [O[[sub:3]]] þrefaldast frá tilraun 1 til 3 þrefaldast hraðinn einnig. Þannig er hraðinn í beinu hlutfalli við [O[[sub:3]]] og [[i:n]] er jafnt og 1. Hraðajafnan er því:[[BR]] [[MATH:5]]
 
 <!-- SEG:m68789:item:fs-idp46707232-item-3 -->
-[[i:Ákvarðaðu gildi]] k [[i:út frá einu setti af styrkjum og samsvarandi hraða]]. Gögnin úr tilraun 1 eru notuð hér að neðan:[[BR]] [[MATH:6]]
+[[i:Ákvarðaðu gildið á]] k [[i:út frá einu setti af styrkjum og samsvarandi hraða]]. Gögnin úr tilraun 1 eru notuð hér að neðan:[[BR]] [[MATH:6]]
 
 <!-- SEG:m68789:note-title:fs-idm217041008-title -->
 Svar:
@@ -158,7 +158,7 @@ Svar:
 [[MATH:7]] með [[i:k]] = 6,73 [[MATH:8]] 10[[sup:−6]] L/mól/s
 
 <!-- SEG:m68789:caption:CNX_Chem_12_03_OzoneHole-caption -->
-Útlínukort sem sýnir ósonstyrk í heiðhvolfinu og „ósonholið“ sem myndast yfir Suðurskautslandinu á vormánuðum þar. (heimild: breyting á verki NASA)
+Jafnhæðarkort sem sýnir styrk ósons í heiðhvolfinu og „ósonholið“ sem myndast yfir Suðurskautslandinu á vormánuðum þar. (heimild: breyting á verki eftir NASA)
 
 <!-- SEG:m68789:entry:auto-55 -->
 Tilraun
@@ -272,7 +272,7 @@ Tilraun
 Ákvörðun hraðajafna út frá upphafshraða
 
 <!-- SEG:m68789:para:fs-idm27901936 -->
-Notaðu aðferðina með upphafshraða og tilraunagögnin til að ákvarða hraðajöfnuna og gildi hraðafastans fyrir þetta efnahvarf:
+Notaðu upphafshraðaaðferðina og tilraunagögnin til að ákvarða hraðajöfnuna og gildi hraðafastans fyrir þetta efnahvarf:
 
 <!-- SEG:m68789:para-title:fs-idm237007488-title -->
 Lausn
@@ -281,7 +281,7 @@ Lausn
 Hraðajafnan fyrir þetta efnahvarf mun hafa formið:
 
 <!-- SEG:m68789:para:fs-idm256345824 -->
-Eins og í [[xref:fs-idm234815200]] er þetta verkefni leyst skref fyrir skref með því að ákvarða gildi [[i:m]] og [[i:n]] út frá tilraunagögnum og nota síðan þessi gildi til að ákvarða gildi [[i:k]]. Í þessu dæmi verður þó notuð bein algebruleg aðferð (öfugt við óbeinu aðferðina í fyrra dæmi) til að ákvarða gildi [[i:m]] og [[i:n]]:
+Eins og í [[xref:fs-idm234815200]] er þetta verkefni leyst í skrefum, þar sem gildi [[i:m]] og [[i:n]] eru ákvörðuð út frá tilraunagögnum og síðan eru þessi gildi notuð til að ákvarða gildi [[i:k]]. Í þessu dæmi verður þó notuð bein algebruleg aðferð (öfugt við óbeinu aðferðina í fyrra dæmi) til að ákvarða gildi [[i:m]] og [[i:n]]:
 
 <!-- SEG:m68789:para:fs-idm45955472 -->
 [[i:Ákvarðaðu gildi]] m [[i:út frá gögnum þar sem [NO] breytist og [Cl[[sub:2]]] er fasti]]. Skrifaðu hlutföllin með neðanskriftunum [[i:x]] og [[i:y]] til að tákna gögn úr tveimur mismunandi tilraunum:[[BR]] [[MATH:32]]
@@ -314,7 +314,7 @@ sem einfaldast í:
 Því hlýtur [[i:n]] að vera 1 og form hraðajöfnunnar er:[[BR]] [[MATH:40]]
 
 <!-- SEG:m68789:para:fs-idm110493584 -->
-[[i:Ákvarðaðu tölugildi hraðafastans]] k [[i:með viðeigandi einingum.]] Einingar fyrir hraða efnahvarfs eru mól/L/s. Einingarnar fyrir [[i:k]] eru þær sem þarf til að innsetning í hraðajöfnuna gefi viðeigandi einingar fyrir hraðann. Í þessu dæmi eru einingar styrks mól[[sup:3]]/L[[sup:3]]. Einingarnar fyrir [[i:k]] ættu að vera mól[[sup:−2]] L[[sup:2]]/s þannig að hraðinn sé gefinn í mól/L/s.
+[[i:Ákvarðaðu tölugildi hraðafastans]] k [[i:með viðeigandi einingum.]] Einingar fyrir hraða efnahvarfs eru mól/L/s. Einingarnar fyrir [[i:k]] eru þær sem þarf til að innsetning í hraðajöfnuna gefi viðeigandi einingar fyrir hraðann. Í þessu dæmi eru einingar styrks mól[[sup:3]]/L[[sup:3]]. Einingarnar fyrir [[i:k]] ættu að vera mól[[sup:−2]] L[[sup:2]]/s þannig að hraðinn sé gefinn með einingunni mól/L/s.
 
 <!-- SEG:m68789:para:fs-idm53387488 -->
 Til að ákvarða gildi [[i:k]] þegar búið er að leysa hraðajöfnuna er einfaldlega stungið inn gildum úr fyrstu tilrauninni og leyst fyrir [[i:k]]:[[BR]] [[MATH:41]]
@@ -455,7 +455,7 @@ Hraðajöfnur geta sýnt brotastig fyrir sum hvarfefni og neikvætt stig efnahva
 Mikilvægt er að hafa í huga að [[i:hraðajöfnur eru eingöngu ákvarðaðar með tilraunum og er ekki hægt að spá fyrir um þær á áreiðanlegan hátt með hlutfallaefnafræði efnahvarfs.]]
 
 <!-- SEG:m68789:para:fs-idm218845648 -->
-Einingar fyrir hraðafasta eru breytilegar eftir því sem við á til að passa við heildarstig efnahvarfsins. Einingin fyrir hraðafastann fyrir annars stigs efnahvarfið sem lýst er í [[xref:fs-idm234815200]] var ákvörðuð sem [[MATH:62]]. Fyrir þriðja stigs efnahvarfið sem lýst er í [[xref:fs-idm285627376]] var einingin fyrir [[i:k]] leidd út sem [[MATH:63]]. Einingagreining krefst þess að eining hraðafastans fyrir efnahvarf þar sem heildarstigið er [[i:x]] sé [[MATH:64]]. [[xref:fs-idm233742304]] tekur saman einingar hraðafasta fyrir algeng stig efnahvarfa.
+Einingar fyrir hraðafasta eru breytilegar eftir því sem við á til að passa við heildarstig efnahvarfsins. Einingin fyrir hraðafasta annars stigs efnahvarfsins sem lýst er í [[xref:fs-idm234815200]] var ákvörðuð sem [[MATH:62]]. Fyrir þriðja stigs efnahvarfið sem lýst er í [[xref:fs-idm285627376]] var einingin fyrir [[i:k]] leidd út sem [[MATH:63]]. Einingagreining krefst þess að eining hraðafasta fyrir efnahvarf með heildarstig [[i:x]] sé [[MATH:64]]. [[xref:fs-idm233742304]] tekur saman einingar hraðafasta fyrir algeng stig efnahvarfa.
 
 <!-- SEG:m68789:entry:auto-154 -->
 Einingar hraðafasta fyrir algeng stig efnahvarfa
@@ -497,55 +497,55 @@ Athugið að einingarnar í þessari töflu voru leiddar út með því að nota
 Lykilhugtök og samantekt
 
 <!-- SEG:m68789:para:fs-idm262547408 -->
-Hraðajöfnur ([[i:diffurhraðajöfnur]]) gefa stærðfræðilega lýsingu á því hvernig breytingar á styrk efnis hafa áhrif á hraða efnahvarfs. Hraðajöfnur eru ákvarðaðar með tilraunum og ekki er hægt að spá fyrir um þær með hlutfallaefnafræði. Stig efnahvarfs lýsir því hversu mikið breyting á styrk hvers efnis hefur áhrif á heildarhraðann og heildarstig efnahvarfs er summa stiga fyrir hvert efni sem er til staðar í efnahvarfinu. Stig efnahvarfa eru yfirleitt fyrsta stig, annað stig eða núllta stig, en brotin og jafnvel neikvæð stig eru möguleg.
+Hraðajöfnur ([[i:hraðajöfnur á deildunarformi]]) gefa stærðfræðilega lýsingu á því hvernig breytingar á styrk efnis hafa áhrif á hraða efnahvarfs. Hraðajöfnur eru ákvarðaðar með tilraunum og ekki er hægt að spá fyrir um þær með hlutfallaefnafræði. Stig efnahvarfs lýsir því hversu mikið breyting á styrk hvers efnis hefur áhrif á heildarhraðann og heildarstig efnahvarfs er summa stiga fyrir hvert efni sem er til staðar í efnahvarfinu. Stig efnahvarfa eru yfirleitt fyrsta stig, annað stig eða núllta stig, en brotin og jafnvel neikvæð stig eru möguleg.
 
 <!-- SEG:m68789:title:fs-idm273385984-title -->
-Efnafræði – verkefni í lok kafla
+Efnafræði – æfingar í lok kafla
 
 <!-- SEG:m68789:problem:fs-idm262018416 -->
 Hver er munurinn á hraða efnahvarfs og hraðafasta þess?
 
 <!-- SEG:m68789:problem:fs-idm271487376 -->
-Að tvöfalda styrk hvarfefnis eykur hraða efnahvarfs fjórfalt. Svaraðu eftirfarandi spurningum með þessa vitneskju í huga:
+Tvöföldun á styrk hvarfefnis eykur hraða efnahvarfs fjórfalt. Svaraðu eftirfarandi spurningum með þessa vitneskju í huga:
 
 <!-- SEG:m68789:problem:fs-idm152653536 -->
 (a) Hvert er stig efnahvarfsins með tilliti til þess hvarfefnis?
 
 <!-- SEG:m68789:problem:fs-idm273518816 -->
-(b) Að þrefalda styrk annars hvarfefnis eykur hraða efnahvarfs þrefalt. Hvert er stig efnahvarfsins með tilliti til þess hvarfefnis?
+(b) Þreföldun á styrk annars hvarfefnis eykur hraða efnahvarfs þrefalt. Hvert er stig efnahvarfsins með tilliti til þess hvarfefnis?
 
 <!-- SEG:m68789:solution:fs-idm221624896 -->
 (a) 2; (b) 1
 
 <!-- SEG:m68789:problem:fs-idm241985680 -->
-Að þrefalda styrk hvarfefnis eykur hraða efnahvarfs níufalt. Svaraðu eftirfarandi spurningum með þessa vitneskju í huga:
+Þreföldun á styrk hvarfefnis eykur hraða efnahvarfs nífalt. Svaraðu eftirfarandi spurningum með þessa vitneskju í huga:
 
 <!-- SEG:m68789:problem:fs-idm194420784 -->
 (a) Hvert er stig efnahvarfsins með tilliti til þess hvarfefnis?
 
 <!-- SEG:m68789:problem:fs-idm207624880 -->
-(b) Að auka styrk hvarfefnis um stuðulinn fjóra eykur hraða efnahvarfs fjórfalt. Hvert er stig efnahvarfsins með tilliti til þess hvarfefnis?
+(b) Fjölgun á styrk hvarfefnis um stuðulinn fjóra eykur hraða efnahvarfs fjórfalt. Hvert er stig efnahvarfsins með tilliti til þess hvarfefnis?
 
 <!-- SEG:m68789:problem:fs-idm222859792 -->
-Hvernig mun hraði efnahvarfsins breytast fyrir ferlið: [[MATH:65]] ef hraðajafnan fyrir efnahvarfið er [[MATH:66]]
+Hvernig mun hraði efnahvarfsins breytast fyrir ferlið: [[MATH:65]] ef hraðajafna efnahvarfsins er [[MATH:66]]
 
 <!-- SEG:m68789:problem:fs-idm178016176 -->
-(a) Með því að lækka þrýsting NO[[sub:2]] úr 0,50 atm í 0,250 atm.
+(a) Lækkun á þrýstingi NO[[sub:2]] úr 0,50 atm í 0,250 atm.
 
 <!-- SEG:m68789:problem:fs-idp38847392 -->
-(b) Með því að auka styrk CO úr 0,01 [[i:M]] í 0,03 [[i:M]].
+(b) Aukning á styrk CO úr 0,01 [[i:M]] í 0,03 [[i:M]].
 
 <!-- SEG:m68789:solution:fs-idm107041296 -->
 (a) Ferlið dregur úr hraðanum um stuðulinn 4. (b) Þar sem CO kemur ekki fyrir í hraðajöfnunni hefur það ekki áhrif á hraðann.
 
 <!-- SEG:m68789:problem:fs-idm176826112 -->
-Hvernig mun eftirfarandi hafa áhrif á hraða efnahvarfsins: [[MATH:67]] ef hraðajafnan fyrir efnahvarfið er [[MATH:68]]?
+Hvernig mun eftirfarandi hafa áhrif á hraða efnahvarfsins: [[MATH:67]] ef hraðajafna efnahvarfsins er [[MATH:68]]?
 
 <!-- SEG:m68789:problem:fs-idm170891328 -->
-(a) Auka þrýsting NO[[sub:2]] úr 0,1 atm í 0,3 atm
+(a) Aukning á þrýstingi NO[[sub:2]] úr 0,1 atm í 0,3 atm
 
 <!-- SEG:m68789:problem:fs-idm178794544 -->
-(b) Auka styrk CO úr 0,02 [[i:M]] í 0,06 [[i:M]].
+(b) Aukning á styrk CO úr 0,02 [[i:M]] í 0,06 [[i:M]].
 
 <!-- SEG:m68789:problem:fs-idm192992480 -->
 Reglulegt flug yfirhljóðsflugvéla í heiðhvolfinu veldur áhyggjum vegna þess að slíkar flugvélar framleiða nituroxíð, NO, sem aukaafurð í útblæstri hreyfla sinna. Nituroxíð hvarfast við óson og talið er að þetta gæti stuðlað að eyðingu ósonlagsins. Efnahvarfið [[MATH:69]] er fyrsta stigs með tilliti til bæði NO og O[[sub:3]] með hraðafasta 2,20 [[MATH:70]] 10[[sup:7]] L/mól/s. Hver er augnablikshraði hvarfs NO þegar [NO] = 3,3 [[MATH:71]] 10[[sup:−6]] [[i:M]] og [O[[sub:3]]] = 5,9 [[MATH:72]] 10[[sup:−7]] [[i:M]]?
@@ -674,7 +674,7 @@ Hraði (mól L[[sup:−1]] klst.[[sup:−1]])
 Niturmónoxíð hvarfast við klór samkvæmt jöfnunni:[[BR]] [[MATH:109]]
 
 <!-- SEG:m68789:problem:fs-idm268051184 -->
-Eftirfarandi upphafshraði efnahvarfsins hefur mælst við ákveðinn styrk hvarfefna:
+Eftirfarandi upphafshraðar efnahvarfsins hafa mælst fyrir ákveðna styrki hvarfefna:
 
 <!-- SEG:m68789:problem:fs-idm185311088 -->
 Hver er hraðajafnan sem lýsir því hvernig hraðinn er háður styrk NO og Cl[[sub:2]]? Hver er hraðafastinn? Hvert er stigið með tilliti til hvers hvarfefnis?
@@ -719,7 +719,7 @@ Hraði (mól L[[sup:−1]] klst.[[sup:−1]])
 9,12
 
 <!-- SEG:m68789:problem:fs-idm219404160 -->
-Vetni hvarfast við niturmónoxíð og myndar dinituroxíð (hláturgas) samkvæmt jöfnunni: [[MATH:110]]
+Vetni hvarfast við niturmónoxíð og myndar tvíniturmónoxíð (hláturgas) samkvæmt jöfnunni: [[MATH:110]]
 
 <!-- SEG:m68789:problem:fs-idm148410512 -->
 Ákvarðaðu hraðajöfnu, hraðafasta og stig með tilliti til hvers hvarfefnis út frá eftirfarandi gögnum:
@@ -851,7 +851,7 @@ Hver er hvarfhraðinn þegar [N[[sub:2]]O[[sub:5]]] = 0,40 [[i:M]]?
 (c) [[MATH:128]]
 
 <!-- SEG:m68789:problem:fs-idm179213568 -->
-Fyrsta efnahvarfið er framkvæmt með því að brenna ammoníaki í lofti yfir platínuhvata. Þetta efnahvarf er hratt. Efnahvarfið í jöfnu (c) er einnig hratt. Annað efnahvarfið takmarkar hraðann sem hægt er að framleiða saltpéturssýru úr ammoníaki. Ef jafna (b) er annars stigs með tilliti til NO og fyrsta stigs með tilliti til O[[sub:2]], hver er myndunarhraði NO[[sub:2]] þegar styrkur súrefnis er 0,50 [[i:M]] og styrkur nituroxíðs er 0,75 [[i:M]]? Hraðafastinn fyrir efnahvarfið er 5,8 [[MATH:129]] 10[[sup:−6]] L[[sup:2]] mól[[sup:−2]] s[[sup:−1]].
+Fyrsta efnahvarfið er framkvæmt með því að brenna ammoníaki í lofti yfir platínuhvata. Þetta efnahvarf er hratt. Efnahvarfið í jöfnu (c) er einnig hratt. Annað efnahvarfið takmarkar hraðann sem hægt er að framleiða saltpéturssýru úr ammoníaki með. Ef jafna (b) er annars stigs með tilliti til NO og fyrsta stigs með tilliti til O[[sub:2]], hver er myndunarhraði NO[[sub:2]] þegar styrkur súrefnis er 0,50 [[i:M]] og styrkur nituroxíðs er 0,75 [[i:M]]? Hraðafastinn fyrir efnahvarfið er 5,8 [[MATH:129]] 10[[sup:−6]] L[[sup:2]] mól[[sup:−2]] s[[sup:−1]].
 
 <!-- SEG:m68789:problem:fs-idm136971952 -->
 Eftirfarandi gögn hafa verið ákvörðuð fyrir efnahvarfið:[[BR]] [[MATH:130]]
@@ -929,13 +929,13 @@ hlutfallsfasti í hraðajöfnu
 hraðajafna
 
 <!-- SEG:m68789:glossary-def:fs-idm215968704-def -->
-(einnig, hraðalögmál) (einnig, diffruð hraðalögmál) stærðfræðileg jafna sem sýnir hvernig hvarfhraði er háður hraðafasta og styrk eins eða fleiri hvarfefna
+(einnig, hraðalögmál) (einnig, diffruð hraðalögmál) stærðfræðileg jafna sem sýnir háðni hvarfhraða á hraðafasta og styrk eins eða fleiri hvarfefna
 
 <!-- SEG:m68789:glossary-term:fs-idm333854336-term -->
 stig efnahvarfs
 
 <!-- SEG:m68789:glossary-def:fs-idm333854336-def -->
-gildi veldisvísis í hraðajöfnu (til dæmis núllta stig fyrir 0, fyrsta stig fyrir 1, annars stigs fyrir 2, og svo framvegis)
+gildi veldisvísis í hraðajöfnu (til dæmis núllta stig fyrir 0, fyrsta stig fyrir 1, annað stig fyrir 2, og svo framvegis)
 
 <!-- SEG:m68789:entry:auto-314 -->
 [C[[sub:2]]H[[sub:5]]OH] ([[i:M]])
