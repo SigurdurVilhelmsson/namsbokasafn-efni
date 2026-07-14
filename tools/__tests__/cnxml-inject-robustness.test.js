@@ -66,6 +66,17 @@ describe('A2-a: module-scoped EN fallback', () => {
     expect(cnxml).toContain('m68664');
   });
 
+  it('does NOT inject a non-allowlisted missing module even when the allowlist is non-empty', () => {
+    // Exclusivity: only allowlisted modules may fall back. m68664 is allowlisted
+    // and missing (→ EN fallback); m68690 is missing but NOT allowlisted (→ refused).
+    rmSync(CH01('02-mt-output', 'm68664-segments.is.md'));
+    rmSync(CH01('02-mt-output', 'm68690-segments.is.md'));
+    const r = runInject(['--chapter', '1', '--allow-en-fallback', 'm68664']);
+    expect(r.status).toBe(1); // the non-allowlisted missing module fails the run
+    expect(existsSync(OUT('m68690'))).toBe(false); // NOT injected — allowlist is exclusive
+    expect(existsSync(OUT('m68664'))).toBe(true); // the allowlisted module DID fall back
+  });
+
   it('keeps residue-checking a well-translated module during a fallback run', () => {
     // m68663 made 100% English (synthetic residue); m68664 missing → allowlisted fallback.
     writeFileSync(

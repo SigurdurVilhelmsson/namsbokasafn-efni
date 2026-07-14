@@ -3913,6 +3913,12 @@ function findChapterModules(chapter, moduleId = null) {
  * @param {string} moduleId - Module ID (e.g., m68724)
  * @param {string} lang - Language code (e.g., 'is')
  * @param {string} sourceDir - Directory containing segments, relative to BOOKS_DIR (e.g., '02-for-mt', '03-faithful-translation')
+ * @param {Set<string>} [enFallbackModules] - Module ids permitted to fall back to English
+ *   (02-for-mt) when their translation is missing from sourceDir (A2-a). Any other missing
+ *   module throws instead of silently publishing untranslated content.
+ * @returns {{structure: object, segments: Map, equations: object, originalCnxml: string,
+ *   enSegments: Map, inlineAttrs: object, restorePolicy: object, usedEnFallback: boolean}}
+ *   usedEnFallback is true iff this module's segments came from the EN fallback path.
  */
 function loadModuleInputs(chapter, moduleId, lang, sourceDir, enFallbackModules = new Set()) {
   const chapterDir = formatChapter(chapter);
