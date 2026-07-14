@@ -306,6 +306,232 @@ export function normalizeSegMarkers(text) {
   return { text: normalized, fixed };
 }
 
+// ─── B4-D11: paired-bracket MT round-trip for term/footnote translation ───
+
+/** Split a marker's inner content at the last top-level `|` (id separator),
+ *  ignoring `|` nested inside `[[ ]]`. Returns { text, id } (id null if none). */
+function splitTopLevelId(inner) {
+  let depth = 0;
+  let idx = -1;
+  for (let i = 0; i < inner.length; i++) {
+    if (inner.startsWith('[[', i)) {
+      depth++;
+      i++;
+    } else if (inner.startsWith(']]', i)) {
+      if (depth > 0) depth--;
+      i++;
+    } else if (inner[i] === '|' && depth === 0) {
+      idx = i;
+    }
+  }
+  if (idx === -1) return { text: inner, id: null };
+  return { text: inner.slice(0, idx), id: inner.slice(idx + 1) };
+}
+
+/** Rewrite every `[[type:...]]` in `text` to paired `[[type]]...[[/type]]`,
+ *  nesting-aware; returns { text, ids } with captured ids (null when absent). */
+function rewriteToPaired(text, type) {
+  const openTok = `[[${type}:`;
+  const ids = [];
+  let out = '';
+  let i = 0;
+  while (i < text.length) {
+    if (text.startsWith(openTok, i)) {
+      let j = i + openTok.length;
+      let depth = 1;
+      while (j < text.length && depth > 0) {
+        if (text.startsWith('[[', j)) {
+          depth++;
+          j += 2;
+        } else if (text.startsWith(']]', j)) {
+          depth--;
+          if (depth === 0) break;
+          j += 2;
+        } else j++;
+      }
+      const inner = text.slice(i + openTok.length, j);
+      const { text: termText, id } = splitTopLevelId(inner);
+      ids.push(id);
+      out += `[[${type}]]${termText}[[/${type}]]`;
+      i = j + 2; // past closing ]]
+    } else {
+      out += text[i];
+      i++;
+    }
+  }
+  return { text: out, ids };
+}
+
+const SEG_SPLIT_RE = /(?=<!-- SEG:)/;
+const SEG_ID_RE = /<!-- SEG:(\S+?) -->/;
+
+/**
+ * Matches a wire-only (colon-less) paired term/fn token, e.g. `[[term]]`,
+ * `[[/term]]`, `[[fn]]`, `[[/fn]]`. On-disk form is always id-anchored with a
+ * colon (`[[term:text|id]]`), so this can never false-match that form, nor
+ * nested inline markers like `[[i:]]`/`[[sub:]]` (Finding A.2 leak guard).
+ */
+const WIRE_ONLY_PAIRED_TOKEN_RE = /\[\[\/?(?:term|fn)\]\]/;
+
+/**
+ * Rewrite id-anchored inline term/footnote markers to PAIRED bracket form for the
+ * API leg (B4-D11: the API treats [[term:text|id]] as an opaque token and does not
+ * translate inside it; text BETWEEN [[term]]…[[/term]] translates and both delimiters
+ * survive). The id never rides the wire; it is re-attached after MT by reattachIds().
+ * @param {string} chunkText - a segment-file chunk (one or more whole SEG segments)
+ * @returns {{ wireText: string, segments: Array<{segId:string, originalText:string,
+ *   termIds:(string|null)[], fnIds:(string|null)[]}> }}
+ */
+export function stripTermFnToPaired(chunkText) {
+  const parts = chunkText.split(SEG_SPLIT_RE).filter((p) => p.length > 0);
+  const segments = [];
+  let wireText = '';
+  for (const part of parts) {
+    const m = part.match(SEG_ID_RE);
+    if (!m) {
+      wireText += part;
+      continue;
+    } // leading non-SEG text (rare); pass through
+    const term = rewriteToPaired(part, 'term');
+    const fn = rewriteToPaired(term.text, 'fn');
+    segments.push({ segId: m[1], originalText: part, termIds: term.ids, fnIds: fn.ids });
+    wireText += fn.text;
+  }
+  return { wireText, segments };
+}
+
+/** Collect paired [[type]]…[[/type]] spans in a segment (term/fn do not self-nest,
+ *  so match each open to the next close). Returns [{ start, end, inner }]. */
+function collectPaired(segText, type) {
+  const openTok = `[[${type}]]`;
+  const closeTok = `[[/${type}]]`;
+  const spans = [];
+  let i = 0;
+  while (true) {
+    const o = segText.indexOf(openTok, i);
+    if (o === -1) break;
+    const c = segText.indexOf(closeTok, o + openTok.length);
+    if (c === -1) break; // unbalanced → fewer matches → count-guard trips
+    spans.push({ start: o, end: c + closeTok.length, inner: segText.slice(o + openTok.length, c) });
+    i = c + closeTok.length;
+  }
+  return spans;
+}
+
+/**
+ * Count `[[term]]…[[/term]]` / `[[fn]]…[[/fn]]` span pairs that are cross-type
+ * nested — one type's span containing the other type's start offset.
+ *
+ * `stripTermFnToPaired`'s bracket-balancing (`rewriteToPaired`) is generic
+ * across marker types, so a `[[term:…]]` whose text sits inside a `[[fn:…]]`
+ * (or vice versa) round-trips into nested paired form, e.g.
+ * `[[fn]]…[[term]]…[[/term]]…[[/fn]]`. `collectPaired` matches each open to
+ * the *next* close per type, so it happily returns spans for both types even
+ * when nested — and each type's surviving count can still equal its captured
+ * id count, so the plain count-guard below would see no problem and attempt
+ * the splice, corrupting output (stale offsets once the inner splice shifts
+ * the outer span's length). This check exists to catch that case upstream so
+ * it can degrade + record instead (B4-D11 fix).
+ *
+ * @param {Array<{start:number, end:number}>} termSpans
+ * @param {Array<{start:number, end:number}>} fnSpans
+ * @returns {number} count of cross-type span pairs that nest
+ */
+function countCrossTypeNesting(termSpans, fnSpans) {
+  let count = 0;
+  for (const t of termSpans) {
+    for (const f of fnSpans) {
+      const nested =
+        (f.start >= t.start && f.start < t.end) || (t.start >= f.start && t.start < f.end);
+      if (nested) count++;
+    }
+  }
+  return count;
+}
+
+/**
+ * Re-attach ids to the paired-form MT output, restoring on-disk [[type:text|id]] form.
+ * Per-segment/per-type count-guard: if surviving paired markers != captured ids, that
+ * segment degrades to its original text and a mismatch is recorded (B4-D11).
+ * A segment whose term/fn spans are cross-type nested (see countCrossTypeNesting)
+ * degrades the same way, with a `type: 'nested'` mismatch — the splice logic below
+ * assumes mutually disjoint spans and would otherwise corrupt output silently.
+ * @param {string} wireOutput - MT output (paired form, SEG markers intact)
+ * @param {Array} segments - records from stripTermFnToPaired
+ * @returns {{ text:string, mismatches:Array<{segId,type,expected,got}> }}
+ */
+export function reattachIds(wireOutput, segments) {
+  const byId = new Map(segments.map((s) => [s.segId, s]));
+  const parts = wireOutput.split(SEG_SPLIT_RE).filter((p) => p.length > 0);
+  const mismatches = [];
+  let out = '';
+  for (const part of parts) {
+    const m = part.match(SEG_ID_RE);
+    const rec = m ? byId.get(m[1]) : null;
+    if (!rec) {
+      out += part;
+      continue;
+    } // unknown/leading segment → pass through
+
+    const termSpans = collectPaired(part, 'term');
+    const fnSpans = collectPaired(part, 'fn');
+
+    const nestedCount = countCrossTypeNesting(termSpans, fnSpans);
+    if (nestedCount > 0) {
+      mismatches.push({ segId: rec.segId, type: 'nested', expected: 0, got: nestedCount });
+      out += rec.originalText;
+      continue;
+    } // safe degrade — never splice overlapping spans
+
+    const termOk = termSpans.length === rec.termIds.length;
+    const fnOk = fnSpans.length === rec.fnIds.length;
+
+    if (!termOk)
+      mismatches.push({
+        segId: rec.segId,
+        type: 'term',
+        expected: rec.termIds.length,
+        got: termSpans.length,
+      });
+    if (!fnOk)
+      mismatches.push({
+        segId: rec.segId,
+        type: 'fn',
+        expected: rec.fnIds.length,
+        got: fnSpans.length,
+      });
+
+    if (!termOk || !fnOk) {
+      out += rec.originalText;
+      continue;
+    } // safe degrade
+
+    // Build replacement list (term + fn), splice right-to-left to keep offsets valid.
+    const repls = [];
+    termSpans.forEach((s, k) => {
+      const id = rec.termIds[k];
+      repls.push({
+        start: s.start,
+        end: s.end,
+        text: id === null ? `[[term:${s.inner}]]` : `[[term:${s.inner}|${id}]]`,
+      });
+    });
+    fnSpans.forEach((s, k) => {
+      const id = rec.fnIds[k];
+      repls.push({
+        start: s.start,
+        end: s.end,
+        text: id === null ? `[[fn:${s.inner}]]` : `[[fn:${s.inner}|${id}]]`,
+      });
+    });
+    repls.sort((a, b) => b.start - a.start);
+    let segOut = part;
+    for (const r of repls) segOut = segOut.slice(0, r.start) + r.text + segOut.slice(r.end);
+    out += segOut;
+  }
+  return { text: out, mismatches };
+}
+
 // ─── Book → Domain Mapping ──────────────────────────────────────────
 // bookToDomain now lives in book-rendering-config.js (reads book-config.json
 // `domain`). Imported above for internal use; re-exported here for backward
@@ -350,6 +576,26 @@ export function mtRunDecision({ exists, force, locked }) {
   if (locked) return 'locked-skip'; // absolute: editing has begun, never clobber
   if (exists && !force) return 'skip'; // accident guard (unchanged)
   return 'write';
+}
+
+/**
+ * Chapters eligible for --update-status completion (T4).
+ *
+ * A chapter is complete only if every translated module in it both (a)
+ * succeeded outright, and (b) reported no id-reattach mismatches — a
+ * mismatch means some segment silently degraded to its English source
+ * (B4-D11 count-guard), which must hold the chapter back exactly like a
+ * hard module failure does.
+ *
+ * @param {Set<string>} succeededChapters
+ * @param {Set<string>} failedChapters
+ * @param {Set<string>} mismatchChapters
+ * @returns {string[]}
+ */
+export function computeCompleteChapters(succeededChapters, failedChapters, mismatchChapters) {
+  return [...succeededChapters].filter(
+    (ch) => !failedChapters.has(ch) && !mismatchChapters.has(ch)
+  );
 }
 
 // ─── CLI ────────────────────────────────────────────────────────────
@@ -484,21 +730,38 @@ export function splitAtSegBoundaries(text, maxChars) {
 
 /**
  * Translate a single chunk via the API with glossary and retry logic.
- * @returns {{ text: string, usage: number }}
+ *
+ * B4-D11: id-anchored [[term:text|id]]/[[fn:text|id]] markers are opaque to the
+ * API (it doesn't translate inside them). The chunk is rewritten to paired
+ * [[term]]text[[/term]] form for the wire (stripTermFnToPaired), and ids are
+ * restored immediately after each translateAuto call (reattachIds) — before
+ * the existing post-processing chain, which continues to operate on the
+ * original id-anchored on-disk form.
+ * @returns {{ text: string, usage: number, mismatches: Array }}
  */
-async function translateChunk(client, chunkText, glossary, verbose, chunkLabel) {
+export async function translateChunk(client, chunkText, glossary, verbose, chunkLabel) {
+  const { wireText, segments } = stripTermFnToPaired(chunkText);
   const filteredGlossary = filterGlossaryForText(glossary, chunkText);
   const translateOpts = { targetLanguage: 'is' };
   if (filteredGlossary) {
     translateOpts.glossaries = [filteredGlossary];
   }
 
-  let result = await client.translateAuto(chunkText, translateOpts);
+  // Order matters (Finding A): repairSegTags must run on the paired-form
+  // output BEFORE reattachIds. reattachIds looks up captured term/fn ids by
+  // the SEG id that rode the wire — if the API mangled that id (e.g. an
+  // inserted hyphen), the lookup misses and the segment passes through
+  // UNCHANGED, leaking colon-less [[term]]/[[fn]] wire form with no mismatch
+  // recorded. repairSegTags fixes exactly that class of mangle, so running it
+  // first means reattachIds always sees a clean id.
+  let result = await client.translateAuto(wireText, translateOpts);
   let output = result.text;
-
   assertNoControlChars(output, chunkLabel);
   output = normalizeUnicode(output);
   output = repairSegTags(chunkText, output);
+  let reattach = reattachIds(output, segments);
+  output = reattach.text;
+  let mismatches = reattach.mismatches;
 
   // Validate — retry without glossary if truncated
   if (!validateMarkers(chunkText, output)) {
@@ -508,10 +771,14 @@ async function translateChunk(client, chunkText, glossary, verbose, chunkLabel) 
           `\n    ${chunkLabel}: truncated with glossary (${filteredGlossary.terms.length} terms), retrying without...`
         );
       }
-      result = await client.translateAuto(chunkText, { targetLanguage: 'is' });
-      assertNoControlChars(result.text, chunkLabel);
-      output = normalizeUnicode(result.text);
+      result = await client.translateAuto(wireText, { targetLanguage: 'is' });
+      output = result.text;
+      assertNoControlChars(output, chunkLabel);
+      output = normalizeUnicode(output);
       output = repairSegTags(chunkText, output);
+      reattach = reattachIds(output, segments);
+      output = reattach.text;
+      mismatches = reattach.mismatches;
     }
 
     if (!validateMarkers(chunkText, output)) {
@@ -524,7 +791,7 @@ async function translateChunk(client, chunkText, glossary, verbose, chunkLabel) 
     }
   }
 
-  return { text: output, usage: result.usage };
+  return { text: output, usage: result.usage, mismatches };
 }
 
 /** Derive a module id (mNNNNN) from an mt-output output path. */
@@ -537,7 +804,7 @@ export function moduleIdFromOutputPath(outputPath) {
  * Automatically splits large modules at SEG boundaries to avoid API truncation.
  * Filters glossary to terms in source text. Retries without glossary on truncation.
  */
-async function translateModule(
+export async function translateModule(
   client,
   inputPath,
   outputPath,
@@ -558,6 +825,7 @@ async function translateModule(
 
   let totalUsage = 0;
   const translatedChunks = [];
+  const mismatches = [];
 
   for (let i = 0; i < chunks.length; i++) {
     const chunkLabel = needsSplitting ? `chunk ${i + 1}/${chunks.length}` : moduleId;
@@ -569,6 +837,7 @@ async function translateModule(
     const result = await translateChunk(client, chunks[i], glossary, verbose, chunkLabel);
     translatedChunks.push(result.text);
     totalUsage += result.usage || 0;
+    if (result.mismatches && result.mismatches.length) mismatches.push(...result.mismatches);
   }
 
   // Reassemble chunks
@@ -596,6 +865,22 @@ async function translateModule(
     );
   }
 
+  // Finding A.2 — leak-guard backstop. The A.1 reorder (repairSegTags before
+  // reattachIds) closes the common case, but if a SEG-id mangle survives
+  // repairSegTags (outside its known repair strategies), reattachIds's
+  // per-id lookup still misses and a wire-only (colon-less) [[term]]/[[fn]]
+  // token can reach this point. cnxml-inject.js only recognizes the
+  // id-anchored colon form ([[term:text|id]]) — writing the wire form would
+  // silently lose the term/fn wrapper, class, and id downstream. Fail loud
+  // instead of writing it.
+  if (WIRE_ONLY_PAIRED_TOKEN_RE.test(output)) {
+    throw new Error(
+      `${moduleId}: a wire-only paired marker ([[term]]/[[fn]]) survived to write in ` +
+        `${outputPath} — a SEG-id mangle that repairSegTags did not fix, or an ` +
+        `otherwise-unresolved marker. Refusing to write corrupted output.`
+    );
+  }
+
   // Write output
   const outputDir = path.dirname(outputPath);
   if (!fs.existsSync(outputDir)) {
@@ -614,7 +899,7 @@ async function translateModule(
     fs.copyFileSync(linksSource, linksDest);
   }
 
-  return { chars: input.length, usage: totalUsage, markersNormalized };
+  return { chars: input.length, usage: totalUsage, markersNormalized, mismatches };
 }
 
 // ─── Pipeline Status ────────────────────────────────────────────────
@@ -812,13 +1097,18 @@ async function main() {
     lockedSkipped: 0,
     failed: 0,
     markersNormalized: 0,
+    mismatches: 0,
     errors: [],
   };
 
   // Track per-chapter outcome so --update-status only advances chapters whose
   // modules all succeeded (a chapter with any failed module is NOT complete).
+  // T4: a chapter with any module whose id-reattach mismatched (a segment
+  // silently degraded to English) is likewise held back — mirrors
+  // failedChapters exactly, just for a softer failure mode.
   const succeededChapters = new Set();
   const failedChapters = new Set();
+  const mismatchChapters = new Set();
 
   for (const mod of workList) {
     if (mod.action === 'locked-skip') {
@@ -837,7 +1127,7 @@ async function main() {
     process.stdout.write(`  ${mod.chapterDir}/${mod.moduleId}... `);
 
     try {
-      const { chars, markersNormalized } = await translateModule(
+      const { chars, markersNormalized, mismatches } = await translateModule(
         client,
         mod.path,
         mod.outputPath,
@@ -849,6 +1139,15 @@ async function main() {
       console.log(`✅ (${chars.toLocaleString()} chars${fixedNote})`);
       results.translated++;
       results.markersNormalized += markersNormalized;
+      if (mismatches && mismatches.length) {
+        results.mismatches += mismatches.length;
+        for (const mm of mismatches) {
+          console.error(
+            `  WARNING: id-reattach mismatch in ${mm.segId} (${mm.type}: expected ${mm.expected}, got ${mm.got}) — segment left untranslated (B4-D11 count-guard)`
+          );
+        }
+        mismatchChapters.add(mod.chapterDir);
+      }
       succeededChapters.add(mod.chapterDir);
     } catch (err) {
       console.log(`❌ ${err.message}`);
@@ -873,6 +1172,11 @@ async function main() {
       `  Markers un-glued: ${results.markersNormalized} (MT API ran them onto prev line)`
     );
   }
+  if (results.mismatches > 0) {
+    console.log(
+      `  Marker id-reattach mismatches: ${results.mismatches} (segments degraded to source — see warnings)`
+    );
+  }
   console.log(`  API usage:  ${usage.totalChars.toLocaleString()} chars`);
   console.log(`  Est. cost:  ~${usage.estimatedISK.toFixed(0)} ISK`);
   console.log(`  Time:       ${(usage.elapsedMs / 1000).toFixed(1)}s`);
@@ -885,23 +1189,31 @@ async function main() {
   }
 
   // Update pipeline status if requested. Only mark a chapter's mtOutput
-  // complete when every translated module in it succeeded — a chapter with any
-  // failure stays incomplete instead of silently transitioning (F7).
+  // complete when every translated module in it succeeded AND reported no
+  // id-reattach mismatches — a chapter with any failure OR any segment
+  // silently degraded to English stays incomplete instead of silently
+  // transitioning (F7 / T4).
   if (args.updateStatus && results.translated > 0) {
-    const completeChapters = [...succeededChapters].filter((ch) => !failedChapters.has(ch));
+    const completeChapters = computeCompleteChapters(
+      succeededChapters,
+      failedChapters,
+      mismatchChapters
+    );
     if (completeChapters.length > 0) {
       console.log('\nUpdating pipeline status...');
       await updatePipelineStatus(args.book, completeChapters);
     }
-    const heldBack = [...succeededChapters].filter((ch) => failedChapters.has(ch));
+    const heldBack = [...succeededChapters].filter(
+      (ch) => failedChapters.has(ch) || mismatchChapters.has(ch)
+    );
     if (heldBack.length > 0) {
       console.log(
-        `  Held back (had failures): ${heldBack.join(', ')} — fix and re-run to mark complete`
+        `  Held back (failures or marker mismatches): ${heldBack.join(', ')} — fix and re-run to mark complete`
       );
     }
   }
 
-  if (results.failed > 0) process.exit(1);
+  if (results.failed > 0 || results.mismatches > 0) process.exit(1);
 }
 
 // Only run when executed directly
