@@ -274,7 +274,7 @@ The relationship between any two properties of a system can be represented graph
 <!-- SEG:m68860:para:fs-idm78087840 -->
 When the value of [[i:y]] is changing as a function of [[i:x]] (that is, different values of [[i:x]] correspond to different values of [[i:y]]), a graph of this change can be plotted or sketched. The graph can be produced by using specific values for ([[i:x]],[[i:y]]) data pairs.
 
-<!-- SEG:m68860:example-title:fs-idp9271248-title -->
+<!-- SEG:m68860:para-title:fs-idm111716000-title -->
 Graphing the Dependence of [[i:y]] on [[i:x]]
 
 <!-- SEG:m68860:para:fs-idm176114816 -->

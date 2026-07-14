@@ -804,124 +804,6 @@
           }
         },
         {
-          "type": "table",
-          "id": "fs-idm84550336",
-          "class": "unnumbered",
-          "summary": "This table contains five rows and three columns. The first row is a header row, and it labels each column: “Water,” “Surface Tension ( m N / m ),” and “Viscosity ( m P a do t s ).” Under the “Water” column are the following: 0 degrees C, 20 degrees C, 60 degrees C, and 100 degrees C. Under the “Surface Tension ( m N / m )” column are the following: 75.6, 72.8, 66.2, and 58.9. Under the “Viscosity ( m P a do t s )” column are the following: 1.79, 1.00, 0.47, and 0.28.",
-          "rows": [
-            {
-              "cells": [
-                {
-                  "segmentId": "m68764:entry:auto-101",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68764:entry:auto-102",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68764:entry:auto-103",
-                  "attributes": {
-                    "align": "center"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68764:entry:auto-104",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68764:entry:auto-105",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68764:entry:auto-106",
-                  "attributes": {
-                    "align": "center"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68764:entry:auto-107",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68764:entry:auto-108",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68764:entry:auto-109",
-                  "attributes": {
-                    "align": "center"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68764:entry:auto-110",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68764:entry:auto-111",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68764:entry:auto-112",
-                  "attributes": {
-                    "align": "center"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68764:entry:auto-113",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68764:entry:auto-114",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68764:entry:auto-115",
-                  "attributes": {
-                    "align": "center"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
           "type": "exercise",
           "id": "fs-idp26872272",
           "problem": {
@@ -1013,7 +895,10 @@
       "class": null,
       "alt": "A photo shows a close-up, above-view, of a needle lying on the surface of a sample of water.",
       "src": "../../media/CNX_Chem_10_02_Needlefloa_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     },
     {
       "placeholder": "[[MEDIA:2]]",
@@ -1021,7 +906,10 @@
       "class": null,
       "alt": "This table has four columns and five rows. The first row is a header row, and it labels each column: “Compound,” “Molecule,” “Surface Tension ( m N / m ),” and “Viscosity ( m P a dot s ).” Under the “compound” column are the following: diethyl ether C subscript 2 H subscript 5 O C subscript 2 H subscript 5; acetone C subscript 2 H subscript 5 O C subscript 2 H subscript 5; ethanol C subscript 2 H subscript 5 O H; ethylene glycol C H subscript 2 ( O H ) C H subscript 2 ( O H ). Under the “Molecule” column are ball-and-stick representations of each compound. The first shows two grey spheres bonded together. The first grey sphere is also bonded to three white spheres. The second grey sphere is bonded to two white spheres and a red sphere. The red sphere is bonded to another grey sphere. The grey sphere is bonded to two white spheres and another grey sphere. The last grey sphere is bonded to three white spheres. The second shows three grey spheres bonded tighter. The two grey spheres on the end are each bonded to three white spheres. The grey sphere in the middle is bonded to one red sphere. The third shows two grey spheres bonded together. The first grey sphere is bonded to three white spheres and the second grey sphere is bonded to two white spheres and a red sphere. The red sphere is bonded to a white sphere. The fourth shows two grey spheres bonded together. Each grey sphere is bonded to two white spheres and a red sphere. Each red sphere is also bonded to one white sphere. Under the “Surface Tension ( m N / m )” column are the following: 17, 23, 22 and 48. Under the “Viscosity ( m P a dot s )” column are the following: 0.22, 0.31, 1.07, and 16.1.",
       "src": "../../media/CNX_Chem_10_02_Question4_img.jpg",
-      "mimeType": "image/jpeg"
+      "mimeType": "image/jpeg",
+      "embedSrc": "",
+      "width": "",
+      "height": ""
     }
   ],
   "inlineTables": [
@@ -1036,19 +924,19 @@
           {
             "cells": [
               {
-                "segmentId": "m68764:entry:auto-129",
+                "segmentId": "m68764:entry:auto-114",
                 "attributes": {
                   "align": "center"
                 }
               },
               {
-                "segmentId": "m68764:entry:auto-130",
+                "segmentId": "m68764:entry:auto-115",
                 "attributes": {
                   "align": "center"
                 }
               },
               {
-                "segmentId": "m68764:entry:auto-131",
+                "segmentId": "m68764:entry:auto-116",
                 "attributes": {
                   "align": "center"
                 }
@@ -1058,19 +946,19 @@
           {
             "cells": [
               {
-                "segmentId": "m68764:entry:auto-132",
+                "segmentId": "m68764:entry:auto-117",
                 "attributes": {
                   "align": "center"
                 }
               },
               {
-                "segmentId": "m68764:entry:auto-133",
+                "segmentId": "m68764:entry:auto-118",
                 "attributes": {
                   "align": "center"
                 }
               },
               {
-                "segmentId": "m68764:entry:auto-134",
+                "segmentId": "m68764:entry:auto-119",
                 "attributes": {
                   "align": "center"
                 }
@@ -1080,19 +968,19 @@
           {
             "cells": [
               {
-                "segmentId": "m68764:entry:auto-135",
+                "segmentId": "m68764:entry:auto-120",
                 "attributes": {
                   "align": "center"
                 }
               },
               {
-                "segmentId": "m68764:entry:auto-136",
+                "segmentId": "m68764:entry:auto-121",
                 "attributes": {
                   "align": "center"
                 }
               },
               {
-                "segmentId": "m68764:entry:auto-137",
+                "segmentId": "m68764:entry:auto-122",
                 "attributes": {
                   "align": "center"
                 }
@@ -1102,19 +990,19 @@
           {
             "cells": [
               {
-                "segmentId": "m68764:entry:auto-138",
+                "segmentId": "m68764:entry:auto-123",
                 "attributes": {
                   "align": "center"
                 }
               },
               {
-                "segmentId": "m68764:entry:auto-139",
+                "segmentId": "m68764:entry:auto-124",
                 "attributes": {
                   "align": "center"
                 }
               },
               {
-                "segmentId": "m68764:entry:auto-140",
+                "segmentId": "m68764:entry:auto-125",
                 "attributes": {
                   "align": "center"
                 }
@@ -1124,19 +1012,19 @@
           {
             "cells": [
               {
-                "segmentId": "m68764:entry:auto-141",
+                "segmentId": "m68764:entry:auto-126",
                 "attributes": {
                   "align": "center"
                 }
               },
               {
-                "segmentId": "m68764:entry:auto-142",
+                "segmentId": "m68764:entry:auto-127",
                 "attributes": {
                   "align": "center"
                 }
               },
               {
-                "segmentId": "m68764:entry:auto-143",
+                "segmentId": "m68764:entry:auto-128",
                 "attributes": {
                   "align": "center"
                 }

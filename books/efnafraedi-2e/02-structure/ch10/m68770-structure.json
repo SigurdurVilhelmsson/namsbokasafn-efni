@@ -750,150 +750,6 @@
           "solution": null
         },
         {
-          "type": "table",
-          "id": "fs-idm7525216",
-          "class": "unnumbered",
-          "summary": "This table has four rows and five columns. The first row is a header row, and it labels each column: “Substance,” “Appearance,” “Melting Point,” “Electrical Conductivity,” and “Solubility in Water.” Under the “Substance” column are the following: X, Y, and Z. Under the “Appearance” column are the following: lustrous, malleable; soft, yellow; hard, white. Under the “Melting Point,” column are the following: 1500 degrees C, 113 degrees C, and 800 degrees C. Under the “Electrical Conductivity” column are the following: high; none; only if melted / dissolved. Under the “Solubility in Water” column are the following: insoluble, insoluble, and soluble.",
-          "rows": [
-            {
-              "cells": [
-                {
-                  "segmentId": "m68770:entry:auto-100",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-101",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-102",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-103",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-104",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68770:entry:auto-105",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-106",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-107",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-108",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-109",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68770:entry:auto-110",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-111",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-112",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-113",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-114",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68770:entry:auto-115",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-116",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-117",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-118",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-119",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
           "type": "exercise",
           "id": "fs-idm39063008",
           "problem": {
@@ -914,150 +770,6 @@
               }
             ]
           }
-        },
-        {
-          "type": "table",
-          "id": "fs-idp139392608",
-          "class": "unnumbered",
-          "summary": "This table has four rows and five columns. The first row is a header row, and it labels each column: “Substance,” “Appearance,” “Melting Point,” “Electrical Conductivity,” and “Solubility in Water.” Under the “Substance” column are the following: X, Y, and Z. Under the “Appearance” column are the following: brittle, white; shiny, malleable; hard, colorless. Under the “Melting Point,” column are the following: 800 degrees C, 1100 degrees C, and 3550 degrees C. Under the “Electrical Conductivity” column are the following: only if melted / dissolved, high, and none. Under the “Solubility in Water” column are the following: soluble, insoluble, and insoluble.",
-          "rows": [
-            {
-              "cells": [
-                {
-                  "segmentId": "m68770:entry:auto-122",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-123",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-124",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-125",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-126",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68770:entry:auto-127",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-128",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-129",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-130",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-131",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68770:entry:auto-132",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-133",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-134",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-135",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-136",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68770:entry:auto-137",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-138",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-139",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-140",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68770:entry:auto-141",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            }
-          ]
         },
         {
           "type": "exercise",
@@ -1230,31 +942,31 @@
           {
             "cells": [
               {
-                "segmentId": "m68770:entry:auto-171",
+                "segmentId": "m68770:entry:auto-131",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-172",
+                "segmentId": "m68770:entry:auto-132",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-173",
+                "segmentId": "m68770:entry:auto-133",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-174",
+                "segmentId": "m68770:entry:auto-134",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-175",
+                "segmentId": "m68770:entry:auto-135",
                 "attributes": {
                   "align": "left"
                 }
@@ -1264,31 +976,31 @@
           {
             "cells": [
               {
-                "segmentId": "m68770:entry:auto-176",
+                "segmentId": "m68770:entry:auto-136",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-177",
+                "segmentId": "m68770:entry:auto-137",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-178",
+                "segmentId": "m68770:entry:auto-138",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-179",
+                "segmentId": "m68770:entry:auto-139",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-180",
+                "segmentId": "m68770:entry:auto-140",
                 "attributes": {
                   "align": "left"
                 }
@@ -1298,31 +1010,31 @@
           {
             "cells": [
               {
-                "segmentId": "m68770:entry:auto-181",
+                "segmentId": "m68770:entry:auto-141",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-182",
+                "segmentId": "m68770:entry:auto-142",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-183",
+                "segmentId": "m68770:entry:auto-143",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-184",
+                "segmentId": "m68770:entry:auto-144",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-185",
+                "segmentId": "m68770:entry:auto-145",
                 "attributes": {
                   "align": "left"
                 }
@@ -1332,31 +1044,31 @@
           {
             "cells": [
               {
-                "segmentId": "m68770:entry:auto-186",
+                "segmentId": "m68770:entry:auto-146",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-187",
+                "segmentId": "m68770:entry:auto-147",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-188",
+                "segmentId": "m68770:entry:auto-148",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-189",
+                "segmentId": "m68770:entry:auto-149",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-190",
+                "segmentId": "m68770:entry:auto-150",
                 "attributes": {
                   "align": "left"
                 }
@@ -1377,31 +1089,31 @@
           {
             "cells": [
               {
-                "segmentId": "m68770:entry:auto-191",
+                "segmentId": "m68770:entry:auto-151",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-192",
+                "segmentId": "m68770:entry:auto-152",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-193",
+                "segmentId": "m68770:entry:auto-153",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-194",
+                "segmentId": "m68770:entry:auto-154",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-195",
+                "segmentId": "m68770:entry:auto-155",
                 "attributes": {
                   "align": "left"
                 }
@@ -1411,31 +1123,31 @@
           {
             "cells": [
               {
-                "segmentId": "m68770:entry:auto-196",
+                "segmentId": "m68770:entry:auto-156",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-197",
+                "segmentId": "m68770:entry:auto-157",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-198",
+                "segmentId": "m68770:entry:auto-158",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-199",
+                "segmentId": "m68770:entry:auto-159",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-200",
+                "segmentId": "m68770:entry:auto-160",
                 "attributes": {
                   "align": "left"
                 }
@@ -1445,31 +1157,31 @@
           {
             "cells": [
               {
-                "segmentId": "m68770:entry:auto-201",
+                "segmentId": "m68770:entry:auto-161",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-202",
+                "segmentId": "m68770:entry:auto-162",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-203",
+                "segmentId": "m68770:entry:auto-163",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-204",
+                "segmentId": "m68770:entry:auto-164",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-205",
+                "segmentId": "m68770:entry:auto-165",
                 "attributes": {
                   "align": "left"
                 }
@@ -1479,31 +1191,31 @@
           {
             "cells": [
               {
-                "segmentId": "m68770:entry:auto-206",
+                "segmentId": "m68770:entry:auto-166",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-207",
+                "segmentId": "m68770:entry:auto-167",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-208",
+                "segmentId": "m68770:entry:auto-168",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-209",
+                "segmentId": "m68770:entry:auto-169",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68770:entry:auto-210",
+                "segmentId": "m68770:entry:auto-170",
                 "attributes": {
                   "align": "left"
                 }

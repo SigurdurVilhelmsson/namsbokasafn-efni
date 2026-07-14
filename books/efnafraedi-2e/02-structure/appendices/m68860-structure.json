@@ -754,11 +754,16 @@
         {
           "type": "example",
           "id": "fs-idp9271248",
-          "title": {
-            "segmentId": "m68860:example-title:fs-idp9271248-title",
-            "text": "Graphing the Dependence of [[i:y]] on [[i:x]]"
-          },
+          "title": null,
           "content": [
+            {
+              "type": "para",
+              "id": "fs-idm111716000",
+              "title": {
+                "segmentId": "m68860:para-title:fs-idm111716000-title",
+                "text": "Graphing the Dependence of [[i:y]] on [[i:x]]"
+              }
+            },
             {
               "type": "para",
               "id": "fs-idm176114816",

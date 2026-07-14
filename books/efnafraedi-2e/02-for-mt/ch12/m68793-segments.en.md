@@ -17,7 +17,7 @@ Use the Arrhenius equation in calculations relating rate constants to temperatur
 We should not be surprised that atoms, molecules, or ions must collide before they can react with each other. Atoms must be close together to form chemical bonds. This simple premise is the basis for a very powerful theory that explains many observations regarding chemical kinetics, including factors affecting reaction rates.
 
 <!-- SEG:m68793:para:fs-idm148062976 -->
-{{term}}Collision theory{{/term}} is based on the following postulates:
+[[term:Collision theory|term-00001]] is based on the following postulates:
 
 <!-- SEG:m68793:item:fs-idm90348816-item-1 -->
 The rate of a reaction is proportional to the rate of reactant collisions: [[MATH:1]]
@@ -26,15 +26,6 @@ The rate of a reaction is proportional to the rate of reactant collisions: [[MAT
 The reacting species must collide in an orientation that allows contact between the atoms that will become bonded together in the product.
 
 <!-- SEG:m68793:item:fs-idm90348816-item-3 -->
-The collision must occur with adequate energy to permit mutual penetration of the reacting species’ valence shells so that the electrons can rearrange and form new bonds (and new chemical species).
-
-<!-- SEG:m68793:para:fs-idm136564352 -->
-The rate of a reaction is proportional to the rate of reactant collisions:
-
-<!-- SEG:m68793:para:fs-idm124479808 -->
-The reacting species must collide in an orientation that allows contact between the atoms that will become bonded together in the product.
-
-<!-- SEG:m68793:para:fs-idm122867808 -->
 The collision must occur with adequate energy to permit mutual penetration of the reacting species’ valence shells so that the electrons can rearrange and form new bonds (and new chemical species).
 
 <!-- SEG:m68793:para:fs-idm60879872 -->
@@ -53,7 +44,7 @@ Although there are many different possible orientations the two molecules can ha
 Illustrated are two collisions that might take place between carbon monoxide and oxygen molecules. The orientation of the colliding molecules partially determines whether a reaction between the two molecules will occur.
 
 <!-- SEG:m68793:para:fs-idm58992896 -->
-If the collision does take place with the correct orientation, there is still no guarantee that the reaction will proceed to form carbon dioxide. In addition to a proper orientation, the collision must also occur with sufficient energy to result in product formation. When reactant species collide with both proper orientation and adequate energy, they combine to form an unstable species called an {{term}}activated complex{{/term}} or a {{term}}transition state{{/term}}. These species are very short lived and usually undetectable by most analytical instruments. In some cases, sophisticated spectral measurements have been used to observe transition states.
+If the collision does take place with the correct orientation, there is still no guarantee that the reaction will proceed to form carbon dioxide. In addition to a proper orientation, the collision must also occur with sufficient energy to result in product formation. When reactant species collide with both proper orientation and adequate energy, they combine to form an unstable species called an [[term:activated complex|term-00002]] or a [[term:transition state|term-00003]]. These species are very short lived and usually undetectable by most analytical instruments. In some cases, sophisticated spectral measurements have been used to observe transition states.
 
 <!-- SEG:m68793:para:fs-idm207258608 -->
 Collision theory explains why most reaction rates increase as concentrations increase. With an increase in the concentration of any reacting substance, the chances for collisions between molecules are increased because there are more molecules per unit of volume. More collisions mean a faster reaction rate, assuming the energy of the collisions is adequate.
@@ -62,22 +53,22 @@ Collision theory explains why most reaction rates increase as concentrations inc
 Activation Energy and the Arrhenius Equation
 
 <!-- SEG:m68793:para:fs-idm102149680 -->
-The minimum energy necessary to form a product during a collision between reactants is called the {{term}}activation energy ([[i:E]][[sub:a]]){{/term}}. How this energy compares to the kinetic energy provided by colliding reactant molecules is a primary factor affecting the rate of a chemical reaction. If the activation energy is much larger than the average kinetic energy of the molecules, the reaction will occur slowly since only a few fast-moving molecules will have enough energy to react. If the activation energy is much smaller than the average kinetic energy of the molecules, a large fraction of molecules will be adequately energetic and the reaction will proceed rapidly.
+The minimum energy necessary to form a product during a collision between reactants is called the [[term:activation energy ([[i:E]][[sub:a]])|term-00004]]. How this energy compares to the kinetic energy provided by colliding reactant molecules is a primary factor affecting the rate of a chemical reaction. If the activation energy is much larger than the average kinetic energy of the molecules, the reaction will occur slowly since only a few fast-moving molecules will have enough energy to react. If the activation energy is much smaller than the average kinetic energy of the molecules, a large fraction of molecules will be adequately energetic and the reaction will proceed rapidly.
 
 <!-- SEG:m68793:para:fs-idm3588352 -->
 [[xref:CNX_Chem_12_05_RCooDgm]] shows how the energy of a chemical system changes as it undergoes a reaction converting reactants to products according to the equation
 
 <!-- SEG:m68793:para:fs-idm92123120 -->
-These {{term}}reaction diagrams{{/term}} are widely used in chemical kinetics to illustrate various properties of the reaction of interest. Viewing the diagram from left to right, the system initially comprises reactants only, [[i:A]] + [[i:B]]. Reactant molecules with sufficient energy can collide to form a high-energy activated complex or transition state. The unstable transition state can then subsequently decay to yield stable products, [[i:C]] + [[i:D]]. The diagram depicts the reaction's activation energy, [[i:E[[sub:a]]]], as the energy difference between the reactants and the transition state. Using a specific energy, the [[i:enthalpy]] (see chapter on thermochemistry), the enthalpy change of the reaction, Δ[[i:H]], is estimated as the energy difference between the reactants and products. In this case, the reaction is exothermic (Δ[[i:H]] &lt; 0) since it yields a decrease in system enthalpy.
+These [[term:reaction diagrams|term-00005]] are widely used in chemical kinetics to illustrate various properties of the reaction of interest. Viewing the diagram from left to right, the system initially comprises reactants only, [[i:A]] + [[i:B]]. Reactant molecules with sufficient energy can collide to form a high-energy activated complex or transition state. The unstable transition state can then subsequently decay to yield stable products, [[i:C]] + [[i:D]]. The diagram depicts the reaction's activation energy, [[i:E[[sub:a]]]], as the energy difference between the reactants and the transition state. Using a specific energy, the [[i:enthalpy]] (see chapter on thermochemistry), the enthalpy change of the reaction, Δ[[i:H]], is estimated as the energy difference between the reactants and products. In this case, the reaction is exothermic (Δ[[i:H]] &lt; 0) since it yields a decrease in system enthalpy.
 
 <!-- SEG:m68793:caption:CNX_Chem_12_05_RCooDgm-caption -->
 Reaction diagram for the exothermic reaction [[MATH:3]]
 
 <!-- SEG:m68793:para:fs-idm93458160 -->
-The {{term}}Arrhenius equation{{/term}} relates the activation energy and the rate constant, [[i:k]], for many chemical reactions:
+The [[term:Arrhenius equation|term-00006]] relates the activation energy and the rate constant, [[i:k]], for many chemical reactions:
 
 <!-- SEG:m68793:para:fs-idp69522176 -->
-In this equation, [[i:R]] is the ideal gas constant, which has a value 8.314 J/mol/K, T is temperature on the Kelvin scale, [[i:E]][[sub:a]] is the activation energy in joules per mole, [[i:e]] is the constant 2.7183, and [[i:A]] is a constant called the {{term}}frequency factor{{/term}}, which is related to the frequency of collisions and the orientation of the reacting molecules.
+In this equation, [[i:R]] is the ideal gas constant, which has a value 8.314 J/mol/K, T is temperature on the Kelvin scale, [[i:E]][[sub:a]] is the activation energy in joules per mole, [[i:e]] is the constant 2.7183, and [[i:A]] is a constant called the [[term:frequency factor|term-00007]], which is related to the frequency of collisions and the orientation of the reacting molecules.
 
 <!-- SEG:m68793:para:fs-idm378964576 -->
 Postulates of collision theory are nicely accommodated by the Arrhenius equation. The frequency factor, [[i:A]], reflects how well the reaction conditions favor properly oriented collisions between reactant molecules. An increased probability of effectively oriented collisions results in larger values for [[i:A]] and faster reaction rates.
@@ -145,76 +136,76 @@ Answer:
 <!-- SEG:m68793:para:fs-idm147992368 -->
 1.1 [[MATH:10]] 10[[sup:5]] J mol[[sup:−1]] or 110 kJ mol[[sup:−1]]
 
-<!-- SEG:m68793:entry:auto-50 -->
+<!-- SEG:m68793:entry:auto-47 -->
 [[i:T]] (K)
 
-<!-- SEG:m68793:entry:auto-51 -->
+<!-- SEG:m68793:entry:auto-48 -->
 [[i:k]] (L/mol/s)
 
-<!-- SEG:m68793:entry:auto-52 -->
+<!-- SEG:m68793:entry:auto-49 -->
 555
 
-<!-- SEG:m68793:entry:auto-53 -->
+<!-- SEG:m68793:entry:auto-50 -->
 3.52 [[MATH:11]] 10[[sup:−7]]
 
-<!-- SEG:m68793:entry:auto-54 -->
+<!-- SEG:m68793:entry:auto-51 -->
 575
 
-<!-- SEG:m68793:entry:auto-55 -->
+<!-- SEG:m68793:entry:auto-52 -->
 1.22 [[MATH:12]] 10[[sup:−6]]
 
-<!-- SEG:m68793:entry:auto-56 -->
+<!-- SEG:m68793:entry:auto-53 -->
 645
 
-<!-- SEG:m68793:entry:auto-57 -->
+<!-- SEG:m68793:entry:auto-54 -->
 8.59 [[MATH:13]] 10[[sup:−5]]
 
-<!-- SEG:m68793:entry:auto-58 -->
+<!-- SEG:m68793:entry:auto-55 -->
 700
 
-<!-- SEG:m68793:entry:auto-59 -->
+<!-- SEG:m68793:entry:auto-56 -->
 1.16 [[MATH:14]] 10[[sup:−3]]
 
-<!-- SEG:m68793:entry:auto-60 -->
+<!-- SEG:m68793:entry:auto-57 -->
 781
 
-<!-- SEG:m68793:entry:auto-61 -->
+<!-- SEG:m68793:entry:auto-58 -->
 3.95 [[MATH:15]] 10[[sup:−2]]
 
-<!-- SEG:m68793:entry:auto-62 -->
+<!-- SEG:m68793:entry:auto-59 -->
 [[MATH:16]]
 
-<!-- SEG:m68793:entry:auto-63 -->
+<!-- SEG:m68793:entry:auto-60 -->
 ln [[i:k]]
 
-<!-- SEG:m68793:entry:auto-64 -->
+<!-- SEG:m68793:entry:auto-61 -->
 1.80 [[MATH:17]] 10[[sup:−3]]
 
-<!-- SEG:m68793:entry:auto-65 -->
+<!-- SEG:m68793:entry:auto-62 -->
 −14.860
 
-<!-- SEG:m68793:entry:auto-66 -->
+<!-- SEG:m68793:entry:auto-63 -->
 1.74 [[MATH:18]] 10[[sup:−3]]
 
-<!-- SEG:m68793:entry:auto-67 -->
+<!-- SEG:m68793:entry:auto-64 -->
 −13.617
 
-<!-- SEG:m68793:entry:auto-68 -->
+<!-- SEG:m68793:entry:auto-65 -->
 1.55 [[MATH:19]] 10[[sup:−3]]
 
-<!-- SEG:m68793:entry:auto-69 -->
+<!-- SEG:m68793:entry:auto-66 -->
 −9.362
 
-<!-- SEG:m68793:entry:auto-70 -->
+<!-- SEG:m68793:entry:auto-67 -->
 1.43 [[MATH:20]] 10[[sup:−3]]
 
-<!-- SEG:m68793:entry:auto-71 -->
+<!-- SEG:m68793:entry:auto-68 -->
 −6.759
 
-<!-- SEG:m68793:entry:auto-72 -->
+<!-- SEG:m68793:entry:auto-69 -->
 1.28 [[MATH:21]] 10[[sup:−3]]
 
-<!-- SEG:m68793:entry:auto-73 -->
+<!-- SEG:m68793:entry:auto-70 -->
 −3.231
 
 <!-- SEG:m68793:caption:CNX_Chem_12_05_ArrhPlot-caption -->
@@ -229,13 +220,13 @@ Chemical reactions typically require collisions between reactant species. These 
 <!-- SEG:m68793:title:fs-idp2946768-title -->
 Key Equations
 
-<!-- SEG:m68793:entry:auto-78 -->
+<!-- SEG:m68793:entry:auto-75 -->
 [[MATH:24]]
 
-<!-- SEG:m68793:entry:auto-79 -->
+<!-- SEG:m68793:entry:auto-76 -->
 [[MATH:25]]
 
-<!-- SEG:m68793:entry:auto-80 -->
+<!-- SEG:m68793:entry:auto-77 -->
 [[MATH:26]]
 
 <!-- SEG:m68793:title:fs-idm193786736-title -->
@@ -322,80 +313,32 @@ What is the value of the activation energy (in kJ/mol) for this reaction?
 <!-- SEG:m68793:solution:fs-idm124657264 -->
 177 kJ/mol
 
-<!-- SEG:m68793:entry:auto-109 -->
-Temperature (K)
-
-<!-- SEG:m68793:entry:auto-110 -->
-[[i:k]] (L mol[[sup:−1]] s[[sup:−1]])
-
-<!-- SEG:m68793:entry:auto-111 -->
-555
-
-<!-- SEG:m68793:entry:auto-112 -->
-6.23 [[MATH:37]] 10[[sup:−7]]
-
-<!-- SEG:m68793:entry:auto-113 -->
-575
-
-<!-- SEG:m68793:entry:auto-114 -->
-2.42 [[MATH:38]] 10[[sup:−6]]
-
-<!-- SEG:m68793:entry:auto-115 -->
-645
-
-<!-- SEG:m68793:entry:auto-116 -->
-1.44 [[MATH:39]] 10[[sup:−4]]
-
-<!-- SEG:m68793:entry:auto-117 -->
-700
-
-<!-- SEG:m68793:entry:auto-118 -->
-2.01 [[MATH:40]] 10[[sup:−3]]
-
 <!-- SEG:m68793:problem:fs-idm93329056 -->
 The element Co exists in two oxidation states, Co(II) and Co(III), and the ions form many complexes. The rate at which one of the complexes of Co(III) was reduced by Fe(II) in water was measured. Determine the activation energy of the reaction from the following data:[[BR]] [[TABLE:fs-idm163198896]]
 
-<!-- SEG:m68793:entry:auto-120 -->
-[[i:T]] (K)
-
-<!-- SEG:m68793:entry:auto-121 -->
-[[i:k]] (s[[sup:−1]])
-
-<!-- SEG:m68793:entry:auto-122 -->
-293
-
-<!-- SEG:m68793:entry:auto-123 -->
-0.054
-
-<!-- SEG:m68793:entry:auto-124 -->
-298
-
-<!-- SEG:m68793:entry:auto-125 -->
-0.100
-
 <!-- SEG:m68793:problem:fs-idm65384176 -->
-The hydrolysis of the sugar sucrose to the sugars glucose and fructose,[[BR]] [[MATH:41]]
+The hydrolysis of the sugar sucrose to the sugars glucose and fructose,[[BR]] [[MATH:37]]
 
 <!-- SEG:m68793:problem:fs-idm106774224 -->
 follows a first-order rate law for the disappearance of sucrose: rate = [[i:k]][C[[sub:12]]H[[sub:22]]O[[sub:11]]] (The products of the reaction, glucose and fructose, have the same molecular formulas but differ in the arrangement of the atoms in their molecules.)
 
 <!-- SEG:m68793:problem:fs-idm1605904 -->
-(a) In neutral solution, [[i:k]] = 2.1 [[MATH:42]] 10[[sup:−11]] s[[sup:−1]] at 27 °C and 8.5 [[MATH:43]] 10[[sup:−11]] s[[sup:−1]] at 37 °C. Determine the activation energy, the frequency factor, and the rate constant for this equation at 47 °C (assuming the kinetics remain consistent with the Arrhenius equation at this temperature).
+(a) In neutral solution, [[i:k]] = 2.1 [[MATH:38]] 10[[sup:−11]] s[[sup:−1]] at 27 °C and 8.5 [[MATH:39]] 10[[sup:−11]] s[[sup:−1]] at 37 °C. Determine the activation energy, the frequency factor, and the rate constant for this equation at 47 °C (assuming the kinetics remain consistent with the Arrhenius equation at this temperature).
 
 <!-- SEG:m68793:problem:fs-idm94994288 -->
-(b) When a solution of sucrose with an initial concentration of 0.150 [[i:M]] reaches equilibrium, the concentration of sucrose is 1.65 [[MATH:44]] 10[[sup:−7]] [[i:M]]. How long will it take the solution to reach equilibrium at 27 °C in the absence of a catalyst? Because the concentration of sucrose at equilibrium is so low, assume that the reaction is irreversible.
+(b) When a solution of sucrose with an initial concentration of 0.150 [[i:M]] reaches equilibrium, the concentration of sucrose is 1.65 [[MATH:40]] 10[[sup:−7]] [[i:M]]. How long will it take the solution to reach equilibrium at 27 °C in the absence of a catalyst? Because the concentration of sucrose at equilibrium is so low, assume that the reaction is irreversible.
 
 <!-- SEG:m68793:problem:fs-idm124435200 -->
 (c) Why does assuming that the reaction is irreversible simplify the calculation in part (b)?
 
 <!-- SEG:m68793:solution:fs-idm112507760 -->
-[[i:E]][[sub:a]] = 108 kJ; [[i:A]] = 2.0 [[MATH:45]] 10[[sup:8]] s[[sup:−1]]; [[i:k]] = 3.2 [[MATH:46]] 10[[sup:−10]] s[[sup:−1]]; (b) 1.81 [[MATH:47]] 10[[sup:8]] h or 7.6 [[MATH:48]] 10[[sup:6]] day; (c) Assuming that the reaction is irreversible simplifies the calculation because we do not have to account for any reactant that, having been converted to product, returns to the original state.
+[[i:E]][[sub:a]] = 108 kJ; [[i:A]] = 2.0 [[MATH:41]] 10[[sup:8]] s[[sup:−1]]; [[i:k]] = 3.2 [[MATH:42]] 10[[sup:−10]] s[[sup:−1]]; (b) 1.81 [[MATH:43]] 10[[sup:8]] h or 7.6 [[MATH:44]] 10[[sup:6]] day; (c) Assuming that the reaction is irreversible simplifies the calculation because we do not have to account for any reactant that, having been converted to product, returns to the original state.
 
 <!-- SEG:m68793:problem:fs-idm100372496 -->
-Use the [[link:PhET Reactions &amp; Rates interactive simulation|http://openstax.org/l/16PHETreaction]] to simulate a system. On the “Single collision” tab of the simulation applet, enable the “Energy view” by clicking the “+” icon. Select the first [[MATH:49]] reaction (A is yellow, B is purple, and C is navy blue). Using the “straight shot” default option, try launching the [[i:A]] atom with varying amounts of energy. What changes when the Total Energy line at launch is below the transition state of the Potential Energy line? Why? What happens when it is above the transition state? Why?
+Use the [[link:PhET Reactions &amp; Rates interactive simulation|http://openstax.org/l/16PHETreaction]] to simulate a system. On the “Single collision” tab of the simulation applet, enable the “Energy view” by clicking the “+” icon. Select the first [[MATH:45]] reaction (A is yellow, B is purple, and C is navy blue). Using the “straight shot” default option, try launching the [[i:A]] atom with varying amounts of energy. What changes when the Total Energy line at launch is below the transition state of the Potential Energy line? Why? What happens when it is above the transition state? Why?
 
 <!-- SEG:m68793:problem:fs-idp46127280 -->
-Use the [[link:PhET Reactions &amp; Rates interactive simulation|http://openstax.org/l/16PHETreaction]] to simulate a system. On the “Single collision” tab of the simulation applet, enable the “Energy view” by clicking the “+” icon. Select the first [[MATH:50]] reaction (A is yellow, B is purple, and C is navy blue). Using the “angled shot” option, try launching the [[i:A]] atom with varying angles, but with more Total energy than the transition state. What happens when the [[i:A]] atom hits the [[i:BC]] molecule from different directions? Why?
+Use the [[link:PhET Reactions &amp; Rates interactive simulation|http://openstax.org/l/16PHETreaction]] to simulate a system. On the “Single collision” tab of the simulation applet, enable the “Energy view” by clicking the “+” icon. Select the first [[MATH:46]] reaction (A is yellow, B is purple, and C is navy blue). Using the “angled shot” option, try launching the [[i:A]] atom with varying angles, but with more Total energy than the transition state. What happens when the [[i:A]] atom hits the [[i:BC]] molecule from different directions? Why?
 
 <!-- SEG:m68793:solution:fs-idm206557120 -->
 The [[i:A]] atom has enough energy to react with [[i:BC]]; however, the different angles at which it bounces off of [[i:BC]] without reacting indicate that the orientation of the molecule is an important part of the reaction kinetics and determines whether a reaction will occur.
@@ -407,7 +350,7 @@ activated complex
 (also, transition state) unstable combination of reactant species formed during a chemical reaction
 
 <!-- SEG:m68793:glossary-term:fs-idm162201904-term -->
-activation energy (Ea)
+activation energy ([[i:E]][[sub:a]])
 
 <!-- SEG:m68793:glossary-def:fs-idm162201904-def -->
 minimum energy necessary in order for a reaction to take place
@@ -425,7 +368,7 @@ collision theory
 model that emphasizes the energy and orientation of molecular collisions to explain and predict reaction kinetics
 
 <!-- SEG:m68793:glossary-term:fs-idm206488448-term -->
-frequency factor (A)
+frequency factor ([[i:A]])
 
 <!-- SEG:m68793:glossary-def:fs-idm206488448-def -->
 proportionality constant in the Arrhenius equation, related to the relative number of collisions having an orientation capable of leading to product formation
@@ -436,50 +379,50 @@ reaction diagram
 <!-- SEG:m68793:glossary-def:fs-idm355773584-def -->
 used in chemical kinetics to illustrate various properties of a reaction
 
-<!-- SEG:m68793:entry:auto-147 -->
+<!-- SEG:m68793:entry:auto-128 -->
 Temperature (K)
 
-<!-- SEG:m68793:entry:auto-148 -->
+<!-- SEG:m68793:entry:auto-129 -->
 [[i:k]] (L mol[[sup:−1]] s[[sup:−1]])
 
-<!-- SEG:m68793:entry:auto-149 -->
+<!-- SEG:m68793:entry:auto-130 -->
 555
 
-<!-- SEG:m68793:entry:auto-150 -->
+<!-- SEG:m68793:entry:auto-131 -->
 6.23 [[MATH:33]] 10[[sup:−7]]
 
-<!-- SEG:m68793:entry:auto-151 -->
+<!-- SEG:m68793:entry:auto-132 -->
 575
 
-<!-- SEG:m68793:entry:auto-152 -->
+<!-- SEG:m68793:entry:auto-133 -->
 2.42 [[MATH:34]] 10[[sup:−6]]
 
-<!-- SEG:m68793:entry:auto-153 -->
+<!-- SEG:m68793:entry:auto-134 -->
 645
 
-<!-- SEG:m68793:entry:auto-154 -->
+<!-- SEG:m68793:entry:auto-135 -->
 1.44 [[MATH:35]] 10[[sup:−4]]
 
-<!-- SEG:m68793:entry:auto-155 -->
+<!-- SEG:m68793:entry:auto-136 -->
 700
 
-<!-- SEG:m68793:entry:auto-156 -->
+<!-- SEG:m68793:entry:auto-137 -->
 2.01 [[MATH:36]] 10[[sup:−3]]
 
-<!-- SEG:m68793:entry:auto-157 -->
+<!-- SEG:m68793:entry:auto-138 -->
 [[i:T]] (K)
 
-<!-- SEG:m68793:entry:auto-158 -->
+<!-- SEG:m68793:entry:auto-139 -->
 [[i:k]] (s[[sup:−1]])
 
-<!-- SEG:m68793:entry:auto-159 -->
+<!-- SEG:m68793:entry:auto-140 -->
 293
 
-<!-- SEG:m68793:entry:auto-160 -->
+<!-- SEG:m68793:entry:auto-141 -->
 0.054
 
-<!-- SEG:m68793:entry:auto-161 -->
+<!-- SEG:m68793:entry:auto-142 -->
 298
 
-<!-- SEG:m68793:entry:auto-162 -->
+<!-- SEG:m68793:entry:auto-143 -->
 0.100

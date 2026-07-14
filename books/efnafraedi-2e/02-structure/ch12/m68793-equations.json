@@ -146,8 +146,8 @@
     "latex": "\\times"
   },
   "math-37": {
-    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
-    "latex": "\\times"
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mrow><m:mn>12</m:mn></m:mrow></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>22</m:mn></m:mrow></m:msub><m:msub><m:mtext>O</m:mtext><m:mrow><m:mn>11</m:mn></m:mrow></m:msub><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mtext>C</m:mtext><m:mn>6</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>12</m:mn></m:mrow></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>6</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mtext>C</m:mtext><m:mn>6</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>12</m:mn></m:mrow></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>6</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{{\\text{C}}_{{12}}{\\text{H}}_{{22}}{\\text{O}}_{{11}}+{\\text{H}}_{2}\\text{O}\\, \\longrightarrow \\, {\\text{C}}_{6}{\\text{H}}_{{12}}{\\text{O}}_{6}+{\\text{C}}_{6}{\\text{H}}_{{12}}{\\text{O}}_{6}}"
   },
   "math-38": {
     "mathml": "<m:math><m:mo>×</m:mo></m:math>",
@@ -162,8 +162,8 @@
     "latex": "\\times"
   },
   "math-41": {
-    "mathml": "<m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mrow><m:mn>12</m:mn></m:mrow></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>22</m:mn></m:mrow></m:msub><m:msub><m:mtext>O</m:mtext><m:mrow><m:mn>11</m:mn></m:mrow></m:msub><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mtext>C</m:mtext><m:mn>6</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>12</m:mn></m:mrow></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>6</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mtext>C</m:mtext><m:mn>6</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>12</m:mn></m:mrow></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>6</m:mn></m:msub></m:mrow></m:math>",
-    "latex": "{{\\text{C}}_{{12}}{\\text{H}}_{{22}}{\\text{O}}_{{11}}+{\\text{H}}_{2}\\text{O}\\, \\longrightarrow \\, {\\text{C}}_{6}{\\text{H}}_{{12}}{\\text{O}}_{6}+{\\text{C}}_{6}{\\text{H}}_{{12}}{\\text{O}}_{6}}"
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
   },
   "math-42": {
     "mathml": "<m:math><m:mo>×</m:mo></m:math>",
@@ -178,26 +178,10 @@
     "latex": "\\times"
   },
   "math-45": {
-    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
-    "latex": "\\times"
-  },
-  "math-46": {
-    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
-    "latex": "\\times"
-  },
-  "math-47": {
-    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
-    "latex": "\\times"
-  },
-  "math-48": {
-    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
-    "latex": "\\times"
-  },
-  "math-49": {
     "mathml": "<m:math><m:mrow><m:mi>A</m:mi><m:mo>+</m:mo><m:mi>B</m:mi><m:mi>C</m:mi><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mi>A</m:mi><m:mi>B</m:mi><m:mo>+</m:mo><m:mi>C</m:mi></m:mrow></m:math>",
     "latex": "{A+BC\\, \\longrightarrow \\, AB+C}"
   },
-  "math-50": {
+  "math-46": {
     "mathml": "<m:math><m:mrow><m:mi>A</m:mi><m:mo>+</m:mo><m:mi>B</m:mi><m:mi>C</m:mi><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mi>A</m:mi><m:mi>B</m:mi><m:mo>+</m:mo><m:mi>C</m:mi></m:mrow></m:math>",
     "latex": "{A+BC\\, \\longrightarrow \\, AB+C}"
   },

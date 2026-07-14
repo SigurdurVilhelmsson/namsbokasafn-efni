@@ -23,7 +23,7 @@ Alcohols
 Naming Alcohols
 
 <!-- SEG:m68847:para:fs-idm24572576 -->
-The name of an alcohol comes from the hydrocarbon from which it was derived. The final [[i:-e]] in the name of the hydrocarbon is replaced by [[i:-ol]], and the carbon atom to which the –OH group is bonded is indicated by a number placed before the name. {{fn}}The IUPAC adopted new nomenclature guidelines in 2013 that require this number to be placed as an “infix” rather than a prefix. For example, the new name for 2-propanol would be propan-2-ol. Widespread adoption of this new nomenclature will take some time, and students are encouraged to be familiar with both the old and new naming protocols.{{/fn}}
+The name of an alcohol comes from the hydrocarbon from which it was derived. The final [[i:-e]] in the name of the hydrocarbon is replaced by [[i:-ol]], and the carbon atom to which the –OH group is bonded is indicated by a number placed before the name. [[fn:The IUPAC adopted new nomenclature guidelines in 2013 that require this number to be placed as an “infix” rather than a prefix. For example, the new name for 2-propanol would be propan-2-ol. Widespread adoption of this new nomenclature will take some time, and students are encouraged to be familiar with both the old and new naming protocols.|fs-idp7176752]]
 
 <!-- SEG:m68847:example-title:fs-idm9024448-title -->
 Naming Alcohols
@@ -56,7 +56,7 @@ Answer:
 Incorporation of an oxygen atom into carbon- and hydrogen-containing molecules leads to new functional groups and new families of compounds. When the oxygen atom is attached by single bonds, the molecule is either an alcohol or ether.
 
 <!-- SEG:m68847:para:fs-idm33604032 -->
-{{term}}Alcohols{{/term}} are derivatives of hydrocarbons in which an –OH group has replaced a hydrogen atom. Although all alcohols have one or more hydroxyl (–OH) functional groups, they do not behave like bases such as NaOH and KOH. NaOH and KOH are ionic compounds that contain OH[[sup:–]] ions. Alcohols are covalent molecules; the –OH group in an alcohol molecule is attached to a carbon atom by a covalent bond.
+[[term:Alcohols|term-00001]] are derivatives of hydrocarbons in which an –OH group has replaced a hydrogen atom. Although all alcohols have one or more hydroxyl (–OH) functional groups, they do not behave like bases such as NaOH and KOH. NaOH and KOH are ionic compounds that contain OH[[sup:–]] ions. Alcohols are covalent molecules; the –OH group in an alcohol molecule is attached to a carbon atom by a covalent bond.
 
 <!-- SEG:m68847:para:fs-idm13274688 -->
 Ethanol, CH[[sub:3]]CH[[sub:2]]OH, also called ethyl alcohol, is a particularly important alcohol for human use. Ethanol is the alcohol produced by some species of yeast that is found in wine, beer, and distilled drinks. It has long been prepared by humans harnessing the metabolic efforts of yeasts in fermenting various sugars:
@@ -71,7 +71,7 @@ Alcohols containing two or more hydroxyl groups can be made. Examples include 1,
 Ethers
 
 <!-- SEG:m68847:para:fs-idp6654240 -->
-{{term}}Ethers{{/term}} are compounds that contain the functional group –O–. Ethers do not have a designated suffix like the other types of molecules we have named so far. In the IUPAC system, the oxygen atom and the smaller carbon branch are named as an alkoxy substituent and the remainder of the molecule as the base chain, as in alkanes. As shown in the following compound, the red symbols represent the smaller alkyl group and the oxygen atom, which would be named “methoxy.” The larger carbon branch would be ethane, making the molecule methoxyethane. Many ethers are referred to with common names instead of the IUPAC system names. For common names, the two branches connected to the oxygen atom are named separately and followed by “ether.” The common name for the compound shown in [[xref:fs-idm48177328]] is ethylmethyl ether:
+[[term:Ethers|term-00002]] are compounds that contain the functional group –O–. Ethers do not have a designated suffix like the other types of molecules we have named so far. In the IUPAC system, the oxygen atom and the smaller carbon branch are named as an alkoxy substituent and the remainder of the molecule as the base chain, as in alkanes. As shown in the following compound, the red symbols represent the smaller alkyl group and the oxygen atom, which would be named “methoxy.” The larger carbon branch would be ethane, making the molecule methoxyethane. Many ethers are referred to with common names instead of the IUPAC system names. For common names, the two branches connected to the oxygen atom are named separately and followed by “ether.” The common name for the compound shown in [[xref:fs-idm48177328]] is ethylmethyl ether:
 
 <!-- SEG:m68847:example-title:fs-idm48177328-title -->
 Naming Ethers
@@ -107,7 +107,7 @@ IUPAC: 2-methoxypropane; common: isopropylmethyl ether
 Ethers can be obtained from alcohols by the elimination of a molecule of water from two molecules of the alcohol. For example, when ethanol is treated with a limited amount of sulfuric acid and heated to 140 °C, diethyl ether and water are formed:
 
 <!-- SEG:m68847:para:fs-idp6657008 -->
-In the general formula for ethers, R—{=O=}—R, the hydrocarbon groups (R) may be the same or different. Diethyl ether, the most widely used compound of this class, is a colorless, volatile liquid that is highly flammable. It was first used in 1846 as an anesthetic, but better anesthetics have now largely taken its place. Diethyl ether and other ethers are presently used primarily as solvents for gums, fats, waxes, and resins. [[i:Tertiary]]-butyl methyl ether, C[[sub:4]]H[[sub:9]]OCH[[sub:3]] (abbreviated MTBE—italicized portions of names are not counted when ranking the groups alphabetically—so butyl comes before methyl in the common name), is used as an additive for gasoline. MTBE belongs to a group of chemicals known as oxygenates due to their capacity to increase the oxygen content of gasoline.
+In the general formula for ethers, R—[[em:O|emphasis-one]]—R, the hydrocarbon groups (R) may be the same or different. Diethyl ether, the most widely used compound of this class, is a colorless, volatile liquid that is highly flammable. It was first used in 1846 as an anesthetic, but better anesthetics have now largely taken its place. Diethyl ether and other ethers are presently used primarily as solvents for gums, fats, waxes, and resins. [[i:Tertiary]]-butyl methyl ether, C[[sub:4]]H[[sub:9]]OCH[[sub:3]] (abbreviated MTBE—italicized portions of names are not counted when ranking the groups alphabetically—so butyl comes before methyl in the common name), is used as an additive for gasoline. MTBE belongs to a group of chemicals known as oxygenates due to their capacity to increase the oxygen content of gasoline.
 
 <!-- SEG:m68847:para:fs-idp6043376 -->
 Want more practice naming ethers? This brief [[link:video review|http://openstax.org/l/16ethers]] summarizes the nomenclature for ethers.

@@ -1,9 +1,9 @@
 {
   "version": 1,
   "moduleId": "m68829",
-  "extractedAt": "2026-03-23T16:04:32.407Z",
+  "extractedAt": "2026-07-13T18:21:54.865Z",
   "sourceHash": "8ca9a8451628ff1d",
-  "segmentCount": 138,
+  "segmentCount": 130,
   "segmentIds": [
     "m68829:title:auto-1",
     "m68829:abstract:auto-2",
@@ -79,14 +79,6 @@
     "m68829:problem:fs-idm16110016",
     "m68829:problem:fs-idp228704400",
     "m68829:solution:fs-idp228365696",
-    "m68829:entry:auto-75",
-    "m68829:entry:auto-76",
-    "m68829:entry:auto-77",
-    "m68829:entry:auto-78",
-    "m68829:entry:auto-79",
-    "m68829:entry:auto-80",
-    "m68829:entry:auto-81",
-    "m68829:entry:auto-82",
     "m68829:problem:fs-idp198100640",
     "m68829:problem:fs-idp261310256",
     "m68829:problem:fs-idp114943824",
@@ -135,14 +127,14 @@
     "m68829:glossary-def:fs-idp110103392-def",
     "m68829:glossary-term:fs-idm2235360-term",
     "m68829:glossary-def:fs-idm2235360-def",
-    "m68829:entry:auto-131",
-    "m68829:entry:auto-132",
-    "m68829:entry:auto-133",
-    "m68829:entry:auto-134",
-    "m68829:entry:auto-135",
-    "m68829:entry:auto-136",
-    "m68829:entry:auto-137",
-    "m68829:entry:auto-138"
+    "m68829:entry:auto-123",
+    "m68829:entry:auto-124",
+    "m68829:entry:auto-125",
+    "m68829:entry:auto-126",
+    "m68829:entry:auto-127",
+    "m68829:entry:auto-128",
+    "m68829:entry:auto-129",
+    "m68829:entry:auto-130"
   ],
   "equationCount": 24,
   "equationIds": [
@@ -175,7 +167,7 @@
     "para": 84,
     "section": 8,
     "figure": 8,
-    "table": 1,
+    "table": 0,
     "example": 0,
     "exercise": 14,
     "note": 4,
@@ -195,9 +187,7 @@
       "CNX_Chem_18_01_MercuryRx",
       "CNX_Chem_18_01_TinChlorid"
     ],
-    "table": [
-      "fs-idp283136"
-    ],
+    "table": [],
     "example": [],
     "exercise": [
       "fs-idp50563648",

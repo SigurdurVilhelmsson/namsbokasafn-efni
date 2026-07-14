@@ -4,7 +4,7 @@
   "summary": {
     "modulesWithResidue": 53,
     "exactResidues": 100,
-    "ratioWarnings": 68
+    "ratioWarnings": 69
   },
   "modules": {
     "m68710": {
@@ -415,6 +415,10 @@
     "m68789": {
       "exact": [],
       "warnings": [
+        {
+          "segmentId": "m68789:entry:auto-156",
+          "ratio": 0.71
+        },
         {
           "segmentId": "m68789:solution:fs-idm220253504",
           "ratio": 0.71

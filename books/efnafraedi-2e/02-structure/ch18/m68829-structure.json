@@ -27,6 +27,16 @@
       "segmentId": "m68829:para:fs-idp149998640"
     },
     {
+      "type": "para",
+      "id": "fs-idp47516784",
+      "segmentId": "m68829:para:fs-idp47516784"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp226047824",
+      "segmentId": "m68829:para:fs-idp226047824"
+    },
+    {
       "type": "figure",
       "id": "CNX_Chem_18_01_PeriodicPU3",
       "caption": {
@@ -38,16 +48,6 @@
         "src": "../../media/CNX_Chem_18_01_PeriodicPU3.jpg",
         "mimeType": "image/jpeg"
       }
-    },
-    {
-      "type": "para",
-      "id": "fs-idp47516784",
-      "segmentId": "m68829:para:fs-idp47516784"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp226047824",
-      "segmentId": "m68829:para:fs-idp226047824"
     },
     {
       "type": "para",
@@ -579,78 +579,6 @@
           }
         },
         {
-          "type": "table",
-          "id": "fs-idp283136",
-          "class": "unnumbered",
-          "summary": "This table has two columns and four rows. The first column is labeled, “1,” and the second column is labeled, “2.” Under the first column are: N a, S r, and A l. Under the second column are: I, S e, and O.",
-          "rows": [
-            {
-              "cells": [
-                {
-                  "segmentId": "m68829:entry:auto-75",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68829:entry:auto-76",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68829:entry:auto-77",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68829:entry:auto-78",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68829:entry:auto-79",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68829:entry:auto-80",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68829:entry:auto-81",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68829:entry:auto-82",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
           "type": "exercise",
           "id": "fs-idp230369616",
           "problem": {
@@ -997,13 +925,13 @@
           {
             "cells": [
               {
-                "segmentId": "m68829:entry:auto-131",
+                "segmentId": "m68829:entry:auto-123",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68829:entry:auto-132",
+                "segmentId": "m68829:entry:auto-124",
                 "attributes": {
                   "align": "left"
                 }
@@ -1013,13 +941,13 @@
           {
             "cells": [
               {
-                "segmentId": "m68829:entry:auto-133",
+                "segmentId": "m68829:entry:auto-125",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68829:entry:auto-134",
+                "segmentId": "m68829:entry:auto-126",
                 "attributes": {
                   "align": "left"
                 }
@@ -1029,13 +957,13 @@
           {
             "cells": [
               {
-                "segmentId": "m68829:entry:auto-135",
+                "segmentId": "m68829:entry:auto-127",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68829:entry:auto-136",
+                "segmentId": "m68829:entry:auto-128",
                 "attributes": {
                   "align": "left"
                 }
@@ -1045,13 +973,13 @@
           {
             "cells": [
               {
-                "segmentId": "m68829:entry:auto-137",
+                "segmentId": "m68829:entry:auto-129",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68829:entry:auto-138",
+                "segmentId": "m68829:entry:auto-130",
                 "attributes": {
                   "align": "left"
                 }

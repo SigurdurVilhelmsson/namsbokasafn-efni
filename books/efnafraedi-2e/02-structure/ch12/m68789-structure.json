@@ -303,15 +303,27 @@
           "items": [
             {
               "id": null,
-              "segmentId": "m68789:item:fs-idp46707232-item-1"
+              "segmentId": "m68789:item:fs-idp46707232-item-1",
+              "wrapsPara": {
+                "openTag": "<para id=\"fs-idp221247360\">",
+                "id": "fs-idp221247360"
+              }
             },
             {
               "id": null,
-              "segmentId": "m68789:item:fs-idp46707232-item-2"
+              "segmentId": "m68789:item:fs-idp46707232-item-2",
+              "wrapsPara": {
+                "openTag": "<para id=\"fs-idm59663552\">",
+                "id": "fs-idm59663552"
+              }
             },
             {
               "id": null,
-              "segmentId": "m68789:item:fs-idp46707232-item-3"
+              "segmentId": "m68789:item:fs-idp46707232-item-3",
+              "wrapsPara": {
+                "openTag": "<para id=\"fs-idm10220816\">",
+                "id": "fs-idm10220816"
+              }
             }
           ]
         },
@@ -1480,70 +1492,6 @@
           }
         },
         {
-          "type": "table",
-          "id": "fs-idm121830912",
-          "class": "column-header unnumbered",
-          "summary": "This table has four columns and two rows. The first column serves as a header and labels each row, “[ C subscript 2 H subscript 5 O H ] ( M ),” and, “Rate ( mol / L / h ).” To the right of the “Initial Rate ( mol / L / s)” header are the numbers: 4.4 times ten to the negative 2; 3.3 times ten to the negative 2; 2.2 times ten to the negative 2. To the right of the “Rate ( mol / L / h )” header are the numbers: 2.0 times ten to the negative 2, 2.0 times ten to the negative 2, and 2.0 times ten to the negative 2.",
-          "rows": [
-            {
-              "cells": [
-                {
-                  "segmentId": "m68789:entry:auto-195",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68789:entry:auto-196",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68789:entry:auto-197",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68789:entry:auto-198",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68789:entry:auto-199",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68789:entry:auto-200",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68789:entry:auto-201",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68789:entry:auto-202",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
           "type": "exercise",
           "id": "fs-idm233306880",
           "problem": {
@@ -1571,25 +1519,25 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68789:entry:auto-205",
+                  "segmentId": "m68789:entry:auto-197",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-206",
+                  "segmentId": "m68789:entry:auto-198",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-207",
+                  "segmentId": "m68789:entry:auto-199",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-208",
+                  "segmentId": "m68789:entry:auto-200",
                   "attributes": {
                     "align": "left"
                   }
@@ -1599,25 +1547,25 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68789:entry:auto-209",
+                  "segmentId": "m68789:entry:auto-201",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-210",
+                  "segmentId": "m68789:entry:auto-202",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-211",
+                  "segmentId": "m68789:entry:auto-203",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-212",
+                  "segmentId": "m68789:entry:auto-204",
                   "attributes": {
                     "align": "left"
                   }
@@ -1662,25 +1610,25 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68789:entry:auto-216",
+                  "segmentId": "m68789:entry:auto-208",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-217",
+                  "segmentId": "m68789:entry:auto-209",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-218",
+                  "segmentId": "m68789:entry:auto-210",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-219",
+                  "segmentId": "m68789:entry:auto-211",
                   "attributes": {
                     "align": "left"
                   }
@@ -1690,25 +1638,25 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68789:entry:auto-220",
+                  "segmentId": "m68789:entry:auto-212",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-221",
+                  "segmentId": "m68789:entry:auto-213",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-222",
+                  "segmentId": "m68789:entry:auto-214",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-223",
+                  "segmentId": "m68789:entry:auto-215",
                   "attributes": {
                     "align": "left"
                   }
@@ -1740,25 +1688,25 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68789:entry:auto-225",
+                  "segmentId": "m68789:entry:auto-217",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-226",
+                  "segmentId": "m68789:entry:auto-218",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-227",
+                  "segmentId": "m68789:entry:auto-219",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-228",
+                  "segmentId": "m68789:entry:auto-220",
                   "attributes": {
                     "align": "left"
                   }
@@ -1768,25 +1716,25 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68789:entry:auto-229",
+                  "segmentId": "m68789:entry:auto-221",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-230",
+                  "segmentId": "m68789:entry:auto-222",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-231",
+                  "segmentId": "m68789:entry:auto-223",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-232",
+                  "segmentId": "m68789:entry:auto-224",
                   "attributes": {
                     "align": "left"
                   }
@@ -1836,11 +1784,71 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68789:entry:auto-237",
+                  "segmentId": "m68789:entry:auto-229",
                   "attributes": {
                     "align": "left"
                   }
                 },
+                {
+                  "segmentId": "m68789:entry:auto-230",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-231",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-232",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-233",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-234",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-235",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-236",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-237",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68789:entry:auto-238",
                   "attributes": {
@@ -1852,69 +1860,9 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68789:entry:auto-240",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68789:entry:auto-241",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68789:entry:auto-242",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68789:entry:auto-243",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68789:entry:auto-244",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68789:entry:auto-245",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68789:entry:auto-246",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68789:entry:auto-247",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68789:entry:auto-248",
                   "attributes": {
                     "align": "left"
                   }
@@ -1951,6 +1899,62 @@
             {
               "cells": [
                 {
+                  "segmentId": "m68789:entry:auto-243",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-244",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-245",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-246",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-247",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-248",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-249",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-250",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
                   "segmentId": "m68789:entry:auto-251",
                   "attributes": {
                     "align": "left"
@@ -1970,62 +1974,6 @@
                 },
                 {
                   "segmentId": "m68789:entry:auto-254",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68789:entry:auto-255",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68789:entry:auto-256",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68789:entry:auto-257",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68789:entry:auto-258",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68789:entry:auto-259",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68789:entry:auto-260",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68789:entry:auto-261",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68789:entry:auto-262",
                   "attributes": {
                     "align": "left"
                   }
@@ -2075,25 +2023,25 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68789:entry:auto-267",
+                  "segmentId": "m68789:entry:auto-259",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-268",
+                  "segmentId": "m68789:entry:auto-260",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-269",
+                  "segmentId": "m68789:entry:auto-261",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-270",
+                  "segmentId": "m68789:entry:auto-262",
                   "attributes": {
                     "align": "left"
                   }
@@ -2103,25 +2051,25 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68789:entry:auto-271",
+                  "segmentId": "m68789:entry:auto-263",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-272",
+                  "segmentId": "m68789:entry:auto-264",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-273",
+                  "segmentId": "m68789:entry:auto-265",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-274",
+                  "segmentId": "m68789:entry:auto-266",
                   "attributes": {
                     "align": "left"
                   }
@@ -2163,25 +2111,25 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68789:entry:auto-278",
+                  "segmentId": "m68789:entry:auto-270",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-279",
+                  "segmentId": "m68789:entry:auto-271",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-280",
+                  "segmentId": "m68789:entry:auto-272",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-281",
+                  "segmentId": "m68789:entry:auto-273",
                   "attributes": {
                     "align": "left"
                   }
@@ -2191,25 +2139,25 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68789:entry:auto-282",
+                  "segmentId": "m68789:entry:auto-274",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-283",
+                  "segmentId": "m68789:entry:auto-275",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-284",
+                  "segmentId": "m68789:entry:auto-276",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68789:entry:auto-285",
+                  "segmentId": "m68789:entry:auto-277",
                   "attributes": {
                     "align": "left"
                   }
@@ -2315,6 +2263,68 @@
             {
               "cells": [
                 {
+                  "segmentId": null,
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-289",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-290",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-291",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-292",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-293",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-294",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-295",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-296",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
                   "segmentId": "m68789:entry:auto-297",
                   "attributes": {
                     "align": "left"
@@ -2356,62 +2366,6 @@
                 },
                 {
                   "segmentId": "m68789:entry:auto-303",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68789:entry:auto-304",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68789:entry:auto-305",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68789:entry:auto-306",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68789:entry:auto-307",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68789:entry:auto-308",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68789:entry:auto-309",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68789:entry:auto-310",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68789:entry:auto-311",
                   "attributes": {
                     "align": "left"
                   }
@@ -2481,25 +2435,25 @@
           {
             "cells": [
               {
-                "segmentId": "m68789:entry:auto-322",
+                "segmentId": "m68789:entry:auto-314",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68789:entry:auto-323",
+                "segmentId": "m68789:entry:auto-315",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68789:entry:auto-324",
+                "segmentId": "m68789:entry:auto-316",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68789:entry:auto-325",
+                "segmentId": "m68789:entry:auto-317",
                 "attributes": {
                   "align": "left"
                 }
@@ -2509,25 +2463,25 @@
           {
             "cells": [
               {
-                "segmentId": "m68789:entry:auto-326",
+                "segmentId": "m68789:entry:auto-318",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68789:entry:auto-327",
+                "segmentId": "m68789:entry:auto-319",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68789:entry:auto-328",
+                "segmentId": "m68789:entry:auto-320",
                 "attributes": {
                   "align": "left"
                 }
               },
               {
-                "segmentId": "m68789:entry:auto-329",
+                "segmentId": "m68789:entry:auto-321",
                 "attributes": {
                   "align": "left"
                 }

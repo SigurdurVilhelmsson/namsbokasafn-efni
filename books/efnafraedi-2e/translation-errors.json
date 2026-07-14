@@ -1,21 +1,21 @@
 {
-  "generated": "2026-07-06T14:26:01.317Z",
-  "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]])",
+  "generated": "2026-07-14T07:23:00.711Z",
+  "pipeline": "extract→api-translate→inject (bracket markers [[i:]], [[link:]], [[xref:]], [[docref:]], [[term:]], [[fn:]])",
   "tracks": {
     "mt-preview": {
-      "generated": "2026-07-06T14:25:13.092Z",
+      "generated": "2026-07-14T07:23:00.711Z",
       "tool": "cnxml-inject",
       "summary": {
         "totalSourceModules": 149,
         "totalChecked": 149,
         "skippedUntranslated": 0,
-        "perfect": 121,
-        "withDiscrepancies": 28,
-        "totalDiscrepancies": 45,
-        "unexplainedDiscrepancies": 9,
+        "perfect": 126,
+        "withDiscrepancies": 23,
+        "totalDiscrepancies": 37,
+        "unexplainedDiscrepancies": 0,
         "deferredLosses": 20,
-        "benignArtifacts": 16,
-        "green": false
+        "benignArtifacts": 17,
+        "green": true
       },
       "modules": [
         {
@@ -75,7 +75,9 @@
             {
               "tag": "emphasis",
               "diff": -3,
-              "status": "unexplained"
+              "status": "known-loss-deferred",
+              "reason": "WS5 fresh re-inject: RC1 recovered 1 of 2 mis-anchors → now -3 = 1 inline <term> notation flatten (m_l/m_s quantum numbers) + 2 empty-source-tag artifacts. RC1 fixed the citable headword, inline term notation stays plain (Track B4 re-MT)",
+              "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
             }
           ]
         },
@@ -110,7 +112,9 @@
             {
               "tag": "emphasis",
               "diff": -1,
-              "status": "unexplained"
+              "status": "known-loss-deferred",
+              "reason": "WS5 surfaced: same <term> flatten as the sub loss — italic H in 'lattice energy (ΔH_lattice)' dropped (ΔHgrind plain). RC1 leaves inline term notation plain (Track B4 re-MT)",
+              "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
             },
             {
               "tag": "sub",
@@ -182,37 +186,6 @@
           ]
         },
         {
-          "moduleId": "m68789",
-          "chapter": "ch12",
-          "discrepancies": [
-            {
-              "tag": "term",
-              "diff": -1,
-              "status": "known-loss-deferred",
-              "reason": "<term>rate equations</term> glossary anchor dropped",
-              "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
-            }
-          ]
-        },
-        {
-          "moduleId": "m68791",
-          "chapter": "ch12",
-          "discrepancies": [
-            {
-              "tag": "emphasis",
-              "diff": -1,
-              "status": "unexplained"
-            },
-            {
-              "tag": "sub",
-              "diff": -1,
-              "status": "known-loss-deferred",
-              "reason": "RC1 glossary <term> lost <sub>: half-life t_1/2",
-              "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
-            }
-          ]
-        },
-        {
           "moduleId": "m68793",
           "chapter": "ch12",
           "discrepancies": [
@@ -243,7 +216,8 @@
             {
               "tag": "emphasis",
               "diff": 1,
-              "status": "unexplained"
+              "status": "benign",
+              "reason": "benign over-wrap on one K_sp — Icelandic rephrase adds one italic span (verified benign, F3 audit predicted the WS5 -1→+1 flip)"
             }
           ]
         },
@@ -267,7 +241,9 @@
             {
               "tag": "emphasis",
               "diff": -1,
-              "status": "unexplained"
+              "status": "known-loss-deferred",
+              "reason": "WS5 surfaced: same <term> flatten as the sub loss — italic E in 'cell potential (E_cell)' dropped (Eker plain). RC1 leaves inline term notation plain (Track B4 re-MT)",
+              "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
             },
             {
               "tag": "sub",
@@ -298,7 +274,9 @@
             {
               "tag": "emphasis",
               "diff": -2,
-              "status": "unexplained"
+              "status": "known-loss-deferred",
+              "reason": "WS5 surfaced: <term> flatten — italic d + f dropped from 'd-block elements' / 'f-block elements' glossary terms (same RC1 inline-term family; content present, italic marker lost). Track B4 re-MT",
+              "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
             }
           ]
         },
@@ -317,19 +295,6 @@
               "diff": -1,
               "status": "benign",
               "reason": "nested/normalization; superscript content present"
-            }
-          ]
-        },
-        {
-          "moduleId": "m68847",
-          "chapter": "ch20",
-          "discrepancies": [
-            {
-              "tag": "emphasis",
-              "diff": -1,
-              "status": "known-loss-deferred",
-              "reason": "RC3 <emphasis class=\"emphasis-one\"> not round-tripped by extractor (ether R-O-R)",
-              "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
             }
           ]
         },
@@ -355,39 +320,6 @@
               "status": "known-loss-deferred",
               "reason": "cross-reference (xref/docref) dropped at inject",
               "pointer": "inject xref/docref restore — Track B/C (docs/plans/2026-06-28-pipeline-architecture-implementation-plan.md)"
-            }
-          ]
-        },
-        {
-          "moduleId": "m68860",
-          "chapter": "appendices",
-          "discrepancies": [
-            {
-              "tag": "emphasis",
-              "diff": 2,
-              "status": "known-loss-deferred",
-              "reason": "RC4 duplicated-title emphasis drift (appendices)",
-              "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
-            },
-            {
-              "tag": "title",
-              "diff": 1,
-              "status": "known-loss-deferred",
-              "reason": "RC4 untranslated-EN title in place + phantom title grafted onto wrong para",
-              "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
-            }
-          ]
-        },
-        {
-          "moduleId": "m68863",
-          "chapter": "appendices",
-          "discrepancies": [
-            {
-              "tag": "emphasis",
-              "diff": 1,
-              "status": "known-loss-deferred",
-              "reason": "RC4 table-header EN residue (ΔH kJ/mol duplicated) + column drift",
-              "pointer": "F3 re-triage (docs/audit/2026-07-06-f3-benign-retriage.md)"
             }
           ]
         }
