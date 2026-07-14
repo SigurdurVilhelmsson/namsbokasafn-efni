@@ -243,10 +243,32 @@ describe('upsertResidueModule tolerated', () => {
     expect(r.modules.m68729.exact).toEqual([]);
     expect(r.summary.toleratedResidues).toBe(1);
     expect(r.summary.exactResidues).toBe(0);
+    // A tolerated-only module is non-gating: it must NOT count as with-residue.
+    expect(r.summary.modulesWithResidue).toBe(0);
   });
   it('deletes a module only when exact, warnings AND tolerated are all empty', () => {
     const start = upsertResidueModule({ track: 'mt-preview' }, 'm1', { exact: ['m1:s'] });
     const cleared = upsertResidueModule(start, 'm1', { exact: [], warnings: [], tolerated: [] });
     expect(cleared.modules.m1).toBeUndefined();
+  });
+});
+
+// Regression lock for modulesWithResidue semantics: only modules with ≥1
+// EXACT residue count as "with residue". Warnings-only and tolerated-only
+// modules are KEPT in the manifest but are non-gating, so they must not
+// inflate the headline count. Mirrors scan-residue.js's summary calc.
+describe('upsertResidueModule modulesWithResidue semantics', () => {
+  it('keeps a warnings-only module but does not count it as with-residue', () => {
+    const r = upsertResidueModule({ track: 'mt-preview' }, 'm2', {
+      exact: [],
+      warnings: [{ segmentId: 'm2:para:p1', ratio: 0.82 }],
+    });
+    expect(r.modules.m2).toBeDefined();
+    expect(r.summary.ratioWarnings).toBe(1);
+    expect(r.summary.modulesWithResidue).toBe(0);
+  });
+  it('counts a module with an exact residue as with-residue', () => {
+    const r = upsertResidueModule({ track: 'mt-preview' }, 'm3', { exact: ['m3:para:p1'] });
+    expect(r.summary.modulesWithResidue).toBe(1);
   });
 });

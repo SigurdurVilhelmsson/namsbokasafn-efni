@@ -181,8 +181,19 @@ export function detectResidue(enText, isText, opts = {}) {
 
 /**
  * Immutably upsert one module's residue entry into a manifest object and
- * recompute its summary. An empty entry removes the module (so a re-inject
- * that fixed the residue clears the record). Preserves `track`.
+ * recompute its summary. Preserves `track`.
+ *
+ * The entry has three buckets: `exact` (gating verbatim-EN residues),
+ * `warnings` ({segmentId, ratio} — non-gating "mostly English"), and
+ * `tolerated` ({segmentId, reason} — allowlisted residues kept for
+ * auditability, non-gating). A module is deleted from the manifest ONLY when
+ * `exact`, `warnings`, AND `tolerated` are all empty (so a re-inject that
+ * fixed the residue clears the record) — a module with only tolerated (or
+ * only warning) residues is KEPT.
+ *
+ * `summary.modulesWithResidue` counts only modules with ≥1 EXACT residue: a
+ * tolerated-only or warnings-only module does not count as "with residue"
+ * (both are non-gating). This mirrors `scan-residue.js`'s summary calc.
  */
 export function upsertResidueModule(report, moduleId, entry = {}) {
   const exact = entry.exact || [];
