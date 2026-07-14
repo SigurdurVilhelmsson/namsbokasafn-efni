@@ -1191,6 +1191,66 @@ describe('buildCnxml EN-residue detection (A2)', () => {
   });
 });
 
+// ─── buildCnxml residue tolerated routing — isAllowlisted (final-review fix) ───
+// Pins the branch at cnxml-inject.js buildCnxml ~line 1853: an `exact` residue
+// routes to stats.tolerated when options.isAllowlisted(...) is true, else to
+// stats.residues. The A2 suite above never passes isAllowlisted, so it only
+// ever exercises the `else` arm — this suite exercises both.
+describe('buildCnxml residue tolerated routing (isAllowlisted)', () => {
+  // Genuine untranslated-EN prose — NOT language-neutral (no formula/unit/pH
+  // tokens), so detectResidue() flags it `exact:true` and it reaches the
+  // isAllowlisted branch rather than being demoted beforehand.
+  const enText = 'Write the two half reactions here';
+
+  const makeInputs = (isText) => {
+    const structure = {
+      moduleId: 'test-tolerated',
+      title: { segmentId: 'test-tolerated:title:auto-1', text: 'Test' },
+      content: [{ type: 'para', id: 'p1', segmentId: 'test-tolerated:para:p1' }],
+    };
+    const segments = new Map([
+      ['test-tolerated:title:auto-1', 'Titill'],
+      ['test-tolerated:para:p1', isText],
+    ]);
+    const enSegments = new Map([
+      ['test-tolerated:title:auto-1', 'Title'],
+      ['test-tolerated:para:p1', enText],
+    ]);
+    const originalCnxml = `<document xmlns="http://cnx.rice.edu/cnxml">
+<title>Test</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml"><md:title>Test</md:title></metadata>
+<content>
+<para id="p1">${enText}</para>
+</content>
+</document>`;
+    return { structure, segments, enSegments, originalCnxml };
+  };
+
+  it('routes an allowlisted exact residue to report.tolerated, not report.residues', () => {
+    const { structure, segments, enSegments, originalCnxml } = makeInputs(enText); // IS == EN
+    const result = buildCnxml(structure, segments, {}, originalCnxml, {
+      enSegments,
+      checkResidue: true,
+      isAllowlisted: () => true,
+    });
+    expect(result.report.tolerated).toContain('test-tolerated:para:p1');
+    expect(result.report.residues).not.toContain('test-tolerated:para:p1');
+    expect(result.report.complete).toBe(true);
+  });
+
+  it('routes a non-allowlisted exact residue to report.residues, not report.tolerated', () => {
+    const { structure, segments, enSegments, originalCnxml } = makeInputs(enText); // IS == EN
+    const result = buildCnxml(structure, segments, {}, originalCnxml, {
+      enSegments,
+      checkResidue: true,
+      isAllowlisted: () => false,
+    });
+    expect(result.report.residues).toContain('test-tolerated:para:p1');
+    expect(result.report.tolerated).not.toContain('test-tolerated:para:p1');
+    expect(result.report.complete).toBe(false);
+  });
+});
+
 // ─── inject: iframe media re-emit ─────────────────────────────────
 
 describe('inject: iframe media re-emit', () => {

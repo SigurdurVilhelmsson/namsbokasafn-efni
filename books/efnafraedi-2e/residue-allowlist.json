@@ -1,0 +1,9 @@
+{
+  "_comment": "Residue gate: language-neutral segments a pattern cannot safely classify. class: proper-noun (person/institution name) | homograph-unit (unit/expression whose only non-predicate token is an English homograph like bar/log). Exact match moduleId+segmentId; drift/invalid-class/missing-reason → still flagged. See docs/superpowers/specs/2026-07-14-residue-gate-retriage-design.md",
+  "entries": [
+    { "moduleId": "m68729", "segmentId": "m68729:note-title:fs-idp23436864-title", "class": "proper-noun", "reason": "chemist-portrait person-name title (Dorothy Crowfoot Hodgkin); note body is translated" },
+    { "moduleId": "m68784", "segmentId": "m68784:note-title:fs-idm42784320-title", "class": "proper-noun", "reason": "chemist-portrait person-name title (Frederick Gardner Cottrell); note body is translated" },
+    { "moduleId": "m68750", "segmentId": "m68750:para:fs-idp131216672", "class": "homograph-unit", "reason": "pressure values; only non-predicate token is the English homograph 'bar' (0.987 bar)" },
+    { "moduleId": "m68809", "segmentId": "m68809:para:fs-idm41259968", "class": "homograph-unit", "reason": "pH/pOH calculation; only non-predicate token is the English homograph 'log' (log([OH-]))" }
+  ]
+}
