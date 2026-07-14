@@ -40,6 +40,15 @@
 </section>
 <section id="fs-idm44772400">
 <title>Lewis-myndir</title>
+<para id="fs-idp28276192">Við notum einnig Lewis-tákn til að gefa til kynna myndun samgildra tengja, sem eru sýnd í <term id="term-00002">Lewis-myndum (e. lewis structures)</term>, teikningum sem lýsa tengslum í sameindum og fjöleindajónum. Til dæmis, þegar tvær klórfrumeindir mynda klórsameind, deila þær einu rafeindapari:</para>
+<media id="fs-idp157847984" alt="A Lewis dot diagram shows a reaction. Two chlorine symbols, each surrounded by seven dots are separated by a plus sign. The dots on the first atom are all black and the dots on the second atom are all read. The phrase, “Chlorine atoms” is written below. A right-facing arrow points to two chlorine symbols, each with six dots surrounding their outer edges and a shared pair of dots in between. One of the shared dots is black and one is red. The phrase, “Chlorine molecule” is written below.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_03_C12dot_img.jpg"/>
+</media>
+<para id="fs-idm75288528">Lewis-myndin gefur til kynna að hver Cl-frumeind hafi þrjú rafeindapör sem ekki eru notuð í tengslum (kölluð <term id="term-00003">rafeindapör (e. lone pairs)</term>) og eitt sameiginlegt rafeindapar (skrifað á milli frumeindanna). Strik (eða lína) er stundum notað til að tákna sameiginlegt rafeindapar:</para>
+<media id="fs-idm49101552" alt="Two Lewis structures are shown. The left-hand structure shows two H atoms connected by a single bond. The right-hand structure shows two C l atoms connected by a single bond and each surrounded by six dots.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_03_Cl2dash_img.jpg"/>
+</media>
+<para id="fs-idm97531888">Eitt sameiginlegt rafeindapar er kallað <term id="term-00004">eintengi (e. single bond)</term>. Hver Cl-frumeind hefur víxlverkun við átta gildisrafeindir: þær sex í rafeindapörunum og þær tvær í eintenginu.</para>
 <section id="fs-idp113967376">
 <title>Áttureglan</title>
 <para id="fs-idm16266560">Hinar halógensameindirnar (F<sub>2</sub>, Br<sub>2</sub>, I<sub>2</sub> og At<sub>2</sub>) mynda tengi eins og þau í klórsameindinni: eitt eintengi milli frumeinda og þrjú rafeindapör á hverri frumeind. Þetta gerir hverri halógenfrumeind kleift að hafa rafeindaskipan eðalgass. Sú tilhneiging aðalflokka frumeinda til að mynda nægilega mörg tengi til að fá átta gildisrafeindir er þekkt sem <term id="term-00005">áttureglan (e. octet rule)</term>.</para>
@@ -63,15 +72,6 @@
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_07_03_COCN_img.jpg"/>
 </media>
 </section>
-<para id="fs-idp28276192">Við notum einnig Lewis-tákn til að gefa til kynna myndun samgildra tengja, sem eru sýnd í <term id="term-00002">Lewis-myndum (e. lewis structures)</term>, teikningum sem lýsa tengslum í sameindum og fjöleindajónum. Til dæmis, þegar tvær klórfrumeindir mynda klórsameind, deila þær einu rafeindapari:</para>
-<media id="fs-idp157847984" alt="A Lewis dot diagram shows a reaction. Two chlorine symbols, each surrounded by seven dots are separated by a plus sign. The dots on the first atom are all black and the dots on the second atom are all read. The phrase, “Chlorine atoms” is written below. A right-facing arrow points to two chlorine symbols, each with six dots surrounding their outer edges and a shared pair of dots in between. One of the shared dots is black and one is red. The phrase, “Chlorine molecule” is written below.">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_03_C12dot_img.jpg"/>
-</media>
-<para id="fs-idm75288528">Lewis-myndin gefur til kynna að hver Cl-frumeind hafi þrjú rafeindapör sem ekki eru notuð í tengslum (kölluð <term id="term-00003">rafeindapör (e. lone pairs)</term>) og eitt sameiginlegt rafeindapar (skrifað á milli frumeindanna). Strik (eða lína) er stundum notað til að tákna sameiginlegt rafeindapar:</para>
-<media id="fs-idm49101552" alt="Two Lewis structures are shown. The left-hand structure shows two H atoms connected by a single bond. The right-hand structure shows two C l atoms connected by a single bond and each surrounded by six dots.">
-<image mime-type="image/jpeg" src="../../media/CNX_Chem_07_03_Cl2dash_img.jpg"/>
-</media>
-<para id="fs-idm97531888">Eitt sameiginlegt rafeindapar er kallað <term id="term-00004">eintengi (e. single bond)</term>. Hver Cl-frumeind hefur víxlverkun við átta gildisrafeindir: þær sex í rafeindapörunum og þær tvær í eintenginu.</para>
 </section>
 <section id="fs-idm53492672">
 <title>Að skrifa Lewis-myndir með áttureglunni</title>
@@ -91,10 +91,15 @@
 <list id="fs-idm8107808" list-type="enumerated" number-style="arabic">
 <item>Ákvarðaðu heildarfjölda gildisrafeinda (rafeinda á ysta hveli) í sameindinni eða jóninni.
 <list id="fs-idp47568320" list-type="bulleted" bullet-style="bullet">
-<item>Fyrir sameind leggjum við saman fjölda gildisrafeinda á hverri frumeind í sameindinni:<newline/> </item>
-<item>Fyrir <emphasis effect="italics">neikvæða jón</emphasis>, eins og <m:math><m:mrow><m:msub><m:mtext>CHO</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math>, leggjum við saman fjölda gildisrafeinda á frumeindunum við fjölda neikvæðra hleðslna á jóninni (einni rafeind er bætt við fyrir hverja staka neikvæða hleðslu):<newline/> </item>
-<item>Fyrir <emphasis effect="italics">jákvæða jón</emphasis>, eins og NO<sup>+</sup>, leggjum við saman fjölda gildisrafeinda á frumeindunum í jóninni og drögum síðan fjölda jákvæðra hleðslna á jóninni frá heildarfjölda gildisrafeinda (ein rafeind tapast fyrir hverja staka jákvæða hleðslu):<newline/> </item>
-<item>Þar sem OF<sub>2</sub> er hlutlaus sameind leggjum við einfaldlega saman fjölda gildisrafeinda:<newline/> </item>
+<item>Fyrir sameind leggjum við saman fjölda gildisrafeinda á hverri frumeind í sameindinni:<newline/> <equation id="fs-idm31186656" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd/></m:mtr>
+<m:mtr><m:mtd><m:mspace width="0.8em"/><m:msub><m:mtext>SiH</m:mtext><m:mn>4</m:mn></m:msub></m:mtd></m:mtr>
+<m:mtr><m:mtd><m:mspace width="0.8em"/><m:mtext>Si: 4 valence electrons/atom</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>1 atom</m:mtext><m:mo>=</m:mo><m:mn>4</m:mn></m:mtd></m:mtr>
+<m:mtr><m:mtd><m:munder accentunder="true"><m:mrow><m:mo>+</m:mo><m:mspace width="0.2em"/><m:mtext>H: 1 valence electron/atom</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>4 atoms</m:mtext><m:mo>=</m:mo><m:mn>4</m:mn></m:mrow><m:mo stretchy="true">¯</m:mo></m:munder></m:mtd></m:mtr>
+<m:mtr><m:mtd/></m:mtr>
+<m:mtr><m:mtd><m:mspace width="16.0em"/><m:mo>=</m:mo><m:mtext>8 valence electrons</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation></item>
+<item>Fyrir <emphasis effect="italics">neikvæða jón</emphasis>, eins og <m:math><m:mrow><m:msub><m:mtext>CHO</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math>, leggjum við saman fjölda gildisrafeinda á frumeindunum við fjölda neikvæðra hleðslna á jóninni (einni rafeind er bætt við fyrir hverja staka neikvæða hleðslu):<newline/> <equation id="fs-idm69212352" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mspace width="0.5em"/><m:msub><m:mtext>CHO</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mtd></m:mtr><m:mtr><m:mtd><m:mspace width="0.48em"/><m:mtext>C: 4 valence electrons/atom</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>1 atom</m:mtext><m:mo>=</m:mo><m:mn>4</m:mn></m:mtd></m:mtr><m:mtr><m:mtd><m:mspace width="0.8em"/><m:mtext>H: 1 valence electron/atom</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>1 atom</m:mtext><m:mo>=</m:mo><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd><m:mspace width="0.05em"/><m:mtext>O: 6 valence electrons/atom</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>2 atoms</m:mtext><m:mo>=</m:mo><m:mn>12</m:mn></m:mtd></m:mtr><m:mtr><m:mtd><m:munder accentunder="true"><m:mrow><m:mo>+</m:mo><m:mspace width="6.5em"/><m:mtext>1 additional electron</m:mtext><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:mo stretchy="true">¯</m:mo></m:munder></m:mtd></m:mtr><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mspace width="15.50em"/><m:mo>=</m:mo><m:mtext>18 valence electrons</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation></item>
+<item>Fyrir <emphasis effect="italics">jákvæða jón</emphasis>, eins og NO<sup>+</sup>, leggjum við saman fjölda gildisrafeinda á frumeindunum í jóninni og drögum síðan fjölda jákvæðra hleðslna á jóninni frá heildarfjölda gildisrafeinda (ein rafeind tapast fyrir hverja staka jákvæða hleðslu):<newline/> <equation id="fs-idm16450944" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr/><m:mtr/><m:mtr><m:mtd><m:mspace width="0.1em"/><m:msup><m:mtext>NO</m:mtext><m:mo>+</m:mo></m:msup></m:mtd></m:mtr><m:mtr><m:mtd><m:mtext>N: 5 valence electrons/atom</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>1 atom</m:mtext><m:mo>=</m:mo><m:mn>5</m:mn></m:mtd></m:mtr><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mspace width="0.4em"/><m:mtext>O: 6 valence electron/atom</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>1 atom</m:mtext><m:mo>=</m:mo><m:mn>6</m:mn></m:mtd></m:mtr><m:mtr><m:mtd><m:mspace width="0.35em"/><m:munder accentunder="true"><m:mrow><m:mo>+</m:mo><m:mspace width="0.5em"/><m:mtext>−1 electron (positive charge)</m:mtext><m:mspace width="1.8em"/><m:mo>=</m:mo><m:mn>−1</m:mn></m:mrow><m:mo stretchy="true">¯</m:mo></m:munder></m:mtd></m:mtr><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mspace width="15.02em"/><m:mo>=</m:mo><m:mtext>10 valence electrons</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation></item>
+<item>Þar sem OF<sub>2</sub> er hlutlaus sameind leggjum við einfaldlega saman fjölda gildisrafeinda:<newline/> <equation id="fs-idm18474448" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mspace width="0.8em"/><m:msub><m:mtext>OF</m:mtext><m:mtext>2</m:mtext></m:msub></m:mtd></m:mtr><m:mtr><m:mtd><m:mspace width="1.25em"/><m:mtext>O: 6 valence electrons/atom</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>1 atom</m:mtext><m:mo>=</m:mo><m:mn>6</m:mn></m:mtd></m:mtr><m:mtr><m:mtd><m:mspace width="0.1em"/><m:munder accentunder="true"><m:mrow><m:mo>+</m:mo><m:mspace width="0.2em"/><m:mtext>F: 7 valence electrons/atom</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>2 atoms</m:mtext><m:mo>=</m:mo><m:mn>14</m:mn></m:mrow><m:mo stretchy="true">¯</m:mo></m:munder></m:mtd></m:mtr><m:mtr><m:mtd><m:mspace width="16.28em"/><m:mo>=</m:mo><m:mtext>20 valence electrons</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation></item>
 </list>
 </item>
 <item>Teiknaðu beinagrindarmynd af sameindinni eða jóninni, raðaðu frumeindunum í kringum miðjufrumeind og tengdu hverja frumeind við miðjufrumeindina með eintengi (einu rafeindapari). (Athugaðu að við táknum jónir með hornklofum utan um myndina og sýnum hleðsluna fyrir utan hornklofana:)<newline/> <media id="fs-idm53726752" alt="Four Lewis diagrams are shown. The first shows one silicon single boned to four hydrogen atoms. The second shows a carbon which forms a single bond with an oxygen and a hydrogen and a double bond with a second oxygen. This structure is surrounded by brackets and has a superscripted negative sign near the upper right corner. The third structure shows a nitrogen single bonded to an oxygen and surrounded by brackets with a superscripted plus sign in the upper right corner. The last structure shows two fluorine atoms single bonded to a central oxygen."><image mime-type="image/svg+xml" src="../../media/CNX_Chem_07_03_Singlebond_img_IS.svg"/></media><newline/> Þegar nokkrar mögulegar uppraðanir frumeinda eru fyrir hendi, eins og fyrir <m:math><m:mrow><m:msub><m:mtext>CHO</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math>, verðum við að nota tilraunagögn til að velja þá réttu. Almennt er líklegra að frumefni með minni rafneikvæðni séu miðjufrumeindir. Í <m:math><m:mrow><m:msub><m:mtext>CHO</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math> er kolefnisfrumeindin með minni rafneikvæðni í miðjunni og súrefnis- og vetnisfrumeindirnar umhverfis hana. Önnur dæmi eru P í POCl<sub>3</sub>, S í SO<sub>2</sub> og Cl í <m:math><m:mrow><m:msub><m:mrow><m:mtext>ClO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>.</m:mo></m:mrow></m:math>. Undantekning er að vetni er nánast aldrei miðjufrumeind. Flúor, sem er rafneikvæðasta frumefnið, getur heldur ekki verið miðjufrumeind.</item>
@@ -118,21 +123,6 @@
 </list>
 </item>
 </list>
-<equation id="fs-idm31186656" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd/></m:mtr>
-<m:mtr><m:mtd><m:mspace width="0.8em"/><m:msub><m:mtext>SiH</m:mtext><m:mn>4</m:mn></m:msub></m:mtd></m:mtr>
-<m:mtr><m:mtd><m:mspace width="0.8em"/><m:mtext>Si: 4 valence electrons/atom</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>1 atom</m:mtext><m:mo>=</m:mo><m:mn>4</m:mn></m:mtd></m:mtr>
-<m:mtr><m:mtd><m:munder accentunder="true"><m:mrow><m:mo>+</m:mo><m:mspace width="0.2em"/><m:mtext>H: 1 valence electron/atom</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>4 atoms</m:mtext><m:mo>=</m:mo><m:mn>4</m:mn></m:mrow><m:mo stretchy="true">¯</m:mo></m:munder></m:mtd></m:mtr>
-<m:mtr><m:mtd/></m:mtr>
-<m:mtr><m:mtd><m:mspace width="16.0em"/><m:mo>=</m:mo><m:mtext>8 valence electrons</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
-<equation id="fs-idm69212352" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mspace width="0.5em"/><m:msub><m:mtext>CHO</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mtd></m:mtr><m:mtr><m:mtd><m:mspace width="0.48em"/><m:mtext>C: 4 valence electrons/atom</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>1 atom</m:mtext><m:mo>=</m:mo><m:mn>4</m:mn></m:mtd></m:mtr><m:mtr><m:mtd><m:mspace width="0.8em"/><m:mtext>H: 1 valence electron/atom</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>1 atom</m:mtext><m:mo>=</m:mo><m:mn>1</m:mn></m:mtd></m:mtr><m:mtr><m:mtd><m:mspace width="0.05em"/><m:mtext>O: 6 valence electrons/atom</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>2 atoms</m:mtext><m:mo>=</m:mo><m:mn>12</m:mn></m:mtd></m:mtr><m:mtr><m:mtd><m:munder accentunder="true"><m:mrow><m:mo>+</m:mo><m:mspace width="6.5em"/><m:mtext>1 additional electron</m:mtext><m:mo>=</m:mo><m:mn>1</m:mn></m:mrow><m:mo stretchy="true">¯</m:mo></m:munder></m:mtd></m:mtr><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mspace width="15.50em"/><m:mo>=</m:mo><m:mtext>18 valence electrons</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
-<equation id="fs-idm16450944" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr/><m:mtr/><m:mtr><m:mtd><m:mspace width="0.1em"/><m:msup><m:mtext>NO</m:mtext><m:mo>+</m:mo></m:msup></m:mtd></m:mtr><m:mtr><m:mtd><m:mtext>N: 5 valence electrons/atom</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>1 atom</m:mtext><m:mo>=</m:mo><m:mn>5</m:mn></m:mtd></m:mtr><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mspace width="0.4em"/><m:mtext>O: 6 valence electron/atom</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>1 atom</m:mtext><m:mo>=</m:mo><m:mn>6</m:mn></m:mtd></m:mtr><m:mtr><m:mtd><m:mspace width="0.35em"/><m:munder accentunder="true"><m:mrow><m:mo>+</m:mo><m:mspace width="0.5em"/><m:mtext>−1 electron (positive charge)</m:mtext><m:mspace width="1.8em"/><m:mo>=</m:mo><m:mn>−1</m:mn></m:mrow><m:mo stretchy="true">¯</m:mo></m:munder></m:mtd></m:mtr><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mspace width="15.02em"/><m:mo>=</m:mo><m:mtext>10 valence electrons</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
-<equation id="fs-idm18474448" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mspace width="0.8em"/><m:msub><m:mtext>OF</m:mtext><m:mtext>2</m:mtext></m:msub></m:mtd></m:mtr><m:mtr><m:mtd><m:mspace width="1.25em"/><m:mtext>O: 6 valence electrons/atom</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>1 atom</m:mtext><m:mo>=</m:mo><m:mn>6</m:mn></m:mtd></m:mtr><m:mtr><m:mtd><m:mspace width="0.1em"/><m:munder accentunder="true"><m:mrow><m:mo>+</m:mo><m:mspace width="0.2em"/><m:mtext>F: 7 valence electrons/atom</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>2 atoms</m:mtext><m:mo>=</m:mo><m:mn>14</m:mn></m:mrow><m:mo stretchy="true">¯</m:mo></m:munder></m:mtd></m:mtr><m:mtr><m:mtd><m:mspace width="16.28em"/><m:mo>=</m:mo><m:mtext>20 valence electrons</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
-
-
-
-
-
-
 <example id="fs-idm36798944">
 <para id="fs-idm67097232"><title>Að skrifa Lewis myndir</title>Cassini-Huygens geimfar NASA greindi stórt ský af eitruðu vetnissýaníði (HCN) á Títan, einu af tunglum Satúrnusar. Á Títan er einnig að finna etan (H<sub>3</sub>CCH<sub>3</sub>), asetýlen (HCCH) og ammóníak (NH<sub>3</sub>). Hverjar eru Lewis myndir þessara sameinda?</para>
 <para id="fs-idp90944512"><title>Lausn</title><list id="fs-idm4698672" list-type="enumerated" number-style="arabic" class="stepwise">
@@ -165,6 +155,12 @@
 </section>
 <section id="fs-idm61779936">
 <title>Undantekningar frá áttureglunni</title>
+<para id="fs-idm1862800">Margar samgildar sameindir hafa miðjufrumeindir sem hafa ekki átta rafeindir í Lewis myndum sínum. Þessar sameindir falla í þrjá flokka:</para>
+<list id="fs-idm41738208" list-type="bulleted" bullet-style="bullet">
+<item>Sameindir með oddatölu rafeinda hafa oddatölu girðirafeinda og hafa því óparaða rafeind.</item>
+<item>Rafeindasnauðar sameindir hafa miðjufrumeind sem hefur færri rafeindir en þarf fyrir eðalgasstillingu.</item>
+<item>Ofgildar sameindir hafa miðjufrumeind sem hefur fleiri rafeindir en þarf fyrir eðalgasstillingu.</item>
+</list>
 <section id="fs-idm33391760">
 <title>Sameindir með oddatölu rafeinda</title>
 <para id="fs-idp58165584">Við köllum sameindir sem innihalda oddatölu rafeinda <term id="term-00009">sindurefni (e. free radicals)</term>. Nituroxíð, NO, er dæmi um sameind með oddatölu rafeinda; það myndast í brunahreyflum þegar súrefni og nitur hvarfast við hátt hitastig.</para>
@@ -176,8 +172,6 @@
 <item><emphasis effect="italics">Setjið allar eftirstandandi rafeindir á miðfrumeindina</emphasis>. Þar sem engar rafeindir eru eftir á þetta skref ekki við.</item>
 <item><emphasis effect="italics">Endurraðið rafeindunum til að mynda margföld efnatengi við miðfrumeindina til að ná áttund þar sem það er mögulegt.</emphasis> Við vitum að sameind með oddatölu rafeinda getur ekki haft áttund fyrir hverja frumeind, en við viljum koma hverri frumeind eins nálægt áttund og mögulegt er. Í þessu tilfelli hefur nitur aðeins fimm rafeindir í kringum sig. Til að komast nær áttund fyrir nitur tökum við eitt af rafeindapörunum frá súrefni og notum það til að mynda NO-tvítengi. (Við getum ekki tekið annað rafeindapar af súrefni og myndað þrítengi því þá hefði nitur níu rafeindir:)<newline/> <media id="fs-idp21078896" class="scaled-down" alt="A Lewis structure shows a nitrogen atom, with one lone pair and one lone electron double bonded to an oxygen atom with two lone pairs of electrons."><image mime-type="image/jpeg" src="../../media/CNX_Chem_07_03_NODouble_img.jpg"/></media></item>
 </list>
-
-
 </section>
 <section id="fs-idm70526624">
 <title>Rafeindaskortssameindir</title>
@@ -205,12 +199,6 @@
 </media>
 <para id="fs-idp23831296">Þegar við skrifum Lewis myndir fyrir þessar sameindir komumst við að því að við höfum rafeindir afgangs eftir að hafa fyllt girðihvolf ytri frumeindanna með átta rafeindum. Þessum viðbótarrafeindum verður að úthluta til miðjufrumeindarinnar.</para>
 </section>
-<para id="fs-idm1862800">Margar samgildar sameindir hafa miðjufrumeindir sem hafa ekki átta rafeindir í Lewis myndum sínum. Þessar sameindir falla í þrjá flokka:</para>
-<list id="fs-idm41738208" list-type="bulleted" bullet-style="bullet">
-<item>Sameindir með oddatölu rafeinda hafa oddatölu girðirafeinda og hafa því óparaða rafeind.</item>
-<item>Rafeindasnauðar sameindir hafa miðjufrumeind sem hefur færri rafeindir en þarf fyrir eðalgasstillingu.</item>
-<item>Ofgildar sameindir hafa miðjufrumeind sem hefur fleiri rafeindir en þarf fyrir eðalgasstillingu.</item>
-</list>
 <example id="fs-idp822144">
 <para id="fs-idp56477392"><title>Að skrifa Lewis myndir: Brot á áttureglunni</title>Xenon er eðalgas en það myndar fjölda stöðugra efnasambanda. Við skoðuðum XeF<sub>4</sub> áður. Hverjar eru Lewis myndir XeF<sub>2</sub> og XeF<sub>6</sub>?</para>
 <para id="fs-idm125111536"><title>Lausn</title>Við getum teiknað Lewis mynd hvaða samgildu sameindar sem er með því að fylgja skrefunum sex sem fjallað var um áður. Í þessu tilviki getum við þjappað saman síðustu skrefunum þar sem þau eiga ekki öll við.</para>
