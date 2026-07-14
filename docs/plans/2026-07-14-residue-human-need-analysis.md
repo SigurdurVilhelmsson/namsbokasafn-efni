@@ -40,5 +40,22 @@ m68809:para:fs-idm41259968       m68862:entry:auto-20
 
 `m68865` (appendices, 1,484 segs, **0 residue**) is in the incomplete-15 list for order/size, not translation — it clears with the sweep.
 
+## Delivery outcome (2026-07-14, the re-inject/re-render sweep — roadmap #3 item b)
+
+The code half (residue-gate re-triage) shipped as **PR #282** (code-only, manifest reverted). This is the **data half**: re-inject + re-render the 13 non-preface residue-unblocked modules on the `mt-preview` track. Branch `data/chem-residue-sweep-13-mtpreview`.
+
+**Probe findings that shaped the sweep (all empirical):**
+- **No re-extract needed.** All 4 "March-stale" `structure.json` files (m68696/m68698/m68752/m68862) re-extract **byte-identical** → they already reflect current (F1-fixed) extraction. The 10 July-fresh modules got their order fix from #248's re-extract, but the residue gate had blocked it from ever being injected. So the sweep is **re-inject/re-render only** (the roadmap #3(a) "re-extract" wording was the general recipe, already satisfied by #248 for these).
+- **13 inject COMPLETE** under the relaxed gate; corpus net (independent `scan-residue`): **exact 76 (all m68662 preface) · tolerated 4 · non-preface still-exact = none.**
+- **Only 4 modules produced changed `03-translated`** (real reading-order fixes): m68700, m68750, m68858 = **pure reorders** (added-set == removed-set); m68739 = **structure repair** (intro-paras/figures moved before the "octet rule" subsection + 4 valence-electron `<equation>`s relocated into their `<item>`s). The other 9 injected byte-identical — their deliverable is purely the **manifest COMPLETE flip**.
+- **Render set = the 4 changed modules** (module-level render also regenerates the chapter's compiled rollups; rendering an unchanged module is a byte-identical no-op on the module page). m68739's render-golden regenerated (`UPDATE_GOLDEN=1`).
+- **Gates:** raw-markup leak scan on the 4 pages = 0; `fidelity:render` = 17 findings **before and after** (zero introduced by this sweep — the 17 are pre-existing em/strong baseline drift on main); render-golden 10/10; full suite green.
+
+### 🔴 Faithful-track follow-on — m68700 reader-visible page was still stale (folded into the sweep PR)
+Completion review caught that the **faithful** page supersedes mt-preview for section **3-1**, and faithful was last injected **2026-07-06** (pre-#248 re-extract) → the reader-visible 3-1 page kept the stale reading order even after the mt-preview sweep fixed it. Scope-probed all 4 faithful modules (m68663/m68664/m68699/m68700 via `--source-dir 03-faithful-translation`): **only m68700** re-injects with a change (same pure `+1/-1` intro-para reorder). Re-injected + re-rendered faithful m68700 (human `03-faithful-translation` segments untouched): its published id-order is now **byte-identical to the adversarially-verified mt-preview page**, 0 leaks; `residue-report.faithful.json` drops m68700's 3 solution residues (language-neutral numbers demoted by #282's global predicate) → faithful 0 exact. **Lesson:** a per-track sweep must check whether a HIGHER track (faithful/localized) supersedes the module for readers — fixing mt-preview alone delivers zero reader benefit where a faithful page exists.
+
+### 🔴 m68865 correction — NOT cleared by the sweep (supersedes line 41 above)
+`m68865` (appendices) is blocked by a **missing/duplicate table-entry segment** (`m68865:entry:auto-338` — the inject reports "1 duplicate skipped (first-match-wins)" + "1 missing"), a *different* root cause than the residue gate. #282's re-triage does not touch it, so it **still SKIPs incomplete** and was **excluded** from this sweep (lead decision 2026-07-14). Likely a table-cell auto-id collision at extraction (two `<entry>`s hashed to the same `auto-N`, one wins, the other's id dangles). **Follow-up:** diagnose the auto-id collision in `cnxml-extract.js` table-cell numbering; separate task from the residue track. Register it under the byte-perfect roadmap tier-3.
+
 ## Provenance
 Workflow `wf_5ffa3c94-159` (2026-07-14). Adversarial hunt conclusion: *"CONFIRMED — nothing outside the m68662 preface needs a human translator."* Feeds roadmap `docs/plans/2026-07-07-byte-perfect-efnafraedi-roadmap.md` #3.

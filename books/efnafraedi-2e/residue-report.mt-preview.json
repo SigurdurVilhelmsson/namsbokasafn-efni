@@ -2,9 +2,10 @@
   "track": "mt-preview",
   "generatedBy": "cnxml-inject.js",
   "summary": {
-    "modulesWithResidue": 53,
-    "exactResidues": 100,
-    "ratioWarnings": 69
+    "modulesWithResidue": 1,
+    "exactResidues": 76,
+    "ratioWarnings": 69,
+    "toleratedResidues": 4
   },
   "modules": {
     "m68710": {
@@ -156,9 +157,7 @@
       ]
     },
     "m68696": {
-      "exact": [
-        "m68696:solution:fs-idp411135344"
-      ],
+      "exact": [],
       "warnings": [
         {
           "segmentId": "m68696:solution:fs-idm4134080",
@@ -168,23 +167,11 @@
           "segmentId": "m68696:solution:fs-idp108175056",
           "ratio": 0.83
         }
-      ]
-    },
-    "m68698": {
-      "exact": [
-        "m68698:para:fs-idp268148560",
-        "m68698:solution:fs-idm303264",
-        "m68698:solution:fs-idp268325312",
-        "m68698:solution:fs-idp282330448"
       ],
-      "warnings": []
+      "tolerated": []
     },
     "m68700": {
-      "exact": [
-        "m68700:solution:fs-idm15352224",
-        "m68700:solution:fs-idp18584256",
-        "m68700:solution:fs-idp50221696"
-      ],
+      "exact": [],
       "warnings": [
         {
           "segmentId": "m68700:solution:fs-idp27797488",
@@ -194,7 +181,8 @@
           "segmentId": "m68700:solution:fs-idp56664624",
           "ratio": 0.86
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68702": {
       "exact": [],
@@ -232,10 +220,14 @@
       ]
     },
     "m68729": {
-      "exact": [
-        "m68729:note-title:fs-idp23436864-title"
-      ],
-      "warnings": []
+      "exact": [],
+      "warnings": [],
+      "tolerated": [
+        {
+          "segmentId": "m68729:note-title:fs-idp23436864-title",
+          "reason": "chemist-portrait person-name title (Dorothy Crowfoot Hodgkin); note body is translated"
+        }
+      ]
     },
     "m68733": {
       "exact": [],
@@ -256,15 +248,14 @@
       ]
     },
     "m68739": {
-      "exact": [
-        "m68739:solution:fs-idm123049856"
-      ],
+      "exact": [],
       "warnings": [
         {
           "segmentId": "m68739:solution:fs-idm9743232",
           "ratio": 0.79
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68741": {
       "exact": [],
@@ -306,9 +297,7 @@
       ]
     },
     "m68750": {
-      "exact": [
-        "m68750:para:fs-idp131216672"
-      ],
+      "exact": [],
       "warnings": [
         {
           "segmentId": "m68750:entry:auto-22",
@@ -321,6 +310,12 @@
         {
           "segmentId": "m68750:solution:fs-idm21108080",
           "ratio": 0.8
+        }
+      ],
+      "tolerated": [
+        {
+          "segmentId": "m68750:para:fs-idp131216672",
+          "reason": "pressure values; only non-predicate token is the English homograph 'bar' (0.987 bar)"
         }
       ]
     },
@@ -338,10 +333,7 @@
       ]
     },
     "m68752": {
-      "exact": [
-        "m68752:solution:fs-idm1704032",
-        "m68752:solution:fs-idm99835712"
-      ],
+      "exact": [],
       "warnings": [
         {
           "segmentId": "m68752:entry:auto-238",
@@ -351,7 +343,8 @@
           "segmentId": "m68752:entry:auto-239",
           "ratio": 0.8
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68759": {
       "exact": [],
@@ -407,10 +400,14 @@
       ]
     },
     "m68784": {
-      "exact": [
-        "m68784:note-title:fs-idm42784320-title"
-      ],
-      "warnings": []
+      "exact": [],
+      "warnings": [],
+      "tolerated": [
+        {
+          "segmentId": "m68784:note-title:fs-idm42784320-title",
+          "reason": "chemist-portrait person-name title (Frederick Gardner Cottrell); note body is translated"
+        }
+      ]
     },
     "m68789": {
       "exact": [],
@@ -435,19 +432,14 @@
       ]
     },
     "m68798": {
-      "exact": [
-        "m68798:problem:fs-idp163617584",
-        "m68798:problem:fs-idp279106656",
-        "m68798:problem:fs-idp63377856",
-        "m68798:problem:fs-idp70859392",
-        "m68798:problem:fs-idp94542848"
-      ],
+      "exact": [],
       "warnings": [
         {
           "segmentId": "m68798:solution:fs-idp62171456",
           "ratio": 0.8
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68799": {
       "exact": [],
@@ -466,12 +458,6 @@
           "ratio": 0.75
         }
       ]
-    },
-    "m68804": {
-      "exact": [
-        "m68804:solution:fs-idp96688048"
-      ],
-      "warnings": []
     },
     "m68805": {
       "exact": [],
@@ -504,10 +490,14 @@
       ]
     },
     "m68809": {
-      "exact": [
-        "m68809:para:fs-idm41259968"
-      ],
-      "warnings": []
+      "exact": [],
+      "warnings": [],
+      "tolerated": [
+        {
+          "segmentId": "m68809:para:fs-idm41259968",
+          "reason": "pH/pOH calculation; only non-predicate token is the English homograph 'log' (log([OH-]))"
+        }
+      ]
     },
     "m68811": {
       "exact": [],
@@ -612,16 +602,14 @@
       ]
     },
     "m68858": {
-      "exact": [
-        "m68858:entry:auto-119",
-        "m68858:entry:auto-48"
-      ],
+      "exact": [],
       "warnings": [
         {
           "segmentId": "m68858:glossary-term:fs-idp225092016-term",
           "ratio": 1
         }
-      ]
+      ],
+      "tolerated": []
     },
     "m68861": {
       "exact": [],
@@ -639,12 +627,6 @@
           "ratio": 0.71
         }
       ]
-    },
-    "m68862": {
-      "exact": [
-        "m68862:entry:auto-20"
-      ],
-      "warnings": []
     },
     "m68865": {
       "exact": [],
