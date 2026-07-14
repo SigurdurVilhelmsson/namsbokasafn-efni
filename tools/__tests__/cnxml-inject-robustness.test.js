@@ -92,3 +92,28 @@ describe('A2-a: module-scoped EN fallback', () => {
     expect(report.modules.m68663.exact.length).toBeGreaterThan(0);
   });
 });
+
+describe('A2-b: per-module failure isolation + always-write manifest', () => {
+  it('isolates a throwing module and still processes the rest', () => {
+    rmSync(CH01('02-mt-output', 'm68664-segments.is.md')); // not allowlisted → throws
+    const r = runInject(['--chapter', '1']);
+    expect(r.status).toBe(1); // non-zero exit preserved
+    expect(existsSync(OUT('m68664'))).toBe(false); // the failed module
+    expect(existsSync(OUT('m68663'))).toBe(true); // a healthy module still injected
+    expect(existsSync(OUT('m68690'))).toBe(true); // a later healthy module still injected
+    expect(r.stderr).toContain('m68664: FAILED');
+    expect(r.stderr).toMatch(/module\(s\) FAILED/);
+  });
+
+  it('always writes the residue manifest even when a module fails', () => {
+    rmSync(CH01('02-mt-output', 'm68664-segments.is.md'));
+    // The base fixture copies the whole book, including a real prior
+    // residue-report.mt-preview.json. Remove it so the existsSync check below
+    // measures THIS run's write, not a stale copy (mirrors Task 1's
+    // 03-translated exclusion in the beforeAll fixture).
+    rmSync(join(BOOKS, 'residue-report.mt-preview.json'), { force: true });
+    runInject(['--chapter', '1']);
+    // Under the OLD code, one throw aborted before the after-loop write.
+    expect(existsSync(join(BOOKS, 'residue-report.mt-preview.json'))).toBe(true);
+  });
+});
