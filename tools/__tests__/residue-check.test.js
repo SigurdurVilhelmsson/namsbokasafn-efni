@@ -195,6 +195,20 @@ describe('isLanguageNeutral', () => {
     expect(isLanguageNeutral('[[MATH:3]]')).toBe(false);
     expect(isLanguageNeutral('')).toBe(false);
   });
+
+  // Membership checks run BEFORE the enumeration-skip, so single-lowercase-
+  // letter SI units are recognized in their canonical form (no L-vs-l asymmetry).
+  it('recognizes single-lowercase-letter SI units', () => {
+    expect(isLanguageNeutral('5 g')).toBe(true);
+    expect(isLanguageNeutral('10 m')).toBe(true);
+    expect(isLanguageNeutral('2 s')).toBe(true);
+  });
+  it('still treats a formula cell with enumeration letters as neutral', () => {
+    expect(isLanguageNeutral('(a) CrP; (b) HgS')).toBe(true);
+  });
+  it('is false for a lone non-unit enumeration letter', () => {
+    expect(isLanguageNeutral('a')).toBe(false);
+  });
 });
 
 describe('detectResidue language-neutral demotion', () => {

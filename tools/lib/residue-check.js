@@ -103,7 +103,9 @@ export function isLanguageNeutral(text) {
   let recognized = 0;
   for (const tok of tokens) {
     if (/^\p{N}/u.test(tok)) continue; // number-leading token (123, 896) → ignore
-    if (tok.length === 1 && /\p{Ll}/u.test(tok)) continue; // enumeration: (a),(b),b.
+    // Membership checks come BEFORE the enumeration-skip so single-lowercase-
+    // letter SI units (g, l, m, s, k, v, n, w) are recognized in their
+    // canonical form — otherwise "5 g" would fail while "5 L" passes.
     if (LN_UNITS.has(tok.toLowerCase())) {
       recognized++;
       continue;
@@ -116,6 +118,7 @@ export function isLanguageNeutral(text) {
       recognized++;
       continue;
     }
+    if (tok.length === 1 && /\p{Ll}/u.test(tok)) continue; // enumeration: (a),(b),b. (leftover non-unit single letters)
     return false; // an unrecognized word-token → not language-neutral
   }
   return recognized > 0; // require ≥1 recognized token (empty/marker-only ⇒ false)
@@ -145,7 +148,9 @@ export function tokenOverlapRatio(aNorm, bNorm) {
 
 /**
  * Detect untranslated-EN residue for one segment.
- * @returns {{alphaTokens:number, exact:boolean, ratio:number, warn:boolean}}
+ * @returns {{contentWords:number, exact:boolean, ratio:number, warn:boolean, languageNeutral?:boolean}}
+ *   `languageNeutral:true` is present only when a would-be-exact verbatim-EN
+ *   segment was demoted because every token is a formula/unit/pH symbol.
  */
 export function detectResidue(enText, isText, opts = {}) {
   const { minTokens, warnThreshold, minWordLen } = { ...RESIDUE_DEFAULTS, ...opts };
