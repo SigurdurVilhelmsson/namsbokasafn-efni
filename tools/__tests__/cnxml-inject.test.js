@@ -13,6 +13,7 @@ import {
   buildMediaElement,
   buildMedia,
   stripTermMarkersToText,
+  parseCliArgs,
 } from '../cnxml-inject.js';
 import { extractInlineText } from '../cnxml-extract.js';
 
@@ -1927,5 +1928,43 @@ describe('reverseInlineMarkup positional-restore hardening (legacy path)', () =>
     expect(result).toContain('<emphasis class="emphasis-one">R—O—R</emphasis>');
     expect(warnSpy).not.toHaveBeenCalled();
     warnSpy.mockRestore();
+  });
+});
+
+describe('parseCliArgs --allow-en-fallback (A2-a)', () => {
+  it('parses a comma-separated module allowlist into a Set', () => {
+    const r = parseCliArgs(['--chapter', '1', '--allow-en-fallback', 'm68764,m68770']);
+    expect(r.enFallbackModules).toEqual(new Set(['m68764', 'm68770']));
+    expect(r.allowEnFallback).toBeUndefined();
+  });
+
+  it('defaults to an empty Set when the flag is absent', () => {
+    const r = parseCliArgs(['--chapter', '1']);
+    expect(r.enFallbackModules).toEqual(new Set());
+  });
+
+  it('trims whitespace and ignores empty ids', () => {
+    const r = parseCliArgs(['--allow-en-fallback', ' m68764 , ,m68770 ']);
+    expect(r.enFallbackModules).toEqual(new Set(['m68764', 'm68770']));
+  });
+
+  it('exits when the flag is passed with no module ids (trailing bare flag)', () => {
+    const errSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const exitSpy = vi.spyOn(process, 'exit').mockImplementation(() => {
+      throw new Error('EXIT');
+    });
+    expect(() => parseCliArgs(['--chapter', '1', '--allow-en-fallback'])).toThrow('EXIT');
+    errSpy.mockRestore();
+    exitSpy.mockRestore();
+  });
+
+  it('exits when the flag is immediately followed by another flag', () => {
+    const errSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const exitSpy = vi.spyOn(process, 'exit').mockImplementation(() => {
+      throw new Error('EXIT');
+    });
+    expect(() => parseCliArgs(['--allow-en-fallback', '--verbose'])).toThrow('EXIT');
+    errSpy.mockRestore();
+    exitSpy.mockRestore();
   });
 });

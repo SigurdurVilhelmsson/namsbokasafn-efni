@@ -112,9 +112,41 @@ function parseCliArgs(args) {
     { name: 'sourceDir', flags: ['--source-dir'], type: 'string', default: null },
     { name: 'track', flags: ['--track'], type: 'string', default: null },
     { name: 'allowIncomplete', flags: ['--allow-incomplete'], type: 'boolean', default: false },
-    { name: 'allowEnFallback', flags: ['--allow-en-fallback'], type: 'boolean', default: false },
+    {
+      name: 'allowEnFallback',
+      flags: ['--allow-en-fallback'],
+      type: 'string',
+      default: null,
+      parse: (val) => {
+        // parseArgs consumes the next token as the value; reject a flag-looking
+        // token (e.g. `--allow-en-fallback --verbose`) instead of swallowing it.
+        if (val.startsWith('-')) {
+          console.error(
+            'Error: --allow-en-fallback requires module id(s), e.g. --allow-en-fallback m68764'
+          );
+          process.exit(1);
+        }
+        return val;
+      },
+    },
     { name: 'noAnnotateEn', flags: ['--no-annotate-en'], type: 'boolean', default: false },
   ]);
+  // A2-a: --allow-en-fallback is a per-module allowlist, not a run-wide switch.
+  // A trailing bare `--allow-en-fallback` leaves the value at its default (parseArgs
+  // skips the assignment when there is no next token), so guard against it here.
+  if (args.includes('--allow-en-fallback') && !result.allowEnFallback) {
+    console.error(
+      'Error: --allow-en-fallback requires module id(s), e.g. --allow-en-fallback m68764'
+    );
+    process.exit(1);
+  }
+  result.enFallbackModules = new Set(
+    (result.allowEnFallback || '')
+      .split(',')
+      .map((s) => s.trim())
+      .filter(Boolean)
+  );
+  delete result.allowEnFallback;
   // Invert --no-annotate-en to annotateEn
   result.annotateEn = !result.noAnnotateEn;
   delete result.noAnnotateEn;
@@ -143,9 +175,10 @@ Options:
                        (auto-detected from --source-dir if not specified)
   --verbose            Show detailed progress
   --allow-incomplete   Write output even if segments are missing (for diagnostics)
-  --allow-en-fallback  Fall back to untranslated EN segments when a translation
-                       is missing (off by default — otherwise it errors, so
-                       untranslated content can't be published silently)
+  --allow-en-fallback <ids>  Comma-separated module id(s) permitted to fall back to
+                       untranslated EN when their translation is missing
+                       (e.g. --allow-en-fallback m68764,m68770). Any OTHER missing
+                       module is a loud per-module skip, never a silent EN publish.
   --no-annotate-en     Disable English term annotations (e. term) in output
   -h, --help           Show this help
 
@@ -3881,7 +3914,7 @@ function findChapterModules(chapter, moduleId = null) {
  * @param {string} lang - Language code (e.g., 'is')
  * @param {string} sourceDir - Directory containing segments, relative to BOOKS_DIR (e.g., '02-for-mt', '03-faithful-translation')
  */
-function loadModuleInputs(chapter, moduleId, lang, sourceDir, allowEnFallback = false) {
+function loadModuleInputs(chapter, moduleId, lang, sourceDir, enFallbackModules = new Set()) {
   const chapterDir = formatChapter(chapter);
   const mtOutputChapterDir = path.join(BOOKS_DIR, '02-mt-output', chapterDir);
   const restorePolicy = resolveRestorePolicy({ mtOutputChapterDir, moduleId });
@@ -3897,14 +3930,16 @@ function loadModuleInputs(chapter, moduleId, lang, sourceDir, allowEnFallback = 
     chapterDir,
     `${moduleId}-segments.${lang}.md`
   );
+  let usedEnFallback = false;
   let segments;
   if (!fs.existsSync(segmentsPath)) {
     // The translation is missing. Falling back to English would publish
     // untranslated content, so refuse unless explicitly opted in (F20).
-    if (!allowEnFallback) {
+    if (!enFallbackModules.has(moduleId)) {
       throw new Error(
         `Translation not found for ${moduleId} in ${sourceDir} (${segmentsPath}). ` +
-          'Refusing to publish untranslated content. Pass --allow-en-fallback to inject English instead.'
+          `Refusing to publish untranslated content. ` +
+          `Pass --allow-en-fallback ${moduleId} to inject English for this module.`
       );
     }
     // Fall back to English segments in 02-for-mt if translation not available
@@ -3917,6 +3952,7 @@ function loadModuleInputs(chapter, moduleId, lang, sourceDir, allowEnFallback = 
     );
     const content = fs.readFileSync(enPath, 'utf-8');
     segments = parseSegments(content);
+    usedEnFallback = true;
   } else {
     const content = fs.readFileSync(segmentsPath, 'utf-8');
     segments = parseSegments(content);
@@ -3979,7 +4015,16 @@ function loadModuleInputs(chapter, moduleId, lang, sourceDir, allowEnFallback = 
   }
   const originalCnxml = substituteMathLabels(rawOriginalCnxml, resolveMathLabel);
 
-  return { structure, segments, equations, originalCnxml, enSegments, inlineAttrs, restorePolicy };
+  return {
+    structure,
+    segments,
+    equations,
+    originalCnxml,
+    enSegments,
+    inlineAttrs,
+    restorePolicy,
+    usedEnFallback,
+  };
 }
 
 /**
@@ -4103,7 +4148,8 @@ async function main() {
         enSegments,
         inlineAttrs,
         restorePolicy,
-      } = loadModuleInputs(args.chapter, moduleId, args.lang, sourceDir, args.allowEnFallback);
+        usedEnFallback,
+      } = loadModuleInputs(args.chapter, moduleId, args.lang, sourceDir, args.enFallbackModules);
 
       // Restore/strip term markers (needed for both pipelines):
       // - New {{term}} format: strips any __term__ glossary artifacts from IS
@@ -4178,7 +4224,7 @@ async function main() {
           // A2: residue detection only makes sense when injecting a translation.
           // Skip when deliberately injecting the EN source as content (--lang en
           // round-trip) or under the explicit EN-fallback escape hatch.
-          checkResidue: args.lang !== 'en' && !args.allowEnFallback,
+          checkResidue: args.lang !== 'en' && !usedEnFallback,
           isAllowlisted,
         },
         inlineAttrs
@@ -4307,6 +4353,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
 }
 
 export {
+  parseCliArgs,
   restoreTermMarkers,
   restoreGlossaryTermMarkup,
   restoreSupersubMarkers,
