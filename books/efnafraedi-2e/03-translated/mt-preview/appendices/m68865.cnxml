@@ -557,7 +557,7 @@
 <entry align="left">214,4</entry>
 </row>
 <row valign="middle">
-<entry align="left">CCl<sub>4</sub>(<emphasis effect="italics">l</emphasis>)</entry>
+<entry align="left">CCl<sub>4</sub>(<emphasis effect="italics">g</emphasis>)</entry>
 <entry align="left">–95,7</entry>
 <entry align="left">–58,2</entry>
 <entry align="left">309,7</entry>
@@ -1007,8 +1007,8 @@
 <row valign="middle">
 <entry align="left">H<sub>3</sub>O<sup>+</sup>(<emphasis effect="italics">aq</emphasis>)</entry>
 <entry align="left">–285,8</entry>
+<entry align="left"></entry>
 <entry align="left">69,91</entry>
-<entry align="left">69.91</entry>
 </row>
 
 <row valign="middle">
@@ -1447,8 +1447,8 @@
 
 <row valign="middle">
 <entry align="left">Hg<sup>2+</sup>(<emphasis effect="italics">aq</emphasis>)</entry>
+<entry align="left"></entry>
 <entry align="left">164,8</entry>
-<entry align="left">164.8</entry>
 <entry align="left"></entry>
 </row>
 

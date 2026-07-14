@@ -1009,7 +1009,7 @@ CH[[sub:3]]OH([[i:g]])
 <!-- SEG:m68865:entry:auto-337 -->
 239,9
 
-<!-- SEG:m68865:entry:auto-342 -->
+<!-- SEG:m68865:entry:auto-338 -->
 CCl[[sub:4]]([[i:l]])
 
 <!-- SEG:m68865:entry:auto-339 -->

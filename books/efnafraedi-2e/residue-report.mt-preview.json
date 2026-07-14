@@ -635,7 +635,8 @@
           "segmentId": "m68865:entry:auto-1160",
           "ratio": 0.75
         }
-      ]
+      ],
+      "tolerated": []
     }
   }
 }
