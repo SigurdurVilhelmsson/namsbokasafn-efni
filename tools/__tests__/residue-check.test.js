@@ -148,7 +148,12 @@ describe('upsertResidueModule', () => {
     });
     expect(r.track).toBe('faithful');
     expect(r.modules.m68784.exact).toEqual(['m68784:para:p1']);
-    expect(r.summary).toEqual({ modulesWithResidue: 1, exactResidues: 1, ratioWarnings: 1 });
+    expect(r.summary).toEqual({
+      modulesWithResidue: 1,
+      exactResidues: 1,
+      ratioWarnings: 1,
+      toleratedResidues: 0,
+    });
   });
 
   it('removes a module entry when it becomes clean (preserve-on-reinject)', () => {
@@ -222,5 +227,26 @@ describe('detectResidue language-neutral demotion', () => {
     const t = 'Write the two half-reactions and balance them';
     const r = detectResidue(t, t);
     expect(r.exact).toBe(true);
+  });
+});
+
+describe('upsertResidueModule tolerated', () => {
+  it('records a tolerated-only module and counts it in the summary', () => {
+    const r = upsertResidueModule({ track: 'mt-preview' }, 'm68729', {
+      exact: [],
+      warnings: [],
+      tolerated: [{ segmentId: 'm68729:note-title:x', reason: 'chemist name' }],
+    });
+    expect(r.modules.m68729.tolerated).toEqual([
+      { segmentId: 'm68729:note-title:x', reason: 'chemist name' },
+    ]);
+    expect(r.modules.m68729.exact).toEqual([]);
+    expect(r.summary.toleratedResidues).toBe(1);
+    expect(r.summary.exactResidues).toBe(0);
+  });
+  it('deletes a module only when exact, warnings AND tolerated are all empty', () => {
+    const start = upsertResidueModule({ track: 'mt-preview' }, 'm1', { exact: ['m1:s'] });
+    const cleared = upsertResidueModule(start, 'm1', { exact: [], warnings: [], tolerated: [] });
+    expect(cleared.modules.m1).toBeUndefined();
   });
 });

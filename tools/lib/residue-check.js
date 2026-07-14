@@ -187,13 +187,15 @@ export function detectResidue(enText, isText, opts = {}) {
 export function upsertResidueModule(report, moduleId, entry = {}) {
   const exact = entry.exact || [];
   const warnings = entry.warnings || [];
+  const tolerated = entry.tolerated || [];
   const modules = { ...((report && report.modules) || {}) };
-  if (exact.length === 0 && warnings.length === 0) {
+  if (exact.length === 0 && warnings.length === 0 && tolerated.length === 0) {
     delete modules[moduleId];
   } else {
     modules[moduleId] = {
       exact: [...exact],
       warnings: warnings.map((w) => ({ segmentId: w.segmentId, ratio: w.ratio })),
+      tolerated: tolerated.map((t) => ({ segmentId: t.segmentId, reason: t.reason })),
     };
   }
   const ids = Object.keys(modules);
@@ -201,9 +203,10 @@ export function upsertResidueModule(report, moduleId, entry = {}) {
     track: (report && report.track) || null,
     generatedBy: 'cnxml-inject.js',
     summary: {
-      modulesWithResidue: ids.length,
+      modulesWithResidue: ids.filter((m) => modules[m].exact.length).length,
       exactResidues: ids.reduce((s, m) => s + modules[m].exact.length, 0),
       ratioWarnings: ids.reduce((s, m) => s + modules[m].warnings.length, 0),
+      toleratedResidues: ids.reduce((s, m) => s + (modules[m].tolerated || []).length, 0),
     },
     modules,
   };
