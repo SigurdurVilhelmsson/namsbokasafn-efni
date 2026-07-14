@@ -50,6 +50,7 @@ import { extractGlossary } from './lib/cnxml-parser.js';
 import { resolveRestorePolicy } from './lib/provenance.js';
 import { updateTranslationErrors } from './lib/update-translation-errors.js';
 import { detectResidue, upsertResidueModule } from './lib/residue-check.js';
+import { loadResidueAllowlist, classifyResidue } from './lib/residue-allowlist.js';
 import { SEG_MARKER, parseSegmentsMap } from './lib/seg-markers.cjs';
 import {
   parseCnxmlFragment,
@@ -1820,6 +1821,7 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
     mathUnresolved: [],
     residues: [], // exact untranslated-EN (gates complete)
     residueWarnings: [], // ratio "mostly English" (non-gating)
+    tolerated: [], // allowlisted language-neutral residues (non-gating)
     attrMismatches: [], // B4: positional-restore count mismatches (terms/footnotes/emphases)
     tableCellGaps: [], // RC4/B4-D5: row.cells under-counts <entry> elements (gates complete)
     _residueSeen: new Set(), // de-dupe segments referenced more than once
@@ -1848,7 +1850,11 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
       stats._residueSeen.add(segmentId);
       const r = detectResidue(enText, text);
       if (r.exact) {
-        stats.residues.push(segmentId);
+        if (options.isAllowlisted && options.isAllowlisted(structure.moduleId, segmentId)) {
+          stats.tolerated.push(segmentId);
+        } else {
+          stats.residues.push(segmentId);
+        }
       } else if (r.warn) {
         stats.residueWarnings.push({ segmentId, ratio: Number(r.ratio.toFixed(2)) });
       }
@@ -2050,6 +2056,7 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {},
     unresolvedMathPlaceholders: stats.mathUnresolved,
     residues: stats.residues.slice().sort(),
     residueWarnings: stats.residueWarnings,
+    tolerated: stats.tolerated.slice().sort(),
     attrMismatches: stats.attrMismatches,
     tableCellGaps: stats.tableCellGaps,
     complete:
@@ -4034,6 +4041,9 @@ function applyMathLabelSubstitution(equations, resolve) {
 async function main() {
   const args = parseCliArgs(process.argv.slice(2));
   BOOKS_DIR = `books/${args.book}`;
+  const residueAllowlist = loadResidueAllowlist(BOOKS_DIR);
+  const isAllowlisted = (moduleId, segmentId) =>
+    classifyResidue(moduleId, segmentId, residueAllowlist).tolerated;
 
   if (args.help) {
     printHelp();
@@ -4169,6 +4179,7 @@ async function main() {
           // Skip when deliberately injecting the EN source as content (--lang en
           // round-trip) or under the explicit EN-fallback escape hatch.
           checkResidue: args.lang !== 'en' && !args.allowEnFallback,
+          isAllowlisted,
         },
         inlineAttrs
       );
@@ -4183,6 +4194,10 @@ async function main() {
       residueReport = upsertResidueModule(residueReport, moduleId, {
         exact: result.report.residues,
         warnings: result.report.residueWarnings,
+        tolerated: (result.report.tolerated || []).map((segmentId) => ({
+          segmentId,
+          reason: classifyResidue(moduleId, segmentId, residueAllowlist).reason,
+        })),
       });
       if (result.report.residues.length > 0) {
         console.error(
