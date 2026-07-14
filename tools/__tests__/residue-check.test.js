@@ -5,6 +5,7 @@ import {
   tokenOverlapRatio,
   detectResidue,
   upsertResidueModule,
+  isLanguageNeutral,
 } from '../lib/residue-check.js';
 
 describe('normalizeForComparison', () => {
@@ -155,5 +156,57 @@ describe('upsertResidueModule', () => {
     const cleaned = upsertResidueModule(seeded, 'm1', { exact: [], warnings: [] });
     expect(cleaned.modules.m1).toBeUndefined();
     expect(cleaned.summary.modulesWithResidue).toBe(0);
+  });
+});
+
+describe('isLanguageNeutral', () => {
+  // positive — pure formula / unit / quantity-symbol cells
+  it.each([
+    '(a) CrP; (b) HgS; (c) Mn[[sub:3]](PO[[sub:4]])[[sub:2]]',
+    '(a) RbBr; (b) MgSe; (h) (NH[[sub:4]])[[sub:2]]SO[[sub:4]]',
+    '(a) 123.896 amu; (b) 18.015 amu; (c) 164.086 amu',
+    'rem = RBE [[MATH:9]] rad',
+    '(a) pH = 3.587; pOH = 10.413; (b) pOH = 0.68; pH = 13.32',
+    '8.205784 [[MATH:8]] 10[[sup:−2]] L atm mol[[sup:−1]] K[[sup:−1]] = 8.314510 J mol[[sup:−1]] K[[sup:−1]]',
+    '(d) [[MATH:71]] SO[[sub:3]] = 1.00 atm, SO[[sub:2]] = 1.00 atm',
+  ])('treats formula/unit/pH cell as language-neutral: %s', (t) => {
+    expect(isLanguageNeutral(t)).toBe(true);
+  });
+
+  // negative — real English prose (the safety property)
+  it.each([
+    'Write the two half-reactions and balance them',
+    'Dorothy Crowfoot Hodgkin',
+    'Measure the pH of each solution carefully', // recognized token amid English → still NOT neutral
+    'Report the value in atm units',
+  ])('flags real English even when it contains a recognized token: %s', (t) => {
+    expect(isLanguageNeutral(t)).toBe(false);
+  });
+
+  // negative — homographs are excluded from the predicate (they go on the allowlist)
+  it('excludes the English homograph "log"', () => {
+    expect(isLanguageNeutral('pH = 14 + log(0.0200) = 12.30')).toBe(false);
+  });
+  it('excludes the English homograph "bar"', () => {
+    expect(isLanguageNeutral('0.974 atm; 740 mm Hg; 98.7 kPa; 0.987 bar')).toBe(false);
+  });
+
+  it('is false for empty / marker-only input (no recognized token)', () => {
+    expect(isLanguageNeutral('[[MATH:3]]')).toBe(false);
+    expect(isLanguageNeutral('')).toBe(false);
+  });
+});
+
+describe('detectResidue language-neutral demotion', () => {
+  it('does NOT flag a language-neutral verbatim-EN segment as exact', () => {
+    const t = '(a) CrP; (b) HgS';
+    const r = detectResidue(t, t);
+    expect(r.exact).toBe(false);
+    expect(r.languageNeutral).toBe(true);
+  });
+  it('still flags a real English verbatim-EN segment as exact', () => {
+    const t = 'Write the two half-reactions and balance them';
+    const r = detectResidue(t, t);
+    expect(r.exact).toBe(true);
   });
 });

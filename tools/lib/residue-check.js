@@ -38,6 +38,89 @@ export function normalizeForComparison(text) {
   return t.replace(/\s+/g, ' ').trim().toLowerCase();
 }
 
+// Recognized language-neutral units (matched case-insensitively). Deliberately
+// EXCLUDES multi-letter English homographs (bar, log, ln, sin, cos, tan): a segment
+// whose only non-predicate token is such a homograph belongs on the residue allowlist,
+// not here — admitting them would erode the all-or-nothing safety property below.
+const LN_UNITS = new Set([
+  'amu',
+  'atm',
+  'torr',
+  'mmhg',
+  'kpa',
+  'pa',
+  'mol',
+  'l',
+  'ml',
+  'g',
+  'kg',
+  'mg',
+  'k',
+  'j',
+  'kj',
+  'cal',
+  'kcal',
+  'v',
+  'n',
+  'w',
+  'ev',
+  'rem',
+  'rad',
+  'rbe',
+  'gy',
+  'sv',
+  'bq',
+  'ci',
+  'ppm',
+  'nm',
+  'pm',
+  'cm',
+  'mm',
+  'm',
+  's',
+  'hz',
+]);
+// Unambiguous scientific quantity symbols (non-homograph). Matched case-SENSITIVELY.
+const LN_QUANTITIES = new Set(['pH', 'pOH', 'pKa', 'pKb', 'pKw', 'pI']);
+// Chemical-formula case shape: uppercase-initial element-symbol runs (+ optional digits).
+const FORMULA_RE = /^([A-Z][a-z]?\d*)+$/;
+
+/**
+ * True when EVERY word-token of `text` is a recognized language-neutral token —
+ * a curated unit, a chemical-formula-shaped token, or an unambiguous quantity
+ * symbol (pH/pOH/…). Numbers and enumeration letters ((a),(b)) are ignored.
+ * One unrecognized word ⇒ false. This all-or-nothing rule is the safety property:
+ * genuine English prose (which always carries articles/verbs) can never pass.
+ * Case-preserving on purpose — case is the formula signal, so this runs BEFORE
+ * normalizeForComparison's lowercasing.
+ */
+export function isLanguageNeutral(text) {
+  const stripped = stripMarkers(text);
+  const tokens = stripped
+    .replace(/[^\p{L}\p{N}\s]/gu, ' ') // operators/punctuation (= + − · : ; , ( )) → space
+    .split(/\s+/)
+    .filter(Boolean);
+  let recognized = 0;
+  for (const tok of tokens) {
+    if (/^\p{N}/u.test(tok)) continue; // number-leading token (123, 896) → ignore
+    if (tok.length === 1 && /\p{Ll}/u.test(tok)) continue; // enumeration: (a),(b),b.
+    if (LN_UNITS.has(tok.toLowerCase())) {
+      recognized++;
+      continue;
+    }
+    if (LN_QUANTITIES.has(tok)) {
+      recognized++;
+      continue;
+    }
+    if (FORMULA_RE.test(tok)) {
+      recognized++;
+      continue;
+    }
+    return false; // an unrecognized word-token → not language-neutral
+  }
+  return recognized > 0; // require ≥1 recognized token (empty/marker-only ⇒ false)
+}
+
 /**
  * Count "content words" in normalized text: tokens of at least `minWordLen`
  * letters. This deliberately excludes single-letter unit abbreviations (g, L),
@@ -69,13 +152,23 @@ export function detectResidue(enText, isText, opts = {}) {
   const enNorm = normalizeForComparison(enText);
   const isNorm = normalizeForComparison(isText);
   const contentWords = countContentWords(isNorm, minWordLen);
+  const exact = enNorm === isNorm;
+  // Language-neutral verbatim-EN (formula/unit/pH cell) is not a translation
+  // failure — demote it so it never gates report.complete. Checked BEFORE the
+  // content-word floor below: a short formula/unit cell (e.g. "(a) CrP; (b)
+  // HgS") is genuinely exact but has too few content words to reach the floor
+  // check, so the demotion would never fire if ordered after it. Runs on raw
+  // enText (case-preserving); enNorm===isNorm here so either side is
+  // equivalent.
+  if (exact && isLanguageNeutral(enText)) {
+    return { contentWords, exact: false, languageNeutral: true, ratio: 0, warn: false };
+  }
   // No EN counterpart, or too few real words to judge -> never flag. The
   // content-word floor (not a raw token count) is what keeps number/unit cells
   // from false-positiving while still catching real English prose.
   if (!enNorm || contentWords < minTokens) {
     return { contentWords, exact: false, ratio: 0, warn: false };
   }
-  const exact = enNorm === isNorm;
   const ratio = exact ? 1 : tokenOverlapRatio(enNorm, isNorm);
   const warn = !exact && ratio >= warnThreshold;
   return { contentWords, exact, ratio, warn };
