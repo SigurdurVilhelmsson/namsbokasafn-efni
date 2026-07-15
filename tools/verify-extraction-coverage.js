@@ -19,6 +19,9 @@ import { analyzeModule } from './lib/extraction-coverage.js';
 
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const JSON_OPTION = { name: 'json', flags: ['--json'], type: 'boolean', default: false };
+// --root overrides the repo root for the books/ tree — for hermetic tests only. Production
+// runs resolve against import.meta.url (never process.cwd()).
+const ROOT_OPTION = { name: 'root', flags: ['--root'], type: 'string', default: null };
 
 /** chapter arg (int | 'appendices' | null) -> dir name(s) to scan. */
 function chapterDirs(root, chapter) {
@@ -33,7 +36,12 @@ function chapterDirs(root, chapter) {
 }
 
 function main() {
-  const args = parseArgs(process.argv.slice(2), [BOOK_OPTION, CHAPTER_OPTION, JSON_OPTION]);
+  const args = parseArgs(process.argv.slice(2), [
+    BOOK_OPTION,
+    CHAPTER_OPTION,
+    JSON_OPTION,
+    ROOT_OPTION,
+  ]);
   if (args.help) {
     console.log(
       'Usage: node tools/verify-extraction-coverage.js --book <slug> [--chapter N|appendices] [--json]\n' +
@@ -41,21 +49,37 @@ function main() {
     );
     return;
   }
-  requireBook(args);
+  // requireBook validates books/<slug> under the real repo root; when --root overrides the
+  // tree (hermetic tests) do a lighter presence check and let the forMtRoot guard below verify.
+  if (args.root) {
+    if (!args.book) {
+      console.error('Error: --book is required');
+      process.exit(1);
+    }
+  } else {
+    requireBook(args);
+  }
   if (args.chapter !== null && args.chapter !== 'appendices' && Number.isNaN(args.chapter)) {
     console.error('Error: --chapter must be a number or "appendices"');
     process.exit(1);
   }
 
-  const forMtRoot = path.join(REPO_ROOT, 'books', args.book, '02-for-mt');
-  const srcRoot = path.join(REPO_ROOT, 'books', args.book, '01-source');
+  const root = args.root ? path.resolve(args.root) : REPO_ROOT;
+  const forMtRoot = path.join(root, 'books', args.book, '02-for-mt');
+  const srcRoot = path.join(root, 'books', args.book, '01-source');
   if (!fs.existsSync(forMtRoot)) {
     console.error(`Error: no 02-for-mt for ${args.book}`);
+    process.exit(1);
+  }
+  if (!fs.existsSync(srcRoot)) {
+    // Absent 01-source would silently analyze 0 modules and exit "clean" — fail loud instead.
+    console.error(`Error: no 01-source for ${args.book} (cannot check coverage)`);
     process.exit(1);
   }
 
   const modules = {};
   let missingSource = 0;
+  let parseErrors = 0;
   for (const dir of chapterDirs(forMtRoot, args.chapter)) {
     const segDir = path.join(forMtRoot, dir);
     if (!fs.existsSync(segDir)) continue;
@@ -67,22 +91,36 @@ function main() {
         missingSource++; // e.g. chapter-metadata has no source cnxml
         continue;
       }
-      const r = analyzeModule(
-        fs.readFileSync(srcFile, 'utf8'),
-        fs.readFileSync(path.join(segDir, file), 'utf8')
-      );
-      if (r.hasFindings) modules[moduleId] = { chapter: dir, ...r };
+      // Per-module isolation: a malformed cnxml must not abort the whole batch (A2 lesson).
+      try {
+        const r = analyzeModule(
+          fs.readFileSync(srcFile, 'utf8'),
+          fs.readFileSync(path.join(segDir, file), 'utf8')
+        );
+        if (r.hasFindings) modules[moduleId] = { chapter: dir, ...r };
+      } catch (e) {
+        parseErrors++;
+        modules[moduleId] = { chapter: dir, parseError: e.message };
+      }
     }
   }
 
   const ids = Object.keys(modules);
   const summary = {
     modulesWithFindings: ids.length,
-    listsWithDroppedItems: ids.reduce((s, m) => s + modules[m].listFindings.length, 0),
-    duplicateSegIds: ids.reduce(
-      (s, m) => s + modules[m].dupFindings.sourceDup.length + modules[m].dupFindings.rawDup.length,
+    listsWithDroppedItems: ids.reduce(
+      (s, m) => s + (modules[m].listFindings ? modules[m].listFindings.length : 0),
       0
     ),
+    duplicateSegIds: ids.reduce(
+      (s, m) =>
+        s +
+        (modules[m].dupFindings
+          ? modules[m].dupFindings.sourceDup.length + modules[m].dupFindings.rawDup.length
+          : 0),
+      0
+    ),
+    parseErrors,
     modulesMissingSource: missingSource,
   };
 
@@ -92,6 +130,10 @@ function main() {
     console.log(`Extraction-coverage checkpoint — ${args.book}\n`);
     for (const m of ids.sort()) {
       const e = modules[m];
+      if (e.parseError) {
+        console.log(`  ${m} (${e.chapter}): ⚠ parse error — ${e.parseError}`);
+        continue;
+      }
       for (const lf of e.listFindings) {
         console.log(
           `  ${m} (${e.chapter}): list ${lf.listId} — ${lf.present}/${lf.items} items emitted; ` +
@@ -107,10 +149,14 @@ function main() {
     }
     console.log(
       `\nSummary: ${summary.listsWithDroppedItems} list(s) with dropped items + ` +
-        `${summary.duplicateSegIds} duplicate seg-id(s) across ${summary.modulesWithFindings} module(s).`
+        `${summary.duplicateSegIds} duplicate seg-id(s) across ${summary.modulesWithFindings} module(s)` +
+        (summary.parseErrors ? `; ${summary.parseErrors} parse error(s)` : '') +
+        '.'
     );
   }
-  process.exit(ids.length ? 1 : 0);
+  // process.exitCode (not process.exit) so a large --json payload fully flushes to a pipe
+  // before the process exits. Exit 1 on any finding (drops, dups, or parse errors).
+  process.exitCode = ids.length ? 1 : 0;
 }
 
 main();

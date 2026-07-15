@@ -1,5 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { execFileSync } from 'node:child_process';
+import { mkdtempSync, mkdirSync, writeFileSync, rmSync, readFileSync, statSync } from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import {
   emittedElementIds,
@@ -185,30 +187,151 @@ describe('analyzeModule', () => {
   });
 });
 
+const CLI = path.join(TOOLS, 'verify-extraction-coverage.js');
+
+/** Run the CLI, returning { code, stdout }. Never throws on a non-zero exit. */
+function runCli(cliArgs) {
+  try {
+    const stdout = execFileSync('node', [CLI, ...cliArgs], {
+      cwd: path.resolve(TOOLS, '..'),
+      encoding: 'utf8',
+    });
+    return { code: 0, stdout };
+  } catch (e) {
+    return { code: e.status, stdout: e.stdout || '' };
+  }
+}
+
+/** Seed a hermetic book tree under a temp --root: { 'ch01/mX': {cnxml, seg} }. */
+function seedBook(slug, modules) {
+  const root = mkdtempSync(path.join(os.tmpdir(), 'covgate-'));
+  for (const [rel, { cnxml, seg: segText }] of Object.entries(modules)) {
+    const [dir, mod] = rel.split('/');
+    mkdirSync(path.join(root, 'books', slug, '01-source', dir), { recursive: true });
+    mkdirSync(path.join(root, 'books', slug, '02-for-mt', dir), { recursive: true });
+    writeFileSync(path.join(root, 'books', slug, '01-source', dir, `${mod}.cnxml`), cnxml);
+    writeFileSync(
+      path.join(root, 'books', slug, '02-for-mt', dir, `${mod}-segments.en.md`),
+      segText
+    );
+  }
+  return root;
+}
+
 describe('verify-extraction-coverage CLI', () => {
-  it('exits 1 and reports the dropped option lists on real m66438 (--json --chapter 3)', () => {
-    let out;
-    let code = 0;
+  it('CLI source has no filesystem write calls (read-only invariant)', () => {
+    const src = readFileSync(CLI, 'utf8');
+    expect(src).not.toMatch(
+      /\b(writeFileSync|appendFileSync|rmSync|unlinkSync|mkdirSync|renameSync)\b/
+    );
+    expect(src).not.toMatch(/fs\.(write|append|mkdir|rm|unlink|rename|copy|truncate)/);
+  });
+
+  it('runs end-to-end on the real biology corpus and emits valid JSON (survives future fixes)', () => {
+    const { code, stdout } = runCli(['--book', 'liffraedi-2e', '--chapter', '3', '--json']);
+    expect([0, 1]).toContain(code);
+    const report = JSON.parse(stdout); // full payload flushed (process.exitCode, not process.exit)
+    expect(report.summary).toBeDefined();
+    expect(report.book).toBe('liffraedi-2e');
+  });
+
+  it('exits 1 and flags a dropped option list (hermetic --root)', () => {
+    const root = seedBook('covtest', {
+      'ch01/mDrop': {
+        cnxml: doc('<list id="L1"><item>a</item><item>b</item><item>c</item><item>d</item></list>'),
+        seg: seg('para:stem'),
+      },
+    });
     try {
-      out = execFileSync(
-        'node',
-        [
-          path.join(TOOLS, 'verify-extraction-coverage.js'),
-          '--book',
-          'liffraedi-2e',
-          '--chapter',
-          '3',
-          '--json',
-        ],
-        { cwd: path.resolve(TOOLS, '..'), encoding: 'utf8' }
-      );
-    } catch (e) {
-      code = e.status;
-      out = e.stdout;
+      const { code, stdout } = runCli(['--book', 'covtest', '--root', root, '--json']);
+      expect(code).toBe(1);
+      const report = JSON.parse(stdout);
+      expect(report.modules.mDrop.listFindings[0]).toMatchObject({ listId: 'L1', present: 0 });
+    } finally {
+      rmSync(root, { recursive: true, force: true });
     }
-    expect(code).toBe(1);
-    const report = JSON.parse(out);
-    expect(report.modules.m66438).toBeDefined();
-    expect(report.modules.m66438.listFindings.length).toBeGreaterThanOrEqual(3);
+  });
+
+  it('exits 0 on a clean module (hermetic --root)', () => {
+    const root = seedBook('covtest', {
+      'ch01/mClean': {
+        cnxml: doc('<list id="L1"><item>a</item><item>b</item></list>'),
+        seg: seg('item:L1-item-1', 'item:L1-item-2'),
+      },
+    });
+    try {
+      const { code, stdout } = runCli(['--book', 'covtest', '--root', root, '--json']);
+      expect(code).toBe(0);
+      expect(JSON.parse(stdout).summary.modulesWithFindings).toBe(0);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  it('exits 1 and reports a duplicate seg-id (hermetic --root)', () => {
+    const root = seedBook('covtest', {
+      'ch01/mDup': {
+        cnxml: doc('<para id="a">x</para>'),
+        seg: '<!-- SEG:mDup:para:a -->\nx\n<!-- SEG:mDup:para:a -->\ny',
+      },
+    });
+    try {
+      const { code, stdout } = runCli(['--book', 'covtest', '--root', root, '--json']);
+      expect(code).toBe(1);
+      expect(JSON.parse(stdout).modules.mDup.dupFindings.rawDup[0].segId).toBe('mDup:para:a');
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  it('isolates a malformed cnxml: records the parse error and still checks the rest of the batch', () => {
+    const root = seedBook('covtest', {
+      'ch01/mBad': { cnxml: '<document><content><para id="x">unclosed', seg: seg('para:x') },
+      'ch01/mDrop': {
+        cnxml: doc('<list id="L1"><item>a</item><item>b</item></list>'),
+        seg: seg('para:stem'),
+      },
+    });
+    try {
+      const { code, stdout } = runCli(['--book', 'covtest', '--root', root, '--json']);
+      expect(code).toBe(1); // batch not aborted
+      const report = JSON.parse(stdout);
+      expect(report.modules.mDrop.listFindings).toHaveLength(1); // the good-but-dropped module still checked
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  it('fails loud when 01-source is absent (no false green)', () => {
+    const root = mkdtempSync(path.join(os.tmpdir(), 'covgate-'));
+    mkdirSync(path.join(root, 'books', 'covtest', '02-for-mt', 'ch01'), { recursive: true });
+    writeFileSync(
+      path.join(root, 'books', 'covtest', '02-for-mt', 'ch01', 'mX-segments.en.md'),
+      seg('item:L1-item-1')
+    );
+    try {
+      const { code } = runCli(['--book', 'covtest', '--root', root]);
+      expect(code).toBe(1); // absent 01-source is loud, not a silent clean pass
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
+  it('writes nothing under the target book tree (read-only, mtime unchanged)', () => {
+    const root = seedBook('covtest', {
+      'ch01/mDrop': {
+        cnxml: doc('<list id="L1"><item>a</item><item>b</item></list>'),
+        seg: seg('para:stem'),
+      },
+    });
+    const target = path.join(root, 'books', 'covtest');
+    const before = statSync(path.join(target, '01-source', 'ch01', 'mDrop.cnxml')).mtimeMs;
+    try {
+      runCli(['--book', 'covtest', '--root', root, '--json']);
+      const after = statSync(path.join(target, '01-source', 'ch01', 'mDrop.cnxml')).mtimeMs;
+      expect(after).toBe(before);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
   });
 });
