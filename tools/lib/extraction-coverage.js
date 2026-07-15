@@ -45,12 +45,43 @@ function directItems(list) {
 
 const snippet = (el) => (el.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 40);
 
+// Containers that do NOT route their nested <list> through processList: the list is
+// flattened into a single parent segment (table <entry>/<caption>/<footnote> via
+// extractInlineText->stripTags), so no `${list.id}-item-N` marker is ever emitted and the
+// content IS present. A list reached through one of these is not checkable by item-count and
+// must be skipped (adversarial review wf_72c60b9a: 32 id-bearing entry-nested lists across 5
+// biology/organic modules would otherwise false-flag on intake). A list inside <problem> is
+// NOT here — those genuinely drop (the BIO-EX3 bug this gate targets).
+const FLATTENING_CONTAINERS = new Set(['entry', 'table', 'caption', 'footnote']);
+
+/** True if `list`'s ancestor chain (up to <content>) passes through a flattening container. */
+function underFlatteningContainer(list) {
+  let n = list.parentNode;
+  while (n && n.nodeType === 1 && n.localName !== 'content') {
+    if (FLATTENING_CONTAINERS.has(n.localName)) return true;
+    n = n.parentNode;
+  }
+  return false;
+}
+
+/** An item's own visible text with nested <list> subtrees removed (mirrors the extractor's
+ *  `textContent = item.content minus nested lists` before the `text ? addSegment : null` gate). */
+function itemOwnText(item) {
+  const clone = item.cloneNode(true);
+  const nested = Array.from(clone.getElementsByTagName('list'));
+  for (const l of nested) if (l.parentNode) l.parentNode.removeChild(l);
+  return (clone.textContent || '').trim();
+}
+
 /**
  * List-item coverage. The extractor emits list item i as
- * `item.id || `${list.id}-item-${i+1}`` (cnxml-extract.js:1646/1697). Fewer present
- * than source items => a dropped/partial list (BIO-EX3). A list with any uncomputable
- * expected id (id-less item inside an id-less list) is SKIPPED to avoid false positives
- * (spec §12).
+ * `item.id || `${list.id}-item-${i+1}`` (cnxml-extract.js:1646/1697), but ONLY when the
+ * item has own text (sublist-only / empty items emit nothing — the `text ? … : null` gate;
+ * the loop index still advances, so numbering counts skipped items). Fewer present than
+ * EXPECTED items => a dropped/partial list (BIO-EX3). Skipped, to avoid false positives:
+ * lists under a flattening container (content present in a parent segment); items with no
+ * own text (never emitted); a list with any uncomputable expected id (id-less item in an
+ * id-less list). See spec §12.
  */
 export function checkLists(content, emittedIds) {
   const findings = [];
@@ -58,23 +89,25 @@ export function checkLists(content, emittedIds) {
   const lists = content.getElementsByTagName('list');
   for (let i = 0; i < lists.length; i++) {
     const list = lists[i];
+    if (underFlatteningContainer(list)) continue;
     const listId = list.getAttribute('id') || null;
     const items = directItems(list);
     if (items.length === 0) continue;
     const expected = [];
     let uncomputable = false;
     items.forEach((it, idx) => {
+      if (itemOwnText(it) === '') return; // extractor emits null; index (idx) still consumed
       const iid = it.getAttribute('id') || (listId ? `${listId}-item-${idx + 1}` : null);
       if (!iid) uncomputable = true;
       expected.push({ id: iid, el: it });
     });
-    if (uncomputable) continue;
+    if (uncomputable || expected.length === 0) continue;
     const missing = expected.filter((e) => !emittedIds.has(e.id));
     if (missing.length > 0) {
       findings.push({
         listId: listId || '(id-less-list)',
-        items: items.length,
-        present: items.length - missing.length,
+        items: expected.length,
+        present: expected.length - missing.length,
         missing: missing.map((e) => snippet(e.el)),
       });
     }

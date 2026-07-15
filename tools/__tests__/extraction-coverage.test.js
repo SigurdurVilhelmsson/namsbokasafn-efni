@@ -81,6 +81,71 @@ describe('checkLists', () => {
     const { content } = parseModuleDoc(doc('<list><item>a</item><item>b</item></list>'));
     expect(checkLists(content, emittedElementIds(seg()))).toHaveLength(0);
   });
+
+  // --- container & nesting edge cases (adversarial review, wf_72c60b9a) ---
+
+  it('does NOT flag a list nested in a table <entry> (flattened into the entry segment, no -item-N emitted)', () => {
+    const { content } = parseModuleDoc(
+      doc(
+        '<table id="T"><tgroup><tbody><row><entry>' +
+          '<list id="EL"><item>RNA</item><item>DNA</item></list>' +
+          '</entry></row></tbody></tgroup></table>'
+      )
+    );
+    // The extractor emits one entry segment (auto-N), never EL-item-*.
+    expect(checkLists(content, emittedElementIds(seg('entry:auto-1')))).toHaveLength(0);
+  });
+
+  it('does NOT flag an outer item whose only content is a nested list (extractor emits null for it)', () => {
+    const { content } = parseModuleDoc(
+      doc(
+        '<list id="L"><item>lead text</item>' +
+          '<item><list id="L2"><item>inner</item></list></item></list>'
+      )
+    );
+    // Extractor emits L-item-1 (lead text) + L2-item-1 (inner), NOT L-item-2 (text-less).
+    expect(
+      checkLists(content, emittedElementIds(seg('item:L-item-1', 'item:L2-item-1')))
+    ).toHaveLength(0);
+  });
+
+  it('preserves item numbering across a skipped text-less item (uses full index, not emitted index)', () => {
+    const { content } = parseModuleDoc(
+      doc(
+        '<list id="L"><item>one</item>' +
+          '<item><list id="L2"><item>x</item></list></item>' +
+          '<item>three</item></list>'
+      )
+    );
+    // three is the 3rd item -> L-item-3 (index counts the skipped item2). Present => no flag.
+    const emitted = emittedElementIds(seg('item:L-item-1', 'item:L-item-3', 'item:L2-item-1'));
+    expect(checkLists(content, emitted)).toHaveLength(0);
+  });
+
+  it('G2: isolates a dropped list from a clean sibling list (only the dropped one flags)', () => {
+    const { content } = parseModuleDoc(
+      doc(
+        '<list id="A"><item>a1</item><item>a2</item></list>' +
+          '<list id="B"><item>b1</item><item>b2</item></list>'
+      )
+    );
+    const f = checkLists(content, emittedElementIds(seg('item:A-item-1', 'item:A-item-2')));
+    expect(f).toHaveLength(1);
+    expect(f[0].listId).toBe('B');
+  });
+
+  it('orphan-immune: an item with an inner <para id> is covered by item:S-item-N, never the inner id', () => {
+    const { content } = parseModuleDoc(
+      doc(
+        '<list id="S"><item><para id="inner-1">write</para></item>' +
+          '<item><para id="inner-2">each</para></item></list>'
+      )
+    );
+    // inner-1/inner-2 are NOT emitted (the m68710 orphan shape); item:S-item-* ARE.
+    expect(
+      checkLists(content, emittedElementIds(seg('item:S-item-1', 'item:S-item-2')))
+    ).toHaveLength(0);
+  });
 });
 
 describe('checkDuplicateSegIds', () => {
