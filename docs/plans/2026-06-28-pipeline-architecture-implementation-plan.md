@@ -229,6 +229,19 @@ chunk limit (glossary is filtered per chunk to ≤3 KB, not ~36 KB). B2/B3 clear
 **Track B gate:** restoration complexity retired for API content; markers validated by type; one marker
 family. *Keep `repairSegTags` (hyphen-in-id persists) and `assertNoControlChars` (separate content bug).*
 
+> **⚠️ PRE-FREEZE COVERAGE CHECKPOINT (campaign 6b, shipped 2026-07-15).** After extracting a biology
+> chapter and BEFORE any MT/Pass-1 freeze (before a seg-id lands in `03-faithful-translation` or trips an
+> MT edit-lock), run:
+> ```
+> node tools/verify-extraction-coverage.js --book liffraedi-2e [--chapter N]
+> ```
+> Any flagged `<list>` = dropped `<item>`s = the **BIO-EX3 `processExercise` bug** (multiple-choice review
+> options never segmented; live across ~208/259 modules). The module needs the extractor fix + re-extract
+> **before** freeze (free while 0-faithful). It also flags duplicate seg-ids. Post-MT, also run
+> `node tools/scan-residue.js --book liffraedi-2e [--chapter N]` (EN residue in `02-mt-output`). The gate
+> detects list-item drops + dup seg-ids only; glossary/caption/standalone-para drops are documented
+> residuals (see `docs/superpowers/specs/2026-07-15-biology-extraction-coverage-gate-design.md` §12).
+
 ---
 
 ## TRACK C — Render → DOM migration (incremental, leaf-seam)
