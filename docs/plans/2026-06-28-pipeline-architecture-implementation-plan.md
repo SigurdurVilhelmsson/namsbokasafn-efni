@@ -595,15 +595,17 @@ in their item blocks — this is the consolidated scan list. Append, don't prune
   save/submit path so editors see residue warnings live. Reuses `tools/lib/residue-check.js` verbatim;
   its own PR (needs server tests + UX). *(Also noted in the A2 item.)*
 - **CI wiring for the residue gate** — decide gate-vs-advisory when Actions credits return. *(Also A2 item.)*
-- **`--allow-en-fallback` disables residue detection for the whole run, not per-module** —
-  `cnxml-inject.js` sets `checkResidue = args.lang !== 'en' && !args.allowEnFallback`, so a fallback run
-  also skips residue-checking modules that *do* have real translations. Ideal = a per-module EN-fallback
-  signal from `loadModuleInputs` so only genuinely-fallen-back modules are exempt.
-- **One missing translation file aborts the entire chapter inject (pre-existing)** — `loadModuleInputs`
-  throws on a missing translation (F20 refuse-untranslated) → outer `try/catch` in `main()` → `exit(1)`,
-  skipping all remaining modules; A2's after-loop `residue-report.<track>.json` is then never written for
-  a partially-translated chapter. Fix idea: per-module skip-and-continue + write the manifest in a
-  `finally`.
+- ✅ **RESOLVED (PR #285, 2026-07-15).** **`--allow-en-fallback` disables residue detection for the whole run, not per-module** —
+  `cnxml-inject.js` set `checkResidue = args.lang !== 'en' && !args.allowEnFallback`, so a fallback run
+  also skipped residue-checking modules that *do* have real translations. Fixed: `loadModuleInputs` now
+  returns a per-module `usedEnFallback`, and `checkResidue = args.lang !== 'en' && !usedEnFallback`, so only
+  genuinely-fallen-back modules are exempt. (`--allow-en-fallback` is also now a per-module allowlist.)
+- ✅ **RESOLVED (PR #285, 2026-07-15).** **One missing translation file aborts the entire chapter inject (pre-existing)** — `loadModuleInputs`
+  threw on a missing translation (F20 refuse-untranslated) → outer `try/catch` in `main()` → `exit(1)`,
+  skipping all remaining modules; A2's after-loop `residue-report.<track>.json` was then never written for
+  a partially-translated chapter. Fixed: the loop body is wrapped in a per-module try/catch (loud skip +
+  `exitCode=1` + `N/M module(s) FAILED` summary), so throws can't escape the loop and the after-loop
+  manifest write is always reached — no `finally` needed.
 - **`residue-report.<track>.json` tracking decision undecided** — prod `scripts/git-backup.sh` stages
   `books/`, so the new file auto-commits. Decide: track it (like `translation-errors.json` with
   `merge=ours`) or gitignore it.
@@ -1008,7 +1010,7 @@ Executed the hardened plan `docs/superpowers/plans/2026-07-07-stale-structure-re
 |---|---|---|---|
 | **#43** annotateInlineTerms gloss desync | `cnxml-inject.js:808` `termIndex++`, no id-match | `--annotate-en` attaches glosses by ordinal → wrong gloss if order/count differ (only that flag's path) | `[fix]` |
 | **#37** id-less exercises dropped | `cnxml-inject.js:2602` `if(!element.id) return null`; `buildGenericElement` calls `buildElement` w/o `ctx` (`:3051`) | `<exercise>` without id silently dropped; fallback loses figure-tracking ctx | `[fix]` |
-| **A2-a** `--allow-en-fallback` disables residue run-wide | `cnxml-inject.js:3429` `checkResidue = lang!=='en' && !allowEnFallback` (run-scope) | One fallback module silences residue detection for ALL modules in the run | `[fix]` per-module signal |
+| **A2-a** `--allow-en-fallback` disables residue run-wide | `cnxml-inject.js:3429` `checkResidue = lang!=='en' && !allowEnFallback` (run-scope) | One fallback module silences residue detection for ALL modules in the run | ✅ RESOLVED PR #285 (per-module `usedEnFallback`) |
 | **A2-b** missing translation aborts whole chapter | `:3338` try wraps loop, `:3214` throw → `:3525` `exit(1)`; residue-report write `:3505` never reached | A partially-translated chapter fails entirely + no residue manifest written | `[fix]` per-module skip-continue + `finally` write |
 | **B3** producer bracket-marker count check | `api-translate.js:263-266` `validateMarkers` counts `<!-- SEG` only, no `[[` per-type | Inline bracket-marker loss/truncation invisible at MT boundary | `[build]` Track B |
 | **B4** term/footnote still lossy `{{ }}` | `cnxml-extract.js:314`(`{{term}}`)/`:381`(`{{fn}}`); id restore is positional `cnxml-inject.js:1439/1455` | ~2.3% API loss on highest-volume inline elements (brackets ~0%); **dropped marker → silent per-segment id-cascade** (163 cascade-capable segments). B4 markers MUST anchor the id; **do B4 before the Pass-1 review push** (re-extract shifts segments). Decision: `docs/decisions/2026-07-06-re-mt-vs-editor-fixes-and-openstax-remerge.md` | `[build]` Track B |
