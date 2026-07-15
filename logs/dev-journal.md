@@ -67,3 +67,17 @@ eba3f098 Merge pull request #221 (clean-slate design spec + brief)
 **Workflow (carry forward):** per item → superpowers:brainstorming → writing-plans → executing-plans; one PR off main per item; robustness>expedience; log out-of-scope finds to docs/plans/2026-06-28-...register + memory; probe-first; `npm test` from repo root is the authoritative gate (no branch protection). Merge #222 first so the plan-of-record reflects this sequencing.
 
 ---
+
+## 2026-07-15 13:06 - Shipped item 6b pre-freeze extraction-coverage gate (PR #286); next is the processExercise fix
+
+**Branch:** feat/6b-extraction-coverage-gate (pushed, PR #286 open) — working tree clean
+**Modified:** (all committed; nothing outstanding)
+
+**Recent commits:**
+9ee648f9 docs(6b): verify container-skip on real m66534 + honest residual framing
+eda42a2b docs(6b): register note — adversarial review + 11 fixes, suite 2639
+0ddc9bd5 fix(6b): CLI batch isolation + json-flush + source guard + hermetic tests
+
+**Why:** The detection gate surfaced BIO-EX3 — processExercise drops multiple-choice options across ~208/259 biology modules (34 lists/9 extracted modules flagged) + 12 dup para seg-ids in frozen chem. Mechanism = structural list-item coverage (content-coverage rejected by go/no-go: legacy marker dialects). Adversarial review found+fixed 11 issues; container-skip verified on real m66534. NEXT SESSION: the processExercise *fix* PR (recover dropped options) — FIRST run the frozen-book `<list>`-in-`<problem>` safety sweep before touching the extractor (BIO-EX2: don't renumber frozen chem seg-ids). Resume dashboard = MEMORY.md ACTIVE RESUME + [[bio-review-option-drop]].
+
+---
