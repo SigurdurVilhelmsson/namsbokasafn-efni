@@ -202,7 +202,15 @@ BIO-EX3 recorded, go/no-go outcome). The `processExercise` fix is a **separate f
   corpus-safe, run a **structural** `<list>`-in-`<problem>` / `class="multiple-choice"` sweep across
   every FROZEN book (chemistry confirmed frozen; verify physics/organic/microbiology). A frozen hit
   means adding option-extraction renumbers frozen seg-ids (BIO-EX2 landmine).
-- **Classes structural coverage does NOT catch** (documented residual, not live today): standalone
-  id-bearing `<para>` drops, truncation within a present item, id-less `<table>` `<entry>` drops. These
-  need robust content-coverage (deferred — blocked on a multi-dialect normalizer). Logged so a future
-  drop here is not silently assumed impossible.
+- **Classes structural coverage does NOT catch** (documented residual — **not-yet-observed, NOT proven
+  absent**): standalone id-bearing `<para>` drops, truncation within a present item, id-less `<table>`
+  `<entry>` drops. The "no standalone-para drops in biology" claim rests on a few greps + biology-11
+  having 0 nested lists — that is *not-yet-observed*, not *confirmed safe*; treat accordingly at full
+  intake. These need robust content-coverage (deferred — blocked on a multi-dialect normalizer). Logged
+  so a future drop here is not silently assumed impossible.
+- **Container-skip verified on real data** (not only synthetic fixtures): the flattening-container skip
+  was confirmed by extracting `books/liffraedi-2e/01-source/ch21/m66534.cnxml` in-memory (`extractSegments`
+  → `analyzeModule`) — the entry-nested list `fs-idm54557568` is NOT flagged (content present in its
+  entry segment) while 6 genuine multiple-choice problem-option lists in the same module ARE flagged.
+  `caption`/`footnote` share `entry`'s `extractInlineText`→`stripTags` flattening path (code-confirmed,
+  same mechanism the reviewer verified for `entry`/`table`).
