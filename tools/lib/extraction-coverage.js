@@ -111,3 +111,13 @@ export function checkDuplicateSegIds(content, segText) {
   for (const [id, n] of rawCounts) if (n > 1) rawDup.push({ segId: id, count: n });
   return { sourceDup, rawDup };
 }
+
+/** Run all v1 checks on one module's source CNXML + segment file text. */
+export function analyzeModule(cnxmlText, segText) {
+  const { content } = parseModuleDoc(cnxmlText);
+  const listFindings = checkLists(content, emittedElementIds(segText));
+  const dupFindings = checkDuplicateSegIds(content, segText);
+  const hasFindings =
+    listFindings.length > 0 || dupFindings.sourceDup.length > 0 || dupFindings.rawDup.length > 0;
+  return { listFindings, dupFindings, hasFindings };
+}

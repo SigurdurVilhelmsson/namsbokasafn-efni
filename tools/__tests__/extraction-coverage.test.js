@@ -4,6 +4,7 @@ import {
   parseModuleDoc,
   checkLists,
   checkDuplicateSegIds,
+  analyzeModule,
 } from '../lib/extraction-coverage.js';
 
 const doc = (contentInner) =>
@@ -97,5 +98,20 @@ describe('checkDuplicateSegIds', () => {
     const r = checkDuplicateSegIds(content, '<!-- SEG:m:para:a -->\nx');
     expect(r.sourceDup).toHaveLength(0);
     expect(r.rawDup).toHaveLength(0);
+  });
+});
+
+describe('analyzeModule', () => {
+  it('aggregates list + dup findings and sets hasFindings', () => {
+    const cnxml = doc('<list id="L1"><item>a</item><item>b</item></list>');
+    const r = analyzeModule(cnxml, seg('para:other'));
+    expect(r.listFindings).toHaveLength(1);
+    expect(r.hasFindings).toBe(true);
+  });
+
+  it('hasFindings is false for a clean module', () => {
+    const cnxml = doc('<list id="L1"><item>a</item></list>');
+    const r = analyzeModule(cnxml, seg('item:L1-item-1'));
+    expect(r.hasFindings).toBe(false);
   });
 });
