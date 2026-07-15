@@ -112,9 +112,41 @@ function parseCliArgs(args) {
     { name: 'sourceDir', flags: ['--source-dir'], type: 'string', default: null },
     { name: 'track', flags: ['--track'], type: 'string', default: null },
     { name: 'allowIncomplete', flags: ['--allow-incomplete'], type: 'boolean', default: false },
-    { name: 'allowEnFallback', flags: ['--allow-en-fallback'], type: 'boolean', default: false },
+    {
+      name: 'allowEnFallback',
+      flags: ['--allow-en-fallback'],
+      type: 'string',
+      default: null,
+      parse: (val) => {
+        // parseArgs consumes the next token as the value; reject a flag-looking
+        // token (e.g. `--allow-en-fallback --verbose`) instead of swallowing it.
+        if (val.startsWith('-')) {
+          console.error(
+            'Error: --allow-en-fallback requires module id(s), e.g. --allow-en-fallback m68764'
+          );
+          process.exit(1);
+        }
+        return val;
+      },
+    },
     { name: 'noAnnotateEn', flags: ['--no-annotate-en'], type: 'boolean', default: false },
   ]);
+  // A2-a: --allow-en-fallback is a per-module allowlist, not a run-wide switch.
+  // A trailing bare `--allow-en-fallback` leaves the value at its default (parseArgs
+  // skips the assignment when there is no next token), so guard against it here.
+  if (args.includes('--allow-en-fallback') && !result.allowEnFallback) {
+    console.error(
+      'Error: --allow-en-fallback requires module id(s), e.g. --allow-en-fallback m68764'
+    );
+    process.exit(1);
+  }
+  result.enFallbackModules = new Set(
+    (result.allowEnFallback || '')
+      .split(',')
+      .map((s) => s.trim())
+      .filter(Boolean)
+  );
+  delete result.allowEnFallback;
   // Invert --no-annotate-en to annotateEn
   result.annotateEn = !result.noAnnotateEn;
   delete result.noAnnotateEn;
@@ -143,9 +175,10 @@ Options:
                        (auto-detected from --source-dir if not specified)
   --verbose            Show detailed progress
   --allow-incomplete   Write output even if segments are missing (for diagnostics)
-  --allow-en-fallback  Fall back to untranslated EN segments when a translation
-                       is missing (off by default — otherwise it errors, so
-                       untranslated content can't be published silently)
+  --allow-en-fallback <ids>  Comma-separated module id(s) permitted to fall back to
+                       untranslated EN when their translation is missing
+                       (e.g. --allow-en-fallback m68764,m68770). Any OTHER missing
+                       module is a loud per-module skip, never a silent EN publish.
   --no-annotate-en     Disable English term annotations (e. term) in output
   -h, --help           Show this help
 
@@ -3880,8 +3913,14 @@ function findChapterModules(chapter, moduleId = null) {
  * @param {string} moduleId - Module ID (e.g., m68724)
  * @param {string} lang - Language code (e.g., 'is')
  * @param {string} sourceDir - Directory containing segments, relative to BOOKS_DIR (e.g., '02-for-mt', '03-faithful-translation')
+ * @param {Set<string>} [enFallbackModules] - Module ids permitted to fall back to English
+ *   (02-for-mt) when their translation is missing from sourceDir (A2-a). Any other missing
+ *   module throws instead of silently publishing untranslated content.
+ * @returns {{structure: object, segments: Map, equations: object, originalCnxml: string,
+ *   enSegments: Map, inlineAttrs: object, restorePolicy: object, usedEnFallback: boolean}}
+ *   usedEnFallback is true iff this module's segments came from the EN fallback path.
  */
-function loadModuleInputs(chapter, moduleId, lang, sourceDir, allowEnFallback = false) {
+function loadModuleInputs(chapter, moduleId, lang, sourceDir, enFallbackModules = new Set()) {
   const chapterDir = formatChapter(chapter);
   const mtOutputChapterDir = path.join(BOOKS_DIR, '02-mt-output', chapterDir);
   const restorePolicy = resolveRestorePolicy({ mtOutputChapterDir, moduleId });
@@ -3897,14 +3936,16 @@ function loadModuleInputs(chapter, moduleId, lang, sourceDir, allowEnFallback = 
     chapterDir,
     `${moduleId}-segments.${lang}.md`
   );
+  let usedEnFallback = false;
   let segments;
   if (!fs.existsSync(segmentsPath)) {
     // The translation is missing. Falling back to English would publish
     // untranslated content, so refuse unless explicitly opted in (F20).
-    if (!allowEnFallback) {
+    if (!enFallbackModules.has(moduleId)) {
       throw new Error(
         `Translation not found for ${moduleId} in ${sourceDir} (${segmentsPath}). ` +
-          'Refusing to publish untranslated content. Pass --allow-en-fallback to inject English instead.'
+          `Refusing to publish untranslated content. ` +
+          `Pass --allow-en-fallback ${moduleId} to inject English for this module.`
       );
     }
     // Fall back to English segments in 02-for-mt if translation not available
@@ -3917,6 +3958,7 @@ function loadModuleInputs(chapter, moduleId, lang, sourceDir, allowEnFallback = 
     );
     const content = fs.readFileSync(enPath, 'utf-8');
     segments = parseSegments(content);
+    usedEnFallback = true;
   } else {
     const content = fs.readFileSync(segmentsPath, 'utf-8');
     segments = parseSegments(content);
@@ -3979,7 +4021,16 @@ function loadModuleInputs(chapter, moduleId, lang, sourceDir, allowEnFallback = 
   }
   const originalCnxml = substituteMathLabels(rawOriginalCnxml, resolveMathLabel);
 
-  return { structure, segments, equations, originalCnxml, enSegments, inlineAttrs, restorePolicy };
+  return {
+    structure,
+    segments,
+    equations,
+    originalCnxml,
+    enSegments,
+    inlineAttrs,
+    restorePolicy,
+    usedEnFallback,
+  };
 }
 
 /**
@@ -4089,185 +4140,203 @@ async function main() {
 
   try {
     const modules = findChapterModules(args.chapter, args.module);
+    const failedModules = [];
 
     for (const moduleId of modules) {
-      if (args.verbose) {
-        console.error(`Processing: ${moduleId} (source: ${sourceDir}, track: ${track})`);
-      }
+      try {
+        if (args.verbose) {
+          console.error(`Processing: ${moduleId} (source: ${sourceDir}, track: ${track})`);
+        }
 
-      const {
-        structure,
-        segments,
-        equations,
-        originalCnxml,
-        enSegments,
-        inlineAttrs,
-        restorePolicy,
-      } = loadModuleInputs(args.chapter, moduleId, args.lang, sourceDir, args.allowEnFallback);
-
-      // Restore/strip term markers (needed for both pipelines):
-      // - New {{term}} format: strips any __term__ glossary artifacts from IS
-      // - Legacy __term__ format: restores **bold** → __term__ from web UI MT
-      const { restoredCount, strippedCount } = restoreTermMarkers(segments, enSegments);
-      if (args.verbose && restoredCount > 0) {
-        console.error(`  Restored ${restoredCount} term marker(s) from EN source`);
-      }
-      if (strippedCount > 0) {
-        console.error(`  Note: ${strippedCount} API-added term marker(s) stripped`);
-      }
-
-      // B2: web-UI marker restoration is gated on recorded producer provenance,
-      // not a content sniff. 'mutate' (docx) rewrites segments as before; 'warn'
-      // (api-translate / human-authored) detects-and-reports without mutating —
-      // which doubles as a mis-stamped-backfill detector.
-      if (restorePolicy.policy === 'mutate') {
-        const { supStripped, subStripped, mediaRestored, brRestored } = runWebUiRestores(
+        const {
+          structure,
           segments,
-          enSegments
-        );
-        if (supStripped > 0 || subStripped > 0) {
-          console.error(
-            `  Note: stripped ${supStripped} excess sup + ${subStripped} excess sub marker(s)`
-          );
-        }
-        if (mediaRestored > 0) {
-          console.error(`  Restored ${mediaRestored} [[MEDIA:N]] placeholder(s) from EN source`);
-        }
-        if (args.verbose && brRestored > 0) {
-          console.error(`  Restored ${brRestored} newline placeholder(s) from EN source`);
-        }
-      } else {
-        // warn-only: run on a throwaway clone so the real segments are never mutated.
-        const { supStripped, subStripped, mediaRestored, brRestored } = runWebUiRestores(
-          new Map(segments),
-          enSegments
-        );
-        if (supStripped || subStripped || mediaRestored || brRestored) {
-          console.error(
-            `  Note [warn-only, provenance=${restorePolicy.tool || 'human-authored'}]: ` +
-              `would have stripped ${supStripped} sup/${subStripped} sub and restored ` +
-              `${mediaRestored} media/${brRestored} BR marker(s) — not mutating`
-          );
-        }
-      }
-
-      // Restore [[MATH:N]] placeholders that the API resolved to plain text (both pipelines)
-      const { restoredCount: mathRestoredCount } = restoreMathMarkers(segments, enSegments);
-      if (mathRestoredCount > 0) {
-        console.error(`  Restored ${mathRestoredCount} [[MATH:N]] placeholder(s) from EN source`);
-      }
-
-      // Annotate inline terms with English originals: __IS (e. en)__ or {{term}}IS (e. en){{/term}}
-      if (args.annotateEn) {
-        const { annotatedCount } = annotateInlineTerms(segments, enSegments, equations);
-        if (args.verbose && annotatedCount > 0) {
-          console.error(`  Annotated ${annotatedCount} inline term(s) with EN originals`);
-        }
-      }
-
-      const result = buildCnxml(
-        structure,
-        segments,
-        equations,
-        originalCnxml,
-        {
-          verbose: args.verbose,
+          equations,
+          originalCnxml,
           enSegments,
-          annotateEn: args.annotateEn,
-          imageMapping,
-          // A2: residue detection only makes sense when injecting a translation.
-          // Skip when deliberately injecting the EN source as content (--lang en
-          // round-trip) or under the explicit EN-fallback escape hatch.
-          checkResidue: args.lang !== 'en' && !args.allowEnFallback,
-          isAllowlisted,
-        },
-        inlineAttrs
-      );
+          inlineAttrs,
+          restorePolicy,
+          usedEnFallback,
+        } = loadModuleInputs(args.chapter, moduleId, args.lang, sourceDir, args.enFallbackModules);
 
-      // New-route image localization: swap any <image> (figure or not) whose
-      // basename has a translated SVG variant. No-op when the map is empty.
-      result.cnxml = applyImageBasenameSwaps(result.cnxml, imageBasenameMap);
+        // Restore/strip term markers (needed for both pipelines):
+        // - New {{term}} format: strips any __term__ glossary artifacts from IS
+        // - Legacy __term__ format: restores **bold** → __term__ from web UI MT
+        const { restoredCount, strippedCount } = restoreTermMarkers(segments, enSegments);
+        if (args.verbose && restoredCount > 0) {
+          console.error(`  Restored ${restoredCount} term marker(s) from EN source`);
+        }
+        if (strippedCount > 0) {
+          console.error(`  Note: ${strippedCount} API-added term marker(s) stripped`);
+        }
 
-      // A2: record/clear this module's residue BEFORE the skip check below, so
-      // a residue-blocked module is still recorded in the manifest, and surface
-      // it on the console.
-      residueReport = upsertResidueModule(residueReport, moduleId, {
-        exact: result.report.residues,
-        warnings: result.report.residueWarnings,
-        tolerated: (result.report.tolerated || []).map((segmentId) => ({
-          segmentId,
-          reason: classifyResidue(moduleId, segmentId, residueAllowlist).reason,
-        })),
-      });
-      if (result.report.residues.length > 0) {
-        console.error(
-          `  WARNING: ${result.report.residues.length} untranslated-EN residue segment(s):`
+        // B2: web-UI marker restoration is gated on recorded producer provenance,
+        // not a content sniff. 'mutate' (docx) rewrites segments as before; 'warn'
+        // (api-translate / human-authored) detects-and-reports without mutating —
+        // which doubles as a mis-stamped-backfill detector.
+        if (restorePolicy.policy === 'mutate') {
+          const { supStripped, subStripped, mediaRestored, brRestored } = runWebUiRestores(
+            segments,
+            enSegments
+          );
+          if (supStripped > 0 || subStripped > 0) {
+            console.error(
+              `  Note: stripped ${supStripped} excess sup + ${subStripped} excess sub marker(s)`
+            );
+          }
+          if (mediaRestored > 0) {
+            console.error(`  Restored ${mediaRestored} [[MEDIA:N]] placeholder(s) from EN source`);
+          }
+          if (args.verbose && brRestored > 0) {
+            console.error(`  Restored ${brRestored} newline placeholder(s) from EN source`);
+          }
+        } else {
+          // warn-only: run on a throwaway clone so the real segments are never mutated.
+          const { supStripped, subStripped, mediaRestored, brRestored } = runWebUiRestores(
+            new Map(segments),
+            enSegments
+          );
+          if (supStripped || subStripped || mediaRestored || brRestored) {
+            console.error(
+              `  Note [warn-only, provenance=${restorePolicy.tool || 'human-authored'}]: ` +
+                `would have stripped ${supStripped} sup/${subStripped} sub and restored ` +
+                `${mediaRestored} media/${brRestored} BR marker(s) — not mutating`
+            );
+          }
+        }
+
+        // Restore [[MATH:N]] placeholders that the API resolved to plain text (both pipelines)
+        const { restoredCount: mathRestoredCount } = restoreMathMarkers(segments, enSegments);
+        if (mathRestoredCount > 0) {
+          console.error(`  Restored ${mathRestoredCount} [[MATH:N]] placeholder(s) from EN source`);
+        }
+
+        // Annotate inline terms with English originals: __IS (e. en)__ or {{term}}IS (e. en){{/term}}
+        if (args.annotateEn) {
+          const { annotatedCount } = annotateInlineTerms(segments, enSegments, equations);
+          if (args.verbose && annotatedCount > 0) {
+            console.error(`  Annotated ${annotatedCount} inline term(s) with EN originals`);
+          }
+        }
+
+        const result = buildCnxml(
+          structure,
+          segments,
+          equations,
+          originalCnxml,
+          {
+            verbose: args.verbose,
+            enSegments,
+            annotateEn: args.annotateEn,
+            imageMapping,
+            // A2: residue detection only makes sense when injecting a translation.
+            // Skip when deliberately injecting the EN source as content (--lang en
+            // round-trip) or under the explicit EN-fallback escape hatch.
+            checkResidue: args.lang !== 'en' && !usedEnFallback,
+            isAllowlisted,
+          },
+          inlineAttrs
         );
-        for (const id of result.report.residues.slice(0, 10)) {
-          console.error(`    - ${id}`);
-        }
-        if (result.report.residues.length > 10) {
-          console.error(`    ... and ${result.report.residues.length - 10} more`);
-        }
-      }
-      if (result.report.residueWarnings.length > 0) {
-        console.error(
-          `  NOTE: ${result.report.residueWarnings.length} "mostly English" segment(s) (warn-only)`
-        );
-      }
 
-      if (result.report.attrMismatches && result.report.attrMismatches.length > 0) {
-        console.error(
-          `  WARNING: ${result.report.attrMismatches.length} inline-attr count mismatch(es) — ` +
-            `term/footnote ids NOT attached for those segments (see warnings above)`
-        );
-      }
+        // New-route image localization: swap any <image> (figure or not) whose
+        // basename has a translated SVG variant. No-op when the map is empty.
+        result.cnxml = applyImageBasenameSwaps(result.cnxml, imageBasenameMap);
 
-      if (!result.report.complete && !args.allowIncomplete) {
-        console.error(`${moduleId}: SKIPPED — incomplete injection`);
-        if (result.report.segmentsMissing.length > 0) {
-          console.error(`  Missing segments: ${result.report.segmentsMissing.length}`);
-        }
-        if (result.report.unresolvedMathPlaceholders.length > 0) {
-          console.error(`  Unresolved math: ${result.report.unresolvedMathPlaceholders.length}`);
-        }
+        // A2: record/clear this module's residue BEFORE the skip check below, so
+        // a residue-blocked module is still recorded in the manifest, and surface
+        // it on the console.
+        residueReport = upsertResidueModule(residueReport, moduleId, {
+          exact: result.report.residues,
+          warnings: result.report.residueWarnings,
+          tolerated: (result.report.tolerated || []).map((segmentId) => ({
+            segmentId,
+            reason: classifyResidue(moduleId, segmentId, residueAllowlist).reason,
+          })),
+        });
         if (result.report.residues.length > 0) {
-          console.error(`  Untranslated-EN residue: ${result.report.residues.length}`);
-        }
-        if (result.report.tableCellGaps.length > 0) {
           console.error(
-            `  Table cell gaps (RC4/B4-D5, re-extract needed): ${result.report.tableCellGaps.length}`
+            `  WARNING: ${result.report.residues.length} untranslated-EN residue segment(s):`
+          );
+          for (const id of result.report.residues.slice(0, 10)) {
+            console.error(`    - ${id}`);
+          }
+          if (result.report.residues.length > 10) {
+            console.error(`    ... and ${result.report.residues.length - 10} more`);
+          }
+        }
+        if (result.report.residueWarnings.length > 0) {
+          console.error(
+            `  NOTE: ${result.report.residueWarnings.length} "mostly English" segment(s) (warn-only)`
           );
         }
-        console.error('  Use --allow-incomplete to write anyway');
+
+        if (result.report.attrMismatches && result.report.attrMismatches.length > 0) {
+          console.error(
+            `  WARNING: ${result.report.attrMismatches.length} inline-attr count mismatch(es) — ` +
+              `term/footnote ids NOT attached for those segments (see warnings above)`
+          );
+        }
+
+        if (!result.report.complete && !args.allowIncomplete) {
+          console.error(`${moduleId}: SKIPPED — incomplete injection`);
+          if (result.report.segmentsMissing.length > 0) {
+            console.error(`  Missing segments: ${result.report.segmentsMissing.length}`);
+          }
+          if (result.report.unresolvedMathPlaceholders.length > 0) {
+            console.error(`  Unresolved math: ${result.report.unresolvedMathPlaceholders.length}`);
+          }
+          if (result.report.residues.length > 0) {
+            console.error(`  Untranslated-EN residue: ${result.report.residues.length}`);
+          }
+          if (result.report.tableCellGaps.length > 0) {
+            console.error(
+              `  Table cell gaps (RC4/B4-D5, re-extract needed): ${result.report.tableCellGaps.length}`
+            );
+          }
+          console.error('  Use --allow-incomplete to write anyway');
+          process.exitCode = 1;
+          continue;
+        }
+
+        // Round-trip validation: compare source vs translated tag counts
+        const fidelityDiffs = compareTagCounts(originalCnxml, result.cnxml);
+        if (fidelityDiffs.length > 0 && args.verbose) {
+          const totalDiff = fidelityDiffs.reduce((s, d) => s + Math.abs(d.diff), 0);
+          console.error(
+            `  Fidelity: ${fidelityDiffs.length} tag discrepancy(ies) (${totalDiff} total)`
+          );
+          for (const d of fidelityDiffs) {
+            console.error(
+              `    ${d.tag}: ${d.source} → ${d.translated} (${d.diff > 0 ? '+' : ''}${d.diff})`
+            );
+          }
+        }
+
+        const outputPath = writeOutput(args.chapter, moduleId, result.cnxml, track);
+
+        const status = result.report.complete ? 'COMPLETE' : 'INCOMPLETE';
+        const fidelityStatus = fidelityDiffs.length === 0 ? ' [PERFECT fidelity]' : '';
+        console.log(`${moduleId}: Translated CNXML written [${status}]${fidelityStatus}`);
+        console.log(`  → ${outputPath}`);
+        if (!result.report.complete) {
+          console.log(`  Missing segments: ${result.report.segmentsMissing.length}`);
+          console.log(`  Unresolved math: ${result.report.unresolvedMathPlaceholders.length}`);
+        }
+      } catch (moduleError) {
+        // A2-b: isolate per-module failures so one bad module can't abort the whole
+        // chapter. Loud + non-zero exit keeps this fail-loud, not silent-swallow.
+        console.error(`${moduleId}: FAILED — ${moduleError.message}`);
+        if (args.verbose) console.error(moduleError.stack);
+        failedModules.push(moduleId);
         process.exitCode = 1;
         continue;
       }
+    }
 
-      // Round-trip validation: compare source vs translated tag counts
-      const fidelityDiffs = compareTagCounts(originalCnxml, result.cnxml);
-      if (fidelityDiffs.length > 0 && args.verbose) {
-        const totalDiff = fidelityDiffs.reduce((s, d) => s + Math.abs(d.diff), 0);
-        console.error(
-          `  Fidelity: ${fidelityDiffs.length} tag discrepancy(ies) (${totalDiff} total)`
-        );
-        for (const d of fidelityDiffs) {
-          console.error(
-            `    ${d.tag}: ${d.source} → ${d.translated} (${d.diff > 0 ? '+' : ''}${d.diff})`
-          );
-        }
-      }
-
-      const outputPath = writeOutput(args.chapter, moduleId, result.cnxml, track);
-
-      const status = result.report.complete ? 'COMPLETE' : 'INCOMPLETE';
-      const fidelityStatus = fidelityDiffs.length === 0 ? ' [PERFECT fidelity]' : '';
-      console.log(`${moduleId}: Translated CNXML written [${status}]${fidelityStatus}`);
-      console.log(`  → ${outputPath}`);
-      if (!result.report.complete) {
-        console.log(`  Missing segments: ${result.report.segmentsMissing.length}`);
-        console.log(`  Unresolved math: ${result.report.unresolvedMathPlaceholders.length}`);
-      }
+    if (failedModules.length > 0) {
+      console.error(
+        `\n${failedModules.length}/${modules.length} module(s) FAILED: ${failedModules.join(', ')}`
+      );
     }
 
     // A2: persist the per-book, track-qualified residue manifest.
@@ -4307,6 +4376,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
 }
 
 export {
+  parseCliArgs,
   restoreTermMarkers,
   restoreGlossaryTermMarkup,
   restoreSupersubMarkers,
