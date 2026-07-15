@@ -52,10 +52,38 @@ seg-ids. Detection only. Its first run inventories the full drop set across all 
 
 ## 3. Assertions
 
-### (i) Content-coverage
-For each **prose leaf** in `01-source`, its normalized own-text must appear as a contiguous substring
-of the module's concatenated normalized segment text. A miss = a dropped/truncated leaf → flag
-`{module, chapter, tag, sourceId | "id-less", snippet}`.
+### (i) Structural coverage  ← mechanism decided by the §7 go/no-go spike (2026-07-15)
+
+**Content-coverage (contiguous-substring of normalized prose) was REJECTED by the go/no-go spike**
+(§7): biology's pre-B4 segments carry legacy marker dialects (`__term__`, `*emphasis*`, `~sub~`,
+`^sup^`) that neither `normalizeVisibleText` nor `normalizeForComparison` strips, so substring matching
+false-positives on *present* paragraphs (verified: m66440 "familiar with carbohydrates" present in
+segments yet flagged; m66438 `fs-id1724224` present as `__biological macromolecules__` yet flagged).
+Hardening the normalizer to a robust multi-dialect reducer is scope-creep past S and still fragile.
+
+**Adopted mechanism — expected-seg-id coverage over the extractor's deterministic id-linked emit
+schemes** (normalization-free, orphan-immune). For each source container-child that `cnxml-extract.js`
+emits under a deterministic id, assert that expected seg-id is present among the `02-for-mt` markers:
+
+- **List items — v1 scope, the verified BIO-EX3 bug:** for each `<list>` under `<content>` with K direct
+  `<item>` children, the expected seg-id of item *i* is `item.id || `${list.id}-item-${i+1}`` (verbatim
+  from `cnxml-extract.js:1646/1697`). Fewer than K present → flag `{module, listId, present/K, missing
+  item text snippets}`. (Spike: m66438 3/3 option lists flag 0/4; m68710 stepwise list passes 6/6.)
+- **Glossary term/def & figure captions — DEFERRED fast-follow (not v1):** the identical id-linked
+  pattern (`${term.id}-term`/`-def` at `cnxml-extract.js:568/573`; `${figure.id}-caption` at `:1099`).
+  Left out of v1 because (a) the verified live bug is lists only, (b) the glossary term-id source needs
+  confirming, and (c) YAGNI. Add when calibration or a future intake surfaces a live drop in these
+  classes. The v1 corpus run spot-checks them manually.
+
+This is **orphan-immune** (counts a list's items against its own id-linked scheme; never checks an
+individual inner-para id, so the m68710 `<item><para id>` orphan that sank plain id-coverage does not
+participate) and **dialect-immune** (no prose text is compared — only seg-id presence).
+
+**Deliberately NOT detected (documented residual, runbook + register):** standalone id-bearing `<para>`
+drops (none found live — the spike's para "flags" were all legacy-marker false positives), truncation
+*within* a present item, and id-less `<table>` `<entry>` drops (entries get `auto-N` ids not linked to
+their table, so they are not count-attributable — unlike list items). These need robust content-coverage
+(deferred) and are logged so a future drop in these classes is not silently assumed impossible.
 
 ### (ii) No duplicate seg-ids
 Flag any source `id` that defines >1 element within `<content>` (source-based, catches the
@@ -63,9 +91,12 @@ different-emitted-type collision the seg-id-based check misses), **and** any ful
 >1× in the raw markers (the inject-side `parseSegmentsMap` dedupes `'first'`, so a raw dup is a latent
 inject drop). One-line pointer to campaign item #15; no policy work here.
 
-## 4. The segmentable set S (load-bearing)
+## 4. The segmentable set S (reference — was load-bearing for the rejected content-coverage mechanism)
 
-Derived from every `addSegment(type, …, elementId)` call site in `cnxml-extract.js` (read-only audit):
+> **Note (2026-07-15):** With structural coverage adopted (§3(i)), the gate no longer collects "all S
+> leaves" — it keys off the three id-linked emit schemes (list items / glossary / captions). This table
+> stays as the authoritative record of what the extractor segments (derived from every
+> `addSegment(type, …, elementId)` call site) and grounds the id-linked schemes in §3(i).
 
 | source tag | segment type(s) | scope |
 |---|---|---|
@@ -86,104 +117,92 @@ unreachable. Use S, **not** `cnxml-dom.js` `BLOCK_TAGS` (which omits item/title/
 `<content>`; id-less single top-level captures, low drop risk; including them risks metadata false
 positives). A dropped module title/abstract is not silently plausible the way an id-less option is.
 
-## 5. Own-text of a leaf
+## 5–6. Own-text & normalization (SUPERSEDED — content-coverage rejected)
 
-`ownText(E)` = the reader-visible text of E that is **not** accounted for by a descendant segment:
+> **Superseded 2026-07-15 by the §7 go/no-go.** These sections specified the own-text computation and
+> the `normalizeVisibleText`/`normalizeForComparison` substring match for the content-coverage
+> mechanism. The spike (§7) proved that mechanism is defeated by biology's legacy marker dialects, so it
+> is not implemented. Retained only as the rationale trail. The adopted structural mechanism (§3(i))
+> uses **no prose normalization** — it compares seg-id presence only.
 
-1. Work on a clone of E.
-2. Remove `<m:math>`/`<math>` and `<media>` subtrees entirely — they carry no prose leaf (`<media>`'s
-   only text is its `alt` **attribute**, not `textContent`), so removing them makes a math/media-only
-   element deterministically non-prose without relying on `FORMULA_RE` matching a placeholder token.
-   **Do NOT blanket-strip `<table>`** — its prose lives in `<entry>`/`<caption>`/`<title>` children,
-   which are in S and are removed by step 3 (from a container's own-text) *and* collected as their own
-   candidates. A blanket table-strip would make `<entry>` cells uncheckable, contradicting §4.
-3. Remove every descendant **subtree whose tag is in S** (by tag — id-less children included), because
-   that descendant is itself a coverage candidate. Subtracting by tag (not "id-bearing descendants
-   only") empties container leaves (`problem`/`solution`/list-bearing paras, tables) regardless of child
-   id-presence — hardening against the ~246 unextracted modules.
-4. `textContent` of the remainder = own-text.
+## 7. Go/no-go outcome (2026-07-15 scratchpad spike over the real corpus)
 
-A leaf is a **coverage candidate** iff `countContentWords(normalizeForComparison(ownText)) >= 1`
-(floor = **1**, not the residue default 3 — a 1–2 word option like "combustion" is a real drop) **and**
-`isLanguageNeutral(ownTextRaw) === false` (formula/unit-only cells are not prose). Contract: pass RAW
-case-preserving text to `isLanguageNeutral` (FORMULA_RE / case-sensitive pH depend on it) and
-`normalizeForComparison()` output to `countContentWords` — both are required, neither alone is correct.
+The spec mandated proving the content-coverage normalization round-trip before building on it. The
+scratchpad spike ran it against the live corpus and **rejected content-coverage; adopted structural
+coverage** (§3(i)). Evidence:
 
-## 6. Normalization (the substring match)
+- **Content-coverage substring match, correct normalizer (`normalizeVisibleText` + lowercase):**
+  m68710 GREEN improved 10→2 flags but still false-positive; m66438/m66440 flagged *present* paragraphs.
+  Root cause: biology's pre-B4 segments use legacy `__term__`/`*i*` markers that `normalizeVisibleText`
+  does not strip — `As you've learned, __biological macromolecules__ are large` ≠ source
+  `As you've learned, biological macromolecules are large`. Confirmed present via grep (m66440
+  "familiar with carbohydrates" = 1, "stoichiometric formula" = 1) → **false positives**, not drops.
+  A robust multi-dialect normalizer is past S and still brittle.
+- **Structural coverage (child-count + id-linked presence), zero normalization:** RED — m66438 3/3
+  option lists flag (`0/4` emitted), m66440 5/5, m66373 4/4, m66374 **4/5** (the 1 content list passes),
+  m66376 6/6. GREEN — m68710 4 lists **0 flags** (stepwise list 6/6; orphan invisible), m66437 0/0.
+  **Zero false positives, deterministic.**
 
-Both sides reduce via `stripMarkers` + `normalizeForComparison` (from `tools/lib/residue-check.js`):
-markers stripped to inner text, digits/symbols → space, Unicode-letter lowercased, whitespace
-collapsed. Segment side additionally: concatenate all of a module's segments (so a source leaf split
-across segments still matches). Match = source leaf's normalized string is a substring of the
-concatenated normalized segment string. **Tradeoff (accepted):** module-level concatenation can, in
-principle, report a leaf "present" if its token run happens to span two unrelated segments' boundary —
-a false negative (missed drop). This is preferred over per-segment matching, which false-*positives*
-whenever the extractor legitimately splits one source leaf across segments; and a whole-leaf drop (the
-target class, e.g. `none of the above`) is absent from the concatenation entirely, so the boundary case
-does not affect detection of the bug this gate exists to catch.
-
-## 7. Mechanism go/no-go & fallback
-
-**Primary = content-coverage (§3(i)).** General: catches the option-list drop, id-less para drops,
-truncation, table-cell drops, glossary-def drops.
-
-**Go/no-go spike (TDD FIRST, before the tool):** prove the normalization round-trip on 2–3 real pairs
-— e.g. source `<para><emphasis effect="italics">Write the two half-reactions</emphasis>.</para>`
-(→ own-text "Write the two half-reactions") and its segment `[[i:Write the two half-reactions]].`
-reduce to the **identical** normalized string; and that m66438's `none of the above` reduces to a
-string absent from the m66438 segment concatenation. If clean → content-coverage ships within S.
-
-**Fallback (only if the round-trip genuinely explodes across marker dialects) = child-count:** for each
-`<list id=L>` under `<content>`, the source item count must equal the number of `item:L-item-*` (and
-`item:<child-id>`) segments; 0 → drop. Dead simple, no normalization, catches the exact review-option
-class. Documented as fallback; **not** built alongside the primary.
+**Decision:** implement structural coverage (§3(i)). No normalization, no own-text, no marker handling.
+The spike code is throwaway; the plan re-derives it as TDD from the fixtures in §9.
 
 ## 8. Tool shape
 
 - **CLI** `tools/verify-extraction-coverage.js` — cloned from `tools/scan-residue.js`:
   `--book <slug> [--chapter N|appendices] [--json]`, per-module report, summary line, `exit 1` on any
   flag. Read-only; resolves paths via `import.meta.url` (never `process.cwd()`). Not wired into extract.
-- **Pure lib** `tools/lib/extraction-coverage.js` — no I/O; exports the collection + own-text + match
-  functions so they are unit-testable. Consumes `cnxml-dom.js` (parse) + `residue-check.js` (normalize).
+- **Pure lib** `tools/lib/extraction-coverage.js` — no I/O; takes source CNXML text + segment file text
+  as strings, returns `{ listFindings, dupFindings }`. Consumes `@xmldom/xmldom` `DOMParser` (find
+  `<content>`, walk `<list>`/`<item>`) + `seg-markers.cjs` `parseSegmentsMap` (emitted seg-ids).
+  **No `residue-check`, no prose normalization** — seg-id presence only. Expected list-item seg-id =
+  `item.id || `${list.id}-item-${i+1}`` (mirrors `cnxml-extract.js:1646/1697`).
 - **Post-MT half = one runbook line** pointing the checkpoint at the existing `tools/scan-residue.js`
   (EN-residue over `02-mt-output`). No new code.
 
 ## 9. Acceptance criteria (INVERTED — calibration is "flags known drops, passes known non-drops")
 
-- **RED — must FLAG:**
-  - **R1 (real, in-corpus):** m66438's dropped review options (`none of the above`, etc.) — content
-    absent from segments.
-  - **R2 (synthetic unit):** a fixture module with one prose `<para>`/`<item>` segment deleted → flagged.
+- **RED — must FLAG (fixtures built from real corpus text):**
+  - **R1 (real, in-corpus):** m66438's dropped option lists — `<list id=fs-id1238542>` etc. with 4
+    `<item>`s, 0 `item:fs-id1238542-item-*` segments emitted → flag.
+  - **R2 (synthetic unit):** a fixture list with K items where one expected `item:*` seg-id is removed
+    from the segment file → flag (`present = K-1`).
 - **GREEN — must NOT flag:**
-  - **G1 (id-orphan, content present):** m68710 `fs-idp218612096` — "Write the two half-reactions" is
-    present 3× under sibling ids; content-coverage reports it present (id-coverage would have false-flagged).
-  - **G2 (inline term):** a body `<term id>` whose text is a substring of its parent para segment.
-  - **G3 (language-neutral):** a formula/unit-only cell (e.g. `(a) CrP; (b) HgS`) — not prose, not flagged.
+  - **G1 (id-orphan, content present):** m68710's stepwise list `<list id=fs-idp34895184>` with 6 items
+    → 6 `item:fs-idp34895184-item-*` segments present → **not flagged** (the orphaned inner-`<para id>`
+    never participates — this is what sank plain id-coverage and passes here).
+  - **G2 (present content list):** m66374's one legitimate content list (4/5 lists flag; that 1 passes)
+    → items emitted → not flagged.
+  - **G3 (nested/complex list):** a list whose items carry their own `id`s (not the `-item-N` scheme) →
+    matched by `item.id` → not flagged.
 - **Corpus cross-check (informational, read-only):** run over extracted biology-11 + a chem sample.
   **Expect** biology to flag the review-option drops (that is the gate working, not a failure); **expect**
   m68710-class chem modules to pass. Do **not** treat "green on biology-13" as success. Any *chem* flag
-  that is not a known id-orphan gets a human glance (potential real drop); do not edit frozen content.
+  gets a human glance (potential real drop); do not edit frozen content.
 
 ## 10. Testing plan (Vitest, TDD)
 
-Unit (pure lib): the §7 normalization-round-trip spike (written first); R1, R2, G1, G2, G3; own-text
-subtraction (math/media/table stripped, in-S descendants subtracted); dup-seg-id (source-based +
-raw-marker). CLI smoke test mirroring `scan-residue` tests (exit code, `--json` shape). `npm test` from
-the repo root is the authoritative gate.
+Unit (pure lib), each fixture a minimal CNXML string + segment-file string: R1 (list 4 items / 0
+emitted → flag), R2 (K items / K-1 emitted → flag), G1 (list 6/6 → pass), G2 (content list all emitted
+→ pass), G3 (items with own ids → pass), id-less-list skipped (no false flag); dup-seg-id (source id
+defines 2 elements → flag; raw-marker dup → flag). CLI smoke test mirroring `scan-residue` tests (exit
+code 0/1, `--json` shape). `npm test` from the repo root is the authoritative gate.
 
-## 11. Deliverable (one PR, sizing S→M)
+## 11. Deliverable (one PR, sizing S)
 
 New CLI + new lib + tests + a runbook line in the biology-intake runbook + register update (6b done,
-BIO-EX3 recorded, exclusion rules). The `processExercise` fix is a **separate follow-up PR**.
+BIO-EX3 recorded, go/no-go outcome). The `processExercise` fix is a **separate follow-up PR**.
 
 ## 12. Risks & open items
 
-- **Normalization round-trip** is the one sub-problem that can balloon (marker-dialect zoo across 259
-  heterogeneous modules). Mitigation: TDD spike as the §7 go/no-go before building the tool.
+- **id-less lists** (`<list>` with no `id` attribute): the expected item seg-id `${list.id}-item-N`
+  becomes `undefined-item-N` — the check can't compute a real expected id, so such a list must be
+  **skipped** (not flagged) to avoid a false positive. Calibrate against biology (the verified-bug lists
+  all carry ids); log any id-less list encountered.
 - **`processExercise`-fix safety (for the follow-up, not this PR):** before telling the lead the fix is
   corpus-safe, run a **structural** `<list>`-in-`<problem>` / `class="multiple-choice"` sweep across
   every FROZEN book (chemistry confirmed frozen; verify physics/organic/microbiology). A frozen hit
   means adding option-extraction renumbers frozen seg-ids (BIO-EX2 landmine).
-- **Untested id-less sibling classes** (red-team): table `<entry>` cells, `<note>`/`<example>` inner
-  prose, caption-titles, glossary defs — content-coverage over leaves subsumes them; the first corpus
-  run confirms whether any are live.
+- **Classes structural coverage does NOT catch** (documented residual, not live today): standalone
+  id-bearing `<para>` drops, truncation within a present item, id-less `<table>` `<entry>` drops. These
+  need robust content-coverage (deferred — blocked on a multi-dialect normalizer). Logged so a future
+  drop here is not silently assumed impossible.
