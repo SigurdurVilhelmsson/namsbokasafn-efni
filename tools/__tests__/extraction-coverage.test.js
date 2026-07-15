@@ -1,4 +1,6 @@
 import { describe, it, expect } from 'vitest';
+import { execFileSync } from 'node:child_process';
+import path from 'node:path';
 import {
   emittedElementIds,
   parseModuleDoc,
@@ -6,6 +8,8 @@ import {
   checkDuplicateSegIds,
   analyzeModule,
 } from '../lib/extraction-coverage.js';
+
+const TOOLS = path.resolve(import.meta.dirname, '..');
 
 const doc = (contentInner) =>
   `<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">` +
@@ -113,5 +117,33 @@ describe('analyzeModule', () => {
     const cnxml = doc('<list id="L1"><item>a</item></list>');
     const r = analyzeModule(cnxml, seg('item:L1-item-1'));
     expect(r.hasFindings).toBe(false);
+  });
+});
+
+describe('verify-extraction-coverage CLI', () => {
+  it('exits 1 and reports the dropped option lists on real m66438 (--json --chapter 3)', () => {
+    let out;
+    let code = 0;
+    try {
+      out = execFileSync(
+        'node',
+        [
+          path.join(TOOLS, 'verify-extraction-coverage.js'),
+          '--book',
+          'liffraedi-2e',
+          '--chapter',
+          '3',
+          '--json',
+        ],
+        { cwd: path.resolve(TOOLS, '..'), encoding: 'utf8' }
+      );
+    } catch (e) {
+      code = e.status;
+      out = e.stdout;
+    }
+    expect(code).toBe(1);
+    const report = JSON.parse(out);
+    expect(report.modules.m66438).toBeDefined();
+    expect(report.modules.m66438.listFindings.length).toBeGreaterThanOrEqual(3);
   });
 });

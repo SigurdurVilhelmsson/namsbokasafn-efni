@@ -40,6 +40,7 @@ describe('01-source overwrite path removed (PROV-1)', () => {
       'resolve-os-embed.js', // writes: downloads exercise JSON + images into 01-source/exercises,media (not CNXML)
       'translate-chapter-titles.js', // read-only: reads collection-order.json; writes server/data/<book>.json
       'validate-chapter.js', // read-only: existence/consistency checks only
+      'verify-extraction-coverage.js', // read-only: reads source CNXML to check list-item coverage vs 02-for-mt seg-ids (campaign 6b); writes nothing
       'verify-source-manifest.js', // read-only: recomputes hashes and diffs against the committed manifest
     ]);
     const touchers = readdirSync(TOOLS)
