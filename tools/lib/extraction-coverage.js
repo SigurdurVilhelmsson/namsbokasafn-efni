@@ -81,3 +81,33 @@ export function checkLists(content, emittedIds) {
   }
   return findings;
 }
+
+// Same marker pattern as seg-markers.cjs (SEG_MARKER), duplicated intentionally: this
+// counts RAW occurrences, whereas parseSegmentsMap dedupes 'first'. Ties to campaign item
+// #15 (dup-seg-ID policy unification) — do not consolidate here.
+const RAW_SEG_MARKER = /<!--\s*SEG:([^\s]+?)\s*-->/g;
+
+/**
+ * Duplicate seg-ids. (a) A source `id` defining >1 element in `<content>` (would collide
+ * downstream). (b) A raw `<!-- SEG: -->` marker repeated — parseSegmentsMap dedupes 'first',
+ * so a raw dup is a latent inject drop that the deduped map hides.
+ */
+export function checkDuplicateSegIds(content, segText) {
+  const sourceDup = [];
+  if (content) {
+    const counts = new Map();
+    const all = content.getElementsByTagName('*');
+    for (let i = 0; i < all.length; i++) {
+      const id = all[i].getAttribute('id');
+      if (id) counts.set(id, (counts.get(id) || 0) + 1);
+    }
+    for (const [id, n] of counts) if (n > 1) sourceDup.push({ id, count: n });
+  }
+  const rawCounts = new Map();
+  let m;
+  const re = new RegExp(RAW_SEG_MARKER.source, 'g');
+  while ((m = re.exec(segText || ''))) rawCounts.set(m[1], (rawCounts.get(m[1]) || 0) + 1);
+  const rawDup = [];
+  for (const [id, n] of rawCounts) if (n > 1) rawDup.push({ segId: id, count: n });
+  return { sourceDup, rawDup };
+}

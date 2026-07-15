@@ -1,5 +1,10 @@
 import { describe, it, expect } from 'vitest';
-import { emittedElementIds, parseModuleDoc, checkLists } from '../lib/extraction-coverage.js';
+import {
+  emittedElementIds,
+  parseModuleDoc,
+  checkLists,
+  checkDuplicateSegIds,
+} from '../lib/extraction-coverage.js';
 
 const doc = (contentInner) =>
   `<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">` +
@@ -70,5 +75,27 @@ describe('checkLists', () => {
   it('skips an id-less list (cannot compute expected id -> no false flag)', () => {
     const { content } = parseModuleDoc(doc('<list><item>a</item><item>b</item></list>'));
     expect(checkLists(content, emittedElementIds(seg()))).toHaveLength(0);
+  });
+});
+
+describe('checkDuplicateSegIds', () => {
+  it('flags a source id that defines two elements in <content>', () => {
+    const { content } = parseModuleDoc(doc('<para id="dup">a</para><para id="dup">b</para>'));
+    const r = checkDuplicateSegIds(content, '');
+    expect(r.sourceDup).toEqual([{ id: 'dup', count: 2 }]);
+  });
+
+  it('flags a raw seg marker that repeats (parseSegmentsMap would dedupe it)', () => {
+    const { content } = parseModuleDoc(doc('<para id="a">x</para>'));
+    const segText = '<!-- SEG:m:para:a -->\nx\n<!-- SEG:m:para:a -->\ny';
+    const r = checkDuplicateSegIds(content, segText);
+    expect(r.rawDup).toEqual([{ segId: 'm:para:a', count: 2 }]);
+  });
+
+  it('reports nothing on a clean module', () => {
+    const { content } = parseModuleDoc(doc('<para id="a">x</para>'));
+    const r = checkDuplicateSegIds(content, '<!-- SEG:m:para:a -->\nx');
+    expect(r.sourceDup).toHaveLength(0);
+    expect(r.rawDup).toHaveLength(0);
   });
 });
