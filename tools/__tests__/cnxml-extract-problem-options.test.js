@@ -102,4 +102,36 @@ describe('processExercise multiple-choice options (BIO-EX3 / 6b·f)', () => {
       { type: 'problem', text: 'With a second paragraph.' },
     ]);
   });
+
+  it('extracts a sibling <list> dropped from a <solution> (20 lists / 12 biology modules)', () => {
+    // The solution path had the identical sibling-list drop; the shared emitter fixes both.
+    const cnxml = wrapDoc(`<exercise id="ex-sol">
+<problem id="prob-s"><para id="qs">Which are true?</para></problem>
+<solution id="sol-1">
+<para id="sp-1">The correct answers are:</para>
+<list id="sl-1" list-type="bulleted"><item>first fact</item><item>second fact</item></list>
+</solution>
+</exercise>`);
+    const { segments } = extractSegments(cnxml);
+    const flow = segments
+      .filter((s) => s.type === 'solution' || s.type === 'item')
+      .map((s) => s.text);
+    expect(flow).toEqual(['The correct answers are:', 'first fact', 'second fact']);
+  });
+
+  it('still splits a <list> nested inside a <solution> <para> (regression guard for the refactor)', () => {
+    // Pre-existing solution behavior: a list INSIDE a para is split into the para text
+    // plus its list items. The unify must preserve this exactly.
+    const cnxml = wrapDoc(`<exercise id="ex-nested">
+<problem id="prob-n"><para id="qn">Explain.</para></problem>
+<solution id="sol-2">
+<para id="sp-2">Because of the following:<list id="nl-1" list-type="bulleted"><item>reason one</item><item>reason two</item></list></para>
+</solution>
+</exercise>`);
+    const { segments } = extractSegments(cnxml);
+    const sol = segments.filter((s) => s.type === 'solution').map((s) => s.text);
+    const items = segments.filter((s) => s.type === 'item').map((s) => s.text);
+    expect(sol).toEqual(['Because of the following:']); // para text, list stripped out
+    expect(items).toEqual(['reason one', 'reason two']); // nested list items segmented
+  });
 });

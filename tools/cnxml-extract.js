@@ -1333,20 +1333,22 @@ function processExample(
 }
 
 /**
- * Return a <problem>'s top-level block children — <para> and <list> — in document
- * order. A <list> nested inside a <para> is NOT promoted to its own block: it stays
- * part of its parent para (unchanged legacy behavior). Only a <list> that is a
- * SIBLING of the paras (the enumerated multiple-choice option shape — BIO-EX3) is
- * returned as its own block so its options are segmented instead of dropped.
+ * Return an exercise section's (`<problem>` or `<solution>`) top-level block children —
+ * `<para>` and `<list>` — in document order. A `<list>` nested inside a `<para>` is NOT
+ * promoted to its own block: it stays part of its parent para (the caller's para branch
+ * splits it — unchanged legacy behavior). Only a `<list>` that is a SIBLING of the paras
+ * (multiple-choice options in `<problem>`, answer/rationale lists in `<solution>` —
+ * BIO-EX3) is returned as its own block so its items are segmented instead of dropped.
  *
- * A para-only problem (every chemistry exercise) returns exactly the paras in the
- * same order as the old `extractElements(inner, 'para')` loop — the fix adds nothing
- * when no sibling <list> is present, so it cannot renumber a frozen module's seg-ids.
+ * A section with no sibling `<list>` returns exactly the paras in the same order as the
+ * old `extractElements(inner, 'para')` loop, so the fix adds nothing when no sibling
+ * `<list>` is present and cannot renumber a frozen module's seg-ids (chemistry: 0
+ * exercise lists at all).
  *
- * @param {string} inner - raw content between <problem> and </problem>
+ * @param {string} inner - raw content between the section's open/close tags
  * @returns {Array<{kind:'para'|'list', el:object}>} blocks in document order
  */
-function orderedProblemBlocks(inner) {
+function orderedExerciseBlocks(inner) {
   const paras = extractElements(inner, 'para');
   const lists = extractNestedElements(inner, 'list');
 
@@ -1373,6 +1375,66 @@ function orderedProblemBlocks(inner) {
 }
 
 /**
+ * Build the ordered content array for an exercise `<problem>` or `<solution>` body.
+ * Shared by both so the sibling-`<list>` drop (BIO-EX3) is fixed for each identically:
+ *   - `<para>` → a `segType` text segment; a `<list>` NESTED inside the para is split
+ *     out (text-before/between + each nested list via processList) — the pre-existing
+ *     solution-path behavior, now applied to both sections.
+ *   - a SIBLING `<list>` → processList (id-less items get `${list.id}-item-N` seg-ids).
+ *
+ * @param {string} inner   - raw content between the section's open/close tags
+ * @param {'problem'|'solution'} segType - segment type for the section's paras
+ * @returns {Array<object>} structure content entries (para + list) in document order
+ */
+function emitExerciseSection(
+  inner,
+  segType,
+  moduleId,
+  addSegment,
+  mathMap,
+  counters,
+  inlineMediaMap,
+  inlineTablesMap
+) {
+  const content = [];
+  const toList = (list) =>
+    processList(list, moduleId, addSegment, mathMap, counters, inlineMediaMap, inlineTablesMap);
+  const toText = (raw) =>
+    extractInlineText(raw, mathMap, counters, inlineMediaMap, inlineTablesMap);
+
+  for (const block of orderedExerciseBlocks(inner)) {
+    if (block.kind === 'list') {
+      content.push(toList(block.el));
+      continue;
+    }
+    const para = block.el;
+    // A <list> nested inside this para is split out (legacy solution behavior); use
+    // extractElements (not extractNestedElements) to preserve the exact prior calls.
+    const nestedLists = extractElements(para.content, 'list');
+    if (nestedLists.length > 0) {
+      let textContent = para.content;
+      for (const nl of nestedLists) textContent = textContent.replace(nl.fullMatch, '');
+      textContent = textContent.trim();
+      if (textContent) {
+        const text = toText(textContent);
+        if (text)
+          content.push({
+            type: 'para',
+            id: para.id,
+            segmentId: addSegment(segType, text, para.id),
+          });
+      }
+      for (const nl of nestedLists) content.push(toList(nl));
+    } else {
+      const text = toText(para.content);
+      if (text)
+        content.push({ type: 'para', id: para.id, segmentId: addSegment(segType, text, para.id) });
+    }
+  }
+  return content;
+}
+
+/**
  * Process an exercise element.
  */
 function processExercise(
@@ -1391,113 +1453,41 @@ function processExercise(
     solution: null,
   };
 
-  // Extract problem. Walk the problem's top-level <para> and <list> children in
-  // document order. The old code extracted only <para> and silently dropped every
-  // <list> — including the enumerated multiple-choice answer options that sit as a
-  // SIBLING of the question <para> (BIO-EX3: 208/259 biology modules). Options become
-  // 'item' segments via processList, exactly as the solution path handles its lists.
+  // Extract problem and solution via the shared section emitter. Both bodies now walk
+  // their top-level <para> and <list> children in document order; the old code extracted
+  // only <para> and silently dropped every SIBLING <list> — multiple-choice options in
+  // <problem> (BIO-EX3: 208/259 biology modules) and answer/rationale lists in <solution>
+  // (20 lists across 12 biology modules). See emitExerciseSection / orderedExerciseBlocks.
   const problemMatch = exercise.content.match(/<problem[^>]*>([\s\S]*?)<\/problem>/);
   if (problemMatch) {
-    exerciseStructure.problem = { content: [] };
-    for (const block of orderedProblemBlocks(problemMatch[1])) {
-      if (block.kind === 'list') {
-        exerciseStructure.problem.content.push(
-          processList(
-            block.el,
-            moduleId,
-            addSegment,
-            mathMap,
-            counters,
-            inlineMediaMap,
-            inlineTablesMap
-          )
-        );
-        continue;
-      }
-      const text = extractInlineText(
-        block.el.content,
+    exerciseStructure.problem = {
+      content: emitExerciseSection(
+        problemMatch[1],
+        'problem',
+        moduleId,
+        addSegment,
         mathMap,
         counters,
         inlineMediaMap,
         inlineTablesMap
-      );
-      if (text) {
-        const segId = addSegment('problem', text, block.el.id);
-        exerciseStructure.problem.content.push({
-          type: 'para',
-          id: block.el.id,
-          segmentId: segId,
-        });
-      }
-    }
+      ),
+    };
   }
 
-  // Extract solution
   const solutionMatch = exercise.content.match(/<solution[^>]*>([\s\S]*?)<\/solution>/);
   if (solutionMatch) {
-    const solutionParas = extractElements(solutionMatch[1], 'para');
-    exerciseStructure.solution = { content: [] };
-    for (const para of solutionParas) {
-      // Check for nested lists inside the paragraph
-      const nestedLists = extractElements(para.content, 'list');
-
-      if (nestedLists.length > 0) {
-        // Extract text part (before/between nested lists)
-        let textContent = para.content;
-        for (const nl of nestedLists) {
-          textContent = textContent.replace(nl.fullMatch, '');
-        }
-        textContent = textContent.trim();
-
-        if (textContent) {
-          const text = extractInlineText(
-            textContent,
-            mathMap,
-            counters,
-            inlineMediaMap,
-            inlineTablesMap
-          );
-          if (text) {
-            const segId = addSegment('solution', text, para.id);
-            exerciseStructure.solution.content.push({
-              type: 'para',
-              id: para.id,
-              segmentId: segId,
-            });
-          }
-        }
-
-        // Process nested lists as separate structure entries
-        for (const nl of nestedLists) {
-          const listStructure = processList(
-            nl,
-            moduleId,
-            addSegment,
-            mathMap,
-            counters,
-            inlineMediaMap,
-            inlineTablesMap
-          );
-          exerciseStructure.solution.content.push(listStructure);
-        }
-      } else {
-        const text = extractInlineText(
-          para.content,
-          mathMap,
-          counters,
-          inlineMediaMap,
-          inlineTablesMap
-        );
-        if (text) {
-          const segId = addSegment('solution', text, para.id);
-          exerciseStructure.solution.content.push({
-            type: 'para',
-            id: para.id,
-            segmentId: segId,
-          });
-        }
-      }
-    }
+    exerciseStructure.solution = {
+      content: emitExerciseSection(
+        solutionMatch[1],
+        'solution',
+        moduleId,
+        addSegment,
+        mathMap,
+        counters,
+        inlineMediaMap,
+        inlineTablesMap
+      ),
+    };
   }
 
   return exerciseStructure;
