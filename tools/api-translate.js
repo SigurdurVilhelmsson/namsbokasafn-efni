@@ -285,6 +285,63 @@ export function countInlineMarkers(text) {
   return matches.length;
 }
 
+/** The inline bracket marker types that ride through the MT API as `[[<type>:…]]`. */
+export const BRACKET_MARKER_TYPES = [
+  'i',
+  'b',
+  'sub',
+  'sup',
+  'u',
+  'em',
+  'link',
+  'xref',
+  'docref',
+  'term',
+  'fn',
+];
+
+/**
+ * Tally each inline bracket marker by its opening token `[[<type>:`. Counting the
+ * type-prefixed opener is robust to nesting (`[[i:[[sub:x]]]]`) and to the
+ * `|id`/`|class`/`|url` payloads, and never double-counts a closing delimiter.
+ * @param {string} text
+ * @returns {Record<string, number>}
+ */
+export function countBracketMarkers(text) {
+  const counts = {};
+  const s = String(text || '');
+  for (const type of BRACKET_MARKER_TYPES) {
+    counts[type] = (s.match(new RegExp(`\\[\\[${type}:`, 'g')) || []).length;
+  }
+  return counts;
+}
+
+/**
+ * Per-type delta of inline bracket markers, output minus input. Only types whose
+ * count changed are present. A negative value is a dropped marker (the ~2.3%-loss
+ * class the paired term/fn round-trip does not cover for i/b/sub/sup/u/em/link/xref/
+ * docref); a positive value is a spurious API duplication.
+ * @param {string} input - the pre-translation text (EN segment chunk/module).
+ * @param {string} output - the post-translation text to compare against.
+ * @returns {Record<string, number>}
+ */
+export function bracketMarkerDelta(input, output) {
+  const a = countBracketMarkers(input);
+  const b = countBracketMarkers(output);
+  const delta = {};
+  for (const type of BRACKET_MARKER_TYPES) {
+    if (a[type] !== b[type]) delta[type] = b[type] - a[type];
+  }
+  return delta;
+}
+
+/** One-line human note for a non-empty bracket delta, or null when clean. */
+export function formatBracketDelta(label, delta) {
+  const parts = Object.entries(delta).map(([t, n]) => `${t} ${n > 0 ? '+' : ''}${n}`);
+  if (parts.length === 0) return null;
+  return `${label}: bracket-marker delta (output vs input) — ${parts.join(', ')}`;
+}
+
 /**
  * Put every SEG marker back on its own line.
  *
@@ -899,7 +956,15 @@ export async function translateModule(
     fs.copyFileSync(linksSource, linksDest);
   }
 
-  return { chars: input.length, usage: totalUsage, markersNormalized, mismatches };
+  // B3: surface any inline bracket-marker loss/add at the producer, per module. This
+  // is a module-level aggregate: a drop in one segment and a spurious add of the same
+  // type in another cancel to zero and won't be reported — acceptable for a non-gating
+  // diagnostic (any non-cancelling loss still surfaces here and in the run summary).
+  const bracketDelta = bracketMarkerDelta(input, output);
+  const bracketNote = formatBracketDelta(moduleId, bracketDelta);
+  if (bracketNote) console.error(`  Note: ${bracketNote}`);
+
+  return { chars: input.length, usage: totalUsage, markersNormalized, mismatches, bracketDelta };
 }
 
 // ─── Pipeline Status ────────────────────────────────────────────────
@@ -1098,6 +1163,7 @@ async function main() {
     failed: 0,
     markersNormalized: 0,
     mismatches: 0,
+    bracketLoss: {}, // B3: per-type accumulated output−input delta across modules
     errors: [],
   };
 
@@ -1127,7 +1193,7 @@ async function main() {
     process.stdout.write(`  ${mod.chapterDir}/${mod.moduleId}... `);
 
     try {
-      const { chars, markersNormalized, mismatches } = await translateModule(
+      const { chars, markersNormalized, mismatches, bracketDelta } = await translateModule(
         client,
         mod.path,
         mod.outputPath,
@@ -1139,6 +1205,9 @@ async function main() {
       console.log(`✅ (${chars.toLocaleString()} chars${fixedNote})`);
       results.translated++;
       results.markersNormalized += markersNormalized;
+      for (const [t, n] of Object.entries(bracketDelta || {})) {
+        results.bracketLoss[t] = (results.bracketLoss[t] || 0) + n;
+      }
       if (mismatches && mismatches.length) {
         results.mismatches += mismatches.length;
         for (const mm of mismatches) {
@@ -1170,6 +1239,13 @@ async function main() {
   if (results.markersNormalized > 0) {
     console.log(
       `  Markers un-glued: ${results.markersNormalized} (MT API ran them onto prev line)`
+    );
+  }
+  const bracketLossParts = Object.entries(results.bracketLoss).filter(([, n]) => n !== 0);
+  if (bracketLossParts.length > 0) {
+    console.log(
+      `  Bracket-marker deltas: ${bracketLossParts.map(([t, n]) => `${t} ${n > 0 ? '+' : ''}${n}`).join(', ')} ` +
+        `(inline markers dropped/added by the API — see per-module notes)`
     );
   }
   if (results.mismatches > 0) {

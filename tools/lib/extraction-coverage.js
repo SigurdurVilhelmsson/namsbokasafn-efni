@@ -15,6 +15,7 @@
  */
 import { DOMParser } from '@xmldom/xmldom';
 import segMarkers from './seg-markers.cjs';
+import { normalizeVisibleText } from '../verify-reextract-equivalence.js';
 const { parseSegmentsMap } = segMarkers;
 
 /** Parse a CNXML module string; return the doc and its `<content>` element (or null). */
@@ -115,11 +116,6 @@ export function checkLists(content, emittedIds) {
   return findings;
 }
 
-// Same marker pattern as seg-markers.cjs (SEG_MARKER), duplicated intentionally: this
-// counts RAW occurrences, whereas parseSegmentsMap dedupes 'first'. Ties to campaign item
-// #15 (dup-seg-ID policy unification) — do not consolidate here.
-const RAW_SEG_MARKER = /<!--\s*SEG:([^\s]+?)\s*-->/g;
-
 /**
  * Duplicate seg-ids. (a) A source `id` defining >1 element in `<content>` (would collide
  * downstream). (b) A raw `<!-- SEG: -->` marker repeated — parseSegmentsMap dedupes 'first',
@@ -136,12 +132,30 @@ export function checkDuplicateSegIds(content, segText) {
     }
     for (const [id, n] of counts) if (n > 1) sourceDup.push({ id, count: n });
   }
-  const rawCounts = new Map();
-  let m;
-  const re = new RegExp(RAW_SEG_MARKER.source, 'g');
-  while ((m = re.exec(segText || ''))) rawCounts.set(m[1], (rawCounts.get(m[1]) || 0) + 1);
+
+  // Group every raw SEG occurrence's normalized visible text by seg-id, so a
+  // duplicate can be classified by CONTENT (parseSegmentsMap's 'first' dedup hides
+  // the repeat, but a repeat whose occurrences share visible text drops nothing).
+  const occ = new Map(); // segId -> string[] normalized visible texts
+  for (const part of String(segText || '').split(/(?=<!--\s*SEG:)/)) {
+    const m = part.match(/<!--\s*SEG:([^\s]+?)\s*-->/);
+    if (!m) continue;
+    const text = part.replace(/<!--\s*SEG:[^>]*-->/, '');
+    if (!occ.has(m[1])) occ.set(m[1], []);
+    occ.get(m[1]).push(normalizeVisibleText(text));
+  }
+
   const rawDup = [];
-  for (const [id, n] of rawCounts) if (n > 1) rawDup.push({ segId: id, count: n });
+  for (const [segId, texts] of occ) {
+    if (texts.length < 2) continue;
+    const benign = texts.every((t) => t === texts[0]);
+    const entry = { segId, count: texts.length, kind: benign ? 'benign' : 'real' };
+    if (!benign) {
+      entry.sampleA = texts[0].slice(0, 80);
+      entry.sampleB = texts.find((t) => t !== texts[0]).slice(0, 80);
+    }
+    rawDup.push(entry);
+  }
   return { sourceDup, rawDup };
 }
 
@@ -150,7 +164,8 @@ export function analyzeModule(cnxmlText, segText) {
   const { content } = parseModuleDoc(cnxmlText);
   const listFindings = checkLists(content, emittedElementIds(segText));
   const dupFindings = checkDuplicateSegIds(content, segText);
+  const realDups = dupFindings.rawDup.filter((d) => d.kind === 'real');
   const hasFindings =
-    listFindings.length > 0 || dupFindings.sourceDup.length > 0 || dupFindings.rawDup.length > 0;
+    listFindings.length > 0 || dupFindings.sourceDup.length > 0 || realDups.length > 0;
   return { listFindings, dupFindings, hasFindings };
 }

@@ -14,6 +14,16 @@ const SEG_MARKER = /<!--\s*SEG:([^\s]+?)\s*-->/g;
 
 /**
  * Parse into Map<id, text>.
+ *
+ * CANONICAL DUPLICATE-SEG-ID POLICY (campaign item #15): a seg-id's occurrences must
+ * carry the same VISIBLE content. `'first'` here is the deliberate RUNTIME TOLERANCE —
+ * a benign duplicate (identical normalized visible text; the depth-blind duplicate-
+ * emission artifact) loses nothing because the source element is unique and filled once.
+ * ENFORCEMENT lives at the pre-freeze gate (tools/verify-extraction-coverage.js →
+ * checkDuplicateSegIds), which fails only on a *real* duplicate (occurrences with
+ * DIFFERENT visible text = a content drop). Do not add duplicate-id failing here — the
+ * runtime path must stay tolerant so already-frozen benign dups never break inject.
+ *
  * @param {string} content
  * @param {{duplicates?: 'first'|'last'}} [opts] - 'first' (default) skips repeats; 'last' overwrites.
  * @returns {Map<string,string>}
