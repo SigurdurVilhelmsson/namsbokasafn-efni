@@ -5,56 +5,12 @@
 
 import { DOMParser } from '@xmldom/xmldom';
 import { SHARED_NOTE_LABELS } from './book-rendering-config.js';
+import { HANDLED_INLINE, HANDLED_BLOCK } from './handled-tags.js';
 
-/** Inline tags the extractor converts to markers (everything else gets stripped). */
-export const HANDLED_INLINE = new Set([
-  'emphasis',
-  'sub',
-  'sup',
-  'link',
-  'term',
-  'footnote',
-  'newline',
-  'space',
-  'math', // <m:math> localName is 'math'
-]);
-
-/**
- * Block/structural tags the pipeline builds — these legitimately nest inside a
- * <para> in OpenStax CNXML (figures-in-para etc.) and are NOT stripped. Check 5
- * flags only elements that are neither handled-inline nor handled-block, so a
- * genuinely-unknown tag (e.g. <span>, <quote>) still surfaces.
- */
-export const HANDLED_BLOCK = new Set([
-  'para',
-  'figure',
-  'subfigure',
-  'media',
-  'image',
-  'list',
-  'item',
-  'table',
-  'tgroup',
-  'colspec',
-  'thead',
-  'tbody',
-  'row',
-  'entry',
-  'equation',
-  'note',
-  'example',
-  'exercise',
-  'problem',
-  'solution',
-  'commentary',
-  'section',
-  'title',
-  'caption',
-  'label',
-  'definition',
-  'meaning',
-  'glossary',
-]);
+// Canonical inline/block classification lives in handled-tags.js (item 8/D2:
+// shared with the renderer so stages cannot drift). Re-exported to keep this
+// module's public surface stable for existing consumers.
+export { HANDLED_INLINE, HANDLED_BLOCK };
 
 /** Text containers whose direct element children are examined by check 5. */
 export const TEXT_CONTAINERS = ['para', 'title', 'caption', 'label', 'meaning'];

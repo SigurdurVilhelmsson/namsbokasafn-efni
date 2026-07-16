@@ -11,6 +11,10 @@
 
 import { describe, it, expect } from 'vitest';
 import { HANDLED_INLINE, HANDLED_BLOCK } from '../lib/handled-tags.js';
+import {
+  HANDLED_INLINE as PROBE_INLINE,
+  HANDLED_BLOCK as PROBE_BLOCK,
+} from '../lib/preintake-checks.js';
 
 const sorted = (s) => [...s].sort();
 
@@ -70,5 +74,15 @@ describe('handled-tags — canonical sets match the pre-refactor literals', () =
     for (const t of HANDLED_INLINE) {
       expect(HANDLED_BLOCK.has(t), `'${t}' classified both inline and block`).toBe(false);
     }
+  });
+});
+
+describe('preintake-checks re-exports the canonical sets', () => {
+  it('HANDLED_INLINE is the same Set object (not a drifting copy)', () => {
+    expect(PROBE_INLINE).toBe(HANDLED_INLINE);
+  });
+
+  it('HANDLED_BLOCK is the same Set object (not a drifting copy)', () => {
+    expect(PROBE_BLOCK).toBe(HANDLED_BLOCK);
   });
 });
