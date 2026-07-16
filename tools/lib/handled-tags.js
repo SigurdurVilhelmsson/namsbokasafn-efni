@@ -7,7 +7,7 @@
  * the stages cannot silently disagree on whether a tag is inline or block —
  * the drift class behind past extract/render divergence.
  *
- * Purpose-specific subsets stay where they live (cnxml-dom BLOCK_TAGS =
+ * Purpose-specific sets stay where they live (cnxml-dom BLOCK_TAGS =
  * "blocks preserved during para content replacement"; cnxml-render
  * ITEM_INLINE_OK = "tags allowed inline in a list item") — they answer
  * narrower questions and are drift-guarded against these sets by
