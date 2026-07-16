@@ -15,6 +15,7 @@ import {
   HANDLED_INLINE as PROBE_INLINE,
   HANDLED_BLOCK as PROBE_BLOCK,
 } from '../lib/preintake-checks.js';
+import { LOUD_SEAM_IGNORE, ITEM_INLINE_OK } from '../cnxml-render.js';
 
 const sorted = (s) => [...s].sort();
 
@@ -84,5 +85,40 @@ describe('preintake-checks re-exports the canonical sets', () => {
 
   it('HANDLED_BLOCK is the same Set object (not a drifting copy)', () => {
     expect(PROBE_BLOCK).toBe(HANDLED_BLOCK);
+  });
+});
+
+describe('renderer seam sets derive from the canonical classification', () => {
+  // Exact pre-refactor literal (tools/cnxml-render.js:1084 @ a7e0c746).
+  const LOUD_SEAM_LITERAL = [
+    'title',
+    'label',
+    'caption',
+    'meta',
+    'newline',
+    'sub',
+    'sup',
+    'emphasis',
+    'term',
+    'link',
+    'math',
+    'footnote',
+  ];
+
+  it('LOUD_SEAM_IGNORE membership is frozen (12 tags)', () => {
+    expect(sorted(LOUD_SEAM_IGNORE)).toEqual([...LOUD_SEAM_LITERAL].sort());
+  });
+
+  it('LOUD_SEAM_IGNORE = HANDLED_INLINE − {space} ∪ container metadata', () => {
+    const derived = new Set(
+      [...HANDLED_INLINE].filter((t) => t !== 'space').concat(['title', 'label', 'caption', 'meta'])
+    );
+    expect(sorted(LOUD_SEAM_IGNORE)).toEqual(sorted(derived));
+  });
+
+  it('ITEM_INLINE_OK = LOUD_SEAM_IGNORE ∪ {para, space, image, span} (frozen)', () => {
+    const derived = new Set([...LOUD_SEAM_IGNORE, 'para', 'space', 'image', 'span']);
+    expect(sorted(ITEM_INLINE_OK)).toEqual(sorted(derived));
+    expect(ITEM_INLINE_OK.size).toBe(16);
   });
 });
