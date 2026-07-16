@@ -1333,6 +1333,46 @@ function processExample(
 }
 
 /**
+ * Return a <problem>'s top-level block children — <para> and <list> — in document
+ * order. A <list> nested inside a <para> is NOT promoted to its own block: it stays
+ * part of its parent para (unchanged legacy behavior). Only a <list> that is a
+ * SIBLING of the paras (the enumerated multiple-choice option shape — BIO-EX3) is
+ * returned as its own block so its options are segmented instead of dropped.
+ *
+ * A para-only problem (every chemistry exercise) returns exactly the paras in the
+ * same order as the old `extractElements(inner, 'para')` loop — the fix adds nothing
+ * when no sibling <list> is present, so it cannot renumber a frozen module's seg-ids.
+ *
+ * @param {string} inner - raw content between <problem> and </problem>
+ * @returns {Array<{kind:'para'|'list', el:object}>} blocks in document order
+ */
+function orderedProblemBlocks(inner) {
+  const paras = extractElements(inner, 'para');
+  const lists = extractNestedElements(inner, 'list');
+
+  // Position each block by its source offset, advancing a per-array cursor so
+  // identical repeated blocks resolve left-to-right. fullMatch is a verbatim slice
+  // of `inner` for both extractors, so indexOf is exact.
+  let pcur = 0;
+  const paraSpans = paras.map((el) => {
+    const start = inner.indexOf(el.fullMatch, pcur);
+    pcur = start + el.fullMatch.length;
+    return { el, start, end: start + el.fullMatch.length };
+  });
+  let lcur = 0;
+  const blocks = paraSpans.map(({ el, start }) => ({ kind: 'para', el, start }));
+  for (const el of lists) {
+    const start = inner.indexOf(el.fullMatch, lcur);
+    lcur = start + el.fullMatch.length;
+    // Skip a list nested inside a para — it belongs to that para (legacy behavior).
+    const nested = paraSpans.some((p) => start > p.start && start < p.end);
+    if (!nested) blocks.push({ kind: 'list', el, start });
+  }
+  blocks.sort((a, b) => a.start - b.start);
+  return blocks;
+}
+
+/**
  * Process an exercise element.
  */
 function processExercise(
@@ -1351,24 +1391,41 @@ function processExercise(
     solution: null,
   };
 
-  // Extract problem
+  // Extract problem. Walk the problem's top-level <para> and <list> children in
+  // document order. The old code extracted only <para> and silently dropped every
+  // <list> — including the enumerated multiple-choice answer options that sit as a
+  // SIBLING of the question <para> (BIO-EX3: 208/259 biology modules). Options become
+  // 'item' segments via processList, exactly as the solution path handles its lists.
   const problemMatch = exercise.content.match(/<problem[^>]*>([\s\S]*?)<\/problem>/);
   if (problemMatch) {
-    const problemParas = extractElements(problemMatch[1], 'para');
     exerciseStructure.problem = { content: [] };
-    for (const para of problemParas) {
+    for (const block of orderedProblemBlocks(problemMatch[1])) {
+      if (block.kind === 'list') {
+        exerciseStructure.problem.content.push(
+          processList(
+            block.el,
+            moduleId,
+            addSegment,
+            mathMap,
+            counters,
+            inlineMediaMap,
+            inlineTablesMap
+          )
+        );
+        continue;
+      }
       const text = extractInlineText(
-        para.content,
+        block.el.content,
         mathMap,
         counters,
         inlineMediaMap,
         inlineTablesMap
       );
       if (text) {
-        const segId = addSegment('problem', text, para.id);
+        const segId = addSegment('problem', text, block.el.id);
         exerciseStructure.problem.content.push({
           type: 'para',
-          id: para.id,
+          id: block.el.id,
           segmentId: segId,
         });
       }
