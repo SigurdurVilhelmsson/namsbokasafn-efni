@@ -161,7 +161,9 @@ describe('checkDuplicateSegIds', () => {
     const { content } = parseModuleDoc(doc('<para id="a">x</para>'));
     const segText = '<!-- SEG:m:para:a -->\nx\n<!-- SEG:m:para:a -->\ny';
     const r = checkDuplicateSegIds(content, segText);
-    expect(r.rawDup).toEqual([{ segId: 'm:para:a', count: 2 }]);
+    expect(r.rawDup).toEqual([
+      { segId: 'm:para:a', count: 2, kind: 'real', sampleA: 'x', sampleB: 'y' },
+    ]);
   });
 
   it('reports nothing on a clean module', () => {
