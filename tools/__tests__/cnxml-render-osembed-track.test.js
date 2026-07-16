@@ -55,6 +55,21 @@ const IS_SIDECAR = {
     },
   ],
 };
+const FAITHFUL_SIDECAR = {
+  nickname: '01-03-OC-P01',
+  source_uid: '1@1',
+  generated_by: 'exercise-assemble.js',
+  track: 'faithful',
+  solutions_are_public: true,
+  stimulus_html: 'Trútt íslenskt áreiti',
+  questions: [
+    {
+      id: '9',
+      stem_html: 'Trútt íslensk spurning',
+      collaborator_solutions: [{ content_html: 'Trútt íslensk lausn' }],
+    },
+  ],
+};
 
 const DOC =
   '<document xmlns="http://cnx.rice.edu/cnxml"><title>T</title><content>' +
@@ -110,30 +125,38 @@ describe('resolveOsEmbed track preference', () => {
     expect(_getOsEmbedStatsForTest()).toEqual({ translated: 0, fallback: 1 });
   });
 
-  // Regression (task review finding 1): the renderer module is cached for
-  // the life of the server process, so RENDER_TRACK must reset on every
-  // call, not just when options.track is truthy. Before the fix,
-  // `if (options.track) RENDER_TRACK = options.track;` left RENDER_TRACK at
-  // whatever the *previous* call set it to when a later call omitted
-  // options.track — silently leaking one caller's track into another's
-  // render. This writes only a mt-preview sidecar, renders once with an
-  // explicit non-default track ('faithful', which falls back to EN since no
-  // faithful sidecar exists) to poison RENDER_TRACK, then renders again
-  // omitting track entirely and asserts it resolves as mt-preview — never
-  // inheriting 'faithful' from the prior call.
-  it("an omitted track on a later render resets to mt-preview, never inheriting a previous call's track", () => {
-    const dir = path.join(bookDir, '03-translated', 'mt-preview', 'exercises');
+  // Regression (re-review, fix wave 2): RENDER_TRACK is a DELIBERATELY
+  // sticky module global — `if (options.track) RENDER_TRACK = options.track;`
+  // only reassigns it when a caller provides options.track, and leaves it
+  // alone otherwise. This is load-bearing for the CLI: main() sets
+  // RENDER_TRACK once from args.track at the top of a run, and its six
+  // internal renderCnxmlToHtml call sites (per-module, end-of-chapter,
+  // summary, compiled exercises ×2, answer key) all omit options.track —
+  // they rely on that one CLI-set value persisting across the whole run.
+  // An earlier fix wave changed this to an *unconditional* reset
+  // (`RENDER_TRACK = options.track || 'mt-preview'`), which broke exactly
+  // that: the first internal call with no options.track stamped the global
+  // back to 'mt-preview', silently defeating `--track faithful`. Reverted.
+  // This test writes only a faithful sidecar, renders once with an explicit
+  // track:'faithful' to set RENDER_TRACK, then renders again *omitting*
+  // track and asserts it still resolves via the faithful sidecar — i.e.
+  // the global is inherited, not reset. Any NEW in-process entry point
+  // (not main()'s CLI run) MUST pass options.track on every call instead of
+  // relying on this stickiness — enforced for the server's renderModule()
+  // by server/__tests__/renderService.test.js's track-forwarding test.
+  it("an omitted track on a later render inherits the previous call's track (RENDER_TRACK is a sticky module global by design)", () => {
+    const dir = path.join(bookDir, '03-translated', 'faithful', 'exercises');
     fs.mkdirSync(dir, { recursive: true });
-    fs.writeFileSync(path.join(dir, '01-03-OC-P01.json'), JSON.stringify(IS_SIDECAR));
+    fs.writeFileSync(path.join(dir, '01-03-OC-P01.json'), JSON.stringify(FAITHFUL_SIDECAR));
 
-    // Poison RENDER_TRACK with an explicit non-default track.
+    // Sets RENDER_TRACK to 'faithful' explicitly.
     render({ track: 'faithful' });
     _resetOsEmbedStatsForTest();
 
-    // Omits track entirely — must reset to the 'mt-preview' default, not
-    // inherit 'faithful' from the previous call.
+    // Omits track entirely on this call — must inherit 'faithful' from the
+    // previous call, not reset to the 'mt-preview' default.
     const html = render({});
-    expect(html).toContain('Íslensk spurning');
+    expect(html).toContain('Trútt íslensk spurning');
     expect(html).not.toContain('English stem');
     expect(_getOsEmbedStatsForTest()).toEqual({ translated: 1, fallback: 0 });
   });

@@ -145,15 +145,19 @@ let BOOKS_DIR = 'books/efnafraedi-2e';
 let BOOK_SLUG = 'efnafraedi-2e';
 
 // Item 9/D3: active publication track for os-embed sidecar preference and
-// the run's translated/fallback tally. Reset unconditionally on every
-// renderCnxmlToHtml() call from options.track (default 'mt-preview' when
-// omitted) and from args.track in the CLI's main() — never inherited from a
-// previous call. The renderer module is cached for the life of the server
-// process, so a conditional-only reset would let an in-process caller that
-// omits track silently pick up whatever track the previous render used;
-// callers that want a non-default track MUST pass options.track explicitly.
-// Non-gating by design — an EN fallback is counted and reported, never a
-// failure (organic ships all-EN today).
+// the run's translated/fallback tally. Sticky module global, defaulting to
+// 'mt-preview': renderCnxmlToHtml() only reassigns it when options.track is
+// provided (see the `if (options.track)` guard below), and the CLI's main()
+// sets it once from args.track at the top of the run. This is deliberate —
+// main()'s six internal renderCnxmlToHtml call sites (per-module,
+// end-of-chapter, summary, compiled exercises, answer key) all omit
+// options.track and depend on that one CLI-set value persisting across all
+// of them for the rest of the run. External in-process callers (e.g. the
+// server's live-preview renderModule(), which is not part of a main() run
+// and has no other opportunity to set the track once) MUST pass
+// options.track explicitly on every call — the sticky global does not know
+// which caller "owns" it. Non-gating by design — an EN fallback is counted
+// and reported, never a failure (organic ships all-EN today).
 let RENDER_TRACK = 'mt-preview';
 const OS_EMBED_STATS = { translated: 0, fallback: 0 };
 let BOOKS_DIR_TEST_OVERRIDE = null;
@@ -545,10 +549,17 @@ function renderCnxmlToHtml(cnxml, options = {}) {
 
   // Item 9/D3: honor a per-call publication track so resolveOsEmbed prefers
   // that track's translated exercise sidecar over the EN source cache.
-  // Unconditional: a call that omits track deterministically resets to the
-  // default rather than inheriting whatever the previous in-process call set
-  // (the module is cached for the life of the server process).
-  RENDER_TRACK = options.track || 'mt-preview';
+  // Conditional by design: RENDER_TRACK is a sticky module global. main()'s
+  // six internal renderCnxmlToHtml call sites (per-module, end-of-chapter,
+  // summary, compiled exercises ×2, answer key) all omit options.track and
+  // rely on the global main() set once from args.track at the top of the
+  // CLI run — an unconditional reset here would stamp it back to the
+  // 'mt-preview' default on the very first such internal call, silently
+  // defeating --track faithful (or any non-default CLI track). Any new
+  // in-process entry point (e.g. the server's live-preview renderModule())
+  // MUST pass options.track explicitly on every call — it cannot rely on
+  // this sticky default.
+  if (options.track) RENDER_TRACK = options.track;
 
   // Parse CNXML
   const doc = parseCnxmlDocument(cnxml);
