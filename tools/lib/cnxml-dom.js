@@ -18,6 +18,12 @@ const MATHML_NS = 'http://www.w3.org/1998/Math/MathML';
 // Note: 'para' is included because CNXML allows nested paras — the extraction
 // flattens them into sibling structure entries, so inner paras must be preserved
 // as block children to be processed individually.
+//
+// D2: this is a deliberate, purpose-specific SUBSET of the canonical
+// HANDLED_BLOCK (tools/lib/handled-tags.js) — it answers "which element
+// children survive replaceParaContent", not "which tags does the pipeline
+// handle". handled-tags-shared.test.js asserts BLOCK_TAGS ⊆ HANDLED_BLOCK so
+// the two cannot silently disagree; grow it only with canonically-block tags.
 const BLOCK_TAGS = new Set(['list', 'equation', 'figure', 'table', 'note', 'media', 'para']);
 
 /**

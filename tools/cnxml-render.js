@@ -26,6 +26,7 @@
 import fs from 'fs';
 import path from 'path';
 import { renderMathML, resetMathJaxIds } from './lib/mathjax-render.js';
+import { HANDLED_INLINE } from './lib/handled-tags.js';
 import {
   parseCnxmlDocument,
   extractNestedElements,
@@ -1081,20 +1082,22 @@ function renderMedia(media, context) {
 // flows within text — NOT silently-dropped block content. Excluded from the
 // loud-seam record so the diagnostic carries signal (a real undispatched block
 // like <equation>/<table>/<figure>) not noise.
-const LOUD_SEAM_IGNORE = new Set([
-  'title',
-  'label',
-  'caption',
-  'meta',
-  'newline',
-  'sub',
-  'sup',
-  'emphasis',
-  'term',
-  'link',
-  'math',
-  'footnote',
-]);
+//
+// Derived from the canonical HANDLED_INLINE (tools/lib/handled-tags.js) so the
+// probe and renderer cannot silently disagree on what counts as inline (D2).
+// Deliberate deltas, membership frozen by handled-tags-shared.test.js:
+//   − 'space': a bare <space/> at the block seam has always been recorded;
+//     kept out to preserve behavior exactly.
+//   + title/label/caption/meta: container metadata handled by each container's
+//     own renderer, not the block dispatch.
+const LOUD_SEAM_IGNORE = new Set(
+  [...HANDLED_INLINE].filter((t) => t !== 'space').concat(['title', 'label', 'caption', 'meta'])
+);
+
+// Tags allowed to remain inline inside a <list><item> body after renderItemBody
+// extracts its block children — a narrower question than HANDLED_INLINE, hence
+// a deliberate superset of LOUD_SEAM_IGNORE, not a canonical classification.
+const ITEM_INLINE_OK = new Set([...LOUD_SEAM_IGNORE, 'para', 'space', 'image', 'span']);
 
 function renderBlockChildrenInOrder(content, context, dispatch, options = {}) {
   const out = [];
@@ -1639,7 +1642,6 @@ function renderItemBody(content, context) {
   // Loud seam for block-shaped elements we do not dispatch in items (e.g. quote).
   // Inline elements and item metadata are expected here and stay in the text flow.
   if (context.undispatchedBlocks) {
-    const ITEM_INLINE_OK = new Set([...LOUD_SEAM_IGNORE, 'para', 'space', 'image', 'span']);
     const leftoverTag = /<([a-z][\w-]*)[\s/>]/g;
     let m;
     while ((m = leftoverTag.exec(working)) !== null) {
@@ -3973,4 +3975,6 @@ export {
   formatTableNumber,
   renderExercise,
   _loadBookConfigForTest,
+  LOUD_SEAM_IGNORE,
+  ITEM_INLINE_OK,
 };
