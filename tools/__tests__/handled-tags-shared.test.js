@@ -16,6 +16,7 @@ import {
   HANDLED_BLOCK as PROBE_BLOCK,
 } from '../lib/preintake-checks.js';
 import { LOUD_SEAM_IGNORE, ITEM_INLINE_OK } from '../cnxml-render.js';
+import { BLOCK_TAGS } from '../lib/cnxml-dom.js';
 
 const sorted = (s) => [...s].sort();
 
@@ -120,5 +121,19 @@ describe('renderer seam sets derive from the canonical classification', () => {
     const derived = new Set([...LOUD_SEAM_IGNORE, 'para', 'space', 'image', 'span']);
     expect(sorted(ITEM_INLINE_OK)).toEqual(sorted(derived));
     expect(ITEM_INLINE_OK.size).toBe(16);
+  });
+});
+
+describe('cnxml-dom BLOCK_TAGS is a purpose-specific subset of HANDLED_BLOCK', () => {
+  it('every traversal block tag is a canonically handled block tag', () => {
+    for (const t of BLOCK_TAGS) {
+      expect(HANDLED_BLOCK.has(t), `BLOCK_TAGS has '${t}' but HANDLED_BLOCK does not`).toBe(true);
+    }
+  });
+
+  it('membership is frozen (7 tags — the para-replacement traversal boundary)', () => {
+    expect(sorted(BLOCK_TAGS)).toEqual(
+      ['equation', 'figure', 'list', 'media', 'note', 'para', 'table'].sort()
+    );
   });
 });
