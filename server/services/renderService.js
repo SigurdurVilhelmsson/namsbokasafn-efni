@@ -100,6 +100,7 @@ async function renderModule(book, chapter, moduleId, track = 'faithful') {
     lang: 'is',
     chapter: chapter === 'appendices' ? -1 : Number(chapter),
     moduleId,
+    track,
     bookConfig,
     embedMap: loadEmbedMapping(book),
     // Chapter-wide numbering maps — empty for preview (shows "?" for cross-refs)

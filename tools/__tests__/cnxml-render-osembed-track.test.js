@@ -109,4 +109,32 @@ describe('resolveOsEmbed track preference', () => {
     expect(html).toContain('English stem');
     expect(_getOsEmbedStatsForTest()).toEqual({ translated: 0, fallback: 1 });
   });
+
+  // Regression (task review finding 1): the renderer module is cached for
+  // the life of the server process, so RENDER_TRACK must reset on every
+  // call, not just when options.track is truthy. Before the fix,
+  // `if (options.track) RENDER_TRACK = options.track;` left RENDER_TRACK at
+  // whatever the *previous* call set it to when a later call omitted
+  // options.track — silently leaking one caller's track into another's
+  // render. This writes only a mt-preview sidecar, renders once with an
+  // explicit non-default track ('faithful', which falls back to EN since no
+  // faithful sidecar exists) to poison RENDER_TRACK, then renders again
+  // omitting track entirely and asserts it resolves as mt-preview — never
+  // inheriting 'faithful' from the prior call.
+  it("an omitted track on a later render resets to mt-preview, never inheriting a previous call's track", () => {
+    const dir = path.join(bookDir, '03-translated', 'mt-preview', 'exercises');
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, '01-03-OC-P01.json'), JSON.stringify(IS_SIDECAR));
+
+    // Poison RENDER_TRACK with an explicit non-default track.
+    render({ track: 'faithful' });
+    _resetOsEmbedStatsForTest();
+
+    // Omits track entirely — must reset to the 'mt-preview' default, not
+    // inherit 'faithful' from the previous call.
+    const html = render({});
+    expect(html).toContain('Íslensk spurning');
+    expect(html).not.toContain('English stem');
+    expect(_getOsEmbedStatsForTest()).toEqual({ translated: 1, fallback: 0 });
+  });
 });

@@ -145,9 +145,15 @@ let BOOKS_DIR = 'books/efnafraedi-2e';
 let BOOK_SLUG = 'efnafraedi-2e';
 
 // Item 9/D3: active publication track for os-embed sidecar preference and
-// the run's translated/fallback tally. Set from options.track (in-process
-// callers) and args.track (CLI main). Non-gating by design — an EN fallback
-// is counted and reported, never a failure (organic ships all-EN today).
+// the run's translated/fallback tally. Reset unconditionally on every
+// renderCnxmlToHtml() call from options.track (default 'mt-preview' when
+// omitted) and from args.track in the CLI's main() — never inherited from a
+// previous call. The renderer module is cached for the life of the server
+// process, so a conditional-only reset would let an in-process caller that
+// omits track silently pick up whatever track the previous render used;
+// callers that want a non-default track MUST pass options.track explicitly.
+// Non-gating by design — an EN fallback is counted and reported, never a
+// failure (organic ships all-EN today).
 let RENDER_TRACK = 'mt-preview';
 const OS_EMBED_STATS = { translated: 0, fallback: 0 };
 let BOOKS_DIR_TEST_OVERRIDE = null;
@@ -539,7 +545,10 @@ function renderCnxmlToHtml(cnxml, options = {}) {
 
   // Item 9/D3: honor a per-call publication track so resolveOsEmbed prefers
   // that track's translated exercise sidecar over the EN source cache.
-  if (options.track) RENDER_TRACK = options.track;
+  // Unconditional: a call that omits track deterministically resets to the
+  // default rather than inheriting whatever the previous in-process call set
+  // (the module is cached for the life of the server process).
+  RENDER_TRACK = options.track || 'mt-preview';
 
   // Parse CNXML
   const doc = parseCnxmlDocument(cnxml);
