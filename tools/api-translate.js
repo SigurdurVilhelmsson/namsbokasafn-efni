@@ -321,6 +321,8 @@ export function countBracketMarkers(text) {
  * count changed are present. A negative value is a dropped marker (the ~2.3%-loss
  * class the paired term/fn round-trip does not cover for i/b/sub/sup/u/em/link/xref/
  * docref); a positive value is a spurious API duplication.
+ * @param {string} input - the pre-translation text (EN segment chunk/module).
+ * @param {string} output - the post-translation text to compare against.
  * @returns {Record<string, number>}
  */
 export function bracketMarkerDelta(input, output) {
@@ -954,7 +956,10 @@ export async function translateModule(
     fs.copyFileSync(linksSource, linksDest);
   }
 
-  // B3: surface any inline bracket-marker loss/add at the producer, per module.
+  // B3: surface any inline bracket-marker loss/add at the producer, per module. This
+  // is a module-level aggregate: a drop in one segment and a spurious add of the same
+  // type in another cancel to zero and won't be reported — acceptable for a non-gating
+  // diagnostic (any non-cancelling loss still surfaces here and in the run summary).
   const bracketDelta = bracketMarkerDelta(input, output);
   const bracketNote = formatBracketDelta(moduleId, bracketDelta);
   if (bracketNote) console.error(`  Note: ${bracketNote}`);
