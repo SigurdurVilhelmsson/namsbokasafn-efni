@@ -954,7 +954,12 @@ export async function translateModule(
     fs.copyFileSync(linksSource, linksDest);
   }
 
-  return { chars: input.length, usage: totalUsage, markersNormalized, mismatches };
+  // B3: surface any inline bracket-marker loss/add at the producer, per module.
+  const bracketDelta = bracketMarkerDelta(input, output);
+  const bracketNote = formatBracketDelta(moduleId, bracketDelta);
+  if (bracketNote) console.error(`  Note: ${bracketNote}`);
+
+  return { chars: input.length, usage: totalUsage, markersNormalized, mismatches, bracketDelta };
 }
 
 // ─── Pipeline Status ────────────────────────────────────────────────
@@ -1153,6 +1158,7 @@ async function main() {
     failed: 0,
     markersNormalized: 0,
     mismatches: 0,
+    bracketLoss: {}, // B3: per-type accumulated output−input delta across modules
     errors: [],
   };
 
@@ -1182,7 +1188,7 @@ async function main() {
     process.stdout.write(`  ${mod.chapterDir}/${mod.moduleId}... `);
 
     try {
-      const { chars, markersNormalized, mismatches } = await translateModule(
+      const { chars, markersNormalized, mismatches, bracketDelta } = await translateModule(
         client,
         mod.path,
         mod.outputPath,
@@ -1194,6 +1200,9 @@ async function main() {
       console.log(`✅ (${chars.toLocaleString()} chars${fixedNote})`);
       results.translated++;
       results.markersNormalized += markersNormalized;
+      for (const [t, n] of Object.entries(bracketDelta || {})) {
+        results.bracketLoss[t] = (results.bracketLoss[t] || 0) + n;
+      }
       if (mismatches && mismatches.length) {
         results.mismatches += mismatches.length;
         for (const mm of mismatches) {
@@ -1225,6 +1234,13 @@ async function main() {
   if (results.markersNormalized > 0) {
     console.log(
       `  Markers un-glued: ${results.markersNormalized} (MT API ran them onto prev line)`
+    );
+  }
+  const bracketLossParts = Object.entries(results.bracketLoss).filter(([, n]) => n !== 0);
+  if (bracketLossParts.length > 0) {
+    console.log(
+      `  Bracket-marker deltas: ${bracketLossParts.map(([t, n]) => `${t} ${n > 0 ? '+' : ''}${n}`).join(', ')} ` +
+        `(inline markers dropped/added by the API — see per-module notes)`
     );
   }
   if (results.mismatches > 0) {
