@@ -205,7 +205,9 @@ The reversible HTML⇄segments converter. For one HTML field:
   when the book is absent) asserting `htmlToSegments` succeeds on all 5,540 fields and
   round-trips them (this is the "closed tag inventory" proof).
 - **Fixtures:** real cache files copied verbatim: a multi-question exercise with stimulus +
-  solutions (`01-03-OC-P01`-like), an img-bearing stem, a table-bearing solution, a `18a`
+  solutions (`01-03-OC-P01`-like), an img-bearing stem, a table-bearing solution
+  (unsatisfiable in the live cache — zero table-in-solution exercises; table coverage rides
+  a stem fixture instead — corpus-verified 2026-07-16, item 9 T7), a `18a`
   nickname, a `solutions_are_public: false` case.
 - `exercise-extract.test.js`: deterministic seg-ids; idempotent re-run (byte-identical
   outputs); malformed-JSON loud skip; chapter-token grouping incl. `18a`.

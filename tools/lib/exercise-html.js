@@ -23,6 +23,26 @@ const WRAP_TAGS = new Set(['span', 'small', 'em', 'strong', 'i', 'b', 'sub', 'su
 const SLOT = (k) => `\x00SLOT_${k}\x00`;
 const SLOT_RE = /\x00SLOT_(\d+)\x00/g;
 
+/**
+ * Escape literal '[' / ']' in source text so they can never be mistaken for
+ * our own `[[type:...]]` marker delimiters (corpus find, item 9 T7: a literal
+ * '[' immediately before an inline tag, e.g. "[<i>α</i>]", collided with the
+ * marker it produced — "[[[i:α]]]" — and broke re-parsing). Escaped via the
+ * same bracket-marker dialect (empty-body `[[lb:]]`/`[[rb:]]`) rather than an
+ * out-of-band sentinel, since a sentinel outside that dialect is even less
+ * likely to survive MT. NOTE: this proves the round-trip under *identity*
+ * translation only — the content-bearing `[[i:...]]` family's proven ~100%
+ * Málstaður survival does NOT transfer for free to the empty-body `[[lb:]]`/
+ * `[[rb:]]` shape, which is new and API-unverified (cf. B4-D11, where an
+ * assumed-safe bracket variant turned out opaque to the API). Probe survival
+ * before the first real MT run that can hit these markers.
+ */
+function escapeLiteralBrackets(text) {
+  // Single pass: chaining two .replace() calls would re-escape the '[[' the
+  // first call just inserted.
+  return text.replace(/[[\]]/g, (c) => (c === '[' ? '[[lb:]]' : '[[rb:]]'));
+}
+
 export class UnknownTagError extends Error {
   constructor(tag, context) {
     super(`unknown tag <${tag}> in exercise HTML near: ${context}`);
@@ -60,10 +80,10 @@ function convertRun(text, state) {
   while (i < text.length) {
     const lt = text.indexOf('<', i);
     if (lt === -1) {
-      out += text.slice(i);
+      out += escapeLiteralBrackets(text.slice(i));
       break;
     }
-    out += text.slice(i, lt);
+    out += escapeLiteralBrackets(text.slice(i, lt));
     const tagMatch = /^<([a-zA-Z][\w-]*)\b([^>]*)>/.exec(text.slice(lt));
     if (!tagMatch) throw new UnknownTagError('<', text.slice(lt, lt + 40));
     const openTag = tagMatch[0];
@@ -174,7 +194,7 @@ function invertRun(run, field) {
       break;
     }
     out += run.slice(i, start);
-    const head = /^\[\[(i|b|sub|sup|em|MEDIA):/.exec(run.slice(start));
+    const head = /^\[\[(i|b|sub|sup|em|MEDIA|lb|rb):/.exec(run.slice(start));
     if (!head) throw new MarkerError('stray [[ in run', run.slice(start, start + 30));
     const type = head[1];
     const bodyStart = start + head[0].length;
@@ -191,6 +211,10 @@ function invertRun(run, field) {
       const wrap = field.wraps[pm[2]];
       if (!wrap) throw new MarkerError(`unknown wrap id ${pm[2]}`, run.slice(start, start + 30));
       out += wrap.open + invertRun(pm[1], field) + wrap.close;
+    } else if (type === 'lb') {
+      out += '[';
+    } else if (type === 'rb') {
+      out += ']';
     } else {
       out += `<${type}>${invertRun(body, field)}</${type}>`;
     }

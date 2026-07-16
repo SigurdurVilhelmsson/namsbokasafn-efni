@@ -101,6 +101,14 @@ describe('fieldToHtml — inversion and the round-trip law', () => {
     '<p>Compound <b>D</b>:</p>\n<ul style="list-style-type:none">\n<li><sup>13</sup>C NMR: 9.7 <i>δ</i></li>\n</ul>',
     '<figure id="fig-00202"><img src="https://x.test/a.jpg" alt="A molecule"></figure>',
     'A &gt; B<br>C &nbsp; <span class="magenta-text">2</span>',
+    // Corpus sweep find (item 9 T7): literal '[' immediately before an inline
+    // tag collides with the [[i:...]] marker delimiter — "[<i>α</i>]" became
+    // "[[[i:α]]]" and broke re-parsing. Real corpus shape (05-03-OC-P06).
+    'Calculate [<i>α</i>]<sub>D</sub> for coniine.',
+    // Two adjacent bracketed inline runs (real corpus shape, 30-07-OC-P07).
+    'order [<i>x</i>,<i>y</i>], and tell whether',
+    // Literal brackets with no adjacent markup at all must also survive.
+    'An antarafacial [1,7] sigmatropic rearrangement',
   ];
   for (const h of CASES) {
     it(`round-trips: ${h.slice(0, 40)}…`, () => {
