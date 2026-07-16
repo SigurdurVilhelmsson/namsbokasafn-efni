@@ -81,3 +81,25 @@ eda42a2b docs(6b): register note — adversarial review + 11 fixes, suite 2639
 **Why:** The detection gate surfaced BIO-EX3 — processExercise drops multiple-choice options across ~208/259 biology modules (34 lists/9 extracted modules flagged) + 12 dup para seg-ids in frozen chem. Mechanism = structural list-item coverage (content-coverage rejected by go/no-go: legacy marker dialects). Adversarial review found+fixed 11 issues; container-skip verified on real m66534. NEXT SESSION: the processExercise *fix* PR (recover dropped options) — FIRST run the frozen-book `<list>`-in-`<problem>` safety sweep before touching the extractor (BIO-EX2: don't renumber frozen chem seg-ids). Resume dashboard = MEMORY.md ACTIVE RESUME + [[bio-review-option-drop]].
 
 ---
+
+## 2026-07-16 - Item 8 PR1 (B3 + semantic #15 dup gate) shipped (PR #288); next = D2 (PR2)
+
+**Branch:** main (a7e0c746) — item 8 PR1 merged; docs branch docs/item8-pr1-shipped for this snapshot
+**Modified:** (docs only: campaign plan item-8 status + this journal)
+
+**Recent commits (item 8 PR1, merged as #288):**
+- 8d79092c docs(item8/B3): @param JSDoc + module-level cancellation note (final review)
+- 5ab61ad2 docs(item8/#15): document canonical dup-seg-id policy; correct register count
+- 52ea6ba9 test(item8/#15): hermetic mixed real/benign dup gate test
+- 4e3156f2 feat(item8/#15): gate fails on real dups only; benign reported informationally
+- 6cbc36ce feat(item8/#15): classify duplicate seg-ids benign vs real by visible text
+- ca77002a feat(item8/B3): per-module + run-summary bracket-marker delta reporting
+- 36807d9d feat(item8/B3): countBracketMarkers + bracketMarkerDelta helpers
+
+**Why:** Two additive boundary guards ahead of biology intake — no content re-processed. B3 surfaces inline bracket-marker loss at the MT producer (non-gating). #15 makes the pre-freeze dup-seg-id gate content-aware: fail only on `real` (different-words) drops, tolerate `benign` (same visible text, incl. `[[MATH:N]]`-only diffs).
+
+**Key finding (drove the #15 redesign mid-plan):** the 6b register's "12 chem dups / 4 modules" was a partial observation. The live gate shows **285 rawDup / 83 modules — but ALL benign** (zero content drops). So #15 shipped as a semantic (visible-text) check with **no allowlist**; `verify-extraction-coverage --book efnafraedi-2e` now exits 0 where it false-failed before. Register + `seg-markers.cjs` corrected.
+
+**Process:** brainstorm → spec (self-reviewed; revised on the 285-dup finding, user-signed-off) → plan (complete code per step) → subagent-driven TDD (5 impl tasks + task reviews + 1 fix for a real/benign-split test gap) → independent final review (opus, merge-ready) → PR #288. SDD ledger: `.superpowers/sdd/progress.md`.
+
+**NEXT:** item 8 PR2 = D2 (shared HANDLED_INLINE/BLOCK lib; behavior-preserving refactor; spec §D2 written). Then Phase-2 #9 (D3 os-embed), #10 (renderer bio-watch, must-survive), #11 (vefur embed CSS, must-survive). Deferred: GATE-1 (gate modulesMissingSource:21), REEQ-1 (normalizeVisibleText nested-bracket term).
