@@ -80,6 +80,7 @@ function main() {
   const modules = {};
   let missingSource = 0;
   let parseErrors = 0;
+  let benignDupTotal = 0;
   for (const dir of chapterDirs(forMtRoot, args.chapter)) {
     const segDir = path.join(forMtRoot, dir);
     if (!fs.existsSync(segDir)) continue;
@@ -97,6 +98,7 @@ function main() {
           fs.readFileSync(srcFile, 'utf8'),
           fs.readFileSync(path.join(segDir, file), 'utf8')
         );
+        benignDupTotal += r.dupFindings.rawDup.filter((d) => d.kind === 'benign').length;
         if (r.hasFindings) modules[moduleId] = { chapter: dir, ...r };
       } catch (e) {
         parseErrors++;
@@ -116,12 +118,14 @@ function main() {
       (s, m) =>
         s +
         (modules[m].dupFindings
-          ? modules[m].dupFindings.sourceDup.length + modules[m].dupFindings.rawDup.length
+          ? modules[m].dupFindings.sourceDup.length +
+            modules[m].dupFindings.rawDup.filter((d) => d.kind === 'real').length
           : 0),
       0
     ),
     parseErrors,
     modulesMissingSource: missingSource,
+    benignDuplicateSegIds: benignDupTotal,
   };
 
   if (args.json) {
@@ -143,8 +147,11 @@ function main() {
       for (const d of e.dupFindings.sourceDup) {
         console.log(`  ${m} (${e.chapter}): duplicate source id ${d.id} (${d.count}×)`);
       }
-      for (const d of e.dupFindings.rawDup) {
-        console.log(`  ${m} (${e.chapter}): duplicate seg-id ${d.segId} (${d.count}×)`);
+      for (const d of e.dupFindings.rawDup.filter((x) => x.kind === 'real')) {
+        console.log(
+          `  ${m} (${e.chapter}): duplicate seg-id ${d.segId} (${d.count}×) — DIFFERENT visible text ` +
+            `[A: ${JSON.stringify(d.sampleA)} | B: ${JSON.stringify(d.sampleB)}]`
+        );
       }
     }
     console.log(
@@ -153,6 +160,12 @@ function main() {
         (summary.parseErrors ? `; ${summary.parseErrors} parse error(s)` : '') +
         '.'
     );
+    if (benignDupTotal > 0) {
+      console.log(
+        `Note: ${benignDupTotal} benign duplicate seg-id(s) (identical visible text — depth-blind ` +
+          `duplicate emission; non-blocking).`
+      );
+    }
   }
   // process.exitCode (not process.exit) so a large --json payload fully flushes to a pipe
   // before the process exits. Exit 1 on any finding (drops, dups, or parse errors).

@@ -1,4 +1,7 @@
 import { describe, it, expect } from 'vitest';
+import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+import { join, dirname } from 'node:path';
 import { checkDuplicateSegIds, analyzeModule } from '../lib/extraction-coverage.js';
 
 const seg = (id, text) => `<!-- SEG:${id} -->\n${text}\n`;
@@ -41,5 +44,19 @@ describe('analyzeModule — hasFindings counts only real dups', () => {
   it('flags when a duplicate is real', () => {
     const segText = seg('m1:para:p1', 'alpha') + seg('m1:para:p1', 'beta gamma');
     expect(analyzeModule(cnxml, segText).hasFindings).toBe(true);
+  });
+});
+
+describe('verify-extraction-coverage gate — benign dups do not fail', () => {
+  const repoRoot = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
+  const cli = join(repoRoot, 'tools', 'verify-extraction-coverage.js');
+
+  it('exits 0 on frozen efnafraedi-2e (285 benign dups, 0 real)', () => {
+    // Throws on non-zero exit; passing means exit 0.
+    const out = execFileSync('node', [cli, '--book', 'efnafraedi-2e'], {
+      cwd: repoRoot,
+      encoding: 'utf8',
+    });
+    expect(out).toMatch(/benign duplicate seg-id/i);
   });
 });
