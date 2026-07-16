@@ -89,85 +89,90 @@ Output surface:
 
 ### Problem
 
-Two behaviors coexist with no documented single policy, and the enforcement half has no way
-to distinguish a benign known duplicate from a new one:
+Two behaviors coexist with no documented single policy, and the enforcement half measures the
+wrong thing:
 
 - `seg-markers.cjs` `parseSegmentsMap(content, { duplicates: 'first' })` **silently** keeps
   the first occurrence of a repeated seg-id and drops the rest (the runtime consumers — inject,
   TM, etc. — all use this).
 - The 6b coverage gate (`verify-extraction-coverage.js` → `analyzeModule` →
   `checkDuplicateSegIds`) **already fails** on duplicates: any module with a `sourceDup` or
-  `rawDup` finding lands in `hasFindings`, and the CLI sets `process.exitCode = 1` on any
-  flagged module. There is **no allowlist**.
+  `rawDup` finding lands in `hasFindings`, and the CLI sets `process.exitCode = 1`. The dup check
+  counts **raw seg-id repetition** — it cannot tell a benign duplicate from one that drops content.
 
-The 6b calibration run found **12 duplicate para seg-ids across 4 frozen chemistry modules**
-(`rawDup` class — the same source id emitted twice by the depth-blind renderer/extractor; the
-source defines it once; identical text, so `parseSegmentsMap`'s `'first'` makes them benign at
-runtime). Because the gate has no allowlist, **running it on frozen chemistry exits 1 today** —
-a false alarm on content we have deliberately decided not to touch. Meanwhile a *future*
-duplicate during biology intake could carry *different* text and silently drop content at inject
-— exactly what the gate should catch.
+**Corrected measurement (2026-07-16, live gate run — supersedes the 6b register's "12 dups /
+4 modules", which was a partial observation).** Frozen `efnafraedi-2e` actually has **285
+`rawDup` seg-ids across 83 modules** (0 `sourceDup`). Verified against the segment text:
+**all 285 are benign** — 214 byte-identical, 71 differ *only* in `[[MATH:N]]` placeholder
+indices (same visible words). After normalizing opaque `[[MATH]]`/`[[MEDIA]]` placeholders with
+`normalizeVisibleText`, **all 285 have identical visible text — zero real content drops.** This
+is the depth-blind duplicate-*emission* artifact: the same unique source element is emitted twice
+into `02-for-mt`; `'first'`-wins picks the correct words and the source element is filled once, so
+nothing reaches the reader wrong (consistent with the 126-PERFECT fidelity count).
 
-So the missing piece is not enforcement (it exists) but a **grandfather mechanism** that keeps
-the 12 benign frozen dups green while still failing on any new duplicate.
+So the gate's current raw-repetition test both **false-fails on 285 benign chem dups** *and*
+would **conflate** a benign artifact with a real content drop. The fix is to measure **content**,
+not form.
 
-### Decision (user-confirmed): forbid forward, grandfather existing
+### Decision (user-confirmed): forbid forward, grandfather existing — implemented semantically
 
-One documented policy: **seg-ids must be unique per module.**
+One documented policy: **a seg-id's occurrences must carry the same visible content.**
 - **Runtime tolerance:** `parseSegmentsMap`'s `'first'` dedup stays as-is and is documented as
   the deliberate runtime tolerance, so already-frozen benign duplicates never break inject.
-- **Freeze-boundary enforcement (already present):** the pre-freeze gate fails (exit 1) on a
-  duplicate seg-id — with a new allowlist carve-out so a *known, grandfathered* duplicate is
-  downgraded to informational and does not fail the gate.
+- **Freeze-boundary enforcement:** the pre-freeze gate fails (exit 1) only when a duplicate
+  seg-id's occurrences have **different normalized visible text** (a real content drop). A
+  duplicate whose occurrences share the same visible text — byte-identical, or differing only in
+  opaque `[[MATH:N]]`/`[[MEDIA:N]]` indices — is **benign**: reported as an informational note,
+  never a failure. Grandfathering happens by *semantics*, so no allowlist and no per-book snapshot
+  is needed; every current benign dup passes and every future content-dropping dup fails.
 
 ### Design
 
-- **Allowlist:** `books/<book>/dup-segid-allowlist.json` — mirrors the existing
-  `residue-allowlist.json` pattern. Shape:
-  ```json
-  {
-    "generated": "2026-07-16",
-    "reason": "Pre-existing benign duplicate para seg-ids in frozen chemistry (rawDup; identical text; depth-blind duplicate-render class; 6b BIO finding). Do not extend without a content decision.",
-    "entries": [
-      { "module": "m68716", "kind": "rawDup", "segId": "m68716:para:fs-idm9637984", "note": "source defines once; emitted 2×; identical text" }
-    ]
-  }
-  ```
-  Populated from the actual 12 (enumerated during implementation from a live
-  `verify-extraction-coverage --book efnafraedi-2e --json` run).
+- **`checkDuplicateSegIds` gains visible-text classification.** For each seg-id that appears more
+  than once, collect all occurrence texts, run each through `normalizeVisibleText`
+  (import from `verify-reextract-equivalence.js` — same normalizer the 6b coverage check already
+  reuses), and classify:
+  - all normalized texts equal → **benign** (`{ segId, count, kind: 'benign' }`).
+  - any differ → **real** (`{ segId, count, kind: 'real', sampleA, sampleB }`).
 
-  **Match key precisely:** `segId` is the exact string the finding reports — for `kind:"rawDup"`
-  the full `module:type:elementId` seg-id (`RAW_SEG_MARKER` capture); for `kind:"sourceDup"` the
-  source element `id`. The gate matches `(module, kind, segId)` so the two dimensions never
-  cross-match. The 12 known dups are all `rawDup`.
-- **Gate change:** `verify-extraction-coverage.js` loads the book's allowlist (absent file →
-  empty) and, for each module's `dupFindings`, splits entries into **flagged** (not allowlisted)
-  and **tolerated** (allowlisted). `hasFindings` / the exit-1 decision count only flagged dups;
-  tolerated dups print as an informational `tolerated` note — mirroring the residue gate's
-  `stats.residues` vs `stats.tolerated` split. List-drop findings are unaffected.
-- **Policy doc:** a header comment in `seg-markers.cjs` states the canonical policy (seg-ids
-  unique; `'first'` = deliberate runtime tolerance; the pre-freeze gate + allowlist = the
-  enforcement seam) and cross-references the gate. This resolves the "do not consolidate here"
-  note in `extraction-coverage.js`.
-
-Note: the allowlist match key is the **raw seg-id** as `checkDuplicateSegIds` reports it
-(`rawDup.segId` / `sourceDup.id`), scoped per book+module — confirmed against the live gate
-output during implementation so the 12 match exactly.
+  This requires the *segment text*, which `checkDuplicateSegIds` already receives (`segText`
+  param). The `rawDup` raw-count logic stays (it is what surfaces the repetition); the new step
+  only labels each raw dup benign-vs-real. `sourceDup` (a source `id` on >1 element) has no
+  segment text to compare and remains a hard finding (it is a genuine source-data collision; none
+  exist in chemistry today).
+- **Gate change.** `verify-extraction-coverage.js`: only `real` rawDups and any `sourceDup`
+  count toward `hasFindings` / exit 1. `benign` rawDups print as an informational
+  `benign duplicate seg-id (N×, identical visible text)` note and a summary count — mirroring the
+  residue gate's `stats.residues` vs `stats.tolerated` split. List-drop findings are unaffected.
+- **Policy doc.** A header comment in `seg-markers.cjs` states the canonical policy (a seg-id's
+  occurrences must share visible content; `'first'` = deliberate runtime tolerance; the pre-freeze
+  gate = the enforcement seam, content-based). This resolves the "do not consolidate here" note in
+  `extraction-coverage.js`.
 
 ### Scope guard (frozen content)
 
-This change adds **no** re-extraction and does **not** modify any `02-*`/`03-*` chemistry file.
-The 12 dups are recorded in the allowlist exactly as they exist; chemistry seg-ids are
-untouched. (The alternative "fix the 12" was rejected — it would renumber 4 frozen modules =
-the BIO-EX2 export-corpus risk, for dups that are currently benign.)
+This change adds **no** re-extraction, **no** allowlist file, and modifies **no** `books/` file.
+Chemistry's 285 benign dups pass by measurement, untouched. (The alternative "fix the dups" was
+rejected — it would renumber frozen modules = the BIO-EX2 export-corpus risk, for dups that lose
+no content.)
 
 ### Acceptance
 
-- Unit: the gate fails (exit 1) on a module with a non-allowlisted duplicate seg-id.
-- Unit: the gate passes (dup downgraded to `tolerated`) when the duplicate is allowlisted.
-- Integration: the gate run over frozen `efnafraedi-2e` (with the 12 grandfathered) is green.
-- The runtime path (`parseSegmentsMap` / inject) is unchanged — verified by the existing suite
-  staying green.
+- Unit (`checkDuplicateSegIds`): two occurrences of one seg-id with identical text → classified
+  `benign`; with different words → `real`; with same words but different `[[MATH:N]]` index →
+  `benign`.
+- Unit (gate): a module with a `real` dup exits 1; a module whose only dups are `benign` exits 0
+  (with an informational note).
+- Integration: `verify-extraction-coverage --book efnafraedi-2e` exits **0** (285 benign, 0 real),
+  where it exits 1 today — the concrete proof the gate stopped false-failing on frozen chemistry.
+- The runtime path (`parseSegmentsMap` / inject) is unchanged — existing suite stays green.
+
+### Secondary (note, not a task here)
+
+The same gate run reported `modulesMissingSource: 21` — modules the gate could not match to a
+`01-source` file. The file-direct dup scan above covered all `02-for-mt` regardless, so the
+285/all-benign result is complete. The gate's own source-matching gap is logged for a later look
+(does not block this work).
 
 ---
 
@@ -220,9 +225,12 @@ extract/render drift the campaign has repeatedly fixed.
 ## Out of scope (explicitly)
 
 - No re-extraction, re-MT, re-render, or content delivery.
-- No change to `parseSegmentsMap`'s runtime dedup behavior (only its documentation + a
-  separate gate).
-- No fixing of the 12 frozen-chem duplicate seg-ids (grandfathered, not repaired).
+- No change to `parseSegmentsMap`'s runtime dedup behavior (only its documentation).
+- No allowlist file and no `books/` change for #15 — benign dups pass by semantic measurement.
+- No fixing of the 285 benign frozen-chem duplicate seg-ids (they lose no content; repairing
+  would renumber frozen modules = BIO-EX2 risk).
+- No fix for the depth-blind duplicate-*emission* root cause, nor the gate's
+  `modulesMissingSource` source-matching gap (both logged for later).
 - No forced merge of `BLOCK_TAGS` / `ITEM_INLINE_OK` into the canonical set where they are
   genuinely different concepts.
 
