@@ -285,6 +285,61 @@ export function countInlineMarkers(text) {
   return matches.length;
 }
 
+/** The inline bracket marker types that ride through the MT API as `[[<type>:…]]`. */
+export const BRACKET_MARKER_TYPES = [
+  'i',
+  'b',
+  'sub',
+  'sup',
+  'u',
+  'em',
+  'link',
+  'xref',
+  'docref',
+  'term',
+  'fn',
+];
+
+/**
+ * Tally each inline bracket marker by its opening token `[[<type>:`. Counting the
+ * type-prefixed opener is robust to nesting (`[[i:[[sub:x]]]]`) and to the
+ * `|id`/`|class`/`|url` payloads, and never double-counts a closing delimiter.
+ * @param {string} text
+ * @returns {Record<string, number>}
+ */
+export function countBracketMarkers(text) {
+  const counts = {};
+  const s = String(text || '');
+  for (const type of BRACKET_MARKER_TYPES) {
+    counts[type] = (s.match(new RegExp(`\\[\\[${type}:`, 'g')) || []).length;
+  }
+  return counts;
+}
+
+/**
+ * Per-type delta of inline bracket markers, output minus input. Only types whose
+ * count changed are present. A negative value is a dropped marker (the ~2.3%-loss
+ * class the paired term/fn round-trip does not cover for i/b/sub/sup/u/em/link/xref/
+ * docref); a positive value is a spurious API duplication.
+ * @returns {Record<string, number>}
+ */
+export function bracketMarkerDelta(input, output) {
+  const a = countBracketMarkers(input);
+  const b = countBracketMarkers(output);
+  const delta = {};
+  for (const type of BRACKET_MARKER_TYPES) {
+    if (a[type] !== b[type]) delta[type] = b[type] - a[type];
+  }
+  return delta;
+}
+
+/** One-line human note for a non-empty bracket delta, or null when clean. */
+export function formatBracketDelta(label, delta) {
+  const parts = Object.entries(delta).map(([t, n]) => `${t} ${n > 0 ? '+' : ''}${n}`);
+  if (parts.length === 0) return null;
+  return `${label}: bracket-marker delta (output vs input) — ${parts.join(', ')}`;
+}
+
 /**
  * Put every SEG marker back on its own line.
  *
