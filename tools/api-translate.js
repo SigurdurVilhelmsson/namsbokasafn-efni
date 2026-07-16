@@ -255,6 +255,19 @@ export function discoverModules(dir) {
   });
 }
 
+/**
+ * Exercise segments (item 9/D3): one optional exercises-segments.en.md per
+ * chapter dir, produced by exercise-extract.js. Discovered explicitly —
+ * discoverModules' m\d+ regex is load-bearing for module identity and must
+ * not loosen.
+ */
+export function discoverExercisesFile(dir) {
+  const filename = 'exercises-segments.en.md';
+  const p = path.join(dir, filename);
+  if (!fs.existsSync(p)) return null;
+  return { moduleId: 'exercises', filename, path: p };
+}
+
 // ─── Validation ─────────────────────────────────────────────────────
 
 /**
@@ -1074,6 +1087,12 @@ async function main() {
         filename: chapterMetaFile,
         path: chapterMetaPath,
       });
+    }
+
+    // Exercise segments (item 9/D3) ride the same per-chapter MT path.
+    const exercisesEntry = discoverExercisesFile(inputDir);
+    if (exercisesEntry) {
+      modules.push(exercisesEntry);
     }
 
     // Filter to specific module if requested
