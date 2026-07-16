@@ -72,21 +72,23 @@ describe('assembleBook — fail-loud invariants', () => {
     expect(res.written).toEqual([]);
     expect(res.skipped.length).toBe(1);
     expect(res.skipped[0].nickname).toBe('01-03-OC-P01');
+    expect(
+      fs.existsSync(
+        path.join(book, '03-translated', 'mt-preview', 'exercises', '01-03-OC-P01.json')
+      )
+    ).toBe(false);
   });
 
   it('marker corruption in IS → exercise skipped, no sidecar', () => {
-    const book = makeBook({ mutateIs: (is) => is.replaceAll('[[sub:', '[[oops:') });
+    const book = makeBook({ mutateIs: (is) => is.replaceAll('[[i:', '[[oops:') });
     const res = assembleBook(book, { track: 'mt-preview' });
-    // If the fixture has no [[sub: markers this mutate is a no-op — the test
-    // asserts on written-or-skipped consistency instead of failing silently:
-    expect(res.written.length + res.skipped.length).toBe(1);
-    if (res.skipped.length === 1) {
-      expect(
-        fs.existsSync(
-          path.join(book, '03-translated', 'mt-preview', 'exercises', '01-03-OC-P01.json')
-        )
-      ).toBe(false);
-    }
+    expect(res.skipped.length).toBe(1);
+    expect(res.written).toEqual([]);
+    expect(
+      fs.existsSync(
+        path.join(book, '03-translated', 'mt-preview', 'exercises', '01-03-OC-P01.json')
+      )
+    ).toBe(false);
   });
 
   it('untranslated (identical) segments → real residue → skipped', () => {

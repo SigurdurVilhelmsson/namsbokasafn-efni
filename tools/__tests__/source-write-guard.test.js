@@ -31,7 +31,6 @@ describe('01-source overwrite path removed (PROV-1)', () => {
       'cnxml-render-fidelity-check.js', // read-only: reads source CNXML; writes a baseline JSON at the book root
       'cnxml-render.js', // read-only: copies FROM 01-source/media INTO 05-publication/ (never writes 01-source)
       'download-source.js', // writes: the ONLY guarded CNXML writer (organizeSourceFiles, refuse-overwrite guarded)
-      'exercise-assemble.js', // no-op: docstring states "Never touches 01-source" but never reads/writes it — everything rides the 02-structure skeleton sidecar (item 9 D3)
       'exercise-extract.js', // read-only: reads the exercises cache; writes only 02-for-mt/02-structure (item 9 D3)
       'generate-image-mapping.js', // read-only: scans source CNXML for image basenames; writes book-level media/image-mapping.json
       'generate-source-manifest.js', // writes: the .source-manifest.json provenance file (not CNXML)

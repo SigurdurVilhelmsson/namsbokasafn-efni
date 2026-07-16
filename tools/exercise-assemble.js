@@ -10,7 +10,8 @@
  * field's skeleton, and writes 03-translated/{track}/exercises/{nickname}.json
  * shaped exactly like the fields resolveOsEmbed reads from source.
  *
- * Never touches 01-source (everything needed rides the skeleton sidecar).
+ * Never reads or writes the original OpenStax source tree (everything needed
+ * rides the skeleton sidecar).
  *
  * Fail-loud invariants (spec): a missing segment, marker corruption, or a
  * real EN residue skips THAT exercise (no sidecar — the renderer's EN
@@ -99,6 +100,7 @@ export function assembleBook(bookDir, opts) {
     fs.mkdirSync(outDir, { recursive: true });
 
     for (const [nickname, entry] of Object.entries(skeletonDoc.exercises)) {
+      let tmpPath = null;
       try {
         const assembled = {}; // fieldKey -> IS html
         for (const [fieldKey, fieldMeta] of Object.entries(entry.fields)) {
@@ -147,11 +149,14 @@ export function assembleBook(bookDir, opts) {
 
         // Temp+rename: a sidecar either exists complete or not at all.
         const outPath = path.join(outDir, `${nickname}.json`);
-        const tmpPath = `${outPath}.tmp`;
+        tmpPath = `${outPath}.tmp`;
         fs.writeFileSync(tmpPath, JSON.stringify(sidecar, null, 2) + '\n', 'utf8');
         fs.renameSync(tmpPath, outPath);
         written.push(outPath);
       } catch (err) {
+        try {
+          if (tmpPath && fs.existsSync(tmpPath)) fs.unlinkSync(tmpPath);
+        } catch {}
         skipped.push({ nickname, reason: err.message });
         log(`  ✗ ${nickname}: ${err.message}`);
       }
