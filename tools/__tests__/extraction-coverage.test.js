@@ -286,6 +286,31 @@ describe('verify-extraction-coverage CLI', () => {
     }
   });
 
+  it('separates a real dup from a benign dup within the same module (mixed --root)', () => {
+    const root = seedBook('covtest', {
+      'ch01/mMix': {
+        cnxml: doc('<para id="bng">same</para><para id="rl">alpha</para>'),
+        seg:
+          '<!-- SEG:mMix:para:bng -->\nsame\n<!-- SEG:mMix:para:bng -->\nsame\n' +
+          '<!-- SEG:mMix:para:rl -->\nalpha\n<!-- SEG:mMix:para:rl -->\nbeta gamma',
+      },
+    });
+    try {
+      const { code, stdout } = runCli(['--book', 'covtest', '--root', root, '--json']);
+      expect(code).toBe(1); // the real dup fails the gate
+      const report = JSON.parse(stdout);
+      expect(report.summary.duplicateSegIds).toBe(1); // only the real dup counted
+      expect(report.summary.benignDuplicateSegIds).toBe(1); // the benign dup tallied separately
+
+      // Human-mode print loop: the real dup gets a finding line, the benign one doesn't.
+      const human = runCli(['--book', 'covtest', '--root', root]);
+      expect(human.stdout).toContain('mMix:para:rl');
+      expect(human.stdout).not.toContain('mMix:para:bng');
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  });
+
   it('isolates a malformed cnxml: records the parse error and still checks the rest of the batch', () => {
     const root = seedBook('covtest', {
       'ch01/mBad': { cnxml: '<document><content><para id="x">unclosed', seg: seg('para:x') },
