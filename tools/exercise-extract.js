@@ -117,7 +117,7 @@ export function extractBook(bookDir, opts = {}) {
   let segmentCount = 0;
   let exerciseCount = 0;
 
-  for (const [chDir, list] of [...byChapter.entries()].sort()) {
+  for (const [chDir, list] of [...byChapter.entries()].sort(([a], [b]) => a.localeCompare(b))) {
     const segLines = [];
     const skeleton = { generated_by: 'exercise-extract.js', exercises: {} };
 
@@ -127,6 +127,14 @@ export function extractBook(bookDir, opts = {}) {
       try {
         const entryFields = {};
         const fieldDefs = exerciseFields(exercise);
+        // Buffer this exercise's SEG lines locally — commit-or-discard. A
+        // throw from a LATER field must never leave an EARLIER field's
+        // already-converted lines in the chapter-wide segLines array; the
+        // exercise is extracted atomically or not at all (a leaked orphan
+        // segment would waste MT budget and can never be reassembled, since
+        // its skeleton entry never gets written).
+        const exSegLines = [];
+        let exSegmentCount = 0;
         for (const fd of fieldDefs) {
           const field = htmlToField(fd.html);
           entryFields[fd.key] = {
@@ -136,10 +144,12 @@ export function extractBook(bookDir, opts = {}) {
             wraps: field.wraps,
           };
           field.runs.forEach((run, k) => {
-            segLines.push(`<!-- SEG:${nickname}:${fd.type}:${fd.elementId(k)} -->`, run, '');
-            segmentCount++;
+            exSegLines.push(`<!-- SEG:${nickname}:${fd.type}:${fd.elementId(k)} -->`, run, '');
+            exSegmentCount++;
           });
         }
+        segLines.push(...exSegLines);
+        segmentCount += exSegmentCount;
         skeleton.exercises[nickname] = {
           source_uid: exercise.uid || null,
           solutions_are_public: exercise.solutions_are_public || false,

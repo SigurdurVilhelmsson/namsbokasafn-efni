@@ -9,7 +9,13 @@
  * - 01-03-OC-P01.json: multi-question + stimulus + solutions (required)
  * - 18a-04-OC-P01.json: 18a chapter-token oddity (required)
  * - 01-04-OC-P04.json: img-bearing stem (selected for image property)
- * - 15-99-OC-AP33.json: table-bearing solution (selected for table property)
+ * - 15-99-OC-AP33.json: table-bearing STEM (the `<table>` lives in
+ *   questions[0].stem_html, not a solution — this exercise also has
+ *   solutions_are_public: false, i.e. no solutions at all. Corpus-verified:
+ *   zero exercises anywhere have a table inside a solution, so a
+ *   table-in-solution fixture is unsatisfiable from real data. The converter
+ *   (htmlToField) is field-agnostic, so stem coverage exercises the same
+ *   code path a table-bearing solution would.
  * - 01-99-OC-AP04.json: solutions_are_public=false (selected for privacy property)
  */
 
@@ -105,5 +111,83 @@ describe('extractBook', () => {
       'utf8'
     );
     expect(seg).not.toMatch(/:sol:/);
+  });
+
+  it('gates out solutions via a synthesized solutions_are_public=false mutation of a real solutions-bearing fixture', () => {
+    // 01-99-OC-AP04.json (above) has NO collaborator_solutions at all, so that
+    // test would still pass even if the `solutionsPublic &&` guard were
+    // deleted. This test copies a fixture that HAS real solutions
+    // (01-03-OC-P01.json) and flips its solutions_are_public flag in-memory
+    // — a synthesized mutation for this test only. The on-disk fixture file
+    // itself is never touched.
+    const book = makeBook([]);
+    const src = JSON.parse(fs.readFileSync(path.join(FIXTURES, '01-03-OC-P01.json'), 'utf8'));
+    expect(src.solutions_are_public).toBe(true); // sanity: real fixture has public solutions
+    src.solutions_are_public = false; // synthesized mutation, in-memory only
+    fs.writeFileSync(
+      path.join(book, '01-source', 'exercises', '01-05-OC-P99.json'),
+      JSON.stringify(src)
+    );
+    const res = extractBook(book, {});
+    expect(res.failures).toEqual([]);
+    const seg = fs.readFileSync(
+      path.join(book, '02-for-mt', 'ch01', 'exercises-segments.en.md'),
+      'utf8'
+    );
+    expect(seg).not.toMatch(/:sol:/);
+    const skel = JSON.parse(
+      fs.readFileSync(path.join(book, '02-structure', 'ch01', 'exercises-skeleton.json'), 'utf8')
+    );
+    const fieldKeys = Object.keys(skel.exercises['01-05-OC-P99'].fields);
+    expect(fieldKeys.some((k) => k.startsWith('sol:'))).toBe(false);
+  });
+
+  it("never leaks a failing exercise's already-converted fields into the shared segments/skeleton (commit-or-discard)", () => {
+    // Regression for a partial-write bug: htmlToField was called per-field
+    // inside the per-exercise try, and successful fields were pushed
+    // straight into the chapter-wide segLines array as they converted. If a
+    // LATER field in the same exercise threw, the earlier field's SEG lines
+    // had already been written to the shared array — orphaning them (the
+    // exercise itself lands in `failures` and gets no skeleton entry) and
+    // wasting MT budget on segments nothing can ever reassemble.
+    const book = makeBook(['01-03-OC-P01.json']); // clean exercise, must survive intact
+    const badExercise = {
+      uid: '99999@1',
+      nickname: '01-05-OC-BAD1',
+      solutions_are_public: false,
+      stimulus_html: 'Valid stimulus text.', // converts fine — would leak pre-fix
+      questions: [
+        {
+          id: 900001,
+          stem_html: '<blockquote>unsupported tag</blockquote>', // outside the tag inventory
+          collaborator_solutions: [],
+        },
+      ],
+    };
+    fs.writeFileSync(
+      path.join(book, '01-source', 'exercises', '01-05-OC-BAD1.json'),
+      JSON.stringify(badExercise)
+    );
+
+    const res = extractBook(book, {});
+
+    expect(res.failures.map((f) => f.nickname)).toEqual(['01-05-OC-BAD1']);
+
+    const seg = fs.readFileSync(
+      path.join(book, '02-for-mt', 'ch01', 'exercises-segments.en.md'),
+      'utf8'
+    );
+    // ZERO SEG: lines for the failing nickname — including the stimulus
+    // field, which converted successfully before the later field threw.
+    expect(seg).not.toMatch(/SEG:01-05-OC-BAD1:/);
+
+    const skel = JSON.parse(
+      fs.readFileSync(path.join(book, '02-structure', 'ch01', 'exercises-skeleton.json'), 'utf8')
+    );
+    expect(skel.exercises['01-05-OC-BAD1']).toBeUndefined();
+
+    // the clean exercise is still fully present:
+    expect(seg).toContain('<!-- SEG:01-03-OC-P01:stimulus:b0 -->');
+    expect(skel.exercises['01-03-OC-P01']).toBeDefined();
   });
 });
