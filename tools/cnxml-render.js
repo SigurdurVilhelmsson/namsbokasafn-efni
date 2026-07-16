@@ -144,6 +144,25 @@ function matchLeadingTitle(content) {
 let BOOKS_DIR = 'books/efnafraedi-2e';
 let BOOK_SLUG = 'efnafraedi-2e';
 
+// Item 9/D3: active publication track for os-embed sidecar preference and
+// the run's translated/fallback tally. Set from options.track (in-process
+// callers) and args.track (CLI main). Non-gating by design — an EN fallback
+// is counted and reported, never a failure (organic ships all-EN today).
+let RENDER_TRACK = 'mt-preview';
+const OS_EMBED_STATS = { translated: 0, fallback: 0 };
+let BOOKS_DIR_TEST_OVERRIDE = null;
+
+function _setBooksDirForTest(dir) {
+  BOOKS_DIR_TEST_OVERRIDE = dir;
+}
+function _getOsEmbedStatsForTest() {
+  return { ...OS_EMBED_STATS };
+}
+function _resetOsEmbedStatsForTest() {
+  OS_EMBED_STATS.translated = 0;
+  OS_EMBED_STATS.fallback = 0;
+}
+
 /**
  * Join a content-derived name onto a base directory, returning null if the
  * result would escape the base (e.g. a `..`-bearing exercise nickname or a
@@ -165,29 +184,41 @@ function safeJoin(baseDir, name) {
 // =====================================================================
 
 /**
- * Look up cached exercise content for an os-embed reference.
+ * Look up exercise content for an os-embed reference: the translated sidecar
+ * for the active track when present (item 9/D3), else the EN source cache —
+ * counted as a fallback, never a failure.
  * Returns { stimulus, questions, solutionsPublic } or null if not cached.
  */
 function resolveOsEmbed(nickname) {
-  // BOOKS_DIR points to books/{bookSlug}
-  const exercisesDir = path.join(BOOKS_DIR, '01-source', 'exercises');
-  const cachePath = safeJoin(exercisesDir, `${nickname}.json`);
-  if (!cachePath || !fs.existsSync(cachePath)) return null;
+  const base = BOOKS_DIR_TEST_OVERRIDE || BOOKS_DIR;
+  const readExercise = (p) => {
+    if (!p || !fs.existsSync(p)) return null;
+    try {
+      const exercise = JSON.parse(fs.readFileSync(p, 'utf-8'));
+      return {
+        stimulus: exercise.stimulus_html || '',
+        questions: (exercise.questions || []).map((q) => ({
+          id: q.id,
+          stem: q.stem_html || '',
+          solutions: (q.collaborator_solutions || []).map((s) => s.content_html || ''),
+        })),
+        solutionsPublic: exercise.solutions_are_public || false,
+      };
+    } catch {
+      return null;
+    }
+  };
 
-  try {
-    const exercise = JSON.parse(fs.readFileSync(cachePath, 'utf-8'));
-    return {
-      stimulus: exercise.stimulus_html || '',
-      questions: (exercise.questions || []).map((q) => ({
-        id: q.id,
-        stem: q.stem_html || '',
-        solutions: (q.collaborator_solutions || []).map((s) => s.content_html || ''),
-      })),
-      solutionsPublic: exercise.solutions_are_public || false,
-    };
-  } catch {
-    return null;
+  const translated = readExercise(
+    safeJoin(path.join(base, '03-translated', RENDER_TRACK, 'exercises'), `${nickname}.json`)
+  );
+  if (translated) {
+    OS_EMBED_STATS.translated++;
+    return translated;
   }
+  const en = readExercise(safeJoin(path.join(base, '01-source', 'exercises'), `${nickname}.json`));
+  if (en) OS_EMBED_STATS.fallback++;
+  return en;
 }
 
 /**
@@ -505,6 +536,10 @@ function renderCnxmlToHtml(cnxml, options = {}) {
   // and passes it as options.embedMap, so the module global is never left empty
   // for a book that has a committed embed-mapping.json.
   if (options.embedMap) EMBED_MAP = options.embedMap;
+
+  // Item 9/D3: honor a per-call publication track so resolveOsEmbed prefers
+  // that track's translated exercise sidecar over the EN source cache.
+  if (options.track) RENDER_TRACK = options.track;
 
   // Parse CNXML
   const doc = parseCnxmlDocument(cnxml);
@@ -3082,6 +3117,7 @@ async function main() {
   const args = parseCliArgs(process.argv.slice(2));
   BOOK_SLUG = args.book;
   BOOKS_DIR = `books/${args.book}`;
+  RENDER_TRACK = args.track || 'mt-preview';
 
   // Load book-specific rendering config
   BOOK_CONFIG = getBookRenderConfig(BOOK_SLUG);
@@ -3928,6 +3964,12 @@ ${anchors}
         console.error(`Warning: could not write rollups-complete marker: ${err.message}`);
       }
     }
+
+    if (OS_EMBED_STATS.translated + OS_EMBED_STATS.fallback > 0) {
+      console.log(
+        `os-embed: ${OS_EMBED_STATS.translated} translated / ${OS_EMBED_STATS.fallback} EN-fallback`
+      );
+    }
   } catch (error) {
     console.error('Error:', error.message);
     if (args.verbose) {
@@ -3975,6 +4017,9 @@ export {
   formatTableNumber,
   renderExercise,
   _loadBookConfigForTest,
+  _setBooksDirForTest,
+  _getOsEmbedStatsForTest,
+  _resetOsEmbedStatsForTest,
   LOUD_SEAM_IGNORE,
   ITEM_INLINE_OK,
 };
