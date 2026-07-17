@@ -1170,7 +1170,7 @@ router.post(
       );
 
       // Step 2: Run inject+render pipeline (async — returns job ID for polling)
-      const existing = pipelineService.hasRunningJob(req.chapterNum, 'pipeline');
+      const existing = pipelineService.hasRunningJob(req.params.book, req.chapterNum, 'pipeline');
       if (existing) {
         return res.status(409).json({
           error: 'Pipeline already running for this chapter',

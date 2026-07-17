@@ -71,7 +71,7 @@ router.post(
     if (!params) return;
 
     // Check for already running job
-    const running = pipeline.hasRunningJob(params.chapter, 'inject');
+    const running = pipeline.hasRunningJob(params.book, params.chapter, 'inject');
     if (running) {
       return res.status(409).json({
         error: 'An inject job is already running for this chapter',
@@ -121,7 +121,7 @@ router.post(
     const params = validateParams(req, res);
     if (!params) return;
 
-    const running = pipeline.hasRunningJob(params.chapter, 'render');
+    const running = pipeline.hasRunningJob(params.book, params.chapter, 'render');
     if (running) {
       return res.status(409).json({
         error: 'A render job is already running for this chapter',
@@ -171,7 +171,7 @@ router.post(
     const params = validateParams(req, res);
     if (!params) return;
 
-    const running = pipeline.hasRunningJob(params.chapter, 'pipeline');
+    const running = pipeline.hasRunningJob(params.book, params.chapter, 'pipeline');
     if (running) {
       return res.status(409).json({
         error: 'A pipeline job is already running for this chapter',
@@ -215,9 +215,10 @@ router.post(
  * List recent pipeline jobs.
  */
 router.get('/jobs', (req, res) => {
-  const { chapter, type, status, limit } = req.query;
+  const { book, chapter, type, status, limit } = req.query;
 
   const jobsList = pipeline.listJobs({
+    book: book || undefined,
     chapter: chapter ? parseInt(chapter, 10) : undefined,
     type,
     status,

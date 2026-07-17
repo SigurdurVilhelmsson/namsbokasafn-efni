@@ -258,14 +258,19 @@ router.post('/books/register', requireAuth, requireAdmin(), async (req, res) => 
           const repo = new URL(catalogueEntry.repoUrl).pathname.slice(1);
           const collection = `${catalogueSlug}.collection.xml`;
 
-          const fetchResult = pipeline.runFetchSource({
-            catalogueSlug,
-            slug,
-            repo,
-            collection,
-            userId: req.user.id,
-          });
-          result.fetchJobId = fetchResult.jobId;
+          const alreadyFetching = pipeline.hasRunningJob(slug, null, 'fetch-source');
+          if (alreadyFetching) {
+            result.fetchJobId = alreadyFetching.id;
+          } else {
+            const fetchResult = pipeline.runFetchSource({
+              catalogueSlug,
+              slug,
+              repo,
+              collection,
+              userId: req.user.id,
+            });
+            result.fetchJobId = fetchResult.jobId;
+          }
         }
       } catch (fetchErr) {
         log.error({ err: fetchErr }, 'Auto-fetch source failed to start');
@@ -326,7 +331,7 @@ router.post('/books/:slug/fetch-source', requireAuth, requireAdmin(), (req, res)
     }
 
     // Prevent duplicate fetches
-    const existing = pipeline.hasRunningJob(null, 'fetch-source');
+    const existing = pipeline.hasRunningJob(slug, null, 'fetch-source');
     if (existing) {
       return res.status(409).json({
         error: 'Already running',

@@ -65,6 +65,7 @@ function runExtract({ book, chapter, moduleId, userId }) {
 
   const result = spawnJob({
     type: 'extract',
+    book,
     chapter,
     moduleId,
     track: null,
@@ -109,6 +110,7 @@ function runProtect({ book, chapter, userId }) {
 
   const result = spawnJob({
     type: 'protect',
+    book,
     chapter,
     moduleId: undefined,
     track: null,
@@ -150,6 +152,7 @@ function runUnprotect({ book, chapter, userId }) {
 
   const result = spawnJob({
     type: 'unprotect',
+    book,
     chapter,
     moduleId: undefined,
     track: null,
@@ -199,6 +202,7 @@ function runInject({ book, chapter, moduleId, track = 'faithful', userId }) {
 
   return spawnJob({
     type: 'inject',
+    book,
     chapter,
     moduleId,
     track,
@@ -236,6 +240,7 @@ function runRender({ book, chapter, moduleId, track = 'faithful', userId }) {
 
   return spawnJob({
     type: 'render',
+    book,
     chapter,
     moduleId,
     track,
@@ -268,6 +273,7 @@ function runPipeline({ book, chapter, moduleId, track = 'faithful', userId }) {
   const job = {
     id: jobId,
     type: 'pipeline',
+    book,
     chapter,
     moduleId: moduleId || 'all',
     track,
@@ -345,7 +351,7 @@ function runningJobCount() {
 /**
  * Spawn a child process and track it as a job.
  */
-function spawnJob({ type, chapter, moduleId, track, userId, command, args }) {
+function spawnJob({ type, book, chapter, moduleId, track, userId, command, args }) {
   // Guard: reject if too many concurrent jobs
   if (runningJobCount() >= MAX_JOBS) {
     throw new Error(
@@ -358,6 +364,7 @@ function spawnJob({ type, chapter, moduleId, track, userId, command, args }) {
   const job = {
     id: jobId,
     type,
+    book,
     chapter,
     moduleId: moduleId || 'all',
     track,
@@ -420,9 +427,10 @@ function getJob(jobId) {
 /**
  * List recent jobs, optionally filtered.
  */
-function listJobs({ chapter, type, status, limit = 20 } = {}) {
+function listJobs({ book, chapter, type, status, limit = 20 } = {}) {
   let result = Array.from(jobs.values());
 
+  if (book) result = result.filter((j) => j.book === book);
   if (chapter) result = result.filter((j) => j.chapter === chapter);
   if (type) result = result.filter((j) => j.type === type);
   if (status) result = result.filter((j) => j.status === status);
@@ -434,11 +442,19 @@ function listJobs({ chapter, type, status, limit = 20 } = {}) {
 }
 
 /**
- * Check if a job is already running for this chapter/type combo.
+ * Check if a job is already running for this book/chapter/type combo.
+ * Strict equality on all three keys — chapter is deliberately NOT normalized
+ * (live values include numbers, null for fetch-source, and 'all' for
+ * whole-book generate-tm), so callers pass the same shape the creators store.
  */
-function hasRunningJob(chapter, type) {
+function hasRunningJob(book, chapter, type) {
   for (const job of jobs.values()) {
-    if (job.chapter === chapter && job.type === type && job.status === 'running') {
+    if (
+      job.book === book &&
+      job.chapter === chapter &&
+      job.type === type &&
+      job.status === 'running'
+    ) {
       return job;
     }
   }
@@ -755,6 +771,7 @@ function runFetchSource({ slug, repo, collection, userId }) {
 
   const result = spawnJob({
     type: 'fetch-source',
+    book: slug,
     chapter: null,
     moduleId: slug,
     track: null,
@@ -847,6 +864,7 @@ function runGenerateTm({ book, chapter, userId }) {
   const job = {
     id: jobId,
     type: 'generate-tm',
+    book,
     chapter: chapter ?? 'all',
     moduleId: 'all',
     track: 'faithful',
@@ -897,6 +915,11 @@ function runGenerateTm({ book, chapter, userId }) {
   return { jobId, promise };
 }
 
+/** @internal Test-only: direct access to the in-memory jobs map. */
+function _jobsMap() {
+  return jobs;
+}
+
 module.exports = {
   runExtract,
   runProtect,
@@ -918,4 +941,5 @@ module.exports = {
   countApprovedEdits,
   computeSourceHash,
   TRACK_SOURCE_DIR,
+  _jobsMap,
 };

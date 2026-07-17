@@ -2,7 +2,7 @@
  * Tests for new features: validateBeforePublish, runPrepareTm, getReviewQueue
  */
 
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, afterEach } from 'vitest';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
@@ -46,8 +46,77 @@ describe('pipelineService job management', () => {
   });
 
   it('hasRunningJob returns falsy for non-running chapter', () => {
-    const result = hasRunningJob(99, 'inject');
+    const result = hasRunningJob('efnafraedi-2e', 99, 'inject');
     expect(result).toBeFalsy();
+  });
+});
+
+// ----- pipelineService: job book-scoping (item 12, F5) -----
+
+describe('pipelineService job book-scoping (item 12, F5)', () => {
+  const { hasRunningJob, listJobs, _jobsMap } = require('../services/pipelineService');
+
+  const baseJob = {
+    moduleId: 'all',
+    track: 'faithful',
+    status: 'running',
+    startedAt: new Date().toISOString(),
+    completedAt: null,
+    output: [],
+    error: null,
+  };
+
+  afterEach(() => {
+    _jobsMap().delete('test-f5-chem');
+    _jobsMap().delete('test-f5-fetch');
+  });
+
+  it('a running job for one book does not block the same chapter of another book', () => {
+    _jobsMap().set('test-f5-chem', {
+      ...baseJob,
+      id: 'test-f5-chem',
+      type: 'pipeline',
+      book: 'efnafraedi-2e',
+      chapter: 3,
+    });
+    expect(hasRunningJob('liffraedi-2e', 3, 'pipeline')).toBeFalsy();
+  });
+
+  it('a running job still blocks its own book/chapter/type', () => {
+    _jobsMap().set('test-f5-chem', {
+      ...baseJob,
+      id: 'test-f5-chem',
+      type: 'pipeline',
+      book: 'efnafraedi-2e',
+      chapter: 3,
+    });
+    expect(hasRunningJob('efnafraedi-2e', 3, 'pipeline')?.id).toBe('test-f5-chem');
+  });
+
+  it('fetch-source dedupe is per-book (chapter null matches strictly)', () => {
+    _jobsMap().set('test-f5-fetch', {
+      ...baseJob,
+      id: 'test-f5-fetch',
+      type: 'fetch-source',
+      book: 'efnafraedi-2e',
+      chapter: null,
+      moduleId: 'efnafraedi-2e',
+      track: null,
+    });
+    expect(hasRunningJob('liffraedi-2e', null, 'fetch-source')).toBeFalsy();
+    expect(hasRunningJob('efnafraedi-2e', null, 'fetch-source')?.id).toBe('test-f5-fetch');
+  });
+
+  it('listJobs filters by book', () => {
+    _jobsMap().set('test-f5-chem', {
+      ...baseJob,
+      id: 'test-f5-chem',
+      type: 'pipeline',
+      book: 'efnafraedi-2e',
+      chapter: 3,
+    });
+    expect(listJobs({ book: 'efnafraedi-2e' }).some((j) => j.id === 'test-f5-chem')).toBe(true);
+    expect(listJobs({ book: 'liffraedi-2e' }).some((j) => j.id === 'test-f5-chem')).toBe(false);
   });
 });
 
