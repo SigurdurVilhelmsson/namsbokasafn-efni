@@ -53,6 +53,13 @@ function allSegmentFiles() {
     if (!fs.existsSync(d)) return;
     for (const n of fs.readdirSync(d)) {
       const p = path.join(d, n);
+      // item 9/D3: exercises-segments files are OUTSIDE the characterization
+      // domain — their seg-ids ({nickname}:{type}:{id}, hyphens in component 1)
+      // never matched the legacy OLD_STRICT parser ([\w]+ first component), and
+      // no legacy consumer ever read them (they postdate the unification; only
+      // the new parser, via exercise-assemble, consumes them). Same exact-name
+      // guard as the 6b gate / server listing / scan-residue.
+      if (n === 'exercises-segments.en.md' || n === 'exercises-segments.is.md') continue;
       fs.statSync(p).isDirectory()
         ? walk(p)
         : /-segments.*\.md$|\.(en|is)\.md$/.test(n) && files.push(p);
