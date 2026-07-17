@@ -21,6 +21,8 @@ const greynirEngine = require('./greynirEngine');
 let BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 const resolveDbPath = require('../lib/dbPath');
 const DB_PATH = resolveDbPath();
+// eslint-disable-next-line no-unused-vars -- pickLatest is consumed by applyApprovedEdits (item 13, task 7)
+const { isNewer, pickLatest } = require('../lib/editRecency');
 
 let db;
 function getDb() {
@@ -242,9 +244,13 @@ function getModuleEdits(book, moduleId, statusFilter) {
 }
 
 /**
- * Build the module's "to-be-published" segments: faithful/MT baseline with the
- * latest live edit per segment (rejected and superseded rows are skipped)
- * overlaid (what apply would write).
+ * Build the module's effective segments: faithful/MT baseline with the newest
+ * live edit per segment overlaid (rejected and superseded rows are skipped).
+ * "Newest" is the canonical (created_at, id) rule shared with
+ * applyApprovedEdits — see lib/editRecency. NOTE: pending/discuss edits are
+ * deliberately included (spellcheck/terminology consumers need draft state),
+ * so this is "the draft state once everything live is approved", NOT literally
+ * what apply would write today.
  *
  * @returns {Array<{segmentId, enContent, isContent}>}
  */
@@ -254,7 +260,7 @@ function buildEffectiveSegments(book, chapter, moduleId) {
   for (const e of getModuleEdits(book, moduleId)) {
     if (e.status === 'rejected' || e.status === 'superseded') continue;
     const cur = latestBySeg[e.segment_id];
-    if (!cur || e.id > cur.id) latestBySeg[e.segment_id] = e;
+    if (!cur || isNewer(e, cur)) latestBySeg[e.segment_id] = e;
   }
   return data.segments.map((s) => ({
     segmentId: s.segmentId,

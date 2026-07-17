@@ -947,6 +947,42 @@ describe('applyApprovedEdits — integration', () => {
     expect(service.getEditById(id2).applied_at).toBeTruthy();
   });
 
+  it('preview winner: in-place re-save (older id, newer created_at) wins (item 13)', () => {
+    // editor-1 saves first (row id A), editor-2 saves second (row id B > A),
+    // then editor-1's row is refreshed in place — newest CONTENT, lowest id.
+    const a = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'original',
+      editedContent: 'Útgáfa A v1',
+      editorId: 'editor-1',
+      editorUsername: 'editor1',
+    });
+    const b = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'original',
+      editedContent: 'Útgáfa B',
+      editorId: 'editor-2',
+      editorUsername: 'editor2',
+    });
+    // Deterministic cross-second timestamps (CURRENT_TIMESTAMP is 1s-granular).
+    db.prepare(`UPDATE segment_edits SET created_at = '2026-07-17 10:00:00' WHERE id = ?`).run(
+      b.id
+    );
+    db.prepare(
+      `UPDATE segment_edits SET created_at = '2026-07-17 10:00:05', edited_content = 'Útgáfa A v2' WHERE id = ?`
+    ).run(a.id);
+
+    const segs = service.buildEffectiveSegments('testbook', 1, 'm00001');
+    const seg = segs.find((s) => s.segmentId === 'm00001:para:fs-id001');
+    expect(seg.isContent).toBe('Útgáfa A v2');
+  });
+
   function maxVersion() {
     return (
       db
