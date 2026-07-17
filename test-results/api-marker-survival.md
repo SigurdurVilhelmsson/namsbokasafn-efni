@@ -1,21 +1,21 @@
 # Málstaður API Marker Survival Report
 
-**Generated:** 2026-03-18T09:30:56.859Z
+**Generated:** 2026-07-17T09:42:22.843Z
 **API Base:** https://api.malstadur.is
 
 ## Summary
 
 | Metric | Value |
 |--------|-------|
-| Tests run | 22 |
-| Total checks | 73 |
-| Passed | 72 |
-| Failed | 1 |
+| Tests run | 21 |
+| Total checks | 77 |
+| Passed | 77 |
+| Failed | 0 |
 | API errors | 0 |
-| Pass rate | 98.6% |
-| Characters translated | 1,420 |
-| Estimated cost | 7 ISK |
-| Elapsed time | 157.2s |
+| Pass rate | 100.0% |
+| Characters translated | 2,029 |
+| Estimated cost | 20 ISK |
+| Elapsed time | 136.2s |
 
 ## Marker Survival Matrix
 
@@ -49,7 +49,7 @@ Chemistry is the study of matter and its properties.
 
 **Output:**
 ```
-Efnafræði er fræðigrein sem fjallar um efni og eiginleika þess.
+Efnafræði er fræðigreinin um efni og eiginleika þess.
 ```
 
 **Usage:** 52 characters, cost: 0.52
@@ -67,10 +67,10 @@ Efnafræði er fræðigrein sem fjallar um efni og eiginleika þess.
 
 **Output:**
 ```
-<!-- SEG:m68663:para:1 --> Efnafræði er fræðigreinin um efni.
+<!-- SEG:m68663:para:1 --> Efnafræði er rannsókn á efni.
 ```
 
-**Usage:** 34 characters, cost: 0.34
+**Usage:** 33 characters, cost: 0.33
 
 **Checks:**
 
@@ -86,7 +86,7 @@ The value is [[MATH:1]] times greater than [[MATH:2]] units.
 
 **Output:**
 ```
-Gildið er [[MATH:1]] sinnum hærra en [[MATH:2]] einingar.
+Gildið er [[MATH:1]] sinnum meira en [[MATH:2]] einingar.
 ```
 
 **Usage:** 60 characters, cost: 0.6
@@ -147,7 +147,7 @@ See [Table 1.1](#fs-idm81346144) for details about [chemistry](http://openstax.o
 
 **Output:**
 ```
-Sjá nánari upplýsingar um [efnafræði](http://openstax.org/l/16plasma) í [töflu 1.1](#fs-idm81346144).
+Sjá [töflu 1.1](#fs-idm81346144) fyrir nánari upplýsingar um [efnafræði](http://openstax.org/l/16plasma).
 ```
 
 **Usage:** 95 characters, cost: 0.9500000000000001
@@ -209,7 +209,7 @@ First line[[BR]]Second line with [[SPACE]] extra space and [[MEDIA:3]] image.
 
 **Output:**
 ```
-Fyrsta lína[[BR]]Önnur lína með[[SPACE]]auka bili og[[MEDIA:3]]mynd.
+Fyrsta lína[[BR]]Önnur lína með [[SPACE]] aukabili og [[MEDIA:3]] mynd.
 ```
 
 **Usage:** 77 characters, cost: 0.77
@@ -229,7 +229,7 @@ A {{TERM}}molecule{{/TERM}} is described in {{LINK:1}}Table 1{{/LINK}} and {{XRE
 
 **Output:**
 ```
-{{TERM}}Sameind{{/TERM}} er lýst í {{LINK:1}}töflu 1{{/LINK}} og {{XREF:2}} sýnir nánar.
+{{TERM}}Sameind{{/TERM}} er lýst í {{LINK:1}}töflu 1{{/LINK}} og {{XREF:2}} sýnir meira.
 ```
 
 **Usage:** 97 characters, cost: 0.97
@@ -240,7 +240,7 @@ A {{TERM}}molecule{{/TERM}} is described in {{LINK:1}}Table 1{{/LINK}} and {{XRE
 - ✅ {{LINK:1}}...{{/LINK}} survives
 - ✅ {{XREF:2}} survives
 
-### ❌ T1.11: Mixed real-world segment (complex)
+### ✅ T1.11: Mixed real-world segment (complex)
 
 **Input:**
 ```
@@ -249,10 +249,10 @@ A {{TERM}}molecule{{/TERM}} is described in {{LINK:1}}Table 1{{/LINK}} and {{XRE
 
 **Output:**
 ```
-<!-- SEG:m68674:para:1 --> Massinn er 2,98 [[MATH:1]] 10^5^ kg. __Einingar__ eru taldar upp í [#fs-idm81346144]. Sjá [Töflu 1.1](http://example.com) fyrir H₂O-gögnin.
+<!-- SEG:m68674:para:1 --> Massinn er 2,98 [[MATH:1]] 10^5^ kg. __Einingar__ eru taldar upp í [#fs-idm81346144]. Sjá [töflu 1.1](http://example.com) fyrir H~2~O gögnin.
 ```
 
-**Usage:** 137 characters, cost: 1.37
+**Usage:** 136 characters, cost: 1.36
 
 **Checks:**
 
@@ -262,7 +262,7 @@ A {{TERM}}molecule{{/TERM}} is described in {{LINK:1}}Table 1{{/LINK}} and {{XRE
 - ✅ __term__ survives
 - ✅ [#ref] survives
 - ✅ [text](url) survives
-- ❌ ~2~ survives
+- ✅ ~2~ survives
 
 ### ✅ T1.12: Glossary effectiveness
 
@@ -309,16 +309,16 @@ Throughout human history, people have tried to convert matter into more useful f
 Efnafræði í samhengi
 
 <!-- SEG:m68664:abstract:auto-2 -->
-Í lok þessa kafla muntu geta:
+Þegar þú hefur lokið við þennan kafla muntu geta:
 
 <!-- SEG:m68664:abstract-item:abstract-item-1 -->
-Gert grein fyrir sögulegri þróun efnafræðinnar
+Lýst í stuttu máli sögulegri þróun efnafræðinnar
 
 <!-- SEG:m68664:para:fs-idp77567568 -->
-Í gegnum mannkynssöguna hefur fólk reynt að umbreyta efni í nytsamlegra form.
+Í gegnum mannkynssöguna hefur fólk reynt að breyta efni í nytsamlegra form.
 ```
 
-**Usage:** 210 characters, cost: 2.1
+**Usage:** 203 characters, cost: 2.0300000000000002
 
 **Checks:**
 
@@ -327,200 +327,169 @@ Gert grein fyrir sögulegri þróun efnafræðinnar
 - ✅ Title SEG tag present
 - ✅ Para SEG tag present
 
-### ✅ T2.m68663.1: Real segment: m68663:title:auto-1 (simple)
+### ✅ T1.14: Id-anchored term marker survival ([[term:text|id]])
 
 **Input:**
 ```
-<!-- SEG:m68663:title:auto-1 -->
-Introduction
+The [[term:viscosity|term-00001]] of a liquid is a measure of its resistance to flow, unlike the [[term:surface tension|fs-idm12345678]] at the interface.
 ```
 
 **Output:**
 ```
-<!-- SEG:m68663:title:auto-1 -->
-Inngangur
+[[term:viscosity|term-00001]] vökva er mælikvarði á viðnám hans gegn flæði, ólíkt [[term:surface tension|fs-idm12345678]] á skilflötum.
 ```
 
-**Usage:** 13 characters, cost: 0.13
+**Usage:** 154 characters, cost: 1.54
 
 **Checks:**
 
-- ✅ SEG tag survives
-- ✅ Output is Icelandic
-- ✅ No marker corruption
+- ✅ two [[term: markers survive
+- ✅ id term-00001 byte-intact
+- ✅ id fs-idm12345678 byte-intact
+- ✅ no backslash escaping
+- ✅ text translated
 
-### ✅ T2.m68663.2: Real segment: m68663:abstract-item:abstract-item-1 (simple)
+### ✅ T1.15: Id-anchored footnote marker survival ([[fn:text|id]])
 
 **Input:**
 ```
-<!-- SEG:m68663:abstract-item:abstract-item-1 -->
-Chemistry in Context
+Water boils at 100 degrees. [[fn:At standard atmospheric pressure of 101.325 kPa.|fs-idp2355696]] This varies with altitude.
 ```
 
 **Output:**
 ```
-<!-- SEG:m68663:abstract-item:abstract-item-1 -->
-Efnafræði í samhengi
+Vatn sýður við 100 gráður. [[fn:Við staðlaðan loftþrýsting upp á 101,325 kPa.|fs-idp2355696]] Þetta er breytilegt eftir hæð yfir sjávarmáli.
 ```
 
-**Usage:** 21 characters, cost: 0.21
+**Usage:** 124 characters, cost: 1.24
 
 **Checks:**
 
-- ✅ SEG tag survives
-- ✅ Output is Icelandic
-- ✅ No marker corruption
+- ✅ [[fn: marker survives
+- ✅ id fs-idp2355696 byte-intact
+- ✅ no backslash escaping
 
-### ✅ T2.m68663.3: Real segment: m68663:abstract-item:abstract-item-2 (simple)
+### ✅ T1.16: Underline + class-emphasis marker survival ([[u:]], [[em:|class]])
 
 **Input:**
 ```
-<!-- SEG:m68663:abstract-item:abstract-item-2 -->
-Phases and Classification of Matter
+The [[u:most important]] rule is that an ether has the structure [[em:R-O-R|emphasis-one]] in general.
 ```
 
 **Output:**
 ```
-<!-- SEG:m68663:abstract-item:abstract-item-2 -->
-Hamfarir og flokkun efnis
+[[u:Mikilvægasta]] reglan er sú að eter hefur almennt bygginguna [[em:R-O-R|emphasis-one]].
 ```
 
-**Usage:** 36 characters, cost: 0.36
+**Usage:** 102 characters, cost: 1.02
 
 **Checks:**
 
-- ✅ SEG tag survives
-- ✅ Output is Icelandic
-- ✅ No marker corruption
+- ✅ [[u: marker survives
+- ✅ [[em: marker survives
+- ✅ class payload byte-intact
 
-### ✅ T2.m68674.1: Real segment: m68674:title:auto-1 (medium)
+### ✅ T1.17: Nested markup inside id-anchored term ([[term:H[[sub:2]]O|id]])
 
 **Input:**
 ```
-<!-- SEG:m68674:title:auto-1 -->
-Measurements
+The formula for [[term:water H[[sub:2]]O|term-00099]] is well known.
 ```
 
 **Output:**
 ```
-<!-- SEG:m68674:title:auto-1 -->
-Mælingar
+Formúlan fyrir [[term:vatn H[[sub:2]]O|term-00099]] er vel þekkt.
 ```
 
-**Usage:** 13 characters, cost: 0.13
+**Usage:** 68 characters, cost: 0.68
 
 **Checks:**
 
-- ✅ SEG tag survives
-- ✅ Output is Icelandic
-- ✅ No marker corruption
+- ✅ outer [[term: survives
+- ✅ inner [[sub: survives
+- ✅ id byte-intact
 
-### ✅ T2.m68674.2: Real segment: m68674:abstract:auto-2 (medium)
+### ✅ T1.18: Paired-bracket term/fn translate inner text AND survive ([[term]]x[[/term]]) — B4-D11
 
 **Input:**
 ```
-<!-- SEG:m68674:abstract:auto-2 -->
-By the end of this section, you will be able to:
+The [[term]]viscosity[[/term]] of a liquid. Water boils at 100 degrees. [[fn]]At standard pressure.[[/fn]]
 ```
 
 **Output:**
 ```
-<!-- SEG:m68674:abstract:auto-2 -->
-Að þessum kafla loknum muntu geta:
+[[term]]Seigja[[/term]] vökva. Vatn sýður við 100 gráður. [[fn]]Við staðalþrýsting.[[/fn]]
 ```
 
-**Usage:** 49 characters, cost: 0.49
+**Usage:** 106 characters, cost: 1.06
 
 **Checks:**
 
-- ✅ SEG tag survives
-- ✅ Output is Icelandic
-- ✅ No marker corruption
+- ✅ [[term]] delimiter survives
+- ✅ [[fn]] delimiter survives
+- ✅ term inner text is translated (not still "viscosity")
 
-### ✅ T2.m68674.3: Real segment: m68674:abstract-item:abstract-item-1 (medium)
+### ✅ T1.19: Empty-body literal-bracket escapes survive ([[lb:]]/[[rb:]]) — item 9 os-embed
 
 **Input:**
 ```
-<!-- SEG:m68674:abstract-item:abstract-item-1 -->
-Explain the process of measurement
+An antarafacial [[lb:]]1,7[[rb:]] sigmatropic rearrangement occurs and the rotation [[lb:]][[i:α]][[rb:]]D is measured. [[lb:]]Note: this is a hint.[[rb:]]
 ```
 
 **Output:**
 ```
-<!-- SEG:m68674:abstract-item:abstract-item-1 -->
-Útskýrðu mælingarferlið
+Antarafacial [[lb:]]1,7[[rb:]] sigmatropic endurröðun á sér stað og snúningurinn [[lb:]][[i:α]][[rb:]]D er mældur. [[lb:]]Athugið: þetta er vísbending.[[rb:]]
 ```
 
-**Usage:** 35 characters, cost: 0.35000000000000003
+**Usage:** 155 characters, cost: 1.55
 
 **Checks:**
 
-- ✅ SEG tag survives
-- ✅ Output is Icelandic
-- ✅ No marker corruption
+- ✅ all three [[lb:]] survive byte-exact
+- ✅ all three [[rb:]] survive byte-exact
+- ✅ no text migrated INSIDE an lb/rb body (assembler would discard it)
+- ✅ inner [[i: survives
+- ✅ text translated
 
-### ✅ T2.m68664.1: Real segment: m68664:title:auto-1 (medium)
+### ✅ T1.20: Multiple [[MEDIA:n]] in exercise-field context — item 9 os-embed
 
 **Input:**
 ```
-<!-- SEG:m68664:title:auto-1 -->
-Chemistry in Context
+Draw the product when [[MEDIA:0]] reacts with H[[sub:2]]O to give [[MEDIA:1]] under acidic conditions.
 ```
 
 **Output:**
 ```
-<!-- SEG:m68664:title:auto-1 -->
-Efnafræði í samhengi
+Teiknið afurðina þegar [[MEDIA:0]] hvarfast við H[[sub:2]]O og myndar [[MEDIA:1]] við súrar aðstæður.
 ```
 
-**Usage:** 21 characters, cost: 0.21
+**Usage:** 102 characters, cost: 1.02
 
 **Checks:**
 
-- ✅ SEG tag survives
-- ✅ Output is Icelandic
-- ✅ No marker corruption
+- ✅ [[MEDIA:0]] byte-intact
+- ✅ [[MEDIA:1]] byte-intact
+- ✅ exactly two MEDIA markers (no dup/drop)
+- ✅ [[sub: survives
+- ✅ text translated
 
-### ✅ T2.m68664.2: Real segment: m68664:abstract:auto-2 (medium)
+### ✅ T1.21: Numeric-anchored wrap marker ([[em:text|n]]) — item 9 os-embed
 
 **Input:**
 ```
-<!-- SEG:m68664:abstract:auto-2 -->
-By the end of this section, you will be able to:
+The starting material is [[em:1|0]] in the scheme, giving [[em:the product|1]] after reflux.
 ```
 
 **Output:**
 ```
-<!-- SEG:m68664:abstract:auto-2 -->
-Þegar þessum kafla lýkur muntu geta:
+Upphafsefnið er [[em:1|0]] í skemanu og gefur [[em:afurðina|1]] eftir suðu undir bakflæði.
 ```
 
-**Usage:** 49 characters, cost: 0.49
+**Usage:** 92 characters, cost: 0.92
 
 **Checks:**
 
-- ✅ SEG tag survives
-- ✅ Output is Icelandic
-- ✅ No marker corruption
-
-### ✅ T2.m68664.3: Real segment: m68664:abstract-item:abstract-item-1 (medium)
-
-**Input:**
-```
-<!-- SEG:m68664:abstract-item:abstract-item-1 -->
-Outline the historical development of chemistry
-```
-
-**Output:**
-```
-<!-- SEG:m68664:abstract-item:abstract-item-1 -->
-Lýsið sögulegri þróun efnafræðinnar
-```
-
-**Usage:** 48 characters, cost: 0.48
-
-**Checks:**
-
-- ✅ SEG tag survives
-- ✅ Output is Icelandic
-- ✅ No marker corruption
+- ✅ numeric anchor |0]] byte-intact
+- ✅ numeric anchor |1]] byte-intact
+- ✅ both [[em: markers survive
+- ✅ wrap inner text is translated (not still "the product")
