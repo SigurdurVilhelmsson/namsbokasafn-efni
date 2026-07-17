@@ -525,6 +525,33 @@ function hasUnnumberedClass(attrs) {
 }
 
 /**
+ * Shared numbering/extraction pre-scan (item 10 / RV-3): find every <tagName …>
+ * opening tag, capture its full attr string wherever the id sits (the old
+ * per-pass regexes required id-first and silently missed organic's class-first
+ * figures and physics' type=-first exercises), and flag class="unnumbered" via
+ * the word-match. Flag, not filter: chapter-wide callers must keep registering
+ * EVERY id in the link registry (addId) even when numbering skips it — a
+ * filtering helper would silently break link resolution for skipped elements.
+ * Id-less matches are dropped (numbering and the registry are both id-keyed).
+ *
+ * @param {string} cnxml
+ * @param {string} tagName - element localName, e.g. 'figure'
+ * @returns {{id: string, attrs: string, index: number, unnumbered: boolean}[]}
+ */
+function scanBlocks(cnxml, tagName) {
+  const out = [];
+  const re = new RegExp(`<${tagName}\\b([^>]*)>`, 'g');
+  let m;
+  while ((m = re.exec(cnxml)) !== null) {
+    const attrs = m[1];
+    const idMatch = attrs.match(/id="([^"]+)"/);
+    if (!idMatch) continue;
+    out.push({ id: idMatch[1], attrs, index: m.index, unnumbered: hasUnnumberedClass(attrs) });
+  }
+  return out;
+}
+
+/**
  * Format a table caption number. Normal chapters get "chapter.n"; appendix
  * modules get a per-letter, per-module-reset "LetterN" (R4-3), e.g. "B3".
  * Falls back to "appendices.n" defensively if an appendix module has no
@@ -4053,6 +4080,7 @@ export {
   renderList,
   renderChildrenInDocumentOrder,
   hasUnnumberedClass,
+  scanBlocks,
   formatTableNumber,
   renderExercise,
   _loadBookConfigForTest,
