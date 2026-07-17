@@ -95,11 +95,17 @@ New/updated entries from the depth-aware render walk, verbatim from the design's
 
 ## Phase 3 — semester editorial-quality sprint (weeks 3–4)
 Rationale: editors return at semester start; these protect and de-confuse their daily flow.
-12. **Batch 5 — apply/job/version integrity** (approve-then-write order, same-second tie-break, restore reindex, render-in-progress check, jobs get `book`).
+12. **Batch 5 — apply/job/version integrity** (approve-then-write order, same-second tie-break, restore reindex, render-in-progress check, jobs get `book`). **✅ SHIPPED (branch fix/item12-apply-job-version-integrity — PR pending).**
 13. **Batch 6 — concurrent-edit lost updates** (localization pending-edit scoping by editor; stale-retry cancellation).
 14. **Batch 8 — appendices label unification** (progress + search indexing).
 15. **rem-2.2 — localized restore parity** (version history for Pass-2, matching faithful).
 16. **Batch 7 — dashboard/view contract repair** (12 mismatches; L — timebox or split).
+
+### Register — findings/deferrals from item 12 (2026-07-17)
+- **I12-R1 `[fix]` — pipeline job read-scoping:** `GET /api/pipeline/jobs` + `GET /jobs/:jobId` let any head-editor see every book's jobs (read-only info leak, same class as B1-F5). listJobs now supports a `book` filter; scoping the reads by `user.books[]` deliberately deferred out of the item-12 PR (no read-authz churn in an integrity batch).
+- **I12-R2 `[ux]` — apply-and-render 409 client polish:** after F6, a 409 truthfully means "nothing applied"; the client alert is accurate but could surface `err.data.jobId` and offer wait-and-retry (fetchJson already carries err.data since #270).
+- **I12-R3 `[deploy]` — stranded localization rows sanity query:** before/at deploy run `SELECT COUNT(*) FROM localization_pending_edits WHERE status='approved' AND applied_at IS NULL;` — expected 0 (F3 previously could strand rows; the fix prevents new ones, it does not heal old ones). Any hits: lead eyeballs the file, then flips the row back to 'pending' or stamps applied_at by hand.
+- **I12-R4 `[check]` — editorial rec #6 (not absorbed):** "Saga útgáfa" version-numbering — versions are PRE-write snapshots ("version 1 = my first change" is backwards). Two-minute UI check whether the restore modal's diff view already disambiguates, before writing any code.
 
 ## Phase 4 — products & provenance gaps (weeks 4–5, audit's own order)
 17. **Licence metadata per product** — needs lead posture decision on Physics+Organic (CC BY-NC-SA) FIRST (decision lane); then book-config licence field → renderer emission → vefur consumption (small cross-repo tail).
