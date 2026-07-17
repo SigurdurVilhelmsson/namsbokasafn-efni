@@ -752,7 +752,8 @@ router.post(
           applied = segmentEditor.applyApprovedEdits(
             review.review.book,
             review.review.chapter,
-            review.review.module_id
+            review.review.module_id,
+            { appliedBy: req.user.username || (req.user.id != null ? String(req.user.id) : null) }
           );
         } catch (applyErr) {
           // Auto-apply is best-effort; don't fail the review completion.
@@ -1123,7 +1124,8 @@ router.post(
       const result = segmentEditor.applyApprovedEdits(
         req.params.book,
         req.chapterNum,
-        req.params.moduleId
+        req.params.moduleId,
+        { appliedBy: req.user.username || (req.user.id != null ? String(req.user.id) : null) }
       );
 
       activityLog.log({
@@ -1177,7 +1179,8 @@ router.post(
       const applyResult = segmentEditor.applyApprovedEdits(
         req.params.book,
         req.chapterNum,
-        req.params.moduleId
+        req.params.moduleId,
+        { appliedBy: req.user.username || (req.user.id != null ? String(req.user.id) : null) }
       );
 
       // Run inject+render pipeline (async — returns job ID for polling)

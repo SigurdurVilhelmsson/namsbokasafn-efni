@@ -784,9 +784,14 @@ const MAX_APPLY_RETRIES = 1;
  * @param {string} book - Book slug
  * @param {number} chapter - Chapter number
  * @param {string} moduleId - Module ID
+ * @param {{ appliedBy?: string|null }} [options] - `appliedBy`: username string
+ *   recorded on the content_versions snapshot (parity with restore's
+ *   attribution). Absent/null keeps the legacy unattributed snapshot.
  * @returns {object} { appliedCount, savedPath, segments }
  */
-function applyApprovedEdits(book, chapter, moduleId) {
+function applyApprovedEdits(book, chapter, moduleId, options = {}) {
+  const appliedBy =
+    typeof options.appliedBy === 'string' && options.appliedBy ? options.appliedBy : null;
   const conn = getDb();
 
   // Pre-check: any approved edits at all?
@@ -840,7 +845,7 @@ function applyApprovedEdits(book, chapter, moduleId) {
         )
         .run(book, moduleId);
       try {
-        const result = applyApprovedEdits(book, chapter, moduleId);
+        const result = applyApprovedEdits(book, chapter, moduleId, options);
         _applyRetryState.delete(retryKey);
         return result;
       } catch (err) {
@@ -913,7 +918,14 @@ function applyApprovedEdits(book, chapter, moduleId) {
       content: seg.is || '',
     }));
     try {
-      contentVersionService.snapshotModule(book, chapter, moduleId, currentSegments, null, conn);
+      contentVersionService.snapshotModule(
+        book,
+        chapter,
+        moduleId,
+        currentSegments,
+        appliedBy,
+        conn
+      );
     } catch (snapErr) {
       log.error({ err: snapErr }, 'Content snapshot failed (non-fatal, continuing apply)');
     }

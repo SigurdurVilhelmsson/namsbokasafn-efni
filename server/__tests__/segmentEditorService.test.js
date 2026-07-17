@@ -7,7 +7,7 @@
 
 import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest';
 import { createRequire } from 'module';
-import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, existsSync } from 'fs';
+import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, existsSync, rmSync } from 'fs';
 import { join } from 'path';
 import { tmpdir } from 'os';
 
@@ -939,6 +939,51 @@ describe('applyApprovedEdits — integration', () => {
     expect(seg.content).toBe('Seinni breyting');
     expect(service.getEditById(id1).status).toBe('superseded');
     expect(service.getEditById(id2).applied_at).toBeTruthy();
+  });
+
+  function maxVersion() {
+    return (
+      db
+        .prepare(
+          `SELECT MAX(version) AS v FROM content_versions WHERE book = 'testbook' AND module_id = 'm00001'`
+        )
+        .get().v || 0
+    );
+  }
+
+  function appliedByOfVersion(version) {
+    return db
+      .prepare(
+        `SELECT DISTINCT applied_by FROM content_versions WHERE book = 'testbook' AND module_id = 'm00001' AND version = ?`
+      )
+      .all(version);
+  }
+
+  it('apply records applied_by on the content snapshot (B4-F5)', () => {
+    const before = maxVersion();
+    saveAndApprove('m00001:para:fs-id001', 'Yfirfarið með rekjanleika.');
+    service.applyApprovedEdits('testbook', 1, 'm00001', { appliedBy: 'ritstjori-X' });
+    expect(appliedByOfVersion(before + 1)).toEqual([{ applied_by: 'ritstjori-X' }]);
+  });
+
+  it('apply without an actor keeps null applied_by (legacy callers)', () => {
+    const before = maxVersion();
+    saveAndApprove('m00001:para:fs-id001', 'Án rekjanleika.');
+    service.applyApprovedEdits('testbook', 1, 'm00001');
+    expect(appliedByOfVersion(before + 1)).toEqual([{ applied_by: null }]);
+  });
+
+  it('rebuild recursion preserves applied_by (B4-F5)', () => {
+    const before = maxVersion();
+    saveAndApprove('m00001:para:fs-id001', 'Fyrsta útgáfa fyrir endurbyggingu.');
+    const first = service.applyApprovedEdits('testbook', 1, 'm00001', { appliedBy: 'fyrsti' });
+    expect(appliedByOfVersion(before + 1)).toEqual([{ applied_by: 'fyrsti' }]);
+
+    // Delete the faithful file → next apply takes the self-heal recursion
+    // (:823 reset-applied_at path) and must carry the SECOND actor through.
+    rmSync(first.savedPath);
+    service.applyApprovedEdits('testbook', 1, 'm00001', { appliedBy: 'annar' });
+    expect(appliedByOfVersion(before + 2)).toEqual([{ applied_by: 'annar' }]);
   });
 
   it('edit-again: revising a published segment supersedes it and preserves other applied edits', () => {
