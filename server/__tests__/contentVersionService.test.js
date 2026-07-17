@@ -228,6 +228,88 @@ describe('contentVersionService.restoreVersion', () => {
       /Version 99 not found/
     );
   });
+
+  it('records empty segments as explicit empty rows (F19)', () => {
+    const res = contentVersionService.snapshotModule(
+      BOOK,
+      CHAPTER,
+      MODULE,
+      [
+        { segmentId: SEG('fs-id001'), content: 'texti' },
+        { segmentId: SEG('fs-id002'), content: '' },
+      ],
+      'prófari',
+      db
+    );
+    expect(res.segmentsSnapshotted).toBe(2);
+    const rows = db
+      .prepare(
+        `SELECT segment_id, content FROM content_versions WHERE version = ? ORDER BY segment_id`
+      )
+      .all(res.version);
+    expect(rows).toContainEqual({ segment_id: SEG('fs-id002'), content: '' });
+  });
+
+  it('an all-empty module produces a real, listable version (F19 phantom fix)', () => {
+    const res = contentVersionService.snapshotModule(
+      BOOK,
+      CHAPTER,
+      MODULE,
+      EN_IDS.map((id) => ({ segmentId: SEG(id), content: '' })),
+      'prófari',
+      db
+    );
+    expect(res.segmentsSnapshotted).toBe(EN_IDS.length);
+    const listed = contentVersionService.getModuleVersions(BOOK, MODULE);
+    expect(listed.some((v) => v.version === res.version)).toBe(true);
+  });
+
+  it('restore-then-undo returns an empty segment to empty (F19)', () => {
+    // A past version where fs-id003 had real text.
+    const past = contentVersionService.snapshotModule(
+      BOOK,
+      CHAPTER,
+      MODULE,
+      [
+        { segmentId: SEG('fs-id001'), content: 'Gamalt 1' },
+        { segmentId: SEG('fs-id002'), content: 'Gamalt 2' },
+        { segmentId: SEG('fs-id003'), content: 'Gamalt 3' },
+      ],
+      'prófari',
+      db
+    );
+
+    // Current faithful state: fs-id003 is EMPTY (untranslated).
+    const faithfulPath = join(
+      booksDir,
+      BOOK,
+      '03-faithful-translation',
+      'ch01',
+      `${MODULE}-segments.is.md`
+    );
+    mkdirSync(require('path').dirname(faithfulPath), { recursive: true });
+    writeFileSync(
+      faithfulPath,
+      fileBody([
+        { segmentId: SEG('fs-id001'), content: 'Núverandi 1' },
+        { segmentId: SEG('fs-id002'), content: 'Núverandi 2' },
+        { segmentId: SEG('fs-id003'), content: '' },
+      ]),
+      'utf-8'
+    );
+
+    // Restore the past version → fs-id003 gets 'Gamalt 3'.
+    const res = contentVersionService.restoreVersion(BOOK, CHAPTER, MODULE, past.version, {
+      username: 'hx',
+    });
+    expect(readFaithful(booksDir)[SEG('fs-id003')]).toBe('Gamalt 3');
+
+    // Undo (restore the pre-restore snapshot) → fs-id003 must be EMPTY again.
+    contentVersionService.restoreVersion(BOOK, CHAPTER, MODULE, res.snapshotVersion, {
+      username: 'hx',
+    });
+    expect(readFaithful(booksDir)[SEG('fs-id003')]).toBe('');
+  });
 });
 
 describe('contentVersionService.snapshotModule connection threading', () => {

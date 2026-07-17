@@ -65,7 +65,11 @@ function snapshotModule(book, chapter, moduleId, segments, appliedBy, db = getDb
   const insertAll = db.transaction(() => {
     let count = 0;
     for (const seg of segments) {
-      if (seg.content) {
+      // Record empty segments as explicit '' rows: at restore time,
+      // absence-from-snapshot is indistinguishable from "was never
+      // extracted", which broke restore-undo for untranslated segments
+      // (item 12, F19). null/undefined still throws (bad caller — fail loud).
+      if (seg.content != null) {
         insert.run(book, chapter, moduleId, seg.segmentId, seg.content, nextVersion, appliedBy);
         count++;
       }
