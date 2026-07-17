@@ -67,6 +67,9 @@ afterAll(() => {
 
 afterEach(() => {
   pipelineService._jobsMap().delete('guard-test-job');
+  for (let i = 1; i <= 4; i++) {
+    pipelineService._jobsMap().delete(`cap-test-${i}`);
+  }
   db.prepare(`DELETE FROM segment_edits WHERE book = ?`).run(BOOK);
 });
 
@@ -105,6 +108,46 @@ describe('POST /:book/:chapter/:moduleId/apply-and-render — guard order (F6)',
     expect(body.jobId).toBe('guard-test-job');
 
     // NOTHING was applied — the approved edit is untouched on both axes.
+    const row = db.prepare(`SELECT applied_at, status FROM segment_edits WHERE book = ?`).get(BOOK);
+    expect(row.status).toBe('approved');
+    expect(row.applied_at).toBeNull();
+  });
+
+  it('409s BEFORE applying when the job queue is at capacity (MAX_JOBS)', async () => {
+    db.prepare(
+      `INSERT INTO segment_edits
+         (book, chapter, module_id, segment_id, original_content, edited_content,
+          editor_id, editor_username, status, reviewed_at)
+       VALUES (?, 1, ?, ?, 'upphaflegt', 'breytt', 'e1', 'editor1', 'approved', CURRENT_TIMESTAMP)`
+    ).run(BOOK, MODULE, SEGMENT_ID);
+
+    // Four running jobs on OTHER books/chapters: hasRunningJob passes, but
+    // capacity (4 + 2 > 5) does not.
+    for (let i = 1; i <= 4; i++) {
+      pipelineService._jobsMap().set(`cap-test-${i}`, {
+        id: `cap-test-${i}`,
+        type: 'render',
+        book: `other-book-${i}`,
+        chapter: 90 + i,
+        moduleId: 'all',
+        track: 'faithful',
+        status: 'running',
+        startedAt: new Date().toISOString(),
+        completedAt: null,
+        output: [],
+        error: null,
+      });
+    }
+
+    const { status, body } = await invoke({
+      params: { book: BOOK, chapter: '1', moduleId: MODULE },
+      chapterNum: 1,
+      user: { id: 7, username: 'ritstjori' },
+      body: {},
+    });
+
+    expect(status).toBe(409);
+    expect(body.error).toMatch(/full/);
     const row = db.prepare(`SELECT applied_at, status FROM segment_edits WHERE book = ?`).get(BOOK);
     expect(row.status).toBe('approved');
     expect(row.applied_at).toBeNull();

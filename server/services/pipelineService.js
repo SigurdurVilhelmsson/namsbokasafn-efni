@@ -349,6 +349,16 @@ function runningJobCount() {
 }
 
 /**
+ * Would `extraJobs` more running jobs still fit under MAX_JOBS? Lets routes
+ * fail BEFORE side effects: a pipeline run holds 2 concurrent jobs at peak
+ * (the parent job plus one phase child), and runPipeline/spawnJob throw over
+ * the cap only after the caller has already acted.
+ */
+function hasCapacity(extraJobs = 1) {
+  return runningJobCount() + extraJobs <= MAX_JOBS;
+}
+
+/**
  * Spawn a child process and track it as a job.
  */
 function spawnJob({ type, book, chapter, moduleId, track, userId, command, args }) {
@@ -932,6 +942,7 @@ module.exports = {
   getJob,
   listJobs,
   hasRunningJob,
+  hasCapacity,
   cleanupJobs,
   advanceChapterStatus,
   getStageStatus,

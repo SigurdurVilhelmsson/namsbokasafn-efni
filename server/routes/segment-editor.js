@@ -1175,6 +1175,15 @@ router.post(
         });
       }
 
+      // Capacity guard (item 12 final review): runPipeline throws over
+      // MAX_JOBS — that throw must land BEFORE edits are applied, not after,
+      // or the applied-but-unrendered dead-end returns via 500.
+      if (!pipelineService.hasCapacity(2)) {
+        return res.status(409).json({
+          error: 'Pipeline queue is full — try again shortly',
+        });
+      }
+
       // Apply edits to files
       const applyResult = segmentEditor.applyApprovedEdits(
         req.params.book,

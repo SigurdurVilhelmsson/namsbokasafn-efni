@@ -12,6 +12,12 @@ import { join } from 'path';
 import { tmpdir } from 'os';
 
 const require = createRequire(import.meta.url);
+
+// Pin the DB env BEFORE any server require: apply's concordance side effect
+// resolves its own DB via resolveDbPath() — never let a test run touch a
+// real sessions.db (same pin as applyAndRenderGuard/contentVersionService).
+process.env.SESSIONS_DB_PATH = join(tmpdir(), `ses-test-${process.pid}.db`);
+
 const Database = require('better-sqlite3');
 
 const service = require('../services/segmentEditorService');
