@@ -8,7 +8,15 @@
 
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { createRequire } from 'module';
-import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, existsSync, readdirSync } from 'fs';
+import {
+  mkdtempSync,
+  mkdirSync,
+  writeFileSync,
+  readFileSync,
+  existsSync,
+  readdirSync,
+  rmSync,
+} from 'fs';
 import { join } from 'path';
 import { tmpdir } from 'os';
 
@@ -172,6 +180,46 @@ describe('localizationReviewService', () => {
     const { edit } = review.approveAndApply(id, 2, 'headX');
     expect(edit.status).toBe('approved');
     expect(readLocalized(booksDir)[SEG('fs-id002')]).toBe('Sjálf-samþykkt');
+  });
+
+  it('a failed file write leaves the edit pending and retryable (F3 write-then-mark)', () => {
+    const { id } = review.submitEdit({
+      book: BOOK,
+      chapter: CHAPTER,
+      moduleId: MODULE,
+      segmentId: SEG('fs-id001'),
+      originalContent: 'Hrein fs-id001',
+      editedContent: 'Staðfærsla sem mistekst',
+      editorId: 4,
+      editorUsername: 'editorA',
+    });
+
+    // Sabotage the file step: without the faithful file,
+    // loadModuleForLocalization throws before anything can be written.
+    const faithfulPath = join(
+      booksDir,
+      BOOK,
+      '03-faithful-translation',
+      'ch01',
+      `${MODULE}-segments.is.md`
+    );
+    const faithfulBody = readFileSync(faithfulPath, 'utf-8');
+    rmSync(faithfulPath);
+
+    expect(() => review.approveAndApply(id, 2, 'headX', 'ok')).toThrow();
+
+    // The edit must still be pending — visible, retryable, rejectable.
+    const edit = review.getEditById(id);
+    expect(edit.status).toBe('pending');
+    expect(edit.applied_at).toBeNull();
+    expect(edit.reviewer_username).toBeNull();
+    expect(review.getPendingByModule(BOOK, MODULE)).toHaveLength(1);
+
+    // Retry after the underlying problem is fixed → clean success.
+    writeFileSync(faithfulPath, faithfulBody, 'utf-8');
+    const { edit: approved } = review.approveAndApply(id, 2, 'headX', 'ok');
+    expect(approved.status).toBe('approved');
+    expect(approved.applied_at).toBeTruthy();
   });
 
   it('snapshots the prior localized file to a .bak before overwrite', () => {
