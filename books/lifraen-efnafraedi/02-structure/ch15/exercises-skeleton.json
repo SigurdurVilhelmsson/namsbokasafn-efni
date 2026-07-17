@@ -1,0 +1,1403 @@
+{
+  "generated_by": "exercise-extract.js",
+  "exercises": {
+    "15-01-OC-P01": {
+      "source_uid": "37732@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "358604",
+        "358605",
+        "358606"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358604": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzhWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d34f46dcda5d7550325d8f216457003e42c4b8c9/OChem_15_01_008a.jpg\" alt=\"In a benzene ring, C 1 and C 3 are bonded to a chlorine atom and a methyl group, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358604": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358605": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaEFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--409d1171582f34d684ef0545e4f862d5c782509e/OChem_15_01_008b.jpg\" alt=\"In a benzene ring, C 1 is bonded to a nitro group. C 4 is bonded to a bromine atom.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358605": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358606": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaEVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b6eb84b6604db8580ecb8c3c37c083e2a053e7fe/OChem_15_01_008c.jpg\" alt=\"In a benzene ring, C 1 is bonded to a sulfonic acid. C 2 is bonded to a hydroxyl group.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358606": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "15-01-OC-P02": {
+      "source_uid": "37733@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "358613",
+        "358614",
+        "358615",
+        "358616",
+        "358617",
+        "358618"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358613": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaElWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9d74ce7e5ddd922a3b9d391f0e002012f72490c1/OChem_15_01_009a.jpg\" alt=\"In a benzene ring, C 1 and C 3 are bonded to a bromine atom and a chlorine atom, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358613": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358614": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaE1WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--43f7b75a97ff1c43ee5c1746da760adc4568efe7/OChem_15_01_009b.jpg\" alt=\"In a benzene ring, C 1 is bonded to a 4-carbon chain, in which C 3 is bonded to a methyl group.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358614": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358615": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8257bf1885ea8f77212833198ae052a8479a9d4d/OChem_15_01_009c.jpg\" alt=\"In a benzene ring, C 1 and C 4 are bonded to an amine group and a bromine atom, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358615": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358616": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7163a091308d9afb11e292e5aa2e8056b9386e79/OChem_15_01_009d.jpg\" alt=\"In a benzene ring, C 1 and C 4 are each bonded to a chlorine atom and C 2 is bonded to a methyl group.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358616": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358617": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFlWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bb03c630dc622a6e932a762212a3d3c990a0d845/OChem_15_01_009e.jpg\" alt=\"In a benzene ring, C 1 is bonded to a 2-carbon chain. C 2 and C 4 are each bonded to an N O 2 group.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358617": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358618": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--28e4d42e956928bfad33b399d936889ed52a8e59/OChem_15_01_009f.jpg\" alt=\"In a benzene ring, C 1, C 2, C 3, and C 5 are each bonded to a methyl group.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358618": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "15-01-OC-P03": {
+      "source_uid": "37734@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "358623",
+        "358624",
+        "358625",
+        "358626"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358623": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:358623": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0c3fe1c9a26806f871b88b1281e505489f3c3961/OChem_15_EC_201a.jpg\" alt=\"In a benzene ring, C 1 and C 4 are bonded to a bromine atom and a chlorine atom, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358624": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:358624": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGtWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1f145dd58fd2217ae609c39ac672f2b774398f41/OChem_15_EC_201b.jpg\" alt=\"In a benzene ring, C 1 and C 4 are bonded to a bromine atom and a methyl group, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358625": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:358625": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaG9WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7c451bc45f181a6b41e25f9e48f40bd9d10e579c/OChem_15_EC_201c.jpg\" alt=\"In a benzene ring, C 1 and C 3 are bonded to an amine group and a chlorine atom, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358626": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:358626": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaHNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3e765e021fd1810825a3d3907e2b64c6f55d240c/OChem_15_EC_201d.jpg\" alt=\"In a benzene ring, C 1 is bonded to a chlorine atom. C 3 and C 5 are each bonded to a methyl group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-02-OC-P04": {
+      "source_uid": "37735@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "358628"
+      ],
+      "fields": {
+        "stem:358628": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaHdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5ded1c934a7d15e8c4987f8afab9dcef7be28158/OChem_15_02_007.jpg\" alt=\"Pyridine has a nitrogen atom in the first position and three alternate double bonds. Nitrogen carries a lone pair of electrons.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358628": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDBWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--78ba29a303af69392f7ce13992b977f0f454b063/OChem_15_EC_202.jpg\" alt=\"Pyridine has three lobes around nitrogen. One lobe has an unpaired electron and one lobe has a lone pair of electrons. Upper lobe of each carbon has an unpaired electron.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-03-OC-P05": {
+      "source_uid": "37736@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "358630"
+      ],
+      "fields": {
+        "stem:358630": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b39dc271a1e1bb88f1811a8e01ebd0ad95aa9427/OChem_15_03_006.jpg\" alt=\"The ball-and-stick model shows a ten-membered ring with five alternate double bonds. The gray and black spheres represent hydrogen and carbon atoms, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358630": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "15-04-OC-P06": {
+      "source_uid": "37737@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "342866"
+      ],
+      "fields": {
+        "stem:342866": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:342866": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "15-04-OC-P07": {
+      "source_uid": "37738@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "358632"
+      ],
+      "fields": {
+        "stem:358632": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDhWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4492575aca2bb2c3e1c4c82d5d38e62ce6cdebc5/OChem_15_04_004.jpg\" alt=\"An 8-membered ring with four alternate double bonds reacts with two equivalents of potassium to form thje cyclooctatetraene dianion.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358632": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "15-04-OC-P08": {
+      "source_uid": "37739@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "358634"
+      ],
+      "fields": {
+        "stem:358634": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:358634": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b849df80915ac50d5f536501965fa56347f0c216/OChem_15_EC_203.jpg\" alt=\"The energy levels of the cyclopentadienyl cation show two unpaired electrons. That of the radical shows one unpaired electron, and the anion does not have any unpaired electrons.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-05-OC-P09": {
+      "source_uid": "37740@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "358636"
+      ],
+      "fields": {
+        "stem:358636": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6728c00ce0e6e376c9c9e823151a91747e4dc1b5/OChem_15_05_006.jpg\" alt=\"Furan has an oxygen atom at first position with two lone pairs of electrons. The ring has two alternate double bonds.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358636": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUlWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0807e1ce980e0bb84e26d0f5d4caeea0a31ff16c/OChem_15_EC_204.jpg\" alt=\"The orbital representation of furan shows an oxygen atom with three lobes. Two of the lobes each carry a lone pair. Upper lobe of each carbon carries an unpaired electron.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-05-OC-P10": {
+      "source_uid": "37741@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "358638"
+      ],
+      "fields": {
+        "stem:358638": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaU1WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--041df881d7e06174946707272fbdf3616e58e546/OChem_15_05_007.jpg\" alt=\"Vitamin B 1 contains a thiazolium ring in which C 2 is bonded to 2-carbon chain with terminal carbon bonded to hydroxyl group. N 3 of the ring is bonded to a C H 2 whch in turn is bonded to a 6-membered substituted ring.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358638": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6f1b528f2b7809e3ad7e70a00b91602d21c94554/OChem_15_EC_205.jpg\" alt=\"The orbital representation of thiazolium ring shows two lobes around sulfur each with a lone pair and upper lobes of the remaining atoms of the ring each with an unpaired electron.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-06-OC-P11": {
+      "source_uid": "37742@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "358640"
+      ],
+      "fields": {
+        "stem:358640": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ac8956beca58bd2910e2e5da5e08b859d108ffc2/OChem_15_06_007.jpg\" alt=\"Azulene has a seven-carbon ring with three double bonds fused to a cyclopentadiene ring.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358640": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVlWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8afdf7fe0a70a56145e48f7f18054627a43461f4/OChem_15_EC_206.jpg\" alt=\"Two resonance structures of azulene, separated by a double-headed arrow.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-06-OC-P12": {
+      "source_uid": "37743@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "358642"
+      ],
+      "fields": {
+        "stem:358642": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9744385552b594ae281566bc6efe8a1e575e9ad3/OChem_15_06_008.jpg\" alt=\"Purine has a five-membered ring fused to a six-membered ring. Each ring consists of two nitrogen atoms and two double bonds.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358642": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP01": {
+      "source_uid": "37749@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "358661",
+        "358662",
+        "358663",
+        "358664",
+        "358665",
+        "358666"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358661": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d5c5b2453d21bfaf9ffa89dcb4094e35d43434d3/OChem_15_EC_006a.jpg\" alt=\"In a benzene ring, C 1 is bonded to a 5-carbon chain, in which C 1 and C 4 are each bonded to a methyl group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358662": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaThWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--952f3f24609e34c47a99ab6b0c4aff38f5aa6d1d/OChem_15_EC_006b.jpg\" alt=\"In a benzene ring, C 1 and C 3 are bonded to a carboxylic acid group and a bromine atom, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358663": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3da5a770165efeda4d807398a0f81a16744bb0ef/OChem_15_EC_006c.jpg\" alt=\"In a benzene ring, C 1 is bonded to a bromine atom and C3 and C5 to methyl groups.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358664": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ff8857f9ad6a4ff736c53749c77faf1b7b0dfaf1/OChem_15_EC_006d.jpg\" alt=\"In a benzene ring, C 1 is bonded to a bromine atom and C 2 is bonded to a 3-carbon chain.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358665": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaklWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--83d1182bd145da7ec210ebb96499433b25fac475/OChem_15_EC_006e.jpg\" alt=\"In a benzene ring, C 1 is bonded to a fluorine atom and C2 and C4 are each bonded to a nitro group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358666": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBak1WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--74d1e31e12f50db58deb0e2119b0f9b78c565d48/OChem_15_EC_006f.jpg\" alt=\"In a benzene ring, C 1 and C 4 are bonded to an amine group and a chlorine atom, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP02": {
+      "source_uid": "37750@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339095",
+        "339096",
+        "339097",
+        "339098",
+        "339099",
+        "339100"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339095": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339096": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339097": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339098": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339099": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339100": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP03": {
+      "source_uid": "37751@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339104",
+        "339105",
+        "339106"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339104": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339105": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339106": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP04": {
+      "source_uid": "37752@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339108"
+      ],
+      "fields": {
+        "stem:339108": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP05": {
+      "source_uid": "37753@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339110"
+      ],
+      "fields": {
+        "stem:339110": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP06": {
+      "source_uid": "37754@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339115",
+        "339116",
+        "339117",
+        "339118"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339115": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339116": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339117": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339118": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP07": {
+      "source_uid": "37755@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339120"
+      ],
+      "fields": {
+        "stem:339120": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP08": {
+      "source_uid": "37756@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358668"
+      ],
+      "fields": {
+        "stem:358668": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b3f107f249e9308cc26949df9bf926f1ac832509/OChem_15_EC_007.jpg\" alt=\"Anthracene has three benzene rings fused to one another in a straight line.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP09": {
+      "source_uid": "37757@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358670"
+      ],
+      "fields": {
+        "stem:358670": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--26ab2dd31aa65c9a23da464f8a23c901dba4fa6c/OChem_15_EC_008.jpg\" alt=\"Phenanthrene has three benzene rings fused to one another, two of them in a straight line and the third up to the top right..\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP10": {
+      "source_uid": "37758@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "342850"
+      ],
+      "fields": {
+        "stem:342850": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP11": {
+      "source_uid": "37759@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358672"
+      ],
+      "fields": {
+        "stem:358672": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n<p>\u0000SLOT_2\u0000</p>",
+          "slots": 3,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBallWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5bda408c3529ebefeab8ad01d397c4bb2cd7791c/OChem_15_EC_009.jpg\" alt=\"Benzene with methyl groups at C 1 and C 2 reacts with ozone in the presence of zinc to form glyoxal, 2,3-butanedione, and pyruvaldehyde.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP12": {
+      "source_uid": "37760@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358674"
+      ],
+      "fields": {
+        "stem:358674": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e698ff6979ae14da98fbbf620c10c02a8dbc4e2a/OChem_15_EC_010.jpg\" alt=\"3-Chlorocyclopropene has a 3-carbon ring. C 1 is double bonded to C 2. C 3 is bonded to a chlorine atom and a hydrogen atom.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP13": {
+      "source_uid": "37761@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339132"
+      ],
+      "fields": {
+        "stem:339132": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP14": {
+      "source_uid": "37762@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358676"
+      ],
+      "fields": {
+        "stem:358676": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--34efb0f11c2ac1a681ce9e366a5d5edf4396458f/OChem_15_EC_011.jpg\" alt=\"Cyclopropanone has a 3-carbon ring. C 1 is a carbonyl group. Methylcyclopropenone has a cyclopropene ring. C 1 is a carbonyl group and C2 is bonded to a methyl group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP15": {
+      "source_uid": "37763@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358678"
+      ],
+      "fields": {
+        "stem:358678": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamtWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5f2d58fd48a412d2ee09b320c7e5788f5cc5b410/OChem_15_EC_012.jpg\" alt=\"Cycloheptatrienone has a 7-carbon ring with three alternate double bonds. C 1 is carbonyl group. Cyclopentadienone has a 5-carbon ring with two alternate double bonds. C 1 is carbonyl group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP16": {
+      "source_uid": "37764@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339138"
+      ],
+      "fields": {
+        "stem:339138": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP17": {
+      "source_uid": "37765@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339140"
+      ],
+      "fields": {
+        "stem:339140": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP18": {
+      "source_uid": "37766@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358680"
+      ],
+      "fields": {
+        "stem:358680": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBam9WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b9868d17f294c3aaa1862fc3f9f335b8395e9540/OChem_15_EC_013.jpg\" alt=\"Calicene has a cyclopentadiene ring double bonded to a cyclopropene ring.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP19": {
+      "source_uid": "37767@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358682"
+      ],
+      "fields": {
+        "stem:358682": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBanNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1c1c7ca4458b14a3b76340a458be6e4f11e29d38/OChem_15_EC_014.jpg\" alt=\"Pentalene has two fused cyclopentadiene rings. Pentalene dianion structure is similar to pentalene, except that pentalene dianion is enclosed in square brackets with 2 minus charge.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP20": {
+      "source_uid": "37768@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358685",
+        "358686"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358685": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358686": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBandWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--db2bf2aa34b33a355445ffe9890310e1efbeb0f0/OChem_15_EC_015.jpg\" alt=\"Indole has a benzene ring fused to a 5-membered ring made of a nitrogen atom and four carbon atoms, in which the two carbons not fused to the benzene ring have a double bond between them.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP21": {
+      "source_uid": "37769@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358688"
+      ],
+      "fields": {
+        "stem:358688": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajBWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8a6c790d7f1df2b05ec755b41224ba92e550359e/OChem_15_EC_016.jpg\" alt=\"Ribavirin has 1,2,4-triazole ring. N 1 is bonded to ribose ring. The carbon at position 3 is bonded to a carbonyl group, which itself is bonded to an amine.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP22": {
+      "source_uid": "37770@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339152"
+      ],
+      "fields": {
+        "stem:339152": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP23": {
+      "source_uid": "37771@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339154"
+      ],
+      "fields": {
+        "stem:339154": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP24": {
+      "source_uid": "37772@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339157",
+        "339158"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339157": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>\n<p>\u0000SLOT_2\u0000</p>",
+          "slots": 3,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339158": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>\n<p>\u0000SLOT_2\u0000</p>",
+          "slots": 3,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP25": {
+      "source_uid": "37773@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358690"
+      ],
+      "fields": {
+        "stem:358690": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2705b6d53d730970257a576d2cc3d2903853758d/OChem_15_EC_017.jpg\" alt=\"4-Pyrone, when treated wuth acid is protonated at the carbonyl group, the oxygen of which now carries a positive charge.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP26": {
+      "source_uid": "37774@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358692"
+      ],
+      "fields": {
+        "stem:358692": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajhWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--64f88dc4eec91754db48c7d857fe1551c6513e81/OChem_15_EC_018.jpg\" alt=\"Phenanthrene has three benzene rings fused to one another, two of them in a straight line and the third up to the top right..\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP27": {
+      "source_uid": "37775@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358694"
+      ],
+      "fields": {
+        "stem:358694": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0FWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5406e4fc696bd761a9f2867cb1476bf338113c10/OChem_15_EC_019.jpg\" alt=\"Two interconvertible structures of N-phenylsydnone. In both structures, the nitrogen atom bonded to the benzene ring has a positive charge.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP28": {
+      "source_uid": "37776@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "342858"
+      ],
+      "fields": {
+        "stem:342858": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP29": {
+      "source_uid": "37777@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339168"
+      ],
+      "fields": {
+        "stem:339168": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP30": {
+      "source_uid": "37778@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358698",
+        "358699",
+        "358700"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358698": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>\n\u0000SLOT_2\u0000\n",
+          "slots": 3,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0VWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--63c67cae48aaacf49d20ee1c7cbb62d3cd2ee56c/OChem_15_EC_020.jpg\" alt=\"The 1 H N M R spectrum of C 8 H 9 Br shows peaks in parts per million at 0 (T M S), 1.2 (triplet), 2.6 (quartet), 7.1 (doublet), and 7.4 (doublet).\">"
+          },
+          "wraps": {}
+        },
+        "stem:358699": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>\n\u0000SLOT_2\u0000",
+          "slots": 3,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0lWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a2b222fc8f9d4fe772e20025fb827dc98f13d0c6/OChem_15_EC_021.jpg\" alt=\"The 1 H N M R spectrum of C 9 H 12 shows peaks in parts per million at 0 (T M S), 1.2 (triplet), 2.3 (singlet), 2.6 (quartet) and 7.1 (multiplet).\">"
+          },
+          "wraps": {}
+        },
+        "stem:358700": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>\n\u0000SLOT_2\u0000\n",
+          "slots": 3,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa01WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3f1a2673b6d1b953d046115e5af5abd47a23136c/OChem_15_EC_022.jpg\" alt=\"The 1 H N M R spectrum of C 11 H 6 shows peaks in parts per million at 0 (T M S), 1.3 (singlet), 2.3 (singlet), 7.0 (doublet), and 7.3 (doublet).\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP31": {
+      "source_uid": "37779@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358702"
+      ],
+      "fields": {
+        "stem:358702": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1FWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fd6c06d64acaf592502c4dbe127f0040372cc410/OChem_15_EC_023.jpg\" alt=\"The 1 H N M R spectrum of C 14 H 12 shows peaks in parts per million at 0 (T M S), 5.4 (singlet), and 7.3 (singlet).\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP32": {
+      "source_uid": "37780@6",
+      "solutions_are_public": false,
+      "question_order": [
+        "358704"
+      ],
+      "fields": {
+        "stem:358704": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<table class=\"unnumbered\">\n<thead>\n<tr>\n<th>\u0000SLOT_1\u0000</th>\n<th>\u0000SLOT_2\u0000</th>\n<th>\u0000SLOT_3\u0000</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align:left;\"> \u0000SLOT_4\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_5\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_6\u0000</td>\n</tr>\n<tr>\n<td style=\"text-align:left;\"> \u0000SLOT_7\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_8\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_9\u0000</td>\n</tr>\n<tr>\n<td style=\"text-align:left;\"> \u0000SLOT_10\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_11\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_12\u0000</td>\n</tr>\n<tr>\n<td style=\"text-align:left;\">\u0000SLOT_13\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_14\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_15\u0000</td>\n</tr>\n<tr>\n<td style=\"text-align:left;\">\u0000SLOT_16\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_17\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_18\u0000</td>\n</tr>\n<tr>\n<td style=\"text-align:left;\">\u0000SLOT_19\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_20\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_21\u0000</td>\n</tr>\n<tr>\n<td style=\"text-align:left;\">\u0000SLOT_22\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_23\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_24\u0000</td>\n</tr>\n<tr>\n<td style=\"text-align:left;\">\u0000SLOT_25\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_26\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_27\u0000</td>\n</tr>\n</tbody>\n</table>\n\u0000SLOT_28\u0000",
+          "slots": 29,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1VWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--00984f8ecf3b8f98c7a260351a09902eb8716f33/OChem_15_EC_024.jpg\" alt=\"The 1 H N M R spectrum of C 10 H 12 O 2 shows peaks in parts per million at 2.1 (singlet), 3.6 (singlet), 3.7 (singlet), 6.8 (doublet), and 7.1 (doublet).\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP33": {
+      "source_uid": "37781@6",
+      "solutions_are_public": false,
+      "question_order": [
+        "358706"
+      ],
+      "fields": {
+        "stem:358706": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<table class=\"unnumbered\">\n<thead>\n<tr>\n<th style=\"text-align:left;\">\u0000SLOT_1\u0000</th>\n<th style=\"text-align:left;\">\u0000SLOT_2\u0000</th>\n<th style=\"text-align:left;\">\u0000SLOT_3\u0000</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align:left;\">\u0000SLOT_4\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_5\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_6\u0000</td>\n</tr>\n<tr>\n<td style=\"text-align:left;\">\u0000SLOT_7\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_8\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_9\u0000</td>\n</tr>\n<tr>\n<td style=\"text-align:left;\">\u0000SLOT_10\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_11\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_12\u0000</td>\n</tr>\n<tr>\n<td style=\"text-align:left;\">\u0000SLOT_13\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_14\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_15\u0000</td>\n</tr>\n</tbody>\n</table>\n\u0000SLOT_16\u0000",
+          "slots": 17,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1lWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ca9da1e95b1e62d10237b2fd4097181095d9dfd4/OChem_15_EC_025.jpg\" alt=\"The 1 H N M R spectrum of C 6 H 5 N C l 2 shows peaks in parts per million at 4.4 (broad), 6.6 (triplet), and 7.3 (doublet).\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP34": {
+      "source_uid": "37782@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339182"
+      ],
+      "fields": {
+        "stem:339182": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP35": {
+      "source_uid": "37783@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "342860"
+      ],
+      "fields": {
+        "stem:342860": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP36": {
+      "source_uid": "37784@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358711",
+        "358712"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358711": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2NWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7ec45854a216c9dd425ecc39bc7e2afb6024669e/OChem_15_EC_026a.jpg\" alt=\"To the left, cycloheptatriene ring with a positive charge at the single-bonded carbon. To the right, a seven-carbon chain with three alternate double bonds. C 7 carries a positive charge.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358712": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2dWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--96766313a33ac6ad28699031a27e98fe1a71569b/OChem_15_EC_026b.jpg\" alt=\"To the left, a five-membered ring comprising of a nitrogen anion and four carbons with double bonds between them. To the right, a 4-carbon chain with two alternate double bonds bonded to N-H minus.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP37": {
+      "source_uid": "37785@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358708"
+      ],
+      "fields": {
+        "stem:358708": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2tWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6b9bcfbfae4f6f73bbad96ae91350cbdc451abaf/OChem_15_EC_027.jpg\" alt=\"Benzene bonded to two methoxy and two ethyne chains. C 2 of each ethyne is bonded to position 3 of a pyridine ring where position 2 of that ring is bonded to another ethyne group. Palladium catalyzes a cyclization of this compound.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP38": {
+      "source_uid": "37786@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358718"
+      ],
+      "fields": {
+        "stem:358718": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa29WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0b0bfbad7300f0ea6e34c081af71e6e41f74c63c/OChem_15_EC_028.jpg\" alt=\"A reversible reaction shows cyclohexadiene with a carbonyl group at C1 and a 3-carbon chain with terminal double bond at C 2 forming unknown product(s), represented by a question mark.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-AP39a": {
+      "source_uid": "38768@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "346129",
+        "346130"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346129": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdW9YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e513cddbcd4acbd50617eb365bd4a88bc0876008/OChem_15_EC_029a.jpg\" alt=\"\">"
+          },
+          "wraps": {}
+        },
+        "stem:346130": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdXNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ed26e0120c82344f06354b80ccc157237397c730/OChem_15_EC_029b.jpg\" alt=\"\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-VC01": {
+      "source_uid": "37744@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358645",
+        "358646"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358645": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--84445f70d8d39a24382e33b9ded5c5e63914b187/OChem_15_EC_001a.jpg\" alt=\"The ball-and-stick model of a molecule has a 6-membered ring with alternate double bonds. C 1 is bonded to hydroxyl. C 3 is bonded to an isopropyl group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358646": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWtWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--994bbe1973dc8ab381761f2922f0d1b6419988d6/OChem_15_EC_001b.jpg\" alt=\"The ball-and-stick model of a molecule has a 6-membered ring with alternate double bonds. C 1 is bonded to a carboxylic acid group and C 2 to a nitro group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-VC02": {
+      "source_uid": "37745@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358648"
+      ],
+      "fields": {
+        "stem:358648": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaW9WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3e04cbab0f33f9dd7b66a5a42d3c481c9ce271ef/OChem_15_EC_002.jpg\" alt=\"The ball-and-stick model of all-cis cyclodecapentaene has a 10-carbon ring with alternate double bonds.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-VC03": {
+      "source_uid": "37746@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358650"
+      ],
+      "fields": {
+        "stem:358650": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--daed64e9e90f4cf3b3e7e77b1a9f3a92afe5d81f/OChem_15_EC_003.jpg\" alt=\"The ball-and-stick model of 1,6-methanonaphthalene has a cycloheptatriene ring fused to a cycloheptadiene ring.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-VC04": {
+      "source_uid": "37747@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358652"
+      ],
+      "fields": {
+        "stem:358652": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--271774e4213be3fa34658dd1318c27811c8aa089/OChem_15_EC_004.jpg\" alt=\"The ball-and-stick model of a cationic molecule has three six-membered rings fused together.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "15-99-OC-VC05": {
+      "source_uid": "37748@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358654"
+      ],
+      "fields": {
+        "stem:358654": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTBWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4e3587d3932fc82f4916d8571554704f3f8ebd50/OChem_15_EC_005.jpg\" alt=\"The ball-and-stick model with the electrostatic potential map of azulene. In the structure, a seven-membered ring is fused with a 5-membered ring.\">"
+          },
+          "wraps": {}
+        }
+      }
+    }
+  }
+}

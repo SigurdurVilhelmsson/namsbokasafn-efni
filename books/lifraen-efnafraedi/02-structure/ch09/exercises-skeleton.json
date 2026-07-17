@@ -1,0 +1,2111 @@
+{
+  "generated_by": "exercise-extract.js",
+  "exercises": {
+    "09-01-OC-P01": {
+      "source_uid": "37190@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "353698",
+        "353699",
+        "353700",
+        "353701",
+        "353702"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353698": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTBTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d6e4936b3388574182024764620186259bc12ec7/OChem_09_01_004a.jpg\" alt=\"The structure of 2,5-dimethyl-3-hexyne.\">"
+          },
+          "wraps": {}
+        },
+        "sol:353698": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353699": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--857790e1c9949361cb5f10b1fc00520430281f90/OChem_09_01_004b.jpg\" alt=\"The structure of 3,3-dimethyl-1-butyne.\">"
+          },
+          "wraps": {}
+        },
+        "sol:353699": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353700": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1c7251c36332d16f75dc0c618e3ee6e703f3ae98/OChem_09_01_004c.jpg\" alt=\"The structure of 3,3-dimethyl-4-octyne.\">"
+          },
+          "wraps": {}
+        },
+        "sol:353700": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353701": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcW9TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a3d3f3f05d0df9332407ea45cc8f55ba69f0b05b/OChem_09_01_004d.jpg\" alt=\"The structure of 2,5,5-trimethyl-3-heptyne.\">"
+          },
+          "wraps": {}
+        },
+        "sol:353701": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353702": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--880091bf3636383cd6cfd5f08610ace96bd4de62/OChem_09_01_004f.jpg\" alt=\"The structure of 2,4-octadiene-6-yne.\">"
+          },
+          "wraps": {}
+        },
+        "sol:353702": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "09-01-OC-P02": {
+      "source_uid": "37191@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "332888"
+      ],
+      "fields": {
+        "stem:332888": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:332888": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "09-03-OC-P03": {
+      "source_uid": "37192@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "353706",
+        "353707",
+        "353708"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353706": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTRTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--419eca4bf2d79fbeb3373809ac8593c94aa132ae/OChem_09_03_007a.jpg\" alt=\"The figure shows a C5 alkyne reacting with two moles of chlorine to give an unknown product represented by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "sol:353706": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353707": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcThTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2f8bcbe9f0f711b4d12f515fc9181ad6768f73e1/OChem_09_03_007b.jpg\" alt=\"A cyclopentane connected to an alkyne reacts with one mole of hydrogen bromide to give an unknown product represented by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "sol:353707": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353708": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBckFTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1e9e141ab71b13013ec710863c363bb4c0e7f28a/OChem_09_03_007c.jpg\" alt=\"A C7 alkyne reacts with one mole of hydrogen bromide to give an unknown product represented by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "sol:353708": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "09-04-OC-P04": {
+      "source_uid": "37193@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "353713",
+        "353714"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353713": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBckVTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6c2509f193e2d9ba645b8b8336879f0ed036b584/OChem_09_04_005a.jpg\" alt=\"A C8 chain with a triple bond on the C4 position.\">"
+          },
+          "wraps": {}
+        },
+        "sol:353713": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353714": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcklTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--16a546b13f993b22ac52f4f4efd3b37b9e66c1dc/OChem_09_04_005b.jpg\" alt=\"A C8 chain with a triple bond on the C4 position and a methyl group on the C7 position.\">"
+          },
+          "wraps": {}
+        },
+        "sol:353714": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "09-04-OC-P05": {
+      "source_uid": "37194@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "353717",
+        "353718"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353717": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBck1TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--97af3a32e00884c8d26df797e9fec5011c30ee54/OChem_09_04_006a.jpg\" alt=\"A C5 chain with a keto group on the C2 position.\">"
+          },
+          "wraps": {}
+        },
+        "sol:353717": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353718": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBclFTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--992853ac9879f309db24f069418a741c28685111/OChem_09_04_006b.jpg\" alt=\"A C5 chain with a keto group on the C3 position.\">"
+          },
+          "wraps": {}
+        },
+        "sol:353718": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "09-04-OC-P06": {
+      "source_uid": "37195@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "353721",
+        "353722"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353721": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBclVTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e52345dd1edeee8f5c6ac7ff213d9d8ff80155db/OChem_09_04_010a.jpg\" alt=\"The figure shows a benzene ring with a C H 2 C H O group.\">"
+          },
+          "wraps": {}
+        },
+        "sol:353721": {
+          "skeleton": "\u0000SLOT_0\u0000\n",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{≡}\"></span>"
+          },
+          "wraps": {}
+        },
+        "stem:353722": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcllTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--db03800bb933e198930f7cde459f0dde54507aeb/OChem_09_04_010b.jpg\" alt=\"A C6  chain with a carbonyl group at C3 and two methyl groups at C2 and C5.\">"
+          },
+          "wraps": {}
+        },
+        "sol:353722": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "09-04-OC-P07": {
+      "source_uid": "37196@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "353725",
+        "353726"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353725": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b805d70664d85a271c3f236d78261f02d1ff80c0/OChem_09_04_011a.jpg\" alt=\"A ball-and-stick model of benzyl ketone with a bromo group. Carbon, hydrogen, carbonyl group, and bromine group are indicated using grey, white, red, and reddish brown spheres.\">"
+          },
+          "wraps": {}
+        },
+        "sol:353725": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353726": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--71a8c69b5e01607bdf765ffa2d25b9d758848d3b/OChem_09_04_011b.jpg\" alt=\"A ball and stick model of a cyclopentyl aldehyde. Carbon, hydrogen, and carbonyl group are indicated as grey, white, and red spheres, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:353726": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "09-05-OC-P08": {
+      "source_uid": "37197@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "332914",
+        "332915",
+        "332916"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:332914": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:332914": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:332915": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:332915": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:332916": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:332916": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "09-07-OC-P09": {
+      "source_uid": "37198@9",
+      "solutions_are_public": true,
+      "question_order": [
+        "347101"
+      ],
+      "fields": {
+        "stem:347101": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000<br>\u0000SLOT_2\u0000</p>\n\n",
+          "slots": 3,
+          "opaques": {
+            "0": "<span data-math=\"\\text{≡}\"></span>"
+          },
+          "wraps": {}
+        },
+        "sol:347101": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "09-08-OC-P10": {
+      "source_uid": "37199@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "353730",
+        "353731",
+        "353732"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353730": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmtTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ce3f8fa25a6e55979a8babdc2b24c7dbd7be55d8/OChem_09_08_006a.jpg\" alt=\"A C6 chain with a triple bond on the C2 position.\">"
+          },
+          "wraps": {}
+        },
+        "sol:353730": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353731": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcm9TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--45acae51bd99448ebe770a58ba85d65545899019/OChem_09_08_006b.jpg\" alt=\"A C5 chain with a triple bond on the C2 position.\">"
+          },
+          "wraps": {}
+        },
+        "sol:353731": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353732": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcnNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--342ce63a0f168dadf537f9f17cfab929f73146c1/OChem_09_08_006c.jpg\" alt=\"A cyclohexane ring connected to a  triple bond linked to a methyl group.\">"
+          },
+          "wraps": {}
+        },
+        "sol:353732": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "09-08-OC-P11": {
+      "source_uid": "37200@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "357737"
+      ],
+      "fields": {
+        "stem:357737": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:357737": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2thIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e9cb74685f5cb74f2e2fec7e8a3e3414c9f74507/OChem_09_EC_201.jpg\" alt=\"The figure shows propyne reacting with sodium amide and methyl iodide to form but-2-yne. Further, it reacts with hydrogen and Lindlar catalyst to form cis-2-butene. \">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-09-OC-P12": {
+      "source_uid": "37201@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "374683",
+        "374684",
+        "374685",
+        "374686",
+        "374687",
+        "374688"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:374683": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:374683": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:374684": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:374684": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:374685": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:374685": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:374686": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:374686": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:374687": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:374687": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:374688": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:374688": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "09-09-OC-P13": {
+      "source_uid": "37202@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "346484",
+        "346485",
+        "346486",
+        "346487"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346484": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:346484": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{≡}\"></span>"
+          },
+          "wraps": {}
+        },
+        "stem:346485": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:346485": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{≡}\"></span>"
+          },
+          "wraps": {}
+        },
+        "stem:346486": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:346486": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{≡}\"></span>"
+          },
+          "wraps": {}
+        },
+        "stem:346487": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:346487": {
+          "skeleton": "\u0000SLOT_0\u0000 ",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{≡}\"></span>"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP01": {
+      "source_uid": "37215@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "357311",
+        "357312",
+        "357313",
+        "357314",
+        "357315",
+        "357316"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:357311": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdG9TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--815b43438c7eddbbbea44ad1168f88558d90155e/OChem_09_EC_023a.jpg\" alt=\"A C8 internal alkyne with two methyl groups at C2 and a triple bond at C3.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357312": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b4cce7c3303d2649ddb911a8622c8012c96138ce/OChem_09_EC_023b.jpg\" alt=\"A C8 dialkyne with triple bonds at C2 and C5 positions.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357313": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--139d7a698d3adad6c096da35d28e532bbdbf5a5c/OChem_09_EC_023c.jpg\" alt=\"A C9 enyne with a  triple bond at C3, double bond at C5 , and two methyl groups at C2 and C5.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357314": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDBTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--449e97ce9b7db51558b936b39f7a49deec0ea954/OChem_09_EC_023d.jpg\" alt=\"A C8 dialkyne with triple bonds at C1 , C5, and two methyl groups at C4.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357315": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDRTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--495e5a56f3ab463f6ee77cc70713a1e98a6f5aba/OChem_09_EC_023e.jpg\" alt=\"A C6 dienyne with a triple bond at C2 and two double bonds at C3 and C5.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357316": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDhTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--86a902696d071909da390748b28fcd64876abd0d/OChem_09_EC_023f.jpg\" alt=\"A C13 alkyne with a methyl group at C2,  a triple bond at C4, and two ethyl groups at C3 and C6.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP02": {
+      "source_uid": "37216@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "333025",
+        "333026",
+        "333027",
+        "333028",
+        "333029",
+        "333030",
+        "333031",
+        "333032"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333025": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333026": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333027": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333028": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333029": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333030": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333031": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333032": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP03": {
+      "source_uid": "37217@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "346476",
+        "346477"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346476": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{=}\"></span>",
+            "1": "<span data-math=\"\\text{≡}\"></span>",
+            "2": "<span data-math=\"\\text{≡}\"></span>",
+            "3": "<span data-math=\"\\text{=}\"></span>",
+            "4": "<span data-math=\"\\text{=}\"></span>",
+            "5": "<span data-math=\"\\text{=}\"></span>"
+          },
+          "wraps": {}
+        },
+        "stem:346477": {
+          "skeleton": "\u0000SLOT_0\u0000\n",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{≡}\"></span>",
+            "1": "<span data-math=\"\\text{≡}\"></span>",
+            "2": "<span data-math=\"\\text{≡}\"></span>",
+            "3": "<span data-math=\"\\text{≡}\"></span>",
+            "4": "<span data-math=\"\\text{≡}\"></span>",
+            "5": "<span data-math=\"\\text{=}\"></span>"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP04": {
+      "source_uid": "37218@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "357318"
+      ],
+      "fields": {
+        "stem:357318": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n<p>\u0000SLOT_2\u0000</p>",
+          "slots": 3,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUFTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--76b79b9415fd4425af50588059fa7a0b9828f2ea/OChem_09_EC_025.jpg\" alt=\"A phenyl alkyne reacts with bromine and water to form a phenyl bromo methyl ketone.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP05": {
+      "source_uid": "37219@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "357320"
+      ],
+      "fields": {
+        "stem:357320": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUVTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9481fa5bff66a92d55c9e83c4eaaad4045a4106f/OChem_09_EC_024.jpg\" alt=\"A terminal enyne reacts with hydrogen and palladium catalyst to form an unknown product A. The reactant also reacts with hydrogen and Lindlar catalyst to form an unknown product B.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP06": {
+      "source_uid": "37220@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "333047",
+        "333048",
+        "333049",
+        "333050",
+        "333051",
+        "333052"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333047": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333048": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333049": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333050": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333051": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333052": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP07": {
+      "source_uid": "37221@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "333059",
+        "333060",
+        "333061",
+        "333062",
+        "333063",
+        "333064"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333059": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333060": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333061": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333062": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333063": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333064": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP08": {
+      "source_uid": "37222@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "333070",
+        "333071",
+        "333072",
+        "333073",
+        "333074"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333070": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333071": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333072": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333073": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333074": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP09": {
+      "source_uid": "37223@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "357326",
+        "357327",
+        "357328",
+        "357329",
+        "357330"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:357326": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdU1TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--52615f8b1f7444967d52723771f33f0bc3052684/OChem_09_EC_026a.jpg\" alt=\"The figure shows carbon dioxide and heptanoic acid, the products of oxidative cleavage. \">"
+          },
+          "wraps": {}
+        },
+        "stem:357327": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVFTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b5eba9cf275de6bc5347e08a528007fe0f46121e/OChem_09_EC_026b.jpg\" alt=\"The figure shows acetic acid and benzoic acid, the products of oxidative cleavage.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357328": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVVTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ad422a05c4a24c6ea47c6dcb83d0f71eadcb3b53/OChem_09_EC_026c.jpg\" alt=\"C10 dicarboxylic acid with carboxylate groups at C1 and C10.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357329": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVlTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--41b8d28d8d653001f9f4f8800678c471922f480b/OChem_09_EC_026d.jpg\" alt=\"Acetal aldehyde, a C5  carboxylic acid with a C2 carbonyl, and carbon dioxide, the products of oxidative cleavage.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357330": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--37dec2dd5b3d46c8a61c390f21b2c5d90c9ce719/OChem_09_EC_026e.jpg\" alt=\"C7 carboxylic acid with carbonyl at C2, aldehyde at C7, and carbon dioxide, the products of oxidative cleavage.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP10": {
+      "source_uid": "37224@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "353814"
+      ],
+      "fields": {
+        "stem:353814": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c5f5c111f89243cb98da62bc633044f19409ea04/OChem_09_EC_027.jpg\" alt=\"A C5 terminal alkyne reacts with reagent  a to add an ethyl group at C1, forming a cis alkene via reagent b and a substituted cyclopropane ring  with reagent c.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP11": {
+      "source_uid": "37225@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "353816"
+      ],
+      "fields": {
+        "stem:353816": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWtTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--469f69a74f6affaf58907b2e7ff45a42ac9159eb/OChem_09_EC_028.jpg\" alt=\"Figure shows eight reactions of a terminal alkyne. Each arrow points in different directions to give either an aldehyde, alkane, alkene, epoxide, ketone, alkyne, alcohol, or an alkyl halide.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP12": {
+      "source_uid": "37226@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "353823",
+        "353824",
+        "353825",
+        "353826",
+        "353827",
+        "353828"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353823": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdW9TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c368f0536e627219c6ad0ee6b8f16cd6d6e1240c/OChem_09_EC_029a.jpg\" alt=\"A C4 alkyne chain reacts in the presence of an unknown reagent represented as a question mark to form  methyl ethyl ketone.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353824": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdXNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--59f38a830d8f9c5b761b9ecb45b8d84d6fd1f100/OChem_09_EC_029b.jpg\" alt=\"A C4 alkyne chain reacts in the presence of an unknown reagent represented as a question mark to form butyraldehyde\">"
+          },
+          "wraps": {}
+        },
+        "stem:353825": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdXdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6f8172409c143560d5ac6ffe2e837e4baecba0b7/OChem_09_EC_029c.jpg\" alt=\"A phenyl alkyne reacts with an unknown reagent represented as a question mark forming a phenyl alkyne with a terminal methyl group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353826": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTBTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--476ce5503733a51c92e54df7e2fc82a0b947b7d0/OChem_09_EC_029d.jpg\" alt=\"A phenyl alkyne reacts with an unknown reagent represented as a question mark forming a cis-phenyl alkene with a terminal methyl group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353827": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTRTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bee6d0cea5450ee42ded124e5088f1157c6c09a3/OChem_09_EC_029e.jpg\" alt=\"1-Butyne reacts in the presence of an unknown reagent represented as a question mark to form propionic acid\">"
+          },
+          "wraps": {}
+        },
+        "stem:353828": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdThTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ea50fa09531a2d7e697f3b819a05c7281427027d/OChem_09_EC_029f.jpg\" alt=\"A C6 alkene reacts in the presence of an unknown reagent indicated as a question mark via two steps to form 1-hexyne.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP13": {
+      "source_uid": "37227@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "353831",
+        "353832"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353831": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdkFTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b977b2be5a1e4671848d0fa349c3be5b5ab8cc8a/OChem_09_EC_030a.jpg\" alt=\"Figure shows pentyne reacting  in the presence of an unknown reagent indicated as a question mark to form butanal.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353832": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdkVTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1ad01254153e3c68696b4a58f2caf9dc0d58a6c0/OChem_09_EC_030b.jpg\" alt=\"A C6 alkyne reacts in the presence of an unknown reagent indicated as a question mark to form an alkene.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP14": {
+      "source_uid": "37228@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "353834"
+      ],
+      "fields": {
+        "stem:353834": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdklTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d2a254c41545ba5e46c01c8d5a85820754ddaf64/OChem_09_EC_031.jpg\" alt=\"1-Hexyne reacts in the presence of an unknown reagent indicated by a question mark to form a C8 compound having a cyclopropane ring.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP15": {
+      "source_uid": "37229@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "353836"
+      ],
+      "fields": {
+        "stem:353836": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdk1TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8dd6e9dd60b0d7953f44b95e4b8df3625c9c5f1d/OChem_09_EC_032.jpg\" alt=\"Styrene reacts in the presence of an unknown reagent indicated by a question mark to form 2-phenyl acetaldehyde.\">",
+            "1": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdlFTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--72c6616cb94ae2e59b06f82c95179f63741be13d/OChem_09_EC_033.jpg\" alt=\"Styrene reacts in the presence of an unknown reagent indicated by a question mark to form prop-1-en-1ylbenzene.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP16": {
+      "source_uid": "37230@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "333111",
+        "333112"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333111": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333112": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP17": {
+      "source_uid": "37231@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "353842",
+        "353843",
+        "353844",
+        "353845",
+        "353846"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353842": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdlVTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7fa167fe4510f7ddfa682dba7f890ebcdc981d89/OChem_09_EC_034a.jpg\" alt=\"The structure of 1-pentyne.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353843": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdllTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4aa5c6967f6d9873d326e72c88bda3cb296e8825/OChem_09_EC_034b.jpg\" alt=\"The structure of hex-3-yne.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353844": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f1582d6adafaf054b166085baa14df784bfad90a/OChem_09_EC_034c.jpg\" alt=\"The structure of 4-methylpent-1-ene.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353845": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--491daeaada1a8de0e6db56809627b78e164d15d3/OChem_09_EC_034d.jpg\" alt=\"The figure shows an C8 carbon chain with a carbonyl group at C4.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353846": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmtTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e6668fc71010c819933679ab817c53185d48c475/OChem_09_EC_034e.jpg\" alt=\"The figure shows a C6 carbon chain with an aldehyde group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP18": {
+      "source_uid": "37232@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "357335",
+        "357336",
+        "357337",
+        "357338"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:357335": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdm9TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c513ef9581873342e70f8d4204c8659a51db1b27/OChem_09_EC_035a.jpg\" alt=\"A C6 alkyne reacts in the presence of an unknown reagent denoted as a question mark to form a cis-deuterated alkene.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357336": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdnNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5b987599920c3aec02f71537884b9509b045d3f4/OChem_09_EC_035b.jpg\" alt=\"A C6 alkyne reacts in the presence of an unknown reagent denoted as a question mark to form a trans-deuterated alkene.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357337": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdndTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cfb392bb76a968ccf88749b23a7684e4ea85def2/OChem_09_EC_035c.jpg\" alt=\"Pentyne reacts with an unknown reagent denoted as a question mark to form a deuterium-substituted alkyne.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357338": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjBTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b3ebc3311d5ad368ade1bcd73396f3a207688d74/OChem_09_EC_035d.jpg\" alt=\"Ethynylbenzene reacts with an unknown reagent indicated as a question mark to form a deuterium-substituted alkene.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP19": {
+      "source_uid": "37233@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "333132"
+      ],
+      "fields": {
+        "stem:333132": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP20": {
+      "source_uid": "37234@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "357340"
+      ],
+      "fields": {
+        "stem:357340": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjRTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--373dea6f7721c616efb9e0444fdbea328279b327/OChem_09_EC_036.jpg\" alt=\"The structure of muscalure.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP21": {
+      "source_uid": "37235@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "333140",
+        "333141",
+        "333142",
+        "333143",
+        "333144"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333140": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333141": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333142": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333143": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:333144": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP22": {
+      "source_uid": "37236@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "333146"
+      ],
+      "fields": {
+        "stem:333146": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP23": {
+      "source_uid": "37237@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "333148"
+      ],
+      "fields": {
+        "stem:333148": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP24": {
+      "source_uid": "37238@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "357343",
+        "357344"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:357343": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjhTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c6c85e16ad0e79b3bd91dc67939b66af3c1333c6/OChem_09_EC_037a.jpg\" alt=\"trans-5-Decene reacting in the presence of an unknown reagent indicated as a question mark to form cis-5-decene.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357344": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0FUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--940667a8ea6c536f5f626e16e3dd63d4d2760661/OChem_09_EC_037b.jpg\" alt=\"cis-5-Decene reacting in the presence of an unknown reagent indicated as a question mark to form trans-5-decene.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP25": {
+      "source_uid": "37239@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "357346"
+      ],
+      "fields": {
+        "stem:357346": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n<p>\u0000SLOT_2\u0000</p>",
+          "slots": 3,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0VUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fa81b83ebd318d3bf4298eaa616e8cee94096963/OChem_09_EC_038.jpg\" alt=\"Acetone reacts in the presence of sodium acetylide and hydronium ion to form an alcohol.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP26": {
+      "source_uid": "37240@6",
+      "solutions_are_public": false,
+      "question_order": [
+        "353864"
+      ],
+      "fields": {
+        "stem:353864": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0lUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8aca0378b317d004bdf27ea291184b6af71f50a3/OChem_09_EC_039.jpg\" alt=\"The structure of mestranol.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP27": {
+      "source_uid": "37241@7",
+      "solutions_are_public": false,
+      "question_order": [
+        "353866"
+      ],
+      "fields": {
+        "stem:353866": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ01UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3cbdb187fec58c556e566c671ad1767572911501/OChem_09_EC_040.jpg\" alt=\"The structure of 1-octen-3-ol.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP28": {
+      "source_uid": "37242@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "333160"
+      ],
+      "fields": {
+        "stem:333160": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP29": {
+      "source_uid": "37243@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "353868"
+      ],
+      "fields": {
+        "stem:353868": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1FUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c3229c079196d8d3e910e4b2eb225275b0585806/OChem_09_EC_041.jpg\" alt=\"The structure of a C7 tricarboxylic acid labeled E.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP30": {
+      "source_uid": "37244@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "353870"
+      ],
+      "fields": {
+        "stem:353870": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1VUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--302526f9742003c35cf5b0f63ea105d26ccfbeee/OChem_09_EC_042.jpg\" alt=\"The structure of a cumulene.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP31": {
+      "source_uid": "37245@6",
+      "solutions_are_public": false,
+      "question_order": [
+        "353872"
+      ],
+      "fields": {
+        "stem:353872": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1lUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--52b18fa0bd72c8aeedf6279bab5b4a82db12121e/OChem_09_EC_043a.jpg\" alt=\"The structure of potassium hydroxide.\">",
+            "1": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2NUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--45192c9eae2ed3ea32295c4db47848fe314597aa/OChem_09_EC_043b.jpg\" alt=\"The structure of the sodium salt of the methylene anion connected to a sulfonyl group that is further connected to a methyl group.\">",
+            "2": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2dUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f51789fa9852d0d9ada13e4a6f4af8299d7d0cf8/OChem_09_EC_043c.jpg\" alt=\"The structure of butyllithium.\">",
+            "3": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2tUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4a90ec814f6027939ce3cfca6adcac6f9a017288/OChem_09_EC_043d.jpg\" alt=\"The structure of the sodium salt of the methylene anion  of acetone.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-AP32": {
+      "source_uid": "37246@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "360422",
+        "360423",
+        "360424"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360422": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaHdVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--630f0906e4d11842e0cee95afde96f5ac57880b5/OSX_OrgChem_09_99_OChem-09-EC-044a_80485-09-u094_P-2Penta_img.jpg\" alt=\"The structure of three cyclopentene carbocations with positive charges at C 4, C 1, and C 3.\">"
+          },
+          "wraps": {}
+        },
+        "stem:360423": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDBVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--10cdc0350b9b0170c59716a55f9fb89a58e410ae/OSX_OrgChem_09_99_OChem-09-EC-044b_80485-09-u094_P-3Llines_img.jpg\" alt=\"The structure of three 1-pentene carbocations, with positive charges at C 3, C 2, and C 4.\">"
+          },
+          "wraps": {}
+        },
+        "stem:360424": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDRVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6c7e88440c52eb12845184f0b7c1a73e6099e43d/OSX_OrgChem_09_99_OChem-09-EC-044c_80485-09-u094_P-3Hexa_img.jpg\" alt=\"The structure of three 4-methylcyclohexene carbocations with positive charges at C 1, C 4, and C 5.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-MP01": {
+      "source_uid": "37207@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "628146"
+      ],
+      "fields": {
+        "stem:628146": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-MP02": {
+      "source_uid": "37208@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "357294",
+        "357295",
+        "357296"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:357294": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2NTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--08ddef34d07e2c735505a0670f4a538712b8e6b1/OChem_09_EC_016a.jpg\" alt=\"A C5 terminal alkyne reacts with two moles of hydrogen chloride to form 2,2-dichloropentane.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357295": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2dTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2536fc6c59cf8b38c99d40ddae4b31f8727a23c1/OChem_09_EC_016b.jpg\" alt=\"A C4 internal alkyne reacts with two moles of hydrogen bromide to form 2,2-dibromobutane.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357296": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2tTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--51c7076e930e5f7cc11d25a0dc593d19327b591d/OChem_09_EC_016c.jpg\" alt=\"A phenyl alkyne reacts with two moles of hydrogen chloride to form a benzene ring with a carbon connected to a  dichloroethyl group\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-MP03": {
+      "source_uid": "37209@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "353758",
+        "353759",
+        "353760"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353758": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc29TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5de5a7366cf7d6b4fafbbf4da2bbfaf7920c94ab/OChem_09_EC_017a.jpg\" alt=\"A phenyl alkyne reacts with water, sulfuric acid, and mercuric sulfate to form a benzene ring connected to an ionic organomercury enol sulfate intermediate.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353759": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3NTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7317c277461bf945f9400974a5f0f3321b009bb8/OChem_09_EC_017b.jpg\" alt=\"A C3 alkyne reacts with water, sulfuric acid, and mercuric sulfate to form a C3 ionic organomercury enol sulfate  intermediate.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353760": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3dTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f39720b6114faa3930deafe8de1224a07a6a9b5a/OChem_09_EC_017c.jpg\" alt=\"A C4 terminal alkyne reacts with water, sulfuric acid, and mercuric sulfate to form a C4 ionic organomercury enol sulfate  intermediate.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-MP04": {
+      "source_uid": "37210@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "357300",
+        "357301",
+        "357302"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:357300": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczBTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e118d5fde5e2a34bc2da9d9758a89df40421cd95/OChem_09_EC_018a.jpg\" alt=\"A benzene ring connected to an OH-substituted alkene reacts with hydronium ions to form a benzene ring with a C O C H 3 group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357301": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczRTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5fa2d0dbc8d671a79cfc34f017983bc08ebcdf3e/OChem_09_EC_018b.jpg\" alt=\"A C3 OH-substituted alkene reacts with hydronium ions  to form acetone.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357302": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczhTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5252535e7b05e5f97426b13fb6b51565a4ef3599/OChem_09_EC_018c.jpg\" alt=\"A  C5  OH-substituted alkene reacts with hydronium ion to form a C5 methyl ketone.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-MP05": {
+      "source_uid": "37211@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "353770",
+        "353771",
+        "353772"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353770": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdEFTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5f9f8f77c2403604f56cacc589a02db6b6dbc85d/OChem_09_EC_019a.jpg\" alt=\"The figure shows a C5 terminal alkyne reacting with lithium and ammonia.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353771": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdEVTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2b7561aacc44838f2b7cb93998ae2fae06d12b44/OChem_09_EC_019b.jpg\" alt=\"The figure shows a C5  terminal alkyne reacting with lithium and deuterated ammonia. \">"
+          },
+          "wraps": {}
+        },
+        "stem:353772": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdElTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--08df85e10227fb6a472c236051d79e001a3eb933/OChem_09_EC_019c.jpg\" alt=\"The figure shows a phenyl-substituted C3 internal alkyne reacting with lithium and deuterated ammonia. \">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-MP06": {
+      "source_uid": "37212@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "353776",
+        "353777",
+        "353778"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353776": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdE1TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dd996a211e4577fc62448c283bc80b1be0221454/OChem_09_EC_020a.jpg\" alt=\"A C6 internal alkyne reacts with lithium and ammonia to form a trans alkene.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353777": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFFTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fc519943a9c7471558eacb9981812c13d8ef6467/OChem_09_EC_020b.jpg\" alt=\"A C6 internal alkyne reacts with bromine to form a trans dibromoalkene\">"
+          },
+          "wraps": {}
+        },
+        "stem:353778": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFVTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0d96b8aa89c4cc1785d487f5853e2eeeecb4770e/OChem_09_EC_020c.jpg\" alt=\"A C6 internal alkyne reacts with two moles of hydrogen bromide to form a dibromo substituted alkane\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-MP07": {
+      "source_uid": "37213@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "353782",
+        "353783",
+        "353784"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353782": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFlTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2a3cb45ea0035d1f9171d5b2a3ff8d099c2ab1b4/OChem_09_EC_021a.jpg\" alt=\"A benzene ring connected to a C2 alkyne reacts with sodium amide and methyl iodide.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353783": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--97a3189490e3dd8a100c0ecac807047003e9eb72/OChem_09_EC_021b.jpg\" alt=\"A C5 keto substituted alkyne reacts with sodium amide and ethyl iodide.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353784": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--91dd0f2f968199b331cedf3cba85c5ffd394ccb0/OChem_09_EC_021c.jpg\" alt=\"A C4 terminal alkyne reacts with sodium amide and phenyl methyl bromide.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-MP08": {
+      "source_uid": "37214@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "357304"
+      ],
+      "fields": {
+        "stem:357304": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGtTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--963276e5e9460c343e0ab9e8ea1a0e79d1e493e5/OChem_09_EC_022.jpg\" alt=\"The figure shows the reaction of acetone with tri-deuterium oxide to form hexadeuterioacetone.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-VC01": {
+      "source_uid": "37203@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "353737",
+        "353738"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353737": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjBTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6147a62bb392fe8840fa2b9ea37344a7ea638666/OChem_09_EC_011a.jpg\" alt=\"A ball and stick model of a C8 alkyne. Carbon and hydrogen are denoted using gray and white spheres, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353738": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjRTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--abf872815c5eb2f7b1597c5d741af39a0e4cd867/OChem_09_EC_011b.jpg\" alt=\"A ball and stick model of a C10 alkyne. Carbon and hydrogen are denoted using gray and white spheres, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-VC02": {
+      "source_uid": "37204@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "353741",
+        "353742"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353741": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjhTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--67fd28f8b6f840c2abfe61cd48c61c39e6433a62/OChem_09_EC_012a.jpg\" alt=\"A ball and stick model of a C6 alkyne. Carbon, oxygen, and hydrogen are denoted using gray, red, and white spheres, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353742": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0FTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--68ee7363dd6ed9b3e1e657e5059ea97fc47808ff/OChem_09_EC_012b.jpg\" alt=\"A ball and stick model of a substituted cyclohexanxe. Carbon and hydrogen are denoted using gray and white spheres, respectively. Two chlorine groups are denoted using green spheres.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-VC03": {
+      "source_uid": "37205@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "353745",
+        "353746"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353745": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0VTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b2fbbb9a03ccd87773a5302711c5c082f06f6f6b/OChem_09_EC_013a.jpg\" alt=\"A ball and stick model of a cyclopropane that is further linked to a three-carbon chain. Carbon, hydrogen, and oxygen are denoted using gray, white, and red spheres, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353746": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0lTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1cf345a7ca0ea2d3547238b21b0de5d611e7b907/OChem_09_EC_013b.jpg\" alt=\"A ball and stick model of a C6 chain with a double bond and carbonyl.  Carbon, hydrogen, and oxygen are denoted using gray, white, and red spheres, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "09-99-OC-VC04": {
+      "source_uid": "37206@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "353748"
+      ],
+      "fields": {
+        "stem:353748": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc01TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--81614af627b01c8ee659f00e1ae9f5dcbded98ce/OChem_09_EC_014.jpg\" alt=\"A ball and stick model of a five-membered chain with a triple bond. Carbon and hydrogen are denoted using gray and white spheres, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    }
+  }
+}

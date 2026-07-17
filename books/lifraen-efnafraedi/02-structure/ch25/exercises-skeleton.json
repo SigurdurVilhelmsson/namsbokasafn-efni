@@ -1,0 +1,2357 @@
+{
+  "generated_by": "exercise-extract.js",
+  "exercises": {
+    "25-01-OC-P01": {
+      "source_uid": "39039@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "358723",
+        "358724",
+        "358725",
+        "358726"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358723": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3cf8bca4e08b338b26405a3bdd30a428da120282/OChem_25_01_003a.jpg\" alt=\"The structure of D threose, an aldose monosaccharide. The molecular formula is C 4 H 8 O 4, with H and O H groups on opposite sides of stereogenic centers.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358723": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358724": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e1d3120f14fddd3df068c01e38900370fe07f9aa/OChem_25_01_003b.jpg\" alt=\"The structure of D ribulose which is a ketopentose with the chemical formula C 5 H 10 O 5. It is a structural isomer of ribose.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358724": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358725": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFlaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6219e26988937de4cbd7f6bd0017941d3ba2f1a3/OChem_25_01_003c.jpg\" alt=\"The structure of D tagatose which is a ketohexose. The molecular formula is C 6 H 12 O 6.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358725": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358726": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a95dfdde8e4e47dc470e2fdfa39c2f0bbde91744/OChem_25_01_003d.jpg\" alt=\"The structure of 2-deoxyribose. It is an aldopentose with 5 carbon atoms and an aldehyde functional group.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358726": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "25-02-OC-P02": {
+      "source_uid": "39040@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "358730",
+        "358731",
+        "358732"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358730": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--21e68db0ed372debc78fd7b492b736ac205e5ec9/OChem_25_02_010a.jpg\" alt=\"The central carbon is bonded to hydrogen on right, amine on left, C O O H on the top, and C H 3 on the bottom.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358730": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358731": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGtaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--12ad8e04eebffdad16699c8cf91f1b3d27dc0e4b/OChem_25_02_010b.jpg\" alt=\"The central carbon is bonded to hydroxyl on right, hydrogen on left, C H O on the top, and C H 3 on the bottom.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358731": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358732": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbG9aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2ae1bf663edc46869f591b105cccdedef72c5f61/OChem_25_02_010c.jpg\" alt=\"The central carbon is bonded to C H O on right, hydrogen on left, C H 3 on the top, and C H 2 C H 3 on the bottom.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358732": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "25-02-OC-P03": {
+      "source_uid": "39041@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "358734"
+      ],
+      "fields": {
+        "stem:358734": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3bfc0c157c046cc70c1525f401411097687b7943/OChem_25_02_011a.jpg\" alt=\"The central carbon is bonded to hydrogen on right, hydroxyl on left, C H O on the top and C H 2 O H on the bottom.\">",
+            "1": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--643da7c14c7b626f3274463a0a52c2d2875cbf35/OChem_25_02_011b.jpg\" alt=\"The central carbon is bonded to hydrogen on right, C H 2 O H on left, O H on the top and C H O on the bottom.\">",
+            "2": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDBaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dcfec70e0c79ff7435b73a5b58f01b750e504581/OChem_25_02_011c.jpg\" alt=\"The central carbon is bonded to C H 2 O H on right, hydroxyl on left, hydrogen on the top and C H O on the bottom.\">",
+            "3": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDRaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1237ff00dc556a825bd2ae7e78bdd74106a33b5e/OChem_25_02_011d.jpg\" alt=\"The central carbon is bonded to C H O on right, hydrogen on left, C H 2 O H on the top and hydroxyl on the bottom.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358734": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "25-02-OC-P04": {
+      "source_uid": "39042@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "358736"
+      ],
+      "fields": {
+        "stem:358736": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c794f4448c7e1dfab42eadcbde0482eb7af8ee3b/OChem_25_02_012.jpg\" alt=\"The ball-and-stick model comprises a three-carbon chain. The gray, black, green, and red spheres represent hydrogen, carbon, chlorine, and oxygen atoms, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358736": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDhaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2eeedb5cbceb12c019ac8b068a064df0d7b849f6/OChem_25_EC_201.jpg\" alt=\"The central carbon is bonded to C H 3 on right, C H 2 O H on left, hydrogen on the top and chlorine on the bottom.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "25-02-OC-P05": {
+      "source_uid": "39043@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "358738"
+      ],
+      "fields": {
+        "stem:358738": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a70eb1f889e0e09573e6cd3d423b18baa9e04064/OChem_25_02_013.jpg\" alt=\"The ball-and-stick model of aldotetrose comprises four-carbon atoms. The gray, black, and red spheres represent hydrogen, carbon, and oxygen atoms, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358738": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUlaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3d2a44f4f3324e9d9b21d06744525b9c112cf135/OChem_25_EC_202.jpg\" alt=\"Fischer projection of aldotetrose. It comprises four carbon where C 2 and C 3 have an R configuration. C H O is positioned on the top.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "25-03-OC-P06": {
+      "source_uid": "39044@6",
+      "solutions_are_public": true,
+      "question_order": [
+        "358742",
+        "358743",
+        "358744"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "stem:358742": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbU1aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6542222adb812987e656dc8a12cea7b9c6f13560/OChem_25_03_003a.jpg\" alt=\"The structure of L-erythrose which is a tetrose saccharide part of the aldose family.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358742": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "stem:358743": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ec447a9a46d5b31a0617317f674b4b232d53d01a/OChem_25_03_003b.jpg\" alt=\"The structure of D-xylose which is a monosaccharide containing five carbon atoms and an aldehyde functional group.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358743": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "stem:358744": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5b969f302074c7f1b7e0ed4a6c92da1cd31108e0/OChem_25_03_003c.jpg\" alt=\"The structure of D-xylulose which is a ketopentose containing five carbon atoms ad a ketone functional group.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358744": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-03-OC-P07": {
+      "source_uid": "39045@6",
+      "solutions_are_public": true,
+      "question_order": [
+        "358746"
+      ],
+      "fields": {
+        "stem:358746": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "sol:358746": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVlaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--85044b350acb6e2a004e7c5d07d6276ddd76a019/OChem_25_EC_203.jpg\" alt=\"The structure of L-arabinose which is an aldopentose containing five carbon atoms and including an aldehyde functional group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "25-04-OC-P08": {
+      "source_uid": "39046@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "358750",
+        "358751",
+        "358752"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "stem:358750": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "sol:358750": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--780be73e245ad64e4738c15eeb4b6dfcf9749397/OChem_25_EC_204a.jpg\" alt=\"The Fischer projection of L-xylose.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358751": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "sol:358751": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d461c85120b8344aa0b5cc4df187fd2d2d2ce3a2/OChem_25_EC_204b.jpg\" alt=\"The Fischer projection of L-galactose.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358752": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "sol:358752": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWtaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--52311c5da10abb066d8edd0f14a250e7c82b9bbe/OChem_25_EC_204c.jpg\" alt=\"The Fischer projection of L-allose.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "25-04-OC-P09": {
+      "source_uid": "39047@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "348014"
+      ],
+      "fields": {
+        "stem:348014": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "sol:348014": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-04-OC-P10": {
+      "source_uid": "39048@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "358754"
+      ],
+      "fields": {
+        "stem:358754": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbW9aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8e6897b6e3155187ae6d8f397371a8320b08e09a/OChem_25_04_005.jpg\" alt=\"The ball-and-stick model of an aldopentose. It contains five carbon atoms, four hydroxyl groups, and one aldehyde group.\">"
+          },
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "sol:358754": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--894bf0750b2aaea69a5205a37a241fbd2d4f0ec4/OChem_25_EC_205.jpg\" alt=\"The Fischer projection of D-ribose which is a simple sugar with molecular formula C 5 H 10 O 5.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "25-05-OC-P11": {
+      "source_uid": "39049@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "358756"
+      ],
+      "fields": {
+        "stem:358756": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "sol:358756": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0d24c01f5a0bf89902d022eb5f4529d3e7d468bc/OChem_25_EC_206.jpg\" alt=\"A  furanose D-ribose is presented. The cyclization of ribose occurs via hemiacetal formation due to an attack on aldehyde by C 4 hydroxyl group to produce a furanose ring .\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "25-05-OC-P12": {
+      "source_uid": "39050@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "358758"
+      ],
+      "fields": {
+        "stem:358758": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "sol:358758": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTRaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--12777d9ccb9e43b706ea69419950a60f59be47fa/OChem_25_EC_207.jpg\" alt=\"Structures of alpha D-fructopyranose and alpha-D fructofuranose with 6-membered and 5-membered  ether rings, respectively. In both structures, the anomeric  O H group on C 2 is pointing down.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "25-05-OC-P13": {
+      "source_uid": "39051@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "358760"
+      ],
+      "fields": {
+        "stem:358760": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "sol:358760": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbThaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b1a071b27104219a4a2a7e2298cf2d02e86a6c84/OChem_25_EC_208.jpg\" alt=\"Structures of beta D-galactopyranose and beta-D-mannopyranose.  The C 4 hydroxyl group of beta galactopyranose is equatorial and  C 2 hydroxyl group of beta mannopyranose is axial. \">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "25-05-OC-P14": {
+      "source_uid": "39052@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "358762"
+      ],
+      "fields": {
+        "stem:358762": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "sol:358762": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f3eaffec760ee2f174539e4e70094b9eb423ee3f/OChem_25_EC_209.jpg\" alt=\"Structure of beta-L-galactopyranose with an axial OH at C 4 and three equatorial  O H groups at C 1, C 2 and C 3.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "25-05-OC-P15": {
+      "source_uid": "39053@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "358764"
+      ],
+      "fields": {
+        "stem:358764": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9eef9d0dbfbc4b667399f789c724b94692412e02/OChem_25_05_007.jpg\" alt=\"The ball-and-stick model of an alpha aldohexose monosaccharide.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358764": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-06-OC-P16": {
+      "source_uid": "39055@8",
+      "solutions_are_public": true,
+      "question_order": [
+        "358766"
+      ],
+      "fields": {
+        "stem:358766": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbklaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a9e05452129c5a50f06d188abe8fcd6c0eb72277/OChem_25_06_003.jpg\" alt=\"The structure of beta-D-ribofuranose with three axial  O H groups at C 1, C 2, and C 3.  The molecular formula is C 5 H 10 O 5.\">"
+          },
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "sol:358766": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbk1aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fda7d3ec157d417ec00913a7965b9b8363e1ba64/OChem_25_EC_210a.jpg\" alt=\"Beta-D-Ribofuranose  reacts with iodomethane in the presence of silver oxide to form beta-D-ribofuranose tetramethyl ether in which the hydrogens of the hydroxyl groups are replaced by C H 3 groups \">",
+            "1": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9df9a8b837a4272711aef714f41a7334b654b90f/OChem_25_EC_210b.jpg\" alt=\"Beta-D-Ribofuranose reacts with acetic anhydride in pyridine to form beta-D-ribofuranose tetraacetate in which the hydrogens of the hydroxyl groups are replaced by acetate groups\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "25-06-OC-P17": {
+      "source_uid": "39054@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "348032"
+      ],
+      "fields": {
+        "stem:348032": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "2": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "sol:348032": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-06-OC-P18": {
+      "source_uid": "39056@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "348034"
+      ],
+      "fields": {
+        "stem:348034": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "2": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "sol:348034": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-06-OC-P19": {
+      "source_uid": "39057@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "348036"
+      ],
+      "fields": {
+        "stem:348036": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "sol:348036": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-06-OC-P20": {
+      "source_uid": "39058@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "348038"
+      ],
+      "fields": {
+        "stem:348038": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "sol:348038": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "2": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-06-OC-P21": {
+      "source_uid": "39059@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "348040"
+      ],
+      "fields": {
+        "stem:348040": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "sol:348040": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-06-OC-P22": {
+      "source_uid": "39060@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "348042"
+      ],
+      "fields": {
+        "stem:348042": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "sol:348042": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-06-OC-P23": {
+      "source_uid": "39061@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "348044"
+      ],
+      "fields": {
+        "stem:348044": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "sol:348044": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-07-OC-P24": {
+      "source_uid": "39062@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "358768"
+      ],
+      "fields": {
+        "stem:358768": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8ac172df47526957b214ee4ad84238d28d1e0cd0/OChem_25_07_003.jpg\" alt=\"Fischer projection of N-acetylmannosamine. It is a hexosamine monosaccharide with chemical formula  C 8 H15 N O 6.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358768": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbllaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8e64d203b6deea927d1cb7e701beca81f6afbae1/OChem_25_EC_211.jpg\" alt=\"Fischer projection of N-acetylmannosamine. The reaction of N-acetylmannosamine with pyruvate ion involving a base to form neuraminic acid. The reaction has multiple steps.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "25-08-OC-P25": {
+      "source_uid": "39063@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "348050",
+        "348051",
+        "348052"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348050": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:348050": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348051": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:348051": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348052": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:348052": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "25-99-OC-AP01": {
+      "source_uid": "39074@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358804",
+        "358805",
+        "358806"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358804": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb01aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cfac261a5af44aa1784ea1e549f60e11e2ac05eb/OChem_25_EC_012a.jpg\" alt=\"Structure of dihydroxyacetone also known as glycerone. It is a simple triose carbohydrate.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358805": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1FaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2d93e5ee5181ac96d883808136f0ae6463807c2c/OChem_25_EC_012b.jpg\" alt=\"Structure of a five-carbon atom ketopentose sugar with four -O H groups.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358806": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1VaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--53c024b435301c0fc3a0ece0a2bc61cf797a5f0c/OChem_25_EC_012c.jpg\" alt=\"Structural representation of aldoheptose which is a heptose with an aldehyde group and five chiral centers.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "25-99-OC-AP02": {
+      "source_uid": "39075@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348095",
+        "348096",
+        "348097",
+        "348098"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348095": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348096": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348097": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348098": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "25-99-OC-AP03": {
+      "source_uid": "39076@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348103",
+        "348104",
+        "348105",
+        "348106"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "stem:348103": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348104": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348105": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348106": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "25-99-OC-AP04": {
+      "source_uid": "39077@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358808"
+      ],
+      "fields": {
+        "stem:358808": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1laIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f11780afd94b6789950e1bc41148d9704e572f1f/OChem_25_EC_013.jpg\" alt=\"The structure of L-ascorbic acid. In the Fisher projection, the farthest chiral carbon has a hydroxyl group on the left hand side.\">"
+          },
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-99-OC-AP05": {
+      "source_uid": "39078@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348110"
+      ],
+      "fields": {
+        "stem:348110": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "25-99-OC-AP06": {
+      "source_uid": "39079@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358812",
+        "358813",
+        "358814"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358812": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2NaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4ab9726a618118d33b63befd224db1b1a27ab137/OChem_25_EC_014a.jpg\" alt=\"Three-carbon Fisher projection,   hydrogen top and bromine on the right and  methyl on the left at C 1 , at C 2  bromine on the left, and methyl  bottom\">"
+          },
+          "wraps": {}
+        },
+        "stem:358813": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2daIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0a8c07e68e1a0c940a8e0270928cd99b79ac2a8f/OChem_25_EC_014b.jpg\" alt=\"Two-carbon Fisher projection,   phenyl top with  OH on the right  and methyl on the left at C 1, at C 2 methyl on the left, and OH at the  bottom\">"
+          },
+          "wraps": {}
+        },
+        "stem:358814": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2taIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e7037ef2d0e298b07eaf28d1a0377b1b218fffed/OChem_25_EC_014c.jpg\" alt=\"Three-carbon Fisher projection,   amine top and carboxylic acid  on the right  at C 1, at C 2 OH  on the right, and at C 3 phenyl at the  bottom\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "25-99-OC-AP07": {
+      "source_uid": "39080@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348121",
+        "348122",
+        "348123",
+        "348124"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348121": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348122": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348123": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348124": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "25-99-OC-AP08": {
+      "source_uid": "39081@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348126"
+      ],
+      "fields": {
+        "stem:348126": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-99-OC-AP09": {
+      "source_uid": "39082@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358816"
+      ],
+      "fields": {
+        "stem:358816": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb29aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--55028d8c3b0ed924ef41e04f52fb82d312c21b08/OChem_25_EC_015.jpg\" alt=\"The Haworth projection of beta anomer of pyranose sugar named allose.\">"
+          },
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-99-OC-AP10": {
+      "source_uid": "39083@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358818"
+      ],
+      "fields": {
+        "stem:358818": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3NaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1cd9b45c4bed2c2ac3f0762b2c944110cca84eac/OChem_25_EC_016.jpg\" alt=\"The Haworth projection of a beta pyranose in which two hydroxyl groups are axial at C 3 and C 4  and one equatorial hydroxyl at C 2.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "25-99-OC-AP11": {
+      "source_uid": "39084@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358822",
+        "358823",
+        "358824"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358822": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3daIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--12f26357e9844eb2ac75e73abc8f988bbe2c1b5c/OChem_25_EC_017a.jpg\" alt=\"The structure of beta-D-altropyranose.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358823": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzBaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--707f5024cabcefe0090dc12077586ced49f1bca6/OChem_25_EC_017b.jpg\" alt=\"The structure of alpha-D-fructofuranose.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358824": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzRaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5b30195ae50bd513341b1666661180e85ab6deb2/OChem_25_EC_017c.jpg\" alt=\"The structure of alpha-L-mannopyranose.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "25-99-OC-AP12": {
+      "source_uid": "39085@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358826"
+      ],
+      "fields": {
+        "stem:358826": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzhaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ffefc7b88e7c5ace84026456383fd454f99c577c/OChem_25_EC_018.jpg\" alt=\"The Fisher projection of  D-ribulose, ketone  at C 2,  two hydroxyl groups on the right at C 3, and C 4, and a hydroxyl at the bottom of C 4\">"
+          },
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-99-OC-AP13": {
+      "source_uid": "39086@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "348989"
+      ],
+      "fields": {
+        "stem:348989": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-99-OC-AP14": {
+      "source_uid": "39087@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348147",
+        "348148",
+        "348149",
+        "348150",
+        "348151",
+        "348152"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "stem:348147": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348148": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348149": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348150": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348151": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348152": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "25-99-OC-AP15": {
+      "source_uid": "39088@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348154"
+      ],
+      "fields": {
+        "stem:348154": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-99-OC-AP16": {
+      "source_uid": "39089@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348156"
+      ],
+      "fields": {
+        "stem:348156": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-99-OC-AP17": {
+      "source_uid": "39090@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348158"
+      ],
+      "fields": {
+        "stem:348158": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-99-OC-AP18": {
+      "source_uid": "39091@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348160"
+      ],
+      "fields": {
+        "stem:348160": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "2": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "3": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "4": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "5": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-99-OC-AP19": {
+      "source_uid": "39092@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348162"
+      ],
+      "fields": {
+        "stem:348162": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "2": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-99-OC-AP20": {
+      "source_uid": "39093@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348164"
+      ],
+      "fields": {
+        "stem:348164": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "2": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "3": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-99-OC-AP21": {
+      "source_uid": "39094@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348166"
+      ],
+      "fields": {
+        "stem:348166": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-99-OC-AP22": {
+      "source_uid": "39095@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348168"
+      ],
+      "fields": {
+        "stem:348168": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-99-OC-AP23": {
+      "source_uid": "39096@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348170"
+      ],
+      "fields": {
+        "stem:348170": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-99-OC-AP24": {
+      "source_uid": "39097@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348174",
+        "348175",
+        "348176"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "stem:348174": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "stem:348175": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "stem:348176": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "25-99-OC-AP25": {
+      "source_uid": "39098@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348178"
+      ],
+      "fields": {
+        "stem:348178": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "25-99-OC-AP26": {
+      "source_uid": "39099@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348180"
+      ],
+      "fields": {
+        "stem:348180": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-99-OC-AP27": {
+      "source_uid": "39100@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348182"
+      ],
+      "fields": {
+        "stem:348182": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "25-99-OC-AP28": {
+      "source_uid": "39101@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348184"
+      ],
+      "fields": {
+        "stem:348184": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "25-99-OC-AP29": {
+      "source_uid": "39102@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348186"
+      ],
+      "fields": {
+        "stem:348186": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-99-OC-AP30": {
+      "source_uid": "39103@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348188"
+      ],
+      "fields": {
+        "stem:348188": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "25-99-OC-AP31": {
+      "source_uid": "39104@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348190"
+      ],
+      "fields": {
+        "stem:348190": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-99-OC-AP32": {
+      "source_uid": "39105@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348192"
+      ],
+      "fields": {
+        "stem:348192": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "25-99-OC-AP33": {
+      "source_uid": "39106@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348194"
+      ],
+      "fields": {
+        "stem:348194": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-99-OC-AP34": {
+      "source_uid": "39107@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358831",
+        "358832",
+        "358833",
+        "358834"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--08af525788811a8a323aaf62d70ea024a40240d4/OChem_25_EC_019.jpg\" alt=\"D-Glucose and D-fructose when treated with excess phenyl hydrazine form the same osazone  with  phenhydrazones at C 1 and C 2\">"
+          },
+          "wraps": {}
+        },
+        "stem:358831": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358832": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358833": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358834": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "25-99-OC-AP35": {
+      "source_uid": "39108@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358839",
+        "358840",
+        "358841",
+        "358842"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--345985aa8ab3075d570414814b0be4362cc48e54/OChem_25_EC_020.jpg\" alt=\"Fischer projection of D-idose, two hydroxyl groups on the left at C2, C3, two hydroxyl groups on the right at C3, C5  in equilibrium with idopyranose and water. \">"
+          },
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "stem:358839": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "stem:358840": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "stem:358841": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "stem:358842": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-99-OC-AP36": {
+      "source_uid": "39109@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358844"
+      ],
+      "fields": {
+        "stem:358844": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcElaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--96a08a1dac9dc53b73ff72f50506f2fbcc051a97/OChem_25_EC_021.jpg\" alt=\"The structure of the acetyl CoA consists of two parts: the acetyl group and CoA. CoA  is a beta mercaptoethylamine, pantothenic acid, phosphate  linked adenosine diphosphate.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "25-99-OC-MP01": {
+      "source_uid": "39068@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358786"
+      ],
+      "fields": {
+        "stem:358786": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjBaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0e7effb7c4648bb8c529985fe2b1c659a8c821a6/OChem_25_EC_006.jpg\" alt=\"U D P galactose is converted by a N A D cation to U D P-galactose.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "25-99-OC-MP02": {
+      "source_uid": "39069@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358788"
+      ],
+      "fields": {
+        "stem:358788": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjRaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--aaab38f87b1c63d999259ad0552e3a004cb909e2/OChem_25_EC_007.jpg\" alt=\"Mannose, one of the essential monosaccharides, is biosynthesized as its 6-phosphate derivative from fructose 6-phosphate. No enzyme cofactor is required.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "25-99-OC-MP03": {
+      "source_uid": "39070@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358790"
+      ],
+      "fields": {
+        "stem:358790": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjhaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6fbd0bb85c07401d1df73502c5a735e34de1fe5f/OChem_25_EC_008.jpg\" alt=\"Glucosamine, one of the essential monosaccharides, is biosynthesized as its 6-phosphate derivative from fructose 6-phosphate by reaction with ammonia.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "25-99-OC-MP04": {
+      "source_uid": "39071@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358792"
+      ],
+      "fields": {
+        "stem:358792": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0FaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dc3b018ce208547c40168634e345b1f87b84ae5b/OChem_25_EC_009.jpg\" alt=\"The reaction of the Haworth projection of D-glucose with acetone in the presence of hydrochloric acid to yield the non-reducing 1, 2 : 5, 6 diisopropylidene D-glucofuranose.\">"
+          },
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-99-OC-MP05": {
+      "source_uid": "39072@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358794"
+      ],
+      "fields": {
+        "stem:358794": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0VaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--eed42fb4deb040b10716e6f5d1219721573b68a1/OChem_25_EC_010.jpg\" alt=\"The conversion of fructose 1, 6- bisphosphate to glyceraldehyde 3-phosphate and dihydroxyacetone phosphate is a step in the glycolysis pathway for degrading carbohydrates.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "25-99-OC-MP06": {
+      "source_uid": "39073@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358798",
+        "358799",
+        "358800"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0laIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--69b6c7f775541ae7e57d32c3673adab5e09709fe/OChem_25_EC_011.jpg\" alt=\"G D P- L-Fucose, one of the essential monosaccharides, is biosynthesized from G D P - D-mannose by a three-step reaction sequence.\">"
+          },
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "stem:358798": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358799": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358800": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "25-99-OC-VC01": {
+      "source_uid": "39064@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358771",
+        "358772"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "stem:358771": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--67c509d6923576d6ea3b82123664da9f088803c2/OChem_25_EC_002a.jpg\" alt=\"The ball-and-stick model of a four-carbon aldose. The gray, black, and red spheres represent hydrogen, carbon, and oxygen atoms, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358772": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a97603b77b8f4f986a3a85cdf1a4aa6ac6e6d5d4/OChem_25_EC_002b.jpg\" alt=\"The ball-and-stick model of a pyranose. The gray, black, and red spheres represent hydrogen, carbon, and oxygen atoms, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "25-99-OC-VC02": {
+      "source_uid": "39065@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358775",
+        "358776"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "stem:358775": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmtaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9f643af715f967f4f3236635a195be1866fade4e/OChem_25_EC_003a.jpg\" alt=\"The ball-and-stick model of a three carbon aldose. The gray, black, and red spheres represent hydrogen, carbon, and oxygen atoms, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358776": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbm9aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d03198bd9b2672c7e7433354bb29b6ca0653de26/OChem_25_EC_003b.jpg\" alt=\"The ball-and-stick model of a four carbon aldose. The gray, black, and red spheres represent hydrogen, carbon, and oxygen atoms, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "25-99-OC-VC03": {
+      "source_uid": "39066@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358778"
+      ],
+      "fields": {
+        "stem:358778": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbnNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ebf8276ee18a588f2d114ae216e9b2524dd895b5/OChem_25_EC_004.jpg\" alt=\"The ball-and-stick model of a beta pyranose with three equatorial O H groups. The gray, black, and red spheres represent hydrogen, carbon, and oxygen atoms, respectively.\">"
+          },
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "25-99-OC-VC04": {
+      "source_uid": "39067@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358782",
+        "358783",
+        "358784"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbndaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--79d773ac6a4f156a6c504de1faebaaa767f184b2/OChem_25_EC_005.jpg\" alt=\"The ball-and-stick model of an aldohexose. The gray, black, and red spheres represent hydrogen, carbon, and oxygen atoms, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358782": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358783": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "stem:358784": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    }
+  }
+}

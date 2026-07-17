@@ -1,0 +1,1563 @@
+{
+  "generated_by": "exercise-extract.js",
+  "exercises": {
+    "04-01-OC-P01": {
+      "source_uid": "36472@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "351872",
+        "351873",
+        "351874",
+        "351875",
+        "351876",
+        "351877"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351872": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjhRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5931f409ce85c9721e953795960c87545ceaa4ac/OChem_04_01_008a.jpg\" alt=\"In a 6-membered carbon ring, C1 and C4 are each bonded to a methyl group.\">"
+          },
+          "wraps": {}
+        },
+        "sol:351872": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351873": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0FSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a012f1985bc52471ab1cdcc88bc0f906fd81e9d6/OChem_04_01_008b.jpg\" alt=\"In a 5-membered carbon ring, C1 and C3 are bonded to a methyl and a propyl group, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:351873": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351874": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0VSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c7dae6071bb96c46bfae0846e68936c899accc67/OChem_04_01_008c.jpg\" alt=\"A cyclobutane ring is bonded to C3 of a 5-carbon chain.\">"
+          },
+          "wraps": {}
+        },
+        "sol:351874": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351875": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0lSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--58ca6b69bcdd6856500c2907eec80c4eb6a833a5/OChem_04_01_008d.jpg\" alt=\"In a 10-membered carbon ring, C1 and C4 are bonded to a bromine atom and an ethyl group, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:351875": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351876": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ01SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f2565a38ae3674dcb68d7bc3976ae2f58241bace/OChem_04_01_008e.jpg\" alt=\"In a 6-membered carbon ring, C1 and C2 are bonded to a C H (C H 3) 2 group and a methyl group, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:351876": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351877": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1FSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c602540559d5758c010d6334284cb322a6fdca44/OChem_04_01_008f.jpg\" alt=\"In a 7-membered carbon ring, C1, C2, and C4 are bonded to a C (C H 3) 3 group, a methyl group, and a bromine atom, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:351877": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-01-OC-P02": {
+      "source_uid": "36473@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "357648",
+        "357649",
+        "357650",
+        "357651"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:357648": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:357648": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1VSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--20bee1711a3ebf6ec7f68326a5b55a00e9d928eb/OChem_04_EC_201a.jpg\" alt=\"In an 8-membered carbon ring, C1 is bonded to two methyl groups.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357649": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:357649": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1lSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d02a91b48c7e820631bf38b91d3fe36055802ef5/OChem_04_EC_201b.jpg\" alt=\"The C3 of a 6-carbon chain is bonded to a 4-membered carbon ring.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357650": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:357650": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2NSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cddfba4477e42726eac8e3a6f5b7e6566a41702a/OChem_04_EC_201c.jpg\" alt=\"In a 5-membered carbon ring, C1 and C2 are each bonded to a chlorine atom.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357651": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:357651": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2dSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4968a7e85fb426acb7b21d5103377ea0e48c33e1/OChem_04_EC_201d.jpg\" alt=\"In a cyclohexane ring, C1 and C3 are each bonded to a bromine atom. C5 is bonded to a methyl group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "04-01-OC-P03": {
+      "source_uid": "36474@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "351064"
+      ],
+      "fields": {
+        "stem:351064": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2tSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bba9ceb1d7c97954977b0d8c53e4178530d7d775/OChem_04_01_009.jpg\" alt=\"A ball and stick model has a 5-carbon ring with C1 bonded to ethyl and C3 bonded to two methyl groups. Black and gray spheres represent carbon and hydrogen, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:351064": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-02-OC-P04": {
+      "source_uid": "36475@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "351067",
+        "351068"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351067": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ29SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--afb752bc837baeb696acd84e7a9935131a9e2b30/OChem_04_02_006a.jpg\" alt=\"In a cyclohexane ring, C1 is wedge bonded to chlorine and dash bonded to hydrogen. C4 is wedge bonded to hydrogen and dash bonded to methyl group.\">"
+          },
+          "wraps": {}
+        },
+        "sol:351067": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351068": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3NSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c81a41b8993781e7821ceac3932b9d1b37a6a59c/OChem_04_02_006b.jpg\" alt=\"In a cycloheptane ring, C1 is wedge bonded to ethyl and dash bonded to hydrogen. C3 is wedge bonded to methyl and dash bonded to hydrogen.\">"
+          },
+          "wraps": {}
+        },
+        "sol:351068": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-02-OC-P05": {
+      "source_uid": "36476@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "357655",
+        "357656",
+        "357657"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:357655": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:357655": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3dSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5599fdd5393a599a96a98de1a6eb4d1ec4a9eb42/OChem_04_EC_202a.jpg\" alt=\"In a cyclohexane ring, C1 is wedge bonded to bromine and dash bonded to hydrogen atom. C3 is wedge bonded to hydrogen atom and dash bonded to methyl group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357656": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:357656": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzBSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--081465f314e0f0cfa45a635d0f62fe53861e10c5/OChem_04_EC_202b.jpg\" alt=\"In a cyclobutane ring, C1 and C2 are each wedge bonded to methyl groups and dash bonded to hydrogen atoms, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357657": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:357657": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzRSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1c880557f76bef53276e7d87fd3b955363d75e3d/OChem_04_EC_202c.jpg\" alt=\"In a cyclohexane ring, C1 is wedge bonded to tertiary-butyl group and dash bonded to hydrogen atom. C2 is wedge bonded to hydrogen atom and dash bonded to ethyl group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "04-02-OC-P06": {
+      "source_uid": "36477@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "357218"
+      ],
+      "fields": {
+        "stem:357218": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzhSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c0ce366a30e69f62d88a192ca7ca6038f2b434c4/OChem_04_02_007.jpg\" alt=\"The wedge-dash structure of Prostaglandin F 2 alpha.\">"
+          },
+          "wraps": {}
+        },
+        "sol:357218": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-02-OC-P07": {
+      "source_uid": "36478@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "351079",
+        "351080"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351079": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaEFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4673a01633f3b8ee671e0bd13a63c7ea07be1a37/OChem_04_02_008a.jpg\" alt=\"The ball and stick model of cis-1,2-dimethylcyclopentane,in which C1 and C2 are bonded to methyl groups. Black and gray spheres represent carbon and hydrogen, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:351079": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351080": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaEVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ca5431be4fca0b6456e8638283261c85d9f420a6/OChem_04_02_008b.jpg\" alt=\"The ball and stick model of cis-1-bromo-3-methylcyclobutane. C1 and C3 are bonded to bromine atom and methyl group, respectively. Black, red, and gray spheres represent carbon, bromine, and hydrogen, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:351080": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-03-OC-P08": {
+      "source_uid": "36479@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "347295"
+      ],
+      "fields": {
+        "stem:347295": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:347295": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-03-OC-P09": {
+      "source_uid": "36480@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "328981"
+      ],
+      "fields": {
+        "stem:328981": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:328981": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-04-OC-P10": {
+      "source_uid": "36481@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "347297"
+      ],
+      "fields": {
+        "stem:347297": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:347297": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-04-OC-P11": {
+      "source_uid": "36482@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "351082"
+      ],
+      "fields": {
+        "stem:351082": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>\n",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaElSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1413dc02d1f61e35e67f838176cc3ae5989b191e/OChem_04_04_005a.jpg\" alt=\"The ball and stick model of cis 1,3-dimethylcyclobutane. C1 is bonded to methyl at the top right. C3 is bonded to another methyl on the left.\">",
+            "1": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaE1SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--232ee8efc048065dce0a962d0caf83d7a38c328f/OChem_04_04_005b.jpg\" alt=\"The ball and stick model of cis 1,3-dimethylcyclobutane. C1 and C3 are each bonded to a methyl group at the bottom.\">"
+          },
+          "wraps": {}
+        },
+        "sol:351082": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-06-OC-P12": {
+      "source_uid": "36483@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "357659"
+      ],
+      "fields": {
+        "stem:357659": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:357659": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ef6ccea04100f644839702e2692673d72fd42bdd/OChem_04_EC_203.jpg\" alt=\"Two chair conformations of cyclohexanol. In the first conformation, C1 is bonded to axial hydroxyl group. In the second conformation, C1 is bonded to equatorial hydroxyl group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "04-06-OC-P13": {
+      "source_uid": "36484@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "357661"
+      ],
+      "fields": {
+        "stem:357661": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:357661": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--444269c2ce8639f0df813082cd70d8d0b5fa6ba5/OChem_04_EC_204.jpg\" alt=\"Two chair conformations of trans-1,4-dimethylcyclohexane. In first conformation, C1 and C4 are each bonded to axial methyl. In second conformation, C1 and C4 are each bonded to equatorial methyl.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "04-06-OC-P14": {
+      "source_uid": "36485@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "351088"
+      ],
+      "fields": {
+        "stem:351088": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFlSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4bfaee59a06b3e3646b89774c607b91e4e17c10b/OChem_04_06_008.jpg\" alt=\"Ball and stick model of substituted cyclohexane with red, blue, and green spheres at C1, C3, and C6 undergoes ring-flip to form model with all substituents, represented by white circles.\">"
+          },
+          "wraps": {}
+        },
+        "sol:351088": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-07-OC-P15": {
+      "source_uid": "36486@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "328995"
+      ],
+      "fields": {
+        "stem:328995": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:328995": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-07-OC-P16": {
+      "source_uid": "36487@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "330050"
+      ],
+      "fields": {
+        "stem:330050": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:330050": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-07-OC-P17": {
+      "source_uid": "36488@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "330710"
+      ],
+      "fields": {
+        "stem:330710": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:330710": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-08-OC-P18": {
+      "source_uid": "36489@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "329004",
+        "329005",
+        "329006",
+        "329007"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329004": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:329004": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329005": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:329005": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329006": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:329006": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329007": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:329007": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-08-OC-P19": {
+      "source_uid": "36490@6",
+      "solutions_are_public": true,
+      "question_order": [
+        "357663"
+      ],
+      "fields": {
+        "stem:357663": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--429057cf90f671956276df64b38a65b3a180b36b/OChem_04_08_005.jpg\" alt=\"Ball and stick model of substituted cyclohexane. C1 is bonded to green sphere. Black and gray spheres represent carbon and hydrogen, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:357663": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGdSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b130102c467173144d2115a8fa09beea69c1623f/OChem_04_EC_205.jpg\" alt=\"The less stable chair form of 1-chloro-2,4-dimethyl-cyclohexane featuring the C1 chlorine atom and C4 methyl group at axial positions, and the C2 methyl group at an equatorial position, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "04-09-OC-P20": {
+      "source_uid": "36491@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "330714"
+      ],
+      "fields": {
+        "stem:330714": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:330714": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-09-OC-P21": {
+      "source_uid": "36492@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "351092"
+      ],
+      "fields": {
+        "stem:351092": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGtSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--97773dfcecbf16a5fd8425da409a6224c021510a/OChem_04_09_006.jpg\" alt=\"The wedge-dash and bond-line structures of estrone. In the bond-line structures, all rings except benzene are in chair conformations.\">"
+          },
+          "wraps": {}
+        },
+        "sol:351092": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP01": {
+      "source_uid": "36526@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329027"
+      ],
+      "fields": {
+        "stem:329027": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP02": {
+      "source_uid": "36528@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "351883",
+        "351884",
+        "351885",
+        "351886",
+        "351887"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351883": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbElSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--29fe8a0c20118d90d26f831c0a2b2c8636a1ce90/04_99_P-Ch3oct_img.jpg\" alt=\"In a 7-membered ring, C1 is bonded to a methyl group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351884": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbE1SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3d40389328a1d5b98af6539ede14b23d217f0619/04_99_P-H3Cpent_img.jpg\" alt=\"In a cyclopentane ring, C1 and C3 are each wedge bonded to methyl groups and dash bonded to hydrogen atoms.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351885": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--eb226a276bb0de5804e6fe7051dc44f9b0b252e9/04_99_P-Ch3sext_img.jpg\" alt=\"In a cyclohexane ring, C1 is dash bonded to methyl and wedge bonded to hydrogen atom. C2 is wedge bonded to methyl and dash bonded to hydrogen.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351886": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2b402b7ab742d642e2cf08fe604ae922971a6160/04_99_CH3square_img.jpg\" alt=\"In a cyclobutane ring, C1 is wedge bonded to an isopropyl group. C2 is dash bonded to a methyl group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351887": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFlSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bd10bb122c8b20c433aa15caea98cc4dd5747552/04_99_H3Csext_img.jpg\" alt=\"In a cyclohexane ring, C1 is bonded to two methyl groups. C4 is bonded to a single methyl group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP03": {
+      "source_uid": "36529@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329039"
+      ],
+      "fields": {
+        "stem:329039": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP04": {
+      "source_uid": "36530@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "351118",
+        "351119",
+        "351120"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351118": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351119": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351120": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f8dcca843c9e594452e4fcafe69f85ac4cb66aac/OChem_04_EC_006.jpg\" alt=\"Two structures of cyclopentane each with  chlorine atoms at first and third carbons. The relative position of the chlorine atoms are cis in both structures.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP05": {
+      "source_uid": "36531@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329047"
+      ],
+      "fields": {
+        "stem:329047": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP06": {
+      "source_uid": "36532@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "351122"
+      ],
+      "fields": {
+        "stem:351122": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGdSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--621708ec234323df0edbbc7313aa6bbe2e68605b/OChem_04_EC_007.jpg\" alt=\"The Haworth projection of glucose has a pyranose ring with its four carbons bonded to hydroxyl groups and one carbon is bonded to a hydroxymethyl group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP07": {
+      "source_uid": "36533@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329051"
+      ],
+      "fields": {
+        "stem:329051": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP08": {
+      "source_uid": "36534@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "351124"
+      ],
+      "fields": {
+        "stem:351124": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGtSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a62a9310a8480c5516324e6d924b5ad9d1600bef/OChem_04_EC_008.jpg\" alt=\"The chair conformation of hydrocortisone. The axial hydroxyl group bonded at C11 of the third ring is highlighted.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP09": {
+      "source_uid": "36535@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329055"
+      ],
+      "fields": {
+        "stem:329055": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP10": {
+      "source_uid": "36536@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329057"
+      ],
+      "fields": {
+        "stem:329057": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP11": {
+      "source_uid": "36537@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329059"
+      ],
+      "fields": {
+        "stem:329059": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP12": {
+      "source_uid": "36538@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329061"
+      ],
+      "fields": {
+        "stem:329061": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP13": {
+      "source_uid": "36539@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329063"
+      ],
+      "fields": {
+        "stem:329063": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP14": {
+      "source_uid": "36540@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "330720",
+        "330721",
+        "330722"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:330720": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:330721": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:330722": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP15": {
+      "source_uid": "36541@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329076",
+        "329077",
+        "329078",
+        "329079",
+        "329080",
+        "329081"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329076": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329077": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329078": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329079": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329080": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329081": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP16": {
+      "source_uid": "36542@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329083"
+      ],
+      "fields": {
+        "stem:329083": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP17": {
+      "source_uid": "36543@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329085"
+      ],
+      "fields": {
+        "stem:329085": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP18": {
+      "source_uid": "36544@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "351126"
+      ],
+      "fields": {
+        "stem:351126": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbG9SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--62766c9981d13bae15b117c46a0ff08f7f1ac988/OChem_04_EC_009.jpg\" alt=\"The wedge-dash structure of galactose.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP19": {
+      "source_uid": "36545@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "351128"
+      ],
+      "fields": {
+        "stem:351128": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a8aee2fc51ebf26c20f8cef1b6440be08008c66b/OChem_04_EC_010.jpg\" alt=\"The wedge-dash structure of menthol.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP20": {
+      "source_uid": "36546@6",
+      "solutions_are_public": false,
+      "question_order": [
+        "346100"
+      ],
+      "fields": {
+        "stem:346100": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP21": {
+      "source_uid": "36547@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329093"
+      ],
+      "fields": {
+        "stem:329093": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP22": {
+      "source_uid": "36548@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "346102"
+      ],
+      "fields": {
+        "stem:346102": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP23": {
+      "source_uid": "36549@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "346104"
+      ],
+      "fields": {
+        "stem:346104": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP24": {
+      "source_uid": "36550@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329099"
+      ],
+      "fields": {
+        "stem:329099": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP25": {
+      "source_uid": "36552@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "346045"
+      ],
+      "fields": {
+        "stem:346045": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP26": {
+      "source_uid": "36553@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329103"
+      ],
+      "fields": {
+        "stem:329103": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP27": {
+      "source_uid": "36554@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "357198"
+      ],
+      "fields": {
+        "stem:357198": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDhSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3328ea5eebb642b28aead60977e575820459efdf/OChem_04_EC_011.jpg\" alt=\"Trans-Decalin has two cyclohexane rings fused together. Cis-Bicyclo[4.1.0]heptane has a cyclohexane ring fused to a cyclopropane ring.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP28": {
+      "source_uid": "36555@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "351891",
+        "351892",
+        "351893"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9dd7f28a3f7261fcf3183edd178bed91b4dc33cd/OChem_04_EC_012.jpg\" alt=\"The structures of simvastatin (Zocor), pravastatin (Pravachol), and atorvastatin (Lipitor).\">"
+          },
+          "wraps": {}
+        },
+        "stem:351891": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351892": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351893": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP29": {
+      "source_uid": "36556@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "351139"
+      ],
+      "fields": {
+        "stem:351139": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b3747cc7c80aa5c7acf128517e9c05603878ebcf/OChem_04_EC_014.jpg\" alt=\"The structure of myo-inositol has a cyclohexane ring wedge bonded to four hydroxyl groups and dash bonded to two hydroxyl groups at different carbons.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP30": {
+      "source_uid": "36557@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "346047"
+      ],
+      "fields": {
+        "stem:346047": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP31": {
+      "source_uid": "36558@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "351141"
+      ],
+      "fields": {
+        "stem:351141": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUlSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--65623e6f40deb8ba6d4527a29895358df8d67ae7/OChem_04_EC_015.jpg\" alt=\"The structure of 1-norbornene, in which C1 forms a bridge with C4 through a methylene group. C1 is double bonded to C2.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP32": {
+      "source_uid": "36559@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "351145",
+        "351146",
+        "351147"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351145": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351146": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351147": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbU1SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a38d5450ce3b3ac28be616a53eb6667a8d52c505/OChem_04_EC_016.jpg\" alt=\"Chair conformation of the steroid ring system with three cyclohexane rings fused together and one cyclopentane ring. Hydrogen atom and  methyl groups are bonded to the top face of the ring junctions.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP33": {
+      "source_uid": "36560@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "351149"
+      ],
+      "fields": {
+        "stem:351149": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0968eba320e37f1599e83359ff926e34423d783f/OChem_04_EC_017.jpg\" alt=\"The structure of Amantadine.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP34": {
+      "source_uid": "36561@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "351151"
+      ],
+      "fields": {
+        "stem:351151": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0160a8e1b7b861d58d469106ef0843a04b81675d/OChem_04_EC_018.jpg\" alt=\"Two structures of two isomers, trans-1,2-dimethylcyclopentane. The position of one methyl group is different in both structures.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP35": {
+      "source_uid": "36562@7",
+      "solutions_are_public": false,
+      "question_order": [
+        "360416"
+      ],
+      "fields": {
+        "stem:360416": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXdhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c52bb63058f94ca97454db18ae79739106a055eb/OSX_OrgChem_04_99_ketal_img.jpg\" alt=\"In a reaction, 1R,3R,4S)-4-tertiary-butyl-1,3-cyclohexanediol reacts with acetone in the presence of acid catalyst to form an acetal (no change in stereochemistry) and water.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-AP36": {
+      "source_uid": "36563@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "351897"
+      ],
+      "fields": {
+        "stem:351897": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--accbb8173cb57d83f0c005c506bef3c756ff2638/OChem_04_EC_020.jpg\" alt=\"In a reaction, 2-tertiary-butylcyclohexanol reacts with C r O 3 to form 2-tert-butylcyclohexanone.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-VC01": {
+      "source_uid": "36514@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "357195",
+        "357196"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:357195": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamdSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--76578cf3e31fcff193d9a3c388be2bb63b069476/OChem_04_EC_001a.jpg\" alt=\"The ball and stick model of cyclopentane. C1 is bonded to an equatorial ethyl group. C3 is bonded to an equatorial methyl group. Black and gray spheres represent carbon and hydrogen, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357196": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamtSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e06ed909e83c058a4a905bd7ef1ea0373c9a9459/OChem_04_EC_001b.jpg\" alt=\"The ball and stick model of cyclohexane. C1 is bonded to two methyl groups. C3 is bonded to an equilarial methyl group. Black and gray spheres represent carbon and hydrogen, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-VC02": {
+      "source_uid": "36515@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "351098"
+      ],
+      "fields": {
+        "stem:351098": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBam9SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4496a8f6c74db1f7b913572c1333fb3175e47b68/OChem_04_EC_002.jpg\" alt=\"The ball and stick model of substituted cyclohexane, represented by its chair conformation. C1 is bonded to an equatorial  chlorine atom (green sphere). C3 is bonded to an axial methyl group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-VC03": {
+      "source_uid": "36520@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "351100"
+      ],
+      "fields": {
+        "stem:351100": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1VSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cc22ff05021014e833b6575704b61558a1cd2a32/OChem_04_EC_003.jpg\" alt=\"Ball and stick model of substituted cyclohexane with red, blue, and green spheres at C1, C2, and C5 undergoes ring-flip to form model with all substituents, represented by white circles.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-VC04": {
+      "source_uid": "36521@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "351102"
+      ],
+      "fields": {
+        "stem:351102": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2tSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--45bdb491af0ac87e699ba49860cd00ab16420a1a/OChem_04_EC_004.jpg\" alt=\"The ball and stick model of cyclohexane. C1 is axially bonded to a green sphere. C2 and C5 are equatorially bonded to a blue sphere and a red sphere, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "04-99-OC-VC05": {
+      "source_uid": "36523@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "351104"
+      ],
+      "fields": {
+        "stem:351104": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa3NSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--86c54380ce0e9202712b137ddc43ea630ba7f3b2/OChem_04_EC_005.jpg\" alt=\"The ball and stick models of alpha-glucose and beta-glucose. In alpha-glucose, C1 is bonded to an axial hydroxyl group (below the ring). In beta-glucose, C1 is bonded to an equatorial hydroxyl group (above the ring).\">"
+          },
+          "wraps": {}
+        }
+      }
+    }
+  }
+}

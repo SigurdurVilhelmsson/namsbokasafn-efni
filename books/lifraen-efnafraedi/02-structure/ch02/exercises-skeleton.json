@@ -1,0 +1,2175 @@
+{
+  "generated_by": "exercise-extract.js",
+  "exercises": {
+    "02-01-OC-P01": {
+      "source_uid": "36113@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "323587",
+        "323588",
+        "323589",
+        "323590"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:323587": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:323587": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:323588": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:323588": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:323589": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:323589": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:323590": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:323590": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "02-01-OC-P02": {
+      "source_uid": "36116@6",
+      "solutions_are_public": true,
+      "question_order": [
+        "350706",
+        "350707",
+        "350708",
+        "350709",
+        "350710",
+        "350711"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:350706": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            }
+          }
+        },
+        "sol:350706": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--aa8a32420d863709f7d8fa7f5c925bb533a2ee9e/OChem_02_EC_201a.jpg\" alt=\"The chemical structure of chloromethane with a delta plus charge on carbon and a delta minus charge on chlorine.\">"
+          },
+          "wraps": {}
+        },
+        "stem:350707": {
+          "skeleton": " \u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            }
+          }
+        },
+        "sol:350707": {
+          "skeleton": "\u0000SLOT_0\u0000\n",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBallRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b25c5b41b1f5e596f316ed4cff5efca416a3fbf/OChem_02_EC_201b.jpg\" alt=\"The chemical structure of methylamine with a delta plus charge on carbon and a delta minus on nitrogen.\">"
+          },
+          "wraps": {}
+        },
+        "stem:350708": {
+          "skeleton": " \u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            }
+          }
+        },
+        "sol:350708": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--faa0991c11ed69b3dac07e68a96fdc020a87504a/OChem_02_EC_201c.jpg\" alt=\"The chemical structure of ammonia with a  delta minus charge on nitrogen and a delta plus charge on hydrogen.\">"
+          },
+          "wraps": {}
+        },
+        "stem:350709": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            }
+          }
+        },
+        "sol:350709": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7aa4be433bfe9c8e45537292c0938fff5ed508d2/OChem_02_EC_201d.jpg\" alt=\"The chemical structure of methanethiol.\">"
+          },
+          "wraps": {}
+        },
+        "stem:350710": {
+          "skeleton": " \u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            }
+          }
+        },
+        "sol:350710": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamtRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cdddaf7ba1185446089fdf04c2190bdd2595d8fe/OChem_02_EC_201e.jpg\" alt=\"The chemical structure of methyl magnesium bromide with a delta minus charge on carbon and a delta plus charge on magnesium.\">"
+          },
+          "wraps": {}
+        },
+        "stem:350711": {
+          "skeleton": " \u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            }
+          }
+        },
+        "sol:350711": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBam9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fea33f20bb494f5b603a7ea1b85f8a8146f01435/OChem_02_EC_201f.jpg\" alt=\"The chemical structure of fluoromethane with a delta plus charge on carbon and a delta minus charge on fluorine.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-01-OC-P03": {
+      "source_uid": "36114@14",
+      "solutions_are_public": true,
+      "question_order": [
+        "345880"
+      ],
+      "fields": {
+        "stem:345880": {
+          "skeleton": "\u0000SLOT_0\u0000\n",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<span class=\"red-text\">",
+              "close": "</span>"
+            },
+            "1": {
+              "open": "<span class=\"red-text\">",
+              "close": "</span>"
+            },
+            "2": {
+              "open": "<span class=\"red-text\">",
+              "close": "</span>"
+            },
+            "3": {
+              "open": "<span class=\"red-text\">",
+              "close": "</span>"
+            },
+            "4": {
+              "open": "<span class=\"red-text\">",
+              "close": "</span>"
+            }
+          }
+        },
+        "sol:345880": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "02-01-OC-P04": {
+      "source_uid": "36115@7",
+      "solutions_are_public": true,
+      "question_order": [
+        "351374"
+      ],
+      "fields": {
+        "stem:351374": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBanNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0f3b4dbcec7c26937fc1408cf5bc1f8a8f685f28/OChem_02_01_005.jpg\" alt=\"The chemical structure and ball stick model of methylamine, plus an electron density map showing highest density near nitrogen.\">"
+          },
+          "wraps": {}
+        },
+        "sol:351374": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBandRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3692e4b1a568b6cda68774e8e7fa68e5542e76f8/OChem_02_EC_202.jpg\" alt=\"The chemical structure of methylamine where the direction of the dipole moment points from carbon toward nitrogen.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-02-OC-P05": {
+      "source_uid": "36117@7",
+      "solutions_are_public": true,
+      "question_order": [
+        "657029"
+      ],
+      "fields": {
+        "stem:657029": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:657029": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbW9rIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--620202e0e91107828bfa4a7387c1804d4225d0a6/OChem_02_EC_203.jpg\" alt=\"The chemical structure of ethylene glycol, where the direction of both dipole moments points from carbon toward the hydroxyl group in opposite directions.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-02-OC-P06": {
+      "source_uid": "36118@6",
+      "solutions_are_public": true,
+      "question_order": [
+        "350720",
+        "350721",
+        "350722",
+        "350723"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:350720": {
+          "skeleton": "\u0000SLOT_0\u0000 ",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{=}\"></span>"
+          },
+          "wraps": {}
+        },
+        "sol:350720": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7d8e1fd5ec8c9f966d60f88d65690cded6f3ca2b/OChem-02-EC-204a.jpg\" alt=\"The chemical structure of ethylene, where the two carbon atoms are connected by a double bond and this structure has no dipole moment.\">"
+          },
+          "wraps": {}
+        },
+        "stem:350721": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:350721": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajhRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--28921257cf1b11e5c75f7dac67b8150b0860582b/OChem-02-EC-204b.jpg\" alt=\"The chemical structure of trichloromethane, where the direction of the resulting dipole moment points from hydrogen toward chlorine.\">"
+          },
+          "wraps": {}
+        },
+        "stem:350722": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:350722": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0FRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ece08f469445e8d6053115340c2bb00949e499ac/OChem-02-EC-204c.jpg\" alt=\"The chemical structure of dichloromethane, where the direction of the resulting dipole moment points from carbon toward chlorine.\">"
+          },
+          "wraps": {}
+        },
+        "stem:350723": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{=}\"></span>"
+          },
+          "wraps": {}
+        },
+        "sol:350723": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0VRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b3d4bea2f104e7e2323286faff975f948533e7e6/OChem-02-EC-204d.jpg\" alt=\"The chemical structure of 1,2 - dichloroethene where the direction of the resulting dipole moment points from carbon toward chlorine.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-03-OC-P07": {
+      "source_uid": "36119@13",
+      "solutions_are_public": true,
+      "question_order": [
+        "358910",
+        "358911",
+        "358912"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358910": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdm9ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e525170f31aad0d1949d6fea8057cded9a1b7fae/OChem_02_03_007a.jpg\" alt=\"Text reading diazomethane and a condensed structure of C H 2 double bonded to N double bonded to another N. There are two nonbonding pairs on the final N.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358910": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358911": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdnNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f7d07db477703f1911dcbb8414672695fda44939/OChem_02_03_007b.jpg\" alt=\"Text reading acetonitrile oxide and a condensed structure of C H 3 C N O, with a triple bond between C and N and three nonbonding pairs on O.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358911": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358912": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdndZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0773a3ac1effdc30f90f93a2662a905dc0a8ec90/OChem_02_03_007c.jpg\" alt=\"Text reading methyl isocyanide and a condensed structure of C H 3 N C, with a triple bond between N and C and a nonbonding pair on the triple-bonded carbon.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358912": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "02-03-OC-P08": {
+      "source_uid": "36120@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "363721"
+      ],
+      "fields": {
+        "stem:363721": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdE1QIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--313837218860e738cbe3e169231ec0e3b9afc54f/OChem_02_03_008.jpg\" alt=\"Structure of phosphorus with double bond to oxygen, two single bonds to oxygen, and single bond to O C H 3, all in brackets with a negative 2 charge overall.\">"
+          },
+          "wraps": {}
+        },
+        "sol:363721": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFFQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9226b7b913faedc5061870d8d4ffb152b81b5525/OChem_02_EC_205.jpg\" alt=\"Structure of phosphorus with double bond to oxygen, two single bonds to oxygen (charges are minus 1 each), and single bond to O C H 3.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-06-OC-P09": {
+      "source_uid": "36121@6",
+      "solutions_are_public": true,
+      "question_order": [
+        "351386"
+      ],
+      "fields": {
+        "stem:351386": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0lRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--09848d5bd08dd3aca1f0fe1ddce3145a36126041/OChem_02_06_012a.jpg\" alt=\"Chemical structures of phenylmethylium on the left and 1-methylenecyclohexa-2,5-dien-4-ylium on the right.\">",
+            "1": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa01RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a3906e7a326c649d79a89500b4e5a08533f471a6/OChem_02_06_012b.jpg\" alt=\"Chemical structures of 2-methyl-4-ethylhexa-1,3-diene on the left and 2-ethyl-4-methylpenta-1,3-diene on the right.\">"
+          },
+          "wraps": {}
+        },
+        "sol:351386": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "02-06-OC-P10": {
+      "source_uid": "36122@13",
+      "solutions_are_public": true,
+      "question_order": [
+        "361076",
+        "361077",
+        "361078",
+        "361079"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361076": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:361076": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa01hIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8bb48f55b034fb27203386b29042c3e67e00f196/OChem_02_EC_206a.jpg\" alt=\"Three different resonance forms of methyl phosphate anion, featuring a phosphorus atom at the center and separated by double-headed arrows.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361077": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:361077": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa3NRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2574c0a174828eb25d906ff13b098a7bd4d55ba8/OChem_02_EC_206b.jpg\" alt=\"Three different resonance forms of nitrate anion featuring a nitrogen atom at the center and separated by two double-headed arrows.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361078": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{=}\"></span>"
+          },
+          "wraps": {}
+        },
+        "sol:361078": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa3dRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5e7b96cd9638284f3397f84770b776fb7fdf7525/OChem_02_EC_206c.jpg\" alt=\"Two different resonance forms of allyl cation separated by one double-headed arrow.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361079": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ea61928e13b5801e40ad4dccdca8f686fddeaa1d/OChem_02_06_013.jpg\" alt=\"The chemical structure of benzoate anion where a carboxylate group COO- is attached to a benzene ring.\">"
+          },
+          "wraps": {}
+        },
+        "sol:361079": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazBRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4cc330251d36f8c7d46cb222a114c56689fe17ec/OChem_02_EC_206d.jpg\" alt=\"Two different resonance forms of benzoate, resulting in the migration of a negative charge from one oxygen to the other.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-07-OC-P11": {
+      "source_uid": "36123@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "363723"
+      ],
+      "fields": {
+        "stem:363723": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:363723": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2tRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b5b1668ade85f944bf65906fd9540a869d33e3d3/OChem_02_EC_207.jpg\" alt=\"Reaction arrow shows H N O 3 (acid) and ammonia (base) form ammonium (conjugate acid) and nitrate (conjugate base). \">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-08-OC-P12": {
+      "source_uid": "36124@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "363725"
+      ],
+      "fields": {
+        "stem:363725": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazhRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--838f252fc1aa6c5de2820f7b8eaf855feed930cd/OChem_02_08_003.jpg\" alt=\"Structures of the amino acids phenylalanine and tryptophan. Both have carboxylic acid groups, alpha amino groups, and aryl groups. Tryptophan has nitrogen in ring system.\">"
+          },
+          "wraps": {}
+        },
+        "sol:363725": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "02-08-OC-P13": {
+      "source_uid": "36125@1",
+      "solutions_are_public": true,
+      "question_order": [
+        "323620"
+      ],
+      "fields": {
+        "stem:323620": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:323620": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "02-09-OC-P14": {
+      "source_uid": "36126@16",
+      "solutions_are_public": true,
+      "question_order": [
+        "358914"
+      ],
+      "fields": {
+        "stem:358914": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000\n<br>\u0000SLOT_2\u0000</p>\n",
+          "slots": 3,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1FYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e0f47201f80f045e3c64eef25de6fb80d9a7a00b/OChem_02_09_004a.jpg\" alt=\"Hydrocyanic acid and sodium acetate with an arrow pointing toward products sodium cyanide and acetic acid. There is a question mark over the arrow.\">",
+            "1": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1VYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0acf37bc7c9c6c037b480aa1df6314caff76279a/OChem_02_09_004b.jpg\" alt=\"Ethanol and sodium cyanide with an arrow pointing toward products sodium ethoxide and hydrocyanic acid. There is a question mark over the arrow.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358914": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "02-09-OC-P15": {
+      "source_uid": "36127@6",
+      "solutions_are_public": true,
+      "question_order": [
+        "351648"
+      ],
+      "fields": {
+        "stem:351648": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbEVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b0cb484a36a70af75b654dd14c0d8faea44cc72a/OChem_02_09_005.jpg\" alt=\"The reaction of acetone and sodium amide in which acetone is deprotonated at C1 to form the acetone enolate sodium salt and ammonia.\">"
+          },
+          "wraps": {}
+        },
+        "sol:351648": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "02-09-OC-P16": {
+      "source_uid": "36128@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "345884"
+      ],
+      "fields": {
+        "stem:345884": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:345884": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "02-11-OC-P17": {
+      "source_uid": "36129@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "350739",
+        "350740"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:350739": {
+          "skeleton": "\u0000SLOT_0\u0000 ",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:350739": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbElRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2121855194392fc7deee226b3596cdb3ba9ed1a3/OChem_02_EC_208.jpg\" alt=\"Three reversible reactions show ethanol, dimethylamine, and trimethylphosphine each reacting with hydrogen chloride to form protonated products.\">"
+          },
+          "wraps": {}
+        },
+        "stem:350740": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:350740": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbE1RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ea3ae58229c556b5e871612d113bc2405bc8ab45/OChem_02_EC_209.jpg\" alt=\"Three reversible reactions show methyl cation, trimethyl borane, and magnesium bromide each reacting with hydroxide ion to form products.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-11-OC-P18": {
+      "source_uid": "36130@7",
+      "solutions_are_public": true,
+      "question_order": [
+        "351651",
+        "351652"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ef63b1bfb32915e752c6022c3d28adb51c3ef45b/OChem_02_11_009.jpg\" alt=\"Line-angle structure, ball-and-stick model, and electrostatic potential map of imidazole along with line-angle structure of histidine.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351651": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:351651": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--74b3f41f9190f3fcab1ad928b38c39531de6b17a/OChem_02_EC_210a.jpg\" alt=\"The structure of imidazole shows N1 labeled more basic (red) and the hydrogen bonded to N3 labeled most acidic (blue).\">"
+          },
+          "wraps": {}
+        },
+        "stem:351652": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:351652": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1FhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fad186a4bdb7ea9b43d85b1797f5a8cf2714ab94/OChem_02_EC_210b.jpg\" alt=\"Imidazole reversibly reacts with acid at N1 to form two resonance structures of protonated product. Imidazole reversibly reacts with base at the N3 hydrogen, forming two resonance structures of deprotonated product.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-12-OC-P19": {
+      "source_uid": "36131@6",
+      "solutions_are_public": true,
+      "question_order": [
+        "552324"
+      ],
+      "fields": {
+        "stem:552324": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9a6daca5f5a2e868e805ebf59c0acb56644f37c2/OChem_02_12_005.jpg\" alt=\"The bond-line structures of vitamin A (retinol) and vitamin C (ascorbic acid).\">"
+          },
+          "wraps": {}
+        },
+        "sol:552324": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP28": {
+      "source_uid": "36140@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "323669",
+        "323670",
+        "323671",
+        "323672"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:323669": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:323670": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:323671": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:323672": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP29": {
+      "source_uid": "36141@9",
+      "solutions_are_public": false,
+      "question_order": [
+        "345889",
+        "345890",
+        "345891",
+        "345892"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:345889": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            },
+            "1": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            }
+          }
+        },
+        "stem:345890": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            },
+            "1": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            }
+          }
+        },
+        "stem:345891": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            },
+            "1": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            }
+          }
+        },
+        "stem:345892": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            },
+            "1": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            }
+          }
+        }
+      }
+    },
+    "02-99-OC-AP30": {
+      "source_uid": "36142@6",
+      "solutions_are_public": false,
+      "question_order": [
+        "351694",
+        "351695",
+        "351696",
+        "351697"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351694": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fae4a78a354b4474b6f734270c0b3d842e80b6b5/OChem_02_EC_009a.jpg\" alt=\"The bond-line structure has a benzene ring with a hydroxyl group at C1.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351695": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b17fca58e9dd19d2e6e51bf5729d7cc54bf1eb93/OChem_02_EC_009b.jpg\" alt=\"In a benzene ring, both C1 and C2 are bonded to a hydroxyl group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351696": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTBRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--17151794cfd4287c63a19945eb941eb2fb8cc8e0/OChem_02_EC_009c.jpg\" alt=\"In a benzene ring, both C1 and C3 are bonded to a hydroxyl group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351697": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--670333db1402e06eaacdfd11050f9939344b55b0/OChem_02_EC_009d.jpg\" alt=\"In a benzene ring, both C1 and C4 are bonded to a hydroxyl group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP31": {
+      "source_uid": "36143@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "345893",
+        "345894"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p></p>",
+          "slots": 0,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:345893": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:345894": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP32": {
+      "source_uid": "36144@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "345924"
+      ],
+      "fields": {
+        "stem:345924": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{=}\"></span>",
+            "1": "<span data-math=\"\\text{=}\"></span>"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP33": {
+      "source_uid": "36145@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "323687"
+      ],
+      "fields": {
+        "stem:323687": {
+          "skeleton": "\u0000SLOT_0\u0000\n",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP34": {
+      "source_uid": "36146@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "323685"
+      ],
+      "fields": {
+        "stem:323685": {
+          "skeleton": "\u0000SLOT_0\u0000\n",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP35": {
+      "source_uid": "36147@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "351704",
+        "351705",
+        "351706",
+        "351707",
+        "351708",
+        "351709"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351704": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbThRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b17a24ec3a5a20714cf55f0c72fa300733dfb99d/OChem_02_EC_010a.jpg\" alt=\"A condensed formula reads, (C H 3) 2 O B F 3. The O atom carries a lone pair.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351705": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ed2b8d58087b72b65a520ace43690b1538398bd6/OChem_02_EC_010b.jpg\" alt=\"A methylene group with a lone pair on the carbon is single bonded to nitrogen, which is triple bonded to another nitrogen, featuring a lone pair.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351706": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d275f62b5cd292a837d2be7eb3281308382ababd/OChem_02_EC_010c.jpg\" alt=\"A methylene group is double bonded to nitrogen, which is further double bonded to another nitrogen, featuring two lone pairs.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351707": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbklRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--718959aa5e8a06eee37e68b1722a1977fc5255f0/OChem_02_EC_010d.jpg\" alt=\"An oxygen atom with two lone pairs is double bonded to second oxygen that carries one lone pair and is single bonded to third oxygen, featuring three lone pairs.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351708": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbk1RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c46de92b766de24ab536da8418364db8b1eaba0e/OChem_02_EC_010e.jpg\" alt=\"A central phosphorus atom bonded to three methyl groups and a methylene group with a lone pair on the carbon.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351709": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--008b82473b37033799efd2537058352ed8493f92/OChem_02_EC_010f.jpg\" alt=\"The nitrogen atom of a pyridine ring is bonded to an oxygen atom, carrying three lone pairs.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP36": {
+      "source_uid": "36148@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "351713",
+        "351714",
+        "351715"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000\n",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351713": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--578f64772a224045f710ff11302756e1b25de977/OChem_02_EC_011a.jpg\" alt=\"A central nitrogen atom is bonded to three methyl groups and an oxygen atom, featuring three lone pairs.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351714": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbllRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--358b6bd5fe67041eccbd40d0c18dd1268b4d2741/OChem_02_EC_011b.jpg\" alt=\"A methyl group is bonded to a chain of three nitrogen atoms. The second and third nitrogen atoms have a triple bond in-between.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351715": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5c9177fbd703e05dc1fb9e52dafb6a53a4f86aa5/OChem_02_EC_011c.jpg\" alt=\"A methyl group is single bonded to a chain of three nitrogen atoms, connected by double bonds.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP37": {
+      "source_uid": "36149@7",
+      "solutions_are_public": false,
+      "question_order": [
+        "351470"
+      ],
+      "fields": {
+        "stem:351470": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000\n<br>\u0000SLOT_2\u0000</p>",
+          "slots": 3,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f48327b4cf7c0930e02dfd0675714dcf46c4468c/OChem_02_EC_012a.jpg\" alt=\"The first structure has a benzene ring fused to cyclobutene. The second structure has a cyclohexadiene ring, in which C5 and C6 are each double bonded to a methylene group.\">",
+            "1": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmtRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3a1a9003555d29bd89f3360f59da8a9758524b34/OChem_02_EC_012b.jpg\" alt=\"Two structures are shown. The first structure has a cyclohexene ring with an oxygen anion at C1. The second structure has a cyclohexanone ring with a negative charge at C2.\">",
+            "2": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbm9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ce1618523cce61666937604fae279d0a1e2297b3/OChem_02_EC_012c.jpg\" alt=\"The first structure has a benzene ring bonded to an oxygen anion. The second structure has a cyclohexadiene ring with double bonded oxygen at C1 and negative charge at C2.\">",
+            "3": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbnNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e30ff40e4ae2800109100af7205d8def1aeafb5e/OChem_02_EC_012d.jpg\" alt=\"The first structure has a benzene ring bonded to an oxygen anion. The second structure has a cyclohexadiene ring with double bonded oxygen at C1 and negative charge at C4.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP38": {
+      "source_uid": "36150@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "351721",
+        "351722",
+        "351723",
+        "351724",
+        "351725"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351721": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbndRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--202757e45c3b812d8622ee05ff9827ba399bcacb/OChem_02_EC_013a.jpg\" alt=\"In a 3-carbon chain, C1 is a methylene group with a negative charge. C2 is a carbonyl group positioned at the center.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351722": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjBRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5927af0b325db5ed52f9f4b5b2bc54f215c2374e/OChem_02_EC_013b.jpg\" alt=\"In a cyclohexadiene ring, C5 carries a lone pair and a negative charge.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351723": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e797d864b14598d5e6f6b5614bc336ad36ace985/OChem_02_EC_013c.jpg\" alt=\"A central carbon is single bonded to two amine groups, each with a lone pair, and double bonded to another amine carrying a positive charge.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351724": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjhRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dff428256a8c25cb7a7f29b2cefb57417fd2bbeb/OChem_02_EC_013d.jpg\" alt=\"A central sulfur atom with two lone pairs is bonded to a methyl group and a methylene group with a positive charge on it.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351725": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0VRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8c51d1ac93f4ea8ad6712b49820c42824e8e2c1f/OChem_02_EC_013e.jpg\" alt=\"The structure has a 6-carbon chain with double bonds between C1-C2, C3-C4, and a positive charge at C5.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP39": {
+      "source_uid": "36151@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "351482"
+      ],
+      "fields": {
+        "stem:351482": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0lRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f822d639462b49c7414c3da65f81a09b25775333/OChem_02_EC_014.jpg\" alt=\"Two rectangular 1,3-cyclobutadiene structures have a bidirectional arrow in-between intersected with two lines, showing there is no resonance.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP40": {
+      "source_uid": "36152@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "323739"
+      ],
+      "fields": {
+        "stem:323739": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP41": {
+      "source_uid": "36153@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "351484"
+      ],
+      "fields": {
+        "stem:351484": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb01RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f7c7be89faf667cac32a237f9c5b1c7a8861478e/OChem_02_EC_015.jpg\" alt=\"The structural formula of acetic acid.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP42": {
+      "source_uid": "36154@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "323751",
+        "323752",
+        "323753",
+        "323754",
+        "323755",
+        "323756"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:323751": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:323752": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:323753": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:323754": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:323755": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:323756": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP43": {
+      "source_uid": "36155@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "324552",
+        "324553",
+        "324554"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:324552": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<span class=\"red-text\">",
+              "close": "</span>"
+            }
+          }
+        },
+        "stem:324553": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<span class=\"red-text\">",
+              "close": "</span>"
+            }
+          }
+        },
+        "stem:324554": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<span class=\"red-text\">",
+              "close": "</span>"
+            }
+          }
+        }
+      }
+    },
+    "02-99-OC-AP44": {
+      "source_uid": "36156@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "351727"
+      ],
+      "fields": {
+        "stem:351727": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1FRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2a7e863c61fee32bbe3ca928cda7537763f0a0f4/OChem_02_EC_016.jpg\" alt=\"The structures of acetone, 2,4-pentanedione, phenol, and acetic acid with their respective p K a values, 19.3, 9, 9.9, and 4.76.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP45": {
+      "source_uid": "36157@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "345864"
+      ],
+      "fields": {
+        "stem:345864": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP46": {
+      "source_uid": "36158@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "323782"
+      ],
+      "fields": {
+        "stem:323782": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP47": {
+      "source_uid": "36159@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "357154"
+      ],
+      "fields": {
+        "stem:357154": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1VRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--60429e1bf4c0a6ffdabed7da6227b2ee7e93d900/OChem_02_EC_017.jpg\" alt=\"The structure of potassium tertiary-butoxide.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP48": {
+      "source_uid": "36160@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "351490"
+      ],
+      "fields": {
+        "stem:351490": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1lRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8a012478dfa8fe58a6424f450583923c02d5ae42/OChem_02_EC_018.jpg\" alt=\"In an incomplete reaction, pyridine reacts with acetic acid to form unknown product(s), depicted by a question mark.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP49": {
+      "source_uid": "36161@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "323785",
+        "323786"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:323785": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:323786": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP50": {
+      "source_uid": "36162@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "323787",
+        "323788"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:323787": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:323788": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP51": {
+      "source_uid": "36163@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "323789"
+      ],
+      "fields": {
+        "stem:323789": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP52": {
+      "source_uid": "36164@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "345866"
+      ],
+      "fields": {
+        "stem:345866": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP53": {
+      "source_uid": "36165@8",
+      "solutions_are_public": false,
+      "question_order": [
+        "357156"
+      ],
+      "fields": {
+        "stem:357156": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2NRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--120339351f7b186a18acb761ce53f57b11d1b70d/OChem_02_EC_019.jpg\" alt=\"The structural formulas of maleic acid and fumaric acid.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP54": {
+      "source_uid": "36166@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "345870"
+      ],
+      "fields": {
+        "stem:345870": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP55": {
+      "source_uid": "36167@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "357161",
+        "357162",
+        "357163",
+        "357164"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:357161": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2dRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--72beb0126483280381b9b5e256406c156fa618a5/OChem_02_EC_020a.jpg\" alt=\"In a reaction, methanol reacts with hydrogen ion to form the protonated (at oxygen) methanol product.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357162": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2tRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cc3956077a791b0ff290ddf12529b3acfe42ef4d/OChem_02_EC_020b.jpg\" alt=\"In a reaction, acetone reacts with T i C l 4 to form a product (the oxygen is positively charged and is bonded to T i C l 4 negative).\">"
+          },
+          "wraps": {}
+        },
+        "stem:357163": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb29RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1939bc065b88f934872d7837336d2a1acc857098/OChem_02_EC_020c.jpg\" alt=\"In a reaction, cyclohexanone reacts with N a H to form an enolate sodium salt product and a hydrogen molecule.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357164": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3NRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--84665ab984666151704845f9f0acf7f4f9200220/OChem_02_EC_020d.jpg\" alt=\"In a reaction, morpholine reacts with B H 3 to form a product with a positive charge and single bonded B H 3 negative at the nitrogen of the ring.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP56": {
+      "source_uid": "36168@6",
+      "solutions_are_public": false,
+      "question_order": [
+        "351502"
+      ],
+      "fields": {
+        "stem:351502": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000\n<br>\u0000SLOT_2\u0000</p>",
+          "slots": 3,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3dRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b377828b96f7b05252a7636530f1c4588b3dea62/OChem_02_EC_021a.jpg\" alt=\"Lewis structures of acetonitrile oxide: (1) C and N triple bonded, with a positive charge on N, and (2) C and N double bonded, with a positive charge on C.\">",
+            "1": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzBRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d060f45ab04edf4193333f56671ba8d08abbe294/OChem_02_EC_021b.jpg\" alt=\"Two Lewis structures: First shows a carbonyl group bonded to a methyl group and oxygen anion. Second shows a carbonyl group bonded to a hydroxyl group and a methylene anion.\">",
+            "2": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--12bac0f8db27239d58122c9bfadb54359d535d67/OChem_02_EC_021c.jpg\" alt=\"Two Lewis structures of protonated benzamide; one is protonated at the N, the other at the O.\">",
+            "3": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzhRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b8139da89fc0ac4df6fc132f11484e4ccc904ed0/OChem_02_EC_021d.jpg\" alt=\"First structure: Nitrogen cation bonded to two oxygen anions and double bonded to methylene. Second structure: Nitrogen cation is double bonded to oxygen, single bonded to methylene and oxygen anion.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP57": {
+      "source_uid": "36169@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "351506",
+        "351507",
+        "351508"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351506": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5aaa7531a996c94a4d8c37c209d5ab8b936f00d1/OChem_02_EC_022a.jpg\" alt=\"The Lewis structure of nitromethane.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351507": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6631206c6002e73eda4860bd2f4ab252b46a6ccc/OChem_02_EC_022b.jpg\" alt=\"The Lewis structure of ozone.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351508": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcElRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--64f9c864780bcc35ff73f36327d52013146d8fb7/OChem_02_EC_022c.jpg\" alt=\"The Lewis structure of diazomethane.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP58": {
+      "source_uid": "36170@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "351729"
+      ],
+      "fields": {
+        "stem:351729": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n<p>\u0000SLOT_2\u0000</p>\n\u0000SLOT_3\u0000\n",
+          "slots": 4,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcE1RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--164af3969387dafc125110d7605c49d8750a29d8/OChem_02_EC_023.jpg\" alt=\"A three-carbon chain with a carbocation at C2 reacts with water to form 2-propanol and a hydrogen ion.\">",
+            "1": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d24b11d7178826bf3459f7666c360b501ac67456/OChem_02_EC_024.jpg\" alt=\"In a reaction, a carbocation (a carbon cation bonded to a methyl group and an ethene group) reacts with water to form two alcohols.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP59": {
+      "source_uid": "36171@13",
+      "solutions_are_public": false,
+      "question_order": [
+        "351742",
+        "351743",
+        "351744",
+        "351745"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000\n",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351742": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--39ec7f82d46d3436d8bddf5588f790f091d74a75/OChem_02_EC_025a.jpg\" alt=\"Ketone has a central carbonyl group with two open single bonds.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351743": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFlRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2e81e1523d1cf0b19a4eb13b270705edbafe25d2/OChem_02_EC_025b.jpg\" alt=\"Alcohol has a carbon atom with three open single bonds bonded to a hydroxyl group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351744": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3c0eae3db4e2e1333cbf458396c53b85928d58c2/OChem_02_EC_025c.jpg\" alt=\"Amide has a carbonyl group bonded to an open single bond and a primary amine group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351745": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f9a94c9b6bf32f528e9ef4462b89e55619116d48/OChem_02_EC_025d.jpg\" alt=\"Nitrile has a carbon atom with an open single bond, and a triple bond to a nitrogen atom.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP60": {
+      "source_uid": "36172@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "351520"
+      ],
+      "fields": {
+        "stem:351520": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGtRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--56d26a1a44ab13914881d614ed00ef3df158d19a/OChem_02_EC_026.jpg\" alt=\"The structure of Azidobenzene features two lone pair on the nitrogen bonded to benzene and one lone pair on the terminal triple bonded nitrogen.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP61": {
+      "source_uid": "36173@6",
+      "solutions_are_public": false,
+      "question_order": [
+        "357166"
+      ],
+      "fields": {
+        "stem:357166": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcG9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d754c27f475dea5dbd050aa5519324a29bc5bc10/OChem_02_EC_027.jpg\" alt=\"The structures of phenol and methanol with their respective p K a values, 9.89 and 15.54.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP62": {
+      "source_uid": "36174@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "351747"
+      ],
+      "fields": {
+        "stem:351747": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b327915688994d191c769c9208fc0ddb911a42c6/OChem_02_EC_028.jpg\" alt=\"Thiamin diphosphate reacts with base forming a product, in which the hydrogen (with p K a 18) at C2 of the 5-membered ring is replaced with a lone pair.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP63": {
+      "source_uid": "36175@10",
+      "solutions_are_public": false,
+      "question_order": [
+        "351749"
+      ],
+      "fields": {
+        "stem:351749": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--38a3b19e9c43e810f3ef1b4d2cf2deff4d5d3ce0/OChem_02_EC_029b.jpg\" alt=\"An oxygen atom with two single bonds carries two lone pairs.\">",
+            "1": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDBRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3ab7ffdc804557ba02b9d801386008de5567b528/OChem_02_EC_029c.jpg\" alt=\"A condensed formula reads, carbon with a positive charge bonded to three methyl groups.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP64": {
+      "source_uid": "36176@9",
+      "solutions_are_public": false,
+      "question_order": [
+        "351753",
+        "351754",
+        "351755"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351753": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTBRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--43b8beffb31585026fea1dc229a87e58564d7db9/OChem_02_EC_030a.jpg\" alt=\"In a reversible reaction, phenol reacts with benzene bonded to carboxylate ion to form phenoxide ion and benzoic acid.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351754": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9445a53799c87455dcb65b9060a6911a742e35a2/OChem_02_EC_030b.jpg\" alt=\"In a reversible reaction, propanol reacts with a negatively charged amine to form a 3-carbon chain bonded to an oxygen ion and ammonia.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351755": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcThRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b5386e04ab01a0ab686a2613ace6dfd1ff46e8c9/OChem_02_EC_030c.jpg\" alt=\"In a reversible reaction, a methyl ion reacts with nitromethane to form methane and a methylene group with a negative charge bonded to a nitro group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-AP65": {
+      "source_uid": "36177@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "324655",
+        "324656",
+        "324657"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:324655": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:324656": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:324657": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-MP24": {
+      "source_uid": "36136@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "351420",
+        "351421",
+        "351422"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351420": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b82f8987170b3195f03e06ff04920936aace5916/OChem_02_EC_005a.jpg\" alt=\"An incomplete reaction shows tetrahydrofuran reacting with B F 3. The product is not depicted.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351421": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDhRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cccafa16b688e1e2ee21247f03f8cb52897dea61/OChem_02_EC_005b.jpg\" alt=\"An incomplete reaction shows H I reacting with acetone that has two lone pairs on the oxygen. The product is not depicted.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351422": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2b8a25fe405c09d5ec46583119527a721acaf089/OChem_02_EC_005c.jpg\" alt=\"An incomplete reaction shows acetic acid reacting with methylamine. The product is not depicted.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-MP25": {
+      "source_uid": "36137@6",
+      "solutions_are_public": false,
+      "question_order": [
+        "351680",
+        "351681",
+        "351682",
+        "351683"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351680": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8ee7fe863735a1f93b1ab50fdd4f58a8a2f02154/OChem_02_EC_006a.jpg\" alt=\"The bond-line structure of tetrahydrofuran has a 5-membered ring made of an oxygen atom and four carbon atoms.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351681": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUlRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--83dd12cc50fe98116e5e5d84249164f05653150a/OChem_02_EC_006b.jpg\" alt=\"The bond-line structure of N-methylacetamide.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351682": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbU1RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--773a1b6e5fd7c13326a982f04ed3319f1d286374/OChem_02_EC_006c.jpg\" alt=\"The bond-line structure of pyridine.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351683": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--224cf03924eb762914695058c28bb54d6b9c07dd/OChem_02_EC_006d.jpg\" alt=\"The bond-line structure of benzaldehyde\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-MP26": {
+      "source_uid": "36138@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "351434",
+        "351435",
+        "351436"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351434": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcW9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9efa9788c0af5b47c042a6e2eef7f55583798334/OChem_02_EC_007a.jpg\" alt=\"A 4-carbon chain with a double bond and amine at C1 and a positive charge at C3. Its resonance form shows double bonded amine with positive charge on the nitrogen.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351435": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--87fea02a78ac3356b913f16dff06833850089136/OChem_02_EC_007b.jpg\" alt=\"Two resonance structures of an anionic compound that has a 4-carbon chain with a double bond and an oxygen anion at C2.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351436": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--23daa7ff10824b1a2ffa8e7f88d1aa686306d2a5/OChem_02_EC_007c.jpg\" alt=\"Two resonance structures of the 5-methyl-1,3-cyclohexadiene cation. In the first structure, the cation is at C6; in the second, it is on the opposite side of the methyl group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-MP27": {
+      "source_uid": "36139@7",
+      "solutions_are_public": false,
+      "question_order": [
+        "351687",
+        "351688",
+        "351689"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351687": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a3c67c9c6522ff206751e3c3e4f12926f8bd965f/OChem_02_EC_008a.jpg\" alt=\"A methylene group is double bonded to another methylene group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351688": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWtRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fa307274041d55569b4802affda79c44bf7ee431/OChem_02_EC_008b.jpg\" alt=\"A 4-carbon chain with a double bond between C2-C3.\">"
+          },
+          "wraps": {}
+        },
+        "stem:351689": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbW9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--711366d017bbfe54a159bea58cbf843ecf4d3042/OChem_02_EC_008c.jpg\" alt=\"The bond-line structure of a cyclohexene ring.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-VC20": {
+      "source_uid": "36132@6",
+      "solutions_are_public": false,
+      "question_order": [
+        "351408"
+      ],
+      "fields": {
+        "stem:351408": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdEVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--008f84e9d47a586dd22e170bc6aaca9b621f7b96/OChem_02_EC_001.jpg\" alt=\"The ball and stick model of naphthalene.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-VC21": {
+      "source_uid": "36133@6",
+      "solutions_are_public": false,
+      "question_order": [
+        "351410"
+      ],
+      "fields": {
+        "stem:351410": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdElaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--119aa01a79c9c93a8a27eb0b013262b2b28dd3e6/OChem_02_EC_002.jpg\" alt=\"The ball and stick model of ibuprofen.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-VC22": {
+      "source_uid": "36134@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "357152"
+      ],
+      "fields": {
+        "stem:357152": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cacba1efc39f7497c29e8db79a939b8b3b4340c2/OChem_02_EC_003.jpg\" alt=\"The structural formulas and electrostatic potential maps of cis-1, 2-dichloroethylene and trans-1,2-dichloroethylene.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "02-99-OC-VC23": {
+      "source_uid": "36135@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "351415",
+        "351416"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:351415": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3277797face83717a937d225a6d33bec6bfe6ab9/OChem_02_EC_004a.jpg\" alt=\"The ball and stick model of adenine\">"
+          },
+          "wraps": {}
+        },
+        "stem:351416": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDBRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e8950c341426ebf7a5f5a8f10af4463ad40fa68f/OChem_02_EC_004b.jpg\" alt=\"The ball and stick model of cytosine.\">"
+          },
+          "wraps": {}
+        }
+      }
+    }
+  }
+}

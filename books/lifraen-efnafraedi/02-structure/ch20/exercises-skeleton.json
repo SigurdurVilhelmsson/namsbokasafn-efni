@@ -1,0 +1,2133 @@
+{
+  "generated_by": "exercise-extract.js",
+  "exercises": {
+    "20-01-OC-P01": {
+      "source_uid": "38081@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "359080",
+        "359081",
+        "359082",
+        "359083",
+        "359084",
+        "359085"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359080": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcElXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f57242dc430892c4dbd275a03085ed644fbc997d/OChem_20_01_008a.jpg\" alt=\"The structure of 3-methylbutanoic acid, which has a C O O H group on C 1 and a methyl group on C 3 of a four-carbon chain.\">"
+          },
+          "wraps": {}
+        },
+        "sol:359080": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359081": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcE1XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f8f6f263745a02b2c6335696b17aace7bfde4df8/OChem_20_01_008b.jpg\" alt=\"The structure of 4-bromopentanoic acid, which has a C O O H group on C 1 and a bromine atom on C 4 of a five-carbon chain.\">"
+          },
+          "wraps": {}
+        },
+        "sol:359081": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359082": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFFXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3e302ef3a2f3df0cc751f9e0f7d0627dea8bdd60/OChem_20_01_008c.jpg\" alt=\"The structure of 2-ethylpentanoic acid, which has a C O O H group on C 1 and an ethyl on C 2 of a five-carbon chain.\">"
+          },
+          "wraps": {}
+        },
+        "sol:359082": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359083": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFVXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--41346fb39187ca958438bad7673e41816b8a742b/OChem_20_01_008d.jpg\" alt=\"The structure of (Z)-hex-4-enoic acid with six-carbon atoms. There is a C O O H on C 1, and C 4 and C 5 are double bonded with cis arrangement.\">"
+          },
+          "wraps": {}
+        },
+        "sol:359083": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359084": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFlXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--48f2aabf0dad0f425654441d2866f7043ad8156e/OChem_20_01_008e.jpg\" alt=\"The structure of 2,4-dimethylpentane, which is a five-carbon chain in which C 1 is part of a C N group. There are methyl groups on C 2 and C 4.\">"
+          },
+          "wraps": {}
+        },
+        "sol:359084": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359085": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2643a46b4470085b07a0d78eef02f2fd2cfa69de/OChem_20_01_008f.jpg\" alt=\"The structure of cyclopentane-1,3-dicarboxylic acid with cyclopentane ring. There are C O O H groups on C 1 and C 3, positioned cis to each other.\">"
+          },
+          "wraps": {}
+        },
+        "sol:359085": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-01-OC-P02": {
+      "source_uid": "38082@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "359092",
+        "359093",
+        "359094",
+        "359095",
+        "359096",
+        "359097"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359092": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:359092": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--86f59b1ad2bf350b308a4f6805a727d113238339/OChem_20_EC_201a.jpg\" alt=\"The structure of 2,3-dimethylhexanoic acid. Methyl groups are attached to C 2 and C 3. C 1 is part of the C O O H group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359093": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:359093": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGtXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--74abcf1746e57ff5c246130eb0c2629cbe58bd49/OChem_20_EC_201b.jpg\" alt=\"The structure of 4-methylpentanoic acid, a five-carbon chain with a methyl group attached to C 4. C 1 is part of the C O O H group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359094": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:359094": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcG9XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3bb2b1fe1604373c5951e45107981efd3a44168a/OChem_20_EC_201c.jpg\" alt=\"The structure of trans-1,2-cyclobutanedicarboxylic acid. C O O H groups are attached to C 1 and C 2 of a cyclobutane ring, trans to one another.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359095": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:359095": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9dadb6363ed8449a73d4c70e9e6189b3e1e98a3f/OChem_20_EC_201d.jpg\" alt=\"The structure of o-hydroxybenzoic acid. A C O O H group is present on C 1 of benzene ring. The ortho position is connected to the O H group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359096": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:359096": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2b0c613d0ce2316958faa1f105adc2912d442db2/OChem_20_EC_201e.jpg\" alt=\"Structure of (9 Z, 12 Z)-9, 12-octadecadienoic acid. C 9 and C 12 are double-bonded with attached groups in Z configuration. C 1 is part of C O O H.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359097": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:359097": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDBXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bb73b01578e727876d41c5a273e62fb5ddddf20f/OChem_20_EC_201f.jpg\" alt=\"The structure of 2-pentenenitrile. A double bond is placed between C 2 and C 3. C 1 is part of the C N group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-02-OC-P03": {
+      "source_uid": "38083@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "341934"
+      ],
+      "fields": {
+        "stem:341934": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:341934": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-02-OC-P04": {
+      "source_uid": "38084@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "341936"
+      ],
+      "fields": {
+        "stem:341936": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:341936": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-03-OC-P05": {
+      "source_uid": "38085@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "341939",
+        "341940"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:341939": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:341939": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:341940": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:341940": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-04-OC-P06": {
+      "source_uid": "38086@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "347263"
+      ],
+      "fields": {
+        "stem:347263": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDRXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--08031a8aa3e14f3eaeaf9aff6627e9decc77a19c/OChem_20_04_007.jpg\" alt=\"Alt Text Placeholder\">"
+          },
+          "wraps": {}
+        },
+        "sol:347263": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-04-OC-P07": {
+      "source_uid": "38087@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "347247"
+      ],
+      "fields": {
+        "stem:347247": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:347247": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-04-OC-P08": {
+      "source_uid": "38088@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "341946"
+      ],
+      "fields": {
+        "stem:341946": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:341946": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-04-OC-P09": {
+      "source_uid": "38089@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "341949",
+        "341950"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:341949": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:341949": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:341950": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:341950": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-05-OC-P10": {
+      "source_uid": "38090@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "341953",
+        "341954"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:341953": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:341953": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:341954": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:341954": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-06-OC-P11": {
+      "source_uid": "38091@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "359106"
+      ],
+      "fields": {
+        "stem:359106": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDhXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--38eff5aeb3d9b9f02252ad8971916ab9d80ec30a/OChem_20_06_002.jpg\" alt=\"Benzyl bromide reacts with unknown reagent(s) depicted by question mark to produce 2-phenylethanol.\">"
+          },
+          "wraps": {}
+        },
+        "sol:359106": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-06-OC-P12": {
+      "source_uid": "38092@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "359108"
+      ],
+      "fields": {
+        "stem:359108": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUFXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--38a927fe76316128e9b173339a60dac0886dbbec/OChem_20_06_003.jpg\" alt=\"Cyclopentylmethanol reacts with unknown reagent(s) depicted by question mark to produce 2-cyclopentylethanol.\">"
+          },
+          "wraps": {}
+        },
+        "sol:359108": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-07-OC-P13": {
+      "source_uid": "38093@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "464248",
+        "464249"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:464248": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUVXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--66fdb97ad5044e7970bd4b5677cd5ac84ad24283/OChem_20_07_015a.jpg\" alt=\"The structure of pentan-3-one, a five-carbon chain with a carbonyl on C 3.\">"
+          },
+          "wraps": {}
+        },
+        "sol:464248": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:464249": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdW9qIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ffc31859e2900236efad16a98e15d49fac79a849/OChem_20_07_015b.jpg\" alt=\"The structure of 1-(4-nitrophenyl)ethanone.\">"
+          },
+          "wraps": {}
+        },
+        "sol:464249": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-07-OC-P14": {
+      "source_uid": "38094@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "341964"
+      ],
+      "fields": {
+        "stem:341964": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:341964": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-08-OC-P15": {
+      "source_uid": "38095@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "341966"
+      ],
+      "fields": {
+        "stem:341966": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:341966": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-08-OC-P16": {
+      "source_uid": "38096@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "351642"
+      ],
+      "fields": {
+        "stem:351642": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:351642": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            },
+            "1": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            },
+            "2": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            },
+            "3": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            }
+          }
+        }
+      }
+    },
+    "20-99-OC-AP01": {
+      "source_uid": "38111@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "359170",
+        "359171",
+        "359172",
+        "359173",
+        "359174",
+        "359175",
+        "359176",
+        "359177"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359170": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcnNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2a694edbca65efcd03afd4134edb334115a94ac7/OChem_20_EC_022a.jpg\" alt=\"A six-carbon chain with carboxyl groups on carbons 2 and 5.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359171": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcndXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4db06c7ca75eb5d7cb852608121699a30ccb386c/OChem_20_EC_022b.jpg\" alt=\"A three-carbon chain in which the first carbon is part of a carboxyl group. There are two methyl groups on the adjacent carbon.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359172": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjBXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0884f119218a86b71ce5f10bb0be41376acfe419/OChem_20_EC_022c.jpg\" alt=\"A benzene ring with a carboxyl substituent. Meta to the carboxyl is a cyano substituent.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359173": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjRXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d6b48f5f66a5c78e22290825c41d96347eefc4ac/OChem_20_EC_022d.jpg\" alt=\"A ten-carbon ring with a carboxyl substituent. There is a double bond on the alpha carbon, with trans orientation.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359174": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjhXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d3c4ff77bd7f451a77882133e08abd18f04a8c24/OChem_20_EC_022e.jpg\" alt=\"A three-carbon chain in which the first carbon is part of a nitrile group. There are two methyl groups on the adjacent carbon.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359175": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0FXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ac61b438880815408ae0d1d3842f8f74c3b36afa/OChem_20_EC_022f.jpg\" alt=\"A six-carbon chain with a substituent on the third carbon. The substituent has the condensed formula C H 2 C O 2 H.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359176": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0VXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d48cab01ea89a09b0a6abb0d6760ad3359462843/OChem_20_EC_022g.jpg\" alt=\"A five-carbon chain in which the first carbon is part of a carboxyl group. There are bromine groups on the furthest and next-to-furthest carbons from the carboxyl.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359177": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0lXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--508ebe425ba8318b91a845c44dae1a7a7a953ffe/OChem_20_EC_022h.jpg\" alt=\"A cyclopentene with a cyano substituent one carbon from the end of the double bond.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP02": {
+      "source_uid": "38112@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "342045",
+        "342046",
+        "342047",
+        "342048",
+        "342049",
+        "342050",
+        "342051",
+        "342052"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342045": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342046": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342047": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342048": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342049": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342050": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342051": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342052": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP03": {
+      "source_uid": "38113@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "342055",
+        "342056"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342055": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342056": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP04": {
+      "source_uid": "38114@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "342058"
+      ],
+      "fields": {
+        "stem:342058": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP05": {
+      "source_uid": "38115@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "342060"
+      ],
+      "fields": {
+        "stem:342060": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP06": {
+      "source_uid": "38116@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "342064",
+        "342065",
+        "342066"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342064": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342065": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342066": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP07": {
+      "source_uid": "38117@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "342070",
+        "342071",
+        "342072"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342070": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342071": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342072": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP08": {
+      "source_uid": "38118@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "342075",
+        "342076"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342075": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342076": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP09": {
+      "source_uid": "38119@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "342079",
+        "342080"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342079": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342080": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP10": {
+      "source_uid": "38120@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "342082"
+      ],
+      "fields": {
+        "stem:342082": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP11": {
+      "source_uid": "38121@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359179"
+      ],
+      "fields": {
+        "stem:359179": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc01XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--91f40aaed6854ea7e2e129a7afdacf69629ab879/OChem_20_EC_023.jpg\" alt=\"The structure of uric acid from pyrimidine base. The nitrogen atom in the five-membered ring is attached to a highlighted hydrogen. The nitrogen is placed in between two carbonyl groups.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP12": {
+      "source_uid": "38122@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "342086"
+      ],
+      "fields": {
+        "stem:342086": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<table class=\"unnumbered\">\n<tbody><tr>\n<th>\u0000SLOT_1\u0000</th>\n<th>\u0000SLOT_2\u0000</th>\n<th>\u0000SLOT_3\u0000</th>\n<th>\u0000SLOT_4\u0000</th>\n</tr>\n<tr>\n<td>\u0000SLOT_5\u0000</td>\n<td>\u0000SLOT_6\u0000</td>\n<td>\u0000SLOT_7\u0000</td>\n<td>\u0000SLOT_8\u0000</td>\n</tr>\n<tr>\n<td>\u0000SLOT_9\u0000</td>\n<td>\u0000SLOT_10\u0000</td>\n<td>\u0000SLOT_11\u0000</td>\n<td>\u0000SLOT_12\u0000</td>\n</tr>\n<tr>\n<td>\u0000SLOT_13\u0000</td>\n<td>\u0000SLOT_14\u0000</td>\n<td>\u0000SLOT_15\u0000</td>\n<td>\u0000SLOT_16\u0000</td>\n</tr>\n</tbody></table>",
+          "slots": 17,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP13": {
+      "source_uid": "38123@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "342092",
+        "342093",
+        "342094",
+        "342095",
+        "342096"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342092": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342093": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342094": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342095": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342096": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP14": {
+      "source_uid": "38124@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "342102",
+        "342103",
+        "342104",
+        "342105",
+        "342106"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342102": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342103": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342104": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342105": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342106": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP15": {
+      "source_uid": "38125@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "342110",
+        "342111",
+        "342112"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342110": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342111": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342112": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP16": {
+      "source_uid": "38126@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "342116",
+        "342117",
+        "342118"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342116": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342117": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342118": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP17": {
+      "source_uid": "38127@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "347252",
+        "347253",
+        "347254",
+        "347255"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:347252": {
+          "skeleton": "\u0000SLOT_0\u0000\n",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:347253": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:347254": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:347255": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP18": {
+      "source_uid": "38128@6",
+      "solutions_are_public": false,
+      "question_order": [
+        "370805",
+        "370806"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:370805": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:370806": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP19": {
+      "source_uid": "38129@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359181"
+      ],
+      "fields": {
+        "stem:359181": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1FXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--29cc00e7902ea2a5974f65f2a8eb0f66970630f7/OChem_20_EC_024.jpg\" alt=\"The conversion of methylenecyclohexane reacts with one set of unknown reagents to form 2-cyclohexylacetic acid, and with another set of unknown reagents to form 1-methylcyclohexanecarboxylic acid.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP20": {
+      "source_uid": "38130@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "359186",
+        "359187",
+        "359188",
+        "359189"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359186": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1VXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9111a12cc690326c65752bb2524429b0fe54bed7/OChem_20_EC_025a.jpg\" alt=\"2-(bromomethyl)phenol separated from 2-(2-hydroxyphenyl)acetic acid by a reaction arrow.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359187": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1lXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a1710fb32a6749c2de5af69c296dad7f47408ccc/OChem_20_EC_025b.jpg\" alt=\"2-bromobutane separated from 3-methylbutanoic acid by a reaction arrow.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359188": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2NXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d1b981061a5b602af09441b6e92c91689e7d562a/OChem_20_EC_025c.jpg\" alt=\"5-iodopentan-2-one separated from 5-oxohexanoic acid by a reaction arrow.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359189": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2dXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5d9bd8d5f50b0f06e27f3b62d6e20f629e1a08fb/OChem_20_EC_025d.jpg\" alt=\"3-bromopropanol separated from 4-hydroxybutanoic acid by a reaction arrow.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP21": {
+      "source_uid": "38131@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359191"
+      ],
+      "fields": {
+        "stem:359191": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2tXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--91344ac7e2f3d156015ca39e2fe412ac564ca160/OChem_20_EC_026.jpg\" alt=\"The conversion of buta-1,3-diene to hexane-1,6-diamine. The missing reagents are depicted with a question mark.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP22": {
+      "source_uid": "38132@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "342144"
+      ],
+      "fields": {
+        "stem:342144": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP23": {
+      "source_uid": "38133@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "342146"
+      ],
+      "fields": {
+        "stem:342146": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP24": {
+      "source_uid": "38134@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359193"
+      ],
+      "fields": {
+        "stem:359193": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n\n",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc29XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9a30ba911f27b0b98604be878be2b4965aa32fdd/OChem_20_EC_027.jpg\" alt=\"The condensed formulas for pentanoic acid, 3-methylbutanoic acid, and 2,2-dimethylpropanoic acid.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP25": {
+      "source_uid": "38135@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "359198",
+        "359199",
+        "359200",
+        "359201"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359198": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3NXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7e149f8298dd0173ca823430abe779c178a792b9/OChem_20_EC_028a.jpg\" alt=\"The structures of benzene-1,3-dicarboxylic acid and benzene-1,4-dicarboxylic acid. Structure 1 carboxyl groups at first and third carbons. Structure 2 carboxyl groups at first and fourth carbons.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359199": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3dXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8bd6d60820d6ce228dfa934173839a4cc85e198d/OChem_20_EC_028b.jpg\" alt=\"The condensed formulas read H O 2 C C H 2 C H 2 C O 2 H and C H 3 C H (C O 2 H)2\">"
+          },
+          "wraps": {}
+        },
+        "stem:359200": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczBXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6266158b780902ea0bb66a9b29186959aafc7748/OChem_20_EC_028c.jpg\" alt=\"Formulas read C H 3 C H 2 C H 2 C O 2 H and H O C H 2 C H 2 C H 2 C H O.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359201": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczRXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--961b05bb50def78d7f3cb9b685849d9b44bcd35e/OChem_20_EC_028d.jpg\" alt=\"The condensed formula of 4-methylpent-3-enoic acid, and the chemical structure of cyclopentanecarboxylic acid.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP26": {
+      "source_uid": "38136@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "359203"
+      ],
+      "fields": {
+        "stem:359203": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczhXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--79b3e8abb2a00a7be431c3b57ca7ac5099f061b3/OChem_20_EC_029.jpg\" alt=\"The proton spectrum of C 4 H 8 O 3 shows peaks at 1.26 (triplet), 3.64 (quartet), 4.14 (singlet), and 11.12 (singlet).\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP27": {
+      "source_uid": "38137@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "342160"
+      ],
+      "fields": {
+        "stem:342160": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP28": {
+      "source_uid": "38138@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359205"
+      ],
+      "fields": {
+        "stem:359205": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdEFXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fb35c603714d71b96350d1be1cb3a79052c8a102/OChem_20_EC_030.jpg\" alt=\"Chemical structure of isobutylbenzene with arrows pointing toward ibuprofen (isobutyl benzene with substituent in para position: ethyl group with C O 2 H at ethyl C 1).\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP29": {
+      "source_uid": "38139@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359209",
+        "359210",
+        "359211"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359209": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdEVXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d4df6ef03d26f33903c7574ceaf96f9af9dc2069/OChem_20_EC_031a.jpg\" alt=\"Conversion of 3-bromopentane to 2-ethylbutanoic acid through reaction first with magnesium, then sodium cyanide, then hydronium.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359210": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdElXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dfda8beeb28050dffda0155c9e22c271fedec96d/OChem_20_EC_031b.jpg\" alt=\"Conversion of 2-phenylacetic acid to ethylbenzene through reaction first with lithium aluminum hydride, then hydronium.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359211": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdE1XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c5c16641d510ebefabe0fd13564e9b318e09de06/OChem_20_EC_031c.jpg\" alt=\"Conversion of 4-chloro-2-methylbutan-2-ol to 4-hydroxy-4-methylpentanoic acid using sodium cyanide followed by acid hydrolysis.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP30": {
+      "source_uid": "38140@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "351789"
+      ],
+      "fields": {
+        "stem:351789": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP31": {
+      "source_uid": "38141@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "359213"
+      ],
+      "fields": {
+        "stem:359213": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFFXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--43a15720f56795b61ed75d949a46af96cb490615/OChem_20_EC_032.jpg\" alt=\"The structure of Fenclorac. A phenylcyclohexane ring is depicted with a chlorine atom bonded to the third carbon of the benzene. 2-chloroacetic acid occupies the first carbon of the benzene.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP32": {
+      "source_uid": "38142@6",
+      "solutions_are_public": false,
+      "question_order": [
+        "359216"
+      ],
+      "fields": {
+        "stem:359216": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<table summary=\"\" class=\"unnumbered\">\n<tbody>\n<tr>\n<th>\u0000SLOT_1\u0000</th>\n<th>\u0000SLOT_2\u0000</th>\n</tr>\n<tr>\n<td>\u0000SLOT_3\u0000</td>\n<td>\u0000SLOT_4\u0000</td>\n</tr>\n<tr>\n<td>\u0000SLOT_5\u0000</td>\n<td>\u0000SLOT_6\u0000</td>\n</tr>\n<tr>\n<td>\u0000SLOT_7\u0000</td>\n<td>\u0000SLOT_8\u0000</td>\n</tr>\n<tr>\n<td>\u0000SLOT_9\u0000</td>\n<td>\u0000SLOT_10\u0000</td>\n</tr>\n<tr>\n<td>\u0000SLOT_11\u0000</td>\n<td>\u0000SLOT_12\u0000</td>\n</tr>\n</tbody>\n</table>",
+          "slots": 13,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDhXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--459666c623c6e7ed73c2563d856ebf51353ab76e/OChem_20_EC_033.jpg\" alt=\"The structure of benzoic acid with a substituent Y placed para to the carboxylic acid group attached to the benzene ring. To the left, p k a term is mentioned.\">"
+          },
+          "wraps": {
+            "0": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            },
+            "1": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            }
+          }
+        }
+      }
+    },
+    "20-99-OC-AP33": {
+      "source_uid": "38143@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359219",
+        "359220"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359219": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFVXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--19ae8307cbdeca7e097f6ca59403ddb79ed1e5aa/OChem_20_EC_034a.jpg\" alt=\"Benzene separated from 2-methyl-2-phenylpropanoic acid by a reaction arrow.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359220": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFlXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7c375d973d99dfc96339603ae9831cce60ae6e4c/OChem_20_EC_034b.jpg\" alt=\"Cyclohexanone separated from 1-phenylcyclohexanecarboxylic acid by a reaction arrow. 1-phenylcyclohexanecarboxylic acid has a cyclohexane ring single bonded to a phenyl group and a carboxyl group at C 1.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP34": {
+      "source_uid": "38144@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359222"
+      ],
+      "fields": {
+        "stem:359222": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d5216a9285669cd47cf6ffa377fe168e3715f19e/OChem_20_EC_035.jpg\" alt=\"The acid strengths of 4-hydroxybenzoic acid (p K a equals 4.48), benzoic acid (p K a equals 4.19), and 3-hydroxybenzoic acid (p K a equals 4.07) are compared.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP35": {
+      "source_uid": "38145@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359224"
+      ],
+      "fields": {
+        "stem:359224": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ef7fb0ab9dd6b67c8420859738a9e4ad48a23cd5/OChem_20_EC_036.jpg\" alt=\"Reaction of 3-methylbut-1-ene to form 3-methylbutan-1-ol, then 3-methyl-1-bromobutane, then 3-methylpentanoic acid, then 4-methylpentan-1-ol, then 4-methylpentanal, then 4-methyl pentane. Missing reagents in each step indicated using letters a through f.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP36": {
+      "source_uid": "38146@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "359227"
+      ],
+      "fields": {
+        "stem:359227": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGtXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--58b0e2a0d93fc4139c0ae1f0c918167cf7676fa0/OChem_20_EC_037.jpg\" alt=\"An I R spectrum with a strong band below 3000 and around 1750 wavenumbers. A proton spectrum with shifts of 1.06 (triplet), 1.68 (sextet), and 2.31 (triplet).\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP37": {
+      "source_uid": "38147@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "359230",
+        "359231"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{=}\"></span>",
+            "1": "<span data-math=\"\\text{=}\"></span>"
+          },
+          "wraps": {}
+        },
+        "stem:359230": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdG9XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--10eca252404d1c2e68f855541429c4c126c8b9f5/OChem_20_EC_038a.jpg\" alt=\"The proton spectrum shows peaks at 1.91 (doublet), 5.83 (doublet), 7.10 (multiplet), and 12.21 (singlet).\">"
+          },
+          "wraps": {}
+        },
+        "stem:359231": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d2e0e716970bd0a74dfd7541af8fd3a45112762c/OChem_20_EC_038b.jpg\" alt=\"The proton spectrum shows peaks at 1.93 (singlet), 5.66 (singlet), 6.25 (singlet), and 12.24 (singlet).\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP38": {
+      "source_uid": "38148@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "359235",
+        "359236"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359235": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8a258fe5247b7244ac5ca592a519253a970e65c1/OChem_20_EC_039.jpg\" alt=\"The proton spectrum shows peaks at 1.05 (triplet), 1.80 (singlet), 2.25 (multiplet), 6.85 (triplet), and 12.5 (singlet).\">"
+          },
+          "wraps": {}
+        },
+        "stem:359236": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDBXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--15103f879e6b3dfd917a39c0641fcfc505c52e49/OChem_20_EC_040.jpg\" alt=\"The carbon-13 spectra show peaks at 11.79, 12.89, 22.24, 126.62, 146.71, and 174.19.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP39": {
+      "source_uid": "38149@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "342195",
+        "342196"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342195": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342196": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-AP40": {
+      "source_uid": "38150@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359238"
+      ],
+      "fields": {
+        "stem:359238": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDRXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b4cb91f1eefde88bd2fad48ac0419c9137c4426/OChem_20_EC_041.jpg\" alt=\"Conversion of 3-oxobutanoic acid on reaction with aqueous sodium hydroxide to a three-carbon enolate ion and carbon dioxide. Further reaction with water produces propan-2-one.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-MP01": {
+      "source_uid": "38101@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359131",
+        "359132"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359131": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dc8147d4edfb7771d1f7f920d55bcc1870629153/OChem_20_EC_012a.jpg\" alt=\"Conversion of bromobenzene to unknown products depicted by a question mark by reaction first with magnesium, then with carbon dioxide, and finally with hydronium.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359132": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--04336d448668ce026d089a5f7916ed2c47fb6ad6/OChem_20_EC_012b.jpg\" alt=\"Conversion of 2-bromobutane to unknown products depicted by a question mark by reaction first with magnesium, then with carbon dioxide, and finally with hydronium.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-MP02": {
+      "source_uid": "38102@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "359136",
+        "359137"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359136": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTBXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--99219cf8a9e8699c92a7eac015f1ea7395313165/OChem_20_EC_013b.jpg\" alt=\"Conversion of cyclopentanecarboxamide to unknown products depicted by a question mark by reaction with thionyl chloride.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359137": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWNhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6dbe411263dfc70f96bd099b71a3d489f4032e47/OChem_20_EC_013d.jpg\" alt=\"Conversion of benzamide to unknown products depicted by a question mark by reaction with thionyl chloride.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-MP03": {
+      "source_uid": "38103@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "359140",
+        "359141"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359140": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcThXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--42fb464793e6bc2771580533e66997a3bf6698ef/OChem_20_EC_014b.jpg\" alt=\"Conversion of 2-methylbutanenitrile to unknown products depicted by a question mark by reaction with sodium hydroxide and water.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359141": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBckFXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e2dc94abb0d7c8df23e1e4cb0555baefc1aac803/OChem_20_EC_014c.jpg\" alt=\"Conversion of 3-methylbenzonitrile to unknown products depicted by a question mark by reaction with sodium hydroxide and water.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-MP04": {
+      "source_uid": "38104@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "359144",
+        "359145"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359144": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBckVXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--353947419131e030612ced111d397625493c21eb/OChem_20_EC_015a.jpg\" alt=\"2-methoxybenzonitrile reacts with methylmagnesium bromide in the presence of ether followed by acidic hydrolysis to give unknown products depicted by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359145": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcklXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3b27f7c31ecb79184cf5b19fcbf0f0e6dd6773e3/OChem_20_EC_015c.jpg\" alt=\"Cyclopropanecarbonitrile reacts with phenylmagnesium bromide in the presence of ether followed by acidic hydrolysis to give unknown products depicted by a question mark.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-MP05": {
+      "source_uid": "38105@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359148",
+        "359149"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359148": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBclFXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e871012828e6fe6a0de49037e21fd8709d215f8c/OChem_20_EC_016a.jpg\" alt=\"Conversion of 3,3-dimethylbutane nitrile to unknown products depicted by a question mark by reaction with hydrochloric acid and water.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359149": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBclVXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e9129eb8cd3d5c66d97205aa7193c2767a52c6f9/OChem_20_EC_016b.jpg\" alt=\"Conversion of 4-methylbenzonitrile to unknown products depicted by a question mark by reaction with hydrochloric acid and water.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-MP06": {
+      "source_uid": "38106@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359151"
+      ],
+      "fields": {
+        "stem:359151": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcllXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ef52629d4d3f17f52f395ff889836ebf7a932ec8/OChem_20_EC_017.jpg\" alt=\"Conversion of benzonitrile to methyl benzoate. An imine ester intermediate is formed (reacting with hydrochloric acid in methanol) in which carbon is double-bonded to nitrogen, carrying a positive charge.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-MP07": {
+      "source_uid": "38107@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "359154",
+        "359155"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359154": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359155": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1f5dd05c998cc13559a7d3c30c8614ea600f0c11/OChem_20_EC_018.jpg\" alt=\"Structure of Lotaustralin comprises a pyran ring in the chair conformation, with attached hydroxyl groups. The carbon connected to side-chain oxygen bonded to carbon carries wedged-methyl and dashed-wedged nitrile groups.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-MP08": {
+      "source_uid": "38108@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359157"
+      ],
+      "fields": {
+        "stem:359157": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--797d601a6df3da92703a09ee7eef37d1d222de8b/OChem_20_EC_019.jpg\" alt=\"Conversion of 6-bromo-2,2-dimethylcyclohexanone to 2,2-dimethylcyclopentanecarboxylic acid on reaction with aqueous sodium hydroxide followed by acid hydrolysis.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-MP09": {
+      "source_uid": "38109@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359159"
+      ],
+      "fields": {
+        "stem:359159": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmtXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--70b39f46c5ebada4380d7428ecaa4a398f0003b0/OChem_20_EC_020.jpg\" alt=\"The reaction of 3-phosphomevalonate 5-diphosphate forms three products: isopentenyl diphosphate, carbon dioxide, and phosphate.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-MP10": {
+      "source_uid": "38110@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359161"
+      ],
+      "fields": {
+        "stem:359161": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcm9XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2ab6d6813ccf0473c4e8d5746a73ba181d4184a6/OChem_20_EC_021.jpg\" alt=\"Conversion of 1-methylcyclohex-1-ene to N-(1-methylcyclohexyl)acetamide. The reagents used are aqueous sulfuric acid and acetonitrile.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-VC01": {
+      "source_uid": "38097@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359117",
+        "359118",
+        "359119",
+        "359120"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359117": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcU1XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1df6287677e8d725ba0ba0e19ce1b95e2419d2ba/OChem_20_EC_008a.jpg\" alt=\"A ball-and-stick model of a benzene ring with a carboxyl group, a bromine meta to the carboxyl, and a methoxy group para to the carboxyl.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359118": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVFXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--604abc9a0714ef5954cf9838445fd4a8eb511548/OChem_20_EC_008b.jpg\" alt=\"A ball-and-stick model of a four-carbon chain with a carboxyl end. There is a double bond on C 2 and a methyl on C 3.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359119": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVVXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2c3a1944ff00a7aa253f62e9885622e3897c5acf/OChem_20_EC_008c.jpg\" alt=\"The ball-and-stick model represents a cyclopentadiene ring with a carboxylic acid group attached to C 1. The double bonds are located on the first and third carbon atoms.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359120": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVlXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a9fe4bfcdf326934ffad38c11a50a5306fd6184f/OChem_20_EC_008d.jpg\" alt=\"A ball-and-stick model of a three-carbon chain with a carboxyl end. There is a methyl on C 2 and a cyclopentane on C 3.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-VC02": {
+      "source_uid": "38098@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359123",
+        "359124"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359123": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4e8dec903f63fcbb55b77bddbfe52fff5af724f9/OChem_20_EC_009a.jpg\" alt=\"A ball-and-stick model of a benzene ring with a carboxyl group and a bromine para to the carboxyl.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359124": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--28adc02bc7330a5ede23941a117b231002b685b5/OChem_20_EC_009b.jpg\" alt=\"A ball-and-stick model of a benzene ring with a carboxyl group and a dimethylamine group para to the carboxyl.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-VC03": {
+      "source_uid": "38099@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359126"
+      ],
+      "fields": {
+        "stem:359126": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWtXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a799d6a306a1d09872f426f02434e61bab6f8942/OChem_20_EC_010.jpg\" alt=\"A ball-and-stick model of a four-carbon chain with a carboxyl end. There are two methyl groups on C 2 and a hydroxy group on C 4.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "20-99-OC-VC04": {
+      "source_uid": "38100@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359128"
+      ],
+      "fields": {
+        "stem:359128": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcW9XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e5a0eca4e6686b010b82dd0eae39de81d50e9b33/OChem_20_EC_011.jpg\" alt=\"The ball-and-stick model with electrostatic potential maps of anisole (methoxybenzene) and thioanisole ([methylsulfanyl]benzene).\">"
+          },
+          "wraps": {}
+        }
+      }
+    }
+  }
+}

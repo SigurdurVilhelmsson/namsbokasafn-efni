@@ -1,0 +1,875 @@
+{
+  "generated_by": "exercise-extract.js",
+  "exercises": {
+    "28-01-OC-P01": {
+      "source_uid": "39110@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "358101"
+      ],
+      "fields": {
+        "stem:358101": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:358101": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalFhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d477a1a360e29dd5967bdde01d73e4c3e4e48c18/OSX_OrgChem_28_DD_A-DNAdinAG_img.jpg\" alt=\"\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "28-01-OC-P02": {
+      "source_uid": "39111@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "358103"
+      ],
+      "fields": {
+        "stem:358103": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:358103": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalVhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--78e11265c71ed4ac78475ef5b153f83cfa3070a5/OSX_OrgChem_28_DD_A-RNAdinUA_img.jpg\" alt=\"\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "28-02-OC-P03": {
+      "source_uid": "39112@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "348284"
+      ],
+      "fields": {
+        "stem:348284": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p style=\"text-align: center\">\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:348284": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "28-04-OC-P04": {
+      "source_uid": "39113@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "358105"
+      ],
+      "fields": {
+        "stem:358105": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:358105": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcE1aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--345e84a88afbe66b290bf6fcd1ca1a44e89eaaa6/OChem_28_EC_201.jpg\" alt=\"The figure shows two hydrogen bonding in the structure of adenine and uracil base pairs where the bases act as hydrogen bond donors and acceptors.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "28-04-OC-P05": {
+      "source_uid": "39114@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "348288"
+      ],
+      "fields": {
+        "stem:348288": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p style=\"text-align: center\">\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:348288": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "28-04-OC-P06": {
+      "source_uid": "39115@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "348290"
+      ],
+      "fields": {
+        "stem:348290": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p style=\"text-align: center\">\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:348290": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "28-05-OC-P07": {
+      "source_uid": "39116@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "348295",
+        "348296",
+        "348297",
+        "348298"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348295": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:348295": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348296": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:348296": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348297": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:348297": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348298": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:348298": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "28-05-OC-P08": {
+      "source_uid": "39119@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "349461",
+        "349462",
+        "349463",
+        "349464"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349461": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349461": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349462": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349462": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349463": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349463": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349464": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349464": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "28-05-OC-P09": {
+      "source_uid": "39117@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "348308"
+      ],
+      "fields": {
+        "stem:348308": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p style=\"text-align: center\">\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:348308": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "28-05-OC-P10": {
+      "source_uid": "39118@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "348310"
+      ],
+      "fields": {
+        "stem:348310": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:348310": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "28-07-OC-P11": {
+      "source_uid": "39120@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "348312"
+      ],
+      "fields": {
+        "stem:348312": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:348312": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "28-07-OC-P12": {
+      "source_uid": "39121@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "358107"
+      ],
+      "fields": {
+        "stem:358107": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{═}\"></span>"
+          },
+          "wraps": {}
+        },
+        "sol:358107": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a98404f7d647ed5ca7f826f26ae598408d1c99f5/OChem_28_EC_202.jpg\" alt=\"E 2 reaction mechanism between beta cyanoethyl protecting group and ammonia. A downward arrow pointing from the lone airs of ammonia to H bonded with C H C N.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "28-99-OC-AP01": {
+      "source_uid": "39130@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348336"
+      ],
+      "fields": {
+        "stem:348336": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "28-99-OC-AP02": {
+      "source_uid": "39131@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348338"
+      ],
+      "fields": {
+        "stem:348338": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "28-99-OC-AP03": {
+      "source_uid": "39132@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348340"
+      ],
+      "fields": {
+        "stem:348340": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "28-99-OC-AP04": {
+      "source_uid": "39133@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348342"
+      ],
+      "fields": {
+        "stem:348342": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p style=\"text-align: center\">\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            }
+          }
+        }
+      }
+    },
+    "28-99-OC-AP05": {
+      "source_uid": "39134@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348346",
+        "348347",
+        "348348"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348346": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348347": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348348": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "28-99-OC-AP06": {
+      "source_uid": "39135@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348353",
+        "348354",
+        "348355",
+        "348356"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348353": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348354": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348355": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348356": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "28-99-OC-AP07": {
+      "source_uid": "39136@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348358"
+      ],
+      "fields": {
+        "stem:348358": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "28-99-OC-AP08": {
+      "source_uid": "39137@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348360"
+      ],
+      "fields": {
+        "stem:348360": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "28-99-OC-AP09": {
+      "source_uid": "39138@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348362"
+      ],
+      "fields": {
+        "stem:348362": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "28-99-OC-AP10": {
+      "source_uid": "39139@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348364"
+      ],
+      "fields": {
+        "stem:348364": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "28-99-OC-AP11": {
+      "source_uid": "39140@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348366"
+      ],
+      "fields": {
+        "stem:348366": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p style=\"text-align: center\">\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "28-99-OC-AP12": {
+      "source_uid": "39141@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348368"
+      ],
+      "fields": {
+        "stem:348368": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p style=\"text-align: center\">\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "28-99-OC-AP13": {
+      "source_uid": "39142@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348370"
+      ],
+      "fields": {
+        "stem:348370": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p style=\"text-align: center\">\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "28-99-OC-AP14": {
+      "source_uid": "39143@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348373"
+      ],
+      "fields": {
+        "stem:348373": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p style=\"text-align: center\">\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "28-99-OC-AP15": {
+      "source_uid": "39144@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348375"
+      ],
+      "fields": {
+        "stem:348375": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "28-99-OC-AP16": {
+      "source_uid": "39145@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348378"
+      ],
+      "fields": {
+        "stem:348378": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "28-99-OC-AP17": {
+      "source_uid": "39146@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348380"
+      ],
+      "fields": {
+        "stem:348380": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "28-99-OC-AP18": {
+      "source_uid": "39147@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "354988",
+        "354989",
+        "354990",
+        "354991",
+        "354992"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDhaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fce1a10ea6540f3475b3841001a00854b28f49fa/OChem_28_EC_009.jpg\" alt=\"The structure of Valganciclovir.\">"
+          },
+          "wraps": {}
+        },
+        "stem:354988": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:354989": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:354990": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:354991": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:354992": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "28-99-OC-MP01": {
+      "source_uid": "39125@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "354974"
+      ],
+      "fields": {
+        "stem:354974": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcG9aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--31e0910a65b8661a2adb705e21688d6cf2c65387/OChem_28_EC_004.jpg\" alt=\"Deprotection mechanism in two linked deoxynucleosides occurs at points 1 and 2 where cleavages occur. N H C O and O C O bonds are labeled 1 and 2, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "28-99-OC-MP02": {
+      "source_uid": "39126@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "354976"
+      ],
+      "fields": {
+        "stem:354976": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--401b1d41a203220e8e0d105d3086958df07bda09/OChem_28_EC_005.jpg\" alt=\"The oxidation reaction of malonic semialdehyde gives malonyl-coenzyme A. Co A S H is involved and N A D plus gets converted to N A D H and H plus.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "28-99-OC-MP03": {
+      "source_uid": "39127@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "354978"
+      ],
+      "fields": {
+        "stem:354978": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--34a300f018ca2f3393fbe68deeb9dc9ce3d86f4e/OChem_28_EC_006.jpg\" alt=\"The formation of aminoimidazole ribonucleotide from formylglycinamide ribonucleotide. In the process, adenosine triphosphate is converted to adenosine diphosphate.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "28-99-OC-MP04": {
+      "source_uid": "39128@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "354980"
+      ],
+      "fields": {
+        "stem:354980": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDBaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bf2655d2cceade2e4fa96b539899be12c61b9609/OChem_28_EC_007.jpg\" alt=\"The hydrolysis reaction of guanine involves the formation of xanthine. In the process, ammonia is released.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "28-99-OC-MP05": {
+      "source_uid": "39129@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "354982"
+      ],
+      "fields": {
+        "stem:354982": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDRaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--965dce0576904b068b14deb02eced0af4eaf77f8/OChem_28_EC_008.jpg\" alt=\"The reaction of aspartate with carbamoyl phosphate gives carbamoyl aspartate with the removal of phosphate. It further undergoes cyclization to form dihydroorotate with the removal of a water molecule.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "28-99-OC-VC01": {
+      "source_uid": "39122@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "354966",
+        "354967",
+        "354968"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:354966": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--304f33566981d68fa8a47f2de1bac21f66cd1433/OChem_28_EC_001a.jpg\" alt=\"The ball-and-stick model of Guanine. It is a purine base with two rings and one oxygen atom is attached to the five-membered ring.\">"
+          },
+          "wraps": {}
+        },
+        "stem:354967": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFlaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1a5a70763607aefaacae27d0fbe61974216bd5ae/OChem_28_EC_001b.jpg\" alt=\"The ball-and-stick model of Uracil. It is a pyrimidine base with one ring to which two oxygen atoms are attached.\">"
+          },
+          "wraps": {}
+        },
+        "stem:354968": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bd72b27e6716522bf584c47b786386e4607e0a54/OChem_28_EC_001c.jpg\" alt=\"The ball-and-stick model of Cytosine. It is a pyrimidine base with one ring to which one oxygen atom is attached.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "28-99-OC-VC02": {
+      "source_uid": "39123@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "354970"
+      ],
+      "fields": {
+        "stem:354970": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d91ac029936a7a4408d8921f57458ad0237967d8/OChem_28_EC_002.jpg\" alt=\"The ball-and-stick model of deoxythymidine monophosphate, a nucleotide. It consists of a phosphate group, pentose sugar deoxyribose and nucleobase thymine.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "28-99-OC-VC03": {
+      "source_uid": "39124@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "354972"
+      ],
+      "fields": {
+        "stem:354972": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGtaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--68799240508cc3ea31ba6bcd7ca13fd0d37b43e4/OChem_28_EC_003.jpg\" alt=\"The ball-and-stick model along with electrostatic potential maps of 9-methylguanine and 9-methyladenine. The reactive positions of 9-methylguanine and 9-methyladenine are N 7 and N 3, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    }
+  }
+}

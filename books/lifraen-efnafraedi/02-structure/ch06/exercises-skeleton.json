@@ -1,0 +1,1412 @@
+{
+  "generated_by": "exercise-extract.js",
+  "exercises": {
+    "06-01-OC-P01": {
+      "source_uid": "37294@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "347131",
+        "347132",
+        "347133"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:347131": {
+          "skeleton": "\u0000SLOT_0\u0000 ",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{⟶}\"></span>"
+          },
+          "wraps": {}
+        },
+        "sol:347131": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:347132": {
+          "skeleton": "\u0000SLOT_0\u0000 ",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{⟶}\"></span>",
+            "1": "<span data-math=\"\\text{=}\"></span>"
+          },
+          "wraps": {}
+        },
+        "sol:347132": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:347133": {
+          "skeleton": "\u0000SLOT_0\u0000\n",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{=}\"></span>",
+            "1": "<span data-math=\"\\text{⟶}\"></span>"
+          },
+          "wraps": {}
+        },
+        "sol:347133": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "06-03-OC-P02": {
+      "source_uid": "37301@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "341006"
+      ],
+      "fields": {
+        "stem:341006": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:341006": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "06-03-OC-P03": {
+      "source_uid": "37302@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "357699"
+      ],
+      "fields": {
+        "stem:357699": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--70147ea76e37cd9033aa6965d13335ab101d323f/OChem_06_03_009.jpg\" alt=\"Electron movement results in formation of cyclopentane ring in a prostaglandin H 2 radical.\">"
+          },
+          "wraps": {}
+        },
+        "sol:357699": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXNhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8b5cc87503dcf953d52309bb6553d98eb189e37d/OSX_OrgChem_06_03_cyclopent_img.jpg\" alt=\"The mechanism for the formation of cyclopentane ring in prostaglandin H 2 radical.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "06-04-OC-P04": {
+      "source_uid": "37295@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "374659",
+        "374660",
+        "374661",
+        "374662"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:374659": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:374659": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:374660": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:374660": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:374661": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHdUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d4a2d9b3e7e36fbb00046c21736594c8c58969eb/OChem_06_04_007c.jpg\" alt=\"The figure shows a five-membered ring with nitrogens at positions 1 and 3, double bonds at N1 and C4, and a methyl group at N3.\">"
+          },
+          "wraps": {}
+        },
+        "sol:374661": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:374662": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDBUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0a550541382556daefaab6a674eb3c516b187754/OChem_06_04_007d.jpg\" alt=\"The chemical structure of ethanal.\">"
+          },
+          "wraps": {}
+        },
+        "sol:374662": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "06-04-OC-P05": {
+      "source_uid": "37296@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "353198"
+      ],
+      "fields": {
+        "stem:353198": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDRUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ff666026b0e118ba62b979e57a1a24c7e07ed216/OChem_06_04_008.jpg\" alt=\"The electrostatic potential map of B F 3 shows a ball-and-stick model at the center, in which gray and green spheres represent boron and fluorine atoms, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:353198": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDhUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--28573ce097e42e24daaf05f05d70becdf20a35bb/OChem_06_EC_202.jpg\" alt=\"A central boron atom labeled electrophilic, vacant p orbital bonded to three fluorine atoms.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "06-05-OC-P06": {
+      "source_uid": "37297@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "353208"
+      ],
+      "fields": {
+        "stem:353208": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--344149a2413cf4b83fcafd4511bd964dde3edbac/OChem_06_05_004.jpg\" alt=\"Cyclohexene reacts with hydrogen bromide to form unknown product(s), depicted by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "sol:353208": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "06-05-OC-P07": {
+      "source_uid": "37298@6",
+      "solutions_are_public": true,
+      "question_order": [
+        "357689"
+      ],
+      "fields": {
+        "stem:357689": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6c6a77993127a8cb1a538b354a5ac8af82bc5135/OChem_06_05_005.jpg\" alt=\"2-methylpropene reacts with hydrogen bromide to form 2-bromo-2-methylpropane.\">"
+          },
+          "wraps": {}
+        },
+        "sol:357689": {
+          "skeleton": "\u0000SLOT_0\u0000\n<p>\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUlUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7924bb2ca0da47ea2549113f4ecc84f93de0af71/OChem_06_EC_203.jpg\" alt=\"A central carbon with a positive charge is bonded to three methyl groups.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "06-06-OC-P08": {
+      "source_uid": "37299@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "358055",
+        "358056",
+        "358057"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358055": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbU1UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3044051822eaa1d5e30d3fe9a69f9de42b44edf2/OChem_06_06_010a.jpg\" alt=\"Chlorine molecule reacts with ammonia to form nitrogen with a positive charge bonded to three hydrogen atoms and a chlorine atom. The side product is chloride ion.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358055": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVlUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8efd7d0c5e4a818eb68eea31dab55c4e4b425c2c/OChem_06_EC_204a.jpg\" alt=\"A reversible reaction shows chlorine molecule reacting with ammonia to form C l N H 3 plus and a chloride ion. Arrows depict electron flow from ammonia.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358056": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fa76f58c8927a1ba33bff1f9e8aee9bd07c12a08/OChem_06_06_010b.jpg\" alt=\"A methoxide ion reacts with methyl bromide to form dimethyl ether and a bromide ion.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358056": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7067a565a15ec429bcea780aaa8f1510207660c9/OChem_06_EC_204b.jpg\" alt=\"A methoxide ion reacts with methyl bromide to form dimethyl ether and a bromide ion. Two arrows depict the movement of electrons, originating from the methoxide oxygen.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358057": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--37f8c25f0ef8e40e6710df6b14656de88948b6be/OChem_06_06_010c.jpg\" alt=\"A carbon bonded to an oxygen ion, methyl, chlorine, and methoxy group forms a carbonyl group bonded to methyl and methoxy group. The side product is chloride ion.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358057": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWdUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--817c977cd5156f88718bac02fe83b85c8c8cb4dc/OChem_06_EC_204c.jpg\" alt=\"A carbon bonded to an oxygen ion, methyl group, chlorine atom, and methoxy group forms two products. Two arrows depict the movement of electrons, originating at the oxygen anion.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "06-06-OC-P09": {
+      "source_uid": "37300@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "544159"
+      ],
+      "fields": {
+        "stem:544159": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbW9UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f9e4297a0f8d85f3e21cf43486ad19a7ba9017ca/OChem_06_06_011.jpg\" alt=\"An incomplete reaction with an unknown product shows water molecule attacking an alkene carbon. The electrons from the double bond deprotonate hydronium.\">"
+          },
+          "wraps": {}
+        },
+        "sol:544159": {
+          "skeleton": "\n\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajhrIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3d5bab6cb0b8fa0e936bb7b5f757cf89d2e61bf9/OChem_06_EC_205.jpg\" alt=\"A reaction shows water, alkene, and hydronium ion reacting to form a product.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "06-07-OC-P10": {
+      "source_uid": "37303@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "336365"
+      ],
+      "fields": {
+        "stem:336365": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:336365": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "06-07-OC-P11": {
+      "source_uid": "37304@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "336367"
+      ],
+      "fields": {
+        "stem:336367": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:336367": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "06-09-OC-P12": {
+      "source_uid": "37305@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "336369"
+      ],
+      "fields": {
+        "stem:336369": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:336369": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "06-10-OC-P13": {
+      "source_uid": "37306@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "360035"
+      ],
+      "fields": {
+        "stem:360035": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:360035": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTBUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b26b4b8a8db913ad841b15ee7a4a4e3ecbbdf41b/OChem_06_EC_206.jpg\" alt=\"Energy diagram shows large barrier to transition state, intermediate lower in energy than reactant, large barrier (higher than first) to second transition state, low energy product.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-AP01": {
+      "source_uid": "37322@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "353319",
+        "353320",
+        "353321",
+        "353322",
+        "353323",
+        "353324"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353319": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbndUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8584f463846af72178f102b4f3616559cb40116c/OChem_06_EC_012a.jpg\" alt=\"A chemical structure of propionitrile.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353320": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjBUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c1b81272f0dba35476e075a92d8b91c36604fcfa/OChem_06_EC_012b.jpg\" alt=\"A chemical structure of methoxycyclopentane.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353321": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjRUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--91c0d6e083408bd01c9d5d2f7a585a4e62242324/OChem_06_EC_012c.jpg\" alt=\"A methyl ester with a four-carbon alkyl chain. There is a ketone group at C3.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353322": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjhUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ba9a659b94e3268e22130060b0519df34791afed/OChem_06_EC_012d.jpg\" alt=\"The structure has a cyclohexadiene ring with double bonds at C2 and C5, and carbonyls at C1 and C4.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353323": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0FUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--947f15f1cd71be09904993356388eb1968e9b96d/OChem_06_EC_012e.jpg\" alt=\"A chemical structure of 2E-but-2-enamide.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353324": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0VUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--57e68000b27fc848e5951b838e7befff06113d7b/OChem_06_EC_012f.jpg\" alt=\"A chemical structure of benzaldehyde.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-AP02": {
+      "source_uid": "37323@6",
+      "solutions_are_public": false,
+      "question_order": [
+        "359258",
+        "359259",
+        "359260",
+        "359261"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359258": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0lUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--77e69ea206482635a27eec66c786c64d94609f06/OChem_06_EC_013a.jpg\" alt=\"Ethyl bromide reacts with sodium cyanide to form ethyl cyanide and sodium bromide.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359259": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb01UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b71bfdcd472e25aa614bd9f3ac1039494280b0b7/OChem_06_EC_013b.jpg\" alt=\"A chemical structure of methamphetamine, N-methyl-1-phenylpropan-2-amine.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359260": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1FUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9fb5ffa75deeb854bc242c72828498d40d36331e/OChem_06_EC_013c.jpg\" alt=\"Cyclopentadiene reacts with a but-3-en-2-one in the presence of heat to form a ketone with a methyl group and a bridged cyclic group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359261": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1VUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--adf4d76c697e5728bad8f0de05a61c9e8a34915e/OChem_06_EC_013d.jpg\" alt=\"Cyclohexane reacts with nitro group bonded to another nitro group in the presence of light to form nitrocyclohexane  and nitrous acid.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-AP03": {
+      "source_uid": "37324@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "353335",
+        "353336"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353335": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1lUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a1ac5952da9848bb7df9d08044d080c9da0e1321/OChem_06_EC_014a.jpg\" alt=\"The wedge-dash structure of testosterone.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353336": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFlXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fafd32b5fb0d6bab5e9655ea017dc8b6e645ad71/OChem_06_EC_014b.jpg\" alt=\"The wedge-dash structure of methamphetamine.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-AP04": {
+      "source_uid": "37325@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "357236",
+        "357237",
+        "357238"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:357236": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2dUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--80dcc98b02e196f209b5321699f40fbb1dd3263c/OChem_06_EC_015a.jpg\" alt=\"The figure shows azide anion reacts with chloromethane to form C H 3 N 3 and chloride.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357237": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2tUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5746d0d22f0026a41d93fa187a18a22260c9d5e0/OChem_06_EC_015b.jpg\" alt=\"Benzene reacts with nitronium cation to form nitrocyclohexa-2,4-diene with a cation on C 6.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357238": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb29UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1b16190db4095506d3881ebea887446f78cd7ded/OChem_06_EC_015c.jpg\" alt=\"Cyclohexanone reacts with methanide anion to form 1-methylcyclohexanoxide.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-AP05": {
+      "source_uid": "37326@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "353345",
+        "353346"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353345": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3NUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0066a517c16f6feb6418f2acb83c539b65d39d9c/OChem_06_EC_016a.jpg\" alt=\"A 2-step reversible reaction shows benzene reacting with deuterium chloride via a carbocation intermediate to form benzene with D at C1 and hydrogen chloride.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353346": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3dUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--abdc0209a1fe737eb904a3df0973c41610b529a5/OChem_06_EC_016b.jpg\" alt=\"A 2-step reaction shows propylene oxide reacting with hydrogen chloride via a protonated oxirane intermediate. The product is 3-chloroisopropanol.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-AP06": {
+      "source_uid": "37327@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "353351",
+        "353352",
+        "353353",
+        "353354"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353351": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzBUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--889254a719666f2d630e9191aee007dc349b6f49/OChem_06_EC_017a.jpg\" alt=\"2-methoxypropan-2-ol undergoes a reversible reaction with hydroxide to produce unknown product(s), depicted by a question mark. Arrows indicate hydroxide abstracts alcohol hydrogen, and methoxide leaves.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353352": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzRUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--186d1d8473251ac431a7f57e8bf7a2fb20618a26/OChem_06_EC_017b.jpg\" alt=\"Acetone undergoes a reversible reaction with hydroxide to produce unknown product(s), depicted by a question mark. Arrows indicate hydroxide abstracts alpha hydrogen, pushing electrons toward carbonyl oxygen.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353353": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzhUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b2edae4cb373fac68553375684990f74a675c60d/OChem_06_EC_017c.jpg\" alt=\"Protonated acetone undergoes a reversible reaction with water to produce unknown product(s), depicted by a question mark. Arrows indicate water attacks carbonyl, pushing electrons toward carbonyl oxygen.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353354": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--728b1b3d7ec105ebfbf293dbb4a1f400bf04194f/OChem_06_EC_017d.jpg\" alt=\"1-bromo-1,2-dimethylcyclohexane undergoes a reversible reaction with methoxide to produce unknown product(s), depicted by a question mark. Arrows indicate methoxide abstracts C2 hydrogen, bromine leaves.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-AP08": {
+      "source_uid": "37328@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "336279"
+      ],
+      "fields": {
+        "stem:336279": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-AP09": {
+      "source_uid": "37329@6",
+      "solutions_are_public": false,
+      "question_order": [
+        "353356"
+      ],
+      "fields": {
+        "stem:353356": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000\n<br>\u0000SLOT_2\u0000</p>",
+          "slots": 3,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d63853e67c225fad5dd694ce6b2d6e8e56362529/OChem_06_EC_018a.jpg\" alt=\"The condensed structural formula reads, C H 3 C H 3.\">",
+            "1": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcElUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--13a0ac40afd5bb690a1f0033e03b95366a83fee4/OChem_06_EC_018b.jpg\" alt=\"The condensed structural formula reads, C H 3 C H 2 C H 3.\">",
+            "2": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcE1UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5d4d0e0099f10f02e9afdc164df0003316df88f9/OChem_06_EC_018c.jpg\" alt=\"A chemical structure of cyclohexane.\">",
+            "3": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--822dbd6d79e191ac64d89e107ea92bb1568262bf/OChem_06_EC_018d.jpg\" alt=\"A chemical structure of 2,2-dimethylbutane.\">",
+            "4": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9cdb8be5c5dded5642577dc20592bf133a23e62b/OChem_06_EC_018e.jpg\" alt=\"A condensed structure of 2-butyne.\">",
+            "5": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFlUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--844755bf6ef1ab6a85f6a9c61368f4e035804d2a/OChem_06_EC_018f.jpg\" alt=\"A chemical structure of hexamethylbenzene.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-AP10": {
+      "source_uid": "37330@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "353360",
+        "353361",
+        "353362"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353360": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d2f96d790b32c2269ca05b557b9c5ef7f342cbc2/OChem_06_EC_019a.jpg\" alt=\"A chemical structure of n-butane.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353361": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGdUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3706b6443ad5ca27fa950b5ea65c95f6264f371b/OChem_06_EC_019b.jpg\" alt=\"A chemical structure of isopentane.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353362": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGtUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bb0833d9cf5d864b2684980d17c93482e891a65d/OChem_06_EC_019c.jpg\" alt=\"A chemical structure of methylcyclopentane.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-AP11": {
+      "source_uid": "37331@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "346055"
+      ],
+      "fields": {
+        "stem:346055": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-AP12": {
+      "source_uid": "37332@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "353366",
+        "353367",
+        "353368"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353366": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcG9UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a4351fe884ce86e4265db27939d6fe210743b677/OChem_06_EC_020a.jpg\" alt=\"A chemical structure of trans-2-butene.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353367": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--989d4fc7bf70e4617550f2161184961f5e197a80/OChem_06_EC_020b.jpg\" alt=\"A chemical structure of cyclopentene.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353368": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHdUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bc68675b97ce150cca334198586b8139ce6156a5/OChem_06_EC_020c.jpg\" alt=\"A chemical structure of 2,3-dimethylbut-2-ene.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-AP13": {
+      "source_uid": "37333@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "353371",
+        "353372"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDBUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ae30bb10117970af8f8a164b4ebdacdba154552b/OChem_06_EC_021.jpg\" alt=\"A three-step reversible reaction shows the formation of 2-methyl-2-propanol, hydronium ion, and chloride ion from 2-chloro-2-methylpropane via a carbocation intermediate.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353371": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353372": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-AP14": {
+      "source_uid": "37334@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "346057"
+      ],
+      "fields": {
+        "stem:346057": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-AP15": {
+      "source_uid": "37335@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "336313"
+      ],
+      "fields": {
+        "stem:336313": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p></p>\u0000SLOT_1\u0000<p></p>\n<p>\u0000SLOT_2\u0000</p>",
+          "slots": 3,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-AP16": {
+      "source_uid": "37336@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "353374"
+      ],
+      "fields": {
+        "stem:353374": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n<p>\u0000SLOT_2\u0000</p>",
+          "slots": 3,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDRUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--51e9b462046b73148d5f0527f0039d8b13a75a0f/OChem_06_EC_022.jpg\" alt=\"A methoxide ion reacts with ethyl bromide to form ethene, methanol, and a bromide ion.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-AP17": {
+      "source_uid": "37337@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "359263"
+      ],
+      "fields": {
+        "stem:359263": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--20b4159316739449f0a977e271021a14a06856e4/OSX_OrgChem_06_99_OChem-06-EC-023_80485-06-u074_P-AcetylCh_img.jpg\" alt=\"A 3-step reaction of acetyl chloride with ammonia. Step 1: ammonia addition to carbonyl; step 2: chlorine is eliminated; step 3: acetamide product is deprotonated by ammonia, ammonium chloride formed.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-AP18": {
+      "source_uid": "37338@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "353379",
+        "353380"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--687b9bfee59011747847be5394902c905ded31fd/OChem_06_EC_024.jpg\" alt=\"A carbocation forms isomeric carbocation, which further reacts with water to form alpha-terpineol.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353379": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353380": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-AP19": {
+      "source_uid": "37339@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "353384",
+        "353385",
+        "353386"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353384": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8eb5f8b009f7b31913dab21c4b2bce73e8812a16/OChem_06_EC_025a.jpg\" alt=\"An incomplete reaction shows a substituted thiazole ring forming unknown product(s), depicted by a question mark. Three arrows depict the movement of electrons.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353385": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUlUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a897795b2bddc74ee56cd182b682b56eaaad6845/OChem_06_EC_025b.jpg\" alt=\"Five-carbon chain with carboxylate at C1, methyl and phosphate at C3, and pyrophosphate at C5 reacts forms unknown product(s). Arrows show electron flow from carboxylate toward phosphate (leaving group).\">"
+          },
+          "wraps": {}
+        },
+        "stem:353386": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcU1UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f4a5b8ae22c25efac0c6579ff2fd7e374534c946/OChem_06_EC_025c.jpg\" alt=\"An incomplete reaction shows substituted pyridine reacting with a base to form unknown product(s), depicted by a question mark. Arrows show the movement of electrons.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-AP20": {
+      "source_uid": "37340@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "336329"
+      ],
+      "fields": {
+        "stem:336329": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-AP21": {
+      "source_uid": "37341@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "346059"
+      ],
+      "fields": {
+        "stem:346059": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-EDRM01": {
+      "source_uid": "37312@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "336203"
+      ],
+      "fields": {
+        "stem:336203": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-EDRM02": {
+      "source_uid": "37313@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "336373"
+      ],
+      "fields": {
+        "stem:336373": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-EDRM03": {
+      "source_uid": "37314@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "336375"
+      ],
+      "fields": {
+        "stem:336375": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-EDRM04": {
+      "source_uid": "37315@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "336377"
+      ],
+      "fields": {
+        "stem:336377": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-EDRM05": {
+      "source_uid": "37316@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "336379"
+      ],
+      "fields": {
+        "stem:336379": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-EDRM06": {
+      "source_uid": "37317@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "353293",
+        "353294"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7f8deda0be1798c4b63d10d91f068ccd6b78be74/OChem_06_EC_007.jpg\" alt=\"A reversible reaction shows ethene reacting favorably with water to form ethanol. Delta H naught and delta S naught are negative, and K E Q is 24.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353293": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353294": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-EDRM07": {
+      "source_uid": "37318@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "353298",
+        "353299",
+        "353300"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n<p>\u0000SLOT_2\u0000</p>",
+          "slots": 3,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--67c8e42e212a2ac11ae0317d2f2b7bf9d4d72c83/OChem_06_EC_008.jpg\" alt=\"A 2-step reversible reaction shows isopropylidenecyclohexane in the presence of acid catalyst forming 1-isopropylcyclohexene via a carbocation intermediate.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353298": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353299": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353300": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-EDRM08": {
+      "source_uid": "37319@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "346053"
+      ],
+      "fields": {
+        "stem:346053": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-EDRM10": {
+      "source_uid": "37320@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "357222",
+        "357223",
+        "357224"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:357222": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbllUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7a3028885f89b8d85df3615b4b91634976591e5b/OChem_06_EC_010a.jpg\" alt=\"2-methylbut-1-ene reacts with hydrogen chloride to form 2-chloro-2-methylbutane.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357223": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7dd0e0d4f01128adc60241d5c71c8d9bba972307/OChem_06_EC_010b.jpg\" alt=\"Styrene reacts with hydrogen bromide to form 1-bromoethylbenzene.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357224": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmdUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0836547bdf9dbc4d493e85db94c834cfab981e1b/OChem_06_EC_010c.jpg\" alt=\"2-methylbut-2-ene reacts with hydrogen chloride to form 2-chloro-2-methylbutane.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-EDRM11": {
+      "source_uid": "37321@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "353310",
+        "353311",
+        "353312"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353310": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmtUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c94c83d07d35a82745d734d600284e354e2cac12/OChem_06_EC_011a.jpg\" alt=\"A chlorine radical reacts with but-2-ene to form unknown product(s).\">"
+          },
+          "wraps": {}
+        },
+        "stem:353311": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbm9UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d48b9862888a7d362ae08484b97703f2bf6e5ccb/OChem_06_EC_011b.jpg\" alt=\"A bromine radical reacts with cyclohexene to form unknown product(s).\">"
+          },
+          "wraps": {}
+        },
+        "stem:353312": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbnNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--46cc3bb03450a106899755b8b71dce8fd52c4bb1/OChem_06_EC_011c.jpg\" alt=\"Chlorine radical reacts with a five-membered ring made of four carbon and one oxygen, with a double bond at C2 to form unknown product(s). \">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-VC01": {
+      "source_uid": "37307@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "353272"
+      ],
+      "fields": {
+        "stem:353272": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTRUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7d70b6b912fb59edc3dd98e35a94aea17c16ba7a/OChem_06_EC_002.jpg\" alt=\"The ball-and-stick model has a 5-carbon chain. C2 is bonded to a bromine atom. The gray, white, and reddish-brown spheres represent carbon, hydrogen, and bromine, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-VC02": {
+      "source_uid": "37308@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "353274"
+      ],
+      "fields": {
+        "stem:353274": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbThUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5564270b9fb02ee39d3929abf664060db5d9605c/OChem_06_EC_003.jpg\" alt=\"The ball-and-stick model has a cyclohexane ring in its chair conformation. C1 is bonded to a methyl group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-VC03": {
+      "source_uid": "37309@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "353277",
+        "353278"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353277": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--676e4efa07001f76b104e8bcbfdfa1581381bc92/OChem_06_EC_004a.jpg\" alt=\"The electrostatic potential map of formaldehyde. The gray, white, and red spheres at the center represent carbon, hydrogen, and oxygen atoms, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353278": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8907fc53a81100cd7a4b6255a22dfcc8fbe4b5e0/OChem_06_EC_004b.jpg\" alt=\"The electrostatic potential map of methanethiol shows a ball-and-stick model in the center, in which gray, white, and yellow spheres represent carbon, hydrogen, and sulfur atoms, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-VC04": {
+      "source_uid": "37310@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "353282",
+        "353283",
+        "353284"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbklUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e2cebc4173f1d46bf5c7825d7ef3b45f71a7e9ca/OChem_06_EC_005.jpg\" alt=\"An energy diagram shows a curve forming two crests and one trough. The second crest is higher than the first, and the endpoint is higher than the start.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353282": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353283": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353284": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "06-99-OC-VC05": {
+      "source_uid": "37311@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "353288",
+        "353289",
+        "353290"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbk1UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--91572441dcb2d136b0112ba76b4bfd54a985463c/OChem_06_EC_006.jpg\" alt=\"An energy diagram shows a curve forming four crests of varying height. The endpoint is lower than the start.\">"
+          },
+          "wraps": {}
+        },
+        "stem:353288": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353289": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:353290": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    }
+  }
+}

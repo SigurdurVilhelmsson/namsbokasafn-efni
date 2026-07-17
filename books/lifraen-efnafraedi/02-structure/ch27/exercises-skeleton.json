@@ -1,0 +1,1014 @@
+{
+  "generated_by": "exercise-extract.js",
+  "exercises": {
+    "27-01-OC-P01": {
+      "source_uid": "38833@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "346614"
+      ],
+      "fields": {
+        "stem:346614": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:346614": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "27-01-OC-P02": {
+      "source_uid": "38834@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "346616"
+      ],
+      "fields": {
+        "stem:346616": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:346616": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "27-02-OC-P03": {
+      "source_uid": "38835@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "347195"
+      ],
+      "fields": {
+        "stem:347195": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:347195": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"[{\\rm CH}_{3}({\\rm CH}_{2})_{7}{\\rm CH}\\text{═}{\\rm CH}({\\rm CH}_{2})_{7}{\\rm CO}_{2}\\!^{-}]{2}\\ {\\rm Mg}^{2+}\"></span>"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "27-02-OC-P04": {
+      "source_uid": "38836@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "347197"
+      ],
+      "fields": {
+        "stem:347197": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:347197": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "27-04-OC-P05": {
+      "source_uid": "38837@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "358187"
+      ],
+      "fields": {
+        "stem:358187": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:358187": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazRZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--506979c2775f8ef7e665732f8e1e27def62c1a37/OChem_27_EC_201.jpg\" alt=\"The wedge-dash structure of Prostaglandin E 2. C 8, C 12, and C 11 have an R configuration whereas C 15 has an S configuration.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "27-05-OC-P06": {
+      "source_uid": "38838@6",
+      "solutions_are_public": true,
+      "question_order": [
+        "358191"
+      ],
+      "fields": {
+        "stem:358191": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazhZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d47638187599d8e1f1e7789e757c6e0b009a1d91/OChem_27_05_009.jpg\" alt=\"Mevalonate-5-diphosphate represented in wedge-dash form undergoes dehydration to form isopentenyl diphosphate.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358191": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "27-05-OC-P07": {
+      "source_uid": "38839@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "358194",
+        "358195"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358194": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbEFZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--951e8cac2bb64d5da5e29ab1361e00790afa568a/OChem_27_05_016a.jpg\" alt=\"The structure of alpha-pinene in which cyclohexene has a methyl group on C 1, two methyl groups on C 3, and two methyl groups connected inside the ring.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358194": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbEVZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5249dd7d550a7eebc120cd749a44bbf26d866eaf/OChem_27_EC_202.jpg\" alt=\"O P P releases from linalyl diphosphate leading to a carbocation intermediate. The double bond shifts to form another carbocation. The base reacts with carbocation to form alpha-pinene.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358195": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbElZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d7af4051c5bc291a339b9803aac0e40f36a7c1ea/OChem_27_05_016b.jpg\" alt=\"Gamma-bisabolene comprises cyclohexene bonded with methyl and a double bond linked to methyl. Further linked to two methylene groups and C-H is linked to double bond with two methyl groups.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358195": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbE1ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--84090902fbee2592d52c6c3956150f6766741d79/OChem_27_EC_203.jpg\" alt=\"The structure shows the formation of gamma-bisabolene from several carbocations involving four steps.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "27-06-OC-P08": {
+      "source_uid": "38840@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "358198",
+        "358199"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358198": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFFZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f53d82beae21c0a87773841ad48551f685c2acc1/OChem_27_06_005a.jpg\" alt=\"The structure of a trans-decline with dashed and wedged hydrogens at the ring junction and a wedged methyl group and dashed hydrogen on the second ring.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358198": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFVZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6f89913beff9834604322824f30e1837647228f5/OChem_27_EC_204a.jpg\" alt=\"trans-Decaline in chair conformation with hydrogens at the ring junctions and an equatorial methyl group at C1.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358199": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFlZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9fd0f7c9f63bc73c99520539df9d034d1c02b355/OChem_27_06_005b.jpg\" alt=\"The structure of a trans-decline with dashed and wedged hydrogens at the ring junctions and an equatorial methyl group at C2.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358199": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--92e12257c78663161f0fabf23105c424e6e75f1a/OChem_27_EC_204b.jpg\" alt=\"The structure of a trans-decline with dashed and wedged hydrogens at the ring junctions and an equatorial methyl group at C2.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "27-06-OC-P09": {
+      "source_uid": "38841@6",
+      "solutions_are_public": true,
+      "question_order": [
+        "358201"
+      ],
+      "fields": {
+        "stem:358201": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGdZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--55c5c7f927b9c5d1a72de5ecfafd281353714b3d/OChem_27_06_006.jpg\" alt=\"The figure shows the wedge-dash structure of lithocholic acid.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358201": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGtZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c212a16603358f5a53a67895cabcbd12f727871a/OChem_27_EC_205.jpg\" alt=\"The chair conformation of lithocholic acid. A tetracyclic conformation of three cyclohexyls and one cyclopentyl fused rings with one equatorial hydroxyl, two axial methyls, and methyl substituted butyric acid\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "27-07-OC-P10": {
+      "source_uid": "38842@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "346637"
+      ],
+      "fields": {
+        "stem:346637": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:346637": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP01": {
+      "source_uid": "38849@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "346652"
+      ],
+      "fields": {
+        "stem:346652": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP02": {
+      "source_uid": "38850@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "346654"
+      ],
+      "fields": {
+        "stem:346654": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP03": {
+      "source_uid": "38851@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "346657"
+      ],
+      "fields": {
+        "stem:346657": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP04": {
+      "source_uid": "38852@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "346664",
+        "346665",
+        "346666",
+        "346667",
+        "346668",
+        "346669"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346664": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346665": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346666": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346667": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346668": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346669": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP05": {
+      "source_uid": "38853@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "346677",
+        "346678",
+        "346679",
+        "346680",
+        "346681",
+        "346682",
+        "346683"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346677": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346678": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346679": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346680": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346681": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346682": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346683": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP06": {
+      "source_uid": "38854@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358215"
+      ],
+      "fields": {
+        "stem:358215": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUFZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0d00a7a671818de24077c7dd44775b579915153c/OChem_27_EC_007.jpg\" alt=\"The structure of a plasmalogen lipid, contains a vinyl-ether and two fatty acids.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP07": {
+      "source_uid": "38855@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "346687"
+      ],
+      "fields": {
+        "stem:346687": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP08": {
+      "source_uid": "38856@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "374676"
+      ],
+      "fields": {
+        "stem:374676": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczBiIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--70ba02d67df1dc246456a5cd265164a0b8cea66a/OChem_27_EC_010.jpg\" alt=\"The structure of a cardiolipin. It comprises several ester molecules with two phosphate groups.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP09": {
+      "source_uid": "38857@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "346691"
+      ],
+      "fields": {
+        "stem:346691": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP10": {
+      "source_uid": "38858@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "346693"
+      ],
+      "fields": {
+        "stem:346693": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP11": {
+      "source_uid": "38859@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358220",
+        "358221"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358220": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUlZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6118db23d306da92a6288ef2ec9cdc1ea009cae6/OChem_27_EC_009a.jpg\" alt=\"The structure of guaiol. It comprises of a bicyclo[5.3.0]decane ring with a double bond,  a wedged bonded propanol, and two wedged bonded methyl groups.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358221": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbU1ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9ad4190ed33456ca5cf42b3dcfc505020abd2217/OChem_27_EC_009b.jpg\" alt=\"The structure of sabinene. It comprises of a bicyclo[3.1.0]hexane ring with an exocyclic double bond, and a bridgehead fused isopropyl group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP12": {
+      "source_uid": "38860@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "346699"
+      ],
+      "fields": {
+        "stem:346699": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP13": {
+      "source_uid": "38861@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "346701"
+      ],
+      "fields": {
+        "stem:346701": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP14": {
+      "source_uid": "38862@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "347187"
+      ],
+      "fields": {
+        "stem:347187": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP15": {
+      "source_uid": "38863@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "374694"
+      ],
+      "fields": {
+        "stem:374694": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczRiIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f522ba9749558eabb84f75fa68ecb6a5b8ee2edf/OChem_27_EC_010.jpg\" alt=\"The structure of alpha-cardinol. It comprises of a trans-decalin ring with an endo double bond, exo-substituted hydroxyl, isopropyl, and two methyl groups.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP16": {
+      "source_uid": "38864@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358225"
+      ],
+      "fields": {
+        "stem:358225": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVVZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8b79418517e7f2a9cd0fa25686127b2ffd990a2e/OChem_27_EC_011.jpg\" alt=\"The structure of squalene. It is a thirty-carbon chain with double bonds and methyl groups at different positions.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP17": {
+      "source_uid": "38865@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358227"
+      ],
+      "fields": {
+        "stem:358227": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVlZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ce4a3e2e6c86772ce315aba2ae31c4f2392cc23b/OChem_27_EC_012.jpg\" alt=\"The wedge-dash structure of Lanosterol.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP18": {
+      "source_uid": "38866@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358229"
+      ],
+      "fields": {
+        "stem:358229": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--286d137fd47345f57b94ba391ce8b241954dd441/OChem_27_EC_013.jpg\" alt=\"The structure of flexibilene. It is a fifteen-membered ring with three methyl vinyl groups at C 7, C 11, and C 15, and a dimethylated carbon at C 3.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP19": {
+      "source_uid": "38867@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358231"
+      ],
+      "fields": {
+        "stem:358231": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWdZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fa831dac442bbb930de5aed65f2c732ac44c6914/OChem_27_EC_014.jpg\" alt=\"The structure of dihydrocarvone. It is a cyclohexane with carbonyl at C 1, wedged methyl and dashed hydrogen at C 2, and dashed methyl vinyl group at C 5\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP20": {
+      "source_uid": "38868@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358233"
+      ],
+      "fields": {
+        "stem:358233": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWtZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3416eac587eea9b098d8cf53c522c9b45e1194a4/OChem_27_EC_015.jpg\" alt=\"The structure of menthol. It is a cyclohexane with dashed hydroxyl at C 1, a wedged isopropyl at C2, and a dashed methyl at C5.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP21": {
+      "source_uid": "38869@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358236",
+        "358237"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358236": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbW9ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5988357cdfed48a8279ec877d9e8718cd5d094e3/OChem_27_EC_016a.jpg\" alt=\"The structure of a trans-decalin with a wedged methyl and dashed hydrogen at the ring junction, a wedged hydroxyl at C 2, and dashed hydroxyl at C 7.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358237": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e89bd2f2d2a2bf40ee7e8157e8a6ae874c0f6c5f/OChem_27_EC_016b.jpg\" alt=\"The structure of a trans-decalin with a wedged methyl and dashed hydrogen at the ring junction, a wedged hydroxyl at C 3, and dashed hydroxyl at C 6.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP22": {
+      "source_uid": "38870@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358239"
+      ],
+      "fields": {
+        "stem:358239": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXdZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--37923584bd0b3d63b5f437d50d1d94cd160bac10/OChem_27_EC_017.jpg\" alt=\"The structure of Isoborneol. It is a norbornane with three methyl groups, a hydroxyl group, and a hydrogen atom.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP23": {
+      "source_uid": "38871@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358241"
+      ],
+      "fields": {
+        "stem:358241": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTBZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c41b413ff63ffffd68b26cdfbfcef02e800b64ae/OChem_27_EC_018.jpg\" alt=\"The structure of digitoxigenin. It is a beta-hydroxy steroid with one wedged hydroxyl and two wedged methyls at the ring juctions,and substituted furanone\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP24": {
+      "source_uid": "38872@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "346726"
+      ],
+      "fields": {
+        "stem:346726": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP25": {
+      "source_uid": "38873@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "346728"
+      ],
+      "fields": {
+        "stem:346728": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP26": {
+      "source_uid": "38874@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "347189"
+      ],
+      "fields": {
+        "stem:347189": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP27": {
+      "source_uid": "38875@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "346732"
+      ],
+      "fields": {
+        "stem:346732": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP28": {
+      "source_uid": "38876@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358243"
+      ],
+      "fields": {
+        "stem:358243": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTRZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--12bd4be4bb0a96549a4750f827ebf8ce8f86b5fd/OChem_27_EC_019.jpg\" alt=\"The structures of diethylstilbestrol and estradiol. Diethylstilbestrol is a diethyl subsituted diphenol. Estradiol is an aromatic steroid with a phenol and wedged methyl and hydroxyl groups. \">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP31": {
+      "source_uid": "38877@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358245"
+      ],
+      "fields": {
+        "stem:358245": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n<p>\u0000SLOT_2\u0000</p>",
+          "slots": 3,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbThZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c39892a3ff91529180336d28d56eef323214fa5a/OChem_27_EC_020.jpg\" alt=\"The structure of four carbonyl-containing compounds, a dialdehyde, a  keto-aldehyde, a dialdehyde, and a keto-aldehyde. \">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP32": {
+      "source_uid": "38878@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358247"
+      ],
+      "fields": {
+        "stem:358247": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkFZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fb3f8f7442d5ad89fadf962b74a59e684a54a31e/OChem_27_EC_021.jpg\" alt=\"The structure of alpha-fenchone. It is a bicyclo[2.2.1] heptane with two methyls at C 3, one methyl at C 1, and a carbonyl at C 2,\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP33": {
+      "source_uid": "38879@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358249"
+      ],
+      "fields": {
+        "stem:358249": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkVZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4d8d62910588bb1f5a8ac89acfbe05407dcfd189/OChem_27_EC_022.jpg\" alt=\"Malonyl protein reacts with an acetyl protein to form an intermediate. This reacts to form 3-ketobutyryl protein and carbon dioxide.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-AP34": {
+      "source_uid": "38880@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358251"
+      ],
+      "fields": {
+        "stem:358251": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbklZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bd09c9ab97f62a1a4b535ae1ec5c183f8864719c/OChem_27_EC_023.jpg\" alt=\"Farnesyl diphosphate (F P P) cyclizes to form an intermediate. This further forms trichodiene as the final product.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-MP01": {
+      "source_uid": "38846@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358565"
+      ],
+      "fields": {
+        "stem:358565": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDBZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--594714805a06ba807012ecb7b53ef76f08281ed2/OChem_27_EC_004.jpg\" alt=\"The structure of caryophyllene.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-MP02": {
+      "source_uid": "38847@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358211"
+      ],
+      "fields": {
+        "stem:358211": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDRZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b401a228e6b7ec855b2353fb846f7448cdc8600e/OChem_27_EC_005.jpg\" alt=\"Psi-ionone reacts with hydronium ions to form beta-ionone. The open chain gets converted to a closed ring in the product.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-MP03": {
+      "source_uid": "38848@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358213"
+      ],
+      "fields": {
+        "stem:358213": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDhZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--471128c1753f583358db52e5978b3051ae975f53/OChem_27_EC_006.jpg\" alt=\"Isoborneol reacts with sulfuric acid to form camphene. Carbocation rearrangement happens during the process.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-VC01": {
+      "source_uid": "38843@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "358561"
+      ],
+      "fields": {
+        "stem:358561": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbG9ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f5a232fa19164d7b9cd424f8bf5a729c91da4a26/OChem_27_EC_001.jpg\" alt=\"The ball-and-stick model of cholic acid. Black, gray, and red spheres denote carbon, hydrogen, and oxygen, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-VC02": {
+      "source_uid": "38844@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358205"
+      ],
+      "fields": {
+        "stem:358205": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e67401c22edb40d1dc37d143bf7983a4ddfd0e25/OChem_27_EC_002.jpg\" alt=\"The ball-and-stick model of sesquiterpenoid, helmintho germacrene. Black and gray spheres denote carbon and hydrogen, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "27-99-OC-VC03": {
+      "source_uid": "38845@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358563"
+      ],
+      "fields": {
+        "stem:358563": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHdZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ff7c2cd9c6f384e8b5983ba669737466c67788f7/OChem_27_EC_003.jpg\" alt=\"The ball-and-stick model of fatty acid. Black, gray, and red spheres denote carbon, hydrogen, and oxygen, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    }
+  }
+}

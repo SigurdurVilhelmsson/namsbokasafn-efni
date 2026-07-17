@@ -1,0 +1,2206 @@
+{
+  "generated_by": "exercise-extract.js",
+  "exercises": {
+    "18-01-OC-P01": {
+      "source_uid": "38697@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "361108",
+        "361109",
+        "361110",
+        "361111",
+        "361112",
+        "361113"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361108": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5295cd067a2edcb45793ceaf2e91b096df664300/OChem_18_01_005a.jpg\" alt=\"The structure of two isopropyl groups bonded to an oxygen atom in an ether linkage.\">"
+          },
+          "wraps": {}
+        },
+        "sol:361108": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361109": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1ec34eb58a78c4393b184b55ca42a70516382e8c/OChem_18_01_005b.jpg\" alt=\"The structure of cyclopentane with a propoxy (O C H 2 C H 2 C H 3) substituent.\">"
+          },
+          "wraps": {}
+        },
+        "sol:361109": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361110": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--647a4d37c9a85813681620484bda702152f232bb/OChem_18_01_005c.jpg\" alt=\"The structure of benzene with methoxy and bromine groups positioned para to one another.\">"
+          },
+          "wraps": {}
+        },
+        "sol:361110": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361111": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d873c0183c5c8a703a0fdc1c8505acbdc2ef3623/OChem_18_01_005d.jpg\" alt=\"The structure of cyclohexene with a methoxy substituent at one of the double-bonded carbons.\">"
+          },
+          "wraps": {}
+        },
+        "sol:361111": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361112": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDhYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b70c72686e0e63ac88fbca03bf1b004eb22a1278/OChem_18_01_005e.jpg\" alt=\"An ethyl group connected to an isobutyl group through an oxygen atom, forming an ether linkage.\">"
+          },
+          "wraps": {}
+        },
+        "sol:361112": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361113": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a856edb332c0f6bef6c0ab6c3a4d2be298c1dbc5/OChem_18_01_005f.jpg\" alt=\"An allyl group attached to a vinyl group through an oxygen atom, forming an ether linkage.\">"
+          },
+          "wraps": {}
+        },
+        "sol:361113": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-02-OC-P02": {
+      "source_uid": "38698@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "347203"
+      ],
+      "fields": {
+        "stem:347203": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:347203": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-02-OC-P03": {
+      "source_uid": "38699@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "343664",
+        "343665",
+        "343666",
+        "343667"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:343664": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:343664": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:343665": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:343665": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:343666": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:343666": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:343667": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:343667": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-02-OC-P04": {
+      "source_uid": "38700@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "361115"
+      ],
+      "fields": {
+        "stem:361115": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:361115": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--caa499c46803c74a469002cfe15a47999a461bfa/OChem_18_EC_201.jpg\" alt=\"The formed cyclic mercury trifluoroacetate adduct from 1-methylcyclopentene's reaction with mercury(II) trifluoroacetate is treated with sodium borohydride to produce the corresponding alcohol, replacing the mercury atom with hydrogen.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-02-OC-P05": {
+      "source_uid": "38701@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "343674",
+        "343675",
+        "343676",
+        "343677"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:343674": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:343674": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:343675": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:343675": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:343676": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:343676": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:343677": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:343677": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-02-OC-P06": {
+      "source_uid": "38702@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "343680",
+        "343681"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:343680": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:343680": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:343681": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:343681": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-03-OC-P07": {
+      "source_uid": "38703@6",
+      "solutions_are_public": true,
+      "question_order": [
+        "361118",
+        "361119"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361118": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUlYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--57ef951705032a7109448b474223dcafaf473207/OChem_18_03_006a.jpg\" alt=\"2-methoxy-2-phenylpropane reacts with hydrogen bromide to form unknown product(s), depicted by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "sol:361118": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbU1YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8e447e5a057d56ce299240f95dc8d272fd5ba0fe/OChem_18_EC_202a.jpg\" alt=\"2-bromo-2-phenylpropane reacts with methanol to form unknown product(s), depicted by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361119": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--884fc5a860370c3bbfa3b7dc231e1e1411f53f33/OChem_18_03_006b.jpg\" alt=\"Two propyl groups are linked via ether linkage where methyl is linked to C 1. It reacts with hydrogen bromide to form unknown product(s), depicted by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "sol:361119": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7160cc6acdc19451ce50b36129373312f31a08b5/OChem_18_EC_202b.jpg\" alt=\"Structures of 2-butanol and 1-bromopropane separated by a plus sign.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-03-OC-P08": {
+      "source_uid": "38704@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "343687"
+      ],
+      "fields": {
+        "stem:343687": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:343687": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-03-OC-P09": {
+      "source_uid": "38705@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "343689"
+      ],
+      "fields": {
+        "stem:343689": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:343689": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-05-OC-P10": {
+      "source_uid": "38706@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "361067"
+      ],
+      "fields": {
+        "stem:361067": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:361067": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1lhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5d4a40238c6f969e10b63bc8f76e0ef5e3cfef2d/OSX_OrgChem_18_DD_A-TransBut_img.jpg\" alt=\"trans-2-Butene reacts with m C P B A to form trans-2,3-epoxybutane.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-05-OC-P11": {
+      "source_uid": "38707@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "343693"
+      ],
+      "fields": {
+        "stem:343693": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:343693": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-06-OC-P12": {
+      "source_uid": "38708@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "361122",
+        "361123"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361122": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVlYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0194106cc474db3b023826cb07af80ce3b077fde/OChem_18_06_007a.jpg\" alt=\"3-Cyclohexyl-2,2-dimethyloxirane reacts with HCl in the presence of ether to form an unknown product(s), depicted by a question mark\">"
+          },
+          "wraps": {}
+        },
+        "sol:361122": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7007ac74bfd07f844c93bcf2a195f2a1bbc7e078/OChem_18_EC_203a.jpg\" alt=\"The structure of 2-chloro-1-cyclohexyl-2-methylpropan-1-ol.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361123": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3f02ffd7d8f05cb2597b15fe4aed601c5ab8b725/OChem_18_06_007b.jpg\" alt=\"1-Oxaspiro[2.5]octane reacts with hydrochloric acid and an ether to form an unknown product(s), depicted by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "sol:361123": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWtYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5c0c8a3fd2efaa57b42c22aac846c55731866872/OChem_18_EC_203b.jpg\" alt=\"The structure of cyclohexane comprising chlorine atom and C H 2 O H group linked to the C 1 position of the ring.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-06-OC-P13": {
+      "source_uid": "38709@6",
+      "solutions_are_public": true,
+      "question_order": [
+        "361126",
+        "361127"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361126": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbW9YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c33f6aa483f1687d0960407c9e70597c3033ea50/OChem_18_06_008a.jpg\" alt=\"A ball-and-stick model of a chair conformation of six-membered ring with two hydroxyl groups attached to C 1 and C 2. Methyl is bonded to C 1 at the right.\">"
+          },
+          "wraps": {}
+        },
+        "sol:361126": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361127": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7f66960de2a89da09358b7af686ef72ccf9b4603/OChem_18_06_008b.jpg\" alt=\"A ball-and-stick model of a chair conformation of a six-membered ring with neighboring carbons linked to two hydroxyl groups. A methyl group is bonded to C 1 at the bottom.\">"
+          },
+          "wraps": {}
+        },
+        "sol:361127": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-06-OC-P14": {
+      "source_uid": "38710@6",
+      "solutions_are_public": true,
+      "question_order": [
+        "464273",
+        "464274",
+        "464275"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:464273": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdXNqIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ad71af6be3c56fdab945af4bb2256ae1eff1766a/OChem_18_06_013a.jpg\" alt=\"2-Ethyl-2-methyloxirane reacts with sodium hydroxide in the presence of oxygen 18-labeled water to form an unknown product(s), depicted by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "sol:464273": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbThYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1274828e22290800b67e964e3826ca52d0d4473e/OChem_18_EC_204a.jpg\" alt=\"A four-carbon chain with hydroxyl on C 1 and C 2 and methyl on C 2 position. The oxygen atom of hydroxyl on C 1 position has an asterisk.\">"
+          },
+          "wraps": {}
+        },
+        "stem:464274": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--670ac0cf074b92883f2aed1f9676b115b41e85a0/OChem_18_06_013b.jpg\" alt=\"2-Ethyl-2-methyloxirane reacts with hydronium ion in which O is marked as 18 to form an unknown product(s), depicted by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "sol:464274": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--701ddddf4f4306c75047a3d764f354a5b4ac4ef3/OChem_18_EC_204b.jpg\" alt=\"A four-carbon chain with hydroxyl on C 1 and C 2 and methyl on C 2 position. The oxygen atom of hydroxyl on C 2 position has an asterisk.\">"
+          },
+          "wraps": {}
+        },
+        "stem:464275": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--230c39fe3827072e9369c477792021833c48914f/OChem_18_06_013c.jpg\" alt=\"Epoxide with dashed ethyl, wedged methyl on the left and dashed methyl, wedged hydrogen on the right reacts with phenyl magnesium bromide, then hydronium ion to form an unknown product.\">"
+          },
+          "wraps": {}
+        },
+        "sol:464275": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d2e1e22f920d0b01101c13efda18b47aaf2f04d1/OChem_18_EC_204c.jpg\" alt=\"Structure of 3-methyl-2-phenylpentan-3-ol.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-07-OC-P15": {
+      "source_uid": "38711@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "361069"
+      ],
+      "fields": {
+        "stem:361069": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:361069": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2NhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3d3b6b6b9d33975e8aeb4924319ef4ac1295dfe5/OSX_OrgChem_18_06_A-LiONaO_img.jpg\" alt=\"Two crown ethers: 12-crown-4 is shown with an associated lithium cation, and 15-crown-5 is shown with an associated sodium cation.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-08-OC-P16": {
+      "source_uid": "38712@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "361140",
+        "361141",
+        "361142",
+        "361143",
+        "361144",
+        "361145"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361140": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbklYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--07963ea7a306d833537b3c020e1b0596a58e71b0/OChem_18_08_012a.jpg\" alt=\"A four-carbon chain with S H one carbon from the end.\">"
+          },
+          "wraps": {}
+        },
+        "sol:361140": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361141": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbk1YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--acc62bd53eba5e5d693a23bf068b3103342b3270/OChem_18_08_012b.jpg\" alt=\"A seven-carbon chain. Counting from the left, there are two methyl groups on the second carbon and one on the sixth, and an S H group on the fourth carbon.\">"
+          },
+          "wraps": {}
+        },
+        "sol:361141": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361142": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--049126ebb128970e6e33cf3175fd0239dfc9a67b/OChem_18_08_012c.jpg\" alt=\"A five-membered ring with one double bond. There is an S H group one carbon from the end of the double bond.\">"
+          },
+          "wraps": {}
+        },
+        "sol:361142": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361143": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9d1ed67ab061628a3735d8c92731b4ad22d46620/OChem_18_08_012d.jpg\" alt=\"A compound having an ethyl and isopropyl group bonded by a sulfur atom at the center.\">"
+          },
+          "wraps": {}
+        },
+        "sol:361143": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361144": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbllYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b0879e1cb16860bcc8d5bb6385dff2e10b74c6ef/OChem_18_08_012e.jpg\" alt=\"A benzene ring with methylthio (S C H 3) groups attached to adjacent carbons.\">"
+          },
+          "wraps": {}
+        },
+        "sol:361144": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361145": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0b89b2cc8e0b1a57d353ce0459dca3660644cf7b/OChem_18_08_012f.jpg\" alt=\"A cyclohexane ring with a carbonyl group and, two carbons away, an ethylthio (-S C H 2 C H 3) group.\">"
+          },
+          "wraps": {}
+        },
+        "sol:361145": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-08-OC-P17": {
+      "source_uid": "38713@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "361147"
+      ],
+      "fields": {
+        "stem:361147": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--538563c877c4e0f6e8655296a74bb75bc4c371d0/OChem_18_08_013.jpg\" alt=\"The structures of methyl 2-butenoate and 2-butene-1-thiol, separated from one another by two reaction arrows.\">"
+          },
+          "wraps": {}
+        },
+        "sol:361147": {
+          "skeleton": "<ul style=\"list-style-type:none\">\n<li>\u0000SLOT_0\u0000</li>\n<li>\u0000SLOT_1\u0000</li>\n</ul>",
+          "slots": 2,
+          "opaques": {
+            "0": "<span data-math=\"{({\\rm H}_{2}{\\rm N})_{2}{\\rm C}\\text{═}{\\rm S}}\"></span>",
+            "1": "<span data-math=\"{({\\rm H}_{2}{\\rm N})_{2}{\\rm C}\\text{═}{\\rm S}}\"></span>"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-09-OC-P18": {
+      "source_uid": "38714@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "361149"
+      ],
+      "fields": {
+        "stem:361149": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmtYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d4cf8b192d5e83a3e66c601f69d07a977dcd425b/OChem_18_09_006.jpg\" alt=\"Proton N M R with shifts at 0 (TMS), 1.00 (triplet), 1.58 (multiplet), 2.48 and 2.73 (doublets), and 2.89 (multiplet). Relative areas are 3.00, 2.00, 1.00, 1.00, and 1.00 respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:361149": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-AP01": {
+      "source_uid": "38734@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "343787",
+        "343788",
+        "343789",
+        "343790",
+        "343791"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:343787": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:343788": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:343789": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:343790": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:343791": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-AP02": {
+      "source_uid": "38735@6",
+      "solutions_are_public": false,
+      "question_order": [
+        "464259",
+        "464260",
+        "464261",
+        "464262",
+        "464263",
+        "464264",
+        "464265",
+        "464266",
+        "464267"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:464259": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcE1YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d2934ae8fa03f1f16fadcf03c63e8c4d6eb7462a/OChem_18_EC_033a.jpg\" alt=\"A sulfur atom connected to a cyclohexane group and an isopropyl group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:464260": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--084a5a65c43995ffe69ffccba09a07c3dc154118/OChem_18_EC_033b.jpg\" alt=\"A benzene ring with O C H 3 substituents on two adjacent carbons.\">"
+          },
+          "wraps": {}
+        },
+        "stem:464261": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6d1573c4a20572ef936ef06ad32687ad4d14e78b/OChem_18_EC_033c.jpg\" alt=\"A five-membered ring in which two adjacent carbons are also connected by a shared oxygen atom.\">"
+          },
+          "wraps": {}
+        },
+        "stem:464262": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFlYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--12b2f6009b61424b7ee2c072bbdc5149e696b99d/OChem_18_EC_033d.jpg\" alt=\"A five-membered ring in which one member is an oxygen. The ring is numbered starting at oxygen (1); there is a C H 3 on C 2.\">"
+          },
+          "wraps": {}
+        },
+        "stem:464263": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--55d61a3263d1ccf72cb9fadcb1ded4814f2e1bc2/OChem_18_EC_033e.jpg\" alt=\"An oxygen atom connected to an isopropyl group and a cyclopropyl group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:464264": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--af9b8c75307a6a8b6402cd62a4b5debb3f16fd1b/OChem_18_EC_033f.jpg\" alt=\"A benzene ring with an S H substituent and, on an adjacent carbon, a nitro group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:464265": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGtYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--10581c8db4ca689bfcab4d52fca3ac2ab9838230/OChem_18_EC_033g.jpg\" alt=\"A sulfur with an isopropyl on the right, and a five-carbon chain on the left with methyl groups on (from left) third, fourth, and fifth carbons.\">"
+          },
+          "wraps": {}
+        },
+        "stem:464266": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcG9YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--579a475b33ba38dc2c938795784e25fefc6becab/OChem_18_EC_033h.jpg\" alt=\"A central carbon with two methyl and two methoxy substituents.\">"
+          },
+          "wraps": {}
+        },
+        "stem:464267": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6f76bed8d1745deb2c91b093b65f230bc3f0abe4/OChem_18_EC_033i.jpg\" alt=\"A cyclohexane in which one carbon is substituted with two S C H 3 groups.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-AP03": {
+      "source_uid": "38736@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "361242",
+        "361243",
+        "361244",
+        "361245",
+        "361246",
+        "361247"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361242": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--00ae1ddba984330ec7cc48d92d4739236f6496ae/OChem_18_EC_034a.jpg\" alt=\"A central oxygen connected to a benzene ring and an ethyl group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361243": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a2424db06e36bc5f90f4017c5c44bb45ef4164f8/OChem_18_EC_034b.jpg\" alt=\"A central oxygen connected to a benzene ring and an isopropyl group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361244": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5bc093d0d219a166363e596510111d522a50cff7/OChem_18_EC_034c.jpg\" alt=\"An oxirane drawn with oxygen on top, wedge hydrogen and dash methyl on left, and wedge methyl and dash hydrogen on right.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361245": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDhYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f483cb7a285350a8d5d4d4f242eecca6a234d3b9/OChem_18_EC_034d.jpg\" alt=\"A central oxygen connected to a cyclopentane ring and a t-butyl group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361246": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c6d5646865202a621b31da25b03e6fe8bceb5660/OChem_18_EC_034e.jpg\" alt=\"A cyclohexane with a wedge methoxy and dash hydrogen on one carbon, and on the adjacent (clockwise) carbon, a wedge hydrogen and dash methoxy.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361247": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2cbaeac0866031140045821c23f0d2b850739343/OChem_18_EC_034f.jpg\" alt=\"A cyclohexane with a wedge methoxy and dash hydrogen on one carbon, and on the adjacent (clockwise) carbon, a wedge deuterium and dash hydrogen.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-AP04": {
+      "source_uid": "38737@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "464242",
+        "464243",
+        "464244",
+        "464245"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:464242": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:464243": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:464244": {
+          "skeleton": "\u0000SLOT_0\u0000 ",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:464245": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-AP05": {
+      "source_uid": "38738@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "343831"
+      ],
+      "fields": {
+        "stem:343831": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-AP06": {
+      "source_uid": "38739@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "361249"
+      ],
+      "fields": {
+        "stem:361249": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUlYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--413617dc7c6e97366ffae125e5538f456b8b241a/OChem_18_EC_035.jpg\" alt=\"Reactions alter trans-2-chlorocyclohexanol to 1,2-epoxycyclohexane and cis-2-chlorocyclohexanol isomer to cyclohexanone, each utilizing sodium hydroxide and water.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-AP07": {
+      "source_uid": "38740@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "361254",
+        "361255",
+        "361256",
+        "361257"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361254": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcU1YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--13bae1553d4b3a729171bccc39e106c210dd860e/OChem_18_EC_036a.jpg\" alt=\"Cyclohexyl ethyl ether reacts with hydroiodic acid and water to produce unknown product(s), depicted by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361255": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2d79055cb634c4afd1d58aec8d61fea3bad87d47/OChem_18_EC_036b.jpg\" alt=\"T-butyl phenyl ether reacts with trifluoroacetic acid to produce unknown product(s), depicted by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361256": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6112bf26532a3f3d243e1825a036edd5ad01f057/OChem_18_EC_036c.jpg\" alt=\"Ethyl vinyl ether reacts with hydroiodic acid and water to produce unknown product(s), depicted by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361257": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVlYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2a45edcb0818ae465b9d5f4d49affaa4b3a64909/OChem_18_EC_036d.jpg\" alt=\"Ethyl neopentyl ether reacts with hydroiodic acid and water to produce unknown product(s), depicted by a question mark.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-AP08": {
+      "source_uid": "38741@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "361263",
+        "361264",
+        "361265",
+        "361266",
+        "361267"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361263": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1c63bbf73f5ff3d4b06079de27cfd41c301df0d5/OChem_18_EC_037a.jpg\" alt=\"Cyclohexene reacts with unknown reagent(s) to produce cyclohexyl ethyl ether.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361264": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--44526164beaf1385a020e727e4140291f3ae142b/OChem_18_EC_037b.jpg\" alt=\"Cis-1-methoxy-4-methylcyclohexane reacts with unknown reagent(s) to produce trans-1-bromo-4-methylcyclohexane.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361265": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWtYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4cc849adced344ba57c5bcb010ea1ba36d36cc27/OChem_18_EC_037c.jpg\" alt=\"4-t-butylcyclohexene reacts with unknown reagent(s) to produce cyclohexane with (counterclockwise) wedge hydroxide on C 1, dash hydroxide on C 2, wedge t-butyl on C 4.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361266": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcW9YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fc53992241920aa6cb9e919887df6489341eecf2/OChem_18_EC_037d.jpg\" alt=\"1-hexyne is converted into hexyl methyl ether in the presence of an unknown reactant(s), depicted by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361267": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a925b1d8df8f2b9973466e79f7450c31aad37565/OChem_18_EC_037e.jpg\" alt=\"1-hexyne is converted into 2-methoxyhexane in the presence of an unknown reactant(s), depicted by a question mark.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-AP09": {
+      "source_uid": "38742@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "343853"
+      ],
+      "fields": {
+        "stem:343853": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-AP10": {
+      "source_uid": "38743@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "343855"
+      ],
+      "fields": {
+        "stem:343855": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-AP11": {
+      "source_uid": "38744@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "351626"
+      ],
+      "fields": {
+        "stem:351626": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-AP12": {
+      "source_uid": "38745@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "343859"
+      ],
+      "fields": {
+        "stem:343859": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-AP13": {
+      "source_uid": "38746@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "361272",
+        "361273",
+        "361274",
+        "361275"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b4f11e837606b397ac6509703786d8962ea83a1d/OChem_18_EC_038.jpg\" alt=\"The structure of 2,3-epoxy-3-methylpentane shows a 3-membered ring with oxygen and two carbon atoms, one bonded to hydrogen and methyl, the other to methyl and ethyl groups.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361272": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361273": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361274": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361275": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-AP14": {
+      "source_uid": "38747@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "361277"
+      ],
+      "fields": {
+        "stem:361277": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3e918894c85d1b67d338bde9f5dd005db5fe9ad3/OChem_18_EC_039.jpg\" alt=\"Cyclohexene oxide reacts with lithium aluminum hydride in ether, then hydronium, to form cyclohexanol. \">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-AP15": {
+      "source_uid": "38748@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "347157"
+      ],
+      "fields": {
+        "stem:347157": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-AP16": {
+      "source_uid": "38749@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "347201"
+      ],
+      "fields": {
+        "stem:347201": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<ul style=\"list-style-type:none\">\n<li>\u0000SLOT_1\u0000</li>\n</ul>\n<p>\u0000SLOT_2\u0000</p>",
+          "slots": 3,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-AP17": {
+      "source_uid": "38750@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "361279"
+      ],
+      "fields": {
+        "stem:361279": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--63101273475613aee686626e8d7bf02f4d9ce1eb/OChem_18_EC_040.jpg\" alt=\"Proton N M R with shifts at 1.84 (doublet), 3.76 (singlet), 6.09 and 6.36 (multiplets), 6.82 and 7.23 (doublets). Relative areas are 3.00, 3.00, 1.00, 1.00, 2.00, 2.00 respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-AP18": {
+      "source_uid": "38751@8",
+      "solutions_are_public": false,
+      "question_order": [
+        "361283",
+        "361284",
+        "361285"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361283": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcThYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3c1f7ffa77a90afe403f450616f93847f41a2a1b/OChem_18_EC_041.jpg\" alt=\"Proton N M R with shifts at 0 (T M S), 0.99 (triplet), 1.34 (singlet), and 1.61 (quartet). Relative areas are 1.00, 2.00, and 1.00 respectively.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361284": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBckFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b6ac083306cca391369d592db5537300a425d1fd/OChem_18_EC_042.jpg\" alt=\"Proton N M R with shifts at 2.31 (pentet), 3.58 (triplet), 4.08 (triplet) 6.90 and 7.25 (multiplets). Relative areas are 1.00, 1.00, 1.00, 1.50, and 1.00 respectively.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361285": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2dhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b1fb009b9711f2aa681c12e714e36892f9dc4b35/OSX_OrgChem_18_99_P-C5H1202_img.jpg\" alt=\"Proton N M R with shifts at 0 (T M S), 1.30 and 3.15 (singlets). Relative areas are 3.97 and 4.09 respectively. \">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-GP01": {
+      "source_uid": "38752@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "361290",
+        "361291",
+        "361292",
+        "361293"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361290": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcklYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a148babbd719d13e5fc4f6a7deac025d2b616a50/OChem_18_EC_044a.jpg\" alt=\"Isobutyl phenyl ether reacts with hydrogen bromide to form an unknown product(s) depicted by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361291": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBck1YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f010d5898eeffe7a30148d3e8d3b4f33e467b6ef/OChem_18_EC_044b.jpg\" alt=\"1-bromo-4-methylpentane reacts with thiourea, then sodium hydroxide and water to form an unknown product(s), depicted by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361292": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBclFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e11adb770d5ed732769d0b5ac487d42d56d1f86b/OChem_18_EC_044c.jpg\" alt=\"Cyclopentanethiol reacts in the presence of bromine to form an unknown product(s), depicted by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361293": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBclVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d1b851530d98d5f9d510d9b1df2419cca615a466/OChem_18_EC_044d.jpg\" alt=\"Cyclohexene with ethanethiol on C 4 reacts with hydrogen peroxide and water, to form an unknown product(s), depicted by a question mark.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-GP02": {
+      "source_uid": "38753@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "347161"
+      ],
+      "fields": {
+        "stem:347161": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-GP03": {
+      "source_uid": "38754@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "343893"
+      ],
+      "fields": {
+        "stem:343893": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-GP04": {
+      "source_uid": "38755@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "343895"
+      ],
+      "fields": {
+        "stem:343895": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p style=\"text-align: center\">\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-GP05": {
+      "source_uid": "38756@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "361295"
+      ],
+      "fields": {
+        "stem:361295": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcllYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6965d44433fb948b3c004ff981e6a826b7045911/OChem_18_EC_045.jpg\" alt=\"The structure of safrole is a benzene ring with C 1 connected to C 2 by O C H 2 O, and with an allyl group on C 4.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-GP06": {
+      "source_uid": "38757@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "361297"
+      ],
+      "fields": {
+        "stem:361297": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--601dba8cf8f2698decab5c25dda616d68deebcb8/OChem_18_EC_046.jpg\" alt=\"Oxetane (four-membered ring incorporating one oxygen) reacts with R Mg X, then hydronium, to produce R C H 2 C H 2 C H 2 O H.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-GP07": {
+      "source_uid": "38758@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "343915"
+      ],
+      "fields": {
+        "stem:343915": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-GP08": {
+      "source_uid": "38759@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "351628"
+      ],
+      "fields": {
+        "stem:351628": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-GP09": {
+      "source_uid": "38760@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "343903"
+      ],
+      "fields": {
+        "stem:343903": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-GP10": {
+      "source_uid": "38761@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "361299"
+      ],
+      "fields": {
+        "stem:361299": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3b7dcc9c6461b9648992d3d824a595c42e48c847/OChem_18_EC_047.jpg\" alt=\"O-Hydroxyphenylacetaldehyde has a structure in which a benzene ring has hydroxyl on one carbon, and C H 2 C H O on an adjacent carbon.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-GP11": {
+      "source_uid": "38762@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "361301"
+      ],
+      "fields": {
+        "stem:361301": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmtYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--695662cd8c081289f8cb2b773a66ecaebb284a21/OChem_18_EC_048.jpg\" alt=\"Cyclohexanone is transformed into 1-methylcyclohexanol by reagent a; b and c convert 1-methylcyclohexanol to 1-methylcyclohexene and 1-methyl-1-methoxycyclohexane respectively. D converts 1-methylcyclohexene into 1,2-epoxy-1-methylcyclohexane, which is converted by e into (1S,2S)-1-methylcyclohexan-1,2-diol. \">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-GP12": {
+      "source_uid": "38763@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "361304",
+        "361305"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361304": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcm9YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--128d2deba890a3773e2ba675158cdd40d0b00d9a/OChem_18_EC_049.jpg\" alt=\"Proton N M R with shifts at 0 (T M S), 1.27 (doublet), 3.31 (singlet), and 4.57 (quartet). Relative areas are 3.00, 6.00, and 1.00 respectively.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361305": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcnNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8d730d32f32e5efa6acae5b9da51790544f5793e/OChem_18_EC_050.jpg\" alt=\"Proton N M R with shifts at 3.71 (singlet), 5.17 (doublet), 6.08 (doublet) 7.10 (multiplet), 7.25 (triplet), and 7.55 (multiplet). Relative areas are 3.00, 1.00, 1.00, 1.00, 2.00, 2.00 respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-GP13": {
+      "source_uid": "38764@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "361307"
+      ],
+      "fields": {
+        "stem:361307": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcndYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3a5b3de4f35a7d6ddc1ab69777b48b0be2bc24af/OChem_18_EC_051.jpg\" alt=\"Acetophenone reacts with bromine to yield alpha-bromo acetophenone; subsequent treatment with sodium borohydride results in an epoxide with unknown structure.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-MP01": {
+      "source_uid": "38719@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "361174",
+        "361175"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361174": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0FYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5a70814729485c48025156b1ad26f1de0d2489b0/OChem_18_EC_019b.jpg\" alt=\"2-Ethoxypropane reacts with hydrogen iodide (H I) to form an unknown product(s), depicted with a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361175": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0VYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1045d487dc9c7cca09f452c068b0085721b6575b/OChem_18_EC_019c.jpg\" alt=\"Ethoxybenzene reacts with hydrogen bromide to form an unknown product(s), depicted with a question mark.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-MP02": {
+      "source_uid": "38720@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "361178",
+        "361179"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361178": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0lYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--81a171177d9388d048bd799b93b329cef0526c4d/OChem_18_EC_020a.jpg\" alt=\"Tert-butyl ethyl ether reacts with hydrogen bromide to form an unknown product(s), depicted with a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361179": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb01YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--adb6d947add139cd5e0b0c0ed6e2a0cad87c6a9b/OChem_18_EC_020b.jpg\" alt=\"Tert-butoxybenzene reacts with hydrogen bromide to form an unknown product(s), depicted with a question mark.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-MP03": {
+      "source_uid": "38721@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "361182",
+        "361183"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361182": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1FYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--71b5765cc00f6ebb12c6afb6d120a7f3a34a2bfb/OChem_18_EC_021b.jpg\" alt=\"1-propanol reacts with sodium hydride, then 1-bromopropane to form an unknown product(s), depicted with a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361183": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1VYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--667b7b44b186dd3eda7d7041f14f1fc532153e39/OChem_18_EC_021c.jpg\" alt=\"Cyclopentanol reacts with sodium hydride, then methyl p-toluenesulfonate to form unknown product(s), depicted with a question mark.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-MP04": {
+      "source_uid": "38722@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "361185"
+      ],
+      "fields": {
+        "stem:361185": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1lYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e6b5c9da2fe032e0af15b084a19b07fb54b9e89e/OChem_18_EC_022c.jpg\" alt=\"Ethylidenecyclopentane reacts with mercury(II) trifluoroacetate and ethanol to create an intermediate (I), followed by reaction with sodium borohydride to form an unknown product(s), depicted with a question mark.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-MP05": {
+      "source_uid": "38723@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "361188",
+        "361189"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361188": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2NYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9c2c451ab59286850a1aa613e04a82b84746bc57/OChem_18_EC_023b.jpg\" alt=\"1,2-Epoxy-2-methylcyclohexane reacts with methylmagnesium bromide, then hydronium ion to form an unknown product(s), depicted with a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361189": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2dYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--14f7dd09eb823dafe40852b7e58a1215c07dbb89/OChem_18_EC_023c.jpg\" alt=\"(2S)-ethyloxirane reacts with hydrogen bromide and ether to form an unknown product.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-MP06": {
+      "source_uid": "38724@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "361192",
+        "361193"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361192": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2tYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0ce7e4c0f4dcd14d605c43da8cd84396e59ea6b4/OChem_18_EC_024b.jpg\" alt=\"1,2-Epoxy-2-methylcyclohexane reacts with hydrogen bromide in the presence of ether to form an unknown product(s), depicted with a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361193": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb29YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0c6c969d7dd5952b9ed8b741f869406fcfc1f65d/OChem_18_EC_024c.jpg\" alt=\"Ethylene oxide with one carbon in common with a cyclohexane and a methyl on the other carbon (R configuration) reacts with hydronium to form unknown product(s).\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-MP07": {
+      "source_uid": "38725@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "464283"
+      ],
+      "fields": {
+        "stem:464283": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3NYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1b628e1c9057ad8af2c30c5e2b631cf6d56d3d43/OChem_18_EC_025.jpg\" alt=\"A chemical reaction between two equivalents of phenol and epichlorohydrin with sodium hydroxide and water leads to form an unknown product(s), depicted with a question mark.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-MP08": {
+      "source_uid": "38726@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "361197"
+      ],
+      "fields": {
+        "stem:361197": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3dYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d3e6a4ae19ad8194b1733db55eb24c8bd20af205/OChem_18_EC_026.jpg\" alt=\"Anisole reacts with boron tribromide, then water to form phenol and methyl bromide.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-MP09": {
+      "source_uid": "38727@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "361199"
+      ],
+      "fields": {
+        "stem:361199": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--23862ebc823b4c570e541559da77144e37733e2c/OChem_18_EC_027.jpg\" alt=\"An epoxide ring bonded to two phenyl groups at C 2 reacts with hydronium ion to form an aldehyde product in which C 2 is bonded with two phenyl groups.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-MP10": {
+      "source_uid": "38728@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "361202",
+        "361203"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2d9d103e6ce4e92481f5d554878f7043d4710194/OChem_18_EC_028.jpg\" alt=\"4-trifluoromethylphenol reacts with an alkyl chloride with phenyl and amine groups in potassium hydroxide and D M S O to produce fluoxetine through a series of steps.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361202": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361203": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-MP11": {
+      "source_uid": "38729@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "361205"
+      ],
+      "fields": {
+        "stem:361205": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzhYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3f59b2f898fd9ca6e5d11bf31629fdf1ce2ef4d8/OChem_18_EC_029.jpg\" alt=\"The structure of 2,2-dimethyltetrahydrofuran. It comprises a five-membered ring incorporating one oxygen, connected to two methyl groups at C2.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-MP12": {
+      "source_uid": "38730@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "343773"
+      ],
+      "fields": {
+        "stem:343773": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-MP13": {
+      "source_uid": "38731@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "361207"
+      ],
+      "fields": {
+        "stem:361207": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--49016890f2a607e8c52310b546ce641cf2178fde/OChem_18_EC_030.jpg\" alt=\"A substituted phenol and sutstituted aryl fluoride react in potassium hydride and dimethyl sulfoxide to yield acifluorfen through a series of steps.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-MP14": {
+      "source_uid": "38732@7",
+      "solutions_are_public": false,
+      "question_order": [
+        "361214",
+        "361215"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWthIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--378fd556d3e92646c9f8596462e5456bca49b6c7/OSX_OrgChem_18_99_Ketonetal_img.jpg\" alt=\"A carbonyl and R O H react in acid catalyst to produce a hemiacetal; further reaction produces an acetal and water.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361214": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361215": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-MP15": {
+      "source_uid": "38733@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "361217"
+      ],
+      "fields": {
+        "stem:361217": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcElYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--324104d73aee87bb21e9239f7beaa6395a0a17a1/OChem_18_EC_032.jpg\" alt=\"Two reactants, including a substituted benzene and maleic anhydride, undergo a heat-induced reaction to form a fused cyclohexene-cyclopentane compound with distinct molecular arrangements.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-VC01": {
+      "source_uid": "38715@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "361163",
+        "361164",
+        "361165"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361163": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbm9YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--069dbf15f7ee539949de13acf79b896a687a74c2/OChem_18_EC_015a.jpg\" alt=\"The ball-and-stick model of the compound in which a six-membered ring is bonded with an ethyl group via an ether linkage.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361164": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbnNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ddda9448ac719784adfc1279424ace8483bb9e08/OChem_18_EC_015b.jpg\" alt=\"The ball-and-stick model of the compound in which a six-membered cyclic ring is bonded with an epoxide ring. It has an alkene structure with a carbonyl group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361165": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbndYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--03691183149a23937cdaaf52dea5146bbceff856/OChem_18_EC_015c.jpg\" alt=\"The ball-and-stick model of the compound in which a five-membered cyclic ring is bonded with an ethyl group to which a thiol group is bonded.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-VC02": {
+      "source_uid": "38716@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "361167"
+      ],
+      "fields": {
+        "stem:361167": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--76f26091552f41dc5ff3dbd929e25c5bc62f4565/OChem_18_EC_016.jpg\" alt=\"A ball-and-stick model with a benzene ring linked to an epoxide ring which is connected to hydrogen and two methyl groups on both sides.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-VC03": {
+      "source_uid": "38717@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "361169"
+      ],
+      "fields": {
+        "stem:361169": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--72c3e2e8d48905d415080e1b8f9231ed2485d7b1/OChem_18_EC_017.jpg\" alt=\"The ball-and-stick model of the reactant having a six-membered ring fused with an epoxide ring reacts with methyl magnesium bromide, ether, and hydronium ion. The product is unknown.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18-99-OC-VC04": {
+      "source_uid": "38718@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "361171"
+      ],
+      "fields": {
+        "stem:361171": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjhYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--afa3b0ec598a294581b2d2c21d7bee0c4ce29c13/OChem_18_EC_018.jpg\" alt=\"The ball-and-stick model of cyclopentene ring with double bond at C 1, methyl groups on C 4, and a chain of two methylene groups connecting C 3 and C 5.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18a-04-OC-P01": {
+      "source_uid": "38765@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "361151"
+      ],
+      "fields": {
+        "stem:361151": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d324ffe285f127f2b8a4679129ec22a3c778c859/OChem_18_PCC_017.jpg\" alt=\"The ball-and-stick model in electrostatic potential maps of acetone (ketone) and acetyl chloride (acid chloride). An arrow points toward the carbon atom that is bonded with oxygen.\">"
+          },
+          "wraps": {}
+        },
+        "sol:361151": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "18a-04-OC-P02": {
+      "source_uid": "38766@6",
+      "solutions_are_public": true,
+      "question_order": [
+        "361153"
+      ],
+      "fields": {
+        "stem:361153": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d7c308c5f13f3db2543ff2e12e75f534f5bc4b76/OChem_18_PCC_018.jpg\" alt=\"Acetone reacts with cyanide ion in the first step and hydronium ion in the second step to form an unknown product(s), depicted by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "sol:361153": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa3dhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f2d5066c564faeb764ba68c14bc358b1182d2856/OChem_18_EC_205.jpg\" alt=\"Acetone reacts with cyanide to form an intermediate. This reacts with hydronium ion to form a product in which carbon is linked to hydroxyl, cyano, wedged, and dashed methyl groups.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "18a-04-OC-P03": {
+      "source_uid": "38767@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "361157",
+        "361158",
+        "361159"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361157": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0FYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--05995f472b522862521d7f72072e488928cb1c66/OChem_18_PCC_019a.jpg\" alt=\"Acetyl chloride reacts with ammonia to yield acetamide via nucleophilic acyl substitution.\">"
+          },
+          "wraps": {}
+        },
+        "sol:361157": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361158": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0VYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2ac480f35080cd8637811f89cd149ccd9711df98/OChem_18_PCC_019b.jpg\" alt=\"Acetaldehyde reacts with hydroxylamine to yield acetaldoxime via nucleophilic addition.\">"
+          },
+          "wraps": {}
+        },
+        "sol:361158": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361159": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0lYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ea7b6e8d348e31bd78c9db46da991816c1323238/OChem_18_PCC_019c.jpg\" alt=\"Two molecules of cyclopentanone react with sodium hydroxide to yield a product in which a cyclopentanol ring is bonded with a cyclopentanone ring via carbonyl condensation.\">"
+          },
+          "wraps": {}
+        },
+        "sol:361159": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    }
+  }
+}

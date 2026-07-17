@@ -1,0 +1,2201 @@
+{
+  "generated_by": "exercise-extract.js",
+  "exercises": {
+    "16-01-OC-P01": {
+      "source_uid": "37788@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "339337"
+      ],
+      "fields": {
+        "stem:339337": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:339337": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-02-OC-P02": {
+      "source_uid": "37789@8",
+      "solutions_are_public": true,
+      "question_order": [
+        "361099"
+      ],
+      "fields": {
+        "stem:361099": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:361099": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1VhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--20eed4d698bddb00d62ff1b1c9c39e3ea2a5d629/OSX_OrgChem_16_02_%20A-FTEDABF_img.jpg\" alt=\"Two-step reaction shows benzene reacting with F-T E D A-B F 4. Cation intermediate (fluorine on s p 3 carbon adjacent to carbocation) is deprotonated by base to fluorobenzene.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-02-OC-P03": {
+      "source_uid": "37790@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "342885"
+      ],
+      "fields": {
+        "stem:342885": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:342885": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-02-OC-P04": {
+      "source_uid": "37791@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "339343"
+      ],
+      "fields": {
+        "stem:339343": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:339343": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-03-OC-P05": {
+      "source_uid": "37792@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "350324"
+      ],
+      "fields": {
+        "stem:350324": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000\n<br>\u0000SLOT_2\u0000</p>",
+          "slots": 3,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:350324": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-03-OC-P06": {
+      "source_uid": "37793@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "339355"
+      ],
+      "fields": {
+        "stem:339355": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:339355": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-03-OC-P07": {
+      "source_uid": "37794@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "358919",
+        "358920"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358919": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--edb7825bb1e0ee20c17335a5f0b1ac81e9d1c50d/OChem_16_03_012a.jpg\" alt=\"Benzene is bonded to a three-carbon chain, in which C 1 is a carbonyl group. C 2 is bonded to a methyl group.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358919": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358920": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazhWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a40106bd8dfd2e7cfb4e2d3acd1d5a4b2bb2bcb4/OChem_16_03_012b.jpg\" alt=\"A central carbonyl group is bonded to two benzene rings, one on each side.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358920": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-04-OC-P08": {
+      "source_uid": "37796@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "342889",
+        "342890",
+        "342891"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342889": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:342889": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342890": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:342890": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:342891": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:342891": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-04-OC-P09": {
+      "source_uid": "37797@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "339370",
+        "339371",
+        "339372",
+        "339373"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339370": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:339370": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339371": {
+          "skeleton": " \u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:339371": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339372": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:339372": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339373": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:339373": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-04-OC-P10": {
+      "source_uid": "37798@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "358922"
+      ],
+      "fields": {
+        "stem:358922": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbEFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ce85304ec73cbee5d24693737daedc5306bc1761/OChem_16_04_009.jpg\" alt=\"Benzene reacts with methyl chloride in the presence of aluminum trichloride to form mono and para disubstituted products. Benzene reacts with acetyl chloride in the presence of aluminum trichloride to form only one product.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358922": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-04-OC-P11": {
+      "source_uid": "37799@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "358924"
+      ],
+      "fields": {
+        "stem:358924": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbEVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5c9a74b1c41bc1dc746dc920c591074b5a821218/OChem_16_04_010.jpg\" alt=\"Electrostatic potential maps constituting the ball-and-stick models of (trifluoromethyl)benzene and toluene show redness around fluorine atoms and in the ring region, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358924": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-04-OC-P12": {
+      "source_uid": "37800@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "358926"
+      ],
+      "fields": {
+        "stem:358926": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbElWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7c7d49c3891c4d2ec44b347628c77f687e631904/OChem_16_04_013.jpg\" alt=\"Acetanilide has benzene ring bonded to an N H group. The nitrogen atom is bonded to the carbonyl group which, in turn, is bonded to a methyl group.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358926": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-04-OC-P13": {
+      "source_uid": "37795@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "339381"
+      ],
+      "fields": {
+        "stem:339381": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:339381": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-05-OC-P14": {
+      "source_uid": "37801@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "358930",
+        "358931",
+        "358932"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358930": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbE1WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--893ed79a54ea61e1a84ee7387b9302069556f2ec/OChem_16_05_005a.jpg\" alt=\"In a benzene ring, C 1 and C 3 are bonded to a bromine atom and a methoxy group, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358930": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358931": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ee1adb75bd4ef136dbc1ecbaa6b159b5416e5e3f/OChem_16_05_005b.jpg\" alt=\"In a benzene ring, C 1 and C 2 are bonded to a bromine atom and an amino group, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358931": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358932": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1c7893d73d8414cafae1397e92e8f4a93a582797/OChem_16_05_005c.jpg\" alt=\"In a benzene ring, C 1 and C 2 are bonded to a chlorine atom and a nitro group, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358932": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-05-OC-P15": {
+      "source_uid": "37802@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "358935",
+        "358936"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358935": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFlWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c8fafeafa9905ce5a0bca031e056f2b875060bac/OChem_16_05_006a.jpg\" alt=\"The ball-and-stick model has a benzene ring. C 1 is bonded to a large red sphere. C 2 is bonded to a methyl group.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358935": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358936": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6519662c07cd49d4ac9224bd8a2add01f0e32f70/OChem_16_05_006b.jpg\" alt=\"The ball-and-stick model has a benzene ring. C 1 is bonded to a small red sphere, which is bonded to a methyl group. C 2 is bonded to methyl group.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358936": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-06-OC-P16": {
+      "source_uid": "37803@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "358938"
+      ],
+      "fields": {
+        "stem:358938": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e8a8dfe76688f3d47a9482f2fe92bdc9ae45f6d1/OChem_16_06_006.jpg\" alt=\"A substituted phenol and a substituted aryl fluoride react with each other in the presence of potassium hydroxide to form oxyfluorfen where the two starting materials are joined to one another by an oxygen atom.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358938": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-07-OC-P17": {
+      "source_uid": "37804@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "339395"
+      ],
+      "fields": {
+        "stem:339395": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:339395": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-08-OC-P18": {
+      "source_uid": "37805@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "358941",
+        "358942"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358941": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGtWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ba8ed623b272d11ecef796c2aa3ed9081d6f6a11/OChem_16_08_005a.jpg\" alt=\"In a benzene ring, C 1 is bonded to C H (C H 3) 2 group and C 3 is bonded to a nitro group.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358941": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358942": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbG9WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a375b3a36ee99ccbf7ef89ca97aa818150b16d66/OChem_16_08_005b.jpg\" alt=\"In a benzene ring, C 1 is bonded to C (C H 3) 3 group. C 4 is bonded to a methyl group.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358942": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-08-OC-P19": {
+      "source_uid": "37806@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "351600"
+      ],
+      "fields": {
+        "stem:351600": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:351600": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-08-OC-P20": {
+      "source_uid": "37807@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "358944"
+      ],
+      "fields": {
+        "stem:358944": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--68d37e86469eb3d42191fa8c1bfd3b18359f12db/OChem_16_08_009.jpg\" alt=\"Styrene has a benzene ring. C 1 attached to an ethene group.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358944": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-09-OC-P21": {
+      "source_uid": "37808@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "351819"
+      ],
+      "fields": {
+        "stem:351819": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:351819": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-10-OC-P22": {
+      "source_uid": "37809@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "339410",
+        "339411",
+        "339412",
+        "339413"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339410": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:339410": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339411": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:339411": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339412": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:339412": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339413": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:339413": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-10-OC-P23": {
+      "source_uid": "37810@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "358947",
+        "358948"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358947": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--300fe7b89497254aee54a90e51fd310acb5f6a7d/OChem_16_10_011a.jpg\" alt=\"Benzonitrile reacts with propanoyl chloride in the presence of aluminum trichloride followed by nitric acid in the presence of sulfuric acid to form a trisubstituted benzene ring bearing a cyano, a nitro, and an acyl group.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358947": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358948": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDBWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--72f55eef255648ea1e379682b06aa96cb32adb02/OChem_16_10_011b.jpg\" alt=\"Chlorobenzene reacts with 1-chloropropane in the presence of aluminum trichloride in step 1 and chlorine in the presence of iron trichloride in step 2 to form a trisubstituted benzene bearing two chloro groups and a propyl group.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358948": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP01": {
+      "source_uid": "37833@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358992",
+        "358993",
+        "358994",
+        "358995"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358992": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dac8958b7f27ef40afe92f7411f99d8a0f1fc2e0/OChem_16_EC_033a.jpg\" alt=\"The structure of a group where N H (C H 3) 2 is bonded to an open single bond that has a wavy line across it.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358993": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbklWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5fa85b3e5a1e4f0fa6bb419a439c80c1680155b5/OChem_16_EC_033b.jpg\" alt=\"The structure of a group where cyclopentane ring is bonded to an open single bond that has a wavy line across it.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358994": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbk1WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1c91f32c8f76a2d888a5f3f7935e2cd2d329280d/OChem_16_EC_033c.jpg\" alt=\"The structure of a group where O C H 2 C H 3 is bonded to an open single bond that has a wavy line across it.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358995": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8941d3dc280ab8b4dfa113f87f33e4ae0af8984d/OChem_16_EC_033d.jpg\" alt=\"A cyclohexane ring bonded to a carbonyl group. The carbonyl carbon is bonded to an open single bond that has a wavy line across it.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP02": {
+      "source_uid": "37834@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "464166",
+        "464167",
+        "464168",
+        "464169",
+        "464170",
+        "464171"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:464166": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:464167": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:464168": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:464169": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:464170": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:464171": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP03": {
+      "source_uid": "37835@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339492",
+        "339493",
+        "339494",
+        "339495"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339492": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339493": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339494": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339495": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP04": {
+      "source_uid": "37836@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339504",
+        "339505",
+        "339506",
+        "339507",
+        "339508",
+        "339509",
+        "339510",
+        "339511"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339504": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339505": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339506": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339507": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339508": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339509": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339510": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339511": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP05": {
+      "source_uid": "37837@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339516",
+        "339517",
+        "339518",
+        "339519"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339516": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339517": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339518": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339519": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP06": {
+      "source_uid": "37838@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339524",
+        "339525",
+        "339526",
+        "339527"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339524": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339525": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339526": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339527": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP07": {
+      "source_uid": "37839@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339534",
+        "339535",
+        "339536",
+        "339537",
+        "339538",
+        "339539"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339534": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339535": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339536": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339537": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339538": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339539": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP08": {
+      "source_uid": "37840@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "359000",
+        "359001",
+        "359002",
+        "359003"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359000": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c5e825df1e7921f7087f914373d22562789fa120/OChem_16_EC_034a.jpg\" alt=\"Benzene with an acyl group and a nitro group ortho to one another reacts with hydrogen in the presence of a palladium catalyst to form unknown product(s), depicted by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359001": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbllWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4919a56a40693a5c00402ec251e965784c8edadc/OChem_16_EC_034b.jpg\" alt=\"ortho-Dibromobenzene reacts with nitric acid in the presence of sulfuric acid followed by iron and actd forming unknown product(s), depicted by a question mark\">"
+          },
+          "wraps": {}
+        },
+        "stem:359002": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--95904b7991d49b014135a33559683fcf021e23f0/OChem_16_EC_034c.jpg\" alt=\"In water, benzene fused to a cyclohexane ring reacts with potassium permanganate to form unknown product(s), depicted by question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359003": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ff7ce265de5319dc541f88c1a2531a4b2b3df693/OChem_16_EC_034d.jpg\" alt=\"Benzene bonded to a methoxy group and a chlorine atom para to one another reacts with propyl chloride in the presence of aluminum trichloride to form unknown product(s), depicted by question mark.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP09": {
+      "source_uid": "37841@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "359010",
+        "359011",
+        "359012",
+        "359013"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359010": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmtWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--da3170e3c2b918ce6af0483f8967b9ab3fc81757/OChem_16_EC_035a.jpg\" alt=\"Chlorobenzene reacts with ethyl chloride in the presence of aluminum trichloride to form unknown product(s), depicted by question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359011": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbm9WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7be50583efaba8612bdd3ca860c47e8f65195370/OChem_16_EC_035b.jpg\" alt=\"A compound containg an oxygen atom bonded to two benzene rings reacts with propanoyl chloride in the presence of aluminum trichloride to form unknown product(s), depicted by question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359012": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbnNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b0b184549f25d11a0aea7cfd27dd4323b62c0568/OChem_16_EC_035c.jpg\" alt=\"Benzoic acid reacts with nitric acid in the presence of sulfuric acid to form unknown product(s), depicted by question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359013": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbndWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--14ae0cc184ef740472a7b7915d607d6dd60c78a5/OChem_16_EC_035d.jpg\" alt=\"Benzene bonded to N (C H 2 C H 3) 2 reacts with sulfur trioxide in presence of sulfuric acid to form unknown product(s), depicted by question mark.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP10": {
+      "source_uid": "37842@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339560",
+        "339561",
+        "339562",
+        "339563"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339560": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339561": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339562": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339563": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP11": {
+      "source_uid": "37843@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339568",
+        "339569",
+        "339570",
+        "339571"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339568": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339569": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339570": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339571": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP12": {
+      "source_uid": "37844@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339576",
+        "339577",
+        "339578",
+        "339579"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339576": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339577": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339578": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:339579": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP13": {
+      "source_uid": "37845@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "359017",
+        "359018",
+        "359019"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359017": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjBWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--10f5e2679744ed2d483fc1c0948a740cf4d59a16/OChem_16_EC_036a.jpg\" alt=\"Toluene reacts with chlorine in the presence of iron trichloride in step 1 and potassium permanganate in step 2 to form benzoic acid with chlorine atom at C 3.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359018": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--520ad477346bd2b64805436c1c34f58302fe2461/OChem_16_EC_036b.jpg\" alt=\"Chlorobenzene reacts with nitric acid in sulfuric acid, followed by methyl chloride and aluminum trichloride, then iron and acid, and finally sodium hydroxide in water to form a substituted benzene.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359019": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjhWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f825ed34bfcf7a6c005f46198790bac28a8bbbfe/OChem_16_EC_036c.jpg\" alt=\"Toluene reacts with acetyl chloride in the presence of aluminum trichloride, then with nitric acid in the presence of sulfuric acid, then hydrogen and a palladium catalyst to form a substituted benzene.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP14": {
+      "source_uid": "37846@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "359021"
+      ],
+      "fields": {
+        "stem:359021": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0FWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--23d1eac0e4450360e3aa0665e8dc437bd66f8ba9/OChem_16_EC_037.jpg\" alt=\"4-Bromobiphenyl has a benzene ring bonded to a second benzene ring bearing a bromine atom in the para position.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP15": {
+      "source_uid": "37847@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "359023"
+      ],
+      "fields": {
+        "stem:359023": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0VWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cab8174a6289bc3e209df0d1958258eb1cfdb449/OChem_16_EC_038.jpg\" alt=\"The structures of 3-phenylpropanenitrile and 3-phenylpropenenitrile.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP16": {
+      "source_uid": "37848@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359028",
+        "359029",
+        "359030",
+        "359031"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359028": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0lWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8c848d3bfda9b2b478c5a1aa61a4a4897a9ff3b7/OChem_16_EC_039a.jpg\" alt=\"A molecule in which a central oxygen atom is bonded to a benzene ring and and a second benzene ring bearing a methyl group in the para position\">"
+          },
+          "wraps": {}
+        },
+        "stem:359029": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb01WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--96f25f72149538c111f92e6f84289eb8aa253171/OChem_16_EC_039b.jpg\" alt=\"A molecule in which a central N H group is bonded to a benzene ring and a second benzene ring bearing a bromine atom in the para position\">"
+          },
+          "wraps": {}
+        },
+        "stem:359030": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1FWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9390a39b542f63801a924343a4c4507967d49466/OChem_16_EC_039c.jpg\" alt=\"A molecule in which a benzene ring is bonded to a second benzene ring bearing a methyl group in the meta position.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359031": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1VWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bbcae8cb5ee82188c847bfb33d33839396adb920/OChem_16_EC_039d.jpg\" alt=\"A molecule in which a central carbonyl group is bonded to a benzene ring and to a meta-substituted chlorobenzene ring.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP17": {
+      "source_uid": "37849@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "359033"
+      ],
+      "fields": {
+        "stem:359033": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1lWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ea436a65daa153d8ff03ae0419da948ac98159b7/OChem_16_EC_040.jpg\" alt=\"Benzanilide has a benzene ring bonded to a carbonyl group, which is bonded to an N H group. The nitrogen of N H group is bonded to another benzene ring.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP18": {
+      "source_uid": "37850@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339601"
+      ],
+      "fields": {
+        "stem:339601": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP19": {
+      "source_uid": "37851@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359037",
+        "359038",
+        "359039"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359037": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2NWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--af8a7730e66daad27f66cc50c8a11d23041b2291/OChem_16_EC_041a.jpg\" alt=\"A benzene ring with an ethene group and a chlorine atom para to one another\">"
+          },
+          "wraps": {}
+        },
+        "stem:359038": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2dWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--df7d7fb2ab58cc5db2e4632975bf84da4225af8c/OChem_16_EC_041b.jpg\" alt=\"A benzene ring with two hydroxymethyl groups para to one another\">"
+          },
+          "wraps": {}
+        },
+        "stem:359039": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2tWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d186fb3d46bce6bbd3a6cdd98aa10526640a55ea/OChem_16_EC_041c.jpg\" alt=\"A benzene ring, with a 2-carbon chain attached to it, the othermost carbon of which is itself attached to a hydroxyl group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP20": {
+      "source_uid": "37852@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "359041"
+      ],
+      "fields": {
+        "stem:359041": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb29WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7ea97c517fe93bcf812015a2b51cc55555b6abd8/OChem_16_EC_042.jpg\" alt=\"MON-0585 has a central carbon bonded to a benzene ring, two methyl groups, and a phenol group, in which the two carbons next to the O H are each bonded to a tertiaru butyl group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP21": {
+      "source_uid": "37853@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339611"
+      ],
+      "fields": {
+        "stem:339611": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP22": {
+      "source_uid": "37854@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "359043"
+      ],
+      "fields": {
+        "stem:359043": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3NWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e6b6cb9519d8f12e508f4117883b1f11b4d85ea5/OChem_16_EC_043.jpg\" alt=\"Naphthalene reacts with molecular bromine to form 1-bromonaphthalene.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP23": {
+      "source_uid": "37855@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359045"
+      ],
+      "fields": {
+        "stem:359045": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3dWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--09fce261591ecd75c189b5ed56cc89e3667f90ca/OChem_16_EC_044.jpg\" alt=\"1-Chloroanthraquinone reacts with methoxide ion to yield 1-methoxyanthraquinone and sodium chloride.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP24": {
+      "source_uid": "37856@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339617"
+      ],
+      "fields": {
+        "stem:339617": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP25": {
+      "source_uid": "37857@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "359047"
+      ],
+      "fields": {
+        "stem:359047": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzBWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--db1cfb4148132fed456dcca2be4f4c01973ad68b/OChem_16_EC_045.jpg\" alt=\"Benzene reacts with a five-membered ring compound made up of one oxygen and four carbons with two methyl groups on each of the two carbons next to the O atom. A fused product is formed.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP26": {
+      "source_uid": "37858@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359050",
+        "359051"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359050": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2acd000767af0b868ca6f1a0687495389c8b5b65/OChem_16_EC_046a.jpg\" alt=\"A toluene ring with bromine at C 2 and a nitro group at C 4.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359051": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzhWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--afefc312d242d1e8b89ebf36d8e903a0ece14b00/OChem_16_EC_046b.jpg\" alt=\"Benzene with C 1, C 2, and C 4 bonded to a sulfonic acid group, a 3-carbon chain with a methyl group at C 2, and a chlorine atom, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP27": {
+      "source_uid": "37859@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359053"
+      ],
+      "fields": {
+        "stem:359053": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d6b978825702989516c4e85f156a1ddd9bdcee30/OChem_16_EC_047.jpg\" alt=\"Methoxy benzene with ethene group at the para position and nitrobenzene with an ethene at the para position.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP28": {
+      "source_uid": "37860@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "359055"
+      ],
+      "fields": {
+        "stem:359055": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4bfcdbf95919ca7cb05c182624cacec38df6a639/OChem_16_EC_048.jpg\" alt=\"Structures of aniline, bromobenzene, and 4-bromoaniline with dipole moment values equal 1.53, 1.52, and 2.91 D, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP29": {
+      "source_uid": "37861@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "359058"
+      ],
+      "fields": {
+        "stem:359058": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcElWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6f2704cfd068ddadef410b441b8964020e2b3047/OChem_16_EC_049.jpg\" alt=\"A five-step process converting benzene to a product comprising of a benzene ring with a three carbob chain in which there is a double bond between C 1 and C 2. The steps are labeled from a to e.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP30": {
+      "source_uid": "37862@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339631"
+      ],
+      "fields": {
+        "stem:339631": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP31": {
+      "source_uid": "37863@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "351604"
+      ],
+      "fields": {
+        "stem:351604": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-AP32": {
+      "source_uid": "37864@6",
+      "solutions_are_public": false,
+      "question_order": [
+        "374671",
+        "374672",
+        "374673",
+        "374674"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:374671": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcE1WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a4ab6e895799627125c43c39007b7e2cf4830833/OChem_16_EC_050a.jpg\" alt=\"Benzene bonded to acetyl group reacts with nitric acid in the presence of sulfuric acid to form unknown product(s), depicted by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:374672": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3NiIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c5ac9c7c60d41a5bb82ec10a8ccebbebbbe7a09b/OChem_16_EC_050b.jpg\" alt=\"Toluene reacts with 2-chloropropane in the presence of aluminum trichloride to form unknown product(s), depicted by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:374673": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3diIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e742c1dd8f2e81abd1d11985bd18e81b4dc8b5b3/OChem_16_EC_050c.jpg\" alt=\"Benzene bonded to a cyano group reacts with C I 2 in the presence of iron trichloride to form unknown products, depicted by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:374674": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFlWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dfc4de03294eef314ccbf8854c85503c7ba65cb8/OChem_16_EC_050d.jpg\" alt=\"Benzene bonded to a methoxy group reacts with iodine in the presence of copper (2) chloride to form unknown product(s), depicted by a question mark.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-MP01": {
+      "source_uid": "37815@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339429"
+      ],
+      "fields": {
+        "stem:339429": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-MP02": {
+      "source_uid": "37816@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339431"
+      ],
+      "fields": {
+        "stem:339431": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-MP03": {
+      "source_uid": "37817@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339433"
+      ],
+      "fields": {
+        "stem:339433": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-MP04": {
+      "source_uid": "37818@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339435"
+      ],
+      "fields": {
+        "stem:339435": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\mathop {\\rm{N}}\\limits^ +\"></span>"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-MP05": {
+      "source_uid": "37819@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339437"
+      ],
+      "fields": {
+        "stem:339437": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{=}\"></span>",
+            "1": "<span data-math=\"\\text{=}\"></span>"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-MP06": {
+      "source_uid": "37820@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358960"
+      ],
+      "fields": {
+        "stem:358960": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbU1WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--27b47b9db3c1734c5e3e9d57ce3e40f04e5149ff/OChem_16_EC_021.jpg\" alt=\"Benzene reacts with chloroform in the presence of aluminum trichloride to yield triphenylmethane.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-MP07": {
+      "source_uid": "37821@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358962"
+      ],
+      "fields": {
+        "stem:358962": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2abfde70afbb60ebfe9f67e719e78e20caa2d26f/OChem_16_EC_022.jpg\" alt=\"Biphenyl has a benzene ring bonded to another benzene ring.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-MP08": {
+      "source_uid": "37822@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358964"
+      ],
+      "fields": {
+        "stem:358964": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--58637bc70e0c65e557314a32b886971a2c21a093/OChem_16_EC_023.jpg\" alt=\"Benzene reacts with hydrogen peroxide in the presence of trifluoromethanesulfonic acid catalyst to form phenol.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-MP09": {
+      "source_uid": "37823@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358966"
+      ],
+      "fields": {
+        "stem:358966": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVlWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dfc89e81639fa62c0de0d489d710ca51093dbda4/OChem_16_EC_024.jpg\" alt=\"Benzene bonded to a three-carbon chain with double bond between C 1 and C 2 reacts with hydrogen bromide to form a product when bromine is added to C1 of the three-carbon chain\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-MP10": {
+      "source_uid": "37824@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358968"
+      ],
+      "fields": {
+        "stem:358968": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e5d6173f8ec1cb15df99078baa922975ae0adbd3/OChem_16_EC_025.jpg\" alt=\"Benzene bonded to three chlorine atoms and a hydroxyl group reacts with formaldehyde in the presence of sulfuric acid to form hexachlorophene.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-MP11": {
+      "source_uid": "37825@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358970"
+      ],
+      "fields": {
+        "stem:358970": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n<p>\u0000SLOT_2\u0000</p>",
+          "slots": 3,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8904ba8bbb96391cc1787f3591c46ba8773e298b/OChem_16_EC_026.jpg\" alt=\"When heated, benzenediazonium carboxylate reacts with furan to yield an organic product, carbon dioxide, and nitrogen.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-MP12": {
+      "source_uid": "37826@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358973"
+      ],
+      "fields": {
+        "stem:358973": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWtWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5b3dd7b896069a4f47122b1863ad58f9414a17ee/OChem_16_EC_027.jpg\" alt=\"4-Chloropyridine reacts with dimethylamine to yield 4-dimethylaminopyridine and hydrogen chloride.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-MP13": {
+      "source_uid": "37827@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358975"
+      ],
+      "fields": {
+        "stem:358975": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbW9WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--27b097ed06601bdadcbdf106875d921311960b7d/OChem_16_EC_028.jpg\" alt=\"Benzene bonded to acetyl group at C 1 and a 4-carbon chain with terminal carbon bonded to chlorine reacts with aluminum chloride to form a product.where the 4-carbon chain is cyclized on to the benzene ring\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-MP14": {
+      "source_uid": "37828@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358977"
+      ],
+      "fields": {
+        "stem:358977": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1fd2186ec584f94e24be84a89b804d6d5a4f72b1/OChem_16_EC_029.jpg\" alt=\"Toluene reacts with carbon monoxide and hydrogen chloride in the presence of copper (1) chloride or aluminum trichloride to form toluene with an aldehyde group in the para position.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-MP15": {
+      "source_uid": "37829@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "339457"
+      ],
+      "fields": {
+        "stem:339457": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-MP16": {
+      "source_uid": "37830@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358979"
+      ],
+      "fields": {
+        "stem:358979": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--02056e81ab49c20079571fa69cd18900105b2a74/OChem_16_EC_030.jpg\" alt=\"A two-step reaction shows benzene bonded to a C H 2 B r group being converted to benzene bonded to an aldehyde group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-MP17": {
+      "source_uid": "37831@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358981"
+      ],
+      "fields": {
+        "stem:358981": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTBWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8653a2187c83ba37a53ab523bf5e7e3d9011596c/OChem_16_EC_031.jpg\" alt=\"When heated, pyridine with a nitro group at C 2 and, at C 5, an oxygen bonded to ethylamine reacts to form a product where the substituent at C 5 rearranges.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-MP18": {
+      "source_uid": "37832@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "358985",
+        "358986",
+        "358987"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358985": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cc8920ec60997e98f8ec38759dd1fdeac065b5f3/OChem_16_EC_032a.jpg\" alt=\"Benzene bonded to nitrogen with two open single bonds reacts with benzene bonded to S O 3 N a and to N triple bonded to N with a plus charge on the first N, forming methyl orange.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358986": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbThWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--af568efde7e384520d0e6dd81ea05d41b6022a8c/OChem_16_EC_032b.jpg\" alt=\"A disubstituted napthalene reacts with a diazo compound to form Allura Red.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358987": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--88f00510aa0bbedbf27894454847e4e6c587469f/OChem_16_EC_032c.jpg\" alt=\"A disubstituted napthalene reacts with a diazo compound to form Lithol Rubine BK..\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-VC01": {
+      "source_uid": "37811@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358951",
+        "358952"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358951": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7b0ab22a2bcdbf684f58bf7194c940c21b6e282e/OChem_16_EC_017a.jpg\" alt=\"The ball-and-stick model has a benzene ring bonded to an oxygen atom, which is bonded to a methyl group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358952": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDhWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--be72865972677bc8d31a43d646699c6ad5d9ff18/OChem_16_EC_017b.jpg\" alt=\"The ball-and-stick model has a benzene ring. C 1 is bonded to an aldehyde group. C 4 is bonded to a methyl group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-VC02": {
+      "source_uid": "37812@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358954"
+      ],
+      "fields": {
+        "stem:358954": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3a0c1ecc96ec968772ff836282997452334bb93b/OChem_16_EC_018.jpg\" alt=\"The ball-and-stick model has two benzene rings bonded to each other. Each benzene ring also has an ortho methyl group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-VC03": {
+      "source_uid": "37813@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358956"
+      ],
+      "fields": {
+        "stem:358956": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4c923bedd2ae56cf41b55dd9615cbbf19806ac46/OChem_16_EC_019.jpg\" alt=\"The ball-and-stick model has a benzene ring. C 1 is bonded to a carboxylic acid group. C 4 is bonded to an amino group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "16-99-OC-VC04": {
+      "source_uid": "37814@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358958"
+      ],
+      "fields": {
+        "stem:358958": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUlWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--21f99fa66a816a11efd21b4a4028fa33ca6f9460/OChem_16_EC_020.jpg\" alt=\"The ball-and-stick model has a toluene ring. C 3 is bonded to an amino group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    }
+  }
+}
