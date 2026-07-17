@@ -196,6 +196,24 @@ autosave tick. → campaign register.
 - F15's test stays green (same-second tie → higher id, both created same
   second).
 
+#### Amendment (2026-07-17, final review)
+
+The "all winners are overlaid on the file" sentence above (and the invariant
+"the faithful file equals *newest approved content per segment*") is
+**superseded**. Winner selection still spans **all** `status='approved'` rows —
+that is what supersedes an older late approval (I12-R5) — but the FILE overlay
+writes **only the winners whose `applied_at` is still null** (the newly-applied
+work). Overlaying already-applied winners silently reverted Unit-1 "Saga útgáfa"
+restores (`contentVersionService.restoreVersion` rewrites the faithful file
+without touching `segment_edits`) and manual faithful-file fixes on every
+subsequent apply, with no neutralization path (`unapproveEdit` refuses applied
+edits). Corrected invariant: **the faithful file equals its own already-applied
+baseline for untouched segments, with each segment's newest *not-yet-applied*
+approved edit overlaid.** `appliedCount` = newly-applied winners (unchanged); the
+step-5b sample-verify samples from newly-applied winners only, skipping the
+in-file check when there are none. (Final-review finding, lead-adjudicated
+2026-07-17.)
+
 ### `approveEdit` guard
 
 - Before approving, if a **newer approved** edit (comparator; applied or not)

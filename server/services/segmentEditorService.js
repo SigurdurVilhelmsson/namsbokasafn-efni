@@ -800,8 +800,16 @@ const MAX_APPLY_RETRIES = 1;
 
 /**
  * Apply all approved (and not yet applied) edits for a module to the
- * 03-faithful-translation/ segment file. Starts from MT output as the base text
- * and overlays every approved edit.
+ * 03-faithful-translation/ segment file. Starts from the current baseline
+ * (faithful file if present, else MT output) and overlays each segment's
+ * newest approved edit that has not yet been applied.
+ *
+ * Contract (final review, 2026-07-17): already-applied content is the file's
+ * own; deliberate file-side changes (a "Saga útgáfa" restore, a manual
+ * faithful-file fix) must stick — apply only imposes newly-approved work.
+ * Winner selection still spans ALL approved rows so a late older approval is
+ * superseded rather than published (I12-R5), but the FILE overlay writes only
+ * the winners whose applied_at is still null.
  *
  * @param {string} book - Book slug
  * @param {number} chapter - Chapter number
@@ -938,12 +946,22 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
       }
     }
 
-    // 4. Build the full segment list: approved content overrides existing IS content
+    // 4. Build the full segment list. Overlay ONLY winners that are not yet
+    // applied (the newly-approved work this apply publishes). Already-applied
+    // content is the file's own: deliberate file-side changes (a "Saga útgáfa"
+    // restore via contentVersionService.restoreVersion, or a manual faithful-file
+    // fix) rewrite the file WITHOUT touching segment_edits and have no
+    // neutralization path (unapproveEdit refuses applied edits), so re-imposing
+    // an already-applied winner would silently revert them on every subsequent
+    // apply. Apply only imposes newly-approved work; already-applied segments
+    // keep seg.is (the current file baseline). (Winner selection still spans ALL
+    // approved rows above — that's what supersedes an older late approval, I12-R5.)
     const segments = data.segments.map((seg) => {
-      const approved = approvedLookup[seg.segmentId];
+      const winner = approvedLookup[seg.segmentId];
+      const overlay = winner && winner.applied_at === null;
       return {
         segmentId: seg.segmentId,
-        content: approved ? approved.edited_content : seg.is,
+        content: overlay ? winner.edited_content : seg.is,
       };
     });
 
@@ -980,8 +998,12 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
     if (written.length === 0) {
       throw new Error(`Faithful file written but empty: ${savedPath}`);
     }
-    // Verify at least one approved edit's content appears in the file
-    const sampleEdit = Object.values(approvedLookup)[0];
+    // Verify at least one NEWLY-APPLIED edit's content appears in the file.
+    // Sample only from newly-applied winners — an apply that overlays nothing
+    // (every winner already applied; the run just rewrote identical baseline
+    // content, or the file was restored out-of-band) has no content to look
+    // for, so skip the check rather than false-warn on a restored segment.
+    const sampleEdit = Object.values(approvedLookup).find((e) => e.applied_at === null);
     const sampleText = sampleEdit?.edited_content || '';
     if (sampleText && !written.includes(sampleText.substring(0, Math.min(50, sampleText.length)))) {
       log.warn(

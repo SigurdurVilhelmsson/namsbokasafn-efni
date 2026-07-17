@@ -1230,6 +1230,45 @@ describe('applyApprovedEdits — integration', () => {
     expect(service.getEditById(newer.id).status).toBe('approved');
   });
 
+  it('a restore/manual faithful-file fix is not re-clobbered by a later apply on another segment (overlay only newly-applied winners)', () => {
+    // Segment S (fs-id001): approve + apply an edit via the API — the faithful
+    // file now holds its content and the edit is applied (applied_at set).
+    saveAndApprove('m00001:para:fs-id001', 'Samþykkt S-efni.');
+    service.applyApprovedEdits('testbook', 1, 'm00001');
+    expect(readFaithful()['m00001:para:fs-id001']).toBe('Samþykkt S-efni.');
+
+    // Simulate a "Saga útgáfa" restore / manual faithful-file fix: rewrite S's
+    // content directly in the file. contentVersionService.restoreVersion (and a
+    // hand edit) rewrite the faithful file WITHOUT touching segment_edits, so
+    // S's edit stays status='approved', applied_at set — there is no
+    // neutralization path (unapproveEdit refuses applied edits).
+    const faithfulPath = join(
+      tmpDir,
+      'books',
+      'testbook',
+      '03-faithful-translation',
+      'ch01',
+      'm00001-segments.is.md'
+    );
+    const restored = segmentParser.parseSegments(readFileSync(faithfulPath, 'utf-8')).map((s) => ({
+      segmentId: s.segmentId,
+      content: s.segmentId === 'm00001:para:fs-id001' ? 'Endurheimt S-efni.' : s.content,
+    }));
+    segmentParser.saveModuleSegments('testbook', 1, 'm00001', restored);
+    expect(readFaithful()['m00001:para:fs-id001']).toBe('Endurheimt S-efni.');
+
+    // Now approve + apply a NEW edit on a DIFFERENT segment T (fs-id002).
+    saveAndApprove('m00001:para:fs-id002', 'Samþykkt T-efni.');
+    const result = service.applyApprovedEdits('testbook', 1, 'm00001');
+    expect(result.appliedCount).toBe(1); // only T's newly-applied winner counts
+
+    const faithful = readFaithful();
+    // T's newly-approved edit landed…
+    expect(faithful['m00001:para:fs-id002']).toBe('Samþykkt T-efni.');
+    // …and S's restored text is NOT re-imposed from S's already-applied winner.
+    expect(faithful['m00001:para:fs-id001']).toBe('Endurheimt S-efni.');
+  });
+
   it('apply is convergent: preview and file agree after any approval order', () => {
     const a = service.saveSegmentEdit({
       book: 'testbook',
