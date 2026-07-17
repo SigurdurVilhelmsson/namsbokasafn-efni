@@ -92,3 +92,60 @@ describe('saveRetry factory smoke (behavior-preserving refactor)', () => {
     expect(h.queue()).toEqual([]);
   });
 });
+
+describe('saveRetry stale-replay cancellation (finding 8)', () => {
+  it('a successful save purges an earlier failed save queued under the same key', async () => {
+    const h = makeHarness();
+    h.setFetchScript([h.fail500(), h.ok()]);
+    await h.sr.attempt('seg:k1', '/api/x', { method: 'POST', body: 'OLD' }).catch(() => {});
+    expect(h.queue()).toHaveLength(1);
+
+    await h.sr.attempt('seg:k1', '/api/x', { method: 'POST', body: 'NEW' });
+    expect(h.queue()).toEqual([]); // entry purged
+    expect(h.timers.size).toBe(0); // timer cancelled
+
+    await h.fireAllTimers(); // nothing scheduled — the stale body can never replay
+    expect(h.fetchCalls.filter((c) => c.options.body === 'OLD')).toHaveLength(1); // only the original attempt
+  });
+
+  it('a firing timer aborts silently when its entry was removed (cross-tab success)', async () => {
+    const h = makeHarness();
+    h.setFetchScript([h.fail500()]);
+    await h.sr.attempt('seg:k1', '/api/x', { method: 'POST', body: 'OLD' }).catch(() => {});
+    expect(h.timers.size).toBe(1);
+
+    h.store.delete('saveRetryQueue'); // another tab's success cleared storage
+    const callsBefore = h.fetchCalls.length;
+    await h.fireAllTimers();
+    expect(h.fetchCalls.length).toBe(callsBefore); // no replay fetch
+    expect(h.toasts.filter((t) => t.type === 'error').length).toBe(1); // only the original failure toast
+  });
+
+  it('a newer failed save replaces the entry AND cancels the old timer (one live timer per key)', async () => {
+    const h = makeHarness();
+    h.setFetchScript([h.fail500(), h.fail500(), h.ok()]);
+    await h.sr.attempt('seg:k1', '/api/x', { method: 'POST', body: 'V1' }).catch(() => {});
+    await h.sr.attempt('seg:k1', '/api/x', { method: 'POST', body: 'V2' }).catch(() => {});
+
+    expect(h.queue()).toHaveLength(1);
+    expect(h.queue()[0].options.body).toBe('V2');
+    expect(h.timers.size).toBe(1); // old timer cancelled, exactly one live
+
+    await h.fireAllTimers();
+    const retryBodies = h.fetchCalls.slice(2).map((c) => c.options.body);
+    expect(retryBodies).toEqual(['V2']); // V1 never replays
+  });
+
+  it('retry uses the STORED entry, not the timer closure copy', async () => {
+    const h = makeHarness();
+    h.setFetchScript([h.fail500(), h.ok()]);
+    await h.sr.attempt('seg:k1', '/api/x', { method: 'POST', body: 'V1' }).catch(() => {});
+    // Simulate another tab replacing the entry's body but keeping key+qid
+    // (degenerate but pins the read-from-storage contract).
+    const q = h.queue();
+    q[0].options.body = 'V1-updated';
+    h.store.set('saveRetryQueue', JSON.stringify(q));
+    await h.fireAllTimers();
+    expect(h.fetchCalls[h.fetchCalls.length - 1].options.body).toBe('V1-updated');
+  });
+});

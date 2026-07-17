@@ -16,7 +16,6 @@
     const fetchFn = deps.fetch;
     const storage = deps.storage;
     const setTimeoutFn = deps.setTimeout;
-    // eslint-disable-next-line no-unused-vars -- reserved for Task 10's cancellation logic
     const clearTimeoutFn = deps.clearTimeout;
     const now = deps.now;
     const toast = deps.toast;
@@ -68,6 +67,14 @@
       saveQueue(queue);
     }
 
+    function cancelPending(key) {
+      if (activeTimers[key] !== undefined) {
+        clearTimeoutFn(activeTimers[key]);
+        delete activeTimers[key];
+      }
+      removeFromQueue(key);
+    }
+
     // ----------------------------------------------------------------
     // RETRYABLE CHECK
     // ----------------------------------------------------------------
@@ -88,27 +95,47 @@
     // RETRY LOGIC
     // ----------------------------------------------------------------
 
+    function queueForRetry(item) {
+      // Exactly one live timer per key: cancel a predecessor before queueing.
+      if (activeTimers[item.key] !== undefined) {
+        clearTimeoutFn(activeTimers[item.key]);
+        delete activeTimers[item.key];
+      }
+      addToQueue(item);
+      executeRetry(item);
+    }
+
     function executeRetry(queueItem) {
       const delay = BACKOFF_BASE * Math.pow(2, queueItem.attempts - 1);
 
       activeTimers[queueItem.key] = setTimeoutFn(function () {
         delete activeTimers[queueItem.key];
 
-        fetchFn(queueItem.url, queueItem.options)
+        // Item 13: only the CURRENT entry for this key may fire. A missing or
+        // qid-mismatched entry means a success purged it or a newer save
+        // replaced it — replaying the closure copy is exactly the stale-
+        // overwrite this module exists to prevent. Silent abort: a superseded
+        // retry is a correct non-event. (Pre-qid legacy entries: undefined
+        // === undefined passes, graceful.)
+        const stored = loadQueue().find(function (q) {
+          return q.key === queueItem.key;
+        });
+        if (!stored || stored.qid !== queueItem.qid) return;
+
+        fetchFn(stored.url, stored.options)
           .then(function (response) {
             if (response.ok) {
-              removeFromQueue(queueItem.key);
+              removeFromQueue(stored.key);
               toast('Vista t\u00F3kst eftir endurtilraun', 'success');
-            } else if (isRetryableResponse(response) && queueItem.attempts < MAX_ATTEMPTS) {
-              queueItem.attempts++;
-              queueItem.nextRetry = now() + BACKOFF_BASE * Math.pow(2, queueItem.attempts - 1);
-              addToQueue(queueItem);
-              executeRetry(queueItem);
+            } else if (isRetryableResponse(response) && stored.attempts < MAX_ATTEMPTS) {
+              stored.attempts++;
+              stored.nextRetry = now() + BACKOFF_BASE * Math.pow(2, stored.attempts - 1);
+              queueForRetry(stored);
             } else {
-              removeFromQueue(queueItem.key);
+              removeFromQueue(stored.key);
               toast(
                 'Vista mist\u00F3kst eftir ' +
-                  queueItem.attempts +
+                  stored.attempts +
                   ' tilraunir. Vinsamlegast reyndu aftur.',
                 'error',
                 true
@@ -116,16 +143,15 @@
             }
           })
           .catch(function (err) {
-            if (isRetryableError(err) && queueItem.attempts < MAX_ATTEMPTS) {
-              queueItem.attempts++;
-              queueItem.nextRetry = now() + BACKOFF_BASE * Math.pow(2, queueItem.attempts - 1);
-              addToQueue(queueItem);
-              executeRetry(queueItem);
+            if (isRetryableError(err) && stored.attempts < MAX_ATTEMPTS) {
+              stored.attempts++;
+              stored.nextRetry = now() + BACKOFF_BASE * Math.pow(2, stored.attempts - 1);
+              queueForRetry(stored);
             } else {
-              removeFromQueue(queueItem.key);
+              removeFromQueue(stored.key);
               toast(
                 'Vista mist\u00F3kst eftir ' +
-                  queueItem.attempts +
+                  stored.attempts +
                   ' tilraunir. Vinsamlegast reyndu aftur.',
                 'error',
                 true
@@ -150,6 +176,7 @@
       return fetchFn(url, options)
         .then(function (response) {
           if (response.ok) {
+            cancelPending(key);
             return response.json();
           }
 
@@ -166,10 +193,10 @@
               attempts: 1,
               nextRetry: now() + BACKOFF_BASE,
               createdAt: now(),
+              qid: now() + ':' + Math.random().toString(36).slice(2),
             };
-            addToQueue(queueItem);
+            queueForRetry(queueItem);
             toast('Vista mist\u00F3kst \u2014 reyni aftur...', 'error');
-            executeRetry(queueItem);
 
             return Promise.reject(
               new Error('Server villa (' + response.status + ') \u2014 reyni aftur')
@@ -214,10 +241,10 @@
               attempts: 1,
               nextRetry: now() + BACKOFF_BASE,
               createdAt: now(),
+              qid: now() + ':' + Math.random().toString(36).slice(2),
             };
-            addToQueue(queueItem);
+            queueForRetry(queueItem);
             toast('Vista mist\u00F3kst \u2014 reyni aftur...', 'error');
-            executeRetry(queueItem);
           }
           return Promise.reject(err);
         });
