@@ -10,6 +10,7 @@ import {
   filterOutlineEntries,
   _loadBookConfigForTest,
 } from '../cnxml-render.js';
+import { escapeAttr } from '../lib/cnxml-elements.js';
 
 _loadBookConfigForTest('efnafraedi-2e');
 
@@ -68,6 +69,12 @@ describe('P0-5 — emphasis class preservation', () => {
   });
   it('class attr value is escaped', () => {
     const html = render('<para id="p1"><emphasis class="a&quot;b">t</emphasis></para>');
-    expect(html).not.toContain('class="a"b"'); // must not break out of the attribute
+    expect(html).toContain('<em class="a&amp;quot;b">t</em>');
+  });
+});
+
+describe('escapeAttr unit test', () => {
+  it('escapeAttr escapes a literal double-quote (the branch the pipeline cannot reach)', () => {
+    expect(escapeAttr('a"b')).toBe('a&quot;b');
   });
 });
