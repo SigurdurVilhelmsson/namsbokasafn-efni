@@ -41,6 +41,7 @@ const concordance = require('../services/concordanceService');
 const propagation = require('../services/propagationService');
 const activityLog = require('../services/activityLog');
 const notifications = require('../services/notifications');
+const { isNewer } = require('../lib/editRecency');
 
 // Notify an edit's author of a head-editor decision (fire-and-forget — a
 // notification failure must never fail the decision).
@@ -271,13 +272,24 @@ router.get(
       // Get existing edits for this module
       const edits = segmentEditor.getModuleEdits(req.params.book, req.params.moduleId);
 
-      // Build edit lookup by segmentId for quick access
+      // Build edit lookup by segmentId for quick access. The pane pre-fills
+      // from edits[0] ("latestEdit"), so each segment's array is ordered by the
+      // canonical recency comparator (same rule preview/apply pick winners
+      // with) — newest first, id breaking a same-second tie. Without the id
+      // tiebreak a same-second tie could pre-fill the losing edit while
+      // preview/apply publish the winner. NOTE: unlike buildEffectiveSegments,
+      // no status filter here — every status must still reach edits[0] (the
+      // frontend branches on rejected/discuss/superseded to show reopen/re-edit
+      // affordances).
       const editsBySegment = {};
       for (const edit of edits) {
         if (!editsBySegment[edit.segment_id]) {
           editsBySegment[edit.segment_id] = [];
         }
         editsBySegment[edit.segment_id].push(edit);
+      }
+      for (const segId of Object.keys(editsBySegment)) {
+        editsBySegment[segId].sort((a, b) => (isNewer(a, b) ? -1 : isNewer(b, a) ? 1 : 0));
       }
 
       // Get stats
