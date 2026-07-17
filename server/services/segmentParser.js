@@ -475,7 +475,9 @@ function listChapterModules(book, chapter) {
     return [];
   }
 
-  const files = fs.readdirSync(enDir).filter((f) => f.endsWith('-segments.en.md'));
+  const files = fs
+    .readdirSync(enDir)
+    .filter((f) => f.endsWith('-segments.en.md') && f !== 'exercises-segments.en.md'); // item 9/D3: os-embed pipeline data, not an editable module
 
   return files.map((f) => {
     const moduleId = f.replace('-segments.en.md', '');

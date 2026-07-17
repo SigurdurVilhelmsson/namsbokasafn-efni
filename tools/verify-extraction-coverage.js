@@ -35,6 +35,30 @@ function chapterDirs(root, chapter) {
     .sort();
 }
 
+/**
+ * Collect module segment files under 02-for-mt for the given chapter dirs (all present
+ * chapter/appendices dirs if `dirs` is omitted). Skips exercises-segments.en.md — item 9/D3:
+ * JSON-sourced (os-embed path), not CNXML extraction; it has its own pipeline gates and would
+ * otherwise land in modulesMissingSource as a false finding (no matching 01-source/*.cnxml).
+ * @param {string} forMtRoot
+ * @param {string[]} [dirs]
+ * @returns {{moduleId: string, chDir: string, path: string}[]}
+ */
+export function collectModuleFiles(forMtRoot, dirs = chapterDirs(forMtRoot, null)) {
+  const out = [];
+  for (const dir of dirs) {
+    const segDir = path.join(forMtRoot, dir);
+    if (!fs.existsSync(segDir)) continue;
+    for (const file of fs.readdirSync(segDir)) {
+      if (!file.endsWith('-segments.en.md')) continue;
+      if (file === 'exercises-segments.en.md') continue; // item 9/D3: JSON-sourced (os-embed), not CNXML extraction — has its own pipeline gates
+      const moduleId = file.slice(0, -'-segments.en.md'.length);
+      out.push({ moduleId, chDir: dir, path: path.join(segDir, file) });
+    }
+  }
+  return out;
+}
+
 function main() {
   const args = parseArgs(process.argv.slice(2), [
     BOOK_OPTION,
@@ -81,29 +105,23 @@ function main() {
   let missingSource = 0;
   let parseErrors = 0;
   let benignDupTotal = 0;
-  for (const dir of chapterDirs(forMtRoot, args.chapter)) {
-    const segDir = path.join(forMtRoot, dir);
-    if (!fs.existsSync(segDir)) continue;
-    for (const file of fs.readdirSync(segDir)) {
-      if (!file.endsWith('-segments.en.md')) continue;
-      const moduleId = file.slice(0, -'-segments.en.md'.length);
-      const srcFile = path.join(srcRoot, dir, `${moduleId}.cnxml`);
-      if (!fs.existsSync(srcFile)) {
-        missingSource++; // e.g. chapter-metadata has no source cnxml
-        continue;
-      }
-      // Per-module isolation: a malformed cnxml must not abort the whole batch (A2 lesson).
-      try {
-        const r = analyzeModule(
-          fs.readFileSync(srcFile, 'utf8'),
-          fs.readFileSync(path.join(segDir, file), 'utf8')
-        );
-        benignDupTotal += r.dupFindings.rawDup.filter((d) => d.kind === 'benign').length;
-        if (r.hasFindings) modules[moduleId] = { chapter: dir, ...r };
-      } catch (e) {
-        parseErrors++;
-        modules[moduleId] = { chapter: dir, parseError: e.message };
-      }
+  for (const { moduleId, chDir: dir, path: segFile } of collectModuleFiles(
+    forMtRoot,
+    chapterDirs(forMtRoot, args.chapter)
+  )) {
+    const srcFile = path.join(srcRoot, dir, `${moduleId}.cnxml`);
+    if (!fs.existsSync(srcFile)) {
+      missingSource++; // e.g. chapter-metadata has no source cnxml
+      continue;
+    }
+    // Per-module isolation: a malformed cnxml must not abort the whole batch (A2 lesson).
+    try {
+      const r = analyzeModule(fs.readFileSync(srcFile, 'utf8'), fs.readFileSync(segFile, 'utf8'));
+      benignDupTotal += r.dupFindings.rawDup.filter((d) => d.kind === 'benign').length;
+      if (r.hasFindings) modules[moduleId] = { chapter: dir, ...r };
+    } catch (e) {
+      parseErrors++;
+      modules[moduleId] = { chapter: dir, parseError: e.message };
     }
   }
 
@@ -172,4 +190,6 @@ function main() {
   process.exitCode = ids.length ? 1 : 0;
 }
 
-main();
+const isDirectRun =
+  process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+if (isDirectRun) main();

@@ -27,6 +27,30 @@ function chapterDirs(mtOutRoot, chapter) {
     .sort();
 }
 
+/**
+ * List the residue-scannable {moduleId, file} pairs in one 02-mt-output
+ * chapter dir. Skips `exercises-segments.is.md` BY EXACT NAME — item 9/D3:
+ * every chapter has one such file, and the naive `moduleId = file.slice(...)`
+ * below would fold them all to the SAME key ('exercises'), so a later
+ * chapter's entry silently overwrote an earlier chapter's in the `modules`
+ * map, and allowlist entries (keyed by nickname, not 'exercises') never
+ * matched. `exercise-assemble.js` is the authoritative residue gate for
+ * os-embed exercise content (nickname-keyed, per-chapter, already wired into
+ * the inject-stage exit code) — this scanner only covers CNXML-extracted
+ * modules. Mirrors the same-name guard in verify-extraction-coverage.js's
+ * `collectModuleFiles` and server/services/segmentParser.js's listing filter
+ * (I1, final review).
+ * @param {string} isDir
+ * @returns {{moduleId: string, file: string}[]}
+ */
+export function collectResidueFiles(isDir) {
+  return fs
+    .readdirSync(isDir)
+    .filter((file) => file.endsWith('-segments.is.md')) // exclude .backup.* and .json
+    .filter((file) => file !== 'exercises-segments.is.md')
+    .map((file) => ({ moduleId: file.slice(0, -'-segments.is.md'.length), file }));
+}
+
 const JSON_OPTION = { name: 'json', flags: ['--json'], type: 'boolean', default: false };
 
 function main() {
@@ -61,9 +85,7 @@ function main() {
   for (const dir of chapterDirs(mtOutRoot, args.chapter)) {
     const isDir = path.join(mtOutRoot, dir);
     if (!fs.existsSync(isDir)) continue;
-    for (const file of fs.readdirSync(isDir)) {
-      if (!file.endsWith('-segments.is.md')) continue; // exclude .backup.* and .json
-      const moduleId = file.slice(0, -'-segments.is.md'.length);
+    for (const { moduleId, file } of collectResidueFiles(isDir)) {
       const enFile = path.join(forMtRoot, dir, `${moduleId}-segments.en.md`);
       if (!fs.existsSync(enFile)) {
         modulesMissingEn++;
@@ -117,4 +139,6 @@ function main() {
   );
 }
 
-main();
+const isDirectRun =
+  process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+if (isDirectRun) main();
