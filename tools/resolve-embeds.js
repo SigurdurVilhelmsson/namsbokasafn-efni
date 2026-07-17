@@ -14,7 +14,7 @@
 import fs from 'fs';
 import path from 'path';
 import { parseArgs, BOOK_OPTION, requireBook } from './lib/parseArgs.js';
-import { resolveEmbeds } from './lib/embed-resolve.js';
+import { resolveEmbeds, findOffAllowlistEmbeds, ALLOWED_EMBED_HOSTS } from './lib/embed-resolve.js';
 
 const DRY_RUN_OPTION = { name: 'dryRun', flags: ['--dry-run'], type: 'boolean', default: false };
 const VERBOSE_OPTION = { name: 'verbose', flags: ['--verbose'], type: 'boolean', default: false };
@@ -55,6 +55,28 @@ async function main() {
     console.error(`WARNING: ${blocked.length} embed(s) did not resolve to a framable target:`);
     for (const [src, v] of blocked) console.error(`  [${v.status}] ${src}`);
   }
+
+  // Loud, exit-code-visible failure — caught at intake, before a mapping with a
+  // host outside vefur's CSP frame-src is ever committed. (Unlike `blocked` above,
+  // this is not a warning: a mismatched allowlist means the embed WILL render here
+  // and be silently CSP-blocked in vefur production.)
+  const offAllowlist = findOffAllowlistEmbeds(mapping);
+  if (offAllowlist.length) {
+    console.error(
+      `ERROR: ${offAllowlist.length} embed(s) resolved to a host NOT on vefur's CSP frame-src ` +
+        `allowlist (${[...ALLOWED_EMBED_HOSTS].join(', ')}):`
+    );
+    for (const { src, resolved, host } of offAllowlist) {
+      console.error(`  [${host ?? 'unparseable'}] ${src} -> ${resolved}`);
+    }
+    console.error(
+      'Widen ALLOWED_EMBED_HOSTS in tools/lib/embed-resolve.js AND vefur nginx frame-src ' +
+        '(nginx-config-example.conf) together, or fix the source. Do NOT commit this ' +
+        'embed-mapping.json until resolved.'
+    );
+    process.exitCode = 1;
+  }
+
   if (args.verbose) {
     for (const [src, v] of Object.entries(mapping))
       console.log(`  ${src} -> ${v.resolved} (${v.kind}, ${v.status})`);

@@ -3,6 +3,19 @@
  * Network is injected so the unit tests run offline.
  */
 
+/**
+ * Mirror of vefur's nginx `frame-src` CSP allowlist
+ * (`../namsbokasafn-vefur/nginx-config-example.conf`: `frame-src https://www.youtube.com
+ * https://phet.colorado.edu;`). Keyed on the RESOLVED URL's exact hostname — the same
+ * hostname the CSP sees — not the looser forms `classifyKind` accepts (`youtube.com`
+ * suffix, `youtu.be`).
+ *
+ * These two lists move together: widening one requires widening the other. Verified
+ * against a census of all 98 resolved entries across both books' embed-mapping.json
+ * (liffraedi-2e 51, edlisfraedi-2e 47) — every host is exactly one of these two.
+ */
+export const ALLOWED_EMBED_HOSTS = new Set(['www.youtube.com', 'phet.colorado.edu']);
+
 /** Classify a resolved embed URL by host. */
 export function classifyKind(url) {
   try {
@@ -62,6 +75,33 @@ export function canonicalizeYouTube(url) {
   if (list) embedUrl.searchParams.set('list', list);
 
   return embedUrl.toString();
+}
+
+/**
+ * Find resolved (`status:'ok'`) mapping entries whose host is not on
+ * ALLOWED_EMBED_HOSTS — vefur's CSP frame-src. Used by resolve-embeds.js to fail
+ * loud at intake: a host outside the allowlist would render fine here and be
+ * silently CSP-blocked in vefur production (an empty box, no test/build failure).
+ * Non-ok entries (blocked/error) are skipped — those already get their own
+ * "did not resolve to a framable target" report.
+ * @param {Record<string,{resolved:string,kind:string,status:string}>} mapping
+ * @returns {Array<{src:string, resolved:string, host:string|null}>}
+ */
+export function findOffAllowlistEmbeds(mapping) {
+  const offenders = [];
+  for (const [src, entry] of Object.entries(mapping)) {
+    if (entry.status !== 'ok') continue;
+    let host = null;
+    try {
+      host = new URL(entry.resolved).hostname;
+    } catch {
+      // unparseable resolved URL — also an offender, reported with host: null
+    }
+    if (!host || !ALLOWED_EMBED_HOSTS.has(host)) {
+      offenders.push({ src, resolved: entry.resolved, host });
+    }
+  }
+  return offenders;
 }
 
 /** A final target is framable unless it sends X-Frame-Options DENY/SAMEORIGIN. */
