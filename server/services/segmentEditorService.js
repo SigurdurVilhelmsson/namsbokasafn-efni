@@ -21,7 +21,6 @@ const greynirEngine = require('./greynirEngine');
 let BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 const resolveDbPath = require('../lib/dbPath');
 const DB_PATH = resolveDbPath();
-// eslint-disable-next-line no-unused-vars -- pickLatest is consumed by applyApprovedEdits (item 13, task 7)
 const { isNewer, pickLatest } = require('../lib/editRecency');
 
 let db;
@@ -800,13 +799,13 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
     typeof options.appliedBy === 'string' && options.appliedBy ? options.appliedBy : null;
   const conn = getDb();
 
-  // Pre-check: any approved edits at all?
+  // Pre-check: any approved edits at all? (ordering is dead weight now that
+  // winners are chosen by pickLatest inside the transaction — this query is
+  // only ever used for its .length)
   const approvedEdits = conn
     .prepare(
-      `SELECT id, segment_id, edited_content
-       FROM segment_edits
-       WHERE book = ? AND module_id = ? AND status = 'approved' AND applied_at IS NULL
-       ORDER BY reviewed_at DESC, id DESC`
+      `SELECT id FROM segment_edits
+       WHERE book = ? AND module_id = ? AND status = 'approved' AND applied_at IS NULL`
     )
     .all(book, moduleId);
 
@@ -866,31 +865,48 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
   // Use IMMEDIATE transaction to hold write lock for the entire apply cycle.
   // This prevents concurrent apply calls from reading the same edits.
   const applyTransaction = conn.transaction(() => {
-    // Re-query inside the transaction to ensure consistency
-    const edits = conn
+    // Re-query inside the transaction to ensure consistency. Unapplied rows
+    // gate the run; winners are then chosen across ALL approved rows —
+    // applied or not — so a late approval of an older edit can never regress
+    // a segment whose newer approved content already published (I12-R5).
+    const unapplied = conn
       .prepare(
-        `SELECT id, segment_id, edited_content
-         FROM segment_edits
-         WHERE book = ? AND module_id = ? AND status = 'approved' AND applied_at IS NULL
-         ORDER BY reviewed_at DESC, id DESC`
+        `SELECT id FROM segment_edits
+         WHERE book = ? AND module_id = ? AND status = 'approved' AND applied_at IS NULL`
       )
       .all(book, moduleId);
 
-    if (edits.length === 0) {
+    if (unapplied.length === 0) {
       throw new Error('Edits were applied by a concurrent request');
     }
 
     // 1. Load module data
     const data = segmentParser.loadModuleForEditing(book, chapter, moduleId);
 
-    // 2. Build approved-content lookup (latest approved edit per segment wins)
+    const allApproved = conn
+      .prepare(
+        `SELECT id, segment_id, edited_content, created_at, applied_at
+         FROM segment_edits
+         WHERE book = ? AND module_id = ? AND status = 'approved'`
+      )
+      .all(book, moduleId);
+
+    // 2. Winner per segment = canonical newest (created_at, id) — the same
+    // rule buildEffectiveSegments uses. Unapplied losers are superseded;
+    // already-applied losers stay as resolved history (unchanged behavior).
+    const bySegment = {};
+    for (const edit of allApproved) {
+      (bySegment[edit.segment_id] = bySegment[edit.segment_id] || []).push(edit);
+    }
     const approvedLookup = {};
     const supersededIds = [];
-    for (const edit of edits) {
-      if (!approvedLookup[edit.segment_id]) {
-        approvedLookup[edit.segment_id] = edit;
-      } else {
-        supersededIds.push(edit.id);
+    for (const [segId, list] of Object.entries(bySegment)) {
+      const winner = pickLatest(list);
+      approvedLookup[segId] = winner;
+      for (const edit of list) {
+        if (edit.id !== winner.id && edit.applied_at === null) {
+          supersededIds.push(edit.id);
+        }
       }
     }
 
@@ -944,7 +960,6 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
       throw new Error(`Failed to write faithful file: ${savedPath}`);
     }
     const written = fs.readFileSync(savedPath, 'utf-8');
-    const appliedCount = Object.keys(approvedLookup).length;
     if (written.length === 0) {
       throw new Error(`Faithful file written but empty: ${savedPath}`);
     }
@@ -958,8 +973,13 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
       );
     }
 
-    // 6. Mark winning edits as applied; mark losing approved edits as superseded
-    const winnerIds = Object.values(approvedLookup).map((e) => e.id);
+    // 6. Mark winning edits as applied; mark losing approved edits as superseded.
+    // Only stamp winners not already applied — appliedCount reports what THIS
+    // apply newly published.
+    const winnerIds = Object.values(approvedLookup)
+      .filter((e) => e.applied_at === null)
+      .map((e) => e.id);
+    const appliedCount = winnerIds.length;
     const markApplied = conn.prepare(
       `UPDATE segment_edits SET applied_at = CURRENT_TIMESTAMP WHERE id = ?`
     );
@@ -977,7 +997,7 @@ function applyApprovedEdits(book, chapter, moduleId, options = {}) {
     return {
       appliedCount,
       supersededCount: supersededIds.length,
-      totalEditsMarked: edits.length,
+      totalEditsMarked: winnerIds.length + supersededIds.length,
       savedPath,
     };
   });

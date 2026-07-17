@@ -1093,6 +1093,110 @@ describe('applyApprovedEdits — integration', () => {
     expect(seg1.content).toBe('Yfirfarið efnisgrein.');
   });
 
+  /**
+   * Parses the module's current faithful file into a segmentId -> content map.
+   * Same parse this describe block already uses (segmentParser.parseSegments
+   * over the file at result.savedPath) — the path is deterministic for this
+   * describe block's fixed book/chapter/module, so no result handle is needed.
+   */
+  function readFaithful() {
+    const faithfulPath = join(
+      tmpDir,
+      'books',
+      'testbook',
+      '03-faithful-translation',
+      'ch01',
+      'm00001-segments.is.md'
+    );
+    const segments = segmentParser.parseSegments(readFileSync(faithfulPath, 'utf-8'));
+    const map = {};
+    for (const seg of segments) map[seg.segmentId] = seg.content;
+    return map;
+  }
+
+  it('approval-order inversion cannot regress published content (I12-R5)', () => {
+    const older = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'MT texti',
+      editedContent: 'Eldri breyting',
+      editorId: 'editor-1',
+      editorUsername: 'ritstjoriA',
+    });
+    const newer = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'MT texti',
+      editedContent: 'Nýrri breyting',
+      editorId: 'editor-2',
+      editorUsername: 'ritstjoriB',
+    });
+    db.prepare(`UPDATE segment_edits SET created_at = '2026-07-17 10:00:00' WHERE id = ?`).run(
+      older.id
+    );
+    db.prepare(`UPDATE segment_edits SET created_at = '2026-07-17 10:00:05' WHERE id = ?`).run(
+      newer.id
+    );
+
+    // Approve the NEWER first and apply it (publishes 'Nýrri breyting').
+    service.approveEdit(newer.id, 'he-1', 'yfirlesari', null);
+    service.applyApprovedEdits('testbook', 1, 'm00001');
+
+    // Now approve the OLDER and apply again — pre-fix this overwrote the
+    // published content with the older edit.
+    service.approveEdit(older.id, 'he-1', 'yfirlesari', null);
+    const second = service.applyApprovedEdits('testbook', 1, 'm00001');
+
+    expect(second.appliedCount).toBe(0); // nothing NEW published
+    expect(second.supersededCount).toBe(1);
+    expect(readFaithful()['m00001:para:fs-id001']).toBe('Nýrri breyting');
+    expect(service.getEditById(older.id).status).toBe('superseded');
+    expect(service.getEditById(newer.id).status).toBe('approved');
+  });
+
+  it('apply is convergent: preview and file agree after any approval order', () => {
+    const a = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'MT texti',
+      editedContent: 'A-efni',
+      editorId: 'editor-1',
+      editorUsername: 'ritstjoriA',
+    });
+    const b = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'MT texti',
+      editedContent: 'B-efni',
+      editorId: 'editor-2',
+      editorUsername: 'ritstjoriB',
+    });
+    db.prepare(`UPDATE segment_edits SET created_at = '2026-07-17 10:00:00' WHERE id = ?`).run(
+      a.id
+    );
+    db.prepare(`UPDATE segment_edits SET created_at = '2026-07-17 10:00:05' WHERE id = ?`).run(
+      b.id
+    );
+
+    service.approveEdit(b.id, 'he-1', 'yfirlesari', null);
+    service.approveEdit(a.id, 'he-1', 'yfirlesari', null);
+    service.applyApprovedEdits('testbook', 1, 'm00001');
+
+    const preview = service
+      .buildEffectiveSegments('testbook', 1, 'm00001')
+      .find((s) => s.segmentId === 'm00001:para:fs-id001');
+    expect(preview.isContent).toBe('B-efni');
+    expect(readFaithful()['m00001:para:fs-id001']).toBe('B-efni');
+  });
+
   describe("apply-time supersede uses 'superseded' (was mislabelled 'rejected')", () => {
     it('marks the losing approved row superseded, keeps note + applied_at stamp', () => {
       // Two approved edits by the same editor on one segment. The second save
