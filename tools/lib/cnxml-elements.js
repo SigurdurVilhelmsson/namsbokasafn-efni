@@ -105,10 +105,15 @@ export function resolveCrossModuleHref(documentId, targetId, context) {
   // document="<appendix module>" → the appendix landing page. Fires for any arm
   // that passes documentId. Must run before the lookupModuleFilename() path, which
   // cannot resolve appendix modules (they render in a separate pass) → href:null.
-  // All such links are document-only (no target-id), so no fragment is emitted.
+  // item 10/#20: a document+target-id link keeps its fragment so the reader
+  // lands on the referenced element (0 such links in chem today; biology watch).
   if (documentId && context.bookSlug && context.appendixModuleLetters?.has(documentId)) {
+    const base = appendixLandingHref(
+      context.bookSlug,
+      context.appendixModuleLetters.get(documentId)
+    );
     return {
-      href: appendixLandingHref(context.bookSlug, context.appendixModuleLetters.get(documentId)),
+      href: targetId ? `${base}#${targetId}` : base,
       ownerModule: documentId,
       sameModule: false,
     };

@@ -48,6 +48,7 @@ import {
   escapeHtml,
   processInlineContent,
   renderFootnotesSection,
+  resolveCrossModuleHref,
   translateLatexText,
 } from './lib/cnxml-elements.js';
 import {
@@ -3170,6 +3171,50 @@ function writeAnswerKey(chapter, track, html) {
   return outputPath;
 }
 
+/**
+ * Key-terms fallback items (item 10/#22): newer-OpenStax books (organic) have
+ * no per-module <glossary>; the chapter key-terms page is built from
+ * <section class="key-terms"> link items. Appendix-document links route
+ * through resolveCrossModuleHref (→ /vidauki/{letter}[#target]); every other
+ * link keeps the pre-existing section-URL construction byte-identical
+ * (characterized by test — the resolver's general path is NOT adopted here to
+ * avoid changing organic's working URLs).
+ * @param {string} sectionInner - inner content of the key-terms <section>
+ * @param {{sectionSlugFor: (moduleId: string) => string, bookSlug: string,
+ *          chapterStr: string, appendixResolution: object}} opts
+ * @returns {string[]} rendered <li> lines
+ */
+function buildKeyTermsItems(sectionInner, opts) {
+  const items = extractNestedElements(sectionInner, 'item');
+  const termLines = [];
+  for (const item of items) {
+    const linkMatch = item.content.match(
+      /<link\s+document="([^"]+)"(?:\s+target-id="([^"]+)")?[^>]*>([^<]+)<\/link>/
+    );
+    if (linkMatch) {
+      const termText = linkMatch[3].trim();
+      const linkModuleId = linkMatch[1];
+      const linkTargetId = linkMatch[2] || null;
+      const resolved = resolveCrossModuleHref(linkModuleId, linkTargetId, {
+        ...opts.appendixResolution,
+        moduleId: linkModuleId,
+      });
+      if (resolved.href && resolved.href.includes('/vidauki/')) {
+        termLines.push(`<li><a href="${resolved.href}">${escapeHtml(termText)}</a></li>`);
+      } else {
+        const sectionSlug = opts.sectionSlugFor(linkModuleId);
+        termLines.push(
+          `<li><a href="/content/${opts.bookSlug}/chapters/${opts.chapterStr}/${sectionSlug}.html">${escapeHtml(termText)}</a></li>`
+        );
+      }
+    } else {
+      const plainText = item.content.replace(/<[^>]+>/g, '').trim();
+      if (plainText) termLines.push(`<li>${escapeHtml(plainText)}</li>`);
+    }
+  }
+  return termLines;
+}
+
 async function main() {
   const args = parseCliArgs(process.argv.slice(2));
   BOOK_SLUG = args.book;
@@ -3659,31 +3704,20 @@ ${anchors}
           );
 
           if (keyTermsMatch) {
-            const items = extractNestedElements(keyTermsMatch[1], 'item');
-            const termLines = [];
-
-            for (const item of items) {
-              // item.content is like: <link document="m00032" target-id="term-00006">alcohol</link>
-              const linkMatch = item.content.match(
-                /<link\s+document="([^"]+)"(?:\s+target-id="([^"]+)")?[^>]*>([^<]+)<\/link>/
-              );
-              if (linkMatch) {
-                const termText = linkMatch[3].trim();
-                const moduleId = linkMatch[1];
-                const sectionInfo = moduleSections[moduleId];
-                const sectionSlug = sectionInfo
-                  ? getOutputFilename(moduleId, args.chapter, moduleSections).replace('.html', '')
-                  : moduleId;
-                termLines.push(
-                  `<li><a href="/content/${BOOK_SLUG}/chapters/${chapterStr}/${sectionSlug}.html">${escapeHtml(termText)}</a></li>`
-                );
-              } else {
-                const plainText = item.content.replace(/<[^>]+>/g, '').trim();
-                if (plainText) {
-                  termLines.push(`<li>${escapeHtml(plainText)}</li>`);
-                }
-              }
-            }
+            const termLines = buildKeyTermsItems(keyTermsMatch[1], {
+              sectionSlugFor: (linkModuleId) => {
+                const sectionInfo = moduleSections[linkModuleId];
+                return sectionInfo
+                  ? getOutputFilename(linkModuleId, args.chapter, moduleSections).replace(
+                      '.html',
+                      ''
+                    )
+                  : linkModuleId;
+              },
+              bookSlug: BOOK_SLUG,
+              chapterStr,
+              appendixResolution,
+            });
 
             if (termLines.length > 0) {
               const keyTermsContentHtml =
@@ -4052,6 +4086,7 @@ export {
   renderCompiledGlossary,
   renderKeyEquations,
   buildAppendixIdMap,
+  buildKeyTermsItems,
   rollbackWrittenFiles,
   escapeJsonForScript,
   filterOutlineEntries,
