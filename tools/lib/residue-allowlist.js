@@ -9,8 +9,13 @@ export function loadResidueAllowlist(bookDir) {
   return { entries: Array.isArray(raw.entries) ? raw.entries : [] };
 }
 
-/** The only classes that may tolerate a residue. */
-const VALID_CLASSES = new Set(['proper-noun', 'homograph-unit']);
+/**
+ * The only classes that may tolerate a residue.
+ * neutral-notation (item 9 follow-up): international scientific notation —
+ * amino-acid sequences (Val-Tyr-Gly), chemical-formula chains — where the EN
+ * bytes ARE the correct translation and no pattern can classify them safely.
+ */
+const VALID_CLASSES = new Set(['proper-noun', 'homograph-unit', 'neutral-notation']);
 
 /**
  * Exact-match classify one residue segment. Unlisted, drifted, an invalid `class`,

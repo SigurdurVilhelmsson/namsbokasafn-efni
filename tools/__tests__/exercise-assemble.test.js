@@ -149,46 +149,71 @@ describe('assembleBook — marker conservation (C1, final review)', () => {
   // unit test on fieldToHtml directly, so they also pin the per-exercise
   // skip contract (no sidecar, no partial write, reason surfaced).
 
-  it('MT-deleted MEDIA marker → exercise skipped, no sidecar', () => {
-    // 01-04-OC-P04's stem field has a run that is ONLY the image marker
-    // (SEG …:stem:357566-b1 -> "[[MEDIA:0]]", verified against the real
-    // extraction output). Deleting the marker from the IS text simulates the
-    // MT dropping it — the <img> would otherwise silently vanish.
-    const book = makeBook({
-      fixture: '01-04-OC-P04.json',
-      mutateIs: (is) =>
-        is.replace(
-          '<!-- SEG:01-04-OC-P04:stem:357566-b1 -->\nÞÝТ [[MEDIA:0]]\n',
-          '<!-- SEG:01-04-OC-P04:stem:357566-b1 -->\nÞÝТ\n'
-        ),
+  // NOTE (item-9 #294 follow-up): these two conservation cases originally
+  // mutated 01-04-OC-P04's image-ONLY run — but a pure-opaque EN run is now
+  // translation-invariant (assembled from EN verbatim; see the dedicated
+  // pure-opaque describe below), so the mutation must target a MIXED
+  // text+image run, where MT output IS consumed and conservation is live.
+  function makeMixedRunBook({ mutateIs }) {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ex-mixed-'));
+    const exDir = path.join(dir, '01-source', 'exercises');
+    fs.mkdirSync(exDir, { recursive: true });
+    fs.writeFileSync(
+      path.join(exDir, '05-01-OC-T01.json'),
+      JSON.stringify({
+        uid: '2@1',
+        nickname: '05-01-OC-T01',
+        solutions_are_public: false,
+        stimulus_html: '',
+        questions: [
+          {
+            id: '333',
+            stem_html:
+              'Predict the product when <img src="https://x.test/m.jpg" alt="molecule"> reacts with water.',
+          },
+        ],
+      })
+    );
+    extractBook(dir, {});
+    const enPath = path.join(dir, '02-for-mt', 'ch05', 'exercises-segments.en.md');
+    let is = fs
+      .readFileSync(enPath, 'utf8')
+      .split('\n')
+      .map((l) => (l.startsWith('<!-- SEG:') || l.trim() === '' ? l : `ÞÝТ ${l}`))
+      .join('\n');
+    is = mutateIs(is);
+    const outDir = path.join(dir, '02-mt-output', 'ch05');
+    fs.mkdirSync(outDir, { recursive: true });
+    fs.writeFileSync(path.join(outDir, 'exercises-segments.is.md'), is, 'utf8');
+    return dir;
+  }
+
+  it('MT-deleted MEDIA marker in a MIXED run → exercise skipped, no sidecar', () => {
+    const book = makeMixedRunBook({
+      mutateIs: (is) => is.replace('[[MEDIA:0]]', ''),
     });
     const res = assembleBook(book, { track: 'mt-preview' });
     expect(res.written).toEqual([]);
     expect(res.skipped.length).toBe(1);
-    expect(res.skipped[0].nickname).toBe('01-04-OC-P04');
+    expect(res.skipped[0].nickname).toBe('05-01-OC-T01');
     expect(
       fs.existsSync(
-        path.join(book, '03-translated', 'mt-preview', 'exercises', '01-04-OC-P04.json')
+        path.join(book, '03-translated', 'mt-preview', 'exercises', '05-01-OC-T01.json')
       )
     ).toBe(false);
   });
 
-  it('duplicated MEDIA marker → exercise skipped, no sidecar', () => {
-    const book = makeBook({
-      fixture: '01-04-OC-P04.json',
-      mutateIs: (is) =>
-        is.replace(
-          '<!-- SEG:01-04-OC-P04:stem:357566-b1 -->\nÞÝТ [[MEDIA:0]]\n',
-          '<!-- SEG:01-04-OC-P04:stem:357566-b1 -->\nÞÝТ [[MEDIA:0]] [[MEDIA:0]]\n'
-        ),
+  it('duplicated MEDIA marker in a MIXED run → exercise skipped, no sidecar', () => {
+    const book = makeMixedRunBook({
+      mutateIs: (is) => is.replace('[[MEDIA:0]]', '[[MEDIA:0]] [[MEDIA:0]]'),
     });
     const res = assembleBook(book, { track: 'mt-preview' });
     expect(res.written).toEqual([]);
     expect(res.skipped.length).toBe(1);
-    expect(res.skipped[0].nickname).toBe('01-04-OC-P04');
+    expect(res.skipped[0].nickname).toBe('05-01-OC-T01');
     expect(
       fs.existsSync(
-        path.join(book, '03-translated', 'mt-preview', 'exercises', '01-04-OC-P04.json')
+        path.join(book, '03-translated', 'mt-preview', 'exercises', '05-01-OC-T01.json')
       )
     ).toBe(false);
   });
@@ -237,5 +262,89 @@ describe('assembleBook — marker conservation (C1, final review)', () => {
         path.join(book, '03-translated', 'mt-preview', 'exercises', '01-03-OC-P01.json')
       )
     ).toBe(false);
+  });
+});
+
+describe('pure-opaque EN runs are translation-invariant (item-9 MT-run follow-up)', () => {
+  // Observed live in the #294 MT run: image-only stems (EN run = exactly
+  // [[MEDIA:0]]) confused the API — adjacent identical segments came back
+  // RENUMBERED ([[MEDIA:1]], [[MEDIA:2]]) or dropped entirely. Nothing in a
+  // pure-opaque run is translatable, so the EN run IS the correct output:
+  // the assembler must use it verbatim and never depend on MT for it.
+  function makeOpaqueBook({ mutateIs }) {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ex-opaque-'));
+    const exDir = path.join(dir, '01-source', 'exercises');
+    fs.mkdirSync(exDir, { recursive: true });
+    fs.writeFileSync(
+      path.join(exDir, '08-99-OC-T01.json'),
+      JSON.stringify({
+        uid: '1@1',
+        nickname: '08-99-OC-T01',
+        solutions_are_public: false,
+        stimulus_html: '',
+        questions: [
+          { id: '111', stem_html: '<img src="https://x.test/a.jpg" alt="model A">' },
+          { id: '222', stem_html: '<img src="https://x.test/b.jpg" alt="model B">' },
+        ],
+      })
+    );
+    extractBook(dir, {});
+    const enPath = path.join(dir, '02-for-mt', 'ch08', 'exercises-segments.en.md');
+    let is = fs.readFileSync(enPath, 'utf8'); // identity "translation"
+    is = mutateIs(is);
+    const outDir = path.join(dir, '02-mt-output', 'ch08');
+    fs.mkdirSync(outDir, { recursive: true });
+    fs.writeFileSync(path.join(outDir, 'exercises-segments.is.md'), is, 'utf8');
+    return dir;
+  }
+
+  it('API-renumbered [[MEDIA:1]] against EN [[MEDIA:0]] assembles from EN (no skip)', () => {
+    const book = makeOpaqueBook({
+      mutateIs: (is) =>
+        is.replace(
+          '<!-- SEG:08-99-OC-T01:stem:222-b0 -->\n[[MEDIA:0]]',
+          '<!-- SEG:08-99-OC-T01:stem:222-b0 -->\n[[MEDIA:1]]'
+        ),
+    });
+    const res = assembleBook(book, { track: 'mt-preview' });
+    expect(res.skipped).toEqual([]);
+    const side = JSON.parse(fs.readFileSync(res.written[0], 'utf8'));
+    expect(side.questions[1].stem_html).toBe('<img src="https://x.test/b.jpg" alt="model B">');
+  });
+
+  it('API-dropped pure-opaque segment assembles from EN (no missing-IS skip)', () => {
+    const book = makeOpaqueBook({
+      mutateIs: (is) =>
+        is.replace(/<!-- SEG:08-99-OC-T01:stem:222-b0 -->\n\[\[MEDIA:0\]\]\n\n/, ''),
+    });
+    const res = assembleBook(book, { track: 'mt-preview' });
+    expect(res.skipped).toEqual([]);
+    const side = JSON.parse(fs.readFileSync(res.written[0], 'utf8'));
+    expect(side.questions[1].stem_html).toBe('<img src="https://x.test/b.jpg" alt="model B">');
+  });
+
+  it('rule does NOT fire for text-bearing runs (missing IS still skips loudly)', () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ex-opaque-neg-'));
+    const exDir = path.join(dir, '01-source', 'exercises');
+    fs.mkdirSync(exDir, { recursive: true });
+    fs.copyFileSync(
+      path.join(FIXTURES, '01-03-OC-P01.json'),
+      path.join(exDir, '01-03-OC-P01.json')
+    );
+    extractBook(dir, {});
+    const en = fs.readFileSync(
+      path.join(dir, '02-for-mt', 'ch01', 'exercises-segments.en.md'),
+      'utf8'
+    );
+    const is = en
+      .split('\n')
+      .map((l) => (l.startsWith('<!-- SEG:') || l.trim() === '' ? l : `ÞÝТ ${l}`))
+      .join('\n')
+      .replace(/<!-- SEG:01-03-OC-P01:stimulus:b0 -->\n[^\n]*\n/, '');
+    const outDir = path.join(dir, '02-mt-output', 'ch01');
+    fs.mkdirSync(outDir, { recursive: true });
+    fs.writeFileSync(path.join(outDir, 'exercises-segments.is.md'), is, 'utf8');
+    const res = assembleBook(dir, { track: 'mt-preview' });
+    expect(res.skipped.length).toBe(1);
   });
 });
