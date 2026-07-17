@@ -349,4 +349,85 @@ describe('localizationReviewService', () => {
     expect(second.updated).toBe(true);
     expect(review.getPendingByModule(BOOK, MODULE)).toHaveLength(1);
   });
+
+  it('approve refuses (PENDING_EXISTS) when a newer pending exists on the segment', () => {
+    const older = review.submitEdit({
+      book: BOOK,
+      chapter: CHAPTER,
+      moduleId: MODULE,
+      segmentId: SEG('fs-id001'),
+      originalContent: 'Hrein fs-id001',
+      editedContent: 'Eldri útgáfa',
+      editorId: 4,
+      editorUsername: 'editorA',
+    });
+    const newer = review.submitEdit({
+      book: BOOK,
+      chapter: CHAPTER,
+      moduleId: MODULE,
+      segmentId: SEG('fs-id001'),
+      originalContent: 'Hrein fs-id001',
+      editedContent: 'Nýrri útgáfa',
+      editorId: 5,
+      editorUsername: 'editorB',
+    });
+    // Force a deterministic cross-second recency inversion-proof ordering
+    // (CURRENT_TIMESTAMP is 1s-granular; same trick as the F15 test).
+    db.prepare(
+      `UPDATE localization_pending_edits SET created_at = '2026-07-17 10:00:00' WHERE id = ?`
+    ).run(older.id);
+    db.prepare(
+      `UPDATE localization_pending_edits SET created_at = '2026-07-17 10:00:05' WHERE id = ?`
+    ).run(newer.id);
+
+    let err;
+    try {
+      review.approveAndApply(older.id, 2, 'headX', null);
+    } catch (e) {
+      err = e;
+    }
+    expect(err).toBeTruthy();
+    expect(err.code).toBe('PENDING_EXISTS');
+    // Nothing changed: both rows still pending, no file write for this segment.
+    expect(review.getPendingByModule(BOOK, MODULE)).toHaveLength(2);
+  });
+
+  it('approving the newest pending supersedes older pendings on the segment', () => {
+    const older = review.submitEdit({
+      book: BOOK,
+      chapter: CHAPTER,
+      moduleId: MODULE,
+      segmentId: SEG('fs-id001'),
+      originalContent: 'Hrein fs-id001',
+      editedContent: 'Eldri útgáfa',
+      editorId: 4,
+      editorUsername: 'editorA',
+    });
+    const newer = review.submitEdit({
+      book: BOOK,
+      chapter: CHAPTER,
+      moduleId: MODULE,
+      segmentId: SEG('fs-id001'),
+      originalContent: 'Hrein fs-id001',
+      editedContent: 'Nýrri útgáfa',
+      editorId: 5,
+      editorUsername: 'editorB',
+    });
+    db.prepare(
+      `UPDATE localization_pending_edits SET created_at = '2026-07-17 10:00:00' WHERE id = ?`
+    ).run(older.id);
+    db.prepare(
+      `UPDATE localization_pending_edits SET created_at = '2026-07-17 10:00:05' WHERE id = ?`
+    ).run(newer.id);
+
+    const { edit } = review.approveAndApply(newer.id, 2, 'headX', null);
+    expect(edit.status).toBe('approved');
+    expect(readLocalized(booksDir)[SEG('fs-id001')]).toBe('Nýrri útgáfa');
+
+    const olderRow = review.getEditById(older.id);
+    expect(olderRow.status).toBe('superseded');
+    expect(olderRow.reviewer_note).toBe('Leyst úr gildi af nýrri samþykktri breytingu');
+    expect(olderRow.reviewer_username).toBe('headX');
+    expect(review.getPendingByModule(BOOK, MODULE)).toHaveLength(0);
+  });
 });

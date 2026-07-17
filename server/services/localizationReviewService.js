@@ -20,6 +20,7 @@ const fs = require('fs');
 const log = require('../lib/logger');
 const segmentParser = require('./segmentParser');
 const resolveDbPath = require('../lib/dbPath');
+const { isNewer } = require('../lib/editRecency');
 
 const DB_PATH = resolveDbPath();
 
@@ -212,6 +213,22 @@ function approveAndApply(editId, reviewerId, reviewerUsername, reviewerNote) {
   if (!edit) throw new Error('Edit not found');
   if (edit.status !== 'pending') throw new Error('Edit is not pending');
 
+  // Item 13 guard: resolve newest-first. If another editor's pending on this
+  // segment is newer, approving THIS one would either publish stale content
+  // or immediately lose to the newer row — refuse with the Pass-1 idiom.
+  const siblingPendings = conn
+    .prepare(
+      `SELECT id, created_at FROM localization_pending_edits
+       WHERE book = ? AND module_id = ? AND segment_id = ?
+         AND status = 'pending' AND id != ?`
+    )
+    .all(edit.book, edit.module_id, edit.segment_id, editId);
+  if (siblingPendings.some((s) => isNewer(s, edit))) {
+    const err = new Error('Nýrri breyting í bið er til á þessum bút — farið yfir hana í staðinn.');
+    err.code = 'PENDING_EXISTS';
+    throw err;
+  }
+
   // 1. Apply to the localized file FIRST (snapshot-before-save handled by .bak).
   // The file write is the one step a SQLite transaction cannot roll back, so it
   // runs before any status change: if it throws, the edit stays 'pending' —
@@ -235,7 +252,10 @@ function approveAndApply(editId, reviewerId, reviewerUsername, reviewerNote) {
     segments
   );
 
-  // 2. Mark approved + applied together, atomically.
+  // 2. Mark approved + applied, and supersede the (strictly older — the guard
+  // above proved none is newer) sibling pendings, atomically. The losing
+  // editor's work becomes history, not a bogus rejection and not a stuck
+  // queue item (item 13, Pass-1 parity).
   conn.transaction(() => {
     conn
       .prepare(
@@ -246,6 +266,24 @@ function approveAndApply(editId, reviewerId, reviewerUsername, reviewerNote) {
          WHERE id = ?`
       )
       .run(String(reviewerId), reviewerUsername, reviewerNote || null, editId);
+
+    conn
+      .prepare(
+        `UPDATE localization_pending_edits
+         SET status = 'superseded', reviewer_id = ?, reviewer_username = ?,
+             reviewer_note = 'Leyst úr gildi af nýrri samþykktri breytingu',
+             reviewed_at = CURRENT_TIMESTAMP
+         WHERE book = ? AND module_id = ? AND segment_id = ?
+           AND status = 'pending' AND id != ?`
+      )
+      .run(
+        String(reviewerId),
+        reviewerUsername,
+        edit.book,
+        edit.module_id,
+        edit.segment_id,
+        editId
+      );
   })();
 
   log.info(
