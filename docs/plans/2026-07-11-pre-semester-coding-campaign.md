@@ -95,7 +95,7 @@ New/updated entries from the depth-aware render walk, verbatim from the design's
 
 ## Phase 3 — semester editorial-quality sprint (weeks 3–4)
 Rationale: editors return at semester start; these protect and de-confuse their daily flow.
-12. **Batch 5 — apply/job/version integrity** (approve-then-write order, same-second tie-break, restore reindex, render-in-progress check, jobs get `book`). **✅ SHIPPED (branch fix/item12-apply-job-version-integrity — PR pending).**
+12. **Batch 5 — apply/job/version integrity** (approve-then-write order, same-second tie-break, restore reindex, render-in-progress check, jobs get `book`). **✅ MERGED PR #298 (2026-07-17, main `615a7462`; suite 2799/193; final review 3-lens fable + 3-vote verify: 1 Important fixed in-branch — MAX_JOBS throw post-apply → `hasCapacity(2)` 409s pre-apply; registers I12-R1..R5, I12-M1..M7 below).**
 13. **Batch 6 — concurrent-edit lost updates** (localization pending-edit scoping by editor; stale-retry cancellation).
 14. **Batch 8 — appendices label unification** (progress + search indexing).
 15. **rem-2.2 — localized restore parity** (version history for Pass-2, matching faithful).
