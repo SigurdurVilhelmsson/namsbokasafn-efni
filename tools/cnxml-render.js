@@ -141,7 +141,8 @@ function matchLeadingTitle(content) {
 // CONFIGURATION
 // =====================================================================
 
-let BOOKS_DIR = 'books/efnafraedi-2e';
+const DEFAULT_BOOKS_DIR = 'books/efnafraedi-2e';
+let BOOKS_DIR = DEFAULT_BOOKS_DIR;
 let BOOK_SLUG = 'efnafraedi-2e';
 
 // Item 9/D3: active publication track for os-embed sidecar preference and
@@ -162,8 +163,21 @@ let RENDER_TRACK = 'mt-preview';
 const OS_EMBED_STATS = { translated: 0, fallback: 0, staleSidecar: 0 };
 let BOOKS_DIR_TEST_OVERRIDE = null;
 
+/**
+ * Point the module's book-dir state at a test fixture tree, or restore it.
+ * Unified seam (item 9 + item 10 reconciliation, post-#291 rebase):
+ * `BOOKS_DIR_TEST_OVERRIDE` remains resolveOsEmbed's dedicated channel
+ * (item 9 — `BOOKS_DIR_TEST_OVERRIDE || BOOKS_DIR`), while `BOOKS_DIR` itself
+ * is also reassigned so every other consumer (translatedCnxmlPath,
+ * extractAnswerKey, renderCnxmlToHtml's output-dir joins, etc. — item 10)
+ * sees the fixture too. Falls back to DEFAULT_BOOKS_DIR on a falsy `dir` so
+ * item 9's `_setBooksDirForTest(null)` afterEach restores a real path
+ * instead of leaving BOOKS_DIR null for later path resolution.
+ * @param {string|null} dir
+ */
 function _setBooksDirForTest(dir) {
   BOOKS_DIR_TEST_OVERRIDE = dir;
+  BOOKS_DIR = dir || DEFAULT_BOOKS_DIR;
 }
 function _getOsEmbedStatsForTest() {
   return { ...OS_EMBED_STATS };
@@ -3019,26 +3033,20 @@ function extractAnswerKey(chapter, modules, moduleSections, track) {
     const cnxml = fs.readFileSync(modulePath, 'utf-8');
     const moduleAnswers = [];
 
-    // Extract all exercises with solutions
-    const exercisePattern = /<exercise\s+id="([^"]+)">([\s\S]*?)<\/exercise>/g;
-    let exerciseMatch;
-
-    while ((exerciseMatch = exercisePattern.exec(cnxml)) !== null) {
+    // Extract all exercises with solutions (item 10/RV-3: attrs-anywhere via
+    // scanBlocks, so a type=-first exercise like <exercise type="…" id="…">
+    // is no longer silently dropped from the answer key). Body slice keeps
+    // today's semantics: the first `</exercise>` after the opening tag.
+    for (const exr of scanBlocks(cnxml, 'exercise')) {
       exerciseNumber++;
-      const exerciseId = exerciseMatch[1];
-      const exerciseContent = exerciseMatch[2];
+      const openEnd = cnxml.indexOf('>', exr.index) + 1;
+      const closeIdx = cnxml.indexOf('</exercise>', openEnd);
+      if (closeIdx === -1) continue;
+      const exerciseContent = cnxml.slice(openEnd, closeIdx);
 
-      // Check if this exercise has a solution
       const solutionMatch = exerciseContent.match(/<solution\s+id="[^"]*">([\s\S]*?)<\/solution>/);
-
       if (solutionMatch) {
-        const solutionContent = solutionMatch[1];
-
-        moduleAnswers.push({
-          id: exerciseId,
-          number: exerciseNumber,
-          content: solutionContent,
-        });
+        moduleAnswers.push({ id: exr.id, number: exerciseNumber, content: solutionMatch[1] });
       }
     }
 
@@ -3284,12 +3292,14 @@ async function main() {
 
       // Use composite keys (moduleId:elementId) because some books (e.g., lifraen-efnafraedi)
       // reuse IDs like fig-00001, exam-00001 across modules within the same chapter.
-      const figPattern = /<figure\s+id="([^"]+)"/g;
-      let fm;
-      while ((fm = figPattern.exec(modCnxml)) !== null) {
+      for (const fig of scanBlocks(modCnxml, 'figure')) {
+        // Register EVERY figure id (link resolution must not change); number
+        // only the non-unnumbered ones (item 10/RV-3 — organic's class-first
+        // and unnumbered figures).
+        addId(fig.id, modId);
+        if (fig.unnumbered) continue;
         chapterFigCounter++;
-        chapterFigureNumbers.set(`${modId}:${fm[1]}`, `${args.chapter}.${chapterFigCounter}`);
-        addId(fm[1], modId);
+        chapterFigureNumbers.set(`${modId}:${fig.id}`, `${args.chapter}.${chapterFigCounter}`);
       }
 
       // R4-2: skip numbering for class="unnumbered" tables (but addId still runs,
@@ -3299,14 +3309,8 @@ async function main() {
       const isAppendixChapter = args.chapter === 'appendices';
       const appendixLetter = isAppendixChapter ? appendixModuleLetters.get(modId) : null;
       let appendixTableCounter = 0; // reset every modId iteration
-      const tblPattern = /<table\s+([^>]*?)>/g;
-      let tm;
-      while ((tm = tblPattern.exec(modCnxml)) !== null) {
-        const attrs = tm[1];
-        const idMatch = attrs.match(/id="([^"]+)"/);
-        if (!idMatch) continue;
-        const tid = idMatch[1];
-        if (!hasUnnumberedClass(attrs)) {
+      for (const tbl of scanBlocks(modCnxml, 'table')) {
+        if (!tbl.unnumbered) {
           let num;
           if (isAppendixChapter && appendixLetter) {
             appendixTableCounter++;
@@ -3315,40 +3319,28 @@ async function main() {
             chapterTableCounter++;
             num = formatTableNumber(args.chapter, null, chapterTableCounter);
           }
-          chapterTableNumbers.set(`${modId}:${tid}`, num);
+          chapterTableNumbers.set(`${modId}:${tbl.id}`, num);
         }
-        addId(tid, modId);
+        addId(tbl.id, modId);
       }
 
-      const examplePattern = /<example\s+id="([^"]+)"/g;
-      let exm2;
-      while ((exm2 = examplePattern.exec(modCnxml)) !== null) {
+      for (const ex of scanBlocks(modCnxml, 'example')) {
         chapterExampleCounter++;
-        chapterExampleNumbers.set(
-          `${modId}:${exm2[1]}`,
-          `${args.chapter}.${chapterExampleCounter}`
-        );
-        addId(exm2[1], modId);
+        chapterExampleNumbers.set(`${modId}:${ex.id}`, `${args.chapter}.${chapterExampleCounter}`);
+        addId(ex.id, modId);
       }
 
       // Build numbered equation map (skip unnumbered)
-      const eqPattern = /<equation\s+([^>]*?)>/g;
-      let eqm;
-      while ((eqm = eqPattern.exec(modCnxml)) !== null) {
-        const attrs = eqm[1];
-        const idMatch = attrs.match(/id="([^"]+)"/);
-        // Register every equation id (numbered or not) so cross-page links to unnumbered
-        // equations also resolve.
-        if (idMatch) addId(idMatch[1], modId);
-        // Skip numbering for unnumbered
-        if (attrs.includes('class="unnumbered"')) continue;
-        if (idMatch) {
-          chapterEquationCounter++;
-          chapterEquationNumbers.set(
-            `${modId}:${idMatch[1]}`,
-            `${args.chapter}.${chapterEquationCounter}`
-          );
-        }
+      for (const eq of scanBlocks(modCnxml, 'equation')) {
+        // Register every equation id (numbered or not) so cross-page links to
+        // unnumbered equations also resolve.
+        addId(eq.id, modId);
+        if (eq.unnumbered) continue;
+        chapterEquationCounter++;
+        chapterEquationNumbers.set(
+          `${modId}:${eq.id}`,
+          `${args.chapter}.${chapterEquationCounter}`
+        );
       }
 
       // Build section title map for cross-reference resolution
@@ -3365,11 +3357,15 @@ async function main() {
       // OpenStax CNXML has titles either directly under <example> or inside a nested <para>:
       //   <example id="..."><title>...</title>            (direct)
       //   <example id="..."><para id="..."><title>...</title>  (nested in para)
-      const exPattern = /<example\s+id="([^"]+)"[^>]*>[\s\S]*?<title>([\s\S]*?)<\/title>/g;
-      let em;
-      while ((em = exPattern.exec(modCnxml)) !== null) {
-        const titleText = em[2].replace(/<[^>]+>/g, '').trim();
-        chapterSectionTitles.set(em[1], titleText);
+      // (Deliberately preserves today's latent "first title anywhere after the
+      // tag" semantics — tightening it is out of scope; the corpus sweep
+      // enforces no-change.)
+      for (const ex of scanBlocks(modCnxml, 'example')) {
+        const tail = modCnxml.slice(ex.index);
+        const tm2 = tail.match(/<title>([\s\S]*?)<\/title>/);
+        if (!tm2) continue;
+        const titleText = tm2[1].replace(/<[^>]+>/g, '').trim();
+        chapterSectionTitles.set(ex.id, titleText);
         // (id already registered by the example loop above)
       }
 
@@ -3382,15 +3378,13 @@ async function main() {
       }
 
       // Build chapter-wide exercise number map
-      const exerPattern = /<exercise\s+id="([^"]+)"/g;
-      let exm;
-      while ((exm = exerPattern.exec(modCnxml)) !== null) {
+      for (const exr of scanBlocks(modCnxml, 'exercise')) {
         chapterExerciseCounter++;
         chapterExerciseNumbers.set(
-          `${modId}:${exm[1]}`,
+          `${modId}:${exr.id}`,
           `${args.chapter}.${chapterExerciseCounter}`
         );
-        addId(exm[1], modId);
+        addId(exr.id, modId);
       }
 
       // Also register para ids (used as anchor targets in some cross-references).
@@ -4067,6 +4061,7 @@ export {
   _setBooksDirForTest,
   _getOsEmbedStatsForTest,
   _resetOsEmbedStatsForTest,
+  extractAnswerKey,
   LOUD_SEAM_IGNORE,
   ITEM_INLINE_OK,
 };
