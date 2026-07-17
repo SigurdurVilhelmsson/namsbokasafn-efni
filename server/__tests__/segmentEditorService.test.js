@@ -1165,6 +1165,71 @@ describe('applyApprovedEdits — integration', () => {
     expect(service.getEditById(newer.id).status).toBe('approved');
   });
 
+  it('apply-time convergence: a legacy approved-unapplied older row cannot regress an applied newer winner (I12-R5 apply layer)', () => {
+    // Task 8's approve-time guard (SUPERSEDED_BY_NEWER, see the test above)
+    // now stops an older edit from ever reaching approved-unapplied once a
+    // newer edit on the same segment is already applied — so the API can no
+    // longer create the state this test forces. But applyApprovedEdits()
+    // still has its own convergence defense (winner picked across ALL
+    // approved rows, applied or not) for legacy/manual DB states — e.g. a
+    // row hand-edited in the DB, or data from before Task 8's guard existed.
+    // Force that state directly with raw SQL to keep the apply-layer branch
+    // pinned instead of letting it go untested (campaign lesson: a test
+    // whose scenario becomes invariant silently stops testing — retarget
+    // it).
+    const older = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'MT texti',
+      editedContent: 'Eldri breyting',
+      editorId: 'editor-1',
+      editorUsername: 'ritstjoriA',
+    });
+    const newer = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'MT texti',
+      editedContent: 'Nýrri breyting',
+      editorId: 'editor-2',
+      editorUsername: 'ritstjoriB',
+    });
+    db.prepare(`UPDATE segment_edits SET created_at = '2026-07-17 10:00:00' WHERE id = ?`).run(
+      older.id
+    );
+    db.prepare(`UPDATE segment_edits SET created_at = '2026-07-17 10:00:05' WHERE id = ?`).run(
+      newer.id
+    );
+
+    // Approve and apply the NEWER edit first — it publishes on its own, via
+    // the same-batch path (appliedCount === 1). This must happen BEFORE the
+    // older row becomes approved-unapplied, or the two approvals would land
+    // in the same apply batch and miss the apply-layer branch entirely.
+    service.approveEdit(newer.id, 'he-1', 'yfirlesari', null);
+    service.applyApprovedEdits('testbook', 1, 'm00001');
+
+    // Force the older row into the now-API-unreachable state: approved but
+    // never applied, sitting alongside an already-applied newer winner.
+    db.prepare(
+      `UPDATE segment_edits SET status = 'approved', reviewed_at = CURRENT_TIMESTAMP, applied_at = NULL WHERE id = ?`
+    ).run(older.id);
+
+    const second = service.applyApprovedEdits('testbook', 1, 'm00001');
+
+    // The apply-layer defense: the older row is superseded, not applied —
+    // published content does not regress.
+    expect(second.appliedCount).toBe(0);
+    expect(second.supersededCount).toBe(1);
+    expect(readFaithful()['m00001:para:fs-id001']).toBe('Nýrri breyting');
+    const olderAfter = service.getEditById(older.id);
+    expect(olderAfter.status).toBe('superseded');
+    expect(olderAfter.applied_at).toBeTruthy();
+    expect(service.getEditById(newer.id).status).toBe('approved');
+  });
+
   it('apply is convergent: preview and file agree after any approval order', () => {
     const a = service.saveSegmentEdit({
       book: 'testbook',
