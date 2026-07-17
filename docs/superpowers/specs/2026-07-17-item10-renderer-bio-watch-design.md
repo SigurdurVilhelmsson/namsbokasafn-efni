@@ -54,13 +54,18 @@ whose key-terms fallback fires (0 `<glossary>`); biology could introduce
 New module-local helper in `cnxml-render.js` (exported for tests):
 
 ```
-scanBlocks(cnxml, tagName, { skipUnnumbered = false } = {})
-  → [{ id: string, attrs: string, index: number }]   // document order
+scanBlocks(cnxml, tagName)
+  → [{ id: string, attrs: string, index: number, unnumbered: boolean }]   // document order
 ```
 
 - Regex per call: `new RegExp('<' + tagName + '\\b([^>]*)>', 'g')` — captures the attrs
   string wherever the id sits.
-- `skipUnnumbered: true` → drop matches where `hasUnnumberedClass(attrs)`.
+- `unnumbered` = `hasUnnumberedClass(attrs)`. The helper does NOT filter on it —
+  **callers decide**, because the chapter-wide passes feed the id registry (`addId`)
+  unconditionally (the table pass documents that the registry "must not change" even for
+  unnumbered elements); a filtering helper would silently break link resolution for
+  skipped elements. Numbering callers skip `unnumbered` entries; registry calls run for
+  every entry.
 - Matches without an `id="…"` are dropped (all six passes key numbering by id today; an
   id-less numbered block cannot receive a forward reference).
 - `index` = match index in the source string (the example-title pass uses it to slice
@@ -101,11 +106,14 @@ evidence, no register ask).
 
 ### Cluster 3 — link-path fixes
 
-- **#20:** in BOTH of `resolveCrossModuleHref`'s appendix branches
-  (`cnxml-elements.js:109-112` documentId-keyed, and the no-owner branch at `:119+` —
-  both emit `/vidauki/{letter}` landing hrefs), append
-  `#${targetId}` to the `/vidauki/{letter}` href when `targetId` is non-null. The
-  fragment must be attr-escaped exactly as other hrefs are.
+- **#20:** in `resolveCrossModuleHref`'s **documentId-keyed** appendix branch
+  (`cnxml-elements.js:109-112`), append `#${targetId}` to the `/vidauki/{letter}` href
+  when `targetId` is non-null (attr-escaped like other hrefs); update the branch comment
+  ("all such links are document-only") which this change obsoletes. The **no-owner**
+  appendix branch (`:125-133`) is deliberately NOT touched: its fragment drop is a
+  documented A1 decision (vefur 307-redirects the only current case; per-id fragment
+  scrolling for prose appendices is A1's deferred general mechanism) — register #20's
+  text targets only the documentId-gated branch.
 - **#22:** the key-terms fallback's per-item link handling calls
   `resolveCrossModuleHref(documentId, targetId, context)` (the same context object the
   surrounding render pass already holds) instead of hand-building
