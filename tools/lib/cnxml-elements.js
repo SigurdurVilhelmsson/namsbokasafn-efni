@@ -768,10 +768,11 @@ export function processInlineContent(content, context) {
       result = result.replace(EMPHASIS_RE, (match, attrs, inner) => {
         const effect = (attrs.match(/effect="([^"]*)"/) || [])[1];
         const cls = (attrs.match(/class="([^"]*)"/) || [])[1] || '';
-        // Carry class="emphasis-one" through regardless of which effect branch fires, so a
-        // (currently unobserved in-corpus, but not impossible) `effect="…" class="emphasis-one"`
-        // combo doesn't silently drop the class.
-        const classAttr = cls.split(/\s+/).includes('emphasis-one') ? ' class="emphasis-one"' : '';
+        // item 10/P0-5: preserve the class attribute VERBATIM (any classes) —
+        // the old emphasis-one-only carry dropped organic's centered-text etc.
+        // Unknown classes are inert until vefur CSS styles them ([VEFUR] note
+        // in the campaign register).
+        const classAttr = cls ? ` class="${escapeAttr(cls)}"` : '';
         const body = processInlineContent(inner, context);
         if (effect === 'bold') return `<strong${classAttr}>${body}</strong>`;
         if (effect === 'underline') return `<u${classAttr}>${body}</u>`;

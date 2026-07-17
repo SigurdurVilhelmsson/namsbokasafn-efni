@@ -517,7 +517,9 @@ Examples:
  */
 function filterOutlineEntries(moduleSections) {
   return Object.entries(moduleSections).filter(
-    ([key, info]) => !key.startsWith('_') && info.section !== '0'
+    // item 10/P0-3: tolerate a null info value (excluded, not thrown) — the
+    // call site only populates section objects today; this is defense.
+    ([key, info]) => !key.startsWith('_') && info && info.section !== '0'
   );
 }
 
@@ -1798,6 +1800,8 @@ function renderList(list, context) {
   if (listType === 'enumerated') {
     if (numberStyle === 'lower-alpha') styleAttr = ' style="list-style-type: lower-alpha"';
     else if (numberStyle === 'upper-alpha') styleAttr = ' style="list-style-type: upper-alpha"';
+    else if (numberStyle === 'lower-roman') styleAttr = ' style="list-style-type: lower-roman"';
+    else if (numberStyle === 'upper-roman') styleAttr = ' style="list-style-type: upper-roman"';
   }
 
   const classAttr = list.attributes.class ? ` class="${escapeAttr(list.attributes.class)}"` : '';
