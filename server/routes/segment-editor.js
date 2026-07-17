@@ -27,7 +27,6 @@
  *
  *   POST /api/segment-editor/:book/:chapter/:moduleId/apply  Apply approved edits to files
  *   POST /api/segment-editor/:book/:chapter/:moduleId/apply-and-render  Apply then inject+render
- *   POST /api/segment-editor/:book/:chapter/apply-all        Bulk apply all approved modules
  *   GET  /api/segment-editor/:book/:chapter/:moduleId/apply-status  Check apply status
  */
 
@@ -753,7 +752,8 @@ router.post(
           applied = segmentEditor.applyApprovedEdits(
             review.review.book,
             review.review.chapter,
-            review.review.module_id
+            review.review.module_id,
+            { appliedBy: req.user.username || (req.user.id != null ? String(req.user.id) : null) }
           );
         } catch (applyErr) {
           // Auto-apply is best-effort; don't fail the review completion.
@@ -1124,7 +1124,8 @@ router.post(
       const result = segmentEditor.applyApprovedEdits(
         req.params.book,
         req.chapterNum,
-        req.params.moduleId
+        req.params.moduleId,
+        { appliedBy: req.user.username || (req.user.id != null ? String(req.user.id) : null) }
       );
 
       activityLog.log({
@@ -1163,23 +1164,35 @@ router.post(
   validateModule,
   (req, res) => {
     try {
-      // Step 1: Apply edits to files
-      const applyResult = segmentEditor.applyApprovedEdits(
-        req.params.book,
-        req.chapterNum,
-        req.params.moduleId
-      );
-
-      // Step 2: Run inject+render pipeline (async — returns job ID for polling)
-      const existing = pipelineService.hasRunningJob(req.chapterNum, 'pipeline');
+      // Guard FIRST (item 12, F6): a running pipeline means we could not
+      // render what we apply, so nothing is applied either — the 409
+      // truthfully reports a no-op and the head-editor just retries later.
+      const existing = pipelineService.hasRunningJob(req.params.book, req.chapterNum, 'pipeline');
       if (existing) {
         return res.status(409).json({
           error: 'Pipeline already running for this chapter',
           jobId: existing.id,
-          applied: applyResult,
         });
       }
 
+      // Capacity guard (item 12 final review): runPipeline throws over
+      // MAX_JOBS — that throw must land BEFORE edits are applied, not after,
+      // or the applied-but-unrendered dead-end returns via 500.
+      if (!pipelineService.hasCapacity(2)) {
+        return res.status(409).json({
+          error: 'Pipeline queue is full — try again shortly',
+        });
+      }
+
+      // Apply edits to files
+      const applyResult = segmentEditor.applyApprovedEdits(
+        req.params.book,
+        req.chapterNum,
+        req.params.moduleId,
+        { appliedBy: req.user.username || (req.user.id != null ? String(req.user.id) : null) }
+      );
+
+      // Run inject+render pipeline (async — returns job ID for polling)
       const { jobId } = pipelineService.runPipeline({
         book: req.params.book,
         chapter: req.chapterNum,
@@ -1209,75 +1222,6 @@ router.post(
       const status =
         err.message.includes('No approved') || err.message.includes('already been') ? 400 : 500;
       res.status(status).json({ error: err.message });
-    }
-  }
-);
-
-/**
- * POST /:book/:chapter/apply-all
- * Bulk apply approved edits for all modules in a chapter, then run pipeline.
- */
-router.post(
-  '/:book/:chapter/apply-all',
-  requireAuth,
-  requireHeadEditor(),
-  validateBookChapter,
-  (req, res) => {
-    try {
-      const modules = segmentParser.listChapterModules(req.params.book, req.chapterNum);
-      const results = [];
-
-      for (const mod of modules) {
-        // Check if this module has unapplied approved edits
-        const status = segmentEditor.getApplyStatus(req.params.book, mod.moduleId, req.chapterNum);
-        if (status.unapplied_count > 0) {
-          try {
-            const result = segmentEditor.applyApprovedEdits(
-              req.params.book,
-              req.chapterNum,
-              mod.moduleId
-            );
-            results.push({ moduleId: mod.moduleId, ...result });
-          } catch (err) {
-            results.push({ moduleId: mod.moduleId, error: err.message });
-          }
-        }
-      }
-
-      if (results.length === 0) {
-        return res.json({
-          success: true,
-          message: 'No unapplied approved edits found in this chapter',
-          results: [],
-        });
-      }
-
-      // Optionally run pipeline for the whole chapter
-      const runPipeline = req.body.runPipeline !== false;
-      let jobId = null;
-
-      if (runPipeline) {
-        const existing = pipelineService.hasRunningJob(req.chapterNum, 'pipeline');
-        if (!existing) {
-          const job = pipelineService.runPipeline({
-            book: req.params.book,
-            chapter: req.chapterNum,
-            track: 'faithful',
-            userId: req.user.id,
-          });
-          jobId = job.jobId;
-        }
-      }
-
-      res.json({
-        success: true,
-        results,
-        totalApplied: results.filter((r) => !r.error).length,
-        jobId,
-      });
-    } catch (err) {
-      log.error({ err }, 'Error in bulk apply');
-      res.status(500).json({ error: err.message });
     }
   }
 );

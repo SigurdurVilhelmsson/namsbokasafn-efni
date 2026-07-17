@@ -7,11 +7,17 @@
 
 import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest';
 import { createRequire } from 'module';
-import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, existsSync } from 'fs';
+import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, existsSync, rmSync } from 'fs';
 import { join } from 'path';
 import { tmpdir } from 'os';
 
 const require = createRequire(import.meta.url);
+
+// Pin the DB env BEFORE any server require: apply's concordance side effect
+// resolves its own DB via resolveDbPath() — never let a test run touch a
+// real sessions.db (same pin as applyAndRenderGuard/contentVersionService).
+process.env.SESSIONS_DB_PATH = join(tmpdir(), `ses-test-${process.pid}.db`);
+
 const Database = require('better-sqlite3');
 
 const service = require('../services/segmentEditorService');
@@ -896,6 +902,94 @@ describe('applyApprovedEdits — integration', () => {
     const olderEdit = service.getEditById(id1);
     expect(olderEdit.status).toBe('superseded');
     expect(olderEdit.applied_at).toBeTruthy();
+  });
+
+  it('same-second approvals: higher edit id wins deterministically, agreeing with preview (F15)', () => {
+    const { id: id1 } = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'original',
+      editedContent: 'Fyrri breyting',
+      editorId: 'editor-1',
+      editorUsername: 'editor1',
+    });
+    service.approveEdit(id1, 'reviewer-1', 'reviewer1');
+
+    const { id: id2 } = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'original',
+      editedContent: 'Seinni breyting',
+      editorId: 'editor-2',
+      editorUsername: 'editor2',
+    });
+    service.approveEdit(id2, 'reviewer-1', 'reviewer1');
+
+    // Force an exact reviewed_at tie (CURRENT_TIMESTAMP is 1s-granular; two
+    // real approvals inside one second produce exactly this state).
+    db.prepare(
+      `UPDATE segment_edits SET reviewed_at = '2026-07-17 12:00:00' WHERE id IN (?, ?)`
+    ).run(id1, id2);
+
+    const result = service.applyApprovedEdits('testbook', 1, 'm00001');
+    expect(result.appliedCount).toBe(1);
+    expect(result.supersededCount).toBe(1);
+
+    // Higher id wins — the same convention buildEffectiveSegments uses.
+    const segments = segmentParser.parseSegments(readFileSync(result.savedPath, 'utf-8'));
+    const seg = segments.find((s) => s.segmentId === 'm00001:para:fs-id001');
+    expect(seg.content).toBe('Seinni breyting');
+    expect(service.getEditById(id1).status).toBe('superseded');
+    expect(service.getEditById(id2).applied_at).toBeTruthy();
+  });
+
+  function maxVersion() {
+    return (
+      db
+        .prepare(
+          `SELECT MAX(version) AS v FROM content_versions WHERE book = 'testbook' AND module_id = 'm00001'`
+        )
+        .get().v || 0
+    );
+  }
+
+  function appliedByOfVersion(version) {
+    return db
+      .prepare(
+        `SELECT DISTINCT applied_by FROM content_versions WHERE book = 'testbook' AND module_id = 'm00001' AND version = ?`
+      )
+      .all(version);
+  }
+
+  it('apply records applied_by on the content snapshot (B4-F5)', () => {
+    const before = maxVersion();
+    saveAndApprove('m00001:para:fs-id001', 'Yfirfarið með rekjanleika.');
+    service.applyApprovedEdits('testbook', 1, 'm00001', { appliedBy: 'ritstjori-X' });
+    expect(appliedByOfVersion(before + 1)).toEqual([{ applied_by: 'ritstjori-X' }]);
+  });
+
+  it('apply without an actor keeps null applied_by (legacy callers)', () => {
+    const before = maxVersion();
+    saveAndApprove('m00001:para:fs-id001', 'Án rekjanleika.');
+    service.applyApprovedEdits('testbook', 1, 'm00001');
+    expect(appliedByOfVersion(before + 1)).toEqual([{ applied_by: null }]);
+  });
+
+  it('rebuild recursion preserves applied_by (B4-F5)', () => {
+    const before = maxVersion();
+    saveAndApprove('m00001:para:fs-id001', 'Fyrsta útgáfa fyrir endurbyggingu.');
+    const first = service.applyApprovedEdits('testbook', 1, 'm00001', { appliedBy: 'fyrsti' });
+    expect(appliedByOfVersion(before + 1)).toEqual([{ applied_by: 'fyrsti' }]);
+
+    // Delete the faithful file → next apply takes the self-heal recursion
+    // (:823 reset-applied_at path) and must carry the SECOND actor through.
+    rmSync(first.savedPath);
+    service.applyApprovedEdits('testbook', 1, 'm00001', { appliedBy: 'annar' });
+    expect(appliedByOfVersion(before + 2)).toEqual([{ applied_by: 'annar' }]);
   });
 
   it('edit-again: revising a published segment supersedes it and preserves other applied edits', () => {

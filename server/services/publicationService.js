@@ -210,7 +210,7 @@ async function publishChapter(bookSlug, chapterNum, track, userId) {
   }
 
   // Check for already-running pipeline
-  const existing = pipelineService.hasRunningJob(chapterNum, 'pipeline');
+  const existing = pipelineService.hasRunningJob(bookSlug, chapterNum, 'pipeline');
   if (existing) {
     throw new Error(
       `Pipeline already running for chapter ${chapterNum} (job: ${existing.id}). ` +
@@ -344,7 +344,7 @@ function getPublicationStatus(bookSlug, chapterNum) {
   };
 
   // Check for running pipeline jobs
-  const runningJob = pipelineService.hasRunningJob(chapterNum, 'pipeline');
+  const runningJob = pipelineService.hasRunningJob(bookSlug, chapterNum, 'pipeline');
   if (runningJob) {
     status.runningJob = {
       jobId: runningJob.id,

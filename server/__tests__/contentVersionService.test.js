@@ -13,14 +13,22 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { createRequire } from 'module';
 import { mkdtempSync, mkdirSync, writeFileSync, readFileSync } from 'fs';
-import { join } from 'path';
+import { join, dirname } from 'path';
 import { tmpdir } from 'os';
 
 const require = createRequire(import.meta.url);
+
+// Env BEFORE any server require: concordanceService resolves its DB path at
+// first use — never let a mis-wired singleton reach a real sessions.db.
+process.env.SESSIONS_DB_PATH = join(tmpdir(), `cvs-test-${process.pid}.db`);
+
 const Database = require('better-sqlite3');
 
 const contentVersionService = require('../services/contentVersionService');
 const segmentParser = require('../services/segmentParser');
+const concordance = require('../services/concordanceService');
+const tmService = require('../services/tmService');
+const migration036 = require('../migrations/036-tm-segments');
 
 const originalBooksDir = segmentParser.BOOKS_DIR;
 
@@ -79,6 +87,9 @@ describe('contentVersionService.restoreVersion', () => {
   beforeEach(() => {
     db = createTestDb();
     contentVersionService._setTestDb(db);
+    migration036.up(db); // tm_segments + FTS5 mirror for the F16 reindex assertions
+    concordance._setTestDb(db);
+    tmService._setRunner(() => Promise.resolve({ code: 0, stderr: '' }));
 
     tmpDir = mkdtempSync(join(tmpdir(), 'restore-test-'));
     booksDir = join(tmpDir, 'books');
@@ -100,6 +111,8 @@ describe('contentVersionService.restoreVersion', () => {
     db.close();
     contentVersionService._setTestDb(null);
     segmentParser._setTestBooksDir(originalBooksDir);
+    concordance._setTestDb(null);
+    tmService._setRunner();
   });
 
   /** Write the faithful file with the given {id: content} for the EN segments. */
@@ -227,6 +240,160 @@ describe('contentVersionService.restoreVersion', () => {
     expect(() => contentVersionService.restoreVersion(BOOK, CHAPTER, MODULE, 99, {})).toThrow(
       /Version 99 not found/
     );
+  });
+
+  it('records empty segments as explicit empty rows (F19)', () => {
+    const res = contentVersionService.snapshotModule(
+      BOOK,
+      CHAPTER,
+      MODULE,
+      [
+        { segmentId: SEG('fs-id001'), content: 'texti' },
+        { segmentId: SEG('fs-id002'), content: '' },
+      ],
+      'prófari',
+      db
+    );
+    expect(res.segmentsSnapshotted).toBe(2);
+    const rows = db
+      .prepare(
+        `SELECT segment_id, content FROM content_versions WHERE version = ? ORDER BY segment_id`
+      )
+      .all(res.version);
+    expect(rows).toContainEqual({ segment_id: SEG('fs-id002'), content: '' });
+  });
+
+  it('an all-empty module produces a real, listable version (F19 phantom fix)', () => {
+    const res = contentVersionService.snapshotModule(
+      BOOK,
+      CHAPTER,
+      MODULE,
+      EN_IDS.map((id) => ({ segmentId: SEG(id), content: '' })),
+      'prófari',
+      db
+    );
+    expect(res.segmentsSnapshotted).toBe(EN_IDS.length);
+    const listed = contentVersionService.getModuleVersions(BOOK, MODULE);
+    expect(listed.some((v) => v.version === res.version)).toBe(true);
+  });
+
+  it('restore-then-undo returns an empty segment to empty (F19)', () => {
+    // A past version where fs-id003 had real text.
+    const past = contentVersionService.snapshotModule(
+      BOOK,
+      CHAPTER,
+      MODULE,
+      [
+        { segmentId: SEG('fs-id001'), content: 'Gamalt 1' },
+        { segmentId: SEG('fs-id002'), content: 'Gamalt 2' },
+        { segmentId: SEG('fs-id003'), content: 'Gamalt 3' },
+      ],
+      'prófari',
+      db
+    );
+
+    // Current faithful state: fs-id003 is EMPTY (untranslated).
+    const faithfulPath = join(
+      booksDir,
+      BOOK,
+      '03-faithful-translation',
+      'ch01',
+      `${MODULE}-segments.is.md`
+    );
+    mkdirSync(dirname(faithfulPath), { recursive: true });
+    writeFileSync(
+      faithfulPath,
+      fileBody([
+        { segmentId: SEG('fs-id001'), content: 'Núverandi 1' },
+        { segmentId: SEG('fs-id002'), content: 'Núverandi 2' },
+        { segmentId: SEG('fs-id003'), content: '' },
+      ]),
+      'utf-8'
+    );
+
+    // Restore the past version → fs-id003 gets 'Gamalt 3'.
+    const res = contentVersionService.restoreVersion(BOOK, CHAPTER, MODULE, past.version, {
+      username: 'hx',
+    });
+    expect(readFaithful(booksDir)[SEG('fs-id003')]).toBe('Gamalt 3');
+
+    // Undo (restore the pre-restore snapshot) → fs-id003 must be EMPTY again.
+    contentVersionService.restoreVersion(BOOK, CHAPTER, MODULE, res.snapshotVersion, {
+      username: 'hx',
+    });
+    expect(readFaithful(booksDir)[SEG('fs-id003')]).toBe('');
+  });
+
+  it('nullish snapshot content fails loud and leaves no partial version (F19)', () => {
+    const before =
+      db
+        .prepare(`SELECT MAX(version) AS v FROM content_versions WHERE book = ? AND module_id = ?`)
+        .get(BOOK, MODULE).v || 0;
+    expect(() =>
+      contentVersionService.snapshotModule(
+        BOOK,
+        CHAPTER,
+        MODULE,
+        [
+          { segmentId: SEG('fs-id001'), content: 'gilt' },
+          { segmentId: SEG('fs-id002'), content: null },
+        ],
+        'prófari',
+        db
+      )
+    ).toThrow();
+    const rows = db
+      .prepare(
+        `SELECT COUNT(*) AS n FROM content_versions WHERE book = ? AND module_id = ? AND version > ?`
+      )
+      .get(BOOK, MODULE, before).n;
+    expect(rows).toBe(0); // transaction rolled back — no partial snapshot
+  });
+
+  it('restore reindexes concordance and schedules TM regen (F16)', () => {
+    const snap = contentVersionService.snapshotModule(
+      BOOK,
+      CHAPTER,
+      MODULE,
+      [
+        { segmentId: SEG('fs-id001'), content: 'Endurheimt efni 1' },
+        { segmentId: SEG('fs-id002'), content: 'Endurheimt efni 2' },
+        { segmentId: SEG('fs-id003'), content: 'Endurheimt efni 3' },
+      ],
+      'prófari',
+      db
+    );
+
+    contentVersionService.restoreVersion(BOOK, CHAPTER, MODULE, snap.version, { username: 'hx' });
+
+    // Concordance now reflects the RESTORED text (indexModule re-read the file).
+    const rows = db
+      .prepare(`SELECT segment_id, is_text FROM tm_segments WHERE book = ? AND module_id = ?`)
+      .all(BOOK, MODULE);
+    expect(rows.length).toBeGreaterThan(0);
+    expect(rows.find((r) => r.segment_id === SEG('fs-id001'))?.is_text).toBe('Endurheimt efni 1');
+
+    // TM regeneration was scheduled for this book (debounced; stub runner).
+    expect(tmService._pendingBooks()).toContain(BOOK);
+  });
+
+  it('restore still succeeds when reindexing fails (best-effort, F16)', () => {
+    const snap = contentVersionService.snapshotModule(
+      BOOK,
+      CHAPTER,
+      MODULE,
+      [{ segmentId: SEG('fs-id001'), content: 'Þolið efni' }],
+      'prófari',
+      db
+    );
+
+    const broken = new Database(':memory:'); // no tm tables → indexModule throws
+    concordance._setTestDb(broken);
+    const res = contentVersionService.restoreVersion(BOOK, CHAPTER, MODULE, snap.version, {
+      username: 'hx',
+    });
+    expect(res.restoredVersion).toBe(snap.version);
+    broken.close();
   });
 });
 

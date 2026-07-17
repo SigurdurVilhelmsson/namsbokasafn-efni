@@ -12,6 +12,8 @@ const fs = require('fs');
 const log = require('../lib/logger');
 const segmentParser = require('./segmentParser');
 const activityLog = require('./activityLog');
+const tmService = require('./tmService');
+const concordanceService = require('./concordanceService');
 const resolveDbPath = require('../lib/dbPath');
 
 const DB_PATH = resolveDbPath();
@@ -65,10 +67,13 @@ function snapshotModule(book, chapter, moduleId, segments, appliedBy, db = getDb
   const insertAll = db.transaction(() => {
     let count = 0;
     for (const seg of segments) {
-      if (seg.content) {
-        insert.run(book, chapter, moduleId, seg.segmentId, seg.content, nextVersion, appliedBy);
-        count++;
-      }
+      // Record every segment, empty string included: at restore time,
+      // absence-from-snapshot is indistinguishable from "was never extracted",
+      // which broke restore-undo for untranslated segments (item 12, F19).
+      // Nullish content throws (NOT NULL / binding error) and aborts the
+      // snapshot transaction — a bad caller must fail loud, not shrink history.
+      insert.run(book, chapter, moduleId, seg.segmentId, seg.content, nextVersion, appliedBy);
+      count++;
     }
     return count;
   });
@@ -221,6 +226,20 @@ function restoreVersion(book, chapter, moduleId, version, restoredBy = {}) {
 
   // 5. Write the restored content back as the new faithful baseline
   const savedPath = segmentParser.saveModuleSegments(book, chapter, moduleId, restoredSegments);
+
+  // Keep derived caches current — the same two best-effort steps the apply
+  // path runs after writing the faithful file (segmentEditorService
+  // :995-1009). Never fail the restore over a cache refresh.
+  try {
+    tmService.scheduleTmRegen(book);
+  } catch (err) {
+    log.error({ err, book }, 'Scheduling TM regeneration after restore failed');
+  }
+  try {
+    concordanceService.indexModule(book, chapter, moduleId);
+  } catch (err) {
+    log.error({ err, book, moduleId }, 'Concordance indexing after restore failed');
+  }
 
   const result = {
     restoredVersion: version,

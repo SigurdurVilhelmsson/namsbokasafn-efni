@@ -208,17 +208,12 @@ function approveAndApply(editId, reviewerId, reviewerUsername, reviewerNote) {
   if (!edit) throw new Error('Edit not found');
   if (edit.status !== 'pending') throw new Error('Edit is not pending');
 
-  // 1. Mark approved
-  conn
-    .prepare(
-      `UPDATE localization_pending_edits
-       SET status = 'approved', reviewer_id = ?, reviewer_username = ?,
-           reviewer_note = ?, reviewed_at = CURRENT_TIMESTAMP
-       WHERE id = ?`
-    )
-    .run(String(reviewerId), reviewerUsername, reviewerNote || null, editId);
-
-  // 2. Apply to the localized file (snapshot-before-save handled by .bak)
+  // 1. Apply to the localized file FIRST (snapshot-before-save handled by .bak).
+  // The file write is the one step a SQLite transaction cannot roll back, so it
+  // runs before any status change: if it throws, the edit stays 'pending' —
+  // visible in the queue, retryable, rejectable. If the write succeeds but the
+  // status update below fails, the edit also stays 'pending' and a retry
+  // rewrites identical bytes, so no state is stranded either way.
   const data = segmentParser.loadModuleForLocalization(edit.book, edit.chapter, edit.module_id);
   const segments = data.segments.map((seg) => ({
     segmentId: seg.segmentId,
@@ -236,10 +231,18 @@ function approveAndApply(editId, reviewerId, reviewerUsername, reviewerNote) {
     segments
   );
 
-  // 3. Mark applied
-  conn
-    .prepare(`UPDATE localization_pending_edits SET applied_at = CURRENT_TIMESTAMP WHERE id = ?`)
-    .run(editId);
+  // 2. Mark approved + applied together, atomically.
+  conn.transaction(() => {
+    conn
+      .prepare(
+        `UPDATE localization_pending_edits
+         SET status = 'approved', reviewer_id = ?, reviewer_username = ?,
+             reviewer_note = ?, reviewed_at = CURRENT_TIMESTAMP,
+             applied_at = CURRENT_TIMESTAMP
+         WHERE id = ?`
+      )
+      .run(String(reviewerId), reviewerUsername, reviewerNote || null, editId);
+  })();
 
   log.info(
     { book: edit.book, moduleId: edit.module_id, segmentId: edit.segment_id, editId },

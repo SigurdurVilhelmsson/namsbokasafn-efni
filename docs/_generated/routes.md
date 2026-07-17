@@ -81,7 +81,7 @@
 | DELETE | `/:bookId/chapters/:chapter/files` |
 | GET | `/:bookId/files/summary` |
 | GET | `/:bookId/download` |
-| GET | `/:bookId/chapters/:chapter/faithful-count` |
+| GET | `/:book/chapters/:chapter/faithful-count` |
 | POST | `/:bookId/chapters/:chapter/import` |
 
 ## /feedback
@@ -182,7 +182,6 @@
 | Method | Path |
 |--------|------|
 | GET | `/:sectionId` |
-| POST | `/:sectionId/upload/:uploadType` |
 | POST | `/:sectionId/assign-reviewer` |
 | POST | `/:sectionId/assign-localizer` |
 | POST | `/:sectionId/status` |
@@ -211,6 +210,7 @@
 | POST | `/edit/:editId/reject` |
 | POST | `/edit/:editId/discuss` |
 | POST | `/edit/:editId/unapprove` |
+| POST | `/edit/:editId/return-to-pending` |
 | POST | `/reviews/:reviewId/complete` |
 | POST | `/edit/:editId/comment` |
 | GET | `/:book/:chapter/:moduleId/terms` |
@@ -223,7 +223,6 @@
 | GET | `/:book/:chapter/:moduleId/apply-status` |
 | POST | `/:book/:chapter/:moduleId/apply` |
 | POST | `/:book/:chapter/:moduleId/apply-and-render` |
-| POST | `/:book/:chapter/apply-all` |
 | GET | `/:book/:chapter/:moduleId/versions` |
 | GET | `/:book/:chapter/:moduleId/versions/:version` |
 | POST | `/:book/:chapter/:moduleId/restore/:version` |

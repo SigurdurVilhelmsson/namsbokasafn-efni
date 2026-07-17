@@ -4,8 +4,8 @@
  * After approved edits are applied to 03-faithful-translation/, the TMX in
  * books/<book>/tm/ is stale. This service regenerates it by running the
  * tools/generate-tm.js CLI. Regeneration is:
- *   - debounced per book, so a bulk "apply-all" of many modules coalesces into
- *     a single run instead of spawning one process per module; and
+ *   - debounced per book, so rapid successive applies (several modules
+ *     published in quick succession) coalesce into a single run; and
  *   - fire-and-forget, so it can never break or slow the apply path (failures
  *     are logged, never thrown).
  *
