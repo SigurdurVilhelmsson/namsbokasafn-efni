@@ -511,11 +511,7 @@ function filterOutlineEntries(moduleSections) {
  * Class-WORD match for class="unnumbered" (R4-2). Unlike a substring/exact-string
  * check, this correctly matches multi-class forms like class="column-header
  * unnumbered" and correctly rejects near-miss substrings like class="unnumbered-foo".
- * NOTE: the equation pre-scan (below) still uses its own exact-string check
- * (attrs.includes('class="unnumbered"')) and is deliberately left alone here —
- * splitting the shared-helper refactor from the table-numbering fix keeps this
- * change scoped. The equation check has the same multi-class fragility; logged
- * out-of-scope for a future task.
+ * Every numbering pre-scan routes through scanBlocks() below, which applies this word-match uniformly (item 10/RV-3).
  * @param {string} attrs - raw attribute string of an opening tag
  * @returns {boolean}
  */
@@ -610,52 +606,36 @@ function renderCnxmlToHtml(cnxml, options = {}) {
   const doc = parseCnxmlDocument(cnxml);
   const title = options.titleOverride || doc.title;
 
-  // Pre-scan: collect all figure IDs and assign numbers
-  // This enables forward references like "(Figure 5.3)" before the figure appears
+  // Pre-scan: collect all figure IDs and assign numbers (item 10/RV-3: shared
+  // scanner — attrs-anywhere so class-first figures are found; unnumbered
+  // figures no longer consume a slot).
   const figureNumbers = new Map();
-  const figureIdPattern = /<figure\s+id="([^"]+)"/g;
-  let figMatch;
   let figCounter = 0;
-  while ((figMatch = figureIdPattern.exec(cnxml)) !== null) {
+  for (const fig of scanBlocks(cnxml, 'figure')) {
+    if (fig.unnumbered) continue;
     figCounter++;
-    figureNumbers.set(figMatch[1], `${chapter}.${figCounter}`);
+    figureNumbers.set(fig.id, `${chapter}.${figCounter}`);
   }
 
-  // Pre-scan: collect all table IDs and assign numbers.
-  // Skip class="unnumbered" tables (R4-2) so they don't consume a slot in the
-  // shared counter — mirrors the equation pre-scan below, but via a class-WORD
-  // match (hasUnnumberedClass) since tables use multi-class forms like
-  // class="column-header unnumbered" that the equation pass's exact-string
-  // check would miss.
+  // Pre-scan: collect all table IDs and assign numbers. Skip class="unnumbered"
+  // tables (R4-2) so they don't consume a slot in the shared counter.
   const tableNumbers = new Map();
-  const tableIdPattern = /<table\s+([^>]*?)>/g;
-  let tableMatch;
   let tableCounter = 0;
-  while ((tableMatch = tableIdPattern.exec(cnxml)) !== null) {
-    const attrs = tableMatch[1];
-    if (hasUnnumberedClass(attrs)) continue;
-    const idMatch = attrs.match(/id="([^"]+)"/);
-    if (!idMatch) continue;
+  for (const tbl of scanBlocks(cnxml, 'table')) {
+    if (tbl.unnumbered) continue;
     tableCounter++;
-    tableNumbers.set(idMatch[1], `${chapter}.${tableCounter}`);
+    tableNumbers.set(tbl.id, `${chapter}.${tableCounter}`);
   }
 
-  // Pre-scan: collect all numbered equation IDs and assign numbers
-  // Skip equations with class="unnumbered"
+  // Pre-scan: collect numbered equation IDs (item 10/P0-2: word-match skip via
+  // the shared scanner — multi-class forms like class="foo unnumbered" are now
+  // skipped, closing the fragility E7 fixed for tables).
   const equationNumbers = new Map();
-  const equationPattern = /<equation\s+([^>]*?)>/g;
-  let eqMatch;
   let eqCounter = 0;
-  while ((eqMatch = equationPattern.exec(cnxml)) !== null) {
-    const attrs = eqMatch[1];
-    // Skip if unnumbered
-    if (attrs.includes('class="unnumbered"')) continue;
-    // Extract id
-    const idMatch = attrs.match(/id="([^"]+)"/);
-    if (idMatch) {
-      eqCounter++;
-      equationNumbers.set(idMatch[1], `${chapter}.${eqCounter}`);
-    }
+  for (const eq of scanBlocks(cnxml, 'equation')) {
+    if (eq.unnumbered) continue;
+    eqCounter++;
+    equationNumbers.set(eq.id, `${chapter}.${eqCounter}`);
   }
 
   // Context for rendering
