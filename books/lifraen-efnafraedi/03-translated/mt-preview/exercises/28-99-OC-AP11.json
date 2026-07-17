@@ -1,0 +1,15 @@
+{
+  "nickname": "28-99-OC-AP11",
+  "source_uid": "39140@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348366",
+      "stem_html": "<p>Gefðu upp mRNA-röð sem mun tákna myndun metenkefalíns.</p>\n<p style=\"text-align: center\">Tyr-Gly-Gly-Phe-Met</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

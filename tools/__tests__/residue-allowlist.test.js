@@ -38,3 +38,22 @@ describe('classifyResidue', () => {
     expect(classifyResidue('m1', 's1', { entries: [] }).tolerated).toBe(false);
   });
 });
+
+describe('neutral-notation class (item-9 exercise follow-up)', () => {
+  it('tolerates a neutral-notation entry (amino-acid sequences / formula chains)', () => {
+    const a = {
+      entries: [
+        {
+          moduleId: '26-06-OC-P15',
+          segmentId: '26-06-OC-P15:sol:348956-b0',
+          class: 'neutral-notation',
+          reason:
+            'amino-acid sequence (Arg-Pro-Leu-Gly-Ile-Val) — international notation, EN bytes are the correct translation',
+        },
+      ],
+    };
+    const r = classifyResidue('26-06-OC-P15', '26-06-OC-P15:sol:348956-b0', a);
+    expect(r.tolerated).toBe(true);
+    expect(r.class).toBe('neutral-notation');
+  });
+});

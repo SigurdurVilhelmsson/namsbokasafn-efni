@@ -1,0 +1,28 @@
+{
+  "nickname": "26-06-OC-P15",
+  "source_uid": "39226@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Tilgreindu amínósýruröð sexpeptíða sem gefa eftirfarandi brot við vatnsrof með sýru að hluta:",
+  "questions": [
+    {
+      "id": "348956",
+      "stem_html": "Arg, Gly, Ile, Leu, Pro, Val gefur Pro-Leu-Gly, Arg-Pro, Gly-Ile-Val",
+      "collaborator_solutions": [
+        {
+          "content_html": "Arg-Pro-Leu-Gly-Ile-Val"
+        }
+      ]
+    },
+    {
+      "id": "348957",
+      "stem_html": "N, L, M, W, V<sub>2</sub> gefur V-L, V-M-W, W-N-V",
+      "collaborator_solutions": [
+        {
+          "content_html": "Val-Met-Trp-Asp-Val-Leu (VMWNVL)"
+        }
+      ]
+    }
+  ]
+}

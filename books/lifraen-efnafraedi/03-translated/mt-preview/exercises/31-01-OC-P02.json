@@ -1,0 +1,19 @@
+{
+  "nickname": "31-01-OC-P02",
+  "source_uid": "39397@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "349730",
+      "stem_html": "<p>Raðið eftirfarandi einliðum eftir væntanlegri hvarfgirni þeirra gagnvart anjónískri fjölliðun og útskýrið svarið:</p>\nH<sub>2</sub>C<span data-math=\"\\text{═}\"></span>CHCH<sub>3</sub>, H<sub>2</sub>C<span data-math=\"\\text{═}\"></span>CHC<span data-math=\"\\text{≡}\"></span>N, H<sub>2</sub>C<span data-math=\"\\text{═}\"></span>CHC<sub>6</sub>H<sub>5</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "H<sub>2</sub>C<span data-math=\"\\text{═}\"></span>CHCH<sub>3</sub> &lt; H<sub>2</sub>C<span data-math=\"\\text{═}\"></span>CHC<sub>6</sub>H<sub>5</sub> &lt; H<sub>2</sub>C<span data-math=\"\\text{═}\"></span>CHC<span data-math=\"\\text{≡}\"></span>N\n"
+        }
+      ]
+    }
+  ]
+}

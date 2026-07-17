@@ -126,8 +126,18 @@ export function assembleBook(bookDir, opts) {
           for (let k = 0; k < fieldMeta.slots; k++) {
             const segId = segIdFor(nickname, fieldKey, k);
             const isText = isMap.get(segId);
-            if (isText === undefined) throw new Error(`missing IS segment ${segId}`);
             const enText = enMap.get(segId);
+            // Pure-opaque runs are translation-invariant (item-9 #294 follow-up):
+            // an EN run of only [[MEDIA:n]] markers has nothing to translate, and
+            // the live MT run showed the API RENUMBERS adjacent identical
+            // opaque-only segments ([[MEDIA:0]]→[[MEDIA:1]]) or drops them
+            // outright. The EN run IS the correct output — use it verbatim and
+            // never depend on MT for it.
+            if (enText !== undefined && /^(\s*\[\[MEDIA:\d+\]\]\s*)+$/.test(enText)) {
+              runs.push(enText.trim());
+              continue;
+            }
+            if (isText === undefined) throw new Error(`missing IS segment ${segId}`);
             if (enText !== undefined) {
               // A run is never legitimately blank at extraction (pushRun
               // only emits non-blank runs), so an empty/whitespace-only IS

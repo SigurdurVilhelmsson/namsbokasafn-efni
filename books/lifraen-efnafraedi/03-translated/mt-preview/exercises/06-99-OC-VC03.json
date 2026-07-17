@@ -1,0 +1,20 @@
+{
+  "nickname": "06-99-OC-VC03",
+  "source_uid": "37309@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Sýnd eru rafstöðumáttarkort af <b>(a)</b> formaldehýði (CH<sub>2</sub>O) og <b>(b)</b> metanþíóli (CH<sub>3</sub>SH). Er líklegt að kolefnisfrumeind formaldehýðsins sé rafsækin eða kjarnsækin? Hvað með brennisteinsfrumeind metanþíólsins? Útskýrðu.",
+  "questions": [
+    {
+      "id": "353277",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--676e4efa07001f76b104e8bcbfdfa1581381bc92/OChem_06_EC_004a.jpg\" alt=\"The electrostatic potential map of formaldehyde. The gray, white, and red spheres at the center represent carbon, hydrogen, and oxygen atoms, respectively.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353278",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8907fc53a81100cd7a4b6255a22dfcc8fbe4b5e0/OChem_06_EC_004b.jpg\" alt=\"The electrostatic potential map of methanethiol shows a ball-and-stick model in the center, in which gray, white, and yellow spheres represent carbon, hydrogen, and sulfur atoms, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

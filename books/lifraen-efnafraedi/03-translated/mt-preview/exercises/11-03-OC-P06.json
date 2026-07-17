@@ -1,0 +1,19 @@
+{
+  "nickname": "11-03-OC-P06",
+  "source_uid": "37347@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "336946",
+      "stem_html": "<p>Raðaðu eftirfarandi efnasamböndum eftir væntri hvarfgirni þeirra gagnvart S<sub>N</sub>2-efnahvarfi:</p>\nCH<sub>3</sub>Br, CH<sub>3</sub>OTos, (CH<sub>3</sub>)<sub>3</sub>CCl, (CH<sub>3</sub>)<sub>2</sub>CHCl",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>OTos > CH<sub>3</sub>Br > (CH<sub>3</sub>)<sub>2</sub>CHCl > (CH<sub>3</sub>)<sub>3</sub>CCl"
+        }
+      ]
+    }
+  ]
+}

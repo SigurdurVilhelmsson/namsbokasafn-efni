@@ -1,0 +1,20 @@
+{
+  "nickname": "08-99-OC-MP04",
+  "source_uid": "37112@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<i>meta</i>-Klórperoxýbensósýra er ekki eina peroxýsýran sem getur myndað epoxíð. Spáðu fyrir um myndefnin fyrir hvert efnahvarf hér að neðan og sýndu hvarfganginn.",
+  "questions": [
+    {
+      "id": "552327",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTBTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--711bb442fc1e61aea4635ea54b235ff310d691c5/OChem_08_EC_021a.jpg\" alt=\"A   reaction shows  cyclohexene reacting with a methyl group at C1 reacts with C F 3 C O 3 H to form unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "552328",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTRTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--33e304f511238ae140812100dd790078be90a030/OChem_08_EC_021b.jpg\" alt=\"A reaction shows  but-2-ene reacting with benzene that has C O 3 H group at C1 to form unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

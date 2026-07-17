@@ -1,0 +1,25 @@
+{
+  "nickname": "08-99-OC-MP03",
+  "source_uid": "37111@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu byggingu lífrænu bórananna sem myndast þegar bóran hvarfast við eftirfarandi alkena, þar með talið staðsetningaefnafræði og staðefnafræði eftir því sem við á. Leggðu til hvarfgang fyrir hvert efnahvarf.",
+  "questions": [
+    {
+      "id": "353463",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbW9TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1a74171980ca63de53bb4b5065c16873b498e513/OChem_08_EC_020a.jpg\" alt=\"The structure has a cyclobutene ring. C1 is bonded to a methyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353464",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8828d236e1e70cc37aa0932626ad9bcfbb818265/OChem_08_EC_020b.jpg\" alt=\"The structure has a 4-carbon chain. C1 is double bonded to C2.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353465",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6f75aa0e3bae939e329466fae1262eff2e9809cd/OChem_08_EC_020c.jpg\" alt=\"The structure has a 2-carbon chain with a double bond   bonded to a benzene ring.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

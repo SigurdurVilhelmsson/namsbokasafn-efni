@@ -1,0 +1,25 @@
+{
+  "nickname": "08-99-OC-MP05",
+  "source_uid": "37113@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Sýndu hvarfgang og myndefni fyrir eftirfarandi sýruhvötuðu epoxíðopnunarefnahvörf, þar með talið viðeigandi staðefnafræði.",
+  "questions": [
+    {
+      "id": "353473",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbThTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7ec4c2d293f977846b263da9bbdc481f839e98d7/OChem_08_EC_022a.jpg\" alt=\"A reaction shows cyclopentane reacting with C1 and C2 dash bonded to common oxygen reacts with hydronium ion to form unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353474",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkFTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3956f4005598fc7e6cdb891b7a056e833410b658/OChem_08_EC_022b.jpg\" alt=\"A reaction shows an oxirane ring with wedge-bonded methyl groups at C2 and C3 reacting with hydronium ion to form unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353475",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkVTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a2c58b7850beb755665916ef962f529325cf15e5/OChem_08_EC_022c.jpg\" alt=\"A reaction shows an oxirane ring with dash bonded isopropyl at C2 and single bonded methyl group at C3 reacting with hydronium to form unknown product(s), depicted by question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}
