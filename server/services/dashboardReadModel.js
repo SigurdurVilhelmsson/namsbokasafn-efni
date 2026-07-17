@@ -121,7 +121,7 @@ function getUserActionableEdits(username, limit = 50) {
               reviewer_username, reviewer_note, reviewed_at
        FROM segment_edits
        WHERE editor_username = ? AND status IN ('rejected', 'discuss')
-       ORDER BY reviewed_at DESC
+       ORDER BY reviewed_at DESC, id DESC
        LIMIT ?`
     )
     .all(username, Math.min(limit, 200));

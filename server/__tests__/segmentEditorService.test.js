@@ -898,6 +898,49 @@ describe('applyApprovedEdits — integration', () => {
     expect(olderEdit.applied_at).toBeTruthy();
   });
 
+  it('same-second approvals: higher edit id wins deterministically, agreeing with preview (F15)', () => {
+    const { id: id1 } = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'original',
+      editedContent: 'Fyrri breyting',
+      editorId: 'editor-1',
+      editorUsername: 'editor1',
+    });
+    service.approveEdit(id1, 'reviewer-1', 'reviewer1');
+
+    const { id: id2 } = service.saveSegmentEdit({
+      book: 'testbook',
+      chapter: 1,
+      moduleId: 'm00001',
+      segmentId: 'm00001:para:fs-id001',
+      originalContent: 'original',
+      editedContent: 'Seinni breyting',
+      editorId: 'editor-2',
+      editorUsername: 'editor2',
+    });
+    service.approveEdit(id2, 'reviewer-1', 'reviewer1');
+
+    // Force an exact reviewed_at tie (CURRENT_TIMESTAMP is 1s-granular; two
+    // real approvals inside one second produce exactly this state).
+    db.prepare(
+      `UPDATE segment_edits SET reviewed_at = '2026-07-17 12:00:00' WHERE id IN (?, ?)`
+    ).run(id1, id2);
+
+    const result = service.applyApprovedEdits('testbook', 1, 'm00001');
+    expect(result.appliedCount).toBe(1);
+    expect(result.supersededCount).toBe(1);
+
+    // Higher id wins — the same convention buildEffectiveSegments uses.
+    const segments = segmentParser.parseSegments(readFileSync(result.savedPath, 'utf-8'));
+    const seg = segments.find((s) => s.segmentId === 'm00001:para:fs-id001');
+    expect(seg.content).toBe('Seinni breyting');
+    expect(service.getEditById(id1).status).toBe('superseded');
+    expect(service.getEditById(id2).applied_at).toBeTruthy();
+  });
+
   it('edit-again: revising a published segment supersedes it and preserves other applied edits', () => {
     // First round: edit two segments, approve, apply (both become "published").
     saveAndApprove('m00001:para:fs-id001', 'Fyrsta útgáfa, grein eitt.');

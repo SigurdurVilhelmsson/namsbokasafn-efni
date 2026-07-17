@@ -795,7 +795,7 @@ function applyApprovedEdits(book, chapter, moduleId) {
       `SELECT id, segment_id, edited_content
        FROM segment_edits
        WHERE book = ? AND module_id = ? AND status = 'approved' AND applied_at IS NULL
-       ORDER BY reviewed_at DESC`
+       ORDER BY reviewed_at DESC, id DESC`
     )
     .all(book, moduleId);
 
@@ -861,7 +861,7 @@ function applyApprovedEdits(book, chapter, moduleId) {
         `SELECT id, segment_id, edited_content
          FROM segment_edits
          WHERE book = ? AND module_id = ? AND status = 'approved' AND applied_at IS NULL
-         ORDER BY reviewed_at DESC`
+         ORDER BY reviewed_at DESC, id DESC`
       )
       .all(book, moduleId);
 

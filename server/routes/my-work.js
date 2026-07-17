@@ -114,7 +114,7 @@ function getUserRecentReviews(username, limit = 10) {
              reviewed_at
       FROM segment_edits
       WHERE editor_username = ? AND status IN ('approved', 'rejected', 'discuss')
-      ORDER BY reviewed_at DESC
+      ORDER BY reviewed_at DESC, id DESC
       LIMIT ?
     `);
     return stmt.all(username, Math.min(limit, 200));
