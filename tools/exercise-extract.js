@@ -50,7 +50,14 @@ function exerciseFields(exercise) {
     });
   }
   const solutionsPublic = exercise.solutions_are_public || false;
+  const seenQids = new Set();
   for (const q of exercise.questions || []) {
+    // A duplicate id collides on the SAME seg-id (`{nickname}:stem:{id}-b{k}`)
+    // and skeleton field key (`stem:{id}`) — the second question would
+    // silently overwrite the first's field/segments instead of surfacing as
+    // an error (final review M-b).
+    if (seenQids.has(q.id)) throw new Error(`duplicate question id ${q.id} within exercise`);
+    seenQids.add(q.id);
     if ((q.stem_html || '').trim()) {
       fields.push({
         key: `stem:${q.id}`,

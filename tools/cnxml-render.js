@@ -159,7 +159,7 @@ let BOOK_SLUG = 'efnafraedi-2e';
 // which caller "owns" it. Non-gating by design — an EN fallback is counted
 // and reported, never a failure (organic ships all-EN today).
 let RENDER_TRACK = 'mt-preview';
-const OS_EMBED_STATS = { translated: 0, fallback: 0 };
+const OS_EMBED_STATS = { translated: 0, fallback: 0, staleSidecar: 0 };
 let BOOKS_DIR_TEST_OVERRIDE = null;
 
 function _setBooksDirForTest(dir) {
@@ -171,6 +171,7 @@ function _getOsEmbedStatsForTest() {
 function _resetOsEmbedStatsForTest() {
   OS_EMBED_STATS.translated = 0;
   OS_EMBED_STATS.fallback = 0;
+  OS_EMBED_STATS.staleSidecar = 0;
 }
 
 /**
@@ -197,6 +198,18 @@ function safeJoin(baseDir, name) {
  * Look up exercise content for an os-embed reference: the translated sidecar
  * for the active track when present (item 9/D3), else the EN source cache —
  * counted as a fallback, never a failure.
+ *
+ * Stale-sidecar guard (final review I2): a sidecar's `source_uid` pins it to
+ * the EN exercise it was assembled from (exercise-assemble.js). If the EN
+ * cache has since been re-fetched/re-numbered, the sidecar's translated text
+ * no longer corresponds to the current source exercise — using it would
+ * silently show mistranslated content under the right nickname. Detected
+ * when BOTH `sidecar.source_uid` and `en.uid` are present and truthy and
+ * they differ; the EN version is used instead, counted separately
+ * (non-gating, same posture as a plain fallback). Reads EN first so the
+ * comparison is available even on the translated-sidecar path — this is the
+ * one extra read the guard costs; the single-loader (`readExercise`)
+ * structure is otherwise unchanged.
  * Returns { stimulus, questions, solutionsPublic } or null if not cached.
  */
 function resolveOsEmbed(nickname) {
@@ -213,20 +226,25 @@ function resolveOsEmbed(nickname) {
           solutions: (q.collaborator_solutions || []).map((s) => s.content_html || ''),
         })),
         solutionsPublic: exercise.solutions_are_public || false,
+        uid: exercise.uid || exercise.source_uid || null,
       };
     } catch {
       return null;
     }
   };
 
+  const en = readExercise(safeJoin(path.join(base, '01-source', 'exercises'), `${nickname}.json`));
   const translated = readExercise(
     safeJoin(path.join(base, '03-translated', RENDER_TRACK, 'exercises'), `${nickname}.json`)
   );
   if (translated) {
+    if (en && en.uid && translated.uid && translated.uid !== en.uid) {
+      OS_EMBED_STATS.staleSidecar++;
+      return en;
+    }
     OS_EMBED_STATS.translated++;
     return translated;
   }
-  const en = readExercise(safeJoin(path.join(base, '01-source', 'exercises'), `${nickname}.json`));
   if (en) OS_EMBED_STATS.fallback++;
   return en;
 }
@@ -3985,9 +4003,10 @@ ${anchors}
       }
     }
 
-    if (OS_EMBED_STATS.translated + OS_EMBED_STATS.fallback > 0) {
+    if (OS_EMBED_STATS.translated + OS_EMBED_STATS.fallback + OS_EMBED_STATS.staleSidecar > 0) {
       console.log(
-        `os-embed: ${OS_EMBED_STATS.translated} translated / ${OS_EMBED_STATS.fallback} EN-fallback`
+        `os-embed: ${OS_EMBED_STATS.translated} translated / ${OS_EMBED_STATS.fallback} EN-fallback` +
+          (OS_EMBED_STATS.staleSidecar > 0 ? ` / ${OS_EMBED_STATS.staleSidecar} stale-sidecar` : '')
       );
     }
   } catch (error) {

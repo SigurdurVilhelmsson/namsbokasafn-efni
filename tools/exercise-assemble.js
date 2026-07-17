@@ -65,6 +65,7 @@ export function assembleBook(bookDir, opts) {
   const residues = [];
   const tolerated = [];
   const chaptersMissingIs = [];
+  const chaptersMissingEn = [];
 
   const chDirs = fs.existsSync(structRoot)
     ? fs
@@ -91,9 +92,26 @@ export function assembleBook(bookDir, opts) {
     }
 
     const skeletonDoc = JSON.parse(fs.readFileSync(skelPath, 'utf8'));
-    const enMap = fs.existsSync(enPath)
-      ? parseSegmentsMap(fs.readFileSync(enPath, 'utf8'))
-      : new Map();
+
+    if (!fs.existsSync(enPath)) {
+      // Final review I4: a missing EN file must not silently disable the
+      // residue gate for this chapter. Before this check, enMap degraded to
+      // an empty Map, every enText lookup came back undefined, and the
+      // per-run residue/empty-run checks below never ran — MT-untranslated
+      // or MT-emptied IS content could assemble and publish unnoticed. Fail
+      // the whole chapter loud instead: no sidecars, every nickname skipped.
+      chaptersMissingEn.push(chDir);
+      log(`  ${chDir}: no EN segments file — residue gate cannot run, chapter skipped`);
+      for (const nickname of Object.keys(skeletonDoc.exercises)) {
+        skipped.push({
+          nickname,
+          reason: `missing EN segments file — residue gate cannot run (${chDir})`,
+        });
+      }
+      continue;
+    }
+
+    const enMap = parseSegmentsMap(fs.readFileSync(enPath, 'utf8'));
     const isMap = parseSegmentsMap(fs.readFileSync(isPath, 'utf8'));
 
     const outDir = path.join(bookDir, '03-translated', track, 'exercises');
@@ -111,6 +129,15 @@ export function assembleBook(bookDir, opts) {
             if (isText === undefined) throw new Error(`missing IS segment ${segId}`);
             const enText = enMap.get(segId);
             if (enText !== undefined) {
+              // A run is never legitimately blank at extraction (pushRun
+              // only emits non-blank runs), so an empty/whitespace-only IS
+              // run against a non-blank EN counterpart means MT ate the
+              // text — assembling it would silently produce e.g. `<p></p>`
+              // (final review C1c). Checked ahead of the residue compare
+              // (which never flags an empty IS as `exact`).
+              if (enText.trim() !== '' && isText.trim() === '') {
+                throw new Error(`empty IS segment ${segId} (EN counterpart is non-empty)`);
+              }
               const r = detectResidue(enText, isText); // inject's policy, same lib
               if (r.exact) {
                 if (classifyResidue(nickname, segId, allowlist).tolerated) {
@@ -163,7 +190,7 @@ export function assembleBook(bookDir, opts) {
     }
   }
 
-  return { written, skipped, residues, tolerated, chaptersMissingIs };
+  return { written, skipped, residues, tolerated, chaptersMissingIs, chaptersMissingEn };
 }
 
 // ─── CLI ─────────────────────────────────────────────────────────────
@@ -201,6 +228,9 @@ function main() {
   );
   if (res.chaptersMissingIs.length > 0) {
     console.log(`  chapters without ${track} IS segments: ${res.chaptersMissingIs.join(', ')}`);
+  }
+  if (res.chaptersMissingEn.length > 0) {
+    console.log(`  chapters without an EN segments file: ${res.chaptersMissingEn.join(', ')}`);
   }
   if (res.skipped.length > 0) {
     console.error(`FAILED: ${res.skipped.length} exercise(s) skipped (EN fallback persists):`);

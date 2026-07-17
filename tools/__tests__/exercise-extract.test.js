@@ -190,4 +190,42 @@ describe('extractBook', () => {
     expect(seg).toContain('<!-- SEG:01-03-OC-P01:stimulus:b0 -->');
     expect(skel.exercises['01-03-OC-P01']).toBeDefined();
   });
+
+  it('a duplicate question id within one exercise fails loud (per-exercise skip, final review M-b)', () => {
+    // Two questions sharing the same id would collide on the SAME seg-id
+    // (`{nickname}:stem:{id}-b{k}`) and skeleton field key (`stem:{id}`) —
+    // the second question silently overwrites the first's field/segments
+    // rather than surfacing as an error.
+    const book = makeBook(['01-03-OC-P01.json']); // clean exercise, must survive intact
+    const dupExercise = {
+      uid: '88888@1',
+      nickname: '01-05-OC-DUP1',
+      solutions_are_public: false,
+      stimulus_html: '',
+      questions: [
+        { id: 900001, stem_html: 'First', collaborator_solutions: [] },
+        { id: 900001, stem_html: 'Second (duplicate id)', collaborator_solutions: [] },
+      ],
+    };
+    fs.writeFileSync(
+      path.join(book, '01-source', 'exercises', '01-05-OC-DUP1.json'),
+      JSON.stringify(dupExercise)
+    );
+
+    const res = extractBook(book, {});
+
+    expect(res.failures.map((f) => f.nickname)).toEqual(['01-05-OC-DUP1']);
+
+    const seg = fs.readFileSync(
+      path.join(book, '02-for-mt', 'ch01', 'exercises-segments.en.md'),
+      'utf8'
+    );
+    expect(seg).not.toMatch(/SEG:01-05-OC-DUP1:/);
+
+    const skel = JSON.parse(
+      fs.readFileSync(path.join(book, '02-structure', 'ch01', 'exercises-skeleton.json'), 'utf8')
+    );
+    expect(skel.exercises['01-05-OC-DUP1']).toBeUndefined();
+    expect(skel.exercises['01-03-OC-P01']).toBeDefined(); // clean exercise unaffected
+  });
 });

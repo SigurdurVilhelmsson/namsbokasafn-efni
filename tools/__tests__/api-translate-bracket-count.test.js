@@ -12,6 +12,19 @@ describe('countBracketMarkers', () => {
     expect(c.term).toBe(1);
     expect(c.b).toBe(0);
   });
+
+  // Final review m6 (widened): the opaque/escape marker family introduced
+  // for os-embed exercise fields (item 9/D3, tools/lib/exercise-html.js)
+  // rides the same [[type:…]] bracket dialect through the MT API — the B3
+  // producer-side delta report should cover them too, not just the
+  // long-standing prose inline markers.
+  it('tallies the opaque/escape marker family (MEDIA, lb, rb)', () => {
+    const t = 'before [[MEDIA:0]] middle [[lb:]]x[[rb:]] after [[MEDIA:1]]';
+    const c = countBracketMarkers(t);
+    expect(c.MEDIA).toBe(2);
+    expect(c.lb).toBe(1);
+    expect(c.rb).toBe(1);
+  });
 });
 
 describe('bracketMarkerDelta', () => {

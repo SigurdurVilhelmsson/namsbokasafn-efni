@@ -4,8 +4,9 @@
  *
  * Model: a field's HTML splits into a byte-exact SKELETON (block tags,
  * inter-tag whitespace, opaque content — everything MT must not touch, with
- *  SLOT_k  sentinels where text was) and RUNS (the translatable text,
- * inline HTML mapped to the proven-survival bracket dialect). fieldToHtml is
+ * \x00SLOT_k\x00 sentinels — literal NUL-delimited, not space-delimited —
+ * where text was) and RUNS (the translatable text, inline HTML mapped to the
+ * proven-survival bracket dialect). fieldToHtml is
  * the exact inverse; under identity translation the round-trip is
  * byte-identical (tested over the entire live cache — the closed-inventory
  * proof). Anything outside the verified tag inventory throws: a future
@@ -183,8 +184,17 @@ function scanMarkerEnd(s, from) {
   throw new MarkerError('unterminated marker', s.slice(Math.max(0, from - 10), from + 30));
 }
 
-/** Invert one (possibly translated) run's markers back to HTML. */
-function invertRun(run, field) {
+/**
+ * Invert one (possibly translated) run's markers back to HTML.
+ * @param {string} run
+ * @param {ReturnType<typeof htmlToField>} field
+ * @param {{opaques: Set<string>, wraps: Set<string>}} consumed - accumulates
+ *   which field.opaques/field.wraps ids this run (and its nested runs)
+ *   resolved, so fieldToHtml can assert every id was consumed EXACTLY once
+ *   across the whole field (MT-deleted or MT-duplicated markers, item 9/D3
+ *   final review C1).
+ */
+function invertRun(run, field, consumed) {
   let out = '';
   let i = 0;
   while (i < run.length) {
@@ -204,19 +214,38 @@ function invertRun(run, field) {
       const lit = field.opaques[body];
       if (lit === undefined)
         throw new MarkerError(`unknown MEDIA id ${body}`, run.slice(start, start + 30));
+      if (consumed.opaques.has(body))
+        throw new MarkerError(`duplicated MEDIA id ${body}`, run.slice(start, start + 30));
+      consumed.opaques.add(body);
       out += lit;
     } else if (type === 'em') {
       const pm = body.match(/^([\s\S]*)\|(\d+)$/);
       if (!pm) throw new MarkerError('em marker missing |n anchor', run.slice(start, start + 30));
       const wrap = field.wraps[pm[2]];
       if (!wrap) throw new MarkerError(`unknown wrap id ${pm[2]}`, run.slice(start, start + 30));
-      out += wrap.open + invertRun(pm[1], field) + wrap.close;
+      if (consumed.wraps.has(pm[2]))
+        throw new MarkerError(`duplicated wrap id ${pm[2]}`, run.slice(start, start + 30));
+      consumed.wraps.add(pm[2]);
+      out += wrap.open + invertRun(pm[1], field, consumed) + wrap.close;
     } else if (type === 'lb') {
+      // Defined empty (escapeLiteralBrackets never emits a body) — a
+      // non-empty body means MT moved text inside the escape marker, which
+      // would otherwise vanish silently on inversion (final review C1b).
+      if (body !== '')
+        throw new MarkerError(
+          `non-empty [[lb:...]] body (MT moved text into an escape marker)`,
+          run.slice(start, start + 30)
+        );
       out += '[';
     } else if (type === 'rb') {
+      if (body !== '')
+        throw new MarkerError(
+          `non-empty [[rb:...]] body (MT moved text into an escape marker)`,
+          run.slice(start, start + 30)
+        );
       out += ']';
     } else {
-      out += `<${type}>${invertRun(body, field)}</${type}>`;
+      out += `<${type}>${invertRun(body, field, consumed)}</${type}>`;
     }
     i = end + 2;
   }
@@ -233,7 +262,24 @@ export function fieldToHtml(field, runs = field.runs) {
   if (runs.length !== field.runs.length) {
     throw new MarkerError(`run count mismatch: ${runs.length} !== ${field.runs.length}`);
   }
-  const html = field.skeleton.replace(SLOT_RE, (_, k) => invertRun(runs[Number(k)], field));
+  const consumed = { opaques: new Set(), wraps: new Set() };
+  const html = field.skeleton.replace(SLOT_RE, (_, k) =>
+    invertRun(runs[Number(k)], field, consumed)
+  );
   if (html.includes('\x00')) throw new MarkerError('unresolved slot sentinel in skeleton');
+
+  // Marker-conservation check (final review C1a): the skeleton is an oracle
+  // for exactly which opaque/wrap ids this field's runs must resolve. A
+  // missing id means MT dropped the marker (silently losing an <img> or a
+  // wrapped span); the duplicate case is already caught above, mid-scan.
+  const missingOpaques = Object.keys(field.opaques).filter((id) => !consumed.opaques.has(id));
+  const missingWraps = Object.keys(field.wraps).filter((id) => !consumed.wraps.has(id));
+  if (missingOpaques.length || missingWraps.length) {
+    const parts = [];
+    if (missingOpaques.length)
+      parts.push(`opaque id(s) [${missingOpaques.join(', ')}] never consumed`);
+    if (missingWraps.length) parts.push(`wrap id(s) [${missingWraps.join(', ')}] never consumed`);
+    throw new MarkerError(`marker conservation violated: ${parts.join('; ')}`);
+  }
   return html;
 }

@@ -311,6 +311,12 @@ export const BRACKET_MARKER_TYPES = [
   'docref',
   'term',
   'fn',
+  // Opaque/escape markers from the os-embed exercise-field converter (item
+  // 9/D3, tools/lib/exercise-html.js) — same bracket dialect, same delta
+  // exposure (final review m6, widened).
+  'MEDIA',
+  'lb',
+  'rb',
 ];
 
 /**

@@ -70,6 +70,25 @@ const FAITHFUL_SIDECAR = {
     },
   ],
 };
+// source_uid deliberately mismatches EN_EXERCISE.uid ('1@1') — simulates the
+// EN cache having been re-fetched/re-numbered since this sidecar was
+// assembled (final review I2): the sidecar's translated text no longer
+// corresponds to the current source exercise.
+const STALE_SIDECAR = {
+  nickname: '01-03-OC-P01',
+  source_uid: '2@1',
+  generated_by: 'exercise-assemble.js',
+  track: 'mt-preview',
+  solutions_are_public: true,
+  stimulus_html: 'Úrelt íslenskt áreiti',
+  questions: [
+    {
+      id: '9',
+      stem_html: 'Úrelt íslensk spurning',
+      collaborator_solutions: [{ content_html: 'Úrelt íslensk lausn' }],
+    },
+  ],
+};
 
 const DOC =
   '<document xmlns="http://cnx.rice.edu/cnxml"><title>T</title><content>' +
@@ -107,13 +126,13 @@ describe('resolveOsEmbed track preference', () => {
     const html = render({ track: 'mt-preview' });
     expect(html).toContain('Íslensk spurning');
     expect(html).not.toContain('English stem');
-    expect(_getOsEmbedStatsForTest()).toEqual({ translated: 1, fallback: 0 });
+    expect(_getOsEmbedStatsForTest()).toEqual({ translated: 1, fallback: 0, staleSidecar: 0 });
   });
 
   it('falls back to EN loudly (counted) when no sidecar exists', () => {
     const html = render({ track: 'mt-preview' });
     expect(html).toContain('English stem');
-    expect(_getOsEmbedStatsForTest()).toEqual({ translated: 0, fallback: 1 });
+    expect(_getOsEmbedStatsForTest()).toEqual({ translated: 0, fallback: 1, staleSidecar: 0 });
   });
 
   it('track isolation: a mt-preview sidecar does not leak into faithful renders', () => {
@@ -122,7 +141,7 @@ describe('resolveOsEmbed track preference', () => {
     fs.writeFileSync(path.join(dir, '01-03-OC-P01.json'), JSON.stringify(IS_SIDECAR));
     const html = render({ track: 'faithful' });
     expect(html).toContain('English stem');
-    expect(_getOsEmbedStatsForTest()).toEqual({ translated: 0, fallback: 1 });
+    expect(_getOsEmbedStatsForTest()).toEqual({ translated: 0, fallback: 1, staleSidecar: 0 });
   });
 
   // Regression (re-review, fix wave 2): RENDER_TRACK is a DELIBERATELY
@@ -158,6 +177,31 @@ describe('resolveOsEmbed track preference', () => {
     const html = render({});
     expect(html).toContain('Trútt íslensk spurning');
     expect(html).not.toContain('English stem');
-    expect(_getOsEmbedStatsForTest()).toEqual({ translated: 1, fallback: 0 });
+    expect(_getOsEmbedStatsForTest()).toEqual({ translated: 1, fallback: 0, staleSidecar: 0 });
+  });
+
+  // Final review I2: a sidecar's source_uid pins it to the EN exercise it
+  // was assembled from. If the EN cache has since moved on (re-fetch,
+  // renumbering) the sidecar's translated text no longer corresponds to the
+  // current source — rendering it would silently show mistranslated content
+  // for a DIFFERENT exercise. Detected and counted, never gating (falls
+  // back to EN, same as a missing sidecar).
+  it('stale sidecar (source_uid mismatches the current EN cache) → EN rendered, counted, never gating', () => {
+    const dir = path.join(bookDir, '03-translated', 'mt-preview', 'exercises');
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, '01-03-OC-P01.json'), JSON.stringify(STALE_SIDECAR));
+    const html = render({ track: 'mt-preview' });
+    expect(html).toContain('English stem');
+    expect(html).not.toContain('Úrelt íslensk spurning');
+    expect(_getOsEmbedStatsForTest()).toEqual({ translated: 0, fallback: 0, staleSidecar: 1 });
+  });
+
+  it('matching source_uid → translated sidecar used as before, staleSidecar:0', () => {
+    const dir = path.join(bookDir, '03-translated', 'mt-preview', 'exercises');
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, '01-03-OC-P01.json'), JSON.stringify(IS_SIDECAR));
+    const html = render({ track: 'mt-preview' });
+    expect(html).toContain('Íslensk spurning');
+    expect(_getOsEmbedStatsForTest()).toEqual({ translated: 1, fallback: 0, staleSidecar: 0 });
   });
 });

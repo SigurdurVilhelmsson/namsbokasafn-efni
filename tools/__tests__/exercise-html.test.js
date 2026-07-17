@@ -109,6 +109,14 @@ describe('fieldToHtml — inversion and the round-trip law', () => {
     'order [<i>x</i>,<i>y</i>], and tell whether',
     // Literal brackets with no adjacent markup at all must also survive.
     'An antarafacial [1,7] sigmatropic rearrangement',
+    // Final review m3 (promoted from an ad-hoc probe to a committed test):
+    // same-tag nesting — matchClose's depth counter must not mistake the
+    // inner </i> for the outer's close.
+    '<i>a<i>b</i>c</i>',
+    // Final review m3: a literal '|' inside a wrap-anchored span's text must
+    // not be mistaken for the `|n` wrap-id anchor — invertRun's
+    // `/^([\s\S]*)\|(\d+)$/` only anchors on the LAST pipe-digits-at-end.
+    '<span class="x">a|b|3</span>',
   ];
   for (const h of CASES) {
     it(`round-trips: ${h.slice(0, 40)}…`, () => {
