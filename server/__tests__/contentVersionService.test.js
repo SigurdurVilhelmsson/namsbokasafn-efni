@@ -13,7 +13,7 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { createRequire } from 'module';
 import { mkdtempSync, mkdirSync, writeFileSync, readFileSync } from 'fs';
-import { join } from 'path';
+import { join, dirname } from 'path';
 import { tmpdir } from 'os';
 
 const require = createRequire(import.meta.url);
@@ -287,7 +287,7 @@ describe('contentVersionService.restoreVersion', () => {
       'ch01',
       `${MODULE}-segments.is.md`
     );
-    mkdirSync(require('path').dirname(faithfulPath), { recursive: true });
+    mkdirSync(dirname(faithfulPath), { recursive: true });
     writeFileSync(
       faithfulPath,
       fileBody([
@@ -309,6 +309,32 @@ describe('contentVersionService.restoreVersion', () => {
       username: 'hx',
     });
     expect(readFaithful(booksDir)[SEG('fs-id003')]).toBe('');
+  });
+
+  it('nullish snapshot content fails loud and leaves no partial version (F19)', () => {
+    const before =
+      db
+        .prepare(`SELECT MAX(version) AS v FROM content_versions WHERE book = ? AND module_id = ?`)
+        .get(BOOK, MODULE).v || 0;
+    expect(() =>
+      contentVersionService.snapshotModule(
+        BOOK,
+        CHAPTER,
+        MODULE,
+        [
+          { segmentId: SEG('fs-id001'), content: 'gilt' },
+          { segmentId: SEG('fs-id002'), content: null },
+        ],
+        'prófari',
+        db
+      )
+    ).toThrow();
+    const rows = db
+      .prepare(
+        `SELECT COUNT(*) AS n FROM content_versions WHERE book = ? AND module_id = ? AND version > ?`
+      )
+      .get(BOOK, MODULE, before).n;
+    expect(rows).toBe(0); // transaction rolled back — no partial snapshot
   });
 });
 
