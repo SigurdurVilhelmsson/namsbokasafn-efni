@@ -1162,23 +1162,25 @@ router.post(
   validateModule,
   (req, res) => {
     try {
-      // Step 1: Apply edits to files
+      // Guard FIRST (item 12, F6): a running pipeline means we could not
+      // render what we apply, so nothing is applied either — the 409
+      // truthfully reports a no-op and the head-editor just retries later.
+      const existing = pipelineService.hasRunningJob(req.params.book, req.chapterNum, 'pipeline');
+      if (existing) {
+        return res.status(409).json({
+          error: 'Pipeline already running for this chapter',
+          jobId: existing.id,
+        });
+      }
+
+      // Apply edits to files
       const applyResult = segmentEditor.applyApprovedEdits(
         req.params.book,
         req.chapterNum,
         req.params.moduleId
       );
 
-      // Step 2: Run inject+render pipeline (async — returns job ID for polling)
-      const existing = pipelineService.hasRunningJob(req.params.book, req.chapterNum, 'pipeline');
-      if (existing) {
-        return res.status(409).json({
-          error: 'Pipeline already running for this chapter',
-          jobId: existing.id,
-          applied: applyResult,
-        });
-      }
-
+      // Run inject+render pipeline (async — returns job ID for polling)
       const { jobId } = pipelineService.runPipeline({
         book: req.params.book,
         chapter: req.chapterNum,
