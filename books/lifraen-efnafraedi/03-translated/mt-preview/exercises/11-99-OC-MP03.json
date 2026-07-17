@@ -1,0 +1,25 @@
+{
+  "nickname": "11-99-OC-MP03",
+  "source_uid": "37368@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefnið/myndefnin fyrir hvert eftirfarandi brottnámshvarf. Sýndu hvarfganginn í hverju tilviki. Hvað eiga hvarfgangarnir sameiginlegt? Hvers vegna?",
+  "questions": [
+    {
+      "id": "355262",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1VUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4ce513af11a6d544763d3bed23f97bc6f9d52d6b/OChem_11_EC_013a.jpg\" alt=\"An incomplete reaction between 1,1-dimethyl-1-propanol and sulfuric acid to form unknown product(s).\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355263",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1lUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7bcfe7b326902d20f356d96ace83df7e2acd4367/OChem_11_EC_013b.jpg\" alt=\"An incomplete reaction between 3-chloro-1-butene and sodium acetate with acetic acid to form unknown product(s).\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355264",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2NUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--35c86d65b74138e8c432bf908aa1169ca7460ca2/OChem_11_EC_013c.jpg\" alt=\"An incomplete reaction between 1S,2S-1,2-dimethylcyclohexanol in sulfuric acid to form unknown product(s).\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

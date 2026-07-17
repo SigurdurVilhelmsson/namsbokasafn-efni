@@ -1,0 +1,25 @@
+{
+  "nickname": "01-99-OC-AP22",
+  "source_uid": "37579@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Hversu mörg vetni eru tengd hverri kolefnisfrumeind í eftirfarandi efnum og hver er sameindaformúla hvers þeirra?</p>",
+  "questions": [
+    {
+      "id": "358900",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f6165312989e5c43dea092fbca8ef155673d5271/OChem_01_EC_013a.jpg\" alt=\"Line-bond structure of a benzene ring with isopropyl and nitrile substituents on adjacent carbons.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358901",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7ab4e2e7ce14f1b349a4cde5297fddf8d85bd64c/OChem_01_EC_013b.jpg\" alt=\"Line-bond structure of benzene fused to a cyclohexane. There’s a carboxyl group two carbons from a fusion point on benzene and bromine two carbons from the same fusion on cyclohexane.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358902",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUlYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8bcd76e2ac72a8d84d4b600a3fb2dc007dedbb5a/OChem_01_EC_013c.jpg\" alt=\"Line-bond structure of two fused cyclopentanes. One pentane has a double bond and a carbonyl group, the other has a methyl substituent.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

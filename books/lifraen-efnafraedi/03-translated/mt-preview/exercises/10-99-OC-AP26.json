@@ -1,0 +1,25 @@
+{
+  "nickname": "10-99-OC-AP26",
+  "source_uid": "37289@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig gætir þú notað Suzuki–Miyaura-efnahvarf til að búa til biarýl-efnasamböndin hér að neðan? Sýndu í hverju tilviki tvo mögulega hvarfefnisaðila.",
+  "questions": [
+    {
+      "id": "352409",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbElUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e79d7aa6c2ae526df9faa76b77d7ba1120ff0f42/OChem_10_EC_035a.jpg\" alt=\"Diphenyl with methoxy groups on C5 and C4', and C O O C H 3 on C2.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352410",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbE1UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--051b94b608534dfa17f07f6476f83da795f26bf9/OChem_10_EC_035b.jpg\" alt=\"Diphenyl with N H 2 on C3 and a methyl group on C3'.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352411",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1154e5404778971a5e747e927854b0de631af986/OChem_10_EC_035c.jpg\" alt=\"Diphenyl with methoxy groups on C3, C4, and C5 and an O C H 2 O group connecting C3' and C4'\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

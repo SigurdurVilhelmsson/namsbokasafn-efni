@@ -1,0 +1,30 @@
+{
+  "nickname": "26-99-OC-MP04a",
+  "source_uid": "39431@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Hægt er að kljúfa prótein sértækt við amíðefnatengið á karboxýlhlið metíónínleifa með efnahvarfi við sýanógenbrómíð, BrC≡N.</p>\n<p><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBam9hIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2f8dd7e71c41c2a38c612df212cbbd80032ba4ea/OChem_26_EC_016.jpg\" alt=\"\"></p>\n<p>Efnahvarfið á sér stað í nokkrum skrefum:</p>",
+  "questions": [
+    {
+      "id": "349885",
+      "stem_html": "<p>Fyrsta skrefið er kjarnsækið skiptihvarf brennisteins á hliðarkeðju metíóníns við BrCN sem gefur sýanósúlfóníumjón, [R<sub>2</sub>SCN]<sup>+</sup>. Sýndu byggingu myndefnisins og stingdu upp á hvarfgangi fyrir efnahvarfið.</p>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "349886",
+      "stem_html": "<p>Annað skrefið er innra S<sub>N</sub>2-efnahvarf, þar sem karbónýlsúrefni metíónínleifarinnar ryður burt jákvætt hlaðna brennisteinsfarhópnum og myndar fimm liða hringlaga myndefni. Sýndu byggingu myndefnisins og hvarfgang myndunar þess.</p>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "349887",
+      "stem_html": "<p>Þriðja skrefið er vatnsrofsefnahvarf til að kljúfa peptíðkeðjuna. Karboxýlhópur fyrrverandi metíónínleifarinnar er nú hluti af laktónhring (hringlaga ester). Sýndu byggingu laktónmyndefnisins og hvarfgang myndunar þess.</p>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "349888",
+      "stem_html": "<p>Lokaskrefið er vatnsrof laktónsins til að gefa myndefnið sem sýnt er. Sýndu hvarfgang efnahvarfsins.</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

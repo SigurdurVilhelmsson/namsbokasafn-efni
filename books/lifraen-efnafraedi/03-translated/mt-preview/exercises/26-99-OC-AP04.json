@@ -1,0 +1,30 @@
+{
+  "nickname": "26-99-OC-AP04",
+  "source_uid": "39243@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Sýndu byggingu eftirfarandi amínósýra á tvíjónaformi:",
+  "questions": [
+    {
+      "id": "348865",
+      "stem_html": "Trp",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348866",
+      "stem_html": "Ile",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348867",
+      "stem_html": "Cys",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348868",
+      "stem_html": "His",
+      "collaborator_solutions": []
+    }
+  ]
+}

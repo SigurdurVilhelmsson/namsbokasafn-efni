@@ -1,0 +1,28 @@
+{
+  "nickname": "29-03-OC-P03",
+  "source_uid": "39297@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hversu margar sameindir af asetýl-CoA myndast við niðurbrot eftirfarandi fitusýra og hversu mörg skref <i>β</i>-oxunarferilsins eru nauðsynleg?",
+  "questions": [
+    {
+      "id": "349263",
+      "stem_html": "Palmítínsýra, CH<sub>3</sub>(CH<sub>2</sub>)<sub>14</sub>CO<sub>2</sub>H",
+      "collaborator_solutions": [
+        {
+          "content_html": "8 asetýl-CoA; 7 skref"
+        }
+      ]
+    },
+    {
+      "id": "349264",
+      "stem_html": "Arachidínsýra, CH<sub>3</sub>(CH<sub>2</sub>)<sub>18</sub>CO<sub>2</sub>H",
+      "collaborator_solutions": [
+        {
+          "content_html": "10 asetýl-CoA; 9 skref"
+        }
+      ]
+    }
+  ]
+}

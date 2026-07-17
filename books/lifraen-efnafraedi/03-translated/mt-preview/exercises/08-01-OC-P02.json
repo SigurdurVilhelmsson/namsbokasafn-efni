@@ -1,0 +1,19 @@
+{
+  "nickname": "08-01-OC-P02",
+  "source_uid": "37086@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353388",
+      "stem_html": "<p>Hversu mörg alkena-myndefni, þar á meðal <i>E</i>,<i>Z</i> hverfur, gætu myndast við vötnun á 3-metýl-3-hexanóli með brennisteinssýru í vatnslausn?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajhTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--91ccc04657d303681a5fca7d169d9084e6647277/OChem_08_01_005.jpg\" alt=\"In an incomplete reaction, 3-methyl-3-hexanol reacts with sulfuric acid to form unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Fimm"
+        }
+      ]
+    }
+  ]
+}

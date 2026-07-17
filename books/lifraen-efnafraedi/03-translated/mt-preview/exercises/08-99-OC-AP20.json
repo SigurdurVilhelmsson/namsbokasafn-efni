@@ -1,0 +1,15 @@
+{
+  "nickname": "08-99-OC-AP20",
+  "source_uid": "37178@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353566",
+      "stem_html": "<p>Efnasamband <b>A</b>, C<sub>10</sub>H<sub>18</sub>O, gengst undir efnahvarf með þynntri H<sub>2</sub>SO<sub>4</sub> við 50 °C og gefur efnablöndu af tveimur alkenum, C<sub>10</sub>H<sub>16</sub>. Aðalalkenmyndefnið, <b>B</b>, gefur aðeins sýklópentanón eftir ósonmeðhöndlun og síðan afoxun með sinki í ediksýru. Auðkenndu <b>A</b> og <b>B</b> og skrifaðu efnahvörfin.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUlTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c7029f2f9fb1eb19cf6d3ccf17ee98fb8163f624/OChem_08_EC_046.jpg\" alt=\"The structure of cyclopentanone.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

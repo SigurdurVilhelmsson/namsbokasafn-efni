@@ -1,0 +1,19 @@
+{
+  "nickname": "21-03-OC-P08",
+  "source_uid": "38158@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361373",
+      "stem_html": "<p>Ef eftirfarandi sameind er meðhöndluð með sýruhvara á sér stað esterun innan sameindar. Hver er bygging myndefnisins? (<i>Intramolecular</i> þýðir innan sömu sameindar.)</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1VYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5d2c7f9ea65db1f302c32b6916b9891d48447d4a/OChem_21_03_011.jpg\" alt=\"The ball-and-stick model shows a five-carbon chain with hydroxyl group at fifth carbon. The first carbon is a carboxyl group. Black, gray, and red spheres denote carbon, hydrogen, and oxygen.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1FYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--31e965cf2f0e22c4d740dbdaadc9739215198cbf/OChem_21_EC_204.jpg\" alt=\"The lactone structure comprises of a six-membered ring containing a carbonyl group with an oxygen atom next to it in the ring.\">"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "22-99-OC-AP04",
+  "source_uid": "38808@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360975",
+      "stem_html": "<p>Meðhöndlun eftirfarandi <i>α</i>,<i>β</i>-ómettaða karbónýlefnasambands með basa gefur anjón með því að fjarlægja H<sup>+</sup> af <i>γ</i> kolefninu. Hvers vegna eru vetni á <i>γ</i> kolefnisfrumeindinni súr?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXdZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--123a94a2f5912fa14843266bfc407f1548421430/OChem_22_EC_032.jpg\" alt=\"An alpha-beta unsaturated carbonyl compound reacts with L D A to yield a carbonyl compound comprising an anion with a set of lone pairs on gamma carbon.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "21-99-OC-MP13",
+  "source_uid": "38193@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361451",
+      "stem_html": "<p>Eftirfarandi hvarf, kallað <i>bensílsýru umröðun,</i> á sér stað með dæmigerðum karbónýlhópshvörfum. Leggðu til verkunarmáta (Ph = fenýl).</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6cb4e623429132a0ff5d75c8099ba9a8697e094e/OChem_21_EC_037.jpg\" alt=\"Benzil is converted to a benzylic acid by treatment first with aqueous sodium hydroxide and then with acid. Benzil is a dicarbonyl compound with two carbonyl groups joined to one another and a benzene ring on each carbonyl. The reaction occurs by a rearrangement.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

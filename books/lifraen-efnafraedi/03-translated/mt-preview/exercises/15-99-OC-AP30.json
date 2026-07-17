@@ -1,0 +1,25 @@
+{
+  "nickname": "15-99-OC-AP30",
+  "source_uid": "37778@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Stingdu upp á byggingum fyrir arómatísk efnasambönd sem hafa eftirfarandi <sup>1</sup>H NMR-róf:",
+  "questions": [
+    {
+      "id": "358698",
+      "stem_html": "<p>C<sub>8</sub>H<sub>9</sub>Br</p>\n<p>IR-gleypni við 820 cm<sup>–1</sup></p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0VWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--63c67cae48aaacf49d20ee1c7cbb62d3cd2ee56c/OChem_15_EC_020.jpg\" alt=\"The 1 H N M R spectrum of C 8 H 9 Br shows peaks in parts per million at 0 (T M S), 1.2 (triplet), 2.6 (quartet), 7.1 (doublet), and 7.4 (doublet).\">\n",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358699",
+      "stem_html": "<p>C<sub>9</sub>H<sub>12</sub></p>\n<p>IR-gleypni við 750 cm<sup>–1</sup></p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0lWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a2b222fc8f9d4fe772e20025fb827dc98f13d0c6/OChem_15_EC_021.jpg\" alt=\"The 1 H N M R spectrum of C 9 H 12 shows peaks in parts per million at 0 (T M S), 1.2 (triplet), 2.3 (singlet), 2.6 (quartet) and 7.1 (multiplet).\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358700",
+      "stem_html": "<p>C<sub>11</sub>H<sub>16</sub></p>\n<p>IR-gleypni við 820 cm<sup>–1</sup></p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa01WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3f1a2673b6d1b953d046115e5af5abd47a23136c/OChem_15_EC_022.jpg\" alt=\"The 1 H N M R spectrum of C 11 H 6 shows peaks in parts per million at 0 (T M S), 1.3 (singlet), 2.3 (singlet), 7.0 (doublet), and 7.3 (doublet).\">\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "22-07-OC-P15",
+  "source_uid": "38783@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360891",
+      "stem_html": "<p>Hvernig myndir þú búa til eftirfarandi efnasamband með asetóedikestersmyndun?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1df192a296a7d0096c64eb7a93eebc6e5ee8b806/OChem_22_07_020.jpg\" alt=\"A ball-stick model of a compound comprising a seven-carbon chain with C 2 being a carbonyl group. Black, gray, and red spheres represent carbon, hydrogen, and oxygen, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. 2 Na<sup>+ −</sup>OEt; 2. BrCH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>Br; 3. H<sub>3</sub>O<sup>+</sup>"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "20-08-OC-P16",
+  "source_uid": "38096@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351642",
+      "stem_html": "Hvernig gætir þú greint á milli hverfanna sýklópentankarboxýlsýru og 4-hýdroxýsýklóhexanóns með <sup>1</sup>H og <sup>13</sup>C NMR-litrófsgreiningu? (Sjá dæmi 20-15.)",
+      "collaborator_solutions": [
+        {
+          "content_html": "4-Hýdroxýsýklóhexanón: <span class=\"magenta-text\">H</span>–C–O gleypni nálægt 4 <i>δ</i> í <sup>1</sup>H rófinu og <span class=\"magenta-text\">C</span>═O gleypni nálægt 210 <i>δ</i> í <sup>13</sup>C rófinu. Sýklópentankarboxýlsýra: –CO<sub>2</sub><span class=\"magenta-text\">H</span> gleypni nálægt 12 <i>δ</i> í <sup>1</sup>H rófinu og –<span class=\"magenta-text\">C</span>O<sub>2</sub>H gleypni nálægt 170 <i>δ</i> í <sup>13</sup>C rófinu."
+        }
+      ]
+    }
+  ]
+}

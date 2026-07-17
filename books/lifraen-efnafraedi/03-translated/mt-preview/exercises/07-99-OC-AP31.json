@@ -1,0 +1,15 @@
+{
+  "nickname": "07-99-OC-AP31",
+  "source_uid": "36683@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354488",
+      "stem_html": "<p>Fúkóserraten og ektókarpen eru kynferómón sem brúnþörungar í sjó framleiða. Hver eru kerfisbundin nöfn þeirra? (Ektókarpen er erfitt; gerðu þitt besta og athugaðu síðan svarið þitt í <i>lausnahandbók námsmanna.</i>)</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaEFTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8c02ec75750671d295de644c96e9d55bc88027a9/OChem_07_EC_032.jpg\" alt=\"The structures of fucoserratene and ectocarpene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

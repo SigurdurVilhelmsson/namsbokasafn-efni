@@ -1,0 +1,25 @@
+{
+  "nickname": "11-99-OC-MP05",
+  "source_uid": "37370@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefnið/myndefnin fyrir hvert eftirfarandi brottnámshvarf. Sýndu hvarfganginn í hverju tilviki. Hvað eiga hvarfgangarnir sameiginlegt? Hvers vegna?",
+  "questions": [
+    {
+      "id": "355286",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3NUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f20bb4d3e15266efa963bf05bd69d0acf1cd78ba/OChem_11_EC_015a.jpg\" alt=\"An incomplete reaction between the tosylate of 1,2,2-trimethylpropan-1-ol and sodium methoxide in methanol to form unknown product(s).\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355287",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3dUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--788902aceaf86056430132f2ff4f1c84a506b720/OChem_11_EC_015b.jpg\" alt=\"An incomplete reaction between 4-hydroxy-2-hexanone and sodium methoxide in methanol to form unknown product(s).\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355289",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczBUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--594f6b3909841cae6e03bee83ed68b7dfdc008f7/OChem_11_EC_015c.jpg\" alt=\"An incomplete reaction between 3-hydroxy-2-methylcyclohexanone and Na O H in water to form unknown product(s).\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

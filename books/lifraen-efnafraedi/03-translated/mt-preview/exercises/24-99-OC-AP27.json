@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-AP27",
+  "source_uid": "39659@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361737",
+      "stem_html": "<p>Sýklópentamín er amfetamínlíkt örvandi efni fyrir miðtaugakerfið. Leggðu til myndun sýklópentamíns úr efnum með fimm kolefnisatóm eða færri.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblVhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4c8f72b5924e64ef29e7bbd0cccdfd84e5365600/OChem_24_EC_049.jpg\" alt=\"The stucture of cyclopentamine. A nitrogen with H, methyl, and isopropyl substituents. There is also a cyclopentane on C 1 of the isopropyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

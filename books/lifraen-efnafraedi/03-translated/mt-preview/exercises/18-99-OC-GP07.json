@@ -1,0 +1,15 @@
+{
+  "nickname": "18-99-OC-GP07",
+  "source_uid": "38758@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "343915",
+      "stem_html": "<i>Zeisel-aðferðin</i> er gömul efnagreiningaraðferð til að ákvarða fjölda metoxýlhópa í efnasambandi. Vigtað magn af efnasambandinu er hitað með þéttri HI, eterklofnun á sér stað og joðmetan-myndefnið er eimað frá og leitt í alkóhóllausn af AgNO<sub>3</sub>, þar sem það hvarfast og myndar botnfall af silfurjoðíði. AgI er síðan safnað og vigtað og þannig er hlutfall metoxýlhópa í sýninu ákvarðað. Til dæmis gefa 1,06 g af vanillíni, efninu sem ber ábyrgð á einkennandi lykt vanillu, 1,60 g af AgI. Ef vanillín hefur mólmassa upp á 152, hversu marga metoxýlhópa inniheldur það?",
+      "collaborator_solutions": []
+    }
+  ]
+}

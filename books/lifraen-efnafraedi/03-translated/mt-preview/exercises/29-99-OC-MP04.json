@@ -1,0 +1,20 @@
+{
+  "nickname": "29-99-OC-MP04",
+  "source_uid": "39318@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Eitt af skrefunum í pentósafosfatferlinu við niðurbrot glúkósa er efnahvarf xýlúlósa-5-fosfats við ríbósa-5-fosfat í viðurvist transketólasa til að mynda glýseraldehýð-3-fosfat og sedóheptúlósa-7-fosfat.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a0d758747c3f6cf2a97ea0eb719c23a6a5b902e0/OChem_29_EC_008.jpg\" alt=\"Xylulose-5-phosphate reacts with ribose-5-phosphate to form glyceraldehyde-3-phosphate and sedoheptulose-7-phosphate. Both structures are presented in Fischer projection.\">",
+  "questions": [
+    {
+      "id": "358150",
+      "stem_html": "Fyrri hluti efnahvarfsins er kjarnsækin álagning þíamíndífosfat (TPP) ýlíðs á xýlúlósa-5-fosfat, fylgt eftir með retro-aldólklofnun til að mynda glýseraldehýð-3-fosfat og TPP-innihaldandi enamín. Sýndu byggingu enamínsins og hvarfganginn sem það myndast eftir.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358151",
+      "stem_html": "Seinni hluti efnahvarfsins er álagning enamínsins á ríbósa-5-fosfat og síðan tap á TPP-ýlíði til að mynda sedóheptúlósa-7-fosfat. Sýndu hvarfganginn.",
+      "collaborator_solutions": []
+    }
+  ]
+}

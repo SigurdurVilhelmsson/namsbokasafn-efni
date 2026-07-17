@@ -1,0 +1,15 @@
+{
+  "nickname": "28-99-OC-VC02",
+  "source_uid": "39123@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354970",
+      "stem_html": "<p>Greindu eftirfarandi kirni og segðu til um hvernig það er notað:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d91ac029936a7a4408d8921f57458ad0237967d8/OChem_28_EC_002.jpg\" alt=\"The ball-and-stick model of deoxythymidine monophosphate, a nucleotide. It consists of a phosphate group, pentose sugar deoxyribose and nucleobase thymine.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

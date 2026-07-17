@@ -1,0 +1,15 @@
+{
+  "nickname": "10-99-OC-AP09",
+  "source_uid": "37272@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357382",
+      "stem_html": "<p>Við hvaða myndefni myndir þú búast úr efnahvarfi 1-fenýl-2-bútens við NBS? Útskýrðu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajBUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1c4ac7a290f5fff15a9f2d3ac3297db190e54bcb/OChem_10_EC_023.jpg\" alt=\"The structure of 1-phenyl-2-butene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

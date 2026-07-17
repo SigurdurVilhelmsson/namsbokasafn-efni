@@ -1,0 +1,25 @@
+{
+  "nickname": "02-99-OC-AP36",
+  "source_uid": "36148@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Úthlutaðu formlegum hleðslum til frumeindanna í hverri af eftirfarandi sameindum:\n",
+  "questions": [
+    {
+      "id": "351713",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--578f64772a224045f710ff11302756e1b25de977/OChem_02_EC_011a.jpg\" alt=\"A central nitrogen atom is bonded to three methyl groups and an oxygen atom, featuring three lone pairs.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351714",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbllRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--358b6bd5fe67041eccbd40d0c18dd1268b4d2741/OChem_02_EC_011b.jpg\" alt=\"A methyl group is bonded to a chain of three nitrogen atoms. The second and third nitrogen atoms have a triple bond in-between.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351715",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5c9177fbd703e05dc1fb9e52dafb6a53a4f86aa5/OChem_02_EC_011c.jpg\" alt=\"A methyl group is single bonded to a chain of three nitrogen atoms, connected by double bonds.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

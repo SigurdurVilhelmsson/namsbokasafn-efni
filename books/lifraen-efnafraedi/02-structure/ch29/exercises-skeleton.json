@@ -1,0 +1,1203 @@
+{
+  "generated_by": "exercise-extract.js",
+  "exercises": {
+    "29-01-OC-P01": {
+      "source_uid": "39295@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "349257"
+      ],
+      "fields": {
+        "stem:349257": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349257": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-03-OC-P02": {
+      "source_uid": "39296@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "349864"
+      ],
+      "fields": {
+        "stem:349864": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349864": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-03-OC-P03": {
+      "source_uid": "39297@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "349263",
+        "349264"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349263": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349263": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349264": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349264": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-04-OC-P04": {
+      "source_uid": "39298@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "349266"
+      ],
+      "fields": {
+        "stem:349266": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349266": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-04-OC-P05": {
+      "source_uid": "39299@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "349268"
+      ],
+      "fields": {
+        "stem:349268": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349268": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-04-OC-P06": {
+      "source_uid": "39300@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "358125"
+      ],
+      "fields": {
+        "stem:358125": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFlaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b4f42ff4baf59ae4d4d98692447a6d96387e92eb/OChem_29_04_009.jpg\" alt=\"Acetoacetyl A C P reacts nicotinamide adenine dinucleotide phosphate hydride to form beta-hydroxybutyryl A C P and nicotinamide adenine dinucleotide phosphate cation.\">"
+          },
+          "wraps": {
+            "0": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            }
+          }
+        },
+        "sol:358125": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-05-OC-P07": {
+      "source_uid": "39301@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "349272"
+      ],
+      "fields": {
+        "stem:349272": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349272": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-05-OC-P08": {
+      "source_uid": "39302@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "349274"
+      ],
+      "fields": {
+        "stem:349274": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349274": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-06-OC-P09": {
+      "source_uid": "39303@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "349276"
+      ],
+      "fields": {
+        "stem:349276": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349276": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-07-OC-P10": {
+      "source_uid": "39304@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "349278"
+      ],
+      "fields": {
+        "stem:349278": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349278": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-07-OC-P11": {
+      "source_uid": "39305@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "349280"
+      ],
+      "fields": {
+        "stem:349280": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349280": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-07-OC-P12": {
+      "source_uid": "39306@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "358127"
+      ],
+      "fields": {
+        "stem:358127": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1ef1a525c0f63b771a223b4b8467a3e9eca0fb32/OChem_29_07_010.jpg\" alt=\"Citrate undergoes a stereoselective dehydration to yield cis-aconitate as the product.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358127": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-08-OC-P13": {
+      "source_uid": "39307@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "349284"
+      ],
+      "fields": {
+        "stem:349284": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349284": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-09-OC-P14": {
+      "source_uid": "39308@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "349286"
+      ],
+      "fields": {
+        "stem:349286": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349286": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-09-OC-P15": {
+      "source_uid": "39309@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "349288"
+      ],
+      "fields": {
+        "stem:349288": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349288": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-09-OC-P16": {
+      "source_uid": "39310@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "358129"
+      ],
+      "fields": {
+        "stem:358129": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a070f4c391277a0de003077d760878d0d62af580/OChem_29_09_007.jpg\" alt=\"A ball-and-stick model of alpha-keto acid anion. A four-carbon chain with carboxylate at C 1, a ketone group at C 2, and at a carbonyl linked to amine.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358129": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-AP01": {
+      "source_uid": "39326@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "349496"
+      ],
+      "fields": {
+        "stem:349496": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-AP02": {
+      "source_uid": "39327@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349334"
+      ],
+      "fields": {
+        "stem:349334": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-AP03": {
+      "source_uid": "39328@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349336"
+      ],
+      "fields": {
+        "stem:349336": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-AP04": {
+      "source_uid": "39329@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349338"
+      ],
+      "fields": {
+        "stem:349338": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-AP05": {
+      "source_uid": "39330@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349340"
+      ],
+      "fields": {
+        "stem:349340": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-AP06": {
+      "source_uid": "39331@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349342"
+      ],
+      "fields": {
+        "stem:349342": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-AP07": {
+      "source_uid": "39332@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349344"
+      ],
+      "fields": {
+        "stem:349344": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-AP08": {
+      "source_uid": "39333@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349346"
+      ],
+      "fields": {
+        "stem:349346": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-AP09": {
+      "source_uid": "39334@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349350",
+        "349351",
+        "349352"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349350": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349351": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349352": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-AP10": {
+      "source_uid": "39335@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358167"
+      ],
+      "fields": {
+        "stem:358167": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f8ca09da8638248ebcb928de250dc45f304b1f68/OChem_29_EC_014.jpg\" alt=\"The structure of lactate anion, having a four-carbon chain with a carboxylate anion at C1 and a hydroxyl group at C2.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-AP11": {
+      "source_uid": "39336@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349356"
+      ],
+      "fields": {
+        "stem:349356": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-AP12": {
+      "source_uid": "39337@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358171",
+        "358172",
+        "358173"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358171": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fdb0587e241b40e3bf4c698b044f1a413340571b/OChem_29_EC_015a.jpg\" alt=\"Hexyl CoA reacts in the presence of Acyl  CoA dehydrogenase and favin adenine dinucleotide to form an unknown product represented as a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358172": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWtaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e56a830df942ec299d5f04742b77c16577605598/OChem_29_EC_015b.jpg\" alt=\"Product of (a) reacts with water in the presence of enoyl CoA hydratase to form an unknown product represented as a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358173": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdW9aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--db0ff9be37f633aee47e06ed7222b5386380c00c/OChem_29_EC_015c.jpg\" alt=\"Product of (b) reacts in the presence of beta-hydroxyacyl CoA dehydrogenase and  nicotinamide adenine dinucleotide cation  to form an unknown product shown as a question mark.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-AP13": {
+      "source_uid": "39338@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349364"
+      ],
+      "fields": {
+        "stem:349364": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-AP14": {
+      "source_uid": "39339@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349368",
+        "349369",
+        "349370"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349368": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349369": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349370": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-AP15": {
+      "source_uid": "39340@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349374",
+        "349375",
+        "349376"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349374": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349375": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349376": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-AP16": {
+      "source_uid": "39341@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349380",
+        "349381",
+        "349382"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349380": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349381": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349382": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-AP17": {
+      "source_uid": "39342@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "349866"
+      ],
+      "fields": {
+        "stem:349866": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-AP18": {
+      "source_uid": "39343@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "349868"
+      ],
+      "fields": {
+        "stem:349868": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-AP19": {
+      "source_uid": "39344@6",
+      "solutions_are_public": false,
+      "question_order": [
+        "358175"
+      ],
+      "fields": {
+        "stem:358175": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdXNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ed9c56a128e70e8def6eccf4b4edd13ffe91c92d/OChem_29_EC_016.jpg\" alt=\"Cis-aconitate having a three-carbon chain and a double bond reacts with water to form (2 R,3 S)-Isocitrate. The double bond is replaced by single bond in the product.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-AP20": {
+      "source_uid": "39345@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "358177"
+      ],
+      "fields": {
+        "stem:358177": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n<p>\u0000SLOT_2\u0000</p>",
+          "slots": 3,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdXdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1ab79c883d6eaacf7eed90241dc5395c48a1cf23/OChem_29_EC_017.jpg\" alt=\"A reaction with nicotinamide adenine dinucleotide cation oxidizes sn-glycerol-3-phosphate to dihydroxyactone phosphate. Nicotinamide adenine dinucleotide cation converts to nicotinamide adenine dinucleotide hydride\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-AP21": {
+      "source_uid": "39346@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358179"
+      ],
+      "fields": {
+        "stem:358179": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTBaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c5c5b8ecc70689d0f1c000432c97ba58601d4c12/OChem_29_EC_018.jpg\" alt=\"Acetyl CoA forms acetoacetyl CoA , which converts water to an unknown reagent and acetoacetate anion,  the acetoacetate anion reacts with unknown reagents to form ketone bodies acetone and 3-hydroxybutyrate.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-AP22": {
+      "source_uid": "39347@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349394"
+      ],
+      "fields": {
+        "stem:349394": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-AP23": {
+      "source_uid": "39348@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "358181"
+      ],
+      "fields": {
+        "stem:358181": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTRaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0b0fcf7514f898d4f3f21cce741773ec0dc04692/OChem_29_EC_019.jpg\" alt=\"Acetoacetyl A C P forms beta-hydroxybutyryl A C P via the reduction of nicotinamide adenine dinucleotide phosphate hydride to nicotinamide adenine dinucleotide phosphate cation.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-AP24": {
+      "source_uid": "39349@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "358183"
+      ],
+      "fields": {
+        "stem:358183": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdThaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0d34e0c4daadff281d330accf0a0fc4f36e1530c/OChem_29_EC_020.jpg\" alt=\"A beta hydroxy thioester is dehydrated to form trans-crotonyl A C P. The C-C single bond in the reactant converts to a double bond in the product.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-AP25": {
+      "source_uid": "39350@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "358185"
+      ],
+      "fields": {
+        "stem:358185": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdkFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--95637528531668abdb38949772dcac9709f10e91/OChem_29_EC_021.jpg\" alt=\"trans-Crotonyl ACP reacts to form butyryl A C P. The product has a four-carbon chain with carbonyl linked to S A C P.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-MP01": {
+      "source_uid": "39315@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358569"
+      ],
+      "fields": {
+        "stem:358569": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDRaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ac0d5ace9c77e6e6265bd3bbb1402c80feba27f9/OChem_29_EC_005.jpg\" alt=\"Ribulose-5-phosphate reacts to form ribose-5-phosphate. Both structures are presented in Fischer projection.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-MP02": {
+      "source_uid": "39316@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358143"
+      ],
+      "fields": {
+        "stem:358143": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDhaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2f21c5d3a5d100ca4597617c9e9bb5b8088f9a82/OChem_29_EC_006.jpg\" alt=\"Ribose-5-phosphate reacts to form glyceraldehyde-3-phosphate and an aldehyde connected to a methylene linked to a phosphate group. Both structures are presented in Fischer projection.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-MP03": {
+      "source_uid": "39317@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358146",
+        "358147"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--594ec03f5ddcede14e6029d47e895cf67e7bf7ba/OChem_29_EC_007.jpg\" alt=\"Sedoheptulose-7-phosphate reacts with glyceraldehyde-3-phosphate to form erythrose-4-phosphate and fructose-6-phosphate. All the structures are presented in Fischer projection.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358146": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358147": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-MP04": {
+      "source_uid": "39318@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358150",
+        "358151"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a0d758747c3f6cf2a97ea0eb719c23a6a5b902e0/OChem_29_EC_008.jpg\" alt=\"Xylulose-5-phosphate reacts with ribose-5-phosphate to form glyceraldehyde-3-phosphate and sedoheptulose-7-phosphate. Both structures are presented in Fischer projection.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358150": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358151": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-MP05": {
+      "source_uid": "39319@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358153"
+      ],
+      "fields": {
+        "stem:358153": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n<p>\u0000SLOT_2\u0000</p>",
+          "slots": 3,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUlaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--be2b0dce03499957fb60e7e266bda79e0d33d98d/OChem_29_EC_009.jpg\" alt=\"Tyrosine is degraded to maleoylacetoacetate and then to fumaroylacetoacetate, and acetoacetate and fumarate with acetoacetate forming coenzyme A.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-MP06": {
+      "source_uid": "39320@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349316"
+      ],
+      "fields": {
+        "stem:349316": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-MP07": {
+      "source_uid": "39321@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349318"
+      ],
+      "fields": {
+        "stem:349318": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-MP08": {
+      "source_uid": "39322@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358571"
+      ],
+      "fields": {
+        "stem:358571": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdU1aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4aab23bdb1f9b0bf82edb0bd4f25374438835309/OChem_29_EC_010.jpg\" alt=\"Serine reacts in the presence of unknown reagents, represented as a question mark, to form acetyl Co A.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-MP09": {
+      "source_uid": "39323@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358157"
+      ],
+      "fields": {
+        "stem:358157": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--00d95f26d3f6c555cc00cd9584d74e1e9ffea412/OChem_29_EC_011.jpg\" alt=\"3-Phosphohydroxypyruvate is converted to 3-phosphoserine via the deamination of glutamate   to alpha-ketoglutarate.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-MP10": {
+      "source_uid": "39324@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358159"
+      ],
+      "fields": {
+        "stem:358159": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c4fc5e3b84cf4abc26dfa9cc9c917b28ab92de04/OChem_29_EC_012.jpg\" alt=\"Alpha-ketoisovalerate reacts to form alpha-ketoisocaproate via the conversion acetyl CoA, and  nicotinamide adenine dinucleotide cation  to H S CoA, carbon dioxide and nicotinamide adenine dinucleotide phosphate hydride.\">"
+          },
+          "wraps": {
+            "0": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            },
+            "1": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            },
+            "2": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            },
+            "3": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            },
+            "4": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            },
+            "5": {
+              "open": "<span class=\"magenta-text\">",
+              "close": "</span>"
+            }
+          }
+        }
+      }
+    },
+    "29-99-OC-MP11": {
+      "source_uid": "39325@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358163",
+        "358164",
+        "358165"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVlaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8c93daf3a308627a76ca191ebe849e54786db778/OChem_29_EC_013.jpg\" alt=\"Cystathionine reacts to form ammonium ion, an unknown product represented as a question mark and cysteine.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358163": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358164": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358165": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-VC01": {
+      "source_uid": "39311@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358132",
+        "358133"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358132": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGtaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--109752feea8cfb8cadd8f5607b76ab69bbf49ff3/OChem_29_EC_001a.jpg\" alt=\"A ball-and-stick model of a four-carbon chain with carboxylate anion at C 1, a carbonyl group at C 2 , and a methyl group at C 3.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358133": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdG9aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9838d41e738b2e267bd844316e9fa70b5b435c7e/OChem_29_EC_001b.jpg\" alt=\"A ball-and-stick model of a five-carbon chain with a carboxylate anion at C 1, carbonyl at C 2, sulfur at C4, and a methyl group attached to S5.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-VC02": {
+      "source_uid": "39312@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358135"
+      ],
+      "fields": {
+        "stem:358135": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1148b245c1671d7b334ba3d1b2c22099ff17643b/OChem_29_EC_002.jpg\" alt=\"A ball-and-stick model of a four-carbon chain with two  carboxylate anions at C1 and C4, and a hydroxyl group at C2\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-VC03": {
+      "source_uid": "39313@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358137"
+      ],
+      "fields": {
+        "stem:358137": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--60c24e87d534763038dafaa8c7ba5e72258eb68c/OChem_29_EC_003.jpg\" alt=\"A ball-and-stick model of a seven-carbon chain, with two carboxylate anions at C 1 and C 7, and two amine groups C 2 and C 6.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "29-99-OC-VC04": {
+      "source_uid": "39314@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358139"
+      ],
+      "fields": {
+        "stem:358139": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDBaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5958ba6556fc5284cd9e365f1e91a03a4034a088/OChem_29_EC_004.jpg\" alt=\"A ball-and-stick model of four-carbon chain with C 1 having an aldehyde group and  oxygen linked to phosphate group at C4.\">"
+          },
+          "wraps": {}
+        }
+      }
+    }
+  }
+}

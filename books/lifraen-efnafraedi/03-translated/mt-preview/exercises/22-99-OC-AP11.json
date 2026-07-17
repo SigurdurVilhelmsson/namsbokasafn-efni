@@ -1,0 +1,15 @@
+{
+  "nickname": "22-99-OC-AP11",
+  "source_uid": "38815@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348812",
+      "stem_html": "<p>Hvaða af eftirfarandi efnum myndu gangast undir halóform-efnahvarf?</p>\n<p><b>(a)</b> CH<sub>3</sub>COCH<sub>3</sub> <b>(b)</b> Asetófenón <b>(c)</b> CH<sub>3</sub>CH<sub>2</sub>CHO <b>(d)</b> CH<sub>3</sub>CO<sub>2</sub>H <b>(e)</b> CH<sub>3</sub>C<span data-math=\"\\text{≡}\"></span>N</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "26-06-OC-P13",
+  "source_uid": "39224@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359593",
+      "stem_html": "<p>Hver er N-enda leifin á peptíði sem gefur eftirfarandi PTH-afleiðu við Edman-niðurbrot?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2081d0bdaa0f8bfce74fb385bb507cca08dce300/OChem_26_06_002.jpg\" alt=\"The ball-and-stick model of a P T H derivative containing a methyl thiol ether formed from the Edman degradation of the  N-terminal residue of a peptide. \">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Metíónín"
+        }
+      ]
+    }
+  ]
+}

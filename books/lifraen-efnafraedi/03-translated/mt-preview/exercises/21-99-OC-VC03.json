@@ -1,0 +1,15 @@
+{
+  "nickname": "21-99-OC-VC03",
+  "source_uid": "38179@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361413",
+      "stem_html": "<p>Eftirfarandi bygging táknar fjórflötungs alkoxíðjónar milliefni sem myndast við álagningu kjarnsækis á karboxýlsýruafleiðu. Tilgreindu kjarnsækinn, brotthópinn, upphafs sýruafleiðuna og lokaafurðina (grænt = Cl).</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaHdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b2e14eeb695ef04f002c527fa21767b9dbf6f5ef/OChem_21_EC_024.jpg\" alt=\"Ball-and-stick model shows a five-carbon alkoxide chain where ammonia and chlorine are attached to the carbonyl carbon. The fourth and fifth carbons are double-bonded, with a methyl group on the fourth.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

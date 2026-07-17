@@ -1,0 +1,19 @@
+{
+  "nickname": "04-07-OC-P17",
+  "source_uid": "36488@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "330710",
+      "stem_html": "Líttu aftur á mynd 4.13 og áætlaðu hundraðshluta áslægra og miðlægra stellinga sem eru til staðar í jafnvægi í brómsýklóhexani.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Miðlæg = 70%; áslæg = 30%"
+        }
+      ]
+    }
+  ]
+}

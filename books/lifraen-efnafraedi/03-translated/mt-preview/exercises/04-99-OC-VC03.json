@@ -1,0 +1,15 @@
+{
+  "nickname": "04-99-OC-VC03",
+  "source_uid": "36520@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351100",
+      "stem_html": "<p>Þrískipt sýklóhexan með þremur skiptihópum – rauðum, grænum og bláum – gengst undir hringveltu yfir í hina stólastellinguna. Tilgreindu hvort hver skiptihópur sé áslægur eða miðlægur og sýndu stöðurnar sem skiptihóparnir þrír taka í hringveltu forminu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1VSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cc22ff05021014e833b6575704b61558a1cd2a32/OChem_04_EC_003.jpg\" alt=\"Ball and stick model of substituted cyclohexane with red, blue, and green spheres at C1, C2, and C5 undergoes ring-flip to form model with all substituents, represented by white circles.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "24-09-OC-P20",
+  "source_uid": "38973@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361603",
+      "stem_html": "Teiknaðu svigrúmsmynd af þíasóli. Gerðu ráð fyrir að bæði nitur- og brennisteinsfrumeindirnar séu <i>sp</i><sup>2</sup>-tvinnblandaðar og sýndu svigrúmin sem rafeindapörin eru í.\n",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3daIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1577253ce2e5e24b13fb600262b979138df4514d/OChem_24_EC_205.jpg\" alt=\"Orbital diagram of thiazole involving nitrogen, sulfur, and three hydrogens, all s p 2 hybridized. N and S carry lone pairs of electrons; six total electrons in the pi system.\">"
+        }
+      ]
+    }
+  ]
+}

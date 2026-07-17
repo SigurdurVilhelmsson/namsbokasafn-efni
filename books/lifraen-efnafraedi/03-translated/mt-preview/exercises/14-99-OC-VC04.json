@@ -1,0 +1,15 @@
+{
+  "nickname": "14-99-OC-VC04",
+  "source_uid": "37672@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358455",
+      "stem_html": "<p>Eftirfarandi líkan er af allýl-karbkatjón-milliefni sem myndast við róteindingu samtengds díens með HBr. Sýndu byggingu díensins og byggingu loka-myndefna efnahvarfsins.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdG9VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5b085504c5ca977f11334c11b339fb255a88dae4/OChem_14_EC_006.jpg\" alt=\"The ball-and-stick model has a 6-carbon chain. C 3 is bonded to a methyl group. Gray and white spheres represent carbon and hydrogen atoms, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

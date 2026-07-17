@@ -1,0 +1,15 @@
+{
+  "nickname": "19-99-OC-AP17",
+  "source_uid": "38063@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360793",
+      "stem_html": "<p>Efnasamband <b>A</b>, C<sub>8</sub>H<sub>10</sub>O<sub>2</sub>, hefur sterkt IR-gleypni við 1750 cm<sup>–1</sup> og gefur <sup>13</sup>C NMR-rófið sem sýnt er. Leggið til byggingu fyrir <b>A</b>.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbm9XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--247f3acc1a5d38a3f5a781618464a2c240f61128/OChem_19_EC_052.jpg\" alt=\"The C-13 spectrum shows peaks at shifts of 0 (T M S), 38, 42, and 219, measured in parts per million.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

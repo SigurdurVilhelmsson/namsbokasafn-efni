@@ -1,0 +1,37 @@
+{
+  "nickname": "21-03-OC-P07",
+  "source_uid": "38157@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvernig gætir þú búið til eftirfarandi estra úr samsvarandi sýrum?",
+  "questions": [
+    {
+      "id": "361369",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0VYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c26b6d610817c5a52449a03324fa24e5708af3a2/OChem_21_03_010a.jpg\" alt=\"The structure of an ester comprises of a carbonyl group attached to a methyl group on one side and an oxygen linked to a butyl group on the other side.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Ediksýra + 1-bútanól"
+        }
+      ]
+    },
+    {
+      "id": "361370",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0lYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6d3f5393f648d8023dbf316729a0bb874693889c/OChem_21_03_010b.jpg\" alt=\"The structure of an ester comprises of a carbonyl group attached to a propyl chain on one side and an oxygen linked to a methyl group on the other side.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Bútansýra + metanól"
+        }
+      ]
+    },
+    {
+      "id": "361371",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ01YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e73dcd796eacb539c059d2c5c7a5761a1a42d2a9/OChem_21_03_010c.jpg\" alt=\"The structure of an ester comprises of a carbonyl group attached to a cyclopentane ring on one side and an oxygen linked to an isopropyl group on the other side.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Sýklópentankarboxýlsýra + ísóprópýlalkóhól"
+        }
+      ]
+    }
+  ]
+}

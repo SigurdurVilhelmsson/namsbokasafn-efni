@@ -1,0 +1,40 @@
+{
+  "nickname": "07-99-OC-AP12",
+  "source_uid": "36664@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Raðaðu eftirfarandi hópum í samræmi við Cahn–Ingold–Prelog-forgangsröðunarreglurnar:",
+  "questions": [
+    {
+      "id": "357257",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3635cb0fe9dcd9ea894f66eb6ea494022b59ede3/OChem_07_EC_019a.jpg\" alt=\"The figure shows four sets of substituents. Methyl, bromine, hydrogen, and iodine each with an open single bond.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357258",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVlSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--356dc0091ed36e66c483777b707caaa291751469/OChem_07_EC_019b.jpg\" alt=\"The figure shows four sets of substituents. A hydroxyl group, methoxy group, hydrogen atom, and carboxylic acid group each with an open single bond.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357259",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8e81829711ca06914f5d56efcace28f75f70d65e/OChem_07_EC_019c.jpg\" alt=\"The figure shows four sets of substituents. Carboxyl, methyl ester, hydroxymethyl, and methyl each with an open single bond.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357260",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWdSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--44cc81bcf62f88be92c38053cf895a3499bb982b/OChem_07_EC_019d.jpg\" alt=\"The figure shows three sets of substituents. Methyl, ethyl, C H 2 C H 2 O H, and acetyl group bonded to methyl each with an open single bond.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357261",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWtSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9facdaf6597a454d533e8bf7aa629b8e63d0ab27/OChem_07_EC_019e.jpg\" alt=\"The figure shows four sets of substituents. Vinyl, cyano, C H 2 N H 2, and bromomethyl each with an open single bond.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357262",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdW9SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8ec92310cf15a8b4e8d826d8bb8d85681335c0f1/OChem_07_EC_019f.jpg\" alt=\"The figure shows four sets of substituents. Vinyl, ethyl, C H 2 O C H 3, and hydroxymethyl with open single bonds.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

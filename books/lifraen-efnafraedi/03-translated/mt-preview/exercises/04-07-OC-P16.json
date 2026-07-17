@@ -1,0 +1,19 @@
+{
+  "nickname": "04-07-OC-P16",
+  "source_uid": "36487@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "330050",
+      "stem_html": "Hvers vegna heldurðu að áslægur síanóhópur (–CN) valdi nánast engri 1,3-tvíáslægri víxlverkun (0,4 kJ/mól)?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Síanóhópurinn vísar beint upp."
+        }
+      ]
+    }
+  ]
+}

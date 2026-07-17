@@ -1,0 +1,19 @@
+{
+  "nickname": "27-05-OC-P06",
+  "source_uid": "38838@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358191",
+      "stem_html": "<p>Umbreyting mevalónat 5-fosfats í ísópentenýldífosfat hefur eftirfarandi niðurstöðu. Hvaða vetni, pro-<i>R</i> eða pro-<i>S</i>, endar cis-lægt við metýlhópinn og hvaða endar trans-lægt?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazhZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d47638187599d8e1f1e7789e757c6e0b009a1d91/OChem_27_05_009.jpg\" alt=\"Mevalonate-5-diphosphate represented in wedge-dash form undergoes dehydration to form isopentenyl diphosphate.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Pro-<i>S</i> vetnið er cis-lægt við −CH<sub>3</sub> hópinn; pro-<i>R</i> vetnið er trans-lægt."
+        }
+      ]
+    }
+  ]
+}

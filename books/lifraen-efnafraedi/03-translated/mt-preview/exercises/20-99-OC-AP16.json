@@ -1,0 +1,25 @@
+{
+  "nickname": "20-99-OC-AP16",
+  "source_uid": "38126@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú búa til eftirfarandi efnasambönd úr benseni? Fleiri en eitt skref þarf í hverju tilviki.",
+  "questions": [
+    {
+      "id": "342116",
+      "stem_html": "<i>m</i>-klórbensósýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342117",
+      "stem_html": "<i>p</i>-brómbensósýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342118",
+      "stem_html": "Fenýlediksýra, C<sub>6</sub>H<sub>5</sub>CH<sub>2</sub>CO<sub>2</sub>H",
+      "collaborator_solutions": []
+    }
+  ]
+}

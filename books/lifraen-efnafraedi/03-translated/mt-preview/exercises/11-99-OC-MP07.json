@@ -1,0 +1,15 @@
+{
+  "nickname": "11-99-OC-MP07",
+  "source_uid": "37372@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "356301",
+      "stem_html": "<p>Við sáum í kafla 8.7 að brómhýdrín breytast í epoxíð þegar þau hvarfast við basa. Stingdu upp á hvarfgangi og notaðu sveigðar örvar til að sýna flæði rafeinda.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdElUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d0ea5d5b2d505350fd4a27d1f475abbc25d9ab89/OChem_11_EC_017.jpg\" alt=\"An illustration shows the reaction of a bromohydrin in the presence of NaOH and ethanol to yield epoxide. Bromohydrin shows two carbon atoms single bonded. C1 is single bonded to a hydroxyl group  dash bonded to a hydrogen  and wedge bonded to methyl group. C2 is single bonded to a bromine atom  wedge bonded to a hydrogen  and dash bonded to methyl group. Epoxide shows a 3-membered ring with an oxygen and 2 carbon atoms. Each carbon is dash bonded to a hydrogen and wedge bonded to methyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

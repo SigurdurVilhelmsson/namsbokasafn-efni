@@ -1,0 +1,20 @@
+{
+  "nickname": "20-99-OC-AP39",
+  "source_uid": "38149@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Leggðu til byggingar fyrir karboxýlsýrur sem sýna eftirfarandi toppa í <sup>13</sup>C NMR-rófum sínum. Gerðu ráð fyrir að tegundir kolefnis (1°, 2°, 3° eða 4°) hafi verið ákvarðaðar með DEPT-NMR.",
+  "questions": [
+    {
+      "id": "342195",
+      "stem_html": "C<sub>7</sub>H<sub>12</sub>O<sub>2</sub>: 25,5 <i>δ</i> (2°), 25,9 <i>δ</i> (2°), 29,0 <i>δ</i> (2°), 43,1 <i>δ</i> (3°), 183,0 <i>δ</i> (4°)",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342196",
+      "stem_html": "C<sub>8</sub>H<sub>8</sub>O<sub>2</sub>: 21,4 <i>δ</i> (1°), 128,3 <i>δ</i> (4°), 129,0 <i>δ</i> (3°), 129,7 <i>δ</i> (3°), 143,1 <i>δ</i> (4°), 168,2 <i>δ</i> (4°)",
+      "collaborator_solutions": []
+    }
+  ]
+}

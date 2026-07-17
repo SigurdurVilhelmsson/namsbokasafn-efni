@@ -1,0 +1,15 @@
+{
+  "nickname": "17-99-OC-AP28",
+  "source_uid": "37929@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359557",
+      "stem_html": "<p><i>p</i>-Nítrófenól og 2,6-dímetýl-4-nítrófenól hafa bæði p<i>K</i><sub>a</sub> = 7,15, en 3,5-dímetýl-4-nítrófenól hefur p<i>K</i><sub>a</sub> = 8,25. Af hverju er 3,5-dímetýl-4-nítrófenól svo miklu síður súrt?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjhWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bf451ab1e3fd77c51504a4b618963cae3f173c95/OChem_17_EC_047.jpg\" alt=\"The structure of 4-nitrophenol, 2,6-dimethyl-4-nitrophenol, and 3,5-dimethyl-4-nitrophenol with p K a values 7.15, 7.15, and 8.25, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

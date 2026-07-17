@@ -1,0 +1,25 @@
+{
+  "nickname": "07-99-OC-AP25",
+  "source_uid": "36677@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um helsta myndefnið úr álagningu HBr á hvern eftirfarandi alkena:",
+  "questions": [
+    {
+      "id": "354470",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1lTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f22c9dadfda26fa827b3bd1977df59355595954c/OChem_07_EC_028a.jpg\" alt=\"A cyclohexane ring is double bonded to a methylene group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354471",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2NTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5648e4dc7f5c1fe612979fcfecd03155ff3275d0/OChem_07_EC_028b.jpg\" alt=\"A cyclohexane ring is fused to C1 and C6 of cyclohexene.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354472",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2dTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--360b16df20821cef8e1bc72d7fab2cb90fa767b3/OChem_07_EC_028c.jpg\" alt=\"The condensed structure has a 5-carbon chain. C2 is double bonded to C3. C4 is bonded to a methyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

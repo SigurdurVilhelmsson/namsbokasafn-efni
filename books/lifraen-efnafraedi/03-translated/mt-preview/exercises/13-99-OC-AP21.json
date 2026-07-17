@@ -1,0 +1,15 @@
+{
+  "nickname": "13-99-OC-AP21",
+  "source_uid": "37515@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358399",
+      "stem_html": "<p>Hvernig gætir þú notað <sup>1</sup>H og <sup>13</sup>C NMR til að greina á milli eftirfarandi hverfa með formúluna C<sub>4</sub>H<sub>8</sub>?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTBVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--706ed450a3682998f9f1e0a61fdf71ee28d84a26/OChem_13_EC_014.jpg\" alt=\"Condensed structures of cyclobutane, 1-butene, 2-butene, and 2-methyl-1-propene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

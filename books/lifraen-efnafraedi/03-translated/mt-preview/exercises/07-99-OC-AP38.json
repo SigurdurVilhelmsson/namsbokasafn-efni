@@ -1,0 +1,15 @@
+{
+  "nickname": "07-99-OC-AP38",
+  "source_uid": "36689@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354496",
+      "stem_html": "<p>Arómatísk efnasambönd eins og bensen hvarfast við alkýlklóríð í viðurvist AlCl<sub>3</sub> hvata og mynda alkýlbensen. Þetta efnahvarf á sér stað í gegnum karbójón sem milliefni, sem myndast við efnahvarf alkýlklóríðsins við AlCl<sub>3</sub> (R−Cl + AlCl<sub>3</sub> ⟶ R<sup>+</sup> + AlCl<sub>4</sub><sup>−</sup>). Hvernig er hægt að útskýra þá athugun að efnahvarf bensens við 1-klórprópan gefur ísóprópýlbensen sem aðalmyndefni?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaE1TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5d41292f92d43f2c1acece29c61ded0f397254f7/OChem_07_EC_036.jpg\" alt=\"Benzene reacts with propyl chloride in the presence of aluminum trichloride to form a benzene ring, in which C1 is bonded to an isopropyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

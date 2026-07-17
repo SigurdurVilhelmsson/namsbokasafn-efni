@@ -1,0 +1,20 @@
+{
+  "nickname": "19-99-OC-MP01",
+  "source_uid": "38024@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefnið/myndefnin og leggðu til hvarfgang fyrir hvert eftirfarandi efnahvarfa:",
+  "questions": [
+    {
+      "id": "360670",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0lXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c0582d1c64ea7384db13518d0dcdac22c2137ece/OChem_19_EC_020a.jpg\" alt=\"The reaction shows 3-phenylpropanoyl chloride with aluminum chloride to produce an unknown product depicted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360671",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa01XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--62179c4d4ab361913ce3872f0ada5e2717b3a3c6/OChem_19_EC_020b.jpg\" alt=\"The reaction shows methoxybenzene with acetyl chloride in the presence of aluminum chloride to yield an unknown product denoted by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

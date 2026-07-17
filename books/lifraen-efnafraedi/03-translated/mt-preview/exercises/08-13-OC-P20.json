@@ -1,0 +1,19 @@
+{
+  "nickname": "08-13-OC-P20",
+  "source_uid": "37104@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "332658",
+      "stem_html": "Hvaða myndefni myndast við sýruhvetjandi vötnun á rasemísku (±)-4-metýl-1-hexeni? Hvað getur þú sagt um hlutfallslegt magn myndefnanna? Er myndefnablandan ljósvirk?",
+      "collaborator_solutions": [
+        {
+          "content_html": "<p>Ljósóvirk efnablanda sem er ekki 50:50 af tveimur rasemískum pörum: (2<i>R</i>,4<i>R</i>) + (2<i>S</i>,4<i>S</i>) og (2<i>R</i>,4<i>S</i>) + (2<i>S</i>,4<i>R</i>)</p>"
+        }
+      ]
+    }
+  ]
+}

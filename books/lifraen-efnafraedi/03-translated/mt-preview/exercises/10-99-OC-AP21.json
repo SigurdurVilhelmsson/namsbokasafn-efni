@@ -1,0 +1,15 @@
+{
+  "nickname": "10-99-OC-AP21",
+  "source_uid": "37284@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "352703",
+      "stem_html": "<p>Hvers vegna heldur þú að ekki sé hægt að búa til Grignard-hvarfefni úr brómalkóhóli eins og 4-bróm-1-pentanóli? Nefndu annað dæmi um sameind sem ólíklegt er að myndi Grignard-hvarfefni.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazhUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--867c108e59e502f430b4408386cf5083015e186d/OChem_10_EC_032.jpg\" alt=\"4-bromo-1-pentanol does not react with magnesium to form 4-magnesium bromide pentanol.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

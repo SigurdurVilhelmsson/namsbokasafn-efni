@@ -1,0 +1,15 @@
+{
+  "nickname": "04-99-OC-AP36",
+  "source_uid": "36563@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351897",
+      "stem_html": "<p>Alkóhól gangast undir <i>oxun</i> og mynda karbónýlefnasambönd þegar þau eru meðhöndluð með CrO<sub>3</sub>. Til dæmis gefur 2-<i>tert</i>-bútýlsýklóhexanól 2-<i>tert</i>-bútýlsýklóhexanón. Ef áslægir -OH hópar eru almennt hvarfgjarnari en miðlægar hverfur þeirra, hvora telur þú að hvarfist hraðar, cis-hverfan af 2-<i>tert</i>-bútýlsýklóhexanóli eða trans-hverfan? Útskýrðu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--accbb8173cb57d83f0c005c506bef3c756ff2638/OChem_04_EC_020.jpg\" alt=\"In a reaction, 2-tertiary-butylcyclohexanol reacts with C r O 3 to form 2-tert-butylcyclohexanone.\">\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

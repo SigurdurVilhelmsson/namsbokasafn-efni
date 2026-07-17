@@ -1,0 +1,30 @@
+{
+  "nickname": "23-99-OC-AP23",
+  "source_uid": "38950@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú framleiða eftirfarandi efnasambönd úr sýklóhexanóni?",
+  "questions": [
+    {
+      "id": "359933",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUlZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--108467976c933e5da536e378a224cffa143463a5/OChem_23_EC_047a.jpg\" alt=\"Cyclohexanone with double bond linked to C H C 6 H 5 on C 2 and C 6.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359934",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdU1ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7e7454bb72e4d1b590f33fdf100969bc222d3dbe/OChem_23_EC_047b.jpg\" alt=\"Cyclohexanone with C H 2 C H 2 C N on C 2.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359935",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVFZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9de30ed30e3b618a165ecb3add0bbc2bd68cc5b4/OChem_23_EC_047c.jpg\" alt=\"Cyclohexanone with C H 2 C H double bonded C H 2 at C 2.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359936",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVVZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ba793e9453aa6e1fd5e2a3647b88fc99e755d75f/OChem_23_EC_047d.jpg\" alt=\"Cyclohexanone with carbonyl linked to C O O E t on C 2.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

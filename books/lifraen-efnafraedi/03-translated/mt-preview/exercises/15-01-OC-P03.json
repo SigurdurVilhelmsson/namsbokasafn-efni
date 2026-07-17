@@ -1,0 +1,46 @@
+{
+  "nickname": "15-01-OC-P03",
+  "source_uid": "37734@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Teiknaðu byggingarformúlur sem samsvara eftirfarandi IUPAC-heitum:",
+  "questions": [
+    {
+      "id": "358623",
+      "stem_html": "<i>p</i>-Brómklóróbensen",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0c3fe1c9a26806f871b88b1281e505489f3c3961/OChem_15_EC_201a.jpg\" alt=\"In a benzene ring, C 1 and C 4 are bonded to a bromine atom and a chlorine atom, respectively.\">"
+        }
+      ]
+    },
+    {
+      "id": "358624",
+      "stem_html": "<i>p</i>-Brómtólúen",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGtWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1f145dd58fd2217ae609c39ac672f2b774398f41/OChem_15_EC_201b.jpg\" alt=\"In a benzene ring, C 1 and C 4 are bonded to a bromine atom and a methyl group, respectively.\">"
+        }
+      ]
+    },
+    {
+      "id": "358625",
+      "stem_html": "<i>m</i>-Klóranilín",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaG9WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7c451bc45f181a6b41e25f9e48f40bd9d10e579c/OChem_15_EC_201c.jpg\" alt=\"In a benzene ring, C 1 and C 3 are bonded to an amine group and a chlorine atom, respectively.\">"
+        }
+      ]
+    },
+    {
+      "id": "358626",
+      "stem_html": "1-Klór-3,5-dímetýlbensen",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaHNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3e765e021fd1810825a3d3907e2b64c6f55d240c/OChem_15_EC_201d.jpg\" alt=\"In a benzene ring, C 1 is bonded to a chlorine atom. C 3 and C 5 are each bonded to a methyl group.\">"
+        }
+      ]
+    }
+  ]
+}

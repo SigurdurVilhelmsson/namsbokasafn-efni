@@ -1,0 +1,15 @@
+{
+  "nickname": "10-99-OC-AP23",
+  "source_uid": "37286@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "352405",
+      "stem_html": "<p>Greindu hvarfefnin <b>a</b>–<b>c</b> í eftirfarandi hvarfakerfi:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbEVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9d4ca9f1bfe94baac76aac7f8b6f461c7955cc47/OChem_10_EC_034.jpg\" alt=\"Ethylidene cyclohexane reacts with reagent a to form 1-cyclohexylethanol. The  formed product reacts with reagent b to form (1-bromoethyl)cyclohexane which further reacts with reagent c to form isopropylcyclohexane.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

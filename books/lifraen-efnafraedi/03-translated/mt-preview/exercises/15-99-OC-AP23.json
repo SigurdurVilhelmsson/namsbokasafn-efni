@@ -1,0 +1,15 @@
+{
+  "nickname": "15-99-OC-AP23",
+  "source_uid": "37771@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "339154",
+      "stem_html": "<p>Hver er bygging kolvetnis sem hefur M<sup>+</sup> = 120 í massarófi sínu og hefur eftirfarandi <sup>1</sup>H NMR-róf?</p>\n<p>7,25 <i>δ</i> (5 H, breiður eintopper); 2,90 <i>δ</i> (1 H, sjötopper, <i>J</i> = 7 Hz); 1,22 <i>δ</i> (6 H, tvítopper, <i>J</i> = 7 Hz)</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

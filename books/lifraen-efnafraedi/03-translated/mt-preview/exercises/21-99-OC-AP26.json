@@ -1,0 +1,25 @@
+{
+  "nickname": "21-99-OC-AP26",
+  "source_uid": "38220@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Meðhöndlun karboxýlsýru með tríflúorediksýruanhýdríði leiðir til ósamhverfs anhýdríðs sem hvarfast hratt við alkóhól og gefur ester.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa29YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2f40050466488367464fa3acbfd2481c533b2dff/OChem_21_EC_051.jpg\" alt=\"The reaction of a carboxylic acid with trifluoroacetic anhydride generates a mixed anhydride which, upon treatment with an alcohol gives an ester and trifluroacetic acid.\">",
+  "questions": [
+    {
+      "id": "361509",
+      "stem_html": "Leggðu til hvarfgang fyrir myndun ósamhverfa anhýdríðsins.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361510",
+      "stem_html": "Af hverju er ósamhverfa anhýdríðið óvenju hvarfgjarnt?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361511",
+      "stem_html": "Af hverju hvarfast ósamhverfa anhýdríðið eins og sýnt er frekar en að gefa tríflúorasetatester auk karboxýlsýru?",
+      "collaborator_solutions": []
+    }
+  ]
+}

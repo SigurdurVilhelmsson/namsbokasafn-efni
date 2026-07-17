@@ -1,0 +1,20 @@
+{
+  "nickname": "27-99-OC-AP21",
+  "source_uid": "38869@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Almennt gildir að miðlæg alkóhól esterast auðveldar en áslæg alkóhól. Hvaða myndefni myndir þú búast við að fá úr efnahvarfi eftirfarandi tveggja efnasambanda við 1 jafngildi af ediksýruanhýdríði?",
+  "questions": [
+    {
+      "id": "358236",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbW9ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5988357cdfed48a8279ec877d9e8718cd5d094e3/OChem_27_EC_016a.jpg\" alt=\"The structure of a trans-decalin with a wedged methyl and dashed hydrogen at the ring junction, a wedged hydroxyl at C 2, and dashed hydroxyl at C 7.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358237",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e89bd2f2d2a2bf40ee7e8157e8a6ae874c0f6c5f/OChem_27_EC_016b.jpg\" alt=\"The structure of a trans-decalin with a wedged methyl and dashed hydrogen at the ring junction, a wedged hydroxyl at C 3, and dashed hydroxyl at C 6.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "nickname": "09-99-OC-VC02",
+  "source_uid": "37204@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Úr hvaða alkíni gæti hvert eftirfarandi efna hafa verið búið til? (Grænt = Cl.)",
+  "questions": [
+    {
+      "id": "353741",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjhTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--67fd28f8b6f840c2abfe61cd48c61c39e6433a62/OChem_09_EC_012a.jpg\" alt=\"A ball and stick model of a C6 alkyne. Carbon, oxygen, and hydrogen are denoted using gray, red, and white spheres, respectively.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353742",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0FTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--68ee7363dd6ed9b3e1e657e5059ea97fc47808ff/OChem_09_EC_012b.jpg\" alt=\"A ball and stick model of a substituted cyclohexanxe. Carbon and hydrogen are denoted using gray and white spheres, respectively. Two chlorine groups are denoted using green spheres.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

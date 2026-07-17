@@ -1,0 +1,15 @@
+{
+  "nickname": "29-99-OC-MP01",
+  "source_uid": "39315@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358569",
+      "stem_html": "<p>Í <i>pentósafosfatferlinu</i> við niðurbrot sykra breytist ríbúlósa-5-fosfat í ríbósa-5-fosfat. Leggðu til hvarfgang fyrir ísómerunina.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDRaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ac0d5ace9c77e6e6265bd3bbb1402c80feba27f9/OChem_29_EC_005.jpg\" alt=\"Ribulose-5-phosphate reacts to form ribose-5-phosphate. Both structures are presented in Fischer projection.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

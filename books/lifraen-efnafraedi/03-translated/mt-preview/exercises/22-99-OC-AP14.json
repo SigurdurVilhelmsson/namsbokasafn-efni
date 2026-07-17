@@ -1,0 +1,15 @@
+{
+  "nickname": "22-99-OC-AP14",
+  "source_uid": "38818@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "346429",
+      "stem_html": "Ein leið til að ákvarða fjölda súrra vetna í sameind er að meðhöndla efnasambandið með NaOD í D<sub>2</sub>O, einangra myndefnið og ákvarða sameindamassa þess með massagreiningu. Til dæmis, ef sýklóhexanón er meðhöndlað með NaOD í D<sub>2</sub>O, hefur myndefnið sameindamassann 102. Útskýrðu hvernig þessi aðferð virkar.",
+      "collaborator_solutions": []
+    }
+  ]
+}

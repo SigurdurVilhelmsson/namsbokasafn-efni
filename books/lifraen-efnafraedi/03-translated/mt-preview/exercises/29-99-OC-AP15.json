@@ -1,0 +1,25 @@
+{
+  "nickname": "29-99-OC-AP15",
+  "source_uid": "39340@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hversu mörg grömm af asetýl CoA (MW = 809,6 amu) myndast við niðurbrot eftirfarandi efna? Hvaða efni er skilvirkasta forstig asetýl CoA miðað við þyngd?",
+  "questions": [
+    {
+      "id": "349374",
+      "stem_html": "100,0 g af glúkósa",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "349375",
+      "stem_html": "100,0 g af palmitínsýru",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "349376",
+      "stem_html": "100,0 g af maltósa",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "nickname": "28-99-OC-AP06",
+  "source_uid": "39135@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Fyrir hvaða amínósýrur tákna eftirfarandi ríbókirnaþrennur?",
+  "questions": [
+    {
+      "id": "348353",
+      "stem_html": "AAU",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348354",
+      "stem_html": "GAG",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348355",
+      "stem_html": "UCC",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348356",
+      "stem_html": "CAU",
+      "collaborator_solutions": []
+    }
+  ]
+}

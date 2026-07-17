@@ -1,0 +1,15 @@
+{
+  "nickname": "16-99-OC-AP14",
+  "source_uid": "37846@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359021",
+      "stem_html": "<p>Í hvaða stöðu og á hvaða hring býstu við að nítrering á 4-bróm-bífenýli eigi sér stað? Útskýrðu með því að nota vokmyndir af mögulegum milliefnum.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0FWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--23d1eac0e4450360e3aa0665e8dc437bd66f8ba9/OChem_16_EC_037.jpg\" alt=\"4-Bromobiphenyl has a benzene ring bonded to a second benzene ring bearing a bromine atom in the para position.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

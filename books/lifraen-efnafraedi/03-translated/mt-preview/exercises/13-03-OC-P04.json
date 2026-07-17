@@ -1,0 +1,46 @@
+{
+  "nickname": "13-03-OC-P04",
+  "source_uid": "37470@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Eftirfarandi <sup>1</sup>H NMR-toppar voru skráðir á rófsmæli sem starfar á 200 MHz. Umbreyttu hverjum og einum í <i>δ</i> einingar.",
+  "questions": [
+    {
+      "id": "337967",
+      "stem_html": "CHCl<sub>3</sub>; 1454 Hz",
+      "collaborator_solutions": [
+        {
+          "content_html": "7,27 <i>δ</i>"
+        }
+      ]
+    },
+    {
+      "id": "337968",
+      "stem_html": "CH<sub>3</sub>Cl; 610 Hz",
+      "collaborator_solutions": [
+        {
+          "content_html": "3,05 <i>δ</i>"
+        }
+      ]
+    },
+    {
+      "id": "337969",
+      "stem_html": "CH<sub>3</sub>OH; 693 Hz",
+      "collaborator_solutions": [
+        {
+          "content_html": "3,46 <i>δ</i>"
+        }
+      ]
+    },
+    {
+      "id": "337970",
+      "stem_html": "CH<sub>2</sub>Cl<sub>2</sub>; 1060 Hz",
+      "collaborator_solutions": [
+        {
+          "content_html": "5,30 <i>δ</i>"
+        }
+      ]
+    }
+  ]
+}

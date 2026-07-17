@@ -1,0 +1,30 @@
+{
+  "nickname": "19-99-OC-AP12",
+  "source_uid": "38058@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú mynda eftirfarandi efnasambönd úr sýklóhexanóni?",
+  "questions": [
+    {
+      "id": "341624",
+      "stem_html": "1-metýlsýklóhexen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341625",
+      "stem_html": "2-fenýlsýklóhexanón",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341626",
+      "stem_html": "<i>cis</i>-1,2-sýklóhexandíól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341627",
+      "stem_html": "1-sýklóhexýlsýklóhexanól",
+      "collaborator_solutions": []
+    }
+  ]
+}

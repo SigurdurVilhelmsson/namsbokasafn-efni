@@ -1,0 +1,40 @@
+{
+  "nickname": "16-99-OC-AP02",
+  "source_uid": "37834@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um helsta myndefni (helstu myndefni) nítrunar eftirfarandi efna. Hvaða efni hvarfast hraðar en bensen og hvaða efni hvarfast hægar?",
+  "questions": [
+    {
+      "id": "464166",
+      "stem_html": "Brómbensen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "464167",
+      "stem_html": "Bensónítríl",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "464168",
+      "stem_html": "Bensósýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "464169",
+      "stem_html": "Nítróbensen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "464170",
+      "stem_html": "Bensensúlfónsýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "464171",
+      "stem_html": "metoxýbensen",
+      "collaborator_solutions": []
+    }
+  ]
+}

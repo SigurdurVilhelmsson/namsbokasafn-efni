@@ -1,0 +1,19 @@
+{
+  "nickname": "20-02-OC-P04",
+  "source_uid": "38084@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "341936",
+      "stem_html": "<i>K</i><sub>a</sub> fyrir díklórediksýru er 3,32 × 10<sup>–2</sup>. Hversu hátt hlutfall sýrunnar er klofið í 0,10 M vatnslausn?",
+      "collaborator_solutions": [
+        {
+          "content_html": "43%"
+        }
+      ]
+    }
+  ]
+}

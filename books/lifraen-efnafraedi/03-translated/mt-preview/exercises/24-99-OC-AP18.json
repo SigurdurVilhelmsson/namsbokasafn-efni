@@ -1,0 +1,30 @@
+{
+  "nickname": "24-99-OC-AP18",
+  "source_uid": "39017@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefni eftirfarandi efnahvarfa. Ef fleiri en eitt myndefni myndast, tilgreindu hvort er aðalmyndefnið.",
+  "questions": [
+    {
+      "id": "361714",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajBaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cd15541d13d45aea937dca69f7f1ce796eeefdb3/OChem_24_EC_039a.jpg\" alt=\"Decahydroquinoline reacts with excess methyl iodide to form unknown product A. This reacts with silver oxide and water to form unknown B, that further reacts with heat to form C.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361715",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajRaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4b0066db6cc861243090055e6b5d6e17fbdbda76/OChem_24_EC_039b.jpg\" alt=\"Benzoyl chloride reacts with sodium azide to form unknown A. This reacts with heat to form unknown B. This reacts with water to form unknown C.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361716",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajhaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7f47f08c42323ca4e84995c2397773f41ee14904/OChem_24_EC_039c.jpg\" alt=\"Isoindoline-1,3-dione reacts with potassium hydroxide to form unknown A. This reacts with (bromomethyl)benzene to form unknown B. This reacts with potassium hydroxide and water to form unknown C.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361717",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0FaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--742443eb90d41553aea135147c4b3e6e0d37c2d9/OChem_24_EC_039d.jpg\" alt=\"1,4-Dibromobutane reacts with one equivalent of methylamine in the presence of sodium hydroxide and water to form an unknown product represented by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

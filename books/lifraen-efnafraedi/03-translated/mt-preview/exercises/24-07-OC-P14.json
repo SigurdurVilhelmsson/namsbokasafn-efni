@@ -1,0 +1,46 @@
+{
+  "nickname": "24-07-OC-P14",
+  "source_uid": "38967@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvaða myndefni myndir þú búast við úr Hofmann-brottnámi eftirfarandi amína? Ef fleira en eitt myndefni myndast, tilgreindu hvort er aðalmyndefnið.",
+  "questions": [
+    {
+      "id": "361594",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1laIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1a221e7a9a9974127d5da5be96e3b010af064980/OChem_24_07_008a.jpg\" alt=\"The structure of an eight-carbon chain with an amino group on C 4 position.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "3-Okten og 4-okten"
+        }
+      ]
+    },
+    {
+      "id": "361595",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2NaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--43d030cd0e967bc3021948e73cdcf9686ae1139c/OChem_24_07_008b.jpg\" alt=\"The structure of cyclohexane with amino group on C 1 position.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Sýklóhexen"
+        }
+      ]
+    },
+    {
+      "id": "361596",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2daIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--eb5527e99213f066b683c747f2da7c5e616347f9/OChem_24_07_008c.jpg\" alt=\"The structure of a seven-carbon chain with an amino group on C 4 position.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "3-Hepten"
+        }
+      ]
+    },
+    {
+      "id": "361597",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2taIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5eade3ad84563b006b73afa2c32721c225171490/OChem_24_07_008d.jpg\" alt=\"The structure of cyclohexyl ethyl amine.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Eten og sýklóhexen"
+        }
+      ]
+    }
+  ]
+}

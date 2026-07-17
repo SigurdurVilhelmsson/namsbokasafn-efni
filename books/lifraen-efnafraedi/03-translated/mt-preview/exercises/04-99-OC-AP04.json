@@ -1,0 +1,25 @@
+{
+  "nickname": "04-99-OC-AP04",
+  "source_uid": "36530@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Segðu til um hvort eftirfarandi pör efnasambanda séu eins, byggingarhverfur, rúmhverfur eða ótengd.",
+  "questions": [
+    {
+      "id": "351118",
+      "stem_html": "<i>cis</i>-1,3-díbrómsýklóhexan og <i>trans</i>-1,4-díbrómsýklóhexan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351119",
+      "stem_html": "2,3-dímetýlhexan og 2,3,3-trímetýlpentan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351120",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f8dcca843c9e594452e4fcafe69f85ac4cb66aac/OChem_04_EC_006.jpg\" alt=\"Two structures of cyclopentane each with  chlorine atoms at first and third carbons. The relative position of the chlorine atoms are cis in both structures.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

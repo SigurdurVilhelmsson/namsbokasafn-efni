@@ -1,0 +1,15 @@
+{
+  "nickname": "16-99-OC-VC03",
+  "source_uid": "37813@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358956",
+      "stem_html": "<p>Hvernig myndir þú smíða eftirfarandi efnasamband frá benseni? Fleiri en eitt skref þarf.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4c923bedd2ae56cf41b55dd9615cbbf19806ac46/OChem_16_EC_019.jpg\" alt=\"The ball-and-stick model has a benzene ring. C 1 is bonded to a carboxylic acid group. C 4 is bonded to an amino group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

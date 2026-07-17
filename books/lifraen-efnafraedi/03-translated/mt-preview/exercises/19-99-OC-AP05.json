@@ -1,0 +1,50 @@
+{
+  "nickname": "19-99-OC-AP05",
+  "source_uid": "38051@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefni efnahvarfs (1) fenýlasetaldehýðs og (2) asetófenóns við eftirfarandi hvarfefni:",
+  "questions": [
+    {
+      "id": "341568",
+      "stem_html": "NaBH<sub>4</sub>, síðan H<sub>3</sub>O<sup>+</sup>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341569",
+      "stem_html": "Dess–Martin-hvarfefni",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341570",
+      "stem_html": "NH<sub>2</sub>OH, HCl-hvati",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341571",
+      "stem_html": "CH<sub>3</sub>MgBr, síðan H<sub>3</sub>O<sup>+</sup>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341572",
+      "stem_html": "2 CH<sub>3</sub>OH, HCl-hvati",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341573",
+      "stem_html": "H<sub>2</sub>NNH<sub>2</sub>, KOH",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341574",
+      "stem_html": "(C<sub>6</sub>H<sub>5</sub>)<sub>3</sub>P<span data-math=\"\\text{=}\"></span>CH<sub>2</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341575",
+      "stem_html": "HCN, KCN",
+      "collaborator_solutions": []
+    }
+  ]
+}

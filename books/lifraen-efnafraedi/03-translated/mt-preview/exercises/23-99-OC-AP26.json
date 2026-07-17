@@ -1,0 +1,15 @@
+{
+  "nickname": "23-99-OC-AP26",
+  "source_uid": "38953@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359942",
+      "stem_html": "<p>Þegar 2-metýlsýklóhexanóni er breytt í enamín myndast aðeins eitt myndefni þrátt fyrir að upphafsketónið sé ósamhverft. Byggðu sameindalíkön af tveimur mögulegum myndefnum og útskýrðu hvers vegna eina myndefnið er það sem hefur tvítengið á móti metýl-staðskipta kolefninu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--347ca3542c04af8b5632dced1e03eab00d85302e/OChem_23_EC_049.jpg\" alt=\"The conversion of 2-methylcyclohexanone to an enamine using a cyclopentane reagent (pyrrolidine) yields a product 1-(6-methylcyclohex-1-enyl)pyrrolidine.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

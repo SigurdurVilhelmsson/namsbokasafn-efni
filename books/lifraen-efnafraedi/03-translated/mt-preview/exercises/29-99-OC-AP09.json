@@ -1,0 +1,25 @@
+{
+  "nickname": "29-99-OC-AP09",
+  "source_uid": "39334@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvaða ensímkóþáttur tengist hverri af eftirfarandi tegundum efnahvarfa?",
+  "questions": [
+    {
+      "id": "349350",
+      "stem_html": "Transamínun",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "349351",
+      "stem_html": "Karboxýlering á ketóni",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "349352",
+      "stem_html": "Afkarboxýlering á <i>α</i>-ketósýru",
+      "collaborator_solutions": []
+    }
+  ]
+}

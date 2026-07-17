@@ -1,0 +1,15 @@
+{
+  "nickname": "27-99-OC-VC03",
+  "source_uid": "38845@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358563",
+      "stem_html": "<p>Nafngreinið eftirfarandi fitusýru og segið til um hvort líklegra sé að hana sé að finna í hnetuolíu eða rauðu kjöti:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHdZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ff7c2cd9c6f384e8b5983ba669737466c67788f7/OChem_27_EC_003.jpg\" alt=\"The ball-and-stick model of fatty acid. Black, gray, and red spheres denote carbon, hydrogen, and oxygen, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

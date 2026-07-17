@@ -1,0 +1,15 @@
+{
+  "nickname": "18-99-OC-MP15",
+  "source_uid": "38733@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361217",
+      "stem_html": "<p>Leggðu til hvarfgang til að útskýra eftirfarandi umbreytingu. Hvers konar tvö efnahvörf eiga sér stað?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcElYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--324104d73aee87bb21e9239f7beaa6395a0a17a1/OChem_18_EC_032.jpg\" alt=\"Two reactants, including a substituted benzene and maleic anhydride, undergo a heat-induced reaction to form a fused cyclohexene-cyclopentane compound with distinct molecular arrangements.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "21-99-OC-AP27",
+  "source_uid": "38221@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361513",
+      "stem_html": "<p>Bútasetín er verkjastillandi lyf sem er framleitt í iðnaði úr <i>p</i>-flúornítróbenseni. Leggðu til myndun.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa3NYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c464a126f54fe951e8542a3b77e82df9fb43eec5/OChem_21_EC_052.jpg\" alt=\"The structure of butacetin comprises of a para-substituted benzene ring with a carbonyl group attached to a tertiary butyl group as one substituent, and, as the other, an N H group attached to a carbonyl itself attached to a methyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

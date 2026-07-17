@@ -1,0 +1,19 @@
+{
+  "nickname": "04-06-OC-P12",
+  "source_uid": "36483@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357659",
+      "stem_html": "Teiknaðu tvær mismunandi stólstellingar af sýklóhexanóli (hýdroxýsýklóhexani) og sýndu allar vetnisfrumeindir. Tilgreindu hvora stöðu sem áslæga eða miðlæga.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ef6ccea04100f644839702e2692673d72fd42bdd/OChem_04_EC_203.jpg\" alt=\"Two chair conformations of cyclohexanol. In the first conformation, C1 is bonded to axial hydroxyl group. In the second conformation, C1 is bonded to equatorial hydroxyl group.\">"
+        }
+      ]
+    }
+  ]
+}

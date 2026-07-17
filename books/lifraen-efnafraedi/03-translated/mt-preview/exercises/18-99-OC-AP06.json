@@ -1,0 +1,15 @@
+{
+  "nickname": "18-99-OC-AP06",
+  "source_uid": "38739@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361249",
+      "stem_html": "<p>Meðhöndlun á <i>trans</i>-2-klórsýklóhexanóli með NaOH gefur 1,2-epoxýsýklóhexan, en efnahvarf cis-hverfunnar við sömu aðstæður gefur sýklóhexanón. Leggið til hvarfganga fyrir bæði efnahvörfin og útskýrið hvers vegna niðurstöðurnar eru ólíkar.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUlYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--413617dc7c6e97366ffae125e5538f456b8b241a/OChem_18_EC_035.jpg\" alt=\"Reactions alter trans-2-chlorocyclohexanol to 1,2-epoxycyclohexane and cis-2-chlorocyclohexanol isomer to cyclohexanone, each utilizing sodium hydroxide and water.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

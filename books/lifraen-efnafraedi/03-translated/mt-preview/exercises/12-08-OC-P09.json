@@ -1,0 +1,19 @@
+{
+  "nickname": "12-08-OC-P09",
+  "source_uid": "37464@12",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "356720",
+      "stem_html": "<p>IR-róf fenýlasetýlens er sýnt á mynd 12.29. Hvaða gleypnibönd geturðu greint?</p>\n<figure id=\"fig-00220\">\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVFXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c1525f155a47dd8a9495d459dcdb618fd06afff8/OChem_12_08_018.jpg\" alt=\"An infrared spectrum with xignificant absorption bands near 3300 and 1500 inverse centimeters, and in the fingerprint region.\">\n<figcaption>IR-róf fenýlasetýlens, dæmi 12-9.</figcaption></figure>",
+      "collaborator_solutions": [
+        {
+          "content_html": "1450–1600 cm<sup>−1</sup>: arómatískur hringur; 2100 cm<sup>−1</sup>: C<span data-math=\"\\text{≡}\"></span>C; 3300 cm<sup>−1</sup>: C<span data-math=\"\\text{≡}\"></span>C−H"
+        }
+      ]
+    }
+  ]
+}

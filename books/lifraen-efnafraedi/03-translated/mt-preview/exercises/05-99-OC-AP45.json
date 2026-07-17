@@ -1,0 +1,15 @@
+{
+  "nickname": "05-99-OC-AP45",
+  "source_uid": "36608@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354252",
+      "stem_html": "<p>Við munum sjá í kafla 11 að alkýlhalíð hvarfast við hýdrósúlfíðjón (HS<sup>−</sup>) og gefa myndefni þar sem rúmefnafræðinni er snúið við miðað við hvarfefnið.</p>\n<p>Teiknið efnahvarf (<i>S</i>)-2-brómbútans við HS<sup>−</sup>-jón sem gefur 2-bútantíól, CH<sub>3</sub>CH<sub>2</sub>CH(SH)CH<sub>3</sub>. Er rúmefnafræði myndefnisins <i>R</i> eða <i>S</i>?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5d73e714b12f40b679d26884450993c8868dfa15/OChem_05_EC_031.jpg\" alt=\"The figure shows a reaction where an alkyl bromide reacts with H S anion  to form a thiol compound and a bromide ion.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

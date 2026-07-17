@@ -1,0 +1,19 @@
+{
+  "nickname": "29-09-OC-P14",
+  "source_uid": "39308@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "349286",
+      "stem_html": "Skrifaðu öll skrefin í transamínunarhvarfi PMP með <i>α</i>-ketóglútarati auk lýsínleifar í ensíminu til að gefa PLP–ensím imín auk glútamats.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Upphafleg imínmyndun milli PMP og <i>α</i>-ketóglútarats er fylgt eftir með umröðun tvítengis yfir í ísómerískt imín og vatnsrof."
+        }
+      ]
+    }
+  ]
+}

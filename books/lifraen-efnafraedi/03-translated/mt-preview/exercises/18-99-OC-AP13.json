@@ -1,0 +1,30 @@
+{
+  "nickname": "18-99-OC-AP13",
+  "source_uid": "38746@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Ímyndaðu þér að þú hafir meðhöndlað (2<i>R</i>,3<i>R</i>)-2,3-epoxý-3-metýlpentan með vatnslausn af sýru til að framkvæma hringopnunarefnahvarf.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b4f11e837606b397ac6509703786d8962ea83a1d/OChem_18_EC_038.jpg\" alt=\"The structure of 2,3-epoxy-3-methylpentane shows a 3-membered ring with oxygen and two carbon atoms, one bonded to hydrogen and methyl, the other to methyl and ethyl groups.\">",
+  "questions": [
+    {
+      "id": "361272",
+      "stem_html": "Teiknaðu epoxíðið og sýndu handhverfu þess.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361273",
+      "stem_html": "Teiknaðu og nefndu myndefnið og sýndu handhverfu þess.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361274",
+      "stem_html": "Er myndefnið handhverft? Útskýrðu.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361275",
+      "stem_html": "Er myndefnið ljósvirkt? Útskýrðu.",
+      "collaborator_solutions": []
+    }
+  ]
+}

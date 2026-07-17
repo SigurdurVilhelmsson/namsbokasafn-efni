@@ -1,0 +1,19 @@
+{
+  "nickname": "04-09-OC-P21",
+  "source_uid": "36492@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351092",
+      "stem_html": "<p>Líttu á eftirfarandi byggingu estróns, aðalkynhormóns kvenna, og segðu til um hvort hvor tveggja tilgreindra (rauðra) hringjasamruna sé cis eða trans.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGtSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--97773dfcecbf16a5fd8425da409a6224c021510a/OChem_04_09_006.jpg\" alt=\"The wedge-dash and bond-line structures of estrone. In the bond-line structures, all rings except benzene are in chair conformations.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Báðir hringjasamrunarnir eru trans."
+        }
+      ]
+    }
+  ]
+}

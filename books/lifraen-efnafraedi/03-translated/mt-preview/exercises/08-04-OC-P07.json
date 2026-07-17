@@ -1,0 +1,28 @@
+{
+  "nickname": "08-04-OC-P07",
+  "source_uid": "37091@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvaða myndefni myndir þú búast við úr oxýkvikasilfrun-afkvikasilfrun eftirfarandi alkena?",
+  "questions": [
+    {
+      "id": "353395",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0lTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d609dbc09cd2c027a58b81fa56bea76d5cd23870/OChem_08_04_007a.jpg\" alt=\"The condensed structural formula has a 5-carbon chain. C1 is double bonded to C2.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-pentanól"
+        }
+      ]
+    },
+    {
+      "id": "353396",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa01TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0276ec51e05cda92f6eb37cc592d0bd29035233d/OChem_08_04_007b.jpg\" alt=\"The condensed structural formula has a 5-carbon chain. C2 is double bonded to C3 and single bonded to a methyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-metýl-2-pentanól"
+        }
+      ]
+    }
+  ]
+}

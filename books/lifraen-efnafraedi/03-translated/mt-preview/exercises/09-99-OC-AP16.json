@@ -1,0 +1,20 @@
+{
+  "nickname": "09-99-OC-AP16",
+  "source_uid": "37230@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Nýmyndaðu eftirfarandi efnasambönd með því að nota 1-bútýn sem eina kolefnisgjafann, ásamt öllum ólífrænum hvarfefnum sem þú þarft. Fleiri en eitt skref gæti verið nauðsynlegt.",
+  "questions": [
+    {
+      "id": "333111",
+      "stem_html": "1,1,2,2-tetraklórbútan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333112",
+      "stem_html": "1,1-díklór-2-etýlsýklóprópan",
+      "collaborator_solutions": []
+    }
+  ]
+}

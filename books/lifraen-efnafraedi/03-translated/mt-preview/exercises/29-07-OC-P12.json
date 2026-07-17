@@ -1,0 +1,19 @@
+{
+  "nickname": "29-07-OC-P12",
+  "source_uid": "39306@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358127",
+      "stem_html": "<p>Er pro-<i>R</i>- eða pro-<i>S</i>-vetnið fjarlægt úr sítrati við vötnunina í skrefi 2 í sítrónusýruhringnum? Fer brottnámsefnahvarfið fram með sam- eða and-rúmefnafræði?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1ef1a525c0f63b771a223b4b8467a3e9eca0fb32/OChem_29_07_010.jpg\" alt=\"Citrate undergoes a stereoselective dehydration to yield cis-aconitate as the product.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "pro-<i>R</i>; and-rúmefnafræði"
+        }
+      ]
+    }
+  ]
+}

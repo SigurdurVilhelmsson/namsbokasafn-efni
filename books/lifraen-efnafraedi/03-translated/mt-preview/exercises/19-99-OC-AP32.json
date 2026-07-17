@@ -1,0 +1,15 @@
+{
+  "nickname": "19-99-OC-AP32",
+  "source_uid": "38078@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360829",
+      "stem_html": "<p>Þegar glúkósi (dæmi 19-51) er meðhöndlaður með NaBH<sub>4</sub> verður efnahvarf sem gefur af sér <i>sorbitól</i>, fjölalkóhól sem er almennt notað sem aukefni í matvælum. Sýndu hvernig þessi afoxun á sér stað.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb29XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a65bd6b20e65ae89fcd1c2da845eb606be798ca7/OChem_19_EC_066.jpg\" alt=\"Alpha-glucose reacts with sodium borohydride and water to produce sorbitol, a six-carbon chain with one hydroxyl group on each carbon.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

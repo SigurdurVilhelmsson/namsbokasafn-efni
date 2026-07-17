@@ -1,0 +1,28 @@
+{
+  "nickname": "10-08-OC-P13",
+  "source_uid": "37293@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Segðu til um hvort hvert eftirfarandi efnahvarfa sé oxun, afoxun eða hvorugt.",
+  "questions": [
+    {
+      "id": "352626",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbG9UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4c79409b5b32060676dae4dc3c1dd720fcfce235/OChem_10_08_007a.jpg\" alt=\"Propanal and sodium borohydride react in the presence of water to give 1-propanol.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Afoxun"
+        }
+      ]
+    },
+    {
+      "id": "352627",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--594323844bbf38636a4012f048569563e45951bf/OChem_10_08_007b.jpg\" alt=\"Cyclohexene reacts first with borane, and then with sodium hydroxide and hydrogen peroxide to give cyclohexanol.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Hvorugt"
+        }
+      ]
+    }
+  ]
+}

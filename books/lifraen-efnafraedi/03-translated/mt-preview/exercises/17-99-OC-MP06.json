@@ -1,0 +1,25 @@
+{
+  "nickname": "17-99-OC-MP06",
+  "source_uid": "37895@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Umbreyting 3° alkóhóla í 3° alkýlhalíð við súrar aðstæður felur í sér tvö katjónísk milliefni. Fyrir hvert efnahvarf, teiknaðu allan hvarfganginn með bogadregnum örvum.",
+  "questions": [
+    {
+      "id": "359443",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1lWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c72bf51206cc93c5d4c45777aa3f76fb6bd684f7/OChem_17_EC_024a.jpg\" alt=\"1-methylcyclohexanol reacts with H Cl to form 1-chloro-1-methylcyclohexane.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359444",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2NWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--812d623e9852134ccbe983e6ac1591a4c5c49b70/OChem_17_EC_024b.jpg\" alt=\"2-methylbutan-2-ol reacts with H Br to form 2-bromo-2-methylbutane.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359445",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2dWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7770cf0e042396051a36717afc56d2a8a13eb7ab/OChem_17_EC_024c.jpg\" alt=\"Two fused cyclohexane rings with a hydroxyl at a bridgehead carbon reacts with H Cl to substitute chlorine for the hydroxyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

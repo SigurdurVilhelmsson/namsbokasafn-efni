@@ -1,0 +1,15 @@
+{
+  "nickname": "22-99-OC-MP14",
+  "source_uid": "38801@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360945",
+      "stem_html": "<p>Lokaskrefið í tilraun til að smíða láren, kolvetni sem einangrað er úr sjávarþörungnum <i>Laurencia glandulifera,</i> fól í sér Wittig-efnahvarfið sem sýnt er. Myndefnið sem fékkst var þó ekki láren heldur hverfa. Leggðu til hvarfgang til að útskýra þessar óvæntu niðurstöður.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGdZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--66eab908e5c8de42c0a93664833857e805ca3ee0/OChem_22_EC_026.jpg\" alt=\"A substituted cyclopentanone reacts with the Wittig reagent P P h 3- C H 2 in T H F to yield a product, but the expected product Laurene is not formed.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "09-99-OC-AP20",
+  "source_uid": "37234@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357340",
+      "stem_html": "<p>Kynferómónið sem húsflugan gefur frá sér er alken sem nefnist <i>muscalure.</i> Leggðu til nýmyndun á muscalure með því að byrja á asetýleni og hvaða alkýlhalíðum sem þarf. Hvert er IUPAC-heiti muscalure?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjRTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--373dea6f7721c616efb9e0444fdbea328279b327/OChem_09_EC_036.jpg\" alt=\"The structure of muscalure.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

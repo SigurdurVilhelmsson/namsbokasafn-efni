@@ -1,0 +1,15 @@
+{
+  "nickname": "01-99-OC-AP28",
+  "source_uid": "37585@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "352147",
+      "stem_html": "<p>Ljúktu við rafeindapunktabyggingu koffíns, sýndu allar rafeindir í rafeindapörum og tilgreindu tvinnblöndun tilgreindra frumeinda.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWNVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--40ffae4dd1eca023938d95ff65313147ad35d9e0/OChem_01_EC_017.jpg\" alt=\"The line-bond structure of caffeine featuring three arrows and red text highlighting C2, C8, and N9 atoms.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

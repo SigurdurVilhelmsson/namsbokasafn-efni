@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-AP24",
+  "source_uid": "39024@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361731",
+      "stem_html": "<p>Róteindun amíðs með sterkri sýru á sér stað á súrefni frekar en á nitri. Leggðu til ástæðu fyrir þessari hegðun og taktu tillit til vokmynda.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2NaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--829f6a6a440160543b2078a0b5c571371019b859/OChem_24_EC_046.jpg\" alt=\"An amide undergoes a reversible reaction with sulfuric acid to produce a protonated product in which oxygen carries a positive charge.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "30-99-OC-AP14",
+  "source_uid": "39383@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355106",
+      "stem_html": "<p>Eftirfarandi myndun díenóna á sér stað auðveldlega. Stingið upp á hvarfgangi til að útskýra niðurstöðurnar og greinið hvers konar hringhvarf á sér stað.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3NhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7ccd3d416bf3400387991eb8bc7ed312a71e6cf6/OChem_30_EC_019.jpg\" alt=\"A reactant having triple bond at C 1, two methyl groups at C 3, oxygen atom, and alkene at C 4 reacts with heat and acid catalyst to form dieneone.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

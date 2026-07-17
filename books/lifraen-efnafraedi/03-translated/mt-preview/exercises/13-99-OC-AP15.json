@@ -1,0 +1,30 @@
+{
+  "nickname": "13-99-OC-AP15",
+  "source_uid": "37509@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig gætirðu notað <sup>1</sup>H NMR til að greina á milli eftirfarandi para af hverfum?",
+  "questions": [
+    {
+      "id": "358386",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWNVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b9b8bd83099a023c35dd550ad71854e2b966cf2e/OChem_13_EC_011a.jpg\" alt=\"Condensed structures of 2-pentene and ethylcyclopropane.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358387",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWdVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f3c712dfcf0c2cf207677ed43486b5a003e54c53/OChem_13_EC_011b.jpg\" alt=\"Condensed structures of diethyl ether and methyl propyl ether.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358388",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWtVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--48b8435a1ebca165115f883c36c76b654c01e282/OChem_13_EC_011c.jpg\" alt=\"Condensed structures of diethyl ether and methyl propyl ether.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358389",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbW9VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--abc8fa49ba38cf3042faf64ad8241dc96d98b41e/OChem_13_EC_011d.jpg\" alt=\"Condensed structures of ethyl acetate and 2-butanone.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

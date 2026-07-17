@@ -1,0 +1,19 @@
+{
+  "nickname": "24-06-OC-P10",
+  "source_uid": "38963@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361577",
+      "stem_html": "<p>Sýndu tvær aðferðir við smíði dópamíns, taugaboðefnis sem tekur þátt í stjórnun miðtaugakerfisins. Notaðu hvaða alkýlhalíð sem þarf.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjBZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--21c6d0b247bd609caff5128c4df9f9647e5e910d/OChem_24_06_007.jpg\" alt=\"The ball-and-stick model of dopamine. It comprises benzene ring with hydroxyl groups on C 1 and C 2, and C 4 has two methylene groups linked to an amine group.\">\n",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFVhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5a82abf5d980a901006a66045bdba96b93448b3b/OChem_24_EC_203.jpg\" alt=\"4-(2-Bromoethyl)benzene-1,2-diol reacts with ammonia or 4-(bromomethyl)benzene-1,2-diol reacts with sodium cyanide, then lithium aluminum hydride.\">"
+        }
+      ]
+    }
+  ]
+}

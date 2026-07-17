@@ -1,0 +1,20 @@
+{
+  "nickname": "02-99-OC-AP31",
+  "source_uid": "36143@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p></p>",
+  "questions": [
+    {
+      "id": "345893",
+      "stem_html": "Lengd H–Cl efnatengisins er 136 pm. Hvert væri tvískautsvægi HCl ef sameindin væri 100% jónuð, H<b><sup>+</sup></b> Cl<b><sup>−</sup></b>?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "345894",
+      "stem_html": "Raunverulegt tvískautsvægi HCl er 1,08 D. Hvert er jónaeðli H–Cl efnatengisins í prósentum?",
+      "collaborator_solutions": []
+    }
+  ]
+}

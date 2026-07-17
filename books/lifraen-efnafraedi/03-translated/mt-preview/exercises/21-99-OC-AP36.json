@@ -1,0 +1,15 @@
+{
+  "nickname": "21-99-OC-AP36",
+  "source_uid": "38230@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361535",
+      "stem_html": "<p>Teiknið byggingu efnasambandsins sem myndaði eftirfarandi róf. Innrauða rófið hefur sterkar bönd við 1720 og 1738 cm<sup>–1</sup>.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5d0a943ce3121e9a70775763581509012c5e6952/OChem_21_EC_064.jpg\" alt=\"The proton N M R spectrum of a compound of molecular formula C 7 H 12 O 3 shows signals at 1.25 (triplet of integral 3), 2.2 (singlet of integral 3), 2.6 (triplet of integral 2), 2.75 (triplet of integral 2), and 4.15 (quartet of integral 2) p p m.\">\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

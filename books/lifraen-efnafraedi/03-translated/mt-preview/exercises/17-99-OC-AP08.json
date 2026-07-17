@@ -1,0 +1,40 @@
+{
+  "nickname": "17-99-OC-AP08",
+  "source_uid": "37909@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Með hvaða karbónýlefnasamböndum myndir þú byrja til að búa til eftirfarandi efnasambönd með Grignard-efnahvarfi? Teldu upp alla möguleika.",
+  "questions": [
+    {
+      "id": "359510",
+      "stem_html": "2-Metýl-2-própanól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359511",
+      "stem_html": "1-Etýlsýklóhexanól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359512",
+      "stem_html": "3-Fenýl-3-pentanól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359513",
+      "stem_html": "2-Fenýl-2-pentanól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359514",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWtWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--80e7c7cbc68aaf7d5ed29ad1538355051fb3330a/OChem_17_EC_034e.jpg\" alt=\"Benzene with C H 2 C H 2 O H on C 1 and methyl on C 4 position.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359515",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdW9WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c8aa6d2c29b64d3d711936167b85e99d660cbebb/OChem_17_EC_034f.jpg\" alt=\"Chemical structure of 1-cyclopentyl-2-methylpropan-2-ol.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

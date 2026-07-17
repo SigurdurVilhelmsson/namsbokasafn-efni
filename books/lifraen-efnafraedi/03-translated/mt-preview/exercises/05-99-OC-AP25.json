@@ -1,0 +1,15 @@
+{
+  "nickname": "05-99-OC-AP25",
+  "source_uid": "36588@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354221",
+      "stem_html": "<p>Við efnahvarf með vetnisgasi í nærveru platínuhvata (dæmi 5-54) breytist ríbósi í ríbítól. Er ríbítól ljósvirkt eða óvirkt? Útskýrðu.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1lSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8a09627eb6906d7c5745bf37eb371a715b1be76c/OChem_05_EC_019.jpg\" alt=\"Acyclic wedge-dash structure of ribitol.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

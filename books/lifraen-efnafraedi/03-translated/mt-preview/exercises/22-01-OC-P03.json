@@ -1,0 +1,19 @@
+{
+  "nickname": "22-01-OC-P03",
+  "source_uid": "38771@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360871",
+      "stem_html": "<p>Teiknaðu byggingu allra mónóenólmynda eftirfarandi sameindar. Hverja myndir þú búast við að væri stöðugust? Útskýrðu.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdklYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c7b3a7c30e5455c1e2068ba4ea658ec587ec571a/OChem_22_01_005.jpg\" alt=\"A ball-and-stick model of a cyclic enol with 6 black, 8 white, and 2 red balls. Carbon, hydrogen, and oxygen atoms are represented using black, gray, and red spheres, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbEFhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3ec0898fdaf546f6784de5594fed36c538a2037b/OChem_22_EC_202.jpg\" alt=\"A cyclohexane ring with two carbonyl groups, one at C 1 and one at C 3 forms two stable enolates and two unstable enolates.\">"
+        }
+      ]
+    }
+  ]
+}

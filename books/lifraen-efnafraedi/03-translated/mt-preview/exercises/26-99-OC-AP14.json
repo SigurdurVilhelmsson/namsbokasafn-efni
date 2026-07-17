@@ -1,0 +1,20 @@
+{
+  "nickname": "26-99-OC-AP14",
+  "source_uid": "39253@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Skrifaðu fulla byggingu fyrir eftirfarandi peptíð:",
+  "questions": [
+    {
+      "id": "348885",
+      "stem_html": "C-H-E-M",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348886",
+      "stem_html": "P-E-P-T-I-D-E",
+      "collaborator_solutions": []
+    }
+  ]
+}

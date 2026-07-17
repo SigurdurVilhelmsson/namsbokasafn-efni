@@ -1,0 +1,15 @@
+{
+  "nickname": "29-99-OC-VC03",
+  "source_uid": "39313@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358137",
+      "stem_html": "<p>Eftirfarandi efnasamband er milliefni í lífsmíði einnar af 20 algengu <i>α</i>-amínósýrunum. Hver þeirra er líklegust og hvers konar efnabreyting verður að eiga sér stað til að ljúka lífsmíðinni?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--60c24e87d534763038dafaa8c7ba5e72258eb68c/OChem_29_EC_003.jpg\" alt=\"A ball-and-stick model of a seven-carbon chain, with two carboxylate anions at C 1 and C 7, and two amine groups C 2 and C 6.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

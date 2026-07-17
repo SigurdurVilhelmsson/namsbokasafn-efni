@@ -1,0 +1,19 @@
+{
+  "nickname": "11-02-OC-P03",
+  "source_uid": "37344@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357757",
+      "stem_html": "<p>Úthlutaðu stellingu á eftirfarandi efni og teiknaðu byggingu myndefnisins sem myndi verða til við kjarnsækið skiptihvarf með HS<sup>–</sup> (rauðbrúnt = Br):</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--07717d8bd7fe5e4fd10471d41759f2cd893d4b06/OChem_11_02_004.jpg\" alt=\"The figure shows the ball-and-stick model of bromo alkane. The gray, black, and red spheres represent hydrogen, carbon, and bromine, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5dc5fda31a07ee0a19f8d51771875f10cf31c97e/OChem_11_EC_201.jpg\" alt=\"The figure shows the structure of the product having an R configuration that results from the nucleophilic substitution reaction of (S)-2-bromo-4-methylpentane with H S ion.\">"
+        }
+      ]
+    }
+  ]
+}

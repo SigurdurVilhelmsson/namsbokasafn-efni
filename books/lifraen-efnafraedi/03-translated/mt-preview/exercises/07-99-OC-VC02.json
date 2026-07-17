@@ -1,0 +1,20 @@
+{
+  "nickname": "07-99-OC-VC02",
+  "source_uid": "36633@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Úthlutaðu <i>E</i> eða <i>Z</i> handhverfu á tvítengin í hverjum eftirfarandi alkena og breyttu hverri teikningu í beinagrindarmynd (rautt = O, grænt = Cl):",
+  "questions": [
+    {
+      "id": "354341",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTRSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b7b6a4be91f6f0c0f99beed24ad2b1d75428f84d/OChem_07_EC_003a.jpg\" alt=\"The ball-and-stick model has a 2-carbon chain with double bond. C1 is bonded to chlorine and methyl. C2 is bonded to an aldehyde and an isopropyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354342",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcThSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dec23f1a6f7c895d6bd7e776e062b1f905821715/OChem_07_EC_003b.jpg\" alt=\"The ball-and-stick model has 5-carbon chain with alternate double bonds. C2 and C3 are each bonded to methyl. C4 is bonded to methoxy. C5 is carboxylic acid.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

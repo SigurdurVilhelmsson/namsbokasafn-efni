@@ -1,0 +1,19 @@
+{
+  "nickname": "14-05-OC-P08",
+  "source_uid": "37644@10",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358437",
+      "stem_html": "<p>Hvaða af eftirfarandi alkenum myndir þú búast við að væru góðir díenósæknir í Diels-Alder-efnahvörfum?</p>\n<p><b>(a)</b> <img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1VVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a74df270e19909e88d334b83ca31894238f72c5d/OChem_14_05_014a.jpg\" alt=\"The condensed structural formula reads, H 2 C double bonded to C H C (double bonded to O) C l.\">\n <b>(b)</b> <img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1lVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--42f419c4a955c5b4841af0bc9531d6c03019241d/OChem_14_05_014b.jpg\" alt=\"The condensed structural formula reads, H 2 C double bonded to C H C H 2 C H 2 C (double bonded to O) O C H 3.\">\n <b>(c)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2NVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6a36447e9f6d5f4b3eb63dc7a23cf42e2f47d1f7/OChem_14_05_014c.jpg\" alt=\"A cyclohexane ring has a double bond between C 1 and C 2.\">\n <b>(d)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2dVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0334aa4064a1c77346401edf4cda9554fc537ab1/OChem_14_05_014d.jpg\" alt=\"In a cyclohexane ring, C 1 is a carbonyl group. C 2 is double bonded to C 3.\">\n <b>(e)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2tVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c88dcf057165b81f646bd2840cedc3a8ad144c67/OChem_14_05_014e.jpg\" alt=\"In a cyclohexane ring, C 1 is a carbonyl group. C 3 is double bonded to C 4.\"></p>",
+      "collaborator_solutions": [
+        {
+          "content_html": "Góðir díenósæknir: <b>(a)</b>, <b>(d)</b>"
+        }
+      ]
+    }
+  ]
+}

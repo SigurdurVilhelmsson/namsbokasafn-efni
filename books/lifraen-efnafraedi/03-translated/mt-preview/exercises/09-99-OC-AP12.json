@@ -1,0 +1,40 @@
+{
+  "nickname": "09-99-OC-AP12",
+  "source_uid": "37226@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú framkvæma eftirfarandi efnahvörf?",
+  "questions": [
+    {
+      "id": "353823",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdW9TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c368f0536e627219c6ad0ee6b8f16cd6d6e1240c/OChem_09_EC_029a.jpg\" alt=\"A C4 alkyne chain reacts in the presence of an unknown reagent represented as a question mark to form  methyl ethyl ketone.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353824",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdXNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--59f38a830d8f9c5b761b9ecb45b8d84d6fd1f100/OChem_09_EC_029b.jpg\" alt=\"A C4 alkyne chain reacts in the presence of an unknown reagent represented as a question mark to form butyraldehyde\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353825",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdXdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6f8172409c143560d5ac6ffe2e837e4baecba0b7/OChem_09_EC_029c.jpg\" alt=\"A phenyl alkyne reacts with an unknown reagent represented as a question mark forming a phenyl alkyne with a terminal methyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353826",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTBTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--476ce5503733a51c92e54df7e2fc82a0b947b7d0/OChem_09_EC_029d.jpg\" alt=\"A phenyl alkyne reacts with an unknown reagent represented as a question mark forming a cis-phenyl alkene with a terminal methyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353827",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTRTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bee6d0cea5450ee42ded124e5088f1157c6c09a3/OChem_09_EC_029e.jpg\" alt=\"1-Butyne reacts in the presence of an unknown reagent represented as a question mark to form propionic acid\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353828",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdThTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ea50fa09531a2d7e697f3b819a05c7281427027d/OChem_09_EC_029f.jpg\" alt=\"A C6 alkene reacts in the presence of an unknown reagent indicated as a question mark via two steps to form 1-hexyne.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

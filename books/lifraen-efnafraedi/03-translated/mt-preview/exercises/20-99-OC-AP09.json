@@ -1,0 +1,20 @@
+{
+  "nickname": "20-99-OC-AP09",
+  "source_uid": "38119@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Reiknið <i>K</i><sub>a</sub> eftirfarandi sýra:",
+  "questions": [
+    {
+      "id": "342079",
+      "stem_html": "Sítrónusýra, p<i>K</i><sub>a</sub> = 3,14",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342080",
+      "stem_html": "Vínberjasýra, p<i>K</i><sub>a</sub> = 2,98",
+      "collaborator_solutions": []
+    }
+  ]
+}

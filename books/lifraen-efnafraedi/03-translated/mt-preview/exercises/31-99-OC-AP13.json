@@ -1,0 +1,15 @@
+{
+  "nickname": "31-99-OC-AP13",
+  "source_uid": "39427@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355046",
+      "stem_html": "<p>Melmac, hitahert plastefni sem oft er notað til að búa til plastdiska, er framleitt með því að hita melamín með formaldehýði. Skoðaðu byggingu Bakelíts sem sýnd er í kafla 31.7 og stingdu síðan upp á byggingu fyrir Melmac.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakVhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--44289f4ec5bdbfeff61a9d738cb024c2070f957d/OChem_31_EC_012.jpg\" alt=\"The structure of melamine. It is a six-membered ring with alternating C and N, and alternating single and double bonds. Each C has an N H 2 substituent.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

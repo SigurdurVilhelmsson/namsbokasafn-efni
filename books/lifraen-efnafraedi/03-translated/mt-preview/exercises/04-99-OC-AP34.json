@@ -1,0 +1,15 @@
+{
+  "nickname": "04-99-OC-AP34",
+  "source_uid": "36561@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351151",
+      "stem_html": "<p>Það eru tvær mismunandi hverfur sem heita <i>trans</i>-1,2-dímetýlsýklópentan. Á sama hátt hefur þú tvo mismunandi útlimi sem kallast hendur. Hvert er sambandið á milli þeirra? (Við munum kanna þessa tegund hverfuímyndar í næsta kafla.)</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0160a8e1b7b861d58d469106ef0843a04b81675d/OChem_04_EC_018.jpg\" alt=\"Two structures of two isomers, trans-1,2-dimethylcyclopentane. The position of one methyl group is different in both structures.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

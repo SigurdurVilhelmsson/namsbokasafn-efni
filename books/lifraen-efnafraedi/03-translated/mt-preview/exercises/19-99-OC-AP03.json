@@ -1,0 +1,40 @@
+{
+  "nickname": "19-99-OC-AP03",
+  "source_uid": "38049@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Gefðu IUPAC-heiti fyrir eftirfarandi efnasambönd:",
+  "questions": [
+    {
+      "id": "360734",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDhXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bffa81f80af8946ad4fb94df446513d2364c2f2e/OChem_19_EC_044a.jpg\" alt=\"The structure shows cyclohexene ring with a carbonyl on the first carbon. A double bond is shared between the third and fourth carbons with a methyl group on the third.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360735",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUFXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2c7d39f3f5ca118b39765f760d491ff3a2035b49/OChem_19_EC_044b.jpg\" alt=\"The structure shows a central carbon bonded with hydrogen (wedge-bonded), a hydroxyl group (wedge-bonded), a hydroxymethyl group (dashed-bonded), and C H O group (dashed-bonded).\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360736",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUVXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--852bbd4284fb672bc915444da57598e6db05c956/OChem_19_EC_044c.jpg\" alt=\"The structure shows cyclohexanone ring with a methyl group at the second carbon, a tert-butyl group at the fifth carbon, and a double bond between second and third.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360737",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUlXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5566218427800e8b8e9a3191bc1c7a7393ec78fa/OChem_19_EC_044d.jpg\" alt=\"The structure shows a five-carbon chain with, couting from the left, a methyl group on the second and a carbonyl on the third carbon.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360738",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbU1XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--53f210597da742ac650bc8bf8a92c7adc2230f16/OChem_19_EC_044e.jpg\" alt=\"The structure shows a four-carbon chain with, counting from the left, a hydroxyl group on the second carbon, and the fourth carbon part of a C H O group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360739",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVFXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--07d4d739488253ce1a74c1b7522d7dd29813c5b9/OChem_19_EC_044f.jpg\" alt=\"The structure shows a benzene ring with two C H O groups on the first and fourth carbon atoms.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

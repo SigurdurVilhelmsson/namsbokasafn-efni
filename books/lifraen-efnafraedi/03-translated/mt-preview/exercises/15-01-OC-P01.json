@@ -1,0 +1,37 @@
+{
+  "nickname": "15-01-OC-P01",
+  "source_uid": "37732@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Segðu til um hvort eftirfarandi efnasambönd séu ortó-, meta- eða para-tvíásamt:",
+  "questions": [
+    {
+      "id": "358604",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzhWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d34f46dcda5d7550325d8f216457003e42c4b8c9/OChem_15_01_008a.jpg\" alt=\"In a benzene ring, C 1 and C 3 are bonded to a chlorine atom and a methyl group, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Meta"
+        }
+      ]
+    },
+    {
+      "id": "358605",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaEFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--409d1171582f34d684ef0545e4f862d5c782509e/OChem_15_01_008b.jpg\" alt=\"In a benzene ring, C 1 is bonded to a nitro group. C 4 is bonded to a bromine atom.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Para"
+        }
+      ]
+    },
+    {
+      "id": "358606",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaEVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b6eb84b6604db8580ecb8c3c37c083e2a053e7fe/OChem_15_01_008c.jpg\" alt=\"In a benzene ring, C 1 is bonded to a sulfonic acid. C 2 is bonded to a hydroxyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Ortó"
+        }
+      ]
+    }
+  ]
+}

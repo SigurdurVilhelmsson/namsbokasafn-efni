@@ -1,0 +1,15 @@
+{
+  "nickname": "19-99-OC-MP24",
+  "source_uid": "38046@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360727",
+      "stem_html": "<p>Wharton-efnahvarfið breytir epoxýketóni í allýlalkóhól með efnahvarfi við hýdrasín. Rifjaðu upp Wolff–Kishner-efnahvarfið í kafla 19.9 og stingdu síðan upp á hvarfgangi.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDRXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c3df86b37adb38fbed18190ea576819c2af22c71/OChem_19_EC_043.jpg\" alt=\"Wharton reaction shows the conversion of an epoxy ketone to an allylic alcohol and N 2, by reacting with hydrazine using a catalyst containing sodium acetate, and acetic acid.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "nickname": "03-99-OC-AP08",
+  "source_uid": "36445@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Í hverju eftirfarandi setta, hvaða byggingar tákna sama efnasambandið og hvaða tákna mismunandi efnasambönd?",
+  "questions": [
+    {
+      "id": "357178",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTBRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8ae81017b6c3dfbfd0f0443836511ea1f758a16a/OChem_03_EC_005a.jpg\" alt=\"Three structures with alkane groups are represented. The structure that represent the same compound and different compounds have to be identified.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357179",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ee1192f4f59f6cddb071e27077ab33e12cdc921b/OChem_03_EC_005b.jpg\" alt=\"Three benzene rings with two O H group as substituents at different rings is shown.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357180",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdThRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3fb50fbe143897c58229966422d7312dbecbf110/OChem_03_EC_005c.jpg\" alt=\"Three compounds having a six membered ring is represented. There are O H groups as the substituent in these compounds.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "nickname": "25-99-OC-AP11",
+  "source_uid": "39084@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Skrifaðu eftirfarandi sykrur á opnu keðjuformi:",
+  "questions": [
+    {
+      "id": "358822",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3daIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--12f26357e9844eb2ac75e73abc8f988bbe2c1b5c/OChem_25_EC_017a.jpg\" alt=\"The structure of beta-D-altropyranose.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358823",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzBaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--707f5024cabcefe0090dc12077586ced49f1bca6/OChem_25_EC_017b.jpg\" alt=\"The structure of alpha-D-fructofuranose.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358824",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzRaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5b30195ae50bd513341b1666661180e85ab6deb2/OChem_25_EC_017c.jpg\" alt=\"The structure of alpha-L-mannopyranose.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

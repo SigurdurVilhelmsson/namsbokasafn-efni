@@ -1,0 +1,37 @@
+{
+  "nickname": "21-10-OC-P26",
+  "source_uid": "38176@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Leggið til byggingar fyrir efnasambönd sem hafa eftirfarandi formúlur og IR-ísog:",
+  "questions": [
+    {
+      "id": "342530",
+      "stem_html": "C<sub>6</sub>H<sub>12</sub>O<sub>2</sub>, 1735 cm<sup>–1</sup>",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CO<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub> og aðrir möguleikar"
+        }
+      ]
+    },
+    {
+      "id": "342531",
+      "stem_html": "C<sub>4</sub>H<sub>9</sub>NO, 1650 cm<sup>–1</sup>",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>CON(CH<sub>3</sub>)<sub>2</sub>"
+        }
+      ]
+    },
+    {
+      "id": "342532",
+      "stem_html": "C<sub>4</sub>H<sub>5</sub>ClO, 1780 cm<sup>–1</sup>",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>CH<span data-math=\"\\text{=}\"></span>CHCOCl eða H<sub>2</sub>C<span data-math=\"\\text{=}\"></span>C(CH<sub>3</sub>)COCl"
+        }
+      ]
+    }
+  ]
+}

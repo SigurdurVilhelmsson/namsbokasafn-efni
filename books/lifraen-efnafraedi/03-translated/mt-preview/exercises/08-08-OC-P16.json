@@ -1,0 +1,28 @@
+{
+  "nickname": "08-08-OC-P16",
+  "source_uid": "37100@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Stingdu upp á byggingu alkena sem gefa eftirfarandi myndefni við efnahvarf við óson og síðan meðhöndlun með Zn:",
+  "questions": [
+    {
+      "id": "346448",
+      "stem_html": "(CH<sub>3</sub>)<sub>2</sub>C<span data-math=\"\\text{=}\"></span> O + H<sub>2</sub>C<span data-math=\"\\text{=}\"></span> O",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-Metýlprópen"
+        }
+      ]
+    },
+    {
+      "id": "346449",
+      "stem_html": "2 jafngildi CH<sub>3</sub>CH<sub>2</sub>CH<span data-math=\"\\text{=}\"></span>O",
+      "collaborator_solutions": [
+        {
+          "content_html": "3-Hexen"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "nickname": "04-02-OC-P05",
+  "source_uid": "36476@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Teiknaðu byggingar eftirfarandi sameinda:",
+  "questions": [
+    {
+      "id": "357655",
+      "stem_html": "<i>trans</i>-1-Bróm-3-metýlsýklóhexan",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3dSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5599fdd5393a599a96a98de1a6eb4d1ec4a9eb42/OChem_04_EC_202a.jpg\" alt=\"In a cyclohexane ring, C1 is wedge bonded to bromine and dash bonded to hydrogen atom. C3 is wedge bonded to hydrogen atom and dash bonded to methyl group.\">"
+        }
+      ]
+    },
+    {
+      "id": "357656",
+      "stem_html": "<i>cis</i>-1,2-Dímetýlsýklóbútan",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzBSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--081465f314e0f0cfa45a635d0f62fe53861e10c5/OChem_04_EC_202b.jpg\" alt=\"In a cyclobutane ring, C1 and C2 are each wedge bonded to methyl groups and dash bonded to hydrogen atoms, respectively.\">"
+        }
+      ]
+    },
+    {
+      "id": "357657",
+      "stem_html": "<i>trans</i>-1-<i>tert</i>-Bútýl-2-etýlsýklóhexan",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzRSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1c880557f76bef53276e7d87fd3b955363d75e3d/OChem_04_EC_202c.jpg\" alt=\"In a cyclohexane ring, C1 is wedge bonded to tertiary-butyl group and dash bonded to hydrogen atom. C2 is wedge bonded to hydrogen atom and dash bonded to ethyl group.\">"
+        }
+      ]
+    }
+  ]
+}

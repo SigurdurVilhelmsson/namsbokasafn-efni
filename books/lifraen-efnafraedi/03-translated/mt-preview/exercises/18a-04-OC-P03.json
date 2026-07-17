@@ -1,0 +1,37 @@
+{
+  "nickname": "18a-04-OC-P03",
+  "source_uid": "38767@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Greindu hvort eftirfarandi efnahvörf séu kjarnsækin álagning, kjarnsækið asýlskiptihvarf, <i>α</i>-skiptihvarf eða karbónýlþétting:",
+  "questions": [
+    {
+      "id": "361157",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0FYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--05995f472b522862521d7f72072e488928cb1c66/OChem_18_PCC_019a.jpg\" alt=\"Acetyl chloride reacts with ammonia to yield acetamide via nucleophilic acyl substitution.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Kjarnsækið asýlskiptihvarf"
+        }
+      ]
+    },
+    {
+      "id": "361158",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0VYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2ac480f35080cd8637811f89cd149ccd9711df98/OChem_18_PCC_019b.jpg\" alt=\"Acetaldehyde reacts with hydroxylamine to yield acetaldoxime via nucleophilic addition.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Kjarnsækin álagning"
+        }
+      ]
+    },
+    {
+      "id": "361159",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0lYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ea7b6e8d348e31bd78c9db46da991816c1323238/OChem_18_PCC_019c.jpg\" alt=\"Two molecules of cyclopentanone react with sodium hydroxide to yield a product in which a cyclopentanol ring is bonded with a cyclopentanone ring via carbonyl condensation.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Karbónýlþétting"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "11-99-OC-MP11",
+  "source_uid": "37376@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355326",
+      "stem_html": "<p>Eitt skref í þvagefnishringrásinni til að losa líkamann við ammóníak er umbreyting arginínósúksínats í amínósýruna arginín auk fúmarats. Stingdu upp á hvarfgangi fyrir efnahvarfið og sýndu byggingu arginíns.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--483b0d428efc4ecc728d06787af1d2351987bd28/OChem_11_EC_020.jpg\" alt=\"The reaction of argininosuccinate in the presence of base forms arginine and fumarate.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

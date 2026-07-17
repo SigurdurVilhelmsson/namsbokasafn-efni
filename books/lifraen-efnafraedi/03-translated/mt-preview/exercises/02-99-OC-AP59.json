@@ -1,0 +1,30 @@
+{
+  "nickname": "02-99-OC-AP59",
+  "source_uid": "36171@13",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Í næsta kafla munum við sjá að hægt er að flokka lífrænar sameindir eftir þeim virknihópum sem þær innihalda, þar sem virknihópur er safn frumeinda með einkennandi hvarfgirni. Notaðu rafneikvæðnigildin sem gefin eru á mynd 2.3 til að spá fyrir um stefnu skautunar eftirfarandi virknihópa.\n",
+  "questions": [
+    {
+      "id": "351742",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--39ec7f82d46d3436d8bddf5588f790f091d74a75/OChem_02_EC_025a.jpg\" alt=\"Ketone has a central carbonyl group with two open single bonds.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351743",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFlRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2e81e1523d1cf0b19a4eb13b270705edbafe25d2/OChem_02_EC_025b.jpg\" alt=\"Alcohol has a carbon atom with three open single bonds bonded to a hydroxyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351744",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3c0eae3db4e2e1333cbf458396c53b85928d58c2/OChem_02_EC_025c.jpg\" alt=\"Amide has a carbonyl group bonded to an open single bond and a primary amine group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351745",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f9a94c9b6bf32f528e9ef4462b89e55619116d48/OChem_02_EC_025d.jpg\" alt=\"Nitrile has a carbon atom with an open single bond, and a triple bond to a nitrogen atom.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

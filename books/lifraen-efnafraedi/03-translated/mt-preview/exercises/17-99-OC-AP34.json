@@ -1,0 +1,15 @@
+{
+  "nickname": "17-99-OC-AP34",
+  "source_uid": "37935@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359561",
+      "stem_html": "<p>Stingdu upp á nýmyndun bísýklóhexýlíðens, þar sem byrjað er á sýklóhexanóni sem eina kolefnisgjafanum.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0VXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5f54891e693a62c6e646bf5cd135a96265d4d1a0/OChem_17_EC_049.jpg\" alt=\"The structure of bicyclohexylidene. It is two cyclohexane rings linked via a double bond between their C 1 positions.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

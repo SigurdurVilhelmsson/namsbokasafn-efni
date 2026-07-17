@@ -1,0 +1,15 @@
+{
+  "nickname": "05-99-OC-AP29",
+  "source_uid": "36592@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354235",
+      "stem_html": "<p>Afvötnun sítrats sem gefur <i>cis</i>-akónítat, skref í sítrónusýruhringnum, felur í sér pro-<i>R</i> „arm“ sítrats frekar en pro-<i>S</i> arminn. Hvort af eftirfarandi tveimur myndefnum myndast?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzBSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1c60eebcffd9a15a51b957a642806a6f93506ac3/OChem_05_EC_023.jpg\" alt=\"The figure shows a reaction where citrate converts to two forms of cis-aconitate structures.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

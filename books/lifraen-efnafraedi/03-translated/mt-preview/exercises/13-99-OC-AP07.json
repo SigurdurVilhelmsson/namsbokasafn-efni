@@ -1,0 +1,15 @@
+{
+  "nickname": "13-99-OC-AP07",
+  "source_uid": "37501@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "338121",
+      "stem_html": "<p>Eftirfarandi efnasambönd sýna öll eina línu í <sup>1</sup>H NMR-rófum sínum. Raðaðu þeim í röð eftir væntanlegu vaxandi efnahliðrun:</p>\n<p style=\"text-align: center\">CH<sub>4</sub>, CH<sub>2</sub>Cl<sub>2</sub>, sýklóhexan, CH<sub>3</sub>COCH<sub>3</sub>, H<sub>2</sub>C <span data-math=\"\\text{=}\"></span> CH<sub>2</sub>, bensen</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

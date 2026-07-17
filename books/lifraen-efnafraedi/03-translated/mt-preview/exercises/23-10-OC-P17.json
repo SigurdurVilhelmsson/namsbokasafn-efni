@@ -1,0 +1,28 @@
+{
+  "nickname": "23-10-OC-P17",
+  "source_uid": "38897@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvaða <i>myndefni</i> myndir þú fá úr Michael-<i>efnahvarfi</i> með <i>basa</i> sem hvata af 3-búten-2-óni með hvorum eftirfarandi <i>kjarnsæknum</i> gjöfum?",
+  "questions": [
+    {
+      "id": "359796",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDhZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2ce901e4e0d279e26e900fe478882c81a555a8a2/OChem_23_10_007a.jpg\" alt=\"Structure of diethyl malonate, a 3-carbon chain with ethy esters on the terminal carbons.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUFZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--902ecf83f9250c2d047b5ae986cead5cef047630/OChem_23_EC_211a.jpg\" alt=\"Structure of a five-carbon chain with an oxo group on C 2 and two Et O 2 C groups on C 5\">"
+        }
+      ]
+    },
+    {
+      "id": "359797",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUVZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--722eea479fd0aa2f49df3175abb49a72986bb1ef/OChem_23_10_007b.jpg\" alt=\"Structure of cyclopentanone with C O O E t on C 2.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUlZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1644c28e4fa2a91de7fd41e21a1a19a9d96a03ce/OChem_23_EC_211b.jpg\" alt=\"Structure of cyclopentanone ring with the substituents C O O E t and C H 2 C H 2 C double-bonded O C H 3 on C 2.\">"
+        }
+      ]
+    }
+  ]
+}

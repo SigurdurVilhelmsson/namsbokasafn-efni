@@ -1,0 +1,28 @@
+{
+  "nickname": "08-04-OC-P08",
+  "source_uid": "37092@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Úr hvaða alkenum gætu eftirfarandi alkóhól hafa verið búin til?",
+  "questions": [
+    {
+      "id": "353399",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1FTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--470651b588aad87fa3ce5e8e5a64d08f0b017b52/OChem_08_04_008a.jpg\" alt=\"The condensed structural formula has a 6-carbon chain. C2 is bonded to a hydroxyl group and a methyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Oxýkvikasilfrun á 2-metýl-1-hexeni eða 2-metýl-2-hexeni"
+        }
+      ]
+    },
+    {
+      "id": "353400",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1VTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f008ca93305299219032bcd99a5804eaa89d1728/OChem_08_04_008b.jpg\" alt=\"The bond-line structure has a cyclohexane ring. C1 is bonded to a 2-carbon chain, in which C1 is bonded to a hydroxyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Oxýkvikasilfrun á sýklóhexýletýleni eða vatnsbórun á etýlidensýklóhexani"
+        }
+      ]
+    }
+  ]
+}

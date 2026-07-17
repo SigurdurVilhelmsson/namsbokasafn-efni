@@ -1,0 +1,28 @@
+{
+  "nickname": "05-11-OC-P22",
+  "source_uid": "36516@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Auðkenndu tilgreind vetni í eftirfarandi sameindum sem pro-<i>R</i> eða pro-<i>S</i>:",
+  "questions": [
+    {
+      "id": "357682",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBanNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2af8a8595005240ddd0b5e3a74dd22aeb4fbb9e8/OChem_05_11_008a.jpg\" alt=\"The wedge-dash structure of (S)-glyceraldehyde. Two arrows point toward the hydrogen atoms bonded at C3.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajBSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2e2d12553c0d7d31fbaa0c0801e6c882c8399f1c/OChem_05_EC_206a.jpg\" alt=\"The wedge-dash structure of (S)-glyceraldehyde. The dash bonded hydrogen at C3 is labeled pro-R and wedge bonded hydrogen is labeled pro-S.\">"
+        }
+      ]
+    },
+    {
+      "id": "357683",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBandSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d519ffa413c5feba09be1cc9bff45a0d308ec159/OChem_05_11_008b.jpg\" alt=\"The wedge-dash structure of phenylalanine. Two arrows point toward the hydrogen atoms bonded at C3.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajRSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--59f3fcaad2e6a57ecd8a4d6b4a1e6e8b2dec4bb0/OChem_05_EC_206b.jpg\" alt=\"The wedge-dash structure of an amino acid. The wedge bonded hydrogen at C3 is labeled pro-R and the dash bonded hydrogen is labeled pro-S.\">"
+        }
+      ]
+    }
+  ]
+}

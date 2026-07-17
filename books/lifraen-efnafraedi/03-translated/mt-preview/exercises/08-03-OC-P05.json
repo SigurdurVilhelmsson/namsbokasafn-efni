@@ -1,0 +1,19 @@
+{
+  "nickname": "08-03-OC-P05",
+  "source_uid": "37089@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "332602",
+      "stem_html": "Hvaða myndefni myndir þú búast við úr efnahvarfi sýklópentens við NBS og vatn? Sýndu staðefnafræðina.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>trans</i>-2-brómsýklópentanól"
+        }
+      ]
+    }
+  ]
+}

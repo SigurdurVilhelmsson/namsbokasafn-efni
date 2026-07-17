@@ -1,0 +1,46 @@
+{
+  "nickname": "07-03-OC-P04",
+  "source_uid": "36614@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Gefið IUPAC-heiti fyrir eftirfarandi efnasambönd:",
+  "questions": [
+    {
+      "id": "354271",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDRSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0f5f616d59628da1740b43e754b423a2394a45fb/OChem_07_03_008a.jpg\" alt=\"A condensed structural formula for a five-carbon chain that (counting from left) has a double bond at first carbon and methyl groups at third, fourth, and fourth carbon.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "3,4,4-Trímetýl-1-penten"
+        }
+      ]
+    },
+    {
+      "id": "354272",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDhSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a7762937bc2246bb2eba75460d5f2809003266db/OChem_07_03_008b.jpg\" alt=\"A condensed structural formula for a six-carbon chain that (counting from left) has a double bond at third carbon and methyl group at fourth carbon.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "3-Metýl-3-hexen"
+        }
+      ]
+    },
+    {
+      "id": "354273",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--504cca0fffc079adc79884f19dc6388f0200700e/OChem_07_03_008c.jpg\" alt=\"A condensed structural formula for an eight-carbon chain that (counting from left) has double bonds at second and fifth carbon and methyl groups at third and sixth carbons.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "4,7-Dímetýl-2,5-oktadíen"
+        }
+      ]
+    },
+    {
+      "id": "354274",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f41101cc77eb6f8aa6b73c731814d5f9815a0c03/OChem_07_03_008d.jpg\" alt=\"A condensed structural formula for an eight-carbon chain that (counting from left) has a double bond at fourth carbon and a sec butyl group at sixth carbon.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "6-Etýl-7-metýl-4-nonen"
+        }
+      ]
+    }
+  ]
+}

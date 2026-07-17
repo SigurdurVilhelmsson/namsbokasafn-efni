@@ -1,0 +1,45 @@
+{
+  "nickname": "24-99-OC-AP11",
+  "source_uid": "39010@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig gætir þú búið til pentýlamín úr eftirfarandi upphafsefnum?",
+  "questions": [
+    {
+      "id": "347737",
+      "stem_html": "Pentanamíð",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347738",
+      "stem_html": "Pentannítríl",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347739",
+      "stem_html": "1-búten",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347740",
+      "stem_html": "Hexanamíð",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347741",
+      "stem_html": "1-bútanól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347742",
+      "stem_html": "5-deken",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347743",
+      "stem_html": "Pentansýra",
+      "collaborator_solutions": []
+    }
+  ]
+}

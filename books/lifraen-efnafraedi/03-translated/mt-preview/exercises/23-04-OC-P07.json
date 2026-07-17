@@ -1,0 +1,19 @@
+{
+  "nickname": "23-04-OC-P07",
+  "source_uid": "38887@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361101",
+      "stem_html": "<p>Sýndu hvernig þú myndir mynda eftirfarandi efnasamband með aldól-efnahvarfi:</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWdZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--12401fbc867d396b07043798d7382f643d2403f6/OChem_23_04_003.jpg\" alt=\"Ball-and-stick model of Z-2,4-dicyclopropyl-2-butenal.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3dZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--47c231de32f0ea9a14715d898c18ad4f2ef0bbdc/OChem_23_EC_204.jpg\" alt=\"Alt Text Placeholder\">"
+        }
+      ]
+    }
+  ]
+}

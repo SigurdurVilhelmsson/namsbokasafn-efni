@@ -1,0 +1,19 @@
+{
+  "nickname": "29-01-OC-P01",
+  "source_uid": "39295@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "349257",
+      "stem_html": "Eitt af skrefunum í fituefnaskiptum er efnahvarf glýseróls (1,2,3-própantríóls) við ATP sem gefur glýseról-1-fosfat. Skrifaðu efnahvarfið og teiknaðu byggingu glýseról-1-fosfats.",
+      "collaborator_solutions": [
+        {
+          "content_html": "HOCH<sub>2</sub>CH(OH)CH<sub>2</sub>OH + ATP ​→ ​HOCH<sub>2</sub>CH(OH)CH<sub>2</sub>OPO<sub>3</sub><sup>2−</sup> + ADP"
+        }
+      ]
+    }
+  ]
+}

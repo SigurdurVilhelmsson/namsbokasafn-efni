@@ -1,0 +1,20 @@
+{
+  "nickname": "05-99-OC-AP35",
+  "source_uid": "36598@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknið ferflötungsmyndir af eftirfarandi sameindum:",
+  "questions": [
+    {
+      "id": "329404",
+      "stem_html": "2<i>S</i>,3<i>R</i>-handhverfa 2,3-díbrómpentans",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "329405",
+      "stem_html": "Mesó-form 3,5-heptandíóls",
+      "collaborator_solutions": []
+    }
+  ]
+}

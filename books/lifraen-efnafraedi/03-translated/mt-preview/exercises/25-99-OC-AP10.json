@@ -1,0 +1,15 @@
+{
+  "nickname": "25-99-OC-AP10",
+  "source_uid": "39083@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358818",
+      "stem_html": "<p>Hvert er fullt heiti eftirfarandi sykurs?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3NaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1cd9b45c4bed2c2ac3f0762b2c944110cca84eac/OChem_25_EC_016.jpg\" alt=\"The Haworth projection of a beta pyranose in which two hydroxyl groups are axial at C 3 and C 4  and one equatorial hydroxyl at C 2.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

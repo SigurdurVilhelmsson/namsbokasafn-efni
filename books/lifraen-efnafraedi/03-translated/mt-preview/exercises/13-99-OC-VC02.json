@@ -1,0 +1,15 @@
+{
+  "nickname": "13-99-OC-VC02",
+  "source_uid": "37491@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358337",
+      "stem_html": "<p>Hversu mörg gleypnimerki myndir þú búast við að eftirfarandi efnasamband hefði í <sup>1</sup>H og <sup>13</sup>C NMR-rófum sínum?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbEFVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--19ed97db42aff8d8ff1db9b3cd92af87e8db9538/OChem_13_EC_002.jpg\" alt=\"The ball-and-stick model of 3-methyl-2-cyclohexen-1-one.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

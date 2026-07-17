@@ -1,0 +1,15 @@
+{
+  "nickname": "13-99-OC-GP06",
+  "source_uid": "37523@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358409",
+      "stem_html": "<p><sup>1</sup>H og <sup>13</sup>C NMR-róf efnasambandsins <b>A</b>, C<sub>8</sub>H<sub>9</sub>Br, eru sýnd. Settu fram tillögu að byggingu fyrir <b>A</b> og heimfærðu toppa í rófunum upp á bygginguna þína.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbk1VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--58427587118a3ef7df55ba0727d25836b9a2edd0/OChem_13_EC_020.jpg\" alt=\"H N M R shifts: 0, 1.2 (triplet), 2.6 (quartet), 7.1 (singlet), and 7.1 and 7.4 (two doublets). C N M R shifts: 17, 30, 120 (short), 130, and 132.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

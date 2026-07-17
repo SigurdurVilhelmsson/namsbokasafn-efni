@@ -1,0 +1,1501 @@
+{
+  "generated_by": "exercise-extract.js",
+  "exercises": {
+    "14-01-OC-P01": {
+      "source_uid": "37637@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "342842"
+      ],
+      "fields": {
+        "stem:342842": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{=}\"></span>",
+            "1": "<span data-math=\"\\text{=}\"></span>"
+          },
+          "wraps": {}
+        },
+        "sol:342842": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "14-02-OC-P02": {
+      "source_uid": "37638@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "338832"
+      ],
+      "fields": {
+        "stem:338832": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:338832": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "14-02-OC-P03": {
+      "source_uid": "37639@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "351580"
+      ],
+      "fields": {
+        "stem:351580": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:351580": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "14-02-OC-P04": {
+      "source_uid": "37640@6",
+      "solutions_are_public": true,
+      "question_order": [
+        "358433"
+      ],
+      "fields": {
+        "stem:358433": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0lVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2389ff5deb79615833f3b86783e0581e15fd7f5c/OChem_14_02_007.jpg\" alt=\"The ball-and-stick model shows a cyclohexadiene ring. C 2 and C 3 are each bonded to a methyl group. The gray and white spheres represent carbon and hydrogen atoms, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358433": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "14-03-OC-P05": {
+      "source_uid": "37641@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "338838"
+      ],
+      "fields": {
+        "stem:338838": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:338838": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "14-03-OC-P06": {
+      "source_uid": "37642@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "338840"
+      ],
+      "fields": {
+        "stem:338840": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:338840": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "14-05-OC-P07": {
+      "source_uid": "37643@7",
+      "solutions_are_public": true,
+      "question_order": [
+        "358435"
+      ],
+      "fields": {
+        "stem:358435": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc01VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--02a6de2932fb3191e7ea19c72ba9bed9bc52b6dd/OChem_14_05_008.jpg\" alt=\"Four-carbon chain with methyl groups at C 2 and C 3 reacts with 4-carbon chain in which C 1 is acetate group, C 2 is double bonded to C 3.  Question mark represents the product.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358435": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1FVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--82623de5d79ac38468674421a7a49071212391dd/OChem_14_EC_201.jpg\" alt=\"A cyclohexene, in which C 1 and C 2 are bonded to methyl. C 4 is wedge bonded to C O 2 C H 3. C 5 is dash bonded to methyl.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-05-OC-P08": {
+      "source_uid": "37644@10",
+      "solutions_are_public": true,
+      "question_order": [
+        "358437"
+      ],
+      "fields": {
+        "stem:358437": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1VVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a74df270e19909e88d334b83ca31894238f72c5d/OChem_14_05_014a.jpg\" alt=\"The condensed structural formula reads, H 2 C double bonded to C H C (double bonded to O) C l.\">",
+            "1": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1lVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--42f419c4a955c5b4841af0bc9531d6c03019241d/OChem_14_05_014b.jpg\" alt=\"The condensed structural formula reads, H 2 C double bonded to C H C H 2 C H 2 C (double bonded to O) O C H 3.\">",
+            "2": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2NVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6a36447e9f6d5f4b3eb63dc7a23cf42e2f47d1f7/OChem_14_05_014c.jpg\" alt=\"A cyclohexane ring has a double bond between C 1 and C 2.\">",
+            "3": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2dVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0334aa4064a1c77346401edf4cda9554fc537ab1/OChem_14_05_014d.jpg\" alt=\"In a cyclohexane ring, C 1 is a carbonyl group. C 2 is double bonded to C 3.\">",
+            "4": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2tVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c88dcf057165b81f646bd2840cedc3a8ad144c67/OChem_14_05_014e.jpg\" alt=\"In a cyclohexane ring, C 1 is a carbonyl group. C 3 is double bonded to C 4.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358437": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "14-05-OC-P09": {
+      "source_uid": "37645@9",
+      "solutions_are_public": true,
+      "question_order": [
+        "358439"
+      ],
+      "fields": {
+        "stem:358439": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>\n",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc29VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b5d51d698235a3bc04495b9da57675326517d347/OChem_14_05_015a.jpg\" alt=\"A cyclohexadiene ring with double bonds between C 1-C 2 and C 3-C 4 fused to a cyclohexane ring.\">",
+            "1": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3NVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d2497cfc427a2bdd0ebb509091582491fceab9b5/OChem_14_05_015b.jpg\" alt=\"A cyclohexene ring with the double bond at bottom right is fused to another cyclohexene with the double bond at top left.\">",
+            "2": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3dVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--da757bd7cc2f4cacb58ec7c8bf126e255406697b/OChem_14_05_015c.jpg\" alt=\"In a 5-carbon chain, C 1 is double bonded to C 2. C 3 is double bonded to C 4, which itself is single bonded to a methyl group.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358439": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "14-05-OC-P10": {
+      "source_uid": "37646@6",
+      "solutions_are_public": true,
+      "question_order": [
+        "358441"
+      ],
+      "fields": {
+        "stem:358441": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczBVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ebbb246b81a926180aee45601be901cede3e5d01/OChem_14_05_016.jpg\" alt=\"Ball-and-stick model of cyclohexene bonded to C 2 of propene reacts with 4-carbon chain with double bond at C 2. C 1 and C 4 are carbonyls bonded to methoxy.groups\">"
+          },
+          "wraps": {}
+        },
+        "sol:358441": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczRVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9ab80070a385e917d3e520cdef20b0b10fa194d1/OChem_14_EC_202.jpg\" alt=\"A cyclohexane is fused to a cyclohexene with the double bond between C1 and C2. There is a methyl at C 2. C 3 and C 4 of second ring are each wedge bonded to C O 2 C H 3.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-06-OC-P11": {
+      "source_uid": "37647@7",
+      "solutions_are_public": true,
+      "question_order": [
+        "358443"
+      ],
+      "fields": {
+        "stem:358443": {
+          "skeleton": "\u0000SLOT_0\u0000\n",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:358443": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczhVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d3c10209ae1a4144d5962fecfe2de3f95551025b/OChem_14_EC_203.jpg\" alt=\"Polymer has n repeating units of of a 4-carbon chain, in which C 2 is double bonded to C 3 and a benzene ring at C 2.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-06-OC-P12": {
+      "source_uid": "37648@8",
+      "solutions_are_public": true,
+      "question_order": [
+        "360207"
+      ],
+      "fields": {
+        "stem:360207": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:360207": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa29hIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--04c9007e81ff3f6bf9c3d0863809b63e3a20bff7/OChem_14_EC_204.jpg\" alt=\"A two-step polymerization reaction mechanism of 1,3-butadiene with H plus (acid-catalyzed) shows the formation of a polymer.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-07-OC-P13": {
+      "source_uid": "37649@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "338860"
+      ],
+      "fields": {
+        "stem:338860": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:338860": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "14-07-OC-P14": {
+      "source_uid": "37650@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "338862"
+      ],
+      "fields": {
+        "stem:338862": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:338862": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "14-08-OC-P15": {
+      "source_uid": "37651@8",
+      "solutions_are_public": true,
+      "question_order": [
+        "358447"
+      ],
+      "fields": {
+        "stem:358447": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000\n<br>\u0000SLOT_2\u0000</p>",
+          "slots": 3,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdEVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--87388851fe81a4d214d5a9f0ed372fcad07acea3/OChem_14_08_002a.jpg\" alt=\"In a cyclohexane ring, C 1 is double bonded to C 2. C 4 is double bonded to C 5.\">",
+            "1": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdElVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ff2d696e144e0bf8a20e8f2c51f36ff0615df827/OChem_14_08_002b.jpg\" alt=\"In a cyclohexane ring, C 1 is double bonded to C 2. C 3 is double bonded to C 4.\">",
+            "2": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdE1VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--feaff23f638901e4b8e7703a1106d3c35c197e0d/OChem_14_08_002c.jpg\" alt=\"Two carbons double-bonded to each other. At C 1 there is a cyano group.\">",
+            "3": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFFVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--026b6ffb799542463ef84f53fa84588f01141a6a/OChem_14_08_002d.jpg\" alt=\"The structure of Aspirin has a benzene ring. C 1 is bonded to a carboxylic acid group. C 2 is bonded to acetoxyl group.\">",
+            "4": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dd68b3e0379ec6290e6cda187da66ff1123cdb7a/OChem_14_08_002e.jpg\" alt=\"A cyclohexadiene ring with double bonded oxygen at C 3 is fused to a cyclohexane ring. Both rings share a methyl group.\">",
+            "5": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFlVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fe505df0f7a9d3fc4fecf02ec469d356608f1a90/OChem_14_08_002f.jpg\" alt=\"Indole has a benzene ring fused to a 5-membered ring made of  four carbons, in which C 2 is double bonded to C 3, and an N-H group at position 1.\">"
+          },
+          "wraps": {}
+        },
+        "sol:358447": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP01": {
+      "source_uid": "37683@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "358476",
+        "358477",
+        "358478",
+        "358479"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358476": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdU1VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6c22cd3a0bfdb604dd30e57414b4bac76d040352/OChem_14_EC_012a.jpg\" alt=\"The condensed structural formula has a 6-carbon chain with double bonds between C 2-C 3 and C 4-C 5. C 3 is single bonded to a methyl group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358477": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVFVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2a2c686b9c5253ada57d65467d9fc1cc3cab5322/OChem_14_EC_012b.jpg\" alt=\"The condensed structural formula has a 7-carbon chain with double bonds between C 1-C 2, C 3-C 4, and C 5-C 6.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358478": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--606d969ecb8c731e073bd0f9b092263cdd5a2a9b/OChem_14_EC_012c.jpg\" alt=\"The condensed structural formula has a 7-carbon chain with double bonds between C 2-C 3, C 3-C 4, and C 5-C 6.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358479": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVlVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c8657b4efeebbf03ce92d46085b5e9dc0e098cac/OChem_14_EC_012d.jpg\" alt=\"The condensed structural formula has a 5-carbon chain with double bonds between C 1-C 2 and C 3-C 4. C 3 is further single bonded to a 3-carbon chain.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP02": {
+      "source_uid": "37684@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "338751"
+      ],
+      "fields": {
+        "stem:338751": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP03": {
+      "source_uid": "37685@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "340916",
+        "340917",
+        "340918",
+        "340919",
+        "340920",
+        "340921"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:340916": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:340917": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:340918": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:340919": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:340920": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{=}\"></span>"
+          },
+          "wraps": {}
+        },
+        "stem:340921": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP04": {
+      "source_uid": "37686@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "358481"
+      ],
+      "fields": {
+        "stem:358481": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n<p>\u0000SLOT_2\u0000</p>",
+          "slots": 3,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWNVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0b96f37f2236668fe05128657a7a9597eca876e9/OChem_14_EC_013.jpg\" alt=\"Isoprene (2-methyl-1,3-butadiene) reacts with molecular bromine to give three products in 3, 21, and 76 percent yields.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP05": {
+      "source_uid": "37687@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "338759"
+      ],
+      "fields": {
+        "stem:338759": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP06": {
+      "source_uid": "37688@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "358483"
+      ],
+      "fields": {
+        "stem:358483": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWdVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3c185b971cee369ef837906d2a63f5f3f0acdd3d/OChem_14_EC_014.jpg\" alt=\"1-Phenyl-1,3-butadiene contains a benzene ring.one carbon of which is bonded to a 4-carbon chain, in which C 1 is double bonded to C 2 and C 3 is double bonded to C 4.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP07": {
+      "source_uid": "37689@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "358486",
+        "358487"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358486": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWtVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e1fde61ef5b289b98880a5918305ae442c4ca6be/OChem_14_EC_015a.jpg\" alt=\"Cyclopentadiene reacts with maleic anhydride, a 5-membered ring with four carbons and one oxygen where the carbons either side of the oxygen are carbonyl groups.. Question mark represents the product.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358487": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdW9VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--47b3afc6f433a5e3ae6c2eb18eb837d52bf8f6cc/OChem_14_EC_015b.jpg\" alt=\"Cyclohexadiene reacts with a cyclohexadiene with double bonds at C 2 and C 5, and carbonyl groups at C 1 and C 4. Question mark represents the product.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP08": {
+      "source_uid": "37698@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "358489"
+      ],
+      "fields": {
+        "stem:358489": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdkFVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2ae0033a9ad4517e76f9902dea5b22ce173972e7/OChem_14_EC_016.jpg\" alt=\"2,3-Di-tert-butyl-1,3-butadiene has a 6-carbon chain with C 3 and C 4 each double bonded to methylene. C 2 and C 5 are each bonded to two methyl groups.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP09": {
+      "source_uid": "37699@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358491"
+      ],
+      "fields": {
+        "stem:358491": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdkVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4c50483dc049ff171980638a605546584678926f/OChem_14_EC_017.jpg\" alt=\"Benzene bonded to 4-carbon chain containing double bonds at C 1 an C 3  reacts with a four-carbon chain with a double bond between C 2 and C 3 and where C1 and C4 are carbonyl groups also bound to methoxy griups. Question mark represents the product.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP10": {
+      "source_uid": "37700@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "338777"
+      ],
+      "fields": {
+        "stem:338777": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP11": {
+      "source_uid": "37701@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "338778"
+      ],
+      "fields": {
+        "stem:338778": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP12": {
+      "source_uid": "37702@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "358493"
+      ],
+      "fields": {
+        "stem:358493": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdklVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--108635091989b0bb3749f766dbc3ab3cc71738ab/OChem_14_EC_018.jpg\" alt=\"A 4-carbon chain with  double bonds between C1-C2 and C3-C4 and with a methyl group at C2 reacts with ethyl propenoate.Question mark represents the product.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP13": {
+      "source_uid": "37703@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358495"
+      ],
+      "fields": {
+        "stem:358495": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdk1VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b77f7a733dbe456935bb9c5309ede6b704acceb7/OChem_14_EC_019.jpg\" alt=\"Ethene with methyl at C 1, ethene with aldehyde at C 1, ethene with both carbons each bonded to two cyano groups, and ethene with both carbons each bonded to two methyl groups.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP14": {
+      "source_uid": "37704@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "338781"
+      ],
+      "fields": {
+        "stem:338781": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP15": {
+      "source_uid": "37705@6",
+      "solutions_are_public": false,
+      "question_order": [
+        "358497"
+      ],
+      "fields": {
+        "stem:358497": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdlFVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7f51373ae7d71fb2d63646a58516c7d5d9557121/OChem_14_EC_020.jpg\" alt=\"1,3-pentadiene has a 5-carbon chain with doiuble bonds between C1-C2 and C3-C4. 2,4-Pentadienal has a 5-carbon chain with doiuble bonds between C2-C3 and C4-C5 and a carbonyl group at C1\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP16": {
+      "source_uid": "37706@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358502",
+        "358503",
+        "358504",
+        "358505"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358502": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdlVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4696753d552bbaa3ec2b16b76b8d35ad2bd73490/OChem_14_EC_021a.jpg\" alt=\"A cyclohexene ring is fused to a 5-membered ring made of four carbon atoms and an oxygen atom at postion 3. Carbonds at positions 2 and 5 of the ring are carbonyls..\">"
+          },
+          "wraps": {}
+        },
+        "stem:358503": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdllVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3f552bdd5f65e7cc23c71e85108a21d1e8d006cf/OChem_14_EC_021b.jpg\" alt=\"A 7-membered bicyclic ring. C 2 is double bonded to C 3. C 6 is bonded to a hydrogen atom and a cyano group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358504": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmNVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5d0dea2b55f8bdcf2b8f0722a1ff28b50533aa3c/OChem_14_EC_021c.jpg\" alt=\"Cyclohexene fused to a cyclohexane where C 1 and C 4 are carbonyls. The cyclohexane is further fused to another cyclohexene.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358505": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmdVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--66d7af83ac1bbb72adaebe0898096a829c0823cf/OChem_14_EC_021d.jpg\" alt=\"Cyclohexadiene ring with double bonds between C1-C2 and C4-C5. C 1 is bonded to C O 2 C H 3 group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP17": {
+      "source_uid": "37707@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "358507"
+      ],
+      "fields": {
+        "stem:358507": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmtVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d2146d9711ae73b833cf7c673372a0bc2d33b0ad/OChem_14_99_OZnCl2.jpg\" alt=\"Cyclobutene with double bonded oxygen at C 3 reacts in the presence of zinc chloride with a 6-carbon chain that has double bonds between C 2-C 3 and C 4-C 5 .\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP19": {
+      "source_uid": "37708@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "338788"
+      ],
+      "fields": {
+        "stem:338788": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP20": {
+      "source_uid": "37709@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "338789"
+      ],
+      "fields": {
+        "stem:338789": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP21": {
+      "source_uid": "37710@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358511",
+        "358512",
+        "358513"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358511": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdm9VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f0ffb057e63cc5ba05c01fca745dd41fe9e16cd2/OChem_14_EC_024a.jpg\" alt=\"Three cyclohexadienes fused to cyclohexenes. First 1,4,5,8-tetrahydronaphthalene. Second 1,6-dihydronaphthalene. Third 1,2,5,6-eetrahydronaphthaline.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358512": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdnNVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bd1976905049bc8ce5fecca29e8a6f61eb901949/OChem_14_EC_024b.jpg\" alt=\"Three 1,3-cyclohexadiene rings. First: with methylene groups at C 5 and C 6. Second: with methyl groups at C 5 and C 6. Third: with a methylene group at C 5 and a methyl group at C 6.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358513": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdndVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--197ab14d97ac24e9e81719f15d04c537f8e79e74/OChem_14_EC_024c.jpg\" alt=\"Three structures with a benzene ring at the end of a 5-carbon chain. First: Double bonds at C 1 and C 4 of the chain. Second: Double bonds at C 1 and C 3 of the chain. Third: Double bonds at C 2 and C 4 of the chain.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP22": {
+      "source_uid": "37711@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "358517",
+        "358518",
+        "358519"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358517": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjBVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--397946b9e7094ac5b6801b06608fcd50d2be0b4b/OChem_14_EC_025a.jpg\" alt=\"The structure has a cyclopentene ring. C 4 is double bonded to a methylene group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358518": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjRVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5b881da4e200c1186736831e630701e31c4cbc31/OChem_14_EC_025b.jpg\" alt=\"Pyridine has a 6-membered ring with nitrogen in the first position. The ring has alternate double bonds.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358519": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjhVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7ad3144a5e625b74715dc7f83727d6a0fef726d5/OChem_14_EC_025c.jpg\" alt=\"The condensed structural formula of a ketene reads, (C H 3) 2 C double bonded to C double bonded to O.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP23": {
+      "source_uid": "37712@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "340904"
+      ],
+      "fields": {
+        "stem:340904": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{=}\"></span>",
+            "1": "<span data-math=\"\\text{=}\"></span>"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP24": {
+      "source_uid": "37713@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "340907"
+      ],
+      "fields": {
+        "stem:340907": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<table class=\"unnumbered\">\n<tbody><tr>\n<td style=\"text-align:left;\">\u0000SLOT_1\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_2\u0000</td>\n</tr>\n<tr>\n<td style=\"text-align:left;\">\u0000SLOT_3\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_4\u0000</td>\n</tr>\n<tr>\n<td style=\"text-align:left;\">\u0000SLOT_5\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_6\u0000</td>\n</tr>\n<tr>\n<td style=\"text-align:left;\">\u0000SLOT_7\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_8\u0000</td>\n</tr>\n<tr>\n<td style=\"text-align:left;\">\u0000SLOT_9\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_10\u0000</td>\n</tr>\n<tr>\n<td style=\"text-align:left;\">\u0000SLOT_11\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_12\u0000</td>\n</tr>\n<tr>\n<td style=\"text-align:left;\">\u0000SLOT_13\u0000</td>\n<td style=\"text-align:left;\">\u0000SLOT_14\u0000</td>\n</tr>\n</tbody></table>\n<p>\u0000SLOT_15\u0000</p>",
+          "slots": 16,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP25": {
+      "source_uid": "37714@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "351592"
+      ],
+      "fields": {
+        "stem:351592": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP26": {
+      "source_uid": "37715@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358524",
+        "358525",
+        "358526",
+        "358527"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0FWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ee5dc2cafb3b71c5d6f0ae4be5438ea26a5d206f/OChem_14_EC_026.jpg\" alt=\"The structures of acetone, formaldehyde, pyruvaldehyde, and malonaldehyde.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358524": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358525": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358526": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358527": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP27": {
+      "source_uid": "37716@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "358531",
+        "358532",
+        "358533"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358531": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0VWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--34f95a0fe4b4a39c990535842fc57ce9f58612ba/OChem_14_EC_027a.jpg\" alt=\"The structure has a 6-carbon chain with double bonds between C 2-C 3 and C 4-C 5.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358532": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0lWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b339af52d623200c31c14fe3d933dbe7cff1b5c1/OChem_14_EC_027b.jpg\" alt=\"The structure has a cyclohexadiene ring with double bonds between C 1-C 2 and C 3-C 4. C 1 and C 4 are each bonded to a methyl group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358533": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ01WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9ee75248a9ee0ca4381390e5f31587d85ed2ba37/OChem_14_EC_027c.jpg\" alt=\"The structure has a cyclopentadiene ring with double bonds between C 1-C 2 and C 3-C 4. C 2 and C 3 are each bonded to a methyl group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP28": {
+      "source_uid": "37717@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "338806",
+        "338807",
+        "338808",
+        "338809",
+        "338810",
+        "338811"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:338806": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:338807": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:338808": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:338809": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:338810": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:338811": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP29": {
+      "source_uid": "37718@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "338812"
+      ],
+      "fields": {
+        "stem:338812": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP30": {
+      "source_uid": "37719@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358535"
+      ],
+      "fields": {
+        "stem:358535": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1FWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--acafabb8acf5e4b9e9a8265241da30a2db9c5fb4/OChem_14_EC_028.jpg\" alt=\"A cyclohexene with a double bond between C1-C2 and a methoxy group at C1 reacts with hydrogen chloride to form a cyclohexane ring, in which C 1 is bonded to a methoxy group and a chlorine atom.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP31": {
+      "source_uid": "37720@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358537"
+      ],
+      "fields": {
+        "stem:358537": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1VWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--24d960dde304482a3de1dd090cfdddac1a5e38dd/OChem_14_EC_029.jpg\" alt=\"The structure of norbornadiene has a 7-membered bicyclic ring with two double bonds.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP32": {
+      "source_uid": "37721@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "351594"
+      ],
+      "fields": {
+        "stem:351594": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP33": {
+      "source_uid": "37722@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "358539"
+      ],
+      "fields": {
+        "stem:358539": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1lWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ce6a38bfc2ad195199328c3e6df416c328269a2e/OChem_14_EC_030.jpg\" alt=\"A cyclohexene with an ethene group at C 2 and a  methylene at C 3 reacts with 2 equivalents of maleic anhydride to form C 17 H 16 O 6.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP34": {
+      "source_uid": "37723@7",
+      "solutions_are_public": false,
+      "question_order": [
+        "358541"
+      ],
+      "fields": {
+        "stem:358541": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n<p>\u0000SLOT_2\u0000</p>",
+          "slots": 3,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2NWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1ac49ca7adaf5ad15cfd43dcb278f1144420c17d/OChem_14_EC_031.jpg\" alt=\"The condensed structure of 2-oxopentanedial has a 5-carbon chain. C 1, C 2, and C 5 are each double-bonded to an oxygen atom.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP35": {
+      "source_uid": "37724@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358545",
+        "358546",
+        "358547"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n<p>\u0000SLOT_2\u0000</p>",
+          "slots": 3,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2dWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d06fc89dc6534a95fd6ea38c83457995c86d18d2/OChem_14_EC_032.jpg\" alt=\"The condensed formula of compound has a 10-carbon chain. C 1, C 5, C 6, and C 10 are all double-bonded to oxygen atoms.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358545": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358546": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358547": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP36": {
+      "source_uid": "37725@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358549"
+      ],
+      "fields": {
+        "stem:358549": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2tWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--65d4acf0928150b6d125e4c09b43af9acce50e8c/OChem_14_EC_033.jpg\" alt=\"A 3-step reaction shows the formation of adiponitrile from 1,3-butadiene\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP37": {
+      "source_uid": "37726@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358551"
+      ],
+      "fields": {
+        "stem:358551": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ29WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--eb949a64ac22db6119caae47f8a33b27326b4e63/OChem_14_EC_034.jpg\" alt=\"The wedge-dash structure of ergosterol that has the chemical formula C 28 H 44 O.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP38": {
+      "source_uid": "37727@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "358553"
+      ],
+      "fields": {
+        "stem:358553": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3NWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--82154f93cd596e1cff2167948ac0e9bcc71750a7/OChem_14_EC_035.jpg\" alt=\"The condensed formula of compound has a 4-carbon chain. C 2 is triple-bonded to C3. C1 and C4 are carbonyl groups each bonded to methoxy groups, C 5, C 6, and C 10 are all double-bonded to oxygen atoms.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP39": {
+      "source_uid": "37728@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "351598"
+      ],
+      "fields": {
+        "stem:351598": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP40": {
+      "source_uid": "37729@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358555"
+      ],
+      "fields": {
+        "stem:358555": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3dWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dc72160580a043ce8e915e5cb3ff6b333df93465/OChem_14_EC_036.jpg\" alt=\"1,3-Cyclohexadiene reacts with ethene bonded to C O 2 C H 3 in the presence of an unknown reagent represented by a question mark to form a substituted product.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP41": {
+      "source_uid": "37730@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "358557"
+      ],
+      "fields": {
+        "stem:358557": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzBWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b33ced6634028ca3d305ba50e39d33b2f6eacdc3/OChem_14_EC_037.jpg\" alt=\"An enamine comprises of a 2-carbon chain with a double bond between. C 1 and C 2 and a nitrogen with two R groups and a lone pair is attached to C 2.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-AP42": {
+      "source_uid": "37731@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "358559"
+      ],
+      "fields": {
+        "stem:358559": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f2a3074477e86ce7ce81fe563de2c85087602268/OChem_14_EC_038.jpg\" alt=\"The structures of benzene and para-toluidine with lambda max values of 204 and 235 nanometers, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-MP01": {
+      "source_uid": "37673@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358459",
+        "358460",
+        "358461"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358459": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHNVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0c3539eceef7d4ccb7a8d37e1f09d8d6d001ace8/OChem_14_EC_007a.jpg\" alt=\"A 6-carbon chain with double bonds between C 2-C 3 and C 4-C 5 reacts with hydrogen chloride at 40 degrees Celsius. Product is not shown.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358460": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHdVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d2318c65f4d9d53e0402480c6a18fe8520247cef/OChem_14_EC_007b.jpg\" alt=\"A 5-carbon chain with double bonds between C 1-C 2 and C 3-C 4, and methyl at C 3 reacts with hydrogen bromide at 40 degrees Celsius. Product is not shown.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358461": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDBVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5f3fbd7725d8585737711a1e46ab51bc5ed7a541/OChem_14_EC_007c.jpg\" alt=\"A 4-membered ring with double-bonded methylene groups at C 1 and C 2 reacts with hydrogen chloride at 0 degrees Celsius. Product is not shown.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-MP02": {
+      "source_uid": "37674@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358463"
+      ],
+      "fields": {
+        "stem:358463": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDRVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--293eccfd1c72e7edb2b9e57c58fef5b980d36629/OChem_14_EC_008.jpg\" alt=\"When heated, an 8-membered ring with two double bonds between C 2-C 3 and C 5-C 6 forms benzene and ethene.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-MP03": {
+      "source_uid": "37675@6",
+      "solutions_are_public": false,
+      "question_order": [
+        "358466",
+        "358467"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358466": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDhVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--58f0b58ed77e1b2be6869c531503b05eeee95882/OChem_14_EC_009a.jpg\" alt=\"When heated, a 6-membered ring made of one oxygen and five carbon atoms with two double bonds and a carbonyl group at position 2 reacts with an alkyne, forming a benzene ring and carbon dioxide..\">"
+          },
+          "wraps": {}
+        },
+        "stem:358467": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUFVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--04465097952ce15f7695f1676f42d3c7ee481dd1/OChem_14_EC_009b.jpg\" alt=\"A 6-membered ring made of two carbons and four nitrogens (at positions 1, 2, 4, and 5) with alternate double bonds, and with methyl groups at positions 3 and 6 reacts with benzene bonded to ethyne.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-MP04": {
+      "source_uid": "37676@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "358469"
+      ],
+      "fields": {
+        "stem:358469": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cd058f3300b034ac21afa43e25db4c3f706be38c/OChem_14_EC_010.jpg\" alt=\"Luminol dianion reacts with molecular oxygen to yield aniline with carboxylate groups bonded at positions 2 and 3. Molecular nitrogen is a byproduct and light is generated.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-MP05": {
+      "source_uid": "37677@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "358471"
+      ],
+      "fields": {
+        "stem:358471": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUlVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--189065bc5f349a6f6af8640ccf516622c8df5641/OChem_14_EC_011.jpg\" alt=\"When heated, Danishefsky’s Diene reacts with ethene bound to an aldehyde group to yield Diels–Alder Adduct that reacts with hydrogen chloride to yield three products.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-VC01": {
+      "source_uid": "37669@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358449"
+      ],
+      "fields": {
+        "stem:358449": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGNVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9cfe88cfd53fccbe62056a11bd449af26e1c21a4/OChem_14_EC_003.jpg\" alt=\"The ball-and-stick model has a cyclopentene ring. C 1 is bonded to an ethene group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-VC02": {
+      "source_uid": "37670@6",
+      "solutions_are_public": false,
+      "question_order": [
+        "358451"
+      ],
+      "fields": {
+        "stem:358451": {
+          "skeleton": "<p>\u0000SLOT_0\u0000 <br>\u0000SLOT_1\u0000</p>\n\u0000SLOT_2\u0000",
+          "slots": 3,
+          "opaques": {
+            "0": "<span data-math=\"\\text{=}\"></span>",
+            "1": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGdVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5a2675def090334ce3c28561ac1f12c1a571d68f/OChem_14_EC_004.jpg\" alt=\"The ball-and-stick model has a cyclopentene ring. C 1 of the ring is bonded to C1 of another cyclopentene ring.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-VC03": {
+      "source_uid": "37671@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358453"
+      ],
+      "fields": {
+        "stem:358453": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGtVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6701369a12f35dfbadf342b8297ba45e1572232d/OChem_14_EC_005.jpg\" alt=\"The ball-and-stick model has cyclohexene. C 1 is bonded to 3-carbon chain with double bond at C 1. C 2 of ring and chain are each bonded to a methyl group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "14-99-OC-VC04": {
+      "source_uid": "37672@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358455"
+      ],
+      "fields": {
+        "stem:358455": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdG9VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5b085504c5ca977f11334c11b339fb255a88dae4/OChem_14_EC_006.jpg\" alt=\"The ball-and-stick model has a 6-carbon chain. C 3 is bonded to a methyl group. Gray and white spheres represent carbon and hydrogen atoms, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "30-99-OC-MP04",
+  "source_uid": "39368@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355078",
+      "stem_html": "<p>Kórónafasínsýra, eiturefni úr bakteríu, var framleidd með lykilskrefi sem felur í sér þrjú hringhverf efnahvörf í röð. Greindu þau og leggðu til hvarfgang fyrir heildarumbreytinguna. Hvernig myndir þú ljúka við myndunina?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjBaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--562b01de1f5e551c23f31c068d3cbf626a95641c/OChem_30_EC_006.jpg\" alt=\"The reactant reacts with heat in the presence of 185 degree Celsius to give an intermediate. This reacts with an unknown reagent represented as question mark to form coronafacic acid.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "31-04-OC-P08",
+  "source_uid": "39403@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358115",
+      "stem_html": "Pólý(etýlen tereftalat), eða PET, er pólýester sem notaður er til að búa til gosdrykkjaflöskur. Það er útbúið með efnahvarfi etýlen glýkóls við 1,4-bensendíkarboxýlsýru (tereftalsýru). Teiknið byggingu PET.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaHdhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ebbbc25cf4918c25e61cb8195b83e5e7ff056057/OChem_31_EC_204.jpg\" alt=\"The structure of poly(ethylene terephthalate). A carbonyl linked to a benzene ring which is bonded to a carbonyl group, oxygen atom, two methylene groups further linked to an oxygen atom.\">"
+        }
+      ]
+    }
+  ]
+}

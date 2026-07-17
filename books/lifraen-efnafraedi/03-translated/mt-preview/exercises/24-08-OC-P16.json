@@ -1,0 +1,19 @@
+{
+  "nickname": "24-08-OC-P16",
+  "source_uid": "38969@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361601",
+      "stem_html": "<p>Leggðu til myndun lyfsins súlfaþíasóls úr benseni og hvaða amíni sem þarf.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3NaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2ce5fed343c052a660c64546f92231f65577a3cc/OChem_24_08_005.jpg\" alt=\"The structure of sulfathiazole, which is aniline connected to a sulfonyl to an N H to a cyclopentadiene with nitrogen and sulfur atoms.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. HNO<sub>3</sub>, H<sub>2</sub>SO<sub>4</sub>; 2. H<sub>2</sub>/PtO<sub>2</sub>; 3. (CH<sub>3</sub>CO)<sub>2</sub>O; 4. HOSO<sub>2</sub>Cl; 5. amínóþíasól; 6. H<sub>2</sub>O, NaOH"
+        }
+      ]
+    }
+  ]
+}

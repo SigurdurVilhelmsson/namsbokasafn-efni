@@ -1,0 +1,15 @@
+{
+  "nickname": "08-99-OC-AP14",
+  "source_uid": "37172@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357278",
+      "stem_html": "<p>Plexigler, glært plast sem notað er til að búa til marga mótaða hluti, er búið til með fjölliðun metýlmetakrýlats. Teiknaðu dæmigerðan hluta af plexigleri.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDRTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5a442e66b44e4ee75785de462d6f29a8d34b203f/OChem_08_EC_042.jpg\" alt=\"The structure of methyl methacrylate.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

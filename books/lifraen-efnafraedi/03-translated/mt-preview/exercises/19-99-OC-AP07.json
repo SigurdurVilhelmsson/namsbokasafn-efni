@@ -1,0 +1,30 @@
+{
+  "nickname": "19-99-OC-AP07",
+  "source_uid": "38053@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú nota Grignard-efnahvarf á aldehýð eða ketón til að mynda eftirfarandi efnasambönd?",
+  "questions": [
+    {
+      "id": "341584",
+      "stem_html": "2-pentanól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341585",
+      "stem_html": "1-bútanól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341586",
+      "stem_html": "1-fenýlsýklóhexanól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341587",
+      "stem_html": "Dífenýlmetanól",
+      "collaborator_solutions": []
+    }
+  ]
+}

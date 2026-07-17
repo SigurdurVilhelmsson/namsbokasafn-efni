@@ -1,0 +1,15 @@
+{
+  "nickname": "19-99-OC-AP34",
+  "source_uid": "38080@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360833",
+      "stem_html": "<p>Róteinda-NMR-róf fyrir efnasamband með formúluna C<sub>10</sub>H<sub>12</sub>O<sub>2</sub> er sýnt hér að neðan. Innrautt róf hefur sterkt band við 1711 cm<sup>–1</sup>. Niðurstöður breiðbandsafþreytts 13C-NMR-rófs eru settar fram í töflu ásamt DEPT-135 og DEPT-90 upplýsingum. Teiknaðu byggingu þessa efnasambands.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEVXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--488aca40fa4076b12e1ceac72cf22581df91c899/OChem_19_EC_073.jpg\" alt=\"Proton spectrum with singlets at 2.1, 3.6, and 3.8, doublets at 6.8 and 7.1. Relative areas 3.01, 2.15, 3.13, 2.01, 1.91 respectively. Inset shows 13 C N M R results.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

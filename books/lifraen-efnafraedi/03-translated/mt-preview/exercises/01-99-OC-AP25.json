@@ -1,0 +1,15 @@
+{
+  "nickname": "01-99-OC-AP25",
+  "source_uid": "37582@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "352145",
+      "stem_html": "<p>Hvers vegna heldur þú að engum hafi nokkurn tíma tekist að búa til sýklópentýn sem stöðuga sameind?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVlVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9f4cb61f804dcc0db9dac73f05c12f516d8f622f/OChem_01_EC_016.jpg\" alt=\"The skeletal structure of cyclopentyne featuring a triple bond within a five-carbon ring.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

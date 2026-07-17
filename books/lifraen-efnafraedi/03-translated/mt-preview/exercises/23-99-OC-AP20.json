@@ -1,0 +1,30 @@
+{
+  "nickname": "23-99-OC-AP20",
+  "source_uid": "38947@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvaða þéttingarmyndefni myndir þú búast við að fá með því að meðhöndla eftirfarandi efni með natríumetoxíði í etanóli?",
+  "questions": [
+    {
+      "id": "347050",
+      "stem_html": "Etýlbútanóat",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347051",
+      "stem_html": "Sýklóheptanón",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347052",
+      "stem_html": "3,7-Nónandíón",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347053",
+      "stem_html": "3-Fenýlprópanal",
+      "collaborator_solutions": []
+    }
+  ]
+}

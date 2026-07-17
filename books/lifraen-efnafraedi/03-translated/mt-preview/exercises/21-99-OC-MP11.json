@@ -1,0 +1,15 @@
+{
+  "nickname": "21-99-OC-MP11",
+  "source_uid": "38191@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361443",
+      "stem_html": "<p>Eitt skref í <i>glúkógenmyndunarferlinu</i> fyrir lífmyndun glúkósa er afoxun að hluta á 3-fosfóglýserati til að gefa glýseraldehýð 3-fosfat. Ferlið á sér stað með fosfórun með ATP til að gefa 1,3-bisfosfóglýserat, hvarf við þíólhóp á ensíminu til að gefa ensímbundið þíóester og afoxun með NADH. Leggðu til verkunarmáta fyrir öll þrjú hvarfin.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--219917de52c88fc0f1df8b75689749daf2a4f357/OChem_21_EC_035.jpg\" alt=\"The reaction shows the enzyme-catalyzed conversion of 3-phosphoglycerate to glyceraldehyde-3-phosphate. 1,3-Bisphosphoglycerate and an enzyme-bound thioester are formed as intermediates.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

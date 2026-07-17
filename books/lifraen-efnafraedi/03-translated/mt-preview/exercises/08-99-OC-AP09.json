@@ -1,0 +1,40 @@
+{
+  "nickname": "08-99-OC-AP09",
+  "source_uid": "37167@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú framkvæma eftirfarandi umbreytingar? Hvaða hvarfefni myndir þú nota í hverju tilviki?",
+  "questions": [
+    {
+      "id": "357271",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3dTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3a4d83ed8c139360526bf80bb2d30484a92bf5c4/OChem_08_EC_038a.jpg\" alt=\"Cyclopentene reacts with unknown reagent(s), depicted by a question mark to form cyclopentane, in which C1 and C2 are dash-bonded to a hydrogen atom and wedge-bonded to a hydroxyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357272",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzBTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--daa9fb6b38cfd2247eee929471bd702b5512473c/OChem_08_EC_038b.jpg\" alt=\"Cyclopentene reacts with unknown reagent(s), depicted by a question mark, to form cyclopentane, in which C1 is bonded to a hydroxyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357273",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzRTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8c32bd473c01beffa8b07fee60e4c672cd1a076f/OChem_08_EC_038c.jpg\" alt=\"Cyclopentene reacts with unknown reagent(s), depicted by a question mark, to form cyclopentane fused to cyclopropane, in which C1 is bonded to two chlorine atoms.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357274",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzhTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f4cf1e80f9e2dca5e4bba94f8b1e9417cc43fe73/OChem_08_EC_038d.jpg\" alt=\"Cyclohexane with a methyl and hydroxyl group at C1 reacts with unknown reagent(s), depicted by a question mark to form cyclohexene, in which C1 is bonded to a methyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357275",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEFTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--35d21a8413728a6429ac0f71cb1ca3a19c875471/OChem_08_EC_038e.jpg\" alt=\"A reaction shows 3-methyl-2-pentene reacting with unknown reagent(s) to form acetaldehyde and a 3-carbon chain with double-bonded oxygen at C1 and methyl at C2.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357276",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEVTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--201c447cf5f282d841062b7c64fdea0f06dda4e2/OChem_08_EC_038f.jpg\" alt=\"A reaction shows 2-methylpropene reacting with unknown reagent(s)  to form a 3-carbon chain, in which C1 and C2 are bonded to hydroxyl and methyl, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

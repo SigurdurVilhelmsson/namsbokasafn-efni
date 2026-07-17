@@ -1,0 +1,37 @@
+{
+  "nickname": "17-02-OC-P04",
+  "source_uid": "37869@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Raðið eftirfarandi efnum í röð eftir vaxandi sýrustigi:",
+  "questions": [
+    {
+      "id": "346070",
+      "stem_html": "(CH<sub>3</sub>)<sub>2</sub>CHOH, HC<span data-math=\"\\text{≡}\"></span>CH, (CF<sub>3</sub>)<sub>2</sub>CHOH, CH<sub>3</sub>OH",
+      "collaborator_solutions": [
+        {
+          "content_html": "HC<span data-math=\"\\text{≡}\"></span>CH < (CH<sub>3</sub>)<sub>2</sub>CHOH < CH<sub>3</sub>OH < (CF<sub>3</sub>)<sub>2</sub>CHOH"
+        }
+      ]
+    },
+    {
+      "id": "346071",
+      "stem_html": "Fenól, <i>p</i>-metýlfenól, <i>p</i>-(tríflúormetýl)fenól",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>p</i>-Metýlfenól < Fenól < <i>p</i>-(Tríflúormetýl)fenól"
+        }
+      ]
+    },
+    {
+      "id": "346072",
+      "stem_html": "Bensýlalkóhól, fenól, <i>p</i>-hýdroxýbensósýra",
+      "collaborator_solutions": [
+        {
+          "content_html": "Bensýlalkóhól < Fenól < <i>p</i>-Hýdroxýbensósýra"
+        }
+      ]
+    }
+  ]
+}

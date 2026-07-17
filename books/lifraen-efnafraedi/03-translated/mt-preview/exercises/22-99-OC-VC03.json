@@ -1,0 +1,15 @@
+{
+  "nickname": "22-99-OC-VC03",
+  "source_uid": "38787@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360911",
+      "stem_html": "<p>Til þess að tiltekin <i>α</i>-vetnisfrumeind sé súr verður C–H-efnatengið að vera samsíða <i>p</i>-svigrúmum C<span data-math=\"\\text{=}\"></span>O-tvítengisins (þ.e. hornrétt á plan aðliggjandi karbónýlhóps). Tilgreindu súrustu vetnisfrumeindina í stellingunni sem sýnd er fyrir eftirfarandi byggingu. Er hún áslæg eða miðlæg?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2NZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4c9893bcbb7ae3444471204ab5627930bf0b8e8b/OChem_22_EC_013.jpg\" alt=\"A ball-stick model of a compound comprising a chair conformation of cyclohexanone with two methyl groups alpha on C 2. Black, gray, and red spheres represent carbon, hydrogen, and oxygen, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

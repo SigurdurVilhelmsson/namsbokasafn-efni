@@ -1,0 +1,15 @@
+{
+  "nickname": "04-99-OC-VC05",
+  "source_uid": "36523@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351104",
+      "stem_html": "<p>Glúkósi er til í tveimur formum með hlutfallið 36:64 við jafnvægi. Teiknaðu beinagrindarmynd af hvoru um sig, lýstu muninum á þeim og segðu til um hvort þú telur vera stöðugra (rautt = O).</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa3NSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--86c54380ce0e9202712b137ddc43ea630ba7f3b2/OChem_04_EC_005.jpg\" alt=\"The ball and stick models of alpha-glucose and beta-glucose. In alpha-glucose, C1 is bonded to an axial hydroxyl group (below the ring). In beta-glucose, C1 is bonded to an equatorial hydroxyl group (above the ring).\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

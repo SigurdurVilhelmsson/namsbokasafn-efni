@@ -1,0 +1,28 @@
+{
+  "nickname": "16-05-OC-P15",
+  "source_uid": "37802@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Sýndu helstu myndefni úr efnahvarfi eftirfarandi efna við (1) CH<sub>3</sub>CH<sub>2</sub>Cl, AlCl<sub>3</sub> og (2) HNO<sub>3</sub>, H<sub>2</sub>SO<sub>4</sub>:",
+  "questions": [
+    {
+      "id": "358935",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFlWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c8fafeafa9905ce5a0bca031e056f2b875060bac/OChem_16_05_006a.jpg\" alt=\"The ball-and-stick model has a benzene ring. C 1 is bonded to a large red sphere. C 2 is bonded to a methyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Efnahvarf á sér stað ortó og para við  − CH<sub>3</sub> hópinn."
+        }
+      ]
+    },
+    {
+      "id": "358936",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6519662c07cd49d4ac9224bd8a2add01f0e32f70/OChem_16_05_006b.jpg\" alt=\"The ball-and-stick model has a benzene ring. C 1 is bonded to a small red sphere, which is bonded to a methyl group. C 2 is bonded to methyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Efnahvarf á sér stað ortó og para við  − OCH<sub>3</sub> hópinn."
+        }
+      ]
+    }
+  ]
+}

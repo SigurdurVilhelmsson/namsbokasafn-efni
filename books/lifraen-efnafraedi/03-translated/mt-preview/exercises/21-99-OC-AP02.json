@@ -1,0 +1,40 @@
+{
+  "nickname": "21-99-OC-AP02",
+  "source_uid": "38196@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknið byggingar sem samsvara eftirfarandi heitum:",
+  "questions": [
+    {
+      "id": "342612",
+      "stem_html": "<i>p</i>-Brómfenýlasetamíð",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342613",
+      "stem_html": "<i>m</i>-Bensóýlbensamíð",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342614",
+      "stem_html": "2,2-Dímetýlhexanamíð",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342615",
+      "stem_html": "Sýklóhexýl sýklóhexankarboxýlat",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342616",
+      "stem_html": "Etýl 2-sýklóbútenkarboxýlat",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342617",
+      "stem_html": "Súksínsýruanhýdríð",
+      "collaborator_solutions": []
+    }
+  ]
+}

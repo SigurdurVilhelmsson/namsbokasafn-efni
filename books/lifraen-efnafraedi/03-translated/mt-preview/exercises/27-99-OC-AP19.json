@@ -1,0 +1,15 @@
+{
+  "nickname": "27-99-OC-AP19",
+  "source_uid": "38867@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358231",
+      "stem_html": "<p>Teiknaðu stöðugustu stólstellingu díhýdrókarvóns.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWdZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fa831dac442bbb930de5aed65f2c732ac44c6914/OChem_27_EC_014.jpg\" alt=\"The structure of dihydrocarvone. It is a cyclohexane with carbonyl at C 1, wedged methyl and dashed hydrogen at C 2, and dashed methyl vinyl group at C 5\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

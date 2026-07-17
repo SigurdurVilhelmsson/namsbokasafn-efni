@@ -1,0 +1,15 @@
+{
+  "nickname": "23-99-OC-MP12",
+  "source_uid": "38918@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359860",
+      "stem_html": "<p>Knoevenagel-efnahvarfið var kynnt í dæmi 23-2. Sýndu hvarfganginn fyrir Knoevenagel-efnahvarf díetýlmalónats við bensaldehýð.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0FZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--27c4a434f92cfe2356ea507e4e6a7a7abab76aec/OChem_23_EC_025.jpg\" alt=\"The reaction shows benzaldehyde with diethyl malonate in the presence of sodium ethoxide and ethanol, yielding an intermediate. In the presence of hydronium ions, the intermediate transforms into cinnamic acid.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

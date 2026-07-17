@@ -1,0 +1,15 @@
+{
+  "nickname": "25-99-OC-MP04",
+  "source_uid": "39071@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358792",
+      "stem_html": "<p><small style=\"font-variant: small-caps\">D</small>-Glúkósi hvarfast við asetón í nærveru sýru og gefur af sér 1,2 : 5,6-díísóprópýlíden-<small style=\"font-variant: small-caps\">D</small>-glúkófúranósa sem er ekki afoxandi. Leggðu til hvarfgang.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0FaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dc3b018ce208547c40168634e345b1f87b84ae5b/OChem_25_EC_009.jpg\" alt=\"The reaction of the Haworth projection of D-glucose with acetone in the presence of hydrochloric acid to yield the non-reducing 1, 2 : 5, 6 diisopropylidene D-glucofuranose.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

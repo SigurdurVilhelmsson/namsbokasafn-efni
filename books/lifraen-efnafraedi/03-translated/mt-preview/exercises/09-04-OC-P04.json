@@ -1,0 +1,28 @@
+{
+  "nickname": "09-04-OC-P04",
+  "source_uid": "37193@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvaða myndefni myndir þú fá með kvikasilfurshvataðri vötnun eftirfarandi alkína?",
+  "questions": [
+    {
+      "id": "353713",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBckVTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6c2509f193e2d9ba645b8b8336879f0ed036b584/OChem_09_04_005a.jpg\" alt=\"A C8 chain with a triple bond on the C4 position.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "4-oktanón"
+        }
+      ]
+    },
+    {
+      "id": "353714",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcklTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--16a546b13f993b22ac52f4f4efd3b37b9e66c1dc/OChem_09_04_005b.jpg\" alt=\"A C8 chain with a triple bond on the C4 position and a methyl group on the C7 position.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-metýl-4-oktanón og 7-metýl-4-oktanón"
+        }
+      ]
+    }
+  ]
+}

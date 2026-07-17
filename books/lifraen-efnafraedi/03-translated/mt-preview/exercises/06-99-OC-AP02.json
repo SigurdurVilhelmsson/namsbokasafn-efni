@@ -1,0 +1,30 @@
+{
+  "nickname": "06-99-OC-AP02",
+  "source_uid": "37323@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Greindu eftirfarandi efnahvörf sem álagningar, brottnám, skiptihvörf eða umraðanir:",
+  "questions": [
+    {
+      "id": "359258",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0lUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--77e69ea206482635a27eec66c786c64d94609f06/OChem_06_EC_013a.jpg\" alt=\"Ethyl bromide reacts with sodium cyanide to form ethyl cyanide and sodium bromide.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359259",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb01UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b71bfdcd472e25aa614bd9f3ac1039494280b0b7/OChem_06_EC_013b.jpg\" alt=\"A chemical structure of methamphetamine, N-methyl-1-phenylpropan-2-amine.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359260",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1FUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9fb5ffa75deeb854bc242c72828498d40d36331e/OChem_06_EC_013c.jpg\" alt=\"Cyclopentadiene reacts with a but-3-en-2-one in the presence of heat to form a ketone with a methyl group and a bridged cyclic group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359261",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1VUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--adf4d76c697e5728bad8f0de05a61c9e8a34915e/OChem_06_EC_013d.jpg\" alt=\"Cyclohexane reacts with nitro group bonded to another nitro group in the presence of light to form nitrocyclohexane  and nitrous acid.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

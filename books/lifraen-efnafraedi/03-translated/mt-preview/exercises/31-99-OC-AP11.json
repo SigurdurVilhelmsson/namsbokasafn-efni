@@ -1,0 +1,15 @@
+{
+  "nickname": "31-99-OC-AP11",
+  "source_uid": "39425@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355044",
+      "stem_html": "<p>Hver er bygging fjölliðunnar sem myndast við anjóníska fjölliðun á <i>β</i>-própíólaktóni með NaOH sem hvata?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakFhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--92993bf99cd3455f267546df39946f052235c1d6/OChem_31_EC_011.jpg\" alt=\"The structure of beta-propiolactone, a four-membered cyclic ester.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "30-99-OC-AP22",
+  "source_uid": "39391@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355120",
+      "stem_html": "<p>Eftirfarandi efnahvarf er dæmi um [2,3] sigmatrópíska umröðun. Myndir þú búast við að efnahvarfið væri suprafacial eða antarafacial? Útskýrðu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaElhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7059b0c666dd3b949e71abbde8ec05458c425a7c/OChem_30_EC_026.jpg\" alt=\"Cyclohexene having C 1 linked to methylene to sulfur cation, oxygen anion, and methyl reacts to form cyclohexane with O S C H 3 and methylene via alkene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

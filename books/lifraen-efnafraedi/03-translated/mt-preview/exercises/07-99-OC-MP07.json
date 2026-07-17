@@ -1,0 +1,15 @@
+{
+  "nickname": "07-99-OC-MP07",
+  "source_uid": "36651@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357867",
+      "stem_html": "<p>Límónen, ilmandi kolvetni sem finnst í sítrónum og appelsínum, er lífsmíðað úr geranýldífosfati eftir eftirfarandi ferli. Bættu við sveigðum örvum til að sýna hvarfgang hvers skrefs. Hvaða skref felur í sér rafsekið álagningarefnahvarf alkens? (Jónin OP<sub>2</sub>O<sub>6</sub><sup>4−</sup> er dífosfatjónin og „Basi“ er ótilgreindur basi í ensíminu sem hvatar efnahvarfið.)</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0FhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--770ad20976a14c4ba2b3f9716f777f1f3bf7af43/OSX_OrgChem_07_99_Geranyl_img.jpg\" alt=\"A 3-step biosynthesis reaction shows the formation of limonene from geranyl diphosphate.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

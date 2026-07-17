@@ -1,0 +1,19 @@
+{
+  "nickname": "11-02-OC-P02",
+  "source_uid": "37343@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "336928",
+      "stem_html": "Hvaða myndefni myndir þú búast við að fá úr S<sub>N</sub>2-efnahvarfi OH<sup>–</sup> við (<i>R</i>)-2-brómbútan? Sýndu handhverfu bæði hvarfefnis og myndefnis.",
+      "collaborator_solutions": [
+        {
+          "content_html": "(<i>S</i>)-2-bútanól"
+        }
+      ]
+    }
+  ]
+}

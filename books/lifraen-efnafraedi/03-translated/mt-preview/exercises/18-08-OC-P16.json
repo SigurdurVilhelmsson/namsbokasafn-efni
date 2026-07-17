@@ -1,0 +1,64 @@
+{
+  "nickname": "18-08-OC-P16",
+  "source_uid": "38712@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Nefndu eftirfarandi efnasambönd:",
+  "questions": [
+    {
+      "id": "361140",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbklYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--07963ea7a306d833537b3c020e1b0596a58e71b0/OChem_18_08_012a.jpg\" alt=\"A four-carbon chain with S H one carbon from the end.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-Bútantíól"
+        }
+      ]
+    },
+    {
+      "id": "361141",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbk1YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--acc62bd53eba5e5d693a23bf068b3103342b3270/OChem_18_08_012b.jpg\" alt=\"A seven-carbon chain. Counting from the left, there are two methyl groups on the second carbon and one on the sixth, and an S H group on the fourth carbon.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2,2,6-Trímetýl-4-heptantíól"
+        }
+      ]
+    },
+    {
+      "id": "361142",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--049126ebb128970e6e33cf3175fd0239dfc9a67b/OChem_18_08_012c.jpg\" alt=\"A five-membered ring with one double bond. There is an S H group one carbon from the end of the double bond.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-Sýklópenten-1-tíól"
+        }
+      ]
+    },
+    {
+      "id": "361143",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9d1ed67ab061628a3735d8c92731b4ad22d46620/OChem_18_08_012d.jpg\" alt=\"A compound having an ethyl and isopropyl group bonded by a sulfur atom at the center.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Etýlísóprópýlsúlfíð"
+        }
+      ]
+    },
+    {
+      "id": "361144",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbllYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b0879e1cb16860bcc8d5bb6385dff2e10b74c6ef/OChem_18_08_012e.jpg\" alt=\"A benzene ring with methylthio (S C H 3) groups attached to adjacent carbons.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>o</i>-Dí(metýltíó)bensen"
+        }
+      ]
+    },
+    {
+      "id": "361145",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0b89b2cc8e0b1a57d353ce0459dca3660644cf7b/OChem_18_08_012f.jpg\" alt=\"A cyclohexane ring with a carbonyl group and, two carbons away, an ethylthio (-S C H 2 C H 3) group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "3-(Etýltíó)sýklóhexanón"
+        }
+      ]
+    }
+  ]
+}

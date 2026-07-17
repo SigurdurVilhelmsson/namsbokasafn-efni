@@ -1,0 +1,15 @@
+{
+  "nickname": "27-99-OC-VC02",
+  "source_uid": "38844@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358205",
+      "stem_html": "<p>Leggið til lífefnafræðilega myndunarleið fyrir seskvíterpenóíðann helminþógermakren úr farnesýl tvífosfati.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e67401c22edb40d1dc37d143bf7983a4ddfd0e25/OChem_27_EC_002.jpg\" alt=\"The ball-and-stick model of sesquiterpenoid, helmintho germacrene. Black and gray spheres denote carbon and hydrogen, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

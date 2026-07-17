@@ -1,0 +1,25 @@
+{
+  "nickname": "20-99-OC-AP29",
+  "source_uid": "38139@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Eftirfarandi myndunaráætlanir hafa allar að minnsta kosti einn galla. Hvað er rangt við hverja þeirra?",
+  "questions": [
+    {
+      "id": "359209",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdEVXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d4df6ef03d26f33903c7574ceaf96f9af9dc2069/OChem_20_EC_031a.jpg\" alt=\"Conversion of 3-bromopentane to 2-ethylbutanoic acid through reaction first with magnesium, then sodium cyanide, then hydronium.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359210",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdElXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dfda8beeb28050dffda0155c9e22c271fedec96d/OChem_20_EC_031b.jpg\" alt=\"Conversion of 2-phenylacetic acid to ethylbenzene through reaction first with lithium aluminum hydride, then hydronium.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359211",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdE1XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c5c16641d510ebefabe0fd13564e9b318e09de06/OChem_20_EC_031c.jpg\" alt=\"Conversion of 4-chloro-2-methylbutan-2-ol to 4-hydroxy-4-methylpentanoic acid using sodium cyanide followed by acid hydrolysis.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "nickname": "19-99-OC-MP05",
+  "source_uid": "38027@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefnið/myndefnin og leggðu til hvarfgang fyrir hvert eftirfarandi efnahvarfa:",
+  "questions": [
+    {
+      "id": "360682",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2dXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8643a4c2c4e58854d356552a3fad9b58a499dadb/OChem_19_EC_024a.jpg\" alt=\"The reaction shows pentan-3-one with hydroxylamine to yield an unknown product marked with a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360683",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2tXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3af652125d4a2c021f7faaea85290daa75278b99/OChem_19_EC_024d.jpg\" alt=\"The reaction shows acetophenone with dimethylamine resulting in an unknown product represented by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "nickname": "01-99-OC-AP21",
+  "source_uid": "37578@7",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Breytið eftirfarandi byggingum í beinagrindarteikningar:</p>",
+  "questions": [
+    {
+      "id": "358893",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2c208b8efb84e48fa5d3d473c846060e73a3f002/OChem_01_EC_012a.jpg\" alt=\"Structural formula of indole, with fused five- and six-membered rings with alternating single and double bonds. There is a nitrogen with one hydrogen in the ring adjacent to the fusion.\">\n",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358894",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2e8052fe0fee53dedbf37ddafc8f29a00121fb92/OChem_01_EC_012b.jpg\" alt=\"Structural formula of 1,3-pentadiene, a five-carbon chain with alternating single and double bonds.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358895",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--80558b3fca41c8041d9e9b47504df2318a03a6b6/OChem_01_EC_012c.jpg\" alt=\"Structural formula of 1,2-dichlorocyclopentane, a ring of five carbon atoms with chlorines on adjacent carbons.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358896",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDhYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--202db69856719e3cf5073276f097084771e10a57/OChem_01_EC_012d.jpg\" alt=\"Structural formula of benzoquinone, a six-membered ring with carbonyl groups at C 1 and C 4 and double bonds at C 2 and C 5.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

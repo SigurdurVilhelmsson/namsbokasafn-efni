@@ -1,0 +1,15 @@
+{
+  "nickname": "19-99-OC-VC02",
+  "source_uid": "38022@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360661",
+      "stem_html": "<p>Eftirfarandi sameindalíkan táknar ferflötungs-milliefni sem myndast við álagningu kjarnsækis á aldehýð eða ketón. Tilgreindu hvarfefnin og skrifaðu byggingu loka-myndefnisins þegar kjarnsæknu álagningunni er lokið.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0FXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7c2f07b61d9f16d6b5dbd7767d897aa8575613ff/OChem_19_EC_018.jpg\" alt=\"The ball-and-stick model shows a cyclopentane ring with nitrogen atom attached to three-carbon chain with hydroxyl and methyl group on the first carbon, and methyl group on the second carbon.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

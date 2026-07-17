@@ -1,0 +1,20 @@
+{
+  "nickname": "21-99-OC-AP31",
+  "source_uid": "38225@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Ein algeng aðferð til að búa til metýlestera er með efnahvarfi karboxýlsýra við díasómetan, CH<sub>2</sub>N<sub>2</sub>.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazhYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f19a7b2325696e7434782f4e8948899e05ee6a6c/OChem_21_EC_056.jpg\" alt=\"The reaction of benzoic acid and diazomethane gives methyl benzoate and molecular nitrogen.\">\n<p>Efnahvarfið á sér stað í tveimur skrefum: (<b><span class=\"magenta-text\">1</span></b>) róteinding díasómetans með karboxýlsýrunni til að gefa metýldíasóníumjón, CH<sub>3</sub>N<sub>2</sub><sup>+</sup>, auk karboxýlatjónar; og (<b><span class=\"magenta-text\">2</span></b>) efnahvarf karboxýlatjónarinnar við CH<sub>3</sub>N<sub>2</sub><sup>+</sup>.</p>",
+  "questions": [
+    {
+      "id": "361522",
+      "stem_html": "Teiknaðu tvær vokmyndir af díasómetani og útskýrðu skref 1.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361523",
+      "stem_html": "Hvers konar efnahvarf á sér stað í skrefi 2?",
+      "collaborator_solutions": []
+    }
+  ]
+}

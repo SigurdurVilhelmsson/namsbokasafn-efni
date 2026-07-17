@@ -1,0 +1,30 @@
+{
+  "nickname": "13-99-OC-GP04",
+  "source_uid": "37521@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Leggið til byggingar fyrir efnasambönd sem passa við eftirfarandi <sup>1</sup>H NMR-gögn:",
+  "questions": [
+    {
+      "id": "338216",
+      "stem_html": "<ul style=\"list-style-type:none\">\n<li>C<sub>4</sub>H<sub>6</sub>Cl<sub>2</sub></li>\n<li>2,18 <i>δ</i> (3 H, einliða)</li>\n<li>4,16 <i>δ</i> (2 H, tvíliða, <i>J</i> = 7 Hz)</li>\n<li>5,71 <i>δ</i> (1 H, þrenna, <i>J</i> = 7 Hz)</li>\n</ul>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338217",
+      "stem_html": "<ul style=\"list-style-type:none\">\n<li>C<sub>10</sub>H<sub>14</sub></li>\n<li>1,30 <i>δ</i> (9 H, einliða)</li>\n<li>7,30 <i>δ</i> (5 H, einliða)</li>\n</ul>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338218",
+      "stem_html": "<ul style=\"list-style-type:none\">\n<li>C<sub>4</sub>H<sub>7</sub>BrO</li>\n<li>2,11 <i>δ</i> (3 H, einliða)</li>\n<li>3,52 <i>δ</i> (2 H, þrenna, <i>J</i> = 6 Hz)</li>\n<li>4,40 <i>δ</i> (2 H, þrenna, <i>J</i> = 6 Hz)</li>\n</ul>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338219",
+      "stem_html": "<ul style=\"list-style-type:none\">\n<li>C<sub>9</sub>H<sub>11</sub>Br</li>\n<li>2,15 <i>δ</i> (2 H, fimmleitt, <i>J</i> = 7 Hz)</li>\n<li>2,75 <i>δ</i> (2 H, þrenna, <i>J</i> = 7 Hz)</li>\n<li>3,38 <i>δ</i> (2 H, þrenna, <i>J</i> = 7 Hz)</li>\n<li>7,22 <i>δ</i> (5 H, einliða)</li>\n</ul>",
+      "collaborator_solutions": []
+    }
+  ]
+}

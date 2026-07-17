@@ -1,0 +1,15 @@
+{
+  "nickname": "27-99-OC-MP03",
+  "source_uid": "38848@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358213",
+      "stem_html": "<p>Ísóborneól breytist í kamfen þegar það hvarfast við þynnta brennisteinssýru. Leggið til hvarfgang fyrir efnahvarfið, sem felur í sér umröðun karbkatjónar.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDhZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--471128c1753f583358db52e5978b3051ae975f53/OChem_27_EC_006.jpg\" alt=\"Isoborneol reacts with sulfuric acid to form camphene. Carbocation rearrangement happens during the process.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

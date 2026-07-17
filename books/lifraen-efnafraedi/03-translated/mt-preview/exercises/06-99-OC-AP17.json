@@ -1,0 +1,15 @@
+{
+  "nickname": "06-99-OC-AP17",
+  "source_uid": "37337@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359263",
+      "stem_html": "<p>Ammoníak hvarfast við asetýlklóríð (CH<sub>3</sub>COCl) og myndar asetamíð (CH<sub>3</sub>CONH<sub>2</sub>). Tilgreindu hvaða tengi rofna og myndast í hverju skrefi efnahvarfsins og teiknaðu bogadregnar örvar til að tákna flæði rafeinda í hverju skrefi.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--20b4159316739449f0a977e271021a14a06856e4/OSX_OrgChem_06_99_OChem-06-EC-023_80485-06-u074_P-AcetylCh_img.jpg\" alt=\"A 3-step reaction of acetyl chloride with ammonia. Step 1: ammonia addition to carbonyl; step 2: chlorine is eliminated; step 3: acetamide product is deprotonated by ammonia, ammonium chloride formed.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

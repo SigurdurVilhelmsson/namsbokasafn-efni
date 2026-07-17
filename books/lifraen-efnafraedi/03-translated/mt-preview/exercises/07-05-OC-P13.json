@@ -1,0 +1,46 @@
+{
+  "nickname": "07-05-OC-P13",
+  "source_uid": "36634@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Úthlutaðu <i>E</i> eða <i>Z</i> stillingu til eftirfarandi alkena:",
+  "questions": [
+    {
+      "id": "358062",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBckFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2afc884ee98025051695195995d7f0769155056e/OChem_07_05_006a.jpg\" alt=\"A double bond with methyl (up) and ethyl (down) substituents on the left and hydroxymethyl (up) and chlorine (down) substituents on the right.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>Z</i>"
+        }
+      ]
+    },
+    {
+      "id": "358063",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBckVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5fcbb68d61cd60ee4bf366c5aa97b6d35eed3ca6/OChem_07_05_006b.jpg\" alt=\"A double bond with chlorine (up) and methoxy (down) substituents on the left and ethyl (up) and n-propyl (down) substituents on the right.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>E</i>"
+        }
+      ]
+    },
+    {
+      "id": "358064",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcklSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0d6c29cabea0647e1b5c1d430f757d518fd260f3/OChem_07_05_006c.jpg\" alt=\"A cyclopentane ring. C1 is double bonded to another carbon, which is bonded to carboxylic acid and hydroxymethyl. C3 (closer to carboxylic acid) is bonded to methyl.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>Z</i>"
+        }
+      ]
+    },
+    {
+      "id": "358065",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBck1SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--94463791f88ffd4f3b03037815e482ee461adf47/OChem_07_05_006d.jpg\" alt=\"A double bond with hydrogen (up) and methyl (down) substituents on the left and nitrile (up) and C H 2 N H 2 (down) substituents on the right.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>E</i>"
+        }
+      ]
+    }
+  ]
+}

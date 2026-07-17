@@ -1,0 +1,15 @@
+{
+  "nickname": "11-99-OC-MP08",
+  "source_uid": "37373@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355314",
+      "stem_html": "<p>Eftirfarandi þriðja stigs alkýlbrómíð gengst ekki undir kjarnsækið skiptihvarf með hvorki S<sub>N</sub>1- né S<sub>N</sub>2-hvarfgangi. Útskýrðu.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdE1UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3264a32a3509b04fffa6011580e892fd6ac99f26/OChem_11_EC_018.jpg\" alt=\"The structure of bicyclo[2.2.2]octane with a bromine at a bridgehead carbon.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

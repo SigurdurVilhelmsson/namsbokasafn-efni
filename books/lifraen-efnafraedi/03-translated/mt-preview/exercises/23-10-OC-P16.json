@@ -1,0 +1,37 @@
+{
+  "nickname": "23-10-OC-P16",
+  "source_uid": "38896@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvaða <i>myndefni</i> myndir þú fá úr Michael-<i>efnahvarfi</i> með <i>basa</i> sem hvata af 2,4-pentandíóni með hvorum eftirfarandi <i>α</i>,<i>β</i>-ómettuðu viðtaka?",
+  "questions": [
+    {
+      "id": "359791",
+      "stem_html": "2-sýklóhexenón",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHdZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0c57933b74de8cdc13a1ddab756be10fb620adc2/OChem_23_EC_210a.jpg\" alt=\"3-(3-oxocyclohexyl)pentane 2,4 dione structure shows a cyclohexanone bonded to C H (C O C H 3)2 group at the first carbon.\">"
+        }
+      ]
+    },
+    {
+      "id": "359792",
+      "stem_html": "Própenítríl",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDBZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c080ba1e4d2fbbc1e41eaf13f89ae513959d2898/OChem_23_EC_210b.jpg\" alt=\"A four-carbon chain in which C 1 is part of a cyano group, with two acetyl groups (C H 3 C O) on C 4.\">"
+        }
+      ]
+    },
+    {
+      "id": "359793",
+      "stem_html": "Etýl 2-bútenóat",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDRZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c976d412bbd0b27f0ce811f6390db6c117719f37/OChem_23_EC_210c.jpg\" alt=\"A four-carbon chain with an ethyl ester on C 1, methyl on C 3, and two acetyl groups (C H 3 C O) on C 4.\">"
+        }
+      ]
+    }
+  ]
+}

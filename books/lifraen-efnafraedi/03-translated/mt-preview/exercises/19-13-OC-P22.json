@@ -1,0 +1,46 @@
+{
+  "nickname": "19-13-OC-P22",
+  "source_uid": "38016@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvernig mætti nota samtengd álagningarefnahvörf litíumdíorganókúprathvarfefna til að mynda eftirfarandi efnasambönd?",
+  "questions": [
+    {
+      "id": "360644",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2ed693a3f54ade6b9d91768ae41ed40b47487e10/OChem_19_13_012a.jpg\" alt=\"The structure of 2-heptanone.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "3-Búten-2-ón + (CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>)<sub>2</sub>CuLi"
+        }
+      ]
+    },
+    {
+      "id": "360645",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a7e7e013362de7cce7583114f7f394685ec1b9bd/OChem_19_13_012b.jpg\" alt=\"The structure of 3,3-dimethylcyclohexanone.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "3-Metýl-2-sýklóhexenón + (CH<sub>3</sub>)<sub>2</sub>CuLi"
+        }
+      ]
+    },
+    {
+      "id": "360646",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamtXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--692d3d6f8a8f0dbd78ea59189d242ce49341fcce/OChem_19_13_012c.jpg\" alt=\"The structure of 3,4-di(tert-butyl)cyclohexanone.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "4-<i>tert</i>-Bútýl-2-sýklóhexenón + (CH<sub>3</sub>CH<sub>2</sub>)<sub>2</sub>CuLi"
+        }
+      ]
+    },
+    {
+      "id": "360647",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBam9XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a3660c6da819c465fef3b0a2459dbe7f9c22cf56/OChem_19_13_012d.jpg\" alt=\"Structure of bicyclo[4.4.0]decane. C 1 has a vinyl group and C 3 has an oxo group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Ómettað ketón + (H<sub>2</sub>C<span data-math=\"\\text{=}\"></span>CH)<sub>2</sub>CuLi"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "27-99-OC-AP32",
+  "source_uid": "38878@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358247",
+      "stem_html": "<p><i>α</i>-Fenkón er terpenóíði með þægilegri lykt sem er einangraður úr lavenderolíu. Leggðu til feril fyrir myndun <i>α</i>-fenkóns úr geranýldífosfati. Umröðun karbkatjónar er nauðsynleg.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkFZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fb3f8f7442d5ad89fadf962b74a59e684a54a31e/OChem_27_EC_021.jpg\" alt=\"The structure of alpha-fenchone. It is a bicyclo[2.2.1] heptane with two methyls at C 3, one methyl at C 1, and a carbonyl at C 2,\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

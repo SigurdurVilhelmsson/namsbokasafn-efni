@@ -1,0 +1,20 @@
+{
+  "nickname": "06-99-OC-AP18",
+  "source_uid": "37338@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Náttúrulega sameindin <i>α</i>-terpíneól er lífsmíðuð eftir ferli sem inniheldur eftirfarandi skref:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--687b9bfee59011747847be5394902c905ded31fd/OChem_06_EC_024.jpg\" alt=\"A carbocation forms isomeric carbocation, which further reacts with water to form alpha-terpineol.\">",
+  "questions": [
+    {
+      "id": "353379",
+      "stem_html": "Leggðu til líklega byggingu fyrir ísómeríska karbkatjóna-milliefnið.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353380",
+      "stem_html": "Sýndu hvarfgang hvers skrefs í lífsmíðunarferlinu með því að nota bogadregnar örvar til að sýna rafeindaflæði.",
+      "collaborator_solutions": []
+    }
+  ]
+}

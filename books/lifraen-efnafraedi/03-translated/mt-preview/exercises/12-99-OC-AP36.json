@@ -1,0 +1,15 @@
+{
+  "nickname": "12-99-OC-AP36",
+  "source_uid": "37462@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "356716",
+      "stem_html": "<p>Innrautt róf efnasambandsins með eftirfarandi massarófi hefur meðalsterkan topp við um 1650 cm<sup>–1</sup>. Það er einnig C–H sveiflutindur utan plans nálægt 880 cm<sup>–1</sup>. Leggðu til byggingu.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWNVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9d2bf287a1dfacb3e8e0456106d865164271c8ed/OChem_12_EC_015.jpg\" alt=\"The mass spectrum of  an uknown compound with a base peak at m / z 56 and a molecular ion at 84. Other significant peaks occur at 41 and 69.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "28-01-OC-P01",
+  "source_uid": "39110@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358101",
+      "stem_html": "Teiknaðu fulla byggingu DNA-tvíkirnisins AG.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalFhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d477a1a360e29dd5967bdde01d73e4c3e4e48c18/OSX_OrgChem_28_DD_A-DNAdinAG_img.jpg\" alt=\"\">"
+        }
+      ]
+    }
+  ]
+}

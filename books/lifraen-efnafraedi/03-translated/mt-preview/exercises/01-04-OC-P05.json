@@ -1,0 +1,55 @@
+{
+  "nickname": "01-04-OC-P05",
+  "source_uid": "37542@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hverjar eru líklegar formúlur fyrir eftirfarandi efni?",
+  "questions": [
+    {
+      "id": "348592",
+      "stem_html": "CCl<sub><span class=\"magenta-text\">?</span></sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "CCl<sub>4</sub>"
+        }
+      ]
+    },
+    {
+      "id": "348593",
+      "stem_html": "AlH<sub><span class=\"magenta-text\">?</span></sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "AlH<sub>3</sub>"
+        }
+      ]
+    },
+    {
+      "id": "348594",
+      "stem_html": "CH<sub><span class=\"magenta-text\">?</span></sub>Cl<sub>2</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>2</sub>Cl<sub>2</sub>"
+        }
+      ]
+    },
+    {
+      "id": "348595",
+      "stem_html": "SiF",
+      "collaborator_solutions": [
+        {
+          "content_html": "SiF<sub>4</sub>"
+        }
+      ]
+    },
+    {
+      "id": "348596",
+      "stem_html": "CH<sub>3</sub>NH<sub><span class=\"magenta-text\">?</span></sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>NH<sub>2</sub>"
+        }
+      ]
+    }
+  ]
+}

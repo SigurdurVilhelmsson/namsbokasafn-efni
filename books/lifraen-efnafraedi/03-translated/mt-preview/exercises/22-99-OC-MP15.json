@@ -1,0 +1,15 @@
+{
+  "nickname": "22-99-OC-MP15",
+  "source_uid": "38802@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360947",
+      "stem_html": "<p>Hægt er að búa til amínósýrur með efnahvarfi alkýlhalíða við díetýlasetamíðómalónat og síðan hita upprunalega alkýleringarmyndefnið með HCl-vatnslausn. Sýndu hvernig þú myndir búa til alanín, CH<sub>3</sub>CH(NH<sub>2</sub>)CO<sub>2</sub>H, eina af tuttugu amínósýrunum sem finnast í próteinum, og leggðu til hvarfgang fyrir sýruhvetjandi umbreytingu upprunalega alkýleringarmyndefnisins í amínósýruna.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGtZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0a2cc8e0d8a1dbc2a37171653a040cfd3e03a4af/OChem_22_EC_027.jpg\" alt=\"The structure of diethyl acetamidomalonate where diethyl malonate is substituted with an acetamide group.\">\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

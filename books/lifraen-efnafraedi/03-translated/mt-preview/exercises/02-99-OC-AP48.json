@@ -1,0 +1,15 @@
+{
+  "nickname": "02-99-OC-AP48",
+  "source_uid": "36160@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351490",
+      "stem_html": "<p>Sjáðu fyrir byggingu myndefnisins sem myndast í efnahvarfi lífræna basans pýridíns við lífrænu sýruna ediksýru og notaðu sveigðar örvar til að sýna stefnu rafeindaflæðis.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1lRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8a012478dfa8fe58a6424f450583923c02d5ae42/OChem_02_EC_018.jpg\" alt=\"In an incomplete reaction, pyridine reacts with acetic acid to form unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

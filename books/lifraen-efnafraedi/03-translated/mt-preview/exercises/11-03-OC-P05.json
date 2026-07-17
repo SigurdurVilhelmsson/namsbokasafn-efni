@@ -1,0 +1,37 @@
+{
+  "nickname": "11-03-OC-P05",
+  "source_uid": "37346@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvaða efni í hverju eftirfarandi para er hvarfgjarnara sem kjarnsækir? Útskýrðu.",
+  "questions": [
+    {
+      "id": "336942",
+      "stem_html": "(CH<sub>3</sub>)<sub>2</sub>N<sup>–</sup> eða (CH<sub>3</sub>)<sub>2</sub>NH",
+      "collaborator_solutions": [
+        {
+          "content_html": "(CH<sub>3</sub>)<sub>2</sub>N<sup>−</sup>"
+        }
+      ]
+    },
+    {
+      "id": "336943",
+      "stem_html": "(CH<sub>3</sub>)<sub>3</sub>B eða (CH<sub>3</sub>)<sub>3</sub>N",
+      "collaborator_solutions": [
+        {
+          "content_html": "(CH<sub>3</sub>)<sub>3</sub>N"
+        }
+      ]
+    },
+    {
+      "id": "336944",
+      "stem_html": "H<sub>2</sub>O eða H<sub>2</sub>S",
+      "collaborator_solutions": [
+        {
+          "content_html": "H<sub>2</sub>S"
+        }
+      ]
+    }
+  ]
+}

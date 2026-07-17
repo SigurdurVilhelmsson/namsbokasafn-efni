@@ -1,0 +1,19 @@
+{
+  "nickname": "25-04-OC-P10",
+  "source_uid": "39048@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358754",
+      "stem_html": "<p>Eftirfarandi líkan er af aldópentósa. Teiknið Fischer-vörpun af sykrinum, nefnið hann og tilgreinið hvort hann sé <small style=\"font-variant: small-caps\">D</small>-sykur eða <small style=\"font-variant: small-caps\">L</small>-sykur.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbW9aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8e6897b6e3155187ae6d8f397371a8320b08e09a/OChem_25_04_005.jpg\" alt=\"The ball-and-stick model of an aldopentose. It contains five carbon atoms, four hydroxyl groups, and one aldehyde group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--894bf0750b2aaea69a5205a37a241fbd2d4f0ec4/OChem_25_EC_205.jpg\" alt=\"The Fischer projection of D-ribose which is a simple sugar with molecular formula C 5 H 10 O 5.\">"
+        }
+      ]
+    }
+  ]
+}

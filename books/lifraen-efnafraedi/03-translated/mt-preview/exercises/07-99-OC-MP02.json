@@ -1,0 +1,25 @@
+{
+  "nickname": "07-99-OC-MP02",
+  "source_uid": "36646@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvert eftirfarandi rafsækið álagningarefnahvarf felur í sér umröðun karbójónar. Spáðu fyrir um myndefnið og teiknaðu allan hvarfganginn fyrir hvert þeirra með bogadregnum örvum.",
+  "questions": [
+    {
+      "id": "354356",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczBSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--173d3da445696a41f08dcb10334cac3007945000/OChem_07_EC_007a.jpg\" alt=\"An incomplete reaction shows 3-methyl-1-pentene reacting with hydrogen chloride to form unknown product(s) indicated by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354357",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczRSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7e44dc30f1e9eed39fdfe048fada2900242c2cba/OChem_07_EC_007b.jpg\" alt=\"An incomplete reaction shows 3,6-dimethylcyclohexene reacting with hydrogen bromide to form unknown product(s) indicated by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354358",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczhSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5d68b3409c40f92353d9be575b4af09e5cc27af3/OChem_07_EC_007c.jpg\" alt=\"An incomplete reaction shows vinylcyclobutane reacting with K I and phosphoric acid to form unknown product(s) indicated by a question mark. Text says two different rearrangement products.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

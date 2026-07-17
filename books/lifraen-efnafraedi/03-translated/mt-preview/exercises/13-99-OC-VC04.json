@@ -1,0 +1,15 @@
+{
+  "nickname": "13-99-OC-VC04",
+  "source_uid": "37493@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358341",
+      "stem_html": "<p>Hversu margar rafeindalega ójafngildar tegundir róteinda og hversu margar tegundir kolefna eru til staðar í eftirfarandi efnasambandi? Ekki gleyma að sýklóhexanhringir geta hringsnúist.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbElVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4703e9158f378464b377442eb65f2426de96200d/OChem_13_EC_004.jpg\" alt=\"The ball-and-stick model of a cyclohexane ring in chair form. C 1 is bonded to equatorial methyl and C 2 is bonded to axial methyl.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

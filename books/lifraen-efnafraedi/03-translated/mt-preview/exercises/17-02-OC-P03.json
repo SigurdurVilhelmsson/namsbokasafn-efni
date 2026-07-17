@@ -1,0 +1,19 @@
+{
+  "nickname": "17-02-OC-P03",
+  "source_uid": "37868@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "340642",
+      "stem_html": "<p>Eftirfarandi gögn fyrir hverfur fjögurra kolefna alkóhóla sýna að suðumark lækkar með aukinni skiptingu á kolefninu sem ber OH-hópinn. Hvernig gætir þú útskýrt þessa þróun?</p>\n<ul style=\"list-style-type:none\">\n<li>1-Bútanól, suðumark 117,5 °C</li>\n<li>2-Bútanól, suðumark 99,5 °C</li>\n<li>2-Metýl-2-própanól, suðumark 82,2 °C</li>\n</ul>",
+      "collaborator_solutions": [
+        {
+          "content_html": "Vetnistenging er erfiðari í hindruðum alkóhólum."
+        }
+      ]
+    }
+  ]
+}

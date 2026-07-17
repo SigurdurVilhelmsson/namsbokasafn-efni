@@ -1,0 +1,15 @@
+{
+  "nickname": "18-99-OC-MP09",
+  "source_uid": "38727@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361199",
+      "stem_html": "<p>Meðhöndlun á 1,1-dífenýl-1,2-epoxýetani með vatnslausn af sýru gefur dífenýlasetaldehýð sem aðalmyndefni. Leggðu til hvarfgang fyrir efnahvarfið.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--23862ebc823b4c570e541559da77144e37733e2c/OChem_18_EC_027.jpg\" alt=\"An epoxide ring bonded to two phenyl groups at C 2 reacts with hydronium ion to form an aldehyde product in which C 2 is bonded with two phenyl groups.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

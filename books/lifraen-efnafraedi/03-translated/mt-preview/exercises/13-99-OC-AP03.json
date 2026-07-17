@@ -1,0 +1,25 @@
+{
+  "nickname": "13-99-OC-AP03",
+  "source_uid": "37497@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Þegar mælt er með rófgreini sem starfar á 200 MHz sýnir klóróform (CHCl<sub>3</sub>) eitt skarpt gleypnisvið við 7,3 <i>Δ.</i>",
+  "questions": [
+    {
+      "id": "338103",
+      "stem_html": "Hversu marga milljónustu hluta niður sviðið frá TMS gleypir klóróform?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338104",
+      "stem_html": "Hversu marga hertza niður sviðið frá TMS myndi klóróform gleypa ef mælingin væri framkvæmd á rófgreini sem starfar á 360 MHz?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338105",
+      "stem_html": "Hver væri staða gleypnisviðs klóróforms í <i>Δ</i>-einingum þegar mælt er á 360 MHz rófgreini?",
+      "collaborator_solutions": []
+    }
+  ]
+}

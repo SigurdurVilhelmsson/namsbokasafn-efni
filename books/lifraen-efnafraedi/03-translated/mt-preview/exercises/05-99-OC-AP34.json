@@ -1,0 +1,15 @@
+{
+  "nickname": "05-99-OC-AP34",
+  "source_uid": "36597@7",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354241",
+      "stem_html": "<p>Náttúrulega form amínósýrunnar cysteins (dæmi 5-63) hefur <i>R</i> stillingu á hendnimiðju sinni. Við meðhöndlun með vægu oxunarefni sameinast tvö cystein og mynda cystín, dísúlfíð. Að því gefnu að efnahvarfið hafi ekki áhrif á hendnimiðjuna, er cystín ljósvirkt? Útskýrðu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5f470595957f20f78f08999bcdd26df7b7f316e7/OChem_05_EC_026.jpg\" alt=\"The figure shows a reaction where two molecules of cysteine convert to cystine.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

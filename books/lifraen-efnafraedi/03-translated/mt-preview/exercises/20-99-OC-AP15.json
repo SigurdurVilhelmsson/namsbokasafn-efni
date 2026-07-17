@@ -1,0 +1,25 @@
+{
+  "nickname": "20-99-OC-AP15",
+  "source_uid": "38125@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig gætir þú breytt bútannítríl í eftirfarandi efnasambönd? Skrifaðu hvert skref og sýndu hvaða hvarfefni þarf.",
+  "questions": [
+    {
+      "id": "342110",
+      "stem_html": "1-bútanól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342111",
+      "stem_html": "Bútýlamín",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342112",
+      "stem_html": "2-metýl-3-hexanón",
+      "collaborator_solutions": []
+    }
+  ]
+}

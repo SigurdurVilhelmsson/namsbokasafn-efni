@@ -1,0 +1,25 @@
+{
+  "nickname": "07-99-OC-AP26",
+  "source_uid": "36678@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Alkenum má breyta í alkóhól með sýruhvataðri álagningu vatns. Að því gefnu að regla Markovnikovs gildi, spáðu fyrir um helsta alkóhólmyndefnið úr hverjum eftirfarandi alkena.",
+  "questions": [
+    {
+      "id": "354476",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2tTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0acaafe8c90a3a60b88ba3ec7f872b03abd92773/OChem_07_EC_029a.jpg\" alt=\"The condensed structure has a 5-carbon chain. C2 is double bonded to C3. C3 is bonded to a methyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354477",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ29TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--442a472bbd4f3b3690c09d3098e95a205b387953/OChem_07_EC_029b.jpg\" alt=\"A cyclohexane ring is double-bonded to a methylene group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354478",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3NTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--de42308357a799ab3130a25905c0a74a514ce7f0/OChem_07_EC_029c.jpg\" alt=\"The condensed structure has a 5-carbon chain. C1 is double bonded to C2. C4 is bonded to a methyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

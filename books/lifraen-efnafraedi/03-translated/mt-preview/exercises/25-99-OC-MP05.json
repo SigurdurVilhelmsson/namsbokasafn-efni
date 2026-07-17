@@ -1,0 +1,15 @@
+{
+  "nickname": "25-99-OC-MP05",
+  "source_uid": "39072@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358794",
+      "stem_html": "<p>Eitt af skrefunum í líffræðilegum ferli fyrir umbrot kolvetna er umbreyting frúktósa 1,6-bisfosfats í díhýdroxýasetónfosfat og glýseraldehýð 3-fosfat. Leggðu til hvarfgang fyrir umbreytinguna.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0VaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--eed42fb4deb040b10716e6f5d1219721573b68a1/OChem_25_EC_010.jpg\" alt=\"The conversion of fructose 1, 6- bisphosphate to glyceraldehyde 3-phosphate and dihydroxyacetone phosphate is a step in the glycolysis pathway for degrading carbohydrates.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

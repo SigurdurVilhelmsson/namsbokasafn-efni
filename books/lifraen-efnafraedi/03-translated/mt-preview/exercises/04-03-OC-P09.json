@@ -1,0 +1,19 @@
+{
+  "nickname": "04-03-OC-P09",
+  "source_uid": "36480@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "328981",
+      "stem_html": "<i>cis</i>-1,2-dímetýlsýklóprópan hefur meiri spennu en <i>trans</i>-1,2-dímetýlsýklóprópan. Hvernig geturðu útskýrt þennan mun? Hvort efnasambandið er stöðugra?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Cis-hverfan er óstöðugri vegna þess að metýlhóparnir skyggja næstum því hvor á annan."
+        }
+      ]
+    }
+  ]
+}

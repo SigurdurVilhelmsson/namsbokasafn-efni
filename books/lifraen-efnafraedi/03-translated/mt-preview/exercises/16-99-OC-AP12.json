@@ -1,0 +1,30 @@
+{
+  "nickname": "16-99-OC-AP12",
+  "source_uid": "37844@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú mynda eftirfarandi efni úr annaðhvort benseni eða tólúeni: Gerðu ráð fyrir að hægt sé að aðskilja ortho- og para-hverfur.",
+  "questions": [
+    {
+      "id": "339576",
+      "stem_html": "2-Bróm-4-nítrótólúen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339577",
+      "stem_html": "1,3,5-Trínítróbensen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339578",
+      "stem_html": "2,4,6-Tríbrómanilín",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339579",
+      "stem_html": "<i>m</i>-Flúorbensósýra",
+      "collaborator_solutions": []
+    }
+  ]
+}

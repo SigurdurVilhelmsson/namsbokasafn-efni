@@ -1,0 +1,15 @@
+{
+  "nickname": "27-99-OC-AP18",
+  "source_uid": "38866@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358229",
+      "stem_html": "<p>Flexibilen, efnasamband einangrað úr sjávarkóralli, er fyrsta þekkta terpenóíðið sem inniheldur 15-liða hring. Hver er bygging ósveigjanlega lífefnasmíðaforvera flexibilens? Sýndu hvarfgang lífefnasmíðinnar.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--286d137fd47345f57b94ba391ce8b241954dd441/OChem_27_EC_013.jpg\" alt=\"The structure of flexibilene. It is a fifteen-membered ring with three methyl vinyl groups at C 7, C 11, and C 15, and a dimethylated carbon at C 3.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

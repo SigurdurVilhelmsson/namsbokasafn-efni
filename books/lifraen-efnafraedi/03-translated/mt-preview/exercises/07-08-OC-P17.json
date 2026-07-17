@@ -1,0 +1,46 @@
+{
+  "nickname": "07-08-OC-P17",
+  "source_uid": "36640@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Með hvaða alkenum myndir þú byrja til að útbúa eftirfarandi myndefni?",
+  "questions": [
+    {
+      "id": "354323",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjhSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c2293fe5be4c80cd72e4f819bad84120db0f8f66/OChem_07_08_010a.jpg\" alt=\"A chemical structure of bromocyclopentane.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Sýklópenten"
+        }
+      ]
+    },
+    {
+      "id": "354324",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0FSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bd965d347e533bbdf1c30e0921e6fb12c2a47b20/OChem_07_08_010b.jpg\" alt=\"A chemical structure of 1-ethyl-1-iodocyclohexane.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-etýlsýklóhexen eða etýlídensýklóhexan"
+        }
+      ]
+    },
+    {
+      "id": "354325",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0VSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--44d347c1e36132fa5a6b5b560d9fa14af639387a/OChem_07_08_010c.jpg\" alt=\"A chemical structure of 3-bromohexane.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "3-hexen"
+        }
+      ]
+    },
+    {
+      "id": "354326",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0lSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6c17336c4c957d72514e412beeacf6c726d95526/OChem_07_08_010d.jpg\" alt=\"A chemical structure of 1-chloroethylcyclohexane.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Vínýlsýklóhexan (sýklóhexýletýlen)"
+        }
+      ]
+    }
+  ]
+}

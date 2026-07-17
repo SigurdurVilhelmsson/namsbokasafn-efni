@@ -1,0 +1,20 @@
+{
+  "nickname": "09-99-OC-AP24",
+  "source_uid": "37238@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Stundum gæti efnafræðingur þurft að <i>umhverfa</i> handhverfu alkens – það er að segja, að breyta cis-alkeni í trans-alken, eða öfugt. Það er engin eins þreps aðferð til að umhverfa alken, en umbreytingin er hægt að framkvæma með því að sameina nokkur efnahvörf í réttri röð. Hvernig myndir þú framkvæma eftirfarandi efnahvörf?",
+  "questions": [
+    {
+      "id": "357343",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjhTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c6c85e16ad0e79b3bd91dc67939b66af3c1333c6/OChem_09_EC_037a.jpg\" alt=\"trans-5-Decene reacting in the presence of an unknown reagent indicated as a question mark to form cis-5-decene.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357344",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0FUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--940667a8ea6c536f5f626e16e3dd63d4d2760661/OChem_09_EC_037b.jpg\" alt=\"cis-5-Decene reacting in the presence of an unknown reagent indicated as a question mark to form trans-5-decene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

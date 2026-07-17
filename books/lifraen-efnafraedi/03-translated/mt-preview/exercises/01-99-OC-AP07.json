@@ -1,0 +1,25 @@
+{
+  "nickname": "01-99-OC-AP07",
+  "source_uid": "37565@8",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Fylltu inn allar ótengdar gildisrafeindir sem vantar í eftirfarandi myndir:</p>",
+  "questions": [
+    {
+      "id": "358860",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3dYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c125e4778d33eca041c5f41b12ad4567e7015cf0/OChem_01_EC_005a.jpg\" alt=\"Chemical structure of C H 3 S S C H 3 showing no nonbonding pairs. \">\n",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358861",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cc28c996642805f436314aef93de7b5ca80c0d02/OChem_01_EC_005b.jpg\" alt=\"Chemical structure of C H 3 C O N H 2 showing no nonbonding pairs.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358862",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fa372269e1e10c164cb24337bea3f02c0dec4acb/OChem_01_EC_005c.jpg\" alt=\"Chemical structure of C H 3 C O O with a negative on one of the oxygen atoms, showing no nonbonding pairs. \">",
+      "collaborator_solutions": []
+    }
+  ]
+}

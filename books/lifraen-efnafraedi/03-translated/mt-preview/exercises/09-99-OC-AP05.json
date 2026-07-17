@@ -1,0 +1,15 @@
+{
+  "nickname": "09-99-OC-AP05",
+  "source_uid": "37219@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357320",
+      "stem_html": "<p>Spáið fyrir um myndefni eftirfarandi efnahvarfa:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUVTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9481fa5bff66a92d55c9e83c4eaaad4045a4106f/OChem_09_EC_024.jpg\" alt=\"A terminal enyne reacts with hydrogen and palladium catalyst to form an unknown product A. The reactant also reacts with hydrogen and Lindlar catalyst to form an unknown product B.\">\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

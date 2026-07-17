@@ -1,0 +1,25 @@
+{
+  "nickname": "10-99-OC-AP16",
+  "source_uid": "37279@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu vok myndir fyrir eftirfarandi efni:",
+  "questions": [
+    {
+      "id": "352699",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2dUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7536fdae25f06ee32faff29808ba0caef3d8f926/OChem_10_EC_029a.jpg\" alt=\"2,4,6-octatriene with a cation on C1.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352700",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2tUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7ef0434fe2d1ce8959c9972f4694aec8ac44e5a0/OChem_10_EC_029b.jpg\" alt=\"A cyclopentadiene ring with a lone pair and a negative charge on C5.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352701",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa29UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ae75f9a983ed143c5c535d75f9d3baf12179e43a/OChem_10_EC_029c.jpg\" alt=\"The structure of acetonitrile oxide where nitrogen and oxygen have positive and negative charges, respectively. Oxygen has three sets of lone pairs.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

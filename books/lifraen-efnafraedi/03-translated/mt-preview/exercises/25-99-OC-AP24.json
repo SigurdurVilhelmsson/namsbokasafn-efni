@@ -1,0 +1,25 @@
+{
+  "nickname": "25-99-OC-AP24",
+  "source_uid": "39097@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu byggingu <small style=\"font-variant: small-caps\">L</small>-galaktósa og svaraðu síðan eftirfarandi spurningum:",
+  "questions": [
+    {
+      "id": "348174",
+      "stem_html": "Hvaða annar aldóhexósi gefur sömu aldarsýru og <small style=\"font-variant: small-caps\">L</small>-galaktósi við oxun með volgri HNO<sub>3</sub>?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348175",
+      "stem_html": "Er þessi annar aldóhexósi <small style=\"font-variant: small-caps\">D</small>-sykur eða <small style=\"font-variant: small-caps\">L</small>-sykur?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348176",
+      "stem_html": "Teiknaðu þennan annan aldóhexósa í sinni stöðugustu pýranósastellingu.",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-MP07",
+  "source_uid": "38989@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361645",
+      "stem_html": "<p>3,5-dímetýlísóxazól er útbúið með efnahvarfi 2,4-pentandíóns við hýdroxýlamín. Leggðu til hvarfgang.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUlaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--93fd761559b722fa232fb87c698983085aa52029/OChem_24_EC_023.jpg\" alt=\"2, 4-Pentanedione reacts with hydroxylamine to produce 3, 5-dimethylisoxazole.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

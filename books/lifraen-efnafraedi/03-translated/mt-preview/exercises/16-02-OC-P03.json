@@ -1,0 +1,19 @@
+{
+  "nickname": "16-02-OC-P03",
+  "source_uid": "37790@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "342885",
+      "stem_html": "Hve mörg myndefni gætu myndast við klórun á <i>o</i>-xýleni (<i>o</i>-dímetýlbenseni), <i>m</i>-xýleni og <i>p</i>-xýleni?",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>o</i>-xýlen: 2; <i>p</i>-xýlen: 1; <i>m</i>-xýlen: 3"
+        }
+      ]
+    }
+  ]
+}

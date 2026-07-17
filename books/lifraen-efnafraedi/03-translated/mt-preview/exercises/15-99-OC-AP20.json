@@ -1,0 +1,20 @@
+{
+  "nickname": "15-99-OC-AP20",
+  "source_uid": "37768@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Indól er arómatísk mishringja sem hefur bensenhring samrunninn pýrrólhring. Teiknaðu svigrúmsmynd af indóli.",
+  "questions": [
+    {
+      "id": "358685",
+      "stem_html": "<p>Hversu margar <i>π</i>-rafeindir hefur indól?</p>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358686",
+      "stem_html": "<p>Hver eru rafeindatengsl indóls við naftalen?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBandWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--db2bf2aa34b33a355445ffe9890310e1efbeb0f0/OChem_15_EC_015.jpg\" alt=\"Indole has a benzene ring fused to a 5-membered ring made of a nitrogen atom and four carbon atoms, in which the two carbons not fused to the benzene ring have a double bond between them.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

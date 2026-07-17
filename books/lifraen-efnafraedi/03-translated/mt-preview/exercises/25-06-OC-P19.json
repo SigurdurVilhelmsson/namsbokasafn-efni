@@ -1,0 +1,19 @@
+{
+  "nickname": "25-06-OC-P19",
+  "source_uid": "39057@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348036",
+      "stem_html": "<small style=\"font-variant: small-caps\">D</small>-Glúkósi gefur handhverfa virka aldarsýru við meðhöndlun með HNO<sub>3</sub>, en <small style=\"font-variant: small-caps\">D</small>-allósi gefur handhverfa óvirka aldarsýru. Útskýrðu.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<small style=\"font-variant: small-caps\">D</small>-Allarsýra hefur samhverfuplan og er mesó-efnasamband, en <small style=\"font-variant: small-caps\">D</small>-glúkarsýra er handhverf."
+        }
+      ]
+    }
+  ]
+}

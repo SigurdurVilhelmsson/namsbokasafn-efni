@@ -1,0 +1,35 @@
+{
+  "nickname": "24-99-OC-AP02",
+  "source_uid": "39001@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu byggingar sem samsvara eftirfarandi IUPAC-nöfnum:",
+  "questions": [
+    {
+      "id": "347657",
+      "stem_html": "<i>N</i>,<i>N</i>-Dímetýlanilín",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347658",
+      "stem_html": "(Sýklóhexýlmetýl)amín",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347659",
+      "stem_html": "<i>N</i>-Metýlsýklóhexýlamín",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347660",
+      "stem_html": "(2-Metýlsýklóhexýl)amín",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347661",
+      "stem_html": "3-(<i>N</i>,<i>N</i>-Dímetýlamínó)própansýra",
+      "collaborator_solutions": []
+    }
+  ]
+}

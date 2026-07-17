@@ -1,0 +1,55 @@
+{
+  "nickname": "30-09-OC-P12",
+  "source_uid": "39362@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Spáið fyrir um rúmefnafræði eftirfarandi hringhvarfa:",
+  "questions": [
+    {
+      "id": "349640",
+      "stem_html": "Hringmyndun samoka tetraens við varma",
+      "collaborator_solutions": [
+        {
+          "content_html": "Samhverfur"
+        }
+      ]
+    },
+    {
+      "id": "349641",
+      "stem_html": "Ljóshvötuð hringmyndun samoka tetraens",
+      "collaborator_solutions": [
+        {
+          "content_html": "Andhverfur"
+        }
+      ]
+    },
+    {
+      "id": "349642",
+      "stem_html": "Ljóshvötuð [4 + 4] hringálagning",
+      "collaborator_solutions": [
+        {
+          "content_html": "Suprafacial"
+        }
+      ]
+    },
+    {
+      "id": "349643",
+      "stem_html": "[2 + 6] hringálagning við varma",
+      "collaborator_solutions": [
+        {
+          "content_html": "Antarafacial"
+        }
+      ]
+    },
+    {
+      "id": "349644",
+      "stem_html": "Ljóshvötuð [3,5] sigmatrópísk umröðun",
+      "collaborator_solutions": [
+        {
+          "content_html": "Suprafacial"
+        }
+      ]
+    }
+  ]
+}

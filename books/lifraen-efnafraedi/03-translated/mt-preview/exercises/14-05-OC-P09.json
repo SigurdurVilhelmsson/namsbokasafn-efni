@@ -1,0 +1,19 @@
+{
+  "nickname": "14-05-OC-P09",
+  "source_uid": "37645@9",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358439",
+      "stem_html": "<p>Hvaða af eftirfarandi díenum hafa <i>s</i>-cis-stellingu og hvaða hafa <i>s</i>-trans-stellingu? Af <i>s</i>-trans-díenunum, hvaða geta auðveldlega snúist í <i>s</i>-cis?</p>\n<p><b>(a)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc29VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b5d51d698235a3bc04495b9da57675326517d347/OChem_14_05_015a.jpg\" alt=\"A cyclohexadiene ring with double bonds between C 1-C 2 and C 3-C 4 fused to a cyclohexane ring.\">\n <b>(b)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3NVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d2497cfc427a2bdd0ebb509091582491fceab9b5/OChem_14_05_015b.jpg\" alt=\"A cyclohexene ring with the double bond at bottom right is fused to another cyclohexene with the double bond at top left.\">\n <b>(c)</b> <img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3dVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--da757bd7cc2f4cacb58ec7c8bf126e255406697b/OChem_14_05_015c.jpg\" alt=\"In a 5-carbon chain, C 1 is double bonded to C 2. C 3 is double bonded to C 4, which itself is single bonded to a methyl group.\"></p>\n",
+      "collaborator_solutions": [
+        {
+          "content_html": "Efnasamband <b>(a)</b> er <i>s</i>-cis. Efnasamband <b>(c)</b> getur snúist í <i>s</i>-cis."
+        }
+      ]
+    }
+  ]
+}

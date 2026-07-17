@@ -1,0 +1,20 @@
+{
+  "nickname": "03-99-OC-AP30",
+  "source_uid": "36467@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Snúningshindrunin um C–C efnatengið í brómetani er 15 kJ/mól (3,6 kkal/mól).",
+  "questions": [
+    {
+      "id": "329825",
+      "stem_html": "Hvaða orkugildi getur þú úthlutað H ↔ Br skyggðri víxlverkun?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "329826",
+      "stem_html": "Búðu til magnbundið línurit af stöðuorku á móti snúningi efnatengis fyrir brómetan.",
+      "collaborator_solutions": []
+    }
+  ]
+}

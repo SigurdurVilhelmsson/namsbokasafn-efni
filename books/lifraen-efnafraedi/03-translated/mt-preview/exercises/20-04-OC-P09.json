@@ -1,0 +1,28 @@
+{
+  "nickname": "20-04-OC-P09",
+  "source_uid": "38089@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Raðaðu eftirfarandi efnasamböndum eftir vaxandi sýrustigi. Ekki líta í töflu með p<i>K</i><sub>a</sub>-gögnum til að hjálpa þér með svarið.",
+  "questions": [
+    {
+      "id": "341949",
+      "stem_html": "Bensósýra, <i>p</i>-metýlbensósýra, <i>p</i>-klórbensósýra",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>p</i>-Metýlbensósýra < Bensósýra < <i>p</i>-Klórbensósýra"
+        }
+      ]
+    },
+    {
+      "id": "341950",
+      "stem_html": "<i>p</i>-Nítróbensósýra, ediksýra, bensósýra",
+      "collaborator_solutions": [
+        {
+          "content_html": "Ediksýra < Bensósýra < <i>p</i>-Nítróbensósýra"
+        }
+      ]
+    }
+  ]
+}

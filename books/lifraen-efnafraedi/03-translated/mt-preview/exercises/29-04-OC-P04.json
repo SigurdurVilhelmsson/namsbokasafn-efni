@@ -1,0 +1,19 @@
+{
+  "nickname": "29-04-OC-P04",
+  "source_uid": "39298@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "349266",
+      "stem_html": "Skrifaðu hvarfgang fyrir vötnunarefnahvarf <i>β</i>-hýdroxýbútýrýl-ACP sem gefur krótónýl-ACP í skrefi 7 í myndun fitusýra.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Vötnunin er E1cB-efnahvarf."
+        }
+      ]
+    }
+  ]
+}

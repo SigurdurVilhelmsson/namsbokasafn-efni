@@ -1,0 +1,37 @@
+{
+  "nickname": "23-07-OC-P11",
+  "source_uid": "38891@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Sýndu myndefnin sem þú myndir búast við að fá með Claisen-þéttingu eftirfarandi estra:",
+  "questions": [
+    {
+      "id": "359723",
+      "stem_html": "(CH<sub>3</sub>)<sub>2</sub>CHCH<sub>2</sub>CO<sub>2</sub>Et",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcE1ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--79dc23eb084cb202890978b30a5d6d265fc17bd4/OChem_23_EC_206a.jpg\" alt=\"The structure of ethyl-2-isopropyl-5-methyl-3-oxohexanoate shows isopropyl and methyl substituents at second and fifth carbon. A carbonyl is positioned on the third carbon with an ethoxy group on the first carbonyl.\">"
+        }
+      ]
+    },
+    {
+      "id": "359724",
+      "stem_html": "Etýlfenýlasetat",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFFZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1e3a2bf72c84be961379b84ee57d816743b8e786/OChem_23_EC_206b.jpg\" alt=\"The structure of ethyl-3-oxo-2,4-diphenylbutanoate shows two phenyl groups at second and fourth carbon. Two carbonyl groups are positioned on the first and third carbon, with an ethoxy group on first.\">"
+        }
+      ]
+    },
+    {
+      "id": "359725",
+      "stem_html": "Etýlsýklóhexýlasetat",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFVZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f2d14c28f05bcd2a0b34293c22226939f20940d5/OChem_23_EC_206c.jpg\" alt=\"The structure of ethyl-2,4-dicyclohexyl-3-oxobutanoate shows two cyclohexyl groups at the second and fourth carbon. An ethoxy group is bonded to first carbonyl carbon, and carbonyl is part of third carbon.\">"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "nickname": "20-99-OC-AP18",
+  "source_uid": "38128@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú mynda eftirfarandi efnasambönd með því að nota <sup>13</sup>CO<sub>2</sub> sem eina uppsprettu merkts kolefnis, ásamt öðrum nauðsynlegum efnasamböndum?",
+  "questions": [
+    {
+      "id": "370805",
+      "stem_html": "CH<sub>3</sub>CH<sub>2</sub><sup>13</sup>CO<sub>2</sub>H",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "370806",
+      "stem_html": "CH<sub>3</sub><sup>13</sup>CH<sub>2</sub>CO<sub>2</sub>H",
+      "collaborator_solutions": []
+    }
+  ]
+}

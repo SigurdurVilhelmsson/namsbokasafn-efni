@@ -1,0 +1,15 @@
+{
+  "nickname": "10-99-OC-MP04",
+  "source_uid": "37263@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357356",
+      "stem_html": "<p>Í ljósi þess að þrígild alkýlhalíð gangast undir sjálfgenga klofnun og mynda karbkatjón auk halíðjónar (sjá dæmi 10-41), stingdu upp á hvarfgangi fyrir eftirfarandi efnahvarf.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTRUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c2ea1d82f563651809ca2ec1154dc792ab34a2a5/OChem_10_EC_017.jpg\" alt=\"The hydrolysis reaction of t-butyl bromide at 50 degrees Celsius forms t-butyl alcohol and hydrogen bromide.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

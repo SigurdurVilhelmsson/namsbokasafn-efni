@@ -1,0 +1,40 @@
+{
+  "nickname": "02-99-OC-AP35",
+  "source_uid": "36147@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Reiknaðu formlegu hleðslurnar á frumeindunum sem sýndar eru með rauðu.",
+  "questions": [
+    {
+      "id": "351704",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbThRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b17a24ec3a5a20714cf55f0c72fa300733dfb99d/OChem_02_EC_010a.jpg\" alt=\"A condensed formula reads, (C H 3) 2 O B F 3. The O atom carries a lone pair.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351705",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ed2b8d58087b72b65a520ace43690b1538398bd6/OChem_02_EC_010b.jpg\" alt=\"A methylene group with a lone pair on the carbon is single bonded to nitrogen, which is triple bonded to another nitrogen, featuring a lone pair.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351706",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d275f62b5cd292a837d2be7eb3281308382ababd/OChem_02_EC_010c.jpg\" alt=\"A methylene group is double bonded to nitrogen, which is further double bonded to another nitrogen, featuring two lone pairs.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351707",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbklRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--718959aa5e8a06eee37e68b1722a1977fc5255f0/OChem_02_EC_010d.jpg\" alt=\"An oxygen atom with two lone pairs is double bonded to second oxygen that carries one lone pair and is single bonded to third oxygen, featuring three lone pairs.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351708",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbk1RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c46de92b766de24ab536da8418364db8b1eaba0e/OChem_02_EC_010e.jpg\" alt=\"A central phosphorus atom bonded to three methyl groups and a methylene group with a lone pair on the carbon.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351709",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--008b82473b37033799efd2537058352ed8493f92/OChem_02_EC_010f.jpg\" alt=\"The nitrogen atom of a pyridine ring is bonded to an oxygen atom, carrying three lone pairs.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "22-99-OC-AP08",
+  "source_uid": "38812@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360987",
+      "stem_html": "<p>Hvaða af eftirfarandi efnasamböndum, ef einhver, er hægt að búa til með asetóediksestermyndun? Útskýrðu.</p>\n<p><b>(a)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaklZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e13322e37247842c72227bfe9ee86f2ec1dc13c2/OChem_22_EC_035a.jpg\" alt=\"The structure of 2-(5-bromophenyl) acetone where a bromine atom is bonded to meta to an acetone group on the benzene ring.\">\n <b>(b)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBak1ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c4d5f69fa6af72f33aeb604073497a7326059619/OChem_22_EC_035b.jpg\" alt=\"The structure of cyclohexyl methyl ketone where a methyl group and a cyclohexane group are bonded to a central carbonyl group.\">\n <b>(c)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalFZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ba3d042eeb1e562c806e582df92b47c64088eaaf/OChem_22_EC_035c.jpg\" alt=\"The structure of 4,4-dimethyl-2-pentanone where the carbonyl group is located at C 2 and two methyl groups at C 4.\"></p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

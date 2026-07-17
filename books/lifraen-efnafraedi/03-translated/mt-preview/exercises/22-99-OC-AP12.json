@@ -1,0 +1,15 @@
+{
+  "nickname": "22-99-OC-AP12",
+  "source_uid": "38816@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361001",
+      "stem_html": "<p>Hvernig gætir þú breytt geraníóli í annaðhvort etýlgeranýlasetat eða geranýlasetón?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBanNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e9227ed1b8e9a92c1f57cbc6f5f823fd47687a23/OChem_22_EC_038.jpg\" alt=\"When using reagents represented by question marks, geraniol undergoes a chemical reaction to form ethyl geranylacetate and geranyl acetone.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

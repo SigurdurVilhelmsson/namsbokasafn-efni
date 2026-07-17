@@ -1,0 +1,30 @@
+{
+  "nickname": "01-99-OC-AP03",
+  "source_uid": "37561@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hverjar eru líklegar formúlur fyrir eftirfarandi sameindir?",
+  "questions": [
+    {
+      "id": "338473",
+      "stem_html": "NH<sub><span class=\"magenta-text\">?</span></sub>OH",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338474",
+      "stem_html": "AlCl<sub><span class=\"magenta-text\">?</span></sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338475",
+      "stem_html": "CF<sub>2</sub>Cl<sub><span class=\"magenta-text\">?</span></sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338476",
+      "stem_html": "CH<sub><span class=\"magenta-text\">?</span></sub>O",
+      "collaborator_solutions": []
+    }
+  ]
+}

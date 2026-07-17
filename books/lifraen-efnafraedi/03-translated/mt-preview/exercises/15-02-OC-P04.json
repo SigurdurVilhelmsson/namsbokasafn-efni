@@ -1,0 +1,19 @@
+{
+  "nickname": "15-02-OC-P04",
+  "source_uid": "37735@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358628",
+      "stem_html": "<p>Pýridín er flöt, sexhyrnd sameind með 120° efnatengishorn. Hún gengst undir skiptihvarf frekar en álagningu og hegðar sér almennt eins og bensen. Teiknaðu mynd af <i>π</i>-svigrúmum pýridíns til að útskýra eiginleika þess. Athugaðu svarið þitt með því að líta fram í <b>kafla 15.5</b>.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaHdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5ded1c934a7d15e8c4987f8afab9dcef7be28158/OChem_15_02_007.jpg\" alt=\"Pyridine has a nitrogen atom in the first position and three alternate double bonds. Nitrogen carries a lone pair of electrons.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<p>Pýridín hefur arómatískan sextett rafeinda.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDBWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--78ba29a303af69392f7ce13992b977f0f454b063/OChem_15_EC_202.jpg\" alt=\"Pyridine has three lobes around nitrogen. One lobe has an unpaired electron and one lobe has a lone pair of electrons. Upper lobe of each carbon has an unpaired electron.\">"
+        }
+      ]
+    }
+  ]
+}

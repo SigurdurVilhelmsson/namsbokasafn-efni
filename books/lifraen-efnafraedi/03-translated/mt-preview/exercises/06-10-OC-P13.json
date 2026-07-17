@@ -1,0 +1,19 @@
+{
+  "nickname": "06-10-OC-P13",
+  "source_uid": "37306@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360035",
+      "stem_html": "Teiknaðu orkurit fyrir tveggja þrepa efnahvarf þar sem bæði þrepin eru útvermin og þar sem seinna þrepið hefur orkuhærra virkniástand en það fyrra. Merktu þá hluta ritsins sem samsvara hvarfefni, myndefni, milliefni, heildar-Δ<i>G</i><sup>‡</sup> og heildar-Δ<i>G</i>°.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTBUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b26b4b8a8db913ad841b15ee7a4a4e3ecbbdf41b/OChem_06_EC_206.jpg\" alt=\"Energy diagram shows large barrier to transition state, intermediate lower in energy than reactant, large barrier (higher than first) to second transition state, low energy product.\">"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "nickname": "17-99-OC-VC01",
+  "source_uid": "37885@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Nefndu eftirfarandi efnasambönd með IUPAC-heiti:",
+  "questions": [
+    {
+      "id": "359406",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmtWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ffb81205e092228fa35db425e9505ea00788a9dc/OChem_17_EC_015a.jpg\" alt=\"A ball-and-stick model of six-carbon chain with hydroxyl on C 3 and methyl on C 5 position.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359407",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcm9WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b79e50f8a6b62a9a8ef1826a671585ec727ba907/OChem_17_EC_015b.jpg\" alt=\"A ball-and-stick model of cyclohexane with hydroxyl group on C 1 and methyl on C 3 position.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359408",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcnNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ee738a089122168ede87d6c6d39791192f7ca71e/OChem_17_EC_015c.jpg\" alt=\"A ball-and-stick model of cyclopentane linked to a carbon atom that has H, methyl, and O H substituents.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359409",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcndWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3b7263306545ef2fc45eef0156674e321599c559/OChem_17_EC_015d.jpg\" alt=\"A ball-and-stick model of a benzene with O H on C 1, a nitro group on C 3 and a methyl group on C 4 position.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

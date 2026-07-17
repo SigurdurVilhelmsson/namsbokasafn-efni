@@ -1,0 +1,19 @@
+{
+  "nickname": "13-11-OC-P19",
+  "source_uid": "37485@7",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358325",
+      "stem_html": "<p>Flokkaðu vokmyndirnar í <sup>13</sup>C NMR-rófi metýlprópanóats, CH<sub>3</sub>CH<sub>2</sub>CO<sub>2</sub>CH<sub>3</sub> (mynd 13.20).</p>\n<figure id=\"fig-00201\"><img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2tVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b0c05e9d58e066c608ffb11acab46c5c4bab028a/OChem_13_11_006.jpg\" alt=\"The 13 C N M R spectrum of methyl propanoate shows peaks at 0 (T M S), 9, 29, 52, and 175.\">\n<figcaption><sup>13</sup>C NMR-róf metýlprópanóats, dæmi 19.</figcaption>\n</figure>",
+      "collaborator_solutions": [
+        {
+          "content_html": "−CH<sub>3</sub>, 9,3 <i>Δ;</i>  −CH<sub>2</sub>− , 27,6 <i>Δ;</i> C=O, 174,6 <i>Δ;</i>− OCH<sub>3</sub>, 51,4 <i>Δ</i>"
+        }
+      ]
+    }
+  ]
+}

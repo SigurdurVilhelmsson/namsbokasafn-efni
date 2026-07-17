@@ -1,0 +1,19 @@
+{
+  "nickname": "05-07-OC-P18",
+  "source_uid": "36510@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357679",
+      "stem_html": "<p>Sýnir eftirfarandi byggingarmynd mesó-efnasamband? Ef svo er, sýndu samhverfuplanið.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2dd10bbffea9e63290208840124aff3118164166/OChem_05_07_006.jpg\" alt=\"The ball-and-stick model of a compound comprising a cyclopentane ring. Gray, black, and red spheres represent hydrogen, carbon, and oxygen, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBallSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6c070ad527fedd5262d77fea8ea08fa76640ef9e/OChem_05_EC_205.jpg\" alt=\"Meso compound has a cyclopentane ring. C1 is bonded to hydroxyl group. C3 and C4 are each wedge bonded to a methyl group. The symmetry plane passes through hydroxyl group and the C-C bond.\">"
+        }
+      ]
+    }
+  ]
+}

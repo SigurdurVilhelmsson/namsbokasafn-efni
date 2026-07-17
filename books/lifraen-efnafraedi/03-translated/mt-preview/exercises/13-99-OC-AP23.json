@@ -1,0 +1,15 @@
+{
+  "nickname": "13-99-OC-AP23",
+  "source_uid": "37517@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358401",
+      "stem_html": "<p>Úthlutaðu eins mörgum vokmyndum og þú getur til tiltekinna kolefnisfrumeinda í <sup>13</sup>C NMR-rófi etýlbensóats.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbThVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ddc64901bcde563371a1c3ce7a41ff88691a9deb/OChem_13_EC_016.jpg\" alt=\"The 13 C N M R spectrum of ethyl benzoate shows peaks at 0 (T M S), 15 (sharp), 61 (sharp), between 126 and 132 (variable heights), and 165 (tiny).\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

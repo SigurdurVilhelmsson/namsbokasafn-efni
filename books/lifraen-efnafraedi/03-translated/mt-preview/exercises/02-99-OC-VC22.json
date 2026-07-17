@@ -1,0 +1,15 @@
+{
+  "nickname": "02-99-OC-VC22",
+  "source_uid": "36134@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357152",
+      "stem_html": "<p><i>cis</i>-1,2-díklóretýlen og <i>trans</i>-1,2-díklóretýlen eru <i>ísómerur,</i> efnasambönd með sömu formúlu en ólíka efnafræðilega byggingu. Skoðaðu eftirfarandi rafstöðumöguleikakort og segðu til um hvort annaðhvort efnasambandið hafi tvískautsvægi.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cacba1efc39f7497c29e8db79a939b8b3b4340c2/OChem_02_EC_003.jpg\" alt=\"The structural formulas and electrostatic potential maps of cis-1, 2-dichloroethylene and trans-1,2-dichloroethylene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "nickname": "19-99-OC-MP10",
+  "source_uid": "38032@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Hægt er að búa til aldehýð með Wittig-efnahvarfi með því að nota (metoxýmetýlen)trífenýlfosfóran sem Wittig-hvarfefni og síðan vatnsrjúfa myndefnið með sýru. Til dæmis,</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbEVXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8528aea7b596b79cf5b9f1f611240680bedaf2b4/OChem_19_EC_029.jpg\" alt=\"A cyclohexanone reacts with (methoxymethylene)-triphenylphosphorane to form an intermediate, that reacts with a hydronium ion, yielding a final product, cyclohexanecarbaldehyde.\">",
+  "questions": [
+    {
+      "id": "360700",
+      "stem_html": "Hvernig myndir þú búa til nauðsynlegan fosfóran?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360701",
+      "stem_html": "Leggðu til hvarfgang fyrir vatnsrofsskrefið.",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "13-99-OC-GP20",
+  "source_uid": "37537@8",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358431",
+      "stem_html": "<p>Róteinda-NMR-róf efnasambands með formúluna C<sub>7</sub>H<sub>12</sub>O<sub>2</sub> er sýnt. Innrautt róf sýnir sterkt band við 1738 cm<sup>–1</sup> og veikt band við 1689 cm<sup>–1</sup>. Niðurstöður úr venjulegri kolefnis-13 og DEPT-tilraun eru sýndar í töflu. Teiknaðu byggingu þessa efnasambands.</p>\n<table class=\"unnumbered\">\n<thead>\n<tr>\n<th><b>Venjulegt kolefni</b></th>\n<th><b>DEPT-135</b></th>\n<th><b>DEPT-90</b></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>    18 ppm</td>\n<td>Jákvætt</td>\n<td>Enginn toppur</td>\n</tr>\n<tr>\n<td> 21</td>\n<td>Jákvætt</td>\n<td>Enginn toppur</td>\n</tr>\n<tr>\n<td> 26</td>\n<td>Jákvætt</td>\n<td>Enginn toppur</td>\n</tr>\n<tr>\n<td> 61</td>\n<td>Neikvætt</td>\n<td>Enginn toppur</td>\n</tr>\n<tr>\n<td>119</td>\n<td>Jákvætt</td>\n<td>Jákvætt</td>\n</tr>\n<tr>\n<td>139</td>\n<td>Enginn toppur</td>\n<td>Enginn toppur</td>\n</tr>\n<tr>\n<td>171</td>\n<td>Enginn toppur</td>\n<td>Enginn toppur</td>\n</tr>\n</tbody>\n</table>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjRVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--406a58623de3df9a7e553c8751d2ff285e07e796/OChem_13_EC_031.jpg\" alt=\"Proton spectrum of C 7 H 12 O 2 shifts: 1.75 (doublet), 2.05 (singlet), 4.55 (doublet), and 5.35 (triplet). Relative areas of 5.7, 2.9, 2, and .96 respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

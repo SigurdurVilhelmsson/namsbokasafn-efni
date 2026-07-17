@@ -1,0 +1,19 @@
+{
+  "nickname": "06-07-OC-P10",
+  "source_uid": "37303@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "336365",
+      "stem_html": "Hvaða efnahvarf er orkulega hagstæðara, það sem er með Δ<i>G</i>° = −44 kJ/mól eða það sem er með Δ<i>G</i>° = +44 kJ/mól?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Neikvætt Δ<i>G</i>° er hagstæðara."
+        }
+      ]
+    }
+  ]
+}

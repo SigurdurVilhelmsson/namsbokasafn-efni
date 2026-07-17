@@ -1,0 +1,15 @@
+{
+  "nickname": "15-99-OC-AP38",
+  "source_uid": "37786@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358718",
+      "stem_html": "<p>Eftirfarandi efnasamband er myndefnið sem upphaflega myndast í Claisen-umröðun, sem við munum sjá í kafla 18.4. Þetta myndefni er ekki einangrað, heldur ráphverfast það yfir í enólform sitt. Gefðu upp byggingu enólsins og útskýrðu hvers vegna enól-ráphverfan er ríkjandi.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa29WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0b0bfbad7300f0ea6e34c081af71e6e41f74c63c/OChem_15_EC_028.jpg\" alt=\"A reversible reaction shows cyclohexadiene with a carbonyl group at C1 and a 3-carbon chain with terminal double bond at C 2 forming unknown product(s), represented by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

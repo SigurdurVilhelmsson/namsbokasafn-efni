@@ -1,0 +1,19 @@
+{
+  "nickname": "23-07-OC-P12",
+  "source_uid": "38892@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359727",
+      "stem_html": "<p>Eins og sýnt er á mynd 23.5 er Claisen-efnahvarfið <i>afturkræft</i>. Það er að segja, <i>β</i>-ketóester er hægt að kljúfa með <i>basa</i> í tvö brot. Notaðu sveigðar örvar til að sýna flæði <i>rafeinda</i> og sýndu <i>hvarfganginn</i> sem þessi klofningur verður fyrir.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFlZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9ca6aab3ae34932cd5bb8ff11378ac229ccacd9b/OChem_23_07_004.jpg\" alt=\"Ethyl benzoylacetate reacts with sodium hydroxide and ethanol, forming benzoate ion and ethyl acetate.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Klofnunarefnahvarfið er nákvæmlega andstæðan við framvirka <i>efnahvarfið</i>."
+        }
+      ]
+    }
+  ]
+}

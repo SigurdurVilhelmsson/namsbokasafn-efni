@@ -1,0 +1,15 @@
+{
+  "nickname": "16-99-OC-MP06",
+  "source_uid": "37820@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358960",
+      "stem_html": "<p>Búa má til trifenýlmetan með efnahvarfi bensens og klóróforms í nærveru AlCl<sub>3</sub>. Settu fram hvarfgang fyrir efnahvarfið.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbU1WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--27b47b9db3c1734c5e3e9d57ce3e40f04e5149ff/OChem_16_EC_021.jpg\" alt=\"Benzene reacts with chloroform in the presence of aluminum trichloride to yield triphenylmethane.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

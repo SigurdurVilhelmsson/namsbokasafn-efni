@@ -1,0 +1,19 @@
+{
+  "nickname": "08-05-OC-P11",
+  "source_uid": "37095@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357727",
+      "stem_html": "<p>Eftirfarandi sýklóalken gefur efnablöndu af tveimur alkóhólum við vatnsbórun og síðan oxun. Teiknaðu byggingu beggja og útskýrðu niðurstöðuna.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazBTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--949a5d4f5e84fcbb4cd276207e5ab2fca9b1c14f/OChem_08_05_012.jpg\" alt=\"The ball-and-stick model of a cyclopentene ring. C1 and C4 are each bonded to a methyl group. The black and gray spheres represent carbon and hydrogen, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazRTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--95e6d64bf1e3e3767e5ca538711a6d75b1f4aa46/OChem_08_EC_203.jpg\" alt=\"The first structure has cyclopentane ring with dash-bonded hydroxyl at C1, wedge bonded methyl groups at C2 and C4. In the second structure, one methyl is dash bonded at C4.\">"
+        }
+      ]
+    }
+  ]
+}

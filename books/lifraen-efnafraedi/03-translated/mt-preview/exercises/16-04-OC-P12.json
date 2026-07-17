@@ -1,0 +1,19 @@
+{
+  "nickname": "16-04-OC-P12",
+  "source_uid": "37800@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358926",
+      "stem_html": "<p>Asetanílíð er óhvarfgjarnara en anilín gagnvart rafsæknu skiptihvarfi. Útskýrðu.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbElWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7c7d49c3891c4d2ec44b347628c77f687e631904/OChem_16_04_013.jpg\" alt=\"Acetanilide has benzene ring bonded to an N H group. The nitrogen atom is bonded to the carbonyl group which, in turn, is bonded to a methyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Rafeindir nitursins eru gefnar til nálæga karbónýlhópsins með vokmyndum og eru því síður tiltækar fyrir hringinn."
+        }
+      ]
+    }
+  ]
+}

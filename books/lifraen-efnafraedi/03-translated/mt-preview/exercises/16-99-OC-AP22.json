@@ -1,0 +1,15 @@
+{
+  "nickname": "16-99-OC-AP22",
+  "source_uid": "37854@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359043",
+      "stem_html": "<p>Teiknaðu vok myndir milliefnis karbkatjónanna í brómun naftalens og útskýrðu hvers vegna naftalen gengst undir rafsækið skiptihvarf við C1 frekar en C2.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3NWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e6b6cb9519d8f12e508f4117883b1f11b4d85ea5/OChem_16_EC_043.jpg\" alt=\"Naphthalene reacts with molecular bromine to form 1-bromonaphthalene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

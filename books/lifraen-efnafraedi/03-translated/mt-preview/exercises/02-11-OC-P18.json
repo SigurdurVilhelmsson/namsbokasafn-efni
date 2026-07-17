@@ -1,0 +1,28 @@
+{
+  "nickname": "02-11-OC-P18",
+  "source_uid": "36130@7",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "<p>Imídasól, sem er hluti af amínósýrunni histidíni, getur bæði virkað sem sýra og basi.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ef63b1bfb32915e752c6022c3d28adb51c3ef45b/OChem_02_11_009.jpg\" alt=\"Line-angle structure, ball-and-stick model, and electrostatic potential map of imidazole along with line-angle structure of histidine.\">",
+  "questions": [
+    {
+      "id": "351651",
+      "stem_html": "Skoðaðu rafstöðumöguleikakort imídasóls og finndu súrustu vetnisfrumeindina og basískustu niturfrumeindina.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--74b3f41f9190f3fcab1ad928b38c39531de6b17a/OChem_02_EC_210a.jpg\" alt=\"The structure of imidazole shows N1 labeled more basic (red) and the hydrogen bonded to N3 labeled most acidic (blue).\">"
+        }
+      ]
+    },
+    {
+      "id": "351652",
+      "stem_html": "Teiknaðu byggingarform fyrir vok myndir myndefnanna sem myndast þegar imídasól er róteindað af sýru og afróteindað af basa.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1FhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fad186a4bdb7ea9b43d85b1797f5a8cf2714ab94/OChem_02_EC_210b.jpg\" alt=\"Imidazole reversibly reacts with acid at N1 to form two resonance structures of protonated product. Imidazole reversibly reacts with base at the N3 hydrogen, forming two resonance structures of deprotonated product.\">"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "nickname": "20-05-OC-P10",
+  "source_uid": "38090@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvernig myndir þú búa til eftirfarandi karboxýlsýrur?",
+  "questions": [
+    {
+      "id": "341953",
+      "stem_html": "(CH<sub>3</sub>)<sub>3</sub>CCO<sub>2</sub>H úr (CH<sub>3</sub>)<sub>3</sub>CCl",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. Mg; 2. CO<sub>2</sub>; 3. H<sub>3</sub>O<sup>+</sup>"
+        }
+      ]
+    },
+    {
+      "id": "341954",
+      "stem_html": "CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CO<sub>2</sub>H úr CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>Br",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. Mg; 2. CO<sub>2</sub>; 3. H<sub>3</sub>O<sup>+</sup> eða 1. NaCN; 2. H<sub>3</sub>O<sup>+</sup>"
+        }
+      ]
+    }
+  ]
+}

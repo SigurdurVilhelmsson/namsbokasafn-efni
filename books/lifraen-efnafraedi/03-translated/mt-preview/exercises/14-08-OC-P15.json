@@ -1,0 +1,19 @@
+{
+  "nickname": "14-08-OC-P15",
+  "source_uid": "37651@8",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358447",
+      "stem_html": "<p>Hvaða af eftirfarandi efnasamböndum myndir þú búast við að sýndu útfjólublátt gleypni á bilinu 200 til 400 nm?</p>\n<p><b>(a)</b> <img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdEVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--87388851fe81a4d214d5a9f0ed372fcad07acea3/OChem_14_08_002a.jpg\" alt=\"In a cyclohexane ring, C 1 is double bonded to C 2. C 4 is double bonded to C 5.\">\n <b>(b)</b> <img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdElVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ff2d696e144e0bf8a20e8f2c51f36ff0615df827/OChem_14_08_002b.jpg\" alt=\"In a cyclohexane ring, C 1 is double bonded to C 2. C 3 is double bonded to C 4.\">\n <b>(c)</b> <img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdE1VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--feaff23f638901e4b8e7703a1106d3c35c197e0d/OChem_14_08_002c.jpg\" alt=\"Two carbons double-bonded to each other. At C 1 there is a cyano group.\">\n <b>(d)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFFVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--026b6ffb799542463ef84f53fa84588f01141a6a/OChem_14_08_002d.jpg\" alt=\"The structure of Aspirin has a benzene ring. C 1 is bonded to a carboxylic acid group. C 2 is bonded to acetoxyl group.\">\n <b>(e)</b> <img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dd68b3e0379ec6290e6cda187da66ff1123cdb7a/OChem_14_08_002e.jpg\" alt=\"A cyclohexadiene ring with double bonded oxygen at C 3 is fused to a cyclohexane ring. Both rings share a methyl group.\">\n<br><b>(f)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFlVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fe505df0f7a9d3fc4fecf02ec469d356608f1a90/OChem_14_08_002f.jpg\" alt=\"Indole has a benzene ring fused to a 5-membered ring made of  four carbons, in which C 2 is double bonded to C 3, and an N-H group at position 1.\"></p>",
+      "collaborator_solutions": [
+        {
+          "content_html": "Öll nema <b>(a)</b> sýna útfjólubláa gleypni."
+        }
+      ]
+    }
+  ]
+}

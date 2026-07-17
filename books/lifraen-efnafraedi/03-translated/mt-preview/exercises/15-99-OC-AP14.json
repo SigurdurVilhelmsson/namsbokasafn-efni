@@ -1,0 +1,15 @@
+{
+  "nickname": "15-99-OC-AP14",
+  "source_uid": "37762@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358676",
+      "stem_html": "<p>Sýklóprópanón er mjög hvarfgjarnt vegna mikillar hornspennu. Metýlsýklóprópenón, þótt enn meira spennt en sýklóprópanón, er engu að síður nokkuð stöðugt og er jafnvel hægt að eima það. Útskýrðu, með hliðsjón af skautun karbónýlhópsins.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--34efb0f11c2ac1a681ce9e366a5d5edf4396458f/OChem_15_EC_011.jpg\" alt=\"Cyclopropanone has a 3-carbon ring. C 1 is a carbonyl group. Methylcyclopropenone has a cyclopropene ring. C 1 is a carbonyl group and C2 is bonded to a methyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

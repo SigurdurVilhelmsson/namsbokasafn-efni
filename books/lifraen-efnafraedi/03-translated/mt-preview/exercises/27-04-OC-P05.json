@@ -1,0 +1,19 @@
+{
+  "nickname": "27-04-OC-P05",
+  "source_uid": "38837@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358187",
+      "stem_html": "Úthlutaðu <i>R</i> eða <i>S</i> stillingu á hverja hendnimiðju í prostaglandíni E<sub>2</sub> (mynd 27.6), sem er algengasta og líffræðilega virkasta prostaglandín spendýra.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazRZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--506979c2775f8ef7e665732f8e1e27def62c1a37/OChem_27_EC_201.jpg\" alt=\"The wedge-dash structure of Prostaglandin E 2. C 8, C 12, and C 11 have an R configuration whereas C 15 has an S configuration.\">"
+        }
+      ]
+    }
+  ]
+}

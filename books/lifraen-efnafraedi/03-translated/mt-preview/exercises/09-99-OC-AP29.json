@@ -1,0 +1,15 @@
+{
+  "nickname": "09-99-OC-AP29",
+  "source_uid": "37243@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353868",
+      "stem_html": "<p>Kolvetnið <b>A</b> hefur formúluna C<sub>9</sub>H<sub>12</sub> og tekur upp 3 jafngildi af H<sub>2</sub> og gefur <b>B</b>, C<sub>9</sub>H<sub>18</sub>, þegar það er vetnað yfir Pd/C hvata. Við meðhöndlun <b>A</b> með vatnslausn af H<sub>2</sub>SO<sub>4</sub> í nærveru kvikasilfurs(II) myndast tvö hverfuketón, <b>C</b> og <b>D</b>. Oxun <b>A</b> með KMnO<sub>4</sub> gefur efnablöndu af ediksýru (CH<sub>3</sub>CO<sub>2</sub>H) og þríkarboxýlsýrunni <b>E</b>. Stingdu upp á byggingarformúlum fyrir efnasamböndin <b>A</b>–<b>D</b> og skrifaðu efnahvörfin.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1FUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c3229c079196d8d3e910e4b2eb225275b0585806/OChem_09_EC_041.jpg\" alt=\"The structure of a C7 tricarboxylic acid labeled E.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

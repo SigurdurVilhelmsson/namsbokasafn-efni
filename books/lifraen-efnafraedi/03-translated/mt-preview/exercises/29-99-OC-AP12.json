@@ -1,0 +1,25 @@
+{
+  "nickname": "29-99-OC-AP12",
+  "source_uid": "39337@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Sýndu myndefni hvers af eftirfarandi efnahvarfa:</p>\n",
+  "questions": [
+    {
+      "id": "358171",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fdb0587e241b40e3bf4c698b044f1a413340571b/OChem_29_EC_015a.jpg\" alt=\"Hexyl CoA reacts in the presence of Acyl  CoA dehydrogenase and favin adenine dinucleotide to form an unknown product represented as a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358172",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWtaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e56a830df942ec299d5f04742b77c16577605598/OChem_29_EC_015b.jpg\" alt=\"Product of (a) reacts with water in the presence of enoyl CoA hydratase to form an unknown product represented as a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358173",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdW9aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--db0ff9be37f633aee47e06ed7222b5386380c00c/OChem_29_EC_015c.jpg\" alt=\"Product of (b) reacts in the presence of beta-hydroxyacyl CoA dehydrogenase and  nicotinamide adenine dinucleotide cation  to form an unknown product shown as a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

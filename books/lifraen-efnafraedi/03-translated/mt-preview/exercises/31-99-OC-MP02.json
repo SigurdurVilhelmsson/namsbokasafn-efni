@@ -1,0 +1,15 @@
+{
+  "nickname": "31-99-OC-MP02",
+  "source_uid": "39411@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355018",
+      "stem_html": "<p>Pólýúretanfroðan sem notuð er í einangrun húsa notar metandífenýldíísósýanat (MDI) sem einliðu. MDI er búið til með sýruhvötuðu efnahvarfi anilíns við formaldehýð, fylgt eftir með meðhöndlun með fosgeni, COCl<sub>2</sub>. Leggið til hvarfgang fyrir bæði skrefin.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVVhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f8c5ea40184581b7c2b9074c861303af9d52755e/OChem_31_EC_004.jpg\" alt=\"The formation of methanediphenyldidisocyanate. Aniline reacts with formaldehyde to form a polymer. This polymer reacts with phosgene to produce the polymer, M D I.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

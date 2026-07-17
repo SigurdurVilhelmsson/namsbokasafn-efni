@@ -1,0 +1,15 @@
+{
+  "nickname": "16-99-OC-MP14",
+  "source_uid": "37828@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358977",
+      "stem_html": "<p>Í <i>Gatterman–Koch-efnahvarfinu</i> er formýlhópur ( –  CHO) settur beint á bensenhring. Til dæmis gefur efnahvarf tólúens við CO og HCl í nærveru blöndu af CuCl/AlCl<sub>3</sub> <i>p</i>-metýlbensaldehýð. Settu fram hvarfgang.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1fd2186ec584f94e24be84a89b804d6d5a4f72b1/OChem_16_EC_029.jpg\" alt=\"Toluene reacts with carbon monoxide and hydrogen chloride in the presence of copper (1) chloride or aluminum trichloride to form toluene with an aldehyde group in the para position.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

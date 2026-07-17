@@ -1,0 +1,25 @@
+{
+  "nickname": "25-99-OC-VC04",
+  "source_uid": "39067@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Eftirfarandi líkan er af aldóhexósa:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbndaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--79d773ac6a4f156a6c504de1faebaaa767f184b2/OChem_25_EC_005.jpg\" alt=\"The ball-and-stick model of an aldohexose. The gray, black, and red spheres represent hydrogen, carbon, and oxygen atoms, respectively.\">",
+  "questions": [
+    {
+      "id": "358782",
+      "stem_html": "Teiknaðu Fischer-vörpun sykursins, handhverfu hans og víxlhverfu.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358783",
+      "stem_html": "Er þetta <small style=\"font-variant: small-caps\">D</small>-sykur eða <small style=\"font-variant: small-caps\">L</small>-sykur? Útskýrðu.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358784",
+      "stem_html": "Teiknaðu <i>Β</i>-anómer sykursins á fúranósaformi.",
+      "collaborator_solutions": []
+    }
+  ]
+}

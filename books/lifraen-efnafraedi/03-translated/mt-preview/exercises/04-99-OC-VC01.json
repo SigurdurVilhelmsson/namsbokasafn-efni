@@ -1,0 +1,20 @@
+{
+  "nickname": "04-99-OC-VC01",
+  "source_uid": "36514@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Nefndu eftirfarandi sýklóalkan:",
+  "questions": [
+    {
+      "id": "357195",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamdSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--76578cf3e31fcff193d9a3c388be2bb63b069476/OChem_04_EC_001a.jpg\" alt=\"The ball and stick model of cyclopentane. C1 is bonded to an equatorial ethyl group. C3 is bonded to an equatorial methyl group. Black and gray spheres represent carbon and hydrogen, respectively.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357196",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamtSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e06ed909e83c058a4a905bd7ef1ea0373c9a9459/OChem_04_EC_001b.jpg\" alt=\"The ball and stick model of cyclohexane. C1 is bonded to two methyl groups. C3 is bonded to an equilarial methyl group. Black and gray spheres represent carbon and hydrogen, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

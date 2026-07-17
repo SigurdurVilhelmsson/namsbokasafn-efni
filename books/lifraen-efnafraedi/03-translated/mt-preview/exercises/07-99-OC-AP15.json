@@ -1,0 +1,25 @@
+{
+  "nickname": "07-99-OC-AP15",
+  "source_uid": "36667@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Raðaðu tvítengjunum eftir vaxandi stöðugleika.",
+  "questions": [
+    {
+      "id": "354436",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdlVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c797ad5de3b505b3e7a03a0504d0f326524d6b24/OChem_07_EC_022a.jpg\" alt=\"Dimethylcyclopentane with double bond between C1-C6, dimethylcyclopentane with a double bond between C1-C2, and cyclopentane with double bonded methylene at C1 and methyl at C2.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354437",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdllSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--33d85ba9afdb35712dde5e90dcb25157dd4ec6dd/OChem_07_EC_022b.jpg\" alt=\"Cyclohexane fused to cyclohexene with the double bond opposite the fusion, two cyclohexanes with a shared double bond, and cyclohexane fused to cyclohexene with the double bond adjacent to fusion.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354438",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b25ee88cd1c4128f789f7debdf8d924832c257bb/OChem_07_EC_022c.jpg\" alt=\"Pent-2-ene with methyl at C3, a pentane with double-bonded methylene at C3, and 1-pentene with a methyl group at C3.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "06-99-OC-VC01",
+  "source_uid": "37307@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353272",
+      "stem_html": "<p>Eftirfarandi alkýlhalíð er hægt að framleiða með álagningu HBr á tvö mismunandi alken. Teiknaðu byggingu beggja (rauðbrúnt = Br).</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTRUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7d70b6b912fb59edc3dd98e35a94aea17c16ba7a/OChem_06_EC_002.jpg\" alt=\"The ball-and-stick model has a 5-carbon chain. C2 is bonded to a bromine atom. The gray, white, and reddish-brown spheres represent carbon, hydrogen, and bromine, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

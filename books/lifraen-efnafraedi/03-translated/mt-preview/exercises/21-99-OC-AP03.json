@@ -1,0 +1,20 @@
+{
+  "nickname": "21-99-OC-AP03",
+  "source_uid": "38197@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknið og nefnið efnasambönd sem uppfylla eftirfarandi lýsingar:",
+  "questions": [
+    {
+      "id": "342620",
+      "stem_html": "Þrjú sýruklóríð með formúluna C<sub>6</sub>H<sub>9</sub>ClO",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342621",
+      "stem_html": "Þrjú amíð með formúluna C<sub>7</sub>H<sub>11</sub>NO",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-MP10",
+  "source_uid": "38992@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361649",
+      "stem_html": "<p>Kólín, sem er hluti af fosfólípíðum í frumuhimnum, er hægt að búa til með S<sub>N</sub>2-skiptihvarfi trímetýlamíns við etýlenoxíð. Sýndu byggingu kólíns og leggðu til hvarfgang fyrir efnahvarfið.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c022f40b45f9fb730a9d64c842bf50a3ca7f4a9c/OChem_24_EC_025.jpg\" alt=\"Trimethylamine reacts with ethylene oxide to produce choline, which has an unknown structure.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

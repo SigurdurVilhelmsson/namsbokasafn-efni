@@ -1,0 +1,15 @@
+{
+  "nickname": "11-99-OC-VC04",
+  "source_uid": "37365@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355180",
+      "stem_html": "<p>Teiknaðu bygginguna og úthlutaðu <i>Z</i> eða <i>E</i> stereóefnafræði á myndefnið sem þú býst við úr E2-efnahvarfi eftirfarandi sameindar við NaOH (grænt = Cl):</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjBUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5ad60e3af8adda40e7a6e7d1ff86c14c9c9d87f6/OChem_11_EC_010.jpg\" alt=\"A ball-and-stick model of an alkyl chloride having a cyclohexane ring. The gray, black, green, and red spheres represent hydrogen, carbon, chlorine and bromine, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,782 @@
+{
+  "generated_by": "exercise-extract.js",
+  "exercises": {
+    "31-01-OC-P01": {
+      "source_uid": "39396@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "349728"
+      ],
+      "fields": {
+        "stem:349728": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<span data-math=\"\\text{═}\"></span>",
+            "1": "<span data-math=\"\\text{═}\"></span>",
+            "2": "<span data-math=\"\\text{═}\"></span>",
+            "3": "<span data-math=\"\\text{═}\"></span>"
+          },
+          "wraps": {}
+        },
+        "sol:349728": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{═}\"></span>",
+            "1": "<span data-math=\"\\text{═}\"></span>",
+            "2": "<span data-math=\"\\text{═}\"></span>",
+            "3": "<span data-math=\"\\text{═}\"></span>"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "31-01-OC-P02": {
+      "source_uid": "39397@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "349730"
+      ],
+      "fields": {
+        "stem:349730": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<span data-math=\"\\text{═}\"></span>",
+            "1": "<span data-math=\"\\text{═}\"></span>",
+            "2": "<span data-math=\"\\text{≡}\"></span>",
+            "3": "<span data-math=\"\\text{═}\"></span>"
+          },
+          "wraps": {}
+        },
+        "sol:349730": {
+          "skeleton": "\u0000SLOT_0\u0000\n",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{═}\"></span>",
+            "1": "<span data-math=\"\\text{═}\"></span>",
+            "2": "<span data-math=\"\\text{═}\"></span>",
+            "3": "<span data-math=\"\\text{≡}\"></span>"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "31-01-OC-P03": {
+      "source_uid": "39398@9",
+      "solutions_are_public": true,
+      "question_order": [
+        "360400"
+      ],
+      "fields": {
+        "stem:360400": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:360400": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>",
+          "slots": 1,
+          "opaques": {
+            "0": "<img style=\"vertical-align:middle\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGthIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2c6d37c824b13f5a5df99c0e5ea88b7139569f46/OChem_31_EC_201.jpg\" alt=\"The structure shows phenyl group connected to a C H R group with lone pair of electron and negative charge on carbon.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "31-02-OC-P04": {
+      "source_uid": "39399@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "349532"
+      ],
+      "fields": {
+        "stem:349532": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"{{\\rm H}_{2}{\\rm C}\\text{═}{\\rm CCl}_{2}}\"></span>"
+          },
+          "wraps": {}
+        },
+        "sol:349532": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "31-02-OC-P05": {
+      "source_uid": "39400@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "349534"
+      ],
+      "fields": {
+        "stem:349534": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349534": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "31-03-OC-P06": {
+      "source_uid": "39401@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "358111"
+      ],
+      "fields": {
+        "stem:358111": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:358111": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaG9hIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--05f1733d9359ff970b6aa5b40183ffd64cf891ea/OChem_31_EC_202.jpg\" alt=\"An eight-membered carbon with methyl and alkene on C 3 and two methyl groups on C 7 position. The compound is inside parentheses with a subscript n.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "31-03-OC-P07": {
+      "source_uid": "39402@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "358113"
+      ],
+      "fields": {
+        "stem:358113": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:358113": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaHNhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a5fabe115907044e5c48459e36062a628fd097e0/OChem_31_EC_203.jpg\" alt=\"The figure shows the structure of a polymer with polybutadiene chain and polystyrene chain. A curved line is present at one end of styrene and both ends of polybutadiene.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "31-04-OC-P08": {
+      "source_uid": "39403@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "358115"
+      ],
+      "fields": {
+        "stem:358115": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:358115": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaHdhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ebbbc25cf4918c25e61cb8195b83e5e7ff056057/OChem_31_EC_204.jpg\" alt=\"The structure of poly(ethylene terephthalate). A carbonyl linked to a benzene ring which is bonded to a carbonyl group, oxygen atom, two methylene groups further linked to an oxygen atom.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "31-04-OC-P09": {
+      "source_uid": "39404@6",
+      "solutions_are_public": true,
+      "question_order": [
+        "359335"
+      ],
+      "fields": {
+        "stem:359335": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:359335": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBanNhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b4b15c73ab31e70cebc9e490b5f0fa6c24dbf8fd/OSX_OrgChem_31_99_Urethane_img.jpg\" alt=\"R prime O H and R N double bond C double bond O react via two steps to produce a carbonyl with substituent O R prime and N H R.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "31-05-OC-P10": {
+      "source_uid": "39405@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "358119"
+      ],
+      "fields": {
+        "stem:358119": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:358119": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDRhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b9774ad5d73488d4c13c437cb60608be4ac8f7b9/OChem_31_EC_206.jpg\" alt=\"The structure of norbornene comprising a cyclohexene ring and a bridged methylene group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "31-06-OC-P11": {
+      "source_uid": "39406@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "358121"
+      ],
+      "fields": {
+        "stem:358121": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:358121": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDhhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--85c4f542c2ac57b9f3bd1eea77bbafabe5d729ce/OChem_31_EC_207.jpg\" alt=\"The structure shows a six-carbon chain with a methyl group at C3. The structure is inside parentheses and has a subscript n. It is labeled as atactic.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "31-06-OC-P12": {
+      "source_uid": "39407@6",
+      "solutions_are_public": true,
+      "question_order": [
+        "359337"
+      ],
+      "fields": {
+        "stem:359337": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:359337": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBandhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7e9d33a4cdeeca57e1b357f55976a55a244dd4b2/OSX_OrgChem_31_99_Bakelite_img.jpg\" alt=\"Phenol reacts with formaldehyde via electrophilic aromatic substitution to produce 2-(hydroxymethyl)phenol which reacts to produce a C H 2 attached to two phenols (each at their C 2).\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "31-99-OC-AP01": {
+      "source_uid": "39415@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "355032",
+        "355033",
+        "355034",
+        "355035",
+        "355036"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:355032": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWdhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--24aa1898b15d21f585d179f139b58dd7fed8010a/OChem_31_EC_007a.jpg\" alt=\"The structure of a polymer whose repeating unit is C H 2 O. The unit is inside parentheses with bonds extending out and has a subscript n.\">"
+          },
+          "wraps": {}
+        },
+        "stem:355033": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWthIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ab96c864fb76ec2085b615a1ad3394a3c19b38e7/OChem_31_EC_007b.jpg\" alt=\"The structure of a polymer whose repeating unit is C F 2 C F Cl. The unit is inside parentheses with bonds extending out and has a subscript n.\">"
+          },
+          "wraps": {}
+        },
+        "stem:355034": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaW9hIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--053ebda81d4c35d63e2cc73dc5c55fc0f97022b9/OChem_31_EC_007c.jpg\" alt=\"The structure of a polymer comprising N H connected to three methylene units that is linked to a carbonyl. The structure is inside the parentheses and has a subscript n.\">"
+          },
+          "wraps": {}
+        },
+        "stem:355035": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXNhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ad0070ed568ebe965f73f5397990a92453fb1a03/OChem_31_EC_007d.jpg\" alt=\"The structure of a polymer comprising oxygen linked to a benzene ring with a carbonyl group. The structure is inside the parentheses and has a subscript n.\">"
+          },
+          "wraps": {}
+        },
+        "stem:355036": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXdhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c325c72862af1a80f6a4f0464131e50ed54b4933/OChem_31_EC_007e.jpg\" alt=\"The structure of a polymer comprising oxygen linked to cyclohexane further bonded to another oxygen and carbonyl group. The structure is inside the parentheses and has a subscript n.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "31-99-OC-AP02": {
+      "source_uid": "39416@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "349878",
+        "349879",
+        "349880"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349878": {
+          "skeleton": "\u0000SLOT_0\u0000\n",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349879": {
+          "skeleton": "\u0000SLOT_0\u0000\n",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349880": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "31-99-OC-AP03": {
+      "source_uid": "39417@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "355038"
+      ],
+      "fields": {
+        "stem:355038": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTBhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e90593a1bd0f0c3d16314333e38fe4ceea27f744/OChem_31_EC_008.jpg\" alt=\"The structure of 1,4-bis(hydroxymethyl)cyclohexane.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "31-99-OC-AP04": {
+      "source_uid": "39418@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "355040"
+      ],
+      "fields": {
+        "stem:355040": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTRhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6a5884abc815f448fcd558491df7e198bca4f69f/OChem_31_EC_009.jpg\" alt=\"Diepoxide comprises benzene bonded to two O-atoms on both sides. Further bonded to methylene and epoxide ring. It reacts with diamine to give unknown product, shown as a question mark.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "31-99-OC-AP05": {
+      "source_uid": "39419@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349586"
+      ],
+      "fields": {
+        "stem:349586": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "31-99-OC-AP06": {
+      "source_uid": "39420@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349588"
+      ],
+      "fields": {
+        "stem:349588": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "31-99-OC-AP07": {
+      "source_uid": "39421@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349590"
+      ],
+      "fields": {
+        "stem:349590": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "31-99-OC-AP08": {
+      "source_uid": "39422@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "349732"
+      ],
+      "fields": {
+        "stem:349732": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{═}\"></span>"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "31-99-OC-AP09": {
+      "source_uid": "39423@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "349734"
+      ],
+      "fields": {
+        "stem:349734": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{═}\"></span>"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "31-99-OC-AP10": {
+      "source_uid": "39424@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "355042"
+      ],
+      "fields": {
+        "stem:355042": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaThhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1bbe1762b131056f396250a3cd2672c39c919542/OChem_31_EC_010.jpg\" alt=\"The structure of poly(vinyl butyral). It comprises eleven-carbon chain with oxygen connected at C 3, C 5, C 7, and C 9. The oxygen is linked to the propyl group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "31-99-OC-AP11": {
+      "source_uid": "39425@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "355044"
+      ],
+      "fields": {
+        "stem:355044": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakFhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--92993bf99cd3455f267546df39946f052235c1d6/OChem_31_EC_011.jpg\" alt=\"The structure of beta-propiolactone, a four-membered cyclic ester.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "31-99-OC-AP12": {
+      "source_uid": "39426@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349602"
+      ],
+      "fields": {
+        "stem:349602": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "31-99-OC-AP13": {
+      "source_uid": "39427@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "355046"
+      ],
+      "fields": {
+        "stem:355046": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakVhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--44289f4ec5bdbfeff61a9d738cb024c2070f957d/OChem_31_EC_012.jpg\" alt=\"The structure of melamine. It is a six-membered ring with alternating C and N, and alternating single and double bonds. Each C has an N H 2 substituent.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "31-99-OC-AP14": {
+      "source_uid": "39428@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "355049",
+        "355050"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaklhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--535bf10d2cca0fccab4907c901785e76d703f647/OChem_31_EC_013.jpg\" alt=\"The structures of Bisphenol A and Epichlorohydrin.\">"
+          },
+          "wraps": {}
+        },
+        "stem:355049": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:355050": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "31-99-OC-AP15": {
+      "source_uid": "39429@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "355052"
+      ],
+      "fields": {
+        "stem:355052": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBak1hIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--236a3c9c47f5c143af501848a5ebd2685053e52e/OChem_31_EC_014.jpg\" alt=\"An incomplete reaction in which urea reacts with formaldehyde to form unknown product(s) indicated by a question mark.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "31-99-OC-AP16": {
+      "source_uid": "39430@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349612"
+      ],
+      "fields": {
+        "stem:349612": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "31-99-OC-MP01": {
+      "source_uid": "39410@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "355016"
+      ],
+      "fields": {
+        "stem:355016": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVFhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7639637ca6ccb7dcdf47cbdb71c313e68105c1e1/OChem_31_EC_003.jpg\" alt=\"The structure of polyethylene glycol. Oxygen is connected to two methylene units and its structure is inside parentheses with n as the subscript.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "31-99-OC-MP02": {
+      "source_uid": "39411@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "355018"
+      ],
+      "fields": {
+        "stem:355018": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVVhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f8c5ea40184581b7c2b9074c861303af9d52755e/OChem_31_EC_004.jpg\" alt=\"The formation of methanediphenyldidisocyanate. Aniline reacts with formaldehyde to form a polymer. This polymer reacts with phosgene to produce the polymer, M D I.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "31-99-OC-MP03": {
+      "source_uid": "39412@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349560"
+      ],
+      "fields": {
+        "stem:349560": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "31-99-OC-MP04": {
+      "source_uid": "39413@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "355020"
+      ],
+      "fields": {
+        "stem:355020": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVlhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a97a893bf9fe24e54655dbeb5beaa4c50be4fe31/OChem_31_EC_005.jpg\" alt=\"Polystyrene reacts with N-(hydroxymethyl)phthalimide and trifluoromethanesulfonic acid to form an intermediate that further reacts with hydrazine to form resin. The product's structure is inside parentheses with n as the subscript.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "31-99-OC-MP05": {
+      "source_uid": "39414@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "355024",
+        "355025",
+        "355026"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWNhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--39dce82da8704809aa789f8067d8bc1f46ccaae5/OChem_31_EC_006.jpg\" alt=\"Two molecules of cyclopentadiene react with heat to form dicyclopentadiene. This further undergoes ring-opening metathesis polymerization to form polydicyclopentadiene. Wavy lines denote the bond extensions.\">"
+          },
+          "wraps": {}
+        },
+        "stem:355024": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:355025": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:355026": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "31-99-OC-VC01": {
+      "source_uid": "39408@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "355010"
+      ],
+      "fields": {
+        "stem:355010": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUVhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--308f0a9e552525539b7103e7d71b5a7be26dc1db/OChem_31_EC_001.jpg\" alt=\"A ball-and-stick model of a polymer showing two benzene rings and connecting substituents. Wavy lines indicate boundaries of the repeating unit.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "31-99-OC-VC02": {
+      "source_uid": "39409@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "355013",
+        "355014"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:355013": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUlhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--720c6f29de15c9bf5352131aa1b04093f677cd29/OChem_31_EC_002a.jpg\" alt=\"A ball-and-stick model of a monomer showing five-carbon chain with nitrogen, carbonyl, and alkene bond. Carbon, hydrogen, oxygen, and nitrogen are denoted using black, gray, red, and blue spheres, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "stem:355014": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaU1hIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f01f01549d3cd11cf6c0045d8ec7f5ff93da1606/OChem_31_EC_002b.jpg\" alt=\"Ball-and-stick model of 2-chloro-1,3-butadiene. Carbon, hydrogen, and halogen are denoted using black, gray, and green spheres, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    }
+  }
+}

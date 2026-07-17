@@ -1,0 +1,25 @@
+{
+  "nickname": "02-99-OC-AP64",
+  "source_uid": "36176@9",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Notaðu p<i>K</i><sub>a</sub>-töfluna í viðauka B til að ákvarða í hvora áttina jafnvægið hallast.",
+  "questions": [
+    {
+      "id": "351753",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTBRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--43b8beffb31585026fea1dc229a87e58564d7db9/OChem_02_EC_030a.jpg\" alt=\"In a reversible reaction, phenol reacts with benzene bonded to carboxylate ion to form phenoxide ion and benzoic acid.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351754",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9445a53799c87455dcb65b9060a6911a742e35a2/OChem_02_EC_030b.jpg\" alt=\"In a reversible reaction, propanol reacts with a negatively charged amine to form a 3-carbon chain bonded to an oxygen ion and ammonia.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351755",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcThRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b5386e04ab01a0ab686a2613ace6dfd1ff46e8c9/OChem_02_EC_030c.jpg\" alt=\"In a reversible reaction, a methyl ion reacts with nitromethane to form methane and a methylene group with a negative charge bonded to a nitro group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

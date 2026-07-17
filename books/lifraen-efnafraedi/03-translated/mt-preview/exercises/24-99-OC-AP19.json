@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-AP19",
+  "source_uid": "39018@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361719",
+      "stem_html": "<p>Fenasetín, efni sem áður var notað í lausasöluhöfuðverkjatöflur, hefur formúluna C<sub>10</sub>H<sub>13</sub>NO<sub>2</sub>. Fenasetín er hlutlaust og leysist hvorki upp í sýru né basa. Þegar það er hitað með vatnslausn af NaOH gefur fenasetín amín, C<sub>8</sub>H<sub>11</sub>NO, en <sup>1</sup>H NMR-róf þess er sýnt. Þegar það er hitað með HI klofnar amínið í amínófenól, C<sub>6</sub>H<sub>7</sub>NO. Hver er bygging fenasetíns og hver er bygging amínsins og amínófenólsins?</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0VaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f12431ba8e0b6e89c013a79d1701729d68fe6c22/OChem_24_EC_040.jpg\" alt=\"Proton spectrum with signals at shift 1.34 (triplet), 3.40 (wide singlet), 3.93 (quartet), and 6.59 and 6.72 (doublets). Relative areas are 1.50, 1.00, 1.00, 1.00, and 1.00 respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

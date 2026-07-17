@@ -1,0 +1,25 @@
+{
+  "nickname": "06-99-OC-AP04",
+  "source_uid": "37325@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Greindu rafsækinn og kjarnsækinn.",
+  "questions": [
+    {
+      "id": "357236",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2dUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--80dcc98b02e196f209b5321699f40fbb1dd3263c/OChem_06_EC_015a.jpg\" alt=\"The figure shows azide anion reacts with chloromethane to form C H 3 N 3 and chloride.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357237",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2tUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5746d0d22f0026a41d93fa187a18a22260c9d5e0/OChem_06_EC_015b.jpg\" alt=\"Benzene reacts with nitronium cation to form nitrocyclohexa-2,4-diene with a cation on C 6.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357238",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb29UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1b16190db4095506d3881ebea887446f78cd7ded/OChem_06_EC_015c.jpg\" alt=\"Cyclohexanone reacts with methanide anion to form 1-methylcyclohexanoxide.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

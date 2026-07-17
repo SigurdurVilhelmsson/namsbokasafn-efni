@@ -1,0 +1,15 @@
+{
+  "nickname": "19-99-OC-MP11",
+  "source_uid": "38033@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360703",
+      "stem_html": "<p>Eitt af skrefunum í fituefnaskiptum er efnahvarf ómettaðs asýl CoA við vatn til að gefa <i>β</i>-hýdroxýasýl CoA. Leggðu til hvarfgang.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbElXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3e670a938aba16ecc0e24699669eba304123ed90/OChem_19_EC_030.jpg\" alt=\"The reaction of unsaturated acyl coenzyme A with water to yield beta-hydroxyacyl coenzyme A, where a hydroxyl group is attached to the beta-carbon of the chain.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

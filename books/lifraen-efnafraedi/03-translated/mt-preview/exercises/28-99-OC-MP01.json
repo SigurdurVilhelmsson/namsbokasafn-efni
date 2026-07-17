@@ -1,0 +1,15 @@
+{
+  "nickname": "28-99-OC-MP01",
+  "source_uid": "39125@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354974",
+      "stem_html": "<p>Lokaskrefið í DNA-myndun er afverndun með meðhöndlun með vatnslausn af ammóníaki. Sýndu hvarfgangana þar sem afverndun á sér stað á þeim stöðum sem tilgreindir eru í eftirfarandi byggingu:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcG9aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--31e0910a65b8661a2adb705e21688d6cf2c65387/OChem_28_EC_004.jpg\" alt=\"Deprotection mechanism in two linked deoxynucleosides occurs at points 1 and 2 where cleavages occur. N H C O and O C O bonds are labeled 1 and 2, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

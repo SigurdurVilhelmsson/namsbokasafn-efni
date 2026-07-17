@@ -1,0 +1,20 @@
+{
+  "nickname": "19-99-OC-MP09",
+  "source_uid": "38031@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefni eftirfarandi Wolff–Kishner-efnahvarfa. Skrifaðu hvarfgang fyrir hvert þeirra, frá og með hýdrasón-milliefninu.",
+  "questions": [
+    {
+      "id": "360696",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazhXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a2af14e885dd7e10945525a8e88c0ea151b878d7/OChem_19_EC_028c.jpg\" alt=\"Cyclohexanone with benzene fused to C 2 and C 3 reacts with hydrazine and potassium hydroxide to generate an unidentified product, indicated by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360697",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbEFXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--61671a8c514a192c801338ba05775df21d312206/OChem_19_EC_028d.jpg\" alt=\"Bicyclo[2.2.1]heptane with an oxo group on C 2 reacts with hydrazine and potassium hydroxide to generate an unidentified product, indicated by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

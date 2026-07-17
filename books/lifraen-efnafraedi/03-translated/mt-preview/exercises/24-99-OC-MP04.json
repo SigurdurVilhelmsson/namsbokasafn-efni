@@ -1,0 +1,20 @@
+{
+  "nickname": "24-99-OC-MP04",
+  "source_uid": "38986@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefnið/myndefnin og skrifaðu hvarfgang fyrir hvert eftirfarandi efnahvarfa:",
+  "questions": [
+    {
+      "id": "361640",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDhaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d1dab146714e080ee4f50f7686226d1d5141b5ef/OChem_24_EC_021c.jpg\" alt=\"Bicyclo[4.4.0]decane oriented with C O Cl at top fusion (wedge) and H at bottom fusion (dash) reacts with sodium azide, then water and heat, to form unknown product(s).\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361641",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ca98396f983799f73e7154e639aa5dd299e4b8a6/OChem_24_EC_021d.jpg\" alt=\"But-3-enoyl chloride reacts with sodium azide, then water and heat to form an unknown product represented by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

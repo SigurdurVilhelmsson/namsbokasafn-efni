@@ -1,0 +1,19 @@
+{
+  "nickname": "13-05-OC-P08",
+  "source_uid": "37474@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358269",
+      "stem_html": "<p>Hversu marga toppa myndir þú búast við að sjá í <sup>1</sup>H NMR-rófi 1,4-dímetýlbensens (<i>para</i>-xýlen, eða <i>p</i>-xýlen)? Hvaða flatarmálshlutfall toppanna myndir þú búast við að sjá við heildun rófsins? Vísaðu í töflu 13.3 fyrir áætluð efnahvörf og teiknaðu upp hvernig rófið myndi líta út. (Mundu úr <b>kafla 2.4</b> að arómatískir hringir hafa tvö vokmynd.)</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamNVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e3bf7ae540c13f57cbb1949d0ad270c10db9b3a4/OChem_13_05_002.jpg\" alt=\"The structure of para-xylene (1,4-dimethylbenzene).\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Tveir toppar; hlutfall 3 : 2"
+        }
+      ]
+    }
+  ]
+}

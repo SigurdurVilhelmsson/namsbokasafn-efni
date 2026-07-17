@@ -1,0 +1,15 @@
+{
+  "nickname": "12-99-OC-AP35",
+  "source_uid": "37461@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "356714",
+      "stem_html": "<p>Innrautt róf efnasambandsins með eftirfarandi massarófi hefur ekkert marktækt gleypni yfir 3000 cm<sup>–1</sup>. Það er áberandi toppur nálægt 1740 cm<sup>–1</sup> og annar sterkur toppur nálægt 1200 cm<sup>–1</sup>. Leggðu til byggingu.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVlVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ee24438c6e34c3327fbe7f9d5d84ceba05676aa2/OChem_12_EC_014.jpg\" alt=\"The mass spectrum of  an uknown compound with a base peak at m / z 88 and a molecular ion at m / z 172.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

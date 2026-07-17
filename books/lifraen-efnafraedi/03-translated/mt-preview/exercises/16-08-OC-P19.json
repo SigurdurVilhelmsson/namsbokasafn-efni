@@ -1,0 +1,19 @@
+{
+  "nickname": "16-08-OC-P19",
+  "source_uid": "37806@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351600",
+      "stem_html": "Skoðaðu töflu 6.3 til að fá magnbundna hugmynd um stöðugleika bensýlstakeindar. Hversu miklu stöðugri (í kJ/mól) er bensýlstakeind en fyrsta stigs alkýlstakeind? Hvernig er stöðugleiki bensýlstakeindar í samanburði við allýlstakeind?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Bensýlstakeind er stöðugri en fyrsta stigs alkýlstakeind um 52 kJ/mól og hefur svipaðan stöðugleika og allýlstakeind."
+        }
+      ]
+    }
+  ]
+}

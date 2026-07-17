@@ -1,0 +1,45 @@
+{
+  "nickname": "27-99-OC-AP05",
+  "source_uid": "38853@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú breyta óleínsýru í eftirfarandi efni?",
+  "questions": [
+    {
+      "id": "346677",
+      "stem_html": "Metýlóleat",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "346678",
+      "stem_html": "Metýlsterat",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "346679",
+      "stem_html": "Nonanal",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "346680",
+      "stem_html": "Nonandíósýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "346681",
+      "stem_html": "9-oktadekýnsýra (sterólínsýra)",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "346682",
+      "stem_html": "2-brómsterínsýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "346683",
+      "stem_html": "18-pentatríakontanón, CH<sub>3</sub>(CH<sub>2</sub>)<sub>16</sub>CO(CH<sub>2</sub>)<sub>16</sub>CH<sub>3</sub>",
+      "collaborator_solutions": []
+    }
+  ]
+}

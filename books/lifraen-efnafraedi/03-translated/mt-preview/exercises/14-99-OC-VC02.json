@@ -1,0 +1,15 @@
+{
+  "nickname": "14-99-OC-VC02",
+  "source_uid": "37670@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358451",
+      "stem_html": "<p>Sýndu myndefni Diels-Alder-efnahvarfs eftirfarandi díens með 3-búten-2-óni, <br>H<sub>2</sub>C<span data-math=\"\\text{=}\"></span>CHCOCH<sub>3</sub>. Gættu þess að sýna alla staðefnafræði myndefnis efnahvarfsins.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGdVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5a2675def090334ce3c28561ac1f12c1a571d68f/OChem_14_EC_004.jpg\" alt=\"The ball-and-stick model has a cyclopentene ring. C 1 of the ring is bonded to C1 of another cyclopentene ring.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

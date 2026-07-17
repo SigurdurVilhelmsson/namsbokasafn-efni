@@ -1,0 +1,19 @@
+{
+  "nickname": "10-04-OC-P06",
+  "source_uid": "37252@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358087",
+      "stem_html": "<p>Aðalmyndefni efnahvarfs metýlensýklóhexans við <i>N</i>-brómsúkkínímíð er 1-(brómmetýl)sýklóhexen. Útskýrðu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGdUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f2d49070aba85f6ea54b2df8449b9ef7692fbe22/OChem_10_04_007.jpg\" alt=\"The reaction of methylenecyclohexane with N-bromosuccinimide, light, and carbon tetrachloride forms 1-(bromomethyl)cyclohexene as the major product.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Allylíska stakeindar milliefnið hvarfast á aðgengilegri stað og gefur meira skipta tvítengið."
+        }
+      ]
+    }
+  ]
+}

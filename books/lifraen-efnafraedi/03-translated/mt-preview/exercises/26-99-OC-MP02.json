@@ -1,0 +1,15 @@
+{
+  "nickname": "26-99-OC-MP02",
+  "source_uid": "39236@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359619",
+      "stem_html": "<p>Klórmetýleraða pólýstýrenresínið sem upphaflega var notað fyrir Merrifield-peptíðsmíði á föstu formi var útbúið með því að meðhöndla pólýstýren með klórmetýlmetýleter og Lewis-sýruhvata. Stingdu upp á hvarfgangi fyrir efnahvarfið.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcllaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--65974506bb7452e0dfacc3c4d2781d843370482a/OChem_26_EC_014.jpg\" alt=\"A polystyrene resin reacts with chloro(methoxy)methane and tin (IV) chloride to form  a polystyrene linked benzyl chloride resin for use in Merrifield solid-phase peptide synthesis.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

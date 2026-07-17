@@ -1,0 +1,28 @@
+{
+  "nickname": "18-02-OC-P06",
+  "source_uid": "38702@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Raðaðu eftirfarandi halíðum eftir hvarfgirni þeirra í Williamson-nýmyndun:",
+  "questions": [
+    {
+      "id": "343680",
+      "stem_html": "Brómetan, 2-brómprópan, brómbensen",
+      "collaborator_solutions": [
+        {
+          "content_html": "Brómetan > 2-brómprópan > brómbensen"
+        }
+      ]
+    },
+    {
+      "id": "343681",
+      "stem_html": "Klóretan, brómetan, 1-joðprópen",
+      "collaborator_solutions": [
+        {
+          "content_html": "Brómetan > klóretan > 1-joðprópen"
+        }
+      ]
+    }
+  ]
+}

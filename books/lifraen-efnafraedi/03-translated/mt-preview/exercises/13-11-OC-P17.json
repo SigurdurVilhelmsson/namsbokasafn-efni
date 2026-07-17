@@ -1,0 +1,64 @@
+{
+  "nickname": "13-11-OC-P17",
+  "source_uid": "37483@8",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Sjáðu fyrir þér fjölda kolefnisvokmyndalína sem þú myndir búast við í <sup>13</sup>C NMR-rófum eftirfarandi efnasambanda:",
+  "questions": [
+    {
+      "id": "361092",
+      "stem_html": "Metýlsýklópentan",
+      "collaborator_solutions": [
+        {
+          "content_html": "4"
+        }
+      ]
+    },
+    {
+      "id": "361093",
+      "stem_html": "1-Metýlsýklóhexen",
+      "collaborator_solutions": [
+        {
+          "content_html": "7"
+        }
+      ]
+    },
+    {
+      "id": "361094",
+      "stem_html": "1,2-Dímetýlbensen",
+      "collaborator_solutions": [
+        {
+          "content_html": "4"
+        }
+      ]
+    },
+    {
+      "id": "361095",
+      "stem_html": "2-Metýl-2-búten",
+      "collaborator_solutions": [
+        {
+          "content_html": "5"
+        }
+      ]
+    },
+    {
+      "id": "361096",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGtYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2bfe77fab8aeff767610736bab57c26ab873fe2c/OChem_13_11_005e.jpg\" alt=\"Chemical structure of 2-methyl-3-pentanone.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "5"
+        }
+      ]
+    },
+    {
+      "id": "361097",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbG9YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--01853259fa86881964943896b7c16fdadcfa1128/OChem_13_11_005f.jpg\" alt=\"Chemical structure of 2,3-dimethyl-2-pentene.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "7"
+        }
+      ]
+    }
+  ]
+}

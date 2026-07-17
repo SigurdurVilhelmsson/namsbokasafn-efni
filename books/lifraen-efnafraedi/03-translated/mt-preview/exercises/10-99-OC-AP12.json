@@ -1,0 +1,25 @@
+{
+  "nickname": "10-99-OC-AP12",
+  "source_uid": "37275@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Segðu til um hvort hvert eftirfarandi efnahvarfa sé oxun, afoxun eða hvorugt:",
+  "questions": [
+    {
+      "id": "352683",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0VUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d90ce2f3c5818271b31fde6b70da2e5152a12b15/OChem_10_EC_026a.jpg\" alt=\"Ethanol reacts with chromium trioxide to form methanaldehyde.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352684",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0lUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--68474e47ec72e2e69f24ecdaae136ab49d2f4dc9/OChem_10_EC_026b.jpg\" alt=\"But-3-en-2-one reacts with ammonia form 4-aminobutan-2-one.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352685",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa01UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1e7b5d8d116e055b4385f798194ab7b082f2d0a0/OChem_10_EC_026c.jpg\" alt=\"2-bromobutane reacts first with magnesium and then with water to form butane.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

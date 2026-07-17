@@ -1,0 +1,15 @@
+{
+  "nickname": "02-99-OC-AP41",
+  "source_uid": "36153@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351484",
+      "stem_html": "<p>O–H vetnið í ediksýru er súrara en nokkurt C–H vetnanna. Útskýrðu þessa niðurstöðu með því að nota vok myndir.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb01RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f7c7be89faf667cac32a237f9c5b1c7a8861478e/OChem_02_EC_015.jpg\" alt=\"The structural formula of acetic acid.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

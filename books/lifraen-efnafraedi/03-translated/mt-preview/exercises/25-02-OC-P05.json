@@ -1,0 +1,19 @@
+{
+  "nickname": "25-02-OC-P05",
+  "source_uid": "39043@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358738",
+      "stem_html": "<p>Endurteiknið eftirfarandi aldótetrósa sem Fischer-vörpun og úthlutið <i>R</i> eða <i>S</i> stillingu á hverja hendnimiðju:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a70eb1f889e0e09573e6cd3d423b18baa9e04064/OChem_25_02_013.jpg\" alt=\"The ball-and-stick model of aldotetrose comprises four-carbon atoms. The gray, black, and red spheres represent hydrogen, carbon, and oxygen atoms, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUlaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3d2a44f4f3324e9d9b21d06744525b9c112cf135/OChem_25_EC_202.jpg\" alt=\"Fischer projection of aldotetrose. It comprises four carbon where C 2 and C 3 have an R configuration. C H O is positioned on the top.\">"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "25-99-OC-AP04",
+  "source_uid": "39077@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358808",
+      "stem_html": "<p>Er askorbínsýra (C-vítamín) með <small style=\"font-variant: small-caps\">D</small> eða <small style=\"font-variant: small-caps\">L</small> stillingu?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1laIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f11780afd94b6789950e1bc41148d9704e572f1f/OChem_25_EC_013.jpg\" alt=\"The structure of L-ascorbic acid. In the Fisher projection, the farthest chiral carbon has a hydroxyl group on the left hand side.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

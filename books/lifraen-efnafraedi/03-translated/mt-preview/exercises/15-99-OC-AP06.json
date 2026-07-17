@@ -1,0 +1,30 @@
+{
+  "nickname": "15-99-OC-AP06",
+  "source_uid": "37754@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Leggðu til byggingar fyrir arómatísk kolvetni sem uppfylla eftirfarandi lýsingar:",
+  "questions": [
+    {
+      "id": "339115",
+      "stem_html": "C<sub>9</sub>H<sub>12</sub>; gefur aðeins eitt C<sub>9</sub>H<sub>11</sub>Br-myndefni við skiptihvarf vetnis á arómatíska hringnum með brómi",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339116",
+      "stem_html": "C<sub>10</sub>H<sub>14</sub>; gefur aðeins eitt C<sub>10</sub>H<sub>13</sub>Cl-myndefni við skiptihvarf vetnis á arómatíska hringnum með klór",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339117",
+      "stem_html": "C<sub>8</sub>H<sub>10</sub>; gefur þrjú C<sub>8</sub>H<sub>9</sub>Br-myndefni við skiptihvarf vetnis á arómatíska hringnum með brómi",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339118",
+      "stem_html": "C<sub>10</sub>H<sub>14</sub>; gefur tvö C<sub>10</sub>H<sub>13</sub>Cl-myndefni við skiptihvarf vetnis á arómatíska hringnum með klór",
+      "collaborator_solutions": []
+    }
+  ]
+}

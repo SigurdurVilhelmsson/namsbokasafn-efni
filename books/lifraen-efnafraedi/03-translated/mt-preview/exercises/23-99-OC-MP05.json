@@ -1,0 +1,20 @@
+{
+  "nickname": "23-99-OC-MP05",
+  "source_uid": "38911@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefnið/myndefnin og sýndu hvarfganginn fyrir eftirfarandi efnahvörf.",
+  "questions": [
+    {
+      "id": "359845",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmdZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--99d9d1c10e534358f4f8318e76937c3ef32bba7e/OChem_23_EC_018a.jpg\" alt=\"Trans-but-2-enal reacts with (Z)-N,N-dimethylbut-2-en-2-amine in the presence of tetrahydrofuran, then hydronium ion to form an unknown product.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359846",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmtZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--66406756bdbb8dfe9de05352ff5c5ea65a0de6b4/OChem_23_EC_018b.jpg\" alt=\"Methyl acrylate reacts with cyclohexene linked by C 1 to a nitrogen incorporated in a five-membered ring in the presence of tetrahydrofuran, then hydronium ion to form an unknown product.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

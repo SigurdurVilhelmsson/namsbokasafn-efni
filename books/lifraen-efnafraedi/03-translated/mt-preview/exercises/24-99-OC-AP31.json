@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-AP31",
+  "source_uid": "39663@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361747",
+      "stem_html": "<p>Leggðu til byggingu fyrir myndefnið með formúluna C<sub>9</sub>H<sub>17</sub>N sem myndast þegar 2-(2-sýanóetýl)sýklóhexanón er afoxað með hvata.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmthIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--30784c9d1ea3076ae7b757cced6204638d081a0f/OChem_24_EC_052.jpg\" alt=\"2-(2-Cyanoethyl)cyclohexanone reacts with hydrogen and platinum catalyst to form a product whose chemical formula is C 9 H 1 7 N.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

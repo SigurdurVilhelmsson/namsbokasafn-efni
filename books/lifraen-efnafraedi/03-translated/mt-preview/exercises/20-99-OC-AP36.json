@@ -1,0 +1,15 @@
+{
+  "nickname": "20-99-OC-AP36",
+  "source_uid": "38146@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359227",
+      "stem_html": "<p>Leggðu til byggingu fyrir efnasamband, C<sub>4</sub>H<sub>7</sub>N, sem hefur eftirfarandi IR- og <sup>1</sup>H NMR-róf:</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGtXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--58b0e2a0d93fc4139c0ae1f0c918167cf7676fa0/OChem_20_EC_037.jpg\" alt=\"An I R spectrum with a strong band below 3000 and around 1750 wavenumbers. A proton spectrum with shifts of 1.06 (triplet), 1.68 (sextet), and 2.31 (triplet).\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

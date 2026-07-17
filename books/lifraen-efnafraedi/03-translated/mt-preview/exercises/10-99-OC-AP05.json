@@ -1,0 +1,45 @@
+{
+  "nickname": "10-99-OC-AP05",
+  "source_uid": "37268@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Segðu fyrir um myndefni eftirfarandi efnahvarfa:",
+  "questions": [
+    {
+      "id": "357374",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8ea3e2b660d394f4325f917c34a94f10a450a5a1/OChem_10_EC_020a.jpg\" alt=\"Cyclohexane with CH3 and OH groups on the C1 position reacts with HBr and ether to form an unknown product represented by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357375",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--62885d3d9a09b2183aaf19fb532b2bee75871006/OChem_10_EC_020b.jpg\" alt=\"Butanol reacts with sulfonyl chloride to form an unknown product represented by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357376",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBallUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8779593083526eff4439e45581e78fe894641198/OChem_10_EC_020c.jpg\" alt=\"Cyclohexene fused with cyclohexane reacts with NBS, light, and carbon tetrachloride to form an unknown product represented by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357377",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d56b3506b2c2826b69247d2fb8f6ecbe385e82d3/OChem_10_EC_020d.jpg\" alt=\"Cyclohexanol reacts with phosphorus tribromide and ether to form an unknown product represented by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357378",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamdUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9578e5b8c13c61c51edeb0f6f58ece14ce104a45/OChem_10_EC_020e.jpg\" alt=\"2-bromobutane reacts with magnesium and ether to form an unknown product A that further reacts with water to form an unknown product B.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357379",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamtUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6bccc04c69f37c0d7d4f8cb9bb8060dae7323b77/OChem_10_EC_020f.jpg\" alt=\"1-bromobutane reacts with lithium and pentane to form an unknown product A that further reacts with copper (I) iodide to form an unknown product B.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357380",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBam9UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dfd112abb86407ac5563228c996ad4929f3b5b46/OChem_10_EC_020g.jpg\" alt=\"1-bromobutane reacts with lithium dimethylcopper and ether to form an unknown product represented by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

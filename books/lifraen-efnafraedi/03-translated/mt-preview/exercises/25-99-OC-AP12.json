@@ -1,0 +1,15 @@
+{
+  "nickname": "25-99-OC-AP12",
+  "source_uid": "39085@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358826",
+      "stem_html": "<p>Teiknaðu <small style=\"font-variant: small-caps\">D</small>-ríbúlósa á fimm liða hringlaga <i>Β</i>-hemíasetalformi.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzhaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ffefc7b88e7c5ace84026456383fd454f99c577c/OChem_25_EC_018.jpg\" alt=\"The Fisher projection of  D-ribulose, ketone  at C 2,  two hydroxyl groups on the right at C 3, and C 4, and a hydroxyl at the bottom of C 4\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

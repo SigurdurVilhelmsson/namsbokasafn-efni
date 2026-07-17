@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-AP34",
+  "source_uid": "39666@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361749",
+      "stem_html": "<p>Týramín er alkalóíði sem finnst meðal annars í mistilteini og þroskuðum osti. Hvernig myndir þú smíða týramín úr benseni? Úr tólúeni?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbm9hIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--76d311f5d20e8bbb04331f91ac3bada1559ebebb/OChem_24_EC_053.jpg\" alt=\"The structure of tyramine. A benzene ring with a hydroxyl group on C 1 and two methylene connected to an amine group on C 4.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

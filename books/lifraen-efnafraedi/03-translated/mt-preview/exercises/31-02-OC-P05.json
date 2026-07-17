@@ -1,0 +1,19 @@
+{
+  "nickname": "31-02-OC-P05",
+  "source_uid": "39400@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "349534",
+      "stem_html": "Fjölliður eins og pólýprópýlen innihalda mikinn fjölda hendnimiðja. Mynduð þið því búast við að sýni af ísótaktísku, syndíótaktísku eða ataktísku pólýprópýleni snúi planpolariseruðu ljósi? Útskýrið.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Fjölliðurnar eru rasemískar og hafa engan ljóssnúning."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "11-99-OC-AP28",
+  "source_uid": "37402@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355406",
+      "stem_html": "<p>Hvernig getur þú útskýrt þá staðreynd að <i>trans</i>-1-bróm-2-metýlsýklóhexan gefur brottnámsmyndefnið 3-metýlsýklóhexen, sem ekki er Zaitsev-myndefni, við meðhöndlun með basa?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdkVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ed3b7d65eb7cfbe7c2c27368c088c72383eca0b7/OChem_11_EC_037.jpg\" alt=\"A reaction in which trans-1-bromo-2-methylcyclohexane forms 3-methylcyclohexene in the presence of K O H.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

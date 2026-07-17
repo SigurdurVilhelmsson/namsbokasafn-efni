@@ -1,0 +1,25 @@
+{
+  "nickname": "22-99-OC-AP24",
+  "source_uid": "38827@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Eftirfarandi efnasmíðaleiðir eru rangar. Hvað er rangt við hverja þeirra?",
+  "questions": [
+    {
+      "id": "361025",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1lZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1e73523e5fe2197b12ac1eb10b8a33dac71fe618/OChem_22_EC_044a.jpg\" alt=\"Ethyl pentanoate is treated first with bromine in acetic acid followed by pyridine and heat to produce ethyl 2-pentenoate\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361026",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2NZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b6e9441b16df407ee32d819f8d53a11778c96219/OChem_22_EC_044b.jpg\" alt=\"Diethyl 2 methylmalonate is treated first with sodium ethoxide, then with bromobenzene, and finally heated in the presence of acid to produce 2-methyl-2-phenylethanoic acid.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361027",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2dZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f7f8227d09017cf074d5216c0331cbb9f000c8b1/OChem_22_EC_044c.jpg\" alt=\"Ethyl acetoacetate is treated first with sodium ethoxide, then with 3- bromo-1-propene, and finally heated in the presence of acid to produce 4-pentenoic acid\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

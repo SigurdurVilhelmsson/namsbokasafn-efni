@@ -1,0 +1,25 @@
+{
+  "nickname": "24-99-OC-VC01",
+  "source_uid": "38979@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Nefndu eftirfarandi amín og tilgreindu hvort þau séu fyrsta stigs, annars stigs eða þriðja stigs:",
+  "questions": [
+    {
+      "id": "361613",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaEVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--77488f67cb6f3a94f1912e6c1fcf0dd05e1b71bc/OChem_24_EC_014a.jpg\" alt=\"A ball-and-stick model of nitrogen bonded to hydrogen, methyl, and isopropyl groups.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361614",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaElaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5740b6df42c5c05c8dd3017b0b6d660c64ee9327/OChem_24_EC_014b.jpg\" alt=\"A ball-and-stick model of cyclopentane with methyl and N H 2 substituents on adjacent carbons.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361615",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaE1aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9778387d75d84910145f609eaa09c01fbbe0f75d/OChem_24_EC_014c.jpg\" alt=\"A ball-and-stick model of nitrogen bonded to a benzene ring, hydrogen, and an isopropyl group\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

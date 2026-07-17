@@ -1,0 +1,15 @@
+{
+  "nickname": "17-99-OC-MP11",
+  "source_uid": "37900@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359465",
+      "stem_html": "<p>Þegar eftirfarandi alkóhól er meðhöndlað með POCl<sub>3</sub> og pýridíni myndast væntanlegt brottnámsmyndefni. Hins vegar, þegar sama alkóhól er meðhöndlað með H<sub>2</sub>SO<sub>4</sub>, er brottnámsmyndefnið 1,2-dímetýlsýklópenten. Leggðu til hvarfgang fyrir hvora leið til að skýra þennan mun.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--84bd95feffe57cc75b7f27e90ac1419de487189b/OChem_17_EC_028.jpg\" alt=\"Propan-2-ylidenecyclobutane reacts with 2-cyclobutylpropan-2-ol. This reacts with sulfuric acid to form 1,2-dimethylcyclopent-1-ene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

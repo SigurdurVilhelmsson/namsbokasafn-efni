@@ -1,0 +1,20 @@
+{
+  "nickname": "18-99-OC-MP05",
+  "source_uid": "38723@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spyrðu fyrir um myndefni(n) og sýndu hvarfgang fyrir eftirfarandi efnahvörf:",
+  "questions": [
+    {
+      "id": "361188",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2NYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9c2c451ab59286850a1aa613e04a82b84746bc57/OChem_18_EC_023b.jpg\" alt=\"1,2-Epoxy-2-methylcyclohexane reacts with methylmagnesium bromide, then hydronium ion to form an unknown product(s), depicted with a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361189",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2dYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--14f7dd09eb823dafe40852b7e58a1215c07dbb89/OChem_18_EC_023c.jpg\" alt=\"(2S)-ethyloxirane reacts with hydrogen bromide and ether to form an unknown product.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

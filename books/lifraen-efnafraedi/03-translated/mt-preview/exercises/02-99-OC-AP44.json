@@ -1,0 +1,15 @@
+{
+  "nickname": "02-99-OC-AP44",
+  "source_uid": "36156@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351727",
+      "stem_html": "<p>Raðaðu eftirfarandi efnum eftir vaxandi sýrustigi:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1FRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2a7e863c61fee32bbe3ca928cda7537763f0a0f4/OChem_02_EC_016.jpg\" alt=\"The structures of acetone, 2,4-pentanedione, phenol, and acetic acid with their respective p K a values, 19.3, 9, 9.9, and 4.76.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

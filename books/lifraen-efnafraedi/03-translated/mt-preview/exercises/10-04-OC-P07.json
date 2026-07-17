@@ -1,0 +1,28 @@
+{
+  "nickname": "10-04-OC-P07",
+  "source_uid": "37253@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvaða myndefni myndir þú búast við úr efnahvarfi eftirfarandi alkena við NBS? Ef fleiri en eitt myndefni myndast, sýndu byggingarformúlur allra.",
+  "questions": [
+    {
+      "id": "352602",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGtUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--722fbb89c20d26e03a77ea859bf0e716dafb39e9/OChem_10_04_008a.jpg\" alt=\"The structure of 5-methylcyclooct-1-ene.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "3-bróm-5-metýlsýklóhepten og 3-bróm-6-metýlsýklóhepten"
+        }
+      ]
+    },
+    {
+      "id": "352603",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaG9UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6db2e5806cbebb7aa2ea71de8352272db8c2ccc9/OChem_10_04_008b.jpg\" alt=\"The structure of 2-methylhex-3-ene.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Fjögur myndefni"
+        }
+      ]
+    }
+  ]
+}

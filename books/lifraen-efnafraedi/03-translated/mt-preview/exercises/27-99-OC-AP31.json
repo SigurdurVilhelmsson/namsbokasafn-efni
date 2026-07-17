@@ -1,0 +1,15 @@
+{
+  "nickname": "27-99-OC-AP31",
+  "source_uid": "38877@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358245",
+      "stem_html": "<p>Cembren, C<sub>20</sub>H<sub>32</sub>, díterpenóíð kolvetni einangrað úr furukvoðu, hefur UV-gleypni við 245 nm, en díhýdrócembren (C<sub>20</sub>H<sub>34</sub>), myndefni vetnunar með 1 jafngildi af H<sub>2</sub>, hefur enga UV-gleypni. Við tæmandi vetnun hvarfast 4 jafngildi af H<sub>2</sub> og oktahýdrócembren, C<sub>20</sub>H<sub>40</sub>, myndast. Við ósonrof cembrens, og síðari meðhöndlun ósoníðsins með sinki, fást fjögur myndefni sem innihalda karbónýl:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbThZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c39892a3ff91529180336d28d56eef323214fa5a/OChem_27_EC_020.jpg\" alt=\"The structure of four carbonyl-containing compounds, a dialdehyde, a  keto-aldehyde, a dialdehyde, and a keto-aldehyde. \">\n<p>Leggðu til byggingu fyrir cembren sem er í samræmi við myndun þess úr geranýlgeranýldífosfati.</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

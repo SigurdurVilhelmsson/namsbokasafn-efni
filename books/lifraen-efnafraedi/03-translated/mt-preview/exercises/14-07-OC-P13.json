@@ -1,0 +1,19 @@
+{
+  "nickname": "14-07-OC-P13",
+  "source_uid": "37649@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "338860",
+      "stem_html": "Reiknaðu orkusvið rafsegulgeislunar á útfjólubláa svæði rófsins frá 200 til 400 nm (sjá <b>kafla 12.5</b>). Hvernig er þetta gildi í samanburði við gildin sem áður voru reiknuð fyrir IR- og NMR-litrófsgreiningu?",
+      "collaborator_solutions": [
+        {
+          "content_html": "300–600 kJ/mól; UV-orka er meiri en IR- eða NMR-orka."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "30-99-OC-MP01",
+  "source_uid": "39365@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355070",
+      "stem_html": "<p>Eftirfarandi umröðun á <i>N</i>-allýl-<i>N</i>,<i>N</i>-dímetýlanilínjón hefur sést. Stingdu upp á hvarfgangi.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdm9aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ceb347d2b2cea274322d4d824d2bf3ed956b4753/OChem_30_EC_003.jpg\" alt=\"N-allyl-N,N-dimethylanilinium ion where prop-1-ene bonded with nitrogen cation at C 1 reacts with heat to form ortho-allyl-N,N-dimethylanilinium ion where prop-1-ene is bonded at C 2.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

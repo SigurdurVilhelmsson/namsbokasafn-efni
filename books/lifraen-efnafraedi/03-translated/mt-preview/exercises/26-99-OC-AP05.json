@@ -1,0 +1,15 @@
+{
+  "nickname": "26-99-OC-AP05",
+  "source_uid": "39244@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "349801",
+      "stem_html": "Prólín hefur p<i>K</i><sub>a1</sub> = 1,99 og p<i>K</i><sub>a2</sub> = 10,60. Notaðu Henderson–Hasselbalch-jöfnuna til að reikna út hlutfall róteindaðra og hlutlausra forma við pH = 2,50. Reiknaðu út hlutfall hlutlausra og afróteindaðra forma við pH = 9,70.",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "07-99-OC-MP06",
+  "source_uid": "36650@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354366",
+      "stem_html": "<p>Álagning HCl á 1-ísóprópenýl-1-metýlsýklópentan gefur 1-klór-1,2,2-trímetýlsýklóhexan. Stingdu upp á hvarfgangi, sýndu byggingu milliefnanna og notaðu sveigðar örvar til að sýna flæði rafeinda í hverju skrefi.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdE1SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7842654b0c0e4f09b2647af9d87d788505727853/OChem_07_EC_011.jpg\" alt=\"Cyclopentane bonded to a methyl group and C2 of propene reacts with hydrogen chloride to form 1-chloro-1,2,2-trimethylcyclohexane.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

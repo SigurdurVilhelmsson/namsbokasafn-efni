@@ -1,0 +1,15 @@
+{
+  "nickname": "08-99-OC-AP08",
+  "source_uid": "37166@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "356492",
+      "stem_html": "<p>Álagning HCl á 1-metoxýsýklóhexen gefur 1-klór-1-metoxýsýklóhexan sem eina myndefnið. Notaðu vok myndir af karbkatjóna-milliefninu til að útskýra hvers vegna engin af hinni staðhverfunni myndast.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3NTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--709a84d24695c02bf7e828929f433b3010992ccb/OChem_08_EC_037.jpg\" alt=\"A reaction shows 1-methoxycyclohexene reacting with hydrochloric acid to form 1-chloro-1-methoxycyclohexene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "26-05-OC-P10",
+  "source_uid": "39221@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359589",
+      "stem_html": "Sýndu byggingu myndefnisins sem þú myndir búast við að fá með S<sub>N</sub>2 efnahvarfi cysteínleifar við joðediksýru.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcW9aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--54238bd131fd192e9bb150f38a99d63c134e4021/OChem_26_EC_205.jpg\" alt=\"The structure of the reaction product of cysteine and iodoacetic acid. A zwitterionic   S-aceto alkylated dicarboxylic acidic amino acid derivative i\">"
+        }
+      ]
+    }
+  ]
+}

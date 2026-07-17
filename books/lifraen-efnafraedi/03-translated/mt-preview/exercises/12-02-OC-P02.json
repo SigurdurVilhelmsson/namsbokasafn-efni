@@ -1,0 +1,28 @@
+{
+  "nickname": "12-02-OC-P02",
+  "source_uid": "37418@13",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Tvö massaróf eru sýnd á mynd 12.9. Annað rófið er af 2-metýl-2-penteni; hitt er af 2-hexeni. Hvert er hvað? Útskýrðu.",
+  "questions": [
+    {
+      "id": "360078",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0FVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fcb9cef21e9e58f2d48981c6b231aee4e21d6d88/OChem_12_02_006a.jpg\" alt=\"A mass spectrum with a base peak at m / z 41 and a molecular ion at m / z 84.\">\n",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-metýl-2-penten"
+        }
+      ]
+    },
+    {
+      "id": "360079",
+      "stem_html": "<figure id=\"fig-00202\"><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0VVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--41d4527dc370aea3df21f8daa23e9302189ec9f0/OChem_12_02_006b.jpg\" alt=\"A mass spectrum with a base peak at m / z 55 and a molecular ion at m / z 84.\">\n<figcaption>Massaróf fyrir dæmi 12-2.</figcaption>\n</figure>",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-hexen"
+        }
+      ]
+    }
+  ]
+}

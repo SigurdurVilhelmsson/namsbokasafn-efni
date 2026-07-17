@@ -1,0 +1,46 @@
+{
+  "nickname": "17-04-OC-P08",
+  "source_uid": "37873@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvaða karbónýlefnasambönd gefa eftirfarandi alkóhól við afoxun með LiAlH<sub>4</sub>? Sýndu alla möguleika.",
+  "questions": [
+    {
+      "id": "359354",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcW9WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ce255c16148c9662d4f8b8e367757995d0abe186/OChem_17_04_013a.jpg\" alt=\"The structure of a benzene ring linked to C H 2 O H at C 1 position.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Bensaldehýð eða bensósýra (eða ester)"
+        }
+      ]
+    },
+    {
+      "id": "359355",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6ab27d5b01ce7c2c98ab37d571fc0933d3b17041/OChem_17_04_013b.jpg\" alt=\"The structure of benzyl alchol with a methyl substituent on the benzylic position.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Acetófenón"
+        }
+      ]
+    },
+    {
+      "id": "359356",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3129d08916d26f1d0dd6ac45695f83c8476f5843/OChem_17_04_013c.jpg\" alt=\"The structure of cyclohexane with hydroxyl and hydrogen on C 1 position.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Sýklóhexanón"
+        }
+      ]
+    },
+    {
+      "id": "359357",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTBWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--add9a4780393531adc38ac635e9bfd22535c6f76/OChem_17_04_013d.jpg\" alt=\"A condensed structure of 2-methylpropan-1-ol.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-Metýlprópanal eða 2-metýlprópansýra (eða ester)"
+        }
+      ]
+    }
+  ]
+}

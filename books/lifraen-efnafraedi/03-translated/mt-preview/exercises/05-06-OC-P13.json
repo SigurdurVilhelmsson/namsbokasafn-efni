@@ -1,0 +1,19 @@
+{
+  "nickname": "05-06-OC-P13",
+  "source_uid": "36505@8",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360418",
+      "stem_html": "<p>Ein af eftirfarandi sameindum <b>(a)</b>–<b>(d)</b> er D-erýþrósa 4-fosfat, milliefni í Calvin-hringnum, ljóstillífunarferli sem plöntur nota til að binda CO<sub>2</sub> í kolvetni. Ef D-erýþrósa 4-fosfat hefur <i>R</i>-rúmefnafræði við báðar hendnimiðjur, hvaða byggingarmynd er þá rétt? Hver af hinum þremur byggingarmyndunum er handhverfa D-erýþrósa 4-fosfats og hverjar eru víxlhverfur?</p>\n<p><b>(a)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVlYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--82a6487165bedf0c8572dcde5544eb56054aa908/OChem_05_06_003a.jpg\" alt=\"Vertically, aldehyde dashed bond carbon bond carbon dashed bond C H 2 phosphate. C 2 and C 3 both have hydrogen (wedge, left) and hydroxyl (wedge, right).\">\n <b>(b)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6bc0b12e27b697144d2f811a27808d54900f62d4/OChem_05_06_003b.jpg\" alt=\"Vertically, aldehyde dashed bond carbon bond carbon dashed bond C H 2 phosphate. C 2 has hydroxyl (left), H on wedges, C 3 has hydrogen (left), hydroxyl on wedges.\">\n <b>(c)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--22b3fba309232b882e853f53b449773c33a92b18/OChem_05_06_003c.jpg\" alt=\"Vertically, aldehyde dashed bond carbon bond carbon dashed bond C H 2 phosphate. C 2 has hydrogen (left), hydroxyl on wedges, C 3 has hydroxyl (left), hydrogen on wedges.\">\n <b>(d)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWtYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7bf667a1b92067951d9b93276028b01c11c20884/OChem_05_06_003d.jpg\" alt=\"Vertically, aldehyde dashed bond carbon bond carbon dashed bond C H 2 phosphate. C 2 and C 3 both have hydroxyl (wedge, left) and hydrogen (wedge, right).\"></p>",
+      "collaborator_solutions": [
+        {
+          "content_html": "Efnasamband <b>(a)</b> er D-erýþrósa 4-fosfat, <b>(d)</b> er handhverfa þess og <b>(b)</b> og <b>(c)</b> eru víxlhverfur."
+        }
+      ]
+    }
+  ]
+}

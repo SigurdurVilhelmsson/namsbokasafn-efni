@@ -1,0 +1,15 @@
+{
+  "nickname": "21-99-OC-VC04",
+  "source_uid": "38180@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361415",
+      "stem_html": "<p>Rafstöðumöguleikakort af dæmigerðu amíði (asetamíði) og asýlasíði (asetýlasíði) eru sýnd. Hvort af þessu tvennu telur þú vera hvarfgjarnara í kjarnsækinni asýlskiptihvörfum? Útskýrðu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--edbb6ba5d965df053cce34b36ae21d43957cfbb5/OChem_21_EC_025.jpg\" alt=\"The electrostatic potential map and structure of acetamide and acetyl azide. The azide has a carbonyl group with a methyl group on one side and a chain of three nitrogen atoms on the other side. The nitrogens are double bonded to each other.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

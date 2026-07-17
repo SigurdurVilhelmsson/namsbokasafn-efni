@@ -1,0 +1,25 @@
+{
+  "nickname": "14-99-OC-AP35",
+  "source_uid": "37724@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Kolvetnið <b>A</b>, C<sub>10</sub>H<sub>14</sub>, hefur UV-gleypni við <i>λ</i><sub>max</sub> = 236 nm og gefur kolvetnið <b>B</b>, C<sub>10</sub>H<sub>18</sub>, við vetnun. Ósonrof <b>A</b>, og síðari meðhöndlun með sinki/ediksýru, gefur eftirfarandi díketódíaldehýð:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2dWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d06fc89dc6534a95fd6ea38c83457995c86d18d2/OChem_14_EC_032.jpg\" alt=\"The condensed formula of compound has a 10-carbon chain. C 1, C 5, C 6, and C 10 are all double-bonded to oxygen atoms.\">\n<p>Mynd sýnir byggingu díketódíaldehýðs. Hún sýnir tvo karbónýlhópa sem eru eintengdir hvor öðrum. Hver karbónýlhópur er tengdur við keðju af þremur metýlenhópum og síðan við aldehýðhóp.</p>",
+  "questions": [
+    {
+      "id": "358545",
+      "stem_html": "Stingdu upp á tveimur mögulegum byggingum fyrir <b>A</b>.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358546",
+      "stem_html": "Kolvetnið <b>A</b> hvarfast við maleínanhýdríð og gefur Diels-Alder-álagningarafurð. Hvor af byggingunum þínum fyrir <b>A</b> er rétt?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358547",
+      "stem_html": "Skrifaðu efnahvörfin og sýndu hvarfefni og myndefni.",
+      "collaborator_solutions": []
+    }
+  ]
+}

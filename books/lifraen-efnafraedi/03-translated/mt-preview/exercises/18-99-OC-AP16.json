@@ -1,0 +1,15 @@
+{
+  "nickname": "18-99-OC-AP16",
+  "source_uid": "38749@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "347201",
+      "stem_html": "<p>Rauðrefurinn <i>(Vulpes vulpes)</i> notar efnafræðilegt samskiptakerfi sem byggir á lyktarmerkjum í þvagi. Einn hluti refaþvags er súlfíð þar sem massarófið hefur M<sup>+</sup> = 116. IR-litrófsgreining sýnir ákafan topp við 890 cm<sup>–1</sup> og <sup>1</sup>H NMR-litrófsgreining sýnir eftirfarandi toppa:</p>\n<ul style=\"list-style-type:none\">\n<li>1,74 <i>δ</i> (3 H, singlet); 2,11 <i>δ</i> (3 H, singlet); 2,27 <i>δ</i> (2 H, triplet, <i>J</i> = 4,2 Hz); 2,57 <i>δ</i> (2 H, triplet, <i>J</i> = 4,2 Hz); 4,73 <i>δ</i> (2 H, breiður)</li>\n</ul>\n<p>Leggðu til byggingu sem samræmist þessum gögnum. [Ath.: (CH<sub>3</sub>)<sub>2</sub>S gleypir við 2,1 <i>δ</i>].</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

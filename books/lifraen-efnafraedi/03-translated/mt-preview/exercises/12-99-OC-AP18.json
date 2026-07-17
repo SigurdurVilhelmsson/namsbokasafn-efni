@@ -1,0 +1,20 @@
+{
+  "nickname": "12-99-OC-AP18",
+  "source_uid": "37444@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig gætir þú notað innrauða litrófsgreiningu til að greina á milli eftirfarandi hverfupara?",
+  "questions": [
+    {
+      "id": "341856",
+      "stem_html": "HC<span data-math=\"\\text{≡}\"></span>CCH<sub>2</sub>NH<sub>2</sub> og CH<sub>3</sub>CH<sub>2</sub>C<span data-math=\"\\text{≡}\"></span>N",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341857",
+      "stem_html": "CH<sub>3</sub>COCH<sub>3</sub> og CH<sub>3</sub>CH<sub>2</sub>CHO",
+      "collaborator_solutions": []
+    }
+  ]
+}

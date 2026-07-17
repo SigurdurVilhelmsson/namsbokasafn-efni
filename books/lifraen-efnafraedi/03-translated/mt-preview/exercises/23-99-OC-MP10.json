@@ -1,0 +1,15 @@
+{
+  "nickname": "23-99-OC-MP10",
+  "source_uid": "38916@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359856",
+      "stem_html": "<p>Fyrsta skrefið í sítrónusýruhringnum í umbrotum fæðu er efnahvarf oxalóasetats við asetýl CoA til að gefa sítrat. Leggðu til hvarfgang og notaðu sýru- eða basahvötun eftir þörfum.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjRZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5233917b7ed2fe4e4d44078d94a495d9750f201b/OChem_23_EC_023.jpg\" alt=\"The reaction shows oxaloacetate with acetyl coenzyme A (first step in citric acid cycle) in multiple steps to form citrate. Oxaloacetate has a 3-carbon chain with two terminal carboxylate groups.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

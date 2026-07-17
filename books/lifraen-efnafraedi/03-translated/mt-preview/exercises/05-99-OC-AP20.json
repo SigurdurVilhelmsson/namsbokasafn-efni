@@ -1,0 +1,15 @@
+{
+  "nickname": "05-99-OC-AP20",
+  "source_uid": "36583@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354205",
+      "stem_html": "<p>Xýlósi er algeng sykra sem finnst í mörgum viðartegundum, þar á meðal hlyni og kirsuberjaviði. Þar sem mun minni hætta er á að hann valdi tannskemmdum en súkrósi hefur xýlósi verið notaður í sælgæti og tyggigúmmí. Úthlutaðu <i>R</i> eða <i>S</i> stillingum á hendnimiðjurnar í xýlósa.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0VSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e5936f1a5f44f57c00496003ce67c6bfb179ccab/OChem_05_EC_016.jpg\" alt=\"Acyclic wedge-dash structure of (plus)-xylose.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

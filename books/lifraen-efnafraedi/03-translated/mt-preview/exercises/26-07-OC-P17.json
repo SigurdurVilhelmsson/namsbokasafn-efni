@@ -1,0 +1,19 @@
+{
+  "nickname": "26-07-OC-P17",
+  "source_uid": "39228@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348961",
+      "stem_html": "Skrifaðu öll fimm skrefin sem þarf til að mynda Leu-Ala úr alaníni og lefsíni.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<p><b>(1)</b> Verndaðu amínhóp lefsíns.</p>\n<p><b>(2)</b> Verndaðu karboxýlsýruhóp alaníns.</p>\n<p><b>(3)</b> Tengdu saman vernduðu amínósýrurnar með DCC.</p>\n<p><b>(4)</b> Fjarlægðu verndarhóp lefsíns.</p>\n<p><b>(5)</b> Fjarlægðu verndarhóp alaníns.</p>"
+        }
+      ]
+    }
+  ]
+}

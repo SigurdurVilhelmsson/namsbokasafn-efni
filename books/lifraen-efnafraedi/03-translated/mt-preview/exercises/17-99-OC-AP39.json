@@ -1,0 +1,15 @@
+{
+  "nickname": "17-99-OC-AP39",
+  "source_uid": "37940@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360083",
+      "stem_html": "<p>Efnasambandið <b>A</b>, C<sub>8</sub>H<sub>10</sub>O, hefur IR- og <sup>1</sup>H NMR-róf eins og sýnt er. Leggðu til byggingu sem samræmist þeim rófum sem sjást og merktu hvern topp á NMR-rófinu. Athugaðu að gleypnin við 5,5 <i>δ</i> hverfur þegar D<sub>2</sub>O er bætt við.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b53806f4e406113e8bcc05c517ff227f8bfbe11f/OChem_17_EC_056.jpg\" alt=\"An I R spectrum with broad peak around 3400, peaks just below 3000, and peaks at 1500 and 1600 wavenumbers.\">\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2tXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--66417891fb926e308aeda3fc7c22b9a243b482f5/OChem_17_EC_057.jpg\" alt=\"H N M R spectrum with shifts at 1.16 triplet), 2.55 (quartet), 5.50 (singlet), 6.74 (doublet), and 7.03 (doublet). Relative areas are 3, 2, 1, 2, and 2 respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

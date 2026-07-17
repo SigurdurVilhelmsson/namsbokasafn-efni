@@ -1,0 +1,20 @@
+{
+  "nickname": "13-99-OC-VC01",
+  "source_uid": "37490@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Í hversu marga toppa myndir þú búast við að <sup>1</sup>H NMR-merki merktu róteindanna myndu klofna? (Grænt = Cl.)",
+  "questions": [
+    {
+      "id": "358334",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazRVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--03f40598f64aec1869d41ca6945cd3bf38e29f04/OChem_13_EC_001a.jpg\" alt=\"The ball-and-stick model has a 4-carbon chain. C 1 is bonded to chlorine atom. C 2 is double bonded to oxygen atom. C 3 is bonded to methyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358335",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazhVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--96aabd7ec7c80b96a253615fcc905c6e6357d40e/OChem_13_EC_001b.jpg\" alt=\"The ball-and-stick model has a benzene ring. C 1 is bonded to a 2-carbon chain, in which C 1 is an aldehyde group. C 4 is bonded to methyl.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

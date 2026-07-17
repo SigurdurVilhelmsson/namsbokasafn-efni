@@ -1,0 +1,25 @@
+{
+  "nickname": "13-99-OC-AP10",
+  "source_uid": "37504@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um klofnunarmynstur fyrir hverja tegund vetnis í eftirfarandi sameindum:",
+  "questions": [
+    {
+      "id": "338143",
+      "stem_html": "(CH<sub>3</sub>)<sub>3</sub>CH",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338144",
+      "stem_html": "CH<sub>3</sub>CH<sub>2</sub>CO<sub>2</sub>CH<sub>3</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338145",
+      "stem_html": "<i>trans</i>-2-búten",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "26-99-OC-AP23",
+  "source_uid": "39262@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359641",
+      "stem_html": "<p>Arginín, basískasta af 20 algengu amínósýrunum, inniheldur <i>gúanidínó</i>-virknihóp í hliðarkeðju sinni. Útskýrðu með því að nota vok myndir til að sýna hvernig róteindaði gúanidínóhópurinn er stöðgaður.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcnNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--903eba54c1789d0a92eed94dd92c21d092340543/OChem_26_EC_019.jpg\" alt=\"The structure of L- arginine in which the guanidino group is labeled. It comprises wedged bonded  C1 amine cation and carboxylate ion.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "20-99-OC-AP31",
+  "source_uid": "38141@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359213",
+      "stem_html": "<p>Leggðu til myndun á bólgueyðandi lyfinu fenklórak úr fenýlsýklóhexani.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFFXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--43a15720f56795b61ed75d949a46af96cb490615/OChem_20_EC_032.jpg\" alt=\"The structure of Fenclorac. A phenylcyclohexane ring is depicted with a chlorine atom bonded to the third carbon of the benzene. 2-chloroacetic acid occupies the first carbon of the benzene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

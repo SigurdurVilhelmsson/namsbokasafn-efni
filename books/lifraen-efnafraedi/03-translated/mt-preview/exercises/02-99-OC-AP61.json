@@ -1,0 +1,15 @@
+{
+  "nickname": "02-99-OC-AP61",
+  "source_uid": "36173@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357166",
+      "stem_html": "<p>Fenól, C<sub>6</sub>H<sub>5</sub>OH, er sterkari sýra en metanól, CH<sub>3</sub>OH, þótt bæði innihaldi O–H efnatengi. Teiknaðu byggingu anjónanna sem myndast við losun H<sup>+</sup> frá fenól og metanóli og notaðu vokmyndir til að útskýra muninn á sýrustigi.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcG9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d754c27f475dea5dbd050aa5519324a29bc5bc10/OChem_02_EC_027.jpg\" alt=\"The structures of phenol and methanol with their respective p K a values, 9.89 and 15.54.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

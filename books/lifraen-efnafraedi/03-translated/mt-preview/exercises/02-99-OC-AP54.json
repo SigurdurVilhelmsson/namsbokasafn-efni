@@ -1,0 +1,15 @@
+{
+  "nickname": "02-99-OC-AP54",
+  "source_uid": "36166@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "345870",
+      "stem_html": "Gefðu þér að þú hafir tvær ómerktar flöskur, önnur inniheldur fenól (p<i>K</i><sub>a</sub> = 9,9) og hin ediksýru (p<i>K</i><sub>a</sub> = 4,76). Í ljósi svars þíns við dæmi 2-52, stingdu upp á einfaldri leið til að ákvarða hvað er í hvorri flösku.",
+      "collaborator_solutions": []
+    }
+  ]
+}

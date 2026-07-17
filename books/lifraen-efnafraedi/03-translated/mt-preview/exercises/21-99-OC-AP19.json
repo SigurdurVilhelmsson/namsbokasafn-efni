@@ -1,0 +1,15 @@
+{
+  "nickname": "21-99-OC-AP19",
+  "source_uid": "38213@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361495",
+      "stem_html": "<p>Pólýimíð með byggingunni sem sýnd er eru notuð sem húðun á gler og plast til að bæta rispuþol. Hvernig myndir þú mynda pólýimíð? (Sjá dæmi 21-39.)</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1FYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9db9558c5e919f4e72d0946e63bd65fd109bdcf9/OChem_21_EC_045.jpg\" alt=\"Polyimide structure in parentheses with subscript n shows benzene fused between two cyclopentane with N and two carbonyls. Cyclopentane ring is single-bonded to another benzene on right with free bond.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

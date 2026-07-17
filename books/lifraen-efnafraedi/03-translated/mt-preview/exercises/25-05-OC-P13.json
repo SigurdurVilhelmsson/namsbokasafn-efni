@@ -1,0 +1,19 @@
+{
+  "nickname": "25-05-OC-P13",
+  "source_uid": "39051@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358760",
+      "stem_html": "Teiknaðu <i>β</i>-<small style=\"font-variant: small-caps\">D</small>-galaktópýranósa og <i>β</i>-<small style=\"font-variant: small-caps\">D</small>-mannópýranósa í stöðugri stólstellingum sínum. Merktu hvern hringhóp sem annaðhvort áslægan eða miðlægan. Hvorn myndir þú búast við að væri stöðugri, galaktósi eða mannósi?",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbThaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b1a071b27104219a4a2a7e2298cf2d02e86a6c84/OChem_25_EC_208.jpg\" alt=\"Structures of beta D-galactopyranose and beta-D-mannopyranose.  The C 4 hydroxyl group of beta galactopyranose is equatorial and  C 2 hydroxyl group of beta mannopyranose is axial. \">"
+        }
+      ]
+    }
+  ]
+}

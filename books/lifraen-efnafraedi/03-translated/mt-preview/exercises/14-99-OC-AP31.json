@@ -1,0 +1,15 @@
+{
+  "nickname": "14-99-OC-AP31",
+  "source_uid": "37720@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358537",
+      "stem_html": "<p>Aldrín, klórað skordýraeitur sem nú er bannað í flestum löndum síðan 1990, er hægt að búa til með Diels-Alder-efnahvarfi hexaklór-1,3-sýklópentadíens við norbornadíen. Hver er bygging aldríns?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1VWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--24d960dde304482a3de1dd090cfdddac1a5e38dd/OChem_14_EC_029.jpg\" alt=\"The structure of norbornadiene has a 7-membered bicyclic ring with two double bonds.\">\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

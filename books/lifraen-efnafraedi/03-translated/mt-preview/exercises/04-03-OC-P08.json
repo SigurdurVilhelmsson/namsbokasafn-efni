@@ -1,0 +1,19 @@
+{
+  "nickname": "04-03-OC-P08",
+  "source_uid": "36479@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "347295",
+      "stem_html": "Hver H ⟷ H skyggð víxlverkun í etani kostar um 4,0 kJ/mól. Hversu margar slíkar víxlverkanir eru til staðar í sýklóprópani? Hve stór hluti af heildarálagsorku sýklóprópans, 115 kJ/mól (27,5 kkal/mól), stafar af snúningsálagi?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Sex víxlverkanir; 21% af álagi"
+        }
+      ]
+    }
+  ]
+}

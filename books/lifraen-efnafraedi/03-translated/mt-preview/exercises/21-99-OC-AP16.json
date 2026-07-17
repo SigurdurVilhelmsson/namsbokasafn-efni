@@ -1,0 +1,15 @@
+{
+  "nickname": "21-99-OC-AP16",
+  "source_uid": "38210@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361489",
+      "stem_html": "<p>Þrepvaxtarfjölliðan nælon 6 er framleidd úr kaprólaktami. Efnahvarfið felur í sér upphaflegt efnahvarf kaprólaktams við vatn til að gefa opið amínósýru-milliefni, og síðan hitun til að mynda fjölliðuna. Stingið upp á hvarfgöngum fyrir bæði skrefin og sýnið byggingu nælons 6.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0VYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--74f76058badf9a0806584bcc9894e3833d264ec1/OChem_21_EC_042.jpg\" alt=\"The structure of caprolactam comprises of a seven-membered ring containing a carbonyl group attached to an N H group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

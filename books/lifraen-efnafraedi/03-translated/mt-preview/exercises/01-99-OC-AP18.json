@@ -1,0 +1,25 @@
+{
+  "nickname": "01-99-OC-AP18",
+  "source_uid": "37575@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Leggið til byggingar fyrir sameindir sem uppfylla eftirfarandi lýsingar:",
+  "questions": [
+    {
+      "id": "338526",
+      "stem_html": "Inniheldur tvö <i>sp</i><sup>2</sup>-blendinguð kolefni og tvö <i>sp</i><sup>3</sup>-blendinguð kolefni",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338527",
+      "stem_html": "Inniheldur aðeins fjögur kolefni, sem öll eru <i>sp</i><sup>2</sup>-blendinguð",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338528",
+      "stem_html": "Inniheldur tvö <i>sp</i>-blendinguð kolefni og tvö <i>sp</i><sup>2</sup>-blendinguð kolefni",
+      "collaborator_solutions": []
+    }
+  ]
+}

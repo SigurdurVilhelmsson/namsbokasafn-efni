@@ -1,0 +1,25 @@
+{
+  "nickname": "09-99-OC-MP07",
+  "source_uid": "37213@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáið fyrir um myndefnið og sýnið allan hvarfganginn með rafeindaflutningi fyrir eftirfarandi tveggja þrepa efnasmíðar.",
+  "questions": [
+    {
+      "id": "353782",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFlTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2a3cb45ea0035d1f9171d5b2a3ff8d099c2ab1b4/OChem_09_EC_021a.jpg\" alt=\"A benzene ring connected to a C2 alkyne reacts with sodium amide and methyl iodide.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353783",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--97a3189490e3dd8a100c0ecac807047003e9eb72/OChem_09_EC_021b.jpg\" alt=\"A C5 keto substituted alkyne reacts with sodium amide and ethyl iodide.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353784",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--91dd0f2f968199b331cedf3cba85c5ffd394ccb0/OChem_09_EC_021c.jpg\" alt=\"A C4 terminal alkyne reacts with sodium amide and phenyl methyl bromide.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

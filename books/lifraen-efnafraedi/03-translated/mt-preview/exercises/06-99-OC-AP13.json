@@ -1,0 +1,20 @@
+{
+  "nickname": "06-99-OC-AP13",
+  "source_uid": "37333@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>2-klór-2-metýlprópan hvarfast við vatn í þremur skrefum og myndar 2-metýl-2-própanól. Fyrsta skrefið er hægara en annað skrefið, sem er aftur á móti mun hægara en það þriðja. Efnahvarfið á sér stað hægt við stofuhita og jafnvægisfastinn er um það bil 1.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDBUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ae30bb10117970af8f8a164b4ebdacdba154552b/OChem_06_EC_021.jpg\" alt=\"A three-step reversible reaction shows the formation of 2-methyl-2-propanol, hydronium ion, and chloride ion from 2-chloro-2-methylpropane via a carbocation intermediate.\">",
+  "questions": [
+    {
+      "id": "353371",
+      "stem_html": "Gefðu upp áætluð gildi fyrir Δ<i>G</i><sup>‡</sup> og Δ<i>G</i>° sem eru í samræmi við ofangreindar upplýsingar.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353372",
+      "stem_html": "Teiknaðu orkurit fyrir efnahvarfið, merktu alla áhugaverða punkta og settu hlutfallsleg orkustig á ritið í samræmi við upplýsingarnar sem gefnar eru.",
+      "collaborator_solutions": []
+    }
+  ]
+}

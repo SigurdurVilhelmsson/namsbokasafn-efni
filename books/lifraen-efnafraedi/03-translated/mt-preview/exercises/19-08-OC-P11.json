@@ -1,0 +1,19 @@
+{
+  "nickname": "19-08-OC-P11",
+  "source_uid": "38005@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "346031",
+      "stem_html": "Imínmyndun er afturkræf. Sýndu öll skrefin sem eiga sér stað í sýruhvötuðu efnahvarfi imíns við vatn (vatnsrof) til að gefa aldehýð eða ketón auk aðalamíns.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Skrefin eru nákvæmlega andstæðan við framhvarfið sem sýnt er á mynd 19.7."
+        }
+      ]
+    }
+  ]
+}

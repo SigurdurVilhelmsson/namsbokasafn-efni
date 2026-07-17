@@ -1,0 +1,19 @@
+{
+  "nickname": "25-05-OC-P14",
+  "source_uid": "39052@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358762",
+      "stem_html": "Teiknaðu <i>β</i>-<small style=\"font-variant: small-caps\">L</small>-galaktópýranósa í stöðugri stólstellingu sinni og merktu hópana sem annaðhvort áslæga eða miðlæga.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f3eaffec760ee2f174539e4e70094b9eb423ee3f/OChem_25_EC_209.jpg\" alt=\"Structure of beta-L-galactopyranose with an axial OH at C 4 and three equatorial  O H groups at C 1, C 2 and C 3.\">"
+        }
+      ]
+    }
+  ]
+}

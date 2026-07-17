@@ -1,0 +1,15 @@
+{
+  "nickname": "29-99-OC-MP05",
+  "source_uid": "39319@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358153",
+      "stem_html": "<p>Amínósýran týrósín brotnar niður í lífverum í nokkrum skrefum sem fela í sér eftirfarandi umbreytingar:</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUlaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--be2b0dce03499957fb60e7e266bda79e0d33d98d/OChem_29_EC_009.jpg\" alt=\"Tyrosine is degraded to maleoylacetoacetate and then to fumaroylacetoacetate, and acetoacetate and fumarate with acetoacetate forming coenzyme A.\">\n<p>Ísómerun tvítengis maleóýlasetóasetats í fúmaróýlasetóasetat er hvötuð af nánast hvaða kjarnsæki sem er, <b>:</b>Nu<sup>–</sup>. Stingdu upp á hvarfgangi.</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

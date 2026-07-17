@@ -1,0 +1,20 @@
+{
+  "nickname": "05-99-OC-AP46",
+  "source_uid": "36609@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Keton hvarfast við natríumasetýlíð (natríumsalt asetýlens, Na<sup>+–</sup> : C<span data-math=\"\\text{≡}\"></span>CH) og gefa alkóhól. Til dæmis gefur efnahvarf natríumasetýlíðs við 2-bútanón 3-metýl-1-pentýn-3-ól:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFlSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--75f676a5dde319c7c7a6166002aa7024aad49bcb/OChem_05_EC_032.jpg\" alt=\"In a reaction, 2-butanone reacts with Na superscript plus C superscript minus triple bonded to C H in first step and hydronium ion in the second step to form 3-methyl-1-pentyn-3-ol.\">",
+  "questions": [
+    {
+      "id": "354255",
+      "stem_html": "Er myndefnið hendin?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354256",
+      "stem_html": "Gefðu þér að efnahvarfið eigi sér stað með jöfnum líkum frá bæði Re- og Si-hlið karbónýlhópsins, er myndefnið ljósvirkt? Útskýrðu.",
+      "collaborator_solutions": []
+    }
+  ]
+}

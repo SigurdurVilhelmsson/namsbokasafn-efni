@@ -1,0 +1,15 @@
+{
+  "nickname": "08-99-OC-AP01",
+  "source_uid": "37159@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353500",
+      "stem_html": "<p>Spáðu fyrir um myndefni eftirfarandi efnahvarfa (arómatíski hringurinn er óhvarfgjarn í öllum tilvikum). Sýndu staðsetningu atóma þegar við á.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjBTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0c8fad2a6850a68583f7599902f53a32f23536db/OChem_08_EC_032.jpg\" alt=\"A  reaction shows styrene reacting with either  hydrogen-palladium, bromine, osmium tetroxide, aqueous chlorine, diiodomethane, or  meta-chloroperoxy-benzoic acid to form products, depicted by question marks.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

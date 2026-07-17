@@ -1,0 +1,15 @@
+{
+  "nickname": "14-99-OC-VC01",
+  "source_uid": "37669@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358449",
+      "stem_html": "<p>Sýndu byggingu allra mögulegra álagningarafurða eftirfarandi díens með 1 jafngildi af HCl:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGNVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9cfe88cfd53fccbe62056a11bd449af26e1c21a4/OChem_14_EC_003.jpg\" alt=\"The ball-and-stick model has a cyclopentene ring. C 1 is bonded to an ethene group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "18-99-OC-GP04",
+  "source_uid": "38755@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "343895",
+      "stem_html": "<p><i>Meerwein-hvarfefnið,</i> tríetýloxóníumtetraflúorbórat, er öflugt etýlerunarefni sem breytir alkóhólum í etýletera við hlutlaust pH. Sýndu efnahvarf Meerwein-hvarfefnisins við sýklóhexanól og útskýrðu hvers vegna tríalkýloxóníumsölt eru mun hvarfgjarnari alkýlerunarefni en alkýljoðíð.</p>\n<p style=\"text-align: center\">(CH<sub>3</sub>CH<sub>2</sub>)<sub>3</sub>O<sup>+</sup> BF<sub>4</sub><sup>–</sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Meerwein-hvarfefni</b></p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

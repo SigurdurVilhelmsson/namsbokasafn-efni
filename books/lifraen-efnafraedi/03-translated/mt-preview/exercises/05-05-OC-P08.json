@@ -1,0 +1,46 @@
+{
+  "nickname": "05-05-OC-P08",
+  "source_uid": "36500@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Raðið hverju af eftirfarandi settum af hliðarhópum:",
+  "questions": [
+    {
+      "id": "329172",
+      "stem_html": "−H, −OH, −CH<sub>2</sub>CH<sub>3</sub>, −CH<sub>2</sub>CH<sub>2</sub>OH",
+      "collaborator_solutions": [
+        {
+          "content_html": "−OH, −CH<sub>2</sub>CH<sub>2</sub>OH, −CH<sub>2</sub>CH<sub>3</sub>, −H"
+        }
+      ]
+    },
+    {
+      "id": "329173",
+      "stem_html": "−CO<sub>2</sub>H, −CO<sub>2</sub>CH<sub>3</sub>, −CH<sub>2</sub>OH, −OH",
+      "collaborator_solutions": [
+        {
+          "content_html": "−OH, −CO<sub>2</sub>CH<sub>3</sub>, −CO<sub>2</sub>H, −CH<sub>2</sub>OH"
+        }
+      ]
+    },
+    {
+      "id": "329174",
+      "stem_html": "−CN, −CH<sub>2</sub>NH<sub>2</sub>, −CH<sub>2</sub>NHCH<sub>3</sub>, −NH<sub>2</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "−NH<sub>2</sub>, −CN, −CH<sub>2</sub>NHCH<sub>3</sub>, −CH<sub>2</sub>NH<sub>2</sub>"
+        }
+      ]
+    },
+    {
+      "id": "329175",
+      "stem_html": "−SH, −CH<sub>2</sub>SCH<sub>3</sub>, −CH<sub>3</sub>, −SSCH<sub>3</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "−SSCH<sub>3</sub>, −SH, −CH<sub>2</sub>SCH<sub>3</sub>, −CH<sub>3</sub>"
+        }
+      ]
+    }
+  ]
+}

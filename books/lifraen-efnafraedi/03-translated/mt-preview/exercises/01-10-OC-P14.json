@@ -1,0 +1,46 @@
+{
+  "nickname": "01-10-OC-P14",
+  "source_uid": "37551@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Tilgreindu öll óbindandi rafeindapör í eftirfarandi sameindum og segðu til um hvaða rúmfræði þú býst við fyrir hverja af tilgreindum frumeindum.",
+  "questions": [
+    {
+      "id": "352056",
+      "stem_html": "Súrefnisfrumeindin í dímetýleter, CH<sub>3</sub>–O–CH<sub>3</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "O hefur 2 rafeindapör og er <i>sp</i><sup>3</sup>-blendingað."
+        }
+      ]
+    },
+    {
+      "id": "352057",
+      "stem_html": "<p>Nitursfrumeindin í trímetýlamíni,</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzRVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8aaa383fc9b814af8fbacf20a8ac7613745ce4b4/OChem_01_10_005.jpg\" alt=\"The chemical structure of trimethylamine.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "N hefur 1 rafeindapar og er <i>sp</i><sup>3</sup>-blendingað."
+        }
+      ]
+    },
+    {
+      "id": "352058",
+      "stem_html": "Fosfórfrumeindin í fosfíni, PH<sub>3</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "P hefur 1 rafeindapar og er <i>sp</i><sup>3</sup>-blendingað."
+        }
+      ]
+    },
+    {
+      "id": "352059",
+      "stem_html": "<p>Brennisteinsfrumeindin í amínósýrunni metíóníni,</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzhVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a1fd330651046e30ff2d02429a7bc7876b7ead9c/OChem_01_10_006.jpg\" alt=\"The chemical structure of the amino acid methionine.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "S hefur 2 rafeindapör og er <i>sp</i><sup>3</sup>-blendingað."
+        }
+      ]
+    }
+  ]
+}

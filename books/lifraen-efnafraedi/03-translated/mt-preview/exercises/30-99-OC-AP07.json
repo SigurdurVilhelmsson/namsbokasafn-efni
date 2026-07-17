@@ -1,0 +1,15 @@
+{
+  "nickname": "30-99-OC-AP07",
+  "source_uid": "39376@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355092",
+      "stem_html": "<p>Sýklóhexadekaoktaenið sem sýnt er hverfumyndast í tvær mismunandi hverfur, allt eftir hvarfskilyrðum. Útskýrið niðurstöðurnar sem sjást og tilgreinið hvort hvort efnahvarf sé samhverft eða andhverft.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1FhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c22ae04b533076bba86a004011bdcf34ef9d5a07/OChem_30_EC_012.jpg\" alt=\"Cyclohexadecaoctaene reacts with heat to form a tricyclic product with cis hydrogens at ortho-fused carbons. In light, there are trans hydrogens at ortho-fused carbons.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

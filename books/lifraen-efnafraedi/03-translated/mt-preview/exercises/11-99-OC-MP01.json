@@ -1,0 +1,30 @@
+{
+  "nickname": "11-99-OC-MP01",
+  "source_uid": "37366@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefnið/myndefnin og sýndu hvarfganginn fyrir hvert eftirfarandi efnahvarf. Hvað eiga hvarfgangarnir sameiginlegt? Hvers vegna?",
+  "questions": [
+    {
+      "id": "356255",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjRUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--62f3e62d2e70f512e164fde24c4100c7ee0ce330/OChem_11_EC_011a.jpg\" alt=\"Alt Text Placeholder\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "356256",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjhUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0eba8fadc925710cb50ecd31a8ab1c48577a3330/OChem_11_EC_011b.jpg\" alt=\"Alt Text Placeholder\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "356257",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0FUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fd59d37d6f9fb9137f6cd6a04be6a9a37d7854d4/OChem_11_EC_011c.jpg\" alt=\"Alt Text Placeholder\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "356258",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0VUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bd93f100cbd652be29766eceee0425fcbe132cf1/OChem_11_EC_011d.jpg\" alt=\"Alt Text Placeholder\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

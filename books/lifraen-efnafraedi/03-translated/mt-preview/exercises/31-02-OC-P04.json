@@ -1,0 +1,19 @@
+{
+  "nickname": "31-02-OC-P04",
+  "source_uid": "39399@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "349532",
+      "stem_html": "Vinýlídenklóríð, <span data-math=\"{{\\rm H}_{2}{\\rm C}\\text{═}{\\rm CCl}_{2}}\"></span>, fjölliðast ekki í ísótaktísk, syndíótaktísk og ataktísk form. Útskýrið.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Fjölliðan hefur engar hendnimiðjur."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "nickname": "18-03-OC-P07",
+  "source_uid": "38703@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Segðu fyrir um myndefni eftirfarandi efnahvarfa:",
+  "questions": [
+    {
+      "id": "361118",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUlYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--57ef951705032a7109448b474223dcafaf473207/OChem_18_03_006a.jpg\" alt=\"2-methoxy-2-phenylpropane reacts with hydrogen bromide to form unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbU1YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8e447e5a057d56ce299240f95dc8d272fd5ba0fe/OChem_18_EC_202a.jpg\" alt=\"2-bromo-2-phenylpropane reacts with methanol to form unknown product(s), depicted by a question mark.\">"
+        }
+      ]
+    },
+    {
+      "id": "361119",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--884fc5a860370c3bbfa3b7dc231e1e1411f53f33/OChem_18_03_006b.jpg\" alt=\"Two propyl groups are linked via ether linkage where methyl is linked to C 1. It reacts with hydrogen bromide to form unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7160cc6acdc19451ce50b36129373312f31a08b5/OChem_18_EC_202b.jpg\" alt=\"Structures of 2-butanol and 1-bromopropane separated by a plus sign.\">"
+        }
+      ]
+    }
+  ]
+}

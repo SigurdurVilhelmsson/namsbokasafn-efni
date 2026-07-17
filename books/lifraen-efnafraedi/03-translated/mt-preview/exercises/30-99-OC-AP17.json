@@ -1,0 +1,15 @@
+{
+  "nickname": "30-99-OC-AP17",
+  "source_uid": "39386@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355110",
+      "stem_html": "<p>Tvíhringhexadíen, einnig þekkt sem <i>Dewar-bensen,</i> er afar stöðugt þrátt fyrir að umröðun þess í bensen sé orkulega hagstæð. Útskýrðu hvers vegna umröðunin er svona hæg.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzBhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--103d73f8733d45f29c988d95d4771b3f855b2fe3/OChem_30_EC_021.jpg\" alt=\"Dewar benzene (double bonds at C 2 and C 5, with C 1 bonded to C 4 to produce two fused cyclobutene rings) reacts slowly in heat to form benzene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

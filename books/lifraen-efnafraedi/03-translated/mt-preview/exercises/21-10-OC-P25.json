@@ -1,0 +1,46 @@
+{
+  "nickname": "21-10-OC-P25",
+  "source_uid": "38175@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvers konar virknihópa gætu efnasambönd haft ef þau sýna eftirfarandi IR-gleypni?",
+  "questions": [
+    {
+      "id": "342523",
+      "stem_html": "Gleypni við 1735 cm<sup>–1</sup>",
+      "collaborator_solutions": [
+        {
+          "content_html": "Ester"
+        }
+      ]
+    },
+    {
+      "id": "342524",
+      "stem_html": "Gleypni við 1810 cm<sup>–1</sup>",
+      "collaborator_solutions": [
+        {
+          "content_html": "Sýruklóríð"
+        }
+      ]
+    },
+    {
+      "id": "342525",
+      "stem_html": "Ísog við 2500 til 3300 cm<sup>–1</sup> og 1710 cm<sup>–1</sup>",
+      "collaborator_solutions": [
+        {
+          "content_html": "Karboxýlsýra"
+        }
+      ]
+    },
+    {
+      "id": "342526",
+      "stem_html": "Ísog við 1715 cm<sup>–1</sup>",
+      "collaborator_solutions": [
+        {
+          "content_html": "Alifatískt ketón eða sýklóhexanón"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "19-99-OC-MP18",
+  "source_uid": "38040@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360717",
+      "stem_html": "<p>Í ljósi svars þíns við dæmi 19-45, stingdu upp á hvarfgangi fyrir myndun 3,5-dímetýlísóxazóls úr hýdroxýlamíni og 2,4-pentandíóni.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGtXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--41c6360f104d38b147f52b6341b925549920d9d1/OChem_19_EC_037.jpg\" alt=\"The structure of 3,5-dimethylisoxazole shows a cyclopentadiene ring with adjacent oxygen and nitrogen atoms. A methyl group is attached to the carbons adjacent to oxygen and nitrogen.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

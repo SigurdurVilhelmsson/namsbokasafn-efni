@@ -1,0 +1,35 @@
+{
+  "nickname": "31-99-OC-AP01",
+  "source_uid": "39415@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Auðkennið einliðueiningarnar sem hver eftirfarandi fjölliða er gerð úr og segið til um hvort hver þeirra sé keðjuvöxtunar- eða þrepavöxtunarfjölliða:",
+  "questions": [
+    {
+      "id": "355032",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWdhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--24aa1898b15d21f585d179f139b58dd7fed8010a/OChem_31_EC_007a.jpg\" alt=\"The structure of a polymer whose repeating unit is C H 2 O. The unit is inside parentheses with bonds extending out and has a subscript n.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355033",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWthIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ab96c864fb76ec2085b615a1ad3394a3c19b38e7/OChem_31_EC_007b.jpg\" alt=\"The structure of a polymer whose repeating unit is C F 2 C F Cl. The unit is inside parentheses with bonds extending out and has a subscript n.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355034",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaW9hIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--053ebda81d4c35d63e2cc73dc5c55fc0f97022b9/OChem_31_EC_007c.jpg\" alt=\"The structure of a polymer comprising N H connected to three methylene units that is linked to a carbonyl. The structure is inside the parentheses and has a subscript n.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355035",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXNhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ad0070ed568ebe965f73f5397990a92453fb1a03/OChem_31_EC_007d.jpg\" alt=\"The structure of a polymer comprising oxygen linked to a benzene ring with a carbonyl group. The structure is inside the parentheses and has a subscript n.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355036",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXdhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c325c72862af1a80f6a4f0464131e50ed54b4933/OChem_31_EC_007e.jpg\" alt=\"The structure of a polymer comprising oxygen linked to cyclohexane further bonded to another oxygen and carbonyl group. The structure is inside the parentheses and has a subscript n.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

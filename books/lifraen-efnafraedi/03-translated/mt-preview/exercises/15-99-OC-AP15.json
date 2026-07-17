@@ -1,0 +1,15 @@
+{
+  "nickname": "15-99-OC-AP15",
+  "source_uid": "37763@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358678",
+      "stem_html": "<p>Sýklóheptatríenón er stöðugt, en sýklópentadíenón er svo hvarfgjarnt að það er ekki hægt að einangra það. Útskýrðu, með hliðsjón af skautun karbónýlhópsins.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamtWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5f2d58fd48a412d2ee09b320c7e5788f5cc5b410/OChem_15_EC_012.jpg\" alt=\"Cycloheptatrienone has a 7-carbon ring with three alternate double bonds. C 1 is carbonyl group. Cyclopentadienone has a 5-carbon ring with two alternate double bonds. C 1 is carbonyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

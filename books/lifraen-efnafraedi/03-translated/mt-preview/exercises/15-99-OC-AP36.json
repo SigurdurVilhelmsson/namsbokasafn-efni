@@ -1,0 +1,20 @@
+{
+  "nickname": "15-99-OC-AP36",
+  "source_uid": "37784@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Skoðaðu eftirfarandi arómatísku anjónir og línulegar hliðstæður þeirra og teiknaðu öll vok mynd fyrir hverja þeirra. Hvaða mynstur koma í ljós?",
+  "questions": [
+    {
+      "id": "358711",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2NWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7ec45854a216c9dd425ecc39bc7e2afb6024669e/OChem_15_EC_026a.jpg\" alt=\"To the left, cycloheptatriene ring with a positive charge at the single-bonded carbon. To the right, a seven-carbon chain with three alternate double bonds. C 7 carries a positive charge.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358712",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2dWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--96766313a33ac6ad28699031a27e98fe1a71569b/OChem_15_EC_026b.jpg\" alt=\"To the left, a five-membered ring comprising of a nitrogen anion and four carbons with double bonds between them. To the right, a 4-carbon chain with two alternate double bonds bonded to N-H minus.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

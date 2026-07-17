@@ -1,0 +1,15 @@
+{
+  "nickname": "11-99-OC-AP40",
+  "source_uid": "37413@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355440",
+      "stem_html": "<p>Þegar prímer alkóhól er meðhöndlað með <i>p</i>-tólúensúlfónýlklóríði við stofuhita í nærveru lífræns basa eins og pýridíns myndast tósýlat. Þegar sama efnahvarf er framkvæmt við hærra hitastig myndast oft alkýlklóríð. Útskýrðu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdnNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--921d8357b030993f156335106fb9a8f74b066e91/OChem_11_EC_046.jpg\" alt=\"The reaction of benzyl alcohol with tosyl chloride and pyridine at 60 degrees Celsius yields benzyl chloride.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

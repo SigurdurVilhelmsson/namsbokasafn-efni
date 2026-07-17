@@ -1,0 +1,30 @@
+{
+  "nickname": "22-99-OC-AP10",
+  "source_uid": "38814@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú búa til eftirfarandi efnasambönd með því að nota annaðhvort asetóediksestermyndun eða malónestermyndun?",
+  "questions": [
+    {
+      "id": "360996",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4b3b71ef8792e2086eed020e7d6c80d8adf3e306/OChem_22_EC_037a.jpg\" alt=\"The structure of diethyl-2,2-dimethylmalonate, a derivative of malonic acid where the H atoms of the acid groups are replaced by ethyl groups and two methyl groups are attached to C 2.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360997",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamdZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--26f5f13dc32e94db6535fce89fa17f5699a1b09d/OChem_22_EC_037b.jpg\" alt=\"The structure of cycloheptyl methyl ketone where a methyl group and a cycloheptane group are bonded to a central carbonyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360998",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamtZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--41b23120147ed9025522066ac6ff83045f69b465/OChem_22_EC_037c.jpg\" alt=\"The structure of cyclobutanoic acid in which a carboxylic acid is bonded to a cyclobutane ring.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360999",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBam9ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6c14480ddccee27b1d2a485e21b63f447e4d01cb/OChem_22_EC_037d.jpg\" alt=\"The structure of 5-hexen-2-one in which a carbonyl group is located at C 2 and a double bond is present between C 5 and C 6 of the compound.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

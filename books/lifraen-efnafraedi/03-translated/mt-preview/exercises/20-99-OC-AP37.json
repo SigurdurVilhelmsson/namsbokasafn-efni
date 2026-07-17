@@ -1,0 +1,20 @@
+{
+  "nickname": "20-99-OC-AP37",
+  "source_uid": "38147@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<sup>1</sup>H NMR-rófin tvö sem sýnd eru hér tilheyra krótónsýru (<i>trans</i>-CH<sub>3</sub>CH<span data-math=\"\\text{=}\"></span>CHCO<sub>2</sub>H) og metakrýlsýru [H<sub>2</sub>C<span data-math=\"\\text{=}\"></span>C(CH<sub>3</sub>)CO<sub>2</sub>H]. Hvaða róf samsvarar hvorri sýru? Útskýrðu.",
+  "questions": [
+    {
+      "id": "359230",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdG9XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--10eca252404d1c2e68f855541429c4c126c8b9f5/OChem_20_EC_038a.jpg\" alt=\"The proton spectrum shows peaks at 1.91 (doublet), 5.83 (doublet), 7.10 (multiplet), and 12.21 (singlet).\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359231",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d2e0e716970bd0a74dfd7541af8fd3a45112762c/OChem_20_EC_038b.jpg\" alt=\"The proton spectrum shows peaks at 1.93 (singlet), 5.66 (singlet), 6.25 (singlet), and 12.24 (singlet).\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

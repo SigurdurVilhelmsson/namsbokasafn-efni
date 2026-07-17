@@ -1,0 +1,19 @@
+{
+  "nickname": "13-04-OC-P07",
+  "source_uid": "37473@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358267",
+      "stem_html": "<p>Greindu mismunandi gerðir róteinda í eftirfarandi sameind og segðu til um hvar þú myndir búast við að hver þeirra myndi gleypa:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--859e9e328f63dfda14cca96d24889b167acaba32/OChem_13_04_004.jpg\" alt=\"Two carbon atoms with a trans double bond in-between. C 1 is bonded to benzene with a methoxy group at C 4. C 2 is bonded to an ethyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<p>Það eru sjö tegundir af merktum róteindum. Tegundirnar og væntanlegt gleypnisvið hverrar þeirra eru eftirfarandi. <b><i>a:</i></b> eter, 3,5–4,5 <i>δ</i>; <b><i>b:</i></b> arýl, 6,5–8,0 <i>δ</i>; <b><i>c:</i></b> arýl, 6,5–8,0; <b><i>d:</i></b> vínýl, 4,5–6,5 <i>δ</i>; <b><i>e:</i></b> vínýl, 4,5–6,5 <i>δ</i>; <b><i>f:</i></b> alkýl (annars stigs), 1,2–1,6 <i>δ</i>; <b><i>g:</i></b> alkýl (fyrsta stigs), 0,7–1,3 <i>δ</i>.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBallVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--45e080bf13e0b945b7984642fba712ea81bcd8a5/OChem_13_EC_202.jpg\" alt=\"Structure of 1-[(E)-but-1-enyl]-4-methoxybenzene. Hydrogens labeled a (methoxy), b  and c (ortho and meta to methoxy), d (benzylic), e (trans to d), f (methylene), and g (methyl) .\">"
+        }
+      ]
+    }
+  ]
+}

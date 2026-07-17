@@ -1,0 +1,19 @@
+{
+  "nickname": "21-04-OC-P11",
+  "source_uid": "38161@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "342471",
+      "stem_html": "Skrifaðu hvarfgang efnahvarfsins sem var sýnt á milli 3,4,5-trímetoxýbensóýlklóríðs og morfolíns til að mynda trímetósín. Notaðu bognar örvar til að sýna rafeindaflæðið í hverju skrefi.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Þetta er dæmigert kjarnsækið asýlskiptihvarf, þar sem morfolín er kjarnsækirinn og klóríð er farhópurinn."
+        }
+      ]
+    }
+  ]
+}

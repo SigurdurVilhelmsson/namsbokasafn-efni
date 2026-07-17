@@ -1,0 +1,15 @@
+{
+  "nickname": "27-99-OC-VC01",
+  "source_uid": "38843@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358561",
+      "stem_html": "<p>Eftirfarandi líkan er af kólsýru, sem er efni í mannsgalli. Finnið hýdroxýlhópana þrjá og tilgreinið hvort hver þeirra sé áslægur eða miðlægur. Er kólsýra A–B trans-steri eða A–B cis-steri?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbG9ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f5a232fa19164d7b9cd424f8bf5a729c91da4a26/OChem_27_EC_001.jpg\" alt=\"The ball-and-stick model of cholic acid. Black, gray, and red spheres denote carbon, hydrogen, and oxygen, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

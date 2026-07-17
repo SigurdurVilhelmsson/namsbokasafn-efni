@@ -1,0 +1,19 @@
+{
+  "nickname": "06-05-OC-P07",
+  "source_uid": "37298@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357689",
+      "stem_html": "<p>Efnahvarf HBr við 2-metýlprópen gefur 2-bróm-2-metýlprópan. Hver er bygging karbójónarinnar sem myndast í efnahvarfinu? Sýndu hvarfgang efnahvarfsins.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6c6a77993127a8cb1a538b354a5ac8af82bc5135/OChem_06_05_005.jpg\" alt=\"2-methylpropene reacts with hydrogen bromide to form 2-bromo-2-methylpropane.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUlUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7924bb2ca0da47ea2549113f4ecc84f93de0af71/OChem_06_EC_203.jpg\" alt=\"A central carbon with a positive charge is bonded to three methyl groups.\">\n<p>Hvarfgangurinn er sýndur á mynd 6.4</p>"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-MP14",
+  "source_uid": "38996@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361661",
+      "stem_html": "<p>Þegar <i>α</i>-hýdroxýamíð er látið hvarfast við Br<sub>2</sub> í vatnslausn af NaOH við Hofmann-umröðunaraðstæður, verður brottnám CO<sub>2</sub> og keðjustytt aldehýð myndast. Leggðu til hvarfgang.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dbedb9929c1909c64778f3be66b754aa31ae514a/OChem_24_EC_029.jpg\" alt=\"2-Hydroxy-2-phenylacetamide reacts with bromine, sodium hydroxide and water to form benzaldehyde, carbon dioxide and ammonia.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "nickname": "24-99-OC-MP02",
+  "source_uid": "38984@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefnið/myndefnin og skrifaðu hvarfgang fyrir hvert eftirfarandi efnahvarfa:",
+  "questions": [
+    {
+      "id": "361628",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGtaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6bf9686bce6806f3aa1c8b83f6f47be7110b6306/OChem_24_EC_019a.jpg\" alt=\"2-Methyl-1-phenylpropan-1-one reacts with dimethylamine in the presence of sodium borohydride and ethanol to form an unknown product represented by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361629",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaG9aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f2b0b9280549c5d46c82eea8168e9901a1b26358/OChem_24_EC_019d.jpg\" alt=\"(1 R,4 S)-Bicyclo[2.2.1]heptan-2-one reacts with pyrrolidine in the presence of sodium borohydride and ethanol to form an unknown product represented by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

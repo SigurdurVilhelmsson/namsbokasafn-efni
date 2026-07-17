@@ -1,0 +1,20 @@
+{
+  "nickname": "22-99-OC-MP01",
+  "source_uid": "38788@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu samsvarandi ketó- eða enólráphverfu fyrir hverja af eftirfarandi sameindum.",
+  "questions": [
+    {
+      "id": "360914",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2dZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--17b40d966319393d708cb320b53246344f473ec5/OChem_22_EC_014a.jpg\" alt=\"An enol tautomer of 2-butanone is treated with acid to give an unknown product, represented by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360915",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2tZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--aea7143b6b4c697321f3a2514c15c8aeaac101dd/OChem_22_EC_014d.jpg\" alt=\"3,3-Dimethyl-2-butanone is treated with base to give an unknown product, represented by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

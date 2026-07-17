@@ -1,0 +1,19 @@
+{
+  "nickname": "01-08-OC-P12",
+  "source_uid": "37549@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360211",
+      "stem_html": "<p>Sameindalíkan af aspiríni (asetýlsalisýlsýru) er sýnt. Tilgreindu blendingu svigrúma á hverri kolefnisfrumeind í aspiríni og segðu til um hvaða frumeindir hafa rafeindapör (svart = C, rautt = O, grátt = H).</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3NVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7723a659b376749792cc1989a52a617a3af69b00/OChem_01_08_004.jpg\" alt=\"The ball and stick model of aspirin, also called acetylsalicylic acid where grey, black, and red spheres represent hydrogen, carbon, and oxygen, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<p>Öll kolefni nema CH<sub>3</sub> eru <i>sp</i><sup>2</sup>.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3dVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1f9be8a5840d63db2251b43578295d659830d444/OChem_01_EC_208.jpg\" alt=\"The chemical structure of aspirin featuring two lone pairs on each oxygen atom.\">"
+        }
+      ]
+    }
+  ]
+}

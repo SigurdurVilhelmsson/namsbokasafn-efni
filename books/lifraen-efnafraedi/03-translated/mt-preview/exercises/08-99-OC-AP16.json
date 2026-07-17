@@ -1,0 +1,15 @@
+{
+  "nickname": "08-99-OC-AP16",
+  "source_uid": "37174@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357282",
+      "stem_html": "<p>Þegar ein alken-einliða, eins og eten, er fjölliðuð, er myndefnið <i>samfjölliða</i>. Ef efnablanda tveggja alken-einliða er hins vegar fjölliðuð myndast oft <i>samfjölliða</i>. Eftirfarandi bygging táknar hluta af samfjölliðu sem kallast <i>Saran</i>. Hvaða tvær einliður voru samfjölliðaðar til að búa til Saran?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUFTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ecaa465fbb6b8c02d1d65d9aaec6f2a18a8ff215/OChem_08_EC_044.jpg\" alt=\"Saran is a copolymer with a repeating  4-carbon chain containing two chlorine atoms bonded to C2  bonded and one chlorine atom bonded to C4.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

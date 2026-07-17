@@ -1,0 +1,19 @@
+{
+  "nickname": "30-06-OC-P06",
+  "source_uid": "39356@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355056",
+      "stem_html": "<p>1,3-sýklópentadíen hvarfast við sýklóheptatríenón og gefur myndefnið sem sýnt er. Segðu til um hvers konar efnahvarf er um að ræða og útskýrðu niðurstöðuna sem sést. Er efnahvarfið yfirborðslegt eða andborðslegt?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdkVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5dbf9b001950a4a66f517e9357841136c5c8720b/OChem_30_06_004.jpg\" alt=\"Cyclopentadiene reacts with cycloheptatrienone in the presence of heat to form a norbornene with a carbonyl group connected to a six-membered carbon with two double bonds.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Yfirborðsleg [6 + 4] hringálagning"
+        }
+      ]
+    }
+  ]
+}

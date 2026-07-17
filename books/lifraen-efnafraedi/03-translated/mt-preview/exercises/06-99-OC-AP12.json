@@ -1,0 +1,25 @@
+{
+  "nickname": "06-99-OC-AP12",
+  "source_uid": "37332@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Sýndu byggingu karbkatjónarinnar sem myndi myndast þegar hver eftirfarandi alkena hvarfast við sýru, H<sup>+</sup>.",
+  "questions": [
+    {
+      "id": "353366",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcG9UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a4351fe884ce86e4265db27939d6fe210743b677/OChem_06_EC_020a.jpg\" alt=\"A chemical structure of trans-2-butene.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353367",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--989d4fc7bf70e4617550f2161184961f5e197a80/OChem_06_EC_020b.jpg\" alt=\"A chemical structure of cyclopentene.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353368",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHdUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bc68675b97ce150cca334198586b8139ce6156a5/OChem_06_EC_020c.jpg\" alt=\"A chemical structure of 2,3-dimethylbut-2-ene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

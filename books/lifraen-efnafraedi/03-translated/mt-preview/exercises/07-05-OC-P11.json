@@ -1,0 +1,64 @@
+{
+  "nickname": "07-05-OC-P11",
+  "source_uid": "36631@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hver meðlimur í hverju af eftirfarandi settum er ofar í röðinni?",
+  "questions": [
+    {
+      "id": "333257",
+      "stem_html": "−H eða  −CH<sub>3</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "−CH<sub>3</sub>"
+        }
+      ]
+    },
+    {
+      "id": "333258",
+      "stem_html": " −Cl eða  −CH<sub>2</sub>Cl",
+      "collaborator_solutions": [
+        {
+          "content_html": "−Cl"
+        }
+      ]
+    },
+    {
+      "id": "333259",
+      "stem_html": "–CH<sub>2</sub>CH<sub>2</sub>Br eða  –CH<span data-math=\"\\text{=}\"></span>CH<sub>2</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "−CH<span data-math=\"\\text{=}\"></span>CH<sub>2</sub>"
+        }
+      ]
+    },
+    {
+      "id": "333260",
+      "stem_html": " −NHCH<sub>3</sub> eða  −OCH<sub>3</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "−OCH<sub>3</sub>"
+        }
+      ]
+    },
+    {
+      "id": "333261",
+      "stem_html": "−CH<sub>2</sub>OH eða  −CH<span data-math=\"\\text{=}\"></span>O",
+      "collaborator_solutions": [
+        {
+          "content_html": "−CH<span data-math=\"\\text{=}\"></span>O"
+        }
+      ]
+    },
+    {
+      "id": "333262",
+      "stem_html": "−CH<sub>2</sub>OCH<sub>3</sub> eða  −CH<span data-math=\"\\text{=}\"></span>O",
+      "collaborator_solutions": [
+        {
+          "content_html": "−CH<span data-math=\"\\text{=}\"></span>O"
+        }
+      ]
+    }
+  ]
+}

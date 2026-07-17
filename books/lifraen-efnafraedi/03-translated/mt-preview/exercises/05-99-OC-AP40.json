@@ -1,0 +1,20 @@
+{
+  "nickname": "05-99-OC-AP40",
+  "source_uid": "36603@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "(<i>S</i>)-1-Klór-2-metýlbútan gengst undir ljóshvatað efnahvarf með Cl<sub>2</sub> og gefur af sér efnablöndu myndefna, þar á meðal 1,4-díklór-2-metýlbútan og 1,2-díklór-2-metýlbútan.",
+  "questions": [
+    {
+      "id": "329416",
+      "stem_html": "Skrifið efnahvarfið og sýnið rétta rúmefnafræði hvarfefnisins.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "329417",
+      "stem_html": "Annað af myndefnunum tveimur er ljósvirkt en hitt er ljósóvirkt. Hvort er hvað?",
+      "collaborator_solutions": []
+    }
+  ]
+}

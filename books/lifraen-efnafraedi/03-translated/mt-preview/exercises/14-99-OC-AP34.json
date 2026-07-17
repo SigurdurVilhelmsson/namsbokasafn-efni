@@ -1,0 +1,15 @@
+{
+  "nickname": "14-99-OC-AP34",
+  "source_uid": "37723@7",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358541",
+      "stem_html": "<p>Myrcen, C<sub>10</sub>H<sub>16</sub>, finnst í lárviðarlaufsolíu og er sameind með <i>β</i>-ocimene (dæmi 14-49). Það hefur útfjólublátt gleypni við 226 nm og er hægt að vetna það til að gefa 2,6-dímetýloktan. Við ósonrof og síðari meðhöndlun með sinki/ediksýru gefur myrcen formaldehýð, asetón og 2-oxópentandíal:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2NWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1ac49ca7adaf5ad15cfd43dcb278f1144420c17d/OChem_14_EC_031.jpg\" alt=\"The condensed structure of 2-oxopentanedial has a 5-carbon chain. C 1, C 2, and C 5 are each double-bonded to an oxygen atom.\">\n<p>Stingdu upp á byggingu fyrir myrcen og skrifaðu efnahvörfin og sýndu hvarfefni og myndefni.</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

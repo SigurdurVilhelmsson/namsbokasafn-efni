@@ -1,0 +1,25 @@
+{
+  "nickname": "06-99-OC-AP19",
+  "source_uid": "37339@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefni hvers af eftirfarandi líffræðilegu efnahvarfa með því að túlka flæði rafeinda eins og sýnt er með bogadregnu örvunum:",
+  "questions": [
+    {
+      "id": "353384",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8eb5f8b009f7b31913dab21c4b2bce73e8812a16/OChem_06_EC_025a.jpg\" alt=\"An incomplete reaction shows a substituted thiazole ring forming unknown product(s), depicted by a question mark. Three arrows depict the movement of electrons.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353385",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUlUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a897795b2bddc74ee56cd182b682b56eaaad6845/OChem_06_EC_025b.jpg\" alt=\"Five-carbon chain with carboxylate at C1, methyl and phosphate at C3, and pyrophosphate at C5 reacts forms unknown product(s). Arrows show electron flow from carboxylate toward phosphate (leaving group).\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353386",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcU1UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f4a5b8ae22c25efac0c6579ff2fd7e374534c946/OChem_06_EC_025c.jpg\" alt=\"An incomplete reaction shows substituted pyridine reacting with a base to form unknown product(s), depicted by a question mark. Arrows show the movement of electrons.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

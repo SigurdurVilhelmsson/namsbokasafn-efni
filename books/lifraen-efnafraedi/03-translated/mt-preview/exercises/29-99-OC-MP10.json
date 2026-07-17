@@ -1,0 +1,15 @@
+{
+  "nickname": "29-99-OC-MP10",
+  "source_uid": "39324@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358159",
+      "stem_html": "<p>Amínósýran lefsín er lífsmíðuð úr <i>α</i>-ketóísókapróati, sem er sjálft búið til úr <i>α</i>-ketóísóvalerati með fjölþrepa ferli sem felur í sér (<b><span class=\"magenta-text\">1</span></b>) efnahvarf við asetýl-CoA, (<b><span class=\"magenta-text\">2</span></b>) vatnsrof, (<b><span class=\"magenta-text\">3</span></b>) afvötnun, (<b><span class=\"magenta-text\">4</span></b>) vötnun, (<b><span class=\"magenta-text\">5</span></b>) oxun og (<b><span class=\"magenta-text\">6</span></b>) afkarboxýleringu. Sýndu skrefin í umbreytingunni og stingdu upp á hvarfgangi fyrir hvert þeirra.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c4fc5e3b84cf4abc26dfa9cc9c917b28ab92de04/OChem_29_EC_012.jpg\" alt=\"Alpha-ketoisovalerate reacts to form alpha-ketoisocaproate via the conversion acetyl CoA, and  nicotinamide adenine dinucleotide cation  to H S CoA, carbon dioxide and nicotinamide adenine dinucleotide phosphate hydride.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "nickname": "30-99-OC-MP02",
+  "source_uid": "39366@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Ljóslituð sólgleraugu úr plasti byggjast á eftirfarandi afturkræfri umröðun litarefnis inni í linsunum sem á sér stað þegar linsurnar verða fyrir sólarljósi. Upprunalega litarefnið gleypir útfjólublátt ljós en ekki sýnilegt ljós og er því litlaust, en myndefni umröðunarinnar gleypir sýnilegt ljós og er því dökkt.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdnNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3daf1b52accb178280f06fcd1ccd8af06c5b4698/OChem_30_EC_004.jpg\" alt=\"The reaction of a colorless polycyclic dye with an oxygen heteroatom in one ring reacting with light to form a dark dye with a ketone group.\">",
+  "questions": [
+    {
+      "id": "355073",
+      "stem_html": "Sýndu hvarfgang umröðunarinnar.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355074",
+      "stem_html": "Af hverju gleypir umröðunarmyndefnið ljós á lengri bylgjulengd (sýnilegt ljós) en upphaflega litarefnið (útfjólublátt ljós)?",
+      "collaborator_solutions": []
+    }
+  ]
+}

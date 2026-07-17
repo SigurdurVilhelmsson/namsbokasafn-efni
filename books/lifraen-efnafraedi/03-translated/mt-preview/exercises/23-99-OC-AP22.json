@@ -1,0 +1,15 @@
+{
+  "nickname": "23-99-OC-AP22",
+  "source_uid": "38949@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359928",
+      "stem_html": "<p>Fylltu inn í eyðurnar fyrir hvarfefnin <b>a–h</b> í eftirfarandi skema:</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUVZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7ab850edc4ddd1d418a373734c709d2dcba51d49/OChem_23_EC_046.jpg\" alt=\"Cyclohexanone reacts with a series of reagents a, b, c, d, e, f, g and h to form cyclopentanone with methyl on C 2.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

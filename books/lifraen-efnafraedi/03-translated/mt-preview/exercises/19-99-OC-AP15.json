@@ -1,0 +1,30 @@
+{
+  "nickname": "19-99-OC-AP15",
+  "source_uid": "38061@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Veldu þá byggingu sem passar best við IR-rófið sem sýnt er.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmtXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5b9fd78cd2e697d8d44ab28a282c87b45f34c124/OChem_19_EC_051e.jpg\" alt=\"The infrared spectrum of an unknown compound shows peaks at specific wavenumbers, including strong peaks at around 3100, 1727, and 1000 centimeters inverse.\">",
+  "questions": [
+    {
+      "id": "360788",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblVXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b23fb12f65d4a10a504eec00b871cc48567b5033/OChem_19_EC_051a.jpg\" alt=\"The structure of trans-undec-2-enal shows an eleven-carbon chain with a trans double bond between the second and third carbon and an aldehyde at C 1.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360789",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbllXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6acfc2d6cad66c10b8f5f67956ea60e6b1b5827e/OChem_19_EC_051b.jpg\" alt=\"The structure of undec-10-enal shows an eleven-carbon chain with a double between the tenth and eleventh carbon and an aldehyde at C 1.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360790",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7310e8b8ff01ea7f1b3923c006b3092e7b9791b3/OChem_19_EC_051c.jpg\" alt=\"The structure of cis-undec-2-enal shows an eleven-carbon chain with a cis double bond between the second and third carbon and an aldehyde at C 1.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360791",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bfe0c7a9aab9fb58bef83c665843c603d72ffefd/OChem_19_EC_051d.jpg\" alt=\"The structure of 9-methyldec-8-enal shows a ten-carbon chain with a double bond between the eighth and ninth carbons, a methyl at the ninth carbon, and an aldehyde at C 1.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

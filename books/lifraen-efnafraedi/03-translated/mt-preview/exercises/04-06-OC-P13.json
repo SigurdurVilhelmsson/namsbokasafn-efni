@@ -1,0 +1,19 @@
+{
+  "nickname": "04-06-OC-P13",
+  "source_uid": "36484@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357661",
+      "stem_html": "Teiknaðu tvær mismunandi stólstellingar af <i>trans</i>-1,4-dímetýlsýklóhexani og merktu allar stöður sem áslægar eða miðlægar.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--444269c2ce8639f0df813082cd70d8d0b5fa6ba5/OChem_04_EC_204.jpg\" alt=\"Two chair conformations of trans-1,4-dimethylcyclohexane. In first conformation, C1 and C4 are each bonded to axial methyl. In second conformation, C1 and C4 are each bonded to equatorial methyl.\">"
+        }
+      ]
+    }
+  ]
+}

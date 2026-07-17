@@ -1,0 +1,19 @@
+{
+  "nickname": "29-04-OC-P05",
+  "source_uid": "39299@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "349268",
+      "stem_html": "Sönnunargögn fyrir hlutverki asetats í lífmyndun fitusýra koma frá samsætumerkingartilraunum. Ef asetat merkt með <sup>13</sup>C í metýlhópnum (<sup>13</sup>CH<sub>3</sub>CO<sub>2</sub>H) væri fellt inn í fitusýrur, á hvaða stöðum í fitusýrukeðjunni myndir þú búast við að <sup>13</sup>C-merkið kæmi fram?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Við C2, C4, C6, C8 og svo framvegis"
+        }
+      ]
+    }
+  ]
+}

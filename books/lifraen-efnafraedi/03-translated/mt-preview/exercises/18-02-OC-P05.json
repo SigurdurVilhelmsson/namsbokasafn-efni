@@ -1,0 +1,46 @@
+{
+  "nickname": "18-02-OC-P05",
+  "source_uid": "38701@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvernig myndir þú framleiða eftirfarandi etera? Notaðu þá aðferð sem þér finnst henta betur, Williamson-nýmyndun eða alkoxýkvikasilfrunarefnahvarf.",
+  "questions": [
+    {
+      "id": "343674",
+      "stem_html": "Bútýlsýklóhexýleter",
+      "collaborator_solutions": [
+        {
+          "content_html": "Báðar aðferðir"
+        }
+      ]
+    },
+    {
+      "id": "343675",
+      "stem_html": "Bensýletýleter (C<sub>6</sub>H<sub>5</sub>CH<sub>2</sub>OCH<sub>2</sub>CH<sub>3</sub>)",
+      "collaborator_solutions": [
+        {
+          "content_html": "Williamson"
+        }
+      ]
+    },
+    {
+      "id": "343676",
+      "stem_html": "<i>sek</i>-Bútýl <i>tert</i>-bútýleter",
+      "collaborator_solutions": [
+        {
+          "content_html": "Alkoxýkvikasilfrun"
+        }
+      ]
+    },
+    {
+      "id": "343677",
+      "stem_html": "Tetrahýdrófúran",
+      "collaborator_solutions": [
+        {
+          "content_html": "Williamson"
+        }
+      ]
+    }
+  ]
+}

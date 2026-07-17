@@ -1,0 +1,15 @@
+{
+  "nickname": "30-99-OC-MP03",
+  "source_uid": "39367@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355076",
+      "stem_html": "<p>Kynhormónið estron hefur verið framleitt með ferli sem felur í sér eftirfarandi skref. Greindu hringhverf efnahvörf sem eiga sér stað og leggðu til hvarfgang.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdndaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--104a14dbd5334dc5d16ddb2a71289fa9e5f21c2a/OChem_30_EC_005.jpg\" alt=\"The reactant reacts in presence of heat to give estrone methyl ether. Cyclobutane attached to the benzene's C 2 - C 3 position gets converted to cyclohexane in the product.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

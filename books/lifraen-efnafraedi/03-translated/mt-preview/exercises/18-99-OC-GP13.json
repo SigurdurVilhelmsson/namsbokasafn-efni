@@ -1,0 +1,15 @@
+{
+  "nickname": "18-99-OC-GP13",
+  "source_uid": "38764@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361307",
+      "stem_html": "<p>Við sáum í <b>kafla 17.4</b> að ketón hvarfast við NaBH<sub>4</sub> og mynda alkóhól. Við munum einnig sjá í <b>kafla 22.3</b> að ketón hvarfast við Br<sub>2</sub> og mynda <i>α</i>-brómketón. Það kemur kannski á óvart að meðhöndlun <i>α</i>-brómketóns úr asetófenóni með NaBH<sub>4</sub> gefur epoxíð frekar en brómalkóhól. Sýndu byggingu epoxíðsins og útskýrðu myndun þess.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcndYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3a5b3de4f35a7d6ddc1ab69777b48b0be2bc24af/OChem_18_EC_051.jpg\" alt=\"Acetophenone reacts with bromine to yield alpha-bromo acetophenone; subsequent treatment with sodium borohydride results in an epoxide with unknown structure.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

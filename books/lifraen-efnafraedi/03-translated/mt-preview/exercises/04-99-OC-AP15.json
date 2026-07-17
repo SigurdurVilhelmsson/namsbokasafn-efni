@@ -1,0 +1,40 @@
+{
+  "nickname": "04-99-OC-AP15",
+  "source_uid": "36541@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Gefðu þér að þú hafir margs konar sýklóhexan með ásamtengda hópa í tilgreindum stöðum. Greindu hvort ásamtengdu hópana eru áslægir eða miðlægir. Til dæmis þýðir 1,2-cis tengsl að einn ásamtengdur hópur verður að vera áslægur og einn miðlægur, en 1,2-trans tengsl þýða að báðir ásamtengdu hópana eru áslægir eða báðir miðlægir.",
+  "questions": [
+    {
+      "id": "329076",
+      "stem_html": "1,3-trans tvíásamt",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "329077",
+      "stem_html": "1,4-cis tvíásamt",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "329078",
+      "stem_html": "1,3-cis tvíásamt",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "329079",
+      "stem_html": "1,5-trans tvíásamt",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "329080",
+      "stem_html": "1,5-cis tvíásamt",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "329081",
+      "stem_html": "1,6-trans tvíásamt",
+      "collaborator_solutions": []
+    }
+  ]
+}

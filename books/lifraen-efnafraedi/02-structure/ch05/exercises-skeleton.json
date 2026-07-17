@@ -1,0 +1,2289 @@
+{
+  "generated_by": "exercise-extract.js",
+  "exercises": {
+    "05-02-OC-P01": {
+      "source_uid": "36493@7",
+      "solutions_are_public": true,
+      "question_order": [
+        "347075"
+      ],
+      "fields": {
+        "stem:347075": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:347075": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-02-OC-P02": {
+      "source_uid": "36494@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "357667",
+        "357668",
+        "357669"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:357667": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaG9SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3605a5023ac5a1ac15a74d717feb53a7c712209d/OChem_05_02_007a.jpg\" alt=\"The structure of coniine (poison hemlock), in which N is in first position. C2 is bonded to a propyl group.\">"
+          },
+          "wraps": {}
+        },
+        "sol:357667": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDBSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--af2cf1d1d1eceab35b083d58b85df69b7679620c/OChem_05_EC_201a.jpg\" alt=\"The structure of coniine, in which N is in first position. C2 is labeled with asterisk and bonded to a propyl group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357668": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaHNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e2a4336f7ea0f51fcd732d2a42e8e49b00034a68/OChem_05_02_007b.jpg\" alt=\"The wedge-dash structure of menthol (flavoring agent).\">"
+          },
+          "wraps": {}
+        },
+        "sol:357668": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDRSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7bb74ecf8d6d31ad254a412c4d884fd8665c43d2/OChem_05_EC_201b.jpg\" alt=\"The wedge-dash structure of menthol. C1, C2, and C5 are labeled with asterisks.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357669": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaHdSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7a3b6587d6da0d97beb9113f2f51568e0eebf76f/OChem_05_02_007c.jpg\" alt=\"The wedge-dash structure of dextromethorphan (cough suppressant).\">"
+          },
+          "wraps": {}
+        },
+        "sol:357669": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDhSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--16dab1eb6ff3939b1322e6c69fdc219a3ad53596/OChem_05_EC_201c.jpg\" alt=\"The wedge-dash structure of dextromethorphan. Two fused carbons of both cyclohexanes and one carbon of central cyclohexane (that is bonded to nitrogen) are labeled with asterisks.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-02-OC-P03": {
+      "source_uid": "36495@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "357671"
+      ],
+      "fields": {
+        "stem:357671": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f81df7c7bcb0c41322c15dfdd91e18764a2c2657/OChem_05_02_008.jpg\" alt=\"Alanine has a 3-carbon chain. C1 is a carboxylic acid group. C2 is bonded to an amino group.\">"
+          },
+          "wraps": {}
+        },
+        "sol:357671": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1e922540932066d6859c0a14ddd01fc29508b76a/OChem_05_EC_202.jpg\" alt=\"The figure shows two enantiomers of alanine represented in wedge-dash form.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-02-OC-P04": {
+      "source_uid": "36496@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "357674",
+        "357675"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:357674": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUlSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3b84cc6d94b87fc0ada4c686e54e50409cb49e6e/OChem_05_02_009a.jpg\" alt=\"The ball-and-stick model of threose (a sugar) where gray, black, and red spheres represent hydrogen, carbon, and oxygen, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:357674": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8fc9c533327f446244dbcbfefe5a94854ad13cc0/OChem_05_EC_203a.jpg\" alt=\"The wedge-dash structure of threose. C2 and C3 are labeled with asterisks.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357675": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaU1SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--745092502e755e7d79cb0fa442ef6a5411f65236/OChem_05_02_009b.jpg\" alt=\"The ball-and-stick model of enflurane (an anesthetic) where gray, black, green, yellow-green, and red spheres represent hydrogen, carbon, chlorine, fluorine, and oxygen, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:357675": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--edd67865a76d095df6c881a618e774513a7e9eee/OChem_05_EC_203b.jpg\" alt=\"The wedge-dash structure of enflurane. C1 is labeled with asterisk.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-03-OC-P05": {
+      "source_uid": "36497@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "329153"
+      ],
+      "fields": {
+        "stem:329153": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:329153": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-03-OC-P06": {
+      "source_uid": "36498@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "329155"
+      ],
+      "fields": {
+        "stem:329155": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:329155": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-05-OC-P07": {
+      "source_uid": "36499@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "346179",
+        "346180",
+        "346181",
+        "346182",
+        "346183",
+        "346184"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346179": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:346179": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346180": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:346180": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346181": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:346181": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346182": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:346182": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346183": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:346183": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346184": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{=}\"></span>"
+          },
+          "wraps": {}
+        },
+        "sol:346184": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{=}\"></span>"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-05-OC-P08": {
+      "source_uid": "36500@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "329172",
+        "329173",
+        "329174",
+        "329175"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329172": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:329172": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329173": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:329173": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329174": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:329174": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329175": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:329175": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-05-OC-P09": {
+      "source_uid": "36501@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "354097",
+        "354098",
+        "354099"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:354097": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVlSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0bd08dfa7784d17c6b90909f4c4f33c5276602d8/OChem_05_05_013a.jpg\" alt=\"A central carbon is single bonded to substituents 1 and 3, wedge bonded to 2, and dash bonded to 4 (clockwise).\">"
+          },
+          "wraps": {}
+        },
+        "sol:354097": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:354098": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--02d02cec386f0446f9f07279b02b1d3a32909908/OChem_05_05_013b.jpg\" alt=\"A central carbon is single bonded to substituents 3 and 4, wedge bonded to 1, and dash bonded to 2 (clockwise).\">"
+          },
+          "wraps": {}
+        },
+        "sol:354098": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:354099": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWdSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--efc345ce9a207b9db47b9a7c2e0fc5e69a7a592a/OChem_05_05_013c.jpg\" alt=\"A central carbon is single bonded to substituents 4 and 2, wedge bonded to 3, and dash bonded to 1 (clockwise).\">"
+          },
+          "wraps": {}
+        },
+        "sol:354099": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-05-OC-P10": {
+      "source_uid": "36502@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "354103",
+        "354104",
+        "354105"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:354103": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWtSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b473ba6ad5b0265a67cc198474ec902f9be097b4/OChem_05_05_014a.jpg\" alt=\"A central carbon is single bonded to a methyl and a carboxylic acid group, wedge bonded to a thiol group, and dash bonded to a hydrogen atom (clockwise).\">"
+          },
+          "wraps": {}
+        },
+        "sol:354103": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:354104": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaW9SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7f7d3b7d30a46b36a16c10868946fcca9cef456a/OChem_05_05_014b.jpg\" alt=\"A central carbon is single bonded to a methyl and a hydroxyl group, dash bonded to a carboxylic acid group, and wedge bonded to a hydrogen atom (clockwise).\">"
+          },
+          "wraps": {}
+        },
+        "sol:354104": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:354105": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--67cf69424aa0d9151fca53737e3c04a46c029023/OChem_05_05_014c.jpg\" alt=\"A central carbon is wedge bonded to hydrogen, dash bonded to an aldehyde group, wedge bonded to a hydroxyl group, and dash bonded to a hydroxymethyl group (clockwise).\">"
+          },
+          "wraps": {}
+        },
+        "sol:354105": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-05-OC-P11": {
+      "source_uid": "36503@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "357677"
+      ],
+      "fields": {
+        "stem:357677": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:357677": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXdSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--19ba6e9b5d63b09a239c74149c45b8980ccab065/OChem_05_EC_204.jpg\" alt=\"A central carbon atom is single bonded to hydrogen and a propyl group, wedge bonded to a methyl group, and dash bonded to a hydroxyl group (clockwise).\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-05-OC-P12": {
+      "source_uid": "36504@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "354110"
+      ],
+      "fields": {
+        "stem:354110": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTBSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--169888aae5c37ad15a4903ff7fb49f966589fd8c/OChem_05_05_015.jpg\" alt=\"The ball-and-stick model of methionine where gray, black, blue, yellow, and red spheres represent hydrogen, carbon, nitrogen, sulfur, and oxygen, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:354110": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-06-OC-P13": {
+      "source_uid": "36505@8",
+      "solutions_are_public": true,
+      "question_order": [
+        "360418"
+      ],
+      "fields": {
+        "stem:360418": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVlYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--82a6487165bedf0c8572dcde5544eb56054aa908/OChem_05_06_003a.jpg\" alt=\"Vertically, aldehyde dashed bond carbon bond carbon dashed bond C H 2 phosphate. C 2 and C 3 both have hydrogen (wedge, left) and hydroxyl (wedge, right).\">",
+            "1": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6bc0b12e27b697144d2f811a27808d54900f62d4/OChem_05_06_003b.jpg\" alt=\"Vertically, aldehyde dashed bond carbon bond carbon dashed bond C H 2 phosphate. C 2 has hydroxyl (left), H on wedges, C 3 has hydrogen (left), hydroxyl on wedges.\">",
+            "2": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--22b3fba309232b882e853f53b449773c33a92b18/OChem_05_06_003c.jpg\" alt=\"Vertically, aldehyde dashed bond carbon bond carbon dashed bond C H 2 phosphate. C 2 has hydrogen (left), hydroxyl on wedges, C 3 has hydroxyl (left), hydrogen on wedges.\">",
+            "3": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWtYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7bf667a1b92067951d9b93276028b01c11c20884/OChem_05_06_003d.jpg\" alt=\"Vertically, aldehyde dashed bond carbon bond carbon dashed bond C H 2 phosphate. C 2 and C 3 both have hydroxyl (wedge, left) and hydrogen (wedge, right).\">"
+          },
+          "wraps": {}
+        },
+        "sol:360418": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-06-OC-P14": {
+      "source_uid": "36506@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "354114"
+      ],
+      "fields": {
+        "stem:354114": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaThSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0a6bcb6e214825206562869dec603ccff6602afb/OChem_05_06_004.jpg\" alt=\"The structure of morphine.\">"
+          },
+          "wraps": {}
+        },
+        "sol:354114": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-06-OC-P15": {
+      "source_uid": "36507@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "354116"
+      ],
+      "fields": {
+        "stem:354116": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--738ddb8e61a537e6480c5d2efafaebe3bdb358f3/OChem_05_06_005.jpg\" alt=\"The ball-and-stick model of isoleucine where gray, black, blue, and red spheres represent hydrogen, carbon, nitrogen, and oxygen, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:354116": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-07-OC-P16": {
+      "source_uid": "36508@6",
+      "solutions_are_public": true,
+      "question_order": [
+        "354117"
+      ],
+      "fields": {
+        "stem:354117": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2ada88837bcb901ea75c61a429d16056debff03a/OChem_05_07_005a.jpg\" alt=\"In a cyclopentane ring, C1 and C2 are each wedge bonded to a hydroxyl group and dash bonded to a hydrogen atom.\">",
+            "1": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaklSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--707d068a624667ffd268bb51cf46fe2172ffc2ec/OChem_05_07_005b.jpg\" alt=\"In a cyclopentane ring, C1 is dash bonded to hydrogen and wedge bonded to the hydroxyl group. C2 is dash bonded to the hydroxyl group and wedge bonded to hydrogen.\">",
+            "2": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBak1SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7061e73b0ce52bfd5f00bbb0e6468934958419c5/OChem_05_07_005c.jpg\" alt=\"The wedge-dash structure shows cyclopentane ring fusion. C2 of the right cyclopentane is wedge bonded to a methyl group and dash bonded to a hydrogen atom.\">",
+            "3": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--85eb5269d7fa91364fbc1b41cb63af4d10979eaf/OChem_05_07_005d.jpg\" alt=\"In a 2-carbon chain, C1 is wedge bonded to the bromine atom and methyl group. C2 is dash bonded to bromine, wedge bonded to a methyl group, and hydrogen atom.\">"
+          },
+          "wraps": {}
+        },
+        "sol:354117": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-07-OC-P17": {
+      "source_uid": "36509@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "347087"
+      ],
+      "fields": {
+        "stem:347087": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:347087": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-07-OC-P18": {
+      "source_uid": "36510@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "357679"
+      ],
+      "fields": {
+        "stem:357679": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2dd10bbffea9e63290208840124aff3118164166/OChem_05_07_006.jpg\" alt=\"The ball-and-stick model of a compound comprising a cyclopentane ring. Gray, black, and red spheres represent hydrogen, carbon, and oxygen, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:357679": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBallSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6c070ad527fedd5262d77fea8ea08fa76640ef9e/OChem_05_EC_205.jpg\" alt=\"Meso compound has a cyclopentane ring. C1 is bonded to hydroxyl group. C3 and C4 are each wedge bonded to a methyl group. The symmetry plane passes through hydroxyl group and the C-C bond.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-08-OC-P19": {
+      "source_uid": "36511@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "524236"
+      ],
+      "fields": {
+        "stem:524236": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5c2ef613a175022aa210026b683c3b1d7b0ee1af/OChem_05_08_006.jpg\" alt=\"In a reaction, acetic acid reacts with 2-butanol in the presence of acid catalyst to form secondary-butyl acetate and water.\">"
+          },
+          "wraps": {}
+        },
+        "sol:524236": {
+          "skeleton": " \u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-08-OC-P20": {
+      "source_uid": "36512@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "329213"
+      ],
+      "fields": {
+        "stem:329213": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:329213": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-09-OC-P21": {
+      "source_uid": "36513@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "329216",
+        "329217"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329216": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:329216": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329217": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:329217": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-11-OC-P22": {
+      "source_uid": "36516@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "357682",
+        "357683"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:357682": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBanNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2af8a8595005240ddd0b5e3a74dd22aeb4fbb9e8/OChem_05_11_008a.jpg\" alt=\"The wedge-dash structure of (S)-glyceraldehyde. Two arrows point toward the hydrogen atoms bonded at C3.\">"
+          },
+          "wraps": {}
+        },
+        "sol:357682": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajBSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2e2d12553c0d7d31fbaa0c0801e6c882c8399f1c/OChem_05_EC_206a.jpg\" alt=\"The wedge-dash structure of (S)-glyceraldehyde. The dash bonded hydrogen at C3 is labeled pro-R and wedge bonded hydrogen is labeled pro-S.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357683": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBandSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d519ffa413c5feba09be1cc9bff45a0d308ec159/OChem_05_11_008b.jpg\" alt=\"The wedge-dash structure of phenylalanine. Two arrows point toward the hydrogen atoms bonded at C3.\">"
+          },
+          "wraps": {}
+        },
+        "sol:357683": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajRSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--59f3fcaad2e6a57ecd8a4d6b4a1e6e8b2dec4bb0/OChem_05_EC_206b.jpg\" alt=\"The wedge-dash structure of an amino acid. The wedge bonded hydrogen at C3 is labeled pro-R and the dash bonded hydrogen is labeled pro-S.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-11-OC-P23": {
+      "source_uid": "36517@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "357686",
+        "357687"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:357686": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajhSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a8692929f7817801a5978dff1108ef67676efeca/OChem_05_11_009a.jpg\" alt=\"The structure of hydroxyacetone. Two arrows, one from the top and other from the bottom, point toward the central carbon.\">"
+          },
+          "wraps": {}
+        },
+        "sol:357686": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0VSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--96ef26bec34afbe6b753cfc38f1d8414698a9b42/OChem_05_EC_207a.jpg\" alt=\"The structure of hydroxyacetone. The central carbon is labeled Re face at the top and Si face at the bottom.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357687": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0FSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dec10b1faeb01e6728a4d53b502a69b9968bc9e0/OChem_05_11_009b.jpg\" alt=\"The structure of crotyl alcohol. Two arrows, one from the top and other from the bottom, point toward the central carbon.\">"
+          },
+          "wraps": {}
+        },
+        "sol:357687": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0lSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b1243764f24dd610d0fe44b4a9d524d608a319f8/OChem_05_EC_207b.jpg\" alt=\"The structure of crotyl alcohol. The central carbon is labeled Re face at the top and Si face at the bottom.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-11-OC-P24": {
+      "source_uid": "36518@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "354131"
+      ],
+      "fields": {
+        "stem:354131": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa01SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c84d45f1586c06c59ac5a57df6e4dea38b353416/OChem_05_11_010.jpg\" alt=\"The figure shows a reaction where pyruvate converts to lactate.\">"
+          },
+          "wraps": {}
+        },
+        "sol:354131": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-11-OC-P25": {
+      "source_uid": "36519@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "354133"
+      ],
+      "fields": {
+        "stem:354133": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1FSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--233e7422a21027d42f0c14b073e2c415b9556ae7/OChem_05_11_011.jpg\" alt=\"The figure shows a reaction where cis-aconitate reacts with water in the presence of aconitase to form (2 R, 3 S)-isocitrate.\">"
+          },
+          "wraps": {}
+        },
+        "sol:354133": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP01": {
+      "source_uid": "36564@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "347107"
+      ],
+      "fields": {
+        "stem:347107": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000 <br>\u0000SLOT_2\u0000</p>",
+          "slots": 3,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP02": {
+      "source_uid": "36565@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329271",
+        "329272",
+        "329273"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329271": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329272": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329273": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP03": {
+      "source_uid": "36566@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329278",
+        "329279",
+        "329280",
+        "329281"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329278": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329279": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329280": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329281": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP04": {
+      "source_uid": "36567@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329283"
+      ],
+      "fields": {
+        "stem:329283": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP05": {
+      "source_uid": "36568@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329288",
+        "329289",
+        "329290",
+        "329291"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329288": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329289": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329290": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329291": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP06": {
+      "source_uid": "36569@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "357204"
+      ],
+      "fields": {
+        "stem:357204": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWdSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a0cd18079421b825408665ba3ea4d6a3eccf99bb/OChem_05_EC_006.jpg\" alt=\"The wedge-dash structure of erythronolide B.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP07": {
+      "source_uid": "36570@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "354160",
+        "354161",
+        "354162",
+        "354163"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:354160": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWtSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c7162fcd432746269eeea343a9b569137b14159d/OChem_05_EC_007a.jpg\" alt=\"A carbon is single-bonded to bromine (top), cyano (right), wedge bonded to hydrogen (front), and dash bonded to methyl (left). The second structure, the positions of substituents are different.\">"
+          },
+          "wraps": {}
+        },
+        "stem:354161": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbW9SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0b44a2003e438f985fdf4042cfdb47596a2a298f/OChem_05_EC_007b.jpg\" alt=\"A carbon is single-bonded to carboxylic acid (top), bromo (right), wedge bonded to cyano (front), and dash bonded to hydrogen (left). The second structure, the positions of substituents are different.\">"
+          },
+          "wraps": {}
+        },
+        "stem:354162": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d6cf42c8515b0fab77a7d371a28a3d3ccef094d1/OChem_05_EC_007c.jpg\" alt=\"A carbon is single-bonded to methyl (top),hydroxyl (right), wedge bonded to ethyl (front), and dash bonded to hydrogen (left). The second structure, the positions of substituents are different.\">"
+          },
+          "wraps": {}
+        },
+        "stem:354163": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXdSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ae9970a182ab0579f5f308eec8988d9bc8efd0e4/OChem_05_EC_007d.jpg\" alt=\"A carbon is single-bonded to methyl (top), carboxylic acid (right), wedge bonded to amine (front), and dash bonded to hydrogen (left). The second structure, the positions of substituents are different.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP08": {
+      "source_uid": "36571@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329303"
+      ],
+      "fields": {
+        "stem:329303": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP09": {
+      "source_uid": "36572@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329305"
+      ],
+      "fields": {
+        "stem:329305": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP10": {
+      "source_uid": "36573@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "330060"
+      ],
+      "fields": {
+        "stem:330060": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP11": {
+      "source_uid": "36574@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "354167",
+        "354168",
+        "354169"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:354167": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTBSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--027f5e66f17a62897977016be08b8c36a1a25bfb/OChem_05_EC_008a.jpg\" alt=\"A carbon is single-bonded to substituents 4 (top) and 3 (right), wedge bonded to 2 (front), and dash bonded to 1 (left).\">"
+          },
+          "wraps": {}
+        },
+        "stem:354168": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTRSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c3d430d3aceceb5914c35cfd197c94815ff249ab/OChem_05_EC_008b.jpg\" alt=\"A carbon is single-bonded to substituents 3 (top) and 1 (right), wedge bonded to 2 (front), and dash bonded to 4 (left).\">"
+          },
+          "wraps": {}
+        },
+        "stem:354169": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbThSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--39784dbb345ba061fdff94ed502e745582809cd0/OChem_05_EC_008c.jpg\" alt=\"A carbon is single-bonded to substituents 4 (top) and 2 (right), wedge bonded to 1 (front), and dash bonded to 2 (left).\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP12": {
+      "source_uid": "36575@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "354174",
+        "354175",
+        "354176",
+        "354177"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:354174": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--58c9007bf18738320afebb3d2f02632ce66ee015/OChem_05_EC_009a.jpg\" alt=\"C H double bonded to C H 2, C H (C H 3) 2, C (C H 3) 3, and C H 2 C H 3 with open single bonds.\">"
+          },
+          "wraps": {}
+        },
+        "stem:354175": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ffd7b2b6d6fe0e5779a4e0a52bb5ec0bbcabc4f1/OChem_05_EC_009b.jpg\" alt=\"C triple bonded to C H, C H double bonded to C H 2, C (C H 3) 3, and benzene each with an open single bond.\">"
+          },
+          "wraps": {}
+        },
+        "stem:354176": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbklSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--844a9b27b0f2a6069443a0609b2ebffb5780c099/OChem_05_EC_009c.jpg\" alt=\"C O 2 C H 3, C O C H 3, C H 2 O C H 3, and C H 2 C H 3, with open single bonds.\">"
+          },
+          "wraps": {}
+        },
+        "stem:354177": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbk1SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--78fada91207ed30317f8745967e32d48b63b96f2/OChem_05_EC_009d.jpg\" alt=\"Four substituents are C triple bonded to N, C H 2 Br, C H 2 C H 2 Br, and Br each with an open single bond.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP13": {
+      "source_uid": "36576@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "354181",
+        "354182",
+        "354183"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:354181": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f033f595161d9de255888a4f39551e82110ba3f0/OChem_05_EC_010a.jpg\" alt=\"A carbon is single-bonded to wedge hydrogen (front),  dash bonded to hydroxyl (behind ), ethyl (right), and methyl (left).\">"
+          },
+          "wraps": {}
+        },
+        "stem:354182": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--abe1f9e2854c7cb4d71188fe87c5dc4ecfe6ed02/OChem_05_EC_010b.jpg\" alt=\"A carbon is single-bonded to wedge chlorine atom (front),  dash bonded to hydrogen atom (behind ), methyl (right), and phenyl (left).\">"
+          },
+          "wraps": {}
+        },
+        "stem:354183": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbllSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0b7f8dd8cadad0495edba160ecac0328e8c583c7/OChem_05_EC_010c.jpg\" alt=\"A carbon is single-bonded to wedge hyrdrogen atom (front),  dash bonded to methoxy group (behind ), carboxylic acid  (right), and hydroxymethyl group (left).\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP14": {
+      "source_uid": "36577@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "354187",
+        "354188",
+        "354189"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:354187": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6b73ba77378a5259744f59574f2d8728629295fe/OChem_05_EC_011a.jpg\" alt=\"In a cyclohexane ring, C1 is dash bonded to the hydroxyl group and wedge bonded to hydrogen. C2 is wedge bonded to chlorine and dash bonded to hydrogen.\">"
+          },
+          "wraps": {}
+        },
+        "stem:354188": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmdSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7ab2b601b488de50cf010c4ab8a8e99278694de4/OChem_05_EC_011b.jpg\" alt=\"In a cyclohexane ring, C1 is wedge bonded to hydrogen and dash bonded to the ethyl group. C2 is dash bonded to hydrogen and wedge bonded to methyl group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:354189": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmtSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--294bb09c6f53f0c526ca559d51189c1be8f75e78/OChem_05_EC_011c.jpg\" alt=\"In a cyclopentane ring, C1 and C3 are each wedge bonded to a hydroxyl group and dash bonded to a methyl group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP15": {
+      "source_uid": "36578@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "354192",
+        "354193"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:354192": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbm9SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f9606d18e7a5a7f3f64ca871fd3a7a6fe7691427/OChem_05_EC_012a.jpg\" alt=\"The wedge-dash structure of biotin.\">"
+          },
+          "wraps": {}
+        },
+        "stem:354193": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbnNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f128ea5ec15aa03c91a045726057d49835c981ae/OChem_05_EC_012b.jpg\" alt=\"The wedge-dash structure of prostaglandin E 1.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP16": {
+      "source_uid": "36579@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "346161",
+        "346162"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346161": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346162": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{=}\"></span>"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP17": {
+      "source_uid": "36580@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "354196",
+        "354197"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:354196": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbndSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--81f643c982797b618f12238fd4a1cb73874ca156/OChem_05_EC_013a.jpg\" alt=\"In a 4-carbon chain, C2 and C3 are each wedge bonded to a bromine atom and dash bonded to a hydrogen atom.\">"
+          },
+          "wraps": {}
+        },
+        "stem:354197": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjBSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0e56eb5d590b1025172200d65035e5981c661cf4/OChem_05_EC_013b.jpg\" alt=\"A 4-carbon chain at C1 is a carboxylic acid group (right). C2 is wedge bonded to amino. C3 is wedge bonded to hydroxyl and C4 is bonded to benzene.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP18": {
+      "source_uid": "36581@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "357206"
+      ],
+      "fields": {
+        "stem:357206": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjRSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--adcfa50fc462aa7fe500c42b5553ef00266df4c4/OChem_05_EC_014.jpg\" alt=\"The wedge-dash structure of ascorbic acid.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP19": {
+      "source_uid": "36582@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "354202",
+        "354203"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:354202": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjhSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--896c26975bbe8221475479ff5c607788686890a2/OChem_05_EC_015a.jpg\" alt=\"Newman projection of a 4-carbon chain with front carbon chlorine, hydrogen, and methyl substituents (clockwise). The back carbon has hydrogen, methyl, and hydrogen substituents (clockwise).\">"
+          },
+          "wraps": {}
+        },
+        "stem:354203": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0FSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9eff98a3163356e94fdef6a81dbea3229df39c77/OChem_05_EC_015b.jpg\" alt=\"Newman projection of a 4-carbon chain with front carbon hydrogen, methyl, and methyl substituents (clockwise). The back carbon has hydroxyl, hydrogen, and methyl  substituents (clockwise).\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP20": {
+      "source_uid": "36583@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "354205"
+      ],
+      "fields": {
+        "stem:354205": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0VSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e5936f1a5f44f57c00496003ce67c6bfb179ccab/OChem_05_EC_016.jpg\" alt=\"Acyclic wedge-dash structure of (plus)-xylose.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP21": {
+      "source_uid": "36584@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329357",
+        "329358",
+        "329359"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329357": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329358": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329359": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP22": {
+      "source_uid": "36585@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "354209",
+        "354210",
+        "354211"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:354209": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0lSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d7d07c1b5037878a67f2991ab99eb59564f230ed/OChem_05_EC_017a.jpg\" alt=\"In a 6-carbon chain, C2 and C5 are each bonded to hydroxyl groups.\">"
+          },
+          "wraps": {}
+        },
+        "stem:354210": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb01SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c3b861805fb4eb79f883e24a5c13909817580382/OChem_05_EC_017b.jpg\" alt=\"In a cyclohexane ring, C1 and C3 are each bonded to methyl groups.\">"
+          },
+          "wraps": {}
+        },
+        "stem:354211": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1FSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--42da995dee8b7ffe100cfb30101dbf4b5ef7fa7a/OChem_05_EC_017c.jpg\" alt=\"In a cyclohexane ring, C1 and C3 are each bonded to methyl groups.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP23": {
+      "source_uid": "36586@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329367"
+      ],
+      "fields": {
+        "stem:329367": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP24": {
+      "source_uid": "36587@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "357211",
+        "357212",
+        "357213",
+        "357214"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1VSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7baa5ec84946d13f8d3fca95f06919cd220a430b/OChem_05_EC_018.jpg\" alt=\"Acyclic wedge-dash structure of ribose.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357211": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:357212": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:357213": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:357214": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP25": {
+      "source_uid": "36588@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "354221"
+      ],
+      "fields": {
+        "stem:354221": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1lSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8a09627eb6906d7c5745bf37eb371a715b1be76c/OChem_05_EC_019.jpg\" alt=\"Acyclic wedge-dash structure of ribitol.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP26": {
+      "source_uid": "36589@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "354225",
+        "354226",
+        "354227"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:354225": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2NSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f27374bd7334d2d44f528302fb683d88a9672a61/OChem_05_EC_020a.jpg\" alt=\"Wedge-dash structure of malic acid. Two arrows point toward the pro-S  and pro-R hydrogen atoms bonded at C3.\">"
+          },
+          "wraps": {}
+        },
+        "stem:354226": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2dSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ba87e3cc79293d14a9b70170b7fb3c0a2bb035ef/OChem_05_EC_020b.jpg\" alt=\"Wedge-dash structure of methionine zwitterion. Arrows point toward the pro-S  and pro-R hydrogen atoms bonded at C3 and C4.\">"
+          },
+          "wraps": {}
+        },
+        "stem:354227": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2tSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--21768d7b44c6d20bfe0ade835c969c0f78a07b7f/OChem_05_EC_020c.jpg\" alt=\"Wedge-dash structure of cysteine zwitterion. Arrows point toward the pro-S and pro-R hydrogen atoms bonded at C3.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP27": {
+      "source_uid": "36590@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "354230",
+        "354231"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:354230": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb29SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7a5d7d7e7111261b689a394d61a175c83d9ab891/OChem_05_EC_021a.jpg\" alt=\"The structure of pyruvate. Two arrows, one from the top and the other from bottom, point toward the central carbon.\">"
+          },
+          "wraps": {}
+        },
+        "stem:354231": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3NSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2f8ba9e5131d63ac2d646be7927a5bb694f2971e/OChem_05_EC_021b.jpg\" alt=\"The structure of crotonate. Two arrows, one from the top and the other from bottom, point toward C3.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP28": {
+      "source_uid": "36591@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "357216"
+      ],
+      "fields": {
+        "stem:357216": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3dSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1383713f37d644b027ccff447470a3377352141e/OChem_05_EC_022.jpg\" alt=\"The figure shows a reaction where crotonate converts to 3-hydroxybutyrate. In crotonate, the double bond is between C2 and C3.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP29": {
+      "source_uid": "36592@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "354235"
+      ],
+      "fields": {
+        "stem:354235": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzBSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1c60eebcffd9a15a51b957a642806a6f93506ac3/OChem_05_EC_023.jpg\" alt=\"The figure shows a reaction where citrate converts to two forms of cis-aconitate structures.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP30": {
+      "source_uid": "36593@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "354237"
+      ],
+      "fields": {
+        "stem:354237": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzRSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--26158a664ffbfdc34ea413d5b3bb5d885e6b81d2/OChem_05_EC_024.jpg\" alt=\"The figure shows a reaction where glycerol on the conversion of A T P to A D P forms glycerol phosphate.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP31": {
+      "source_uid": "36594@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "354239"
+      ],
+      "fields": {
+        "stem:354239": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWtZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6bc528e3640839b1d36ace83e0b8556f2b0901ba/OChem_05_EC_025.jpg\" alt=\"The dehydration of (R)-3-hydroxybutyryl A C P to form trans-crotonyl A C P.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP32": {
+      "source_uid": "36595@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329397"
+      ],
+      "fields": {
+        "stem:329397": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP33": {
+      "source_uid": "36596@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329399"
+      ],
+      "fields": {
+        "stem:329399": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP34": {
+      "source_uid": "36597@7",
+      "solutions_are_public": false,
+      "question_order": [
+        "354241"
+      ],
+      "fields": {
+        "stem:354241": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5f470595957f20f78f08999bcdd26df7b7f316e7/OChem_05_EC_026.jpg\" alt=\"The figure shows a reaction where two molecules of cysteine convert to cystine.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP35": {
+      "source_uid": "36598@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329404",
+        "329405"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329404": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329405": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP36": {
+      "source_uid": "36599@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "354243"
+      ],
+      "fields": {
+        "stem:354243": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bae07cb8fa66e957cb065dedc94432ca8f553e04/OChem_05_EC_027.jpg\" alt=\"The wedge-dash structure of cephalexin.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP37": {
+      "source_uid": "36600@6",
+      "solutions_are_public": false,
+      "question_order": [
+        "354245"
+      ],
+      "fields": {
+        "stem:354245": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcElSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9450160a02ac9b1aecedf7501514198d86045143/OChem_05_EC_028.jpg\" alt=\"The wedge-dash structure of chloramphenicol.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP38": {
+      "source_uid": "36601@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "354247"
+      ],
+      "fields": {
+        "stem:354247": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcE1SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--46c112519c543b6f36c09d0a4380ec34e5ec573c/OChem_05_EC_029.jpg\" alt=\"The condensed structural formula of mycomycin.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP39": {
+      "source_uid": "36602@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "354249"
+      ],
+      "fields": {
+        "stem:354249": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--10250bb6b31c9f4a8741895601d1a8a3f260d521/OChem_05_EC_030.jpg\" alt=\"The wedge-dash structure of 4-methylcyclohexylideneacetic acid.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP40": {
+      "source_uid": "36603@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329416",
+        "329417"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329416": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329417": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP41": {
+      "source_uid": "36604@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329419"
+      ],
+      "fields": {
+        "stem:329419": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP42": {
+      "source_uid": "36605@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329423",
+        "329424",
+        "329425"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329423": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329424": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329425": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP43": {
+      "source_uid": "36606@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329429",
+        "329430",
+        "329431"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329429": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329430": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:329431": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP44": {
+      "source_uid": "36607@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "329433"
+      ],
+      "fields": {
+        "stem:329433": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP45": {
+      "source_uid": "36608@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "354252"
+      ],
+      "fields": {
+        "stem:354252": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>\n\u0000SLOT_2\u0000",
+          "slots": 3,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5d73e714b12f40b679d26884450993c8868dfa15/OChem_05_EC_031.jpg\" alt=\"The figure shows a reaction where an alkyl bromide reacts with H S anion  to form a thiol compound and a bromide ion.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP46": {
+      "source_uid": "36609@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "354255",
+        "354256"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<span data-math=\"\\text{≡}\"></span>",
+            "1": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFlSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--75f676a5dde319c7c7a6166002aa7024aad49bcb/OChem_05_EC_032.jpg\" alt=\"In a reaction, 2-butanone reacts with Na superscript plus C superscript minus triple bonded to C H in first step and hydronium ion in the second step to form 3-methyl-1-pentyn-3-ol.\">"
+          },
+          "wraps": {}
+        },
+        "stem:354255": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:354256": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-AP47": {
+      "source_uid": "36610@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "354259",
+        "354260"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6612f10bcdc5c758826f7e60ac4379ad8894c937/OChem_05_EC_033.jpg\" alt=\"In a reaction, (R)-2-phenylpropanal reacts with Na superscript plus C superscript minus triple bonded to C H in first step and hydronium ion in the second step to form 4-phenyl-1-pentyn-3-ol.\">"
+          },
+          "wraps": {}
+        },
+        "stem:354259": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:354260": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-VC01": {
+      "source_uid": "36522@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "354135"
+      ],
+      "fields": {
+        "stem:354135": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000\n<br>\u0000SLOT_2\u0000</p>",
+          "slots": 3,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1lSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--20f18a4b3daf590523f73a06d50c5311bbc5c9f2/OChem_05_EC_001a.jpg\" alt=\"The ball-and-stick model shows a 3-carbon chain. C1 is a carboxylic acid group on the right. A chlorine atom is bonded to C2  above and a methyl group below C2.\">",
+            "1": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2NSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8ffaaefa2123d12e6a102b12b823f5a5b5979ba7/OChem_05_EC_001b.jpg\" alt=\"The ball-and-stick model shows a 3-carbon  chain. C1 is a carboxylic acid group  on the left. C2 is bonded to a chlorine atom at the top behind the C2 hydrogen.\">",
+            "2": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2dSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4ccf1717dbcc8565a70519a0783ca37b993f12a1/OChem_05_EC_001c.jpg\" alt=\"The ball-and-stick model shows a 3-carbon  chain. C1 is a carboxylic acid group on the left. C2 is bonded to a chlorine atom on the right the methyl group above.\">",
+            "3": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa29SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--027a71e1faf1c89f2df1a550c2818ac00e4137e0/OChem_05_EC_001d.jpg\" alt=\"The ball-and-stick model shows a 3-carbon  chain. C1 is a carboxylic acid group on the left. C2 is bonded to a chlorine atom in front of the C2 hydrogen\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-VC02": {
+      "source_uid": "36524@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "357201",
+        "357202"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:357201": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa3dSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8067b9875ab446b2ee1b779b027863f710b49e15/OChem_05_EC_002a.jpg\" alt=\"The ball-and-stick model of serine. Gray, black, blue, and red spheres represent hydrogen, carbon, nitrogen, and oxygen, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "stem:357202": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazBSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--417cbd612d5d9ebc975609650715767390196499/OChem_05_EC_002b.jpg\" alt=\"The ball-and-stick model of adrenaline. Gray, black, blue, and red spheres represent hydrogen, carbon, nitrogen, and oxygen, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-VC03": {
+      "source_uid": "36525@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "354143",
+        "354144",
+        "354145"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:354143": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazRSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--80fa27e7f08164c8c63c70a5302afe15c2543253/OChem_05_EC_003a.jpg\" alt=\"The ball-and-stick model has a cyclopentane ring. C1 and C3 are each bonded to cis hydroxyl groups where red spheres represent oxygen atoms.\">"
+          },
+          "wraps": {}
+        },
+        "stem:354144": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazhSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c62319505e49b8a5a3ce71f9ec19a32bdfadfec7/OChem_05_EC_003b.jpg\" alt=\"The ball-and-stick model has a 5-carbon chain. C2 and C4 are each bonded to an amino group where blue spheres represent nitrogen atoms.\">"
+          },
+          "wraps": {}
+        },
+        "stem:354145": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbEFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7fdcd1592f2ae30c5d3052b6fa757d3abbe1e3c1/OChem_05_EC_003c.jpg\" alt=\"The ball-and-stick model has a 4-carbon chain. C2 and C3 are each bonded to a chlorine atom where green spheres represent chlorine atoms.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-VC04": {
+      "source_uid": "36527@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "354147"
+      ],
+      "fields": {
+        "stem:354147": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbEVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--387eb5474016a755c6162531b453e0acc8117a71/OChem_05_EC_004.jpg\" alt=\"The ball-and-stick model of pseudoephedrine. Gray, black, blue, and red spheres represent hydrogen, carbon, nitrogen, and oxygen, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "05-99-OC-VC05": {
+      "source_uid": "36551@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "354151",
+        "354152",
+        "354153"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:354151": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHdSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--82dfe8e7309128d721668d7051a43da243bed87c/OChem_05_EC_005a.jpg\" alt=\"A carbon is single-bonded to substituents 1 (top) and 3(right), wedge bonded to 2 (front), and dash bonded to 4 (left).\">"
+          },
+          "wraps": {}
+        },
+        "stem:354152": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDBSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bdb3f394163d6421598d0fbe71630c48fd50585e/OChem_05_EC_005b.jpg\" alt=\"A carbon is single-bonded to substituents 3 (top) and 4 (right), wedge bonded to 1 (front), and dash bonded to 2 (left).\">"
+          },
+          "wraps": {}
+        },
+        "stem:354153": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDRSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--66334c714cff8dc92db6e59812f56bf63b5f079c/OChem_05_EC_005c.jpg\" alt=\"A carbon is single-bonded to substituents 4 (top) and 2 (right), wedge bonded to 3 (front), and dash bonded to 1 (left).\">"
+          },
+          "wraps": {}
+        }
+      }
+    }
+  }
+}

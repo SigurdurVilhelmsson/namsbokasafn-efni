@@ -1,0 +1,15 @@
+{
+  "nickname": "07-99-OC-VC04",
+  "source_uid": "36638@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354346",
+      "stem_html": "<p>Hægt er að búa til eftirfarandi alkýlbrómíð með HBr-álagningu á þrjá mismunandi alkena. Sýndu byggingu þeirra.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcm9SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f9a68c2f397703a9af322c6e070c0e2293ebdf32/OChem_07_EC_005.jpg\" alt=\"The ball-and-stick model has a cyclohexane ring. C1 is bonded to bromine and ethyl group. C3 is bonded to a methyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

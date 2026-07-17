@@ -1,0 +1,19 @@
+{
+  "nickname": "26-07-OC-P16",
+  "source_uid": "39227@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348959",
+      "stem_html": "Sýndu hvarfganginn fyrir myndun Boc-afleiðu með efnahvarfi amínósýru við dí-<i>tert</i>-bútýldíkarbónat.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Þetta er dæmigert kjarnsækið asýlskiptihvarf, þar sem amín amínósýrunnar er kjarnsækirinn og <i>tert</i>-bútýlkarbónat er farhópurinn. <i>tert</i>-bútýlkarbónatið missir síðan CO<sub>2</sub> og gefur <i>tert</i>-bútoxíð, sem er róteindað."
+        }
+      ]
+    }
+  ]
+}

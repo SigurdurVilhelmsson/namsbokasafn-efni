@@ -1,0 +1,46 @@
+{
+  "nickname": "01-04-OC-P06",
+  "source_uid": "37543@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Skrifaðu línutengibyggingar fyrir eftirfarandi efni og sýndu allar óbindandi rafeindir:",
+  "questions": [
+    {
+      "id": "357529",
+      "stem_html": "<p>CHCl<sub>3</sub>, klóróform</p>",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0lVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--25a4685a34f95303824489a672734ffe251dad7d/OChem_01_EC_203a.jpg\" alt=\"The Lewis structure and chemical structure of chloroform.\">"
+        }
+      ]
+    },
+    {
+      "id": "357530",
+      "stem_html": "H<sub>2</sub>S, brennisteinsvetni",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb01VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--62acab573381f5e8cf2bfe25b97e7c1ba1dcdd9b/OChem_01_EC_203b.jpg\" alt=\"The Lewis structure and chemical structure of hydrogen sulfide.\">"
+        }
+      ]
+    },
+    {
+      "id": "357531",
+      "stem_html": "CH<sub>3</sub>NH<sub>2</sub>, metýlamín",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1FVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1a3972b3d88deab62dd179f6228378977ab29e00/OChem_01_EC_203c.jpg\" alt=\"The Lewis structure and chemical structure of methylamine.\">"
+        }
+      ]
+    },
+    {
+      "id": "357532",
+      "stem_html": "<p>CH<sub>3</sub>Li, metýllitíum</p>",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1VVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e6f4ac7af4c83391e2f5ae95315519c9aaa35843/OChem_01_EC_203d.jpg\" alt=\"The Lewis structure and chemical structure of methyllithium.\">"
+        }
+      ]
+    }
+  ]
+}

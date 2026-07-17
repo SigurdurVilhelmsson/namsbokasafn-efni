@@ -1,0 +1,25 @@
+{
+  "nickname": "11-99-OC-AP31",
+  "source_uid": "37405@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Byggt á svari þínu við dæmi 11-63, spáðu fyrir um myndefnið/myndefnin og sýndu hvarfgang fyrir hvert eftirfarandi efnahvarf.",
+  "questions": [
+    {
+      "id": "355426",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdlFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dc3579e2176722bc7d232a105000667a259b1a53/OChem_11_EC_040a.jpg\" alt=\"An incomplete reaction between trans-1-chloro-1-butene first with sodium amide and then with hydronium to form unknown product(s).\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355427",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdlVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--746ee3d1442574b4be9ed7a487158649fe4ce99c/OChem_11_EC_040b.jpg\" alt=\"An incomplete reaction between an alkene with bromine (up) and phenyl on the left and methyl (up) and hydrogen on the right, first with sodium amide and then with hydronium.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355428",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdllUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--47be94920d08b9ae33170ea8a34412e32f112263/OChem_11_EC_040c.jpg\" alt=\"An incomplete reaction between cis-1-chloro-1-propene, first with sodium amide and then with hydronium.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

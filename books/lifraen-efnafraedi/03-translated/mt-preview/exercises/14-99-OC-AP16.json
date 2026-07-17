@@ -1,0 +1,30 @@
+{
+  "nickname": "14-99-OC-AP16",
+  "source_uid": "37706@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig gætir þú notað Diels-Alder-efnahvörf til að búa til eftirfarandi myndefni? Sýndu upphafsdíen og díensækni í hverju tilviki.",
+  "questions": [
+    {
+      "id": "358502",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdlVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4696753d552bbaa3ec2b16b76b8d35ad2bd73490/OChem_14_EC_021a.jpg\" alt=\"A cyclohexene ring is fused to a 5-membered ring made of four carbon atoms and an oxygen atom at postion 3. Carbonds at positions 2 and 5 of the ring are carbonyls..\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358503",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdllVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3f552bdd5f65e7cc23c71e85108a21d1e8d006cf/OChem_14_EC_021b.jpg\" alt=\"A 7-membered bicyclic ring. C 2 is double bonded to C 3. C 6 is bonded to a hydrogen atom and a cyano group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358504",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmNVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5d0dea2b55f8bdcf2b8f0722a1ff28b50533aa3c/OChem_14_EC_021c.jpg\" alt=\"Cyclohexene fused to a cyclohexane where C 1 and C 4 are carbonyls. The cyclohexane is further fused to another cyclohexene.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358505",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmdVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--66d7af83ac1bbb72adaebe0898096a829c0823cf/OChem_14_EC_021d.jpg\" alt=\"Cyclohexadiene ring with double bonds between C1-C2 and C4-C5. C 1 is bonded to C O 2 C H 3 group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

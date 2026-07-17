@@ -1,0 +1,20 @@
+{
+  "nickname": "05-99-OC-AP47",
+  "source_uid": "36610@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Ímyndaðu þér að efnahvarf svipað því í dæmi 5-76 sé framkvæmt milli natríumasetýlíðs og (<i>R</i>)-2-fenýlprópanals til að gefa 4-fenýl-1-pentýn-3-ól:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6612f10bcdc5c758826f7e60ac4379ad8894c937/OChem_05_EC_033.jpg\" alt=\"In a reaction, (R)-2-phenylpropanal reacts with Na superscript plus C superscript minus triple bonded to C H in first step and hydronium ion in the second step to form 4-phenyl-1-pentyn-3-ol.\">",
+  "questions": [
+    {
+      "id": "354259",
+      "stem_html": "Er myndefnið handhverft?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354260",
+      "stem_html": "Teiknaðu bæði aðal- og aukaafurðir efnahvarfsins og gefðu þér að efnahvarfið eigi sér stað fyrst og fremst frá Re-hlið karbónýlhópsins. Er efnablandan ljósvirk? Útskýrðu.",
+      "collaborator_solutions": []
+    }
+  ]
+}

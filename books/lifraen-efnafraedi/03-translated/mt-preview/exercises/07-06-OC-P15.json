@@ -1,0 +1,37 @@
+{
+  "nickname": "07-06-OC-P15",
+  "source_uid": "36637@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Nefndu eftirfarandi alkena og segðu til um hvort efnasambandið í hvoru pari er stöðugra:",
+  "questions": [
+    {
+      "id": "358069",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b3ec970fe3866616d84bcb668ae2b10f753a5ef1/OChem_07_06_009a.jpg\" alt=\"The first structure has a 4-carbon chain with double bond at C1. The second structure has a 3-carbon chain with double bond between C1-C2. C2 is bonded to methyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-metýlprópen er stöðugra en 1-búten."
+        }
+      ]
+    },
+    {
+      "id": "358070",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmdSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--eda49ffee3c1bda09fd0047d3cab87fe61803703/OChem_07_06_009b.jpg\" alt=\"Two six-carbon chains with double bonds at C 2. Carbon substituents are pointed down in first structure, one up and one down in second structure.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>trans</i>-2-hexen er stöðugra en <i>cis</i>-2-hexen."
+        }
+      ]
+    },
+    {
+      "id": "358071",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmtSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--624f5c1a136f9e1996cceaf4d965c675293ad1a2/OChem_07_06_009c.jpg\" alt=\"Two six-carbon rings with one double bond each. One has a methyl on a double-bonded carbon, one has a methyl on a carbon adjacent to the double bond.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-metýlsýklóhexen er stöðugra en 3-metýlsýklóhexen."
+        }
+      ]
+    }
+  ]
+}

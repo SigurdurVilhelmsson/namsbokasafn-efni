@@ -1,0 +1,19 @@
+{
+  "nickname": "29-09-OC-P15",
+  "source_uid": "39309@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "349288",
+      "stem_html": "Hvaða <i>α</i>-ketósýra myndast við transamínun á leusíni?",
+      "collaborator_solutions": [
+        {
+          "content_html": "(CH<sub>3</sub>)<sub>2</sub>CHCH<sub>2</sub>COCO<sub>2</sub><sup>−</sup>"
+        }
+      ]
+    }
+  ]
+}

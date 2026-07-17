@@ -1,0 +1,25 @@
+{
+  "nickname": "11-99-OC-MP02",
+  "source_uid": "37367@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Sýndu hvarfganginn fyrir hvert eftirfarandi efnahvarf. Hvað eiga hvarfgangarnir sameiginlegt? Hvers vegna?",
+  "questions": [
+    {
+      "id": "361083",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0lUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7db25054aa5689cb88bd399ca44c25a433865193/OChem_11_EC_012a.jpg\" alt=\"Alt Text Placeholder\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361084",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0ca55f873fd1f5e3977f54ffc6cbaa98bac7ff6b/OSX_OrgChem_11_99_OChem-11-EC-012b_80485-11-u067_P-CH3CO2Na_img.jpg\" alt=\"3-chloro-1-butene reacts with sodium acetate and acetic acid to form a product in which O C O C H 3 has replaced Cl.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361085",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e9e937e5c623dd1926e41613674bf32f22325ec4/OSX_OrgChem_11_99_OChem-11-EC-012c_80485-11-u067_P-BrCH3OH_img.jpg\" alt=\"A three-carbon chain with cyclohexane on C 1 and bromine on C 2 reacts with methanol to produce a three-carbon chain with cyclohexane on C 1and methoxy on C 2.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

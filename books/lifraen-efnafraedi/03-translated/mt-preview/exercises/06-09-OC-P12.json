@@ -1,0 +1,19 @@
+{
+  "nickname": "06-09-OC-P12",
+  "source_uid": "37305@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "336369",
+      "stem_html": "Hvort efnahvarfið er hraðvirkara, það sem hefur Δ<i>G</i><sup>‡</sup> = +45 kJ/mól eða það sem hefur Δ<i>G</i><sup>‡</sup> = +70 kJ/mól?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Lægra Δ<i>G</i><sup>‡</sup> er hraðvirkara."
+        }
+      ]
+    }
+  ]
+}

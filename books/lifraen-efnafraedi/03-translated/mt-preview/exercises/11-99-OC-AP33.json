@@ -1,0 +1,15 @@
+{
+  "nickname": "11-99-OC-AP33",
+  "source_uid": "37407@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "356334",
+      "stem_html": "<p>Efnahvarf HBr við (<i>R</i>)-3-metýl-3-hexanól leiðir til rasemísks 3-bróm-3-metýlhexans. Útskýrðu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmdUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a4d2b26882f9365752a6a03b4b213bfc4fd60f4d/OChem_11_EC_042.jpg\" alt=\"An illustration shows the structure of 3-Methyl-3-hexanol. A central carbon is bonded to a hydroxyl group at the top  methyl group at the bottom  an ethyl group on the right  and a propyl group on the left.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

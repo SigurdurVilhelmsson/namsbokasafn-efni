@@ -1,0 +1,20 @@
+{
+  "nickname": "12-99-OC-AP28",
+  "source_uid": "37454@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Massaróf <b>(a)</b> og innrautt róf <b>(b)</b> óþekkts kolvetnis eru sýnd. Stingdu upp á eins mörgum byggingum og þú getur.",
+  "questions": [
+    {
+      "id": "356707",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDhVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c325d8c4a4a15d0e3123d4a374a817329f88d698/OChem_12_EC_009a.jpg\" alt=\"The mass spectrum of an unknown compound with a base peak at m / z 67 and other high abundance peaks at 27, 29, 39, 40, and 53.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "356708",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUlXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d6f0c4417d7afd2b3a344fcb4cb123d30492a85e/OChem_12_EC_009b.jpg\" alt=\"An infrared spectrum with a sharp band at 3300, bands just below 3000, and a small band around 2150 inverse centimeters.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

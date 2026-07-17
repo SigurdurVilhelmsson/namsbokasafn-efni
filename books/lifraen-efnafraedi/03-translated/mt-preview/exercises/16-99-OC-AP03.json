@@ -1,0 +1,30 @@
+{
+  "nickname": "16-99-OC-AP03",
+  "source_uid": "37835@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Raðaðu efnasamböndunum í hverjum hóp eftir hvarfgirni þeirra gagnvart rafsæknu skiptihvarfi.",
+  "questions": [
+    {
+      "id": "339492",
+      "stem_html": "Klórbensen, <i>o</i>-díklórbensen, bensen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339493",
+      "stem_html": "<i>p</i>-Brómnítróbensen, nítróbensen, fenól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339494",
+      "stem_html": "Flúorbensen, bensaldehýð, <i>o</i>-xýlen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339495",
+      "stem_html": "Bensónítríl, <i>p</i>-metýlbensónítríl, <i>p</i>-metoxýbensónítríl",
+      "collaborator_solutions": []
+    }
+  ]
+}

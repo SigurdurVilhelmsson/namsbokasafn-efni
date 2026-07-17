@@ -1,0 +1,37 @@
+{
+  "nickname": "06-01-OC-P01",
+  "source_uid": "37294@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Flokkaðu hvert eftirfarandi efnahvarfa sem álagningu, brottnám, skiptihvarf eða umröðun:",
+  "questions": [
+    {
+      "id": "347131",
+      "stem_html": "CH<sub>3</sub>Br + KOH <span data-math=\"\\text{⟶}\"></span> CH<sub>3</sub>OH + KBr ",
+      "collaborator_solutions": [
+        {
+          "content_html": "Skiptihvarf"
+        }
+      ]
+    },
+    {
+      "id": "347132",
+      "stem_html": "CH<sub>3</sub>CH<sub>2</sub>Br <span data-math=\"\\text{⟶}\"></span> H<sub>2</sub>C<span data-math=\"\\text{=}\"></span>CH<sub>2</sub> + HBr ",
+      "collaborator_solutions": [
+        {
+          "content_html": "Brottnám"
+        }
+      ]
+    },
+    {
+      "id": "347133",
+      "stem_html": "H<sub>2</sub>C<span data-math=\"\\text{=}\"></span>CH<sub>2</sub> + H<sub>2</sub> <span data-math=\"\\text{⟶}\"></span> CH<sub>3</sub>CH<sub>3</sub>\n",
+      "collaborator_solutions": [
+        {
+          "content_html": "Álagning"
+        }
+      ]
+    }
+  ]
+}

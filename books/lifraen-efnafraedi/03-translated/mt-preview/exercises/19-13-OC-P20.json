@@ -1,0 +1,19 @@
+{
+  "nickname": "19-13-OC-P20",
+  "source_uid": "38014@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351824",
+      "stem_html": "Úthlutaðu <i>R</i> eða <i>S</i> handhverfri efnafræði til tveggja hendnimiðja í ísósítrati og segðu til um hvort OH og H leggist á Si-hlið eða Re-hlið tvítengisins.",
+      "collaborator_solutions": [
+        {
+          "content_html": "-OH hópurinn leggst á Re-hliðina við C2 og -H leggst á Re-hliðina við C3 og gefur (2<i>R</i>,3<i>S</i>)-ísósítrat."
+        }
+      ]
+    }
+  ]
+}

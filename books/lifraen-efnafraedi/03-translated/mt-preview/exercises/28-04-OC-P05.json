@@ -1,0 +1,19 @@
+{
+  "nickname": "28-04-OC-P05",
+  "source_uid": "39114@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348288",
+      "stem_html": "<p>Hvaða RNA-basaröð er samsvarandi eftirfarandi DNA-basaröð?</p>\n<p style=\"text-align: center\">(5′) GATTACCGTA (3′)</p>",
+      "collaborator_solutions": [
+        {
+          "content_html": "(3′) CUAAUGGCAU (5′)"
+        }
+      ]
+    }
+  ]
+}

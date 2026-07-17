@@ -1,0 +1,46 @@
+{
+  "nickname": "16-10-OC-P22",
+  "source_uid": "37809@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvernig myndir þú mynda eftirfarandi efni úr benseni?",
+  "questions": [
+    {
+      "id": "339410",
+      "stem_html": "<i>m</i>-Klórónítróbensen",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. HNO<sub>3</sub>, H<sub>2</sub>SO<sub>4</sub>; 2. Cl<sub>2</sub>, FeCl<sub>3</sub>"
+        }
+      ]
+    },
+    {
+      "id": "339411",
+      "stem_html": "<i>m</i>-Klóróetýlbensen",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. CH<sub>3</sub>COCl, AlCl<sub>3</sub>; 2. Cl<sub>2</sub>, FeCl<sub>3</sub>; 3. H<sub>2</sub>/Pd"
+        }
+      ]
+    },
+    {
+      "id": "339412",
+      "stem_html": "4-Klóró-1-nítró-2-própýlbensen",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. CH<sub>3</sub>CH<sub>2</sub>COCl, AlCl<sub>3</sub>; 2. Cl<sub>2</sub>, FeCl<sub>3</sub>; 3. H<sub>2</sub>/Pd; 4. HNO<sub>3</sub>, H<sub>2</sub>SO<sub>4</sub>"
+        }
+      ]
+    },
+    {
+      "id": "339413",
+      "stem_html": "3-Bróm-2-metýlbensensúlfónsýra",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. CH<sub>3</sub>Cl, AlCl<sub>3</sub>; 2. Br<sub>2</sub>, FeBr<sub>3</sub>; 3. SO<sub>3</sub>, H<sub>2</sub>SO<sub>4</sub>"
+        }
+      ]
+    }
+  ]
+}

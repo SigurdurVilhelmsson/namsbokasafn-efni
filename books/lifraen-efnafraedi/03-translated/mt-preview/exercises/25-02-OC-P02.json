@@ -1,0 +1,37 @@
+{
+  "nickname": "25-02-OC-P02",
+  "source_uid": "39040@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Breytið eftirfarandi Fischer-vörpunum í ferflötungsmynd og úthlutið <i>R</i> eða <i>S</i> handhverfu:",
+  "questions": [
+    {
+      "id": "358730",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--21e68db0ed372debc78fd7b492b736ac205e5ec9/OChem_25_02_010a.jpg\" alt=\"The central carbon is bonded to hydrogen on right, amine on left, C O O H on the top, and C H 3 on the bottom.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>S</i>"
+        }
+      ]
+    },
+    {
+      "id": "358731",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGtaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--12ad8e04eebffdad16699c8cf91f1b3d27dc0e4b/OChem_25_02_010b.jpg\" alt=\"The central carbon is bonded to hydroxyl on right, hydrogen on left, C H O on the top, and C H 3 on the bottom.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>R</i>"
+        }
+      ]
+    },
+    {
+      "id": "358732",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbG9aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2ae1bf663edc46869f591b105cccdedef72c5f61/OChem_25_02_010c.jpg\" alt=\"The central carbon is bonded to C H O on right, hydrogen on left, C H 3 on the top, and C H 2 C H 3 on the bottom.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>S</i>"
+        }
+      ]
+    }
+  ]
+}

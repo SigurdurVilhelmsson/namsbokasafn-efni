@@ -1,0 +1,25 @@
+{
+  "nickname": "24-99-OC-AP13",
+  "source_uid": "39012@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú breyta anilíni í hvert eftirfarandi myndefna?",
+  "questions": [
+    {
+      "id": "347749",
+      "stem_html": "Bensen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347750",
+      "stem_html": "Bensamíð",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347751",
+      "stem_html": "Tólúen",
+      "collaborator_solutions": []
+    }
+  ]
+}

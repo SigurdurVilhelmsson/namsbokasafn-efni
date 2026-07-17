@@ -1,0 +1,19 @@
+{
+  "nickname": "21-06-OC-P16",
+  "source_uid": "38166@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "342487",
+      "stem_html": "Hvers vegna er sápun esters óafturkræf? Með öðrum orðum, hvers vegna myndast ekki ester þegar karboxýlsýra er meðhöndluð með alkoxíðjón?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Efnahvarf karboxýlsýru við alkoxíðjón gefur karboxýlatjón."
+        }
+      ]
+    }
+  ]
+}

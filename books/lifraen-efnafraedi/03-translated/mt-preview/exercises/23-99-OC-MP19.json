@@ -1,0 +1,20 @@
+{
+  "nickname": "23-99-OC-MP19",
+  "source_uid": "38925@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Mannich-efnahvarf ketóns, amíns og aldehýðs er eitt af fáum þriggja þátta efnahvörfum í lífrænni efnafræði. Sýklóhexanón hvarfast til dæmis við dímetýlamín og asetaldehýð og gefur amínóketón. Efnahvarfið á sér stað í tveimur skrefum, sem bæði eru dæmigerð efnahvörf karbónýlhópa.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2NZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cacebdb1b64e8ce3b86154a58ee9b508156c759b/OChem_23_EC_032.jpg\" alt=\"The reaction shows cyclohexanone with dimethylamine and acetaldehyde using hydrogen ions as a catalyst, giving aminoketone product (2-(1-(diethylamino)ethyl) cyclohexanone.\">",
+  "questions": [
+    {
+      "id": "359875",
+      "stem_html": "Fyrsta skrefið er efnahvarf milli aldehýðsins og amínsins til að gefa imíníumjón (R<sub>2</sub>C<span data-math=\"\\text{═}\"></span>NR<sub>2</sub><sup>+</sup>) sem milliefni auk vatns. Leggðu til hvarfgang og sýndu byggingu imíníumjónarinnar sem er milliefni.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359876",
+      "stem_html": "Annað skrefið er efnahvarf milli imíníumjónarinnar sem er milliefni og ketónsins til að gefa endanlegt myndefni. Leggðu til hvarfgang.",
+      "collaborator_solutions": []
+    }
+  ]
+}

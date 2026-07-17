@@ -1,0 +1,25 @@
+{
+  "nickname": "18-99-OC-VC01",
+  "source_uid": "38715@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Gefðu IUPAC-heiti fyrir eftirfarandi efnasambönd (rautt = O; rauðbrúnt = Br; gult = S):",
+  "questions": [
+    {
+      "id": "361163",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbm9YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--069dbf15f7ee539949de13acf79b896a687a74c2/OChem_18_EC_015a.jpg\" alt=\"The ball-and-stick model of the compound in which a six-membered ring is bonded with an ethyl group via an ether linkage.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361164",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbnNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ddda9448ac719784adfc1279424ace8483bb9e08/OChem_18_EC_015b.jpg\" alt=\"The ball-and-stick model of the compound in which a six-membered cyclic ring is bonded with an epoxide ring. It has an alkene structure with a carbonyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361165",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbndYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--03691183149a23937cdaaf52dea5146bbceff856/OChem_18_EC_015c.jpg\" alt=\"The ball-and-stick model of the compound in which a five-membered cyclic ring is bonded with an ethyl group to which a thiol group is bonded.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

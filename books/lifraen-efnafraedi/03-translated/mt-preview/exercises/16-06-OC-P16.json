@@ -1,0 +1,19 @@
+{
+  "nickname": "16-06-OC-P16",
+  "source_uid": "37803@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358938",
+      "stem_html": "<p>Hægt er að búa til illgresiseyðinn oxýflúorfen með efnahvarfi milli fenóls og arýlflúoríðs. Leggðu til hvarfgang.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e8a8dfe76688f3d47a9482f2fe92bdc9ae45f6d1/OChem_16_06_006.jpg\" alt=\"A substituted phenol and a substituted aryl fluoride react with each other in the presence of potassium hydroxide to form oxyfluorfen where the two starting materials are joined to one another by an oxygen atom.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Fenólið er afprótónað með KOH til að mynda anjón sem framkvæmir kjarnsækið asýlskiptihvarf á flúornítróbenseninu."
+        }
+      ]
+    }
+  ]
+}

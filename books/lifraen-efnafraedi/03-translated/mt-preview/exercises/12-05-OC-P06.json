@@ -1,0 +1,64 @@
+{
+  "nickname": "12-05-OC-P06",
+  "source_uid": "37422@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Það er gagnlegt að fá tilfinningu fyrir orkumagninu sem samsvarar mismunandi hlutum rafsegulrófsins. Reiknaðu orkuna í kJ/mól fyrir hverja af eftirfarandi tegundum geislunar:",
+  "questions": [
+    {
+      "id": "341872",
+      "stem_html": "Gammageisli með <i>λ</i> = 5,0 × 10<sup>–11</sup> m",
+      "collaborator_solutions": [
+        {
+          "content_html": "2,4 × 10<sup>6</sup> kJ/mól]"
+        }
+      ]
+    },
+    {
+      "id": "341873",
+      "stem_html": "Röntgengeisli með <i>λ</i> = 3,0 × 10<sup>–9</sup> m",
+      "collaborator_solutions": [
+        {
+          "content_html": "4,0 × 10<sup>4</sup> kJ/mól"
+        }
+      ]
+    },
+    {
+      "id": "341874",
+      "stem_html": "Útfjólublátt ljós með <i>ν</i> = 6,0 × 10<sup>15</sup> Hz",
+      "collaborator_solutions": [
+        {
+          "content_html": "2,4 × 10<sup>3</sup> kJ/mól"
+        }
+      ]
+    },
+    {
+      "id": "341875",
+      "stem_html": "Sýnilegt ljós með <i>ν</i> = 7,0 × 10<sup>14</sup> Hz",
+      "collaborator_solutions": [
+        {
+          "content_html": "2,8 × 10<sup>2</sup> kJ/mól"
+        }
+      ]
+    },
+    {
+      "id": "341876",
+      "stem_html": "Innrauð geislun með <i>λ</i> = 2,0 × 10<sup>–5</sup> m",
+      "collaborator_solutions": [
+        {
+          "content_html": "6,0 kJ/mól"
+        }
+      ]
+    },
+    {
+      "id": "341877",
+      "stem_html": "Örbylgjugeislun með <i>ν</i> = 1,0 × 10<sup>11</sup> Hz",
+      "collaborator_solutions": [
+        {
+          "content_html": "4,0 × 10<sup>−2</sup> kJ/mól"
+        }
+      ]
+    }
+  ]
+}

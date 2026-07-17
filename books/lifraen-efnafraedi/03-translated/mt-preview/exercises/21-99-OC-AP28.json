@@ -1,0 +1,15 @@
+{
+  "nickname": "21-99-OC-AP28",
+  "source_uid": "38222@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361515",
+      "stem_html": "<p>Fenýl 4-amínósalisýlat er lyf sem notað er við meðferð á berklum. Leggðu til myndun þessa efnasambands frá 4-nítrósalisýlsýru.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa3dYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6f120b5a193a4f8b2f42fc810d27fa4139c3e2f1/OChem_21_EC_053.jpg\" alt=\"The reaction of 4-nitrosalicylic acid to form phenyl-4-aminosalicylate using unknown reagents, denoted by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "nickname": "23-05-OC-P08",
+  "source_uid": "38888@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hver af eftirfarandi efnasamböndum er líklega hægt að búa til með blönduðu aldól-efnahvarfi? Sýndu hvarfefnin sem þú myndir nota í hverju tilviki.",
+  "questions": [
+    {
+      "id": "359715",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzRZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5d106ab1db1e9ed0fc8358d010f92f8e86ed024f/OChem_23_05_004a.jpg\" alt=\"The structure of 4-phenylbut-3-en-2-one shows a four-carbon chain with a phenyl group on the fourth and a carbonyl on second carbon. The third and fourth carbon is double-bonded.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "C<sub>6</sub>H<sub>5</sub>CHO + CH<sub>3</sub>COCH<sub>3</sub>"
+        }
+      ]
+    },
+    {
+      "id": "359716",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzhZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b2e46f372d425c76254202afb4bb270698137b31/OChem_23_05_004b.jpg\" alt=\"Chemical structure of 4-methyl-4-phenylbut-3-en-2-one.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Ekki auðvelt að búa til"
+        }
+      ]
+    },
+    {
+      "id": "359717",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEFZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0f53bbed6d79bdfef16fd6b920c79f0d618d944b/OChem_23_05_004c.jpg\" alt=\"The structure shows a cyclohexanone ring with a C H C H 2 C H 3 side chain double-bonded on the second carbon.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Ekki auðvelt að búa til"
+        }
+      ]
+    }
+  ]
+}

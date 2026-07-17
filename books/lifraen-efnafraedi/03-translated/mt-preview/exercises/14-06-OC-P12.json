@@ -1,0 +1,19 @@
+{
+  "nickname": "14-06-OC-P12",
+  "source_uid": "37648@8",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360207",
+      "stem_html": "Sýndu hvarfgang sýruhvataðrar fjölliðunar 1,3-bútadíens.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa29hIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--04c9007e81ff3f6bf9c3d0863809b63e3a20bff7/OChem_14_EC_204.jpg\" alt=\"A two-step polymerization reaction mechanism of 1,3-butadiene with H plus (acid-catalyzed) shows the formation of a polymer.\">"
+        }
+      ]
+    }
+  ]
+}

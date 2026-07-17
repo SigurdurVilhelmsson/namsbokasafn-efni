@@ -1,0 +1,25 @@
+{
+  "nickname": "10-99-OC-AP28",
+  "source_uid": "37291@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Veldu úr hvoru pari hér að neðan það alkóhól sem myndi hvarfast hraðar við HX og mynda samsvarandi alkýlhalíð.",
+  "questions": [
+    {
+      "id": "352415",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f0bd22772010bbca9b75e34cf4e078ca71560fd7/OChem_10_EC_036a.jpg\" alt=\"The structures of propan-1-ol and propan-2-ol, separated by or.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352416",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFlUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a9a8a9fe241d7f93c0b8e82623a90b9dc637788c/OChem_10_EC_036b.jpg\" alt=\"The structures of 1-methylcyclopentanol and 2-methylcyclopentanol, separated by or.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352417",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--130cad497138926f71f4733c1ee68af09d370b3c/OChem_10_EC_036c.jpg\" alt=\"The structures of 2,2-dimethylpropan-1-ol and 2-methylbutan-2-ol, separated by or.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

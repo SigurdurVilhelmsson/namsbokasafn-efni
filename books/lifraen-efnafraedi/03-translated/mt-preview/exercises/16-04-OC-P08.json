@@ -1,0 +1,37 @@
+{
+  "nickname": "16-04-OC-P08",
+  "source_uid": "37796@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Raðaðu efnasamböndunum í hverjum af eftirfarandi hópum eftir hvarfgirni þeirra gagnvart rafsæknu skiptihvarfi:",
+  "questions": [
+    {
+      "id": "342889",
+      "stem_html": "Nítróbensen, fenól, tólúen, bensen",
+      "collaborator_solutions": [
+        {
+          "content_html": "Fenól > tólúen > bensen > nítróbensen"
+        }
+      ]
+    },
+    {
+      "id": "342890",
+      "stem_html": "Fenól, bensen, klórbensen, bensósýra",
+      "collaborator_solutions": [
+        {
+          "content_html": "Fenól > bensen > klórbensen > bensósýra"
+        }
+      ]
+    },
+    {
+      "id": "342891",
+      "stem_html": "Bensen, brómbensen, bensaldehýð, anilín",
+      "collaborator_solutions": [
+        {
+          "content_html": "Anilín > bensen > brómbensen > bensaldehýð"
+        }
+      ]
+    }
+  ]
+}

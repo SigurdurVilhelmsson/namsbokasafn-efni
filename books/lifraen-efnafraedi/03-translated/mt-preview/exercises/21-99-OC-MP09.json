@@ -1,0 +1,15 @@
+{
+  "nickname": "21-99-OC-MP09",
+  "source_uid": "38189@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361439",
+      "stem_html": "<p>Rafsýruanhýdríð gefur hringlaga imíðið súksínímíð þegar það er hitað með ammóníumklóríði við 200 °C. Leggðu til verkunarmáta fyrir þetta hvarf. Hvers vegna heldurðu að svo hátt hvarfhitastig sé nauðsynlegt?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWtYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e705977d3f5fbb3d1947e5ad8273984271794bef/OChem_21_EC_033.jpg\" alt=\"The reaction shows the conversion of dihydrofuran-2, 5-dione to an amide by heating at two-hundred degrees Celcius in the presence of ammonium chloride.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

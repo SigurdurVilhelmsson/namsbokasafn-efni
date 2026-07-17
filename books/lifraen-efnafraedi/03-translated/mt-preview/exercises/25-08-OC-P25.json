@@ -1,0 +1,37 @@
+{
+  "nickname": "25-08-OC-P25",
+  "source_uid": "39063@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Sýndu myndefnið sem þú myndir fá úr efnahvarfi sellóbíósa við eftirfarandi hvarfefni:",
+  "questions": [
+    {
+      "id": "348050",
+      "stem_html": "NaBH<sub>4</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "Hemíasetalhringurinn afoxast."
+        }
+      ]
+    },
+    {
+      "id": "348051",
+      "stem_html": "Br<sub>2</sub>, H<sub>2</sub>O",
+      "collaborator_solutions": [
+        {
+          "content_html": "Hemíasetalhringurinn oxast."
+        }
+      ]
+    },
+    {
+      "id": "348052",
+      "stem_html": "CH<sub>3</sub>COCl, pýridín",
+      "collaborator_solutions": [
+        {
+          "content_html": "Allir hýdroxýlhópar asetýlerast."
+        }
+      ]
+    }
+  ]
+}

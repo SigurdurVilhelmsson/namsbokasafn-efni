@@ -1,0 +1,28 @@
+{
+  "nickname": "21-06-OC-P18",
+  "source_uid": "38168@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Sýndu myndefnin sem þú myndir fá með afoxun eftirfarandi estera með LiAlH<sub>4</sub>:",
+  "questions": [
+    {
+      "id": "361384",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ29YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--74a18efba3d0103781fc25b46eaf6befceeb01b3/OChem_21_06_015a.jpg\" alt=\"The structure shows a five-carbon chain ester with a methoxy group bonded to the carbonyl carbon. The carbon adjacent to carbonyl bears a methyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CH(CH<sub>3</sub>)CH<sub>2</sub>OH + CH<sub>3</sub>OH"
+        }
+      ]
+    },
+    {
+      "id": "361385",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3NYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5c03b1b1a1a98b7241605c36f0308e5f5904a844/OChem_21_06_015b.jpg\" alt=\"The structure of an ester is depicted. One benzene ring is single-bonded to carbonyl carbon single-bonded to oxygen single-bonded to benzene ring.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "PhOH + PhCH<sub>2</sub>OH"
+        }
+      ]
+    }
+  ]
+}

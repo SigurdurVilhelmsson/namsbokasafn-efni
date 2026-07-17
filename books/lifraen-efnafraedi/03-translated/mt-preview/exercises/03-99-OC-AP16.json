@@ -1,0 +1,20 @@
+{
+  "nickname": "03-99-OC-AP16",
+  "source_uid": "36453@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknið efnasamband sem:",
+  "questions": [
+    {
+      "id": "327953",
+      "stem_html": "Hefur níu eingreind vetni",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327954",
+      "stem_html": "Hefur aðeins eingreind vetni",
+      "collaborator_solutions": []
+    }
+  ]
+}

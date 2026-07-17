@@ -1,0 +1,15 @@
+{
+  "nickname": "23-99-OC-MP09",
+  "source_uid": "38915@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359854",
+      "stem_html": "<p>Ísóleusín, önnur af tuttugu amínósýrum sem finnast í próteinum, umbrotnar eftir ferli sem felur í sér eftirfarandi skref. Leggðu til hvarfgang.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjBZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--60701d6307e5d2bb78bf19f05015cf21b9de0e8c/OChem_23_EC_022.jpg\" alt=\"The reaction shows the metabolism of isoleucine (2-methyl-3-keto-butyryl coenzyme A) to acetyl coenzyme A and propionyl coenzyme A.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

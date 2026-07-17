@@ -1,0 +1,19 @@
+{
+  "nickname": "22-01-OC-P02",
+  "source_uid": "38770@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348837",
+      "stem_html": "Hversu mörg súr vetni hefur hver sameind sem talin er upp í dæmi 22-1? Auðkenndu þau.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<b>(a)</b> 4 <b>(b)</b> 3 <b>(c)</b> 3 <b>(d)</b> 2 <b>(e)</b> 4 <b>(f)</b> 5"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "07-05-OC-P14",
+  "source_uid": "36635@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357713",
+      "stem_html": "<p>Úthlutaðu rýmisefnafræði (<i>E</i> eða <i>Z</i>) til tvítengisins í eftirfarandi efnasambandi og breyttu teikningunni í beinagrindarmynd (rautt = O):</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBclFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6480abd904cce3bb647e63e4832879165dd84200/OChem_07_05_007.jpg\" alt=\"Ball and stick model of double bond with vinyl (up) and isopropyl (down) on the left and C O O C H 3 (up) and hydroxymethyl (down) on the right.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBclVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--178c43ee2d46e4f8bcc5b21908fb619d289e98a7/OChem_07_EC_203.jpg\" alt=\"A double bond with vinyl (up) and isopropyl (down) on the left and C O O C H 3 (up) and hydroxymethyl (down) on the right. Text reads Z.\">"
+        }
+      ]
+    }
+  ]
+}

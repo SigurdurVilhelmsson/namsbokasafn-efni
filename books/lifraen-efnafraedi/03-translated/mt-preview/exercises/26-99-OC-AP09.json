@@ -1,0 +1,20 @@
+{
+  "nickname": "26-99-OC-AP09",
+  "source_uid": "39248@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Sýndu hvernig þú gætir búið til eftirfarandi amínósýrur með afoxandi amíneringu:",
+  "questions": [
+    {
+      "id": "348875",
+      "stem_html": "Metíónín",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348876",
+      "stem_html": "Ísóleusín",
+      "collaborator_solutions": []
+    }
+  ]
+}

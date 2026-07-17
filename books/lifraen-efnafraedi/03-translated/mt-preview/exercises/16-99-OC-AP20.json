@@ -1,0 +1,15 @@
+{
+  "nickname": "16-99-OC-AP20",
+  "source_uid": "37852@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359041",
+      "stem_html": "<p>Efnasambandið MON-0585 er óeitrað, lífbrjótanlegt lirfueitur sem er mjög sértækt gegn moskítóflugulirfum. Myndaðu MON-0585 með því að nota annaðhvort bensen eða fenól sem uppsprettu arómatísku hringjanna.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb29WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7ea97c517fe93bcf812015a2b51cc55555b6abd8/OChem_16_EC_042.jpg\" alt=\"MON-0585 has a central carbon bonded to a benzene ring, two methyl groups, and a phenol group, in which the two carbons next to the O H are each bonded to a tertiaru butyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

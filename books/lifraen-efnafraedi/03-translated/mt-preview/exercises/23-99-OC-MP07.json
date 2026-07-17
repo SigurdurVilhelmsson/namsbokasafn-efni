@@ -1,0 +1,15 @@
+{
+  "nickname": "23-99-OC-MP07",
+  "source_uid": "38913@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359850",
+      "stem_html": "<p>Azlaktón eru mikilvæg upphafsefni sem notuð eru við myndun dehýdró-<i>α</i>-amínósýra. Þau hvarfast við aldehýð og mynda milliefni sem er vatnsrofið við súrar aðstæður til að gefa endanlega amínósýrumyndun. Sýndu byggingu milliefnisins og leggðu til hvarfgang fyrir myndun þess.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcnNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6e998b9c1264beef0e9f9a5ab3309608eea78a88/OChem_23_EC_020.jpg\" alt=\"The reaction shows azlactone with benzaldehyde in the presence of sodium acetate, yielding an unidentified intermediate. Subsequent reaction with hydronium ion and heat produces dehydro-alpha-amino acid.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "08-99-OC-AP21",
+  "source_uid": "37179@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353568",
+      "stem_html": "<p>Teiknaðu byggingu kolvetnis sem gleypir 2 mólígildi af H<sub>2</sub> við hvataða vetnun og gefur aðeins bútandíal við ósonrof.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcU1TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0977fd17900385c466d08e882b8db367020b9572/OChem_08_EC_047.jpg\" alt=\"The structure of butanedial.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

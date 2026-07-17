@@ -1,0 +1,64 @@
+{
+  "nickname": "22-05-OC-P07",
+  "source_uid": "38775@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Auðkenndu súrustu vetnin í hverri af eftirfarandi sameindum:",
+  "questions": [
+    {
+      "id": "346342",
+      "stem_html": "CH<sub>3</sub>CH<sub>2</sub>CHO",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>CH<sub>2</sub>CHO"
+        }
+      ]
+    },
+    {
+      "id": "346343",
+      "stem_html": "(CH<sub>3</sub>)<sub>3</sub>C–COCH<sub>3</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "(CH<sub>3</sub>)<sub>3</sub>CCOCH<sub>3</sub>"
+        }
+      ]
+    },
+    {
+      "id": "346344",
+      "stem_html": "CH<sub>3</sub>CO<sub>2</sub>H",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>CO<sub>2</sub>H"
+        }
+      ]
+    },
+    {
+      "id": "346345",
+      "stem_html": "Bensamíð",
+      "collaborator_solutions": [
+        {
+          "content_html": "PhCONH<sub>2</sub>"
+        }
+      ]
+    },
+    {
+      "id": "346346",
+      "stem_html": "CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CN",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CN"
+        }
+      ]
+    },
+    {
+      "id": "346347",
+      "stem_html": "CH<sub>3</sub>CON(CH<sub>3</sub>)<sub>2</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>CON(CH<sub>3</sub>)<sub>2</sub>"
+        }
+      ]
+    }
+  ]
+}

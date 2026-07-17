@@ -1,0 +1,15 @@
+{
+  "nickname": "17-99-OC-AP18",
+  "source_uid": "37919@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359531",
+      "stem_html": "<p><sup>1</sup>H NMR-rófið sem sýnt er er af 3-metýl-3-búten-1-óli. Úthlutaðu öllum vokuðum toppum til tiltekinna róteinda og gerðu grein fyrir klofningsmynstrunum.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdklWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f47828d8477bd9babb98a262353cd792d7f13dab/OChem_17_EC_039.jpg\" alt=\"H N M R spectrum with shifts at 1.76 (singlet), 2.13 (singlet), 2.30 (triplet), 3.72 (triplet), 4.79 (singlet), 4.85 (singlet). Relative areas are 3, 1, 2, 2, 1, 1, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

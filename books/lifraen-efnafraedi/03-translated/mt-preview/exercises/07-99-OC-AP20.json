@@ -1,0 +1,15 @@
+{
+  "nickname": "07-99-OC-AP20",
+  "source_uid": "36672@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354440",
+      "stem_html": "<p>Tamoxifen, lyf notað við meðferð á brjóstakrabbameini, og clomiphene, lyf notað við frjósemismeðferð, hafa svipaða byggingu en mjög ólík áhrif. Úthlutaðu <i>E</i>- eða <i>Z</i>-stillingu á tvítengin í báðum efnasamböndunum.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmdSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ae2b918db4edb553b9b15802d4f3ecdc863a41c2/OChem_07_EC_023.jpg\" alt=\"The structures of Tamoxifen (anticancer) and Clomiphene (fertility treatment).\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

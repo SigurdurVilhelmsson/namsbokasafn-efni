@@ -1,0 +1,19 @@
+{
+  "nickname": "14-02-OC-P02",
+  "source_uid": "37638@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "338832",
+      "stem_html": "Sýndu byggingu bæði 1,2- og 1,4-álagningarefna sem myndast við efnahvarf 1 jafngildis af HCl við 1,3-pentadíen.",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-klór-2-penten, 3-klór-1-penten, 4-klór-2-penten"
+        }
+      ]
+    }
+  ]
+}

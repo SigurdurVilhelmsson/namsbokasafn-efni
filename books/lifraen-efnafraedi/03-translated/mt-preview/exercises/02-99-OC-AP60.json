@@ -1,0 +1,15 @@
+{
+  "nickname": "02-99-OC-AP60",
+  "source_uid": "36172@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351520",
+      "stem_html": "<p><i>Asíð</i>-virknihópurinn, sem kemur fyrir í asíðóbenseni, inniheldur þrjár samliggjandi niturfrumeindir. Ein vokmynd fyrir asíðóbensen er sýnd. Teiknaðu þrjár aðrar vokmyndir og úthlutaðu viðeigandi formlegum hleðslum á frumeindirnar í öllum fjórum.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGtRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--56d26a1a44ab13914881d614ed00ef3df158d19a/OChem_02_EC_026.jpg\" alt=\"The structure of Azidobenzene features two lone pair on the nitrogen bonded to benzene and one lone pair on the terminal triple bonded nitrogen.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

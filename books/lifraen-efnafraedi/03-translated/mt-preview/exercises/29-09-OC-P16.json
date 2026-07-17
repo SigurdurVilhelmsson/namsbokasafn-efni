@@ -1,0 +1,19 @@
+{
+  "nickname": "29-09-OC-P16",
+  "source_uid": "39310@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358129",
+      "stem_html": "<p>Af hvaða amínósýru er eftirfarandi <i>α</i>-ketósýra afleidd?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a070f4c391277a0de003077d760878d0d62af580/OChem_29_09_007.jpg\" alt=\"A ball-and-stick model of alpha-keto acid anion. A four-carbon chain with carboxylate at C 1, a ketone group at C 2, and at a carbonyl linked to amine.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Asparagín"
+        }
+      ]
+    }
+  ]
+}

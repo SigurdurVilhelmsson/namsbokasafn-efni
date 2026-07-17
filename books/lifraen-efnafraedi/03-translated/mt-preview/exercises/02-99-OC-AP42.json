@@ -1,0 +1,40 @@
+{
+  "nickname": "02-99-OC-AP42",
+  "source_uid": "36154@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu rafeindapunktamyndir fyrir eftirfarandi sameindir og sýndu öll ódeilð rafeindapör. Hvaða efnasambönd eru líkleg til að virka sem Lewis-sýrur og hver sem Lewis-basar?",
+  "questions": [
+    {
+      "id": "323751",
+      "stem_html": "AlBr<sub>3</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "323752",
+      "stem_html": "CH<sub>3</sub>CH<sub>2</sub>NH<sub>2</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "323753",
+      "stem_html": "BH<sub>3</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "323754",
+      "stem_html": "HF",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "323755",
+      "stem_html": "CH<sub>3</sub>SCH<sub>3</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "323756",
+      "stem_html": "TiCl<sub>4</sub>",
+      "collaborator_solutions": []
+    }
+  ]
+}

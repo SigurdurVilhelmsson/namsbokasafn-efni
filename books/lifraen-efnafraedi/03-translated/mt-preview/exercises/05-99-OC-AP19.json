@@ -1,0 +1,20 @@
+{
+  "nickname": "05-99-OC-AP19",
+  "source_uid": "36582@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Úthlutaðu <i>R</i> eða <i>S</i> staðefnafræði á hendnimiðjurnar í eftirfarandi Newman-vörpunum:",
+  "questions": [
+    {
+      "id": "354202",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjhSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--896c26975bbe8221475479ff5c607788686890a2/OChem_05_EC_015a.jpg\" alt=\"Newman projection of a 4-carbon chain with front carbon chlorine, hydrogen, and methyl substituents (clockwise). The back carbon has hydrogen, methyl, and hydrogen substituents (clockwise).\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354203",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0FSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9eff98a3163356e94fdef6a81dbea3229df39c77/OChem_05_EC_015b.jpg\" alt=\"Newman projection of a 4-carbon chain with front carbon hydrogen, methyl, and methyl substituents (clockwise). The back carbon has hydroxyl, hydrogen, and methyl  substituents (clockwise).\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

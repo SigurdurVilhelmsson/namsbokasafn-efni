@@ -1,0 +1,19 @@
+{
+  "nickname": "26-02-OC-P04",
+  "source_uid": "39215@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "349000",
+      "stem_html": "Hemóglóbín hefur p<i>I</i> = 6,8. Hefur hemóglóbín neikvæða heildarhleðslu eða jákvæða heildarhleðslu við pH = 5,3? Við pH = 7,3?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Jákvæð heildarhleðsla við pH = 5,3; neikvæð heildarhleðsla við pH = 7,3"
+        }
+      ]
+    }
+  ]
+}

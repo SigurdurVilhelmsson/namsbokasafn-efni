@@ -1,0 +1,15 @@
+{
+  "nickname": "28-99-OC-VC03",
+  "source_uid": "39124@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354972",
+      "stem_html": "<p>Aminbasar í kjarnsýrum geta hvarfast við alkýlerandi efni í dæmigerðum S<sub>N</sub>2 efnahvörfum. Skoðaðu eftirfarandi rafstöðumöguleikakort og segðu til um hvort er betri kjarnsækir, gúanín eða adenín. Hvarfgjörnu stöðurnar í hvoru um sig eru merktar.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGtaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--68799240508cc3ea31ba6bcd7ca13fd0d37b43e4/OChem_28_EC_003.jpg\" alt=\"The ball-and-stick model along with electrostatic potential maps of 9-methylguanine and 9-methyladenine. The reactive positions of 9-methylguanine and 9-methyladenine are N 7 and N 3, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

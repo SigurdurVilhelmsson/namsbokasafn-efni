@@ -1,0 +1,46 @@
+{
+  "nickname": "04-08-OC-P18",
+  "source_uid": "36489@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Teiknaðu stöðugri stólstellingu eftirfarandi sameinda og áætlaðu spennumagnið í hverri:",
+  "questions": [
+    {
+      "id": "329004",
+      "stem_html": "<i>trans</i>-1-klór-3-metýlsýklóhexan",
+      "collaborator_solutions": [
+        {
+          "content_html": "2,0 kJ/mól (áslægt Cl)"
+        }
+      ]
+    },
+    {
+      "id": "329005",
+      "stem_html": "<i>cis</i>-1-etýl-2-metýlsýklóhexan",
+      "collaborator_solutions": [
+        {
+          "content_html": "11,4 kJ/mól (áslægt CH<sub>3</sub>)"
+        }
+      ]
+    },
+    {
+      "id": "329006",
+      "stem_html": "<i>cis</i>-1-bróm-4-etýlsýklóhexan",
+      "collaborator_solutions": [
+        {
+          "content_html": "2,0 kJ/mól (áslægt Br)"
+        }
+      ]
+    },
+    {
+      "id": "329007",
+      "stem_html": "<i>cis</i>-1-<i>tert</i>-bútýl-4-etýlsýklóhexan",
+      "collaborator_solutions": [
+        {
+          "content_html": "8,0 kJ/mól (áslægt CH<sub>2</sub>CH<sub>3</sub>)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1793 @@
+{
+  "generated_by": "exercise-extract.js",
+  "exercises": {
+    "22-01-OC-P01": {
+      "source_uid": "38769@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "360864",
+        "360865",
+        "360866",
+        "360867",
+        "360868",
+        "360869"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360864": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:360864": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdXdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--de0be72e646df03d6732ce063ecfec106b7c015a/OChem_22_EC_201a.jpg\" alt=\"A structure of cyclopentene with a hydroxyl group and double bond at C 1.\">"
+          },
+          "wraps": {}
+        },
+        "stem:360865": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:360865": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--49e5d35c00db08f9289894b09726e5aea9b873e8/OChem_22_EC_201b.jpg\" alt=\"An alkene in which C 1 is bonded to a hydroxyl group on top and methyl sulfide group on the right.\">"
+          },
+          "wraps": {}
+        },
+        "stem:360866": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:360866": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8fd911155b584a0b3766a91563132f9b0a0d7236/OChem_22_EC_201c.jpg\" alt=\"An alkene in which C 1 has two hydrogen atoms on it and C 2 is linked to a  hydroxyl group and to an oxygen which in turn is linked to an ethyl group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:360867": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:360867": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdThYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--94d83a44d654b08df5a517fd225fc9c7aeab0585/OChem_22_EC_201d.jpg\" alt=\"An alkene in which C 1 has two hydrogen atoms on it and C 2 is linked to a  hydroxyl group and to a hydrogen atom\">"
+          },
+          "wraps": {}
+        },
+        "stem:360868": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:360868": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdkFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a8ebbc78875cc0ee7dee787d7f7f379ac94cbfd0/OChem_22_EC_201e.jpg\" alt=\"An alkene in which C 1 has two hydrogen atoms on it and C 2 is linked to two  hydroxyl groups.\">"
+          },
+          "wraps": {}
+        },
+        "stem:360869": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:360869": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdkVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6fb88e9b5571659f234995307fddd44bc056611c/OChem_22_EC_201f.jpg\" alt=\"Two alkene structures. C 2 is bonded to hydroxyl and methyl groups but in second structure, C 2 is bonded to hydroxyl and C H 2 P h.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-01-OC-P02": {
+      "source_uid": "38770@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "348837"
+      ],
+      "fields": {
+        "stem:348837": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:348837": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "22-01-OC-P03": {
+      "source_uid": "38771@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "360871"
+      ],
+      "fields": {
+        "stem:360871": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdklYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c7b3a7c30e5455c1e2068ba4ea658ec587ec571a/OChem_22_01_005.jpg\" alt=\"A ball-and-stick model of a cyclic enol with 6 black, 8 white, and 2 red balls. Carbon, hydrogen, and oxygen atoms are represented using black, gray, and red spheres, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:360871": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbEFhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3ec0898fdaf546f6784de5594fed36c538a2037b/OChem_22_EC_202.jpg\" alt=\"A cyclohexane ring with two carbonyl groups, one at C 1 and one at C 3 forms two stable enolates and two unstable enolates.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-03-OC-P04": {
+      "source_uid": "38772@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "360873"
+      ],
+      "fields": {
+        "stem:360873": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdlFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--02f5569efb83f729828d1648ab7d95fda9106b81/OChem_22_03_006.jpg\" alt=\"Acetone reacts with trideuteriooxidanium ion to form a product in which one of the hydrogen atoms on acetone has been replaced by a deuterium atom.\">"
+          },
+          "wraps": {}
+        },
+        "sol:360873": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "22-03-OC-P05": {
+      "source_uid": "38773@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "346333"
+      ],
+      "fields": {
+        "stem:346333": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:346333": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "22-04-OC-P06": {
+      "source_uid": "38774@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "360875"
+      ],
+      "fields": {
+        "stem:360875": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdlVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a31b4531993ba9f24f835cf0007698d4c6650cce/OChem_22_04_003.jpg\" alt=\"3-methyl pentanoic acid reacts with unknown reagent represented by question mark to form six-carbon chain with carbonyl group at C 2, bromine at C 3, and methyl at C 4.\">"
+          },
+          "wraps": {}
+        },
+        "sol:360875": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "22-05-OC-P07": {
+      "source_uid": "38775@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "346342",
+        "346343",
+        "346344",
+        "346345",
+        "346346",
+        "346347"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346342": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:346342": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346343": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:346343": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346344": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:346344": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346345": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:346345": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346346": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:346346": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346347": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:346347": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "22-05-OC-P08": {
+      "source_uid": "38776@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "360877"
+      ],
+      "fields": {
+        "stem:360877": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"{\\text{≡}}\"></span>"
+          },
+          "wraps": {}
+        },
+        "sol:360877": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdllYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c54dacea030af7129f95de24eb6fc30ac2f9e237/OChem_22_EC_203.jpg\" alt=\"Two resonance structures of the anion of acetonitrile anion are shown. There is a pair of electrons and a negative charge shown on a C H 2 group on one resonance form and on N on the other.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-06-OC-P09": {
+      "source_uid": "38777@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "346351"
+      ],
+      "fields": {
+        "stem:346351": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:346351": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "22-07-OC-P10": {
+      "source_uid": "38778@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "360881",
+        "360882",
+        "360883"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360881": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e63f2de8938d31156ba5e2794c601443d0f56f02/OChem_22_07_011a.jpg\" alt=\"The structure of phenyl propanoic acid where a benzene ring is attached to a propanoic acid group.\">"
+          },
+          "wraps": {}
+        },
+        "sol:360881": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360882": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fab6b683c1d869bed7858cb23a7269661f77dd1a/OChem_22_07_011b.jpg\" alt=\"The structure of 2-methylpentanoic acid comprising of a five carbon chain with a C O O H group at C 1 and a methyl group at C 2.\">"
+          },
+          "wraps": {}
+        },
+        "sol:360882": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360883": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmtYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fcfb0e2803f78deaa79566458d8a32845da59288/OChem_22_07_011c.jpg\" alt=\"The structure of 4-methylpentanoic acid comprising of a five carbon chain with a C O O H group at C 1 and a methyl group at C 4.\">"
+          },
+          "wraps": {}
+        },
+        "sol:360883": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "22-07-OC-P11": {
+      "source_uid": "38779@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "346359"
+      ],
+      "fields": {
+        "stem:346359": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:346359": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "22-07-OC-P12": {
+      "source_uid": "38780@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "360885"
+      ],
+      "fields": {
+        "stem:360885": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdm9YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7bd7348cc8930f0c09df3b77fcc28d05c8f138dc/OChem_22_07_012.jpg\" alt=\"A ball-and-stick model of a compound comprising a five-carbon chain with a carboxylic acid group at C 2 and a methyl group at C 4.\">"
+          },
+          "wraps": {}
+        },
+        "sol:360885": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "22-07-OC-P13": {
+      "source_uid": "38781@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "360888",
+        "360889"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360888": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdnNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--353ee5ebfb7e8deee3ca84b3926d7cb1b09c2d9c/OChem_22_07_019a.jpg\" alt=\"The structure of 5-methyl-2-hexanone in which a methyl group is bonded to C 5 and the carbonyl group is at C 2.\">"
+          },
+          "wraps": {}
+        },
+        "sol:360888": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360889": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdndYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c9e83934a8198854bd8d2344a0a3ee6465096737/OChem_22_07_019b.jpg\" alt=\"The structure of 5-phenylpentan-2-one in which a phenyl group is bonded to C 5 and the carbonyl group is at C 2\">"
+          },
+          "wraps": {}
+        },
+        "sol:360889": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "22-07-OC-P14": {
+      "source_uid": "38782@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "348785"
+      ],
+      "fields": {
+        "stem:348785": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:348785": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "22-07-OC-P15": {
+      "source_uid": "38783@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "360891"
+      ],
+      "fields": {
+        "stem:360891": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1df192a296a7d0096c64eb7a93eebc6e5ee8b806/OChem_22_07_020.jpg\" alt=\"A ball-stick model of a compound comprising a seven-carbon chain with C 2 being a carbonyl group. Black, gray, and red spheres represent carbon, hydrogen, and oxygen, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:360891": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "22-07-OC-P16": {
+      "source_uid": "38784@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "360898",
+        "360899",
+        "360900",
+        "360901",
+        "360902",
+        "360903"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360898": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2574d483fa7202b9d696fafa47af521a08c2ecf6/OChem_22_07_027a.jpg\" alt=\"The structure of 3-phenyl-2-butanone where a phenyl group is bonded to C 3 and C2 is a carbonyl group.\">"
+          },
+          "wraps": {}
+        },
+        "sol:360898": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360899": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjhYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1eae336b8fab860a4aca9d43003a18b3486e580b/OChem_22_07_027b.jpg\" alt=\"A structure of 2-ethyl-1-pentanenitrile where an ethyl group is bonded to C 2 and carbon triple bonded to nitrogen is present.\">"
+          },
+          "wraps": {}
+        },
+        "sol:360899": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360900": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0FZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--225b3f55fbe52582a18fa360605183ef6fe809fa/OChem_22_07_027c.jpg\" alt=\"The structure of a cyclohexanone attached at C 2 of the ring to a three-carbon chain, C 1 and C 2 of which are double bonded to each other\">"
+          },
+          "wraps": {}
+        },
+        "sol:360900": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{═}\"></span>"
+          },
+          "wraps": {}
+        },
+        "stem:360901": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0VZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9328e6e154c1d39965d6de7c7acff668eb6a8f68/OChem_22_07_027d.jpg\" alt=\"The structure of 2,2,6,6 tetramethyl hexanone where two methyl groups are bonded at C 2 and two methyl groups are bonded to C 6 of the cyclohexanone ring.\">"
+          },
+          "wraps": {}
+        },
+        "sol:360901": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360902": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0lZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8f7a58a7e7948fd449db9da28b740a052855b2a6/OChem_22_07_027e.jpg\" alt=\"The structure of 2-methyl-1-phenyl-1-propanone where a central carbonyl group is bonded to a phenyl group on one side and an isopropyl group on the other.\">"
+          },
+          "wraps": {}
+        },
+        "sol:360902": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360903": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ01ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--56c9999c159274fde36bb17bdd2265b2a9cf2db9/OChem_22_07_027f.jpg\" alt=\"A structure of methyl-2-ethyl-3-methyl butanoate where ethyl and a methyl group are bonded to C 2 and C 3 and the C O O group is attached to C 1.\">"
+          },
+          "wraps": {}
+        },
+        "sol:360903": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-AP01": {
+      "source_uid": "38805@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "360956",
+        "360957",
+        "360958",
+        "360959",
+        "360960",
+        "360961"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360956": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaHNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f553baf7efa1dc25078627834b8911b81c0da2f2/OChem_22_EC_029a.jpg\" alt=\"The structure of 3-methyl-2 pentanone comprises of a five carbon chain in which C 2 is a carbonyl group and a methyl group is on C 3.\">"
+          },
+          "wraps": {}
+        },
+        "stem:360957": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaHdZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--78baffb8ad42654b195fdf8ff8e2270986ee6438/OChem_22_EC_029b.jpg\" alt=\"The structure of 1, 3-cyclopentanedione where two carbonyl groups constitute the C 1 and C 3 positions of the cyclopentane ring.\">"
+          },
+          "wraps": {}
+        },
+        "stem:360958": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDBZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--048747438cf2cab6df14a11e3e7b6c610781b507/OChem_22_EC_029c.jpg\" alt=\"Structure comprising a six-carbon chain in which C 2 is bonded to C 3 by a triple bond and a hydroxyl group is on C 6\">"
+          },
+          "wraps": {}
+        },
+        "stem:360959": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDRZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--11290c2a60b9d5853b23ab4f066a2e8b244a0fc4/OChem_22_EC_029d.jpg\" alt=\"A substituted benzene ring in which C O 2 C H 3 group is ortho to a C H 2 C triple bond N group\">"
+          },
+          "wraps": {}
+        },
+        "stem:360960": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDhZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a91be7157d92f2f177cea402e1bd0a88dc9c8046/OChem_22_EC_029e.jpg\" alt=\"The structure of cyclopentanecarbonyl chloride in which C O C l is attached to a cyclopntane ring.\">"
+          },
+          "wraps": {}
+        },
+        "stem:360961": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUFZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--02b9143df33d948d144b86710a99d2d5cb23dd16/OChem_22_EC_029f.jpg\" alt=\"The structure of 2-methyl-1-penten-3-one which comprises of a five carbon chain with a double bond between C 1 and C 2, C 3 is a carbonyl group, and a methyl group is bonded to C 2\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-AP02": {
+      "source_uid": "38806@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "360963"
+      ],
+      "fields": {
+        "stem:360963": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUVZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--10fc3f7edc7583d212d8603ac7dadd6f40a45c4d/OChem_22_EC_030a.jpg\" alt=\"The structure of propanoic acid.\">",
+            "1": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUlZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--96125c0821b0c645c3a293ea2191defb823b3249/OChem_22_EC_030b.jpg\" alt=\"The structure of ethanol\">",
+            "2": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaU1ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2f205aa1497c812fa1576df2aaf18700fec15d59/OChem_22_EC_030c.jpg\" alt=\"The structure of diethyl amine where the N H group is bonded to two ethyl groups.\">",
+            "3": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVFZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--341bbae5bb083a5d3407ddd0e5d3868ac65b8ac3/OChem_22_EC_030d.jpg\" alt=\"The structure of acetone where a central carbonyl group is bonded to two methyl groups.\">",
+            "4": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVVZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e00122b1ccf91428e1b1281674f68aaff66a0a63/OChem_22_EC_030e.jpg\" alt=\"The structure of pentane-2,4-dione, carbonyl groups being at C 2 and C 4 of a five carbon chain.\">",
+            "5": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVlZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--df98872c399536d90b83a8128edd1d75149c8afe/OChem_22_EC_030f.jpg\" alt=\"The structure of trichloroacetic acid where a trichloromethyl group is attached to a carboxylic acid group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-AP03": {
+      "source_uid": "38807@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "360969",
+        "360970",
+        "360971",
+        "360972",
+        "360973"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360969": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a8e30017bb6209155005a18c4a1c035ea78bcf9b/OChem_22_EC_031a.jpg\" alt=\"The structure of pentane-2,4-dione with a negative charge and a lone pair of electrons on C 3\">"
+          },
+          "wraps": {}
+        },
+        "stem:360970": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWdZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--56fa8805ec24f89bdc1602cce0b671d4edd86260/OChem_22_EC_031b.jpg\" alt=\"The structure of 2-hexenone with a negative charge and a lone pair of electrons on C 3\">"
+          },
+          "wraps": {}
+        },
+        "stem:360971": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWtZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--861600c579dec9a426f81adc5ca978da5e090455/OChem_22_EC_031c.jpg\" alt=\"The structure of a compound comprising of an isocyanide group joined to a carbon bearing a lone pair of electrons and a negative charge which in turn is attached to a methyl ester group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:360972": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaW9ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--718f0fda09919ef039dff270fe1eee23f6dabd62/OChem_22_EC_031d.jpg\" alt=\"A structure of phenylacetone with a negative charge and a lone pair of electrons on the carbon between the benzene ring and the carbonyl group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:360973": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d535bb9f94b40a5ce297e44454d6a72eba0c6254/OChem_22_EC_031e.jpg\" alt=\"A structure comprising a benzene ring that is bonded to cyclopentane-1,3-dione. C 2 of the cyclopentane ring is attached to a methyl ester group and also has a lone pair of electrons and a negative charge on it.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-AP04": {
+      "source_uid": "38808@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "360975"
+      ],
+      "fields": {
+        "stem:360975": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXdZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--123a94a2f5912fa14843266bfc407f1548421430/OChem_22_EC_032.jpg\" alt=\"An alpha-beta unsaturated carbonyl compound reacts with L D A to yield a carbonyl compound comprising an anion with a set of lone pairs on gamma carbon.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-AP05": {
+      "source_uid": "38809@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "360977"
+      ],
+      "fields": {
+        "stem:360977": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTBZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--358602c19983beaa82acd78f588142fc9f72975f/OChem_22_EC_033.jpg\" alt=\"A structure of 1-phenyl-2-propenone where a phenyl ring is bonded to the carbonyl group of the propene chain.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-AP06": {
+      "source_uid": "38810@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "360982",
+        "360983",
+        "360984",
+        "360985"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360982": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTRZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a83848b3aff1b9347edfddc720074bae419a623d/OChem_22_EC_034a.jpg\" alt=\"When heated, a compound which has two carboxylic acid groups are bonded to the same carbon of a cyclohexane ring reacts to form an unknown product, represented by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:360983": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaThZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1084af37c124cbb706b3d6a8c59c4d66b94aa847/OChem_22_EC_034b.jpg\" alt=\"1, 3-cyclopentanedione reacts first with sodium ethoxide and then with methyl iodide to yield an unknown product, represented by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:360984": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakFZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f33666e9f450b855cedea1a0731bbc43e753dc67/OChem_22_EC_034c.jpg\" alt=\"Butanoic acid reacts with bromine and phosphorus tribromide, yielding an unknown product which further reacts with water to yield another unknown product. Unknown products are represented by question marks.\">"
+          },
+          "wraps": {}
+        },
+        "stem:360985": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakVZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3df28fcc9056bfdadb57346f0938a3d0fda751d9/OChem_22_EC_034d.jpg\" alt=\"Acetophenone  reacts with sodiium hydroxide, water, and iodine to give an unknown product, represented by a question mark.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-AP07": {
+      "source_uid": "38811@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "348846"
+      ],
+      "fields": {
+        "stem:348846": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000 <br>\u0000SLOT_2\u0000</p>",
+          "slots": 3,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-AP08": {
+      "source_uid": "38812@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "360987"
+      ],
+      "fields": {
+        "stem:360987": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaklZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e13322e37247842c72227bfe9ee86f2ec1dc13c2/OChem_22_EC_035a.jpg\" alt=\"The structure of 2-(5-bromophenyl) acetone where a bromine atom is bonded to meta to an acetone group on the benzene ring.\">",
+            "1": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBak1ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c4d5f69fa6af72f33aeb604073497a7326059619/OChem_22_EC_035b.jpg\" alt=\"The structure of cyclohexyl methyl ketone where a methyl group and a cyclohexane group are bonded to a central carbonyl group.\">",
+            "2": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalFZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ba3d042eeb1e562c806e582df92b47c64088eaaf/OChem_22_EC_035c.jpg\" alt=\"The structure of 4,4-dimethyl-2-pentanone where the carbonyl group is located at C 2 and two methyl groups at C 4.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-AP09": {
+      "source_uid": "38813@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "360990",
+        "360991"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360990": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalVZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d7d67ada9f7d7ca755649f6cf96d46eed8f27b46/OChem_22_EC_036a.jpg\" alt=\"The structure of 3-ethyl-2-hexanone where the carbonyl group is located at C 2 and an ethyl group at C 3.\">"
+          },
+          "wraps": {}
+        },
+        "stem:360991": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBallZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b5fe957bc50951b057a1657a546b88b21eed1ea2/OChem_22_EC_036b.jpg\" alt=\"The structure of 3-methyl-2-hexanone where the carbonyl group is located at C 2 and a methyl group at C 3.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-AP10": {
+      "source_uid": "38814@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "360996",
+        "360997",
+        "360998",
+        "360999"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360996": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4b3b71ef8792e2086eed020e7d6c80d8adf3e306/OChem_22_EC_037a.jpg\" alt=\"The structure of diethyl-2,2-dimethylmalonate, a derivative of malonic acid where the H atoms of the acid groups are replaced by ethyl groups and two methyl groups are attached to C 2.\">"
+          },
+          "wraps": {}
+        },
+        "stem:360997": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamdZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--26f5f13dc32e94db6535fce89fa17f5699a1b09d/OChem_22_EC_037b.jpg\" alt=\"The structure of cycloheptyl methyl ketone where a methyl group and a cycloheptane group are bonded to a central carbonyl group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:360998": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamtZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--41b23120147ed9025522066ac6ff83045f69b465/OChem_22_EC_037c.jpg\" alt=\"The structure of cyclobutanoic acid in which a carboxylic acid is bonded to a cyclobutane ring.\">"
+          },
+          "wraps": {}
+        },
+        "stem:360999": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBam9ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6c14480ddccee27b1d2a485e21b63f447e4d01cb/OChem_22_EC_037d.jpg\" alt=\"The structure of 5-hexen-2-one in which a carbonyl group is located at C 2 and a double bond is present between C 5 and C 6 of the compound.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-AP11": {
+      "source_uid": "38815@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "348812"
+      ],
+      "fields": {
+        "stem:348812": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {
+            "0": "<span data-math=\"\\text{≡}\"></span>"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-AP12": {
+      "source_uid": "38816@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "361001"
+      ],
+      "fields": {
+        "stem:361001": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBanNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e9227ed1b8e9a92c1f57cbc6f5f823fd47687a23/OChem_22_EC_038.jpg\" alt=\"When using reagents represented by question marks, geraniol undergoes a chemical reaction to form ethyl geranylacetate and geranyl acetone.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-AP13": {
+      "source_uid": "38817@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "361003"
+      ],
+      "fields": {
+        "stem:361003": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBandZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2c646b306cff4efa5e3353550282c3003553630f/OChem_22_EC_039.jpg\" alt=\"A derivative of ethyl malonate bearing an isopropyl and a vinyl group at the central carbon reacts with urea and sodium ethoxide to yield aprobarbital as a product.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-AP14": {
+      "source_uid": "38818@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "346429"
+      ],
+      "fields": {
+        "stem:346429": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-AP15": {
+      "source_uid": "38819@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "346430"
+      ],
+      "fields": {
+        "stem:346430": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-AP16": {
+      "source_uid": "38820@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "346431"
+      ],
+      "fields": {
+        "stem:346431": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-AP17": {
+      "source_uid": "38821@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "346432"
+      ],
+      "fields": {
+        "stem:346432": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-AP18": {
+      "source_uid": "38822@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "361005"
+      ],
+      "fields": {
+        "stem:361005": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajBZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--78651c1aacba7bd20b4562f0773f4bb2bd94b767/OChem_22_EC_040.jpg\" alt=\"A three-step reaction in which cyclohexanone sequentially reacts with reagents a, b, and c yielding 2, 6-dimethylcyclohexanone via two intermediate products.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-AP20": {
+      "source_uid": "38823@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "361007"
+      ],
+      "fields": {
+        "stem:361007": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajRZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--357a23e798fda94411e38958e7601e349d5d7367/OChem_22_EC_041.jpg\" alt=\"2-Methyl-2-cyclohexen-1-one reacts with base to form 6-Methyl-2-cyclohexen-1-one\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-AP22": {
+      "source_uid": "38825@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "361016",
+        "361017",
+        "361018",
+        "361019",
+        "361020",
+        "361021"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361016": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0FZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--790b5d6be8ea2dcaca21e7a8ba7d555b23230d00/OChem_22_EC_043a.jpg\" alt=\"The structure of methylenecyclohexane where a C H 2 group is double-bonded to one carbon of a cyclohexane ring\">"
+          },
+          "wraps": {}
+        },
+        "stem:361017": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0VZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f198cc1af86e75758a5c91c3e81b28d9647f5115/OChem_22_EC_043b.jpg\" alt=\"The structure of (bromomethyl) cyclohexane where a C H 2 B r group is bonded to a carbon of a cyclohexane ring.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361018": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0lZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4ab247b1d69409d8ab7bfe20bca9a8b793e1e212/OChem_22_EC_043c.jpg\" alt=\"The structure of 2-benzylcyclohexanone where a carbonyl group is at C1 of a cyclohexane ring, and a benzyl group is attached to C 2 of the ring.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361019": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa01ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4da3e9f8bbc5d6e42689e3935e5e71388fb02e52/OChem_22_EC_043d.jpg\" alt=\"The structure of 3-cyclohexylpropanoic acid where a cyclohexane ring is bonded to the C 3 of a propanoic acid chain..\">"
+          },
+          "wraps": {}
+        },
+        "stem:361020": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1FZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--44428a6db606c3305abf5c100806499274e41c27/OChem_22_EC_043e.jpg\" alt=\"The structure of 1-cyclohexenecarboxylic acid in which a carboxylic acid group is attached to one of the double-bonded carbons in a cyclohexene ring.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361021": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1VZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7c2b88d2b469f45d5c44b1f2f3744c74952a937b/OChem_22_EC_043f.jpg\" alt=\"The structure 2-cyclohexen-1-one in which a carbonyl group is located at C 1 of a cyclohexene ring, the double bond being between C 2 and C 3.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-AP23": {
+      "source_uid": "38826@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "346458"
+      ],
+      "fields": {
+        "stem:346458": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-AP24": {
+      "source_uid": "38827@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "361025",
+        "361026",
+        "361027"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361025": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1lZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1e73523e5fe2197b12ac1eb10b8a33dac71fe618/OChem_22_EC_044a.jpg\" alt=\"Ethyl pentanoate is treated first with bromine in acetic acid followed by pyridine and heat to produce ethyl 2-pentenoate\">"
+          },
+          "wraps": {}
+        },
+        "stem:361026": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2NZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b6e9441b16df407ee32d819f8d53a11778c96219/OChem_22_EC_044b.jpg\" alt=\"Diethyl 2 methylmalonate is treated first with sodium ethoxide, then with bromobenzene, and finally heated in the presence of acid to produce 2-methyl-2-phenylethanoic acid.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361027": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2dZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f7f8227d09017cf074d5216c0331cbb9f000c8b1/OChem_22_EC_044c.jpg\" alt=\"Ethyl acetoacetate is treated first with sodium ethoxide, then with 3- bromo-1-propene, and finally heated in the presence of acid to produce 4-pentenoic acid\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-AP25": {
+      "source_uid": "38828@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "361029"
+      ],
+      "fields": {
+        "stem:361029": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2tZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4b804c9cdc4e01e7189706d76b9a01adb308d586/OChem_22_EC_045.jpg\" alt=\"Cyclohexanone is treated first with tert-butylmagnesium bromide and then with deuterium plus to form one percent of the expected addition product and 99 percent of alpha-deuterocyclohexanone.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-AP26": {
+      "source_uid": "38829@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "361031"
+      ],
+      "fields": {
+        "stem:361031": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa29ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--858684f520be7f7ae2928ca679659581e6ad42b1/OChem_22_EC_046.jpg\" alt=\"A ketone undergoes a chemical reaction with benzeneselenenyl chloride and hydrochloric acid, yielding an alpha-phenylseleno ketone.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-AP27": {
+      "source_uid": "38830@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "361035",
+        "361036",
+        "361037"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa3NZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b93d5b663419dcd152464895ac242cf152c9fad4/OChem_22_EC_047.jpg\" alt=\"A chair conformation of tropinone in which an N C H 3 group bridges from C3 to C6 of a cycloheptanone ring.\">"
+          },
+          "wraps": {}
+        },
+        "stem:361035": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361036": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:361037": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-AP28": {
+      "source_uid": "38831@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "361039"
+      ],
+      "fields": {
+        "stem:361039": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa3dZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c5fed4bfa17471c83ece0aca33f7e3cb225fb578/OChem_22_EC_048.jpg\" alt=\"A keto tosylate reacts with a base to yield an intermediate which reacts with an unknown reagent, represented by a question mark to yield sativene as a product.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-AP29": {
+      "source_uid": "38832@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "361041"
+      ],
+      "fields": {
+        "stem:361041": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<span data-math=\"\\text{═}\"></span>",
+            "1": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazBZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3ea767dcb4d1a188f72a9183e632d9e92150bc6e/OChem_22_EC_049.jpg\" alt=\"The structure of sodium pentothal comprising of a six-membered ring with carbon atoms at positions 1 and 4, nitrogen atoms at positions 2 and 6, and carbonyl groups at positions 3 and 5. A sulfur anion is bonded to the carbon at position 1 and an alyl chain to the carbon at position 4. The sulfur anion is associated with a soidum cation.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-MP01": {
+      "source_uid": "38788@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "360914",
+        "360915"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360914": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2dZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--17b40d966319393d708cb320b53246344f473ec5/OChem_22_EC_014a.jpg\" alt=\"An enol tautomer of 2-butanone is treated with acid to give an unknown product, represented by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:360915": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2tZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--aea7143b6b4c697321f3a2514c15c8aeaac101dd/OChem_22_EC_014d.jpg\" alt=\"3,3-Dimethyl-2-butanone is treated with base to give an unknown product, represented by a question mark.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-MP02": {
+      "source_uid": "38789@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "360918",
+        "360919"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360918": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ29ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--730774853106cf90b579707d27560ae64d7ab777/OChem_22_EC_015a.jpg\" alt=\"Butyraldehyde reacts with bromine in acetic acid to yield an unknown product, represented by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:360919": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3NZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--895fcad3ecab11543d26b163a43505a027d55e62/OChem_22_EC_015d.jpg\" alt=\"3,3-Dimethyl-2-butanone reacts with bromine in acetic acid to yield an unknown product, represented by a question mark.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-MP03": {
+      "source_uid": "38790@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "360922",
+        "360923"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360922": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3dZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8e4d9e7cb79e1a3aeda2925563553910a1259625/OChem_22_EC_016a.jpg\" alt=\"Methyl propionate reacts with L D A followed by bromoethane to yield an unknown product, represented by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:360923": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzBZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--674f4d8c08f2e88604f95cb6b551a72247259b9f/OChem_22_EC_016c.jpg\" alt=\"3-pentanone reacts with L D A followed by P h C H 2 B r to yield an unknown product, represented by a question mark.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-MP04": {
+      "source_uid": "38791@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "360926",
+        "360927"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360926": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzRZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4ba554dbf2200a934d6a623205f2b77c1635c96d/OChem_22_EC_017a.jpg\" alt=\"2-ethyl-2-methyl-3-oxobutanoic acid is heated in the presence of acidt to yield an unknown product, represented by a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "stem:360927": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzhZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5ddd01400544cc3c3862ae116bcb0152129ab476/OChem_22_EC_017b.jpg\" alt=\"4-methyl-3-oxohexanoic acid is heated in the presence of acid to yield an unknown product, represented by a question mark.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-MP05": {
+      "source_uid": "38792@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "360929"
+      ],
+      "fields": {
+        "stem:360929": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaEFZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--beb4adf2999c6cf04f7cd4fa061be339254ddad5/OChem_22_EC_018.jpg\" alt=\"An alpha brominated acid bromide reacts reversibly with a carboxylic acid to give an alpha brominated carboxylic acid and an acid bromide.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-MP06": {
+      "source_uid": "38793@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "346284"
+      ],
+      "fields": {
+        "stem:346284": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-MP07": {
+      "source_uid": "38794@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "360931"
+      ],
+      "fields": {
+        "stem:360931": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaEVZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--79efcf98f6d59a6bda93206f4ee5b1b03c46467c/OChem_22_EC_019.jpg\" alt=\"3-cyclohexenone with alpha, beta, and gamma carbons indicated and a double-bond between the beta and gamma carbons reacts with acid to form 2-cyclohexenone with a double-bond between the alpha and beta carbons.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-MP08": {
+      "source_uid": "38795@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "360933"
+      ],
+      "fields": {
+        "stem:360933": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaElZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a212d09c1f4fa5193908512bb1d0cc71952d8b12/OChem_22_EC_020.jpg\" alt=\"2-methyl-2-cyclopenten-1-one reacts with a base to yield 5-methyl-2-cyclopenten-1-one.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-MP09": {
+      "source_uid": "38796@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "360935"
+      ],
+      "fields": {
+        "stem:360935": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaE1ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4a6f66adc7be821ed509642ffe4eea316ae5f08c/OChem_22_EC_021.jpg\" alt=\"An analog of alanine reacts with base to form a product with a double bond between the alpha carbon and the nitrogen of the amino acid chain.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-MP10": {
+      "source_uid": "38797@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "360937"
+      ],
+      "fields": {
+        "stem:360937": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFFZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7d1fe300188505ecb6d91ade34068da9e79e9022/OChem_22_EC_022.jpg\" alt=\"A reactant comprising a cyclohexadiene ring with substituents attached para to the carbonyl groupundergoes a chemical reaction to yield tyrosine and carbon dioxide.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-MP11": {
+      "source_uid": "38798@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "360939"
+      ],
+      "fields": {
+        "stem:360939": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFVZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--791d4e9a7bedfd6fc4de3affbae2f60c82a8c027/OChem_22_EC_023.jpg\" alt=\"Fructose-6-phosphate undergoes a chemical reaction to yield glucose-6-phosphate as a product. Both the structures are represented in Fischer projection.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-MP12": {
+      "source_uid": "38799@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "360941"
+      ],
+      "fields": {
+        "stem:360941": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFlZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f61882d168170e0fddd0012250eb89751aeae79d/OChem_22_EC_024.jpg\" alt=\"When treated first with base and then with acid, 2-bromocyclohexanone is converted to cyclopentanecarboxylic acid.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-MP13": {
+      "source_uid": "38800@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "360943"
+      ],
+      "fields": {
+        "stem:360943": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--274a5eb8cb1ec6c9f18913a0e234bc3de7d2edaf/OChem_22_EC_025.jpg\" alt=\"Cyclohexanone reacts with diazomethane in ether to yield cycloheptanone and molecular nitrogen as the products.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-MP14": {
+      "source_uid": "38801@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "360945"
+      ],
+      "fields": {
+        "stem:360945": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGdZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--66eab908e5c8de42c0a93664833857e805ca3ee0/OChem_22_EC_026.jpg\" alt=\"A substituted cyclopentanone reacts with the Wittig reagent P P h 3- C H 2 in T H F to yield a product, but the expected product Laurene is not formed.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-MP15": {
+      "source_uid": "38802@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "360947"
+      ],
+      "fields": {
+        "stem:360947": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGtZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0a2cc8e0d8a1dbc2a37171653a040cfd3e03a4af/OChem_22_EC_027.jpg\" alt=\"The structure of diethyl acetamidomalonate where diethyl malonate is substituted with an acetamide group.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-MP16": {
+      "source_uid": "38803@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "346294"
+      ],
+      "fields": {
+        "stem:346294": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-MP17": {
+      "source_uid": "38804@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "360949"
+      ],
+      "fields": {
+        "stem:360949": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaG9ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d966c2cd77adfb346d2181521b4964b83afb0d9e/OChem_22_EC_028.jpg\" alt=\"When heated, carvone reacts with aqueous sulfuric acid to yield carvacrol.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-VC01": {
+      "source_uid": "38785@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "360906",
+        "360907"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000\n",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360906": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1FZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8772c8322de9da58ce1882954ec957adc9d083ad/OChem_22_EC_011a.jpg\" alt=\"Ball-stick model of a compound comprising a seven-carbon chain with C 2 being a carbonyl group, a double bond between C 5 and C 6, and a methyl group on C 6. Black, gray, and red spheres represent carbon, hydrogen, and oxygen, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "stem:360907": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1VZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3084ff203896e7af8e45dc83dbe81cb59d1d183a/OChem_22_EC_011b.jpg\" alt=\"A ball-stick model of a compound comprising a benzene ring and a C 3 chain, C1 of which is a carboxylic acid group, and C 2 bearing a methyl group. Black, gray, and red spheres represent carbon, hydrogen, and oxygen, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-VC02": {
+      "source_uid": "38786@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "360909"
+      ],
+      "fields": {
+        "stem:360909": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1lZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a80e62e5abfbeef1cf43eeb4ada90b6d1d31e9b4/OChem_22_EC_012.jpg\" alt=\"A ball-stick model of a compound comprising a six membered ring with carbonyl groups at C 1 and C 3 and with a C H 2 bridge between C 2 and C 5. Black, gray, and red spheres represent carbon, hydrogen, and oxygen, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "22-99-OC-VC03": {
+      "source_uid": "38787@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "360911"
+      ],
+      "fields": {
+        "stem:360911": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<span data-math=\"\\text{=}\"></span>",
+            "1": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2NZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4c9893bcbb7ae3444471204ab5627930bf0b8e8b/OChem_22_EC_013.jpg\" alt=\"A ball-stick model of a compound comprising a chair conformation of cyclohexanone with two methyl groups alpha on C 2. Black, gray, and red spheres represent carbon, hydrogen, and oxygen, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    }
+  }
+}

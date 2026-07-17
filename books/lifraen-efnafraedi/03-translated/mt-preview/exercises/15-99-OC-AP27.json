@@ -1,0 +1,15 @@
+{
+  "nickname": "15-99-OC-AP27",
+  "source_uid": "37775@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358694",
+      "stem_html": "<p><i>N</i>-Fenýlsydnón, sem heitir svo vegna þess að það var fyrst rannsakað við Háskólann í Sydney í Ástralíu, hagar sér eins og dæmigerð arómatísk sameind. Útskýrðu það með því að nota 4<i>n</i> + 2 reglu Hückels.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0FWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5406e4fc696bd761a9f2867cb1476bf338113c10/OChem_15_EC_019.jpg\" alt=\"Two interconvertible structures of N-phenylsydnone. In both structures, the nitrogen atom bonded to the benzene ring has a positive charge.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "03-07-OC-P18",
+  "source_uid": "36434@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357643",
+      "stem_html": "<p>Teiknaðu Newman-vörpun meðfram C2–C3 efnatenginu fyrir eftirfarandi stellingu 2,3-dímetýlbútans og reiknaðu heildarálagsorkuna:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--386ac46c72fdd0de90f11346734bc63f631617a7/OChem_03_07_008.jpg\" alt=\"A ball and stick model of 2,3-dimethylbutane featuring a four-carbon chain.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDhRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--eb1ff6d95967e0d5b894e76912a514190398758b/OChem_03_EC_213.jpg\" alt=\"A Newman projection of 2,3-dimethylbutane with a total energy of 11.4 kilojoules per mole is represented.\">"
+        }
+      ]
+    }
+  ]
+}

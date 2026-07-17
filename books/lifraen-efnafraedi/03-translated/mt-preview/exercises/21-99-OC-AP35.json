@@ -1,0 +1,15 @@
+{
+  "nickname": "21-99-OC-AP35",
+  "source_uid": "38229@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "464269",
+      "stem_html": "<p>Leggið til byggingu fyrir efnasambandið með formúluna C<sub>10</sub>H<sub>9</sub>NO<sub>2</sub> og eftirfarandi IR- og NMR-róf</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f5087b0227641da1a7736c6a658fd2b2f042416c/OChem_21_EC_061.jpg\" alt=\"The I R spectrum of a compound of molecular formula C 9 H 9 N O 2 shows peaks ranging from 400 to 3000 wavenumbers, signals at 2700 to 2900 and a sharp signal at 2250 wavenumebrs are notable. A strong peak at 1724 wavenumbers is highlighted.\">\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e4a77f55a303f1226882254b5c85e00f70a9a7e7/OChem_21_EC_062.jpg\" alt=\"The proton N M R spectrum of a compound of molecular formula C 9 H 9 N O 2 shows signals at 1.5 (triplet of integral 3), 4.5 (quartet of integral 2), 7.8 (doublet of integral 2), and 8.2 (doublet of integral 2) p p m.\">\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFlYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6e54f3aae0ce9c050329a1fc583966cee9f860e4/OChem_21_EC_063.jpg\" alt=\"The 13 carbon N M R spectrum of a compound of molecular formula C 9 H 9 N O 2 shows signals at 0, 16, 62, and 163 p p m along with a set of three signals between 115 and 120  p p m and another set of three signals between120 and 130 p p m.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

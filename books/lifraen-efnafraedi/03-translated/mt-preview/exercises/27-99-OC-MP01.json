@@ -1,0 +1,15 @@
+{
+  "nickname": "27-99-OC-MP01",
+  "source_uid": "38846@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358565",
+      "stem_html": "<p>Leggðu til hvarfgang fyrir lífmyndun karýófýllens, efnis sem finnst í negulolíu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDBZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--594714805a06ba807012ecb7b53ef76f08281ed2/OChem_27_EC_004.jpg\" alt=\"The structure of caryophyllene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

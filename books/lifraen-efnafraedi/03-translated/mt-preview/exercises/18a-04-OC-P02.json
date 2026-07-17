@@ -1,0 +1,19 @@
+{
+  "nickname": "18a-04-OC-P02",
+  "source_uid": "38766@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361153",
+      "stem_html": "<p>Sjáðu fyrir þér myndefnið sem myndast við kjarnsækna álagningu sýaníðjónar (CN<sup>–</sup>) við karbónýlhóp asetóns, og síðan róteindun til að mynda alkóhól:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d7c308c5f13f3db2543ff2e12e75f534f5bc4b76/OChem_18_PCC_018.jpg\" alt=\"Acetone reacts with cyanide ion in the first step and hydronium ion in the second step to form an unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa3dhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f2d5066c564faeb764ba68c14bc358b1182d2856/OChem_18_EC_205.jpg\" alt=\"Acetone reacts with cyanide to form an intermediate. This reacts with hydronium ion to form a product in which carbon is linked to hydroxyl, cyano, wedged, and dashed methyl groups.\">"
+        }
+      ]
+    }
+  ]
+}

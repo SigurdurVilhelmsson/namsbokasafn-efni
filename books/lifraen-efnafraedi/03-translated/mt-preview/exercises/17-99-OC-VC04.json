@@ -1,0 +1,25 @@
+{
+  "nickname": "17-99-OC-VC04",
+  "source_uid": "37888@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Spáðu fyrir um myndefnið úr efnahvarfi eftirfarandi efnis við:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0FWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d3c6875e51396ea64b5b0c46b9365a95daea6847/OChem_17_EC_018.jpg\" alt=\"A ball-and-stick model of a five-carbon chain with C O O C H 3 on C 1, and a methyl group on C 4 position.\">",
+  "questions": [
+    {
+      "id": "359427",
+      "stem_html": "NaBH<sub>4</sub>; síðan H<sub>3</sub>O<sup>+</sup>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359428",
+      "stem_html": "LiAlH<sub>4</sub>; síðan H<sub>3</sub>O<sup>+</sup>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359429",
+      "stem_html": "2 CH<sub>3</sub>CH<sub>2</sub>MgBr; síðan H<sub>3</sub>O<sup>+</sup>",
+      "collaborator_solutions": []
+    }
+  ]
+}

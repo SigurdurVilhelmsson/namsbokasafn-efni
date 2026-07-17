@@ -1,0 +1,19 @@
+{
+  "nickname": "16-04-OC-P13",
+  "source_uid": "37795@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "339381",
+      "stem_html": "Teiknaðu vokmyndir fyrir milliefnin úr efnahvarfi rafsækis við ortó-, meta- og para-stöður nítróbensens. Hvaða milliefni eru stöðugust?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Meta-milliefnið er hagstæðast."
+        }
+      ]
+    }
+  ]
+}

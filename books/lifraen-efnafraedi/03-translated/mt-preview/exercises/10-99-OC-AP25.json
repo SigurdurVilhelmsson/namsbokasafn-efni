@@ -1,0 +1,15 @@
+{
+  "nickname": "10-99-OC-AP25",
+  "source_uid": "37288@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "333514",
+      "stem_html": "<p>Karbónsýrur (RCO<sub>2</sub>H; p<i>K</i><sub>a</sub> ≈ 5) eru um það bil 10<sup>11</sup> sinnum súrari en alkóhól (ROH; p<i>K</i><sub>a</sub> ≈ 16). Með öðrum orðum, karboxýlatjón (RCO<sub>2</sub><sup>−</sup>) er stöðugri en alkoxíðjón (RO<sup>−</sup>). Útskýrðu með hjálp vokmynda.</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

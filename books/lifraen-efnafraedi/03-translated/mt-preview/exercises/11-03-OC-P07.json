@@ -1,0 +1,19 @@
+{
+  "nickname": "11-03-OC-P07",
+  "source_uid": "37348@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "336948",
+      "stem_html": "Lífrænir leysar eins og bensen, eter og klóróform eru hvorki róteindagefandi né sterklega skautaðir. Hvaða áhrif myndir þú búast við að þessir leysar hefðu á hvarfgirni kjarnsækis í S<sub>N</sub>2-efnahvörfum?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Svipuð og róteindagefandi leysar"
+        }
+      ]
+    }
+  ]
+}

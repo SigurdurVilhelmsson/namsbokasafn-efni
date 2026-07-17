@@ -1,0 +1,25 @@
+{
+  "nickname": "28-99-OC-AP05",
+  "source_uid": "39134@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hver af eftirfarandi basaröðum yrði líklegast þekkt af skerðiensími? Útskýrðu.",
+  "questions": [
+    {
+      "id": "348346",
+      "stem_html": "GAATTC",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348347",
+      "stem_html": "GATTACA",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348348",
+      "stem_html": "CTCGAG",
+      "collaborator_solutions": []
+    }
+  ]
+}

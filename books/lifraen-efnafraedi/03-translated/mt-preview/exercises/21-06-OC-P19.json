@@ -1,0 +1,37 @@
+{
+  "nickname": "21-06-OC-P19",
+  "source_uid": "38169@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Með hvaða ester og hvaða Grignard-hvarfefni gætir þú byrjað til að búa til eftirfarandi alkóhól?",
+  "questions": [
+    {
+      "id": "361389",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3dYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6444cb5b395b333131fbc0826a108db69bba734d/OChem_21_06_017a.jpg\" alt=\"Alt Text Placeholder\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Etýlbensóat + 2 CH<sub>3</sub>MgBr"
+        }
+      ]
+    },
+    {
+      "id": "361390",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4fc68285f5978851a8d0bae38831b8af56f06a23/OChem_21_06_017b.jpg\" alt=\"The structure of tertiary alcohol where a central carbon is bound to a benzene ring, two methyl groups, and a hydroxyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Etýlasetat + 2 PhMgBr"
+        }
+      ]
+    },
+    {
+      "id": "361391",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0a83e4573b8b5fb1dd67ccc6ffcdfe97e3a5cddd/OChem_21_06_017c.jpg\" alt=\"The structure shows a tertiary alcohol with a seven-carbon parent chain. Hydroxyl and ethyl groups are attached as substituents on C 3 of the chain.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Etýlpentanóat + 2 CH<sub>3</sub>CH<sub>2</sub>MgBr"
+        }
+      ]
+    }
+  ]
+}

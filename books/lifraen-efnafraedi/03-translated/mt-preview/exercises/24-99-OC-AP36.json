@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-AP36",
+  "source_uid": "39668@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361755",
+      "stem_html": "<p>Sýklóoktatetraen var fyrst smíðað árið 1911 með aðferð sem fól í sér eftirfarandi umbreytingu:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbndhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1cf75b3bbf1967dc803bd211c3d21f20a73ec3d6/OChem_24_EC_055.jpg\" alt=\"9-Methyl-9-azabicyclo[3.3.1]non-2-ene is separated from 1,3,5-cyclooctatriene by an arrow.\">\n<p>Hvernig gætir þú notað Hofmann-brottnám til að framkvæma þetta efnahvarf? Hvernig myndir þú ljúka smíðinni með því að breyta sýklóoktatríeni í sýklóoktatetraen?</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

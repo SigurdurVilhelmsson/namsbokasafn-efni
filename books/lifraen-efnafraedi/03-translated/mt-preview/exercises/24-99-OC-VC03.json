@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-VC03",
+  "source_uid": "38981@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361619",
+      "stem_html": "<p>Nefndu eftirfarandi amín, þar með talið <i>R</i>,<i>S</i> handhverfuna, og teiknaðu myndefnið úr efnahvarfi þess við umframmagn af joðmetani og síðan hitun með Ag<sub>2</sub>O (Hofmann-brottnám). Er handhverfa alken-myndefnisins <i>Z</i> eða <i>E</i>? Útskýrðu.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--15cd99e5ddea96f5f1107130ab2166bab02aa49c/OChem_24_EC_016.jpg\" alt=\"A ball-and-stick model of a three-carbon chain with benzene rings on C 1 and C 2, and an N H 2 group on C 1.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

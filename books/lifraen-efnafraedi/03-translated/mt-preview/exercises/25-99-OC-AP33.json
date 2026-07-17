@@ -1,0 +1,15 @@
+{
+  "nickname": "25-99-OC-AP33",
+  "source_uid": "39106@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348194",
+      "stem_html": "Efnasamband <b>A</b> er <small style=\"font-variant: small-caps\">D</small>-aldópentósi sem hægt er að oxa í óhandhverfa aldarsýru <b>B</b>. Við Kiliani-Fischer-keðjulengingu breytist <b>A</b> í <b>C</b> og <b>D</b>; <b>C</b> er hægt að oxa í handhverfa aldarsýru <b>E</b>, en <b>D</b> er oxað í óhandhverfa aldarsýru <b>F</b>. Hverjar eru byggingar <b>A</b>–<b>F</b>?",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "nickname": "16-99-OC-AP10",
+  "source_uid": "37842@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú mynda eftirfarandi efni úr benseni eða fenól? Gerðu ráð fyrir að hægt sé að aðskilja ortho- og para-skiptihvarfamyndefni.",
+  "questions": [
+    {
+      "id": "339560",
+      "stem_html": "<i>o</i>-Brómbensósýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339561",
+      "stem_html": "<i>p</i>-Metoxýtólúen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339562",
+      "stem_html": "2,4,6-Trínítróbensósýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339563",
+      "stem_html": "<i>m</i>-Brómanilín",
+      "collaborator_solutions": []
+    }
+  ]
+}

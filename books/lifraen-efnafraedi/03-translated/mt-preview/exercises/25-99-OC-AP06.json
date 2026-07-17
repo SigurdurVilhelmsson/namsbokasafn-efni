@@ -1,0 +1,25 @@
+{
+  "nickname": "25-99-OC-AP06",
+  "source_uid": "39079@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Úthlutaðu <i>R</i> eða <i>S</i> stillingu á hverja hendnimiðju í eftirfarandi sameindum:",
+  "questions": [
+    {
+      "id": "358812",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2NaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4ab9726a618118d33b63befd224db1b1a27ab137/OChem_25_EC_014a.jpg\" alt=\"Three-carbon Fisher projection,   hydrogen top and bromine on the right and  methyl on the left at C 1 , at C 2  bromine on the left, and methyl  bottom\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358813",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2daIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0a8c07e68e1a0c940a8e0270928cd99b79ac2a8f/OChem_25_EC_014b.jpg\" alt=\"Two-carbon Fisher projection,   phenyl top with  OH on the right  and methyl on the left at C 1, at C 2 methyl on the left, and OH at the  bottom\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358814",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2taIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e7037ef2d0e298b07eaf28d1a0377b1b218fffed/OChem_25_EC_014c.jpg\" alt=\"Three-carbon Fisher projection,   amine top and carboxylic acid  on the right  at C 1, at C 2 OH  on the right, and at C 3 phenyl at the  bottom\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

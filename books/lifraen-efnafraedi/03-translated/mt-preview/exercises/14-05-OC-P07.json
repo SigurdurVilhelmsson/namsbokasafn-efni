@@ -1,0 +1,19 @@
+{
+  "nickname": "14-05-OC-P07",
+  "source_uid": "37643@7",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358435",
+      "stem_html": "<p>Spáðu fyrir um myndefni eftirfarandi Diels-Alder-efnahvarfs:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc01VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--02a6de2932fb3191e7ea19c72ba9bed9bc52b6dd/OChem_14_05_008.jpg\" alt=\"Four-carbon chain with methyl groups at C 2 and C 3 reacts with 4-carbon chain in which C 1 is acetate group, C 2 is double bonded to C 3.  Question mark represents the product.\">\n",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1FVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--82623de5d79ac38468674421a7a49071212391dd/OChem_14_EC_201.jpg\" alt=\"A cyclohexene, in which C 1 and C 2 are bonded to methyl. C 4 is wedge bonded to C O 2 C H 3. C 5 is dash bonded to methyl.\">"
+        }
+      ]
+    }
+  ]
+}

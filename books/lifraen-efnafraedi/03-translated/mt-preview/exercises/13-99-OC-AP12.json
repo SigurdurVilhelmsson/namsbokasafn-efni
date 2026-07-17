@@ -1,0 +1,25 @@
+{
+  "nickname": "13-99-OC-AP12",
+  "source_uid": "37506@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Greindu tilgreind sett af róteindum sem ótengd, hómótópísk, enantíótópísk eða díasteríótópísk:",
+  "questions": [
+    {
+      "id": "358371",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUFVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--03d679e230ae246d27bd994510c9afd4f6d8e58d/OChem_13_EC_008a.jpg\" alt=\"A chemical structure of 3-pentanone. Arrows point to highlighted hydrogens on C 2.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358372",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a8fe6173beb12a4f6ea67dbb1f4aabd065594654/OChem_13_EC_008b.jpg\" alt=\"A chemical structure of 3-pentanol. Arrows point to highlighted hydrogens on C 2.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358373",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUlVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1de977f28a2df15f0b65c611309cec1b7213fa7b/OChem_13_EC_008c.jpg\" alt=\"A chemical structure of 3-chloropentane, with chlorine on a wedge bond. Arrows point to highlighted wedge hydrogen on C 2 and dash hydrogen on C 4.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

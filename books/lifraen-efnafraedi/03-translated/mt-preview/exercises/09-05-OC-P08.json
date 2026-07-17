@@ -1,0 +1,37 @@
+{
+  "nickname": "09-05-OC-P08",
+  "source_uid": "37197@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvernig myndir þú búa til eftirfarandi alkena með því að nota hvaða alkín sem þarf?",
+  "questions": [
+    {
+      "id": "332914",
+      "stem_html": "<i>trans</i>-2-okten",
+      "collaborator_solutions": [
+        {
+          "content_html": "Afoxaðu 2-oktín með Li/NH<sub>3</sub>."
+        }
+      ]
+    },
+    {
+      "id": "332915",
+      "stem_html": "<i>cis</i>-3-hepten",
+      "collaborator_solutions": [
+        {
+          "content_html": "Afoxaðu 3-heptín með H<sub>2</sub>/Lindlar hvata."
+        }
+      ]
+    },
+    {
+      "id": "332916",
+      "stem_html": "3-metýl-1-penten",
+      "collaborator_solutions": [
+        {
+          "content_html": "Afoxaðu 3-metýl-1-pentín."
+        }
+      ]
+    }
+  ]
+}

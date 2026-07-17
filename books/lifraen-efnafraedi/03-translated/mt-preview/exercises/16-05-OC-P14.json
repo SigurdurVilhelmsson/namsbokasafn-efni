@@ -1,0 +1,37 @@
+{
+  "nickname": "16-05-OC-P14",
+  "source_uid": "37801@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Í hvaða stöðu myndir þú búast við að rafsækið skiptihvarf eigi sér stað í hverju eftirfarandi efna:",
+  "questions": [
+    {
+      "id": "358930",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbE1WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--893ed79a54ea61e1a84ee7387b9302069556f2ec/OChem_16_05_005a.jpg\" alt=\"In a benzene ring, C 1 and C 3 are bonded to a bromine atom and a methoxy group, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Ortó og para við  − OCH<sub>3</sub>"
+        }
+      ]
+    },
+    {
+      "id": "358931",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ee1adb75bd4ef136dbc1ecbaa6b159b5416e5e3f/OChem_16_05_005b.jpg\" alt=\"In a benzene ring, C 1 and C 2 are bonded to a bromine atom and an amino group, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Ortó og para við  − NH<sub>2</sub>"
+        }
+      ]
+    },
+    {
+      "id": "358932",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1c7893d73d8414cafae1397e92e8f4a93a582797/OChem_16_05_005c.jpg\" alt=\"In a benzene ring, C 1 and C 2 are bonded to a chlorine atom and a nitro group, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Ortó og para við  − Cl"
+        }
+      ]
+    }
+  ]
+}

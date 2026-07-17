@@ -1,0 +1,35 @@
+{
+  "nickname": "09-99-OC-AP21",
+  "source_uid": "37235@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Kolvetni með óþekkta byggingu hefur formúluna C<sub>8</sub>H<sub>10</sub>. Við hvataða vetnun yfir Lindlar-hvata er 1 jafngildi af H<sub>2</sub> tekið upp. Við vetnun yfir palladíumhvata eru 3 jafngildi af H<sub>2</sub> tekin upp.",
+  "questions": [
+    {
+      "id": "333140",
+      "stem_html": "Hversu margar ómettunarstig eru í óþekktu byggingunni?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333141",
+      "stem_html": "Hversu mörg þrítengi eru til staðar?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333142",
+      "stem_html": "Hversu mörg tvítengi eru til staðar?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333143",
+      "stem_html": "Hversu margir hringir eru til staðar?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333144",
+      "stem_html": "Teiknaðu byggingu sem passar við gögnin.",
+      "collaborator_solutions": []
+    }
+  ]
+}

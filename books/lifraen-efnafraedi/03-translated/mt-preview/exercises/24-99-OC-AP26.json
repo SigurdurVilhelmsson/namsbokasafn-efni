@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-AP26",
+  "source_uid": "39658@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361735",
+      "stem_html": "<p>Fylltu inn í hvarfefnin sem vantar <b>a</b>–<b>d</b> í eftirfarandi myndun á rasemísku metamfetamíni úr benseni.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblFhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d2628b552a652e3a4b11e6d4ac1bf3c6295928a9/OChem_24_EC_048.jpg\" alt=\"Benzene reacts with a to produce allylbenzene. This reacts with b and c to produce 1-phenylpropan-2-one. This reacts with d to form (R, S)-methamphetamine.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

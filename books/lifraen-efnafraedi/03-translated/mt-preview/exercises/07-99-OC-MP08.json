@@ -1,0 +1,15 @@
+{
+  "nickname": "07-99-OC-MP08",
+  "source_uid": "36652@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354370",
+      "stem_html": "<p><i>epi</i>-Aristólóken, kolvetni sem finnst bæði í pipar og tóbaki, er lífsmíðað eftir eftirfarandi ferli. Bættu við sveigðum örvum til að sýna hvarfgang hvers skrefs. Hvaða skref fela í sér rafsekið álagningarefnahvarf alkens og hvaða skref fela í sér umröðun katjónar? (Skammstöfunin H—A stendur fyrir ótilgreinda sýru og „Basi“ er ótilgreindur basi í ensíminu.)</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--88b7d2ecc10db323e1a9d8b0781d1113d24c6e57/OChem_07_EC_013.jpg\" alt=\"A 5-step reaction shows the formation of epi-Aristolochene. H-A (acid) is used in first step and base in the last step.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

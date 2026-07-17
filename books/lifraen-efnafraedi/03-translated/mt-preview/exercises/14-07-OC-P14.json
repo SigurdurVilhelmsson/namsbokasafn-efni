@@ -1,0 +1,19 @@
+{
+  "nickname": "14-07-OC-P14",
+  "source_uid": "37650@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "338862",
+      "stem_html": "Ef hreint A-vítamín hefur <i>λ</i><sub>max</sub> = 325 (<i>ε</i> = 50.100), hver er þá styrkur A-vítamíns í sýni þar sem gleypni við 325 nm er <i>A</i> = 0,735 í küvettu með 1,00 cm ljósvegalengd?",
+      "collaborator_solutions": [
+        {
+          "content_html": "1,46 × 10<sup>−5</sup> M"
+        }
+      ]
+    }
+  ]
+}

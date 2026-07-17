@@ -1,0 +1,15 @@
+{
+  "nickname": "22-99-OC-AP25",
+  "source_uid": "38828@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361029",
+      "stem_html": "<p>Tilraun til Grignard-efnahvarfs sýklóhexanóns með <i>tert</i>-bútýlmagnesíumbrómíði gefur aðeins um 1% af væntanlegu álagningarmyndefni ásamt 99% óhvarfaðs sýklóhexanóns. Ef D<sub>3</sub>O<sup>+</sup> er bætt við efnablönduna eftir hæfilegan tíma kemur hins vegar í ljós að „óhvarfaða“ sýklóhexanónið hefur tekið upp eina tvívetnisfrumeind. Útskýrðu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2tZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4b804c9cdc4e01e7189706d76b9a01adb308d586/OChem_22_EC_045.jpg\" alt=\"Cyclohexanone is treated first with tert-butylmagnesium bromide and then with deuterium plus to form one percent of the expected addition product and 99 percent of alpha-deuterocyclohexanone.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

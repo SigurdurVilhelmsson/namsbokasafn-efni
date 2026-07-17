@@ -1,0 +1,19 @@
+{
+  "nickname": "28-04-OC-P06",
+  "source_uid": "39115@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348290",
+      "stem_html": "<p>Af hvaða DNA-basaröð var eftirfarandi RNA-röð umrituð?</p>\n<p style=\"text-align: center\">(5′) UUCGCAGAGU (3′)</p>",
+      "collaborator_solutions": [
+        {
+          "content_html": "(5′) ACTCTGCGAA (3′)"
+        }
+      ]
+    }
+  ]
+}

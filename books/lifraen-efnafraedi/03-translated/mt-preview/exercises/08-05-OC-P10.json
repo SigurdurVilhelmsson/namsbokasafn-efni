@@ -1,0 +1,37 @@
+{
+  "nickname": "08-05-OC-P10",
+  "source_uid": "37094@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvaða alkena mætti nota til að búa til eftirfarandi alkóhól með vatnsbórun-oxun?",
+  "questions": [
+    {
+      "id": "353408",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa29TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b24d18304d8d85322d61a308308b76f25983b31d/OChem_08_05_011a.jpg\" alt=\"The condensed structural formula has a 4-carbon chain. C1 is bonded to a hydroxyl group. C3 is bonded to a methyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "3-metýl-1-búten"
+        }
+      ]
+    },
+    {
+      "id": "353409",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa3NTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c7cf8577a0772d473bf0b2cb10295de036fa3c0c/OChem_08_05_011b.jpg\" alt=\"The condensed structural formula has a 4-carbon chain. C2 is bonded to a hydroxyl group. C3 is bonded to a methyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-metýl-2-búten"
+        }
+      ]
+    },
+    {
+      "id": "353410",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa3dTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c9f11bfffe70374bc0554b5e268741bd6974350e/OChem_08_05_011c.jpg\" alt=\"The structure has a cyclohexane ring. C1 is bonded to a hydroxymethyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Metýlensýklóhexan"
+        }
+      ]
+    }
+  ]
+}

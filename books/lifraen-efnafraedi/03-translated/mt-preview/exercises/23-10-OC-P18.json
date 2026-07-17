@@ -1,0 +1,19 @@
+{
+  "nickname": "23-10-OC-P18",
+  "source_uid": "38898@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359799",
+      "stem_html": "<p>Hvernig myndir þú búa til eftirfarandi <i>efnasamband</i> með Michael-<i>efnahvarfi</i> (grátt = H, svart = C, rautt = O, blátt = N)?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcU1ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9e07813333b8a7006629d70a0d983d0bdf44d4ec/OChem_23_10_008.jpg\" alt=\"The ball-and-stick model shows a seven-carbon chain with N O 2 on sixth and carbonyl on third carbons. Gray, white, red, and blue spheres denote carbon, hydrogen, oxygen, and nitrogen.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>CH<sub>2</sub>COCH<span data-math=\"\\text{═}\"></span>CH<sub>2</sub> + CH<sub>3</sub>CH<sub>2</sub>NO<sub>2</sub>"
+        }
+      ]
+    }
+  ]
+}

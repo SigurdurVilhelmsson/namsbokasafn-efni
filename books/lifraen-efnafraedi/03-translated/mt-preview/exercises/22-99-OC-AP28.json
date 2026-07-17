@@ -1,0 +1,15 @@
+{
+  "nickname": "22-99-OC-AP28",
+  "source_uid": "38831@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361039",
+      "stem_html": "<p>Lykilskrefið í skráðri efnasmíð á satíveni, kolvetni sem einangrað er úr myglusveppnum <i>Helminthosporium sativum,</i> felur í sér eftirfarandi meðhöndlun ketótósýlats með basa. Hvers konar efnahvarf er að eiga sér stað? Hvernig myndir þú ljúka við efnasmíðina?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa3dZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c5fed4bfa17471c83ece0aca33f7e3cb225fb578/OChem_22_EC_048.jpg\" alt=\"A keto tosylate reacts with a base to yield an intermediate which reacts with an unknown reagent, represented by a question mark to yield sativene as a product.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

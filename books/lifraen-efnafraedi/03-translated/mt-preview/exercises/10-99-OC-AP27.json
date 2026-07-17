@@ -1,0 +1,25 @@
+{
+  "nickname": "10-99-OC-AP27",
+  "source_uid": "37290@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hlutfallslegur hraði stakeindarbrómunar er 1 : 82 : 1640 fyrir 1°, 2° og 3° vetni, í sömu röð. Teiknaðu allar einbrómuðu afurðirnar sem þú gætir fengið úr stakeindarbrómun efnasambandanna hér að neðan. Reiknaðu hlutfallslega prósentu hverrar þeirra.",
+  "questions": [
+    {
+      "id": "333524",
+      "stem_html": "metýlsýklóbútan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333525",
+      "stem_html": "3,3-dímetýlpentan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333526",
+      "stem_html": "3-metýlpentan",
+      "collaborator_solutions": []
+    }
+  ]
+}

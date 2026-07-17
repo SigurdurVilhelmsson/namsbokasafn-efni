@@ -1,0 +1,25 @@
+{
+  "nickname": "23-99-OC-AP18",
+  "source_uid": "38945@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig gætir þú framleitt eftirfarandi sýklóhexenón með því að sameina Stork-enamín efnahvarf og innansameinda aldólþéttingu? (Sjá dæmi 23-64.)",
+  "questions": [
+    {
+      "id": "359916",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdG9ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e8f5b8694ba974cc2dc837e152c3d4d63d5d8498/OChem_23_EC_043a.jpg\" alt=\"Structure of a bicyclo[4.4.0]decane with double bond C 1 to C 2, oxo on C 3, methyl on C 2.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359917",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4d109a3eb68f13e2fea3d50208d93ac00ab6c337/OChem_23_EC_043b.jpg\" alt=\"Structure of a bicyclo[4.4.0]decane with double bond C 1 to C 2, oxo on C 3, methyl on C 10.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359918",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHdZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--061de68de297d036410f8fdc3cb2ef641f78bd87/OChem_23_EC_043c.jpg\" alt=\"The structure shows a cyclohexeneone fused to cyclohexane further bonded to benzene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

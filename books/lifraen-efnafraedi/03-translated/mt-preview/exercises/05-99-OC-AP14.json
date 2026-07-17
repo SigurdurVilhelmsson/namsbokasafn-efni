@@ -1,0 +1,25 @@
+{
+  "nickname": "05-99-OC-AP14",
+  "source_uid": "36577@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Úthlutaðu <i>R</i> eða <i>S</i> stillingu á hverja hendnimiðju í eftirfarandi sameindum:",
+  "questions": [
+    {
+      "id": "354187",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6b73ba77378a5259744f59574f2d8728629295fe/OChem_05_EC_011a.jpg\" alt=\"In a cyclohexane ring, C1 is dash bonded to the hydroxyl group and wedge bonded to hydrogen. C2 is wedge bonded to chlorine and dash bonded to hydrogen.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354188",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmdSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7ab2b601b488de50cf010c4ab8a8e99278694de4/OChem_05_EC_011b.jpg\" alt=\"In a cyclohexane ring, C1 is wedge bonded to hydrogen and dash bonded to the ethyl group. C2 is dash bonded to hydrogen and wedge bonded to methyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354189",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmtSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--294bb09c6f53f0c526ca559d51189c1be8f75e78/OChem_05_EC_011c.jpg\" alt=\"In a cyclopentane ring, C1 and C3 are each wedge bonded to a hydroxyl group and dash bonded to a methyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

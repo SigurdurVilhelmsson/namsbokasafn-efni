@@ -1,0 +1,15 @@
+{
+  "nickname": "13-99-OC-GP02",
+  "source_uid": "37519@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358403",
+      "stem_html": "<p>Efnasambandið sem sýnt er á <sup>1</sup>H NMR-rófinu hefur sameindaformúluna C<sub>3</sub>H<sub>6</sub>Br<sub>2</sub>. Leggið til byggingu.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkFVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--00777dceecf9933e94f2dddff3521ddd35ebb50d/OChem_13_EC_017.jpg\" alt=\"The 1 H N M R spectrum shows peaks at 0 (T M S), 2.3 (quintet), and 3.6 (triplet).\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

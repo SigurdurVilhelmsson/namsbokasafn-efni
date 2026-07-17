@@ -1,0 +1,30 @@
+{
+  "nickname": "23-99-OC-AP02",
+  "source_uid": "38929@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig gætir þú smíðað hvert eftirfarandi efnasambanda með aldól-efnahvarfi? Sýndu byggingu upphafsaldehýðs(a) eða ketóns(a) sem þú myndir nota í hverju tilviki.",
+  "questions": [
+    {
+      "id": "359885",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc29ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--23eb81d76e6d950d0ec96b838ba8880a0ec44925/OChem_23_EC_035a.jpg\" alt=\"A three carbon chain with an oxo and phenyl on C 1, trans double bond on C 2, and phenyl on C 3.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359886",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3NZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b392926c0ab77e2a3ef541dea0a36d99608b1978/OChem_23_EC_035b.jpg\" alt=\"The structure of a cyclohexyl isopropyl ether in which the cyclohexane ring has a double bond from C 1 to C 2.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359887",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3dZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--897d6f89935cc4c9da5cfa95db0b941e493157f4/OChem_23_EC_035c.jpg\" alt=\"The structure of a benzene fused to C 4 and C 5 of 1-formyl-1-cyclopentene.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359888",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczBZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4a22db00e2dd7ea431ef2e6fdbe3824ea4e3627b/OChem_23_EC_035d.jpg\" alt=\"The structure of cyclopentadienone with phenyl groups on second, third, fourth, and fifth carbons.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

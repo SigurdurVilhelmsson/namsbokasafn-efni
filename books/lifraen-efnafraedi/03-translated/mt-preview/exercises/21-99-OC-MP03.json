@@ -1,0 +1,20 @@
+{
+  "nickname": "21-99-OC-MP03",
+  "source_uid": "38183@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáið fyrir um afurð(ir) og skrifið verkunarhátt fyrir hvert eftirfarandi efnahvarfa:",
+  "questions": [
+    {
+      "id": "361426",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUlYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--611766389425be113c17c711eec060f072f54f35/OChem_21_EC_028a.jpg\" alt=\"The reaction of ethyl-3-methyl butanoate with aqueous acid gives an unknown product depicted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361427",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaU1YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d4e9c5d07ef880cd8b43ffc14854e6be70777099/OChem_21_EC_028c.jpg\" alt=\"The reaction of but-2-enoic acid with hydrochloric acid catalyst in methanol gives an unknown product depicted by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

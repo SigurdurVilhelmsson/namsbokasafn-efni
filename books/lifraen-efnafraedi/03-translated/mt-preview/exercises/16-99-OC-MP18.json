@@ -1,0 +1,25 @@
+{
+  "nickname": "16-99-OC-MP18",
+  "source_uid": "37832@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Vegna samokunar sinnar eru asó-litarefni mjög lituð efnasambönd og helsti uppruni gervilita fyrir vefnaðarvöru og matvæli. Asó-litarefni eru framleidd með efnahvarfi arýldíazóníumsalta við annað arómatískt efnasamband. Í myndefninu eru arómatísku hringirnir tengdir með díasóbrú ( –  N=N – ). Leggið til byggingu fyrir hvert asó-litarefni út frá gefnum hvarfefnum og teiknið hvarfganginn með rafeindaflutningi.",
+  "questions": [
+    {
+      "id": "358985",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cc8920ec60997e98f8ec38759dd1fdeac065b5f3/OChem_16_EC_032a.jpg\" alt=\"Benzene bonded to nitrogen with two open single bonds reacts with benzene bonded to S O 3 N a and to N triple bonded to N with a plus charge on the first N, forming methyl orange.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358986",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbThWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--af568efde7e384520d0e6dd81ea05d41b6022a8c/OChem_16_EC_032b.jpg\" alt=\"A disubstituted napthalene reacts with a diazo compound to form Allura Red.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358987",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--88f00510aa0bbedbf27894454847e4e6c587469f/OChem_16_EC_032c.jpg\" alt=\"A disubstituted napthalene reacts with a diazo compound to form Lithol Rubine BK..\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

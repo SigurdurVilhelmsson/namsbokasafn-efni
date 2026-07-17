@@ -1,0 +1,28 @@
+{
+  "nickname": "07-04-OC-P10",
+  "source_uid": "36620@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Nefndu eftirfarandi alkena, þar með talið cis- eða trans-tilnefningu:",
+  "questions": [
+    {
+      "id": "354293",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcW9SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7ffeb7246351829ae21d42932e0fb867a8e0949d/OChem_07_04_004a.jpg\" alt=\"A ball-and-stick model that has a 6-carbon chain with a double bond between C2 and C3. C4 and C5 are each bonded to a methyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>cis</i>-4,5-Dímetýl-2-hexen"
+        }
+      ]
+    },
+    {
+      "id": "354294",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dfa2ce8e2c901bb38a03e967b7b859241178ddc8/OChem_07_04_004b.jpg\" alt=\"A ball-and-stick model that has a 7-carbon chain. C2 is bonded to a methyl group. C4 is double bonded to C5.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>trans</i>-6-Metýl-3-hepten"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "23-99-OC-AP14",
+  "source_uid": "38941@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359896",
+      "stem_html": "<p>Öfugt við hið hraða efnahvarf sem sýnt er í dæmi 23-60, þarf etýlasetóasetat hitastig yfir 150 °C til að gangast undir sams konar klofnunarefnahvarf. Hvernig getur þú útskýrt muninn á hvarfgirni?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdEVZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--76ef79369154a2038ff11edecac231d86e85913d/OChem_23_EC_039.jpg\" alt=\"The reaction of ethyl acetoacetate with sodium ethoxide and ethanol at one hundred fifty degrees Celsius, resulted in the production of two molecules of ethyl acetate.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

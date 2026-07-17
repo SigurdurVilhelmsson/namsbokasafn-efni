@@ -1,0 +1,15 @@
+{
+  "nickname": "14-99-OC-AP06",
+  "source_uid": "37688@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358483",
+      "stem_html": "<p>Teiknaðu möguleg myndefni sem myndast við álagningu 1 jafngildis af HCl á 1-fenýl-1,3-bútadíen. Hvaða myndefni myndir þú búast við að væri ríkjandi og hvers vegna?</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWdVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3c185b971cee369ef837906d2a63f5f3f0acdd3d/OChem_14_EC_014.jpg\" alt=\"1-Phenyl-1,3-butadiene contains a benzene ring.one carbon of which is bonded to a 4-carbon chain, in which C 1 is double bonded to C 2 and C 3 is double bonded to C 4.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

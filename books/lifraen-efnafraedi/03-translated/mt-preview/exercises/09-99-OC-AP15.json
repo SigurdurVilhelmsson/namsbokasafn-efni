@@ -1,0 +1,15 @@
+{
+  "nickname": "09-99-OC-AP15",
+  "source_uid": "37229@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353836",
+      "stem_html": "<p>Hvernig myndir þú framkvæma eftirfarandi fjölþrepa umbreytingar?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdk1TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8dd6e9dd60b0d7953f44b95e4b8df3625c9c5f1d/OChem_09_EC_032.jpg\" alt=\"Styrene reacts in the presence of an unknown reagent indicated by a question mark to form 2-phenyl acetaldehyde.\">\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdlFTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--72c6616cb94ae2e59b06f82c95179f63741be13d/OChem_09_EC_033.jpg\" alt=\"Styrene reacts in the presence of an unknown reagent indicated by a question mark to form prop-1-en-1ylbenzene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

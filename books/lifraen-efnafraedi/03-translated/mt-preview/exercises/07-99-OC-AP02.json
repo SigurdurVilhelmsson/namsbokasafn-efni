@@ -1,0 +1,25 @@
+{
+  "nickname": "07-99-OC-AP02",
+  "source_uid": "36654@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hversu mörg vetni hefur hvert eftirfarandi efnasambanda?",
+  "questions": [
+    {
+      "id": "330243",
+      "stem_html": "C<sub>8</sub>H<sub><span class=\"magenta-text\">?</span></sub>O<sub>2</sub>, hefur tvo hringi og eitt tvítengi",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "330244",
+      "stem_html": "C<sub>7</sub>H<sub><span class=\"magenta-text\">?</span></sub>N, hefur tvö tvítengi",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "330245",
+      "stem_html": "C<sub>9</sub>H<sub><span class=\"magenta-text\">?</span></sub>NO, hefur einn hring og þrjú tvítengi",
+      "collaborator_solutions": []
+    }
+  ]
+}

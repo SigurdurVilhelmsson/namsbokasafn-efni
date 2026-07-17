@@ -1,0 +1,19 @@
+{
+  "nickname": "26-06-OC-P14",
+  "source_uid": "39225@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359595",
+      "stem_html": "Teiknaðu byggingu PTH-afleiðunnar sem myndi myndast við Edman-niðurbrot á angíótensíni II (dæmi 26-12).",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTBaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--97dffb70d355239b3fbefb786e3d2194f2058fe6/OChem_26_EC_207.jpg\" alt=\"A P T H derivative containing an acetic acid residue formed from the Edman degradation of the  N-terminal residue of a peptide.\">"
+        }
+      ]
+    }
+  ]
+}

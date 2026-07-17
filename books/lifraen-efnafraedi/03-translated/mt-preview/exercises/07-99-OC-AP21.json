@@ -1,0 +1,25 @@
+{
+  "nickname": "07-99-OC-AP21",
+  "source_uid": "36673@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Raðaðu eftirfarandi karbókatjónum eftir vaxandi stöðugleika.",
+  "questions": [
+    {
+      "id": "523898",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmtSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--01d11c553735c578fd0165a302b403b5c3639831/OChem_07_EC_024a.jpg\" alt=\"Isopropyl with a positive charge at central carbon, a 4-carbon chain with a positive charge at C1, and another 4-carbon chain with a positive charge at C2.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "523899",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajBrIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e4c0bd5647aceeb78cf7cf93d7b0ff0f30b916c6/OChem_07_EC_024.jpg\" alt=\"Cyclopentane bonded to methyl with positive charge on it, cyclopentane with a positive charge at C1 bonded to methyl, and cyclopentane with a positive charge bonded to methyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "523900",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdnNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--822636d6e348dcbf4a34fb8f3a7e55f76c8854e1/OChem_07_EC_024c.jpg\" alt=\"Three structures show cyclohexane fused to cyclopentane with shared methyl. Carbocation at carbon opposite fusion in cyclopentane, on methyl, and at a fusion site in first, second, and third structure.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

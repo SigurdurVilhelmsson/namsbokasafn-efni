@@ -1,0 +1,30 @@
+{
+  "nickname": "11-99-OC-AP08",
+  "source_uid": "37387@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvaða efnahvarf í hverju eftirfarandi pari mynduð þið búast við að væri hraðvirkara?",
+  "questions": [
+    {
+      "id": "351572",
+      "stem_html": "S<sub>N</sub>2-skiptihvarf með I<sup>–</sup> á CH<sub>3</sub>Cl eða á CH<sub>3</sub>OTos",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351573",
+      "stem_html": "S<sub>N</sub>2-skiptihvarf með CH<sub>3</sub>CO<sub>2</sub><sup>–</sup> á brómetani eða á brómsýklóhexani",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351574",
+      "stem_html": "S<sub>N</sub>2-skiptihvarf á 2-brómprópani með CH<sub>3</sub>CH<sub>2</sub>O<sup>–</sup> eða með CN<sup>–</sup>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351575",
+      "stem_html": "S<sub>N</sub>2-skiptihvarf með HC<span data-math=\"\\text{≡}\"></span>C<sup>–</sup> á brómmetani í benseni eða í asetónítríl",
+      "collaborator_solutions": []
+    }
+  ]
+}

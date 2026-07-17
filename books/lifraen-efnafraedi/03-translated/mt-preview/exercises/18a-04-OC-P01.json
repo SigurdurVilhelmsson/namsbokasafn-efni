@@ -1,0 +1,19 @@
+{
+  "nickname": "18a-04-OC-P01",
+  "source_uid": "38765@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361151",
+      "stem_html": "<p>Miðað við eftirfarandi rafstöðumöguleikakort, hvort efnasambandið hefur rafsæknari karbónýl kolefnisfrumeind, ketón eða sýruklóríð? Hvort hefur kjarnsæknari karbónýl súrefnisfrumeind? Útskýrðu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d324ffe285f127f2b8a4679129ec22a3c778c859/OChem_18_PCC_017.jpg\" alt=\"The ball-and-stick model in electrostatic potential maps of acetone (ketone) and acetyl chloride (acid chloride). An arrow points toward the carbon atom that is bonded with oxygen.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Asetýlklóríð er rafsæknara en asetón."
+        }
+      ]
+    }
+  ]
+}

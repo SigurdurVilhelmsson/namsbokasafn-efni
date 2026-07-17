@@ -1,0 +1,19 @@
+{
+  "nickname": "19-11-OC-P17",
+  "source_uid": "38011@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360635",
+      "stem_html": "<p><i>β</i>-Karótín, gult matarlitarefni og uppspretta A-vítamíns í fæðu, er hægt að búa til með <i>tvöföldu</i> Wittig-efnahvarfi milli tveggja jafngilda af <i>β</i>-jónýlídenasetaldehýði og <i>díýlíði.</i> Sýndu byggingu <i>β</i>-karótín myndefnisins.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBak1XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b9856429beadace1551eb020d29fb4ff591426e9/OChem_19_11_008.jpg\" alt=\"Two moles of beta-ionylideneacetaldehyde reacts with a diylide to form unknown product represented by a question mark.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalFXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5340445e06735cef89e40c634007d39b8ca26041/OChem_19_EC_206.jpg\" alt=\"The structure of beta-carotene. It consists of a long hydrocarbon chain comprising alternating single and double bonds. Both the ends have cyclohexene with methyl groups.\">"
+        }
+      ]
+    }
+  ]
+}

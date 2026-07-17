@@ -1,0 +1,25 @@
+{
+  "nickname": "02-99-OC-AP43",
+  "source_uid": "36155@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Skrifaðu myndefni eftirfarandi sýru-basa efnahvarfa:",
+  "questions": [
+    {
+      "id": "324552",
+      "stem_html": "CH<sub>3</sub>OH + H<sub>2</sub>SO<sub>4</sub> ⇄ <span class=\"red-text\">?</span>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "324553",
+      "stem_html": "CH<sub>3</sub>OH + NaNH<sub>2</sub> ⇄ <span class=\"red-text\">?</span>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "324554",
+      "stem_html": "CH<sub>3</sub>NH<sub>3</sub><sup>+</sup> Cl<sup>–</sup> + NaOH ⇄ <span class=\"red-text\">?</span>",
+      "collaborator_solutions": []
+    }
+  ]
+}

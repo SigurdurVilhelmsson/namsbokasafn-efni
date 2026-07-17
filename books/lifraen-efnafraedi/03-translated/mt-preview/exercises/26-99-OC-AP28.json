@@ -1,0 +1,15 @@
+{
+  "nickname": "26-99-OC-AP28",
+  "source_uid": "39267@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348909",
+      "stem_html": "<p>Hver er bygging níupeptíðs sem gefur eftirfarandi brot þegar það er klofið?</p>\n<p>Trypsínklofnun: Val-Val-Pro-Tyr-Leu-Arg, Ser-Ile-Arg</p>\n<p>Kýmótrypsínklofnun: Leu-Arg, Ser-Ile-Arg-Val-Val-Pro-Tyr</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

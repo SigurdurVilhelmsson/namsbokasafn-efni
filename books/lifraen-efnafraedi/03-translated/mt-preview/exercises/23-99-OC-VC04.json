@@ -1,0 +1,15 @@
+{
+  "nickname": "23-99-OC-VC04",
+  "source_uid": "38906@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359829",
+      "stem_html": "<p>Eftirfarandi sameind myndaðist í Robinson-hringtengingu. Hvaða hvarfefni voru notuð?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBckVZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--486dc2516a7ca1fc002f130382c8f0fea4127b58/OChem_23_EC_014.jpg\" alt=\"A ball-and-stick model of cyclopentene with carbonyl, methyl and cyano group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

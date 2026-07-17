@@ -1,0 +1,15 @@
+{
+  "nickname": "07-99-OC-AP33",
+  "source_uid": "36687@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354492",
+      "stem_html": "<p>Vinýlsýklóprópan hvarfast við HBr og gefur umraðað alkýlbrómíð. Fylgdu flæði rafeinda eins og það er sýnt með sveigðu örvunum, sýndu byggingu karbókatjónar-milliefnisins innan hornklofa og sýndu byggingu loka-myndefnisins.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaElTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bca6affa142b73591cc587a62ce493bd71683398/OChem_07_EC_034.jpg\" alt=\"A 2-step reaction shows vinylcyclopropane reacting with hydrogen bromide via abstraction of hydrogen and alkyl shift. The intermediate and products are unknown.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

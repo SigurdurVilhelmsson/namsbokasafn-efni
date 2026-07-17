@@ -1,0 +1,19 @@
+{
+  "nickname": "13-06-OC-P11",
+  "source_uid": "37477@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360081",
+      "stem_html": "<p>Heildað <sup>1</sup>H NMR-róf efnasambands með formúluna C<sub>4</sub>H<sub>10</sub>O er sýnt á mynd 13.12. Stingdu upp á byggingu.</p>\n<figure id=\"fig-00200\">\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajRVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--23237c50dd6e785250455f2154ac5277ebe23966/OChem_13_06_009.jpg\" alt=\"The 1 H N M R spectrum of a compound has peaks at 0 (T M S), 1.2 (triplet), and 3.5 (quartet).\">\n<figcaption>Heildað <sup>1</sup>H NMR-róf fyrir dæmi 11.</figcaption></figure>",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>CH<sub>2</sub>OCH<sub>2</sub>CH<sub>3</sub>"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "nickname": "10-99-OC-AP01",
+  "source_uid": "37264@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Nefndu eftirfarandi alkýlhalíð:",
+  "questions": [
+    {
+      "id": "357362",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaThUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8ff9871bfd44788542013a8affdfd20f5b9834ce/OChem_10_EC_019a.jpg\" alt=\"A seven-carbon alkyl chain with a CH3 group on C2 and C6 positions and a Br group on C4 and C5 positions.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357363",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--53aa77295aea14b61d8128be9c66454ad42f64d0/OChem_10_EC_019b.jpg\" alt=\"A six-carbon alkene chain with alkene group on C2 and iodine group on C5.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357364",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--68fe20d4139ea8819c2863de56bbe461059c52a7/OChem_10_EC_019c.jpg\" alt=\"A six-carbon alkyl chain with Br and CH3 on the C2 position, Cl on the C4 position, and CH3 on the C5 position.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357365",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaklUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4130aa21e027ecd879bbe6158ca2edf2201542b6/OChem_10_EC_019d.jpg\" alt=\"A six-carbon alkyl chain with a C H 2 Br group on C3 position.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357366",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBak1UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--27adf1986099a17f8e317f7aad92c02be4679244/OChem_10_EC_019e.jpg\" alt=\"A six-carbon chain with Br on C1, a triple bond C2, and a Cl group on C6.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

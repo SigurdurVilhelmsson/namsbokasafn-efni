@@ -1,0 +1,15 @@
+{
+  "nickname": "22-99-OC-MP13",
+  "source_uid": "38800@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360943",
+      "stem_html": "<p>Meðhöndlun á hringketóni með díasómetani er aðferð til að framkvæma hringstækkunarefnahvarf. Til dæmis gefur meðhöndlun á sýklóhexanóni með díasómetani sýklóheptanón. Leggðu til hvarfgang.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--274a5eb8cb1ec6c9f18913a0e234bc3de7d2edaf/OChem_22_EC_025.jpg\" alt=\"Cyclohexanone reacts with diazomethane in ether to yield cycloheptanone and molecular nitrogen as the products.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

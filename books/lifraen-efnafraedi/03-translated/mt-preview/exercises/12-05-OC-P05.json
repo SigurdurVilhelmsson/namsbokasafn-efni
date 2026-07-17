@@ -1,0 +1,19 @@
+{
+  "nickname": "12-05-OC-P05",
+  "source_uid": "37421@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "341865",
+      "stem_html": "Hvort hefur meiri orku, innrauð geislun með <i>λ</i> = 1,0 × 10<sup>–6</sup> m eða röntgengeisli með <i>λ</i> = 3,0 × 10<sup>–9</sup> m? Geislun með <i>ν</i> = 4,0 × 10<sup>9</sup> Hz eða með <i>λ</i> = 9,0 × 10<sup>–6</sup> m?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Orka röntgengeisla er meiri; <i>λ</i> = 9,0 × 10<sup>−6</sup> m er orkumeiri."
+        }
+      ]
+    }
+  ]
+}

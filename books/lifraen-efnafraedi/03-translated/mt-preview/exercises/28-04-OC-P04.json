@@ -1,0 +1,19 @@
+{
+  "nickname": "28-04-OC-P04",
+  "source_uid": "39113@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358105",
+      "stem_html": "Sýndu hvernig úrasíl getur myndað sterk vetnistengi við adenín.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcE1aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--345e84a88afbe66b290bf6fcd1ca1a44e89eaaa6/OChem_28_EC_201.jpg\" alt=\"The figure shows two hydrogen bonding in the structure of adenine and uracil base pairs where the bases act as hydrogen bond donors and acceptors.\">"
+        }
+      ]
+    }
+  ]
+}

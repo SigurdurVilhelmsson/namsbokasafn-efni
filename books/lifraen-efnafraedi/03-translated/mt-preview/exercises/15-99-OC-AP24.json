@@ -1,0 +1,20 @@
+{
+  "nickname": "15-99-OC-AP24",
+  "source_uid": "37772@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Stingdu upp á byggingum fyrir efnasambönd sem passa við eftirfarandi lýsingar:",
+  "questions": [
+    {
+      "id": "339157",
+      "stem_html": "<p>C<sub>10</sub>H<sub>14</sub></p>\n<p><sup>1</sup>H NMR: 7,18 <i>δ</i> (4 H, breiður eintopper); 2,70 <i>δ</i> (4 H, fjórtopper, <i>J</i> = 7 Hz); 1,20 <i>δ</i> (6 H, þrítopper, <i>J</i> = 7 Hz)</p>\n<p>IR-gleypni við 745 cm<sup>–1</sup></p>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339158",
+      "stem_html": "<p>C<sub>10</sub>H<sub>14</sub></p>\n<p><sup>1</sup>H NMR: 7,0 <i>δ</i> (4 H, breiður singúlett); 2,85 <i>δ</i> (1 H, septett, <i>J</i> = 8 Hz); 2,28 <i>δ</i> (3 H, singúlett); 1,20 <i>δ</i> (6 H, dúblett, <i>J</i> = 8 Hz)</p>\n<p>IR-gleypni við 825 cm<sup>–1</sup></p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

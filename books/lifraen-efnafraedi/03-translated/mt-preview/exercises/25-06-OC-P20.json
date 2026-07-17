@@ -1,0 +1,19 @@
+{
+  "nickname": "25-06-OC-P20",
+  "source_uid": "39058@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348038",
+      "stem_html": "Hverjir af hinum sex <small style=\"font-variant: small-caps\">D</small> aldóhexósunum gefa handhverfar virkar aldarsýrur við oxun og hverjir gefa handhverfar óvirkar (mesó) aldarsýrur? (Sjá dæmi 25-19.)",
+      "collaborator_solutions": [
+        {
+          "content_html": "<small style=\"font-variant: small-caps\">D</small>-Allósi og <small style=\"font-variant: small-caps\">D</small>-galaktósi gefa mesó-aldarsýrur; hinir sex <small style=\"font-variant: small-caps\">D</small>-hexósarnir gefa handhverfar virkar aldarsýrur."
+        }
+      ]
+    }
+  ]
+}

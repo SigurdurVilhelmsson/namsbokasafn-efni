@@ -1,0 +1,15 @@
+{
+  "nickname": "19-99-OC-MP23",
+  "source_uid": "38045@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360725",
+      "stem_html": "<p>Þegar kristallar af hreinum <i>α</i>-glúkósa eru leystir upp í vatni verður hæg ísómerun sem myndar <i>β</i>-glúkósa. Stingdu upp á hvarfgangi fyrir ísómerunina.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDBXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a3871282409b23330056cbb66ec51d95e2542386/OChem_19_EC_042.jpg\" alt=\"The reaction shows the interconversion of alpha-glucose and beta-glucose through a reversible reaction. The position of the hemiacetal hydroxyl group is axial in alpha and equatorial in beta.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

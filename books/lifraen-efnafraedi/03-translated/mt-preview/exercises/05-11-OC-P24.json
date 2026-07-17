@@ -1,0 +1,19 @@
+{
+  "nickname": "05-11-OC-P24",
+  "source_uid": "36518@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354131",
+      "stem_html": "<p>Mjólkursýran sem safnast upp í þreyttum vöðvum myndast úr pýrúvati. Ef efnahvarfið á sér stað með álagningu vetnis á Re-flöt pýrúvats, hver er rúmefnafræði myndefnisins?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa01SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c84d45f1586c06c59ac5a57df6e4dea38b353416/OChem_05_11_010.jpg\" alt=\"The figure shows a reaction where pyruvate converts to lactate.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "(<i>S</i>)-Laktat"
+        }
+      ]
+    }
+  ]
+}

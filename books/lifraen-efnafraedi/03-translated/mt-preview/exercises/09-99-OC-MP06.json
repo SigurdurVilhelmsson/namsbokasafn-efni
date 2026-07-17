@@ -1,0 +1,25 @@
+{
+  "nickname": "09-99-OC-MP06",
+  "source_uid": "37212@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Auðkennið hvarfganga eftirfarandi efnahvarfa sem <i>skautaða, stakeinda,</i> eða <i>hvort tveggja</i>.",
+  "questions": [
+    {
+      "id": "353776",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdE1TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dd996a211e4577fc62448c283bc80b1be0221454/OChem_09_EC_020a.jpg\" alt=\"A C6 internal alkyne reacts with lithium and ammonia to form a trans alkene.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353777",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFFTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fc519943a9c7471558eacb9981812c13d8ef6467/OChem_09_EC_020b.jpg\" alt=\"A C6 internal alkyne reacts with bromine to form a trans dibromoalkene\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353778",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFVTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0d96b8aa89c4cc1785d487f5853e2eeeecb4770e/OChem_09_EC_020c.jpg\" alt=\"A C6 internal alkyne reacts with two moles of hydrogen bromide to form a dibromo substituted alkane\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

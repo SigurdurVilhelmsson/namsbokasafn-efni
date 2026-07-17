@@ -1,0 +1,19 @@
+{
+  "nickname": "29-06-OC-P09",
+  "source_uid": "39303@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "349276",
+      "stem_html": "Hvaða kolefnisfrumeindir í glúkósa verða að  –CH<sub>3</sub>-hópum í asetýl-CoA? Hvaða kolefni verða að CO<sub>2</sub>?",
+      "collaborator_solutions": [
+        {
+          "content_html": "C1 og C6 í glúkósa verða að  –CH<sub>3</sub>-hópum; C3 og C4 verða að CO<sub>2</sub>."
+        }
+      ]
+    }
+  ]
+}

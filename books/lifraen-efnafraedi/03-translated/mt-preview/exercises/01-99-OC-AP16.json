@@ -1,0 +1,15 @@
+{
+  "nickname": "01-99-OC-AP16",
+  "source_uid": "37573@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "352107",
+      "stem_html": "<p>Hvert er lögun bensen og við hvaða blendingsgerð býst þú fyrir hvert kolefni?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDRVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--40b97e55d44b2354c05fff2a51758d08c5129f6c/OChem_01_EC_008.jpg\" alt=\"The line-bond structure of benzene.\">\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

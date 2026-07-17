@@ -1,0 +1,20 @@
+{
+  "nickname": "20-99-OC-MP07",
+  "source_uid": "38107@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Náttúruleg efnasambönd sem kallast <i>blásýruglýkósíð,</i> eins og lotaustralín, losa vetnissýaníð, HCN, þegar þau eru meðhöndluð með vatnslausn af sýru. Efnahvarfið á sér stað með vatnsrofi á asetaltenginu og myndar sýanóhýdrín, sem síðan losar HCN og gefur karbónýlefnasamband.",
+  "questions": [
+    {
+      "id": "359154",
+      "stem_html": "<p>Sýndu hvarfgang asetals vatnsrofsins og byggingu sýanóhýdrínsins sem myndast.</p>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359155",
+      "stem_html": "<p>Leggðu til hvarfgang fyrir losun HCN og sýndu byggingu karbónýlefnasambandsins sem myndast.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1f5dd05c998cc13559a7d3c30c8614ea600f0c11/OChem_20_EC_018.jpg\" alt=\"Structure of Lotaustralin comprises a pyran ring in the chair conformation, with attached hydroxyl groups. The carbon connected to side-chain oxygen bonded to carbon carries wedged-methyl and dashed-wedged nitrile groups.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

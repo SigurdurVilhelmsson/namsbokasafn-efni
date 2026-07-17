@@ -1,0 +1,28 @@
+{
+  "nickname": "09-04-OC-P06",
+  "source_uid": "37195@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Með hvaða alkíni myndir þú byrja til að búa til hvert eftirfarandi efnasambanda með vatnsbórunar-oxunar efnahvarfi?",
+  "questions": [
+    {
+      "id": "353721",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBclVTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e52345dd1edeee8f5c6ac7ff213d9d8ff80155db/OChem_09_04_010a.jpg\" alt=\"The figure shows a benzene ring with a C H 2 C H O group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "C<sub>6</sub>H<sub>5</sub>C <span data-math=\"\\text{≡}\"></span> Ch\n"
+        }
+      ]
+    },
+    {
+      "id": "353722",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcllTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--db03800bb933e198930f7cde459f0dde54507aeb/OChem_09_04_010b.jpg\" alt=\"A C6  chain with a carbonyl group at C3 and two methyl groups at C2 and C5.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2,5-dímetýl-3-hexín"
+        }
+      ]
+    }
+  ]
+}

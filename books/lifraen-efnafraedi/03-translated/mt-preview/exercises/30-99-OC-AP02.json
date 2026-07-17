@@ -1,0 +1,15 @@
+{
+  "nickname": "30-99-OC-AP02",
+  "source_uid": "39371@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358579",
+      "stem_html": "<p>Eftirfarandi hverfumyndun við varma á sér stað við tiltölulega mildar aðstæður. Greinið hringhvarfið sem á sér stað og sýnið hvernig umröðunin gerist.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0VhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5e8701fb22bb42f6503fae850d3d6367daea27e4/OChem_30_EC_009.jpg\" alt=\"Cyclohexene undergoes thermal isomerization to form a product. A phenyl replaces C D 3 at C 4 and vice versa at C 3. One phenyl replaces methyl at C 2.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

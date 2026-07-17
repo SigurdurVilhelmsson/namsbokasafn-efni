@@ -1,0 +1,64 @@
+{
+  "nickname": "13-04-OC-P06",
+  "source_uid": "37472@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvert eftirfarandi efnasambanda hefur einn <sup>1</sup>H NMR-topp. Hvar um bil myndir þú búast við að hvert efnasamband myndi gleypa?",
+  "questions": [
+    {
+      "id": "358260",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaThVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--11f4af8e735ffea8933c1fc05868beff49ff2de7/OChem_13_04_003a.jpg\" alt=\"A chemical structure of cyclohexane.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1,43 <i>δ</i>"
+        }
+      ]
+    },
+    {
+      "id": "358261",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakFVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ae855393d81106e7043852a698d43a54654847d4/OChem_13_04_003b.jpg\" alt=\"A chemical structure of acetone.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2,17 <i>δ</i>"
+        }
+      ]
+    },
+    {
+      "id": "358262",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--24d7b1a54350a7530ae393b76b66bedb0190889f/OChem_13_04_003c.jpg\" alt=\"A chemical structure of benzene.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "7,37 <i>δ</i>"
+        }
+      ]
+    },
+    {
+      "id": "358263",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaklVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--166bad6bdf1cc492d3b6aeb121a82178950e063a/OChem_13_04_003d.jpg\" alt=\"The structure of dichloromethane whose condensed structural formula reads, C H 2 C l 2.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "5,30 <i>δ</i>"
+        }
+      ]
+    },
+    {
+      "id": "358264",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBak1VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c50a704ad54ea13dc9f301115b6c77ed9b937d77/OChem_13_04_003e.jpg\" alt=\"The structure of ethane-1, 2-dial has a 2-carbon chain. Each carbon is single-bonded to a hydrogen atom and double-bonded to an oxygen atom.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "9,70 <i>δ</i>"
+        }
+      ]
+    },
+    {
+      "id": "358265",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalFVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--77a9499dc165713286c20b578bbc60ae6695a530/OChem_13_04_003f.jpg\" alt=\"The structure of N,N-dimethylmethanamine in which nitrogen atom is bonded to three methyl groups.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2,12 <i>δ</i>"
+        }
+      ]
+    }
+  ]
+}

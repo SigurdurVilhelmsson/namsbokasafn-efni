@@ -1,0 +1,15 @@
+{
+  "nickname": "07-99-OC-MP05",
+  "source_uid": "36649@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354364",
+      "stem_html": "<p>Álagning HCl á 1-ísóprópýlsýklóhexen gefur umraðað myndefni. Stingdu upp á hvarfgangi, sýndu byggingu milliefnanna og notaðu sveigðar örvar til að sýna flæði rafeinda í hverju skrefi.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdElSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fca6afc73aa663b88c98edb0f42d1171731e81ff/OChem_07_EC_010.jpg\" alt=\"Cyclohexene with an isopropyl group at C1 reacts with hydrogen chloride to form a product that has a central carbon bonded to two methyl groups, chlorine, and cyclohexane.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

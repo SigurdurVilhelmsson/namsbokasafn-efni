@@ -1,0 +1,15 @@
+{
+  "nickname": "16-99-OC-AP23",
+  "source_uid": "37855@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359045",
+      "stem_html": "<p>Leggðu til hvarfgang fyrir efnahvarf 1-klórantrakínóns við metoxíðjón til að gefa skiptihvarfsmyndefnið 1-metoxýantrakínón. Notaðu sveigðar örvar til að sýna rafeindaflæðið í hverju skrefi.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3dWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--09fce261591ecd75c189b5ed56cc89e3667f90ca/OChem_16_EC_044.jpg\" alt=\"1-Chloroanthraquinone reacts with methoxide ion to yield 1-methoxyanthraquinone and sodium chloride.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

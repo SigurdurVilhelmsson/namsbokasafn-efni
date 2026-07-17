@@ -1,0 +1,19 @@
+{
+  "nickname": "02-03-OC-P08",
+  "source_uid": "36120@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "363721",
+      "stem_html": "<p>Lífrænir fosfathópar eru algengir í lífsameindum. Reiknaðu formlega hleðslu á fjórum O-frumeindunum í metýlfosfat-tvíanjóninni.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdE1QIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--313837218860e738cbe3e169231ec0e3b9afc54f/OChem_02_03_008.jpg\" alt=\"Structure of phosphorus with double bond to oxygen, two single bonds to oxygen, and single bond to O C H 3, all in brackets with a negative 2 charge overall.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFFQIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9226b7b913faedc5061870d8d4ffb152b81b5525/OChem_02_EC_205.jpg\" alt=\"Structure of phosphorus with double bond to oxygen, two single bonds to oxygen (charges are minus 1 each), and single bond to O C H 3.\">"
+        }
+      ]
+    }
+  ]
+}

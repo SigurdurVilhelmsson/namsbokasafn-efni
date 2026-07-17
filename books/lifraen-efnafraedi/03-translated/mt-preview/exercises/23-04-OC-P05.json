@@ -1,0 +1,28 @@
+{
+  "nickname": "23-04-OC-P05",
+  "source_uid": "38885@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Eftirfarandi efnasambönd eru myndefni aldól-þéttingar. Hvert er aldehýð- eða ketón-forveri hvers þeirra?",
+  "questions": [
+    {
+      "id": "346827",
+      "stem_html": "2-hýdroxý-2-metýlpentanal",
+      "collaborator_solutions": [
+        {
+          "content_html": "Ekki aldól-myndefni"
+        }
+      ]
+    },
+    {
+      "id": "346828",
+      "stem_html": "5-etýl-4-metýl-4-hepten-3-ón",
+      "collaborator_solutions": [
+        {
+          "content_html": "3-pentanón"
+        }
+      ]
+    }
+  ]
+}

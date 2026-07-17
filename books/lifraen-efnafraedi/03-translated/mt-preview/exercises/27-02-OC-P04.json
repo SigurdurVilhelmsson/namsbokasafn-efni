@@ -1,0 +1,19 @@
+{
+  "nickname": "27-02-OC-P04",
+  "source_uid": "38836@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "347197",
+      "stem_html": "Skrifaðu sápunarhvarf glýserýldíóleat mónópalmítats með vatnslausn af NaOH.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Glýserýldíóleat mónópalmítat → glýseról + 2 natríumóleat + natríumpalmítat"
+        }
+      ]
+    }
+  ]
+}

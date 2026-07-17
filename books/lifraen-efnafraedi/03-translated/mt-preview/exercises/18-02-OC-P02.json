@@ -1,0 +1,19 @@
+{
+  "nickname": "18-02-OC-P02",
+  "source_uid": "38698@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "347203",
+      "stem_html": "Af hverju heldurðu að aðeins samhverfir eterar séu framleiddir með brennisteinssýruhvataðri afvötnun? Hvaða myndefni myndir þú búast við ef etanól og 1-própanól fengju að hvarfast saman? Í hvaða hlutföllum myndu myndefnin myndast ef hvarfgirni alkóhólanna tveggja væri jöfn?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Efnablanda af díetýleter, díprópýleter og etýlprópýleter myndast í hlutföllunum 1 : 1 : 2."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "nickname": "05-99-OC-AP17",
+  "source_uid": "36580@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Úthlutaðu <i>R</i> eða <i>S</i> stillingu á hverja hendnimiðju í eftirfarandi sameindum:",
+  "questions": [
+    {
+      "id": "354196",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbndSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--81f643c982797b618f12238fd4a1cb73874ca156/OChem_05_EC_013a.jpg\" alt=\"In a 4-carbon chain, C2 and C3 are each wedge bonded to a bromine atom and dash bonded to a hydrogen atom.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354197",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjBSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0e56eb5d590b1025172200d65035e5981c661cf4/OChem_05_EC_013b.jpg\" alt=\"A 4-carbon chain at C1 is a carboxylic acid group (right). C2 is wedge bonded to amino. C3 is wedge bonded to hydroxyl and C4 is bonded to benzene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

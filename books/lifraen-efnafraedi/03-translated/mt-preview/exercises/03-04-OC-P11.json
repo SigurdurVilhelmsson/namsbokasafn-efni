@@ -1,0 +1,46 @@
+{
+  "nickname": "03-04-OC-P11",
+  "source_uid": "36427@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Gefðu IUPAC-heiti fyrir eftirfarandi efnasambönd:",
+  "questions": [
+    {
+      "id": "351766",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczhRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--aba598e170cb63120b8e1e19762b8daa0dcd6aaf/OChem_03_04_019a.jpg\" alt=\"The three isomers of C 5 H 12 are presented named pentane, 2-methylbutane, and 2,2-dimethylpropane.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Pentan, 2-metýlbútan, 2,2-dímetýlprópan"
+        }
+      ]
+    },
+    {
+      "id": "351767",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdEFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9e2b63b2f98e50ff098bda240cf5544337977412/OChem_03_04_019b.jpg\" alt=\"The molecular structure of 2,3-dimethylpentane featuring a five-carbon chain.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2,3-dímetýlpentan"
+        }
+      ]
+    },
+    {
+      "id": "351768",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdEVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--537d7524135c694502e34d48f0b23f4d145ab5a6/OChem_03_04_019c.jpg\" alt=\"The molecular structure of 2,4-dimethylpentane featuring a five-carbon chain.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2,4-dímetýlpentan"
+        }
+      ]
+    },
+    {
+      "id": "351769",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdElRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--64150ce0cb72015f4b9fd1feab456b9503818c76/OChem_03_04_019d.jpg\" alt=\"The molecular structure of 2,2,5-trimethylhexane featuring a six-carbon chain.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2,2,5-trímetýlhexan"
+        }
+      ]
+    }
+  ]
+}

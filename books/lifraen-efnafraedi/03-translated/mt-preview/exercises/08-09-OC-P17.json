@@ -1,0 +1,28 @@
+{
+  "nickname": "08-09-OC-P17",
+  "source_uid": "37101@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvaða myndefni myndir þú búast við úr eftirfarandi efnahvörfum?",
+  "questions": [
+    {
+      "id": "357732",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dd0de30e088240639d0b37edc0d9d41d645875a5/OChem_08_09_006a.jpg\" alt=\"A reaction shows methylenecyclohexane reacting with chloroform in the presence of aqueous KOH to form unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\" scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbG9TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--069ef4b55c011707bdd2ae48f1659b05b57f7c03/OChem_08_EC_205a.jpg\" alt=\"The structure has a cyclohexane ring fused to C2 of a cyclopropane ring, in which C1 of the cyclopropyl ring is bonded to two chlorine atoms.\">"
+        }
+      ]
+    },
+    {
+      "id": "357733",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGtTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--678970b9a5fe45c18b87ba1b08726ce9e5b8a233/OChem_08_09_006b.jpg\" alt=\"A 6-carbon chain with a double bond at C2 and methyl at C5 reacts with diiodomethane in the presence of zinc-copper to form unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\" scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c71974d0e2bb386c6d1b13a156e2c0740d4179db/OChem_08_EC_205b.jpg\" alt=\"The condensed structure has a 6-carbon chain. C2 and C3 are bonded to a common methylene group. C5 is bonded to a methyl group.\">"
+        }
+      ]
+    }
+  ]
+}

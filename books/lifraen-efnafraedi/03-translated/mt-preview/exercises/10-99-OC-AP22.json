@@ -1,0 +1,15 @@
+{
+  "nickname": "10-99-OC-AP22",
+  "source_uid": "37285@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357394",
+      "stem_html": "<p>Álagning HBr á tvítengi með eterhópi (−OR) sem skiptihópi á sér stað með sætissértækni og gefur myndefni þar sem −Br og −OR eru tengd sama kolefnisatóminu. Teiknaðu tvö möguleg karbkatjóna-milliefni í þessu rafseknu álagningarefnahvarfi og útskýrðu með hjálp vokmynda hvers vegna myndefnið sem sést myndast.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbEFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b42b5659f2c1e2796229d1767e34ad82c1c4fdf7/OChem_10_EC_033.jpg\" alt=\"1-methoxycyclohexene reacts with hydrogen bromide to form 1-bromo-1-methoxycyclohexane.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

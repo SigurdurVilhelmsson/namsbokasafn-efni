@@ -1,0 +1,15 @@
+{
+  "nickname": "19-99-OC-MP21",
+  "source_uid": "38043@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360721",
+      "stem_html": "<p>Ein af líffræðilegu leiðunum sem amín breytist í ketón felur í sér tvö skref: (<b><span class=\"magenta-text\">1</span></b>) oxun amínsins með NAD<sup>+</sup> til að gefa imín og (<b><span class=\"magenta-text\">2</span></b>) vatnsrof imínsins til að gefa ketón auk ammóníaks. Glútamat breytist til dæmis með þessu ferli í <i>α</i>-ketóglútarat. Sýndu byggingu imín-milliefnisins og stingdu upp á hvarfgöngum fyrir bæði skrefin.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1addb2b102b355a2fb83f2dbb5a2b3c5bb733acb/OChem_19_EC_040.jpg\" alt=\"The reaction shows the conversion of glutamate with N A D plus to form an imine, which yields alpha-ketoglutarate and ammonia on reaction with water.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "30-99-OC-AP11",
+  "source_uid": "39380@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355100",
+      "stem_html": "<p>Spáið fyrir um myndefni eftirfarandi hringhvarfs. Er þessi [5,5] tilfærsla suprafacial eða antarafacial ferli?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2dhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c6e3b4002669b123c5f2614fd28847aac1494a78/OChem_30_EC_016.jpg\" alt=\"A benzene ring with C 1 linked to oxygen that is linked to six-carbon chain undergoes 5,5 shift with heat to form an unknown product represented as a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

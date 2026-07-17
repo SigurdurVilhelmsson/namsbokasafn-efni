@@ -1,0 +1,15 @@
+{
+  "nickname": "19-99-OC-MP14",
+  "source_uid": "38036@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360709",
+      "stem_html": "<p>Leggðu til hvarfgang fyrir eftirfarandi efnahvarf.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFVXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0c667eb8aa209c1a59289f28bd503cf4d35b81d8/OChem_A19_99_NaOHHCl.jpg\" alt=\"The reaction shows a ketone converted to an acid with sodium hydroxide (first reaction), followed by hydrochloric acid in water (second reaction).\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "05-99-OC-AP01",
+  "source_uid": "36564@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "347107",
+      "stem_html": "<p>Hverjir af eftirfarandi hlutum eru hendnir?</p>\n<p><b>(a)</b> Körfubolti <b>(b)</b> Gaffall <b>(c)</b> Vínglas <b>(d)</b> Golfkylfa <b>(e)</b> Hringstigi <br><b>(f)</b> Snjókorn</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

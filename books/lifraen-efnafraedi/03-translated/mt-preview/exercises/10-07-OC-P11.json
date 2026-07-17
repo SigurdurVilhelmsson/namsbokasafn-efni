@@ -1,0 +1,37 @@
+{
+  "nickname": "10-07-OC-P11",
+  "source_uid": "37257@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvernig myndir þú framkvæma eftirfarandi umbreytingar með því að nota lífrænt kopartengihvarf? Fleiri en eitt skref er nauðsynlegt í hverju tilviki.",
+  "questions": [
+    {
+      "id": "352617",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--148a812cdbcaed51a66afa59bbf93debf9bdfd44/OChem_10_07_010a.jpg\" alt=\"Cyclohexene reacts with an unknown reactant represented by a question mark to form 3-methyl-1-cyclohexene.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. NBS; 2. (CH<sub>3</sub>)<sub>2</sub>CuLi"
+        }
+      ]
+    },
+    {
+      "id": "352618",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a038cecf07fe65c3c70ee0457cafa587ae3a5411/OChem_10_07_010b.jpg\" alt=\"1-bromobutane reacts with an unknown reactant represented by a question mark to form octane.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. Li; 2. CuI; 3. CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>Br"
+        }
+      ]
+    },
+    {
+      "id": "352619",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUlUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--85454895ac2bbb183f5cc4952d118e411c474853/OChem_10_07_010c.jpg\" alt=\"Pent-1-ene reacts with an unknown reactant represented by a question mark to form decane.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. BH<sub>3</sub>; 2. H<sub>2</sub>O<sub>2</sub>, NaOH; 3. PBr<sub>3</sub>; 4. Li, síðan CuI; 5. CH<sub>3</sub>(CH<sub>2</sub>)<sub>4</sub>Br"
+        }
+      ]
+    }
+  ]
+}

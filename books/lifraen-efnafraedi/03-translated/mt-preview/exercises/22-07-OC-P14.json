@@ -1,0 +1,19 @@
+{
+  "nickname": "22-07-OC-P14",
+  "source_uid": "38782@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348785",
+      "stem_html": "<p>Hvaða efnasambönd af eftirfarandi er ekki hægt að búa til með asetóedikestersmyndun? Útskýrðu.</p>\n<p><b>(a)</b> Fenýlasetón <b>(b)</b> Asetófenón <b>(c)</b> 3,3-dímetýl-2-bútanón</p>",
+      "collaborator_solutions": [
+        {
+          "content_html": "Ekki er hægt að búa til neitt þeirra."
+        }
+      ]
+    }
+  ]
+}

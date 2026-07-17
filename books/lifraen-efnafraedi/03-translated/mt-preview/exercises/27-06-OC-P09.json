@@ -1,0 +1,19 @@
+{
+  "nickname": "27-06-OC-P09",
+  "source_uid": "38841@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358201",
+      "stem_html": "<p>Lítókólsýra er A–B cis-steri sem finnst í galli manna. Teiknaðu lítókólsýru sem sýnir stólstellingar, eins og á mynd 27.12, og segðu til um hvort hýdroxýlhópurinn við C3 sé áslægur eða miðlægur.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGdZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--55c5c7f927b9c5d1a72de5ecfafd281353714b3d/OChem_27_06_006.jpg\" alt=\"The figure shows the wedge-dash structure of lithocholic acid.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGtZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c212a16603358f5a53a67895cabcbd12f727871a/OChem_27_EC_205.jpg\" alt=\"The chair conformation of lithocholic acid. A tetracyclic conformation of three cyclohexyls and one cyclopentyl fused rings with one equatorial hydroxyl, two axial methyls, and methyl substituted butyric acid\">"
+        }
+      ]
+    }
+  ]
+}

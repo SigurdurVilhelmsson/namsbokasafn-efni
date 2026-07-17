@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-AP38",
+  "source_uid": "39670@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361761",
+      "stem_html": "<p>4-dímetýlamínópýridín (DMAP) virkar sem hvati í asýlflutningsefnahvörfum. Hvatavirkni DMAP stafar af kjarnsæknum eiginleikum þess við pýridínnitrið, ekki dímetýlamínóhópinn. Útskýrðu þessa hegðun með hliðsjón af vokmyndum.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjhhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a85118657c87d91a833f0223845507b7210e43e7/OChem_24_EC_058.jpg\" alt=\"The structure of 4-dimethylaminopyridine. It has a pyridine ring linked to a nitrogen connected to two methyl groups.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

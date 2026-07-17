@@ -1,0 +1,19 @@
+{
+  "nickname": "10-04-OC-P05",
+  "source_uid": "37251@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360205",
+      "stem_html": "<p>Teiknaðu þrjú vokmynd fyrir sýklóhexadíenýl stakeindina.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFlUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5cb8c73603c5dfc0fde12e6182d664dc984c6661/OChem_10_04_006.jpg\" alt=\"The structure of cyclohexadienyl radical.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--44f14713a88e180f16e2ecafef97a9110d4a2ccf/OChem_10_EC_202.jpg\" alt=\"Three resonance structures of cyclohexadienyl radical.\">"
+        }
+      ]
+    }
+  ]
+}

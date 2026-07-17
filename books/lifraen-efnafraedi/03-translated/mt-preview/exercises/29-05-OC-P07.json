@@ -1,0 +1,19 @@
+{
+  "nickname": "29-05-OC-P07",
+  "source_uid": "39301@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "349272",
+      "stem_html": "Tilgreindu þau tvö skref glýkólýsu þar sem ATP er framleitt.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Skref 7 og 10"
+        }
+      ]
+    }
+  ]
+}

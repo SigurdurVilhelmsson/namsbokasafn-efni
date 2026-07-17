@@ -1,0 +1,20 @@
+{
+  "nickname": "06-99-OC-AP05",
+  "source_uid": "37326@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Bættu bogadregnum örvum við eftirfarandi skautuð efnahvörf til að sýna flæði rafeinda í hverju þeirra:",
+  "questions": [
+    {
+      "id": "353345",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3NUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0066a517c16f6feb6418f2acb83c539b65d39d9c/OChem_06_EC_016a.jpg\" alt=\"A 2-step reversible reaction shows benzene reacting with deuterium chloride via a carbocation intermediate to form benzene with D at C1 and hydrogen chloride.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353346",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3dUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--abdc0209a1fe737eb904a3df0973c41610b529a5/OChem_06_EC_016b.jpg\" alt=\"A 2-step reaction shows propylene oxide reacting with hydrogen chloride via a protonated oxirane intermediate. The product is 3-chloroisopropanol.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

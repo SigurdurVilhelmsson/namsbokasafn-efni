@@ -1,0 +1,25 @@
+{
+  "nickname": "03-99-OC-AP15",
+  "source_uid": "36452@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknið efnasamband sem:",
+  "questions": [
+    {
+      "id": "327948",
+      "stem_html": "Hefur aðeins eingreind og þrígreind kolefni",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327949",
+      "stem_html": "Hefur engin tvígreind eða þrígreind kolefni",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327950",
+      "stem_html": "Hefur engin tvígreind eða þrígreind kolefni",
+      "collaborator_solutions": []
+    }
+  ]
+}

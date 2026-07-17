@@ -1,0 +1,30 @@
+{
+  "nickname": "30-99-OC-AP16",
+  "source_uid": "39385@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvaða staðefnafræði – antarafacial eða suprafacial – myndir þú búast við að sjá í eftirfarandi efnahvörfum?",
+  "questions": [
+    {
+      "id": "349697",
+      "stem_html": "Ljósefnafræðileg [1,5] sigmatrópísk umröðun",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "349698",
+      "stem_html": "Hitafræðileg [4 + 6] hringviðbót",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "349699",
+      "stem_html": "Hitafræðileg [1,7] sigmatrópísk umröðun",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "349700",
+      "stem_html": "Ljósefnafræðileg [2 + 6] hringviðbót",
+      "collaborator_solutions": []
+    }
+  ]
+}

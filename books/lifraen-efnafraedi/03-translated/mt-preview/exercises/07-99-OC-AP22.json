@@ -1,0 +1,25 @@
+{
+  "nickname": "07-99-OC-AP22",
+  "source_uid": "36674@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Notaðu Hammond-setninguna til að ákvarða hvaða alkeni í hverju pari myndi búast við að mynda karbókatjón hraðar í rafsekinni álagningu.",
+  "questions": [
+    {
+      "id": "354450",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdndSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7874bd3b7f946e130525444328e4ba213087aa51/OChem_07_EC_025a.jpg\" alt=\"Structures of 3-methyl-1-pentene and E-3-methyl-2-pentene.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354451",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjBSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--002769cdec7ee1a740119aff8c922d7218b50862/OChem_07_EC_025b.jpg\" alt=\"Structures of methylenecyclopentane and 4-methylcyclopentene.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354452",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjRSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4a34a6b5a05c261129dfcbe044297769ef6680f4/OChem_07_EC_025c.jpg\" alt=\"Structures of 3-methyl-1-butene and 3-methyl-2-butene\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

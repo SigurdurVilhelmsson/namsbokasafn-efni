@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-MP09",
+  "source_uid": "38991@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361647",
+      "stem_html": "<p>Klórófyll, hem, B<sub>12</sub>-vítamín og fjöldi annarra efna eru lífsmíðuð úr porfóbílínógeni (PBG), sem sjálft myndast við þéttingu tveggja sameinda af 5-amínólevúlínati. 5-amínólevúlínötin tvö eru bundin við lýsín (Lys) amínósýrur í ensíminu, önnur á enamínformi og hin á imínformi, og talið er að þétting þeirra eigi sér stað í eftirfarandi skrefum. Notaðu sveigðar örvar til að sýna hvarfgang hvers skrefs.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaU1aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3aaab6dcf171159f5764ae1aa67c4ee36d2f34ad/OChem_24_EC_024.jpg\" alt=\"Two molecules of enzyme-bound 5-aminolevulinate react to produce four intermediates. This further leads to the final product named Porphobilinogen (P B G).\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

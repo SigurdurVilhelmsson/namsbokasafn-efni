@@ -1,0 +1,15 @@
+{
+  "nickname": "01-99-OC-VC02",
+  "source_uid": "37556@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "352079",
+      "stem_html": "<p>Eftirfarandi líkan er mynd af sítrónusýru, lykilefninu í svokölluðum sítrónusýruhring, þar sem fæðusameindir eru umbrotnar í líkamanum. Aðeins tengingar milli frumeinda eru sýndar; margföld tengi eru ekki tilgreind. Ljúktu við bygginguna með því að gefa til kynna staðsetningu margfaldra tengja og rafeindapara (svart = C, rautt = O, grátt = H).</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczhaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ef9287770ed5122cd57fec979a17aa32922f6524/OChem_01_EC_002.jpg\" alt=\"The ball and stick model of citric acid where grey, black and red spheres represent hydrogen, carbon, oxygen, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

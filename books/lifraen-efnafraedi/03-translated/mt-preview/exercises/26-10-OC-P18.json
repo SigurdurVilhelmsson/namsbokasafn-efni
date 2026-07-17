@@ -1,0 +1,37 @@
+{
+  "nickname": "26-10-OC-P18",
+  "source_uid": "39229@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Í hvaða flokka tilheyra eftirfarandi ensím?",
+  "questions": [
+    {
+      "id": "348965",
+      "stem_html": "Pýrúvatdekarboxýlasi",
+      "collaborator_solutions": [
+        {
+          "content_html": "Lýasi"
+        }
+      ]
+    },
+    {
+      "id": "348966",
+      "stem_html": "Kýmótrypsín",
+      "collaborator_solutions": [
+        {
+          "content_html": "Hýdrólasi"
+        }
+      ]
+    },
+    {
+      "id": "348967",
+      "stem_html": "Alkóhóldehýdrógenasi",
+      "collaborator_solutions": [
+        {
+          "content_html": "Oxídóredúktasi"
+        }
+      ]
+    }
+  ]
+}

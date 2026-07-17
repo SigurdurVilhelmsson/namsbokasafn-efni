@@ -1,0 +1,25 @@
+{
+  "nickname": "17-99-OC-AP10",
+  "source_uid": "37911@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvaða myndefni myndir þú fá úr efnahvarfi 1-pentanóls við eftirfarandi hvarfefni:",
+  "questions": [
+    {
+      "id": "340806",
+      "stem_html": "PBr<sub>3</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340807",
+      "stem_html": "SOCl<sub>2</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340808",
+      "stem_html": "Dess–Martin-perjódínan",
+      "collaborator_solutions": []
+    }
+  ]
+}

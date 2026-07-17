@@ -1,0 +1,25 @@
+{
+  "nickname": "10-99-OC-AP20",
+  "source_uid": "37283@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Ólíklegt er að efnasmíðarnar sem sýndar eru hér eigi sér stað eins og þær eru skrifaðar. Hvað er rangt við hverja þeirra?",
+  "questions": [
+    {
+      "id": "357390",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa3dUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--675a5a2cc4a065f49b7c889dda2e577f7b500f6f/OChem_10_EC_031a.jpg\" alt=\"1-fluoropropane reacts first with magnesium and then with hydronium ion to produce propane.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357391",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazBUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c7b74eee0c3ecffcb13327fab9f25e20c2d0198d/OChem_10_EC_031b.jpg\" alt=\"1-methyl-2-methylidenecyclohexane reacts with N-bromosuccinimide, light, and carbon tetrachloride to form 3-bromo-1-methyl-2-methylidenecyclohexane.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357392",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazRUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8ab62c24c0b7224b3ec3c3a5f11aecdf8a31774a/OChem_10_EC_031c.jpg\" alt=\"Fluorocyclohexane reacts with lithium dimethylcopper to form toluene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

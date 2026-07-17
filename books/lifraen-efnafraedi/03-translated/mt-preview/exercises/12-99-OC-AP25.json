@@ -1,0 +1,15 @@
+{
+  "nickname": "12-99-OC-AP25",
+  "source_uid": "37451@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "337693",
+      "stem_html": "Hvort er sterkara, C<span data-math=\"\\text{=}\"></span>O efnatengið í ester (1735 cm<sup>–1</sup>) eða C<span data-math=\"\\text{=}\"></span>O efnatengið í mettuðu ketóni (1715 cm<sup>–1</sup>)? Útskýrðu.",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "nickname": "19-99-OC-VC01",
+  "source_uid": "38021@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvert eftirfarandi efna er hægt að búa til með kjarnsækinni álagningu aldehýðs eða ketóns og kjarnsækis. Tilgreindu hvarfefnin sem hvert þeirra var búið til úr. Ef efnið er asetal, tilgreindu karbónýlsambandið og alkóhólið; ef það er imín, tilgreindu karbónýlsambandið og amínið; og svo framvegis.",
+  "questions": [
+    {
+      "id": "360655",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBandXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--41d8f630c8c505c342ffd6ec4938215d30c0907c/OChem_19_EC_017a.jpg\" alt=\"A ball-and-stick model of a six-membered ring with two oxygen members, spaced with one carbon between them. That carbon has a methyl substituent.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360656",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajBXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0e640f2c84dab6e58cc52600e507315ac84969bc/OChem_19_EC_017b.jpg\" alt=\"A ball-and-stick model shows benzene ring linked to methylene group. This is linked to a nitrogen atom double bonded to carbon. This is linked to two methyl groups.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360657",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajRXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3a5a58a1834036964882d82594994103c3c6ee92/OChem_19_EC_017c.jpg\" alt=\"A ball-and-stick model of a cyclopentene linked to a cyclopentane with nitrogen atom.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360658",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajhXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--34705b7e7b1a002936251dd16826a9487293ecad/OChem_19_EC_017d.jpg\" alt=\"A ball-and-stick model shows a benzene ring with a methyl group, C H linked to a hydroxyl. C H is also linked to two methyl groups.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

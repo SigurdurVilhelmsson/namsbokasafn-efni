@@ -1,0 +1,15 @@
+{
+  "nickname": "28-99-OC-MP03",
+  "source_uid": "39127@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354978",
+      "stem_html": "<p>Eitt af skrefunum í lífmyndun kirnis sem kallast ínósínmónófosfat er myndun amínóimídasólríbókirnis úr formýlglýsínamidínríbókirni. Stingdu upp á hvarfgangi.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--34a300f018ca2f3393fbe68deeb9dc9ce3d86f4e/OChem_28_EC_006.jpg\" alt=\"The formation of aminoimidazole ribonucleotide from formylglycinamide ribonucleotide. In the process, adenosine triphosphate is converted to adenosine diphosphate.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

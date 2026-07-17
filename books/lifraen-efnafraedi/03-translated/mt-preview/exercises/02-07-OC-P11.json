@@ -1,0 +1,19 @@
+{
+  "nickname": "02-07-OC-P11",
+  "source_uid": "36123@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "363723",
+      "stem_html": "Saltpéturssýra (HNO<sub>3</sub>) hvarfast við ammóníak (NH<sub>3</sub>) og myndar ammóníumnítrat. Skrifaðu efnahvarfið og tilgreindu sýruna, basann, samoka sýrumyndiefnið og samoka basamyndefnið.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2tRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b5b1668ade85f944bf65906fd9540a869d33e3d3/OChem_02_EC_207.jpg\" alt=\"Reaction arrow shows H N O 3 (acid) and ammonia (base) form ammonium (conjugate acid) and nitrate (conjugate base). \">"
+        }
+      ]
+    }
+  ]
+}

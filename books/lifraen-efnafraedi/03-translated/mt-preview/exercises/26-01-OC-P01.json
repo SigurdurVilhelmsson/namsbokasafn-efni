@@ -1,0 +1,19 @@
+{
+  "nickname": "26-01-OC-P01",
+  "source_uid": "39212@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348919",
+      "stem_html": "Hversu margar af <i>α</i>-amínósýrunum sem sýndar eru í töflu 26.1 innihalda arómatíska hringi? Hversu margar innihalda brennistein? Hversu margar innihalda alkóhólhópa? Hversu margar innihalda hliðarkeðjur úr kolvetni?",
+      "collaborator_solutions": [
+        {
+          "content_html": "Arómatískar: Phe, Tyr, Trp, His; innihalda brennistein: Cys, Met; alkóhól: Ser, Thr; hliðarkeðjur úr kolvetni: Ala, Ile, Leu, Val, Phe"
+        }
+      ]
+    }
+  ]
+}

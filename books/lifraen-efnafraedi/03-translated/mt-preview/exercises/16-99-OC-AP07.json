@@ -1,0 +1,40 @@
+{
+  "nickname": "16-99-OC-AP07",
+  "source_uid": "37839@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Raðaðu eftirfarandi arómatískum efnasamböndum í þá röð sem búast má við að hvarfgirni þeirra sé gagnvart Friedel–Crafts alkýleringu. Hvaða efnasambönd eru ekki hvarfgjörn?",
+  "questions": [
+    {
+      "id": "339534",
+      "stem_html": "Brómbensen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339535",
+      "stem_html": "Tólúen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339536",
+      "stem_html": "Fenól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339537",
+      "stem_html": "Anilín",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339538",
+      "stem_html": "Nítróbensen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339539",
+      "stem_html": "<i>p</i>-Brómtólúen",
+      "collaborator_solutions": []
+    }
+  ]
+}

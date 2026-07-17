@@ -1,0 +1,35 @@
+{
+  "nickname": "21-99-OC-AP12",
+  "source_uid": "38206@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Lýsið aðferðum til að framleiða asetófenón (fenýlmetýlketón) út frá eftirfarandi efnum:",
+  "questions": [
+    {
+      "id": "342685",
+      "stem_html": "Bensen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342686",
+      "stem_html": "Brómbensen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342687",
+      "stem_html": "Metýlbensóat",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342688",
+      "stem_html": "Bensónítríl",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342689",
+      "stem_html": "Stýren",
+      "collaborator_solutions": []
+    }
+  ]
+}

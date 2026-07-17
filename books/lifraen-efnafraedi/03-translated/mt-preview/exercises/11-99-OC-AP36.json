@@ -1,0 +1,15 @@
+{
+  "nickname": "11-99-OC-AP36",
+  "source_uid": "37410@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355436",
+      "stem_html": "<p>Þrátt fyrir að andstæð samplanarafstaða sé ákjósanleg fyrir E2-efnahvörf er hún ekki algjörlega nauðsynleg. Eftirfarandi tvívetnaða brómsamband hvarfast við sterkan basa og gefur ótvívetnað alken. Samstætt brottnám hefur átt sér stað. Búðu til sameindalíkan af hvarfefninu og útskýrðu niðurstöðuna.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdm9UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--25f7f64b7772e278d650d154e6b50bafe19e530a/OChem_11_EC_044.jpg\" alt=\"A reaction in which a deuterated bromo compound reacts with a base to form an undeuterated alkene. The double bond in the product is bonded to two hydrogen atoms.\">\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

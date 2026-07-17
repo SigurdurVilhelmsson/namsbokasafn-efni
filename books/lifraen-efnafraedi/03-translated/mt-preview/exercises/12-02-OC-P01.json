@@ -1,0 +1,19 @@
+{
+  "nickname": "12-02-OC-P01",
+  "source_uid": "37417@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "347309",
+      "stem_html": "Kynhormónið testósterón inniheldur aðeins C, H og O og hefur massann 288,2089 amu, eins og ákvarðað var með massagreiningu með mikilli upplausn. Hver er líkleg sameindaformúla testósteróns?",
+      "collaborator_solutions": [
+        {
+          "content_html": "C<sub>19</sub>H<sub>28</sub>O<sub>2</sub>"
+        }
+      ]
+    }
+  ]
+}

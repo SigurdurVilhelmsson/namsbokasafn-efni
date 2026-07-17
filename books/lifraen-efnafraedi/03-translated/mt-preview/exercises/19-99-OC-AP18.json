@@ -1,0 +1,20 @@
+{
+  "nickname": "19-99-OC-AP18",
+  "source_uid": "38064@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Leggið til byggingar fyrir ketóna eða aldehýð sem hafa eftirfarandi <sup>1</sup>H NMR-róf:",
+  "questions": [
+    {
+      "id": "360796",
+      "stem_html": "<p>C<sub>4</sub>H<sub>7</sub>ClO</p>\n<p>IR: 1715 cm<sup>–1</sup></p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbnNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c7f1b288dfb63ebeaa251a217e07b6e462c71c38/OChem_19_EC_053.jpg\" alt=\"The proton spectrum show peaks at shifts at 0 (T M S) 1.62 (doublet), 2.33 (singlet), and 4.32 (quartet) with relative areas 3.00, 3.00, and 1.00 respectively.\">\n",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360797",
+      "stem_html": "<p>C<sub>7</sub>H<sub>14</sub>O</p>\n<p>IR: 1710 cm<sup>–1</sup></p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbndXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--941c0685b4edcfebfac3758d3ad82e7340610b56/OChem_19_EC_054.jpg\" alt=\"The proton spectrum show peaks at shifts of 0 (T M S), 1.02, 2.12, and 2.33 (all singlets) with relative areas 4.50, 1.50, and 1.00 respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

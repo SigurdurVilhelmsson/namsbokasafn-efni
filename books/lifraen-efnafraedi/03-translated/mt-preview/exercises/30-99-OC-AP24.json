@@ -1,0 +1,15 @@
+{
+  "nickname": "30-99-OC-AP24",
+  "source_uid": "39393@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355124",
+      "stem_html": "<p>Í ljósi svars þíns við dæmi 30-42, útskýrðu hvers vegna efnablanda myndefna myndast í eftirfarandi efnahvarfi:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFFhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--43118d07ec3298ec24a02d9bfa80557354daaf5a/OChem_30_EC_028.jpg\" alt=\"Cyclooctane fused to cyclobutene with methyl reacts at 190 degree Celsius forming two products. Cyclodecadiene rings boned with methyl at C 3 and C 2 in first and second product.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

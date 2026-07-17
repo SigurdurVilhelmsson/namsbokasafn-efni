@@ -1,0 +1,20 @@
+{
+  "nickname": "09-99-OC-AP13",
+  "source_uid": "37227@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hver eftirfarandi nýmyndana krefst fleiri en eins skrefs. Hvernig myndir þú framkvæma þær?",
+  "questions": [
+    {
+      "id": "353831",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdkFTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b977b2be5a1e4671848d0fa349c3be5b5ab8cc8a/OChem_09_EC_030a.jpg\" alt=\"Figure shows pentyne reacting  in the presence of an unknown reagent indicated as a question mark to form butanal.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353832",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdkVTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1ad01254153e3c68696b4a58f2caf9dc0d58a6c0/OChem_09_EC_030b.jpg\" alt=\"A C6 alkyne reacts in the presence of an unknown reagent indicated as a question mark to form an alkene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

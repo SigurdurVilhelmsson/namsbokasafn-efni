@@ -1,0 +1,19 @@
+{
+  "nickname": "08-02-OC-P03",
+  "source_uid": "37087@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "332598",
+      "stem_html": "Hvaða myndefni myndir þú búast við að fá úr álagningu Cl<sub>2</sub> á 1,2-dímetýlsýklóhexen? Sýndu staðefnafræði myndefnisins.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>trans</i>-1,2-díklór-1,2-dímetýlsýklóhexan"
+        }
+      ]
+    }
+  ]
+}

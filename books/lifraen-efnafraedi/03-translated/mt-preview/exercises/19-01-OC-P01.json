@@ -1,0 +1,64 @@
+{
+  "nickname": "19-01-OC-P01",
+  "source_uid": "37995@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Nefndu eftirfarandi aldehýð og ketón:",
+  "questions": [
+    {
+      "id": "360590",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--069499fdba7a20097a1c4e1857376930e9383745/OChem_19_01_008a.jpg\" alt=\"A five-carbon chain in which (from left to right) third carbon has an oxo group and fourth has a methyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-Metýl-3-pentanón"
+        }
+      ]
+    },
+    {
+      "id": "360591",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGtXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7403adcc6b8e600b62ed7351b6bca94efec668b7/OChem_19_01_008b.jpg\" alt=\"A three-carbon chain in which (from left to right) first carbon has a phenyl group and third is part of C H O.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "3-Fenýlprópanal"
+        }
+      ]
+    },
+    {
+      "id": "360592",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaG9XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d8eedc6784d2e1ab7934f56e69d7042a2c9651bb/OChem_19_01_008c.jpg\" alt=\"An eight-carbon chain in which (from left to right) second and sixth carbons have oxo groups.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2,6-Oktandíón"
+        }
+      ]
+    },
+    {
+      "id": "360593",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaHNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4c3409874f378474e776e46b19c3cc6f6fb6c5d0/OChem_19_01_008d.jpg\" alt=\"Cyclohexane ring in which one carbon has methyl (wedge) and H (dash) subtituents, and adjacent (clockwise) carbon has hydrogen (wedge) and C H O (dash) groups.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>trans</i>-2-Metýlsýklóhexankarbaldehýð"
+        }
+      ]
+    },
+    {
+      "id": "360594",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaHdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--008baa05b64cf5152a42dde569daba8ea57a762b/OChem_19_01_008e.jpg\" alt=\"A six-carbon chain in which (from left to right) second and third carbons are double-bonded and sixth carbon is part of C H O.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "4-Hexenal"
+        }
+      ]
+    },
+    {
+      "id": "360595",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDBXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--697cde39075acf40ea1c8107767ab883f442e9c1/OChem_19_01_008f.jpg\" alt=\"Cyclohexane ring in which one carbon has methyl (wedge) and H (dash) substituents, adjacent (clockwise) carbon has oxo, and two carbons further clockwise has methyl (wedge) and H (dash) groups.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>cis</i>-2,5-Dímetýlsýklóhexanón"
+        }
+      ]
+    }
+  ]
+}

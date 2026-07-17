@@ -1,0 +1,30 @@
+{
+  "nickname": "05-99-OC-AP05",
+  "source_uid": "36568@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu efnasambönd sem passa við eftirfarandi lýsingar:",
+  "questions": [
+    {
+      "id": "329288",
+      "stem_html": "Hendið alkóhól með fjórum kolefnum",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "329289",
+      "stem_html": "Hendin karboxýlsýra með formúluna C<sub>5</sub>H<sub>10</sub>O<sub>2</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "329290",
+      "stem_html": "Efnasamband með tvær hendnimiðjur",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "329291",
+      "stem_html": "Handhverft aldehýð með formúluna C<sub>3</sub>H<sub>5</sub>BrO",
+      "collaborator_solutions": []
+    }
+  ]
+}

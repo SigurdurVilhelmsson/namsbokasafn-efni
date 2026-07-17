@@ -1,0 +1,15 @@
+{
+  "nickname": "08-99-OC-AP10",
+  "source_uid": "37168@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "346451",
+      "stem_html": "Teiknaðu byggingu alkens sem gefur aðeins asetón, (CH<sub>3</sub>)<sub>2</sub>C<span data-math=\"\\text{=}\"></span>O, við ósongreiningu og síðari meðhöndlun með Zn.",
+      "collaborator_solutions": []
+    }
+  ]
+}

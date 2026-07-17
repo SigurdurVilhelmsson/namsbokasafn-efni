@@ -1,0 +1,25 @@
+{
+  "nickname": "24-99-OC-AP09",
+  "source_uid": "39008@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú búa til anilín úr eftirfarandi upphafsefnum?",
+  "questions": [
+    {
+      "id": "347725",
+      "stem_html": "Bensen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347726",
+      "stem_html": "Bensamíð",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347727",
+      "stem_html": "Tólúen",
+      "collaborator_solutions": []
+    }
+  ]
+}

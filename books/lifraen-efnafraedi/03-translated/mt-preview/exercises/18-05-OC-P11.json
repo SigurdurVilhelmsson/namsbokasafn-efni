@@ -1,0 +1,19 @@
+{
+  "nickname": "18-05-OC-P11",
+  "source_uid": "38707@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "343693",
+      "stem_html": "Efnahvarf <i>cis</i>-2-bútens við <i>m</i>-klórperoxýbensósýru gefur af sér epoxíð sem er frábrugðið því sem fæst úr efnahvarfi trans-hverfunnar. Útskýrðu.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Epoxun <i>cis</i>-2-bútens gefur af sér <i>cis</i>-2,3-epoxýbútan, en epoxun <i>trans</i>-2-bútens gefur af sér <i>trans</i>-2,3-epoxýbútan."
+        }
+      ]
+    }
+  ]
+}

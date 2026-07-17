@@ -1,0 +1,19 @@
+{
+  "nickname": "25-02-OC-P03",
+  "source_uid": "39041@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358734",
+      "stem_html": "<p>Hverjar af eftirfarandi Fischer-vörpunum af glýseraldehýði tákna sömu handhverfuna?</p>\n<p><b>(a)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3bfc0c157c046cc70c1525f401411097687b7943/OChem_25_02_011a.jpg\" alt=\"The central carbon is bonded to hydrogen on right, hydroxyl on left, C H O on the top and C H 2 O H on the bottom.\">\n<b>(b)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--643da7c14c7b626f3274463a0a52c2d2875cbf35/OChem_25_02_011b.jpg\" alt=\"The central carbon is bonded to hydrogen on right, C H 2 O H on left, O H on the top and C H O on the bottom.\">\n<b>(c)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDBaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dcfec70e0c79ff7435b73a5b58f01b750e504581/OChem_25_02_011c.jpg\" alt=\"The central carbon is bonded to C H 2 O H on right, hydroxyl on left, hydrogen on the top and C H O on the bottom.\">\n<b>(d)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDRaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1237ff00dc556a825bd2ae7e78bdd74106a33b5e/OChem_25_02_011d.jpg\" alt=\"The central carbon is bonded to C H O on right, hydrogen on left, C H 2 O H on the top and hydroxyl on the bottom.\"></p>",
+      "collaborator_solutions": [
+        {
+          "content_html": "A, B og C eru eins."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "nickname": "24-99-OC-MP11",
+  "source_uid": "38993@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Æxlishemjandi sýklalyfið mítómýsín C virkar með því að mynda krosstengi í DNA-keðjum.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--918dd1af1d0729201fa0dd155d0b6ebdee74de84/OChem_24_EC_026.jpg\" alt=\"The removal of methanol from mitomycin C forms enamine. This reacts with two amine groups connected to deoxyribonucleic acid to form an intermediate. This reacts to form the final product.\">",
+  "questions": [
+    {
+      "id": "361653",
+      "stem_html": "Fyrsta skrefið er brottnám metoxíðs og myndun imínjónar sem milliefnis sem er afprótónuð til að gefa enamín. Sýndu hvarfganginn.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361654",
+      "stem_html": "Annað skrefið er efnahvarf enamínsins við DNA til að opna þríliða, nitur-innihaldandi (asiridín) hringinn. Sýndu hvarfganginn.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361655",
+      "stem_html": "Þriðja skrefið er brottnám karbamats (NH<sub>2</sub>CO<sub>2</sub><sup>–</sup>) og myndun ómettaðrar imínjónar, fylgt eftir með samtengdri álagningu annars hluta DNA-keðjunnar. Sýndu hvarfganginn.",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "21-99-OC-AP30",
+  "source_uid": "38224@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361519",
+      "stem_html": "<p>Tranexamsýra, lyf sem er gagnlegt gegn blóðtappa, er framleitt í iðnaði úr <i>p</i>-metýlbensonítríli. Settu fram skrefin sem líkleg eru til að vera notuð í mynduninni. (Hafðu ekki áhyggjur af cis-trans hverfum; hitun í 300 °C umbreytir hverfunum.)</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--10eda77abc2d52e948b3f1637e51635a9f702ad9/OChem_21_EC_055.jpg\" alt=\"The structure of tranexamic acid comprises of a cyclohexane ring wedge-bonded to a carboxylic acid group and dash-bonded to hydrogen at C 1, and wedge-bonded to hydrogen and dash-bonded to methylamine at C 4.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

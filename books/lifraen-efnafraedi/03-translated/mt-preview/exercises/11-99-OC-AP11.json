@@ -1,0 +1,30 @@
+{
+  "nickname": "11-99-OC-AP11",
+  "source_uid": "37390@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Leggið til byggingar fyrir efnasambönd sem passa við eftirfarandi lýsingar:",
+  "questions": [
+    {
+      "id": "337119",
+      "stem_html": "Alkýlhalíð sem gefur efnablöndu af þremur alkenum við E2-efnahvarf",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "337120",
+      "stem_html": "Lífrænt halíð sem gengst ekki undir kjarnsækið skiptihvarf",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "337121",
+      "stem_html": "Alkýlhalíð sem gefur ekki Zaitsev-myndefnið við E2-efnahvarf",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "337122",
+      "stem_html": "Alkóhól sem hvarfast hratt við HCl við 0 °C",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "24-09-OC-P24",
+  "source_uid": "38977@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361609",
+      "stem_html": "<p>Indól hvarfast við rafsækna efni við C3 frekar en við C2. Teiknaðu vok myndir af milliefnakatjónunum sem myndast við efnahvarf við C2 og C3 og útskýrðu niðurstöðurnar.</p>\n",
+      "collaborator_solutions": [
+        {
+          "content_html": "<p>Efnahvarf við C2 er óhagstætt vegna þess að arómatískur eiginleiki bensenhringsins tapast.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFFhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f5e0aa7a1bd7b65eab667a351c0eaadae554710a/OChem_24_EC_207.jpg\" alt=\"Structure of indole with arrows showing C 3 attacking electrophile. Resulting resonance structures show loss of aromaticity due to 8 electrons in pi system.\">"
+        }
+      ]
+    }
+  ]
+}

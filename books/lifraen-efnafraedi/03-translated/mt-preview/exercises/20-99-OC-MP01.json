@@ -1,0 +1,20 @@
+{
+  "nickname": "20-99-OC-MP01",
+  "source_uid": "38101@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Sjáðu fyrir um myndefni og skrifaðu hvarfgang hvers eftirfarandi efnahvarfs:",
+  "questions": [
+    {
+      "id": "359131",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dc8147d4edfb7771d1f7f920d55bcc1870629153/OChem_20_EC_012a.jpg\" alt=\"Conversion of bromobenzene to unknown products depicted by a question mark by reaction first with magnesium, then with carbon dioxide, and finally with hydronium.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359132",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--04336d448668ce026d089a5f7916ed2c47fb6ad6/OChem_20_EC_012b.jpg\" alt=\"Conversion of 2-bromobutane to unknown products depicted by a question mark by reaction first with magnesium, then with carbon dioxide, and finally with hydronium.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

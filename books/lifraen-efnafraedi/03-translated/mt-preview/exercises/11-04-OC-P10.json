@@ -1,0 +1,19 @@
+{
+  "nickname": "11-04-OC-P10",
+  "source_uid": "37351@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357877",
+      "stem_html": "<p>Úthlutaðu stellingu á eftirfarandi hvarfefni og sýndu handhverfu og auðkenni myndefnisins sem þú myndir fá með S<sub>N</sub>1-efnahvarfi við vatn (rauðbrúnt = Br):</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f6e91da2063f8cfedc57c8a942a0ec07327317d1/OChem_11_04_008.jpg\" alt=\"A ball-and-stick model of bromo alkane. The gray, black, and red spheres represent hydrogen, carbon, and bromine, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0lhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5753ead7bdd9c9f55d1f790110b70e77c7174b35/OSX_OrgChem_11_OChem-11-EC-202_80485-appD-u069_A-SBromide_img.jpg\" alt=\"An S N 1 reaction of (S)-bromide with water results in a racemic product.\">"
+        }
+      ]
+    }
+  ]
+}

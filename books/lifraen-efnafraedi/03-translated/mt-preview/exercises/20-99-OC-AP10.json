@@ -1,0 +1,15 @@
+{
+  "nickname": "20-99-OC-AP10",
+  "source_uid": "38120@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "342082",
+      "stem_html": "Þíóglýkólsýra, HSCH<sub>2</sub>CO<sub>2</sub>H, efni sem notað er í háreyðingarefni, hefur p<i>K</i><sub>a</sub> = 3,42. Hvert er klofnunarhlutfall þíóglýkólsýru í stuðpúðalausn með pH = 3,0?",
+      "collaborator_solutions": []
+    }
+  ]
+}

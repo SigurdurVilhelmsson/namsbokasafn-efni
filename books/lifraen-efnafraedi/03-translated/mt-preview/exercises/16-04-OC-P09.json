@@ -1,0 +1,46 @@
+{
+  "nickname": "16-04-OC-P09",
+  "source_uid": "37797@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Spáðu fyrir um aðalmyndefni eftirfarandi efnahvarfa:",
+  "questions": [
+    {
+      "id": "339370",
+      "stem_html": "Nítrun á brómbenseni",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>o</i>- og <i>p</i>-brómnítróbensen"
+        }
+      ]
+    },
+    {
+      "id": "339371",
+      "stem_html": " Brómun á nítróbenseni",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>m</i>-brómnítróbensen"
+        }
+      ]
+    },
+    {
+      "id": "339372",
+      "stem_html": "Klórun á fenól",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>o</i>- og <i>p</i>-klórfenól"
+        }
+      ]
+    },
+    {
+      "id": "339373",
+      "stem_html": "Brómun á anilíni",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>o</i>- og <i>p</i>-brómanilín"
+        }
+      ]
+    }
+  ]
+}

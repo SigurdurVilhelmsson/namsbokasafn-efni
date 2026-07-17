@@ -1,0 +1,15 @@
+{
+  "nickname": "04-99-OC-AP35",
+  "source_uid": "36562@7",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360416",
+      "stem_html": "<p>Keton hvarfast við alkóhól og mynda efni sem kallast <i>ketöl.</i> Hvers vegna hvarfast all-cis hverfan af 4-<i>tert</i>-bútýl-1,3-sýklóhexandíóli auðveldlega við asetón og sýruhvara og myndar ketal, en aðrar rúmhverfur hvarfast ekki? Þegar þú mótar svar þitt skaltu teikna stöðugri stólastellingar allra fjögurra rúmhverfanna og myndefnið ketal fyrir hverja þeirra.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXdhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c52bb63058f94ca97454db18ae79739106a055eb/OSX_OrgChem_04_99_ketal_img.jpg\" alt=\"In a reaction, 1R,3R,4S)-4-tertiary-butyl-1,3-cyclohexanediol reacts with acetone in the presence of acid catalyst to form an acetal (no change in stereochemistry) and water.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

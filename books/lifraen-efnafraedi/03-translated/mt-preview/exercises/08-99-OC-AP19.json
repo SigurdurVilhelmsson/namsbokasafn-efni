@@ -1,0 +1,15 @@
+{
+  "nickname": "08-99-OC-AP19",
+  "source_uid": "37177@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353564",
+      "stem_html": "<p>Útskýrðu með oxandi klofnunarefnahvarfi hvernig þú myndir greina á milli eftirfarandi tveggja hverfa díena:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUVTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d3ae074b8f98ede1ca2c05dba6bb37b06307b071/OChem_08_EC_045.jpg\" alt=\"The figure shows two isomeric dienes. Cyclohexadiene has double bonds at C1 and C3. Another cyclohexadiene has double bonds at C1 and C4.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

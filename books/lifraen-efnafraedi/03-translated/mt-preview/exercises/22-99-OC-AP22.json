@@ -1,0 +1,40 @@
+{
+  "nickname": "22-99-OC-AP22",
+  "source_uid": "38825@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú smíða eftirfarandi efnasambönd úr sýklóhexanóni? Fleiri en eitt skref gæti verið nauðsynlegt.",
+  "questions": [
+    {
+      "id": "361016",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0FZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--790b5d6be8ea2dcaca21e7a8ba7d555b23230d00/OChem_22_EC_043a.jpg\" alt=\"The structure of methylenecyclohexane where a C H 2 group is double-bonded to one carbon of a cyclohexane ring\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361017",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0VZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f198cc1af86e75758a5c91c3e81b28d9647f5115/OChem_22_EC_043b.jpg\" alt=\"The structure of (bromomethyl) cyclohexane where a C H 2 B r group is bonded to a carbon of a cyclohexane ring.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361018",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0lZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4ab247b1d69409d8ab7bfe20bca9a8b793e1e212/OChem_22_EC_043c.jpg\" alt=\"The structure of 2-benzylcyclohexanone where a carbonyl group is at C1 of a cyclohexane ring, and a benzyl group is attached to C 2 of the ring.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361019",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa01ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4da3e9f8bbc5d6e42689e3935e5e71388fb02e52/OChem_22_EC_043d.jpg\" alt=\"The structure of 3-cyclohexylpropanoic acid where a cyclohexane ring is bonded to the C 3 of a propanoic acid chain..\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361020",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1FZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--44428a6db606c3305abf5c100806499274e41c27/OChem_22_EC_043e.jpg\" alt=\"The structure of 1-cyclohexenecarboxylic acid in which a carboxylic acid group is attached to one of the double-bonded carbons in a cyclohexene ring.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361021",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1VZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7c2b88d2b469f45d5c44b1f2f3744c74952a937b/OChem_22_EC_043f.jpg\" alt=\"The structure 2-cyclohexen-1-one in which a carbonyl group is located at C 1 of a cyclohexene ring, the double bond being between C 2 and C 3.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "nickname": "02-99-OC-AP28",
+  "source_uid": "36140@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Finndu rafneikvæðasta frumefnið í hverri af eftirfarandi sameindum:",
+  "questions": [
+    {
+      "id": "323669",
+      "stem_html": "CH<sub>2</sub>FCl",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "323670",
+      "stem_html": "FCH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>Br",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "323671",
+      "stem_html": "HOCH<sub>2</sub>CH<sub>2</sub>NH<sub>2</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "323672",
+      "stem_html": "CH<sub>3</sub>OCH<sub>2</sub>Li",
+      "collaborator_solutions": []
+    }
+  ]
+}

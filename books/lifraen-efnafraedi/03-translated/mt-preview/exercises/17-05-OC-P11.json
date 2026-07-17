@@ -1,0 +1,19 @@
+{
+  "nickname": "17-05-OC-P11",
+  "source_uid": "37876@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359359",
+      "stem_html": "<p>Notaðu efnahvarf Grignard-hvarfefnis við karbónýlefnasamband til að mynda eftirfarandi efnasamband:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a751286a9353e466bb5b99c2e7d74f902f78efb2/OChem_17_05_010.jpg\" alt=\"A ball-and-stick model of cyclohexane with hydroxyl and ethyl substituents on C 1. \">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Sýklóhexanón + CH<sub>3</sub>CH<sub>2</sub>MgBr"
+        }
+      ]
+    }
+  ]
+}

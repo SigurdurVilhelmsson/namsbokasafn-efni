@@ -1,0 +1,20 @@
+{
+  "nickname": "21-99-OC-VC01",
+  "source_uid": "38177@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Nefndu eftirfarandi efnasambönd:",
+  "questions": [
+    {
+      "id": "361406",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ca5336db879c570efc786d159e8ecd7549b932b1/OChem_21_EC_022a.jpg\" alt=\"Ball-and-stick model depicts four-carbon chain with N, N-dimethylamine, and methyl groups attached to first and third carbon. Black, gray, blue, and red spheres represent carbon, hydrogen, nitrogen, and oxygen, respectively.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361407",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGtYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d25a0b970d7411634b2a1a739bd2b7277ee1c345/OChem_21_EC_022b.jpg\" alt=\"The ball-and-stick model shows a carbonyl group with a benzene ring attached to one side and a four carbon chain bearing a methyl group on C3 on the other side.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

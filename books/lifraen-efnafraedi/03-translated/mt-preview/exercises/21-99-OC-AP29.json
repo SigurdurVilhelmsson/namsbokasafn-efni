@@ -1,0 +1,15 @@
+{
+  "nickname": "21-99-OC-AP29",
+  "source_uid": "38223@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361517",
+      "stem_html": "<p><i>N</i>,<i>N</i>-Díetýl-<i>m</i>-tólúamíð (DEET) er virka efnið í mörgum skordýrafælandi efnum. Hvernig gætir þú myndað þetta efni úr <i>m</i>-brómtólúeni?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3d021dcc6d2b8057da60a2201599981ebd321066/OChem_21_EC_054.jpg\" alt=\"The structure of N, N-diethyl-m-toluamide comrpises of a benzene ring with a carbonyl carbon attached and a methyl group in the meta position. The carbonyl group is also attached to a diethylamine group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

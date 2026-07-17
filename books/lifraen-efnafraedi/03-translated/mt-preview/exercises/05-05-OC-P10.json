@@ -1,0 +1,37 @@
+{
+  "nickname": "05-05-OC-P10",
+  "source_uid": "36502@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Gefðu upp <i>R</i>- eða <i>S</i>-stellingu fyrir hendnimiðjuna í hverri af eftirfarandi sameindum:",
+  "questions": [
+    {
+      "id": "354103",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWtSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b473ba6ad5b0265a67cc198474ec902f9be097b4/OChem_05_05_014a.jpg\" alt=\"A central carbon is single bonded to a methyl and a carboxylic acid group, wedge bonded to a thiol group, and dash bonded to a hydrogen atom (clockwise).\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>S</i>"
+        }
+      ]
+    },
+    {
+      "id": "354104",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaW9SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7f7d3b7d30a46b36a16c10868946fcca9cef456a/OChem_05_05_014b.jpg\" alt=\"A central carbon is single bonded to a methyl and a hydroxyl group, dash bonded to a carboxylic acid group, and wedge bonded to a hydrogen atom (clockwise).\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>S</i>"
+        }
+      ]
+    },
+    {
+      "id": "354105",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--67cf69424aa0d9151fca53737e3c04a46c029023/OChem_05_05_014c.jpg\" alt=\"A central carbon is wedge bonded to hydrogen, dash bonded to an aldehyde group, wedge bonded to a hydroxyl group, and dash bonded to a hydroxymethyl group (clockwise).\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>R</i>"
+        }
+      ]
+    }
+  ]
+}

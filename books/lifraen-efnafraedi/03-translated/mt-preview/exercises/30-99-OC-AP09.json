@@ -1,0 +1,15 @@
+{
+  "nickname": "30-99-OC-AP09",
+  "source_uid": "39378@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355096",
+      "stem_html": "<p>Eftirfarandi efnahvarf á sér stað í tveimur skrefum, þar sem annað er hringálagning á meðan hitt er <i>öfug</i> hringálagning. Greinið hringhvarfin tvö og sýnið hvernig þau eiga sér stað.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1lhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e440d6eec9d46b31ae88c9435ad503e0157ba391/OChem_30_EC_014.jpg\" alt=\"A five-carbon cyclic ester reacts with alkyne having two esters in heat to form a benzene ring bonded with two esters and carbon dioxide as the second product.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "16-01-OC-P01",
+  "source_uid": "37788@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "339337",
+      "stem_html": "Við einbrómun á tólúeni fæst efnablanda af þremur brómtólúen-myndefnum. Teiknaðu þau og nefndu.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>o</i>-, <i>m</i>- og <i>p</i>-brómtólúen"
+        }
+      ]
+    }
+  ]
+}

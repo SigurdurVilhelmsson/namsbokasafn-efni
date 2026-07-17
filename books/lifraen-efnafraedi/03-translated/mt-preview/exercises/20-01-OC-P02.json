@@ -1,0 +1,64 @@
+{
+  "nickname": "20-01-OC-P02",
+  "source_uid": "38082@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Teiknaðu byggingarformúlur sem samsvara eftirfarandi IUPAC-heitum:",
+  "questions": [
+    {
+      "id": "359092",
+      "stem_html": "2,3-Dímetýlhexansýra",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--86f59b1ad2bf350b308a4f6805a727d113238339/OChem_20_EC_201a.jpg\" alt=\"The structure of 2,3-dimethylhexanoic acid. Methyl groups are attached to C 2 and C 3. C 1 is part of the C O O H group.\">"
+        }
+      ]
+    },
+    {
+      "id": "359093",
+      "stem_html": "4-Metýlpentansýra",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGtXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--74abcf1746e57ff5c246130eb0c2629cbe58bd49/OChem_20_EC_201b.jpg\" alt=\"The structure of 4-methylpentanoic acid, a five-carbon chain with a methyl group attached to C 4. C 1 is part of the C O O H group.\">"
+        }
+      ]
+    },
+    {
+      "id": "359094",
+      "stem_html": "<i>trans</i>-1,2-Sýklóbútandíkarboxýlsýra",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcG9XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3bb2b1fe1604373c5951e45107981efd3a44168a/OChem_20_EC_201c.jpg\" alt=\"The structure of trans-1,2-cyclobutanedicarboxylic acid. C O O H groups are attached to C 1 and C 2 of a cyclobutane ring, trans to one another.\">"
+        }
+      ]
+    },
+    {
+      "id": "359095",
+      "stem_html": "<i>o</i>-Hýdroxýbensósýra",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9dadb6363ed8449a73d4c70e9e6189b3e1e98a3f/OChem_20_EC_201d.jpg\" alt=\"The structure of o-hydroxybenzoic acid. A C O O H group is present on C 1 of benzene ring. The ortho position is connected to the O H group.\">"
+        }
+      ]
+    },
+    {
+      "id": "359096",
+      "stem_html": "(9<i>Z</i>,12<i>Z</i>)-9,12-Oktadekadíensýra",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2b0c613d0ce2316958faa1f105adc2912d442db2/OChem_20_EC_201e.jpg\" alt=\"Structure of (9 Z, 12 Z)-9, 12-octadecadienoic acid. C 9 and C 12 are double-bonded with attached groups in Z configuration. C 1 is part of C O O H.\">"
+        }
+      ]
+    },
+    {
+      "id": "359097",
+      "stem_html": "2-Pentennítríl",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcDBXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bb73b01578e727876d41c5a273e62fb5ddddf20f/OChem_20_EC_201f.jpg\" alt=\"The structure of 2-pentenenitrile. A double bond is placed between C 2 and C 3. C 1 is part of the C N group.\">"
+        }
+      ]
+    }
+  ]
+}

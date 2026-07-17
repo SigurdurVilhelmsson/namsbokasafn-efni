@@ -1,0 +1,30 @@
+{
+  "nickname": "16-99-OC-AP05",
+  "source_uid": "37837@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Nefndu og teiknaðu helsta myndefni (helstu myndefni) rafsækinnar klórunar eftirfarandi efnasambanda:",
+  "questions": [
+    {
+      "id": "339516",
+      "stem_html": "<i>m</i>-Nítrófenól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339517",
+      "stem_html": "<i>o</i>-Xýlen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339518",
+      "stem_html": "<i>p</i>-Nítróbensósýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "339519",
+      "stem_html": "<i>p</i>-Brómbensensúlfónsýra",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "25-99-OC-MP02",
+  "source_uid": "39069@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358788",
+      "stem_html": "<p>Mannósi, ein af átta nauðsynlegu einsykrunum (<b>kafli 25.7</b>), er lífsmíðaður sem 6-fosfat afleiða hans úr frúktósa 6-fosfati. Enginn ensímkóþáttur er nauðsynlegur. Leggðu til hvarfgang.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjRaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--aaab38f87b1c63d999259ad0552e3a004cb909e2/OChem_25_EC_007.jpg\" alt=\"Mannose, one of the essential monosaccharides, is biosynthesized as its 6-phosphate derivative from fructose 6-phosphate. No enzyme cofactor is required.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

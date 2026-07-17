@@ -1,0 +1,15 @@
+{
+  "nickname": "28-99-OC-MP02",
+  "source_uid": "39126@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354976",
+      "stem_html": "<p>Lokaskrefið í niðurbroti úrasíls í efnaskiptum er oxun malónsemíaldehýðs til að mynda malónýl CoA. Stingdu upp á hvarfgangi.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcHNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--401b1d41a203220e8e0d105d3086958df07bda09/OChem_28_EC_005.jpg\" alt=\"The oxidation reaction of malonic semialdehyde gives malonyl-coenzyme A. Co A S H is involved and N A D plus gets converted to N A D H and H plus.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

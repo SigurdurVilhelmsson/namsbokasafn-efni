@@ -1,0 +1,19 @@
+{
+  "nickname": "05-07-OC-P17",
+  "source_uid": "36509@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "347087",
+      "stem_html": "<p>Hver af eftirfarandi efnasamböndum hefur mesó-form? (Mundu að viðskeytið -<i>ól</i> vísar til alkóhóls, ROH.)</p>\n<p><b>(a)</b> 2,3-bútandíól <b>(b)</b> 2,3-pentandíól <b>(c)</b> 2,4-pentandíól</p>",
+      "collaborator_solutions": [
+        {
+          "content_html": "Efnasambönd <b>(a)</b> og <b>(c)</b> hafa mesó-form."
+        }
+      ]
+    }
+  ]
+}

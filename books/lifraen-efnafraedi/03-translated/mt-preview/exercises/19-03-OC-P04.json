@@ -1,0 +1,46 @@
+{
+  "nickname": "19-03-OC-P04",
+  "source_uid": "37998@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvernig myndir þú framkvæma eftirfarandi efnahvörf? Fleiri en eitt skref gæti verið nauðsynlegt.",
+  "questions": [
+    {
+      "id": "341358",
+      "stem_html": "3-Hexýn <span data-math=\"\\text{→}\"></span> 3-Hexanón",
+      "collaborator_solutions": [
+        {
+          "content_html": "HgSO<sub>4</sub>, H<sub>3</sub>O<sup>+</sup>"
+        }
+      ]
+    },
+    {
+      "id": "341359",
+      "stem_html": "Bensen <span data-math=\"\\text{→}\"></span> <i>m</i>-Brómasetófenón",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. CH<sub>3</sub>COCl, AlCl<sub>3</sub>; 2. Br<sub>2</sub>, FeBr<sub>3</sub>"
+        }
+      ]
+    },
+    {
+      "id": "341360",
+      "stem_html": "Brómbensen <span data-math=\"\\text{→}\"></span> Asetófenón",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. Mg; 2. CH<sub>3</sub>CHO; 3. H<sub>3</sub>O<sup>+</sup>; 4. CrO<sub>3</sub>"
+        }
+      ]
+    },
+    {
+      "id": "341361",
+      "stem_html": "1-Metýlsýklóhexen <span data-math=\"\\text{→}\"></span> 2-Metýlsýklóhexanón",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. BH<sub>3</sub>; 2. H<sub>2</sub>O<sub>2</sub>, NaOH; 3. CrO<sub>3</sub>"
+        }
+      ]
+    }
+  ]
+}

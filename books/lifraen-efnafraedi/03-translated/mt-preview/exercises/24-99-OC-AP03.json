@@ -1,0 +1,25 @@
+{
+  "nickname": "24-99-OC-AP03",
+  "source_uid": "39002@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Flokkaðu hverja niturfrumeind amíns í eftirfarandi efnum sem fyrsta stigs, annars stigs eða þriðja stigs:",
+  "questions": [
+    {
+      "id": "361683",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaklaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2c6c5ce525f2e488928514afd8a9ede800c62f93/OChem_24_EC_034a.jpg\" alt=\"A five-membered ring incorporating one nitrogen. The nitrogen also has a hydrogen.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361684",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBak1aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e8f05577ab35df4f0a7ada3764eb7b879a29ae7f/OChem_24_EC_034b.jpg\" alt=\"An indole with the substituent C H 2 C H 2 N H C H 3 on C 3.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361685",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBalFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--10bfedce205f9898603d7f5a037c9921dd6377cc/OChem_24_EC_034c.jpg\" alt=\"The structure of lysergic acid diethylamide, a polycyclic compound with several nitrogens.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

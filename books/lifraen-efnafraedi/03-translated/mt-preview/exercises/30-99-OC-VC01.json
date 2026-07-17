@@ -1,0 +1,15 @@
+{
+  "nickname": "30-99-OC-VC01",
+  "source_uid": "39363@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355066",
+      "stem_html": "<p>Sjáðu fyrir um myndefnið sem fæst þegar eftirfarandi efni er hitað:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--06fa89884004bdeff0a3fe953bfc65e9520ac336/OChem_30_EC_001.jpg\" alt=\"A ball-and-stick model of trans-1,2-divinylcyclohexane.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "22-03-OC-P04",
+  "source_uid": "38772@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360873",
+      "stem_html": "<p>Skrifaðu allan hvarfganginn fyrir tvívetnun asetóns við meðhöndlun með D<sub>3</sub>O<sup>+</sup>.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdlFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--02f5569efb83f729828d1648ab7d95fda9106b81/OChem_22_03_006.jpg\" alt=\"Acetone reacts with trideuteriooxidanium ion to form a product in which one of the hydrogen atoms on acetone has been replaced by a deuterium atom.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Sýruhvetning enóls fylgir tvívetnun enól-tvítengisins og aftvívetnun súrefnis."
+        }
+      ]
+    }
+  ]
+}

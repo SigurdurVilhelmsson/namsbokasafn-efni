@@ -1,0 +1,30 @@
+{
+  "nickname": "02-99-OC-AP29",
+  "source_uid": "36141@9",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Notaðu rafneikvæðnitöfluna í mynd 2.3 til að spá fyrir um hvort efnatengið í hvoru eftirfarandi para er skautaðra og sýndu stefnu skautunar efnatengisins fyrir hvert efnasamband.",
+  "questions": [
+    {
+      "id": "345889",
+      "stem_html": "H<sub>3</sub>C<span class=\"magenta-text\">–</span>Cl eða Cl<span class=\"magenta-text\">–</span>Cl",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "345890",
+      "stem_html": "H<sub>3</sub>C<span class=\"magenta-text\">–</span>H eða H<span class=\"magenta-text\">–</span>Cl",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "345891",
+      "stem_html": "HO<span class=\"magenta-text\">–</span>CH<sub>3</sub> eða (CH<sub>3</sub>)<sub>3</sub>Si<span class=\"magenta-text\">–</span>CH<sub>3</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "345892",
+      "stem_html": "H<sub>3</sub>C<span class=\"magenta-text\">–</span>Li eða Li<span class=\"magenta-text\">–</span>OH",
+      "collaborator_solutions": []
+    }
+  ]
+}

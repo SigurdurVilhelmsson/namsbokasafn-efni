@@ -1,0 +1,64 @@
+{
+  "nickname": "10-01-OC-P02",
+  "source_uid": "37248@7",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Teiknaðu byggingarformúlur sem samsvara eftirfarandi IUPAC-heitum:",
+  "questions": [
+    {
+      "id": "554986",
+      "stem_html": "2-klór-3,3-dímetýlhexan",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjhaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7c224d94b0b326d24d49f4cea753da6f34fde902/OSX_OrgChem_10_DD_A-EC10-2a_img.jpg\" alt=\"A six-carbon chain with a chlorine on C 2 and two methyl groups on C 3.\">"
+        }
+      ]
+    },
+    {
+      "id": "554987",
+      "stem_html": "3,3-díklór-2-metýlhexan",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0FaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--34c20facc6b70a775829bbcf53e6544a7cf306b3/OSX_OrgChem_10_DD_A-EC10-2b_img.jpg\" alt=\"A six-carbon chain with a methyl group on C 2 and two chlorines on C 3.\">"
+        }
+      ]
+    },
+    {
+      "id": "554988",
+      "stem_html": "3-bróm-3-etýlpentan",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0VaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9897b03837fbe0e4adde87c3e1913909f1d847f6/OSX_OrgChem_10_DD_A-EC10-2c_img%20.jpg\" alt=\"A five-carbon chain with an ethyl group and a bromine on C 3.\">"
+        }
+      ]
+    },
+    {
+      "id": "554989",
+      "stem_html": "1,1-díbróm-4-ísóprópýlsýklóhexan",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaE1UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--255fcb5639efa738ceead0d1205118db7e0f3100/OChem_10_EC_201a.jpg\" alt=\"The structure of 1,1-dibromo-4-isopropylcyclohexane.\">"
+        }
+      ]
+    },
+    {
+      "id": "554990",
+      "stem_html": "4-<i>sec</i>-bútýl-2-klórnónan",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHNrIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f1b5782b29ac756de829ee567a02f22898feb86d/OSX_OrgChem_10_DD_A-EC10-2e_img.jpg\" alt=\"A nine-carbon chain with a chlorine on C 2 and a four-carbon chain, connected at the second carbon, on C 4.\">"
+        }
+      ]
+    },
+    {
+      "id": "554991",
+      "stem_html": "1,1-díbróm-4-<i>tert</i>-bútýlsýklóhexan",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8b8b95553f68eb30d07b33701ef5ba610a8341c4/OChem_10_EC_201c.jpg\" alt=\"The structure of 1,1-dibromo-4-tert-butylcyclohexane.\">"
+        }
+      ]
+    }
+  ]
+}

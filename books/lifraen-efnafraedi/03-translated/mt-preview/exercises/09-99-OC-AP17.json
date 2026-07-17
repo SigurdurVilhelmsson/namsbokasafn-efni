@@ -1,0 +1,35 @@
+{
+  "nickname": "09-99-OC-AP17",
+  "source_uid": "37231@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú nýmynda eftirfarandi efnasambönd úr asetýleni og alkýlhalíðum með fjórum eða færri kolefnum? Fleiri en eitt skref gæti verið nauðsynlegt.",
+  "questions": [
+    {
+      "id": "353842",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdlVTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7fa167fe4510f7ddfa682dba7f890ebcdc981d89/OChem_09_EC_034a.jpg\" alt=\"The structure of 1-pentyne.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353843",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdllTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4aa5c6967f6d9873d326e72c88bda3cb296e8825/OChem_09_EC_034b.jpg\" alt=\"The structure of hex-3-yne.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353844",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f1582d6adafaf054b166085baa14df784bfad90a/OChem_09_EC_034c.jpg\" alt=\"The structure of 4-methylpent-1-ene.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353845",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--491daeaada1a8de0e6db56809627b78e164d15d3/OChem_09_EC_034d.jpg\" alt=\"The figure shows an C8 carbon chain with a carbonyl group at C4.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353846",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmtTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e6668fc71010c819933679ab817c53185d48c475/OChem_09_EC_034e.jpg\" alt=\"The figure shows a C6 carbon chain with an aldehyde group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

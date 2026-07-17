@@ -1,0 +1,15 @@
+{
+  "nickname": "30-99-OC-AP08",
+  "source_uid": "39377@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355094",
+      "stem_html": "<p>Hvort eftirfarandi efnahvarfa er líklegra til að eiga sér stað? Útskýrið.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1VhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b8a226cb2565eeeba62eb6263acd38533ef758e1/OChem_30_EC_013.jpg\" alt=\"A chair conformer of cyclohexene fused with another cyclohexene reacts with heat to form benzene. Cyclobutane with two six-membered rings on either side reacts with heat to form benzene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

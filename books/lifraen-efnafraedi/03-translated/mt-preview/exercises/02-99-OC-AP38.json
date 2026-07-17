@@ -1,0 +1,35 @@
+{
+  "nickname": "02-99-OC-AP38",
+  "source_uid": "36150@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu eins margar vok myndir og þú getur fyrir eftirfarandi efni:",
+  "questions": [
+    {
+      "id": "351721",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbndRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--202757e45c3b812d8622ee05ff9827ba399bcacb/OChem_02_EC_013a.jpg\" alt=\"In a 3-carbon chain, C1 is a methylene group with a negative charge. C2 is a carbonyl group positioned at the center.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351722",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjBRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5927af0b325db5ed52f9f4b5b2bc54f215c2374e/OChem_02_EC_013b.jpg\" alt=\"In a cyclohexadiene ring, C5 carries a lone pair and a negative charge.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351723",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjRRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e797d864b14598d5e6f6b5614bc336ad36ace985/OChem_02_EC_013c.jpg\" alt=\"A central carbon is single bonded to two amine groups, each with a lone pair, and double bonded to another amine carrying a positive charge.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351724",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjhRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dff428256a8c25cb7a7f29b2cefb57417fd2bbeb/OChem_02_EC_013d.jpg\" alt=\"A central sulfur atom with two lone pairs is bonded to a methyl group and a methylene group with a positive charge on it.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351725",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0VRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8c51d1ac93f4ea8ad6712b49820c42824e8e2c1f/OChem_02_EC_013e.jpg\" alt=\"The structure has a 6-carbon chain with double bonds between C1-C2, C3-C4, and a positive charge at C5.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

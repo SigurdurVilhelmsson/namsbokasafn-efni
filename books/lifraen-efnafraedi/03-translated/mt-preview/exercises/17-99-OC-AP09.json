@@ -1,0 +1,30 @@
+{
+  "nickname": "17-99-OC-AP09",
+  "source_uid": "37910@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú mynda eftirfarandi alkóhól, með bensen og önnur alkóhól með sex eða færri kolefnisatómum sem einu lífrænu hvarfefnin þín?",
+  "questions": [
+    {
+      "id": "359520",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdXNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--218af92dbc7448ce6042f4c5f5b4488a5d774706/OChem_17_EC_035a.jpg\" alt=\"The structure having cyclohexanol with ethyl group on C 1.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359521",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdXdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2680c8f3a746abb6ed2f175fc8ca23a12b7f1c0f/OChem_17_EC_035b.jpg\" alt=\"A six-carbon chain with hydroxy on C 1 and methyl group on C 3 position.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359522",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTBWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0fc4a3388835d728dc614d51b8c9807b293e39a5/OChem_17_EC_035c.jpg\" alt=\"Benzyl alcohol with methyl and n-propyl substituents on benzyl carbon.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359523",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2ae24cff5245ed1bad70bd8240f226afacd2537a/OChem_17_EC_035d.jpg\" alt=\"A six-carbon chain with hydroxy on C 3 and methyl on C 5 position.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

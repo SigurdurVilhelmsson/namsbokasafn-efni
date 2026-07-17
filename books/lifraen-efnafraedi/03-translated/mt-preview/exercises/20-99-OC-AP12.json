@@ -1,0 +1,15 @@
+{
+  "nickname": "20-99-OC-AP12",
+  "source_uid": "38122@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "342086",
+      "stem_html": "<p>Nokkur p<i>K</i><sub>a</sub>-gögn fyrir einfaldar tvíbasískar sýrur eru sýnd. Hvernig geturðu útskýrt þá staðreynd að munurinn á fyrsta og öðrum jónunarfasta minnkar með aukinni fjarlægð milli karboxýlhópanna?</p>\n<table class=\"unnumbered\">\n<tbody><tr>\n<th><b>Heiti</b></th>\n<th><b>Byggingarformúla</b></th>\n<th><b>p<i>K</i><sub>1</sub></b></th>\n<th><b>p<i>K</i><sub>2</sub></b></th>\n</tr>\n<tr>\n<td>Oxalsýra</td>\n<td>HO<sub>2</sub>CCO<sub>2</sub>H</td>\n<td>1,2</td>\n<td>4,2</td>\n</tr>\n<tr>\n<td>Sússínsýra</td>\n<td>HO<sub>2</sub>CCH<sub>2</sub>CH<sub>2</sub>CO<sub>2</sub>H</td>\n<td>4,2</td>\n<td>5,6</td>\n</tr>\n<tr>\n<td>Adipínsýra</td>\n<td>HO<sub>2</sub>C(CH<sub>2</sub>)<sub>4</sub>CO<sub>2</sub>H</td>\n<td>4,4</td>\n<td>5,4</td>\n</tr>\n</tbody></table>",
+      "collaborator_solutions": []
+    }
+  ]
+}

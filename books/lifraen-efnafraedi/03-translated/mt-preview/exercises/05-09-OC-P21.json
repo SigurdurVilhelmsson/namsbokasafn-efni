@@ -1,0 +1,28 @@
+{
+  "nickname": "05-09-OC-P21",
+  "source_uid": "36513@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvers konar hverfur eru eftirfarandi pör?",
+  "questions": [
+    {
+      "id": "329216",
+      "stem_html": "(<i>S</i>)-5-Klór-2-hexen og klórsýklóhexan",
+      "collaborator_solutions": [
+        {
+          "content_html": "Byggingarhverfur"
+        }
+      ]
+    },
+    {
+      "id": "329217",
+      "stem_html": "(2<i>R</i>,3<i>R</i>)-Díbrómpentan og (2<i>S</i>,3<i>R</i>)-díbrómpentan",
+      "collaborator_solutions": [
+        {
+          "content_html": "Víxlhverfur"
+        }
+      ]
+    }
+  ]
+}

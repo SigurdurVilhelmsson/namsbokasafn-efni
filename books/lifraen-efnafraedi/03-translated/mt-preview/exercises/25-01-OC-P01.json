@@ -1,0 +1,46 @@
+{
+  "nickname": "25-01-OC-P01",
+  "source_uid": "39039@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Flokkið eftirfarandi einsykrur:",
+  "questions": [
+    {
+      "id": "358723",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3cf8bca4e08b338b26405a3bdd30a428da120282/OChem_25_01_003a.jpg\" alt=\"The structure of D threose, an aldose monosaccharide. The molecular formula is C 4 H 8 O 4, with H and O H groups on opposite sides of stereogenic centers.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Aldótetrósi"
+        }
+      ]
+    },
+    {
+      "id": "358724",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e1d3120f14fddd3df068c01e38900370fe07f9aa/OChem_25_01_003b.jpg\" alt=\"The structure of D ribulose which is a ketopentose with the chemical formula C 5 H 10 O 5. It is a structural isomer of ribose.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Ketópentósi"
+        }
+      ]
+    },
+    {
+      "id": "358725",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFlaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6219e26988937de4cbd7f6bd0017941d3ba2f1a3/OChem_25_01_003c.jpg\" alt=\"The structure of D tagatose which is a ketohexose. The molecular formula is C 6 H 12 O 6.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Ketóhexósi"
+        }
+      ]
+    },
+    {
+      "id": "358726",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a95dfdde8e4e47dc470e2fdfa39c2f0bbde91744/OChem_25_01_003d.jpg\" alt=\"The structure of 2-deoxyribose. It is an aldopentose with 5 carbon atoms and an aldehyde functional group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Aldópentósi"
+        }
+      ]
+    }
+  ]
+}

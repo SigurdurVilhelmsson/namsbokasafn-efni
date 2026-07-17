@@ -1,0 +1,25 @@
+{
+  "nickname": "31-99-OC-AP02",
+  "source_uid": "39416@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Teiknaðu þrívíða mynd af bútum úr eftirfarandi fjölliðum:</p>\n",
+  "questions": [
+    {
+      "id": "349878",
+      "stem_html": "Syndiotaktískt pólýakrýlónítríl\n",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "349879",
+      "stem_html": "Ataktískt pólý(metýlmetakrýlat)\n",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "349880",
+      "stem_html": "Ísótaktískt pólý(vínýlklóríð)",
+      "collaborator_solutions": []
+    }
+  ]
+}

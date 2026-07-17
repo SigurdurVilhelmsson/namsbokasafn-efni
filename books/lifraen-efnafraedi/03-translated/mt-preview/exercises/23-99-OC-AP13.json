@@ -1,0 +1,15 @@
+{
+  "nickname": "23-99-OC-AP13",
+  "source_uid": "38940@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359894",
+      "stem_html": "<p>Etýldímetýlasetóasetat hvarfast samstundis við stofuhita þegar það er meðhöndlað með etoxíðjón til að gefa tvö myndefni, etýlasetat og etýl 2-metýlprópanóat. Leggðu til hvarfgang fyrir þetta klofnunarefnahvarf.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdEFZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0337e2bc8faa3a86bccbf9abc04e50e2f4545bf4/OChem_23_EC_038.jpg\" alt=\"The reaction of ethyl dimethylacetoacetate with sodium ethoxide and ethanol at twenty-five degrees Celsius results in the formation of ethyl acetate and ethyl 2-methylpropanoate.\">\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

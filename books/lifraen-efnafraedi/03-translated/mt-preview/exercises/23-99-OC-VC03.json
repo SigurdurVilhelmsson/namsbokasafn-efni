@@ -1,0 +1,15 @@
+{
+  "nickname": "23-99-OC-VC03",
+  "source_uid": "38905@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359827",
+      "stem_html": "<p>Eftirfarandi sameind myndaðist í innansameinda aldól-efnahvarfi. Hvaða díkarbónýl-forveri var notaður við myndun hennar?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcThZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9349b4f084fe55d568f3241407c9e139db0604a4/OChem_23_EC_013.jpg\" alt=\"The ball-and-stick model shows a cyclopentenone with ethyl bonded to second carbon. The second and third carbon is double-bonded. Grey, white, and red spheres show C, H, and O, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "09-99-OC-AP26",
+  "source_uid": "37240@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353864",
+      "stem_html": "<p>Getnaðarvarnarlyfið Mestranol er framleitt með karbónýlálagningarefnahvarfi eins og því sem sýnt er í dæmi 9-50. Teiknaðu byggingarformúlu ketónsins sem þarf.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0lUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8aca0378b317d004bdf27ea291184b6af71f50a3/OChem_09_EC_039.jpg\" alt=\"The structure of mestranol.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

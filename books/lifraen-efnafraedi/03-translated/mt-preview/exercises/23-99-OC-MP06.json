@@ -1,0 +1,15 @@
+{
+  "nickname": "23-99-OC-MP06",
+  "source_uid": "38912@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359848",
+      "stem_html": "<p>Knoevenagel-þétting er efnahvarf sem felur í sér virkt metýlenefnasamband (CH<sub>2</sub> sem er umlukið tveimur rafeindadrægum hópum) og aldehýð og ketón. Leggðu til hvarfgang fyrir efnahvarfið hér að neðan.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcm9ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5effece10ad6c634217ca7a467bafd2f0d74ab2b/OChem_23_EC_019.jpg\" alt=\"The Knoevenagel condensation of diethyl malonate and benzaldehyde with sodium ethoxide forms a conjugated enone. The product shows benzene ring with methine double-bonded to the methylene group of diethyl malonate.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

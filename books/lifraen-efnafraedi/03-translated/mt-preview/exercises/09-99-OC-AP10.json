@@ -1,0 +1,15 @@
+{
+  "nickname": "09-99-OC-AP10",
+  "source_uid": "37224@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353814",
+      "stem_html": "<p>Auðkennið hvarfefnin <b>a–c</b> í eftirfarandi ferli:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c5f5c111f89243cb98da62bc633044f19409ea04/OChem_09_EC_027.jpg\" alt=\"A C5 terminal alkyne reacts with reagent  a to add an ethyl group at C1, forming a cis alkene via reagent b and a substituted cyclopropane ring  with reagent c.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "nickname": "05-11-OC-P23",
+  "source_uid": "36517@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Auðkenndu tilgreinda fleti kolefnisfrumeinda í eftirfarandi sameindum sem Re eða Si:",
+  "questions": [
+    {
+      "id": "357686",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajhSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a8692929f7817801a5978dff1108ef67676efeca/OChem_05_11_009a.jpg\" alt=\"The structure of hydroxyacetone. Two arrows, one from the top and other from the bottom, point toward the central carbon.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0VSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--96ef26bec34afbe6b753cfc38f1d8414698a9b42/OChem_05_EC_207a.jpg\" alt=\"The structure of hydroxyacetone. The central carbon is labeled Re face at the top and Si face at the bottom.\">"
+        }
+      ]
+    },
+    {
+      "id": "357687",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0FSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dec10b1faeb01e6728a4d53b502a69b9968bc9e0/OChem_05_11_009b.jpg\" alt=\"The structure of crotyl alcohol. Two arrows, one from the top and other from the bottom, point toward the central carbon.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0lSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b1243764f24dd610d0fe44b4a9d524d608a319f8/OChem_05_EC_207b.jpg\" alt=\"The structure of crotyl alcohol. The central carbon is labeled Re face at the top and Si face at the bottom.\">"
+        }
+      ]
+    }
+  ]
+}

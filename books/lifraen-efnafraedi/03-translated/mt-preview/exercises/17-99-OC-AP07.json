@@ -1,0 +1,25 @@
+{
+  "nickname": "17-99-OC-AP07",
+  "source_uid": "37908@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvaða karbónýlefnasambönd myndir þú afoxa til að búa til eftirfarandi alkóhól: Teldu upp alla möguleika.",
+  "questions": [
+    {
+      "id": "359501",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVlWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--883d79e91403162d6c6ce562dc6d359cb7562628/OChem_17_EC_033a.jpg\" alt=\"A six-carbon chain with hydroxyl on C 1, and two methyl on C 2 position.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359502",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e4c2095d729799ce3c4cd532cd11da7b70eff6f8/OChem_17_EC_033b.jpg\" alt=\"A three-carbon chain with hydroxyl on C 2 and two methyl groups on C 3 position.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359503",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWdWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b0f5cffa877e564255a9699264eab74fa71c731d/OChem_17_EC_033c.jpg\" alt=\"Chemical structure of 1-cyclohexylpropan-1-ol.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

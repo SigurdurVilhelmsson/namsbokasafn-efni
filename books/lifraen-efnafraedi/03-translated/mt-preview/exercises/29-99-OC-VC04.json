@@ -1,0 +1,15 @@
+{
+  "nickname": "29-99-OC-VC04",
+  "source_uid": "39314@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358139",
+      "stem_html": "<p>Eftirfarandi efnasamband er milliefni í pentósafosfatferlinu, sem er önnur leið fyrir efnaskipti glúkósa. Greindu sykurinn sem það er myndað úr.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDBaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5958ba6556fc5284cd9e365f1e91a03a4034a088/OChem_29_EC_004.jpg\" alt=\"A ball-and-stick model of four-carbon chain with C 1 having an aldehyde group and  oxygen linked to phosphate group at C4.\">\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

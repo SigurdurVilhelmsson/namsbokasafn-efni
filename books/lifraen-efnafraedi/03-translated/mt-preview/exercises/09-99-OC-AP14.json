@@ -1,0 +1,15 @@
+{
+  "nickname": "09-99-OC-AP14",
+  "source_uid": "37228@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353834",
+      "stem_html": "<p>Hvernig myndir þú framkvæma eftirfarandi fjölþrepa umbreytingu?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdklTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d2a254c41545ba5e46c01c8d5a85820754ddaf64/OChem_09_EC_031.jpg\" alt=\"1-Hexyne reacts in the presence of an unknown reagent indicated by a question mark to form a C8 compound having a cyclopropane ring.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

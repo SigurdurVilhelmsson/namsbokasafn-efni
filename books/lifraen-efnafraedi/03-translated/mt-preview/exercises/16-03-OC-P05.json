@@ -1,0 +1,19 @@
+{
+  "nickname": "16-03-OC-P05",
+  "source_uid": "37792@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "350324",
+      "stem_html": "<p>Hvaða af eftirfarandi alkýlhalíðum myndir þú búast við að gangist undir Friedel–Crafts-efnahvarf með umröðun og hver án? Útskýrðu.</p>\n<p><b>(a)</b> CH<sub>3</sub>CH<sub>2</sub>Cl <b>(b)</b> CH<sub>3</sub>CH<sub>2</sub>CH(Cl)CH<sub>3</sub> <b>(c)</b> CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>Cl <b>(d)</b> (CH<sub>3</sub>)<sub>3</sub>CCH<sub>2</sub>Cl\n<br><b>(e)</b> Klórsýklóhexan</p>",
+      "collaborator_solutions": [
+        {
+          "content_html": "Engin umröðun: <b>(a), <b>(b), <b>(e)</b></b></b>"
+        }
+      ]
+    }
+  ]
+}

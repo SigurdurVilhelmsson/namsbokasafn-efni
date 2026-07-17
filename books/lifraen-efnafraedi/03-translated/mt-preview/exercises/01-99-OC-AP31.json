@@ -1,0 +1,15 @@
+{
+  "nickname": "01-99-OC-AP31",
+  "source_uid": "37588@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "345845",
+      "stem_html": "<p>Tvígildar kolefnissameindir sem kallast <i>karben</i> geta verið til í stuttan tíma. Til dæmis er metýlen, :CH<sub>2</sub>, einfaldasta karbenið. Tvær ódeildu rafeindirnar í metýleni geta annaðhvort verið paraðar í einu svigrúmi eða óparaðar í mismunandi svigrúmum. Spáðu fyrir um þá tegund tvinnblöndunar sem þú býst við að kolefni taki í singlett (spuna-pöruðu) metýleni og triplett (spuna-ópöruðu) metýleni. Teiknaðu mynd af hvoru og tilgreindu gildissvigrúmin á kolefni.</p>\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

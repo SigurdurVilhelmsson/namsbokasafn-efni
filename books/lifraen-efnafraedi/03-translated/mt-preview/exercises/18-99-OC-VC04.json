@@ -1,0 +1,15 @@
+{
+  "nickname": "18-99-OC-VC04",
+  "source_uid": "38718@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361171",
+      "stem_html": "<p>Meðhöndlun eftirfarandi alkens með peroxýsýru gefur annað epoxíð en það sem fæst með efnahvarfi við vatnslausn af Br<sub>2</sub> og síðan meðhöndlun með basa. Leggðu til byggingar fyrir epoxíðin tvö og útskýrðu niðurstöðuna.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjhYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--afa3b0ec598a294581b2d2c21d7bee0c4ce29c13/OChem_18_EC_018.jpg\" alt=\"The ball-and-stick model of cyclopentene ring with double bond at C 1, methyl groups on C 4, and a chain of two methylene groups connecting C 3 and C 5.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

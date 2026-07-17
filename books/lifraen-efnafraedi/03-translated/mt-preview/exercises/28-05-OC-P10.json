@@ -1,0 +1,19 @@
+{
+  "nickname": "28-05-OC-P10",
+  "source_uid": "39118@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348310",
+      "stem_html": "Hver er basaröðin í upprunalega DNA-þræðinum sem mRNA-röðin í dæmi 28-9 var búin til úr?",
+      "collaborator_solutions": [
+        {
+          "content_html": "(5′) TTA-GGG-CCA-AGC-CAT-AAG (3′)"
+        }
+      ]
+    }
+  ]
+}

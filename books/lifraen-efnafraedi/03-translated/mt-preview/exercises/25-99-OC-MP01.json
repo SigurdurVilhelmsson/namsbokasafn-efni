@@ -1,0 +1,15 @@
+{
+  "nickname": "25-99-OC-MP01",
+  "source_uid": "39068@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358786",
+      "stem_html": "<p>Galaktósi, ein af átta nauðsynlegu einsykrunum (<b>kafli 25.7</b>), er lífsmíðaður úr UDP-glúkósa með galaktósa 4-epímerasa, þar sem UDP = úridýlýl tvífosfat (ríbónúkleótíð tvífosfat; <b>kafli 28.1</b>). Ensímið krefst NAD<sup>+</sup> fyrir virkni (<b>kafli 17.7</b>), en það er ekki hvarfefni í jafnmiklu magni og NADH er ekki lokaafurð efnahvarfsins. Leggðu til hvarfgang.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjBaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0e7effb7c4648bb8c529985fe2b1c659a8c821a6/OChem_25_EC_006.jpg\" alt=\"U D P galactose is converted by a N A D cation to U D P-galactose.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

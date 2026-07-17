@@ -1,0 +1,19 @@
+{
+  "nickname": "24-09-OC-P22",
+  "source_uid": "38975@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361605",
+      "stem_html": "Rafsækin arómatísk skiptihvörf pýridíns eiga sér venjulega stað við C3. Teiknaðu karbkatjóna milliefnin sem myndast við efnahvarf rafsækis við C2, C3 og C4 og útskýrðu niðurstöðuna.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbE1hIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--562b154149dae2a6ac81c17690efe3fce5c37080/OChem_24_EC_206.jpg\" alt=\"The attack of electrophile at C 2, C 3, and C 4 of pyridine. Mechanisms showing attack at C 2 and C 4 are labeled unfavorable.\">"
+        }
+      ]
+    }
+  ]
+}

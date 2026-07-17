@@ -1,0 +1,30 @@
+{
+  "nickname": "20-99-OC-AP25",
+  "source_uid": "38135@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú nota NMR (annaðhvort <sup>13</sup>C eða <sup>1</sup>H) til að greina á milli eftirfarandi hverfupara?",
+  "questions": [
+    {
+      "id": "359198",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3NXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7e149f8298dd0173ca823430abe779c178a792b9/OChem_20_EC_028a.jpg\" alt=\"The structures of benzene-1,3-dicarboxylic acid and benzene-1,4-dicarboxylic acid. Structure 1 carboxyl groups at first and third carbons. Structure 2 carboxyl groups at first and fourth carbons.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359199",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3dXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8bd6d60820d6ce228dfa934173839a4cc85e198d/OChem_20_EC_028b.jpg\" alt=\"The condensed formulas read H O 2 C C H 2 C H 2 C O 2 H and C H 3 C H (C O 2 H)2\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359200",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczBXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6266158b780902ea0bb66a9b29186959aafc7748/OChem_20_EC_028c.jpg\" alt=\"Formulas read C H 3 C H 2 C H 2 C O 2 H and H O C H 2 C H 2 C H 2 C H O.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359201",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczRXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--961b05bb50def78d7f3cb9b685849d9b44bcd35e/OChem_20_EC_028d.jpg\" alt=\"The condensed formula of 4-methylpent-3-enoic acid, and the chemical structure of cyclopentanecarboxylic acid.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

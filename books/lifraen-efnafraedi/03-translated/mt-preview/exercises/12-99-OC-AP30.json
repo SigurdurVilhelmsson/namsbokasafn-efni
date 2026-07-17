@@ -1,0 +1,20 @@
+{
+  "nickname": "12-99-OC-AP30",
+  "source_uid": "37456@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Stingdu upp á byggingum fyrir efnasambönd sem uppfylla eftirfarandi lýsingar:",
+  "questions": [
+    {
+      "id": "337708",
+      "stem_html": "Handhverft efnasamband C<sub>5</sub>H<sub>10</sub>O með IR-gleypni við 1730 cm<sup>–1</sup>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "337709",
+      "stem_html": "Ekki handhverft efnasamband C<sub>5</sub>H<sub>9</sub>N með IR-gleypni við 2215 cm<sup>–1</sup>",
+      "collaborator_solutions": []
+    }
+  ]
+}

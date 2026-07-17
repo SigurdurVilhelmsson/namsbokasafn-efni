@@ -1,0 +1,15 @@
+{
+  "nickname": "19-99-OC-AP25",
+  "source_uid": "38071@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360811",
+      "stem_html": "<p>Tamoxifen er lyf sem notað er við meðferð á brjóstakrabbameini. Hvernig mynduð þið útbúa tamoxifen úr benseni, eftirfarandi ketóni og öðrum nauðsynlegum hvarfefnum?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb01XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--07f46f6b3c7c3efda304ed5933394caaf716ca03/OChem_19_EC_059.jpg\" alt=\"Ketone transforms to tamoxifen, replacing the carbonyl oxygen of ketone with a carbon linked to ethyl and benzene in tamoxifen. The unknown reagent is depicted as a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

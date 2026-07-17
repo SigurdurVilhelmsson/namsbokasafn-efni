@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-VC02",
+  "source_uid": "38980@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361617",
+      "stem_html": "<p>Eftirfarandi efnasamband inniheldur þrjár niturfrumeindir. Raðaðu þeim eftir vaxandi basastigi.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--52431d6635c58bd82036dbde1f97feb384ef3680/OChem_24_EC_015.jpg\" alt=\"A ball-and-stick model of a large molecule with different functional groups. Black, grey, red, and blue spheres represent carbon, hydrogen, oxygen, and nitrogen.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

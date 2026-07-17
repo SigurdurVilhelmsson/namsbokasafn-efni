@@ -1,0 +1,15 @@
+{
+  "nickname": "29-99-OC-MP09",
+  "source_uid": "39323@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358157",
+      "stem_html": "<p>Amínósýran serín er lífsmíðuð með ferli sem felur í sér efnahvarf 3-fosfóhýdroxýpýrúvats við glútamat til að mynda 3-fosfóserín. Stingdu upp á hvarfgangi.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--00d95f26d3f6c555cc00cd9584d74e1e9ffea412/OChem_29_EC_011.jpg\" alt=\"3-Phosphohydroxypyruvate is converted to 3-phosphoserine via the deamination of glutamate   to alpha-ketoglutarate.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

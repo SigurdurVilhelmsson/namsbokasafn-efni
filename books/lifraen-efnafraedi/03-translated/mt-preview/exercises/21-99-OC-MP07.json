@@ -1,0 +1,15 @@
+{
+  "nickname": "21-99-OC-MP07",
+  "source_uid": "38187@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361435",
+      "stem_html": "<p>Fita er lífsmíðuð úr glýseról 3-fosfati og fitu-asýl CoA með hvarfaröð sem hefst með eftirfarandi skrefi. Sýnið verkunarhátt hvarfsins.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--299e39cd91c46e0fb22d228877b8e8e541262b5a/OChem_21_EC_031.jpg\" alt=\"The reaction between glycerol-3-phosphate and fatty-acyl coenzyme A in the presence of glycerol-3-phosphate acyltransferase to form 1-acylglycerol-3-phosphate. The glycerol-3-phosphate contains three-carbon vertical chain in which hydroxyl is replaced by phosphate.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

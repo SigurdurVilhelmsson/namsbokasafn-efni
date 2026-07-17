@@ -1,0 +1,37 @@
+{
+  "nickname": "07-03-OC-P06",
+  "source_uid": "36616@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Nefnið eftirfarandi sýklóalkena:",
+  "questions": [
+    {
+      "id": "354286",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVlSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--433c032889b30ddfc7eacf9d6ed4f30153dc7eaf/OChem_07_03_009a.jpg\" alt=\"A six-membered ring with a double bond. There are methyl substituents from each end of the double bond.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1,2-Dímetýlsýklóhexen"
+        }
+      ]
+    },
+    {
+      "id": "354287",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3d7fe2f75c5873b9472cf99a019cb84d1b9ed2f5/OChem_07_03_009b.jpg\" alt=\"A seven-membered ring with a double bond. There are two methyl substituents on the same carbon, two carbons away from the double bond.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "4,4-Dímetýlsýklóhepten"
+        }
+      ]
+    },
+    {
+      "id": "354288",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWdSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cbde22be4ad3e7e0f0e69b71d09322589e68a70d/OChem_07_03_009c.jpg\" alt=\"A five-membered ring with a double bond. There is an isopropyl group one carbon away from the double bond\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "3-Ísóprópýlsýklópenten"
+        }
+      ]
+    }
+  ]
+}

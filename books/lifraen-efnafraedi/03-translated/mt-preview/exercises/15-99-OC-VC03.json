@@ -1,0 +1,15 @@
+{
+  "nickname": "15-99-OC-VC03",
+  "source_uid": "37746@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358650",
+      "stem_html": "<p>1,6-Metanónaftalen hefur áhugavert <sup>1</sup>H NMR-róf þar sem vetnin átta í kringum jaðarinn gleypa við 6,9 til 7,3 <i>δ</i>, á meðan tvær CH<sub>2</sub> róteindirnar gleypa við –0,5 <i>δ</i>. Segðu til um hvort það sé arómatískt og útskýrðu NMR-róf þess.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--daed64e9e90f4cf3b3e7e77b1a9f3a92afe5d81f/OChem_15_EC_003.jpg\" alt=\"The ball-and-stick model of 1,6-methanonaphthalene has a cycloheptatriene ring fused to a cycloheptadiene ring.\">\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "nickname": "19-99-OC-AP13",
+  "source_uid": "38059@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Á hvaða stað myndir þú búast við að sjá IR-gleypni fyrir eftirfarandi sameindir?",
+  "questions": [
+    {
+      "id": "360780",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkVXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ebb73374ec33e60be0a670c92eb037f01b156345/OChem_19_EC_050a.jpg\" alt=\"The structure of 4-androstene-3, 17-dione shows three fused cyclohexane rings and one cyclopentane ring with two methyl groups at junctions. Two ketone groups are located on third and seventeenth carbon.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360781",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbklXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--be88d7c00bc8ab1c28a4485c25bda87c5689bb5e/OChem_19_EC_050b.jpg\" alt=\"The structure of 1-indanone shows a benzene ring fused to C 2 and C 3 of a cyclopentanone ring.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360782",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbk1XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--089665d8f4f9e22e6d85d8b69a299455048d3be6/OChem_19_EC_050c.jpg\" alt=\"The structure of 1-indanone shows a benzene ring fused to C 3 and C 4 of a cyclopentanone ring.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360783",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblFXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b9f0d7e0a9587dc4ade2b39830890bb46f18b3ad/OChem_19_EC_050d.jpg\" alt=\"The structure shows a benzaldehyde with a side chain C H 2 C O C H 3 group at the para position of the ring.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

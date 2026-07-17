@@ -1,0 +1,37 @@
+{
+  "nickname": "22-07-OC-P10",
+  "source_uid": "38778@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvernig gætir þú notað malónestermyndun til að búa til eftirfarandi efnasambönd? Sýndu öll skref.",
+  "questions": [
+    {
+      "id": "360881",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e63f2de8938d31156ba5e2794c601443d0f56f02/OChem_22_07_011a.jpg\" alt=\"The structure of phenyl propanoic acid where a benzene ring is attached to a propanoic acid group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. Na<sup>+ −</sup>OEt; 2. PhCH<sub>2</sub>Br; 3. H<sub>3</sub>O<sup>+</sup>"
+        }
+      ]
+    },
+    {
+      "id": "360882",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmdYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fab6b683c1d869bed7858cb23a7269661f77dd1a/OChem_22_07_011b.jpg\" alt=\"The structure of 2-methylpentanoic acid comprising of a five carbon chain with a C O O H group at C 1 and a methyl group at C 2.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. Na<sup>+ −</sup>OEt; 2. CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>Br; 3. Na<sup>+ −</sup>OEt; 4. CH<sub>3</sub>Br; 5. H<sub>3</sub>O<sup>+</sup>"
+        }
+      ]
+    },
+    {
+      "id": "360883",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmtYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fcfb0e2803f78deaa79566458d8a32845da59288/OChem_22_07_011c.jpg\" alt=\"The structure of 4-methylpentanoic acid comprising of a five carbon chain with a C O O H group at C 1 and a methyl group at C 4.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. Na<sup>+ −</sup>OEt; 2. (CH<sub>3</sub>)<sub>2</sub>CHCH<sub>2</sub>Br; 3. H<sub>3</sub>O<sup>+</sup>"
+        }
+      ]
+    }
+  ]
+}

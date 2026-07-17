@@ -1,0 +1,19 @@
+{
+  "nickname": "04-06-OC-P14",
+  "source_uid": "36485@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351088",
+      "stem_html": "<p>Tilgreindu hvora litaðra staða—rauð, blá og græn—sem áslæga eða miðlæga. Framkvæmdu síðan hringveltu og sýndu nýju stöðurnar sem hver litur tekur.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFlSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4bfaee59a06b3e3646b89774c607b91e4e17c10b/OChem_04_06_008.jpg\" alt=\"Ball and stick model of substituted cyclohexane with red, blue, and green spheres at C1, C3, and C6 undergoes ring-flip to form model with all substituents, represented by white circles.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Fyrir hringveltuna eru rauð og blá miðlægar og græn er áslæg. Eftir hringveltuna eru rauð og blá áslægar og græn er miðlæg."
+        }
+      ]
+    }
+  ]
+}

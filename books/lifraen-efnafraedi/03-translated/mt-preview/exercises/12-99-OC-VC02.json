@@ -1,0 +1,20 @@
+{
+  "nickname": "12-99-OC-VC02",
+  "source_uid": "37426@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Sýndu byggingu brotanna sem þú myndir búast við í massarófum eftirfarandi sameinda:",
+  "questions": [
+    {
+      "id": "352200",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1lVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1a1b11275f3e3c9431a5d5ef641eccfbd80bd36e/OChem_12_EC_002a.jpg\" alt=\"A ball and stick model of a six-membered chain connected to different groups. Carbon, hydrogen, and oxygen are shown as gray, white, and red spheres, respectively.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352201",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2NVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fd01146c55749da44ee3b828d19cd98fe49b8780/OChem_12_EC_002b.jpg\" alt=\"A ball and stick model of a cyclic four-carbon chain connected to a three-carbon chain and other alkyl groups. Gray, white and blue spheres denote carbon, hydrogen, and nitrogen, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

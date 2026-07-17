@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-MP16",
+  "source_uid": "38998@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361665",
+      "stem_html": "<p>Leggðu til hvarfgang fyrir eftirfarandi efnahvarf:</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaW9aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--906786603be189ee180638eb211978789ba4c1d8/OChem_24_EC_031.jpg\" alt=\"2-(Benzylamino)ethanol reacts with (Z)-methyl 4-bromobut-2-enoate in the presence of triethylamine and heat to form a product.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

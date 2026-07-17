@@ -1,0 +1,19 @@
+{
+  "nickname": "03-02-OC-P04",
+  "source_uid": "36420@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357596",
+      "stem_html": "Teiknaðu byggingar fimm hverfa C<sub>6</sub>H<sub>14</sub>.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1VhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d9e9a3c975e1d636afce226f975073039ba4d159/OChem_03_EC_203.jpg\" alt=\"The molecular structures of five isomers of hexane.\">"
+        }
+      ]
+    }
+  ]
+}

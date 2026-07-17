@@ -1,0 +1,19 @@
+{
+  "nickname": "21-09-OC-P24",
+  "source_uid": "38174@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361403",
+      "stem_html": "Kevlar, nælonfjölliða sem er búin til með efnahvarfi 1,4-bensendíkarboxýlsýru (tereftalsýru) við 1,4-bensendíamín (<i>p</i>-fenýlendíamín), er svo sterkt að það er notað til að búa til skotheld vesti. Teiknaðu byggingu hluta af Kevlar.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--aadcf71b553e8b1b1c7710b34f7fa772b68f0d08/OChem_21_EC_207.jpg\" alt=\"The structure shows a repeating unit of N H (C H 2) 6 N H C O (C H 2) 4 C O in parentheses with subscript n.\">"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "nickname": "02-99-OC-AP57",
+  "source_uid": "36169@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu eins margar vokmyndir og þú getur fyrir eftirfarandi efni og bættu við viðeigandi formlegum hleðslum á hverja þeirra:",
+  "questions": [
+    {
+      "id": "351506",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEFRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5aaa7531a996c94a4d8c37c209d5ab8b936f00d1/OChem_02_EC_022a.jpg\" alt=\"The Lewis structure of nitromethane.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351507",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEVRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6631206c6002e73eda4860bd2f4ab252b46a6ccc/OChem_02_EC_022b.jpg\" alt=\"The Lewis structure of ozone.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351508",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcElRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--64f9c864780bcc35ff73f36327d52013146d8fb7/OChem_02_EC_022c.jpg\" alt=\"The Lewis structure of diazomethane.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

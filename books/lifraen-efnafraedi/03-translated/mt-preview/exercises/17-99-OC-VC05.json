@@ -1,0 +1,15 @@
+{
+  "nickname": "17-99-OC-VC05",
+  "source_uid": "37889@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359431",
+      "stem_html": "<p>Nefndu og úthlutaðu <i>R</i> eða <i>S</i> handhverfufræði á myndefnið/myndefnin sem þú myndir fá úr efnahvarfi eftirfarandi efnis við etýlmagnesíumbrómíð. Er myndefnið handhverft? Er það ljósvirkt? Útskýrðu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc0VWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--60f5eb13873ef1078097ca974e00f6ff09308b80/OChem_17_EC_019.jpg\" alt=\"A ball-and-stick model of a five-carbon chain with keto group on C 2, and C 3 has a methyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

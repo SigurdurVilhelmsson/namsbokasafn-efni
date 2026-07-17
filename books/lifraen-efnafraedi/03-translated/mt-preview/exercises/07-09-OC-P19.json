@@ -1,0 +1,19 @@
+{
+  "nickname": "07-09-OC-P19",
+  "source_uid": "36642@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354332",
+      "stem_html": "<p>Teiknaðu beinagrindarmynd af eftirfarandi karbókatjón. Tilgreindu hvort hún er fyrsta stigs, annars stigs eða þriðja stigs og tilgreindu vetnisfrumeindirnar sem hafa rétta stefnu fyrir ofsamruna í stellingunni sem sýnd er.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2NSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--94a023f74877e829979e16c91305505139af5643/OChem_07_09_007.jpg\" alt=\"A ball-and-stick model of 2-methylbutane. C 3 has only three bonds total.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Í stellingunni sem sýnd er getur aðeins metýl-hópurinn C−H sem er samsíða <i>p</i> svigrúmi karbókatjónarinnar sýnt ofsamruna."
+        }
+      ]
+    }
+  ]
+}

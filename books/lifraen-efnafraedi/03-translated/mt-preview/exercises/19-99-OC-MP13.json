@@ -1,0 +1,15 @@
+{
+  "nickname": "19-99-OC-MP13",
+  "source_uid": "38035@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360707",
+      "stem_html": "<p>Ketón hvarfast við dímetýlsúlfóníummetýlíð og mynda epoxíð. Leggðu til hvarfgang fyrir efnahvarfið.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbFFXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8df344045de2ae232df5200d31addcdec8e45be5/OChem_19_EC_032.jpg\" alt=\"The reaction shows cyclohexanone with dimethylsulfonium methylide in D M S O to yield an epoxide, where an oxirane carbon is attached to a cyclohexane ring and dimethylsulfide.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "12-99-OC-AP37",
+  "source_uid": "37463@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "356718",
+      "stem_html": "<p>Innrautt róf efnasambandsins með eftirfarandi massarófi hefur sterka gleypni við 1584, 1478 og 1446 cm<sup>–1</sup>. Leggðu til byggingu.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWdVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--428f9c6fcd56ad7c1edc5684c2de1578b6b68168/OChem_12_EC_016.jpg\" alt=\"The mass spectrum of  an uknown compound with a base peak and molecular ion at m / z 112. A peak one-third the size occurs at 114.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

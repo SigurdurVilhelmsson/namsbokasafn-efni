@@ -1,0 +1,19 @@
+{
+  "nickname": "20-07-OC-P14",
+  "source_uid": "38094@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "341964",
+      "stem_html": "Hvernig myndir þú búa til 1-fenýl-2-bútanón, C<sub>6</sub>H<sub>5</sub>CH<sub>2</sub>COCH<sub>2</sub>CH<sub>3</sub>, úr bensýlbrómíði, C<sub>6</sub>H<sub>5</sub>CH<sub>2</sub>Br? Fleiri en eitt skref þarf.",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. NaCN; 2. CH<sub>3</sub>CH<sub>2</sub>MgBr, síðan H<sub>3</sub>O<sup>+</sup>"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "nickname": "05-99-OC-AP07",
+  "source_uid": "36570@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hver af eftirfarandi byggingarpörum tákna sömu handhverfuna og hver tákna mismunandi handhverfur?",
+  "questions": [
+    {
+      "id": "354160",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWtSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c7162fcd432746269eeea343a9b569137b14159d/OChem_05_EC_007a.jpg\" alt=\"A carbon is single-bonded to bromine (top), cyano (right), wedge bonded to hydrogen (front), and dash bonded to methyl (left). The second structure, the positions of substituents are different.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354161",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbW9SIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0b44a2003e438f985fdf4042cfdb47596a2a298f/OChem_05_EC_007b.jpg\" alt=\"A carbon is single-bonded to carboxylic acid (top), bromo (right), wedge bonded to cyano (front), and dash bonded to hydrogen (left). The second structure, the positions of substituents are different.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354162",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXNSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d6cf42c8515b0fab77a7d371a28a3d3ccef094d1/OChem_05_EC_007c.jpg\" alt=\"A carbon is single-bonded to methyl (top),hydroxyl (right), wedge bonded to ethyl (front), and dash bonded to hydrogen (left). The second structure, the positions of substituents are different.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "354163",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbXdSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ae9970a182ab0579f5f308eec8988d9bc8efd0e4/OChem_05_EC_007d.jpg\" alt=\"A carbon is single-bonded to methyl (top), carboxylic acid (right), wedge bonded to amine (front), and dash bonded to hydrogen (left). The second structure, the positions of substituents are different.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

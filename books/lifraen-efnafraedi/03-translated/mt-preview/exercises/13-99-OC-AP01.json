@@ -1,0 +1,25 @@
+{
+  "nickname": "13-99-OC-AP01",
+  "source_uid": "37495@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Eftirfarandi <sup>1</sup>H NMR-gleypnisvið voru fengin með rófgreini sem starfar á 200 MHz og eru gefin í hertzum niður sviðið frá TMS-staðlinum. Umbreyttu gleypnisviðunum í <i>Δ</i>-einingar.",
+  "questions": [
+    {
+      "id": "338089",
+      "stem_html": "436 Hz",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338090",
+      "stem_html": "956 Hz",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "338091",
+      "stem_html": "1504 Hz",
+      "collaborator_solutions": []
+    }
+  ]
+}

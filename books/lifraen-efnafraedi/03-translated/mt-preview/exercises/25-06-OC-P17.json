@@ -1,0 +1,19 @@
+{
+  "nickname": "25-06-OC-P17",
+  "source_uid": "39054@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348032",
+      "stem_html": "Afoxun <small style=\"font-variant: small-caps\">D</small>-glúkósa leiðir til handhverfs virks alditóls (<small style=\"font-variant: small-caps\">D</small>-glúkitóls), en afoxun <small style=\"font-variant: small-caps\">D</small>-galaktósa leiðir til handhverfs óvirks alditóls. Útskýrðu.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<small style=\"font-variant: small-caps\">D</small>-Galaktitól hefur samhverfuplan og er mesó-efnasamband, en <small style=\"font-variant: small-caps\">D</small>-glúkitól er handhverft."
+        }
+      ]
+    }
+  ]
+}

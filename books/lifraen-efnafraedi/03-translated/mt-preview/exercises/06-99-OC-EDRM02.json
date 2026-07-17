@@ -1,0 +1,15 @@
+{
+  "nickname": "06-99-OC-EDRM02",
+  "source_uid": "37313@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "336373",
+      "stem_html": "Teiknaðu orkurit fyrir eins skrefs efnahvarf með <i>K</i><sub>eq</sub> < 1. Merktu þá hluta ritsins sem samsvara hvarfefnum, myndefnum, virkniástandi, Δ<i>G</i>° og Δ<i>G</i><sup>‡</sup>. Er Δ<i>G</i>° jákvætt eða neikvætt?",
+      "collaborator_solutions": []
+    }
+  ]
+}

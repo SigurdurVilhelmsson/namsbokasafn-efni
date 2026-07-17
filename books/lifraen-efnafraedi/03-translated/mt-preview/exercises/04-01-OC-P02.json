@@ -1,0 +1,46 @@
+{
+  "nickname": "04-01-OC-P02",
+  "source_uid": "36473@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Teiknaðu byggingar sem samsvara eftirfarandi IUPAC-heitum:",
+  "questions": [
+    {
+      "id": "357648",
+      "stem_html": "1,1-Dímetýlsýklóoktan",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1VSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--20bee1711a3ebf6ec7f68326a5b55a00e9d928eb/OChem_04_EC_201a.jpg\" alt=\"In an 8-membered carbon ring, C1 is bonded to two methyl groups.\">"
+        }
+      ]
+    },
+    {
+      "id": "357649",
+      "stem_html": "3-Sýklóbútýlhexan",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1lSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d02a91b48c7e820631bf38b91d3fe36055802ef5/OChem_04_EC_201b.jpg\" alt=\"The C3 of a 6-carbon chain is bonded to a 4-membered carbon ring.\">"
+        }
+      ]
+    },
+    {
+      "id": "357650",
+      "stem_html": "1,2-Díklórsýklópentan",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2NSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cddfba4477e42726eac8e3a6f5b7e6566a41702a/OChem_04_EC_201c.jpg\" alt=\"In a 5-membered carbon ring, C1 and C2 are each bonded to a chlorine atom.\">"
+        }
+      ]
+    },
+    {
+      "id": "357651",
+      "stem_html": "1,3-Díbróm-5-metýlsýklóhexan",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2dSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4968a7e85fb426acb7b21d5103377ea0e48c33e1/OChem_04_EC_201d.jpg\" alt=\"In a cyclohexane ring, C1 and C3 are each bonded to a bromine atom. C5 is bonded to a methyl group.\">"
+        }
+      ]
+    }
+  ]
+}

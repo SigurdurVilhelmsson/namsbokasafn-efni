@@ -1,0 +1,37 @@
+{
+  "nickname": "17-07-OC-P14",
+  "source_uid": "37879@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvaða alkóhól myndu gefa eftirfarandi myndefni við oxun?",
+  "questions": [
+    {
+      "id": "359395",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBclVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7e0c5aae52a0a145362c2f378659ff0b6ffc0cd8/OChem_17_07_008a.jpg\" alt=\"Chemical structure of acetophenone\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-Fenýletanól"
+        }
+      ]
+    },
+    {
+      "id": "359396",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcllWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--caeda68494cd54e9c0eb0294cb5e286736fec243/OChem_17_07_008b.jpg\" alt=\"Chemical structure of 2-methylpropanal.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-Metýl-1-própanól"
+        }
+      ]
+    },
+    {
+      "id": "359397",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmNWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ff2ec8369bb90770fe3efd469c6dc0520d4a1634/OChem_17_07_008c.jpg\" alt=\"Chemical structure of cyclopentanone.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Sýklópentanól"
+        }
+      ]
+    }
+  ]
+}

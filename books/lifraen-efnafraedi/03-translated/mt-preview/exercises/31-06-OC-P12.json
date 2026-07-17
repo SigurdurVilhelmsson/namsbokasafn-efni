@@ -1,0 +1,19 @@
+{
+  "nickname": "31-06-OC-P12",
+  "source_uid": "39407@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359337",
+      "stem_html": "Leggið til hvarfgang til að útskýra myndun Bakelíts úr sýruhvataðri fjölliðun fenóls og formaldehýðs.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBandhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7e9d33a4cdeeca57e1b357f55976a55a244dd4b2/OSX_OrgChem_31_99_Bakelite_img.jpg\" alt=\"Phenol reacts with formaldehyde via electrophilic aromatic substitution to produce 2-(hydroxymethyl)phenol which reacts to produce a C H 2 attached to two phenols (each at their C 2).\">"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "02-01-OC-P03",
+  "source_uid": "36114@14",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "345880",
+      "stem_html": "Notaðu gildin fyrir rafneikvæðni á mynd 2.3 til að raða eftirfarandi efnatengjum frá því að vera minnst skautuð yfir í að vera mest skautuð: H<sub>3</sub>C<span class=\"red-text\">–</span>Li, H<sub>3</sub>C<span class=\"red-text\">–</span>K, H<sub>3</sub>C<span class=\"red-text\">–</span>F, H<sub>3</sub>C<span class=\"red-text\">–</span>MgBr, H<sub>3</sub>C<span class=\"red-text\">–</span>OH\n",
+      "collaborator_solutions": [
+        {
+          "content_html": "H<sub>3</sub>C−OH < H<sub>3</sub>C−MgBr < H<sub>3</sub>C−Li = H<sub>3</sub>C−F < H<sub>3</sub>C−K"
+        }
+      ]
+    }
+  ]
+}

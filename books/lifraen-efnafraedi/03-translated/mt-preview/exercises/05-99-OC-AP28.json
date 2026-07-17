@@ -1,0 +1,15 @@
+{
+  "nickname": "05-99-OC-AP28",
+  "source_uid": "36591@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "357216",
+      "stem_html": "<p>Eitt af skrefunum í fituefnaskiptum er vötnun krótónats sem gefur 3-hýdroxýbútýrat. Efnahvarfið verður með álagningu  – OH á Si-flötinn við C3, fylgt eftir með róteiningu við C2, einnig frá Si-fletinum. Teiknaðu myndefni efnahvarfsins og sýndu rúmefnafræði hvers skrefs.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3dSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1383713f37d644b027ccff447470a3377352141e/OChem_05_EC_022.jpg\" alt=\"The figure shows a reaction where crotonate converts to 3-hydroxybutyrate. In crotonate, the double bond is between C2 and C3.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

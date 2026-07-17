@@ -1,0 +1,19 @@
+{
+  "nickname": "19-13-OC-P21",
+  "source_uid": "38015@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360639",
+      "stem_html": "Meðhöndlun 2-sýklóhexenóns með HCN/KCN gefur mettað ketónítríl frekar en ómettað sýanóhýdrín. Sýndu byggingu myndefnisins og leggðu til hvarfgang fyrir efnahvarfið.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBallXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6de19fa25e743ef78cf87b9820d6a78d324433a7/OChem_19_EC_207.jpg\" alt=\"The chemical structure of 3-cyanocyclohexanone.\">"
+        }
+      ]
+    }
+  ]
+}

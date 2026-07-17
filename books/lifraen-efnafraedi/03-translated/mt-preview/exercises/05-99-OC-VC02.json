@@ -1,0 +1,20 @@
+{
+  "nickname": "05-99-OC-VC02",
+  "source_uid": "36524@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Úthlutaðu <i>R</i> eða <i>S</i> stillingum á hendnimiðjur í eftirfarandi sameindum (blátt = N):",
+  "questions": [
+    {
+      "id": "357201",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa3dSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8067b9875ab446b2ee1b779b027863f710b49e15/OChem_05_EC_002a.jpg\" alt=\"The ball-and-stick model of serine. Gray, black, blue, and red spheres represent hydrogen, carbon, nitrogen, and oxygen, respectively.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357202",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazBSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--417cbd612d5d9ebc975609650715767390196499/OChem_05_EC_002b.jpg\" alt=\"The ball-and-stick model of adrenaline. Gray, black, blue, and red spheres represent hydrogen, carbon, nitrogen, and oxygen, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "nickname": "02-99-OC-VC23",
+  "source_uid": "36135@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Eftirfarandi sameindalíkön eru framsetningar á <b>(a)</b> adeníni og <b>(b)</b> cýtósíni, innihaldsefnum í DNA (deoxýríbósakjarnsýru). Sýndu staðsetningu margfaldra tengja og rafeindapara fyrir bæði og teiknaðu beinagrindarmyndir (svart = C, rautt = O, blátt = N, grátt = H).",
+  "questions": [
+    {
+      "id": "351415",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3277797face83717a937d225a6d33bec6bfe6ab9/OChem_02_EC_004a.jpg\" alt=\"The ball and stick model of adenine\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "351416",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDBRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e8950c341426ebf7a5f5a8f10af4463ad40fa68f/OChem_02_EC_004b.jpg\" alt=\"The ball and stick model of cytosine.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

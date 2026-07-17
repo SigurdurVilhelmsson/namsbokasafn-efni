@@ -1,0 +1,25 @@
+{
+  "nickname": "12-99-OC-AP01",
+  "source_uid": "37427@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Leggið til byggingar fyrir efnasambönd sem passa við eftirfarandi massarófsgögn:",
+  "questions": [
+    {
+      "id": "337601",
+      "stem_html": "Kolvetni með M<sup>+</sup> = 132",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "337602",
+      "stem_html": "Kolvetni með M<sup>+</sup> = 166",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "337603",
+      "stem_html": "Kolvetni með M<sup>+</sup> = 84",
+      "collaborator_solutions": []
+    }
+  ]
+}

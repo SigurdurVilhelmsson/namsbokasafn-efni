@@ -1,0 +1,15 @@
+{
+  "nickname": "25-99-OC-AP08",
+  "source_uid": "39081@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348126",
+      "stem_html": "Teiknaðu Fischer-vörpun fyrir tvo <small style=\"font-variant: small-caps\">D</small>-aldóheptósa þar sem handhverfan við C3, C4, C5 og C6 er sú sama og í <small style=\"font-variant: small-caps\">D</small>-glúkósa við C2, C3, C4 og C5.",
+      "collaborator_solutions": []
+    }
+  ]
+}

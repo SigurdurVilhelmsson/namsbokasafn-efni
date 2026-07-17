@@ -1,0 +1,15 @@
+{
+  "nickname": "11-99-OC-AP30",
+  "source_uid": "37404@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355420",
+      "stem_html": "<p>Hægt er að búa til alkýn með vetnishalíðbrottnámi úr vínýlhalíðum í efnahvarfi sem er í rauninni E2-ferli. Við rannsókn á staðefnafræði þessa brottnáms kom í ljós að (<i>Z</i>)-2-klór-2-bútendíósýra hvarfast 50 sinnum hraðar en samsvarandi <i>E</i> hverfa. Hvaða ályktun er hægt að draga um staðefnafræði brottnáms í vínýlhalíðum? Hvernig er þessi niðurstaða í samanburði við brottnám úr alkýlhalíðum?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdk1UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--67db44207e8dbee3405d28083ef71882d8bb3f2f/OChem_11_EC_039.jpg\" alt=\"A reaction in which (Z)-2-chloro-2-butenedioic acid forms an alkyne in the presence of sodium amide and hydronium ion.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,1564 @@
+{
+  "generated_by": "exercise-extract.js",
+  "exercises": {
+    "26-01-OC-P01": {
+      "source_uid": "39212@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "348919"
+      ],
+      "fields": {
+        "stem:348919": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:348919": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-01-OC-P02": {
+      "source_uid": "39213@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "349063"
+      ],
+      "fields": {
+        "stem:349063": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "sol:349063": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-01-OC-P03": {
+      "source_uid": "39214@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "359575"
+      ],
+      "fields": {
+        "stem:359575": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>\n<p>\u0000SLOT_2\u0000</p>\n",
+          "slots": 3,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:359575": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcUlaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--105dbf13237e51fd264b6bd27b0d5ec76fd9410c/OChem_26_EC_201.jpg\" alt=\"Three structures of threonine. One structure is a Fischer projection of L-threonine. The other two structures represent the diastereomers of L-threonine. The configuration of each carbon atom is mentioned.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "26-02-OC-P04": {
+      "source_uid": "39215@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "349000"
+      ],
+      "fields": {
+        "stem:349000": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349000": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-03-OC-P05": {
+      "source_uid": "39216@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "348928",
+        "348929"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348928": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:348928": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348929": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:348929": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-03-OC-P06": {
+      "source_uid": "39217@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "359580",
+        "359581",
+        "359582",
+        "359583"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359580": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:359580": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcU1aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--03292165888f2729a0a884a81c787160c90570a0/OChem_26_EC_202a.jpg\" alt=\"The structure of a linear three-carbon alkyl bromide, with bromine attached at C 1 and a methyl group at C 3.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359581": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:359581": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b5979ba53df01ed49c2f369ca237c0dec2036462/OChem_26_EC_202b.jpg\" alt=\"The structure of an imidazole, with an N-H group at C 1, nitrogen at C 3,  and a bromomethyl group at C 5.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359582": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:359582": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ba41ee67d8bcfb6a68026a4bef7e762be6a460e1/OChem_26_EC_202c.jpg\" alt=\"The structure of an indole comprises a benzene ring fused to a cyclopentene, with an N-H group at C 1,  and a bromomethyl group at C 3.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359583": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:359583": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVlaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c8b2c5903c17d235f089475f9ef6ee41257c8706/OChem_26_EC_202d.jpg\" alt=\"The structure of a methyl bromoethyl thioether, with a bromoethyl and methyl groups.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "26-03-OC-P07": {
+      "source_uid": "39218@6",
+      "solutions_are_public": true,
+      "question_order": [
+        "360847"
+      ],
+      "fields": {
+        "stem:360847": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ed3eca23d1d23a35d2d21b7ca89d38996ba689d0/OChem_26_03_006.jpg\" alt=\"A ball-and-stick model of a five-carbon compound with a carboxylate anion at C 1, an amine at C 2, and a methyl group at C 4 position.\">"
+          },
+          "wraps": {}
+        },
+        "sol:360847": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamNhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5108e48e38be2b055b8718bdbfa49f7bf7c960ec/OSX_OrgChem_26_DD_A-Show_img.jpg\" alt=\"Ethene with H (up) and isopropyl on left, and carboxyl (up) and N with acetyl on right reacts with hydrogen and rhodium catalyst, then aqueous hydroxide, forming (2S)-2-amino-4-methylpentanoic acid.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "26-04-OC-P08": {
+      "source_uid": "39219@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "348941"
+      ],
+      "fields": {
+        "stem:348941": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:348941": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-04-OC-P09": {
+      "source_uid": "39220@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "359587"
+      ],
+      "fields": {
+        "stem:359587": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:359587": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWtaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--03204916976d252a783392bde392868f3f77c04c/OChem_26_EC_204.jpg\" alt=\"The structure of M P V G.  A tetrapeptide, starting at the N-terminus  containing a methionine,  a proline, a valine, and a  glycine,\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "26-05-OC-P10": {
+      "source_uid": "39221@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "359589"
+      ],
+      "fields": {
+        "stem:359589": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:359589": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcW9aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--54238bd131fd192e9bb150f38a99d63c134e4021/OChem_26_EC_205.jpg\" alt=\"The structure of the reaction product of cysteine and iodoacetic acid. A zwitterionic   S-aceto alkylated dicarboxylic acidic amino acid derivative i\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "26-05-OC-P11": {
+      "source_uid": "39222@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "359591"
+      ],
+      "fields": {
+        "stem:359591": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:359591": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f1214ef319cf546ef4cc2d6550688b4ecf18989e/OChem_26_EC_206.jpg\" alt=\"A benzene ring fused to cyclopentanedione linked to a double bond to a nitrogen to a cyclopentanedione with an oxygen ion fused to a benzene plus isobutyraldehyde plus carbon dioxide.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "26-06-OC-P12": {
+      "source_uid": "39223@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "348949"
+      ],
+      "fields": {
+        "stem:348949": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:348949": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-06-OC-P13": {
+      "source_uid": "39224@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "359593"
+      ],
+      "fields": {
+        "stem:359593": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2081d0bdaa0f8bfce74fb385bb507cca08dce300/OChem_26_06_002.jpg\" alt=\"The ball-and-stick model of a P T H derivative containing a methyl thiol ether formed from the Edman degradation of the  N-terminal residue of a peptide. \">"
+          },
+          "wraps": {}
+        },
+        "sol:359593": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-06-OC-P14": {
+      "source_uid": "39225@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "359595"
+      ],
+      "fields": {
+        "stem:359595": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:359595": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTBaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--97dffb70d355239b3fbefb786e3d2194f2058fe6/OChem_26_EC_207.jpg\" alt=\"A P T H derivative containing an acetic acid residue formed from the Edman degradation of the  N-terminal residue of a peptide.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "26-06-OC-P15": {
+      "source_uid": "39226@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "348956",
+        "348957"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348956": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:348956": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348957": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:348957": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-07-OC-P16": {
+      "source_uid": "39227@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "348959"
+      ],
+      "fields": {
+        "stem:348959": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:348959": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-07-OC-P17": {
+      "source_uid": "39228@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "348961"
+      ],
+      "fields": {
+        "stem:348961": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:348961": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>\n<p>\u0000SLOT_2\u0000</p>\n<p>\u0000SLOT_3\u0000</p>\n<p>\u0000SLOT_4\u0000</p>",
+          "slots": 5,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-10-OC-P18": {
+      "source_uid": "39229@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "348965",
+        "348966",
+        "348967"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348965": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:348965": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348966": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:348966": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348967": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:348967": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP01": {
+      "source_uid": "39240@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349065"
+      ],
+      "fields": {
+        "stem:349065": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "26-99-OC-AP02": {
+      "source_uid": "39241@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349067"
+      ],
+      "fields": {
+        "stem:349067": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "26-99-OC-AP03": {
+      "source_uid": "39242@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "348864"
+      ],
+      "fields": {
+        "stem:348864": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP04": {
+      "source_uid": "39243@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "348865",
+        "348866",
+        "348867",
+        "348868"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348865": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348866": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348867": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348868": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP05": {
+      "source_uid": "39244@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349801"
+      ],
+      "fields": {
+        "stem:349801": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP06": {
+      "source_uid": "39245@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "348870",
+        "348871"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348870": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348871": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP07": {
+      "source_uid": "39246@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "348872"
+      ],
+      "fields": {
+        "stem:348872": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP08": {
+      "source_uid": "39247@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "348873",
+        "348874"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348873": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348874": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP09": {
+      "source_uid": "39248@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "348875",
+        "348876"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348875": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348876": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP10": {
+      "source_uid": "39249@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "348877",
+        "348878"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348877": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348878": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP11": {
+      "source_uid": "39250@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "348879"
+      ],
+      "fields": {
+        "stem:348879": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP12": {
+      "source_uid": "39251@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "348880",
+        "348881",
+        "348882",
+        "348883"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348880": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348881": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348882": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348883": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP13": {
+      "source_uid": "39252@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "348884"
+      ],
+      "fields": {
+        "stem:348884": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP14": {
+      "source_uid": "39253@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "348885",
+        "348886"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348885": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348886": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP15": {
+      "source_uid": "39254@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "348887"
+      ],
+      "fields": {
+        "stem:348887": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP16": {
+      "source_uid": "39255@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "348888"
+      ],
+      "fields": {
+        "stem:348888": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP17": {
+      "source_uid": "39256@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "348889",
+        "348890"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348889": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348890": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP18": {
+      "source_uid": "39257@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "348891"
+      ],
+      "fields": {
+        "stem:348891": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP19": {
+      "source_uid": "39258@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "348892",
+        "348893",
+        "348894"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348892": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348893": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348894": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP20": {
+      "source_uid": "39259@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "348895",
+        "348896",
+        "348897",
+        "348898"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348895": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348896": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348897": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348898": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP21": {
+      "source_uid": "39260@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359636",
+        "359637",
+        "359638",
+        "359639"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcm9aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8345107e6f3a8c01fa48502a94a21a35618d123e/OChem_26_EC_018.jpg\" alt=\"The wedge-dash structure of leuprolide.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359636": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359637": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        },
+        "stem:359638": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359639": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP22": {
+      "source_uid": "39261@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "348903"
+      ],
+      "fields": {
+        "stem:348903": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP23": {
+      "source_uid": "39262@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359641"
+      ],
+      "fields": {
+        "stem:359641": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcnNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--903eba54c1789d0a92eed94dd92c21d092340543/OChem_26_EC_019.jpg\" alt=\"The structure of L- arginine in which the guanidino group is labeled. It comprises wedged bonded  C1 amine cation and carboxylate ion.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP24": {
+      "source_uid": "39263@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "348905"
+      ],
+      "fields": {
+        "stem:348905": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP25": {
+      "source_uid": "39264@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359643"
+      ],
+      "fields": {
+        "stem:359643": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<span data-math=\"{\\rm O}\\text{═}{\\rm C}\\text{–}{\\rm N}\"></span>",
+            "1": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcndaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3f832e22a35df67719ec899f62a970b8b44391f0/OChem_26_EC_020.jpg\" alt=\"The structure of N,N-dimethylformamide, an aldehyde group linked to a nitrogen atom to two methyl groups.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP26": {
+      "source_uid": "39265@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "348907"
+      ],
+      "fields": {
+        "stem:348907": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP27": {
+      "source_uid": "39266@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "360857"
+      ],
+      "fields": {
+        "stem:360857": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBallhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--201b35af41208279f1171348704efd231581209b/OSX_OrgChem26_99_ABChain_img.jpg\" alt=\"The structure of insulin is made up of A and B chains, shown in terms of the three-letter amino acid abbreviations in sequence. Cysteine disulfide bonds are also shown.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP28": {
+      "source_uid": "39267@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "348909"
+      ],
+      "fields": {
+        "stem:348909": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>\n<p>\u0000SLOT_2\u0000</p>",
+          "slots": 3,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP29": {
+      "source_uid": "39268@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "348910"
+      ],
+      "fields": {
+        "stem:348910": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>\n<p>\u0000SLOT_2\u0000</p>\n<p>\u0000SLOT_3\u0000</p>\n<p>\u0000SLOT_4\u0000</p>\n<p>\u0000SLOT_5\u0000</p>\n<p>\u0000SLOT_6\u0000</p>",
+          "slots": 7,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP30": {
+      "source_uid": "39269@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "348911",
+        "348912",
+        "348913"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348911": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348912": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:348913": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP31": {
+      "source_uid": "39270@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349805"
+      ],
+      "fields": {
+        "stem:349805": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP32": {
+      "source_uid": "39271@1",
+      "solutions_are_public": false,
+      "question_order": [
+        "348915"
+      ],
+      "fields": {
+        "stem:348915": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP33": {
+      "source_uid": "39272@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "359645"
+      ],
+      "fields": {
+        "stem:359645": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjBaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--06b34cde285e1f8074ee7dd2d6824f5e8441c2bd/OChem_26_EC_021.jpg\" alt=\"A segment of the peptide chain in the histidine ammonia lyase enzyme undergoes cyclization to form 4-methylidene-5-imidazolone (M I O).\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-AP34": {
+      "source_uid": "39273@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "359647"
+      ],
+      "fields": {
+        "stem:359647": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjRaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dedae959ce3890e71d025ccf36de6af967bfe7e9/OChem_26_EC_022.jpg\" alt=\"L-Lysine reacts with alpha-ketoglutarate and nicotinamide adenine dinucleotide phosphate hydrogen to form saccharopine and nicotinamide adenine dinucleotide phosphate cation.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-MP01": {
+      "source_uid": "39235@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "360852",
+        "360853",
+        "360854",
+        "360855"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360852": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360853": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360854": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360855": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb1FhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--48d319e401d34e4b0c4ef14aeadb3daef450269d/OSX_OrgChem_26_99_%20P-Ninhyd_img.jpg\" alt=\"Two molecules of ninhydrin react with an amino acid to form a large compound with multiple ring structures. The other byproducts are aldehyde and carbon dioxide.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-MP02": {
+      "source_uid": "39236@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359619"
+      ],
+      "fields": {
+        "stem:359619": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcllaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--65974506bb7452e0dfacc3c4d2781d843370482a/OChem_26_EC_014.jpg\" alt=\"A polystyrene resin reacts with chloro(methoxy)methane and tin (IV) chloride to form  a polystyrene linked benzyl chloride resin for use in Merrifield solid-phase peptide synthesis.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-MP03": {
+      "source_uid": "39237@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "359621"
+      ],
+      "fields": {
+        "stem:359621": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--766197e3f3f8d3d0162bb36456e6f41805a8fd99/OChem_26_EC_015.jpg\" alt=\"An F m o c-protected amino acid reacts with a base to form the free amino acid, carbon dioxide, and the dibenzofulvene (DBF) intermediate.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-MP04a": {
+      "source_uid": "39431@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "349885",
+        "349886",
+        "349887",
+        "349888"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<p>\u0000SLOT_1\u0000</p>\n<p>\u0000SLOT_2\u0000</p>",
+          "slots": 3,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBam9hIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2f8dd7e71c41c2a38c612df212cbbd80032ba4ea/OChem_26_EC_016.jpg\" alt=\"\">"
+          },
+          "wraps": {}
+        },
+        "stem:349885": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349886": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349887": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349888": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-MP05": {
+      "source_uid": "39239@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "359631"
+      ],
+      "fields": {
+        "stem:359631": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000\n<p>\u0000SLOT_2\u0000</p>",
+          "slots": 3,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmtaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--012896e0c8886dbc8b5fd032328e662074ddfb7d/OChem_26_EC_017.jpg\" alt=\"An alpha-keto acid reacts with hydroxylamine in the presence of N, N-dimethylformamide to form an amide, with carbon dioxide and water as the products.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-VC01": {
+      "source_uid": "39230@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359599",
+        "359600",
+        "359601"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359599": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTRaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c993021319c14e8ca8018f3f43ea69aa3724ca75/OChem_26_EC_008a.jpg\" alt=\"A ball-and-stick model of a five-carbon amino acid,  with a carboxylate anion , an amine at  C 1, and a methyl group at C 2.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359600": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcThaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--04fc1f343445e996dc2656616812fb3b31c98faa/OChem_26_EC_008b.jpg\" alt=\"A ball-and-stick model of a substituted imidazole  connected to a three-carbon chain carboxylic acid containing an amine group at C 1\">"
+          },
+          "wraps": {}
+        },
+        "stem:359601": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBckFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c59506eb35d4fb78e1c55b750d6206bf4543da34/OChem_26_EC_008c.jpg\" alt=\"A ball-and-stick model of a five-carbon chain with an amide group at C 1, an amine and a  carboxylic acid anion at C 3.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-VC02": {
+      "source_uid": "39231@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359603"
+      ],
+      "fields": {
+        "stem:359603": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBckVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9b74c54b087c69aee02f00211bc9b1c430603ddd/OChem_26_EC_009.jpg\" alt=\"A ball-and-stick model of a tripeptide. Black, gray, blue, red, and yellow spheres indicate carbon, hydrogen, nitrogen, oxygen, and sulfur atoms, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-VC03": {
+      "source_uid": "39232@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "359605"
+      ],
+      "fields": {
+        "stem:359605": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcklaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--55afdd360245c6ac0bafd903b2a7abd3ab7879e5/OChem_26_EC_010.jpg\" alt=\"A ball-and-stick model of isoleucine, a five-carbon chain with a carboxylate anion at  C 1, amine at C 2, and a methyl group at C 3 position.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "26-99-OC-VC04": {
+      "source_uid": "39233@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "359607"
+      ],
+      "fields": {
+        "stem:359607": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBck1aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6ef673a4f92f326b3530d693f661cd8a52bc8628/OChem_26_EC_011.jpg\" alt=\"A ball-and-stick model of a four-carbon amino acid with a carboxylate anion at C 1, an amine at  C 1, and a methyl group at  C 3.\">"
+          },
+          "wraps": {
+            "0": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            },
+            "1": {
+              "open": "<small style=\"font-variant: small-caps\">",
+              "close": "</small>"
+            }
+          }
+        }
+      }
+    },
+    "26-99-OC-VC05": {
+      "source_uid": "39234@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "359609"
+      ],
+      "fields": {
+        "stem:359609": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBclFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f18bd35793a0d7c9dec5272565fe0c8d8f8a54c6/OChem_26_EC_012.jpg\" alt=\"A ball-and-stick model of a tetrapeptide. Black, gray, blue, and red spheres indicate carbon, hydrogen, nitrogen, and oxygen, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    }
+  }
+}

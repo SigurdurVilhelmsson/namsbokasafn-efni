@@ -1,0 +1,28 @@
+{
+  "nickname": "16-03-OC-P07",
+  "source_uid": "37794@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Greindu karboxýlsýruklóríðið sem gæti verið notað í Friedel–Crafts-asýlerunarhvarfi til að útbúa hvert af eftirfarandi asýlbensenum:",
+  "questions": [
+    {
+      "id": "358919",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--edb7825bb1e0ee20c17335a5f0b1ac81e9d1c50d/OChem_16_03_012a.jpg\" alt=\"Benzene is bonded to a three-carbon chain, in which C 1 is a carbonyl group. C 2 is bonded to a methyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "(CH<sub>3</sub>)<sub>2</sub>CHCOCl"
+        }
+      ]
+    },
+    {
+      "id": "358920",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazhWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a40106bd8dfd2e7cfb4e2d3acd1d5a4b2bb2bcb4/OChem_16_03_012b.jpg\" alt=\"A central carbonyl group is bonded to two benzene rings, one on each side.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "PhCOCl"
+        }
+      ]
+    }
+  ]
+}

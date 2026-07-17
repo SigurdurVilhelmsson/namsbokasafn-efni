@@ -1,0 +1,19 @@
+{
+  "nickname": "10-06-OC-P10",
+  "source_uid": "37256@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "352613",
+      "stem_html": "<p>Hvernig gætir þú skipt út halógenhópi fyrir tvívetnisfrumeind ef þú vildir búa til tvívetnað efnasamband?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDhUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1908b040123fbf1d5fd3b95356e1f0344f1fdf9e/OChem_10_06_004.jpg\" alt=\"The reaction of 2-bromobutane with an unknown reagent represented by a question mark to form a product in which Br is replaced by D.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Láta Grignard-hvarfefni hvarfast við D<sub>2</sub>O."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "19-99-OC-MP20",
+  "source_uid": "38042@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360719",
+      "stem_html": "<p>Meðhöndlun á <i>α</i>,<i>β</i>-ómettuðu ketóni með basískri vetnisperoxíðlausn í vatni gefur epoxýketón. Efnahvarfið er sértækt fyrir ómettuð ketón; einangruð tvítengi alkena hvarfast ekki. Stingdu upp á hvarfgangi.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbG9XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ffd20f6062ae5e05e945ed8b0e1e488d8ca0efac/OChem_19_EC_039.jpg\" alt=\"The reaction shows 2-cyclohexenone with hydrogen peroxide, sodium hydroxide, and water to yield an epoxy ketone, where the cyclohexanone ring is fused with oxirane at the second and third carbons.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

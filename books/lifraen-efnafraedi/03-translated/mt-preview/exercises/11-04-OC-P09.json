@@ -1,0 +1,19 @@
+{
+  "nickname": "11-04-OC-P09",
+  "source_uid": "37350@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355138",
+      "stem_html": "<p>Meðal margra dæma um S<sub>N</sub>1-efnahvörf sem eiga sér stað með ófullkominni rasemeringu, gefur hið handhverfahreina tósýlat 2,2-dímetýl-1-fenýl-1-própanóls ([<i>α</i>]<sub>D</sub> = –30,3) samsvarandi asetat ([<i>α</i>]<sub>D</sub> = +5,3) þegar það er hitað í ediksýru. Ef fullkomin andhverfing hefði átt sér stað, hefði hið handhverfahreina asetat haft [<i>α</i>]<sub>D</sub> = +53,6. Hversu mörg prósent rasemering og hversu mörg prósent andhverfing áttu sér stað í þessu efnahvarfi?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVlUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ff7dbaa0b1c071b7bc2b48f2dc516d874f947945/OChem_11_04_007.jpg\" alt=\"A reaction of tosylate of 2,2-dimethyl-1-phenyl-1-propanol (alpha D equals negative 30.3) with acetic acid forms acetate (observed alpha D equals plus 5.3) and T o s O H.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "90,1% rasemering, 9,9% andhverfing"
+        }
+      ]
+    }
+  ]
+}

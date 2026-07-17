@@ -1,0 +1,37 @@
+{
+  "nickname": "11-07-OC-P15",
+  "source_uid": "37356@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvaða myndefni myndir þú búast við úr brottnámshvörfum eftirfarandi alkýlhalíða, ef horft er framhjá handhverfu tvítengis? Hvaða myndefni verður aðalmyndefnið í hverju tilviki?",
+  "questions": [
+    {
+      "id": "355152",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTRUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c3c9377eedeea3446d7aea14e408702757156932/OChem_11_07_008a.jpg\" alt=\"A chemical structure of 3-bromo-2-methylpentane.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Aðal: 2-metýl-2-penten; auka: 4-metýl-2-penten"
+        }
+      ]
+    },
+    {
+      "id": "355153",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcThUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bd6a741eb28d7b2912eebe8a9c1274f018979693/OChem_11_07_008b.jpg\" alt=\"A chemical structure of 3-chloro-2,3,5-trimethylhexane.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Aðal: 2,3,5-trímetýl-2-hexen; auka: 2,3,5-trímetýl-3-hexen og 2-ísóprópýl-4-metýl-1-penten"
+        }
+      ]
+    },
+    {
+      "id": "355154",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBckFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7ace238e1c7d3a21e79f47f3651fc4955d891d0e/OChem_11_07_008c.jpg\" alt=\"A chemical structure of 1-bromoethylcyclohexane.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Aðal: etýlidenesýklóhexan; auka: sýklóhexýletýlen"
+        }
+      ]
+    }
+  ]
+}

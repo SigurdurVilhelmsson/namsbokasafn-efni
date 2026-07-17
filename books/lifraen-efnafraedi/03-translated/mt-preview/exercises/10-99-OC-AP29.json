@@ -1,0 +1,20 @@
+{
+  "nickname": "10-99-OC-AP29",
+  "source_uid": "37292@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Segðu fyrir um myndefnið og sýndu allan hvatann hringrás fyrir eftirfarandi Suzuki–Miyaura-efnahvörf.",
+  "questions": [
+    {
+      "id": "357397",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGdUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2fa7de4970ed8d29f7d3c538e4b0ef1fb5242843/OChem_10_EC_037a.jpg\" alt=\"4-bromobenzoic acid reacts with phenylboronic acid in the presence of palladium (II) acetate to yield an unspecified product.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357398",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGtUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4f79a94970185a62061ac13b1baaddbe844b93a0/OChem_10_EC_037b.jpg\" alt=\"2-bromo-1,3-dimethylbenzene reacts with and 2,6-dimethoxyphenylboronic acid in the presence of palladium (II) acetate to yield an unspecified product.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "23-08-OC-P13",
+  "source_uid": "38893@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359729",
+      "stem_html": "<p>Hvaða <i>myndefni</i> myndir þú búast við úr eftirfarandi blönduðu Claisen-líku <i>efnahvarfi</i>?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--83cb0268acad293a6118c7a5dc0507a9f25014d2/OChem_23_08_004.jpg\" alt=\"The ball-and-stick model shows the reaction of 2, 2-dimethylcyclohexanone with dimethyl oxalate in the presence of sodium methoxide in methanol. A question mark shows the unknown product.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGdZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e9906947932eb453a71a269d3170a49957de5113/OChem_23_EC_207.jpg\" alt=\"The structure shows cyclohexanone bonded to two methyls at C 5 and C O C O O C H 3 at C 2.\">"
+        }
+      ]
+    }
+  ]
+}

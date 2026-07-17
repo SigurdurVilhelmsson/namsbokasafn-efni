@@ -1,0 +1,15 @@
+{
+  "nickname": "15-99-OC-AP25",
+  "source_uid": "37773@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358690",
+      "stem_html": "<p>Við efnahvarf við sýru róteindast 4-pýrón á karbónýl-súrefninu og myndar stöðugt katjónískt myndefni. Notaðu vok myndir og 4<i>n</i> + 2 reglu Hückels til að útskýra hvers vegna róteindaða myndefnið er svona stöðugt.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2705b6d53d730970257a576d2cc3d2903853758d/OChem_15_EC_017.jpg\" alt=\"4-Pyrone, when treated wuth acid is protonated at the carbonyl group, the oxygen of which now carries a positive charge.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

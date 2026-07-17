@@ -1,0 +1,963 @@
+{
+  "generated_by": "exercise-extract.js",
+  "exercises": {
+    "30-01-OC-P01": {
+      "source_uid": "39351@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "350044"
+      ],
+      "fields": {
+        "stem:350044": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:350044": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "30-03-OC-P02": {
+      "source_uid": "39352@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "360414"
+      ],
+      "fields": {
+        "stem:360414": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:360414": {
+          "skeleton": "\u0000SLOT_0\u0000 <br>\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "30-03-OC-P03": {
+      "source_uid": "39353@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "349618"
+      ],
+      "fields": {
+        "stem:349618": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349618": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "30-04-OC-P04": {
+      "source_uid": "39354@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "349620"
+      ],
+      "fields": {
+        "stem:349620": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349620": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "30-06-OC-P05": {
+      "source_uid": "39355@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "349622"
+      ],
+      "fields": {
+        "stem:349622": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349622": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "30-06-OC-P06": {
+      "source_uid": "39356@5",
+      "solutions_are_public": true,
+      "question_order": [
+        "355056"
+      ],
+      "fields": {
+        "stem:355056": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdkVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5dbf9b001950a4a66f517e9357841136c5c8720b/OChem_30_06_004.jpg\" alt=\"Cyclopentadiene reacts with cycloheptatrienone in the presence of heat to form a norbornene with a carbonyl group connected to a six-membered carbon with two double bonds.\">"
+          },
+          "wraps": {}
+        },
+        "sol:355056": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "30-07-OC-P07": {
+      "source_uid": "39357@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "355058"
+      ],
+      "fields": {
+        "stem:355058": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdklaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--755a2ac61bcfbff1a455eb4d98120c5fcd26afc7/OChem_30_07_003.jpg\" alt=\"A 1,3,5-heptatriene with featured C H bond on C 7 undergoes sigmatropic rearrangement to produce a product drawn as the mirror image of the reactant.\">"
+          },
+          "wraps": {}
+        },
+        "sol:355058": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "30-08-OC-P08": {
+      "source_uid": "39358@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "359333"
+      ],
+      "fields": {
+        "stem:359333": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2thIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e7c2ae73e8c0cdd3366d66df8031b1ebb6b3f95b/OChem_30_08_HOKH.jpg\" alt=\"Hexa-1,5-dien-3-ol reacts in potassium hydride. Deprotonation is followed by Cope rearrangement to hexa-1,5-dien-1-oxide. Hydronium workup produces 5-hexenal.\">"
+          },
+          "wraps": {}
+        },
+        "sol:359333": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb01hIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8b0966c9c5d2ed160cac47b44d04ca422acfc592/OSX_OrgChem_30_DD_A-Cope_img.jpg\" alt=\"Trans-hepta-1,5-diene undergoes 3,3 shift to produce 3-methylhexa-1,5-diene.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-08-OC-P09": {
+      "source_uid": "39359@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "355060"
+      ],
+      "fields": {
+        "stem:355060": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdk1aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3c42de4eaa3b1769b3a0920489b80a61fbbc147f/OChem_30_08_007.jpg\" alt=\"1-deuterioindene reacts with heat; D at C 1 is exchanged with H at C 2 (intermediate). Then D at C 2 is exchanged with H at C 3 (product).\">"
+          },
+          "wraps": {}
+        },
+        "sol:355060": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "30-08-OC-P10": {
+      "source_uid": "39360@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "355062"
+      ],
+      "fields": {
+        "stem:355062": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdlVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6413ea269ed5724a74e223d701be9fb7a2cc8374/OChem_18_04_005.jpg\" alt=\"2-butenyl phenyl ether reacts in the presence of 250 degree celsius to form an unknown product represented as a question mark.\">"
+          },
+          "wraps": {}
+        },
+        "sol:355062": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "30-08-OC-P11": {
+      "source_uid": "39361@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "355064"
+      ],
+      "fields": {
+        "stem:355064": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--443da72287683c72fa63de7bde53330809a46b15/OChem_30_08_008.jpg\" alt=\"2,6-disubstituted allyl phenyl ether reacts with heat to form a para allyl product.\">"
+          },
+          "wraps": {}
+        },
+        "sol:355064": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "30-09-OC-P12": {
+      "source_uid": "39362@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "349640",
+        "349641",
+        "349642",
+        "349643",
+        "349644"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349640": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349640": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349641": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349641": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349642": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349642": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349643": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349643": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349644": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:349644": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-AP01": {
+      "source_uid": "39370@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358576",
+        "358577"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:358576": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjhaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c0ba37056110c25c2dae0e9f5367ba6ffbc0f1aa/OChem_30_EC_008a.jpg\" alt=\"Two six-membered rings fused together with double bonds undergo electrocyclic reactions to form two fused six-membered rings with the shift of double bonds.\">"
+          },
+          "wraps": {}
+        },
+        "stem:358577": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0FhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--912be0d2618adb0e0ea4261ae5197c26bfee7e61/OChem_30_EC_008b.jpg\" alt=\"Three six-membered rings fused together undergo an electrocyclic reaction to form three fused six-membered rings with wedged and dashed hydrogen atoms at the middle ring.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-AP02": {
+      "source_uid": "39371@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358579"
+      ],
+      "fields": {
+        "stem:358579": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0VhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5e8701fb22bb42f6503fae850d3d6367daea27e4/OChem_30_EC_009.jpg\" alt=\"Cyclohexene undergoes thermal isomerization to form a product. A phenyl replaces C D 3 at C 4 and vice versa at C 3. One phenyl replaces methyl at C 2.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-AP03": {
+      "source_uid": "39372@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "355088"
+      ],
+      "fields": {
+        "stem:355088": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0lhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d0e149d8ec975a33c187f562977434570c9fb882/OChem_30_EC_010.jpg\" alt=\"A reactant in which two cyclohexene rings are bonded together at C 1 reacts with light to form a product where cyclobutene is fused between two cyclohexane rings.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-AP04": {
+      "source_uid": "39373@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "355090"
+      ],
+      "fields": {
+        "stem:355090": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ01hIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3c1f943b67f026ee8ac5e590798acc572caa0845/OChem_30_EC_011.jpg\" alt=\"(1Z,3Z,5Z)-1,3,5-Cyclononatriene reacts at 100 degree Celsius to form a six-membered ring with two double bonds fused to a five-membered ring with two hydrogen atoms.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-AP05": {
+      "source_uid": "39374@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349672"
+      ],
+      "fields": {
+        "stem:349672": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-AP06": {
+      "source_uid": "39375@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "350046"
+      ],
+      "fields": {
+        "stem:350046": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-AP07": {
+      "source_uid": "39376@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "355092"
+      ],
+      "fields": {
+        "stem:355092": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1FhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c22ae04b533076bba86a004011bdcf34ef9d5a07/OChem_30_EC_012.jpg\" alt=\"Cyclohexadecaoctaene reacts with heat to form a tricyclic product with cis hydrogens at ortho-fused carbons. In light, there are trans hydrogens at ortho-fused carbons.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-AP08": {
+      "source_uid": "39377@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "355094"
+      ],
+      "fields": {
+        "stem:355094": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1VhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b8a226cb2565eeeba62eb6263acd38533ef758e1/OChem_30_EC_013.jpg\" alt=\"A chair conformer of cyclohexene fused with another cyclohexene reacts with heat to form benzene. Cyclobutane with two six-membered rings on either side reacts with heat to form benzene.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-AP09": {
+      "source_uid": "39378@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "355096"
+      ],
+      "fields": {
+        "stem:355096": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1lhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e440d6eec9d46b31ae88c9435ad503e0157ba391/OChem_30_EC_014.jpg\" alt=\"A five-carbon cyclic ester reacts with alkyne having two esters in heat to form a benzene ring bonded with two esters and carbon dioxide as the second product.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-AP10": {
+      "source_uid": "39379@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "355098"
+      ],
+      "fields": {
+        "stem:355098": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2NhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9d764383ef47c03d3c6b24a07b7c395f41e85aad/OChem_30_EC_015.jpg\" alt=\"Isoxazole bonded with phenyl reacts with alkyne linked to methyl and aldehyde in heat to form furan bonded with methyl and aldehyde groups at C 4 and C 5, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-AP11": {
+      "source_uid": "39380@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "355100"
+      ],
+      "fields": {
+        "stem:355100": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2dhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c6e3b4002669b123c5f2614fd28847aac1494a78/OChem_30_EC_016.jpg\" alt=\"A benzene ring with C 1 linked to oxygen that is linked to six-carbon chain undergoes 5,5 shift with heat to form an unknown product represented as a question mark.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-AP12": {
+      "source_uid": "39381@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "355102"
+      ],
+      "fields": {
+        "stem:355102": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2thIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5db248d21ba7abab3918e158319d9edce8a9798f/OChem_30_EC_017.jpg\" alt=\"1-vinyl-cyclohex-3-en-1-ol reacts with heat to form 3-vinylcyclohexanone.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-AP13": {
+      "source_uid": "39382@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "355104"
+      ],
+      "fields": {
+        "stem:355104": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ29hIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6067b5097736a8f4927b66b39a7a12c9441e2b40/OChem_30_EC_018.jpg\" alt=\"Vinylcyclopropane reacts with heat to form cyclopentene.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-AP14": {
+      "source_uid": "39383@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "355106"
+      ],
+      "fields": {
+        "stem:355106": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3NhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7ccd3d416bf3400387991eb8bc7ed312a71e6cf6/OChem_30_EC_019.jpg\" alt=\"A reactant having triple bond at C 1, two methyl groups at C 3, oxygen atom, and alkene at C 4 reacts with heat and acid catalyst to form dieneone.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-AP15": {
+      "source_uid": "39384@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "355108"
+      ],
+      "fields": {
+        "stem:355108": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3dhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--613567a154d3ca9555db4cc223e603342ce6865f/OChem_30_EC_020.jpg\" alt=\"Cyclopentane having oxygen atom, methyl, methine double bonded to methylene, and double bond linked to two methyl groups reacts with heat to form Karahanaenone with double bond at C 4.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-AP16": {
+      "source_uid": "39385@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "349697",
+        "349698",
+        "349699",
+        "349700"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349697": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349698": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349699": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:349700": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-AP17": {
+      "source_uid": "39386@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "355110"
+      ],
+      "fields": {
+        "stem:355110": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzBhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--103d73f8733d45f29c988d95d4771b3f855b2fe3/OChem_30_EC_021.jpg\" alt=\"Dewar benzene (double bonds at C 2 and C 5, with C 1 bonded to C 4 to produce two fused cyclobutene rings) reacts slowly in heat to form benzene.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-AP18": {
+      "source_uid": "39387@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "355112"
+      ],
+      "fields": {
+        "stem:355112": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzRhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--65ee0dca65b5b8022db1e6be52a1521cdb7cca61/OChem_30_EC_022.jpg\" alt=\"Cis cyclobutene reacts at 300 degree Celsius to give two cyclobutene rings fused by a bond. This reacts at 100 degree Celsius to give trans cyclobutene.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-AP19": {
+      "source_uid": "39388@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "355114"
+      ],
+      "fields": {
+        "stem:355114": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzhhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--65323240bcf73c1c6939921eead0e2dbf9cb5f13/OChem_30_EC_023.jpg\" alt=\"Cis cyclobutene isomer undergoes a photochemical reaction to give cis-cyclododecaen-7-yne. The trans-isomer undergoes a photochemical reaction to give trans-cyclododecaen-7-yne. A double bond is between C 1 and C 2.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-AP20": {
+      "source_uid": "39389@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "355116"
+      ],
+      "fields": {
+        "stem:355116": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaEFhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ca7aa6c17436e68b4479276191deac2e9bd7b94e/OChem_30_EC_024.jpg\" alt=\"The structure of Bullvalene.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-AP21": {
+      "source_uid": "39390@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "355118"
+      ],
+      "fields": {
+        "stem:355118": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaEVhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--261edf2bf7e41fca682b1832c100ebee0374c09a/OChem_30_EC_025.jpg\" alt=\"A reversible chemical reaction where a reactant with heat gives two products. C 5 is bonded to hydrogen on left and deuterium on bottom and vice versa in second product.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-AP22": {
+      "source_uid": "39391@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "355120"
+      ],
+      "fields": {
+        "stem:355120": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaElhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7059b0c666dd3b949e71abbde8ec05458c425a7c/OChem_30_EC_026.jpg\" alt=\"Cyclohexene having C 1 linked to methylene to sulfur cation, oxygen anion, and methyl reacts to form cyclohexane with O S C H 3 and methylene via alkene.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-AP23": {
+      "source_uid": "39392@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "355122"
+      ],
+      "fields": {
+        "stem:355122": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaE1hIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0203dda586d775c58ec9c58e3f944663d38634d5/OChem_30_EC_027.jpg\" alt=\"Cyclobutene linked to cyclopentane reacts at 270 degree Celsius to form 1,3-cycloheptadiene. Cyclooctane fused to cyclobutene reacts at 190 degree Celsius to form cyclodecadiene.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-AP24": {
+      "source_uid": "39393@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "355124"
+      ],
+      "fields": {
+        "stem:355124": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFFhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--43118d07ec3298ec24a02d9bfa80557354daaf5a/OChem_30_EC_028.jpg\" alt=\"Cyclooctane fused to cyclobutene with methyl reacts at 190 degree Celsius forming two products. Cyclodecadiene rings boned with methyl at C 3 and C 2 in first and second product.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-AP25": {
+      "source_uid": "39394@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "355126"
+      ],
+      "fields": {
+        "stem:355126": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFVhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--20275d99cea1f5481564e11347c528d633543c83/OChem_18_EC_052.jpg\" alt=\"The reaction of chorismate in the presence of chorismate mutase to form prephenate.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-AP26": {
+      "source_uid": "39395@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "355130",
+        "355131",
+        "355132"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:355130": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFlhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--897afcaf513d56c891e589d06b5966a5b509108f/OChem_18_EC_053a.jpg\" alt=\"A chemical structure of [(2-methyl-2-propen-1-yl)oxy]benzene\">"
+          },
+          "wraps": {}
+        },
+        "stem:355131": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGNhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c99b4e455ec440ad137981eaff7e4c030246c930/OChem_18_EC_053b.jpg\" alt=\"A chemical structure of (2E)-1-(vinyloxy)-2-butene with two deuterium atoms on the terminal vinyl carbon.\">"
+          },
+          "wraps": {}
+        },
+        "stem:355132": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGdhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ad00a584aff3218699e25ed183b5a460c01ab534/OChem_18_EC_053c.jpg\" alt=\"A chemical structure of o-allyloxytoluene with two deuterium atoms on the carbon adjacent to oxygen.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-MP01": {
+      "source_uid": "39365@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "355070"
+      ],
+      "fields": {
+        "stem:355070": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdm9aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ceb347d2b2cea274322d4d824d2bf3ed956b4753/OChem_30_EC_003.jpg\" alt=\"N-allyl-N,N-dimethylanilinium ion where prop-1-ene bonded with nitrogen cation at C 1 reacts with heat to form ortho-allyl-N,N-dimethylanilinium ion where prop-1-ene is bonded at C 2.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-MP02": {
+      "source_uid": "39366@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "355073",
+        "355074"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdnNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3daf1b52accb178280f06fcd1ccd8af06c5b4698/OChem_30_EC_004.jpg\" alt=\"The reaction of a colorless polycyclic dye with an oxygen heteroatom in one ring reacting with light to form a dark dye with a ketone group.\">"
+          },
+          "wraps": {}
+        },
+        "stem:355073": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:355074": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-MP03": {
+      "source_uid": "39367@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "355076"
+      ],
+      "fields": {
+        "stem:355076": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdndaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--104a14dbd5334dc5d16ddb2a71289fa9e5f21c2a/OChem_30_EC_005.jpg\" alt=\"The reactant reacts in presence of heat to give estrone methyl ether. Cyclobutane attached to the benzene's C 2 - C 3 position gets converted to cyclohexane in the product.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-MP04": {
+      "source_uid": "39368@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "355078"
+      ],
+      "fields": {
+        "stem:355078": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjBaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--562b01de1f5e551c23f31c068d3cbf626a95641c/OChem_30_EC_006.jpg\" alt=\"The reactant reacts with heat in the presence of 185 degree Celsius to give an intermediate. This reacts with an unknown reagent represented as question mark to form coronafacic acid.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-MP05": {
+      "source_uid": "39369@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "358573"
+      ],
+      "fields": {
+        "stem:358573": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjRaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--eb1dee877b57af9e8fe91371f9a5e03f35525301/OChem_30_EC_007.jpg\" alt=\"A cyclobutane with double bonds connected to C D 2 at two positions reacts at 275 degree Celsius to form a product where hydrogen substitutes with deuterium and vice versa.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-VC01": {
+      "source_uid": "39363@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "355066"
+      ],
+      "fields": {
+        "stem:355066": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--06fa89884004bdeff0a3fe953bfc65e9520ac336/OChem_30_EC_001.jpg\" alt=\"A ball-and-stick model of trans-1,2-divinylcyclohexane.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "30-99-OC-VC02": {
+      "source_uid": "39364@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "355068"
+      ],
+      "fields": {
+        "stem:355068": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmtaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b89b5defb35d79912d72b7eedef976817ebe708a/OChem_30_EC_002.jpg\" alt=\"A ball-and-stick model of cycloheptane with two double bonds connected to cyclopropane linked to two hydrogen atoms. Carbon and hydrogen are represented using black and gray spheres respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "31-04-OC-P09",
+  "source_uid": "39404@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359335",
+      "stem_html": "Sýnið hvarfgang kjarnsækinnar álagningar alkóhóls við ísósýanat til að gefa úretan.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBanNhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b4b15c73ab31e70cebc9e490b5f0fa6c24dbf8fd/OSX_OrgChem_31_99_Urethane_img.jpg\" alt=\"R prime O H and R N double bond C double bond O react via two steps to produce a carbonyl with substituent O R prime and N H R.\">"
+        }
+      ]
+    }
+  ]
+}

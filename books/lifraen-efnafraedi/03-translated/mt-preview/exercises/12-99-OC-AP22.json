@@ -1,0 +1,40 @@
+{
+  "nickname": "12-99-OC-AP22",
+  "source_uid": "37448@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Við hvaða áætluðu stöður gætu eftirfarandi efnasambönd sýnt IR-gleypni?",
+  "questions": [
+    {
+      "id": "352810",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFlVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0bc8f25946b55085d8481ed1c326bba9b18d6460/OChem_12_EC_008a.jpg\" alt=\"A nine-membered carbon chain with alkyne, methyl, and ketone groups.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352811",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGNVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--27afe67d27f25b67b3a7c4a9f52dbda75fc65d32/OChem_12_EC_008b.jpg\" alt=\"Chemical structure of 4-methylpent-1-ene\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352812",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGdVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b7dfa68f8a68a2678e55d52a25774ae3f071293a/OChem_12_EC_008c.jpg\" alt=\"Chemical structure of methyl butyrate\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352813",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGtVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dd660f05fc1e574f4291d0a45cb16c084cf39e2c/OChem_12_EC_008d.jpg\" alt=\"Chemical structure of methyl butyrate\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352814",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaG9VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--29ede2cf239af3987cda8345581765830189326e/OChem_12_EC_008e.jpg\" alt=\"Chemical structure of methyl phenyl ketone\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352815",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaHNVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e1e1d8bebec60c7523feab98d54f743d1143b85b/OChem_12_EC_008f.jpg\" alt=\"Chemical structure of 3-hydroxybenzaldehyde\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

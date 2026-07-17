@@ -1,0 +1,15 @@
+{
+  "nickname": "21-99-OC-MP14",
+  "source_uid": "38194@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361453",
+      "stem_html": "<p>Í <i>jódóformhvarfinu</i> hvarfast tríjódómetýlketón við vatnslausn af NaOH til að gefa karboxýlatjón og jódóform (tríjódómetan). Leggðu til verkunarmáta fyrir þetta hvarf.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--601b9fbebe98d5852ab47bce783b60901fd4169c/OChem_21_EC_038.jpg\" alt=\"A triiodomethyl ketone is converted to a carbozylate ion by treatment with base and then acid. Triiodomethane is a byproduct.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

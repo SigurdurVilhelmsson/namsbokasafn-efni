@@ -1,0 +1,55 @@
+{
+  "nickname": "21-99-OC-AP08",
+  "source_uid": "38202@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig gætuð þið búið til eftirfarandi efnasambönd úr bútansýru?",
+  "questions": [
+    {
+      "id": "342651",
+      "stem_html": "1-Bútanól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342652",
+      "stem_html": "Bútanal",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342653",
+      "stem_html": "1-Brómbútan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342654",
+      "stem_html": "Pentanítríl",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342655",
+      "stem_html": "1-Búten",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342656",
+      "stem_html": "<i>N</i>-Metýlpentanamíð",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342657",
+      "stem_html": "2-Hexanón",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342658",
+      "stem_html": "Bútýlbensen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "342659",
+      "stem_html": "Bútannítríl",
+      "collaborator_solutions": []
+    }
+  ]
+}

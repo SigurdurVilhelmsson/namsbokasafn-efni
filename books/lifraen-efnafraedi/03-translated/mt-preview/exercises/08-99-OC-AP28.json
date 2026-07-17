@@ -1,0 +1,15 @@
+{
+  "nickname": "08-99-OC-AP28",
+  "source_uid": "37186@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353578",
+      "stem_html": "<p>Efnahvarf HBr við 3-metýlsýklóhexen gefur efnablöndu af fjórum myndefnum: <i>cis-</i> og <i>trans-</i>1-bróm-3-metýlsýklóhexan og <i>cis-</i> og <i>trans</i>-1-bróm-2-metýlsýklóhexan. Samsvarandi efnahvarf HBr við 3-brómsýklóhexen gefur <i>trans</i>-1,2-díbrómsýklóhexan sem eina myndefnið. Teiknaðu byggingu mögulegra milliefna og útskýrðu síðan hvers vegna aðeins eitt myndefni myndast í þessu efnahvarfi.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVlTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cf562bc4b7765d09cfeb2c6cc0439821b7df277f/OChem_08_EC_050.jpg\" alt=\"A reaction shows  3-methylcyclohexene reacting with hydrogen bromide to form two cis, trans products. 3-Bromocyclohexene reacting with hydrogen bromide to form a dibromocyclohexane.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

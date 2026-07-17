@@ -1,0 +1,15 @@
+{
+  "nickname": "11-99-OC-MP12",
+  "source_uid": "37377@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355330",
+      "stem_html": "<p>Metýlesterar (RCO<sub>2</sub>CH<sub>3</sub>) gangast undir klofningshvarf og gefa karboxýlatjónir auk joðmetans við hitun með LiI í dímetýlformamíði:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdFlUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b7ab8d8bd603eccfddef7ed232981457ef519c3f/OChem_11_EC_021.jpg\" alt=\"The reaction of methyl cyclohexanoate with lithium iodide in dimethylformamide forms lithium cyclohexanoate and methyl iodide.\">\n<p>Eftirfarandi sönnunargögn hafa fengist: (1) Efnahvarfið verður mun hraðar í DMF en í etanóli. (2) Samsvarandi etýlester (RCO<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub>) klofnar um það bil 10 sinnum hægar en metýlesterinn. Stingdu upp á hvarfgangi fyrir efnahvarfið. Hvers konar aðrar tilraunir gætir þú gert til að styðja tilgátu þína?</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

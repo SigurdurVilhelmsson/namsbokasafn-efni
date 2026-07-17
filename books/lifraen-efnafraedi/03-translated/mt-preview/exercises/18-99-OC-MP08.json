@@ -1,0 +1,15 @@
+{
+  "nickname": "18-99-OC-MP08",
+  "source_uid": "38726@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361197",
+      "stem_html": "<p>Etrar gangast undir sýruhvetjandi klofnunarefnahvarf þegar þeir eru meðhöndlaðir með Lewis-sýrunni BBr<sub>3</sub> við stofuhita. Leggðu til hvarfgang fyrir efnahvarfið.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb3dYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d3e6a4ae19ad8194b1733db55eb24c8bd20af205/OChem_18_EC_026.jpg\" alt=\"Anisole reacts with boron tribromide, then water to form phenol and methyl bromide.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

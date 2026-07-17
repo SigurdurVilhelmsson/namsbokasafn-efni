@@ -1,0 +1,37 @@
+{
+  "nickname": "19-09-OC-P13",
+  "source_uid": "38007@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Sýndu hvernig þú gætir búið til eftirfarandi efnasambönd úr 4-metýl-3-penten-2-óni, (CH<sub>3</sub>)<sub>2</sub>C<span data-math=\"\\text{=}\"></span>CHCOCH<sub>3</sub>.",
+  "questions": [
+    {
+      "id": "360617",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWdXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d8b084d8ff86c60511a50ed86c935b2e3ac8467f/OChem_19_09_003a.jpg\" alt=\"The structure shows a five-carbon chain with a methyl group on C 4 and a double-bonded oxygen atom on C 2 position.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "H<sub>2</sub>/Pd"
+        }
+      ]
+    },
+    {
+      "id": "360618",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWtXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--72b36641359dc3d6e92109d6584336b53fe794f3/OChem_19_09_003b.jpg\" alt=\"The structure of a five-carbon chain with a double bond between C 2 and C 3, and a methyl group attached to C 2 position.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "N<sub>2</sub>H<sub>4</sub>, KOH"
+        }
+      ]
+    },
+    {
+      "id": "360619",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaW9XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3868d3318cec27c119964a9ae5b73898358088f5/OChem_19_09_003c.jpg\" alt=\"The structure of a five-carbon chain with a methyl group on C 2.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. H<sub>2</sub>/Pd; 2. N<sub>2</sub>H<sub>4</sub>, KOH"
+        }
+      ]
+    }
+  ]
+}

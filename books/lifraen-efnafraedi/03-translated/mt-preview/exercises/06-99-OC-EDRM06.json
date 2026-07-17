@@ -1,0 +1,20 @@
+{
+  "nickname": "06-99-OC-EDRM06",
+  "source_uid": "37317@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Álagning vatns á eten til að mynda etanól hefur eftirfarandi varmafræðilega stika:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7f8deda0be1798c4b63d10d91f068ccd6b78be74/OChem_06_EC_007.jpg\" alt=\"A reversible reaction shows ethene reacting favorably with water to form ethanol. Delta H naught and delta S naught are negative, and K E Q is 24.\">",
+  "questions": [
+    {
+      "id": "353293",
+      "stem_html": "Er efnahvarfið útvermið eða innvermið?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353294",
+      "stem_html": "Er efnahvarfið hagstætt (sjálfgengt) eða óhagstætt (ósjálfgengt) við stofuhita (298 K)?",
+      "collaborator_solutions": []
+    }
+  ]
+}

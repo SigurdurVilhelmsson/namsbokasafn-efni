@@ -1,0 +1,28 @@
+{
+  "nickname": "09-04-OC-P07",
+  "source_uid": "37196@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvernig myndir þú búa til eftirfarandi karbónýl efnasambönd frá alkíni (rauðbrúnt = Br)?",
+  "questions": [
+    {
+      "id": "353725",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b805d70664d85a271c3f236d78261f02d1ff80c0/OChem_09_04_011a.jpg\" alt=\"A ball-and-stick model of benzyl ketone with a bromo group. Carbon, hydrogen, carbonyl group, and bromine group are indicated using grey, white, red, and reddish brown spheres.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Kvikasilfurssúlfat-hvötuð vötnun fenýlasetýlens"
+        }
+      ]
+    },
+    {
+      "id": "353726",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--71a8c69b5e01607bdf765ffa2d25b9d758848d3b/OChem_09_04_011b.jpg\" alt=\"A ball and stick model of a cyclopentyl aldehyde. Carbon, hydrogen, and carbonyl group are indicated as grey, white, and red spheres, respectively.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Vatnsbórun/oxun sýklópentýlasetýlens"
+        }
+      ]
+    }
+  ]
+}

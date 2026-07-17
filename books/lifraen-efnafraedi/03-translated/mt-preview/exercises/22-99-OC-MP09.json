@@ -1,0 +1,15 @@
+{
+  "nickname": "22-99-OC-MP09",
+  "source_uid": "38796@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360935",
+      "stem_html": "<p>Leggðu til hvarfgang með bogadregnum örvum fyrir eftirfarandi efnahvarf, sem er eitt af skrefunum í efnaskiptum amínósýrunnar alaníns.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaE1ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4a6f66adc7be821ed509642ffe4eea316ae5f08c/OChem_22_EC_021.jpg\" alt=\"An analog of alanine reacts with base to form a product with a double bond between the alpha carbon and the nitrogen of the amino acid chain.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "nickname": "17-99-OC-MP08",
+  "source_uid": "37897@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Umbreyting 3° alkóhóla í alkena við súrar aðstæður felur í sér tvö katjónísk milliefni. Fyrir hvert efnahvarf, teiknaðu allan hvarfganginn með bogadregnum örvum.",
+  "questions": [
+    {
+      "id": "359455",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc3dWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fe238ffd5c41e56d6e1a5bebc06b455a53fc460f/OChem_17_EC_026a.jpg\" alt=\"1-methylcyclohexanol reacts with hydronium to form 1-methylcyclohexene.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359456",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczBWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--571c4edc2746273b83e33a9ed044e00fa10e8863/OChem_17_EC_026b.jpg\" alt=\"2-methylbutan-2-ol reacts with hydronium to form 2-methylbut-2-ene.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359457",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczRWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b588804aaa5bd7ff150e96d0894deba68eab1d35/OChem_17_EC_026c.jpg\" alt=\"Methanol with two methyl and one phenyl substituents reacts with hydronium to form 1-methyl-1-phenylethene\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

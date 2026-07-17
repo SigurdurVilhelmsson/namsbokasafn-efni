@@ -1,0 +1,40 @@
+{
+  "nickname": "13-99-OC-AP08",
+  "source_uid": "37502@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hversu mörg merki myndir þú búast við að hver af eftirfarandi sameindum hefði í <sup>1</sup>H- og <sup>13</sup>C-rófum sínum?",
+  "questions": [
+    {
+      "id": "358362",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbG9VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ce70f51d8e2c6ebaa88186a6b0f7594fbbcff778/OChem_13_EC_007a.jpg\" alt=\"The structure has two carbon atoms with a double bond in-between. C 1 and C 2 are each bonded to two methyl groups.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358363",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHNVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--50a471195d18a0294aee110be4b81dc22409a7ac/OChem_13_EC_007b.jpg\" alt=\"The structure has a cyclohexane ring. C 1 is a carbonyl group. C 4 is bonded to two methyl groups.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358364",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbHdVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4892a7caf800be8b4b2504438c3f4d23683f9944/OChem_13_EC_007c.jpg\" alt=\"A condensed structure of acetone.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358365",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDBVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7e973b7395ccceb4261e076c3ffebc6d09d8d706/OChem_13_EC_007d.jpg\" alt=\"A chemical structure of methyl 2,2-dimethyl propionate.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358366",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDRVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bbc0c745ad1918d1979779bbe409ba2d0416ac3a/OChem_13_EC_007e.jpg\" alt=\"The structure has a benzene ring. C 1 and C 4 are each bonded to a methyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358367",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDhVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--717f50fa9a463989e47a3032eaf78535b88705d3/OChem_13_EC_007f.jpg\" alt=\"A chemical structure of 1,1-dimethylcyclopropane.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

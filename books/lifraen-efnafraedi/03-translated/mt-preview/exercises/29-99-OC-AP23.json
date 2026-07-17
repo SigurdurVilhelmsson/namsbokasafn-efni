@@ -1,0 +1,15 @@
+{
+  "nickname": "29-99-OC-AP23",
+  "source_uid": "39348@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358181",
+      "stem_html": "<p>Í skrefi 6 í lífmyndun fitusýra (mynd 29.6) er asetóasetýl-ACP afoxað sértækt að rúmefnafræði með NADPH til að mynda alkóhól. Legst hýdríðjón á Si-hlið eða Re-hlið asetóasetýl-ACP?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdTRaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0b0fcf7514f898d4f3f21cce741773ec0dc04692/OChem_29_EC_019.jpg\" alt=\"Acetoacetyl A C P forms beta-hydroxybutyryl A C P via the reduction of nicotinamide adenine dinucleotide phosphate hydride to nicotinamide adenine dinucleotide phosphate cation.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

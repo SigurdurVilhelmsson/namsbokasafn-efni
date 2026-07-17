@@ -1,0 +1,40 @@
+{
+  "nickname": "07-99-OC-AP05",
+  "source_uid": "36657@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu byggingar sem samsvara eftirfarandi kerfisbundnum nöfnum:",
+  "questions": [
+    {
+      "id": "330266",
+      "stem_html": "(4<i>E</i>)-2,4-dímetýl-1,4-hexadíen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "330267",
+      "stem_html": "<i>cis</i>-3,3-dímetýl-4-própýl-1,5-oktadíen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "330268",
+      "stem_html": "4-metýl-1,2-pentadíen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "330269",
+      "stem_html": "(3<i>E,</i>5<i>Z</i>)-2,6-dímetýl-1,3,5,7-oktatetraen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "330270",
+      "stem_html": "3-bútýl-2-hepten",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "330271",
+      "stem_html": "<i>trans</i>-2,2,5,5-tetrametýl-3-hexen",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "nickname": "19-01-OC-P02",
+  "source_uid": "37996@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Teiknaðu byggingarformúlur sem samsvara eftirfarandi heitum:",
+  "questions": [
+    {
+      "id": "360602",
+      "stem_html": "3-Metýlbútanal",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDRXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1a522ec28f7ede1989334ea3927dd8db5a6a0f7e/OChem_19_EC_201a.jpg\" alt=\"The structure of 3-methylbutanal. A four-carbon chain with an aldehyde group on the first carbon and a methyl group attached to the third carbon.\">"
+        }
+      ]
+    },
+    {
+      "id": "360603",
+      "stem_html": "4-Klór-2-pentanón",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDhXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c249e2e914f6f001ecfa62b2fdf8c7c1ed8cc177/OChem_19_EC_201b.jpg\" alt=\"The structure of 4-chloro-2-pentanone. A five-carbon chain with a chlorine atom attached to the fourth carbon and a carbonyl group is on the second position.\">"
+        }
+      ]
+    },
+    {
+      "id": "360604",
+      "stem_html": "Fenýlasetaldehýð",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUFXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--21d20718548bf250a2491f4658f62ce3b9ace0b7/OChem_19_EC_201c.jpg\" alt=\"The structure of phenylacetaldehyde. A benzene ring with the first carbon attached to C H 2 C H O group.\">"
+        }
+      ]
+    },
+    {
+      "id": "360605",
+      "stem_html": "<i>cis</i>-3-<i>tert</i>-Bútýlsýklóhexankarbaldehýð",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUVXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--61369462696e71e85232e4230bd60f08aae1f5d2/OChem_19_EC_201d.jpg\" alt=\"Cyclohexane ring in which one carbon has t-butyl (wedge) and H (dash) substituents, and two carbons away (clockwise) has C H O (wedge) and H (dash) groups.\">"
+        }
+      ]
+    },
+    {
+      "id": "360606",
+      "stem_html": "3-Metýl-3-bútenal",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUlXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--551f9a9f298a62a508b99d1e050183636b85e50f/OChem_19_EC_201e.jpg\" alt=\"The structure of 3-methyl-3-butenal. A four-carbon chain with a methyl group on the third carbon, sharing a double bond between the third and fourth carbons with aldehyde on first position.\">"
+        }
+      ]
+    },
+    {
+      "id": "360607",
+      "stem_html": "2-(1-Klóretýl)-5-metýlheptanal",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaU1XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5d9212f451d934294c30efec35b53c1a9b2dabc8/OChem_19_EC_201f.jpg\" alt=\"A seven-carbon chain with a chloroethyl group attached to the second carbon by chloroethyl C 1, methyl attached to the fifth carbon, and aldehyde group attached to the first carbon.\">"
+        }
+      ]
+    }
+  ]
+}

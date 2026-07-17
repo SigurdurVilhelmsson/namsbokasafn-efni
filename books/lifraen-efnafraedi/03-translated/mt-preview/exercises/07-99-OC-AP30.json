@@ -1,0 +1,15 @@
+{
+  "nickname": "07-99-OC-AP30",
+  "source_uid": "36682@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354486",
+      "stem_html": "<p>Retin A, eða retínósýra, er lyf sem er almennt notað til að draga úr hrukkum og meðhöndla alvarlegar bólur. Hversu margar mismunandi hverfur sem stafa af <i>E,Z</i>-tvítengjahverfun eru mögulegar?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzhTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1f48b29928092d369bd8f875fa8e02669a7fa471/OChem_07_EC_031.jpg\" alt=\"The structure of retin A (retinoic acid): one double bond in a ring, and four double bonds in a long substituent chain, each with two different substituents at each carbon.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

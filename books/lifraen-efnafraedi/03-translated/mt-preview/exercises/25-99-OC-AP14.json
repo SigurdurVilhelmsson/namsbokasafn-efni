@@ -1,0 +1,40 @@
+{
+  "nickname": "25-99-OC-AP14",
+  "source_uid": "39087@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu byggingarformúlur myndefnanna sem þú myndir búast við að fá úr efnahvarfi <i>β</i>-<small style=\"font-variant: small-caps\">D</small>-talópýranósa við hvert eftirfarandi hvarfefna:",
+  "questions": [
+    {
+      "id": "348147",
+      "stem_html": "NaBH<sub>4</sub> í H<sub>2</sub>O",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348148",
+      "stem_html": "Volg, þynnt HNO<sub>3</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348149",
+      "stem_html": "Br<sub>2</sub>, H<sub>2</sub>O",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348150",
+      "stem_html": "CH<sub>3</sub>CH<sub>2</sub>OH, HCl",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348151",
+      "stem_html": "CH<sub>3</sub>I, Ag<sub>2</sub>O",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348152",
+      "stem_html": "(CH<sub>3</sub>CO)<sub>2</sub>O, pýridín",
+      "collaborator_solutions": []
+    }
+  ]
+}

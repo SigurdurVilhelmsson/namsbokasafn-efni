@@ -1,0 +1,28 @@
+{
+  "nickname": "11-07-OC-P16",
+  "source_uid": "37357@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Úr hvaða alkýlhalíðum gætu eftirfarandi alkenar hafa verið búnir til?",
+  "questions": [
+    {
+      "id": "355157",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBckVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--eb755c0ea023ea702d3d72ae24c973e5ea114e0a/OChem_11_07_009a.jpg\" alt=\"A chemical structure of 3,6-dimethyl-1-heptene\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-bróm-3,6-dímetýlheptan"
+        }
+      ]
+    },
+    {
+      "id": "355158",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcklUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--06d9e57a9fab98ce5d71a23bc8ba4d8a3f75a457/OChem_11_07_009b.jpg\" alt=\"A chemical structure of 3,4-dimethylcyclopentene.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "4-bróm-1,2-dímetýlsýklópentan"
+        }
+      ]
+    }
+  ]
+}

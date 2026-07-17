@@ -1,0 +1,35 @@
+{
+  "nickname": "03-99-OC-AP19",
+  "source_uid": "36456@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Útskýrið hvers vegna hvert eftirfarandi nafna er rangt:",
+  "questions": [
+    {
+      "id": "327974",
+      "stem_html": "2,2-Dímetýl-6-etýlheptan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327975",
+      "stem_html": "4-Etýl-5,5-dímetýlpentan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327976",
+      "stem_html": "3-Etýl-4,4-dímetýlhexan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327977",
+      "stem_html": "5,5,6-Trímetýloktan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "327978",
+      "stem_html": "2-Ísóprópýl-4-metýlheptan",
+      "collaborator_solutions": []
+    }
+  ]
+}

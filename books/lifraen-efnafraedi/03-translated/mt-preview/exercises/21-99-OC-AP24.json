@@ -1,0 +1,15 @@
+{
+  "nickname": "21-99-OC-AP24",
+  "source_uid": "38218@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361505",
+      "stem_html": "<p>Þegar karboxýlsýra er leyst upp í samsætumerktu vatni fellur samsætan fljótt inn í báðar súrefnisfrumeindir karboxýlsýrunnar. Útskýrðu.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa2tYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8ab06e50345e684787c12db8cb00673a97e23f67/OChem_21_EC_050.jpg\" alt=\"The reaction of a carboxylic acid with isotopically labeled water gives an isotopically labelled carboxylic acid in which both oxygen atoms of the carboxylic acid group are labeled.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

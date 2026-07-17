@@ -1,0 +1,15 @@
+{
+  "nickname": "08-99-OC-MP14",
+  "source_uid": "37121@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353494",
+      "stem_html": "<p>Notaðu almenna þekkingu þína á efnafræði alkena til að setja fram tillögu að hvarfgangi fyrir eftirfarandi efnahvarf.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbm9TIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8c7d4d267c67e38bc5038a52d577beeca7b7a41c/OChem_08_EC_029.jpg\" alt=\"A reaction shows C15 sesquiterpene reacting with mercury (II) acetate to form a substituted decalin ring.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

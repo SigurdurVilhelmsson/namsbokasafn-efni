@@ -1,0 +1,15 @@
+{
+  "nickname": "11-99-OC-AP21",
+  "source_uid": "37400@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355398",
+      "stem_html": "<p>Efnahvarf eftirfarandi <i>S</i>-tósýlats við sýaníðjón gefur nítrílmyndefni sem hefur einnig <i>S</i>-handhverfu. Útskýrðu.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdThUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e78d18cec3aae45d5500dc4f866a9728731b9eb6/OChem_11_EC_033.jpg\" alt=\"An incomplete reaction between tosylate having S configuration in the presence of sodium cyanide yields an unknown product, depicted by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

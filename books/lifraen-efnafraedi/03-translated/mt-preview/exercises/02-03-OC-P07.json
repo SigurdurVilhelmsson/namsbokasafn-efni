@@ -1,0 +1,37 @@
+{
+  "nickname": "02-03-OC-P07",
+  "source_uid": "36119@13",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Reiknaðu formlega hleðslu fyrir frumeindirnar sem ekki eru vetni í eftirfarandi sameindum:",
+  "questions": [
+    {
+      "id": "358910",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdm9ZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e525170f31aad0d1949d6fea8057cded9a1b7fae/OChem_02_03_007a.jpg\" alt=\"Text reading diazomethane and a condensed structure of C H 2 double bonded to N double bonded to another N. There are two nonbonding pairs on the final N.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Fyrir kolefni: FH = 4 − 8/2 − 0 = 0 Fyrir miðju nitrið: FH = 5 − 8/2 − 0 = +1 Fyrir nitrið á endanum: FH = 5 − 4/2 − 4 = −1"
+        }
+      ]
+    },
+    {
+      "id": "358911",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdnNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f7d07db477703f1911dcbb8414672695fda44939/OChem_02_03_007b.jpg\" alt=\"Text reading acetonitrile oxide and a condensed structure of C H 3 C N O, with a triple bond between C and N and three nonbonding pairs on O.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Fyrir nitur: FH = 5 − 8/2 − 0 = +1 Fyrir súrefni: FH = 6 − 2/2 − 6 = −1"
+        }
+      ]
+    },
+    {
+      "id": "358912",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdndZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0773a3ac1effdc30f90f93a2662a905dc0a8ec90/OChem_02_03_007c.jpg\" alt=\"Text reading methyl isocyanide and a condensed structure of C H 3 N C, with a triple bond between N and C and a nonbonding pair on the triple-bonded carbon.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Fyrir nitur: FH = 5 − 8/2 − 0 = +1 Fyrir þrítengda kolefnið: FH = 4 −\t6/2 − 2 = −1"
+        }
+      ]
+    }
+  ]
+}

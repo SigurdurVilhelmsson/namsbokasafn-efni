@@ -1,0 +1,25 @@
+{
+  "nickname": "19-99-OC-AP23",
+  "source_uid": "38069@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvert eftirfarandi efnahvarfaferla hefur einn eða fleiri galla. Hvað er rangt í hverju tilviki? Hvernig mynduð þið leiðrétta hvern feril?",
+  "questions": [
+    {
+      "id": "360805",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjhXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7ec219a531c334222751db026849a52076711c31/OChem_19_EC_057a.jpg\" alt=\"3-oxo-bicyclo[4.4.0]dec-2-ene reacts with methylmagnesium bromide, then hydronium to form 1-methyl-3-oxobicylo[4.4.0]decane, which reacts with lithium aluminum hydride, then hydronium to form 1-methylbicyclo[4.4.0]decane.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360806",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0FXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1605dd303562b3937b450fe73cc88b4f1d91f9c0/OChem_19_EC_057b.jpg\" alt=\"3-phenylprop-2-en-1-ol reacts with chromium trioxide and hydronium ion to form 3-phenylprop-2-enal. This reacts with hydrogen ions and methanol to form 1,1-dimethoxy-3-phenylprop-2-ene.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360807",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0VXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f860185c672d42482e6573cbad974a0651872894/OChem_19_EC_057c.jpg\" alt=\"Acetone reacts with hydrogen cyanide, potassium cyanide, and ethanol to form 2-cyanopropan-2-ol. This reacts with hydronium to form 1-amino-2-methylpropan-2-ol.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

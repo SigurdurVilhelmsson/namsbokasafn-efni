@@ -1,0 +1,19 @@
+{
+  "nickname": "15-04-OC-P08",
+  "source_uid": "37739@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358634",
+      "stem_html": "Hlutfallsleg orkustig fimm <i>π</i> sameindasvigrúma sýklópentadíenýlkerfisins eru svipuð og í benseni. Það er, það er eitt lægsta orku sameindasvigrúm, en fyrir ofan það koma svigrúmin í úrkynjuðum pörum. Teiknaðu skýringarmynd eins og á mynd 15.6 og segðu til um hvaða af fimm svigrúmunum eru upptekin í katjóninni, stakeindinni og anjóninni.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b849df80915ac50d5f536501965fa56347f0c216/OChem_15_EC_203.jpg\" alt=\"The energy levels of the cyclopentadienyl cation show two unpaired electrons. That of the radical shows one unpaired electron, and the anion does not have any unpaired electrons.\">"
+        }
+      ]
+    }
+  ]
+}

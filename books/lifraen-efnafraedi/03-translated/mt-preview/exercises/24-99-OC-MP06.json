@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-MP06",
+  "source_uid": "38988@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361643",
+      "stem_html": "<p>Skipt pýrról eru oft útbúin með því að meðhöndla 1,4-díketón með ammóníaki. Leggðu til hvarfgang.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUVaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--94fbe516e02699bd092e0bd698f047a4422a4d10/OChem_24_EC_022.jpg\" alt=\"A 1,4-diketone reacts with ammonia to form a pyrrole with R and R dash as substituents and water is the second product.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

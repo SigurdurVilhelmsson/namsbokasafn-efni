@@ -1,0 +1,15 @@
+{
+  "nickname": "07-99-OC-AP16",
+  "source_uid": "36668@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "330333",
+      "stem_html": "<i>trans</i>-2-búten er aðeins 4 kJ/mól stöðugra en <i>cis</i>-2-búten, en <i>trans</i>-2,2,5,5-tetrametýl-3-hexen er 39 kJ/mól stöðugra en cis-hverfa þess. Útskýrðu.",
+      "collaborator_solutions": []
+    }
+  ]
+}

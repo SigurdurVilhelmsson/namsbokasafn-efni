@@ -1,0 +1,15 @@
+{
+  "nickname": "31-99-OC-AP03",
+  "source_uid": "39417@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355038",
+      "stem_html": "<p>Teiknaðu byggingu Kodel, pólýesters sem er búinn til með því að hita dímetýl 1,4-bensendíkarboxýlat með 1,4-bis(hýdroxýmetýl)sýklóhexani.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTBhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e90593a1bd0f0c3d16314333e38fe4ceea27f744/OChem_31_EC_008.jpg\" alt=\"The structure of 1,4-bis(hydroxymethyl)cyclohexane.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

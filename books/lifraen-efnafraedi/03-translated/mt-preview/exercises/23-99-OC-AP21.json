@@ -1,0 +1,25 @@
+{
+  "nickname": "23-99-OC-AP21",
+  "source_uid": "38948@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Ólíklegt er að eftirfarandi efnahvörf gefi af sér tilgreint myndefni í miklum heimtum. Hvað er rangt við hvert þeirra?",
+  "questions": [
+    {
+      "id": "359924",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDRZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ebd571b3a3f43979239985c5a1a3eb592e86b74a/OChem_23_EC_045a.jpg\" alt=\"Acetaldehyde reacts with acetone in the presence of sodium ethoxide and ethanol to form a five-carbon chain with keto on the second and hydroxyl on the fourth carbon.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359925",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDhZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5f72d79bae6de52b1e5cf8c4d29bf71d538eae2e/OChem_23_EC_045b.jpg\" alt=\"3-methylcyclohexan-1-one to product by reaction with but-3-en-2-one. The product has cyclohexanone with methyl at third and C H 2 C H 2 C O C H 3 at second carbon.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359926",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUFZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6bd509a880fc7ec165ae7dc81801d6b796c13816/OChem_23_EC_045c.jpg\" alt=\"The reaction shows heptane-2, 6-dione with sodium ethoxide in ethanol, forming a product that attaches cyclobutene to methyl at second and C O C H 3 on the first carbon.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

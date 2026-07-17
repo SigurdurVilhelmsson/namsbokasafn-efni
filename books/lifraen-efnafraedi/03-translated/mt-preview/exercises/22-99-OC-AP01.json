@@ -1,0 +1,40 @@
+{
+  "nickname": "22-99-OC-AP01",
+  "source_uid": "38805@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Auðkenndu öll súru vetnin (p<i>K</i><sub>a</sub> &lt; 25) í eftirfarandi sameindum:",
+  "questions": [
+    {
+      "id": "360956",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaHNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f553baf7efa1dc25078627834b8911b81c0da2f2/OChem_22_EC_029a.jpg\" alt=\"The structure of 3-methyl-2 pentanone comprises of a five carbon chain in which C 2 is a carbonyl group and a methyl group is on C 3.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360957",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaHdZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--78baffb8ad42654b195fdf8ff8e2270986ee6438/OChem_22_EC_029b.jpg\" alt=\"The structure of 1, 3-cyclopentanedione where two carbonyl groups constitute the C 1 and C 3 positions of the cyclopentane ring.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360958",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDBZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--048747438cf2cab6df14a11e3e7b6c610781b507/OChem_22_EC_029c.jpg\" alt=\"Structure comprising a six-carbon chain in which C 2 is bonded to C 3 by a triple bond and a hydroxyl group is on C 6\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360959",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDRZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--11290c2a60b9d5853b23ab4f066a2e8b244a0fc4/OChem_22_EC_029d.jpg\" alt=\"A substituted benzene ring in which C O 2 C H 3 group is ortho to a C H 2 C triple bond N group\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360960",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDhZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a91be7157d92f2f177cea402e1bd0a88dc9c8046/OChem_22_EC_029e.jpg\" alt=\"The structure of cyclopentanecarbonyl chloride in which C O C l is attached to a cyclopntane ring.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "360961",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUFZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--02b9143df33d948d144b86710a99d2d5cb23dd16/OChem_22_EC_029f.jpg\" alt=\"The structure of 2-methyl-1-penten-3-one which comprises of a five carbon chain with a double bond between C 1 and C 2, C 3 is a carbonyl group, and a methyl group is bonded to C 2\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "nickname": "21-04-OC-P09",
+  "source_uid": "38159@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvernig gætir þú búið til eftirfarandi estra með kjarnsæknu asýlskiptihvarfi sýruklóríðs?",
+  "questions": [
+    {
+      "id": "342465",
+      "stem_html": "CH<sub>3</sub>CH<sub>2</sub>CO<sub>2</sub>CH<sub>3</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "Própanóýlklóríð + metanól"
+        }
+      ]
+    },
+    {
+      "id": "342466",
+      "stem_html": "CH<sub>3</sub>CO<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "asetýlklóríð + etanól"
+        }
+      ]
+    },
+    {
+      "id": "342467",
+      "stem_html": "Etýlbensóat",
+      "collaborator_solutions": [
+        {
+          "content_html": "Bensóýlklóríð + etanól"
+        }
+      ]
+    }
+  ]
+}

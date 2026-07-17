@@ -1,0 +1,19 @@
+{
+  "nickname": "28-07-OC-P12",
+  "source_uid": "39121@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358107",
+      "stem_html": "Leggðu til hvarfgang til að útskýra klofnun <i>Β</i>-sýanóetýl verndarhópsins frá fosfathópunum við meðhöndlun með vatnslausn af ammóníaki. (Akrýlónítríl, H<sub>2</sub>C<span data-math=\"\\text{═}\"></span>CHCN, er aukaafurð.) Hvers konar efnahvarf er að eiga sér stað?",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a98404f7d647ed5ca7f826f26ae598408d1c99f5/OChem_28_EC_202.jpg\" alt=\"E 2 reaction mechanism between beta cyanoethyl protecting group and ammonia. A downward arrow pointing from the lone airs of ammonia to H bonded with C H C N.\">"
+        }
+      ]
+    }
+  ]
+}

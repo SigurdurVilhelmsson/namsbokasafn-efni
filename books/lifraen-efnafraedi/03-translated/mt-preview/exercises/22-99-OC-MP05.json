@@ -1,0 +1,15 @@
+{
+  "nickname": "22-99-OC-MP05",
+  "source_uid": "38792@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360929",
+      "stem_html": "<p>Í Hell–Volhard–Zelinskii-efnahvarfinu er aðeins þörf á hvötunarlegu magni af PBr<sub>3</sub> vegna eftirfarandi jafnvægis. Leggðu til hvarfgang fyrir myndun jafnvægisins.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaEFZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--beb4adf2999c6cf04f7cd4fa061be339254ddad5/OChem_22_EC_018.jpg\" alt=\"An alpha brominated acid bromide reacts reversibly with a carboxylic acid to give an alpha brominated carboxylic acid and an acid bromide.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

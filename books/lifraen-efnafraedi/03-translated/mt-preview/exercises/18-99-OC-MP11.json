@@ -1,0 +1,15 @@
+{
+  "nickname": "18-99-OC-MP11",
+  "source_uid": "38729@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361205",
+      "stem_html": "<p>Þegar 2-metýl-2,5-pentandíól er meðhöndlað með brennisteinssýru á sér stað vötnunarbrot og 2,2-dímetýltetrahýdrófúran myndast. Leggðu til hvarfgang fyrir þetta efnahvarf. Hvor af súrefnisfrumeindunum tveimur er líklegri til að vera fjarlægð og hvers vegna?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbzhYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3f59b2f898fd9ca6e5d11bf31629fdf1ce2ef4d8/OChem_18_EC_029.jpg\" alt=\"The structure of 2,2-dimethyltetrahydrofuran. It comprises a five-membered ring incorporating one oxygen, connected to two methyl groups at C2.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

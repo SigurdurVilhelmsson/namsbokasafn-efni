@@ -1,0 +1,15 @@
+{
+  "nickname": "05-99-OC-VC04",
+  "source_uid": "36527@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354147",
+      "stem_html": "<p>Úthlutaðu <i>R</i> eða <i>S</i> stillingu á hverja hendnimiðju í gerviefedríni, lausasölulyfi við nefstíflu sem finnst í kveflyfjum (blátt = N).</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbEVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--387eb5474016a755c6162531b453e0acc8117a71/OChem_05_EC_004.jpg\" alt=\"The ball-and-stick model of pseudoephedrine. Gray, black, blue, and red spheres represent hydrogen, carbon, nitrogen, and oxygen, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

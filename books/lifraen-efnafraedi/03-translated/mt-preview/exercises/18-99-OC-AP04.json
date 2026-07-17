@@ -1,0 +1,30 @@
+{
+  "nickname": "18-99-OC-AP04",
+  "source_uid": "38737@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú búa til eftirfarandi efnasambönd úr 1-fenýletanóli?",
+  "questions": [
+    {
+      "id": "464242",
+      "stem_html": "Metýl-1-fenýletýleter",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "464243",
+      "stem_html": "Fenýlepoxýetan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "464244",
+      "stem_html": "1-Fenýletanþíól ",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "464245",
+      "stem_html": "<i>tert</i>-Bútýl-1-fenýletýleter",
+      "collaborator_solutions": []
+    }
+  ]
+}

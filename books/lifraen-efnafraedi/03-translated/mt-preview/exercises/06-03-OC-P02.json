@@ -1,0 +1,19 @@
+{
+  "nickname": "06-03-OC-P02",
+  "source_uid": "37301@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "341006",
+      "stem_html": "Klórun alkana með stakeindum er yfirleitt ekki hentug því oft verða til efnablöndur af myndefnum þegar fleiri en ein tegund C−H-efnatengis er til staðar í hvarfefninu. Teiknaðu og nefndu öll einklóríðuð skiptihvarfsmyndefni C<sub>6</sub>H<sub>13</sub>Cl sem þú gætir fengið með efnahvarfi 2-metýlpentans við Cl<sub>2</sub>.",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-klór-2-metýlpentan, 2-klór-2-metýlpentan, 3-klór-2-metýlpentan, 2-klór-4-metýlpentan, 1-klór-4-metýlpentan"
+        }
+      ]
+    }
+  ]
+}

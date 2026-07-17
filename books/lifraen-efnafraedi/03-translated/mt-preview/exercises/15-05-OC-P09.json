@@ -1,0 +1,19 @@
+{
+  "nickname": "15-05-OC-P09",
+  "source_uid": "37740@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358636",
+      "stem_html": "<p>Teiknaðu svigrúmsmynd af fúrani til að sýna hvernig sameindin er arómatísk.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUVWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6728c00ce0e6e376c9c9e823151a91747e4dc1b5/OChem_15_05_006.jpg\" alt=\"Furan has an oxygen atom at first position with two lone pairs of electrons. The ring has two alternate double bonds.\">\n",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUlWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0807e1ce980e0bb84e26d0f5d4caeea0a31ff16c/OChem_15_EC_204.jpg\" alt=\"The orbital representation of furan shows an oxygen atom with three lobes. Two of the lobes each carry a lone pair. Upper lobe of each carbon carries an unpaired electron.\">"
+        }
+      ]
+    }
+  ]
+}

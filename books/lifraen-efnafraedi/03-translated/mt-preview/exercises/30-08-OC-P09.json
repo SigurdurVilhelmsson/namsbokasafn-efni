@@ -1,0 +1,19 @@
+{
+  "nickname": "30-08-OC-P09",
+  "source_uid": "39359@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355060",
+      "stem_html": "<p>Leggðu til hvarfgang til að útskýra þá staðreynd að hitun 1-deuteríóindens dreifir samsætumerkinu á allar þrjár stöðurnar á fimm liða hringnum.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdk1aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3c42de4eaa3b1769b3a0920489b80a61fbbc147f/OChem_30_08_007.jpg\" alt=\"1-deuterioindene reacts with heat; D at C 1 is exchanged with H at C 2 (intermediate). Then D at C 2 is exchanged with H at C 3 (product).\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Röð [1,5] vetnisflutninga á sér stað."
+        }
+      ]
+    }
+  ]
+}

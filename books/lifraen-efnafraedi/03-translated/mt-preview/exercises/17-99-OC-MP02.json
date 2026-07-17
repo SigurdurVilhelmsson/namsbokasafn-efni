@@ -1,0 +1,15 @@
+{
+  "nickname": "17-99-OC-MP02",
+  "source_uid": "37891@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359435",
+      "stem_html": "<p>Sýruhvötuð vötnun 2,2-dímetýlsýklóhexanóls gefur efnablöndu af 1,2-dímetýlsýklóhexeni og ísóprópýlíðensýklópentani. Leggðu til hvarfgang sem skýrir myndun beggja myndefna.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc01WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cf0e7ca6144c7f10971de46f224a3ec852a04e92/OChem_17_EC_021.jpg\" alt=\"The structure of isopropylidenecyclopentane. It is an isocyclopentane with a double bond between C 1 of cyclopentane and C 2 of the propyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

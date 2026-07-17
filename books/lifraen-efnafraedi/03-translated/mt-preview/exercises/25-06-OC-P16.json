@@ -1,0 +1,19 @@
+{
+  "nickname": "25-06-OC-P16",
+  "source_uid": "39055@8",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358766",
+      "stem_html": "<p>Teiknaðu myndefnin sem þú myndir fá úr efnahvarfi <i>β</i>-<small style=\"font-variant: small-caps\">D</small>-ríbófúranósa við: <b>(a)</b> CH<sub>3</sub>I, Ag<sub>2</sub>O <b>(b)</b> (CH<sub>3</sub>CO)<sub>2</sub>O, pýridín</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbklaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a9e05452129c5a50f06d188abe8fcd6c0eb72277/OChem_25_06_003.jpg\" alt=\"The structure of beta-D-ribofuranose with three axial  O H groups at C 1, C 2, and C 3.  The molecular formula is C 5 H 10 O 5.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbk1aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fda7d3ec157d417ec00913a7965b9b8363e1ba64/OChem_25_EC_210a.jpg\" alt=\"Beta-D-Ribofuranose  reacts with iodomethane in the presence of silver oxide to form beta-D-ribofuranose tetramethyl ether in which the hydrogens of the hydroxyl groups are replaced by C H 3 groups \">\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBblFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9df9a8b837a4272711aef714f41a7334b654b90f/OChem_25_EC_210b.jpg\" alt=\"Beta-D-Ribofuranose reacts with acetic anhydride in pyridine to form beta-D-ribofuranose tetraacetate in which the hydrogens of the hydroxyl groups are replaced by acetate groups\">"
+        }
+      ]
+    }
+  ]
+}

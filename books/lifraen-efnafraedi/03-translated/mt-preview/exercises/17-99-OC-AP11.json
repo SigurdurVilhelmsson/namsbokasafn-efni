@@ -1,0 +1,50 @@
+{
+  "nickname": "17-99-OC-AP11",
+  "source_uid": "37912@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú búa til eftirfarandi efnasambönd úr 2-fenýletanóli: Fleiri en eitt skref gæti verið nauðsynlegt.",
+  "questions": [
+    {
+      "id": "340809",
+      "stem_html": "Stýren (PhCH<span data-math=\"\\text{=}\"></span>CH<sub>2</sub>)",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340810",
+      "stem_html": "Fenýlasetaldehýð (PhCH<sub>2</sub>CHO)",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340811",
+      "stem_html": "Fenýlediksýra (PhCH<sub>2</sub>CO<sub>2</sub>H)",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340812",
+      "stem_html": "Bensósýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340813",
+      "stem_html": "Etýlbensen",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340814",
+      "stem_html": "Bensaldehýð",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340815",
+      "stem_html": "1-Fenýletanól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340816",
+      "stem_html": "1-Bróm-2-fenýletan",
+      "collaborator_solutions": []
+    }
+  ]
+}

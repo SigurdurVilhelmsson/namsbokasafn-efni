@@ -1,0 +1,15 @@
+{
+  "nickname": "27-99-OC-MP02",
+  "source_uid": "38847@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358211",
+      "stem_html": "<p>Leggið til hvarfgang fyrir umbreytingu <i>ψ</i>-jónóns í <i>β</i>-jónón með sýru.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbDRZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b401a228e6b7ec855b2353fb846f7448cdc8600e/OChem_27_EC_005.jpg\" alt=\"Psi-ionone reacts with hydronium ions to form beta-ionone. The open chain gets converted to a closed ring in the product.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "27-07-OC-P10",
+  "source_uid": "38842@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "346637",
+      "stem_html": "Berðu saman byggingu lanósteróls og kólesteróls og skráðu þær breytingar sem þarf fyrir umbreytinguna sem sýnd er.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Þrír metýlhópar eru fjarlægðir, tvítengi hliðarkeðjunnar er afoxað og tvítengið í B-hringnum er fært til."
+        }
+      ]
+    }
+  ]
+}

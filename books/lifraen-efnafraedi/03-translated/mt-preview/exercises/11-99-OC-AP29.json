@@ -1,0 +1,15 @@
+{
+  "nickname": "11-99-OC-AP29",
+  "source_uid": "37403@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355414",
+      "stem_html": "<p>Spáðu fyrir um myndefnið/myndefnin í eftirfarandi efnahvarfi og tilgreindu handhverfu þar sem við á:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdklUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a77b95aa62eff894928f5f5f2e8cdb05259861bb/OChem_11_EC_038.jpg\" alt=\"A reaction of 1-bromo-1,4-dimethylcyclohexane (methy groups are cis to one another) in the presence of water and ethanol yields an unknown product, depicted by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

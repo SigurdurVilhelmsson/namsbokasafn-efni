@@ -1,0 +1,20 @@
+{
+  "nickname": "20-99-OC-MP05",
+  "source_uid": "38105@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Sýruhvatað vatnsrof nítríls til að mynda karboxýlsýru á sér stað með upphaflegri róteiningu niturfrumeindarinnar, fylgt eftir með kjarnsækinni álagningu vatns. Rifjaðu upp hvarfgang basahvataðs vatnsrofs nítríls í kafla 20.7 og sjáðu síðan fyrir um myndefnin fyrir eftirfarandi efnahvörf. Skrifaðu skrefin sem eiga sér stað í sýruhvataða efnahvarfinu og notaðu sveigðar örvar.",
+  "questions": [
+    {
+      "id": "359148",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBclFXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e871012828e6fe6a0de49037e21fd8709d215f8c/OChem_20_EC_016a.jpg\" alt=\"Conversion of 3,3-dimethylbutane nitrile to unknown products depicted by a question mark by reaction with hydrochloric acid and water.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359149",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBclVXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e9129eb8cd3d5c66d97205aa7193c2767a52c6f9/OChem_20_EC_016b.jpg\" alt=\"Conversion of 4-methylbenzonitrile to unknown products depicted by a question mark by reaction with hydrochloric acid and water.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

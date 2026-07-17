@@ -1,0 +1,25 @@
+{
+  "nickname": "19-99-OC-AP16",
+  "source_uid": "38062@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Leggðu til byggingar fyrir sameindir sem uppfylla eftirfarandi lýsingar. Gerðu ráð fyrir að tegundir kolefnis (1°, 2°, 3° eða 4°) hafi verið ákvarðaðar með DEPT-NMR.",
+  "questions": [
+    {
+      "id": "341651",
+      "stem_html": "C<sub>6</sub>H<sub>12</sub>O; IR: 1715 cm<sup>–1</sup>; <sup>13</sup>C NMR: 8,0 <i>δ</i> (1°), 18,5 <i>δ</i> (1°), 33,5 <i>δ</i> (2°), 40,6 <i>δ</i> (3°), 214,0 <i>δ</i> (4°)",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341652",
+      "stem_html": "C<sub>5</sub>H<sub>10</sub>O; IR: 1730 cm<sup>–1</sup>; <sup>13</sup>C NMR: 22,6 <i>δ</i> (1°), 23,6 <i>δ</i> (3°), 52,8 <i>δ</i> (2°), 202,4 <i>δ</i> (3°)",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "341653",
+      "stem_html": "C<sub>6</sub>H<sub>8</sub>O; IR: 1680 cm<sup>–1</sup>; <sup>13</sup>C NMR: 22,9 <i>δ</i> (2°), 25,8 <i>δ</i> (2°), 38,2 <i>δ</i> (2°), 129,8 <i>δ</i> (3°), 150,6 <i>δ</i> (3°), 198,7 <i>δ</i> (4°)",
+      "collaborator_solutions": []
+    }
+  ]
+}

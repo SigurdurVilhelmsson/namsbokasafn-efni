@@ -1,0 +1,20 @@
+{
+  "nickname": "29-99-OC-VC01",
+  "source_uid": "39311@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Greindu amínósýruna sem er niðurbrotsforveri hverrar af eftirfarandi <i>α</i>-ketósýrum:",
+  "questions": [
+    {
+      "id": "358132",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGtaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--109752feea8cfb8cadd8f5607b76ab69bbf49ff3/OChem_29_EC_001a.jpg\" alt=\"A ball-and-stick model of a four-carbon chain with carboxylate anion at C 1, a carbonyl group at C 2 , and a methyl group at C 3.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358133",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdG9aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9838d41e738b2e267bd844316e9fa70b5b435c7e/OChem_29_EC_001b.jpg\" alt=\"A ball-and-stick model of a five-carbon chain with a carboxylate anion at C 1, carbonyl at C 2, sulfur at C4, and a methyl group attached to S5.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

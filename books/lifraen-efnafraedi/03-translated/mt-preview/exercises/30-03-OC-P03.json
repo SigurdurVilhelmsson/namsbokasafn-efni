@@ -1,0 +1,19 @@
+{
+  "nickname": "30-03-OC-P03",
+  "source_uid": "39353@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "349618",
+      "stem_html": "<i>trans</i>-3,4-dímetýlsýklóbúten getur opnast eftir tveimur samstæðum leiðum og gefið annaðhvort (2<i>E</i>,4<i>E</i>)-2,4-hexadíen eða (2<i>Z</i>,4<i>Z</i>)-2,4-hexadíen. Útskýrðu hvers vegna bæði myndefnin eru samhverfulega leyfileg og gerðu síðan grein fyrir því hvers vegna aðeins 2<i>E</i>,4<i>E</i> hverfan fæst í reynd.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Stöðugra myndefnið af tveimur leyfilegum myndast."
+        }
+      ]
+    }
+  ]
+}

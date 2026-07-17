@@ -1,0 +1,15 @@
+{
+  "nickname": "26-99-OC-AP02",
+  "source_uid": "39241@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "349067",
+      "stem_html": "Cystein er eina amínósýran sem hefur <small style=\"font-variant: small-caps\">L</small> handhverfu en <i>R</i> afstöðu. Búðu til byggingu fyrir aðra <small style=\"font-variant: small-caps\">L</small> amínósýru að eigin vali sem hefur einnig <i>R</i> afstöðu.",
+      "collaborator_solutions": []
+    }
+  ]
+}

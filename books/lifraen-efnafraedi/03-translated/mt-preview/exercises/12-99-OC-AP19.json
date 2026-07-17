@@ -1,0 +1,20 @@
+{
+  "nickname": "12-99-OC-AP19",
+  "source_uid": "37445@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Tvö innrauð róf eru sýnd. Annað er róf sýklóhexans og hitt er róf sýklóhexens. Greindu þau og útskýrðu svarið.",
+  "questions": [
+    {
+      "id": "356703",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUFXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1ca1ed3018ba114021fb2aafa98d2a2e4c89efba/OChem_12_EC_005a.jpg\" alt=\"An infrared spectrum with significant absorption bands just below 3000 and just below 1500 inverse centimeters.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "356704",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUVXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--42f942510625f1dfce40a37beafe397585b8221c/OChem_12_EC_005b.jpg\" alt=\"An infrared spectrum with significant absorption bands just above and below 3000 and just below 1500, around 1680, and just below 1500 inverse centimeters.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "13-02-OC-P03",
+  "source_uid": "37469@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358253",
+      "stem_html": "2-klórprópen sýnir merki fyrir þrenns konar róteindir í <sup>1</sup>H NMR-rófi sínu. Útskýrðu.",
+      "collaborator_solutions": [
+        {
+          "content_html": "<p>Vínýl C − H róteindirnar eru ekki jafngildar.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTRVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b4cc89af5053b0769a3a8cba456529807d48b99d/OChem_13_EC_201.jpg\" alt=\"A chemical structure of 2-chloro-1-propene. Hydrogens are labeled a (on methyl), b (cis to methyl group) and c (cis to chlorine).\">"
+        }
+      ]
+    }
+  ]
+}

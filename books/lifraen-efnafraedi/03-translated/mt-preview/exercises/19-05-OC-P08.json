@@ -1,0 +1,19 @@
+{
+  "nickname": "19-05-OC-P08",
+  "source_uid": "38002@7",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "346083",
+      "stem_html": "<p>Súrefnið í vatni er aðallega (99,8%) <sup>16</sup>O, en einnig er fáanlegt vatn auðgað með þungu samsætunni <sup>18</sup>O. Þegar aldehýð eða ketón er leyst upp í <sup>18</sup>O-auðguðu vatni fellur samsætumerkingin inn í karbónýlhópinn. Útskýrðu.</p>\n<p style=\"text-align: center\">R<sub>2</sub>C<span data-math=\"\\text{=}\"></span>O + H<sub>2</sub><span class=\"magenta-text\">O</span> ⇌ R<sub>2</sub>C<span data-math=\"\\text{=}\"></span><span class=\"magenta-text\">O</span> + H<sub>2</sub>O þar sem <span class=\"magenta-text\">O</span> = <sup>18</sup>O</p>",
+      "collaborator_solutions": [
+        {
+          "content_html": "Merkt vatn leggst afturkræft við karbónýlhópinn.\n"
+        }
+      ]
+    }
+  ]
+}

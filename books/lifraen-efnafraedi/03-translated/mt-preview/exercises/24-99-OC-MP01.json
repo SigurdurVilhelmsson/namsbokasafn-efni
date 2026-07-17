@@ -1,0 +1,20 @@
+{
+  "nickname": "24-99-OC-MP01",
+  "source_uid": "38983@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefnið/myndefnin og skrifaðu hvarfgang fyrir hvert eftirfarandi efnahvarfa:",
+  "questions": [
+    {
+      "id": "361624",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b044c01bec517fff4da89ec1ff192b984af93538/OChem_24_EC_018a.jpg\" alt=\"1-(Bromomethyl)-2-methylbenzene reacts with sodium phthalimide, then hydroxide ion and water to form an unknown product represented by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361625",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGdaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--924fbcaf83bd8c3bfa0dd3c9d30f1bd42c637051/OChem_24_EC_018b.jpg\" alt=\"1-Chloro-3-methylbutane reacts with sodium phthalimide, then hydroxide ion and water to form an unknown product represented by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

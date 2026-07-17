@@ -1,0 +1,15 @@
+{
+  "nickname": "25-99-OC-VC03",
+  "source_uid": "39066@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358778",
+      "stem_html": "<p>Eftirfarandi bygging er af <small style=\"font-variant: small-caps\">L</small>-aldóhexósa á pýranósaformi. Greindu hann og segðu til um hvort það sé <i>Α</i>- eða <i>Β</i>-anómer.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbnNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ebf8276ee18a588f2d114ae216e9b2524dd895b5/OChem_25_EC_004.jpg\" alt=\"The ball-and-stick model of a beta pyranose with three equatorial O H groups. The gray, black, and red spheres represent hydrogen, carbon, and oxygen atoms, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "nickname": "18-99-OC-AP01",
+  "source_uid": "38734@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknið byggingarformúlur sem samsvara eftirfarandi IUPAC-heitum:",
+  "questions": [
+    {
+      "id": "343787",
+      "stem_html": "Etýl-1-etýlprópýleter",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "343788",
+      "stem_html": "Di(<i>p</i>-klórfenýl)eter",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "343789",
+      "stem_html": "3,4-Dímetoxýbensósýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "343790",
+      "stem_html": "Sýklópentýloxýsýklóhexan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "343791",
+      "stem_html": "4-Allýl-2-metoxýfenól (eugenól; úr negulolíu)",
+      "collaborator_solutions": []
+    }
+  ]
+}

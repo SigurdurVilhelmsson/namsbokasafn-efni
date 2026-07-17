@@ -1,0 +1,15 @@
+{
+  "nickname": "02-99-OC-AP37",
+  "source_uid": "36149@7",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351470",
+      "stem_html": "<p>Hver af eftirfarandi byggingarpörum tákna vok myndir?</p>\n<p><b>(a)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmdRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f48327b4cf7c0930e02dfd0675714dcf46c4468c/OChem_02_EC_012a.jpg\" alt=\"The first structure has a benzene ring fused to cyclobutene. The second structure has a cyclohexadiene ring, in which C5 and C6 are each double bonded to a methylene group.\">\n <b>(b)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbmtRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3a1a9003555d29bd89f3360f59da8a9758524b34/OChem_02_EC_012b.jpg\" alt=\"Two structures are shown. The first structure has a cyclohexene ring with an oxygen anion at C1. The second structure has a cyclohexanone ring with a negative charge at C2.\">\n <b>(c)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbm9RIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ce1618523cce61666937604fae279d0a1e2297b3/OChem_02_EC_012c.jpg\" alt=\"The first structure has a benzene ring bonded to an oxygen anion. The second structure has a cyclohexadiene ring with double bonded oxygen at C1 and negative charge at C2.\">\n<br><b>(d)</b><img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbnNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e30ff40e4ae2800109100af7205d8def1aeafb5e/OChem_02_EC_012d.jpg\" alt=\"The first structure has a benzene ring bonded to an oxygen anion. The second structure has a cyclohexadiene ring with double bonded oxygen at C1 and negative charge at C4.\"></p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "30-99-OC-AP13",
+  "source_uid": "39382@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355104",
+      "stem_html": "<p>Vínýl-tengd sýklóprópan gangast undir umröðun við varma og gefa sýklópenten. Stingið upp á hvarfgangi fyrir efnahvarfið og greinið hringhvarfsferlið sem á sér stað.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ29hIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6067b5097736a8f4927b66b39a7a12c9441e2b40/OChem_30_EC_018.jpg\" alt=\"Vinylcyclopropane reacts with heat to form cyclopentene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

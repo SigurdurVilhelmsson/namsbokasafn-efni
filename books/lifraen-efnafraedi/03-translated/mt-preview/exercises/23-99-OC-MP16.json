@@ -1,0 +1,15 @@
+{
+  "nickname": "23-99-OC-MP16",
+  "source_uid": "38922@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359868",
+      "stem_html": "<p>Eftirfarandi efnahvarf felur í sér samtengt álagningarefnahvarf og síðan innansameinda Claisen-þéttingu. Skrifaðu bæði skrefin og sýndu hvarfgang þeirra.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc1FZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a296f4eb29fc1c080b0f5352f589ef1aaf43123f/OChem_23_EC_029.jpg\" alt=\"The reaction shows a conjugate addition of dimethyl-5, 5-dimethylhex-2-ynedioate with dimethylcopper lithium forming a product, methyl-2, 4, 4-trimethyl-5-oxocyclopent-1-enecarboxylate.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

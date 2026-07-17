@@ -1,0 +1,15 @@
+{
+  "nickname": "04-99-OC-AP33",
+  "source_uid": "36560@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351149",
+      "stem_html": "<p>Amantadín er veirulyf sem er virkt gegn inflúensu af A-stofni. Teiknaðu þrívíddarmynd af amantadíni sem sýnir sýklóhexanhringina í stólastellingu.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVFSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0968eba320e37f1599e83359ff926e34423d783f/OChem_04_EC_017.jpg\" alt=\"The structure of Amantadine.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

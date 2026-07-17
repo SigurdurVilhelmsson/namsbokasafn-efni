@@ -1,0 +1,15 @@
+{
+  "nickname": "20-99-OC-VC03",
+  "source_uid": "38099@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359126",
+      "stem_html": "<p>Ekki er hægt að búa til eftirfarandi karboxýlsýru úr alkýlhalíði með hvorki nítríl-vatnsrofsleiðinni né Grignard-karboxýlerunarleiðinni. Útskýrðu.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWtXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a799d6a306a1d09872f426f02434e61bab6f8942/OChem_20_EC_010.jpg\" alt=\"A ball-and-stick model of a four-carbon chain with a carboxyl end. There are two methyl groups on C 2 and a hydroxy group on C 4.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "nickname": "14-99-OC-MP01",
+  "source_uid": "37673@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Segðu fyrir um helsta myndefnið/helstu myndefnin við álagningu 1 jafngildis af HX og sýndu hvarfgang fyrir hvert eftirfarandi efnahvarf.",
+  "questions": [
+    {
+      "id": "358459",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHNVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0c3539eceef7d4ccb7a8d37e1f09d8d6d001ace8/OChem_14_EC_007a.jpg\" alt=\"A 6-carbon chain with double bonds between C 2-C 3 and C 4-C 5 reacts with hydrogen chloride at 40 degrees Celsius. Product is not shown.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358460",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHdVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d2318c65f4d9d53e0402480c6a18fe8520247cef/OChem_14_EC_007b.jpg\" alt=\"A 5-carbon chain with double bonds between C 1-C 2 and C 3-C 4, and methyl at C 3 reacts with hydrogen bromide at 40 degrees Celsius. Product is not shown.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358461",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdDBVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5f3fbd7725d8585737711a1e46ab51bc5ed7a541/OChem_14_EC_007c.jpg\" alt=\"A 4-membered ring with double-bonded methylene groups at C 1 and C 2 reacts with hydrogen chloride at 0 degrees Celsius. Product is not shown.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

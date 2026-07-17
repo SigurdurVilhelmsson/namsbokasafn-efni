@@ -1,0 +1,20 @@
+{
+  "nickname": "15-99-OC-AP39a",
+  "source_uid": "38768@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Efnasambönd sem kallast asó-litarefni eru aðaluppspretta gervilita í vefnaðarvöru og matvælum. Ástæðan fyrir sterkum lit þeirra er meðal annars samtenging frá rafeindagjafahópi í gegnum díasóbrúna (–N=N–) yfir í rafeindaþiggjandi hóp hinum megin. Fyrir eftirfarandi asó-litarefni skaltu teikna vok mynd sem sýnir hvernig rafeindagjafahópurinn tengist rafeindaþiggjandi hópnum hinum megin við díasóbrúna. Notaðu bogadregnar örvar til að sýna hvernig rafeindunum er endurraðað.",
+  "questions": [
+    {
+      "id": "346129",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdW9YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e513cddbcd4acbd50617eb365bd4a88bc0876008/OChem_15_EC_029a.jpg\" alt=\"\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "346130",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdXNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ed26e0120c82344f06354b80ccc157237397c730/OChem_15_EC_029b.jpg\" alt=\"\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

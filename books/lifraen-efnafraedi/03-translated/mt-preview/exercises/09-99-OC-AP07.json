@@ -1,0 +1,40 @@
+{
+  "nickname": "09-99-OC-AP07",
+  "source_uid": "37221@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáið fyrir um myndefni úr efnahvarfi 5-dekýns við eftirfarandi hvarfefni:",
+  "questions": [
+    {
+      "id": "333059",
+      "stem_html": "H<sub>2</sub>, Lindlar-hvati",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333060",
+      "stem_html": "Li í NH<sub>3</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333061",
+      "stem_html": "1 jafngildi Br<sub>2</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333062",
+      "stem_html": "BH<sub>3</sub> í THF, síðan H<sub>2</sub>O<sub>2</sub>, OH<sup>−</sup>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333063",
+      "stem_html": "H<sub>2</sub>O, H<sub>2</sub>SO<sub>4</sub>, HgSO<sub>4</sub>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "333064",
+      "stem_html": "Umframmagn H<sub>2</sub>, Pd/C-hvati",
+      "collaborator_solutions": []
+    }
+  ]
+}

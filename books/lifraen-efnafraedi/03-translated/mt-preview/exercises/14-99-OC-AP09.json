@@ -1,0 +1,15 @@
+{
+  "nickname": "14-99-OC-AP09",
+  "source_uid": "37699@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358491",
+      "stem_html": "<p>Sýndu byggingu, þar með talið staðefnafræði, myndefnisins úr eftirfarandi Diels-Alder-efnahvarfi:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdkVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4c50483dc049ff171980638a605546584678926f/OChem_14_EC_017.jpg\" alt=\"Benzene bonded to 4-carbon chain containing double bonds at C 1 an C 3  reacts with a four-carbon chain with a double bond between C 2 and C 3 and where C1 and C4 are carbonyl groups also bound to methoxy griups. Question mark represents the product.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

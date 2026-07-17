@@ -1,0 +1,28 @@
+{
+  "nickname": "11-05-OC-P13",
+  "source_uid": "37354@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Spáðu fyrir um hvort hvert eftirfarandi skiptihvarfa sé líklegt til að vera S<sub>N</sub>1 eða S<sub>N</sub>2:",
+  "questions": [
+    {
+      "id": "355145",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcW9UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3df773e2e910a759ede06b7d78457e64c118333f/OChem_11_05_011a.jpg\" alt=\"A secondary alcohol reacts with HCl and methanol. Hydroxyl in the reactant is replaced by chlorine in the product.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "S<sub>N</sub>1"
+        }
+      ]
+    },
+    {
+      "id": "355146",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcXNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1fe2d1dda368a0ff06bcdf4ccb0e254f43960b8c/OChem_11_05_011b.jpg\" alt=\"3-bromo-2-methylpropene reacts with sodium methanethiolate and acetonitrile. Bromine in the reactant is replaced by S C H 3 group in the product.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "S<sub>N</sub>2"
+        }
+      ]
+    }
+  ]
+}

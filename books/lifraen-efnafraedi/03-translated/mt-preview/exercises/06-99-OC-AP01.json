@@ -1,0 +1,40 @@
+{
+  "nickname": "06-99-OC-AP01",
+  "source_uid": "37322@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Greindu virknihópana í eftirfarandi sameindum og sýndu skautun hvers og eins:",
+  "questions": [
+    {
+      "id": "353319",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbndUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8584f463846af72178f102b4f3616559cb40116c/OChem_06_EC_012a.jpg\" alt=\"A chemical structure of propionitrile.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353320",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjBUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c1b81272f0dba35476e075a92d8b91c36604fcfa/OChem_06_EC_012b.jpg\" alt=\"A chemical structure of methoxycyclopentane.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353321",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjRUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--91c0d6e083408bd01c9d5d2f7a585a4e62242324/OChem_06_EC_012c.jpg\" alt=\"A methyl ester with a four-carbon alkyl chain. There is a ketone group at C3.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353322",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjhUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ba9a659b94e3268e22130060b0519df34791afed/OChem_06_EC_012d.jpg\" alt=\"The structure has a cyclohexadiene ring with double bonds at C2 and C5, and carbonyls at C1 and C4.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353323",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0FUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--947f15f1cd71be09904993356388eb1968e9b96d/OChem_06_EC_012e.jpg\" alt=\"A chemical structure of 2E-but-2-enamide.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353324",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb0VUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--57e68000b27fc848e5951b838e7befff06113d7b/OChem_06_EC_012f.jpg\" alt=\"A chemical structure of benzaldehyde.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

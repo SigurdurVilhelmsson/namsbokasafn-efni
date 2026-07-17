@@ -1,0 +1,19 @@
+{
+  "nickname": "02-01-OC-P04",
+  "source_uid": "36115@7",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351374",
+      "stem_html": "<p>Skoðaðu eftirfarandi rafstöðumöguleikakort af metýlamíni, efni sem veldur lykt af skemmdum fiski, og segðu til um stefnu skautunar C–N efnatengisins:</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBanNRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0f3b4dbcec7c26937fc1408cf5bc1f8a8f685f28/OChem_02_01_005.jpg\" alt=\"The chemical structure and ball stick model of methylamine, plus an electron density map showing highest density near nitrogen.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<p>Nitrið er rafeindaríkt og kolefnið er rafeindasnautt.</p>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBandRIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3692e4b1a568b6cda68774e8e7fa68e5542e76f8/OChem_02_EC_202.jpg\" alt=\"The chemical structure of methylamine where the direction of the dipole moment points from carbon toward nitrogen.\">"
+        }
+      ]
+    }
+  ]
+}

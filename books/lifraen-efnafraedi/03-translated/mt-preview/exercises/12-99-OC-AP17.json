@@ -1,0 +1,30 @@
+{
+  "nickname": "12-99-OC-AP17",
+  "source_uid": "37443@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Leggið til byggingar fyrir efnasambönd sem uppfylla eftirfarandi lýsingar:",
+  "questions": [
+    {
+      "id": "337648",
+      "stem_html": "C<sub>5</sub>H<sub>8</sub>, með IR-gleypni við 3300 og 2150 cm<sup>–1</sup>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "337649",
+      "stem_html": "C<sub>4</sub>H<sub>8</sub>O, með sterka IR-gleypni við 3400 cm<sup>–1</sup>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "337650",
+      "stem_html": "C<sub>4</sub>H<sub>8</sub>O, með sterka IR-gleypni við 1715 cm<sup>–1</sup>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "337651",
+      "stem_html": "C<sub>8</sub>H<sub>10</sub>, með IR-gleypni við 1600 og 1500 cm<sup>–1</sup>",
+      "collaborator_solutions": []
+    }
+  ]
+}

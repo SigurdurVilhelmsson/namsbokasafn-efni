@@ -1,0 +1,30 @@
+{
+  "nickname": "18-99-OC-AP07",
+  "source_uid": "38740@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáið fyrir um myndefni eftirfarandi eterklofnunarhvarfa:",
+  "questions": [
+    {
+      "id": "361254",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcU1YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--13bae1553d4b3a729171bccc39e106c210dd860e/OChem_18_EC_036a.jpg\" alt=\"Cyclohexyl ethyl ether reacts with hydroiodic acid and water to produce unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361255",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2d79055cb634c4afd1d58aec8d61fea3bad87d47/OChem_18_EC_036b.jpg\" alt=\"T-butyl phenyl ether reacts with trifluoroacetic acid to produce unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361256",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6112bf26532a3f3d243e1825a036edd5ad01f057/OChem_18_EC_036c.jpg\" alt=\"Ethyl vinyl ether reacts with hydroiodic acid and water to produce unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361257",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVlYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2a45edcb0818ae465b9d5f4d49affaa4b3a64909/OChem_18_EC_036d.jpg\" alt=\"Ethyl neopentyl ether reacts with hydroiodic acid and water to produce unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

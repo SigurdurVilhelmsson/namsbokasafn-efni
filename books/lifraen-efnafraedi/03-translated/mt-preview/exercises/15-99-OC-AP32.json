@@ -1,0 +1,15 @@
+{
+  "nickname": "15-99-OC-AP32",
+  "source_uid": "37780@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358704",
+      "stem_html": "<p>Róteinda-NMR-róf fyrir efnasamband með formúluna C<sub>10</sub>H<sub>12</sub>O<sub>2</sub> er sýnt. Innrautt róf hefur sterkt band við 1711 cm<sup>–1</sup>. Niðurstöður venjulegs kolefnis-13 NMR-rófs eru settar fram í töflu ásamt DEPT-135 og DEPT-90 upplýsingum. Teiknaðu byggingu þessa efnasambands.</p>\n<table class=\"unnumbered\">\n<thead>\n<tr>\n<th><b>Venjulegt kolefni</b></th>\n<th><b>DEPT-135</b></th>\n<th><b>DEPT-90</b></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style=\"text-align:left;\"> 29 ppm</td>\n<td style=\"text-align:left;\">Jákvætt</td>\n<td style=\"text-align:left;\">Enginn toppur</td>\n</tr>\n<tr>\n<td style=\"text-align:left;\"> 50</td>\n<td style=\"text-align:left;\">Neikvætt</td>\n<td style=\"text-align:left;\">Enginn toppur</td>\n</tr>\n<tr>\n<td style=\"text-align:left;\"> 55</td>\n<td style=\"text-align:left;\">Jákvætt</td>\n<td style=\"text-align:left;\">Enginn toppur</td>\n</tr>\n<tr>\n<td style=\"text-align:left;\">114</td>\n<td style=\"text-align:left;\">Jákvætt</td>\n<td style=\"text-align:left;\">Jákvætt</td>\n</tr>\n<tr>\n<td style=\"text-align:left;\">126</td>\n<td style=\"text-align:left;\">Enginn toppur</td>\n<td style=\"text-align:left;\">Enginn toppur</td>\n</tr>\n<tr>\n<td style=\"text-align:left;\">130</td>\n<td style=\"text-align:left;\">Jákvætt</td>\n<td style=\"text-align:left;\">Jákvætt</td>\n</tr>\n<tr>\n<td style=\"text-align:left;\">159</td>\n<td style=\"text-align:left;\">Enginn toppur</td>\n<td style=\"text-align:left;\">Enginn toppur</td>\n</tr>\n<tr>\n<td style=\"text-align:left;\">207</td>\n<td style=\"text-align:left;\">Enginn toppur</td>\n<td style=\"text-align:left;\">Enginn toppur</td>\n</tr>\n</tbody>\n</table>\n<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1VWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--00984f8ecf3b8f98c7a260351a09902eb8716f33/OChem_15_EC_024.jpg\" alt=\"The 1 H N M R spectrum of C 10 H 12 O 2 shows peaks in parts per million at 2.1 (singlet), 3.6 (singlet), 3.7 (singlet), 6.8 (doublet), and 7.1 (doublet).\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

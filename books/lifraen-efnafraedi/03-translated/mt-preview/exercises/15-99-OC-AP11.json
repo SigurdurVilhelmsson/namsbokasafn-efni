@@ -1,0 +1,15 @@
+{
+  "nickname": "15-99-OC-AP11",
+  "source_uid": "37759@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358672",
+      "stem_html": "<p>Árið 1932 rannsökuðu A. A. Levine og A. G. Cole ósonrof <i>o</i>-xýlens og einangruðu þrjú myndefni: glýoxal, 2,3-bútandíón og pýrúvaldehýð:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBallWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5bda408c3529ebefeab8ad01d397c4bb2cd7791c/OChem_15_EC_009.jpg\" alt=\"Benzene with methyl groups at C 1 and C 2 reacts with ozone in the presence of zinc to form glyoxal, 2,3-butanedione, and pyruvaldehyde.\">\n<p>Í hvaða hlutföllum myndir þú búast við að myndefnin þrjú mynduðust ef <i>o</i>-xýlen er vokmyndablendingur tveggja bygginga? Raunverulega hlutfallið sem fannst var 3 hlutar glýoxal, 1 hluti 2,3-bútandíón og 2 hlutar pýrúvaldehýð. Hvaða ályktanir getur þú dregið um byggingu <i>o</i>-xýlens?</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

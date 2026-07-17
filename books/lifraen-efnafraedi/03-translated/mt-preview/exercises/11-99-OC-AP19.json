@@ -1,0 +1,25 @@
+{
+  "nickname": "11-99-OC-AP19",
+  "source_uid": "37398@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Raðaðu hverju af eftirfarandi settum efnasambanda með tilliti til S<sub>N</sub>2-hvarfgirni:",
+  "questions": [
+    {
+      "id": "355384",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWtUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8f14c122895e5d5e533516f709d9add5019b3438/OChem_11_EC_031a.jpg\" alt=\"Chemical structures of t-butyl chloride, 1-chloropropane, and 2-chlorobutane.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355385",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdW9UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--254acf14ad514fd8bc05dbd1dc80f9965f710f78/OChem_11_EC_031b.jpg\" alt=\"Chemical structures of 2-bromo-3-methylbutane, 1-bromo-2-methylpropane, and 1-bromo-2,2-dimethylpropane.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355386",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdXNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2ccc02658ce255558b919903a26484e7c637766a/OChem_11_EC_031c.jpg\" alt=\"Condensed formulas of methyl propyl ether, tosylate of 1-propanol, and 1-bromopropane.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

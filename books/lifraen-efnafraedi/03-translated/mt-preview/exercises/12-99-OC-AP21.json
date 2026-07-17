@@ -1,0 +1,25 @@
+{
+  "nickname": "12-99-OC-AP21",
+  "source_uid": "37447@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú nota innrauða litrófsgreiningu til að greina á milli eftirfarandi para byggingarhverfa?",
+  "questions": [
+    {
+      "id": "352801",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaE1VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--730b56e30d476a8ff3c1de33d4f96fb9b9e3addd/OChem_12_EC_007a.jpg\" alt=\"Chemical structures of 2-butyne and 1-butyne.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352802",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFFVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5c483652686be85df757b3317f857dcb02f9ddbf/OChem_12_EC_007b.jpg\" alt=\"Chemical structures of pent-3-en-2-one and pent-4-en-2-one.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "352803",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3ab05c4cdb2aba7f14fde44708a9a7b532a49645/OChem_12_EC_007c.jpg\" alt=\"Chemical structures of an ether with a double bond and an alkyl aldehyde.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

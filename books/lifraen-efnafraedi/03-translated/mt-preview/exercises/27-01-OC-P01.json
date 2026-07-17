@@ -1,0 +1,19 @@
+{
+  "nickname": "27-01-OC-P01",
+  "source_uid": "38833@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "346614",
+      "stem_html": "Karnaúbavax, sem er notað í gólf- og húsgagnabón, inniheldur ester úr C<sub>32</sub> beinkeðju alkóhóli með C<sub>20</sub> beinkeðju karboxýlsýru. Teiknaðu byggingu þess.",
+      "collaborator_solutions": [
+        {
+          "content_html": "CH<sub>3</sub>(CH<sub>2</sub>)<sub>18</sub>CO<sub>2</sub>CH<sub>2</sub>(CH<sub>2</sub>)<sub>30</sub>CH<sub>3</sub>"
+        }
+      ]
+    }
+  ]
+}

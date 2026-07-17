@@ -1,0 +1,1449 @@
+{
+  "generated_by": "exercise-extract.js",
+  "exercises": {
+    "12-02-OC-P01": {
+      "source_uid": "37417@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "347309"
+      ],
+      "fields": {
+        "stem:347309": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:347309": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-02-OC-P02": {
+      "source_uid": "37418@13",
+      "solutions_are_public": true,
+      "question_order": [
+        "360078",
+        "360079"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360078": {
+          "skeleton": "\u0000SLOT_0\u0000\n",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0FVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fcb9cef21e9e58f2d48981c6b231aee4e21d6d88/OChem_12_02_006a.jpg\" alt=\"A mass spectrum with a base peak at m / z 41 and a molecular ion at m / z 84.\">"
+          },
+          "wraps": {}
+        },
+        "sol:360078": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:360079": {
+          "skeleton": "<figure id=\"fig-00202\">\u0000SLOT_0\u0000\n<figcaption>\u0000SLOT_1\u0000</figcaption>\n</figure>",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0VVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--41d4527dc370aea3df21f8daa23e9302189ec9f0/OChem_12_02_006b.jpg\" alt=\"A mass spectrum with a base peak at m / z 55 and a molecular ion at m / z 84.\">"
+          },
+          "wraps": {}
+        },
+        "sol:360079": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-03-OC-P03": {
+      "source_uid": "37419@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "337546",
+        "337547",
+        "337548",
+        "337549"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:337546": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:337546": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:337547": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:337547": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:337548": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:337548": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:337549": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:337549": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-03-OC-P04": {
+      "source_uid": "37420@4",
+      "solutions_are_public": true,
+      "question_order": [
+        "628144"
+      ],
+      "fields": {
+        "stem:628144": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0lVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4e4e00690cf7c0748cb7151ac85131e8b1d0e0e1/OChem_12_03_013.jpg\" alt=\"The ball and stick model of a compound with six carbons. Carbon, hydrogen, and oxygen are shown using gray, white and red spheres, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:628144": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-05-OC-P05": {
+      "source_uid": "37421@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "341865"
+      ],
+      "fields": {
+        "stem:341865": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:341865": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-05-OC-P06": {
+      "source_uid": "37422@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "341872",
+        "341873",
+        "341874",
+        "341875",
+        "341876",
+        "341877"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:341872": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:341872": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:341873": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:341873": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:341874": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:341874": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:341875": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:341875": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:341876": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:341876": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:341877": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:341877": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-07-OC-P07": {
+      "source_uid": "37423@2",
+      "solutions_are_public": true,
+      "question_order": [
+        "337569",
+        "337570",
+        "337571"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:337569": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:337569": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:337570": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:337570": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:337571": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:337571": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-07-OC-P08": {
+      "source_uid": "37424@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "346545",
+        "346546",
+        "346547"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346545": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:346545": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346546": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:346546": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:346547": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "sol:346547": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-08-OC-P09": {
+      "source_uid": "37464@12",
+      "solutions_are_public": true,
+      "question_order": [
+        "356720"
+      ],
+      "fields": {
+        "stem:356720": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n<figure id=\"fig-00220\">\n\u0000SLOT_1\u0000\n<figcaption>\u0000SLOT_2\u0000</figcaption></figure>",
+          "slots": 3,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVFXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c1525f155a47dd8a9495d459dcdb618fd06afff8/OChem_12_08_018.jpg\" alt=\"An infrared spectrum with xignificant absorption bands near 3300 and 1500 inverse centimeters, and in the fingerprint region.\">"
+          },
+          "wraps": {}
+        },
+        "sol:356720": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{≡}\"></span>",
+            "1": "<span data-math=\"\\text{≡}\"></span>"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "12-08-OC-P10": {
+      "source_uid": "37465@7",
+      "solutions_are_public": true,
+      "question_order": [
+        "352779",
+        "352780",
+        "352781"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:352779": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaW9VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ace7e4dd9869143dec246c1403a83ea86ed7c4dc/OChem_12_08_019a.jpg\" alt=\"Chemical structure of a cyclohexene with a C O O C H 3 substituent.\">"
+          },
+          "wraps": {}
+        },
+        "sol:352779": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:352780": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXNVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9ba0303ddfb2dea6b924d1463ae00b58e2cc7b6e/OChem_12_08_019b.jpg\" alt=\"A five-carbon chain with a triple bond on C4 and a C H O group on C1.\">"
+          },
+          "wraps": {}
+        },
+        "sol:352780": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:352781": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXdVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--66c920a345dcfd6105d272ffd85dffa0de78deb9/OChem_12_08_019c.jpg\" alt=\"A benzene ring with a C O O H  on C1 and C H 2 O H on C2.\">"
+          },
+          "wraps": {}
+        },
+        "sol:352781": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-08-OC-P11": {
+      "source_uid": "37466@3",
+      "solutions_are_public": true,
+      "question_order": [
+        "352191"
+      ],
+      "fields": {
+        "stem:352191": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTBVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b9a352ae761991db7a9b30cfcabfe4d59caf9251/OChem_12_08_020.jpg\" alt=\"A ball and stick model of a cyclopentane ring linked to methyl and acetate groups, and triple bonded to nitrogen. The red and blue spheres represent oxygen and nitrogen, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "sol:352191": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP01": {
+      "source_uid": "37427@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "337601",
+        "337602",
+        "337603"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:337601": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:337602": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:337603": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP02": {
+      "source_uid": "37428@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "337606",
+        "337607"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:337606": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:337607": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP03": {
+      "source_uid": "37429@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "337609"
+      ],
+      "fields": {
+        "stem:337609": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP04": {
+      "source_uid": "37430@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "337611"
+      ],
+      "fields": {
+        "stem:337611": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP05": {
+      "source_uid": "37431@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "346219"
+      ],
+      "fields": {
+        "stem:346219": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP06": {
+      "source_uid": "37432@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "337615"
+      ],
+      "fields": {
+        "stem:337615": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP07": {
+      "source_uid": "37433@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "337617"
+      ],
+      "fields": {
+        "stem:337617": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP08": {
+      "source_uid": "37434@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "337620",
+        "337621"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:337620": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:337621": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP09": {
+      "source_uid": "37435@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "341853"
+      ],
+      "fields": {
+        "stem:341853": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP10": {
+      "source_uid": "37436@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "337626",
+        "337627"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:337626": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:337627": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP11": {
+      "source_uid": "37437@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "356700"
+      ],
+      "fields": {
+        "stem:356700": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2dVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cb36a61ed62e7501735a55ca45aca89669ec5d41/OChem_12_EC_003.jpg\" alt=\"The mass spectrum of  2-methylpentane with a base peak at m / z 43 and highest m / z value peaks at 86 and 87.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP12": {
+      "source_uid": "37438@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "337631"
+      ],
+      "fields": {
+        "stem:337631": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP13": {
+      "source_uid": "37439@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "352785",
+        "352786",
+        "352787"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:352785": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2tVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--69234e3db05ab99c8c0f031478599a38a8ba26b8/OChem_12_EC_004a.jpg\" alt=\"A chemical structure of 1-phenylbutan-1-one\">"
+          },
+          "wraps": {}
+        },
+        "stem:352786": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ29VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c0b3a8703970e3dc0e5edf0c22e628f7d894ccd3/OChem_12_EC_004b.jpg\" alt=\"A chemical structure of 1-ethylcyclohexan-1-ol\">"
+          },
+          "wraps": {}
+        },
+        "stem:352787": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3NVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ad570eeba7db2434c2a6808a9a58f6df9a2f2139/OChem_12_EC_004c.jpg\" alt=\"A chemical structure of N-cyclopentyl-N-methylamine\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP14": {
+      "source_uid": "37440@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "337639"
+      ],
+      "fields": {
+        "stem:337639": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP15": {
+      "source_uid": "37441@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "337641"
+      ],
+      "fields": {
+        "stem:337641": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP16": {
+      "source_uid": "37442@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "337643"
+      ],
+      "fields": {
+        "stem:337643": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP17": {
+      "source_uid": "37443@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "337648",
+        "337649",
+        "337650",
+        "337651"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:337648": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:337649": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:337650": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:337651": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP18": {
+      "source_uid": "37444@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "341856",
+        "341857"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:341856": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{≡}\"></span>",
+            "1": "<span data-math=\"\\text{≡}\"></span>"
+          },
+          "wraps": {}
+        },
+        "stem:341857": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP19": {
+      "source_uid": "37445@6",
+      "solutions_are_public": false,
+      "question_order": [
+        "356703",
+        "356704"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:356703": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUFXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1ca1ed3018ba114021fb2aafa98d2a2e4c89efba/OChem_12_EC_005a.jpg\" alt=\"An infrared spectrum with significant absorption bands just below 3000 and just below 1500 inverse centimeters.\">"
+          },
+          "wraps": {}
+        },
+        "stem:356704": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUVXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--42f942510625f1dfce40a37beafe397585b8221c/OChem_12_EC_005b.jpg\" alt=\"An infrared spectrum with significant absorption bands just above and below 3000 and just below 1500, around 1680, and just below 1500 inverse centimeters.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP20": {
+      "source_uid": "37446@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "447733",
+        "447734",
+        "447735",
+        "447736",
+        "447737"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:447733": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzRVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bfb1f3aaf53a87363d2264b547acb80f3a8b7f27/OChem_12_EC_006a.jpg\" alt=\"The structure of benzoic acid.\">"
+          },
+          "wraps": {}
+        },
+        "stem:447734": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzhVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--55fff08a02f92737d1366dac18980dfb8417dfad/OChem_12_EC_006b.jpg\" alt=\"The structure of methyl benzoate.\">"
+          },
+          "wraps": {}
+        },
+        "stem:447735": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaEFVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4d7da1686e16a425811f556a3b8b787dfe0edad8/OChem_12_EC_006c.jpg\" alt=\"The structure of 4-hydroxybenzonitrile\">"
+          },
+          "wraps": {}
+        },
+        "stem:447736": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaEVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6946136485d6f1573d66ebec47d2ceabf43f2553/OChem_12_EC_006d.jpg\" alt=\"The structure of cyclohex-3-en-1-one\">"
+          },
+          "wraps": {}
+        },
+        "stem:447737": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaElVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--46d9c5f8aae113f8a54ae6111cac5c35ef61ea11/OChem_12_EC_006e.jpg\" alt=\"The structure of a methyl ester with a five-carbon alkyl chain and a ketone group at C4.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP21": {
+      "source_uid": "37447@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "352801",
+        "352802",
+        "352803"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:352801": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaE1VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--730b56e30d476a8ff3c1de33d4f96fb9b9e3addd/OChem_12_EC_007a.jpg\" alt=\"Chemical structures of 2-butyne and 1-butyne.\">"
+          },
+          "wraps": {}
+        },
+        "stem:352802": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFFVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5c483652686be85df757b3317f857dcb02f9ddbf/OChem_12_EC_007b.jpg\" alt=\"Chemical structures of pent-3-en-2-one and pent-4-en-2-one.\">"
+          },
+          "wraps": {}
+        },
+        "stem:352803": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3ab05c4cdb2aba7f14fde44708a9a7b532a49645/OChem_12_EC_007c.jpg\" alt=\"Chemical structures of an ether with a double bond and an alkyl aldehyde.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP22": {
+      "source_uid": "37448@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "352810",
+        "352811",
+        "352812",
+        "352813",
+        "352814",
+        "352815"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:352810": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaFlVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0bc8f25946b55085d8481ed1c326bba9b18d6460/OChem_12_EC_008a.jpg\" alt=\"A nine-membered carbon chain with alkyne, methyl, and ketone groups.\">"
+          },
+          "wraps": {}
+        },
+        "stem:352811": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGNVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--27afe67d27f25b67b3a7c4a9f52dbda75fc65d32/OChem_12_EC_008b.jpg\" alt=\"Chemical structure of 4-methylpent-1-ene\">"
+          },
+          "wraps": {}
+        },
+        "stem:352812": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGdVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b7dfa68f8a68a2678e55d52a25774ae3f071293a/OChem_12_EC_008c.jpg\" alt=\"Chemical structure of methyl butyrate\">"
+          },
+          "wraps": {}
+        },
+        "stem:352813": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGtVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dd660f05fc1e574f4291d0a45cb16c084cf39e2c/OChem_12_EC_008d.jpg\" alt=\"Chemical structure of methyl butyrate\">"
+          },
+          "wraps": {}
+        },
+        "stem:352814": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaG9VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--29ede2cf239af3987cda8345581765830189326e/OChem_12_EC_008e.jpg\" alt=\"Chemical structure of methyl phenyl ketone\">"
+          },
+          "wraps": {}
+        },
+        "stem:352815": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaHNVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e1e1d8bebec60c7523feab98d54f743d1143b85b/OChem_12_EC_008f.jpg\" alt=\"Chemical structure of 3-hydroxybenzaldehyde\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP23": {
+      "source_uid": "37449@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "337689"
+      ],
+      "fields": {
+        "stem:337689": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP24": {
+      "source_uid": "37450@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "337691"
+      ],
+      "fields": {
+        "stem:337691": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP25": {
+      "source_uid": "37451@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "337693"
+      ],
+      "fields": {
+        "stem:337693": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{=}\"></span>",
+            "1": "<span data-math=\"\\text{=}\"></span>"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP26": {
+      "source_uid": "37452@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "337695"
+      ],
+      "fields": {
+        "stem:337695": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP27": {
+      "source_uid": "37453@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "346221"
+      ],
+      "fields": {
+        "stem:346221": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP28": {
+      "source_uid": "37454@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "356707",
+        "356708"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:356707": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaDhVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c325d8c4a4a15d0e3123d4a374a817329f88d698/OChem_12_EC_009a.jpg\" alt=\"The mass spectrum of an unknown compound with a base peak at m / z 67 and other high abundance peaks at 27, 29, 39, 40, and 53.\">"
+          },
+          "wraps": {}
+        },
+        "stem:356708": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdUlXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d6f0c4417d7afd2b3a344fcb4cb123d30492a85e/OChem_12_EC_009b.jpg\" alt=\"An infrared spectrum with a sharp band at 3300, bands just below 3000, and a small band around 2150 inverse centimeters.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP29": {
+      "source_uid": "37455@6",
+      "solutions_are_public": false,
+      "question_order": [
+        "359266",
+        "359267"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:359266": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaUVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6d194d1044431915a0773fae106898dd226f2e88/OChem_12_EC_010a.jpg\" alt=\"The mass spectrum of an unknown compound with a base peak at m / z 54 and highest m / z value peaks at 70 and 71 inverse centimeters.\">"
+          },
+          "wraps": {}
+        },
+        "stem:359267": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdU1XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--de8a4da4578992eb29cac0acb174796b45216f64/OChem_12_EC_010b.jpg\" alt=\"An infrared spectrum with  bands just above and below 3000, and just below 1500 inverse centimeters.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP30": {
+      "source_uid": "37456@2",
+      "solutions_are_public": false,
+      "question_order": [
+        "337708",
+        "337709"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:337708": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:337709": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP31": {
+      "source_uid": "37457@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "352817"
+      ],
+      "fields": {
+        "stem:352817": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaU1VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8def01bedf47fe69fda9877e7e5719d130aae55f/OChem_12_EC_011.jpg\" alt=\"The structures of 4-methyl-2-pentanone and 3-methylpentanal.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP32": {
+      "source_uid": "37458@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "352253"
+      ],
+      "fields": {
+        "stem:352253": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVFVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6087ab935759eae8c588800e34d2dd6ec7433913/OChem_12_EC_012.jpg\" alt=\"Cyclohexanone reacts first with methyl magnesium bromide and then hydronium ion to form an unknown product represented by a question mark.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP33": {
+      "source_uid": "37459@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "352255"
+      ],
+      "fields": {
+        "stem:352255": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8db72d274583864afb77c0afc74dee84d2890aa4/OChem_12_EC_013.jpg\" alt=\"2-butanone reacts first with sodium borohydride and then with hydronium ion to form an unknown product represented by a question mark.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP34": {
+      "source_uid": "37460@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "341861"
+      ],
+      "fields": {
+        "stem:341861": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<span data-math=\"\\text{≡}\"></span>",
+            "1": "<span data-math=\"\\text{≡}\"></span>"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP35": {
+      "source_uid": "37461@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "356714"
+      ],
+      "fields": {
+        "stem:356714": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaVlVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ee24438c6e34c3327fbe7f9d5d84ceba05676aa2/OChem_12_EC_014.jpg\" alt=\"The mass spectrum of  an uknown compound with a base peak at m / z 88 and a molecular ion at m / z 172.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP36": {
+      "source_uid": "37462@5",
+      "solutions_are_public": false,
+      "question_order": [
+        "356716"
+      ],
+      "fields": {
+        "stem:356716": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWNVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9d2bf287a1dfacb3e8e0456106d865164271c8ed/OChem_12_EC_015.jpg\" alt=\"The mass spectrum of  an uknown compound with a base peak at m / z 56 and a molecular ion at 84. Other significant peaks occur at 41 and 69.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-AP37": {
+      "source_uid": "37463@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "356718"
+      ],
+      "fields": {
+        "stem:356718": {
+          "skeleton": "<p>\u0000SLOT_0\u0000</p>\n\u0000SLOT_1\u0000",
+          "slots": 2,
+          "opaques": {
+            "0": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWdVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--428f9c6fcd56ad7c1edc5684c2de1578b6b68168/OChem_12_EC_016.jpg\" alt=\"The mass spectrum of  an uknown compound with a base peak and molecular ion at m / z 112. A peak one-third the size occurs at 114.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-VC01": {
+      "source_uid": "37425@4",
+      "solutions_are_public": false,
+      "question_order": [
+        "352195",
+        "352196",
+        "352197"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:352195": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ01VIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3840f9f8b28991e35068f6ee87322facfb3c3d9b/OChem_12_EC_001a.jpg\" alt=\"A ball and stick model of a six-membered ring connected to different groups. Carbon, hydrogen, oxygen, and nitrogen are shown as gray, white, red, and blue spheres, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "stem:352196": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1FVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e354643554862ac40d07c78cd304e786119c3497/OChem_12_EC_001b.jpg\" alt=\"A ball and stick model of a four-membered chain connected to different groups. Carbon, hydrogen, and oxygen are shown as gray, white, and red spheres, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "stem:352197": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1VVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c9ecacdcbe8eddc0ae993766c78fb3cb0565603d/OChem_12_EC_001c.jpg\" alt=\"A ball and stick model of a five-membered chain connected to different groups. Carbon, hydrogen, and oxygen are shown as gray, white, and red spheres, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    },
+    "12-99-OC-VC02": {
+      "source_uid": "37426@3",
+      "solutions_are_public": false,
+      "question_order": [
+        "352200",
+        "352201"
+      ],
+      "fields": {
+        "stimulus": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {},
+          "wraps": {}
+        },
+        "stem:352200": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1lVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1a1b11275f3e3c9431a5d5ef641eccfbd80bd36e/OChem_12_EC_002a.jpg\" alt=\"A ball and stick model of a six-membered chain connected to different groups. Carbon, hydrogen, and oxygen are shown as gray, white, and red spheres, respectively.\">"
+          },
+          "wraps": {}
+        },
+        "stem:352201": {
+          "skeleton": "\u0000SLOT_0\u0000",
+          "slots": 1,
+          "opaques": {
+            "0": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2NVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fd01146c55749da44ee3b828d19cd98fe49b8780/OChem_12_EC_002b.jpg\" alt=\"A ball and stick model of a cyclic four-carbon chain connected to a three-carbon chain and other alkyl groups. Gray, white and blue spheres denote carbon, hydrogen, and nitrogen, respectively.\">"
+          },
+          "wraps": {}
+        }
+      }
+    }
+  }
+}

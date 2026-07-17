@@ -1,0 +1,15 @@
+{
+  "nickname": "19-99-OC-AP19",
+  "source_uid": "38065@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360799",
+      "stem_html": "<p>Þegar 4-hýdroxýbútanal hvarfast við metanól í nærveru sýruhvara myndast 2-metoxýtetrahýdrófúran. Útskýrið.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbjBXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e8887ddaf565d8911018a4cc1b8a63e473e4b939/OChem_19_EC_055.jpg\" alt=\"4-Hydroxybutanal reacts with methanol and hydrogen chloride to yield 2-methoxytetrahydrofuran. A methoxy group is attached to the C 2 position of tetrahydrofuran ring.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

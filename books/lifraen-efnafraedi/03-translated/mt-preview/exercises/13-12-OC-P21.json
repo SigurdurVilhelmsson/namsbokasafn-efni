@@ -1,0 +1,19 @@
+{
+  "nickname": "13-12-OC-P21",
+  "source_uid": "37487@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358329",
+      "stem_html": "<p>Áætlaðu efnahliðrun hvers kolefnis í eftirfarandi sameind. Spáðu fyrir um hvaða kolefni munu birtast í DEPT-90-rófinu, hver munu gefa jákvæða toppa í DEPT-135-rófinu og hver munu gefa neikvæða toppa í DEPT-135-rófinu.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa3NVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--20b4117280f915cd42acbbef74e783f058b9f2dd/OChem_13_12_004.jpg\" alt=\"The ball-and-stick model has a 6-carbon chain with double bond between C 2-C 3. C 2 is bonded to methoxy group. C 4 is carbonyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa3dVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9f5200dd34ab0eb74c5c1df78f1dc3b5a6441e69/OChem_13_EC_205.jpg\" alt=\"Two carbons with double bond in-between. C 1 is bonded to methoxy and methyl group. C 2 is bonded to carbonyl, which is bonded to ethyl.\">"
+        }
+      ]
+    }
+  ]
+}

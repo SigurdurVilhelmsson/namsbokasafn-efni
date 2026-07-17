@@ -1,0 +1,15 @@
+{
+  "nickname": "13-99-OC-VC03",
+  "source_uid": "37492@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358339",
+      "stem_html": "<p>Teiknaðu upp hvernig þú gætir búist við að <sup>1</sup>H og <sup>13</sup>C NMR-róf eftirfarandi efnasambands myndu líta út (grænt = Cl):</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbEVVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--72fd39310d5d2ddda4edf4d55d109fac0e60d6c7/OChem_13_EC_003.jpg\" alt=\"The ball-and-stick model of ethyl 2-chloropropionate.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

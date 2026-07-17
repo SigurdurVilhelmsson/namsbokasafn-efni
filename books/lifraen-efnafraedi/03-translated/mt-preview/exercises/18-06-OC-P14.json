@@ -1,0 +1,37 @@
+{
+  "nickname": "18-06-OC-P14",
+  "source_uid": "38710@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Spyrðu fyrir um aðalmyndefni eftirfarandi efnahvarfa:",
+  "questions": [
+    {
+      "id": "464273",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdXNqIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ad71af6be3c56fdab945af4bb2256ae1eff1766a/OChem_18_06_013a.jpg\" alt=\"2-Ethyl-2-methyloxirane reacts with sodium hydroxide in the presence of oxygen 18-labeled water to form an unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbThYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1274828e22290800b67e964e3826ca52d0d4473e/OChem_18_EC_204a.jpg\" alt=\"A four-carbon chain with hydroxyl on C 1 and C 2 and methyl on C 2 position. The oxygen atom of hydroxyl on C 1 position has an asterisk.\">"
+        }
+      ]
+    },
+    {
+      "id": "464274",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTBYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--670ac0cf074b92883f2aed1f9676b115b41e85a0/OChem_18_06_013b.jpg\" alt=\"2-Ethyl-2-methyloxirane reacts with hydronium ion in which O is marked as 18 to form an unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkFYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--701ddddf4f4306c75047a3d764f354a5b4ac4ef3/OChem_18_EC_204b.jpg\" alt=\"A four-carbon chain with hydroxyl on C 1 and C 2 and methyl on C 2 position. The oxygen atom of hydroxyl on C 2 position has an asterisk.\">"
+        }
+      ]
+    },
+    {
+      "id": "464275",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTRYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--230c39fe3827072e9369c477792021833c48914f/OChem_18_06_013c.jpg\" alt=\"Epoxide with dashed ethyl, wedged methyl on the left and dashed methyl, wedged hydrogen on the right reacts with phenyl magnesium bromide, then hydronium ion to form an unknown product.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbkVYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d2e1e22f920d0b01101c13efda18b47aaf2f04d1/OChem_18_EC_204c.jpg\" alt=\"Structure of 3-methyl-2-phenylpentan-3-ol.\">"
+        }
+      ]
+    }
+  ]
+}

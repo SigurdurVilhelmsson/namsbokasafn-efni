@@ -1,0 +1,25 @@
+{
+  "nickname": "08-99-OC-AP17",
+  "source_uid": "37175@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Efnasambandið A hefur formúluna C<sub>10</sub>H<sub>16</sub>. Við hvataða vetnun yfir palladíum hvarfast það við aðeins 1 mólígildi af H<sub>2</sub>. Efnasamband <b>A</b> gengst einnig undir efnahvarf með ósoni, fylgt eftir með meðhöndlun með sinki, til að gefa samhverft díketón, <b>B</b> (C<sub>10</sub>H<sub>16</sub>O<sub>2</sub>).",
+  "questions": [
+    {
+      "id": "332802",
+      "stem_html": "Hversu marga hringi hefur <b>A</b>?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "332803",
+      "stem_html": "Hverjar eru byggingar <b>A</b> og <b>B</b>?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "332804",
+      "stem_html": "Skrifaðu efnahvörfin.",
+      "collaborator_solutions": []
+    }
+  ]
+}

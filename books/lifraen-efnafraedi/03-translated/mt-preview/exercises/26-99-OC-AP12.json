@@ -1,0 +1,30 @@
+{
+  "nickname": "26-99-OC-AP12",
+  "source_uid": "39251@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefni efnahvarfs valíns við eftirfarandi hvarfefni:",
+  "questions": [
+    {
+      "id": "348880",
+      "stem_html": "CH<sub>3</sub>CH<sub>2</sub>OH, sýra",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348881",
+      "stem_html": "Dí-<i>tert</i>-bútýldíkarbónat",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348882",
+      "stem_html": "KOH, H<sub>2</sub>O",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348883",
+      "stem_html": "CH<sub>3</sub>COCl, pýridín; síðan H<sub>2</sub>O",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "nickname": "17-99-OC-AP30",
+  "source_uid": "37931@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Efnasambandið <b>A</b>, C<sub>5</sub>H<sub>10</sub>O, er ein af grunnbyggingareiningum náttúrunnar. Allir sterar og mörg önnur náttúruleg efnasambönd eru byggð úr efnasambandinu <b>A</b>. Litrófsgreining á <b>A</b> gefur eftirfarandi upplýsingar:</p>\n<ul style=\"list-style-type:none\">\n<li>IR: 3400 cm<sup>–1</sup>; 1640 cm<sup>–1</sup></li>\n<li><sup>1</sup>H NMR: 1,63 <i>δ</i> (3 H, singúlett); 1,70 <i>δ</i> (3 H, singúlett); 3,83 <i>δ</i> (1 H, breiður singúlett); 4,15 <i>δ</i> (2 H, dúblett, <i>J</i> = 7 Hz); 5,70 <i>δ</i> (1 H, tríplett, <i>J</i> = 7 Hz)</li>\n</ul>",
+  "questions": [
+    {
+      "id": "340887",
+      "stem_html": "Hversu mörg tvítengi og/eða hringi hefur <b>A</b>?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340888",
+      "stem_html": "Miðað við IR-rófið, hver er virknihópurinn sem inniheldur súrefni?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340889",
+      "stem_html": "Hvers konar vetni bera ábyrgð á þeim NMR-gleypnum sem taldar eru upp?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340890",
+      "stem_html": "Stingdu upp á byggingu fyrir <b>A</b>.",
+      "collaborator_solutions": []
+    }
+  ]
+}

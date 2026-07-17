@@ -1,0 +1,15 @@
+{
+  "nickname": "20-99-OC-AP34",
+  "source_uid": "38144@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359222",
+      "stem_html": "<p>Eftirfarandi p<i>K</i><sub>a</sub>-gildi hafa verið mæld. Útskýrðu hvers vegna hýdroxýlhópur í para-stöðu dregur úr sýrustigi en hýdroxýlhópur í meta-stöðu eykur sýrustigið.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdGNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d5216a9285669cd47cf6ffa377fe168e3715f19e/OChem_20_EC_035.jpg\" alt=\"The acid strengths of 4-hydroxybenzoic acid (p K a equals 4.48), benzoic acid (p K a equals 4.19), and 3-hydroxybenzoic acid (p K a equals 4.07) are compared.\">\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "nickname": "01-99-OC-AP19",
+  "source_uid": "37576@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Hvers konar blendingsgerð býst þú við fyrir hverja kolefnisfrumeind í eftirfarandi sameindum:</p>",
+  "questions": [
+    {
+      "id": "358887",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdG9YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5369b0b277ee3a11540d9228932610dd5d162085/OChem_01_EC_010a.jpg\" alt=\"The line-bond structure of procaine.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "358888",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdHNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6501b214385c9533506a09e07cdf80dc1f915d69/OChem_01_EC_010b.jpg\" alt=\"The line-bond structure of vitamin C (ascorbic acid).\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

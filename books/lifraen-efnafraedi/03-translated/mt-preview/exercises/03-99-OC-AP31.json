@@ -1,0 +1,30 @@
+{
+  "nickname": "03-99-OC-AP31",
+  "source_uid": "36468@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Aukinn fjöldi skiptihópa umhverfis efnatengi leiðir til aukins álags. Tökum sem dæmi fjögur skipt bútön sem talin eru upp hér að neðan. Fyrir hvert efnasamband, horfðu meðfram C2–C3 efnatenginu og teiknaðu Newman-vörpun af stöðugustu og óstöðugustu stellingunum. Notaðu gögnin í töflu 3.5 til að úthluta álagsorkugildum til hverrar stellingar. Hver af átta stellingunum er með mesta álagið? Hver er með minnsta álagið?",
+  "questions": [
+    {
+      "id": "330504",
+      "stem_html": "2-Metýlbútan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "330505",
+      "stem_html": "2,2-Dímetýlbútan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "330506",
+      "stem_html": "2,3-Dímetýlbútan",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "330507",
+      "stem_html": "2,2,3-Trímetýlbútan",
+      "collaborator_solutions": []
+    }
+  ]
+}

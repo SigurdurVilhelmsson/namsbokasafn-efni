@@ -1,0 +1,30 @@
+{
+  "nickname": "24-99-OC-AP14",
+  "source_uid": "39013@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Skrifaðu byggingarformúlur helstu lífrænu myndefnanna sem þú myndir búast við úr efnahvarfi <i>m</i>-tólúidíns (<i>m</i>-metýlanilíns) við eftirfarandi hvarfefni:",
+  "questions": [
+    {
+      "id": "347756",
+      "stem_html": "Br<sub>2</sub> (1 jafngildi)",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347757",
+      "stem_html": "CH<sub>3</sub>I (umframmagn)",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347758",
+      "stem_html": "CH<sub>3</sub>COCl í pýridíni",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347759",
+      "stem_html": "Myndefnið úr (c), síðan HSO<sub>3</sub>Cl",
+      "collaborator_solutions": []
+    }
+  ]
+}

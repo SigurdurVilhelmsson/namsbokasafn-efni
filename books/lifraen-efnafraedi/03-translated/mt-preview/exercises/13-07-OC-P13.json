@@ -1,0 +1,64 @@
+{
+  "nickname": "13-07-OC-P13",
+  "source_uid": "37479@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hversu margar gerðir af rafrænt ójafngildum róteindum eru til staðar í hverju eftirfarandi efnasambanda og hversu mörgum NMR-gleypnum má því búast við í hverju þeirra?",
+  "questions": [
+    {
+      "id": "338033",
+      "stem_html": "CH<sub>3</sub>CH<sub>2</sub>Br",
+      "collaborator_solutions": [
+        {
+          "content_html": "2"
+        }
+      ]
+    },
+    {
+      "id": "338034",
+      "stem_html": "CH<sub>3</sub>OCH<sub>2</sub>CH(CH<sub>3</sub>)<sub>2</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "4"
+        }
+      ]
+    },
+    {
+      "id": "338035",
+      "stem_html": "CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>NO<sub>2</sub>",
+      "collaborator_solutions": [
+        {
+          "content_html": "3"
+        }
+      ]
+    },
+    {
+      "id": "338036",
+      "stem_html": "Metýlbensen",
+      "collaborator_solutions": [
+        {
+          "content_html": "4"
+        }
+      ]
+    },
+    {
+      "id": "338037",
+      "stem_html": "2-Metýl-1-búten",
+      "collaborator_solutions": [
+        {
+          "content_html": "5"
+        }
+      ]
+    },
+    {
+      "id": "338038",
+      "stem_html": "<i>cis</i>-3-Hexen",
+      "collaborator_solutions": [
+        {
+          "content_html": "3"
+        }
+      ]
+    }
+  ]
+}

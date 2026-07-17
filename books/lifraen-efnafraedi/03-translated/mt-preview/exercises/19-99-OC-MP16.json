@@ -1,0 +1,15 @@
+{
+  "nickname": "19-99-OC-MP16",
+  "source_uid": "38038@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360713",
+      "stem_html": "<p>Meerwein–Ponndorf–Verley-efnahvarfið felur í sér afoxun ketóns með því að meðhöndla það með umframmagni af áltríísóprópoxíði, [(CH<sub>3</sub>)<sub>2</sub>CHO]<sub>3</sub>Al. Hvarfgangurinn er náskyldur Cannizzaro-efnahvarfinu að því leyti að hýdríðjón virkar sem farhópur. Stingdu upp á hvarfgangi.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbGNXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3406cb3a9057040bb8ce8e6af6915f606e5ab11d/OChem_19_EC_035.jpg\" alt=\"The reaction shows cyclohexanone with aluminum triisopropoxide, then hydronium ion to yield two products: cyclohexanol and acetone (three-carbon).\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

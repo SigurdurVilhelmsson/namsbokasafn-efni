@@ -1,0 +1,15 @@
+{
+  "nickname": "30-99-OC-AP12",
+  "source_uid": "39381@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355102",
+      "stem_html": "<p>Stingið upp á hringhvarfagangi til að útskýra eftirfarandi ummyndun:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2thIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5db248d21ba7abab3918e158319d9edce8a9798f/OChem_30_EC_017.jpg\" alt=\"1-vinyl-cyclohex-3-en-1-ol reacts with heat to form 3-vinylcyclohexanone.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

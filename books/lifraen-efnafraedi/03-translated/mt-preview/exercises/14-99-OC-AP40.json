@@ -1,0 +1,15 @@
+{
+  "nickname": "14-99-OC-AP40",
+  "source_uid": "37729@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358555",
+      "stem_html": "<p>Hvernig myndir þú framkvæma eftirfarandi nýmyndun (fleiri en eitt skref þarf)? Hvaða staðefnafræðilega afstöðu myndu –CO<sub>2</sub>CH<sub>3</sub>-hópurinn sem er tengdur við sýklóhexanhringinn og –CHO-hóparnir hafa í nýmyndun þinni?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ3dWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dc72160580a043ce8e915e5cb3ff6b333df93465/OChem_14_EC_036.jpg\" alt=\"1,3-Cyclohexadiene reacts with ethene bonded to C O 2 C H 3 in the presence of an unknown reagent represented by a question mark to form a substituted product.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

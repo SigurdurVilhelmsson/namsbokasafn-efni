@@ -1,0 +1,15 @@
+{
+  "nickname": "10-99-OC-AP11",
+  "source_uid": "37274@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "352371",
+      "stem_html": "<p>Hver af eftirfarandi efnasamböndum hafa sama oxunarstig og hver hafa mismunandi stig?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa0FUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9e6f9ec921055da75f0ea789984f18171db6fc53/OChem_10_EC_025.jpg\" alt=\"Five compounds, numbered one through five: one is 2-ethyloxirane, two is but-2-en-1-ol, three is but-3-en-2-one, four is tetrahydrofuran, five is 1,3-butadiene.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

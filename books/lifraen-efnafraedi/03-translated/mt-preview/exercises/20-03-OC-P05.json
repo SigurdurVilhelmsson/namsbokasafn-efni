@@ -1,0 +1,28 @@
+{
+  "nickname": "20-03-OC-P05",
+  "source_uid": "38085@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Reiknaðu hlutfall klofinna og óklofinna forma sem eru til staðar í eftirfarandi lausnum:",
+  "questions": [
+    {
+      "id": "341939",
+      "stem_html": "0,0010 M glýkólsýra (HOCH<sub>2</sub>CO<sub>2</sub>H; p<i>K</i><sub>a</sub> = 3,83) við pH = 4,50",
+      "collaborator_solutions": [
+        {
+          "content_html": "82% klofnun"
+        }
+      ]
+    },
+    {
+      "id": "341940",
+      "stem_html": "0,0020 M própansýra (p<i>K</i><sub>a</sub> = 4,87) við pH = 5,30",
+      "collaborator_solutions": [
+        {
+          "content_html": "73% klofnun"
+        }
+      ]
+    }
+  ]
+}

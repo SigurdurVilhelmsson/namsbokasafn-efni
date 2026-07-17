@@ -1,0 +1,19 @@
+{
+  "nickname": "13-12-OC-P22",
+  "source_uid": "37488@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358331",
+      "stem_html": "Leggðu til byggingu fyrir arómatískt kolvetni, C<sub>11</sub>H<sub>16</sub>, sem hefur eftirfarandi <sup>13</sup>C NMR-rófsgögn:\n<ul style=\"list-style-type:none\">\n<li>Breiðbandsaftengt: 29,5, 31,8, 50,2, 125,5, 127,5, 130,3, 139,8 <i>Δ</i></li>\n<li>DEPT-90: 125,5, 127,5, 130,3 <i>Δ</i></li>\n<li>DEPT-135: jákvæðir toppar við 29,5, 125,5, 127,5, 130,3 <i>Δ;</i> neikvæður toppur við 50,2 <i>Δ</i></li>\n</ul>",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazBVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2b401bdd1f83d9fafa0aec4869691120462f95a9/OChem_13_EC_206.jpg\" alt=\"The structure has a benzene ring. C 1 is bonded to a methylene group, which is bonded to carbon. The carbon atom is bonded to three methyl groups.\">"
+        }
+      ]
+    }
+  ]
+}

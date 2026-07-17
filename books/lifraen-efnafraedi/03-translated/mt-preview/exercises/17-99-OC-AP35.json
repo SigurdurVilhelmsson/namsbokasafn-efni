@@ -1,0 +1,15 @@
+{
+  "nickname": "17-99-OC-AP35",
+  "source_uid": "37936@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359563",
+      "stem_html": "<p>Vandamál sem oft kemur upp við oxun prímer alkóhóla í karboxýlsýrur er að esterar myndast stundum sem aukaafurðir. Til dæmis gefur oxun etanóls ediksýru og etýlasetat:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ0lXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cc8cb8d5e9fd84e7f9b5c87a2c149073d3233680/OChem_17_EC_050.jpg\" alt=\"Ethanol reacts with chromium trioxide to form acetic acid and ethylacetate.\">\n<p>Stingdu upp á hvarfgangi til að útskýra myndun etýlasetats. Taktu tillit til afturkræfa efnahvarfsins milli aldehýða og alkóhóla:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ01XIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0be128f588529ad237bb6e67c097dc10ad696be4/OChem_17_EC_051.jpg\" alt=\"An aldehyde, R C H O reacts with R dash O H to form carbon linked to H , R, O H and O R dash group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

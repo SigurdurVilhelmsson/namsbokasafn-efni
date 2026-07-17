@@ -1,0 +1,64 @@
+{
+  "nickname": "10-01-OC-P01",
+  "source_uid": "37247@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Gefðu IUPAC-heiti fyrir eftirfarandi alkýlhalíð:",
+  "questions": [
+    {
+      "id": "352594",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzBUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--46720f4cec797f0ddda472d36b544cca2610502c/OChem_10_01_006a.jpg\" alt=\"The structure of 1-iodobutane.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-joðbútan"
+        }
+      ]
+    },
+    {
+      "id": "352595",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzRUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3235b9ce5b4736cedd1e35832f0814a3bee18349/OChem_10_01_006b.jpg\" alt=\"The structure of 1-chloro-3-methylbutane.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-klór-3-metýlbútan"
+        }
+      ]
+    },
+    {
+      "id": "352596",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzhUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--767a7ddb2e8d35f65ba1a46752010835806a900f/OChem_10_01_006c.jpg\" alt=\"The structure of 1,5-dibromo-2,2-dimethylpentane.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1,5-díbróm-2,2-dímetýlpentan"
+        }
+      ]
+    },
+    {
+      "id": "352597",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaEFUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--68120cc76cd078131a8be45dc59ce2a9bee45729/OChem_10_01_006d.jpg\" alt=\"The structure of 1,3-dichloro-3-methylbutane.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1,3-díklór-3-metýlbútan"
+        }
+      ]
+    },
+    {
+      "id": "352598",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaEVUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9074cde57cc9ca3731157d4c671c736251ad3727/OChem_10_01_006e.jpg\" alt=\"The structure of 1-chloro-3-ethyl-4-iodopentane.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1-klór-3-etýl-4-joðpentan"
+        }
+      ]
+    },
+    {
+      "id": "352599",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaElUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9d4a6094eac4d8992495f95303f1bef9267e9c68/OChem_10_01_006f.jpg\" alt=\"The structure of 2-bromo-5-chlorohexane.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-bróm-5-klórhexan"
+        }
+      ]
+    }
+  ]
+}

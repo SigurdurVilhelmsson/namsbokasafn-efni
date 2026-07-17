@@ -1,0 +1,20 @@
+{
+  "nickname": "20-99-OC-MP04",
+  "source_uid": "38104@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Sjáðu fyrir um myndefni og skrifaðu allan hvarfgang hvers eftirfarandi efnahvarfs:",
+  "questions": [
+    {
+      "id": "359144",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBckVXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--353947419131e030612ced111d397625493c21eb/OChem_20_EC_015a.jpg\" alt=\"2-methoxybenzonitrile reacts with methylmagnesium bromide in the presence of ether followed by acidic hydrolysis to give unknown products depicted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359145",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcklXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3b27f7c31ecb79184cf5b19fcbf0f0e6dd6773e3/OChem_20_EC_015c.jpg\" alt=\"Cyclopropanecarbonitrile reacts with phenylmagnesium bromide in the presence of ether followed by acidic hydrolysis to give unknown products depicted by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

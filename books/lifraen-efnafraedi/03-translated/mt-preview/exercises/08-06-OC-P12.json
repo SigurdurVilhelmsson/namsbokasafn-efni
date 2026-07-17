@@ -1,0 +1,37 @@
+{
+  "nickname": "08-06-OC-P12",
+  "source_uid": "37096@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvaða myndefni myndir þú fá úr vetnun með hvata á eftirfarandi alkenum?",
+  "questions": [
+    {
+      "id": "353416",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBazhTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--32d9e4de57a4d0da824d281ce82ed9e4fd1cacee/OChem_08_06_008a.jpg\" alt=\"The condensed structural formula has a 5-carbon chain. C2 is double bonded to C3 and single bonded to a methyl group.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-metýlpentan"
+        }
+      ]
+    },
+    {
+      "id": "353417",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbEFTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4ea079ce374e147560de2df90a6c7b6bc3fd8404/OChem_08_06_008b.jpg\" alt=\"The structure has a cyclopentene ring. C3 is bonded to two methyl groups.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "1,1-dímetýlsýklópentan"
+        }
+      ]
+    },
+    {
+      "id": "353418",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbEVTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--527e8f928c2429a10821da0ee9ac4154037f93be/OChem_08_06_008c.jpg\" alt=\"The structure has a cyclohexene ring with a tert-butyl group bonded to the C3 cyclohexyl carbon. To the right, the equivalent 3D structure is depicted.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "<i>tert</i>-bútýlsýklóhexan"
+        }
+      ]
+    }
+  ]
+}

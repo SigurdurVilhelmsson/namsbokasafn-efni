@@ -1,0 +1,19 @@
+{
+  "nickname": "17-02-OC-P05",
+  "source_uid": "37870@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "340650",
+      "stem_html": "<i>p</i>-Nítróbensýlalkóhól er súrara en bensýlalkóhól, en <i>p</i>-metoxýbensýlalkóhól er minna súrt. Útskýrið.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Rafeindadrægi nítróhópurinn stöðgar alkoxíðjón en rafeindagefandi metoxýlhópurinn óstöðgar anjónina."
+        }
+      ]
+    }
+  ]
+}

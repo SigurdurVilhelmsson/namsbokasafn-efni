@@ -1,0 +1,20 @@
+{
+  "nickname": "18-99-OC-MP14",
+  "source_uid": "38732@7",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Aldehýð og ketón gangast undir sýruhvetjandi efnahvarf með alkóhólum og mynda <i>hemíasetöl</i> úr aldehýðum eða ketölum með ketónaefnasamböndum sem hafa eitt alkóhóllíkt súrefni og eitt eterlíkt súrefni tengt sama kolefninu. Frekara efnahvarf hemíasetals við alkóhól gefur síðan <i>asetal</i>, efnasamband sem hefur tvö eterlík súrefni tengd sama kolefninu.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWthIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--378fd556d3e92646c9f8596462e5456bca49b6c7/OSX_OrgChem_18_99_Ketonetal_img.jpg\" alt=\"A carbonyl and R O H react in acid catalyst to produce a hemiacetal; further reaction produces an acetal and water.\">",
+  "questions": [
+    {
+      "id": "361214",
+      "stem_html": "Sýndu byggingu hemíketalsins og ketalsins sem þú myndir fá með efnahvarfi sýklóhexanóns við etanól.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361215",
+      "stem_html": "Leggðu til hvarfgang fyrir umbreytingu hemíasetals í ketal.",
+      "collaborator_solutions": []
+    }
+  ]
+}

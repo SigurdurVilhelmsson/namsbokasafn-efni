@@ -1,0 +1,37 @@
+{
+  "nickname": "19-14-OC-P25",
+  "source_uid": "38019@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvernig gætir þú notað massagreiningu til að greina á milli eftirfarandi hverfupara?",
+  "questions": [
+    {
+      "id": "341435",
+      "stem_html": "3-Metýl-2-hexanón og 4-metýl-2-hexanón",
+      "collaborator_solutions": [
+        {
+          "content_html": "Mismunandi toppar vegna McLafferty-umröðunar"
+        }
+      ]
+    },
+    {
+      "id": "341436",
+      "stem_html": "3-Heptanón og 4-heptanón",
+      "collaborator_solutions": [
+        {
+          "content_html": "Mismunandi toppar vegna <i>α</i>-klofnunar og McLafferty-umröðunar"
+        }
+      ]
+    },
+    {
+      "id": "341437",
+      "stem_html": "2-Metýlpentanal og 3-metýlpentanal",
+      "collaborator_solutions": [
+        {
+          "content_html": "Mismunandi toppar vegna McLafferty-umröðunar"
+        }
+      ]
+    }
+  ]
+}

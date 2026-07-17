@@ -1,0 +1,15 @@
+{
+  "nickname": "26-99-OC-MP03",
+  "source_uid": "39237@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359621",
+      "stem_html": "<p>Hægt er að fjarlægja Fmoc-verndarhóp af amínósýru með því að meðhöndla hana með amínbasanum píperidíni. Stingdu upp á hvarfgangi.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcmNaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--766197e3f3f8d3d0162bb36456e6f41805a8fd99/OChem_26_EC_015.jpg\" alt=\"An F m o c-protected amino acid reacts with a base to form the free amino acid, carbon dioxide, and the dibenzofulvene (DBF) intermediate.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "nickname": "05-06-OC-P14",
+  "source_uid": "36506@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "354114",
+      "stem_html": "<p>Hversu margar hendnimiðjur hefur morfín? Hversu margar rúmhverfur morfíns eru mögulegar í grundvallaratriðum?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaThSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0a6bcb6e214825206562869dec603ccff6602afb/OChem_05_06_004.jpg\" alt=\"The structure of morphine.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "Fimm hendnimiðjur og 2<sup>5</sup> = 32 rúmhverfur"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "15-99-OC-VC02",
+  "source_uid": "37745@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358648",
+      "stem_html": "<p>All-cis sýklódekapentaen er stöðug sameind sem sýnir eitt gleypni í <sup>1</sup>H NMR-rófi sínu við 5,67 <i>δ</i>. Segðu til um hvort það sé arómatískt og útskýrðu NMR-róf þess.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaW9WIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3e04cbab0f33f9dd7b66a5a42d3c481c9ce271ef/OChem_15_EC_002.jpg\" alt=\"The ball-and-stick model of all-cis cyclodecapentaene has a 10-carbon ring with alternate double bonds.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "nickname": "21-99-OC-AP04",
+  "source_uid": "38198@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáið fyrir um myndefnið, ef einhvert er, úr efnahvarfi própanoýlklóríðs og eftirfarandi hvarfefna:",
+  "questions": [
+    {
+      "id": "347239",
+      "stem_html": "Li(Ph)<sub>2</sub>Cu í eter",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347240",
+      "stem_html": "LiAlH<sub>4</sub>, síðan H<sub>3</sub>O<sup>+</sup>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347241",
+      "stem_html": "CH<sub>3</sub>MgBr, síðan H<sub>3</sub>O<sup>+</sup>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347242",
+      "stem_html": "H<sub>3</sub>O<sup>+</sup>",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347243",
+      "stem_html": "Sýklóhexanól",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347244",
+      "stem_html": "Anilín",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "347245",
+      "stem_html": "CH<sub>3</sub>CO<sub>2</sub><sup>–</sup> Na<sup>+</sup>",
+      "collaborator_solutions": []
+    }
+  ]
+}

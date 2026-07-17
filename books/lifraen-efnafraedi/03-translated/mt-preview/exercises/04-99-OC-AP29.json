@@ -1,0 +1,15 @@
+{
+  "nickname": "04-99-OC-AP29",
+  "source_uid": "36556@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "351139",
+      "stem_html": "<p><i>myo</i>-ínósítól, ein af hverfum 1,2,3,4,5,6-hexahýdroxýsýklóhexans, virkar sem vaxtarþáttur í bæði dýrum og örverum. Teiknaðu stöðugustu stólstellingu <i>myo</i>-ínósítóls.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbUVSIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b3747cc7c80aa5c7acf128517e9c05603878ebcf/OChem_04_EC_014.jpg\" alt=\"The structure of myo-inositol has a cyclohexane ring wedge bonded to four hydroxyl groups and dash bonded to two hydroxyl groups at different carbons.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "nickname": "28-05-OC-P08",
+  "source_uid": "39119@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Teldu upp andtáknaraðir á tRNA sem bera eftirfarandi amínósýrur.",
+  "questions": [
+    {
+      "id": "349461",
+      "stem_html": "Ala",
+      "collaborator_solutions": [
+        {
+          "content_html": "AGC, GGC, UGC, CGC"
+        }
+      ]
+    },
+    {
+      "id": "349462",
+      "stem_html": "Phe",
+      "collaborator_solutions": [
+        {
+          "content_html": "AAA, GAA"
+        }
+      ]
+    },
+    {
+      "id": "349463",
+      "stem_html": "Leu",
+      "collaborator_solutions": [
+        {
+          "content_html": "UAA, CAA, GAA, GAG, UAG, CAG"
+        }
+      ]
+    },
+    {
+      "id": "349464",
+      "stem_html": "Tyr",
+      "collaborator_solutions": [
+        {
+          "content_html": "AUA, GUA"
+        }
+      ]
+    }
+  ]
+}

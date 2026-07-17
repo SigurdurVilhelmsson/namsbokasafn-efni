@@ -1,0 +1,15 @@
+{
+  "nickname": "20-99-OC-AP21",
+  "source_uid": "38131@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359191",
+      "stem_html": "<p>1,6-hexandíamín, upphafsefni sem þarf til að búa til nælon, er hægt að búa til úr 1,3-bútadíeni. Hvernig myndir þú framkvæma þessa myndun?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBc2tXIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--91344ac7e2f3d156015ca39e2fe412ac564ca160/OChem_20_EC_026.jpg\" alt=\"The conversion of buta-1,3-diene to hexane-1,6-diamine. The missing reagents are depicted with a question mark.\">\n",
+      "collaborator_solutions": []
+    }
+  ]
+}

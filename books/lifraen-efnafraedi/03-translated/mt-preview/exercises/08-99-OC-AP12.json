@@ -1,0 +1,30 @@
+{
+  "nickname": "08-99-OC-AP12",
+  "source_uid": "37170@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Þegar verið er að skipuleggja myndun eins efnasambands úr öðru er jafn mikilvægt að vita hvað á ekki að gera og hvað á að gera. Eftirfarandi efnahvörf hafa öll alvarlega galla. Útskýrðu hugsanleg vandamál hvers þeirra.",
+  "questions": [
+    {
+      "id": "353551",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcFlTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0db03e5cb5a41baf456de40a60878f76c16ffae3/OChem_08_EC_040a.jpg\" alt=\"A reaction shows 2-methyl-2-butene reacting with hydrogen iodide to form a 4-carbon chain, in which C2 is bonded to iodine and C3 is bonded to a methyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353552",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--09cab0d294ba3d7b6b385286b0f5d03b29a35ed9/OChem_08_EC_040b.jpg\" alt=\"A reaction shows cyclopentene reacting with osmium tetroxide and sodium bicarbonate to form cyclopentane, in which C1 is wedge bonded to hydroxyl. C2 is dash bonded to hydroxyl group.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353553",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--08949af618e6c296827eaca46c1f0272ee461a93/OChem_08_EC_040c.jpg\" alt=\"A reaction shows yclohexadiene reacting with ozone and zinc to form a 6-carbon chain, in which C1 and C6 are aldehyde groups. C3 is double bonded to C4.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353554",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcGtTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--159baa4dfa13c0626438efef313ce40e922790d9/OChem_08_EC_040d.jpg\" alt=\"A reaction shows 1-methylcyclohexene reacting with borane and basic hydrogen peroxide to form a cyclohexanol in which  C1 is wedge bonded to methyl and C2 is wedge bonded to hydroxyl.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

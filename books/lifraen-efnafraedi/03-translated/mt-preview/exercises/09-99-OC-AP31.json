@@ -1,0 +1,15 @@
+{
+  "nickname": "09-99-OC-AP31",
+  "source_uid": "37245@6",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "353872",
+      "stem_html": "<p>Hver af eftirfarandi bösum gæti verið notaður til að afprótóna 1-bútýn?</p>\n<p><b>(a)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ1lUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--52b18fa0bd72c8aeedf6279bab5b4a82db12121e/OChem_09_EC_043a.jpg\" alt=\"The structure of potassium hydroxide.\">\n <b>(b)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2NUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--45192c9eae2ed3ea32295c4db47848fe314597aa/OChem_09_EC_043b.jpg\" alt=\"The structure of the sodium salt of the methylene anion connected to a sulfonyl group that is further connected to a methyl group.\">\n <b>(c)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2dUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f51789fa9852d0d9ada13e4a6f4af8299d7d0cf8/OChem_09_EC_043c.jpg\" alt=\"The structure of butyllithium.\">\n <b>(d)</b><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZ2tUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4a90ec814f6027939ce3cfca6adcac6f9a017288/OChem_09_EC_043d.jpg\" alt=\"The structure of the sodium salt of the methylene anion  of acetone.\"></p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

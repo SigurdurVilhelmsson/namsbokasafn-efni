@@ -1,0 +1,25 @@
+{
+  "nickname": "16-99-OC-AP19",
+  "source_uid": "37851@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú mynda eftirfarandi efni út frá benseni?",
+  "questions": [
+    {
+      "id": "359037",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2NWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--af8a7730e66daad27f66cc50c8a11d23041b2291/OChem_16_EC_041a.jpg\" alt=\"A benzene ring with an ethene group and a chlorine atom para to one another\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359038",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2dWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--df7d7fb2ab58cc5db2e4632975bf84da4225af8c/OChem_16_EC_041b.jpg\" alt=\"A benzene ring with two hydroxymethyl groups para to one another\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359039",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBb2tWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d186fb3d46bce6bbd3a6cdd98aa10526640a55ea/OChem_16_EC_041c.jpg\" alt=\"A benzene ring, with a 2-carbon chain attached to it, the othermost carbon of which is itself attached to a hydroxyl group.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

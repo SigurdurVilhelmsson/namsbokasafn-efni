@@ -1,0 +1,15 @@
+{
+  "nickname": "30-99-OC-MP05",
+  "source_uid": "39369@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358573",
+      "stem_html": "<p>Eftirfarandi varmaumröðun felur í sér tvö hringhverf efnahvörf í röð. Greindu þau og leggðu til hvarfgang til að útskýra niðurstöðuna sem sést.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdjRaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--eb1dee877b57af9e8fe91371f9a5e03f35525301/OChem_30_EC_007.jpg\" alt=\"A cyclobutane with double bonds connected to C D 2 at two positions reacts at 275 degree Celsius to form a product where hydrogen substitutes with deuterium and vice versa.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

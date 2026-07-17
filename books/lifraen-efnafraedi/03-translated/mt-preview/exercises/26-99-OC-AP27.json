@@ -1,0 +1,15 @@
+{
+  "nickname": "26-99-OC-AP27",
+  "source_uid": "39266@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "360857",
+      "stem_html": "<p>Skoðaðu byggingu mannainsúlíns og tilgreindu hvar í hvorri keðju sameindin er klofin af trypsíni og kýmótrypsíni.</p>\n<p><img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBallhIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--201b35af41208279f1171348704efd231581209b/OSX_OrgChem26_99_ABChain_img.jpg\" alt=\"The structure of insulin is made up of A and B chains, shown in terms of the three-letter amino acid abbreviations in sequence. Cysteine disulfide bonds are also shown.\"></p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

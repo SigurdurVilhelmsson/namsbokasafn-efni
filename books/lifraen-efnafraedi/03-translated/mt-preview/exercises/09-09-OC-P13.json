@@ -1,0 +1,46 @@
+{
+  "nickname": "09-09-OC-P13",
+  "source_uid": "37202@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Með asetýlen og hvaða alkýlhalíð sem þarf sem upphafsefni, hvernig myndir þú mynda eftirfarandi efnasambönd?",
+  "questions": [
+    {
+      "id": "346484",
+      "stem_html": "Dekan",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. HC<span data-math=\"\\text{≡}\"></span>CH + NaNH<sub>2</sub> ; 2. CH<sub>3</sub>(CH<sub>2</sub>)<sub>6</sub>CH<sub>2</sub>Br; 3. 2 H<sub>2</sub>/Pd"
+        }
+      ]
+    },
+    {
+      "id": "346485",
+      "stem_html": "2,2-dímetýlhexan",
+      "collaborator_solutions": [
+        {
+          "content_html": "HC<span data-math=\"\\text{≡}\"></span>CH + NaNH<sub>2</sub> ; 2. (CH<sub>3</sub>)<sub>3</sub>CCH<sub>2</sub>CH<sub>2</sub>I; 3. 2 H<sub>2</sub>/Pd"
+        }
+      ]
+    },
+    {
+      "id": "346486",
+      "stem_html": "Hexanal",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. HC<span data-math=\"\\text{≡}\"></span>CH + NaNH<sub>2</sub> ; 2. CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>I; 3. BH<sub>3</sub>; 4. H<sub>2</sub>O<sub>2</sub>"
+        }
+      ]
+    },
+    {
+      "id": "346487",
+      "stem_html": "2-heptanón",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. HC<span data-math=\"\\text{≡}\"></span>CH + NaNH<sub>2</sub> ; 2. CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>I; 3. HgSO<sub>4</sub>, H<sub>3</sub>O<sup>+</sup> "
+        }
+      ]
+    }
+  ]
+}

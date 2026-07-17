@@ -1,0 +1,19 @@
+{
+  "nickname": "18-03-OC-P08",
+  "source_uid": "38704@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "343687",
+      "stem_html": "Skrifaðu hvarfgang sýruhvataðrar klofnunar <i>tert</i>-bútýlsýklóhexýleters til að gefa sýklóhexanól og 2-metýlprópen.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Róteindun súrefnisfrumeindarinnar, fylgt eftir með E1-efnahvarfi"
+        }
+      ]
+    }
+  ]
+}

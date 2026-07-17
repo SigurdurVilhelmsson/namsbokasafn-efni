@@ -1,0 +1,15 @@
+{
+  "nickname": "01-99-OC-AP26",
+  "source_uid": "37583@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "338544",
+      "stem_html": "<p>Allen, H<sub>2</sub>C<span data-math=\"\\text{=}\"></span>C<span data-math=\"\\text{=}\"></span>CH<sub>2</sub>, hefur tvö aðlæg tvítengi. Teiknið mynd sem sýnir svigrúmin sem taka þátt í <i>σ</i>- og <i>π</i>-efnatengjum allens. Er miðkolefnisfrumeindin <i>sp</i><sup>2</sup>- eða <i>sp</i>-blendinguð? Hvað með blendingsgerð endastæðu kolefnanna? Hvaða lögun spáir þú fyrir allen?</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

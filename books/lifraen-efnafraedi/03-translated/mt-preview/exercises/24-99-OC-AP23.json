@@ -1,0 +1,15 @@
+{
+  "nickname": "24-99-OC-AP23",
+  "source_uid": "39023@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "361729",
+      "stem_html": "<p>Oxasól er fimm liða arómatísk mishringja. Myndir þú búast við að oxasól væri meira basískt eða minna basískt en pýrról? Útskýrðu.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa1laIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--43f46cd96560cdc6225c13b96765ae17af99a763/OChem_24_EC_045.jpg\" alt=\"The structure of oxazole, a five membered ring with oxygen and nitrogen atoms separated by one carbon. There are double bonds between the adjacent carbons, and between carbon and nitrogen.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

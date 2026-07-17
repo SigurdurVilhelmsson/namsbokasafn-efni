@@ -1,0 +1,19 @@
+{
+  "nickname": "24-08-OC-P19",
+  "source_uid": "38972@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "347565",
+      "stem_html": "Leggðu til myndunarferli fyrir <i>p</i>-(dímetýlamínó)asóbensen með bensen sem eina lífræna upphafsefnið.",
+      "collaborator_solutions": [
+        {
+          "content_html": "1. HNO<sub>3</sub>, H<sub>2</sub>SO<sub>4</sub>; 2. SnCl<sub>2</sub>; 3a. 2 jafngildi CH<sub>3</sub>I; 3b. NaNO<sub>2</sub>, H<sub>2</sub>SO<sub>4</sub>; 4. myndefni úr 3a + myndefni úr 3b"
+        }
+      ]
+    }
+  ]
+}

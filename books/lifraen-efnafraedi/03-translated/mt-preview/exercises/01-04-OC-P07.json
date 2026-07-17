@@ -1,0 +1,19 @@
+{
+  "nickname": "01-04-OC-P07",
+  "source_uid": "37544@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "338410",
+      "stem_html": "Af hverju getur lífræn sameind ekki haft formúluna C<sub>2</sub>H<sub>7</sub>?",
+      "collaborator_solutions": [
+        {
+          "content_html": "C<sub>2</sub>H<sub>7</sub> hefur of mörg vetni fyrir efnasamband með tveimur kolefnum."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "nickname": "17-99-OC-MP10",
+  "source_uid": "37899@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Trímetýlsílýl (TMS) verndarhópurinn er einn af nokkrum sílikon verndarhópum fyrir alkóhól. Fyrir hvert efnahvarf, teiknaðu hvarfganginn fyrir verndun á (<i>R</i>)-3-bróm-1-bútanóli með eftirfarandi sílýlklóríðum, með því að nota tríetýlamín sem basa:",
+  "questions": [
+    {
+      "id": "340765",
+      "stem_html": "<i>tert</i>-bútýldímetýlsílýlklóríð (TBS-Cl)",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340766",
+      "stem_html": "tríísóprópýlsílýlklóríð (TIPS-Cl)",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "340767",
+      "stem_html": "tríetýlsílýlklóríð (TES-Cl)",
+      "collaborator_solutions": []
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "nickname": "10-99-OC-VC01",
+  "source_uid": "37260@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Gefðu IUPAC-heiti fyrir eftirfarandi alkýlhalíð (grænt = Cl):",
+  "questions": [
+    {
+      "id": "357349",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaWtUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b05893e70320ceb52cdb293844bdfa558b4e5bf4/OChem_10_EC_011a.jpg\" alt=\"The ball and stick model of an alkyl halide comprises single carbon-carbon bonds in a ring. Black, gray, and green spheres represent carbon, hydrogen, and chlorine, respectively.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "357350",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaW9UIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3e12ef5db97118e6f6c8d646f87db1c3649de149/OChem_10_EC_011b.jpg\" alt=\"The ball and stick model of an alkyl halide that comprises a seven-carbon chain and one double bond. Black, gray, and green spheres represent carbon, hydrogen, and chlorine, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

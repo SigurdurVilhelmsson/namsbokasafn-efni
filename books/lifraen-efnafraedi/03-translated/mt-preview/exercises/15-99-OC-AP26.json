@@ -1,0 +1,15 @@
+{
+  "nickname": "15-99-OC-AP26",
+  "source_uid": "37774@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358692",
+      "stem_html": "<p>Bextra, COX-2 hemill sem eitt sinn var notaður við meðhöndlun á liðagigt, inniheldur ísóxazólhring. Hvers vegna er hringurinn arómatískur?</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBajhWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--64f88dc4eec91754db48c7d857fe1551c6513e81/OChem_15_EC_018.jpg\" alt=\"Phenanthrene has three benzene rings fused to one another, two of them in a straight line and the third up to the top right..\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

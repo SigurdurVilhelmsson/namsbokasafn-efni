@@ -1,0 +1,19 @@
+{
+  "nickname": "28-07-OC-P11",
+  "source_uid": "39120@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348312",
+      "stem_html": "<i>p</i>-Dímetoxýtrítýl (DMT) etrar klofna auðveldlega með vægri sýrumeðferð. Sýndu hvarfgang klofnunarefnahvarfsins.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Klofnunin er S<sub>N</sub>1-efnahvarf sem á sér stað með róteindun súrefnisfrumeindarinnar og síðan tapi á stöðugri tríarýlmetýlkarbkatjón."
+        }
+      ]
+    }
+  ]
+}

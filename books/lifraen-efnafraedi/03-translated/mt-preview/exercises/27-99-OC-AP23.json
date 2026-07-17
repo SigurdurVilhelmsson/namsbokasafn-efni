@@ -1,0 +1,15 @@
+{
+  "nickname": "27-99-OC-AP23",
+  "source_uid": "38871@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358241",
+      "stem_html": "<p>Digitoxigenín er hjartörvandi efni sem er einangrað úr fingurbjargarblómi <i>Digitalis purpurea</i> og notað við meðferð hjartasjúkdóma. Teiknaðu þrívíddarstellingu digitoxigeníns og auðkenndu hvorn –OH hópinn fyrir sig sem áslægan eða miðlægan.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTBZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c41b413ff63ffffd68b26cdfbfcef02e800b64ae/OChem_27_EC_018.jpg\" alt=\"The structure of digitoxigenin. It is a beta-hydroxy steroid with one wedged hydroxyl and two wedged methyls at the ring juctions,and substituted furanone\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

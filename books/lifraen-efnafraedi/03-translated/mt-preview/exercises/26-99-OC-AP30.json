@@ -1,0 +1,25 @@
+{
+  "nickname": "26-99-OC-AP30",
+  "source_uid": "39269@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<i>Aspartam,</i> næringarlaust sætuefni sem markaðssett er undir vöruheitum eins og Equal, NutraSweet og Canderel, er metýlester einfalds tvípeptíðs, Asp-Phe-OCH<sub>3</sub>.",
+  "questions": [
+    {
+      "id": "348911",
+      "stem_html": "Teiknaðu byggingu aspartams.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348912",
+      "stem_html": "Jafnjónapunktur aspartams er 5,9. Teiknaðu aðalbygginguna sem er til staðar í vatnslausn við þetta pH.",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348913",
+      "stem_html": "Teiknaðu aðalform aspartams sem er til staðar við lífeðlisfræðilegt pH = 7,3.",
+      "collaborator_solutions": []
+    }
+  ]
+}

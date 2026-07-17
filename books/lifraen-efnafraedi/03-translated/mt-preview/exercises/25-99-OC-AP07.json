@@ -1,0 +1,30 @@
+{
+  "nickname": "25-99-OC-AP07",
+  "source_uid": "39080@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Teiknaðu Fischer-vörpun af eftirfarandi sameindum:",
+  "questions": [
+    {
+      "id": "348121",
+      "stem_html": "<i>S</i> handhverfa 2-brómbútans",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348122",
+      "stem_html": "<i>R</i> handhverfa alaníns, CH<sub>3</sub>CH(NH<sub>2</sub>)CO<sub>2</sub>H",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348123",
+      "stem_html": "<i>R</i> handhverfa 2-hýdroxýprópansýru",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348124",
+      "stem_html": "<i>S</i> handhverfa 3-metýlhexans",
+      "collaborator_solutions": []
+    }
+  ]
+}

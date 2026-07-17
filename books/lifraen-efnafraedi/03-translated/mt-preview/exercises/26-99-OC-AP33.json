@@ -1,0 +1,15 @@
+{
+  "nickname": "26-99-OC-AP33",
+  "source_uid": "39272@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359645",
+      "stem_html": "<p>Fyrsta skrefið í líffræðilegu niðurbroti histidíns er myndun 4-metýliden-5-imídasólóns (MIO) með hringmyndun hluta peptíðkeðjunnar í ensíminu histidínammoníaklíasa. Leggðu til hvarfgang.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcjBaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--06b34cde285e1f8074ee7dd2d6824f5e8441c2bd/OChem_26_EC_021.jpg\" alt=\"A segment of the peptide chain in the histidine ammonia lyase enzyme undergoes cyclization to form 4-methylidene-5-imidazolone (M I O).\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

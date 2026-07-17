@@ -1,0 +1,20 @@
+{
+  "nickname": "21-99-OC-VC02",
+  "source_uid": "38178@5",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Hvernig myndir þú útbúa eftirfarandi efnasambönd með því að byrja með viðeigandi karboxýlsýru og önnur nauðsynleg hvarfefni? (rauðbrúnt = Br.)",
+  "questions": [
+    {
+      "id": "361410",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaG9YIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5a9d87e11d2c4fcb2f4a9323f7dfa8b52b8b666f/OChem_21_EC_023a.jpg\" alt=\"The ball-and-stick model shows a carbonyl group with an ortho substituted bromobenzene ring attached to one side and an isopropyl group on the other side.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361411",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaHNYIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6ceb704e976db891ed098b283c66947084fa5ec9/OChem_21_EC_023b.jpg\" alt=\"Ball-and-stick model shows cyclopentane ring with a C H 2 C O N H 2 group as a side chain. The blue and reddish-brown spheres represent nitrogen and bromine, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

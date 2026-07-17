@@ -1,0 +1,46 @@
+{
+  "nickname": "24-01-OC-P03",
+  "source_uid": "38956@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Teiknaðu byggingarformúlur fyrir eftirfarandi heteróhringamín:",
+  "questions": [
+    {
+      "id": "361572",
+      "stem_html": "5-Metoxýindól",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdllZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b7280ad76efd664489ec686676a1dadaac261c7d/OChem_24_EC_202a.jpg\" alt=\"A benzene ring fused to another five-membered ring, one member of which is nitrogen. There is a double bond between non-fusion carbon atoms. Benzene has a methoxy substituent.\">"
+        }
+      ]
+    },
+    {
+      "id": "361573",
+      "stem_html": "1,3-Dímetýlpýrról",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmNZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8673cab2869a299db99dbef1c4852e4973561214/OChem_24_EC_202b.jpg\" alt=\"A five-membered ring, one member of which is nitrogen. There are double bonds at C 2 and C 4, methyl at C 3, and nitrogen has an additional methyl substituent.\">"
+        }
+      ]
+    },
+    {
+      "id": "361574",
+      "stem_html": "4-(<i>N</i>,<i>N</i>-Dímetýlamínó)pýridín",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmdZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c918e2ba5421b50a014fea2cbe5e48b7f3399245/OChem_24_EC_202c.jpg\" alt=\"A six-membered ring, one member of which is nitrogen, with alternating single and double bonds. Opposite the nitrogen is the substituent N with two methyl groups.\">"
+        }
+      ]
+    },
+    {
+      "id": "361575",
+      "stem_html": "5-amínópýrimidín",
+      "collaborator_solutions": [
+        {
+          "content_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdmtZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--692cabfa9b10131dfab67ba4922d8a770c36d0d7/OChem_24_EC_202d.jpg\" alt=\"A six-membered ring, two members of which are nitrogen, with one carbon between them. There are alternating single and double bonds. C 5 has an amino substituent.\">"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "nickname": "11-99-OC-AP18",
+  "source_uid": "37397@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Raðaðu hverju af eftirfarandi settum efnasambanda með tilliti til S<sub>N</sub>1-hvarfgirni:",
+  "questions": [
+    {
+      "id": "355378",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdVlUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--195010109c1b70268749425ed7a9cf68f62d0656/OChem_11_EC_030a.jpg\" alt=\"Chemical structures of t-butyl chloride, a benzene ring bonded to a carbon that has a chlorine and two methyl substituents, and 2-aminobutane.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355379",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWNUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1d3071d76d2b0374c6f11f1838ac0e65f9657832/OChem_11_EC_030b.jpg\" alt=\"Chemical structures of t-butyl chloride, t-butyl bromide, and t-butyl alcohol.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "355380",
+      "stem_html": "<img src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdWdUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--62b7985364333ad0a4953d6db870140b93fdc17f/OChem_11_EC_030c.jpg\" alt=\"Chemical structures of benzene bonded to methyl bromide, benzene bonded to ethyl bromide ethyl C 1, and carbon bonded to three benzene rings and a bromine.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

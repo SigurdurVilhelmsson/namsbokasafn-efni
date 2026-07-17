@@ -1,0 +1,15 @@
+{
+  "nickname": "01-99-OC-AP23",
+  "source_uid": "37580@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "352135",
+      "stem_html": "<p>Quetiapine, markaðssett sem Seroquel, er mikið ávísað geðrofslyf sem notað er við meðferð á geðklofa og geðhvarfasýki. Breytið eftirfarandi framsetningu í beinagrindarbyggingu og gefið upp sameindaformúlu quetiapine.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcVFVIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--87fda6678c244c24142ef13353362ac08f2c7b7f/OChem_01_EC_014.jpg\" alt=\"The line-bond structure of Quetiapine (Seroquel).\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

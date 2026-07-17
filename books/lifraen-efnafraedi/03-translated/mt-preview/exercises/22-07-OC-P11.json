@@ -1,0 +1,19 @@
+{
+  "nickname": "22-07-OC-P11",
+  "source_uid": "38779@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "346359",
+      "stem_html": "Hægt er að búa til einalkýleraðar og tvíalkýleraðar ediksýrur með malónestermyndun, en ekki er hægt að búa til þríalkýleraðar ediksýrur (R<sub>3</sub>C–CO<sub>2</sub>H). Útskýrðu.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Malónester hefur aðeins tvö súr vetni sem hægt er að skipta út."
+        }
+      ]
+    }
+  ]
+}

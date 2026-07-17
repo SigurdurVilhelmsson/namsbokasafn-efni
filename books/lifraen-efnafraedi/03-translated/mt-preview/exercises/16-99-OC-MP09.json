@@ -1,0 +1,15 @@
+{
+  "nickname": "16-99-OC-MP09",
+  "source_uid": "37823@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358966",
+      "stem_html": "<p>Álagning HBr á 1-fenýlprópen gefur aðeins (1-brómprópýl)bensen. Settu fram hvarfgang fyrir efnahvarfið og útskýrðu hvers vegna hin stöðuísómeran myndast ekki.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbVlWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dfc89e81639fa62c0de0d489d710ca51093dbda4/OChem_16_EC_024.jpg\" alt=\"Benzene bonded to a three-carbon chain with double bond between C 1 and C 2 reacts with hydrogen bromide to form a product when bromine is added to C1 of the three-carbon chain\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

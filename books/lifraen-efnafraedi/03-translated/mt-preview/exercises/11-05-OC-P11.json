@@ -1,0 +1,19 @@
+{
+  "nickname": "11-05-OC-P11",
+  "source_uid": "37352@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "355142",
+      "stem_html": "<p>Raðaðu eftirfarandi efnum í röð eftir væntanlegri S<sub>N</sub>1 hvarfgirni:</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWtUIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6a4f34435c1a310982ca8a211657addd279e8db0/OChem_11_05_004.jpg\" alt=\"Chemical structures of ethyl bromide, 3-bromo-1-butene, vinyl bromide, and 2-bromopropane.\">",
+      "collaborator_solutions": [
+        {
+          "content_html": "H<sub>2</sub>C ═ ChCH(Br)CH<sub>3</sub> > CH<sub>3</sub>CH(Br)CH<sub>3</sub> > CH<sub>3</sub>CH<sub>2</sub>Br > H<sub>2</sub>C ═ ChBr"
+        }
+      ]
+    }
+  ]
+}

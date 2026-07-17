@@ -1,0 +1,15 @@
+{
+  "nickname": "01-99-OC-VC03",
+  "source_uid": "37557@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "352081",
+      "stem_html": "<p>Eftirfarandi líkan er mynd af acetaminophen, verkjalyfi sem selt er í apótekum undir ýmsum nöfnum, þar á meðal Tylenol. Tilgreindu tvinnblöndun hverrar kolefnisfrumeindar í acetaminophen og segðu til um hvaða frumeindir hafa rafeindapör (svart = C, rautt = O, blátt = N, grátt = H).</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBczRaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3c9643833c1ba68d3545ad60685906150d245f2c/OChem_01_EC_003.jpg\" alt=\"The ball and stick model of acetaminophen where grey, black, blue and red spheres represent hydrogen, carbon, nitrogen, and oxygen, respectively.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

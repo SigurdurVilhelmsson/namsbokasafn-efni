@@ -1,0 +1,37 @@
+{
+  "nickname": "17-07-OC-P15",
+  "source_uid": "37880@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "Hvaða myndefni myndir þú búast við að fáist við oxun eftirfarandi efnasambanda með krómtvíoxíði í hýdróníum? Í Dess–Martin-perjódínani?",
+  "questions": [
+    {
+      "id": "464279",
+      "stem_html": "1-Hexanól",
+      "collaborator_solutions": [
+        {
+          "content_html": "Hexansýra, hexanal"
+        }
+      ]
+    },
+    {
+      "id": "464280",
+      "stem_html": "2-Hexanól",
+      "collaborator_solutions": [
+        {
+          "content_html": "2-Hexanón"
+        }
+      ]
+    },
+    {
+      "id": "464281",
+      "stem_html": "Hexanal",
+      "collaborator_solutions": [
+        {
+          "content_html": "Hexansýra, ekkert efnahvarf"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "nickname": "16-99-OC-AP27",
+  "source_uid": "37859@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "359053",
+      "stem_html": "<p>Þú þekkir hvarfgang HBr-álagningar á alkena og þú þekkir áhrif ýmissa skiptihópa á arómatísk skiptihvörf. Notaðu þessa þekkingu til að spá fyrir um hvor eftirfarandi tveggja alkena hvarfast hraðar við HBr. Útskýrðu svarið með því að teikna vok myndir karbkatjóna milliefnanna.</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcEFWIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d6b978825702989516c4e85f156a1ddd9bdcee30/OChem_16_EC_047.jpg\" alt=\"Methoxy benzene with ethene group at the para position and nitrobenzene with an ethene at the para position.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

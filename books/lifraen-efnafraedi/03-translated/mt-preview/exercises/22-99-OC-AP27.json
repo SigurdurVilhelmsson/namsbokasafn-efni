@@ -1,0 +1,25 @@
+{
+  "nickname": "22-99-OC-AP27",
+  "source_uid": "38830@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "<p>Inkar í Suður-Ameríku tuggu lauf kókarrunnans, <i>Erythroxylon coca,</i> til að vinna gegn þreytu. Efnafræðirannsóknir Friedrichs Wöhler á <i>Erythroxylon coca</i> árið 1862 leiddu til uppgötvunar á <i>kókaíni,</i> C<sub>17</sub>H<sub>21</sub>NO<sub>4</sub>, sem virka efnisins. Basískt vatnsrof kókaíns leiðir til metanóls, bensósýru og annars efnasambands sem kallast <i>ekgónín,</i> C<sub>9</sub>H<sub>15</sub>NO<sub>3</sub>. Oxun ekgóníns með CrO<sub>3</sub> gefur ketósýru sem losar auðveldlega CO<sub>2</sub> við hitun og myndar trópínón.</p>\n<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBa3NZIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b93d5b663419dcd152464895ac242cf152c9fad4/OChem_22_EC_047.jpg\" alt=\"A chair conformation of tropinone in which an N C H 3 group bridges from C3 to C6 of a cycloheptanone ring.\">",
+  "questions": [
+    {
+      "id": "361035",
+      "stem_html": "Hver er líkleg bygging ketósýrunnar?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361036",
+      "stem_html": "Hver er líkleg bygging ekgóníns, að frátalinni staðhverfufræði?",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "361037",
+      "stem_html": "Hver er líkleg bygging kókaíns, að frátalinni staðhverfufræði?",
+      "collaborator_solutions": []
+    }
+  ]
+}
