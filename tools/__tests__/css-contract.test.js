@@ -40,6 +40,10 @@ const STRUCTURAL_CLASSES = new Set([
   'check-knowledge-answer', // JS-hook marker for the reader's "Sýna svar" reveal toggle (vefur practiceReveal); hiding is vefur-injected, no content.css rule
   'preserved-anchor', // Empty invisible <span> used purely as a deep-link/cross-reference id target; no visual styling needed
   'assistive-mathml', // a11y-2 visually-hidden <math> sibling for screen readers; hidden via inline style, NO content.css rule by design (vefur Task 3c)
+  // ── Reclassified from KNOWN_GAPS by the vefur D4 embed-CSS pass (2026-07-17) ──
+  'span-all', // OpenStax two-column "span both columns" modifier. The reader is single-column, so it is a no-op there: the 11 <figure>/1 <table> carrying it already render full-column (`figure img{max-width:100%}`, `table{width:100%}`), and their images (≤1044px) would only upscale blurry if forced wider. No rule wanted.
+  'note-microbiology', // Book marker on `note note-microbiology <variant>`; every variant it pairs with (check-your-understanding, clinical-focus, micro-connection, disease-profile, eye-on-ethics, case-in-point, link-to-learning) is styled in content.css. The marker itself needs no rule.
+  'interactive-long', // Length modifier on `note note-interactive interactive-long` (9 biology source notes). Box comes from .note/.note-interactive; its iframe is 660x371.4 = exactly 16:9, which the .embed-responsive wrapper already assumes. No rule wanted.
 ]);
 
 // Known gaps: classes emitted by cnxml-render.js but not yet in content.css.
@@ -61,12 +65,10 @@ const KNOWN_GAPS = new Set([
   // All render acceptably via base rules (notes via `.note`, sections as plain
   // divs); these are missing *variant/section* polish in vefur content.css.
   // Tracked for per-book launch styling — see vefur memory `css-cross-book-gaps`.
-  // Book-specific note-type variants (styled by base .note; lack per-type accent):
-  'note-evolution', // biology
-  'note-career', // biology
-  'note-visual-connection', // biology
-  'note-microbiology', // microbiology
   // note-interactive: styled in vefur content.css (blue tint, mirrors .note-link-to-learning) 2026-06-30 — contract re-armed
+  // note-evolution / note-career / note-visual-connection: styled in vefur content.css
+  //   (§ NOTES — BIOLOGY: green / pink / blue tint) — contract re-armed 2026-07-17
+  // span-all + note-microbiology: reclassified STRUCTURAL above (2026-07-17) — no rule wanted
   // Book-specific end-of-chapter / section types (unstyled section divs):
   'section-exercises', // organic
   'section-summary', // physics
@@ -76,7 +78,6 @@ const KNOWN_GAPS = new Set([
   'exercise-part', // organic
   'key-terms-section', // organic key-terms page
   // Layout/misc:
-  'span-all', // table full-width row (biology, microbiology)
   'centered-text', // organic
 ]);
 
