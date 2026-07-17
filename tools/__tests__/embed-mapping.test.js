@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import os from 'os';
 import { renderEmbedHtml, loadEmbedMapping } from '../lib/embed-mapping.js';
+import { ALLOWED_EMBED_HOSTS } from '../lib/embed-resolve.js';
 
 const embedMap = {
   'https://www.openstax.org/l/diet_detective': {
@@ -56,6 +57,42 @@ describe('renderEmbedHtml', () => {
     expect(() =>
       renderEmbedHtml({ embedSrc: 'https://www.openstax.org/l/locked', embedMap })
     ).toThrow(/Unresolved embed/);
+  });
+
+  it('renders normally for both CSP-allowed hosts (youtube, phet)', () => {
+    const allowedMap = {
+      yt: { resolved: 'https://www.youtube.com/embed/abc', kind: 'youtube', status: 'ok' },
+      phet: {
+        resolved: 'https://phet.colorado.edu/sims/html/x/x_en.html',
+        kind: 'phet',
+        status: 'ok',
+      },
+    };
+    expect(() => renderEmbedHtml({ embedSrc: 'yt', embedMap: allowedMap })).not.toThrow();
+    expect(() => renderEmbedHtml({ embedSrc: 'phet', embedMap: allowedMap })).not.toThrow();
+  });
+
+  it('throws (fail loud) naming the host when the resolved URL is off the CSP allowlist', () => {
+    const offAllowlistMap = {
+      vimeo: { resolved: 'https://player.vimeo.com/video/12345', kind: 'other', status: 'ok' },
+    };
+    expect(() => renderEmbedHtml({ embedSrc: 'vimeo', embedMap: offAllowlistMap })).toThrow(
+      /player\.vimeo\.com/
+    );
+    expect(() => renderEmbedHtml({ embedSrc: 'vimeo', embedMap: offAllowlistMap })).toThrow(/CSP/);
+  });
+
+  it('throws when the resolved URL is unparseable as a URL', () => {
+    const badUrlMap = {
+      bad: { resolved: 'not a url at all', kind: 'other', status: 'ok' },
+    };
+    expect(() => renderEmbedHtml({ embedSrc: 'bad', embedMap: badUrlMap })).toThrow();
+  });
+});
+
+describe('ALLOWED_EMBED_HOSTS', () => {
+  it('is exactly the two hosts vefur allows in its CSP frame-src', () => {
+    expect(ALLOWED_EMBED_HOSTS).toEqual(new Set(['www.youtube.com', 'phet.colorado.edu']));
   });
 });
 

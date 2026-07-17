@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { ALLOWED_EMBED_HOSTS } from './embed-resolve.js';
 
 // Resolve books/ relative to the repo root (this file is <root>/tools/lib/),
 // NOT the process cwd. The editorial server starts with cwd=server/ (via
@@ -34,6 +35,28 @@ export function renderEmbedHtml({ embedSrc, width, height, title, embedMap }) {
     throw new Error(
       `Unresolved embed: ${embedSrc} — run \`node tools/resolve-embeds.js --book <slug>\` ` +
         `to (re)generate embed-mapping.json`
+    );
+  }
+  // Fail loud — never emit a blank box — when the resolved host isn't on vefur's CSP
+  // frame-src allowlist. Rendering happily here while vefur silently CSP-blocks the
+  // iframe in production is exactly the "empty box, no build failure" failure mode
+  // this gate exists to catch.
+  let resolvedHost;
+  try {
+    resolvedHost = new URL(entry.resolved).hostname;
+  } catch {
+    throw new Error(
+      `Embed for ${embedSrc} has an unparseable resolved URL: ${entry.resolved} — ` +
+        `re-run \`node tools/resolve-embeds.js --book <slug>\``
+    );
+  }
+  if (!ALLOWED_EMBED_HOSTS.has(resolvedHost)) {
+    throw new Error(
+      `Embed host not on the CSP allowlist: ${embedSrc} resolves to ${resolvedHost}, but ` +
+        `vefur's CSP frame-src only allows ${[...ALLOWED_EMBED_HOSTS].join(', ')} ` +
+        `(namsbokasafn-vefur/nginx-config-example.conf). It would render fine here and be ` +
+        `SILENTLY BLOCKED by vefur's CSP in production. Widen ALLOWED_EMBED_HOSTS in ` +
+        `tools/lib/embed-resolve.js AND vefur's nginx frame-src together, or fix the source.`
     );
   }
   const w = width ? ` width="${esc(width)}"` : '';

@@ -87,13 +87,25 @@ const KNOWN_GAPS = new Set([
  */
 function extractCssClasses(cssContent) {
   const classes = new Set();
-  // Match .class-name in selectors (not inside property values)
-  // Split by { to get selector blocks, then extract class names
-  const selectorBlocks = cssContent.split('{');
+  // Strip /* ... */ comments FIRST (whole-content, non-greedy) so prose
+  // inside a comment — e.g. "e.g." or a dotted example selector mentioned
+  // in a doc comment — can never be mistaken for a real class token.
+  const withoutComments = cssContent.replace(/\/\*[\s\S]*?\*\//g, '');
+  // Match .class-name in selectors (not inside property values).
+  // Split by { to get selector blocks, then extract class names.
+  const selectorBlocks = withoutComments.split('{');
   for (const block of selectorBlocks) {
-    // Only look at the selector part (last line before {)
-    const lines = block.split('\n');
-    const selector = lines[lines.length - 1] || '';
+    // Each block (after the first) starts with the PREVIOUS rule's
+    // declarations and ends with its closing `}`, followed by the NEXT
+    // selector. The selector is precisely everything AFTER the last `}` in
+    // the block — NOT "join every line", which would also match a
+    // dot-token inside a declaration value on a non-last line (e.g.
+    // `background: url(../img/a.png)` sharing a block with the next
+    // selector would falsely yield `.png`). Slicing after the last `}`
+    // gets both correctness properties: full multi-line selectors AND no
+    // leakage from declaration values.
+    const lastBraceIdx = block.lastIndexOf('}');
+    const selector = lastBraceIdx === -1 ? block : block.slice(lastBraceIdx + 1);
     const matches = selector.match(/\.([a-z][-a-z0-9]*)/g);
     if (matches) {
       for (const m of matches) {
@@ -121,6 +133,94 @@ function extractHtmlClasses(htmlContent) {
   }
   return classes;
 }
+
+describe('extractCssClasses (unit)', () => {
+  it('extracts classes from BOTH lines of a comma-separated multi-line selector', () => {
+    // Regression for the "last line before `{` only" blind spot: a class on a
+    // non-last line of a comma-separated selector used to be invisible.
+    const css = `
+article.cnx-module aside.note-link-to-learning,
+article.cnx-module aside.note.link-to-learning {
+  background-color: blue;
+}
+`;
+    const classes = extractCssClasses(css);
+    expect(classes.has('note-link-to-learning')).toBe(true);
+    expect(classes.has('note')).toBe(true);
+    expect(classes.has('link-to-learning')).toBe(true);
+  });
+
+  it('does not extract a dot-token inside a property value (guards the join-all-lines regression)', () => {
+    // A naive "join every line in the block" fix would match `.png` inside
+    // `url(../img/a.png)` because that declaration line sits in the SAME
+    // split-block as the NEXT rule's selector. Slicing after the last `}`
+    // avoids this: the declaration is on the far side of the brace.
+    const css = `
+.foo { background: url(../img/a.png); }
+.bar { color: red; }
+`;
+    const classes = extractCssClasses(css);
+    expect(classes.has('png')).toBe(false);
+    expect(classes.has('foo')).toBe(true);
+    expect(classes.has('bar')).toBe(true);
+  });
+
+  it('does not extract a class name mentioned inside a /* comment */', () => {
+    const css = `
+/* .commented-out { color: red; } */
+.real { color: blue; }
+`;
+    const classes = extractCssClasses(css);
+    expect(classes.has('commented-out')).toBe(false);
+    expect(classes.has('real')).toBe(true);
+  });
+
+  it('does not extract a dot-token from prose inside a multi-line comment (e.g. "e.g." or a dotted example selector)', () => {
+    // Regression for a SECOND false-positive class the naive "filter lines
+    // starting with /*" fix misses: prose on a CONTINUATION line of a
+    // multi-line comment (not the opening line) still isn't a selector.
+    const css = `
+/* Emitted as \`note note-visual-connection\` (single hyphenated class),
+   e.g. NOT a compound \`.note.visual-connection\`. */
+article.cnx-module aside.note-visual-connection {
+  color: blue;
+}
+`;
+    const classes = extractCssClasses(css);
+    expect(classes.has('g')).toBe(false);
+    expect(classes.has('visual-connection')).toBe(false);
+    expect(classes.has('note-visual-connection')).toBe(true);
+  });
+
+  it('real file: the 5 genuine previously-invisible classes are now found; 2 comment-only artifacts are correctly excluded', () => {
+    if (!fs.existsSync(VEFUR_CSS_PATH)) return; // mirrors the contract's skipIf(!vefurExists) guard
+    const cssContent = fs.readFileSync(VEFUR_CSS_PATH, 'utf-8');
+    const classes = extractCssClasses(cssContent);
+
+    // Genuine two-line comma-separated selectors in the real file — real
+    // gains from fixing the blind spot.
+    for (const cls of [
+      'mathjax-display',
+      'note-chemist-portrait',
+      'note-everyday-life',
+      'note-link-to-learning',
+      'note-sciences-interconnect',
+    ]) {
+      expect(classes.has(cls), `expected "${cls}" to be visible after the fix`).toBe(true);
+    }
+
+    // These 2 were reported alongside the above 5 by a naive "join all
+    // lines" analysis, but both are comment-prose artifacts, not real CSS
+    // classes: "g" is `.g` inside "e.g." (content.css:625/880) and
+    // "visual-connection" is the prose `.note.visual-connection` inside a
+    // comment (content.css:371) — the real selector is the single
+    // hyphenated `.note-visual-connection`, already covered above. Proper
+    // comment-stripping correctly excludes both.
+    for (const cls of ['g', 'visual-connection']) {
+      expect(classes.has(cls), `"${cls}" is a comment artifact, not a real class`).toBe(false);
+    }
+  });
+});
 
 describe('CSS contract: namsbokasafn-efni ↔ namsbokasafn-vefur', () => {
   // Skip when the sister vefur repo isn't checked out — unless VEFUR_CONTRACT=1,

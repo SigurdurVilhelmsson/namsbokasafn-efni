@@ -1,5 +1,11 @@
 import { describe, it, expect } from 'vitest';
-import { resolveEmbeds, classifyKind, canonicalizeYouTube } from '../lib/embed-resolve.js';
+import {
+  resolveEmbeds,
+  classifyKind,
+  canonicalizeYouTube,
+  findOffAllowlistEmbeds,
+  ALLOWED_EMBED_HOSTS,
+} from '../lib/embed-resolve.js';
 
 function fakeFetch(map) {
   return async (url) => {
@@ -62,6 +68,54 @@ describe('classifyKind', () => {
   });
   it('classifies anything else as other', () => {
     expect(classifyKind('https://example.org/thing')).toBe('other');
+  });
+});
+
+describe('findOffAllowlistEmbeds', () => {
+  it('reports nothing when every ok-status entry resolves to an allowed host', () => {
+    const mapping = {
+      a: { resolved: 'https://www.youtube.com/embed/abc', kind: 'youtube', status: 'ok' },
+      b: {
+        resolved: 'https://phet.colorado.edu/sims/html/x/x_en.html',
+        kind: 'phet',
+        status: 'ok',
+      },
+    };
+    expect(findOffAllowlistEmbeds(mapping)).toEqual([]);
+  });
+
+  it('reports an ok-status entry whose resolved host is off the allowlist', () => {
+    const mapping = {
+      c: { resolved: 'https://player.vimeo.com/video/12345', kind: 'other', status: 'ok' },
+    };
+    const offenders = findOffAllowlistEmbeds(mapping);
+    expect(offenders).toHaveLength(1);
+    expect(offenders[0]).toMatchObject({
+      src: 'c',
+      resolved: 'https://player.vimeo.com/video/12345',
+      host: 'player.vimeo.com',
+    });
+  });
+
+  it('ignores non-ok entries (blocked/error) — those are already reported separately', () => {
+    const mapping = {
+      d: { resolved: 'https://player.vimeo.com/video/12345', kind: 'other', status: 'blocked' },
+    };
+    expect(findOffAllowlistEmbeds(mapping)).toEqual([]);
+  });
+
+  it('reports an ok-status entry with an unparseable resolved URL (host: null)', () => {
+    const mapping = {
+      e: { resolved: 'not a url at all', kind: 'other', status: 'ok' },
+    };
+    const offenders = findOffAllowlistEmbeds(mapping);
+    expect(offenders).toEqual([{ src: 'e', resolved: 'not a url at all', host: null }]);
+  });
+});
+
+describe('ALLOWED_EMBED_HOSTS', () => {
+  it('is exactly the two hosts vefur allows in its CSP frame-src', () => {
+    expect(ALLOWED_EMBED_HOSTS).toEqual(new Set(['www.youtube.com', 'phet.colorado.edu']));
   });
 });
 
