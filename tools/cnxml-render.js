@@ -48,6 +48,7 @@ import {
   escapeHtml,
   processInlineContent,
   renderFootnotesSection,
+  resolveCrossModuleHref,
   translateLatexText,
 } from './lib/cnxml-elements.js';
 import {
@@ -141,7 +142,8 @@ function matchLeadingTitle(content) {
 // CONFIGURATION
 // =====================================================================
 
-let BOOKS_DIR = 'books/efnafraedi-2e';
+const DEFAULT_BOOKS_DIR = 'books/efnafraedi-2e';
+let BOOKS_DIR = DEFAULT_BOOKS_DIR;
 let BOOK_SLUG = 'efnafraedi-2e';
 
 // Item 9/D3: active publication track for os-embed sidecar preference and
@@ -162,8 +164,21 @@ let RENDER_TRACK = 'mt-preview';
 const OS_EMBED_STATS = { translated: 0, fallback: 0, staleSidecar: 0 };
 let BOOKS_DIR_TEST_OVERRIDE = null;
 
+/**
+ * Point the module's book-dir state at a test fixture tree, or restore it.
+ * Unified seam (item 9 + item 10 reconciliation, post-#291 rebase):
+ * `BOOKS_DIR_TEST_OVERRIDE` remains resolveOsEmbed's dedicated channel
+ * (item 9 — `BOOKS_DIR_TEST_OVERRIDE || BOOKS_DIR`), while `BOOKS_DIR` itself
+ * is also reassigned so every other consumer (translatedCnxmlPath,
+ * extractAnswerKey, renderCnxmlToHtml's output-dir joins, etc. — item 10)
+ * sees the fixture too. Falls back to DEFAULT_BOOKS_DIR on a falsy `dir` so
+ * item 9's `_setBooksDirForTest(null)` afterEach restores a real path
+ * instead of leaving BOOKS_DIR null for later path resolution.
+ * @param {string|null} dir
+ */
 function _setBooksDirForTest(dir) {
   BOOKS_DIR_TEST_OVERRIDE = dir;
+  BOOKS_DIR = dir || DEFAULT_BOOKS_DIR;
 }
 function _getOsEmbedStatsForTest() {
   return { ...OS_EMBED_STATS };
@@ -498,12 +513,17 @@ Examples:
 /**
  * Filter module sections, excluding intro (section '0') and metadata keys.
  * Key guard is placed first to avoid accessing info.section on _-prefixed metadata.
+ * Tolerates a null/falsy `info` value (item 10/P0-3, m4): such an entry is
+ * excluded rather than throwing on `info.section`, even though today's call
+ * site only ever populates real section objects — defensive-only.
  * @param {Object} moduleSections - Object with section data
  * @returns {Array} Array of [key, info] entries after filtering
  */
 function filterOutlineEntries(moduleSections) {
   return Object.entries(moduleSections).filter(
-    ([key, info]) => !key.startsWith('_') && info.section !== '0'
+    // item 10/P0-3: tolerate a null info value (excluded, not thrown) — the
+    // call site only populates section objects today; this is defense.
+    ([key, info]) => !key.startsWith('_') && info && info.section !== '0'
   );
 }
 
@@ -511,17 +531,40 @@ function filterOutlineEntries(moduleSections) {
  * Class-WORD match for class="unnumbered" (R4-2). Unlike a substring/exact-string
  * check, this correctly matches multi-class forms like class="column-header
  * unnumbered" and correctly rejects near-miss substrings like class="unnumbered-foo".
- * NOTE: the equation pre-scan (below) still uses its own exact-string check
- * (attrs.includes('class="unnumbered"')) and is deliberately left alone here —
- * splitting the shared-helper refactor from the table-numbering fix keeps this
- * change scoped. The equation check has the same multi-class fragility; logged
- * out-of-scope for a future task.
+ * Every numbering pre-scan routes through scanBlocks() below, which applies this word-match uniformly (item 10/RV-3).
  * @param {string} attrs - raw attribute string of an opening tag
  * @returns {boolean}
  */
 function hasUnnumberedClass(attrs) {
   const m = /class="([^"]*)"/.exec(attrs || '');
   return m ? m[1].split(/\s+/).includes('unnumbered') : false;
+}
+
+/**
+ * Shared numbering/extraction pre-scan (item 10 / RV-3): find every <tagName …>
+ * opening tag, capture its full attr string wherever the id sits (the old
+ * per-pass regexes required id-first and silently missed organic's class-first
+ * figures and physics' type=-first exercises), and flag class="unnumbered" via
+ * the word-match. Flag, not filter: chapter-wide callers must keep registering
+ * EVERY id in the link registry (addId) even when numbering skips it — a
+ * filtering helper would silently break link resolution for skipped elements.
+ * Id-less matches are dropped (numbering and the registry are both id-keyed).
+ *
+ * @param {string} cnxml
+ * @param {string} tagName - element localName, e.g. 'figure'
+ * @returns {{id: string, attrs: string, index: number, unnumbered: boolean}[]}
+ */
+function scanBlocks(cnxml, tagName) {
+  const out = [];
+  const re = new RegExp(`<${tagName}\\b([^>]*)>`, 'g');
+  let m;
+  while ((m = re.exec(cnxml)) !== null) {
+    const attrs = m[1];
+    const idMatch = attrs.match(/id="([^"]+)"/);
+    if (!idMatch) continue;
+    out.push({ id: idMatch[1], attrs, index: m.index, unnumbered: hasUnnumberedClass(attrs) });
+  }
+  return out;
 }
 
 /**
@@ -583,52 +626,36 @@ function renderCnxmlToHtml(cnxml, options = {}) {
   const doc = parseCnxmlDocument(cnxml);
   const title = options.titleOverride || doc.title;
 
-  // Pre-scan: collect all figure IDs and assign numbers
-  // This enables forward references like "(Figure 5.3)" before the figure appears
+  // Pre-scan: collect all figure IDs and assign numbers (item 10/RV-3: shared
+  // scanner — attrs-anywhere so class-first figures are found; unnumbered
+  // figures no longer consume a slot).
   const figureNumbers = new Map();
-  const figureIdPattern = /<figure\s+id="([^"]+)"/g;
-  let figMatch;
   let figCounter = 0;
-  while ((figMatch = figureIdPattern.exec(cnxml)) !== null) {
+  for (const fig of scanBlocks(cnxml, 'figure')) {
+    if (fig.unnumbered) continue;
     figCounter++;
-    figureNumbers.set(figMatch[1], `${chapter}.${figCounter}`);
+    figureNumbers.set(fig.id, `${chapter}.${figCounter}`);
   }
 
-  // Pre-scan: collect all table IDs and assign numbers.
-  // Skip class="unnumbered" tables (R4-2) so they don't consume a slot in the
-  // shared counter — mirrors the equation pre-scan below, but via a class-WORD
-  // match (hasUnnumberedClass) since tables use multi-class forms like
-  // class="column-header unnumbered" that the equation pass's exact-string
-  // check would miss.
+  // Pre-scan: collect all table IDs and assign numbers. Skip class="unnumbered"
+  // tables (R4-2) so they don't consume a slot in the shared counter.
   const tableNumbers = new Map();
-  const tableIdPattern = /<table\s+([^>]*?)>/g;
-  let tableMatch;
   let tableCounter = 0;
-  while ((tableMatch = tableIdPattern.exec(cnxml)) !== null) {
-    const attrs = tableMatch[1];
-    if (hasUnnumberedClass(attrs)) continue;
-    const idMatch = attrs.match(/id="([^"]+)"/);
-    if (!idMatch) continue;
+  for (const tbl of scanBlocks(cnxml, 'table')) {
+    if (tbl.unnumbered) continue;
     tableCounter++;
-    tableNumbers.set(idMatch[1], `${chapter}.${tableCounter}`);
+    tableNumbers.set(tbl.id, `${chapter}.${tableCounter}`);
   }
 
-  // Pre-scan: collect all numbered equation IDs and assign numbers
-  // Skip equations with class="unnumbered"
+  // Pre-scan: collect numbered equation IDs (item 10/P0-2: word-match skip via
+  // the shared scanner — multi-class forms like class="foo unnumbered" are now
+  // skipped, closing the fragility E7 fixed for tables).
   const equationNumbers = new Map();
-  const equationPattern = /<equation\s+([^>]*?)>/g;
-  let eqMatch;
   let eqCounter = 0;
-  while ((eqMatch = equationPattern.exec(cnxml)) !== null) {
-    const attrs = eqMatch[1];
-    // Skip if unnumbered
-    if (attrs.includes('class="unnumbered"')) continue;
-    // Extract id
-    const idMatch = attrs.match(/id="([^"]+)"/);
-    if (idMatch) {
-      eqCounter++;
-      equationNumbers.set(idMatch[1], `${chapter}.${eqCounter}`);
-    }
+  for (const eq of scanBlocks(cnxml, 'equation')) {
+    if (eq.unnumbered) continue;
+    eqCounter++;
+    equationNumbers.set(eq.id, `${chapter}.${eqCounter}`);
   }
 
   // Context for rendering
@@ -1777,6 +1804,8 @@ function renderList(list, context) {
   if (listType === 'enumerated') {
     if (numberStyle === 'lower-alpha') styleAttr = ' style="list-style-type: lower-alpha"';
     else if (numberStyle === 'upper-alpha') styleAttr = ' style="list-style-type: upper-alpha"';
+    else if (numberStyle === 'lower-roman') styleAttr = ' style="list-style-type: lower-roman"';
+    else if (numberStyle === 'upper-roman') styleAttr = ' style="list-style-type: upper-roman"';
   }
 
   const classAttr = list.attributes.class ? ` class="${escapeAttr(list.attributes.class)}"` : '';
@@ -3012,26 +3041,20 @@ function extractAnswerKey(chapter, modules, moduleSections, track) {
     const cnxml = fs.readFileSync(modulePath, 'utf-8');
     const moduleAnswers = [];
 
-    // Extract all exercises with solutions
-    const exercisePattern = /<exercise\s+id="([^"]+)">([\s\S]*?)<\/exercise>/g;
-    let exerciseMatch;
-
-    while ((exerciseMatch = exercisePattern.exec(cnxml)) !== null) {
+    // Extract all exercises with solutions (item 10/RV-3: attrs-anywhere via
+    // scanBlocks, so a type=-first exercise like <exercise type="…" id="…">
+    // is no longer silently dropped from the answer key). Body slice keeps
+    // today's semantics: the first `</exercise>` after the opening tag.
+    for (const exr of scanBlocks(cnxml, 'exercise')) {
       exerciseNumber++;
-      const exerciseId = exerciseMatch[1];
-      const exerciseContent = exerciseMatch[2];
+      const openEnd = cnxml.indexOf('>', exr.index) + 1;
+      const closeIdx = cnxml.indexOf('</exercise>', openEnd);
+      if (closeIdx === -1) continue;
+      const exerciseContent = cnxml.slice(openEnd, closeIdx);
 
-      // Check if this exercise has a solution
       const solutionMatch = exerciseContent.match(/<solution\s+id="[^"]*">([\s\S]*?)<\/solution>/);
-
       if (solutionMatch) {
-        const solutionContent = solutionMatch[1];
-
-        moduleAnswers.push({
-          id: exerciseId,
-          number: exerciseNumber,
-          content: solutionContent,
-        });
+        moduleAnswers.push({ id: exr.id, number: exerciseNumber, content: solutionMatch[1] });
       }
     }
 
@@ -3149,6 +3172,52 @@ function writeAnswerKey(chapter, track, html) {
   if (backup) logBackup(BOOK_SLUG, chapter, 'render', outputPath, backup);
 
   return outputPath;
+}
+
+/**
+ * Key-terms fallback items (item 10/#22): newer-OpenStax books (organic) have
+ * no per-module <glossary>; the chapter key-terms page is built from
+ * <section class="key-terms"> link items. Appendix-document links route
+ * through resolveCrossModuleHref (→ /vidauki/{letter}[#target]); every other
+ * link keeps the pre-existing section-URL construction byte-identical
+ * (characterized by test — the resolver's general path is NOT adopted here to
+ * avoid changing organic's working URLs).
+ * @param {string} sectionInner - inner content of the key-terms <section>
+ * @param {{sectionSlugFor: (moduleId: string) => string, bookSlug: string,
+ *          chapterStr: string, appendixResolution: object}} opts
+ * @returns {string[]} rendered <li> lines
+ */
+function buildKeyTermsItems(sectionInner, opts) {
+  const items = extractNestedElements(sectionInner, 'item');
+  const termLines = [];
+  for (const item of items) {
+    const linkMatch = item.content.match(
+      /<link\s+document="([^"]+)"(?:\s+target-id="([^"]+)")?[^>]*>([^<]+)<\/link>/
+    );
+    if (linkMatch) {
+      const termText = linkMatch[3].trim();
+      const linkModuleId = linkMatch[1];
+      const linkTargetId = linkMatch[2] || null;
+      const resolved = resolveCrossModuleHref(linkModuleId, linkTargetId, {
+        ...opts.appendixResolution,
+        moduleId: linkModuleId,
+      });
+      if (resolved.href && resolved.href.includes('/vidauki/')) {
+        termLines.push(
+          `<li><a href="${escapeAttr(resolved.href)}">${escapeHtml(termText)}</a></li>`
+        );
+      } else {
+        const sectionSlug = opts.sectionSlugFor(linkModuleId);
+        termLines.push(
+          `<li><a href="/content/${opts.bookSlug}/chapters/${opts.chapterStr}/${sectionSlug}.html">${escapeHtml(termText)}</a></li>`
+        );
+      }
+    } else {
+      const plainText = item.content.replace(/<[^>]+>/g, '').trim();
+      if (plainText) termLines.push(`<li>${escapeHtml(plainText)}</li>`);
+    }
+  }
+  return termLines;
 }
 
 async function main() {
@@ -3277,12 +3346,14 @@ async function main() {
 
       // Use composite keys (moduleId:elementId) because some books (e.g., lifraen-efnafraedi)
       // reuse IDs like fig-00001, exam-00001 across modules within the same chapter.
-      const figPattern = /<figure\s+id="([^"]+)"/g;
-      let fm;
-      while ((fm = figPattern.exec(modCnxml)) !== null) {
+      for (const fig of scanBlocks(modCnxml, 'figure')) {
+        // Register EVERY figure id (link resolution must not change); number
+        // only the non-unnumbered ones (item 10/RV-3 — organic's class-first
+        // and unnumbered figures).
+        addId(fig.id, modId);
+        if (fig.unnumbered) continue;
         chapterFigCounter++;
-        chapterFigureNumbers.set(`${modId}:${fm[1]}`, `${args.chapter}.${chapterFigCounter}`);
-        addId(fm[1], modId);
+        chapterFigureNumbers.set(`${modId}:${fig.id}`, `${args.chapter}.${chapterFigCounter}`);
       }
 
       // R4-2: skip numbering for class="unnumbered" tables (but addId still runs,
@@ -3292,14 +3363,8 @@ async function main() {
       const isAppendixChapter = args.chapter === 'appendices';
       const appendixLetter = isAppendixChapter ? appendixModuleLetters.get(modId) : null;
       let appendixTableCounter = 0; // reset every modId iteration
-      const tblPattern = /<table\s+([^>]*?)>/g;
-      let tm;
-      while ((tm = tblPattern.exec(modCnxml)) !== null) {
-        const attrs = tm[1];
-        const idMatch = attrs.match(/id="([^"]+)"/);
-        if (!idMatch) continue;
-        const tid = idMatch[1];
-        if (!hasUnnumberedClass(attrs)) {
+      for (const tbl of scanBlocks(modCnxml, 'table')) {
+        if (!tbl.unnumbered) {
           let num;
           if (isAppendixChapter && appendixLetter) {
             appendixTableCounter++;
@@ -3308,40 +3373,28 @@ async function main() {
             chapterTableCounter++;
             num = formatTableNumber(args.chapter, null, chapterTableCounter);
           }
-          chapterTableNumbers.set(`${modId}:${tid}`, num);
+          chapterTableNumbers.set(`${modId}:${tbl.id}`, num);
         }
-        addId(tid, modId);
+        addId(tbl.id, modId);
       }
 
-      const examplePattern = /<example\s+id="([^"]+)"/g;
-      let exm2;
-      while ((exm2 = examplePattern.exec(modCnxml)) !== null) {
+      for (const ex of scanBlocks(modCnxml, 'example')) {
         chapterExampleCounter++;
-        chapterExampleNumbers.set(
-          `${modId}:${exm2[1]}`,
-          `${args.chapter}.${chapterExampleCounter}`
-        );
-        addId(exm2[1], modId);
+        chapterExampleNumbers.set(`${modId}:${ex.id}`, `${args.chapter}.${chapterExampleCounter}`);
+        addId(ex.id, modId);
       }
 
       // Build numbered equation map (skip unnumbered)
-      const eqPattern = /<equation\s+([^>]*?)>/g;
-      let eqm;
-      while ((eqm = eqPattern.exec(modCnxml)) !== null) {
-        const attrs = eqm[1];
-        const idMatch = attrs.match(/id="([^"]+)"/);
-        // Register every equation id (numbered or not) so cross-page links to unnumbered
-        // equations also resolve.
-        if (idMatch) addId(idMatch[1], modId);
-        // Skip numbering for unnumbered
-        if (attrs.includes('class="unnumbered"')) continue;
-        if (idMatch) {
-          chapterEquationCounter++;
-          chapterEquationNumbers.set(
-            `${modId}:${idMatch[1]}`,
-            `${args.chapter}.${chapterEquationCounter}`
-          );
-        }
+      for (const eq of scanBlocks(modCnxml, 'equation')) {
+        // Register every equation id (numbered or not) so cross-page links to
+        // unnumbered equations also resolve.
+        addId(eq.id, modId);
+        if (eq.unnumbered) continue;
+        chapterEquationCounter++;
+        chapterEquationNumbers.set(
+          `${modId}:${eq.id}`,
+          `${args.chapter}.${chapterEquationCounter}`
+        );
       }
 
       // Build section title map for cross-reference resolution
@@ -3358,11 +3411,16 @@ async function main() {
       // OpenStax CNXML has titles either directly under <example> or inside a nested <para>:
       //   <example id="..."><title>...</title>            (direct)
       //   <example id="..."><para id="..."><title>...</title>  (nested in para)
-      const exPattern = /<example\s+id="([^"]+)"[^>]*>[\s\S]*?<title>([\s\S]*?)<\/title>/g;
-      let em;
-      while ((em = exPattern.exec(modCnxml)) !== null) {
-        const titleText = em[2].replace(/<[^>]+>/g, '').trim();
-        chapterSectionTitles.set(em[1], titleText);
+      // (Deliberately preserves today's latent "first title anywhere after the
+      // tag" semantics — tightening it is out of scope; the corpus has no
+      // consumed-example shape (verified 2026-07-17); the divergence class
+      // only adds entries the old regex's match-consumption skipped.)
+      for (const ex of scanBlocks(modCnxml, 'example')) {
+        const tail = modCnxml.slice(ex.index);
+        const tm2 = tail.match(/<title>([\s\S]*?)<\/title>/);
+        if (!tm2) continue;
+        const titleText = tm2[1].replace(/<[^>]+>/g, '').trim();
+        chapterSectionTitles.set(ex.id, titleText);
         // (id already registered by the example loop above)
       }
 
@@ -3375,15 +3433,13 @@ async function main() {
       }
 
       // Build chapter-wide exercise number map
-      const exerPattern = /<exercise\s+id="([^"]+)"/g;
-      let exm;
-      while ((exm = exerPattern.exec(modCnxml)) !== null) {
+      for (const exr of scanBlocks(modCnxml, 'exercise')) {
         chapterExerciseCounter++;
         chapterExerciseNumbers.set(
-          `${modId}:${exm[1]}`,
+          `${modId}:${exr.id}`,
           `${args.chapter}.${chapterExerciseCounter}`
         );
-        addId(exm[1], modId);
+        addId(exr.id, modId);
       }
 
       // Also register para ids (used as anchor targets in some cross-references).
@@ -3654,31 +3710,20 @@ ${anchors}
           );
 
           if (keyTermsMatch) {
-            const items = extractNestedElements(keyTermsMatch[1], 'item');
-            const termLines = [];
-
-            for (const item of items) {
-              // item.content is like: <link document="m00032" target-id="term-00006">alcohol</link>
-              const linkMatch = item.content.match(
-                /<link\s+document="([^"]+)"(?:\s+target-id="([^"]+)")?[^>]*>([^<]+)<\/link>/
-              );
-              if (linkMatch) {
-                const termText = linkMatch[3].trim();
-                const moduleId = linkMatch[1];
-                const sectionInfo = moduleSections[moduleId];
-                const sectionSlug = sectionInfo
-                  ? getOutputFilename(moduleId, args.chapter, moduleSections).replace('.html', '')
-                  : moduleId;
-                termLines.push(
-                  `<li><a href="/content/${BOOK_SLUG}/chapters/${chapterStr}/${sectionSlug}.html">${escapeHtml(termText)}</a></li>`
-                );
-              } else {
-                const plainText = item.content.replace(/<[^>]+>/g, '').trim();
-                if (plainText) {
-                  termLines.push(`<li>${escapeHtml(plainText)}</li>`);
-                }
-              }
-            }
+            const termLines = buildKeyTermsItems(keyTermsMatch[1], {
+              sectionSlugFor: (linkModuleId) => {
+                const sectionInfo = moduleSections[linkModuleId];
+                return sectionInfo
+                  ? getOutputFilename(linkModuleId, args.chapter, moduleSections).replace(
+                      '.html',
+                      ''
+                    )
+                  : linkModuleId;
+              },
+              bookSlug: BOOK_SLUG,
+              chapterStr,
+              appendixResolution,
+            });
 
             if (termLines.length > 0) {
               const keyTermsContentHtml =
@@ -4047,18 +4092,21 @@ export {
   renderCompiledGlossary,
   renderKeyEquations,
   buildAppendixIdMap,
+  buildKeyTermsItems,
   rollbackWrittenFiles,
   escapeJsonForScript,
   filterOutlineEntries,
   renderList,
   renderChildrenInDocumentOrder,
   hasUnnumberedClass,
+  scanBlocks,
   formatTableNumber,
   renderExercise,
   _loadBookConfigForTest,
   _setBooksDirForTest,
   _getOsEmbedStatsForTest,
   _resetOsEmbedStatsForTest,
+  extractAnswerKey,
   LOUD_SEAM_IGNORE,
   ITEM_INLINE_OK,
 };
