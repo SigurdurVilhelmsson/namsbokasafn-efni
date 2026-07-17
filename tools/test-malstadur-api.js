@@ -369,6 +369,78 @@ Throughout human history, people have tried to convert matter into more useful f
       },
     ],
   },
+  {
+    id: 'T1.19',
+    name: 'Empty-body literal-bracket escapes survive ([[lb:]]/[[rb:]]) — item 9 os-embed',
+    // Distilled from the 3 real organic corpus shapes that forced the escape:
+    // bracketed sigmatropic order [1,7], specific-rotation [α]D (italic inside
+    // brackets), and a [Note: ...] aside. The escapes are EMPTY-BODY by
+    // definition — any text migrating inside them is discarded at assembly.
+    input:
+      'An antarafacial [[lb:]]1,7[[rb:]] sigmatropic rearrangement occurs and the rotation [[lb:]][[i:α]][[rb:]]D is measured. [[lb:]]Note: this is a hint.[[rb:]]',
+    checks: [
+      {
+        name: 'all three [[lb:]] survive byte-exact',
+        test: (input, output) => (output.match(/\[\[lb:\]\]/g) || []).length === 3,
+      },
+      {
+        name: 'all three [[rb:]] survive byte-exact',
+        test: (input, output) => (output.match(/\[\[rb:\]\]/g) || []).length === 3,
+      },
+      {
+        name: 'no text migrated INSIDE an lb/rb body (assembler would discard it)',
+        test: (input, output) => !/\[\[(lb|rb):(?!\]\])/.test(output),
+      },
+      { name: 'inner [[i: survives', test: (input, output) => output.includes('[[i:') },
+      { name: 'text translated', test: (input, output) => output !== input },
+    ],
+  },
+  {
+    id: 'T1.20',
+    name: 'Multiple [[MEDIA:n]] in exercise-field context — item 9 os-embed',
+    // Exercise stems interleave prose with opaque images; T1.9 covered a single
+    // mid-sentence MEDIA — this is the multi-image + inline-marker adjacency
+    // shape the assembler's conservation oracle depends on.
+    input:
+      'Draw the product when [[MEDIA:0]] reacts with H[[sub:2]]O to give [[MEDIA:1]] under acidic conditions.',
+    checks: [
+      { name: '[[MEDIA:0]] byte-intact', test: (input, output) => output.includes('[[MEDIA:0]]') },
+      { name: '[[MEDIA:1]] byte-intact', test: (input, output) => output.includes('[[MEDIA:1]]') },
+      {
+        name: 'exactly two MEDIA markers (no dup/drop)',
+        test: (input, output) => (output.match(/\[\[MEDIA:\d+\]\]/g) || []).length === 2,
+      },
+      { name: '[[sub: survives', test: (input, output) => output.includes('[[sub:2]]') },
+      { name: 'text translated', test: (input, output) => output !== input },
+    ],
+  },
+  {
+    id: 'T1.21',
+    name: 'Numeric-anchored wrap marker ([[em:text|n]]) — item 9 os-embed',
+    // Item 9 anchors span/small wraps by NUMBER into the skeleton sidecar
+    // (T1.16 proved the class-string payload; the numeric variant is what the
+    // exercise pipeline actually emits).
+    input:
+      'The starting material is [[em:1|0]] in the scheme, giving [[em:the product|1]] after reflux.',
+    checks: [
+      {
+        name: 'numeric anchor |0]] byte-intact',
+        test: (input, output) => output.includes('|0]]'),
+      },
+      {
+        name: 'numeric anchor |1]] byte-intact',
+        test: (input, output) => output.includes('|1]]'),
+      },
+      {
+        name: 'both [[em: markers survive',
+        test: (input, output) => (output.match(/\[\[em:/g) || []).length === 2,
+      },
+      {
+        name: 'wrap inner text is translated (not still "the product")',
+        test: (input, output) => !output.includes('[[em:the product|1]]'),
+      },
+    ],
+  },
 ];
 
 // ─── Test Runner ────────────────────────────────────────────────────
