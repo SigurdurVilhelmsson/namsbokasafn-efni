@@ -105,25 +105,40 @@
       executeRetry(item);
     }
 
+    // Item 13: the live queue entry for `key`, but only if it is still `qid`'s.
+    // A missing or qid-mismatched entry means a success purged it or a newer
+    // save replaced it under the same key. Acting on the stale attempt —
+    // replaying its body, evicting the newer entry, cancelling the newer timer,
+    // or firing a success toast — is exactly the stale-overwrite this module
+    // exists to prevent. Shared by the fire-time guard AND both post-fetch
+    // continuations: the qid identity can change during the async fetch, so it
+    // must be re-checked when the fetch settles, not only when the timer fires.
+    // (Pre-qid legacy entries: undefined === undefined, so a legacy entry still
+    // resolves to itself — graceful.)
+    function currentEntry(key, qid) {
+      const live = loadQueue().find(function (q) {
+        return q.key === key;
+      });
+      return live && live.qid === qid ? live : null;
+    }
+
     function executeRetry(queueItem) {
       const delay = BACKOFF_BASE * Math.pow(2, queueItem.attempts - 1);
 
       activeTimers[queueItem.key] = setTimeoutFn(function () {
         delete activeTimers[queueItem.key];
 
-        // Item 13: only the CURRENT entry for this key may fire. A missing or
-        // qid-mismatched entry means a success purged it or a newer save
-        // replaced it — replaying the closure copy is exactly the stale-
-        // overwrite this module exists to prevent. Silent abort: a superseded
-        // retry is a correct non-event. (Pre-qid legacy entries: undefined
-        // === undefined passes, graceful.)
-        const stored = loadQueue().find(function (q) {
-          return q.key === queueItem.key;
-        });
-        if (!stored || stored.qid !== queueItem.qid) return;
+        // Only the CURRENT entry for this key may fire (silent abort otherwise:
+        // a superseded retry is a correct non-event).
+        const stored = currentEntry(queueItem.key, queueItem.qid);
+        if (!stored) return;
 
         fetchFn(stored.url, stored.options)
           .then(function (response) {
+            // Re-check: a newer save may have replaced (or a cross-tab success
+            // purged) this key's entry while the fetch was in flight. If so,
+            // this stale completion must not touch the queue or toast.
+            if (!currentEntry(stored.key, stored.qid)) return;
             if (response.ok) {
               removeFromQueue(stored.key);
               toast('Vista t\u00F3kst eftir endurtilraun', 'success');
@@ -143,6 +158,8 @@
             }
           })
           .catch(function (err) {
+            // Same stale-completion re-check as the success branch above.
+            if (!currentEntry(stored.key, stored.qid)) return;
             if (isRetryableError(err) && stored.attempts < MAX_ATTEMPTS) {
               stored.attempts++;
               stored.nextRetry = now() + BACKOFF_BASE * Math.pow(2, stored.attempts - 1);

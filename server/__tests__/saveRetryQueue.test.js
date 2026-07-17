@@ -29,6 +29,15 @@ function makeHarness() {
     timers.clear();
     for (const t of batch) await t.fn();
   };
+  // Fire exactly the oldest live timer (models a single scheduled retry firing
+  // while others stay pending — needed to interleave an in-flight retry with a
+  // newer save). Awaits only the timer callback, NOT the fetch it schedules, so
+  // a deferred fetch entry stays in flight after this resolves.
+  const fireNext = async () => {
+    const [id, t] = [...timers.entries()][0];
+    timers.delete(id);
+    await t.fn();
+  };
   const fetchCalls = [];
   let fetchScript = [];
   const ok = (body) => () =>
@@ -55,6 +64,7 @@ function makeHarness() {
     queue,
     timers,
     fireAllTimers,
+    fireNext,
     fetchCalls,
     toasts,
     setFetchScript: (s) => (fetchScript = s),
@@ -147,5 +157,94 @@ describe('saveRetry stale-replay cancellation (finding 8)', () => {
     h.store.set('saveRetryQueue', JSON.stringify(q));
     await h.fireAllTimers();
     expect(h.fetchCalls[h.fetchCalls.length - 1].options.body).toBe('V1-updated');
+  });
+});
+
+describe('saveRetry stale in-flight completion (final-review finding B)', () => {
+  // Drain the microtask+macrotask queue so a resolved fetch's .then/.catch runs.
+  const tick = () => new Promise((r) => setImmediate(r));
+
+  // A fetch-script entry whose promise the test resolves by hand — models a
+  // retry fetch that is still in flight while a newer save arrives.
+  function makeDeferred() {
+    let resolveFn;
+    const promise = new Promise((res) => {
+      resolveFn = res;
+    });
+    return { entry: () => promise, resolve: (v) => resolveFn(v) };
+  }
+  const res500 = { ok: false, status: 500, json: () => Promise.resolve({}) };
+  const res200 = { ok: true, status: 200, json: () => Promise.resolve({}) };
+  const res409 = { ok: false, status: 409, json: () => Promise.resolve({}) };
+
+  it('stale retry-again completion does not evict the newer entry nor cancel its timer', async () => {
+    const h = makeHarness();
+    const stale = makeDeferred();
+    // [attempt V1 fails] [timer1 retry — in flight] [attempt V2 fails] [timer2 retry ok]
+    h.setFetchScript([h.fail500(), stale.entry, h.fail500(), h.ok()]);
+
+    await h.sr.attempt('seg:k1', '/api/x', { method: 'POST', body: 'V1' }).catch(() => {});
+    const qid1 = h.queue()[0].qid;
+
+    // timer1 fires → its retry fetch is deferred (in flight).
+    await h.fireNext();
+
+    // While the stale retry is in flight, V2 fails and replaces the entry (qid2).
+    await h.sr.attempt('seg:k1', '/api/x', { method: 'POST', body: 'V2' }).catch(() => {});
+    const qid2 = h.queue()[0].qid;
+    expect(qid2).not.toBe(qid1);
+    expect(h.queue()[0].options.body).toBe('V2');
+
+    // The stale (qid1) retry now completes with a retryable 5xx.
+    stale.resolve(res500);
+    await tick();
+
+    // The newer entry survives untouched — no re-queue of qid1 over qid2.
+    expect(h.queue()).toHaveLength(1);
+    expect(h.queue()[0].qid).toBe(qid2);
+    expect(h.queue()[0].options.body).toBe('V2');
+
+    // …and V2's timer still fires and posts V2's body.
+    await h.fireNext();
+    expect(h.fetchCalls[h.fetchCalls.length - 1].options.body).toBe('V2');
+  });
+
+  it('stale terminal-failure completion does not remove the newer entry', async () => {
+    const h = makeHarness();
+    const stale = makeDeferred();
+    h.setFetchScript([h.fail500(), stale.entry, h.fail500()]);
+
+    await h.sr.attempt('seg:k1', '/api/x', { method: 'POST', body: 'V1' }).catch(() => {});
+    await h.fireNext();
+    await h.sr.attempt('seg:k1', '/api/x', { method: 'POST', body: 'V2' }).catch(() => {});
+    const qid2 = h.queue()[0].qid;
+
+    // Non-retryable 4xx on the stale retry → terminal (removeFromQueue) branch.
+    stale.resolve(res409);
+    await tick();
+
+    expect(h.queue()).toHaveLength(1);
+    expect(h.queue()[0].qid).toBe(qid2);
+    expect(h.queue()[0].options.body).toBe('V2');
+  });
+
+  it('stale success completion does not remove the newer entry nor show a success toast', async () => {
+    const h = makeHarness();
+    const stale = makeDeferred();
+    h.setFetchScript([h.fail500(), stale.entry, h.fail500()]);
+
+    await h.sr.attempt('seg:k1', '/api/x', { method: 'POST', body: 'V1' }).catch(() => {});
+    await h.fireNext();
+    await h.sr.attempt('seg:k1', '/api/x', { method: 'POST', body: 'V2' }).catch(() => {});
+    const qid2 = h.queue()[0].qid;
+    const successBefore = h.toasts.filter((t) => t.type === 'success').length;
+
+    // A late success on the stale retry must not purge the newer save.
+    stale.resolve(res200);
+    await tick();
+
+    expect(h.queue()).toHaveLength(1);
+    expect(h.queue()[0].qid).toBe(qid2);
+    expect(h.toasts.filter((t) => t.type === 'success').length).toBe(successBefore);
   });
 });
