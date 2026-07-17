@@ -70,6 +70,7 @@ function runAllMigrations() {
     require('../migrations/038-segment-edit-review-id'),
     require('../migrations/039-segment-edit-exit-path'),
     require('../migrations/040-service-table-ownership'),
+    require('../migrations/041-localization-pending-per-editor'),
   ];
 
   let applied = 0;
