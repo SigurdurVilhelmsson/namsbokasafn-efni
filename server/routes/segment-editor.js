@@ -27,7 +27,6 @@
  *
  *   POST /api/segment-editor/:book/:chapter/:moduleId/apply  Apply approved edits to files
  *   POST /api/segment-editor/:book/:chapter/:moduleId/apply-and-render  Apply then inject+render
- *   POST /api/segment-editor/:book/:chapter/apply-all        Bulk apply all approved modules
  *   GET  /api/segment-editor/:book/:chapter/:moduleId/apply-status  Check apply status
  */
 
@@ -1209,75 +1208,6 @@ router.post(
       const status =
         err.message.includes('No approved') || err.message.includes('already been') ? 400 : 500;
       res.status(status).json({ error: err.message });
-    }
-  }
-);
-
-/**
- * POST /:book/:chapter/apply-all
- * Bulk apply approved edits for all modules in a chapter, then run pipeline.
- */
-router.post(
-  '/:book/:chapter/apply-all',
-  requireAuth,
-  requireHeadEditor(),
-  validateBookChapter,
-  (req, res) => {
-    try {
-      const modules = segmentParser.listChapterModules(req.params.book, req.chapterNum);
-      const results = [];
-
-      for (const mod of modules) {
-        // Check if this module has unapplied approved edits
-        const status = segmentEditor.getApplyStatus(req.params.book, mod.moduleId, req.chapterNum);
-        if (status.unapplied_count > 0) {
-          try {
-            const result = segmentEditor.applyApprovedEdits(
-              req.params.book,
-              req.chapterNum,
-              mod.moduleId
-            );
-            results.push({ moduleId: mod.moduleId, ...result });
-          } catch (err) {
-            results.push({ moduleId: mod.moduleId, error: err.message });
-          }
-        }
-      }
-
-      if (results.length === 0) {
-        return res.json({
-          success: true,
-          message: 'No unapplied approved edits found in this chapter',
-          results: [],
-        });
-      }
-
-      // Optionally run pipeline for the whole chapter
-      const runPipeline = req.body.runPipeline !== false;
-      let jobId = null;
-
-      if (runPipeline) {
-        const existing = pipelineService.hasRunningJob(req.chapterNum, 'pipeline');
-        if (!existing) {
-          const job = pipelineService.runPipeline({
-            book: req.params.book,
-            chapter: req.chapterNum,
-            track: 'faithful',
-            userId: req.user.id,
-          });
-          jobId = job.jobId;
-        }
-      }
-
-      res.json({
-        success: true,
-        results,
-        totalApplied: results.filter((r) => !r.error).length,
-        jobId,
-      });
-    } catch (err) {
-      log.error({ err }, 'Error in bulk apply');
-      res.status(500).json({ error: err.message });
     }
   }
 );
