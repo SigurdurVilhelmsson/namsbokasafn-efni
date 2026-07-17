@@ -1,0 +1,20 @@
+{
+  "nickname": "26-99-OC-AP06",
+  "source_uid": "39245@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Notaðu bæði þriggja og eins stafs kóða fyrir amínósýrur og skrifaðu byggingu allra mögulegra peptíða sem innihalda eftirfarandi amínósýrur:",
+  "questions": [
+    {
+      "id": "348870",
+      "stem_html": "Val, Ser, Leu",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "348871",
+      "stem_html": "Ser, Leu<sub>2</sub>, Pro",
+      "collaborator_solutions": []
+    }
+  ]
+}

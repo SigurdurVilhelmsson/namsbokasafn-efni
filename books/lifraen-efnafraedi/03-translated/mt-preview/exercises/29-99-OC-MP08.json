@@ -1,0 +1,15 @@
+{
+  "nickname": "29-99-OC-MP08",
+  "source_uid": "39322@4",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "358571",
+      "stem_html": "<p>Hannaðu þína eigin niðurbrotsferil. Þú þekkir reglurnar (lífrænir hvarfgangar) og þú hefur séð hvers konar efnahvörf eiga sér stað við niðurbrot fitu og kolvetna í asetýl-CoA í lífverum. Ef þú værir móðir náttúra, hvaða skrefaröð myndir þú nota til að brjóta niður amínósýruna serín í asetýl-CoA?</p>\n<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdU1aIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4aab23bdb1f9b0bf82edb0bd4f25374438835309/OChem_29_EC_010.jpg\" alt=\"Serine reacts in the presence of unknown reagents, represented as a question mark, to form acetyl Co A.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

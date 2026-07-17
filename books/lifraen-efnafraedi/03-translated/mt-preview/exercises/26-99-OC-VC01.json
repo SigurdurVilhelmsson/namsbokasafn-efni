@@ -1,0 +1,25 @@
+{
+  "nickname": "26-99-OC-VC01",
+  "source_uid": "39230@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Greindu eftirfarandi amínósýrur:",
+  "questions": [
+    {
+      "id": "359599",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcTRaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c993021319c14e8ca8018f3f43ea69aa3724ca75/OChem_26_EC_008a.jpg\" alt=\"A ball-and-stick model of a five-carbon amino acid,  with a carboxylate anion , an amine at  C 1, and a methyl group at C 2.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359600",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcThaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--04fc1f343445e996dc2656616812fb3b31c98faa/OChem_26_EC_008b.jpg\" alt=\"A ball-and-stick model of a substituted imidazole  connected to a three-carbon chain carboxylic acid containing an amine group at C 1\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "359601",
+      "stem_html": "<img class=\"scaled-down\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBckFaIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c59506eb35d4fb78e1c55b750d6206bf4543da34/OChem_26_EC_008c.jpg\" alt=\"A ball-and-stick model of a five-carbon chain with an amide group at C 1, an amine and a  carboxylic acid anion at C 3.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}

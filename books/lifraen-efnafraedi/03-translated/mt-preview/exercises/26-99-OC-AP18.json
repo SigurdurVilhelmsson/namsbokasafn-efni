@@ -1,0 +1,15 @@
+{
+  "nickname": "26-99-OC-AP18",
+  "source_uid": "39257@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348891",
+      "stem_html": "<p>Hvaða amíðtengi í eftirfarandi fjölpeptíði eru klofin af trypsíni? Af kýmótrypsíni?</p>\n<p>Phe-Leu-Met-Lys-Tyr-Asp-Gly-Gly-Arg-Val-Ile-Pro-Tyr</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

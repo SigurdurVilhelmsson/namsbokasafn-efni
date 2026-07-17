@@ -1,0 +1,77 @@
+{
+  "_comment": "Residue gate: language-neutral segments a pattern cannot safely classify. class: proper-noun (person/institution name) | homograph-unit (unit/expression whose only non-predicate token is an English homograph like bar/log) | neutral-notation (international scientific notation — amino-acid sequences, chemical-formula chains — where the EN bytes ARE the correct Icelandic). Exact match moduleId+segmentId; drift/invalid-class/missing-reason → still flagged. Entries triaged from the item-9 #294 MT run: each EN/IS pair was read individually. The image-only stems that also failed that run are NOT here — they were root-caused in code (pure-opaque runs are translation-invariant). See docs/superpowers/specs/2026-07-14-residue-gate-retriage-design.md",
+  "entries": [
+    {
+      "moduleId": "11-03-OC-P06",
+      "segmentId": "11-03-OC-P06:stem:336946-b1",
+      "class": "neutral-notation",
+      "reason": "substrate list of chemical formulas (CH3Br, CH3OTos, (CH3)3CCl, (CH3)2CHCl) — no translatable words"
+    },
+    {
+      "moduleId": "26-04-OC-P08",
+      "segmentId": "26-04-OC-P08:sol:348941-b0",
+      "class": "neutral-notation",
+      "reason": "tripeptide permutations in three-letter amino-acid code (Val-Tyr-Gly (VYG), Tyr-Gly-Val (YGV), …) — international notation"
+    },
+    {
+      "moduleId": "26-06-OC-P15",
+      "segmentId": "26-06-OC-P15:sol:348956-b0",
+      "class": "neutral-notation",
+      "reason": "peptide sequence Arg-Pro-Leu-Gly-Ile-Val — international amino-acid notation"
+    },
+    {
+      "moduleId": "26-06-OC-P15",
+      "segmentId": "26-06-OC-P15:sol:348957-b0",
+      "class": "neutral-notation",
+      "reason": "peptide sequence Val-Met-Trp-Asp-Val-Leu (VMWNVL) — international amino-acid notation (sibling question of sol:348956-b0)"
+    },
+    {
+      "moduleId": "26-99-OC-AP06",
+      "segmentId": "26-99-OC-AP06:stem:348870-b0",
+      "class": "neutral-notation",
+      "reason": "amino-acid list Val, Ser, Leu — three-letter codes, no translatable words"
+    },
+    {
+      "moduleId": "26-99-OC-AP06",
+      "segmentId": "26-99-OC-AP06:stem:348871-b0",
+      "class": "neutral-notation",
+      "reason": "amino-acid list Ser, Leu2, Pro — three-letter codes, no translatable words (sibling question of stem:348870-b0)"
+    },
+    {
+      "moduleId": "26-99-OC-AP18",
+      "segmentId": "26-99-OC-AP18:stem:348891-b1",
+      "class": "neutral-notation",
+      "reason": "13-residue peptide sequence Phe-Leu-Met-Lys-Tyr-Asp-Gly-Gly-Arg-Val-Ile-Pro-Tyr — international notation"
+    },
+    {
+      "moduleId": "26-99-OC-AP26",
+      "segmentId": "26-99-OC-AP26:stem:348907-b1",
+      "class": "neutral-notation",
+      "reason": "peptide fragment list (Val-Pro-Leu, Gly, Gly-Asp-Phe-Pro, Phe-Pro-Val) — international notation"
+    },
+    {
+      "moduleId": "28-99-OC-AP11",
+      "segmentId": "28-99-OC-AP11:stem:348366-b1",
+      "class": "neutral-notation",
+      "reason": "peptide sequence Tyr-Gly-Gly-Phe-Met (met-enkephalin) — international amino-acid notation"
+    },
+    {
+      "moduleId": "28-99-OC-AP12",
+      "segmentId": "28-99-OC-AP12:stem:348368-b1",
+      "class": "neutral-notation",
+      "reason": "peptide sequence Asp-Arg-Val-Tyr-Ile-His-Pro-Phe (angiotensin II) — international amino-acid notation"
+    },
+    {
+      "moduleId": "31-01-OC-P01",
+      "segmentId": "31-01-OC-P01:sol:349728-b0",
+      "class": "neutral-notation",
+      "reason": "reactivity ordering of chemical-formula chains (H2C=CHCO2CH3 < H2C=CHCl < …) — formulas plus < separators, no translatable words"
+    },
+    {
+      "moduleId": "31-01-OC-P02",
+      "segmentId": "31-01-OC-P02:sol:349730-b0",
+      "class": "neutral-notation",
+      "reason": "reactivity ordering of chemical-formula chains (H2C=CHCH3 < H2C=CHC6H5 < H2C=CHC≡N) — formulas plus < separators, no translatable words"
+    }
+  ]
+}

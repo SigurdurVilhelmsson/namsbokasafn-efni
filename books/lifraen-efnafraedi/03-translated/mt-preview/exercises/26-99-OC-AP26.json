@@ -1,0 +1,15 @@
+{
+  "nickname": "26-99-OC-AP26",
+  "source_uid": "39265@1",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348907",
+      "stem_html": "<p>Leggðu til byggingu fyrir áttupeptíð sem sýnir samsetninguna Asp, Gly<sub>2</sub>, Leu, Phe, Pro<sub>2</sub>, Val við amínósýrugreiningu. Edman-greining sýnir glýsín N-enda hóp og lefsín er C-enda hópurinn. Súrt vatnsrof gefur eftirfarandi brot:</p>\n<p>Val-Pro-Leu, Gly, Gly-Asp-Phe-Pro, Phe-Pro-Val</p>",
+      "collaborator_solutions": []
+    }
+  ]
+}

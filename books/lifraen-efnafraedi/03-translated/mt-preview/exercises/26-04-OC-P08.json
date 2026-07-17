@@ -1,0 +1,19 @@
+{
+  "nickname": "26-04-OC-P08",
+  "source_uid": "39219@2",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": true,
+  "stimulus_html": "",
+  "questions": [
+    {
+      "id": "348941",
+      "stem_html": "Sex hverfur af þrípeptíðum innihalda valín, týrósín og glýsín. Nefndu þau með því að nota bæði þriggja og eins stafs skammstafanir.",
+      "collaborator_solutions": [
+        {
+          "content_html": "Val-Tyr-Gly (VYG), Tyr-Gly-Val (YGV), Gly-Val-Tyr (GVY), Val-Gly-Tyr (VGY), Tyr-Val-Gly (YVG), Gly-Tyr-Val (GYV)"
+        }
+      ]
+    }
+  ]
+}

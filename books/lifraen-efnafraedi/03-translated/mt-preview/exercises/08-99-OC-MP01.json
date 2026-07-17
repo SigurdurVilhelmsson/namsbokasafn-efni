@@ -1,0 +1,25 @@
+{
+  "nickname": "08-99-OC-MP01",
+  "source_uid": "37110@3",
+  "generated_by": "exercise-assemble.js",
+  "track": "mt-preview",
+  "solutions_are_public": false,
+  "stimulus_html": "Spáðu fyrir um myndefnin fyrir eftirfarandi efnahvörf og sýndu allan hvarfganginn og viðeigandi staðefnafræði:",
+  "questions": [
+    {
+      "id": "353457",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWNTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--af2cb8559988fd9e57af1b0356c4fda21c3d06c9/OChem_08_EC_019a.jpg\" alt=\"A reaction shows cyclohexene with C1 and C2 each bonded to a methyl group reacting with molecular bromine to form unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353458",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWdTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e54184d3790fcf4ebf733758b2be07122c0bd3c4/OChem_08_EC_019b.jpg\" alt=\"A reaction shows benzene bonded to ethylene reacting with molecular chlorine to form unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": []
+    },
+    {
+      "id": "353459",
+      "stem_html": "<img class=\"scaled-down-30\" src=\"https://exercises.openstax.org/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbWtTIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3515e947759db5111518045613a1aab3a822e2b7/OChem_08_EC_019c.jpg\" alt=\"A reaction shows but-2-ene reacting with molecular chlorine to form unknown product(s), depicted by a question mark.\">",
+      "collaborator_solutions": []
+    }
+  ]
+}
